@@ -1,0 +1,1 @@
+Este tema usa como punto de inicio los recursos creados en [Creación de su primera función desde Azure Portal](../articles/azure-functions/functions-create-first-azure-function.md). Si aún no lo hecho, lleve a cabo estos pasos ahora para crear la aplicación de función.
