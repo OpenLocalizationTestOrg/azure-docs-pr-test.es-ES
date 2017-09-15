@@ -1,25 +1,25 @@
-#### <a name="to-install-mpio-on-the-host"></a>Para instalar MPIO en el host
-1. Abra el Administrador del servidor en el host de Windows Server. El Administrador del servidor se inicia de forma predeterminada cuando un miembro del grupo Administradores inicia sesión en un equipo que ejecuta Windows Server 2012 R2 o Windows Server 2012. Si el Administrador del servidor no está abierto, haga clic en **Inicio > Administrador del servidor**.
+#### <a name="to-install-mpio-on-the-host"></a><span data-ttu-id="40dc6-101">Para instalar MPIO en el host</span><span class="sxs-lookup"><span data-stu-id="40dc6-101">To install MPIO on the host</span></span>
+1. <span data-ttu-id="40dc6-102">Abra el Administrador del servidor en el host de Windows Server.</span><span class="sxs-lookup"><span data-stu-id="40dc6-102">Open Server Manager on your Windows Server host.</span></span> <span data-ttu-id="40dc6-103">El Administrador del servidor se inicia de forma predeterminada cuando un miembro del grupo Administradores inicia sesión en un equipo que ejecuta Windows Server 2012 R2 o Windows Server 2012.</span><span class="sxs-lookup"><span data-stu-id="40dc6-103">By default, Server Manager starts when a member of the Administrators group logs on to a computer that is running Windows Server 2012 R2 or Windows Server 2012.</span></span> <span data-ttu-id="40dc6-104">Si el Administrador del servidor no está abierto, haga clic en **Inicio > Administrador del servidor**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-104">If the Server Manager is not already open, click **Start > Server Manager**.</span></span>
    
     ![Administrador del servidor](./media/storsimple-install-mpio-windows-server/IC740997.png)
-2. Haga clic en **Administrador del servidor > Panel > Agregar roles y características**. De esta forma, se abre el **Asistente para agregar roles y características** .
+2. <span data-ttu-id="40dc6-106">Haga clic en **Administrador del servidor > Panel > Agregar roles y características**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-106">Click **Server Manager > Dashboard > Add roles and features**.</span></span> <span data-ttu-id="40dc6-107">De esta forma, se abre el **Asistente para agregar roles y características** .</span><span class="sxs-lookup"><span data-stu-id="40dc6-107">This starts the **Add Roles and Features** wizard.</span></span>
    
     ![Asistente para agregar roles y características 1](./media/storsimple-install-mpio-windows-server/IC740998.png)
-3. En el **Asistente para agregar roles y características** , haga lo siguiente:
+3. <span data-ttu-id="40dc6-109">En el **Asistente para agregar roles y características** , haga lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="40dc6-109">In the **Add Roles and Features** wizard, do the following:</span></span>
    
-   * En la página **Antes de comenzar**, haga clic en **Siguiente**.
-   * En la página **Seleccionar tipo de instalación**, acepte la configuración predeterminada de **Instalación basada en características o en roles**. Haga clic en **Siguiente**.
+   * <span data-ttu-id="40dc6-110">En la página **Antes de comenzar**, haga clic en **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-110">On the **Before you begin** page, click **Next**.</span></span>
+   * <span data-ttu-id="40dc6-111">En la página **Seleccionar tipo de instalación**, acepte la configuración predeterminada de **Instalación basada en características o en roles**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-111">On the **Select installation type** page, accept the default setting of **Role-based or feature-based** installation.</span></span> <span data-ttu-id="40dc6-112">Haga clic en **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-112">Click **Next**.</span></span>
      
        ![Asistente para agregar roles y características 2](./media/storsimple-install-mpio-windows-server/IC740999.png)
-   * En la página **Seleccionar servidor de destino** y elija **Seleccionar un servidor del grupo de servidores**. El servidor host debería detectarse automáticamente. Haga clic en **Siguiente**.
-   * En la página **Seleccionar roles de servidor**, haga clic en **Siguiente**.
-   * En la página **Seleccionar características**, seleccione **E/S de múltiples rutas** y haga clic en **Siguiente**.
+   * <span data-ttu-id="40dc6-114">En la página **Seleccionar servidor de destino** y elija **Seleccionar un servidor del grupo de servidores**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-114">On the **Select destination server** page, choose **Select a server from the server pool**.</span></span> <span data-ttu-id="40dc6-115">El servidor host debería detectarse automáticamente.</span><span class="sxs-lookup"><span data-stu-id="40dc6-115">Your host server should be discovered automatically.</span></span> <span data-ttu-id="40dc6-116">Haga clic en **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-116">Click **Next**.</span></span>
+   * <span data-ttu-id="40dc6-117">En la página **Seleccionar roles de servidor**, haga clic en **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-117">On the **Select server roles** page, click **Next**.</span></span>
+   * <span data-ttu-id="40dc6-118">En la página **Seleccionar características**, seleccione **E/S de múltiples rutas** y haga clic en **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-118">On the **Select features** page, select **Multipath I/O**, and click **Next**.</span></span>
      
        ![Asistente para agregar roles y características 5](./media/storsimple-install-mpio-windows-server/IC741000.png)
-   * En la página **Confirmar selecciones de instalación**, confirme la selección y, después, seleccione **Reiniciar automáticamente el servidor de destino en caso necesario**, tal como se muestra a continuación. Haga clic en **Instalar**.
+   * <span data-ttu-id="40dc6-120">En la página **Confirmar selecciones de instalación**, confirme la selección y, después, seleccione **Reiniciar automáticamente el servidor de destino en caso necesario**, tal como se muestra a continuación.</span><span class="sxs-lookup"><span data-stu-id="40dc6-120">On the **Confirm installation selections** page, confirm the selection and then select **Restart the destination server automatically if required**, as shown below.</span></span> <span data-ttu-id="40dc6-121">Haga clic en **Instalar**.</span><span class="sxs-lookup"><span data-stu-id="40dc6-121">Click **Install**.</span></span>
      
        ![Asistente para agregar roles y características 8](./media/storsimple-install-mpio-windows-server/IC741001.png)
-   * Se le notificará cuando la instalación finalice. Haga clic en **Cerrar** para cerrar el asistente.
+   * <span data-ttu-id="40dc6-123">Se le notificará cuando la instalación finalice.</span><span class="sxs-lookup"><span data-stu-id="40dc6-123">You will be notified when the installation is complete.</span></span> <span data-ttu-id="40dc6-124">Haga clic en **Cerrar** para cerrar el asistente.</span><span class="sxs-lookup"><span data-stu-id="40dc6-124">Click **Close** to close the wizard.</span></span>
      
        ![Asistente para agregar roles y características 9](./media/storsimple-install-mpio-windows-server/IC741002.png)
 

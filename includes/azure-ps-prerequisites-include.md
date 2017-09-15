@@ -1,6 +1,6 @@
-## <a name="prerequisite-install-the-azure-powershell-module"></a>Requisito previo: instalar el módulo de Azure PowerShell.
+## <a name="prerequisite-install-the-azure-powershell-module"></a><span data-ttu-id="513bd-101">Requisito previo: instalar el módulo de Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="513bd-101">Prerequisite: Install the Azure PowerShell Module</span></span>
 
-Para seguir los pasos de este artículo, tendrá que [instalar y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs) y seguir las instrucciones hasta el final para iniciar sesión en Azure y seleccionar su suscripción.
+<span data-ttu-id="513bd-102">Para seguir los pasos de este artículo, tendrá que [instalar y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs) y seguir las instrucciones hasta el final para iniciar sesión en Azure y seleccionar su suscripción.</span><span class="sxs-lookup"><span data-stu-id="513bd-102">To perform the steps in this article, you'll need to [to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) and follow the instructions all the way to the end to sign into Azure and select your subscription.</span></span>
 
 > [!NOTE]
-> Si no tiene una cuenta de Azure, necesitará una. Regístrese para [obtener una prueba gratuita aquí](../articles/active-directory/sign-up-organization.md).
+> <span data-ttu-id="513bd-103">Si no tiene una cuenta de Azure, necesitará una.</span><span class="sxs-lookup"><span data-stu-id="513bd-103">If you don't have an Azure account, you'll need one.</span></span> <span data-ttu-id="513bd-104">Regístrese para [obtener una prueba gratuita aquí](../articles/active-directory/sign-up-organization.md).</span><span class="sxs-lookup"><span data-stu-id="513bd-104">Go sign up for a [free trial here](../articles/active-directory/sign-up-organization.md).</span></span>

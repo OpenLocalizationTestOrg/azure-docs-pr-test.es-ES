@@ -1,16 +1,16 @@
 > [!NOTE]
-> * La dirección IP pública de VPN Gateway cambiará al migrar de una SKU antigua a una nueva.
-> * No se pueden migrar puertas de enlace de VPN clásicas a las nuevas SKU. Las puertas de enlace de VPN clásicas solo pueden utilizar las SKU heredadas (antiguas).
+> * <span data-ttu-id="4403a-101">La dirección IP pública de VPN Gateway cambiará al migrar de una SKU antigua a una nueva.</span><span class="sxs-lookup"><span data-stu-id="4403a-101">The VPN gateway Public IP address will change when migrating from an old SKU to a new SKU.</span></span>
+> * <span data-ttu-id="4403a-102">No se pueden migrar puertas de enlace de VPN clásicas a las nuevas SKU.</span><span class="sxs-lookup"><span data-stu-id="4403a-102">You can't migrate classic VPN gateways to the new SKUs.</span></span> <span data-ttu-id="4403a-103">Las puertas de enlace de VPN clásicas solo pueden utilizar las SKU heredadas (antiguas).</span><span class="sxs-lookup"><span data-stu-id="4403a-103">Classic VPN gateways can only use the legacy (old) SKUs.</span></span>
 > 
 
-No se puede cambiar el tamaño de las puertas de enlace de Azure VPN Gateway entre las familias de SKU antiguas y las nuevas. Si tiene puertas de enlace VPN Gateway en el modelo de implementación de Resource Manager que utilizan la versión antigua de la SKU, puede migrar a las SKU nuevas. Para ello, elimine la puerta de enlace VPN Gateway existente en la red virtual y después cree una nueva.
+<span data-ttu-id="4403a-104">No se puede cambiar el tamaño de las puertas de enlace de Azure VPN Gateway entre las familias de SKU antiguas y las nuevas.</span><span class="sxs-lookup"><span data-stu-id="4403a-104">You can't resize your Azure VPN gateways between the old SKUs and the new SKU families.</span></span> <span data-ttu-id="4403a-105">Si tiene puertas de enlace VPN Gateway en el modelo de implementación de Resource Manager que utilizan la versión antigua de la SKU, puede migrar a las SKU nuevas.</span><span class="sxs-lookup"><span data-stu-id="4403a-105">If you have VPN gateways in the Resource Manager deployment model that are using the older version of the SKUs, you can migrate to the new SKUs.</span></span> <span data-ttu-id="4403a-106">Para ello, elimine la puerta de enlace VPN Gateway existente en la red virtual y después cree una nueva.</span><span class="sxs-lookup"><span data-stu-id="4403a-106">To migrate, you delete the existing VPN gateway for your virtual network, then create a new one.</span></span>
 
-Flujo de trabajo de la migración:
+<span data-ttu-id="4403a-107">Flujo de trabajo de la migración:</span><span class="sxs-lookup"><span data-stu-id="4403a-107">Migration workflow:</span></span>
 
-1. Elimine las conexiones a la puerta de enlace de la red virtual.
-2. Elimine la puerta de enlace VPN Gateway antigua.
-3. Cree la puerta de enlace VPN Gateway nueva.
-4. Actualice los dispositivos VPN locales con la nueva dirección IP de la puerta de enlace VPN Gateway (para las conexiones de sitio a sitio).
-5. Actualice el valor de la dirección IP de puerta de enlace para las puertas de enlace de red local de red virtual a red virtual que se conectarán a esta puerta de enlace.
-6. Descargue los nuevos paquetes de configuración de VPN de cliente para los clientes de P2S que se vayan a conectar a la red virtual a través de esta puerta de enlace VPN Gateway.
-7. Vuelva a crear las conexiones a la puerta de enlace de la red virtual.
+1. <span data-ttu-id="4403a-108">Elimine las conexiones a la puerta de enlace de la red virtual.</span><span class="sxs-lookup"><span data-stu-id="4403a-108">Remove any connections to the virtual network gateway.</span></span>
+2. <span data-ttu-id="4403a-109">Elimine la puerta de enlace VPN Gateway antigua.</span><span class="sxs-lookup"><span data-stu-id="4403a-109">Delete the old VPN gateway.</span></span>
+3. <span data-ttu-id="4403a-110">Cree la puerta de enlace VPN Gateway nueva.</span><span class="sxs-lookup"><span data-stu-id="4403a-110">Create the new VPN gateway.</span></span>
+4. <span data-ttu-id="4403a-111">Actualice los dispositivos VPN locales con la nueva dirección IP de la puerta de enlace VPN Gateway (para las conexiones de sitio a sitio).</span><span class="sxs-lookup"><span data-stu-id="4403a-111">Update your on-premises VPN devices with the new VPN gateway IP address (for Site-to-Site connections).</span></span>
+5. <span data-ttu-id="4403a-112">Actualice el valor de la dirección IP de puerta de enlace para las puertas de enlace de red local de red virtual a red virtual que se conectarán a esta puerta de enlace.</span><span class="sxs-lookup"><span data-stu-id="4403a-112">Update the gateway IP address value for any VNet-to-VNet local network gateways that will connect to this gateway.</span></span>
+6. <span data-ttu-id="4403a-113">Descargue los nuevos paquetes de configuración de VPN de cliente para los clientes de P2S que se vayan a conectar a la red virtual a través de esta puerta de enlace VPN Gateway.</span><span class="sxs-lookup"><span data-stu-id="4403a-113">Download new client VPN configuration packages for P2S clients connecting to the virtual network through this VPN gateway.</span></span>
+7. <span data-ttu-id="4403a-114">Vuelva a crear las conexiones a la puerta de enlace de la red virtual.</span><span class="sxs-lookup"><span data-stu-id="4403a-114">Recreate the connections to the virtual network gateway.</span></span>

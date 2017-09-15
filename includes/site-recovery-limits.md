@@ -19,14 +19,14 @@ ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 07/11/2017
 ---
-Los límites siguientes se aplican a Azure Site Recovery:
+<span data-ttu-id="a7792-103">Los límites siguientes se aplican a Azure Site Recovery:</span><span class="sxs-lookup"><span data-stu-id="a7792-103">The following limits apply to Azure Site Recovery:</span></span>
 
-| IDENTIFICADOR DE LÍMITES | LÍMITE PREDETERMINADO |
+| <span data-ttu-id="a7792-104">IDENTIFICADOR DE LÍMITES</span><span class="sxs-lookup"><span data-stu-id="a7792-104">LIMIT IDENTIFIER</span></span> | <span data-ttu-id="a7792-105">LÍMITE PREDETERMINADO</span><span class="sxs-lookup"><span data-stu-id="a7792-105">DEFAULT LIMIT</span></span> |
 | --- | --- | --- | --- |
-| Número de almacenes por suscripción |25 |
-| Número de servidores por almacén de Azure |250 |
-| Número de grupos de protección por almacén de Azure |Sin límite |
-| Número de planes de recuperación por almacén de Azure |Sin límite |
-| Número de servidores por grupo de protección |Sin límite |
-| Número de servidores por el plan de recuperación |50 |
+| <span data-ttu-id="a7792-106">Número de almacenes por suscripción</span><span class="sxs-lookup"><span data-stu-id="a7792-106">Number of vaults per subscription</span></span> |<span data-ttu-id="a7792-107">25</span><span class="sxs-lookup"><span data-stu-id="a7792-107">25</span></span> |
+| <span data-ttu-id="a7792-108">Número de servidores por almacén de Azure</span><span class="sxs-lookup"><span data-stu-id="a7792-108">Number of servers per Azure vault</span></span> |<span data-ttu-id="a7792-109">250</span><span class="sxs-lookup"><span data-stu-id="a7792-109">250</span></span> |
+| <span data-ttu-id="a7792-110">Número de grupos de protección por almacén de Azure</span><span class="sxs-lookup"><span data-stu-id="a7792-110">Number of protection groups per Azure vault</span></span> |<span data-ttu-id="a7792-111">Sin límite</span><span class="sxs-lookup"><span data-stu-id="a7792-111">No limit</span></span> |
+| <span data-ttu-id="a7792-112">Número de planes de recuperación por almacén de Azure</span><span class="sxs-lookup"><span data-stu-id="a7792-112">Number of recovery plans per Azure vault</span></span> |<span data-ttu-id="a7792-113">Sin límite</span><span class="sxs-lookup"><span data-stu-id="a7792-113">No limit</span></span> |
+| <span data-ttu-id="a7792-114">Número de servidores por grupo de protección</span><span class="sxs-lookup"><span data-stu-id="a7792-114">Number of servers per protection group</span></span> |<span data-ttu-id="a7792-115">Sin límite</span><span class="sxs-lookup"><span data-stu-id="a7792-115">No limit</span></span> |
+| <span data-ttu-id="a7792-116">Número de servidores por el plan de recuperación</span><span class="sxs-lookup"><span data-stu-id="a7792-116">Number of servers per recovery plan</span></span> |<span data-ttu-id="a7792-117">50</span><span class="sxs-lookup"><span data-stu-id="a7792-117">50</span></span> |
 

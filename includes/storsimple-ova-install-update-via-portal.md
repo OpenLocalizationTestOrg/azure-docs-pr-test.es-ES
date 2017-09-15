@@ -1,26 +1,26 @@
 <!--author=alkohli last changed: 09/02/16 -->
 
-#### <a name="to-install-updates-via-the-azure-classic-portal"></a>Para instalar actualizaciones a través del Portal de Azure clásico
-1. En la página **Dispositivos** , seleccione el dispositivo en el que desea instalar las actualizaciones.
-2. Navegue a **Dispositivos > Mantenimiento > Actualizaciones de software**.
+#### <a name="to-install-updates-via-the-azure-classic-portal"></a><span data-ttu-id="7a8b4-101">Para instalar actualizaciones a través del Portal de Azure clásico</span><span class="sxs-lookup"><span data-stu-id="7a8b4-101">To install updates via the Azure classic portal</span></span>
+1. <span data-ttu-id="7a8b4-102">En la página **Dispositivos** , seleccione el dispositivo en el que desea instalar las actualizaciones.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-102">On the **Devices** page, select the device on which you want to install updates.</span></span>
+2. <span data-ttu-id="7a8b4-103">Navegue a **Dispositivos > Mantenimiento > Actualizaciones de software**.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-103">Navigate to **Devices > Maintenance > Software Updates**.</span></span>
    
     ![actualizar dispositivo](../includes/media/storsimple-ova-install-update-via-portal/azupdate1m.png)  
-3. Verá un mensaje si hay actualizaciones de software disponibles. Para buscar actualizaciones, también puede hacer clic en **Buscar actualizaciones** en la parte inferior de la página.
+3. <span data-ttu-id="7a8b4-105">Verá un mensaje si hay actualizaciones de software disponibles.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-105">You see a message if the software updates are available.</span></span> <span data-ttu-id="7a8b4-106">Para buscar actualizaciones, también puede hacer clic en **Buscar actualizaciones** en la parte inferior de la página.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-106">To check for updates, you can also click **Scan Updates** at the bottom of the page.</span></span>
    
     ![actualizar dispositivo](../includes/media/storsimple-ova-install-update-via-portal/azupdate2m.png)
-4. En la parte inferior de la página, haga clic en **Descargar actualizaciones**. Un cuadro de diálogo notifica al usuario que la actualización puede interrumpir los procesos en curso. Dado que la matriz virtual de StorSimple es un dispositivo de nodo único, el dispositivo se reiniciará después una vez actualizado. Se interrumpirá cualquier E/S en curso. Haga clic en el icono de verificación para iniciar un trabajo a fin de descargar las actualizaciones disponibles. 
+4. <span data-ttu-id="7a8b4-108">En la parte inferior de la página, haga clic en **Descargar actualizaciones**.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-108">From the bottom of the page, click **Download Updates**.</span></span> <span data-ttu-id="7a8b4-109">Un cuadro de diálogo notifica al usuario que la actualización puede interrumpir los procesos en curso.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-109">A dialog notifies the user that the update is disruptive.</span></span> <span data-ttu-id="7a8b4-110">Dado que la matriz virtual de StorSimple es un dispositivo de nodo único, el dispositivo se reiniciará después una vez actualizado.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-110">Given the StorSimple Virtual Array is a single node device, the device restarts after it is updated.</span></span> <span data-ttu-id="7a8b4-111">Se interrumpirá cualquier E/S en curso.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-111">This disrupts any IO in progress.</span></span> <span data-ttu-id="7a8b4-112">Haga clic en el icono de verificación para iniciar un trabajo a fin de descargar las actualizaciones disponibles.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-112">Click the check icon to launch a job to download the available updates.</span></span> 
    
     ![actualizar dispositivo](../includes/media/storsimple-ova-install-update-via-portal/azupdate3m.png)
-5. Recibirá una notificación una vez descargadas las actualizaciones. 
+5. <span data-ttu-id="7a8b4-114">Recibirá una notificación una vez descargadas las actualizaciones.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-114">You are notified when the updates are downloaded.</span></span> 
    
     ![actualizar dispositivo](../includes/media/storsimple-ova-install-update-via-portal/azupdate6m.png)
-6. En la parte inferior de la página, haga clic en **Instalar actualizaciones** para iniciar la actualización del dispositivo. Aparecerá de nuevo el cuadro de diálogo. Haga clic en el icono de verificación para iniciar un trabajo a fin de instalar las actualizaciones. 
+6. <span data-ttu-id="7a8b4-116">En la parte inferior de la página, haga clic en **Instalar actualizaciones** para iniciar la actualización del dispositivo.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-116">From the bottom of the page, click **Install Updates** to begin updating the device.</span></span> <span data-ttu-id="7a8b4-117">Aparecerá de nuevo el cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-117">The dialog is presented to you again.</span></span> <span data-ttu-id="7a8b4-118">Haga clic en el icono de verificación para iniciar un trabajo a fin de instalar las actualizaciones.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-118">Click the check icon to start a job to install the updates.</span></span> 
    
     ![actualizar dispositivo](../includes/media/storsimple-ova-install-update-via-portal/azupdate7m.png) 
-7. Recibirá una notificación cuando el trabajo se cree. 
+7. <span data-ttu-id="7a8b4-120">Recibirá una notificación cuando el trabajo se cree.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-120">You are notified after the job is created.</span></span> 
    
     ![actualizar dispositivo](../includes/media/storsimple-ova-install-update-via-portal/azupdate8m.png)
-8. Haga clic en el vínculo **Ver trabajo** para ir a la página Trabajos y supervisar el estado de la instalación. Puede hacer clic en **Detalles** en cualquier momento para obtener información detallada sobre el trabajo de actualización. 
+8. <span data-ttu-id="7a8b4-122">Haga clic en el vínculo **Ver trabajo** para ir a la página Trabajos y supervisar el estado de la instalación.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-122">Click **View Job** link to go to the Jobs page and monitor the install status.</span></span> <span data-ttu-id="7a8b4-123">Puede hacer clic en **Detalles** en cualquier momento para obtener información detallada sobre el trabajo de actualización.</span><span class="sxs-lookup"><span data-stu-id="7a8b4-123">You can click **Details** at any time to get detailed information about the update job.</span></span> 
    
     ![actualizar dispositivo](../includes/media/storsimple-ova-install-update-via-portal/azupdate9m.png)
 

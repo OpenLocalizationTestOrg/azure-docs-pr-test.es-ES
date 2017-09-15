@@ -1,10 +1,10 @@
-| Recurso | Límite |
+| <span data-ttu-id="70dfd-101">Recurso</span><span class="sxs-lookup"><span data-stu-id="70dfd-101">Resource</span></span> | <span data-ttu-id="70dfd-102">Límite</span><span class="sxs-lookup"><span data-stu-id="70dfd-102">Limit</span></span> |
 | --- | --- |
-| Llamadas a API (por unidad de escala) |32 millones al día <sup>1</sup> |
-| Transferencia de datos (por unidad de escala) |161 GB al día<sup>1</sup> |
-| Memoria caché |5 GB<sup>1</sup> |
-| Unidades de escala |Sin límites<sup>1</sup> |
-| Integración de Azure Active Directory |Cuentas de usuario sin límites<sup>1</sup> |
+| <span data-ttu-id="70dfd-103">Llamadas a API (por unidad de escala)</span><span class="sxs-lookup"><span data-stu-id="70dfd-103">API Calls (per unit of scale)</span></span> |<span data-ttu-id="70dfd-104">32 millones al día <sup>1</sup></span><span class="sxs-lookup"><span data-stu-id="70dfd-104">32 million per day<sup>1</sup></span></span> |
+| <span data-ttu-id="70dfd-105">Transferencia de datos (por unidad de escala)</span><span class="sxs-lookup"><span data-stu-id="70dfd-105">Data transfer (per unit of scale)</span></span> |<span data-ttu-id="70dfd-106">161 GB al día<sup>1</sup></span><span class="sxs-lookup"><span data-stu-id="70dfd-106">161 GB per day<sup>1</sup></span></span> |
+| <span data-ttu-id="70dfd-107">Memoria caché</span><span class="sxs-lookup"><span data-stu-id="70dfd-107">Cache</span></span> |<span data-ttu-id="70dfd-108">5 GB<sup>1</sup></span><span class="sxs-lookup"><span data-stu-id="70dfd-108">5 GB<sup>1</sup></span></span> |
+| <span data-ttu-id="70dfd-109">Unidades de escala</span><span class="sxs-lookup"><span data-stu-id="70dfd-109">Units of scale</span></span> |<span data-ttu-id="70dfd-110">Sin límites<sup>1</sup></span><span class="sxs-lookup"><span data-stu-id="70dfd-110">Unlimited<sup>1</sup></span></span> |
+| <span data-ttu-id="70dfd-111">Integración de Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="70dfd-111">Azure Active Directory Integration</span></span> |<span data-ttu-id="70dfd-112">Cuentas de usuario sin límites<sup>1</sup></span><span class="sxs-lookup"><span data-stu-id="70dfd-112">Unlimited User Accounts<sup>1</sup></span></span> |
 
-<sup>1</sup>Los límites de Administración de API son diferentes para cada nivel de precios. Para ver los niveles de precios y sus límites asociados y opciones de escalado, consulte [Precios de Administración de API](https://azure.microsoft.com/pricing/details/api-management/).
+<span data-ttu-id="70dfd-113"><sup>1</sup>Los límites de Administración de API son diferentes para cada nivel de precios.</span><span class="sxs-lookup"><span data-stu-id="70dfd-113"><sup>1</sup>API Management limits are different for each pricing tier.</span></span> <span data-ttu-id="70dfd-114">Para ver los niveles de precios y sus límites asociados y opciones de escalado, consulte [Precios de Administración de API](https://azure.microsoft.com/pricing/details/api-management/).</span><span class="sxs-lookup"><span data-stu-id="70dfd-114">To see the pricing tiers and their associated limits and scaling options, see [API Management Pricing](https://azure.microsoft.com/pricing/details/api-management/).</span></span>
 

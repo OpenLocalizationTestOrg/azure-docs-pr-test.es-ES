@@ -1,9 +1,9 @@
 
-| Opciones de proceso | Público |
+| <span data-ttu-id="331d4-101">Opciones de proceso</span><span class="sxs-lookup"><span data-stu-id="331d4-101">Compute Options</span></span> | <span data-ttu-id="331d4-102">Público</span><span class="sxs-lookup"><span data-stu-id="331d4-102">Audience</span></span> |
 | --- | --- |
-| [App Service][lnk_app] |Aplicaciones web, aplicaciones móviles, aplicaciones de API y aplicaciones lógicas escalables para cualquier dispositivo |
-| [Cloud Services][lnk_cloud] |Aplicaciones en la nube de n niveles escalables y altamente disponibles con mayor control del sistema operativo |
-| [Virtual Machines][lnk_vm] |Máquinas virtuales Linux y Windows personalizadas con un control completo del sistema operativo |
+| <span data-ttu-id="331d4-103">[App Service][lnk_app]</span><span class="sxs-lookup"><span data-stu-id="331d4-103">[App Service][lnk_app]</span></span> |<span data-ttu-id="331d4-104">Aplicaciones web, aplicaciones móviles, aplicaciones de API y aplicaciones lógicas escalables para cualquier dispositivo</span><span class="sxs-lookup"><span data-stu-id="331d4-104">Scalable Web Apps, Mobile Apps, API Apps, and Logic Apps for any device</span></span> |
+| <span data-ttu-id="331d4-105">[Cloud Services][lnk_cloud]</span><span class="sxs-lookup"><span data-stu-id="331d4-105">[Cloud Services][lnk_cloud]</span></span> |<span data-ttu-id="331d4-106">Aplicaciones en la nube de n niveles escalables y altamente disponibles con mayor control del sistema operativo</span><span class="sxs-lookup"><span data-stu-id="331d4-106">Highly available, scalable n-tier cloud apps with more control of the OS</span></span> |
+| <span data-ttu-id="331d4-107">[Virtual Machines][lnk_vm]</span><span class="sxs-lookup"><span data-stu-id="331d4-107">[Virtual Machines][lnk_vm]</span></span> |<span data-ttu-id="331d4-108">Máquinas virtuales Linux y Windows personalizadas con un control completo del sistema operativo</span><span class="sxs-lookup"><span data-stu-id="331d4-108">Customized Windows and Linux VMs with complete control of the OS</span></span> |
 
 [lnk_app]: ../articles/app-service-web/app-service-web-overview.md
 [lnk_vm]:../articles/virtual-machines/windows/overview.md

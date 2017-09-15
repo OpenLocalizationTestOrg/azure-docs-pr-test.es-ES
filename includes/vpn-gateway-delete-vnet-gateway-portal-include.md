@@ -1,17 +1,17 @@
-### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>Paso 1: Navegación a la puerta de enlace de red virtual
+### <a name="step-1-navigate-to-the-virtual-network-gateway"></a><span data-ttu-id="0d4d5-101">Paso 1: Navegación a la puerta de enlace de red virtual</span><span class="sxs-lookup"><span data-stu-id="0d4d5-101">Step 1: Navigate to the virtual network gateway</span></span>
 
-1. En [Azure Portal](https://portal.azure.com), vaya a **Todos los recursos**. 
-2. Para abrir la hoja de la puerta de enlace de la red virtual, vaya a la puerta de enlace de la red virtual que desea eliminar y haga clic en ella.
+1. <span data-ttu-id="0d4d5-102">En [Azure Portal](https://portal.azure.com), vaya a **Todos los recursos**.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-102">In the [Azure portal](https://portal.azure.com), navigate to **All resources**.</span></span> 
+2. <span data-ttu-id="0d4d5-103">Para abrir la hoja de la puerta de enlace de la red virtual, vaya a la puerta de enlace de la red virtual que desea eliminar y haga clic en ella.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-103">To open the virtual network gateway blade, navigate to the virtual network gateway that you want to delete and click it.</span></span>
 
-### <a name="step-2-delete-connections"></a>Paso 2: Eliminación de conexiones
+### <a name="step-2-delete-connections"></a><span data-ttu-id="0d4d5-104">Paso 2: Eliminación de conexiones</span><span class="sxs-lookup"><span data-stu-id="0d4d5-104">Step 2: Delete connections</span></span>
 
-1. En la hoja de la puerta de enlace de red virtual, haga clic en **Conexiones** para ver todas las conexiones a la puerta de enlace.
-2. Haga clic en **"..."** en la fila del nombre de la conexión y seleccione **Eliminar** en la lista desplegable.
-3. Haga clic en **Sí** para confirmar que quiere eliminar la conexión. Si tiene varias conexiones, elimine cada conexión.
+1. <span data-ttu-id="0d4d5-105">En la hoja de la puerta de enlace de red virtual, haga clic en **Conexiones** para ver todas las conexiones a la puerta de enlace.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-105">On the blade for your virtual network gateway, click **Connections** to view all connections to the gateway.</span></span>
+2. <span data-ttu-id="0d4d5-106">Haga clic en **"..."**</span><span class="sxs-lookup"><span data-stu-id="0d4d5-106">Click the **'...'**</span></span> <span data-ttu-id="0d4d5-107">en la fila del nombre de la conexión y seleccione **Eliminar** en la lista desplegable.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-107">on the row of the name of the connection, then select **Delete** from the dropdown.</span></span>
+3. <span data-ttu-id="0d4d5-108">Haga clic en **Sí** para confirmar que quiere eliminar la conexión.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-108">Click **Yes** to confirm that you want to delete the connection.</span></span> <span data-ttu-id="0d4d5-109">Si tiene varias conexiones, elimine cada conexión.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-109">If you have multiple connections, delete each connection.</span></span>
 
-### <a name="step-3-delete-the-virtual-network-gateway"></a>Paso 3: Eliminación de la puerta de enlace de red virtual
+### <a name="step-3-delete-the-virtual-network-gateway"></a><span data-ttu-id="0d4d5-110">Paso 3: Eliminación de la puerta de enlace de red virtual</span><span class="sxs-lookup"><span data-stu-id="0d4d5-110">Step 3: Delete the virtual network gateway</span></span>
 
-Tenga en cuenta que si tiene una configuración P2S en esta red virtual además de la configuración S2S, al eliminar la puerta de enlace de la red virtual se desconectarán automáticamente todos los clientes P2S sin previo aviso.
+<span data-ttu-id="0d4d5-111">Tenga en cuenta que si tiene una configuración P2S en esta red virtual además de la configuración S2S, al eliminar la puerta de enlace de la red virtual se desconectarán automáticamente todos los clientes P2S sin previo aviso.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-111">Be aware that if you have a P2S configuration to this VNet in addition to your S2S configuration, deleting the virtual network gateway will automatically disconnect all P2S clients without warning.</span></span>
 
-1. En la hoja de la puerta de enlace de la red virtual, haga clic en **Introducción**.
-2. En la hoja **Información general**, haga clic en **Eliminar** para eliminar la puerta de enlace.
+1. <span data-ttu-id="0d4d5-112">En la hoja de la puerta de enlace de la red virtual, haga clic en **Introducción**.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-112">On the virtual network gateway blade, click **Overview**.</span></span>
+2. <span data-ttu-id="0d4d5-113">En la hoja **Información general**, haga clic en **Eliminar** para eliminar la puerta de enlace.</span><span class="sxs-lookup"><span data-stu-id="0d4d5-113">On the **Overview** blade, click **Delete** to delete the gateway.</span></span>

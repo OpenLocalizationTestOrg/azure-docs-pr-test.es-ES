@@ -1,7 +1,7 @@
 
-1. En [Azure Portal](https://portal.azure.com/), haga clic en **Examinar todo** > **App Services** y finalmente en el back-end de Mobile Apps. En **Configuración**, haga clic en **App Service Push** y, después, en el nombre del centro de notificaciones.
-2. Vaya a **Windows (WNS)**, escriba la **Clave de seguridad** (secreto de cliente) y el **SID del paquete** que ha obtenido en el sitio de Servicios Live y, finalmente, haga clic en **Guardar**.
+1. <span data-ttu-id="0c937-101">En [Azure Portal](https://portal.azure.com/), haga clic en **Examinar todo** > **App Services** y finalmente en el back-end de Mobile Apps.</span><span class="sxs-lookup"><span data-stu-id="0c937-101">In the [Azure portal](https://portal.azure.com/), click **Browse All** > **App Services**, and click your Mobile Apps back end.</span></span> <span data-ttu-id="0c937-102">En **Configuración**, haga clic en **App Service Push** y, después, en el nombre del centro de notificaciones.</span><span class="sxs-lookup"><span data-stu-id="0c937-102">Under **Settings**, click **App Service Push**, and then click your notification hub name.</span></span>
+2. <span data-ttu-id="0c937-103">Vaya a **Windows (WNS)**, escriba la **Clave de seguridad** (secreto de cliente) y el **SID del paquete** que ha obtenido en el sitio de Servicios Live y, finalmente, haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="0c937-103">Go to **Windows (WNS)**, enter the **Security key** (client secret) and **Package SID** that you obtained from the Live Services site, and then click **Save**.</span></span>
 
     ![Establecimiento de la clave de WNS en el portal](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
-El back-end ahora está configurado para usar WNS para enviar notificaciones push.
+<span data-ttu-id="0c937-105">El back-end ahora está configurado para usar WNS para enviar notificaciones push.</span><span class="sxs-lookup"><span data-stu-id="0c937-105">Your back end is now configured to use WNS to send push notifications.</span></span>

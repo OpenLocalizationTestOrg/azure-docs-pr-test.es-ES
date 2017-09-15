@@ -1,6 +1,6 @@
 > [!div class="op_single_selector"]
-> * [Actualización 2](../articles/storsimple/storsimple-deployment-walkthrough-gov-u2.md)
-> * [Actualización 1](../articles/storsimple/storsimple-deployment-walkthrough-gov.md)
+> * [<span data-ttu-id="fb1e2-101">Actualización 2</span><span class="sxs-lookup"><span data-stu-id="fb1e2-101">Update 2</span></span>](../articles/storsimple/storsimple-deployment-walkthrough-gov-u2.md)
+> * [<span data-ttu-id="fb1e2-102">Actualización 1</span><span class="sxs-lookup"><span data-stu-id="fb1e2-102">Update 1</span></span>](../articles/storsimple/storsimple-deployment-walkthrough-gov.md)
 > 
 > 
 

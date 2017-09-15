@@ -1,21 +1,21 @@
-## <a name="specify-the-behavior-of-the-iot-device"></a>Especificación del comportamiento del dispositivo IoT
+## <a name="specify-the-behavior-of-the-iot-device"></a><span data-ttu-id="cd8ea-101">Especificación del comportamiento del dispositivo IoT</span><span class="sxs-lookup"><span data-stu-id="cd8ea-101">Specify the behavior of the IoT device</span></span>
 
-La biblioteca de cliente del serializador de IoT Hub usa un modelo para especificar el formato de los mensajes que el dispositivo intercambia con IoT Hub.
+<span data-ttu-id="cd8ea-102">La biblioteca de cliente del serializador de IoT Hub usa un modelo para especificar el formato de los mensajes que el dispositivo intercambia con IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-102">The IoT Hub serializer client library uses a model to specify the format of the messages the device exchanges with IoT Hub.</span></span>
 
-1. Agregue las siguientes declaraciones de variable después de las instrucciones `#include` . Sustituya los valores de marcador de posición [Device Id] y [Device Key] por los valores que anotó para el dispositivo en el panel de la solución de supervisión remota. Use el nombre de host de IoT Hub en el panel de la solución para sustituir [IoTHub Name]. Por ejemplo, si el nombre de host de IoT Hub es **contoso.azure-devices.net**, sustituya [IoTHub Name] por **contoso**:
+1. <span data-ttu-id="cd8ea-103">Agregue las siguientes declaraciones de variable después de las instrucciones `#include` .</span><span class="sxs-lookup"><span data-stu-id="cd8ea-103">Add the following variable declarations after the `#include` statements.</span></span> <span data-ttu-id="cd8ea-104">Sustituya los valores de marcador de posición [Device Id] y [Device Key] por los valores que anotó para el dispositivo en el panel de la solución de supervisión remota.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-104">Replace the placeholder values [Device Id] and [Device Key] with values you noted for your device in the remote monitoring solution dashboard.</span></span> <span data-ttu-id="cd8ea-105">Use el nombre de host de IoT Hub en el panel de la solución para sustituir [IoTHub Name].</span><span class="sxs-lookup"><span data-stu-id="cd8ea-105">Use the IoT Hub Hostname from the solution dashboard to replace [IoTHub Name].</span></span> <span data-ttu-id="cd8ea-106">Por ejemplo, si el nombre de host de IoT Hub es **contoso.azure-devices.net**, sustituya [IoTHub Name] por **contoso**:</span><span class="sxs-lookup"><span data-stu-id="cd8ea-106">For example, if your IoT Hub Hostname is **contoso.azure-devices.net**, replace [IoTHub Name] with **contoso**:</span></span>
    
     ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
 
-1. Agregue el código siguiente para definir el modelo que permite que el dispositivo se comunique con el Centro de IoT. Este modelo especifica que el dispositivo:
+1. <span data-ttu-id="cd8ea-107">Agregue el código siguiente para definir el modelo que permite que el dispositivo se comunique con el Centro de IoT.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-107">Add the following code to define the model that enables the device to communicate with IoT Hub.</span></span> <span data-ttu-id="cd8ea-108">Este modelo especifica que el dispositivo:</span><span class="sxs-lookup"><span data-stu-id="cd8ea-108">This model specifies that the device:</span></span>
 
-   - Puede enviar datos de temperatura, temperatura externa, humedad y un id. de dispositivo como telemetría.
-   - Puede enviar datos sobre el dispositivo a IoT Hub. El dispositivo envía metadatos básicos en un objeto **DeviceInfo** en el inicio.
-   - Puede enviar propiedades notificadas al dispositivo gemelo en IoT Hub. Estas propiedades notificadas se agrupan en propiedades de configuración, dispositivo y sistema.
-   - Puede recibir las propiedades deseadas establecidas en el dispositivo gemelo en IoT Hub y actuar en función de ellas.
-   - Puede responder a los métodos directos **Reboot** y **InitiateFirmwareUpdate** mediante el portal de la solución. El dispositivo envía información sobre los métodos directos que admite mediante las propiedades notificadas.
+   - <span data-ttu-id="cd8ea-109">Puede enviar datos de temperatura, temperatura externa, humedad y un id. de dispositivo como telemetría.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-109">Can send temperature, external temperature, humidity, and a device id as telemetry.</span></span>
+   - <span data-ttu-id="cd8ea-110">Puede enviar datos sobre el dispositivo a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-110">Can send metadata about the device to IoT Hub.</span></span> <span data-ttu-id="cd8ea-111">El dispositivo envía metadatos básicos en un objeto **DeviceInfo** en el inicio.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-111">The device sends basic metadata in a **DeviceInfo** object at startup.</span></span>
+   - <span data-ttu-id="cd8ea-112">Puede enviar propiedades notificadas al dispositivo gemelo en IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-112">Can send reported properties, to the device twin in IoT Hub.</span></span> <span data-ttu-id="cd8ea-113">Estas propiedades notificadas se agrupan en propiedades de configuración, dispositivo y sistema.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-113">These reported properties are grouped into configuration, device, and system properties.</span></span>
+   - <span data-ttu-id="cd8ea-114">Puede recibir las propiedades deseadas establecidas en el dispositivo gemelo en IoT Hub y actuar en función de ellas.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-114">Can receive and act on desired properties set in the device twin in IoT Hub.</span></span>
+   - <span data-ttu-id="cd8ea-115">Puede responder a los métodos directos **Reboot** y **InitiateFirmwareUpdate** mediante el portal de la solución.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-115">Can respond to the **Reboot** and **InitiateFirmwareUpdate** direct methods invoked through the solution portal.</span></span> <span data-ttu-id="cd8ea-116">El dispositivo envía información sobre los métodos directos que admite mediante las propiedades notificadas.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-116">The device sends information about the direct methods it supports using reported properties.</span></span>
    
     ```c
     // Define the Model
@@ -85,10 +85,10 @@ La biblioteca de cliente del serializador de IoT Hub usa un modelo para especifi
     END_NAMESPACE(Contoso);
     ```
 
-## <a name="implement-the-behavior-of-the-device"></a>Implementación del comportamiento del dispositivo
-Ahora, agregue código que implemente el comportamiento definido en el modelo.
+## <a name="implement-the-behavior-of-the-device"></a><span data-ttu-id="cd8ea-117">Implementación del comportamiento del dispositivo</span><span class="sxs-lookup"><span data-stu-id="cd8ea-117">Implement the behavior of the device</span></span>
+<span data-ttu-id="cd8ea-118">Ahora, agregue código que implemente el comportamiento definido en el modelo.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-118">Now add code that implements the behavior defined in the model.</span></span>
 
-1. Agregue las siguientes funciones que controlan las propiedades deseadas establecidas en el panel de la solución. Estas propiedades deseadas se definen en el modelo:
+1. <span data-ttu-id="cd8ea-119">Agregue las siguientes funciones que controlan las propiedades deseadas establecidas en el panel de la solución.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-119">Add the following functions that handle the desired properties set in the solution dashboard.</span></span> <span data-ttu-id="cd8ea-120">Estas propiedades deseadas se definen en el modelo:</span><span class="sxs-lookup"><span data-stu-id="cd8ea-120">These desired properties are defined in the model:</span></span>
 
     ```c
     void onDesiredTemperatureMeanValue(void* argument)
@@ -107,7 +107,7 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
     }
     ```
 
-1. Agregue las funciones siguientes que controlan los métodos directos que se invocan a través de IoT Hub. Estos métodos directos se definen en el modelo:
+1. <span data-ttu-id="cd8ea-121">Agregue las funciones siguientes que controlan los métodos directos que se invocan a través de IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-121">Add the following functions that handle the direct methods invoked through the IoT hub.</span></span> <span data-ttu-id="cd8ea-122">Estos métodos directos se definen en el modelo:</span><span class="sxs-lookup"><span data-stu-id="cd8ea-122">These direct methods are defined in the model:</span></span>
 
     ```c
     /* Handlers for direct methods */
@@ -130,7 +130,7 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
     }
     ```
 
-1. Agregue la función siguiente que envía un mensaje a la solución preconfigurada:
+1. <span data-ttu-id="cd8ea-123">Agregue la función siguiente que envía un mensaje a la solución preconfigurada:</span><span class="sxs-lookup"><span data-stu-id="cd8ea-123">Add the following function that sends a message to the preconfigured solution:</span></span>
    
     ```c
     /* Send data to IoT Hub */
@@ -158,7 +158,7 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
     }
     ```
 
-1. Agregue el siguiente controlador de devolución de llamadas que se ejecuta cuando el dispositivo ha enviado nuevos valores de propiedades notificadas a la solución preconfigurada:
+1. <span data-ttu-id="cd8ea-124">Agregue el siguiente controlador de devolución de llamadas que se ejecuta cuando el dispositivo ha enviado nuevos valores de propiedades notificadas a la solución preconfigurada:</span><span class="sxs-lookup"><span data-stu-id="cd8ea-124">Add the following callback handler that runs when the device has sent new reported property values to the preconfigured solution:</span></span>
 
     ```c
     /* Callback after sending reported properties */
@@ -169,16 +169,16 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
     }
     ```
 
-1. Agregue la función siguiente para conectar el dispositivo a la solución preconfiguradas en la nube e intercambiar datos. Esta función lleva a cabo los pasos siguientes:
+1. <span data-ttu-id="cd8ea-125">Agregue la función siguiente para conectar el dispositivo a la solución preconfiguradas en la nube e intercambiar datos.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-125">Add the following function to connect your device to the preconfigured solution in the cloud, and exchange data.</span></span> <span data-ttu-id="cd8ea-126">Esta función lleva a cabo los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="cd8ea-126">This function performs the following steps:</span></span>
 
-    - Inicializa la plataforma.
-    - Registra el espacio de nombres Contoso con la biblioteca de serialización.
-    - Inicializa el cliente con la cadena de conexión del dispositivo.
-    - Crea una instancia del modelo del **termostato**.
-    - Crea y envía valores de propiedades notificadas.
-    - Envía un objeto **DeviceInfo**.
-    - Crea un bucle para enviar telemetría a cada segundo.
-    - Desinicializa todos los recursos.
+    - <span data-ttu-id="cd8ea-127">Inicializa la plataforma.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-127">Initializes the platform.</span></span>
+    - <span data-ttu-id="cd8ea-128">Registra el espacio de nombres Contoso con la biblioteca de serialización.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-128">Registers the Contoso namespace with the serialization library.</span></span>
+    - <span data-ttu-id="cd8ea-129">Inicializa el cliente con la cadena de conexión del dispositivo.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-129">Initializes the client with the device connection string.</span></span>
+    - <span data-ttu-id="cd8ea-130">Crea una instancia del modelo del **termostato**.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-130">Create an instance of the **Thermostat** model.</span></span>
+    - <span data-ttu-id="cd8ea-131">Crea y envía valores de propiedades notificadas.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-131">Creates and sends reported property values.</span></span>
+    - <span data-ttu-id="cd8ea-132">Envía un objeto **DeviceInfo**.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-132">Sends a **DeviceInfo** object.</span></span>
+    - <span data-ttu-id="cd8ea-133">Crea un bucle para enviar telemetría a cada segundo.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-133">Creates a loop to send telemetry every second.</span></span>
+    - <span data-ttu-id="cd8ea-134">Desinicializa todos los recursos.</span><span class="sxs-lookup"><span data-stu-id="cd8ea-134">Deinitializes all resources.</span></span>
 
       ```c
       void remote_monitoring_run(void)
@@ -296,7 +296,7 @@ Ahora, agregue código que implemente el comportamiento definido en el modelo.
       }
     ```
    
-    Como referencia, este es un mensaje de **telemetría** de ejemplo enviado a la solución preconfigurado:
+    <span data-ttu-id="cd8ea-135">Como referencia, este es un mensaje de **telemetría** de ejemplo enviado a la solución preconfigurado:</span><span class="sxs-lookup"><span data-stu-id="cd8ea-135">For reference, here is a sample **Telemetry** message sent to the preconfigured solution:</span></span>
    
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}

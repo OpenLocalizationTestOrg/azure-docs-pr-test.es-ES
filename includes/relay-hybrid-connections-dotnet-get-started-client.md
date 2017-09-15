@@ -1,15 +1,15 @@
-### <a name="create-a-console-application"></a>Creación de una aplicación de consola
+### <a name="create-a-console-application"></a><span data-ttu-id="b69fb-101">Creación de una aplicación de consola</span><span class="sxs-lookup"><span data-stu-id="b69fb-101">Create a console application</span></span>
 
-En primer lugar, inicie Visual Studio y cree un proyecto **Console app (.NET Framework)** nuevo.
+<span data-ttu-id="b69fb-102">En primer lugar, inicie Visual Studio y cree un proyecto **Console app (.NET Framework)** nuevo.</span><span class="sxs-lookup"><span data-stu-id="b69fb-102">First, launch Visual Studio and create a new **Console App (.NET Framework)** project.</span></span>
 
-### <a name="add-the-relay-nuget-package"></a>Adición del paquete Relay NuGet
+### <a name="add-the-relay-nuget-package"></a><span data-ttu-id="b69fb-103">Adición del paquete Relay NuGet</span><span class="sxs-lookup"><span data-stu-id="b69fb-103">Add the Relay NuGet package</span></span>
 
-1. Haga clic con el botón derecho en el proyecto recién creado y haga clic en **Administrar paquetes NuGet**.
-2. Haga clic en la pestaña **Examinar** y, después, busque "Microsoft Azure Relay" y seleccione el elemento **Microsoft Azure Relay**. Haga clic en **Instalar** para completar la instalación y, a continuación, cierre este cuadro de diálogo.
+1. <span data-ttu-id="b69fb-104">Haga clic con el botón derecho en el proyecto recién creado y haga clic en **Administrar paquetes NuGet**.</span><span class="sxs-lookup"><span data-stu-id="b69fb-104">Right-click the newly created project and then click **Manage NuGet Packages**.</span></span>
+2. <span data-ttu-id="b69fb-105">Haga clic en la pestaña **Examinar** y, después, busque "Microsoft Azure Relay" y seleccione el elemento **Microsoft Azure Relay**.</span><span class="sxs-lookup"><span data-stu-id="b69fb-105">Click the **Browse** tab, then search for "Microsoft.Azure.Relay" and select the **Microsoft Azure Relay** item.</span></span> <span data-ttu-id="b69fb-106">Haga clic en **Instalar** para completar la instalación y, a continuación, cierre este cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="b69fb-106">Click **Install** to complete the installation, then close this dialog box.</span></span>
 
-### <a name="write-some-code-to-send-messages"></a>Escritura de código para enviar mensajes
+### <a name="write-some-code-to-send-messages"></a><span data-ttu-id="b69fb-107">Escritura de código para enviar mensajes</span><span class="sxs-lookup"><span data-stu-id="b69fb-107">Write some code to send messages</span></span>
 
-1. Reemplace las instrucciones `using` existentes en la parte superior del archivo Program.cs por las siguientes instrucciones `using`:
+1. <span data-ttu-id="b69fb-108">Reemplace las instrucciones `using` existentes en la parte superior del archivo Program.cs por las siguientes instrucciones `using`:</span><span class="sxs-lookup"><span data-stu-id="b69fb-108">Replace the existing `using` statements at the top of the Program.cs file with the following `using` statements:</span></span>
    
     ```csharp
     using System;
@@ -18,7 +18,7 @@ En primer lugar, inicie Visual Studio y cree un proyecto **Console app (.NET Fra
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
-2. Agregue constantes a la clase `Program` para los detalles de la conexión híbrida. Reemplace los marcadores de posición entre corchetes por los valores que obtuvo al crear la conexión híbrida. Asegúrese de utilizar el nombre de espacio de nombres completo:
+2. <span data-ttu-id="b69fb-109">Agregue constantes a la clase `Program` para los detalles de la conexión híbrida.</span><span class="sxs-lookup"><span data-stu-id="b69fb-109">Add constants to the `Program` class for the hybrid connection details.</span></span> <span data-ttu-id="b69fb-110">Reemplace los marcadores de posición entre corchetes por los valores que obtuvo al crear la conexión híbrida.</span><span class="sxs-lookup"><span data-stu-id="b69fb-110">Replace the placeholders in brackets with the values you obtained when creating the hybrid connection.</span></span> <span data-ttu-id="b69fb-111">Asegúrese de utilizar el nombre de espacio de nombres completo:</span><span class="sxs-lookup"><span data-stu-id="b69fb-111">Be sure to use the fully qualified namespace name:</span></span>
    
     ```csharp
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
@@ -26,7 +26,7 @@ En primer lugar, inicie Visual Studio y cree un proyecto **Console app (.NET Fra
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. Agregue el siguiente método a la clase `Program`:
+3. <span data-ttu-id="b69fb-112">Agregue el siguiente método a la clase `Program`:</span><span class="sxs-lookup"><span data-stu-id="b69fb-112">Add the following method to the `Program` class:</span></span>
    
     ```csharp
     private static async Task RunAsync()
@@ -87,13 +87,13 @@ En primer lugar, inicie Visual Studio y cree un proyecto **Console app (.NET Fra
         await relayConnection.CloseAsync(CancellationToken.None);
     }
     ```
-4. Agregue la siguiente línea de código al método `Main` de la clase `Program`.
+4. <span data-ttu-id="b69fb-113">Agregue la siguiente línea de código al método `Main` de la clase `Program`.</span><span class="sxs-lookup"><span data-stu-id="b69fb-113">Add the following line of code to the `Main` method in the `Program` class.</span></span>
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();
     ```
    
-    Este es el aspecto que debería tener Program.cs.
+    <span data-ttu-id="b69fb-114">Este es el aspecto que debería tener Program.cs.</span><span class="sxs-lookup"><span data-stu-id="b69fb-114">Here is what your Program.cs should look like.</span></span>
    
     ```csharp
     using System;

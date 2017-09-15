@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>Requisitos previos
-* Una cuenta de [MailChimp](https://www.MailChimp.com/). 
+### <a name="prerequisites"></a><span data-ttu-id="1bdb2-101">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="1bdb2-101">Prerequisites</span></span>
+* <span data-ttu-id="1bdb2-102">Una cuenta de [MailChimp](https://www.MailChimp.com/).</span><span class="sxs-lookup"><span data-stu-id="1bdb2-102">A [MailChimp](https://www.MailChimp.com/) account</span></span> 
 
-Para poder usar su cuenta de MailChimp en una aplicación lógica, debe autorizar a la aplicación lógica para que pueda conectarse a dicha cuenta. Por suerte, esto es muy fácil de hacer desde la aplicación lógica en el Portal de Azure. 
+<span data-ttu-id="1bdb2-103">Para poder usar su cuenta de MailChimp en una aplicación lógica, debe autorizar a la aplicación lógica para que pueda conectarse a dicha cuenta.</span><span class="sxs-lookup"><span data-stu-id="1bdb2-103">Before you can use your MailChimp account in a Logic app, you must authorize the Logic app to connect to your MailChimp account.</span></span> <span data-ttu-id="1bdb2-104">Por suerte, esto es muy fácil de hacer desde la aplicación lógica en el Portal de Azure.</span><span class="sxs-lookup"><span data-stu-id="1bdb2-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Aquí se explica cómo autorizar a la aplicación lógica para conectarse a su cuenta de MailChimp:
+<span data-ttu-id="1bdb2-105">Aquí se explica cómo autorizar a la aplicación lógica para conectarse a su cuenta de MailChimp:</span><span class="sxs-lookup"><span data-stu-id="1bdb2-105">Here are the steps to authorize your Logic app to connect to your MailChimp account:</span></span>
 
-1. Para crear una conexión a MailChimp, en el diseñador de Logic Apps, seleccione **Mostrar API administradas por Microsoft** en la lista desplegable y, luego, escriba *MailChimp* en el cuadro de búsqueda. Seleccione el desencadenador o la acción que quiera usar:   
-   ![MailChimp, paso 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
-2. Si no ha creado ninguna conexión a MailChimp antes, se le pedirá que indique sus credenciales de MailChimp. Estas credenciales se usarán para autorizar a la aplicación lógica a conectarse y acceder a los datos de su cuenta de MailChimp:  
+1. <span data-ttu-id="1bdb2-106">Para crear una conexión a MailChimp, en el diseñador de Logic Apps, seleccione **Mostrar API administradas por Microsoft** en la lista desplegable y, luego, escriba *MailChimp* en el cuadro de búsqueda.</span><span class="sxs-lookup"><span data-stu-id="1bdb2-106">To create a connection to MailChimp, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *MailChimp* in the search box.</span></span> <span data-ttu-id="1bdb2-107">Seleccione el desencadenador o la acción que quiera usar: </span><span class="sxs-lookup"><span data-stu-id="1bdb2-107">Select the trigger or action you'll like to use:</span></span>  
+   <span data-ttu-id="1bdb2-108">![MailChimp, paso 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)</span><span class="sxs-lookup"><span data-stu-id="1bdb2-108">![MailChimp step 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)</span></span>
+2. <span data-ttu-id="1bdb2-109">Si no ha creado ninguna conexión a MailChimp antes, se le pedirá que indique sus credenciales de MailChimp.</span><span class="sxs-lookup"><span data-stu-id="1bdb2-109">If you haven't created any connections to MailChimp before, you'll get prompted to provide your MailChimp credentials.</span></span> <span data-ttu-id="1bdb2-110">Estas credenciales se usarán para autorizar a la aplicación lógica a conectarse y acceder a los datos de su cuenta de MailChimp:</span><span class="sxs-lookup"><span data-stu-id="1bdb2-110">These credentials will be used to authorize your Logic app to connect to, and access your MailChimp account's data:</span></span>  
    ![MailChimp, paso 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
-3. Indique su nombre de usuario y contraseña de MailChimp para autorizar a la aplicación lógica:  
+3. <span data-ttu-id="1bdb2-112">Indique su nombre de usuario y contraseña de MailChimp para autorizar a la aplicación lógica:</span><span class="sxs-lookup"><span data-stu-id="1bdb2-112">Provide your MailChimp user name and password to authorize your Logic app:</span></span>  
    ![MailChimp, paso 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
-4. Observe que la conexión se ha creado y que puede continuar sin problemas con el resto de pasos en la aplicación lógica:   
+4. <span data-ttu-id="1bdb2-114">Observe que la conexión se ha creado y que puede continuar sin problemas con el resto de pasos en la aplicación lógica: </span><span class="sxs-lookup"><span data-stu-id="1bdb2-114">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
    ![MailChimp, paso 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
 

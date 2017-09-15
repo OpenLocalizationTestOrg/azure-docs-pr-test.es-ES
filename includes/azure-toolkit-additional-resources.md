@@ -1,14 +1,14 @@
-Para más información sobre los kits de herramientas de Azure para los entornos de desarrollo de Java, vea los siguientes vínculos:
+<span data-ttu-id="abe13-101">Para más información sobre los kits de herramientas de Azure para los entornos de desarrollo de Java, vea los siguientes vínculos:</span><span class="sxs-lookup"><span data-stu-id="abe13-101">For more information about the Azure toolkits for Java IDEs, see the following links:</span></span>
 
-* [Kit de herramientas de Azure para Eclipse](/azure/azure-toolkit-for-eclipse)
-  * [Novedades del kit de herramientas de Azure para Eclipse](/azure/azure-toolkit-for-eclipse-whats-new)
-  * [Instalación del Kit de herramientas de Azure para Eclipse](/azure/azure-toolkit-for-eclipse-installation)
-  * [Creación de una aplicación web Hello World para Azure en Eclipse](/azure/app-service-web/app-service-web-eclipse-create-hello-world-web-app)
-  * [Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse](/azure/azure-toolkit-for-eclipse-sign-in-instructions)
-* [Kit de herramientas de Azure para IntelliJ](/azure/azure-toolkit-for-intellij)
-  * [Novedades del kit de herramientas de Azure para IntelliJ](/azure/azure-toolkit-for-intellij-whats-new)
-  * [Instalación del kit de herramientas de Azure para IntelliJ](/azure/azure-toolkit-for-intellij-installation)
-  * [Creación de una aplicación web Hello World para Azure en IntelliJ](/azure/app-service-web/app-service-web-intellij-create-hello-world-web-app)
-  * [Instrucciones de inicio de sesión del kit de herramientas de Azure para IntelliJ](/azure/azure-toolkit-for-intellij-sign-in-instructions)
+* [<span data-ttu-id="abe13-102">Kit de herramientas de Azure para Eclipse</span><span class="sxs-lookup"><span data-stu-id="abe13-102">Azure Toolkit for Eclipse</span></span>](/azure/azure-toolkit-for-eclipse)
+  * [<span data-ttu-id="abe13-103">Novedades del kit de herramientas de Azure para Eclipse</span><span class="sxs-lookup"><span data-stu-id="abe13-103">What's new in the Azure Toolkit for Eclipse</span></span>](/azure/azure-toolkit-for-eclipse-whats-new)
+  * [<span data-ttu-id="abe13-104">Instalación del Kit de herramientas de Azure para Eclipse</span><span class="sxs-lookup"><span data-stu-id="abe13-104">Installing the Azure Toolkit for Eclipse</span></span>](/azure/azure-toolkit-for-eclipse-installation)
+  * [<span data-ttu-id="abe13-105">Creación de una aplicación web Hello World para Azure en Eclipse</span><span class="sxs-lookup"><span data-stu-id="abe13-105">Create a Hello World web app for Azure in Eclipse</span></span>](/azure/app-service-web/app-service-web-eclipse-create-hello-world-web-app)
+  * [<span data-ttu-id="abe13-106">Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse</span><span class="sxs-lookup"><span data-stu-id="abe13-106">Sign-in instructions for the Azure Toolkit for Eclipse</span></span>](/azure/azure-toolkit-for-eclipse-sign-in-instructions)
+* [<span data-ttu-id="abe13-107">Kit de herramientas de Azure para IntelliJ</span><span class="sxs-lookup"><span data-stu-id="abe13-107">Azure Toolkit for IntelliJ</span></span>](/azure/azure-toolkit-for-intellij)
+  * [<span data-ttu-id="abe13-108">Novedades del kit de herramientas de Azure para IntelliJ</span><span class="sxs-lookup"><span data-stu-id="abe13-108">What's new in the Azure Toolkit for IntelliJ</span></span>](/azure/azure-toolkit-for-intellij-whats-new)
+  * [<span data-ttu-id="abe13-109">Instalación del kit de herramientas de Azure para IntelliJ</span><span class="sxs-lookup"><span data-stu-id="abe13-109">Installing the Azure Toolkit for IntelliJ</span></span>](/azure/azure-toolkit-for-intellij-installation)
+  * [<span data-ttu-id="abe13-110">Creación de una aplicación web Hello World para Azure en IntelliJ</span><span class="sxs-lookup"><span data-stu-id="abe13-110">Create a Hello World web app for Azure in IntelliJ</span></span>](/azure/app-service-web/app-service-web-intellij-create-hello-world-web-app)
+  * [<span data-ttu-id="abe13-111">Instrucciones de inicio de sesión del kit de herramientas de Azure para IntelliJ</span><span class="sxs-lookup"><span data-stu-id="abe13-111">Sign-in instructions for the Azure Toolkit for IntelliJ</span></span>](/azure/azure-toolkit-for-intellij-sign-in-instructions)
 
-Para más información sobre el uso de Java con Azure, visite el [Centro para desarrolladores de Java de Azure](https://azure.microsoft.com/develop/java/) y consulte las [herramientas de Java para Visual Studio Team Services](https://java.visualstudio.com/).
+<span data-ttu-id="abe13-112">Para más información sobre el uso de Java con Azure, visite el [Centro para desarrolladores de Java de Azure](https://azure.microsoft.com/develop/java/) y consulte las [herramientas de Java para Visual Studio Team Services](https://java.visualstudio.com/).</span><span class="sxs-lookup"><span data-stu-id="abe13-112">For more information about using Java with Azure, see the [Azure Java Developer Center](https://azure.microsoft.com/develop/java/) and the [Java Tools for Visual Studio Team Services](https://java.visualstudio.com/).</span></span>

@@ -1,43 +1,43 @@
 <!--author=alkohli last changed:02/22/16-->
 
-#### <a name="to-attach-the-sas-cables"></a>Conexión de los cables SAS
-1. Identifique los receptáculos principal y EBOD Los dos alojamientos pueden identificarse examinando sus respectivos planos posteriores. Consulta la siguiente imagen para obtener instrucciones. 
+#### <a name="to-attach-the-sas-cables"></a><span data-ttu-id="63842-101">Conexión de los cables SAS</span><span class="sxs-lookup"><span data-stu-id="63842-101">To attach the SAS cables</span></span>
+1. <span data-ttu-id="63842-102">Identifique los receptáculos principal y EBOD</span><span class="sxs-lookup"><span data-stu-id="63842-102">Identify the primary and the EBOD enclosures.</span></span> <span data-ttu-id="63842-103">Los dos alojamientos pueden identificarse examinando sus respectivos planos posteriores.</span><span class="sxs-lookup"><span data-stu-id="63842-103">The two enclosures can be identified by looking at their respective back planes.</span></span> <span data-ttu-id="63842-104">Consulta la siguiente imagen para obtener instrucciones.</span><span class="sxs-lookup"><span data-stu-id="63842-104">See the following image for guidance.</span></span> 
    
     ![Plano posterior del alojamiento principal y de EBOD](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
    
-    **Vista posterior del alojamiento principal y de EBOD**
+    <span data-ttu-id="63842-106">**Vista posterior del alojamiento principal y de EBOD**</span><span class="sxs-lookup"><span data-stu-id="63842-106">**Back view of primary and EBOD enclosures**</span></span>
    
-   | Etiqueta | Descripción |
+   | <span data-ttu-id="63842-107">Etiqueta</span><span class="sxs-lookup"><span data-stu-id="63842-107">Label</span></span> | <span data-ttu-id="63842-108">Descripción</span><span class="sxs-lookup"><span data-stu-id="63842-108">Description</span></span> |
    |:--- |:--- |
-   | 1 |Receptáculo principal |
-   | 2 |Receptáculo EBOD |
-2. Busca los números de serie del alojamiento principal y de EBOD. La etiqueta del número de serie está colocada en el dispositivo de escucha posterior de cada alojamiento. Los números de serie deben ser idénticos en ambos receptáculos. [Contactar al servicio técnico de Microsoft](../articles/storsimple/storsimple-contact-microsoft-support.md) inmediatamente si no coinciden los números de serie. Consulta la siguiente ilustración para localizar los números de serie.
+   | <span data-ttu-id="63842-109">1</span><span class="sxs-lookup"><span data-stu-id="63842-109">1</span></span> |<span data-ttu-id="63842-110">Receptáculo principal</span><span class="sxs-lookup"><span data-stu-id="63842-110">Primary enclosure</span></span> |
+   | <span data-ttu-id="63842-111">2</span><span class="sxs-lookup"><span data-stu-id="63842-111">2</span></span> |<span data-ttu-id="63842-112">Receptáculo EBOD</span><span class="sxs-lookup"><span data-stu-id="63842-112">EBOD enclosure</span></span> |
+2. <span data-ttu-id="63842-113">Busca los números de serie del alojamiento principal y de EBOD.</span><span class="sxs-lookup"><span data-stu-id="63842-113">Locate the serial numbers on the primary and the EBOD enclosures.</span></span> <span data-ttu-id="63842-114">La etiqueta del número de serie está colocada en el dispositivo de escucha posterior de cada alojamiento.</span><span class="sxs-lookup"><span data-stu-id="63842-114">The serial number sticker is affixed to the back ear of each enclosure.</span></span> <span data-ttu-id="63842-115">Los números de serie deben ser idénticos en ambos receptáculos.</span><span class="sxs-lookup"><span data-stu-id="63842-115">The serial numbers must be identical on both enclosures.</span></span> <span data-ttu-id="63842-116">[Contactar al servicio técnico de Microsoft](../articles/storsimple/storsimple-contact-microsoft-support.md) inmediatamente si no coinciden los números de serie.</span><span class="sxs-lookup"><span data-stu-id="63842-116">[Contact Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) immediately if the serial numbers do not match.</span></span> <span data-ttu-id="63842-117">Consulta la siguiente ilustración para localizar los números de serie.</span><span class="sxs-lookup"><span data-stu-id="63842-117">See the following illustration to locate the serial numbers.</span></span>
    
     ![Vista trasera del alojamiento que muestra el número de serie](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
-    **Ubicación de la etiqueta del número de serie**
+    <span data-ttu-id="63842-119">**Ubicación de la etiqueta del número de serie**</span><span class="sxs-lookup"><span data-stu-id="63842-119">**Location of serial number sticker**</span></span>
    
-   | Etiqueta | Descripción |
+   | <span data-ttu-id="63842-120">Etiqueta</span><span class="sxs-lookup"><span data-stu-id="63842-120">Label</span></span> | <span data-ttu-id="63842-121">Descripción</span><span class="sxs-lookup"><span data-stu-id="63842-121">Description</span></span> |
    |:--- |:--- |
-   | 1 |Dispositivo de escucha del receptáculo |
-3. Después utiliza los cables SAS proporcionados para conectar el alojamiento de EBOD al alojamiento principal de esta manera:
+   | <span data-ttu-id="63842-122">1</span><span class="sxs-lookup"><span data-stu-id="63842-122">1</span></span> |<span data-ttu-id="63842-123">Dispositivo de escucha del receptáculo</span><span class="sxs-lookup"><span data-stu-id="63842-123">Ear of the enclosure</span></span> |
+3. <span data-ttu-id="63842-124">Después utiliza los cables SAS proporcionados para conectar el alojamiento de EBOD al alojamiento principal de esta manera:</span><span class="sxs-lookup"><span data-stu-id="63842-124">Use the provided SAS cables to connect the EBOD enclosure to the primary enclosure as follows:</span></span>
    
-   1. Identifica los cuatro puertos SAS en el alojamiento principal y en el alojamiento de EBOD. Los puertos SAS se etiquetan como EBOD en el alojamiento principal y se corresponden con el puerto A en el alojamiento de EBOD, tal y como se muestra en la ilustración del cableado de SAS.
-   2. Use los cables SAS proporcionados para conectar el puerto EBOD al puerto A.
-   3. El puerto EBOD del controlador 0 debe estar conectado al puerto A del controlador EBOD 0. El puerto EBOD del controlador 1 debe estar conectado al puerto A del controlador EBOD 1. Vea la ilustración siguiente como guía. 
+   1. <span data-ttu-id="63842-125">Identifica los cuatro puertos SAS en el alojamiento principal y en el alojamiento de EBOD.</span><span class="sxs-lookup"><span data-stu-id="63842-125">Identify the four SAS ports on the primary enclosure and the EBOD enclosure.</span></span> <span data-ttu-id="63842-126">Los puertos SAS se etiquetan como EBOD en el alojamiento principal y se corresponden con el puerto A en el alojamiento de EBOD, tal y como se muestra en la ilustración del cableado de SAS.</span><span class="sxs-lookup"><span data-stu-id="63842-126">The SAS ports are labeled as EBOD on the primary enclosure and correspond to port A on the EBOD enclosure, as shown in the SAS cabling illustration, below.</span></span>
+   2. <span data-ttu-id="63842-127">Use los cables SAS proporcionados para conectar el puerto EBOD al puerto A.</span><span class="sxs-lookup"><span data-stu-id="63842-127">Use the provided SAS cables to connect the EBOD port to port A.</span></span>
+   3. <span data-ttu-id="63842-128">El puerto EBOD del controlador 0 debe estar conectado al puerto A del controlador EBOD 0.</span><span class="sxs-lookup"><span data-stu-id="63842-128">The EBOD port on controller 0 should be connected to the port A on EBOD controller 0.</span></span> <span data-ttu-id="63842-129">El puerto EBOD del controlador 1 debe estar conectado al puerto A del controlador EBOD 1.</span><span class="sxs-lookup"><span data-stu-id="63842-129">The EBOD port on controller 1 should be connected to the port A on EBOD controller 1.</span></span> <span data-ttu-id="63842-130">Vea la ilustración siguiente como guía.</span><span class="sxs-lookup"><span data-stu-id="63842-130">See the following illustration for guidance.</span></span> 
       
       ![Cableado SAS para tu dispositivo](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
       
-      **Cableado de SAS**
+      <span data-ttu-id="63842-132">**Cableado de SAS**</span><span class="sxs-lookup"><span data-stu-id="63842-132">**SAS cabling**</span></span>
       
-      | Etiqueta | Descripción |
+      | <span data-ttu-id="63842-133">Etiqueta</span><span class="sxs-lookup"><span data-stu-id="63842-133">Label</span></span> | <span data-ttu-id="63842-134">Descripción</span><span class="sxs-lookup"><span data-stu-id="63842-134">Description</span></span> |
       |:--- |:--- |
-      | Encontrará |Receptáculo principal |
-      | B |Receptáculo EBOD |
-      | 1 |Controlador 0 |
-      | 2 |Controlador 1 |
-      | 3 |Controlador EBOD 0 |
-      | 4 |Controlador EBOD 1 |
-      | 5, 6 |Puertos SAS del receptáculo principal (con la etiqueta EBOD) |
-      | 7, 8 |Puertos SAS del receptáculo EBOD (puerto A) |
+      | <span data-ttu-id="63842-135">Encontrará</span><span class="sxs-lookup"><span data-stu-id="63842-135">A</span></span> |<span data-ttu-id="63842-136">Receptáculo principal</span><span class="sxs-lookup"><span data-stu-id="63842-136">Primary enclosure</span></span> |
+      | <span data-ttu-id="63842-137">B</span><span class="sxs-lookup"><span data-stu-id="63842-137">B</span></span> |<span data-ttu-id="63842-138">Receptáculo EBOD</span><span class="sxs-lookup"><span data-stu-id="63842-138">EBOD enclosure</span></span> |
+      | <span data-ttu-id="63842-139">1</span><span class="sxs-lookup"><span data-stu-id="63842-139">1</span></span> |<span data-ttu-id="63842-140">Controlador 0</span><span class="sxs-lookup"><span data-stu-id="63842-140">Controller 0</span></span> |
+      | <span data-ttu-id="63842-141">2</span><span class="sxs-lookup"><span data-stu-id="63842-141">2</span></span> |<span data-ttu-id="63842-142">Controlador 1</span><span class="sxs-lookup"><span data-stu-id="63842-142">Controller 1</span></span> |
+      | <span data-ttu-id="63842-143">3</span><span class="sxs-lookup"><span data-stu-id="63842-143">3</span></span> |<span data-ttu-id="63842-144">Controlador EBOD 0</span><span class="sxs-lookup"><span data-stu-id="63842-144">EBOD Controller 0</span></span> |
+      | <span data-ttu-id="63842-145">4</span><span class="sxs-lookup"><span data-stu-id="63842-145">4</span></span> |<span data-ttu-id="63842-146">Controlador EBOD 1</span><span class="sxs-lookup"><span data-stu-id="63842-146">EBOD Controller 1</span></span> |
+      | <span data-ttu-id="63842-147">5, 6</span><span class="sxs-lookup"><span data-stu-id="63842-147">5, 6</span></span> |<span data-ttu-id="63842-148">Puertos SAS del receptáculo principal (con la etiqueta EBOD)</span><span class="sxs-lookup"><span data-stu-id="63842-148">SAS ports on primary enclosure (labeled EBOD)</span></span> |
+      | <span data-ttu-id="63842-149">7, 8</span><span class="sxs-lookup"><span data-stu-id="63842-149">7, 8</span></span> |<span data-ttu-id="63842-150">Puertos SAS del receptáculo EBOD (puerto A)</span><span class="sxs-lookup"><span data-stu-id="63842-150">SAS ports on EBOD enclosure (Port A)</span></span> |
 

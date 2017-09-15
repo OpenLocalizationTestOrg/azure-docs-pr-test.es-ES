@@ -1,21 +1,21 @@
-#### <a name="prerequisites"></a>Requisitos previos
-* Una cuenta de Azure; puede crear una [gratuita](https://azure.microsoft.com/free)
-* Una cuenta de [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3). 
+#### <a name="prerequisites"></a><span data-ttu-id="1ab0e-101">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="1ab0e-101">Prerequisites</span></span>
+* <span data-ttu-id="1ab0e-102">Una cuenta de Azure; puede crear una [gratuita](https://azure.microsoft.com/free)</span><span class="sxs-lookup"><span data-stu-id="1ab0e-102">An Azure account; you can create a [free account](https://azure.microsoft.com/free)</span></span>
+* <span data-ttu-id="1ab0e-103">Una cuenta de [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3).</span><span class="sxs-lookup"><span data-stu-id="1ab0e-103">A [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) account</span></span> 
 
-Para poder usar su cuenta de OneDrive en una aplicación lógica, debe autorizar a la aplicación lógica a conectarse a dicha cuenta.  Esto lo puede hacer fácilmente dentro de la aplicación lógica en el Portal de Azure. 
+<span data-ttu-id="1ab0e-104">Para poder usar su cuenta de OneDrive en una aplicación lógica, debe autorizar a la aplicación lógica a conectarse a dicha cuenta.</span><span class="sxs-lookup"><span data-stu-id="1ab0e-104">Before you can use your OneDrive account in a logic app, authorize the logic app to connect to your OneDrive account.</span></span>  <span data-ttu-id="1ab0e-105">Esto lo puede hacer fácilmente dentro de la aplicación lógica en el Portal de Azure.</span><span class="sxs-lookup"><span data-stu-id="1ab0e-105">You can do this easily within your logic app on the Azure portal.</span></span> 
 
-Autorice a la aplicación lógica a conectarse a su cuenta de OneDrive con los pasos siguientes:
+<span data-ttu-id="1ab0e-106">Autorice a la aplicación lógica a conectarse a su cuenta de OneDrive con los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="1ab0e-106">Authorize your logic app to connect to your OneDrive account using the following steps:</span></span>
 
-1. Cree una aplicación lógica. En el diseñador de Logic Apps, seleccione **Mostrar API administradas por Microsoft** en la lista desplegable y, luego, escriba "onedrive" en el cuadro de búsqueda. Seleccione uno de los desencadenadores o una de las acciones:  
+1. <span data-ttu-id="1ab0e-107">Cree una aplicación lógica.</span><span class="sxs-lookup"><span data-stu-id="1ab0e-107">Create a logic app.</span></span> <span data-ttu-id="1ab0e-108">En el diseñador de Logic Apps, seleccione **Mostrar API administradas por Microsoft** en la lista desplegable y, luego, escriba "onedrive" en el cuadro de búsqueda.</span><span class="sxs-lookup"><span data-stu-id="1ab0e-108">In the Logic Apps designer, select **Show Microsoft managed APIs** in the drop down list, and then enter "onedrive" in the search box.</span></span> <span data-ttu-id="1ab0e-109">Seleccione uno de los desencadenadores o una de las acciones:</span><span class="sxs-lookup"><span data-stu-id="1ab0e-109">Select one of the triggers or actions:</span></span>  
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Si no ha creado previamente las conexiones a OneDrive, se le pedirá que inicie sesión con sus credenciales de OneDrive:  
+2. <span data-ttu-id="1ab0e-110">Si no ha creado previamente las conexiones a OneDrive, se le pedirá que inicie sesión con sus credenciales de OneDrive:</span><span class="sxs-lookup"><span data-stu-id="1ab0e-110">If you haven't previously created any connections to OneDrive, you are prompted to sign in using your OneDrive credentials:</span></span>  
    ![](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. Seleccione **Iniciar sesión** y escriba su nombre de usuario y contraseña. Seleccione **Iniciar sesión**:  
+3. <span data-ttu-id="1ab0e-111">Seleccione **Iniciar sesión** y escriba su nombre de usuario y contraseña.</span><span class="sxs-lookup"><span data-stu-id="1ab0e-111">Select **Sign in**, and enter your user name and password.</span></span> <span data-ttu-id="1ab0e-112">Seleccione **Iniciar sesión**:</span><span class="sxs-lookup"><span data-stu-id="1ab0e-112">Select **Sign in**:</span></span>  
    ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
    
-    Estas credenciales se usan para autorizar a la aplicación lógica a conectarse y tener acceso a los datos de su cuenta de OneDrive. 
-4. Seleccione **Sí** para autorizar a la aplicación lógica a usar la cuenta de OneDrive:  
+    <span data-ttu-id="1ab0e-113">Estas credenciales se usan para autorizar a la aplicación lógica a conectarse y tener acceso a los datos de su cuenta de OneDrive.</span><span class="sxs-lookup"><span data-stu-id="1ab0e-113">These credentials are used to authorize your logic app to connect to, and access the data in your OneDrive account.</span></span> 
+4. <span data-ttu-id="1ab0e-114">Seleccione **Sí** para autorizar a la aplicación lógica a usar la cuenta de OneDrive:</span><span class="sxs-lookup"><span data-stu-id="1ab0e-114">Select **Yes** to authorize the logic app to use your OneDrive account:</span></span>  
    ![](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. Observe que la conexión se ha creado en el portal. Ahora, continúe con el resto de los pasos en la aplicación lógica:  
+5. <span data-ttu-id="1ab0e-115">Observe que la conexión se ha creado en el portal.</span><span class="sxs-lookup"><span data-stu-id="1ab0e-115">Notice the connection has been created.</span></span> <span data-ttu-id="1ab0e-116">Ahora, continúe con el resto de los pasos en la aplicación lógica:</span><span class="sxs-lookup"><span data-stu-id="1ab0e-116">Now, proceed with the other steps in your logic app:</span></span>  
    ![](./media/connectors-create-api-onedrive/onedrive-5.png)
 

@@ -1,19 +1,19 @@
-## <a name="extended-iot-scenarios"></a>Escenarios de IoT ampliados
+## <a name="extended-iot-scenarios"></a><span data-ttu-id="d9069-101">Escenarios de IoT ampliados</span><span class="sxs-lookup"><span data-stu-id="d9069-101">Extended IoT scenarios</span></span>
 
-Use otras herramientas y servicios de Azure. Cuando el dispositivo se ha conectado a IoT Hub, puede explorar escenarios adicionales que utilizan otras herramientas y servicios de Azure:
+<span data-ttu-id="d9069-102">Use otras herramientas y servicios de Azure.</span><span class="sxs-lookup"><span data-stu-id="d9069-102">Use other Azure services and tools.</span></span> <span data-ttu-id="d9069-103">Cuando el dispositivo se ha conectado a IoT Hub, puede explorar escenarios adicionales que utilizan otras herramientas y servicios de Azure:</span><span class="sxs-lookup"><span data-stu-id="d9069-103">When you have connected your device to IoT Hub, you can explore additional scenarios that use other Azure tools and services:</span></span>
 
-| Escenario                                                   | Herramienta o servicio de Azure              |
+| <span data-ttu-id="d9069-104">Escenario</span><span class="sxs-lookup"><span data-stu-id="d9069-104">Scenario</span></span>                                                   | <span data-ttu-id="d9069-105">Herramienta o servicio de Azure</span><span class="sxs-lookup"><span data-stu-id="d9069-105">Azure service or tool</span></span>              |
 |----------------------------------------------------------- |------------------------------------|
-| [Administración de mensajes de IoT Hub][Mg_IoT_Hub_Msg]                  | herramienta iothub-explorer               |
-| [Administración de su dispositivo IoT][Mg_IoT_Dv]                        | herramienta iothub-explorer               |
-| [Guardado de los mensajes de IoT Hub en Azure Storage][Sv_IoT_Msg_Stor]  | Almacenamiento de tablas de Azure                |
-| [Visualización de datos de sensor][Vis_Data]                          | Microsoft Power BI, Azure Web Apps |
-| [Previsión meteorológica con datos del sensor][Weather_Forecast]      | Aprendizaje automático de Azure             |
-| [Detección de anomalías automática y reacción][Anomaly_Detect] | Azure Logic Apps                   |
+| <span data-ttu-id="d9069-106">[Administración de mensajes de IoT Hub][Mg_IoT_Hub_Msg]</span><span class="sxs-lookup"><span data-stu-id="d9069-106">[Manage IoT Hub messages][Mg_IoT_Hub_Msg]</span></span>                  | <span data-ttu-id="d9069-107">herramienta iothub-explorer</span><span class="sxs-lookup"><span data-stu-id="d9069-107">iothub-explorer tool</span></span>               |
+| <span data-ttu-id="d9069-108">[Administración de su dispositivo IoT][Mg_IoT_Dv]</span><span class="sxs-lookup"><span data-stu-id="d9069-108">[Manage your IoT device][Mg_IoT_Dv]</span></span>                        | <span data-ttu-id="d9069-109">herramienta iothub-explorer</span><span class="sxs-lookup"><span data-stu-id="d9069-109">iothub-explorer tool</span></span>               |
+| <span data-ttu-id="d9069-110">[Guardado de los mensajes de IoT Hub en Azure Storage][Sv_IoT_Msg_Stor]</span><span class="sxs-lookup"><span data-stu-id="d9069-110">[Save IoT Hub messages to Azure storage][Sv_IoT_Msg_Stor]</span></span>  | <span data-ttu-id="d9069-111">Almacenamiento de tablas de Azure</span><span class="sxs-lookup"><span data-stu-id="d9069-111">Azure table storage</span></span>                |
+| <span data-ttu-id="d9069-112">[Visualización de datos de sensor][Vis_Data]</span><span class="sxs-lookup"><span data-stu-id="d9069-112">[Visualize sensor data][Vis_Data]</span></span>                          | <span data-ttu-id="d9069-113">Microsoft Power BI, Azure Web Apps</span><span class="sxs-lookup"><span data-stu-id="d9069-113">Microsoft Power BI, Azure Web Apps</span></span> |
+| <span data-ttu-id="d9069-114">[Previsión meteorológica con datos del sensor][Weather_Forecast]</span><span class="sxs-lookup"><span data-stu-id="d9069-114">[Forecast weather with sensor data][Weather_Forecast]</span></span>      | <span data-ttu-id="d9069-115">Aprendizaje automático de Azure</span><span class="sxs-lookup"><span data-stu-id="d9069-115">Azure Machine Learning</span></span>             |
+| <span data-ttu-id="d9069-116">[Detección de anomalías automática y reacción][Anomaly_Detect]</span><span class="sxs-lookup"><span data-stu-id="d9069-116">[Automatic anomaly detection and reaction][Anomaly_Detect]</span></span> | <span data-ttu-id="d9069-117">Azure Logic Apps</span><span class="sxs-lookup"><span data-stu-id="d9069-117">Azure Logic Apps</span></span>                   |
 
-## <a name="next-steps"></a>Pasos siguientes
+## <a name="next-steps"></a><span data-ttu-id="d9069-118">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="d9069-118">Next steps</span></span>
 
-Cuando se hayan completado estos tutoriales, puede explorar aún más las funcionalidades de IoT Hub mediante la [guía del desarrollador][lnk-dev-guide]. Puede encontrar más tutoriales en la sección [Cómo][lnk-how-to].
+<span data-ttu-id="d9069-119">Cuando se hayan completado estos tutoriales, puede explorar aún más las funcionalidades de IoT Hub mediante la [guía del desarrollador][lnk-dev-guide].</span><span class="sxs-lookup"><span data-stu-id="d9069-119">When you have completed these tutorials, you can further explore the capabilities of IoT Hub in the [Developer guide][lnk-dev-guide].</span></span> <span data-ttu-id="d9069-120">Puede encontrar más tutoriales en la sección [Cómo][lnk-how-to].</span><span class="sxs-lookup"><span data-stu-id="d9069-120">You can find additional tutorials in the [How To][lnk-how-to] section.</span></span>
 
 
 [Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md

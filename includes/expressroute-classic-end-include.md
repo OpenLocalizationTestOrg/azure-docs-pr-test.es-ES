@@ -1,12 +1,12 @@
 > [!IMPORTANT] 
-> A partir del 1 de marzo de 2017, no se pueden crear circuitos ExpressRoute en el modelo de implementación clásica.
+> <span data-ttu-id="0c4a1-101">A partir del 1 de marzo de 2017, no se pueden crear circuitos ExpressRoute en el modelo de implementación clásica.</span><span class="sxs-lookup"><span data-stu-id="0c4a1-101">As of March 1, 2017, you can't create new ExpressRoute circuits in the classic deployment model.</span></span>
 > 
-> - Puede mover un circuito ExpressRoute existente del modelo de implementación clásica al modelo de implementación de Resource Manager sin inactividad de la conectividad. Para más información, consulte el artículo sobre cómo [mover un circuito existente](../articles/expressroute/expressroute-move.md).
-> - Puede conectarse a las redes virtuales del modelo de implementación clásica al establecer **allowClassicOperations** en TRUE.
+> - <span data-ttu-id="0c4a1-102">Puede mover un circuito ExpressRoute existente del modelo de implementación clásica al modelo de implementación de Resource Manager sin inactividad de la conectividad.</span><span class="sxs-lookup"><span data-stu-id="0c4a1-102">You can move an existing ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model without experiencing any connectivity down time.</span></span> <span data-ttu-id="0c4a1-103">Para más información, consulte el artículo sobre cómo [mover un circuito existente](../articles/expressroute/expressroute-move.md).</span><span class="sxs-lookup"><span data-stu-id="0c4a1-103">For more information, see [Move an existing circuit](../articles/expressroute/expressroute-move.md).</span></span>
+> - <span data-ttu-id="0c4a1-104">Puede conectarse a las redes virtuales del modelo de implementación clásica al establecer **allowClassicOperations** en TRUE.</span><span class="sxs-lookup"><span data-stu-id="0c4a1-104">You can connect to virtual networks in the classic deployment model by setting **allowClassicOperations** to TRUE.</span></span>
 > 
-> Use los vínculos siguientes para crear y administrar circuitos ExpressRoute en el modelo de implementación de Resource Manager:
+> <span data-ttu-id="0c4a1-105">Use los vínculos siguientes para crear y administrar circuitos ExpressRoute en el modelo de implementación de Resource Manager:</span><span class="sxs-lookup"><span data-stu-id="0c4a1-105">Use the following links to create and manage ExpressRoute circuits in the Resource Manager deployment model:</span></span>
 
-> - [Creación y administración de circuitos ExpressRoute](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>
-> - [Configuración del enrutamiento (emparejamiento) para los circuitos ExpressRoute](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)
+> - [<span data-ttu-id="0c4a1-106">Creación y administración de circuitos ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="0c4a1-106">Create and manage ExpressRoute circuits</span></span>](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>
+> - [<span data-ttu-id="0c4a1-107">Configuración del enrutamiento (emparejamiento) para los circuitos ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="0c4a1-107">Configure routing (peering) for ExpressRoute circuits</span></span>](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)
 >
 >

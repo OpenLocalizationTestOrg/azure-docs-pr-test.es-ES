@@ -1,39 +1,39 @@
-Al crear una puerta de enlace de red virtual, debe especificar la SKU de la puerta de enlace que desea usar. Seleccione las SKU que cumplan sus requisitos en función de los tipos de cargas de trabajo, rendimientos, características y Acuerdos de Nivel de Servicio.
+<span data-ttu-id="3aa06-101">Al crear una puerta de enlace de red virtual, debe especificar la SKU de la puerta de enlace que desea usar.</span><span class="sxs-lookup"><span data-stu-id="3aa06-101">When you create a virtual network gateway, you need to specify the gateway SKU that you want to use.</span></span> <span data-ttu-id="3aa06-102">Seleccione las SKU que cumplan sus requisitos en función de los tipos de cargas de trabajo, rendimientos, características y Acuerdos de Nivel de Servicio.</span><span class="sxs-lookup"><span data-stu-id="3aa06-102">Select the SKUs that satisfy your requirements based on the types of workloads, throughputs, features, and SLAs.</span></span>
 
 [!INCLUDE [classic SKU](./vpn-gateway-classic-sku-support-include.md)]
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
-###  <a name="workloads"></a>Cargas de trabajo  *de producción* frente a cargas de desarrollo y pruebas
+###  <span data-ttu-id="3aa06-103"><a name="workloads"></a>Cargas de trabajo  *de producción* frente a cargas de desarrollo y pruebas</span><span class="sxs-lookup"><span data-stu-id="3aa06-103"><a name="workloads"></a>Production *vs.* Dev-Test Workloads</span></span>
 
-Dadas las diferencias en los Acuerdos de Nivel de Servicio y los conjuntos de características, se recomiendan las siguientes SKU para la producción *frente a* desarrollo y pruebas:
+<span data-ttu-id="3aa06-104">Dadas las diferencias en los Acuerdos de Nivel de Servicio y los conjuntos de características, se recomiendan las siguientes SKU para la producción *frente a* desarrollo y pruebas:</span><span class="sxs-lookup"><span data-stu-id="3aa06-104">Due to the differences in SLAs and feature sets, we recommend the following SKUs for production *vs.* dev-test:</span></span>
 
-| **Carga de trabajo**                       | **SKU**               |
+| <span data-ttu-id="3aa06-105">**Carga de trabajo**</span><span class="sxs-lookup"><span data-stu-id="3aa06-105">**Workload**</span></span>                       | <span data-ttu-id="3aa06-106">**SKU**</span><span class="sxs-lookup"><span data-stu-id="3aa06-106">**SKUs**</span></span>               |
 | ---                                | ---                    |
-| **Cargas de trabajo de producción, críticas** | VpnGw1, VpnGw2, VpnGw3 |
-| **Desarrollo y pruebas o prueba de concepto**   | Básica                  |
+| <span data-ttu-id="3aa06-107">**Cargas de trabajo de producción, críticas**</span><span class="sxs-lookup"><span data-stu-id="3aa06-107">**Production, critical workloads**</span></span> | <span data-ttu-id="3aa06-108">VpnGw1, VpnGw2, VpnGw3</span><span class="sxs-lookup"><span data-stu-id="3aa06-108">VpnGw1, VpnGw2, VpnGw3</span></span> |
+| <span data-ttu-id="3aa06-109">**Desarrollo y pruebas o prueba de concepto**</span><span class="sxs-lookup"><span data-stu-id="3aa06-109">**Dev-test or proof of concept**</span></span>   | <span data-ttu-id="3aa06-110">Básica</span><span class="sxs-lookup"><span data-stu-id="3aa06-110">Basic</span></span>                  |
 |                                    |                        |
 
-Si continúa utilizando las SKU antiguas, las recomendaciones de SKU de producción son las SKU Estándar y HighPerformance. Para información acerca de las SKU antiguas, consulte [SKU de puerta de enlace (SKU heredadas)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
+<span data-ttu-id="3aa06-111">Si continúa utilizando las SKU antiguas, las recomendaciones de SKU de producción son las SKU Estándar y HighPerformance.</span><span class="sxs-lookup"><span data-stu-id="3aa06-111">If you are using the old SKUs, the production SKU recommendations are Standard and HighPerformance SKUs.</span></span> <span data-ttu-id="3aa06-112">Para información acerca de las SKU antiguas, consulte [SKU de puerta de enlace (SKU heredadas)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).</span><span class="sxs-lookup"><span data-stu-id="3aa06-112">For information on the old SKUs, see [Gateway SKUs (legacy SKUs)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).</span></span>
 
-###  <a name="feature"></a>Conjuntos de características de las SKU de puerta de enlace
+###  <span data-ttu-id="3aa06-113"><a name="feature"></a>Conjuntos de características de las SKU de puerta de enlace</span><span class="sxs-lookup"><span data-stu-id="3aa06-113"><a name="feature"></a>Gateway SKU feature sets</span></span>
 
-Las nueva SKU de puerta de enlace simplifican los conjuntos de características que se ofrecen en las puertas de enlace:
+<span data-ttu-id="3aa06-114">Las nueva SKU de puerta de enlace simplifican los conjuntos de características que se ofrecen en las puertas de enlace:</span><span class="sxs-lookup"><span data-stu-id="3aa06-114">The new gateway SKUs streamline the feature sets offered on the gateways:</span></span>
 
-| **SKU**| **Características**|
+| <span data-ttu-id="3aa06-115">**SKU**</span><span class="sxs-lookup"><span data-stu-id="3aa06-115">**SKU**</span></span>| <span data-ttu-id="3aa06-116">**Características**</span><span class="sxs-lookup"><span data-stu-id="3aa06-116">**Features**</span></span>|
 | ---    | ---         |
-|**Básico**   | **VPN basada en enrutamiento**: 10 túneles con P2S<br><br>**VPN basada en directivas**: (IKEv1): 1 túnel; sin P2S|
-| **VpnGw1, VpnGw2 y VpnGw3** | **VPN basada en enrutamiento**: hasta 30 túneles (*), P2S, BGP, activo-activo, directiva de IPsec/IKE personalizada, coexistencia de VPN y ExpressRoute |
+|<span data-ttu-id="3aa06-117">**Básico**</span><span class="sxs-lookup"><span data-stu-id="3aa06-117">**Basic**</span></span>   | <span data-ttu-id="3aa06-118">**VPN basada en enrutamiento**: 10 túneles con P2S</span><span class="sxs-lookup"><span data-stu-id="3aa06-118">**Route-based VPN**: 10 tunnels with P2S</span></span><br><br><span data-ttu-id="3aa06-119">**VPN basada en directivas**: (IKEv1): 1 túnel; sin P2S</span><span class="sxs-lookup"><span data-stu-id="3aa06-119">**Policy-based VPN**: (IKEv1): 1 tunnel; no P2S</span></span>|
+| <span data-ttu-id="3aa06-120">**VpnGw1, VpnGw2 y VpnGw3**</span><span class="sxs-lookup"><span data-stu-id="3aa06-120">**VpnGw1, VpnGw2, and VpnGw3**</span></span> | <span data-ttu-id="3aa06-121">**VPN basada en enrutamiento**: hasta 30 túneles (*), P2S, BGP, activo-activo, directiva de IPsec/IKE personalizada, coexistencia de VPN y ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="3aa06-121">**Route-based VPN**: up to 30 tunnels (*), P2S, BGP, active-active, custom IPsec/IKE policy, ExpressRoute/VPN co-existence</span></span> |
 |        |             |
 
-(*) Se puede configurar "PolicyBasedTrafficSelectors" para conectar una puerta de enlace de VPN Gateway basada en ruta (VpnGw1, VpnGw2, VpnGw3) a varios dispositivos de firewall locales basados en directivas. Consulte [Connect VPN gateways to multiple on-premises policy-based VPN devices using PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (Conexión de puertas de enlace VPN Gateway a varios dispositivos de VPN locales basados en directivas con PowerShell) para más información.
+<span data-ttu-id="3aa06-122">(*) Se puede configurar "PolicyBasedTrafficSelectors" para conectar una puerta de enlace de VPN Gateway basada en ruta (VpnGw1, VpnGw2, VpnGw3) a varios dispositivos de firewall locales basados en directivas.</span><span class="sxs-lookup"><span data-stu-id="3aa06-122">(*) You can configure "PolicyBasedTrafficSelectors" to connect a route-based VPN gateway (VpnGw1, VpnGw2, VpnGw3) to multiple on-premises policy-based firewall devices.</span></span> <span data-ttu-id="3aa06-123">Consulte [Connect VPN gateways to multiple on-premises policy-based VPN devices using PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (Conexión de puertas de enlace VPN Gateway a varios dispositivos de VPN locales basados en directivas con PowerShell) para más información.</span><span class="sxs-lookup"><span data-stu-id="3aa06-123">Refer to [Connect VPN gateways to multiple on-premises policy-based VPN devices using PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) for details.</span></span>
 
-###  <a name="resize"></a>Cambio de tamaño de las SKU de puerta de enlace
+###  <span data-ttu-id="3aa06-124"><a name="resize"></a>Cambio de tamaño de las SKU de puerta de enlace</span><span class="sxs-lookup"><span data-stu-id="3aa06-124"><a name="resize"></a>Resizing gateway SKUs</span></span>
 
-1. Puede cambiar el tamaño entre las SKU de VpnGw1, VpnGw2 y VpnGw3.
-2. Si trabaja con las SKU de puerta de enlace antiguas, puede cambiar el tamaño entre las SKU Básica, Estándar y HighPerformance.
-2. Sin embargo **no puede** cambiar el tamaño de las SKU de Básica/Estándar/HighPerformance a las nuevas SKU de VpnGw1/VpnGw2/VpnGw3. En su lugar, debe [migrar](#migrate) a las SKU nuevas.
+1. <span data-ttu-id="3aa06-125">Puede cambiar el tamaño entre las SKU de VpnGw1, VpnGw2 y VpnGw3.</span><span class="sxs-lookup"><span data-stu-id="3aa06-125">You can resize between VpnGw1, VpnGw2, and VpnGw3 SKUs.</span></span>
+2. <span data-ttu-id="3aa06-126">Si trabaja con las SKU de puerta de enlace antiguas, puede cambiar el tamaño entre las SKU Básica, Estándar y HighPerformance.</span><span class="sxs-lookup"><span data-stu-id="3aa06-126">When working with the old gateway SKUs, you can resize between Basic, Standard, and HighPerformance SKUs.</span></span>
+2. <span data-ttu-id="3aa06-127">Sin embargo **no puede** cambiar el tamaño de las SKU de Básica/Estándar/HighPerformance a las nuevas SKU de VpnGw1/VpnGw2/VpnGw3.</span><span class="sxs-lookup"><span data-stu-id="3aa06-127">You **cannot** resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/VpnGw2/VpnGw3 SKUs.</span></span> <span data-ttu-id="3aa06-128">En su lugar, debe [migrar](#migrate) a las SKU nuevas.</span><span class="sxs-lookup"><span data-stu-id="3aa06-128">You must, instead, [migrate](#migrate) to the new SKUs.</span></span>
 
-###  <a name="migrate"></a>Migración de las SKU antiguas a las nuevas
+###  <span data-ttu-id="3aa06-129"><a name="migrate"></a>Migración de las SKU antiguas a las nuevas</span><span class="sxs-lookup"><span data-stu-id="3aa06-129"><a name="migrate"></a>Migrating from old SKUs to the new SKUs</span></span>
 
 [!INCLUDE [Migrate SKU](./vpn-gateway-migrate-legacy-sku-include.md)]

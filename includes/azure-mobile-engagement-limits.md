@@ -1,11 +1,11 @@
-| Recurso | Límite máximo |
+| <span data-ttu-id="b9912-101">Recurso</span><span class="sxs-lookup"><span data-stu-id="b9912-101">Resource</span></span> | <span data-ttu-id="b9912-102">Límite máximo</span><span class="sxs-lookup"><span data-stu-id="b9912-102">Maximum Limit</span></span> |
 | --- | --- |
-| Usuarios de colección de aplicaciones |5 por colección de aplicaciones |
-| Puntos de datos por término medio |200 por usuario activo por día |
-| Conjunto de información de la aplicación por término medio |50 por usuario activo por día |
-| Mensajes insertados por término medio |20 por usuario activo por día |
-| Segmentos |100 por aplicación |
-| Criterios por segmento |10 |
-| Campañas de inserción activas |50 por aplicación |
-| Número total de campañas de inserción (activas y completadas) |1000 por aplicación |
+| <span data-ttu-id="b9912-103">Usuarios de colección de aplicaciones</span><span class="sxs-lookup"><span data-stu-id="b9912-103">App Collection Users</span></span> |<span data-ttu-id="b9912-104">5 por colección de aplicaciones</span><span class="sxs-lookup"><span data-stu-id="b9912-104">5 per App Collection</span></span> |
+| <span data-ttu-id="b9912-105">Puntos de datos por término medio</span><span class="sxs-lookup"><span data-stu-id="b9912-105">Average Data points</span></span> |<span data-ttu-id="b9912-106">200 por usuario activo por día</span><span class="sxs-lookup"><span data-stu-id="b9912-106">200 per Active User/Day</span></span> |
+| <span data-ttu-id="b9912-107">Conjunto de información de la aplicación por término medio</span><span class="sxs-lookup"><span data-stu-id="b9912-107">Average App-Info set</span></span> |<span data-ttu-id="b9912-108">50 por usuario activo por día</span><span class="sxs-lookup"><span data-stu-id="b9912-108">50 per Active User/Day</span></span> |
+| <span data-ttu-id="b9912-109">Mensajes insertados por término medio</span><span class="sxs-lookup"><span data-stu-id="b9912-109">Average Messages pushed</span></span> |<span data-ttu-id="b9912-110">20 por usuario activo por día</span><span class="sxs-lookup"><span data-stu-id="b9912-110">20 per Active User/Day</span></span> |
+| <span data-ttu-id="b9912-111">Segmentos</span><span class="sxs-lookup"><span data-stu-id="b9912-111">Segments</span></span> |<span data-ttu-id="b9912-112">100 por aplicación</span><span class="sxs-lookup"><span data-stu-id="b9912-112">100 per app</span></span> |
+| <span data-ttu-id="b9912-113">Criterios por segmento</span><span class="sxs-lookup"><span data-stu-id="b9912-113">Criteria per segment</span></span> |<span data-ttu-id="b9912-114">10</span><span class="sxs-lookup"><span data-stu-id="b9912-114">10</span></span> |
+| <span data-ttu-id="b9912-115">Campañas de inserción activas</span><span class="sxs-lookup"><span data-stu-id="b9912-115">Active Push Campaigns</span></span> |<span data-ttu-id="b9912-116">50 por aplicación</span><span class="sxs-lookup"><span data-stu-id="b9912-116">50 per app</span></span> |
+| <span data-ttu-id="b9912-117">Número total de campañas de inserción (activas y completadas)</span><span class="sxs-lookup"><span data-stu-id="b9912-117">Total Push Campaigns (includes Active & Completed)</span></span> |<span data-ttu-id="b9912-118">1000 por aplicación</span><span class="sxs-lookup"><span data-stu-id="b9912-118">1000 per app</span></span> |
 

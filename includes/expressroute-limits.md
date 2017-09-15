@@ -1,27 +1,27 @@
-#### <a name="expressroute-limits"></a>Límites de ExpressRoute
-Los límites siguientes se aplican a los recursos de ExpressRoute por suscripción.
+#### <a name="expressroute-limits"></a><span data-ttu-id="cfb3c-101">Límites de ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-101">ExpressRoute Limits</span></span>
+<span data-ttu-id="cfb3c-102">Los límites siguientes se aplican a los recursos de ExpressRoute por suscripción.</span><span class="sxs-lookup"><span data-stu-id="cfb3c-102">The following limits apply to ExpressRoute resources per subscription.</span></span>
 
-| Recurso | Límite predeterminado |
+| <span data-ttu-id="cfb3c-103">Recurso</span><span class="sxs-lookup"><span data-stu-id="cfb3c-103">Resource</span></span> | <span data-ttu-id="cfb3c-104">Límite predeterminado</span><span class="sxs-lookup"><span data-stu-id="cfb3c-104">Default Limit</span></span> |
 | --- | --- |
-| Circuitos ExpressRoute por suscripción |10 |
-| Circuitos ExpressRoute por región por suscripción para ARM |10 |
-| Número máximo de rutas para emparejamiento privado de Azure con estándar ExpressRoute |4.000 |
-| Número máximo de rutas para emparejamiento privado de Azure con complemento premium ExpressRoute |10.000 |
-| Número máximo de rutas para emparejamiento público de Azure con estándar ExpressRoute |200 |
-| Número máximo de rutas para emparejamiento público de Azure con complemento premium ExpressRoute |200 |
-| Número máximo de rutas para emparejamiento de Microsoft de Azure con estándar ExpressRoute |200 |
-| Número máximo de rutas para emparejamiento de Microsoft de Azure con complemento premium ExpressRoute |200 |
-| Número de vínculos de red virtual permitidos por circuito ExpressRoute |consulte la tabla siguiente |
+| <span data-ttu-id="cfb3c-105">Circuitos ExpressRoute por suscripción</span><span class="sxs-lookup"><span data-stu-id="cfb3c-105">ExpressRoute circuits per subscription</span></span> |<span data-ttu-id="cfb3c-106">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-106">10</span></span> |
+| <span data-ttu-id="cfb3c-107">Circuitos ExpressRoute por región por suscripción para ARM</span><span class="sxs-lookup"><span data-stu-id="cfb3c-107">ExpressRoute circuits per region per subscription for ARM</span></span> |<span data-ttu-id="cfb3c-108">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-108">10</span></span> |
+| <span data-ttu-id="cfb3c-109">Número máximo de rutas para emparejamiento privado de Azure con estándar ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-109">Maximum number of routes for Azure private peering with ExpressRoute standard</span></span> |<span data-ttu-id="cfb3c-110">4.000</span><span class="sxs-lookup"><span data-stu-id="cfb3c-110">4,000</span></span> |
+| <span data-ttu-id="cfb3c-111">Número máximo de rutas para emparejamiento privado de Azure con complemento premium ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-111">Maximum number of routes for Azure private peering with ExpressRoute premium add-on</span></span> |<span data-ttu-id="cfb3c-112">10.000</span><span class="sxs-lookup"><span data-stu-id="cfb3c-112">10,000</span></span> |
+| <span data-ttu-id="cfb3c-113">Número máximo de rutas para emparejamiento público de Azure con estándar ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-113">Maximum number of routes for Azure public peering with ExpressRoute standard</span></span> |<span data-ttu-id="cfb3c-114">200</span><span class="sxs-lookup"><span data-stu-id="cfb3c-114">200</span></span> |
+| <span data-ttu-id="cfb3c-115">Número máximo de rutas para emparejamiento público de Azure con complemento premium ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-115">Maximum number of routes for Azure public peering with ExpressRoute premium add-on</span></span> |<span data-ttu-id="cfb3c-116">200</span><span class="sxs-lookup"><span data-stu-id="cfb3c-116">200</span></span> |
+| <span data-ttu-id="cfb3c-117">Número máximo de rutas para emparejamiento de Microsoft de Azure con estándar ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-117">Maximum number of routes for Azure Microsoft peering with ExpressRoute standard</span></span> |<span data-ttu-id="cfb3c-118">200</span><span class="sxs-lookup"><span data-stu-id="cfb3c-118">200</span></span> |
+| <span data-ttu-id="cfb3c-119">Número máximo de rutas para emparejamiento de Microsoft de Azure con complemento premium ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-119">Maximum number of routes for Azure Microsoft peering with ExpressRoute premium add-on</span></span> |<span data-ttu-id="cfb3c-120">200</span><span class="sxs-lookup"><span data-stu-id="cfb3c-120">200</span></span> |
+| <span data-ttu-id="cfb3c-121">Número de vínculos de red virtual permitidos por circuito ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-121">Number of virtual network links allowed per ExpressRoute circuit</span></span> |<span data-ttu-id="cfb3c-122">consulte la tabla siguiente</span><span class="sxs-lookup"><span data-stu-id="cfb3c-122">see table below</span></span> |
 
-#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Número de redes virtuales por circuito ExpressRoute
-| **Tamaño del circuito** | **Número de vínculos de red virtual para estándar** | **Número de vínculos de red virtual con complemento Premium** |
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><span data-ttu-id="cfb3c-123">Número de redes virtuales por circuito ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="cfb3c-123">Number of Virtual Networks per ExpressRoute circuit</span></span>
+| <span data-ttu-id="cfb3c-124">**Tamaño del circuito**</span><span class="sxs-lookup"><span data-stu-id="cfb3c-124">**Circuit Size**</span></span> | <span data-ttu-id="cfb3c-125">**Número de vínculos de red virtual para estándar**</span><span class="sxs-lookup"><span data-stu-id="cfb3c-125">**Number of VNet links for standard**</span></span> | <span data-ttu-id="cfb3c-126">**Número de vínculos de red virtual con complemento Premium**</span><span class="sxs-lookup"><span data-stu-id="cfb3c-126">**Number of VNet Links with Premium add-on**</span></span> |
 | --- | --- | --- |
-| 50 Mbps |10 |20 | |
-| 100 Mbps |10 |25 |
-| 200 Mbps |10 |25 |
-| 500 Mbps |10 |40 |
-| 1 Gbps |10 |50 |
-| 2 Gbps |10 |60 |
-| 5 Gbps |10 |75 |
-| 10 Gbps |10 |100 |
+| <span data-ttu-id="cfb3c-127">50 Mbps</span><span class="sxs-lookup"><span data-stu-id="cfb3c-127">50 Mbps</span></span> |<span data-ttu-id="cfb3c-128">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-128">10</span></span> |<span data-ttu-id="cfb3c-129">20 |</span><span class="sxs-lookup"><span data-stu-id="cfb3c-129">20</span></span> |
+| <span data-ttu-id="cfb3c-130">100 Mbps</span><span class="sxs-lookup"><span data-stu-id="cfb3c-130">100 Mbps</span></span> |<span data-ttu-id="cfb3c-131">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-131">10</span></span> |<span data-ttu-id="cfb3c-132">25</span><span class="sxs-lookup"><span data-stu-id="cfb3c-132">25</span></span> |
+| <span data-ttu-id="cfb3c-133">200 Mbps</span><span class="sxs-lookup"><span data-stu-id="cfb3c-133">200 Mbps</span></span> |<span data-ttu-id="cfb3c-134">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-134">10</span></span> |<span data-ttu-id="cfb3c-135">25</span><span class="sxs-lookup"><span data-stu-id="cfb3c-135">25</span></span> |
+| <span data-ttu-id="cfb3c-136">500 Mbps</span><span class="sxs-lookup"><span data-stu-id="cfb3c-136">500 Mbps</span></span> |<span data-ttu-id="cfb3c-137">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-137">10</span></span> |<span data-ttu-id="cfb3c-138">40</span><span class="sxs-lookup"><span data-stu-id="cfb3c-138">40</span></span> |
+| <span data-ttu-id="cfb3c-139">1 Gbps</span><span class="sxs-lookup"><span data-stu-id="cfb3c-139">1 Gbps</span></span> |<span data-ttu-id="cfb3c-140">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-140">10</span></span> |<span data-ttu-id="cfb3c-141">50</span><span class="sxs-lookup"><span data-stu-id="cfb3c-141">50</span></span> |
+| <span data-ttu-id="cfb3c-142">2 Gbps</span><span class="sxs-lookup"><span data-stu-id="cfb3c-142">2 Gbps</span></span> |<span data-ttu-id="cfb3c-143">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-143">10</span></span> |<span data-ttu-id="cfb3c-144">60</span><span class="sxs-lookup"><span data-stu-id="cfb3c-144">60</span></span> |
+| <span data-ttu-id="cfb3c-145">5 Gbps</span><span class="sxs-lookup"><span data-stu-id="cfb3c-145">5 Gbps</span></span> |<span data-ttu-id="cfb3c-146">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-146">10</span></span> |<span data-ttu-id="cfb3c-147">75</span><span class="sxs-lookup"><span data-stu-id="cfb3c-147">75</span></span> |
+| <span data-ttu-id="cfb3c-148">10 Gbps</span><span class="sxs-lookup"><span data-stu-id="cfb3c-148">10 Gbps</span></span> |<span data-ttu-id="cfb3c-149">10</span><span class="sxs-lookup"><span data-stu-id="cfb3c-149">10</span></span> |<span data-ttu-id="cfb3c-150">100</span><span class="sxs-lookup"><span data-stu-id="cfb3c-150">100</span></span> |
 

@@ -1,16 +1,16 @@
 
-**Objective-C**:
+<span data-ttu-id="67488-101">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="67488-101">**Objective-C**:</span></span>
 
-1. En **QSAppDelegate.m**, importe el SDK de iOS y **QSTodoService.h**:
+1. <span data-ttu-id="67488-102">En **QSAppDelegate.m**, importe el SDK de iOS y **QSTodoService.h**:</span><span class="sxs-lookup"><span data-stu-id="67488-102">In **QSAppDelegate.m**, import the iOS SDK and **QSTodoService.h**:</span></span>
    
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
-2. En `didFinishLaunchingWithOptions`, en **QSAppDelegate.m**, inserte las líneas siguientes justo antes de `return YES;`:
+2. <span data-ttu-id="67488-103">En `didFinishLaunchingWithOptions`, en **QSAppDelegate.m**, inserte las líneas siguientes justo antes de `return YES;`:</span><span class="sxs-lookup"><span data-stu-id="67488-103">In `didFinishLaunchingWithOptions` in **QSAppDelegate.m**, insert the following lines right before `return YES;`:</span></span>
    
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. En **QSAppDelegate.m**, agregue los métodos de controlador siguientes. Ahora su aplicación está actualizada para que sea compatible con las notificaciones push. 
+3. <span data-ttu-id="67488-104">En **QSAppDelegate.m**, agregue los métodos de controlador siguientes.</span><span class="sxs-lookup"><span data-stu-id="67488-104">In **QSAppDelegate.m**, add the following handler methods.</span></span> <span data-ttu-id="67488-105">Ahora su aplicación está actualizada para que sea compatible con las notificaciones push.</span><span class="sxs-lookup"><span data-stu-id="67488-105">Your app is now updated to support push notifications.</span></span> 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -77,17 +77,17 @@
    
         }
 
-**Swift**:
+<span data-ttu-id="67488-106">**Swift**:</span><span class="sxs-lookup"><span data-stu-id="67488-106">**Swift**:</span></span>
 
-1. Agregue el archivo **ClientManager.swift** con el siguiente contenido. Reemplace *%AppUrl%* por la dirección URL del back-end de la aplicación móvil de Azure.
+1. <span data-ttu-id="67488-107">Agregue el archivo **ClientManager.swift** con el siguiente contenido.</span><span class="sxs-lookup"><span data-stu-id="67488-107">Add file **ClientManager.swift** with the following contents.</span></span> <span data-ttu-id="67488-108">Reemplace *%AppUrl%* por la dirección URL del back-end de la aplicación móvil de Azure.</span><span class="sxs-lookup"><span data-stu-id="67488-108">Replace *%AppUrl%* with the URL of the Azure Mobile App backend.</span></span>
    
         class ClientManager {
             static let sharedClient = MSClient(applicationURLString: "%AppUrl%")
         }
-2. En **ToDoTableViewController.swift**, reemplace la línea `let client` que inicializa un `MSClient` por esta línea:
+2. <span data-ttu-id="67488-109">En **ToDoTableViewController.swift**, reemplace la línea `let client` que inicializa un `MSClient` por esta línea:</span><span class="sxs-lookup"><span data-stu-id="67488-109">In **ToDoTableViewController.swift**, replace the `let client` line that initializes an `MSClient` with this line:</span></span>
    
         let client = ClientManager.sharedClient
-3. En **AppDelegate.swift**, reemplace el cuerpo de `func application` de la siguiente manera:
+3. <span data-ttu-id="67488-110">En **AppDelegate.swift**, reemplace el cuerpo de `func application` de la siguiente manera:</span><span class="sxs-lookup"><span data-stu-id="67488-110">In **AppDelegate.swift**, replace the body of `func application` as follows:</span></span>
    
         func application(application: UIApplication,
           didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. En **AppDelegate.swift**, agregue los métodos de controlador siguientes. Ahora su aplicación está actualizada para que sea compatible con las notificaciones push.
+4. <span data-ttu-id="67488-111">En **AppDelegate.swift**, agregue los métodos de controlador siguientes.</span><span class="sxs-lookup"><span data-stu-id="67488-111">In **AppDelegate.swift**, add the following handler methods.</span></span> <span data-ttu-id="67488-112">Ahora su aplicación está actualizada para que sea compatible con las notificaciones push.</span><span class="sxs-lookup"><span data-stu-id="67488-112">Your app is now updated to support push notifications.</span></span>
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

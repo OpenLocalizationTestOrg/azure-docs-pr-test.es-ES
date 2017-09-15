@@ -2,41 +2,41 @@
 
 ![Máquinas virtuales en un servicio en la nube independiente](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
 
-Si coloca las máquinas virtuales en una red virtual, puede decidir cuántos servicios en la nube desea utilizar para aprovechar el equilibrio de cargas y los conjuntos de disponibilidad. Además, puede organizar las máquinas virtuales en subredes de la misma manera que en red local y conectar la red virtual a su red local. Este es un ejemplo:
+<span data-ttu-id="c24f8-102">Si coloca las máquinas virtuales en una red virtual, puede decidir cuántos servicios en la nube desea utilizar para aprovechar el equilibrio de cargas y los conjuntos de disponibilidad.</span><span class="sxs-lookup"><span data-stu-id="c24f8-102">If you place your virtual machines in a virtual network, you can decide how many cloud services you want to use for load balancing and availability sets.</span></span> <span data-ttu-id="c24f8-103">Además, puede organizar las máquinas virtuales en subredes de la misma manera que en red local y conectar la red virtual a su red local.</span><span class="sxs-lookup"><span data-stu-id="c24f8-103">Additionally, you can organize the virtual machines on subnets in the same way as your on-premises network and connect the virtual network to your on-premises network.</span></span> <span data-ttu-id="c24f8-104">Este es un ejemplo:</span><span class="sxs-lookup"><span data-stu-id="c24f8-104">Here's an example:</span></span>
 
 ![Máquinas virtuales en una red virtual](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
 
-Las redes virtuales son el método recomendado para conectar máquinas virtuales en Azure. La práctica recomendada es configurar cada nivel de la aplicación en un servicio de nube diferente. Sin embargo, puede que necesite combinar algunas máquinas virtuales de diferentes niveles de aplicaciones en el mismo servicio en la nube para no superar el número máximo de 200 servicios en la nube por suscripción. Para revisar este y otros límites, consulte [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../articles/azure-subscription-service-limits.md).
+<span data-ttu-id="c24f8-106">Las redes virtuales son el método recomendado para conectar máquinas virtuales en Azure.</span><span class="sxs-lookup"><span data-stu-id="c24f8-106">Virtual networks are the recommended way to connect virtual machines in Azure.</span></span> <span data-ttu-id="c24f8-107">La práctica recomendada es configurar cada nivel de la aplicación en un servicio de nube diferente.</span><span class="sxs-lookup"><span data-stu-id="c24f8-107">The best practice is to configure each tier of your application in a separate cloud service.</span></span> <span data-ttu-id="c24f8-108">Sin embargo, puede que necesite combinar algunas máquinas virtuales de diferentes niveles de aplicaciones en el mismo servicio en la nube para no superar el número máximo de 200 servicios en la nube por suscripción.</span><span class="sxs-lookup"><span data-stu-id="c24f8-108">However, you may need to combine some virtual machines from different application tiers into the same cloud service to remain within the maximum of 200 cloud services per subscription.</span></span> <span data-ttu-id="c24f8-109">Para revisar este y otros límites, consulte [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../articles/azure-subscription-service-limits.md).</span><span class="sxs-lookup"><span data-stu-id="c24f8-109">To review this and other limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](../articles/azure-subscription-service-limits.md).</span></span>
 
-## <a name="connect-vms-in-a-virtual-network"></a>Conexión de máquinas virtuales en una red virtual
-Para conectar máquinas virtuales en una red virtual:
+## <a name="connect-vms-in-a-virtual-network"></a><span data-ttu-id="c24f8-110">Conexión de máquinas virtuales en una red virtual</span><span class="sxs-lookup"><span data-stu-id="c24f8-110">Connect VMs in a virtual network</span></span>
+<span data-ttu-id="c24f8-111">Para conectar máquinas virtuales en una red virtual:</span><span class="sxs-lookup"><span data-stu-id="c24f8-111">To connect virtual machines in a virtual network:</span></span>
 
-1. Crear la red virtual en [Azure Portal](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) y especifique "implementación clásica".
-2. Cree el conjunto de servicios en la nube para la implementación de forma que refleje el diseño de los conjuntos de disponibilidad y del equilibrio de carga. En Azure Portal, haga clic en **Nuevo > Compute > Servicio en la nube** en cada servicio en la nube.
+1. <span data-ttu-id="c24f8-112">Crear la red virtual en [Azure Portal](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) y especifique "implementación clásica".</span><span class="sxs-lookup"><span data-stu-id="c24f8-112">Create the virtual network in the [Azure portal](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) and specify 'classic deployment'.</span></span>
+2. <span data-ttu-id="c24f8-113">Cree el conjunto de servicios en la nube para la implementación de forma que refleje el diseño de los conjuntos de disponibilidad y del equilibrio de carga.</span><span class="sxs-lookup"><span data-stu-id="c24f8-113">Create the set of cloud services for your deployment to reflect your design for availability sets and load balancing.</span></span> <span data-ttu-id="c24f8-114">En Azure Portal, haga clic en **Nuevo > Compute > Servicio en la nube** en cada servicio en la nube.</span><span class="sxs-lookup"><span data-stu-id="c24f8-114">In the Azure portal, click **New > Compute > Cloud service** for each cloud service.</span></span>
 
-  Cuando rellene los detalles de servicio en la nube, elija el mismo _grupo de recursos_ utilizado con la red virtual.
+  <span data-ttu-id="c24f8-115">Cuando rellene los detalles de servicio en la nube, elija el mismo _grupo de recursos_ utilizado con la red virtual.</span><span class="sxs-lookup"><span data-stu-id="c24f8-115">As you fill out the cloud service details, choose the same _resource group_ used with the virtual network.</span></span>
 
-3. Para crear una máquina virtual nueva, haga clic en **Nuevo > Proceso** y, después, seleccione la imagen de máquina virtual apropiada en **Aplicaciones destacadas**.
+3. <span data-ttu-id="c24f8-116">Para crear una máquina virtual nueva, haga clic en **Nuevo > Proceso** y, después, seleccione la imagen de máquina virtual apropiada en **Aplicaciones destacadas**.</span><span class="sxs-lookup"><span data-stu-id="c24f8-116">To create each new virtual machine, click **New > Compute**, then select the appropriate VM image from the **Featured apps**.</span></span>
 
-  En la hoja **Básico** de la máquina virtual, elija el mismo _grupo de recursos_ que se ha utilizado con la red virtual.
+  <span data-ttu-id="c24f8-117">En la hoja **Básico** de la máquina virtual, elija el mismo _grupo de recursos_ que se ha utilizado con la red virtual.</span><span class="sxs-lookup"><span data-stu-id="c24f8-117">In the VM **Basics** blade, choose the same _resource group_ used with the virtual network.</span></span>
 
   ![Hoja Básico de la máquina virtual cuando se usa una red virtual](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_VN.png)
 
-4. Cuando rellene los datos de **Configuración** de la máquina virtual, elija el valor correcto _Servicio en la nube_ o _Red virtual_ para la máquina virtual.
+4. <span data-ttu-id="c24f8-119">Cuando rellene los datos de **Configuración** de la máquina virtual, elija el valor correcto _Servicio en la nube_ o _Red virtual_ para la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="c24f8-119">As you fill out the VM **Settings**, choose the correct _Cloud service_ or _virtual network_ for the VM.</span></span>
 
-  Azure seleccionará el otro elemento en función de lo que haya seleccionado.
+  <span data-ttu-id="c24f8-120">Azure seleccionará el otro elemento en función de lo que haya seleccionado.</span><span class="sxs-lookup"><span data-stu-id="c24f8-120">Azure will select the other item based on your selection.</span></span>
 
   ![Hoja Configuración de la máquina virtual cuando se usa una red virtual](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_VN.png)
 
 
-## <a name="connect-vms-in-a-standalone-cloud-service"></a>Conexión de máquinas virtuales en un servicio en la nube independiente
-Para conectar máquinas virtuales en un servicio en la nube independiente:
+## <a name="connect-vms-in-a-standalone-cloud-service"></a><span data-ttu-id="c24f8-122">Conexión de máquinas virtuales en un servicio en la nube independiente</span><span class="sxs-lookup"><span data-stu-id="c24f8-122">Connect VMs in a standalone cloud service</span></span>
+<span data-ttu-id="c24f8-123">Para conectar máquinas virtuales en un servicio en la nube independiente:</span><span class="sxs-lookup"><span data-stu-id="c24f8-123">To connect virtual machines in a standalone cloud service:</span></span>
 
-1. Cree el servicio en la nube en [Azure Portal](http://portal.azure.com). Haga clic en **Nuevo > Proceso > Servicio en la nube**. Como alternativa, puede crear el servicio en la nube para su implementación cuando cree la primera máquina virtual.
-2. Cuando cree las máquinas virtuales, elija el mismo grupo de recursos utilizado con el servicio en la nube.
+1. <span data-ttu-id="c24f8-124">Cree el servicio en la nube en [Azure Portal](http://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="c24f8-124">Create the cloud service in the [Azure portal](http://portal.azure.com).</span></span> <span data-ttu-id="c24f8-125">Haga clic en **Nuevo > Proceso > Servicio en la nube**.</span><span class="sxs-lookup"><span data-stu-id="c24f8-125">Click **New > Compute > Cloud service**.</span></span> <span data-ttu-id="c24f8-126">Como alternativa, puede crear el servicio en la nube para su implementación cuando cree la primera máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="c24f8-126">Or, you can create the cloud service for your deployment when you create your first virtual machine.</span></span>
+2. <span data-ttu-id="c24f8-127">Cuando cree las máquinas virtuales, elija el mismo grupo de recursos utilizado con el servicio en la nube.</span><span class="sxs-lookup"><span data-stu-id="c24f8-127">When you create the virtual machines, choose the same resource group used with the cloud service.</span></span>
 
   ![Agregar una máquina virtual a un servicio de nube existente](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_SA.png)
 
-3.  Cuando rellene los detalles de la máquina virtual, elija el nombre del servicio en la nube que creó en el primer paso.
+3.  <span data-ttu-id="c24f8-129">Cuando rellene los detalles de la máquina virtual, elija el nombre del servicio en la nube que creó en el primer paso.</span><span class="sxs-lookup"><span data-stu-id="c24f8-129">As you fill out the VM details, choose the name of cloud service created in the first step.</span></span>
 
   ![Selección de un servicio en la nube para una máquina virtual](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_SA.png)

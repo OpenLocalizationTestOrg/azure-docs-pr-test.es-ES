@@ -1,17 +1,17 @@
 > [!div class="op_single_selector"]
-> * [Dispositivo: Servicio Node.js: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
-> * [Dispositivo: Servicio Node.js: C#](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
-> * [Dispositivo: Servicio de Java: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
+> * [<span data-ttu-id="7258c-101">Dispositivo: Servicio Node.js: Node.js</span><span class="sxs-lookup"><span data-stu-id="7258c-101">Device: Node.js Service: Node.js</span></span>](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
+> * [<span data-ttu-id="7258c-102">Dispositivo: Servicio Node.js: C#</span><span class="sxs-lookup"><span data-stu-id="7258c-102">Device: Node.js Service: C#</span></span>](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
+> * [<span data-ttu-id="7258c-103">Dispositivo: Servicio de Java: Java</span><span class="sxs-lookup"><span data-stu-id="7258c-103">Device: Java Service: Java</span></span>](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 
-Las aplicaciones back-end pueden usar primitivos de Azure IoT Hub, por ejemplo, [dispositivos gemelos][lnk-devtwin] y [métodos directos][lnk-c2dmethod], para iniciar y supervisar de forma remota las acciones de administración de dispositivos en los dispositivos. Este tutorial muestra cómo una aplicación back-end y un dispositivo pueden trabajar juntos para iniciar y supervisar el reinicio remoto de un dispositivo mediante IoT Hub.
+<span data-ttu-id="7258c-104">Las aplicaciones back-end pueden usar primitivos de Azure IoT Hub, por ejemplo, [dispositivos gemelos][lnk-devtwin] y [métodos directos][lnk-c2dmethod], para iniciar y supervisar de forma remota las acciones de administración de dispositivos en los dispositivos.</span><span class="sxs-lookup"><span data-stu-id="7258c-104">Back-end apps can use Azure IoT Hub primitives, such as [device twin][lnk-devtwin] and [direct methods][lnk-c2dmethod], to remotely start and monitor device management actions on devices.</span></span> <span data-ttu-id="7258c-105">Este tutorial muestra cómo una aplicación back-end y un dispositivo pueden trabajar juntos para iniciar y supervisar el reinicio remoto de un dispositivo mediante IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="7258c-105">This tutorial shows you how a back-end app and a device app can work together to initiate and monitor a remote device reboot using IoT Hub.</span></span>
 
-Use un método directo para iniciar acciones de administración de dispositivos (por ejemplo, reinicio, restablecimiento de fábrica y actualización de firmware) desde una aplicación back-end en la nube. El dispositivo es responsable de:
+<span data-ttu-id="7258c-106">Use un método directo para iniciar acciones de administración de dispositivos (por ejemplo, reinicio, restablecimiento de fábrica y actualización de firmware) desde una aplicación back-end en la nube.</span><span class="sxs-lookup"><span data-stu-id="7258c-106">Use a direct method to initiate device management actions (such as reboot, factory reset, and firmware update) from a back-end app in the cloud.</span></span> <span data-ttu-id="7258c-107">El dispositivo es responsable de:</span><span class="sxs-lookup"><span data-stu-id="7258c-107">The device is responsible for:</span></span>
 
-* Controlar la solicitud del método enviada desde IoT Hub.
-* Iniciar la acción específica del dispositivo correspondiente en el dispositivo.
-* Proporcionar actualizaciones de estado mediante las *propiedades notificadas* a IoT Hub.
+* <span data-ttu-id="7258c-108">Controlar la solicitud del método enviada desde IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="7258c-108">Handling the method request sent from IoT Hub.</span></span>
+* <span data-ttu-id="7258c-109">Iniciar la acción específica del dispositivo correspondiente en el dispositivo.</span><span class="sxs-lookup"><span data-stu-id="7258c-109">Initiating the corresponding device-specific action on the device.</span></span>
+* <span data-ttu-id="7258c-110">Proporcionar actualizaciones de estado mediante las *propiedades notificadas* a IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="7258c-110">Providing status updates through *reported properties* to IoT Hub.</span></span>
 
-Puede usar una aplicación de back-end en la nube para ejecutar consultas de dispositivos gemelos para informar sobre el progreso de las acciones de administración de los dispositivos.
+<span data-ttu-id="7258c-111">Puede usar una aplicación de back-end en la nube para ejecutar consultas de dispositivos gemelos para informar sobre el progreso de las acciones de administración de los dispositivos.</span><span class="sxs-lookup"><span data-stu-id="7258c-111">You can use a back-end app in the cloud to run device twin queries to report on the progress of your device management actions.</span></span>
 
 [lnk-devtwin]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

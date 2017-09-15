@@ -1,6 +1,6 @@
-|  | **Implementación clásica** | **Implementación del Administrador de recursos** |
+|  | <span data-ttu-id="b55f1-101">**Implementación clásica**</span><span class="sxs-lookup"><span data-stu-id="b55f1-101">**Classic Deployment**</span></span> | <span data-ttu-id="b55f1-102">**Implementación del Administrador de recursos**</span><span class="sxs-lookup"><span data-stu-id="b55f1-102">**Resource Manager Deployment**</span></span> |
 | --- | --- | --- |
-| **Portal clásico** |No compatible |No compatible |
-| **Portal de Azure** |No compatible |No compatible |
-| **PowerShell** |[Artículo](../articles/expressroute/expressroute-howto-coexist-classic.md) |[Artículo](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
+| <span data-ttu-id="b55f1-103">**Portal clásico**</span><span class="sxs-lookup"><span data-stu-id="b55f1-103">**Classic Portal**</span></span> |<span data-ttu-id="b55f1-104">No compatible</span><span class="sxs-lookup"><span data-stu-id="b55f1-104">Not Supported</span></span> |<span data-ttu-id="b55f1-105">No compatible</span><span class="sxs-lookup"><span data-stu-id="b55f1-105">Not Supported</span></span> |
+| <span data-ttu-id="b55f1-106">**Portal de Azure**</span><span class="sxs-lookup"><span data-stu-id="b55f1-106">**Azure Portal**</span></span> |<span data-ttu-id="b55f1-107">No compatible</span><span class="sxs-lookup"><span data-stu-id="b55f1-107">Not Supported</span></span> |<span data-ttu-id="b55f1-108">No compatible</span><span class="sxs-lookup"><span data-stu-id="b55f1-108">Not Supported</span></span> |
+| <span data-ttu-id="b55f1-109">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="b55f1-109">**PowerShell**</span></span> |[<span data-ttu-id="b55f1-110">Artículo</span><span class="sxs-lookup"><span data-stu-id="b55f1-110">Article</span></span>](../articles/expressroute/expressroute-howto-coexist-classic.md) |[<span data-ttu-id="b55f1-111">Artículo</span><span class="sxs-lookup"><span data-stu-id="b55f1-111">Article</span></span>](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
 
