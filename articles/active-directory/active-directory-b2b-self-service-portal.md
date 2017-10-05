@@ -1,0 +1,49 @@
+---
+title: "Portal de suscripción sin intervención del administrador para la colaboración B2B de Azure Active Directory | Microsoft Docs"
+description: "La colaboración con Azure Active Directory B2B posibilita las relaciones entre empresas al permitir que los asociados empresariales accedan de forma selectiva a las aplicaciones corporativas."
+services: active-directory
+documentationcenter: 
+author: sasubram
+manager: femila
+editor: 
+tags: 
+ms.assetid: 
+ms.service: active-directory
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: identity
+ms.date: 05/24/2017
+ms.author: sasubram
+ms.openlocfilehash: 307373c75bbb87cec683f7a3097f8f159c9d5e61
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a><span data-ttu-id="093ee-103">Portal de autoservicio para el registro en la colaboración B2B de Azure AD</span><span class="sxs-lookup"><span data-stu-id="093ee-103">Self-service portal for Azure AD B2B collaboration sign-up</span></span>
+
+<span data-ttu-id="093ee-104">Los clientes pueden hacer muchas cosas con las características integradas que se exponen mediante nuestro [Azure Portal](https://portal.azure.com) de administración de TI y nuestro [panel de acceso a las aplicaciones](https://myapps.microsoft.com) para los usuarios finales.</span><span class="sxs-lookup"><span data-stu-id="093ee-104">Customers can do a lot with the built-in features that are exposed through our IT admin [Azure portal](https://portal.azure.com) and our [Application Access Panel](https://myapps.microsoft.com) for end users.</span></span> <span data-ttu-id="093ee-105">Pero también somos conscientes de que las empresas necesitan personalizar el flujo de trabajo de incorporación para los usuarios de B2B para ajustarse a las necesidades de su organización.</span><span class="sxs-lookup"><span data-stu-id="093ee-105">But we are also aware that businesses need to customize the onboarding workflow for B2B users to fit their organization’s needs.</span></span> <span data-ttu-id="093ee-106">Puede hacerlo con [nuestra API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).</span><span class="sxs-lookup"><span data-stu-id="093ee-106">They can do that with [our API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).</span></span>
+
+<span data-ttu-id="093ee-107">En las conversaciones con nuestros clientes, se observa una necesidad común que sobresale por encima de todas las demás.</span><span class="sxs-lookup"><span data-stu-id="093ee-107">In discussions with our customers, we see one common need rise up above all others.</span></span> <span data-ttu-id="093ee-108">La organización que invita podría no saber de antemano quiénes son los colaboradores externos y quién necesita acceso a sus recursos.</span><span class="sxs-lookup"><span data-stu-id="093ee-108">The inviting organization may not know ahead of time who the individual external collaborators are who need access to their resources.</span></span> <span data-ttu-id="093ee-109">Quieren una forma de que los usuarios de empresas asociadas se registren ellos mismos con un conjunto de directivas que controla la organización que invita.</span><span class="sxs-lookup"><span data-stu-id="093ee-109">They wanted a way for users from partner companies to  sign themselves up with a set of policies that the inviting organization controls.</span></span> <span data-ttu-id="093ee-110">Como este escenario es posible gracias a nuestras API, publicamos un proyecto en Github que lo lleva a cabo: [proyecto de ejemplo de Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).</span><span class="sxs-lookup"><span data-stu-id="093ee-110">This scenario is possible through our APIs,  so we published a project on Github that did just that: [sample Github project](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).</span></span>
+
+<span data-ttu-id="093ee-111">Nuestro proyecto de Github muestra cómo las organizaciones pueden usar nuestras API para proporcionar una funcionalidad de registro de autoservicio basada en directivas para sus asociados de confianza, con reglas que determinan a qué aplicaciones pueden tener acceso.</span><span class="sxs-lookup"><span data-stu-id="093ee-111">Our Github project demonstrates how organizations can use our APIs, and provide a policy-based, self-service sign-up capability for their trusted partners, with rules that determine the apps they can access.</span></span> <span data-ttu-id="093ee-112">Los usuarios asociados pueden obtener acceso a los recursos cuando los necesiten, de forma segura y sin necesidad de que la organización que invita los incorpore manualmente.</span><span class="sxs-lookup"><span data-stu-id="093ee-112">Partner users can get access to resources when they need them, securely, without requiring the inviting organization to manually onboard them.</span></span> <span data-ttu-id="093ee-113">Puede implementar fácilmente el proyecto en una suscripción de Azure de su elección.</span><span class="sxs-lookup"><span data-stu-id="093ee-113">You can easily deploy the project into an Azure subscription of your choice.</span></span>
+
+## <a name="as-is-code"></a><span data-ttu-id="093ee-114">Código “tal cual”</span><span class="sxs-lookup"><span data-stu-id="093ee-114">As-is code</span></span>
+
+<span data-ttu-id="093ee-115">Recuerde que este código está disponible como ejemplo para mostrar el uso de la API de invitación B2B de Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="093ee-115">Remember that this code is made available as a sample to demonstrate usage of the Azure Active Directory B2B invitation API.</span></span> <span data-ttu-id="093ee-116">Su equipo de desarrollo o el asociado deben realizar la personalización y revisión antes de implementarlo en un escenario de producción.</span><span class="sxs-lookup"><span data-stu-id="093ee-116">It should be customized by your dev team or a partner, and should be reviewed before being deployed in a production scenario.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="093ee-117">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="093ee-117">Next steps</span></span>
+
+<span data-ttu-id="093ee-118">Examine nuestros otros artículos sobre la colaboración B2B de Azure AD:</span><span class="sxs-lookup"><span data-stu-id="093ee-118">Browse our other articles on Azure AD B2B collaboration:</span></span>
+* [<span data-ttu-id="093ee-119">¿Qué es la colaboración B2B de Azure AD?</span><span class="sxs-lookup"><span data-stu-id="093ee-119">What is Azure AD B2B collaboration?</span></span>](active-directory-b2b-what-is-azure-ad-b2b.md)
+* [<span data-ttu-id="093ee-120">¿Cómo agregan los administradores de Azure Active Directory usuarios de colaboración B2B?</span><span class="sxs-lookup"><span data-stu-id="093ee-120">How do Azure Active Directory admins add B2B collaboration users?</span></span>](active-directory-b2b-admin-add-users.md)
+* [<span data-ttu-id="093ee-121">¿Cómo agregan los trabajadores de la información usuarios de colaboración B2B?</span><span class="sxs-lookup"><span data-stu-id="093ee-121">How do information workers add B2B collaboration users?</span></span>](active-directory-b2b-iw-add-users.md)
+* [<span data-ttu-id="093ee-122">Los elementos del correo electrónico de invitación de colaboración B2B</span><span class="sxs-lookup"><span data-stu-id="093ee-122">The elements of the B2B collaboration invitation email</span></span>](active-directory-b2b-invitation-email.md)
+* [<span data-ttu-id="093ee-123">Canje de invitación de colaboración B2B</span><span class="sxs-lookup"><span data-stu-id="093ee-123">B2B collaboration invitation redemption</span></span>](active-directory-b2b-redemption-experience.md)
+* [<span data-ttu-id="093ee-124">Concesión de licencias de colaboración B2B de Azure AD</span><span class="sxs-lookup"><span data-stu-id="093ee-124">Azure AD B2B collaboration licensing</span></span>](active-directory-b2b-licensing.md)
+* [<span data-ttu-id="093ee-125">Solución de problemas de colaboración B2B de Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="093ee-125">Troubleshooting Azure Active Directory B2B collaboration</span></span>](active-directory-b2b-troubleshooting.md)
+* [<span data-ttu-id="093ee-126">Preguntas frecuentes sobre la colaboración B2B de Azure Active Directory (P+F)</span><span class="sxs-lookup"><span data-stu-id="093ee-126">Azure Active Directory B2B collaboration frequently asked questions (FAQ)</span></span>](active-directory-b2b-faq.md)
+* [<span data-ttu-id="093ee-127">Autenticación multifactor para usuarios de colaboración B2B</span><span class="sxs-lookup"><span data-stu-id="093ee-127">Multi-factor authentication for B2B collaboration users</span></span>](active-directory-b2b-mfa-instructions.md)
+* [<span data-ttu-id="093ee-128">Incorporación de usuarios de colaboración B2B sin invitación</span><span class="sxs-lookup"><span data-stu-id="093ee-128">Add B2B collaboration users without an invitation</span></span>](active-directory-b2b-add-user-without-invite.md)
+* [<span data-ttu-id="093ee-129">Índice de artículos sobre la administración de aplicaciones en Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="093ee-129">Article Index for Application Management in Azure Active Directory</span></span>](active-directory-apps-index.md)

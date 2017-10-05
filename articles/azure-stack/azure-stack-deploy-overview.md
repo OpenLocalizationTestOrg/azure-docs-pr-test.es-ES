@@ -1,0 +1,38 @@
+---
+title: "Guía de inicio rápido de la implementación de Azure Stack Development Kit | Microsoft Docs"
+description: Aprenda a implementar Azure Stack Development Kit
+services: azure-stack
+documentationcenter: 
+author: ErikjeMS
+manager: byronr
+editor: 
+ms.assetid: 
+ms.service: azure-stack
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 07/10/2017
+ms.author: erikje
+ms.custom: mvc
+ms.openlocfilehash: 81b6282addd1e88e4146367c4dd9a2ee7b8c84bf
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/03/2017
+---
+# <a name="azure-stack-development-kit-deployment-quickstart"></a><span data-ttu-id="81fcf-103">Guía de inicio rápido de la implementación de Azure Stack Development Kit</span><span class="sxs-lookup"><span data-stu-id="81fcf-103">Azure Stack Development Kit deployment quickstart</span></span>
+
+<span data-ttu-id="81fcf-104">[Azure Stack Development Kit](azure-stack-poc.md) es un entorno de desarrollo y pruebas que se puede implementar para evaluar y probar las características y servicios de Azure Stack.</span><span class="sxs-lookup"><span data-stu-id="81fcf-104">The [Azure Stack Development Kit](azure-stack-poc.md) is a testing and development environment that you can deploy to evaluate and demonstrate Azure Stack features and services.</span></span> <span data-ttu-id="81fcf-105">Para ponerlo en ejecución, debe preparar el hardware del entorno y ejecutar algunos scripts (esta operación tardará varias horas).</span><span class="sxs-lookup"><span data-stu-id="81fcf-105">To get it up and running, you’ll need to prepare the environment hardware and run some scripts (this will take several hours).</span></span> <span data-ttu-id="81fcf-106">Una vez finalizado, puede iniciar sesión en los portales del administrador y del inquilino para administrar Azure Stack y probar ofertas.</span><span class="sxs-lookup"><span data-stu-id="81fcf-106">After that, you can sign in to the admin and tenant portals to manage Azure Stack and test offers.</span></span> 
+
+1. <span data-ttu-id="81fcf-107">[**Planee el hardware, software y red**](azure-stack-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="81fcf-107">[**Plan your hardware, software, and network**](azure-stack-deploy.md).</span></span> <span data-ttu-id="81fcf-108">El equipo que hospeda el kit de desarrollo (el host del kit de desarrollo) debe cumplir requisitos de hardware, software y red.</span><span class="sxs-lookup"><span data-stu-id="81fcf-108">The computer that hosts the development kit (the development kit host) must meet hardware, software, and network requirements.</span></span> <span data-ttu-id="81fcf-109">También debe elegir entre el uso de Azure Active Directory o de los Servicios de federación de Active Directory.</span><span class="sxs-lookup"><span data-stu-id="81fcf-109">You must also choose between using Azure Active Directory or Active Directory Federation Services.</span></span> <span data-ttu-id="81fcf-110">Asegúrese de cumplir estos requisitos previos antes de comenzar la implementación para que el proceso de instalación se ejecute sin problemas.</span><span class="sxs-lookup"><span data-stu-id="81fcf-110">Be sure to comply with these prerequisites before starting your deployment so that the installation process runs smoothly.</span></span> 
+
+2. <span data-ttu-id="81fcf-111">[**Descargue y extraiga el paquete de implementación**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit).</span><span class="sxs-lookup"><span data-stu-id="81fcf-111">[**Download and extract the deployment package**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit).</span></span> <span data-ttu-id="81fcf-112">Puede descargar el paquete de implementación en el host del kit de desarrollo o en otro equipo.</span><span class="sxs-lookup"><span data-stu-id="81fcf-112">You can download the deployment package to the development kit host or to a another computer.</span></span> <span data-ttu-id="81fcf-113">Los archivos de implementación extraídos necesitan hasta 60 GB de espacio libre en disco, por lo que usar otro equipo puede ayudar a reducir los requisitos de hardware para el host del kit de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="81fcf-113">The extracted deployment files take up 60 GB of free disk space, so using another computer can help reduce the hardware requirements for the development kit host.</span></span>
+
+3. <span data-ttu-id="81fcf-114">[**Preparación del host del kit de desarrollo** ](azure-stack-run-powershell-script.md#prepare-the-development-kit-host) mediante el instalador.</span><span class="sxs-lookup"><span data-stu-id="81fcf-114">[**Prepare the development kit host**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host) by using the installer.</span></span> <span data-ttu-id="81fcf-115">Después de este paso, el host del kit de desarrollo arrancará en Cloudbuilder.vhdx (una unidad de disco duro virtual que incluye un sistema operativo de arranque y los archivos de instalación de Azure Stack).</span><span class="sxs-lookup"><span data-stu-id="81fcf-115">After this step, the development kit host will boot to the Cloudbuilder.vhdx (a virtual hard drive that includes a bootable operating system and the Azure Stack install files).</span></span>
+
+4. <span data-ttu-id="81fcf-116">[**Implementación de Azure Stack Development Kit** ](azure-stack-run-powershell-script.md#deploy-the-development-kit) en el host del kit de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="81fcf-116">[**Deploy the development kit**](azure-stack-run-powershell-script.md#deploy-the-development-kit) on the development kit host.</span></span>
+
+5. <span data-ttu-id="81fcf-117">Si la implementación de Azure Stack usa Azure Active Directory, debe [registrar Azure Stack en Azure](azure-stack-register.md) para que pueda [descargar elementos de Azure Marketplace](azure-stack-download-azure-marketplace-item.md) a Azure Stack.</span><span class="sxs-lookup"><span data-stu-id="81fcf-117">If your Azure Stack deployment uses Azure Active Directory, you must [register Azure Stack with Azure](azure-stack-register.md) so that you can [download Azure marketplace items](azure-stack-download-azure-marketplace-item.md) to Azure Stack.</span></span>
+
+<span data-ttu-id="81fcf-118">Después de completar estos pasos, tendrá un entorno de Development Kit con los portales del administrador y del inquilino.</span><span class="sxs-lookup"><span data-stu-id="81fcf-118">After completing these steps, you’ll have a development kit environment with both administrator and tenant portals.</span></span> <span data-ttu-id="81fcf-119">A continuación, puede [conectarse e iniciar sesión](azure-stack-connect-azure-stack.md) en el portal.</span><span class="sxs-lookup"><span data-stu-id="81fcf-119">Next, you can [connect and sign in](azure-stack-connect-azure-stack.md) to the portal.</span></span> <span data-ttu-id="81fcf-120">A continuación, puede iniciar la implementación de proveedores de recursos, crear [ofertas](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions) y rellenar [Marketplace](azure-stack-marketplace.md) de Azure Stack.</span><span class="sxs-lookup"><span data-stu-id="81fcf-120">You can then start deploying resource providers, creating [offers](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions), and populating the Azure Stack [marketplace](azure-stack-marketplace.md).</span></span>

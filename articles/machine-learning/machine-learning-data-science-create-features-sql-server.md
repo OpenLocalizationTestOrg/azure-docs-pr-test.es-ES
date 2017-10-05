@@ -1,0 +1,124 @@
+---
+title: "Creación de características para datos de SQL Server con SQL y Python | Microsoft Docs"
+description: Procesar datos de SQL Azure
+services: machine-learning
+documentationcenter: 
+author: bradsev
+manager: jhubbard
+editor: 
+ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/24/2017
+ms.author: bradsev;fashah;garye
+ms.openlocfilehash: f0ac2799e2d8f18b2dd5b633555bfca08a44ba27
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/29/2017
+---
+# <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a><span data-ttu-id="b884c-103">Creación de características para datos de SQL Server con SQL y Python</span><span class="sxs-lookup"><span data-stu-id="b884c-103">Create features for data in SQL Server using SQL and Python</span></span>
+<span data-ttu-id="b884c-104">En este documento se muestra cómo generar características para los datos almacenados en una VM de SQL Server en Azure que ayudan a los algoritmos a aprender de forma eficaz de los datos.</span><span class="sxs-lookup"><span data-stu-id="b884c-104">This document shows how to generate features for data stored in a SQL Server VM on Azure that help algorithms learn more efficiently from the data.</span></span> <span data-ttu-id="b884c-105">Esto puede hacerse con SQL o con un lenguaje de programación como Python; las dos opciones se muestran aquí.</span><span class="sxs-lookup"><span data-stu-id="b884c-105">This can be done by using SQL or by using a programming language like Python, both of which are demonstrated here.</span></span>
+
+[!INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
+
+<span data-ttu-id="b884c-106">Este **menú** vincula a temas en los que se describe cómo crear características para datos en diversos entornos.</span><span class="sxs-lookup"><span data-stu-id="b884c-106">This **menu** links to topics that describe how to create features for data in various environments.</span></span> <span data-ttu-id="b884c-107">Esta tarea constituye un paso del [proceso de ciencia de datos en equipos (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).</span><span class="sxs-lookup"><span data-stu-id="b884c-107">This task is a step in the [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="b884c-108">Para obtener un ejemplo práctico, puede usar el [conjunto de datos de los taxis de la Ciudad de Nueva York](http://www.andresmh.com/nyctaxitrips/) y consultar el IPNB llamado [NYC Data wrangling using IPython Notebook and SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) (Tratamiento de datos de la Ciudad de Nueva York mediante un Bloc de notas de IPython y SQL Server), un tutorial completo.</span><span class="sxs-lookup"><span data-stu-id="b884c-108">For a practical example, you can consult the [NYC Taxi dataset](http://www.andresmh.com/nyctaxitrips/) and refer to the IPNB titled [NYC Data wrangling using IPython Notebook and SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) for an end-to-end walk-through.</span></span>
+> 
+> 
+
+## <a name="prerequisites"></a><span data-ttu-id="b884c-109">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="b884c-109">Prerequisites</span></span>
+<span data-ttu-id="b884c-110">En este artículo se supone que ha:</span><span class="sxs-lookup"><span data-stu-id="b884c-110">This article assumes that you have:</span></span>
+
+* <span data-ttu-id="b884c-111">Creado una cuenta de almacenamiento de Azure.</span><span class="sxs-lookup"><span data-stu-id="b884c-111">Created an Azure storage account.</span></span> <span data-ttu-id="b884c-112">Si necesita instrucciones, consulte [Creación de una cuenta de almacenamiento de Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account)</span><span class="sxs-lookup"><span data-stu-id="b884c-112">If you need instructions, see [Create an Azure Storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account)</span></span>
+* <span data-ttu-id="b884c-113">Almacenado los datos en SQL Server.</span><span class="sxs-lookup"><span data-stu-id="b884c-113">Stored your data in SQL Server.</span></span> <span data-ttu-id="b884c-114">Si no es así, consulte [Mover datos a SQL Database de Azure para Azure Machine Learning](machine-learning-data-science-move-sql-azure.md) para obtener instrucciones sobre cómo mover los datos.</span><span class="sxs-lookup"><span data-stu-id="b884c-114">If you have not, see [Move data to an Azure SQL Database for Azure Machine Learning](machine-learning-data-science-move-sql-azure.md) for instructions on how to move the data there.</span></span>
+
+## <span data-ttu-id="b884c-115"><a name="sql-featuregen"></a>Generación de características con SQL</span><span class="sxs-lookup"><span data-stu-id="b884c-115"><a name="sql-featuregen"></a>Feature Generation with SQL</span></span>
+<span data-ttu-id="b884c-116">En esta sección, se describen formas de generar características mediante SQL:</span><span class="sxs-lookup"><span data-stu-id="b884c-116">In this section, we describe ways of generating features using SQL:</span></span>  
+
+1. [<span data-ttu-id="b884c-117">Generación de características basadas en recuentos</span><span class="sxs-lookup"><span data-stu-id="b884c-117">Count based Feature Generation</span></span>](#sql-countfeature)
+2. [<span data-ttu-id="b884c-118">Generación de características de discretización</span><span class="sxs-lookup"><span data-stu-id="b884c-118">Binning Feature Generation</span></span>](#sql-binningfeature)
+3. [<span data-ttu-id="b884c-119">Implementación de las características de una sola columna</span><span class="sxs-lookup"><span data-stu-id="b884c-119">Rolling out the features from a single column</span></span>](#sql-featurerollout)
+
+> [!NOTE]
+> <span data-ttu-id="b884c-120">Cuando genere características adicionales, puede agregarlas como columnas a la tabla existente o crear una nueva tabla con las características adicionales y la clave principal, que se pueden combinar con la tabla original.</span><span class="sxs-lookup"><span data-stu-id="b884c-120">Once you generate additional features, you can either add them as columns to the existing table or create a new table with the additional features and primary key, that can be joined with the original table.</span></span>
+> 
+> 
+
+### <span data-ttu-id="b884c-121"><a name="sql-countfeature"></a>Generación de características basadas en recuentos</span><span class="sxs-lookup"><span data-stu-id="b884c-121"><a name="sql-countfeature"></a>Count based Feature Generation</span></span>
+<span data-ttu-id="b884c-122">En este documento se muestran dos maneras de generar características de recuento.</span><span class="sxs-lookup"><span data-stu-id="b884c-122">This document demonstrates two ways of generating count features.</span></span> <span data-ttu-id="b884c-123">El primer método usa la suma condicional y el segundo utiliza la cláusula 'where'.</span><span class="sxs-lookup"><span data-stu-id="b884c-123">The first method uses conditional sum and the second method uses the 'where\` clause.</span></span> <span data-ttu-id="b884c-124">Estos pueden entonces combinarse con la tabla original (con columnas de clave principal) para disponer de características de recuento junto con los datos originales.</span><span class="sxs-lookup"><span data-stu-id="b884c-124">These can then be joined with the original table (using primary key columns) to have count features alongside the original data.</span></span>
+
+    select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
+
+    select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
+    where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
+
+### <span data-ttu-id="b884c-125"><a name="sql-binningfeature"></a>Generación de características de discretización</span><span class="sxs-lookup"><span data-stu-id="b884c-125"><a name="sql-binningfeature"></a>Binning Feature Generation</span></span>
+<span data-ttu-id="b884c-126">En el ejemplo siguiente se muestra cómo generar características discretizadas mediante la discretización (con 5 discretizaciones) de una columna numérica que puede usarse en su lugar como una característica:</span><span class="sxs-lookup"><span data-stu-id="b884c-126">The following example shows how to generate binned features by binning (using 5 bins) a numerical column that can be used as a feature instead:</span></span>
+
+    `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
+
+
+### <span data-ttu-id="b884c-127"><a name="sql-featurerollout"></a>Implementación de las características de una sola columna</span><span class="sxs-lookup"><span data-stu-id="b884c-127"><a name="sql-featurerollout"></a>Rolling out the features from a single column</span></span>
+<span data-ttu-id="b884c-128">En esta sección, se muestra cómo se implementa una sola columna de una tabla para generar características adicionales.</span><span class="sxs-lookup"><span data-stu-id="b884c-128">In this section, we demonstrate how to roll-out a single column in a table to generate additional features.</span></span> <span data-ttu-id="b884c-129">En el ejemplo se supone que hay una columna de latitud o longitud en la tabla a partir de la cual está intentando generar características.</span><span class="sxs-lookup"><span data-stu-id="b884c-129">The example assumes that there is a latitude or longitude column in the table from which you are trying to generate features.</span></span>
+
+<span data-ttu-id="b884c-130">Aquí se incluye un breve manual sobre los datos de ubicación de latitud y longitud (extraído de stackoverflow `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`).</span><span class="sxs-lookup"><span data-stu-id="b884c-130">Here is a brief primer on latitude/longitude location data (resourced from stackoverflow `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`).</span></span> <span data-ttu-id="b884c-131">Resulta útil para comprender bien todo antes de caracterizar el campo de ubicación:</span><span class="sxs-lookup"><span data-stu-id="b884c-131">This is useful to understand before featurizing the location field:</span></span>
+
+* <span data-ttu-id="b884c-132">La señal indica si estamos en el norte o sur, y este u oeste del mundo.</span><span class="sxs-lookup"><span data-stu-id="b884c-132">The sign tells us whether we are north or south, east or west on the globe.</span></span>
+* <span data-ttu-id="b884c-133">Un dígito de las centenas distinto de cero indica que se usa la longitud y no la latitud.</span><span class="sxs-lookup"><span data-stu-id="b884c-133">A nonzero hundreds digit tells us we're using longitude, not latitude!</span></span>
+* <span data-ttu-id="b884c-134">El dígito de las decenas ofrece una posición a aproximadamente 1.000 kilómetros.</span><span class="sxs-lookup"><span data-stu-id="b884c-134">The tens digit gives a position to about 1,000 kilometers.</span></span> <span data-ttu-id="b884c-135">Nos brinda información útil sobre el continente u océano en el que nos encontramos.</span><span class="sxs-lookup"><span data-stu-id="b884c-135">It gives us useful information about what continent or ocean we are on.</span></span>
+* <span data-ttu-id="b884c-136">El dígito de las unidades (un grado decimal) indica una posición de hasta 111 kilómetros (60 millas náuticas, aproximadamente 69 millas).</span><span class="sxs-lookup"><span data-stu-id="b884c-136">The units digit (one decimal degree) gives a position up to 111 kilometers (60 nautical miles, about 69 miles).</span></span> <span data-ttu-id="b884c-137">Puede informarnos aproximadamente del estado grande o país en que nos encontramos.</span><span class="sxs-lookup"><span data-stu-id="b884c-137">It can tell us roughly what large state or country we are in.</span></span>
+* <span data-ttu-id="b884c-138">La primera posición decimal tiene un valor de hasta 11,1 km: puede distinguir la posición de una ciudad grande de otra ciudad grande vecina.</span><span class="sxs-lookup"><span data-stu-id="b884c-138">The first decimal place is worth up to 11.1 km: it can distinguish the position of one large city from a neighboring large city.</span></span>
+* <span data-ttu-id="b884c-139">La segundo posición decimal tiene un valor de hasta 1,1 km: puede separar un pueblo del siguiente.</span><span class="sxs-lookup"><span data-stu-id="b884c-139">The second decimal place is worth up to 1.1 km: it can separate one village from the next.</span></span>
+* <span data-ttu-id="b884c-140">La tercera posición decimal tiene un valor de hasta 110 m: puede identificar un campo agrícola extenso o campus universitario.</span><span class="sxs-lookup"><span data-stu-id="b884c-140">The third decimal place is worth up to 110 m: it can identify a large agricultural field or institutional campus.</span></span>
+* <span data-ttu-id="b884c-141">La cuarta posición decimal tiene un valor de hasta 11 m: puede identificar una parcela de tierra.</span><span class="sxs-lookup"><span data-stu-id="b884c-141">The fourth decimal place is worth up to 11 m: it can identify a parcel of land.</span></span> <span data-ttu-id="b884c-142">Es comparable a la precisión típica de una unidad GPS sin corregir y sin interferencias.</span><span class="sxs-lookup"><span data-stu-id="b884c-142">It is comparable to the typical accuracy of an uncorrected GPS unit with no interference.</span></span>
+* <span data-ttu-id="b884c-143">La quinta posición decimal tiene un valor de hasta 1,1 m: puede distinguir entre distintos árboles.</span><span class="sxs-lookup"><span data-stu-id="b884c-143">The fifth decimal place is worth up to 1.1 m: it distinguish trees from each other.</span></span> <span data-ttu-id="b884c-144">Solo es posible conseguir una precisión de este nivel con unidades GPS comerciales con corrección diferencial.</span><span class="sxs-lookup"><span data-stu-id="b884c-144">Accuracy to this level with commercial GPS units can only be achieved with differential correction.</span></span>
+* <span data-ttu-id="b884c-145">La sexta posición decimal tiene un valor de hasta 0,11 m: puede usarse para diseñar estructuras en detalle, para el diseño de paisajes o la construcción de carreteras.</span><span class="sxs-lookup"><span data-stu-id="b884c-145">The sixth decimal place is worth up to 0.11 m: you can use this for laying out structures in detail, for designing landscapes, building roads.</span></span> <span data-ttu-id="b884c-146">Debería ser más que suficiente para realizar el seguimiento de los movimientos de glaciares y ríos.</span><span class="sxs-lookup"><span data-stu-id="b884c-146">It should be more than good enough for tracking movements of glaciers and rivers.</span></span> <span data-ttu-id="b884c-147">Esto se consigue al tomar medidas meticulosas con GPS, como GPS corregido de forma diferencial.</span><span class="sxs-lookup"><span data-stu-id="b884c-147">This can be achieved by taking painstaking measures with GPS, such as differentially corrected GPS.</span></span>
+
+<span data-ttu-id="b884c-148">La información de ubicación se puede caracterizar como sigue, con diferencias entre la información de región, ubicación y ciudad.</span><span class="sxs-lookup"><span data-stu-id="b884c-148">The location information can can be featurized as follows, separating out region, location and city information.</span></span> <span data-ttu-id="b884c-149">Tenga en cuenta que también es posible llamar a un extremo de REST, como la API de mapas de Bing disponible en `https://msdn.microsoft.com/library/ff701710.aspx` para obtener la información de la región o el distrito.</span><span class="sxs-lookup"><span data-stu-id="b884c-149">Note that once can also call a REST end point such as Bing Maps API available at `https://msdn.microsoft.com/library/ff701710.aspx` to get the region/district information.</span></span>
+
+    select
+        <location_columnname>
+        ,round(<location_columnname>,0) as l1        
+        ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
+        ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
+        ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
+        ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
+        ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
+        ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
+    from <tablename>
+
+<span data-ttu-id="b884c-150">Las características basadas en ubicación anteriores se pueden usar aún más para generar características de recuento adicionales, tal y como se describió anteriormente.</span><span class="sxs-lookup"><span data-stu-id="b884c-150">The above location based features can be further used to generate additional count features as described earlier.</span></span>
+
+> [!TIP]
+> <span data-ttu-id="b884c-151">Puede insertar mediante programación los registros con el lenguaje que prefiera.</span><span class="sxs-lookup"><span data-stu-id="b884c-151">You can programmatically insert the records using your language of choice.</span></span> <span data-ttu-id="b884c-152">Es posible que deba insertar los datos en fragmentos para mejorar el rendimiento de escritura [Consulte el ejemplo sobre cómo hacerlo mediante pyodbc aquí](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).</span><span class="sxs-lookup"><span data-stu-id="b884c-152">You may need to insert the data in chunks to improve write efficiency [Check out the example of how to do this using pyodbc here](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).</span></span>
+> <span data-ttu-id="b884c-153">Otra alternativa consiste en insertar datos en la base de datos mediante la [utilidad BCP](https://msdn.microsoft.com/library/ms162802.aspx).</span><span class="sxs-lookup"><span data-stu-id="b884c-153">Another alternative is to insert data in the database using [BCP utility](https://msdn.microsoft.com/library/ms162802.aspx)</span></span>
+> 
+> 
+
+### <span data-ttu-id="b884c-154"><a name="sql-aml"></a>Conexión con Aprendizaje automático de Azure</span><span class="sxs-lookup"><span data-stu-id="b884c-154"><a name="sql-aml"></a>Connecting to Azure Machine Learning</span></span>
+<span data-ttu-id="b884c-155">La característica recién generada se puede agregar como una columna a una tabla existente o se puede almacenar en una tabla nueva y combinar con la tabla original para el aprendizaje automático.</span><span class="sxs-lookup"><span data-stu-id="b884c-155">The newly generated feature can be added as a column to an existing table or stored in a new table and joined with the original table for machine learning.</span></span> <span data-ttu-id="b884c-156">Es posible generar o acceder a las características si ya se han creado, mediante el módulo [Importar datos](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) en Aprendizaje automático de Azure, como se muestra a continuación:</span><span class="sxs-lookup"><span data-stu-id="b884c-156">Features can be generated or accessed if already created, using the [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) module in Azure ML as shown below:</span></span>
+
+![Lectores de azureml](./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png)
+
+## <span data-ttu-id="b884c-158"><a name="python"></a>Uso de un lenguaje de programación como Python</span><span class="sxs-lookup"><span data-stu-id="b884c-158"><a name="python"></a>Using a programming language like Python</span></span>
+<span data-ttu-id="b884c-159">Usar Python para generar características cuando los datos están en SQL Server es parecido a procesar los datos en Blob de Azure mediante Python, como se documenta [aquí](machine-learning-data-science-process-data-blob.md).</span><span class="sxs-lookup"><span data-stu-id="b884c-159">Using Python to generate features when the data is in SQL Server is similar to processing data in Azure blob using Python as documented in [Process Azure Blob data in you data science environment](machine-learning-data-science-process-data-blob.md).</span></span> <span data-ttu-id="b884c-160">Los datos deben cargarse desde la base de datos en una trama de datos de Pandas y, a continuación, se pueden procesar aún más.</span><span class="sxs-lookup"><span data-stu-id="b884c-160">The data needs to be loaded from the database into a pandas data frame and then can be processed further.</span></span> <span data-ttu-id="b884c-161">Se documenta el proceso de conexión a la base de datos y carga de los datos en la trama de datos de esta sección.</span><span class="sxs-lookup"><span data-stu-id="b884c-161">We document the process of connecting to the database and loading the data into the data frame in this section.</span></span>
+
+<span data-ttu-id="b884c-162">El formato de cadena de conexión siguiente puede usarse para conectarse a una base de datos de SQL Server desde Python mediante pyodbc (reemplace servername, dbname, username y password con sus valores específicos):</span><span class="sxs-lookup"><span data-stu-id="b884c-162">The following connection string format can be used to connect to a SQL Server database from Python using pyodbc (replace servername, dbname, username and password with your specific values):</span></span>
+
+    #Set up the SQL Azure connection
+    import pyodbc
+    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+
+<span data-ttu-id="b884c-163">La [biblioteca Pandas](http://pandas.pydata.org/) en Python ofrece un amplio conjunto de herramientas de análisis de datos y estructuras de datos para la manipulación de datos para la programación en Python.</span><span class="sxs-lookup"><span data-stu-id="b884c-163">The [Pandas library](http://pandas.pydata.org/) in Python provides a rich set of data structures and data analysis tools for data manipulation for Python programming.</span></span> <span data-ttu-id="b884c-164">El código siguiente lee los resultados que se devuelven desde una base de datos de SQL Server en una trama de datos de Pandas:</span><span class="sxs-lookup"><span data-stu-id="b884c-164">The code below reads the results returned from a SQL Server database into a Pandas data frame:</span></span>
+
+    # Query database and load the returned results in pandas data frame
+    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+
+<span data-ttu-id="b884c-165">Ya puede trabajar con la trama de datos de Pandas como se explica en los temas [Creación de características para los datos de Azure Blob Storage mediante Panda](machine-learning-data-science-create-features-blob.md).</span><span class="sxs-lookup"><span data-stu-id="b884c-165">Now you can work with the Pandas data frame as covered in topics [Create features for Azure blob storage data using Panda](machine-learning-data-science-create-features-blob.md).</span></span>
+
