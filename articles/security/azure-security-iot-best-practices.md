@@ -1,0 +1,66 @@
+---
+title: Procedimientos recomendados de seguridad de Internet de las cosas | Microsoft Docs
+description: "El artículo proporciona una lista exclusiva de los procedimientos recomendados de seguridad de Internet de las cosas y recomendaciones generales."
+services: security
+documentationcenter: na
+author: TomShinder
+manager: StevenPo
+editor: TomSh
+ms.assetid: 2d5598c5-4c30-481d-b8f4-51ee024ea9a7
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 01/04/2017
+ms.author: yurid
+ms.openlocfilehash: 8efc0053458e338ac1afe98d9ce970c1d5cbfa81
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="internet-of-things-security-best-practices"></a><span data-ttu-id="6e561-103">Procedimientos recomendados de seguridad de Internet de las cosas</span><span class="sxs-lookup"><span data-stu-id="6e561-103">Internet of Things Security Best Practices</span></span>
+<span data-ttu-id="6e561-104">La protección de la infraestructura de Internet de las cosas (IoT) es una tarea crítica para cualquier persona involucrada con soluciones de IoT.</span><span class="sxs-lookup"><span data-stu-id="6e561-104">Securing the Internet of Things (IoT) infrastructure is a critical undertaking for anyone involved with IoT solutions.</span></span> <span data-ttu-id="6e561-105">Debido al número de dispositivos implicados y la naturaleza distribuida de estos dispositivos, el impacto de un evento de seguridad relacionado con el compromiso de millones de dispositivos IoT no es trivial y puede tener un impacto masivo.</span><span class="sxs-lookup"><span data-stu-id="6e561-105">Because of the number of devices involved and the distributed nature of these devices, the impact a security event related to compromise of millions of IoT devices is non-trivial and can have widespread impact.</span></span>
+
+<span data-ttu-id="6e561-106">Por este motivo, la seguridad de IoT necesita un enfoque de seguridad en profundidad.</span><span class="sxs-lookup"><span data-stu-id="6e561-106">For this reason, IoT security needs a security-in-depth approach.</span></span> <span data-ttu-id="6e561-107">Los datos deben estar seguros en la nube y cuando se mueven en redes públicas y privadas.</span><span class="sxs-lookup"><span data-stu-id="6e561-107">Data needs to be secure in the cloud and as it moves over private and public networks.</span></span> <span data-ttu-id="6e561-108">Es necesario implementar métodos para aprovisionar de forma segura los propios dispositivos de IoT.</span><span class="sxs-lookup"><span data-stu-id="6e561-108">Methods need to be in place to securely provision the IoT devices themselves.</span></span> <span data-ttu-id="6e561-109">Cada capa, desde el dispositivo, hasta la red y el back-end en la nube debe tener garantías de seguridad.</span><span class="sxs-lookup"><span data-stu-id="6e561-109">Each layer, from device, to network, to cloud back-end needs strong security assurances.</span></span>
+
+<span data-ttu-id="6e561-110">Los procedimientos recomendados de IoT se pueden clasificar de la siguiente manera:</span><span class="sxs-lookup"><span data-stu-id="6e561-110">IoT best practices can be categorized in the following way:</span></span>
+
+* <span data-ttu-id="6e561-111">Integrador o fabricante del hardware de IoT</span><span class="sxs-lookup"><span data-stu-id="6e561-111">IoT hardware manufacturer or integrator</span></span>
+* <span data-ttu-id="6e561-112">Desarrollador de soluciones de IoT</span><span class="sxs-lookup"><span data-stu-id="6e561-112">IoT solution developer</span></span>
+* <span data-ttu-id="6e561-113">Implementador de soluciones de IoT</span><span class="sxs-lookup"><span data-stu-id="6e561-113">IoT solution deployer</span></span>
+* <span data-ttu-id="6e561-114">Operador de soluciones de IoT</span><span class="sxs-lookup"><span data-stu-id="6e561-114">IoT solution operator</span></span>
+
+<span data-ttu-id="6e561-115">En este artículo se resumen los [Procedimientos recomendados de seguridad de Internet de las cosas](../iot-suite/iot-security-best-practices.md).</span><span class="sxs-lookup"><span data-stu-id="6e561-115">This article summarizes [Internet of Things Security Best Practices](../iot-suite/iot-security-best-practices.md).</span></span> <span data-ttu-id="6e561-116">Consulte ese artículo para obtener información más detallada.</span><span class="sxs-lookup"><span data-stu-id="6e561-116">Please refer to that article for more detailed information.</span></span>
+
+## <a name="iot-hardware-manufacturer-or-integrator"></a><span data-ttu-id="6e561-117">Integrador o fabricante del hardware de IoT</span><span class="sxs-lookup"><span data-stu-id="6e561-117">IoT hardware manufacturer or integrator</span></span>
+<span data-ttu-id="6e561-118">Siga las prácticas recomendadas que aparecen a continuación si es integrador o fabricante de hardware IoT:</span><span class="sxs-lookup"><span data-stu-id="6e561-118">Follow the best practices below if you are an IoT hardware manufacture or a hardware integrator:</span></span>
+
+* <span data-ttu-id="6e561-119">**Acotar el hardware a unos requisitos mínimos:**el diseño del hardware debe incluir únicamente las características mínimas necesarias para el funcionamiento del hardware.</span><span class="sxs-lookup"><span data-stu-id="6e561-119">**Scope hardware to minimum requirements**: the hardware design should include minimum features required for operation of the hardware, and nothing more.</span></span> 
+* <span data-ttu-id="6e561-120">**Crear hardware a prueba de manipulaciones:**mecanismo integrado para detectar la alteración física del hardware; por ejemplo, abrir la cubierta del dispositivo, quitar una parte del dispositivo, etc.</span><span class="sxs-lookup"><span data-stu-id="6e561-120">**Make hardware tamper proof**: build in mechanisms to detect physical tampering of hardware, such as opening the device cover, removing a part of the device, etc.</span></span> 
+* <span data-ttu-id="6e561-121">**Basarse en hardware seguro:**si [COGS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) lo permite, cree características de seguridad como el almacenamiento seguro y cifrado y la funcionalidad de arranque basada en el Módulo de plataforma segura (TPM).</span><span class="sxs-lookup"><span data-stu-id="6e561-121">**Build around secure hardware**: if [COGS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) permit, build security features such as secure and encrypted storage and Trusted Platform Module (TPM)-based boot functionality.</span></span>
+* <span data-ttu-id="6e561-122">**Proteger las actualizaciones**: la actualización de firmware durante el ciclo de vida del dispositivo es inevitable.</span><span class="sxs-lookup"><span data-stu-id="6e561-122">**Make upgrades secure**: upgrading firmware during lifetime of the device is inevitable.</span></span>
+
+## <a name="iot-solution-developer"></a><span data-ttu-id="6e561-123">Desarrollador de soluciones de IoT</span><span class="sxs-lookup"><span data-stu-id="6e561-123">IoT solution developer</span></span>
+<span data-ttu-id="6e561-124">Siga las prácticas recomendadas que aparecen a continuación si es desarrollador de soluciones de IoT:</span><span class="sxs-lookup"><span data-stu-id="6e561-124">Follow the best practices below if you are an IoT solution developer:</span></span>
+
+* <span data-ttu-id="6e561-125">**Seguir una metodología de desarrollo de software seguro:**el desarrollo de software seguro exige pensar bien la seguridad desde el inicio del proyecto hasta su implementación y prueba.</span><span class="sxs-lookup"><span data-stu-id="6e561-125">**Follow secure software development methodology**: developing secure software requires ground-up thinking about security from the inception of the project all the way to its implementation, testing, and deployment.</span></span>
+* <span data-ttu-id="6e561-126">**Elegir software de código abierto con cuidado**: el software de código abierto ofrece una oportunidad para desarrollar soluciones con rapidez.</span><span class="sxs-lookup"><span data-stu-id="6e561-126">**Choose open source software with care**: open source software provides an opportunity to quickly develop solutions.</span></span>
+* <span data-ttu-id="6e561-127">**Integrar con cuidado**: muchos de los errores de seguridad del software existen en el límite de bibliotecas y API.</span><span class="sxs-lookup"><span data-stu-id="6e561-127">**Integrate with care**: many of the software security flaws exist at the boundary of libraries and APIs.</span></span> 
+
+## <a name="iot-solution-deployer"></a><span data-ttu-id="6e561-128">Implementador de soluciones de IoT</span><span class="sxs-lookup"><span data-stu-id="6e561-128">IoT solution deployer</span></span>
+<span data-ttu-id="6e561-129">Siga las prácticas recomendadas que aparecen a continuación si es implementador de soluciones de IoT:</span><span class="sxs-lookup"><span data-stu-id="6e561-129">Follow the best practices below if you are an IoT solution deployer:</span></span>
+
+* <span data-ttu-id="6e561-130">**Implementar hardware de forma segura**: las implementaciones de IoT pueden requerir la implementación de hardware en ubicaciones no seguras, por ejemplo, espacios públicos o configuraciones regionales no supervisadas.</span><span class="sxs-lookup"><span data-stu-id="6e561-130">**Deploy hardware securely**: IoT deployments may require hardware to be deployed in unsecure locations, such as in public spaces or unsupervised locales.</span></span>
+* <span data-ttu-id="6e561-131">**Mantener seguras las claves de autenticación**: durante la implementación, cada dispositivo requiere identificadores de dispositivo y claves de autenticación asociadas generadas por el servicio en la nube.</span><span class="sxs-lookup"><span data-stu-id="6e561-131">**Keep authentication keys safe**: during deployment, each device requires device IDs and associated authentication keys generated by the cloud service.</span></span> <span data-ttu-id="6e561-132">Mantenga seguras estas claves físicamente incluso después de la implementación.</span><span class="sxs-lookup"><span data-stu-id="6e561-132">Keep these keys physically safe even after the deployment.</span></span> <span data-ttu-id="6e561-133">Un dispositivo malintencionado puede usar cualquier clave en peligro para su enmascaramiento como dispositivo existente.</span><span class="sxs-lookup"><span data-stu-id="6e561-133">Any compromised key can be used by a malicious device to masquerade as an existing device.</span></span>
+
+## <a name="iot-solution-operator"></a><span data-ttu-id="6e561-134">Operador de soluciones de IoT</span><span class="sxs-lookup"><span data-stu-id="6e561-134">IoT solution operator</span></span>
+<span data-ttu-id="6e561-135">Siga las prácticas recomendadas que aparecen a continuación si es operador de soluciones de IoT:</span><span class="sxs-lookup"><span data-stu-id="6e561-135">Follow the best practices below if you are an IoT solution operator:</span></span>
+
+* <span data-ttu-id="6e561-136">**Mantener los sistemas actualizados:**asegúrese de que los sistemas operativos del dispositivo y todos sus controladores están actualizados a las versiones más recientes.</span><span class="sxs-lookup"><span data-stu-id="6e561-136">**Keep systems up to date**: ensure device operating systems and all device drivers are updated to the latest versions.</span></span> 
+* <span data-ttu-id="6e561-137">**Proteger contra la actividad malintencionada**: si el sistema operativo lo permite, incluya las últimas funcionalidades antivirus y antimalware en cada sistema operativo del dispositivo.</span><span class="sxs-lookup"><span data-stu-id="6e561-137">**Protect against malicious activity**: if the operating system permits, place the latest anti-virus and anti-malware capabilities on each device operating system.</span></span> 
+* <span data-ttu-id="6e561-138">**Auditar con frecuencia**: auditar infraestructura IoT para los problemas relacionados con la seguridad es clave al responder a incidentes de seguridad.</span><span class="sxs-lookup"><span data-stu-id="6e561-138">**Audit frequently**: auditing IoT infrastructure for security related issues is key when responding to security incidents.</span></span>
+* <span data-ttu-id="6e561-139">**Proteger físicamente la infraestructura IoT**: los peores ataques de seguridad contra la infraestructura IoT se inician mediante el acceso físico a los dispositivos.</span><span class="sxs-lookup"><span data-stu-id="6e561-139">**Physically protect the IoT infrastructure**: the worst security attacks against IoT infrastructure are launched using physical access to devices.</span></span>
+* <span data-ttu-id="6e561-140">**Proteger credenciales en la nube**: es posible que las credenciales de autenticación en la nube usadas para configurar y poner en funcionamiento una implementación de IoT sean la forma más fácil de obtener acceso y poner en peligro a un sistema IoT.</span><span class="sxs-lookup"><span data-stu-id="6e561-140">**Protect cloud credentials**: cloud authentication credentials used for configuring and operating an IoT deployment are possibly the easiest way to gain access and compromise an IoT system.</span></span> 
+

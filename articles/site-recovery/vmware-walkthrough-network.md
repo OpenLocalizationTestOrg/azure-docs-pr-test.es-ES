@@ -1,0 +1,91 @@
+---
+title: "Planeamiento de redes de VMware con replicación de Azure | Microsoft Docs"
+description: "En este artículo se describe el planeamiento de red necesario cuando se replican máquinas virtuales VMware en Azure"
+services: site-recovery
+documentationcenter: 
+author: rayne-wiselman
+manager: carmonm
+editor: 
+ms.assetid: 5578a0b4-0352-41c3-9cce-56beb17a4d97
+ms.service: site-recovery
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 06/27/2017
+ms.author: raynew
+ms.openlocfilehash: f164ac68ba6ec650bb3996b4aa870e1b98533a23
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="step-4-plan-networking-for-vmware-to-azure-replication"></a><span data-ttu-id="2b026-103">Paso 4: Planeamiento de redes de VMware con replicación de Azure</span><span class="sxs-lookup"><span data-stu-id="2b026-103">Step 4: Plan networking for VMware to Azure replication</span></span>
+
+<span data-ttu-id="2b026-104">En este artículo se resumen las consideraciones de planeamiento de red al replicar máquinas virtuales VMware locales en Azure con el servicio [Azure Site Recovery](site-recovery-overview.md).</span><span class="sxs-lookup"><span data-stu-id="2b026-104">This article summarizes network planning considerations when replicating on-premises VMware VMs to Azure using the [Azure Site Recovery](site-recovery-overview.md) service.</span></span>
+
+<span data-ttu-id="2b026-105">Publique cualquier comentario en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).</span><span class="sxs-lookup"><span data-stu-id="2b026-105">Post any comments at the bottom of this article, or ask questions in the [Azure Recovery Services Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).</span></span>
+
+
+## <a name="connect-to-replica-vms"></a><span data-ttu-id="2b026-106">Conexión a máquinas virtuales se réplica</span><span class="sxs-lookup"><span data-stu-id="2b026-106">Connect to replica VMs</span></span>
+
+<span data-ttu-id="2b026-107">Al planear su estrategia de conmutación por error y replicación, una de las preguntas claves es cómo conectarse a la máquina virtual de Azure después de la conmutación por error.</span><span class="sxs-lookup"><span data-stu-id="2b026-107">When planning your replication and failover strategy, one of the key questions is how to connect to the Azure VM after failover.</span></span> <span data-ttu-id="2b026-108">Hay un par de opciones para diseñar la estrategia de red para la réplica de máquinas virtuales de Azure:</span><span class="sxs-lookup"><span data-stu-id="2b026-108">There are a couple of choices when designing your network strategy for replica Azure VMs:</span></span>
+
+- <span data-ttu-id="2b026-109">**Use different IP address** (Usar una dirección IP distinta): puede seleccionar el uso de otro intervalo de direcciones IP para la red de máquinas virtuales de Azure replicada.</span><span class="sxs-lookup"><span data-stu-id="2b026-109">**Use different IP address**: You can select to use a different IP address range for the replicated Azure VM network.</span></span> <span data-ttu-id="2b026-110">En este escenario, la máquina virtual obtiene una nueva dirección IP después de la conmutación por error y se requiere una actualización de DNS.</span><span class="sxs-lookup"><span data-stu-id="2b026-110">In this scenario the VM gets a new IP address after failover, and a DNS update is required.</span></span>
+- <span data-ttu-id="2b026-111">**Retain same IP address** (Conservar la misma dirección IP): tal vez prefiera usar el mismo intervalo de direcciones IP que usa en el sitio local principal para la red de Azure después de la conmutación por error.</span><span class="sxs-lookup"><span data-stu-id="2b026-111">**Retain same IP address**: You might want to use the same IP address range as that in your primary on-premises site, for the Azure network after failover.</span></span> <span data-ttu-id="2b026-112">La conservación de las mismas direcciones IP simplifica la recuperación al reducir los problemas relacionados con la red después de la conmutación por error.</span><span class="sxs-lookup"><span data-stu-id="2b026-112">Keeping the same IP addresses simplifies the recovery by reducing network related issues after failover.</span></span> <span data-ttu-id="2b026-113">Pero, cuando replique en Azure, tendrá que actualizar las rutas con la nueva ubicación de las direcciones IP después de la conmutación por error.</span><span class="sxs-lookup"><span data-stu-id="2b026-113">However, when you're replicating to Azure, you will need to update routes with the new location of the IP addresses after failover.</span></span> 
+
+
+## <a name="retain-ip-addresses"></a><span data-ttu-id="2b026-114">Conservación de las direcciones IP</span><span class="sxs-lookup"><span data-stu-id="2b026-114">Retain IP addresses</span></span>
+
+<span data-ttu-id="2b026-115">Site Recovery ofrece la posibilidad de conservar las direcciones IP fijas al conmutar por error a Azure, con una conmutación por error de subredes.</span><span class="sxs-lookup"><span data-stu-id="2b026-115">Site Recovery provides the capability to retain fixed IP addresses when failing over to Azure, with a subnet failover.</span></span>
+
+<span data-ttu-id="2b026-116">Con la conmutación por error de subredes, una subred específica está presente en el sitio 1 o en el sitio 2, pero nunca en ambos sitios simultáneamente.</span><span class="sxs-lookup"><span data-stu-id="2b026-116">With subnet failover, a specific subnet is present at Site 1 or Site 2, but never at both sites simultaneously.</span></span> <span data-ttu-id="2b026-117">Para mantener el espacio de direcciones IP en el caso de una conmutación por error, puede organizar mediante programación que la infraestructura de enrutador mueva las subredes de un sitio a otro.</span><span class="sxs-lookup"><span data-stu-id="2b026-117">In order to maintain the IP address space in the event of a failover, you programmatically arrange for the router infrastructure to move the subnets from one site to another.</span></span> <span data-ttu-id="2b026-118">Durante la conmutación por error, las subredes se mueven con las máquinas virtuales protegidas asociadas.</span><span class="sxs-lookup"><span data-stu-id="2b026-118">During failover, the subnets move with the associated protected VMs.</span></span> <span data-ttu-id="2b026-119">El principal inconveniente es que si se produce un error, tiene que mover la subred completa.</span><span class="sxs-lookup"><span data-stu-id="2b026-119">The main drawback is that in the event of a failure, you have to move the whole subnet.</span></span>
+
+
+### <a name="failover-example"></a><span data-ttu-id="2b026-120">Ejemplo de conmutación por error</span><span class="sxs-lookup"><span data-stu-id="2b026-120">Failover example</span></span>
+
+<span data-ttu-id="2b026-121">Veamos un ejemplo de conmutación por error a Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-121">Let's look at an example for failover to Azure.</span></span>
+
+- <span data-ttu-id="2b026-122">Una compañía ficticia, Woodgrove Bank, tiene una infraestructura local que hospeda sus aplicaciones empresariales.</span><span class="sxs-lookup"><span data-stu-id="2b026-122">A ficticious company, Woodgrove Bank, has an on-premises infrastructure hosting their business apps.</span></span> <span data-ttu-id="2b026-123">Las aplicaciones móviles se hospedan en Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-123">Their mobile applications are hosted on Azure.</span></span>
+- <span data-ttu-id="2b026-124">La conectividad entre las máquinas virtuales de Woodgrove Bank en los servidores locales y de Azure se proporciona mediante una conexión de red privada virtual (VPN) de sitio a sitio entre la red perimetral local y la red virtual de Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-124">Connectivity between Woodgrove Bank VMs in Azure and on-premises servers is provided by a site-to-site (VPN) connection between the on-premises edge network and the Azure virtual network.</span></span>
+- <span data-ttu-id="2b026-125">Esta VPN implica que la red virtual de la compañía en Azure aparece como una extensión de la red privada local.</span><span class="sxs-lookup"><span data-stu-id="2b026-125">This VPN means that the company's virtual network in Azure appears as an extension of their on-premises network.</span></span>
+- <span data-ttu-id="2b026-126">Woodgrove quiere usar Site Recovery para replicar las cargas de trabajo locales en Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-126">Woodgrove wants to use Site Recovery to replicate on-premises workloads to Azure.</span></span>
+ - <span data-ttu-id="2b026-127">Woodgrove tiene que tratar con aplicaciones y configuraciones que dependen de direcciones IP codificadas de forma rígida, y por lo tanto necesitan conservar las direcciones IP para sus aplicaciones después de la conmutación por error en Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-127">Woodgrove has to deal with applications and configurations which depend on hard-coded IP addresses, and thus need to retain IP addresses for their applications after failover to Azure.</span></span>
+ - <span data-ttu-id="2b026-128">Woodgrove tiene direcciones IP asignadas en el rango 172.16.1.0/24, 172.16.2.0/24 a los recursos que se ejecutan en Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-128">Woodgrove has assigned IP addresses from range 172.16.1.0/24, 172.16.2.0/24 to its resources running in Azure.</span></span>
+
+
+<span data-ttu-id="2b026-129">Para que Woodgrove pueda replicar sus máquinas virtuales en Azure y conservar las direcciones IP, la empresa debe hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="2b026-129">For Woodgrove to be able to replicate its VMS to Azure while retaining the IP addresses, here's what the company needs to do:</span></span>
+
+1. <span data-ttu-id="2b026-130">Cree una red virtual de Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-130">Create an Azure virtual network.</span></span> <span data-ttu-id="2b026-131">Debe ser una extensión de la red local, para que las aplicaciones puedan conmutar por error sin problemas.</span><span class="sxs-lookup"><span data-stu-id="2b026-131">It should be an extension of the on-premises network, so that applications can fail over seamlessly.</span></span>
+2. <span data-ttu-id="2b026-132">Azure permite agregar conectividad VPN de sitio a sitio, además de conectividad de punto a sitio, a las redes virtuales creadas en Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-132">Azure allows you to add site-to-site VPN connectivity, in addition to point-to-site connectivity to the virtual networks created in Azure.</span></span>
+3. <span data-ttu-id="2b026-133">Al configurar la conexión de sitio a sitio en la red de Azure, solo puede enrutar el tráfico a la ubicación local (red local) si el intervalo de direcciones IP es distinto del intervalo de direcciones IP local.</span><span class="sxs-lookup"><span data-stu-id="2b026-133">When setting up the site-to-site connection, in the Azure network, you can route traffic to the on-premises location (local-network) only if the IP address range is different from the on-premises IP address range.</span></span>
+    - <span data-ttu-id="2b026-134">Esto se debe a que Azure no admite subredes estiradas.</span><span class="sxs-lookup"><span data-stu-id="2b026-134">This is because Azure doesn’t support stretched subnets.</span></span> <span data-ttu-id="2b026-135">Por lo que si tiene una subred local 192.168.1.0/24, no puede agregar una red local 192.168.1.0/24 en la red de Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-135">So if you have subnet 192.168.1.0/24 on-premises, you can’t add a local-network 192.168.1.0/24 in the Azure network.</span></span>
+    - <span data-ttu-id="2b026-136">Esto es normal, ya que Azure no sabe que no hay ninguna máquina virtual activa en la subred y que se está creando la subred solo para fines de recuperación ante desastres.</span><span class="sxs-lookup"><span data-stu-id="2b026-136">This is expected because Azure doesn’t know that there are no active VMs in the subnet, and that the subnet is being created for disaster recovery only.</span></span>
+    - <span data-ttu-id="2b026-137">Para poder distribuir correctamente el tráfico de red de una red Azure, las subredes de la red y la red local no deben estar en conflicto.</span><span class="sxs-lookup"><span data-stu-id="2b026-137">To be able to correctly route network traffic out of an Azure network the subnets in the network and the local-network mustn't conflict.</span></span>
+
+![Antes de la conmutación por error de la subred](./media/site-recovery-network-design/network-design7.png)
+
+### <a name="before-failover"></a><span data-ttu-id="2b026-139">Antes de la conmutación por error</span><span class="sxs-lookup"><span data-stu-id="2b026-139">Before failover</span></span>
+
+1. <span data-ttu-id="2b026-140">Cree una red adicional (por ejemplo, una red de recuperación).</span><span class="sxs-lookup"><span data-stu-id="2b026-140">Create an additional network (for example Recovery Network).</span></span> <span data-ttu-id="2b026-141">Se trata de la red en la que se crean las máquinas virtuales que han conmutado por error.</span><span class="sxs-lookup"><span data-stu-id="2b026-141">This is the network in which failed over VMs are created.</span></span>
+2. <span data-ttu-id="2b026-142">Para asegurarse de que la dirección IP de una máquina virtual se conserva después de una conmutación por error, en las Propiedades de la máquina virtual > **Configurar**, especifique la misma dirección IP que la máquina virtual tiene localmente y haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="2b026-142">To ensure that the IP address for a VM is retained after a failover, in the VM properties > **Configure**, specify the same IP address that the VM has on-premises, and click **Save**.</span></span>
+3. <span data-ttu-id="2b026-143">Cuando se produzca la conmutación por error de la máquina virtual, Azure Site Recovery le asignará la dirección IP proporcionada.</span><span class="sxs-lookup"><span data-stu-id="2b026-143">When the VM is failed over, Azure Site Recovery will assign the provided IP address to it.</span></span>
+
+    ![Propiedades de red](./media/site-recovery-network-design/network-design8.png)
+
+4. <span data-ttu-id="2b026-145">Una vez desencadenada la conmutación por error y creadas las máquinas virtuales en Azure con la dirección IP necesaria, puede conectarse a la red con una [conexión Vnet a Vnet](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).</span><span class="sxs-lookup"><span data-stu-id="2b026-145">After failover is trigger is triggered, and the VMs are created in Azure with the required IP address, you can connect to the network using a [Vnet to Vnet connection](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).</span></span> <span data-ttu-id="2b026-146">Esta acción puede ejecutarse mediante script.</span><span class="sxs-lookup"><span data-stu-id="2b026-146">This action can be scripted.</span></span>
+5. <span data-ttu-id="2b026-147">Las rutas deben modificarse de forma adecuada para que reflejen que 192.168.1.0/24 se ha movido ahora a Azure.</span><span class="sxs-lookup"><span data-stu-id="2b026-147">Routes need to be appropriately modified, to reflect that 192.168.1.0/24 has now moved to Azure.</span></span>
+
+    ![Después de la conmutación por error de la subred](./media/site-recovery-network-design/network-design9.png)
+
+### <a name="after-failover"></a><span data-ttu-id="2b026-149">Después de la conmutación por error</span><span class="sxs-lookup"><span data-stu-id="2b026-149">After failover</span></span>
+
+<span data-ttu-id="2b026-150">Si no dispone de una red Azure tal y como se ilustra arriba, puede crear una conexión de VPN de sitio a sitio entre el sitio primario y Azure después de la conmutación por error.</span><span class="sxs-lookup"><span data-stu-id="2b026-150">If you don't have an Azure network as illustrated above, you can create a site-to-site VPN connection between your primary site and Azure, after failover.</span></span>
+
+## <a name="change-ip-addresses"></a><span data-ttu-id="2b026-151">Cambio de direcciones IP</span><span class="sxs-lookup"><span data-stu-id="2b026-151">Change IP addresses</span></span>
+
+<span data-ttu-id="2b026-152">En esta [entrada de blog](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) se explica cómo configurar la infraestructura de red de Azure cuando no hay que conservar las direcciones IP después de la conmutación por error.</span><span class="sxs-lookup"><span data-stu-id="2b026-152">This [blog post](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) explains how to set up the Azure networking infrastructure when you don't need to retain IP addresses after failover.</span></span> <span data-ttu-id="2b026-153">Comienza con una descripción de la aplicación, se examina cómo configurar redes en local y en Azure y se concluye con información sobre la ejecución de las conmutaciones por error.</span><span class="sxs-lookup"><span data-stu-id="2b026-153">It starts with an application description, looks at how to set up networking on-premises and in Azure, and concludes with information about running failovers.</span></span>  
+
+## <a name="next-steps"></a><span data-ttu-id="2b026-154">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="2b026-154">Next steps</span></span>
+
+<span data-ttu-id="2b026-155">Vaya al [Paso 5: Preparación de Azure](vmware-walkthrough-prepare-azure.md).</span><span class="sxs-lookup"><span data-stu-id="2b026-155">Go to [Step 5: Prepare Azure](vmware-walkthrough-prepare-azure.md)</span></span>
