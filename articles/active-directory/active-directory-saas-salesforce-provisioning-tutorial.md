@@ -1,0 +1,111 @@
+---
+title: "Tutorial: Integración de Azure Active Directory con Salesforce | Microsoft Docs"
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Salesforce."
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: femila
+ms.assetid: 49384b8b-3836-4eb1-b438-1c46bb9baf6f
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/19/2017
+ms.author: jeedes
+ms.openlocfilehash: a573a7ef79e28c50ae0923849a88f88af40f21be
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="tutorial-configuring-salesforce-for-automatic-user-provisioning"></a><span data-ttu-id="f174d-103">Tutorial: Configuración de Salesforce para aprovisionar a los usuarios automáticamente</span><span class="sxs-lookup"><span data-stu-id="f174d-103">Tutorial: Configuring Salesforce for Automatic User Provisioning</span></span>
+
+<span data-ttu-id="f174d-104">El objetivo de este tutorial es mostrar los pasos que debe realizar en Salesforce y Azure AD para aprovisionar y cancelar automáticamente el aprovisionamiento de cuentas de usuario de Azure AD para Salesforce.</span><span class="sxs-lookup"><span data-stu-id="f174d-104">The objective of this tutorial is to show the steps required to perform in Salesforce and Azure AD to automatically provision and de-provision user accounts from Azure AD to Salesforce.</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="f174d-105">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="f174d-105">Prerequisites</span></span>
+
+<span data-ttu-id="f174d-106">En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:</span><span class="sxs-lookup"><span data-stu-id="f174d-106">The scenario outlined in this tutorial assumes that you already have the following items:</span></span>
+
+*   <span data-ttu-id="f174d-107">Un inquilino de Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="f174d-107">An Azure Active directory tenant.</span></span>
+*   <span data-ttu-id="f174d-108">Debe tener un inquilino válido para Salesforce for Work o Salesforce for Education.</span><span class="sxs-lookup"><span data-stu-id="f174d-108">You must have a valid tenant for Salesforce for Work or Salesforce for Education.</span></span> <span data-ttu-id="f174d-109">Puede usar una cuenta de prueba gratuita de cualquiera de los servicios.</span><span class="sxs-lookup"><span data-stu-id="f174d-109">You may use a free trial     account for either service.</span></span>
+*   <span data-ttu-id="f174d-110">Una cuenta de usuario de Salesforce con permisos de administrador de equipo</span><span class="sxs-lookup"><span data-stu-id="f174d-110">A user account in Salesforce with Team Admin permissions.</span></span>
+
+## <a name="assigning-users-to-salesforce"></a><span data-ttu-id="f174d-111">Asignación de usuarios a Salesforce</span><span class="sxs-lookup"><span data-stu-id="f174d-111">Assigning users to Salesforce</span></span>
+
+<span data-ttu-id="f174d-112">Azure Active Directory usa un concepto que se denomina "asignaciones" para determinar qué usuarios deben recibir acceso a determinadas aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="f174d-112">Azure Active Directory uses a concept called "assignments" to determine which users should receive access to selected apps.</span></span> <span data-ttu-id="f174d-113">En el contexto del aprovisionamiento automático de cuentas de usuario, solo se sincronizarán los usuarios y grupos que se han "asignado" a una aplicación de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f174d-113">In the context of automatic user account provisioning, only the users and groups that have been "assigned" to an application in Azure AD is synchronized.</span></span>
+
+<span data-ttu-id="f174d-114">Antes de configurar y habilitar el servicio de aprovisionamiento, debe decidir qué usuarios o grupos de Azure AD representan a los usuarios que necesitan acceso a la aplicación Salesforce.</span><span class="sxs-lookup"><span data-stu-id="f174d-114">Before configuring and enabling the provisioning service, you need to decide what users and/or groups in Azure AD represent the users who need access to your Salesforce app.</span></span> <span data-ttu-id="f174d-115">Una vez decidido, puede asignar estos usuarios a la aplicación Salesforce siguiendo estas instrucciones:</span><span class="sxs-lookup"><span data-stu-id="f174d-115">Once decided, you can assign these users to your Salesforce app by following the instructions here:</span></span>
+
+[<span data-ttu-id="f174d-116">Asignar un usuario o grupo a una aplicación empresarial</span><span class="sxs-lookup"><span data-stu-id="f174d-116">Assign a user or group to an enterprise app</span></span>](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+
+### <a name="important-tips-for-assigning-users-to-salesforce"></a><span data-ttu-id="f174d-117">Sugerencias importantes para asignar usuarios a Salesforce</span><span class="sxs-lookup"><span data-stu-id="f174d-117">Important tips for assigning users to Salesforce</span></span>
+
+*   <span data-ttu-id="f174d-118">Se recomienda asignar un único usuario de Azure AD a Salesforce para probar la configuración de aprovisionamiento.</span><span class="sxs-lookup"><span data-stu-id="f174d-118">It is recommended that a single Azure AD user is assigned to Salesforce to test the provisioning configuration.</span></span> <span data-ttu-id="f174d-119">Más tarde, se pueden asignar otros usuarios o grupos.</span><span class="sxs-lookup"><span data-stu-id="f174d-119">Additional users and/or groups may be assigned later.</span></span>
+
+*  <span data-ttu-id="f174d-120">Al asignar a un usuario a Salesforce, debe seleccionar un rol de usuario válido.</span><span class="sxs-lookup"><span data-stu-id="f174d-120">When assigning a user to Salesforce, you must select a valid user role.</span></span> <span data-ttu-id="f174d-121">El rol "Acceso predeterminado" no funciona con el aprovisionamiento.</span><span class="sxs-lookup"><span data-stu-id="f174d-121">The "Default Access" role does not work for provisioning</span></span>
+
+    > [!NOTE]
+    > <span data-ttu-id="f174d-122">Esta aplicación importa roles personalizados desde Salesforce como parte del proceso de aprovisionamiento, que el cliente puede seleccionar al asignar usuarios.</span><span class="sxs-lookup"><span data-stu-id="f174d-122">This app imports custom roles from Salesforce as part of the provisioning process, which the customer may want to select when assigning users</span></span>
+
+## <a name="enable-automated-user-provisioning"></a><span data-ttu-id="f174d-123">Habilitación del aprovisionamiento automático de usuarios</span><span class="sxs-lookup"><span data-stu-id="f174d-123">Enable Automated User Provisioning</span></span>
+
+<span data-ttu-id="f174d-124">Esta sección le guía por los pasos necesarios para conectar la API de aprovisionamiento de cuentas de usuario de Salesforce, así como para configurar el servicio de aprovisionamiento con el fin de crear, actualizar y deshabilitar cuentas de usuario asignadas de Salesforce en función de la asignación de grupos y usuarios en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f174d-124">This section guides you through connecting your Azure AD to Salesforce's user account provisioning API, and configuring the provisioning service to create, update, and disable assigned user accounts in Salesforce based on user and group assignment in Azure AD.</span></span>
+
+>[!Tip]
+><span data-ttu-id="f174d-125">También puede decidir habilitar el inicio de sesión único basado en SAML para Salesforce siguiendo las instrucciones de [Azure Portal](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="f174d-125">You may also choose to enabled SAML-based Single Sign-On for Salesforce, following the instructions provided in [Azure portal](https://portal.azure.com).</span></span> <span data-ttu-id="f174d-126">El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.</span><span class="sxs-lookup"><span data-stu-id="f174d-126">Single sign-on can be configured independently of automatic provisioning, though these two features compliment each other.</span></span>
+
+### <a name="to-configure-automatic-user-account-provisioning"></a><span data-ttu-id="f174d-127">Para configurar el aprovisionamiento automático de cuentas de usuario, siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="f174d-127">To configure automatic user account provisioning:</span></span>
+
+<span data-ttu-id="f174d-128">El objetivo de esta sección es describir cómo habilitar el aprovisionamiento de cuentas de usuario de Active Directory para Salesforce.</span><span class="sxs-lookup"><span data-stu-id="f174d-128">The objective of this section is to outline how to enable user provisioning of Active Directory user accounts to Salesforce.</span></span>
+
+1. <span data-ttu-id="f174d-129">En [Azure Portal](https://portal.azure.com), vaya a la sección **Azure Active Directory > Aplicaciones empresariales > Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="f174d-129">In the [Azure portal](https://portal.azure.com), browse to the **Azure Active Directory > Enterprise Apps > All applications** section.</span></span>
+
+2. <span data-ttu-id="f174d-130">Si ya ha configurado Salesforce para el inicio de sesión único, busque la instancia de Salesforce mediante el campo de búsqueda.</span><span class="sxs-lookup"><span data-stu-id="f174d-130">If you have already configured Salesforce for single sign-on, search for your instance of Salesforce using the search field.</span></span> <span data-ttu-id="f174d-131">En caso contrario, seleccione **Agregar** y busque **Salesforce** en la galería de aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="f174d-131">Otherwise, select **Add** and search for **Salesforce** in the application gallery.</span></span> <span data-ttu-id="f174d-132">Seleccione Salesforce en los resultados de búsqueda y agréguelo a la lista de aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="f174d-132">Select Salesforce from the search results, and add it to your list of applications.</span></span>
+
+3. <span data-ttu-id="f174d-133">Seleccione la instancia de Salesforce y, después, seleccione la pestaña **Aprovisionamiento**.</span><span class="sxs-lookup"><span data-stu-id="f174d-133">Select your instance of Salesforce, then select the **Provisioning** tab.</span></span>
+
+4. <span data-ttu-id="f174d-134">Establezca el **modo de aprovisionamiento** en **Automático**.</span><span class="sxs-lookup"><span data-stu-id="f174d-134">Set the **Provisioning Mode** to **Automatic**.</span></span> 
+<span data-ttu-id="f174d-135">![Aprovisionamiento](./media/active-directory-saas-salesforce-provisioning-tutorial/provisioning.png)</span><span class="sxs-lookup"><span data-stu-id="f174d-135">![provisioning](./media/active-directory-saas-salesforce-provisioning-tutorial/provisioning.png)</span></span>
+
+5. <span data-ttu-id="f174d-136">En la sección **Credenciales de administrador**, proporcione los siguientes valores de configuración:</span><span class="sxs-lookup"><span data-stu-id="f174d-136">Under the **Admin Credentials** section, provide the following configuration settings:</span></span>
+   
+    <span data-ttu-id="f174d-137">a.</span><span class="sxs-lookup"><span data-stu-id="f174d-137">a.</span></span> <span data-ttu-id="f174d-138">Como **nombre de usuario del administrador**, escriba un nombre de cuenta de espacio de Salesforce que tenga asignado el perfil **Administrador del sistema** en Salesforce.com.</span><span class="sxs-lookup"><span data-stu-id="f174d-138">In the **Admin User Name** textbox, type a Salesforce account name that has the **System Administrator** profile in Salesforce.com assigned.</span></span>
+   
+    <span data-ttu-id="f174d-139">b.</span><span class="sxs-lookup"><span data-stu-id="f174d-139">b.</span></span> <span data-ttu-id="f174d-140">En el cuadro de texto **Contraseña de administrador**, escriba la contraseña de esta cuenta.</span><span class="sxs-lookup"><span data-stu-id="f174d-140">In the **Admin Password** textbox, type the password for this account.</span></span>
+
+6. <span data-ttu-id="f174d-141">Para obtener el token de seguridad de Salesforce, abra una nueva pestaña e inicie sesión en la misma cuenta de administrador de Salesforce.</span><span class="sxs-lookup"><span data-stu-id="f174d-141">To get your Salesforce security token, open a new tab and sign into the same Salesforce admin account.</span></span> <span data-ttu-id="f174d-142">En la esquina superior derecha de la página, haga clic en su nombre y, a continuación, haga clic en **Mi configuración**.</span><span class="sxs-lookup"><span data-stu-id="f174d-142">On the top right corner of the page, click your name, and then click **My Settings**.</span></span>
+
+     <span data-ttu-id="f174d-143">![Habilitar el aprovisionamiento automático de usuarios](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-my-settings.png "Habilitar aprovisionamiento automático de usuarios")</span><span class="sxs-lookup"><span data-stu-id="f174d-143">![Enable automatic user provisioning](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")</span></span>
+7. <span data-ttu-id="f174d-144">En el panel de navegación izquierdo, haga clic en **Personal** para expandir la sección relacionada y haga clic en **Reset My Security Token** (Restablecer mi token de seguridad).</span><span class="sxs-lookup"><span data-stu-id="f174d-144">On the left navigation pane, click **Personal** to expand the related section, and then click **Reset My Security Token**.</span></span>
+  
+    <span data-ttu-id="f174d-145">![Habilitar el aprovisionamiento automático de usuarios](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-personal-reset.png "Habilitar aprovisionamiento automático de usuarios")</span><span class="sxs-lookup"><span data-stu-id="f174d-145">![Enable automatic user provisioning](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")</span></span>
+8. <span data-ttu-id="f174d-146">En la página **Reset My Security Token** (Restablecer mi token de seguridad), haga clic en el botón **Reset Security Token** (Restablecer token de seguridad).</span><span class="sxs-lookup"><span data-stu-id="f174d-146">On the **Reset My Security Token** page, click **Reset Security Token** button.</span></span>
+
+    <span data-ttu-id="f174d-147">![Habilitar el aprovisionamiento automático de usuarios](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-reset-token.png "Habilitar aprovisionamiento automático de usuarios")</span><span class="sxs-lookup"><span data-stu-id="f174d-147">![Enable automatic user provisioning](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")</span></span>
+9. <span data-ttu-id="f174d-148">Compruebe la bandeja de entrada de correo electrónico asociada a esta cuenta de administrador.</span><span class="sxs-lookup"><span data-stu-id="f174d-148">Check the email inbox associated with this admin account.</span></span> <span data-ttu-id="f174d-149">Busque un correo electrónico de Salesforce.com que contenga el nuevo token de seguridad.</span><span class="sxs-lookup"><span data-stu-id="f174d-149">Look for an email from Salesforce.com that contains the new security token.</span></span>
+10. <span data-ttu-id="f174d-150">Copie el token, vaya a la ventana de Azure AD y péguelo en el campo **Socket Token** (Token de socket).</span><span class="sxs-lookup"><span data-stu-id="f174d-150">Copy the token, go to your Azure AD window, and paste it into the **Socket Token** field.</span></span>
+
+11. <span data-ttu-id="f174d-151">En Azure Portal, haga clic en **Probar conexión** para asegurarse de que Azure AD puede conectarse a la aplicación Salesforce.</span><span class="sxs-lookup"><span data-stu-id="f174d-151">In the Azure portal, click **Test Connection** to ensure Azure AD can connect to your Salesforce app.</span></span>
+
+12. <span data-ttu-id="f174d-152">Escriba la dirección de correo electrónico de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en el campo **Correo electrónico de notificación** y active la casilla que aparece a continuación.</span><span class="sxs-lookup"><span data-stu-id="f174d-152">In the **Notification Email** field, enter the email address of a person or group who should receive provisioning error notifications, and check the checkbox below.</span></span>
+
+13. <span data-ttu-id="f174d-153">Haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="f174d-153">Click **Save.**</span></span>  
+    
+14.  <span data-ttu-id="f174d-154">En la sección Asignaciones, seleccione **Synchronize Azure Active Directory Users to** (Sincronizar usuarios de Azure Active Directory con Salesforce).</span><span class="sxs-lookup"><span data-stu-id="f174d-154">Under the Mappings section, select **Synchronize Azure Active Directory Users to Salesforce.**</span></span>
+
+15. <span data-ttu-id="f174d-155">En la sección **Attribute Mappings** (Asignaciones de atributos), revise los atributos de usuario que se sincronizarán entre Azure AD y Salesforce.</span><span class="sxs-lookup"><span data-stu-id="f174d-155">In the **Attribute Mappings** section, review the user attributes that are synchronized from Azure AD to Salesforce.</span></span> <span data-ttu-id="f174d-156">Tenga en cuenta que los atributos seleccionados como propiedades de **Coincidencia** se usarán para buscar coincidencias con las cuentas de usuario de Salesforce con el objetivo de realizar operaciones de actualización.</span><span class="sxs-lookup"><span data-stu-id="f174d-156">Note that the attributes selected as **Matching** properties are used to match the user accounts in Salesforce for update operations.</span></span> <span data-ttu-id="f174d-157">Seleccione el botón Guardar para confirmar los cambios.</span><span class="sxs-lookup"><span data-stu-id="f174d-157">Select the Save button to commit any changes.</span></span>
+
+16. <span data-ttu-id="f174d-158">Para habilitar el servicio de aprovisionamiento de Azure AD para Salesforce, cambie el **estado de aprovisionamiento** a **Activado** en la sección Configuración.</span><span class="sxs-lookup"><span data-stu-id="f174d-158">To enable the Azure AD provisioning service for Salesforce, change the **Provisioning Status** to **On** in the Settings section</span></span>
+
+17. <span data-ttu-id="f174d-159">Haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="f174d-159">Click **Save.**</span></span>
+
+<span data-ttu-id="f174d-160">Esta acción inicia la sincronización inicial de todos los usuarios y grupos asignados a Salesforce en la sección Usuarios y grupos.</span><span class="sxs-lookup"><span data-stu-id="f174d-160">This starts the initial synchronization of any users and/or groups assigned to Salesforce in the Users and Groups section.</span></span> <span data-ttu-id="f174d-161">Tenga en cuenta que la sincronización inicial tardará más tiempo en realizarse que las posteriores, que se producen aproximadamente cada 20 minutos si se está ejecutando el servicio.</span><span class="sxs-lookup"><span data-stu-id="f174d-161">Note that the initial sync takes longer to perform than subsequent syncs, which occur approximately every 20 minutes as long as the service is running.</span></span> <span data-ttu-id="f174d-162">Puede usar la sección **Detalles de sincronización** para supervisar el progreso y seguir los vínculos a los informes de actividad de aprovisionamiento, donde se describen todas las acciones que ha llevado a cabo el servicio de aprovisionamiento en la aplicación de Salesforce.</span><span class="sxs-lookup"><span data-stu-id="f174d-162">You can use the **Synchronization Details** section to monitor progress and follow links to provisioning activity reports, which describe all actions performed by the provisioning service on your Salesforce app.</span></span>
+
+<span data-ttu-id="f174d-163">Ahora puede crear una cuenta de prueba.</span><span class="sxs-lookup"><span data-stu-id="f174d-163">You can now create a test account.</span></span> <span data-ttu-id="f174d-164">Espere 20 minutos para comprobar que la cuenta se ha sincronizado con Salesforce.</span><span class="sxs-lookup"><span data-stu-id="f174d-164">Wait for up to 20 minutes to verify that the account has been synchronized to Salesforce.</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="f174d-165">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="f174d-165">Additional resources</span></span>
+
+* [<span data-ttu-id="f174d-166">Administración del aprovisionamiento de cuentas de usuario para aplicaciones empresariales</span><span class="sxs-lookup"><span data-stu-id="f174d-166">Managing user account provisioning for Enterprise Apps</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="f174d-167">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="f174d-167">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="f174d-168">Configuración del inicio de sesión único</span><span class="sxs-lookup"><span data-stu-id="f174d-168">Configure Single Sign-on</span></span>](active-directory-saas-salesforce-tutorial.md)

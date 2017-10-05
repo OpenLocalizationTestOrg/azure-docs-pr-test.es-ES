@@ -1,0 +1,131 @@
+---
+title: "Active Directory Domain Services: Implementación del proxy de aplicación de Azure Active Directory | Microsoft Docs"
+description: "En este artículo se explica cómo usar el proxy de aplicación en dominios administrados de Azure Active Directory Domain Services."
+services: active-directory-ds
+documentationcenter: 
+author: mahesh-unnikrishnan
+manager: stevenpo
+editor: curtand
+ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
+ms.service: active-directory-ds
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/06/2017
+ms.author: maheshu
+ms.openlocfilehash: c158c67a82e12501386179e19bc75fd852d7e308
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a><span data-ttu-id="7189f-103">Implementación del proxy de aplicación de Azure AD en dominios administrados de Azure Active Directory Domain Services.</span><span class="sxs-lookup"><span data-stu-id="7189f-103">Deploy Azure AD Application Proxy on an Azure AD Domain Services managed domain</span></span>
+<span data-ttu-id="7189f-104">El proxy de aplicación de Azure Active Directory (AD) permite publicar aplicaciones locales para acceder a ellas a través de Internet y poder admitir trabajadores remotos.</span><span class="sxs-lookup"><span data-stu-id="7189f-104">Azure Active Directory (AD) Application Proxy helps you support remote workers by publishing on-premises applications to be accessed over the internet.</span></span> <span data-ttu-id="7189f-105">Con Azure AD Domain Services, ahora podrá trasladar aplicaciones heredadas que se ejecutan de forma local en los servicios de infraestructura de Azure.</span><span class="sxs-lookup"><span data-stu-id="7189f-105">With Azure AD Domain Services, you can now lift-and-shift legacy applications running on-premises to Azure Infrastructure Services.</span></span> <span data-ttu-id="7189f-106">Después, podrá publicar estas aplicaciones mediante el proxy de aplicación de Azure AD para proporcionar acceso remoto seguro a los usuarios de su organización.</span><span class="sxs-lookup"><span data-stu-id="7189f-106">You can then publish these applications using the Azure AD Application Proxy, to provide secure remote access to users in your organization.</span></span>
+
+<span data-ttu-id="7189f-107">También, si no está familiarizado con el proxy de aplicación de Azure AD, obtenga más información sobre esta característica con el siguiente artículo [Provisión de acceso remoto seguro a aplicaciones locales](../active-directory/active-directory-application-proxy-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="7189f-107">If you're new to the Azure AD Application Proxy, learn more about this feature with the following article: [How to provide secure remote access to on-premises applications](../active-directory/active-directory-application-proxy-get-started.md).</span></span>
+
+
+## <a name="before-you-begin"></a><span data-ttu-id="7189f-108">Antes de empezar</span><span class="sxs-lookup"><span data-stu-id="7189f-108">Before you begin</span></span>
+<span data-ttu-id="7189f-109">Para realizar las tareas enumeradas en este artículo, necesita lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="7189f-109">To perform the tasks listed in this article, you need:</span></span>
+
+1. <span data-ttu-id="7189f-110">Una **suscripción de Azure**válida.</span><span class="sxs-lookup"><span data-stu-id="7189f-110">A valid **Azure subscription**.</span></span>
+2. <span data-ttu-id="7189f-111">Un **directorio de Azure AD** : sincronizado con un directorio local o solo en la nube.</span><span class="sxs-lookup"><span data-stu-id="7189f-111">An **Azure AD directory** - either synchronized with an on-premises directory or a cloud-only directory.</span></span>
+3. <span data-ttu-id="7189f-112">Se necesita una **licencia de Azure AD Basic y Premium** para usar el proxy de aplicación de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-112">An **Azure AD Basic or Premium license** is required to use the Azure AD Application Proxy.</span></span>
+4. <span data-ttu-id="7189f-113">**Servicios de dominio de Azure AD** deben estar habilitado en el directorio de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-113">**Azure AD Domain Services** must be enabled for the Azure AD directory.</span></span> <span data-ttu-id="7189f-114">Si no lo ha hecho, siga todas las tareas descritas en [Servicios de dominio de Azure AD (vista previa): introducción](active-directory-ds-getting-started.md).</span><span class="sxs-lookup"><span data-stu-id="7189f-114">If you haven't done so, follow all the tasks outlined in the [Getting Started guide](active-directory-ds-getting-started.md).</span></span>
+
+<br>
+
+## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a><span data-ttu-id="7189f-115">Tarea 1: Habilitar el proxy de aplicación de Azure AD en su directorio de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7189f-115">Task 1 - Enable Azure AD Application Proxy for your Azure AD directory</span></span>
+<span data-ttu-id="7189f-116">Realice los pasos siguientes para habilitar el proxy de aplicación de Azure AD en su directorio Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-116">Perform the following steps to enable the Azure AD Application Proxy for your Azure AD directory.</span></span>
+
+1. <span data-ttu-id="7189f-117">Inicie sesión como administrador en [Azure Portal](http://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="7189f-117">Sign in as an administrator in the [Azure portal](http://portal.azure.com).</span></span>
+
+2. <span data-ttu-id="7189f-118">Haga clic en **Azure Active Directory** para que aparezca la información general del directorio.</span><span class="sxs-lookup"><span data-stu-id="7189f-118">Click **Azure Active Directory** to bring up the directory overview.</span></span> <span data-ttu-id="7189f-119">Haga clic en **Aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="7189f-119">Click **Enterprise applications**.</span></span>
+
+    ![Selección de un directorio de Azure AD](./media/app-proxy/app-proxy-enable-start.png)
+3. <span data-ttu-id="7189f-121">Haga clic en **Proxy de aplicación**.</span><span class="sxs-lookup"><span data-stu-id="7189f-121">Click **Application proxy**.</span></span> <span data-ttu-id="7189f-122">Si no tiene una suscripción de Azure AD Basic o Premium, verá una opción para habilitar una versión de prueba.</span><span class="sxs-lookup"><span data-stu-id="7189f-122">If you do not have an Azure AD Basic or Azure AD Premium subscription, you see an option to enable a trial.</span></span> <span data-ttu-id="7189f-123">Establezca **Habilitar el proxy de la aplicación** en **Habilitar** y haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="7189f-123">Toggle **Enable Application Proxy?** to **Enable** and click **Save**.</span></span>
+
+    ![Habilitación del proxy de aplicación](./media/app-proxy/app-proxy-enable-proxy-blade.png)
+4. <span data-ttu-id="7189f-125">Para descargar el conector, haga clic en el botón **Conector**.</span><span class="sxs-lookup"><span data-stu-id="7189f-125">To download the connector, click the **Connector** button.</span></span>
+
+    ![Descarga del conector](./media/app-proxy/app-proxy-enabled-download-connector.png)
+5. <span data-ttu-id="7189f-127">En la página de descarga, acepte el acuerdo de privacidad y los términos de licencia, y haga clic en el botón **Descargar**.</span><span class="sxs-lookup"><span data-stu-id="7189f-127">On the download page, accept the license terms and privacy agreement and click the **Download** button.</span></span>
+
+    ![Confirmación de la descarga](./media/app-proxy/app-proxy-enabled-confirm-download.png)
+
+
+## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a><span data-ttu-id="7189f-129">Tarea 2: Aprovisionar los servidores de Windows unidos a un dominio para implementar el conector del proxy de aplicación de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7189f-129">Task 2 - Provision domain-joined Windows servers to deploy the Azure AD Application Proxy connector</span></span>
+<span data-ttu-id="7189f-130">Debe tener máquinas virtuales Windows Server unidas a un dominio donde pueda instalar el conector del proxy de aplicación de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-130">You need domain-joined Windows Server virtual machines on which you can install the Azure AD Application Proxy connector.</span></span> <span data-ttu-id="7189f-131">En función de las aplicaciones que se publiquen, puede aprovisionar varios servidores en los que esté instalado el conector.</span><span class="sxs-lookup"><span data-stu-id="7189f-131">Depending on the applications being published, you may choose to provision multiple servers on which the connector is installed.</span></span> <span data-ttu-id="7189f-132">Esta opción de implementación ofrece mayor disponibilidad y lo ayuda a administrar cargas de autenticación más intensas.</span><span class="sxs-lookup"><span data-stu-id="7189f-132">This deployment option gives you greater availability and helps handle heavier authentication loads.</span></span>
+
+<span data-ttu-id="7189f-133">Aprovisione los servidores del conector en la misma red virtual (o en una red virtual conectada o emparejada), en la que ha habilitado el dominio administrado de Azure AD Domain Services.</span><span class="sxs-lookup"><span data-stu-id="7189f-133">Provision the connector servers on the same virtual network (or a connected/peered virtual network), in which you have enabled your Azure AD Domain Services managed domain.</span></span> <span data-ttu-id="7189f-134">De forma similar, los servidores que hospedan las aplicaciones que publique a través del proxy de aplicación deben instalarse en la misma red virtual de Azure.</span><span class="sxs-lookup"><span data-stu-id="7189f-134">Similarly, the servers hosting the applications you publish via the Application Proxy need to be installed on the same Azure virtual network.</span></span>
+
+<span data-ttu-id="7189f-135">Para aprovisionar servidores del conector, siga todas las tareas descritas en el artículo [Unión de una máquina virtual Windows Server a un dominio administrado](active-directory-ds-admin-guide-join-windows-vm.md).</span><span class="sxs-lookup"><span data-stu-id="7189f-135">To provision connector servers, follow the tasks outlined in the article titled [Join a Windows virtual machine to a managed domain](active-directory-ds-admin-guide-join-windows-vm.md).</span></span>
+
+
+## <a name="task-3---install-and-register-the-azure-ad-application-proxy-connector"></a><span data-ttu-id="7189f-136">Tarea 3: Instalar y registrar el conector del proxy de aplicación de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7189f-136">Task 3 - Install and register the Azure AD Application Proxy Connector</span></span>
+<span data-ttu-id="7189f-137">Anteriormente, aprovisionó una máquina virtual Windows Server y la unió al dominio administrado.</span><span class="sxs-lookup"><span data-stu-id="7189f-137">Previously, you provisioned a Windows Server virtual machine and joined it to the managed domain.</span></span> <span data-ttu-id="7189f-138">En esta tarea, instalará el conector del proxy de aplicación de Azure AD en esta máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="7189f-138">In this task, you will install the Azure AD Application Proxy connector on this virtual machine.</span></span>
+
+1. <span data-ttu-id="7189f-139">Copie el paquete de instalación del conector en la máquina virtual donde instaló el conector del proxy de aplicación web de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-139">Copy the connector installation package to the VM on which you install the Azure AD Web Application Proxy connector.</span></span>
+
+2. <span data-ttu-id="7189f-140">Ejecute **AADApplicationProxyConnectorInstaller.exe** en la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="7189f-140">Run **AADApplicationProxyConnectorInstaller.exe** on the virtual machine.</span></span> <span data-ttu-id="7189f-141">Acepte los términos de licencia del software.</span><span class="sxs-lookup"><span data-stu-id="7189f-141">Accept the software license terms.</span></span>
+
+    ![Aceptación de los términos de instalación](./media/app-proxy/app-proxy-install-connector-terms.png)
+3. <span data-ttu-id="7189f-143">Durante la instalación, se le pedirá que registre el conector en el proxy de aplicación de su directorio de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-143">During installation, you are prompted to register the connector with the Application Proxy of your Azure AD directory.</span></span>
+    * <span data-ttu-id="7189f-144">Proporcione sus **credenciales de administrador global de Azure AD**.</span><span class="sxs-lookup"><span data-stu-id="7189f-144">Provide your **Azure AD global administrator credentials**.</span></span> <span data-ttu-id="7189f-145">Su inquilino de administrador global puede ser diferente de sus credenciales de Microsoft Azure.</span><span class="sxs-lookup"><span data-stu-id="7189f-145">Your global administrator tenant may be different from your Microsoft Azure credentials.</span></span>
+    * <span data-ttu-id="7189f-146">La cuenta de administrador que se usa para registrar el conector debe pertenecer al mismo directorio donde haya habilitado el servicio de proxy de aplicación.</span><span class="sxs-lookup"><span data-stu-id="7189f-146">The administrator account used to register the connector must belong to the same directory where you enabled the Application Proxy service.</span></span> <span data-ttu-id="7189f-147">Por ejemplo, si el dominio del inquilino es contoso.com, el administrador debe ser admin@contoso.com o cualquier otro alias válido de ese dominio.</span><span class="sxs-lookup"><span data-stu-id="7189f-147">For example, if the tenant domain is contoso.com, the admin should be admin@contoso.com or any other valid alias on that domain.</span></span>
+    * <span data-ttu-id="7189f-148">Si Configuración de seguridad mejorada de IE está activado en el servidor donde va a instalar el conector, la pantalla de registro podría bloquearse.</span><span class="sxs-lookup"><span data-stu-id="7189f-148">If IE Enhanced Security Configuration is turned on for the server where you are installing the connector, the registration screen might be blocked.</span></span> <span data-ttu-id="7189f-149">Siga las instrucciones del mensaje de error para permitir el acceso.</span><span class="sxs-lookup"><span data-stu-id="7189f-149">To allow access, follow the instructions in the error message.</span></span> <span data-ttu-id="7189f-150">Asegúrese de que Internet Explorer Enhanced Security está desactivado.</span><span class="sxs-lookup"><span data-stu-id="7189f-150">Make sure that Internet Explorer Enhanced Security is off.</span></span>
+    * <span data-ttu-id="7189f-151">Si el registro del conector no funciona, consulte [Solucionar problemas de Proxy de aplicación](../active-directory/active-directory-application-proxy-troubleshoot.md).</span><span class="sxs-lookup"><span data-stu-id="7189f-151">If connector registration does not succeed, see [Troubleshoot Application Proxy](../active-directory/active-directory-application-proxy-troubleshoot.md).</span></span>
+
+    ![Conector instalado](./media/app-proxy/app-proxy-connector-installed.png)
+4. <span data-ttu-id="7189f-153">Para garantizar que el conector funcione correctamente, ejecute el Solucionador de problemas del conector del proxy de aplicación de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-153">To ensure the connector works properly, run the Azure AD Application Proxy Connector Troubleshooter.</span></span> <span data-ttu-id="7189f-154">Después de ejecutar el Solucionador de problemas, debería ver un informe donde se indica que está todo correcto.</span><span class="sxs-lookup"><span data-stu-id="7189f-154">You should see a successful report after running the troubleshooter.</span></span>
+
+    ![Mensaje del Solucionador de problemas que todo está correcto](./media/app-proxy/app-proxy-connector-troubleshooter.png)
+5. <span data-ttu-id="7189f-156">Debería ver el conector recién instalado que aparece en la página del proxy de aplicación del directorio de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-156">You should see the newly installed connector listed on the Application proxy page in your Azure AD directory.</span></span>
+
+    ![](./media/app-proxy/app-proxy-connector-page.png)
+
+> [!NOTE]
+> <span data-ttu-id="7189f-157">Puede decidir instalar conectores en varios servidores para garantizar una alta disponibilidad durante la autenticación de las aplicaciones publicadas a través del proxy de aplicación de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-157">You may choose to install connectors on multiple servers to guarantee high availability for authenticating applications published through the Azure AD Application Proxy.</span></span> <span data-ttu-id="7189f-158">Siga los mismos pasos mencionados anteriormente para instalar el conector en otros servidores unidos al dominio administrado.</span><span class="sxs-lookup"><span data-stu-id="7189f-158">Perform the same steps listed above to install the connector on other servers joined to your managed domain.</span></span>
+>
+>
+
+## <a name="next-steps"></a><span data-ttu-id="7189f-159">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="7189f-159">Next Steps</span></span>
+<span data-ttu-id="7189f-160">Ha configurado el proxy de aplicación de Azure AD y lo ha integrado con el dominio administrado de Azure AD Domain Services.</span><span class="sxs-lookup"><span data-stu-id="7189f-160">You have set up the Azure AD Application Proxy and integrated it with your Azure AD Domain Services managed domain.</span></span>
+
+* <span data-ttu-id="7189f-161">**Migrar las aplicaciones a las máquinas virtuales de Azure**: puede trasladas sus aplicaciones de servidores locales a máquinas virtuales de Azure unidas al dominio administrado.</span><span class="sxs-lookup"><span data-stu-id="7189f-161">**Migrate your applications to Azure virtual machines:** You can lift-and-shift your applications from on-premises servers to Azure virtual machines joined to your managed domain.</span></span> <span data-ttu-id="7189f-162">Si lo hace, lo ayudará a evitar los costos de infraestructura de los servidores que se ejecutan en un entorno local.</span><span class="sxs-lookup"><span data-stu-id="7189f-162">Doing so helps you get rid of the infrastructure costs of running servers on-premises.</span></span>
+
+* <span data-ttu-id="7189f-163">**Publicar aplicaciones mediante el proxy de aplicación de Azure AD**: publique aplicaciones que se ejecuten en máquinas virtuales de Azure mediante el proxy de aplicación de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-163">**Publish applications using Azure AD Application Proxy:** Publish applications running on your Azure virtual machines using the Azure AD Application Proxy.</span></span> <span data-ttu-id="7189f-164">Para obtener más información, consulte [Publicación de aplicaciones mediante el proxy de aplicación de Azure AD](../active-directory/application-proxy-publish-azure-portal.md).</span><span class="sxs-lookup"><span data-stu-id="7189f-164">For more information, see [publish applications using Azure AD Application Proxy](../active-directory/application-proxy-publish-azure-portal.md)</span></span>
+
+
+## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a><span data-ttu-id="7189f-165">Nota de implementación: publique las aplicaciones de IWA (autenticación integrada) mediante el proxy de aplicación de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-165">Deployment note - Publish IWA (Integrated Windows Authentication) applications using Azure AD Application Proxy</span></span>
+<span data-ttu-id="7189f-166">Habilite el inicio de sesión único en sus aplicaciones mediante la autenticación de Windows integrada (IWA) dando permiso a los conectores del proxy de aplicación para suplantar a los usuarios, y enviar y recibir tokens en su nombre.</span><span class="sxs-lookup"><span data-stu-id="7189f-166">Enable single sign-on to your applications using Integrated Windows Authentication (IWA) by granting Application Proxy Connectors permission to impersonate users, and send and receive tokens on their behalf.</span></span> <span data-ttu-id="7189f-167">Configure la delegación restringida de kerberos (KCD) para que el conector conceda los permisos necesarios para acceder a los recursos del dominio administrado.</span><span class="sxs-lookup"><span data-stu-id="7189f-167">Configure kerberos constrained delegation (KCD) for the connector to grant the required permissions to access resources on the managed domain.</span></span> <span data-ttu-id="7189f-168">Para aumentar la seguridad, use el mecanismo KCD basado en recursos en los dominios administrados.</span><span class="sxs-lookup"><span data-stu-id="7189f-168">Use the resource-based KCD mechanism on managed domains for increased security.</span></span>
+
+
+### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a><span data-ttu-id="7189f-169">Habilitación de la delegación restringida de kerberos basada en recursos en el conector del proxy de aplicación de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7189f-169">Enable resource-based kerberos constrained delegation for the Azure AD Application Proxy connector</span></span>
+<span data-ttu-id="7189f-170">El conector del proxy de aplicación de Azure debe configurarse para la delegación restringida de kerberos (KCD), por lo que puede suplantar a usuarios en el dominio administrado.</span><span class="sxs-lookup"><span data-stu-id="7189f-170">The Azure Application Proxy connector should be configured for kerberos constrained delegation (KCD), so it can impersonate users on the managed domain.</span></span> <span data-ttu-id="7189f-171">En un dominio administrado de Azure AD Domain Services, no tiene privilegios de administrador de dominios.</span><span class="sxs-lookup"><span data-stu-id="7189f-171">On an Azure AD Domain Services managed domain, you do not have domain administrator privileges.</span></span> <span data-ttu-id="7189f-172">Por lo tanto, **la KCD tradicional de nivel de cuenta no se puede configurar en un dominio administrado**.</span><span class="sxs-lookup"><span data-stu-id="7189f-172">Therefore, **traditional account-level KCD cannot be configured on a managed domain**.</span></span>
+
+<span data-ttu-id="7189f-173">En su lugar, use la que está basada en recursos, como se describe en este [artículo](active-directory-ds-enable-kcd.md).</span><span class="sxs-lookup"><span data-stu-id="7189f-173">Use resource-based KCD as described in this [article](active-directory-ds-enable-kcd.md).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="7189f-174">Tendrá que ser miembro del grupo Administradores del controlador de dominio de AAD para administrar el dominio administrado con los cmdlets de PowerShell de AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-174">You need to be a member of the 'AAD DC Administrators' group, to administer the managed domain using AD PowerShell cmdlets.</span></span>
+>
+>
+
+<span data-ttu-id="7189f-175">Use el cmdlet de PowerShell Get-ADComputer para recuperar la configuración del equipo donde está instalado el conector del proxy de aplicación de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7189f-175">Use the Get-ADComputer PowerShell cmdlet to retrieve the settings for the computer on which the Azure AD Application Proxy connector is installed.</span></span>
+```
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+```
+
+<span data-ttu-id="7189f-176">Después, ejecute el cmdlet Set-ADComputer para configurar la KCD basada en recursos en el servidor de recursos.</span><span class="sxs-lookup"><span data-stu-id="7189f-176">Thereafter, use the Set-ADComputer cmdlet to set up resource-based KCD for the resource server.</span></span>
+```
+Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+```
+
+<span data-ttu-id="7189f-177">Si ha implementado varios conectores del proxy de aplicación en el dominio administrado, debe configurar la KCD basada en recursos en cada instancia de este tipo del conector.</span><span class="sxs-lookup"><span data-stu-id="7189f-177">If you have deployed multiple Application Proxy connectors on your managed domain, you need to configure resource-based KCD for each such connector instance.</span></span>
+
+
+## <a name="related-content"></a><span data-ttu-id="7189f-178">Contenido relacionado</span><span class="sxs-lookup"><span data-stu-id="7189f-178">Related Content</span></span>
+* [<span data-ttu-id="7189f-179">Introducción a Azure AD Domain Services</span><span class="sxs-lookup"><span data-stu-id="7189f-179">Azure AD Domain Services - Getting Started guide</span></span>](active-directory-ds-getting-started.md)
+* [<span data-ttu-id="7189f-180">Configuración de la delegación restringida de kerberos en un dominio administrado</span><span class="sxs-lookup"><span data-stu-id="7189f-180">Configure Kerberos Constrained Delegation on a managed domain</span></span>](active-directory-ds-enable-kcd.md)
+* [<span data-ttu-id="7189f-181">Introducción a la delegación limitada de kerberos</span><span class="sxs-lookup"><span data-stu-id="7189f-181">Kerberos Constrained Delegation Overview</span></span>](https://technet.microsoft.com/library/jj553400.aspx)
