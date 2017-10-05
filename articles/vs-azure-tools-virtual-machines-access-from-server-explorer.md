@@ -1,0 +1,54 @@
+---
+title: Acceso a Azure Virtual Machines desde el Explorador de servidores | Microsoft Docs
+description: "Obtenga una visión general de cómo ver, crear y administrar Azure los máquinas virtuales (VM) en el Explorador de servidores de Visual Studio."
+services: visual-studio-online
+documentationcenter: na
+author: kraigb
+manager: ghogen
+editor: 
+ms.assetid: eb3afde6-ba90-4308-9ac1-3cc29da4ede0
+ms.service: multiple
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: multiple
+ms.date: 11/18/2016
+ms.author: kraigb
+ms.openlocfilehash: fcbb00cc2f00691e25ea84333e8c418b08210a67
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/29/2017
+---
+# <a name="accessing-azure-virtual-machines-from-server-explorer"></a><span data-ttu-id="aba45-103">Tener acceso a Máquinas virtuales de Azure desde el Explorador de servidores</span><span class="sxs-lookup"><span data-stu-id="aba45-103">Accessing Azure Virtual Machines from Server Explorer</span></span>
+<span data-ttu-id="aba45-104">Con el Explorador de servidores de Visual Studio puede mostrar información acerca de las máquinas virtuales hospedadas por Azure.</span><span class="sxs-lookup"><span data-stu-id="aba45-104">By using Server Explorer in Visual Studio, you can display information about your virtual machines hosted by Azure.</span></span>
+
+## <a name="accessing-virtual-machines-in-server-explorer"></a><span data-ttu-id="aba45-105">Acceso a máquinas virtuales en el Explorador de servidores</span><span class="sxs-lookup"><span data-stu-id="aba45-105">Accessing virtual machines in Server Explorer</span></span>
+<span data-ttu-id="aba45-106">Si tiene máquinas virtuales hospedadas por Azure, puede acceder a ellas en el Explorador de servidores.</span><span class="sxs-lookup"><span data-stu-id="aba45-106">If you have virtual machines hosted by Azure, you can access them in Server Explorer.</span></span> <span data-ttu-id="aba45-107">Primero debe iniciar una sesión en su suscripción de Azure para ver los servicios móviles.</span><span class="sxs-lookup"><span data-stu-id="aba45-107">You must first sign in to your Azure subscription to view your mobile services.</span></span> <span data-ttu-id="aba45-108">Para iniciar sesión, abra el menú contextual del nodo de Azure en el Explorador de servidores y elija **Conectar a Microsoft Azure**.</span><span class="sxs-lookup"><span data-stu-id="aba45-108">To sign in, open the shortcut menu for the Azure node in Server Explorer, and choose **Connect to Microsoft Azure**.</span></span>
+
+### <a name="to-get-information-about-your-virtual-machines"></a><span data-ttu-id="aba45-109">Para obtener información acerca de las máquinas virtuales</span><span class="sxs-lookup"><span data-stu-id="aba45-109">To get information about your virtual machines</span></span>
+1. <span data-ttu-id="aba45-110">En el Explorador de servidores, elija una máquina virtual y, a continuación, presione la tecla F4 para mostrar su ventana de propiedades.</span><span class="sxs-lookup"><span data-stu-id="aba45-110">In Server Explorer, choose a virtual machine, and then choose the F4 key to show its properties window.</span></span>
+   
+    <span data-ttu-id="aba45-111">La siguiente tabla muestra las propiedades que están disponibles, pero son todas de solo lectura.</span><span class="sxs-lookup"><span data-stu-id="aba45-111">The following table shows what properties are available, but they are all read-only.</span></span> <span data-ttu-id="aba45-112">Utilizar el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885)para cambiarlas.</span><span class="sxs-lookup"><span data-stu-id="aba45-112">To change them, use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).</span></span>
+   
+   | <span data-ttu-id="aba45-113">Propiedad</span><span class="sxs-lookup"><span data-stu-id="aba45-113">Property</span></span> | <span data-ttu-id="aba45-114">Description</span><span class="sxs-lookup"><span data-stu-id="aba45-114">Description</span></span> |
+   | --- | --- |
+   | <span data-ttu-id="aba45-115">Nombre DNS</span><span class="sxs-lookup"><span data-stu-id="aba45-115">DNS Name</span></span> |<span data-ttu-id="aba45-116">La dirección URL con la dirección de Internet de la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="aba45-116">The URL with the Internet address of the virtual machine.</span></span> |
+   | <span data-ttu-id="aba45-117">Environment</span><span class="sxs-lookup"><span data-stu-id="aba45-117">Environment</span></span> |<span data-ttu-id="aba45-118">En el caso de una máquina virtual, el valor de esta propiedad siempre es Production.</span><span class="sxs-lookup"><span data-stu-id="aba45-118">For a virtual machine, the value of this property is always Production.</span></span> |
+   | <span data-ttu-id="aba45-119">Nombre</span><span class="sxs-lookup"><span data-stu-id="aba45-119">Name</span></span> |<span data-ttu-id="aba45-120">El nombre de la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="aba45-120">The name of the virtual machine.</span></span> |
+   | <span data-ttu-id="aba45-121">Tamaño</span><span class="sxs-lookup"><span data-stu-id="aba45-121">Size</span></span> |<span data-ttu-id="aba45-122">El tamaño de la máquina virtual, que refleja la cantidad de memoria y espacio en disco disponibles.</span><span class="sxs-lookup"><span data-stu-id="aba45-122">The size of the virtual machine, which reflects the amount of memory and disk space that’s available.</span></span> <span data-ttu-id="aba45-123">Para obtener más información, consulte Procedimiento: creación de los tamaños de las máquinas virtuales.</span><span class="sxs-lookup"><span data-stu-id="aba45-123">For more information, see How To: Configure Virtual Machine Sizes.</span></span> |
+   | <span data-ttu-id="aba45-124">Estado</span><span class="sxs-lookup"><span data-stu-id="aba45-124">Status</span></span> |<span data-ttu-id="aba45-125">Los valores incluyen: Iniciando, Iniciado, Deteniéndose, Detenido y Recuperando estado.</span><span class="sxs-lookup"><span data-stu-id="aba45-125">Values include Starting, Started, Stopping, Stopped, and Retrieving Status.</span></span> <span data-ttu-id="aba45-126">Si aparece Recuperando estado, el estado actual es desconocido.</span><span class="sxs-lookup"><span data-stu-id="aba45-126">If Retrieving Status appears, the current status is unknown.</span></span> <span data-ttu-id="aba45-127">Los valores para esta propiedad son distintos de los que se usan en el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).</span><span class="sxs-lookup"><span data-stu-id="aba45-127">The values for this property differ from the values that are used on the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).</span></span> |
+   | <span data-ttu-id="aba45-128">SubscriptionID</span><span class="sxs-lookup"><span data-stu-id="aba45-128">SubscriptionID</span></span> |<span data-ttu-id="aba45-129">El Id. de suscripción de la cuenta de Azure.</span><span class="sxs-lookup"><span data-stu-id="aba45-129">The subscription ID for your Azure account.</span></span> <span data-ttu-id="aba45-130">Esta información se puede mostrar en el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885) mediante la visualización de las propiedades de una suscripción.</span><span class="sxs-lookup"><span data-stu-id="aba45-130">You can show this information on the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885) by viewing the properties for a subscription.</span></span> |
+2. <span data-ttu-id="aba45-131">Seleccione un nodo de extremo y, a continuación, vea la ventana **Propiedades** .</span><span class="sxs-lookup"><span data-stu-id="aba45-131">Choose an endpoint node, and then view the **Properties** window.</span></span>
+3. <span data-ttu-id="aba45-132">La tabla siguiente describe las propiedades disponibles de los extremos, pero son de solo lectura.</span><span class="sxs-lookup"><span data-stu-id="aba45-132">The following table describes the available properties of endpoints, but they are read-only.</span></span> <span data-ttu-id="aba45-133">Para agregar o editar los puntos de conexión de una máquina virtual, use el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).</span><span class="sxs-lookup"><span data-stu-id="aba45-133">To add or edit the endpoints for a virtual machine, use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).</span></span> 
+   
+   | <span data-ttu-id="aba45-134">Propiedad</span><span class="sxs-lookup"><span data-stu-id="aba45-134">Property</span></span> | <span data-ttu-id="aba45-135">Descripción</span><span class="sxs-lookup"><span data-stu-id="aba45-135">Description</span></span> |
+   | --- | --- |
+   | <span data-ttu-id="aba45-136">Nombre</span><span class="sxs-lookup"><span data-stu-id="aba45-136">Name</span></span> |<span data-ttu-id="aba45-137">Un identificador para el extremo.</span><span class="sxs-lookup"><span data-stu-id="aba45-137">An identifier for the endpoint.</span></span> |
+   | <span data-ttu-id="aba45-138">Private Port</span><span class="sxs-lookup"><span data-stu-id="aba45-138">Private Port</span></span> |<span data-ttu-id="aba45-139">El puerto del acceso de red interno de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="aba45-139">The port for network access internal to your application.</span></span> |
+   | <span data-ttu-id="aba45-140">Protocol</span><span class="sxs-lookup"><span data-stu-id="aba45-140">Protocol</span></span> |<span data-ttu-id="aba45-141">El protocolo que usa la capa de transporte para este extremo, TCP o UDP.</span><span class="sxs-lookup"><span data-stu-id="aba45-141">The protocol that the transport layer for this endpoint uses, either TCP or UDP.</span></span> |
+   | <span data-ttu-id="aba45-142">Public Port</span><span class="sxs-lookup"><span data-stu-id="aba45-142">Public Port</span></span> |<span data-ttu-id="aba45-143">El puerto que se usa para el acceso público a la aplicación.</span><span class="sxs-lookup"><span data-stu-id="aba45-143">The port that’s used for public access to your application.</span></span> |
+
+## <a name="next-steps"></a><span data-ttu-id="aba45-144">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="aba45-144">Next steps</span></span>
+<span data-ttu-id="aba45-145">Para obtener más información sobre los roles de Azure en Visual Studio, consulte [Uso de Escritorio de remoto con los roles de Azure](vs-azure-tools-remote-desktop-roles.md).</span><span class="sxs-lookup"><span data-stu-id="aba45-145">To learn more about using Azure roles in Visual Studio, see [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md).</span></span>
+
