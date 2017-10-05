@@ -1,0 +1,53 @@
+---
+title: "Evento completo de cambio de tamaño de grupo de Azure Batch | Microsoft Docs"
+description: "Referencia del evento completo de cambio de tamaño de grupo de Batch."
+services: batch
+author: tamram
+manager: timlt
+ms.assetid: 
+ms.service: batch
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: big-compute
+ms.date: 04/20/2017
+ms.author: tamram
+ms.openlocfilehash: 7072293d98526812cb42ce9c2f8e33bfcafaa149
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="pool-resize-complete-event"></a><span data-ttu-id="82a89-103">Evento de finalización de cambio de tamaño del grupo</span><span class="sxs-lookup"><span data-stu-id="82a89-103">Pool resize complete event</span></span>
+
+ <span data-ttu-id="82a89-104">Este evento se genera cuando finaliza o no se puede realizar el cambio de tamaño de un grupo.</span><span class="sxs-lookup"><span data-stu-id="82a89-104">This event is emitted when a pool resize has completed or failed.</span></span>
+
+ <span data-ttu-id="82a89-105">En el siguiente ejemplo, se muestra el cuerpo de un evento de cambio de tamaño del grupo para un grupo que aumentó su tamaño y se finalizó correctamente.</span><span class="sxs-lookup"><span data-stu-id="82a89-105">The following example shows the body of a pool resize complete event for a pool that increased in size and completed successfully.</span></span>
+
+```
+{
+    "id": "p_1_0_01503750-252d-4e57-bd96-d6aa05601ad8",
+    "nodeDeallocationOption": "invalid",
+    "currentDedicated": 4,
+    "targetDedicated": 4,
+    "enableAutoScale": false,
+    "isAutoPool": false,
+    "startTime": "2016-09-09T22:13:06.573Z",
+    "endTime": "2016-09-09T22:14:01.727Z",
+    "result": "Success",
+    "resizeError": "The operation succeeded"
+}
+```
+
+|<span data-ttu-id="82a89-106">Elemento</span><span class="sxs-lookup"><span data-stu-id="82a89-106">Element</span></span>|<span data-ttu-id="82a89-107">Tipo</span><span class="sxs-lookup"><span data-stu-id="82a89-107">Type</span></span>|<span data-ttu-id="82a89-108">Notas</span><span class="sxs-lookup"><span data-stu-id="82a89-108">Notes</span></span>|
+|-------------|----------|-----------|
+|<span data-ttu-id="82a89-109">id</span><span class="sxs-lookup"><span data-stu-id="82a89-109">id</span></span>|<span data-ttu-id="82a89-110">String</span><span class="sxs-lookup"><span data-stu-id="82a89-110">String</span></span>|<span data-ttu-id="82a89-111">El identificador del grupo.</span><span class="sxs-lookup"><span data-stu-id="82a89-111">The id of the pool.</span></span>|
+|<span data-ttu-id="82a89-112">nodeDeallocationOption</span><span class="sxs-lookup"><span data-stu-id="82a89-112">nodeDeallocationOption</span></span>|<span data-ttu-id="82a89-113">String</span><span class="sxs-lookup"><span data-stu-id="82a89-113">String</span></span>|<span data-ttu-id="82a89-114">Especifica cuándo se pueden quitar los nodos del grupo, si disminuye el tamaño del grupo.</span><span class="sxs-lookup"><span data-stu-id="82a89-114">Specifies when nodes may be removed from the pool, if the pool size is decreasing.</span></span><br /><br /> <span data-ttu-id="82a89-115">Los valores posibles son:</span><span class="sxs-lookup"><span data-stu-id="82a89-115">Possible values are:</span></span><br /><br /> <span data-ttu-id="82a89-116">**requeue**: finalizar las tareas en ejecución y volver a ponerlas en cola.</span><span class="sxs-lookup"><span data-stu-id="82a89-116">**requeue** – Terminate running tasks and requeue them.</span></span> <span data-ttu-id="82a89-117">Las tareas volverán a ejecutarse cuando se habilite el trabajo.</span><span class="sxs-lookup"><span data-stu-id="82a89-117">The tasks will run again when the job is enabled.</span></span> <span data-ttu-id="82a89-118">Elimine los nodos en cuanto finalicen las tareas.</span><span class="sxs-lookup"><span data-stu-id="82a89-118">Remove nodes as soon as tasks have been terminated.</span></span><br /><br /> <span data-ttu-id="82a89-119">**terminate**: finalizar las tareas en ejecución.</span><span class="sxs-lookup"><span data-stu-id="82a89-119">**terminate** – Terminate running tasks.</span></span> <span data-ttu-id="82a89-120">Las tareas no se ejecutarán de nuevo.</span><span class="sxs-lookup"><span data-stu-id="82a89-120">The tasks will not run again.</span></span> <span data-ttu-id="82a89-121">Elimine los nodos en cuanto finalicen las tareas.</span><span class="sxs-lookup"><span data-stu-id="82a89-121">Remove nodes as soon as tasks have been terminated.</span></span><br /><br /> <span data-ttu-id="82a89-122">**taskcompletion**: permita que finalicen las tareas actualmente en ejecución.</span><span class="sxs-lookup"><span data-stu-id="82a89-122">**taskcompletion** – Allow currently running tasks to complete.</span></span> <span data-ttu-id="82a89-123">No programe ninguna tarea nueva mientras espera.</span><span class="sxs-lookup"><span data-stu-id="82a89-123">Schedule no new tasks while waiting.</span></span> <span data-ttu-id="82a89-124">Elimine los nodos cuando se hayan completado todas las tareas.</span><span class="sxs-lookup"><span data-stu-id="82a89-124">Remove nodes when all tasks have completed.</span></span><br /><br /> <span data-ttu-id="82a89-125">**Retaineddata**: permite que finalicen las tareas actualmente en ejecución, luego espera que caduquen los períodos de retención de datos de todas las tareas.</span><span class="sxs-lookup"><span data-stu-id="82a89-125">**Retaineddata** -  Allow currently running tasks to complete, then wait for all task data retention periods to expire.</span></span> <span data-ttu-id="82a89-126">No programe ninguna tarea nueva mientras espera.</span><span class="sxs-lookup"><span data-stu-id="82a89-126">Schedule no new tasks while waiting.</span></span> <span data-ttu-id="82a89-127">Elimine los nodos cuando hayan caducado los períodos de retención de todas las tareas.</span><span class="sxs-lookup"><span data-stu-id="82a89-127">Remove nodes when all task retention periods have expired.</span></span><br /><br /> <span data-ttu-id="82a89-128">El valor predeterminado es requeue.</span><span class="sxs-lookup"><span data-stu-id="82a89-128">The default value is requeue.</span></span><br /><br /> <span data-ttu-id="82a89-129">Si aumenta el tamaño del grupo, entonces el valor se establece en **invalid**.</span><span class="sxs-lookup"><span data-stu-id="82a89-129">If the pool size is increasing then the value is set to **invalid**.</span></span>|
+|<span data-ttu-id="82a89-130">currentDedicated</span><span class="sxs-lookup"><span data-stu-id="82a89-130">currentDedicated</span></span>|<span data-ttu-id="82a89-131">Int32</span><span class="sxs-lookup"><span data-stu-id="82a89-131">Int32</span></span>|<span data-ttu-id="82a89-132">El número de nodos de proceso actualmente asignados al grupo.</span><span class="sxs-lookup"><span data-stu-id="82a89-132">The number of compute nodes currently assigned to the pool.</span></span>|
+|<span data-ttu-id="82a89-133">targetDedicated</span><span class="sxs-lookup"><span data-stu-id="82a89-133">targetDedicated</span></span>|<span data-ttu-id="82a89-134">Int32</span><span class="sxs-lookup"><span data-stu-id="82a89-134">Int32</span></span>|<span data-ttu-id="82a89-135">El número de nodos de proceso solicitados para el grupo.</span><span class="sxs-lookup"><span data-stu-id="82a89-135">The number of compute nodes that are requested for the pool.</span></span>|
+|<span data-ttu-id="82a89-136">enableAutoScale</span><span class="sxs-lookup"><span data-stu-id="82a89-136">enableAutoScale</span></span>|<span data-ttu-id="82a89-137">Booleano</span><span class="sxs-lookup"><span data-stu-id="82a89-137">Bool</span></span>|<span data-ttu-id="82a89-138">Especifica si el tamaño del grupo se ajusta automáticamente con el tiempo.</span><span class="sxs-lookup"><span data-stu-id="82a89-138">Specifies whether the pool size automatically adjusts over time.</span></span>|
+|<span data-ttu-id="82a89-139">isAutoPool</span><span class="sxs-lookup"><span data-stu-id="82a89-139">isAutoPool</span></span>|<span data-ttu-id="82a89-140">Booleano</span><span class="sxs-lookup"><span data-stu-id="82a89-140">Bool</span></span>|<span data-ttu-id="82a89-141">Especifica si se ha creado el grupo a través del mecanismo AutoPool de un trabajo.</span><span class="sxs-lookup"><span data-stu-id="82a89-141">Specifies whether the pool was created via a job's AutoPool mechanism.</span></span>|
+|<span data-ttu-id="82a89-142">startTime</span><span class="sxs-lookup"><span data-stu-id="82a89-142">startTime</span></span>|<span data-ttu-id="82a89-143">DateTime</span><span class="sxs-lookup"><span data-stu-id="82a89-143">DateTime</span></span>|<span data-ttu-id="82a89-144">La hora en que se inició el cambio de tamaño del grupo.</span><span class="sxs-lookup"><span data-stu-id="82a89-144">The time the pool resize started.</span></span>|
+|<span data-ttu-id="82a89-145">endTime</span><span class="sxs-lookup"><span data-stu-id="82a89-145">endTime</span></span>|<span data-ttu-id="82a89-146">DateTime</span><span class="sxs-lookup"><span data-stu-id="82a89-146">DateTime</span></span>|<span data-ttu-id="82a89-147">La hora en que finalizó el cambio de tamaño del grupo.</span><span class="sxs-lookup"><span data-stu-id="82a89-147">The time the pool resize completed.</span></span>|
+|<span data-ttu-id="82a89-148">resultCode</span><span class="sxs-lookup"><span data-stu-id="82a89-148">resultCode</span></span>|<span data-ttu-id="82a89-149">String</span><span class="sxs-lookup"><span data-stu-id="82a89-149">String</span></span>|<span data-ttu-id="82a89-150">El resultado del cambio de tamaño.</span><span class="sxs-lookup"><span data-stu-id="82a89-150">The result of the resize.</span></span>|
+|<span data-ttu-id="82a89-151">resultMessage</span><span class="sxs-lookup"><span data-stu-id="82a89-151">resultMessage</span></span>|<span data-ttu-id="82a89-152">String</span><span class="sxs-lookup"><span data-stu-id="82a89-152">String</span></span>|<span data-ttu-id="82a89-153">El error de cambio de tamaño incluye los detalles del resultado.</span><span class="sxs-lookup"><span data-stu-id="82a89-153">The resize error includes the details of the result.</span></span><br /><br /> <span data-ttu-id="82a89-154">Si el cambio de tamaño finalizó sin problemas, esto indica que la operación se completó correctamente.</span><span class="sxs-lookup"><span data-stu-id="82a89-154">If the resize completed successfully it states that the operation succeeded.</span></span>|

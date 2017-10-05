@@ -1,0 +1,47 @@
+---
+title: Procedimientos recomendados de Azure RemoteApp | Microsoft Docs
+description: "Prácticas recomendadas para configurar y usar RemoteApp de Azure"
+services: remoteapp
+documentationcenter: 
+author: msmbaldwin
+manager: mbaldwin
+ms.assetid: b851865b-bec4-4f29-82c0-7b9770c1a520
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 04/26/2017
+ms.author: mbaldwin
+ms.openlocfilehash: ab9c2dafc622e9b6f3bcd2767218cdc03e844847
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="best-practices-for-configuring-and-using-azure-remoteapp"></a><span data-ttu-id="7f927-103">Prácticas recomendadas para configurar y usar RemoteApp de Azure</span><span class="sxs-lookup"><span data-stu-id="7f927-103">Best practices for configuring and using Azure RemoteApp</span></span>
+> [!IMPORTANT]
+> <span data-ttu-id="7f927-104">Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017.</span><span class="sxs-lookup"><span data-stu-id="7f927-104">Azure RemoteApp is being discontinued on August 31, 2017.</span></span> <span data-ttu-id="7f927-105">Para obtener más información, lea el [anuncio](https://blogs.technet.microsoft.com/enterprisemobility/2016/08/12/application-remoting-and-the-cloud/) .</span><span class="sxs-lookup"><span data-stu-id="7f927-105">Read the [announcement](https://blogs.technet.microsoft.com/enterprisemobility/2016/08/12/application-remoting-and-the-cloud/) for details.</span></span>
+> 
+> 
+
+<span data-ttu-id="7f927-106">La siguiente información puede ayudarle a configurar y usar RemoteApp de Azure de manera productiva.</span><span class="sxs-lookup"><span data-stu-id="7f927-106">The following information can help you configure and use Azure RemoteApp productively.</span></span>
+
+## <a name="connectivity"></a><span data-ttu-id="7f927-107">Conectividad</span><span class="sxs-lookup"><span data-stu-id="7f927-107">Connectivity</span></span>
+* <span data-ttu-id="7f927-108">Utilice siempre la versión más reciente del cliente.</span><span class="sxs-lookup"><span data-stu-id="7f927-108">Always use the latest client version.</span></span> <span data-ttu-id="7f927-109">El uso de clientes anteriores podría producir problemas de conectividad y otras experiencias degradadas.</span><span class="sxs-lookup"><span data-stu-id="7f927-109">Using older clients might result in connectivity issues and other degraded experiences.</span></span> <span data-ttu-id="7f927-110">La habilitación de las actualizaciones automáticas de aplicaciones para su dispositivo garantizará que siempre esté instalado el cliente más reciente.</span><span class="sxs-lookup"><span data-stu-id="7f927-110">Enabling automatic application updates for your device will ensure that the latest client is always installed.</span></span>
+* <span data-ttu-id="7f927-111">Utilice siempre la conexión a Internet más estable y confiable disponible.</span><span class="sxs-lookup"><span data-stu-id="7f927-111">Always use the most stable and reliable internet connection available to you.</span></span>  
+* <span data-ttu-id="7f927-112">Use solo las conexiones proxy admitidas para obtener un rendimiento óptimo de conectividad.</span><span class="sxs-lookup"><span data-stu-id="7f927-112">Use only supported proxy connections for optimal connectivity performance.</span></span>  <span data-ttu-id="7f927-113">No se admite el proxy SOCKS.</span><span class="sxs-lookup"><span data-stu-id="7f927-113">The SOCKS proxy is not supported.</span></span>
+
+## <a name="applications"></a><span data-ttu-id="7f927-114">Aplicaciones</span><span class="sxs-lookup"><span data-stu-id="7f927-114">Applications</span></span>
+* <span data-ttu-id="7f927-115">Guarde y cierre las aplicaciones de RemoteApp cuando haya terminado con la aplicación.</span><span class="sxs-lookup"><span data-stu-id="7f927-115">Save and close RemoteApp applications when you are done with the application.</span></span> <span data-ttu-id="7f927-116">Si no se cierra la aplicación se podría producir la pérdida de datos.</span><span class="sxs-lookup"><span data-stu-id="7f927-116">Not closing the application might result in data loss.</span></span>
+* <span data-ttu-id="7f927-117">Valide las aplicaciones personalizadas antes de usarlas en RemoteApp de Azure.</span><span class="sxs-lookup"><span data-stu-id="7f927-117">Validate custom applications before using them in Azure RemoteApp.</span></span> <span data-ttu-id="7f927-118">Esto incluye asegurarse de que funcionan en una plataforma multisesión y de que no consumen recursos innecesarios como memoria y CPU que puedan privar a otro usuario de la misma colección.</span><span class="sxs-lookup"><span data-stu-id="7f927-118">This includes ensuring they work on a multi-session platform and don’t consume unnecessary resources such as memory and CPU that might starve another user in the same collection.</span></span> <span data-ttu-id="7f927-119">Para obtener información, descargue y revise las [Prácticas recomendadas de compatibilidad de aplicaciones para servicios de Escritorio remoto](http://www.dabcc.com/resources/Application%20Compatibility%20Best%20Practices%20for%20Remote%20Desktop%20Services.pdf).</span><span class="sxs-lookup"><span data-stu-id="7f927-119">For information, download and review the [Application Compatibility Best Practices for Remote Desktop Services](http://www.dabcc.com/resources/Application%20Compatibility%20Best%20Practices%20for%20Remote%20Desktop%20Services.pdf).</span></span>
+
+## <a name="configuration-and-management"></a><span data-ttu-id="7f927-120">Configuración y administración</span><span class="sxs-lookup"><span data-stu-id="7f927-120">Configuration and management</span></span>
+* <span data-ttu-id="7f927-121">Conserve las imágenes de plantilla actualizadas, instalando actualizaciones de software y otras revisiones críticas según sea necesario.</span><span class="sxs-lookup"><span data-stu-id="7f927-121">Keep your template images up to date, installing software updates and other critical fixes as needed.</span></span> <span data-ttu-id="7f927-122">Esto garantiza que, conforme RemoteApp de Azure realiza la autoescala para satisfacer su capacidad, se revisa cada instancia.</span><span class="sxs-lookup"><span data-stu-id="7f927-122">This ensures that as Azure RemoteApp auto-scales to meet your capacity, each instance is patched.</span></span>  
+* <span data-ttu-id="7f927-123">Asegúrese de que su implementación de Servicios de federación de Active Directory (AD FS) es segura y confiable.</span><span class="sxs-lookup"><span data-stu-id="7f927-123">Make sure your Active Directory Federation Services (AD FS) deployment is secure and reliable.</span></span> <span data-ttu-id="7f927-124">En caso contrario, es posible que se produzca un error en las autenticaciones de cliente, con lo que se impedirá que los usuarios accedan a RemoteApp de Azure.</span><span class="sxs-lookup"><span data-stu-id="7f927-124">Otherwise client authentications might fail, preventing users from accessing Azure RemoteApp.</span></span>
+* <span data-ttu-id="7f927-125">Configurar imágenes de plantilla con características, roles o aplicaciones instaladas, de manera que no tengan estado.</span><span class="sxs-lookup"><span data-stu-id="7f927-125">Configure template images with installed applications, roles, or features such that they are stateless.</span></span> <span data-ttu-id="7f927-126">No deben depender de todas las instancias de las máquinas virtuales en un servicio de RemoteApp que están en un estado persistente.</span><span class="sxs-lookup"><span data-stu-id="7f927-126">They should not rely on any instances of the virtual machines in a RemoteApp service being in a persistent state.</span></span>
+  * <span data-ttu-id="7f927-127">Almacene todos los datos de usuario en perfiles de usuario u otras ubicaciones de almacenamiento externos al servicio, como recursos compartidos de archivos locales o OneDrive.</span><span class="sxs-lookup"><span data-stu-id="7f927-127">Store all user data in user profiles or other storage locations external to the service, such as on-premises file shares or OneDrive.</span></span>
+  * <span data-ttu-id="7f927-128">Almacene datos compartidos en ubicaciones de almacenamiento externos al servicio, como recursos compartidos de archivos locales o OneDrive.</span><span class="sxs-lookup"><span data-stu-id="7f927-128">Store shared data in storage locations external to the service, such as on-premises file shares or OneDrive.</span></span>
+  * <span data-ttu-id="7f927-129">Configure la configuración de todo el sistema en la imagen de plantilla en lugar de en las máquinas virtuales individuales de un servicio.</span><span class="sxs-lookup"><span data-stu-id="7f927-129">Configure any system-wide settings in the template image rather than on individual virtual machines in a service.</span></span>
+  * <span data-ttu-id="7f927-130">Deshabilite las actualizaciones de software automáticas para las aplicaciones publicadas: en su lugar, aplíquelas manualmente a la imagen de plantilla y pruébelas antes de implementar desde la plantilla.</span><span class="sxs-lookup"><span data-stu-id="7f927-130">Disable automatic software updates for published applications - instead apply them manually to the template image and test them before you deploy  from the template.</span></span>
+

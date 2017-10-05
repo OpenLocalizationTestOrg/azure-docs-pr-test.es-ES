@@ -1,0 +1,110 @@
+---
+title: "Escenario: creación de un panel de Customer Insights con Azure sin servidor | Microsoft Docs"
+description: "Un ejemplo de cómo se puede crear un panel para administrar los comentarios de clientes, datos sociales, etc. Azure Logic Apps y Azure Functions."
+keywords: 
+services: logic-apps
+author: jeffhollan
+manager: anneta
+editor: 
+documentationcenter: 
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/29/2017
+ms.author: jehollan
+ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a><span data-ttu-id="65d87-103">Cree un panel de Customer Insights en tiempo real con Azure Logic Apps y Azure Functions</span><span class="sxs-lookup"><span data-stu-id="65d87-103">Create a real-time customer insights dashboard with Azure Logic Apps and Azure Functions</span></span>
+
+<span data-ttu-id="65d87-104">Las herramientas de Azure sin servidor proporcionan funcionalidades eficaces para generar rápidamente y hospedar aplicaciones en la nube, sin tener que preocuparse de la infraestructura.</span><span class="sxs-lookup"><span data-stu-id="65d87-104">Azure Serverless tools provide powerful capabilities to quickly build and host applications in the cloud, without having to think about infrastructure.</span></span>  <span data-ttu-id="65d87-105">En este escenario, se creará un panel para actuar en función de los comentarios de los clientes, analizarlos con Machine Learning y publicar información de un origen como Power BI o Azure Data Lake.</span><span class="sxs-lookup"><span data-stu-id="65d87-105">In this scenario, we will create a dashboard to trigger on customer feedback, analyze feedback with machine learning, and publish insights a source like Power BI or Azure Data Lake.</span></span>
+
+## <a name="overview-of-the-scenario-and-tools-used"></a><span data-ttu-id="65d87-106">Información general acerca del escenario y las herramientas usadas</span><span class="sxs-lookup"><span data-stu-id="65d87-106">Overview of the scenario and tools used</span></span>
+
+<span data-ttu-id="65d87-107">Para implementar esta solución, se usarán los dos componentes clave de las aplicaciones sin servidor de Azure: [Azure Functions](https://azure.microsoft.com/services/functions/) y [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).</span><span class="sxs-lookup"><span data-stu-id="65d87-107">In order to implement this solution, we will leverage the two key components of serverless apps in Azure: [Azure Functions](https://azure.microsoft.com/services/functions/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).</span></span>
+
+<span data-ttu-id="65d87-108">Logic Apps es un motor de flujo de trabajo sin servidor en la nube.</span><span class="sxs-lookup"><span data-stu-id="65d87-108">Logic Apps is a serverless workflow engine in the cloud.</span></span>  <span data-ttu-id="65d87-109">Proporciona orquestación en componentes sin servidor y también se conecta a más de 100 servicios y API.</span><span class="sxs-lookup"><span data-stu-id="65d87-109">It provides orchestration across serverless components, and also connects to over 100 services and APIs.</span></span>  <span data-ttu-id="65d87-110">En este escenario, se creará una aplicación lógica para actuar en función de los comentarios de los clientes.</span><span class="sxs-lookup"><span data-stu-id="65d87-110">For this scenario, we will create a logic app to trigger on feedback from customers.</span></span>  <span data-ttu-id="65d87-111">Algunos de los conectores que pueden ayudar a reaccionar ante los comentarios de los clientes son: Outlook.com, Office 365, Survey Monkey, Twitter y una solicitud HTTP [desde un formulario web](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/).</span><span class="sxs-lookup"><span data-stu-id="65d87-111">Some of the connectors that can assist in reacting to customer feedback include Outlook.com, Office 365, Survey Monkey, Twitter, and an HTTP Request [from a web form](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/).</span></span>  <span data-ttu-id="65d87-112">En el flujo de trabajo siguiente, se supervisará un hashtag en Twitter.</span><span class="sxs-lookup"><span data-stu-id="65d87-112">For the workflow below, we will monitor a hashtag on Twitter.</span></span>
+
+<span data-ttu-id="65d87-113">Las funciones proporcionan proceso sin servidor en la nube.</span><span class="sxs-lookup"><span data-stu-id="65d87-113">Functions provide serverless compute in the cloud.</span></span>  <span data-ttu-id="65d87-114">En este escenario, se usará Azure Functions para marcar los tweets de los clientes en función de una serie de palabras clave predefinidas.</span><span class="sxs-lookup"><span data-stu-id="65d87-114">In this scenario, we will use Azure Functions to flag tweets from customers based on a series of pre-defined key words.</span></span>
+
+<span data-ttu-id="65d87-115">Toda la solución se puede [compilar en Visual Studio](logic-apps-deploy-from-vs.md) e [implementar como parte de una plantilla de recursos](logic-apps-create-deploy-template.md).</span><span class="sxs-lookup"><span data-stu-id="65d87-115">The entire solution can be [build in Visual Studio](logic-apps-deploy-from-vs.md) and [deployed as part of a resource template](logic-apps-create-deploy-template.md).</span></span>  <span data-ttu-id="65d87-116">También hay tutorial en vídeo del escenario [en Channel 9](http://aka.ms/logicappsdemo).</span><span class="sxs-lookup"><span data-stu-id="65d87-116">There is also video walkthrough of the scenario [on Channel 9](http://aka.ms/logicappsdemo).</span></span>
+
+## <a name="build-the-logic-app-to-trigger-on-customer-data"></a><span data-ttu-id="65d87-117">Compilación de la aplicación lógica para actuar con datos del cliente</span><span class="sxs-lookup"><span data-stu-id="65d87-117">Build the logic app to trigger on customer data</span></span>
+
+<span data-ttu-id="65d87-118">Después de [crear una aplicación de lógica](logic-apps-create-a-logic-app.md) en Visual Studio o Azure Portal:</span><span class="sxs-lookup"><span data-stu-id="65d87-118">After [creating a logic app](logic-apps-create-a-logic-app.md) in Visual Studio or the Azure portal:</span></span>
+
+1. <span data-ttu-id="65d87-119">Agregue un desencadenador para **On New Tweets** (En los tweets nuevos) de Twitter</span><span class="sxs-lookup"><span data-stu-id="65d87-119">Add a trigger for **On New Tweets** from Twitter</span></span>
+2. <span data-ttu-id="65d87-120">Configure el desencadenador para escuchar tweets con una palabra clave o hashtag.</span><span class="sxs-lookup"><span data-stu-id="65d87-120">Configure the trigger to listen to tweets on a keyword or hashtag.</span></span>
+
+   > [!NOTE]
+   > <span data-ttu-id="65d87-121">La propiedad de periodicidad del desencadenador determinará la frecuencia con que la aplicación lógica busca nuevos elementos en los desencadenadores basados en sondeo.</span><span class="sxs-lookup"><span data-stu-id="65d87-121">The recurrence property on the trigger will determine how frequently the logic app checks for new items on polling-based triggers</span></span>
+
+   ![Ejemplo de desencadenador de Twitter][1]
+
+<span data-ttu-id="65d87-123">Esta aplicación se activará ante todos los tweets nuevos.</span><span class="sxs-lookup"><span data-stu-id="65d87-123">This app will now fire on all new tweets.</span></span>  <span data-ttu-id="65d87-124">Posteriormente, se pueden tomar los datos de los tweets y conocer mejor las opiniones expresadas.</span><span class="sxs-lookup"><span data-stu-id="65d87-124">We can then take that tweet data and understand more of the sentiment expressed.</span></span>  <span data-ttu-id="65d87-125">Para ello, se utiliza [Azure Cognitive Service](https://azure.microsoft.com/services/cognitive-services/) para detectar las opiniones que hay en el texto.</span><span class="sxs-lookup"><span data-stu-id="65d87-125">For this we use the [Azure Cognitive Service](https://azure.microsoft.com/services/cognitive-services/) to detect sentiment of text.</span></span>
+
+1. <span data-ttu-id="65d87-126">Haga clic en **New Step** (Paso nuevo).</span><span class="sxs-lookup"><span data-stu-id="65d87-126">Click **New Step**</span></span>
+1. <span data-ttu-id="65d87-127">Seleccione o busque el conector de **Text Analytics**.</span><span class="sxs-lookup"><span data-stu-id="65d87-127">Select or search for the **Text Analytics** connector</span></span>
+1. <span data-ttu-id="65d87-128">Seleccione la operación **Detect Sentiment** (Detectar opiniones).</span><span class="sxs-lookup"><span data-stu-id="65d87-128">Select the **Detect Sentiment** operation</span></span>
+1. <span data-ttu-id="65d87-129">Si se le solicita, proporcione una clave de Cognitive Services válida para el servicio Text Analytics.</span><span class="sxs-lookup"><span data-stu-id="65d87-129">If prompted, provide a valid Cognitive Services key for the Text Analytics service</span></span>
+1. <span data-ttu-id="65d87-130">Agregue el **texto del tweet** como texto que se va a analizar.</span><span class="sxs-lookup"><span data-stu-id="65d87-130">Add the **Tweet Text** as the text to analyze.</span></span>
+
+<span data-ttu-id="65d87-131">Ahora que tenemos los datos del tweet e información sobre el tweet, es posible que otros conectores sean relevantes:</span><span class="sxs-lookup"><span data-stu-id="65d87-131">Now that we have the tweet data, and insights on the tweet, a number of other connectors may be relevant:</span></span>
+* <span data-ttu-id="65d87-132">Power BI: agregar filas a un conjunto de datos de streaming: ver tweets en tiempo real en un panel de Power BI.</span><span class="sxs-lookup"><span data-stu-id="65d87-132">Power BI - Add Rows to Streaming Dataset: View tweets real time on a Power BI dashboard.</span></span>
+* <span data-ttu-id="65d87-133">Azure Data Lake: anexar archivo: agregar a un conjunto de datos de Azure Data Lake datos de clientes que se incluyen en los trabajos de análisis.</span><span class="sxs-lookup"><span data-stu-id="65d87-133">Azure Data Lake - Append file: Add customer data to an Azure Data Lake dataset to include in analytics jobs.</span></span>
+* <span data-ttu-id="65d87-134">SQL: agregar filas: almacenar datos en una base de datos para su posterior recuperación.</span><span class="sxs-lookup"><span data-stu-id="65d87-134">SQL - Add rows: Store data in a database for later retrieval.</span></span>
+* <span data-ttu-id="65d87-135">Slack: Enviar mensaje: alertar a un canal de Slack sobre comentarios negativos que requieren acciones.</span><span class="sxs-lookup"><span data-stu-id="65d87-135">Slack - Send message: Alert a slack channel on negative feedback that requires actions.</span></span>
+
+<span data-ttu-id="65d87-136">Una función de Azure también se puede usar para realizar más proceso personalizado en los datos.</span><span class="sxs-lookup"><span data-stu-id="65d87-136">An Azure Function can also be used to do more custom compute on top of the data.</span></span>
+
+## <a name="enriching-the-data-with-an-azure-function"></a><span data-ttu-id="65d87-137">Enriquecimiento de los datos con una función de Azure</span><span class="sxs-lookup"><span data-stu-id="65d87-137">Enriching the data with an Azure Function</span></span>
+
+<span data-ttu-id="65d87-138">Para poder crear una función, es preciso tener una aplicación de función en la suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="65d87-138">Before we can create a function, we need to have a function app in our Azure subscription.</span></span>  <span data-ttu-id="65d87-139">[Aquí se puede encontrar](../azure-functions/functions-create-first-azure-function-azure-portal.md) información acerca de cómo crear una función de Azure en el portal.</span><span class="sxs-lookup"><span data-stu-id="65d87-139">Details on creating an Azure Function in the portal can [be found here](../azure-functions/functions-create-first-azure-function-azure-portal.md)</span></span>
+
+<span data-ttu-id="65d87-140">Para que una función pueda llamarse directamente desde una aplicación lógica, es preciso que tenga un enlace a un desencadenador de HTTP.</span><span class="sxs-lookup"><span data-stu-id="65d87-140">For a function to be called directly from a logic app, it needs to have an HTTP trigger binding.</span></span>  <span data-ttu-id="65d87-141">Se recomienda utilizar la plantilla **HttpTrigger**.</span><span class="sxs-lookup"><span data-stu-id="65d87-141">We recommend using the **HttpTrigger** template.</span></span>
+
+<span data-ttu-id="65d87-142">En este escenario, el cuerpo de la solicitud de la función de Azure sería el texto del mensaje.</span><span class="sxs-lookup"><span data-stu-id="65d87-142">In this scenario, the request body of the Azure Function would be the tweet text.</span></span>  <span data-ttu-id="65d87-143">En el código de la función, basta con definir la activación de la lógica si el texto de tweet contiene una palabra o frase claves.</span><span class="sxs-lookup"><span data-stu-id="65d87-143">In the function code, simply define logic on if the tweet text contains a key word or phrase.</span></span>  <span data-ttu-id="65d87-144">La propia función puede ser tan simple o compleja como sea necesario en el escenario.</span><span class="sxs-lookup"><span data-stu-id="65d87-144">The function itself could be kept as simple or complex as needed for the scenario.</span></span>
+
+<span data-ttu-id="65d87-145">Al final de la función, solo hay que devolver una respuesta a la aplicación lógica con algunos datos.</span><span class="sxs-lookup"><span data-stu-id="65d87-145">At the end of the function, simply return a response to the logic app with some data.</span></span>  <span data-ttu-id="65d87-146">Puede tratarse de un valor booleano simple (p. ej. `containsKeyword`) o de un objeto complejo.</span><span class="sxs-lookup"><span data-stu-id="65d87-146">This could be a simple boolean value (e.g. `containsKeyword`), or a complex object.</span></span>
+
+![Paso de función de Azure configurado][2]
+
+> [!TIP]
+> <span data-ttu-id="65d87-148">Cuando acceda a una respuesta compleja desde una función de una aplicación lógica, use la acción Análisis del archivo JSON.</span><span class="sxs-lookup"><span data-stu-id="65d87-148">When accessing a complex response from a function in a logic app, use the Parse JSON action.</span></span>
+
+<span data-ttu-id="65d87-149">Una vez que se guarda la función, se puede agregar a la aplicación lógica creada anteriormente.</span><span class="sxs-lookup"><span data-stu-id="65d87-149">Once the function is saved, it can be added into the logic app created above.</span></span>  <span data-ttu-id="65d87-150">En la aplicación lógica:</span><span class="sxs-lookup"><span data-stu-id="65d87-150">In the logic app:</span></span>
+
+1. <span data-ttu-id="65d87-151">Haga clic para agregar un **paso nuevo**.</span><span class="sxs-lookup"><span data-stu-id="65d87-151">Click to add a **New Step**</span></span>
+1. <span data-ttu-id="65d87-152">Seleccione el conector de **Azure Functions**.</span><span class="sxs-lookup"><span data-stu-id="65d87-152">Select the **Azure Functions** connector</span></span>
+1. <span data-ttu-id="65d87-153">Seleccione la opción de elegir una función existente y navegue hasta la función creada.</span><span class="sxs-lookup"><span data-stu-id="65d87-153">Select to choose an existing function, and browse to the function created</span></span>
+1. <span data-ttu-id="65d87-154">Envíe el **texto del tweet** para el **cuerpo de la solicitud**</span><span class="sxs-lookup"><span data-stu-id="65d87-154">Send in the **Tweet Text** for the **Request Body**</span></span>
+
+## <a name="running-and-monitoring-the-solution"></a><span data-ttu-id="65d87-155">Ejecución y supervisión de la solución</span><span class="sxs-lookup"><span data-stu-id="65d87-155">Running and monitoring the solution</span></span>
+
+<span data-ttu-id="65d87-156">Una de las ventajas de crear orquestaciones sin servidor en Logic Apps es la gran cantidad de funcionalidades de depuración y supervisión.</span><span class="sxs-lookup"><span data-stu-id="65d87-156">One of the benefits of authoring serverless orchestrations in Logic Apps is the rich debug and monitoring capabilities.</span></span>  <span data-ttu-id="65d87-157">Todas las ejecuciones (actuales o históricas) se pueden verse desde dentro de Visual Studio, Azure Portal o a través de la API de REST y los SDK.</span><span class="sxs-lookup"><span data-stu-id="65d87-157">Any run (current or historic) can be viewed from within Visual Studio, the Azure portal, or via the REST API and SDKs.</span></span>
+
+<span data-ttu-id="65d87-158">Una de las formas más sencillas de probar una aplicación de lógica es usar el botón **Run** (Ejecutar) en el diseñador.</span><span class="sxs-lookup"><span data-stu-id="65d87-158">One of the easiest ways to test a logic app is using the **Run** button in the designer.</span></span>  <span data-ttu-id="65d87-159">Al hacer clic en **Run** (Ejecutar), se seguirá sondeando el desencadenador cada 5 segundos hasta que se detecte un evento y se proporcionará una vista en vivo a medida que la ejecución progresa.</span><span class="sxs-lookup"><span data-stu-id="65d87-159">Clicking **Run** will continue to poll the trigger every 5 seconds until an event is detected, and give a live view as the run progresses.</span></span>
+
+<span data-ttu-id="65d87-160">Los historiales de las ejecuciones anteriores se pueden ver en la hoja Información general de Azure Portal o mediante Visual Studio Cloud Explorer.</span><span class="sxs-lookup"><span data-stu-id="65d87-160">Previous run histories can be viewed on the Overview blade in the Azure portal, or using the Visual Studio Cloud Explorer.</span></span>
+
+## <a name="creating-a-deployment-template-for-automated-deployments"></a><span data-ttu-id="65d87-161">Creación de una plantilla de implementación para implementaciones automatizadas</span><span class="sxs-lookup"><span data-stu-id="65d87-161">Creating a deployment template for automated deployments</span></span>
+
+<span data-ttu-id="65d87-162">Una vez que se ha desarrollado una solución, se puede capturar e implementar a través de una plantilla de Azure en cualquier región de Azure del mundo.</span><span class="sxs-lookup"><span data-stu-id="65d87-162">Once a solution has been developed, it can be captured and deployed via an Azure deployment template to any Azure region in the world.</span></span>  <span data-ttu-id="65d87-163">Esto resulta útil no solo para modificar los parámetros de las diferentes versiones de este flujo de trabajo, sino también para integrar esta solución en una canalización de compilación y lanzamiento.</span><span class="sxs-lookup"><span data-stu-id="65d87-163">This is useful for both modifying parameters for different versions of this workflow, but also for integrating this solution in a build and release pipeline.</span></span>  <span data-ttu-id="65d87-164">[En este artículo](logic-apps-create-deploy-template.md) se puede encontrar información acerca de cómo crear una plantilla de implementación.</span><span class="sxs-lookup"><span data-stu-id="65d87-164">Details on creating a deployment template can be found [in this article](logic-apps-create-deploy-template.md).</span></span>
+
+<span data-ttu-id="65d87-165">Azure Functions también se puede incorporar a la plantilla de implementación (con el fin de que toda la solución, con todas las dependencias, se puede administrar como una sola plantilla).</span><span class="sxs-lookup"><span data-stu-id="65d87-165">Azure Functions can also be incorporated in the deployment template - so the entire solution with all dependencies can be managed as a single template.</span></span>  <span data-ttu-id="65d87-166">Un ejemplo de una plantilla de implementación de funciones se puede encontrar en el [repositorio azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).</span><span class="sxs-lookup"><span data-stu-id="65d87-166">An example of a function deployment template can be found in the [Azure quickstart template repository](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="65d87-167">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="65d87-167">Next steps</span></span>
+
+* [<span data-ttu-id="65d87-168">Vea otros ejemplos y escenarios comunes de Azure Logic Apps</span><span class="sxs-lookup"><span data-stu-id="65d87-168">See other examples and scenarios for Azure Logic Apps</span></span>](logic-apps-examples-and-scenarios.md)
+* [<span data-ttu-id="65d87-169">Vea un tutorial en vídeo sobre la creación de esta solución de un extremo a otro</span><span class="sxs-lookup"><span data-stu-id="65d87-169">Watch a video walkthrough on creating this solution end-to-end</span></span>](http://aka.ms/logicappsdemo)
+* [<span data-ttu-id="65d87-170">Aprenda a controlar errores y excepciones en Azure Logic Apps</span><span class="sxs-lookup"><span data-stu-id="65d87-170">Learn how to handle and catch exceptions within a logic app</span></span>](logic-apps-exception-handling.md)
+
+<!-- Image References -->
+[1]: ./media/logic-apps-scenario-social-serverless/twitter.png
+[2]: ./media/logic-apps-scenario-social-serverless/function.png

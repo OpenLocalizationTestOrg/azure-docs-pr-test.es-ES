@@ -1,0 +1,80 @@
+---
+title: "Solución de problemas de conexiones y puerta de enlace de Azure Virtual Network: PowerShell | Microsoft Docs"
+description: "En esta página se explica cómo usar Azure Network Watcher para solucionar problemas con el cmdlet de PowerShell"
+services: network-watcher
+documentationcenter: na
+author: georgewallace
+manager: timlt
+editor: 
+ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
+ms.service: network-watcher
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 06/19/2017
+ms.author: gwallace
+ms.openlocfilehash: e135e719d8f267f6a189d0f8a903a49980a5a035
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a><span data-ttu-id="f199e-103">Solución de problemas de las conexiones y la puerta de enlace de Virtual Network mediante PowerShell de Azure Network Watcher</span><span class="sxs-lookup"><span data-stu-id="f199e-103">Troubleshoot Virtual Network Gateway and Connections using Azure Network Watcher PowerShell</span></span>
+
+> [!div class="op_single_selector"]
+> - [<span data-ttu-id="f199e-104">Portal</span><span class="sxs-lookup"><span data-stu-id="f199e-104">Portal</span></span>](network-watcher-troubleshoot-manage-portal.md)
+> - [<span data-ttu-id="f199e-105">PowerShell</span><span class="sxs-lookup"><span data-stu-id="f199e-105">PowerShell</span></span>](network-watcher-troubleshoot-manage-powershell.md)
+> - [<span data-ttu-id="f199e-106">CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="f199e-106">CLI 1.0</span></span>](network-watcher-troubleshoot-manage-cli-nodejs.md)
+> - [<span data-ttu-id="f199e-107">CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="f199e-107">CLI 2.0</span></span>](network-watcher-troubleshoot-manage-cli.md)
+> - [<span data-ttu-id="f199e-108">API DE REST</span><span class="sxs-lookup"><span data-stu-id="f199e-108">REST API</span></span>](network-watcher-troubleshoot-manage-rest.md)
+
+<span data-ttu-id="f199e-109">Network Watcher proporciona numerosas funcionalidades con relación a los recursos de red de Azure.</span><span class="sxs-lookup"><span data-stu-id="f199e-109">Network Watcher provides many capabilities as it relates to understanding your network resources in Azure.</span></span> <span data-ttu-id="f199e-110">Una de estas funcionalidades es la solución de problemas de recursos.</span><span class="sxs-lookup"><span data-stu-id="f199e-110">One of these capabilities is resource troubleshooting.</span></span> <span data-ttu-id="f199e-111">Se puede llamar a la solución de problemas de recursos mediante el portal, PowerShell, la CLI o la API de REST.</span><span class="sxs-lookup"><span data-stu-id="f199e-111">Resource troubleshooting can be called through the portal, PowerShell, CLI, or REST API.</span></span> <span data-ttu-id="f199e-112">Cuando se llama a Network Watcher, este inspecciona el estado de una puerta de enlace de Virtual Network o de una conexión y devuelve sus conclusiones.</span><span class="sxs-lookup"><span data-stu-id="f199e-112">When called, Network Watcher inspects the health of a Virtual Network Gateway or a Connection and returns its findings.</span></span>
+
+## <a name="before-you-begin"></a><span data-ttu-id="f199e-113">Antes de empezar</span><span class="sxs-lookup"><span data-stu-id="f199e-113">Before you begin</span></span>
+
+<span data-ttu-id="f199e-114">En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create an Azure Network Watcher instance](network-watcher-create.md) (Creación de una instancia de Azure Network Watcher) para crear una instancia de Network Watcher.</span><span class="sxs-lookup"><span data-stu-id="f199e-114">This scenario assumes you have already followed the steps in [Create a Network Watcher](network-watcher-create.md) to create a Network Watcher.</span></span>
+
+<span data-ttu-id="f199e-115">Para obtener una lista de los tipos de puerta de enlace compatibles, vea el artículo sobre los [tipos de puerta de enlace compatibles](network-watcher-troubleshoot-overview.md#supported-gateway-types).</span><span class="sxs-lookup"><span data-stu-id="f199e-115">For a list of supported gateway types visit, [Supported Gateway types](network-watcher-troubleshoot-overview.md#supported-gateway-types).</span></span>
+
+## <a name="overview"></a><span data-ttu-id="f199e-116">Información general</span><span class="sxs-lookup"><span data-stu-id="f199e-116">Overview</span></span>
+
+<span data-ttu-id="f199e-117">La solución de problemas de recursos permite solucionar los problemas que surgen con las puertas de enlace y las conexiones de Virtual Network.</span><span class="sxs-lookup"><span data-stu-id="f199e-117">Resource troubleshooting provides the ability troubleshoot issues that arise with Virtual Network Gateways and Connections.</span></span> <span data-ttu-id="f199e-118">Cuando se envía una solicitud para solucionar problemas de recursos, se consultan y se inspeccionan los registros.</span><span class="sxs-lookup"><span data-stu-id="f199e-118">When a request is made to resource troubleshooting, logs are being queried and inspected.</span></span> <span data-ttu-id="f199e-119">Una vez finalizada la inspección, se devuelven los resultados.</span><span class="sxs-lookup"><span data-stu-id="f199e-119">When inspection is complete, the results are returned.</span></span> <span data-ttu-id="f199e-120">Las solicitudes para solucionar problemas de recursos son de larga ejecución, y podrían tardar varios minutos en devolver un resultado.</span><span class="sxs-lookup"><span data-stu-id="f199e-120">Resource troubleshooting requests are long running requests, which could take multiple minutes to return a result.</span></span> <span data-ttu-id="f199e-121">Los registros de solución de problemas se almacenan en un contenedor en una cuenta de almacenamiento especificada.</span><span class="sxs-lookup"><span data-stu-id="f199e-121">The logs from troubleshooting are stored in a container on a storage account that is specified.</span></span>
+
+## <a name="troubleshoot-a-gateway-or-connection"></a><span data-ttu-id="f199e-122">Solución de problemas de una puerta de enlace o conexión</span><span class="sxs-lookup"><span data-stu-id="f199e-122">Troubleshoot a gateway or connection</span></span>
+
+1. <span data-ttu-id="f199e-123">Navegue hasta [Azure Portal](https://portal.azure.com) y haga clic en **Redes** > **Network Watcher** > **Diagnóstico de VPN**</span><span class="sxs-lookup"><span data-stu-id="f199e-123">Navigate to the [Azure portal](https://portal.azure.com) and click **Networking** > **Network Watcher** > **VPN Diagnostics**</span></span>
+2. <span data-ttu-id="f199e-124">Seleccione una **suscripción**, un **grupo de recursos** y una **ubicación**.</span><span class="sxs-lookup"><span data-stu-id="f199e-124">Select a **Subscription**, **Resource Group**, and **Location**.</span></span>
+3. <span data-ttu-id="f199e-125">La solución de problemas de recursos devuelve datos sobre el mantenimiento del recurso.</span><span class="sxs-lookup"><span data-stu-id="f199e-125">Resource troubleshooting returns data about the health of the resource.</span></span> <span data-ttu-id="f199e-126">También guarda los registros pertinentes en una cuenta de almacenamiento para su revisión.</span><span class="sxs-lookup"><span data-stu-id="f199e-126">It also saves relevant logs to a storage account to be reviewed.</span></span> <span data-ttu-id="f199e-127">Haga clic en **Cuenta de Storage** para seleccionar una.</span><span class="sxs-lookup"><span data-stu-id="f199e-127">Click **Storage Account** to select a storage account.</span></span>
+4. <span data-ttu-id="f199e-128">En la hoja **Cuentas de Storage**, seleccione una existente o haga clic en **+ Cuenta de Storage** para crear una nueva.</span><span class="sxs-lookup"><span data-stu-id="f199e-128">On the **Storage accounts** blade, select an existing storage account or click **+ Storage account** to create a new one.</span></span>
+5. <span data-ttu-id="f199e-129">En la hoja **Contenedores**, elija uno existente o haga clic en **+ Contenedor** para crear uno nuevo.</span><span class="sxs-lookup"><span data-stu-id="f199e-129">On the **Containers** blade, choose an existing container or click **+ Container** to create a new container.</span></span> <span data-ttu-id="f199e-130">Cuando termine, haga clic en **Seleccionar**</span><span class="sxs-lookup"><span data-stu-id="f199e-130">When complete click **Select**</span></span>
+6. <span data-ttu-id="f199e-131">Seleccione los recursos de puerta de enlace y conexión para solucionar problemas y haga clic en **Start Troubleshooting** (Iniciar solución de problemas)</span><span class="sxs-lookup"><span data-stu-id="f199e-131">Select the Gateway and Connection resources to troubleshoot and click **Start Troubleshooting**</span></span>
+
+<span data-ttu-id="f199e-132">Si se seleccionan varios recursos, la solución de problemas se ejecuta de manera simultánea en los recursos de puerta de enlace.</span><span class="sxs-lookup"><span data-stu-id="f199e-132">If multiple resources are selected, troubleshooting is run concurrently on gateway resources.</span></span> <span data-ttu-id="f199e-133">No se puede ejecutar en una conexión y su puerta de enlace asociada al mismo tiempo.</span><span class="sxs-lookup"><span data-stu-id="f199e-133">It can not run on a connection and it's associated gateway at the same time.</span></span> <span data-ttu-id="f199e-134">Se recomienda solucionar primero los problemas de las puertas de enlace, puesto que solucionar problemas de conexión es un proceso más largo.</span><span class="sxs-lookup"><span data-stu-id="f199e-134">It is recommended to troubleshoot gateways first as connection troubleshooting is a longer process.</span></span> <span data-ttu-id="f199e-135">Mientras se ejecuta el diagnóstico de VPN en un recurso, la columna **ESTADO DE SOLUCIÓN DE PROBLEMAS** mostrará un estado **En ejecución**</span><span class="sxs-lookup"><span data-stu-id="f199e-135">While VPN Diagnostics is running on a resource the **TROUBLESHOOTING STATUS** column will show a status of **Running**</span></span>
+
+<span data-ttu-id="f199e-136">Cuando finalice, la columna de estado cambia a **Healthy** (Correcto) **Unhealthy** (Incorrecto).</span><span class="sxs-lookup"><span data-stu-id="f199e-136">When complete, the status column changes to **Healthy** or **Unhealthy**.</span></span>
+
+![finalización de la solución de problemas][2]
+
+## <a name="understanding-the-results"></a><span data-ttu-id="f199e-138">Descripción de los resultados</span><span class="sxs-lookup"><span data-stu-id="f199e-138">Understanding the results</span></span>
+
+<span data-ttu-id="f199e-139">En la sección de **detalles** de la ventana, la pestaña **Estado** muestra la última ejecución de solución de problemas en el recurso seleccionado.</span><span class="sxs-lookup"><span data-stu-id="f199e-139">In the **Details** section of the window, the **Status** tab shows the status of the last troubleshooting run on the selected resource.</span></span> <span data-ttu-id="f199e-140">Los resultados del diagnóstico más reciente se muestran xx minutos después de la última ejecución.</span><span class="sxs-lookup"><span data-stu-id="f199e-140">Results of the latest diagnostic are shown xx minutes after the last run.</span></span>
+
+|<span data-ttu-id="f199e-141">Propiedad</span><span class="sxs-lookup"><span data-stu-id="f199e-141">Property</span></span>  |<span data-ttu-id="f199e-142">Descripción</span><span class="sxs-lookup"><span data-stu-id="f199e-142">Description</span></span>  |
+|---------|---------|
+|<span data-ttu-id="f199e-143">Recurso</span><span class="sxs-lookup"><span data-stu-id="f199e-143">Resource</span></span>     | <span data-ttu-id="f199e-144">Un vínculo al recurso.</span><span class="sxs-lookup"><span data-stu-id="f199e-144">A link to the resource.</span></span>        |
+|<span data-ttu-id="f199e-145">Ruta de acceso de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="f199e-145">Storage path</span></span>     |  <span data-ttu-id="f199e-146">Ruta de acceso a la cuenta de almacenamiento y el contenedor que contienen los registros (si durante la ejecución se generó alguno).</span><span class="sxs-lookup"><span data-stu-id="f199e-146">Path to the storage account and container that contain the logs (if any were produced during the run).</span></span> <span data-ttu-id="f199e-147">Esta configuración no se conserva una vez que sale del portal.</span><span class="sxs-lookup"><span data-stu-id="f199e-147">This setting does not persist after you leave the portal.</span></span>        |
+|<span data-ttu-id="f199e-148">Resumen</span><span class="sxs-lookup"><span data-stu-id="f199e-148">Summary</span></span>     | <span data-ttu-id="f199e-149">Resumen del mantenimiento de recursos.</span><span class="sxs-lookup"><span data-stu-id="f199e-149">Summary of the resource health.</span></span>        |
+|<span data-ttu-id="f199e-150">Detalles</span><span class="sxs-lookup"><span data-stu-id="f199e-150">Detail</span></span>     | <span data-ttu-id="f199e-151">Información detallada sobre el mantenimiento de recursos.</span><span class="sxs-lookup"><span data-stu-id="f199e-151">Detailed information on the resource health.</span></span>        |
+|<span data-ttu-id="f199e-152">Última ejecución</span><span class="sxs-lookup"><span data-stu-id="f199e-152">Last run</span></span>     | <span data-ttu-id="f199e-153">La hora en que se ejecutó por última vez la solución de problemas.</span><span class="sxs-lookup"><span data-stu-id="f199e-153">The time the last time troubleshooting was ran.</span></span>        |
+
+
+<span data-ttu-id="f199e-154">La pestaña **Acción** ofrece una guía general sobre cómo resolver el problema.</span><span class="sxs-lookup"><span data-stu-id="f199e-154">The **Action** tab provides general guidance on how to resolve the issue.</span></span> <span data-ttu-id="f199e-155">Si se puede realizar una acción para el problema, se proporciona un vínculo con instrucciones adicionales.</span><span class="sxs-lookup"><span data-stu-id="f199e-155">If an action can be taken for the issue, a link is provided with additional guidance.</span></span> <span data-ttu-id="f199e-156">Si no hay instrucciones adicionales, la respuesta proporciona la dirección URL para abrir un caso de soporte técnico.</span><span class="sxs-lookup"><span data-stu-id="f199e-156">In the case where there is no additional guidance, the response provides the url to open a support case.</span></span>  <span data-ttu-id="f199e-157">Para más información acerca de las propiedades de la respuesta y lo que incluye, consulte la [introducción a la solución de problemas en Network Watcher](network-watcher-troubleshoot-overview.md)</span><span class="sxs-lookup"><span data-stu-id="f199e-157">For more information about the properties of the response and what is included, visit [Network Watcher Troubleshoot overview](network-watcher-troubleshoot-overview.md)</span></span>
+
+
+## <a name="next-steps"></a><span data-ttu-id="f199e-158">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="f199e-158">Next steps</span></span>
+
+<span data-ttu-id="f199e-159">Si se cambió la configuración y la conectividad de VPN se ha detenido, consulte [Administración de grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) para realizar un seguimiento de los grupos de seguridad de red y las reglas de seguridad que pueden estar afectados.</span><span class="sxs-lookup"><span data-stu-id="f199e-159">If settings have been changed that stop VPN connectivity, see [Manage Network Security Groups](../virtual-network/virtual-network-manage-nsg-arm-portal.md) to track down the network security group and security rules that may be in question.</span></span>
+
+
+[2]: ./media/network-watcher-troubleshoot-manage-portal/2.png

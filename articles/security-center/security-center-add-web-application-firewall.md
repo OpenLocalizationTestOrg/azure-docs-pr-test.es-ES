@@ -1,0 +1,88 @@
+---
+title: "Adición de un firewall de aplicaciones web en Azure Security Center | Microsoft Docs"
+description: "En este documento se muestra cómo implementar las recomendaciones de agregar un firewall de aplicaciones web y de finalizar la protección de la aplicación de Azure Security Center."
+services: security-center
+documentationcenter: na
+author: TerryLanfear
+manager: MBaldwin
+editor: 
+ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
+ms.service: security-center
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/09/2017
+ms.author: terrylan
+ms.openlocfilehash: d04a07237029953d8a9b20704d85e852ce45d867
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="add-a-web-application-firewall-in-azure-security-center"></a><span data-ttu-id="314c6-103">Adición de un firewall de aplicaciones web en el Centro de seguridad de Azure</span><span class="sxs-lookup"><span data-stu-id="314c6-103">Add a web application firewall in Azure Security Center</span></span>
+<span data-ttu-id="314c6-104">Azure Security Center puede recomendarle agregar Firewall de aplicaciones web (WAF) de un asociado de Microsoft para proteger las aplicaciones web.</span><span class="sxs-lookup"><span data-stu-id="314c6-104">Azure Security Center may recommend that you add a web application firewall (WAF) from a Microsoft partner to secure your web applications.</span></span> <span data-ttu-id="314c6-105">Este documento guía a través de un ejemplo de cómo aplicar esta recomendación.</span><span class="sxs-lookup"><span data-stu-id="314c6-105">This document walks you through an example of how to apply this recommendation.</span></span>
+
+<span data-ttu-id="314c6-106">Se muestra una recomendación WAFS para cualquier IP pública (dirección IP de nivel de instancia o con equilibrio de carga) que tiene un grupo de seguridad de red asociado con puertos abiertos web entrantes (80 y 443).</span><span class="sxs-lookup"><span data-stu-id="314c6-106">A WAF recommendation is shown for any public facing IP (either Instance Level IP or Load Balanced IP) that has an associated network security group with open inbound web ports (80,443).</span></span>
+
+<span data-ttu-id="314c6-107">Security Center le recomendará que aprovisione un WAF para defenderse de ataques dirigidos a las aplicaciones web que se encuentran tanto en las máquinas virtuales como en App Service Environment.</span><span class="sxs-lookup"><span data-stu-id="314c6-107">Security Center recommends that you provision a WAF to help defend against attacks targeting your web applications on virtual machines and on App Service Environment.</span></span> <span data-ttu-id="314c6-108">Un entorno de App Service es una opción de plan de servicio [Premium](https://azure.microsoft.com/pricing/details/app-service/) de Azure App Service que proporciona un entorno plenamente aislado y dedicado para ejecutar de forma segura las aplicaciones de Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="314c6-108">An App Service Environment (ASE) is a [Premium](https://azure.microsoft.com/pricing/details/app-service/) service plan option of Azure App Service that provides a fully isolated and dedicated environment for securely running Azure App Service apps.</span></span> <span data-ttu-id="314c6-109">Para más información acerca de ASE, consulte [Documentación de App Service Environment](../app-service/app-service-app-service-environments-readme.md).</span><span class="sxs-lookup"><span data-stu-id="314c6-109">To learn more about ASE, see the [App Service Environment Documentation](../app-service/app-service-app-service-environments-readme.md).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="314c6-110">En este documento se presenta el servicio mediante una implementación de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="314c6-110">This document introduces the service by using an example deployment.</span></span>  <span data-ttu-id="314c6-111">Este documento no es una guía paso a paso.</span><span class="sxs-lookup"><span data-stu-id="314c6-111">This document is not a step-by-step guide.</span></span>
+>
+>
+
+## <a name="implement-the-recommendation"></a><span data-ttu-id="314c6-112">Implementación de la recomendación</span><span class="sxs-lookup"><span data-stu-id="314c6-112">Implement the recommendation</span></span>
+1. <span data-ttu-id="314c6-113">En la hoja **Recomendaciones**, seleccione **Secure web application using web application firewall** (Proteger la aplicación web con el firewall de aplicaciones web).</span><span class="sxs-lookup"><span data-stu-id="314c6-113">In the **Recommendations** blade, select **Secure web application using web application firewall**.</span></span>
+   <span data-ttu-id="314c6-114">![Aplicación web segura][1]</span><span class="sxs-lookup"><span data-stu-id="314c6-114">![Secure web Application][1]</span></span>
+2. <span data-ttu-id="314c6-115">En la hoja **Proteger la aplicación web con Firewall de aplicaciones web** , seleccione una aplicación web.</span><span class="sxs-lookup"><span data-stu-id="314c6-115">In the **Secure your web applications using web application firewall** blade, select a web application.</span></span> <span data-ttu-id="314c6-116">Se abre la hoja **Add a Web Application Firewall** (Agregar un Firewall de aplicaciones web).</span><span class="sxs-lookup"><span data-stu-id="314c6-116">The **Add a Web Application Firewall** blade opens.</span></span>
+   <span data-ttu-id="314c6-117">![Add a web application firewall][2]</span><span class="sxs-lookup"><span data-stu-id="314c6-117">![Add a web application firewall][2]</span></span>
+3. <span data-ttu-id="314c6-118">Puede elegir usar un firewall de aplicaciones web existentes, si está disponible, o puede crear uno nuevo.</span><span class="sxs-lookup"><span data-stu-id="314c6-118">You can choose to use an existing web application firewall if available or you can create a new one.</span></span> <span data-ttu-id="314c6-119">En este ejemplo no hay ningún WAF existente, por lo que vamos a crear uno.</span><span class="sxs-lookup"><span data-stu-id="314c6-119">In this example, there are no existing WAFs available so we create a WAF.</span></span>
+4. <span data-ttu-id="314c6-120">Para crear un nuevo WAF, seleccione una solución de la lista de partners integrados.</span><span class="sxs-lookup"><span data-stu-id="314c6-120">To create a WAF, select a solution from the list of integrated partners.</span></span> <span data-ttu-id="314c6-121">En ese ejemplo, seleccionaremos **Firewall de aplicaciones web de Barracuda**.</span><span class="sxs-lookup"><span data-stu-id="314c6-121">In this example, we select **Barracuda Web Application Firewall**.</span></span>
+5. <span data-ttu-id="314c6-122">Se abrirá la hoja **Firewall de aplicaciones web de Barracuda** , que le proporcionará información sobre la solución del partner.</span><span class="sxs-lookup"><span data-stu-id="314c6-122">The **Barracuda Web Application Firewall** blade opens providing you information about the partner solution.</span></span> <span data-ttu-id="314c6-123">Seleccione **Crear** en la hoja de información.</span><span class="sxs-lookup"><span data-stu-id="314c6-123">Select **Create** in the information blade.</span></span>
+
+   ![Hoja de información del firewall][3]
+
+6. <span data-ttu-id="314c6-125">Se abrirá la hoja **Nuevo firewall de aplicaciones web** donde puede **configurar la máquina virtual** y proporcionar **información sobre WAF**.</span><span class="sxs-lookup"><span data-stu-id="314c6-125">The **New Web Application Firewall** blade opens, where you can perform **VM Configuration** steps and provide **WAF Information**.</span></span> <span data-ttu-id="314c6-126">Seleccione **Configuración de VM**.</span><span class="sxs-lookup"><span data-stu-id="314c6-126">Select **VM Configuration**.</span></span>
+7. <span data-ttu-id="314c6-127">En la hoja **Configuración de VM** , se ingresa la información requerida para poner en marcha la máquina virtual que ejecutará el WAF.</span><span class="sxs-lookup"><span data-stu-id="314c6-127">In the **VM Configuration** blade, you enter information required to spin up the virtual machine that runs the WAF.</span></span>
+   <span data-ttu-id="314c6-128">![VM configuration][4]</span><span class="sxs-lookup"><span data-stu-id="314c6-128">![VM configuration][4]</span></span>
+8. <span data-ttu-id="314c6-129">Vuelva a la hoja **Nuevo firewall de aplicaciones web** y seleccione **Información del WAF**.</span><span class="sxs-lookup"><span data-stu-id="314c6-129">Return to the **New Web Application Firewall** blade and select **WAF Information**.</span></span> <span data-ttu-id="314c6-130">En la hoja **Información de WAF** , configure el WAF.</span><span class="sxs-lookup"><span data-stu-id="314c6-130">In the **WAF Information** blade, you configure the WAF itself.</span></span> <span data-ttu-id="314c6-131">El paso 7 le permite configurar la máquina virtual en que se ejecutará el WAF y el paso 8 le permite aprovisionar el WAF.</span><span class="sxs-lookup"><span data-stu-id="314c6-131">Step 7 allows you to configure the virtual machine on which the WAF runs and step 8 enables you to provision the WAF itself.</span></span>
+
+## <a name="finalize-application-protection"></a><span data-ttu-id="314c6-132">Finalización de la protección de la aplicación</span><span class="sxs-lookup"><span data-stu-id="314c6-132">Finalize application protection</span></span>
+1. <span data-ttu-id="314c6-133">Vuelva a la hoja **Recomendaciones** .</span><span class="sxs-lookup"><span data-stu-id="314c6-133">Return to the **Recommendations** blade.</span></span> <span data-ttu-id="314c6-134">Después de crear el WAF, se generó una entrada nueva, denominada **Finalize application protection**(Finalizar la protección de la aplicación).</span><span class="sxs-lookup"><span data-stu-id="314c6-134">A new entry was generated after you created the WAF, called **Finalize application protection**.</span></span> <span data-ttu-id="314c6-135">Dicha le permite saber qué se necesita para completar el proceso de conectar el WAF dentro de la Red virtual de Azure, con el fin de que pueda proteger la aplicación.</span><span class="sxs-lookup"><span data-stu-id="314c6-135">This entry lets you know that you need to complete the process of actually wiring up the WAF within the Azure Virtual Network so that it can protect the application.</span></span>
+
+   ![Finalización de la protección de la aplicación][5]
+
+2. <span data-ttu-id="314c6-137">Seleccione **Finalize application protection**(Finalizar la protección de la aplicación).</span><span class="sxs-lookup"><span data-stu-id="314c6-137">Select **Finalize application protection**.</span></span> <span data-ttu-id="314c6-138">Se abre una nueva hoja.</span><span class="sxs-lookup"><span data-stu-id="314c6-138">A new blade opens.</span></span> <span data-ttu-id="314c6-139">En ella puede ver que hay una aplicación web que necesita que su tráfico se vuelva a enrutar.</span><span class="sxs-lookup"><span data-stu-id="314c6-139">You can see that there is a web application that needs to have its traffic rerouted.</span></span>
+3. <span data-ttu-id="314c6-140">Seleccione la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="314c6-140">Select the web application.</span></span> <span data-ttu-id="314c6-141">Se abre una hoja en la que encontrará los pasos necesarios para finalizar la configuración del Firewall de aplicaciones web.</span><span class="sxs-lookup"><span data-stu-id="314c6-141">A blade opens that gives you steps for finalizing the web application firewall setup.</span></span> <span data-ttu-id="314c6-142">Complete los pasos y, a continuación, seleccione la opción de **restringir tráfico**.</span><span class="sxs-lookup"><span data-stu-id="314c6-142">Complete the steps, and then select **Restrict traffic**.</span></span> <span data-ttu-id="314c6-143">Después, Security Center realizará las conexiones automáticamente.</span><span class="sxs-lookup"><span data-stu-id="314c6-143">Security Center then does the wiring-up for you.</span></span>
+
+   ![Restringir tráfico][6]
+
+> [!NOTE]
+> <span data-ttu-id="314c6-145">Puede proteger varias aplicaciones web del Centro de seguridad si agrega estas aplicaciones a las implementaciones de WAF existentes.</span><span class="sxs-lookup"><span data-stu-id="314c6-145">You can protect multiple web applications in Security Center by adding these applications to your existing WAF deployments.</span></span>
+>
+>
+
+<span data-ttu-id="314c6-146">Los registros de ese WAF ahora están totalmente integrados.</span><span class="sxs-lookup"><span data-stu-id="314c6-146">The logs from that WAF are now fully integrated.</span></span> <span data-ttu-id="314c6-147">El Centro de seguridad puede comenzar a recopilar y analizar automáticamente los registros, con el fin de poder exponer las alertas de seguridad importantes.</span><span class="sxs-lookup"><span data-stu-id="314c6-147">Security Center can start automatically gathering and analyzing the logs so that it can surface important security alerts to you.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="314c6-148">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="314c6-148">Next steps</span></span>
+<span data-ttu-id="314c6-149">En este documento, mostramos cómo implementar la recomendación "Adición de una aplicación web" del Centro de seguridad.</span><span class="sxs-lookup"><span data-stu-id="314c6-149">This document showed you how to implement the Security Center recommendation "Add a web application."</span></span> <span data-ttu-id="314c6-150">Para obtener más información sobre cómo configurar un firewall de aplicaciones web, vea lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="314c6-150">To learn more about configuring a web application firewall, see the following:</span></span>
+
+* [<span data-ttu-id="314c6-151">Configuración de un firewall de aplicaciones web (WAF) para entornos del Servicio de aplicaciones</span><span class="sxs-lookup"><span data-stu-id="314c6-151">Configuring a Web Application Firewall (WAF) for App Service Environment</span></span>](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
+
+<span data-ttu-id="314c6-152">Para más información sobre el Centro de seguridad, consulte los siguientes recursos:</span><span class="sxs-lookup"><span data-stu-id="314c6-152">To learn more about Security Center, see the following:</span></span>
+
+* <span data-ttu-id="314c6-153">[Establecimiento de directivas de seguridad en Azure Security Center](security-center-policies.md) : aprenda a configurar directivas de seguridad para las suscripciones y los grupos de recursos de Azure.</span><span class="sxs-lookup"><span data-stu-id="314c6-153">[Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.</span></span>
+* <span data-ttu-id="314c6-154">[Supervisión del estado de seguridad en Azure Security Center](security-center-monitoring.md) : obtenga información sobre cómo supervisar el mantenimiento de los recursos de Azure.</span><span class="sxs-lookup"><span data-stu-id="314c6-154">[Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.</span></span>
+* <span data-ttu-id="314c6-155">[Administración y respuesta a las alertas de seguridad en Azure Security Center](security-center-managing-and-responding-alerts.md) : aprenda a administrar y responder a alertas de seguridad.</span><span class="sxs-lookup"><span data-stu-id="314c6-155">[Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.</span></span>
+* <span data-ttu-id="314c6-156">[Administración de recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md) : recomendaciones que le ayudan a proteger los recursos de Azure.</span><span class="sxs-lookup"><span data-stu-id="314c6-156">[Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.</span></span>
+* <span data-ttu-id="314c6-157">[Preguntas más frecuentes sobre Azure Security Center](security-center-faq.md) : encuentre las preguntas más frecuentes sobre el uso del servicio.</span><span class="sxs-lookup"><span data-stu-id="314c6-157">[Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.</span></span>
+* <span data-ttu-id="314c6-158">[Blog de seguridad de Azure](http://blogs.msdn.com/b/azuresecurity/) : encuentre publicaciones de blog sobre el cumplimiento y la seguridad de Azure.</span><span class="sxs-lookup"><span data-stu-id="314c6-158">[Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Find blog posts about Azure security and compliance.</span></span>
+
+<!--Image references-->
+[1]: ./media/security-center-add-web-application-firewall/secure-web-application.png
+[2]:./media/security-center-add-web-application-firewall/add-a-waf.png
+[3]: ./media/security-center-add-web-application-firewall/info-blade.png
+[4]: ./media/security-center-add-web-application-firewall/select-vm-config.png
+[5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
+[6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png

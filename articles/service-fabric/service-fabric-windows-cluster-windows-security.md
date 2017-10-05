@@ -1,0 +1,140 @@
+---
+title: "Protección de un clúster en ejecución en Windows mediante la seguridad de Windows | Microsoft Docs"
+description: "Aprenda a configurar la seguridad de nodo a nodo y de cliente a nodo en un clúster independiente que se ejecute en Windows mediante la seguridad de Windows."
+services: service-fabric
+documentationcenter: .net
+author: dkkapur
+manager: timlt
+editor: 
+ms.assetid: ce3bf686-ffc4-452f-b15a-3c812aa9e672
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/24/2017
+ms.author: dekapur
+ms.openlocfilehash: e093a631b0cf81195981a8e3d345504ebce02723
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/29/2017
+---
+# <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a><span data-ttu-id="b04ad-103">Proteger un clúster independiente en Windows mediante la seguridad de Windows</span><span class="sxs-lookup"><span data-stu-id="b04ad-103">Secure a standalone cluster on Windows by using Windows security</span></span>
+<span data-ttu-id="b04ad-104">Para evitar accesos no autorizados a un clúster de Service Fabric, debe proteger el clúster.</span><span class="sxs-lookup"><span data-stu-id="b04ad-104">To prevent unauthorized access to a Service Fabric cluster, you must secure the cluster.</span></span> <span data-ttu-id="b04ad-105">La seguridad es especialmente importante cuando el clúster ejecuta cargas de trabajo de producción.</span><span class="sxs-lookup"><span data-stu-id="b04ad-105">Security is especially important when the cluster runs production workloads.</span></span> <span data-ttu-id="b04ad-106">En este artículo se describe cómo configurar la seguridad de nodo a nodo y de cliente a nodo mediante la seguridad de Windows en el archivo *ClusterConfig.JSON*.</span><span class="sxs-lookup"><span data-stu-id="b04ad-106">This article describes how to configure node-to-node and client-to-node security by using Windows security in the *ClusterConfig.JSON* file.</span></span>  <span data-ttu-id="b04ad-107">El proceso se corresponde con el paso de seguridad de configuración descrito en [Creación de un clúster independiente con Windows Server](service-fabric-cluster-creation-for-windows-server.md).</span><span class="sxs-lookup"><span data-stu-id="b04ad-107">The process corresponds to the configure security step of [Create a standalone cluster running on Windows](service-fabric-cluster-creation-for-windows-server.md).</span></span> <span data-ttu-id="b04ad-108">Para más información sobre cómo Service Fabric usa la seguridad de Windows, consulte [Escenarios de seguridad de los clústeres](service-fabric-cluster-security.md).</span><span class="sxs-lookup"><span data-stu-id="b04ad-108">For more information about how Service Fabric uses Windows security, see [Cluster security scenarios](service-fabric-cluster-security.md).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="b04ad-109">Considere la selección de seguridad de nodo a nodo con cuidado, ya que no hay ninguna actualización de clúster de una opción de seguridad a otra.</span><span class="sxs-lookup"><span data-stu-id="b04ad-109">You should consider the selection of node-to-node security carefully because there is no cluster upgrade from one security choice to another.</span></span> <span data-ttu-id="b04ad-110">Para cambiar la selección de seguridad, tendrá que volver a generar el clúster completo.</span><span class="sxs-lookup"><span data-stu-id="b04ad-110">To change the security selection, you have to rebuild the full cluster.</span></span>
+>
+>
+
+## <a name="configure-windows-security-using-gmsa"></a><span data-ttu-id="b04ad-111">Configuración de la seguridad de Windows mediante gMSA</span><span class="sxs-lookup"><span data-stu-id="b04ad-111">Configure Windows security using gMSA</span></span>  
+<span data-ttu-id="b04ad-112">El archivo de configuración de ejemplo *ClusterConfig.gMSA.Windows.MultiMachine.JSON* descargado junto con el paquete de clúster independiente [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) contiene una plantilla para configurar la seguridad de Windows mediante una [cuenta de servicio administrada de grupo (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):</span><span class="sxs-lookup"><span data-stu-id="b04ad-112">The sample *ClusterConfig.gMSA.Windows.MultiMachine.JSON* configuration file downloaded with the [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) standalone cluster package contains a template for configuring Windows security using [Group Managed Service Account (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):</span></span>  
+
+```  
+"security": {  
+            "WindowsIdentities": {  
+                "ClustergMSAIdentity": "accountname@fqdn"  
+                "ClusterSPN": "fqdn"  
+                "ClientIdentities": [  
+                    {  
+                        "Identity": "domain\\username",  
+                        "IsAdmin": true  
+                    }  
+                ]  
+            }  
+        }  
+```  
+  
+| <span data-ttu-id="b04ad-113">**Opciones de configuración.**</span><span class="sxs-lookup"><span data-stu-id="b04ad-113">**Configuration Setting**</span></span> | <span data-ttu-id="b04ad-114">**Descripción**</span><span class="sxs-lookup"><span data-stu-id="b04ad-114">**Description**</span></span> |  
+| --- | --- |  
+| <span data-ttu-id="b04ad-115">WindowsIdentities</span><span class="sxs-lookup"><span data-stu-id="b04ad-115">WindowsIdentities</span></span> |<span data-ttu-id="b04ad-116">Contiene las identidades de cliente y del clúster.</span><span class="sxs-lookup"><span data-stu-id="b04ad-116">Contains the cluster and client identities.</span></span> |  
+| <span data-ttu-id="b04ad-117">ClustergMSAIdentity</span><span class="sxs-lookup"><span data-stu-id="b04ad-117">ClustergMSAIdentity</span></span> |<span data-ttu-id="b04ad-118">Permite configurar la seguridad de nodo a nodo.</span><span class="sxs-lookup"><span data-stu-id="b04ad-118">Configures node-to-node security.</span></span> <span data-ttu-id="b04ad-119">Una cuenta de servicio administrada de grupo.</span><span class="sxs-lookup"><span data-stu-id="b04ad-119">A group managed service account.</span></span> |  
+| <span data-ttu-id="b04ad-120">ClusterSPN</span><span class="sxs-lookup"><span data-stu-id="b04ad-120">ClusterSPN</span></span> |<span data-ttu-id="b04ad-121">SPN completo de dominio para la cuenta gMSA</span><span class="sxs-lookup"><span data-stu-id="b04ad-121">Fully qualified domain SPN for gMSA account</span></span>|  
+| <span data-ttu-id="b04ad-122">ClientIdentities</span><span class="sxs-lookup"><span data-stu-id="b04ad-122">ClientIdentities</span></span> |<span data-ttu-id="b04ad-123">Permite configurar la seguridad de cliente a nodo.</span><span class="sxs-lookup"><span data-stu-id="b04ad-123">Configures client-to-node security.</span></span> <span data-ttu-id="b04ad-124">Una matriz de cuentas de usuario de cliente.</span><span class="sxs-lookup"><span data-stu-id="b04ad-124">An array of client user accounts.</span></span> |  
+| <span data-ttu-id="b04ad-125">Identidad</span><span class="sxs-lookup"><span data-stu-id="b04ad-125">Identity</span></span> |<span data-ttu-id="b04ad-126">La identidad del cliente, un usuario de dominio.</span><span class="sxs-lookup"><span data-stu-id="b04ad-126">The client identity, a domain user.</span></span> |  
+| <span data-ttu-id="b04ad-127">IsAdmin</span><span class="sxs-lookup"><span data-stu-id="b04ad-127">IsAdmin</span></span> |<span data-ttu-id="b04ad-128">True especifica que el usuario de dominio tiene acceso de cliente de administrador, mientras que False especifica un acceso de cliente de usuario.</span><span class="sxs-lookup"><span data-stu-id="b04ad-128">True specifies that the domain user has administrator client access, false for user client access.</span></span> |  
+  
+<span data-ttu-id="b04ad-129">La [seguridad de nodo a nodo](service-fabric-cluster-security.md#node-to-node-security) se configura estableciendo **ClustergMSAIdentity** cuando Service Fabric tiene que ejecutarse en gMSA.</span><span class="sxs-lookup"><span data-stu-id="b04ad-129">[Node to node security](service-fabric-cluster-security.md#node-to-node-security) is configured by setting **ClustergMSAIdentity** when service fabric needs to run under gMSA.</span></span> <span data-ttu-id="b04ad-130">Para crear relaciones de confianza entre los nodos, debe asegurarse de que ambos conocen su existencia mutuamente.</span><span class="sxs-lookup"><span data-stu-id="b04ad-130">In order to build trust relationships between nodes, they must be made aware of each other.</span></span> <span data-ttu-id="b04ad-131">Esto puede realizarse de dos maneras diferentes: especificando la cuenta de servicio administrada de grupos que incluye todos los nodos del clúster o especificando el grupo de máquinas de dominio de todos los nodos del clúster.</span><span class="sxs-lookup"><span data-stu-id="b04ad-131">This can be accomplished in two different ways: Specify the Group Managed Service Account that includes all nodes in the cluster or Specify the domain machine group that includes all nodes in the cluster.</span></span> <span data-ttu-id="b04ad-132">Se recomienda encarecidamente usar el enfoque que emplea la [cuenta de servicio administrada de grupos (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) , especialmente para los clústeres más grandes (más de 10 nodos) o para los clústeres que es probable que crezcan o se reduzcan.</span><span class="sxs-lookup"><span data-stu-id="b04ad-132">We strongly recommend using the [Group Managed Service Account (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) approach, particularly for larger clusters (more than 10 nodes) or for clusters that are likely to grow or shrink.</span></span>  
+<span data-ttu-id="b04ad-133">Este enfoque no requiere la creación de un grupo de dominio para el que se hayan otorgado derechos de accesos a los administradores de clústeres para agregar y quitar miembros.</span><span class="sxs-lookup"><span data-stu-id="b04ad-133">This approach does not require the creation of a domain group for which cluster administrators have been granted access rights to add and remove members.</span></span> <span data-ttu-id="b04ad-134">Estas cuentas también son útiles para la administración automática de contraseñas.</span><span class="sxs-lookup"><span data-stu-id="b04ad-134">These accounts are also useful for automatic password management.</span></span> <span data-ttu-id="b04ad-135">Para más información, consulte [Introducción a las cuentas de servicio administradas de grupo](http://technet.microsoft.com/library/jj128431.aspx).</span><span class="sxs-lookup"><span data-stu-id="b04ad-135">For more information, see [Getting Started with Group Managed Service Accounts](http://technet.microsoft.com/library/jj128431.aspx).</span></span>  
+ 
+<span data-ttu-id="b04ad-136">[seguridad de cliente a nodo](service-fabric-cluster-security.md#client-to-node-security) se configura mediante **ClientIdentities**.</span><span class="sxs-lookup"><span data-stu-id="b04ad-136">[Client to node security](service-fabric-cluster-security.md#client-to-node-security) is configured using **ClientIdentities**.</span></span> <span data-ttu-id="b04ad-137">Para establecer la confianza entre un cliente y el clúster, debe configurar el clúster para que sepa en qué identidades de cliente puede confiar.</span><span class="sxs-lookup"><span data-stu-id="b04ad-137">In order to establish trust between a client and the cluster, you must configure the cluster to know which client identities that it can trust.</span></span> <span data-ttu-id="b04ad-138">Esto puede hacerse de dos maneras diferentes: especificando el grupo de usuarios de dominio que puede conectarse o especificando los usuarios del nodo de dominio que se pueden conectar.</span><span class="sxs-lookup"><span data-stu-id="b04ad-138">This can be done in two different ways: Specify the domain group users that can connect or specify the domain node users that can connect.</span></span> <span data-ttu-id="b04ad-139">Service Fabrics admite dos tipos distintos de control de acceso para los clientes que están conectados a un clúster de Service Fabric: administrador y usuario.</span><span class="sxs-lookup"><span data-stu-id="b04ad-139">Service Fabric supports two different access control types for clients that are connected to a Service Fabric cluster: administrator and user.</span></span> <span data-ttu-id="b04ad-140">El control de acceso permite al administrador de clústeres limitar el acceso a determinados tipos de operaciones de clúster para distintos grupos de usuarios, lo que aumenta la seguridad del clúster.</span><span class="sxs-lookup"><span data-stu-id="b04ad-140">Access control provides the ability for the cluster administrator to limit access to certain types of cluster operations for different groups of users, making the cluster more secure.</span></span>  <span data-ttu-id="b04ad-141">Los administradores tienen acceso total a las capacidades de administración (incluidas las capacidades de lectura y escritura).</span><span class="sxs-lookup"><span data-stu-id="b04ad-141">Administrators have full access to management capabilities (including read/write capabilities).</span></span> <span data-ttu-id="b04ad-142">Los usuarios, de forma predeterminada, tienen acceso de solo lectura a las capacidades de administración (por ejemplo, capacidad de consulta) y a la capacidad para resolver las aplicaciones y los servicios.</span><span class="sxs-lookup"><span data-stu-id="b04ad-142">Users, by default, have only read access to management capabilities (for example, query capabilities), and the ability to resolve applications and services.</span></span> <span data-ttu-id="b04ad-143">Para más información sobre los controles de acceso, consulte [Control de acceso basado en roles para clientes de Service Fabric](service-fabric-cluster-security-roles.md).</span><span class="sxs-lookup"><span data-stu-id="b04ad-143">For more information on access controls, see [Role based access control for Service Fabric clients](service-fabric-cluster-security-roles.md).</span></span>  
+ 
+<span data-ttu-id="b04ad-144">La sección de **seguridad** del ejemplo siguiente configura la seguridad de Windows mediante gMSA y especifica que las máquinas de la gMSA *ServiceFabric/clusterA.contoso.com* forman parte del clúster y que *CONTOSO\usera* tiene acceso de cliente de administrador:</span><span class="sxs-lookup"><span data-stu-id="b04ad-144">The following example **security** section configures Windows security using gMSA and specifies that the machines in *ServiceFabric.clusterA.contoso.com* gMSA are part of the cluster and that *CONTOSO\usera* has admin client access:</span></span>  
+  
+```  
+"security": {  
+    "WindowsIdentities": {  
+        "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",  
+        "ClusterSPN" : "clusterA.contoso.com",  
+        "ClientIdentities": [{  
+            "Identity": "CONTOSO\\usera",  
+            "IsAdmin": true  
+        }]  
+    }  
+}  
+```  
+  
+## <a name="configure-windows-security-using-a-machine-group"></a><span data-ttu-id="b04ad-145">Configuración de la seguridad de Windows mediante un grupo de máquinas</span><span class="sxs-lookup"><span data-stu-id="b04ad-145">Configure Windows security using a machine group</span></span>  
+<span data-ttu-id="b04ad-146">El archivo de configuración de ejemplo *ClusterConfig.Windows.MultiMachine.JSON* descargado junto con el paquete de clúster independiente [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) contiene una plantilla para configurar la seguridad de Windows.</span><span class="sxs-lookup"><span data-stu-id="b04ad-146">The sample *ClusterConfig.Windows.MultiMachine.JSON* configuration file downloaded with the [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) standalone cluster package contains a template for configuring Windows security.</span></span>  <span data-ttu-id="b04ad-147">La seguridad de Windows se configura en la sección **Propiedades** :</span><span class="sxs-lookup"><span data-stu-id="b04ad-147">Windows security is configured in the **Properties** section:</span></span> 
+
+```
+"security": {
+            "ClusterCredentialType": "Windows",
+            "ServerCredentialType": "Windows",
+            "WindowsIdentities": {
+                "ClusterIdentity" : "[domain\machinegroup]",
+                "ClientIdentities": [{
+                    "Identity": "[domain\username]",
+                    "IsAdmin": true
+                }]
+            }
+        }
+```
+
+| <span data-ttu-id="b04ad-148">**Opciones de configuración**</span><span class="sxs-lookup"><span data-stu-id="b04ad-148">**Configuration setting**</span></span> | <span data-ttu-id="b04ad-149">**Descripción**</span><span class="sxs-lookup"><span data-stu-id="b04ad-149">**Description**</span></span> |
+| --- | --- |
+| <span data-ttu-id="b04ad-150">ClusterCredentialType</span><span class="sxs-lookup"><span data-stu-id="b04ad-150">ClusterCredentialType</span></span> |<span data-ttu-id="b04ad-151">**ClusterCredentialType** se establece en *Windows* si ClusterIdentity especifica un nombre de grupo de máquinas de Active Directory.</span><span class="sxs-lookup"><span data-stu-id="b04ad-151">**ClusterCredentialType** is set to *Windows* if ClusterIdentity specifies an Active Directory Machine Group Name.</span></span> |  
+| <span data-ttu-id="b04ad-152">ServerCredentialType</span><span class="sxs-lookup"><span data-stu-id="b04ad-152">ServerCredentialType</span></span> |<span data-ttu-id="b04ad-153">Establézcalo en *Windows* para habilitar la seguridad de Windows para clientes.</span><span class="sxs-lookup"><span data-stu-id="b04ad-153">Set to *Windows* to enable Windows security for clients.</span></span><br /><br /><span data-ttu-id="b04ad-154">Esto indica que los clientes del clúster, y el clúster propiamente dicho, se están ejecutando dentro de un dominio de Active Directory.</span><span class="sxs-lookup"><span data-stu-id="b04ad-154">This indicates that the clients of the cluster and the cluster itself are running within an Active Directory domain.</span></span> |  
+| <span data-ttu-id="b04ad-155">WindowsIdentities</span><span class="sxs-lookup"><span data-stu-id="b04ad-155">WindowsIdentities</span></span> |<span data-ttu-id="b04ad-156">Contiene las identidades de cliente y del clúster.</span><span class="sxs-lookup"><span data-stu-id="b04ad-156">Contains the cluster and client identities.</span></span> |  
+| <span data-ttu-id="b04ad-157">ClusterIdentity</span><span class="sxs-lookup"><span data-stu-id="b04ad-157">ClusterIdentity</span></span> |<span data-ttu-id="b04ad-158">Utilice un nombre de grupo de máquina como, por ejemplo, domain\machinegroup, para configurar la seguridad de nodo a nodo.</span><span class="sxs-lookup"><span data-stu-id="b04ad-158">Use a machine group name, domain\machinegroup, to configure node-to-node security.</span></span> |  
+| <span data-ttu-id="b04ad-159">ClientIdentities</span><span class="sxs-lookup"><span data-stu-id="b04ad-159">ClientIdentities</span></span> |<span data-ttu-id="b04ad-160">Permite configurar la seguridad de cliente a nodo.</span><span class="sxs-lookup"><span data-stu-id="b04ad-160">Configures client-to-node security.</span></span> <span data-ttu-id="b04ad-161">Una matriz de cuentas de usuario de cliente.</span><span class="sxs-lookup"><span data-stu-id="b04ad-161">An array of client user accounts.</span></span> |  
+| <span data-ttu-id="b04ad-162">Identidad</span><span class="sxs-lookup"><span data-stu-id="b04ad-162">Identity</span></span> |<span data-ttu-id="b04ad-163">Agregue el usuario de dominio, domain\username, como identidad del cliente.</span><span class="sxs-lookup"><span data-stu-id="b04ad-163">Add the domain user, domain\username, for the client identity.</span></span> |  
+| <span data-ttu-id="b04ad-164">IsAdmin</span><span class="sxs-lookup"><span data-stu-id="b04ad-164">IsAdmin</span></span> |<span data-ttu-id="b04ad-165">Establézcala en true para especificar que el usuario de dominio tiene acceso de cliente de administrador, mientras que false especifica un acceso de cliente de usuario.</span><span class="sxs-lookup"><span data-stu-id="b04ad-165">Set to true to specify that the domain user has administrator client access or false for user client access.</span></span> |  
+
+<span data-ttu-id="b04ad-166">[La seguridad de nodo a nodo](service-fabric-cluster-security.md#node-to-node-security) se configura mediante el uso de **ClusterIdentity** si desea usar un grupo de máquinas dentro de un dominio de Active Directory.</span><span class="sxs-lookup"><span data-stu-id="b04ad-166">[Node to node security](service-fabric-cluster-security.md#node-to-node-security) is configured by setting using **ClusterIdentity** if you want to use a machine group within an Active Directory Domain.</span></span> <span data-ttu-id="b04ad-167">Para más información, consulte el artículo [Create a Machine Group in Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx) (Creación de un grupo de máquinas en Active Directory).</span><span class="sxs-lookup"><span data-stu-id="b04ad-167">For more information, see [Create a Machine Group in Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).</span></span>
+
+<span data-ttu-id="b04ad-168">La [seguridad de cliente a nodo](service-fabric-cluster-security.md#client-to-node-security) se configura mediante **ClientIdentities**.</span><span class="sxs-lookup"><span data-stu-id="b04ad-168">[Client-to-node security](service-fabric-cluster-security.md#client-to-node-security) is configured by using **ClientIdentities**.</span></span> <span data-ttu-id="b04ad-169">Para establecer la confianza entre un cliente y el clúster, debe configurar el clúster para que sepa en qué identidades de cliente puede confiar.</span><span class="sxs-lookup"><span data-stu-id="b04ad-169">To establish trust between a client and the cluster, you must configure the cluster to know the client identities that the cluster can trust.</span></span> <span data-ttu-id="b04ad-170">Puede establecer la confianza de dos maneras diferentes:</span><span class="sxs-lookup"><span data-stu-id="b04ad-170">You can establish trust in two different ways:</span></span>
+
+- <span data-ttu-id="b04ad-171">Especifique los usuarios del grupo de dominio que se pueden conectar.</span><span class="sxs-lookup"><span data-stu-id="b04ad-171">Specify the domain group users that can connect.</span></span>
+- <span data-ttu-id="b04ad-172">Especifique los usuarios del nodo de dominio que se pueden conectar.</span><span class="sxs-lookup"><span data-stu-id="b04ad-172">Specify the domain node users that can connect.</span></span>
+
+<span data-ttu-id="b04ad-173">Service Fabrics admite dos tipos distintos de control de acceso para los clientes que están conectados a un clúster de Service Fabric: administrador y usuario.</span><span class="sxs-lookup"><span data-stu-id="b04ad-173">Service Fabric supports two different access control types for clients that are connected to a Service Fabric cluster: administrator and user.</span></span> <span data-ttu-id="b04ad-174">El control de acceso permite al administrador de clústeres limitar el acceso a determinados tipos de operaciones de clúster para distintos grupos de usuarios, lo que aumenta la seguridad del clúster.</span><span class="sxs-lookup"><span data-stu-id="b04ad-174">Access control enables the cluster administrator to limit access to certain types of cluster operations for different groups of users, which makes the cluster more secure.</span></span>  <span data-ttu-id="b04ad-175">Los administradores tienen acceso total a las capacidades de administración (incluidas las capacidades de lectura y escritura).</span><span class="sxs-lookup"><span data-stu-id="b04ad-175">Administrators have full access to management capabilities (including read/write capabilities).</span></span> <span data-ttu-id="b04ad-176">Los usuarios, de forma predeterminada, tienen acceso de solo lectura a las capacidades de administración (por ejemplo, capacidad de consulta) y a la capacidad para resolver las aplicaciones y los servicios.</span><span class="sxs-lookup"><span data-stu-id="b04ad-176">Users, by default, have only read access to management capabilities (for example, query capabilities), and the ability to resolve applications and services.</span></span>  
+
+<span data-ttu-id="b04ad-177">La sección de **seguridad** del ejemplo siguiente configura la seguridad de Windows y especifica que las máquinas de *ServiceFabric/clusterA.contoso.com* forman parte del clúster y que *CONTOSO\usera* tiene acceso de cliente de administrador:</span><span class="sxs-lookup"><span data-stu-id="b04ad-177">The following example **security** section configures Windows security, specifies that the machines in *ServiceFabric/clusterA.contoso.com* are part of the cluster, and specifies that *CONTOSO\usera* has admin client access:</span></span>
+
+```
+"security": {
+    "ClusterCredentialType": "Windows",
+    "ServerCredentialType": "Windows",
+    "WindowsIdentities": {
+        "ClusterIdentity" : "ServiceFabric/clusterA.contoso.com",
+        "ClientIdentities": [{
+            "Identity": "CONTOSO\\usera",
+            "IsAdmin": true
+        }]
+    }
+},
+```
+
+> [!NOTE]
+> <span data-ttu-id="b04ad-178">Service Fabric no debe implementarse en un controlador de dominio.</span><span class="sxs-lookup"><span data-stu-id="b04ad-178">Service Fabric should not be deployed on a domain controller.</span></span> <span data-ttu-id="b04ad-179">Asegúrese de que el archivo ClusterConfig.json no incluye la dirección IP del controlador de dominio cuando use un grupo de máquinas o una cuenta de servicio administrada de grupo (gMSA).</span><span class="sxs-lookup"><span data-stu-id="b04ad-179">Make sure that ClusterConfig.json does not include the IP address of the domain controller when using a machine group or group Managed Service Account (gMSA).</span></span>
+>
+>
+
+## <a name="next-steps"></a><span data-ttu-id="b04ad-180">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="b04ad-180">Next steps</span></span>
+<span data-ttu-id="b04ad-181">Después de configurar la seguridad de Windows en el archivo *ClusterConfig.JSON* , reanude el proceso de creación de clústeres en [Creación de un clúster independiente que se ejecuta en Windows](service-fabric-cluster-creation-for-windows-server.md).</span><span class="sxs-lookup"><span data-stu-id="b04ad-181">After configuring Windows security in the *ClusterConfig.JSON* file, resume the cluster creation process in [Create a standalone cluster running on Windows](service-fabric-cluster-creation-for-windows-server.md).</span></span>
+
+<span data-ttu-id="b04ad-182">Para más información sobre la seguridad de nodo a nodo, la seguridad de cliente a nodo y el control de acceso basado en roles, consulte [Escenarios de seguridad de clúster](service-fabric-cluster-security.md).</span><span class="sxs-lookup"><span data-stu-id="b04ad-182">For more information about how node-to-node security, client-to-node security, and role-based access control, see [Cluster security scenarios](service-fabric-cluster-security.md).</span></span>
+
+<span data-ttu-id="b04ad-183">Consulte [Conexión a un clúster seguro](service-fabric-connect-to-secure-cluster.md) para obtener ejemplos de conexión mediante PowerShell o FabricClient.</span><span class="sxs-lookup"><span data-stu-id="b04ad-183">See [Connect to a secure cluster](service-fabric-connect-to-secure-cluster.md) for examples of connecting by using PowerShell or FabricClient.</span></span>
