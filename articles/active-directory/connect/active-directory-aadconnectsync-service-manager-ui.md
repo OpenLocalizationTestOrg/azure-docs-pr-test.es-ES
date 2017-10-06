@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05dd28bf850a84ff4644c46a45bd941b7c6e7d01
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d33f02822097aa7f83042606ba46fd533e85ac23
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a><span data-ttu-id="f0911-103">Introducción a la interfaz de usuario de Azure AD Connect Synchronization Service Manager</span><span class="sxs-lookup"><span data-stu-id="f0911-103">Introduction to the Azure AD Connect Synchronization Service Manager UI</span></span>
+# <a name="introduction-toohello-azure-ad-connect-synchronization-service-manager-ui"></a><span data-ttu-id="0aed6-103">Introducción toohello Synchronization Service Manager interfaz de usuario de Azure AD Connect</span><span class="sxs-lookup"><span data-stu-id="0aed6-103">Introduction toohello Azure AD Connect Synchronization Service Manager UI</span></span>
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
-<span data-ttu-id="f0911-105">La interfaz de usuario de **Synchronization Service Manager** se utiliza para configurar aspectos más avanzados del motor de sincronización y ver los aspectos operativos del servicio.</span><span class="sxs-lookup"><span data-stu-id="f0911-105">The **Synchronization Service Manager** UI is used to configure more advanced aspects of the sync engine and to see the operational aspects of the service.</span></span>
+<span data-ttu-id="0aed6-105">Hola **Synchronization Service Manager** interfaz de usuario es tooconfigure usado más avanzadas de aspectos de hello sincronización motor y toosee Hola aspectos operativos del servicio de Hola.</span><span class="sxs-lookup"><span data-stu-id="0aed6-105">hello **Synchronization Service Manager** UI is used tooconfigure more advanced aspects of hello sync engine and toosee hello operational aspects of hello service.</span></span>
 
-<span data-ttu-id="f0911-106">La interfaz de usuario de **Synchronization Service Manager** se inicia en el menú Inicio.</span><span class="sxs-lookup"><span data-stu-id="f0911-106">You start the **Synchronization Service Manager** UI from the start menu.</span></span> <span data-ttu-id="f0911-107">Se llama **Servicio de sincronización** y puede encontrarse en el grupo **Azure AD Connect**.</span><span class="sxs-lookup"><span data-stu-id="f0911-107">It is named **Synchronization Service** and can be found in the **Azure AD Connect** group.</span></span>  
-<span data-ttu-id="f0911-108">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span><span class="sxs-lookup"><span data-stu-id="f0911-108">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span></span>
+<span data-ttu-id="0aed6-106">Iniciar hello **Synchronization Service Manager** menú de inicio de interfaz de usuario de Hola.</span><span class="sxs-lookup"><span data-stu-id="0aed6-106">You start hello **Synchronization Service Manager** UI from hello start menu.</span></span> <span data-ttu-id="0aed6-107">Se denomina **servicio de sincronización de** y puede encontrarse en hello **Azure AD Connect** grupo.</span><span class="sxs-lookup"><span data-stu-id="0aed6-107">It is named **Synchronization Service** and can be found in hello **Azure AD Connect** group.</span></span>  
+<span data-ttu-id="0aed6-108">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span><span class="sxs-lookup"><span data-stu-id="0aed6-108">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span></span>
 
-<span data-ttu-id="f0911-109">Haga clic en los vínculos que se encuentran en la parte superior de este tema para obtener más información sobre las distintas pestañas de la interfaz de usuario.</span><span class="sxs-lookup"><span data-stu-id="f0911-109">Click the links at the top of this topic to learn more about the different tabs in the UI.</span></span>
+<span data-ttu-id="0aed6-109">Haga clic en vínculos de hello en parte superior de Hola de este toolearn tema más acerca de las diferentes pestañas de Hola Hola interfaz de usuario.</span><span class="sxs-lookup"><span data-stu-id="0aed6-109">Click hello links at hello top of this topic toolearn more about hello different tabs in hello UI.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="f0911-110">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="f0911-110">Next steps</span></span>
-<span data-ttu-id="f0911-111">Obtenga más información sobre la configuración de la [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) .</span><span class="sxs-lookup"><span data-stu-id="f0911-111">Learn more about the [Azure AD Connect sync](active-directory-aadconnectsync-whatis.md) configuration.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="0aed6-110">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="0aed6-110">Next steps</span></span>
+<span data-ttu-id="0aed6-111">Obtener más información sobre hello [sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) configuración.</span><span class="sxs-lookup"><span data-stu-id="0aed6-111">Learn more about hello [Azure AD Connect sync](active-directory-aadconnectsync-whatis.md) configuration.</span></span>
 
-<span data-ttu-id="f0911-112">Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).</span><span class="sxs-lookup"><span data-stu-id="f0911-112">Learn more about [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).</span></span>
+<span data-ttu-id="0aed6-112">Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).</span><span class="sxs-lookup"><span data-stu-id="0aed6-112">Learn more about [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).</span></span>

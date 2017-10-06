@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Kintone | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Kintone."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Kintone."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,267 +13,267 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: e5e847c12cba3611ce7ea2c3e956dbd55b1e0cac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4f61fb95c643743504699b175beeff06e01c95c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kintone"></a><span data-ttu-id="f19be-103">Tutorial: Integración de Azure Active Directory con Kintone</span><span class="sxs-lookup"><span data-stu-id="f19be-103">Tutorial: Azure Active Directory integration with Kintone</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-kintone"></a><span data-ttu-id="7d59c-103">Tutorial: Integración de Azure Active Directory con Kintone</span><span class="sxs-lookup"><span data-stu-id="7d59c-103">Tutorial: Azure Active Directory integration with Kintone</span></span>
 
-<span data-ttu-id="f19be-104">En este tutorial, aprenderá a integrar Kintone con Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="f19be-104">In this tutorial, you learn how to integrate Kintone with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="7d59c-104">En este tutorial, aprenderá cómo toointegrate Kintone con Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="7d59c-104">In this tutorial, you learn how toointegrate Kintone with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="f19be-105">La integración de Kintone con Azure AD le proporciona las siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="f19be-105">Integrating Kintone with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="7d59c-105">Integración Kintone con Azure AD proporciona Hola siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="7d59c-105">Integrating Kintone with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="f19be-106">En Azure AD se puede controlar quién tiene acceso a Kintone</span><span class="sxs-lookup"><span data-stu-id="f19be-106">You can control in Azure AD who has access to Kintone</span></span>
-- <span data-ttu-id="f19be-107">Puede permitir que los usuarios inicien sesión automáticamente en Kintone (inicio de sesión único) con sus cuentas de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f19be-107">You can enable your users to automatically get signed-on to Kintone (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="f19be-108">Puede administrar las cuentas en una sola ubicación central: Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="f19be-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="7d59c-106">Puede controlar en Azure AD que tenga acceso tooKintone</span><span class="sxs-lookup"><span data-stu-id="7d59c-106">You can control in Azure AD who has access tooKintone</span></span>
+- <span data-ttu-id="7d59c-107">Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooKintone (Single Sign-On) con sus cuentas de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7d59c-107">You can enable your users tooautomatically get signed-on tooKintone (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="7d59c-108">Puede administrar las cuentas en una ubicación central: Hola portal de Azure</span><span class="sxs-lookup"><span data-stu-id="7d59c-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="f19be-109">Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="f19be-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="7d59c-109">Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="7d59c-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="f19be-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="f19be-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="7d59c-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="7d59c-110">Prerequisites</span></span>
 
-<span data-ttu-id="f19be-111">Para configurar la integración de Azure AD con Kintone, necesita los siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="f19be-111">To configure Azure AD integration with Kintone, you need the following items:</span></span>
+<span data-ttu-id="7d59c-111">integración de Azure AD con Kintone tooconfigure, necesita Hola siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="7d59c-111">tooconfigure Azure AD integration with Kintone, you need hello following items:</span></span>
 
-- <span data-ttu-id="f19be-112">Una suscripción de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f19be-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="f19be-113">Una suscripción habilitada para inicio de sesión único en Kintone</span><span class="sxs-lookup"><span data-stu-id="f19be-113">A Kintone single sign-on enabled subscription</span></span>
+- <span data-ttu-id="7d59c-112">Una suscripción de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7d59c-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="7d59c-113">Una suscripción habilitada para inicio de sesión único en Kintone</span><span class="sxs-lookup"><span data-stu-id="7d59c-113">A Kintone single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="f19be-114">Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="f19be-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="7d59c-114">Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="7d59c-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="f19be-115">Para probar los pasos de este tutorial, debe seguir estas recomendaciones:</span><span class="sxs-lookup"><span data-stu-id="f19be-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="7d59c-115">pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:</span><span class="sxs-lookup"><span data-stu-id="7d59c-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="f19be-116">No use el entorno de producción, salvo que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="f19be-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="f19be-117">Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="f19be-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="7d59c-116">No use el entorno de producción, salvo que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="7d59c-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="7d59c-117">Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="7d59c-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="f19be-118">Descripción del escenario</span><span class="sxs-lookup"><span data-stu-id="f19be-118">Scenario description</span></span>
-<span data-ttu-id="f19be-119">En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba.</span><span class="sxs-lookup"><span data-stu-id="f19be-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="f19be-120">La situación descrita en este tutorial consta de dos bloques de creación principales:</span><span class="sxs-lookup"><span data-stu-id="f19be-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="7d59c-118">Descripción del escenario</span><span class="sxs-lookup"><span data-stu-id="7d59c-118">Scenario description</span></span>
+<span data-ttu-id="7d59c-119">En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba.</span><span class="sxs-lookup"><span data-stu-id="7d59c-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="7d59c-120">escenario de Hello descrito en este tutorial consta de dos bloques principales:</span><span class="sxs-lookup"><span data-stu-id="7d59c-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="f19be-121">Adición de Kintone desde la galería</span><span class="sxs-lookup"><span data-stu-id="f19be-121">Adding Kintone from the gallery</span></span>
-2. <span data-ttu-id="f19be-122">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f19be-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="7d59c-121">Agregar Kintone desde la Galería de Hola</span><span class="sxs-lookup"><span data-stu-id="7d59c-121">Adding Kintone from hello gallery</span></span>
+2. <span data-ttu-id="7d59c-122">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7d59c-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-kintone-from-the-gallery"></a><span data-ttu-id="f19be-123">Adición de Kintone desde la galería</span><span class="sxs-lookup"><span data-stu-id="f19be-123">Adding Kintone from the gallery</span></span>
-<span data-ttu-id="f19be-124">Para configurar la integración de Kintone en Azure AD, deberá agregar Kintone desde la galería a la lista de aplicaciones SaaS administradas.</span><span class="sxs-lookup"><span data-stu-id="f19be-124">To configure the integration of Kintone into Azure AD, you need to add Kintone from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-kintone-from-hello-gallery"></a><span data-ttu-id="7d59c-123">Agregar Kintone desde la Galería de Hola</span><span class="sxs-lookup"><span data-stu-id="7d59c-123">Adding Kintone from hello gallery</span></span>
+<span data-ttu-id="7d59c-124">integración de hello tooconfigure de Kintone en Azure AD, deberá tooadd Kintone de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.</span><span class="sxs-lookup"><span data-stu-id="7d59c-124">tooconfigure hello integration of Kintone into Azure AD, you need tooadd Kintone from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="f19be-125">**Para agregar Kintone desde la galería, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="f19be-125">**To add Kintone from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="7d59c-125">**tooadd Kintone de galería de hello, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="7d59c-125">**tooadd Kintone from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="f19be-126">En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="f19be-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="7d59c-126">Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono.</span><span class="sxs-lookup"><span data-stu-id="7d59c-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="f19be-128">Vaya a **Aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="f19be-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="f19be-129">A continuación, vaya a **Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="f19be-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="7d59c-128">Navegue demasiado**aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="7d59c-129">A continuación, vaya demasiado**todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-129">Then go too**All applications**.</span></span>
 
     ![Aplicaciones][2]
     
-3. <span data-ttu-id="f19be-131">Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="f19be-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="7d59c-131">tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="7d59c-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplicaciones][3]
 
-4. <span data-ttu-id="f19be-133">En el cuadro de búsqueda, escriba **Kintone**.</span><span class="sxs-lookup"><span data-stu-id="f19be-133">In the search box, type **Kintone**.</span></span>
+4. <span data-ttu-id="7d59c-133">En el cuadro de búsqueda de hello, escriba **Kintone**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-133">In hello search box, type **Kintone**.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kintone-tutorial/tutorial_kintone_search.png)
 
-5. <span data-ttu-id="f19be-135">En el panel de resultados, seleccione **Kintone** y luego haga clic en el botón **Agregar** para agregar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="f19be-135">In the results panel, select **Kintone**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="7d59c-135">En el panel de resultados de hello, seleccione **Kintone**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.</span><span class="sxs-lookup"><span data-stu-id="7d59c-135">In hello results panel, select **Kintone**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kintone-tutorial/tutorial_kintone_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="f19be-137">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f19be-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="f19be-138">En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Kintone con un usuario de prueba llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="f19be-138">In this section, you configure and test Azure AD single sign-on with Kintone based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="7d59c-137">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7d59c-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="7d59c-138">En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Kintone con un usuario de prueba llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="7d59c-138">In this section, you configure and test Azure AD single sign-on with Kintone based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="f19be-139">Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Kintone para un usuario de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f19be-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Kintone is to a user in Azure AD.</span></span> <span data-ttu-id="f19be-140">Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Kintone.</span><span class="sxs-lookup"><span data-stu-id="f19be-140">In other words, a link relationship between an Azure AD user and the related user in Kintone needs to be established.</span></span>
+<span data-ttu-id="7d59c-139">Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Kintone es tooa usuario en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="7d59c-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Kintone is tooa user in Azure AD.</span></span> <span data-ttu-id="7d59c-140">En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Kintone debe toobe establecido.</span><span class="sxs-lookup"><span data-stu-id="7d59c-140">In other words, a link relationship between an Azure AD user and hello related user in Kintone needs toobe established.</span></span>
 
-<span data-ttu-id="f19be-141">Para establecer la relación de vínculo, en Kintone, asigne el valor de **nombre de usuario** de Azure AD como valor de **nombre de usuario**.</span><span class="sxs-lookup"><span data-stu-id="f19be-141">In Kintone, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="7d59c-141">En Kintone, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.</span><span class="sxs-lookup"><span data-stu-id="7d59c-141">In Kintone, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="f19be-142">Para configurar y probar el inicio de sesión único de Azure AD con Kintone, es preciso completar los siguientes bloques de creación:</span><span class="sxs-lookup"><span data-stu-id="f19be-142">To configure and test Azure AD single sign-on with Kintone, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="7d59c-142">tooconfigure y prueba de inicio de sesión único en Azure AD con Kintone, deberá hello toocomplete después de bloques de creación:</span><span class="sxs-lookup"><span data-stu-id="7d59c-142">tooconfigure and test Azure AD single sign-on with Kintone, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="f19be-143">**[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.</span><span class="sxs-lookup"><span data-stu-id="f19be-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="f19be-144">**[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="f19be-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="f19be-145">**[Creación de un usuario de prueba de Kintone](#creating-a-kintone-test-user)**: para tener un homólogo de Britta Simon en Kintone que esté vinculado a la representación de Azure AD de usuario.</span><span class="sxs-lookup"><span data-stu-id="f19be-145">**[Creating a Kintone test user](#creating-a-kintone-test-user)** - to have a counterpart of Britta Simon in Kintone that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="f19be-146">**[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f19be-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="f19be-147">**[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.</span><span class="sxs-lookup"><span data-stu-id="f19be-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="7d59c-143">**[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.</span><span class="sxs-lookup"><span data-stu-id="7d59c-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="7d59c-144">**[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="7d59c-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="7d59c-145">**[Crear un usuario de prueba de Kintone](#creating-a-kintone-test-user)**  -toohave un equivalente de Britta Simon en Kintone que es la representación toohello vinculado Azure AD del usuario.</span><span class="sxs-lookup"><span data-stu-id="7d59c-145">**[Creating a Kintone test user](#creating-a-kintone-test-user)** - toohave a counterpart of Britta Simon in Kintone that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="7d59c-146">**[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="7d59c-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="7d59c-147">**[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.</span><span class="sxs-lookup"><span data-stu-id="7d59c-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="f19be-148">Configuración del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f19be-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="7d59c-148">Configuración del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7d59c-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="f19be-149">En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en Kintone.</span><span class="sxs-lookup"><span data-stu-id="f19be-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Kintone application.</span></span>
+<span data-ttu-id="7d59c-149">En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Kintone.</span><span class="sxs-lookup"><span data-stu-id="7d59c-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Kintone application.</span></span>
 
-<span data-ttu-id="f19be-150">**Para configurar el inicio de sesión único de Azure AD con Kintone, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="f19be-150">**To configure Azure AD single sign-on with Kintone, perform the following steps:**</span></span>
+<span data-ttu-id="7d59c-150">**inicio de sesión único en Azure AD tooconfigure con Kintone, siga Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="7d59c-150">**tooconfigure Azure AD single sign-on with Kintone, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="f19be-151">En Azure Portal, en la página de integración de la aplicación **Kintone**, haga clic en **Inicio de sesión único**.</span><span class="sxs-lookup"><span data-stu-id="f19be-151">In the Azure portal, on the **Kintone** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="7d59c-151">En el portal de Azure, en Hola Hola **Kintone** página de integración de aplicaciones, haga clic en **inicio de sesión único**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-151">In hello Azure portal, on hello **Kintone** application integration page, click **Single sign-on**.</span></span>
 
     ![Configurar inicio de sesión único][4]
 
-2. <span data-ttu-id="f19be-153">En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="f19be-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="7d59c-153">En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="7d59c-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-kintone-tutorial/tutorial_kintone_samlbase.png)
 
-3. <span data-ttu-id="f19be-155">En la sección **Dominio y direcciones URL de Kintone**, lleve a cabo los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="f19be-155">On the **Kintone Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="7d59c-155">En hello **Kintone dominio y las direcciones URL** sección, lleve a cabo Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="7d59c-155">On hello **Kintone Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kintone-tutorial/tutorial_kintone_url.png)
 
-    <span data-ttu-id="f19be-157">a.</span><span class="sxs-lookup"><span data-stu-id="f19be-157">a.</span></span> <span data-ttu-id="f19be-158">En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.kintone.com`.</span><span class="sxs-lookup"><span data-stu-id="f19be-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<companyname>.kintone.com`</span></span>
+    <span data-ttu-id="7d59c-157">a.</span><span class="sxs-lookup"><span data-stu-id="7d59c-157">a.</span></span> <span data-ttu-id="7d59c-158">Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.kintone.com`</span><span class="sxs-lookup"><span data-stu-id="7d59c-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<companyname>.kintone.com`</span></span>
 
-    <span data-ttu-id="f19be-159">b.</span><span class="sxs-lookup"><span data-stu-id="f19be-159">b.</span></span> <span data-ttu-id="f19be-160">En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón:</span><span class="sxs-lookup"><span data-stu-id="f19be-160">In the **Identifier** textbox, type a URL using the following pattern:</span></span>
+    <span data-ttu-id="7d59c-159">b.</span><span class="sxs-lookup"><span data-stu-id="7d59c-159">b.</span></span> <span data-ttu-id="7d59c-160">Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:</span><span class="sxs-lookup"><span data-stu-id="7d59c-160">In hello **Identifier** textbox, type a URL using hello following pattern:</span></span>
     | |
     |--|
     | `https://<companyname>.cybozu.com`|
     | `https://<companyname>.kintone.com`|
 
     > [!NOTE] 
-    > <span data-ttu-id="f19be-161">Estos valores no son reales.</span><span class="sxs-lookup"><span data-stu-id="f19be-161">These values are not real.</span></span> <span data-ttu-id="f19be-162">Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="f19be-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="f19be-163">Póngase en contacto con el [equipo de soporte de cliente de Kintone](https://www.kintone.com/contact/) para obtener estos valores.</span><span class="sxs-lookup"><span data-stu-id="f19be-163">Contact [Kintone Client support team](https://www.kintone.com/contact/) to get these values.</span></span> 
+    > <span data-ttu-id="7d59c-161">Estos valores no son reales.</span><span class="sxs-lookup"><span data-stu-id="7d59c-161">These values are not real.</span></span> <span data-ttu-id="7d59c-162">Actualizar estos valores con hello real de dirección URL de inicio de sesión y el identificador.</span><span class="sxs-lookup"><span data-stu-id="7d59c-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="7d59c-163">Póngase en contacto con [equipo de soporte técnico de cliente de Kintone](https://www.kintone.com/contact/) tooget estos valores.</span><span class="sxs-lookup"><span data-stu-id="7d59c-163">Contact [Kintone Client support team](https://www.kintone.com/contact/) tooget these values.</span></span> 
  
-4. <span data-ttu-id="f19be-164">En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.</span><span class="sxs-lookup"><span data-stu-id="f19be-164">On the **SAML Signing Certificate** section, click **Certificate (Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="7d59c-164">En hello **el certificado de firma de SAML** sección, haga clic en **certificado (Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.</span><span class="sxs-lookup"><span data-stu-id="7d59c-164">On hello **SAML Signing Certificate** section, click **Certificate (Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kintone-tutorial/tutorial_kintone_certificate.png) 
 
-5. <span data-ttu-id="f19be-166">Haga clic en el botón **Guardar** .</span><span class="sxs-lookup"><span data-stu-id="f19be-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="7d59c-166">Haga clic en el botón **Guardar** .</span><span class="sxs-lookup"><span data-stu-id="7d59c-166">Click **Save** button.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kintone-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="f19be-168">En la sección **Configuración de Kintone**, haga clic en **Configurar Kintone** para abrir la ventana **Configurar inicio de sesión**.</span><span class="sxs-lookup"><span data-stu-id="f19be-168">On the **Kintone Configuration** section, click **Configure Kintone** to open **Configure sign-on** window.</span></span> <span data-ttu-id="f19be-169">Copie los valores de **Dirección URL de cierre de sesión y SAML Single Sign-On Service URL (Dirección URL del servicio de inicio de sesión único de SAML)** de la **sección Referencia rápida**.</span><span class="sxs-lookup"><span data-stu-id="f19be-169">Copy the **Sign-Out URL, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="7d59c-168">En hello **configuración de Kintone** sección, haga clic en **configurar Kintone** tooopen **configurar inicio de sesión** ventana.</span><span class="sxs-lookup"><span data-stu-id="7d59c-168">On hello **Kintone Configuration** section, click **Configure Kintone** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="7d59c-169">Hola copia **dirección URL de cierre de sesión y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**</span><span class="sxs-lookup"><span data-stu-id="7d59c-169">Copy hello **Sign-Out URL, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kintone-tutorial/tutorial_kintone_configure.png) 
 
-7. <span data-ttu-id="f19be-171">En otra ventana del explorador web, inicie sesión como administrador en el sitio de la compañía de **Kintone** .</span><span class="sxs-lookup"><span data-stu-id="f19be-171">In a different web browser window, log into your **Kintone** company site as an administrator.</span></span>
+7. <span data-ttu-id="7d59c-171">En otra ventana del explorador web, inicie sesión como administrador en el sitio de la compañía de **Kintone** .</span><span class="sxs-lookup"><span data-stu-id="7d59c-171">In a different web browser window, log into your **Kintone** company site as an administrator.</span></span>
 
-8. <span data-ttu-id="f19be-172">Haga clic en **Configuración**.</span><span class="sxs-lookup"><span data-stu-id="f19be-172">Click **Settings**.</span></span>
+8. <span data-ttu-id="7d59c-172">Haga clic en **Configuración**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-172">Click **Settings**.</span></span>
    
-    <span data-ttu-id="f19be-173">![Configuración](./media/active-directory-saas-kintone-tutorial/ic785879.png "Configuración")</span><span class="sxs-lookup"><span data-stu-id="f19be-173">![Settings](./media/active-directory-saas-kintone-tutorial/ic785879.png "Settings")</span></span>
+    <span data-ttu-id="7d59c-173">![Configuración](./media/active-directory-saas-kintone-tutorial/ic785879.png "Configuración")</span><span class="sxs-lookup"><span data-stu-id="7d59c-173">![Settings](./media/active-directory-saas-kintone-tutorial/ic785879.png "Settings")</span></span>
 
-9. <span data-ttu-id="f19be-174">Haga clic en **Users & System Administration** (Administración del sistema y usuarios).</span><span class="sxs-lookup"><span data-stu-id="f19be-174">Click **Users & System Administration**.</span></span>
+9. <span data-ttu-id="7d59c-174">Haga clic en **Users & System Administration** (Administración del sistema y usuarios).</span><span class="sxs-lookup"><span data-stu-id="7d59c-174">Click **Users & System Administration**.</span></span>
    
-    <span data-ttu-id="f19be-175">![Administración de usuarios y del sistema](./media/active-directory-saas-kintone-tutorial/ic785880.png "Administración de usuarios y del sistema")</span><span class="sxs-lookup"><span data-stu-id="f19be-175">![Users & System Administration](./media/active-directory-saas-kintone-tutorial/ic785880.png "Users & System Administration")</span></span>
+    <span data-ttu-id="7d59c-175">![Administración de usuarios y del sistema](./media/active-directory-saas-kintone-tutorial/ic785880.png "Administración de usuarios y del sistema")</span><span class="sxs-lookup"><span data-stu-id="7d59c-175">![Users & System Administration](./media/active-directory-saas-kintone-tutorial/ic785880.png "Users & System Administration")</span></span>
 
-10. <span data-ttu-id="f19be-176">En **Administración del sistema \> Seguridad**, haga clic en **Inicio de sesión**.</span><span class="sxs-lookup"><span data-stu-id="f19be-176">Under **System Administration \> Security** click **Login**.</span></span>
+10. <span data-ttu-id="7d59c-176">En **Administración del sistema \> Seguridad**, haga clic en **Inicio de sesión**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-176">Under **System Administration \> Security** click **Login**.</span></span>
    
-    <span data-ttu-id="f19be-177">![Inicio de sesión](./media/active-directory-saas-kintone-tutorial/ic785881.png "inicio de sesión")</span><span class="sxs-lookup"><span data-stu-id="f19be-177">![Login](./media/active-directory-saas-kintone-tutorial/ic785881.png "Login")</span></span>
+    <span data-ttu-id="7d59c-177">![Inicio de sesión](./media/active-directory-saas-kintone-tutorial/ic785881.png "inicio de sesión")</span><span class="sxs-lookup"><span data-stu-id="7d59c-177">![Login](./media/active-directory-saas-kintone-tutorial/ic785881.png "Login")</span></span>
 
-11. <span data-ttu-id="f19be-178">Haga clic en **Habilitar autenticación SAML**.</span><span class="sxs-lookup"><span data-stu-id="f19be-178">Click **Enable SAML authentication**.</span></span>
+11. <span data-ttu-id="7d59c-178">Haga clic en **Habilitar autenticación SAML**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-178">Click **Enable SAML authentication**.</span></span>
    
-    <span data-ttu-id="f19be-179">![Autenticación SAML](./media/active-directory-saas-kintone-tutorial/ic785882.png "Autenticación SAML")</span><span class="sxs-lookup"><span data-stu-id="f19be-179">![SAML Authentication](./media/active-directory-saas-kintone-tutorial/ic785882.png "SAML Authentication")</span></span>
+    <span data-ttu-id="7d59c-179">![Autenticación SAML](./media/active-directory-saas-kintone-tutorial/ic785882.png "Autenticación SAML")</span><span class="sxs-lookup"><span data-stu-id="7d59c-179">![SAML Authentication](./media/active-directory-saas-kintone-tutorial/ic785882.png "SAML Authentication")</span></span>
 
-12. <span data-ttu-id="f19be-180">En la sección SAML Authentication (Autenticación SAML), realice los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="f19be-180">In the SAML Authentication section, perform the following steps:</span></span>
+12. <span data-ttu-id="7d59c-180">En la sección autenticación SAML de hello, realizar Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="7d59c-180">In hello SAML Authentication section, perform hello following steps:</span></span>
     
-    <span data-ttu-id="f19be-181">![Autenticación SAML](./media/active-directory-saas-kintone-tutorial/ic785883.png "Autenticación SAML")</span><span class="sxs-lookup"><span data-stu-id="f19be-181">![SAML Authentication](./media/active-directory-saas-kintone-tutorial/ic785883.png "SAML Authentication")</span></span>
+    <span data-ttu-id="7d59c-181">![Autenticación SAML](./media/active-directory-saas-kintone-tutorial/ic785883.png "Autenticación SAML")</span><span class="sxs-lookup"><span data-stu-id="7d59c-181">![SAML Authentication](./media/active-directory-saas-kintone-tutorial/ic785883.png "SAML Authentication")</span></span>
     
-    <span data-ttu-id="f19be-182">a.</span><span class="sxs-lookup"><span data-stu-id="f19be-182">a.</span></span> <span data-ttu-id="f19be-183">En el cuadro de texto **Dirección URL de inicio de sesión**, pegue el valor de la **dirección URL de inicio de sesión de SAML** que ha copiado de Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="f19be-183">In the **Login URL** textbox, paste the value of **SAML Single Sign-On Service URL** which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="7d59c-182">a.</span><span class="sxs-lookup"><span data-stu-id="7d59c-182">a.</span></span> <span data-ttu-id="7d59c-183">Hola **dirección URL de inicio de sesión** cuadro de texto, pegue Hola valo **SAML Single Sign-On dirección URL del servicio** que haya copiado desde el portal de Azure.</span><span class="sxs-lookup"><span data-stu-id="7d59c-183">In hello **Login URL** textbox, paste hello value of **SAML Single Sign-On Service URL** which you have copied from Azure portal.</span></span>
    
-    <span data-ttu-id="f19be-184">b.</span><span class="sxs-lookup"><span data-stu-id="f19be-184">b.</span></span> <span data-ttu-id="f19be-185">En el cuadro de texto **Dirección URL de cierre de sesión**, pegue el valor de **Dirección URL de cierre de sesión** que copió de Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="f19be-185">In the **Logout URL** textbox, paste the value of **Sign-Out URL** which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="7d59c-184">b.</span><span class="sxs-lookup"><span data-stu-id="7d59c-184">b.</span></span> <span data-ttu-id="7d59c-185">Hola **Logout URL** cuadro de texto, pegue Hola valo **dirección URL de cierre de sesión** que haya copiado desde el portal de Azure.</span><span class="sxs-lookup"><span data-stu-id="7d59c-185">In hello **Logout URL** textbox, paste hello value of **Sign-Out URL** which you have copied from Azure portal.</span></span>
     
-    <span data-ttu-id="f19be-186">c.</span><span class="sxs-lookup"><span data-stu-id="f19be-186">c.</span></span> <span data-ttu-id="f19be-187">Haga clic en **Browse** (Examinar) para cargar el certificado descargado.</span><span class="sxs-lookup"><span data-stu-id="f19be-187">Click **Browse** to upload your downloaded certificate.</span></span>
+    <span data-ttu-id="7d59c-186">c.</span><span class="sxs-lookup"><span data-stu-id="7d59c-186">c.</span></span> <span data-ttu-id="7d59c-187">Haga clic en **examinar** tooupload el certificado descargado.</span><span class="sxs-lookup"><span data-stu-id="7d59c-187">Click **Browse** tooupload your downloaded certificate.</span></span>
     
-    <span data-ttu-id="f19be-188">d.</span><span class="sxs-lookup"><span data-stu-id="f19be-188">d.</span></span> <span data-ttu-id="f19be-189">Haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="f19be-189">Click **Save**.</span></span>
+    <span data-ttu-id="7d59c-188">d.</span><span class="sxs-lookup"><span data-stu-id="7d59c-188">d.</span></span> <span data-ttu-id="7d59c-189">Haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-189">Click **Save**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="f19be-190">Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.</span><span class="sxs-lookup"><span data-stu-id="f19be-190">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="f19be-191">Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior.</span><span class="sxs-lookup"><span data-stu-id="f19be-191">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="f19be-192">Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="f19be-192">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="7d59c-190">Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!</span><span class="sxs-lookup"><span data-stu-id="7d59c-190">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="7d59c-191">Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola.</span><span class="sxs-lookup"><span data-stu-id="7d59c-191">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="7d59c-192">Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="7d59c-192">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="f19be-193">Creación de un usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f19be-193">Creating an Azure AD test user</span></span>
-<span data-ttu-id="f19be-194">El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="f19be-194">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="7d59c-193">Creación de un usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="7d59c-193">Creating an Azure AD test user</span></span>
+<span data-ttu-id="7d59c-194">objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.</span><span class="sxs-lookup"><span data-stu-id="7d59c-194">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Creación de un usuario de Azure AD][100]
 
-<span data-ttu-id="f19be-196">**Siga estos pasos para crear un usuario de prueba en Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="f19be-196">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="7d59c-196">**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="7d59c-196">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="f19be-197">En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="f19be-197">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="7d59c-197">Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.</span><span class="sxs-lookup"><span data-stu-id="7d59c-197">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kintone-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="f19be-199">Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.</span><span class="sxs-lookup"><span data-stu-id="f19be-199">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="7d59c-199">lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-199">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kintone-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="f19be-201">Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="f19be-201">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="7d59c-201">Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.</span><span class="sxs-lookup"><span data-stu-id="7d59c-201">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kintone-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="f19be-203">En la página de diálogo **Usuario**, realice los siguientes pasos:</span><span class="sxs-lookup"><span data-stu-id="f19be-203">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="7d59c-203">En hello **usuario** cuadro de diálogo, siga los pasos de hello:</span><span class="sxs-lookup"><span data-stu-id="7d59c-203">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kintone-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="f19be-205">a.</span><span class="sxs-lookup"><span data-stu-id="f19be-205">a.</span></span> <span data-ttu-id="f19be-206">En el cuadro de texto **Nombre**, escriba **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="f19be-206">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="7d59c-205">a.</span><span class="sxs-lookup"><span data-stu-id="7d59c-205">a.</span></span> <span data-ttu-id="7d59c-206">Hola **nombre** cuadro de texto, tipo **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-206">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="f19be-207">b.</span><span class="sxs-lookup"><span data-stu-id="f19be-207">b.</span></span> <span data-ttu-id="f19be-208">En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="f19be-208">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="7d59c-207">b.</span><span class="sxs-lookup"><span data-stu-id="7d59c-207">b.</span></span> <span data-ttu-id="7d59c-208">Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="7d59c-208">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="f19be-209">c.</span><span class="sxs-lookup"><span data-stu-id="f19be-209">c.</span></span> <span data-ttu-id="f19be-210">Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.</span><span class="sxs-lookup"><span data-stu-id="f19be-210">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="7d59c-209">c.</span><span class="sxs-lookup"><span data-stu-id="7d59c-209">c.</span></span> <span data-ttu-id="7d59c-210">Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-210">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="f19be-211">d.</span><span class="sxs-lookup"><span data-stu-id="f19be-211">d.</span></span> <span data-ttu-id="f19be-212">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="f19be-212">Click **Create**.</span></span>
+    <span data-ttu-id="7d59c-211">d.</span><span class="sxs-lookup"><span data-stu-id="7d59c-211">d.</span></span> <span data-ttu-id="7d59c-212">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-212">Click **Create**.</span></span>
  
-### <a name="creating-a-kintone-test-user"></a><span data-ttu-id="f19be-213">Creación de un usuario de prueba de Kintone</span><span class="sxs-lookup"><span data-stu-id="f19be-213">Creating a Kintone test user</span></span>
+### <a name="creating-a-kintone-test-user"></a><span data-ttu-id="7d59c-213">Creación de un usuario de prueba de Kintone</span><span class="sxs-lookup"><span data-stu-id="7d59c-213">Creating a Kintone test user</span></span>
 
-<span data-ttu-id="f19be-214">Para permitir que los usuarios de Azure AD inicien sesión en Kintone, deben aprovisionarse en Kintone.</span><span class="sxs-lookup"><span data-stu-id="f19be-214">To enable Azure AD users to log in to Kintone, they must be provisioned into Kintone.</span></span>  
-<span data-ttu-id="f19be-215">En el caso de Kintone, el aprovisionamiento es una tarea manual.</span><span class="sxs-lookup"><span data-stu-id="f19be-215">In the case of Kintone, provisioning is a manual task.</span></span>
+<span data-ttu-id="7d59c-214">toolog de los usuarios de Azure AD tooenable en tooKintone, se les deben aprovisionar en Kintone.</span><span class="sxs-lookup"><span data-stu-id="7d59c-214">tooenable Azure AD users toolog in tooKintone, they must be provisioned into Kintone.</span></span>  
+<span data-ttu-id="7d59c-215">En caso de hello de Kintone, el aprovisionamiento es una tarea manual.</span><span class="sxs-lookup"><span data-stu-id="7d59c-215">In hello case of Kintone, provisioning is a manual task.</span></span>
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a><span data-ttu-id="f19be-216">Para aprovisionar una cuenta de usuario, realice estos pasos:</span><span class="sxs-lookup"><span data-stu-id="f19be-216">To provision a user account, perform the following steps:</span></span>
+### <a name="tooprovision-a-user-account-perform-hello-following-steps"></a><span data-ttu-id="7d59c-216">tooprovision una cuenta de usuario, lleve a cabo Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="7d59c-216">tooprovision a user account, perform hello following steps:</span></span>
 
-1. <span data-ttu-id="f19be-217">Inicie sesión en el sitio de la compañía de **Kintone** como administrador.</span><span class="sxs-lookup"><span data-stu-id="f19be-217">Log in to your **Kintone** company site as an administrator.</span></span>
+1. <span data-ttu-id="7d59c-217">Inicie sesión en tooyour **Kintone** sitio de la empresa como administrador.</span><span class="sxs-lookup"><span data-stu-id="7d59c-217">Log in tooyour **Kintone** company site as an administrator.</span></span>
 
-2. <span data-ttu-id="f19be-218">Haga clic en **Configuración**.</span><span class="sxs-lookup"><span data-stu-id="f19be-218">Click **Setting**.</span></span>
+2. <span data-ttu-id="7d59c-218">Haga clic en **Configuración**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-218">Click **Setting**.</span></span>
    
-    <span data-ttu-id="f19be-219">![Configuración](./media/active-directory-saas-kintone-tutorial/ic785879.png "Configuración")</span><span class="sxs-lookup"><span data-stu-id="f19be-219">![Settings](./media/active-directory-saas-kintone-tutorial/ic785879.png "Settings")</span></span>
+    <span data-ttu-id="7d59c-219">![Configuración](./media/active-directory-saas-kintone-tutorial/ic785879.png "Configuración")</span><span class="sxs-lookup"><span data-stu-id="7d59c-219">![Settings](./media/active-directory-saas-kintone-tutorial/ic785879.png "Settings")</span></span>
 
-3. <span data-ttu-id="f19be-220">Haga clic en **Users & System Administration** (Administración del sistema y usuarios).</span><span class="sxs-lookup"><span data-stu-id="f19be-220">Click **Users & System Administration**.</span></span>
+3. <span data-ttu-id="7d59c-220">Haga clic en **Users & System Administration** (Administración del sistema y usuarios).</span><span class="sxs-lookup"><span data-stu-id="7d59c-220">Click **Users & System Administration**.</span></span>
    
-    <span data-ttu-id="f19be-221">![Administración de usuarios y del sistema](./media/active-directory-saas-kintone-tutorial/ic785880.png "Administración de usuarios y del sistema")</span><span class="sxs-lookup"><span data-stu-id="f19be-221">![User & System Administration](./media/active-directory-saas-kintone-tutorial/ic785880.png "User & System Administration")</span></span>
+    <span data-ttu-id="7d59c-221">![Administración de usuarios y del sistema](./media/active-directory-saas-kintone-tutorial/ic785880.png "Administración de usuarios y del sistema")</span><span class="sxs-lookup"><span data-stu-id="7d59c-221">![User & System Administration](./media/active-directory-saas-kintone-tutorial/ic785880.png "User & System Administration")</span></span>
 
-4. <span data-ttu-id="f19be-222">En **Administración de usuarios** haga clic en **Departamentos y usuarios**.</span><span class="sxs-lookup"><span data-stu-id="f19be-222">Under **User Administration**, click **Departments & Users**.</span></span>
+4. <span data-ttu-id="7d59c-222">En **Administración de usuarios** haga clic en **Departamentos y usuarios**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-222">Under **User Administration**, click **Departments & Users**.</span></span>
    
-    <span data-ttu-id="f19be-223">![Departamentos y usuarios](./media/active-directory-saas-kintone-tutorial/ic785888.png "Departamentos y usuarios")</span><span class="sxs-lookup"><span data-stu-id="f19be-223">![Department & Users](./media/active-directory-saas-kintone-tutorial/ic785888.png "Department & Users")</span></span>
+    <span data-ttu-id="7d59c-223">![Departamentos y usuarios](./media/active-directory-saas-kintone-tutorial/ic785888.png "Departamentos y usuarios")</span><span class="sxs-lookup"><span data-stu-id="7d59c-223">![Department & Users](./media/active-directory-saas-kintone-tutorial/ic785888.png "Department & Users")</span></span>
 
-5. <span data-ttu-id="f19be-224">Haga clic en **Nuevo usuario**.</span><span class="sxs-lookup"><span data-stu-id="f19be-224">Click **New User**.</span></span>
+5. <span data-ttu-id="7d59c-224">Haga clic en **Nuevo usuario**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-224">Click **New User**.</span></span>
    
-    <span data-ttu-id="f19be-225">![Nuevos usuarios](./media/active-directory-saas-kintone-tutorial/ic785889.png "Nuevos usuarios")</span><span class="sxs-lookup"><span data-stu-id="f19be-225">![New Users](./media/active-directory-saas-kintone-tutorial/ic785889.png "New Users")</span></span>
+    <span data-ttu-id="7d59c-225">![Nuevos usuarios](./media/active-directory-saas-kintone-tutorial/ic785889.png "Nuevos usuarios")</span><span class="sxs-lookup"><span data-stu-id="7d59c-225">![New Users](./media/active-directory-saas-kintone-tutorial/ic785889.png "New Users")</span></span>
 
-6. <span data-ttu-id="f19be-226">En la sección **Nuevo usuario** , lleve a cabo estos pasos:</span><span class="sxs-lookup"><span data-stu-id="f19be-226">In the **New User** section, perform the following steps:</span></span>
+6. <span data-ttu-id="7d59c-226">Hola **nuevo usuario** sección, lleve a cabo Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="7d59c-226">In hello **New User** section, perform hello following steps:</span></span>
    
-    <span data-ttu-id="f19be-227">![Nuevos usuarios](./media/active-directory-saas-kintone-tutorial/ic785890.png "Nuevos usuarios")</span><span class="sxs-lookup"><span data-stu-id="f19be-227">![New Users](./media/active-directory-saas-kintone-tutorial/ic785890.png "New Users")</span></span>
+    <span data-ttu-id="7d59c-227">![Nuevos usuarios](./media/active-directory-saas-kintone-tutorial/ic785890.png "Nuevos usuarios")</span><span class="sxs-lookup"><span data-stu-id="7d59c-227">![New Users](./media/active-directory-saas-kintone-tutorial/ic785890.png "New Users")</span></span>
    
-    <span data-ttu-id="f19be-228">a.</span><span class="sxs-lookup"><span data-stu-id="f19be-228">a.</span></span> <span data-ttu-id="f19be-229">Escriba un **Nombre para mostrar**, **Nombre de inicio de sesión**, **Nueva contraseña**, **Confirmar contraseña**, **Dirección de correo electrónico** y otros detalles de una cuenta válida de AAD que quiera aprovisionar en los cuadros de texto relacionados.</span><span class="sxs-lookup"><span data-stu-id="f19be-229">Type a **Display Name**, **Login Name**, **New Password**, **Confirm Password**, **E-mail Address**, and other details of a valid AAD account you want to provision into the related textboxes.</span></span>
+    <span data-ttu-id="7d59c-228">a.</span><span class="sxs-lookup"><span data-stu-id="7d59c-228">a.</span></span> <span data-ttu-id="7d59c-229">Escriba un **nombre para mostrar**, **nombre de inicio de sesión**, **nueva contraseña**, **Confirmar contraseña**, **dirección de correo electrónico**, y otros detalles de una cuenta válida de AAD que quiera tooprovision en hello relacionados con cuadros de texto.</span><span class="sxs-lookup"><span data-stu-id="7d59c-229">Type a **Display Name**, **Login Name**, **New Password**, **Confirm Password**, **E-mail Address**, and other details of a valid AAD account you want tooprovision into hello related textboxes.</span></span>
  
-    <span data-ttu-id="f19be-230">b.</span><span class="sxs-lookup"><span data-stu-id="f19be-230">b.</span></span> <span data-ttu-id="f19be-231">Haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="f19be-231">Click **Save**.</span></span>
+    <span data-ttu-id="7d59c-230">b.</span><span class="sxs-lookup"><span data-stu-id="7d59c-230">b.</span></span> <span data-ttu-id="7d59c-231">Haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-231">Click **Save**.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="f19be-232">Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Kintone ofrecida por Kintone para aprovisionar cuentas de usuario de AAD.</span><span class="sxs-lookup"><span data-stu-id="f19be-232">You can use any other Kintone user account creation tools or APIs provided by Kintone to provision AAD user accounts.</span></span>
+> <span data-ttu-id="7d59c-232">Puede usar cualquier otra Kintone usuario cuenta herramienta de creación o las API proporcionadas por Kintone tooprovision cuentas de usuario AAD.</span><span class="sxs-lookup"><span data-stu-id="7d59c-232">You can use any other Kintone user account creation tools or APIs provided by Kintone tooprovision AAD user accounts.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="f19be-233">Asignación del usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f19be-233">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="7d59c-233">Asignación de usuario de prueba de hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="7d59c-233">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="f19be-234">En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Kintone.</span><span class="sxs-lookup"><span data-stu-id="f19be-234">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Kintone.</span></span>
+<span data-ttu-id="7d59c-234">En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooKintone.</span><span class="sxs-lookup"><span data-stu-id="7d59c-234">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooKintone.</span></span>
 
 ![Asignar usuario][200] 
 
-<span data-ttu-id="f19be-236">**Para asignar a Britta Simon a Kintone, siga estos pasos:**</span><span class="sxs-lookup"><span data-stu-id="f19be-236">**To assign Britta Simon to Kintone, perform the following steps:**</span></span>
+<span data-ttu-id="7d59c-236">**tooassign Britta Simon tooKintone, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="7d59c-236">**tooassign Britta Simon tooKintone, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="f19be-237">En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="f19be-237">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="7d59c-237">Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-237">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Asignar usuario][201] 
 
-2. <span data-ttu-id="f19be-239">En la lista de aplicaciones, seleccione **Kintone**.</span><span class="sxs-lookup"><span data-stu-id="f19be-239">In the applications list, select **Kintone**.</span></span>
+2. <span data-ttu-id="7d59c-239">En la lista de aplicaciones de hello, seleccione **Kintone**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-239">In hello applications list, select **Kintone**.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kintone-tutorial/tutorial_kintone_app.png) 
 
-3. <span data-ttu-id="f19be-241">En el menú de la izquierda, haga clic en **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="f19be-241">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="7d59c-241">En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-241">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Asignar usuario][202] 
 
-4. <span data-ttu-id="f19be-243">Haga clic en el botón **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="f19be-243">Click **Add** button.</span></span> <span data-ttu-id="f19be-244">Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="f19be-244">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="7d59c-243">Haga clic en el botón **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-243">Click **Add** button.</span></span> <span data-ttu-id="7d59c-244">Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-244">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Asignar usuario][203]
 
-5. <span data-ttu-id="f19be-246">En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.</span><span class="sxs-lookup"><span data-stu-id="f19be-246">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="7d59c-246">En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.</span><span class="sxs-lookup"><span data-stu-id="7d59c-246">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="f19be-247">Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="f19be-247">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="7d59c-247">Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-247">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="f19be-248">Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="f19be-248">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="7d59c-248">Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="7d59c-248">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="f19be-249">Prueba del inicio de sesión único </span><span class="sxs-lookup"><span data-stu-id="f19be-249">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="7d59c-249">Prueba del inicio de sesión único </span><span class="sxs-lookup"><span data-stu-id="7d59c-249">Testing single sign-on</span></span>
 
-<span data-ttu-id="f19be-250">El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.</span><span class="sxs-lookup"><span data-stu-id="f19be-250">The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="7d59c-250">objetivo de Hola de esta sección es tootest su configuración de inicio de sesión único de Azure AD mediante Hola Panel de acceso.</span><span class="sxs-lookup"><span data-stu-id="7d59c-250">hello objective of this section is tootest your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="f19be-251">Al hacer clic en el icono de Kintone en el panel de acceso, debería iniciar sesión automáticamente en su aplicación Kintone.</span><span class="sxs-lookup"><span data-stu-id="f19be-251">When you click the Kintone tile in the Access Panel, you should get automatically signed-on to your Kintone application.</span></span>
+<span data-ttu-id="7d59c-251">Al hacer clic en icono de Kintone Hola Hola Panel de acceso, deberá obtener aplicaciones de Kintone tooyour automáticamente ha iniciado sesión.</span><span class="sxs-lookup"><span data-stu-id="7d59c-251">When you click hello Kintone tile in hello Access Panel, you should get automatically signed-on tooyour Kintone application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="f19be-252">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="f19be-252">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="7d59c-252">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="7d59c-252">Additional resources</span></span>
 
-* [<span data-ttu-id="f19be-253">Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="f19be-253">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="f19be-254">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="f19be-254">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="7d59c-253">Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="7d59c-253">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="7d59c-254">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="7d59c-254">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 
