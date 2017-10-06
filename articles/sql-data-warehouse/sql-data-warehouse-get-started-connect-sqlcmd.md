@@ -1,6 +1,6 @@
 ---
-title: "Conexión a Azure SQL Data Warehouse sqlcmd | Microsoft Docs"
-description: "Use la utilidad de línea de comandos [sqlcmd][sqlcmd] para conectar y consultar una instancia de Azure SQL Data Warehouse."
+title: sqlcmd de almacenamiento de datos SQL de aaaConnect tooAzure | Documentos de Microsoft
+description: "Use [sqlcmd] [sqlcmd] Utilidad de línea de comandos tooconnect tooand consulta un almacén de datos de SQL Azure."
 services: sql-data-warehouse
 documentationcenter: NA
 author: antvgski
@@ -15,59 +15,59 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: 5a3fe1046c3417070ba8ff5bd18a0485e2152eff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0334df7b969da1966ba29c97f835a2dc9e383e29
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a><span data-ttu-id="c9051-103">Conexión a Almacenamiento de datos SQL con sqlcmd</span><span class="sxs-lookup"><span data-stu-id="c9051-103">Connect to SQL Data Warehouse with sqlcmd</span></span>
+# <a name="connect-toosql-data-warehouse-with-sqlcmd"></a><span data-ttu-id="d68b7-103">Conectar tooSQL almacenamiento de datos con sqlcmd</span><span class="sxs-lookup"><span data-stu-id="d68b7-103">Connect tooSQL Data Warehouse with sqlcmd</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="c9051-104">Power BI</span><span class="sxs-lookup"><span data-stu-id="c9051-104">Power BI</span></span>](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [<span data-ttu-id="c9051-105">Azure Machine Learning</span><span class="sxs-lookup"><span data-stu-id="c9051-105">Azure Machine Learning</span></span>](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-> * [<span data-ttu-id="c9051-106">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="c9051-106">Visual Studio</span></span>](sql-data-warehouse-query-visual-studio.md)
-> * [<span data-ttu-id="c9051-107">sqlcmd</span><span class="sxs-lookup"><span data-stu-id="c9051-107">sqlcmd</span></span>](sql-data-warehouse-get-started-connect-sqlcmd.md) 
-> * [<span data-ttu-id="c9051-108">SSMS</span><span class="sxs-lookup"><span data-stu-id="c9051-108">SSMS</span></span>](sql-data-warehouse-query-ssms.md)
+> * [<span data-ttu-id="d68b7-104">Power BI</span><span class="sxs-lookup"><span data-stu-id="d68b7-104">Power BI</span></span>](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [<span data-ttu-id="d68b7-105">Azure Machine Learning</span><span class="sxs-lookup"><span data-stu-id="d68b7-105">Azure Machine Learning</span></span>](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+> * [<span data-ttu-id="d68b7-106">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="d68b7-106">Visual Studio</span></span>](sql-data-warehouse-query-visual-studio.md)
+> * [<span data-ttu-id="d68b7-107">sqlcmd</span><span class="sxs-lookup"><span data-stu-id="d68b7-107">sqlcmd</span></span>](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [<span data-ttu-id="d68b7-108">SSMS</span><span class="sxs-lookup"><span data-stu-id="d68b7-108">SSMS</span></span>](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-<span data-ttu-id="c9051-109">Use la utilidad de línea de comandos [sqlcmd][sqlcmd] para conectarse a Azure SQL Data Warehouse y realizar consultas.</span><span class="sxs-lookup"><span data-stu-id="c9051-109">Use [sqlcmd][sqlcmd] command-line utility to connect to and query an Azure SQL Data Warehouse.</span></span>  
+<span data-ttu-id="d68b7-109">Use [sqlcmd] [ sqlcmd] tooand tooconnect de utilidad de línea de comandos de consulta un almacén de datos de SQL Azure.</span><span class="sxs-lookup"><span data-stu-id="d68b7-109">Use [sqlcmd][sqlcmd] command-line utility tooconnect tooand query an Azure SQL Data Warehouse.</span></span>  
 
-## <a name="1-connect"></a><span data-ttu-id="c9051-110">1. Conectar</span><span class="sxs-lookup"><span data-stu-id="c9051-110">1. Connect</span></span>
-<span data-ttu-id="c9051-111">Para empezar a trabajar con [sqlcmd][sqlcmd], abra el símbolo del sistema y escriba **sqlcmd**, seguido de la cadena de conexión de la base de datos de SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="c9051-111">To get started with [sqlcmd][sqlcmd], open the command prompt and enter **sqlcmd** followed by the connection string for your SQL Data Warehouse database.</span></span> <span data-ttu-id="c9051-112">La cadena de conexión requiere los siguientes parámetros:</span><span class="sxs-lookup"><span data-stu-id="c9051-112">The connection string requires the following parameters:</span></span>
+## <a name="1-connect"></a><span data-ttu-id="d68b7-110">1. Conectar</span><span class="sxs-lookup"><span data-stu-id="d68b7-110">1. Connect</span></span>
+<span data-ttu-id="d68b7-111">partió tooget [sqlcmd][sqlcmd], abra el símbolo del sistema de Hola y escriba **sqlcmd** seguido por la cadena de conexión de hello para la base de datos de almacenamiento de datos SQL.</span><span class="sxs-lookup"><span data-stu-id="d68b7-111">tooget started with [sqlcmd][sqlcmd], open hello command prompt and enter **sqlcmd** followed by hello connection string for your SQL Data Warehouse database.</span></span> <span data-ttu-id="d68b7-112">cadena de conexión de Hello requiere Hola parámetros siguientes:</span><span class="sxs-lookup"><span data-stu-id="d68b7-112">hello connection string requires hello following parameters:</span></span>
 
-* <span data-ttu-id="c9051-113">**Server (-S):** servidor con el formato `<`Nombre del servidor`>`.database.windows.net</span><span class="sxs-lookup"><span data-stu-id="c9051-113">**Server (-S):** Server in the form `<`Server Name`>`.database.windows.net</span></span>
-* <span data-ttu-id="c9051-114">**Base de datos (-d):** nombre de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="c9051-114">**Database (-d):** Database name.</span></span>
-* <span data-ttu-id="c9051-115">**Habilitar identificadores entre comillas (-I):** los identificadores entre comillas deben estar habilitados para poder conectarse a una instancia de SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="c9051-115">**Enable Quoted Identifiers (-I):** Quoted identifiers must be enabled to connect to a SQL Data Warehouse instance.</span></span>
+* <span data-ttu-id="d68b7-113">**Servidor (-S):** servidor en forma de hello `<`nombre del servidor`>`. database.windows.net</span><span class="sxs-lookup"><span data-stu-id="d68b7-113">**Server (-S):** Server in hello form `<`Server Name`>`.database.windows.net</span></span>
+* <span data-ttu-id="d68b7-114">**Base de datos (-d):** nombre de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="d68b7-114">**Database (-d):** Database name.</span></span>
+* <span data-ttu-id="d68b7-115">**Habilitar los identificadores entre comillas (-I):** identificadores entre comillas deben ser una instancia de almacenamiento de datos SQL de tooa tooconnect habilitado.</span><span class="sxs-lookup"><span data-stu-id="d68b7-115">**Enable Quoted Identifiers (-I):** Quoted identifiers must be enabled tooconnect tooa SQL Data Warehouse instance.</span></span>
 
-<span data-ttu-id="c9051-116">Para utilizar la autenticación de SQL Server, debe agregar los parámetros de nombre de usuario y contraseña:</span><span class="sxs-lookup"><span data-stu-id="c9051-116">To use SQL Server Authentication, you need to add the username/password parameters:</span></span>
+<span data-ttu-id="d68b7-116">toouse autenticación de SQL Server, necesita parámetros de nombre de usuario/contraseña Hola tooadd:</span><span class="sxs-lookup"><span data-stu-id="d68b7-116">toouse SQL Server Authentication, you need tooadd hello username/password parameters:</span></span>
 
-* <span data-ttu-id="c9051-117">**Usuario (-U):** usuario de servidor con el formato `<`usuario`>`</span><span class="sxs-lookup"><span data-stu-id="c9051-117">**User (-U):** Server user in the form `<`User`>`</span></span>
-* <span data-ttu-id="c9051-118">**Contraseña (-P):** la contraseña asociada con el usuario.</span><span class="sxs-lookup"><span data-stu-id="c9051-118">**Password (-P):** Password associated with the user.</span></span>
+* <span data-ttu-id="d68b7-117">**Usuario (-U):** usuario de servidor en forma de hello `<`usuario`>`</span><span class="sxs-lookup"><span data-stu-id="d68b7-117">**User (-U):** Server user in hello form `<`User`>`</span></span>
+* <span data-ttu-id="d68b7-118">**Contraseña (-P):** contraseña asociada con el usuario de Hola.</span><span class="sxs-lookup"><span data-stu-id="d68b7-118">**Password (-P):** Password associated with hello user.</span></span>
 
-<span data-ttu-id="c9051-119">Por ejemplo, la cadena de conexión podría ser similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="c9051-119">For example, your connection string might look like the following:</span></span>
+<span data-ttu-id="d68b7-119">Por ejemplo, la cadena de conexión podría ser similar a Hola siguiente:</span><span class="sxs-lookup"><span data-stu-id="d68b7-119">For example, your connection string might look like hello following:</span></span>
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-<span data-ttu-id="c9051-120">Para usar la autenticación integrada de Azure Active Directory, debe agregar los parámetros de Azure Active Directory:</span><span class="sxs-lookup"><span data-stu-id="c9051-120">To use Azure Active Directory Integrated authentication, you need to add the Azure Active Directory parameters:</span></span>
+<span data-ttu-id="d68b7-120">autenticación de Azure Active Directory integrado toouse, necesita parámetros de tooadd hello Azure Active Directory:</span><span class="sxs-lookup"><span data-stu-id="d68b7-120">toouse Azure Active Directory Integrated authentication, you need tooadd hello Azure Active Directory parameters:</span></span>
 
-* <span data-ttu-id="c9051-121">**Autenticación de Azure Active Directory (-G):** use Azure Active Directory para la autenticación.</span><span class="sxs-lookup"><span data-stu-id="c9051-121">**Azure Active Directory Authentication (-G):** use Azure Active Directory for authentication</span></span>
+* <span data-ttu-id="d68b7-121">**Autenticación de Azure Active Directory (-G):** use Azure Active Directory para la autenticación.</span><span class="sxs-lookup"><span data-stu-id="d68b7-121">**Azure Active Directory Authentication (-G):** use Azure Active Directory for authentication</span></span>
 
-<span data-ttu-id="c9051-122">Por ejemplo, la cadena de conexión podría ser similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="c9051-122">For example, your connection string might look like the following:</span></span>
+<span data-ttu-id="d68b7-122">Por ejemplo, la cadena de conexión podría ser similar a Hola siguiente:</span><span class="sxs-lookup"><span data-stu-id="d68b7-122">For example, your connection string might look like hello following:</span></span>
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
 > [!NOTE]
-> <span data-ttu-id="c9051-123">Necesita [habilitar la autenticación de Azure Active Directory](sql-data-warehouse-authentication.md) para autenticarse con Active Directory.</span><span class="sxs-lookup"><span data-stu-id="c9051-123">You need to [enable Azure Active Directory Authentication](sql-data-warehouse-authentication.md) to authenticate using Active Directory.</span></span>
+> <span data-ttu-id="d68b7-123">Necesita demasiado[Habilitar autenticación de Azure Active Directory](sql-data-warehouse-authentication.md) tooauthenticate mediante Active Directory.</span><span class="sxs-lookup"><span data-stu-id="d68b7-123">You need too[enable Azure Active Directory Authentication](sql-data-warehouse-authentication.md) tooauthenticate using Active Directory.</span></span>
 > 
 > 
 
-## <a name="2-query"></a><span data-ttu-id="c9051-124">2. Consultar</span><span class="sxs-lookup"><span data-stu-id="c9051-124">2. Query</span></span>
-<span data-ttu-id="c9051-125">Después de la conexión, puede emitir cualquier instrucción Transact-SQL en la instancia.</span><span class="sxs-lookup"><span data-stu-id="c9051-125">After connection, you can issue any supported Transact-SQL statements against the instance.</span></span>  <span data-ttu-id="c9051-126">En este ejemplo, las consultas se envían en modo interactivo.</span><span class="sxs-lookup"><span data-stu-id="c9051-126">In this example, queries are submitted in interactive mode.</span></span>
+## <a name="2-query"></a><span data-ttu-id="d68b7-124">2. Consultar</span><span class="sxs-lookup"><span data-stu-id="d68b7-124">2. Query</span></span>
+<span data-ttu-id="d68b7-125">Después de la conexión, puede emitir cualquier instrucciones de Transact-SQL compatibles con la instancia de Hola.</span><span class="sxs-lookup"><span data-stu-id="d68b7-125">After connection, you can issue any supported Transact-SQL statements against hello instance.</span></span>  <span data-ttu-id="d68b7-126">En este ejemplo, las consultas se envían en modo interactivo.</span><span class="sxs-lookup"><span data-stu-id="d68b7-126">In this example, queries are submitted in interactive mode.</span></span>
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -76,7 +76,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-<span data-ttu-id="c9051-127">Los siguientes ejemplos muestran cómo se pueden ejecutar las consultas en el modo por lotes con la opción -Q o mediante la canalización de su SQL a sqlcmd.</span><span class="sxs-lookup"><span data-stu-id="c9051-127">These next examples show how you can run your queries in batch mode using the -Q option or piping your SQL to sqlcmd.</span></span>
+<span data-ttu-id="d68b7-127">Estos ejemplos siguientes muestra cómo puede ejecutar las consultas en modo de lote con opción -Q de Hola o canalizando el toosqlcmd SQL.</span><span class="sxs-lookup"><span data-stu-id="d68b7-127">These next examples show how you can run your queries in batch mode using hello -Q option or piping your SQL toosqlcmd.</span></span>
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -86,8 +86,8 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="c9051-128">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="c9051-128">Next steps</span></span>
-<span data-ttu-id="c9051-129">Para más información sobre las opciones disponibles en sqlcmd, consulte la [documentación de sqlcmd][sqlcmd].</span><span class="sxs-lookup"><span data-stu-id="c9051-129">See [sqlcmd documentation][sqlcmd] for more about details about the options available in sqlcmd.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="d68b7-128">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="d68b7-128">Next steps</span></span>
+<span data-ttu-id="d68b7-129">Vea [documentación de sqlcmd] [ sqlcmd] para obtener más información acerca de los detalles acerca de las opciones de hello disponibles en sqlcmd.</span><span class="sxs-lookup"><span data-stu-id="d68b7-129">See [sqlcmd documentation][sqlcmd] for more about details about hello options available in sqlcmd.</span></span>
 
 <!--Image references-->
 

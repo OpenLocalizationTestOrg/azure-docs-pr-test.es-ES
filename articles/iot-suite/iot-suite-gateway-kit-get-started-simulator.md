@@ -1,6 +1,6 @@
 ---
-title: Conectar una puerta de enlace al Conjunto de aplicaciones de IoT de Azure con Intel NUC | Documentos de Microsoft
-description: "Use el Kit de puerta de enlace comercial de Microsoft IoT y la solución preconfigurada de supervisión remota. Use la puerta de enlace de Azure IoT Edge para conectarse a la solución de supervisión remota, enviar telemetría simulada a la nube y responder a los métodos invocados desde el panel de soluciones."
+title: un conjunto de IoT mediante un NUC de Intel de puerta de enlace tooAzure aaaConnect | Documentos de Microsoft
+description: "Utilice Hola hello y Kit de puerta de enlace de Microsoft IoT comercial remoto preconfigurada solución de supervisión. Hola utilice Azure IoT borde puerta de enlace tooconnect toohello solución de supervisión, enviar telemetría simulada toohello en la nube y responder toomethods invoca desde el panel de la solución de Hola."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 9ed57d3c23e2adbd42c054f33c8ed46e3d6c9792
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 46b545fc21b054191c8f78ace20fc628f839a819
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-simulated-telemetry"></a><span data-ttu-id="bae89-104">Conectar la puerta de enlace de Azure IoT Edge a la solución preconfigurada de supervisión remota y enviar telemetría simulada</span><span class="sxs-lookup"><span data-stu-id="bae89-104">Connect your Azure IoT Edge gateway to the remote monitoring preconfigured solution and send simulated telemetry</span></span>
+# <a name="connect-your-azure-iot-edge-gateway-toohello-remote-monitoring-preconfigured-solution-and-send-simulated-telemetry"></a><span data-ttu-id="a1fcb-104">Conectar su toohello de puerta de enlace de borde de IoT de Azure remoto solución preconfigurada de supervisión y enviar telemetría simulada</span><span class="sxs-lookup"><span data-stu-id="a1fcb-104">Connect your Azure IoT Edge gateway toohello remote monitoring preconfigured solution and send simulated telemetry</span></span>
 
 [!INCLUDE [iot-suite-gateway-kit-selector](../../includes/iot-suite-gateway-kit-selector.md)]
 
-<span data-ttu-id="bae89-105">En este tutorial se muestra cómo usar Azure IoT Edge para simular datos de temperatura y humedad y enviarlos a la solución preconfigurada de supervisión remota.</span><span class="sxs-lookup"><span data-stu-id="bae89-105">This tutorial shows you how to use Azure IoT Edge to simulate temperature and humidity data to send to the remote monitoring preconfigured solution.</span></span> <span data-ttu-id="bae89-106">El tutorial usa:</span><span class="sxs-lookup"><span data-stu-id="bae89-106">The tutorial uses:</span></span>
+<span data-ttu-id="a1fcb-105">Este tutorial muestra cómo toosimulate temperatura de toouse borde de IoT de Azure y la supervisión remota de humedad datos toosend toohello preconfigurado solución.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-105">This tutorial shows you how toouse Azure IoT Edge toosimulate temperature and humidity data toosend toohello remote monitoring preconfigured solution.</span></span> <span data-ttu-id="a1fcb-106">tutorial de Hello usa:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-106">hello tutorial uses:</span></span>
 
-- <span data-ttu-id="bae89-107">Azure IoT Edge para implementar una puerta de enlace de muestra.</span><span class="sxs-lookup"><span data-stu-id="bae89-107">Azure IoT Edge to implement a sample gateway.</span></span>
-- <span data-ttu-id="bae89-108">La solución preconfigurada de supervisión remota del Conjunto de aplicaciones de IoT como el back-end basado en la nube.</span><span class="sxs-lookup"><span data-stu-id="bae89-108">The IoT Suite remote monitoring preconfigured solution as the cloud-based back end.</span></span>
+- <span data-ttu-id="a1fcb-107">Azure IoT borde tooimplement una puerta de enlace de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-107">Azure IoT Edge tooimplement a sample gateway.</span></span>
+- <span data-ttu-id="a1fcb-108">supervisión remota de Hello IoT conjunto había preconfigurado solución como back-end de hello en la nube.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-108">hello IoT Suite remote monitoring preconfigured solution as hello cloud-based back end.</span></span>
 
-## <a name="overview"></a><span data-ttu-id="bae89-109">Información general</span><span class="sxs-lookup"><span data-stu-id="bae89-109">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="a1fcb-109">Información general</span><span class="sxs-lookup"><span data-stu-id="a1fcb-109">Overview</span></span>
 
-<span data-ttu-id="bae89-110">En este tutorial, va a completar los siguientes pasos:</span><span class="sxs-lookup"><span data-stu-id="bae89-110">In this tutorial, you complete the following steps:</span></span>
+<span data-ttu-id="a1fcb-110">En este tutorial, se realizará Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-110">In this tutorial, you complete hello following steps:</span></span>
 
-- <span data-ttu-id="bae89-111">Implemente una instancia de la solución preconfigurada de supervisión remota en su suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="bae89-111">Deploy an instance of the remote monitoring preconfigured solution to your Azure subscription.</span></span> <span data-ttu-id="bae89-112">Este paso implementa y configura varios servicios de Azure automáticamente.</span><span class="sxs-lookup"><span data-stu-id="bae89-112">This step automatically deploys and configures multiple Azure services.</span></span>
-- <span data-ttu-id="bae89-113">Configure el dispositivo de puerta de enlace Intel NUC para que se comunique con el equipo y la solución de supervisión remota.</span><span class="sxs-lookup"><span data-stu-id="bae89-113">Set up your Intel NUC gateway device to communicate with your computer and the remote monitoring solution.</span></span>
-- <span data-ttu-id="bae89-114">Configure la puerta de enlace de IoT Edge para enviar telemetría simulada que se puede ver en el panel de soluciones.</span><span class="sxs-lookup"><span data-stu-id="bae89-114">Configure the IoT Edge gateway to send simulated telemetry that you can view on the solution dashboard.</span></span>
+- <span data-ttu-id="a1fcb-111">Implemente una instancia de hello remoto supervisión solución preconfigurada tooyour suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-111">Deploy an instance of hello remote monitoring preconfigured solution tooyour Azure subscription.</span></span> <span data-ttu-id="a1fcb-112">Este paso implementa y configura varios servicios de Azure automáticamente.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-112">This step automatically deploys and configures multiple Azure services.</span></span>
+- <span data-ttu-id="a1fcb-113">Configure su toocommunicate de dispositivo de puerta de enlace de Intel NUC con el equipo y la solución de supervisión remota de Hola.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-113">Set up your Intel NUC gateway device toocommunicate with your computer and hello remote monitoring solution.</span></span>
+- <span data-ttu-id="a1fcb-114">Configurar hello toosend de puerta de enlace de IoT borde simulados telemetría que se puede ver en el panel de la solución de Hola.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-114">Configure hello IoT Edge gateway toosend simulated telemetry that you can view on hello solution dashboard.</span></span>
 
 [!INCLUDE [iot-suite-gateway-kit-prerequisites](../../includes/iot-suite-gateway-kit-prerequisites.md)]
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> <span data-ttu-id="bae89-115">La solución de supervisión remota proporciona un conjunto de servicios de Azure de la suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="bae89-115">The remote monitoring solution provisions a set of Azure services in your Azure subscription.</span></span> <span data-ttu-id="bae89-116">La implementación refleja una arquitectura empresarial real.</span><span class="sxs-lookup"><span data-stu-id="bae89-116">The deployment reflects a real enterprise architecture.</span></span> <span data-ttu-id="bae89-117">Para evitar cobros de consumo innecesarios de Azure, elimine la instancia de la solución preconfigurada en azureiotsuite.com cuando haya terminado con ella.</span><span class="sxs-lookup"><span data-stu-id="bae89-117">To avoid unnecessary Azure consumption charges, delete your instance of the preconfigured solution at azureiotsuite.com when you have finished with it.</span></span> <span data-ttu-id="bae89-118">Si necesita la solución preconfigurada de nuevo, puede crearla fácilmente.</span><span class="sxs-lookup"><span data-stu-id="bae89-118">If you need the preconfigured solution again, you can easily recreate it.</span></span> <span data-ttu-id="bae89-119">Para más información sobre cómo reducir el consumo mientras se ejecuta la solución de supervisión remota, consulte [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Configuración de soluciones preconfiguradas del Conjunto de aplicaciones de IoT de Azure para fines de demostración).</span><span class="sxs-lookup"><span data-stu-id="bae89-119">For more information about reducing consumption while the remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config].</span></span>
+> <span data-ttu-id="a1fcb-115">Hola disposiciones de solución de supervisión remoto un conjunto de servicios de Azure en su suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-115">hello remote monitoring solution provisions a set of Azure services in your Azure subscription.</span></span> <span data-ttu-id="a1fcb-116">implementación de Hello refleja una arquitectura empresarial real.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-116">hello deployment reflects a real enterprise architecture.</span></span> <span data-ttu-id="a1fcb-117">tooavoid cargos de consumo innecesario de Azure, elimine la instancia de la solución de hello preconfigurado en azureiotsuite.com cuando haya terminado con él.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-117">tooavoid unnecessary Azure consumption charges, delete your instance of hello preconfigured solution at azureiotsuite.com when you have finished with it.</span></span> <span data-ttu-id="a1fcb-118">Si necesita hello solución preconfigurada de nuevo, puede crearla fácilmente.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-118">If you need hello preconfigured solution again, you can easily recreate it.</span></span> <span data-ttu-id="a1fcb-119">Para obtener más información acerca de cómo reducir el consumo de Hola se ejecuta la solución de supervisión remota, consulte [configurar Azure IoT conjunto preconfigurado soluciones para fines de demostración][lnk-demo-config].</span><span class="sxs-lookup"><span data-stu-id="a1fcb-119">For more information about reducing consumption while hello remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config].</span></span>
 
 [!INCLUDE [iot-suite-gateway-kit-view-solution](../../includes/iot-suite-gateway-kit-view-solution.md)]
 
-<span data-ttu-id="bae89-120">Repita los pasos anteriores para agregar un segundo dispositivo con un id. de dispositivo como **device02**.</span><span class="sxs-lookup"><span data-stu-id="bae89-120">Repeat the previous steps to add a second device using a Device ID such as **device02**.</span></span> <span data-ttu-id="bae89-121">La muestra envía datos procedentes de dos dispositivos simulados en la puerta de enlace a la solución de supervisión remota.</span><span class="sxs-lookup"><span data-stu-id="bae89-121">The sample sends data from two simulated devices in the gateway to the remote monitoring solution.</span></span>
+<span data-ttu-id="a1fcb-120">Repita Hola anteriores pasos tooadd un segundo dispositivo con un Id. de dispositivo como **device02**.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-120">Repeat hello previous steps tooadd a second device using a Device ID such as **device02**.</span></span> <span data-ttu-id="a1fcb-121">ejemplo de Hola envía datos de dos dispositivos simulados en la solución de supervisión remota toohello Hola puerta de enlace.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-121">hello sample sends data from two simulated devices in hello gateway toohello remote monitoring solution.</span></span>
 
 [!INCLUDE [iot-suite-gateway-kit-prepare-nuc-connectivity](../../includes/iot-suite-gateway-kit-prepare-nuc-connectivity.md)]
 
 [!INCLUDE [iot-suite-gateway-kit-prepare-nuc-software](../../includes/iot-suite-gateway-kit-prepare-nuc-software.md)]
 
-## <a name="build-the-custom-iot-edge-module"></a><span data-ttu-id="bae89-122">Generar el módulo de IoT Edge personalizado</span><span class="sxs-lookup"><span data-stu-id="bae89-122">Build the custom IoT Edge module</span></span>
+## <a name="build-hello-custom-iot-edge-module"></a><span data-ttu-id="a1fcb-122">Crear el módulo personalizado de borde de IoT de Hola</span><span class="sxs-lookup"><span data-stu-id="a1fcb-122">Build hello custom IoT Edge module</span></span>
 
-<span data-ttu-id="bae89-123">Ahora puede generar el módulo personalizado de IoT Edge que permite que la puerta de enlace envíe mensajes a la solución de supervisión remota.</span><span class="sxs-lookup"><span data-stu-id="bae89-123">You can now build the custom IoT Edge module that enables the gateway to send messages to the remote monitoring solution.</span></span> <span data-ttu-id="bae89-124">Para obtener más información sobre cómo configurar una puerta de enlace y los módulos de IoT Edge, consulte [Conceptos de Azure IoT Edge][lnk-gateway-concepts].</span><span class="sxs-lookup"><span data-stu-id="bae89-124">For more information about configuring a gateway and IoT Edge modules, see [Azure IoT Edge concepts][lnk-gateway-concepts].</span></span>
+<span data-ttu-id="a1fcb-123">Ahora puede compilar módulo IoT borde personalizado Hola que permite Hola puerta de enlace toosend mensajes toohello solución de supervisión.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-123">You can now build hello custom IoT Edge module that enables hello gateway toosend messages toohello remote monitoring solution.</span></span> <span data-ttu-id="a1fcb-124">Para obtener más información sobre cómo configurar una puerta de enlace y los módulos de IoT Edge, consulte [Conceptos de Azure IoT Edge][lnk-gateway-concepts].</span><span class="sxs-lookup"><span data-stu-id="a1fcb-124">For more information about configuring a gateway and IoT Edge modules, see [Azure IoT Edge concepts][lnk-gateway-concepts].</span></span>
 
-<span data-ttu-id="bae89-125">Descargue el código fuente para los módulos personalizados de IoT Edge desde GitHub con los comandos siguientes:</span><span class="sxs-lookup"><span data-stu-id="bae89-125">Download the source code for the custom IoT Edge modules from GitHub using the following commands:</span></span>
+<span data-ttu-id="a1fcb-125">Descargar código de fuente de Hola para módulos personalizados de borde de IoT de Hola desde GitHub con hello siguientes comandos:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-125">Download hello source code for hello custom IoT Edge modules from GitHub using hello following commands:</span></span>
 
 ```bash
 cd ~
 git clone https://github.com/Azure-Samples/iot-remote-monitoring-c-intel-nuc-gateway-getting-started.git
 ```
 
-<span data-ttu-id="bae89-126">Cree el módulo personalizado de IoT Edge con los comandos siguientes:</span><span class="sxs-lookup"><span data-stu-id="bae89-126">Build the custom IoT Edge module using the following commands:</span></span>
+<span data-ttu-id="a1fcb-126">Crear el módulo de IoT borde personalizado de hello mediante Hola siguientes comandos:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-126">Build hello custom IoT Edge module using hello following commands:</span></span>
 
 ```bash
 cd ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator
@@ -72,22 +72,22 @@ sed -i -e 's/\r$//' build.sh
 ./build.sh
 ```
 
-<span data-ttu-id="bae89-127">El script de compilación coloca el módulo personalizado de IoT Edge libsimulator.so en la carpeta de compilación.</span><span class="sxs-lookup"><span data-stu-id="bae89-127">The build script places the libsimulator.so custom IoT Edge module in the build folder.</span></span>
+<span data-ttu-id="a1fcb-127">script de compilación de Hello coloca módulo personalizado de borde de IoT de hello libsimulator.so en la carpeta de compilación de Hola.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-127">hello build script places hello libsimulator.so custom IoT Edge module in hello build folder.</span></span>
 
-## <a name="configure-and-run-the-iot-edge-gateway"></a><span data-ttu-id="bae89-128">Configurar y ejecutar la puerta de enlace de IoT Edge</span><span class="sxs-lookup"><span data-stu-id="bae89-128">Configure and run the IoT Edge gateway</span></span>
+## <a name="configure-and-run-hello-iot-edge-gateway"></a><span data-ttu-id="a1fcb-128">Configurar y ejecutar Hola puerta de enlace de borde de IoT</span><span class="sxs-lookup"><span data-stu-id="a1fcb-128">Configure and run hello IoT Edge gateway</span></span>
 
-<span data-ttu-id="bae89-129">Ahora puede configurar la puerta de enlace de IoT Edge para enviar telemetría simulada al panel de supervisión remota.</span><span class="sxs-lookup"><span data-stu-id="bae89-129">You can now configure the IoT Edge gateway to send simulated telemetry to your remote monitoring dashboard.</span></span> <span data-ttu-id="bae89-130">Para obtener más información sobre cómo configurar una puerta de enlace y los módulos de IoT Edge, consulte [Conceptos de Azure IoT Edge][lnk-gateway-concepts].</span><span class="sxs-lookup"><span data-stu-id="bae89-130">For more information about configuring a gateway and IoT Edge modules, see [Azure IoT Edge concepts][lnk-gateway-concepts].</span></span>
+<span data-ttu-id="a1fcb-129">Ahora puede configurar hello borde IoT puerta de enlace toosend telemetría simulada tooyour remoto panel de supervisión.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-129">You can now configure hello IoT Edge gateway toosend simulated telemetry tooyour remote monitoring dashboard.</span></span> <span data-ttu-id="a1fcb-130">Para obtener más información sobre cómo configurar una puerta de enlace y los módulos de IoT Edge, consulte [Conceptos de Azure IoT Edge][lnk-gateway-concepts].</span><span class="sxs-lookup"><span data-stu-id="a1fcb-130">For more information about configuring a gateway and IoT Edge modules, see [Azure IoT Edge concepts][lnk-gateway-concepts].</span></span>
 
 > [!TIP]
-> <span data-ttu-id="bae89-131">En este tutorial, use el editor de texto `vi` estándar en Intel NUC.</span><span class="sxs-lookup"><span data-stu-id="bae89-131">In this tutorial, you use the standard `vi` text editor on the Intel NUC.</span></span> <span data-ttu-id="bae89-132">Si no ha usado `vi` antes, complete un tutorial introductorio, como [Unix - The vi Editor Tutorial][lnk-vi-tutorial] (Unix: el tutorial de editor vi) para familiarizarse con este editor.</span><span class="sxs-lookup"><span data-stu-id="bae89-132">If you have not used `vi` before, you should complete an introductory tutorial, such as [Unix - The vi Editor Tutorial][lnk-vi-tutorial] to familiarize yourself with this editor.</span></span> <span data-ttu-id="bae89-133">Como alternativa, puede instalar el editor [nano](https://www.nano-editor.org/) fácil de usar con el comando `smart install nano -y`.</span><span class="sxs-lookup"><span data-stu-id="bae89-133">Alternatively, you can install the more user-friendly [nano](https://www.nano-editor.org/) editor using the command `smart install nano -y`.</span></span>
+> <span data-ttu-id="a1fcb-131">En este tutorial, utilice estándar hello `vi` editor de texto en hello NUC de Intel.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-131">In this tutorial, you use hello standard `vi` text editor on hello Intel NUC.</span></span> <span data-ttu-id="a1fcb-132">Si no ha usado `vi` antes, debe completar un tutorial introductorio, como [Unix - Hola vi Editor Tutorial] [ lnk-vi-tutorial] toofamiliarize usted mismo con este editor.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-132">If you have not used `vi` before, you should complete an introductory tutorial, such as [Unix - hello vi Editor Tutorial][lnk-vi-tutorial] toofamiliarize yourself with this editor.</span></span> <span data-ttu-id="a1fcb-133">Como alternativa, puede instalar más fácil de usar hello [nano](https://www.nano-editor.org/) editor mediante el comando hello `smart install nano -y`.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-133">Alternatively, you can install hello more user-friendly [nano](https://www.nano-editor.org/) editor using hello command `smart install nano -y`.</span></span>
 
-<span data-ttu-id="bae89-134">Abra el archivo de configuración de ejemplo en el editor **vi** con el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="bae89-134">Open the sample configuration file in the **vi** editor using the following command:</span></span>
+<span data-ttu-id="a1fcb-134">Archivo de configuración de ejemplo de Hola abierto en hello **vi** editor mediante Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-134">Open hello sample configuration file in hello **vi** editor using hello following command:</span></span>
 
 ```bash
 vi ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator/remote_monitoring.json
 ```
 
-<span data-ttu-id="bae89-135">Busque las líneas siguientes en la configuración del módulo de IoTHub:</span><span class="sxs-lookup"><span data-stu-id="bae89-135">Locate the following lines in the configuration for the IoTHub module:</span></span>
+<span data-ttu-id="a1fcb-135">Busque Hola siguiendo las líneas en la configuración de hello para el módulo de hello el centro de IOT:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-135">Locate hello following lines in hello configuration for hello IoTHub module:</span></span>
 
 ```json
 "args": {
@@ -97,9 +97,9 @@ vi ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator/remote_
 }
 ```
 
-<span data-ttu-id="bae89-136">Reemplace los valores de marcador de posición con la información de IoT Hub que creó y guardó al principio de este tutorial.</span><span class="sxs-lookup"><span data-stu-id="bae89-136">Replace the placeholder values with the IoT Hub information you created and saved at the start of this tutorial.</span></span> <span data-ttu-id="bae89-137">El valor de IoTHubName es similar a **yourrmsolution37e08** y el valor de IoTSuffix suele ser **azure-devices.net**.</span><span class="sxs-lookup"><span data-stu-id="bae89-137">The value for IoTHubName looks like **yourrmsolution37e08**, and the value for IoTSuffix is typically **azure-devices.net**.</span></span>
+<span data-ttu-id="a1fcb-136">Reemplace el marcador de posición de hello valores con información de centro de IoT creado y guardado en Hola Hola inicio de este tutorial.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-136">Replace hello placeholder values with hello IoT Hub information you created and saved at hello start of this tutorial.</span></span> <span data-ttu-id="a1fcb-137">valor de Hola para IoTHubName es similar a **yourrmsolution37e08**, y valor hello IoTSuffix es normalmente **devices.net azure**.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-137">hello value for IoTHubName looks like **yourrmsolution37e08**, and hello value for IoTSuffix is typically **azure-devices.net**.</span></span>
 
-<span data-ttu-id="bae89-138">Busque las líneas siguientes en la configuración del módulo de asignación:</span><span class="sxs-lookup"><span data-stu-id="bae89-138">Locate the following lines in the configuration for the mapping module:</span></span>
+<span data-ttu-id="a1fcb-138">Busque Hola siguiendo las líneas en la configuración de hello para el módulo de asignación de hello:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-138">Locate hello following lines in hello configuration for hello mapping module:</span></span>
 
 ```json
 args": [
@@ -116,39 +116,39 @@ args": [
 ]
 ```
 
-<span data-ttu-id="bae89-139">Reemplace los marcadores de posición **deviceID** y **deviceKey** con los identificadores y las claves para los dos dispositivos que creó anteriormente en la solución de supervisión remota.</span><span class="sxs-lookup"><span data-stu-id="bae89-139">Replace the **deviceID** and **deviceKey** placeholders with the IDs and keys for the two devices you created in the remote monitoring solution previously.</span></span>
+<span data-ttu-id="a1fcb-139">Reemplace hello **deviceID** y **deviceKey** marcadores de posición con identificadores de Hola y claves para dispositivos de hello dos que se creó anteriormente en la solución de supervisión remota Hola.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-139">Replace hello **deviceID** and **deviceKey** placeholders with hello IDs and keys for hello two devices you created in hello remote monitoring solution previously.</span></span>
 
-<span data-ttu-id="bae89-140">Guarde los cambios.</span><span class="sxs-lookup"><span data-stu-id="bae89-140">Save your changes.</span></span>
+<span data-ttu-id="a1fcb-140">Guarde los cambios.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-140">Save your changes.</span></span>
 
-<span data-ttu-id="bae89-141">Ahora puede usar estos comandos para ejecutar la puerta de enlace de IoT Edge:</span><span class="sxs-lookup"><span data-stu-id="bae89-141">You can now run the IoT Edge gateway using the following commands:</span></span>
+<span data-ttu-id="a1fcb-141">Ahora puede ejecutar Hola comandos de puerta de enlace de IoT borde con hello siguientes:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-141">You can now run hello IoT Edge gateway using hello following commands:</span></span>
 
 ```bash
 cd ~/iot-remote-monitoring-c-intel-nuc-gateway-getting-started/simulator
 /usr/share/azureiotgatewaysdk/samples/simulated_device_cloud_upload/simulated_device_cloud_upload remote_monitoring.json
 ```
 
-<span data-ttu-id="bae89-142">La puerta de enlace se inicia en Intel NUC y envía telemetría simulada a la solución de supervisión remota:</span><span class="sxs-lookup"><span data-stu-id="bae89-142">The gateway starts on the Intel NUC and sends simulated telemetry to the remote monitoring solution:</span></span>
+<span data-ttu-id="a1fcb-142">puerta de enlace de Hello comienza en hello NUC de Intel y envía la solución de supervisión remota de telemetría simulada toohello:</span><span class="sxs-lookup"><span data-stu-id="a1fcb-142">hello gateway starts on hello Intel NUC and sends simulated telemetry toohello remote monitoring solution:</span></span>
 
 ![La puerta de enlace de IoT Edge genera telemetría simulada.][img-simulated telemetry]
 
-<span data-ttu-id="bae89-144">Presione **Ctrl-C** para salir del programa en cualquier momento.</span><span class="sxs-lookup"><span data-stu-id="bae89-144">Press **Ctrl-C** to exit the program at any time.</span></span>
+<span data-ttu-id="a1fcb-144">Presione **Ctrl-C** programa Hola de tooexit en cualquier momento.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-144">Press **Ctrl-C** tooexit hello program at any time.</span></span>
 
-## <a name="view-the-telemetry"></a><span data-ttu-id="bae89-145">Visualización de la telemetría</span><span class="sxs-lookup"><span data-stu-id="bae89-145">View the telemetry</span></span>
+## <a name="view-hello-telemetry"></a><span data-ttu-id="a1fcb-145">Vista Hola telemetría</span><span class="sxs-lookup"><span data-stu-id="a1fcb-145">View hello telemetry</span></span>
 
-<span data-ttu-id="bae89-146">La puerta de enlace de IoT Edge ahora está enviando telemetría simulada a la solución de supervisión remota.</span><span class="sxs-lookup"><span data-stu-id="bae89-146">The IoT Edge gateway is now sending simulated telemetry to the remote monitoring solution.</span></span> <span data-ttu-id="bae89-147">Puede verla en el panel de soluciones.</span><span class="sxs-lookup"><span data-stu-id="bae89-147">You can view the telemetry on the solution dashboard.</span></span>
+<span data-ttu-id="a1fcb-146">Hola puerta de enlace de IoT borde ahora está enviando telemetría simulada toohello solución de supervisión remoto.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-146">hello IoT Edge gateway is now sending simulated telemetry toohello remote monitoring solution.</span></span> <span data-ttu-id="a1fcb-147">Puede ver la telemetría de hello en el panel de la solución de Hola.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-147">You can view hello telemetry on hello solution dashboard.</span></span>
 
-- <span data-ttu-id="bae89-148">Vaya al panel de soluciones.</span><span class="sxs-lookup"><span data-stu-id="bae89-148">Navigate to the solution dashboard.</span></span>
-- <span data-ttu-id="bae89-149">Seleccione uno de los dos dispositivos que configuró en la puerta de enlace en la lista desplegable **Dispositivo que se visualizará**.</span><span class="sxs-lookup"><span data-stu-id="bae89-149">Select one of the two devices you configured in the gateway in the **Device to View** dropdown.</span></span>
-- <span data-ttu-id="bae89-150">La telemetría de los dispositivos de puerta de enlace se muestra en el panel.</span><span class="sxs-lookup"><span data-stu-id="bae89-150">The telemetry from the gateway devices displays on the dashboard.</span></span>
+- <span data-ttu-id="a1fcb-148">Vaya a Panel de solución toohello.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-148">Navigate toohello solution dashboard.</span></span>
+- <span data-ttu-id="a1fcb-149">Seleccione uno de los dispositivos de hello dos que configuró en la puerta de enlace de Hola Hola **tooView dispositivo** lista desplegable.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-149">Select one of hello two devices you configured in hello gateway in hello **Device tooView** dropdown.</span></span>
+- <span data-ttu-id="a1fcb-150">telemetría Hola desde dispositivos de puerta de enlace de Hola se muestra en el panel de Hola.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-150">hello telemetry from hello gateway devices displays on hello dashboard.</span></span>
 
-![Mostrar la telemetría de los dispositivos de puerta de enlace simulada][img-telemetry-display]
+![Mostrar la telemetría de dispositivos de puerta de enlace de hello simulada][img-telemetry-display]
 
 > [!WARNING]
-> <span data-ttu-id="bae89-152">Si deja la solución de supervisión remota ejecutándose en su cuenta de Azure, se le cobra por el tiempo que se ejecute.</span><span class="sxs-lookup"><span data-stu-id="bae89-152">If you leave the remote monitoring solution running in your Azure account, you are billed for the time it runs.</span></span> <span data-ttu-id="bae89-153">Para más información sobre cómo reducir el consumo mientras se ejecuta la solución de supervisión remota, consulte [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Configuración de soluciones preconfiguradas del Conjunto de aplicaciones de IoT de Azure para fines de demostración).</span><span class="sxs-lookup"><span data-stu-id="bae89-153">For more information about reducing consumption while the remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config].</span></span> <span data-ttu-id="bae89-154">Elimine la solución preconfigurada de su cuenta de Azure cuando haya terminado de usarla.</span><span class="sxs-lookup"><span data-stu-id="bae89-154">Delete the preconfigured solution from your Azure account when you have finished using it.</span></span>
+> <span data-ttu-id="a1fcb-152">Si deja Hola supervisión de solución que se ejecuta en su cuenta de Azure remota, se le facturará por vez Hola que se ejecuta.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-152">If you leave hello remote monitoring solution running in your Azure account, you are billed for hello time it runs.</span></span> <span data-ttu-id="a1fcb-153">Para obtener más información acerca de cómo reducir el consumo de Hola se ejecuta la solución de supervisión remota, consulte [configurar Azure IoT conjunto preconfigurado soluciones para fines de demostración][lnk-demo-config].</span><span class="sxs-lookup"><span data-stu-id="a1fcb-153">For more information about reducing consumption while hello remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config].</span></span> <span data-ttu-id="a1fcb-154">Eliminar soluciones Hola preconfigurado de su cuenta de Azure cuando termine de usarlo.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-154">Delete hello preconfigured solution from your Azure account when you have finished using it.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="bae89-155">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="bae89-155">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="a1fcb-155">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="a1fcb-155">Next steps</span></span>
 
-<span data-ttu-id="bae89-156">Visite el [Centro para desarrolladores de IoT de Azure](https://azure.microsoft.com/develop/iot/) para obtener más ejemplos y la documentación de IoT de Azure.</span><span class="sxs-lookup"><span data-stu-id="bae89-156">Visit the [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) for more samples and documentation on Azure IoT.</span></span>
+<span data-ttu-id="a1fcb-156">Visite hello [centro de desarrollo de Azure IoT](https://azure.microsoft.com/develop/iot/) para obtener más ejemplos y documentación sobre IoT de Azure.</span><span class="sxs-lookup"><span data-stu-id="a1fcb-156">Visit hello [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/) for more samples and documentation on Azure IoT.</span></span>
 
 [img-simulated telemetry]: ./media/iot-suite-gateway-kit-get-started-simulator/appoutput.png
 

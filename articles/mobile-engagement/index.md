@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Mobile Engagement: tutoriales y referencia de API | Microsoft Docs"
-description: "Obtenga información acerca de cómo obtener información detallada sobre el uso de aplicaciones móviles y la segmentación de los usuarios en tiempo real, y cómo habilitar las notificaciones push contextuales y la mensajería en la aplicación."
+title: "aaaAzure documentación de Mobile Engagement - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooget información sobre uso de aplicaciones móviles y segmentación de usuarios en tiempo real, y cómo tooenable como basadas en inserción notificaciones y la aplicación de mensajería."
 services: mobile-engagement
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 738cc1fc5b5cca411c08fda4229950f481cd0aa6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c9d9dd859914d620b6e3c287bbde1906142f4736
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="mobile-engagement-documentation"></a>Documentación de Mobile Engagement
 
-Obtenga información acerca de cómo aumentar el uso, la retención y la capitalización de las aplicaciones móviles con Mobile Engagement. Los tutoriales, los SDK y otra documentación muestran cómo obtener información detallada sobre el uso de aplicaciones y la segmentación de los usuarios en tiempo real, y cómo habilitar las notificaciones push contextuales y la mensajería en la aplicación.
+Obtenga información acerca de cómo tooincrease Hola monetización de las aplicaciones móviles con Mobile Engagement, retención y uso. Tutoriales, SDK y otra documentación mostrarle cómo tooget información sobre uso de la aplicación y segmentación de usuarios en tiempo real, y cómo tooenable como basadas en inserción notificaciones y la aplicación de mensajería.
 
 <ul class="panelContent cardsFTitle">
     <li>

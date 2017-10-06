@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure API Management: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a usar API Management para publicar las API de forma segura y a escala. La documentación le muestra cómo crear modernas puertas de enlace de API para los servicios back-end existentes."
+title: "aaaAzure documentación de administración de API - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse administración de API toopublish API de forma segura y a escala. Documentación se muestra cómo toocreate la puertas de enlace de API modernas para servicios back-end existente."
 services: api-management
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 09eb558a4e4b32fa6e1094c55f321db8ce008d4d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c2bd5d7dc7c6df3ad01a704fdd28c9437d39a04b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-documentation"></a>Documentación de API Management
 
-Aprenda a usar API Management para publicar API mediante desarrolladores externos, asociados y empleados, a escala y de forma segura. Tutoriales, referencias de API y otra documentación le muestran cómo crear y administrar modernas puertas de enlace de API para los servicios back-end existentes hospedados en cualquier lugar.
+Obtenga información acerca de cómo toouse administración de API toopublish API tooexternal, socios y empleados a los desarrolladores a escala y de forma segura. Tutoriales, referencias de API y otra documentación mostrarle cómo toocreate y administrar modernas puertas de enlace de API de servicios back-end existente hospedan en cualquier lugar.
 
 <ul class="panelContent cardsFTitle">
     <li>

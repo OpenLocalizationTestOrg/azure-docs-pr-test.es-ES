@@ -1,5 +1,5 @@
 ---
-title: "Creación y optimización de tablas para importación en paralelo rápida de datos en SQL Server en una VM de Azure | Microsoft Docs"
+title: "aaaBuild y optimizar tablas de importación en paralelo rápida de datos en un servidor SQL Server en una máquina virtual de Azure | Documentos de Microsoft"
 description: "Importación paralela de conjuntos masivos de datos mediante tablas de partición de SQL"
 services: machine-learning
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ab748c47348ec6ca3b98ba39e27181bba5d36fc0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a><span data-ttu-id="0166b-103">Importación paralela de conjuntos masivos de datos mediante tablas de partición de SQL</span><span class="sxs-lookup"><span data-stu-id="0166b-103">Parallel Bulk Data Import Using SQL Partition Tables</span></span>
-<span data-ttu-id="0166b-104">En este documento se describe cómo se pueden crear tablas con particiones para la importación paralela masiva de datos en una base de datos de SQL Server.</span><span class="sxs-lookup"><span data-stu-id="0166b-104">This document describes how to build partitioned tables for fast parallel bulk importing of data to a SQL Server database.</span></span> <span data-ttu-id="0166b-105">Para cargar o transferir macrodatos a SQL Database, es posible mejorar la importación de datos en SQL Database y las consultas posteriores mediante *tablas y vistas con particiones*.</span><span class="sxs-lookup"><span data-stu-id="0166b-105">For big data loading/transfer to a SQL database, importing data to the SQL DB and subsequent queries can be improved by using *Partitioned Tables and Views*.</span></span> 
+# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a><span data-ttu-id="104d9-103">Importación paralela de conjuntos masivos de datos mediante tablas de partición de SQL</span><span class="sxs-lookup"><span data-stu-id="104d9-103">Parallel Bulk Data Import Using SQL Partition Tables</span></span>
+<span data-ttu-id="104d9-104">Este documento describe cómo toobuild crear esas particiones de tablas para la importación masiva paralelo rápido de base de datos de SQL Server de tooa de datos.</span><span class="sxs-lookup"><span data-stu-id="104d9-104">This document describes how toobuild partitioned tables for fast parallel bulk importing of data tooa SQL Server database.</span></span> <span data-ttu-id="104d9-105">Para grandes cantidades de datos carga/transferencia tooa base de datos SQL, importar datos toohello base de datos SQL y las consultas posteriores se puede mejorar mediante el uso de *Partitioned Tables and vistas*.</span><span class="sxs-lookup"><span data-stu-id="104d9-105">For big data loading/transfer tooa SQL database, importing data toohello SQL DB and subsequent queries can be improved by using *Partitioned Tables and Views*.</span></span> 
 
-## <a name="create-a-new-database-and-a-set-of-filegroups"></a><span data-ttu-id="0166b-106">Crear una nueva base de datos y un conjunto de grupos de archivos</span><span class="sxs-lookup"><span data-stu-id="0166b-106">Create a new database and a set of filegroups</span></span>
-* <span data-ttu-id="0166b-107">[Cree una nueva base de datos](https://technet.microsoft.com/library/ms176061.aspx), si todavía no existe.</span><span class="sxs-lookup"><span data-stu-id="0166b-107">[Create a new database](https://technet.microsoft.com/library/ms176061.aspx), if it doesn't exist already.</span></span>
-* <span data-ttu-id="0166b-108">Agregue grupos de archivos de base de datos a la base de datos que contendrá los archivos físicos con particiones. Esto puede hacerse con [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) si es nueva o [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) si ya existe la base de datos.</span><span class="sxs-lookup"><span data-stu-id="0166b-108">Add database filegroups to the database which will hold the partitioned physical files.This can be done with [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) if new or [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) if the database exists already.</span></span>
-* <span data-ttu-id="0166b-109">Agregue uno o varios archivos (según sea necesario) a cada grupo de archivos de base de datos.</span><span class="sxs-lookup"><span data-stu-id="0166b-109">Add one or more files (as needed) to each database filegroup.</span></span>
+## <a name="create-a-new-database-and-a-set-of-filegroups"></a><span data-ttu-id="104d9-106">Crear una nueva base de datos y un conjunto de grupos de archivos</span><span class="sxs-lookup"><span data-stu-id="104d9-106">Create a new database and a set of filegroups</span></span>
+* <span data-ttu-id="104d9-107">[Cree una nueva base de datos](https://technet.microsoft.com/library/ms176061.aspx), si todavía no existe.</span><span class="sxs-lookup"><span data-stu-id="104d9-107">[Create a new database](https://technet.microsoft.com/library/ms176061.aspx), if it doesn't exist already.</span></span>
+* <span data-ttu-id="104d9-108">Agregar base de datos de la toohello de grupos de archivos de base de datos que contendrá los archivos físicos de hello con particiones. Esto puede hacerse con [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) si la nueva o [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) si la base de datos de hello ya existe.</span><span class="sxs-lookup"><span data-stu-id="104d9-108">Add database filegroups toohello database which will hold hello partitioned physical files.This can be done with [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) if new or [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) if hello database exists already.</span></span>
+* <span data-ttu-id="104d9-109">Agregue uno o varios grupos de archivos de base de datos de tooeach de archivos (según sea necesario).</span><span class="sxs-lookup"><span data-stu-id="104d9-109">Add one or more files (as needed) tooeach database filegroup.</span></span>
   
   > [!NOTE]
-  > <span data-ttu-id="0166b-110">Especifique el grupo de archivos de destino que contiene los datos de esta partición y los nombres de archivo de las bases de datos físicas donde se almacenarán los datos del grupo de archivos.</span><span class="sxs-lookup"><span data-stu-id="0166b-110">Specify the target filegroup which holds data for this partition and the physical database file name(s) where the filegroup data will be stored.</span></span>
+  > <span data-ttu-id="104d9-110">Especifique el grupo de archivos de destino de Hola que contiene datos para este nombres de los archivos de base de datos física hello y partición donde se almacenarán los datos del grupo de archivos de saludo.</span><span class="sxs-lookup"><span data-stu-id="104d9-110">Specify hello target filegroup which holds data for this partition and hello physical database file name(s) where hello filegroup data will be stored.</span></span>
   > 
   > 
 
-<span data-ttu-id="0166b-111">En el ejemplo siguiente se crea una nueva base de datos con tres grupos de archivos distintos de los grupos principal y de registro, que contiene un archivo físico en cada uno.</span><span class="sxs-lookup"><span data-stu-id="0166b-111">The following example creates a new database with three filegroups other than the primary and log groups, containing one physical file in each.</span></span> <span data-ttu-id="0166b-112">Los archivos de base de datos se crean en la carpeta de datos de SQL Server predeterminada, como está configurado en la instancia de SQL Server.</span><span class="sxs-lookup"><span data-stu-id="0166b-112">The database files are created in the default SQL Server Data folder, as configured in the SQL Server instance.</span></span> <span data-ttu-id="0166b-113">Para obtener más información acerca de las ubicaciones de archivo predeterminadas, consulte [Ubicaciones de archivos para las instancias predeterminadas y con nombre de SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).</span><span class="sxs-lookup"><span data-stu-id="0166b-113">For more information about the default file locations, see [File Locations for Default and Named Instances of SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).</span></span>
+<span data-ttu-id="104d9-111">Hello en el ejemplo siguiente se crea una nueva base de datos con tres grupos de archivos que no sean Hola principal y los grupos de registros, que contiene un archivo físico en cada uno.</span><span class="sxs-lookup"><span data-stu-id="104d9-111">hello following example creates a new database with three filegroups other than hello primary and log groups, containing one physical file in each.</span></span> <span data-ttu-id="104d9-112">archivos de base de datos de Hola se crean en la carpeta de datos de SQL Server predeterminada de hello, como está configurado en la instancia de SQL Server de Hola.</span><span class="sxs-lookup"><span data-stu-id="104d9-112">hello database files are created in hello default SQL Server Data folder, as configured in hello SQL Server instance.</span></span> <span data-ttu-id="104d9-113">Para obtener más información acerca de las ubicaciones de archivo predeterminado de hello, consulte [ubicaciones de archivos para las predeterminadas y con nombre de instancias de SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).</span><span class="sxs-lookup"><span data-stu-id="104d9-113">For more information about hello default file locations, see [File Locations for Default and Named Instances of SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).</span></span>
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -54,27 +54,27 @@ ms.lasthandoff: 07/11/2017
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a><span data-ttu-id="0166b-114">Crear una tabla con particiones</span><span class="sxs-lookup"><span data-stu-id="0166b-114">Create a partitioned table</span></span>
-<span data-ttu-id="0166b-115">Crear tablas con particiones según el esquema de datos, que se asignan a los grupos de archivos de base de datos que se crearon en el paso anterior.</span><span class="sxs-lookup"><span data-stu-id="0166b-115">Create partitioned table(s) according to the data schema, mapped to the database filegroups created in the previous step.</span></span> <span data-ttu-id="0166b-116">Cuando se importan datos de forma masiva en las tablas con particiones, los registros se distribuirán entre los grupos de archivos según un esquema de partición, tal y como se describe a continuación.</span><span class="sxs-lookup"><span data-stu-id="0166b-116">When data is bulk imported to the partitioned table(s), records will be distributed among the filegroups according to a partition scheme, as described below.</span></span>
+## <a name="create-a-partitioned-table"></a><span data-ttu-id="104d9-114">Crear una tabla con particiones</span><span class="sxs-lookup"><span data-stu-id="104d9-114">Create a partitioned table</span></span>
+<span data-ttu-id="104d9-115">Crear tablas con particiones según el esquema de datos toohello toohello asignado grupos de archivos de base de datos creada en el paso anterior de Hola.</span><span class="sxs-lookup"><span data-stu-id="104d9-115">Create partitioned table(s) according toohello data schema, mapped toohello database filegroups created in hello previous step.</span></span> <span data-ttu-id="104d9-116">Cuando los datos se importan de forma masiva toohello particiones de tabla (s), los registros se distribuirán entre los grupos de archivos de hello según el esquema de partición de tooa, tal y como se describe a continuación.</span><span class="sxs-lookup"><span data-stu-id="104d9-116">When data is bulk imported toohello partitioned table(s), records will be distributed among hello filegroups according tooa partition scheme, as described below.</span></span>
 
-<span data-ttu-id="0166b-117">**Para crear una tabla de partición, debe:**</span><span class="sxs-lookup"><span data-stu-id="0166b-117">**To create a partition table, you need to:**</span></span>
+<span data-ttu-id="104d9-117">**toocreate una tabla de partición, debe:**</span><span class="sxs-lookup"><span data-stu-id="104d9-117">**toocreate a partition table, you need to:**</span></span>
 
-* <span data-ttu-id="0166b-118">[Crear una función de partición](https://msdn.microsoft.com/library/ms187802.aspx) que define el intervalo de valores o límites que se incluirán en cada tabla de particiones individual; por ejemplo, para limitar las particiones por mes(un\_campo\_datetime) en el año 2013:</span><span class="sxs-lookup"><span data-stu-id="0166b-118">[Create a partition function](https://msdn.microsoft.com/library/ms187802.aspx) which defines the range of values/boundaries to be included in each individual partition table, e.g., to limit partitions by month(some\_datetime\_field) in the year 2013:</span></span>
+* <span data-ttu-id="104d9-118">[Crear una función de partición](https://msdn.microsoft.com/library/ms187802.aspx) que define el intervalo de Hola de valores/límites toobe incluidos en cada tabla de particiones individuales, por ejemplo, toolimit particiones por mes (algunos\_datetime\_campo) en el año de hello 2013:</span><span class="sxs-lookup"><span data-stu-id="104d9-118">[Create a partition function](https://msdn.microsoft.com/library/ms187802.aspx) which defines hello range of values/boundaries toobe included in each individual partition table, e.g., toolimit partitions by month(some\_datetime\_field) in hello year 2013:</span></span>
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
             '20130201', '20130301', '20130401',
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
-* <span data-ttu-id="0166b-119">[Crear un esquema de partición](https://msdn.microsoft.com/library/ms179854.aspx) que asigne cada intervalo de particiones en la función de partición a un grupo de archivos físico, por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="0166b-119">[Create a partition scheme](https://msdn.microsoft.com/library/ms179854.aspx) which maps each partition range in the partition function to a physical filegroup, e.g.:</span></span>
+* <span data-ttu-id="104d9-119">[Crear un esquema de partición](https://msdn.microsoft.com/library/ms179854.aspx) que asigna cada intervalo de partición de hello partición función tooa físico archivos, p. ej.:</span><span class="sxs-lookup"><span data-stu-id="104d9-119">[Create a partition scheme](https://msdn.microsoft.com/library/ms179854.aspx) which maps each partition range in hello partition function tooa physical filegroup, e.g.:</span></span>
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
-        PARTITION <DatetimeFieldPFN> TO (
+        PARTITION <DatetimeFieldPFN> too(
         <filegroup_1>, <filegroup_2>, <filegroup_3>, <filegroup_4>,
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  <span data-ttu-id="0166b-120">Para comprobar los intervalos en vigor en cada partición según el esquema de función, ejecute la consulta siguiente:</span><span class="sxs-lookup"><span data-stu-id="0166b-120">To verify the ranges in effect in each partition according to the function/scheme, run the following query:</span></span>
+  <span data-ttu-id="104d9-120">intervalos de hello tooverify en vigor en cada uno de ellos correspondiente toohello función o esquema de partición, ejecute hello después de consulta:</span><span class="sxs-lookup"><span data-stu-id="104d9-120">tooverify hello ranges in effect in each partition according toohello function/scheme, run hello following query:</span></span>
   
         SELECT psch.name as PartitionScheme,
             prng.value AS ParitionValue,
@@ -83,26 +83,26 @@ ms.lasthandoff: 07/11/2017
         INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
-* <span data-ttu-id="0166b-121">[Crear tablas con particiones](https://msdn.microsoft.com/library/ms174979.aspx)según el esquema de datos y especifique el esquema de partición y el campo de restricción que se usó para crear las particiones de la tabla; por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="0166b-121">[Create partitioned table](https://msdn.microsoft.com/library/ms174979.aspx)(s) according to your data schema, and specify the partition scheme and constraint field used to partition the table, e.g.:</span></span>
+* <span data-ttu-id="104d9-121">[Crear una tabla con particiones](https://msdn.microsoft.com/library/ms174979.aspx)(s) según el esquema de datos de tooyour y especificar el campo de esquema y la restricción de la partición de hello usa tabla Hola de toopartition, p. ej.:</span><span class="sxs-lookup"><span data-stu-id="104d9-121">[Create partitioned table](https://msdn.microsoft.com/library/ms174979.aspx)(s) according tooyour data schema, and specify hello partition scheme and constraint field used toopartition hello table, e.g.:</span></span>
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 
-<span data-ttu-id="0166b-122">Para obtener más información, consulte [Crear tablas e índices con particiones](https://msdn.microsoft.com/library/ms188730.aspx).</span><span class="sxs-lookup"><span data-stu-id="0166b-122">For more information, see [Create Partitioned Tables and Indexes](https://msdn.microsoft.com/library/ms188730.aspx).</span></span>
+<span data-ttu-id="104d9-122">Para obtener más información, consulte [Crear tablas e índices con particiones](https://msdn.microsoft.com/library/ms188730.aspx).</span><span class="sxs-lookup"><span data-stu-id="104d9-122">For more information, see [Create Partitioned Tables and Indexes](https://msdn.microsoft.com/library/ms188730.aspx).</span></span>
 
-## <a name="bulk-import-the-data-for-each-individual-partition-table"></a><span data-ttu-id="0166b-123">Importación masiva de datos para cada tabla de partición individual</span><span class="sxs-lookup"><span data-stu-id="0166b-123">Bulk import the data for each individual partition table</span></span>
-* <span data-ttu-id="0166b-124">Puede usar BCP, BULK INSERT u otros métodos como el [Asistente para migración de SQL Server](http://sqlazuremw.codeplex.com/).</span><span class="sxs-lookup"><span data-stu-id="0166b-124">You may use BCP, BULK INSERT, or other methods such as [SQL Server Migration Wizard](http://sqlazuremw.codeplex.com/).</span></span> <span data-ttu-id="0166b-125">En el ejemplo que se incluye, se usa el método BCP.</span><span class="sxs-lookup"><span data-stu-id="0166b-125">The example provided uses the BCP method.</span></span>
-* <span data-ttu-id="0166b-126">[Modificar la base de datos](https://msdn.microsoft.com/library/bb522682.aspx) para cambiar el esquema de registro de transacciones a BULK_LOGGED y así minimizar la sobrecarga del inicio de sesión; por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="0166b-126">[Alter the database](https://msdn.microsoft.com/library/bb522682.aspx) to change transaction logging scheme to BULK_LOGGED to minimize overhead of logging, e.g.:</span></span>
+## <a name="bulk-import-hello-data-for-each-individual-partition-table"></a><span data-ttu-id="104d9-123">Importación masiva Hola de datos para cada tabla de partición individuales</span><span class="sxs-lookup"><span data-stu-id="104d9-123">Bulk import hello data for each individual partition table</span></span>
+* <span data-ttu-id="104d9-124">Puede usar BCP, BULK INSERT u otros métodos como el [Asistente para migración de SQL Server](http://sqlazuremw.codeplex.com/).</span><span class="sxs-lookup"><span data-stu-id="104d9-124">You may use BCP, BULK INSERT, or other methods such as [SQL Server Migration Wizard](http://sqlazuremw.codeplex.com/).</span></span> <span data-ttu-id="104d9-125">ejemplo de Hola incluido usa el método BCP de Hola.</span><span class="sxs-lookup"><span data-stu-id="104d9-125">hello example provided uses hello BCP method.</span></span>
+* <span data-ttu-id="104d9-126">[Modificar base de datos de hello](https://msdn.microsoft.com/library/bb522682.aspx) esquema tooBULK_LOGGED toominimize sobrecarga del inicio de sesión, por ejemplo, de registro de transacciones de toochange:</span><span class="sxs-lookup"><span data-stu-id="104d9-126">[Alter hello database](https://msdn.microsoft.com/library/bb522682.aspx) toochange transaction logging scheme tooBULK_LOGGED toominimize overhead of logging, e.g.:</span></span>
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* <span data-ttu-id="0166b-127">Para acelerar la carga de datos, inicie las operaciones de importación masiva en paralelo.</span><span class="sxs-lookup"><span data-stu-id="0166b-127">To expedite data loading, launch the bulk import operations in parallel.</span></span> <span data-ttu-id="0166b-128">Para obtener sugerencias sobre la aceleración de la importación masiva de big data en las bases de datos de SQL Server, consulte [Cargar 1 TB en menos de 1 hora](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).</span><span class="sxs-lookup"><span data-stu-id="0166b-128">For tips on expediting bulk importing of big data into SQL Server databases, see [Load 1TB in less than 1 hour](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).</span></span>
+* <span data-ttu-id="104d9-127">datos tooexpedite cargar, iniciar operaciones de importación masiva de hello en paralelo.</span><span class="sxs-lookup"><span data-stu-id="104d9-127">tooexpedite data loading, launch hello bulk import operations in parallel.</span></span> <span data-ttu-id="104d9-128">Para obtener sugerencias sobre la aceleración de la importación masiva de big data en las bases de datos de SQL Server, consulte [Cargar 1 TB en menos de 1 hora](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).</span><span class="sxs-lookup"><span data-stu-id="104d9-128">For tips on expediting bulk importing of big data into SQL Server databases, see [Load 1TB in less than 1 hour](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).</span></span>
 
-<span data-ttu-id="0166b-129">El siguiente script de PowerShell es un ejemplo de carga paralela de datos mediante BCP.</span><span class="sxs-lookup"><span data-stu-id="0166b-129">The following PowerShell script is an example of parallel data loading using BCP.</span></span>
+<span data-ttu-id="104d9-129">Hello siguiente script de PowerShell es un ejemplo de uso de BCP de cargar datos en paralelo.</span><span class="sxs-lookup"><span data-stu-id="104d9-129">hello following PowerShell script is an example of parallel data loading using BCP.</span></span>
 
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
-    # The example assumes the partitioned data files are named as <base_file_name>_<partition_number>.csv
-    # Assumes the input data files include a header line. Loading starts at line number 2.
+    # hello example assumes hello partitioned data files are named as <base_file_name>_<partition_number>.csv
+    # Assumes hello input data files include a header line. Loading starts at line number 2.
 
     $dbname = "<database_name>"
     $indir  = "<path_to_data_files>"
@@ -111,15 +111,15 @@ ms.lasthandoff: 07/11/2017
     # Select authentication mode
     $sqlauth = 0
 
-    # For SQL authentication, set the server and user credentials
+    # For SQL authentication, set hello server and user credentials
     $sqlusr = "<user@server>"
     $server = "<tcp:serverdns>"
     $pass   = "<password>"
 
-    # Set number of partitions per table - Should match the number of input data files per table
+    # Set number of partitions per table - Should match hello number of input data files per table
     $numofparts = <number_of_partitions>
 
-    # Set table name to be loaded, basename of input data files, input format file, and number of partitions
+    # Set table name toobe loaded, basename of input data files, input format file, and number of partitions
     $tbname = "<table_name>"
     $basename = "<base_input_data_filename_no_extension>"
     $fmtfile = "<full_path_to_format_file>"
@@ -161,22 +161,22 @@ ms.lasthandoff: 07/11/2017
     date
 
 
-## <a name="create-indexes-to-optimize-joins-and-query-performance"></a><span data-ttu-id="0166b-130">Crear índices para optimizar el rendimiento de las combinaciones y consultas</span><span class="sxs-lookup"><span data-stu-id="0166b-130">Create indexes to optimize joins and query performance</span></span>
-* <span data-ttu-id="0166b-131">Si se extraerán datos para el modelado de varias tablas, cree índices en las claves de combinación para mejorar el rendimiento de las combinaciones.</span><span class="sxs-lookup"><span data-stu-id="0166b-131">If you will extract data for modeling from multiple tables, create indexes on the join keys to improve the join performance.</span></span>
-* <span data-ttu-id="0166b-132">[Cree índices](https://technet.microsoft.com/library/ms188783.aspx) (agrupados o no agrupados) que tengan como destino el mismo grupo de archivos de cada partición; por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="0166b-132">[Create indexes](https://technet.microsoft.com/library/ms188783.aspx) (clustered or non-clustered) targeting the same filegroup for each partition, for e.g.:</span></span>
+## <a name="create-indexes-toooptimize-joins-and-query-performance"></a><span data-ttu-id="104d9-130">Crear índices toooptimize combinaciones y rendimiento de las consultas</span><span class="sxs-lookup"><span data-stu-id="104d9-130">Create indexes toooptimize joins and query performance</span></span>
+* <span data-ttu-id="104d9-131">Si extraerá datos para el modelado de varias tablas, crear índices en las claves de combinación de hello rendimiento de combinación de tooimprove Hola.</span><span class="sxs-lookup"><span data-stu-id="104d9-131">If you will extract data for modeling from multiple tables, create indexes on hello join keys tooimprove hello join performance.</span></span>
+* <span data-ttu-id="104d9-132">[Crear índices](https://technet.microsoft.com/library/ms188783.aspx) (agrupado o no agrupado) como destino hello mismo grupo de archivos para cada partición para p. ej.:</span><span class="sxs-lookup"><span data-stu-id="104d9-132">[Create indexes](https://technet.microsoft.com/library/ms188783.aspx) (clustered or non-clustered) targeting hello same filegroup for each partition, for e.g.:</span></span>
   
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  <span data-ttu-id="0166b-133">o bien,</span><span class="sxs-lookup"><span data-stu-id="0166b-133">or,</span></span>
+  <span data-ttu-id="104d9-133">o bien,</span><span class="sxs-lookup"><span data-stu-id="104d9-133">or,</span></span>
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
   
   > [!NOTE]
-  > <span data-ttu-id="0166b-134">Puede crear los índices antes de importar los datos de forma masiva.</span><span class="sxs-lookup"><span data-stu-id="0166b-134">You may choose to create the indexes before bulk importing the data.</span></span> <span data-ttu-id="0166b-135">La creación de índices antes de la importación masiva ralentizará la carga de datos.</span><span class="sxs-lookup"><span data-stu-id="0166b-135">Index creation before bulk importing will slow down the data loading.</span></span>
+  > <span data-ttu-id="104d9-134">Puede elegir toocreate índices de hello antes de la importación masiva de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="104d9-134">You may choose toocreate hello indexes before bulk importing hello data.</span></span> <span data-ttu-id="104d9-135">Creación de índices antes de la importación masiva ralentizará la carga de datos Hola.</span><span class="sxs-lookup"><span data-stu-id="104d9-135">Index creation before bulk importing will slow down hello data loading.</span></span>
   > 
   > 
 
-## <a name="advanced-analytics-process-and-technology-in-action-example"></a><span data-ttu-id="0166b-136">Ejemplo de Tecnología y procesos de análisis avanzado en acción</span><span class="sxs-lookup"><span data-stu-id="0166b-136">Advanced Analytics Process and Technology in Action Example</span></span>
-<span data-ttu-id="0166b-137">Para ver un tutorial de ejemplo completo del proceso de análisis de Cortana con un conjunto de datos público, consulte [Proceso de análisis de Cortana en acción: uso de SQL Server](machine-learning-data-science-process-sql-walkthrough.md).</span><span class="sxs-lookup"><span data-stu-id="0166b-137">For an end-to-end walkthrough example using the Cortana Analytics Process with a public dataset, see [Cortana Analytics Process in Action: using SQL Server](machine-learning-data-science-process-sql-walkthrough.md).</span></span>
+## <a name="advanced-analytics-process-and-technology-in-action-example"></a><span data-ttu-id="104d9-136">Ejemplo de Tecnología y procesos de análisis avanzado en acción</span><span class="sxs-lookup"><span data-stu-id="104d9-136">Advanced Analytics Process and Technology in Action Example</span></span>
+<span data-ttu-id="104d9-137">Para obtener un ejemplo de tutorial de extremo a extremo mediante Hola proceso de análisis de Cortana con un conjunto de datos pública, consulte [proceso de análisis de Cortana en acción: uso de SQL Server](machine-learning-data-science-process-sql-walkthrough.md).</span><span class="sxs-lookup"><span data-stu-id="104d9-137">For an end-to-end walkthrough example using hello Cortana Analytics Process with a public dataset, see [Cortana Analytics Process in Action: using SQL Server](machine-learning-data-science-process-sql-walkthrough.md).</span></span>
 

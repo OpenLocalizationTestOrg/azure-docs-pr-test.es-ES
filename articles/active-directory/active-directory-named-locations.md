@@ -1,6 +1,6 @@
 ---
-title: Ubicaciones con nombre en Azure Active Directory | Microsoft Docs
-description: "Al configurar ubicaciones con nombre, puede evitar el hecho de tener direcciones IP pertenecientes a su organización que generan falsos positivos para el tipo de evento de riesgo Viaje imposible a ubicaciones inusuales."
+title: ubicaciones de aaaNamed en Azure Active Directory | Documentos de Microsoft
+description: "Mediante la configuración de ubicaciones con nombre, puede evitar tener IP direcciones que pertenecen a su organización generan falsos positivos para ubicaciones de hello viaje imposible tooatypical el riesgo de tipo de evento."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,64 +14,64 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ff31ded1d9d60e47e0ae5f01119de78cd7f2df38
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 591e4b94b2ec9d45e20c01711e922f9972e047e5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="named-locations-in-azure-active-directory"></a><span data-ttu-id="2febc-103">Ubicaciones con nombre en Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="2febc-103">Named locations in Azure Active Directory</span></span>
+# <a name="named-locations-in-azure-active-directory"></a><span data-ttu-id="61f36-103">Ubicaciones con nombre en Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="61f36-103">Named locations in Azure Active Directory</span></span>
 
-<span data-ttu-id="2febc-104">Gracias a las ubicaciones con nombre de Azure Active Directory puede etiquetar intervalos de direcciones IP de confianza en sus organizaciones.</span><span class="sxs-lookup"><span data-stu-id="2febc-104">With the named locations feature of Azure Active Directory, you can label trusted IP address ranges in your organizations.</span></span> <span data-ttu-id="2febc-105">En su entorno, puede usar las ubicaciones con nombre en el contexto de la detección de [eventos de riesgo](active-directory-reporting-risk-events.md).</span><span class="sxs-lookup"><span data-stu-id="2febc-105">In your environment, you can use named locations in the context of the detection of [risk events](active-directory-reporting-risk-events.md).</span></span> <span data-ttu-id="2febc-106">La característica ayuda a reducir el número de falsos positivos incluidos para el tipo de evento de riesgo de *Viaje imposible a ubicaciones inusuales*.</span><span class="sxs-lookup"><span data-stu-id="2febc-106">The feature helps reduce the number of reported false positives for the *Impossible travel to atypical locations* risk event type.</span></span> 
+<span data-ttu-id="61f36-104">Con hello con el nombre de característica de ubicaciones de Azure Active Directory, puede etiquetar los intervalos de direcciones IP de confianza en su organización.</span><span class="sxs-lookup"><span data-stu-id="61f36-104">With hello named locations feature of Azure Active Directory, you can label trusted IP address ranges in your organizations.</span></span> <span data-ttu-id="61f36-105">En su entorno, puede usar ubicaciones con nombre en el contexto de hello de la detección de Hola de [el riesgo de eventos](active-directory-reporting-risk-events.md).</span><span class="sxs-lookup"><span data-stu-id="61f36-105">In your environment, you can use named locations in hello context of hello detection of [risk events](active-directory-reporting-risk-events.md).</span></span> <span data-ttu-id="61f36-106">característica de Hello ayuda a reducir el número de Hola de notificado falsos positivos para hello *ubicaciones de viaje imposible tooatypical* el riesgo de tipo de evento.</span><span class="sxs-lookup"><span data-stu-id="61f36-106">hello feature helps reduce hello number of reported false positives for hello *Impossible travel tooatypical locations* risk event type.</span></span> 
 
-## <a name="configuration"></a><span data-ttu-id="2febc-107">Configuración</span><span class="sxs-lookup"><span data-stu-id="2febc-107">Configuration</span></span>
+## <a name="configuration"></a><span data-ttu-id="61f36-107">Configuración</span><span class="sxs-lookup"><span data-stu-id="61f36-107">Configuration</span></span>
 
-<span data-ttu-id="2febc-108">Para configurar una ubicación con nombre:</span><span class="sxs-lookup"><span data-stu-id="2febc-108">To configure a named location:</span></span>
+<span data-ttu-id="61f36-108">tooconfigure una ubicación con nombre:</span><span class="sxs-lookup"><span data-stu-id="61f36-108">tooconfigure a named location:</span></span>
 
-1. <span data-ttu-id="2febc-109">Inicie sesión en [Azure Portal](https://portal.azure.com) como administrador global.</span><span class="sxs-lookup"><span data-stu-id="2febc-109">Sign in to the [Azure portal](https://portal.azure.com) as global administrator.</span></span>
+1. <span data-ttu-id="61f36-109">Inicie sesión en toohello [portal de Azure](https://portal.azure.com) como administrador global.</span><span class="sxs-lookup"><span data-stu-id="61f36-109">Sign in toohello [Azure portal](https://portal.azure.com) as global administrator.</span></span>
 
-2. <span data-ttu-id="2febc-110">En el panel izquierdo, haga clic en **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="2febc-110">In the left pane, click **Azure Active Directory**.</span></span>
+2. <span data-ttu-id="61f36-110">En el panel izquierdo de hello, haga clic en **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="61f36-110">In hello left pane, click **Azure Active Directory**.</span></span>
 
-    ![El vínculo Azure Active Directory en el panel izquierdo](./media/active-directory-named-locations/01.png)
+    ![vínculo de Azure Active Directory Hello en el panel izquierdo de Hola](./media/active-directory-named-locations/01.png)
 
-3. <span data-ttu-id="2febc-112">En la hoja **Azure Active Directory**, en la sección **Seguridad**, haga clic en **Acceso condicional**.</span><span class="sxs-lookup"><span data-stu-id="2febc-112">On the **Azure Active Directory** blade, in the **Security** section, click **Conditional access**.</span></span>
+3. <span data-ttu-id="61f36-112">En hello **Azure Active Directory** hoja en hello **seguridad** sección, haga clic en **acceso condicional**.</span><span class="sxs-lookup"><span data-stu-id="61f36-112">On hello **Azure Active Directory** blade, in hello **Security** section, click **Conditional access**.</span></span>
 
-    ![El comando Acceso condicional](./media/active-directory-named-locations/05.png)
-
-
-4. <span data-ttu-id="2febc-114">En la hoja **Acceso condicional**, en la sección **Administrar**, haga clic en **Ubicaciones con nombre**.</span><span class="sxs-lookup"><span data-stu-id="2febc-114">On the **Conditional Access** blade, in the **Manage** section, click **Named locations**.</span></span>
-
-    ![El comando Ubicaciones con nombre](./media/active-directory-named-locations/06.png)
+    ![Hola comando de acceso condicional](./media/active-directory-named-locations/05.png)
 
 
-5. <span data-ttu-id="2febc-116">En la hoja **Ubicaciones con nombre**, haga clic en **Nueva ubicación**.</span><span class="sxs-lookup"><span data-stu-id="2febc-116">On the **Named locations** blade, click **New location**.</span></span>
+4. <span data-ttu-id="61f36-114">En hello **acceso condicional** hoja en hello **administrar** sección, haga clic en **ubicaciones con nombre**.</span><span class="sxs-lookup"><span data-stu-id="61f36-114">On hello **Conditional Access** blade, in hello **Manage** section, click **Named locations**.</span></span>
 
-    ![El comando Nueva ubicación](./media/active-directory-named-locations/07.png)
-
-
-6. <span data-ttu-id="2febc-118">En la hoja **Nuevo**, haga lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="2febc-118">On the **New** blade, do the following:</span></span>
-
-    ![La hoja Nuevo](./media/active-directory-named-locations/08.png)
-
-    <span data-ttu-id="2febc-120">a.</span><span class="sxs-lookup"><span data-stu-id="2febc-120">a.</span></span> <span data-ttu-id="2febc-121">En el cuadro **Nombre**, escriba el nombre de la ubicación con nombre.</span><span class="sxs-lookup"><span data-stu-id="2febc-121">In the **Name** box, type a name for your named location.</span></span>
-
-    <span data-ttu-id="2febc-122">b.</span><span class="sxs-lookup"><span data-stu-id="2febc-122">b.</span></span> <span data-ttu-id="2febc-123">En el cuadro **Intervalo IP**, escriba un intervalo IP.</span><span class="sxs-lookup"><span data-stu-id="2febc-123">In the **IP ranges** box, type an IP range.</span></span> <span data-ttu-id="2febc-124">El intervalo de IP debe estar en el formato *Enrutamiento de interdominios sin clases*  (CIDR).</span><span class="sxs-lookup"><span data-stu-id="2febc-124">The IP range needs to be in the *Classless Inter-Domain Routing* (CIDR) format.</span></span>  
-
-    <span data-ttu-id="2febc-125">c.</span><span class="sxs-lookup"><span data-stu-id="2febc-125">c.</span></span> <span data-ttu-id="2febc-126">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="2febc-126">Click **Create**.</span></span>
+    ![Hola comando de ubicaciones con nombre](./media/active-directory-named-locations/06.png)
 
 
+5. <span data-ttu-id="61f36-116">En hello **denominada ubicaciones** hoja, haga clic en **nueva ubicación**.</span><span class="sxs-lookup"><span data-stu-id="61f36-116">On hello **Named locations** blade, click **New location**.</span></span>
 
-## <a name="what-you-should-know"></a><span data-ttu-id="2febc-127">Qué debería saber</span><span class="sxs-lookup"><span data-stu-id="2febc-127">What you should know</span></span>
-
-<span data-ttu-id="2febc-128">**Actualizaciones masivas**: al crear o actualizar ubicaciones con nombre, en el caso de las actualizaciones masivas, puede cargar o descargar un archivo CSV con los intervalos de IP.</span><span class="sxs-lookup"><span data-stu-id="2febc-128">**Bulk updates**: When you create or update named locations, for bulk updates, you can upload or download a CSV file with the IP ranges.</span></span> <span data-ttu-id="2febc-129">Una carga permite agregar los intervalos IP del archivo a la lista en lugar de sobrescribir la lista.</span><span class="sxs-lookup"><span data-stu-id="2febc-129">An upload adds the IP ranges in the file to the list instead of overwriting the list.</span></span>
-
-![Los vínculos de carga y descarga](./media/active-directory-named-locations/09.png)
+    ![Hola nuevo comando de ubicación](./media/active-directory-named-locations/07.png)
 
 
-<span data-ttu-id="2febc-131">**Limitaciones:** puede definir un máximo de 60 ubicaciones con nombre con un intervalo de IP asignado a cada una de ellas.</span><span class="sxs-lookup"><span data-stu-id="2febc-131">**Limitations**: You can define a maximum of 60 named locations, with one IP range assigned to each of them.</span></span> <span data-ttu-id="2febc-132">Si tiene una sola ubicación con nombre configurada, puede definir hasta 500 intervalos IP para ella.</span><span class="sxs-lookup"><span data-stu-id="2febc-132">If you have just one named location configured, you can define up to 500 IP ranges for it.</span></span>
+6. <span data-ttu-id="61f36-118">En hello **New** hoja, Hola siguientes:</span><span class="sxs-lookup"><span data-stu-id="61f36-118">On hello **New** blade, do hello following:</span></span>
+
+    ![Nueva hoja de Hola](./media/active-directory-named-locations/08.png)
+
+    <span data-ttu-id="61f36-120">a.</span><span class="sxs-lookup"><span data-stu-id="61f36-120">a.</span></span> <span data-ttu-id="61f36-121">Hola **nombre** , escriba un nombre para la ubicación con nombre.</span><span class="sxs-lookup"><span data-stu-id="61f36-121">In hello **Name** box, type a name for your named location.</span></span>
+
+    <span data-ttu-id="61f36-122">b.</span><span class="sxs-lookup"><span data-stu-id="61f36-122">b.</span></span> <span data-ttu-id="61f36-123">Hola **intervalos IP** , escriba un intervalo de IP.</span><span class="sxs-lookup"><span data-stu-id="61f36-123">In hello **IP ranges** box, type an IP range.</span></span> <span data-ttu-id="61f36-124">intervalo IP de Hello necesita toobe Hola *enrutamiento de interdominios sin clase* formato (CIDR).</span><span class="sxs-lookup"><span data-stu-id="61f36-124">hello IP range needs toobe in hello *Classless Inter-Domain Routing* (CIDR) format.</span></span>  
+
+    <span data-ttu-id="61f36-125">c.</span><span class="sxs-lookup"><span data-stu-id="61f36-125">c.</span></span> <span data-ttu-id="61f36-126">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="61f36-126">Click **Create**.</span></span>
 
 
-## <a name="next-steps"></a><span data-ttu-id="2febc-133">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="2febc-133">Next steps</span></span>
 
-<span data-ttu-id="2febc-134">Para más información acerca de los eventos de riesgo, consulte [Eventos de riesgo de Azure Active Directory](active-directory-reporting-risk-events.md).</span><span class="sxs-lookup"><span data-stu-id="2febc-134">To learn more about risk events, see [Azure Active Directory risk events](active-directory-reporting-risk-events.md).</span></span>
+## <a name="what-you-should-know"></a><span data-ttu-id="61f36-127">Qué debería saber</span><span class="sxs-lookup"><span data-stu-id="61f36-127">What you should know</span></span>
+
+<span data-ttu-id="61f36-128">**Actualización masiva**: al crear o actualizar las ubicaciones con nombre, para las actualizaciones masivas, puede cargar o descargar un archivo CSV con intervalos IP de Hola.</span><span class="sxs-lookup"><span data-stu-id="61f36-128">**Bulk updates**: When you create or update named locations, for bulk updates, you can upload or download a CSV file with hello IP ranges.</span></span> <span data-ttu-id="61f36-129">Una carga agrega intervalos IP de hello en lista de hello archivos toohello en lugar de sobrescribir la lista de Hola.</span><span class="sxs-lookup"><span data-stu-id="61f36-129">An upload adds hello IP ranges in hello file toohello list instead of overwriting hello list.</span></span>
+
+![Hola, cargar y descargar vínculos](./media/active-directory-named-locations/09.png)
+
+
+<span data-ttu-id="61f36-131">**Limitaciones**: puede definir un máximo de 60 ubicaciones con nombre, con un tooeach de rango asignado de IP de ellos.</span><span class="sxs-lookup"><span data-stu-id="61f36-131">**Limitations**: You can define a maximum of 60 named locations, with one IP range assigned tooeach of them.</span></span> <span data-ttu-id="61f36-132">Si tiene una sola ubicación con nombre configurada, puede definir intervalos IP too500 para él.</span><span class="sxs-lookup"><span data-stu-id="61f36-132">If you have just one named location configured, you can define up too500 IP ranges for it.</span></span>
+
+
+## <a name="next-steps"></a><span data-ttu-id="61f36-133">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="61f36-133">Next steps</span></span>
+
+<span data-ttu-id="61f36-134">toolearn más información acerca de los eventos de riesgo, vea [eventos de riesgo de Azure Active Directory](active-directory-reporting-risk-events.md).</span><span class="sxs-lookup"><span data-stu-id="61f36-134">toolearn more about risk events, see [Azure Active Directory risk events](active-directory-reporting-risk-events.md).</span></span>
 

@@ -1,5 +1,5 @@
 ---
-title: "Supervisión de rendimiento de aplicaciones web de Java en Azure Application Insights | Microsoft Docs"
+title: "aaaPerformance de supervisión para las aplicaciones web de Java en Azure Application Insights | Documentos de Microsoft"
 description: "Supervisión extendida del rendimiento y el uso de su sitio web de Java con Application Insights."
 services: application-insights
 documentationcenter: java
@@ -13,41 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: bwren
-ms.openlocfilehash: 4e56998382610ad3d7224e6a8de5aee5419ebe43
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bf3983e3b4a16e72bc606b6468a757288d05ebaa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a><span data-ttu-id="ca3ed-103">Supervisión de dependencias, excepciones y tiempos de ejecución en aplicaciones web de Java</span><span class="sxs-lookup"><span data-stu-id="ca3ed-103">Monitor dependencies, exceptions and execution times in Java web apps</span></span>
+# <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a><span data-ttu-id="6b74c-103">Supervisión de dependencias, excepciones y tiempos de ejecución en aplicaciones web de Java</span><span class="sxs-lookup"><span data-stu-id="6b74c-103">Monitor dependencies, exceptions and execution times in Java web apps</span></span>
 
 
-<span data-ttu-id="ca3ed-104">Si ha [instrumentado la aplicación web de Java con Application Insights][java], puede usar el agente de Java para obtener información más clara, sin tener que realizar cambios de código:</span><span class="sxs-lookup"><span data-stu-id="ca3ed-104">If you have [instrumented your Java web app with Application Insights][java], you can use the Java Agent to get deeper insights, without any code changes:</span></span>
+<span data-ttu-id="6b74c-104">Si tiene [instrumentar la aplicación web de Java con Application Insights][java], puede usar Hola agente Java tooget información más detallada, sin realizar ningún cambio en el código:</span><span class="sxs-lookup"><span data-stu-id="6b74c-104">If you have [instrumented your Java web app with Application Insights][java], you can use hello Java Agent tooget deeper insights, without any code changes:</span></span>
 
-* <span data-ttu-id="ca3ed-105">**Dependencias:** datos sobre las llamadas realizadas por la aplicación a otros componentes, por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="ca3ed-105">**Dependencies:** Data about calls that your application makes to other components, including:</span></span>
-  * <span data-ttu-id="ca3ed-106">**Llamadas REST** realizadas a través de HttpClient, OkHttp y RestTemplate (Spring).</span><span class="sxs-lookup"><span data-stu-id="ca3ed-106">**REST calls** made via HttpClient, OkHttp, and RestTemplate (Spring).</span></span>
-  * <span data-ttu-id="ca3ed-107">**Redis** llamadas realizadas a través del cliente de Jedis.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-107">**Redis** calls made via the Jedis client.</span></span> <span data-ttu-id="ca3ed-108">Si la llamada tarda más de 10 s, el agente captura también los argumentos de la llamada.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-108">If the call takes longer than 10s, the agent also fetches the call arguments.</span></span>
-  * <span data-ttu-id="ca3ed-109">**[Llamadas JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB o DB Derby de Apache.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-109">**[JDBC calls](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB or Apache Derby DB.</span></span> <span data-ttu-id="ca3ed-110">Se admiten llamadas "executeBatch".</span><span class="sxs-lookup"><span data-stu-id="ca3ed-110">"executeBatch" calls are supported.</span></span> <span data-ttu-id="ca3ed-111">En el caso de MySQL y PostgreSQL, si la llamada tarda más de 10 s, el agente notifica el plan de consulta.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-111">For MySQL and PostgreSQL, if the call takes longer than 10s, the agent reports the query plan.</span></span>
-* <span data-ttu-id="ca3ed-112">**Excepciones detectadas:** datos sobre las excepciones que controla el código.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-112">**Caught exceptions:** Data about exceptions that are handled by your code.</span></span>
-* <span data-ttu-id="ca3ed-113">**Tiempo de ejecución del método:** datos sobre el tiempo necesario para ejecutar métodos específicos.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-113">**Method execution time:** Data about the time it takes to execute specific methods.</span></span>
+* <span data-ttu-id="6b74c-105">**Dependencias:** datos sobre las llamadas que la aplicación realiza tooother componentes, incluido:</span><span class="sxs-lookup"><span data-stu-id="6b74c-105">**Dependencies:** Data about calls that your application makes tooother components, including:</span></span>
+  * <span data-ttu-id="6b74c-106">**Llamadas REST** realizadas a través de HttpClient, OkHttp y RestTemplate (Spring).</span><span class="sxs-lookup"><span data-stu-id="6b74c-106">**REST calls** made via HttpClient, OkHttp, and RestTemplate (Spring).</span></span>
+  * <span data-ttu-id="6b74c-107">**Redis** llamadas realizadas a través hello Jedis cliente.</span><span class="sxs-lookup"><span data-stu-id="6b74c-107">**Redis** calls made via hello Jedis client.</span></span> <span data-ttu-id="6b74c-108">Si llamada Hola tarda más 10s, agente de hello también captura los argumentos de llamada de Hola.</span><span class="sxs-lookup"><span data-stu-id="6b74c-108">If hello call takes longer than 10s, hello agent also fetches hello call arguments.</span></span>
+  * <span data-ttu-id="6b74c-109">**[Llamadas JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB o DB Derby de Apache.</span><span class="sxs-lookup"><span data-stu-id="6b74c-109">**[JDBC calls](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB or Apache Derby DB.</span></span> <span data-ttu-id="6b74c-110">Se admiten llamadas "executeBatch".</span><span class="sxs-lookup"><span data-stu-id="6b74c-110">"executeBatch" calls are supported.</span></span> <span data-ttu-id="6b74c-111">Para MySQL y PostgreSQL, si la llamada de hello tarda más tiempo que 10s, agente de hello informa plan de consulta de Hola.</span><span class="sxs-lookup"><span data-stu-id="6b74c-111">For MySQL and PostgreSQL, if hello call takes longer than 10s, hello agent reports hello query plan.</span></span>
+* <span data-ttu-id="6b74c-112">**Excepciones detectadas:** datos sobre las excepciones que controla el código.</span><span class="sxs-lookup"><span data-stu-id="6b74c-112">**Caught exceptions:** Data about exceptions that are handled by your code.</span></span>
+* <span data-ttu-id="6b74c-113">**Tiempo de ejecución del método:** datos sobre Hola de tiempo que tarda tooexecute determinados métodos.</span><span class="sxs-lookup"><span data-stu-id="6b74c-113">**Method execution time:** Data about hello time it takes tooexecute specific methods.</span></span>
 
-<span data-ttu-id="ca3ed-114">Para usar el agente de Java, debe instalarlo en el servidor.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-114">To use the Java agent, you install it on your server.</span></span> <span data-ttu-id="ca3ed-115">Las aplicaciones web deben instrumentarse con el [SDK de Application Insights para Java][java].</span><span class="sxs-lookup"><span data-stu-id="ca3ed-115">Your web apps must be instrumented with the [Application Insights Java SDK][java].</span></span> 
+<span data-ttu-id="6b74c-114">agente de Java de toouse hello, instalarlo en el servidor.</span><span class="sxs-lookup"><span data-stu-id="6b74c-114">toouse hello Java agent, you install it on your server.</span></span> <span data-ttu-id="6b74c-115">Las aplicaciones web deben ser instrumentadas con hello [Application Insights Java SDK][java].</span><span class="sxs-lookup"><span data-stu-id="6b74c-115">Your web apps must be instrumented with hello [Application Insights Java SDK][java].</span></span> 
 
-## <a name="install-the-application-insights-agent-for-java"></a><span data-ttu-id="ca3ed-116">Instalación del agente de Application Insights para Java</span><span class="sxs-lookup"><span data-stu-id="ca3ed-116">Install the Application Insights agent for Java</span></span>
-1. <span data-ttu-id="ca3ed-117">[Descargue el agente](https://aka.ms/aijavasdk)en la máquina que ejecuta el servidor de Java.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-117">On the machine running your Java server, [download the agent](https://aka.ms/aijavasdk).</span></span>
-2. <span data-ttu-id="ca3ed-118">Edite el script de inicio del servidor de aplicaciones y agregue la siguiente JVM:</span><span class="sxs-lookup"><span data-stu-id="ca3ed-118">Edit the application server startup script, and add the following JVM:</span></span>
+## <a name="install-hello-application-insights-agent-for-java"></a><span data-ttu-id="6b74c-116">Instalar a agente de Application Insights de Hola para Java</span><span class="sxs-lookup"><span data-stu-id="6b74c-116">Install hello Application Insights agent for Java</span></span>
+1. <span data-ttu-id="6b74c-117">En la máquina de hello ejecutando el servidor de Java, [descargar agente hello](https://aka.ms/aijavasdk).</span><span class="sxs-lookup"><span data-stu-id="6b74c-117">On hello machine running your Java server, [download hello agent](https://aka.ms/aijavasdk).</span></span>
+2. <span data-ttu-id="6b74c-118">Editar script de inicio de servidor de aplicación hello y agregue Hola después de JVM:</span><span class="sxs-lookup"><span data-stu-id="6b74c-118">Edit hello application server startup script, and add hello following JVM:</span></span>
    
-    <span data-ttu-id="ca3ed-119">`javaagent:`*ruta de acceso completa al archivo JAR del agente*</span><span class="sxs-lookup"><span data-stu-id="ca3ed-119">`javaagent:`*full path to the agent JAR file*</span></span>
+    <span data-ttu-id="6b74c-119">`javaagent:`*archivo JAR de ruta de acceso completa toohello agente*</span><span class="sxs-lookup"><span data-stu-id="6b74c-119">`javaagent:`*full path toohello agent JAR file*</span></span>
    
-    <span data-ttu-id="ca3ed-120">Por ejemplo, en Tomcat en un equipo Linux:</span><span class="sxs-lookup"><span data-stu-id="ca3ed-120">For example, in Tomcat on a Linux machine:</span></span>
+    <span data-ttu-id="6b74c-120">Por ejemplo, en Tomcat en un equipo Linux:</span><span class="sxs-lookup"><span data-stu-id="6b74c-120">For example, in Tomcat on a Linux machine:</span></span>
    
-    `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
-3. <span data-ttu-id="ca3ed-121">Reinicie el servidor de aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-121">Restart your application server.</span></span>
+    `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path tooagent JAR file>"`
+3. <span data-ttu-id="6b74c-121">Reinicie el servidor de aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="6b74c-121">Restart your application server.</span></span>
 
-## <a name="configure-the-agent"></a><span data-ttu-id="ca3ed-122">Configuración del agente</span><span class="sxs-lookup"><span data-stu-id="ca3ed-122">Configure the agent</span></span>
-<span data-ttu-id="ca3ed-123">Cree un archivo denominado `AI-Agent.xml` y colóquelo en la misma carpeta que el archivo JAR del agente.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-123">Create a file named `AI-Agent.xml` and place it in the same folder as the agent JAR file.</span></span>
+## <a name="configure-hello-agent"></a><span data-ttu-id="6b74c-122">Configurar el agente de Hola</span><span class="sxs-lookup"><span data-stu-id="6b74c-122">Configure hello agent</span></span>
+<span data-ttu-id="6b74c-123">Cree un archivo denominado `AI-Agent.xml` y lo coloca en hello misma carpeta que el archivo JAR de hello agente.</span><span class="sxs-lookup"><span data-stu-id="6b74c-123">Create a file named `AI-Agent.xml` and place it in hello same folder as hello agent JAR file.</span></span>
 
-<span data-ttu-id="ca3ed-124">Establezca el contenido del archivo XML.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-124">Set the content of the xml file.</span></span> <span data-ttu-id="ca3ed-125">Edite el ejemplo siguiente para incluir u omitir las características que desee.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-125">Edit the following example to include or omit the features you want.</span></span>
+<span data-ttu-id="6b74c-124">Establecer Hola de contenido del archivo xml de Hola.</span><span class="sxs-lookup"><span data-stu-id="6b74c-124">Set hello content of hello xml file.</span></span> <span data-ttu-id="6b74c-125">Editar siguiendo tooinclude de ejemplo de Hola u omita las características de Hola que desea.</span><span class="sxs-lookup"><span data-stu-id="6b74c-125">Edit hello following example tooinclude or omit hello features you want.</span></span>
 
 ```XML
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 08/18/2017
                reportExecutionTime="true"
                />
 
-           <!-- Report on the particular signature
+           <!-- Report on hello particular signature
                 void methodTwo(String, int) -->
            <Method name="methodTwo"
               reportExecutionTime="true"
@@ -86,20 +86,20 @@ ms.lasthandoff: 08/18/2017
 
 ```
 
-<span data-ttu-id="ca3ed-126">Debe habilitar la excepción de los informes y los intervalos de método para métodos individuales.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-126">You have to enable reports exception and method timing for individual methods.</span></span>
+<span data-ttu-id="6b74c-126">Tener tooenable informes excepción y temporización de método para los métodos individuales.</span><span class="sxs-lookup"><span data-stu-id="6b74c-126">You have tooenable reports exception and method timing for individual methods.</span></span>
 
-<span data-ttu-id="ca3ed-127">De forma predeterminada, `reportExecutionTime` es true y `reportCaughtExceptions` es false.</span><span class="sxs-lookup"><span data-stu-id="ca3ed-127">By default, `reportExecutionTime` is true and `reportCaughtExceptions` is false.</span></span>
+<span data-ttu-id="6b74c-127">De forma predeterminada, `reportExecutionTime` es true y `reportCaughtExceptions` es false.</span><span class="sxs-lookup"><span data-stu-id="6b74c-127">By default, `reportExecutionTime` is true and `reportCaughtExceptions` is false.</span></span>
 
-## <a name="view-the-data"></a><span data-ttu-id="ca3ed-128">Visualización de los datos</span><span class="sxs-lookup"><span data-stu-id="ca3ed-128">View the data</span></span>
-<span data-ttu-id="ca3ed-129">En el recurso de Application Insights, aparecen tiempos de ejecución agregados de métodos y dependencias remotos [en el icono Rendimiento][metrics].</span><span class="sxs-lookup"><span data-stu-id="ca3ed-129">In the Application Insights resource, aggregated remote dependency and method execution times appears [under the Performance tile][metrics].</span></span>
+## <a name="view-hello-data"></a><span data-ttu-id="6b74c-128">Ver datos de Hola</span><span class="sxs-lookup"><span data-stu-id="6b74c-128">View hello data</span></span>
+<span data-ttu-id="6b74c-129">Hola recursos de Application Insights, aparece agregados tiempos de ejecución remotos dependencia y el método [en hello rendimiento icono][metrics].</span><span class="sxs-lookup"><span data-stu-id="6b74c-129">In hello Application Insights resource, aggregated remote dependency and method execution times appears [under hello Performance tile][metrics].</span></span>
 
-<span data-ttu-id="ca3ed-130">Para buscar instancias individuales de informes de dependencia, excepción y método, abra [Buscar][diagnostic].</span><span class="sxs-lookup"><span data-stu-id="ca3ed-130">To search for individual instances of dependency, exception, and method reports, open [Search][diagnostic].</span></span>
+<span data-ttu-id="6b74c-130">Abra toosearch para las instancias individuales de informes de dependencia, la excepción y el método, [búsqueda][diagnostic].</span><span class="sxs-lookup"><span data-stu-id="6b74c-130">toosearch for individual instances of dependency, exception, and method reports, open [Search][diagnostic].</span></span>
 
-<span data-ttu-id="ca3ed-131">[Más información sobre diagnósticos de problemas de dependencia](app-insights-asp-net-dependencies.md#diagnosis).</span><span class="sxs-lookup"><span data-stu-id="ca3ed-131">[Diagnosing dependency issues - learn more](app-insights-asp-net-dependencies.md#diagnosis).</span></span>
+<span data-ttu-id="6b74c-131">[Más información sobre diagnósticos de problemas de dependencia](app-insights-asp-net-dependencies.md#diagnosis).</span><span class="sxs-lookup"><span data-stu-id="6b74c-131">[Diagnosing dependency issues - learn more](app-insights-asp-net-dependencies.md#diagnosis).</span></span>
 
-## <a name="questions-problems"></a><span data-ttu-id="ca3ed-132">¿Tiene preguntas?</span><span class="sxs-lookup"><span data-stu-id="ca3ed-132">Questions?</span></span> <span data-ttu-id="ca3ed-133">¿Tiene problemas?</span><span class="sxs-lookup"><span data-stu-id="ca3ed-133">Problems?</span></span>
-* <span data-ttu-id="ca3ed-134">¿No hay datos?</span><span class="sxs-lookup"><span data-stu-id="ca3ed-134">No data?</span></span> [<span data-ttu-id="ca3ed-135">Establezca excepciones del firewall</span><span class="sxs-lookup"><span data-stu-id="ca3ed-135">Set firewall exceptions</span></span>](app-insights-ip-addresses.md)
-* [<span data-ttu-id="ca3ed-136">Solución de problemas de Java</span><span class="sxs-lookup"><span data-stu-id="ca3ed-136">Troubleshooting Java</span></span>](app-insights-java-troubleshoot.md)
+## <a name="questions-problems"></a><span data-ttu-id="6b74c-132">¿Tiene preguntas?</span><span class="sxs-lookup"><span data-stu-id="6b74c-132">Questions?</span></span> <span data-ttu-id="6b74c-133">¿Tiene problemas?</span><span class="sxs-lookup"><span data-stu-id="6b74c-133">Problems?</span></span>
+* <span data-ttu-id="6b74c-134">¿No hay datos?</span><span class="sxs-lookup"><span data-stu-id="6b74c-134">No data?</span></span> [<span data-ttu-id="6b74c-135">Establezca excepciones del firewall</span><span class="sxs-lookup"><span data-stu-id="6b74c-135">Set firewall exceptions</span></span>](app-insights-ip-addresses.md)
+* [<span data-ttu-id="6b74c-136">Solución de problemas de Java</span><span class="sxs-lookup"><span data-stu-id="6b74c-136">Troubleshooting Java</span></span>](app-insights-java-troubleshoot.md)
 
 <!--Link references-->
 

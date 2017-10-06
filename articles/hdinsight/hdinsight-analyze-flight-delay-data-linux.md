@@ -1,6 +1,6 @@
 ---
-title: "Análisis de datos de retraso de vuelos con Hive en HDInsight: Azure | Microsoft Docs"
-description: Aprenda a usar Hive para analizar datos de vuelos en HDInsight basado en Linux y luego exporte los datos a la Base de datos SQL con Sqoop.
+title: datos de retrasos de vuelos aaaAnalyze con Hive en HDInsight - Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Hive datos del vuelo tooanalyze en HDInsight basados en Linux, a continuación, exportar Hola datos tooSQL con Sqoop de la base de datos."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,90 +16,90 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 8cdc19ac8a517b6d8eefabb5476a686aa252a332
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7830457a7100880dff1c647dde1b4d203bfea3c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a><span data-ttu-id="85f56-103">Análisis de datos de retraso de vuelos mediante Hive en HDInsight basado en Linux</span><span class="sxs-lookup"><span data-stu-id="85f56-103">Analyze flight delay data by using Hive on Linux-based HDInsight</span></span>
+# <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a><span data-ttu-id="9b706-103">Análisis de datos de retraso de vuelos mediante Hive en HDInsight basado en Linux</span><span class="sxs-lookup"><span data-stu-id="9b706-103">Analyze flight delay data by using Hive on Linux-based HDInsight</span></span>
 
-<span data-ttu-id="85f56-104">Aprenda a analizar datos de retrasos de vuelos con Hive en HDInsight basado en Linux y luego exportar los datos a Azure SQL Database mediante Sqoop.</span><span class="sxs-lookup"><span data-stu-id="85f56-104">Learn how to analyze flight delay data using Hive on Linux-based HDInsight then export the data to Azure SQL Database using Sqoop.</span></span>
+<span data-ttu-id="9b706-104">Obtenga información acerca de cómo los datos de retrasos de vuelos tooanalyze con Hive en HDInsight basados en Linux, a continuación, exportación Hola datos tooAzure base de datos SQL mediante Sqoop.</span><span class="sxs-lookup"><span data-stu-id="9b706-104">Learn how tooanalyze flight delay data using Hive on Linux-based HDInsight then export hello data tooAzure SQL Database using Sqoop.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="85f56-105">Los pasos descritos en este documento requieren un clúster de HDInsight que use Linux.</span><span class="sxs-lookup"><span data-stu-id="85f56-105">The steps in this document require an HDInsight cluster that uses Linux.</span></span> <span data-ttu-id="85f56-106">Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores.</span><span class="sxs-lookup"><span data-stu-id="85f56-106">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="85f56-107">Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="85f56-107">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
+> <span data-ttu-id="9b706-105">pasos de Hello en este documento requieren un clúster de HDInsight que usa Linux.</span><span class="sxs-lookup"><span data-stu-id="9b706-105">hello steps in this document require an HDInsight cluster that uses Linux.</span></span> <span data-ttu-id="9b706-106">Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior.</span><span class="sxs-lookup"><span data-stu-id="9b706-106">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="9b706-107">Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="9b706-107">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 
-### <a name="prerequisites"></a><span data-ttu-id="85f56-108">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="85f56-108">Prerequisites</span></span>
+### <a name="prerequisites"></a><span data-ttu-id="9b706-108">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="9b706-108">Prerequisites</span></span>
 
-* <span data-ttu-id="85f56-109">**Un clúster de HDInsight**.</span><span class="sxs-lookup"><span data-stu-id="85f56-109">**An HDInsight cluster**.</span></span> <span data-ttu-id="85f56-110">Vea [Introducción al uso de Hadoop con Hive en HDInsight en Linux](hdinsight-hadoop-linux-tutorial-get-started.md) para conocer los pasos sobre la creación de un clúster de HDInsight basado en Linux.</span><span class="sxs-lookup"><span data-stu-id="85f56-110">See [Get started using Hadoop with Hive in HDInsight on Linux](hdinsight-hadoop-linux-tutorial-get-started.md) for steps on creating a new Linux-based HDInsight cluster.</span></span>
+* <span data-ttu-id="9b706-109">**Un clúster de HDInsight**.</span><span class="sxs-lookup"><span data-stu-id="9b706-109">**An HDInsight cluster**.</span></span> <span data-ttu-id="9b706-110">Vea [Introducción al uso de Hadoop con Hive en HDInsight en Linux](hdinsight-hadoop-linux-tutorial-get-started.md) para conocer los pasos sobre la creación de un clúster de HDInsight basado en Linux.</span><span class="sxs-lookup"><span data-stu-id="9b706-110">See [Get started using Hadoop with Hive in HDInsight on Linux](hdinsight-hadoop-linux-tutorial-get-started.md) for steps on creating a new Linux-based HDInsight cluster.</span></span>
 
-* <span data-ttu-id="85f56-111">**Base de datos de SQL Azure**.</span><span class="sxs-lookup"><span data-stu-id="85f56-111">**Azure SQL Database**.</span></span> <span data-ttu-id="85f56-112">Use una instancia de Azure SQL Database como almacén de datos de destino.</span><span class="sxs-lookup"><span data-stu-id="85f56-112">You use an Azure SQL database as a destination data store.</span></span> <span data-ttu-id="85f56-113">Si no dispone todavía de una Base de datos SQL, consulte [Tutorial de Base de datos SQL: creación de una Base de datos SQL en cuestión de minutos](../sql-database/sql-database-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="85f56-113">If you do not have a SQL Database already, see [SQL Database tutorial: Create a SQL database in minutes](../sql-database/sql-database-get-started.md).</span></span>
+* <span data-ttu-id="9b706-111">**Base de datos de SQL Azure**.</span><span class="sxs-lookup"><span data-stu-id="9b706-111">**Azure SQL Database**.</span></span> <span data-ttu-id="9b706-112">Use una instancia de Azure SQL Database como almacén de datos de destino.</span><span class="sxs-lookup"><span data-stu-id="9b706-112">You use an Azure SQL database as a destination data store.</span></span> <span data-ttu-id="9b706-113">Si no dispone todavía de una Base de datos SQL, consulte [Tutorial de Base de datos SQL: creación de una Base de datos SQL en cuestión de minutos](../sql-database/sql-database-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="9b706-113">If you do not have a SQL Database already, see [SQL Database tutorial: Create a SQL database in minutes](../sql-database/sql-database-get-started.md).</span></span>
 
-* <span data-ttu-id="85f56-114">**Azure CLI**.</span><span class="sxs-lookup"><span data-stu-id="85f56-114">**Azure CLI**.</span></span> <span data-ttu-id="85f56-115">Si no ha instalado la CLI de Azure, vea [Instalación y configuración de la interfaz de la línea de comandos (CLI) de Azure](../cli-install-nodejs.md) para conocer más pasos.</span><span class="sxs-lookup"><span data-stu-id="85f56-115">If you have not installed the Azure CLI, see [Install and Configure the Azure CLI](../cli-install-nodejs.md) for more steps.</span></span>
+* <span data-ttu-id="9b706-114">**CLI de Azure**</span><span class="sxs-lookup"><span data-stu-id="9b706-114">**Azure CLI**.</span></span> <span data-ttu-id="9b706-115">Si no ha instalado Hola CLI de Azure, consulte [instalar y configurar hello Azure CLI](../cli-install-nodejs.md) para conocer los pasos más.</span><span class="sxs-lookup"><span data-stu-id="9b706-115">If you have not installed hello Azure CLI, see [Install and Configure hello Azure CLI](../cli-install-nodejs.md) for more steps.</span></span>
 
-## <a name="download-the-flight-data"></a><span data-ttu-id="85f56-116">Descarga de los datos de vuelo</span><span class="sxs-lookup"><span data-stu-id="85f56-116">Download the flight data</span></span>
+## <a name="download-hello-flight-data"></a><span data-ttu-id="9b706-116">Descargar datos del vuelo Hola</span><span class="sxs-lookup"><span data-stu-id="9b706-116">Download hello flight data</span></span>
 
-1. <span data-ttu-id="85f56-117">Diríjase a[Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].</span><span class="sxs-lookup"><span data-stu-id="85f56-117">Browse to [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].</span></span>
+1. <span data-ttu-id="9b706-117">Examinar demasiado[investigación y administración de tecnología innovadora, centro de transporte estadísticas][rita-website].</span><span class="sxs-lookup"><span data-stu-id="9b706-117">Browse too[Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].</span></span>
 
-2. <span data-ttu-id="85f56-118">En la página, seleccione los siguientes valores:</span><span class="sxs-lookup"><span data-stu-id="85f56-118">On the page, select the following values:</span></span>
+2. <span data-ttu-id="9b706-118">En página de hello, seleccione Hola siguientes valores:</span><span class="sxs-lookup"><span data-stu-id="9b706-118">On hello page, select hello following values:</span></span>
 
-   | <span data-ttu-id="85f56-119">Nombre</span><span class="sxs-lookup"><span data-stu-id="85f56-119">Name</span></span> | <span data-ttu-id="85f56-120">Valor</span><span class="sxs-lookup"><span data-stu-id="85f56-120">Value</span></span> |
+   | <span data-ttu-id="9b706-119">Nombre</span><span class="sxs-lookup"><span data-stu-id="9b706-119">Name</span></span> | <span data-ttu-id="9b706-120">Valor</span><span class="sxs-lookup"><span data-stu-id="9b706-120">Value</span></span> |
    | --- | --- |
-   | <span data-ttu-id="85f56-121">Filter Year</span><span class="sxs-lookup"><span data-stu-id="85f56-121">Filter Year</span></span> |<span data-ttu-id="85f56-122">2013</span><span class="sxs-lookup"><span data-stu-id="85f56-122">2013</span></span> |
-   | <span data-ttu-id="85f56-123">Filter Period</span><span class="sxs-lookup"><span data-stu-id="85f56-123">Filter Period</span></span> |<span data-ttu-id="85f56-124">January</span><span class="sxs-lookup"><span data-stu-id="85f56-124">January</span></span> |
-   | <span data-ttu-id="85f56-125">Fields</span><span class="sxs-lookup"><span data-stu-id="85f56-125">Fields</span></span> |<span data-ttu-id="85f56-126">Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay.</span><span class="sxs-lookup"><span data-stu-id="85f56-126">Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay.</span></span> <span data-ttu-id="85f56-127">Borrado de los demás campos</span><span class="sxs-lookup"><span data-stu-id="85f56-127">Clear all other fields</span></span> |
+   | <span data-ttu-id="9b706-121">Filter Year</span><span class="sxs-lookup"><span data-stu-id="9b706-121">Filter Year</span></span> |<span data-ttu-id="9b706-122">2013</span><span class="sxs-lookup"><span data-stu-id="9b706-122">2013</span></span> |
+   | <span data-ttu-id="9b706-123">Filter Period</span><span class="sxs-lookup"><span data-stu-id="9b706-123">Filter Period</span></span> |<span data-ttu-id="9b706-124">January</span><span class="sxs-lookup"><span data-stu-id="9b706-124">January</span></span> |
+   | <span data-ttu-id="9b706-125">Fields</span><span class="sxs-lookup"><span data-stu-id="9b706-125">Fields</span></span> |<span data-ttu-id="9b706-126">Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay.</span><span class="sxs-lookup"><span data-stu-id="9b706-126">Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay.</span></span> <span data-ttu-id="9b706-127">Borrado de los demás campos</span><span class="sxs-lookup"><span data-stu-id="9b706-127">Clear all other fields</span></span> |
 
-3. <span data-ttu-id="85f56-128">Haga clic en **Descargar**.</span><span class="sxs-lookup"><span data-stu-id="85f56-128">Click **Download**.</span></span>
+3. <span data-ttu-id="9b706-128">Haga clic en **Descargar**.</span><span class="sxs-lookup"><span data-stu-id="9b706-128">Click **Download**.</span></span>
 
-## <a name="upload-the-data"></a><span data-ttu-id="85f56-129">Carga de los datos</span><span class="sxs-lookup"><span data-stu-id="85f56-129">Upload the data</span></span>
+## <a name="upload-hello-data"></a><span data-ttu-id="9b706-129">Cargar datos de Hola</span><span class="sxs-lookup"><span data-stu-id="9b706-129">Upload hello data</span></span>
 
-1. <span data-ttu-id="85f56-130">Use el siguiente comando para cargar el archivo .zip en el nodo principal del clúster de HDInsight:</span><span class="sxs-lookup"><span data-stu-id="85f56-130">Use the following command to upload the zip file to the HDInsight cluster head node:</span></span>
+1. <span data-ttu-id="9b706-130">Usar hello después comando tooupload Hola zip archivo toohello HDInsight nodo principal del clúster:</span><span class="sxs-lookup"><span data-stu-id="9b706-130">Use hello following command tooupload hello zip file toohello HDInsight cluster head node:</span></span>
 
     ```
     scp FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-    <span data-ttu-id="85f56-131">Reemplace **FILENAME** por el nombre del archivo .zip.</span><span class="sxs-lookup"><span data-stu-id="85f56-131">Replace **FILENAME** with the name of the zip file.</span></span> <span data-ttu-id="85f56-132">Reemplace **USERNAME** por el inicio de sesión SSH para el clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="85f56-132">Replace **USERNAME** with the SSH login for the HDInsight cluster.</span></span> <span data-ttu-id="85f56-133">Reemplace CLUSTERNAME por el nombre del clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="85f56-133">Replace CLUSTERNAME with the name of the HDInsight cluster.</span></span>
+    <span data-ttu-id="9b706-131">Reemplace **FILENAME** por nombre de hello del archivo zip de Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-131">Replace **FILENAME** with hello name of hello zip file.</span></span> <span data-ttu-id="9b706-132">Reemplace **nombre de usuario** con inicio de sesión SSH de hello para el clúster de HDInsight Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-132">Replace **USERNAME** with hello SSH login for hello HDInsight cluster.</span></span> <span data-ttu-id="9b706-133">Reemplace el nombre del clúster por nombre de Hola Hola del clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="9b706-133">Replace CLUSTERNAME with hello name of hello HDInsight cluster.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="85f56-134">Si usa una contraseña para autenticar el inicio de sesión SSH, se le pedirá la contraseña.</span><span class="sxs-lookup"><span data-stu-id="85f56-134">If you use a password to authenticate your SSH login, you are prompted for the password.</span></span> <span data-ttu-id="85f56-135">Si utiliza una clave pública, puede que tenga que usar el parámetro `-i` y especificar la ruta de acceso a la correspondiente clave privada.</span><span class="sxs-lookup"><span data-stu-id="85f56-135">If you used a public key, you may need to use the `-i` parameter and specify the path to the matching private key.</span></span> <span data-ttu-id="85f56-136">Por ejemplo: `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.</span><span class="sxs-lookup"><span data-stu-id="85f56-136">For example, `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.</span></span>
+   > <span data-ttu-id="9b706-134">Si utiliza una contraseña tooauthenticate su inicio de sesión SSH, le pediremos contraseña Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-134">If you use a password tooauthenticate your SSH login, you are prompted for hello password.</span></span> <span data-ttu-id="9b706-135">Si utiliza una clave pública, puede que necesite toouse hello `-i` parámetro y especificar hello toohello de ruta de acceso que coinciden con la clave privada.</span><span class="sxs-lookup"><span data-stu-id="9b706-135">If you used a public key, you may need toouse hello `-i` parameter and specify hello path toohello matching private key.</span></span> <span data-ttu-id="9b706-136">Por ejemplo: `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.</span><span class="sxs-lookup"><span data-stu-id="9b706-136">For example, `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.</span></span>
 
-2. <span data-ttu-id="85f56-137">Tras completar la carga, conéctese al clúster mediante SSH:</span><span class="sxs-lookup"><span data-stu-id="85f56-137">Once the upload has completed, connect to the cluster using SSH:</span></span>
+2. <span data-ttu-id="9b706-137">Cuando haya completado la carga de hello, conectar clúster toohello mediante SSH:</span><span class="sxs-lookup"><span data-stu-id="9b706-137">Once hello upload has completed, connect toohello cluster using SSH:</span></span>
 
     ```ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net```
 
-    <span data-ttu-id="85f56-138">Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="85f56-138">For more information, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
+    <span data-ttu-id="9b706-138">Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="9b706-138">For more information, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
 
-3. <span data-ttu-id="85f56-139">Una vez conectado, use lo siguiente para descomprimir el archivo .zip:</span><span class="sxs-lookup"><span data-stu-id="85f56-139">Once connected, use the following to unzip the .zip file:</span></span>
+3. <span data-ttu-id="9b706-139">Una vez conectado, use hello toounzip Hola .zip archivo siguiente:</span><span class="sxs-lookup"><span data-stu-id="9b706-139">Once connected, use hello following toounzip hello .zip file:</span></span>
 
     ```
     unzip FILENAME.zip
     ```
 
-    <span data-ttu-id="85f56-140">Este comando extrae un archivo .csv que tiene un tamaño aproximado de 60 MB.</span><span class="sxs-lookup"><span data-stu-id="85f56-140">This command extracts a .csv file that is roughly 60 MB.</span></span>
+    <span data-ttu-id="9b706-140">Este comando extrae un archivo .csv que tiene un tamaño aproximado de 60 MB.</span><span class="sxs-lookup"><span data-stu-id="9b706-140">This command extracts a .csv file that is roughly 60 MB.</span></span>
 
-4. <span data-ttu-id="85f56-141">Use el siguiente comando para crear un directorio en el almacenamiento para HDInsight y luego copie el archivo en el directorio:</span><span class="sxs-lookup"><span data-stu-id="85f56-141">Use the following command to create a directory on HDInsight storage, and then copy the file to the directory:</span></span>
+4. <span data-ttu-id="9b706-141">Usar hello siguiente comando toocreate un directorio de almacenamiento de HDInsight y, a continuación, copie el directorio del archivo toohello de hello:</span><span class="sxs-lookup"><span data-stu-id="9b706-141">Use hello following command toocreate a directory on HDInsight storage, and then copy hello file toohello directory:</span></span>
 
     ```
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
     hdfs dfs -put FILENAME.csv /tutorials/flightdelays/data/
     ```
 
-## <a name="create-and-run-the-hiveql"></a><span data-ttu-id="85f56-142">Creación y ejecución de HiveQL</span><span class="sxs-lookup"><span data-stu-id="85f56-142">Create and run the HiveQL</span></span>
+## <a name="create-and-run-hello-hiveql"></a><span data-ttu-id="9b706-142">Crear y ejecutar hello HiveQL</span><span class="sxs-lookup"><span data-stu-id="9b706-142">Create and run hello HiveQL</span></span>
 
-<span data-ttu-id="85f56-143">Siga estos pasos para importar datos desde el archivo CSV en una tabla de Hive denominada **Delays**.</span><span class="sxs-lookup"><span data-stu-id="85f56-143">Use the following steps to import data from the CSV file into a Hive table named **Delays**.</span></span>
+<span data-ttu-id="9b706-143">Use Hola siguientes pasos le indican tooimport datos desde un archivo CSV hello en una tabla de Hive denominada **retrasos**.</span><span class="sxs-lookup"><span data-stu-id="9b706-143">Use hello following steps tooimport data from hello CSV file into a Hive table named **Delays**.</span></span>
 
-1. <span data-ttu-id="85f56-144">Use el comando siguiente para crear y editar un nuevo archivo denominado **flightdelays.hql**:</span><span class="sxs-lookup"><span data-stu-id="85f56-144">Use the following command to create and edit a new file named **flightdelays.hql**:</span></span>
+1. <span data-ttu-id="9b706-144">Comando toocreate siguiente de Hola de uso y editar un nuevo archivo denominado **flightdelays.hql**:</span><span class="sxs-lookup"><span data-stu-id="9b706-144">Use hello following command toocreate and edit a new file named **flightdelays.hql**:</span></span>
 
     ```
     nano flightdelays.hql
     ```
 
-    <span data-ttu-id="85f56-145">Use el texto siguiente como contenido de este archivo:</span><span class="sxs-lookup"><span data-stu-id="85f56-145">Use the following text as the contents of this file:</span></span>
+    <span data-ttu-id="9b706-145">Usar hello después de texto como contenido de Hola de este archivo:</span><span class="sxs-lookup"><span data-stu-id="9b706-145">Use hello following text as hello contents of this file:</span></span>
 
     ```hiveql
     DROP TABLE delays_raw;
-    -- Creates an external table over the csv file
+    -- Creates an external table over hello csv file
     CREATE EXTERNAL TABLE delays_raw (
         YEAR string,
         FL_DATE string,
@@ -123,16 +123,16 @@ ms.lasthandoff: 08/03/2017
         NAS_DELAY float,
         SECURITY_DELAY float,
         LATE_AIRCRAFT_DELAY float)
-    -- The following lines describe the format and location of the file
+    -- hello following lines describe hello format and location of hello file
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
     LOCATION '/tutorials/flightdelays/data';
 
-    -- Drop the delays table if it exists
+    -- Drop hello delays table if it exists
     DROP TABLE delays;
-    -- Create the delays table and populate it with data
-    -- pulled in from the CSV file (via the external table defined previously)
+    -- Create hello delays table and populate it with data
+    -- pulled in from hello CSV file (via hello external table defined previously)
     CREATE TABLE delays AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -157,24 +157,24 @@ ms.lasthandoff: 08/03/2017
     FROM delays_raw;
     ```
 
-2. <span data-ttu-id="85f56-146">Para guardar el archivo, use **Ctrl+X** y luego **Y**.</span><span class="sxs-lookup"><span data-stu-id="85f56-146">To save the file, use **Ctrl + X**, then **Y** .</span></span>
+2. <span data-ttu-id="9b706-146">archivo de hello toosave, use **Ctrl + X**, a continuación, **Y** .</span><span class="sxs-lookup"><span data-stu-id="9b706-146">toosave hello file, use **Ctrl + X**, then **Y** .</span></span>
 
-3. <span data-ttu-id="85f56-147">Para iniciar Hive y ejecutar el archivo **flightdelays.hql**, use el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="85f56-147">To start Hive and run the **flightdelays.hql** file, use the following command:</span></span>
+3. <span data-ttu-id="9b706-147">toostart Hive y ejecución hello **flightdelays.hql** de archivos, use el siguiente comando de Hola:</span><span class="sxs-lookup"><span data-stu-id="9b706-147">toostart Hive and run hello **flightdelays.hql** file, use hello following command:</span></span>
 
     ```
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
    > [!NOTE]
-   > <span data-ttu-id="85f56-148">En este ejemplo, se utiliza `localhost`, ya que está conectado al nodo principal del clúster de HDInsight, que es donde se está ejecutando HiveServer2.</span><span class="sxs-lookup"><span data-stu-id="85f56-148">In this example, `localhost` is used since you are connected to the head node of the HDInsight cluster, which is where HiveServer2 is running.</span></span>
+   > <span data-ttu-id="9b706-148">En este ejemplo, `localhost` se usa ya está conectado toohello del nodo principal del clúster de HDInsight de hello, que es donde se está ejecutando HiveServer2.</span><span class="sxs-lookup"><span data-stu-id="9b706-148">In this example, `localhost` is used since you are connected toohello head node of hello HDInsight cluster, which is where HiveServer2 is running.</span></span>
 
-4. <span data-ttu-id="85f56-149">Una vez que el script __flightdelays.hql__ termine de ejecutarse, use el siguiente comando para abrir una sesión interactiva de Beeline:</span><span class="sxs-lookup"><span data-stu-id="85f56-149">Once the __flightdelays.hql__ script finishes running, use the following command to open an interactive Beeline session:</span></span>
+4. <span data-ttu-id="9b706-149">Una vez Hola __flightdelays.hql__ termine la ejecución, tooopen una sesión interactiva de Beeline de comando siguiente de Hola de uso de la secuencia de comandos:</span><span class="sxs-lookup"><span data-stu-id="9b706-149">Once hello __flightdelays.hql__ script finishes running, use hello following command tooopen an interactive Beeline session:</span></span>
 
     ```
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-5. <span data-ttu-id="85f56-150">Cuando reciba el símbolo del sistema `jdbc:hive2://localhost:10001/>`, use la consulta siguiente para recuperar datos de los datos de retrasos de vuelos importados.</span><span class="sxs-lookup"><span data-stu-id="85f56-150">When you receive the `jdbc:hive2://localhost:10001/>` prompt, use the following query to retrieve data from the imported flight delay data.</span></span>
+5. <span data-ttu-id="9b706-150">Cuando aparezca el Hola `jdbc:hive2://localhost:10001/>` símbolo del sistema, use Hola siguientes tooretrieve consultar los datos de los datos de retrasos de vuelos Hola importado.</span><span class="sxs-lookup"><span data-stu-id="9b706-150">When you receive hello `jdbc:hive2://localhost:10001/>` prompt, use hello following query tooretrieve data from hello imported flight delay data.</span></span>
 
     ```hiveql
     INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
@@ -186,47 +186,47 @@ ms.lasthandoff: 08/03/2017
     GROUP BY origin_city_name;
     ```
 
-    <span data-ttu-id="85f56-151">Esta consulta recupera una lista de ciudades que experimentaron demoras debidas a inclemencias del tiempo, junto con el tiempo medio de retraso, y la guarda en `/tutorials/flightdelays/output`.</span><span class="sxs-lookup"><span data-stu-id="85f56-151">This query retrieves a list of cities that experienced weather delays, along with the average delay time, and save it to `/tutorials/flightdelays/output`.</span></span> <span data-ttu-id="85f56-152">Más adelante, Sqoop leerá los datos desde esta ubicación y los exportará a Azure SQL Database.</span><span class="sxs-lookup"><span data-stu-id="85f56-152">Later, Sqoop reads the data from this location and export it to Azure SQL Database.</span></span>
+    <span data-ttu-id="9b706-151">Esta consulta recupera una lista de ciudades que retrasos de tiempo con experiencia, junto con el promedio de hello Retrasar hora y la guarda demasiado`/tutorials/flightdelays/output`.</span><span class="sxs-lookup"><span data-stu-id="9b706-151">This query retrieves a list of cities that experienced weather delays, along with hello average delay time, and save it too`/tutorials/flightdelays/output`.</span></span> <span data-ttu-id="9b706-152">Posteriormente, Sqoop lee los datos de Hola desde esta ubicación y exportarlo tooAzure base de datos SQL.</span><span class="sxs-lookup"><span data-stu-id="9b706-152">Later, Sqoop reads hello data from this location and export it tooAzure SQL Database.</span></span>
 
-6. <span data-ttu-id="85f56-153">Para salir de Beeline, escriba `!quit` en el símbolo del sistema.</span><span class="sxs-lookup"><span data-stu-id="85f56-153">To exit Beeline, enter `!quit` at the prompt.</span></span>
+6. <span data-ttu-id="9b706-153">tooexit Beeline, escriba `!quit` en el símbolo del sistema de Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-153">tooexit Beeline, enter `!quit` at hello prompt.</span></span>
 
-## <a name="create-a-sql-database"></a><span data-ttu-id="85f56-154">una Base de datos SQL</span><span class="sxs-lookup"><span data-stu-id="85f56-154">Create a SQL Database</span></span>
+## <a name="create-a-sql-database"></a><span data-ttu-id="9b706-154">una Base de datos SQL</span><span class="sxs-lookup"><span data-stu-id="9b706-154">Create a SQL Database</span></span>
 
-<span data-ttu-id="85f56-155">Si ya tiene una base de datos SQL, debe obtener el nombre del servidor.</span><span class="sxs-lookup"><span data-stu-id="85f56-155">If you already have a SQL Database, you must get the server name.</span></span> <span data-ttu-id="85f56-156">Puede encontrar el nombre del servidor en [Azure Portal](https://portal.azure.com) seleccionando **SQL Database** y, después, filtrando por el nombre de la base de datos que desee usar.</span><span class="sxs-lookup"><span data-stu-id="85f56-156">You can find the server name in the [Azure portal](https://portal.azure.com) by selecting **SQL Databases**, and then filtering on the name of the database you wish to use.</span></span> <span data-ttu-id="85f56-157">El nombre del servidor aparece en la columna **SERVIDOR** .</span><span class="sxs-lookup"><span data-stu-id="85f56-157">The server name is listed in the **SERVER** column.</span></span>
+<span data-ttu-id="9b706-155">Si ya tiene una base de datos de SQL, debe obtener el nombre del servidor de Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-155">If you already have a SQL Database, you must get hello server name.</span></span> <span data-ttu-id="9b706-156">Puede encontrar el nombre del servidor de Hola Hola [portal de Azure](https://portal.azure.com) seleccionando **bases de datos SQL**, y, a continuación, el filtrado en nombre de Hola de hello de base de datos desea toouse.</span><span class="sxs-lookup"><span data-stu-id="9b706-156">You can find hello server name in hello [Azure portal](https://portal.azure.com) by selecting **SQL Databases**, and then filtering on hello name of hello database you wish toouse.</span></span> <span data-ttu-id="9b706-157">aparece el nombre del servidor de Hello en hello **SERVER** columna.</span><span class="sxs-lookup"><span data-stu-id="9b706-157">hello server name is listed in hello **SERVER** column.</span></span>
 
-<span data-ttu-id="85f56-158">Si no dispone todavía de una base de datos SQL, consulte [Tutorial de Base de datos SQL: creación de una Base de datos SQL en cuestión de minutos](../sql-database/sql-database-get-started.md) .</span><span class="sxs-lookup"><span data-stu-id="85f56-158">If you do not already have a SQL Database, use the information in [SQL Database tutorial: Create a SQL database in minutes](../sql-database/sql-database-get-started.md) to create one.</span></span> <span data-ttu-id="85f56-159">Guarde el nombre del servidor usado para la base de datos.</span><span class="sxs-lookup"><span data-stu-id="85f56-159">Save the server name used for the database.</span></span>
+<span data-ttu-id="9b706-158">Si no dispone de una base de datos de SQL, utilice la información de hello en [tutorial de base de datos SQL: crear una base de datos SQL en minutos](../sql-database/sql-database-get-started.md) toocreate uno.</span><span class="sxs-lookup"><span data-stu-id="9b706-158">If you do not already have a SQL Database, use hello information in [SQL Database tutorial: Create a SQL database in minutes](../sql-database/sql-database-get-started.md) toocreate one.</span></span> <span data-ttu-id="9b706-159">Guardar el nombre del servidor hello usado para la base de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-159">Save hello server name used for hello database.</span></span>
 
-## <a name="create-a-sql-database-table"></a><span data-ttu-id="85f56-160">Creación de una tabla de Base de datos SQL</span><span class="sxs-lookup"><span data-stu-id="85f56-160">Create a SQL Database table</span></span>
+## <a name="create-a-sql-database-table"></a><span data-ttu-id="9b706-160">Creación de una tabla de Base de datos SQL</span><span class="sxs-lookup"><span data-stu-id="9b706-160">Create a SQL Database table</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="85f56-161">Hay muchas maneras de conectarse a SQL Database y crear una tabla.</span><span class="sxs-lookup"><span data-stu-id="85f56-161">There are many ways to connect to SQL Database and create a table.</span></span> <span data-ttu-id="85f56-162">En los siguientes pasos se utiliza [FreeTDS](http://www.freetds.org/) desde el clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="85f56-162">The following steps use [FreeTDS](http://www.freetds.org/) from the HDInsight cluster.</span></span>
+> <span data-ttu-id="9b706-161">Hay muchas maneras tooconnect tooSQL base de datos y crear una tabla.</span><span class="sxs-lookup"><span data-stu-id="9b706-161">There are many ways tooconnect tooSQL Database and create a table.</span></span> <span data-ttu-id="9b706-162">Hola a consecuencia del uso de pasos [uso](http://www.freetds.org/) de clúster de HDInsight Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-162">hello following steps use [FreeTDS](http://www.freetds.org/) from hello HDInsight cluster.</span></span>
 
 
-1. <span data-ttu-id="85f56-163">Use SSH para conectarse al clúster de HDInsight basado en Linux y ejecute los siguientes pasos en la sesión SSH.</span><span class="sxs-lookup"><span data-stu-id="85f56-163">Use SSH to connect to the Linux-based HDInsight cluster, and run the following steps from the SSH session.</span></span>
+1. <span data-ttu-id="9b706-163">Usar clústeres de HDInsight basados en Linux SSH tooconnect toohello y ejecución Hola siguiendo los pasos de la sesión de SSH de Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-163">Use SSH tooconnect toohello Linux-based HDInsight cluster, and run hello following steps from hello SSH session.</span></span>
 
-2. <span data-ttu-id="85f56-164">Use el siguiente comando para instalar FreeTDS:</span><span class="sxs-lookup"><span data-stu-id="85f56-164">Use the following command to install FreeTDS:</span></span>
+2. <span data-ttu-id="9b706-164">Usar hello siguiendo el uso del comando tooinstall:</span><span class="sxs-lookup"><span data-stu-id="9b706-164">Use hello following command tooinstall FreeTDS:</span></span>
 
     ```
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-3. <span data-ttu-id="85f56-165">Una vez finalizada la instalación, use el comando siguiente para conectarse al servidor de SQL Database.</span><span class="sxs-lookup"><span data-stu-id="85f56-165">Once the install completes, use the following command to connect to the SQL Database server.</span></span> <span data-ttu-id="85f56-166">Reemplace **serverName** por el nombre del servidor de la base de datos SQL.</span><span class="sxs-lookup"><span data-stu-id="85f56-166">Replace **serverName** with the SQL Database server name.</span></span> <span data-ttu-id="85f56-167">Reemplace **adminLogin** y **adminPassword** por el inicio de sesión de SQL Database.</span><span class="sxs-lookup"><span data-stu-id="85f56-167">Replace **adminLogin** and **adminPassword** with the login for SQL Database.</span></span> <span data-ttu-id="85f56-168">Reemplace **databaseName** por el nombre de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="85f56-168">Replace **databaseName** with the database name.</span></span>
+3. <span data-ttu-id="9b706-165">Una vez que se haya completado la instalación de hello, utilice Hola después el servidor de base de datos SQL de comandos tooconnect toohello.</span><span class="sxs-lookup"><span data-stu-id="9b706-165">Once hello install completes, use hello following command tooconnect toohello SQL Database server.</span></span> <span data-ttu-id="9b706-166">Reemplace **serverName** con el nombre del servidor de base de datos SQL de Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-166">Replace **serverName** with hello SQL Database server name.</span></span> <span data-ttu-id="9b706-167">Reemplace **adminLogin** y **adminPassword** con inicio de sesión de hello para la base de datos SQL.</span><span class="sxs-lookup"><span data-stu-id="9b706-167">Replace **adminLogin** and **adminPassword** with hello login for SQL Database.</span></span> <span data-ttu-id="9b706-168">Reemplace **databaseName** con el nombre de la base de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-168">Replace **databaseName** with hello database name.</span></span>
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
-    <span data-ttu-id="85f56-169">Recibirá una salida similar al texto siguiente:</span><span class="sxs-lookup"><span data-stu-id="85f56-169">You receive output similar to the following text:</span></span>
+    <span data-ttu-id="9b706-169">Recibir toohello similar de salida siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="9b706-169">You receive output similar toohello following text:</span></span>
 
     ```
     locale is "en_US.UTF-8"
     locale charset is "UTF-8"
     using default charset "UTF-8"
-    Default database being set to sqooptest
+    Default database being set toosqooptest
     1>
     ```
 
-4. <span data-ttu-id="85f56-170">En el símbolo del sistema `1>` , introduzca las líneas siguientes:</span><span class="sxs-lookup"><span data-stu-id="85f56-170">At the `1>` prompt, enter the following lines:</span></span>
+4. <span data-ttu-id="9b706-170">En hello `1>` símbolo del sistema, escriba Hola siguientes líneas:</span><span class="sxs-lookup"><span data-stu-id="9b706-170">At hello `1>` prompt, enter hello following lines:</span></span>
 
     ```
     CREATE TABLE [dbo].[delays](
@@ -237,67 +237,67 @@ ms.lasthandoff: 08/03/2017
     GO
     ```
 
-    <span data-ttu-id="85f56-171">Cuando se haya especificado la instrucción `GO`, se evaluarán las instrucciones anteriores.</span><span class="sxs-lookup"><span data-stu-id="85f56-171">When the `GO` statement is entered, the previous statements are evaluated.</span></span> <span data-ttu-id="85f56-172">Se crea una tabla denominada **delays** con un índice agrupado.</span><span class="sxs-lookup"><span data-stu-id="85f56-172">This query creates a table named **delays**, with a clustered index.</span></span>
+    <span data-ttu-id="9b706-171">Cuando Hola `GO` instrucción se haya especificado, se evalúan en las instrucciones anteriores Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-171">When hello `GO` statement is entered, hello previous statements are evaluated.</span></span> <span data-ttu-id="9b706-172">Se crea una tabla denominada **delays** con un índice agrupado.</span><span class="sxs-lookup"><span data-stu-id="9b706-172">This query creates a table named **delays**, with a clustered index.</span></span>
 
-    <span data-ttu-id="85f56-173">Use la siguiente consulta para comprobar que se ha creado la tabla:</span><span class="sxs-lookup"><span data-stu-id="85f56-173">Use the following query to verify that the table has been created:</span></span>
+    <span data-ttu-id="9b706-173">Hola de uso después de tooverify de consulta que Hola tabla se ha creado:</span><span class="sxs-lookup"><span data-stu-id="9b706-173">Use hello following query tooverify that hello table has been created:</span></span>
 
     ```
     SELECT * FROM information_schema.tables
     GO
     ```
 
-    <span data-ttu-id="85f56-174">La salida será similar al siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="85f56-174">The output is similar to the following text:</span></span>
+    <span data-ttu-id="9b706-174">Hola de salida es toohello similar siguiente texto:</span><span class="sxs-lookup"><span data-stu-id="9b706-174">hello output is similar toohello following text:</span></span>
 
     ```
     TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
     databaseName       dbo     delays      BASE TABLE
     ```
 
-5. <span data-ttu-id="85f56-175">Entrar `exit` at the `1>` .</span><span class="sxs-lookup"><span data-stu-id="85f56-175">Enter `exit` at the `1>` prompt to exit the tsql utility.</span></span>
+5. <span data-ttu-id="9b706-175">Escriba `exit` en hello `1>` solicitar utilidad de tooexit Hola tsql.</span><span class="sxs-lookup"><span data-stu-id="9b706-175">Enter `exit` at hello `1>` prompt tooexit hello tsql utility.</span></span>
 
-## <a name="export-data-with-sqoop"></a><span data-ttu-id="85f56-176">Exportación de datos con Sqoop</span><span class="sxs-lookup"><span data-stu-id="85f56-176">Export data with Sqoop</span></span>
+## <a name="export-data-with-sqoop"></a><span data-ttu-id="9b706-176">Exportación de datos con Sqoop</span><span class="sxs-lookup"><span data-stu-id="9b706-176">Export data with Sqoop</span></span>
 
-1. <span data-ttu-id="85f56-177">Utilice el siguiente comando para comprobar que Sqoop puede ver la base de datos SQL:</span><span class="sxs-lookup"><span data-stu-id="85f56-177">Use the following command to verify that Sqoop can see your SQL Database:</span></span>
+1. <span data-ttu-id="9b706-177">Usar hello después tooverify de comando que Sqoop puede ver la base de datos de SQL:</span><span class="sxs-lookup"><span data-stu-id="9b706-177">Use hello following command tooverify that Sqoop can see your SQL Database:</span></span>
 
     ```
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
     ```
 
-    <span data-ttu-id="85f56-178">Este comando devuelve una lista de bases de datos, incluida la que creó anteriormente en la tabla delays.</span><span class="sxs-lookup"><span data-stu-id="85f56-178">This command returns a list of databases, including the database that you created the delays table in earlier.</span></span>
+    <span data-ttu-id="9b706-178">Este comando devuelve una lista de bases de datos, incluida la base de datos de Hola que creó anteriormente tabla de retrasos de hello en.</span><span class="sxs-lookup"><span data-stu-id="9b706-178">This command returns a list of databases, including hello database that you created hello delays table in earlier.</span></span>
 
-2. <span data-ttu-id="85f56-179">Use el comando siguiente para exportar los datos de hivesampletable a la tabla mobiledata:</span><span class="sxs-lookup"><span data-stu-id="85f56-179">Use the following command to export data from hivesampletable to the mobiledata table:</span></span>
+2. <span data-ttu-id="9b706-179">Usar hello siguientes comando tooexport datos de tabla de hivesampletable toohello mobiledata:</span><span class="sxs-lookup"><span data-stu-id="9b706-179">Use hello following command tooexport data from hivesampletable toohello mobiledata table:</span></span>
 
     ```
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    <span data-ttu-id="85f56-180">Sqoop se conecta a la base de datos que contiene la tabla delays y exporta datos del directorio `/tutorials/flightdelays/output` a dicha tabla.</span><span class="sxs-lookup"><span data-stu-id="85f56-180">Sqoop connects to the database containing the delays table, and exports data from the `/tutorials/flightdelays/output` directory to the delays table.</span></span>
+    <span data-ttu-id="9b706-180">Sqoop se conecta toohello base de datos que contiene la tabla de retrasos de Hola y exporta los datos de hello `/tutorials/flightdelays/output` tabla de directorios toohello retrasos.</span><span class="sxs-lookup"><span data-stu-id="9b706-180">Sqoop connects toohello database containing hello delays table, and exports data from hello `/tutorials/flightdelays/output` directory toohello delays table.</span></span>
 
-3. <span data-ttu-id="85f56-181">Una vez completado el comando, utilice lo siguiente para conectarse a la base de datos mediante TSQL:</span><span class="sxs-lookup"><span data-stu-id="85f56-181">After the command completes, use the following to connect to the database using TSQL:</span></span>
+3. <span data-ttu-id="9b706-181">Una vez completado el comando de hello, utilice Hola después de la base de datos de tooconnect toohello mediante TSQL:</span><span class="sxs-lookup"><span data-stu-id="9b706-181">After hello command completes, use hello following tooconnect toohello database using TSQL:</span></span>
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
-    <span data-ttu-id="85f56-182">Una vez conectada, use las instrucciones siguientes para comprobar que los datos se exportaron a la tabla mobiledata:</span><span class="sxs-lookup"><span data-stu-id="85f56-182">Once connected, use the following statements to verify that the data was exported to the mobiledata table:</span></span>
+    <span data-ttu-id="9b706-182">Una vez conectado, use Hola después tooverify de instrucciones que los datos de hello estaban toohello exportado mobiledata tabla:</span><span class="sxs-lookup"><span data-stu-id="9b706-182">Once connected, use hello following statements tooverify that hello data was exported toohello mobiledata table:</span></span>
 
     ```
     SELECT * FROM delays
     GO
     ```
 
-    <span data-ttu-id="85f56-183">Debería ver una lista de los datos de la tabla.</span><span class="sxs-lookup"><span data-stu-id="85f56-183">You should see a listing of data in the table.</span></span> <span data-ttu-id="85f56-184">Escriba `exit` para salir de la utilidad de tsql.</span><span class="sxs-lookup"><span data-stu-id="85f56-184">Type `exit` to exit the tsql utility.</span></span>
+    <span data-ttu-id="9b706-183">Debería ver una lista de datos de tabla de Hola.</span><span class="sxs-lookup"><span data-stu-id="9b706-183">You should see a listing of data in hello table.</span></span> <span data-ttu-id="9b706-184">Tipo `exit` utilidad de tooexit Hola tsql.</span><span class="sxs-lookup"><span data-stu-id="9b706-184">Type `exit` tooexit hello tsql utility.</span></span>
 
-## <span data-ttu-id="85f56-185"><a id="nextsteps"></a> Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="85f56-185"><a id="nextsteps"></a> Next steps</span></span>
+## <span data-ttu-id="9b706-185"><a id="nextsteps"></a> Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="9b706-185"><a id="nextsteps"></a> Next steps</span></span>
 
-<span data-ttu-id="85f56-186">Para conocer más formas para trabajar con datos en Hive en HDInsight, consulte los siguientes documentos:</span><span class="sxs-lookup"><span data-stu-id="85f56-186">To learn more ways to work with data in HDInsight, see the following documents:</span></span>
+<span data-ttu-id="9b706-186">toolearn más toowork de formas con los datos de HDInsight, vea Hola siguientes documentos:</span><span class="sxs-lookup"><span data-stu-id="9b706-186">toolearn more ways toowork with data in HDInsight, see hello following documents:</span></span>
 
-* <span data-ttu-id="85f56-187">[Uso de Hive con HDInsight][hdinsight-use-hive]</span><span class="sxs-lookup"><span data-stu-id="85f56-187">[Use Hive with HDInsight][hdinsight-use-hive]</span></span>
-* <span data-ttu-id="85f56-188">[Uso de Oozie con HDInsight][hdinsight-use-oozie]</span><span class="sxs-lookup"><span data-stu-id="85f56-188">[Use Oozie with HDInsight][hdinsight-use-oozie]</span></span>
-* <span data-ttu-id="85f56-189">[Uso de Sqoop con HDInsight][hdinsight-use-sqoop]</span><span class="sxs-lookup"><span data-stu-id="85f56-189">[Use Sqoop with HDInsight][hdinsight-use-sqoop]</span></span>
-* <span data-ttu-id="85f56-190">[Uso de Pig con HDInsight][hdinsight-use-pig]</span><span class="sxs-lookup"><span data-stu-id="85f56-190">[Use Pig with HDInsight][hdinsight-use-pig]</span></span>
-* <span data-ttu-id="85f56-191">[Desarrollo de programas MapReduce de Java para HDInsight][hdinsight-develop-mapreduce]</span><span class="sxs-lookup"><span data-stu-id="85f56-191">[Develop Java MapReduce programs for HDInsight][hdinsight-develop-mapreduce]</span></span>
-* <span data-ttu-id="85f56-192">[Desarrollo de programas de Hadoop con Python en HDInsight][hdinsight-develop-streaming]</span><span class="sxs-lookup"><span data-stu-id="85f56-192">[Develop Python Hadoop streaming programs for HDInsight][hdinsight-develop-streaming]</span></span>
+* <span data-ttu-id="9b706-187">[Uso de Hive con HDInsight][hdinsight-use-hive]</span><span class="sxs-lookup"><span data-stu-id="9b706-187">[Use Hive with HDInsight][hdinsight-use-hive]</span></span>
+* <span data-ttu-id="9b706-188">[Uso de Oozie con HDInsight][hdinsight-use-oozie]</span><span class="sxs-lookup"><span data-stu-id="9b706-188">[Use Oozie with HDInsight][hdinsight-use-oozie]</span></span>
+* <span data-ttu-id="9b706-189">[Uso de Sqoop con HDInsight][hdinsight-use-sqoop]</span><span class="sxs-lookup"><span data-stu-id="9b706-189">[Use Sqoop with HDInsight][hdinsight-use-sqoop]</span></span>
+* <span data-ttu-id="9b706-190">[Uso de Pig con HDInsight][hdinsight-use-pig]</span><span class="sxs-lookup"><span data-stu-id="9b706-190">[Use Pig with HDInsight][hdinsight-use-pig]</span></span>
+* <span data-ttu-id="9b706-191">[Desarrollo de programas MapReduce de Java para HDInsight][hdinsight-develop-mapreduce]</span><span class="sxs-lookup"><span data-stu-id="9b706-191">[Develop Java MapReduce programs for HDInsight][hdinsight-develop-mapreduce]</span></span>
+* <span data-ttu-id="9b706-192">[Desarrollo de programas de Hadoop con Python en HDInsight][hdinsight-develop-streaming]</span><span class="sxs-lookup"><span data-stu-id="9b706-192">[Develop Python Hadoop streaming programs for HDInsight][hdinsight-develop-streaming]</span></span>
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

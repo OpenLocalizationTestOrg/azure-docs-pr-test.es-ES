@@ -1,6 +1,6 @@
 ---
-title: "¿Cómo realizar consultas con SQL en Azure Cosmos DB? | Microsoft Docs"
-description: Aprenda a realizar consultas con datos de DocumentDB con SQL en Azure Cosmos DB
+title: "¿aaaHow tooquery con SQL en la base de datos de Azure Cosmos? | Microsoft Docs"
+description: "Obtenga información acerca de tooquery con datos de documentos con SQL en la base de datos de Azure Cosmos"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: a2a562c06c6302b9548e758b4c6754ec13b6001d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3dc51acf92cb78d4f4d9dbac7ec54b1382431cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-using-sql"></a><span data-ttu-id="e752f-104">Azure Cosmos DB: ¿cómo realizar consultas mediante SQL?</span><span class="sxs-lookup"><span data-stu-id="e752f-104">Azure Cosmos DB: How to query using SQL?</span></span>
+# <a name="azure-cosmos-db-how-tooquery-using-sql"></a><span data-ttu-id="96f97-104">Azure Cosmos DB: Cómo tooquery mediante SQL?</span><span class="sxs-lookup"><span data-stu-id="96f97-104">Azure Cosmos DB: How tooquery using SQL?</span></span>
 
-<span data-ttu-id="e752f-105">La [API de DocumentDB](documentdb-introduction.md) de Azure Cosmos DB admite la consulta de documentos mediante SQL.</span><span class="sxs-lookup"><span data-stu-id="e752f-105">The Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) supports querying documents using SQL.</span></span> <span data-ttu-id="e752f-106">En este artículo se proporciona un documento de ejemplo y dos consultas SQL de ejemplo y los resultados.</span><span class="sxs-lookup"><span data-stu-id="e752f-106">This article provides a sample document and two sample SQL queries and results.</span></span>
+<span data-ttu-id="96f97-105">base de datos de Azure Cosmos Hola [DocumentDB API](documentdb-introduction.md) admite consultar documentos mediante SQL.</span><span class="sxs-lookup"><span data-stu-id="96f97-105">hello Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) supports querying documents using SQL.</span></span> <span data-ttu-id="96f97-106">En este artículo se proporciona un documento de ejemplo y dos consultas SQL de ejemplo y los resultados.</span><span class="sxs-lookup"><span data-stu-id="96f97-106">This article provides a sample document and two sample SQL queries and results.</span></span>
 
-<span data-ttu-id="e752f-107">En este artículo se tratan las tareas siguientes:</span><span class="sxs-lookup"><span data-stu-id="e752f-107">This article covers the following tasks:</span></span> 
+<span data-ttu-id="96f97-107">En este artículo se trata Hola siguientes tareas:</span><span class="sxs-lookup"><span data-stu-id="96f97-107">This article covers hello following tasks:</span></span> 
 
 > [!div class="checklist"]
-> * <span data-ttu-id="e752f-108">Consulta de datos con SQL</span><span class="sxs-lookup"><span data-stu-id="e752f-108">Querying data with SQL</span></span>
+> * <span data-ttu-id="96f97-108">Consulta de datos con SQL</span><span class="sxs-lookup"><span data-stu-id="96f97-108">Querying data with SQL</span></span>
 
-## <a name="sample-document"></a><span data-ttu-id="e752f-109">Documento de ejemplo</span><span class="sxs-lookup"><span data-stu-id="e752f-109">Sample document</span></span>
+## <a name="sample-document"></a><span data-ttu-id="96f97-109">Documento de ejemplo</span><span class="sxs-lookup"><span data-stu-id="96f97-109">Sample document</span></span>
 
-<span data-ttu-id="e752f-110">En las consultas SQL de este artículo se usa el documento de ejemplo siguiente.</span><span class="sxs-lookup"><span data-stu-id="e752f-110">The SQL queries in this article use the following sample document.</span></span>
+<span data-ttu-id="96f97-110">las consultas SQL de Hello en este artículo usan Hola siguiente documento de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="96f97-110">hello SQL queries in this article use hello following sample document.</span></span>
 
 ```json
 {
@@ -63,28 +63,28 @@ ms.lasthandoff: 07/11/2017
   "isRegistered": false
 }
 ```
-## <a name="where-can-i-run-sql-queries"></a><span data-ttu-id="e752f-111">¿Dónde puedo ejecutar consultas SQL?</span><span class="sxs-lookup"><span data-stu-id="e752f-111">Where can I run SQL queries?</span></span>
+## <a name="where-can-i-run-sql-queries"></a><span data-ttu-id="96f97-111">¿Dónde puedo ejecutar consultas SQL?</span><span class="sxs-lookup"><span data-stu-id="96f97-111">Where can I run SQL queries?</span></span>
 
-<span data-ttu-id="e752f-112">Puede ejecutar consultas mediante el Explorador de datos en Azure Portal, a través de la [API de REST y los SDK](documentdb-sdk-dotnet.md) e incluso el [Query playground](https://www.documentdb.com/sql/demo) (Área de consultas), que ejecuta consultas sobre un conjunto existente de datos de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="e752f-112">You can run queries using the Data Explorer in the Azure portal, via the [REST API and SDKs](documentdb-sdk-dotnet.md), and even the [Query playground](https://www.documentdb.com/sql/demo), which runs queries on an existing set of sample data.</span></span>
+<span data-ttu-id="96f97-112">Puede ejecutar las consultas que utilizan Hola Explorador de datos en el portal de Azure, a través de Hola Hola [REST API y SDK](documentdb-sdk-dotnet.md), incluso hello y [Query playground](https://www.documentdb.com/sql/demo), que ejecutan las consultas en un conjunto de datos de ejemplo existente.</span><span class="sxs-lookup"><span data-stu-id="96f97-112">You can run queries using hello Data Explorer in hello Azure portal, via hello [REST API and SDKs](documentdb-sdk-dotnet.md), and even hello [Query playground](https://www.documentdb.com/sql/demo), which runs queries on an existing set of sample data.</span></span>
 
-<span data-ttu-id="e752f-113">Para obtener más información sobre las consultas SQL, vea:</span><span class="sxs-lookup"><span data-stu-id="e752f-113">For more information about SQL queries, see:</span></span>
-* [<span data-ttu-id="e752f-114">Consulta SQL y sintaxis SQL</span><span class="sxs-lookup"><span data-stu-id="e752f-114">SQL query and SQL syntax</span></span>](documentdb-sql-query.md)
+<span data-ttu-id="96f97-113">Para obtener más información sobre las consultas SQL, vea:</span><span class="sxs-lookup"><span data-stu-id="96f97-113">For more information about SQL queries, see:</span></span>
+* [<span data-ttu-id="96f97-114">Consulta SQL y sintaxis SQL</span><span class="sxs-lookup"><span data-stu-id="96f97-114">SQL query and SQL syntax</span></span>](documentdb-sql-query.md)
 
-## <a name="prerequisites"></a><span data-ttu-id="e752f-115">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="e752f-115">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="96f97-115">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="96f97-115">Prerequisites</span></span>
 
-<span data-ttu-id="e752f-116">En este tutorial se da por supuesto que tiene una colección y una cuenta de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="e752f-116">This tutorial assumes you have an Azure Cosmos DB account and collection.</span></span> <span data-ttu-id="e752f-117">¿No tiene nada de lo anterior?</span><span class="sxs-lookup"><span data-stu-id="e752f-117">Don't have any of those?</span></span> <span data-ttu-id="e752f-118">Complete el [inicio rápido en 5 minutos](create-mongodb-nodejs.md) o el [tutorial de desarrolladores](tutorial-develop-mongodb.md) para crear una cuenta y una colección.</span><span class="sxs-lookup"><span data-stu-id="e752f-118">Complete the [5-minute quickstart](create-mongodb-nodejs.md) or the [developer tutorial](tutorial-develop-mongodb.md) to create an account and collection.</span></span>
+<span data-ttu-id="96f97-116">En este tutorial se da por supuesto que tiene una colección y una cuenta de Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="96f97-116">This tutorial assumes you have an Azure Cosmos DB account and collection.</span></span> <span data-ttu-id="96f97-117">¿No tiene nada de lo anterior?</span><span class="sxs-lookup"><span data-stu-id="96f97-117">Don't have any of those?</span></span> <span data-ttu-id="96f97-118">Hola completa [inicio rápido de 5 minutos](create-mongodb-nodejs.md) o hello [tutorial de programadores](tutorial-develop-mongodb.md) toocreate una cuenta y una colección.</span><span class="sxs-lookup"><span data-stu-id="96f97-118">Complete hello [5-minute quickstart](create-mongodb-nodejs.md) or hello [developer tutorial](tutorial-develop-mongodb.md) toocreate an account and collection.</span></span>
 
-## <a name="example-query-1"></a><span data-ttu-id="e752f-119">Consulta 1 de ejemplo</span><span class="sxs-lookup"><span data-stu-id="e752f-119">Example query 1</span></span>
+## <a name="example-query-1"></a><span data-ttu-id="96f97-119">Consulta 1 de ejemplo</span><span class="sxs-lookup"><span data-stu-id="96f97-119">Example query 1</span></span>
 
-<span data-ttu-id="e752f-120">Dado el documento de familia de ejemplo anterior, la consulta SQL siguiente devuelve los documentos donde el campo Id. coincide con `WakefieldFamily`.</span><span class="sxs-lookup"><span data-stu-id="e752f-120">Given the sample family document above, following SQL query returns the documents where the id field matches `WakefieldFamily`.</span></span> <span data-ttu-id="e752f-121">Puesto que es una instrucción `SELECT *`, la salida de la consulta es el documento JSON completo:</span><span class="sxs-lookup"><span data-stu-id="e752f-121">Since it's a `SELECT *` statement, the output of the query is the complete JSON document:</span></span>
+<span data-ttu-id="96f97-120">Dado anterior de documento familia de ejemplo de Hola, después de la consulta SQL devuelve documentos Hola que coincide con el campo de Id. de hello `WakefieldFamily`.</span><span class="sxs-lookup"><span data-stu-id="96f97-120">Given hello sample family document above, following SQL query returns hello documents where hello id field matches `WakefieldFamily`.</span></span> <span data-ttu-id="96f97-121">Puesto que es un `SELECT *` instrucción, la salida de hello de consulta de hello es documento JSON completo de hello:</span><span class="sxs-lookup"><span data-stu-id="96f97-121">Since it's a `SELECT *` statement, hello output of hello query is hello complete JSON document:</span></span>
 
-<span data-ttu-id="e752f-122">**Consultar**</span><span class="sxs-lookup"><span data-stu-id="e752f-122">**Query**</span></span>
+<span data-ttu-id="96f97-122">**Consultar**</span><span class="sxs-lookup"><span data-stu-id="96f97-122">**Query**</span></span>
 
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
 
-<span data-ttu-id="e752f-123">**Resultados**</span><span class="sxs-lookup"><span data-stu-id="e752f-123">**Results**</span></span>
+<span data-ttu-id="96f97-123">**Resultados**</span><span class="sxs-lookup"><span data-stu-id="96f97-123">**Results**</span></span>
 
 ```json
 {
@@ -115,11 +115,11 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="example-query-2"></a><span data-ttu-id="e752f-124">Consulta 2 de ejemplo</span><span class="sxs-lookup"><span data-stu-id="e752f-124">Example query 2</span></span>
+## <a name="example-query-2"></a><span data-ttu-id="96f97-124">Consulta 2 de ejemplo</span><span class="sxs-lookup"><span data-stu-id="96f97-124">Example query 2</span></span>
 
-<span data-ttu-id="e752f-125">La consulta siguiente devuelve todos los nombres proporcionados de los elementos secundarios de la familia cuyo id. coincida con `WakefieldFamily`, ordenados por su grado.</span><span class="sxs-lookup"><span data-stu-id="e752f-125">The next query returns all the given names of children in the family whose id matches `WakefieldFamily` ordered by their grade.</span></span>
+<span data-ttu-id="96f97-125">consulta siguiente de Hello devuelve todos los nombres especificados de Hola de elementos secundarios de familia de hello cuyo identificador coincide con `WakefieldFamily` ordenadas por su calificación.</span><span class="sxs-lookup"><span data-stu-id="96f97-125">hello next query returns all hello given names of children in hello family whose id matches `WakefieldFamily` ordered by their grade.</span></span>
 
-<span data-ttu-id="e752f-126">**Consultar**</span><span class="sxs-lookup"><span data-stu-id="e752f-126">**Query**</span></span>
+<span data-ttu-id="96f97-126">**Consultar**</span><span class="sxs-lookup"><span data-stu-id="96f97-126">**Query**</span></span>
 
     SELECT c.givenName 
     FROM Families f 
@@ -127,7 +127,7 @@ ms.lasthandoff: 07/11/2017
     WHERE f.id = 'WakefieldFamily'
     ORDER BY f.children.grade ASC
 
-<span data-ttu-id="e752f-127">**Resultados**</span><span class="sxs-lookup"><span data-stu-id="e752f-127">**Results**</span></span>
+<span data-ttu-id="96f97-127">**Resultados**</span><span class="sxs-lookup"><span data-stu-id="96f97-127">**Results**</span></span>
 
     [
       { "givenName": "Jesse" }, 
@@ -135,15 +135,15 @@ ms.lasthandoff: 07/11/2017
     ]
 
 
-## <a name="next-steps"></a><span data-ttu-id="e752f-128">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="e752f-128">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="96f97-128">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="96f97-128">Next steps</span></span>
 
-<span data-ttu-id="e752f-129">En este tutorial, ha hecho lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="e752f-129">In this tutorial, you've done the following:</span></span>
+<span data-ttu-id="96f97-129">En este tutorial, ha hecho siguiente de hello:</span><span class="sxs-lookup"><span data-stu-id="96f97-129">In this tutorial, you've done hello following:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="e752f-130">Ha obtenido información sobre cómo realizar consultas con SQL</span><span class="sxs-lookup"><span data-stu-id="e752f-130">Learned how to query using SQL</span></span>  
+> * <span data-ttu-id="96f97-130">Ha aprendido cómo tooquery mediante SQL</span><span class="sxs-lookup"><span data-stu-id="96f97-130">Learned how tooquery using SQL</span></span>  
 
-<span data-ttu-id="e752f-131">Ahora puede continuar con el tutorial siguiente para obtener información sobre cómo distribuir sus datos globalmente.</span><span class="sxs-lookup"><span data-stu-id="e752f-131">You can now proceed to the next tutorial to learn how to distribute your data globally.</span></span>
+<span data-ttu-id="96f97-131">Ahora puede continuar toohello siguiente tutorial toolearn cómo toodistribute los datos globales.</span><span class="sxs-lookup"><span data-stu-id="96f97-131">You can now proceed toohello next tutorial toolearn how toodistribute your data globally.</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="e752f-132">Distribución de datos global</span><span class="sxs-lookup"><span data-stu-id="e752f-132">Distribute your data globally</span></span>](tutorial-global-distribution-documentdb.md)
+> [<span data-ttu-id="96f97-132">Distribución de datos global</span><span class="sxs-lookup"><span data-stu-id="96f97-132">Distribute your data globally</span></span>](tutorial-global-distribution-documentdb.md)
 

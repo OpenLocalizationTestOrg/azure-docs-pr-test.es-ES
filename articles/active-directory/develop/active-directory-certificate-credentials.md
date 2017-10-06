@@ -1,6 +1,6 @@
 ---
-title: Credenciales de certificado en Azure AD | Microsoft Docs
-description: "Este artículo describe el registro y el uso de credenciales de certificados para la autenticación de aplicaciones"
+title: credenciales aaaCertificate en Azure AD | Documentos de Microsoft
+description: "Este artículo describe el registro de hello y el uso de credenciales de certificado para la autenticación de la aplicación"
 services: active-directory
 documentationcenter: .net
 author: navyasric
@@ -15,43 +15,43 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 08bb5140bb35bbd120aaa506afeab8ad247f81e1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3508803112ac06268d553db86ab74812aa53e455
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="certificate-credentials-for-application-authentication"></a><span data-ttu-id="55970-103">Credenciales de certificado para la autenticación de aplicaciones</span><span class="sxs-lookup"><span data-stu-id="55970-103">Certificate credentials for application authentication</span></span>
+# <a name="certificate-credentials-for-application-authentication"></a><span data-ttu-id="d47c8-103">Credenciales de certificado para la autenticación de aplicaciones</span><span class="sxs-lookup"><span data-stu-id="d47c8-103">Certificate credentials for application authentication</span></span>
 
-<span data-ttu-id="55970-104">Azure Active Directory permite que una aplicación use sus propias credenciales para la autenticación, por ejemplo, en el flujo de concesión de credenciales de cliente de OAuth 2.0 y el flujo en nombre de otro.</span><span class="sxs-lookup"><span data-stu-id="55970-104">Azure Active Directory allows an application to use its own credentials for authentication, for example, in the OAuth 2.0 Client Credentials Grant flow and the On-Behalf-Of flow.</span></span>
-<span data-ttu-id="55970-105">Un formato de credencial que se puede utilizar es una aserción de JSON Web Token (JWT) firmada con un certificado que la aplicación posea.</span><span class="sxs-lookup"><span data-stu-id="55970-105">One form of credential that can be used is a JSON Web Token(JWT) assertion signed with a certificate that the application owns.</span></span>
+<span data-ttu-id="d47c8-104">Azure Active Directory permite un toouse aplicación sus propias credenciales para la autenticación, por ejemplo, en el flujo de concesión de credenciales de cliente de OAuth 2.0 de Hola y Hola en nombre de flujo.</span><span class="sxs-lookup"><span data-stu-id="d47c8-104">Azure Active Directory allows an application toouse its own credentials for authentication, for example, in hello OAuth 2.0 Client Credentials Grant flow and hello On-Behalf-Of flow.</span></span>
+<span data-ttu-id="d47c8-105">Una forma de credencial que se puede utilizar es una aserción de JSON Web Token(JWT) firmada con un certificado que posee la aplicación hello.</span><span class="sxs-lookup"><span data-stu-id="d47c8-105">One form of credential that can be used is a JSON Web Token(JWT) assertion signed with a certificate that hello application owns.</span></span>
 
-## <a name="format-of-the-assertion"></a><span data-ttu-id="55970-106">Formato de la aserción</span><span class="sxs-lookup"><span data-stu-id="55970-106">Format of the assertion</span></span>
-<span data-ttu-id="55970-107">Para calcular la aserción, es posible que desee utilizar una de las muchas bibliotecas de [JSON Web Token](https://jwt.io/) en el idioma que prefiera.</span><span class="sxs-lookup"><span data-stu-id="55970-107">To compute the assertion, you probably want to use one of the many [JSON Web Token](https://jwt.io/) libraries in the language of your choice.</span></span> <span data-ttu-id="55970-108">La información que lleva el token es:</span><span class="sxs-lookup"><span data-stu-id="55970-108">The information carried by the token is:</span></span>
+## <a name="format-of-hello-assertion"></a><span data-ttu-id="d47c8-106">Formato de aserción de Hola</span><span class="sxs-lookup"><span data-stu-id="d47c8-106">Format of hello assertion</span></span>
+<span data-ttu-id="d47c8-107">aserción de hello toocompute, probablemente desee toouse uno Hola muchos [JSON Web Token](https://jwt.io/) bibliotecas en lenguaje de Hola de su elección.</span><span class="sxs-lookup"><span data-stu-id="d47c8-107">toocompute hello assertion, you probably want toouse one of hello many [JSON Web Token](https://jwt.io/) libraries in hello language of your choice.</span></span> <span data-ttu-id="d47c8-108">información de Hello pertenecientes a token hello es:</span><span class="sxs-lookup"><span data-stu-id="d47c8-108">hello information carried by hello token is:</span></span>
 
-#### <a name="header"></a><span data-ttu-id="55970-109">Encabezado</span><span class="sxs-lookup"><span data-stu-id="55970-109">Header</span></span>
+#### <a name="header"></a><span data-ttu-id="d47c8-109">Encabezado</span><span class="sxs-lookup"><span data-stu-id="d47c8-109">Header</span></span>
 
-| <span data-ttu-id="55970-110">Parámetro</span><span class="sxs-lookup"><span data-stu-id="55970-110">Parameter</span></span> |  <span data-ttu-id="55970-111">Comentario</span><span class="sxs-lookup"><span data-stu-id="55970-111">Remark</span></span> |
+| <span data-ttu-id="d47c8-110">Parámetro</span><span class="sxs-lookup"><span data-stu-id="d47c8-110">Parameter</span></span> |  <span data-ttu-id="d47c8-111">Comentario</span><span class="sxs-lookup"><span data-stu-id="d47c8-111">Remark</span></span> |
 | --- | --- | --- |
-| `alg` | <span data-ttu-id="55970-112">Debe ser **RS256**</span><span class="sxs-lookup"><span data-stu-id="55970-112">Should be **RS256**</span></span> |
-| `typ` | <span data-ttu-id="55970-113">Debe ser **JWT**</span><span class="sxs-lookup"><span data-stu-id="55970-113">Should be **JWT**</span></span> |
-| `x5t` | <span data-ttu-id="55970-114">Debe ser la huella digital SHA-1 del certificado X.509</span><span class="sxs-lookup"><span data-stu-id="55970-114">Should be the X.509 Certificate SHA-1 thumbprint</span></span> |
+| `alg` | <span data-ttu-id="d47c8-112">Debe ser **RS256**</span><span class="sxs-lookup"><span data-stu-id="d47c8-112">Should be **RS256**</span></span> |
+| `typ` | <span data-ttu-id="d47c8-113">Debe ser **JWT**</span><span class="sxs-lookup"><span data-stu-id="d47c8-113">Should be **JWT**</span></span> |
+| `x5t` | <span data-ttu-id="d47c8-114">Debe ser la huella digital de X.509 certificado SHA-1 de Hola</span><span class="sxs-lookup"><span data-stu-id="d47c8-114">Should be hello X.509 Certificate SHA-1 thumbprint</span></span> |
 
-#### <a name="claims-payload"></a><span data-ttu-id="55970-115">Notificaciones (carga útil)</span><span class="sxs-lookup"><span data-stu-id="55970-115">Claims (Payload)</span></span>
+#### <a name="claims-payload"></a><span data-ttu-id="d47c8-115">Notificaciones (carga útil)</span><span class="sxs-lookup"><span data-stu-id="d47c8-115">Claims (Payload)</span></span>
 
-| <span data-ttu-id="55970-116">Parámetro</span><span class="sxs-lookup"><span data-stu-id="55970-116">Parameter</span></span> |  <span data-ttu-id="55970-117">Comentario</span><span class="sxs-lookup"><span data-stu-id="55970-117">Remark</span></span> |
+| <span data-ttu-id="d47c8-116">Parámetro</span><span class="sxs-lookup"><span data-stu-id="d47c8-116">Parameter</span></span> |  <span data-ttu-id="d47c8-117">Comentario</span><span class="sxs-lookup"><span data-stu-id="d47c8-117">Remark</span></span> |
 | --- | --- | --- |
-| `aud` | <span data-ttu-id="55970-118">Público: debe ser **https://login.microsoftonline.com/*tenant_Id*/oauth2/token**</span><span class="sxs-lookup"><span data-stu-id="55970-118">Audience: Should be **https://login.microsoftonline.com/*tenant_Id*/oauth2/token**</span></span> |
-| `exp` | <span data-ttu-id="55970-119">Fecha de expiración: la fecha en que el token expira.</span><span class="sxs-lookup"><span data-stu-id="55970-119">Expiration date: the date when the token expires.</span></span> <span data-ttu-id="55970-120">La hora se representa como el número de segundos desde el 1 de enero de 1970 (1970-01-01T0:0:0Z) UTC hasta el momento en que la validez del token expira.</span><span class="sxs-lookup"><span data-stu-id="55970-120">The time is represented as the number of seconds from January 1, 1970 (1970-01-01T0:0:0Z) UTC until the time the token validity expires.</span></span>|
-| `iss` | <span data-ttu-id="55970-121">Emisor: debe ser el identificador client_id (identificador de la aplicación del servicio de cliente)</span><span class="sxs-lookup"><span data-stu-id="55970-121">Issuer: should be the client_id (Application Id of the client service)</span></span> |
-| `jti` | <span data-ttu-id="55970-122">GUID: el identificador de JWT</span><span class="sxs-lookup"><span data-stu-id="55970-122">GUID: the JWT ID</span></span> |
-| `nbf` | <span data-ttu-id="55970-123">No antes de: fecha antes de la cual el token no se puede usar.</span><span class="sxs-lookup"><span data-stu-id="55970-123">Not Before: the date before which the token cannot be used.</span></span> <span data-ttu-id="55970-124">La hora se representa como el número de segundos desde el 1 de enero de 1970 (1970-01-01T0:0:0Z) UTC hasta el momento en que se emitió el token.</span><span class="sxs-lookup"><span data-stu-id="55970-124">The time is represented as the number of seconds from January 1, 1970 (1970-01-01T0:0:0Z) UTC until the time the token was issued.</span></span> |
-| `sub` | <span data-ttu-id="55970-125">Asunto: al igual que para `iss`, debe ser el identificador client_id (identificador de la aplicación del servicio de cliente)</span><span class="sxs-lookup"><span data-stu-id="55970-125">Subject: As for `iss`, should be the client_id (Application Id of the client service)</span></span> |
+| `aud` | <span data-ttu-id="d47c8-118">Público: debe ser **https://login.microsoftonline.com/*tenant_Id*/oauth2/token**</span><span class="sxs-lookup"><span data-stu-id="d47c8-118">Audience: Should be **https://login.microsoftonline.com/*tenant_Id*/oauth2/token**</span></span> |
+| `exp` | <span data-ttu-id="d47c8-119">Fecha de expiración: fecha de hello cuando expire el token de Hola.</span><span class="sxs-lookup"><span data-stu-id="d47c8-119">Expiration date: hello date when hello token expires.</span></span> <span data-ttu-id="d47c8-120">hora de Hola se representa como número de Hola de segundos desde el 1 de enero de 1970 (1970-01-01T0:0:0Z) UTC hasta que expire la validez del token Hola Hola tiempo.</span><span class="sxs-lookup"><span data-stu-id="d47c8-120">hello time is represented as hello number of seconds from January 1, 1970 (1970-01-01T0:0:0Z) UTC until hello time hello token validity expires.</span></span>|
+| `iss` | <span data-ttu-id="d47c8-121">Emisor: debe ser hello client_id (Id. de aplicación de servicio de cliente de hello)</span><span class="sxs-lookup"><span data-stu-id="d47c8-121">Issuer: should be hello client_id (Application Id of hello client service)</span></span> |
+| `jti` | <span data-ttu-id="d47c8-122">GUID: Hola Id. de JWT</span><span class="sxs-lookup"><span data-stu-id="d47c8-122">GUID: hello JWT ID</span></span> |
+| `nbf` | <span data-ttu-id="d47c8-123">No antes: Hola fecha antes de que hello no se puede usar el símbolo (token).</span><span class="sxs-lookup"><span data-stu-id="d47c8-123">Not Before: hello date before which hello token cannot be used.</span></span> <span data-ttu-id="d47c8-124">hora de Hola se representa como número de Hola de segundos desde el 1 de enero de 1970 (1970-01-01T0:0:0Z) UTC hasta Hola tiempo Hola token haya sido emitido.</span><span class="sxs-lookup"><span data-stu-id="d47c8-124">hello time is represented as hello number of seconds from January 1, 1970 (1970-01-01T0:0:0Z) UTC until hello time hello token was issued.</span></span> |
+| `sub` | <span data-ttu-id="d47c8-125">Asunto: como para `iss`, debe ser hello client_id (Id. de aplicación de servicio de cliente de hello)</span><span class="sxs-lookup"><span data-stu-id="d47c8-125">Subject: As for `iss`, should be hello client_id (Application Id of hello client service)</span></span> |
 
-#### <a name="signature"></a><span data-ttu-id="55970-126">Firma</span><span class="sxs-lookup"><span data-stu-id="55970-126">Signature</span></span>
-<span data-ttu-id="55970-127">La firma se calcula aplicando el certificado como se describe en la [especificación RFC7519 de JSON Web Token](https://tools.ietf.org/html/rfc7519)</span><span class="sxs-lookup"><span data-stu-id="55970-127">The signature is computed applying the certificate as described in the [JSON Web Token RFC7519 specification](https://tools.ietf.org/html/rfc7519)</span></span>
+#### <a name="signature"></a><span data-ttu-id="d47c8-126">Firma</span><span class="sxs-lookup"><span data-stu-id="d47c8-126">Signature</span></span>
+<span data-ttu-id="d47c8-127">firma de Hola se calcula aplicando certificado Hola tal y como se describe en hello [especificación de JSON Web Token RFC7519](https://tools.ietf.org/html/rfc7519)</span><span class="sxs-lookup"><span data-stu-id="d47c8-127">hello signature is computed applying hello certificate as described in hello [JSON Web Token RFC7519 specification](https://tools.ietf.org/html/rfc7519)</span></span>
 
-### <a name="example-of-a-decoded-jwt-assertion"></a><span data-ttu-id="55970-128">Ejemplo de una aserción de JWT descodificada</span><span class="sxs-lookup"><span data-stu-id="55970-128">Example of a decoded JWT assertion</span></span>
+### <a name="example-of-a-decoded-jwt-assertion"></a><span data-ttu-id="d47c8-128">Ejemplo de una aserción de JWT descodificada</span><span class="sxs-lookup"><span data-stu-id="d47c8-128">Example of a decoded JWT assertion</span></span>
 ```
 {
   "alg": "RS256",
@@ -72,23 +72,23 @@ ms.lasthandoff: 07/11/2017
 
 ```
 
-### <a name="example-of-an-encoded-jwt-assertion"></a><span data-ttu-id="55970-129">Ejemplo de una aserción de JWT codificada</span><span class="sxs-lookup"><span data-stu-id="55970-129">Example of an encoded JWT assertion</span></span>
-<span data-ttu-id="55970-130">La cadena siguiente es un ejemplo de aserción codificada.</span><span class="sxs-lookup"><span data-stu-id="55970-130">The following string is an example of encoded assertion.</span></span> <span data-ttu-id="55970-131">Si observa detenidamente, verá tres secciones separadas por puntos (.).</span><span class="sxs-lookup"><span data-stu-id="55970-131">If you look carefully, you notice three sections separated by dots (.).</span></span>
-<span data-ttu-id="55970-132">La primera sección codifica el encabezado, la segunda la carga útil y la última es la firma calculada con los certificados a partir del contenido de las primeras dos secciones.</span><span class="sxs-lookup"><span data-stu-id="55970-132">The first section encodes the header, the second the payload, and the last is the signature computed with the certificates from the content of the first two sections.</span></span>
+### <a name="example-of-an-encoded-jwt-assertion"></a><span data-ttu-id="d47c8-129">Ejemplo de una aserción de JWT codificada</span><span class="sxs-lookup"><span data-stu-id="d47c8-129">Example of an encoded JWT assertion</span></span>
+<span data-ttu-id="d47c8-130">Hola después de la cadena es un ejemplo de aserción codificado.</span><span class="sxs-lookup"><span data-stu-id="d47c8-130">hello following string is an example of encoded assertion.</span></span> <span data-ttu-id="d47c8-131">Si observa detenidamente, verá tres secciones separadas por puntos (.).</span><span class="sxs-lookup"><span data-stu-id="d47c8-131">If you look carefully, you notice three sections separated by dots (.).</span></span>
+<span data-ttu-id="d47c8-132">primera sección de Hello codifica Hola encabezado, Hola segundo Hola carga, y hello en último lugar es signatura de hello calculada por certificados de Hola de contenido de Hola de dos primeras secciones de Hola.</span><span class="sxs-lookup"><span data-stu-id="d47c8-132">hello first section encodes hello header, hello second hello payload, and hello last is hello signature computed with hello certificates from hello content of hello first two sections.</span></span>
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-### <a name="register-your-certificate-with-azure-ad"></a><span data-ttu-id="55970-133">Registro del certificado con Azure AD</span><span class="sxs-lookup"><span data-stu-id="55970-133">Register your certificate with Azure AD</span></span>
-<span data-ttu-id="55970-134">Para asociar las credenciales del certificado con la aplicación de cliente en Azure AD, debe editar el manifiesto de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="55970-134">To associate the certificate credential with the client application in Azure AD, you need to edit the application manifest.</span></span>
-<span data-ttu-id="55970-135">Si tiene un certificado, debe calcular:</span><span class="sxs-lookup"><span data-stu-id="55970-135">Having hold of a certificate, you need to compute:</span></span>
-- <span data-ttu-id="55970-136">`$base64Thumbprint`, que es la codificación base64 del hash del certificado</span><span class="sxs-lookup"><span data-stu-id="55970-136">`$base64Thumbprint`, which is the base64 encoding of the certificate Hash</span></span>
-- <span data-ttu-id="55970-137">`$base64Value`, que es la codificación base64 de los datos sin procesar del certificado</span><span class="sxs-lookup"><span data-stu-id="55970-137">`$base64Value`, which is the base64 encoding of the certificate raw data</span></span>
+### <a name="register-your-certificate-with-azure-ad"></a><span data-ttu-id="d47c8-133">Registro del certificado con Azure AD</span><span class="sxs-lookup"><span data-stu-id="d47c8-133">Register your certificate with Azure AD</span></span>
+<span data-ttu-id="d47c8-134">credencial de certificado de hello tooassociate con la aplicación de cliente de hello en Azure AD, deberá manifiesto de aplicación de tooedit Hola.</span><span class="sxs-lookup"><span data-stu-id="d47c8-134">tooassociate hello certificate credential with hello client application in Azure AD, you need tooedit hello application manifest.</span></span>
+<span data-ttu-id="d47c8-135">Tiene la suspensión de un certificado, debe toocompute:</span><span class="sxs-lookup"><span data-stu-id="d47c8-135">Having hold of a certificate, you need toocompute:</span></span>
+- <span data-ttu-id="d47c8-136">`$base64Thumbprint`, que es Hola codificación base64 del certificado de hello Hash</span><span class="sxs-lookup"><span data-stu-id="d47c8-136">`$base64Thumbprint`, which is hello base64 encoding of hello certificate Hash</span></span>
+- <span data-ttu-id="d47c8-137">`$base64Value`, que es Hola codificación base64 de datos sin procesar del certificado Hola</span><span class="sxs-lookup"><span data-stu-id="d47c8-137">`$base64Value`, which is hello base64 encoding of hello certificate raw data</span></span>
 
-<span data-ttu-id="55970-138">También deberá proporcionar un GUID para identificar la clave en el manifiesto de la aplicación (`$keyId`)</span><span class="sxs-lookup"><span data-stu-id="55970-138">you also need to provide a GUID to identify the key in the application manifest (`$keyId`)</span></span>
+<span data-ttu-id="d47c8-138">También necesita una clave de hello tooidentify GUID en el manifiesto de aplicación Hola tooprovide (`$keyId`)</span><span class="sxs-lookup"><span data-stu-id="d47c8-138">you also need tooprovide a GUID tooidentify hello key in hello application manifest (`$keyId`)</span></span>
 
-<span data-ttu-id="55970-139">En el registro de aplicación de Azure para la aplicación cliente, abra el manifiesto de aplicación y reemplace la propiedad *keyCredentials* con la información del nuevo certificado usando el siguiente esquema:</span><span class="sxs-lookup"><span data-stu-id="55970-139">In the Azure app registration for the client application, open the application manifest, and replace the *keyCredentials* property with your new certificate information using the following schema:</span></span>
+<span data-ttu-id="d47c8-139">En el registro de aplicación de Azure para la aplicación de cliente de Hola Hola, abra el manifiesto de aplicación de Hola y reemplace hello *keyCredentials* propiedad con la información del nuevo certificado con hello después de esquema:</span><span class="sxs-lookup"><span data-stu-id="d47c8-139">In hello Azure app registration for hello client application, open hello application manifest, and replace hello *keyCredentials* property with your new certificate information using hello following schema:</span></span>
 ```
 "keyCredentials": [
     {
@@ -101,4 +101,4 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ]
 ```
 
-<span data-ttu-id="55970-140">Guarde las modificaciones en el manifiesto de aplicación y cárguelo en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="55970-140">Save the edits to the application manifest, and upload to Azure AD.</span></span> <span data-ttu-id="55970-141">La propiedad keyCredentials es multivalor, por lo que puede cargar varios certificados para una administración de claves más eficaz.</span><span class="sxs-lookup"><span data-stu-id="55970-141">The keyCredentials property is multi-valued, so you may upload multiple certificates for richer key management.</span></span>
+<span data-ttu-id="d47c8-140">Guardar el manifiesto de aplicación de hello ediciones toohello y cargar tooAzure AD.</span><span class="sxs-lookup"><span data-stu-id="d47c8-140">Save hello edits toohello application manifest, and upload tooAzure AD.</span></span> <span data-ttu-id="d47c8-141">propiedad de credenciales de clave de Hello es multivalor, por lo que puede cargar varios certificados para una administración de claves.</span><span class="sxs-lookup"><span data-stu-id="d47c8-141">hello keyCredentials property is multi-valued, so you may upload multiple certificates for richer key management.</span></span>

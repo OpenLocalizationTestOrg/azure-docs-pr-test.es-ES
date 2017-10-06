@@ -1,6 +1,6 @@
 ---
-title: MapReduce y Escritorio remoto con Hadoop en HDInsight (Azure) | Microsoft Docs
-description: "Obtenga información acerca de cómo usar Escritorio remoto para conectarse a Hadoop en HDInsight y ejecutar trabajos de MapReduce."
+title: aaaMapReduce y el escritorio remoto con Hadoop en HDInsight - Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse escritorio remoto tooconnect tooHadoop en HDInsight y ejecución de los trabajos de MapReduce."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,71 +16,71 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bdbbcf59ca86dd1b170471aa9e12334a04c23667
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a><span data-ttu-id="78746-103">Uso de MapReduce de Hadoop en HDInsight con Escritorio remoto</span><span class="sxs-lookup"><span data-stu-id="78746-103">Use MapReduce in Hadoop on HDInsight with Remote Desktop</span></span>
+# <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a><span data-ttu-id="1b29c-103">Uso de MapReduce de Hadoop en HDInsight con Escritorio remoto</span><span class="sxs-lookup"><span data-stu-id="1b29c-103">Use MapReduce in Hadoop on HDInsight with Remote Desktop</span></span>
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-<span data-ttu-id="78746-104">En este artículo, obtendrá información sobre cómo conectarse a un clúster de Hadoop en HDInsight mediante Escritorio remoto y, a continuación, ejecutar trabajos de MapReduce mediante el comando de Hadoop.</span><span class="sxs-lookup"><span data-stu-id="78746-104">In this article, you will learn how to connect to a Hadoop on HDInsight cluster by using Remote Desktop and then run MapReduce jobs by using the Hadoop command.</span></span>
+<span data-ttu-id="1b29c-104">En este artículo, se obtenga información acerca de cómo tooconnect tooa Hadoop en HDInsight de clúster mediante Escritorio remoto y, a continuación, ejecutar trabajos MapReduce mediante comandos de Hadoop de Hola.</span><span class="sxs-lookup"><span data-stu-id="1b29c-104">In this article, you will learn how tooconnect tooa Hadoop on HDInsight cluster by using Remote Desktop and then run MapReduce jobs by using hello Hadoop command.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="78746-105">Escritorio remoto solo está disponible en los clústeres de HDInsight basados en Windows.</span><span class="sxs-lookup"><span data-stu-id="78746-105">Remote Desktop is only available on Windows-based HDInsight clusters.</span></span> <span data-ttu-id="78746-106">Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores.</span><span class="sxs-lookup"><span data-stu-id="78746-106">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="78746-107">Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="78746-107">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
+> <span data-ttu-id="1b29c-105">Escritorio remoto solo está disponible en los clústeres de HDInsight basados en Windows.</span><span class="sxs-lookup"><span data-stu-id="1b29c-105">Remote Desktop is only available on Windows-based HDInsight clusters.</span></span> <span data-ttu-id="1b29c-106">Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior.</span><span class="sxs-lookup"><span data-stu-id="1b29c-106">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="1b29c-107">Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="1b29c-107">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 >
-> <span data-ttu-id="78746-108">Para HDInsight 3.4 o superior, consulte [Uso de MapReduce con SSH](hdinsight-hadoop-use-mapreduce-ssh.md) para más información sobre cómo conectarse al clúster de HDInsight y ejecutar trabajos de MapReduce.</span><span class="sxs-lookup"><span data-stu-id="78746-108">For HDInsight 3.4 or greater, see [Use MapReduce with SSH](hdinsight-hadoop-use-mapreduce-ssh.md) for information on connecting to the HDInsight cluster and running MapReduce jobs.</span></span>
+> <span data-ttu-id="1b29c-108">Para HDInsight 3.4 o superior, consulte [MapReduce de uso mediante SSH](hdinsight-hadoop-use-mapreduce-ssh.md) para obtener información sobre cómo conectar el clúster de HDInsight toohello y ejecutar trabajos de MapReduce.</span><span class="sxs-lookup"><span data-stu-id="1b29c-108">For HDInsight 3.4 or greater, see [Use MapReduce with SSH](hdinsight-hadoop-use-mapreduce-ssh.md) for information on connecting toohello HDInsight cluster and running MapReduce jobs.</span></span>
 
-## <span data-ttu-id="78746-109"><a id="prereq"></a>Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="78746-109"><a id="prereq"></a>Prerequisites</span></span>
-<span data-ttu-id="78746-110">Para completar los pasos de este artículo, necesitará lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="78746-110">To complete the steps in this article, you will need the following:</span></span>
+## <span data-ttu-id="1b29c-109"><a id="prereq"></a>Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="1b29c-109"><a id="prereq"></a>Prerequisites</span></span>
+<span data-ttu-id="1b29c-110">pasos de hello toocomplete en este artículo, se necesita Hola siguiente:</span><span class="sxs-lookup"><span data-stu-id="1b29c-110">toocomplete hello steps in this article, you will need hello following:</span></span>
 
-* <span data-ttu-id="78746-111">Un clúster de HDInsight basado en Windows (Hadoop en HDInsight)</span><span class="sxs-lookup"><span data-stu-id="78746-111">A Windows-based HDInsight (Hadoop on HDInsight) cluster</span></span>
-* <span data-ttu-id="78746-112">Un equipo cliente con Windows 10, Windows 8 o Windows 7</span><span class="sxs-lookup"><span data-stu-id="78746-112">A client computer running Windows 10, Windows 8, or Windows 7</span></span>
+* <span data-ttu-id="1b29c-111">Un clúster de HDInsight basado en Windows (Hadoop en HDInsight)</span><span class="sxs-lookup"><span data-stu-id="1b29c-111">A Windows-based HDInsight (Hadoop on HDInsight) cluster</span></span>
+* <span data-ttu-id="1b29c-112">Un equipo cliente con Windows 10, Windows 8 o Windows 7</span><span class="sxs-lookup"><span data-stu-id="1b29c-112">A client computer running Windows 10, Windows 8, or Windows 7</span></span>
 
-## <span data-ttu-id="78746-113"><a id="connect"></a>Conexión con el Escritorio remoto</span><span class="sxs-lookup"><span data-stu-id="78746-113"><a id="connect"></a>Connect with Remote Desktop</span></span>
-<span data-ttu-id="78746-114">Habilite el Escritorio remoto para el clúster de HDInsight y conéctese a él siguiendo las instrucciones dadas en [Conexión a los clústeres de HDInsight con RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).</span><span class="sxs-lookup"><span data-stu-id="78746-114">Enable Remote Desktop for the HDInsight cluster, then connect to it by following the instructions at [Connect to HDInsight clusters using RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).</span></span>
+## <span data-ttu-id="1b29c-113"><a id="connect"></a>Conexión con el Escritorio remoto</span><span class="sxs-lookup"><span data-stu-id="1b29c-113"><a id="connect"></a>Connect with Remote Desktop</span></span>
+<span data-ttu-id="1b29c-114">Habilitar Escritorio remoto para el clúster de HDInsight de Hola y conéctela tooit siguiendo las instrucciones de hello en [conectarse mediante RDP de clústeres de tooHDInsight](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).</span><span class="sxs-lookup"><span data-stu-id="1b29c-114">Enable Remote Desktop for hello HDInsight cluster, then connect tooit by following hello instructions at [Connect tooHDInsight clusters using RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).</span></span>
 
-## <span data-ttu-id="78746-115"><a id="hadoop"></a>Uso del comando Hadoop</span><span class="sxs-lookup"><span data-stu-id="78746-115"><a id="hadoop"></a>Use the Hadoop command</span></span>
-<span data-ttu-id="78746-116">Una vez conectado al escritorio para el clúster de HDInsight, siga estos pasos para ejecutar un trabajo de MapReduce mediante el comando de Hadoop:</span><span class="sxs-lookup"><span data-stu-id="78746-116">When you are connected to the desktop for the HDInsight cluster, use the following steps to run a MapReduce job by using the Hadoop command:</span></span>
+## <span data-ttu-id="1b29c-115"><a id="hadoop"></a>Usar comandos de Hadoop de Hola</span><span class="sxs-lookup"><span data-stu-id="1b29c-115"><a id="hadoop"></a>Use hello Hadoop command</span></span>
+<span data-ttu-id="1b29c-116">Cuando haya conectado toohello escritorio para clúster de HDInsight de hello, use Hola después toorun pasos un trabajo de MapReduce con hello Hadoop comando:</span><span class="sxs-lookup"><span data-stu-id="1b29c-116">When you are connected toohello desktop for hello HDInsight cluster, use hello following steps toorun a MapReduce job by using hello Hadoop command:</span></span>
 
-1. <span data-ttu-id="78746-117">Desde el escritorio de HDInsight, inicie la **línea de comandos de Hadoop**.</span><span class="sxs-lookup"><span data-stu-id="78746-117">From the HDInsight desktop, start the **Hadoop Command Line**.</span></span> <span data-ttu-id="78746-118">Se abrirá un nuevo símbolo del sistema en el directorio **c:\apps\dist\hadoop-&lt;número de versión>**.</span><span class="sxs-lookup"><span data-stu-id="78746-118">This opens a new command prompt in the **c:\apps\dist\hadoop-&lt;version number>** directory.</span></span>
+1. <span data-ttu-id="1b29c-117">Desde el escritorio de HDInsight de hello, inicie hello **línea de comandos de Hadoop**.</span><span class="sxs-lookup"><span data-stu-id="1b29c-117">From hello HDInsight desktop, start hello **Hadoop Command Line**.</span></span> <span data-ttu-id="1b29c-118">Se abre un nuevo símbolo en hello **c:\apps\dist\hadoop-&lt;número de versión >** directory.</span><span class="sxs-lookup"><span data-stu-id="1b29c-118">This opens a new command prompt in hello **c:\apps\dist\hadoop-&lt;version number>** directory.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="78746-119">El número de versión cambia cuando se actualiza Hadoop.</span><span class="sxs-lookup"><span data-stu-id="78746-119">The version number changes as Hadoop is updated.</span></span> <span data-ttu-id="78746-120">La variable de entorno **HADOOP_HOME** puede usarse para encontrar la ruta de acceso.</span><span class="sxs-lookup"><span data-stu-id="78746-120">The **HADOOP_HOME** environment variable can be used to find the path.</span></span> <span data-ttu-id="78746-121">Por ejemplo, `cd %HADOOP_HOME%` cambiará los directorios al directorio de Hadoop, sin que sea necesario conocer el número de versión.</span><span class="sxs-lookup"><span data-stu-id="78746-121">For example, `cd %HADOOP_HOME%` changes directories to the Hadoop directory, without requiring you to know the version number.</span></span>
+   > <span data-ttu-id="1b29c-119">número de versión de Hola cambia cuando se actualiza Hadoop.</span><span class="sxs-lookup"><span data-stu-id="1b29c-119">hello version number changes as Hadoop is updated.</span></span> <span data-ttu-id="1b29c-120">Hola **HADOOP_HOME** variable de entorno puede ser la ruta de acceso de toofind usado Hola.</span><span class="sxs-lookup"><span data-stu-id="1b29c-120">hello **HADOOP_HOME** environment variable can be used toofind hello path.</span></span> <span data-ttu-id="1b29c-121">Por ejemplo, `cd %HADOOP_HOME%` directorio de Hadoop en toohello de directorios de cambios, sin necesidad de número de versión de hello tooknow.</span><span class="sxs-lookup"><span data-stu-id="1b29c-121">For example, `cd %HADOOP_HOME%` changes directories toohello Hadoop directory, without requiring you tooknow hello version number.</span></span>
    >
    >
-2. <span data-ttu-id="78746-122">Para usar el comando de **Hadoop** para ejecutar un trabajo de MapReduce de ejemplo, utilice el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="78746-122">To use the **Hadoop** command to run an example MapReduce job, use the following command:</span></span>
+2. <span data-ttu-id="1b29c-122">Hola toouse **Hadoop** toorun un trabajo de MapReduce de ejemplo de comando, use Hola siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="1b29c-122">toouse hello **Hadoop** command toorun an example MapReduce job, use hello following command:</span></span>
 
         hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    <span data-ttu-id="78746-123">Se inicia la clase **wordcount**, incluida en el archivo **hadoop-mapreduce-examples.jar** del directorio actual.</span><span class="sxs-lookup"><span data-stu-id="78746-123">This starts the **wordcount** class, which is contained in the **hadoop-mapreduce-examples.jar** file in the current directory.</span></span> <span data-ttu-id="78746-124">Como entrada, usa el documento **wasb://example/data/gutenberg/davinci.txt** y la salida se almacena en **wasb:///ejemplo/data/WordCountOutput**.</span><span class="sxs-lookup"><span data-stu-id="78746-124">As input, it uses the **wasb://example/data/gutenberg/davinci.txt** document, and output is stored at: **wasb:///example/data/WordCountOutput**.</span></span>
+    <span data-ttu-id="1b29c-123">Esto inicia hello **wordcount** (clase), que se encuentra en hello **archivo hadoop mapreduce examples.jar** archivo Hola de directorio actual.</span><span class="sxs-lookup"><span data-stu-id="1b29c-123">This starts hello **wordcount** class, which is contained in hello **hadoop-mapreduce-examples.jar** file in hello current directory.</span></span> <span data-ttu-id="1b29c-124">Como entrada, utiliza hello **wasb://example/data/gutenberg/davinci.txt** documento y la salida se almacena en: **wasb: / / / ejemplo/datos/WordCountOutput**.</span><span class="sxs-lookup"><span data-stu-id="1b29c-124">As input, it uses hello **wasb://example/data/gutenberg/davinci.txt** document, and output is stored at: **wasb:///example/data/WordCountOutput**.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="78746-125">Para obtener más información acerca de este trabajo de MapReduce y los datos de ejemplo, consulte <a href="hdinsight-use-mapreduce.md">Uso de MapReduce en Hadoop de HDInsight</a>.</span><span class="sxs-lookup"><span data-stu-id="78746-125">for more information about this MapReduce job and the example data, see <a href="hdinsight-use-mapreduce.md">Use MapReduce in HDInsight Hadoop</a>.</span></span>
+   > <span data-ttu-id="1b29c-125">Para obtener más información acerca de estos datos de ejemplo de Hola y de trabajo de MapReduce, consulte <a href="hdinsight-use-mapreduce.md">uso MapReduce en Hadoop de HDInsight</a>.</span><span class="sxs-lookup"><span data-stu-id="1b29c-125">for more information about this MapReduce job and hello example data, see <a href="hdinsight-use-mapreduce.md">Use MapReduce in HDInsight Hadoop</a>.</span></span>
    >
    >
-3. <span data-ttu-id="78746-126">El trabajo emite detalles cuando se procesa y devuelve información similar a la siguiente cuando finaliza el trabajo:</span><span class="sxs-lookup"><span data-stu-id="78746-126">The job emits details as it is processed, and it returns information similar to the following when the job is complete:</span></span>
+3. <span data-ttu-id="1b29c-126">trabajo de Hello emite detalles tal y como lo procesa y devuelve siguiente toohello similar de información cuando se complete el trabajo de hello:</span><span class="sxs-lookup"><span data-stu-id="1b29c-126">hello job emits details as it is processed, and it returns information similar toohello following when hello job is complete:</span></span>
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
-4. <span data-ttu-id="78746-127">Una vez completado, use el comando siguiente para enumerar los archivos de salida almacenados en **wasb://example/data/WordCountOutput**:</span><span class="sxs-lookup"><span data-stu-id="78746-127">When the job is complete, use the following command to list the output files stored at **wasb://example/data/WordCountOutput**:</span></span>
+4. <span data-ttu-id="1b29c-127">Cuando se complete el trabajo de hello, usar hello después de archivos de salida de comando toolist Hola almacenados en **wasb://example/data/WordCountOutput**:</span><span class="sxs-lookup"><span data-stu-id="1b29c-127">When hello job is complete, use hello following command toolist hello output files stored at **wasb://example/data/WordCountOutput**:</span></span>
 
         hadoop fs -ls wasb:///example/data/WordCountOutput
 
-    <span data-ttu-id="78746-128">Se deberían mostrar dos archivos, **_SUCCESS** y **part-r-00000**.</span><span class="sxs-lookup"><span data-stu-id="78746-128">This should display two files, **_SUCCESS** and **part-r-00000**.</span></span> <span data-ttu-id="78746-129">El archivo **part-r-00000** contiene la salida de este trabajo.</span><span class="sxs-lookup"><span data-stu-id="78746-129">The **part-r-00000** file contains the output for this job.</span></span>
+    <span data-ttu-id="1b29c-128">Se deberían mostrar dos archivos, **_SUCCESS** y **part-r-00000**.</span><span class="sxs-lookup"><span data-stu-id="1b29c-128">This should display two files, **_SUCCESS** and **part-r-00000**.</span></span> <span data-ttu-id="1b29c-129">Hola **parte-r-00000** archivo contiene la salida de hello para este trabajo.</span><span class="sxs-lookup"><span data-stu-id="1b29c-129">hello **part-r-00000** file contains hello output for this job.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="78746-130">Algunos trabajos de MapReduce pueden dividir los resultados entre varios archivos **part-r-####** .</span><span class="sxs-lookup"><span data-stu-id="78746-130">Some MapReduce jobs may split the results across multiple **part-r-#####** files.</span></span> <span data-ttu-id="78746-131">Si es así, utilice el sufijo #### para indicar el orden de los archivos.</span><span class="sxs-lookup"><span data-stu-id="78746-131">If so, use the ##### suffix to indicate the order of the files.</span></span>
+   > <span data-ttu-id="1b29c-130">Pueden que algunos de estos trabajos MapReduce divida resultados Hola entre varios **parte-r-###** archivos.</span><span class="sxs-lookup"><span data-stu-id="1b29c-130">Some MapReduce jobs may split hello results across multiple **part-r-#####** files.</span></span> <span data-ttu-id="1b29c-131">Si es así, usar hello ### tooindicate Hola orden de los archivos de Hola de sufijos.</span><span class="sxs-lookup"><span data-stu-id="1b29c-131">If so, use hello ##### suffix tooindicate hello order of hello files.</span></span>
    >
    >
-5. <span data-ttu-id="78746-132">Para ver la salida, use el comando siguiente:</span><span class="sxs-lookup"><span data-stu-id="78746-132">To view the output, use the following command:</span></span>
+5. <span data-ttu-id="1b29c-132">salida de hello tooview, Hola de uso siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="1b29c-132">tooview hello output, use hello following command:</span></span>
 
         hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-    <span data-ttu-id="78746-133">Se mostrará una lista de las palabras contenidas en el archivo **wasb://example/data/gutenberg/davinci.txt**, junto con el número de veces que aparecía cada palabra.</span><span class="sxs-lookup"><span data-stu-id="78746-133">This displays a list of the words that are contained in the **wasb://example/data/gutenberg/davinci.txt** file, along with the number of times each word occured.</span></span> <span data-ttu-id="78746-134">El siguiente es un ejemplo de los datos que estarán contenidos en el archivo:</span><span class="sxs-lookup"><span data-stu-id="78746-134">The following is an example of the data that will be contained in the file:</span></span>
+    <span data-ttu-id="1b29c-133">Esto muestra una lista de palabras de Hola que figuran en hello **wasb://example/data/gutenberg/davinci.txt** archivo, junto con el número de Hola de veces que se produjo cada palabra.</span><span class="sxs-lookup"><span data-stu-id="1b29c-133">This displays a list of hello words that are contained in hello **wasb://example/data/gutenberg/davinci.txt** file, along with hello number of times each word occured.</span></span> <span data-ttu-id="1b29c-134">Hola te mostramos un ejemplo de Hola datos que se incluirán en el archivo hello:</span><span class="sxs-lookup"><span data-stu-id="1b29c-134">hello following is an example of hello data that will be contained in hello file:</span></span>
 
         wreathed        3
         wreathing       1
@@ -90,15 +90,15 @@ ms.lasthandoff: 08/03/2017
         wretched        6
         wriggling       1
 
-## <span data-ttu-id="78746-135"><a id="summary"></a>Resumen</span><span class="sxs-lookup"><span data-stu-id="78746-135"><a id="summary"></a>Summary</span></span>
-<span data-ttu-id="78746-136">Como se puede ver, el comando de Hadoop proporciona una manera fácil de ejecutar trabajos de MapReduce en un clúster de HDInsight y, a continuación, ver la salida del trabajo.</span><span class="sxs-lookup"><span data-stu-id="78746-136">As you can see, the Hadoop command provides an easy way to run MapReduce jobs on an HDInsight cluster and then view the job output.</span></span>
+## <span data-ttu-id="1b29c-135"><a id="summary"></a>Resumen</span><span class="sxs-lookup"><span data-stu-id="1b29c-135"><a id="summary"></a>Summary</span></span>
+<span data-ttu-id="1b29c-136">Como puede ver, hello Hadoop comando proporciona una toorun fácilmente trabajos MapReduce en un clúster de HDInsight y, a continuación, ver la salida de trabajo Hola.</span><span class="sxs-lookup"><span data-stu-id="1b29c-136">As you can see, hello Hadoop command provides an easy way toorun MapReduce jobs on an HDInsight cluster and then view hello job output.</span></span>
 
-## <span data-ttu-id="78746-137"><a id="nextsteps"></a>Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="78746-137"><a id="nextsteps"></a>Next steps</span></span>
-<span data-ttu-id="78746-138">Para obtener información general sobre los trabajos de MapReduce en HDInsight:</span><span class="sxs-lookup"><span data-stu-id="78746-138">For general information about MapReduce jobs in HDInsight:</span></span>
+## <span data-ttu-id="1b29c-137"><a id="nextsteps"></a>Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="1b29c-137"><a id="nextsteps"></a>Next steps</span></span>
+<span data-ttu-id="1b29c-138">Para obtener información general sobre los trabajos de MapReduce en HDInsight:</span><span class="sxs-lookup"><span data-stu-id="1b29c-138">For general information about MapReduce jobs in HDInsight:</span></span>
 
-* [<span data-ttu-id="78746-139">Uso de MapReduce en Hadoop de HDInsight</span><span class="sxs-lookup"><span data-stu-id="78746-139">Use MapReduce on HDInsight Hadoop</span></span>](hdinsight-use-mapreduce.md)
+* [<span data-ttu-id="1b29c-139">Uso de MapReduce en Hadoop de HDInsight</span><span class="sxs-lookup"><span data-stu-id="1b29c-139">Use MapReduce on HDInsight Hadoop</span></span>](hdinsight-use-mapreduce.md)
 
-<span data-ttu-id="78746-140">Para obtener información sobre otras maneras de trabajar con Hadoop en HDInsight:</span><span class="sxs-lookup"><span data-stu-id="78746-140">For information about other ways you can work with Hadoop on HDInsight:</span></span>
+<span data-ttu-id="1b29c-140">Para obtener información sobre otras maneras de trabajar con Hadoop en HDInsight:</span><span class="sxs-lookup"><span data-stu-id="1b29c-140">For information about other ways you can work with Hadoop on HDInsight:</span></span>
 
-* [<span data-ttu-id="78746-141">Uso de Hive con Hadoop en HDInsight</span><span class="sxs-lookup"><span data-stu-id="78746-141">Use Hive with Hadoop on HDInsight</span></span>](hdinsight-use-hive.md)
-* [<span data-ttu-id="78746-142">Uso de Pig con Hadoop en HDInsight</span><span class="sxs-lookup"><span data-stu-id="78746-142">Use Pig with Hadoop on HDInsight</span></span>](hdinsight-use-pig.md)
+* [<span data-ttu-id="1b29c-141">Uso de Hive con Hadoop en HDInsight</span><span class="sxs-lookup"><span data-stu-id="1b29c-141">Use Hive with Hadoop on HDInsight</span></span>](hdinsight-use-hive.md)
+* [<span data-ttu-id="1b29c-142">Uso de Pig con Hadoop en HDInsight</span><span class="sxs-lookup"><span data-stu-id="1b29c-142">Use Pig with Hadoop on HDInsight</span></span>](hdinsight-use-pig.md)

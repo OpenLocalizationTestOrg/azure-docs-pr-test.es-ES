@@ -1,6 +1,6 @@
 ---
-title: "Implementación de servicios de Azure API Management en varias regiones de Azure | Microsoft Docs"
-description: "Aprenda a implementar una instancia del servicio Administración de API de Azure en varias regiones de Azure."
+title: "Administración de API de Azure aaaDeploy services toomultiple Azure regiones | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toodeploy una administración de API de Azure service instancia toomultiple Azure regiones."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 1c39fee739c2f5fd4b928e1e76e1ea57f072b5f8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 04a3e762261237d73a769320a21363f99f1d20cb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a><span data-ttu-id="8549b-103">Implementación de una instancia del servicio Administración de API de Azure en varias regiones de Azure</span><span class="sxs-lookup"><span data-stu-id="8549b-103">How to deploy an Azure API Management service instance to multiple Azure regions</span></span>
-<span data-ttu-id="8549b-104">Administración de API admite la implementación en varias regiones, lo que permite a los publicadores de API distribuir un único servicio de Administración de API en el número de regiones de Azure deseado.</span><span class="sxs-lookup"><span data-stu-id="8549b-104">API Management supports multi-region deployment which enables API publishers to distribute a single API management service across any number of desired Azure regions.</span></span> <span data-ttu-id="8549b-105">Esto ayuda a reducir la latencia de solicitud que perciben los usuarios de API distribuidos geográficamente y, además, mejora la disponibilidad del servicio en caso de que una región se quede sin conexión.</span><span class="sxs-lookup"><span data-stu-id="8549b-105">This helps reduce request latency perceived by geographically distributed API consumers and also improves service availability if one region goes offline.</span></span> 
+# <a name="how-toodeploy-an-azure-api-management-service-instance-toomultiple-azure-regions"></a><span data-ttu-id="73926-103">Cómo toodeploy una administración de API de Azure service instancia toomultiple Azure regiones</span><span class="sxs-lookup"><span data-stu-id="73926-103">How toodeploy an Azure API Management service instance toomultiple Azure regions</span></span>
+<span data-ttu-id="73926-104">Administración de API admite la implementación de varias regiones que habilita la API publicadores toodistribute un único servicio de administración de API a través de cualquier número de regiones de Azure deseadas.</span><span class="sxs-lookup"><span data-stu-id="73926-104">API Management supports multi-region deployment which enables API publishers toodistribute a single API management service across any number of desired Azure regions.</span></span> <span data-ttu-id="73926-105">Esto ayuda a reducir la latencia de solicitud que perciben los usuarios de API distribuidos geográficamente y, además, mejora la disponibilidad del servicio en caso de que una región se quede sin conexión.</span><span class="sxs-lookup"><span data-stu-id="73926-105">This helps reduce request latency perceived by geographically distributed API consumers and also improves service availability if one region goes offline.</span></span> 
 
-<span data-ttu-id="8549b-106">Al crear inicialmente un servicio de API Management, este contiene solo una [unidad][unit] y reside en una sola región de Azure, designada como región primaria.</span><span class="sxs-lookup"><span data-stu-id="8549b-106">When an API Management service is created initially, it contains only one [unit][unit] and resides in a single Azure region, which is designated as the Primary Region.</span></span> <span data-ttu-id="8549b-107">Pueden agregarse otras regiones fácilmente mediante Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="8549b-107">Additional regions can be easily added through the Azure Portal.</span></span> <span data-ttu-id="8549b-108">El servidor de puerta de enlace de API Management se implementa en cada región y el tráfico de llamada se enruta a la puerta de enlace más cercana.</span><span class="sxs-lookup"><span data-stu-id="8549b-108">An API Management gateway server is deployed to each region and call traffic will be routed to the closest gateway.</span></span> <span data-ttu-id="8549b-109">Cuando una región se queda sin conexión, el tráfico se redirige automáticamente a la siguiente puerta de enlace más cercana.</span><span class="sxs-lookup"><span data-stu-id="8549b-109">If a region goes offline, the traffic is automatically re-directed to the next closest gateway.</span></span> 
+<span data-ttu-id="73926-106">Cuando se crea inicialmente un servicio de administración de API, contiene solamente un [unidad] [ unit] y reside en una sola región de Azure, que se designa como Hola región principal.</span><span class="sxs-lookup"><span data-stu-id="73926-106">When an API Management service is created initially, it contains only one [unit][unit] and resides in a single Azure region, which is designated as hello Primary Region.</span></span> <span data-ttu-id="73926-107">Otras regiones pueden agregarse fácilmente a través de hello Portal de Azure.</span><span class="sxs-lookup"><span data-stu-id="73926-107">Additional regions can be easily added through hello Azure Portal.</span></span> <span data-ttu-id="73926-108">Un servidor de puerta de enlace de administración de API es región tooeach implementado y el tráfico de llamada será toohello enrutado puerta de enlace más cercano.</span><span class="sxs-lookup"><span data-stu-id="73926-108">An API Management gateway server is deployed tooeach region and call traffic will be routed toohello closest gateway.</span></span> <span data-ttu-id="73926-109">Si una región se queda sin conexión, el tráfico de hello es toohello redirige automáticamente siguiente más cercano puerta de enlace.</span><span class="sxs-lookup"><span data-stu-id="73926-109">If a region goes offline, hello traffic is automatically re-directed toohello next closest gateway.</span></span> 
 
 > [!IMPORTANT]
-> <span data-ttu-id="8549b-110">La implementación en varias regiones solo está disponible en el nivel **[Premium][Premium]**.</span><span class="sxs-lookup"><span data-stu-id="8549b-110">Multi-region deployment is only available in the **[Premium][Premium]** tier.</span></span>
+> <span data-ttu-id="73926-110">Implementación de varias regiones solo está disponible en hello  **[Premium] [ Premium]**  capa.</span><span class="sxs-lookup"><span data-stu-id="73926-110">Multi-region deployment is only available in hello **[Premium][Premium]** tier.</span></span>
 > 
 > 
 
-## <span data-ttu-id="8549b-111"><a name="add-region"> </a>Implementación de una instancia del servicio Administración de API en una nueva región</span><span class="sxs-lookup"><span data-stu-id="8549b-111"><a name="add-region"> </a>Deploy an API Management service instance to a new region</span></span>
+## <span data-ttu-id="73926-111"><a name="add-region"></a>Implementar un área nueva de administración de API servicio instancia tooa</span><span class="sxs-lookup"><span data-stu-id="73926-111"><a name="add-region"> </a>Deploy an API Management service instance tooa new region</span></span>
 > [!NOTE]
-> <span data-ttu-id="8549b-112">Si aún no ha creado ninguna instancia del servicio de API Management, consulte [Creación de una instancia del servicio API Management][Create an API Management service instance] en el tutorial [Introducción a Azure API Management][Get started with Azure API Management].</span><span class="sxs-lookup"><span data-stu-id="8549b-112">If you have not yet created an API Management service instance, see [Create an API Management service instance][Create an API Management service instance] in the [Get started with Azure API Management][Get started with Azure API Management] tutorial.</span></span>
+> <span data-ttu-id="73926-112">Si aún no ha creado una instancia de servicio de administración de API, consulte [crear una instancia de servicio de administración de API] [ Create an API Management service instance] en hello [Introducción a administración de API de Azure] [ Get started with Azure API Management] tutorial.</span><span class="sxs-lookup"><span data-stu-id="73926-112">If you have not yet created an API Management service instance, see [Create an API Management service instance][Create an API Management service instance] in hello [Get started with Azure API Management][Get started with Azure API Management] tutorial.</span></span>
 > 
 > 
 
-<span data-ttu-id="8549b-113">En Azure Portal, vaya a la página de **escala y precios** de su instancia de servicio de API Management.</span><span class="sxs-lookup"><span data-stu-id="8549b-113">In the Azure Portal navigate to the **Scale and pricing** page for your API Management service instance.</span></span> 
+<span data-ttu-id="73926-113">Hola Portal de Azure, navegue toohello **escala y precios** página para la instancia de servicio de administración de API.</span><span class="sxs-lookup"><span data-stu-id="73926-113">In hello Azure Portal navigate toohello **Scale and pricing** page for your API Management service instance.</span></span> 
 
 ![Pestaña Escala][api-management-scale-service]
 
-<span data-ttu-id="8549b-115">Para implementar en una nueva región, haga clic en **+ Agregar región** desde la barra de herramientas.</span><span class="sxs-lookup"><span data-stu-id="8549b-115">To deploy to a new region, click on **+ Add region** from the toolbar.</span></span>
+<span data-ttu-id="73926-115">toodeploy tooa nueva región, haga clic en **+ Agregar región** de barra de herramientas de Hola.</span><span class="sxs-lookup"><span data-stu-id="73926-115">toodeploy tooa new region, click on **+ Add region** from hello toolbar.</span></span>
 
 ![Agregar región][api-management-add-region]
 
-<span data-ttu-id="8549b-117">Seleccione la ubicación en la lista desplegable y establezca el número de unidades para el control deslizante.</span><span class="sxs-lookup"><span data-stu-id="8549b-117">Select the location from the drop-down list and set the number of units for with the slider.</span></span>
+<span data-ttu-id="73926-117">Seleccionar ubicación de hello en la lista desplegable de Hola y establecer el número de Hola de unidades con el control deslizante de Hola.</span><span class="sxs-lookup"><span data-stu-id="73926-117">Select hello location from hello drop-down list and set hello number of units for with hello slider.</span></span>
 
 ![Especificar unidades][api-management-select-location-units]
 
-<span data-ttu-id="8549b-119">Haga clic en **Agregar** para colocar la selección en la tabla de ubicaciones.</span><span class="sxs-lookup"><span data-stu-id="8549b-119">Click **Add** to place your selection in the Locations table.</span></span> 
+<span data-ttu-id="73926-119">Haga clic en **agregar** tooplace su selección en la tabla de ubicaciones de Hola.</span><span class="sxs-lookup"><span data-stu-id="73926-119">Click **Add** tooplace your selection in hello Locations table.</span></span> 
 
-<span data-ttu-id="8549b-120">Repita este proceso hasta que haya configurado todas las ubicaciones y haga clic en **Guardar** en la barra de herramientas para iniciar el proceso de implementación.</span><span class="sxs-lookup"><span data-stu-id="8549b-120">Repeat this process until you have all locations configured and click **Save** from the toolbar to start the deployment process.</span></span>
+<span data-ttu-id="73926-120">Repita este proceso hasta que haya configurado de todas las ubicaciones y haga clic en **guardar** del proceso de implementación de hello barra de herramientas toostart Hola.</span><span class="sxs-lookup"><span data-stu-id="73926-120">Repeat this process until you have all locations configured and click **Save** from hello toolbar toostart hello deployment process.</span></span>
 
-## <span data-ttu-id="8549b-121"><a name="remove-region"> </a>Eliminación de una instancia de servicio de API Management de una ubicación</span><span class="sxs-lookup"><span data-stu-id="8549b-121"><a name="remove-region"> </a>Delete an API Management service instance from a location</span></span>
-<span data-ttu-id="8549b-122">En Azure Portal, vaya a la página de **escala y precios** de su instancia de servicio de API Management.</span><span class="sxs-lookup"><span data-stu-id="8549b-122">In the Azure Portal navigate to the **Scale and pricing** page for your API Management service instance.</span></span> 
+## <span data-ttu-id="73926-121"><a name="remove-region"></a>Eliminación de una instancia de servicio de API Management de una ubicación</span><span class="sxs-lookup"><span data-stu-id="73926-121"><a name="remove-region"> </a>Delete an API Management service instance from a location</span></span>
+<span data-ttu-id="73926-122">Hola Portal de Azure, navegue toohello **escala y precios** página para la instancia de servicio de administración de API.</span><span class="sxs-lookup"><span data-stu-id="73926-122">In hello Azure Portal navigate toohello **Scale and pricing** page for your API Management service instance.</span></span> 
 
 ![Pestaña Escala][api-management-scale-service]
 
-<span data-ttu-id="8549b-124">Para la ubicación que desee quitar, abra el menú contextual mediante el botón **...** situado a la derecha de la tabla.</span><span class="sxs-lookup"><span data-stu-id="8549b-124">For the location you would like to remove open the context menu using the **...** button at the right end of the table.</span></span> <span data-ttu-id="8549b-125">Haga clic en la opción **Eliminar**.</span><span class="sxs-lookup"><span data-stu-id="8549b-125">Select the **Delete** option.</span></span>
+<span data-ttu-id="73926-124">Para la ubicación de hello le gustaría tooremove abrir menú contextual de hello mediante hello **...**  situado en el extremo derecho de Hola de tabla Hola.</span><span class="sxs-lookup"><span data-stu-id="73926-124">For hello location you would like tooremove open hello context menu using hello **...** button at hello right end of hello table.</span></span> <span data-ttu-id="73926-125">Seleccione hello **eliminar** opción.</span><span class="sxs-lookup"><span data-stu-id="73926-125">Select hello **Delete** option.</span></span>
 
 ![Quitar región][api-management-remove-region]
 
-<span data-ttu-id="8549b-127">Confirme la eliminación y haga clic en **Guardar** para aplicar los cambios.</span><span class="sxs-lookup"><span data-stu-id="8549b-127">Confirm the deletion and click **Save** to apply the changes.</span></span>
+<span data-ttu-id="73926-127">Confirmar eliminación de Hola y haga clic en **guardar** cambios de hello tooapply.</span><span class="sxs-lookup"><span data-stu-id="73926-127">Confirm hello deletion and click **Save** tooapply hello changes.</span></span>
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 07/11/2017
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Get started with Azure API Management]: api-management-get-started.md
 
-[Deploy an API Management service instance to a new region]: #add-region
+[Deploy an API Management service instance tooa new region]: #add-region
 [Delete an API Management service instance from a region]: #remove-region
 
 [unit]: http://azure.microsoft.com/pricing/details/api-management/

@@ -1,6 +1,6 @@
 ---
-title: "Incorporación del conector de Google Drive a Logic Apps | Microsoft Docs"
-description: "Información general del conector de Google Drive con parámetros de la API de REST"
+title: "Conector de Google Drive aaaAdd hello en las aplicaciones lógicas | Documentos de Microsoft"
+description: "Información general del conector de Google Drive Hola con parámetros de la API de REST"
 services: 
 suite: 
 documentationcenter: 
@@ -16,32 +16,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: c066a10b33e172eb5f16eede43ec407794000c90
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d572cc07462713c3496e2cc3081e1758828bdcde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-google-drive-connector"></a><span data-ttu-id="11f0a-103">Introducción al conector de Google Drive</span><span class="sxs-lookup"><span data-stu-id="11f0a-103">Get started with the Google Drive connector</span></span>
-<span data-ttu-id="11f0a-104">Conéctese a Google Drive para crear archivos, obtener filas, etc.</span><span class="sxs-lookup"><span data-stu-id="11f0a-104">Connect to Google Drive to create files, get rows, and more.</span></span> <span data-ttu-id="11f0a-105">Con Google Drive, puede:</span><span class="sxs-lookup"><span data-stu-id="11f0a-105">With Google Drive, you can:</span></span> 
+# <a name="get-started-with-hello-google-drive-connector"></a><span data-ttu-id="b67e2-103">Empezar a trabajar con el conector de Google Drive Hola</span><span class="sxs-lookup"><span data-stu-id="b67e2-103">Get started with hello Google Drive connector</span></span>
+<span data-ttu-id="b67e2-104">Conecte tooGoogle unidad toocreate archivos, obtener filas y mucho más.</span><span class="sxs-lookup"><span data-stu-id="b67e2-104">Connect tooGoogle Drive toocreate files, get rows, and more.</span></span> <span data-ttu-id="b67e2-105">Con Google Drive, puede:</span><span class="sxs-lookup"><span data-stu-id="b67e2-105">With Google Drive, you can:</span></span> 
 
-* <span data-ttu-id="11f0a-106">Compilar el flujo de negocio en función de los datos obtenidos de la búsqueda.</span><span class="sxs-lookup"><span data-stu-id="11f0a-106">Build your business flow based on the data you get from your search.</span></span> 
-* <span data-ttu-id="11f0a-107">Usar acciones para buscar imágenes, noticias, etc.</span><span class="sxs-lookup"><span data-stu-id="11f0a-107">Use actions to search images, search the news, and more.</span></span> <span data-ttu-id="11f0a-108">Estas acciones obtienen una respuesta y luego dejan el resultado a disposición de otras acciones.</span><span class="sxs-lookup"><span data-stu-id="11f0a-108">These actions get a response, and then make the output available for other actions.</span></span> <span data-ttu-id="11f0a-109">Por ejemplo, puede buscar un vídeo y luego usar Twitter para publicar ese vídeo en una fuente de Twitter.</span><span class="sxs-lookup"><span data-stu-id="11f0a-109">For example, you can search for a video, and then use Twitter to post that video to a Twitter feed.</span></span>
+* <span data-ttu-id="b67e2-106">Genera el flujo de negocios basado en datos de hello que obtendrá de la búsqueda.</span><span class="sxs-lookup"><span data-stu-id="b67e2-106">Build your business flow based on hello data you get from your search.</span></span> 
+* <span data-ttu-id="b67e2-107">Use acciones toosearch imágenes, noticias de Hola de búsqueda y mucho más.</span><span class="sxs-lookup"><span data-stu-id="b67e2-107">Use actions toosearch images, search hello news, and more.</span></span> <span data-ttu-id="b67e2-108">Estas acciones obtención una respuesta y, a continuación, asegúrese de salida de hello disponibles para las demás acciones.</span><span class="sxs-lookup"><span data-stu-id="b67e2-108">These actions get a response, and then make hello output available for other actions.</span></span> <span data-ttu-id="b67e2-109">Por ejemplo, puede buscar para ver un vídeo y, a continuación, usar Twitter toopost que tooa vídeo que fuente Twitter.</span><span class="sxs-lookup"><span data-stu-id="b67e2-109">For example, you can search for a video, and then use Twitter toopost that video tooa Twitter feed.</span></span>
 
-<span data-ttu-id="11f0a-110">Puede empezar creando una aplicación lógica ahora. Para ello, consulte [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="11f0a-110">You can get started by creating a logic app now, see [Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span>
+<span data-ttu-id="b67e2-110">Puede empezar creando una aplicación lógica ahora. Para ello, consulte [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="b67e2-110">You can get started by creating a logic app now, see [Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span>
 
-## <a name="create-the-connection-to-google-drive"></a><span data-ttu-id="11f0a-111">Creación de la conexión a Google Drive</span><span class="sxs-lookup"><span data-stu-id="11f0a-111">Create the connection to Google Drive</span></span>
-<span data-ttu-id="11f0a-112">Al agregar este conector a las aplicaciones lógicas, debe autorizar a estas para que se conecten a su Google Drive.</span><span class="sxs-lookup"><span data-stu-id="11f0a-112">When you add this connector to your logic apps, you must authorize logic apps to connect to your Google Drive.</span></span>
+## <a name="create-hello-connection-toogoogle-drive"></a><span data-ttu-id="b67e2-111">Crear Hola conexión tooGoogle unidad</span><span class="sxs-lookup"><span data-stu-id="b67e2-111">Create hello connection tooGoogle Drive</span></span>
+<span data-ttu-id="b67e2-112">Al agregar las aplicaciones lógicas de tooyour este conector, debe autorizar lógica aplicaciones tooconnect tooyour Google Drive.</span><span class="sxs-lookup"><span data-stu-id="b67e2-112">When you add this connector tooyour logic apps, you must authorize logic apps tooconnect tooyour Google Drive.</span></span>
 
-> [!INCLUDE [Steps to create a connection to googledrive](../../includes/connectors-create-api-googledrive.md)]
+> [!INCLUDE [Steps toocreate a connection toogoogledrive](../../includes/connectors-create-api-googledrive.md)]
 > 
 > 
 
-<span data-ttu-id="11f0a-113">Después de crear la conexión, especifique las propiedades de Google Drive, como la ruta de acceso a la carpeta o el nombre de archivo.</span><span class="sxs-lookup"><span data-stu-id="11f0a-113">After you create the connection, you enter the Google Drive properties, like the folder path or file name.</span></span> 
+<span data-ttu-id="b67e2-113">Después de crear la conexión de hello, especifique propiedades de Google Drive hello, como nombre de archivo o ruta de acceso de la carpeta de Hola.</span><span class="sxs-lookup"><span data-stu-id="b67e2-113">After you create hello connection, you enter hello Google Drive properties, like hello folder path or file name.</span></span> 
 
-## <a name="connector-specific-details"></a><span data-ttu-id="11f0a-114">Detalles específicos del conector</span><span class="sxs-lookup"><span data-stu-id="11f0a-114">Connector-specific details</span></span>
+## <a name="connector-specific-details"></a><span data-ttu-id="b67e2-114">Detalles específicos del conector</span><span class="sxs-lookup"><span data-stu-id="b67e2-114">Connector-specific details</span></span>
 
-<span data-ttu-id="11f0a-115">Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/googledrive/).</span><span class="sxs-lookup"><span data-stu-id="11f0a-115">View any triggers and actions defined in the swagger, and also see any limits in the [connector details](/connectors/googledrive/).</span></span>
+<span data-ttu-id="b67e2-115">Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/googledrive/).</span><span class="sxs-lookup"><span data-stu-id="b67e2-115">View any triggers and actions defined in hello swagger, and also see any limits in hello [connector details](/connectors/googledrive/).</span></span>
 
-## <a name="more-connectors"></a><span data-ttu-id="11f0a-116">Más conectores</span><span class="sxs-lookup"><span data-stu-id="11f0a-116">More connectors</span></span>
-<span data-ttu-id="11f0a-117">Volver a la [lista de API](apis-list.md).</span><span class="sxs-lookup"><span data-stu-id="11f0a-117">Go back to the [APIs list](apis-list.md).</span></span>
+## <a name="more-connectors"></a><span data-ttu-id="b67e2-116">Más conectores</span><span class="sxs-lookup"><span data-stu-id="b67e2-116">More connectors</span></span>
+<span data-ttu-id="b67e2-117">Volver atrás toohello [lista de las API](apis-list.md).</span><span class="sxs-lookup"><span data-stu-id="b67e2-117">Go back toohello [APIs list](apis-list.md).</span></span>

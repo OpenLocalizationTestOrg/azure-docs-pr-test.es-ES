@@ -1,6 +1,6 @@
 ---
-title: "Uso de las plantillas de Azure Resource Manager para crear y configurar un área de trabajo de Log Analytics | Microsoft Docs"
-description: "Puede utilizar las plantillas de Azure Resource Manager para crear y configurar áreas de trabajo de Log Analytics."
+title: "tooCreate de plantillas de Azure Resource Manager aaaUse y configurar un área de trabajo de análisis de registro | Documentos de Microsoft"
+description: "Puede usar el Administrador de recursos de Azure plantillas toocreate y configurar áreas de trabajo de análisis de registros."
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -14,43 +14,43 @@ ms.devlang: json
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: richrund
-ms.openlocfilehash: 505b741d14c594b22108298466c646bf723ce2d4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c8f413e982f5eeed73f463524ff6f239f26c9127
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-log-analytics-using-azure-resource-manager-templates"></a><span data-ttu-id="7f4b1-103">Administración de Log Analytics mediante las plantillas de Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="7f4b1-103">Manage Log Analytics using Azure Resource Manager templates</span></span>
-<span data-ttu-id="7f4b1-104">Puede utilizar las [plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) para crear y configurar áreas de trabajo de Log Analytics.</span><span class="sxs-lookup"><span data-stu-id="7f4b1-104">You can use [Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md) to create and configure Log Analytics workspaces.</span></span> <span data-ttu-id="7f4b1-105">Estos son algunos ejemplos de las tareas que puede realizar con las plantillas:</span><span class="sxs-lookup"><span data-stu-id="7f4b1-105">Examples of the tasks you can perform with templates include:</span></span>
+# <a name="manage-log-analytics-using-azure-resource-manager-templates"></a><span data-ttu-id="92077-103">Administración de Log Analytics mediante las plantillas de Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="92077-103">Manage Log Analytics using Azure Resource Manager templates</span></span>
+<span data-ttu-id="92077-104">Puede usar [plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) toocreate y configurar áreas de trabajo de análisis de registros.</span><span class="sxs-lookup"><span data-stu-id="92077-104">You can use [Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md) toocreate and configure Log Analytics workspaces.</span></span> <span data-ttu-id="92077-105">Ejemplos de tareas de Hola que puede realizar con las plantillas incluyen:</span><span class="sxs-lookup"><span data-stu-id="92077-105">Examples of hello tasks you can perform with templates include:</span></span>
 
-* <span data-ttu-id="7f4b1-106">Crear un área de trabajo</span><span class="sxs-lookup"><span data-stu-id="7f4b1-106">Create a workspace</span></span>
-* <span data-ttu-id="7f4b1-107">Agregar una solución</span><span class="sxs-lookup"><span data-stu-id="7f4b1-107">Add a solution</span></span>
-* <span data-ttu-id="7f4b1-108">Crear búsquedas guardadas</span><span class="sxs-lookup"><span data-stu-id="7f4b1-108">Create saved searches</span></span>
-* <span data-ttu-id="7f4b1-109">Crear un grupo de equipos</span><span class="sxs-lookup"><span data-stu-id="7f4b1-109">Create a computer group</span></span>
-* <span data-ttu-id="7f4b1-110">Habilitar la recopilación de registros de IIS en equipos con el agente de Windows instalado</span><span class="sxs-lookup"><span data-stu-id="7f4b1-110">Enable collection of IIS logs from computers with the Windows agent installed</span></span>
-* <span data-ttu-id="7f4b1-111">Recopilar contadores de rendimiento en equipos Linux y Windows</span><span class="sxs-lookup"><span data-stu-id="7f4b1-111">Collect performance counters from Linux and Windows computers</span></span>
-* <span data-ttu-id="7f4b1-112">Recopilar eventos de Syslog en equipos Linux</span><span class="sxs-lookup"><span data-stu-id="7f4b1-112">Collect events from syslog on Linux computers</span></span> 
-* <span data-ttu-id="7f4b1-113">Recopilar eventos de registros de eventos de Windows</span><span class="sxs-lookup"><span data-stu-id="7f4b1-113">Collect events from Windows event logs</span></span>
-* <span data-ttu-id="7f4b1-114">Recopilar registros de eventos personalizados</span><span class="sxs-lookup"><span data-stu-id="7f4b1-114">Collect custom event logs</span></span>
-* <span data-ttu-id="7f4b1-115">Agregar al agente de Log Analytics a una máquina virtual de Azure</span><span class="sxs-lookup"><span data-stu-id="7f4b1-115">Add the log analytics agent to an Azure virtual machine</span></span>
-* <span data-ttu-id="7f4b1-116">Configurar Log Analytics para indizar los datos recopilados mediante Diagnósticos de Azure</span><span class="sxs-lookup"><span data-stu-id="7f4b1-116">Configure log analytics to index data collected using Azure diagnostics</span></span>
+* <span data-ttu-id="92077-106">Crear un área de trabajo</span><span class="sxs-lookup"><span data-stu-id="92077-106">Create a workspace</span></span>
+* <span data-ttu-id="92077-107">Agregar una solución</span><span class="sxs-lookup"><span data-stu-id="92077-107">Add a solution</span></span>
+* <span data-ttu-id="92077-108">Crear búsquedas guardadas</span><span class="sxs-lookup"><span data-stu-id="92077-108">Create saved searches</span></span>
+* <span data-ttu-id="92077-109">Crear un grupo de equipos</span><span class="sxs-lookup"><span data-stu-id="92077-109">Create a computer group</span></span>
+* <span data-ttu-id="92077-110">Habilitar la recopilación de registros de IIS desde equipos que tengan instalado el agente de Windows hello</span><span class="sxs-lookup"><span data-stu-id="92077-110">Enable collection of IIS logs from computers with hello Windows agent installed</span></span>
+* <span data-ttu-id="92077-111">Recopilar contadores de rendimiento en equipos Linux y Windows</span><span class="sxs-lookup"><span data-stu-id="92077-111">Collect performance counters from Linux and Windows computers</span></span>
+* <span data-ttu-id="92077-112">Recopilar eventos de Syslog en equipos Linux</span><span class="sxs-lookup"><span data-stu-id="92077-112">Collect events from syslog on Linux computers</span></span> 
+* <span data-ttu-id="92077-113">Recopilar eventos de registros de eventos de Windows</span><span class="sxs-lookup"><span data-stu-id="92077-113">Collect events from Windows event logs</span></span>
+* <span data-ttu-id="92077-114">Recopilar registros de eventos personalizados</span><span class="sxs-lookup"><span data-stu-id="92077-114">Collect custom event logs</span></span>
+* <span data-ttu-id="92077-115">Agregar tooan de agente de análisis de registro de hello máquina virtual de Azure</span><span class="sxs-lookup"><span data-stu-id="92077-115">Add hello log analytics agent tooan Azure virtual machine</span></span>
+* <span data-ttu-id="92077-116">Configurar datos de tooindex de análisis de registro recopilados con diagnósticos de Azure</span><span class="sxs-lookup"><span data-stu-id="92077-116">Configure log analytics tooindex data collected using Azure diagnostics</span></span>
 
-<span data-ttu-id="7f4b1-117">Este artículo proporciona ejemplos de plantilla que muestran algunas de las funciones que puede realizar desde las plantillas.</span><span class="sxs-lookup"><span data-stu-id="7f4b1-117">This article provides a template samples that illustrate some of the configuration that you can perform from templates.</span></span>
+<span data-ttu-id="92077-117">Este artículo proporciona ejemplos que muestran la parte de configuración de Hola que puede realizar desde plantillas de una plantilla.</span><span class="sxs-lookup"><span data-stu-id="92077-117">This article provides a template samples that illustrate some of hello configuration that you can perform from templates.</span></span>
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a><span data-ttu-id="7f4b1-118">Creación y configuración de un área de trabajo de Log Analytics</span><span class="sxs-lookup"><span data-stu-id="7f4b1-118">Create and configure a Log Analytics Workspace</span></span>
-<span data-ttu-id="7f4b1-119">El siguiente ejemplo de plantilla muestra cómo realizar estas tareas:</span><span class="sxs-lookup"><span data-stu-id="7f4b1-119">The following template sample illustrates how to:</span></span>
+## <a name="create-and-configure-a-log-analytics-workspace"></a><span data-ttu-id="92077-118">Creación y configuración de un área de trabajo de Log Analytics</span><span class="sxs-lookup"><span data-stu-id="92077-118">Create and configure a Log Analytics Workspace</span></span>
+<span data-ttu-id="92077-119">Hello plantilla ejemplo siguiente muestra cómo:</span><span class="sxs-lookup"><span data-stu-id="92077-119">hello following template sample illustrates how to:</span></span>
 
-1. <span data-ttu-id="7f4b1-120">Crear un área de trabajo, con establecimiento de la retención de datos incluido</span><span class="sxs-lookup"><span data-stu-id="7f4b1-120">Create a workspace, including setting data retention</span></span>
-2. <span data-ttu-id="7f4b1-121">Agregar soluciones al área de trabajo</span><span class="sxs-lookup"><span data-stu-id="7f4b1-121">Add solutions to the workspace</span></span>
-3. <span data-ttu-id="7f4b1-122">Crear búsquedas guardadas</span><span class="sxs-lookup"><span data-stu-id="7f4b1-122">Create saved searches</span></span>
-4. <span data-ttu-id="7f4b1-123">Crear un grupo de equipos</span><span class="sxs-lookup"><span data-stu-id="7f4b1-123">Create a computer group</span></span>
-5. <span data-ttu-id="7f4b1-124">Habilitar la recopilación de registros de IIS en equipos con el agente de Windows instalado</span><span class="sxs-lookup"><span data-stu-id="7f4b1-124">Enable collection of IIS logs from computers with the Windows agent installed</span></span>
-6. <span data-ttu-id="7f4b1-125">Recopilar contadores de rendimiento de discos lógicos de equipos Linux (% de inodos usados; megabytes libres; % de espacio usado; transferencias de disco/seg.; lecturas de disco/seg.; escrituras de disco/seg.)</span><span class="sxs-lookup"><span data-stu-id="7f4b1-125">Collect Logical Disk perf counters from Linux computers (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)</span></span>
-7. <span data-ttu-id="7f4b1-126">Recopilar eventos de Syslog de equipos Linux</span><span class="sxs-lookup"><span data-stu-id="7f4b1-126">Collect syslog events from Linux computers</span></span>
-8. <span data-ttu-id="7f4b1-127">Recopilar eventos de error y advertencia del registro de eventos de aplicación de los equipos de Windows</span><span class="sxs-lookup"><span data-stu-id="7f4b1-127">Collect Error and Warning events from the Application Event Log from Windows computers</span></span>
-9. <span data-ttu-id="7f4b1-128">Recopilar contadores de rendimiento de MB disponibles de equipos Windows</span><span class="sxs-lookup"><span data-stu-id="7f4b1-128">Collect Memory Available Mbytes performance counter from Windows computers</span></span>
-10. <span data-ttu-id="7f4b1-129">Recopilar registros personalizados</span><span class="sxs-lookup"><span data-stu-id="7f4b1-129">Collect a custom log</span></span> 
-11. <span data-ttu-id="7f4b1-130">Recopilar registros de IIS s de eventos de Windows escritos por Diagnósticos de Azure en una cuenta de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="7f4b1-130">Collect IIS logs and Windows Event logs written by Azure diagnostics to a storage account</span></span>
+1. <span data-ttu-id="92077-120">Crear un área de trabajo, con establecimiento de la retención de datos incluido</span><span class="sxs-lookup"><span data-stu-id="92077-120">Create a workspace, including setting data retention</span></span>
+2. <span data-ttu-id="92077-121">Agregar área de trabajo de soluciones toohello</span><span class="sxs-lookup"><span data-stu-id="92077-121">Add solutions toohello workspace</span></span>
+3. <span data-ttu-id="92077-122">Crear búsquedas guardadas</span><span class="sxs-lookup"><span data-stu-id="92077-122">Create saved searches</span></span>
+4. <span data-ttu-id="92077-123">Crear un grupo de equipos</span><span class="sxs-lookup"><span data-stu-id="92077-123">Create a computer group</span></span>
+5. <span data-ttu-id="92077-124">Habilitar la recopilación de registros de IIS desde equipos que tengan instalado el agente de Windows hello</span><span class="sxs-lookup"><span data-stu-id="92077-124">Enable collection of IIS logs from computers with hello Windows agent installed</span></span>
+6. <span data-ttu-id="92077-125">Recopilar contadores de rendimiento de discos lógicos de equipos Linux (% de inodos usados; megabytes libres; % de espacio usado; transferencias de disco/seg.; lecturas de disco/seg.; escrituras de disco/seg.)</span><span class="sxs-lookup"><span data-stu-id="92077-125">Collect Logical Disk perf counters from Linux computers (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)</span></span>
+7. <span data-ttu-id="92077-126">Recopilar eventos de Syslog de equipos Linux</span><span class="sxs-lookup"><span data-stu-id="92077-126">Collect syslog events from Linux computers</span></span>
+8. <span data-ttu-id="92077-127">Recopilar eventos de Error y advertencia de hello registro de eventos de aplicación de los equipos de Windows</span><span class="sxs-lookup"><span data-stu-id="92077-127">Collect Error and Warning events from hello Application Event Log from Windows computers</span></span>
+9. <span data-ttu-id="92077-128">Recopilar contadores de rendimiento de MB disponibles de equipos Windows</span><span class="sxs-lookup"><span data-stu-id="92077-128">Collect Memory Available Mbytes performance counter from Windows computers</span></span>
+10. <span data-ttu-id="92077-129">Recopilar registros personalizados</span><span class="sxs-lookup"><span data-stu-id="92077-129">Collect a custom log</span></span> 
+11. <span data-ttu-id="92077-130">Recopilar registros de IIS y registros de eventos de Windows escritos por la cuenta de almacenamiento de diagnósticos de Azure tooa</span><span class="sxs-lookup"><span data-stu-id="92077-130">Collect IIS logs and Windows Event logs written by Azure diagnostics tooa storage account</span></span>
 
 ```
 {
@@ -95,13 +95,13 @@ ms.lasthandoff: 07/11/2017
     "applicationDiagnosticsStorageAccountName": {
         "type": "string",
         "metadata": {
-          "description": "Name of the storage account with Azure diagnostics output"
+          "description": "Name of hello storage account with Azure diagnostics output"
         }
     },
     "applicationDiagnosticsStorageAccountResourceGroup": {
         "type": "string",
         "metadata": {
-          "description": "The resource group name containing the storage account with Azure diagnostics output"
+          "description": "hello resource group name containing hello storage account with Azure diagnostics output"
         }
     }
   },
@@ -426,34 +426,34 @@ ms.lasthandoff: 07/11/2017
 }
 
 ```
-### <a name="deploying-the-sample-template"></a><span data-ttu-id="7f4b1-131">Implementación de la plantilla de ejemplo</span><span class="sxs-lookup"><span data-stu-id="7f4b1-131">Deploying the sample template</span></span>
-<span data-ttu-id="7f4b1-132">Para implementar la plantilla, realice estos pasos:</span><span class="sxs-lookup"><span data-stu-id="7f4b1-132">To deploy the sample template:</span></span>
+### <a name="deploying-hello-sample-template"></a><span data-ttu-id="92077-131">Implementar la plantilla de ejemplo de Hola</span><span class="sxs-lookup"><span data-stu-id="92077-131">Deploying hello sample template</span></span>
+<span data-ttu-id="92077-132">plantilla de ejemplo de Hola toodeploy:</span><span class="sxs-lookup"><span data-stu-id="92077-132">toodeploy hello sample template:</span></span>
 
-1. <span data-ttu-id="7f4b1-133">Guarde el ejemplo adjunto en un archivo, por ejemplo, `azuredeploy.json`.</span><span class="sxs-lookup"><span data-stu-id="7f4b1-133">Save the attached sample in a file, for example `azuredeploy.json`</span></span> 
-2. <span data-ttu-id="7f4b1-134">Edite la plantilla que tenga la configuración que desee.</span><span class="sxs-lookup"><span data-stu-id="7f4b1-134">Edit the template to have the configuration you want</span></span>
-3. <span data-ttu-id="7f4b1-135">Use PowerShell o la línea de comandos para implementar la plantilla.</span><span class="sxs-lookup"><span data-stu-id="7f4b1-135">Use PowerShell or the command line to deploy the template</span></span>
+1. <span data-ttu-id="92077-133">Guardar muestra de Hola a adjunto en un archivo, por ejemplo`azuredeploy.json`</span><span class="sxs-lookup"><span data-stu-id="92077-133">Save hello attached sample in a file, for example `azuredeploy.json`</span></span> 
+2. <span data-ttu-id="92077-134">Editar configuración de Hola Hola plantilla toohave que desea</span><span class="sxs-lookup"><span data-stu-id="92077-134">Edit hello template toohave hello configuration you want</span></span>
+3. <span data-ttu-id="92077-135">Usar PowerShell o hello plantilla Hola de línea de comandos toodeploy</span><span class="sxs-lookup"><span data-stu-id="92077-135">Use PowerShell or hello command line toodeploy hello template</span></span>
 
-#### <a name="powershell"></a><span data-ttu-id="7f4b1-136">PowerShell</span><span class="sxs-lookup"><span data-stu-id="7f4b1-136">PowerShell</span></span>
+#### <a name="powershell"></a><span data-ttu-id="92077-136">PowerShell</span><span class="sxs-lookup"><span data-stu-id="92077-136">PowerShell</span></span>
 `New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json`
 
-#### <a name="command-line"></a><span data-ttu-id="7f4b1-137">Línea de comandos</span><span class="sxs-lookup"><span data-stu-id="7f4b1-137">Command line</span></span>
+#### <a name="command-line"></a><span data-ttu-id="92077-137">Línea de comandos</span><span class="sxs-lookup"><span data-stu-id="92077-137">Command line</span></span>
 ```
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
 
 
-## <a name="example-resource-manager-templates"></a><span data-ttu-id="7f4b1-138">Plantillas de Azure Resource Manager de ejemplo</span><span class="sxs-lookup"><span data-stu-id="7f4b1-138">Example Resource Manager templates</span></span>
-<span data-ttu-id="7f4b1-139">La galería de plantillas de inicio rápido de Azure incluye varias plantillas para Log Analytics, entre ellas las siguientes:</span><span class="sxs-lookup"><span data-stu-id="7f4b1-139">The Azure quickstart template gallery includes several templates for Log Analytics, including:</span></span>
+## <a name="example-resource-manager-templates"></a><span data-ttu-id="92077-138">Plantillas de Azure Resource Manager de ejemplo</span><span class="sxs-lookup"><span data-stu-id="92077-138">Example Resource Manager templates</span></span>
+<span data-ttu-id="92077-139">Galería de plantillas de inicio rápido de Azure de Hello incluye varias plantillas para análisis de registros, incluidos:</span><span class="sxs-lookup"><span data-stu-id="92077-139">hello Azure quickstart template gallery includes several templates for Log Analytics, including:</span></span>
 
-* [<span data-ttu-id="7f4b1-140">Implementación de una máquina virtual Windows con la extensión de máquina virtual de Log Analytics</span><span class="sxs-lookup"><span data-stu-id="7f4b1-140">Deploy a virtual machine running Windows with the Log Analytics VM extension</span></span>](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-* [<span data-ttu-id="7f4b1-141">Implementación de una máquina virtual Linux con la extensión de máquina virtual de Log Analytics</span><span class="sxs-lookup"><span data-stu-id="7f4b1-141">Deploy a virtual machine running Linux with the Log Analytics VM extension</span></span>](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
-* [<span data-ttu-id="7f4b1-142">Supervisión de Azure Site Recovery con un área de trabajo de Log Analytics existente</span><span class="sxs-lookup"><span data-stu-id="7f4b1-142">Monitor Azure Site Recovery using an existing Log Analytics workspace</span></span>](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
-* [<span data-ttu-id="7f4b1-143">Supervisión de Azure Web Apps con un área de trabajo de Log Analytics existente</span><span class="sxs-lookup"><span data-stu-id="7f4b1-143">Monitor Azure Web Apps using an existing Log Analytics workspace</span></span>](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [<span data-ttu-id="7f4b1-144">Supervisión de SQL Azure con un área de trabajo de Log Analytics existente</span><span class="sxs-lookup"><span data-stu-id="7f4b1-144">Monitor SQL Azure using an existing Log Analytics workspace</span></span>](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-* [<span data-ttu-id="7f4b1-145">Implementación de un clúster de Service Fabric y supervisión de este con un área de trabajo de Log Analytics</span><span class="sxs-lookup"><span data-stu-id="7f4b1-145">Deploy a Service Fabric cluster and monitor it with an existing Log Analytics workspace</span></span>](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [<span data-ttu-id="7f4b1-146">Implementación de un clúster de Service Fabric y creación de un área de trabajo de Log Analytics para supervisarlo</span><span class="sxs-lookup"><span data-stu-id="7f4b1-146">Deploy a Service Fabric cluster and create a Log Analytics workspace to monitor it</span></span>](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [<span data-ttu-id="92077-140">Implementar una máquina virtual que ejecuta Windows con hello extensión de máquina virtual de análisis de registro</span><span class="sxs-lookup"><span data-stu-id="92077-140">Deploy a virtual machine running Windows with hello Log Analytics VM extension</span></span>](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [<span data-ttu-id="92077-141">Implementar una máquina virtual con Linux con hello extensión de máquina virtual de análisis de registro</span><span class="sxs-lookup"><span data-stu-id="92077-141">Deploy a virtual machine running Linux with hello Log Analytics VM extension</span></span>](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [<span data-ttu-id="92077-142">Supervisión de Azure Site Recovery con un área de trabajo de Log Analytics existente</span><span class="sxs-lookup"><span data-stu-id="92077-142">Monitor Azure Site Recovery using an existing Log Analytics workspace</span></span>](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
+* [<span data-ttu-id="92077-143">Supervisión de Azure Web Apps con un área de trabajo de Log Analytics existente</span><span class="sxs-lookup"><span data-stu-id="92077-143">Monitor Azure Web Apps using an existing Log Analytics workspace</span></span>](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
+* [<span data-ttu-id="92077-144">Supervisión de SQL Azure con un área de trabajo de Log Analytics existente</span><span class="sxs-lookup"><span data-stu-id="92077-144">Monitor SQL Azure using an existing Log Analytics workspace</span></span>](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
+* [<span data-ttu-id="92077-145">Implementación de un clúster de Service Fabric y supervisión de este con un área de trabajo de Log Analytics</span><span class="sxs-lookup"><span data-stu-id="92077-145">Deploy a Service Fabric cluster and monitor it with an existing Log Analytics workspace</span></span>](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
+* [<span data-ttu-id="92077-146">Implementar un clúster de Service Fabric y crear un toomonitor de área de trabajo de análisis de registros,</span><span class="sxs-lookup"><span data-stu-id="92077-146">Deploy a Service Fabric cluster and create a Log Analytics workspace toomonitor it</span></span>](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
 
-## <a name="next-steps"></a><span data-ttu-id="7f4b1-147">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="7f4b1-147">Next steps</span></span>
-* [<span data-ttu-id="7f4b1-148">Implemente agentes en máquinas virtuales de Azure mediante plantillas de Resource Manager</span><span class="sxs-lookup"><span data-stu-id="7f4b1-148">Deploy agents into Azure VMs using Resource Manager templates</span></span>](log-analytics-azure-vm-extension.md)
+## <a name="next-steps"></a><span data-ttu-id="92077-147">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="92077-147">Next steps</span></span>
+* [<span data-ttu-id="92077-148">Implemente agentes en máquinas virtuales de Azure mediante plantillas de Resource Manager</span><span class="sxs-lookup"><span data-stu-id="92077-148">Deploy agents into Azure VMs using Resource Manager templates</span></span>](log-analytics-azure-vm-extension.md)
 

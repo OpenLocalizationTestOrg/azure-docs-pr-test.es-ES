@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Backup: tutoriales y referencia de API | Microsoft Docs"
-description: "Utilice la documentación de Backup para aprender a hacer copias de seguridad en la nube. Consulte tutoriales y vídeos para información sobre la copia de seguridad de aplicaciones, servidores de Windows y máquinas virtuales (VM) de Azure."
+title: "aaaAzure documentación de copia de seguridad - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Usar copia de seguridad documentación toolearn cómo tooback una toohello en la nube. Consulte tutoriales y vídeos para información sobre la copia de seguridad de aplicaciones, servidores de Windows y máquinas virtuales (VM) de Azure."
 services: backup
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 3d8b07dc9903a48f6481ceda1922479cc7cd9ef6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 648c83a3ecdc4770859fbea0cc5af9ac2d1fdfd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="backup-documentation"></a>Documentación de Backup
 
-Aprenda a usar Azure Backup en la nube a fin de proteger los datos para su retención a largo plazo y recuperación. En los tutoriales, los vídeos y otra documentación, se muestra cómo realizar copias de seguridad de datos, aplicaciones, servidores de Windows y máquinas virtuales de Azure.
+Obtenga información acerca de cómo toouse copia de seguridad de Azure en hello de la nube tooprotect para retención a largo plazo y la recuperación. Tutoriales, vídeos y otra documentación mostrarle cómo tooback los datos, aplicaciones, servidores de Windows y máquinas virtuales de Azure.
 
 <ul class="panelContent cardsFTitle">
     <li>

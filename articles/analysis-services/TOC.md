@@ -1,0 +1,62 @@
+# Información general
+## [¿Qué es Azure Analysis Services?](analysis-services-overview.md)
+## [Orígenes de datos admitidos](analysis-services-datasource.md)
+## [Permisos de usuario y autenticación](analysis-services-manage-users.md)
+## [Conectarse a orígenes de datos locales de tooon](analysis-services-gateway.md)
+## [Nivel de compatibilidad](analysis-services-compat-level.md)
+## [Alta disponibilidad](analysis-services-bcdr.md)
+
+# Primeros pasos
+## [Creación de un servidor de Azure Portal](analysis-services-create-server.md)
+## [Creación de un servidor con PowerShell](analysis-services-create-powershell.md)
+## [Implementación de un modelo de Visual Studio](analysis-services-deploy.md)
+## [Creación de un modelo en Azure Portal (versión preliminar)](analysis-services-create-model-portal.md)
+
+# Cómo demasiado
+## [Administración de un servicio](analysis-services-manage.md)
+## [Administración de usuarios de base de datos](analysis-services-database-users.md)
+## [Administración de administradores de servidor](analysis-services-server-admins.md)
+## [Instalación y configuración de una puerta de enlace de datos local](analysis-services-gateway-install.md)
+## [Obtención de bibliotecas de clientes](analysis-services-data-providers.md)
+## [Copia de seguridad y restauración](analysis-services-backup.md)
+## [Conexión con Excel](analysis-services-connect-excel.md)
+## [Conexión con Power BI](analysis-services-connect-pbi.md)
+## [Creación de un archivo .odc](analysis-services-odc.md)
+## Tutoriales
+### [Tutorial de Adventure Works](tutorials/aas-adventure-works-tutorial.md)
+### [Lección 1: Creación de un nuevo proyecto de modelo tabular](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
+### [Lección 2: Obtención de datos](tutorials/aas-lesson-2-get-data.md)
+### [Lección 3: Marcado como tabla de fechas](tutorials/aas-lesson-3-mark-as-date-table.md) 
+### [Lección 4: Creación de relaciones](tutorials/aas-lesson-4-create-relationships.md) 
+### [Lección 5: Creación de columnas calculadas](tutorials/aas-lesson-5-create-calculated-columns.md)
+### [Lección 6: Creación de medidas](tutorials/aas-lesson-6-create-measures.md)  
+### [Lección 7: Creación de indicadores clave de rendimiento](tutorials/aas-lesson-7-create-key-performance-indicators.md)  
+### [Lección 8: Creación de perspectivas](tutorials/aas-lesson-8-create-perspectives.md) 
+### [Lección 9: Creación de jerarquías](tutorials/aas-lesson-9-create-hierarchies.md) 
+### [Lección 10: Creación de particiones](tutorials/aas-lesson-10-create-partitions.md) 
+### [Lección 11: Creación de roles](tutorials/aas-lesson-11-create-roles.md)
+### [Lección 12: Análisis en Excel](tutorials/aas-lesson-12-analyze-in-excel.md)
+### [Lección 13: Implementación](tutorials/aas-lesson-13-deploy.md)
+### [Lección complementaria: Filas de detalles](tutorials/aas-supplemental-lesson-detail-rows.md)
+### [Lección complementaria: Seguridad dinámica](tutorials/aas-supplemental-lesson-dynamic-security.md)
+### [Lección complementaria: Jerarquías desiguales](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
+
+# Referencia
+## [PowerShell](analysis-services-powershell.md)
+## [REST](/rest/api/analysisservices)
+## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
+## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
+## [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
+
+# Recursos
+## [Ejemplos de código de Analysis Services en GitHub](https://github.com/Microsoft/Analysis-Services)
+## [Blog del equipo de Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/)
+## [Foro de Azure Analysis Services](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
+## [Azure Roadmap](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
+## [Estado de Azure](https://azure.microsoft.com/status/)
+## [Comentarios](https://feedback.azure.com/forums/556165-azure-analysis-services)
+## [Precios](https://azure.microsoft.com/pricing/details/analysis-services/)
+## [Calculadora de precios](https://azure.microsoft.com/pricing/calculator/)
+## [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [Vídeos](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
+
