@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Reward Gateway | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Reward Gateway."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y la puerta de enlace de recompensa."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,104 +13,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: b1a468caa22159ad603dbec1ef530e7e0e24f96d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 30cdd538471b373468c3d990e4568ddb08081a76
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Tutorial: Integración de Azure Active Directory con Reward Gateway
 
-En este tutorial, aprenderá a integrar Reward Gateway con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate puerta de enlace de recompensa con Azure Active Directory (Azure AD).
 
-Integrar Reward Gateway con Azure AD le proporciona las siguientes ventajas:
+Integración de puerta de enlace de recompensa con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a Reward Gateway.
-- Puede permitir que los usuarios inicien sesión automáticamente en Reward Gateway (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooReward puerta de enlace
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooReward puerta de enlace (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Reward Gateway, necesita los siguientes elementos:
+integración de Azure AD con puerta de enlace de recompensa tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Reward Gateway
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Adición de Reward Gateway desde la galería
+1. Agregar puerta de enlace de recompensa de galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-reward-gateway-from-the-gallery"></a>Adición de Reward Gateway desde la galería
-Para configurar la integración de Reward Gateway en Azure AD, deberá agregar Reward Gateway desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-reward-gateway-from-hello-gallery"></a>Agregar puerta de enlace de recompensa de galería de Hola
+integración de hello tooconfigure de puerta de enlace de recompensa en Azure AD, deberá tooadd puerta de enlace de recompensa de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Reward Gateway desde la galería, siga estos pasos:**
+**tooadd puerta de enlace de recompensa de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **Reward Gateway**.
+4. En el cuadro de búsqueda de hello, escriba **puerta de enlace de recompensa**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-reward-gateway-tutorial/tutorial_rewardgateway_search.png)
 
-5. En el panel de resultados, seleccione **Reward Gateway** y luego haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **puerta de enlace de recompensa**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-reward-gateway-tutorial/tutorial_rewardgateway_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Reward Gateway con un usuario de prueba denominado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Reward Gateway para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Reward Gateway.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en la puerta de enlace de recompensa es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en la puerta de enlace de recompensa debe toobe establecido.
 
-Para establecer la relación de vínculo, asigne el valor de **nombre de usuario** de Azure AD como valor de **nombre de usuario** de Reward Gateway.
+En la puerta de enlace de recompensa, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Reward Gateway, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con puerta de enlace de recompensa, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de Reward Gateway](#creating-a-reward-gateway-test-user)**: el objetivo es tener un homólogo de Britta Simon en Reward Gateway que esté vinculado a la representación del usuario en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba de puerta de enlace de recompensa](#creating-a-reward-gateway-test-user)**  -toohave un equivalente de Britta Simon en puerta de enlace de recompensa es representación toohello vinculado Azure AD del usuario.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en la aplicación Reward Gateway.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de puerta de enlace de recompensa.
 
-**Para configurar el inicio de sesión único de Azure AD con Reward Gateway, siga estos pasos:**
+**inicio de sesión único en tooconfigure Azure AD con puerta de enlace de recompensa, realizar Hola pasos:**
 
-1. En la página de integración de la aplicación **Reward Gateway** de Azure Portal, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **puerta de enlace de recompensa** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-reward-gateway-tutorial/tutorial_rewardgateway_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de Reward Gateway**, lleve a cabo los pasos siguientes:
+3. En hello **recompensa puerta de enlace de dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-reward-gateway-tutorial/tutorial_rewardgateway_url.png)
 
-    a. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón:
+    a. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:
     | |
     |--|
     | `https://<companyname>.rewardgateway.com` |
@@ -118,7 +118,7 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
     | `https://<companyname>.rewardgateway.co.nz/` |
     | `https://<companyname>.rewardgateway.com.au/` |
 
-    b. En el cuadro de texto **URL de respuesta** , escriba una dirección URL con el siguiente patrón:
+    b. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:
     | |
     |--|
     |  `https://<companyname>.rewardgateway.com/Authentication/EndLogin?idp=<Unique Id>` |
@@ -127,9 +127,9 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > Estos valores no son reales. Actualice estos valores con el identificador y la URL de respuesta reales. Póngase en contacto con [equipo de soporte técnico de Reward Gateway](mailto:clientsupport@rewardgateway.com) obtener estos valores.
+    > Estos valores no son reales. Actualizar estos valores con hello URL de identificador y la respuesta real. Póngase en contacto con [equipo de soporte técnico de puerta de enlace de recompensa](mailto:clientsupport@rewardgateway.com) tooget estos valores.
  
-4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo de metadatos de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-reward-gateway-tutorial/tutorial_rewardgateway_certificate.png) 
 
@@ -137,64 +137,64 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-reward-gateway-tutorial/tutorial_general_400.png)
 
-6. Para configurar el inicio de sesión único en **Reward Gateway**, necesita enviar el archivo **XML de metadatos** descargado al [equipo de soporte técnico de Reward Gateway](mailto:clientsupport@rewardgateway.com). Ellos se encargan de realizar esta configuración para que la conexión de SSO de SAML esté establecida correctamente en ambos lados.
+6. tooconfigure inicio de sesión único en **puerta de enlace de recompensa** lado, necesita hello toosend descargado **Metadata XML** demasiado[equipo de soporte técnico de puerta de enlace de recompensa](mailto:clientsupport@rewardgateway.com). Establecen esta Hola de toohave configuración configurada correctamente en ambos lados de la conexión de SSO de SAML.
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-reward-gateway-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-reward-gateway-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-reward-gateway-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-reward-gateway-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-reward-gateway-test-user"></a>Creación de un usuario de prueba de Reward Gateway
 
-En esta sección, creará un usuario denominado Britta Simon en Reward Gateway. Colabore con el [equipo de soporte técnico](mailto:clientsupport@rewardgateway.com) de Reward Gateway para agregar los usuarios a la plataforma de Reward Gateway.
+En esta sección, creará un usuario denominado Britta Simon en Reward Gateway. Trabajar con la puerta de enlace de recompensa [equipo de soporte técnico](mailto:clientsupport@rewardgateway.com) a los usuarios de tooadd hello en la plataforma de puerta de enlace de recompensa Hola.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Reward Gateway.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooReward puerta de enlace.
 
 ![Asignar usuario][200] 
 
-**Para asignar Britta Simon a Reward Gateway, siga estos pasos:**
+**tooassign Britta Simon tooReward puerta de enlace, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Reward Gateway**.
+2. En la lista de aplicaciones de hello, seleccione **puerta de enlace de recompensa**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-reward-gateway-tutorial/tutorial_rewardgateway_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -202,7 +202,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -210,13 +210,13 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de Reward Gateway en el panel de acceso, debería iniciar sesión automáticamente en su aplicación Reward Gateway.
+Al hacer clic en icono de puerta de enlace de recompensa Hola Hola Panel de acceso, deberá obtener aplicaciones de puerta de enlace de recompensa tooyour automáticamente ha iniciado sesión.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

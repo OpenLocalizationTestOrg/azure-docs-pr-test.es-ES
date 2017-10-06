@@ -1,6 +1,6 @@
 ---
-title: "Incorporación de una aplicación multiinquilino a la galería de aplicaciones de Azure AD | Microsoft Docs"
-description: "En este artículo se explica cómo se puede mostrar una aplicación multiinquilino personalizada en la galería de aplicaciones de Azure AD"
+title: "aaaHow tooadd una galería aplicación multiempresa toohello Azure AD | Documentos de Microsoft"
+description: "Explica cómo enumerar su aplicación multiempresa desarrollado personalizado en hello Galería de aplicaciones de Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 208f0d40bd7a8e8f35f16e1fcb09c305d833dbb2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2dc6e0d783835d2639a7e6dda172110ee860a977
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-add-a-multi-tenant-application-to-the-azure-ad-application-gallery"></a>Incorporación de una aplicación multiinquilino a la galería de aplicaciones de Azure AD
+# <a name="how-tooadd-a-multi-tenant-application-toohello-azure-ad-application-gallery"></a>¿Cómo tooadd una galería aplicación multiempresa toohello Azure AD
 
-## <a name="what-is-the-azure-ad-application-gallery"></a>¿Qué es la galería de aplicaciones de Azure AD?
+## <a name="what-is-hello-azure-ad-application-gallery"></a>¿Qué es hello Galería de aplicaciones de Azure AD?
 
-La galería de aplicaciones de Azure AD constituye un mecanismo ideal para mostrar la aplicación a los millones de clientes de Azure Active Directory y, de esta forma, ampliar el alcance y el impacto de la aplicación en el mercado. En los pasos siguientes, se explica cómo puede incluir la aplicación en la galería de aplicaciones de Azure AD.
+Galería de aplicaciones de Hello Azure AD es una excelente manera tooget la aplicación frente a todos los Hola millones de impacto para Azure Active Directory clientes toobroaden hello y alcance de la aplicación en el marketplace de Hola. Hola pasos siguientes explican cómo enumerar la aplicación Hola Galería de aplicaciones de Azure AD.
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Si la aplicación es compatible con SAML o con OpenIDConnect
-Si tiene una aplicación multiinquilino y le gustaría que apareciera en la galería de aplicaciones de Azure AD, primero debe asegurarse de que es compatible con una de las siguientes tecnologías de inicio de sesión único:
+Si tiene una aplicación de varios inquilinos que le gustaría a toolist Hola Galería de aplicaciones de Azure AD, debe asegurarse primero de que la aplicación es compatible con uno de hello siguiendo las tecnologías de inicio de sesión únicas:
 
-1. **OpenID Connect** : integración directa con Azure AD mediante OpenID Connect para autenticación y la API de consentimiento de Azure AD para configuración. Si acaba de iniciar una integración y la aplicación no es compatible con SAML, este es el modo recomendado.
-2. **SAML** : la aplicación ya tiene la capacidad de configurar proveedores de identidad de terceros mediante el protocolo SAML.
+1. **OpenID Connect** : la integración directa con Azure AD usa OpenID Connect para la autenticación y Hola consentimiento de Azure AD API para la configuración. Si es la primera vez una integración y la aplicación no es compatible con SAML, es el modo recomendado de Hola.
+2. **SAML** : la aplicación ya tiene proveedores de identidad de otro fabricante Hola capacidad tooconfigure con protocolo SAML de Hola.
 
-Si la aplicación multiinquilino es compatible con uno de estos modos de inicio de sesión único y le gustaría incluirla en la galería de aplicaciones de Azure AD, puede seguir el procedimiento del documento que se indica más abajo. Si desea empezar rápidamente, envíe un correo electrónico a **waadpartners@microsoft.com**.
+Si la aplicación es compatible con uno de estos modos de inicio de sesión únicos y le gustaría toolist su aplicación multiempresa en hello Galería de aplicaciones de Azure AD, puede seguir los pasos de hello en el documento de Hola por debajo. tooget incluye una rápida introducción envíe un correo electrónico demasiado**waadpartners@microsoft.com**.
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Si la aplicación no es compatible con SAML ni con OpenIDConnect
-Aunque la aplicación no sea compatible con ninguno de estos modos, puede incluirla en la galería. Para ello, tiene que usar nuestra tecnología de inicio de sesión único con contraseña. Si desea valorar esta opción, puede enviar un correo electrónico a **waadpartners@microsoft.com**.
+Aunque la aplicación no sea compatible con ninguno de estos modos, puede incluirla en la galería. Para ello, tiene que usar nuestra tecnología de inicio de sesión único con contraseña. Si desea que tooexplore esta opción, puede enviar un correo electrónico demasiado**waadpartners@microsoft.com**.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Anuncio de la aplicación en la galería de aplicaciones de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)
+[¿Cómo toolist la aplicación en la Galería de aplicaciones de Azure Active Directory Hola](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Huddle | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Huddle."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Huddle."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,68 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 59d4019545d39ec76bf401696338140f430630c9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0b2f6c4d839943cdd07699a1ff95dc8f90505699
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Tutorial: integración de Azure Active Directory con Huddle
 
-En este tutorial, obtendrá información sobre cómo integrar Huddle con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate Huddle con Azure Active Directory (Azure AD).
 
-La integración de Huddle con Azure AD le proporciona las siguientes ventajas:
+Integración de Huddle con Azure AD proporciona Hola siguientes ventajas:
 
-- En Azure AD se puede controlar quién tiene acceso a Huddle
-- Puede permitir que los usuarios inicien sesión automáticamente en Huddle (inicio de sesión único) con sus cuentas de Azure AD
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooHuddle
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooHuddle (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Huddle, necesita los siguientes elementos:
+integración de Azure AD tooconfigure con Huddle, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Huddle
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
 
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Incorporación de Huddle desde la Galería
+1. Agregar Huddle desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-huddle-from-the-gallery"></a>Incorporación de Huddle desde la Galería
-Para configurar la integración de Huddle en Azure AD, deberá agregar Huddle desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-huddle-from-hello-gallery"></a>Agregar Huddle desde la Galería de Hola
+integración de hello tooconfigure de Huddle en Azure AD, deberá tooadd Huddle de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Huddle desde la galería, realice los pasos siguientes:**
+**tooadd Huddle de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **Huddle**.
+4. En el cuadro de búsqueda de hello, escriba **Huddle**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-huddle-tutorial/tutorial_huddle_search.png)
 
-5. En el panel de resultados, seleccione **Huddle** y luego haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **Huddle**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-huddle-tutorial/tutorial_huddle_addfromgallery.png)
 
@@ -82,46 +82,46 @@ Para configurar la integración de Huddle en Azure AD, deberá agregar Huddle de
 
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Huddle con un usuario de prueba llamado "Britta Simon"
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Huddle para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Huddle.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Huddle es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Huddle necesidades toobe establecido.
 
-Para establecer la relación de vínculo, en Huddle, asigne el valor de **nombre de usuario** de Azure AD como valor de **nombre de usuario**.
+En Huddle, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Huddle, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con Huddle, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
 
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
 
-3. **[Creación de un usuario de prueba de Huddle](#creating-a-huddle-test-user)**: para tener un homólogo de Britta Simon en Huddle que esté vinculado a la representación de Azure AD del usuario.
+3. **[Crear un usuario de prueba de Huddle](#creating-a-huddle-test-user)**  -toohave un equivalente de Britta Simon en Huddle que es la representación toohello vinculado Azure AD del usuario.
 
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
 
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación de Huddle.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Huddle.
 
-**Para configurar el inicio de sesión único de Azure AD con Huddle, realice los pasos siguientes:**
+**tooconfigure inicio de sesión único en Azure AD con Huddle, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación **Huddle**, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **Huddle** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-huddle-tutorial/tutorial_huddle_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de Huddle**, lleve a cabo los pasos siguientes:
+3. En hello **Huddle dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-huddle-tutorial/tutorial_huddle_url.png)
 
-    En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `http://<company name>.huddle.com`.
+    Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`http://<company name>.huddle.com`
 
     > [!NOTE] 
-    > Este valor no es real. Actualícelo con la dirección URL de inicio de sesión real. Póngase en contacto con el [equipo de soporte técnico de Huddle](https://huddle.zendesk.com) para obtener este valor. 
+    > Este valor no es real. Actualice este valor con hello dirección URL de inicio de sesión real. Póngase en contacto con [equipo de soporte técnico de Huddle cliente](https://huddle.zendesk.com) tooget este valor. 
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-huddle-tutorial/tutorial_huddle_certificate.png) 
 
@@ -129,99 +129,99 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-huddle-tutorial/tutorial_general_400.png)
 
-6. En la sección **Configuración de Huddle**, haga clic en **Configurar Huddle** para abrir la ventana **Configurar inicio de sesión**. Copie los valores de **SAML Entity ID y SAML Single Sign-On Service URL** (Identificador de entidad de SAML y URL del servicio de inicio de sesión único de SAML) de la sección de **referencia rápida.** 
+6. En hello **Huddle configuración** sección, haga clic en **configurar Huddle** tooopen **configurar inicio de sesión** ventana. Hola copia **Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.** 
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-huddle-tutorial/tutorial_huddle_configure.png) 
     
-7. Para configurar el inicio de sesión único en Huddle, es preciso enviar el **certificado** descargado, la **dirección URL de inicio de sesión único de SAML** y el **identificador de entidad de SAML** al [equipo de soporte técnico de Huddle](https://huddle.zendesk.com). Dicho equipo lo configura para establecer la conexión de SSO de SAML correctamente en ambos lados.  
+7. tooconfigure inicio de sesión único en el lado de Huddle, necesita hello toosend descargado **certificado**, **SAML Single Sign-On dirección URL del servicio**, y **Id. de entidad SAML** demasiado[Equipo de soporte técnico de huddle cliente](https://huddle.zendesk.com). Establecen esta Hola de toohave configuración configurada correctamente en ambos lados de la conexión de SSO de SAML.  
    
     >[!NOTE]
-    > El inicio de sesión único debe habilitarlo el equipo de soporte técnico de Huddle. Cuando se haya completado la configuración, recibirá una notificación. 
+    > Inicio de sesión único debe toobe habilitada por el equipo de soporte técnico de Huddle Hola. Recibirá una notificación cuando se haya completado la configuración de Hola. 
     > 
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
    
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
 
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-huddle-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-huddle-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-huddle-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-huddle-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-huddle-test-user"></a>Creación de un usuario de prueba de Huddle
 
-Para permitir que los usuarios de Azure AD inicien sesión en Huddle, deben aprovisionarse en Huddle. En el caso de Huddle, el aprovisionamiento es una tarea manual.
+toolog de los usuarios de Azure AD tooenable en tooHuddle, se les deben aprovisionar en Huddle. En caso de hello de Huddle, el aprovisionamiento es una tarea manual.
 
-**Siga estos pasos para configurar el aprovisionamiento de usuario:**
+**tooconfigure aprovisionamiento de usuario, realizar Hola pasos:**
 
-1. Inicie sesión en el sitio de compañía de **Huddle** como administrador.
+1. Inicie sesión en tooyour **Huddle** como administrador.
 2. Haga clic en **Área de trabajo**.
 3. Haga clic en **Contactos\>Invitar a contactos**.
    
    ![Personas](./media/active-directory-saas-huddle-tutorial/IC787838.png "Personas")
 
-4. En la sección **Crear nueva invitación** , lleve a cabo estos pasos:
+4. Hola **crear una nueva invitación** sección, lleve a cabo Hola pasos:
    
    ![Nueva invitación](./media/active-directory-saas-huddle-tutorial/IC787839.png "Nueva invitación")
    
-   a. En la lista **Choose a team to invite people to join** (Elegir un equipo al que invitar a unirse a los contactos), seleccione **equipo**.
+   a. Hola **elegir un toojoin de personas de equipo tooinvite** lista, seleccione **equipo**.
 
-   b. Escriba la **dirección de correo electrónico** de una cuenta de Azure AD válida que desee aprovisionar en el cuadro de texto **Escriba la dirección de correo electrónico de las personas que desea invitar**.
+   b. Hola de tipo **dirección de correo electrónico** de un anuncio de Azure válido de la cuenta que desee tooprovision en demasiado**escriba la dirección de correo electrónico para las personas que desea que tooinvite** cuadro de texto.
 
    c. Haga clic en **Invitar**.   
    
     >[!NOTE]
-    > El titular de la cuenta de Azure AD recibirá un mensaje de correo electrónico con un vínculo para confirmar la cuenta antes de que se active. 
+    > Hola cuenta de Azure AD titular recibirá un correo electrónico con una cuenta de hello tooconfirm vínculo antes de activarla. 
     > 
 
 >[!NOTE]
->Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Huddle que proporcione Huddle para aprovisionar cuentas de usuario de Azure AD. 
+>Puede usar cualquier otra Huddle usuario cuenta herramienta de creación o las API proporcionadas por Huddle tooprovision cuentas de usuario de Azure AD. 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, concederá acceso a Britta Simon a Huddle para que use el inicio de sesión único de Azure.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooHuddle.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a Huddle, realice los pasos siguientes:**
+**tooassign Britta Simon tooHuddle, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Huddle**.
+2. En la lista de aplicaciones de hello, seleccione **Huddle**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-huddle-tutorial/tutorial_huddle_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -229,7 +229,7 @@ En esta sección, concederá acceso a Britta Simon a Huddle para que use el inic
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -237,14 +237,14 @@ En esta sección, concederá acceso a Britta Simon a Huddle para que use el inic
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de Huddle en el panel de acceso, debería iniciar sesión automáticamente en su aplicación de Huddle.
-Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Al hacer clic en icono de Huddle Hola Hola Panel de acceso, deberá obtener automáticamente la página de inicio de sesión de aplicación de Huddle.
+Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: "Los vínculos de la página no funcionan para una aplicación de Proxy de aplicación | Microsoft Docs"
-description: "Cómo solucionar problemas relacionados con vínculos rotos en aplicaciones de Proxy de aplicación integradas con Azure AD"
+title: "para una aplicación de Proxy de aplicación no admiten aaaLinks en la página de hello | Documentos de Microsoft"
+description: "¿Cómo tootroubleshoot problemas con vínculos rotos en aplicaciones de Proxy de aplicación que se ha integrado con Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 83c4261fab0498541591c01f9bb692b396c7b751
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 77c1e22d27c7a6436d8e57e105037c2328180481
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Los vínculos de la página no funcionan para una aplicación de Proxy de aplicación
+# <a name="links-on-hello-page-dont-work-for-an-application-proxy-application"></a>Vínculos en la página de hello no funcionan para una aplicación de Proxy de aplicación
 
-Este artículo le ayudará a entender por qué los vínculos de la aplicación de Proxy de aplicación de Azure Active Directory no funcionan correctamente.
+Este artículo le ayudará tootroubleshoot ¿por qué no funcionan los vínculos en la aplicación de Proxy de aplicación de Azure Active Directory correctamente.
 
 ## <a name="overview"></a>Información general 
-Después de publicar una aplicación de Proxy de aplicación, los únicos vínculos que funcionan de forma predeterminada son los vínculos cuyo destino aparece en la dirección URL raíz publicada. Los vínculos de las aplicaciones no funcionan, probablemente la dirección URL interna de la aplicación no incluye todos los vínculos de destino en la aplicación.
+Después de publicar una aplicación de Proxy de aplicación, vínculos de hello solamente que el trabajo de forma predeterminada en la aplicación hello son toodestinations vínculos dentro de hello publican dirección URL raíz. Hola vínculos dentro de las aplicaciones de hello no estén utilizando, Hola URL interna para la aplicación hello probablemente no incluye todos los destinos de Hola de vínculos dentro de la aplicación hello.
 
-**¿Por qué ocurre esto?** Al hacer clic en un vínculo en una aplicación, el Proxy de aplicación intenta resolver la dirección URL ya sea como dirección URL interna de la misma aplicación o como dirección URL disponible externamente. Si el vínculo apunta a una dirección URL interna que no está dentro de la misma aplicación, no pertenece a ninguno de estos depósitos y se producirá un error de que no se encuentra.
+**¿Por qué ocurre esto?** Al hacer clic en un vínculo en una aplicación, dirección URL de tooresolve Hola intentos de Proxy de aplicación como ya sea una dirección URL interna en Hola misma aplicación, o como una dirección URL disponible externamente. Si tooan dirección URL interna que no está dentro que apunta el vínculo de Hola Hola misma aplicación no pertenecen tooeither de estos depósitos y obtendrá un error no se encuentra.
 
 ## <a name="ways-you-can-resolve-broken-links"></a>Maneras de resolver vínculos rotos
 
-Hay tres maneras de resolver este problema. Las siguientes opciones se ordenan por complejidad ascendente.
+Hay tres tooresolve de formas de este problema. Opciones de Hello siguiente son enumerado en complejidad creciente.
 
-1.  Asegúrese de que la dirección URL interna es una raíz que contiene todos los vínculos relevantes para la aplicación. Esto permite que todos los vínculos se resuelvan como contenido publicado dentro de la misma aplicación.
+1.  Asegúrese de que la URL interna de hello es una carpeta raíz que contiene todos los vínculos relevantes de hello para la aplicación hello. Esto permite que todos los toobe vínculos resuelve según el contenido publica en hello igual aplicación.
 
-    Si cambia la dirección URL interna pero no desea que cambie la página de aterrizaje de los usuarios, cambie la dirección URL de la página principal a la dirección URL interna publicada anteriormente. Para ello, vaya a "Azure Active Directory" -&gt; Registros de aplicaciones -&gt; seleccione la aplicación -&gt; Propiedades. En esta pestaña de propiedades, verá el campo "Dirección URL de la página principal", que podrá ajustar a la página de aterrizaje que desee.
+    Si cambiar la dirección URL interna de hello pero no desea hello toochange página para que los usuarios de destino, toohello de dirección URL de la página principal de cambio Hola publicados anteriormente URL interna. Puede hacerlo yendo demasiado "Azure Active Directory" -&gt; registros de aplicación -&gt; Seleccionar aplicación hello -&gt; propiedades. En esta pestaña Propiedades, vea Hola campo "URL de página principal", que se puede ajustar toobe Hola deseado página de aterrizaje.
 
-2.  Si las aplicaciones usan nombres de dominio completos (FQDN), use [dominios personalizados](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) para publicar las aplicaciones. Esta característica permite usar la misma dirección URL de manera tanto interna como externa.
+2.  Si las aplicaciones usan nombres de dominio completo (FQDN), use [dominios personalizados](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) toopublish sus aplicaciones. Esta característica permite Hola mismo toobe de dirección URL se usa tanto internamente y externamente.
 
-    Esta opción garantiza que los vínculos de la aplicación son accesibles desde el exterior a través de Proxy de aplicación, ya que los vínculos dentro de la aplicación para las direcciones URL internas también se reconocen externamente. Tenga en cuenta que todos los vínculos tienen que pertenecer a una aplicación publicada. Sin embargo, con esta opción no es necesario que los vínculos pertenezcan a la misma aplicación y pueden pertenecer a varias.
+    Esta opción asegura que los vínculos de hello en la aplicación están accesibles desde el exterior a través de Proxy de aplicación puesto que también se reconocen los vínculos de hello dentro de las direcciones URL de hello aplicación toointernal externamente. Tenga en cuenta que todos los vínculos sigue necesitan toobelong tooa publicó la aplicación. Sin embargo, con este Hola opción vínculos no es necesario toobelong toohello misma aplicación y puede pertenecer toomultiple aplicaciones.
 
-3.  Si ninguna de estas opciones es viable, únase a la versión preliminar de una nueva característica de traducción/reescritura de direcciones URL. Con esta opción, las direcciones URL internas o los vínculos que existan en el cuerpo HTML de las aplicaciones se traducirán o "asignarán" a las direcciones URL externas que publique el Proxy de aplicación. Esto solo funciona para los vínculos del código HTML o CSS, no sirve si el vínculo se genera a través de JS. 
+3.  Si ninguna de estas opciones son viable, se une a la vista previa de Hola para una característica nueva que realizan la traducción de dirección URL/reescritura. Con esta opción, interno direcciones URL o vínculos que existen en el cuerpo de hello HTML de las aplicaciones pueden convertir, o "asignan", toohello publicado direcciones URL externas Proxy de aplicación. Esto solo funciona para los vínculos en hello HTML o CSS, y esto no ayudará a si el vínculo se genera a través de JS. 
 
-Como resultado, se recomienda encarecidamente usar la solución de [dominios personalizados](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains), si es posible. Si desea unirse a la versión preliminar, envíe un mensaje a <aadapfeedback@microsoft.com> con los identificadores de aplicación.
+Como resultado, se recomienda encarecidamente usar hello [dominios personalizados](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) solución si es posible. Si desea vista previa de hello toojoin, enviar por correo electrónico < aadapfeedback@microsoft.com > con applicationId(s) Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Trabajo con servidores proxy locales existentes](application-proxy-working-with-proxy-servers.md)
