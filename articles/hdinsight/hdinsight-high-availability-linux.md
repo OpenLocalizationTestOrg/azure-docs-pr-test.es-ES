@@ -1,6 +1,6 @@
 ---
-title: Alta disponibilidad de Hadoop - Azure HDInsight | Microsoft Docs
-description: "Obtenga información sobre cómo los clústeres de HDInsight mejoran la confiabilidad y la disponibilidad gracias al uso de un nodo principal extra. Obtenga información sobre cómo esto afecta a los servicios de Hadoop como Ambari y Hive, y cómo conectarse individualmente a cada nodo principal mediante SSH."
+title: disponibilidad de aaaHigh para Hadoop - HDInsight de Azure | Documentos de Microsoft
+description: "Obtenga información sobre cómo los clústeres de HDInsight mejoran la confiabilidad y la disponibilidad gracias al uso de un nodo principal extra. Obtenga información acerca de cómo esto afecta a los servicios Hadoop como Ambari y subárbol, así como la tooindividually conectar tooeach nodo principal mediante SSH."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -17,136 +17,136 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: larryfr
-ms.openlocfilehash: e66ba67a36fc48d1762ba302d708e060489fdc71
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9ff62afe6b63b241cb984225233157219f8d7411
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Disponibilidad y fiabilidad de clústeres de Hadoop en HDInsight
 
-Los clústeres de HDInsight proporcionan dos nodos principales para aumentar la disponibilidad y la confiabilidad de los servicios y trabajos de Hadoop en ejecución.
+Clústeres de HDInsight proporcionan dos nodos principales tooincrease Hola confiabilidad y disponibilidad de servicios de Hadoop y trabajos que se ejecutan.
 
-Hadoop logra una alta disponibilidad y confiabilidad al replicar datos y servicios en varios nodos de un clúster. Sin embargo, las distribuciones estándar de Hadoop suelen tener un único nodo principal. Cualquier interrupción de ese nodo principal puede causar que el clúster deje de funcionar. HDInsight proporciona dos nodos principales para mejorar la disponibilidad y la confiabilidad de Hadoop.
+Hadoop logra una alta disponibilidad y confiabilidad al replicar datos y servicios en varios nodos de un clúster. Sin embargo, las distribuciones estándar de Hadoop suelen tener un único nodo principal. Cualquier interrupción del nodo principal de hello único puede provocar trabajo toostop de hello clúster. HDInsight proporciona dos headnodes tooimprove Hadoop disponibilidad y confiabilidad.
 
 > [!IMPORTANT]
-> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="availability-and-reliability-of-nodes"></a>Disponibilidad y confiabilidad de los nodos
 
-Los nodos de un clúster de HDInsight se implementan mediante Máquinas virtuales de Azure. En las secciones siguientes se describen los tipos de nodo individuales usados con HDInsight. 
+Los nodos de un clúster de HDInsight se implementan mediante Máquinas virtuales de Azure. Hello siguientes secciones describen los tipos de nodos individuales de hello usa con HDInsight. 
 
 > [!NOTE]
-> No todos los tipos de nodo se utilizan para un tipo de clúster. Por ejemplo, un tipo de clúster de Hadoop no tiene ningún nodo Nimbus. Para más información sobre los nodos usados por los tipos de clúster de HDInsight, vea la sección Tipos de clúster en el documento [Creación de clústeres de Hadoop basados en Linux en HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
+> No todos los tipos de nodo se utilizan para un tipo de clúster. Por ejemplo, un tipo de clúster de Hadoop no tiene ningún nodo Nimbus. Para obtener más información sobre nodos utilizados por tipos de clúster de HDInsight, vea la sección de tipos de clúster de Hola de hello [Hadoop basado en Linux crear clústeres de HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) documento.
 
 ### <a name="head-nodes"></a>Nodos principales
 
-HDInsight proporciona dos nodos principales para garantizar una alta disponibilidad de los servicios de Hadoop. Ambos nodos principales están activos y en ejecución dentro del clúster de HDInsight al mismo tiempo. Algunos servicios, como HDFS o YARN, solo están “activos” en un nodo principal en un determinado momento. Otros servicios como HiveServer2 o MetaStore de Hive están activos en ambos nodos principales al mismo tiempo.
+tooensure servicios de alta disponibilidad Hadoop, HDInsight proporciona dos nodos principales. Ambos nodos principales están activo y en ejecución en el clúster de HDInsight de hello simultáneamente. Algunos servicios, como HDFS o YARN, solo están “activos” en un nodo principal en un determinado momento. Otros servicios como HiveServer2 o tienda de metadatos de Hive están activos en ambos nodos principales en hello mismo tiempo.
 
-Los nodos principales y otros nodos de HDInsight tienen un valor numérico como parte del nombre de host del nodo. Por ejemplo, `hn0-CLUSTERNAME` o `hn4-CLUSTERNAME`.
+Los nodos principales (y otros nodos en HDInsight) tienen un valor numérico como parte del nombre de host de hello del nodo de Hola. Por ejemplo, `hn0-CLUSTERNAME` o `hn4-CLUSTERNAME`.
 
 > [!IMPORTANT]
-> No asocie el valor numérico a si un nodo es principal o secundario. El valor numérico solo está presente para proporcionar un nombre único para cada nodo.
+> No asocie valor numérico de Hola a si un nodo es principal ni secundario. valor numérico de Hello es solo está presente tooprovide un nombre único para cada nodo.
 
 ### <a name="nimbus-nodes"></a>Nodos Nimbus
 
-Los nodos Nimbus están disponibles con los clústeres de Storm. Los nodos Nimbus proporcionan una funcionalidad similar a la de JobTracker de Hadoop al distribuir y supervisar el procesamiento a través de nodos de trabajo. HDInsight proporciona dos nodos Nimbus de clústeres de Storm.
+Los nodos Nimbus están disponibles con los clústeres de Storm. los nodos de Nimbus Hola proporcionar similar funcionalidad toohello Hadoop JobTracker, distribuir y supervisar el procesamiento a través de nodos de trabajador. HDInsight proporciona dos nodos Nimbus de clústeres de Storm.
 
 ### <a name="zookeeper-nodes"></a>Nodos Zookeeper
 
-Los nodos [ZooKeeper](http://zookeeper.apache.org/) sirven para seleccionar el líder de los servicios principales en los nodos principales. También sirven para garantizar que los servicios, los nodos de datos (trabajo) y las puertas de enlace saben en qué nodo principal está activo un servicio principal. De forma predeterminada, HDInsight proporciona tres nodos ZooKeeper.
+Los nodos [ZooKeeper](http://zookeeper.apache.org/) sirven para seleccionar el líder de los servicios principales en los nodos principales. También son utilizado tooinsure que servicios, los nodos de datos (trabajo) y las puertas de enlace saber qué nodo principal está activo en un servicio principal. De forma predeterminada, HDInsight proporciona tres nodos ZooKeeper.
 
 ### <a name="worker-nodes"></a>Nodos de trabajo
 
-Los nodos de trabajo realizan el análisis de los datos reales cuando se envía un trabajo al clúster. Si se produce un error en un nodo de trabajo, la tarea que estaba realizando se envía a otro nodo de trabajo. De forma predeterminada, HDInsight crea cuatro nodos de trabajo. Puede cambiar este número para satisfacer sus necesidades durante y después de la creación del clúster.
+Nodos de trabajador realizan análisis de datos reales de hello cuando un trabajo está clúster toohello enviado. Si se produce un error en un nodo de trabajo, tarea hello que estaba llevando a cabo es el nodo de trabajo tooanother enviado. De forma predeterminada, HDInsight crea cuatro nodos de trabajo. Puede cambiar este número toosuit sus necesidades durante y después de la creación del clúster.
 
 ### <a name="edge-node"></a>Nodo perimetral
 
-El nodo perimetral no participa activamente en el análisis de datos dentro del clúster, sino que lo usan desarrolladores o científicos de datos al trabajar con Hadoop. El nodo perimetral se encuentra en la misma Red virtual de Azure como los demás nodos del clúster y puede acceder directamente a todos los demás nodos. El nodo perimetral se puede usar sin tener que quitar recursos a los trabajos de análisis o servicios críticos de Hadoop.
+Un nodo del borde no participar activamente en el análisis de datos en clúster de Hola. sino que lo usan desarrolladores o científicos de datos al trabajar con Hadoop. Hello borde nodo vida en Hola misma red Virtual de Azure como Hola otros nodos de clúster de Hola y puede tener acceso directamente a todos los demás nodos. nodo de Hello borde puede utilizarse sin consumen recursos fuera de los servicios esenciales de Hadoop o los trabajos de análisis.
 
-Actualmente, el servidor de R en HDInsight es el único tipo de clúster que proporciona un nodo perimetral de forma predeterminada. Para el servidor de R en HDInsight, se usa el nodo perimetral para probar el código de R localmente en el nodo antes de enviarlo al clúster para su procesamiento distribuido.
+Actualmente, servidor de R en HDInsight es el único tipo de clúster de Hola que proporciona un nodo del borde de forma predeterminada. Para servidor de R de HDInsight, se usa el nodo del borde Hola código de prueba R localmente en el nodo de hello antes del envío toohello clúster para el procesamiento distribuido.
 
-Para más información sobre el uso de un nodo perimetral con tipos de clúster que no sean de R Server, consulte el documento [Uso de nodos perimetrales en HDInsight](hdinsight-apps-use-edge-node.md).
+Para obtener información sobre el uso de un nodo del borde con tipos de clúster que no sea servidor de R, vea hello [usar nodos perimetrales en HDInsight](hdinsight-apps-use-edge-node.md) documento.
 
-## <a name="accessing-the-nodes"></a>Acceso a los nodos
+## <a name="accessing-hello-nodes"></a>Obtener acceso a los nodos de Hola
 
-Se proporciona acceso al clúster a través de Internet mediante una puerta de enlace pública. El acceso está limitado a la conexión a los nodos principales y, si existe, al nodo perimetral. El hecho de contar con varios nodos principales no afecta al acceso a servicios que se ejecutan en los nodos principales. La puerta de enlace pública enruta las solicitudes al nodo principal que hospeda el servicio solicitado. Por ejemplo, si Ambari está hospedado en el nodo principal secundario, la puerta de enlace enruta las solicitudes entrantes de Ambari a ese nodo.
+Clúster de toohello de acceso a través de hello internet se proporciona a través de una puerta de enlace pública. El acceso se nodos principales del toohello tooconnecting limitado y (si existe) Hola nodo del borde. Tooservices de acceso que se ejecutan en nodos principales de hello no se realiza al tener varios nodos principales. Hola pública de la puerta de enlace rutas solicitudes toohello nodo principal que hospeda Hola servicio solicitado. Por ejemplo, si Ambari se hospede actualmente en el nodo principal secundario de hello, puerta de enlace de hello enruta las solicitudes entrantes de nodo de toothat de Ambari.
 
-El acceso a través de la puerta de enlace pública se limita a los puertos 443 (HTTPS), 22 y 23.
+Acceso a través de puerta de enlace pública hello es limitado tooport 443 (HTTPS), 22 y 23.
 
-* El puerto __443__ se usa para acceder a Ambari y a otra interfaz de usuario web o API de REST hospedadas en los nodos principales.
+* Puerto __443__ es tooaccess usado Ambari y otros web API de REST hospedada en nodos principales de Hola o interfaz de usuario.
 
-* El puerto __22__ se usa para acceder al nodo principal primario o al nodo perimetral mediante SSH.
+* Puerto __22__ es nodo principal de tooaccess usado Hola principal o perimetral mediante SSH.
 
-* El puerto __23__ se usa para acceder al nodo principal secundario mediante SSH. Por ejemplo, `ssh username@mycluster-ssh.azurehdinsight.net` se conecta al nodo principal primario del clúster llamado **mycluster**.
+* Puerto __23__ es tooaccess usado Hola secundario del nodo principal mediante SSH. Por ejemplo, `ssh username@mycluster-ssh.azurehdinsight.net` conecta toohello, principal, nodo principal del clúster Hola denominado **mycluster**.
 
-Para más información sobre cómo usar SSH, vea el documento [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Para obtener más información sobre el uso de SSH, vea hello [utilizar SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) documento.
 
 ### <a name="internal-fully-qualified-domain-names-fqdn"></a>Nombres completos de dominio (FQDN) internos
 
-Los nodos de un clúster de HDInsight tienen una dirección IP interna y el FQDN al que solo se puede acceder desde el clúster. Al obtener acceso a servicios en el clúster mediante la dirección IP o FQDN interna, debe usar Ambari para comprobar la dirección IP o FQDN que se usará al obtener acceso al servicio.
+Nodos en un clúster de HDInsight tienen una dirección IP y los FQDN que solo puede tener acceso desde el clúster de hello interno. Al obtener acceso a servicios en un clúster de hello mediante Hola interna FQDN o dirección IP, debe usar Ambari tooverify Hola IP o FQDN toouse al tener acceso a servicios de Hola.
 
-Por ejemplo, el servicio de Oozie solo puede ejecutarse en un nodo principal y el uso del comando `oozie` desde una sesión de SSH requiere la dirección URL del servicio. La dirección URL puede conseguirse en Ambari mediante el comando siguiente:
+Por ejemplo, hello Oozie servicio solo puede ejecutarse en un nodo principal y el uso de hello `oozie` comando desde una sesión de SSH requiere el servicio de toohello de dirección URL de Hola. Esta dirección URL se puede recuperar desde Ambari mediante Hola siguiente comando:
 
     curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
-Este comando devuelve un valor similar al siguiente comando, que contiene la dirección URL interna para usarla con el comando `oozie`:
+Este comando devuelve un toohello similar valor siguiente comando, que contiene hello toouse de dirección URL interna con hello `oozie` comando:
 
     "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-Para más información sobre cómo trabajar con la API de REST de Ambari, vea [Supervisión y administración de HDInsight con la API de REST de Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
+Para obtener más información sobre cómo trabajar con hello Ambari API de REST, consulte [supervisar y administrar HDInsight con hello API de REST de Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 ### <a name="accessing-other-node-types"></a>Acceso a otros tipos de nodos
 
-Puede conectarse a los nodos que no son accesibles directamente a través de Internet mediante los métodos siguientes:
+Puede conectarse toonodes que están no directamente accesible over Hola internet utilizando Hola siguientes métodos:
 
-* **SSH**: una vez conectado a un nodo principal mediante SSH, puede usar SSH desde el nodo principal para conectarse a otros nodos del clúster. Para más información, vea el documento [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **SSH**: una vez conectado el nodo principal de tooa mediante SSH, a continuación, puede utilizar SSH desde Hola nodo principal tooconnect tooother nodos Hola clúster. Para obtener más información, vea hello [utilizar SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) documento.
 
-* **Túnel SSH**: si tiene que acceder a un servicio web hospedado en uno de los nodos que no está expuesto a Internet, debe usar un túnel SSH. Para más información, vea el documento [Uso de un túnel SSH con HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
+* **Túnel SSH**: si necesita tooaccess un servicio web hospedado en uno de los nodos de Hola que no expone toohello internet, debe usar un túnel SSH. Para obtener más información, vea hello [utilizar un túnel SSH con HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) documento.
 
-* **Azure Virtual Network**: si el clúster de HDInsight forma parte de una red de Azure Virtual Network, cualquier recurso en la misma red virtual puede acceder directamente a todos los nodos del clúster. Para más información, vea el documento [Extensión de las funcionalidades de HDInsight con Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
+* **Red Virtual de Azure**: si HDInsight clúster forma parte de una red Virtual de Azure, cualquier recurso de Hola misma red Virtual puede acceder directamente a todos los nodos de clúster de Hola. Para obtener más información, vea hello [HDInsight extender mediante la red Virtual de Azure](hdinsight-extend-hadoop-virtual-network.md) documento.
 
-## <a name="how-to-check-on-a-service-status"></a>Cómo comprobar el estado del servicio
+## <a name="how-toocheck-on-a-service-status"></a>¿Cómo toocheck en un estado del servicio
 
-Para comprobar el estado de los servicios que se ejecutan en el nodo principal, use la interfaz de usuario web de Ambari o la API de REST de Ambari.
+estado de hello toocheck de servicios que se ejecutan en nodos principales de hello, usar hello Ambari Web UI u Hola API de REST de Ambari.
 
 ### <a name="ambari-web-ui"></a>Interfaz de usuario web de Ambari
 
-La interfaz de usuario web de Ambari es visible en https://CLUSTERNAME.azurehdinsight.net. Reemplace **CLUSTERNAME** por el nombre del clúster. Si se le solicita, introduzca las credenciales de usuario HTTP de su clúster. El nombre de usuario HTTP predeterminado es **admin** y la contraseña es la contraseña que especificó al crear el clúster.
+Hola Ambari Web IU sea visible en https://CLUSTERNAME.azurehdinsight.net. Reemplace **CLUSTERNAME** con nombre hello del clúster. Si se le solicite, escriba las credenciales de usuario HTTP de hello para el clúster. nombre de usuario HTTP de Hello predeterminado es **administración** y Hola contraseña es Hola que especificó al crear el clúster de Hola.
 
-Cuando llegue a la página de Ambari, se enumeran los servicios instalados a la izquierda de la página.
+Cuando llegan en la página de Ambari hello, aparecerán los servicios de hello instalado izquierda Hola de página Hola.
 
 ![Servicios instalados](./media/hdinsight-high-availability-linux/services.png)
 
-Hay una serie de iconos que pueden aparecer junto a un servicio para indicar el estado. Las alertas relacionadas con un servicio se pueden ver mediante el vínculo **Alertas** que se encuentra en la parte superior de la página. Puede seleccionar cada servicio para ver más información sobre él.
+Hay una serie de iconos que pueden aparecer el siguiente estado de tooindicate del servicio de tooa. Las alertas relacionadas con servicio tooa puede verse mediante hello **alertas** vínculo situado en la parte superior de Hola de página de Hola. Puede seleccionar cada servicio tooview más información sobre él.
 
-Mientras que la página del servicio proporciona información sobre el estado y la configuración de cada servicio, no proporciona información sobre en qué nodo principal se está ejecutando el servicio. Para ver esta información, use el vínculo **Hosts** de la parte superior de la página. En esta página se muestran los hosts del clúster, incluidos los nodos principales.
+Mientras la página del servicio Hola proporciona información sobre estado de Hola y la configuración de cada servicio, no proporciona información en el que se está ejecutando servicios de Hola de nodo principal. tooview esta información, use hello **Hosts** vínculo situado en la parte superior de Hola de página de Hola. Esta página muestra los hosts en clúster de hello, incluidos los nodos principales de Hola.
 
 ![lista de hosts](./media/hdinsight-high-availability-linux/hosts.png)
 
-Al seleccionar el vínculo de uno de los nodos principales se muestran los servicios y componentes que se ejecutan en ese nodo.
+Seleccionar vínculo de Hola de uno de los nodos principales de hello muestra servicios de Hola y componentes que se ejecutan en ese nodo.
 
 ![Estado del componente](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-Para más información sobre el uso de Ambari, vea [Supervisión y administración de HDInsight con la interfaz de usuario web de Ambari](hdinsight-hadoop-manage-ambari.md).
+Para obtener más información sobre el uso de Ambari, consulte [Monitor y administrar HDInsight con Ambari Web UI hello](hdinsight-hadoop-manage-ambari.md).
 
 ### <a name="ambari-rest-api"></a>API de REST de Ambari
 
-La API de REST de Ambari está disponible en Internet. La puerta de enlace pública de HDInsight controla las solicitudes de enrutamiento dirigidas al nodo principal que hospeda actualmente la API de REST.
+Hola Ambari REST API está disponible a través de hello internet. puerta de enlace de Hello HDInsight pública controla las solicitudes toohello principal el nodo de enrutamiento que hospeda actualmente Hola API de REST.
 
-Puede usar el siguiente comando para comprobar el estado de un servicio a través de la API de REST de Ambari:
+Puede usar Hola después de estado de hello toocheck de comandos de un servicio a través de la API de REST de Ambari hello:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-* Reemplace **PASSWORD** por la contraseña de la cuenta del usuario (admin) HTTP.
-* Reemplace **CLUSTERNAME** por el nombre del clúster.
-* Reemplace **SERVICENAME** por el nombre del servicio cuyo estado quiere conocer.
+* Reemplace **contraseña** con la contraseña de cuenta de usuario (admin) Hola HTTP.
+* Reemplace **CLUSTERNAME** con nombre de hello del clúster de Hola.
+* Reemplace **SERVICENAME** por nombre de hello del servicio de hello desea toocheck estado de Hola de.
 
-Por ejemplo, para comprobar el estado del servicio **HDFS** en un clúster denominado **mycluster**, con la contraseña **password**, debería usar el comando siguiente:
+Por ejemplo, toocheck estado Hola de hello **HDFS** servicio en un clúster denominado **mycluster**, con una contraseña de **contraseña**, usaría Hola siguiente comando:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
-La respuesta es similar al siguiente formato JSON:
+respuesta de Hello es toohello similar después de JSON:
 
     {
       "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
@@ -157,80 +157,80 @@ La respuesta es similar al siguiente formato JSON:
       }
     }
 
-La dirección URL nos indica que el servicio se está ejecutando en el nodo principal **hn0-CLUSTERNAME**.
+Hello URL nos indica que el servicio de Hola se está ejecutando actualmente en un nodo principal denominado **hn0 CLUSTERNAME**.
 
-El estado nos indica que el servicio se está ejecutando o se ha **INICIADO**.
+Hello estado nos indica que se está ejecutando actualmente el servicio de hello, o **iniciado**.
 
-Si no sabe qué servicios están instalados en el clúster, puede usar el comando siguiente para recuperar una lista:
+Si no sabe qué servicios están instalados en el clúster de hello, puede usar Hola después tooretrieve una lista de comandos:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-Para más información sobre cómo trabajar con la API de REST de Ambari, vea [Supervisión y administración de HDInsight con la API de REST de Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
+Para obtener más información sobre cómo trabajar con hello Ambari API de REST, consulte [supervisar y administrar HDInsight con hello API de REST de Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 #### <a name="service-components"></a>Componentes de servicio
 
-Los servicios pueden contener componentes cuyo estado desea comprobar de forma individual. Por ejemplo, HDFS contiene el componente NameNode. Para ver información sobre un componente, el comando sería:
+Los servicios pueden contener componentes que desee toocheck estado de Hola de forma individual. Por ejemplo, HDFS contiene componentes de NameNode Hola. tooview información en un componente, Hola comando sería:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-Si no sabe qué componentes proporciona un servicio, puede usar el comando siguiente para recuperar una lista:
+Si no sabe qué componentes se proporcionan por un servicio, puede usar Hola después tooretrieve una lista de comandos:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-## <a name="how-to-access-log-files-on-the-head-nodes"></a>Acceso a los archivos de registro en los nodos principales
+## <a name="how-tooaccess-log-files-on-hello-head-nodes"></a>¿Cómo tooaccess archivos de registro en nodos principales Hola
 
 ### <a name="ssh"></a>SSH
 
-Mientras está conectado a un nodo principal a través de SSH, los archivos de registro pueden encontrarse en **/var/log**. Por ejemplo, **/var/log/hadoop-yarn/yarn** contiene registros de YARN.
+Al nodo principal de tooa conectado a través de SSH, archivos de registro pueden encontrarse en **/var/log**. Por ejemplo, **/var/log/hadoop-yarn/yarn** contiene registros de YARN.
 
-Cada nodo principal puede tener entradas de registro único, por lo que debe comprobar los registros en ambos.
+Cada nodo principal puede tener entradas del registro único, por lo que debe comprobar Hola inicia sesión en ambos.
 
 ### <a name="sftp"></a>SFTP
 
-También se puede conectar con el nodo principal mediante el protocolo SSH File Transfer Protocol o el protocolo seguro de transferencia de archivos (SFTP) y descargar los archivos de registro directamente.
+También puede conectarse mediante Hola SSH File Transfer Protocol o protocolo de transferencia de archivo seguro (SFTP) del nodo principal toohello y descargar archivos de registro de hello directamente.
 
-De igual forma a utilizar un cliente SSH, al conectarse al clúster debe proporcionar el nombre de cuenta de usuario SSH y la dirección SSH del clúster. Por ejemplo: `sftp username@mycluster-ssh.azurehdinsight.net`. Especifique la contraseña de la cuenta cuando se le solicite o proporcione una clave pública con el parámetro `-i`.
+Toousing similar un cliente de SSH, cuando se conecta el clúster toohello debe proporcionar Hola SSH usuario cuenta hello y nombre SSH dirección Hola del clúster de. Por ejemplo: `sftp username@mycluster-ssh.azurehdinsight.net`. Proporcionar contraseña hello para la cuenta de hello cuando se le solicite, o proporcionar una clave pública mediante hello `-i` parámetro.
 
-Una vez conectado, se le presentará un símbolo del sistema `sftp>` . Desde este símbolo del sistema, puede cambiar los directorios, cargar y descargar archivos. Por ejemplo, los siguientes comandos cambian los directorios al directorio **/var/log/hadoop/hdfs** y después descargan todos los archivos en el directorio.
+Una vez conectado, se le presentará un símbolo del sistema `sftp>` . Desde este símbolo del sistema, puede cambiar los directorios, cargar y descargar archivos. Por ejemplo, hello siga los comandos cambia directorios toohello **/var/log/hadoop/hdfs** directorio y, a continuación, descarga todos los archivos en el directorio de Hola.
 
     cd /var/log/hadoop/hdfs
     get *
 
-Para ver una lista de comandos disponibles, escriba `help` en el símbolo del sistema `sftp>`.
+Para obtener una lista de comandos disponibles, escriba `help` en hello `sftp>` símbolo del sistema.
 
 > [!NOTE]
-> También hay interfaces gráficas que le permiten visualizar el sistema de archivos cuando se conecta mediante SFTP. Por ejemplo, [MobaXTerm](http://mobaxterm.mobatek.net/) le permite examinar el sistema de archivos mediante una interfaz similar al Explorador de Windows.
+> También hay interfaces gráficas que le permiten el sistema de archivos de hello toovisualize cuando se conecta mediante SFTP. Por ejemplo, [MobaXTerm](http://mobaxterm.mobatek.net/) le permite el sistema de archivos de hello toobrowse mediante un explorador de tooWindows similar de interfaz.
 
 ### <a name="ambari"></a>Ambari
 
 > [!NOTE]
-> Para acceder a archivos de registro mediante Ambari, debe usar un túnel SSH. Las interfaces web de los servicios individuales no se exponen públicamente en Internet. Para más información sobre cómo usar el túnel SSH, vea el documento [Uso de la tunelación SSH](hdinsight-linux-ambari-ssh-tunnel.md).
+> con Ambari de archivos de registro de tooaccess, debe utilizar un túnel SSH. interfaces de Hello web para los servicios individuales de hello no se exponen públicamente en hello Internet. Para obtener información sobre el uso de un túnel SSH, vea hello [uso de SSH túnel](hdinsight-linux-ambari-ssh-tunnel.md) documento.
 
-En la interfaz de usuario web de Ambari, seleccione el servicio para el que desea consultar los registros (por ejemplo, YARN). Después, utilice **Vínculos rápidos** para seleccionar de qué nodo principal desea consultar los registros.
+Desde la interfaz de usuario de Ambari Web hello, seleccione servicio de hello desea tooview registros (por ejemplo, YARN). A continuación, utilice **vínculos rápidos** tooselect registra qué hello tooview de nodo principal para.
 
-![Uso de vínculos rápidos para ver los registros](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Usar rápida vincula tooview registros](./media/hdinsight-high-availability-linux/viewlogs.png)
 
-## <a name="how-to-configure-the-node-size"></a>Configuración del tamaño del nodo
+## <a name="how-tooconfigure-hello-node-size"></a>¿Cómo tooconfigure Hola tamaño de nodo
 
-El tamaño de un nodo solo se puede seleccionar durante la creación del clúster. Puede encontrar una lista de los diferentes tamaños de máquina virtual disponibles para HDInsight en la [página de precios de HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+tamaño de Hola de un nodo solo puede seleccionarse durante la creación del clúster. Se pueden encontrar una lista de Hola disponibles diferentes tamaños de máquina virtual de HDInsight en hello [HDInsight página de precios](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Al crear un clúster, puede especificar el tamaño de los nodos. A continuación se ofrece información sobre cómo especificar el tamaño mediante [Azure Portal][preview-portal], [Azure PowerShell][azure-powershell] y la [CLI de Azure][azure-cli]:
+Al crear un clúster, puede especificar el tamaño de Hola de nodos de Hola. Hello siguiente información proporciona instrucciones sobre cómo toospecify Hola tamaño con Hola [portal de Azure][preview-portal], [Azure PowerShell][azure-powershell], hello y [CLI de Azure][azure-cli]:
 
-* **Azure Portal**: al crear un clúster, puede establecer el tamaño de los nodos que usa el clúster:
+* **Portal de Azure**: al crear un clúster, puede establecer tamaño de Hola de nodos de hello usado Hola clúster:
 
     ![Imagen del asistente para creación de clústeres con selección del tamaño del nodo](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **CLI de Azure**: cuando se usa el comando `azure hdinsight cluster create`, puede establecer el tamaño de los nodos principal, de trabajo y ZooKeeper mediante los parámetros `--headNodeSize`, `--workerNodeSize` y `--zookeeperNodeSize`.
+* **CLI de Azure**: al usar hello `azure hdinsight cluster create` comando, puede establecer tamaño de Hola de head hello, trabajo y sus nodos ZooKeeper mediante hello `--headNodeSize`, `--workerNodeSize`, y `--zookeeperNodeSize` parámetros.
 
-* **Azure PowerShell**: cuando se usa el cmdlet `New-AzureRmHDInsightCluster`, puede establecer el tamaño de los nodos principal, de trabajo y ZooKeeper mediante los parámetros `-HeadNodeVMSize`, `-WorkerNodeSize` y `-ZookeeperNodeSize`.
+* **Azure PowerShell**: al usar hello `New-AzureRmHDInsightCluster` cmdlet, puede establecer tamaño de Hola de hello head, trabajo y nodos de ZooKeeper mediante hello `-HeadNodeVMSize`, `-WorkerNodeSize`, y `-ZookeeperNodeSize` parámetros.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Use los siguientes vínculos para obtener más información sobre los aspectos que se mencionan en este documento.
+Usar hello siguiendo vínculos toolearn más sobre lo que se mencionan en este documento.
 
 * [Referencia de REST de Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Instalación y configuración de la interfaz de la línea de comandos de Azure](../cli-install-nodejs.md)
-* [Instale y configure Azure PowerShell.](/powershell/azure/overview)
+* [Instalar y configurar Hola CLI de Azure](../cli-install-nodejs.md)
+* [Instalación y configuración de Azure PowerShell](/powershell/azure/overview)
 * [Administración de HDInsight mediante Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Aprovisionamiento de clústeres de HDInsight basado en Linux](hdinsight-hadoop-provision-linux-clusters.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de script de la CLI de Azure: conexión de una aplicación web a Redis Cache | Microsoft Docs"
-description: "Ejemplo de script de la CLI de Azure: conexión de una aplicación web a Redis Cache"
+title: "aaaAzure ejemplo de secuencia de comandos de CLI: conectar una caché en redis de aplicación web tooa | Documentos de Microsoft"
+description: "Script de CLI de Azure de ejemplo: conectar una caché de redis de tooa de aplicación web"
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,15 +16,15 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b697c8508a6c3422b6b0d0ca36843a9c884b505f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b911e6643591b8f07aeb64d4d62876c0fa156a8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-a-redis-cache"></a>Conexión de una aplicación web a Redis Cache
+# <a name="connect-a-web-app-tooa-redis-cache"></a>Conectar una caché de redis de tooa de aplicación web
 
-En este escenario aprenderá a crear una instancia de Azure Redis Cache y una aplicación web de Azure. Y, después, vinculará la instancia de Redis Cache a la aplicación web mediante la configuración de la aplicación.
+En este escenario, aprenderá cómo toocreate un Azure redis caché y una aplicación web de Azure. A continuación, vinculará Hola redis caché toohello web app con la configuración de la aplicación.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -40,19 +40,19 @@ En este escenario aprenderá a crear una instancia de Azure Redis Cache y una ap
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear un grupo de recursos, una aplicación web, una instancia de Redis Cache y todos los recursos relacionados. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola siga los comandos del toocreate un grupo de recursos, la aplicación web, redis caché y todos ellos relacionados con recursos. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | Crea un plan de App Service, que es como una granja de servidores para una aplicación web de Azure. |
 | [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Crea una aplicación web de Azure. |
-| [az redis create](https://docs.microsoft.com/en-us/cli/azure/redis#create) | Crea una instancia nueva de Redis Cache. Aquí es donde se almacenarán los datos. |
-| [az redis list-keys](https://docs.microsoft.com/en-us/cli/azure/redis#list-keys) | Muestra las teclas de acceso de la instancia de Redis Cache. |
+| [az redis create](https://docs.microsoft.com/en-us/cli/azure/redis#create) | Crea una instancia nueva de Redis Cache. Esto es donde se almacenarán los datos de Hola. |
+| [az redis list-keys](https://docs.microsoft.com/en-us/cli/azure/redis#list-keys) | Enumera las teclas de acceso de Hola Hola redis la instancia de caché. |
 | [az webapp config appsettings set](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#set) | Crea o actualiza una configuración de aplicación para una aplicación web de Azure. La configuración de la aplicación se expone como variables de entorno para la aplicación. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Puede encontrar ejemplos de script adicionales de la CLI de App Service en la [documentación de Azure App Service](../app-service-cli-samples.md).
+Encontrará más ejemplos de secuencias de comandos de CLI de servicio de aplicación Hola [documentación de servicio de aplicaciones de Azure](../app-service-cli-samples.md).

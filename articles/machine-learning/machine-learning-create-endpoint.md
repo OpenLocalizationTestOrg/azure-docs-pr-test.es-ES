@@ -1,5 +1,5 @@
 ---
-title: "Creación de puntos de conexión de servicio web en Machine Learning | Microsoft Docs"
+title: "extremos de servicios Web de aaaCreating en el aprendizaje automático | Documentos de Microsoft"
 description: "Creación de puntos de conexión de servicio web en Azure Machine Learning"
 services: machine-learning
 documentationcenter: 
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
 ms.author: himad
-ms.openlocfilehash: 9f83ffc9cf7dbe37c1ce9980fd7f5b9133fe78f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10a2bc586c6fe35e28d8bf0293854c578827c453
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-endpoints"></a>Creación de extremos
 > [!NOTE]
->  En este tema se describen técnicas que se aplican a un servicio web Machine Learning **clásico**.
+>  En este tema se describe técnicas aplicables tooa **clásico** servicio Web de aprendizaje de máquina.
 > 
 > 
 
-Al crear servicios web que puede vender a sus clientes, necesitará proporcionar modelos entrenados para cada cliente que aún siga vinculado al experimento desde el que se creó el servicio web. Además, las actualizaciones en el experimento pueden aplicarse de manera selectiva a un punto de conexión sin sobrescribir las personalizaciones.
+Al crear servicios Web que venden a los clientes tooyour hacia delante, deberá a tooprovide modelos entrenados tooeach cliente experimento toohello todavía vinculado desde qué hello Web se creó el servicio. Además, las actualizaciones debe toohello experimento aplican selectivamente tooan extremo sin sobrescribir las personalizaciones de Hola.
 
-Para ello, Azure Machine Learning permite crear varios puntos de conexión para un servicio web implementado. Cada punto de conexión del servicio web se administra, limita y dirige de forma independiente. Cada punto de conexión es una dirección URL única y clave de autorización que se puede distribuir a sus clientes.
+tooaccomplish, aprendizaje automático de Azure permite toocreate varios puntos de conexión de un servicio Web implementado. Cada extremo de servicio Web de hello independientemente está dirigido, limitada y administra. Cada punto de conexión es una clave única de autorización y la dirección URL que puede distribuir a los clientes de tooyour.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="adding-endpoints-to-a-web-service"></a>Incorporación de puntos de conexión al servicio web
-Hay tres maneras de agregar un punto de conexión a un servicio web.
+## <a name="adding-endpoints-tooa-web-service"></a>Agregar servicio Web de los puntos de conexión tooa
+Hay tres tooadd formas un tooa punto de conexión del servicio Web.
 
 * De manera programática
-* A través del portal de servicios web de Azure Machine Learning
-* A través del Portal de Azure clásico
+* A través del portal de servicios Web de Azure Machine Learning Hola
+* Aunque Hola portal de Azure clásico
 
-Una vez creado el extremo, puede consumirlo a través de API sincrónicas, API de lotes y hojas de cálculo de Excel. Además de agregar extremos a través de esta interfaz de usuario, también puede usar las API de administración de extremos para agregar extremos mediante programación.
+Una vez que se crea el extremo de hello, puede consumir a través de la API sincrónicas, lote API y las hojas de cálculo de excel. Además tooadding los puntos de conexión a través de esta interfaz de usuario, también puede usar hello las API de administración de punto de conexión tooprogrammatically agregar puntos de conexión.
 
 > [!NOTE]
-> Si ha agregado más puntos de conexión al servicio web, no podrá eliminar el predeterminado.
+> Si ha agregado los puntos de conexión adicionales toohello servicio Web, no se puede eliminar el punto de conexión de hello predeterminado.
 > 
 > 
 
 ## <a name="adding-an-endpoint-programmatically"></a>Incorporación de un punto de conexión mediante programación
-Puede agregar un punto de conexión al servicio web mediante programación utilizando el código de ejemplo [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs).
+Puede agregar un servicio de punto de conexión tooyour Web mediante programación con hello [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) código de ejemplo.
 
-## <a name="adding-an-endpoint-using-the-azure-machine-learning-web-services-portal"></a>Incorporación de un punto de conexión mediante el portal de servicios web de Azure Machine Learning
-1. En Machine Learning Studio, en la columna de navegación izquierda, haga clic en Servicios web.
-2. En la parte inferior del panel de servicios web, haga clic en **Manage endpoints**(Administrar puntos de conexión). El portal de servicios web de Azure Machine Learning se abre en la página de puntos de conexión del servicio web.
+## <a name="adding-an-endpoint-using-hello-azure-machine-learning-web-services-portal"></a>Agregar un punto de conexión mediante el portal de servicios Web de Azure Machine Learning Hola
+1. En estudio de aprendizaje automático, en la columna de navegación izquierdo de hello, haga clic en servicios Web.
+2. En hello parte inferior del panel de servicio de hello Web, haga clic en **administrar puntos de conexión**. portal de servicios Web de Azure Machine Learning Hola abrirá la página de los puntos de conexión de toohello de hello servicio Web.
 3. Haga clic en **Nuevo**.
-4. Escriba un nombre y una descripción para el nuevo punto de conexión. Los nombres de los puntos de conexión deben tener 24 caracteres o menos y deben estar formados por letras en minúsculas o números. Seleccione el nivel de registro y si los datos de ejemplo están habilitados. Para obtener más información sobre el registro, consulte [Habilitación del registro para los servicios web Machine Learning](machine-learning-web-services-logging.md).
+4. Escriba un nombre y una descripción para el nuevo punto de conexión de Hola. Los nombres de los puntos de conexión deben tener 24 caracteres o menos y deben estar formados por letras en minúsculas o números. Seleccione el nivel de registro de hello y si los datos de ejemplo está habilitado. Para obtener más información sobre el registro, consulte [Habilitación del registro para los servicios web Machine Learning](machine-learning-web-services-logging.md).
 
-## <a name="adding-an-endpoint-using-the-azure-classic-portal"></a>Configuración de puntos de conexión con el Portal de Azure clásico
-1. Inicie sesión en el [Portal de Azure clásico](http://manage.windowsazure.com), haga clic en **Machine Learning** en la columna izquierda. Haga clic en el área de trabajo que contiene el servicio web en el que esté interesado.
+## <a name="adding-an-endpoint-using-hello-azure-classic-portal"></a>Agregar un punto de conexión mediante Hola portal de Azure clásico
+1. Inicie sesión en toohello [portal de Azure clásico](http://manage.windowsazure.com), haga clic en **aprendizaje automático** en la columna izquierda de Hola. Haga clic en el área de trabajo de Hola que contiene el servicio Web de hello en el que esté interesado.
    
-    ![Navegar a área de trabajo](./media/machine-learning-create-endpoint/figure-1.png)
+    ![Navegue tooworkspace](./media/machine-learning-create-endpoint/figure-1.png)
 2. Haga clic en **Servicios web**.
    
-    ![Acceso a servicios web](./media/machine-learning-create-endpoint/figure-2.png)
-3. Haga clic en el servicio web en el que esté interesado para ver la lista de puntos de conexión disponibles.
+    ![Explorar los servicios de tooWeb](./media/machine-learning-create-endpoint/figure-2.png)
+3. Haga clic en el servicio Web de hello está interesado en la lista de hello toosee de puntos de conexión disponibles.
    
-    ![Navegar a extremo](./media/machine-learning-create-endpoint/figure-3.png)
-4. Haga clic en **Agregar extremo**en la parte inferior de la página. Escriba un nombre y una descripción, asegúrese de que no hay ningún otro punto de conexión con el mismo nombre en este servicio web. Deje el nivel de limitación con su valor predeterminado, a menos que tenga requisitos especiales. Para obtener más información sobre las limitaciones, consulte el artículo sobre [escalado de puntos de conexión de API](machine-learning-scaling-webservice.md).
+    ![Navegue tooendpoint](./media/machine-learning-create-endpoint/figure-3.png)
+4. En la parte inferior de Hola de página de hello, haga clic en **Agregar extremo**. Escriba un nombre y una descripción, asegúrese de que no hay ningún otros puntos de conexión con el mismo nombre en este servicio Web de Hola. Deje el nivel de limitación de hello con su valor predeterminado a menos que tenga requisitos especiales. toolearn más acerca de la limitación, consulte [ajuste de escala en los extremos de API](machine-learning-scaling-webservice.md).
    
     ![Crear extremo](./media/machine-learning-create-endpoint/figure-4.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Cómo consumir un servicio web Azure Machine Learning](machine-learning-consume-web-services.md)
+[¿Cómo tooconsume un servicio Web de aprendizaje de máquina de Azure](machine-learning-consume-web-services.md).
 

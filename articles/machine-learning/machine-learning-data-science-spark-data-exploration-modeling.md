@@ -1,6 +1,6 @@
 ---
-title: "Exploración y modelado de datos con Spark | Microsoft Docs"
-description: "Muestra las funcionalidades de exploración y modelado de datos del kit de herramientas Spark MLlib en Azure."
+title: "exploración de aaaData y modelado con Spark | Documentos de Microsoft"
+description: "Exhibe Hola funciones del Kit de herramientas de hello MLlib Spark en Azure de modelado y exploración de datos."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 711407f7dd9e6d442e3f04a23962487f4808e8e2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cf5cee4575053f5954b08ca659dfc39c53798371
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Exploración y modelado de datos con Spark
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-Este tutorial usa Spark en HDInsight para realizar tareas de modelado por exploración de datos, clasificación binaria y regresión en una muestra del conjunto de datos de carreras y tarifas de taxi de 2013 en la ciudad de Nueva York.  Lo guía por los pasos del [proceso de la ciencia de los datos](http://aka.ms/datascienceprocess), de principio a fin, usando un clúster de Spark en HDInsight para el procesamiento y blobs de Azure para almacenar los datos y los modelos. El proceso analiza y visualiza los datos extraídos de un Blob de Almacenamiento de Azure y, después, los prepara para crear modelos predictivos. Estos modelos se crean usando el kit de herramientas MLlib de Spark para realizar las tareas de clasificación binaria y modelado por regresión.
+En este tutorial usa exploración de datos de HDInsight Spark toodo y clasificación binaria y regresión tareas de modelado en una muestra de Hola NYC taxi de ida y vuelta y resultados son el conjunto de datos de 2013.  Le guiará por los pasos de Hola de hello [proceso de ciencia de datos](http://aka.ms/datascienceprocess), -to-end, con un HDInsight Spark de clúster para el procesamiento y modelos de datos y Hola Hola toostore de blobs de Azure. proceso de Hello explora y visualiza los datos agregados de un Blob de almacenamiento de Azure y, a continuación, prepara Hola datos toobuild modelos predictivos. Estos modelos son compilación con clasificación binaria del toodo Hola Spark MLlib Kit de herramientas y tareas de modelado de regresión.
 
-* La tarea de **clasificación binaria** consiste en predecir si se dará propina por la carrera o no. 
-* La tarea de **regresión** consiste en predecir el importe de la propina en función de otras características de la propina. 
+* Hola **clasificación binaria** tarea es toopredict haya o no una sugerencia se paga por los recorridos de Hola. 
+* Hola **regresión** tarea es la cantidad de Hola de toopredict de sugerencia de hello en función de otras características de sugerencia. 
 
-Los modelos que usamos incluyen regresión logística y lineal, bosques aleatorios y árboles impulsados por gradiente:
+los modelos de Hello que usamos incluyen regresión logística y lineal, los bosques aleatorios y los árboles impulsados degradados:
 
-* [regresión lineal con SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) es un modelo de regresión lineal que usa un método de descenso de gradiente estocástico (SGD) para la optimización y el ajuste de la escala de las características para predecir las propinas. 
-* [regresión logística con LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) , o regresión "logit", es un modelo de regresión que puede usarse cuando la variable dependiente es de categorías para realizar la clasificación de los datos. LBFGS es un algoritmo de optimización cuasi Newton que aproxima el algoritmo Broyden–Fletcher Goldfarb–Shanno (BFGS) usando una cantidad limitada de memoria de proceso, y que se usa ampliamente en el aprendizaje automático.
-* [bosques aleatorios](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) son conjuntos de árboles de decisión.  Combinan varios árboles de decisión para reducir el riesgo de sobreajuste. Los bosques aleatorios se usan para clasificación y regresión, y pueden controlar características categóricas, amplían la configuración de clasificación multiclase; no requieren ajustar la escala de las características y pueden capturar errores de alineación e interacciones de las características. Los bosques aleatorios son uno de los modelos de aprendizaje automático de más éxito para clasificación y regresión.
-* [árboles impulsados por gradiente](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) son conjuntos de árboles de decisión. Los GBT entrenan árboles de decisión de forma iterativa para minimizar una función de pérdida. Los GBT se usan para clasificación y regresión, y pueden controlar características categóricas, no requieren ajustar la escala de las características y pueden capturar errores de alineación e interacciones de las características. También se pueden usar en una configuración de clasificación multiclase.
+* [Regresión lineal con SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) es un modelo de regresión lineal que usa un método de descenso de gradiente estocástico (SGD) y para la optimización y la característica de ajuste de escala en cantidades de sugerencia de hello toopredict pago. 
+* [Regresión logística con LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) o regresión "logit", es un modelo de regresión que puede usarse en la variable dependiente de hello es la clasificación de datos de categorías toodo. LBFGS es un algoritmo de optimización de Newton tipo que se aproxima al algoritmo de hello Broyden – Fletcher – Goldfarb – Shanno (BFGS) con una cantidad limitada de memoria del equipo y que se usa ampliamente en el aprendizaje automático.
+* [bosques aleatorios](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) son conjuntos de árboles de decisión.  Combina riesgo del Hola de tooreduce de árboles de muchos decisión de desbordamiento. Bosques aleatorios se utilizan para la clasificación y regresión, pueden controlar las características de categorías y se pueden ampliar Configuración de clasificación multiclase toohello. No se requieren característica ajuste de escala y se pueda toocapture no linealidades e interacciones de característica. Bosques aleatorios son uno de los modelos para la clasificación y regresión de aprendizaje de máquina más éxito Hola.
+* [árboles impulsados por gradiente](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) son conjuntos de árboles de decisión. Árboles de decisión de entrenamiento de GBTs forma iterativa toominimize una función de pérdida. GBTs se usan para la clasificación y regresión y puede controlar las características de categorías, no requieren la característica escalado y no es capaz de toocapture linealidades y las interacciones de características. También se pueden usar en una configuración de clasificación multiclase.
 
-Los pasos de modelado también contienen código que muestra cómo entrenar, evaluar y guardar cada tipo de modelo. Se ha usado Python para codificar la solución y mostrar los trazados relevantes.   
+pasos de modelado de Hello también contienen código que muestra cómo tootrain, evaluar y guardar cada tipo de modelo. Python ha sido toocode usado Hola solución y tooshow Hola relevantes trazados.   
 
 > [!NOTE]
-> Aunque el kit de herramientas MLlib de Spark está diseñado para trabajar con grandes conjuntos de datos, se usa por comodidad una muestra relativamente pequeña (~30 MB, 170 filas; aproximadamente el 0,1 % del conjunto de datos original de Nueva York). El ejercicio que aquí se proporciona se ejecuta eficazmente en un clúster de HDInsight con 2 nodos de trabajo (en unos 10 minutos). Se puede usar el mismo código, con modificaciones menores, para procesar conjuntos de datos mayores, con las modificaciones correspondientes para almacenar datos en memoria caché o cambiar el tamaño del clúster.
+> Aunque el Kit de herramientas de hello Spark MLlib es toowork diseñado en grandes conjuntos de datos, un ejemplo relativamente pequeño (con filas de 170K, aproximadamente 0,1% del conjunto de datos de Nueva York original Hola de ~ 30 Mb) se utiliza aquí por comodidad. ejercicio Hola aquí especificado se ejecuta eficazmente (en unos 10 minutos) en un clúster de HDInsight con 2 nodos de trabajador. Hello mismo código, con modificaciones menores, puede ser tooprocess usado más grandes conjuntos de datos, con las modificaciones apropiadas para almacenar en caché datos en la memoria y cambiar el tamaño de clúster de Hola.
 > 
 > 
 
 ## <a name="prerequisites"></a>Requisitos previos
-Necesita una cuenta de Azure y un clúster de Spark 1.6 o Spark 2.0 HDInsight para completar este tutorial. Consulte el artículo [Información general sobre la ciencia de los datos con Spark en HDInsight de Azure](machine-learning-data-science-spark-overview.md) para obtener instrucciones sobre cómo satisfacer estos requisitos. Ese tema también contiene una descripción de los datos de taxis de Nueva York de 2013 que se usan aquí, además de instrucciones sobre cómo ejecutar el código de un cuaderno de Jupyter Notebook en el clúster Spark. 
+Se necesita una cuenta de Azure y un Spark 1.6 (o 2.0 de Spark) clúster de HDInsight toocomplete en este tutorial. Vea hello [información general de ciencia de datos con Spark en HDInsight de Azure](machine-learning-data-science-spark-overview.md) para obtener instrucciones sobre cómo toosatisfy estos requisitos. Este tema también contiene una descripción de hello datos NYC 2013 Taxi emplear e instrucciones sobre cómo tooexecute código de Jupyter notebook en clúster de Spark Hola. 
 
 ## <a name="spark-clusters-and-notebooks"></a>Clústeres y cuadernos de Spark
-Los pasos de instalación y el código proporcionado en este tutorial son para HDInsight Spark 1.6. Sin embargo, Jupyter Notebooks se proporciona para clústeres de HDInsight Spark 1.6 y Spark 2.0. Se proporciona una descripción de los cuadernos y de los vínculos a estos en el archivo [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) del repositorio de GitHub que los contiene. No obstante, este código y los cuadernos vinculados son genéricos y deberían funcionar en cualquier clúster de Spark. Los pasos de configuración y administración del clúster pueden ser ligeramente diferentes de los que se muestran aquí si no está usando Spark en HDInsight. Para mayor comodidad, estos son los vínculos a los cuadernos de Jupyter para Spark 1.6 (para ejecutarse en el kernel pySpark del servidor de Jupyter Notebook) y Spark 2.0 (para ejecutarse en el kernel pySpark3 del servidor de Jupyter Notebook):
+Los pasos de instalación y el código proporcionado en este tutorial son para HDInsight Spark 1.6. Sin embargo, Jupyter Notebooks se proporciona para clústeres de HDInsight Spark 1.6 y Spark 2.0. Se proporciona una descripción de hello blocs de notas y vínculos toothem Hola [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) para el repositorio de GitHub de Hola que los contienen. Además, código de hello aquí y en blocs de notas de hello vinculada genérica y debe funcionar en cualquier clúster de Spark. Si no utilizas HDInsight Spark, pasos de configuración y administración de clúster de hello pueden ser ligeramente diferentes de lo que se muestra aquí. Para mayor comodidad, estos son Hola vínculos toohello Jupyter portátiles con Spark 1.6 (toobe ejecutar en el núcleo de pySpark Hola de hello servidor de Jupyter Notebook) y Spark 2.0 (se ejecuta en el núcleo de pySpark3 Hola de servidor de Jupyter Notebook hello toobe):
 
 ### <a name="spark-16-notebooks"></a>Cuadernos de Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): proporciona información sobre cómo realizar una exploración de datos, el modelado y la puntuación con diversos algoritmos.
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): proporciona información acerca de cómo tooperform la exploración de datos, modelado y puntuación con varios algoritmos.
 
 ### <a name="spark-20-notebooks"></a>Cuadernos de Spark 2.0
-Las tareas de clasificación y regresión que se implementan mediante un clúster de Spark 2.0 se encuentran en cuadernos diferentes y el cuaderno de clasificación usa un conjunto de datos distinto:
+tareas de clasificación y regresión de Hola que se implementan mediante un clúster de Spark 2.0 son en blocs de notas independientes y portátil de clasificación de hello utiliza otro conjunto de datos:
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): este archivo proporciona información sobre cómo realizar el modelado, la puntuación y la exploración de datos en clústeres de Spark 2.0 mediante el conjunto de datos de carreras y tarifas de taxis en Nueva York que se describe [aquí](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Este cuaderno puede ser un buen punto de partida para explorar rápidamente el código proporcionado para Spark 2.0. Para obtener un análisis más pormenorizado de los datos del cuaderno sobre taxis en Nueva York, vea el siguiente cuaderno de esta lista. Vea las notas después de esta lista en las que se establece una comparación de estos cuadernos. 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): este archivo muestra cómo realizar la comparación de datos (Spark SQL y operaciones de trama de datos), la exploración, modelado y puntuación mediante el conjunto de datos de carreras y tarifas de NYC Taxi descrito [aquí](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): este archivo muestra cómo realizar la comparación de datos (Spark SQL y operaciones de trama de datos), la exploración, modelado y puntuación mediante el conocido conjunto de datos de salidas puntuales de líneas aéreas de 2011 y 2012. Se ha integrado el conjunto de datos de las líneas aéreas con los datos climatológicos del aeropuerto (por ejemplo, velocidad del viento, temperatura, altitud, etc.), antes de realizar el modelado, para que estas características climatológicas puedan incluirse en el modelo.
+- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): este archivo proporciona información sobre cómo tooperform la exploración de datos, modelado y puntuación en Spark 2.0 clústeres utilizando Hola recorridos Taxi de Nueva York y se describe de conjunto de datos tarifa [aquí](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Este bloc de notas puede ser un buen punto de partida para analizar rápidamente el código de hello que se proporcionan para Spark 2.0. Para un bloc de notas más detallada analiza Hola datos Taxi de Nueva York, consulte Bloc de notas siguiente hello en esta lista. Vea las notas de hello después de la lista que comparan estos blocs de notas. 
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): este archivo muestra cómo tooperform datos problemas con (Spark SQL y trama de datos de operaciones), la exploración, modelado y puntuación mediante Hola tarifas conjunto de datos se describe y recorridos de Nueva York Taxi [ aquí](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): este archivo muestra cómo tooperform datos problemas con (Spark SQL y trama de datos de operaciones), la exploración, modelado y puntuación mediante Hola conocido salida en el momento de Airline conjunto de datos de 2011 y 2012. El conjunto de datos de hello airline se habían integrado con hello aeropuerto tiempo datos (por ejemplo, velocidad del viento, temperatura, altitud, etc.) anteriores toomodeling para que estas características de tiempo pueden incluirse en el modelo de Hola.
 
 <!-- -->
 
 > [!NOTE]
-> El conjunto de datos de las líneas aéreas se agregó a los cuadernos de Spark 2.0 para ilustrar mejor el uso de algoritmos de clasificación. Consulte los siguientes vínculos para obtener información sobre el conjunto de datos de salidas puntuales de las líneas aéreas y sobre el de datos climatológicos:
+> el conjunto de datos de Hello airline agregó blocs de notas toohello Spark 2.0 toobetter ilustran el uso de Hola de algoritmos de clasificación. Vea Hola siguientes vínculos para obtener información sobre el conjunto de datos de salida en el momento de airline y conjunto de datos de tiempo:
 
 >- Datos de salida puntuales de líneas aéreas: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
@@ -75,7 +75,7 @@ Las tareas de clasificación y regresión que se implementan mediante un clúste
 <!-- -->
 
 > [!NOTE]
-Los cuadernos de Spark 2.0 sobre los conjuntos de datos de los taxis de Nueva York y de retrasos en los vuelos pueden tardar 10 minutos o más en ejecutarse (dependiendo del tamaño del clúster de HDI). En el primer cuaderno de la lista anterior se reflejan muchos aspectos de la exploración de datos, la visualización y el entrenamiento del modelo de ML en un cuaderno que tarda menos tiempo en ejecutarse con el conjunto de datos de Nueva York muestreado, en el que los archivos de taxis y tarifas se han unido previamente: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Este cuaderno tarda mucho menos tiempo en terminar (2-3 minutos) y puede ser un buen punto de partida para realizar una exploración rápida del código proporcionado para Spark 2.0. 
+blocs de notas de Hello Spark 2.0 en hello taxi de Nueva York y airline vuelo retraso conjuntos de datos pueden tardar 10 minutos o más toorun (según el tamaño de Hola de su clúster HDI). Hello primer portátil Hola por encima de la lista muestra muchos aspectos Hola de exploración de datos, visualización y aprendizaje automático del modelo de entrenamiento en un portátil que toma menos toorun de tiempo con muestrear abajo NYC conjunto de datos, en qué Hola taxi y tarifa que se hayan archivos previamente combinados: [ Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) este bloc de notas toma una cantidad menor tiempo toofinish (2-3 minutos) y puede ser un buen punto de partida para analizar rápidamente el código de hello tenemos se proporcionan para Spark 2.0. 
 
 <!-- -->
 
@@ -84,30 +84,30 @@ Los cuadernos de Spark 2.0 sobre los conjuntos de datos de los taxis de Nueva Yo
 <!-- -->
 
 > [!NOTE]
-Las descripciones siguientes guardan relación con el uso de Spark 1.6. En las versiones de Spark 2.0, use los cuadernos descritos anteriormente, con sus correspondientes vínculos. 
+las descripciones de Hola a continuación están relacionado toousing Spark 1.6. En las versiones 2.0 Spark, use blocs de notas de Hola se describe e indicados anteriormente. 
 
 <!-- -->
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Configuración: Ubicaciones de almacenamiento, bibliotecas y el contexto de Spark preestablecido
-Spark puede leer y escribir en un blob de Almacenamiento de Azure (también conocido como WASB), por lo que cualquiera de los datos existentes almacenados allí pueden procesarse mediante Spark y volver a almacenarse en WASB.
+## <a name="setup-storage-locations-libraries-and-hello-preset-spark-context"></a>El programa de instalación: Hola, bibliotecas y ubicaciones de almacenamiento preestablecido contexto Spark
+Spark es capaz de tooAzure tooread y escritura Blob de almacenamiento (también conocido como WASB). Por lo tanto, cualquiera de los datos existentes almacenados en ella se pueden procesar mediante Spark y Hola resultados almacenados en WASB.
 
-Para guardar modelos o archivos en WASB, la ruta de acceso debe especificarse correctamente. Se puede hacer referencia al contenedor predeterminado asociado al clúster de Spark con un ruta que comience con: "wasb///". Para hacer referencia a otras ubicaciones, se usa "wasb://".
+modelos de toosave o archivos en WASB, ruta de acceso de hello debe toobe especificado correctamente. Hola de clúster predeterminado contenedor adjuntada toohello Spark puede hacer referencia mediante un ruta que comienza con: "wasb: / / /". Para hacer referencia a otras ubicaciones, se usa "wasb://".
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Establecimiento de rutas de directorio para las ubicaciones de almacenamiento de WASB
-El ejemplo de código siguiente especifica la ubicación de los datos que se van a leer y la ruta de acceso del directorio de almacenamiento del modelo donde se guardará la salida del modelo:
+ejemplo de código siguiente Hello Especifica ubicación Hola de hello toobe de datos de lectura y se guarda la ruta de acceso de hello para la salida de hello modelo almacenamiento directory toowhich Hola modelo:
 
-    # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
+    # SET PATHS tooFILE LOCATIONS: DATA AND MODEL STORAGE
 
     # LOCATION OF TRAINING DATA
     taxi_train_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Train.tsv";
 
-    # SET THE MODEL STORAGE DIRECTORY PATH 
-    # NOTE THAT THE FINAL BACKSLASH IN THE PATH IS NEEDED.
+    # SET hello MODEL STORAGE DIRECTORY PATH 
+    # NOTE THAT hello FINAL BACKSLASH IN hello PATH IS NEEDED.
     modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 
 
 ### <a name="import-libraries"></a>Importación de bibliotecas
-Para la configuración también es necesario importar las bibliotecas necesarias. Establezca el contexto de Spark e importe las bibliotecas necesarias con el siguiente código:
+Para la configuración también es necesario importar las bibliotecas necesarias. Establecer contexto de spark e importar bibliotecas necesarias con hello siguiente código:
 
     # IMPORT LIBRARIES
     import pyspark
@@ -126,28 +126,28 @@ Para la configuración también es necesario importar las bibliotecas necesarias
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>Contexto de Spark preestablecido e instrucciones mágicas de PySpark
-Los kernels de PySpark que se proporcionan con cuadernos de Jupyter Notebook tienen contextos preestablecidos. No es necesario establecer explícitamente los contextos de Spark o Hive antes de empezar a trabajar con la aplicación que se esté desarrollando. Estos contextos están disponibles de forma predeterminada. Estos contextos son:
+los kernels de Hello PySpark que se proporcionan con blocs de notas Jupyter tienen un contexto de valores preestablecido. Por lo que no es necesario tooset Hola Spark o subárbol contextos explícitamente antes de empezar a trabajar con la aplicación hello que está desarrollando. Estos contextos están disponibles de forma predeterminada. Estos contextos son:
 
 * sc: Para Spark 
 * sqlContext: Para Hive
 
-El kernel PySpark proporciona algunas “instrucciones mágicas” predefinidas, que son comandos especiales que se pueden llamar con %%. Hay dos comandos de este tipo que se utilizan en estos ejemplos de código.
+Hello PySpark kernel proporciona algunos predefinidas "magics", que son comandos especiales que se pueden llamar con %%. Hay dos comandos de este tipo que se utilizan en estos ejemplos de código.
 
-* **%%local**: especifica que el código de las líneas siguientes se ejecutará localmente. El código debe ser un código de Python válido.
-* **%%sql -o <variable name>** Ejecuta una consulta de Hive en sqlContext. Si se pasa el parámetro -o, el resultado de la consulta se conserva en el contexto %%local de Python como trama de datos de Pandas.
+* **%% local** especifica que el código de hello en las líneas siguientes es toobe ejecutado de forma local. El código debe ser un código de Python válido.
+* **%% sql -o <variable name>**  ejecuta una consulta de Hive en hello sqlContext. Si se pasa el parámetro -o de hello, resultado de hello de consulta de Hola se conserva en hello %% contexto Python local como una trama de datos de Pandas.
 
-Para obtener más información sobre los kernels de cuadernos de Jupyter Notebook y las instrucciones mágicas predefinidas llamadas con %% (por ejemplo, %%local) que proporcionan, consulte [Kernels disponibles para cuadernos de Jupyter con clústeres de Spark en HDInsight basados en Linux en HDInsight (versión preliminar)](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
+Para obtener más información sobre los kernels de Hola para hello predefinidos y blocs de notas de Jupyter "magics" que proporcionan, consulte [clústeres de núcleos disponibles para equipos portátiles Jupyter con Linux de HDInsight Spark en HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="data-ingestion-from-public-blob"></a>Ingesta de datos de blob público
-El primer paso del proceso de ciencia de datos consiste en incorporar la información que se va a analizar desde los orígenes donde residen, a su entorno de exploración y modelado de datos. Este entorno es Spark en este tutorial. Esta sección contiene el código para completar una serie de tareas:
+Hola primer paso en el proceso de ciencia de datos de hello es tooingest Hola datos toobe analizado de orígenes donde es reside en el entorno de exploración y el modelado de datos. entorno de Hello es Spark en este tutorial. Esta sección contiene código de hello toocomplete una serie de tareas:
 
-* incorporar la muestra de datos que se va a modelar
-* leer el conjunto de datos de entrada (almacenado como un archivo .tsv)
-* dar formato y limpiar los datos
+* Introducción toobe de ejemplo de Hola datos modelada
+* leer en el conjunto de datos de entrada hello (almacenado como un archivo .tsv)
+* formato y Hola limpiar datos
 * crear objetos en la memoria (RDD o tramas de datos) y almacenarlos en caché
 * registrarlos como una tabla temporal en el contexto de SQL
 
-Este es el código para la incorporación de los datos.
+Este es el código de hello para la recopilación de datos.
 
     # INGEST DATA
 
@@ -157,7 +157,7 @@ Este es el código para la incorporación de los datos.
     # IMPORT FILE FROM PUBLIC BLOB
     taxi_train_file = sc.textFile(taxi_train_file_loc)
 
-    # GET SCHEMA OF THE FILE FROM HEADER
+    # GET SCHEMA OF hello FILE FROM HEADER
     schema_string = taxi_train_file.first()
     fields = [StructField(field_name, StringType(), True) for field_name in schema_string.split('\t')]
     fields[7].dataType = IntegerType() #Pickup hour
@@ -202,54 +202,54 @@ Este es el código para la incorporación de los datos.
     # REGISTER DATA-FRAME AS A TEMP-TABLE IN SQL-CONTEXT
     taxi_df_train_cleaned.registerTempTable("taxi_train")
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
 **SALIDA:**
 
-Time taken to execute above cell: 51.72 seconds
+Tiempo que tarda tooexecute encima de la celda: 51.72 segundos
 
 ## <a name="data-exploration--visualization"></a>Visualización y exploración de datos
-Una vez incorporados los datos en Spark, el siguiente paso del proceso de la ciencia de los datos es conocer mejor los datos mediante la exploración y la visualización. En esta sección, examinaremos los datos de taxi mediante consultas SQL y trazaremos las variables de destino y las posibles características para su inspección visual. En concreto, trazaremos la frecuencia de los recuentos de pasajeros en las carreras de taxi, la frecuencia de los importes de las propinas y cómo varían las propinas según el tipo y el importe del pago.
+Una vez introducidos los datos de hello en Spark, hello siguiente paso en el proceso de ciencia de datos de hello es toogain descripción más profunda de los datos de hello mediante exploración y visualización. En esta sección, se examinan datos de taxi hello mediante consultas SQL y las variables de destino de trazado hello y características posibles para la inspección visual. En concreto, se traza frecuencia Hola de recuentos de pasajeros en viajes taxi, la frecuencia de Hola de cantidades de sugerencia y cómo sugerencias varían según el tipo y la cantidad de pago.
 
-### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Trazado de un histograma de frecuencias de recuento de pasajeros en el ejemplo de carreras de taxi
-Este código y fragmentos de código siguientes utilizan instrucciones mágicas de SQL para consultar los ejemplos e instrucciones mágicas locales para trazar los datos.
+### <a name="plot-a-histogram-of-passenger-count-frequencies-in-hello-sample-of-taxi-trips"></a>Trazar un histograma de frecuencias de recuento de pasajeros en el ejemplo hello de viajes de taxi
+Este código y fragmentos de código siguientes usan SQL tooquery mágico Hola datos de ejemplo y local tooplot mágico Hola.
 
-* **Instrucciones mágicas de SQL (`%%sql`)** El kernel PySpark de HDInsight admite consultas sencillas de HiveQL en línea en sqlContext. El argumento (-o VARIABLE_NAME) conserva la salida de la consulta SQL como una trama de datos de Pandas en el servidor de Jupyter. Esto significa que estará disponible en el modo local.
-* La **`%%local`** se utiliza para ejecutar código de forma local en el servidor de Jupyter, que es el nodo principal del clúster de HDInsight. Normalmente, se utilizan juntas las instrucciones mágicas `%%local` y `%%sql` con el parámetro -o. El parámetro -o conservaría la salida de la consulta SQL localmente y luego la instrucción mágica %%local desencadenaría el siguiente conjunto de fragmento de código para ejecutarse localmente en la salida de las consultas SQL que se conserva localmente.
+* **Magia SQL (`%%sql`)** HDInsight PySpark kernel hello admite consultas de HiveQL en línea fácil contra Hola sqlContext. Hola (-o VARIABLE_NAME) argumento conserva la salida de hello de consulta SQL de hello como una trama de datos de Pandas en el servidor de Jupyter Hola. Esto significa que está disponible en modo local Hola.
+* Hola  **`%%local` mágico** es código toorun los utiliza localmente en el servidor de Jupyter hello, que es el nodo principal de Hola Hola del clúster de HDInsight. Normalmente, se utiliza `%%local` mágico junto con hello `%%sql` mágico con el parámetro -o. parámetro de Hello -o podría conservar la salida de hello de consulta SQL Hola localmente y, a continuación, %% magia local desencadenaría conjunto siguiente de Hola de toorun de fragmento de código localmente en la salida de hello de consultas SQL de Hola que se guarda localmente
 
-La salida se visualizará automáticamente después de ejecutar el código.
+salida de Hello se visualiza automáticamente después de ejecutar código de hello.
 
-Esta consulta recupera los viajes por el número de pasajeros. 
+Esta consulta recupera el recuento de pasajeros ciclos de ida y Hola. 
 
     # PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
-    # HIVEQL QUERY AGAINST THE sqlContext
+    # HIVEQL QUERY AGAINST hello sqlContext
     %%sql -q -o sqlResults
     SELECT passenger_count, COUNT(*) as trip_counts 
     FROM taxi_train 
     WHERE passenger_count > 0 and passenger_count < 7 
     GROUP BY passenger_count 
 
-Este código crea una trama de datos local a partir de la salida de la consulta y traza los datos. La instrucción mágica `%%local` crea una trama de datos local, `sqlResults`, que puede usarse para trazar la información con matplotlib. 
+Este código crea una trama de datos local de resultado de la consulta de Hola y representa los datos de Hola. Hola `%%local` mágico crea una trama de datos local, `sqlResults`, que se puede utilizar para trazar con matplotlib. 
 
 > [!NOTE]
-> Esta instrucción mágica de PySpark se utiliza varias veces en este tutorial. Si la cantidad de datos es grande, debe muestrear para crear una trama de datos que pueda caber en la memoria local.
+> Esta instrucción mágica de PySpark se utiliza varias veces en este tutorial. Si la cantidad de Hola de datos es grande, debe muestrear toocreate una trama de datos que cabe en la memoria local.
 > 
 > 
 
     #CREATE LOCAL DATA-FRAME AND USE FOR MATPLOTLIB PLOTTING
 
-    # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
+    # RUN hello CODE LOCALLY ON hello JUPYTER SERVER
     %%local
 
-    # USE THE JUPYTER AUTO-PLOTTING FEATURE TO CREATE INTERACTIVE FIGURES. 
-    # CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
+    # USE hello JUPYTER AUTO-PLOTTING FEATURE tooCREATE INTERACTIVE FIGURES. 
+    # CLICK ON hello TYPE OF PLOT tooBE GENERATED (E.G. LINE, AREA, BAR ETC.)
     sqlResults
 
-Este es el código para trazar los viajes por recuentos de pasajeros:
+Aquí es viajes de hello código tooplot Hola pasajeros recuentos
 
     # PLOT PASSENGER NUMBER VS. TRIP COUNTS
     %%local
@@ -268,14 +268,14 @@ Este es el código para trazar los viajes por recuentos de pasajeros:
 
 ![Frecuencia de las carreras por número de pasajeros](./media/machine-learning-data-science-spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-Puede seleccionar entre diferentes tipos de visualizaciones (tabla, circular, línea, área o barra) mediante los botones del menú **Tipo** del cuaderno. Aquí se muestra el gráfico de barras.
+Puede seleccionar entre los distintos tipos de visualizaciones (tabla, circular, línea, el área o barra) mediante el uso de hello **tipo** botones de menú en el Bloc de notas de Hola. aquí se muestra un gráfico de barras de Hola.
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Trazado de un histograma de importes de propinas y de las variaciones en las propinas según número de pasajeros y tarifas.
-Utilice una consulta SQL para muestrear datos.
+Utilice una consulta toosample datos de SQL.
 
     #PLOT HISTOGRAM OF TIP AMOUNTS AND VARIATION BY PASSENGER COUNT AND PAYMENT TYPE
 
-    # HIVEQL QUERY AGAINST THE sqlContext
+    # HIVEQL QUERY AGAINST hello sqlContext
     %%sql -q -o sqlResults
     SELECT fare_amount, passenger_count, tip_amount, tipped 
     FROM taxi_train 
@@ -288,9 +288,9 @@ Utilice una consulta SQL para muestrear datos.
     AND tip_amount < 25
 
 
-Esta celda de código usa la consulta SQL para crear tres trazados de los datos.
+Esta celda de código usa Hola SQL consulta toocreate tres traza Hola datos.
 
-    # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
+    # RUN hello CODE LOCALLY ON hello JUPYTER SERVER
     %%local
 
     # HISTOGRAM OF TIP AMOUNTS AND PASSENGER COUNT
@@ -327,17 +327,17 @@ Esta celda de código usa la consulta SQL para crear tres trazados de los datos.
 ![Importe de las propinas por importe de la tarifa](./media/machine-learning-data-science-spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
 ## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Diseño, transformación y preparación de los datos para el modelado de características
-Esta sección describe y proporciona el código para los procedimientos que se usan para preparar los datos para su uso en el modelado de aprendizaje automático. Muestra cómo realizar las siguientes tareas:
+En esta sección se describe y proporciona código de hello para conocer los procedimientos que utiliza datos tooprepare para su uso en el modelado de aprendizaje automático. Muestra cómo hello toodo siguientes tareas:
 
 * Creación de una nueva característica mediante la discretización de horas en cubos de tiempo de tráfico
 * Indexación y codificación de características categóricas
 * Creación de objetos de punto con etiqueta para la entrada en funciones de aprendizaje automático
-* Creación de una submuestra aleatoria de datos y su división en conjuntos de entrenamiento y de pruebas
+* Crear un muestreo aleatorio dentro de los datos de Hola y dividir en entrenamiento y conjuntos de pruebas
 * Ajuste de la escala de las características
 * Almacenamiento de objetos en caché
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Creación de una nueva característica mediante la discretización de horas en cubos de tiempo de tráfico
-Este código muestra cómo crear una nueva característica mediante la discretización de horas en cubos de tiempo de tráfico y, después, cómo almacenar en caché la trama de datos resultante en memoria. Cuando se usan repetidamente conjuntos de datos distribuidos resistentes (RDD) y tramas de datos, el almacenamiento en caché mejora los tiempos de ejecución. Por lo tanto, almacenaremos en caché los RDD y las tramas de datos en varias fases del tutorial. 
+Este código muestra cómo los depósitos de toocreate una nueva característica discretizando horas en vez de tráfico y, a continuación, cómo toocache Hola resultante trama de datos en memoria. Cuando se utilicen repetidamente resistente distribuidas los conjuntos de datos (RDDs) y tramas de datos, el almacenamiento en caché conduce tooimproved los tiempos de ejecución. En consecuencia, se almacenará en caché RDDs y tramas de datos en varias fases de tutorial Hola. 
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -353,8 +353,8 @@ Este código muestra cómo crear una nueva característica mediante la discretiz
     taxi_df_train_with_newFeatures = sqlContext.sql(sqlStatement)
 
     # CACHE DATA-FRAME IN MEMORY & MATERIALIZE DF IN MEMORY
-    # THE .COUNT() GOES THROUGH THE ENTIRE DATA-FRAME,
-    # MATERIALIZES IT IN MEMORY, AND GIVES THE COUNT OF ROWS.
+    # hello .COUNT() GOES THROUGH hello ENTIRE DATA-FRAME,
+    # MATERIALIZES IT IN MEMORY, AND GIVES hello COUNT OF ROWS.
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
@@ -363,12 +363,12 @@ Este código muestra cómo crear una nueva característica mediante la discretiz
 126050
 
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Indexación y codificación de características categóricas para la entrada en funciones de modelado
-Esta sección muestra cómo indexar o codificar las características categóricas para la entrada en las funciones de modelado. Las funciones de modelado y predicción de MLlib requieren características con datos de entrada categóricos indexados o codificados antes de usarlos. Dependiendo del modelo, deberá indexar o codificarlos de maneras diferentes:  
+Esta sección se muestra cómo tooindex o codificar las características de categorías para la entrada en hello las funciones de modelado. Hola modelado y predecir las funciones de MLlib requieren características con los datos de entrada categorías toobe la indización o codifican toouse anterior. Según el modelo de hello, necesita tooindex o codificarlos de maneras diferentes:  
 
-* **modelado basado en árboles** requiere que las categorías se codifiquen como valores numéricos (por ejemplo, una característica con tres categorías se puede codificar con 0, 1, 2). Esto lo proporciona la función [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) de MLlib. Esta función codifica una columna de cadena de etiquetas en una columna de índices de etiqueta que se ordenan por frecuencias de etiqueta. Aunque se indexan con valores numéricos para facilitar la entrada y la manipulación de los datos, los algoritmos basados en árboles se pueden configurar para que los traten como categorías. 
-* Los **modelos de regresión logística y lineal** requieren una codificación "uno de n", donde una característica con 3 categorías puede ampliarse a 3 columnas de característica, cada una de las cuales contiene 0 o 1 según la categoría de una observación. MLlib proporciona la función [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) para realizar la codificación "one-hot". Este codificador asigna una columna de índices de etiqueta a una columna de vectores binarios, con un solo valor uno como máximo. Esta codificación permite aplicar algoritmos que esperan características con valores numéricos, como la regresión logística, a características categóricas.
+* **Modelado basados en árbol** requiere toobe categorías codificado como valores numéricos (por ejemplo, una función con tres categorías puede codificarse con 0, 1, 2). Esto lo proporciona la función [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) de MLlib. Esta función codifica una columna de cadena de la columna de etiquetas de tooa de índices de etiqueta que se ordenan por frecuencias de etiqueta. Aunque indizada con valores numéricos de entrada y manipulación de datos, algoritmos de hello basados en árbol pueden ser tootreat especificado correctamente como categorías. 
+* **Modelos de regresión lineal y logística** requieren estrechamente con una codificación, donde, por ejemplo, una función con tres categorías se puede expandir en tres columnas de característica, cada contenedor 0 o 1 según la categoría de Hola de una observación. Proporciona MLlib [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) función toodo estrechamente con una codificación. Este codificador asigna una columna de la columna de etiqueta índices tooa de vectores binarios, con al menos un solo uno valor. Esta codificación permite algoritmos que esperan las características con valores numéricas, como la regresión logística, toobe aplica toocategorical características.
 
-Este es el código para indexar y codificar características categóricas:
+Este es Hola código tooindex y codificar las características de categorías:
 
     # INDEX AND ENCODE CATEGORICAL FEATURES
 
@@ -380,7 +380,7 @@ Este es el código para indexar y codificar características categóricas:
 
     # INDEX AND ENCODE VENDOR_ID
     stringIndexer = StringIndexer(inputCol="vendor_id", outputCol="vendorIndex")
-    model = stringIndexer.fit(taxi_df_train_with_newFeatures) # Input data-frame is the cleaned one from above
+    model = stringIndexer.fit(taxi_df_train_with_newFeatures) # Input data-frame is hello cleaned one from above
     indexed = model.transform(taxi_df_train_with_newFeatures)
     encoder = OneHotEncoder(dropLast=False, inputCol="vendorIndex", outputCol="vendorVec")
     encoded1 = encoder.transform(indexed)
@@ -409,18 +409,18 @@ Este es el código para indexar y codificar características categóricas:
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **SALIDA:**
 
-Time taken to execute above cell: 1.28 seconds
+Tiempo que tarda tooexecute encima de la celda: 1,28 segundos
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Creación de objetos de punto con etiqueta para la entrada en funciones de aprendizaje automático
-Esta sección contiene código que muestra cómo indexar datos de texto categóricos como un tipo de datos de punto con etiqueta, y codificarlos para poder usarlos para entrenar y probar la regresión logística de MLlib y otros modelos de clasificación. Los objetos de punto con etiqueta son conjuntos de datos distribuidos resistentes (RDD) con el formato de datos de entrada que necesita la mayoría de los algoritmos de aprendizaje automático de MLlib. Un [punto con etiqueta](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) es un vector local, denso o disperso, asociado con una etiqueta o respuesta.  
+Esta sección contiene código que muestra cómo tipo de datos de texto de categorías de tooindex como datos de un punto con la etiqueta y codifican, por lo que puede ser usado tootrain y prueba MLlib la regresión logística y otros modelos de clasificación. Los objetos de punto con etiqueta son conjuntos de datos distribuidos resistentes (RDD) con el formato de datos de entrada que necesita la mayoría de los algoritmos de aprendizaje automático de MLlib. Un [punto con etiqueta](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) es un vector local, denso o disperso, asociado con una etiqueta o respuesta.  
 
-Esta sección contiene código que muestra cómo indexar datos de texto categóricos como un tipo de [datos de punto](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) con etiqueta, y codificarlos para poder usarlos para entrenar y probar la regresión logística de MLlib y otros modelos de clasificación. Los objetos de punto con etiqueta son conjuntos de datos distribuidos resistentes (RDD) que constan de una etiqueta (variable destino/respuesta) y un vector de característica. Muchos algoritmos de aprendizaje automático de MLlib necesitan este formato de entrada.
+Esta sección contiene código que muestra cómo tooindex datos de texto por categorías como un [con la etiqueta punto](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) tipo de datos y codificar, por lo que puede ser usado tootrain y prueba MLlib la regresión logística y otros modelos de clasificación. Los objetos de punto con etiqueta son conjuntos de datos distribuidos resistentes (RDD) que constan de una etiqueta (variable destino/respuesta) y un vector de característica. Muchos algoritmos de aprendizaje automático de MLlib necesitan este formato de entrada.
 
-Este es el código para indexar y codificar las características de texto para la clasificación binaria.
+Este es Hola código tooindex y codificar las características de texto para clasificación binaria.
 
     # FUNCTIONS FOR BINARY CLASSIFICATION
 
@@ -446,7 +446,7 @@ Este es el código para indexar y codificar las características de texto para l
         return  labPt
 
 
-Este es el código para codificar e indexar características de texto de categorías para el análisis de regresión lineal.
+Este es el código de hello tooencode e índice características de texto de categorías para el análisis de regresión lineal.
 
     # FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
@@ -469,8 +469,8 @@ Este es el código para codificar e indexar características de texto de categor
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Creación de una submuestra aleatoria de datos y su división en conjuntos de entrenamiento y de pruebas
-Este código crea una muestra aleatoria de los datos (aquí se usa el 25 %). Aunque no es necesario para este ejemplo debido al tamaño del conjunto de datos, se muestra cómo realizar la muestra para que sepa cómo hacerlo cuando lo necesite. Cuando las muestras son grandes, esto puede ahorrar mucho tiempo al entrenar modelos. Después, dividimos la muestra en una parte de entrenamiento (75 %) y una parte de pruebas (25 %) para el modelado de clasificación y regresión.
+### <a name="create-a-random-sub-sampling-of-hello-data-and-split-it-into-training-and-testing-sets"></a>Crear un muestreo aleatorio dentro de los datos de Hola y dividir en entrenamiento y conjuntos de pruebas
+Este código crea un muestreo aleatorio de datos de hello (25% se utiliza aquí). Aunque no es necesario para este ejemplo debido toohello tamaño del conjunto de datos de hello, demostraremos cómo puede muestrear aquí para saber cómo toouse para su propio problema cuando sea necesario. Cuando las muestras son grandes, esto puede ahorrar mucho tiempo al entrenar modelos. A continuación, dividiremos ejemplo hello en una parte de entrenamiento (aquí 75%) y una prueba toouse parte (aquí 25%) en la clasificación y el modelo de regresión.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -504,21 +504,21 @@ Este código crea una muestra aleatoria de los datos (aquí se usa el 25 %). Aun
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **SALIDA:**
 
-Time taken to execute above cell: 0.24 seconds
+Tiempo que tarda tooexecute encima de la celda: 0,24 segundos
 
 ### <a name="feature-scaling"></a>Ajuste de la escala de las características
-El ajuste de la escala de las características, también conocido como normalización de los datos, garantiza que características con valores situados muy en los extremos no tengan un peso excesivo en la función objetivo. El código para ajustar la escala de las características usa [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) para ajustarlas a la varianza de la unidad. MLlib lo proporciona para su uso en la regresión lineal con descenso de gradiente estocástico (SGD), un popular algoritmo para entrenar una amplia variedad de otros modelos de aprendizaje automático tales como regresiones regularizadas o máquinas de vectores de soporte (SVM).
+Ampliación de característica, también conocida como la normalización de datos, se garantiza que funciones con valores muy dispersos no se le otorgó excesivo sopesar en función del objetivo de hello. código para el escalado de la característica Hello usa hello [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) varianza de tooscale Hola características toounit. MLlib lo proporciona para su uso en la regresión lineal con descenso de gradiente estocástico (SGD), un popular algoritmo para entrenar una amplia variedad de otros modelos de aprendizaje automático tales como regresiones regularizadas o máquinas de vectores de soporte (SVM).
 
 > [!NOTE]
-> Hemos descubierto que el algoritmo LinearRegressionWithSGD es sensible al ajuste de la escala de las características.
+> Hemos encontrado hello LinearRegressionWithSGD algoritmo toobe toofeature confidencial ajuste de escala.
 > 
 > 
 
-Con este código, se ajusta la escala de variables para usarlas con el algoritmo SGD lineal regularizado.
+Aquí es tooscale variables de código de hello para su uso con un algoritmo SGD lineal Hola regularizado.
 
     # FEATURE SCALING
 
@@ -547,14 +547,14 @@ Con este código, se ajusta la escala de variables para usarlas con el algoritmo
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **SALIDA:**
 
-Time taken to execute above cell: 13.17 seconds
+Tiempo que tarda tooexecute encima de la celda: 13.17 segundos
 
 ### <a name="cache-objects-in-memory"></a>Almacenamiento de objetos en caché
-Para reducir el tiempo necesario para entrenar y probar los algoritmos de aprendizaje automático, puede almacenar en caché los objetos de trama de datos de entrada usados para clasificación, regresión y características con ajuste de la escala.
+tiempo Hola para entrenamiento y prueba de algoritmos de aprendizaje automático pueden reducirse mediante objetos de marco de hello datos de entrada utilizados para la clasificación de regresión, el almacenamiento en caché y escalar características.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -578,14 +578,14 @@ Para reducir el tiempo necesario para entrenar y probar los algoritmos de aprend
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **SALIDA:** 
 
-Time taken to execute above cell: 0.15 seconds
+Tiempo que tarda tooexecute encima de la celda: 0,15 segundos
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Predicción de si se dio propina o no con modelos de clasificación binaria
-Esta sección muestra cómo usar tres modelos para la tarea de clasificación binaria para predecir si se dio propina o no en una carrera de taxi. Los modelos que se presentan son:
+Esta sección muestra cómo usar tres modelos para la tarea de clasificación binaria de hello de predecir si no se le paga una sugerencia para un recorrido de taxi. modelos de Hello presentados son:
 
 * Regresión logística regularizada 
 * Modelo de bosque aleatorio
@@ -598,9 +598,9 @@ Cada sección de código de generación del modelo se dividirá en pasos:
 3. **Guardado del modelo** en un blob para utilizarse en el futuro
 
 ### <a name="classification-using-logistic-regression"></a>Clasificación mediante regresión logística
-El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo de regresión logística con [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , que predice si se dio propina o no en una carrera, en el conjunto de datos de carreras y tarifas de taxi de la ciudad de Nueva York.
+código de Hello en esta sección muestra cómo tootrain, evaluar y guardar un modelo de regresión logística con [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) que predice si no se le paga una sugerencia para un recorrido en hello NYC taxi tarifas y recorridos dataset.
 
-**Entrenamiento del modelo de regresión logística con CV y barrido de hiperparámetros**
+**Entrenar el modelo de regresión logística de hello mediante CV y barrido hyperparameter**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -621,16 +621,16 @@ El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo 
                                                    regParam=0.01, regType='l2', intercept=True, corrections=10, 
                                                    tolerance=0.0001, validateData=True, numClasses=2)
 
-    # PRINT COEFFICIENTS AND INTERCEPT OF THE MODEL
-    # NOTE: There are 20 coefficient terms for the 10 features, 
-    #       and the different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
+    # PRINT COEFFICIENTS AND INTERCEPT OF hello MODEL
+    # NOTE: There are 20 coefficient terms for hello 10 features, 
+    #       and hello different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
     print("Coefficients: " + str(logitModel.weights))
     print("Intercept: " + str(logitModel.intercept))
 
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 
 **SALIDA:** 
@@ -639,9 +639,9 @@ Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.481245780
 
 Intercept: -0.0111216486893
 
-Time taken to execute above cell: 14.43 seconds
+Tiempo que tarda tooexecute encima de la celda: 14.43 segundos
 
-**Evaluación del modelo de clasificación binaria con métricas estándares**
+**Evaluar el modelo de clasificación binaria de hello con métricas estándares**
 
     #EVALUATE LOGISTIC REGRESSION MODEL WITH LBFGS
 
@@ -685,7 +685,7 @@ Time taken to execute above cell: 14.43 seconds
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
 **SALIDA:** 
 
@@ -701,22 +701,22 @@ Recall = 0.984304060189
 
 F1 Score = 0.984304060189
 
-Time taken to execute above cell: 57.61 seconds
+Tiempo que tarda tooexecute encima de la celda: 57.61 segundos
 
-**Trazado de la curva ROC.**
+**Trazar la curva ROC Hola.**
 
-*predictionAndLabelsDF* está registrado como una tabla, *tmp_results*, en la celda anterior. *tmp_results* puede utilizarse para hacer consultas y mostrar los resultados en la trama de datos de sqlResults para el trazado. Este es el código.
+Hola *predictionAndLabelsDF* está registrado como una tabla, *tmp_results*, en la celda anterior de Hola. *tmp_results* pueden toodo usado consultas y generar resultados en hello sqlResults-trama de datos para trazar. Este es el código de hello.
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
 
-Este es el código para realizar predicciones y trazar la curva ROC.
+Aquí es predicciones de toomake de código de Hola y Hola trazado ROC curva.
 
     # MAKE PREDICTIONS AND PLOT ROC-CURVE
 
-    # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+    # RUN hello CODE LOCALLY ON hello JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
     %matplotlib inline
     from sklearn.metrics import roc_curve,auc
@@ -745,7 +745,7 @@ Este es el código para realizar predicciones y trazar la curva ROC.
 ![Logistic regression ROC curve.png](./media/machine-learning-data-science-spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
 ### <a name="random-forest-classification"></a>Clasificación de bosque aleatorio
-El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo de bosque aleatorio que predice si se dio propina o no en una carrera, en el conjunto de datos de carreras de taxi y tarifas de Nueva York.
+código de Hello en esta sección muestra cómo tootrain, evaluar y guardar un modelo de bosque aleatorio que predice si no se le paga una sugerencia para un recorrido en hello NYC taxi tarifas y recorridos conjunto de datos.
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING RANDOM FOREST
 
@@ -766,7 +766,7 @@ El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo 
                                            categoricalFeaturesInfo=categoricalFeaturesInfo,
                                            numTrees=25, featureSubsetStrategy="auto",
                                            impurity='gini', maxDepth=5, maxBins=32)
-    ## UN-COMMENT IF YOU WANT TO PRINT TREES
+    ## UN-COMMENT IF YOU WANT tooPRINT TREES
     #print('Learned classification forest model:')
     #print(rfModel.toDebugString())
 
@@ -788,16 +788,16 @@ El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo 
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **SALIDA:**
 
 Area under ROC = 0.985297691373
 
-Time taken to execute above cell: 31.09 seconds
+Tiempo que tarda tooexecute encima de la celda: 31.09 segundos
 
 ### <a name="gradient-boosting-trees-classification"></a>Clasificación de árboles impulsados por gradiente
-El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo de árboles impulsados por gradiente que predice si se dio propina o no en una carrera, en el conjunto de datos de carreras de taxi y tarifas de Nueva York.
+código de Hello en esta sección muestra cómo tootrain, evaluar y guardar un modelo de árboles de aumento de degradado que predice si no se le paga una sugerencia para un recorrido en hello NYC taxi tarifas y recorridos conjunto de datos.
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING GRADIENT BOOSTING TREES
 
@@ -811,7 +811,7 @@ El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo 
     categoricalFeaturesInfo={0:2, 1:2, 2:6, 3:4}
 
     gbtModel = GradientBoostedTrees.trainClassifier(indexedTRAINbinary, categoricalFeaturesInfo=categoricalFeaturesInfo, numIterations=5)
-    ## UNCOMMENT IF YOU WANT TO PRINT TREE DETAILS
+    ## UNCOMMENT IF YOU WANT tooPRINT TREE DETAILS
     #print('Learned classification GBT model:')
     #print(bgtModel.toDebugString())
 
@@ -833,33 +833,33 @@ El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo 
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 
 **SALIDA:**
 
 Area under ROC = 0.985297691373
 
-Time taken to execute above cell: 19.76 seconds
+Tiempo que tarda tooexecute encima de la celda: 19.76 segundos
 
 ## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>Predicción de los importes de las propinas en las carreras de taxi con modelos de regresión
-Esta sección muestra cómo usar tres modelos para la tarea de regresión para predecir el importe de la propina para una carrera de taxi en función de otras características de propina. Los modelos que se presentan son:
+Esta sección muestra cómo utilizar tres modelos para la tarea de regresión de hello de predecir la cantidad de Hola de sugerencia de hello pagado por una taxi de ida y vuelta en función de otras características de sugerencia. modelos de Hello presentados son:
 
 * Regresión lineal regularizada
 * Bosque aleatorio
 * Árboles impulsados por gradiente
 
-Estos modelos se describieron en la introducción. Cada sección de código de generación del modelo se dividirá en pasos: 
+Estos modelos se describen en la introducción de Hola. Cada sección de código de generación del modelo se dividirá en pasos: 
 
 1. **entrenamiento del modelo** con un conjunto de parámetros
 2. **Evaluación del modelo** en un conjunto de datos de prueba con métricas
 3. **Guardado del modelo** en un blob para utilizarse en el futuro
 
 ### <a name="linear-regression-with-sgd"></a>regresión lineal con SGD
-El código en esta sección muestra cómo usar características con ajuste de la escala para entrenar una regresión lineal que usa el descenso de gradiente estocástico (SGD) para la optimización, y cómo puntuar, evaluar y guardar el modelo en Almacenamiento de blobs de Azure (WASB).
+Hello código en esta sección muestra cómo toouse escalarse características tootrain una regresión lineal que usa el descenso de gradiente estocástico (SGD) para la optimización, y cómo tooscore, evaluar y guardar el modelo de hello en el almacenamiento de blobs de Azure (WASB).
 
 > [!TIP]
-> Nuestra experiencia nos indica que puede haber problemas con la convergencia de los modelos LinearRegressionWithSGD y es necesario cambiar u optimizar los parámetros cuidadosamente para obtener un modelo válido. El ajuste de la escala de las variables ayuda con la convergencia. 
+> En nuestra experiencia, puede haber problemas con la convergencia de Hola de modelos LinearRegressionWithSGD y parámetros necesitan toobe cambiado/optimizado cuidadosamente para obtener un modelo válido. El ajuste de la escala de las variables ayuda con la convergencia. 
 > 
 > 
 
@@ -873,12 +873,12 @@ El código en esta sección muestra cómo usar características con ajuste de la
     from pyspark.mllib.evaluation import RegressionMetrics
     from scipy import stats
 
-    # USE SCALED FEATURES TO TRAIN MODEL
+    # USE SCALED FEATURES tooTRAIN MODEL
     linearModel = LinearRegressionWithSGD.train(oneHotTRAINregScaled, iterations=100, step = 0.1, regType='l2', regParam=0.1, intercept = True)
 
-    # PRINT COEFFICIENTS AND INTERCEPT OF THE MODEL
-    # NOTE: There are 20 coefficient terms for the 10 features, 
-    #       and the different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
+    # PRINT COEFFICIENTS AND INTERCEPT OF hello MODEL
+    # NOTE: There are 20 coefficient terms for hello 10 features, 
+    #       and hello different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
     print("Coefficients: " + str(linearModel.weights))
     print("Intercept: " + str(linearModel.intercept))
 
@@ -890,7 +890,7 @@ El código en esta sección muestra cómo usar características con ajuste de la
     print("RMSE = %s" % testMetrics.rootMeanSquaredError)
     print("R-sqr = %s" % testMetrics.r2)
 
-    # SAVE MODEL WITH DATE-STAMP IN THE DEFAULT BLOB FOR THE CLUSTER
+    # SAVE MODEL WITH DATE-STAMP IN hello DEFAULT BLOB FOR hello CLUSTER
     datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
     linearregressionfilename = "LinearRegressionWithSGD_" + datestamp;
     dirfilename = modelDir + linearregressionfilename;
@@ -900,7 +900,7 @@ El código en esta sección muestra cómo usar características con ajuste de la
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **SALIDA:**
 
@@ -912,10 +912,10 @@ RMSE = 1.24190115863
 
 R-sqr = 0.608017146081
 
-Time taken to execute above cell: 58.42 seconds
+Tiempo que tarda tooexecute encima de la celda: 58,42 segundos
 
 ### <a name="random-forest-regression"></a>Regresión con bosque aleatorio
-El código de esta sección muestra cómo entrenar, evaluar y guardar una regresión de bosque aleatoria que predice el importe de las propinas en los datos de carreras de taxi de la ciudad de Nueva York.
+código de Hello en esta sección muestra cómo tootrain, evaluar y guardar una regresión de bosque aleatorio que predice la cantidad de sugerencia para hello datos de Nueva York taxi de ida y vuelta.
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
 
@@ -933,7 +933,7 @@ El código de esta sección muestra cómo entrenar, evaluar y guardar una regres
     rfModel = RandomForest.trainRegressor(indexedTRAINreg, categoricalFeaturesInfo=categoricalFeaturesInfo,
                                         numTrees=25, featureSubsetStrategy="auto",
                                         impurity='variance', maxDepth=10, maxBins=32)
-    ## UN-COMMENT IF YOU WANT TO PRING TREES
+    ## UN-COMMENT IF YOU WANT tooPRING TREES
     #print('Learned classification forest model:')
     #print(rfModel.toDebugString())
 
@@ -956,7 +956,7 @@ El código de esta sección muestra cómo entrenar, evaluar y guardar una regres
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **SALIDA:**
 
@@ -964,12 +964,12 @@ RMSE = 0.891209218139
 
 R-sqr = 0.759661334921
 
-Time taken to execute above cell: 49.21 seconds
+Tiempo que tarda tooexecute encima de la celda: 49.21 segundos
 
 ### <a name="gradient-boosting-trees-regression"></a>Regresión con árboles impulsados por gradiente
-El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo de árboles impulsados por gradiente que predice el importe de las propinas en los datos de carreras de taxi de Nueva York.
+código de Hello en esta sección muestra cómo tootrain, evaluar y guardar un modelo de árboles de aumento degradado que predice la cantidad de sugerencia para hello datos de Nueva York taxi de ida y vuelta.
 
-** Entrenar y evaluar **
+**Entrenamiento y evaluación**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1000,14 +1000,14 @@ El código de esta sección muestra cómo entrenar, evaluar y guardar un modelo 
     dirfilename = modelDir + btregressionfilename;
     gbtModel.save(sc, dirfilename)
 
-    # CONVER RESULTS TO DF AND REGISER TEMP TABLE
+    # CONVER RESULTS tooDF AND REGISER TEMP TABLE
     test_predictions = sqlContext.createDataFrame(predictionAndLabels)
     test_predictions.registerTempTable("tmp_results");
 
     # PRINT ELAPSED TIME
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **SALIDA:**
 
@@ -1015,11 +1015,11 @@ RMSE = 0.908473148639
 
 R-sqr = 0.753835096681
 
-Time taken to execute above cell: 34.52 seconds
+Tiempo que tarda tooexecute encima de la celda: 34.52 segundos
 
 **Trazado**
 
-*tmp_results* se registra como una tabla de Hive en la celda anterior. Los resultados de la tabla se envían a la trama de datos *sqlResults* para el trazado. Este es el código.
+*tmp_results* está registrado como una tabla de Hive en la celda anterior de Hola. Resultados de tabla Hola son salidas en hello *sqlResults* trama de datos para trazar. Este es el código de hello
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1027,9 +1027,9 @@ Time taken to execute above cell: 34.52 seconds
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
-Este es el código para trazar los datos mediante el servidor de Jupyter.
+Aquí es Hola código tooplot Hola datos mediante servidor de Jupyter Hola.
 
-    # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+    # RUN hello CODE LOCALLY ON hello JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
     %matplotlib inline
     import numpy as np
@@ -1050,7 +1050,7 @@ Este es el código para trazar los datos mediante el servidor de Jupyter.
 ![Actual-vs-predicted-tip-amounts](./media/machine-learning-data-science-spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
 ## <a name="clean-up-objects-from-memory"></a>Limpieza de objetos de la memoria
-Use `unpersist()` para eliminar objetos almacenados en la memoria caché.
+Use `unpersist()` objetos toodelete en la memoria caché.
 
     # REMOVE ORIGINAL DFs
     taxi_df_train_cleaned.unpersist()
@@ -1073,8 +1073,8 @@ Use `unpersist()` para eliminar objetos almacenados en la memoria caché.
     oneHotTESTregScaled.unpersist()
 
 
-## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>Ubicaciones de almacenamiento de registros de los modelos para consumo y puntuación
-Para consumir y puntuar un conjunto de datos independiente que se describe en el tema [Puntuación de modelos de aprendizaje automático creados con Spark](machine-learning-data-science-spark-model-consumption.md), deberá copiar y pegar estos nombres de archivo (que contienen los modelos guardados creados aquí) en el cuaderno de consumo de Jupyter Notebook. Este es el código para imprimir las rutas de acceso a los archivos de modelo que necesita.
+## <a name="record-storage-locations-of-hello-models-for-consumption-and-scoring"></a>Ubicaciones de almacenamiento de registro de los modelos de hello para el consumo y la puntuación
+tooconsume y puntuación de un conjunto de datos independiente descrito en hello [puntuación y evalúe los modelos de aprendizaje automático integrado Spark](machine-learning-data-science-spark-model-consumption.md) tema, deberá toocopy y pegar estos archivos nombres que contienen modelos de hello guarda creados aquí en hello Bloc de notas de Jupyter de consumo. Aquí es tooprint de código de hello los archivos toomodel hello las rutas de acceso que necesita no existe.
 
     # MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1100,9 +1100,9 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
 ## <a name="whats-next"></a>Pasos siguientes
-Ahora que ha creado los modelos de clasificación y regresión con Spark MlLib, está listo para aprender a puntuar y evaluar estos modelos. El Notebook de exploración y modelado de datos avanzado profundiza más en la inclusión de la validación cruzada, el barrido de los hiperparámetros y en la evaluación de modelos. 
+Ahora que ha creado los modelos de regresión y de clasificación con hello Spark MlLib, cómo está listo toolearn tooscore y evaluar estos modelos. Hola avanzada de exploración de datos y modelado más profunda, profundiza Bloc de notas en incluida la validación cruzada, parámetro de hyper-barrido y el modelo de evaluación. 
 
-**Consumo de modelos** : Para saber cómo puntuar y evaluar los modelos de clasificación y regresión creados en este tema, consulte [Puntuación de modelos de aprendizaje automático creados con Spark](machine-learning-data-science-spark-model-consumption.md).
+**Consumo de modelo:** toolearn cómo tooscore y evaluar modelos de clasificación y regresión de hello creados en este tema, consulte [puntuación y evaluar modelos de aprendizaje automático integrado Spark](machine-learning-data-science-spark-model-consumption.md).
 
 **Validación cruzada y barrido de hiperparámetros**: consulte [Exploración y modelado avanzados de datos con Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) sobre cómo pueden prepararse los modelos con el barrido de hiperparámetros y la validación cruzada.
 

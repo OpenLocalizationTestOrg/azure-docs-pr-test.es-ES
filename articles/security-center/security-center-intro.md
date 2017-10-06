@@ -1,5 +1,5 @@
 ---
-title: "Introducción a Azure Security Center | Microsoft Docs"
+title: aaaIntroduction tooAzure centro de seguridad | Documentos de Microsoft
 description: "Obtenga información sobre el Centro de seguridad de Azure, sus capacidades clave y cómo funciona."
 services: security-center
 documentationcenter: na
@@ -14,65 +14,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: terrylan
-ms.openlocfilehash: 8951167213da6ab5341c1ca420353ec625ef5424
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 287dbaaa7e2004c522f103595bc316261daf05b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-azure-security-center"></a>Introducción al Centro de seguridad de Azure
+# <a name="introduction-tooazure-security-center"></a>Introducción tooAzure centro de seguridad
 Obtenga información sobre el Centro de seguridad de Azure, sus capacidades clave y cómo funciona.
 
 > [!NOTE]
-> Desde primeros de junio de 2017, Security Center usará Microsoft Monitoring Agent para recopilar y almacenar datos. Consulte [Migración de la plataforma de Azure Security Center](security-center-platform-migration.md) para más información. La información de este artículo representa la funcionalidad de Security Center después de la transición a Microsoft Monitoring Agent.
+> A partir de los principios de junio de 2017, centro de seguridad usará Hola Microsoft Monitoring Agent toocollect y almacenar datos. Vea [migración de la plataforma de Azure Security Center](security-center-platform-migration.md) toolearn más. información de Hello en este artículo representa la funcionalidad del centro de seguridad después de la transición toohello Microsoft Monitoring Agent.
 >
 >
 
 ## <a name="what-is-azure-security-center"></a>¿Qué es el Centro de seguridad de Azure?
- El Centro de seguridad ayuda a evitar, detectar y responder a amenazas con más visibilidad y control de la seguridad en los recursos de Azure. Proporciona administración de directivas y supervisión de la seguridad integrada en las suscripciones de Azure, ayuda a detectar las amenazas que podrían pasar desapercibidas y funciona con un amplio ecosistema de soluciones de seguridad.
+ Centro de seguridad le ayuda a evitar, detectar y responder toothreats con una mayor visibilidad y control sobre la seguridad de Hola de los recursos de Azure. Proporciona administración de directivas y supervisión de la seguridad integrada en las suscripciones de Azure, ayuda a detectar las amenazas que podrían pasar desapercibidas y funciona con un amplio ecosistema de soluciones de seguridad.
 
 ## <a name="key-capabilities"></a>Principales capacidades
- El Centro de seguridad ofrece las funcionalidades sencillas y eficaces de prevención, detección y respuesta ante amenazas integradas en Azure. Principales capacidades:
+ Centro de seguridad ofrece amenaza fácil de usar y eficaces capacidades de prevención, detección y respuesta que están integradas en tooAzure. Principales capacidades:
 
 | Fase | Capacidad |
 | --- | --- |
-| Prevención |Supervisa el estado de seguridad de los recursos de Azure |
-| Prevención | Define las directivas de las suscripciones de Azure en función de los requisitos de seguridad de la compañía, los tipos de aplicaciones utilizados y la confidencialidad de los datos. |
-| Prevención | Usa recomendaciones de seguridad controladas por directivas para guiar a los propietarios de los servicios a través del proceso de implementación de los controles necesarios |
+| Prevención |Hola de monitores de estado de seguridad de los recursos de Azure |
+| Prevención | Define directivas para las suscripciones de Azure en función de los requisitos de seguridad de su empresa, tipos de Hola de aplicaciones que usan y Hola confidencialidad de los datos |
+| Prevención | Usa controlado por directivas seguridad recomendaciones tooguide los propietarios de servicio a través del proceso Hola de implementación necesarios controles |
 | Prevención | Implementa rápidamente servicios y dispositivos de seguridad de Microsoft y asociados |
-| Detección |Recopila y analiza automáticamente los datos de seguridad de los recursos de Azure, la red y las soluciones de asociados como firewalls y programas antimalware |
-| Detección | Utiliza la inteligencia de amenazas globales de los productos y servicios de Microsoft, Microsoft Digital Crimes Unit (DCU), Microsoft Security Response Center (MSRC) y fuentes externas. |
+| Detección |Recopila y analiza los datos de seguridad de los recursos de Azure, red de Hola y soluciones de socios comerciales, como programas antimalware y firewalls automáticamente |
+| Detección | Usa global de amenazas inteligencia de hello productos y servicios, Hola Microsoft Digital crímenes unidad (DCU), Microsoft Security Response Center (MSRC) de Microsoft y fuentes externas |
 | Detección | Aplica análisis avanzados, incluido el aprendizaje automático y el análisis de comportamientos |
 | Respuesta |Proporciona seguridad prioritaria ante incidentes y alertas |
-| Respuesta | Proporciona información sobre el origen del ataque y los recursos afectados |
-| Respuesta | Sugiere formas de detener el ataque actual y de ayudar a impedir ataques futuros |
+| Respuesta | Proporciona información sobre el origen de Hola de ataque de Hola y de recursos afectados |
+| Respuesta | Sugiere formas toostop Hola ataque actual y ayudar a evitar ataques futuros |
 
 ## <a name="introductory-walkthrough"></a>Tutorial de introducción
 
 > [!NOTE]
-> En este documento se presenta el servicio mediante una implementación de ejemplo. Este documento no es una guía paso a paso.
+> Este documento presentan servicio hello mediante el uso de una implementación de ejemplo. Este documento no es una guía paso a paso.
 >
 >
 
- Se accede al Centro de seguridad desde el [Portal de Azure](https://azure.microsoft.com/features/azure-portal/). [Inicie sesión en el portal](https://portal.azure.com). En el menú principal del portal, desplácese hasta la opción **Security Center** o seleccione el icono **Security Center** que ancló anteriormente al panel del portal.
+ Acceder a centro de seguridad de hello [portal de Azure](https://azure.microsoft.com/features/azure-portal/). [Inicie sesión en el portal de toohello](https://portal.azure.com). En el menú de portal principal de hello, desplácese toohello **centro de seguridad** opción o seleccione hello **centro de seguridad** icono que fijado anteriormente toohello panel del portal.
 
 ![Icono Seguridad en el Portal de Azure][1]
 
 En el Centro de seguridad, puede establecer directivas de seguridad, supervisar configuraciones de seguridad y ver alertas de seguridad.
 
 ### <a name="security-policies"></a>Directivas de seguridad
-Puede definir directivas para las suscripciones de Azure según los requisitos de seguridad de la compañía. También puede personalizarlas según los tipos de aplicaciones que use o la confidencialidad de los datos en cada suscripción. Por ejemplo, es posible que los recursos usados para el desarrollo o las pruebas tengan requisitos de seguridad distintos a los empleados para las aplicaciones de producción. Del mismo modo, es posible que las aplicaciones con datos regulados como PII requieran un mayor nivel de seguridad.
+Puede definir directivas para las suscripciones de Azure según los requisitos de seguridad de la compañía tooyour. También puede adaptarlas toohello tipos de aplicaciones que está usando o importancia de toohello de datos de hello en cada suscripción. Por ejemplo, es posible que los recursos usados para el desarrollo o las pruebas tengan requisitos de seguridad distintos a los empleados para las aplicaciones de producción. Del mismo modo, es posible que las aplicaciones con datos regulados como PII requieran un mayor nivel de seguridad.
 
 > [!NOTE]
-> Para modificar una directiva de seguridad, debe ser administrador de seguridad o el propietario/colaborador de la suscripción. Consulte [Permisos en Azure Security Center](security-center-permissions.md) para obtener más información sobre los roles y las acciones permitidas en Security Center.
+> toomodify una directiva de seguridad, debe ser propietario de una suscripción de administrador de seguridad u Hola o de colaborador. toolearn más información acerca de los roles y las acciones permitidas en el centro de seguridad, consulte [permisos en el centro de seguridad de Azure](security-center-permissions.md).
 >
 >
 
-En la hoja **Security Center**, seleccione el icono **Directiva** para obtener una lista de las suscripciones y los grupos de recursos.   
+En hello **centro de seguridad** hoja, seleccione hello **directiva** icono para obtener una lista de las suscripciones y los grupos de recursos.   
 
 ![Hoja de centro de seguridad][2]
 
-En la hoja **Directiva de seguridad**, seleccione una suscripción para ver los detalles de la directiva.
+En hello **directiva de seguridad** hoja, seleccione un detalles de la directiva de la suscripción tooview Hola.
 
 **Recopilación de datos** habilita la recopilación de datos en una directiva de seguridad. Con la habilitación se consigue lo siguiente:
 
@@ -80,73 +80,73 @@ En la hoja **Directiva de seguridad**, seleccione una suscripción para ver los 
 * Colección de eventos de seguridad para el análisis y la detección de amenazas.
 
 > [!NOTE]
-> Recopilación de datos se configura en el nivel de suscripción.
+> Recopilación de datos se configura en el nivel de suscripción de Hola.
 >
 >
 
-Seleccione **Directiva de prevención** para abrir la hoja **Directiva de prevención**. **Mostrar recomendaciones para** permite elegir los controles de seguridad que desea supervisar y las recomendaciones que desea ver según las necesidades de seguridad de los recursos de la suscripción.
+Seleccione **directivas de prevención** tooopen hello **directivas de prevención** hoja. **Mostrar recomendaciones para** le permite elegir los controles de seguridad de Hola que desee hello y toomonitor recomendaciones que desea toosee según las necesidades de seguridad de Hola de recursos de hello en la suscripción de Hola.
 
 ### <a name="security-recommendations"></a>Recomendaciones de seguridad
- El Centro de seguridad analiza el estado de seguridad de los recursos de Azure para identificar posibles vulnerabilidades de seguridad. Una lista de recomendaciones le guiará por el proceso de configuración de los controles necesarios. Algunos ejemplos son:
+ Centro de seguridad analiza el estado de seguridad de Hola de las recursos de Azure tooidentify vulnerabilidades de seguridad. Una lista de recomendaciones le guía a través del proceso de Hola de configuración de controles necesarios. Algunos ejemplos son:
 
-* Aprovisionamiento de antimalware para ayudar a identificar y eliminar el software malintencionado.
-* Configuración de reglas y grupos de seguridad de red para controlar el tráfico a las VM
-* Aprovisionamiento de firewalls de aplicaciones web para ayudar a defenderse contra ataques dirigidos a las aplicaciones web.
+* Aprovisionamiento antimalware toohelp identificar y quitar software malintencionado
+* Configuración de red seguridad reglas y grupos toocontrol tráfico tooVMs
+* Aprovisionamiento de los firewalls de aplicación web toohelp defenderse contra los ataques que tienen como destino las aplicaciones web
 * Implementación de actualizaciones del sistema que faltan.
-* Resolución de las configuraciones de sistema operativo que no coinciden con las líneas base recomendadas.
+* Direccionamiento de las configuraciones de sistema operativo que no coincide con hello recomienda líneas de base
 
-Haga clic en el icono **Recomendaciones** para obtener una lista de recomendaciones. Haga clic en cada recomendación para ver más información o para tomar medidas para solucionar el problema.
+Haga clic en hello **recomendaciones** icono para obtener una lista de recomendaciones. Haga clic en cada recomendación tooview obtener información adicional o un problema de tootake acción tooresolve Hola.
 
 ![Recomendaciones de seguridad en el Centro de seguridad de Azure][5]
 
 ### <a name="security-state-of-azure-resources"></a>Estado de seguridad de recursos de Azure
-En la sección **Prevención** del panel se muestra la posición de seguridad general del entorno por tipo de recurso, lo que incluye máquinas virtuales, aplicaciones web y otros recursos.   
+Hola **prevención** sección del panel de hello muestra Hola postura de seguridad general del entorno de Hola por tipo de recurso, incluidas las máquinas virtuales, las aplicaciones web y otros recursos.   
 
-Seleccione un tipo de recurso en **Prevención** para ver más información, incluida una lista de las posibles vulnerabilidades de seguridad que se hayan identificado. (En el siguiente ejemplo, se selecciona la opción **Compute**).
+Seleccione un tipo de recurso en **prevención** tooview para obtener más información, incluida una lista de las vulnerabilidades de seguridad que se han identificado. (**Proceso** está seleccionado en el siguiente ejemplo de Hola.)
 
 ![Icono Estado de los recursos][6]
 
 ### <a name="security-alerts"></a>Alertas de seguridad
- El Centro de seguridad recopila, analiza e integra automáticamente los datos de registro de los recursos de Azure, la red y soluciones de asociados como firewalls y programas antimalware. Cuando se detecten amenazas, se creará una alerta de seguridad. Como ejemplos se incluye la detección de:
+ Centro de seguridad automáticamente recopila, analiza y se integra datos de registro de recursos de Azure, redes de Hola y soluciones de socios comerciales, como programas antimalware y firewalls. Cuando se detecten amenazas, se creará una alerta de seguridad. Como ejemplos se incluye la detección de:
 
 * VM en peligro que se comunican con direcciones IP malintencionadas conocidas
 * Malware avanzado detectado mediante la generación de informes de errores de Windows.
 * Ataques de fuerza bruta contra VM
 * Alertas de seguridad de programas antimalware y firewalls integrados
 
-Al hacer clic en el icono **Alertas de seguridad** se muestra una lista de alertas por prioridad.
+Si hace clic en hello **alertas de seguridad** icono muestra una lista de alertas con prioridad.
 
 ![Alertas de seguridad][7]
 
-Al seleccionar una alerta, se muestra más información sobre el ataque y sugerencias para resolverlo.
+Seleccionar una alerta muestra más información acerca de los ataques de Hola y sugerencias sobre cómo tooremediate lo.
 
 ![Detalles de alertas de seguridad][8]
 
 ### <a name="partner-solutions"></a>Soluciones de socios
-El icono de **Soluciones de asociados** permite supervisar de un solo vistazo el estado de seguridad de las soluciones de asociados integradas en la suscripción de Azure. Security Center muestra las alertas procedentes de las soluciones.
+Hola **soluciones de asociados** permite icono supervisar en un estado de seguridad de Hola de vista de las soluciones de socios comerciales se integra con su suscripción de Azure. Centro de seguridad muestra alertas procedentes de soluciones de Hola.
 
-Seleccione el icono **Soluciones de asociados** . Se muestra una hoja con una lista de todas las soluciones de asociados conectadas.
+Seleccione hello **soluciones de asociados** icono. Se muestra una hoja con una lista de todas las soluciones de asociados conectadas.
 
 ![Soluciones de socios][9]
 
 ## <a name="get-started"></a>Primeros pasos
-Para empezar a trabajar con el Centro de seguridad, necesita una suscripción a Microsoft Azure. El Centro de seguridad se habilita con su suscripción de Azure. Si no tiene una suscripción, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/pricing/free-trial/).
+tooget a trabajar con el centro de seguridad, es necesario un tooMicrosoft de suscripción a Azure. El Centro de seguridad se habilita con su suscripción de Azure. Si no tiene una suscripción, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/pricing/free-trial/).
 
- Se accede al Centro de seguridad desde el [Portal de Azure](https://azure.microsoft.com/features/azure-portal/). Para obtener más información, consulte la [documentación del portal](https://azure.microsoft.com/documentation/services/azure-portal/) .
+ Acceder a centro de seguridad de hello [portal de Azure](https://azure.microsoft.com/features/azure-portal/). Vea hello [documentación portal](https://azure.microsoft.com/documentation/services/azure-portal/) toolearn más.
 
-[Introducción a Azure Security Center](security-center-get-started.md) le guía rápidamente por los componentes de administración de directivas y supervisión de seguridad de Azure Security Center.
+[Introducción a Azure Security Center](security-center-get-started.md) rápidamente le guía a través de centro de seguridad de los componentes de supervisión de seguridad y administración de directivas de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este documento, se ha presentado el Centro de seguridad, sus funcionalidades clave y cómo empezar a usarlo. Para obtener más información, consulte los siguientes recursos:
+En este documento, eran introducidas Center tooSecurity, sus capacidades claves y cómo se inicia tooget. toolearn más información, vea Hola recursos siguientes:
 
-* [Establecimiento de directivas de seguridad en Azure Security Center](security-center-policies.md) : aprenda a configurar directivas de seguridad para las suscripciones y los grupos de recursos de Azure.
+* [Configuración de directivas de seguridad de Azure Security Center](security-center-policies.md) : más información cómo tooconfigure las directivas de seguridad para los grupos de recursos y las suscripciones de Azure.
 * [Administración de recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md) : recomendaciones que lo ayudan a proteger los recursos de Azure.
-* [Supervisión del estado de seguridad en Azure Security Center](security-center-monitoring.md) : obtenga información sobre cómo supervisar el estado de los recursos de Azure.
-* [Administración y respuesta a las alertas de seguridad en Azure Security Center](security-center-managing-and-responding-alerts.md) : obtenga información sobre cómo administrar y responder a alertas de seguridad.
-* [Supervisión de las soluciones de asociados con Azure Security Center](security-center-partner-solutions.md) : aprenda a supervisar el estado de mantenimiento de las soluciones de asociados.
+* [Supervisión de estado de seguridad de Azure Security Center](security-center-monitoring.md) : Obtenga información acerca de cómo toomonitor Hola estado de los recursos de Azure.
+* [Toosecurity responde y administrar las alertas en Azure Security Center](security-center-managing-and-responding-alerts.md) : más información cómo toomanage y que responden las alertas de toosecurity.
+* [Supervisión de soluciones de socios comerciales con Azure Security Center](security-center-partner-solutions.md) : Obtenga información acerca de cómo toomonitor Hola estado de mantenimiento de las soluciones de socios comerciales.
 - [Seguridad de datos de Azure Security Center](security-center-data-security.md): aprenda cómo se administran y protegen los datos en Security Center.
-* [Preguntas más frecuentes sobre Azure Security Center](security-center-faq.md) : encuentre las preguntas más frecuentes sobre el uso del servicio.
-* [Blog de seguridad de Azure](http://blogs.msdn.com/b/azuresecurity/) : obtenga las últimas noticias e información sobre la seguridad en Azure.
+* [Preguntas más frecuentes de Azure Security Center](security-center-faq.md) : preguntas más frecuentes sobre el uso de servicio de Hola de búsqueda.
+* [Blog de seguridad de Azure](http://blogs.msdn.com/b/azuresecurity/) : obtener información y noticias de seguridad de Azure más recientes de Hola.
 
 <!--Image references-->
 [1]: ./media/security-center-intro/security-tile.png

@@ -1,5 +1,5 @@
 ---
-title: "Usar ACR con un clúster DC/OS de Azure | Microsoft Docs"
+title: "aaaUsing ACR con un clúster de Azure DC/OS | Documentos de Microsoft"
 description: "Use un Azure Container Registry con un clúster DC/OS en Azure Container Service"
 services: container-service
 documentationcenter: 
@@ -17,39 +17,39 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 618d32ca919e50d41b85c800225fe72c3b94e537
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 9a2802da788b50147d8b4259436bdcdb0c929db8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Use ACR con un clúster de DC/OS para implementar la aplicación
+# <a name="use-acr-with-a-dcos-cluster-toodeploy-your-application"></a>Usar ACR con un toodeploy de clúster de DC/OS la aplicación
 
-En este artículo, exploraremos cómo usar Azure Container Registry con un clúster de DC/OS. Usar ACR le permite almacenar y administrar imágenes del contenedor de forma privada. En este tutorial se describen las tareas siguientes:
+En este artículo, exploraremos cómo toouse del registro de contenedor de Azure con un clúster de DC/OS. Uso de ACR permite tooprivately almacén y administrar imágenes del contenedor. Este tutorial trata Hola siguientes tareas:
 
 > [!div class="checklist"]
 > * Implementación de Azure Container Registry (en caso de ser necesaria)
 > * Configuración de la autenticación de ACR en un clúster de DC/OS
-> * Carga de una imagen en Azure Container Registry
-> * Ejecución de una imagen de contenedor de Azure Container Registry
+> * Cargar un toohello de imagen del registro de contenedor de Azure
+> * Ejecutar una imagen de contenedor de hello del registro de contenedor de Azure
 
-Necesita un clúster de DC/OS de ACS para completar los pasos de este tutorial. Si es necesario, este [script de ejemplo](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) puede crear uno.
+Necesita un controlador de dominio ACS/OS hello toocomplete de clúster de los pasos de este tutorial. Si es necesario, este [script de ejemplo](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) puede crear uno.
 
-Para realizar este tutorial es necesaria la versión 2.0.4 o superior de la CLI de Azure. Ejecute `az --version` para encontrar la versión. Si necesita actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
+Este tutorial requiere hello Azure CLI versión 2.0.4 o versiones posteriores. Ejecutar `az --version` toofind versión de Hola. Si necesita tooupgrade, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-azure-container-registry"></a>Implementación de Azure Container Registry
 
-Si es necesario, cree un Azure Container Registry con el comando [az acr create](/cli/azure/acr#create). 
+Si es necesario, cree un registro de contenedor de Azure con hello [crear acr az](/cli/azure/acr#create) comando. 
 
-En el ejemplo siguiente, se crea un registro con un nombre generado de forma aleatoria. El registro también se configura con una cuenta de administrador mediante el argumento `--admin-enabled`.
+Hello en el ejemplo siguiente se crea un registro con un generar nombre de forma aleatoria. registro de Hello también se configura con una cuenta de administrador con hello `--admin-enabled` argumento.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM --sku Basic --admin-enabled true
 ```
 
-Una vez creado el registro, la CLI de Azure da como resultado datos similares a los que aparecen a continuación. Anote `name` y `loginServer`, ya que se usarán en pasos posteriores.
+Una vez que se ha creado el registro de hello, Hola CLI de Azure da como resultado siguiente toohello similares de datos. Tome nota de hello `name` y `loginServer`, se usan en pasos posteriores.
 
 ```azurecli
 {
@@ -72,79 +72,79 @@ Una vez creado el registro, la CLI de Azure da como resultado datos similares a 
 }
 ```
 
-Obtenga las credenciales del registro de contenedor mediante el comando [az acr credential show](/cli/azure/acr/credential). Sustituya el `--name` con el que anotó en el último paso. Tome nota de una contraseña, ya que es necesaria más adelante.
+Obtener credenciales de registro de contenedor hello mediante hello [show de credencial de acr az](/cli/azure/acr/credential) comando. Hola sustituto `--name` con hello uno anotó en el último paso de Hola. Tome nota de una contraseña, ya que es necesaria más adelante.
 
 ```azurecli-interactive
 az acr credential show --name myContainerRegistry23489
 ```
 
-Para obtener más información sobre Azure Container Registry, consulte [Introducción a los registros privados del contenedor Docker](../../container-registry/container-registry-intro.md). 
+Para obtener más información acerca del registro de contenedor de Azure, consulte [registros de contenedor de Docker de introducción tooprivate](../../container-registry/container-registry-intro.md). 
 
 ## <a name="manage-acr-authentication"></a>Administración de la autenticación de ACR
 
-La manera convencional de insertar y extraer una imagen de un registro privado es, en primer lugar, autenticarse en el registro. Para ello, usaría el comando `docker login` en cualquier cliente que necesite para tener acceso al registro privado. Debido a que el clúster de DC/OS puede contener muchos nodos, los que deben autenticarse con ACR, es útil automatizar este proceso en cada nodo. 
+imagen toopush y extracción de un registro privado es toofirst de forma convencional de Hello autenticar con registro de hello. toodo por lo tanto, se usaría hello `docker login` comando en cualquier cliente que necesita del registro de tooaccess Hola privada. Dado que un clúster de DC/OS puede contener muchos nodos, todos ellos necesitan toobe autenticado con hello ACR, resulta útil tooautomate este proceso a través de cada nodo. 
 
 ### <a name="create-shared-storage"></a>Creación de almacenamiento compartido
 
-Este proceso utiliza un recurso compartido de archivos de Azure que se montó en cada nodo del clúster. Si aún no se ha configurado el almacenamiento compartido, consulte [Configuración de un recurso compartido de archivos dentro de un clúster de DC/OS](container-service-dcos-fileshare.md).
+Este proceso utiliza un recurso compartido de archivos de Azure que se ha montado en cada nodo de clúster de Hola. Si aún no se ha configurado el almacenamiento compartido, consulte [Configuración de un recurso compartido de archivos dentro de un clúster de DC/OS](container-service-dcos-fileshare.md).
 
 ### <a name="configure-acr-authentication"></a>Configuración de la autenticación de ACR
 
-En primer lugar, obtenga el FQDN del patrón de DC/OS y guárdelo en una variable.
+En primer lugar, obtenga Hola FQDN de Hola DC/OS maestro y almacenarlo en una variable.
 
 ```azurecli-interactive
 FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
 ```
 
-Cree una conexión SSH con el patrón (o el primer patrón) del clúster basado en DC/OS. Actualice el nombre de usuario si se utilizó un valor no predeterminado al crear el clúster.
+Crear una conexión SSH con hello (Hola primera maestra o) del clúster basadas en DC/OS. Actualizar nombre de usuario de hello si se utilizó un valor no predeterminado al crear el clúster de Hola.
 
 ```azurecli-interactive
 ssh azureuser@$FQDN
 ```
 
-Ejecute el siguiente comando para iniciar sesión en Azure Container Registry. Reemplace el `--username` con el nombre del registro del contenedor y la `--password` con una de las contraseñas proporcionadas. Reemplace el último argumento *mycontainerregistry.azurecr.io* en el ejemplo con el nombre loginServer del registro de contenedor. 
+Siguiente ejecución Hola comando toologin toohello del registro de contenedor de Azure. Reemplace hello `--username` por nombre de Hola de registro de contenedor de Hola y Hola `--password` con una de las contraseñas de hello proporcionado. Reemplace el último argumento de hello *mycontainerregistry.azurecr.io* en ejemplo de Hola con nombre de hello loginServer de registro de contenedor de Hola. 
 
-Este comando almacena los valores de autenticación localmente en la ruta de acceso `~/.docker`.
+Este comando almacena los valores de autenticación de hello localmente en hello `~/.docker` ruta de acceso.
 
 ```azurecli-interactive
 docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry.azurecr.io
 ```
 
-Cree un archivo comprimido que contenga los valores de autenticación del contenedor de registro.
+Crear un archivo comprimido que contiene los valores de autenticación de hello contenedor del registro.
 
 ```azurecli-interactive
 tar czf docker.tar.gz .docker
 ```
 
-Copie este archivo en el almacenamiento compartido del clúster. Este paso hace que el archivo esté disponible en todos los nodos del clúster de DC/OS.
+Copie este almacenamiento de clúster compartido de archivo toohello. Este paso realiza archivo hello disponible en todos los nodos del clúster de Hola DC/OS.
 
 ```azurecli-interactive
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
-## <a name="upload-image-to-acr"></a>Carga de la imagen a ACR
+## <a name="upload-image-tooacr"></a>Cargar imagen tooACR
 
-Ahora desde una máquina de desarrollo, o cualquier otro sistema con Docker instalado, cree una imagen y cárguela en Azure Container Registry.
+Ahora desde un equipo de desarrollo, o cualquier otro sistema con Docker instalado, cree una imagen y cargarla toohello del registro de contenedor de Azure.
 
-Cree un contenedor a partir de la imagen de Ubuntu.
+Crear un contenedor de imagen de Ubuntu Hola.
 
 ```azurecli-interactive
 docker run ubunut --name base-image
 ```
 
-Ahora capture el contenedor en una nueva imagen. El nombre de la imagen debe incluir el nombre `loginServer` del registro de contenedor con un formato de `loginServer/imageName`.
+Ahora captura Hola contenedor en una nueva imagen. nombre de la imagen de Hello necesita hello tooinclude `loginServer` nombre de hello contenedor registrywith un formato de `loginServer/imageName`.
 
 ```azurecli-interactive
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ````
 
-Inicie sesión en Azure Container Registry. Reemplace el nombre con el nombre loginServer, el nombre de usuario con el nombre del registro de contenedor, y la contraseña con una de las contraseñas proporcionadas.
+Inicio de sesión en hello del registro de contenedor de Azure. Sustituir el nombre de Hola por hello loginServer, Hola: nombre de usuario con el nombre de Hola de registro de contenedor de Hola y Hola--contraseña con una de las contraseñas de hello proporcionado.
 
 ```azurecli-interactive
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
-Finalmente, cargue la imagen en el registro de ACR. En este ejemplo, se carga una imagen llamada dcos-demo.
+Por último, cargue el registro de hello imágenes toohello ACR. En este ejemplo, se carga una imagen llamada dcos-demo.
 
 ```azurecli-interactive
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
@@ -152,7 +152,7 @@ docker push mycontainerregistry30678.azurecr.io/dcos-demo
 
 ## <a name="run-an-image-from-acr"></a>Ejecución de una imagen desde ACR
 
-Para utilizar una imagen del registro ACR, cree un archivo de nombres *acrDemo.json* y copie el siguiente texto en él. Reemplace el nombre de la imagen con el nombre loginServer del contenedor de registro y el nombre de la imagen. Por ejemplo, `loginServer/imageName`. Tome nota de la propiedad `uris`. Esta propiedad contiene la ubicación del archivo de autenticación del registro de contenedor, que en este caso es el recurso compartido de archivos de Azure que está montado en cada nodo del clúster de DC/OS.
+toouse una imagen desde el registro ACR hello, cree un archivo de nombres *acrDemo.json* y Hola copia siguiendo el texto en él. Reemplazar el nombre de la imagen de Hola con nombre de loginServer de hello contenedor del registro y el nombre de la imagen, por ejemplo `loginServer/imageName`. Tome nota de hello `uris` propiedad. Esta propiedad contiene la ubicación de Hola Hola contenedor autenticación del archivo registro, que en este caso es el recurso compartido de archivos de Azure de Hola que está montado en cada nodo de clúster de Hola DC/OS.
 
 ```json
 {
@@ -192,7 +192,7 @@ Para utilizar una imagen del registro ACR, cree un archivo de nombres *acrDemo.j
 }
 ```
 
-Implemente la aplicación con la CLI de DC/OC.
+Implementar aplicación hello con hello DC/OC CLI.
 
 ```azurecli-interactive
 dcos marathon app add acrDemo.json
@@ -200,10 +200,10 @@ dcos marathon app add acrDemo.json
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, configuró DC/OS para usar Azure Container Registry, incluidas las siguientes tareas:
+En este tutorial ha configurar toouse DC/OS tareas de registro de contenedor de Azure incluidos Hola siguientes:
 
 > [!div class="checklist"]
 > * Implementación de Azure Container Registry (en caso de ser necesaria)
 > * Configuración de la autenticación de ACR en un clúster de DC/OS
-> * Carga de una imagen en Azure Container Registry
-> * Ejecución de una imagen de contenedor de Azure Container Registry
+> * Cargar un toohello de imagen del registro de contenedor de Azure
+> * Ejecutar una imagen de contenedor de hello del registro de contenedor de Azure

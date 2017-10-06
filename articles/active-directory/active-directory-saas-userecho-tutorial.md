@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con UserEcho | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y UserEcho."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y UserEcho."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 2d824d8d5eb8a25db128397b908a126bd87213ea
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: efe4a94ed6e5d22d153565d4782850eac4dff37b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Tutorial: integración de Azure Active Directory con UserEcho
 
-En este tutorial, aprenderá a integrar UserEcho con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate UserEcho con Azure Active Directory (Azure AD).
 
-Integrar UserEcho con Azure AD proporciona las siguientes ventajas:
+Integración UserEcho con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a UserEcho.
-- Puede permitir que los usuarios inicien sesión automáticamente en UserEcho (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooUserEcho
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooUserEcho (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con UserEcho, necesita los siguientes elementos:
+integración de Azure AD con UserEcho tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción a UserEcho habilitada para inicio de sesión único
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, aquí puede obtener una versión de evaluación de un mes: [Oferta de prueba](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Incorporación de UserEcho desde la galería
+1. Agregar UserEcho desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-userecho-from-the-gallery"></a>Incorporación de UserEcho desde la galería
-Para configurar la integración de UserEcho en Azure AD, deberá agregar UserEcho desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-userecho-from-hello-gallery"></a>Agregar UserEcho desde la Galería de Hola
+integración de hello tooconfigure de UserEcho en Azure AD, deberá tooadd UserEcho de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar UserEcho desde la galería, realice los pasos siguientes:**
+**tooadd UserEcho de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **UserEcho**.
+4. En el cuadro de búsqueda de hello, escriba **UserEcho**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_search.png)
 
-5. En el panel de resultados, seleccione **UserEcho** y, luego, haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **UserEcho**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con UserEcho con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo en UserEcho de un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de UserEcho.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en UserEcho es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en UserEcho debe toobe establecido.
 
-Para establecer la relación de vínculo, en UserEcho, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
+En UserEcho, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con UserEcho, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con UserEcho, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de UserEcho](#creating-a-userecho-test-user)**: para tener un homólogo de Britta Simon en UserEcho que esté vinculado a su representación en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba UserEcho](#creating-a-userecho-test-user)**  -toohave un equivalente de Britta Simon en UserEcho que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en la aplicación UserEcho.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación UserEcho.
 
-**Para configurar el inicio de sesión único de Azure AD con UserEcho, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con UserEcho, realizar Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación **UserEcho**, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **UserEcho** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de UserEcho**, lleve a cabo los pasos siguientes:
+3. En hello **UserEcho dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_url.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.userecho.com/`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.userecho.com/`
 
-    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.userecho.com/saml/metadata/`
+    b. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.userecho.com/saml/metadata/`
 
     > [!NOTE] 
-    > Estos valores no son reales. Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión. Póngase en contacto con el [equipo de soporte técnico de UserEcho](https://feedback.userecho.com/) para obtener estos valores. 
+    > Estos valores no son reales. Actualizar estos valores con hello real de dirección URL de inicio de sesión y el identificador. Póngase en contacto con [equipo de soporte técnico de cliente de UserEcho](https://feedback.userecho.com/) tooget estos valores. 
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_certificate.png) 
 
@@ -125,13 +125,13 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_general_400.png)
 
-6. En la sección **Configuración de UserEcho**, haga clic en **Configurar UserEcho** para abrir la ventana **Configurar inicio de sesión**. Copie las **direcciones URL del servicio de inicio de sesión único de SAML y de cierre de sesión** de la sección **Referencia rápida**.
+6. En hello **UserEcho configuración** sección, haga clic en **configurar UserEcho** tooopen **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_configure.png) 
 
-7. En otra ventana del explorador web, inicie sesión en su sitio de la compañía de UserEcho como administrador.
+7. En otra ventana del explorador, inicie sesión en el sitio de empresa de tooyour UserEcho como administrador.
 
-8. En la barra de herramientas de la parte superior, haga clic en el nombre de usuario para expandir el menú y, después, haga clic en **Instalación**.
+8. En la barra de herramientas de hello en la parte superior de hello, haga clic en el menú de hello tooexpand del nombre de usuario y, a continuación, haga clic en **el programa de instalación**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_06.png) 
 
@@ -143,68 +143,68 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_08.png) 
 
-11. Siga estos pasos en la página **Inicio de sesión único (SAML)** :
+11. En hello **inicio de sesión único (SAML)** , siga los pasos de hello:
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_09.png)
     
     a. En **Habilitado para SAML**, seleccione **Sí**.
     
-    b. Pegue el valor de la **dirección URL del servicio de inicio de sesión único de SAML** que copió de Azure Portal en el cuadro de texto **SAML SSO URL** (Dirección URL de inicio de sesión de SAML).
+    b. Pegar **SAML Single Sign-On dirección URL del servicio**, que haya copiado desde Hola portal de Azure en hello **dirección URL SSO SAML** cuadro de texto.
     
-    c. Pegue el valor de la **dirección URL de cierre de sesión** que copió de Azure Portal en el cuadro de texto **Remote logoout URL** (Dirección URL de cierre de sesión remoto).
+    c. Pegar **dirección URL de cierre de sesión**, que haya copiado desde Hola portal de Azure en hello **logoout remoto URL** cuadro de texto.
     
-    d. Abra el certificado descargado en el Bloc de notas, copie el contenido y luego péguelo en el cuadro de texto **Certificado X.509** .
+    d. Abra el certificado descargado en el Bloc de notas, Hola copiar contenido y, a continuación, péguelo en hello **certificado X.509** cuadro de texto.
     
     e. Haga clic en **Guardar**.
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-userecho-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-userecho-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-userecho-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-userecho-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-userecho-test-user"></a>Creación de un usuario de prueba de UserEcho
 
-El objetivo de esta sección es crear una usuaria de prueba llamada Britta Simon en UserEcho.
+objetivo de Hola de esta sección es un usuario llamado a Britta Simon en UserEcho toocreate.
 
-**Para crear una usuaria llamada Britta Simon en UserEcho, realice los pasos siguientes:**
+**toocreate un usuario llamado Britta Simon en UserEcho, lleve a cabo Hola pasos:**
 
-1. Inicie sesión en el sitio de compañía de UserEcho como administrador.
+1. Sitio de empresa de UserEcho tooyour de inicio de sesión como administrador.
 
-2. En la barra de herramientas de la parte superior, haga clic en el nombre de usuario para expandir el menú y, después, haga clic en **Instalación**.
+2. En la barra de herramientas de hello en la parte superior de hello, haga clic en el menú de hello tooexpand del nombre de usuario y, a continuación, haga clic en **el programa de instalación**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_06.png)
 
-3. Haga clic en **Usuarios** para expandir la sección **Usuarios**.
+3. Haga clic en **usuarios**, hello tooexpand **usuarios** sección.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_10.png)
 
@@ -216,35 +216,35 @@ El objetivo de esta sección es crear una usuaria de prueba llamada Britta Simon
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_12.png)
 
-6. En el cuadro de diálogo **Invitar a un nuevo usuario** , realice los pasos siguientes:
+6. En hello **invitar a un nuevo usuario** cuadro de diálogo, realizar Hola pasos:
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_13.png)
 
-    a. En el cuadro de texto **Nombre**, escriba el nombre de un usuario, por ejemplo, Britta Simon.
+    a. Hola **nombre** cuadro de texto, nombre de tipo de usuario de hello como Britta Simon.
     
-    b.  En el cuadro de texto **Correo electrónico**, escriba la dirección de correo electrónico de un usuario, por ejemplo, Brittasimon@contoso.com.
+    b.  Hola **correo electrónico** tipo hello dirección de correo electrónico del usuario, cuadro de texto, como Brittasimon@contoso.com.
     
     c. Haga clic en **Invitar**.
 
-Se envía una invitación a Britta que le permite empezar a usar UserEcho. 
+Se envía una invitación tooBritta, lo que permite su toostart con UserEcho. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, concederá acceso a Britta Simon a UserEcho para que use el inicio de sesión único de Azure.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooUserEcho.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a UserEcho, realice los pasos siguientes:**
+**tooassign Britta Simon tooUserEcho, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **UserEcho**.
+2. En la lista de aplicaciones de hello, seleccione **UserEcho**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -252,7 +252,7 @@ En esta sección, concederá acceso a Britta Simon a UserEcho para que use el in
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -260,13 +260,13 @@ En esta sección, concederá acceso a Britta Simon a UserEcho para que use el in
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.  
+objetivo de Hola de esta sección es tootest la configuración de SSO de Azure AD mediante Hola Panel de acceso.  
 
-Al hacer clic en el icono de UserEcho en el Panel de acceso, debería iniciar sesión automáticamente en su aplicación UserEcho.
+Al hacer clic en icono de UserEcho Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour UserEcho aplicación.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

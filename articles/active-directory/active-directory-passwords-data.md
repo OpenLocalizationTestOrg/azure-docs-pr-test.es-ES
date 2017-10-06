@@ -1,6 +1,6 @@
 ---
 title: Azure AD SSPR data requirements (Requisitos de datos de SSPR de Azure AD) | Microsoft Docs
-description: "Requisitos de datos del autoservicio de restablecimiento de contraseña de Azure AD y cómo cumplirlos"
+description: "Restablecer requisitos de datos para la contraseña de autoservicio de Azure AD y cómo toosatisfy ellos"
 services: active-directory
 keywords: 
 documentationcenter: 
@@ -16,24 +16,24 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 2d1afd2d1265b371e0d311ed70fffbc55874b0a7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b68a1d7914dcd0bb4509d0e94914dc4309f4463a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Implementación del restablecimiento de contraseña sin necesidad de registro del usuario final
 
-La implementación del autoservicio de restablecimiento de contraseña (SSPR) requiere que los datos de autenticación estén presentes. Algunas organizaciones piden a sus usuarios que escriban sus datos de autenticación por sí mismos, pero muchas organizaciones prefieren sincronizar los datos existentes en Active Directory. Si ha dado formato correctamente a los datos del directorio local y configura [Azure AD Connect mediante la configuración rápida](./connect/active-directory-aadconnect-get-started-express.md), esos datos se ponen a disposición de Azure AD y SSPR sin necesidad de interacción por parte del usuario.
+La implementación de restablecimiento de contraseña de autoservicio (SSPR) requiere autenticación datos toobe presente. Algunas organizaciones tienen sus usuarios escribir sus datos de autenticación por sí mismos, pero muchas organizaciones prefieren toosynchronize con los datos existentes en Active Directory. Si con el formato correcto datos en el directorio local y configura [Azure AD Connect con configuración rápida](./connect/active-directory-aadconnect-get-started-express.md), que los datos se hacen disponible tooAzure AD y SSPR con requiere ninguna interacción del usuario.
 
-Todos los números de teléfono deben tener el formato +CountryCode PhoneNumber (ejemplo: +1 4255551234) para funcionar correctamente.
+Cualquier número de teléfono debe estar en formato de hello + CountryCode PhoneNumber ejemplo: + 1 4255551234 toowork correctamente.
 
 > [!NOTE]
-> El restablecimiento de contraseña no admite extensiones telefónicas. Incluso con el formato +1 4255551234X12345, las extensiones se quitan antes de realizarse la llamada.
+> El restablecimiento de contraseña no admite extensiones telefónicas. Incluso en formato de hello 4255551234 + 1 X 12345, las extensiones se quitan antes de que se realiza la llamada de Hola.
 
 ## <a name="fields-populated"></a>Campos rellenos
 
-Si usa la configuración predeterminada en Azure AD Connect, se realizan las siguientes asignaciones.
+Si usa la configuración de predeterminada Hola Hola de Azure AD Connect después de cada asignación se realiza.
 
 | AD local | Azure AD | Información de contacto de Autenticación de Azure AD |
 | --- | --- | --- |
@@ -43,21 +43,21 @@ Si usa la configuración predeterminada en Azure AD Connect, se realizan las sig
 
 ## <a name="security-questions-and-answers"></a>Preguntas y respuestas de seguridad
 
-Las preguntas y respuestas de seguridad se almacenan de forma segura en el inquilino de Azure AD y los usuarios pueden tener acceso a ellas solo a través del [portal de registro de SSPR](https://aka.ms/ssprsetup). Los administradores no pueden ver ni modificar el contenido de las preguntas y respuestas de otros usuarios.
+Preguntas de seguridad y respuestas se almacenan de forma segura en su inquilino de Azure AD y son solo toousers accesible a través de hello [portal de registro](https://aka.ms/ssprsetup). Los administradores no se vea o modifique contenido Hola de otro preguntas de los usuarios y respuestas.
 
 ### <a name="what-happens-when-a-user-registers"></a>Qué ocurre cuando se registra un usuario
 
-Cuando se registre un usuario, la página de registro establecerá los campos siguientes:
+Cuando un usuario se registra, página de registro de hello establece Hola siguientes campos:
 
 * Teléfono de autenticación
 * Correo electrónico de autenticación
 * Preguntas y respuestas de seguridad
 
-Si ha especificado un valor para **Teléfono móvil** o **Correo electrónico alternativo**, los usuarios podrán usarlos inmediatamente para restablecer sus contraseñas, aunque no se hayan registrado para el servicio. Además, los usuarios ven esos valores cuando se registran por primera vez y pueden modificarlos si lo desean. Una vez que se registren correctamente, dichos valores se conservarán en los campos **Teléfono de autenticación** y **Correo electrónico de autenticación**, respectivamente.
+Si ha proporcionado un valor para **teléfono móvil** o **correo electrónico alternativa**, los usuarios pueden usar inmediatamente los valores tooreset sus contraseñas, aunque no se haya registrado para el servicio de Hola. Además, los usuarios ver esos valores al registrarse para hello primera vez y modificarlos si lo desean. Después de que se registren correctamente, estos valores se conservarán en hello **teléfono de autenticación** y **correo electrónico de autenticación** campos, respectivamente.
 
 ## <a name="set-and-read-authentication-data-using-powershell"></a>Establecimiento y lectura de datos de autenticación mediante PowerShell
 
-Los siguientes campos pueden establecerse mediante PowerShell
+Hola después campos puede establecerse utilizando PowerShell
 
 * Correo electrónico alternativo
 * Teléfono móvil
@@ -65,7 +65,7 @@ Los siguientes campos pueden establecerse mediante PowerShell
 
 ### <a name="using-powershell-v1"></a>Uso de PowerShell V1
 
-Para empezar, debe [descargar e instalar el módulo de Azure AD PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Una vez instalado, puede seguir los pasos mostrados a continuación para configurar cada campo.
+tooget iniciado, necesita demasiado[descargar e instalar el módulo de PowerShell de Azure AD de hello](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Una vez que se ha instalado, puede seguir los pasos de Hola que siguen tooconfigure cada campo.
 
 #### <a name="set-authentication-data-with-powershell-v1"></a>Establecimiento de datos de autenticación con PowerShell V1
 
@@ -91,7 +91,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
 Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,MobilePhone,PhoneNumber | Format-Table
 ```
 
-#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-the-commands-that-follow"></a>Teléfono de autenticación y Correo electrónico de autenticación solo pueden leerse mediante Powershell V1 usando los comandos mostrados a continuación
+#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-hello-commands-that-follow"></a>Teléfono de autenticación y correo electrónico de autenticación sólo se pueden leer utilizando Powershell V1 utilizando Hola comandos que siguen
 
 ```
 Connect-MsolService
@@ -101,9 +101,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="using-powershell-v2"></a>Uso de PowerShell V2
 
-Para empezar, debe [descargar e instalar el módulo de Azure AD V2 PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md). Una vez instalado, puede seguir los pasos mostrados a continuación para configurar cada campo.
+tooget iniciado, necesita demasiado[descargar e instalar el módulo de PowerShell de Azure AD V2 hello](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md). Una vez que se ha instalado, puede seguir los pasos de Hola que siguen tooconfigure cada campo.
 
-Para instalar rápidamente desde versiones recientes de PowerShell que admiten Install-Module, ejecute estos comandos (la primera línea simplemente comprueba si ya se ha instalado):
+tooinstall rápidamente desde las versiones recientes de PowerShell que admiten Install-Module, ejecute estos comandos (primera línea de hello simplemente comprueba toosee si se encuentra ya instalada):
 
 ```
 Get-Module AzureADPreview
@@ -137,14 +137,14 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Los vínculos siguientes proporcionan información adicional sobre el restablecimiento de contraseñas con Azure AD:
+Hola siguientes vínculos proporciona más información sobre el uso de Azure AD de restablecimiento de contraseña
 
 * [**Inicio rápido**](active-directory-passwords-getting-started.md): preparativos para el autoservicio de administración de contraseñas de Azure AD 
 * [**Licencias**](active-directory-passwords-licensing.md): configuración de licencias de Azure AD
-* [**Implementación**](active-directory-passwords-best-practices.md): planificación e implementación de SSPR para los usuarios con las directrices que aquí se proporcionan
-* [**Personalización**](active-directory-passwords-customize.md): personalice el aspecto de la experiencia SSPR para su empresa.
+* [**Implementación** ](active-directory-passwords-best-practices.md) -planear e implementar a los usuarios de Autoservicio tooyour usando la orientación de hello encontrar aquí
+* [**Personalizar** ](active-directory-passwords-customize.md) -personalizar Hola apariencia y funcionamiento del programa Hola a la experiencia de Autoservicio de su empresa.
 * [**Directiva**](active-directory-passwords-policy.md): información sobre las directivas de contraseñas de Azure AD y cómo establecerlas
-* [**Informes**](active-directory-passwords-reporting.md): informes para detectar si los usuarios acceden a la funcionalidad de SSPR que especifican el momento y el lugar del acceso
-* [**Profundización técnica**](active-directory-passwords-how-it-works.md): conozca lo que hay detrás para comprender cómo funciona.
-* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? : respuestas a las preguntas que siempre se ha hecho.
-* [**Solución de problemas**](active-directory-passwords-troubleshoot.md): información para resolver problemas habituales de SSPR
+* [**Informes**](active-directory-passwords-reporting.md): detectan si los usuarios acceden a la funcionalidad de SSPR, cuándo lo hacen y dónde.
+* [**Profundización técnica** ](active-directory-passwords-how-it-works.md) -ir detrás de hello cortina toounderstand cómo funciona
+* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? -Responde tooquestions siempre deseara tooask
+* [**Solucionar problemas de** ](active-directory-passwords-troubleshoot.md) -Obtenga información acerca de cómo problemas comunes de tooresolve que vemos con SSPR

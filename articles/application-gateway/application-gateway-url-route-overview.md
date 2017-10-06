@@ -1,6 +1,6 @@
 ---
-title: "Información general del enrutamiento de contenido basado en URL | Microsoft Docs"
-description: "En esta página se proporciona información general sobre el enrutamiento de contenido basado en URL de Application Gateway, la configuración de UrlPathMap y la regla PathBasedRouting."
+title: "Introducción al enrutamiento contenido basado en aaaURL | Documentos de Microsoft"
+description: "Esta página proporciona una visión general de enrutamiento de hello basado en la dirección URL de puerta de enlace de la aplicación contenido, configuración de UrlPathMap y PathBasedRouting regla."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: gwallace
-ms.openlocfilehash: 75c3279d2d02cb3c6e949d191c88a1eb18b58a27
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5094b42625baffeb395beace68db0d269e46080c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="url-path-based-routing-overview"></a>Información general del enrutamiento basado en URL
 
-El enrutamiento basado en URL le permite enrutar el tráfico a los grupos de servidores back-end en función de las direcciones URL de la solicitud. 
+Dirección URL de ruta de acceso de enrutamiento permite tooroute tráfico tooback final grupos de servidores en función de las rutas de acceso de dirección URL de solicitud de saludo. 
 
-Por ejemplo, puede enrutar las solicitudes de diferentes tipos de contenido a diferentes grupos de servidores back-end.
+Uno de los escenarios de hello es tooroute solicitudes para grupos de servidores de back-end de toodifferent de diferentes tipos de contenido.
 
-En el ejemplo siguiente, Application Gateway atiende el tráfico de contoso.com desde tres grupos de servidores back-end: VideoServerPool, ImageServerPool y DefaultServerPool.
+En el siguiente ejemplo de Hola, puerta de enlace de aplicaciones está atendiendo a tráfico para contoso.com de tres grupos de servidor back-end por ejemplo: VideoServerPool, ImageServerPool y DefaultServerPool.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Las solicitudes de http://contoso.com/video* se enrutan a VideoServerPool y las de http://contoso.com/images* a ImageServerPool. DefaultServerPool se selecciona si ninguno de los patrones de ruta de acceso coincide.
+Las solicitudes para http://contoso.com/video * son tooVideoServerPool enrutado y http://contoso.com/images * son tooImageServerPool enrutado. DefaultServerPool está seleccionada si coincide con ninguno de los patrones de ruta de acceso de Hola.
 
 > [!IMPORTANT]
-> Las reglas se procesan en el orden en que aparecen en el portal. Es muy recomendable configurar a los agentes de escucha multisitio antes de configurar un agente de escucha básico.  De esta forma se asegura de que el tráfico se enruta al back-end adecuado. Si un agente de escucha básico aparece en primer lugar y coincide con una solicitud entrante, lo procesa ese agente de escucha.
+> Las reglas se procesan en orden de hello aparecen en el portal de Hola. Es muy recomendable tooconfigure los agentes de escucha de varios sitios primera anterior tooconfiguring un agente de escucha básico.  Esto garantiza que en vuelta ese toohello enrutado en obtiene tráfico Finalizar. Si un agente de escucha básico aparece en primer lugar y coincide con una solicitud entrante, lo procesa ese agente de escucha.
 
 ## <a name="urlpathmap-configuration-element"></a>Elemento de configuración UrlPathMap
 
-El elemento UrlPathMap se utiliza para especificar patrones de ruta de acceso para las asignaciones de grupos de servidores back-end. A continuación se muestra el fragmento de código del elemento urlPathMap del archivo de plantilla.
+elemento de Hello urlPathMap es toospecify usa patrones de ruta de acceso tooback-end asignaciones de grupo de servidores. Hola ejemplo de código siguiente es fragmento Hola de elemento de urlPathMap del archivo de plantilla.
 
 ```json
 "urlPathMaps": [{
@@ -69,13 +69,13 @@ El elemento UrlPathMap se utiliza para especificar patrones de ruta de acceso pa
 ```
 
 > [!NOTE]
-> PathPattern: esta opción es una lista de patrones de ruta de acceso con los que se buscan coincidencias. Cada uno de ellos debe comenzar con / y el único lugar donde se permite un carácter "*" es al final, después de un carácter "/". La cadena que se suministra al comprobador de rutas de acceso no incluye texto después del primer ? o #, y esos caracteres no se permiten aquí.
+> PathPattern: Este valor es una lista de toomatch de patrones de ruta de acceso. Cada uno de ellos debe comenzar con / hello solo lugar y un "*" se permite en hello final sigue un "/". ¿Hola cadena fed buscador de coincidencias de ruta de acceso de toohello no incluye cualquier texto después de hello en primer lugar? o bien, # y los caracteres no se permiten aquí.
 
 Para obtener más información, puede consultar una [plantilla de Resource Manager que use el enrutamiento basado en URL](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) .
 
 ## <a name="pathbasedrouting-rule"></a>Regla de PathBasedRouting
 
-RequestRoutingRule de tipo PathBasedRouting se usa para enlazar un agente de escucha a un elemento urlPathMap. Todas las solicitudes que se reciben para este agente de escucha se enrutan según la directiva especificada en urlPathMap.
+RequestRoutingRule de tipo PathBasedRouting es toobind usado un urlPathMap de tooa de agente de escucha. Todas las solicitudes que se reciben para este agente de escucha se enrutan según la directiva especificada en urlPathMap.
 Fragmento de código de la regla PathBasedRouting:
 
 ```json
@@ -100,4 +100,4 @@ Fragmento de código de la regla PathBasedRouting:
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que conoce el enrutamiento de contenido basado en URL, vaya a [Create an application gateway using URL based routing](application-gateway-create-url-route-portal.md) (Creación de una puerta de enlace de aplicaciones mediante el enrutamiento basado en URL) para crear una puerta de enlace de aplicaciones con reglas de enrutamiento de direcciones URL.
+Después de aprender a enrutamiento contenido basado en dirección URL, vaya demasiado[crear una puerta de enlace de la aplicación mediante el enrutamiento basado en la dirección URL](application-gateway-create-url-route-portal.md) toocreate una puerta de enlace de la aplicación con las reglas de enrutamiento de direcciones URL.

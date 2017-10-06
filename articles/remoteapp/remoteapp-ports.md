@@ -1,6 +1,6 @@
 ---
-title: Lista de puertos y direcciones URL que se deben incluir en la lista blanca de Azure RemoteApp implementada en la red virtual de cliente | Microsoft Docs
-description: "Obtenga información sobre qué puertos y direcciones URL tendrá que configurar para la comunicación a través de Azure RemoteApp."
+title: aaaList de toowhitelist de puertos y las direcciones URL para Azure RemoteApp implementado en la red virtual de cliente | Documentos de Microsoft
+description: "Obtenga información acerca de qué puertos y direcciones URL que necesitará tooconfigure para la comunicación a través de Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: mghosh1616
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: c17ff8d5441ca92f7b893edb541a1e9730c2a847
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 039866f7b64ac763ca833d66031ade3def1d3543
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="list-of-ports-and-urls-to-permit-access-for-azure-remoteapp-deployed-in-customer-virtual-network"></a>Lista de puertos y direcciones URL para permitir el acceso a Azure RemoteApp implementada en el cliente de red virtual
+# <a name="list-of-ports-and-urls-toopermit-access-for-azure-remoteapp-deployed-in-customer-virtual-network"></a>Lista de puertos y direcciones URL de acceso de toopermit para Azure RemoteApp implementado en el cliente de red Virtual
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-Si va a implementar una nube de Azure RemoteApp o una colección híbrida en una red virtual (VNET), consulte la siguiente información sobre puertos. Para obtener más información sobre las redes virtuales, consulte la [información general sobre redes virtuales](../virtual-network/virtual-networks-overview.md). Si creó un grupo de seguridad de red (NSG) que restringe el tráfico dirigido a los recursos de red virtual de su colección, asegúrese de que los siguientes puertos sean accesibles y estén permitidos en las directivas de seguridad de la red virtual. Para obtener más información sobre los grupos de seguridad de red, consulte el artículo sobre [qué es un grupo de seguridad de red. (NSG)](../virtual-network/virtual-networks-nsg.md).
+Si va a implementar una colección de nube o híbridas de Azure RemoteApp en una red virtual (VNET), revise Hola siguiendo la información de puerto. Para obtener más información sobre las redes virtuales, consulte la [información general sobre redes virtuales](../virtual-network/virtual-networks-overview.md). Si ha creado un grupo de seguridad de red (NSG) restringir los recursos de red virtual de tráfico toohello en la colección, asegúrese de que Hola después puertos sean accesibles y permitida a través de directivas de seguridad de hello en red virtual de Hola. Para obtener más información sobre los grupos de seguridad de red, consulte el artículo sobre [qué es un grupo de seguridad de red. (NSG)](../virtual-network/virtual-networks-nsg.md).
 
-## <a name="azure-remoteapp-subnet-needs-access-to-these-endpoints-and-urls"></a>La subred de Azure RemoteApp necesita acceso a estos puntos de conexión y direcciones URL:
+## <a name="azure-remoteapp-subnet-needs-access-toothese-endpoints-and-urls"></a>Subred de Azure RemoteApp necesita acceso toothese extremos y direcciones URL:
 * *.servicebus.windows.net
 * *.servicebus.net
 * https://*.remoteapp.windowsazure.com  
@@ -37,11 +37,11 @@ Si va a implementar una nube de Azure RemoteApp o una colección híbrida en una
 * Saliente: TCP: TCP: 443, 9351, 9352, 10101-10175 
 * Opcional. UDP: 10201-10275  
 
-## <a name="azure-remoteapp-clients-need-access-to-these-endpoints-and-urls"></a>Los clientes Azure RemoteApp necesitan acceso a estos puntos de conexión y direcciones URL:
-Por clientes, me refiero a los escritorios, dispositivos etc. que los usuarios usan para conectarse a las aplicaciones implementadas en la colección de Azure RemoteApp.
+## <a name="azure-remoteapp-clients-need-access-toothese-endpoints-and-urls"></a>Clientes de Azure RemoteApp necesitan tener acceso a los puntos de conexión de toothese y las direcciones URL:
+Los clientes que quiero decir Hola escritorios, dispositivos, etc. que las personas uso tooconnect toohello aplicaciones implementan en hello colección RemoteApp de Azure.
 
 * https://telemetry.remoteapp.windowsazure.com  
-* https://*.remoteapp.windowsazure.com (the optional UDP ports are for this address) 
+* https://*.RemoteApp.windowsazure.com (puertos UDP opcionales de hello son para esta dirección) 
 * https://login.windows.net  
 * https://login.microsoftonline.com  
 * https://www.remoteapp.windowsazure.com 

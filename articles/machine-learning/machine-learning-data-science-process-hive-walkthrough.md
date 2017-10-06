@@ -1,6 +1,6 @@
 ---
-title: "Exploración de datos en un clúster de Hadoop y creación de modelos en Azure Machine Learning | Microsoft Docs"
-description: "Uso del proceso de ciencia de datos en equipos para un escenario completo que emplea un clúster de Hadoop de HDInsight con el objetivo de compilar e implementar un modelo con un conjunto de datos disponible públicamente"
+title: "aaaExplore datos en un Hadoop de clúster y crear modelos de aprendizaje automático de Azure | Documentos de Microsoft"
+description: "Con hello proceso de ciencia de datos de equipo para un escenario de extremo a emplear un Hadoop de HDInsight toobuild de clúster e implementar un modelo mediante un conjunto de datos disponible públicamente."
 services: machine-learning,hdinsight
 documentationcenter: 
 author: bradsev
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: e48d59ca467e3e7fd772389e6e48a2d81726f859
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a371032e356ffc366af0d6fbe364af281b6efd19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Proceso de ciencia de datos en equipos en acción: uso de clústeres de Hadoop de Azure HDInsight
-En este tutorial se describe cómo utilizar el [proceso de ciencia de datos en equipos (TDSP)](data-science-process-overview.md) en un escenario completo con un clúster de [Hadoop de HDInsight de Azure](https://azure.microsoft.com/services/hdinsight/) para almacenar, explorar y diseñar características de los datos del conjunto de datos de [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) disponible públicamente, así como para reducir el tamaño de los datos. Los modelos de datos se generan mediante Aprendizaje automático de Azure para controlar las tareas predictivas de clasificación binaria y de clases múltiples, y de regresión.
+# <a name="hello-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Hola proceso de ciencia de datos de equipo en acción: clústeres de Hadoop de HDInsight de Azure de uso
+En este tutorial, usamos hello [proceso de ciencia de datos de equipo (TDSP)](data-science-process-overview.md) en un escenario de extremo a extremo mediante un [clúster de HDInsight Hadoop de Azure](https://azure.microsoft.com/services/hdinsight/) toostore, explorar y las características de datos de ingeniería de hello públicamente disponible [NYC Taxi viajes](http://www.andresmh.com/nyctaxitrips/) datos Hola de ejemplo del conjunto de datos y toodown. Se generan los modelos de datos de hello con aprendizaje automático de Azure toohandle multiclase y binarias clasificación y regresión tareas de predicción.
 
-Para acceder a un tutorial que muestra cómo controlar un conjunto de datos de mayor tamaño (1 terabyte) para un escenario similar con clústeres de Hadoop de HDInsight para el procesamiento de datos, consulte [Proceso de ciencia de datos en equipos en acción: uso de clústeres de Hadoop de HDInsight de Azure en un conjunto de datos de 1 TB](machine-learning-data-science-process-hive-criteo-walkthrough.md).
+Para ver un tutorial que muestra cómo toohandle clústeres de un conjunto de datos mayor (1 terabyte) para un escenario similar con Hadoop de HDInsight para el procesamiento de datos, vea [proceso de ciencia de datos de equipo - con clústeres de Hadoop de HDInsight de Azure en un conjunto de datos de 1 TB](machine-learning-data-science-process-hive-criteo-walkthrough.md).
 
-También es posible utilizar un cuaderno de iPython para realizar las tareas que se presentan en este tutorial con el conjunto de datos de 1 TB. Los usuarios que deseen probar este método deben consultar el tema sobre el [tutorial de Criteo con una conexión de ODBC de Hive](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) .
+También es posible toouse un hello tooaccomplish de Bloc de notas de IPython tareas Tutorial Hola presentado con conjunto de datos de 1 TB de Hola. Los usuarios que serían como tootry debe consultar este enfoque Hola [tutorial Criteo mediante una conexión ODBC Hive](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) tema.
 
 ## <a name="dataset"></a>Descripción del conjunto de datos NYC Taxi Trips
-Los datos de carreras de taxi de Nueva York son aproximadamente 20 GB de archivos comprimidos de valores separados por comas (CSV) (~48 GB sin comprimir), que incluyen más de 173 millones de carreras individuales y las tarifas pagadas por cada carrera. Cada registro de carrera incluye la hora y la ubicación de recogida y de entrega, el número de licencia de (del conductor) anónimo y el número de ida y vuelta incluye la ubicación de entrega y recogida y el tiempo, la número de licencia y el número de identificador único del taxi. Los datos cubren todos los viajes del año 2013 y se proporcionan en los dos conjuntos de datos siguientes para cada mes:
+Hola datos NYC Taxi recorridos es de aproximadamente 20GB comprimido valores separados por comas (CSV) de archivos de (~ 48GB sin comprimir), que incluye más de 173 millones hello y viajes individuales puntuación de pago para cada recorrido. Cada registro de ida y vuelta incluye ubicación de entrega y recogida de Hola y tiempo, hack anonimizado (controlador) número de licencia y número medallion (identificador único del taxi). datos de Hello cubre todos los viajes y en el año de hello 2013 y se proporcionan en hello siguiendo dos conjuntos de datos de cada mes:
 
-1. Los archivos CSV 'trip_data' contienen información detallada de las carreras, como el número de pasajeros, los puntos de recogida y destino, la duración de las carreras y la longitud del recorrido. Estos son algunos registros de ejemplo:
+1. archivos CSV de Hello 'trip_data' contienen detalles de ida y vuelta, como el número de los pasajeros, recogida y puntos de caída, duración de ida y vuelta y duración del viaje. Estos son algunos registros de ejemplo:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -38,7 +38,7 @@ Los datos de carreras de taxi de Nueva York son aproximadamente 20 GB de archiv
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. Los archivos CSV 'trip_fare' contienen información detallada de la tarifa que se paga en cada carrera, como el tipo de pago, el importe de la tarifa, los suplementos e impuestos, las propinas y peajes, y el importe total pagado. Estos son algunos registros de ejemplo:
+2. archivos CSV de Hello 'trip_fare' contienen detalles de tarifa de Hola de pago para cada recorrido, como tipo de pago, cantidad de tarifa, suplemento e impuestos, sugerencias y peajes y cantidad total de Hola de pago. Estos son algunos registros de ejemplo:
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -47,28 +47,28 @@ Los datos de carreras de taxi de Nueva York son aproximadamente 20 GB de archiv
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-La clave única para unir trip\_data and trip\_fare se compone de los campos: medallion, hack\_licence and pickup\_datetime.
+recorridos de toojoin de clave única de Hello\_datos y recorridos\_tarifa se compone de campos de hello: medallion, prueba\_licencia y recogida\_fecha y hora.
 
-Para obtener todos los detalles correspondientes a una carrera concreta, es suficiente combinar tres claves: "medallion", "hack\_license" and "pickup\_datetime".
+tooget todas las de ida y vuelta determinado Hola detalles tooa relevante, es suficiente toojoin con tres claves: Hola "medallion", "hack\_licencia" y "recogida\_datetime".
 
-Se describen detalles adicionales de los datos al almacenarlos en tablas de Hive un poco más adelante.
+Se describen algunos detalles más de los datos de hello cuando se almacenarlos en tablas de Hive en breve.
 
 ## <a name="mltasks"></a>Ejemplos de tareas de predicción
-Al trabajar con datos, determinar el tipo de predicciones que desea realizar en función de su análisis ayuda a aclarar las tareas que necesitará incluir en el proceso.
-A continuación presentamos tres ejemplos de problemas de predicción que abordaremos en este tutorial cuya formulación se basa en el importe de la propina, *tip\_amount*:
+Cuando planee los datos, determinar tipo hello de predicciones que desee toomake en función de su análisis ayuda a aclarar las tareas de Hola que necesitará tooinclude en el proceso.
+Presentamos tres ejemplos de problemas de predicción que se abordan en este tutorial cuyo formulación se basa en hello *sugerencia\_cantidad*:
 
 1. **Clasificación binaria**: permite predecir si se pagó una propina tras una carrera, o no; es decir, un valor de *tip\_amount* mayor que 0 $ es un ejemplo positivo, mientras que un valor de *tip\_amount* de 0 $ es un ejemplo negativo.
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0
-2. **Clasificación con múltiples clases**: permite predecir el rango de importes de propina pagados por la carrera. Dividimos *tip\_amount* en cinco ubicaciones o clases:
+2. **Clasificación multiclase**: intervalo de hello toopredict de cantidades de sugerencia de pago para recorridos de Hola. Se divide hello *sugerencia\_cantidad* en cinco bandejas o clases:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **Tarea de regresión**: permite predecir el importe pagado como propina en una carrera.  
+3. **Tarea de regresión**: cantidad de hello toopredict de sugerencia de Hola de pago para un recorrido.  
 
 ## <a name="setup"></a>Configuración de un clúster de Hadoop de HDInsight para el análisis avanzado
 > [!NOTE]
@@ -78,71 +78,71 @@ A continuación presentamos tres ejemplos de problemas de predicción que aborda
 
 Puede configurar un entorno de Azure para análisis avanzado que emplee un clúster de HDInsight en tres pasos:
 
-1. [Cree una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md): esta cuenta de almacenamiento se utiliza para almacenar datos en el almacenamiento de blobs de Azure. Los datos utilizados en los clústeres de HDInsight también se encuentran aquí.
-2. [Personalice los clústeres de Hadoop de HDInsight de Azure para la tecnología y procesos de análisis avanzado](machine-learning-data-science-customize-hadoop-cluster.md). Este paso crea un clúster de Hadoop de HDInsight de Azure con Anaconda Python 2.7 de 64 bits instalado en todos los nodos. Hay dos pasos importantes que debe recordar al personalizar el clúster de HDInsight.
+1. [Cree una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md): esta cuenta de almacenamiento se utiliza para almacenar datos en el almacenamiento de blobs de Azure. datos de Hello usados en clústeres de HDInsight también se encuentran aquí.
+2. [Personalizar Hadoop de HDInsight de Azure para hello de clústeres de proceso de análisis avanzado y la tecnología](machine-learning-data-science-customize-hadoop-cluster.md). Este paso crea un clúster de Hadoop de HDInsight de Azure con Anaconda Python 2.7 de 64 bits instalado en todos los nodos. Hay dos tooremember pasos importantes al personalizar su clúster de HDInsight.
    
-   * Recuerde vincular la cuenta de almacenamiento que creó en el paso 1 con el clúster de HDInsight en el momento de crearlo. Esta cuenta de almacenamiento se utiliza para tener acceso a datos que se procesan en el clúster.
-   * Después de crear el clúster, debe habilitar el acceso remoto a su nodo principal. Navegue hasta la pestaña **Configuración** y haga clic en **Habilitar de forma remota**. Este paso especifica las credenciales de usuario usadas para el inicio de sesión remoto.
-3. [Cree un área de trabajo de Aprendizaje automático de Azure](machine-learning-create-workspace.md): esta área de trabajo se usa para crear modelos de aprendizaje automático. Esta tarea se lleva a cabo después de completar una exploración inicial de los datos y de reducir su tamaño con el clúster de HDInsight.
+   * Recordar cuenta de almacenamiento de hello toolink creada en el paso 1 con el clúster de HDInsight al crearla. Esta cuenta de almacenamiento es tooaccess usa datos que se procesan en los clústeres de Hola.
+   * Después de crea el clúster de hello, habilitar el nodo principal de acceso remoto toohello de clúster de Hola. Navegue toohello **configuración** ficha y haga clic en **habilitar de forma remota**. Este paso especifica las credenciales de usuario de Hola utilizadas para inicio de sesión remoto.
+3. [Crear un área de trabajo de aprendizaje automático de Azure](machine-learning-create-workspace.md): aprendizaje automático de Azure esta área de trabajo es los modelos de aprendizaje automático de toobuild usado. Esta tarea se dirige después de completar una exploración de datos iniciales y hacia abajo de muestreo con clúster de HDInsight Hola.
 
-## <a name="getdata"></a>Obtención de los datos desde un origen público
+## <a name="getdata"></a>Obtener datos de Hola desde un origen público
 > [!NOTE]
 > Esta tarea la suelen hacer los **administradores** .
 > 
 > 
 
-Para obtener el conjunto de datos [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) de su ubicación pública, puede usar cualquiera de los métodos descritos en [Mover datos hacia y desde el almacenamiento de blobs de Azure](machine-learning-data-science-move-azure-blob.md) para copiar los datos en su máquina.
+Hola tooget [NYC Taxi viajes](http://www.andresmh.com/nyctaxitrips/) conjunto de datos desde su ubicación pública, puede usar cualquiera de los métodos de hello descritos en [tooand de mover los datos desde el almacenamiento de blobs de Azure](machine-learning-data-science-move-azure-blob.md) máquina tooyour de toocopy Hola datos.
 
-Aquí se describe cómo utilizar AzCopy para transferir los archivos que contienen datos. Para descargar e instalar AzCopy, siga las indicaciones de [Introducción a la utilidad de línea de comandos AzCopy](../storage/common/storage-use-azcopy.md).
+Aquí se describe cómo los archivos que contiene los datos de uso AzCopy tootransfer Hola. toodownload e instale AzCopy siguen las instrucciones de hello en [Introducción a la utilidad de línea de comandos de AzCopy hello](../storage/common/storage-use-azcopy.md).
 
-1. Desde una ventana de símbolo del sistema, emita los siguientes comandos de AzCopy, reemplazando *<ruta_a_carpeta_datos>* con el destino deseado:
+1. Desde una ventana del símbolo del sistema, emitir Hola siguientes comandos de AzCopy, reemplazar *< path_to_data_folder >* con destino deseado de hello:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. Cuando se completa la copia, la carpeta de datos elegida contiene un total de 24 archivos comprimidos. Descomprima los archivos descargados en el mismo directorio del equipo local. Tome nota de la carpeta donde se encuentran los archivos sin comprimir. Se hará referencia a esta carpeta como *<path\_to\_unzipped_data\_files\>* en lo que sigue.
+1. Cuando se completa la copia de hello, son un total de 24 archivos comprimidos en la carpeta de datos de hello seleccionada. Descomprima Hola descargan archivos toohello mismo directorio en el equipo local. Tome nota de carpeta Hola donde residen los archivos de hello sin comprimir. Esta carpeta será la que se hace referencia tooas Hola *< ruta de acceso\_a\_unzipped_data\_archivos\>*  es lo que sigue.
 
-## <a name="upload"></a>Carga de los datos en el contenedor predeterminado del clúster de Hadoop de HDInsight de Azure
+## <a name="upload"></a>Cargar el contenedor de hello datos toohello predeterminado del clúster de Hadoop de HDInsight de Azure
 > [!NOTE]
 > Esta tarea la suelen hacer los **administradores** .
 > 
 > 
 
-En los siguientes comandos de AzCopy, reemplace los siguientes parámetros con los valores reales que se especificó al crear el clúster de Hadoop y descomprimir los archivos de datos.
+Hola siguientes comandos de AzCopy, reemplace Hola siguientes parámetros con valores reales de Hola que especificó al crear el clúster de Hadoop de Hola y descomprimir archivos de datos de Hola.
 
-* ***&#60;path_to_data_folder>***: el directorio (junto con la ruta de acceso) del equipo que contiene los archivos de datos sin comprimir.  
-* ***&#60;storage account name of Hadoop cluster>***: la cuenta de almacenamiento asociada con el clúster de HDInsight.
-* ***&#60;default container of Hadoop cluster>***: el contenedor predeterminado que usa el clúster. Tenga en cuenta que el nombre del contenedor predeterminado suele ser el mismo que el del propio clúster. Por ejemplo, si el clúster se llama "abc123.azurehdinsight.net", el contenedor predeterminado es abc123.
-* ***&#60;storage account key>***: clave para la cuenta de almacenamiento usada por el clúster.
+* ***&#60; path_to_data_folder >*** directory hello (junto con la ruta de acceso) en el equipo que contienen archivos de datos de hello descomprimió  
+* ***&#60; nombre de cuenta de almacenamiento de clúster de Hadoop >*** Hola cuenta de almacenamiento asociada al clúster de HDInsight
+* ***&#60; contenedor predeterminado del clúster de Hadoop >*** contenedor de hello predeterminado utilizado por el clúster. Tenga en cuenta que nombre hello predeterminado Hola contenedor suele ser Hola mismo nombre como el propio clúster Hola. Por ejemplo, si el clúster de Hola se llama "abc123.azurehdinsight.net", contenedor predeterminado de hello es abc123.
+* ***&#60; clave de la cuenta de almacenamiento >*** Hola clave Hola cuenta de almacenamiento utilizado por el clúster
 
-Desde un símbolo del sistema o una ventana de Windows PowerShell en el equipo, ejecute los dos comandos siguientes de AzCopy.
+Desde un símbolo del sistema o una ventana de Windows PowerShell en el equipo, ejecute hello siguiendo dos comandos de AzCopy.
 
-Este comando permite cargar los datos de carrera en el directorio ***nyctaxitripraw*** del contenedor predeterminado del clúster de Hadoop.
+Este comando carga los datos de ida y vuelta de hello demasiado***nyctaxitripraw*** directorio en el contenedor de predeterminado de hello del clúster de Hadoop de Hola.
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
 
-Este comando permite cargar los datos de tarifa en el directorio ***nyctaxifareraw*** del contenedor predeterminado del clúster de Hadoop.
+Este comando carga los datos de la tarifa de hello demasiado***nyctaxifareraw*** directorio en el contenedor de predeterminado de hello del clúster de Hadoop de Hola.
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
 
-Los datos deben estar ahora en el almacenamiento de blobs de Azure, listos para usarse dentro del clúster de HDInsight.
+datos de Hello ahora deberían en almacenamiento de blobs de Azure y listo toobe consumida en clúster de HDInsight Hola.
 
-## <a name="#download-hql-files"></a>Inicio de sesión en el nodo principal del clúster de Hadoop y preparación para el análisis de exploración de datos
+## <a name="#download-hql-files"></a>Inicie sesión en el nodo principal de Hola de clúster de Hadoop y y preparar para el análisis de exploración de datos
 > [!NOTE]
 > Esta tarea la suelen hacer los **administradores** .
 > 
 > 
 
-Para tener acceso al nodo principal del clúster para el análisis de exploración de datos y la reducción de estos, siga el procedimiento descrito en [Acceso al nodo principal del clúster de Hadoop](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
+tooaccess Hola del nodo principal del clúster de hello para el análisis de exploración de datos y hacia abajo de muestreo de datos de hello, siga procedimiento Hola descrito en [Hola de acceso principal del nodo de clúster de Hadoop](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
 
-En este tutorial se usan principalmente las consultas escritas en [Hive](https://hive.apache.org/), un lenguaje de consultas de tipo SQL, para realizar exploraciones preliminares de los datos. Las consultas de Hive se almacenan en archivos .hql. A continuación, se reducen estos datos para su uso en Aprendizaje automático de Azure con el fin de generar modelos.
+En este tutorial, se usan principalmente las consultas escritas [Hive](https://hive.apache.org/), un lenguaje de consulta similar a SQL, exploraciones de datos preliminares de tooperform. consultas de Hive Hola se almacenan en archivos de .hql. A continuación, se abajo ejemplo este toobe de datos que se usan en aprendizaje automático de Azure para generar modelos.
 
-Para preparar el clúster para el análisis de exploración de datos, se descargan los archivos .hql que contienen los scripts de Hive pertinentes de [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) en un directorio local (C:\temp) en el nodo principal. Para ello, abra el **símbolo del sistema** desde dentro del nodo principal del clúster y emita los dos comandos siguientes:
+tooprepare el clúster de hello para el análisis de exploración de datos, se descargar archivos de .hql de Hola que contengan scripts de Hive relevantes de Hola de [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) tooa directorio local (C:\temp) en el nodo principal de Hola. toodo, abra hello **símbolo** desde Hola nodo principal de Hola Hola de clúster y el problema siguiendo dos comandos:
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-Estos dos comandos descargarán todos los archivos .hql necesarios en este tutorial en el directorio local ***C:\temp&#92;*** del nodo principal.
+Estos dos comandos descargarán todos los archivos de .hql necesarios en este directorio local de tutorial toohello ***C:\temp &#92;*** en el nodo principal de Hola.
 
 ## <a name="#hive-db-tables"></a>Creación de base de datos y tablas de Hive con particiones por mes
 > [!NOTE]
@@ -150,21 +150,21 @@ Estos dos comandos descargarán todos los archivos .hql necesarios en este tutor
 > 
 > 
 
-Ahora estamos listos para crear tablas de Hive para nuestro conjunto de datos de taxis de Nueva York.
-En el nodo principal del clúster de Hadoop, abra la ***línea de comandos de Hadoop*** en el escritorio del nodo principal y especifique el directorio de Hive mediante este comando:
+Ahora estamos listos toocreate Hive tablas para el conjunto de datos de Nueva York taxi.
+En el nodo principal de Hola de clúster de Hadoop de hello, abra hello ***línea de comandos de Hadoop*** en Hola escritorio del nodo principal de Hola y escriba el directorio del subárbol de hello escribiendo el comando de Hola
 
     cd %hive_home%\bin
 
 > [!NOTE]
-> **Ejecute todos los comandos de Hive que aparecen en este tutorial desde el símbolo del sistema del directorio bin/ de Hive que aparece anteriormente. De esta manera, cualquier problema con la ruta de acceso se solucionará automáticamente. En este tutorial se utilizan indistintamente los términos "símbolo del sistema del directorio de Hive", "símbolo del sistema del directorio bin/ de Hive" y "línea de comandos de Hadoop".**
+> **Ejecutar todos los comandos de Hive en este tutorial de Hola por encima de la Papelera de Hive / símbolo del sistema de directorio. De esta manera, cualquier problema con la ruta de acceso se solucionará automáticamente. Usamos Hola términos "Prompt de directorio de Hive", "Hive bin / símbolo del sistema de directorio" y "línea de comandos de Hadoop" indistintamente en este tutorial.**
 > 
 > 
 
-Desde el símbolo del sistema del directorio de Hive, escriba el siguiente comando en la línea de comandos de Hadoop del nodo principal para enviar la consulta de Hive de creación de la base de datos y las tablas de Hive:
+En el símbolo del sistema de hello subárbol de directorio, escriba Hola siguiente comando de línea de comandos de Hadoop de tablas y Hola nodo principal toosubmit Hola Hive consultar toocreate Hive base de datos:
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-Este es el contenido del archivo ***C:\temp\sample\_hive\_create\_db\_and\_tables.hql*** que crea la base de datos de Hive ***nyctaxidb*** y las tablas ***trip*** y ***fare***.
+Aquí es contenido de Hola de hello ***C:\temp\sample\_hive\_crear\_db\_y\_tables.hql*** archivos que crea la base de datos de Hive ***nyctaxidb *** y tablas ***recorridos*** y ***tarifa***.
 
     create database if not exists nyctaxidb;
 
@@ -207,43 +207,43 @@ Este es el contenido del archivo ***C:\temp\sample\_hive\_create\_db\_and\_table
 
 Este script de Hive crea dos tablas:
 
-* La tabla "trip" contiene detalles del recorrido de cada carrera (detalles del conductor, hora de recogida, distancia de viaje y horas)
-* La tabla "fare" contiene los detalles de tarifa (importe de tarifa, propina, peajes y suplementos).
+* tabla de "recorrido" Hello contiene detalles de ida y vuelta de cada carrera (detalles del controlador, hora de recopilación, distancia de viaje y veces)
+* tabla de "tarifa" Hello contiene los detalles de tarifa (cantidad de tarifa, cantidad de sugerencia, peajes y suplementos).
 
-Si necesita ayuda adicional con estos procedimientos o bien si desea investigar otros alternativos, consulte la sección [Enviar consultas de Hive directamente desde la línea de comandos de Hadoop ](machine-learning-data-science-move-hive-tables.md#submit).
+Si necesita ayuda adicional con estos procedimientos o quiere tooinvestigate otras alternativas, vea la sección de hello [consultas de Hive enviar directamente desde Hola línea de comandos de Hadoop ](machine-learning-data-science-move-hive-tables.md#submit).
 
-## <a name="#load-data"></a>Carga de datos en tablas de Hive por particiones
+## <a name="#load-data"></a>Cargar las tablas de tooHive de datos con particiones
 > [!NOTE]
 > Esta tarea la suelen hacer los **administradores** .
 > 
 > 
 
-El conjunto de datos de taxis de Nueva York tiene una partición natural por mes, que usamos para conseguir tiempos de procesamiento y consulta más rápidos. Los siguientes comandos de PowerShell (emitidos desde el directorio de Hive mediante la **línea de comandos de Hadoop**) cargan datos en las tablas de Hive "trip" y "fare" particionadas por mes.
+el conjunto de datos de Hello NYC taxi tiene una partición natural por mes, lo que usamos tooenable tiempos de procesamiento y consulta más rápidos. Hola los siguientes comandos de PowerShell (emitidas desde el directorio de Hive de hello mediante hello **línea de comandos de Hadoop**) cargar datos toohello "recorrido" y "tarifa" Hive las tablas con particiones por mes.
 
     for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-El archivo *sample\_hive\_load\_data\_by\_partitions.hql* contiene los siguientes comandos **LOAD**.
+Hola *ejemplo\_hive\_cargar\_datos\_por\_partitions.hql* archivo contiene siguiente hello **cargar** comandos.
 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
 
-Tenga en cuenta que un número de consultas de Hive que usamos aquí en el proceso de exploración implica la búsqueda en una sola partición o en un par de particiones. Sin embargo, estas consultas se pueden ejecutar para todos los datos.
+Tenga en cuenta que un número de consultas de Hive que aquí utilizamos en proceso de exploración de hello implica la búsqueda en una sola partición o en solo un par de particiones. Pero estas consultas se pudieron ejecutar a través de los datos completos de Hola.
 
-### <a name="#show-db"></a>Visualización de bases de datos en el clúster de Hadoop de HDInsight
-Para mostrar las bases de datos creadas en el clúster de Hadoop de HDInsight dentro de la ventana de la línea de comandos de Hadoop, ejecute el siguiente comando en la línea de comandos de Hadoop:
+### <a name="#show-db"></a>Mostrar bases de datos en clúster de Hadoop de HDInsight de Hola
+tooshow Hola bases de datos creadas en clúster de Hadoop de HDInsight dentro de la ventana de línea de comandos de Hadoop de hello, ejecute el siguiente comando de línea de comandos de Hadoop de Hola:
 
     hive -e "show databases;"
 
-### <a name="#show-tables"></a>Visualización de las tablas de Hive en la base de datos nyctaxidb
-Para mostrar las tablas de la base de datos nyctaxidb, ejecute el siguiente comando en la línea de comandos de Hadoop:
+### <a name="#show-tables"></a>Mostrar tablas de Hive de hello en la base de datos de hello nyctaxidb
+tooshow Hola tablas hello nyctaxidb base de datos, ejecute el siguiente comando de línea de comandos de Hadoop de Hola:
 
     hive -e "show tables in nyctaxidb;"
 
-Para confirmar que las tabla trip tiene particiones se puede emitir el comando siguiente:
+Esto se puede confirmar que las tablas de hello tienen particiones emitiendo el comando de Hola a continuación:
 
     hive -e "show partitions nyctaxidb.trip;"
 
-A continuación se muestra el resultado esperado:
+Hola espera el resultado se muestra a continuación:
 
     month=1
     month=10
@@ -259,11 +259,11 @@ A continuación se muestra el resultado esperado:
     month=9
     Time taken: 2.075 seconds, Fetched: 12 row(s)
 
-Del mismo modo, para confirmar que las tabla fare tiene particiones se puede emitir el comando siguiente:
+De igual forma, es posible asegurarse de que esa tabla de tarifa hello tiene particiones emitiendo el comando de Hola a continuación:
 
     hive -e "show partitions nyctaxidb.fare;"
 
-A continuación se muestra el resultado esperado:
+Hola espera el resultado se muestra a continuación:
 
     month=1
     month=10
@@ -285,45 +285,45 @@ A continuación se muestra el resultado esperado:
 > 
 > 
 
-Las tareas de exploración de datos e ingeniería de características para los datos cargados en las tablas de subárbol se pueden lograr mediante consultas de subárbol. Estos son ejemplos de dichas tareas por que las que le guiaremos en esta sección:
+Hola exploración de datos y la característica de tareas de ingeniería para hello datos cargados en tablas de Hive Hola pueden realizarse mediante consultas de Hive. Estos son ejemplos de dichas tareas por que las que le guiaremos en esta sección:
 
-* Ver los diez registros principales en ambas tablas.
+* Ver los registros de 10 principales de hello en ambas tablas.
 * Explorar distribuciones de datos de algunos campos en diferentes ventanas de tiempo.
-* Investigar la calidad de los datos de los campos de longitud y latitud.
-* Generar etiquetas de clasificación binaria y multiclase según **tip\_amount**.
-* Generar características calculando las distancias de las carreras directas.
+* Investigue la calidad de los datos de los campos de longitud y latitud de Hola.
+* Generar etiquetas de clasificación multiclase y binaria basándose en hello **sugerencia\_cantidad**.
+* Generar características y calcula las distancias Hola directa de ida y vuelta.
 
-### <a name="exploration-view-the-top-10-records-in-table-trip"></a>Exploración: Consulta de los 10 principales registros de la tabla trip
+### <a name="exploration-view-hello-top-10-records-in-table-trip"></a>Exploración: Vista Hola top 10 registros en el recorrido de tabla
 > [!NOTE]
 > Esta tarea la suelen hacer los **científicos de datos** .
 > 
 > 
 
-Para ver el aspecto de los datos, examinamos 10 registros de cada tabla. Ejecute las dos consultas siguientes por separado desde el símbolo de sistema del directorio de Hadoop en la consola de línea de comandos de Hadoop para inspeccionar los registros.
+toosee aspecto qué datos hello, examinamos 10 registros de cada tabla. Ejecute hello siguientes dos consultas por separado de símbolo del sistema de hello subárbol de directorio en los registros de hello línea de comandos de Hadoop consola tooinspect Hola.
 
-Para obtener los 10 principales registros de la tabla "trip" correspondientes al primer mes:
+tooget Hola top 10 registros en la tabla de Hola "recorrido" de Hola y primer mes:
 
     hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
 
-Para obtener los 10 principales registros de la tabla "fare" correspondientes al primer mes:
+tooget Hola top 10 registros de hello tabla "tarifa" de hello primer mes:
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
-A menudo resulta útil guardar los registros en un archivo para una visualización cómoda. Esto se consigue mediante un pequeño cambio en la consulta anterior:
+A menudo es útil toosave Hola el archivo de tooa de registros para su visualización adecuada. Un toohello pequeño cambio por encima de la consulta para hacerlo:
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Exploración: Consulta del número de registros en cada una de las 12 particiones
+### <a name="exploration-view-hello-number-of-records-in-each-of-hello-12-partitions"></a>Exploración: Número de Hola vista de registros en cada uno de los 12 particiones de Hola
 > [!NOTE]
 > Esta tarea la suelen hacer los **científicos de datos** .
 > 
 > 
 
-Resulta interesante comprobar cómo varía el número de carreras durante el año natural. La agrupación por mes permite ver el aspecto de esta distribución de carreras.
+Hola cómo varía el número de Hola de viajes de durante el año natural de hello es interesante. Agrupar por mes nos permite toosee el aspecto de esta distribución de viajes.
 
     hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
-Esto nos da el siguiente resultado:
+Esto nos da salida de hello:
 
     1       14776615
     2       13990176
@@ -339,9 +339,9 @@ Esto nos da el siguiente resultado:
     12      13971118
     Time taken: 283.406 seconds, Fetched: 12 row(s)
 
-En este caso, la primera columna es el mes y la segunda el número de carreras de ese mes.
+En este caso, Hola primera columna es el mes de Hola y Hola en segundo lugar es número Hola de viajes de durante ese mes.
 
-También se puede contar el número total de registros del conjunto de datos de carreras emitiendo el comando siguiente en el símbolo del sistema del directorio de Hive.
+Se podemos contar Hola número total de registros en nuestro conjunto de datos de ida y vuelta mediante la emisión de hello siguiente comando en el símbolo del sistema de hello subárbol de directorio.
 
     hive -e "select count(*) from nyctaxidb.trip;"
 
@@ -350,11 +350,11 @@ El resultado es:
     173179759
     Time taken: 284.017 seconds, Fetched: 1 row(s)
 
-Mediante el uso de comandos similares a los que se mostraron para el conjunto de datos de carreras se pueden emitir consultas de Hive desde el símbolo del sistema del directorio de Hive para el conjunto de datos de tarifas, con el fin de validar el número de registros.
+Comandos toothose similar que se muestra para el conjunto de datos de ida y vuelta de hello, podemos emitir consultas de Hive de hello Hive directory pedir Hola tarifa datos toovalidate Hola número establecido de registros.
 
     hive -e "select month, count(*) from nyctaxidb.fare group by month;"
 
-Esto nos da el siguiente resultado:
+Esto nos da salida de hello:
 
     1       14776615
     2       13990176
@@ -370,9 +370,9 @@ Esto nos da el siguiente resultado:
     12      13971118
     Time taken: 253.955 seconds, Fetched: 12 row(s)
 
-Tenga en cuenta que se devuelve el mismo número exacto de carreras por mes para ambos conjuntos de datos. Esto supone la primera validación de que los datos se han cargado correctamente.
+Tenga en cuenta que Hola exacta mismo número de viajes por mes se devuelve para los dos conjuntos de datos. Esto proporciona la validación primera Hola ese Hola datos se han cargado correctamente.
 
-El recuento del número total de registros del conjunto de datos de tarifas puede realizarse mediante el comando siguiente desde el símbolo del sistema del directorio de Hive:
+Contando Hola número total de registros en el conjunto de datos de tarifa de hello puede realizarse con el comando de Hola a continuación del símbolo del sistema de hello subárbol de directorio:
 
     hive -e "select count(*) from nyctaxidb.fare;"
 
@@ -381,7 +381,7 @@ El resultado es:
     173179759
     Time taken: 186.683 seconds, Fetched: 1 row(s)
 
-El número total de registros de ambas tablas es también el mismo. Esto supone la segunda validación de que los datos se han cargado correctamente.
+número total de Hola de registros en ambas tablas también se Hola mismo. Esto proporciona una validación segundo ese Hola datos se han cargado correctamente.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Exploración: distribución de carreras por licencia
 > [!NOTE]
@@ -389,11 +389,11 @@ El número total de registros de ambas tablas es también el mismo. Esto supone 
 > 
 > 
 
-Este ejemplo identifica las licencias (números de taxi) con más de 100 carreras dentro de un período de tiempo. La consulta se beneficia del acceso a la tabla con particiones puesto que está condicionada por la variable de partición **month**. Los resultados de la consulta se escriben en un archivo local queryoutput.tsv en `C:\temp` en el nodo principal.
+Este ejemplo identifica medallion Hola (números de taxi) con más de 100 viajes dentro de un período de tiempo determinado. ventajas de la consulta de Hola de hello partición acceso a la tabla porque está condicionado por la variable de la partición de hello **mes**. resultados de la consulta de Hola se escriben tooa archivo local queryoutput.tsv `C:\temp` en el nodo principal de Hola.
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-Aquí se muestra el contenido del archivo *sample\_hive\_trip\_count\_by\_medallion.hql* para su inspección.
+Aquí es contenido de Hola de *ejemplo\_hive\_recorridos\_recuento\_por\_medallion.hql* archivo para su inspección.
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -402,9 +402,9 @@ Aquí se muestra el contenido del archivo *sample\_hive\_trip\_count\_by\_medall
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-La licencia del conjunto de datos de taxis de NYC identifica a cada taxi de forma única. Se puede identificar qué taxis trabajan más preguntando cuáles realizaron más de un determinado número de carreras en un período de tiempo determinado. El ejemplo siguiente identifica los taxis que realizaron más de cien carreras en los tres primeros meses y guarda los resultados de la consulta en un archivo local, C:\temp\queryoutput.tsv.
+medallion Hola Hola NYC taxi conjunto de datos identifica un único archivo cab. Se puede identificar qué taxis trabajan más preguntando cuáles realizaron más de un determinado número de carreras en un período de tiempo determinado. Hello en el ejemplo siguiente se identifica archivos CAB que realizan viajes de más de cien en hello primeros tres meses y guarda Hola resultados tooa local archivo de consulta C:\temp\queryoutput.tsv.
 
-Aquí se muestra el contenido del archivo *sample\_hive\_trip\_count\_by\_medallion.hql* para su inspección.
+Aquí es contenido de Hola de *ejemplo\_hive\_recorridos\_recuento\_por\_medallion.hql* archivo para su inspección.
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -413,7 +413,7 @@ Aquí se muestra el contenido del archivo *sample\_hive\_trip\_count\_by\_medall
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-Desde el símbolo de sistema del directorio de Hive, emita el siguiente comando:
+De hello subárbol símbolo del sistema de directorio, problema Hola comando a continuación:
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
@@ -423,9 +423,9 @@ Desde el símbolo de sistema del directorio de Hive, emita el siguiente comando:
 > 
 > 
 
-Al explorar un conjunto de datos, con frecuencia deseamos examinar el número de repeticiones de grupos de valores. En esta sección se ofrece un ejemplo de cómo llevar esto a cabo para los taxis y los conductores.
+Al explorar un conjunto de datos, con frecuencia se requiere número de hello tooexamine de co-repeticiones de grupos de valores. En esta sección se proporcionan un ejemplo de cómo toodo esto en archivos .cab y controladores.
 
-El archivo *sample\_hive\_trip\_count\_by\_medallion\_license.hql* agrupa el conjunto de datos de tarifas en función de los valores de "medallion" y "hack_license", y devuelve los recuentos de cada combinación. A continuación se muestra su contenido.
+Hola *ejemplo\_hive\_recorridos\_recuento\_por\_medallion\_license.hql* archivo agrupa los datos de la tarifa de hello establecida en "medallion" y "hack_license" y devuelve recuentos de cada combinación. A continuación se muestra su contenido.
 
     SELECT medallion, hack_license, COUNT(*) as trip_count
     FROM nyctaxidb.fare
@@ -436,11 +436,11 @@ El archivo *sample\_hive\_trip\_count\_by\_medallion\_license.hql* agrupa el con
 
 Esta consulta devuelve combinaciones de taxi y conductor determinado ordenadas por número descendente de carreras.
 
-Desde el símbolo del sistema del directorio de Hive, ejecute:
+De hello Hive indicador del directorio, ejecute:
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
 
-Los resultados de la consulta se escriben en un archivo local C:\temp\queryoutput.tsv.
+resultados de la consulta de Hola se escriben archivo local tooa C:\temp\queryoutput.tsv.
 
 ### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitudelatitude-records"></a>Exploración: Evaluación de la calidad de los datos mediante la comprobación de registros con latitud/longitud no válida
 > [!NOTE]
@@ -448,9 +448,9 @@ Los resultados de la consulta se escriben en un archivo local C:\temp\queryoutpu
 > 
 > 
 
-Un objetivo común del análisis de exploración de datos consiste en descartar registros no válidos o incorrectos. En el ejemplo de esta sección se determina si los campos de longitud o latitud contienen un valor fuera del área de la ciudad de Nueva York. Es probable que estos registros tengan valores de longitud o latitud incorrectos, por lo que queremos eliminarlos de todos los datos que se van a usar para el modelado.
+Un objetivo comunes de análisis de exploración de datos es tooweed los registros no válidos o es incorrectos. Hello ejemplo de esta sección determina si bien hello campos de longitud o latitud contienen un valor fuera del área de Nueva York Hola. Puesto que es probable que estos registros tengan los valores de longitud y latitud erróneos, queremos tooeliminate de cualquier dato que sea toobe utilizados para el modelado.
 
-Aquí se muestra el contenido del archivo *sample\_hive\_quality\_assessment.hql* para su inspección.
+Este es el contenido de Hola de *ejemplo\_hive\_calidad\_assessment.hql* archivo para su inspección.
 
         SELECT COUNT(*) FROM nyctaxidb.trip
         WHERE month=1
@@ -460,11 +460,11 @@ Aquí se muestra el contenido del archivo *sample\_hive\_quality\_assessment.hql
         OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
 
 
-Desde el símbolo del sistema del directorio de Hive, ejecute:
+De hello Hive indicador del directorio, ejecute:
 
     hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 
-El argumento *-S* incluido en este comando suprime la impresión de la pantalla de estado de los trabajos de asignación/reducción de Hive. Esto es útil porque hace que la impresión de la pantalla de la salida de la consulta de subárbol sea más legible.
+Hola *-S* argumento incluido en este comando suprime la copia impresa de pantalla del estado de Hola de trabajos de Hive asignación y reducción de Hola. Esto es útil porque dificulta la impresión de la pantalla de Hola de hello Hive resultado de la consulta sea más legible.
 
 ### <a name="exploration-binary-class-distributions-of-trip-tips"></a>Exploración: Distribuciones de clase binaria de las propinas de las carreras
 > [!NOTE]
@@ -472,12 +472,12 @@ El argumento *-S* incluido en este comando suprime la impresión de la pantalla 
 > 
 > 
 
-Para el problema de clasificación binaria descrito en la sección [Ejemplos de tareas de predicción](machine-learning-data-science-process-hive-walkthrough.md#mltasks) , es útil saber si se recibió una propina o no. Esta distribución de las propinas es binaria:
+Problema de clasificación binaria de hello descrito en hello [ejemplos de tareas de predicción](machine-learning-data-science-process-hive-walkthrough.md#mltasks) sección, resulta útil tooknow si se proporcionó una sugerencia o no. Esta distribución de las propinas es binaria:
 
 * Propina dada (clase 1, tip\_amount > 0 $).  
 * Sin propina (clase 0, tip\_amount = 0 $).
 
-El archivo *sample\_hive\_tipped\_frequencies.hql* que se muestra a continuación lo lleva a cabo.
+Hola *ejemplo\_hive\_superpuesto\_frequencies.hql* archivo se muestra a continuación para ello.
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -487,18 +487,18 @@ El archivo *sample\_hive\_tipped\_frequencies.hql* que se muestra a continuació
     )tc
     GROUP BY tipped;
 
-Desde el símbolo del sistema del directorio de Hive, ejecute:
+De hello Hive indicador del directorio, ejecute:
 
     hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 
 
-### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>Exploración: Distribuciones de clase en la configuración de clases múltiples
+### <a name="exploration-class-distributions-in-hello-multiclass-setting"></a>Exploración: Clase distribuciones en configuración de hello multiclase
 > [!NOTE]
 > Esta tarea la suelen hacer los **científicos de datos** .
 > 
 > 
 
-Para el problema de clasificación de clases múltiples descrito en la sección [Ejemplos de tareas de predicción](machine-learning-data-science-process-hive-walkthrough.md#mltasks) este conjunto de datos también se presta a una clasificación natural donde nos gustaría predecir el importe de las propinas dadas. Podemos usar ubicaciones para definir intervalos de propinas en la consulta. Para obtener las distribuciones de clase para los distintos intervalos de propina, usamos el archivo *sample\_hive\_tip\_range\_frequencies.hql*. A continuación se muestra su contenido.
+Problema de clasificación multiclase Hola descrito en hello [ejemplos de tareas de predicción](machine-learning-data-science-process-hive-walkthrough.md#mltasks) sección este conjunto de datos también se presta tooa clasificación natural que nos gustaría toopredict cantidad de Hola de sugerencias de hello dada. Podemos usar ubicaciones toodefine sugerencia intervalos de consulta de Hola. tooget Hola distribuciones de clase de hello distintos intervalos de sugerencia, usaremos hello *ejemplo\_hive\_sugerencia\_intervalo\_frequencies.hql* archivo. A continuación se muestra su contenido.
 
     SELECT tip_class, COUNT(*) AS tip_freq
     FROM
@@ -511,7 +511,7 @@ Para el problema de clasificación de clases múltiples descrito en la sección 
     )tc
     GROUP BY tip_class;
 
-Ejecute el siguiente comando desde la consola de la línea de comandos de Hadoop:
+Ejecute el siguiente comando desde la consola de línea de comandos de Hadoop de hello:
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
@@ -521,9 +521,9 @@ Ejecute el siguiente comando desde la consola de la línea de comandos de Hadoop
 > 
 > 
 
-Tener una medida de la distancia directa nos permite averiguar la discrepancia entre ella y la distancia real de la carrera. Esta característica se justifica por el hecho de que es probable que un pasajero sea más remiso a dar propina si sospecha que el conductor le lleva intencionadamente por un recorrido mucho más largo.
+Tener una medida de distancia directa Hola nos permite toofind out discrepancia de hello entre él y Hola real distancia de viaje. Esta característica se promoverá, señale que pasajeros pueden ser menor probable información sobre herramientas si pueda determinar dicho controlador Hola intencionadamente las ha tomado por una ruta más larga.
 
-Para ver la comparación entre la distancia real de la carrera y la [distancia Haversine](http://en.wikipedia.org/wiki/Haversine_formula) entre dos puntos de longitud-latitud (la distancia del "círculo máximo"), usamos las funciones trigonométricas disponibles dentro de Hive, así:
+comparación de hello toosee entre hello y distancia de viaje real [distancia Haversine](http://en.wikipedia.org/wiki/Haversine_formula) entre dos puntos longitud-latitud (distancia de Hola "great círculo"), usamos funciones trigonométricas de hello disponibles dentro de Hive, por lo tanto:
 
     set R=3959;
     set pi=radians(180);
@@ -544,24 +544,24 @@ Para ver la comparación entre la distancia real de la carrera y la [distancia H
     and dropoff_longitude between -90 and -30
     and dropoff_latitude between 30 and 90;
 
-En la consulta anterior, R es el radio de la Tierra en millas y pi se ha convertido a radianes. Tenga en cuenta que los puntos de longitud-latitud se han "filtrado" para quitar los valores que están lejos del área metropolitana de Nueva York.
+En la consulta de hello anterior, R es el radio Hola Hola tierra en millas y pi es tooradians convertido. Tenga en cuenta que puntos longitud-latitud de hello tooremove "filtrado" valores que están lejos de área de Nueva York Hola.
 
-En este caso, escribimos los resultados en un directorio llamado "queryoutputdir". La secuencia de comandos que se muestra a continuación crea primero este directorio de salida y después ejecuta el comando de Hive.
+En este caso, escribimos nuestro directorio de tooa de resultados llamado "queryoutputdir". Hello secuencia de comandos que se muestra a continuación, primero crea este directorio de salida y, a continuación, ejecuta el comando de Hive de Hola.
 
-Desde el símbolo del sistema del directorio de Hive, ejecute:
+De hello Hive indicador del directorio, ejecute:
 
     hdfs dfs -mkdir wasb:///queryoutputdir
 
     hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 
 
-Los resultados de la consulta se escriben en 9 blobs de Azure de ***queryoutputdir/000000\_0*** a ***queryoutputdir/000008\_0*** bajo el contenedor predeterminado del clúster de Hadoop.
+Hello resultados de la consulta se escriben los blobs de Azure too9 ***queryoutputdir/000000\_0*** demasiado ***queryoutputdir/000008\_0*** en contenedor de hello predeterminado del clúster de Hadoop de Hola.
 
-Para ver el tamaño de los blobs individuales, se ejecuta el siguiente comando desde el símbolo del sistema del directorio de Hive:
+tamaño de hello toosee de blobs individuales de hello, ejecutamos Hola siguiente comando desde el símbolo del sistema de hello subárbol de directorio:
 
     hdfs dfs -ls wasb:///queryoutputdir
 
-Para ver el contenido de un archivo determinado, por ejemplo, 000000\_0, se usa el comando `copyToLocal` de Hadoop.
+contenido de hello toosee de un archivo determinado, diga 000000\_0, usamos de Hadoop `copyToLocal` comando, por lo tanto.
 
     hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
@@ -570,7 +570,7 @@ Para ver el contenido de un archivo determinado, por ejemplo, 000000\_0, se usa 
 > 
 > 
 
-Una ventaja clave de tener estos datos en un blob de Azure es que se pueden explorar dentro de Azure Machine Learning mediante el módulo [Importar datos][import-data].
+Una ventaja clave de tener estos datos residen en un blob de Azure es que podemos exploramos datos hello en aprendizaje automático de Azure con hello [importar datos] [ import-data] módulo.
 
 ## <a name="#downsample"></a>Reducción de datos y creación de modelos en Aprendizaje automático de Azure
 > [!NOTE]
@@ -578,18 +578,18 @@ Una ventaja clave de tener estos datos en un blob de Azure es que se pueden expl
 > 
 > 
 
-Después de la fase de análisis de exploración de datos, estamos preparados para reducir los datos y crear modelos en Aprendizaje automático de Azure. En esta sección veremos cómo se usa una consulta de Hive para reducir los datos, a los que después se accede desde el módulo [Importar datos][import-data] de Azure Machine Learning.
+Después de la fase de análisis de datos de exploración de hello, ahora estamos listos toodown datos de Hola de ejemplo para generar modelos de aprendizaje automático de Azure. En esta sección, se muestra cómo consultar los datos de toodown ejemplo hello, que, a continuación, se obtiene acceso desde hello toouse un subárbol [importar datos] [ import-data] módulo aprendizaje automático de Azure.
 
-### <a name="down-sampling-the-data"></a>Reducción de los datos
-Este procedimiento incluye dos pasos. En primer lugar, se unen las tablas **nyctaxidb.trip** y **nyctaxidb.fare** en función de tres claves incluidas en todos los registros: "medallion", "hack\_license" y "pickup\_datetime". Después se genera una etiqueta de clasificación binaria **tipped** y una etiqueta de clasificación de múltiples clases **tip\_class**.
+### <a name="down-sampling-hello-data"></a>Profundidad de muestreo de datos de Hola
+Este procedimiento incluye dos pasos. En primer lugar se unir hello **nyctaxidb.trip** y **nyctaxidb.fare** tablas en tres claves que están presentes en todos los registros: "medallion", "hack\_licencia", y "recogida\_datetime". Después se genera una etiqueta de clasificación binaria **tipped** y una etiqueta de clasificación de múltiples clases **tip\_class**.
 
-Para usar los datos muestreados directamente desde el módulo [Importar datos][import-data] de Azure Machine Learning, se deben almacenar los resultados de la consulta anterior en una tabla interna de Hive. En lo que sigue, se crea una tabla interna de Hive y se rellena su contenido con los datos reducidos y combinados.
+toobe toouse capaz de hello hacia abajo de los datos muestreados directamente desde hello [importar datos] [ import-data] módulo aprendizaje automático de Azure, es necesario toostore resultados de Hola de hello por encima de la tabla de Hive interno de consulta tooan. En la información siguiente, se crea una tabla interna de Hive y rellena su contenido con hello Unido y hacia abajo de los datos de ejemplo.
 
-La consulta aplica funciones estándar de Hive directamente para generar la hora del día, la semana del año, el día de la semana (1 representa el lunes y 7 el domingo) a partir del campo "pickup\_datetime", y la distancia directa entre las ubicaciones de recogida y destino. Los usuarios pueden consultar [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (Manual de lenguaje: campos definidos por el usuario) para obtener una lista completa de estas funciones.
+consulta Hello aplica funciones de Hive estándares directamente toogenerate hora Hola del día, semana del año, semana (el lunes es 1 y 7 es el domingo) de Hola "recogida\_datetime" campo y Hola distancia directa entre la recogida de Hola y caída ubicaciones. Los usuarios pueden consultar demasiado[LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) para obtener una lista completa de dichas funciones.
 
-Después esta consulta reduce los datos para que los resultados quepan en Estudio de aprendizaje automático de Azure. Aproximadamente solo el 1% del conjunto de datos original se importa en Estudio.
+Hola consulta, a continuación, el detalle de datos de saludo de ejemplos para que los resultados de la consulta de hello pueden caber en hello estudio de aprendizaje automático de Azure. Se importa solo 1% del conjunto de datos original de Hola Hola Studio.
 
-A continuación se muestra el contenido del archivo *sample\_hive\_prepare\_for\_aml\_full.hql* que prepara los datos para la creación de modelos en Azure Machine Learning.
+A continuación se muestran contenido Hola de *ejemplo\_hive\_preparar\_para\_aml\_full.hql* archivo que prepara los datos para el modelo de creación de aprendizaje automático de Azure.
 
         set R = 3959;
         set pi=radians(180);
@@ -628,7 +628,7 @@ A continuación se muestra el contenido del archivo *sample\_hive\_prepare\_for\
         lines terminated by '\n'
         stored as textfile;
 
-        --- now insert contents of the join into the above internal table
+        --- now insert contents of hello join into hello above internal table
 
         insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
         select
@@ -712,114 +712,114 @@ A continuación se muestra el contenido del archivo *sample\_hive\_prepare\_for\
         on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
         where t.sample_key<=0.01
 
-Para ejecutar esta consulta, escriba en el símbolo del sistema del directorio de Hive:
+Esta consulta, del directorio del subárbol de hello solicitar al toorun:
 
     hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-Ahora tenemos una tabla interna nyctaxidb.nyctaxi_downsampled_dataset, a la que se puede acceder mediante el módulo [Importar datos][import-data] de Azure Machine Learning. También se puede utilizar este conjunto de datos para generar modelos de Aprendizaje automático.  
+Ahora tenemos una tabla interna "nyctaxidb.nyctaxi_downsampled_dataset", que se puede acceder mediante hello [importar datos] [ import-data] módulo de aprendizaje automático de Azure. También se puede utilizar este conjunto de datos para generar modelos de Aprendizaje automático.  
 
-### <a name="use-the-import-data-module-in-azure-machine-learning-to-access-the-down-sampled-data"></a>Uso del módulo Importar datos de Aprendizaje automático de Azure para acceder a los datos muestreados
-Como requisitos previos para la emisión de consultas de Hive en el módulo [Importar datos][import-data] de Azure Machine Learning, se necesita acceso a un área de trabajo de Azure Machine Learning y a las credenciales del clúster y su cuenta de almacenamiento asociada.
+### <a name="use-hello-import-data-module-in-azure-machine-learning-tooaccess-hello-down-sampled-data"></a>Usar módulo de importar datos de Hola Hola de aprendizaje automático de Azure tooaccess hacia abajo de los datos de ejemplo
+Como requisitos previos para emitir consultas de Hive en hello [importar datos] [ import-data] módulo de aprendizaje automático de Azure, se necesita acceso de área de trabajo de aprendizaje automático de Azure tooan y tener acceso a las credenciales de toohello de hello clúster y su cuenta de almacenamiento asociada.
 
-A continuación se indican algunos detalles del módulo [Importar datos][import-data] y los parámetros de entrada:
+Algunos detalles de hello [importar datos] [ import-data] hello y módulo tooinput de parámetros:
 
-**URI del servidor de HCatalog**: si el nombre del clúster es abc123, sería: https://abc123.azurehdinsight.net
+**URI del servidor de HCatalog**: si el nombre del clúster de hello es abc123, esto es simplemente: https://abc123.azurehdinsight.net
 
-**Nombre de la cuenta de usuario de Hadoop**: el nombre de usuario elegido para el clúster (**no** es el nombre de usuario de acceso remoto)
+**Nombre de cuenta de usuario de Hadoop** : nombre de usuario de hello elegido para el clúster de hello (**no** nombre de usuario de acceso remoto de hello)
 
-**Contraseña de la cuenta de usuario de Hadoop**: la contraseña elegida para el clúster (**no** es la contraseña de acceso remoto)
+**Contraseña de cuenta de usuario de Hadoop** : contraseña de hello elegido para el clúster de hello (**no** contraseña de acceso remoto de hello)
 
-**Ubicación de datos de salida** : este valor se elige como Azure.
+**Ubicación de los datos de salida** : Esto se elige toobe Azure.
 
-**Nombre de la cuenta de almacenamiento de Azure** : nombre de la cuenta de almacenamiento predeterminada asociada al clúster.
+**Nombre de la cuenta de almacenamiento de Azure** : nombre de cuenta de almacenamiento predeterminada de hello asociada Hola clúster.
 
-**Nombre de contenedor de Azure** : este es el nombre del contenedor predeterminado para el clúster y suele ser el mismo que el nombre del clúster. En un clúster denominado "abc123", es abc123.
+**Nombre de contenedor de Azure** : Esto es nombre de contenedor predeterminado de Hola para clúster hello y normalmente es Hola mismo como el nombre del clúster de Hola. En un clúster denominado "abc123", es abc123.
 
 > [!IMPORTANT]
-> **Cualquier tabla que desee consultar mediante el módulo [Importar datos][import-data] de Azure Machine Learning debe ser una tabla interna.** Una manera de determinar si una tabla T en una base de datos D.db es una tabla interna es la siguiente.
+> **Cualquier tabla deseamos tooquery con hello [importar datos] [ import-data] módulo aprendizaje automático de Azure debe ser una tabla interna.** Una manera de determinar si una tabla T en una base de datos D.db es una tabla interna es la siguiente.
 > 
 > 
 
-Desde el símbolo de sistema del directorio de Hive, emita el siguiente comando:
+De hello subárbol símbolo del sistema de directorio, problema Hola comando:
 
     hdfs dfs -ls wasb:///D.db/T
 
-Si la tabla es una tabla interna y está rellena, su contenido se debe mostrar aquí. Otro modo de determinar si una tabla es una tabla interna es utilizar Explorador de almacenamiento de Azure. Úselo para navegar al nombre del contenedor predeterminado del clúster y, después, filtre por el nombre de tabla. Si se muestran la tabla y su contenido, se confirma que es una tabla interna.
+Si la tabla de hello es una tabla interna y se rellena, su contenido debe mostrar aquí. Otro toodetermine de manera que si una tabla es una tabla interna es toouse Hola Explorador de almacenamiento de Azure. Usar nombre del contenedor predeterminado toonavigate toohello de clúster de Hola y, a continuación, filtrar por nombre de la tabla de Hola. Si la tabla de Hola y su contenido se muestra, Esto confirma que es una tabla interna.
 
-A continuación, se muestra una instantánea de la consulta de Hive y el módulo [Importar datos][import-data]:
+Ésta es una instantánea de la consulta de Hive de Hola y Hola [importar datos] [ import-data] módulo:
 
 ![Consulta de Hive para el módulo de importación de datos](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
 
-Tenga en cuenta que, dado que los datos reducidos se encuentran en el contenedor predeterminado, la consulta de Hive resultante de Azure Machine Learning es muy sencilla, simplemente "SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data".
+Tenga en cuenta que desde nuestro abajo los datos muestreados residen en el contenedor predeterminado de hello, consulta de Hive resultante Hola de aprendizaje automático de Azure es muy simple y es un "seleccionar * de nyctaxidb.nyctaxi\_reduce\_datos".
 
-Ahora el conjunto de datos se puede usar como punto de partida para la creación de modelos de Aprendizaje automático.
+conjunto de datos de Hello ahora puede utilizarse como punto de partida para generar modelos de aprendizaje automático de Hola.
 
 ### <a name="mlmodel"></a>Creación de modelos en Aprendizaje automático de Azure
-Ya se puede pasar a la creación del modelo y la implementación del mismo en [Aprendizaje automático de Azure](https://studio.azureml.net). Ahora los datos están preparados para usarlos con el fin de abordar los problemas de predicción identificados anteriormente:
+Ahora estamos tooproceed capaz de toomodel creación e implementación de modelo en [aprendizaje automático de Azure](https://studio.azureml.net). Hola datos están listos para que podamos toouse para resolver problemas de predicción de hello arriba indicados:
 
-**1. Clasificación binaria**: permite predecir si se dio propina en una carrera, o no.
+**1. Clasificación binaria**: toopredict o no se pagó una sugerencia para un recorrido.
 
 **Lector usado** : regresión logística de dos clases
 
-a. En este problema la etiqueta de destino (o clase) es "tipped". El conjunto de datos reducido original incluye algunas columnas que no contienen datos para el experimento de clasificación. Se trata, en concreto, de tip\_class, tip\_amount, and total\_amount, que dan información sobre la etiqueta de destino que no está disponible en el momento de la prueba. Quitaremos estas columnas mediante el módulo [Seleccionar columnas de conjunto de datos][select-columns].
+a. En este problema la etiqueta de destino (o clase) es "tipped". El conjunto de datos reducido original incluye algunas columnas que no contienen datos para el experimento de clasificación. En concreto: sugerencia\_de clases, sugerencia\_cantidad y total\_importe revelar información acerca de la etiqueta de destino de Hola que no está disponible en el tiempo de prueba. Se quite estas columnas de cuenta con hello [seleccionar columnas de conjunto de datos] [ select-columns] módulo.
 
-La siguiente instantánea muestra nuestro experimento para predecir si se pagó o no una propina por una carrera determinada.
+en la instantánea de Hola a continuación se muestra nuestra toopredict experimento o no se pagó una sugerencia para un recorrido dado.
 
 ![Instantánea del experimento](./media/machine-learning-data-science-process-hive-walkthrough/QGxRz5A.png)
 
 b. En este experimento las distribuciones de la etiqueta de destino eran aproximadamente 1:1.
 
-La siguiente instantánea muestra la distribución de las etiquetas de clase de propina para el problema de clasificación binaria.
+instantánea de Hello siguiente muestra la distribución de Hola de las etiquetas de clase de sugerencia de problema de clasificación binaria de Hola.
 
 ![Distribución de las etiquetas de clase de sugerencia](./media/machine-learning-data-science-process-hive-walkthrough/9mM4jlD.png)
 
-Como resultado, obtenemos un área bajo la curva de 0,987 tal como se muestra en la figura siguiente.
+Como resultado, obtenemos un AUC de 0.987 tal y como se muestra en la siguiente ilustración de Hola.
 
 ![Valor de AUC](./media/machine-learning-data-science-process-hive-walkthrough/8JDT0F8.png)
 
-**2. Clasificación con múltiples clases**: permite predecir el intervalo de importes de propinas para la carrera mediante las clases definidas anteriormente.
+**2. Clasificación multiclase**: las clases definidas por el intervalo de hello toopredict de cantidades de sugerencia de pago de ida y vuelta hello, utilizaba anteriormente Hola.
 
 **Lector usado** : regresión logística de múltiples clases
 
-a. En este problema, la etiqueta de destino (o clase) es "tip\_class", que puede adoptar uno de cinco valores (0,1,2,3,4). Como en el caso de clasificación binaria, tenemos algunas columnas que son pérdidas de destino para este experimento. Se trata, en concreto, de: tipped, tip\_amount y total\_amount, que dan información sobre la etiqueta de destino que no está disponible en el momento de la prueba. Quitaremos estas columnas mediante el módulo [Seleccionar columnas de conjunto de datos][select-columns].
+a. En este problema, la etiqueta de destino (o clase) es "tip\_class", que puede adoptar uno de cinco valores (0,1,2,3,4). Como en el caso de clasificación binaria de hello, tenemos unas pocas columnas que son las pérdidas de destino para este experimento. En concreto: superpuesto, sugerencia\_importe total\_importe revelar información acerca de la etiqueta de destino de Hola que no está disponible en el tiempo de prueba. Quitamos estas columnas con hello [seleccionar columnas de conjunto de datos] [ select-columns] módulo.
 
-La siguiente instantánea muestra nuestro experimento para predecir en qué ubicación es probable que se incluya una propina (clase 0: propina = 0 $, clase 1: propina > 0 $ y < = 5 $, clase 2: propina > 5 $ y < = 10 $, clase 3: propina > 10 $ y < = 20 $, clase 4: propina > 20 $)
+Hola instantánea siguiente muestra nuestra toopredict experimento en qué bin una sugerencia es probable toofall (clase 0: sugerencia = $0, 1 de la clase: Sugerencia > $0 y sugerencia < = $5, clase 2: Sugerencia > $5 y en la sugerencia < = $10, 3 de la clase: Sugerencia > $10 y en la sugerencia < = 20 $ Clase 4: Sugerencia > $20)
 
 ![Instantánea del experimento](./media/machine-learning-data-science-process-hive-walkthrough/5ztv0n0.png)
 
-Ahora vemos qué aspecto tiene nuestra distribución de clases de prueba real. Se puede ver que, mientras que las clase 0 y 1 son frecuentes, las demás no lo son.
+Ahora vemos qué aspecto tiene nuestra distribución de clases de prueba real. Vemos que aunque clase 0 y 1 de la clase son muy extendido, hello otras clases son poco frecuentes.
 
 ![Distribución de la clase de prueba](./media/machine-learning-data-science-process-hive-walkthrough/Vy1FUKa.png)
 
-b. En este experimento utilizamos una matriz de confusión para analizar la precisión de las predicciones. Esto se muestra a continuación.
+b. Para este experimento, usamos un toolook de matriz de confusión en nuestro precisiones de predicción. Esto se muestra a continuación.
 
 ![Matriz de confusión](./media/machine-learning-data-science-process-hive-walkthrough/cxFmErM.png)
 
-Observe que, aunque la precisión para las clases frecuentes es bastante buena, el modelo no hace un buen trabajo de "aprendizaje" en las clases menos frecuentes.
+Tenga en cuenta que mientras nuestro precisiones de clase en clases de hello frecuente es bastante bueno, modelo hello no hacer un buen trabajo de "aprendizaje" en las clases de hello poco frecuentes.
 
-**3. Tarea de regresión**: permite predecir el importe de la propina pagada por una carrera.
+**3. Tarea de regresión**: cantidad de hello toopredict de sugerencia de pago para un recorrido.
 
 **Lector usado** : árbol de decisión incrementado
 
-a. En este problema la etiqueta de destino (o clase) es "tip\_amount". En este caso las pérdidas de destino son: tipped, tip\_class, total\_amount; todas estas variables ofrecen información sobre el importe de la propina, que no suele estar disponible en el momento de la prueba. Quitaremos estas columnas mediante el módulo [Seleccionar columnas de conjunto de datos][select-columns].
+a. En este problema la etiqueta de destino (o clase) es "tip\_amount". En este caso son nuestra pérdidas de destino: superpuesto, sugerencia\_(clase), total\_cantidad; todas estas variables revelar información acerca de la cantidad de sugerencia de Hola que no está disponible normalmente en el tiempo de prueba. Quitamos estas columnas con hello [seleccionar columnas de conjunto de datos] [ select-columns] módulo.
 
-La instantánea siguiente muestra nuestro experimento para predecir el importe de una propina determinada.
+Hola instantánea belows muestra nuestra cantidad de Hola de toopredict de experimento de hello dada la sugerencia.
 
 ![Instantánea del experimento](./media/machine-learning-data-science-process-hive-walkthrough/11TZWgV.png)
 
-b. En los problemas de regresión se mide la precisión de nuestra predicción mediante la observación del error cuadrático en las predicciones, el coeficiente de determinación y similares. Lo mostramos a continuación.
+b. Para los problemas de regresión, se medir precisiones Hola de nuestro predicción examinando error Hola cuadrado en predicciones hello, Hola coeficiente de determinación y Hola como. Lo mostramos a continuación.
 
 ![Estadísticas de predicción](./media/machine-learning-data-science-process-hive-walkthrough/Jat9mrz.png)
 
-Vemos que el coeficiente de determinación es 0,709, lo que implica que aproximadamente el 71% de la varianza se explica por nuestros coeficientes de modelo.
+Vemos que sobre Hola coeficiente de determinación es 0.709, lo que implica aproximadamente el 71% de variación de Hola se explica por nuestro coeficientes de modelo.
 
 > [!IMPORTANT]
-> Para obtener más información sobre Azure Machine Learning y cómo acceder a él y usarlo, consulte [¿Qué es el Aprendizaje automático de Microsoft Azure?](machine-learning-what-is-machine-learning.md) Un recurso muy útil para realizar una serie de experimentos con Azure Machine Learning es la [Galería de Cortana Intelligence](https://gallery.cortanaintelligence.com/). La Galería cubre una gama de experimentos y da una introducción exhaustiva sobre la variedad de capacidades de Aprendizaje automático de Azure.
+> toolearn más información acerca de aprendizaje automático de Azure y cómo tooaccess y usarla, consulte demasiado[¿qué es aprendizaje automático?](machine-learning-what-is-machine-learning.md). Un recurso muy útil para reproducir con un montón de experimentos de aprendizaje automático en aprendizaje automático de Azure es hello [Cortana Intelligence galería](https://gallery.cortanaintelligence.com/). Galería de Hello cubre una gama de experimentos y proporciona una introducción completa a intervalo de Hola de capacidades de aprendizaje automático de Azure.
 > 
 > 
 
 ## <a name="license-information"></a>Información de licencia
-Microsoft comparte este tutorial de ejemplo y sus scripts adjuntos bajo la licencia MIT. Consulte el archivo LICENSE.txt que se encuentra en el directorio del código de ejemplo en GitHub para obtener más detalles.
+En este tutorial de ejemplo y sus secuencias de comandos que lo acompaña se comparten entre Microsoft bajo licencia MIT de Hola. Compruebe archivo LICENSE.txt de hello directorio de hello del código de ejemplo de Hola en GitHub para obtener más detalles.
 
 ## <a name="references"></a>Referencias
 •   [Página de descarga de NYC Taxi Trips de Andrés Monroy](http://www.andresmh.com/nyctaxitrips/)  

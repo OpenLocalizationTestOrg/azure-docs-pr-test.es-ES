@@ -1,6 +1,6 @@
 ---
-title: Carga de un archivo VHD en Azure DevTest Labs mediante el Explorador de Microsoft Azure Storage | Microsoft Docs
-description: Carga de un archivo VHD en la cuenta de almacenamiento del laboratorio mediante el Explorador de Microsoft Azure Storage
+title: aaaUpload VHD archivo laboratorios de desarrollo y pruebas de tooAzure mediante el Explorador de almacenamiento de Microsoft Azure | Documentos de Microsoft
+description: Cargar la cuenta de almacenamiento del toolab del archivo de disco duro virtual mediante el Explorador de almacenamiento de Microsoft Azure
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: 502e2536fb0fd2e9dfc4c7b85a6fb4e18202f38f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 686691e3676cea4b2d7cd8bf045bc43a792c667e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Carga de un archivo VHD en la cuenta de almacenamiento del laboratorio mediante el Explorador de Microsoft Azure Storage
+# <a name="upload-vhd-file-toolabs-storage-account-using-microsoft-azure-storage-explorer"></a>Cargar la cuenta de almacenamiento del toolab del archivo de disco duro virtual mediante el Explorador de almacenamiento de Microsoft Azure
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-En Azure DevTest Labs, se pueden usar archivos VHD para crear imágenes personalizadas, que se usan para aprovisionar máquinas virtuales. En este artículo se ilustra cómo usar el [Explorador de Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) para cargar un archivo VHD en una cuenta de almacenamiento del laboratorio. Cuando haya cargado el archivo VHD, en la sección de [pasos siguientes](#next-steps) se muestran algunos artículos que ilustran cómo crear una imagen personalizada a partir del archivo VHD cargado. Para más información sobre discos y discos duros virtuales en Azure, consulte [Acerca de los discos y los discos duros virtuales para máquinas virtuales](../virtual-machines/linux/about-disks-and-vhds.md).
+En los laboratorios de desarrollo y pruebas de Azure, archivos de disco duro virtual pueden ser toocreate usa imágenes personalizadas, que son máquinas virtuales de tooprovision usado. Este artículo se explica cómo toouse [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) cuenta de almacenamiento del laboratorio de tooa de archivos tooupload un disco duro virtual. Una vez que haya cargado el archivo VHD, Hola [pasos siguientes sección](#next-steps) enumera algunos artículos que ilustran cómo toocreate una imagen personalizada de hello carga archivo de disco duro virtual. Para más información sobre discos y discos duros virtuales en Azure, consulte [Acerca de los discos y los discos duros virtuales para máquinas virtuales](../virtual-machines/linux/about-disks-and-vhds.md).
 
 ## <a name="step-by-step-instructions"></a>Instrucciones paso a paso
 
-Los siguientes pasos le guían en la carga de un archivo VHD en DevTest Labs mediante el [Explorador de Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+Hola después de recorrido de pasos a través de la carga de un disco duro virtual archivo laboratorios tooDevTest con [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
-1. [Descargue e instale la versión más reciente del Explorador de Microsoft Azure Storage](http://www.storageexplorer.com).
+1. [Descargue e instale la versión más reciente de Hola de hello Microsoft Azure Storage Explorer](http://www.storageexplorer.com).
 
-1. Obtenga el nombre de la cuenta de almacenamiento del laboratorio mediante el portal de Azure:
+1. Obtener nombre de Hola de cuenta de almacenamiento del laboratorio de hello mediante Hola portal de Azure:
 
-    1. Inicie sesión en el [Portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+    1. Inicie sesión en toohello [portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
     
-    1. Seleccione **Más servicios** y, luego, **DevTest Labs** en la lista.
+    1. Seleccione **más servicios**y, a continuación, seleccione **laboratorios de desarrollo y pruebas** de lista de Hola.
     
-    1. En la lista de laboratorios, seleccione el laboratorio que desee.  
+    1. En lista de Hola de laboratorios, seleccione laboratorio deseado Hola.  
     
-    1. En la hoja del laboratorio, seleccione **Configuración**. 
+    1. En la hoja del laboratorio de hello, seleccione **configuración**. 
     
-    1. En la hoja **Configuración** del laboratorio, seleccione **Custom images (VHDs)** (Imágenes personalizadas [VHD]).
+    1. En el laboratorio de hello **configuración** hoja, seleccione **imágenes personalizadas (VHD)**.
     
-    1. En la hoja **Custom images** (Imágenes personalizadas), seleccione **+Agregar**. 
+    1. En hello **imágenes personalizadas** hoja, seleccione **+ agregar**. 
     
-    1. En la hoja **Custom images** (Imágenes personalizadas), seleccione **+Agregar**.
+    1. En hello **imagen personalizada** hoja, seleccione **VHD**.
     
-    1. En la hoja **VHD**, seleccione **Upload a VHD using PowerShell** (Cargar un VHD mediante PowerShell).
+    1. En hello **VHD** hoja, seleccione **cargar un VHD con PowerShell**.
     
         ![Carga del VHD mediante PowerShell][0]
     
-    1. La hoja **Upload an image using PowerShell** (Cargar una imagen mediante PowerShell) muestra una llamada al cmdlet **Add-AzureVhd**. El primer parámetro (*Destination*) contiene el nombre de la cuenta de almacenamiento del laboratorio en el siguiente formato:
+    1. Hola **cargar una imagen con PowerShell** hoja muestra una llamada toohello **Add-AzureVhd** cmdlet. Hola primer parámetro (*destino*) contiene el nombre de cuenta de almacenamiento de Hola para laboratorio Hola Hola siguiendo el formato:
     
         https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/... 
 
-    1. Anote el nombre de la cuenta de almacenamiento tal como se ha usado en los últimos pasos.
+    1. Tome nota del nombre de cuenta de almacenamiento de hello tal como se utiliza en pasos posteriores.
     
-1. Conéctese a una cuenta de suscripción de Azure mediante el Explorador de Storage.
+1. Conectar tooan cuenta de suscripción de Azure mediante el Explorador de almacenamiento.
 
     > [!TIP] 
     > 
-    > El Explorador de Storage admite varias opciones de conexión. En esta sección se ilustra la conexión a una cuenta de almacenamiento asociada a la suscripción de Azure. Para ver las demás opciones de conexión admitidas por el Explorador de Storage, consulte el artículo [Introducción al Explorador de Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+    > El Explorador de Storage admite varias opciones de conexión. Esta sección muestra la cuenta de almacenamiento tooa conexión asociada a su suscripción de Azure. toosee Hola otras opciones de conexión admitidos por el Explorador de almacenamiento, consulte el artículo toohello, [introducción con el Explorador de almacenamiento](../vs-azure-tools-storage-manage-with-storage-explorer.md).
  
     1. Abra el Explorador de Storage.
     
@@ -70,59 +70,59 @@ Los siguientes pasos le guían en la carga de un archivo VHD en DevTest Labs med
     
         ![Configuración de la cuenta de Azure][1]
     
-    1. El panel izquierdo muestra todas las cuentas de Microsoft en las que ha iniciado sesión. Para conectarse a otra cuenta, seleccione **Agregar una cuenta**y siga los cuadros de diálogo para iniciar sesión con una cuenta de Microsoft que esté asociada con al menos una suscripción activa de Azure.
+    1. panel izquierdo de Hello muestra las cuentas de Microsoft de Hola que ha iniciado la sesión. cuenta de tooconnect tooanother, seleccione **agregar una cuenta**y siga hello toosign de cuadros de diálogo con una cuenta de Microsoft que está asociada con al menos una suscripción activa de Azure.
     
         ![Agregar una cuenta][2]
     
-    1. Una vez que haya iniciado sesión correctamente con una cuenta de Microsoft, el panel izquierdo se llena con las suscripciones de Azure asociadas a dicha cuenta. Elija las suscripciones de Azure con las que desea trabajar y seleccione **Aplicar**. (Al seleccionar **All subscriptions** (Todas las suscripciones), se alterna la selección entre todas o ninguna de las suscripciones de Azure que aparecen).
+    1. Una vez que inicie sesión correctamente con una cuenta de Microsoft, panel izquierdo de hello rellena con hello Azure suscripciones asociadas a esa cuenta. Seleccione Hola suscripciones de Azure con el que desea toowork y, a continuación, seleccione **aplicar**. (Seleccione **todas las suscripciones** alterna Hola selección de todo o enumera ningún hello las suscripciones de Azure.)
     
         ![Selección de suscripciones de Azure][3]
     
-    1. El panel izquierdo muestra ahora las cuentas de almacenamiento asociadas a las suscripciones de Azure seleccionadas.
+    1. panel izquierdo de Hello muestra las cuentas de almacenamiento de hello asociadas con suscripciones de Azure Hola seleccionado.
     
         ![Suscripciones de Azure seleccionadas][4]
 
-1. Busque la cuenta de almacenamiento del laboratorio:
+1. Busque la cuenta de almacenamiento del laboratorio de hello:
 
-    1. En el panel izquierdo del Explorador de Storage, busque y expanda el nodo de la suscripción de Azure que posee el laboratorio.
+    1. En el panel izquierdo del explorador de almacenamiento de hello, busque y expanda el nodo de Hola para suscripción de Azure que posee el laboratorio de Hola Hola.
     
-    1. En el nodo de la suscripción, expanda **Cuentas de Storage**.
+    1. En el nodo de la suscripción de hello, expanda **cuentas de almacenamiento**.
 
-    1. Expanda el nodo de cuenta de almacenamiento del laboratorio para mostrar los nodos **Contenedores de blobs**, **Recursos compartidos de archivos**, **Colas** y **Tablas**.
+    1. Expandir los nodos del laboratorio de hello almacenamiento cuenta nodo tooreveal para **contenedores de blobs**, **recursos compartidos de archivos**, **colas**, y **tablas**.
     
-    1. Expanda el nodo **Contenedores de blobs**.
+    1. Expanda hello **contenedores de blobs** nodo.
     
-    1. Seleccione el contenedor de blobs de cargas para mostrar su contenido en el panel derecho.
+    1. Seleccionar toodisplay del contenedor de blob de hello cargas de su contenido en el panel derecho de Hola.
         
         ![Directorio de carga][5]
 
-1. Cargue el archivo VHD mediante el Explorador de Storage:
+1. Cargar archivo de disco duro virtual de hello mediante el Explorador de almacenamiento:
 
-    1. En el panel derecho del Explorador de Storage, verá una lista de los blobs en el contenedor de blobs **uploads** de la cuenta de almacenamiento del laboratorio. En la barra de herramientas del editor de blobs, seleccione **Cargar** 
+    1. En el panel derecho del explorador de almacenamiento de hello, verá una lista de blobs de Hola Hola **carga** contenedor de blob de cuenta de almacenamiento del laboratorio de Hola. En la barra de herramientas de editor de blob de hello, seleccione **cargar** 
         
         ![Botón Cargar][6]
     
-    1. En el menú desplegable **Cargar**, seleccione **Upload files...** (Cargar archivos...).
+    1. De hello **cargar** menú desplegable, seleccione **cargar archivos...** .
     
-    1. En el diálogo **Upload files** (Cargar archivos), seleccione los puntos suspensivos.
+    1. En hello **cargar archivos** cuadro de diálogo, los puntos suspensivos Hola select.
         
         ![Selección del archivo][8]  
 
-    1. En el diálogo **Select files to upload** (Seleccionar archivos para cargar), vaya al archivo VHD deseado, selecciónelo y luego haga clic en **Abrir**.
+    1. En hello **tooupload Seleccione archivos** cuadro de diálogo Examinar toohello deseado archivo VHD, selecciónelo y, a continuación, seleccione **abiertos**.
     
-    1. Cuando regrese al diálogo **Upload files** (Cargar archivos), cambie el **tipo de blob** por **Blob en páginas**.
+    1. Cuando se devuelve toohello **cargar archivos** cuadro de diálogo, cambio **tipo de Blob** demasiado**Blob en páginas**.
     
     1. Seleccione **Cargar**.
 
         ![Selección del archivo][9]  
     
-    1. El panel **Activity Log** (Registro de actividad) muestra el estado de descarga (junto con vínculos para cancelar la carga). El proceso de cargar un archivo VHD puede ser largo en función de su tamaño y de la velocidad de conexión. 
+    1. Hola Explorador de almacenamiento **registro de actividad** panel muestra el estado de la descarga de hello (junto con vínculos toocancel Hola carga). proceso de Hola de cargar un archivo de disco duro virtual puede ser larga según el tamaño de hello del archivo de disco duro virtual de hello y la velocidad de conexión. 
 
         ![Estado del archivo de carga][10]  
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- [Creación de una imagen personalizada en Azure DevTest Labs a partir de un archivo VHD mediante el portal de Azure](devtest-lab-create-template.md)
+- [Crear una imagen personalizada en los laboratorios de desarrollo y pruebas de Azure desde un archivo de disco duro virtual mediante Hola portal de Azure](devtest-lab-create-template.md)
 - [Creación de una imagen personalizada en Azure DevTest Labs a partir de un archivo VHD mediante PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
 [0]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-image-using-psh.png

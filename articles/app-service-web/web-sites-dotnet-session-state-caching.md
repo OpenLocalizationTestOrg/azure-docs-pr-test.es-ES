@@ -1,6 +1,6 @@
 ---
-title: "Estado de sesión con caché en Redis de Azure en el Servicio de aplicaciones de Azure"
-description: "Obtenga información acerca de cómo usar el servicio de caché de Azure para admitir la caché de estado de sesión de ASP.NET."
+title: "estado de aaaSession con caché en Redis de Azure en el servicio de aplicación de Azure"
+description: "Obtenga información acerca de cómo toouse Hola caché de estado de sesión de servicio de caché de Azure toosupport ASP.NET."
 services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: riande
-ms.openlocfilehash: 64fa909daf92b2b1f0cf4c7b334edba807fe7228
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f689b6754ea072aa195f822ab6482f4bf2748375
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="session-state-with-azure-redis-cache-in-azure-app-service"></a>Estado de sesión con caché en Redis de Azure en el Servicio de aplicaciones de Azure
-En este tema se explica cómo utilizar el servicio Caché en Redis de Azure para el estado de sesión.
+Este tema explica cómo toouse Hola servicio de caché de Redis de Azure para el estado de sesión.
 
-Si su aplicación de ASP.NET utiliza el estado de sesión, deberá configurar un proveedor externo del estado de sesión (bien un servicio Caché en Redis o un proveedor de estado de sesión del SQL Server). Si utiliza el estado de sesión y no utiliza un proveedor externo, deberá limitar su aplicación web a una instancia. El servicio Caché en Redis es el más sencillo y rápido que se puede habilitar.
+Si la aplicación web ASP.NET utiliza el estado de sesión, deberá tooconfigure un proveedor de estado de sesión externo (Hola servicio de caché de Redis o un proveedor de estado de sesión de SQL Server). Si utiliza el estado de sesión y no use un proveedor externo, es posible que tooone limitado de instancia de la aplicación web. Hola servicio de caché de Redis es tooenable de hello más rápido y sencillo.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a id="createcache"></a>Creación de la memoria caché
-Siga [estas instrucciones](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-cache) para crear la caché.
+## <a id="createcache"></a>Crear hello caché
+Siga [estas instrucciones](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-cache) caché de hello toocreate.
 
-## <a id="configureproject"></a>Incorporación del paquete NuGet RedisSessionStateProvider a su aplicación web
-Instale el paquete NuGet `RedisSessionStateProvider` .  Utilice el comando siguiente para realizar la instalación desde la consola del administrador de paquetes (**Tools** > **NuGet Package Manager** > **Package Manager Console**):
+## <a id="configureproject"></a>Agregar hello RedisSessionStateProvider NuGet paquete tooyour web app
+Instalar Hola NuGet `RedisSessionStateProvider` paquete.  Siguiente Hola de uso del comando tooinstall desde la consola del Administrador de paquetes de saludo (**herramientas** > **Administrador de paquetes de NuGet** > **Package Manager Console**):
 
   `PM> Install-Package Microsoft.Web.RedisSessionStateProvider`
 
-Para instalar desde **Herramientas** > **Administrador de paquetes de NuGet** > **Administrar paquetes de NuGet para solución**, busque `RedisSessionStateProvider`.
+tooinstall de **herramientas** > **Administrador de paquetes de NuGet** > **administrar paquetes de Consejo para solución**, busque `RedisSessionStateProvider`.
 
-Para obtener más información, vea la página [NuGet RedisSessionStateProvider](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/) y [Configuración de los clientes de caché](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#NuGet).
+Para obtener más información, vea hello [página NuGet RedisSessionStateProvider](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/) y [configurar cliente de caché de hello](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#NuGet).
 
-## <a id="configurewebconfig"></a>Modificación del archivo web.config
-Además de hacer referencias de ensamblado para la memoria caché, el paquete NuGet agrega entradas auxiliares en el archivo *web.config* . 
+## <a id="configurewebconfig"></a>Modificar el archivo Web.Config de Hola
+Además toomaking ensamblado hace referencia para la memoria caché, paquete de NuGet Hola agrega las entradas de código auxiliar en hello *web.config* archivo. 
 
-1. Abra el archivo *web.config* y busque el elemento **sessionState** .
-2. Introduzca los valores de `host`, `accessKey`, `port` (el puerto de SSL debe ser el 6380) y establezca `SSL` en `true`. Estos valores se pueden obtener en el cuadro del portal de vista previa de la hoja [Portal Azure](http://go.microsoft.com/fwlink/?LinkId=529715) para su instancia de caché. Para obtener más información, vea [Conexión con la memoria caché](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Tenga en cuenta que el puerto no SSL está deshabilitado de forma predeterminada para las cachés nuevas. Para más información sobre cómo habilitar el puerto no SSL, consulte la sección [Puertos de acceso](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) del tema de [Configuración de caché en Azure Redis Cache](https://msdn.microsoft.com/library/azure/dn793612.aspx). El siguiente marcado muestra los cambios realizados en el *web.config* de archivos, en concreto los cambios realizados en *puerto*, *host*, accessKey * y *ssl* .
+1. Abra hello *web.config* y encontrar Hola Hola **sessionState** elemento.
+2. Especifique los valores de hello de `host`, `accessKey`, `port` (Hola puerto SSL debe ser 6380) y establecer `SSL` demasiado`true`. Estos valores se pueden obtener de hello [Portal de Azure](http://go.microsoft.com/fwlink/?LinkId=529715) hoja para la instancia de caché. Para obtener más información, consulte [conectar toohello caché](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Observe que el puerto no SSL de hello está deshabilitado de forma predeterminada para las nuevas cachés. Para obtener más información acerca de cómo habilitar el puerto no SSL de hello, vea hello [puertos de acceso](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) sección Hola [configurar una memoria caché en Redis de Azure](https://msdn.microsoft.com/library/azure/dn793612.aspx) tema. Hello marcado siguiente muestra hello cambios toohello *web.config* de archivos, en concreto los cambios de hello demasiado*puerto*, *host*, accessKey * y *ssl*.
    
           <system.web>;
             <customErrors mode="Off" />;
@@ -73,32 +73,32 @@ Además de hacer referencias de ensamblado para la memoria caché, el paquete Nu
             </sessionState>;
           </system.web>;
 
-## <a id="usesessionobject"></a> Uso del objeto Session en el código
-El paso final es comenzar a utilizar el objeto Session en su código ASP.NET. Agregue objetos al estado de sesión con el método **Session.Add** . Este método utiliza pares clave-valor para almacenar elementos en la caché de estado de sesión.
+## <a id="usesessionobject"></a>Usar objeto Session de hello en el código
+Hola último paso es toobegin con objeto de sesión de hello en el código ASP.NET. Agrega objetos toosession estado mediante el uso de hello **método Session.Add** método. Este método usa elementos toostore de pares clave-valor en memoria caché de estado de sesión de Hola.
 
     string strValue = "yourvalue";
     Session.Add("yourkey", strValue);
 
-El siguiente código recupera este valor desde el estado de sesión.
+Hola siguiente código recupera este valor de estado de sesión.
 
     object objValue = Session["yourkey"];
     if (objValue != null)
        strValue = (string)objValue;    
 
-También puede usar el servicio Caché en Redis para almacenar objetos en la memoria caché en su aplicación web. Para obtener más información, consulte [Aplicación de películas MVC con Caché en Redis de Azure en 15 minutos](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/).
-Para más detalles acerca de cómo utilizar el estado de sesión de ASP.NET, consulte [Información general sobre el estado de sesión de ASP.NET][ASP.NET Session State Overview].
+También puede utilizar objetos de toocache de caché en Redis de hello en la aplicación web. Para obtener más información, consulte [Aplicación de películas MVC con Caché en Redis de Azure en 15 minutos](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/).
+Para obtener más información acerca de cómo toouse estado de sesión ASP.NET, vea [información general sobre el estado de sesión de ASP.NET][ASP.NET Session State Overview].
 
 > [!NOTE]
-> Si desea empezar a trabajar con el Servicio de aplicaciones de Azure antes de suscribirse para abrir una cuenta de Azure, vaya a [Prueba del Servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde podrá crear inmediatamente una aplicación web de inicio de corta duración en el Servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
+> Si desea tooget iniciado con el servicio de aplicación de Azure antes de registrarse para una cuenta de Azure, vaya demasiado[pruebe el servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde puede crear inmediatamente una aplicación web de inicio de corta duración en el servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
 > 
 > 
 
 ## <a name="whats-changed"></a>Lo que ha cambiado
-* Para obtener una guía del cambio de Sitios web a Servicio de aplicaciones, consulte: [Servicio de aplicaciones de Azure y su impacto en los servicios de Azure existentes](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Para una toohello guía consulte cambio con respecto a sitios Web tooApp servicio: [servicio de aplicaciones de Azure y su impacto en los servicios de Azure existente](http://go.microsoft.com/fwlink/?LinkId=529714)
   
   *Por [Rick Anderson](https://twitter.com/RickAndMSFT)*
 
-[installed the latest]: http://www.windowsazure.com/downloads/?sdk=net  
+[installed hello latest]: http://www.windowsazure.com/downloads/?sdk=net  
 [ASP.NET Session State Overview]: http://msdn.microsoft.com/library/ms178581.aspx
 
 [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png

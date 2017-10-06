@@ -1,6 +1,6 @@
 ---
-title: "Información general de Reliable Actors de Service Fabric | Microsoft Docs"
-description: "Introducción al modelo de programación de Service Fabric Reliable Actors."
+title: "aaaService tejido confiable actores Introducción | Documentos de Microsoft"
+description: "Modelo de programación de introducción toohello Reliable Actors de tejido de servicio."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: e89be04a0d6fe90a89e293e67d42f0204eb7000a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ab010cbf936c6cf723b3d453ef95a9bf51f76c95
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-service-fabric-reliable-actors"></a>Introducción a Service Fabric Reliable Actors.
-Reliable Actors es un marco de trabajo de la aplicación de Service Fabric que se basa en el modelo [Virtual Actor](http://research.microsoft.com/en-us/projects/orleans/) . La API de Reliable Actors proporciona un modelo de programación uniproceso basado en las garantías de escalabilidad y confiabilidad que ofrece Service Fabric.
+# <a name="introduction-tooservice-fabric-reliable-actors"></a>Introducción tooService tejido Reliable Actors
+Actores confiables es un marco de aplicación de Service Fabric en función de hello [Actor Virtual](http://research.microsoft.com/en-us/projects/orleans/) patrón. Hola API de actores confiable proporciona un modelo de programación uniproceso basado en garantías de confiabilidad y escalabilidad de hello proporcionadas por Service Fabric.
 
 ## <a name="what-are-actors"></a>¿Qué son los actores?
-Un actor es una unidad aislada e independiente de proceso y estado con ejecución uniproceso. El [patrón de actor](https://en.wikipedia.org/wiki/Actor_model) es un modelo informático para sistemas simultáneos o distribuidos en que un gran número de estos actores puede ejecutarse simultánea e independientemente unos de otros. Los actores pueden comunicarse entre sí y pueden crear más actores.
+Un actor es una unidad aislada e independiente de proceso y estado con ejecución uniproceso. Hola [patrón actor](https://en.wikipedia.org/wiki/Actor_model) es un modelo de cálculo para los sistemas simultáneos o distribuidos en que un gran número de estos actores puede ejecutar simultáneamente e independientemente entre sí. Los actores pueden comunicarse entre sí y pueden crear más actores.
 
-### <a name="when-to-use-reliable-actors"></a>Cuándo usar Reliable Actors
-Service Fabric Reliable Actors es una implementación del modelo de diseño del actor. Al igual que sucede con cualquier modelo de diseño de software, la decisión sobre si usar un modelo específico se toma en función de si un problema de diseño de software se adapta al modelo o no.
+### <a name="when-toouse-reliable-actors"></a>Cuando toouse Reliable Actors
+Servicio Fabric Reliable Actors es una implementación del patrón de diseño de hello actor. Al igual que con cualquier modelo de diseño de software, decisión Hola si toouse un patrón específico estará en función de si un software diseñe problema encaja patrón Hola.
 
-Aunque el modelo de diseño del actor puede resultar adecuado para un número de problemas y escenarios de sistemas distribuidos, se requiere una consideración cuidadosa de las restricciones del modelo y el marco de trabajo que lo implementa. Como regla general, tenga en cuenta el patrón de actor para modelar su problema o escenario si:
+Aunque el modelo de diseño de hello actor puede ser un número de buena tooa ajuste de problemas de sistemas distribuidos y escenarios, debe valorarse cuidadosamente las restricciones de Hola de patrón de Hola y Hola framework implementar deben realizarse. Como guía general, considere la posibilidad de hello actor patrón toomodel su problema o escenario si:
 
 * El espacio del problema implica un gran número (miles o más) de unidades pequeñas, independientes y aisladas de estado y lógica.
-* Desea trabajar con objetos uniproceso que no requieren una interacción importante de los componentes externos, incluida la consulta del estado en un conjunto de actores.
+* Desea toowork con objetos de un único subproceso que no requieren interacción importante de los componentes externos, incluidas las consultas de estado a través de un conjunto de actores.
 * Las instancias de actor no bloquearán a los autores de llamadas con retrasos imprevisibles emitiendo operaciones de E/S.
 
 ## <a name="actors-in-service-fabric"></a>Actores en Service Fabric
-En Service Fabric, los actores se implementan en el marco de trabajo de Reliable Actors: un marco de trabajo de la aplicación basado en el patrón de actor y en [Reliable Services de Service Fabric](service-fabric-reliable-services-introduction.md). Cada servicio de Reliable Actors que escribe es en realidad un servicio de confianza con estado particionado.
+En Service Fabric, actores se implementan en el marco de trabajo de hello Reliable Actors: un marco de trabajo de aplicaciones basados en el patrón de actor construido sobre [servicios confiables de tejido de servicio](service-fabric-reliable-services-introduction.md). Cada servicio de Reliable Actors que escribe es en realidad un servicio de confianza con estado particionado.
 
-Cada actor se define como una instancia de un tipo de actor, similar a la forma en que un objeto de .NET es una instancia de un tipo de .NET. Por ejemplo, puede haber un tipo de actor que implemente la funcionalidad de una calculadora y podría haber muchos actores de ese tipo que se distribuyesen en varios nodos en un clúster. Cada uno de esos actores se identifica de forma única mediante un identificador de actor.
+Cada actor se define como una instancia de un tipo de actor, toohello idéntica forma un objeto .NET es una instancia de un tipo. NET. Por ejemplo, puede haber un tipo de actor que implementa la funcionalidad de Hola de una calculadora y podría haber muchos actores de ese tipo que se distribuyen en varios nodos en un clúster. Cada uno de esos actores se identifica de forma única mediante un identificador de actor.
 
 ### <a name="actor-lifetime"></a>Duración del actor
-Los actores de Service Fabric son virtuales, lo que significa que su duración no está vinculada a su representación en memoria. Como resultado, no es necesario crearlas ni destruirlas explícitamente. El tiempo de ejecución de Reliable Actors activa automáticamente un actor la primera vez que recibe una solicitud para ese identificador de actor. Si no se usa un actor durante un período de tiempo, el tiempo de ejecución de Reliable Actors recopila el objeto en memoria como elemento no utilizado. También mantendrá conocimientos de la existencia del actor por si es necesario reactivarlo más adelante. Para más información, consulte [Ciclo de vida de un actor y recolección de elementos no utilizados](service-fabric-reliable-actors-lifecycle.md).
+Actores de Service Fabric son virtuales, lo que significa que su duración no es de representación en memoria de tootheir relacionados. Como resultado, no es necesario toobe cree explícitamente o se destruya. en tiempo de ejecución de Hello Reliable Actors activa automáticamente una Hola actor primera vez que se recibe una solicitud para dicho Id. de actor Si no se usa un actor durante un período de tiempo, en tiempo de ejecución de hello Reliable Actors elementos no utilizados-recopila objeto de hello en memoria. También mantendrá conocimiento de la existencia del actor Hola necesario toobe reactivar más adelante. Para más información, consulte [Ciclo de vida de un actor y recolección de elementos no utilizados](service-fabric-reliable-actors-lifecycle.md).
 
-Esta abstracción de la duración del actor virtual incluye algunas advertencias como resultado del modelo Virtual Actor y, de hecho, la implementación de Reliable Actors se desvía en ocasiones de este modelo.
+Esta abstracción de duración de actor virtual lleva a cabo algunas advertencias como resultado de modelo de actor virtual Hola y de hecho la implementación Reliable Actors Hola se desvía a veces de este modelo.
 
-* Un actor se activa automáticamente (provocando la creación de un objeto de actor) la primera vez que se envía un mensaje a su identificador de actor. Transcurrido un período de tiempo, el objeto de actor se recolecta como elemento no utilizado. En el futuro, usar de nuevo el identificador de actor provoca la creación de un nuevo objeto de actor. La duración del estado del actor equivale a la vida útil del objeto al almacenarse en el administrador de estado.
-* Al llamar a cualquier método de actor para un identificador de actor se activa dicho actor. Por este motivo, se llama de forma implícita al constructor de los tipos de actor mediante el tiempo de ejecución. Por lo tanto, el código de cliente no puede pasar parámetros al constructor del tipo de actor, aunque se pueden pasar parámetros al constructor del actor mediante el propio servicio. El resultado es que los actores se pueden crear en un estado inicializado de forma parcial en el momento en que se llama a otros métodos en él, en caso de que el actor requiera parámetros de inicialización del cliente. No hay ningún punto de entrada único para la activación de un actor desde el cliente.
-* Aunque Reliable Actors crea de forma implícita objetos de actor, tiene la posibilidad de eliminar explícitamente un actor y su estado.
+* Un actor se activa automáticamente (lo que provoca un actor toobe objeto construido) Hola la primera vez que se envía un mensaje tooits Id. de actor. Después de un período de tiempo, objeto de actor hello es recolectado. Hola futuro, vuelva a usar el Id. de actor Hola hace que un actor nueva toobe objeto construido. Estado de un actor es mayor duración del objeto de hello cuando se almacenan en el Administrador de estado de Hola.
+* Al llamar a cualquier método de actor para un identificador de actor se activa dicho actor. Por este motivo, los tipos de actor tienen su constructor llama implícitamente a hello en tiempo de ejecución. Por lo tanto, el código de cliente no puede pasar al constructor del tipo de parámetros toohello actor, aunque pueden pasarse a parámetros de constructor de actor toohello por el propio servicio Hola. resultado de Hello es que actores se pueden construir en un estado parcialmente inicializada por otros métodos se invocan en él, el tiempo de hello si actor Hola requiere parámetros de inicialización de cliente de Hola. No hay ningún punto de entrada único para la activación de Hola de un actor desde el cliente de Hola.
+* Aunque Reliable Actors implícitamente crear objetos de actor; es necesario Hola capacidad tooexplicitly eliminar un actor y su estado.
 
 ### <a name="distribution-and-failover"></a>Distribución y conmutación por error
-Para proporcionar escalabilidad y confiabilidad, Service Fabric distribuye actores en el clúster y los migra automáticamente desde los nodos con errores hasta los correctos según sea necesario. Se trata de una abstracción sobre un [servicio de confianza con estado particionado](service-fabric-concepts-partitioning.md). Distribución, escalabilidad, confiabilidad y conmutación por error automática se proporcionan en virtud del hecho de que los actores se ejecuten en un servicio de confianza con estado denominado *Servicio de actor*.
+tooprovide escalabilidad y confiabilidad, Service Fabric distribuye actores en todo el clúster de Hola y automáticamente migra desde nodos erróneos toohealthy los según sea necesario. Se trata de una abstracción sobre un [servicio de confianza con estado particionado](service-fabric-concepts-partitioning.md). Distribución, escalabilidad, confiabilidad y conmutación automática por error se proporcionan en virtud de los hechos de Hola que actores se ejecutan dentro de un servicio confiable con estado llamado hello *servicio de Actor*.
 
-Los actores se distribuyen entre las particiones del Servicio de actor y dichas particiones se distribuyen entre los nodos en un clúster de Service Fabric. Cada partición del servicio contiene un conjunto de actores. Service Fabric administra la distribución y conmutación por error de las particiones del servicio.
+Actores se distribuyen entre particiones de Hola de hello servicio de Actor y estas particiones se distribuyen en nodos de hello en un clúster de Service Fabric. Cada partición del servicio contiene un conjunto de actores. Service Fabric administra la distribución y la conmutación por error de las particiones del servicio Hola.
 
-Por ejemplo, un Servicio de actor con nueve particiones implementadas en tres nodos mediante la ubicación predeterminada de la partición del actor se distribuiría del siguiente modo:
+Por ejemplo, un servicio de actor con nueve particiones implementa toothree se distribuyen nodos mediante la colocación de partición de actor de hello predeterminada consiste en lo siguiente:
 
 ![Distribución de Reliable Actors][2]
 
-El marco de trabajo de actores administra la configuración del intervalo de claves y el esquema de partición por usted. Esto simplifica algunas opciones, pero también implica cierta consideración:
+Hola Actor Framework administra la configuración de los intervalos de esquema y la clave de partición para el. Esto simplifica algunas opciones, pero también implica cierta consideración:
 
-* Reliable Services le permite elegir un esquema de creación de particiones, el intervalo de claves (al usar un esquema de creación de particiones por rangos) y el recuento de particiones. Reliable Actors se restringe al esquema de creación de particiones por rangos (el esquema Int64 uniforme) y requiere que use el intervalo de claves Int64 completo.
+* Servicios de confianza permite toochoose un esquema de partición, intervalo de claves (cuando se usa un intervalo de esquema de partición) y el número de partición. Actores confiables es el esquema de partición de intervalo restringido toohello (esquema de Int64 uniforme Hola) y requiere que use Hola completa Int64 rango con clave.
 * De forma predeterminada, los actores se colocan aleatoriamente en particiones, dando como resultado una distribución uniforme.
 * Como los actores se colocan aleatoriamente, debe esperarse que las operaciones del actor requieran siempre la comunicación de red, incluidas la serialización y deserialización de datos de la llamada al método, incurriendo en latencia y sobrecarga.
-* En escenarios avanzados, es posible controlar la ubicación de la partición del actor mediante los identificadores de actor Int64 que se asignan a particiones específicas. Sin embargo, esto puede dar lugar a una distribución desequilibrada de los actores entre particiones.
+* En escenarios avanzados, es selección de ubicación de toocontrol posible actor partición mediante el uso de actor Int64 identificadores que se asignan toospecific particiones. Sin embargo, esto puede dar lugar a una distribución desequilibrada de los actores entre particiones.
 
-Para más información sobre cómo se particionan los servicios de actor, consulte [Partitioning concepts for actors](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)(Conceptos de creación de particiones para actores).
+Para obtener más información sobre cómo se dividen los servicios de actor, consulte demasiado[particiones conceptos para actores](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
 ### <a name="actor-communication"></a>Comunicación con actores
-Las interacciones entre actores se definen en una interfaz compartida por el actor que implementa la interfaz y el cliente que consigue un proxy a un actor a través de la misma interfaz. Como esta interfaz se usa para invocar métodos de actor de forma asincrónica, cada método de la interfaz debe devolver tareas.
+Interacciones de actor se definen en una interfaz que se comparte por actor Hola que implementa la interfaz de Hola y el cliente de Hola que obtiene un proxy actor tooan a través de hello misma interfaz. Dado que esta interfaz es tooinvoke usado actor métodos de forma asincrónica, cada método de interfaz de hello debe ser de devolución de tarea.
 
-Las invocaciones de método y sus respuestas tienen como resultado final solicitudes de red en el clúster, de modo que los argumentos y los tipos de resultado de las tareas que devuelven deben ser serializables por parte de la plataforma. En particular, deben ser [serializables mediante contrato de datos](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Las invocaciones de método y sus respuestas en última instancia como resultado las solicitudes de red en clúster de hello, por lo que argumentos de Hola y tipos de resultado de hello de tareas de Hola que deben ser serializables por plataforma de Hola. En particular, deben ser [serializables mediante contrato de datos](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
-#### <a name="the-actor-proxy"></a>El proxy de actor
-La API de cliente de Reliable Actors ofrece comunicación entre una instancia de actor y un cliente de actor. Para comunicarse con un actor, un cliente crea un objeto proxy de actor que implementa la interfaz del actor. El cliente interactúa con el actor mediante la invocación de métodos en el objeto proxy. El proxy de actor puede usarse para la comunicación de cliente a actor y de actor a actor.
+#### <a name="hello-actor-proxy"></a>proxy de actor Hola
+API de cliente de Reliable Actors Hola permite la comunicación entre una instancia de actor y un cliente de actor. toocommunicate con un actor, un cliente crea un objeto de proxy de actor que implementa la interfaz de actor Hola. cliente de Hello interactúa con actor Hola invocar métodos en el objeto de proxy de Hola. proxy de actor Hola se puede utilizar para la comunicación de cliente al actor y el actor al actor.
 
 ```csharp
 // Create a randomly distributed actor ID
@@ -82,7 +82,7 @@ ActorId actorId = ActorId.CreateRandom();
 // This only creates a proxy object, it does not activate an actor or invoke any methods yet.
 IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/MyActorService"));
 
-// This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
+// This will invoke a method on hello actor. If an actor with hello given ID does not exist, it will be activated by this method call.
 await myActor.DoWorkAsync();
 ```
 
@@ -93,54 +93,54 @@ ActorId actorId = new ActorId("Actor1");
 // This only creates a proxy object, it does not activate an actor or invoke any methods yet.
 MyActor myActor = ActorProxyBase.create(actorId, new URI("fabric:/MyApp/MyActorService"), MyActor.class);
 
-// This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
+// This will invoke a method on hello actor. If an actor with hello given ID does not exist, it will be activated by this method call.
 myActor.DoWorkAsync().get();
 ```
 
 
-Tenga en cuenta que los dos tipos de datos que se usan para crear el objeto de proxy de actor son el identificador del actor y el nombre de la aplicación. El identificador de actor identifica de forma única al actor, mientras que el nombre de la aplicación identifica la [Aplicación de Service Fabric](service-fabric-reliable-actors-platform.md#application-model) en la que se implementa el actor.
+Tenga en cuenta que partes de hello dos de información usan objeto proxy de toocreate Hola actor son Id. de actor de Hola y nombre de la aplicación hello. Id. de actor Hola identifica de forma única actor hello, mientras que identifica a nombre de la aplicación Hola Hola [aplicación de Service Fabric](service-fabric-reliable-actors-platform.md#application-model) donde se implementa el actor Hola.
 
-La clase `ActorProxy`(C#) / `ActorProxyBase`(Java) del cliente realiza la resolución necesaria para localizar el actor mediante el identificador y abre un canal de comunicación con él. También vuelve a intentar localizar el actor en caso de que se produzcan errores de comunicación y conmutaciones por error. Como resultado, la entrega de mensajes tiene las siguientes características:
+Hola `ActorProxy`(C#) / `ActorProxyBase`clase (Java) en el lado del cliente de hello realiza actor de hello resolución necesarios toolocate Hola por Id. y abrir un canal de comunicación con él. También realiza varios intentos toolocate actor de hello en los casos de Hola de errores de comunicación y las conmutaciones por error. Como resultado, la entrega de mensajes tiene Hola siguientes características:
 
 * La entrega de mensajes es la mejor opción.
-* Los actores pueden recibir mensajes duplicados del mismo cliente.
+* Actores pueden recibir mensajes duplicados de hello mismo cliente.
 
 ### <a name="concurrency"></a>Simultaneidad
-El tiempo de ejecución de Reliable Actors ofrece un modelo de acceso simple basado en turnos para obtener acceso a los métodos de actor. Esto significa que no puede haber más de un subproceso activo dentro del código del objeto de actor en ningún momento. El acceso basado en turnos simplifica considerablemente sistemas simultáneos, pues no es necesario que los mecanismos de sincronización tengan acceso a datos. También significa que los sistemas deben diseñarse con consideraciones especiales para la naturaleza de acceso uniproceso de cada instancia de actor.
+Hola Reliable Actors runtime proporciona un modelo de acceso a su vez simple para tener acceso a los métodos de actor. Esto significa que no puede haber más de un subproceso activo dentro del código del objeto de actor en ningún momento. El acceso basado en turnos simplifica considerablemente sistemas simultáneos, pues no es necesario que los mecanismos de sincronización tengan acceso a datos. También significa que los sistemas deben diseñarse con consideraciones especiales para la naturaleza de acceso de un único subproceso de Hola de cada instancia de actor.
 
-* Una sola instancia de actor no puede procesar más de una solicitud cada vez. Una instancia de actor puede provocar un cuello de botella de procesamiento si se espera que controle solicitudes simultáneas.
-* Los actores pueden interbloquearse si hay una solicitud circular entre dos actores mientras se realiza una solicitud externa destinada a uno de los actores simultáneamente. El tiempo de ejecución del actor agotará el tiempo de expiración en llamadas de actor automáticamente y generará una excepción al autor de llamada para interrumpir posibles situaciones de interbloqueo.
+* Una sola instancia de actor no puede procesar más de una solicitud cada vez. Una instancia de actor puede producir un cuello de botella de rendimiento si se toohandle esperado de solicitudes simultáneas.
+* Actores pueden bloquearse entre sí si hay una solicitud circular entre las dos partes implicadas mientras externa se realiza una solicitud tooone de actores Hola simultáneamente. Hola actor en tiempo de ejecución tendrán automáticamente una vez en actor llama y producir un toointerrupt de autor de llamada de excepción toohello posibles situaciones de interbloqueo.
 
 ![Comunicación de Reliable Actors][3]
 
 #### <a name="turn-based-access"></a>Acceso basada en turnos
-Un turno es la ejecución completa de un método de actor en respuesta a la solicitud de otros actores o clientes, o la ejecución completa de la devolución de llamada de un [temporizador o recordatorio](service-fabric-reliable-actors-timers-reminders.md) . Aunque estos métodos y devoluciones de llamada son asincrónicos, el tiempo de ejecución de los actores no los intercala. Un turno debe completarse por completo antes de que se permita uno nuevo. En otras palabras, la devolución de llamada de un método de actor, un temporizador o recordatorio que se esté ejecutando se debe completar totalmente antes de que se permita una llamada a un método o una devolución de llamada nuevas. Un método o una devolución de llamada se consideran finalizadas si la ejecución ha devuelto desde el método o la devolución de llamada y la tarea devuelta por el método o la devolución de llamada ha terminado. Merece la pena resaltar que la simultaneidad basada en turnos se respeta incluso entre devoluciones de llamada, temporizadores y métodos diferentes.
+Un turno consta de hello completar la ejecución de un método de actor en solicitud de respuesta tooa procedentes de otros clientes o actores o completar la ejecución de hello un [temporizador/aviso](service-fabric-reliable-actors-timers-reminders.md) devolución de llamada. Aunque estos métodos y las devoluciones de llamada son asincrónicas, en tiempo de ejecución de hello actores no intercalar ellos. Un turno debe completarse por completo antes de que se permita uno nuevo. En otras palabras, un actor método o un temporizador/aviso devolución de llamada que se está ejecutando actualmente debe ser totalmente finalice antes que un nuevo método tooa de llamada o devolución de llamada es permitida. Un método o una devolución de llamada se considera toohave terminado si ejecución Hola ha devuelto del método hello o tarea hello y devolución de llamada devuelta por el método hello o devolución de llamada ha terminado. Merece la pena resaltar que la simultaneidad basada en turnos se respeta incluso entre devoluciones de llamada, temporizadores y métodos diferentes.
 
-El tiempo de ejecución de los actores impone la simultaneidad basada en turnos mediante la adquisición de un bloqueo por actor al principio de un turno y su liberación al final del turno. Por lo tanto, la simultaneidad basada en turnos se aplica por actor y no para todos los actores. Las devoluciones de llamada de los métodos de actor, los temporizadores y los recordatorios se pueden ejecutar simultáneamente en nombre de los diferentes actores.
+en tiempo de ejecución de Hello actores aplica la simultaneidad basada en Active al adquirir un bloqueo por actor al principio de hello vuelta y liberación de bloqueo de hello final Hola de hello activar. Por lo tanto, la simultaneidad basada en turnos se aplica por actor y no para todos los actores. Las devoluciones de llamada de los métodos de actor, los temporizadores y los recordatorios se pueden ejecutar simultáneamente en nombre de los diferentes actores.
 
-En el ejemplo siguiente se muestran los conceptos anteriores. Supongamos un tipo de actor que implementa dos métodos asincrónicos (digamos *Method1* y *Method2*), un temporizador y un recordatorio. En el diagrama siguiente se muestra un ejemplo de una escala de tiempo de la ejecución de estos métodos y las devoluciones de llamada en nombre de los dos actores (*ActorId1* y *ActorId2*) que pertenecen a este tipo de actor.
+Hola siguiente ejemplo muestra hello por encima de los conceptos. Supongamos un tipo de actor que implementa dos métodos asincrónicos (digamos *Method1* y *Method2*), un temporizador y un recordatorio. Hola diagrama siguiente muestra un ejemplo de una escala de tiempo para la ejecución de Hola de estos métodos y las devoluciones de llamada en nombre de dos actores (*ActorId1* y *ActorId2*) que pertenecen toothis actor tipo.
 
 ![Acceso y simultaneidad basada en turnos de tiempo de ejecución de Reliable Actors][1]
 
 Este diagrama sigue estas convenciones:
 
-* Cada línea vertical muestra el flujo lógico de ejecución de un método o una devolución de llamada en nombre de un actor determinado.
-* Los eventos marcados en cada línea vertical se producen en orden cronológico, con los eventos más recientes por debajo de los más antiguos.
-* Se usan colores diferentes para las escalas de tiempo correspondientes a actores distintos.
-* Se usa el resaltado para indicar la duración durante la cual se mantiene el bloqueo por actor en nombre de un método o una devolución de llamada.
+* Cada línea vertical muestra el flujo lógico de Hola de ejecución de un método o una devolución de llamada en nombre de un actor determinado.
+* se producen eventos de Hello marcados en cada línea vertical en orden cronológico, con los eventos más recientes que se producen por debajo de los antiguos.
+* Se usan colores diferentes para las escalas de tiempo correspondiente toodifferent actores.
+* Resaltado es duración de hello tooindicate usado para qué Hola se mantiene el bloqueo por actor en nombre de un método o una devolución de llamada.
 
-Algunos puntos importantes a tener en cuenta:
+Algunos tooconsider puntos importantes:
 
-* Cuando *Method1* se ejecuta en nombre de *ActorId2* en respuesta a la solicitud de cliente *xyz789*, llega otra solicitud de cliente (*abc123*) que también requiere que *Method1* lo ejecute *ActorId2*. Sin embargo, la segunda ejecución de *Method1* no comienza hasta que se haya completado la ejecución anterior. De forma similar, un recordatorio que haya registrado *ActorId2* se activa cuando *Method1* se ejecuta en respuesta a la solicitud de cliente *xyz789*. La devolución de llamada del recordatorio se ejecuta solo después de que las dos ejecuciones de *Method1* se hayan completado. Todo esto se debe a la simultaneidad basada en turnos que se exige para *ActorId2*.
-* De forma similar, también se aplica la simultaneidad basada en turnos para *ActorId1*, como se muestra en la ejecución de *Method1*, la ejecución de *Method2* y la devolución de llamada del temporizador en nombre de *ActorId1*, que suceden en serie.
+* Mientras *Method1* se está ejecutando en nombre de *ActorId2* en la solicitud de respuesta tooclient *xyz789*, otra solicitud de cliente (*abc123*) llega que también requiere *Method1* toobe ejecutado por *ActorId2*. Sin embargo, Hola segunda ejecución de *Method1* no comienza hasta que haya finalizado la ejecución anterior de Hola. Del mismo modo, se registra un aviso por *ActorId2* se activa al *Method1* se está ejecutando en la solicitud de respuesta tooclient *xyz789*. devolución de llamada de recordatorio Hello se ejecuta una solo después de las ejecuciones de *Method1* están completos. Todo esto es debido a simultaneidad basada en tooturn que se exige para *ActorId2*.
+* Del mismo modo, también se aplica la simultaneidad basada en Activar para *ActorId1*, como se muestra mediante la ejecución de Hola de *Method1*, *Method2*, y Hola de devolución de llamada de temporizador en nombre de *ActorId1* ocurre en un modo serie.
 * La ejecución de *Method1* en nombre de *ActorId1* se superpone con su ejecución en nombre de *ActorId2*. Esto es así porque solo se exige la simultaneidad basada en turnos dentro de un actor y no para todos los actores.
-* En algunas ejecuciones de métodos y devoluciones de llamada, el elemento `Task`(C#) / `CompletableFuture`(Java) que devuelve el método o la devolución de llamada se completa después de la devolución del método. En otras, la operación asincrónica ya se completó antes de la devolución del método o la devolución de llamada. En ambos casos, el bloqueo por actor se libera solo después de la devolución del método o la devolución de llamada, y de la finalización de la operación asincrónica.
+* En algunas de las ejecuciones de devolución de llamada/método hello, Hola `Task`(C#) o `CompletableFuture`(Java) devuelto por Hola/devolución de llamada de método termina después de que vuelva el método hello. En otros, la operación asincrónica de Hola ya ha terminado por tiempo Hola Hola método/devolución de llamada devuelve. En ambos casos, se libera el bloqueo por actor Hola solo después de que devuelve ambos método/devolución de llamada de Hola y Hola de operación asincrónica finalice.
 
 #### <a name="reentrancy"></a>Reentrada
-El tiempo de ejecución de los actores permite la reentrada de forma predeterminada. Esto significa que si un método de actor del *actor A* llama a un método del *actor B*, que a su vez llama a otro método del *actor A*, se permite que ese método se ejecute. Esto es porque forma parte del mismo contexto lógico de la cadena de llamada. Todas las llamadas del temporizador y el recordatorio comienzan con el nuevo contexto de llamada lógico. Consulte [Reentrada en Reliable Actors](service-fabric-reliable-actors-reentrancy.md) para más detalles.
+en tiempo de ejecución de Hello actores permite reentrada de forma predeterminada. Esto significa que si un método de actor de *Actor A* llama a un método en *Actor B*, que a su vez llama a otro método en *Actor A*, que se permite método toorun. Esto es porque es parte de hello mismo contexto de cadena de llamada lógico. Todas las llamadas de temporizador y un aviso iniciar con el nuevo contexto de llamada lógico Hola. Vea hello [reentrada Reliable Actors](service-fabric-reliable-actors-reentrancy.md) para obtener más detalles.
 
 #### <a name="scope-of-concurrency-guarantees"></a>Ámbito de garantías de simultaneidad
-El tiempo de ejecución de los actores ofrece estas garantías de simultaneidad en situaciones donde controla la invocación de estos métodos. Por ejemplo, ofrece estas garantías para las invocaciones de método que se realizan en respuesta a una solicitud de cliente y para las devoluciones de llamada de temporizadores y recordatorios. Sin embargo, si el código del actor invoca directamente a estos métodos fuera de los mecanismos que ofrece el tiempo de ejecución de los actores, el tiempo de ejecución no puede ofrecer ninguna garantía de simultaneidad. Por ejemplo, si el método se invoca en el contexto de una tarea que no está asociada con la tarea que han devuelto los métodos de actor, el tiempo de ejecución no puede ofrecer garantías de simultaneidad. Si el método se invoca desde un subproceso que el actor crea por sí mismo, entonces el tiempo de ejecución tampoco puede proporcionar garantías de simultaneidad. Por lo tanto, para realizar operaciones en segundo plano, los actores deben usar [temporizadores de actor o recordatorios de actor](service-fabric-reliable-actors-timers-reminders.md) que respeten la simultaneidad basada en turnos.
+en tiempo de ejecución de Hello actores proporciona estas garantías de simultaneidad en situaciones donde controla la invocación de Hola de estos métodos. Por ejemplo, proporciona estas garantías para las invocaciones de método de Hola que se efectúan en la solicitud de cliente de respuesta tooa, así como para las devoluciones de llamada de temporizador y un aviso. Sin embargo, si el código de hello actor invoca directamente estos métodos fuera de los mecanismos de hello proporcionados por el tiempo de ejecución de hello actores, hello en tiempo de ejecución no puede proporcionar las garantías de simultaneidad. Por ejemplo, si se invoca el método hello en contexto de Hola de algunas tareas que no esté asociado con la tarea hello devuelto por métodos de actor hello, hello en tiempo de ejecución no proporciona garantías de simultaneidad. Si se invoca el método hello desde un subproceso actor Hola crea por sí mismo, a continuación, en tiempo de ejecución de hello también proporcionan garantías de simultaneidad. Por lo tanto, deben usar los actores de operaciones en segundo plano tooperform, [temporizadores de actor y recordatorios de actor](service-fabric-reliable-actors-timers-reminders.md) que respeta la simultaneidad basada en el turno.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Para empezar, cree su primer servicio de Reliable Actors:

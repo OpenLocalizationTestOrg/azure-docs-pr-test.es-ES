@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con PolicyStat | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y PolicyStat."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y PolicyStat."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,139 +13,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 704afd5515b02ce2a4fbf35da65fad74dc506271
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 868053cd0d37359fd9b4aeb93dba42cbbaa09845
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Tutorial: Integración de Azure Active Directory con PolicyStat
 
-En este tutorial, aprenderá a integrar PolicyStat con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate PolicyStat con Azure Active Directory (Azure AD).
 
-La integración de PolicyStat con Azure AD le proporciona las siguientes ventajas:
+Integración PolicyStat con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a PolicyStat.
-- Puede permitir que los usuarios inicien sesión automáticamente en PolicyStat (Inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooPolicyStat
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooPolicyStat (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con PolicyStat, se necesitan los siguientes elementos:
+integración de Azure AD con PolicyStat tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en PolicyStat
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Incorporación de PolicyStat desde la galería
+1. Agregar PolicyStat desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-policystat-from-the-gallery"></a>Incorporación de PolicyStat desde la galería
-Para configurar la integración de PolicyStat en Azure AD, es preciso agregar PolicyStat desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-policystat-from-hello-gallery"></a>Agregar PolicyStat desde la Galería de Hola
+integración de hello tooconfigure de PolicyStat en Azure AD, deberá tooadd PolicyStat de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar PolicyStat desde la galería, siga estos pasos:**
+**tooadd PolicyStat de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **PolicySta**.
+4. En el cuadro de búsqueda de hello, escriba **PolicyStat**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_search.png)
 
-5. En el panel de resultados, seleccione **PolicyStat** y luego haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **PolicyStat**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con PolicyStat con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de PolicyStat para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de PolicyStat.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en PolicyStat es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en PolicyStat debe toobe establecido.
 
-Para establecer la relación de vínculo en PolicyStat, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
+En PolicyStat, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con PolicyStat, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con PolicyStat, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de PolicyStat](#creating-a-policystat-test-user)**: para tener un homólogo de Britta Simon en PolicyStat vinculado a la representación del usuario en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba PolicyStat](#creating-a-policystat-test-user)**  -toohave un equivalente de Britta Simon en PolicyStat que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en la aplicación PolicyStat.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación PolicyStat.
 
-**Para configurar el inicio de sesión único de Azure AD con PolicyStat, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con PolicyStat, realizar Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación **PolicyStat**, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **PolicyStat** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de PolicyStat**, lleve a cabo los pasos siguientes:
+3. En hello **PolicyStat dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_url.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.policystat.com`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.policystat.com`
 
-    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.policystat.com/saml2/metadata/`
+    b. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE] 
-    > Estos valores no son reales. Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión. Póngase en contacto con el [equipo de soporte al cliente de PolicyStat](http://www.policystat.com/support/) para obtener estos valores. 
+    > Estos valores no son reales. Actualizar estos valores con hello real de dirección URL de inicio de sesión y el identificador. Póngase en contacto con [equipo de soporte técnico de cliente de PolicyStat](http://www.policystat.com/support/) tooget estos valores. 
  
-4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo de metadatos de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_certificate.png) 
 
-5. El objetivo de esta sección es describir cómo se habilita la autenticación de los usuarios en PolicyStat con su cuenta de Azure AD usando el protocolo SAML basado en la federación.
+5. objetivo de Hola de esta sección es toooutline cómo tooenable usuarios tooauthenticate tooPolicyStat con su cuenta de Azure AD utilizando federación basada en protocolo SAML de Hola.
 
-    La aplicación PolicyStat espera las aserciones de SAML en un formato específico, que requiere que se agreguen asignaciones de atributos personalizados a la configuración de los **atributos del token de SAML**.  
+    Hola PolicyStat aplicación espera las aserciones de SAML de hello en un formato específico, lo que requiere tooyour de asignaciones de atributo personalizado de tooadd **atributos de Token SAML** configuración.  
 
-     La siguiente captura de pantalla le muestra un ejemplo de esto.
+     Hola siguiente captura de pantalla muestra un ejemplo de esto.
 
      ![Atributos](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_attribute.png "Atributos")
 
-6. Para agregar las asignaciones de los atributos necesarios, realice los pasos siguientes:
+6. asignaciones de atributos de tooadd Hola necesario, lleve a cabo Hola pasos:
 
     | Nombre del atributo    |   Valor de atributo |
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix([mail]) |
     
-    a. Haga clic en **Agregar atributo** para abrir el cuadro de diálogo **Agregar atributo**.
+    a. Haga clic en **Agregar atributo** tooopen hello **Agregar atributo** cuadro de diálogo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_04.png)
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_addatribute.png)
     
-    b. En el cuadro de texto **Nombre de atributo**, escriba **uid**.
+    b. Hola **nombre del atributo** cuadro de texto, tipo **uid**.
 
-    c. En el cuadro de texto **Valor del atributo**, seleccione **ExtractMailPrefix()**.    
+    c. Hola **valor del atributo** cuadro de texto, seleccione **ExtractMailPrefix()**.    
    
-    d. En la lista **Correo**, seleccione **User.mail**.
+    d. De hello **correo** lista, seleccione **User.mail**.
     
     e. Haga clic en **Aceptar**.
 
@@ -155,98 +155,98 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
 8. En otra ventana del explorador web, inicie sesión en el sitio de la compañía PolicyStat como administrador.
 
-9. Haga clic en la pestaña **Administración** y en **Configuración de inicio de sesión único** en el panel de navegación izquierdo.
+9. Haga clic en hello **administración** ficha y, a continuación, haga clic en **configuración de inicio de sesión único** en el panel de navegación izquierdo.
    
     ![Menú Administrator](./media/active-directory-saas-policystat-tutorial/ic808633.png "Menú Administrator")
 
-10. En la sección **Configuración**, seleccione **Habilitar la integración de inicio de sesión único**.
+10. Hola **el programa de instalación** sección, seleccione **integración de inicio de sesión único habilitar**.
    
     ![Configuración de inicio de sesión único](./media/active-directory-saas-policystat-tutorial/ic808634.png "Configuración de inicio de sesión único")
 
-11. Haga clic en **Configurar atributos** y, en la sección **Configurar atributos**, realice los pasos siguientes:
+11. Haga clic en **configurar los atributos de**y, a continuación, en hello **configurar los atributos** sección, lleve a cabo Hola pasos:
    
     ![Configuración de inicio de sesión único](./media/active-directory-saas-policystat-tutorial/ic808635.png "Configuración de inicio de sesión único")
    
-    a. En el cuadro de texto **Atributo de nombre de usuario**, escriba **uid**.
+    a. Hola **atributo Username** cuadro de texto, tipo **uid**.
 
-    b. En el cuadro de texto **Atributo de nombre**, escriba el **nombre** del usuario, **Britta**.
+    b. Hola **atributo de nombre** cuadro de texto, tipo **firstname** del usuario **Bárbara**.
 
-    c. En el cuadro de texto **Atributo de apellido**, escriba el **apellido** del usuario, **Simon**.
+    c. Hola **último atributo de nombre** cuadro de texto, tipo **lastname** del usuario **Simon**.
 
-    d. En el cuadro de texto **Atributo de correo electrónico**, escriba la **dirección de correo electrónico** del usuario, **BrittaSimon@contoso.com**.
+    d. Hola **atributo de correo electrónico** cuadro de texto, tipo **emailaddress** del usuario  **BrittaSimon@contoso.com** .
 
     e. Haga clic en **Guardar cambios**.
 
-12. Haga clic en **Sus metadatos de IDP** y en la sección **Sus metadatos de IDP**, realice los pasos siguientes:
+12. Haga clic en **los metadatos de IDP**y, a continuación, en hello **los metadatos de IDP** sección, lleve a cabo Hola pasos:
    
     ![Configuración de inicio de sesión único](./media/active-directory-saas-policystat-tutorial/ic808636.png "Configuración de inicio de sesión único")
    
-    a. Abra el archivo de metadatos descargado, copie el contenido y luego péguelo en el cuadro de texto **Metadatos del proveedor de identidades**.
+    a. Abra el archivo de metadatos descargado, Hola copia contenido y, a continuación, péguelo en hello **los metadatos del proveedor de identidad** cuadro de texto.
 
     b. Haga clic en **Guardar cambios**.
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-policystat-test-user"></a>Creación de un usuario de prueba de PolicyStat
 
-Para permitir que los usuarios de Azure AD inicien sesión en PolicyStat, deben aprovisionarse en PolicyStat.  
+En orden tooenable toolog de los usuarios de Azure AD en PolicyStat, se les deben aprovisionar en PolicyStat.  
 
-PolicyStat admite aprovisionamiento de usuarios justo a tiempo. Esto significa que no es necesario agregar usuarios manualmente a PolicyStat. Los usuarios se agregarán automáticamente en su primer inicio de sesión a través del inicio de sesión único.
+PolicyStat admite aprovisionamiento de usuarios justo a tiempo. Esto significa, no es necesario a los usuarios de tooadd Hola manualmente tooPolicyStat. los usuarios de Hola se agregarán automáticamente su primer inicio de sesión a través de SSO.
 
 >[!NOTE]
->Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de PolicyStat ofrecida por PolicyStat para aprovisionar cuentas de usuario de Azure AD.
+>Puede usar cualquier otra PolicyStat usuario cuenta herramienta de creación o las API proporcionadas por PolicyStat tooprovision cuentas de usuario de Azure AD.
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, concederá acceso a Britta Simon a PolicyStat para que use el inicio de sesión único de Azure.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooPolicyStat.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a PolicyStat, realice los pasos siguientes:**
+**tooassign Britta Simon tooPolicyStat, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **PolicyStat**.
+2. En la lista de aplicaciones de hello, seleccione **PolicyStat**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -254,7 +254,7 @@ En esta sección, concederá acceso a Britta Simon a PolicyStat para que use el 
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -262,14 +262,14 @@ En esta sección, concederá acceso a Britta Simon a PolicyStat para que use el 
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de PolicyStat en el Panel de acceso, debería iniciar sesión automáticamente en su aplicación PolicyStat.
-Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Al hacer clic en icono de PolicyStat Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour PolicyStat aplicación.
+Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

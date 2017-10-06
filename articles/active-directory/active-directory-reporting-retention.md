@@ -1,5 +1,5 @@
 ---
-title: "Directivas de retención de informes de Azure Active Directory | Microsoft Docs"
+title: "directivas de retención de informes de Active Directory aaaAzure | Documentos de Microsoft"
 description: "Directivas de retención de datos de informes en Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ffeba8a6c32a21c75af21f948bbd6ea88dd9278c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c46a68198cb34e9c92662b2f8461010745392c04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Directivas de retención de informes de Azure Active Directory
 
 
-Este tema proporciona respuestas a las preguntas más frecuentes en relación a la retención de datos de los distintos informes de actividad de Azure Active Directory. 
+Este tema proporciona respuestas toohello preguntas más frecuentes junto con la retención de datos de Hola para los informes de actividad diferente de hello en Azure Active Directory. 
 
-**P: ¿Cómo puede empezar la recopilación de datos de actividad?**
+**P: ¿cómo se puede obtener colección Hola de datos de la actividad iniciar?**
 
 **R:**
 
 | Edición de Azure AD | Inicio de la recopilación |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | Al suscribirse a una suscripción |
-| Azure AD Free | La primera vez que abra la [hoja de Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) o use las [API de informes](https://aka.ms/aadreports)  |
+| Azure AD Free | Hola la primera vez que abra hello [hoja de Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) o usar hello [reporting API](https://aka.ms/aadreports)  |
 
 ---
-**P: ¿Cuándo estarán disponibles los datos de actividad en Azure Portal?**
+**P: ¿cuándo está disponible en hello portal de Azure los datos de actividad?**
 
 **R:**
 
-- **Inmediatamente**: si ya ha estado trabajando con informes en el Portal de Azure clásico
-- **Dentro de 2 horas**: si no ha activado la generación de informes en el Portal de Azure clásico
+- **Inmediatamente** : si ya ha estado trabajando con informes en hello portal de Azure clásico
+- **Dentro de 2 horas** : si no has activado reporting Hola portal de Azure clásico
 
 ---
-**P: ¿Cómo puede empezar la recopilación de señales de seguridad?**  
+**P: ¿cómo se puede obtener colección de Hola de señales de seguridad inició?**  
 
-**R:** En el caso de las señales de seguridad, el proceso de recopilación se inicia cuando decide usar Identity Protection Center. 
+**R:** señales de seguridad, el proceso de recopilación de Hola se inicia cuando se participación en el centro de protección de identidad de toouse Hola. 
 
 
 ---
-**P: ¿Durante cuánto tiempo se almacenan los datos recopilados?**
+**P: ¿por cuánto tiempo es Hola almacenados los datos recopilados?**
 
 **R:**
 

@@ -1,6 +1,6 @@
 ---
-title: Uso de la API de REST del servicio Azure Import/Export | Microsoft Docs
-description: "Obtenga información sobre dónde encontrar recursos para usar la API de REST del servicio Azure Import/Export, incluido el material de instrucciones y de referencia."
+title: "Hola aaaUsing API de REST del servicio de importación y exportación de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de dónde toofind recursos para usar Hola importación/exportación de Azure servicio API de REST, incluidos ambos material de referencia de tooand cómo."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: b780385ad0af34bcb15639683d1aa5d689b38b50
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fc7e1007ad632cf6f771c2545644f8de43c8f181
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-azure-importexport-service-rest-api"></a>Uso de la API de REST del servicio Azure Import/Export
+# <a name="using-hello-azure-importexport-service-rest-api"></a>Usar servicio de importación y exportación de Azure Hola API de REST
 
-El servicio Microsoft Azure Import/Export ofrece una API de REST con la que se puede ejercer un control mediante programación de los trabajos de importación y exportación. Puede utilizar la API de REST para realizar las mismas operaciones de importación y exportación que se llevan a cabo con [Azure Portal](https://portal.azure.com/). Además, puede utilizar la API de REST para realizar determinadas operaciones muy concretas, como consultar el porcentaje de finalización de un trabajo, que no están disponibles en el Portal de Azure clásico por el momento.
+Hola servicio de importación y exportación de Microsoft Azure expone un control mediante programación de tooenable de API de REST de los trabajos de importación y exportación. Puede usar la API de REST de hello tooperform todos hello las operaciones que puede realizar con hello de importación y exportación [portal de Azure](https://portal.azure.com/). Además, puede usar tooperform de API de REST de hello determinadas operaciones pormenorizadas, como la consulta de porcentaje de finalización de Hola de un trabajo, que no está disponible actualmente en hello portal de Azure clásico.
 
-Consulte [Uso del servicio Microsoft Azure Import/Export para transferir datos a Blob Storage](../storage-import-export-service.md) para leer una introducción al servicio Import/Export y ver un tutorial en el que se demuestra cómo usar el portal clásico para crear y administrar trabajos de importación y exportación.
+Vea [con hello importación y exportación de Microsoft Azure service tooTransfer datos tooBlob almacenamiento](../storage-import-export-service.md) para obtener información general del servicio de importación y exportación de Hola y un tutorial que muestra cómo toouse Hola toocreate portal clásico y administrar la importación y trabajos de exportación.
 
 ## <a name="service-endpoints"></a>Puntos de conexión de servicio
 
-El servicio Azure Import/Export actúa como proveedor de recursos de Azure Resource Manager y proporciona un conjunto de API de REST en el siguiente punto de conexión HTTPS para administrar trabajos de importación y exportación:
+Hola servicio de importación y exportación de Azure es un proveedor de recursos para el Administrador de recursos de Azure y proporciona un conjunto de API de REST en hello siguiente extremo HTTPS para administrar los trabajos de importación y exportación:
 
 ```
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>
@@ -36,7 +36,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ## <a name="versioning"></a>Control de versiones
 
-Las solicitudes al servicio Import/Export deben incluir el parámetro `api-version` y establecer su valor en `2016-11-01`.
+Las solicitudes de servicio de importación/exportación de toohello debe especificar hello `api-version` parámetro y establezca su valor demasiado`2016-11-01`.
 
 ## <a name="importexport-service-operations"></a>Operaciones del servicio Import/Export
 

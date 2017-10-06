@@ -1,6 +1,6 @@
 ---
-title: "Paso 5: implementación del servicio web Machine Learning | Microsoft Docs"
-description: "Paso 5 del tutorial Desarrollo de una solución predictiva: implementación de un experimento predictivo en Estudio de aprendizaje automático como servicio web."
+title: "Paso 5: Implementar el servicio web de aprendizaje automático de hello | Documentos de Microsoft"
+description: "Paso 5 de hello desarrollar un solución de predicción Tutorial: implementar un experimento de predicción en estudio de aprendizaje automático como un servicio web."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,214 +14,214 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: cec1bcceea158a20742c7019a266dcefaac4c9cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 76391010972ed1450bbda8bfb2352c7b22b51ccc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Paso 5 del tutorial: Implementar el servicio web de Aprendizaje automático de Azure
-Este es el quinto paso del tutorial [Desarrollo de una solución de análisis predictiva para la evaluación del riesgo de crédito en Aprendizaje automático de Azure](machine-learning-walkthrough-develop-predictive-solution.md)
+# <a name="walkthrough-step-5-deploy-hello-azure-machine-learning-web-service"></a>Tutorial paso 5: Implementar el servicio web de aprendizaje automático de Azure de Hola
+Esto es Hola quinto paso del tutorial de hello, [desarrollar una solución de análisis predictivos en aprendizaje automático de Azure](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Creación de un área de trabajo de Aprendizaje automático](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. [Carga de los datos existentes](machine-learning-walkthrough-2-upload-data.md)
 3. [Crear un experimento nuevo](machine-learning-walkthrough-3-create-new-experiment.md)
-4. [Entrenamiento y evaluación de los modelos](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5. **Implementación del servicio web**
-6. [Acceso al servicio web](machine-learning-walkthrough-6-access-web-service.md)
+4. [Entrenar y evaluar modelos de Hola](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. **Implementar el servicio web de Hola**
+6. [Servicio web de acceso Hola](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-Para permitir que otros usuarios puedan usar el modelo predictivo desarrollado en este tutorial, se puede implementar como un servicio web en Azure.
+toogive otros una ocasión toouse Hola modelo predictivo, hemos desarrollado en este tutorial, nos podemos implementarlo como un servicio web en Azure.
 
-Hasta ahora hemos estado experimentando con el entrenamiento de nuestro modelo. Sin embargo, el servicio implementado ya no va a realizar el entrenamiento: va a generar nuevas predicciones mediante la puntuación de la entrada del usuario en función de nuestro modelo. Por lo tanto, hay que realizar unos cuantos preparativos para convertir este experimento de ***entrenamiento*** en un experimento ***predictivo***. 
+Toothis punto hemos sido experimentar con nuestro modelo de entrenamiento. Pero los servicio Hola implementado ya no queda toodo entrenamiento; será necesario toogenerate nuevas predicciones por entradas de usuario de hello según nuestro modelo de puntuación. Por lo que vamos a toodo algunos tooconvert preparación esto experimentar de un ***entrenamiento*** experimentar tooa ***predictivo*** experimentar. 
 
 Se trata de un proceso de tres pasos:  
 
-1. Eliminación de uno de los modelos
-2. Conversión del *experimento de entrenamiento* que hemos creado en un *experimento predictivo*
-3. Implementar el experimento predictivo como servicio web
+1. Quite uno de los modelos de Hola
+2. Convertir hello *experimento de entrenamiento* hemos creado en un *experimento predictivo*
+3. Implementar experimento predictivo Hola como un servicio web
 
-## <a name="remove-one-of-the-models"></a>Eliminación de uno de los modelos
+## <a name="remove-one-of-hello-models"></a>Quite uno de los modelos de Hola
 
-En primer lugar, debemos reducir este experimento un poco. Actualmente, hay dos modelos distintos en el experimento, pero solo queremos usar uno al implementar esto como un servicio web.  
+En primer lugar, necesitamos tootrim este experimento hacia abajo un poco. Actualmente tenemos dos modelos distintos en el experimento de hello, pero solamente queremos toouse un modelo cuando esto se implementa como un servicio web.  
 
-Pongamos que decidimos que el modelo de árbol ampliado ofrece un rendimiento mayor que el modelo SVM. Por tanto, lo primero que se debe hacer es eliminar el módulo [Two-Class Support Vector Machine][two-class-support-vector-machine] (Máquina de vectores de soporte de dos clases) y los módulos que se usaron para entrenarlo. Puede que desee hacer una copia del experimento antes; para ello, haga clic en **Guardar como** en la parte inferior del lienzo de experimento.
+Supongamos que hemos decidido ese modelo de árbol de hello impulsado realiza un rendimiento mejor que el modelo SVM de Hola. Por lo que Hola primera cosa toodo es quitar hello [máquina de vectores de soporte de dos clases] [ two-class-support-vector-machine] módulo y módulos de Hola que se utilizaron para entrenar a él. Puede que desee toomake una copia del experimento de hello en primer lugar, haga clic en **Guardar como** final Hola de hello experimentar el lienzo.
 
-Es necesario eliminar los siguientes módulos:  
+Necesitamos hello toodelete siguientes módulos:  
 
 * [Two-Class Support Vector Machine][two-class-support-vector-machine] (Máquina de vectores de soporte de dos clases)
-* Módulos [Train Model][train-model] (Entrenar modelo) y [Score Model][score-model] (Puntuar modelo) conectados a él
+* [Entrenar modelo] [ train-model] y [puntuar modelo] [ score-model] módulos que estaban conectado tooit
 * [Normalize Data][normalize-data] (Normalizar datos) (ambos)
-* [Evaluate Model][evaluate-model] (Evaluar modelo) (porque se ha terminado de evaluar los modelos)
+* [Evaluar el modelo de] [ evaluate-model] (porque se haya terminado de evaluación de modelos de hello)
 
-Seleccione cada módulo y presione la tecla Supr o haga clic con el botón derecho en el módulo y seleccione **Eliminar**. 
+Seleccione cada módulo y presione la tecla SUPR de Hola o un módulo de Hola de menú contextual y seleccione **eliminar**. 
 
-![Modelo de SVM con elementos quitados][3a]
+![Quita el modelo SVM de Hola][3a]
 
 Nuestro modelo debería tener ahora un aspecto similar al siguiente:
 
-![Modelo de SVM con elementos quitados][3]
+![Quita el modelo SVM de Hola][3]
 
-Ahora ya estamos listos para implementar este modelo con el [Árbol de decisión ampliado de dos clases][two-class-boosted-decision-tree].
+Ahora estamos listo toodeploy esto modelados con hello [árbol de decisión impulsado de dos clases][two-class-boosted-decision-tree].
 
-## <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>Convertir un experimento de entrenamiento en experimento predictivo
+## <a name="convert-hello-training-experiment-tooa-predictive-experiment"></a>Convertir el experimento de predicción de hello entrenamiento experimento tooa
 
-Para tener este modelo listo para la implementación, tenemos que convertir este experimento de entrenamiento en un experimento de predicción. Esto implica tres pasos:
+tooget este modelo listo para la implementación, necesitamos tooconvert este experimento tooa predictivo experimento de entrenamiento. Esto implica tres pasos:
 
-1. Guardar el modelo que se ha entrenado y sustituir nuestros módulos de aprendizaje
-2. Recortar el experimento para quitar los módulos que fueron necesarios solo para el entrenamiento.
-3. Definir el lugar en el que el servicio web aceptará la entrada y en el que generará la salida
+1. Guardar el modelo de Hola se ha entrenado y, a continuación, reemplace nuestros módulos de entrenamiento
+2. Módulos de tooremove de experimento de Hola que eran necesarios únicamente para el entrenamiento de recorte
+3. Definir donde va a Aceptar proporcionados por el servicio web de Hola y donde genera la salida de hello
 
-Se puede hacer manualmente, pero afortunadamente, para realizar estos tres pasos, basta con hacer clic en la opción **Set Up Web Service** (Configurar servicio web) de la parte inferior del lienzo del experimento (y seleccionar la opción **Predictive web Service** [Servicio web predictivo]).
+Podríamos hacer esto manualmente, pero afortunadamente, los tres pasos pueden realizarse haciendo clic en **configurar el servicio de Web** final Hola del lienzo del experimento de hello (y seleccionando hello **predictivo servicio Web** opción).
 
 > [!TIP]
-> Si desea obtener más detalles sobre lo que ocurre cuando convierte un experimento de entrenamiento en uno de predicción, consulte el artículo sobre la [preparación del modelo de implementación en Azure Machine Learning Studio](machine-learning-convert-training-experiment-to-scoring-experiment.md).
+> Si desea obtener más detalles sobre lo que ocurre cuando se convierte un tooa de experimento de entrenamiento predictivo experimentar, consulte [cómo tooprepare el modelo para la implementación en estudio de aprendizaje automático de Azure](machine-learning-convert-training-experiment-to-scoring-experiment.md).
 
 Al hacer clic en **Set Up Web Service**(Configurar servicio web), pasa lo siguiente:
 
-* El modelo entrenado se convierte en un único módulo **Trained Model** (Modelo entrenado) y se guarda en la paleta de módulos que se encuentra a la izquierda del lienzo de experimento (se encuentra en **Modelos entrenados**).
+* Hola entrenado es convertido tooa único **entrenado** módulo y almacenan en hello módulo paleta toohello izquierda de hello experimentar lienzo (puede encontrar en **modelos entrenados**)
 * Se quitan los módulos que se utilizaron para el entrenamiento, en particular:
   * [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] (Árbol de decisión ampliado de dos clases)
   * [Train Model][train-model] (Entrenar modelo)
   * [Split Data][split] (Dividir datos)
-  * El segundo módulo [Execute R Script][execute-r-script] (Ejecutar script R) que se usó para probar los datos
-* El modelo entrenado guardado se vuelve a agregar al experimento.
-* Se agregan los módulos **Web service input** (Entrada al servicio web) y **Web service output** (Salida de servicio web), que identifican dónde los datos del usuario especificarán el modelo y qué datos se devolverán, cuando se accede al servicio web.
+  * en segundo lugar Hola [ejecutar Script de R] [ execute-r-script] módulo que se usa para los datos de prueba
+* modelo entrenado Hola guardado se agrega en el experimento de Hola
+* **Entrada de servicio de Web** y **Web resultado del servicio** módulos se agregan (identifican donde los datos del usuario de hello introducirá modelo hello, así como qué datos se devuelven cuando se accede al servicio web de hello)
 
 > [!NOTE]
-> Puede ver que el experimento se guarda en dos partes en pestañas que se han agregado en la parte superior del lienzo del experimento. El experimento de entrenamiento original está en la pestaña **Experimento de entrenamiento**, y el experimento de predicción recién creado está en **Experimento predictivo**. El experimento predictivo es el que se va a implementar como un servicio web.
+> Puede ver que el experimento de Hola se guarda en dos partes en pestañas que se han agregado en parte superior de hello del lienzo del experimento de Hola. Hello experimento de entrenamiento original está en la ficha de hello **experimento de entrenamiento**, y Hola recién creado experimento predictivo está por debajo del **experimento predictivo**. experimento predictivo Hello es hello uno que se implementará como un servicio web.
 
-Necesitamos realizar un paso adicional con este experimento concreto.
-Se han agregado dos módulos [Execute R Script][execute-r-script] (Ejecutar script R) para proporcionar una función de ponderación a los datos. Era simplemente un truco necesario para el entrenamiento y las pruebas, por lo que es posible quitar dichos módulos en el modelo final.
-Machine Learning Studio quitó un módulo [Execute R Script][execute-r-script] (Ejecutar script R) cuando quitó el módulo [Split][split] (Dividir). Ahora se puede quitar el otro y conectar [Editor de metadatos][metadata-editor] directamente a [Score Model][score-model] (Puntuar modelo).    
+Es necesario un paso adicional tootake con este experimento determinado.
+Hemos agregado dos [ejecutar Script de R] [ execute-r-script] tooprovide módulos una ponderación función toohello datos. Que era simplemente un truco que necesitábamos para el entrenamiento y pruebas, por lo que podemos realizar out esos módulos en el modelo final Hola.
+Estudio de aprendizaje automático quitado uno [ejecutar Script de R] [ execute-r-script] módulo cuando quita hello [división] [ split] módulo. Ahora podemos quitar Hola sí y conectar [Editor de metadatos] [ metadata-editor] directamente demasiado[puntuar modelo][score-model].    
 
 Nuestro experimento debería tener ahora un aspecto similar al siguiente:  
 
-![Scoring the trained model][4]  
+![La puntuación del modelo entrenado Hola][4]  
 
 > [!NOTE]
-> Quizás se pregunte por qué hemos dejado el conjunto de datos de los datos de datos de tarjeta de crédito alemana de UCI en el experimento predictivo. El servicio va a utilizar los datos del usuario, no el conjunto de datos original; entonces, ¿por qué se deja el conjunto de datos original en el modelo?
+> Quizás se pregunte por qué se deja el conjunto de datos de tarjeta de crédito de alemán de UCI de Hola en experimento predictivo Hola. servicio de Hello va datos del usuario de tooscore hello, no Hola conjunto de datos original, por lo tanto ¿por qué dejar Hola conjunto de datos original en hello modelo?
 > 
-> Es cierto que el servicio no necesita los datos originales de la tarjeta de crédito. Pero sí necesita el esquema para esos datos, que incluye información como la cantidad de columnas que hay y cuáles son numéricas. Esta información del esquema es necesaria para interpretar los datos del usuario. Dejamos estos componentes conectados para que el módulo de puntuación tenga el esquema del conjunto de datos cuando el servicio se esté ejecutando. No se utilizan los datos, sino solamente el esquema.  
+> Es cierto que servicio hello no necesita datos de tarjeta de crédito originales Hola. Pero debe esquema Hola de esos datos, que incluye información como el número de columnas hay y qué columnas son numéricos. Esta información de esquema es datos del usuario de hello toointerpret necesarios. Se deje estos componentes conectados para que hello puntuación módulo tiene esquema de conjunto de datos de hello cuando se está ejecutando el servicio de Hola. no se usan datos de Hello, solo el esquema de Hola.  
 > 
 > 
 
-Ejecute el experimento por última vez (haga clic en **Ejecutar**). Si desea comprobar que el modelo sigue funcionando, haga clic en la salida del módulo [Score Model][score-model] (Puntuar modelo) y seleccione **Ver resultados**. Puede ver que aparecen los datos originales, junto con el valor de riesgo de crédito (las "etiquetas puntuadas") y el valor de probabilidad de la puntuación (las "probabilidades puntuadas"). 
+Ejecute el experimento de hello una última vez (haga clic en **ejecutar**.) Si desea tooverify que Hola modelo sigue funcionando, haga clic en salida de hello de hello [puntuar modelo] [ score-model] módulo y seleccione **ver los resultados de**. Puede ver que se muestran los datos originales de hello, junto con el valor de riesgo de crédito de hello ("etiquetas con puntuación") y Hola la puntuación del valor de probabilidad ("puntúan probabilidades".) 
 
-## <a name="deploy-the-web-service"></a>Implementación del servicio web
-Puede implementar el experimento como un servicio web clásico o como un servicio web nuevo basado en Azure Resource Manager.
+## <a name="deploy-hello-web-service"></a>Implementar el servicio web de Hola
+Puede implementar Hola experimento como un servicio web de clásico o como un nuevo servicio web que se basa en el Administrador de recursos de Azure.
 
 ### <a name="deploy-as-a-classic-web-service"></a>Implementación como servicio web clásico
-Para implementar un servicio web clásico derivado de nuestro experimento, haga clic en **Deploy Web Service** (Implementar servicio web) debajo del lienzo y seleccione **Deploy Web Service [Classic]** (Implementar servicio web [clásico]). Estudio de aprendizaje automático implementa el experimento como servicio web y lo remite al panel del servicio web. Desde esta página, puede volver al experimento (**View snapshot** [Ver instantánea] o **View latest** [Ver más reciente]) y ejecutar una prueba sencilla del servicio web (consulte la sección **Prueba del servicio web** a continuación). También hay información aquí para crear aplicaciones que puedan acceder al servicio web (más información al respecto en el siguiente paso de este tutorial).
+toodeploy un clásico web servicio derivado de nuestro experimento, haga clic en **implementar el servicio de Web** por debajo de hello lienzo y seleccione **implementar servicio Web [estándar]**. Estudio de aprendizaje automático implementa Hola experimento como un servicio web y le toohello panel para ese servicio web. Desde esta página puede devolver toohello experimento (**ver instantánea** o **ver más reciente**) y ejecutar una prueba sencilla del servicio web de hello (vea **probar el servicio web de hello** a continuación). También hay información aquí para crear aplicaciones que pueden tener acceso a los servicio web de hello (más que en el paso siguiente de Hola de este tutorial).
 
 ![Panel del servicio web][6]
 
-Puede configurar el servicio haciendo clic en la pestaña **CONFIGURACIÓN** . Aquí puede modificar el nombre del servicio (recibe de manera predeterminada el nombre del experimento) y proporcionarle una descripción. También puede poner etiquetas más descriptivas para los datos de entrada y salida.  
+Puede configurar el servicio de hello haciendo clic en hello **configuración** ficha. Aquí puede modificar el nombre del servicio hello (es nombre de experimento Hola determinado de forma predeterminada) y escriba una descripción. También se pueden proporcionar más etiquetas descriptivas Hola datos de entrada y salida.  
 
-![Configurar el servicio web][5]  
+![Configurar el servicio web de Hola][5]  
 
 ### <a name="deploy-as-a-new-web-service"></a>Implementación como servicio web nuevo
 
 > [!NOTE] 
-> Para implementar un servicio web nuevo, debe tener permisos suficientes en la suscripción en la que lo implementa. Para obtener más información, consulte [Administración de un servicio web mediante el portal Servicios web Azure Machine Learning](machine-learning-manage-new-webservice.md). 
+> toodeploy un nuevo servicio web debe tener permisos suficientes en hello toowhich de suscripción que va a implementar Hola servicio web. Para obtener más información, consulte [administrar un servicio web mediante el portal de servicios Web de Azure Machine Learning hello](machine-learning-manage-new-webservice.md). 
 
-Para implementar un servicio web nuevo derivado del experimento:
+toodeploy un nuevo servicio web se deriva de nuestro experimento:
 
-1. Haga clic en **Deploy Web Service** (Implementar servicio web) debajo del lienzo y seleccione **Deploy Web Service [New]** (Implementar servicio web [nuevo]). Machine Learning Studio lo lleva a la página de **implementación de experimentos** del portal Servicios web Azure Machine Learning.
+1. Haga clic en **implementar el servicio de Web** por debajo de hello lienzo y seleccione **implementar [New] servicio Web**. Estudio de aprendizaje automático transfiere los servicios web de aprendizaje automático de Azure de toohello **implementar experimento** página.
 
-2. Escriba un nombre para el servicio web. 
+2. Escriba un nombre para el servicio web de Hola. 
 
-3. Para **Plan de precios**, puede seleccionar un plan de precios existente, o seleccionar "Crear nuevo" y asignar un nombre al nuevo plan y seleccionar la opción de plan mensual. Los niveles de los planes predeterminados son los de la región predeterminada, y el servicio web se implementa en dicha región.
+3. Para **Plan de precios**, puede seleccionar un plan de precios existente o seleccione "Crear nuevo" y conceda a Hola de nuevo plan de un nombre y una opción de plan mensual de hello select. plan de Hello niveles predeterminados toohello planes para la región predeterminada y el servicio web está implementado toothat región.
 
 4. Haga clic en **Implementar**.
 
-Después algunos minutos, se abre la página **Inicio rápido** del servicio web.
+Después de unos minutos, Hola **inicio rápido** se abre la página para el servicio web.
 
-Puede configurar el servicio haciendo clic en la pestaña **Configurar**. Aquí puede modificar el título del servicio y escribir una descripción. 
+Puede configurar el servicio de hello haciendo clic en hello **configurar** ficha. Aquí puede modificar el servicio de hello título y escriba una descripción. 
 
-Para probar el servicio web, haga clic en la pestaña **Probar** (vea la sección **Prueba del servicio web** a continuación). Para obtener información sobre cómo crear aplicaciones que puedan acceder al servicio web, haga clic en la pestaña **Consumir** (en el siguiente paso de este tutorial puede encontrar más información).
-
-> [!TIP]
-> Puede actualizar el servicio web después de haberlo implementado. Por ejemplo, si desea cambiar el modelo, edite el experimento de entrenamiento, ajuste los parámetros del modelo, haga clic en **Deploy Web Service** (Implementar servicio web) y seleccione **Deploy Web Service [Classic]** (Implementar servicio web [clásico]) o **Deploy Web Service [New]** (Implementar servicio web [nuevo]). Cuando implementa el experimento de nuevo, este sustituye al servicio web, ahora con el modelo actualizado.  
-> 
-> 
-
-## <a name="test-the-web-service"></a>Prueba del servicio web
-
-Cuando se accede al servicio web, los datos del usuario se escriben a través del módulo **Web service input** (Entrada al servicio web), donde se pasan al módulo [Score Model][score-model] (Puntuar modelo) y se puntúan. Según se ha configurado el experimento predictivo, el modelo espera los datos en el mismo formato que el conjunto de datos de riesgo de crédito original.
-Los resultados se devuelven al usuario desde el servicio web a través del módulo **Web service output** (Salida del servicio web).
+Hola tootest servicio web, haga clic en hello **prueba** pestaña (vea **probar el servicio web de hello** a continuación). Para obtener información sobre cómo crear aplicaciones que pueden tener acceso a los servicio web de hello, haga clic en hello **Consume** pestaña (paso siguiente de hello en este tutorial entrarán en más detalle).
 
 > [!TIP]
-> La forma en que se configura el experimento predictivo permitirá que se devuelvan los resultados desde el módulo [Score Model][score-model] (Puntuar modelo). Esto incluye todos los datos de entrada además del valor de riesgo de crédito y la probabilidad de puntuación. Pero puede devolver algo distinto si lo desea; por ejemplo, podría devolver solamente el valor de riesgo de crédito. Para ello, inserte un módulo [Columnas del proyecto][project-columns] entre [Puntuar modelo][score-model] y **Web service output** (Salida del servicio web) para eliminar aquellas columnas que no desea que devuelva el servicio web. 
+> Puede actualizar el servicio web de hello una vez que haya implementado. Por ejemplo, si desea toochange el modelo, a continuación, puede editar el experimento de entrenamiento de Hola, ajustar los parámetros del modelo hello y haga clic en **implementar el servicio de Web**, seleccione **implementar servicio Web [estándar]** o  **Implementar el servicio Web [New]**. Cuando implemente el experimento de Hola de nuevo, reemplaza el servicio web de hello, ahora con el modelo actualizado.  
 > 
 > 
 
-Puede probar el servicio web clásico en **Machine Learning Studio** o en el portal **Servicios web Azure Machine Learning**.
-Puede probar un servicio web nuevo en el portal **Servicios web Machine Learning**.
+## <a name="test-hello-web-service"></a>Servicio web de Hola de prueba
+
+Cuando se accede al servicio web de hello, datos del usuario de hello entra a través de hello **Web proporcionados por el servicio** módulo donde ha pasado toohello [puntuar modelo] [ score-model] módulo y puntuación. forma de Hello que hemos configurado experimento predictivo hello, modelo de hello espera datos en el mismo formato que el conjunto de datos de riesgo de crédito original de Hola de Hola.
+se devuelven resultados de Hola de toohello usuario de servicio web de Hola a través de hello **Web resultado del servicio** módulo.
 
 > [!TIP]
-> Al realizar pruebas en el portal Servicios web Azure Machine Learning, puede habilitar el portal para que cree datos de ejemplo que se puedan usar para probar el servicio de solicitud-respuesta. En la página **Configurar**, seleccione "Yes" (Sí) para **Sample Data Enabled?** (¿Datos de ejemplo habilitados?). Al abrir la pestaña Solicitud-respuesta en la página **Probar**, el portal rellena los datos de ejemplo obtenidos del conjunto de datos de riesgo de crédito original.
+> forma de Hello tenemos Hola predictivo experimento configurado, Hola todo da como resultado de hello [puntuar modelo] [ score-model] módulo se devuelven. Esto incluye todos los datos de entrada de hello más valores de riesgo de crédito de Hola y Hola la puntuación de probabilidad. Pero puede devolver algo distinto si desea; por ejemplo, podría devolver solamente el valor de riesgo del crédito de Hola. toodo, inserte un [proyectar columnas] [ project-columns] módulo entre [puntuar modelo] [ score-model] hello y **Web resultado del servicio** columnas tooeliminate que no desea Hola tooreturn de servicio web. 
+> 
+> 
+
+Puede probar un servidor web estándar de servicio en **estudio de aprendizaje automático** o en hello **servicios Web de Azure Machine Learning** portal.
+Puede probar un nuevo servicio web solo en hello **servicios Web de aprendizaje de máquina** portal.
+
+> [!TIP]
+> Al realizar pruebas en el portal de servicios Web de Azure Machine Learning hello, puede tener portal Hola crear datos de ejemplo que puede usar tootest Hola respuesta de solicitud de servicio. En hello **configurar** , seleccione "Sí" para **habilitado de datos de ejemplo?**. Cuando se abre la pestaña de hello solicitudes y respuestas de hello **prueba** página, portal de hello rellena los datos de ejemplo tomados de conjunto de datos de riesgo de crédito original de Hola.
 
 ### <a name="test-a-classic-web-service"></a>Prueba de un servicio web clásico
 
-Puede probar un servicio web clásico en Machine Learning Studio o en el portal Servicios web Azure Machine Learning. 
+Puede probar un servicio web de clásico en estudio de aprendizaje automático o en el portal de servicios Web de aprendizaje de máquina de Hola. 
 
 #### <a name="test-in-machine-learning-studio"></a>Prueba en Machine Learning Studio
 
-1. En la página **PANEL** del servicio web, haga clic en el botón **Probar** de **Default Endpoint** (Punto de conexión predeterminado). Aparecerá un cuadro de diálogo que le pide los datos de entrada del servicio. Se trata de las mismas columnas que aparecieron en el conjunto de datos original de riesgo de crédito original.  
+1. En hello **panel** página de servicio web de hello, haga clic en hello **prueba** situado bajo **punto de conexión predeterminado**. Un cuadro de diálogo aparece y le pide de datos de entrada de hello para el servicio de Hola. Estos es Hola mismas columnas que aparecían en el conjunto de datos de riesgo de crédito original de Hola.  
 
-2. Escriba un conjunto de datos y, a continuación, haga clic en **Aceptar**. 
+2. Escriba un conjunto de datos y haga clic en **Aceptar**. 
 
-#### <a name="test-in-the-machine-learning-web-services-portal"></a>Prueba en el portal Servicios web Machine Learning
+#### <a name="test-in-hello-machine-learning-web-services-portal"></a>Probar en el portal de servicios Web de aprendizaje de máquina de Hola
 
-1. En la página **PANEL** del servicio web, haga clic en el botón **Test preview** (Vista preliminar de la prueba) de **Default Endpoint** (Punto de conexión predeterminado). La página de prueba del portal Servicios web Azure Machine Learning para el punto de conexión del servicio web se abrirá y le pedirá los datos de entrada para el servicio. Se trata de las mismas columnas que aparecieron en el conjunto de datos original de riesgo de crédito original.
+1. En hello **panel** página de servicio web de hello, haga clic en hello **vista previa de prueba** vincular en **punto de conexión predeterminado**. página de prueba de Hello en el portal de servicios Web de Azure Machine Learning hello para el extremo del servicio web Hola se abre y le pide de datos de entrada de hello para el servicio de Hola. Estos es Hola mismas columnas que aparecían en el conjunto de datos de riesgo de crédito original de Hola.
 
 2. Haga clic en **Test Request-Response** (Probar solicitud-respuesta). 
 
 ### <a name="test-a-new-web-service"></a>Prueba de un servicio web nuevo
 
-Puede probar un servicio web nuevo en el portal Servicios web Machine Learning.
+Puede probar un nuevo servicio web solo en el portal de servicios Web de aprendizaje de máquina de Hola.
 
-1. En el portal [Servicios web Azure Machine Learning](https://services.azureml.net/quickstart), haga clic en **Probar** en la parte superior de la página. Se abrirá la página **Prueba** y podrá escribir datos para el servicio. Los campos de entrada que se muestran corresponden a las columnas que aparecieron en el conjunto de datos original de riesgo de crédito. 
+1. Hola [servicios Web de Azure Machine Learning](https://services.azureml.net/quickstart) portal, haga clic en **prueba** al principio de Hola de página de Hola. Hola **prueba** se abre la página y puede escribir datos de servicio de Hola. campos de entrada de Hello mostrados corresponden columnas toohello que aparecían en el conjunto de datos de riesgo de crédito original de Hola. 
 
 2. Escriba un conjunto de datos y, después, haga clic en **Test Request-Response**(Probar solicitud-respuesta).
 
-Los resultados de la prueba se muestran en el lado derecho de la página en la columna de salida. 
+Hola se muestran resultados de prueba de hello en lado derecho de Hola de página de hello en la columna de salida de hello. 
 
 
-## <a name="manage-the-web-service"></a>Administración del servicio web
+## <a name="manage-hello-web-service"></a>Administrar el servicio web de Hola
 
-### <a name="manage-a-classic-web-service-in-the-azure-classic-portal"></a>Administración de un servicio web clásico en el Portal de Azure clásico
+### <a name="manage-a-classic-web-service-in-hello-azure-classic-portal"></a>Administrar un servicio web de clásico en hello portal de Azure clásico
 
-Cuando se haya implementado el servicio web clásico, podrá administrarlo desde el [Portal de Azure clásico](https://manage.windowsazure.com).
+Una vez haya implementado el servicio web de clásico, puede administrar de hello [portal de Azure clásico](https://manage.windowsazure.com).
 
-1. Inicie sesión en el [Portal de Azure clásico](https://manage.windowsazure.com).
-2. En el panel Servicios de Microsoft Azure, haga clic en **MACHINE LEARNING**.
+1. Inicie sesión en toohello [portal de Azure clásico](https://manage.windowsazure.com)
+2. En el panel de servicios de Microsoft Azure hello, haga clic en **aprendizaje automático**
 3. Haga clic en el área de trabajo.
-4. Haga clic en la pestaña **Servicios web**.
-5. Haga clic en el servicio web creado.
-6. Haga clic en el punto de conexión "predeterminado".
+4. Haga clic en hello **servicios Web** ficha
+5. Haga clic en el servicio web de hello creamos
+6. Haga clic en el punto de conexión de Hola "predeterminado"
 
-Desde aquí, puede hacer tareas como supervisar el funcionamiento del servicio web y realizar ajustes de rendimiento cambiando el volumen de llamadas simultáneas que el servicio puede controlar.
+Desde aquí, puede hacer cosas como supervisar cómo realiza el servicio web de Hola y realizar ajustes de rendimiento cambiando el número de llamadas concurrentes Hola servicio puede controlar.
 
 Para obtener información, consulte:
 
 * [Creación de extremos](machine-learning-create-endpoint.md)
 * [Escalado del servicio web](machine-learning-scaling-webservice.md)
 
-### <a name="manage-a-classic-or-new-web-service-in-the-azure-machine-learning-web-services-portal"></a>Administración de un servicio web nuevo o clásico en el portal Servicios web Azure Machine Learning
+### <a name="manage-a-classic-or-new-web-service-in-hello-azure-machine-learning-web-services-portal"></a>Administrar un nuevo servicio web en el portal de servicios Web de Azure Machine Learning Hola o clásico
 
-Cuando se haya implementado el servicio web, ya sea clásico o nuevo, podrá administrarlo desde el portal [Servicios web Microsoft Azure Machine Learning](https://services.azureml.net/quickstart).
+Una vez haya implementado el servicio web, ya sea clásico o nueva, se puede administrar desde hello [servicios Web de Microsoft Azure Machine Learning](https://services.azureml.net/quickstart) portal.
 
-Para supervisar el rendimiento del servicio web, siga estos pasos:
+rendimiento de hello toomonitor del servicio web:
 
-1. Inicie sesión en el portal [Servicios web Microsoft Azure Machine Learning](https://services.azureml.net/quickstart).
+1. Inicie sesión en toohello [servicios Web de Microsoft Azure Machine Learning](https://services.azureml.net/quickstart) portal
 2. Haga clic en **Servicios web**.
 3. Haga clic en el servicio web.
-4. Haga clic en **Panel**.
+4. Haga clic en hello **panel**
 
 - - -
-**Siguiente: [Acceso al servicio web](machine-learning-walkthrough-6-access-web-service.md)**
+**Siguiente: [acceder al servicio web Hola](machine-learning-walkthrough-6-access-web-service.md)**
 
 [3]: ./media/machine-learning-walkthrough-5-publish-web-service/publish3.png
 [3a]: ./media/machine-learning-walkthrough-5-publish-web-service/publish3a.png

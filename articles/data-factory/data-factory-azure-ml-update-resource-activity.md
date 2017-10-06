@@ -1,6 +1,6 @@
 ---
-title: "Actualización de los modelos de Machine Learning con Azure Data Factory | Microsoft Docs"
-description: "Describe cómo crear canalizaciones predictivas con Factoría de datos de Azure y Aprendizaje automático de Azure"
+title: "modelos de aprendizaje automático de aaaUpdate mediante Data Factory de Azure | Documentos de Microsoft"
+description: "Describe cómo toocreate crear canalizaciones predictivas con factoría de datos de Azure y aprendizaje automático de Azure"
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: e31a7a59d14de4382190b39bd70f3ddf6cf673ea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6e5e4d2cfd245c7a9ed3bb9cdacca1f7f82b9620
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Actualización de los modelos de Azure Machine Learning con la actividad de actualización de recurso
 
@@ -33,36 +33,36 @@ ms.lasthandoff: 07/11/2017
 > * [Actividad U-SQL de Data Lake Analytics](data-factory-usql-activity.md)
 > * [Actividad personalizada de .NET](data-factory-use-custom-activities.md)
 
-Este artículo complementa el artículo de integración principal Azure Data Factory - Azure Machine Learning: [Creación de canalizaciones predictivas con Azure Machine Learning y Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Si aún no lo ha hecho, revise el artículo principal antes de leer este artículo. 
+En este artículo complementa Hola factoría de datos principal de Azure: artículo de integración de aprendizaje automático de Azure: [crear canalizaciones predictivas con aprendizaje automático de Azure y Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Si aún no lo ha hecho, revise el artículo principal de hello antes de leer este artículo. 
 
 ## <a name="overview"></a>Información general
-Pasado algún tiempo, los modelos predictivos en los experimentos de puntuación de Aprendizaje automático de Azure tienen que volver a entrenarse con nuevos conjuntos de datos de entrada. Después de terminar con el nuevo entrenamiento, tendrá que actualizar el servicio web de puntuación con el modelo de Aprendizaje automático que volvió a entrenar. Los pasos más comunes para habilitar el nuevo entrenamiento y actualizar los modelos de Aprendizaje automático de Azure mediante los servicios web son:
+Con el tiempo, los modelos de predicción de hello en experimentos de puntuación de aprendizaje automático de Azure de hello necesitan toobe volver a entrenar con los nuevos conjuntos de datos de entrada. Cuando termine con reciclaje, desea hello tooupdate la puntuación del servicio web con hello volver a entrenar el modelo de aprendizaje automático. Hola pasos típicos tooenable reciclaje y actualizables modelos de aprendizaje automático de Azure a través de servicios web son:
 
 1. Crear un experimento en [Estudio de aprendizaje automático de Azure](https://studio.azureml.net).
-2. Cuando esté satisfecho con el modelo, use Azure Machine Learning Studio para publicar servicios web para el **experimento de entrenamiento** y el **experimento predictivo o de puntuación**.
+2. Cuando esté satisfecho con el modelo de hello, utilice servicios de web toopublish de estudio de aprendizaje automático para ambos hello **experimento de entrenamiento** y puntuación /**experimento predictivo**.
 
-En la tabla siguiente se describen los servicios web empleados en este ejemplo.  Consulte [Volver a entrenar modelos de aprendizaje automático mediante programación](../machine-learning/machine-learning-retrain-models-programmatically.md) para obtener información detallada.
+Hello tabla siguiente describen los servicios de web Hola utilizados en este ejemplo.  Consulte [Volver a entrenar modelos de aprendizaje automático mediante programación](../machine-learning/machine-learning-retrain-models-programmatically.md) para obtener información detallada.
 
-- **Servicio web de entrenamiento**: recibe datos de entrenamiento y genera modelos entrenados. El resultado del nuevo entrenamiento es un archivo .ilearner en Blob Storage de Azure. El **punto de conexión predeterminado** se crea automáticamente para cuando publique el experimento de entrenamiento como un servicio web. Se pueden crear más puntos de conexión, pero el ejemplo usa solo el predeterminado.
-- **Servicio web de puntuación**: recibe ejemplos de datos sin etiqueta y realiza predicciones. El resultado de la predicción puede presentarse en diversas formas, como un archivo .csv o como las filas de una Base de datos de SQL de Azure, dependiendo de la configuración del experimento. El punto de conexión predeterminado se crea automáticamente cuando se publica el experimento predictivo como un servicio web. 
+- **Servicio web de entrenamiento**: recibe datos de entrenamiento y genera modelos entrenados. salida de Hello de reciclaje de hello es un archivo de .ilearner en un almacenamiento de blobs de Azure. Hola **predeterminado extremo** se crea automáticamente para que cuando publica entrenamiento Hola experimenta como un servicio web. Puede crear varios puntos de conexión pero el ejemplo de Hola utiliza solo Hola punto de conexión predeterminado.
+- **Servicio web de puntuación**: recibe ejemplos de datos sin etiqueta y realiza predicciones. salida de Hello de predicción podría tener diversas formas, como un archivo .csv o filas de una base de datos de SQL Azure, dependiendo de la configuración Hola del experimento de Hola. el punto de conexión de Hello predeterminado se crea automáticamente al publicar el experimento de predicción de Hola como un servicio web. 
 
-La siguiente imagen muestra la relación entre los puntos de conexión de entrenamiento y de puntuación de Aprendizaje automático de Azure.
+Hello siguiente imagen muestra hello relación entre el entrenamiento y de los puntos de conexión de puntuación de aprendizaje automático de Azure.
 
 ![SERVICIOS WEB](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-Puede invocar el **training web service** a través de **actividad de ejecución de lotes de Aprendizaje automático de Azure**. La invocación de un servicio web de entrenamiento es lo mismo que invocar un servicio web de Azure Machine Learning (servicio web de puntuación) para puntuar datos. Las secciones anteriores abarcan cómo invocar un servicio web de Azure Machine Learning a partir de una canalización de Azure Data Factory. 
+Puede invocar hello **entrenamiento servicio web** mediante el uso de hello **actividad de ejecución de lotes de aprendizaje automático de Azure**. La invocación de un servicio web de entrenamiento es lo mismo que invocar un servicio web de Azure Machine Learning (servicio web de puntuación) para puntuar datos. Hola anterior portada de secciones de canalización en detalle cómo tooinvoke un servicio web de aprendizaje automático de Azure de una factoría de datos de Azure. 
 
-Puede invocar el **scoring web service** a través de **Actividad de recursos de actualización de Aprendizaje automático de Azure** para actualizar el servicio web con el modelo recién entrenado. Los ejemplos siguientes proporcionan definiciones de servicios vinculados: 
+Puede invocar hello **la puntuación del servicio web** mediante el uso de hello **actividad de recursos de actualización de aprendizaje automático de Azure** servicio de web de hello tooupdate con hello recién entrenado. Hello en los ejemplos siguientes proporciona definiciones de servicio vinculado: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>El servicio web de puntuación es un servicio web clásico
-Si el servicio web de puntuación es un **servicio web clásico**, cree el segundo **punto de conexión no predeterminado y actualizable** mediante [Azure Portal](https://manage.windowsazure.com). Para conocer los pasos necesarios para ello, consulte el artículo [Creación de puntos de conexión](../machine-learning/machine-learning-create-endpoint.md). Después de crear el punto de conexión actualizable no predeterminado, realice los siguientes pasos:
+Si la puntuación del servicio web de hello es un **servicio web clásico**, crear hello en segundo lugar **no predeterminado y puede actualizar el extremo** mediante el uso de hello [portal de Azure](https://manage.windowsazure.com). Para conocer los pasos necesarios para ello, consulte el artículo [Creación de puntos de conexión](../machine-learning/machine-learning-create-endpoint.md). Después de crear extremo actualizables de hello no predeterminado, Hola pasos:
 
-* Haga clic en **EJECUCIÓN DE LOTES** para obtener el valor del URI para la propiedad JSON **mlEndpoint**.
-* Haga clic en vínculo **ACTUALIZAR RECURSO** para obtener el valor de URI para la propiedad JSON **updateResourceEndpoint**. La clave de API está en la página de punto de conexión (en la esquina inferior derecha).
+* Haga clic en **ejecución por lotes** tooget Hola URI valor hello **mlEndpoint** propiedad JSON.
+* Haga clic en **recurso de actualización** vincular el valor URI de hello tooget para hello **updateResourceEndpoint** propiedad JSON. clave de API de Hello es en la propia página de punto de conexión hello (en la esquina inferior derecha de hello).
 
 ![punto de conexión actualizable](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
-En el ejemplo siguiente se proporciona una definición de JSON de ejemplo para el servicio vinculado de AzureML. El servicio vinculado utiliza apiKey para la autenticación.  
+Hola de ejemplo siguiente proporciona una definición de JSON de ejemplo de Hola servicio vinculado de aprendizaje automático de Azure. Hola servicio vinculado utiliza hello apiKey para la autenticación.  
 
 ```json
 {
@@ -79,20 +79,20 @@ En el ejemplo siguiente se proporciona una definición de JSON de ejemplo para e
 ```
 
 ## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>El servicio web de puntuación es el servicio web Azure Resource Manager 
-Si el servicio web es el nuevo tipo de servicio web que expone un punto de conexión de Azure Resource Manager, no es preciso agregar el segundo punto de conexión **no predeterminado**. En el servicio vinculado, **updateResourceEndpoint** tiene el formato: 
+Si el servicio web de hello es Hola nuevo tipo de servicio web que expone un punto de conexión de administrador de recursos de Azure, no es necesario tooadd hello en segundo lugar **no predeterminado** punto de conexión. Hola **updateResourceEndpoint** Hola servicio vinculado tiene el formato de hello: 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Puede obtener valores para los marcadores de posición en la dirección URL al consultar el servicio web en el [Portal de servicios web Azure Machine Learning](https://services.azureml.net/). El nuevo tipo de punto de conexión del recurso de actualización requiere un token AAD (Azure Active Directory). Especifique **servicePrincipalId** y **servicePrincipalKey**en el servicio vinculado AzureML. Consulte [Uso del portal para crear una aplicación de Active Directory y una entidad de servicio con acceso a los recursos](../azure-resource-manager/resource-group-create-service-principal-portal.md). Esta es la definición de un servicio vinculado AzureML de ejemplo: 
+Puede obtener valores para los marcadores de posición en la dirección URL de hello al consultar el servicio web de hello en hello [Web Services Portal de Azure Machine Learning](https://services.azureml.net/). nuevo tipo de punto de conexión de recurso de actualización de Hello requiere un token AAD (Azure Active Directory). Especifique **servicePrincipalId** y **servicePrincipalKey**en el servicio vinculado AzureML. Vea [cómo toocreate entidad de seguridad de servicio y asignar permisos toomanage recursos de Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md). Esta es la definición de un servicio vinculado AzureML de ejemplo: 
 
 ```json
 {
     "name": "AzureMLLinkedService",
     "properties": {
         "type": "AzureML",
-        "description": "The linked service for AML web service.",
+        "description": "hello linked service for AML web service.",
         "typeProperties": {
             "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/0000000000000000000000000000000000000/services/0000000000000000000000000000000000000/jobs?api-version=2.0",
             "apiKey": "xxxxxxxxxxxx",
@@ -105,22 +105,22 @@ Puede obtener valores para los marcadores de posición en la dirección URL al c
 }
 ```
 
-El escenario siguiente proporciona más detalles. Tiene un ejemplo para volver a entrenar y actualizar modelos de Azure Machine Learning a partir de una canalización de Azure Data Factory.
+Hello escenario siguiente proporciona más detalles. Tiene un ejemplo para volver a entrenar y actualizar modelos de Azure Machine Learning a partir de una canalización de Azure Data Factory.
 
 ## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>Escenario: entrenamiento y actualización de un modelo de Aprendizaje automático de Azure
-Esta sección proporciona una canalización de ejemplo que usa la **actividad Ejecución de lotes de Azure Machine Learning** para volver a entrenar un modelo. La canalización usa también la **actividad Actualizar recurso de Azure Machine Learning** para actualizar el modelo en el servicio web de puntuación. La sección también proporciona fragmentos JSON para todos los servicios vinculados, conjuntos de datos y canalización en el ejemplo.
+Esta sección proporciona una canalización de ejemplo que usa hello **actividad de ejecución de lotes de aprendizaje automático de Azure** tooretrain un modelo. También utiliza la canalización de Hola Hola **actividad de recurso de actualización de Azure ML** tooupdate modelo de Hola Hola la puntuación del servicio web. sección de Hello también proporciona Hola de fragmentos de código JSON para todos los servicios vinculados, conjuntos de datos y canalización de ejemplo de Hola.
 
-Esta es la vista de diagrama de la canalización de ejemplo. Como se puede apreciar, la actividad Ejecución de lotes de Azure Machine Learning toma la entrada de entrenamiento y genera un resultado de entrenamiento (archivo iLearner). La Actividad de recursos de actualización de Aprendizaje automático de Azure toma este resultado de entrenamiento y actualiza el modelo en el punto de conexión de servicio web de puntuación. La Actividad de recursos de actualización no produce ningún resultado. El placeholderBlob es simplemente un conjunto de datos de salida ficticio que el servicio de Factoría de datos de Azure necesita para ejecutar la canalización.
+Esta es la vista de diagrama de Hola de canalización de ejemplo de Hola. Como puede ver, Hola actividad de ejecución de lotes de aprendizaje automático de Azure toma la entrada de entrenamiento de Hola y genera una salida de entrenamiento (archivo iLearner). Hola actividad de recursos de actualización de aprendizaje automático de Azure toma esta salida de entrenamiento y las actualizaciones de Hola modelo Hola la puntuación del extremo del servicio web. Hola actividades de actualización de recursos no genera ningún resultado. Hola placeholderBlob es simplemente un conjunto de datos de salida ficticio requerido por la canalización de hello Data Factory de Azure servicio toorun Hola.
 
 ![diagrama de canalización](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
 ### <a name="azure-blob-storage-linked-service"></a>Servicio vinculado de almacenamiento de blobs de Azure:
-Almacenamiento de Azure contiene los siguientes datos:
+Hola almacenamiento de Azure contiene Hola datos siguientes:
 
-* datos de aprendizaje. Los datos de entrada para el servicio web de entrenamiento de Azure Machine Learning.  
-* archivo iLearner. La salida del servicio web de entrenamiento de Azure Machine Learning. Este archivo también es la entrada para la actividad Actualizar recurso.  
+* datos de aprendizaje. datos de entrada de Hola para servicio de web de aprendizaje de hello aprendizaje automático de Azure.  
+* archivo iLearner. Hola de salida de servicio de web de aprendizaje de hello aprendizaje automático de Azure. Este archivo también está Hola entrada toohello actividad de recurso de actualización.  
 
-Esta es la definición de JSON de ejemplo del servicio vinculado:
+Aquí está la definición de JSON de ejemplo de Hola del servicio de hello vinculado:
 
 ```JSON
 {
@@ -135,7 +135,7 @@ Esta es la definición de JSON de ejemplo del servicio vinculado:
 ```
 
 ### <a name="training-input-dataset"></a>Conjunto de datos de entrada de entrenamiento:
-El siguiente conjunto de datos representa los datos de entrenamiento de entrada para el servicio web de entrenamiento de Aprendizaje automático de Azure. La Actividad de ejecución de lotes de Aprendizaje automático de Azure toma este conjunto de datos como entrada.
+Hello siguiente conjunto de datos representa los datos de entrenamiento de entrada de Hola para servicio de web de aprendizaje de aprendizaje automático de Azure de Hola. Hola actividad de ejecución de lotes de aprendizaje automático de Azure tiene este conjunto de datos como entrada.
 
 ```JSON
 {
@@ -166,7 +166,7 @@ El siguiente conjunto de datos representa los datos de entrenamiento de entrada 
 ```
 
 ### <a name="training-output-dataset"></a>Conjunto de datos de salida de entrenamiento:
-El siguiente conjunto de datos representa el archivo iLearner de salida del servicio web de entrenamiento de Aprendizaje automático de Azure. La Actividad de ejecución de lotes de Aprendizaje automático de Azure produce este conjunto de datos. Este conjunto de datos es también la entrada para la Actividad de recursos de actualización de Aprendizaje automático de Azure.
+Hello siguiente conjunto de datos representa hello iLearner archivo de salida de servicio de web de aprendizaje de hello aprendizaje automático de Azure. Hola actividad de ejecución de lotes de aprendizaje automático de Azure genera este conjunto de datos. Este conjunto de datos también es Hola entrada toohello actividad de recurso de actualización de aprendizaje automático de Azure.
 
 ```JSON
 {
@@ -190,7 +190,7 @@ El siguiente conjunto de datos representa el archivo iLearner de salida del serv
 ```
 
 ### <a name="linked-service-for-azure-ml-training-endpoint"></a>Servicio vinculado para el punto de conexión de entrenamiento de Aprendizaje automático de Azure
-El siguiente fragmento JSON define un servicio vinculado de Aprendizaje automático de Azure que apunta al punto de conexión predeterminado del servicio web de entrenamiento.
+Hola siguiente fragmento JSON define un servicio vinculado de aprendizaje de automático de Azure que señala el punto de conexión de toohello predeterminado del servicio web de aprendizaje de Hola.
 
 ```JSON
 {    
@@ -205,16 +205,16 @@ El siguiente fragmento JSON define un servicio vinculado de Aprendizaje automát
 }
 ```
 
-En **Azure ML Studio**, haga lo siguiente para obtener los valores de **mlEndpoint** y **apiKey**:
+En **estudio de aprendizaje automático**, Hola estos valores de tooget para **mlEndpoint** y **apiKey**:
 
-1. Haga clic en **SERVICIOS WEB** en el menú de la izquierda.
-2. En la lista de servicios web, haga clic en el **servicio web de entrenamiento** .
-3. Haga clic en Copiar junto al cuadro de texto **Clave de API** . Pegue la clave del portapapeles en el editor de JSON de Data Factory.
-4. En **Azure ML Studio**, haga clic en el vínculo **EJECUCIÓN DE LOTES**.
-5. Copie el **URI de solicitud** de la sección **Solicitar** y péguelo en el editor de JSON de Data Factory.   
+1. Haga clic en **servicios WEB** en el menú de la izquierda Hola.
+2. Haga clic en hello **entrenamiento servicio web** en la lista de hello de servicios web.
+3. Haga clic en Copiar a continuación demasiado**clave de API** cuadro de texto. Pegue la clave de hello en el Portapapeles de hello en el editor de JSON de factoría de datos de Hola.
+4. Hola **estudio de aprendizaje automático de Azure**, haga clic en **ejecución por lotes** vínculo.
+5. Hola copia **URI de solicitud** de hello **solicitar** sección y péguela en el editor de JSON de factoría de datos de Hola.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Servicio vinculado para el punto de conexión de puntuación actualizable de Aprendizaje automático de Azure:
-El siguiente fragmento JSON define un servicio vinculado de Aprendizaje automático de Azure que apunta al punto de conexión no predeterminado y actualizable del servicio web de puntuación.  
+Hola siguiente fragmento JSON define un servicio vinculado de aprendizaje de automático de Azure que señala el extremo actualizables de toohello no predeterminado de hello la puntuación del servicio web.  
 
 ```JSON
 {
@@ -234,7 +234,7 @@ El siguiente fragmento JSON define un servicio vinculado de Aprendizaje automát
 ```
 
 ### <a name="placeholder-output-dataset"></a>Conjunto de datos de salida de marcador de posición:
-La actividad Actualizar recurso de Azure Machine Learning no genera ningún resultado. Sin embargo, Azure Data Factory requiere un conjunto de datos de salida para impulsar la programación de una canalización. Por lo tanto, utilizamos un conjunto de datos ficticio o un marcador de posición en este ejemplo.  
+Hola actividad de recurso de actualización de aprendizaje automático de Azure no genera ningún resultado. Sin embargo, Data Factory de Azure requiere una programación de Hola de toodrive de conjunto de datos de salida de una canalización. Por lo tanto, utilizamos un conjunto de datos ficticio o un marcador de posición en este ejemplo.  
 
 ```JSON
 {
@@ -257,7 +257,7 @@ La actividad Actualizar recurso de Azure Machine Learning no genera ningún resu
 ```
 
 ### <a name="pipeline"></a>Canalización
-La canalización tiene dos actividades: **AzureMLBatchExecution** y **AzureMLUpdateResource**. La actividad Ejecución de lotes de Azure Machine Learning toma los datos de entrenamiento como entrada y genera como resultado un archivo iLearner. La actividad invoca el servicio web de entrenamiento (el experimento de entrenamiento expuesto como servicio web) con los datos de entrenamiento de entrada y recibe el archivo ilearner desde el servicio web. El placeholderBlob es simplemente un conjunto de datos de salida ficticio que el servicio de Factoría de datos de Azure necesita para ejecutar la canalización.
+canalización de Hello tiene dos actividades: **AzureMLBatchExecution** y **AzureMLUpdateResource**. Hola actividad de ejecución de lotes de aprendizaje automático de Azure toma los datos de entrenamiento de hello como entrada y genera un archivo iLearner como salida. actividad Hello invoca el servicio web de aprendizaje hello (se expone como un servicio web experimento de entrenamiento) con los datos de entrenamiento de entradas de Hola y recibe el archivo ilearner de hello de hello webservice. Hola placeholderBlob es simplemente un conjunto de datos de salida ficticio requerido por la canalización de hello Data Factory de Azure servicio toorun Hola.
 
 ![diagrama de canalización](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

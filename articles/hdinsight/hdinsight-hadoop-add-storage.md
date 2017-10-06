@@ -1,6 +1,6 @@
 ---
-title: "Adición de cuentas de almacenamiento de Azure a HDInsight | Microsoft Docs"
-description: "Aprenda a agregar cuentas de Azure Storage adicionales a un clúster de HDInsight existente."
+title: cuentas de almacenamiento de Azure adicional aaaAdd tooHDInsight | Documentos de Microsoft
+description: "Obtenga información acerca de cómo las cuentas de almacenamiento de Azure adicionales de tooadd tooan clúster de HDInsight existente."
 services: hdinsight
 documentationCenter: 
 author: Blackmist
@@ -15,75 +15,75 @@ ms.workload: big-data
 ms.date: 08/04/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 0853e8605e07c28867676e9c13b89263ade67c88
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ce5acfa4b61bf7e83b1fb374d64a1eaa3182fbec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-additional-storage-accounts-to-hdinsight"></a>Adición de más cuentas de almacenamiento a HDInsight
+# <a name="add-additional-storage-accounts-toohdinsight"></a>Agregar tooHDInsight de cuentas de almacenamiento adicional
 
-Aprenda a usar acciones de script para agregar cuentas de almacenamiento de Azure adicionales a HDInsight. Los pasos descritos en este documento agregan una cuenta de almacenamiento a un clúster de HDInsight existente basado en Linux.
+Obtenga información acerca de cómo las cuentas de tooHDInsight toouse script acciones tooadd adicionales almacenamiento de Azure. Hello pasos de este documento agregan un clúster de HDInsight basados en Linux existente de almacenamiento cuenta tooan.
 
 > [!IMPORTANT]
-> La información de este documento trata sobre cómo agregar almacenamiento adicional a un clúster después de que se ha creado. Para más información sobre cómo agregar cuentas de almacenamiento durante la creación del clúster, consulte [Configuración de clústeres de HDInsight con Hadoop, Spark, Kafka y mucho más](hdinsight-hadoop-provision-linux-clusters.md).
+> información de Hello en este documento es sobre la adición de clúster de almacenamiento adicional tooa después de que se ha creado. Para más información sobre cómo agregar cuentas de almacenamiento durante la creación del clúster, consulte [Configuración de clústeres de HDInsight con Hadoop, Spark, Kafka y mucho más](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="how-it-works"></a>Cómo funciona
 
-Este script toma los parámetros siguientes:
+Este script toma Hola parámetros siguientes:
 
-* __Nombre de la cuenta de almacenamiento de Azure__: el nombre de la cuenta de almacenamiento que se agregará al clúster de HDInsight. Después de ejecutar el script, HDInsight podrá leer y escribir los datos almacenados en esta cuenta de almacenamiento.
+* __Nombre de la cuenta de almacenamiento de Azure__: nombre de Hola Hola almacenamiento cuenta tooadd toohello del clúster de HDInsight. Después de ejecutar el script de Hola, HDInsight puede leer y escribir datos almacenados en esta cuenta de almacenamiento.
 
-* __Clave de la cuenta de almacenamiento de Azure__: una clave que concede acceso a la cuenta de almacenamiento.
+* __Clave de cuenta de almacenamiento de Azure__: una clave que conceda acceso a cuenta de almacenamiento de toohello.
 
-* __-p__ (opcional): si se especifica, la clave no se cifra y se almacena en el archivo core-site.xml como texto sin formato.
+* __-p__ (opcional): si se especifica, clave hello no se cifra y se almacena en el archivo de core-site.xml de hello como texto sin formato.
 
-Durante el procesamiento, el script realiza las siguientes acciones:
+Durante el procesamiento, el script de Hola realiza Hola siguientes acciones:
 
-* Si la cuenta de almacenamiento ya existe en la configuración de core-site.xml para el clúster, el script se cierra y no se lleva a cabo ninguna otra acción.
+* Si hello cuenta de almacenamiento ya existe en la configuración de core-site.xml hello para el clúster de hello, Hola script se cerrará y no se llevan a cabo ninguna acción adicional.
 
-* Comprueba que la cuenta de almacenamiento existe y que se puede acceder a ella mediante la clave.
+* Comprueba que la cuenta de almacenamiento de hello existe y puede tener acceso mediante la clave de Hola.
 
-* Cifra la clave con la credencial del clúster.
+* Cifra la clave de hello mediante credenciales de clúster de Hola.
 
-* Agrega la cuenta de almacenamiento al archivo core-site.xml.
+* Agrega el archivo core-site.xml toohello de hello almacenamiento cuenta.
 
-* Detiene y reinicia los servicios de Oozie, YARN, MapReduce2 y HDFS. Detener e iniciar estos servicios permite que usen la nueva cuenta de almacenamiento.
+* Detiene y reinicia los servicios de Oozie, YARN, MapReduce2 y HDFS Hola. Detener e iniciar estos servicios les permite nueva cuenta de almacenamiento de toouse Hola.
 
 > [!WARNING]
-> No se admite el uso de una cuenta de almacenamiento en una ubicación diferente a la del clúster de HDInsight.
+> No se admite el uso de una cuenta de almacenamiento en una ubicación diferente que el clúster de HDInsight de Hola.
 
-## <a name="the-script"></a>La secuencia de comandos
+## <a name="hello-script"></a>script de Hola
 
 __Ubicación del script__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
 __Requisitos__:
 
-* El script se debe aplicar en los __nodos principales__.
+* se debe aplicar el script de Hola en hello __Head nodos__.
 
-## <a name="to-use-the-script"></a>Para usar el script
+## <a name="toouse-hello-script"></a>script de Hola toouse
 
-Este script se puede utilizar a través de Azure Portal, Azure PowerShell o la CLI de Azure 1.0. Para más información, consulte el documento [Personalización de clústeres de HDInsight mediante la acción de scripts (Linux)](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
+Este script puede utilizarse desde Hola portal de Azure, Azure PowerShell, u Hola 1.0 de CLI de Azure. Para obtener más información, vea hello [mediante la acción de secuencia de comandos de clústeres de HDInsight basados en Linux personalizar](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) documento.
 
 > [!IMPORTANT]
-> Al utilizar los pasos indicados en el documento de personalización, utilice la siguiente información para aplicar este script:
+> Al usar pasos de hello indicados en documento de personalización de hello, use Hola después información tooapply esta secuencia de comandos:
 >
-> * Sustituya el identificador URI de la acción de script necesaria por el identificador URI de este script (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
-> * Reemplace los parámetros de ejemplo por el nombre de la cuenta de almacenamiento de Azure y la clave de la cuenta de almacenamiento que va a agregar al clúster. Si usa Azure Portal, estos parámetros deben estar separados por un espacio.
-> * No es necesario marcar este script como __Guardado__, porque actualiza directamente la configuración de Ambari para el clúster.
+> * Reemplace cualquier URI de acción de secuencia de comandos de ejemplo con hello URI para esta secuencia de comandos (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
+> * Reemplace los parámetros de ejemplo por nombre de cuenta de almacenamiento de Azure de Hola y la clave de clúster agregado toohello toobe cuenta de almacenamiento de Hola. Si utiliza hello portal de Azure, estos parámetros deben estar separados por un espacio.
+> * No es necesario toomark esta secuencia de comandos como __Persisted__, tal y como actualiza directamente configuración de Ambari de hello para el clúster de Hola.
 
 ## <a name="known-issues"></a>Problemas conocidos
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Cuentas de almacenamiento que no se muestran en Azure Portal o las herramientas
 
-Cuando vea el clúster de HDInsight en Azure Portal, si selecciona la entrada __Cuentas de almacenamiento__ en __Propiedades__, no se mostrarán las cuentas de almacenamiento agregadas mediante esta acción de script. Azure PowerShell y la CLI de Azure tampoco mostrarán la cuenta de almacenamiento adicional.
+Cuando visualización hello HDInsight clúster Hola portal de Azure, seleccionar hello __cuentas de almacenamiento__ entrada bajo __propiedades__ no muestra las cuentas de almacenamiento agregadas a través de esta acción de secuencia de comandos. Azure PowerShell y la CLI de Azure no muestran cuenta de almacenamiento adicional de Hola o.
 
-Esto se debe a que el script solo modifica la configuración de core-site.xml del clúster. Esta información no se usa al recuperar la información del clúster mediante las API de administración de Azure.
+no se muestra información de almacenamiento de Hello porque el script de Hola sólo modifica la configuración de core-site.xml de hello para el clúster de Hola. Esta información no se utiliza al recuperar la información de clúster de hello mediante las API de administración de Azure.
 
-Para ver información de la cuenta de almacenamiento agregada al clúster mediante este script, use la API de REST de Ambari. Use los siguientes comandos para recuperar esta información para su clúster:
+información de cuenta de almacenamiento tooview agrega clúster toohello mediante este script, utilice Hola API de REST de Ambari. Usar hello después comandos tooretrieve esta información para el clúster:
 
 ```PowerShell
-$creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
+$creds = Get-Credential -UserName "admin" -Message "Enter hello cluster login credentials"
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
@@ -91,62 +91,62 @@ $respObj.items.configurations.properties."fs.azure.account.key.$storageAccountNa
 ```
 
 > [!NOTE]
-> Establezca `$clusterName` en el nombre del clúster de HDInsight. Establezca `$storageAccountName` en el nombre de la cuenta de almacenamiento. Cuando se le solicite, escriba el nombre de usuario y la contraseña de administrador del clúster.
+> Establecer `$clusterName` toohello nombre hello del clúster de HDInsight. Establecer `$storageAccountName` toohello nombre de cuenta de almacenamiento de Hola. Cuando se le solicite, escriba el inicio de sesión de clúster de hello (admin) y una contraseña.
 
 ```Bash
 curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.$STORAGEACCOUNTNAME.blob.core.windows.net"] | select(. != null)'
 ```
 
 > [!NOTE]
-> Establezca `$PASSWORD` en la contraseña de cuenta de inicio de sesión del clúster. Establezca `$CLUSTERNAME` en el nombre del clúster de HDInsight. Establezca `$STORAGEACCOUNTNAME` en el nombre de la cuenta de almacenamiento.
+> Establecer `$PASSWORD` toohello contraseña de la cuenta de inicio de sesión (admin) de clúster. Establecer `$CLUSTERNAME` toohello nombre hello del clúster de HDInsight. Establecer `$STORAGEACCOUNTNAME` toohello nombre de cuenta de almacenamiento de Hola.
 >
-> El comando siguiente muestra cómo usar [curl (http://curl.haxx.se/)](http://curl.haxx.se/) y [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) para recuperar y analizar datos JSON.
+> Este ejemplo se utiliza [curl (http://curl.haxx.se/)](http://curl.haxx.se/) y [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) tooretrieve y analizar datos JSON.
 
-Cuando use este comando, reemplace __CLUSTERNAME__ por el nombre del clúster de HDInsight. Reemplace __PASSWORD__ por la contraseña de inicio de sesión HTTP del clúster. Reemplace __STORAGEACCOUNT__ por el nombre de la cuenta de almacenamiento agregada mediante la acción de script. La información que devuelve este comando es similar al siguiente texto:
+Si utiliza este comando, reemplace __CLUSTERNAME__ con el nombre de Hola Hola del clúster de HDInsight. Reemplace __contraseña__ con la contraseña de inicio de sesión de hello HTTP para el clúster de Hola. Reemplace __STORAGEACCOUNT__ con el nombre de Hola de cuenta de almacenamiento de hello agregada mediante la acción de secuencia de comandos. Información devuelta por este comando aparece toohello similar siguiente texto:
 
     "MIIB+gYJKoZIhvcNAQcDoIIB6zCCAecCAQAxggFaMIIBVgIBADA+MCoxKDAmBgNVBAMTH2RiZW5jcnlwdGlvbi5henVyZWhkaW5zaWdodC5uZXQCEA6GDZMW1oiESKFHFOOEgjcwDQYJKoZIhvcNAQEBBQAEggEATIuO8MJ45KEQAYBQld7WaRkJOWqaCLwFub9zNpscrquA2f3o0emy9Vr6vu5cD3GTt7PmaAF0pvssbKVMf/Z8yRpHmeezSco2y7e9Qd7xJKRLYtRHm80fsjiBHSW9CYkQwxHaOqdR7DBhZyhnj+DHhODsIO2FGM8MxWk4fgBRVO6CZ5eTmZ6KVR8wYbFLi8YZXb7GkUEeSn2PsjrKGiQjtpXw1RAyanCagr5vlg8CicZg1HuhCHWf/RYFWM3EBbVz+uFZPR3BqTgbvBhWYXRJaISwssvxotppe0ikevnEgaBYrflB2P+PVrwPTZ7f36HQcn4ifY1WRJQ4qRaUxdYEfzCBgwYJKoZIhvcNAQcBMBQGCCqGSIb3DQMHBAhRdscgRV3wmYBg3j/T1aEnO3wLWCRpgZa16MWqmfQPuansKHjLwbZjTpeirqUAQpZVyXdK/w4gKlK+t1heNsNo1Wwqu+Y47bSAX1k9Ud7+Ed2oETDI7724IJ213YeGxvu4Ngcf2eHW+FRK"
 
-Este texto es un ejemplo de una clave cifrada que se usa para acceder a la cuenta de almacenamiento.
+Este texto es un ejemplo de una clave cifrada, que se usa tooaccess Hola cuenta de almacenamiento.
 
-### <a name="unable-to-access-storage-after-changing-key"></a>No se puede acceder a almacenamiento después de cambiar la clave
+### <a name="unable-tooaccess-storage-after-changing-key"></a>No se puede tooaccess almacenamiento después de cambiar la clave
 
-Si cambia la clave de una cuenta de almacenamiento, HDInsight ya no podrá acceder a dicha cuenta. HDInsight usa una copia en caché de clave del archivo core-site.xml para el clúster. Esta copia en caché debe actualizarse para que coincida con la nueva.
+Si cambia la clave de Hola para una cuenta de almacenamiento, HDInsight ya no puede acceder a la cuenta de almacenamiento de Hola. HDInsight utiliza una copia en caché de clave en hello core-site.xml para clúster Hola. Esta copia en caché debe ser clave nueva de hello toomatch actualizada.
 
-La ejecución nuevamente de la acción de script __no__ actualizará la clave, ya que el script comprueba si ya existe una entrada para la cuenta de almacenamiento. Si ya existe una entrada, no realice ningún cambio.
+Ejecuta la acción de secuencia de comandos de hello nuevo __no__ actualizar la clave de hello, tal y como toosee el script de Hola comprueba si ya existe una entrada para la cuenta de almacenamiento de Hola. Si ya existe una entrada, no realice ningún cambio.
 
-Para solucionar este problema, debe quitar la entrada existente para la cuenta de almacenamiento. Realice los siguientes pasos para quitar la entrada:
+toowork solucionar este problema, debe quitar la entrada existente de Hola Hola cuenta de almacenamiento. Usar hello siguientes pasos tooremove Hola existente entrada:
 
-1. Abra un explorador web y abra la interfaz de usuario web de Ambari de su clúster de HDInsight. El identificador URI es https://CLUSTERNAME.azurehdinsight.net. Reemplace __CLUSTERNAME__ por el nombre del clúster.
+1. En un explorador web, abra hello Ambari Web UI para el clúster de HDInsight. Hola URI es https://CLUSTERNAME.azurehdinsight.net. Reemplace __CLUSTERNAME__ con nombre hello del clúster.
 
-    Cuando se le solicite, escriba el usuario de inicio de sesión HTTP y la contraseña para el clúster.
+    Cuando se le solicite, escriba Hola HTTP inicio de sesión y la contraseña para el clúster.
 
-2. En la lista de servicios situada a la izquierda de la página, seleccione __HDFS__. A continuación, seleccione la pestaña __Configs__ (Configuraciones) en el centro de la página.
+2. En la lista hello de servicios en la izquierda de Hola de página de hello, seleccione __HDFS__. A continuación, seleccione hello __configuraciones__ ficha en el centro de Hola de página Hola.
 
-3. En el campo __Filter...__ (Filtro), escriba un valor de __fs.azure.account__. Esta acción devolverá entradas para las cuentas de almacenamiento adicionales que se hayan agregado al clúster. Hay dos tipos de entradas; __keyprovider__ y __key__. Ambas contendrán el nombre de la cuenta de almacenamiento como parte del nombre de clave.
+3. Hola __filtro...__  , introduzca un valor de __fs.azure.account__. Esto devuelve las entradas para las cuentas de almacenamiento adicional que se han agregado toohello clúster. Hay dos tipos de entradas; __keyprovider__ y __key__. Ambos contienen el nombre hello de cuenta de almacenamiento de hello como parte del nombre de clave de Hola.
 
-    Los siguientes son entradas de ejemplo para una cuenta de almacenamiento denominada __mystorage__:
+    Hello siguientes son las entradas de ejemplo para una cuenta de almacenamiento denominada __mystorage__:
 
         fs.azure.account.keyprovider.mystorage.blob.core.windows.net
         fs.azure.account.key.mystorage.blob.core.windows.net
 
-4. Después de haber identificado las claves de la cuenta de almacenamiento que quiere quitar, use el icono rojo '-' a la derecha de la entrada para eliminarlas. Haga clic en el botón __Guardar__ para guardar los cambios.
+4. Después de haber identificado las claves de Hola Hola cuenta de almacenamiento necesita tooremove, usar hello rojo '-' toohello icono derecha de hello entrada toodelete lo. A continuación, usar hello __guardar__ botón toosave los cambios.
 
-5. Después de guardar los cambios, use la acción de secuencia de comandos para agregar la cuenta de almacenamiento y el nuevo valor de clave a clúster.
+5. Una vez que se guardaron los cambios, utilice cuenta de almacenamiento de hello script acción tooadd hello y toohello valor de clave nuevo.
 
 ### <a name="poor-performance"></a>Rendimiento deficiente
 
-Si la cuenta de almacenamiento está en una región distinta a la del clúster de HDInsight, puede que experimente un rendimiento deficiente. Al acceder a los datos en una región diferente, el tráfico de red se envía fuera del centro de datos regional de Azure y en la red pública de Internet, lo que puede producir latencia.
+Si la cuenta de almacenamiento de hello está en una región diferente de clúster de HDInsight de hello, puede experimentar un rendimiento deficiente. Acceso a datos de un región diferente envía tráfico de red fuera de centro de datos de Azure regional de Hola y a través Hola internet pública, que puede presentar latencia.
 
 > [!WARNING]
-> No se admite el uso de una cuenta de almacenamiento en una región diferente a la del clúster de HDInsight.
+> No se admite el uso de una cuenta de almacenamiento en una región diferente de clúster de HDInsight de Hola.
 
 ### <a name="additional-charges"></a>Cargos adicionales
 
-Si la cuenta de almacenamiento se encuentra en una región distinta a la del clúster de HDInsight, puede que observe cargos de salida adicionales en su facturación de Azure. Se aplica un cargo de salida cuando los datos salen de un centro de datos regional. Este cargo se aplica incluso si el tráfico va destinado a otro centro de datos de Azure en una región distinta.
+Si cuenta de almacenamiento de hello es en una región distinta de Hola clúster de HDInsight, puede que experimente cargos de salida adicionales en la facturación de Azure. Se aplica un cargo de salida cuando los datos salen de un centro de datos regional. Este cargo se aplica incluso si el tráfico de hello está destinado a otro centro de datos de Azure en una región distinta.
 
 > [!WARNING]
-> No se admite el uso de una cuenta de almacenamiento en una región diferente a la del clúster de HDInsight.
+> No se admite el uso de una cuenta de almacenamiento en una región diferente de clúster de HDInsight de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este documento ha aprendido a agregar más cuentas de almacenamiento a un clúster de HDInsight. Para más información sobre las acciones de script, consulte [Personalización de clústeres de HDInsight basados en Linux mediante la acción de script](hdinsight-hadoop-customize-cluster-linux.md).
+Ha aprendido cómo las cuentas de almacenamiento adicional de tooadd tooan clúster de HDInsight existente. Para más información sobre las acciones de script, consulte [Personalización de clústeres de HDInsight basados en Linux mediante la acción de script](hdinsight-hadoop-customize-cluster-linux.md).

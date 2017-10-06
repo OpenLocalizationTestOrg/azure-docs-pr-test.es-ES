@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
-ms.openlocfilehash: 4442174a857681adff33001e660809ec7d47ad7d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 63325ed97a7363723c97ee3a992046ebb5592662
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: configuración de tokens, sesión e inicio de sesión único
 Esta característica ofrece un control más preciso, [por directivas](active-directory-b2c-reference-policies.md), de:
 
 1. La vigencia de los tokens de seguridad emitidos por Azure Active Directory (Azure AD) B2C.
 2. La duración de las sesiones de aplicación web administradas por Azure AD B2C.
-3. Formatos de notificaciones importantes en los tokens de seguridad emitidos por Azure AD B2C.
+3. Formatos de notificaciones importantes hello en tokens de seguridad emitidos por Azure AD B2C.
 4. El comportamiento de inicio de sesión único (SSO) entre varias aplicaciones y directivas en el inquilino B2C.
 
 Puede utilizar esta característica en el inquilino B2C como sigue:
 
-1. Siga estos pasos para [ir a la hoja de características de B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) de Azure Portal.
+1. Siga estos pasos demasiado[navegue hoja de características toohello B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) en hello portal de Azure.
 2. Haga clic en **Directivas de inicio de sesión**. *Nota: Esta característica se puede usar en cualquier tipo de directiva, no solo en **directivas de inicio de sesión***.
 3. Abra una directiva haciendo clic en ella. Por ejemplo, haga clic en **B2C_1_SiIn**.
-4. Haga clic en **Editar** en la parte superior de la hoja.
+4. Haga clic en **editar** princip Hola de hoja de Hola.
 5. Haga clic en **Token, session & single sign-on config** (Configuración de tokens, sesión e inicio de sesión único).
 6. Realice los cambios deseados. Obtenga información acerca de las propiedades disponibles en las secciones siguientes.
 7. Haga clic en **Aceptar**.
-8. Haga clic en **Guardar** en la parte superior de la hoja.
+8. Haga clic en **guardar** en la parte superior de Hola de hoja de Hola.
 
 ## <a name="token-lifetimes-configuration"></a>Configuración de la vigencia de los tokens
-Azure AD B2C admite el [protocolo de autorización de OAuth 2.0](active-directory-b2c-reference-protocols.md) para habilitar un acceso seguro a los recursos protegidos. Para implementar esta compatibilidad, Azure AD B2C emite varios [tokens de seguridad](active-directory-b2c-reference-tokens.md). Estas son las propiedades que puede utilizar para administrar la vigencia de los tokens de seguridad emitidos por Azure AD B2C:
+B2C de Azure AD admite hello [protocolo de autorización de OAuth 2.0](active-directory-b2c-reference-protocols.md) para habilitar el acceso seguro tooprotected recursos. tooimplement esta compatibilidad, Azure AD B2C emite varios [tokens de seguridad](active-directory-b2c-reference-tokens.md). Se trata de propiedades de Hola que puede utilizar toomanage duraciones de tokens de seguridad emitidos por Azure AD B2C:
 
-* **Vigencia (en minutos) de token de acceso y de identificador**: la vigencia del token de portador de OAuth 2.0 que se utiliza para obtener acceso a un recurso protegido. Azure AD B2C solo emite tokens de identificador en este momento. Este valor se aplicará también a los tokens de acceso cuando se agregue compatibilidad para ellos.
+* **Duración (minutos) de token de acceso & identificador**: duración de Hola de hello OAuth 2.0 portador token toogain usa acceso tooa al recurso protegido. Azure AD B2C solo emite tokens de identificador en este momento. Este valor se aplicaría tooaccess tokens así, cuando se agrega compatibilidad para ellos.
   * Valor predeterminado: 60 minutos.
   * Mínimo (incluido) = 5 minutos.
   * Máximo (incluido) = 1440 minutos.
-* **Vigencia del token de actualización (en días)**: el período máximo en que un token de actualización se puede utilizar para adquirir un nuevo token de acceso o de identificador (y opcionalmente, un nuevo token de actualización, si se hubiera concedido el ámbito `offline_access` a la aplicación).
+* **Duración del token de actualización (días)**: Hola período máximo de tiempo antes de que un token de actualización puede ser tooacquire usa un nuevo acceso o identificador de token (y opcionalmente, un nuevo token de actualización, si la aplicación se hubiesen garantizada hello `offline_access` ámbito).
   * Valor predeterminado = 14 días.
   * Mínimo (incluido) = 1 día.
   * Máximo (incluido) = 90 días.
-* **Vigencia (en días) de la ventana deslizante del token de actualización**: después de transcurrido este período de tiempo, el usuario está obligado a volver a autenticarse, independientemente de cuál sea el período de validez del último token de actualización obtenido por la aplicación. Solo se pueden proporcionar si el conmutador se establece en **Bounded**(Enlazado). Es preciso que sea mayor o igual que el valor de **Vigencia del token de actualización (en días)** . Si el conmutador se establece en **Unbounded**(Sin enlazar), no se puede proporcionar un valor específico.
+* **Actualizar token duración de ventana deslizante (días)**: después de este usuario de tiempo transcurrido hello toore forzada-autenticar, independientemente del período de validez de Hola de token de actualización más reciente de hello adquirido por la aplicación hello. Solo pueden concederse si se ha establecido el modificador de hello demasiado**Bounded**. Necesita toobe mayor que o igual toohello **duración del token de actualización (días)** valor. Si se ha establecido el modificador de hello demasiado**Unbounded**, no puede proporcionar un valor específico.
   * Valor predeterminado = 90 días.
   * Mínimo (incluido) = 1 día.
   * Máximo (incluido) = 365 días.
 
 Aquí puede ver un par de casos de uso que puede habilitar mediante el uso de estas propiedades:
 
-* Permiso para que un usuario pueda permanecer conectado en una aplicación móvil indefinidamente, siempre que esté continuamente activo en la misma. Para ello, establezca el conmutador **Vigencia (en días) de la ventana deslizante del token de actualización** en **Unbounded** (Sin enlazar) en la directiva de inicio de sesión.
-* Cumpla los requisitos de cumplimiento normativo y seguridad de la industria mediante el establecimiento de la vigencia adecuada del token de acceso.
+* Permitir que un toostay de usuario que ha iniciado sesión en una aplicación móvil de forma indefinida, mientras que está continuamente activo en la aplicación hello. Para ello, establecer hello **duración de ventana deslizante token actualización (días)** cambiar demasiado**Unbounded** en la directiva de inicio de sesión.
+* Cumplir los requisitos de seguridad y cumplimiento de la industria al establecer vigencias de token de acceso adecuado de Hola.
 
     > [!NOTE]
     > Estas opciones no están disponibles para las directivas de restablecimiento de contraseña.
@@ -66,30 +66,30 @@ Aquí puede ver un par de casos de uso que puede habilitar mediante el uso de es
     > 
 
 ## <a name="token-compatibility-settings"></a>Configuración de compatibilidad de tokens
-Hemos realizado cambios de formato en notificaciones importantes de los tokens de seguridad emitidos por Azure AD B2C. con el fin de mejorar la compatibilidad del protocolo estándar y para mejorar la interoperabilidad con las bibliotecas de identidades de otros fabricantes. Sin embargo, para no interrumpir las aplicaciones existentes, hemos creado las siguientes propiedades, con el fin de que los clientes puedan optar por recibirlas cuando sea necesario:
+Hemos realizado formato cambios tooimportant notificaciones en tokens de seguridad emitidos por Azure AD B2C. Esto ha sido realiza tooimprove la compatibilidad del protocolo estándar y para mejorar la interoperabilidad con las bibliotecas de identidad de otro fabricante. Sin embargo, tooavoid separación de las aplicaciones existentes, hemos creado Hola después de los clientes de tooallow propiedades tooopt de según sea necesario:
 
-* **Notificación de emisor (iss)**: identifica el inquilino de Azure AD B2C que emitió el token.
-  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: este es el valor predeterminado.
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: este valor incluye los identificadores tanto del inquilino B2C como de la directiva utilizada en la solicitud de token. Si una aplicación o biblioteca necesita que Azure AD B2C sea compatible con la [especificación OpenID Connect Discovery 1.0](http://openid.net/specs/openid-connect-discovery-1_0.html), use este valor.
-* **Notificación de asunto (sub)**: identifica la entidad, es decir, el usuario, para que el token valida la información.
-  * **ObjectID**: este es el valor predeterminado. Rellena el identificador de objeto del usuario del directorio de la notificación `sub` del token.
-  * **No se admite**: solo se proporciona para que haya compatibilidad con las versiones anteriores y se recomienda cambiar a **ObjectID** lo antes posible.
-* **Notificación que representa el identificador de la directiva**: identifica el tipo de notificación en el que se rellena el identificador de directiva utilizado en la solicitud de token.
-  * **tfp**: este es el valor predeterminado.
-  * **acr**: solo se proporciona para que haya compatibilidad con las versiones anteriores y se recomienda cambiar a `tfp` lo antes posible.
+* **Notificación de emisor (iss)**: Esto identifica el inquilino de Azure AD B2C Hola que emitió el token de Hola.
+  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: Esto es el valor predeterminado de Hola.
+  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Este valor incluye identificadores de inquilino de hello B2C y directiva de hello usada en la solicitud de token de Hola. Si su aplicación o biblioteca necesita Azure AD B2C toobe compatible con hello [especificación OpenID Connect 1.0 de detección](http://openid.net/specs/openid-connect-discovery-1_0.html), use este valor.
+* **Notificación de asunto (sub)**: Esto identifica la entidad de hello, es decir, usuario de hello, para qué hello token valida información.
+  * **ObjectID**: se trata de valor predeterminado de Hola. Rellena Hola Id. de objeto de usuario de hello en el directorio de hello en hello `sub` de notificación en el token de Hola.
+  * **No admite**: sólo se proporciona por compatibilidad con versiones anteriores, y se recomienda cambiar demasiado**ObjectID** tan pronto como pueda.
+* **Que representa el Id. de directiva de notificación**: Esto identifica el tipo de notificación de hello en qué Hola se rellena el Id. de directiva que se usa en la solicitud de token de Hola.
+  * **TFTP**: se trata de valor predeterminado de Hola.
+  * **Acr**: sólo se proporciona por compatibilidad con versiones anteriores, y se recomienda cambiar demasiado`tfp` tan pronto como pueda.
 
 ## <a name="session-behavior"></a>Comportamiento de la sesión
-Azure AD B2C admite el [protocolo de autenticación OpenID Connect](active-directory-b2c-reference-oidc.md) para habilitar el inicio de sesión seguro en las aplicaciones web. Estas son las propiedades que puede usar para administrar sesiones de la aplicación web:
+B2C de Azure AD admite hello [protocolo de autenticación OpenID Connect](active-directory-b2c-reference-oidc.md) para permitir que las aplicaciones de tooweb de inicio de sesión segura. Se trata de propiedades de Hola que puede utilizar sesiones de aplicación web de toomanage:
 
-* **Vigencia (en minutos) de la sesión de la aplicación web**: la vigencia de la cookie de sesión de Azure AD B2C almacenada en el explorador del usuario tras una autenticación correcta.
+* **Aplicación Web de duración de la sesión (minutos)**: duración de Hola de cookie de sesión de Azure AD B2C almacenada en el explorador del usuario de hello tras una autenticación correcta.
   * Valor predeterminado: 1440 minutos.
   * Mínimo (incluido) = 15 minutos.
   * Máximo (incluido) = 1440 minutos.
-* **Tiempo de espera de la sesión de la aplicación web**: si este conmutador se establece en **Absolute** (Absoluto), el usuario se ve obligado a volver a autenticarse una vez transcurrido el período especificado en **Vigencia (en minutos) de la sesión de la aplicación web**. Si este conmutador se establece en **Rolling** (Gradual) (el valor predeterminado), el usuario permanecerá conectado siempre que esté activo en su aplicación web.
+* **Tiempo de espera de sesión de aplicación de Web**: si este modificador se establece demasiado**absoluta**, usuario de hello es forzada toore-autenticar después Hola período de tiempo especificado por **aplicación Web de duración de la sesión (minutos)** transcurre. Si este modificador se establece demasiado**graduales** (hello la configuración predeterminada), usuario de Hola permanece con sesión iniciada como usuario de hello está continuamente activo en la aplicación web.
 
 Aquí puede ver un par de casos de uso que puede habilitar mediante el uso de estas propiedades:
 
-* Conformidad con los requisitos de cumplimiento normativo y seguridad de la industria mediante el establecimiento de la duración adecuada de la sesión de la aplicación web.
+* Cumplir los requisitos de seguridad y cumplimiento de la industria mediante el establecimiento de la sesión de la aplicación web adecuada Hola duraciones.
 * Obligación de volver a autenticar después de un período de tiempo establecido durante la interacción del usuario con una zona de alta seguridad de la aplicación web. 
 
     > [!NOTE]
@@ -98,12 +98,12 @@ Aquí puede ver un par de casos de uso que puede habilitar mediante el uso de es
     > 
 
 ## <a name="single-sign-on-sso-configuration"></a>Configuración de inicio de sesión único (SSO)
-Si tiene varias aplicaciones y directivas en el inquilino de B2C, puede administrar las interacciones del usuario a través de ellas con la propiedad **Configuración de inicio de sesión único** . Puede establecer la propiedad en uno de los siguientes valores:
+Si tiene varias aplicaciones y directivas en el inquilino B2C, puede administrar las interacciones del usuario a través de ellos con hello **configuración de inicio de sesión único** propiedad. Puede establecer Hola propiedad tooone de hello después de configuración:
 
-* **Inquilino**: es la configuración predeterminada. Esta configuración permite que varias aplicaciones y directivas en el inquilino B2C compartan la misma sesión de usuario. Por ejemplo, una vez que un usuario inicia sesión en una aplicación llamada Contoso Shopping, puede también iniciar sesión perfectamente en otra llamada Contoso Pharmacy simplemente con acceder a ella.
-* **Aplicación**: permite mantener una sesión de usuario exclusivamente para una aplicación, independientemente de otras aplicaciones. Por ejemplo, si desea que el usuario inicie sesión en Contoso Pharmacy (con las mismas credenciales), aunque ya haya iniciado sesión en Contoso Shopping, otra aplicación en el mismo inquilino B2C. 
-* **Directiva**: permite mantener una sesión de usuario exclusivamente para una directiva, independientemente de las aplicaciones que la utilicen. Por ejemplo, si el usuario ya ha iniciado sesión y completado un paso de autenticación multifactor (MFA), puede tener acceso a zonas de una mayor seguridad de varias aplicaciones mientras no expire la sesión asociada a la directiva.
-* **Deshabilitado**: obliga al usuario a realizar todo el proceso cada vez que se ejecuta la directiva. Por ejemplo, esto le permitirá que varios usuarios inicien sesión en la aplicación (en un escenario de escritorio compartido), incluso si un único usuario permanece conectado durante todo el tiempo.
+* **Inquilino**: ésta es configuración predeterminada de Hola. Con esta configuración permite que varias aplicaciones y directivas en el inquilino B2C tooshare Hola misma sesión de usuario. Por ejemplo, una vez que un usuario inicia sesión en una aplicación llamada Contoso Shopping, puede también iniciar sesión perfectamente en otra llamada Contoso Pharmacy simplemente con acceder a ella.
+* **Aplicación**: Esto permite toomaintain una sesión de usuario exclusivamente para una aplicación, independientemente de otras aplicaciones. Por ejemplo, si desea toosign de usuario de hello en tooContoso farmacia (con hello mismas credenciales), incluso si ya ha iniciado sesión en Contoso la compra, otra aplicación en hello mismo inquilino B2C. 
+* **Directiva**: Esto permite toomaintain una sesión de usuario exclusivamente para una directiva, independiente de las aplicaciones de hello usarlo. Por ejemplo, si el usuario Hola ya ha iniciado sesión y completar un paso de multi factor authentication (MFA), que puede indicarse partes de toohigher relacionadas con la seguridad de acceso de varias aplicaciones como Hola sesión vinculada toohello directiva no expire.
+* **Deshabilitado**: Esto fuerza hello toorun de usuario a través de viaje de usuario completo de hello en cada ejecución de la directiva de Hola. Por ejemplo, esto le permitirá toosign varios de los usuarios de aplicación de tooyour (en un escenario de escritorio compartido) incluso mientras un usuario permanece con sesión iniciada durante el tiempo completo de Hola.
 
     > [!NOTE]
     > Estas opciones no están disponibles para las directivas de restablecimiento de contraseña.

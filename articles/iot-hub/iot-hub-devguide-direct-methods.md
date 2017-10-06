@@ -1,6 +1,6 @@
 ---
-title: "Información de los métodos directos de IoT Hub de Azure | Microsoft Docs"
-description: "Guía del desarrollador: uso de métodos directos para invocar código en los dispositivos de una aplicación de servicio."
+title: "aaaUnderstand centro de IoT de Azure dirigir métodos | Documentos de Microsoft"
+description: "Guía del desarrollador - usar métodos directos tooinvoke código en los dispositivos desde una aplicación de servicio."
 services: iot-hub
 documentationcenter: .net
 author: nberdy
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77e788a32097edbcb1cd4faaa45f35812eabd94a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0d15d44a0c3e1d1cda1669c1ed011c2f932e3d92
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Conocimiento e invocación de los métodos directos de IoT Hub
 ## <a name="overview"></a>Información general
-IoT Hub ofrece la posibilidad de invocar métodos directos en dispositivos desde la nube. Los métodos directos representan una interacción solicitud-respuesta con un dispositivo similar a una llamada HTTP en la cual se completan correctamente o generan un error de inmediato (tras un tiempo de espera que especifica el usuario). Esto es útil para escenarios en los que la línea de acción inmediata difiere en función de si el dispositivo respondió, por ejemplo, enviando una reactivación por SMS a un dispositivo si este está sin conexión (enviar un SMS cuesta más que una llamada de método).
+Centro de IoT ofrece métodos directos tooinvoke de capacidad en los dispositivos de la nube de Hola. Métodos directos representan una interacción de solicitud y respuesta con un tooan similar de dispositivo HTTP llamar en que se realizan correctamente o se producirá un error inmediatamente (después de un tiempo de espera especificado por el usuario). Esto es útil para escenarios donde el curso de Hola de una acción inmediata es diferente en función de si el dispositivo de hello era capaz de toorespond, como el envío de un dispositivo de reactivación tooa SMS si un dispositivo está sin conexión (que se va a más cara que una llamada al método SMS).
 
-Cada método de dispositivo se dirige a un único dispositivo. Los [trabajos][lnk-devguide-jobs] proporcionan una manera de invocar métodos directos en varios dispositivos y de programar la invocación de métodos para los dispositivos desconectados.
+Cada método de dispositivo se dirige a un único dispositivo. [Trabajos] [ lnk-devguide-jobs] proporcionan un tooinvoke de forma directa en varios dispositivos y programar la invocación del método de dispositivos desconectados.
 
 Cualquier persona con permisos de **conexión de servicio** en IoT Hub pueden invocar un método en un dispositivo.
 
-### <a name="when-to-use"></a>Cuándo se deben usar
-Los métodos directos siguen un patrón de solicitud-respuesta y se usan para las comunicaciones que necesitan confirmación inmediata de su resultado, normalmente control interactivo del dispositivo, por ejemplo, encender un ventilador.
+### <a name="when-toouse"></a>Cuando toouse
+Métodos directos siguen un patrón de solicitud-respuesta y están diseñados para las comunicaciones que necesitan confirmación inmediata de su control normalmente interactivo de dispositivo de hello, por ejemplo tooturn en un ventilador de resultados.
 
-Si duda entre el uso de las propiedades deseadas, los métodos directos o los mensajes de nube a dispositivo, consulte [Cloud-to-device communication guidance][lnk-c2d-guidance] (Guía de comunicaciones de nube a dispositivo).
+Consulte demasiado[orientación para la comunicación en la nube para dispositivos] [ lnk-c2d-guidance] en caso de duda entre el uso de propiedades que desee, dirigir métodos o mensajes de la nube al dispositivo.
 
 ## <a name="method-lifecycle"></a>Ciclo de vida de los métodos
-Los métodos directos se implementan en el dispositivo y pueden requerir de ninguna entrada a varias en la carga de método para crear instancias correctamente. Se invoca un método directo mediante un URI orientado al servicio (`{iot hub}/twins/{device id}/methods/`). Un dispositivo recibe métodos directos a través de un tema MQTT específico del dispositivo (`$iothub/methods/POST/{method name}/`). Es posible que más adelante se admitan métodos directos en otros protocolos de red del dispositivo.
+Métodos directos se implementan en dispositivos de Hola y pueden requerir cero o más entradas en hello método carga toocorrectly crear instancias. Se invoca un método directo mediante un URI orientado al servicio (`{iot hub}/twins/{device id}/methods/`). Un dispositivo recibe métodos directos a través de un tema MQTT específico del dispositivo (`$iothub/methods/POST/{method name}/`). Podemos admitimos métodos directos en protocolos de red del dispositivo adicionales en hello futuras.
 
 > [!NOTE]
-> Cuando se invoca un método directo en un dispositivo, los valores y los nombres de propiedad solo pueden contener caracteres alfanuméricos US-ASCII imprimibles, excepto los del siguiente conjunto: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
+> Cuando se invoca un método directo en un dispositivo, valores y nombres de propiedad solo pueden contener US-ASCII imprimible alfanumérico, excepto los Hola siguiendo conjunto: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
 > 
 > 
 
-Los métodos directos son sincrónicos y se completan correctamente o producen un error tras el período de tiempo de espera (valor predeterminado: 30 segundos; valor máximo: 3600 segundos). Los métodos directos son útiles en escenarios interactivos en los que quiere que un dispositivo actúe únicamente si está conectado y recibiendo comandos, como encender una luz desde un teléfono. En estos escenarios, quiere saber de inmediato si la acción se ha completado o no para que el servicio en la nube pueda actuar lo antes posible en función del resultado. El dispositivo puede devolver un cuerpo de mensaje como resultado del método, pero no es necesario que el método lo haga. No hay ninguna garantía respecto al orden o la semántica de simultaneidad en las llamadas de método.
+Dirigir métodos son sincrónicos y ya sea correctamente o producirá un error tras el período de tiempo de espera de hello (predeterminado: 30 segundos, puede establecer seguridad too3600 segundos). Métodos directos son útiles en escenarios interactivos donde desea un tooact de dispositivo si y solo si el dispositivo de hello es comandos en línea y la recepción, como activar una luz desde un teléfono. En estos casos, desea toosee un error o éxito inmediata para que servicio de nube de hello puede actuar en el resultado de hello tan pronto como sea posible. dispositivo de Hello puede devolver algunas cuerpo del mensaje como resultado del método hello, pero no es necesario para hello método toodo para. No hay ninguna garantía respecto al orden o la semántica de simultaneidad en las llamadas de método.
 
-El método directo es solo HTTP desde el lado de la nube y solo MQTT desde el lado del dispositivo.
+Método directo son solo HTTP del lado de la nube de Hola y MQTT solo desde el lado del dispositivo de Hola.
 
-La carga útil de solicitudes y respuestas del método es un documento JSON de hasta 8 KB.
+carga de Hello para el método solicitudes y respuestas es un documento JSON hacia arriba too8KB.
 
 ## <a name="reference-topics"></a>Temas de referencia:
-Los siguientes temas de referencia proporcionan más información sobre el uso de métodos directos.
+Hello temas de referencia siguientes proporcionan más información sobre el uso de métodos directos.
 
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Invocación de un método directo desde una aplicación de back-end
 ### <a name="method-invocation"></a>Invocación de método
 Las invocaciones de método directo en un dispositivo son llamadas HTTP compuestas por:
 
-* El *URI* específico del dispositivo (`{iot hub}/twins/{device id}/methods/`)
-* El *método* POST
-* *Encabezados* que contienen la autorización, el id. de solicitud, el tipo de contenido y la codificación del contenido
-* Un *cuerpo* JSON transparente en el formato siguiente:
+* Hola *URI* dispositivo toohello específico (`{iot hub}/twins/{device id}/methods/`)
+* Hola POST *(método)*
+* *Encabezados de* que contienen Hola authorization, Id., el tipo de contenido y la codificación de contenido de solicitud
+* JSON transparente *cuerpo* Hola siguiendo el formato:
 
 ```
 {
@@ -71,14 +71,14 @@ Las invocaciones de método directo en un dispositivo son llamadas HTTP compuest
 }
 ```
 
-El tiempo de espera se expresa en segundos. Si no se establece el tiempo de espera, el valor predeterminado es 30 segundos.
+El tiempo de espera se expresa en segundos. Si no se establece el tiempo de espera, el valor predeterminado es too30 segundos.
 
 ### <a name="response"></a>Response
-La aplicación de back-end recibe una respuesta que consta de lo siguiente:
+aplicaciones de back-end de Hello recibe una respuesta que consta de:
 
-* *Código de estado HTTP*, que se usa para errores procedentes de IoT Hub, incluido el error 404 para los dispositivos que no estén conectados
-* *Encabezados* que contienen la etiqueta ETag, el identificador de solicitud, el tipo de contenido y la codificación del contenido
-* Un *cuerpo* JSON en el formato siguiente:
+* *Código de estado HTTP*, que se utiliza para errores procedentes de hello centro de IoT, incluido un error 404 para dispositivos no está conectado
+* *Encabezados de* que contienen Hola ETag, Id., el tipo de contenido y la codificación de contenido de solicitud
+* JSON *cuerpo* Hola siguiendo el formato:
 
 ```
 {
@@ -87,13 +87,13 @@ La aplicación de back-end recibe una respuesta que consta de lo siguiente:
 }
 ```
 
-   El dispositivo proporciona tanto `status` como `body`, que se utilizan para responder con el código de estado o la descripción propios del dispositivo.
+   Ambos `status` y `body` se proporcionan por dispositivo de Hola y usar toorespond con código de estado del dispositivo de Hola o descripción.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Control de un método directo en un dispositivo
 ### <a name="method-invocation"></a>Invocación de método
-Los dispositivos reciben las solicitudes de método directo en el tema MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`.
+Dispositivos reciben las solicitudes de método directo en el tema de Hola MQTT:`$iothub/methods/POST/{method name}/?$rid={request id}`
 
-El cuerpo que recibe el dispositivo está en el formato siguiente:
+cuerpo de Hello qué dispositivo Hola recibe es Hola siguiendo el formato:
 
 ```
 {
@@ -105,28 +105,28 @@ El cuerpo que recibe el dispositivo está en el formato siguiente:
 Las solicitudes de método son QoS 0.
 
 ### <a name="response"></a>Response
-El dispositivo envía las respuestas a `$iothub/methods/res/{status}/?$rid={request id}`, donde:
+dispositivo de Hello envía las respuestas demasiado`$iothub/methods/res/{status}/?$rid={request id}`, donde:
 
-* La propiedad `status` es el estado de la ejecución del método proporcionado por el dispositivo.
-* La propiedad `$rid` es el identificador de solicitud de la invocación de método recibido de IoT Hub.
+* Hola `status` propiedad es el estado proporcionado por el dispositivo de Hola de ejecución del método.
+* Hola `$rid` propiedad es Id. de solicitud de saludo de la invocación del método hello recibida desde el centro de IoT.
 
-El dispositivo establece el cuerpo y puede tener cualquier estado.
+cuerpo de Hola se establece por dispositivo de Hola y puede ser cualquier tipo de estado.
 
 ## <a name="additional-reference-material"></a>Material de referencia adicional
-Otros temas de referencia en la guía del desarrollador de IoT Hub son los siguientes:
+Otros temas de referencia en la Guía del desarrollador de centro de IoT Hola incluyen:
 
-* En [Puntos de conexión de IoT Hub][lnk-endpoints], se describen los diferentes puntos de conexión que expone cada centro de IoT Hub para las operaciones en tiempo de ejecución y de administración.
-* En [Cuotas y limitación][lnk-quotas], se describen las cuotas que se aplican al servicio IoT Hub y el comportamiento de limitación que se espera al usar el servicio.
-* En [SDK de dispositivo y servicio IoT de Azure][lnk-sdks] se muestran los diversos SDK de lenguaje que puede usar para desarrollar aplicaciones para dispositivo y de servicio que interactúen con IoT Hub.
-* En [Referencia: Lenguaje de consulta de IoT Hub para dispositivos gemelos, trabajos y enrutamiento de mensajes][lnk-query], se describe el lenguaje de consulta de IoT Hub que se puede usar para recuperar información de IoT Hub sobre los dispositivos gemelos y trabajos.
-* En [Compatibilidad con MQTT de IoT Hub][lnk-devguide-mqtt], se proporciona más información sobre la compatibilidad de IoT Hub con el protocolo MQTT.
+* [Los extremos del centro de IoT] [ lnk-endpoints] describe Hola varios extremos que cada centro de IoT expone las operaciones de tiempo de ejecución y administración.
+* [Limitación y las cuotas] [ lnk-quotas] describe las cuotas de Hola que se aplican toohello servicio del centro de IoT y Hola limitación tooexpect de comportamiento cuando se usa el servicio de Hola.
+* [SDK de dispositivos y servicios de Azure IoT] [ lnk-sdks] listas Hola lenguaje varios SDK que se puede usar cuando se desarrollan aplicaciones de dispositivos y servicios que interactúan con el centro de IoT.
+* [Lenguaje de consulta de centro de IoT para: los gemelos de dispositivo, los trabajos y el enrutamiento de mensajes] [ lnk-query] describe Hola lenguaje de consultas del centro de IoT puede usar información de tooretrieve centro de IoT de: los gemelos de dispositivo y trabajos.
+* [Compatibilidad de IoT Hub MQTT] [ lnk-devguide-mqtt] proporciona más información acerca del soporte técnico de centro de IoT para el protocolo MQTT Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha aprendido a usar métodos directos, puede interesarle el siguiente tema de la Guía del desarrollador de IoT Hub:
+Ahora que ha aprendido cómo toouse métodos directos, puede que esté interesado en hello siguiente tema de la Guía de centro de IoT para desarrolladores:
 
 * [Programación de trabajos en varios dispositivos][lnk-devguide-jobs]
 
-Si desea probar algunos de los conceptos descritos en este artículo, puede interesarle el siguiente tutorial de IoT Hub:
+Si desea que tootry algunos de los conceptos de hello descritos en este artículo, es posible que interesa Hola sigue tutorial del centro de IoT:
 
 * [Use direct methods][lnk-methods-tutorial] (Uso de métodos directos)
 

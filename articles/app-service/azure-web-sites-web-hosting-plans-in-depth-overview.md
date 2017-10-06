@@ -1,5 +1,5 @@
 ---
-title: "Introducción detallada sobre los planes de Azure App Service | Microsoft Docs"
+title: "información general detallada de planes de aaaAzure servicio de aplicaciones | Documentos de Microsoft"
 description: "Obtenga información acerca de cómo funcionan los planes del Servicio de aplicaciones de Azure y cómo benefician a su experiencia de administración."
 keywords: servicio de aplicaciones, servicio de aplicaciones de azure, escala, escalable, plan del servicio de aplicaciones, costo del servicio de aplicaciones
 services: app-service
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
-ms.openlocfilehash: f97be571d104e3cc1c6ee732886fa7133ba0dc83
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b384790d9e69b234ca69ac591164c48a4b6ed210
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-plans-in-depth-overview"></a>Introducción detallada sobre los planes del Servicio de aplicaciones de Azure
 
-Los planes de App Service representan la colección de recursos físicos usados para hospedar sus aplicaciones.
+Planes de servicio de aplicaciones representan colección Hola de recursos físicos que usa toohost sus aplicaciones.
 
 Los planes de App Service definen lo siguiente:
 
@@ -32,126 +32,126 @@ Los planes de App Service definen lo siguiente:
 - Tamaño de la instancia (pequeño, mediano, grande)
 - SKU (Gratis, Compartido, Básico, Estándar y Premium)
 
-Web Apps, Mobile Apps, Function Apps (o Funciones) o API Apps, en [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) se ejecutan todas en un plan de App Service.  Las aplicaciones de la misma suscripción y región pueden compartir un plan de App Service. 
+Web Apps, Mobile Apps, Function Apps (o Funciones) o API Apps, en [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) se ejecutan todas en un plan de App Service.  Aplicaciones de hello misma suscripción y región pueden compartir un plan de servicio de aplicaciones. 
 
-Todas las aplicaciones asignadas a un **plan de App Service** comparten los recursos definidos por él. Compartir ahorra dinero al hospedar varias aplicaciones en un único plan de App Service.
+Todas las aplicaciones asignan tooan **plan de servicio de aplicaciones** compartir recursos de hello definidos por dicha. Compartir ahorra dinero al hospedar varias aplicaciones en un único plan de App Service.
 
-Su **plan de App Service** puede escalarse de SKU **Gratis** y **Compartido** a SKU **Básico**, **Estándar** y **Premium**, lo que permite acceder a más recursos y características.
+Su **plan de servicio de aplicaciones** puede escalarse desde **libre** y **Shared** SKU demasiado**básica**, **estándar**, y **Premium** SKU que lo que le proporciona acceso a recursos de toomore y características a lo largo de hello forma.
 
-Si su plan de App Service está establecido en SKU **Básico** o superior, también puede controlar el **tamaño** y el recuento de escala de las máquinas virtuales.
+Si su plan de servicio de aplicaciones se establece demasiado**básica** SKU o superior, a continuación, puede controlar hello **tamaño** y escalar el recuento de hello las máquinas virtuales.
 
-Por ejemplo, si el plan está configurado para usar dos instancias "pequeñas" en el nivel de servicio estándar, todas las aplicaciones asociadas a este plan se ejecutarán en ambas instancias. Las aplicaciones también tienen acceso a las características del nivel de servicio estándar. Las instancias del plan en las que se ejecutan las aplicaciones están totalmente administradas y tienen una alta disponibilidad.
+Por ejemplo, si el plan está configurado toouse dos instancias de "pequeño" en el nivel de servicio estándar de hello, todas las aplicaciones que están asociadas a ese plan se ejecutan en ambas instancias. Aplicaciones también tienen características de nivel de servicio estándar de acceso toohello. Las instancias del plan en las que se ejecutan las aplicaciones están totalmente administradas y tienen una alta disponibilidad.
 
 > [!IMPORTANT]
-> El **SKU** y la **escala** del plan de App Service determina el costo, no el número de aplicaciones hospedadas en él.
+> Hola **SKU** y **escala** de servicio de aplicaciones de hello plan determina Hola costo y no Hola el número de aplicaciones hospedadas en ella.
 
-En este artículo exploraremos las características clave, como el nivel y la escala de un plan de App Service y el papel que juegan mientras administra sus aplicaciones.
+Este artículo explora características clave de hello, como capa de escala de un plan de servicio de aplicaciones y cómo entran en juego al administrar sus aplicaciones.
 
 ## <a name="apps-and-app-service-plans"></a>Aplicaciones y planes del Servicio de aplicaciones
 
 Una aplicación del Servicio de aplicaciones se puede asociar a un solo plan de dicho servicio en un momento determinado.
 
-Tanto las aplicaciones como los planes se incluyen en un **grupo de recursos**. Un grupo de recursos sirve como límite del ciclo de vida de cada uno de los recursos que contiene. Los grupos de recursos le permiten administrar todos los componentes de una aplicación conjuntamente.
+Tanto las aplicaciones como los planes se incluyen en un **grupo de recursos**. Un grupo de recursos actúa como límite de ciclo de vida de Hola para todos los recursos que está dentro de él. Puede usar recursos grupos toomanage todas las piezas de Hola de una aplicación juntos.
 
-Como un único grupo de recursos puede tener varios planes del Servicio de aplicaciones, se pueden asignar diferentes aplicaciones a diferentes recursos físicos.
+Dado que un grupo de recursos solo puede tener varios planes de servicio de aplicaciones, puede asignar diferentes aplicaciones toodifferent los recursos físicos.
 
-Por ejemplo, puede separar los recursos entre entornos de desarrollo, pruebas y producción. Tener entornos independientes para producción y desarrollo o pruebas le permite aislar los recursos. De esta forma, las pruebas de carga de una nueva versión de las aplicaciones no competirán por los mismos recursos que las aplicaciones de producción, que prestan servicio a clientes reales.
+Por ejemplo, puede separar los recursos entre entornos de desarrollo, pruebas y producción. Tener entornos independientes para producción y desarrollo o pruebas le permite aislar los recursos. De esta manera, pruebas de carga con una nueva versión de las aplicaciones no compiten por hello mismo recursos como las aplicaciones de producción, que prestan servicio a los clientes reales.
 
 Al tener varios planes en un único grupo de recursos, también puede definir una aplicación que se extienda entre regiones geográficas.
 
-Por ejemplo, una aplicación de alta disponibilidad que se ejecute en dos regiones incluirá dos planes como mínimo, uno por cada región, y una aplicación asociada a cada plan. En tal situación, todas las copias de la aplicación estarán contenidas en un solo grupo de recursos. Al tener un grupo de recursos con varios planes y aplicaciones, la administración, el control y la visión del estado de la aplicación resultan más sencillos.
+Por ejemplo, una aplicación de alta disponibilidad que se ejecute en dos regiones incluirá dos planes como mínimo, uno por cada región, y una aplicación asociada a cada plan. En esta situación, todas las copias de Hola de aplicación hello, a continuación, se incluyen en un único grupo de recursos. Tener un grupo de recursos con varios planes y varias aplicaciones hace fácil toomanage, control y ver el estado de aplicación Hola Hola.
 
 ## <a name="create-an-app-service-plan-or-use-existing-one"></a>Creación de un plan de App Service o uso de uno ya existente
 
-Al crear una aplicación, debe considerar la creación de un grupo de recursos. Por otro lado, si la aplicación es un componente de otra aplicación más grande, créela dentro del grupo de recursos asignado a dicha aplicación de mayor tamaño.
+Al crear una aplicación, debe considerar la creación de un grupo de recursos. En Hola otra parte, si esta aplicación es un componente de una aplicación mayor, créelo en grupo de recursos de Hola que se asigna para esa aplicación mayor.
 
-Con independencia de que la aplicación sea totalmente nueva o parte de otra más grande, puede aprovechar un plan existente para hospedarla o crear uno nuevo. Esta decisión es más bien una cuestión de capacidad y de carga esperada.
+Si la aplicación hello es una aplicación completamente nueva o parte de otro más grande, puede elegir toouse un toohost plan existente, o crear uno nuevo. Esta decisión es más bien una cuestión de capacidad y de carga esperada.
 
 Se recomienda aislar la aplicación en un nuevo plan de App Service en los siguientes casos:
 
 - La aplicación consume muchos recursos.
-- La aplicación tiene factores de escalado diferentes de las otras aplicaciones hospedadas en un plan existente.
+- Aplicación tiene diferentes factores de escala de hello otras aplicaciones hospedadas en un plan existente.
 - La aplicación necesita recursos de una región geográfica diferente.
 
 De esta forma, puede asignar un nuevo conjunto de recursos para la aplicación y tener un mayor control de las aplicaciones.
 
-## <a name="create-an-app-service-plan"></a>Creación de un plan del Servicio de aplicaciones
+## <a name="create-an-app-service-plan"></a>Creación de un plan de App Service
 
 > [!TIP]
-> Si tiene un entorno de App Service, puede revisar la documentación específica para los entornos de App Service aquí: [Creación de un plan de App Service en un entorno de App Service](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
+> Si tiene un entorno de servicio de aplicaciones, puede revisar Hola documentación específica tooApp entornos del servicio aquí: [crear un plan de servicio de aplicaciones en un entorno de servicio de aplicaciones](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)
 
-Puede crear un plan del Servicio de aplicaciones vacío desde la experiencia de exploración del plan del Servicio de aplicaciones o como parte de la creación de la aplicación.
+Puede crear un plan de servicio de aplicaciones vacío de hello experiencia de exploración del plan de servicio de aplicaciones o como parte de la creación de la aplicación.
 
-En [Azure Portal](https://portal.azure.com), haga clic en **Nuevo** > **Web y móvil** y, a continuación, seleccione **Aplicación web** u otro tipo de aplicación de App Service.
+Hola [portal de Azure](https://portal.azure.com), haga clic en **New** > **Web y móvil**y, a continuación, seleccione **aplicación Web** o en otro tipo de aplicación de servicio de aplicaciones.
 
-![Cree una aplicación en Azure Portal.][createWebApp]
+![Crear una aplicación Hola portal de Azure.][createWebApp]
 
-A continuación, puede seleccionar o crear el plan del Servicio de aplicaciones para la nueva aplicación.
+A continuación, puede seleccionar o crear plan de servicio de aplicaciones para la nueva aplicación de Hola Hola.
 
  ![Creación de un plan del Servicio de aplicaciones.][createASP]
 
-Para crear un plan de App Service, haga clic en **[+] Crear nuevo**, escriba el nombre del **plan de App Service** y luego seleccione una **ubicación** adecuada. Haga clic en **Plan de tarifa**y seleccione un plan de tarifa adecuado para el servicio. Seleccione **Ver todos** para ver más opciones de precios, como **Gratis** y **Compartido**. Una vez haya seleccionado el plan de tarifa, haga clic en el botón **Seleccionar** .
+toocreate un plan de servicio de aplicaciones, haga clic en **[+] crear nuevos**, Hola de tipo **plan de servicio de aplicaciones** nombre y, a continuación, seleccione un **ubicación**. Haga clic en **tarifa**y, a continuación, seleccione un nivel de precios adecuado para el servicio de Hola. Seleccione **todas las ver** tooview más precios opciones, como **libre** y **Shared**. Después de haber seleccionado el nivel de precios de hello, haga clic en hello **seleccione** botón.
 
-## <a name="move-an-app-to-a-different-app-service-plan"></a>Cambio de una aplicación a un plan del Servicio de aplicaciones diferente
+## <a name="move-an-app-tooa-different-app-service-plan"></a>Mover un plan de servicio de aplicaciones diferentes de aplicaciones tooa
 
-Puede mover una aplicación a un plan distinto de App Service en [Azure Portal](https://portal.azure.com). Las aplicaciones pueden moverse entre los planes, siempre y cuando estos se encuentren en el mismo grupo de recursos y región geográfica.
+Puede mover un plan de servicio de aplicaciones diferentes de aplicaciones tooa Hola [portal de Azure](https://portal.azure.com). Puede mover aplicaciones entre planes siempre sea planes Hola Hola mismo grupo de recursos y la región geográfica.
 
-Para mover una aplicación a otro plan:
+toomove un plan de tooanother de aplicación:
 
-- Vaya a la aplicación que desea trasladar.
-- En el **Menú**, busque la sección **plan de App Service**.
-- Seleccione **Cambiar plan de App Service** para iniciar el proceso.
+- Navegue aplicación toohello que desea toomove.
+- Hola **menú**, busque hello **Plan de servicio de aplicaciones** sección.
+- Seleccione **plan de servicio de aplicaciones de cambio** toostart proceso de Hola.
 
-**Cambiar plan de App Service** abre el selector **plan de App Service**. Llegados a este punto, puede elegir un plan existente para trasladar la aplicación.
+**Plan de servicio de aplicaciones de cambio** abre hello **plan de servicio de aplicaciones** selector. En este momento, puede seleccionar esta aplicación en un toomove de plan existente.
 
 > [!IMPORTANT]
-> La interfaz de usuario del plan de App Service seleccionado se filtra por los siguientes criterios:
-> - Existe dentro del mismo grupo de recursos
-> - Existe en la misma región geográfica
-> - Existe dentro del mismo espacio web
+> plan de servicio de aplicaciones seleccione Hola interfaz de usuario se filtra por hello siguiendo criterios:
+> - Existe dentro de hello mismo grupo de recursos
+> - Existe en hello misma región geográfica
+> - Existe dentro de hello mismo espacio Web
 >
-> Un espacio web es una construcción lógica dentro de App Service que define una agrupación de recursos del servidor. Una región geográfica (por ejemplo, Oeste de EE. UU.) contiene muchos espacios web para poder asignar a los clientes que usan App Service. En la actualidad, no se pueden mover los recursos de App Service entre los espacios web.
+> Un espacio web es una construcción lógica dentro de App Service que define una agrupación de recursos del servidor. Una región geográfica (por ejemplo, oeste de Estados Unidos) contiene muchos espacios Web en orden tooallocate a los clientes usar servicio de aplicaciones. Actualmente, los recursos del servicio de aplicación no están toobe pueden movido entre espacios Web.
 >
 
 ![Selector de plan del Servicio de aplicaciones.][change]
 
-Cada plan tiene su propio plan de tarifa. Por ejemplo, al mover un sitio de un nivel Gratis a un nivel Estándar, todas las aplicaciones asignadas puedan usar las características y los recursos del nivel Estándar.
+Cada plan tiene su propio plan de tarifa. Por ejemplo, mover un sitio desde un nivel de estándar de tooa nivel gratis, habilita todas las aplicaciones asignadas características de tooit toouse hello y recursos de nivel estándar de Hola.
 
-## <a name="clone-an-app-to-a-different-app-service-plan"></a>Clonación de una aplicación en un plan del Servicio de aplicaciones diferente
+## <a name="clone-an-app-tooa-different-app-service-plan"></a>Clonar un plan de servicio de aplicaciones diferentes de aplicaciones tooa
 
-Si desea mover la aplicación a una región diferente, una alternativa es clonar la aplicación. La clonación hará una copia de su aplicación en un plan de App Service nuevo o existente en cualquier región.
+Si desea que la región diferente de toomove Hola aplicación tooa, una alternativa es la aplicación de clonación. La clonación hará una copia de su aplicación en un plan de App Service nuevo o existente en cualquier región.
 
-Puede encontrar **Clonar aplicación** en la sección **Herramientas de desarrollo** del menú.
+Puede encontrar **clonar aplicación** en hello **herramientas de desarrollo** sección del menú de Hola.
 
 > [!IMPORTANT]
 > La clonación presenta algunas limitaciones sobre las que puede leer en [Clonación de aplicaciones del Servicio de aplicaciones de Azure mediante el Portal de Azure](../app-service-web/app-service-web-app-cloning-portal.md).
 
 ## <a name="scale-an-app-service-plan"></a>Escalación de un plan del Servicio de aplicaciones
 
-Existen tres formas de escalar un plan:
+Hay tres tooscale formas un plan:
 
-- **Cambiar el nivel del plan de tarifa**. Un plan en el nivel Básico se puede convertir a Estándar y todas las aplicaciones asignadas a él usar las características del nivel Estándar.
-- **Cambiar el tamaño de instancia del plan**. Por ejemplo, un plan en el nivel Básico que usa instancias pequeñas puede cambiarse que use instancias grandes. Todas las aplicaciones asociadas a dicho plan pueden usar la memoria y los recursos de CPU adicionales que ofrece el tamaño de instancia más grande.
-- **Cambiar el recuento de instancias del plan**. Por ejemplo, un plan Estándar que se ha escalado horizontalmente a tres instancias se puede escalar hasta 10 instancias. Un plan Premium puede escalarse horizontalmente hasta a 20 instancias (según disponibilidad). Todas las aplicaciones asociadas a dicho plan pueden usar la memoria y los recursos de CPU adicionales que ofrece el mayor recuento de instancias.
+- **El nivel de precios del plan de cambio hello**. Un plan en el nivel básico de hello puede ser tooStandard convertido y todas las aplicaciones asignan tooit toouse características Hola de nivel estándar Hola.
+- **Cambiar el tamaño de las instancias del plan de hello**. Por ejemplo, un plan en el nivel básico de Hola que usa instancias pequeñas puede ser instancias grandes de toouse modificadas. Todas las aplicaciones que están asociadas a ese plan ahora pueden usar memoria adicional de Hola y recursos de CPU que Hola ofertas de tamaño mayor de instancia.
+- **Cambiar el número de instancias del plan de hello**. Por ejemplo, un plan estándar que se escala toothree instancias puede ser instancias de escalado too10. Un plan de Premium se puede escalar horizontalmente too20 instancias (asunto tooavailability). Todas las aplicaciones que están asociadas a ese plan ahora pueden usar memoria adicional de Hola y recursos de CPU que Hola mayores ofertas de recuento de instancia.
 
-Puede cambiar el plan de tarifa y el tamaño de la instancia haciendo clic en el elemento **Escalar verticalmente** en la configuración de la aplicación o del plan del Servicio de aplicaciones. Los cambios se aplicarán al plan de App Service y afectarán a todas las aplicaciones que hospede.
+Puede cambiar Hola tamaño de instancia y de nivel de precios haciendo clic en hello **escalar vertical** elemento bajo Configuración de aplicación hello ni Hola plan de servicio de aplicaciones. Cambios aplican toohello plan de servicio de aplicaciones y afecta a todas las aplicaciones que lo hospeda.
 
- ![Establecimiento de valores para escalar verticalmente una aplicación.][pricingtier]
+ ![Tooscale de valores de conjunto de seguridad de una aplicación.][pricingtier]
 
 ## <a name="app-service-plan-cleanup"></a>Limpieza del plan de App Service
 
 > [!IMPORTANT]
-> Los **planes de App Service** que no tienen aplicaciones asociadas a ellos seguirán generando cargos ya que siguen reservando capacidad de proceso.
+> **Planes de servicio de aplicaciones** que no tienen ningún toothem aplicaciones asociadas seguirán generando cargos puesto que continúan capacidad de cálculo de tooreserve Hola.
 
-Para evitar cargos imprevistos, cuando se elimina la última aplicación hospedada en un plan de App Service, también se elimina el plan de App Service vacío resultante.
+tooavoid inesperados cargos, cuando se elimina la aplicación última hello hospedada en un plan de servicio de aplicaciones, Hola vacío resultante también se elimina el plan de servicio de aplicaciones.
 
 ## <a name="summary"></a>Resumen
 
-Los planes del Servicio de aplicaciones representan un conjunto de características y capacidades que puede compartir entre las aplicaciones. Los planes del Servicio de aplicaciones ofrecen la flexibilidad necesaria para asignar aplicaciones específicas a un conjunto de recursos y optimizar aún más el uso de los recursos de Azure. De esta forma, si desea ahorrar gastos en el entorno de pruebas, puede compartir un plan entre varias aplicaciones. Asimismo, puede escalarlo entre varias regiones y planes para maximizar el rendimiento del entorno de producción.
+Los planes del Servicio de aplicaciones representan un conjunto de características y capacidades que puede compartir entre las aplicaciones. Los planes de servicio de aplicaciones permiten Hola conjunto de tooa de flexibilidad tooallocate aplicaciones específicas de recursos y optimizar aún más la utilización de recursos de Azure. De este modo, si desea que toosave dinero en su entorno de pruebas, puede compartir un plan entre varias aplicaciones. Asimismo, puede escalarlo entre varias regiones y planes para maximizar el rendimiento del entorno de producción.
 
 ## <a name="whats-changed"></a>Lo que ha cambiado
 
-- Para obtener una guía del cambio de Sitios web a Servicio de aplicaciones, consulte: [Servicio de aplicaciones de Azure y su impacto en los servicios de Azure existentes](http://go.microsoft.com/fwlink/?LinkId=529714)
+- Para que un cambio de toohello Guía de tooApp servicio de sitios Web, vea: [servicio de aplicaciones de Azure y su impacto en los servicios de Azure existente](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [pricingtier]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/appserviceplan-pricingtier.png
 [assign]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/assing-appserviceplan.png

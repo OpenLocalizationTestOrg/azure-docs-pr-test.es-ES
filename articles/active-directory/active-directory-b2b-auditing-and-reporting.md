@@ -1,5 +1,5 @@
 ---
-title: "Auditoría y generación de informes para usuarios de colaboración B2B de Azure Active Directory | Microsoft Docs"
+title: "aaaAuditing e informes de un usuario de la colaboración B2B de Azure Active Directory | Documentos de Microsoft"
 description: "Las propiedades de un usuario invitado son configurables en la colaboración B2B de Azure Active Directory."
 services: active-directory
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
-ms.openlocfilehash: ba782270f3280e52235bc13148d232284b55762a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24ee5f7a2e9585a5edcdd795ec0ffc7124756c11
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditoría y generación de informes para usuarios de colaboración 2B
-Con usuarios invitados, cuenta con funcionalidades de auditoría similares a las que tiene con los usuarios miembros. A continuación, se muestra un ejemplo del historial de canje e invitación de los usuario Sam Oogle al que se acaba de invitar:
+Con los usuarios invitados, tendrá auditoría características similares toowith miembro a los usuarios. Este es un ejemplo de Hola invitación y canje el historial de los invitados Sam Oogle:
 
 ![Registro de auditoría](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 
-Puede profundizar en cada uno de estos eventos para obtener los detalles. Por ejemplo, echemos un vistazo a los detalles de aceptación.
+Puede profundizar en cada uno de estos detalles de eventos tooget Hola. Por ejemplo, echemos un vistazo a los detalles de la aceptación de Hola.
 
 ![Detalles de actividad](./media/active-directory-b2b-auditing-and-reporting/activity-details.png)
 
-También puede exportar estos registros de Azure AD y utilizar la herramienta de informes que prefiera para obtener informes personalizados.
+También puede exportar estos registros de Azure AD y usar Hola la herramienta informes de su elección tooget informes personalizados.
 
 ### <a name="next-steps"></a>Pasos siguientes
 
@@ -38,7 +38,7 @@ Examine nuestros otros artículos sobre la colaboración B2B de Azure AD:
 
 * [¿Qué es la colaboración B2B de Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Propiedades de usuario de la colaboración B2B](active-directory-b2b-user-properties.md)
-* [Incorporación de usuarios de colaboración B2B a un rol](active-directory-b2b-add-guest-to-role.md)
+* [Agregar un rol de tooa de usuario de la colaboración B2B](active-directory-b2b-add-guest-to-role.md)
 * [Delegación de las invitaciones de colaboración B2B](active-directory-b2b-delegate-invitations.md)
 * [Grupos dinámicos y colaboración B2B](active-directory-b2b-dynamic-groups.md)
 * [Código de colaboración B2B y ejemplos de PowerShell](active-directory-b2b-code-samples.md)

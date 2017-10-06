@@ -1,6 +1,6 @@
 ---
-title: Patrones de redes para Azure Service Fabric | Microsoft Docs
-description: "En este artículo se describen los patrones de redes comunes de Service Fabric y cómo crear un clúster con las características de red de Azure."
+title: patrones de aaaNetworking para Azure Service Fabric | Documentos de Microsoft
+description: "Describe los patrones comunes de redes de Service Fabric y cómo toocreate un clúster mediante el uso de características de red de Azure."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2017
 ms.author: ryanwi
-ms.openlocfilehash: 126637002b24391058fb702227a570aa0b58c1d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5973e3f9917076c6a36e71443ec256e0f414ff87
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-networking-patterns"></a>Patrones de redes de Service Fabric
-Puede integrar el clúster de Azure Service Fabric con otras características de red de Azure. En este artículo se muestra cómo crear clústeres que usan las siguientes características:
+Puede integrar el clúster de Azure Service Fabric con otras características de red de Azure. En este artículo, le mostraremos cómo toocreate clústeres ese Hola de uso siguientes características:
 
 - [Subred y red virtual existentes](#existingvnet)
 - [Dirección IP pública estática](#staticpublicip)
 - [Equilibrador de carga solo interno](#internallb)
 - [Equilibrador de carga interno y externo](#internalexternallb)
 
-Service Fabric se ejecuta en un conjunto de escalado de máquinas virtuales estándar. Cualquier funcionalidad que pueda usar en un conjunto de escalado de máquinas virtuales, puede usarse con un clúster de Service Fabric. Las secciones de red de las plantillas de Azure Resource Manager para los conjuntos de escalado de máquinas virtuales y Service Fabric son idénticas. Después de implementar en una red virtual existente, es fácil incorporar otras características de red como Azure ExpressRoute, Azure VPN Gateway, un grupo de seguridad de red y emparejamiento de redes virtuales.
+Service Fabric se ejecuta en un conjunto de escalado de máquinas virtuales estándar. Cualquier funcionalidad que pueda usar en un conjunto de escalado de máquinas virtuales, puede usarse con un clúster de Service Fabric. Hola red secciones de plantillas de Azure Resource Manager Hola para conjuntos de escalas de máquina virtual y el tejido de servicio son idénticas. Después de implementar tooan existente de la red virtual, es fácil tooincorporate otra características, como ExpressRoute de Azure, la puerta de enlace de VPN de Azure, un grupo de seguridad de red e intercambio de tráfico de red virtual de red.
 
-Service Fabric es único en relación con otras características de red en un aspecto. [Azure Portal](https://portal.azure.com) usa internamente el proveedor de recursos de Service Fabric para llamar a un clúster con el fin de obtener información de los nodos y las aplicaciones. El proveedor de recursos de Service Fabric requiere acceso de entrada público al puerto de la puerta de enlace HTTP (puerto 19080 de forma predeterminada) en el punto de conexión de administración. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) utiliza el punto de conexión de administración para administrar el clúster. Este puerto también lo emplea el proveedor de recursos de Service Fabric para consultar información sobre el clúster con el fin de que se muestre en Azure Portal. 
+Service Fabric es único en relación con otras características de red en un aspecto. Hola [portal de Azure](https://portal.azure.com) internamente utiliza Hola Service Fabric proveedor toocall tooa clúster tooget información sobre recursos nodos y aplicaciones. proveedor de recursos de Service Fabric Hola requiere acceso de entrada es accesible públicamente toohello HTTP puerta de enlace (puerto 19080, de forma predeterminada) en el extremo de administración de Hola. [Explorador de Service Fabric](service-fabric-visualizing-your-cluster.md) usa Hola toomanage de punto de conexión de administración del clúster. proveedor de recursos de Service Fabric Hello también usa esta información de tooquery de puerto relativa al clúster, toodisplay Hola portal de Azure. 
 
-Si el puerto 19080 no es accesible desde el proveedor de recursos de Service Fabric, aparecerá un mensaje del tipo *No se encontraron los nodos* en el portal, y la lista de nodos y aplicaciones aparecerá vacía. Si desea ver el clúster en Azure Portal, el equilibrador de carga debe exponer una dirección IP pública y el grupo de seguridad de red debe permitir el tráfico entrante en el puerto 19080. Si no se cumplen estos requisitos de configuración, Azure Portal no mostrará el estado del clúster.
+Si el puerto 19080 no es accesible desde el proveedor de recursos de Service Fabric hello, al igual que un mensaje *nodos no se encontró* aparece en el portal de hello, y la lista de nodo y la aplicación aparece vacía. Si desea toosee el clúster en hello portal de Azure, el equilibrador de carga debe exponer una dirección IP pública y el grupo de seguridad de red debe permitir el tráfico de puerto 19080 entrante. Si el programa de instalación no cumple estos requisitos, Hola portal de Azure no mostrar estado de hello del clúster.
 
 ## <a name="templates"></a>Plantillas
 
-Todas las plantillas de Service Fabric están en [un archivo de descarga](https://msdnshared.blob.core.windows.net/media/2016/10/SF_Networking_Templates.zip). Debe poder implementar las plantillas tal como están con los siguientes comandos de PowerShell. Si va a implementar la plantilla existente de Azure Virtual Network o la de dirección IP pública estática, lea primero la sección [Configuración inicial](#initialsetup) de este artículo.
+Todas las plantillas de Service Fabric están en [un archivo de descarga](https://msdnshared.blob.core.windows.net/media/2016/10/SF_Networking_Templates.zip). Debe ser capaz de toodeploy plantillas de hello como-consiste en usar Hola siga los comandos de PowerShell. Si va a implementar Hola plantilla de red Virtual de Azure existente u Hola plantilla de IP pública estática, lea primero hello [Initial setup](#initialsetup) sección de este artículo.
 
 <a id="initialsetup"></a>
 ## <a name="initial-setup"></a>Configuración inicial
 
 ### <a name="existing-virtual-network"></a>Red virtual existente
 
-En el ejemplo siguiente, vamos a empezar con una red virtual existente denominada "ExistingRG-vnet" en el grupo de recursos **ExistingRG**. La subred recibe un nombre predeterminado. Estos recursos predeterminados son los que se crearon al usar Azure Portal para crear una máquina virtual estándar. Se podría crear la red y subred virtual sin necesidad de crear la máquina virtual, pero el objetivo principal de agregar un clúster a una red virtual existente es proporcionar conectividad de red a otras máquinas virtuales. La creación de la máquina virtual proporciona un buen ejemplo de cómo se usa normalmente una red virtual existente. Si el clúster de Service Fabric solo usa un equilibrador de carga interno, sin una dirección IP pública, podrá usar la máquina virtual con su dirección IP pública como *equipo de inicio de sesión seguro*.
+En el siguiente ejemplo de Hola, empezaremos con una red virtual existente con el nombre de red virtual ExistingRG, Hola **ExistingRG** grupo de recursos. subred de Hola se denomina de forma predeterminada. Estos recursos de forma predeterminada se crean cuando se usa hello toocreate portal Azure una máquina virtual estándar (VM). Puede crear red virtual de Hola y subred sin necesidad de crear Hola VM, pero objetivo principal de Hola de agregar una red virtual de clúster tooan existente es tooother de conectividad de red de tooprovide las máquinas virtuales. Hola crear VM proporciona un buen ejemplo de cómo una red virtual existente por lo general se usa la. Si su clúster de Service Fabric usa solo un equilibrador de carga interno, sin una dirección IP pública, puede usar Hola VM y su dirección IP pública como una ubicación segura *saltar cuadro*.
 
 ### <a name="static-public-ip-address"></a>Dirección IP pública estática
 
-Una dirección IP pública estática es normalmente un recurso dedicado que se administra de forma independiente de las máquinas virtuales a las que está asignada. Se aprovisiona en un grupo de recursos de red dedicado (en contraposición al aprovisionamiento en el grupo de recursos del clúster de Service Fabric en sí). Cree una dirección IP pública estática con el nombre "staticIP1" en el mismo grupo de recursos ExistingRG, ya sea a través de Azure Portal o mediante PowerShell:
+Por lo general, una dirección IP pública estática es un recurso dedicado que se administra independientemente del Hola VM o máquinas virtuales que se asigna a. Se aprovisiona en un grupo de recursos de red dedicado (como tooin opuestos Hola Service Fabric grupo de recursos de sí misma). Crear una dirección IP pública estática denominada staticIP1 Hola mismo grupo de recursos de ExistingRG, Hola portal de Azure o mediante el uso de PowerShell:
 
 ```powershell
 PS C:\Users\user> New-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
@@ -73,12 +73,12 @@ DnsSettings              : {
 
 ### <a name="service-fabric-template"></a>Plantilla de Service Fabric
 
-En los ejemplos de este artículo, usamos el archivo template.json de Service Fabric. Puede usar el asistente estándar del portal para descargar la plantilla desde el portal antes de crear un clúster. También puede emplear una de las plantillas de la [galería de plantillas](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric), como la del [clúster de cinco nodos de Service Fabric](https://azure.microsoft.com/en-us/documentation/templates/service-fabric-unsecure-cluster-5-node-1-nodetype/).
+En los ejemplos de hello en este artículo, usamos Hola Service Fabric template.json. Puede utilizar la plantilla de Hola de toodownload de asistente estándar del portal de Hola desde el portal de hello antes de crear un clúster. También puede utilizar una de las plantillas de Hola Hola [Galería de plantillas de](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric), como hello [clúster de cinco nodos Service Fabric](https://azure.microsoft.com/en-us/documentation/templates/service-fabric-unsecure-cluster-5-node-1-nodetype/).
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>Subred y red virtual existentes
 
-1. Cambie el parámetro de subred al nombre de la subred existente y agregue dos nuevos parámetros para hacer referencia a la red virtual existente:
+1. Cambiar nombre de toohello del parámetro hello subred de red existente de hello y, a continuación, agregue dos nuevos parámetros tooreference Hola red virtual existente:
 
     ```
         "subnet0Name": {
@@ -106,7 +106,7 @@ En los ejemplos de este artículo, usamos el archivo template.json de Service Fa
     ```
 
 
-2. Cambie la variable `vnetID` para que apunte a la red virtual existente:
+2. Hola de cambio `vnetID` variable toopoint toohello red virtual:
 
     ```
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
@@ -143,7 +143,7 @@ En los ejemplos de este artículo, usamos el archivo template.json de Service Fa
     },*/
     ```
 
-4. Comente la red virtual del atributo `dependsOn` de `Microsoft.Compute/virtualMachineScaleSets`, para que no dependa de crear una nueva red virtual:
+4. Comenta la red virtual de Hola de hello `dependsOn` atributo de `Microsoft.Compute/virtualMachineScaleSets`, por lo que no depende de crear una nueva red virtual:
 
     ```
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -157,27 +157,27 @@ En los ejemplos de este artículo, usamos el archivo template.json de Service Fa
 
     ```
 
-5. Implemente la plantilla:
+5. Implementar la plantilla de hello:
 
     ```powershell
     New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
-    Después de la implementación, la red virtual debe incluir las nuevas máquinas virtuales del conjunto de escalado. El tipo de nodo del conjunto de escalado de máquinas virtuales debe mostrar la red virtual y la subred existentes. También puede usar el protocolo de escritorio remoto (RDP) para tener acceso a la máquina virtual que se encontraba ya en la red virtual y hacer ping en las nuevas máquinas virtuales del conjunto de escalado:
+    Después de la implementación, debe incluir la red virtual nueva escala de hello establece las máquinas virtuales. tipo de nodo de conjunto de escala de máquina virtual de Hello debe mostrar subred y red virtual existente de Hola. También puede usar protocolo de escritorio remoto (RDP) tooaccess Hola VM que se encontraba en la red virtual de Hola y conjunto de tooping Hola nueva escala de máquinas virtuales:
 
     ```
     C:>\Users\users>ping 10.0.0.5 -n 1
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-Para obtener otro ejemplo, consulte [uno que no es específico de Service Fabric](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+Para obtener otro ejemplo, vea [uno que no sea específico tooService tejido](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
 
 
 <a id="staticpublicip"></a>
 ## <a name="static-public-ip-address"></a>Dirección IP pública estática
 
-1. Agregue parámetros para el nombre del grupo de recursos de direcciones IP estáticas existente, el nombre y el nombre de dominio completo (FQDN):
+1. Agregar parámetros para el nombre de Hola de hello existente de grupo de recursos IP estática, el nombre y el nombre de dominio completo (FQDN):
 
     ```
     "existingStaticIPResourceGroup": {
@@ -191,7 +191,7 @@ Para obtener otro ejemplo, consulte [uno que no es específico de Service Fabric
     }
     ```
 
-2. Elimine el parámetro `dnsName`. (La dirección IP estática ya tiene uno).
+2. Quitar hello `dnsName` parámetro. (dirección IP estática de hello ya tiene uno).
 
     ```
     /*
@@ -201,7 +201,7 @@ Para obtener otro ejemplo, consulte [uno que no es específico de Service Fabric
     */
     ```
 
-3. Agregue una variable para hacer referencia a la dirección IP estática existente:
+3. Agregue una variable tooreference Hola dirección IP estática existente:
 
     ```
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
@@ -229,7 +229,7 @@ Para obtener otro ejemplo, consulte [uno que no es específico de Service Fabric
     }, */
     ```
 
-5. Comente la dirección IP del atributo `dependsOn` de `Microsoft.Network/loadBalancers`, para que no dependa de crear una nueva dirección IP:
+5. Comenta la dirección IP de Hola de hello `dependsOn` atributo de `Microsoft.Network/loadBalancers`, por lo que no depende de crear una nueva dirección IP:
 
     ```
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -243,7 +243,7 @@ Para obtener otro ejemplo, consulte [uno que no es específico de Service Fabric
     "properties": {
     ```
 
-6. En el recurso `Microsoft.Network/loadBalancers`, cambie el elemento `publicIPAddress` de `frontendIPConfigurations` para que haga referencia a la dirección IP estática existente en lugar de a una recién creada:
+6. Hola `Microsoft.Network/loadBalancers` recurso, cambio hello `publicIPAddress` elemento de `frontendIPConfigurations` tooreference Hola existente dirección IP estática en lugar de uno recién creada:
 
     ```
                 "frontendIPConfigurations": [
@@ -259,7 +259,7 @@ Para obtener otro ejemplo, consulte [uno que no es específico de Service Fabric
                     ],
     ```
 
-7. En el recurso `Microsoft.ServiceFabric/clusters`, cambie `managementEndpoint` al FQDN de DNS de la dirección IP estática. Si está usando un clúster seguro, asegúrese de cambiar *http://* a *https://*. (Tenga en cuenta que este paso se aplica solo a los clústeres de Service Fabric. Si está empleando un conjunto de escalado de máquinas virtuales, omita este paso).
+7. Hola `Microsoft.ServiceFabric/clusters` recurso, cambio `managementEndpoint` toohello FQDN de DNS de la dirección IP estática de Hola. Si está usando un clúster seguro, asegúrese de cambiar *http://* demasiado*https://*. (Tenga en cuenta que este paso se aplica solo los clústeres de tejido de tooService. Si está empleando un conjunto de escalado de máquinas virtuales, omita este paso).
 
     ```
                     "fabricSettings": [],
@@ -267,7 +267,7 @@ Para obtener otro ejemplo, consulte [uno que no es específico de Service Fabric
                     "managementEndpoint": "[concat('http://',parameters('existingStaticIPDnsFQDN'),':',parameters('nt0fabricHttpGatewayPort'))]",
     ```
 
-8. Implemente la plantilla:
+8. Implementar la plantilla de hello:
 
     ```powershell
     New-AzureRmResourceGroup -Name sfnetworkingstaticip -Location westus
@@ -279,14 +279,14 @@ Para obtener otro ejemplo, consulte [uno que no es específico de Service Fabric
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
-Después de la implementación, puede ver que el equilibrador de carga está enlazado a la dirección IP estática pública del otro grupo de recursos. El punto de conexión del cliente de Service Fabric y [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) apuntan al FQDN de DNS de la dirección IP estática.
+Después de la implementación, puede ver que el equilibrador de carga es la dirección IP estática pública del toohello enlazado de hello otro grupo de recursos. Hola de extremo de conexión de cliente de Service Fabric y [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) toohello de punto de punto de conexión de dirección IP estática de hello las DNS FQDN.
 
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>Equilibrador de carga solo interno
 
-Este escenario reemplaza el equilibrador de carga externo en la plantilla predeterminada de Service Fabric por un equilibrador de carga solo interno. Para conocer las implicaciones en Azure Portal y en el proveedor de recursos de Service Fabric, consulte la sección anterior.
+Este escenario reemplaza el equilibrador de carga externo de hello en plantilla de Service Fabric Hola predeterminada con un equilibrador de carga solo para uso interno. Para implicaciones de hello portal de Azure y de proveedor de recursos de Service Fabric hello, vea Hola sección anterior.
 
-1. Elimine el parámetro `dnsName`. (No es necesario).
+1. Quitar hello `dnsName` parámetro. (No es necesario).
 
     ```
     /*
@@ -296,7 +296,7 @@ Este escenario reemplaza el equilibrador de carga externo en la plantilla predet
     */
     ```
 
-2. Si lo desea, puede agregar un parámetro de dirección IP estática, si usa el método de asignación estático. Si usa un método de asignación dinámico, no es necesario realizar este paso.
+2. Si lo desea, puede agregar un parámetro de dirección IP estática, si usa el método de asignación estático. Si usa un método de asignación dinámica, no es necesario toodo este paso.
 
     ```
             "internalLBAddress": {
@@ -327,7 +327,7 @@ Este escenario reemplaza el equilibrador de carga externo en la plantilla predet
     }, */
     ```
 
-4. Elimine la dirección IP del atributo `dependsOn` de `Microsoft.Network/loadBalancers`, para que no dependa de crear una nueva dirección IP. Agregue el atributo `dependsOn` de la red virtual porque el equilibrador de carga ahora depende de la subred de la red virtual:
+4. Quite la dirección IP de hello `dependsOn` atributo de `Microsoft.Network/loadBalancers`, por lo que no depende de crear una nueva dirección IP. Agregar la red virtual de hello `dependsOn` atributo porque equilibrador de carga de hello ahora depende de subred de Hola de red virtual de hello:
 
     ```
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -340,7 +340,7 @@ Este escenario reemplaza el equilibrador de carga externo en la plantilla predet
                 ],
     ```
 
-5. Cambie la configuración `frontendIPConfigurations` del equilibrador de carga para que pase de usar un `publicIPAddress` a usar una subred y `privateIPAddress`. `privateIPAddress` usa una dirección IP interna estática predefinida. Para utilizar una dirección IP dinámica, quite el elemento `privateIPAddress` y, a continuación, cambie `privateIPAllocationMethod` a **Dinámico**.
+5. Cambiar del equilibrador de carga de hello `frontendIPConfigurations` configuración del uso de un `publicIPAddress`, toousing una subred y `privateIPAddress`. `privateIPAddress` usa una dirección IP interna estática predefinida. toouse una dirección IP dinámica, quitar hello `privateIPAddress` elemento y, a continuación, cambie `privateIPAllocationMethod` demasiado**dinámica**.
 
     ```
                 "frontendIPConfigurations": [
@@ -361,7 +361,7 @@ Este escenario reemplaza el equilibrador de carga externo en la plantilla predet
                     ],
     ```
 
-6. En el recurso `Microsoft.ServiceFabric/clusters`, cambie `managementEndpoint` para que apunte a la dirección del equilibrador de carga interno. Si usa un clúster seguro, asegúrese de cambiar *http://* a *https://*. (Tenga en cuenta que este paso se aplica solo a los clústeres de Service Fabric. Si está empleando un conjunto de escalado de máquinas virtuales, omita este paso).
+6. Hola `Microsoft.ServiceFabric/clusters` recurso, cambio `managementEndpoint` dirección de equilibrador de carga interno de toopoint toohello. Si utiliza un clúster segura, asegúrese de cambiar *http://* demasiado*https://*. (Tenga en cuenta que este paso se aplica solo los clústeres de tejido de tooService. Si está empleando un conjunto de escalado de máquinas virtuales, omita este paso).
 
     ```
                     "fabricSettings": [],
@@ -369,7 +369,7 @@ Este escenario reemplaza el equilibrador de carga externo en la plantilla predet
                     "managementEndpoint": "[concat('http://',reference(variables('lbID0')).frontEndIPConfigurations[0].properties.privateIPAddress,':',parameters('nt0fabricHttpGatewayPort'))]",
     ```
 
-7. Implemente la plantilla:
+7. Implementar la plantilla de hello:
 
     ```powershell
     New-AzureRmResourceGroup -Name sfnetworkinginternallb -Location westus
@@ -377,16 +377,16 @@ Este escenario reemplaza el equilibrador de carga externo en la plantilla predet
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
-Después de la implementación, el equilibrador de carga usará la dirección IP privada estática 10.0.0.250. Si tiene otra máquina en esa misma red virtual puede ir al punto de conexión interno de [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Tenga en cuenta que se conecta a uno de los nodos detrás del equilibrador de carga.
+Después de la implementación, el equilibrador de carga utiliza la dirección IP de hello 10.0.0.250 estático privado. Si tiene otro equipo en esa misma red virtual, puede ir toohello interno [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) punto de conexión. Tenga en cuenta que se conecta tooone de nodos de hello detrás de equilibrador de carga de Hola.
 
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>Equilibrador de carga interno y externo
 
-En este escenario, comienza por el equilibrador de carga externo de un solo tipo de nodo y se agrega un equilibrador de carga interno adicional al mismo tipo de nodo. Un puerto de back-end conectado a un grupo de direcciones de back-end solo se puede asignar a un único equilibrador de carga. Elija qué equilibrador de carga tendrá los puertos de la aplicación y cuál tendrá los puntos de conexión de administración (puertos 19000 y 19080). Si pone los puntos de conexión de administración en el equilibrador de carga interno, tenga en cuenta las restricciones del proveedor de recursos de Service Fabric descritas anteriormente en este artículo. En el ejemplo que estamos utilizando, los puntos de conexión de administración permanecen en el equilibrador de carga externo. También puede agregar un puerto de aplicación 80 y colocarlo en el equilibrador de carga interno.
+En este escenario, comience con el equilibrador de carga externo de tipo de nodo único existente de Hola y agregar un equilibrador de carga interno para hello mismo tipo de nodo. Puede asignarse a un grupo de direcciones de back-end de tooa de puerto de back-end que se adjunta solo tooa equilibrador de carga única. Elija qué equilibrador de carga tendrá los puertos de la aplicación y cuál tendrá los puntos de conexión de administración (puertos 19000 y 19080). Si coloca los puntos de conexión de administración de hello en el equilibrador de carga interno de Hola, tenga en hello cuenta recursos de Service Fabric restricciones de proveedor descritas anteriormente en el artículo de Hola. En el ejemplo de Hola que usamos, extremos de administración de hello permanecen en equilibrador de carga externo Hola. También agregue un puerto de aplicación 80 y colocarlo en el equilibrador de carga interno de Hola.
 
-En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de carga externo. El otro estará en el equilibrador de carga interno. Para usar un clúster de dos tipos de nodo, en la plantilla de dos tipos de nodo creada en el portal (que incluye dos equilibradores de carga), cambie el segundo equilibrador de carga a un equilibrador de carga interno. Para más información, consulte la sección [Equilibrador de carga solo interno](#internallb).
+En un clúster de dos tipo de nodo, un tipo de nodo está en el equilibrador de carga externo Hola. Hello otro tipo de nodo está en el equilibrador de carga interno de Hola. toouse un clúster de dos tipo de nodo, en hello portal plantilla creada por el tipo de nodo de dos (que viene con dos de los equilibradores de carga), cambie el equilibrador de carga interno para tooan el segundo equilibrador de carga Hola. Para obtener más información, vea hello [equilibrador de carga interno solo](#internallb) sección.
 
-1. Agregue el parámetro de dirección IP del equilibrador de carga interno estático. (Para ver las notas relativas al uso de una dirección IP dinámica, consulte las secciones anteriores de este artículo).
+1. Agregue el parámetro de dirección IP de equilibrador de carga interno estático de Hola. (Para notas relacionada toousing una dirección IP dinámica, consulte las secciones anteriores de este artículo).
 
     ```
             "internalLBAddress": {
@@ -397,7 +397,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
 
 2. Agregue un parámetro de puerto 80 de aplicación.
 
-3. Para agregar las versiones internas de las variables de red existentes, cópielas y péguelas y agregue "-Int" al nombre:
+3. tooadd versiones interno de hello las redes variables, copie y pegue ellos y agregue "-Int" toohello nombre:
 
     ```
     /* Add internal load balancer networking variables */
@@ -410,7 +410,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
             /* Internal load balancer networking variables end */
     ```
 
-4. Si ha empezado con la plantilla generada mediante el portal que usa un puerto 80 de aplicación, la plantilla del portal predeterminada agrega AppPort1 (puerto 80) en el equilibrador de carga externo. En este caso, elimine AppPort1 de los sondeos y del elemento `loadBalancingRules` del equilibrador de carga externo para que pueda agregarlo al equilibrador de carga interno:
+4. Si empieza con plantilla generados por el portal de Hola que usa el puerto 80 de aplicación, plantilla del portal de Hola predeterminado agrega AppPort1 (puerto 80) en el equilibrador de carga externo Hola. En este caso, quite AppPort1 de equilibrador de carga externo hello `loadBalancingRules` y sondeos, para que pueda agregar equilibrador de carga interno de toohello:
 
     ```
     "loadBalancingRules": [
@@ -432,7 +432,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
                 },
                 "protocol": "tcp"
             }
-        } /* Remove AppPort1 from the external load balancer.
+        } /* Remove AppPort1 from hello external load balancer.
         {
             "name": "AppPortLBRule1",
             "properties": {
@@ -472,7 +472,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
                 "port": "[parameters('nt0fabricHttpGatewayPort')]",
                 "protocol": "tcp"
             }
-        } /* Remove AppPort1 from the external load balancer.
+        } /* Remove AppPort1 from hello external load balancer.
         {
             "name": "AppPortProbe1",
             "properties": {
@@ -487,14 +487,14 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
     "inboundNatPools": [
     ```
 
-5. Agregue un segundo recurso `Microsoft.Network/loadBalancers`. Se parece al equilibrador de carga interno creado en la sección [Equilibrador de carga solo interno](#internallb), pero usa las variables "-Int" del equilibrador de carga e implementa únicamente el puerto 80 de aplicación. Este procedimiento quita también `inboundNatPools`, para conservar los puntos de conexión RDP en el equilibrador de carga público. Si desea acceder mediante RDP en el equilibrador de carga interno, mueva `inboundNatPools` del equilibrador de carga externo a este interno:
+5. Agregue un segundo recurso `Microsoft.Network/loadBalancers`. Parece que el equilibrador de carga interno toohello similar creado en hello [equilibrador de carga interno solo](#internallb) sección, pero usa Hola "-Int" cargar equilibrador variables e implementa sólo Hola aplicación el puerto 80. Este procedimiento quita también `inboundNatPools`, tookeep puntos de conexión RDP en el equilibrador de carga públicos Hola. Si desea RDP en el equilibrador de carga interno de hello, mueva `inboundNatPools` de toothis de equilibrador de carga externo Hola interno equilibrador de carga:
 
     ```
-            /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
+            /* Add a second load balancer, configured with a static privateIPAddress and hello "-Int" load balancer variables. */
             {
                 "apiVersion": "[variables('lbApiVersion')]",
                 "type": "Microsoft.Network/loadBalancers",
-                /* Add "-Internal" to the name. */
+                /* Add "-Internal" toohello name. */
                 "name": "[concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal')]",
                 "location": "[parameters('computeLocation')]",
                 "dependsOn": [
@@ -508,7 +508,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
                         {
                             "name": "LoadBalancerIPConfig",
                             "properties": {
-                                /* Switch from Public to Private IP address
+                                /* Switch from Public tooPrivate IP address
                                 */
                                 "publicIPAddress": {
                                     "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(parameters('lbIPName'),'-','0'))]"
@@ -529,7 +529,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
                         }
                     ],
                     "loadBalancingRules": [
-                        /* Add the AppPort rule. Be sure to reference the "-Int" versions of backendAddressPool, frontendIPConfiguration, and the probe variables. */
+                        /* Add hello AppPort rule. Be sure tooreference hello "-Int" versions of backendAddressPool, frontendIPConfiguration, and hello probe variables. */
                         {
                             "name": "AppPortLBRule1",
                             "properties": {
@@ -551,7 +551,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
                         }
                     ],
                     "probes": [
-                    /* Add the probe for the app port. */
+                    /* Add hello probe for hello app port. */
                     {
                             "name": "AppPortProbe1",
                             "properties": {
@@ -572,7 +572,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
             },
     ```
 
-6. En `networkProfile` para el recurso `Microsoft.Compute/virtualMachineScaleSets`, agregue el grupo de direcciones de back-end interno:
+6. En `networkProfile` para hello `Microsoft.Compute/virtualMachineScaleSets` recursos, Agregar grupo de direcciones de back-end interno de hello:
 
     ```
     "loadBalancerBackendAddressPools": [
@@ -586,7 +586,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
     ],
     ```
 
-7. Implemente la plantilla:
+7. Implementar la plantilla de hello:
 
     ```powershell
     New-AzureRmResourceGroup -Name sfnetworkinginternalexternallb -Location westus
@@ -594,7 +594,7 @@ En un clúster de dos tipos de nodo, un tipo de nodo está en el equilibrador de
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
     ```
 
-Después de la implementación, puede ver dos de equilibradores de carga en el grupo de recursos. Si examina los equilibradores de carga, puede ver la dirección IP pública y los puntos de conexión de administración (puertos 19000 y 19080) asignados a la dirección IP pública. También puede ver la dirección IP interna estática y el punto de conexión de la aplicación (puerto 80) asignados al equilibrador de carga interno. Ambos equilibradores de carga usan el mismo grupo de back-end de conjunto de escalado de máquinas virtuales.
+Después de la implementación, puede ver dos equilibradores de carga en el grupo de recursos de Hola. Si examina los equilibradores de carga de hello, puede ver la dirección IP pública hello y dirección IP pública de toohello de puntos de conexión (puertos 19000 y 19080) asignados de administración. También puede ver Hola estático interno IP dirección y aplicación de punto de conexión (puerto 80) asignado toohello interno equilibrador de carga. Uso de equilibradores de carga mismo escalas de máquina virtual hello Establecer grupo back-end.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Creación de un clúster](service-fabric-cluster-creation-via-arm.md)

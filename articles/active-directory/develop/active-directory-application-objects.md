@@ -1,6 +1,6 @@
 ---
-title: "Objetos de aplicación y de entidad de servicio de Azure Active Directory | Microsoft Docs"
-description: "Una descripción de la relación entre los objetos de aplicación y de entidad de servicio en Azure Active Directory"
+title: "aaaAzure objetos de entidad de servicio y aplicación de Active Directory | Documentos de Microsoft"
+description: "Obtener una explicación de la relación de hello entre la aplicación y los objetos de entidad de servicio en Azure Active Directory"
 documentationcenter: dev-center-name
 author: dstrockis
 manager: mbaldwin
@@ -15,60 +15,60 @@ ms.workload: identity
 ms.date: 04/28/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4c75ade5f4e47ef64ccc0fe8af4b174c377dc7bc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ff7e308c0b326c3a32b101b7b323f2c0362763e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Objetos de aplicación y de entidad de servicio de Azure Active Directory (Azure AD)
-En ocasiones, puede malinterpretarse el significado del término "aplicación" cuando se utiliza en el contexto de Azure AD. El objetivo de este artículo es intentar aclararlo, definiendo los aspectos concretos y conceptuales de la integración de aplicaciones de Azure AD con un ejemplo de registro y su consentimiento para una [aplicación multiinquilino](active-directory-dev-glossary.md#multi-tenant-application).
+A veces Hola significado del término Hola puede malinterpretarse "application" cuando se utiliza en el contexto de Hola de Azure AD. objetivo de Hola de este artículo es toomake lo más clara, al clarificar aspectos concretos y conceptuales de integración de aplicaciones de Azure AD, con una ilustración de registro y su consentimiento para un [aplicación multiempresa](active-directory-dev-glossary.md#multi-tenant-application).
 
 ## <a name="overview"></a>Información general
-Una aplicación que se ha integrado con Azure AD tiene implicaciones que van más allá de los aspectos de software. "Aplicación" se utiliza con frecuencia como un término conceptual, que hace referencia a no solo la aplicación de software, pero también a su registro de Azure AD y rol en "conversaciones" de autenticación o autorización en tiempo de ejecución. Por definición, una aplicación puede funcionar en un rol de [cliente](active-directory-dev-glossary.md#client-application) (al consumir un recurso), un rol de [servidor de recursos](active-directory-dev-glossary.md#resource-server) (al exponer las API a los clientes), o incluso ambos. El protocolo de conversación se define mediante un [flujo de concesión de autorizaciones de OAuth 2.0](active-directory-dev-glossary.md#authorization-grant), que permite que el cliente o recurso acceda o proteja los datos de un recurso respectivamente. Ahora vamos a profundizar un poco más y ver cómo el modelo de aplicaciones de Azure AD representa una aplicación. 
+Una aplicación que se ha integrado con Azure AD tiene implicaciones que van más allá de los aspectos de software de Hola. "Aplicación" se suele usar como un término conceptual, que hace referencia toonot solo Hola Hola software de la aplicación, pero también su registro de Azure AD y roles en la autenticación/autorización "conversaciones" en tiempo de ejecución. Por definición, una aplicación puede funcionar en un [cliente](active-directory-dev-glossary.md#client-application) rol (consume un recurso), un [servidor de recursos](active-directory-dev-glossary.md#resource-server) rol (expone las API tooclients), o incluso ambos. Protocolo de conversación Hola se define mediante una [flujo de concesión de autorización de OAuth 2.0](active-directory-dev-glossary.md#authorization-grant), lo que permite Hola cliente/recursos tooaccess/proteger los datos de un recurso respectivamente. Ahora vamos a un nivel más profundo y ver cómo el modelo de aplicación hello Azure AD representa una aplicación en tiempo de diseño y tiempo de ejecución. 
 
 ## <a name="application-registration"></a>Registro de la aplicación
-Al registrar una aplicación de Azure AD en [Azure Portal][AZURE-Portal], se crean dos objetos en el inquilino de Azure AD: un objeto de aplicación y un objeto de entidad de servicio.
+Al registrar una aplicación de Azure AD en hello [portal de Azure][AZURE-Portal], se crean dos objetos en el inquilino de Azure AD: un objeto de aplicación y un objeto de entidad de servicio.
 
 #### <a name="application-object"></a>Objeto de aplicación
-Una aplicación de Azure AD se define por su único objeto de aplicación, que reside en el inquilino de Azure AD donde se registró la aplicación, conocido como inquilino "principal" de la aplicación. La [entidad de aplicación][AAD-Graph-App-Entity] de Azure AD Graph define el esquema para las propiedades de un objeto de aplicación. 
+Una aplicación de Azure AD se define mediante su uno y solo objeto de aplicación, que reside en el inquilino de Azure AD Hola donde se registró la aplicación hello, conocido como inquilino de la aplicación hello "inicio". Hello Azure AD Graph [entidad aplicaciones] [ AAD-Graph-App-Entity] define el esquema de Hola para las propiedades de un objeto de aplicación. 
 
 #### <a name="service-principal-object"></a>Objeto de entidad de servicio
-El objeto de entidad de servicio define la directiva y los permisos para el uso de una aplicación en un inquilino específico, que proporciona la base para una entidad de seguridad para representar la aplicación en tiempo de ejecución. La [entidad ServicePrincipal][AAD-Graph-Sp-Entity] de Azure AD Graph define el esquema para las propiedades de un objeto de entidad de servicio. 
+objeto de entidad de servicio de Hello define Hola directiva y los permisos de uso de una aplicación en un específicos del inquilino, proporcionando la base de Hola para una aplicación de hello toorepresent principal de seguridad en tiempo de ejecución. Hello Azure AD Graph [entidad ServicePrincipal] [ AAD-Graph-Sp-Entity] define Hola esquema para las propiedades de un objeto principal de servicio. 
 
 #### <a name="application-and-service-principal-relationship"></a>Relación entre la aplicación y la entidad de servicio
-Considere el objeto de aplicación como una representación *global* de la aplicación para su uso en todos los inquilinos y la entidad de servicio como una representación *local* para su uso en un inquilino específico. El objeto de aplicación actúa como la plantilla a partir de la cual se *derivan* las propiedades comunes y predeterminadas para su uso en la creación de objetos de entidad de servicio correspondientes. Por lo tanto, un objeto de aplicación tiene una relación 1:1 con la aplicación de software y una relación 1:muchos con sus objetos de entidad de servicio correspondientes.
+Considere la posibilidad de objeto de la aplicación hello como hello *global* representación de la aplicación para su uso en todos los inquilinos y entidad de servicio de hello como hello *local* representación para su uso en un determinado inquilino. Hello objeto application actúa como hello plantilla desde qué comunes y propiedades predeterminadas son *derivado* para su uso en la creación de objetos de entidad de seguridad de servicio correspondientes. Por lo tanto, un objeto de aplicación tiene una relación de 1:1 con la aplicación de software de hello y una relación de 1: muchas con sus correspondientes objetos de entidad de seguridad de servicio.
 
-Una entidad de servicio debe crearse en cada inquilino donde se usará la aplicación, lo que le permite establecer una identidad para el inicio de sesión y/o el acceso a los recursos que va a proteger el inquilino. Una aplicación de un único inquilino tendrá solo una entidad de servicio (en su inquilino principal), que normalmente se crea y consiente para su uso durante el registro de aplicación. Una API o aplicación web multiinquilino también tendrá una entidad de servicio creada en cada inquilino donde un usuario de ese inquilino ha dado su consentimiento para su uso.  
+Una entidad de servicio debe crearse en todos los inquilinos en su aplicación hello se usará, lo que le tooestablish una identidad para el inicio de sesión o tooresources de acceso está protegida por inquilino Hola. Una aplicación de un único inquilino tendrá solo una entidad de servicio (en su inquilino principal), que normalmente se crea y consiente para su uso durante el registro de aplicación. Una aplicación Web de varios inquilinos/API también tendrá una entidad de servicio creada en cada inquilino donde un usuario de ese inquilino ha dado su consentimiento tooits uso.  
 
 > [!NOTE]
-> Los cambios que realice en el objeto de aplicación también se reflejan en el objeto de entidad de servicio, solo en el inquilino principal de la aplicación (es decir, el inquilino en donde se registró). Para aplicaciones multiinquilino, los cambios realizados en el objeto de aplicación no se reflejan en los objetos de entidad de servicio del inquilino consumidor hasta que el acceso se quita a través del [panel de acceso de la aplicación](https://myapps.microsoft.com) y se concede de nuevo.
+> Los cambios que realice tooyour objeto de aplicación, también se reflejan en su objeto de entidad de seguridad de servicio en particular inquilinos la aplicación hello sólo (donde se registró un inquilino hello). Para las aplicaciones de varios inquilinos, objeto de aplicación de toohello de cambios no se reflejan en objetos de entidad de servicio de los inquilinos de cualquier consumidor, hasta que se quite el acceso de Hola a través de hello [Panel de acceso de la aplicación](https://myapps.microsoft.com) y concedido de nuevo.
 ><br>  
 > Tenga en cuenta también que las aplicaciones nativas se registran como multiinquilino de forma predeterminada.
 > 
 > 
 
 ## <a name="example"></a>Ejemplo
-En el siguiente se muestra la relación entre un objeto de aplicación de la aplicación y los objetos de entidad de servicio correspondientes, en el contexto de una aplicación multiinquilino de ejemplo denominada **HR app**. En este escenario hay tres inquilinos de Azure AD: 
+Hello siguiente diagrama ilustra Hola relación entre una aplicación objeto de aplicación y servicio correspondiente objetos de entidad de seguridad, en el contexto de Hola de una aplicación de varios inquilinos de ejemplo denominados **HR app**. En este escenario hay tres inquilinos de Azure AD: 
 
-* **Adatum**: el inquilino usado por la empresa que desarrolló la **aplicación de recursos humanos**
-* **Contoso**: el inquilino usado por la organización Contoso, que es un consumidor de la **aplicación de recursos humanos**
-* **Fabrikam**: el inquilino usado por la organización Fabrikam, que también consume la **aplicación de recursos humanos**
+* **Adatum** : hello inquilinos utilizado por la compañía de Hola que desarrolló hello **HR app**
+* **Contoso** : hello inquilinos utilizado por hello organización de Contoso, que es un consumidor de hello **HR app**
+* **Fabrikam** : hello inquilinos utilizado por la organización de Fabrikam, lo que también consume Hola Hola **HR app**
 
 ![Relación entre un objeto de aplicación y un objeto de entidad de servicio](./media/active-directory-application-objects/application-objects-relationship.png)
 
-En el diagrama anterior, el paso 1 es el proceso de creación de los objetos de aplicación y de entidad de servicio del inquilino principal de la aplicación.
+En el diagrama anterior de hello, paso 1 es proceso Hola de creación de aplicación hello y objetos de entidad de servicio de inquilino principal de la aplicación hello.
 
-En el paso 2, cuando los administradores de Contoso y Fabrikam completan el consentimiento, se crea un objeto de entidad de servicio en el inquilino de Azure AD de la empresa y se asignan los permisos que concede el administrador. Tenga en cuenta también que la aplicación de recursos humanos podría estar configurada o diseñada para dar consentimiento a los usuarios para el uso individual.
+En el paso 2, cuando los administradores de Contoso y Fabrikam completar su consentimiento, un objeto de entidad de servicio se crea en inquilino de Azure AD de su empresa y los permisos de hello asignado ese administrador Hola concedido. También tenga en cuenta que la aplicación hello recursos humanos puede consentimiento tooallow configurado/diseñado por los usuarios para uso individual.
 
-En el paso 3, los inquilinos consumidores de la aplicación HR (Contoso y Fabrikam) tienen cada uno de ellos su propio objeto de entidad de servicio. Cada uno representa su uso de una instancia de la aplicación en tiempo de ejecución, que se rige por los permisos que consiente el administrador correspondiente.
+En el paso 3, los inquilinos de consumidor de Hola de aplicación de recursos humanos (Contoso y Fabrikam) cada hello tienen su propio objeto de entidad de servicio. Cada uno representa el uso de una instancia de la aplicación hello en tiempo de ejecución, regido Hola dado su consentimiento de permisos de administrador respectivos Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Se puede acceder al objeto de aplicación de la aplicación a través de la API de Azure AD Graph, el editor de manifiestos de aplicación de [Azure Portal][AZURE-Portal] o de [cmdlets de Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), tal como y como se representa mediante su [entidad Application][AAD-Graph-App-Entity] de OData.
+Objeto de aplicación de la aplicación son accesibles a través de la API de Azure AD Graph, Hola hello [portal de Azure] [ AZURE-Portal] editor de manifiestos de aplicación, o [cmdlets de PowerShell de Azure AD](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), tal como está representado por su OData [entidad aplicaciones][AAD-Graph-App-Entity].
 
-Se puede acceder al objeto de entidad de servicio de la aplicación a través de la API de Azure AD Graph o de [cmdlets de Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), tal como se representa mediante su entidad [ServicePrincipal][AAD-Graph-Sp-Entity] de OData.
+Objeto de entidad de servicio de una aplicación son accesibles a través de la API de Azure AD Graph Hola o [cmdlets de PowerShell de Azure AD](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), tal como está representado por su OData [entidad ServicePrincipal] [ AAD-Graph-Sp-Entity].
 
-[Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) es útil para consultar tanto objetos de aplicación como objetos de entidad de servicio.
+Hola [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) es útil para consultar la aplicación hello y objetos de entidad de servicio.
 
 <!--Image references-->
 

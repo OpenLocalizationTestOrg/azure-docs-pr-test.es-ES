@@ -1,6 +1,6 @@
 # Primeros pasos
 ## [Prevención de costes inesperados](billing-getting-started.md)
-## [Concesión de acceso a la facturación](billing-manage-access.md)
+## [Conceder acceso toobilling](billing-manage-access.md)
 ## [Registro con la cuenta de Office 365](billing-use-existing-office-365-account-azure-subscription.md)
 ## [Suscripción a Office 365 con la cuenta de Azure](billing-use-existing-azure-account-for-office-365-subscription.md)
 ## [Límites y cuotas](../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)

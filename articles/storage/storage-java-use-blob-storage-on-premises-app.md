@@ -1,6 +1,6 @@
 ---
-title: "Aplicación local con Blob Storage (Java) | Microsoft Docs"
-description: "Aprenda a crear una aplicación de consola que carga una imagen en Azure y, a continuación, muestra la imagen en el explorador. Ejemplos de código en Java."
+title: "aplicación de aaaOn local con el almacenamiento de blobs (Java) | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo una aplicación de consola que carga una imagen tooAzure y, a continuación, muestra toocreate Hola imagen en el explorador. Ejemplos de código en Java."
 services: storage
 documentationcenter: java
 author: mmacy
@@ -14,29 +14,29 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: marsma
-ms.openlocfilehash: a172b881fa38a69f4510df94f5797b7a56940c52
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed8eb4c1045691c25abe94bf6c1b18b797adc3e3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="on-premises-application-with-blob-storage"></a>Aplicación local con almacenamiento en blobs
 ## <a name="overview"></a>Información general
-El siguiente ejemplo muestra cómo se puede utilizar el almacenamiento de Azure para almacenar las imágenes en Azure. El código en este artículo se destina a una aplicación de consola que carga una imagen en Azure y, a continuación, crea un archivo HTML que muestra la imagen en su explorador.
+Hello en el ejemplo siguiente se muestra cómo puede usar el almacenamiento de Azure para almacenar imágenes en Azure. código de Hello en este artículo es para una aplicación de consola que carga una imagen tooAzure y, a continuación, crea un archivo HTML que muestra la imagen de hello en el explorador.
 
 ## <a name="prerequisites"></a>Requisitos previos
 * Un kit para desarrolladores de Java (JDK) v 1.6 o posteriores instalado.
-* El SDK de Azure instalado.
-* El archivo JAR de las Bibliotecas de Azure para Java (y cualquier JAR de dependencia correspondiente) instalado y en la ruta de acceso de compilación utilizada por el compilador de Java. Para obtener información acerca de la instalación de bibliotecas de Azure para Java, consulte [Descarga del SDK de Azure para Java](../java-download-azure-sdk.md).
-* Una cuenta de almacenamiento configurada en Azure. El código en este artículo usará el nombre y la clave de cuenta para la cuenta de almacenamiento. Consulte [Crear una cuenta de almacenamiento](storage-create-storage-account.md#create-a-storage-account) para más información sobre la creación de una cuenta de almacenamiento y [Visualización y copia de las claves de acceso de almacenamiento](storage-create-storage-account.md#view-and-copy-storage-access-keys) para más información acerca de la recuperación de la clave de cuenta.
-* Ha creado un archivo de imagen local con el nombre almacenado en la ruta de acceso c:\\myimages\\image1.jpg. También puede modificar el constructor **FileInputStream** en el ejemplo para usar una ruta de acceso de imagen y un nombre de archivo diferentes.
+* Hello Azure SDK está instalado.
+* Hola JAR Hola para bibliotecas de Azure para Java y cualquier dependencia aplicable archivos JAR, se instala y está en la ruta de acceso de compilación de hello utilizado por el compilador de Java. Para obtener información acerca de cómo instalar Hola bibliotecas de Azure para Java, consulte [descarga hello Azure SDK para Java](../java-download-azure-sdk.md).
+* Una cuenta de almacenamiento configurada en Azure. Hello nombre de cuenta y clave de cuenta de almacenamiento de Hola se utilizará por código de hello en este artículo. Vea [cómo tooCreate una cuenta de almacenamiento](storage-create-storage-account.md#create-a-storage-account) para obtener información acerca de cómo crear una cuenta de almacenamiento, y [visualizar y copiar claves de acceso de almacenamiento](storage-create-storage-account.md#view-and-copy-storage-access-keys) para obtener información acerca de cómo recuperar la clave de la cuenta de hello.
+* Ha creado un archivo de imagen local con el nombre almacenado en c: de ruta de acceso de hello\\myimages\\image1.jpg. O bien, modificar el **FileInputStream** constructor en el ejemplo de Hola toouse un nombre de ruta de acceso y de otra imagen.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="to-use-azure-blob-storage-to-upload-a-file"></a>Para usar el almacenamiento de blobs de Azure para cargar un archivo
-A continuación se presenta un procedimiento paso a paso. Si desea omitir pasos, el código completo se presenta más adelante en este artículo.
+## <a name="toouse-azure-blob-storage-tooupload-a-file"></a>tooupload de almacenamiento de blobs de Azure toouse un archivo
+A continuación se presenta un procedimiento paso a paso. Si desea que tooskip con antelación, todo código de hello se presenta más adelante en este artículo.
 
-Comience el código mediante la inclusión de importaciones para las clases de almacenamiento central de Azure, las clases de clientes de blob de Azure, las clases de Java IO y la clase **URISyntaxException** :
+Comienzo del código de hello mediante la inclusión de importaciones para clases de almacenamiento de Azure principales de hello, clases de cliente de hello blobs de Azure, las clases de E/S de Java de Hola y Hola **URISyntaxException** clase.
 
 ```java
 import com.microsoft.azure.storage.*;
@@ -45,13 +45,13 @@ import java.io.*;
 import java.net.URISyntaxException;
 ```
 
-Declare una clase llamada **StorageSample** e incluya el corchete de apertura, **{**.
+Declarar una clase denominada **StorageSample**e incluyen el corchete de apertura de hello, **{**.
 
 ```java
 public class StorageSample {
 ```
 
-Dentro de la clase **StorageSample** , declare una variable de cadena que contendrá el protocolo de extremo predeterminado, el nombre de la cuenta de almacenamiento y la clave de acceso de almacenamiento, según lo especificado en su cuenta de Almacenamiento de Azure. Reemplace los valores de marcador de posición **your\_account\_name** y **your\_account\_key** por los suyos propios.
+Dentro de hello **StorageSample** clase, declare una variable de cadena que contendrá el protocolo de extremo de Hola de forma predeterminada, el nombre de cuenta de almacenamiento y su clave de acceso de almacenamiento, como se especifica en la cuenta de almacenamiento de Azure. Reemplace los valores de marcador de posición de hello **su\_cuenta\_nombre** y **su\_cuenta\_clave** con su propio nombre de cuenta y la clave de cuenta, respectivamente.
 
 ```java
 public static final String storageConnectionString =
@@ -60,7 +60,7 @@ public static final String storageConnectionString =
     "AccountKey=your_account_name";
 ```
 
-Agregue su declaración de **main**, incluya un bloque **try** e incluya los corchetes de apertura necesarios, **{**.
+Agregue la declaración para **principal**, incluyen un **intente** bloquear e incluya el corchete de apertura necesarios de hello, **{**.
 
 ```java
     public static void main(String[] args)
@@ -69,12 +69,12 @@ Agregue su declaración de **main**, incluya un bloque **try** e incluya los cor
         {
 ```
 
-Declare variables del siguiente tipo (las descripciones reflejan el uso que se les da en este ejemplo):
+Declarar variables de hello después del tipo (Hola son descripciones de cómo se utilizan en este ejemplo):
 
-* **CloudStorageAccount**: se utiliza para inicializar el objeto de cuenta con el nombre y la clave de la cuenta de Almacenamiento de Azure y para crear el objeto de cliente blob.
-* **CloudBlobClient**: se utiliza para tener acceso al servicio BLOB.
-* **CloudBlobContainer**: se utiliza para crear un contenedor de blobs, enumerar los blobs en el contenedor y eliminar el contenedor.
-* **CloudBlockBlob**: se utiliza para cargar un archivo de imagen local al contenedor.
+* **CloudStorageAccount**: Hola tooinitialize usado cuenta objeto con el nombre de la cuenta de almacenamiento de Azure y la clave y el toocreate el objeto de cliente de blob.
+* **CloudBlobClient**: utiliza el servicio de blob de tooaccess Hola.
+* **CloudBlobContainer**: toocreate usa un contenedor de blobs, enumerar los blobs en un contenedor hello y delete Hola contenedor.
+* **CloudBlockBlob**: tooupload usa un contenedor de toothe del archivo de imagen local.
 
 <!-- -->
 
@@ -85,79 +85,79 @@ Declare variables del siguiente tipo (las descripciones reflejan el uso que se l
     CloudBlockBlob blob;
 ```
 
-Asigne un valor a la variable **account** .
+Asignar un valor toohello **cuenta** variable.
 
 ```java
 account = CloudStorageAccount.parse(storageConnectionString);
 ```
 
-Asigne un valor a la variable **serviceClient** .
+Asignar un valor toohello **serviceClient** variable.
 
 ```java
 serviceClient = account.createCloudBlobClient();
 ```
 
-Asigne un valor a la variable **container** . Obtendremos una referencia a un contenedor llamado **gettingstarted**.
+Asignar un valor toohello **contenedor** variable. Nos pondremos en un contenedor de tooa referencia denominado **gettingstarted**.
 
 ```java
 // Container name must be lower case.
 container = serviceClient.getContainerReference("gettingstarted");
 ```
 
-Cree el contenedor. Este método creará el contenedor si no existe (y devolverá **true**). Si el contenedor existe, devolverá **false**. Una alternativa a **createIfNotExist** es el método **create** (que devolverá un error si el contenedor ya existe).
+Crear contenedor de Hola. Este método creará el contenedor de hello si no existe (y devolver **true**). Si existe el contenedor de hello, devolverá **false**. Una alternativa demasiado**createIfNotExists** es hello **crear** método (que se devolverá un error si ya existe el contenedor de hello).
 
 ```java
 container.createIfNotExists();
 ```
 
-Configure el acceso anónimo para el contenedor.
+Establecer el acceso anónimo para el contenedor de Hola.
 
 ```java
-// Set anonymous access on the container.
+// Set anonymous access on hello container.
 BlobContainerPermissions containerPermissions;
 containerPermissions = new BlobContainerPermissions();
 containerPermissions.setPublicAccess(BlobContainerPublicAccessType.CONTAINER);
 container.uploadPermissions(containerPermissions);
 ```
 
-Obtenga una referencia al blob en bloque, el cual representará al blob en el almacenamiento de Azure.
+Obtener un blob en bloques toohello referencia, que representará el blob de hello en el almacenamiento de Azure.
 
 ```java
 blob = container.getBlockBlobReference("image1.jpg");
 ```
 
-Use el constructor **File** para obtener una referencia al archivo que se creó de manera local que va a cargar. Asegúrese de haber creado el archivo antes de ejecutar el código.
+Hola de uso **archivo** constructor tooget un archivo de referencia toohello creada localmente que va a cargar. Asegúrese de que ha creado este archivo antes de ejecutar código de hello.
 
 ```java
 File fileReference = new File ("c:\\myimages\\image1.jpg");
 ```
 
-Cargue el archivo local a través de una llamada al método **CloudBlockBlob.upload** . El primer parámetro del método **CloudBlockBlob.upload** es un objeto **FileInputStream** que representa el archivo local que se cargará en Azure Storage. El segundo parámetro es el tamaño, en bytes, del archivo.
+Cargando archivo local de Hola a través de una llamada toohello **CloudBlockBlob.upload** método. Hola primera toohello parámetro **CloudBlockBlob.upload** método es un **FileInputStream** ese archivo local de Hola de representa será cargado tooAzure almacenamiento del objeto. Hola segundo parámetro es tamaño hello, en bytes, del archivo hello.
 
 ```java
 blob.upload(new FileInputStream(fileReference), fileReference.length());
 ```
 
-Llame a una función auxiliar denominada **MakeHTMLPage** para crear una página HTML básica que contenga un elemento **&lt;image&gt;** con la fuente definida en el blob que se encuentra ahora en la cuenta de Azure Storage. El código de **MakeHTMLPage** se describirá más adelante en este artículo.
+Llamar a una función auxiliar denominada **MakeHTMLPage**, página toomake una HTML básica que contiene un  **&lt;imagen&gt;**  elemento con blob toohello de conjunto de origen de Hola que se encuentra ahora en Azure cuenta de almacenamiento. Hola código para **MakeHTMLPage** se explicará más adelante en este artículo.
 
 ```java
 MakeHTMLPage(container);
 ```
 
-Imprima un mensaje de estado y la información sobre la página HTML creada.
+Imprimir un mensaje de estado e información sobre Hola creada la página HTML.
 
 ```java
 System.out.println("Processing complete.");
-System.out.println("Open index.html to see the images stored in your storage account.");
+System.out.println("Open index.html toosee hello images stored in your storage account.");
 ```
 
-Cierre el bloque **try** mediante la inserción de un corchete de cierre: **}**
+Hola cerrar **intente** bloque insertando un corchete de cierre: **}**
 
-Controle las siguientes excepciones:
+Identificador hello siguientes excepciones:
 
-* **FileNotFoundException**: se puede mostrar mediante los constructores **FileInputStream** o **FileOutputStream**.
-* **StorageException**: se puede mostrar mediante la biblioteca de almacenamiento del cliente de Azure.
-* **URISyntaxException**: se puede mostrar mediante el método **ListBlobItem.getUri**.
+* **FileNotFoundException**: Hola puede producir **FileInputStream** o **clase FileOutputStream** constructores.
+* **StorageException**: biblioteca de almacenamiento de Azure cliente hello puede producir.
+* **URISyntaxException**: Hola puede producir **ListBlobItem.getUri** método.
 * **Exception**: control de una excepción genérica.
 
 <!-- -->
@@ -191,7 +191,7 @@ catch (Exception e)
 
 Cierre **main** mediante la inserción de un corchete de cierre: **}**.
 
-Cree un método llamado **MakeHTMLPage** para crear una página HTML básica. Este método tiene un parámetro de tipo **CloudBlobContainer**, que se usará para iterar a través de la lista de blobs cargados. Este método mostrará excepciones de tipo **FileNotFoundException**, que se pueden mostrar mediante el constructor **FileOutputStream** y **URISyntaxException**, que se pueden mostrar a través del método **ListBlobItem.getUri**. Incluya el corchete de apertura, **{**.
+Crear un método denominado **MakeHTMLPage** página toocreate una HTML básica. Este método tiene un parámetro de tipo **CloudBlobContainer**, que será usado tooiterate a través de la lista de Hola de blobs cargados. Este método producirá excepciones de tipo **FileNotFoundException**, que puede producir hello **clase FileOutputStream** constructor, y **URISyntaxException**, lo que puede se produce por hello **ListBlobItem.getUri** método. Incluya el corchete de apertura, **{**.
 
 ```java
 public static void MakeHTMLPage(CloudBlobContainer container) throws FileNotFoundException, URISyntaxException
@@ -205,7 +205,7 @@ PrintStream stream;
 stream = new PrintStream(new FileOutputStream("index.html"));
 ```
 
-Escriba en el archivo local y agregue los elementos **html&lt;&gt;**, **&lt;header&gt;** y **&lt;body&gt;**.
+Escribir en el archivo local toohello, agregar Hola  **&lt;html&gt;**,  **&lt;encabezado&gt;**, y  **&lt;cuerpo&gt;**  elementos.
 
 ```java
 stream.println("<html>");
@@ -213,27 +213,27 @@ stream.println("<header/>");
 stream.println("<body>");
 ```
 
-Itere a través de la lista de blobs cargados. Para cada blob, en la página HTML cree un elemento **&lt;img&gt;** que envió su atributo **src** al URI del blob, tal como existe en su cuenta de Azure Storage.
+Recorrer en iteración la lista de Hola de blobs cargados. Para cada blob, en la página de hello HTML crear un  **&lt;img&gt;**  elemento que tiene su **src** atributo enviado al URI de blob de Hola Hola tal como existe en su cuenta de almacenamiento de Azure.
 Aunque ha agregado una sola imagen en este ejemplo, si agregara más, este código iteraría todas ellas.
 
-Para simplificar, en este ejemplo se asume que cada blob cargado es una imagen. Si ha actualizado blobs aparte de imágenes o blobs de páginas en lugar de blobs en bloques, ajuste el código según sea necesario.
+Para simplificar, en este ejemplo se asume que cada blob cargado es una imagen. Si ha actualizado blobs que no sean imágenes o blobs de página en lugar de blobs en bloques, ajustar el código de hello según sea necesario.
 
 ```java
-// Enumerate the uploaded blobs.
+// Enumerate hello uploaded blobs.
 for (ListBlobItem blobItem : container.listBlobs()) {
-// List each blob as an <img> element in the HTML body.
+// List each blob as an <img> element in hello HTML body.
 stream.println("<img src='" + blobItem.getUri() + "'/><br/>");
 }
 ```
 
-Cierre el elemento **&lt;body&gt;** y el elemento **&lt;html&gt;**.
+Hola cerrar  **&lt;cuerpo&gt;**  hello y elemento  **&lt;html&gt;**  elemento.
 
 ```java
 stream.println("</body>");
 stream.println("</html>");
 ```
 
-Cierre el archivo local.
+Archivo local Hola cerrar.
 
 ```java
 stream.close();
@@ -243,7 +243,7 @@ Cierre **MakeHTMLPage** mediante la inserción de un corchete de cierre: **}**.
 
 Cierre **StorageSample** mediante la inserción de un corchete de cierre: **}**.
 
-El siguiente es el código completo de este ejemplo. Recuerde modificar los valores de marcador de posición **your\_account\_name** and **your\_account\_key** para usar los suyos propios.
+Hola aquí te mostramos código completo de hello en este ejemplo. Recuerde que los valores de marcador de posición de hello toomodify **su\_cuenta\_nombre** y **su\_cuenta\_clave** toouse su nombre de cuenta y la cuenta la clave, respectivamente.
 
 ```java
 import com.microsoft.azure.storage.*;
@@ -251,9 +251,9 @@ import com.microsoft.azure.storage.blob.*;
 import java.io.*;
 import java.net.URISyntaxException;
 
-// Create an image, c:\myimages\image1.jpg, prior to running this sample.
-// Alternatively, change the value used by the FileInputStream constructor
-// to use a different image path and file that you have already created.
+// Create an image, c:\myimages\image1.jpg, prior toorunning this sample.
+// Alternatively, change hello value used by hello FileInputStream constructor
+// toouse a different image path and file that you have already created.
 public class StorageSample {
 
     public static final String storageConnectionString =
@@ -274,7 +274,7 @@ public class StorageSample {
             container = serviceClient.getContainerReference("gettingstarted");
             container.createIfNotExists();
 
-            // Set anonymous access on the container.
+            // Set anonymous access on hello container.
             BlobContainerPermissions containerPermissions;
             containerPermissions = new BlobContainerPermissions();
             containerPermissions.setPublicAccess(BlobContainerPublicAccessType.CONTAINER);
@@ -286,12 +286,12 @@ public class StorageSample {
             File fileReference = new File("c:\\myimages\\image1.jpg");
             blob.upload(new FileInputStream(fileReference), fileReference.length());
 
-            // At this point the image is uploaded.
-            // Next, create an HTML page that lists all of the uploaded images.
+            // At this point hello image is uploaded.
+            // Next, create an HTML page that lists all of hello uploaded images.
             MakeHTMLPage(container);
 
             System.out.println("Processing complete.");
-            System.out.println("Open index.html to see the images stored in your storage account.");
+            System.out.println("Open index.html toosee hello images stored in your storage account.");
 
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.print("FileNotFoundException encountered: ");
@@ -312,46 +312,46 @@ public class StorageSample {
         }
     }
 
-    // Create an HTML page that can be used to display the uploaded images.
-    // This example assumes all of the blobs are for images.
+    // Create an HTML page that can be used toodisplay hello uploaded images.
+    // This example assumes all of hello blobs are for images.
     public static void MakeHTMLPage(CloudBlobContainer container) throws FileNotFoundException, URISyntaxException
     {
         PrintStream stream;
         stream = new PrintStream(new FileOutputStream("index.html"));
 
-        // Create the opening <html>, <header>, and <body> elements.
+        // Create hello opening <html>, <header>, and <body> elements.
         stream.println("<html>");
         stream.println("<header/>");
         stream.println("<body>");
 
-        // Enumerate the uploaded blobs.
+        // Enumerate hello uploaded blobs.
         for (ListBlobItem blobItem : container.listBlobs()) {
-            // List each blob as an <img> element in the HTML body.
+            // List each blob as an <img> element in hello HTML body.
             stream.println("<img src='" + blobItem.getUri() + "'/><br/>");
         }
 
         stream.println("</body>");
 
-        // Complete the <html> element and close the file.
+        // Complete hello <html> element and close hello file.
         stream.println("</html>");
         stream.close();
     }
 }
 ```
 
-Además de subir el archivo de imagen local al almacenamiento de Azure, el código de ejemplo crea un archivo local namedindex.html, que se puede abrir en el explorador para ver la imagen cargada.
+En suma toouploading su almacenamiento tooAzure del archivo de imagen local, código de ejemplo de Hola crea un namedindex.html de archivos local, que puede abrir en el explorador toosee la imagen cargada.
 
-Debido a que el código contiene el nombre y la clave de la cuenta, asegúrese de que su código fuente sea seguro.
+Dado que el código de hello contiene el nombre de cuenta y la clave de cuenta, asegúrese de que el código fuente sea seguro.
 
-## <a name="to-delete-a-container"></a>Para eliminar un contenedor
-Debido a que se cobrará por el almacenamiento, es posible que desee eliminar el contenedor **gettingstarted** después de que haya terminado de experimentar con este ejemplo. Para eliminar un contenedor, use el método **CloudBlobContainer.delete** :
+## <a name="toodelete-a-container"></a>toodelete un contenedor
+Dado que se le cobra por almacenamiento, quizá prefiera toodelete el **gettingstarted** contenedor una vez que haya experimentar con este ejemplo. toodelete un contenedor, use hello **CloudBlobContainer.delete** método.
 
 ```java
 container = serviceClient.getContainerReference("gettingstarted");
 container.delete();
 ```
 
-Para llamar al método **CloudBlobContainer.delete**, el proceso de inicialización de los objetos **CloudStorageAccount**, **ClodBlobClient** y **CloudBlobContainer** es el mismo que se muestra para el método **createIfNotExist**. A continuación se expone un ejemplo completo que elimina el contenedor llamado **gettingstarted**.
+Hola toocall **CloudBlobContainer.delete** /método siguiente, el proceso de Hola de inicialización de **CloudStorageAccount**, **ClodBlobClient**, y  **CloudBlobContainer** objetos es Hola mismo tal y como se muestra para la **createIfNotExist** método. Hello aquí te mostramos un ejemplo completo que eliminaciones Hola contenedor denominado **gettingstarted**.
 
 ```java
 import com.microsoft.azure.storage.*;
@@ -397,10 +397,10 @@ public class DeleteContainer {
 }
 ```
 
-Para ver información general de otras clases y métodos de almacenamiento de blobs, consulte [Uso del almacenamiento de blobs desde Java](storage-java-how-to-use-blob-storage.md).
+Para obtener información general de los otros métodos y clases de almacenamiento de blobs, vea [cómo toouse almacenamiento de blobs desde Java](storage-java-how-to-use-blob-storage.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Siga estos vínculos para obtener más información acerca de las tareas de almacenamiento más complejas.
+Siga estos toolearn de vínculos más información acerca de las tareas más complejas de almacenamiento.
 
 * [SDK de almacenamiento de Azure para Java](https://github.com/azure/azure-storage-java)
 * [Referencia del SDK de cliente de almacenamiento de Azure](http://dl.windowsazure.com/storage/javadoc/)

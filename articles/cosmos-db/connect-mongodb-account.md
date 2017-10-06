@@ -1,6 +1,6 @@
 ---
-title: "Cadena de conexión de MongoDB para una cuenta de Azure Cosmos DB | Microsoft Docs"
-description: "Aprenda a conectar su aplicación de MongoDB a una cuenta de Azure Cosmos DB mediante una cadena de conexión de MongoDB."
+title: "cadena de conexión de aaaMongoDB para una cuenta de base de datos de Azure Cosmos | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooconnect su tooan de aplicación de MongoDB base de datos de Azure Cosmos cuenta a través de una cadena de conexión de MongoDB."
 keywords: "cadena de conexión de mongodb"
 services: cosmos-db
 author: AndrewHoh
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
-ms.openlocfilehash: 5a47001705531d971d3181df9c0aa8f957168845
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c0b81cb49a10e09e3f02411b91731c7f980ec47d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Conectar una aplicación de MongoDB a Azure Cosmos DB
-Aprenda a conectar su aplicación de MongoDB a una cuenta de Azure Cosmos DB mediante una cadena de conexión de MongoDB. Después, puede usar una base de datos de Azure Cosmos DB como almacén de datos de la aplicación MongoDB. 
+# <a name="connect-a-mongodb-application-tooazure-cosmos-db"></a>Conectar un tooAzure de aplicación de MongoDB Cosmos DB
+Obtenga información acerca de cómo tooconnect su tooan de aplicación de MongoDB base de datos de Azure Cosmos cuenta a través de una cadena de conexión de MongoDB. A continuación, puede usar una base de datos de la base de datos de Azure Cosmos como datos de hello almacenar para la aplicación de MongoDB. 
 
-En este tutorial se proporcionan dos maneras de recuperar información de la cadena de conexión:
+Este tutorial proporciona tooretrieve información de la cadena de conexión de dos maneras:
 
-- [El método de inicio rápido](#QuickstartConnection), para su uso con controladores de .NET, Node.js, MongoDB Shell, Java y Python.
-- [El método de la cadena de conexión personalizada](#GetCustomConnection), para su uso con otros controladores.
+- [Hola quick start (método)](#QuickstartConnection), para su uso con controladores. NET, Node.js, MongoDB Shell, Java y Python
+- [Hola método de cadena de conexión personalizada](#GetCustomConnection), para su uso con otros controladores
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 - Una cuenta de Azure. Si no tiene una cuenta de Azure, cree ahora una [cuenta de Azure gratuita](https://azure.microsoft.com/free/). 
-- Una cuenta de Azure Cosmos DB. Para obtener instrucciones, vea [Compilar una aplicación web de API MongoDB con .NET y Azure Portal](create-mongodb-dotnet.md).
+- Una cuenta de Azure Cosmos DB. Para obtener instrucciones, consulte [compilar una aplicación web de API de MongoDB con .NET y Hola portal de Azure](create-mongodb-dotnet.md).
 
-## <a id="QuickstartConnection"></a>Obtener la cadena de conexión de MongoDB mediante el menú de inicio rápido
-1. En un explorador de Internet, inicie sesión en [Azure Portal](https://portal.azure.com).
-2. En la hoja **Azure Cosmos DB**, seleccione la API de la cuenta de MongoDB. 
-3. En el panel izquierdo de la hoja de la cuenta, haga clic en **Inicio rápido**. 
-4. Elija la plataforma (**.NET**, **Node.js**, **Shell de MongoDB**, **Java**, **Python**). Si no ve el controlador o la herramienta en la lista, no se preocupe, documentamos constantemente más fragmentos de código de conexión. Comente a continuación lo que le gustaría ver. Para aprender a crear su propia conexión, lea la sección sobre cómo [obtener información de la cadena de conexión de la cuenta](#GetCustomConnection).
-5. Copie y pegue el fragmento de código en la aplicación MongoDB.
+## <a id="QuickstartConnection"></a>Obtener cadena de conexión de MongoDB hello mediante Inicio rápido de Hola
+1. En un explorador de Internet, inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Hola **base de datos de Azure Cosmos** hoja, seleccione Hola API para la cuenta de MongoDB. 
+3. En el panel izquierdo de Hola de hoja de la cuenta de hello, haga clic en **inicio rápido**. 
+4. Elija la plataforma (**.NET**, **Node.js**, **Shell de MongoDB**, **Java**, **Python**). Si no ve el controlador o la herramienta en la lista, no se preocupe, documentamos constantemente más fragmentos de código de conexión. Comentar a continuación, en lo que gustaría toosee. toolearn cómo toocraft su propia conexión, leer [obtener información de cadena de conexión de la cuenta de hello](#GetCustomConnection).
+5. Copie y pegue el fragmento de código de hello en la aplicación de MongoDB.
 
     ![Hoja de inicio rápido](./media/connect-mongodb-account/QuickStartBlade.png)
 
-## <a id="GetCustomConnection"></a> Obtención de la cadena de conexión de MongoDB para personalizar
-1. En un explorador de Internet, inicie sesión en [Azure Portal](https://portal.azure.com).
-2. En la hoja **Azure Cosmos DB**, seleccione la API de la cuenta de MongoDB. 
-3. En el panel izquierdo de la hoja de la cuenta, haga clic en **Cadena de conexión**. 
-4. Se abre la hoja **Cadena de conexión**, que contiene toda la información necesaria para conectarse a la cuenta con un controlador para MongoDB, incluida una cadena de conexión precreada.
+## <a id="GetCustomConnection"></a>Obtener toocustomize de cadena de conexión de MongoDB Hola
+1. En un explorador de Internet, inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Hola **base de datos de Azure Cosmos** hoja, seleccione Hola API para la cuenta de MongoDB. 
+3. En el panel izquierdo de Hola de hoja de la cuenta de hello, haga clic en **cadena de conexión**. 
+4. Hola **cadena de conexión** abre la hoja. Tiene todos los Hola información necesarios tooconnect toohello cuenta con un controlador para MongoDB, incluida una cadena de conexión preconstructed.
 
     ![Hoja Cadena de conexión](./media/connect-mongodb-account/ConnectionStringBlade.png)
 
@@ -57,23 +57,23 @@ En este tutorial se proporcionan dos maneras de recuperar información de la cad
 >
 >
 
-Azure Cosmos DB admite el formato estándar de URI de cadena de conexión de MongoDB, con un par de requisitos específicos: las cuentas de Azure Cosmos DB requieren autenticación y comunicación segura mediante SSL. Por tanto, el formato de la cadena de conexión es:
+Base de datos de Azure Cosmos admite Hola MongoDB conexión cadena URI formato estándar, con un par de requisitos específicos: cuentas de base de datos de Azure Cosmos requieren autenticación y comunicación segura mediante SSL. Por lo tanto, el formato de cadena de conexión de hello es:
 
     mongodb://username:password@host:port/[database]?ssl=true
 
-Los valores de esta cadena están disponibles en la hoja **Cadena de conexión** mostrada antes:
+valores de Hello de esta cadena están disponibles en hello **cadena de conexión** hoja mostrada anteriormente:
 
 * Username (obligatorio): nombre de la cuenta de Azure Cosmos DB.
 * Password (obligatorio): contraseña de la cuenta de Azure Cosmos DB.
-* Host (obligatorio): FQDN de la cuenta de Azure Cosmos DB.
+* Host (obligatorio): el FQDN de la cuenta de base de datos de Azure Cosmos Hola.
 * Port (obligatorio): 10255.
-* Database (opcional): base de datos que usa la conexión. Si no se proporciona ninguna base de datos, la base de datos predeterminada es "test".
+* (Opcional) de la base de datos: base de datos de Hola que Hola conexión utiliza. Si no se proporciona ninguna base de datos, base de datos de hello predeterminada es "test".
 * ssl=true (obligatorio)
 
-Por ejemplo, considere la cuenta que aparece en la hoja **Cadena de conexión**. Una cadena de conexión válida es:
+Por ejemplo, considere la posibilidad de cuenta de hello mostrado en hello **cadena de conexión** hoja. Una cadena de conexión válida es:
 
     mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@anhohmongo.documents.azure.com:10255/mydatabase?ssl=true
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información sobre cómo [usar MongoChef](mongodb-mongochef.md) con una API de Azure Cosmos DB para una cuenta de MongoDB.
-* Explore [ejemplos](mongodb-samples.md) de la API de Azure Cosmos DB para MongoDB.
+* Obtenga información acerca de cómo demasiado[usar MongoChef](mongodb-mongochef.md) con una API de base de datos de Azure Cosmos para cuenta de MongoDB.
+* Explorar Hola API de base de datos de Azure Cosmos para MongoDB observando [ejemplos](mongodb-samples.md).

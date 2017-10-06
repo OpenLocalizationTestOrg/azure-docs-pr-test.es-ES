@@ -1,6 +1,6 @@
 ---
-title: "Azure AD y aplicaciones: asignación de usuarios a una aplicación | Microsoft Docs"
-description: "Cómo implementar la asignación de usuarios para aplicaciones de Azure."
+title: "Azure AD y aplicaciones: asignación de usuarios tooan aplicación | Documentos de Microsoft"
+description: "La asignación de usuario de tooimplement para las aplicaciones de Azure."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: kgremban
 robots: noindex
-ms.openlocfilehash: 29d63bd5781dc7ef9e84840dd4b1b70222cf6892
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e9374cbd106d1bcb302645828a061fe184f9956b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Azure AD y aplicaciones: asignación de usuarios a una aplicación
-Para poder asignar usuarios y grupos a una aplicación, debe requerir la asignación de usuarios.  Para obtener información sobre cómo requerir asignación de usuarios, consulte el artículo [Necesidad de asignación de usuario](active-directory-applications-guiding-developers-requiring-user-assignment.md) .
+# <a name="azure-ad-and-applications-assigning-users-tooan-application"></a>Azure AD y aplicaciones: asignación de usuarios tooan aplicación
+Antes de poder asignar usuarios y aplicaciones de tooan de grupos, necesita la asignación de usuario.  toolearn cómo toorequire asignación de usuario vea hello [que requieren la asignación de usuario](active-directory-applications-guiding-developers-requiring-user-assignment.md) artículo.
 
-## <a name="assigning-users-to-an-application"></a>Asignación de usuarios a una aplicación
-1. Inicie sesión en el portal de Azure con una cuenta de administrador.
-2. Haga clic en el elemento **Todos los elementos** del menú principal.
-3. Elija el directorio que está usando para la aplicación.
-4. Haga clic en la pestaña **APLICACIONES** .
-5. Seleccione la aplicación en la lista de aplicaciones asociada a este directorio.
-6. Haga clic en la pestaña **USUARIOS Y GRUPOS** .
-7. Seleccione los usuarios que desea asignar a la aplicación.
+## <a name="assigning-users-tooan-application"></a>Asignar usuarios tooan aplicación
+1. Inicie sesión en toohello portal de Azure con una cuenta de administrador.
+2. Haga clic en hello **todos los elementos** elemento en el menú principal de Hola.
+3. Elija el directorio de Hola que está usando para la aplicación hello.
+4. Haga clic en hello **aplicaciones** ficha.
+5. Seleccione la aplicación hello de lista de Hola de las aplicaciones asociadas a este directorio.
+6. Haga clic en hello **usuarios y grupos** ficha.
+7. Seleccione los usuarios de hello desea tooassign toohello aplicación.
 8. Haga clic en **ASIGNAR**.
 9. Haga clic en **Sí** cuando se le solicite.
 

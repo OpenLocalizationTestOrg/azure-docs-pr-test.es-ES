@@ -1,6 +1,6 @@
 ---
-title: "Registro de un vale de soporte técnico para la serie 8000 de StorSimple | Microsoft Docs"
-description: "Aprenda a crear una solicitud de soporte técnico y a iniciar una sesión de soporte técnico en su dispositivo StorSimple."
+title: "aaaLog incidencia de soporte técnico para la serie 8000 de StorSimple | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo solicitar toocreate compatibilidad e iniciar una sesión de soporte técnico en el dispositivo StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -15,81 +15,81 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli;anbacker
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e1a3aa3c56e036c782c4fb502c477dc0feaa0ccd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="contact-microsoft-support-for-your-storsimple"></a>Contacto con el soporte técnico de Microsoft para StorSimple
-Si tiene algún problema con la solución de Microsoft Azure StorSimple, puede crear una solicitud de servicio de soporte técnico. En una sesión en línea con su ingeniero de soporte técnico, también deberá iniciar una sesión de soporte técnico en su dispositivo StorSimple. Este artículo le enseñará a:
+Si tiene algún problema con la solución de Microsoft Azure StorSimple, puede crear una solicitud de servicio de soporte técnico. En una sesión con su ingeniero de soporte técnico en línea, también puede ser necesario toostart una sesión de soporte técnico en el dispositivo StorSimple. Este artículo le enseñará a:
 
-* Crear una solicitud de soporte.
-* Iniciar una sesión de soporte en la interfaz de Windows PowerShell del dispositivo de StorSimple.
+* Cómo solicitar toocreate un soporte técnico.
+* ¿Cómo toostart una sesión de soporte técnico en Hola interfaz de Windows PowerShell del dispositivo StorSimple.
 
-Revise la sección [Información y contratos de nivel de servicio de soporte de la serie StorSimple 8000](https://msdn.microsoft.com/library/mt433077.aspx) antes de crear una solicitud de soporte técnico.
+Hola de revisión [SLA de soporte técnico de StorSimple 8000 Series e información](https://msdn.microsoft.com/library/mt433077.aspx) antes de crear una solicitud de soporte técnico.
 
 ## <a name="create-a-support-request"></a>Crear una solicitud de soporte
-Lleve a cabo los siguientes pasos para crear una solicitud de soporte.
+Lleve a cabo Hola siguiendo los pasos toocreate una solicitud de soporte técnico:
 
-#### <a name="to-create-a-support-request"></a>Para crear una solicitud de soporte
-1. En el [Portal de Azure clásico](https://manage.windowsazure.com/), haga clic en el extremo superior derecho, en el nombre de cuenta y, a continuación, haga clic en **Póngase en contacto con el Soporte técnico de Microsoft**.
+#### <a name="toocreate-a-support-request"></a>toocreate una solicitud de soporte técnico
+1. Hola [portal de Azure clásico](https://manage.windowsazure.com/), en hello esquina superior derecha, haga clic en el nombre de cuenta y, a continuación, haga clic en **póngase en contacto con soporte técnico de Microsoft**.
    
     ![Ponerse en contacto con el soporte técnico de MS a través del Portal de administración](./media/storsimple-contact-microsoft-support/Ibiza1.png)
-2. Se le redirigirá al nuevo Portal de Azure (portal.azure.com). Haga clic en el icono **Nueva solicitud de soporte técnico** .
+2. Será redirigido toohello nuevo portal de Azure (portal.azure.com). Haga clic en hello **nueva solicitud de soporte técnico** icono.
    
     ![Ponerse en contacto con el soporte técnico de MS a través del nuevo portal](./media/storsimple-contact-microsoft-support/Ibiza2.png)
    
-    En el lado derecho de la pantalla, aparecerá el panel **Nueva solicitud de soporte técnico** . 
+    En el lado derecho de Hola de pantalla de bienvenida, Hola **nueva solicitud de soporte técnico** aparece el panel. 
    
     ![Panel Nueva solicitud de soporte](./media/storsimple-contact-microsoft-support/Ibiza3a.png)
-3. En el cuadro de diálogo **Aspectos básicos** , haga lo siguiente:                                
+3. Hola **Fundamentos** cuadro de diálogo, Hola completa después de:                                
    
-   1. En la lista desplegable **Tipo de problema**, seleccione **Técnico**.
-   2. Seleccione una **Suscripción** en la lista desplegable.
-   3. En la lista desplegable **Servicio**, seleccione **StorSimple**. 
-   4. Seleccione un **Plan de soporte técnico** en la lista desplegable. Para habilitar el soporte técnico, debe contar con un plan de soporte técnico de pago.
-4. Haga clic en **Siguiente**. Aparecerá el cuadro de diálogo **Problema** .
+   1. De hello **emitir tipo** lista desplegable, seleccione **técnica**.
+   2. Seleccione un **suscripción** desde la lista desplegable de Hola.
+   3. De hello **servicio** lista desplegable, seleccione **StorSimple**. 
+   4. Seleccione un **plan de soporte técnico** desde la lista desplegable de Hola. Es necesario un tooenable del plan de soporte técnico de pago de soporte técnico.
+4. Haga clic en **Siguiente**. Hola **problema** aparece el cuadro de diálogo.
    
     ![Panel Nueva solicitud de soporte](./media/storsimple-contact-microsoft-support/Ibiza5a.png) 
-5. En el cuadro de diálogo **Problema** , haga lo siguiente:
+5. Hola **problema** cuadro de diálogo, Hola completa después de:
    
-   1. Seleccione un nivel de **Gravedad** en la lista desplegable.
-   2. Seleccione un **Tipo de problema** en la lista desplegable.
-   3. Seleccione una **Categoría** en la lista desplegable. 
-   4. En el campo **Detalles** , escriba una descripción breve del problema.
-   5. En el cuadro **Período de tiempo** , indique la fecha, la hora y la zona horaria correspondiente a la aparición más reciente del problema.
-   6. En **Carga de archivos**, haga clic en el icono de carpeta para buscar el paquete de soporte técnico.
-   7. Seleccione la casilla de verificación **Compartir información de diagnóstico** .
-6. Haga clic en **Siguiente**. Aparecerá el cuadro de diálogo **Información de contacto** .
+   1. Seleccione un **gravedad** nivel de lista desplegable de Hola.
+   2. Seleccione un **tipo de problema** desde la lista desplegable de Hola.
+   3. Seleccione un **categoría** desde la lista desplegable de Hola. 
+   4. Hola **detalles** cuadro, describa brevemente su problema.
+   5. Hola **período de tiempo** cuadro, indique la fecha de hello, hora y zona horaria correspondiente toohello más reciente aparición del problema.
+   6. En **cargar el archivo**, haga clic en el paquete de soporte de hello carpeta icono toobrowse tooyour.
+   7. Seleccione hello **compartir información de diagnóstico** casilla de verificación.
+6. Haga clic en **Siguiente**. Hola **información de contacto** aparece el cuadro de diálogo.
    
     ![Panel Nueva solicitud de soporte](./media/storsimple-contact-microsoft-support/Ibiza6a.png) 
 7. Escriba la información de contacto y seleccione un método de contacto (teléfono o correo electrónico). 
-8. Seleccione la casilla de verificación **Guardar cambios de contacto para solicitudes futuras de soporte técnico** .
+8. Seleccione hello **guardar los cambios en los contactos para las solicitudes de la compatibilidad futura** casilla de verificación.
 9. Haga clic en **Crear**.
 
-Una vez que ha enviado la solicitud, un ingeniero de soporte se pondrá en contacto con usted tan pronto como sea posible para procesar su solicitud.
+Una vez ha enviado la solicitud, un ingeniero de soporte técnico se comunicará con usted tan pronto como sea posible tooproceed con su solicitud.
 
 ## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Iniciar una sesión de soporte en Windows PowerShell para StorSimple
-Para solucionar los problemas que pudiera experimentar con el dispositivo StorSimple, deberá ponerse en contacto con el equipo de soporte técnico de Microsoft. Es posible que el soporte técnico de Microsoft necesite utilizar una sesión de soporte para iniciar sesión en su dispositivo. 
+tootroubleshoot los problemas que pueda experimentar con el dispositivo de StorSimple de hello, necesitará tooengage con el equipo de Microsoft Support Hola. Microsoft Support puede necesitar toouse un toolog de sesión de soporte técnico en tooyour dispositivo. 
 
-Lleve a cabo los siguientes pasos para iniciar una sesión de soporte.
+Realizar Hola siguientes pasos toostart una sesión de soporte técnico:
 
-#### <a name="to-start-a-support-session"></a>Para iniciar una sesión de soporte
-1. Acceda al dispositivo directamente desde la consola serie o a través de una sesión de telnet desde un equipo remoto. Para ello, siga los pasos descritos en [Uso de PuTTy para conectarse a la consola serie del dispositivo](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console).
-2. En la sesión que se abre, presione la tecla **Intro** para obtener un símbolo del sistema.
-3. En el menú de la consola serie, seleccione la opción 1, **iniciar sesión con acceso completo**.
-4. En el símbolo del sistema, escriba la siguiente contraseña: 
+#### <a name="toostart-a-support-session"></a>toostart una sesión de soporte técnico
+1. En el dispositivo de hello acceso directamente desde la consola de serie de Hola o a través de una sesión de telnet desde un equipo remoto. toodo, siga los pasos en hello [consola serie del dispositivo Use PuTTY tooconnect toohello](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console).
+2. En la sesión de Hola que se abre, presione hello **ENTRAR** clave tooget un símbolo del sistema.
+3. En el menú de consola serie de hello, seleccione la opción 1, **iniciar sesión con acceso completo**.
+4. En el símbolo de hello, escriba Hola después de contraseña: 
    
     `Password1`
-5. En el símbolo del sistema, escriba el siguiente comando:
+5. En el símbolo de hello, escriba Hola siguiente comando:
    
     `Enable-HcsSupportAccess`
-6. Aparecerá una cadena cifrada. Copie esta cadena en un editor de texto como el Bloc de notas.
-7. Guarde esta cadena y envíela por correo electrónico al soporte técnico de Microsoft. 
+6. Una cadena cifrada se presentará tooyou. Copie esta cadena en un editor de texto como el Bloc de notas.
+7. Guarde esta cadena y enviarlos en un tooMicrosoft de mensaje de correo electrónico soporte técnico. 
 
 > [!IMPORTANT]
-> Puede deshabilitar el acceso al soporte técnico ejecutando `Disable-HcsSupportAccess`. El dispositivo StorSimple también intenta deshabilitar el acceso al soporte técnico 8 horas después de iniciada la sesión. Es un procedimiento recomendado cambiar las credenciales de su dispositivo StorSimple después de una sesión de soporte técnico.
+> Puede deshabilitar el acceso al soporte técnico ejecutando `Disable-HcsSupportAccess`. dispositivo de StorSimple de Hello intentará también acceso al soporte técnico de toodisable 8 horas después de que se inició la sesión de Hola. Es una mejor toochange de práctica el dispositivo StorSimple credenciales después de iniciar una sesión de soporte técnico.
 > 
 > 
 

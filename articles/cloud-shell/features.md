@@ -1,5 +1,5 @@
 ---
-title: "Características de Azure Cloud Shell (versión preliminar) | Microsoft Docs"
+title: "características de Shell en la nube (versión preliminar) aaaAzure | Documentos de Microsoft"
 description: "Introducción a las características de Azure Cloud Shell"
 services: 
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: juluk
-ms.openlocfilehash: 67f03d5857e37b253ac57536e289b5468d69e9b5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 65482ca6caeac01dda18a6b12eabe943e3d68a96
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="features-and-tools-for-azure-cloud-shell"></a>Características y herramientas para Azure Cloud Shell
-Azure Cloud Shell es una experiencia de shell basado en el explorador para administrar y desarrollar recursos de Azure.
+Shell de nube de Azure es un toomanage de experiencia de shell basado en un explorador y desarrollar recursos de Azure.
 
-Cloud Shell ofrece una experiencia de shell preconfigurado y accesible desde el explorador para administrar recursos de Azure sin el trabajo añadido de realizar la instalación, el control de versiones y el mantenimiento de una máquina de forma manual.
+Shell de nube ofrece un explorador accesible, preconfigurado y experiencia de shell de administración de recursos de Azure sin sobrecarga de Hola de instalar, control de versiones y el mantenimiento de una máquina usted mismo.
 
 Cloud Shell aprovisiona máquinas a medida que se solicitan y, por tanto, el estado de la máquina no se conservará entre sesiones. Como Cloud Shell se ha creado para sesiones interactivas, los shells finalizan automáticamente después de 20 minutos de inactividad.
 
@@ -50,14 +50,14 @@ Cloud Shell aprovisiona máquinas a medida que se solicitan y, por tanto, el est
 |Python     |2.7 y 3.5 (predeterminadas)|
 
 ## <a name="secure-automatic-authentication"></a>Protección de la autenticación automática
-Cloud Shell autentica de forma segura y automática el acceso a la cuenta para la CLI de Azure 2.0.
+En la nube Shell automáticamente y de forma segura autentica el acceso de cuenta de hello 2.0 de CLI de Azure.
 
 ## <a name="azure-files-persistence"></a>Persistencia de Azure Files
 Dado que Cloud Shell se asigna para cada solicitud mediante una máquina temporal, los archivos fuera de $Home y el estado de la máquina no se conservan entre sesiones.
-Para conservar archivos entre sesiones, la primera vez que se inicia Cloud Shell se explica cómo conectar un recurso compartido de archivos de Azure.
+archivos de toopersist entre las sesiones, los recorridos de Shell en la nube a través de adjuntar un archivo de Azure comparten en el primer inicio.
 Una vez finalizado, Cloud Shell conectará automáticamente su almacenamiento para todas las sesiones futuras.
 
-[Obtenga más información sobre cómo conectar recursos compartidos de archivos de Azure a Cloud Shell](persisting-shell-storage.md).
+[Más información acerca de cómo adjuntar tooCloud de recursos compartidos de archivos de Azure Shell.](persisting-shell-storage.md)
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Inicio rápido de Cloud Shell](quickstart.md) <br>

@@ -1,6 +1,6 @@
 ---
-title: "Creación un sondeo personalizado para Azure Application Gateway mediante Azure Portal | Microsoft Docs"
-description: "Más información acerca de la creación de un sondeo personalizado para Puerta de enlace de aplicaciones mediante el portal"
+title: Portal de Azure - puerta de enlace de aplicaciones de Azure - sondeo de aaaCreate personalizado | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate personalizado de sondeo para puerta de enlace de aplicaciones mediante el portal de Hola"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,68 +15,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: gwallace
-ms.openlocfilehash: 65e9bba4ce9ac41ae2a9a8c3fa7f661165fc1403
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9e9309045ef33ba1010868783949b4fde31619ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Creación de un sondeo personalizado para Puerta de enlace de aplicaciones mediante el portal
+# <a name="create-a-custom-probe-for-application-gateway-by-using-hello-portal"></a>Crear un sondeo personalizado para puerta de enlace de aplicaciones mediante el portal de Hola
 
 > [!div class="op_single_selector"]
 > * [Portal de Azure](application-gateway-create-probe-portal.md)
 > * [PowerShell de Azure Resource Manager](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
-En este artículo, agregará un sondeo personalizado a una puerta de enlace de aplicaciones existente a través de Azure Portal. Los sondeos personalizados son útiles para aplicaciones que tienen una página de comprobación del estado o para aplicaciones que no proporcionan una respuesta correcta en la aplicación web predeterminada.
+En este artículo, se agregará un sondeo personalizado tooan aplicación puerta de enlace existente a través de hello portal de Azure. Sondeos personalizados son útiles para las aplicaciones que tienen una página de comprobación de mantenimiento específico o para aplicaciones que no proporcionan una respuesta correcta en la aplicación web de hello predeterminada.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-Si no dispone aún de una puerta de enlace de aplicaciones, visite [Creación de una puerta de enlace de aplicaciones](application-gateway-create-gateway-portal.md) para crear una puerta de enlace de aplicaciones con la que trabajar.
+Si no dispone de una puerta de enlace de aplicaciones, visite [crear una puerta de enlace de la aplicación](application-gateway-create-gateway-portal.md) toocreate un toowork de puerta de enlace de aplicaciones con.
 
-## <a name="createprobe"></a>Creación del sondeo
+## <a name="createprobe"></a>Crear el sondeo de Hola
 
-Los sondeos se configuran en un proceso de dos pasos a través del portal. El primer paso consiste en crear el sondeo. En el segundo paso, agregue el sondeo a la configuración HTTP de back-end de la puerta de enlace de aplicaciones.
+Los sondeos están configurados en un proceso de dos pasos a través del portal de Hola. Hola primer paso es sondeo de hello toocreate. En el segundo paso de hello, agregar configuración Hola sondeo toohello back-end http de puerta de enlace de aplicación Hola.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com). Si aún no tiene cuenta, puede registrarse para obtener [una evaluación gratuita durante un mes](https://azure.microsoft.com/free).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com). Si aún no tiene cuenta, puede registrarse para obtener [una evaluación gratuita durante un mes](https://azure.microsoft.com/free).
 
-1. En el panel Favoritos de Azure Portal, haga clic en Todos los recursos. Haga clic en la puerta de enlace de aplicaciones en la hoja Todos los recursos. Si la suscripción que seleccionó ya tiene varios recursos en ella, puede escribir partners.contoso.net en el cuadro Filtrar por nombre… para acceder fácilmente a la puerta de enlace de la aplicación.
+1. Hola portal de Azure panel Favoritos, haga clic en todos los recursos. Haga clic en puerta de enlace de aplicaciones de Hola Hola todos los módulos de recursos. Si la suscripción de Hola que ha seleccionado ya tiene varios recursos en ella, puede escribir partners.contoso.net en hello filtro por nombre... puerta de enlace de cuadro tooeasily acceso Hola aplicaciones.
 
-1. Haga clic en **Sondeos** y, después, en el botón **Agregar** para agregar un sondeo.
+1. Haga clic en **sondeos** y haga clic en hello **agregar** botón tooadd un sondeo.
 
   ![Agregar hoja Sondeo con la información rellena][1]
 
-1. En la hoja **Agregar sondeo de estado**, rellene la información necesaria para el sondeo y cuando finalice, haga clic en **Aceptar**.
+1. En hello **sondeo de estado del complemento** hoja, rellene la información de hello necesario para la sonda de Hola y cuando haya terminado haga clic en **Aceptar**.
 
   |**Configuración** | **Valor** | **Detalles**|
   |---|---|---|
-  |**Name**|customProbe|Este valor es un nombre descriptivo para el sondeo al que se puede acceder en el portal.|
-  |**Protocolo**|HTTP o HTTPS | El protocolo que usa el sondeo de estado.|
-  |**Host**|es decir, contoso.com|Este valor es el nombre de host que se utiliza para el sondeo. Solo se puede aplicar cuando se ha configurado un entorno multisitio en Application Gateway; de lo contrario hay que usar '127.0.0.1'. Este valor es distinto del nombre de host de máquina virtual.|
-  |**Ruta de acceso**|/ u otra ruta de acceso|El resto de la dirección URL completa del sondeo personalizado. Las rutas de acceso válidas comienzan por '/'. Para la ruta de acceso predeterminada de http://contoso.com, use solo '/'. |
-  |**Intervalo (segundos)**|30|La frecuencia con que se ejecuta el sondeo para comprobar el estado. No se recomienda establecer un valor inferior a 30 segundos.|
-  |**Tiempo de espera (segundos)**|30|El período que espera el sondeo antes de agotarse el tiempo de espera. El intervalo de tiempo de espera debe ser lo suficientemente alto como para que se pueda realizar una llamada http para asegurarse de que la página de mantenimiento de back-end está disponible.|
-  |**Umbral incorrecto**|3|Número de intentos con error para que se considere incorrecto. Un umbral de 0 significa que si el resultado de una comprobación de mantenimiento no es satisfactorio, se determinará de inmediato que el back-end es incorrecto.|
+  |**Name**|customProbe|Este valor es un sondeo de toohello nombre descriptivo que sea accesible en el portal de Hola.|
+  |**Protocolo**|HTTP o HTTPS | se utiliza el protocolo de Hola Hola de sondeo de estado.|
+  |**Host**|es decir, contoso.com|Este valor es el nombre de host de Hola que se usa para la sonda de Hola. Solo se puede aplicar cuando se ha configurado un entorno multisitio en Application Gateway; de lo contrario hay que usar '127.0.0.1'. Este valor es diferente del nombre de host de máquina virtual de Hola.|
+  |**Ruta de acceso**|/ u otra ruta de acceso|resto de Hola de dirección url completa de hello para el sondeo personalizado Hola. Las rutas de acceso válidas comienzan por '/'. Ruta de acceso de saludo predeterminado de http://contoso.com simplemente usar '/' |
+  |**Intervalo (segundos)**|30|¿Con qué frecuencia hello sondeo se ejecuta toocheck para el estado. No se recomienda tooset Hola inferior a 30 segundos.|
+  |**Tiempo de espera (segundos)**|30|cantidad de Hola de sondeo de Hola de tiempo espera antes de expirar. Hola tiempo de espera intervalo necesidades toobe lo suficientemente alto como para que se puede realizar una llamada http página de estado de back-end de hello tooensure está disponible.|
+  |**Umbral incorrecto**|3|Número de error toobe intentos considera incorrecto. Un umbral de 0 significa que si se produce un error en una comprobación de mantenimiento Hola back-end se determina de forma negativa inmediatamente.|
 
   > [!IMPORTANT]
-  > El nombre de host no es el mismo que el del servidor. Este valor es el nombre del host virtual que se ejecuta en el servidor de aplicaciones. El sondeo se envía a http://(nombre de host):(puerto de httpsetting)/urlPath
+  > nombre de host de Hello no es Hola igual que el nombre del servidor. Este valor es nombre Hola Hola virtual del host de ejecutando en servidor de aplicaciones de Hola. sondeo de Hola se envía toohttp: / /(host name):(port from httpsetting)/urlPath
 
-## <a name="add-probe-to-the-gateway"></a>Adición de un sondeo a la puerta de enlace
+## <a name="add-probe-toohello-gateway"></a>Agregar puerta de enlace de sondeo toohello
 
-Una vez creado el sondeo, es el momento de agregarlo a la puerta de enlace. La configuración del sondeo se establece en la configuración de http del back-end de la puerta de enlace de aplicaciones.
+Ahora que hello sondeo se ha creado, es el tiempo tooadd se toohello puerta de enlace. Configuración de sondeo se establece en la configuración de http de back-end de Hola de puerta de enlace de aplicación Hola.
 
-1. Haga clic en la **configuración de HTTP** de la instancia de Application Gateway para abrir la hoja Configuración y haga clic en la configuración de HTTP del back-end actual que aparece en la ventana.
+1. Haga clic en **configuración HTTP** en puerta de enlace de aplicaciones de hello, toobring una hoja de configuración de hello, haga clic en hello back-end http configuración actual aparece en la ventana hello.
 
   ![ventana de configuración de https][2]
 
-1. En la hoja de configuración de **appGatewayBackEndHttpSettings**, active la casilla **Usar sondeo personalizado** y elija el sondeo creado en la sección [Creación del sondeo](#createprobe) en el menú desplegable **Sondeo personalizado**.
-Cuando haya terminado, haga clic en **Guardar** y se aplicará la configuración.
+1. En hello **appGatewayBackEndHttpSettings** hoja de configuración, verificación hello **sondeo personalizado de uso** casilla y elija sondeo Hola creado en hello [sondeo de hello Create](#createprobe) sección en hello **sondeo personalizado** desplegable...
+Cuando haya terminado, haga clic en **guardar** y se aplican los valores de hello.
 
-El sondeo predeterminado comprueba el acceso predeterminado a la aplicación web. Una vez que se ha creado el sondeo personalizado, la puerta de enlace de aplicaciones usa la ruta de acceso personalizada definida para supervisar el estado de los servidores backend. En función de los criterios definidos, la puerta de enlace de aplicaciones comprueba la ruta de acceso especificada en el sondeo. Si la llamada a host:Port/path no devuelve una respuesta de estado HTTP 200-399, el servidor se saca de la rotación cuando se alcanza el umbral de estado incorrecto. El sondeo continúa en la instancia incorrecta para determinar cuándo vuelve a ser correcta. Una vez que la instancia se vuelve a agregar al grupo de servidores correcto, el tráfico comienza a fluir hacia ella de nuevo y el sondeo de la instancia continúa en el intervalo especificado por el usuario de forma normal.
+sondeo de Hello predeterminado comprueba Hola predeterminado toohello aplicación web. Ahora que se ha creado un sondeo personalizado, puerta de enlace de aplicaciones de hello usa Hola definido por la ruta de acceso personalizada toomonitor mantenimiento para servidores de back-end de Hola. En función de criterios de Hola que se definió, puerta de enlace de aplicaciones de hello comprueba Hola ruta especificada en el sondeo de Hola. Si Hola llamar toohost:Port / ruta de acceso no devuelve HTTP 200-399 estado respuesta, servidor Hola se saca de rotación tras alcanzar el umbral de estado incorrecto de Hola. Probing continúa en hello instancia incorrecto toodetermine cuando vuelve a correcto. Una vez instancia Hola se agrega el grupo de servidores de back-toohealthy, tráfico comienza flujo tooit nuevo y sondeo toohello instancia continúa en el intervalo especificado de usuario como normal.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para aprender a configurar la descarga de SSL con Azure Application Gateway, consulte [Configuración de la descarga SSL](application-gateway-ssl-portal.md)
+toolearn tooconfigure la descarga de SSL con la puerta de enlace de aplicaciones de Azure, vea [configurar la descarga de SSL](application-gateway-ssl-portal.md)
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png

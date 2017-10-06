@@ -1,6 +1,6 @@
 ---
-title: "Introducción a la autenticación en Azure Automation | Microsoft Docs"
-description: "Este artículo proporciona información general sobre la seguridad de Automation y los diferentes métodos de autenticación disponibles para las cuentas de automatización de Azure Automation."
+title: "aaaIntro tooauthentication en automatización de Azure | Documentos de Microsoft"
+description: "Este artículo proporciona información general de seguridad de automatización y Hola distintos métodos de autenticación disponibles para las cuentas de automatización en automatización de Azure."
 services: automation
 documentationcenter: 
 author: MGoedtel
@@ -16,39 +16,39 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: magoedte
 ROBOTS: NOINDEX
-ms.openlocfilehash: 91c98f8dda6f24c2db2730a5e0df5ea43e151c61
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b4409b5be010c16f7bf00a9a0f617e3617d4663
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-authentication-in-azure-automation"></a>Introducción a la autenticación en Azure Automation  
-Automatización de Azure le permite automatizar tareas en recursos de Azure, locales y de otros proveedores de servicios en la nube como Amazon Web Services (AWS).  Para que un runbook realice las acciones necesarias, debe tener permiso de acceso seguro a los recursos con los derechos mínimos necesarios en la suscripción.
+# <a name="introduction-tooauthentication-in-azure-automation"></a>Introducción tooauthentication en automatización de Azure  
+Automatización de Azure permite tooautomate tareas con los recursos en Azure, de forma local y con otros proveedores de nube, como Amazon Web Services (AWS).  En orden para un runbook tooperform las acciones necesarias, deben tener permisos toosecurely acceso Hola recursos tenga derechos mínimos Hola requeridos dentro de la suscripción de Hola.
 
-En este artículo se tratarán los distintos escenarios de autenticación admitidos por Automatización de Azure y se le mostrará cómo empezar a trabajar según los entornos que necesite administrar.  
+En este artículo se tratan Hola admiten diversos escenarios de autenticación mediante la automatización de Azure y deberá mostrar cómo comenzar tooget basándose en el entorno de Hola o en entornos que se haya toomanage.  
 
 ## <a name="automation-account-overview"></a>Información general sobre las cuentas de Automatización
-Cuando inicia Automatización de Azure por primera vez, debe crear al menos una cuenta de Automatización. Las cuentas de Automatización le permiten aislar los recursos de Automatización (Runbooks, recursos, configuraciones) desde los recursos contenidos en otras cuentas de Automatización. Puede usar cuentas de Automatización para separar los recursos en entornos lógicos independientes. Por ejemplo, puede usar una cuenta para desarrollo, otra para producción y otra para su entorno local.  Una cuenta de Automatización de Azure es diferente de su cuenta Microsoft o de las cuentas creadas en su suscripción de Azure.
+Al iniciar automatización de Azure por hello primera vez, debe crear al menos una cuenta de automatización. Las cuentas de automatización permiten tooisolate Hola a los recursos de automatización (runbooks, activos, las configuraciones) de recursos que contiene otras cuentas de automatización. Puede usar recursos de tooseparate de cuentas de automatización en entornos lógicos independientes. Por ejemplo, puede usar una cuenta para desarrollo, otra para producción y otra para su entorno local.  Una cuenta de Automatización de Azure es diferente de su cuenta Microsoft o de las cuentas creadas en su suscripción de Azure.
 
-Los recursos de Automation de cada cuenta de Automation están asociados con una sola región de Azure, pero las cuentas de Automation pueden administrar recursos en su suscripción. El principal motivo para crear cuentas de Automatización en distintas regiones sería si tiene directivas que requieren que los datos y recursos se aíslen en una región específica.
+recursos de automatización de Hola para cada cuenta de automatización están asociados con una sola región de Azure, pero las cuentas de automatización pueden administrar todos los recursos de hello en su suscripción. cuentas de automatización de Hello motivo principal toocreate en diferentes regiones sería si tiene directivas que requieran datos y recursos toobe tooa aislado específico la región.
 
 > [!NOTE]
-> A las cuentas de automatización y los recursos que contienen, que se crean en el Portal de Azure, no se puede acceder desde el Portal de Azure clásico. Si desea administrar estas cuentas o sus recursos con Windows PowerShell, debe usar los módulos del Administrador de recursos de Azure.
+> Cuentas de automatización y recursos Hola contienen que se crean en hello portal de Azure, no son accesibles en hello portal de Azure clásico. Si desea que toomanage estas cuentas o sus recursos con Windows PowerShell, debe usar módulos de hello Azure Resource Manager.
 >
 
-Todas las tareas que realice con recursos mediante Azure Resource Manager y los cmdlets de Azure en Automatización de Azure deben autenticarse en Azure con una autenticación basada en credenciales de identidad organizativa de Azure Active Directory.  La autenticación basada en certificados era el método de autenticación original en el modo Azure Service Management, pero era complicada de configurar.  En 2014, se incorporó la autenticación en Azure con un usuario de Azure AD, no solo para simplificar el proceso de configuración de una cuenta de autenticación, sino también para admitir la posibilidad de autenticar de forma no interactiva en Azure con una sola cuenta de usuario que funcione con Azure Resource Manager y los recursos clásicos.   
+Todas las tareas de Hola que llevar a cabo con los recursos en la automatización de Azure de hello cmdlets de Azure y Azure Resource Manager deben autenticarse tooAzure con autenticación de basada en credenciales de identidad organizativa de Azure Active Directory.  Autenticación basada en certificado era Hola de método de autenticación original con el modo de administración de servicios de Azure, pero fue toosetup complicada.  Autenticar tooAzure con el usuario de Azure AD se copia se ha introducido en 2014 toonot solo simplificar Hola proceso tooconfigure una cuenta de autenticación, sino que también compatibilidad Hola capacidad toonon interactivamente autenticar tooAzure con una única cuenta de usuario que ha trabajado con el Administrador de recursos de Azure y los recursos clásicos.   
 
-Actualmente, al crear una nueva cuenta de Automatización en el portal de Azure, se crea automáticamente:
+Actualmente cuando se crea una nueva cuenta de automatización en hello portal de Azure, se crean automáticamente:
 
-* Una cuenta de ejecución que crea a una nueva entidad de servicio en Azure Active Directory y un certificado, y asigna el control de acceso basado en rol (RBAC) Colaborador, que se utilizará para administrar los recursos de Resource Manager mediante Runbooks.
-* Una cuenta de ejecución de Azure clásico mediante la carga de un certificado de administración, que se utilizará para administrar Azure Service Management o recursos clásicos mediante Runbooks.  
+* Cuenta de ejecución que se crea una nueva entidad de servicio en Azure Active Directory, un certificado y asigna el control de acceso basado en roles de colaborador de hello (RBAC), que será recursos del Administrador de recursos de toomanage uso de runbooks que se utilizan.
+* Clásico cuenta de ejecución mediante la carga de un certificado de administración, que serán utilizado toomanage administración de servicios de Azure o los recursos clásicos mediante runbooks.  
 
-El control de acceso basado en rol está disponible en Azure Resource Manager para conceder las acciones permitidas a una cuenta de usuario de Azure AD y a una cuenta de ejecución, y para autenticar dicha entidad de servicio.  Para más información que le ayude a desarrollar su modelo de administración de permisos de Automatización, consulte el [artículo Control de acceso basado en rol en Azure Automation](automation-role-based-access-control.md) .  
+Control de acceso basado en roles está disponible con toogrant de Azure Resource Manager permite la cuenta de usuario de Azure AD de acciones tooan y cuenta de ejecución y autenticar esa entidad de seguridad de servicio.  Lea [el control de acceso basado en roles en el artículo de automatización de Azure](automation-role-based-access-control.md) para obtener más información toohelp desarrolle su modelo para administrar permisos de automatización.  
 
-Los Runbooks que se ejecutan en un trabajo Hybrid Runbook Worker en su centro de datos o en servicios de proceso en AWS no pueden usar el mismo método que se usa normalmente para los Runbooks que se autentican en recursos de Azure.  Esto se debe a que esos recursos se ejecutan fuera de Azure y, por lo tanto, requieren sus propias credenciales de seguridad definidas en Automatización para la autenticación en los recursos a los que tendrán acceso localmente.  
+Runbooks que se ejecutan en un Hybrid Runbook Worker en su centro de datos o en servicios de AWS informáticos no puede usar Hola mismo método que se utiliza normalmente para runbooks autenticar tooAzure recursos.  Esto es porque esos recursos se ejecutan fuera de Azure y por lo tanto, será necesario sus propias credenciales de seguridad definidas en tooresources tooauthenticate de automatización que tendrá acceso localmente.  
 
 ## <a name="authentication-methods"></a>Métodos de autenticación
-La tabla siguiente resume los diferentes métodos de autenticación para cada entorno admitido por Automatización de Azure y el artículo que describe cómo configurar la autenticación para sus Runbooks.
+Hello tabla siguiente resumen Hola distintos métodos de autenticación para cada entorno compatible con automatización de Azure y Hola artículo que describe cómo toosetup la autenticación para los runbooks.
 
 | Método | Environment | Artículo |
 | --- | --- | --- |

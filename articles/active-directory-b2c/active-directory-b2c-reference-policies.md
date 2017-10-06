@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory B2C: directivas integradas | Microsoft Docs'
-description: "Tema sobre el marco de directiva extensible de Azure Active Directory B2C y sobre cómo crear distintos tipos de directiva"
+description: "Un tema de marco de directivas extensible Hola de Azure Active Directory B2C y cómo toocreate diversos tipos de directiva"
 services: active-directory-b2c
 documentationcenter: 
 author: sama
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: sama
-ms.openlocfilehash: daad3af089afdf76b930053728bb11a5cf4c2a92
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 24bb85eba30f888c6ea7d0401e05235e8eb6ea79
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: directivas integradas
 
 
-El marco de directiva extensible de Azure Active Directory (Azure AD) B2C es la fortaleza esencial del servicio. Las directivas describen totalmente las experiencias de identidad del consumidor como el registro, el inicio de sesión y la edición de perfil. Por ejemplo, una directiva de registro le permite controlar comportamientos configurando los siguientes valores:
+marco de directivas extensible Hola de Azure Active Directory (Azure AD) B2C es intensidad de núcleo de hello del servicio de Hola. Las directivas describen totalmente las experiencias de identidad del consumidor como el registro, el inicio de sesión y la edición de perfil. Por ejemplo, una directiva de inicio de sesión permite toocontrol comportamientos configurando Hola después de configuración:
 
-* Tipos de cuenta (cuentas sociales como Facebook, o cuentas locales como direcciones de correo electrónico) que los consumidores pueden usar para registrarse en la aplicación
-* Atributos (por ejemplo, nombre, código postal, número de calzado, etc.) que se recopilarán del consumidor durante el registro
+* Tipos (cuentas sociales como Facebook) o las cuentas locales, como las direcciones de correo electrónico que los consumidores pueden usar toosign hacia arriba para la aplicación hello de cuenta
+* Atributos (por ejemplo, nombre, código postal y calzado) toobe recopila de consumidor de Hola durante el inicio de sesión
 * Uso de Azure Multi-Factor Authentication
-* La apariencia de todas las páginas de registro
-* Información (que se manifiesta como notificaciones en un token) que recibe la aplicación cuando se completa la ejecución de la directiva.
+* Hola apariencia y funcionamiento de todas las páginas de inicio de sesión
+* Información (que se manifiesta como notificaciones en un token) que Hola aplicación recibe cuando finaliza la ejecución de la directiva de Hola
 
-Puede crear varias directivas de diferentes tipos en su inquilino y usarlas en sus aplicaciones según sea necesario. Las directivas se pueden volver a usar en todas las aplicaciones. Esta flexibilidad permite a los desarrolladores definir y modificar experiencias de identidad de consumidor con cambios mínimos o ningún cambio en su código.
+Puede crear varias directivas de diferentes tipos en su inquilino y usarlas en sus aplicaciones según sea necesario. Las directivas se pueden volver a usar en todas las aplicaciones. Esta flexibilidad permite a los desarrolladores toodefine y modificar ningún código de tootheir de cambios o las experiencias de identidad de consumidor con mínimo.
 
-Las directivas están disponibles para usarlas mediante una interfaz de usuario sencilla. Su aplicación desencadena una directiva mediante una solicitud de autenticación HTTP estándar (pasando un parámetro de directiva en la solicitud) y recibe un token personalizado como respuesta. Por ejemplo, la única diferencia que hay entre las solicitudes que invocan una directiva de registro y las que invocan una directiva de inicio de sesión es el nombre de la directiva que se usa en el parámetro de cadena de consulta "p":
+Las directivas están disponibles para usarlas mediante una interfaz de usuario sencilla. La aplicación desencadena una directiva mediante una solicitud de autenticación HTTP estándar (pasar un parámetro de directiva de solicitud de saludo) y recibe un token personalizado como respuesta. Por ejemplo, hello única diferencia entre las solicitudes que invocación una directiva de inicio de sesión y las solicitudes que invocación una directiva de inicio de sesión es nombre de la directiva de Hola que se utiliza en el parámetro de cadena de consulta de Hola "p":
 
 ```
 
@@ -63,11 +63,11 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ```
 
-Para obtener más información sobre el marco de directivas, consulte [esta entrada de blog sobre Azure AD B2C en el Blog de Enterprise Mobility + Security](http://blogs.technet.com/b/ad/archive/2015/11/02/a-look-inside-azuread-b2c-with-kim-cameron.aspx).
+Para obtener más información sobre el marco de directivas de hello, consulte [esta entrada de blog sobre Azure AD B2C en hello la movilidad empresarial y el Blog de seguridad](http://blogs.technet.com/b/ad/archive/2015/11/02/a-look-inside-azuread-b2c-with-kim-cameron.aspx).
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Creación de una directiva de registro o de inicio de sesión
 
-Esta directiva controla las experiencias de registro y de inicio de sesión del cliente con una sola configuración. A los consumidores se les lleva por la ruta correcta (registro o inicio de sesión) según el contexto. También describe el contenido de los tokens que recibirá la aplicación cuando el registro o el inicio de sesión sean correctos.  [Aquí puede encontrar](active-directory-b2c-devquickstarts-web-dotnet-susi.md)código de ejemplo de la directiva de registro o de inicio de sesión.  Le recomendamos que use esta directiva en vez de una directiva de registro y una directiva de inicio de sesión.  
+Esta directiva controla las experiencias de registro y de inicio de sesión del cliente con una sola configuración. Se ha llevado a los consumidores hacia abajo Hola ruta de acceso correcta (inicio de sesión o inicio de sesión) según el contexto de Hola. También se describe el contenido de Hola de tokens que van a recibir aplicación hello al inicio de sesión de seguridad correcta o inicios de sesión.  Es un ejemplo de código de directiva de inicio de sesión o inicio de sesión de hello [disponible aquí](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Le recomendamos que use esta directiva en vez de una directiva de registro y una directiva de inicio de sesión.  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -90,16 +90,16 @@ Esta directiva controla las experiencias de registro y de inicio de sesión del 
 ## <a name="frequently-asked-questions"></a>Preguntas más frecuentes
 
 ### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>¿Cómo puedo vincular una directiva de inicio de sesión o de registro con una directiva de restablecimiento de contraseña?
-Al crear una directiva de inicio de sesión o de registro (con cuentas locales), verá el vínculo **¿Olvidó la contraseña?** en la primera página de la experiencia. Al hacer clic en este vínculo, no se desencadena automáticamente ninguna directiva de restablecimiento de contraseña, 
+Cuando se crea una directiva de inicio de sesión o inicio de sesión (con las cuentas locales), verá un **contraseña olvidada?** vínculo en la primera página de Hola de experiencia de Hola. Al hacer clic en este vínculo, no se desencadena automáticamente ninguna directiva de restablecimiento de contraseña, 
 
-sino que se devuelve a la aplicación el código de error **`AADB2C90118`**. La aplicación debe controlar este código de error invocando una directiva de restablecimiento de contraseña específica. Para obtener más información, consulte un [ejemplo en el que se muestra el método para vincular directivas](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
+Hola en su lugar, el código de error  **`AADB2C90118`**  se devuelve tooyour aplicación. La aplicación debe toohandle este código de error mediante la invocación de una directiva de restablecimiento de contraseña específica. Para obtener más información, vea un [ejemplo que muestra el enfoque de Hola de vinculación de las directivas](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
 
 ### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>¿Debo usar una directiva de inicio de sesión o de registro o una directiva de inicio de sesión y una directiva de registro?
 Le recomendamos que use una directiva de inicio de sesión o de registro en vez de una directiva de inicio de sesión y una directiva de registro.  
 
-La directiva de inicio de sesión o de registro tiene más capacidades que la directiva de inicio de sesión. También le permite usar la personalización de la interfaz de usuario de la página y tiene una mejor compatibilidad con la localización. 
+Directiva de inicio de sesión o inicio de sesión de Hello tiene más capacidades que la directiva de inicio de sesión de Hola. También habilita la personalización de interfaz de usuario de página de toouse y tiene una mejor compatibilidad para la localización. 
 
-La directiva de inicio de sesión se recomienda si no necesita localizar las directivas, solo necesita unas capacidades de personalización secundarias para la personalización de marca y quiere que el restablecimiento de contraseña esté integrado en ella.
+Directiva de inicio de sesión de Hola se recomienda si no es necesario toolocalize las directivas, solo necesita las capacidades de personalización secundaria para la personalización de marca y desea contraseña restablecimiento que se crean en ella.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Configuración de token, sesión e inicio de sesión único](active-directory-b2c-token-session-sso.md)

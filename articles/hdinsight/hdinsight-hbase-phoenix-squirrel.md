@@ -1,6 +1,6 @@
 ---
-title: "Uso de Apache Phoenix y SQuirreL con clústeres de Azure HDInsight basados en Windows | Microsoft Docs"
-description: "Aprenda a usar Apache Phoenix en HDInsight y cómo instalar y configurar SQuirreL en su estación de trabajo para conectarse a un clúster de HBase en HDInsight."
+title: aaaUse Phoenix Apache y ardilla con basados en Windows Azure HDInsight | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Phoenix Apache en HDInsight y cómo tooinstall y configurar ardilla en el clúster de estación de trabajo tooconnect tooan HBase en HDInsight."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -15,54 +15,54 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 024b70df99fdefa1598225ebb1fbfee85ea375d0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 147ac35fa882fd1bedbc5361ac804c36a4d56de1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>Uso de Apache Phoenix y SQuirreL con clústeres de HBase basados en Windows en HDinsight
-Aprenda a usar [Apache Phoenix](http://phoenix.apache.org/) en HDInsight y cómo instalar y configurar SQuirreL en su estación de trabajo para conectarse a un clúster de HBase en HDInsight. Para obtener más información acerca de Phoenix, consulte [Phoenix en 15 minutos o menos](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Para la gramática de Phoenix, vea [Gramática de Phoenix](http://phoenix.apache.org/language/index.html).
+Obtenga información acerca de cómo toouse [Apache Phoenix](http://phoenix.apache.org/) en HDInsight y cómo tooinstall y configurar ardilla en el clúster de estación de trabajo tooconnect tooan HBase en HDInsight. Para obtener más información acerca de Phoenix, consulte [Phoenix en 15 minutos o menos](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Hola gramática de Phoenix, encontrará [gramática de Phoenix](http://phoenix.apache.org/language/index.html).
 
 > [!NOTE]
-> Para obtener información de la versión de Phoenix en HDInsight, consulte [Novedades en las versiones de clústeres de Hadoop proporcionadas por HDInsight](hdinsight-component-versioning.md).
+> Para obtener información de versión de Phoenix en HDInsight de hello, consulte [cuáles son las novedades en las versiones de clúster de Hadoop Hola proporcionadas por HDInsight?](hdinsight-component-versioning.md).
 >
 
 > [!IMPORTANT]
-> Los pasos de este tutorial solo se aplican a clústeres de HDInsight basados en Windows. HDInsight solo está disponible en Windows en versiones inferiores a la 3.4. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Para más información sobre el uso de Phoenix en HDInsight basado en Linux, consulte [Use Apache Phoenix with Linux-based HBase clusters in HDinsight](hdinsight-hbase-phoenix-squirrel-linux.md)(Uso de Apache Phoenix con clústeres de HBase basados en Linux en HDinsight).
+> Hola pasos de este trabajo sólo de documento para clústeres de HDInsight basados en Windows. HDInsight solo está disponible en Windows en versiones inferiores a la 3.4. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Para más información sobre el uso de Phoenix en HDInsight basado en Linux, consulte [Use Apache Phoenix with Linux-based HBase clusters in HDinsight](hdinsight-hbase-phoenix-squirrel-linux.md)(Uso de Apache Phoenix con clústeres de HBase basados en Linux en HDinsight).
 >
 
 
 
 ## <a name="use-sqlline"></a>Uso de SQLLine
-[SQLLine](http://sqlline.sourceforge.net/) es una utilidad de línea de comandos para ejecutar SQL.
+[SQLLine](http://sqlline.sourceforge.net/) es un tooexecute de utilidad de línea de comandos SQL.
 
 ### <a name="prerequisites"></a>Requisitos previos
-Antes de usar SQLLine, debe tener lo siguiente:
+Para poder usar SQLLine, debe tener el siguiente hello:
 
 * **Un clúster de HBase en HDInsight**. Para obtener información sobre el aprovisionamiento del clúster de HBase, consulte [Introducción a HBase Apache en HDInsight][hdinsight-hbase-get-started].
-* **Conexión al clúster de HBase a través del protocolo de escritorio remoto**. Para conocer las instrucciones, consulte [Administración de clústeres de Hadoop en HDInsight mediante el Portal de Azure clásico][hdinsight-manage-portal].
+* **Conectar el clúster de HBase toohello a través del protocolo de escritorio remoto de hello**. Para obtener instrucciones, consulte [Hadoop administrar clústeres de HDInsight mediante el uso de hello Portal clásico de Azure][hdinsight-manage-portal].
 
-**Para averiguar el nombre de host**
+**toofind el nombre de host de Hola**
 
-1. Abra la **línea de comandos de Hadoop** desde el escritorio.
-2. Ejecute el siguiente comando para obtener el sufijo de DNS:
+1. Abra **línea de comandos de Hadoop** de escritorio de Hola.
+2. Ejecute hello después de sufijo DNS de comando tooget hello:
 
         ipconfig
 
-    Escriba el **sufijo DNS específico de la conexión**. Por ejemplo, *myhbasecluster.f5.internal.cloudapp.net*. Cuando se conecta a un clúster de HBase, necesitará conectarse a uno de los Zookeepers mediante FQDN. Cada clúster de HDInsight tiene 3 Zookeepers. Son *zookeeper0*, *zookeeper1* y *zookeeper2*. El FQDN será algo parecido a *zookeeper2.myhbasecluster.f5.internal.cloudapp.net*.
+    Escriba el **sufijo DNS específico de la conexión**. Por ejemplo, *myhbasecluster.f5.internal.cloudapp.net*. Cuando se conecta el clúster de HBase tooan, necesitará tooconnect tooone de Zookeepers hello mediante FQDN. Cada clúster de HDInsight tiene 3 Zookeepers. Son *zookeeper0*, *zookeeper1* y *zookeeper2*. Hello FQDN será similar a *zookeeper2.myhbasecluster.f5.internal.cloudapp.net*.
 
-**Para usar SQLLine**
+**toouse SQLLine**
 
-1. Abra la **línea de comandos de Hadoop** desde el escritorio.
-2. Ejecute los siguientes comandos para abrir SQLLine:
+1. Abra **línea de comandos de Hadoop** de escritorio de Hola.
+2. Ejecute hello después comandos tooopen SQLLine:
 
         cd %phoenix_home%\bin
-        sqlline.py [The FQDN of one of the Zookeepers]
+        sqlline.py [hello FQDN of one of hello Zookeepers]
 
     ![HDInsight hbase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]
 
-    Los comandos usados en el ejemplo:
+    comandos de Hola que se usan en el ejemplo hello:
 
         CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
 
@@ -75,115 +75,115 @@ Antes de usar SQLLine, debe tener lo siguiente:
 Para más información, consulte el [manual de SQLLine](http://sqlline.sourceforge.net/#manual) y la [gramática de Phoenix](http://phoenix.apache.org/language/index.html).
 
 ## <a name="use-squirrel"></a>Uso de SQuirreL
-[Cliente SQL SQuirreL](http://squirrel-sql.sourceforge.net/) es un programa gráfico de Java que le permitirá ver la estructura de una base de datos compatible con JDBC, examinar los datos de tablas, emitir comandos SQL etc. Se puede usar para conectarse a Apache Phoenix en HDInsight.
+[Ardilla SQL Client](http://squirrel-sql.sourceforge.net/) es un programa Java gráfico que le permiten tooview estructura de Hola de una base de datos compatible con JDBC, examinar los datos de hello en tablas, emitir comandos SQL etcetera. Puede ser usado tooconnect tooApache Phoenix en HDInsight.
 
-En esta sección se muestra cómo instalar y configurar SQuirreL en su estación de trabajo para conectarse al clúster de HBase en HDInsight a través de VPN.
+Esta sección muestra cómo tooinstall y configurar ardilla en su estación de trabajo tooconnect tooan clúster de HBase en HDInsight a través de VPN.
 
 ### <a name="prerequisites"></a>Requisitos previos
-Antes de seguir los procedimientos, debe disponer de lo siguiente:
+Antes de seguir los procedimientos de hello, debe tener el siguiente hello:
 
-* Un clúster de HBase implementado en una red virtual de Azure con una máquina virtual DNS.  Para obtener instrucciones, consulte [Creación de clústeres de HBase en Azure Virtual Network][hdinsight-hbase-provision-vnet].
+* Un clúster de HBase implementa tooan red virtual de Azure con una máquina virtual DNS.  Para obtener instrucciones, consulte [Creación de clústeres de HBase en Azure Virtual Network][hdinsight-hbase-provision-vnet].
 
-* Obtenga el sufijo DNS específico de la conexión del clúster de HBase. Para obtenerlo, establezca RDP en el clúster y, a continuación, ejecute IPConfig.  El sufijo DNS es similar a:
+* Obtiene el sufijo DNS específico de la conexión de hello HBase clúster clúster. tooget lo, RDP en clúster de hello, y, a continuación, ejecutar IPConfig.  sufijo DNS de Hello es similar a:
 
         myhbase.b7.internal.cloudapp.net
-* Descargue e instale [Microsoft Visual Studio Express para escritorio de Windows](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) en la estación de trabajo. Necesitará makecert del paquete para crear un certificado.  
+* Descargue e instale [Microsoft Visual Studio Express para escritorio de Windows](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) en la estación de trabajo. Necesitará makecert de hello paquete toocreate su certificado.  
 * Descargue e instale [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html) en su estación de trabajo.  La versión de cliente SQL SQuirreL 3.0 y superiores requieren la versión 1.6 o superior de JRE.  
 
-### <a name="configure-a-point-to-site-vpn-connection-to-the-azure-virtual-network"></a>Configuración de una conexión VPN de punto a sitio a la red virtual de Azure
+### <a name="configure-a-point-to-site-vpn-connection-toohello-azure-virtual-network"></a>Configurar una toohello de conexión de Point-to-Site VPN red virtual de Azure
 Hay tres pasos implicados en la configuración de una conexión VPN de punto a sitio:
 
 1. [Configuración de una red virtual y una puerta de enlace de enrutamiento dinámico](#Configure-a-virtual-network-and-a-dynamic-routing-gateway)
 2. [Creación de certificados](#Create-your-certificates)
 3. [Configuración del cliente VPN](#Configure-your-VPN-client)
 
-Consulte [Configuración de una conexión VPN de punto a sitio a la red virtual de Azure](../vpn-gateway/vpn-gateway-point-to-site-create.md) para obtener más información.
+Vea [configurar una tooan de conexión de Point-to-Site VPN red Virtual de Azure](../vpn-gateway/vpn-gateway-point-to-site-create.md) para obtener más información.
 
 #### <a name="configure-a-virtual-network-and-a-dynamic-routing-gateway"></a>Configuración de una red virtual y una puerta de enlace de enrutamiento dinámico
-Asegúrese de que ha realizado el aprovisionamiento de un clúster de HBase en una red virtual de Azure (consulte los requisitos previos de esta sección). El siguiente paso es configurar una conexión punto a sitio.
+Asegurarse de haber aprovisionado un clúster de HBase en una red virtual de Azure (consulte requisitos previos de Hola de esta sección). Hola siguiente paso es tooconfigure una conexión punto a sitio.
 
-**Para configurar la conectividad punto a sitio**
+**conectividad de punto a sitio hello tooconfigure**
 
-1. Inicie sesión en el [Portal de Azure clásico][azure-portal].
-2. A la izquierda, haga clic en **REDES**.
-3. Haga clic en la red virtual que ha creado (consulte [Aprovisionamiento de clústeres de HBase en Azure Virtual Network][hdinsight-hbase-provision-vnet]).
-4. Haga clic en **CONFIGURAR** en la parte superior.
-5. En la sección **Conectividad punto a sitio**, seleccione **Configurar la conectividad punto a sitio**.
-6. Configure **DIRECCIÓN IP DE INICIO** y **CIDR** para especificar el intervalo de direcciones IP desde el que los clientes de VPN recibirán una dirección IP cuando se conecten. El intervalo no puede coincidir con cualquiera de los intervalos de la red local y la red virtual de Azure a la que se va a conectar. Por ejemplo. Si selecciona 10.0.0.0/20 para la red virtual, puede seleccionar 10.1.0.0/24 para el espacio de direcciones de cliente. Consulte la página [Conectividad punto a sitio][vnet-point-to-site-connectivity] para obtener más información.
-7. En la sección de espacios de direcciones de red virtual, haga clic en **Agregar subred de puerta de enlace**.
-8. Haga clic en **GUARDAR** en la parte inferior de la página.
-9. Haga clic en **SÍ** para continuar. Espere hasta que el sistema haya terminado de realizar el cambio antes de continuar con el siguiente procedimiento.
+1. Inicie sesión en toohello [Portal clásico de Azure][azure-portal].
+2. Hola izquierda, haga clic en **redes**.
+3. Haga clic en la red virtual de Hola que ha creado (consulte [HBase aprovisionar clústeres en la red Virtual de Azure][hdinsight-hbase-provision-vnet]).
+4. Haga clic en **configurar** desde la parte superior de Hola.
+5. Hola **conectividad punto a sitio** sección, seleccione **configurar la conectividad punto a sitio**.
+6. Configurar **IP de inicio** y **CIDR** intervalo de direcciones IP toospecify Hola desde el que los clientes VPN recibirán una dirección IP de direcciones cuando se conecta. intervalo de Hello no puede solaparse con cualquiera de hello intervalos en sus instalaciones de red y Hola red virtual de Azure que se conectará a. Por ejemplo. Si seleccionó 10.0.0.0/20 para la red virtual de hello, puede seleccionar 10.1.0.0/24 de espacios de direcciones de cliente de Hola. Vea hello [conectividadpuntoasitiode] [ vnet-point-to-site-connectivity] página para obtener más información.
+7. En la sección de espacios de direcciones de red virtual de hello, haga clic en **Agregar subred de puerta de enlace**.
+8. Haga clic en **guardar** en parte inferior de Hola de página de Hola.
+9. Haga clic en **Sí** cambio de hello tooconfirm. Espere hasta que Hola sistema haya terminado de realizar cambios antes de continuar el procedimiento siguiente toohello de Hola.
 
-**Para crear una puerta de enlace de enrutamiento dinámico**
+**toocreate una puerta de enlace de enrutamiento dinámico**
 
-1. En el Portal de Azure clásico, haga clic en **PANEL** en la parte superior de la página.
-2. Haga clic en **CREAR PUERTA DE ENLACE** desde la parte inferior de la página.
-3. Haga clic en **SÍ** para continuar. Espere hasta que se cree la puerta de enlace.
-4. Haga clic en **PANEL** en la parte superior.  Verá un diagrama visual de la red virtual:
+1. En hello Portal de Azure clásico, haga clic en **panel** de arriba Hola de página Hola.
+2. Haga clic en **crear puerta de enlace** desde el final Hola Hola.
+3. Haga clic en **Sí** tooconfirm. Espere hasta que se cree la puerta de enlace de Hola.
+4. Haga clic en **panel** desde la parte superior de Hola.  Verá un diagrama visual de la red virtual de hello:
 
     ![Diagrama virtual de punto a sitio de red virtual de Azure][img-vnet-diagram]
 
-    El diagrama muestra 0 conexiones de cliente. Después de realizar una conexión a la red virtual, se actualizará el número a uno.
+    diagrama de Hello muestra 0 conexiones de cliente. Después de realizar una red virtual de toohello de conexión, el número de hello será tooone actualizada.
 
 #### <a name="create-your-certificates"></a>Creación de certificados
-Una forma de crear un certificado X.509 es mediante la herramienta de creación de certificados (makecert.exe) que se incluye con [Microsoft Visual Studio Express para escritorio de Windows](https://www.visualstudio.com/products/visual-studio-express-vs.aspx).
+Una manera de toocreate está usando un certificado X.509 Hola herramienta de creación de certificados (makecert.exe) que se incluye con [Microsoft Visual Studio Express para Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx).
 
-**Para crear un certificado raíz autofirmado**
+**toocreate un certificado raíz autofirmado**
 
 1. Abra la ventana del símbolo del sistema desde la estación de trabajo.
-2. Navegue hasta la carpeta de herramientas de Visual Studio.
-3. El siguiente comando del siguiente ejemplo creará e instalará un certificado raíz en el almacén de certificados Personal de su estación de trabajo, y también creará un archivo .cer correspondiente que podrá cargar más adelante en el Portal de Azure clásico.
+2. Desplazarse por las carpetas de herramientas de Visual Studio toohello.
+3. Hola siguiente comando en el siguiente ejemplo de Hola creará e instalar un certificado raíz en el almacén de certificados personales de hello en la estación de trabajo y crear un archivo .cer correspondiente más adelante cargará toohello Portal clásico de Azure.
 
         makecert -sky exchange -r -n "CN=HBaseVnetVPNRootCertificate" -pe -a sha1 -len 2048 -ss My "C:\Users\JohnDole\Desktop\HBaseVNetVPNRootCertificate.cer"
 
-    Cambie al directorio en el que desee que se encuentre el archivo .cer, donde HBaseVnetVPNRootCertificate es el nombre que desea usar para el certificado.
+    Cambie el directorio de toohello que desea Hola toobe de archivo .cer ubicado en, donde HBaseVnetVPNRootCertificate es el nombre de Hola que deseas toouse certificado Hola.
 
-    No cierre el símbolo del sistema.  Lo necesitará en el siguiente procedimiento.
+    No cierre el símbolo del sistema Hola.  Lo necesitará en el procedimiento siguiente Hola.
 
    > [!NOTE]
-   > Puesto que ha creado un certificado raíz desde el que se generarán los certificados de cliente, puede que desee exportar este certificado junto con su clave privada y guardarlo en una ubicación segura donde se pueda recuperar.
+   > Como ha creado un certificado de raíz desde el que se generará certificados de cliente, puede desea tooexport este certificado junto con su clave privada y guardarlo tooa ubicación segura donde se pueda recuperar.
    >
    >
 
-**Para crear un certificado de cliente**
+**toocreate un certificado de cliente**
 
-* Desde el mismo símbolo del sistema (debe estar en el mismo equipo donde ha creado el certificado raíz. Se debe generar el certificado de cliente desde el certificado raíz), ejecute el siguiente comando:
+* De hello mismo símbolo (tiene toobe en hello mismo equipo donde se creó el certificado de raíz de Hola. certificado de cliente de Hello debe generarse de certificado de raíz de hello), ejecución hello comando siguiente:
 
           makecert.exe -n "CN=HBaseVnetVPNClientCertificate" -pe -sky exchange -m 96 -ss My -in "HBaseVnetVPNRootCertificate" -is my -a sha1
 
-    HBaseVnetVPNRootCertificate es el nombre del certificado raíz.  Tiene que coincidir con el nombre del certificado raíz.  
+    HBaseVnetVPNRootCertificate es el nombre de certificado de raíz de Hola.  Tiene el nombre del certificado de raíz de toomatch Hola.  
 
-    Tanto el certificado raíz como el certificado cliente se almacenan en el almacén de certificados personales del equipo. Use certmgr.msc para comprobar.
+    Certificado de raíz de Hola y el certificado de cliente de Hola se almacenan en el almacén de certificados personales en el equipo. Utilice certmgr.msc tooverify.
 
     ![Certificado VPN de punto a sitio de red virtual de Azure][img-certificate]
 
-    Se debe instalar un certificado de cliente en cada equipo que desee conectar a la red virtual. Se recomienda crear certificados de cliente único para cada equipo que desee conectar a la red virtual. Para exportar los certificados de cliente, use certmgr.msc.
+    Un certificado de cliente debe instalarse en cada equipo que desea que la red virtual de tooconnect toohello. Le recomendamos que cree a cliente único certificados para cada equipo que desea que la red virtual de tooconnect toohello. los certificados de cliente hello tooexport, utilice certmgr.msc.
 
-**Para cargar el certificado raíz en el Portal de Azure clásico**
+**tooupload Hola raíz certificado toohello Portal clásico de Azure**
 
-1. En el Portal de Azure clásico, haga clic en **REDES** en la parte izquierda.
-2. Haga clic en la red virtual en la que se implementa el clúster de HBase.
-3. Haga clic en **CERTIFICADOS** en la parte superior.
-4. Haga clic en **CARGAR** desde la parte inferior y especifique el archivo de certificado raíz que ha creado en el procedimiento antes del último. Espere hasta que el certificado se importe.
-5. En la parte superior, haga clic en **PANEL** .  El diagrama virtual muestra el estado.
+1. En hello Portal de Azure clásico, haga clic en **red** de hello izquierda.
+2. Haga clic en la red virtual de Hola donde se implementa el clúster de HBase en.
+3. Haga clic en **certificados** desde la parte superior de Hola.
+4. Haga clic en **cargar** de hello abajo y especifique el archivo de certificado raíz de hello ha creado en el procedimiento de hello penúltimo. Espere hasta que se obtuvo importar el certificado de Hola.
+5. Haga clic en **panel** en la parte superior de Hola.  diagrama de Hello virtual muestra el estado de Hola.
 
 #### <a name="configure-your-vpn-client"></a>Configuración del cliente VPN
-**Para descargar e instalar el paquete VPN cliente**
+**paquete de VPN de cliente hello toodownload e instalar**
 
-1. Desde la página PANEL de la red virtual, en la sección de vista rápida, haga clic en **Descargar paquete de VPN de cliente de 64 bits** o **Download the 32-bit Client VPN Package** (Descargar el paquete de VPN de cliente de 32 bits) según la versión de sistema operativo de la estación de trabajo.
-2. Haga clic en **Ejecutar** para instalar el paquete.
-3. En el símbolo del sistema de seguridad, haga clic en **More info** (Más información), y, a continuación, haga clic en **Run anyway** (Ejecutar de todas formas).
+1. Desde la página del panel Hola de red virtual de hello, en la sección de vista rápida de hello, haga clic en **descarga Hola paquete de VPN de cliente de 64 bits** o **descarga Hola paquete de VPN de cliente de 32 bits** en función de su versión de sistema operativo de la estación de trabajo.
+2. Haga clic en **ejecutar** tooinstall paquetes de saludo.
+3. En el símbolo del sistema de seguridad hello, haga clic en **obtener más información**y, a continuación, haga clic en **ejecutar de todas maneras**.
 4. Haga clic en **Sí**
 
-**Para conectarse a VPN**
+**tooconnect tooVPN**
 
-1. En el escritorio de la estación de trabajo, haga clic en el icono Redes en la barra de tareas. Verá una conexión VPN con el nombre de red virtual.
-2. Haga clic en el nombre de la conexión VPN.
+1. En el escritorio de saludo de la estación de trabajo, haga clic en el icono de redes de hello en la barra de tareas de Hola. Verá una conexión VPN con el nombre de red virtual.
+2. Haga clic en el nombre de la conexión VPN Hola.
 3. Haga clic en **Conectar**.
 
-**Para probar la conexión VPN y la resolución de nombre de dominio**
+**Hola tootest resolución de nombres de dominio y de conexión VPN**
 
-* Desde la estación de trabajo, abra un símbolo del sistema y haga ping en uno de los siguientes nombres teniendo en cuenta que el sufijo DNS del clúster de HBase es myhbase.b7.internal.cloudapp.net:
+* Desde la estación de trabajo de hello, abra un símbolo del sistema y ping de hello siguiendo los nombres de sufijo DNS del clúster de HBase hello es myhbase.b7.internal.cloudapp.net:
 
         zookeeper0.myhbase.b7.internal.cloudapp.net
         zookeeper0.myhbase.b7.internal.cloudapp.net
@@ -193,84 +193,84 @@ Una forma de crear un certificado X.509 es mediante la herramienta de creación 
         workernode0.myhbase.b7.internal.cloudapp.net
 
 ### <a name="install-and-configure-squirrel-on-your-workstation"></a>Instalación y configuración de SQuirreL en su estación de trabajo
-**Para instalar SQuirreL**
+**tooinstall ardilla**
 
-1. Descargue el archivo jar de cliente SQL SQuirreL de [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation).
-2. Abra/ejecute el archivo jar. Requiere [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html).
+1. Descargar archivo de hello ardilla SQL cliente jar de [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation).
+2. Archivo jar de hello abrir o ejecutar. Requiere hello [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html).
 3. Haga clic en **Siguiente** dos veces.
-4. Especifique una ruta de acceso donde tenga permiso de escritura y, a continuación, haga clic en **Siguiente**.
+4. Especifique una ruta de acceso donde haya Hola permiso de escritura y, a continuación, haga clic en **siguiente**.
 
   > [!NOTE]
-  > La carpeta de instalación predeterminada es C:\Archivos de programa\squirrel-sql-3.6.  Para poder escribir en esta ruta de acceso, el programa de instalación debe disponer de privilegios de administrador. Puede abrir un símbolo del sistema como administrador, ir a la carpeta bin de Java y, luego, ejecutar el siguiente comando:
+  > carpeta de instalación predeterminada de Hello está en la carpeta C:\Program Files\squirrel-sql-3.6 de Hola.  En orden toowrite toothis ruta de acceso instalador Hola debe tener privilegios de administrador de Hola. Puede abrir un símbolo del sistema como administrador, desplazarse por las carpetas de la Papelera de tooJava y, a continuación, ejecute:
   >
-  >     java.exe -jar [la ruta de acceso del archivo jar de SQuirreL]
-5. Haga clic en **Aceptar** para confirmar la creación del directorio de destino.
-6. El valor predeterminado es instalar los paquetes Standard y Base.  Haga clic en **Siguiente**.
+  >     Java.exe-jar [ruta de acceso de hello del archivo jar de hello ardilla]
+5. Haga clic en **Aceptar** tooconfirm crear el directorio de destino de Hola.
+6. saludo predeterminado es tooinstall Hola Base y los paquetes estándares.  Haga clic en **Siguiente**.
 7. Haga clic en **Siguiente** dos veces y, a continuación, en **Hecho**.
 
-**Para instalar al controlador de Phoenix**
+**controlador de Phoenix hello tooinstall**
 
-El archivo jar del controlador de Phoenix se encuentra en el clúster de HBase. La ruta de acceso es similar a la siguiente según las versiones:
+archivo jar de Hello phoenix controlador se encuentra en clúster de HBase Hola. ruta de acceso de Hello es similar toohello siguiente basados en versiones de hello:
 
     C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
-Debe copiarla en la estación de trabajo en la ruta de acceso [carpeta de instalación de SQuirreL]/lib.  La forma más sencilla es aplicar RDP en el clúster y, a continuación, usar las tareas de copia y pega de archivos (CTRL+C y CTRL+V) para copiarlo en su estación de trabajo.
+Necesita toocopy, estación de trabajo de tooyour en hello [carpeta de instalación de ardilla] / ruta de acceso de lib.  Hello más sencillo es tooRDP en clúster de hello y, a continuación, utilice Copiar y pegar (CTRL+C y CTRL+V) toocopy del archivo se tooyour estación de trabajo.
 
-**Para agregar un controlador de Phoenix a SQuirreL**
+**tooadd un tooSQuirreL de controlador de Phoenix**
 
 1. Abra el cliente SQL SQuirreL desde la estación de trabajo.
-2. Haga clic en la ficha **Controlador** a la izquierda.
-3. Desde el menú **Controladores**, haga clic en **Nuevo controlador**.
-4. Escriba la siguiente información:
+2. Haga clic en hello **controlador** ficha Hola izquierda.
+3. De hello **controladores** menú, haga clic en **nuevo controlador**.
+4. Escriba Hola siguiente información:
 
    * **Nombre**: Phoenix
    * **Dirección URL de ejemplo**: jdbc:phoenix:zookeeper2.contoso-hbase-eu.f5.internal.cloudapp.net
    * **Nombre de la clase**: org.apache.phoenix.jdbc.PhoenixDriver
 
      > [!WARNING]
-     > Usuario todo en minúsculas en la dirección URL de ejemplo. Puede usar el cuórum de zookeeper completo en caso de que uno de ellos esté inactivo.  Los nombres de host son zookeeper0, zookeeper1 y zookeeper2.
+     > Usuario todas las minúsculas en la dirección URL de ejemplo de Hola. Puede usar el cuórum de zookeeper completo en caso de que uno de ellos esté inactivo.  los nombres de host de Hello son zookeeper0, zookeeper1 y zookeeper2.
      >
      >
 
      ![Controlador SQuirreL de HBase Phoenix para HDInsight][img-squirrel-driver]
 5. Haga clic en **Aceptar**.
 
-**Para crear un alias para el clúster de HBase**
+**toocreate un clúster de HBase de toohello de alias**
 
-1. Desde SQuirreL, haga clic en la pestaña **Alias** de la izquierda.
-2. Desde el menú **Alias**, haga clic en **Nuevo alias**.
-3. Escriba la siguiente información:
+1. En ardilla, haga clic en hello **alias** ficha Hola izquierda.
+2. De hello **alias** menú, haga clic en **nuevo Alias**.
+3. Escriba Hola siguiente información:
 
-   * **Nombre**: el nombre del clúster de HBase o de cualquier nombre que prefiera.
-   * **Controlador**: Phoenix.  Debe coincidir con el nombre del controlador que creó en el último procedimiento.
-   * **Dirección URL**: se copia la dirección URL de la configuración del controlador. Asegúrese de que al usuario está todo en minúsculas.
-   * **Nombre de usuario**: puede ser cualquier texto.  Debido a que usa conectividad VPN aquí, el nombre de usuario no se usa en absoluto.
+   * **Nombre**: nombre de Hola de clúster de HBase de Hola o cualquier nombre que prefiera.
+   * **Controlador**: Phoenix.  Esto debe coincidir con el nombre del controlador de Hola que creó en el último procedimiento de Hola.
+   * **Dirección URL**: Hola se copia la dirección URL de la configuración del controlador. Poner en toouser seguro todas las minúsculas.
+   * **Nombre de usuario**: puede ser cualquier texto.  Dado que usa aquí conectividad VPN, nombre de usuario de hello no se utiliza en absoluto.
    * **Contraseña**: puede ser cualquier texto.
 
      ![Controlador SQuirreL de HBase Phoenix para HDInsight][img-squirrel-alias]
 4. Haga clic en **Probar**.
-5. Haga clic en **Conectar**. Cuando realiza la conexión, SQuirreL tendrá este aspecto:
+5. Haga clic en **Conectar**. Cuando realiza la conexión de hello, ardilla tendrá este aspecto:
 
     ![SQuirreL de Phoenix HBase][img-squirrel]
 
-**Para ejecutar una prueba**
+**toorun una prueba**
 
-1. Haga clic en la pestaña **SQL** derecha junto a la pestaña **Objetos**.
-2. Copie y pegue el código siguiente:
+1. Haga clic en hello **SQL** pestaña derecha siguiente toohello **objetos** ficha.
+2. Copie y pegue el siguiente código de hello:
 
         CREATE TABLE IF NOT EXISTS us_population (state CHAR(2) NOT NULL, city VARCHAR NOT NULL, population BIGINT  CONSTRAINT my_pk PRIMARY KEY (state, city))
-3. Haga clic en el botón Ejecutar.
+3. Haga clic en el botón de ejecución de Hola.
 
     ![SQuirreL de Phoenix HBase][img-squirrel-sql]
-4. Vuelva a la ficha **Objetos** .
-5. Expanda el nombre de alias y, a continuación, expanda **TABLA**.  Verá la nueva tabla que aparece debajo.
+4. Cambiar atrás toohello **objetos** ficha.
+5. Expanda el nombre de alias de hello y, a continuación, expanda **tabla**.  Verá la nueva tabla de hello aparecen en.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este artículo, ha aprendido cómo utilizar Phoenix Apache en HDInsight.  Para obtener más información, consulte:
+En este artículo, ha aprendido cómo toouse Phoenix Apache en HDInsight.  toolearn más información, vea
 
 * [Información general de HBase de HDInsight][hdinsight-hbase-overview]: HBase es una base de datos NoSQL de código abierto Apache basada en Hadoop que proporciona acceso aleatorio y una coherencia sólida para grandes cantidades de datos no estructurados y semiestructurados.
-* [Aprovisionamiento de clústeres de HBase en Azure Virtual Network][hdinsight-hbase-provision-vnet]: con la integración de redes virtuales, los clústeres de HBase se pueden implementar en la misma red virtual que sus aplicaciones para que estas puedan comunicarse directamente con HBase.
-* [Configuración de la replicación de HBase en HDInsight](hdinsight-hbase-replication.md): aprenda a configurar la replicación de HBase entre dos centros de datos de Azure.
-* [Análisis de sentimiento de Twitter con HBase en HDInsight][hbase-twitter-sentiment]: descubra cómo realizar [análisis de sentimiento](http://en.wikipedia.org/wiki/Sentiment_analysis) en tiempo real de macrodatos con HBase en un clúster de Hadoop en HDInsight.
+* [Aprovisionar clústeres de HBase en red Virtual de Azure][hdinsight-hbase-provision-vnet]: con la integración de red virtual, clústeres de HBase pueden ser implementado toohello mismo virtual de red así como las aplicaciones que las aplicaciones pueden comunicarse con HBase directamente.
+* [Configurar la replicación de HBase en HDInsight](hdinsight-hbase-replication.md): Obtenga información acerca de cómo tooconfigure HBase replicación entre dos centros de datos de Azure.
+* [Analizar la opinión de Twitter con HBase en HDInsight][hbase-twitter-sentiment]: Obtenga información acerca de cómo toodo en tiempo real [análisis de opiniones](http://en.wikipedia.org/wiki/Sentiment_analysis) de grandes cantidades de datos mediante el uso de HBase en un clúster de Hadoop en HDInsight.
 
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT

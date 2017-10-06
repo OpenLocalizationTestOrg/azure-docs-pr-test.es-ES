@@ -1,6 +1,6 @@
 ---
-title: "Implementación de contenedores con Helm en Azure Kubernetes | Microsoft Docs"
-description: "Uso de la herramienta de empaquetado de Helm para implementar contenedores en un clúster de Kubernetes en Azure Container Service"
+title: "contenedores de aaaDeploy con timón en Azure Kubernetes | Documentos de Microsoft"
+description: "Utilizar contenedores de toodeploy de herramienta de hello timón empaquetado en un clúster de Kubernetes en el servicio de contenedor de Azure"
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -16,97 +16,97 @@ ms.workload: na
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 3cfcc5abbee03ca8fbbec4e4eae711e7c2d9deae
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c7bd780afe00084ebe4e3a14873e1e340a29d144
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Uso de Helm para implementar contenedores en un clúster de Kubernetes 
+# <a name="use-helm-toodeploy-containers-on-a-kubernetes-cluster"></a>Utilizar contenedores de toodeploy de timón en un clúster de Kubernetes 
 
-[Helm](https://github.com/kubernetes/helm/) es una herramienta de empaquetado de código abierto que ayuda a instalar y administrar el ciclo de vida de las aplicaciones de Kubernetes. Helm, que funciona de forma similar a los administradores de paquetes de Linux como get Apt y Yum, se utiliza para administrar los gráficos de Kubernetes, que son paquetes de recursos de Kubernetes preconfigurados. Este artículo muestra cómo trabajar con Helm en un clúster de Kubernetes implementado en Azure Container Service.
+[Timón](https://github.com/kubernetes/helm/) es una herramienta de empaquetado de código abierto que le ayuda a instalar y administrar el ciclo de vida de Hola de Kubernetes aplicaciones. Administradores de paquetes tooLinux similar como Apt get y Yum, timón es toomanage usado Kubernetes gráficos, que son paquetes de recursos de Kubernetes preconfigurados. Este artículo muestra cómo implementa toowork con timón en un clúster de Kubernetes en el servicio de contenedor de Azure.
 
 Helm tiene dos componentes: 
-* La **CLI de Helm** es un cliente que se ejecuta en el equipo local o en la nube  
+* Hola **timón CLI** es un cliente que se ejecuta en el equipo local o en la nube de Hola  
 
-* **Tiller** es un servidor que se ejecuta en el clúster de Kubernetes y administra el ciclo de vida de las aplicaciones de Kubernetes 
+* **Caña** es un servidor que se ejecuta en hello Kubernetes clúster y administra Hola del ciclo de vida de las aplicaciones Kubernetes 
  
 ## <a name="prerequisites"></a>Requisitos previos
 
 * [Creación de un clúster de Kubernetes](container-service-kubernetes-walkthrough.md) en Azure Container Service
 
-* [Instalación y configuración `kubectl` ](../container-service-connect.md) en un equipo local
+* [Instalación y configuración `kubectl`](../container-service-connect.md) en un equipo local
 
 * [Instalación de Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) en un equipo local
 
 ## <a name="helm-basics"></a>Aspectos básicos de Helm 
 
-Para ver información sobre el clúster de Kubernetes en el que está instalando Tiller e implementando las aplicaciones, escriba el siguiente comando:
+tooview información sobre hello Kubernetes clúster que está instalando caña y la implementación de las aplicaciones, escriba el siguiente comando de hello:
 
 ```bash
 kubectl cluster-info 
 ```
 ![kubectl cluster-info](./media/container-service-kubernetes-helm/clusterinfo.png)
  
-Después de haber instalado Helm, instale Tiller en el clúster de Kubernetes escribiendo el comando siguiente:
+Después de haber instalado timón, instalar caña en el clúster Kubernetes escribiendo el siguiente comando de hello:
 
 ```bash
 helm init --upgrade
 ```
-Una vez completado correctamente, verá el siguiente resultado:
+Cuando se complete correctamente, verá resultados similares a Hola siguientes:
 
 ![Instalación de Tiller](./media/container-service-kubernetes-helm/tiller-install.png)
  
  
  
  
-Para ver todos los gráficos de Helm disponibles en el repositorio, escriba el siguiente comando:
+tooview de comandos de todos los Hola timón gráficos disponibles en el repositorio de hello, Hola de tipo siguientes:
 
 ```bash 
 helm search 
 ```
 
-El resultado debe ser parecido al siguiente:
+Verá resultados similares a Hola siguientes:
 
 ![Búsqueda de Helm](./media/container-service-kubernetes-helm/helm-search.png)
  
-Para actualizar los gráficos para obtener las versiones más recientes, escriba:
+tooupdate Hola gráficos tooget Hola versiones más recientes, escriba:
 
 ```bash 
 helm repo update 
 ```
 ## <a name="deploy-an-nginx-ingress-controller-chart"></a>Implementación de un gráfico de controlador de entrada de Nginx 
  
-Para implementar un gráfico de controlador de entrada de Nginx, escriba un comando único:
+toodeploy un gráfico de controlador de entrada de Nginx, escriba un comando único:
 
 ```bash
 helm install stable/nginx-ingress 
 ```
 ![Implementación del controlador de entrada](./media/container-service-kubernetes-helm/nginx-ingress.png)
 
-Si escribe `kubectl get svc` para ver todos los servicios que se ejecutan en el clúster, verá que se asigna una dirección IP al controlador de entrada. (Mientras que la asignación está en curso, verá `<pending>`. Tarda unos minutos en completarse). 
+Si escribe `kubectl get svc` tooview todos los servicios que se ejecutan en el clúster de hello, verá que se asigna una dirección IP toohello controlador de entrada. (Mientras asignación Hola está en curso, vea `<pending>`. Toma un par de minutos toocomplete). 
 
-Después de que se asigne la dirección IP, vaya hasta el valor de la dirección IP externa para ver la ejecución de back-end de Nginx. 
+Una vez se asigna la dirección IP de hello, navegue toohello valo Hola externo IP dirección toosee hello Nginx back-end ejecuta. 
  
 ![Dirección IP de entrada](./media/container-service-kubernetes-helm/ingress-ip-address.png)
 
 
-Para ver una lista de gráficos instalados en el clúster, escriba:
+toosee una lista de gráficos instalado en el clúster, tipo:
 
 ```bash
 helm list 
 ```
 
-Puede abreviar el comando en `helm ls`.
+Se puede abreviar como comando hello demasiado`helm ls`.
  
  
  
  
 ## <a name="deploy-a-mariadb-chart-and-client"></a>Implementación de un cliente y un gráfico de MariaDB
 
-Ahora implemente un gráfico y un cliente de MariaDB para conectarse a la base de datos.
+Implementar ahora un gráfico de MariaDB y una base de datos de MariaDB cliente tooconnect toohello.
 
-Para implementar el gráfico de MariaDB, escriba el siguiente comando:
+gráfico de toodeploy hello MariaDB, Hola de tipo siguiente comando:
 
 ```bash
 helm install --name v1 stable/mariadb
@@ -115,42 +115,42 @@ helm install --name v1 stable/mariadb
 donde `--name` es una etiqueta que se usa para las versiones.
 
 > [!TIP]
-> Si se produce un error en la implementación, ejecute `helm repo update` e inténtelo de nuevo.
+> Si se produce un error en la implementación de hello, ejecute `helm repo update` y vuelva a intentarlo.
 >
  
  
-Para ver todos los gráficos implementados en el clúster, escriba:
+tooview todos los gráficos de hello implementan en el clúster, tipo:
 
 ```bash 
 helm list
 ```
  
-Para ver todas las implementaciones que se ejecutan en el clúster, escriba:
+tooview todas las implementaciones que se ejecutan en el clúster, escriba:
 
 ```bash
 kubectl get deployments 
 ``` 
  
  
-Por último, para ejecutar un pod para tener acceso al cliente, escriba:
+Por último, toorun un cliente de hello pod tooaccess, escriba:
 
 ```bash
 kubectl run v1-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- bash  
 ``` 
  
  
-Para conectar con el cliente, escriba el siguiente comando, reemplazando `v1-mariadb` por el nombre de la implementación:
+tooconnect toohello cliente, Hola de tipo siguiente comando, reemplazando `v1-mariadb` con nombre hello de la implementación:
 
 ```bash
 sudo mysql –h v1-mariadb
 ```
  
  
-Ahora puede usar los comandos SQL estándar para crear bases de datos, tablas, etc. Por ejemplo, `Create DATABASE testdb1;` crea una base de datos vacía. 
+Ahora puede usar el estándares SQL comandos toocreate las bases de datos, tablas, etcetera. Por ejemplo, `Create DATABASE testdb1;` crea una base de datos vacía. 
  
  
  
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para más información sobre cómo administrar gráficos de Kubernetes, vea la [Documentación de Helm](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Para obtener más información acerca de cómo administrar Kubernetes gráficos, vea hello [timón documentación](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
 

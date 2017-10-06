@@ -14,17 +14,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: d5a3c0a323b31696d39e3d2b36317dec3a2337d7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6f00995e54c9f9ef27cc51e38f3de07cd5817cc1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: configuración de la interfaz de usuario personalizada en una directiva personalizada
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Después de completar este artículo, tendrá una directiva personalizada de registro e inicio de sesión con su marca y apariencia. Con Azure Active Directory B2C (Azure AD B2C), controlará prácticamente todo el contenido HTML y CSS que se presenta a los usuarios. Cuando se usa una directiva personalizada, la personalización de la interfaz del usuario se configura en XML en lugar de con controles de Azure Portal. 
+Después de completar este artículo, tendrá una directiva personalizada de registro e inicio de sesión con su marca y apariencia. Con Azure Active Directory B2C (Azure AD B2C), obtendrá control casi lleno de contenido HTML y CSS de Hola que ha presentado toousers. Cuando se usa una directiva personalizada, configure personalización de la interfaz de usuario en XML en lugar de utilizar controles Hola portal de Azure. 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -32,15 +32,15 @@ Antes de continuar, lea el artículo de [introducción a las directivas personal
 
 ## <a name="page-ui-customization"></a>Personalización de la interfaz de usuario de la página
 
-La característica de personalización de la interfaz de usuario de la página sirve para personalizar la apariencia y la experiencia de cualquier directiva personalizada. También puede mantener la coherencia visual y de la marca entre la aplicación y Azure AD B2C.
+Mediante la característica de personalización de interfaz de usuario de hello página, puede personalizar Hola apariencia y comportamiento de cualquier directiva personalizada. También puede mantener la coherencia visual y de la marca entre la aplicación y Azure AD B2C.
 
-Funciona de la siguiente manera: Azure AD B2C ejecuta código en el explorador del consumidor y usa un enfoque moderno denominado [Uso compartido de recursos entre orígenes (CORS)](http://www.w3.org/TR/cors/). En primer lugar, especifique una dirección URL en la directiva personalizada con contenido HTML personalizado. Azure AD B2C combina elementos de la interfaz de usuario con el contenido HTML cargado desde la dirección URL y muestra la página al consumidor.
+Funciona de la siguiente manera: Azure AD B2C ejecuta código en el explorador del consumidor y usa un enfoque moderno denominado [Uso compartido de recursos entre orígenes (CORS)](http://www.w3.org/TR/cors/). En primer lugar, especifique una dirección URL de la directiva personalizada de hello con contenido HTML personalizado. Azure AD B2C combina elementos de interfaz de usuario con contenido HTML que se carga desde la dirección URL y, a continuación, se muestra al cliente toohello de página de Hola Hola.
 
 ## <a name="create-your-html5-content"></a>Creación de contenido HTML5
 
-Puede crear contenido HTML con el nombre de la marca del producto en el título.
+Crear contenido con el nombre de la marca de su producto HTML en el título de Hola.
 
-1. Copie el siguiente fragmento de código HTML. Es HTML5 bien formado con un elemento vacío denominado *\<div id="api"\>\</div\>* situado en las etiquetas *\<body\>*. Este elemento indica dónde se va a insertar el contenido de Azure AD B2C.
+1. Copie Hola siguiente fragmento de HTML. Está bien formado HTML5 con un elemento vacío denominado  *\<div id = "api"\>\</div\>*  ubicados en hello  *\<cuerpo\>*  etiquetas. Este elemento indica la ubicación contenido de Azure AD B2C toobe insertado.
 
    ```html
    <!DOCTYPE html>
@@ -55,60 +55,60 @@ Puede crear contenido HTML con el nombre de la marca del producto en el título.
    ```
 
    >[!NOTE]
-   >Por motivos de seguridad, el uso de JavaScript está bloqueado para la personalización.
+   >Por motivos de seguridad, uso de Hola de JavaScript está bloqueada actualmente para la personalización.
 
-2. Pegue el fragmento de código copiado en un editor de texto y guarde el archivo como *customize-ui.html*.
+2. Pegue el fragmento de código de hello copiado en un editor de texto y, a continuación, guarde el archivo hello como *ui.html personalizar*.
 
 ## <a name="create-an-azure-blob-storage-account"></a>Creación de una cuenta de Almacenamiento de blobs de Azure
 
 >[!NOTE]
-> En este artículo se usa Azure Blob Storage para hospedar el contenido. Puede elegir hospedar el contenido en un servidor web, pero deberá [habilitar CORS en el servidor web](https://enable-cors.org/server.html).
+> En este artículo, utilizamos toohost de almacenamiento de blobs de Azure nuestro contenido. Puede elegir toohost su contenido en un servidor web, pero deberá [habilitar CORS en el servidor web](https://enable-cors.org/server.html).
 
-Para hospedar este contenido HTML en Blob Storage, haga lo siguiente:
+toohost este contenido HTML en el almacenamiento de blobs, Hola siguientes:
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En el menú **central**, seleccione **Nuevo** > **Almacenamiento** > **Cuenta de almacenamiento**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. En hello **concentrador** menú, seleccione **New** > **almacenamiento** > **cuenta de almacenamiento**.
 3. Escriba un **Nombre** único para la cuenta de almacenamiento.
 4. El **Modelo de implementación** puede permanecer como **Resource Manager**.
-5. Cambie **Tipo de cuenta** a **Almacenamiento de blobs**.
+5. Cambio **tipo de cuenta** demasiado**almacenamiento de blobs**.
 6. El **Rendimiento** puede permanecer como **Estándar**.
 7. La **Replicación** puede permanecer como **RA-GRS**.
 8. El **Nivel de acceso** puede permanecer **Activo**.
 9. El **Cifrado del servicio de almacenamiento** puede permanecer **Deshabilitado**.
 10. Seleccione una **Suscripción** para la cuenta de almacenamiento.
 11. Cree un **Grupo de recursos** o seleccione uno existente.
-12. Seleccione la **Ubicación geográfica** de la cuenta de almacenamiento.
-13. Haga clic en **Crear** para crear la cuenta de almacenamiento.  
-    Espere que termine la implementación y la hoja de la **Cuenta de almacenamiento** se abrirá automáticamente.
+12. Seleccione hello **ubicación geográfica** para su cuenta de almacenamiento.
+13. Haga clic en **crear** cuenta de almacenamiento de toocreate Hola.  
+    Una vez completada la implementación de hello, Hola **cuenta de almacenamiento** hoja se abre automáticamente.
 
 ## <a name="create-a-container"></a>Crear un contenedor
 
-Para crear un contenedor público en Blob Storage, haga lo siguiente:
+toocreate un contenedor público en el almacenamiento de blobs, Hola siguientes:
 
-1. Haga clic en la pestaña **Introducción**.
+1. Haga clic en hello **Introducción** ficha.
 2. Haga clic en **Contenedor**.
 3. En **Nombre**, escriba **$root**.
-4. Establezca **Tipo de acceso** en **Blob**.
-5. Haga clic en **$root** para abrir el contenedor nuevo.
+4. Establecer **tipo de acceso** demasiado**Blob**.
+5. Haga clic en **$root** nuevo contenedor de tooopen Hola.
 6. Haga clic en **Cargar**.
-7. Haga clic en el icono de carpeta junto a **Seleccione un archivo**.
-8. Vaya al blob **customize-ui.html** que creó en la sección [Personalización de la interfaz de usuario de la página](#the-page-ui-customization-feature).
+7. Haga clic en el icono de carpeta de hello siguiente demasiado**seleccionar un archivo**.
+8. Vaya demasiado**ui.html personalizar**, que creó anteriormente en hello [personalización Page UI](#the-page-ui-customization-feature) sección.
 9. Haga clic en **Cargar**.
-10. Seleccione el blob customize-ui.html que cargara.
-11. Junto a **URL**, haga clic en **Copiar**.
-12. En un explorador, pegue la dirección URL copiada y vaya al sitio. Si no puede acceder, asegúrese de que el tipo de acceso de contenedor está establecido en **blob**.
+10. Seleccione los blobs de ui.html personalizar Hola que se cargan.
+11. Siguiente demasiado**URL**, haga clic en **copia**.
+12. En un explorador, Hola pegar copia dirección URL y vaya toohello sitio. Si el sitio de hello es inaccesible, asegúrese de que tipo de acceso de contenedor de Hola se establece demasiado**blob**.
 
 ## <a name="configure-cors"></a>Configuración de CORS
 
-Para configurar Blob Storage para Uso compartido de recursos entre orígenes (CORS), haga lo siguiente:
+Configurar el almacenamiento de blobs para uso compartido de recursos entre orígenes haciendo Hola siguiente:
 
 >[!NOTE]
->¿Desea probar la característica de personalización de la interfaz de usuario con nuestro contenido HTML y CSS de ejemplo? Proporcionamos [una herramienta auxiliar sencilla](active-directory-b2c-reference-ui-customization-helper-tool.md) que carga y configura el contenido de ejemplo en la cuenta de Blob Storage. Si usa la herramienta, vaya directamente a [Modificación de la directiva de inicio de sesión o de registro](#modify-your-sign-up-or-sign-in-custom-policy).
+>¿Deseado tootry característica de personalización de interfaz de usuario de hello mediante nuestro contenido HTML y CSS de ejemplo? Proporcionamos [una herramienta auxiliar sencilla](active-directory-b2c-reference-ui-customization-helper-tool.md) que carga y configura el contenido de ejemplo en la cuenta de Blob Storage. Si utiliza la herramienta de hello, pasar demasiado[modificar la directiva personalizada de registro o inicio de sesión](#modify-your-sign-up-or-sign-in-custom-policy).
 
-1. Abra **CORS** en **Configuración** (hoja **Almacenamiento**).
+1. En hello **almacenamiento** hoja, en **configuración**, abra **CORS**.
 2. Haga clic en **Agregar**.
 3. Para los **Orígenes permitidos**, escriba un asterisco (\*).
-4. En la lista desplegable de **Verbos permitidos**, seleccione **GET** y **OPTIONS**.
+4. Hola **verbos permitidos** lista desplegable, seleccione **obtener** y **opciones**.
 5. Para los **Encabezados permitidos**, escriba un asterisco (\*).
 6. Para los **Encabezados expuestos**, escriba un asterisco (\*).
 7. Para **Antigüedad máxima (segundos)**, escriba **200**.
@@ -116,15 +116,15 @@ Para configurar Blob Storage para Uso compartido de recursos entre orígenes (CO
 
 ## <a name="test-cors"></a>Prueba de CORS
 
-Para comprobar que está listo, haga lo siguiente:
+Validar que está listo haciendo Hola siguiente:
 
-1. Vaya al sitio web [test-cors.org](http://test-cors.org/) y pegue la dirección URL en el cuadro **Remote URL** (Dirección URL remota).
+1. Vaya toohello [prueba cors.org](http://test-cors.org/) sitio Web y, a continuación, pegar Hola URL Hola **dirección URL remota** cuadro.
 2. Haga clic en **Send Request** (Enviar solicitud).  
-    Si recibe un error, asegúrese de que la [configuración de CORS](#configure-cors) sea correcta. Puede que también deba borrar la caché del explorador o abrir una sesión de navegación privada, para ello, presione Ctrl + Mayús + P.
+    Si recibe un error, asegúrese de que la [configuración de CORS](#configure-cors) sea correcta. También, tal vez necesite tooclear la memoria caché del explorador o abrir una sesión de exploración privada presionando Ctrl + Mayús + P.
 
 ## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>Modificación de la directiva de inicio de sesión o de registro
 
-En la etiqueta *\<TrustFrameworkPolicy\>* superior, debería encontrar la etiqueta *\<BuildingBlocks\>*. Dentro de las etiquetas *\<BuildingBlocks\>*, agregue una etiqueta *\<ContentDefinitions\>*; para ello, copie el ejemplo siguiente. Reemplace *your_storage_account* por el nombre de la cuenta de almacenamiento.
+En el nivel superior de hello  *\<TrustFrameworkPolicy\>*  etiqueta, debería encontrar  *\<BuildingBlocks\>*  etiqueta. Dentro de hello  *\<BuildingBlocks\>*  etiquetas, agregue un  *\<ContentDefinitions\>*  etiqueta copiando el siguiente ejemplo de Hola. Reemplace *your_storage_account* con el nombre de saludo de la cuenta de almacenamiento.
 
   ```xml
   <BuildingBlocks>
@@ -138,16 +138,16 @@ En la etiqueta *\<TrustFrameworkPolicy\>* superior, debería encontrar la etique
 
 ## <a name="upload-your-updated-custom-policy"></a>Carga de la directiva personalizada actualizada
 
-1. En [Azure Portal](https://portal.azure.com), [cambie al contexto del inquilino de Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md) y abra la hoja **Azure AD B2C**.
+1. Hola [portal de Azure](https://portal.azure.com), [cambiar al contexto de Hola de su inquilino de Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)y, a continuación, abra hello **Azure AD B2C** hoja.
 2. Haga clic en **Todas las directivas**.
 3. Haga clic en **Cargar directiva**.
-4. Cargue `SignUpOrSignin.xml` con la etiqueta *\<ContentDefinitions\>* que agregó anteriormente.
+4. Cargar `SignUpOrSignin.xml` con hello  *\<ContentDefinitions\>*  etiqueta que agregó anteriormente.
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Prueba de la directiva personalizada con **Ejecutar ahora**
+## <a name="test-hello-custom-policy-by-using-run-now"></a>Probar directiva personalizada de hello mediante **ejecutar ahora**
 
-1. En la hoja **Azure AD B2C**, vaya a **Todas las directivas**.
-2. Seleccione la directiva personalizada que cargó y, luego, haga clic en el botón **Ejecutar ahora**.
-3. Debería poder registrarse con una dirección de correo electrónico.
+1. En hello **Azure AD B2C** hoja, vaya demasiado**todas las directivas de**.
+2. Active la directiva personalizada hello que ha cargado y haga clic en hello **ejecutar ahora** botón.
+3. Debe ser capaz de toosign seguridad mediante una dirección de correo electrónico.
 
 ## <a name="reference"></a>Referencia
 
@@ -157,7 +157,7 @@ Aquí encontrará plantillas de ejemplo de personalización de interfaz de usuar
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
-La carpeta sample_templates/wingtip contiene los siguientes archivos HTML:
+carpeta de Hello sample_templates/wingtip contiene Hola siguientes archivos HTML:
 
 | Plantilla HTML5 | Descripción |
 |----------------|-------------|
@@ -167,20 +167,20 @@ La carpeta sample_templates/wingtip contiene los siguientes archivos HTML:
 | *unified.html* | Use este archivo como plantilla para una página de inicio de sesión o registro unificada. |
 | *updateprofile.html* | Use este archivo como plantilla para una página de actualización de perfil. |
 
-En la sección [Modificación de la directiva de inicio de sesión o de registro](#modify-your-sign-up-or-sign-in-custom-policy) configuró la definición del contenido de `api.idpselections`. Todos los identificadores de definición de contenido que se reconocen en el marco de la experiencia de identidad de Azure AD B2C y sus descripciones aparecen en la tabla siguiente:
+Hola [modificar la sección de directiva personalizada de registro o inicio de sesión](#modify-your-sign-up-or-sign-in-custom-policy), ha configurado la definición de contenido de Hola para `api.idpselections`. Hola completa de identificadores que son reconocidos por el marco de trabajo de hello Azure AD B2C identidad experiencia y sus descripciones de definición de contenido están en hello en la tabla siguiente:
 
 | Id. de definición de contenido | Descripción | 
 |-----------------------|-------------|
 | *api.error* | **Página de error**. Esta página se muestra cuando se produce una excepción o un error. |
-| *api.idpselections* | **Página de selección del proveedor de identidades**. Esta página contiene una lista de proveedores de identidades que el usuario puede elegir durante el inicio de sesión. Estas opciones son proveedores de identidades de empresa, proveedores de identidades sociales como Facebook y Google+ o cuentas locales. |
-| *api.idpselections.signup* | **Selección del proveedor de identidades para el registro**. Esta página contiene una lista de proveedores de identidades que el usuario puede elegir durante el inicio de sesión. Estas opciones son proveedores de identidades de empresa, proveedores de identidades sociales como Facebook y Google+ o cuentas locales. |
-| *api.localaccountpasswordreset* | **Página de contraseña olvidada**. Esta página contiene un formulario que el usuario tiene que rellenar para iniciar el restablecimiento de contraseña.  |
-| *api.localaccountsignin* | **Página de inicio de sesión en una cuenta local**. Esta página contiene un formulario de registro con una cuenta local basada en una dirección de correo electrónico o un nombre de usuario. El formulario puede contener un cuadro de entrada de texto y un cuadro de entrada de contraseña. |
-| *api.localaccountsignup* | **Página de registro en una cuenta local**. Esta página contiene un formulario de registro para una cuenta local basada en una dirección de correo electrónico o un nombre de usuario. El formulario puede contener varios controles de entrada, como un cuadro de entrada de texto, un cuadro de entrada de contraseña, un botón de radio, cuadros desplegables de selección única y casillas de selección múltiple. |
+| *api.idpselections* | **Página de selección del proveedor de identidades**. Esta página contiene una lista de proveedores que Hola usuario pueden elegir entre durante el inicio de sesión de identidad. Estas opciones son proveedores de identidades de empresa, proveedores de identidades sociales como Facebook y Google+ o cuentas locales. |
+| *api.idpselections.signup* | **Selección del proveedor de identidades para el registro**. Esta página contiene una lista de proveedores que Hola usuario pueden elegir al realizar el registro de identidad. Estas opciones son proveedores de identidades de empresa, proveedores de identidades sociales como Facebook y Google+ o cuentas locales. |
+| *api.localaccountpasswordreset* | **Página de contraseña olvidada**. Esta página contiene un formulario de ese usuario Hola debe completar tooinitiate un restablecimiento de contraseña.  |
+| *api.localaccountsignin* | **Página de inicio de sesión en una cuenta local**. Esta página contiene un formulario de registro con una cuenta local basada en una dirección de correo electrónico o un nombre de usuario. Hola formulario puede contener un cuadro de entrada de texto y un cuadro de entrada de contraseña. |
+| *api.localaccountsignup* | **Página de registro en una cuenta local**. Esta página contiene un formulario de registro para una cuenta local basada en una dirección de correo electrónico o un nombre de usuario. formulario de Hello puede contener varios controles de entrada, como un cuadro de entrada de texto, un cuadro de entrada de contraseña, un botón de radio, cuadros de lista desplegable de selección única y casillas de verificación de selección múltiple. |
 | *api.phonefactor* | **Página de autenticación multifactor**. Esta página permite a los usuarios verificar sus números de teléfono (mediante texto o voz) durante el registro o el inicio de sesión. |
-| *api.selfasserted* | **Página de registro en una cuenta social**. Esta página contiene un formulario de registro que los usuarios tienen que rellenar al registrarse con una cuenta existente de un proveedor de identidades social, como Facebook o Google+. Esta página es similar a la página anterior de registro en una cuenta social, excepto por los campos de entrada de contraseña. |
-| *api.selfasserted.profileupdate* | **Página de actualización de perfil**. Esta página contiene un formulario que los usuarios pueden usar para actualizar su perfil. Esta página es similar a la página de registro en una cuenta social, excepto por los campos de entrada de contraseña. |
-| *api.signuporsignin* | **Página de inicio de sesión o registro unificada**. Esta página controla tanto la suscripción como el inicio de sesión de los usuarios, que pueden usar proveedores de identidades de empresa, proveedores de identidades sociales, como Facebook o Google +, o cuentas locales.  |
+| *api.selfasserted* | **Página de registro en una cuenta social**. Esta página contiene un formulario de registro que los usuarios tienen que rellenar al registrarse con una cuenta existente de un proveedor de identidades social, como Facebook o Google+. Esta página es similar toohello anterior página de inicio de sesión de cuenta sociales, salvo los campos de entrada de contraseña de Hola. |
+| *api.selfasserted.profileupdate* | **Página de actualización de perfil**. Esta página contiene un formulario que los usuarios pueden usar tooupdate su perfil. Esta página es similar toohello sociales página cuenta de inicio de sesión, salvo los campos de entrada de contraseña de Hola. |
+| *api.signuporsignin* | **Página de inicio de sesión o registro unificada**. Esta página controla ambos Hola registrarse e iniciar sesión de usuarios, que pueden usar proveedores de identidades de empresa, proveedores de identidades sociales como Facebook o Google + o las cuentas locales.  |
 
 ## <a name="next-steps"></a>Pasos siguientes
 

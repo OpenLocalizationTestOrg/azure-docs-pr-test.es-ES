@@ -1,5 +1,5 @@
 ---
-title: "Ejecución de scripts de aprendizaje automático de Python | Microsoft Docs"
+title: "máquina de Python aaaExecute secuencias de comandos de aprendizaje | Documentos de Microsoft"
 description: "Describe los principios de diseño subyacentes a la compatibilidad con scripts de Python en Aprendizaje automático de Azure y los escenarios de uso básico, las funcionalidades y las limitaciones."
 keywords: "aprendizaje automático de Python, pandas, pandas de python, scripts de python, ejecutar scripts de python"
 services: machine-learning
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: bradsev
-ms.openlocfilehash: e8d6377bc939e6711a96e521b5f574fc8d060929
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8d23aaa972a46cb1a07ea0f18cc1e24933fe3e6f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Ejecución de scripts de Python en Aprendizaje automático de Azure | Azure
 
-En este tema se describen los principios de diseño subyacentes a la compatibilidad actual con scripts de Python en Azure Machine Learning. También se esbozan las principales funcionalidades que proporciona, que incluyen:
+En este tema se describe los principios de diseño de Hola Hola actual soporte para scripts de Python en aprendizaje automático de Azure subyacente. También se describen funciones principales de Hello proporcionados, incluidos:
 
 - ejecución de escenarios de uso básicos
 - puntuación de un experimento en un servicio web
@@ -32,7 +32,7 @@ En este tema se describen los principios de diseño subyacentes a la compatibili
 - selección de características supervisada
 - comprensión de algunas limitaciones
 
-[Python](https://www.python.org/) es una herramienta indispensable de la caja de herramientas de muchos científicos de datos. Tiene:
+[Python](https://www.python.org/) es una herramienta indispensable en pecho de herramienta Hola de muchos de los científicos de datos. Tiene:
 
 * una sintaxis elegante y concisa, 
 * asistencia multiplataforma, 
@@ -45,7 +45,7 @@ Python se usa en todas las fases de un flujo de trabajo que normalmente se emple
 - construcción de características
 - entrenamiento del modelo 
 - validación del modelo
-- implementación de los modelos
+- implementación de modelos de Hola
 
 Azure Machine Learning Studio admite la incrustación de scripts de Python en varias partes de un experimento de aprendizaje automático y, además, su publicación sin problemas como servicios web en Microsoft Azure.
 
@@ -54,58 +54,58 @@ Azure Machine Learning Studio admite la incrustación de scripts de Python en va
 
 ## <a name="design-principles-of-python-scripts-in-machine-learning"></a>Principios de diseño de los scripts de Python en Aprendizaje automático
 
-La interfaz principal para Python en Azure Machine Learning Studio es mediante el módulo [Ejecutar script de Python][execute-python-script] que aparece en la figura 1.
+Hola interfaz principal tooPython en estudio de aprendizaje automático de Azure es a través de hello [ejecutar Script de Python] [ execute-python-script] módulo que se muestra en la figura 1.
 
 ![imagen1](./media/machine-learning-execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
 ![imagen2](./media/machine-learning-execute-python-scripts/embedded-machine-learning-python-script.png)
 
-Figura 1. El módulo **Ejecutar script de Python** .
+Figura 1. Hola **ejecutar Script de Python** módulo.
 
-El módulo [Ejecutar script de Python][execute-python-script] de Azure ML Studio acepta hasta tres entradas y genera hasta dos salidas (que se tratan en la siguiente sección), al igual que su análogo de R, el módulo [Ejecutar script R][execute-r-script]. El código Python que se ejecutará se escribe en el cuadro de parámetro como una función de punto de entrada especialmente denominada llamada `azureml_main`. Los siguientes son los principios de diseño clave que se usan para implementar este módulo:
+Hola [ejecutar Script de Python] [ execute-python-script] módulo en estudio de aprendizaje automático acepta una toothree entradas y genera una salidas tootwo (descritos en hello siguiente sección), como su analógico R, hello [ Ejecutar Script de R] [ execute-r-script] módulo. Hello toobe de código de Python ejecuta aparece en el cuadro de parámetro hello como un conjunto con nombre especialmente punto de entrada función denominada `azureml_main`. Estos son los principios utilizados tooimplement este módulo de diseño clave hello:
 
-1. *Debe ser idiomático para los usuarios de Python.* La mayoría de los usuarios de Python incluye su código como funciones dentro de módulos. Así, la colocación de muchas instrucciones ejecutables en un módulo de nivel superior es relativamente rara. Como resultado, el cuadro del script también asume una función de Python especialmente denominada, en contraposición a solo una secuencia de instrucciones. Los objetos expuestos en la función son tipos de bibliotecas de Python estándar, como tramas de datos [Pandas](http://pandas.pydata.org/) y matrices [NumPy](http://www.numpy.org/).
-2. *Debe contar con alta fidelidad entre las ejecuciones locales y las ejecuciones en la nube.* El back-end que se usa para ejecutar el código de Python se basa en [Anaconda](https://store.continuum.io/cshop/anaconda/), una distribución científica multiplataforma de Python ampliamente usada. Incluye cerca de 200 de los paquetes más comunes de Python. Por lo tanto, los científicos de datos pueden depurar y calificar su código en su entorno Anaconda compatible con la instancia de Azure Machine Learning local. Luego usan un entorno de desarrollo existente, como [IPython](http://ipython.org/) Notebook o las [Herramientas de Python para Visual Studio](http://aka.ms/ptvs), para ejecutarlo como parte de un experimento de Azure Machine Learning. El punto de entrada `azureml_main` es una función vainilla de Python y por tanto ****se puede crear sin código específico de Azure Machine Learning ni el SDK instalado.
-3. *Debe admitir composición sin problemas con otros módulos de Aprendizaje automático de Azure.* El módulo [Ejecutar script de Python][execute-python-script] acepta, como entradas y salidas, conjuntos de datos estándar de Azure Machine Learning. El marco subyacente une los runtimes de Azure Machine Learning y Python de forma transparente y eficaz. Por tanto, Python se puede usar con flujos de trabajo existentes de Azure Machine Learning, incluidos los que llaman a R y SQLite. Como resultado, los científicos de datos pueden crear flujos de trabajo que:
+1. *Debe ser idiomático para los usuarios de Python.* La mayoría de los usuarios de Python incluye su código como funciones dentro de módulos. Así, la colocación de muchas instrucciones ejecutables en un módulo de nivel superior es relativamente rara. Como resultado, cuadro de secuencia de comandos de hello también toma una función de Python especialmente con nombre como toojust lugar una secuencia de instrucciones. Hello objetos expuestos en función de hello son tipos de biblioteca de Python estándar como [Pandas](http://pandas.pydata.org/) tramas de datos y [NumPy](http://www.numpy.org/) matrices.
+2. *Debe contar con alta fidelidad entre las ejecuciones locales y las ejecuciones en la nube.* Hola Hola tooexecute de back-end utiliza código Python se basa [Anaconda](https://store.continuum.io/cshop/anaconda/), usadas de distribución de Python científico multiplataforma. Se trata con cerrar too200 de paquetes de Python más comunes de Hola. Por lo tanto, los científicos de datos pueden depurar y calificar su código en su entorno Anaconda compatible con la instancia de Azure Machine Learning local. A continuación, usar un entorno de desarrollo existentes, como [IPython](http://ipython.org/) Bloc de notas o [Python Tools para Visual Studio](http://aka.ms/ptvs), toorun como parte de un experimento de aprendizaje automático de Azure. Hola `azureml_main` punto de entrada es una función de Python vainilla de modo que *** pueden crearse sin código específico de aprendizaje automático de Azure u Hola SDK instalado.
+3. *Debe admitir composición sin problemas con otros módulos de Aprendizaje automático de Azure.* Hola [ejecutar Script de Python] [ execute-python-script] módulo acepta, como entradas y salidas, conjuntos de datos de aprendizaje automático de Azure estándar. marco subyacente de Hello puentes de forma transparente y eficaz Hola aprendizaje automático de Azure y Python tiempos de ejecución. Por tanto, Python se puede usar con flujos de trabajo existentes de Azure Machine Learning, incluidos los que llaman a R y SQLite. Como resultado, los científicos de datos pueden crear flujos de trabajo que:
    * usen Python y Pandas para el procesamiento previo y la limpieza de datos
-   * transmitan los datos a una transformación de SQL que una varios conjuntos de datos para formar características
-   * entrenen modelos mediante los algoritmos de Azure Machine Learning 
-   * evalúen y procesen posteriormente los resultados con R.
+   * fuente hello tooa SQL transformación de datos combinar varias características de tooform de conjuntos de datos
+   * entrenar modelos utilizando algoritmos de hello en aprendizaje automático de Azure 
+   * evaluar y POST-procesar los resultados de hello mediante R.
 
 
 ## <a name="basic-usage-scenarios-in-ml-for-python-scripts"></a>Escenarios de uso básicos de Aprendizaje automático para scripts de Python
 
-En esta sección, analizaremos algunos de los usos básicos del módulo [Ejecutar script de Python][execute-python-script]. Las entradas en el módulo Python se exponen como tramas de datos de Pandas. La función debe devolver una sola trama de datos de Pandas empaquetada dentro de una [secuencia](https://docs.python.org/2/c-api/sequence.html) de Python, como una tupla, una lista o una matriz de NumPy. Luego, el primer elemento de esta secuencia se devuelve en el primer puerto de salida del módulo. Este esquema aparece en la figura 2.
+En esta sección, se encuesta algunos de los usos básicos de Hola de hello [ejecutar Script de Python] [ execute-python-script] módulo. Módulo de Python toohello entradas se exponen como tramas de datos de Pandas. Hello función debe devolver una trama de datos Pandas única empaquetada dentro de un Python [secuencia](https://docs.python.org/2/c-api/sequence.html) como una tupla, lista o matriz NumPy. a continuación, se devuelve el primer elemento de esta secuencia de Hello en hello primer puerto de salida del módulo de Hola. Este esquema aparece en la figura 2.
 
 ![imagen3](./media/machine-learning-execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
-Ilustración 2. Asignación de puertos de entrada a parámetros y valor de devolución a puerto de salida.
+Ilustración 2. Asignación de tooparameters de puertos de entrada y puerto toooutput de valor devuelto.
 
-Puede ver una semántica más detallada de cómo se asignan los puertos de entrada a los parámetros de la `azureml_main` función en la tabla 1:
+Más semántica de cómo los puertos de entrada de hello obtienen tooparameters asignada de hello `azureml_main` función se muestran en la tabla 1:
 
 ![imagen1T](./media/machine-learning-execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
-Tabla 1. Asignación de puertos de entrada a parámetros de función.
+Tabla 1. Asignación de parámetros de toofunction de puertos de entrada.
 
-La asignación entre los puertos de entrada y los parámetros de función es posicional:
+asignación de Hello entre los puertos de entrada y parámetros de función es posicional:
 
-- El primer puerto de entrada conectado se asigna al primer parámetro de la función. 
-- La segunda entrada (si está conectada) se asigna al segundo parámetro de la función.
+- puerto de entrada conectados primera Hello es asignada toohello primer parámetro de función hello. 
+- Hola segunda entrada (si está conectado) está asignada toohello segundo parámetro de función hello.
 
-Vea *Python for Data Analysis* (O'Reilly, 2012) de W. McKinney para más información sobre Python Pandas y sobre cómo se puede usar para manipular datos de manera eficaz y eficiente. 
+Vea *Python para el análisis de datos* (o ' Reilly, 2012) por McKinney Occid. para obtener más información en Pandas de Python y en cómo puede ser usado toomanipulate datos eficiente y eficaz. 
 
 
 ## <a name="translation-of-input-and-output-types"></a>Traslación de tipos de entrada y salida 
-Los conjuntos de datos de entrada de Azure Machine Learning se convierten en tramas de datos en Pandas. Las tramas de datos de salida se vuelven a convertir en conjuntos de datos de Azure Machine Learning. Se realizan las siguientes conversiones:
+Los conjuntos de datos en Azure ML son fotogramas toodata convertido en Pandas. Tramas de datos de salida se convierten en conjuntos de datos de back-tooAzure ML. Hola siguiendo las conversiones se realiza:
 
-1. Las columnas numéricas y de cadena se convierten tal cual y los valores que faltan en un conjunto de datos se convierten en valores "NA" en Pandas. Se produce la misma conversión a la inversa (los valores NA de Pandas se convierten en valores que faltan en Azure Machine Learning).
-2. Los vectores de índice de Pandas no se admiten en Azure Machine Learning. Todas las tramas de datos de entrada de la función de Python siempre tienen un índice numérico de 64 bits entre 0 y el número de filas menos 1. 
-3. Los conjuntos de datos de Azure Machine Learning no pueden tener nombres de columnas duplicados ni nombres de columnas que no sean cadenas. Si una trama de datos de salida contiene columnas no numéricas, el marco llama a `str` en los nombres de columna. Del mismo modo, los nombres de columnas duplicados se alternan automáticamente para asegurarse de que los nombres sean únicos. El sufijo (2) se agrega al primer duplicado, (3) al segundo duplicado, etc.
+1. Las columnas de cadena y numéricos se convierten como-es y valores que faltan en un conjunto de datos son too'NA convertido ' valores en Pandas. Hello misma conversión se realiza en hello hacia atrás (valores de NA de Pandas son toomissing convertido en aprendizaje automático de Azure).
+2. Los vectores de índice de Pandas no se admiten en Azure Machine Learning. Todos los marcos de datos de entrada en función de Python de hello siempre tienen un índice numérico de 64 bits desde 0 toohello, número de columnas menos 1. 
+3. Los conjuntos de datos de Azure Machine Learning no pueden tener nombres de columnas duplicados ni nombres de columnas que no sean cadenas. Si una trama de datos de salida contiene las columnas no numéricas, Hola llamadas framework `str` en nombres de columna de Hola. De igual modo, los nombres de columna duplicados son tooinsure automáticamente con sufijo Hola nombres son únicos. toohello primer duplicado, toohello segundo duplicado (3) y así sucesivamente, se agrega el sufijo de Hello (2).
 
 
 ## <a name="operationalizing-python-scripts"></a>Funcionamiento de los scripts de Python
 
-Cuando un experimento de puntuación se publica como servicio web, se llama a todos los módulos [Ejecutar script de Python][execute-python-script] usados en él. Por ejemplo, la figura 3 muestra un experimento de puntuación que contiene el código para evaluar una única expresión de Python. 
+Cuando un experimento de puntuación se publica como servicio web, se llama a todos los módulos [Ejecutar script de Python][execute-python-script] usados en él. Por ejemplo, en la figura 3 se muestra un experimento de puntuación que contiene código de hello tooevaluate una única expresión de Python. 
 
 ![imagen4](./media/machine-learning-execute-python-scripts/figure3a.png)
 
@@ -116,15 +116,15 @@ Figura 3. Servicio web para evaluar una expresión de Python.
 Un servicio web creado a partir de este experimento:
 
 - toma como entrada una expresión de Python (como una cadena)
-- la envía al intérprete de Python 
-- devuelve una tabla que contiene la expresión y el resultado evaluado.
+- envía toohello intérprete de Python 
+- Devuelve una tabla que contiene la expresión de Hola y el resultado de hello evaluada.
 
 
 ## <a name="importing-existing-python-script-modules"></a>Importación de módulos existentes de scripts de Python
 
-Un caso de uso común para muchos científicos de datos es incorporar scripts existentes de Python a experimentos de Azure Machine Learning. En lugar de exigir que todo el código se concatene y se pegue en un solo cuadro de script, el módulo [Ejecutar script de Python][execute-python-script] acepta un archivo ZIP que contiene los módulos de Python en el tercer puerto de entrada. El marco de ejecución descomprime el archivo en runtime y el contenido se agrega a la ruta de acceso de la biblioteca del intérprete de Python. La función de punto de entrada `azureml_main` luego puede importar directamente estos módulos.
+Un caso de uso común para muchas científicos de datos es tooincorporate scripts existentes de Python en experimentos de aprendizaje automático de Azure. En lugar de requerir que todo el código se concatenarán y pegar en el cuadro de una única secuencia de comandos, Hola [ejecutar Script de Python] [ execute-python-script] módulo acepta un archivo zip que contiene los módulos de Python en el puerto de entrada tercer Hola. se descomprimió el archivo Hello por marco de trabajo de ejecución de hello en tiempo de ejecución y contenido de Hola se agrega la ruta de acceso de biblioteca de toohello de intérprete de Python Hola. Hola `azureml_main` función, a continuación, puede importar estos módulos directamente el punto de entrada.
 
-Por ejemplo, considere el archivo Hello.py que contiene una función "Hello, World".
+Por ejemplo, considere la posibilidad de archivo hello Hello.py que contiene una función simple "Hola, mundo".
 
 ![imagen6](./media/machine-learning-execute-python-scripts/figure4.png)
 
@@ -136,7 +136,7 @@ A continuación, creamos un archivo Hello.zip que contiene Hello.py:
 
 Figura 5. Archivo ZIP que contiene código Python definido por el usuario.
 
-Cargue el archivo ZIP como un conjunto de datos en Azure Machine Learning Studio. Luego cree y ejecute un experimento que use el código de Python del archivo Hello.zip al asociarlo al tercer puerto de entrada del módulo **Ejecutar script de Python**, como se muestra en esta figura.
+Cargue el archivo zip de hello como un conjunto de datos en estudio de aprendizaje automático de Azure. A continuación, crear y ejecutar un experimento con código de Python de hello en el archivo de hello Hello.zip adjuntando toohello tercer puerto de entrada de hello **ejecutar Script de Python** módulo, como se muestra en esta ilustración.
 
 ![imagen8](./media/machine-learning-execute-python-scripts/figure6a.png)
 
@@ -144,31 +144,31 @@ Cargue el archivo ZIP como un conjunto de datos en Azure Machine Learning Studio
 
 Figura 6. Experimento de ejemplo con código Python definido por el usuario cargado como archivo ZIP.
 
-La salida del módulo muestra que el archivo ZIP se ha desempaquetado y que la función `print_hello` se ha ejecutado.
+salida del módulo hello muestra el archivo zip Hola ha estado desempaquetar y esa función hello `print_hello` se ha ejecutado.
  
 ![image10](./media/machine-learning-execute-python-scripts/figure7.png)
 
-Figura 7. Función definida por el usuario en uso dentro del módulo [Ejecutar script de Python][execute-python-script].
+Figura 7. Función definida por el usuario en uso dentro de hello [ejecutar Script de Python] [ execute-python-script] módulo.
 
 
 ## <a name="working-with-visualizations"></a>Trabajo con visualizaciones
 
-El módulo [Ejecutar script de Python][execute-python-script] puede devolver los gráficos creados con MatplotLib que se pueden visualizar en el explorador. Sin embargo, los gráficos no se redirigen automáticamente a imágenes como sucede cuando se usa R. Por lo tanto, el usuario debe guardar explícitamente todo gráfico como archivo PNG si se va a devolver a Aprendizaje automático de Azure. 
+Pueden devolver trazados creadas con MatplotLib que se puede visualizar en el Explorador de Hola Hola [ejecutar Script de Python][execute-python-script]. Pero Hola gráficos no están tooimages redirigido automáticamente como si estuvieran cuando se usa R. Por lo que el usuario Hola debe guardarlos explícitamente de los trazados tooPNG archivos si están toobe devuelve tooAzure atrás aprendizaje automático. 
 
-Para generar imágenes desde MatplotLib, debe realizar el siguiente procedimiento:
+imágenes de toogenerate desde MatplotLib, debe completar Hola siguiendo el procedimiento:
 
-* cambie el backend a "AGG" desde el representador basado en Qt predeterminado, 
+* cambiar Hola back-end demasiado "AGG" de hello predeterminado basado en Qt representador 
 * cree un nuevo objeto de figura, 
-* obtenga el eje y genere todos los gráficos en él, 
-* guarde la figura en un archivo PNG. 
+* obtener el eje de Hola y generar todos los gráficos en él 
+* Guardar archivo de hello figura tooa PNG 
 
-Este proceso se muestra en la figura 8 que aparece a continuación, donde se crea una matriz de gráfico de dispersión con la función scatter_matrix de Pandas.
+Este proceso se muestra en hello después de la figura 8 que crea una matriz de gráfico de dispersión en función de hello scatter_matrix Pandas.
 
 ![imagen1v](./media/machine-learning-execute-python-scripts/figure-v1-8.png)
 
-Figura 8. Código para guardar figuras de MatplotLib en imágenes.
+Figura 8. El código toosave que matplotlib cifras tooimages.
 
-La figura 9 muestra un experimento que usa el script mostrado anteriormente para devolver gráficos a través del segundo puerto de salida.
+Ilustración 9 se muestra un experimento con script de Hola que se ha mostrado anteriormente tooreturn traza a través de hello segundo puerto de salida.
 
 ![imagen2v](./media/machine-learning-execute-python-scripts/figure-v2-9a.png) 
 
@@ -176,40 +176,40 @@ La figura 9 muestra un experimento que usa el script mostrado anteriormente para
 
 Figura 9. Visualización de los gráficos generados a partir del código Python.
 
-Es posible devolver varias figuras si se guardan en distintas imágenes: el tiempo de ejecución de Azure Machine Learning selecciona todas las imágenes y las concatena para visualización.
+Es posible tooreturn varias figuras guardándolas en diferentes imágenes, Hola aprendizaje automático de Azure en tiempo de ejecución recoge todas las imágenes y concatena para visualización.
 
 
 ## <a name="advanced-examples"></a>Ejemplos avanzados
 
-El entorno Anaconda instalado en Azure Machine Learning contiene paquetes comunes como NumPy, SciPy y Scikits-Learn. Estos paquetes se pueden usar de forma efectiva para distintas tareas de procesamiento de datos en una canalización de aprendizaje automático. Como ejemplo, el siguiente experimento y script muestra el uso de sistemas aprendices de conjunto de Scikits-Learn para calcular las puntuaciones de importancia de características de un conjunto de datos. Las puntuaciones se pueden usar para realizar una selección supervisada de características antes de transmitirlas a otro modelo de aprendizaje automático.
+entorno Anaconda Hola está instalado en aprendizaje automático de Azure contiene paquetes comunes como NumPy, SciPy y Scikits-Learn. Estos paquetes se pueden usar de forma efectiva para distintas tareas de procesamiento de datos en una canalización de aprendizaje automático. Por ejemplo, hello script y experimento siguiente ilustran Hola uso de aprendices de conjunto de puntuaciones de importancia de características de toocompute Scikits-Learn para un conjunto de datos. puntuaciones de Hello pueden ser usado tooperform supervisado de selección de características antes de pasarlas a otro modelo de aprendizaje automático.
 
-Aquí se muestra la función de Python usada para calcular las puntuaciones de importancia y ordenar las características según esas puntuaciones:
+Este es puntuaciones de importancia de hello Python función usa toocompute hello y características de hello orden según las puntuaciones de hello:
 
 ![imagen11](./media/machine-learning-execute-python-scripts/figure8.png)
 
-Figura 10. Función para clasificar características por puntuaciones.
-  El siguiente experimento calcula y devuelve las puntuaciones de importancia de características en el conjunto de datos "Diabetes en los indios Pima" en Azure Machine Learning:
+Figura 10. Función toorank características puntuaciones.
+ Hello experimento siguiente, a continuación, calcula y devuelve las puntuaciones de importancia de Hola de características Hola "Pima Índico Diabetes" conjunto de datos de aprendizaje automático de Azure:
 
 ![image12](./media/machine-learning-execute-python-scripts/figure9a.png)
 ![image13](./media/machine-learning-execute-python-scripts/figure9b.png)    
 
-Figura 11. Experimento para clasificar las características del conjunto de datos Diabetes en los indios Pima.
+Figura 11. Características de toorank de experimento en el conjunto de datos de hello Pima Índico Diabetes.
 
 ## <a name="limitations"></a>Limitaciones
-[Ejecutar script de Python][execute-python-script] actualmente tiene las siguientes limitaciones:
+Hola [ejecutar Script de Python] [ execute-python-script] tiene actualmente Hola siguientes limitaciones:
 
-1. *Ejecución en espacio aislado.* El tiempo de ejecución de Python actualmente se realiza en espacio aislado y, como resultado, no permite el acceso a la red o al sistema de archivos local de manera persistente. Todos los archivos guardados localmente son aislados y eliminados una vez que se finaliza el módulo. El código Python no puede tener acceso a la mayoría de los directorios de la máquina en que se ejecuta, con la excepción del directorio actual y sus subdirectorios.
-2. *Falta de compatibilidad con la depuración y desarrollo sofisticado.* El módulo Python actualmente no es compatible con características de IDE, como IntelliSense y depuración. Además, si se produce un error en el módulo en runtime, el seguimiento de la pila completo de Python está disponible. Pero debe verse en el registro de salida del módulo. De momento se recomienda que los usuarios desarrollen y depuren scripts de Python en un entorno como IPython y luego importen el código al módulo.
-3. *Salida de una trama de datos.* El punto de entrada de Python solo tiene permitido devolver una trama de datos como salida. Actualmente no es posible devolver objetos arbitrarios de Python, como modelos entrenados, directamente de vuelta al tiempo de ejecución de Aprendizaje automático de Azure. Al igual que [Ejecutar script R][execute-r-script], que tiene la misma limitación, en muchos casos es posible incluir objetos en una matriz de bytes y luego devolverla dentro de una trama de datos.
-4. *Incapacidad para personalizar la instalación de Python*. Actualmente, la única manera de agregar módulos personalizados de Python es a través del mecanismo de archivo ZIP descrito anteriormente. A pesar de que esto es viable cuando se trata de módulos pequeños, es complicado para módulos de gran tamaño (especialmente para los módulos con DLL nativas) o para un gran número de módulos. 
+1. *Ejecución en espacio aislado.* en tiempo de ejecución de Python de Hello es actualmente en un espacio aislado y, como resultado, no permitir que el sistema de archivos local de red o toohello de toohello de acceso de forma persistente. Todos los archivos guardados localmente se aislado y se eliminan cuando finaliza el módulo de Hola. Hola código Python no tiene acceso a la mayoría de los directorios en la máquina de Hola que se ejecuta en, hello las excepciones son Hola directorio actual y sus subdirectorios.
+2. *Falta de compatibilidad con la depuración y desarrollo sofisticado.* módulo de Python Hola actualmente no admite las características del IDE como intellisense y la depuración. Además, si se produce un error en el módulo de hello en tiempo de ejecución, hello seguimiento de pila de Python completa está disponible. Pero debe verse en el registro de salida de hello para el módulo de Hola. Actualmente, se recomienda desarrollar y depurar scripts de Python en un entorno como IPython y, a continuación, importar el código de hello en el módulo de Hola.
+3. *Salida de una trama de datos.* punto de entrada de Python de Hello es solo permitido tooreturn una trama de datos único como salida. No es posible actualmente tooreturn que Python arbitrario objetos como modelos entrenados directamente realizar copias en tiempo de ejecución de toohello aprendizaje automático de Azure. Al igual que [ejecutar Script de R][execute-r-script], que tiene Hola misma limitación, es posible en muchos casos toopickle objetos en un byte de matriz y, a continuación, devuelven que dentro de una trama de datos.
+4. *Incapacidad toocustomize instalación de Python*. Actualmente, hello solo forma tooadd Python módulos personalizados es a través del mecanismo de archivos zip Hola se ha descrito anteriormente. A pesar de que esto es viable cuando se trata de módulos pequeños, es complicado para módulos de gran tamaño (especialmente para los módulos con DLL nativas) o para un gran número de módulos. 
 
 ## <a name="conclusions"></a>Conclusiones
-El módulo [Ejecutar script de Python][execute-python-script] permite que un científico de datos incorpore código Python existente en flujos de trabajo de aprendizaje automático hospedados en la nube en Azure Machine Learning y hacerlos operativos como parte de un servicio web. El módulo de script de Python interopera de forma natural con otros módulos de Azure Machine Learning. El módulo se puede usar para una variedad de tareas que abarcan desde la exploración de datos al procesamiento previo y la extracción de características y, luego, a la evaluación y el procesamiento posterior de los resultados. El tiempo de ejecución de backend que se usa para la ejecución se basa en Anaconda, una distribución de Python comprobada y ampliamente usada. Este back-end facilita que los usuarios incorporen recursos de código existentes a la nube.
+Hola [ejecutar Script de Python] [ execute-python-script] módulo permite científico de datos código Python existente de tooincorporate en flujos de trabajo de aprendizaje de máquina hospedada en la nube en aprendizaje automático de Azure y tooseamlessly incorporación de operatividad a ellas como parte de un servicio web. módulo de script de Python Hola naturalmente interopera con otros módulos de aprendizaje automático de Azure. Hola módulo puede utilizarse para una variedad de tareas de procesamiento de datos exploración toopre y extracción de características y, a continuación, tooevaluation y posteriores al procesamiento de resultados de Hola. en tiempo de ejecución de un back-end Hola utilizado para la ejecución se basa en Anaconda, una distribución de Python probada y ampliamente utilizada. Este back-end facilita automáticamente los activos de código existentes tooon panel en la nube de Hola.
 
-Esperamos proporcionar una funcionalidad adicional al módulo [Ejecutar script de Python][execute-python-script], como la capacidad de entrenar y hacer operativos los modelos en Python y de agregar una mejor compatibilidad para el desarrollo y código de depuración en Azure Machine Learning Studio.
+Esperamos que tooprovide funcionalidad adicional toohello [ejecutar Script de Python] [ execute-python-script] módulo como Hola tootrain de capacidad y hacer operativos los modelos de Python y tooadd mejor compatibilidad para Hola desarrollo y depuración de código en estudio de aprendizaje automático de Azure.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información, vea el [Centro para desarrolladores de Python](https://azure.microsoft.com/develop/python/).
+Para obtener más información, vea hello [Centro para desarrolladores de Python](https://azure.microsoft.com/develop/python/).
 
 <!-- Module References -->
 [execute-python-script]: https://msdn.microsoft.com/library/azure/cdb56f95-7f4c-404d-bde7-5bb972e6f232/

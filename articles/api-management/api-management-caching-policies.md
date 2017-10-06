@@ -1,6 +1,6 @@
 ---
-title: "Directivas de almacenamiento en caché de Azure API Management | Microsoft Docs"
-description: "Aprenda sobre las directivas de almacenamiento en caché disponibles para su uso en Azure API Management."
+title: "directivas de almacenamiento en caché de administración de API aaaAzure | Documentos de Microsoft"
+description: "Obtenga información acerca de hello almacenamiento en caché de directivas disponibles para su uso en la administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2a8f012e7e223ef5c1683c8a6c5ecf2f3e96bed8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bd6b0721945609b28dbf6e7ef0631979c08c8c65
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-caching-policies"></a>Directivas de almacenamiento en caché de API Management
-En este tema se proporciona una referencia para las siguientes directivas de API Management. Para obtener más información sobre cómo agregar y configurar directivas, consulte [Directivas en Administración de API](http://go.microsoft.com/fwlink/?LinkID=398186).  
+En este tema se proporciona una referencia para hello las siguientes directivas de administración de API. Para obtener más información sobre cómo agregar y configurar directivas, consulte [Directivas en Administración de API](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="CachingPolicies"></a> Directivas de almacenamiento en caché  
   
@@ -29,26 +29,26 @@ En este tema se proporciona una referencia para las siguientes directivas de API
   
     -   [Get from cache](api-management-caching-policies.md#GetFromCache): realiza una búsqueda en caché y devuelve una respuesta en caché válida cuando está disponible.  
   
-    -   [Store to cache](api-management-caching-policies.md#StoreToCache) (Almacenar en la caché): almacena en caché la respuesta de acuerdo con la configuración de control de caché especificada.  
+    -   [Almacenar toocache](api-management-caching-policies.md#StoreToCache) : las respuestas de las memorias caché según la configuración de control de caché especificado toohello.  
   
 -   Directivas de almacenamiento en caché de valores  
   
     -   [Obtener valor de caché](#GetFromCacheByKey) : recupere un elemento almacenado en caché por clave.  
   
-    -   [Almacenar valor en caché](#StoreToCacheByKey) : almacene un elemento en la memoria caché por clave.  
+    -   [Valor de almacenar en caché](#StoreToCacheByKey) -almacenar un elemento en caché de Hola por clave.  
   
-    -   [Quitar valor de caché](#RemoveCacheByKey); quita un elemento de la memoria caché por clave.  
+    -   [Quitar el valor de la caché](#RemoveCacheByKey) -quitar un elemento en caché de Hola por clave.  
   
 ##  <a name="GetFromCache"></a> Get from cache  
- Use la directiva `cache-lookup` para realizar una consulta en la caché y devolver una respuesta en caché válida cuando esté disponible. Esta directiva se puede aplicar en aquellos casos en los que el contenido de respuesta permanezca estático durante un período de tiempo. El almacenamiento en caché de respuesta reduce el ancho de banda y los requisitos de procesamiento impuestos sobre el servidor web de back-end y disminuye la latencia percibida por los consumidores de API.  
+ Hola de uso `cache-lookup` caché de directiva tooperform buscar y devolver una respuesta almacenada en caché válida si está disponible. Esta directiva se puede aplicar en aquellos casos en los que el contenido de respuesta permanezca estático durante un período de tiempo. Las respuestas en caché reducen el ancho de banda y los requisitos de procesamiento impuesta en hello back-end web server y reduce la latencia percibida por los consumidores de API.  
   
 > [!NOTE]
->  Esta directiva debe tener una directiva [Store to cache](api-management-caching-policies.md#StoreToCache) (Almacenar en la caché) correspondiente.  
+>  Esta directiva debe tener su correspondiente [toocache almacén](api-management-caching-policies.md#StoreToCache) directiva.  
   
-### <a name="policy-statement"></a>Declaración de directiva  
+### <a name="policy-statement"></a>Instrucción de la directiva  
   
 ```xml  
-<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">  
+<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression tooevaluate)">  
   <vary-by-header>Accept</vary-by-header>  
   <!-- should be present in most cases -->  
   <vary-by-header>Accept-Charset</vary-by-header>  
@@ -82,18 +82,18 @@ En este tema se proporciona una referencia para las siguientes directivas de API
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Ejemplo de uso de expresiones de directiva  
- En este ejemplo se muestra cómo configurar la duración del almacenamiento en caché de respuesta de API Management para que coincida con el almacenamiento en caché de respuesta del servicio de back-end especificado por la directiva `Cache-Control` del servicio de back-end. Para ver una demostración de la configuración y el uso de esta directiva, consulte [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Episodio 177 de Cloud Cover: más características de API Management con Vlad Vinogradsky) y avance al minuto 25:25.  
+ Este ejemplo muestra cómo hacer las respuesta de administración de API tootooconfigure almacenamiento en caché de duración que coincidencias hello las respuestas en caché del servicio de back-end de hello según lo especificado por Hola de seguridad del servicio `Cache-Control` directiva. Para ver una demostración de cómo configurar y usar esta directiva, consulte [177 episodio abarcan de nube: más características de administración de API con Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) y avancemos too25:25.  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- hello following cache policy snippets demonstrate how toocontrol API Management reponse cache duration with Cache-Control headers sent by hello backend service. -->  
   
-<!-- Copy this snippet into the inbound section -->  
+<!-- Copy this snippet into hello inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
   <vary-by-header>Accept</vary-by-header>  
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into hello outbound section. Note that cache duration is set toohello max-age value provided in hello Cache-Control header received from hello backend service or toohello deafult value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -102,7 +102,7 @@ En este tema se proporciona una referencia para las siguientes directivas de API
  />  
 ```  
   
- Para más información, consulte [Expresiones de directiva](api-management-policy-expressions.md) y [Variable de contexto](api-management-policy-expressions.md#ContextVariables).  
+ Para obtener más información, consulte [Policy expressions](api-management-policy-expressions.md) (Expresiones de política) y [Context variable](api-management-policy-expressions.md#ContextVariables) (Variable de contexto).  
   
 ### <a name="elements"></a>Elementos  
   
@@ -116,21 +116,21 @@ En este tema se proporciona una referencia para las siguientes directivas de API
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|allow-private-response-caching|Cuando se establece en `true`, permite el almacenamiento en caché de las solicitudes que contienen un encabezado de autorización.|No|false|  
-|downstream-caching-type|Este atributo debe establecerse en uno de los siguientes valores.<br /><br /> -   none: no se permite el almacenamiento en caché de bajada.<br />-   private: se permite el almacenamiento en caché de bajada privado.<br />-   public: se permite el almacenamiento en caché de bajada privado y compartido.|No|Ninguna|  
-|must-revalidate|Cuando el almacenamiento en caché de bajada está habilitado, este atributo activa o desactiva la directiva de control de caché `must-revalidate` en las respuestas de puerta de enlace.|No|true|  
-|vary-by-developer|Se establece en `true` para almacenar en caché las respuestas por clave de desarrollador.|No|false|  
-|vary-by-developer-groups|Se establece en `true` para almacenar en caché las respuestas por rol de usuario.|No|false|  
+|allow-private-response-caching|Cuando se establece demasiado`true`, permite el almacenamiento en caché de las solicitudes que contienen un encabezado de autorización.|No|false|  
+|downstream-caching-type|Este atributo debe establecerse tooone de hello después de valores.<br /><br /> -   none: no se permite el almacenamiento en caché de bajada.<br />-   private: se permite el almacenamiento en caché de bajada privado.<br />-   public: se permite el almacenamiento en caché de bajada privado y compartido.|No|Ninguna|  
+|must-revalidate|Cuando se habilita el almacenamiento en caché descendente este atributo activa o desactiva hello `must-revalidate` directiva de control de caché en las respuestas de la puerta de enlace.|No|true|  
+|vary-by-developer|Establecer demasiado`true` toocache respuestas por clave de desarrollador.|No|false|  
+|vary-by-developer-groups|Establecer demasiado`true` toocache respuestas por función de usuario.|No|false|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
+ Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
--   **Secciones de la directiva:** inbound  
+-   **Secciones de la directiva:** entrante  
   
 -   **Ámbitos de directiva:** API, operation, product  
   
-##  <a name="StoreToCache"></a> Store to cache (Almacenar en la caché)  
- La directiva `cache-store` almacena en caché las respuestas según la configuración de caché especificada. Esta directiva se puede aplicar en aquellos casos en los que el contenido de respuesta permanezca estático durante un período de tiempo. El almacenamiento en caché de respuesta reduce el ancho de banda y los requisitos de procesamiento impuestos sobre el servidor web de back-end y disminuye la latencia percibida por los consumidores de API.  
+##  <a name="StoreToCache"></a>Toocache almacén  
+ Hola `cache-store` según toohello las respuestas de las memorias caché de directiva especifica la configuración de la caché. Esta directiva se puede aplicar en aquellos casos en los que el contenido de respuesta permanezca estático durante un período de tiempo. Las respuestas en caché reducen el ancho de banda y los requisitos de procesamiento impuesta en hello back-end web server y reduce la latencia percibida por los consumidores de API.  
   
 > [!NOTE]
 >  Esta directiva debe tener una directiva [Get from cache](api-management-caching-policies.md#GetFromCache) correspondiente.  
@@ -161,18 +161,18 @@ En este tema se proporciona una referencia para las siguientes directivas de API
 ```  
   
 #### <a name="example-using-policy-expressions"></a>Ejemplo de uso de expresiones de directiva  
- En este ejemplo se muestra cómo configurar la duración del almacenamiento en caché de respuesta de API Management para que coincida con el almacenamiento en caché de respuesta del servicio de back-end especificado por la directiva `Cache-Control` del servicio de back-end. Para ver una demostración de la configuración y el uso de esta directiva, consulte [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Episodio 177 de Cloud Cover: más características de API Management con Vlad Vinogradsky) y avance al minuto 25:25.  
+ Este ejemplo muestra cómo hacer las respuesta de administración de API tootooconfigure almacenamiento en caché de duración que coincidencias hello las respuestas en caché del servicio de back-end de hello según lo especificado por Hola de seguridad del servicio `Cache-Control` directiva. Para ver una demostración de cómo configurar y usar esta directiva, consulte [177 episodio abarcan de nube: más características de administración de API con Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) y avancemos too25:25.  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- hello following cache policy snippets demonstrate how toocontrol API Management reponse cache duration with Cache-Control headers sent by hello backend service. -->  
   
-<!-- Copy this snippet into the inbound section -->  
+<!-- Copy this snippet into hello inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
   <vary-by-header>Accept</vary-by-header>  
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into hello outbound section. Note that cache duration is set toohello max-age value provided in hello Cache-Control header received from hello backend service or toohello deafult value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -181,7 +181,7 @@ En este tema se proporciona una referencia para las siguientes directivas de API
  />  
 ```  
   
- Para más información, consulte [Expresiones de directiva](api-management-policy-expressions.md) y [Variable de contexto](api-management-policy-expressions.md#ContextVariables).  
+ Para obtener más información, consulte [Policy expressions](api-management-policy-expressions.md) (Expresiones de política) y [Context variable](api-management-policy-expressions.md#ContextVariables) (Variable de contexto).  
   
 ### <a name="elements"></a>Elementos  
   
@@ -193,17 +193,17 @@ En este tema se proporciona una referencia para las siguientes directivas de API
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|duration|Período de vida de las entradas almacenadas en caché, especificado en segundos.|Sí|N/D|  
+|duration|Tiempo de vida del programa Hola a almacenar en caché las entradas, especificadas en segundos.|Sí|N/D|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de las directivas.  
+ Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Secciones de la directiva:** outbound  
   
 -   **Ámbitos de directiva:** API, operation, product  
   
 ##  <a name="GetFromCacheByKey"></a> Get value from cache (Obtener valor de la caché)  
- Use la directiva `cache-lookup-value` para realizar la búsqueda en la caché por clave y devolver un valor almacenado en caché. La clave puede tener un valor de cadena arbitrario y normalmente se proporciona mediante una expresión de directiva.  
+ Hola de uso `cache-lookup-value` tooperform directiva caché búsqueda por clave y devolver un valor almacenado en caché. clave de Hello puede tener un valor de cadena arbitraria y se proporciona normalmente mediante una expresión de directiva.  
   
 > [!NOTE]
 >  Esta directiva debe tener una directiva [Store value in cache](#StoreToCacheByKey) (Almacenar valor en la caché) correspondiente.  
@@ -212,7 +212,7 @@ En este tema se proporciona una referencia para las siguientes directivas de API
   
 ```xml  
 <cache-lookup-value key="cache key value"   
-    default-value="value to use if cache lookup resulted in a miss"   
+    default-value="value toouse if cache lookup resulted in a miss"   
     variable-name="name of a variable looked up value is assigned to" />  
 ```  
   
@@ -236,19 +236,19 @@ En este tema se proporciona una referencia para las siguientes directivas de API
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|default-value|Un valor que se asignará a la variable si la búsqueda de la clave de caché da lugar a un error. Si no se especifica este atributo, se asigna `null`.|No|`null`|  
-|key|Valor de clave de caché para usar en la búsqueda.|Sí|N/D|  
-|variable-name|Nombre de la [variable de contexto](api-management-policy-expressions.md#ContextVariables) a la que se asignará el valor buscado si la búsqueda tiene éxito. Si se produce un error de búsqueda, se asignará a la variable el valor del atributo `default-value` o `null`, si se omite el atributo `default-value`.|Sí|N/D|  
+|default-value|Un valor que se va a asignar toohello variable si generó un error de búsqueda de claves de caché de Hola. Si no se especifica este atributo, se asigna `null`.|No|`null`|  
+|key|Almacenar en caché toouse de valor de clave en la búsqueda de Hola.|Sí|N/D|  
+|variable-name|Nombre del programa Hola a [variable de contexto](api-management-policy-expressions.md#ContextVariables) Hola buscado valor se asignará a, si la búsqueda es correcta. Si se produce un error de búsqueda, se asignará variable Hola valor Hola de hello `default-value` atributo o `null`, si hello `default-value` se omite el atributo.|Sí|N/D|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
+ Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
--   **Secciones de la directiva:** inbound, outbound, backend, on-error  
+-   **Secciones de la directiva:** entrante, saliente, back-end y en caso de error  
   
 -   **Ámbitos de la directiva:** global, API, operación, producto  
   
 ##  <a name="StoreToCacheByKey"></a> Store value in cache (Almacenar valor en la caché)  
- La directiva `cache-store-value` realiza el almacenamiento en caché mediante una clave. La clave puede tener un valor de cadena arbitrario y normalmente se proporciona mediante una expresión de directiva.  
+ Hola `cache-store-value` realiza el almacenamiento en caché por clave. clave de Hello puede tener un valor de cadena arbitraria y se proporciona normalmente mediante una expresión de directiva.  
   
 > [!NOTE]
 >  Esta directiva debe tener una directiva [Get from cache](#GetFromCacheByKey) (Obtener de la caché) correspondiente.  
@@ -256,7 +256,7 @@ En este tema se proporciona una referencia para las siguientes directivas de API
 ### <a name="policy-statement"></a>Declaración de directiva  
   
 ```xml  
-<cache-store-value key="cache key value" value="value to cache" duration="seconds" />  
+<cache-store-value key="cache key value" value="value toocache" duration="seconds" />  
 ```  
   
 ### <a name="example"></a>Ejemplo  
@@ -279,21 +279,21 @@ En este tema se proporciona una referencia para las siguientes directivas de API
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|duration|El valor se almacenará en la caché según el valor de duración proporcionado, especificado en segundos.|Sí|N/D|  
-|key|La clave de caché con la que se almacenará el valor.|Sí|N/D|  
-|value|El valor que se almacenará en la caché.|Sí|N/D|  
+|duration|Valor se almacenarán en caché para hello proporcionada el valor de duración, especificado en segundos.|Sí|N/D|  
+|key|Valor de clave Hola de caché se almacenarán en.|Sí|N/D|  
+|value|Hola toobe de valor almacenado en memoria caché.|Sí|N/D|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
+ Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
--   **Secciones de la directiva:** inbound, outbound, backend, on-error  
+-   **Secciones de la directiva:** entrante, saliente, back-end y en caso de error  
   
 -   **Ámbitos de la directiva:** global, API, operación, producto  
   
 ###  <a name="RemoveCacheByKey"></a> Remove value from cache (Quitar valor de la caché)  
- La directiva `cache-remove-value` elimina un elemento almacenado en caché identificado por su clave. La clave puede tener un valor de cadena arbitrario y normalmente se proporciona mediante una expresión de directiva.  
+ Hola `cache-remove-value` elimina un elemento almacenado en caché identificado por su clave. clave de Hello puede tener un valor de cadena arbitraria y se proporciona normalmente mediante una expresión de directiva.  
   
-#### <a name="policy-statement"></a>Declaración de directiva  
+#### <a name="policy-statement"></a>Instrucción de la directiva  
   
 ```xml  
   
@@ -319,12 +319,12 @@ En este tema se proporciona una referencia para las siguientes directivas de API
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|key|La clave del valor anteriormente almacenado en caché que se quitará de la memoria caché.|Sí|N/D|  
+|key|clave de Hola de hello previamente en caché toobe valor quitado de la memoria caché de Hola.|Sí|N/D|  
   
 #### <a name="usage"></a>Uso  
- Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
+ Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
   
--   **Secciones de la directiva:** inbound, outbound, backend, on-error  
+-   **Secciones de la directiva:** entrante, saliente, back-end y en caso de error  
   
 -   **Ámbitos de la directiva:** global, API, operación, producto  
   

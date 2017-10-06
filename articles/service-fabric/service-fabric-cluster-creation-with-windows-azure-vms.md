@@ -1,6 +1,6 @@
 ---
-title: "Creación de un clúster independiente con VM de Azure con Windows | Microsoft Docs"
-description: "Obtenga información sobre cómo crear y administrar un clúster de Azure Service Fabric en máquinas virtuales de Azure con Windows Server."
+title: "aaaCreate una independiente del clúster con máquinas virtuales de Azure que ejecutan Windows | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate y administrar un clúster de Azure Service Fabric en máquinas virtuales de Azure con Windows Server."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,22 +15,22 @@ ms.workload: NA
 ms.date: 06/21/2017
 ms.author: ryanwi;chackdan
 redirect_url: /azure/service-fabric/service-fabric-cluster-creation-via-arm
-ms.openlocfilehash: f8a0305a22c00f9bdbdb1bdb06dc299cccee23dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8900204fe69887a7a0ca54b06e0d32534421bcfa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-three-node-standalone-service-fabric-cluster-with-azure-virtual-machines-running-windows-server"></a>Create a three node standalone Service Fabric cluster with Azure virtual machines running Windows Server (Creación de un clúster independiente de tres nodos de Service Fabric con máquinas virtuales de Azure con Windows Server)
-En este artículo se describe cómo crear un clúster en máquinas virtuales de Azure basadas en Windows con el instalador independiente de Service Fabric para Windows Server. Este escenario es un caso especial de [Creación y administración de un clúster que se ejecute en Windows Server](service-fabric-cluster-creation-for-windows-server.md), donde las máquinas virtuales son [máquinas virtuales de Azure que ejecutan Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), pero no creará [un clúster de Service Fabric basado en la nube de Azure](service-fabric-cluster-creation-via-portal.md). La distinción al seguir este patrón es que usted administra completamente el clúster independiente de Service Fabric que se crea con los pasos siguientes, mientras que es el proveedor de recursos de Service Fabric quien administra y actualiza los clústeres de Service Fabric basados en la nube de Azure.
+Este artículo describe cómo toocreate un clúster en Windows Azure máquinas virtuales (VM), usar Hola instalador independiente de Service Fabric para Windows Server. escenario de Hello es un caso especial de [crear y administrar un clúster que se ejecuta en Windows Server](service-fabric-cluster-creation-for-windows-server.md) donde son máquinas virtuales de hello [máquinas virtuales de Azure que ejecuta Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json); sin embargo, no está creando [un Azure clúster basado en la nube de Service Fabric](service-fabric-cluster-creation-via-portal.md). distinción de Hello en seguir este patrón es ese clúster de Service Fabric Hola independiente creado por hello pasos completamente administrado por usted, mientras que administra y actualizar Hola Service Fabric Hola clústeres de Azure en la nube Service Fabric proveedor de recursos.
 
-## <a name="steps-to-create-the-standalone-cluster"></a>Pasos para crear el clúster independiente
-1. Inicie sesión en Azure Portal y cree una máquina virtual de Windows Server 2012 R2 Datacenter o Windows Server 2016 Datacenter en un grupo de recursos. Para más información, vea el artículo [Crear una VM de Windows en Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-2. Agregue un par de máquinas virtuales más al mismo grupo de recursos. Asegúrese de que cada una ellas tenga el mismo nombre de usuario administrador y contraseña que cuando se creó. Una vez creada, verá las tres máquinas virtuales en la misma red virtual.
-3. Conéctese a cada una de ellas y desactive el Firewall de Windows mediante el [Administrador del servidor, panel Servidor local](https://technet.microsoft.com/library/jj134147.aspx). Esto garantiza que el tráfico de red pueda comunicarse entre las máquinas. Mientras esté conectado a cada máquina, abra un símbolo del sistema y escriba `ipconfig`para obtener la dirección IP. También puede ver la dirección IP de cada equipo del portal seleccionando el recurso de red virtual del grupo de recursos y comprobando las interfaces de red creadas para cada una de estas máquinas.
-4. Conéctese a una de las VM y pruebe si puede hacer ping correctamente a las otras dos.
-5. Conéctese a una de las VM, [descargue el paquete de Service Fabric independiente para Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) a una carpeta nueva en la máquina y extráigalo.
-6. Abra el archivo *ClusterConfig.Unsecure.MultiMachine.json* en el Bloc de notas y edite cada nodo con las tres direcciones IP de las máquinas. Cambie el nombre del clúster en la parte superior y guarde el archivo.  A continuación, se puede ver un ejemplo parcial del manifiesto de clúster.
+## <a name="steps-toocreate-hello-standalone-cluster"></a>Clúster de pasos toocreate Hola independiente
+1. Inicie sesión en toohello portal de Azure y cree un nuevo Windows Server 2012 R2 Datacenter o máquina virtual de Windows Server 2016 centro de datos en un grupo de recursos. Leer el artículo de hello [crear una VM de Windows en el portal de Azure hello](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) para obtener más detalles.
+2. Agregar un par toohello máquinas virtuales más mismo grupo de recursos. Asegúrese de que cada una de las máquinas virtuales de hello ha Hola mismo nombre de usuario administrador y la contraseña cuando se crea. Una vez creados, debería ver todas las máquinas tres virtuales Hola misma red virtual.
+3. Conectar tooeach de hello las máquinas virtuales y desactivar Hola Firewall de Windows con hello [administrador del servidor, el panel de servidor Local](https://technet.microsoft.com/library/jj134147.aspx). Esto garantiza que el tráfico de red Hola puede comunicarse entre máquinas Hola. Al equipo tooeach conectado, obtener dirección IP de hello, abra un símbolo del sistema y escriba `ipconfig`. También puede ver Hola IP dirección de cada máquina en el portal de hello, seleccionando el recurso de red virtual de hello para el grupo de recursos de Hola y comprobación de interfaces de red de hello creadas para cada una de estas máquinas.
+4. Conecte tooone de hello las máquinas virtuales y prueba que puede hacer ping Hola otros dos máquinas virtuales correctamente.
+5. Conectar tooone de hello las máquinas virtuales y [Descargar paquete de Service Fabric Hola independiente para Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) en una carpeta nueva en hello automático y extraer el paquete de saludo.
+6. Abra hello *ClusterConfig.Unsecure.MultiMachine.json* un archivo en el Bloc de notas y editar cada nodo con las direcciones IP de máquinas de Hola Hola tres. Cambiar nombre de clúster de hello en la parte superior de Hola y guarde el archivo hello.  A continuación, se muestra un ejemplo parcial Hola del manifiesto de clúster.
    
     ```
     {
@@ -61,20 +61,20 @@ En este artículo se describe cómo crear un clúster en máquinas virtuales de 
         }
         ],
     ```
-7. Si piensa que va a ser un clúster seguro, decida la medida de seguridad que le gustaría usar y siga los pasos descritos en el vínculo asociado: [Certificado X509](service-fabric-windows-cluster-x509-security.md) o [Seguridad de Windows](service-fabric-windows-cluster-windows-security.md). Si desea configurar el clúster con la seguridad de Windows, debe configurar un controlador de dominio para administrar Active Directory. Tenga en cuenta no se admite el uso de una máquina de controlador de dominio como un nodo de Service Fabric.
-8. Abra una [ventana de PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise). Vaya a la carpeta donde extrajo el paquete del instalador independiente que descargó y donde guardó el archivo de configuración de clúster. Ejecute el comando de PowerShell siguiente para implementar el clúster:
+7. Si piensa que este toobe un clúster segura, decidir medida de seguridad de Hola que cabe como toouse y siga los pasos de Hola de hello asociados vínculo: [X509 certificado](service-fabric-windows-cluster-x509-security.md) o [la seguridad de Windows](service-fabric-windows-cluster-windows-security.md). Si la configuración de clúster de hello mediante la seguridad de Windows, deberá tooset seguridad un toomanage de controlador de dominio Active Directory. Tenga en cuenta no se admite el uso de una máquina de controlador de dominio como un nodo de Service Fabric.
+8. Abra una [ventana de PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise). Desplazarse por las carpetas de toohello donde extrajo el paquete del instalador independiente descargado hello y había guarda el archivo de configuración del clúster de Hola. Ejecute hello después de clúster de Hola de toodeploy de comandos de PowerShell:
    
     ```
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
     ```
 
-El script va a configurar de manera remota el clúster de Service Fabric y debe notificar el progreso a medida que se desarrolla la implementación.
+script de Hola configura cada clúster de Service Fabric Hola de manera remota y debe notificar el progreso como implementación pone a través de.
 
-9. Después de aproximadamente un minuto, puede comprobar si el clúster está operativo. Para ello, conéctese a Service Fabric Explorer con una de las direcciones IP de la máquina, como `http://10.1.0.5:19080/Explorer/index.html`. 
+9. Después de aproximadamente un minuto, puede comprobar si el clúster de hello esté operativo conectándose toohello Service Fabric Explorer utilizando uno de la dirección IP de la máquina de hello direcciones, por ejemplo mediante el uso de `http://10.1.0.5:19080/Explorer/index.html`. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Creación de clústeres independientes de Service Fabric en Windows Server o Linux](service-fabric-deploy-anywhere.md)
-* [Incorporación o eliminación de nodos de un clúster de Service Fabric independiente](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [Agregar o quitar el clúster de Service Fabric de nodos tooa independiente](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [Opciones de configuración de clústeres de Windows independientes](service-fabric-cluster-manifest.md)
 * [Proteger un clúster independiente en Windows mediante la seguridad de Windows](service-fabric-windows-cluster-windows-security.md)
 * [Protección de un clúster de Windows independiente mediante certificados](service-fabric-windows-cluster-x509-security.md)

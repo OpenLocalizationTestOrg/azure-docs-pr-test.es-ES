@@ -1,6 +1,6 @@
 ---
-title: MapReduce y Escritorio remoto con Hadoop en HDInsight (Azure) | Microsoft Docs
-description: "Obtenga información acerca de cómo usar Escritorio remoto para conectarse a Hadoop en HDInsight y ejecutar trabajos de MapReduce."
+title: aaaMapReduce y el escritorio remoto con Hadoop en HDInsight - Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse escritorio remoto tooconnect tooHadoop en HDInsight y ejecución de los trabajos de MapReduce."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,71 +16,71 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bdbbcf59ca86dd1b170471aa9e12334a04c23667
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Uso de MapReduce de Hadoop en HDInsight con Escritorio remoto
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-En este artículo, obtendrá información sobre cómo conectarse a un clúster de Hadoop en HDInsight mediante Escritorio remoto y, a continuación, ejecutar trabajos de MapReduce mediante el comando de Hadoop.
+En este artículo, se obtenga información acerca de cómo tooconnect tooa Hadoop en HDInsight de clúster mediante Escritorio remoto y, a continuación, ejecutar trabajos MapReduce mediante comandos de Hadoop de Hola.
 
 > [!IMPORTANT]
-> Escritorio remoto solo está disponible en los clústeres de HDInsight basados en Windows. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Escritorio remoto solo está disponible en los clústeres de HDInsight basados en Windows. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> Para HDInsight 3.4 o superior, consulte [Uso de MapReduce con SSH](hdinsight-hadoop-use-mapreduce-ssh.md) para más información sobre cómo conectarse al clúster de HDInsight y ejecutar trabajos de MapReduce.
+> Para HDInsight 3.4 o superior, consulte [MapReduce de uso mediante SSH](hdinsight-hadoop-use-mapreduce-ssh.md) para obtener información sobre cómo conectar el clúster de HDInsight toohello y ejecutar trabajos de MapReduce.
 
 ## <a id="prereq"></a>Requisitos previos
-Para completar los pasos de este artículo, necesitará lo siguiente:
+pasos de hello toocomplete en este artículo, se necesita Hola siguiente:
 
 * Un clúster de HDInsight basado en Windows (Hadoop en HDInsight)
 * Un equipo cliente con Windows 10, Windows 8 o Windows 7
 
 ## <a id="connect"></a>Conexión con el Escritorio remoto
-Habilite el Escritorio remoto para el clúster de HDInsight y conéctese a él siguiendo las instrucciones dadas en [Conexión a los clústeres de HDInsight con RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+Habilitar Escritorio remoto para el clúster de HDInsight de Hola y conéctela tooit siguiendo las instrucciones de hello en [conectarse mediante RDP de clústeres de tooHDInsight](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
-## <a id="hadoop"></a>Uso del comando Hadoop
-Una vez conectado al escritorio para el clúster de HDInsight, siga estos pasos para ejecutar un trabajo de MapReduce mediante el comando de Hadoop:
+## <a id="hadoop"></a>Usar comandos de Hadoop de Hola
+Cuando haya conectado toohello escritorio para clúster de HDInsight de hello, use Hola después toorun pasos un trabajo de MapReduce con hello Hadoop comando:
 
-1. Desde el escritorio de HDInsight, inicie la **línea de comandos de Hadoop**. Se abrirá un nuevo símbolo del sistema en el directorio **c:\apps\dist\hadoop-&lt;número de versión>**.
+1. Desde el escritorio de HDInsight de hello, inicie hello **línea de comandos de Hadoop**. Se abre un nuevo símbolo en hello **c:\apps\dist\hadoop-&lt;número de versión >** directory.
 
    > [!NOTE]
-   > El número de versión cambia cuando se actualiza Hadoop. La variable de entorno **HADOOP_HOME** puede usarse para encontrar la ruta de acceso. Por ejemplo, `cd %HADOOP_HOME%` cambiará los directorios al directorio de Hadoop, sin que sea necesario conocer el número de versión.
+   > número de versión de Hola cambia cuando se actualiza Hadoop. Hola **HADOOP_HOME** variable de entorno puede ser la ruta de acceso de toofind usado Hola. Por ejemplo, `cd %HADOOP_HOME%` directorio de Hadoop en toohello de directorios de cambios, sin necesidad de número de versión de hello tooknow.
    >
    >
-2. Para usar el comando de **Hadoop** para ejecutar un trabajo de MapReduce de ejemplo, utilice el siguiente comando:
+2. Hola toouse **Hadoop** toorun un trabajo de MapReduce de ejemplo de comando, use Hola siguiente comando:
 
         hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    Se inicia la clase **wordcount**, incluida en el archivo **hadoop-mapreduce-examples.jar** del directorio actual. Como entrada, usa el documento **wasb://example/data/gutenberg/davinci.txt** y la salida se almacena en **wasb:///ejemplo/data/WordCountOutput**.
+    Esto inicia hello **wordcount** (clase), que se encuentra en hello **archivo hadoop mapreduce examples.jar** archivo Hola de directorio actual. Como entrada, utiliza hello **wasb://example/data/gutenberg/davinci.txt** documento y la salida se almacena en: **wasb: / / / ejemplo/datos/WordCountOutput**.
 
    > [!NOTE]
-   > Para obtener más información acerca de este trabajo de MapReduce y los datos de ejemplo, consulte <a href="hdinsight-use-mapreduce.md">Uso de MapReduce en Hadoop de HDInsight</a>.
+   > Para obtener más información acerca de estos datos de ejemplo de Hola y de trabajo de MapReduce, consulte <a href="hdinsight-use-mapreduce.md">uso MapReduce en Hadoop de HDInsight</a>.
    >
    >
-3. El trabajo emite detalles cuando se procesa y devuelve información similar a la siguiente cuando finaliza el trabajo:
+3. trabajo de Hello emite detalles tal y como lo procesa y devuelve siguiente toohello similar de información cuando se complete el trabajo de hello:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
-4. Una vez completado, use el comando siguiente para enumerar los archivos de salida almacenados en **wasb://example/data/WordCountOutput**:
+4. Cuando se complete el trabajo de hello, usar hello después de archivos de salida de comando toolist Hola almacenados en **wasb://example/data/WordCountOutput**:
 
         hadoop fs -ls wasb:///example/data/WordCountOutput
 
-    Se deberían mostrar dos archivos, **_SUCCESS** y **part-r-00000**. El archivo **part-r-00000** contiene la salida de este trabajo.
+    Se deberían mostrar dos archivos, **_SUCCESS** y **part-r-00000**. Hola **parte-r-00000** archivo contiene la salida de hello para este trabajo.
 
    > [!NOTE]
-   > Algunos trabajos de MapReduce pueden dividir los resultados entre varios archivos **part-r-####** . Si es así, utilice el sufijo #### para indicar el orden de los archivos.
+   > Pueden que algunos de estos trabajos MapReduce divida resultados Hola entre varios **parte-r-###** archivos. Si es así, usar hello ### tooindicate Hola orden de los archivos de Hola de sufijos.
    >
    >
-5. Para ver la salida, use el comando siguiente:
+5. salida de hello tooview, Hola de uso siguiente comando:
 
         hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-    Se mostrará una lista de las palabras contenidas en el archivo **wasb://example/data/gutenberg/davinci.txt**, junto con el número de veces que aparecía cada palabra. El siguiente es un ejemplo de los datos que estarán contenidos en el archivo:
+    Esto muestra una lista de palabras de Hola que figuran en hello **wasb://example/data/gutenberg/davinci.txt** archivo, junto con el número de Hola de veces que se produjo cada palabra. Hola te mostramos un ejemplo de Hola datos que se incluirán en el archivo hello:
 
         wreathed        3
         wreathing       1
@@ -91,7 +91,7 @@ Una vez conectado al escritorio para el clúster de HDInsight, siga estos pasos 
         wriggling       1
 
 ## <a id="summary"></a>Resumen
-Como se puede ver, el comando de Hadoop proporciona una manera fácil de ejecutar trabajos de MapReduce en un clúster de HDInsight y, a continuación, ver la salida del trabajo.
+Como puede ver, hello Hadoop comando proporciona una toorun fácilmente trabajos MapReduce en un clúster de HDInsight y, a continuación, ver la salida de trabajo Hola.
 
 ## <a id="nextsteps"></a>Pasos siguientes
 Para obtener información general sobre los trabajos de MapReduce en HDInsight:

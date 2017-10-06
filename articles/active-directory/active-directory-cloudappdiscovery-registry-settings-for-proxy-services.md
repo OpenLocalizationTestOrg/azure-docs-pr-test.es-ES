@@ -1,6 +1,6 @@
 ---
-title: "Configuración del Registro de Cloud App Discovery para servicios de proxy | Microsoft Docs"
-description: El objetivo de este tema es proporcionarle los pasos que debe llevar a cabo para establecer el puerto requerido en los equipos que ejecutan el agente de Cloud App Discovery.
+title: "Configuraciones de registro de detección de aplicación para los servicios de Proxy aaaCloud | Documentos de Microsoft"
+description: objetivo de Hola de este tema es tooprovide a Hola lo necesita puerto tooperform tooset Hola necesario Hola ejecutan el agente de Cloud App Discovery de Hola.
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,24 +14,24 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ea15dc9a9f20a296e622c8fb1011f7ee99de3e99
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bb1fe20016459160b4f67cb0125b1781a0260c4b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a>Configuración del registro de Cloud App Discovery para los servicios de proxy
-De forma predeterminada, el agente de Cloud App Discovery está configurado para usar solo los puertos 80 o 443. Si piensa instalar Cloud App Discovery en un entorno con un servidor proxy que usa un puerto personalizado (que no sea el 80 ni el 443), deberá configurar los agentes para usar dicho puerto. La configuración se basa en una clave del registro.
+De forma predeterminada, el agente de Cloud App Discovery de hello es toouse configurado solo Hola puertos 80 o 443. Si piensa instalar Cloud App Discovery en un entorno con un servidor proxy que usa un puerto personalizado (ni 80 ni el 443), necesita tooconfigure su toouse agentes este puerto. configuración de Hola se basa en una clave del registro.
 
-El objetivo de este tema es proporcionarle los pasos que debe llevar a cabo para establecer el puerto requerido en los equipos que ejecutan el agente de Cloud App Discovery.
+objetivo de Hola de este tema es tooprovide a Hola lo necesita puerto tooperform tooset Hola necesario Hola ejecutan el agente de Cloud App Discovery de Hola.
 
-**Para modificar el puerto que usa el equipo que ejecuta el agente de Cloud App Discovery, lleve a cabo los pasos siguientes:**
+**puerto de hello toomodify usado por equipo de Hola que se ejecuta el agente de Cloud App Discovery de hello, lleve a cabo Hola pasos:**
 
-1. Inicie el editor del Registro. <br> ![Ejecute](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
-2. Vaya a o cree la siguiente clave del registro: <br> **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint** 
+1. Inicie el editor del registro de hello. <br> ![Ejecute](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
+2. Navegue tooor crear Hola después de la clave del registro: <br> **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint** 
 3. Cree un nuevo valor de **cadenas múltiples** denominado **Puertos**. ![Nuevo](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)
-4. Para abrir el cuadro de diálogo **Modificar cadenas múltiples** , haga doble clic en el valor Puertos.
-5. En el cuadro de texto Datos de valor, escriba los siguientes valores y agregue todos los puertos personalizados que se usan en su organización:  <br><br>
+4. Hola tooopen **modificar cadenas múltiples** cuadro de diálogo, haga doble clic en el valor de puertos de Hola.
+5. En el cuadro de texto de datos de valor de hello, escriba Hola después de valores y agregue todos los puertos personalizados que se usan en su organización: <br><br>
    **80** <br>
    **8080** <br>
    **8118** <br>
@@ -45,7 +45,7 @@ El objetivo de este tema es proporcionarle los pasos que debe llevar a cabo para
    **443** <br>
    **1110** <br><br>
    ![Modificar cadenas múltiples](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy03.png)
-6. Haga clic en **Aceptar** para cerrar el cuadro de diálogo **Modificar cadenas múltiples**.
+6. Haga clic en **Aceptar** tooclose hello **modificar cadenas múltiples** cuadro de diálogo.
 
 **Recursos adicionales**
 

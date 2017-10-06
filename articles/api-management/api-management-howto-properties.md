@@ -1,6 +1,6 @@
 ---
-title: "Uso de propiedades en directivas de Administración de API de Azure"
-description: "Aprenda a usar las propiedades en directivas de Administración de API de Azure."
+title: "propiedades de toouse aaaHow en las directivas de administración de API de Azure"
+description: "Obtenga información acerca de cómo toouse propiedades en las directivas de administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 3b0fe2a300038e13cc488bdb4f50f8be270ea8f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1ff096deeb97543b48dcf1f40be9dbfcbcd09542
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-properties-in-azure-api-management-policies"></a>Uso de propiedades en directivas de Administración de API de Azure
-En Administración de API, las directivas constituyen una eficaz funcionalidad del sistema que permite al editor cambiar el comportamiento de la API a través de la configuración. Las directivas son una colección de declaraciones que se ejecutan secuencialmente en la solicitud o respuesta de una API. Las instrucciones de las directivas se pueden crear con valores de texto literal, expresiones de directiva y propiedades. 
+# <a name="how-toouse-properties-in-azure-api-management-policies"></a>¿Cómo toouse propiedades en las directivas de administración de API de Azure
+Las directivas de administración de API son una capacidad eficaz del sistema de Hola que permiten a publicador hello toochange comportamiento de Hola de hello API a través de la configuración. Las directivas son una colección de instrucciones que se ejecutan secuencialmente en la solicitud de Hola o respuesta de una API. Las instrucciones de las directivas se pueden crear con valores de texto literal, expresiones de directiva y propiedades. 
 
-Cada instancia del servicio de Administración de API tiene una colección de propiedades de pares clave-valor que son globales para la instancia del servicio. Estas propiedades se pueden utilizar para administrar los valores constantes de la cadena en todas las directivas y la configuración de API. Cada propiedad tiene también los siguientes atributos.
+Cada instancia de servicio de administración de API tiene una colección de propiedades de pares clave/valor que las instancias de servicio de toohello global. Estas propiedades pueden ser valores de cadena constante toomanage usados a través de todas las directivas y configuración de la API. Cada propiedad tiene los siguientes atributos de Hola.
 
 | Atributo | Tipo | Description |
 | --- | --- | --- |
-| Nombre |string |El nombre de la propiedad. Puede contener solo letras, dígitos, puntos, guiones o caracteres de subrayado. |
-| Valor |string |El valor de la propiedad. No puede estar vacío ni contener solo espacios en blanco. |
-| Secret |boolean |Determina si el valor es secreto y si se debe cifrar. |
-| Etiquetas |matriz de cadena |Etiquetas opcionales que, cuando se proporcionan, pueden usarse para filtrar la lista de propiedades. |
+| Nombre |cadena |nombre de Hola de propiedad de Hola. Puede contener solo letras, dígitos, puntos, guiones o caracteres de subrayado. |
+| Valor |cadena |valor de Hola de propiedad de Hola. No puede estar vacío ni contener solo espacios en blanco. |
+| Secret |boolean |Determina si el valor de hello es un secreto y debe cifrarse o no. |
+| Etiquetas |matriz de cadena |Opcional de etiquetas que cuando se proporciona puede ser la lista de propiedades de hello toofilter usado. |
 
-Las propiedades se configuran en el portal del editor, en la pestaña **Properties (Propiedades)** . En el ejemplo siguiente, se configuran tres propiedades.
+Propiedades se configuran en el portal para desarrolladores de hello en hello **propiedades** ficha. En el siguiente ejemplo de Hola, se configuran tres propiedades.
 
-![Properties (Propiedades)][api-management-properties]
+![Propiedades][api-management-properties]
 
-Los valores de propiedad pueden contener cadenas literales y [expresiones de directiva](https://msdn.microsoft.com/library/azure/dn910913.aspx). En la siguiente tabla se muestran las tres propiedades de ejemplo anteriores y sus atributos. El valor de `ExpressionProperty` es una expresión de directiva que devuelve una cadena que contiene la fecha y la hora actuales. La propiedad `ContosoHeaderValue` está marcada como secreta, por lo que no se muestra su valor.
+Los valores de propiedad pueden contener cadenas literales y [expresiones de directiva](https://msdn.microsoft.com/library/azure/dn910913.aspx). Hello tabla siguiente muestran Hola anterior ejemplo tres propiedades y sus atributos. Hola valo `ExpressionProperty` es una expresión de directiva que devuelve una cadena que contiene Hola fecha y hora actuales. Hola propiedad `ContosoHeaderValue` está marcada como un secreto, por lo que no se muestra su valor.
 
 | Nombre | Valor | Secret | Etiquetas |
 | --- | --- | --- | --- |
@@ -44,8 +44,8 @@ Los valores de propiedad pueden contener cadenas literales y [expresiones de dir
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
 | ExpressionProperty |@(DateTime.Now.ToString()) |False | |
 
-## <a name="to-use-a-property"></a>Uso de una propiedad
-Para utilizar una propiedad en una directiva, coloque el nombre de la propiedad dentro de un par doble de llaves (como `{{ContosoHeader}}`), de la misma forma que se muestra en el ejemplo siguiente.
+## <a name="toouse-a-property"></a>toouse una propiedad
+nombre de la propiedad de contexto Hola dentro de un par de llaves doble, toouse una propiedad en una directiva, como `{{ContosoHeader}}`, tal y como se muestra en el siguiente ejemplo de Hola.
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -53,11 +53,11 @@ Para utilizar una propiedad en una directiva, coloque el nombre de la propiedad 
 </set-header>
 ```
 
-En este ejemplo, `ContosoHeader` se utiliza como el nombre de un encabezado en una directiva `set-header`, y `ContosoHeaderValue` se utiliza como valor de ese encabezado. Cuando esta directiva se evalúa durante una solicitud o responde a la pasarela de Administración de API, `{{ContosoHeader}}` y `{{ContosoHeaderValue}}` se reemplazan por sus respectivos valores de propiedad.
+En este ejemplo, `ContosoHeader` se usa como nombre de Hola de un encabezado en un `set-header` directiva, y `ContosoHeaderValue` se utiliza como valor de Hola de ese encabezado. Cuando esta directiva se evalúa durante una solicitud o respuesta toohello administración de API puerta de enlace, `{{ContosoHeader}}` y `{{ContosoHeaderValue}}` se reemplazan con sus respectivos valores de propiedad.
 
-Las propiedades se pueden utilizar como atributo completo como o valores de elemento (tal como se muestra en el ejemplo anterior), pero también se pueden insertar o combinar con parte de una expresión de texto literal, como en el ejemplo siguiente: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Propiedades que se pueden usar como atributo completa o valores de elemento, como se muestra en el ejemplo anterior de hello, pero también pueden inserta o combina con parte de una expresión de texto literal, como se muestra en el siguiente ejemplo de Hola:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
-Las propiedades también pueden contener expresiones de directiva. En el ejemplo siguiente, se utiliza la propiedad `ExpressionProperty`.
+Las propiedades también pueden contener expresiones de directiva. En el siguiente ejemplo de Hola Hola `ExpressionProperty` se utiliza.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -65,66 +65,66 @@ Las propiedades también pueden contener expresiones de directiva. En el ejemplo
 </set-header>
 ```
 
-Cuando esta directiva se evalúa, se reemplaza `{{ExpressionProperty}}` por su valor: `@(DateTime.Now.ToString())`. Puesto que el valor es una expresión de directiva, la expresión se evalúa y la directiva continúa con su ejecución.
+Cuando esta directiva se evalúa, se reemplaza `{{ExpressionProperty}}` por su valor: `@(DateTime.Now.ToString())`. Puesto que el valor de hello es una expresión de directiva, Hola expresión se evalúa y directiva de hello continúa con su ejecución.
 
-Puede probarlo en el portal para desarrolladores si llama a una operación que tenga dentro de su ámbito una directiva con propiedades. En el ejemplo siguiente, se llama a una operación con las dos directivas `set-header` de ejemplo anteriores con propiedades. Tenga en cuenta que la respuesta contiene dos encabezados personalizados que se han configurado mediante directivas con propiedades.
+Puede probar este comando en el portal para desarrolladores de hello mediante una llamada a una operación que tiene una directiva con propiedades en el ámbito. En el siguiente ejemplo de Hola, se llama a una operación con hello dos anterior ejemplo `set-header` directivas con propiedades. Tenga en cuenta que la respuesta hello contiene dos encabezados personalizados que se configuraron mediante directivas con propiedades.
 
 ![portal para desarrolladores][api-management-send-results]
 
-Si busca en el [seguimiento de API Inspector](api-management-howto-api-inspector.md) una llamada que incluya las dos directivas de ejemplo anteriores con propiedades, verá las dos directivas `set-header` con los valores de propiedad insertados, así como la evaluación de la expresión de directiva para la propiedad que la contiene.
+Si observa hello [seguimiento de API Inspector](api-management-howto-api-inspector.md) para una llamada que incluye dos directivas de ejemplo Hola anterior con propiedades, puede ver dos hello `set-header` directivas con valores de propiedad de hello insertadas, así como la expresión de directiva de Hola evaluación de la propiedad de Hola que contiene la expresión de directiva de Hola.
 
 ![Seguimiento de API Inspector][api-management-api-inspector-trace]
 
-Tenga en cuenta que, a pesar de que los valores de propiedad pueden contener expresiones de directiva, no pueden contener otras propiedades. Si se utiliza texto que contiene una referencia de propiedad para un valor de propiedad, como `Property value text {{MyProperty}}`, esa referencia de propiedad no se reemplazará y se incluirá como parte del valor de la propiedad.
+Tenga en cuenta que, a pesar de que los valores de propiedad pueden contener expresiones de directiva, no pueden contener otras propiedades. Si el texto que contiene una referencia de propiedad se utiliza para un valor de propiedad, como `Property value text {{MyProperty}}`, que referencia de propiedad no se reemplazan y se van a incluir como parte del valor de propiedad de Hola.
 
-## <a name="to-create-a-property"></a>Creación de una propiedad
-Para crear una propiedad, haga clic en **Agregar propiedad** en la pestaña **Propiedades**.
+## <a name="toocreate-a-property"></a>toocreate una propiedad
+toocreate una propiedad, haga clic en **Agregar propiedad** en hello **propiedades** ficha.
 
 ![Agregar propiedad][api-management-properties-add-property-menu]
 
-Los campos **Nombre** y **Valor** son necesarios. Si el valor de esta propiedad es un secreto, marque la casilla de verificación **This is a secret (Es secreto)** . Escriba una o varias etiquetas opcionales para ayudar a organizar las propiedades y haga clic en **Save (Guardar)**.
+Los campos **Nombre** y **Valor** son necesarios. Si este valor de propiedad es un secreto, compruebe hello **se trata de un secreto** casilla de verificación. Escriba uno o más toohelp etiquetas opcional con las propiedades de la organización y haga clic en **guardar**.
 
 ![Agregar propiedad][api-management-properties-add-property]
 
-Cuando se guarda una nueva propiedad, el cuadro de texto **Search property (Buscar propiedad)** se rellena con el nombre de la nueva propiedad y esta se muestra. Para mostrar todas las propiedades, borre el cuadro de texto **Search property (Buscar propiedad)** y pulse la tecla Entrar.
+Cuando se guarda una nueva propiedad, Hola **propiedades de búsqueda** cuadro de texto se rellena con el nombre de Hola de hello nueva propiedad y se muestra la nueva propiedad de Hola. Borrar todas las propiedades de toodisplay hello **propiedades de búsqueda** cuadro de texto y presione ENTRAR.
 
-![Properties (Propiedades)][api-management-properties-property-saved]
+![Propiedades][api-management-properties-property-saved]
 
-Para obtener información sobre cómo crear una propiedad mediante la API de REST, consulte [Create a property using the REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Put)(Creación de una propiedad mediante la API de REST).
+Para obtener información acerca de cómo crear una propiedad mediante la API de REST de hello, consulte [crear una propiedad mediante la API de REST de hello](https://msdn.microsoft.com/library/azure/mt651775.aspx#Put).
 
-## <a name="to-edit-a-property"></a>Edición de una propiedad
-Para editar una propiedad, haga clic en **Edit (Editar)** junto a la propiedad que se va a editar.
+## <a name="tooedit-a-property"></a>tooedit una propiedad
+tooedit una propiedad, haga clic en **editar** lateral Hola propiedad tooedit.
 
 ![Editar propiedad][api-management-properties-edit]
 
-Realice los cambios necesarios y haga clic en **Save (Guardar)**. Si cambia el nombre de propiedad, las directivas que hagan referencia a esa propiedad se actualizarán automáticamente para utilizar el nuevo nombre.
+Realice los cambios necesarios y haga clic en **Save (Guardar)**. Si cambia el nombre de la propiedad de hello, las directivas que hacen referencia a esa propiedad son nombre nuevo de hello toouse actualizan automáticamente.
 
 ![Editar propiedad][api-management-properties-edit-property]
 
-Para obtener información sobre cómo editar una propiedad mediante la API de REST, consulte [Edit a property using the REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch)(Edición de una propiedad mediante la API de REST).
+Para obtener información acerca de cómo modificar una propiedad mediante la API de REST de hello, consulte [editar una propiedad mediante la API de REST de hello](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
 
-## <a name="to-delete-a-property"></a>Eliminación de una propiedad
-Para eliminar una propiedad, haga clic en **Delete (Eliminar)** junto a la propiedad que se va a eliminar.
+## <a name="toodelete-a-property"></a>toodelete una propiedad
+toodelete una propiedad, haga clic en **eliminar** lateral Hola propiedad toodelete.
 
 ![Eliminar propiedad][api-management-properties-delete]
 
-Haga clic en **Sí, eliminar** para confirmar.
+Haga clic en **Sí, eliminarlo** tooconfirm.
 
 ![Confirmar eliminación][api-management-delete-confirm]
 
 > [!IMPORTANT]
-> Si se hace referencia a la propiedad mediante alguna directiva, podrá eliminarla correctamente hasta que quite la propiedad de todas las directivas que la utilicen.
+> Si las directivas hace referencia a la propiedad de hello, no se podrá toosuccessfully eliminarlo hasta que quite la propiedad Hola de todas las directivas que lo usan.
 > 
 > 
 
-Para obtener información sobre cómo eliminar una propiedad mediante la API de REST, consulte [Delete a property using the REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete)(Eliminación de una propiedad mediante la API de REST).
+Para obtener información acerca de cómo eliminar una propiedad mediante la API de REST de hello, consulte [eliminar una propiedad mediante la API de REST de hello](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
 
-## <a name="to-search-and-filter-properties"></a>Búsqueda y filtrado de propiedades
-En la pestaña **Properties (Propiedades)** se incluyen las funcionalidades de búsqueda y filtrado para ayudarle a administrar las propiedades. Para filtrar la lista de propiedades por el nombre de la propiedad, escriba un término de búsqueda en el cuadro de texto **Search property (Buscar propiedad)** . Para mostrar todas las propiedades, borre el cuadro de texto **Search property (Buscar propiedad)** y pulse la tecla Entrar.
+## <a name="toosearch-and-filter-properties"></a>propiedades de toosearch y filtrado
+Hola **propiedades** ficha incluye buscar y filtrar toohelp capacidades administrar sus propiedades. lista de propiedades de hello toofilter por nombre de propiedad, escriba un término de búsqueda en hello **propiedades de búsqueda** cuadro de texto. Borrar todas las propiedades de toodisplay hello **propiedades de búsqueda** cuadro de texto y presione ENTRAR.
 
 ![Search][api-management-properties-search]
 
-Para filtrar la lista de propiedades por valores de etiqueta, escriba una o varias etiquetas en el cuadro de texto **Filtrar por etiquetas** . Para mostrar todas las propiedades, borre el cuadro de texto **Filter by tags (Filtrar por etiquetas)** y pulse la tecla Entrar.
+lista de propiedades de hello toofilter por los valores de etiqueta, escriba una o más etiquetas en hello **filtrar por etiquetas** cuadro de texto. Borrar todas las propiedades de toodisplay hello **filtrar por etiquetas** cuadro de texto y presione ENTRAR.
 
 ![Filtrar][api-management-properties-filter]
 

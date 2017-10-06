@@ -1,6 +1,6 @@
 ---
-title: "Recopilación de registros con Diagnósticos de Azure de Linux | Microsoft Docs"
-description: "En este artículo se describe cómo configurar Diagnósticos de Azure para recopilar registros de un clúster de Service Fabric de Linux que se ejecute en Azure."
+title: "registros de aaaCollect con el diagnóstico de Azure de Linux | Documentos de Microsoft"
+description: "Este artículo describe cómo se registra tooset seguridad toocollect de diagnósticos de Azure desde un clúster de Service Fabric Linux que se ejecuta en Azure."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/28/2017
 ms.author: subramar
-ms.openlocfilehash: 3e41caaeb38c55d1c6c3bfdce2f81c86b4aff4d0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f61172876e744ea3e361f9ae513254239d6ba27f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>Recopilación de registros con Diagnósticos de Azure
 > [!div class="op_single_selector"]
@@ -27,25 +27,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Cuando se ejecuta un clúster de Azure Service Fabric, es conveniente recopilar los registros de todos los nodos en una ubicación central. La presencia de los registros en una ubicación central facilita el análisis y la solución de los problemas, ya estén en sus servicios, sus aplicaciones o en el propio clúster. Uno de los métodos para cargar y recopilar registros es usar la extensión de Diagnósticos de Azure, que carga registros en Azure Storage, Azure Application Insights o Azure Event Hubs. También puede leer los eventos de almacenamiento o Event Hubs y colocarlos en un producto como [Log Analytics](../log-analytics/log-analytics-service-fabric.md) u otra solución de análisis de registro. [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) tiene integrado un servicio de análisis y búsqueda de registros integral.
+Cuando se ejecuta un clúster de Azure Service Fabric, es un buena idea toocollect Hola inicia una sesión de todos los nodos de hello en una ubicación central. Tener registros de hello en una ubicación central resulta fácil tooanalyze y solucionar problemas, independientemente de si están en los servicios, la aplicación o el propio clúster Hola. Tooupload de una forma y recopilar registros es extensión de diagnósticos de Azure hello toouse, qué cargas registra tooAzure almacenamiento, Azure Application Insights o concentradores de eventos de Azure. También puede leer los eventos de Hola de almacenamiento o concentradores de eventos y colocarlos en un producto como [análisis de registros](../log-analytics/log-analytics-service-fabric.md) u otra solución de análisis de registro. [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) tiene integrado un servicio integral de análisis y búsqueda de registros.
 
-## <a name="log-sources-that-you-might-want-to-collect"></a>Orígenes de registros que puede recopilar
-* **Registros de Service Fabric:** emitidos por la plataforma mediante [LTTng](http://lttng.org) y cargados en la cuenta de almacenamiento. Los registros pueden ser eventos operativos o eventos de tiempo de ejecución que la plataforma emite. Estos registros se almacenan en la ubicación que el manifiesto de clúster especifica. (Para obtener los detalles de la cuenta de almacenamiento, busque la etiqueta **AzureTableWinFabETWQueryable** y busque **StoreConnectionString**).
-* **Eventos de aplicación:** eventos emitidos desde el código de servicios. Puede utilizar cualquier solución de registro que escriba archivos de registro basados en texto, por ejemplo, LTTng. Para obtener más información, consulte la documentación de LTTng sobre el seguimiento de la aplicación.  
+## <a name="log-sources-that-you-might-want-toocollect"></a>Orígenes de registro que podría interesarle toocollect
+* **Registros de Service Fabric**: emitidos a partir de la plataforma de Hola a través de [LTTng](http://lttng.org) y cargado tooyour cuenta de almacenamiento. Los registros pueden ser eventos operativos o eventos en tiempo de ejecución que Hola plataforma emite. Estos registros se almacenan en la ubicación de hello especifica dicho manifiesto de clúster Hola. (detalles de la cuenta de almacenamiento de tooget hello, Buscar etiqueta hello **AzureTableWinFabETWQueryable** y busque **StoreConnectionString**.)
+* **Eventos de aplicación:** eventos emitidos desde el código de servicios. Puede utilizar cualquier solución de registro que escriba archivos de registro basados en texto, por ejemplo, LTTng. Para obtener más información, consulte la documentación de LTTng de hello en seguimiento de la aplicación.  
 
-## <a name="deploy-the-diagnostics-extension"></a>Implementación de la extensión de Diagnósticos
-El primer paso para recopilar registros será implementar la extensión WAD en cada una de las máquinas virtuales del clúster de Service Fabric. La extensión de Diagnósticos recopila registros en cada máquina virtual y los carga a la cuenta de almacenamiento que especifique. Los pasos varían en función de si se utiliza Azure Portal o Azure Resource Manager.
+## <a name="deploy-hello-diagnostics-extension"></a>Implementar la extensión de diagnósticos de Hola
+Hola primer paso en la recopilación de registros es toodeploy extensión de diagnósticos de hello en cada una de las máquinas virtuales de hello en clúster de Service Fabric Hola. extensión de diagnósticos de Hello recopila registros en cada máquina virtual y los carga toohello cuenta de almacenamiento que especifique. pasos de Hello varían en función de si utiliza Hola portal de Azure o Azure Resource Manager.
 
-Para implementar la extensión de Diagnósticos en las máquinas virtuales del clúster como parte de la creación de dicho clúster, establezca **Diagnósticos** en **Activado**. Después de crear el clúster, no puede cambiar esta configuración mediante el portal.
+establecer toodeploy Hola diagnósticos extensión toohello máquinas virtuales en clúster de hello como parte de la creación del clúster, **diagnósticos** demasiado**en**. Después de crear el clúster de hello, no se puede cambiar esta configuración mediante el portal de Hola.
 
-Después, configure Diagnósticos de Azure de Linux (LAD) para recopilar los archivos y colocarlos en su cuenta de almacenamiento. En este proceso se explica en el escenario 3 ("Carga de sus propios archivos de registro") en el artículo sobre cómo [utilizar LAD para supervisar y diagnosticar máquinas virtuales Linux](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json). Con este proceso puede acceder a los seguimientos. Puede cargar los seguimientos en un visualizador de su elección.
+A continuación, configurar los diagnósticos de Azure de Linux (LAD) toocollect Hola archivos y colocarlos en la cuenta de almacenamiento. Este proceso se explica como escenario 3 ("cargar sus propios archivos de registro") en el artículo hello [toomonitor LAD uso y diagnosticar máquinas virtuales de Linux](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json). Siguiendo este obtiene proceso acceso toohello realiza un seguimiento. Puede cargar el visualizador de tooa Hola seguimientos de su elección.
 
-También puede implementar la extensión de Diagnósticos mediante Azure Resource Manager. El proceso es el mismo para Windows y Linux, y está documentado para los clústeres de Windows en [Recopilación de registros con Diagnósticos de Azure](service-fabric-diagnostics-how-to-setup-wad.md).
+También puede implementar la extensión de diagnósticos de hello mediante el Administrador de recursos de Azure. es similar para Windows y Linux Hello proceso y se documentan para los clústeres de Windows en [modo toocollect registra con diagnósticos de Azure](service-fabric-diagnostics-how-to-setup-wad.md).
 
 También puede usar Operations Management Suite, como se describe en [Operations Management Suite Log Analytics with Linux](https://blogs.technet.microsoft.com/hybridcloud/2016/01/28/operations-management-suite-log-analytics-with-linux/) (Análisis de registros de Operations Management Suite con Linux).
 
-Una vez finalizada esta configuración, el agente de LAD supervisa los archivos de registro especificados. Siempre que se anexa una nueva línea al archivo, se crea una entrada syslog que se envía al almacenamiento especificado.
+Después de finalizar esta configuración, monitores de agente LAD Hola Hola archivos de registro especificados. Cada vez que una nueva línea es archivo toohello anexado, crea una entrada de syslog es toohello enviados de almacenamiento que especificó.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Compruebe la [documentación de LTTng](http://lttng.org/docs) y el [uso de LAD](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) para obtener información más detallada sobre qué eventos debe examinar durante la solución de problemas.
+toounderstand con más detalle qué eventos se deben examinar si se intenta solucionar problemas, consulte [LTTng documentación](http://lttng.org/docs) y [LAD utilizando](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 

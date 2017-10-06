@@ -1,6 +1,6 @@
 ---
-title: "Configuración del codificador FMLE para enviar una transmisión en vivo con velocidad de bits única | Microsoft Docs"
-description: "En este tema se muestra cómo configurar el codificador Flash Media Live Encoder (FMLE) para enviar una transmisión con velocidad de bits única a canales AMS habilitados para la codificación en directo."
+title: "aaaConfigure Hola FMLE codificador toosend una secuencia en directo de velocidad de bits única | Documentos de Microsoft"
+description: "Este tema muestra cómo tooconfigure Hola toosend de codificador de codificador de Live de medios de Flash (FMLE) a una velocidad de bits única secuencia tooAMS los canales que están habilitadas para la codificación en directo."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: e831048f34ecf6e89595adc4bfd58b5977e04bdb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 780d911c5186ec09c784264f9a0d0c3f8059d305
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Uso del codificador FMLE para enviar una transmisión por secuencias en directo de velocidad de bits única
+# <a name="use-hello-fmle-encoder-toosend-a-single-bitrate-live-stream"></a>Usar hello FMLE codificador toosend una secuencia en directo de velocidad de bits única
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Elemental Live](media-services-configure-elemental-live-encoder.md)
@@ -29,50 +29,50 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-En este tema se muestra cómo configurar el codificador [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) para enviar una transmisión con velocidad de bits única a canales AMS habilitados para la codificación en directo. Para obtener más información, consulte [Uso de canales habilitados para realizar la codificación en directo con Servicios multimedia de Azure](media-services-manage-live-encoder-enabled-channels.md).
+Este tema se muestra cómo hello tooconfigure [Flash Live el Codificador multimedia de](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) codificador toosend una velocidad de bits única transmitir canales tooAMS que están habilitados para la codificación en directo. Para obtener más información, consulte [trabajar con los canales que es habilitado tooPerform Live codificar con servicios multimedia de Azure](media-services-manage-live-encoder-enabled-channels.md).
 
-En este tutorial se muestra cómo administrar Servicios multimedia de Azure (AMS) con la herramienta Explorador de Servicios multimedia de Azure (AMSE). Esta herramienta solo se ejecuta en Windows PC. Si se encuentra en Mac o Linux, use Azure Portal para crear [canales](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) y [programas](media-services-portal-creating-live-encoder-enabled-channel.md).
+Este tutorial muestra cómo toomanage servicios multimedia de Azure (AMS) con la herramienta Explorador de servicios multimedia de Azure (AMSE). Esta herramienta solo se ejecuta en Windows PC. Si se encuentra en Mac o Linux, use hello Azure toocreate portal [canales](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) y [programas](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-Tenga en cuenta que en este tutorial se describe el uso de AAC. Sin embargo, FMLE no es compatible con AAC de forma predeterminada. Deberá adquirir un complemento para la codificación de AAC como el de MainConcept: [Complemento de AAC](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+Tenga en cuenta que en este tutorial se describe el uso de AAC. Sin embargo, FMLE no es compatible con AAC de forma predeterminada. Deberá toopurchase un complemento para la codificación AAC como MainConcept: [AAC complemento](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Requisitos previos
 * [Creación de una cuenta de Azure Media Services](media-services-portal-create-account.md)
 * Asegúrese de que hay un punto de conexión de streaming en ejecución. Para obtener más información, consulte [Administración de extremos de streaming en una cuenta de Servicios multimedia](media-services-portal-manage-streaming-endpoints.md)
-* Debe instalar la última versión de la herramienta [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) .
-* Inicie la herramienta y conéctese a la cuenta de AMS.
+* Instalar la versión más reciente de hello del programa Hola a [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) herramienta.
+* Iniciar la herramienta de Hola y conectar con cuenta de tooyour AMS.
 
 ## <a name="tips"></a>Sugerencias
 * Siempre que sea posible, use una conexión a Internet por cable.
-* Una buena regla general al determinar los requisitos de ancho de banda consiste en duplicar las velocidades de bits de streaming. Aunque no se trata de un requisito obligatorio, contribuirá a mitigar el impacto de la congestión de la red.
+* Una buena regla general al determinar los requisitos de ancho de banda es hello toodouble streaming de velocidades de bits. Aunque esto no es un requisito obligatorio, ayudará a mitigar el impacto de Hola de congestión de la red.
 * Cuando se usen codificadores por software, cierre todos los programas innecesarios.
 
 ## <a name="create-a-channel"></a>Crear un canal
-1. En la herramienta AMSE, navegue a la pestaña **Directo** y haga clic con el botón derecho dentro del área de canales. Seleccione **Crear canal...** en el menú.
+1. En la herramienta AMSE de hello, navegue toohello **Live** ficha y haga clic en el área del canal de Hola. Seleccione **Crear canal...** en el menú de Hola.
 
     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
 
-2. Especifique un nombre de canal (el campo de descripción es opcional). En Configuración de canal, seleccione **Estándar** para la opción Live Encoding, con el protocolo de entrada establecido en **RTMP**. Puede dejar todas las demás opciones como están.
+2. Especifique un nombre de canal, el campo de descripción de hello es opcional. En configuración de canal, seleccione **estándar** para Hola opción de codificación en directo con hello proporcionados por el protocolo establecido demasiado**RTMP**. Puede dejar todas las demás opciones como están.
 
-    Asegúrese de que la opción **Iniciar el nuevo canal ahora** esté seleccionada.
+    Asegúrese de hello seguro **inicio Hola nuevo canal ahora** está seleccionada.
 
 3. Haga clic en **Crear canal**.
 
    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle2.png)
 
 > [!NOTE]
-> El canal puede tardar hasta 20 minutos en iniciarse.
+> canal de Hello puede tardar tanto como toostart de 20 minutos.
 >
 >
 
-Mientras se inicia el canal puede [configurar el codificador](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp).
+Mientras se inicia el canal de hello puede [configurar codificador hello](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp).
 
 > [!IMPORTANT]
 > Tenga en cuenta que la facturación comienza tan pronto como el canal entra en un estado Listo. Para obtener más información, consulte [Estados del canal](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a id=configure_fmle_rtmp></a>Configuración del codificador FMLE
-En este tutorial se usa la siguiente configuración de salida. En el resto de esta sección se describen los pasos de configuración con más detalle.
+## <a id=configure_fmle_rtmp></a>Configurar el codificador de hello FMLE
+En este tutorial Hola se utilizan las siguientes opciones de salida. resto de Hola de esta sección describe los pasos de configuración con más detalle.
 
 **Vídeo**:
 
@@ -89,9 +89,9 @@ En este tutorial se usa la siguiente configuración de salida. En el resto de es
 * Sample Rate (Frecuencia de muestreo): 44,1 kHz
 
 ### <a name="configuration-steps"></a>Pasos de configuración
-1. Vaya a la interfaz de Flash Media Live Encoder (FMLE) en el equipo que esté usando.
+1. Navegue toohello que Flash Live Codificador multimedia (FMLE) de la interfaz en la máquina de Hola que se utiliza.
 
-    La interfaz es una página principal de configuración. Tome nota de la siguiente configuración recomendada para empezar a trabajar con streaming mediante FMLE.
+    interfaz de Hello es una página principal de configuración. Tome nota de los siguientes Hola recomendadas configuración tooget a trabajar con la transmisión mediante FMLE.
 
    * Format (Formato): H.264, Frame Rate (Velocidad de fotogramas): 30.00
    * Input Size (Tamaño de entrada): 1280 x 720
@@ -99,69 +99,69 @@ En este tutorial se usa la siguiente configuración de salida. En el resto de es
 
      ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
 
-     Al usar orígenes entrelazados, marque la opción "Deinterlace" (Desentrelazar).
-2. Seleccione el icono de llave junto a Format (Formato). Estas opciones de configuración adicionales deben ser:
+     Al usar entrelazado orígenes, por favor, marca de verificación Hola "Desentrelazar" opción
+2. Seleccione Hola llave inglesa icono siguiente tooFormat, deben tener estos valores adicionales:
 
    * Profile (Perfil): Main (Principal)
    * Level (Nivel): 4.0
    * Keyframe Frequency (Frecuencia de fotogramas clave): 2 seconds (2 segundos)
 
      ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
-3. Establezca la siguiente configuración de audio importante:
+3. Establecer Hola después de la configuración de audio importante:
 
    * Format (Formato): AAC
    * Sample Rate (Frecuencia de muestreo): 44100 kHz
    * Bitrate (Velocidad de bits): 192 kbps
 
      ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
-4. Obtenga la dirección URL de entrada del canal para asignarla al **punto de conexión de RTMP**de FMLE.
+4. Obtener dirección URL de entrada del canal de hello en orden tooassign, toohello FMLE **RTMP extremo**.
 
-    Navegue de nuevo a la herramienta AMSE y compruebe el estado de finalización del canal. Una vez que ha cambiado el estado de **Iniciando** a **En ejecución**, puede obtener la dirección URL de entrada.
+    Navegar por la herramienta AMSE toohello atrás y comprobar estado de finalización de canal de Hola. Una vez que ha cambiado el estado de Hola de **iniciando** demasiado**ejecuta**, puede obtener la dirección URL de entrada de Hola.
 
-    Mientras se ejecuta el canal, haga clic con el botón derecho en el nombre del canal, desplácese hacia abajo y mantenga el puntero sobre **Copy Input URL to clipboard** (Copiar dirección URL de entrada en el Portapapeles) y seleccione **Primary Input URL** (Dirección URL de entrada principal).  
+    Cuando se ejecuta el canal de hello, haga clic con el nombre del canal de hello, desplácese hacia abajo toohover sobre **Copiar dirección URL de entrada tooclipboard** y, a continuación, seleccione **dirección URL de entrada principal**.  
 
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
-5. Pegue esta información en el campo **Dirección URL de FMS** de la sección de salida y asigne un nombre de transmisión.
+    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
+5. Pegar esta información en hello **FMS URL** campo de la sección de la salida de hello y asigne un nombre de la secuencia.
 
     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
 
-    Para obtener redundancia adicional, repita estos pasos con la dirección URL de entrada secundaria.
+    Para obtener redundancia adicional, repita estos pasos con hello secundaria de dirección URL de entrada.
 6. Seleccione **Conectar**.
 
 > [!IMPORTANT]
-> Antes de hacer clic en **Conectar**, **debe** asegurarse de que el canal esté listo.
-> Además, asegúrese de no dejar el canal en un estado Listo sin una fuente de contribución de entrada durante más de 15 minutos.
+> Antes de hacer clic **conectar**, le **debe** Asegúrese de que el canal de hello está listo.
+> Además, asegúrese de que no tooleave Hola canal en un estado listo sin una contribución entrada fuente durante más de 15 minutos de >.
 >
 >
 
-## <a name="test-playback"></a>Reproducción de pruebas
+## <a name="test-playback"></a>Prueba de reproducción
 
-Vaya a la herramienta AMSE y haga clic con el botón derecho en el canal que se va a probar. En el menú, mantenga el puntero sobre **Playback the Preview** (Reproducir la vista previa) y seleccione **with Azure Media Player** (con Azure Media Player).  
+Navegar por la herramienta AMSE toohello y haga clic en toobe de canal de hello probado. En el menú de hello, mantenga el mouse sobre **Hola reproducción Preview** y seleccione **con el Reproductor de Media de Azure**.  
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle8.png)
 
-Si la transmisión aparece en el reproductor, entonces el codificador se configuró correctamente para conectarse a AMS.
+Si la secuencia Hola aparece en el Reproductor de hello, codificador Hola ha sido tooAMS tooconnect configurado correctamente.
 
-Si se recibe un error, se deberá restablecer el canal y ajustar la configuración del codificador. Consulte el tema de [solución de problemas](media-services-troubleshooting-live-streaming.md) para obtener instrucciones.  
+Si se recibe un error, canal de hello deberá toobe la configuración de restablecimiento y codificador ajustada. Vea hello [solución de problemas](media-services-troubleshooting-live-streaming.md) tema para obtener instrucciones.  
 
 ## <a name="create-a-program"></a>Creación de un programa
-1. Una vez confirmada la reproducción de canales, cree un programa. En la pestaña **Live** (Directo) de la herramienta AMSE, haga clic con el botón derecho dentro del área de programas y seleccione **Create New Program** (Crear programa).  
+1. Una vez confirmada la reproducción de canales, cree un programa. En hello **Live** ficha herramienta AMSE de hello, haga clic en el área del programa Hola y seleccione **crear un nuevo programa**.  
 
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle9.png)
-2. Dé nombre al programa y, si es necesario, ajuste el valor de **Duración de la ventana de archivo** (que de forma predeterminada es 4 horas). También puede especificar una ubicación de almacenamiento o dejar el valor predeterminado.  
-3. Active la casilla **Iniciar el programa ahora** .
+    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle9.png)
+2. Nombre de programa hello y, si es necesario, ajuste hello **duración de la ventana de archivo** (qué horas too4 de los valores predeterminados). También puede especificar una ubicación de almacenamiento o deje el valor predeterminado de Hola.  
+3. Comprobar hello **inicio Hola programa ahora** cuadro.
 4. Haga clic en **Crear programa**.  
 
     >[!NOTE]
     >La creación de programas tarda menos que la creación de canales.
         
-5. Cuando el programa esté en ejecución, confirme la reproducción. Para ello, haga clic con el botón derecho en el programa y vaya a **Playback the program(s)** (Reproducir los programas). Luego, seleccione **with Azure Media Player** (con Azure Media Player).  
-6. Una vez confirmada, haga clic con el botón derecho de nuevo en el programa y seleccione **Copy the Output URL to Clipboard** (Copiar la dirección URL de salida en el Portapapeles) o recupere esta información con la opción **Program information and settings**(Información y configuración del programa) en el menú.
+5. Una vez que se ejecuta el programa de hello, confirme la reproducción, haga clic en el programa hello y vaya demasiado**programas de reproducción hello** y, a continuación, seleccione **con el Reproductor de Media de Azure**.  
+6. Una vez confirmado, haga clic en programa Hola de nuevo y seleccione **copiar tooClipboard de dirección URL de salida de hello** (o recuperar la información desde hello **información y configuración de programas** opción de menú de hello).
 
-La transmisión está ahora preparada para insertarse en un reproductor o distribuirse a una audiencia para su visualización en directo.  
+secuencia de Hello ahora está listo toobe incrustado en un reproductor o distribuida tooan público para live visualización.  
 
-## <a name="troubleshooting"></a>solución de problemas
-Consulte el tema de [solución de problemas](media-services-troubleshooting-live-streaming.md) para obtener instrucciones.
+## <a name="troubleshooting"></a>Solución de problemas
+Vea hello [solución de problemas](media-services-troubleshooting-live-streaming.md) tema para obtener instrucciones.
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Uso de las plantillas de Azure Resource Manager para crear y configurar un área de trabajo de Log Analytics | Microsoft Docs"
-description: "Puede utilizar las plantillas de Azure Resource Manager para crear y configurar áreas de trabajo de Log Analytics."
+title: "tooCreate de plantillas de Azure Resource Manager aaaUse y configurar un área de trabajo de análisis de registro | Documentos de Microsoft"
+description: "Puede usar el Administrador de recursos de Azure plantillas toocreate y configurar áreas de trabajo de análisis de registros."
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -14,43 +14,43 @@ ms.devlang: json
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: richrund
-ms.openlocfilehash: 505b741d14c594b22108298466c646bf723ce2d4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c8f413e982f5eeed73f463524ff6f239f26c9127
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Administración de Log Analytics mediante las plantillas de Azure Resource Manager
-Puede utilizar las [plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) para crear y configurar áreas de trabajo de Log Analytics. Estos son algunos ejemplos de las tareas que puede realizar con las plantillas:
+Puede usar [plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) toocreate y configurar áreas de trabajo de análisis de registros. Ejemplos de tareas de Hola que puede realizar con las plantillas incluyen:
 
 * Crear un área de trabajo
 * Agregar una solución
 * Crear búsquedas guardadas
 * Crear un grupo de equipos
-* Habilitar la recopilación de registros de IIS en equipos con el agente de Windows instalado
+* Habilitar la recopilación de registros de IIS desde equipos que tengan instalado el agente de Windows hello
 * Recopilar contadores de rendimiento en equipos Linux y Windows
 * Recopilar eventos de Syslog en equipos Linux 
 * Recopilar eventos de registros de eventos de Windows
 * Recopilar registros de eventos personalizados
-* Agregar al agente de Log Analytics a una máquina virtual de Azure
-* Configurar Log Analytics para indizar los datos recopilados mediante Diagnósticos de Azure
+* Agregar tooan de agente de análisis de registro de hello máquina virtual de Azure
+* Configurar datos de tooindex de análisis de registro recopilados con diagnósticos de Azure
 
-Este artículo proporciona ejemplos de plantilla que muestran algunas de las funciones que puede realizar desde las plantillas.
+Este artículo proporciona ejemplos que muestran la parte de configuración de Hola que puede realizar desde plantillas de una plantilla.
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Creación y configuración de un área de trabajo de Log Analytics
-El siguiente ejemplo de plantilla muestra cómo realizar estas tareas:
+Hello plantilla ejemplo siguiente muestra cómo:
 
 1. Crear un área de trabajo, con establecimiento de la retención de datos incluido
-2. Agregar soluciones al área de trabajo
+2. Agregar área de trabajo de soluciones toohello
 3. Crear búsquedas guardadas
 4. Crear un grupo de equipos
-5. Habilitar la recopilación de registros de IIS en equipos con el agente de Windows instalado
+5. Habilitar la recopilación de registros de IIS desde equipos que tengan instalado el agente de Windows hello
 6. Recopilar contadores de rendimiento de discos lógicos de equipos Linux (% de inodos usados; megabytes libres; % de espacio usado; transferencias de disco/seg.; lecturas de disco/seg.; escrituras de disco/seg.)
 7. Recopilar eventos de Syslog de equipos Linux
-8. Recopilar eventos de error y advertencia del registro de eventos de aplicación de los equipos de Windows
+8. Recopilar eventos de Error y advertencia de hello registro de eventos de aplicación de los equipos de Windows
 9. Recopilar contadores de rendimiento de MB disponibles de equipos Windows
 10. Recopilar registros personalizados 
-11. Recopilar registros de IIS s de eventos de Windows escritos por Diagnósticos de Azure en una cuenta de almacenamiento
+11. Recopilar registros de IIS y registros de eventos de Windows escritos por la cuenta de almacenamiento de diagnósticos de Azure tooa
 
 ```
 {
@@ -95,13 +95,13 @@ El siguiente ejemplo de plantilla muestra cómo realizar estas tareas:
     "applicationDiagnosticsStorageAccountName": {
         "type": "string",
         "metadata": {
-          "description": "Name of the storage account with Azure diagnostics output"
+          "description": "Name of hello storage account with Azure diagnostics output"
         }
     },
     "applicationDiagnosticsStorageAccountResourceGroup": {
         "type": "string",
         "metadata": {
-          "description": "The resource group name containing the storage account with Azure diagnostics output"
+          "description": "hello resource group name containing hello storage account with Azure diagnostics output"
         }
     }
   },
@@ -426,12 +426,12 @@ El siguiente ejemplo de plantilla muestra cómo realizar estas tareas:
 }
 
 ```
-### <a name="deploying-the-sample-template"></a>Implementación de la plantilla de ejemplo
-Para implementar la plantilla, realice estos pasos:
+### <a name="deploying-hello-sample-template"></a>Implementar la plantilla de ejemplo de Hola
+plantilla de ejemplo de Hola toodeploy:
 
-1. Guarde el ejemplo adjunto en un archivo, por ejemplo, `azuredeploy.json`. 
-2. Edite la plantilla que tenga la configuración que desee.
-3. Use PowerShell o la línea de comandos para implementar la plantilla.
+1. Guardar muestra de Hola a adjunto en un archivo, por ejemplo`azuredeploy.json` 
+2. Editar configuración de Hola Hola plantilla toohave que desea
+3. Usar PowerShell o hello plantilla Hola de línea de comandos toodeploy
 
 #### <a name="powershell"></a>PowerShell
 `New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json`
@@ -444,15 +444,15 @@ azure group deployment create <my-resource-group> <my-deployment-name> --Templat
 
 
 ## <a name="example-resource-manager-templates"></a>Plantillas de Azure Resource Manager de ejemplo
-La galería de plantillas de inicio rápido de Azure incluye varias plantillas para Log Analytics, entre ellas las siguientes:
+Galería de plantillas de inicio rápido de Azure de Hello incluye varias plantillas para análisis de registros, incluidos:
 
-* [Implementación de una máquina virtual Windows con la extensión de máquina virtual de Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-* [Implementación de una máquina virtual Linux con la extensión de máquina virtual de Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [Implementar una máquina virtual que ejecuta Windows con hello extensión de máquina virtual de análisis de registro](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [Implementar una máquina virtual con Linux con hello extensión de máquina virtual de análisis de registro](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Supervisión de Azure Site Recovery con un área de trabajo de Log Analytics existente](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Supervisión de Azure Web Apps con un área de trabajo de Log Analytics existente](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [Supervisión de SQL Azure con un área de trabajo de Log Analytics existente](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
 * [Implementación de un clúster de Service Fabric y supervisión de este con un área de trabajo de Log Analytics](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [Implementación de un clúster de Service Fabric y creación de un área de trabajo de Log Analytics para supervisarlo](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [Implementar un clúster de Service Fabric y crear un toomonitor de área de trabajo de análisis de registros,](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Implemente agentes en máquinas virtuales de Azure mediante plantillas de Resource Manager](log-analytics-azure-vm-extension.md)

@@ -1,5 +1,5 @@
 ---
-title: "Análisis de eventos de Azure Service Fabric con OMS | Microsoft Docs"
+title: "aaaAzure servicio de análisis de eventos de tejido con OMS | Documentos de Microsoft"
 description: "Obtenga información sobre cómo visualizar y analizar eventos con OMS para la supervisión y el diagnóstico de clústeres de Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -14,93 +14,93 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.openlocfilehash: 425c7a733a0a2383f01d2122e7155d3e3a9071be
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 526519293e70982c95e31241465b87f190096f74
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-analysis-and-visualization-with-oms"></a>Análisis y visualización de eventos con OMS
 
-Operations Management Suite (OMS) es una colección de servicios de administración que simplifican la supervisión y el diagnóstico de aplicaciones y servicios hospedados en la nube. Para obtener información general más detallada sobre OMS y lo que ofrece, vea [¿Qué es OMS?](../operations-management-suite/operations-management-suite-overview.md)
+Operations Management Suite (OMS) es una colección de servicios de administración que simplifican la supervisión y diagnósticos para aplicaciones y servicios hospedados en la nube de Hola. leer una descripción más detallada de OMS y lo que ofrece tooget [¿qué es OMS?](../operations-management-suite/operations-management-suite-overview.md)
 
-## <a name="log-analytics-and-the-oms-workspace"></a>Log Analytics y el área de trabajo de OMS
+## <a name="log-analytics-and-hello-oms-workspace"></a>Inicie sesión hello área de trabajo OMS y análisis
 
-Log Analytics recopila datos de recursos administrados, incluidos un agente o una tabla de almacenamiento de Azure, y los mantiene en un repositorio central. Estos datos pueden utilizarse posteriormente para análisis, alertas, visualizaciones y tareas ulteriores de exportación. Log Analytics admite eventos, datos de rendimiento u otros datos personalizados.
+Log Analytics recopila datos de recursos administrados, incluidos un agente o una tabla de almacenamiento de Azure, y los mantiene en un repositorio central. datos de Hello, a continuación, pueden ser utilizados para el análisis, alertas y visualización, o la exportación aún más. Log Analytics admite eventos, datos de rendimiento u otros datos personalizados.
 
-Cuando se configura OMS, podrá acceder a un *área de trabajo OMS* determinada, donde se pueden consultar o visualizar los datos en paneles.
+Cuando se configura OMS, tendrá acceso tooa específica *área de trabajo OMS*, desde donde los datos se pueden consultar o visualizar en los paneles.
 
-Después de que Log Analytics recibe los datos, OMS dispone de varias *soluciones de administración* que son soluciones preempaquetadas para supervisar los datos entrantes, personalizados para varios escenarios. Puede tratarse de una solución de *Service Fabric Analytics* y una solución de *Containers*, que son las dos opciones más importantes para diagnosticar y supervisar el uso de los clústeres de Service Fabric. Hay otras que merece la pena examinar, y OMS también permite crear soluciones personalizadas, sobre las que puede leer más información [aquí](../operations-management-suite/operations-management-suite-solutions.md). Cada solución que decida usar para un clúster se configurará en la misma área de trabajo de OMS, junto con Log Analytics. Las áreas de trabajo admiten los paneles de trabajo y la visualización de datos, y permiten realizar modificaciones en los datos que desea recopilar, procesar y analizar.
+Después de que se reciben datos mediante el análisis de registros, OMS tiene varias *soluciones de administración de* que son soluciones preestablecida toomonitor los datos entrantes, escenarios de tooseveral personalizado. Puede tratarse de un *servicio de análisis de tejido* solución y un *contenedores* solución, que son toodiagnostics Hola dos de los más importantes y supervisión al usar clústeres de Service Fabric. Hay varios otros así que merece la pena examinar y OMS también permite la creación de hello de soluciones personalizadas, que puede leer más sobre [aquí](../operations-management-suite/operations-management-suite-solutions.md). Cada solución que elija toouse para un clúster se configurará en hello misma área de trabajo OMS, junto con el análisis de registros. Áreas de trabajo permiten paneles personalizados y la visualización de datos y datos de toohello de las modificaciones que desee toocollect, procesar y analizar.
 
-## <a name="setting-up-an-oms-workspace-with-the-service-fabric-solution"></a>Configuración de un área de trabajo de OMS con la solución Service Fabric
+## <a name="setting-up-an-oms-workspace-with-hello-service-fabric-solution"></a>Configuración de un área de trabajo OMS con hello soluciones de tejido de servicio
 
-Se recomienda que incluya la solución Service Fabric en el área de trabajo de OMS, ya que ofrece un panel útil donde se muestran los distintos canales de registro de entrada desde el nivel de infraestructura y aplicación, además de permitir realizar consultas de registros específicos de Service Fabric. A continuación se muestra la apariencia de una solución Service Fabric relativamente sencilla, con una única aplicación implementada en el clúster:
+Se recomienda que incluya Hola soluciones de tejido de servicio en el área de trabajo OMS, puesto que ofrece un panel de información útil muestra hello diversos canales de registro entrantes de nivel de plataforma y de aplicaciones de Hola y Hola capaz de tooquery Service Fabric específico registros. Aquí es el aspecto de una solución de Fabric relativamente simple, se con una sola aplicación implementada en el clúster de hello:
 
 ![Solución SF en OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
-Hay dos formas de aprovisionar y configurar el área de trabajo de OMS, bien a través de una plantilla de Resource Manager o directamente desde Azure Marketplace. Use la primera opción al implementar un clúster y la última si ya tiene un clúster implementado con Diagnostics habilitado.
+Hay dos tooprovision de formas y configurar un área de trabajo OMS, ya sea a través de una plantilla de administrador de recursos o directamente desde Azure Marketplace. Utilice primero hello cuando va a implementar un clúster, y Hola este último si ya tiene un clúster implementado con diagnósticos habilitados.
 
 ### <a name="deploying-oms-using-a-resource-management-template"></a>Implementación de OMS con una plantilla de Resource Manager
 
-Esto ocurre en la fase de creación del clúster; al implementar un clúster con una plantilla de Resource Manager, esta última también puede crear una nueva área de trabajo de OMS, agregar a ella la solución Service Fabric y configurarla para leer datos de las tablas de almacenamiento apropiadas.
+Esto sucede durante la fase de creación de clúster de hello - al implementar un clúster con un administrador de recursos, plantilla de hello, también puede crear una nueva área de trabajo OMS, agregar hello tooit de soluciones de tejido de servicio y configurar tooread datos desde el almacenamiento adecuado de Hola tablas.
 
 >[!NOTE]
->Para ello, Diagnostics tiene que estar habilitado para que haya tablas de almacenamiento de Azure en las que OMS o Log Analytics puedan leer información.
+>Para este toowork diagnóstico tiene toobe habilitado para tooexist de tablas de almacenamiento de Azure de Hola para OMS / información de tooread de análisis de registros en de.
 
-[Aquí](https://azure.microsoft.com/resources/templates/service-fabric-oms/) hay una plantilla de ejemplo que puede usar y modificar según sea necesario, donde se realizan las acciones anteriores. En caso de que desee considerar otras alternativas, existen algunas plantillas más que ofrecen diferentes opciones en función del punto en que se encuentre en el proceso de configuración de un área de trabajo de OMS; se encuentran disponibles en la página de [plantillas de Service Fabric y OMS](https://azure.microsoft.com/resources/templates/?term=service+fabric+OMS).
+[Aquí](https://azure.microsoft.com/resources/templates/service-fabric-oms/) hay una plantilla de ejemplo que puede usar y modificar según sea necesario, donde se realizan las acciones anteriores. En caso de Hola que desea definir la opcionalidad como más, hay unas pocas plantillas más que proporcionan diferentes opciones dependiendo de que en el proceso de hello puede ser de configuración de un área de trabajo OMS, pueden encontrarse en [Service Fabric y OMS plantillas](https://azure.microsoft.com/resources/templates/?term=service+fabric+OMS).
 
 ### <a name="deploying-oms-using-through-azure-marketplace"></a>Implementación de OMS a través de Azure Marketplace
 
-Si desea agregar un área de trabajo de OMS después de haber implementado un clúster, diríjase a Azure Marketplace y busque *"Service Fabric Analytics"*. Solo debe aparecer un único recurso, en la categoría "Supervisión y administración", como se muestra a continuación:
+Si prefiere tooadd un área de trabajo OMS después de haber implementado un clúster, diríjase tooAzure Marketplace y busque *"Análisis de tejido de servicio"*. Solo debe haber un recurso que aparece, dentro de la categoría de "Supervisión de la administración de +" Hola, visto a continuación:
 
 ![SF Analytics en OMS con Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-Al hacer clic en **Crear**, se le pedirá que especifique un área de trabajo de OMS. Haga clic en **Seleccione un área de trabajo** y después en **Crear un área de trabajo**. Rellene las entradas necesarias; el único requisito en este caso es que la suscripción del clúster de Service Fabric sea la misma que la del área de trabajo de OMS. Después de haber validado las entradas, el área de trabajo de OMS se implementará en unos minutos. Mientras finaliza la implementación, la hoja para crear la solución Service Fabric permanecerá abierta. Asegúrese de que la misma área de trabajo aparece en *Área de trabajo de OMS* y haga clic en **Crear** en la parte inferior, para agregar la solución Service Fabric al área de trabajo.
+Al hacer clic en **Crear**, se le pedirá que especifique un área de trabajo de OMS. Haga clic en **Seleccione un área de trabajo** y después en **Crear un área de trabajo**. Rellenar las entradas de hello necesario: Hola único requisito aquí es que suscripción Hola Hola debe ser el área de trabajo OMS hello y clúster de Service Fabric Hola igual. Después de haber validado las entradas, el área de trabajo de OMS se implementará en unos minutos. Mientras que acaba de implementar, creación de hello de hoja de solución de Service Fabric Hola todavía permanecerá abierta. Asegúrese de que Hola la misma área de trabajo se muestra en *área de trabajo de OMS* y posicionamiento **crear** en parte inferior de hello, tooadd Hola el área de trabajo de Service Fabric solución toohello.
 
-## <a name="using-the-oms-agent"></a>Uso del agente de OMS
+## <a name="using-hello-oms-agent"></a>Uso de hello agente de OMS
 
-Se recomienda utilizar EventFlow y WAD como soluciones de agregación porque permiten adoptar un enfoque más modular de diagnóstico y supervisión. Por ejemplo, si desea cambiar las salidas de EventFlow, no es necesario realizar ningún cambio en la instrumentación real, sino tan solo una sencilla modificación del archivo de configuración. No obstante, si decide invertir en el uso de OMS y desea continuar utilizándolo para análisis de eventos (no tiene que ser la única plataforma que utilice, pero sí una de las que use), se recomienda explorar la configuración del [agente de OMS](../log-analytics/log-analytics-windows-agents.md). También debe utilizar al agente de OMS al implementar contenedores en el clúster, tal y como se comenta a continuación.
+Se recomienda toouse EventFlow y WAD como soluciones de agregación porque permiten que un toodiagnostics enfoque más modular y supervisión. Por ejemplo, si desea que los resultados de EventFlow toochange, no requiere ningún cambio tooyour real la instrumentación, solo un archivo de configuración de modificación sencilla tooyour. Si, sin embargo, decide tooinvest en el uso de OMS y están dispuestos toocontinue usarlo para el análisis de eventos (no tiene toobe Hola solo plataforma use, pero en su lugar ese será al menos una de las plataformas de hello), recomendamos que explore configurar hello [</C0>agentedeOMS<spanclass="notranslate">](../log-analytics/log-analytics-windows-agents.md).</span> También debe utilizar a agente de OMS Hola al implementar el clúster de tooyour de contenedores, tal y como se describe a continuación.
 
-El proceso para hacer esto es relativamente fácil, ya que solo tiene que agregar el agente como extensión del conjunto de escalado de máquinas virtuales a la plantilla de Resource Manager, asegurándose de que se instala en cada uno de los nodos. Para clústeres que ejecutan [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) o [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux), puede encontrar una plantilla de ejemplo de Resource Manager que implementa el área de trabajo de OMS con la solución Service Fabric (como se ha explicado anteriormente) y agrega el agente a los nodos.
+proceso de Hola para hacer esto es relativamente fácil, ya que solo tiene tooadd Hola agente como conjunto de escalas de máquina virtual plantilla de administrador de recursos de extensión tooyour, asegurándose de que se instala en cada uno de los nodos. Encontrará una plantilla de administrador de recursos de ejemplo que implementa el área de trabajo OMS de hello con hello soluciones de tejido de servicio (como anteriormente) y agrega Hola agente tooyour nodos de clústeres que ejecutan [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) o [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
 
-Las ventajas que esto aporta son las siguientes:
+ventajas de Hola de esto son siguiente hello:
 
-* Datos enriquecidos sobre las métricas y los contadores de rendimiento.
-* Fácil configuración de los datos recopilados del clúster e introducción de cambios sencilla en dichos datos sin tener que reimplementar las aplicaciones ni el clúster, ya que los cambios de configuración del agente se pueden realizar desde el área de trabajo de OMS, y el agente se restablecerá automáticamente. Para configurar el agente de OMS para seleccionar contadores de rendimiento específicos, vaya al área de trabajo **Inicio > Configuración > Datos > Contadores de rendimiento de Windows** y seleccione los datos que desea recopilar.
-* Los datos se muestran más rápido que si se tuvieran que almacenar antes de que OMS o Log Analytics los seleccionen.
+* Más datos en el lado de contadores y las métricas de rendimiento de Hola
+* Datos tooconfigure sencilla que se recopilan de Hola de clúster y realizar cambios tooit sin tener que volver a implementar las aplicaciones o clúster de hello, ya que cambia la configuración del agente de hello toohello puede realizarse desde el área de trabajo OMS de Hola y simplemente restablece a agente Hola de forma automática. tooconfigure Hola OMS agente toopick los contadores de rendimiento específicos, área de trabajo vaya toohello **Inicio > Configuración > datos > contadores de rendimiento de Windows** y elegir datos de Hola que le gustaría toosee recopilado
+* Mostrarán datos más rápido que la necesidad de toobe almacenado antes de que se va a recogido por OMS / análisis de registros
 * La supervisión de contenedores es mucho más sencilla, ya que puede seleccionar registros de Docker (como stdout o stderror) y estadísticas (métricas de rendimiento de los niveles de contenedor y nodos).
 
-Lo primero que hay que considerar en este caso es que, al tratarse de un agente, se implementará en el clúster junto con todas las aplicaciones, por lo que se producirá un impacto mínimo en el rendimiento de las aplicaciones del clúster.
+Hola aquí en la consideración principal es que puesto que es un agente, se implementará en el clúster junto con todas las aplicaciones, por lo que habrá algunas toohello mínimo afectan al rendimiento de las aplicaciones en clúster de Hola.
 
 ## <a name="monitoring-containers"></a>Supervisión de contenedores
 
-Al implementar contenedores en un clúster de Service Fabric, se recomienda que el clúster se configure con el agente de OMS y que la solución Containers se agregue al área de trabajo de OMS para habilitar la supervisión y el diagnóstico. Este es el aspecto de la solución Containers en un área de trabajo:
+Al implementar el clúster de Service Fabric tooa de contenedores, se recomienda que hello clúster se ha configurado con el agente OMS de Hola y se ha agregado ese Hola solución contenedores tooenable de área de trabajo OMS de tooyour supervisión y diagnósticos. Aquí es qué contenedores Hola solución aspecto en un área de trabajo:
 
 ![Panel de OMS básico](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-El agente habilita la recopilación de varios registros específicos de contenedores que se pueden consultar en OMS o se usan para los indicadores de rendimiento visualizados. Los tipos de registro que se recopilan son:
+agente de Hello habilita la recopilación de Hola de varios registros específicos de contenedores que se pueden consultar en OMS, o utilizar los indicadores de rendimiento de toovisualized. los tipos de registro de Hello que se recopilan son:
 
 * ContainerInventory: muestra información acerca de la ubicación, nombre e imágenes del contenedor
 * ContainerImageInventory: información acerca de las imágenes implementadas, lo que incluye sus identificadores o tamaños
 * ContainerLog: registros de error concretos, registros de docker (stdout, etc.) y otras entradas
 * ContainerServiceLog: comandos de demonio de docker que se han ejecutado
-* Perf: contadores de rendimiento, entre los que se incluyen la cpu del contenedor, la memoria, el tráfico de red, la e/s de disco y métricas personalizadas de los equipos host
+* Rendimiento: contadores de rendimiento incluido contenedor cpu, memoria, tráfico de red, la e/s de disco y métricas personalizadas de hello hospedan máquinas
 
-En este artículo se tratan los pasos necesarios para configurar la supervisión del contenedor para el clúster. Para más información acerca de la solución Containers de OMS, consulte su [documentación](../log-analytics/log-analytics-containers.md).
+Este artículo tratan Hola pasos necesarios tooset la supervisión para el clúster de contenedor. más información acerca de la solución de contenedores de OMS, toolearn desproteger sus [documentación](../log-analytics/log-analytics-containers.md).
 
-Para configurar la solución Containers en el área de trabajo, asegúrese de que el agente de OMS esté implementado en los nodos del clúster; para ello, siga los pasos mencionados anteriormente. Cuando el clúster esté listo, implemente un contenedor en él. Tenga en cuenta que la primera vez que una imagen del contenedor se implementa en un clúster, se tardan varios minutos en descargar la imagen según su tamaño.
+tooset seguridad Hola soluciones de contenedor en el área de trabajo, asegúrese de que tiene el agente de OMS Hola implementado en los nodos del clúster siguiendo los pasos de hello mencionados anteriormente. Una vez que el clúster de hello esté listo, implemente un tooit del contenedor. Tenga en cuenta que Hola primera vez una imagen de contenedor es tooa implementado clúster, se aplican varias imágenes de hello toodownload de minutos dependiendo de su tamaño.
 
-En Azure Marketplace, busque *Containers* y cree un recurso de Containers (en la categoría Supervisión y administración).
+En Azure Marketplace, busque *contenedores* y cree un recurso de contenedores (bajo Hola supervisión y administración de categoría).
 
 ![Adición de la solución Containers](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-En el paso de creación, solicita un área de trabajo de OMS. Seleccione el que se creó con la implementación anterior. Este paso agrega una solución Containers al área de trabajo de OMS y la detecta automáticamente el agente de OMS implementado por la plantilla. El agente empezará a recopilar datos sobre los procesos de contenedores del clúster y, en menos de 15 minutos, debería ver que aparecen los datos, como se muestra en la imagen del panel anterior.
+En el paso de creación de hello, solicita un área de trabajo OMS. Seleccione Hola uno que se creó con la implementación de hello anterior. Este paso agrega una solución de contenedores en el área de trabajo OMS y se detecta automáticamente por el agente OMS Hola implementado por plantilla de Hola. agente de Hello empezará a recopilar datos en procesos de contenedores de hello en clúster de Hola y menos de 15 minutos o por lo tanto, debería ver la solución de hello claro seguridad con datos, como en la imagen de hello del panel de hello anterior de.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Explore las siguientes herramientas y opciones de OMS para personalizar un área de trabajo en función de sus necesidades:
+Explorar Hola después toocustomize de herramientas y opciones de OMS, que necesita un tooyour de área de trabajo:
 
-* Si se trata de clústeres locales, OMS ofrece una puerta de enlace (proxy de reenvío HTTP) que puede usarse para enviar datos a OMS. Obtenga más información en [Conexión de equipos sin acceso a Internet a OMS mediante OMS Gateway](../log-analytics/log-analytics-oms-gateway.md).
-* Configure OMS para configurar [alertas automáticas](../log-analytics/log-analytics-alerts.md) que ayuden en la detección y el diagnóstico.
-* Familiarícese con las funciones de [búsqueda de registros y consulta](../log-analytics/log-analytics-log-searches.md) que se ofrecen como parte de Log Analytics
+* En el caso de los clústeres locales, OMS ofrece una puerta de enlace (hacia delante Proxy HTTP) que puede ser utilizados toosend datos tooOMS. Obtenga más información en [conectar equipos sin tooOMS el acceso a Internet mediante Hola puerta de enlace de OMS](../log-analytics/log-analytics-oms-gateway.md)
+* Configurar OMS tooset [automatizada alertas](../log-analytics/log-analytics-alerts.md) tooaid en la detección y diagnóstico
+* Obtener las nociones básicas de hello [Iniciar búsqueda y la consulta](../log-analytics/log-analytics-log-searches.md) que ofrece características como parte del análisis de registros

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con SAP HANA Cloud Platform | Microsoft Docs"
-description: "Aprenda cómo usar SAP HANA Cloud Platform con Azure Active Directory para habilitar el inicio de sesión único, el aprovisionamiento automatizado, etc."
+description: "¡Obtenga información acerca de cómo toouse plataforma en la nube SAP HANA con Azure Active Directory tooenable único inicio de sesión, aprovisionamiento automático y mucho más!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,138 +13,138 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e03bc2410a8d57363c558f723b3bfd0e69b3f4c0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cc6610969b1c7b08f776e6969a5977fc75eb9ab4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana-cloud-platform"></a>Tutorial: Integración de Azure Active Directory con SAP HANA Cloud Platform
-El objetivo de este tutorial es mostrar la integración de Azure y SAP HANA Cloud Platform.
+objetivo de Hola de este tutorial es la integración de hello tooshow de Azure y plataforma en la nube SAP HANA.
 
-En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
+escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
 
 * Una suscripción de Azure válida
 * Una cuenta de SAP HANA Cloud Platform
 
-Después de completar este tutorial, los usuarios de Azure AD que ha asignado a SAP HANA Cloud Platform podrán realizar un inicio de sesión único en la aplicación con la [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Después de completar este tutorial, Hola usuarios de Azure AD que haya asignado tooSAP plataforma de nube de HANA será capaz de toosingle inicio de sesión en la aplicación hello mediante hello [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 >[!IMPORTANT]
->Deberá implementar su propia aplicación o suscribirse a una aplicación en su cuenta de SAP HANA Cloud Platform para probar el inicio de sesión único. En este tutorial, se implementa una aplicación en la cuenta.
+>Necesita toodeploy su propia aplicación o suscribirse tooan aplicación en la plataforma de nube SAP HANA tootest de cuenta único inicio de sesión. En este tutorial, una aplicación se implementa en la cuenta de hello.
 > 
 > 
 
-La situación descrita en este tutorial consta de los siguientes bloques de creación:
+escenario de Hello descrito en este tutorial consta de hello después de bloques de creación:
 
-1. Habilitación de la integración de aplicaciones para SAP HANA Cloud Platform
+1. Habilitar la integración de aplicación Hola para plataforma en la nube SAP HANA
 2. Configuración del inicio de sesión único (SSO)
-3. Asignación de un rol a un usuario
+3. Asignar un rol tooa a un usuario
 4. Asignación de usuarios
 
 ![Escenario](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790795.png "Escenario")
 
-## <a name="enabling-the-application-integration-for-sap-hana-cloud-platform"></a>Habilitación de la integración de aplicaciones para SAP HANA Cloud Platform
-El objetivo de esta sección es describir cómo habilitar la integración de las aplicaciones para SAP HANA Cloud Platform.
+## <a name="enabling-hello-application-integration-for-sap-hana-cloud-platform"></a>Habilitar la integración de aplicación Hola para plataforma en la nube SAP HANA
+objetivo de Hola de esta sección es toooutline la integración de aplicaciones de hello tooenable para plataforma en la nube SAP HANA.
 
-**Siga estos pasos con el fin de habilitar la integración de aplicaciones para SAP HANA Cloud Platform:**
+**integración de aplicaciones de hello tooenable para la plataforma de nube de SAP HANA, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del Portal de administración de Azure, haga clic en **Active Directory**.
+1. Hola Portal de administración de Azure, en el panel de navegación izquierdo de hello, haga clic en **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC700993.png "Active Directory")
-2. En la lista **Directory**, seleccione el directorio cuya integración desee habilitar.
-3. Para abrir la vista de aplicaciones, haga clic en **Applications**, en el menú superior de la vista de directorios.
+2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
+3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
    
     ![Aplicaciones](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC700994.png "Aplicaciones")
-4. Haga clic en **Agregar** en la parte inferior de la página.
+4. Haga clic en **agregar** final Hola de página Hola.
    
     ![Agregar aplicaciones](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC749321.png "Agregar aplicaciones")
-5. En el cuadro de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación de la galería**.
+5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
    
     ![Agregar una aplicación de la galería](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC749322.png "Agregar una aplicación de la galería")
-6. En el **cuadro de búsqueda**, escriba **SAP HANA Cloud Platform**.
+6. Hola **cuadro de búsqueda**, tipo **plataforma en la nube SAP HANA**.
    
     ![Galería de aplicaciones](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790796.png "Galería de aplicaciones")
-7. En el panel de resultados, seleccione **SAP HANA Cloud Platform** y haga clic en **Completar** para agregar la aplicación.
+7. En el panel de resultados de hello, seleccione **plataforma en la nube SAP HANA**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
    
     ![SAP Hana](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793929.png "SAP Hana")
    
 ## <a name="configure-single-sign-on"></a>Configurar inicio de sesión único
 
-El objetivo de esta sección es describir cómo se habilita la autenticación de los usuarios en SAP HANA Cloud Platform con su cuenta de Azure AD usando el protocolo SAML basado en la federación.
+objetivo de Hola de esta sección es toooutline cómo tooenable usuarios tooauthenticate tooSAP plataforma de nube de HANA con su cuenta de Azure AD utilizando federación basada en protocolo SAML de Hola.
 
-Como parte de este procedimiento, es necesario cargar un certificado codificado en base 64 en su inquilino de SAP HANA Cloud Platform.  
+Como parte de este procedimiento, se le tooupload requiere un inquilino de plataforma en la nube SAP HANA tooyour certificado codificado en base 64.  
 
-Si no está familiarizado con este procedimiento, consulte [Conversión de un certificado binario en un archivo de texto](http://youtu.be/PlgrzUZ-Y1o)
+Si no está familiarizado con este procedimiento, vea [cómo tooconvert certificado de un archivo binario en un archivo de texto](http://youtu.be/PlgrzUZ-Y1o)
 
-**Siga estos pasos para configurar el inicio de sesión único:**
+**tooconfigure inicio de sesión único, lleve a cabo Hola pasos:**
 
-1. En el Portal de Azure clásico, en la página de integración de aplicaciones de **SAP HANA Cloud Platform**, haga clic en **Configurar inicio de sesión único** para abrir el cuadro de diálogo **Configurar inicio de sesión único**.
+1. En el portal de Azure clásico en Hola Hola **plataforma en la nube SAP HANA** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen hello **configurar inicio de sesión único**cuadro de diálogo.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Configurar inicio de sesión único")
-2. En la página **¿Cómo desea que los usuarios inicien sesión en SAP HANA Cloud Platform?**, seleccione **Inicio de sesión único de Microsoft Azure AD** y haga clic en **Siguiente**.
+2. En hello **¿cómo desea que toosign a los usuarios en la plataforma de nube de HANA tooSAP** página, seleccione **Microsoft Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790797.png "Configurar inicio de sesión único")
-3. En otra ventana del explorador web, inicie sesión en SAP HANA Cloud Platform Cockpit en https://account.\<host horizontal\>.ondemand.com/cockpit (e.g.: *https://account.hanatrial.ondemand.com/cockpit*).
-4. Haga clic en la pestaña **Trust** (Confianza).
+3. En una ventana del explorador web diferente, inicie sesión en toohello cabina de plataforma de nube SAP HANA en https://account. \<host horizontal\>.ondemand.com/cockpit (p. ej.: *https://account.hanatrial.ondemand.com/cockpit*).
+4. Haga clic en hello **confianza** ficha.
    
     ![Confianza](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790800.png "Confianza")
-5. En la sección de administración de confianza, lleve a cabo estos pasos:
+5. En la sección de administración de confianza, siga Hola pasos:
    
     ![Obtención de metadatos](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793930.png "Obtención de metadatos")
    
-   1. Haga clic en la pestaña **Local Service Provide** (Proveedor de servicios local).
-   2. Para descargar el archivo de metadatos de SAP HANA Cloud Platform, haga clic en **Get Metadata**(Obtener metadatos).
-6. En el Portal de Azure clásico, en la página **Configurar dirección URL** de la aplicación, realice los pasos siguientes y haga clic en **Siguiente**.
+   1. Haga clic en hello **proveedor de servicios Local** ficha.
+   2. Hola toodownload archivo de metadatos de la plataforma en la nube SAP HANA, haga clic en **obtener metadatos**.
+6. En hello Azure Active portal clásico en hello **configurar URL de aplicación** página realizar pasos de Hola y, a continuación, haga clic en **siguiente**.
    
     ![Configurar dirección URL de la aplicación](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "Configurar dirección URL de la aplicación")
    
-   1. En el cuadro de texto **URL de inicio de sesión**, escriba la dirección URL utilizada por los usuarios para iniciar sesión en la aplicación **SAP HANA Cloud Platform**. Se trata de la URL específica de la cuenta de un recurso protegido en su aplicación SAP HANA Cloud Platform. La dirección URL se basa en el patrón siguiente: *https://\<nombreDeAplicación\>\<nombreDeCuenta\>.\<host horizontal\>.ondemand.com/\<ruta\_al\_recurso\_protegido\>* (p. ej.: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*).
+   1. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba Hola la dirección URL utilizada por su toosign a los usuarios en su **plataforma en la nube SAP HANA** aplicación. Se trata de una dirección URL específica de la cuenta de hello de un recurso protegido en la aplicación de la plataforma en la nube SAP HANA. Hello dirección URL se basa Hola siguiente patrón: *https://\<applicationName\>\<accountName\>.\< host horizontal\>.ondemand.com/\<ruta de acceso\_a\_protegido\_recursos\>*  (p. ej.: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
       
      >[!NOTE]
-     >Se trata de la URL de la aplicación SAP HANA Cloud Platform que requiere que autentique el usuario.
+     >Se trata de dirección URL de hello en la aplicación de plataforma en la nube SAP HANA que requiere hello tooauthenticate de usuario.
      > 
 
-   2. Abra el archivo de metadatos de SAP HANA Cloud Platform descargado y luego busque la etiqueta **ns3:AssertionConsumerService** .
-   3. Copie el valor del atributo **Ubicación** y péguelo en el cuadro de texto **URL de respuesta de SAP HANA Cloud Platform**.
+   2. Abrir archivo de metadatos de plataforma en la nube SAP HANA Hola descargado y, a continuación, busque hello **NS3: assertionconsumerservice** etiqueta.
+   3. Copiar valor de Hola de hello **ubicación** de atributo y, a continuación, péguelo en hello **URL de respuesta de plataforma de nube de SAP HANA** cuadro de texto.
 
-7. En la página **Configurar inicio de sesión único en SAP HANA Cloud Platform**, para descargar los metadatos, haga clic en **Descargar metadatos** y guarde el archivo en el equipo.
+7. En hello **configurar inicio de sesión único en plataforma en la nube SAP HANA** page, toodownload sus metadatos, haga clic en **descargar metadatos**y, a continuación, guarde el archivo hello en el equipo.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790799.png "Configurar inicio de sesión único")
-8. En SAP HANA Cloud Platform Cockpit, en la sección **Local Service Provider** (Proveedor de servicios local), realice los pasos siguientes:
+8. En hello cabina de plataforma de nube de SAP HANA, Hola **proveedor de servicios Local** sección, lleve a cabo Hola pasos:
    
     ![Administración de confianza](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793931.png "Administración de confianza")
    
   1. Haga clic en **Editar**.
   2. En **Configuration Type** (Tipo de configuración), seleccione **Custom** (Personalizado).
-  3. Como **Local Provider Name**(Nombre de proveedor local), deje el valor predeterminado.
-  4. Para generar una **Signing Key** (Clave de firma) y un par de claves **Signing Certificate** (Certificado de firma), haga clic en **Generate Key Pair** (Generar par de claves).
+  3. Como **nombre del proveedor Local**, deje el valor predeterminado de Hola.
+  4. toogenerate una **clave de firma de** y un **certificado de firma de** par de claves, haga clic en **generar el par de claves**.
   5. En **Principal Propagation** (Propagación de entidad de seguridad), seleccione **Disabled** (Deshabilitada).
   6. En **Force Authentication** (Forzar autenticación), seleccione **Disabled** (Deshabilitado).
   7. Haga clic en **Guardar**.
 
-9. Haga clic en la pestaña **Trusted Identity Provider** (Proveedor de identidades de confianza) y en **Add Trusted Identity Provider** (Agregar proveedor de identidad de confianza).
+9. Haga clic en hello **proveedor de identidad de confianza** ficha y, a continuación, haga clic en **Agregar proveedor de identidad de confianza**.
    
     ![Administración de confianza](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790802.png "Administración de confianza")
    
     >[!NOTE]
-    >Para administrar la lista de proveedores de identidades de confianza, deberá haber elegido el tipo de configuración personalizada en la sección del proveedor de servicios local. Para el tipo de configuración predeterminado, tendrá una confianza implícita y no editable para el servicio de id. de SAP. Para Ninguno, no tiene ninguna configuración de confianza.
+    >lista de hello toomanage de proveedores de identidad de confianza, deberá toohave elegido Hola tipo de configuración personalizada en hello sección proveedor de servicio Local. Para el tipo de configuración predeterminado, tendrá un toohello de confianza implícita que no puede modificar el servicio de Id. de SAP. Para Ninguno, no tiene ninguna configuración de confianza.
     > 
     > 
 
-10. Haga clic en la pestaña **General** y en **Browse** (Examinar) para cargar el archivo de metadatos descargados.
+10. Haga clic en hello **General** ficha y, a continuación, haga clic en **examinar** hello tooupload descargado el archivo de metadatos.
     
     ![Administración de confianza](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793932.png "Administración de confianza")
     
     >[!NOTE]
-    >Después de cargar el archivo de metadatos, los valores de **Dirección URL de inicio de sesión único**, **Dirección URL de cierre de sesión único** y **Certificado de firma** se rellenan automáticamente.
+    >Después de cargar el archivo de metadatos de hello, valores de hello para **dirección URL de inicio de sesión único**, **dirección URL de cierre de sesión único** y **certificado de firma de** se rellenan automáticamente.
     > 
     > 
 
-11. Haga clic en la pestaña **Attributes** (Atributos).
-12. En la pestaña **Attributes** (Atributos), realice los pasos siguientes:
+11. Haga clic en hello **atributos** ficha.
+12. En hello **atributos** , realice Hola siguiendo el paso:
     
     ![Atributos](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790804.png "Atributos") 
-  * Haga clic en **Add Assertion-Based Attribute**(Agregar atributo basado en la aserción) y agregue los siguientes atributos basados en aserción:
+  * Haga clic en **Agregar atributo**y, a continuación, agregue Hola siguientes atributos basados en aserción:
        
     | Atributo de aserción | Atributo de entidad de seguridad |
     | --- | --- |
@@ -153,54 +153,54 @@ Si no está familiarizado con este procedimiento, consulte [Conversión de un ce
     | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress |email 
    
      >[!NOTE]
-     >La configuración de los atributos depende de cómo se desarrollan las aplicaciones en HCP, es decir, qué atributos esperan en la respuesta de SAML y con qué nombre (atributo de la entidad de seguridad) tienen acceso a este atributo en el código.
+     >configuración de Hola de hello atributos depende de cómo Hola aplicaciones en HCP se desarrollan, es decir, qué atributos esperan en hello respuesta de SAML y con qué nombre (atributo de entidad de seguridad) tienen acceso a este atributo en el código de hello.
      > 
      >  
 
-    1.  El **atributo predeterminado** de la captura de pantalla solo es para fines ilustrativos. No es necesario para que el escenario funcione.   
-    2.  Los nombres y valores para el **Principal Attribute** (Atributo principal) que se muestran en la captura de pantalla dependen de cómo se desarrolle la aplicación. Es posible que la aplicación requiera diferentes asignaciones.
+    1.  Hola **atributo Default** Hola captura de pantalla es solo para fines ilustrativos. No es necesario trabajo de escenario de toomake Hola.   
+    2.  Hola nombres y valores de **atributo de entidad de seguridad** se muestra en hello captura de pantalla dependen de cómo se desarrolla la aplicación hello. Es posible que la aplicación requiera diferentes asignaciones.
      
-13. En el Portal de Azure clásico, en la página de diálogo **Configurar inicio de sesión único en SAP HANA Cloud Platform**, seleccione la confirmación de configuración de inicio de sesión único y haga clic en **Completar**.
+13. En el portal de Azure clásico en Hola Hola **configurar inicio de sesión único en plataforma en la nube SAP HANA** página de diálogo, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **completar**.
     
     ![Configurar inicio de sesión único](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC796933.png "Configurar inicio de sesión único")
 
 ###<a name="assertion-based-groups"></a>Grupos basados en aserción
 Como paso opcional, puede configurar grupos basados en aserciones para su proveedor de identidades de Azure Active Directory.
 
-El uso de grupos en SAP HANA Cloud Platform le permite asignar dinámicamente uno o más usuarios a uno o más roles en sus aplicaciones de SAP HANA Cloud Platform, determinados por los valores de los atributos de la aserción de SAML 2.0. 
+Uso de grupos en plataforma en la nube SAP HANA permite asignar toodynamically uno o más tooone de los usuarios o más roles en las aplicaciones de la plataforma en la nube SAP HANA, determinado por los valores de los atributos de hello SAML 2.0 aserción. 
 
-Por ejemplo, si la aserción contiene el atributo "*contrato=temporal*", puede que desee que se agreguen todos los usuarios afectados al grupo "*TEMPORAL*". El grupo "*TEMPORAL*" puede contener uno o varios roles de una o más de las aplicaciones implementadas en la cuenta de SAP HANA Cloud Platform.
+Por ejemplo, si hello la aserción contiene el atributo de Hola "*contrato = temporal*", puede que desee todos los grupos de usuarios afectados toobe toohello agregado"*temporal*". grupo de Hola "*temporal*" puede contener uno o varios roles de una o varias de las aplicaciones implementadas en su cuenta de plataforma en la nube SAP HANA.
  
-Use grupos basados en aserciones si quiere asignar de manera simultánea muchos usuarios a uno o más roles de las aplicaciones en su cuenta de SAP HANA Cloud Platform. Si quiere asignar un número único o pequeño de usuarios a roles específicos, recomendamos asignarlos directamente en la pestaña "**Autorizaciones**" de la cabina de SAP HANA Cloud Platform.
+Utilice grupos basados en aserción cuando desee asignar toosimultaneously tooone muchos de los usuarios o más roles de las aplicaciones en su cuenta de plataforma en la nube SAP HANA. Si desea que solo un número único o pequeño de usuarios toospecific funciones tooassign, recomendamos asignarlos directamente en hello "**autorizaciones**" pestaña de cabina de plataforma en la nube SAP HANA Hola.
 
-## <a name="assign-a-role-to-a-user"></a>Asignar de un rol a un usuario
-Para permitir que los usuarios de Azure AD inicien sesión en SAP HANA Cloud Platform, debe asignarles roles en SAP HANA Cloud Platform.
+## <a name="assign-a-role-tooa-user"></a>Asignar a un usuario de tooa de rol
+En orden tooenable toolog de los usuarios de Azure AD en plataforma en la nube SAP HANA, debe asignar roles de hello toothem de plataforma en la nube SAP HANA.
 
-**Para asignar un rol a un usuario, lleve a cabo los siguientes pasos:**
+**tooassign un usuario de tooa rol, lleve a cabo Hola pasos:**
 
-1. Inicie sesión en su cabina de **SAP HANA Cloud Platform** .
-2. Lleve a cabo los siguientes pasos:
+1. Inicie sesión en tooyour **plataforma en la nube SAP HANA** cabina.
+2. Realice Hola siguiente:
    
    ![Autorizaciones](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790805.png "Autorizaciones")
    
   1. Haga clic en **Authorization**(Autorización).
-  2. Haga clic en la pestaña **Usuarios** .
-  3. En el cuadro de texto **User** (Usuario), escriba la dirección de correo electrónico del usuario.
-  4. Haga clic en **Assign** (Asignar) para asignar el usuario a un rol.
+  2. Haga clic en hello **usuarios** ficha.
+  3. Hola **usuario** cuadro de texto, dirección de correo electrónico del usuario de tipo hello.
+  4. Haga clic en **asignar** rol tooa de tooassign Hola usuario.
   5. Haga clic en **Guardar**.
 
 ## <a name="assign-users"></a>Asignar usuarios
-Para probar la configuración, debe conceder acceso a los usuarios de Azure AD a los que quiere permitir el uso de su aplicación.
+tootest la configuración, debe toogrant los usuarios de hello Azure AD que desee tooallow con su tooit de acceso de la aplicación mediante la asignación de ellos.
 
-**Para asignar usuarios a SAP HANA Cloud Platform, lleve a cabo los siguientes pasos:**
+**tooassign usuarios tooSAP plataforma de nube de HANA, lleve a cabo Hola pasos:**
 
-1. En el Portal de Azure clásico, cree una cuenta de prueba.
-2. En la página de integración de aplicaciones de **SAP HANA Cloud Platform**, haga clic en **Asignar usuarios**.
+1. Hola portal de Azure clásico, cree una cuenta de prueba.
+2. En hello **plataforma en la nube SAP HANA** página de integración de aplicaciones, haga clic en **asignar usuarios**.
    
    ![Asignar usuarios](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790806.png "Asignar usuarios")
-3. Seleccione su usuario de prueba, haga clic en **Asignar** y en **Sí** para confirmar la asignación.
+3. Seleccione el usuario de prueba, haga clic en **asignar**y, a continuación, haga clic en **Sí** tooconfirm su asignación.
    
    ![Sí](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC767830.png "Sí")
 
-Si desea probar la configuración de inicio de sesión único (SSO), abra el panel de acceso. Para obtener más información sobre el Panel de acceso, vea [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Si desea tootest la configuración de SSO, abra Hola Panel de acceso. Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "Administración de cuentas de Servicios multimedia de Azure con PowerShell"
-description: Aprenda a administrar las cuentas de Servicios multimedia de Azure con los cmdlets de PowerShell.
+title: aaaManage cuentas de servicios multimedia de Azure con PowerShell
+description: "Obtenga información acerca de cómo cuentas toomanage servicios multimedia de Azure con cmdlets de PowerShell."
 author: Juliako
 manager: erikre
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: juliako
-ms.openlocfilehash: 3d999d9e27844bc0164cc3572522b9ec022118a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e8f97bb2393343e45fabf9c437b4fc09f2525dc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-media-services-accounts-with-powershell"></a>Administración de cuentas de Servicios multimedia de Azure con PowerShell
 > [!div class="op_single_selector"]
@@ -27,12 +27,12 @@ ms.lasthandoff: 07/11/2017
 > * [REST](https://docs.microsoft.com/rest/api/media/mediaservice)
 > 
 > [!NOTE]
-> Para poder crear una cuenta de Servicios multimedia de Azure, debe tener una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Evaluación gratuita de Azure</a>.
+> toocreate toobe capaz de una cuenta de servicios multimedia de Azure, debe tener una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Evaluación gratuita de Azure</a>.
 > 
 > 
 
 ## <a name="overview"></a>Información general
-En este artículo se muestran los cmdlets de Azure PowerShell para Servicios multimedia de Azure (AMS) en el marco de trabajo de Azure Resource Manager. Los cmdlets existen en el espacio de nombres **Microsoft.Azure.Commands.Media** .
+Este artículo enumeran los cmdlets de PowerShell de Azure de Hola para servicios de multimedia de Azure (AMS) en el marco de trabajo de hello Azure Resource Manager. Existen cmdlets de Hola Hola **Microsoft.Azure.Commands.Media** espacio de nombres.
 
 ## <a name="versions"></a>Versiones
 **ApiVersion**:   "2015-10-01"
@@ -52,7 +52,7 @@ Conjunto de parámetros: StorageAccountsParamSet
 ### <a name="parameters"></a>Parámetros
 **-ResourceGroupName &lt;String&gt;**
 
-Especifica el nombre del grupo de recursos al que pertenece este servicio multimedia.
+Especifica el nombre de Hola de toowhich de grupo de recursos de hello que pertenece este servicio de medios.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -64,7 +64,7 @@ Especifica el nombre del grupo de recursos al que pertenece este servicio multim
 
 **-AccountName &lt;String&gt;**
 
-Especifica el nombre del servicio multimedia.
+Especifica el nombre de Hola Hola del servicio de media.
 
 | Alias | Nombre |
 | --- | --- |
@@ -76,7 +76,7 @@ Especifica el nombre del servicio multimedia.
 
 **-Location &lt;String&gt;**
 
-Especifica la ubicación del recurso del servicio multimedia.
+Especifica la ubicación del recurso Hola Hola del servicio de media.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -88,10 +88,10 @@ Especifica la ubicación del recurso del servicio multimedia.
 
 **-StorageAccountId &lt;String&gt;**
 
-Especifica una cuenta de almacenamiento principal asociada con el servicio multimedia.
+Especifica una cuenta de almacenamiento principal asociado con el servicio de medios de Hola.
 
-* Solo se admite una cuenta de almacenamiento nueva (creada con la API de Resource Manager).
-* La cuenta de almacenamiento debe existir y tener la misma ubicación que el servicio multimedia.
+* Nueva cuenta de almacenamiento (creado con la API del Administrador de recursos de Hola) solo se admite.
+* debe existir Hello cuenta de almacenamiento y tiene Hola misma ubicación con servicios multimedia de Hola.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -104,10 +104,10 @@ Especifica una cuenta de almacenamiento principal asociada con el servicio multi
 
 **-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
-Especifica cuentas de almacenamiento asociadas con el servicio multimedia.
+Especifica las cuentas de almacenamiento asociado con el servicio de medios de Hola.
 
-* Solo se admite una cuenta de almacenamiento nueva (creada con la API de Resource Manager).
-* La cuenta de almacenamiento debe existir y tener la misma ubicación que el servicio multimedia.
+* Nueva cuenta de almacenamiento (creado con la API del Administrador de recursos de Hola) solo se admite.
+* debe existir Hello cuenta de almacenamiento y tiene Hola misma ubicación con servicios multimedia de Hola.
 * Solo una cuenta de almacenamiento se puede identificar como principal.
 
 | Alias | Ninguna |
@@ -121,7 +121,7 @@ Especifica cuentas de almacenamiento asociadas con el servicio multimedia.
 
 **-Tags &lt;Hashtable&gt;**
 
-Especifica una tabla hash de las etiquetas asociadas con el servicio multimedia.
+Especifica una tabla hash de las etiquetas de Hola que están asociados con el servicio de medios de Hola.
 
 * Ejemplo: @{"tag1"="value1";" tag2 "=: valor2"}
 
@@ -135,13 +135,13 @@ Especifica una tabla hash de las etiquetas asociadas con el servicio multimedia.
 
 **&lt;CommandParameters&gt;**
 
-Este cmdlet admite los parámetros comunes siguientes: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction y -WarningVariable.
+Este cmdlet admite parámetros comunes de hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction y - WarningVariable.
 
 ### <a name="inputs"></a>Entradas
-El tipo de entrada es el tipo de los objetos que puede canalizar al cmdlet.
+tipo de entrada de Hello es tipo hello de hello objetos que se puede canalizar el cmdlet toohello.
 
 ### <a name="outputs"></a>Salidas
-El tipo de salida es el tipo de los objetos que emite el cmdlet.
+tipo de salida de Hello es el tipo de saludo de objetos de Hola que Hola cmdlet emite.
 
 ## <a name="set-azurermmediaservice"></a>Set-AzureRmMediaService
 Actualiza un servicio multimedia.
@@ -152,7 +152,7 @@ Actualiza un servicio multimedia.
 ### <a name="parameters"></a>Parámetros
 **-ResourceGroupName &lt;String&gt;**
 
-Especifica el nombre del grupo de recursos al que pertenece este servicio multimedia.
+Especifica el nombre de Hola de toowhich de grupo de recursos de hello que pertenece este servicio de medios.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -164,7 +164,7 @@ Especifica el nombre del grupo de recursos al que pertenece este servicio multim
 
 **-AccountName &lt;String&gt;**
 
-Especifica el nombre del servicio multimedia.
+Especifica el nombre de Hola Hola del servicio de media.
 
 | Alias | Nombre |
 | --- | --- |
@@ -176,10 +176,10 @@ Especifica el nombre del servicio multimedia.
 
 **-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
-Especifica cuentas de almacenamiento asociadas con el servicio multimedia.
+Especifica las cuentas de almacenamiento asociado con el servicio de medios de Hola.
 
-* Solo se admite una cuenta de almacenamiento nueva (creada con la API de Resource Manager).
-* La cuenta de almacenamiento debe existir y tener la misma ubicación que el servicio multimedia.
+* Nueva cuenta de almacenamiento (creado con la API del Administrador de recursos de Hola) solo se admite.
+* debe existir Hello cuenta de almacenamiento y tiene Hola misma ubicación con servicios multimedia de Hola.
 * Solo una cuenta de almacenamiento se puede identificar como principal.
 
 | Alias | Ninguna |
@@ -193,9 +193,9 @@ Especifica cuentas de almacenamiento asociadas con el servicio multimedia.
 
 **-Tags &lt;Hashtable&gt;**
 
-Especifica una tabla hash de las etiquetas asociadas con este servicio multimedia.
+Especifica una tabla hash de las etiquetas de Hola que están asociados a este servicio de medios.
 
-* Las etiquetas asociadas con el servicio multimedia se reemplazan por el valor que especifica el cliente.
+* etiquetas de Hola que están asociadas con el servicio de medios de Hola se reemplazan con el valor especificado por el cliente de Hola.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -207,13 +207,13 @@ Especifica una tabla hash de las etiquetas asociadas con este servicio multimedi
 
 **&lt;CommandParameters&gt;**
 
-Este cmdlet admite los parámetros comunes siguientes: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction y -WarningVariable.
+Este cmdlet admite parámetros comunes de hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction y - WarningVariable.
 
 ### <a name="inputs"></a>Entradas
-El tipo de entrada es el tipo de los objetos que puede canalizar al cmdlet.
+tipo de entrada de Hello es tipo hello de hello objetos que se puede canalizar el cmdlet toohello.
 
 ### <a name="outputs"></a>Salidas
-El tipo de salida es el tipo de los objetos que emite el cmdlet.
+tipo de salida de Hello es el tipo de saludo de objetos de Hola que Hola cmdlet emite.
 
 ## <a name="remove-azurermmediaservice"></a>Remove-AzureRmMediaService
 Quita un servicio multimedia.
@@ -224,7 +224,7 @@ Quita un servicio multimedia.
 ### <a name="parameters"></a>Parámetros
 **-ResourceGroupName &lt;String&gt;**
 
-Especifica el nombre del grupo de recursos al que pertenece este servicio multimedia.
+Especifica el nombre de Hola de toowhich de grupo de recursos de hello que pertenece este servicio de medios.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -236,7 +236,7 @@ Especifica el nombre del grupo de recursos al que pertenece este servicio multim
 
 **-AccountName &lt;String&gt;**
 
-Especifica el nombre del servicio multimedia.
+Especifica el nombre de Hola Hola del servicio de media.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -248,13 +248,13 @@ Especifica el nombre del servicio multimedia.
 
 **&lt;CommandParameters&gt;**
 
-Este cmdlet admite los parámetros comunes siguientes: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction y -WarningVariable.
+Este cmdlet admite parámetros comunes de hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction y - WarningVariable.
 
 ### <a name="inputs"></a>Entradas
-El tipo de entrada es el tipo de los objetos que puede canalizar al cmdlet.
+tipo de entrada de Hello es tipo hello de hello objetos que se puede canalizar el cmdlet toohello.
 
 ### <a name="outputs"></a>Salidas
-El tipo de salida es el tipo de los objetos que emite el cmdlet.
+tipo de salida de Hello es el tipo de saludo de objetos de Hola que Hola cmdlet emite.
 
 ## <a name="get-azurermmediaservice"></a>Get-AzureRmMediaService
 Obtiene todos los servicios multimedia de un grupo de recursos o un servicio multimedia con un nombre determinado.
@@ -271,7 +271,7 @@ ParameterSet: AccountNameParameterSet
 ### <a name="parameters"></a>Parámetros
 **-ResourceGroupName &lt;String&gt;**
 
-Especifica el nombre del grupo de recursos al que pertenece este servicio multimedia.
+Especifica el nombre de Hola de toowhich de grupo de recursos de hello que pertenece este servicio de medios.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -285,7 +285,7 @@ Especifica el nombre del grupo de recursos al que pertenece este servicio multim
 
 **-AccountName &lt;String&gt;**
 
-Especifica el nombre del servicio multimedia.
+Especifica el nombre de Hola Hola del servicio de media.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -298,13 +298,13 @@ Especifica el nombre del servicio multimedia.
 
 **&lt;CommandParameters&gt;**
 
-Este cmdlet admite los parámetros comunes siguientes: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction y -WarningVariable.
+Este cmdlet admite parámetros comunes de hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction y - WarningVariable.
 
 ### <a name="inputs"></a>Entradas
-El tipo de entrada es el tipo de los objetos que puede canalizar al cmdlet.
+tipo de entrada de Hello es tipo hello de hello objetos que se puede canalizar el cmdlet toohello.
 
 ### <a name="outputs"></a>Salidas
-El tipo de salida es el tipo de los objetos que emite el cmdlet.
+tipo de salida de Hello es el tipo de saludo de objetos de Hola que Hola cmdlet emite.
 
 ## <a name="get-azurermmediaservicekeys"></a>Get-AzureRmMediaServiceKeys
 Obtiene las claves de un servicio multimedia.
@@ -315,7 +315,7 @@ Obtiene las claves de un servicio multimedia.
 ### <a name="parameters"></a>Parámetros
 **-ResourceGroupName &lt;String&gt;**
 
-Especifica el nombre del grupo de recursos al que pertenece este servicio multimedia.
+Especifica el nombre de Hola de toowhich de grupo de recursos de hello que pertenece este servicio de medios.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -327,7 +327,7 @@ Especifica el nombre del grupo de recursos al que pertenece este servicio multim
 
 **-AccountName &lt;String&gt;**
 
-Especifica el nombre del servicio multimedia.
+Especifica el nombre de Hola Hola del servicio de media.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -339,13 +339,13 @@ Especifica el nombre del servicio multimedia.
 
 **&lt;CommandParameters&gt;**
 
-Este cmdlet admite los parámetros comunes siguientes: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction y -WarningVariable.
+Este cmdlet admite parámetros comunes de hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction y - WarningVariable.
 
 ### <a name="inputs"></a>Entradas
-El tipo de entrada es el tipo de los objetos que puede canalizar al cmdlet.
+tipo de entrada de Hello es tipo hello de hello objetos que se puede canalizar el cmdlet toohello.
 
 ### <a name="outputs"></a>Salidas
-El tipo de salida es el tipo de los objetos que emite el cmdlet.
+tipo de salida de Hello es el tipo de saludo de objetos de Hola que Hola cmdlet emite.
 
 ## <a name="set-azurermmediaservicekey"></a>Set-AzureRmMediaServiceKey
 Regenera una clave principal o secundaria de un servicio multimedia.
@@ -356,7 +356,7 @@ Regenera una clave principal o secundaria de un servicio multimedia.
 ### <a name="parameters"></a>Parámetros
 **-ResourceGroupName &lt;String&gt;**
 
-Especifica el nombre del grupo de recursos al que pertenece este servicio multimedia.
+Especifica el nombre de Hola de toowhich de grupo de recursos de hello que pertenece este servicio de medios.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -368,7 +368,7 @@ Especifica el nombre del grupo de recursos al que pertenece este servicio multim
 
 **-AccountName &lt;String&gt;**
 
-Especifica el nombre del servicio multimedia.
+Especifica el nombre de Hola Hola del servicio de media.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -380,7 +380,7 @@ Especifica el nombre del servicio multimedia.
 
 **-KeyType &lt;KeyType&gt;**
 
-Especifica el tipo de clave del servicio multimedia.
+Especifica el tipo de clave de Hola Hola del servicio de media.
 
 * Principal o secundaria
 
@@ -394,16 +394,16 @@ Especifica el tipo de clave del servicio multimedia.
 
 **&lt;CommandParameters&gt;**
 
-Este cmdlet admite los parámetros comunes siguientes: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction y -WarningVariable.
+Este cmdlet admite parámetros comunes de hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction y - WarningVariable.
 
 ### <a name="inputs"></a>Entradas
-El tipo de entrada es el tipo de los objetos que puede canalizar al cmdlet.
+tipo de entrada de Hello es tipo hello de hello objetos que se puede canalizar el cmdlet toothe.
 
 ### <a name="outputs"></a>Salidas
-El tipo de salida es el tipo de los objetos que emite el cmdlet.
+tipo de salida de Hello es el tipo de saludo de objetos de Hola que Hola cmdlet emite.
 
 ## <a name="sync-azurermmediaservicestoragekeys"></a>Sync-AzureRmMediaServiceStorageKeys
-Sincroniza las claves de cuenta de almacenamiento de una cuenta de almacenamiento asociada con el servicio multimedia.
+Sincroniza las claves de cuenta de almacenamiento para una cuenta de almacenamiento asociada con el servicio de medios de Hola.
 
 ### <a name="syntax"></a>Sintaxis
     Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountId] <string>  [<CommonParameters>]
@@ -411,7 +411,7 @@ Sincroniza las claves de cuenta de almacenamiento de una cuenta de almacenamient
 ### <a name="parameters"></a>Parámetros
 **-ResourceGroupName &lt;String&gt;**
 
-Especifica el nombre del grupo de recursos al que pertenece este servicio multimedia.
+Especifica el nombre de Hola de toowhich de grupo de recursos de hello que pertenece este servicio de medios.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -423,7 +423,7 @@ Especifica el nombre del grupo de recursos al que pertenece este servicio multim
 
 **-AccountName &lt;String&gt;**
 
-Especifica el nombre del servicio multimedia.
+Especifica el nombre de Hola Hola del servicio de media.
 
 | Alias | Ninguna |
 | --- | --- |
@@ -435,7 +435,7 @@ Especifica el nombre del servicio multimedia.
 
 **-StorageAccountId &lt;String&gt;**
 
-Especifica la cuenta de almacenamiento asociada con el servicio multimedia.
+Especifica la cuenta de almacenamiento de hello asociada con el servicio de medios de Hola.
 
 | Alias | Id |
 | --- | --- |
@@ -447,13 +447,13 @@ Especifica la cuenta de almacenamiento asociada con el servicio multimedia.
 
 **&lt;CommandParameters&gt;**
 
-Este cmdlet admite los parámetros comunes siguientes: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction y -WarningVariable.
+Este cmdlet admite parámetros comunes de hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction y - WarningVariable.
 
 ### <a name="inputs"></a>Entradas
-El tipo de entrada es el tipo de los objetos que puede canalizar al cmdlet.
+tipo de entrada de Hello es tipo hello de hello objetos que se puede canalizar el cmdlet toohello.
 
 ### <a name="outputs"></a>Salidas
-El tipo de salida es el tipo de los objetos que emite el cmdlet.
+tipo de salida de Hello es el tipo de saludo de objetos de Hola que Hola cmdlet emite.
 
 ## <a name="next-step"></a>Paso siguiente
 Revise las rutas de aprendizaje de Servicios multimedia.

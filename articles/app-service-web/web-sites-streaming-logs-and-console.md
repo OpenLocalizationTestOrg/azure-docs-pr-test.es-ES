@@ -1,5 +1,5 @@
 ---
-title: Consola y registros de streaming
+title: registros de aaaStreaming y la consola
 description: "Información general de la consola y los registros de transmisión"
 author: btardif
 manager: erikre
@@ -14,24 +14,24 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: byvinyal
-ms.openlocfilehash: 120ce6b115820728b9f853e9ff349beb0ef29c9d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb4b8ce5358da12041e164dfff8f43790dd67924
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="streaming-logs-and-the-console"></a>Registros de transmisión y la consola
+# <a name="streaming-logs-and-hello-console"></a>Hello consola y los registros de streaming
 ## <a name="streaming-logs"></a>Registros de transmisión
-**Azure Portal** ofrece un visor de registros de streaming integrado que le permite ver los eventos de seguimiento desde las aplicaciones de **App Service** en tiempo real.  
+Hola **portal de Azure** proporciona un visor de registro de transmisión por secuencias integrado que le permite ver los eventos de seguimiento de su **servicio de aplicaciones** aplicaciones en tiempo real.  
 
 Configurar esta característica requiere algunos pasos sencillos:
 
 * Escritura de seguimientos en el código.
 * Habilitación de **registros de diagnósticos** de aplicación para la aplicación
-* Vea la transmisión desde la interfaz de usuario de **registros de streaming** integrados en **Azure Portal**.
+* Secuencia de Hola de vista de integradas de hello **registros de Streaming** interfaz de usuario en hello **portal de Azure**.
 
-### <a name="how-to-write-traces-in-your-code"></a>Cómo escribir los seguimientos en el código
-La escritura de seguimientos en el código es sencilla.  En C# es tan fácil como escribir el siguiente código:
+### <a name="how-toowrite-traces-in-your-code"></a>¿Cómo realiza el seguimiento de toowrite en el código
+La escritura de seguimientos en el código es sencilla.  En C# es tan fácil como escribir el siguiente código de hello:
 
 `````````````````````````
 Trace.TraceInformation("My trace statement");
@@ -45,34 +45,34 @@ Trace.TraceWarning("My warning statement");
 Trace.TraceError("My error statement");
 `````````````````````````
 
-La clase de seguimientos se encuentra en el espacio de nombres System.Diagnostics.
+Hola clase Trace reside en el espacio de nombres de hello System.Diagnostics.
 
-En una aplicación node.js, puede escribir este código para conseguir el mismo resultado:
+Puede escribir este código en una aplicación node.js tooachieve Hola el mismo resultado:
 
 `````````````````````````
 console.log("My trace statement").
 `````````````````````````
 
-### <a name="how-to-enable-and-view-the-streaming-logs"></a>Habilitación y visualización de registros de transmisión
-![][BrowseSitesScreenshot] El diagnóstico se habilita por aplicación. Para comenzar, vaya al sitio en el que quiere habilitar esta característica.  
+### <a name="how-tooenable-and-view-hello-streaming-logs"></a>¿Cómo tooenable y vista Hola registros de streaming
+![][BrowseSitesScreenshot] El diagnóstico se habilita por aplicación. Comience por explorar sitio toohello que le gustaría tooenable esta característica en.  
 
-![][DiagnosticsLogs] En el menú de configuración, desplácese hacia abajo hasta la sección **Supervisión**y haga clic en **(1) Registros de diagnóstico**. Luego, **(2) habilite** **Registro de la aplicación (sistema de archivos)** o **Registro de la aplicación (blob)**. La opción **Nivel** le permite cambiar el nivel de gravedad del seguimiento que se captura. Si solo se está intentando familiarizar con la característica, establezca el nivel en **Detallado** para asegurarse de que se recopilarán todas las instrucciones de seguimiento.
+![][DiagnosticsLogs]En el menú de configuración, desplácese hacia abajo toohello **supervisión** sección y haga clic en **(1) registros de diagnóstico**. A continuación, **enable (2)** **(Filesystem) de registro de aplicaciones** o **(blob) de registro de aplicaciones** hello **nivel** opción permite cambiar Hola nivel de gravedad de seguimientos toocapture. Si simplemente está tratando de tooget familiarizado con la característica de hello, establecer el nivel de hello demasiado**detallado** tooensure todas las instrucciones de seguimiento se recopilan.
 
-Haga clic en **SAVE** en la parte superior del cuadro y estará listo para ver los registros.
+Haga clic en **guardar** princip Hola de hoja de Hola y está listo tooview registros.
 
 > [!NOTE]
-> Cuanto más alto sea el **nivel de gravedad**, más recursos del registro se consumen y más seguimientos se generarán. Asegúrese de que el **nivel de gravedad** está configurado en el nivel de detalle correcto para un sitio de producción o de alto tráfico. 
+> Hola Hola superior **nivel de gravedad** hello más recursos son consumido toolog y Hola se producen varios seguimientos. Asegúrese de que **nivel de gravedad** está configurado toohello detalle correcto para un sitio de mucho tráfico o de producción. 
 > 
 > 
 
-![][StreamingLogsScreenshot] Para ver los **registros de streaming** desde Azure Portal, haga clic en **(1) Secuencia de registro** también en la sección **Supervisión** del menú de configuración. Si la aplicación escribe instrucciones de seguimiento activamente, debe verlas en la **(2) interfaz de usuario de registros de streaming** prácticamente en tiempo real.
+![][StreamingLogsScreenshot]Hola tooview **los registros de streaming** desde dentro de hello portal de Azure, haga clic en **secuencia de registro (1)** también en hello **supervisión** sección del menú de configuración de Hola. Si la aplicación está escribiendo activamente las instrucciones de seguimiento, debería ver Hola **(2) de transmisión por secuencias registra la interfaz de usuario** casi en tiempo real.
 
 ## <a name="console"></a>Consola
-**Azure Portal** proporciona acceso a la consola para la aplicación. Puede explorar el sistema de archivos de la aplicación y ejecutar los scripts de cmd/powershell. Se realizará la vinculación mediante los mismos permisos establecidos en el código de la aplicación en ejecución cuando se ejecuten los comandos de consola. El acceso a directorios protegidos o a scripts de ejecución que requieren permisos elevados están bloqueado.  
+Hola **portal de Azure** proporciona la aplicación de consola acceso tooyour. Puede explorar el sistema de archivos de la aplicación y ejecutar los scripts de cmd/powershell. Se enlazan por hello mismos permisos establecidos como la ejecución de código de aplicación al ejecutar comandos de la consola. Directorios de tooprotected de acceso o ejecutar scripts que requieren permisos elevados está bloqueado.  
 
-![][ConsoleScreenshot] En el menú de configuración, desplácese hacia abajo hasta la sección **Herramientas de desarrollo** y haga clic en **(1) Consola**; luego, la interfaz de usuario de la **(2) consola** aparece a la derecha.
+![][ConsoleScreenshot]En el menú de configuración, desplácese hacia abajo demasiado**herramientas de desarrollo** sección y haga clic en **(1) consola** hello y **(2) consola** toohello derecha abre la interfaz de usuario.
 
-Para familiarizarse con la **consola**, pruebe estos comandos básicos:
+tooget familiarizado con hello **consola**, intente comandos básicos, como:
 
 `````````````````````````
 dir

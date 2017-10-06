@@ -1,6 +1,6 @@
 ---
-title: Contenido del SDK de Windows Universal Apps
-description: "Obtenga información sobre el contenido del SDK de Windows Universal Apps para Azure Mobile Engagement"
+title: aaaWindows contenido de SDK de aplicaciones Universal
+description: "Obtenga información sobre el contenido de Hola de SDK de aplicaciones universales de Windows hello para Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,30 +14,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: b28d525ab16487b963772e23fdecd11f94dcabd1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a8013d2433c0be62d737c8bc6e8360ed79bbe532
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-universal-apps-sdk-content"></a>Contenido del SDK de Windows Universal Apps
-En este documento se enumera y describe el contenido implementado por el SDK de la aplicación.
+Este documento enumera y describe el contenido de hello implementada por hello SDK en la aplicación.
 
-## <a name="the-resources-folder"></a>La carpeta `/Resources`
-En esta carpeta se incluyen todos los recursos que necesita Mobile Engagement. Además, puede personalizarlas para adaptarlas a su aplicación.
+## <a name="hello-resources-folder"></a>Hola `/Resources` carpeta
+Esta carpeta contiene todos los recursos de Hola que necesita de Mobile Engagement. También puede personalizar toofit la aplicación.
 
-* `EngagementConfiguration.xml` : el archivo de configuración de Mobile Engagement, donde puede personalizar la configuración de Mobile Engagement (cadena de conexión de Mobile Engagement, bloqueo de informes, etc.).
+* `EngagementConfiguration.xml`: Hola archivo de configuración de Mobile Engagement, que es donde puede personalizar la configuración de Mobile Engagement (cadena de conexión de Mobile Engagement, bloqueo de informes...).
 
 ### <a name="html-folder"></a>Carpeta /html
-* `EngagementNotification.html` : El diseño html de vista web `Notification` para banners en aplicación.
-* `EngagementAnnouncement.html` : El diseño html de vista web `Announcement` para vistas intersticiales en aplicación.
+* `EngagementNotification.html`: Hola `Notification` vista de diseño de html para los titulares de la aplicación web.
+* `EngagementAnnouncement.html`: Hola `Announcement` vista de diseño de html para las vistas intersticiales en la aplicación web.
 
 ### <a name="images-folder"></a>Carpeta /images
-* `EngagementIconNotification.png`: el icono de marca que se muestra a la izquierda de una notificación, sustituya este por el icono de la marca.
-* `EngagementIconOk.png`: el icono `Ok` de las páginas de contenido de Cobertura para el botón de acción o validación.
-* `EngagementIconNOK.png`: el icono `NOK` que se usa cuando se deshabilita el botón de validación de las páginas de contenido de Cobertura.
-* `EngagementIconClose.png`: el icono `Close` de las notificaciones y el contenido de Cobertura para el botón Descartar.
+* `EngagementIconNotification.png`: icono de marca de hello mostrado en hello a la izquierda de una notificación, remplazar éste mediante el icono de marca.
+* `EngagementIconOk.png`: Hola `Ok` icono de páginas de contenido de alcance de hello para el botón de acción o validación de Hola.
+* `EngagementIconNOK.png`: Hola `NOK` icono usado cuando se deshabilita el botón de validación de Hola Hola alcance páginas de contenido.
+* `EngagementIconClose.png`: Hola `Close` icono del programa Hola a llegar a las notificaciones y contenidos de hello descartar botón.
 
 ### <a name="overlay-folder"></a>Carpeta /overlay
-* `EngagementPageOverlay.cs` : La página de superposición responsable de agregar la IU en aplicación de Engagement Reach a su hijo.
+* `EngagementPageOverlay.cs`: página de superposición de hello responsable de agregar Hola interacción alcanzar secundarios de tooits de interfaz de usuario de la aplicación.
 

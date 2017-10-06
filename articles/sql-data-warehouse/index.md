@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure SQL Data Warehouse: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a usar SQL Data Warehouse, que combina SQL Server con un procesamiento paralelo masivo. En la documentación se muestra cómo cargar, analizar, administrar y exportar datos."
+title: "aaaAzure documentación de almacenamiento de datos de SQL - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse almacenamiento de datos de SQL, combinación de forma masiva de SQL Server con procesamiento en paralelo. Documentación muestra cómo tooload, analizar, administrar y exportar datos."
 services: sql-data-warehouse
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b9f5bc85d6fca466be7abbe67b400856e1635459
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a3deb9fe2dbd29cdc250510ca7368b4d71422658
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-data-warehouse-documentation"></a>Documentación de SQL Data Warehouse
 
-Aprenda a usar SQL Data Warehouse, que combina la base de datos relacional de SQL Server con un procesamiento paralelo masivo. En los tutoriales y otra documentación, se muestra cómo cargar datos en el almacén y cómo analizarlos, administrarlos y exportarlos.
+Obtenga información acerca de cómo toouse de almacenamiento de datos SQL, que combina la base de datos relacional SQL Server de hello con un procesamiento paralelo masivo. Tutoriales y otra documentación mostrarle cómo tooload datos en almacenamiento de hello, a continuación, analizar, administrar y exportarlo.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -71,7 +71,7 @@ Aprenda a usar SQL Data Warehouse, que combina la base de datos relacional de SQ
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción a la creación de SQL Data Warehouse con Azure Portal</h3>
+                        <h3>Empezar a crear un almacén de datos de SQL mediante Hola Portal de Azure</h3>
                     </div>
                 </div>
             </div>

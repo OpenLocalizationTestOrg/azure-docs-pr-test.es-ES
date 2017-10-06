@@ -1,70 +1,53 @@
 ---
-title: "Lección complementaria del tutorial de Azure Analysis Services: seguridad dinámica | Microsoft Docs"
-description: "En este artículo se describe cómo usar la seguridad dinámica mediante los filtros de fila del tutorial de Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 05/26/2017
-ms.author: owend
-ms.openlocfilehash: 4e97a558ae1a2601b5275a73164b483351f03857
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
-ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+título: aaa "lección complementaria tutorial de Analysis Services de Azure: seguridad dinámica | Descripción de Microsoft Docs": describe cómo toouse la seguridad dinámica utilizando fila filtra hello Azure tutorial de Analysis Services.
+servicios: documentationcenter de analysis services: '' autor: minewiskan manager: erikre editor: '' etiquetas: ''
+
+MS.AssetId: ms.service: ms.devlang de analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 26/05/2017 ms.author: owend
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Lección complementaria: Seguridad dinámica
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-En esta lección complementaria, creará un rol función que implementa la seguridad dinámica. La seguridad dinámica proporciona seguridad de nivel de fila en función del identificador de inicio de sesión o del nombre de usuario de la persona que tenga la sesión iniciada. 
+En esta lección complementaria, creará un rol función que implementa la seguridad dinámica. Seguridad dinámica proporciona seguridad de nivel de fila en función de Id. de inicio de sesión o nombre del usuario de hello del usuario de hello ha iniciado sesión actualmente. 
   
-Para implementar seguridad dinámica, agregue una tabla al modelo que contiene los nombres de usuario de las personas que pueden conectarse al modelo y examinar los datos y objetos de dicho modelo. El modelo que crea con este tutorial se encuentra en el contexto de Adventure Works; sin embargo, para completar esta lección, debe agregar una tabla que contenga los usuarios de su propio dominio. No se necesitan las contraseñas de los nombres de usuario que se agregan. Para crear una tabla EmployeeSecurity con una pequeña muestra de los usuarios de su propio dominio, pegue los datos de empleados desde una hoja de cálculo de Excel con la característica de pegado. En un escenario real, la tabla que contiene los nombres de usuario normalmente sería una, como origen de datos, de una base de datos real. Por ejemplo, una tabla DimEmployee real.  
+tooimplement la seguridad dinámica, agregue un modelo de tooyour de tabla que contiene los nombres de usuario de Hola de los usuarios que pueden conectarse toohello modelo y examinar los datos y objetos del modelo. modelo de Hola que se crea con este tutorial está en contexto de Hola de Adventure Works; Sin embargo, toocomplete esta lección, debe agregar una tabla que contiene los usuarios de su propio dominio. No es necesario contraseñas Hola Hola nombres de usuario que se agregan. toocreate una tabla de EmployeeSecurity, con una pequeña muestra de los usuarios de su propio dominio, se usan Hola pegar, pegar datos de empleados desde una hoja de cálculo de Excel. En un escenario real, tabla de Hola que contiene los nombres de usuario normalmente sería una tabla de una base de datos real como origen de datos; Por ejemplo, una tabla DimEmployee real.  
   
-Para implementar la seguridad dinámica, debe utilizar dos funciones DAX: [USERNAME (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) y [LOOKUPVALUE (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Estas funciones, aplicadas en una fórmula de filtro de fila, se definen en un nuevo rol. Mediante el uso de la función LOOKUPVALUE, la fórmula especifica un valor de la tabla EmployeeSecurity. Después, la fórmula pasa el valor a la función USERNAME, que especifica que el nombre del usuario que ha iniciado la sesión pertenece a este rol. Después, el usuario puede examinar los datos especificados mediante los filtros de fila del rol. En este escenario, puede especificar que los empleados de ventas solo puedan examinar los datos de ventas de Internet de los territorios de ventas en los que son miembros.  
+tooimplement la seguridad dinámica, se utilizan dos funciones DAX: [función USERNAME (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) y [función LOOKUPVALUE (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Estas funciones, aplicadas en una fórmula de filtro de fila, se definen en un nuevo rol. Al usar la función LOOKUPVALUE de hello, fórmula Hola especifica un valor de tabla de EmployeeSecurity Hola. fórmula de Hello, a continuación, pasa el que la función de valor toohello USERNAME, que especifica el nombre de usuario de Hola de una sesión de usuario de Hola pertenece toothis rol. Hola usuario puede examinar los datos especificados por los filtros de fila del rol de Hola. En este escenario, puede especificar que los empleados de ventas solo pueden examinar los datos de ventas de Internet de territorios de ventas de hello en el que son miembros.  
   
-Las tareas que solo se realizan en este escenario de modelo tabular de Adventure Works, pero no que se aplicarían necesariamente a un escenario real, se identifican como tales. Cada tarea incluye información adicional que describe el propósito de la tarea.  
+Las tareas que son toothis único escenario de modelo tabular de Adventure Works, pero no se aplicarían necesariamente escenario real de tooa se identifican como tales. Cada tarea incluye información adicional que describa el propósito de Hola de tarea hello.  
   
-Tiempo estimado para completar esta lección: **30 minutos**  
+Estimado toocomplete de tiempo en esta lección: **30 minutos**  
   
 ## <a name="prerequisites"></a>Requisitos previos  
-Este tema de la lección complementaria forma parte de un tutorial de modelado tabular, que debe completar en orden. Antes de realizar las tareas de esta lección complementaria, debe haber completado todas las lecciones anteriores.  
+Este tema de la lección complementaria forma parte de un tutorial de modelado tabular, que debe completar en orden. Antes de realizar tareas de hello en esta lección complementaria, deberá haber finalizado todas las lecciones anteriores.  
   
-## <a name="add-the-dimsalesterritory-table-to-the-aw-internet-sales-tabular-model-project"></a>Incorporación de la tabla DimSalesTerritory al proyecto de modelo tabular de AW Internet Sales  
-Para implementar seguridad dinámica en este escenario de Adventure Works, debe agregar dos tablas adicionales al modelo. La primera tabla que agregará es DimSalesTerritory (como SalesTerritory), de la misma base de datos AdventureWorksDW. Posteriormente, se aplica un filtro de fila a la tabla SalesTerritory que define los datos concretos que puede examinar el usuario con la sesión iniciada.  
+## <a name="add-hello-dimsalesterritory-table-toohello-aw-internet-sales-tabular-model-project"></a>Agregar hello DimSalesTerritory tabla toohello proyecto de modelo Tabular de ventas de Internet de AW  
+tooimplement la seguridad dinámica para este escenario de Adventure Works, debe agregar dos modelos de tooyour tablas adicionales. primera tabla de Hello agregará es DimSalesTerritory (como Sales Territory) de Hola misma base de datos AdventureWorksDW. Adelante aplicar una tabla de SalesTerritory de toohello de filtros de fila que define datos determinado Hola Hola usuario que inició sesión puede examinar.  
   
-#### <a name="to-add-the-dimsalesterritory-table"></a>Procedimiento para agregar la tabla DimSalesTerritory  
+#### <a name="tooadd-hello-dimsalesterritory-table"></a>tabla de tooadd hello DimSalesTerritory  
   
 1.  En el Explorador de modelos tabulares, expanda **Orígenes de datos**, haga clic con el botón derecho en la conexión y, luego, haga clic en **Importar nuevas tablas**.  
 
-    Si aparece el cuadro de diálogo Credenciales de suplantación, escriba las credenciales de suplantación que usó en la lección 2 sobre incorporación de datos.
+    Si aparece el cuadro de diálogo de credenciales de suplantación de hello, escriba las credenciales de suplantación de Hola que usó en la lección 2: agregar datos.
   
-2.  En el navegador, seleccione la tabla **DimSalesTerritory** y, luego, haga clic en **Aceptar**.    
+2.  En el navegador, seleccione hello **DimSalesTerritory** de tabla y, a continuación, haga clic en **Aceptar**.    
   
-3.  En el Editor de consultas, haga clic en la consulta **DimSalesTerritory** y, luego, quite la columna **SalesTerritoryAlternateKey**.  
+3.  En el Editor de consultas, haga clic en hello **DimSalesTerritory** de consulta y, a continuación, quitar **SalesTerritoryAlternateKey** columna.  
   
 7.  Haga clic en **Import**.  
   
-    La nueva tabla se agrega al área de trabajo del modelo. Los objetos y datos de la tabla de origen DimSalesTerritory se importan luego en el modelo tabular de ventas de AW Internet Sales.  
+    nueva tabla de Hola se agrega el área de trabajo de toohello modelo. Objetos y datos de tabla de origen DimSalesTerritory de hello, a continuación, se importan en el MT ventas AW.  
   
-9. Cuando la tabla se haya importado correctamente, haga clic en **Cerrar**.  
+9. Después de tabla Hola se ha importado correctamente, haga clic en **cerrar**.  
 
 ## <a name="add-a-table-with-user-name-data"></a>Incorporación de una tabla con datos de nombres de usuario  
-La tabla DimEmployee de la base de datos de ejemplo AdventureWorksDW contiene usuarios del dominio AdventureWorks. Los nombres de usuario no existen en su propio entorno. Debe crear una tabla en el modelo que contenga una pequeña muestra de usuarios reales de su organización (al menos tres). Después, agregue estos usuarios como miembros al nuevo rol. No necesita las contraseñas de los nombres de usuario de ejemplo, pero sí los nombres de usuario de Windows reales de su propio dominio.  
+tabla DimEmployee de Hello en la base de datos de ejemplo de Hola AdventureWorksDW contiene usuarios del dominio de AdventureWorks de Hola. Los nombres de usuario no existen en su propio entorno. Debe crear una tabla en el modelo que contenga una pequeña muestra de usuarios reales de su organización (al menos tres). A continuación, agregar estos usuarios como miembros toohello nuevo rol. No necesita las contraseñas de Hola para nombres de usuario de ejemplo de Hola, pero necesita nombres de usuario de Windows reales de su propio dominio.  
   
-#### <a name="to-add-an-employeesecurity-table"></a>Procedimiento para agregar una tabla EmployeeSecurity  
+#### <a name="tooadd-an-employeesecurity-table"></a>tooadd una tabla EmployeeSecurity  
   
 1.  Abra Microsoft Excel para crear una hoja de cálculo.  
   
-2.  Copie la siguiente tabla, incluida la fila de encabezado y, luego, péguela en la hoja de cálculo.  
+2.  Copie hello en la tabla, incluida la fila de encabezado de hello, siguiente y, a continuación, péguelo en la hoja de cálculo de Hola.  
 
     ```
       |EmployeeId|SalesTerritoryId|FirstName|LastName|LoginId|  
@@ -75,77 +58,77 @@ La tabla DimEmployee de la base de datos de ejemplo AdventureWorksDW contiene us
       |3|5|<user first name>|<user last name>|\<domain\username>|  
     ```
 
-3.  Reemplace el nombre, los apellidos y dominio\nombre de usuario por los nombres e identificadores de inicio de sesión de tres usuarios de su organización. Coloque el mismo usuario en las dos primeras filas de EmployeeId 1, lo que indica que este usuario pertenece a más de un territorio de ventas. Deje los campos EmployeeId y SalesTerritoryId tal y como están.  
+3.  Reemplace Hola nombre, apellido y dominio ombre de usuario con nombres de hello e identificadores de inicio de sesión de tres usuarios de su organización. Colocar Hola mismo usuario en dos primeras filas de hello, EmployeeId 1, que muestra toomore a un territorio de ventas que pertenece este usuario. Deje Hola campos EmployeeId y SalesTerritoryId tal como están.  
   
-4.  Guarde la hoja de cálculo como **SampleEmployee**.  
+4.  Guardar la hoja de cálculo de hello como **SampleEmployee**.  
   
-5.  En la hoja de cálculo, seleccione todas las celdas con datos de empleados, incluidos los encabezados. Luego, haga clic con el botón derecho en los datos seleccionados en **Copiar**.  
+5.  En la hoja de cálculo de hello, seleccionar todas las celdas de hello con datos de empleados, incluidos los encabezados de hello, a continuación, haga clic en datos de hello seleccionado y, a continuación, haga clic en **copia**.  
   
-6.  En SSDT, haga clic en el menú **Editar** y, luego, en **Pegar**.  
+6.  En SSDT, haga clic en hello **editar** menú y, a continuación, haga clic en **pegar**.  
   
-    Si la opción Pegar está atenuada, haga clic en una columna de cualquier tabla en la ventana del Diseñador de modelos e inténtelo de nuevo.  
+    Si está atenuado pegar, haga clic en cualquier columna de cualquier tabla en la ventana del Diseñador de modelos Hola e inténtelo de nuevo.  
   
-7.  En el cuadro de diálogo **Vista previa de pegado**, en **Nombre de la tabla**, escriba **EmployeeSecurity**.  
+7.  Hola **vista previa de pegado** cuadro de diálogo **nombre de la tabla**, tipo **EmployeeSecurity**.  
   
-8.  En **Datos que se van a pegar**, compruebe que los datos incluyen todos los encabezados e información de los usuarios de la hoja de cálculo SampleEmployee.  
+8.  En **toobe datos pegar**, compruebe los datos de hello incluyen todos los datos de usuario de Hola y encabezados de hoja de cálculo de hello SampleEmployee.  
   
 9. Compruebe que la casilla **Usar primera fila como encabezados de columna** está activada y, luego, haga clic en **Aceptar**.  
   
-    Se creará una nueva tabla denominada "EmployeeSecurity" con datos de empleados copiados de la hoja de cálculo SampleEmployee.  
+    Se crea una nueva tabla denominada EmployeeSecurity con datos de empleado copiados desde la hoja de cálculo de hello SampleEmployee.  
   
 ## <a name="create-relationships-between-factinternetsales-dimgeography-and-dimsalesterritory-table"></a>Creación de relaciones entre las tablas FactInternetSales, DimGeography y DimSalesTerritory  
-Las tablas FactInternetSales, DimGeography y DimSalesTerritory contienen una columna común SalesTerritoryId. La columna SalesTerritoryId de la tabla DimSalesTerritory contiene valores con un identificador distinto para cada territorio de ventas.  
+tabla de FactInternetSales, DimGeography y DimSalesTerritory de Hello todos contiene una columna común, SalesTerritoryId. columna de SalesTerritoryId Hello en la tabla DimSalesTerritory de hello contiene valores con un identificador distinto para cada territorio de ventas.  
   
-#### <a name="to-create-relationships-between-the-factinternetsales-dimgeography-and-the-dimsalesterritory-table"></a>Procedimiento para crear relaciones entre las tablas FactInternetSales, DimGeography y DimSalesTerritory  
+#### <a name="toocreate-relationships-between-hello-factinternetsales-dimgeography-and-hello-dimsalesterritory-table"></a>relaciones de toocreate entre hello FactInternetSales, DimGeography y tabla de hello DimSalesTerritory  
   
-1.  En la Vista de diagrama, en la tabla **DimGeography**, haga clic en la columna **SalesTerritoryId** y mantenga presionado el botón izquierdo del ratón; luego, arrastre el cursor hasta la columna **SalesTerritoryId** de la tabla **DimSalesTerritory**. Finalmente, suelte el botón.  
+1.  En la vista de diagrama de hello **DimGeography** de tabla, haga clic y mantenga en hello **SalesTerritoryId** columna y, a continuación, arrastre Hola cursor toohello **SalesTerritoryId** columna Hola **DimSalesTerritory** de tabla y, a continuación, la versión.  
   
-2.  En la tabla **FactInternetSales**, haga clic en la columna **SalesTerritoryId** y mantenga presionado el botón izquierdo del ratón; luego, arrastre el cursor hasta la columna **SalesTerritoryId** de la tabla **DimSalesTerritory**. Finalmente, suelte el botón.  
+2.  Hola **FactInternetSales** de tabla, haga clic y mantenga en hello **SalesTerritoryId** columna y, a continuación, arrastre Hola cursor toohello **SalesTerritoryId** columna Hola  **DimSalesTerritory** de tabla y, a continuación, la versión.  
   
-    Observe que la propiedad Active de esta relación es False, lo que significa que está inactiva. La tabla FactInternetSales ya tiene otra relación activa.  
+    Hola aviso propiedad Active de esta relación es False, lo que significa que está inactivo. tabla de Hello FactInternetSales ya tiene otra relación activa.  
   
-## <a name="hide-the-employeesecurity-table-from-client-applications"></a>Ocultación de la tabla EmployeeSecurity de las aplicaciones cliente  
-En esta tarea, ocultará la tabla EmployeeSecurity, de modo que evitará que aparezca en la lista de campos de la aplicación cliente. Tenga en cuenta que ocultar una tabla no significa protegerla. Los usuarios todavía pueden consultar datos de la tabla EmployeeSecurity, si saben cómo. Para proteger los datos de la tabla EmployeeSecurity evitando que los usuarios puedan consultar sus datos, aplique un filtro en una tarea posterior.  
+## <a name="hide-hello-employeesecurity-table-from-client-applications"></a>Ocultar hello EmployeeSecurity tabla desde las aplicaciones cliente  
+En esta tarea, Ocultar tabla EmployeeSecurity de hello, evitando que aparezca en la lista de campos de la aplicación cliente. Tenga en cuenta que ocultar una tabla no significa protegerla. Los usuarios todavía pueden consultar datos de la tabla EmployeeSecurity, si saben cómo. toosecure Hola EmployeeSecurity: datos de la tabla, impide que los usuarios tooquery capaz de cualquiera de sus datos, aplicar un filtro en una tarea posterior.  
   
-#### <a name="to-hide-the-employeesecurity-table-from-client-applications"></a>Procedimiento para ocultar la tabla EmployeeSecurity de las aplicaciones cliente  
+#### <a name="toohide-hello-employeesecurity-table-from-client-applications"></a>tabla de EmployeeSecurity toohide Hola desde aplicaciones cliente  
   
--   En el Diseñador de modelos, en la vista de diagrama, haga clic con el botón derecho en el encabezado de tabla **Empleado** y, luego, haga clic en **Ocultar en herramientas cliente**.  
+-   En el Diseñador de modelos de hello, en la vista de diagrama, haga clic en hello **empleado** encabezado de tabla y, a continuación, haga clic en **ocultar en las herramientas de cliente de**.  
   
 ## <a name="create-a-sales-employees-by-territory-user-role"></a>Creación de un rol de usuario Empleados de ventas por territorio  
-En esta tarea, creará un rol de usuario. Este rol incluye un filtro de fila que define qué filas de la tabla DimSalesTerritory serán visibles para los usuarios. Después, se aplica el filtro en la dirección de la relación de uno a muchos a todas las demás tablas relacionadas con DimSalesTerritory. También aplicará un filtro que protege toda la tabla EmployeeSecurity de las consultas que realice cualquier usuario que sea miembro del rol.  
+En esta tarea, creará un rol de usuario. Este rol incluye un filtro de fila define qué filas de la tabla DimSalesTerritory de hello son toousers visible. Hola, a continuación, aplicar filtro en la relación de uno a varios Hola dirección tooall otras tablas relacionada tooDimSalesTerritory. También aplica un filtro que protege Hola toda EmployeeSecurity la tabla de consultas por cualquier usuario que sea miembro del rol de Hola.  
   
 > [!NOTE]  
-> El rol Empleados de ventas por territorio que creará en esta lección permitirá a los miembros examinar (o consultar) solo los datos de ventas del territorio de ventas al que pertenecen. Si agrega un usuario como miembro al rol Empleados de ventas por territorio que también existe como un miembro de un rol creado en la [lección 11 sobre cómo creación de roles](../tutorials/aas-lesson-11-create-roles.md), obtendrá una combinación de permisos. Cuando un usuario es miembro de varios roles, los permisos y filtros de fila definidos para cada rol son acumulativos. Es decir, la combinación de roles determina los permisos más elevados que tendrá el usuario.  
+> Hola empleados de ventas por el rol de territorio que creará en esta lección restringe los miembros toobrowse (o consultas) solo datos de ventas de hello toowhich de territorio de ventas al que pertenecen. Si agrega un usuario como un miembro toohello empleados de ventas por el rol de territorio que también existe como un miembro de un rol creado en [lección 11: crear Roles](../tutorials/aas-lesson-11-create-roles.md), obtendrá una combinación de permisos. Cuando un usuario es miembro de varios roles, permisos de Hola y filtros de fila definidos para cada rol son acumulativos. Es decir, usuario de hello tiene permisos mayores de hello determinados por la combinación de Hola de roles.  
   
-#### <a name="to-create-a-sales-employees-by-territory-user-role"></a>Procedimiento para crear un rol de usuario Empleados de ventas por territorio  
+#### <a name="toocreate-a-sales-employees-by-territory-user-role"></a>toocreate empleados de ventas por el rol de usuario de territorio  
   
-1.  En SSDT, haga clic en el menú **Modelo** y en **Roles**.  
+1.  En SSDT, haga clic en hello **modelo** menú y, a continuación, haga clic en **Roles**.  
   
 2.  En **Administrador de roles**, haga clic en **Nuevo**.  
   
-    Se agrega a la lista un nuevo rol con el permiso Ninguno.  
+    Un nuevo rol con hello agregar ninguna permiso es toohello lista.  
   
-3.  Haga clic en el nuevo rol y, luego, en la columna **Nombre**, cambie el nombre del rol a **Empleados de ventas por territorio**.  
+3.  Haga clic en nuevo rol de hello y, a continuación, en hello **nombre** columna, cambie el nombre de rol de hello demasiado**empleados de ventas por territorio**.  
   
-4.  En la columna **Permisos**, haga clic en la lista desplegable y, luego, seleccione el permiso **Lectura**.  
+4.  Hola **permisos** columna, haga clic en la lista desplegable de hello y, a continuación, seleccione hello **lectura** permiso.  
   
-5.  Haga clic en la pestaña **Miembros** y, luego, haga clic en **Agregar**.  
+5.  Haga clic en hello **miembros** ficha y, a continuación, haga clic en **agregar**.  
   
-6.  En el cuadro de diálogo **Seleccionar usuario o grupo** de la opción para **escribir el nombre del objeto que se seleccionará**, escriba el primer nombre de usuario de ejemplo que utilizó al crear la tabla EmployeeSecurity. Haga clic en **Comprobar nombres** para comprobar que el nombre de usuario es válido y, luego, haga clic en **Aceptar**.  
+6.  Hola **Seleccionar usuario o grupo** cuadro de diálogo **objeto de hello ENTRAR denominado tooselect**, escriba Hola primer ejemplo nombre de usuario que utilizó al crear la tabla de EmployeeSecurity Hola. Haga clic en **comprobar nombres** tooverify nombre de usuario de hello es válida y, a continuación, haga clic en **Aceptar**.  
   
-    Repita este paso agregando los demás nombres de usuario de ejemplo que utilizó al crear la tabla EmployeeSecurity.  
+    Repita este paso, agregar Hola otros nombres de usuario de ejemplo que utilizó al crear la tabla de EmployeeSecurity Hola.  
   
-7.  Haga clic en la pestaña **Filtros de fila**.  
+7.  Haga clic en hello **filtros de fila** ficha.  
   
-8.  Para la tabla **EmployeeSecurity**, en la columna **Filtro DAX**, escriba la siguiente fórmula:  
+8.  Para hello **EmployeeSecurity** tabla Hola **filtro DAX** columna, Hola de tipo siguiente fórmula:  
   
     ```
       =FALSE()  
     ```
   
-    Esta fórmula especifica que todas las columnas se resuelven en la condición booleana falso. Los empleados de ventas no pueden consultar ninguna columna de la tabla EmployeeSecurity por el rol de usuario Territorio.  
+    Esta fórmula especifica que todas las columnas resolverán toohello de condición booleana false. No hay columnas de tabla de hello EmployeeSecurity pueden ser consultadas por un miembro de hello empleados de ventas por el rol de usuario de territorio.  
   
-9. Para la tabla **DimSalesTerritory**, escriba la siguiente fórmula:  
+9. Para hello **DimSalesTerritory** tabla, Hola de tipo siguiente fórmula:  
 
     ```  
     ='Sales Territory'[Sales Territory Id]=LOOKUPVALUE('Employee Security'[Sales Territory Id], 
@@ -154,36 +137,36 @@ En esta tarea, creará un rol de usuario. Este rol incluye un filtro de fila que
       'Sales Territory'[Sales Territory Id]) 
     ```
   
-    En esta fórmula, la función LOOKUPVALUE devuelve todos los valores de la columna DimEmployeeSecurity[SalesTerritoryId], donde el valor de EmployeeSecurity[LoginId] es el mismo que el nombre de usuario de Windows que tiene la sesión iniciada, y el de EmployeeSecurity[SalesTerritoryId] es el mismo que el de DimSalesTerritory[SalesTerritoryId].  
+    En esta fórmula, Hola función LOOKUPVALUE devuelve todos los valores de columna de hello DimEmployeeSecurity [SalesTerritoryId], donde hello EmployeeSecurity [LoginId] es Hola igual como Hola actual ha iniciado sesión nombre de usuario de Windows y EmployeeSecurity [ SalesTerritoryId] es Hola igual que hello DimSalesTerritory [SalesTerritoryId].  
   
-    El conjunto de identificadores del territorio de ventas que se devuelven mediante LOOKUPVALUE se usa para restringir las filas que se muestran en la tabla DimSalesTerritory. Solo se muestran las filas donde se encuentra el valor de SalesTerritoryID para la fila del conjunto de identificadores devueltos mediante la función LOOKUPVALUE.  
+    Hello conjunto de identificadores de territorio de ventas devueltos por LOOKUPVALUE es toorestrict usado Hola filas que se muestran en la tabla DimSalesTerritory Hola. Se muestran solo las filas donde hello SalesTerritoryID por fila Hola está en hello conjunto de identificadores devueltos por la función LOOKUPVALUE de Hola.  
   
 10. En el Administrador de roles, haga clic en **Aceptar**.  
   
-## <a name="test-the-sales-employees-by-territory-user-role"></a>Prueba del rol de usuario Empleados de ventas por territorio  
-En esta tarea, usará la característica Analizar en Excel de SSDT para probar la eficacia del rol de usuario Empleados de ventas por territorio. Especifique uno de los nombres de usuario que agregó a la tabla EmployeeSecurity y como miembro del rol. Este nombre de usuario se utiliza como el nombre de usuario efectivo en la conexión creada entre Excel y el modelo.  
+## <a name="test-hello-sales-employees-by-territory-user-role"></a>Probar los empleados de ventas de Hola por el rol de usuario de territorio  
+En esta tarea, se usa Hola analizar esta característica en la eficacia de hello tootest SSDT de hello empleados de ventas por el rol de usuario de territorio. Especifique uno de los nombres de usuario de hello agregó toohello EmployeeSecurity tabla y como un miembro del rol de Hola. Este nombre de usuario, a continuación, se utiliza como nombre de usuario efectivo de hello en conexión de hello creada entre Excel y Hola modelo.  
   
-#### <a name="to-test-the-sales-employees-by-territory-user-role"></a>Procedimiento para probar el rol de usuario Empleados de ventas por territorio  
+#### <a name="tootest-hello-sales-employees-by-territory-user-role"></a>Hola tootest empleados de ventas por el rol de usuario de territorio  
   
-1.  En SSDT, haga clic en el menú **Modelo** y en **Analizar en Excel**.  
+1.  En SSDT, haga clic en hello **modelo** menú y, a continuación, haga clic en **analizar en Excel**.  
   
-2.  En el cuadro de diálogo **Analizar en Excel**, en **Especifique el nombre de usuario o rol que se va a usar al conectarse al modelo**, seleccione **Otro usuario de Windows**. Después, haga clic en **Examinar**.  
+2.  Hola **analizar en Excel** cuadro de diálogo **especificar Hola nombre o rol toouse tooconnect toohello modelo de usuario**, seleccione **otro usuario de Windows**y, a continuación, haga clic en **Examinar**.  
   
-3.  En el cuadro de diálogo **Seleccionar usuario o grupo**, en **Enter the object name to select** (Escribir el nombre de objeto para seleccionar), escriba uno de los nombres de usuario que incluyó en la tabla EmployeeSecurity. Después, haga clic en **Comprobar nombres**.  
+3.  Hola **Seleccionar usuario o grupo** cuadro de diálogo **escriba Hola objeto nombre tooselect**, escriba un nombre de usuario incluido en la tabla de EmployeeSecurity de hello y, a continuación, haga clic en **comprobar nombres**.  
   
-4.  Haga clic en **Aceptar** para cerrar el **Seleccionar usuario o grupo** cuadro de diálogo y, a continuación, haga clic en **Aceptar** para cerrar el **analizar en Excel** cuadro de diálogo.  
+4.  Haga clic en **Aceptar** tooclose hello **Seleccionar usuario o grupo** cuadro de diálogo y, a continuación, haga clic en **Aceptar** tooclose hello **analizar en Excel** cuadro de diálogo.  
   
-    Excel se abre con un nuevo libro. Automáticamente se crea una tabla dinámica. La lista PivotTable Fields incluye la mayoría de los campos de datos disponibles en el nuevo modelo.  
+    Excel se abre con un nuevo libro. Automáticamente se crea una tabla dinámica. Hola lista PivotTable Fields incluye la mayoría de campos de datos de hello disponibles en el nuevo modelo.  
   
-    Observe que la tabla EmployeeSecurity no está visible en la lista de campos de la tabla dinámica. Ocultó esta tabla de las herramientas de cliente en una tarea anterior.  
+    Tabla de aviso hello EmployeeSecurity no está visible en hello lista PivotTable Fields. Ocultó esta tabla de las herramientas de cliente en una tarea anterior.  
   
-5.  En la lista **Campos** de **Ventas por Internet de ∑** (medidas), seleccione la medida **InternetTotalSales**. La medida se escribe en los campos de **Valores**.  
+5.  Hola **campos** lista **∑ Internet Sales** (medidas), seleccione hello **InternetTotalSales** medida. medida de Hola se introduce en hello **valores** campos.  
   
-6.  Seleccione la columna **SalesTerritoryId** desde la tabla **DimSalesTerritory**. La columna se escribe en los campos **Etiquetas de fila**.  
+6.  Seleccione hello **SalesTerritoryId** columna de hello **DimSalesTerritory** tabla. columna de Hola se introduce en hello **etiquetas de fila** campos.  
   
-    Tenga en cuenta que las cifras de ventas por Internet solo aparecen para la región a la que pertenece el nombre de usuario efectivo que usó. Si selecciona otra columna, como City, de la tabla DimGeography como campo de etiqueta de fila, solo se mostrarán las ciudades del territorio de ventas al que pertenece el usuario efectivo.  
+    Internet aviso cifras de ventas solo aparecen para hello una región toowhich Hola nombre de usuario efectivo que usó pertenece. Si selecciona otra columna, como la ciudad de la tabla de hello DimGeography como campo de etiqueta de fila, solo ciudades de usuario efectivo de hello territorio de ventas toowhich Hola pertenece se muestran.  
   
-    Este usuario no puede examinar ni consultar los datos de ventas por Internet de territorios distintos al que pertenece. Esta restricción se debe a que el filtro de fila definido para la tabla DimSalesTerritory, del rol de usuario Empleados de ventas por territorio, protege los datos de toda la información relacionada con otros territorios de ventas.  
+    Este usuario no se puede examinar o consultar los datos de ventas de Internet para otros territorios distintos Hola uno al que pertenecen. Esta restricción es porque el filtro de fila definido para la tabla DimSalesTerritory de hello, Hola empleados de ventas por el rol de usuario de territorio, hello protege los datos para todos los datos relacionados con los territorios de ventas de tooother.  
   
 ## <a name="see-also"></a>Otras referencias  
 [Función USERNAME (DAX)](https://msdn.microsoft.com/library/hh230954.aspx)  

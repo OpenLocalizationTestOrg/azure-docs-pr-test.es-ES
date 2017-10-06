@@ -1,6 +1,6 @@
 ---
-title: "Tutorial de distribución global de Azure Cosmos DB para Table API | Microsoft Docs"
-description: "Obtenga información sobre cómo configurar la distribución global de Azure Cosmos DB con Table API."
+title: "tutorial de distribución global de Cosmos DB aaaAzure de API de tabla | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo usar de distribución global de base de datos de Azure Cosmos toosetup Hola API de tabla."
 services: cosmos-db
 keywords: "distribución global, Table"
 documentationcenter: 
@@ -15,38 +15,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 63c9e530a4982e2e6e478fea56e015fc77851e1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2a995e09c37f9449856aef2ab707e95eb8a540c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Configuración de la distribución global de Azure Cosmos DB con Table API
+# <a name="how-toosetup-azure-cosmos-db-global-distribution-using-hello-table-api"></a>Cómo usar de distribución global de base de datos de Azure Cosmos toosetup Hola API de tabla
 
-En este artículo se muestra cómo usar Azure Portal para configurar la distribución global de Azure Cosmos DB y luego conectarse con Table API (versión preliminar).
+En este artículo, le mostramos cómo toouse Hola distribución global de base de datos de Azure Cosmos toosetup de portal de Azure y, a continuación, conectarse con hello API de tabla (vista previa).
 
-En este artículo se tratan las tareas siguientes: 
+En este artículo se trata Hola siguientes tareas: 
 
 > [!div class="checklist"]
-> * Configuración de la distribución global con Azure Portal
-> * Configuración de la distribución global con [Table API](table-introduction.md)
+> * Configure la distribución global con hello portal de Azure
+> * Configure la distribución global con hello [API de tabla](table-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Conexión a una región de preferencia con Table API
+## <a name="connecting-tooa-preferred-region-using-hello-table-api"></a>Conexión tooa región preferida mediante Hola API de tabla
 
-Para aprovechar las ventajas de la [distribución global](distribute-data-globally.md), las aplicaciones cliente pueden especificar la lista del orden de preferencia de regiones que se usará para llevar a cabo operaciones de documentos. Esto puede hacerse estableciendo el valor de configuración `TablePreferredLocations` en la configuración de aplicación para el SDK de versión preliminar de Azure Storage. Según la configuración de la cuenta de Azure Cosmos DB, la disponibilidad regional actual y la lista de preferencias especificada, el SDK de Azure Storage elegirá el punto de conexión óptimo para realizar las operaciones de lectura y escritura.
+En orden tootake aprovechar [distribución global](distribute-data-globally.md), pueden especificar las aplicaciones cliente hello ordenada la lista de preferencias de regiones toobe usa operaciones de documento tooperform. Esto puede hacerse por establecer hello `TablePreferredLocations` valor de configuración en la configuración de aplicación hello para la vista previa de hello SDK de almacenamiento de Azure. En función de la configuración de cuenta de base de datos de Azure Cosmos hello, disponibilidad regional actual y ha especificado, la lista de preferencias Hola Hola mayoría extremo óptimo se elegirá por tooperform del SDK de almacenamiento de Azure de hello escribir y las operaciones de lectura.
 
-`TablePreferredLocations` debe contener una lista separada por comas de las ubicaciones preferidas (hospedaje múltiple) para las lecturas. Cada instancia de cliente puede especificar un subconjunto de estas regiones en el orden de preferencia para las lecturas de latencia baja. Estas regiones se deben denominar según sus [nombres para mostrar](https://msdn.microsoft.com/library/azure/gg441293.aspx), por ejemplo, `West US`.
+Hola `TablePreferredLocations` debe contener una lista separada por comas de ubicaciones (hospedaje múltiple) preferidos para las lecturas. Cada instancia del cliente puede especificar un subconjunto de estas regiones en orden de hello preferido para las lecturas de latencia baja. regiones de Hello deben denominarse mediante sus [nombres para mostrar](https://msdn.microsoft.com/library/azure/gg441293.aspx), por ejemplo, `West US`.
 
-Todas las lecturas se enviarán a la primera región disponible en la lista `TablePreferredLocations`. Si se produce un error en la solicitud, el cliente pasará a la siguiente región de la lista y así sucesivamente.
+Todas las lecturas se enviarán toohello primera región disponible en hello `TablePreferredLocations` lista. Si se produce un error en la solicitud de Hola, cliente hello producirá un error hacia abajo de la región de hello lista toohello siguiente y así sucesivamente.
 
-El SDK solo intentará leer en las regiones especificadas en `TablePreferredLocations`. Así que, por ejemplo, si la cuenta de base de datos está disponible en tres regiones, pero el cliente solo especifica dos de las regiones de no escritura para `TablePreferredLocations`, no se atenderá ninguna lectura desde la región de escritura, incluso en caso de conmutación por error.
+Hola SDK sólo intentará tooread de regiones de hello especificado en `TablePreferredLocations`. Por lo tanto, por ejemplo, si Hola cuenta de base de datos está disponible en tres regiones, pero solo para cliente hello especifica dos de Hola regiones de escritura para `TablePreferredLocations`, a continuación, no se enviará ningún lecturas fuera del área de escritura de hello, incluso en caso de hello de conmutación por error.
 
-El SDK enviará automáticamente todas las escrituras a la región de escritura actual.
+Hola SDK enviará automáticamente todas las escrituras toohello actual escritura región.
 
-Si la propiedad `TablePreferredLocations` no está establecida, atenderá todas las solicitudes procedentes de la región de escritura actual.
+Si hello `TablePreferredLocations` propiedad no está establecida, todas las solicitudes se servirá de región de escritura actual de Hola.
 
 ```xml
     <appSettings>
@@ -54,17 +54,17 @@ Si la propiedad `TablePreferredLocations` no está establecida, atenderá todas 
     </appSettings>
 ```
 
-De este modo finaliza este tutorial. Para información sobre cómo administrar la coherencia de la cuenta replicada globalmente, lea [Niveles de coherencia en Azure Cosmos DB](consistency-levels.md). Para más información sobre cómo funciona la replicación global de bases de datos en Azure Cosmos DB, consulte [Distribución global de datos con Azure Cosmos DB](distribute-data-globally.md).
+De este modo finaliza este tutorial. Obtener información sobre cómo toomanage Hola coherencia de la cuenta replicada a nivel mundial leyendo [niveles de coherencia en la base de datos de Azure Cosmos](consistency-levels.md). Para más información sobre cómo funciona la replicación global de bases de datos en Azure Cosmos DB, consulte [Distribución global de datos con Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha hecho lo siguiente:
+En este tutorial, ha hecho siguiente de hello:
 
 > [!div class="checklist"]
-> * Configuración de la distribución global con Azure Portal
-> * Configuración de la distribución global con las API de DocumentDB
+> * Configure la distribución global con hello portal de Azure
+> * Configure la distribución global con hello DocumentDB APIs
 
-Ahora puede continuar en el tutorial siguiente para aprender a desarrollar localmente con el emulador local de Azure Cosmos DB.
+Ahora puede continuar toohello siguiente tutorial toolearn cómo toodevelop localmente mediante Hola emulador local de base de datos de Azure Cosmos.
 
 > [!div class="nextstepaction"]
-> [Desarrollo local con el emulador](local-emulator.md)
+> [Desarrollar localmente con el emulador de Hola](local-emulator.md)

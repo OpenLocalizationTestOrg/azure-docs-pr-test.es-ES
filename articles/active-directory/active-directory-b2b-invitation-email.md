@@ -1,5 +1,5 @@
 ---
-title: "Los elementos del correo electrónico de invitación de colaboración B2B de Azure Active Directory | Microsoft Docs"
+title: "aaaThe elementos de correo electrónico de invitación de colaboración B2B de Azure Active Directory Hola | Documentos de Microsoft"
 description: "Plantilla de correo electrónico de invitación de colaboración B2B de Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -15,60 +15,60 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 458a2cab13b7e83f120e0926a95d454070181dfb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4908014d71a63442bbdca2182f54c7a79675a82
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>Los elementos del correo electrónico de invitación de colaboración B2B
+# <a name="hello-elements-of-hello-b2b-collaboration-invitation-email"></a>elementos de saludo de correo electrónico de invitación de colaboración B2B de hello
 
-Los correos electrónicos de invitación son un componente fundamental para incorporar a los asociados como usuarios de colaboración B2B en Azure AD. Puede usarlos para aumentar la confianza del destinatario. Puede agregar legitimidad y prueba social al correo electrónico para asegurarse de que el destinatario se sienta cómodo al seleccionar el botón **Empezar** para aceptar la invitación. Esta confianza es clave para reducir la fricción en el uso compartido. Y puede que también quiera que el correo electrónico tenga un buen aspecto.
+Mensajes de correo electrónico de invitación son un asociados de toobring de componente esencial a bordo como usuarios de colaboración B2B de Azure AD. Puede utilizarlos confianza del destinatario de tooincrease Hola. Puede agregar legitimidad y el correo electrónico de toohello prueba sociales, destinatario de hello seguro toomake se sienta cómodo con la selección Hola al **Introducción** botón invitación de hello tooaccept. Esta relación de confianza es que una clave significa tooreduce fricción de uso compartido. Y también desea toomake Hola correo electrónico aspecto excelente!
 
 ![Correo electrónico de invitación de B2B de Azure AD](media/active-directory-b2b-invitation-email/invitation-email.png)
 
-## <a name="explaining-the-email"></a>Explicación del correo electrónico
-Se van a tratar algunos elementos del correo electrónico para saber cómo hacer el mejor uso de estas funcionalidades.
+## <a name="explaining-hello-email"></a>Correo electrónico que se explican de Hola
+Echemos un vistazo a unos cuantos elementos de correo electrónico de Hola para conocer la mejor manera de toouse sus capacidades.
 
 ### <a name="subject"></a>Asunto
-El asunto del correo electrónico sigue este patrón: Está invitado a la organización de &lt;nombreinquilino&gt;.
+asunto del mensaje de correo electrónico de Hola Hola sigue Hola siguiente patrón: le invito toohello &lt;nombreinquilino&gt; organización
 
 ### <a name="from-address"></a>Dirección De
-Se usa un patrón similar a LinkedIn para la dirección De.  Es necesario tener claro quién es el invitador y a qué empresa pertenece y también aclarar que el correo electrónico procede de una dirección de correo electrónico de Microsoft. El formato es: &lt;Nombre para mostrar del invitador&gt; de &lt;nombreinquilino&gt; (a través de Microsoft) invites@microsoft.com&gt;.
+Utilizamos un patrón similar LinkedIn para saludo de la dirección.  Se debe quedar claro que es el autor de la invitación hello y desde la que la empresa y también aclarar que correo electrónico Hola procede de una dirección de correo electrónico de Microsoft. formato de Hello es: &lt;nombre para mostrar del autor de la invitación&gt; de &lt;nombreinquilino&gt; (a través de Microsoft) <invites@microsoft.com&gt;
 
 ### <a name="reply-to"></a>Responder a
-En la respuesta al correo electrónico se indica el correo electrónico del invitador si está disponible, para que al responder al correo electrónico se vuelva a enviar un correo al invitador.
+Hola respuesta-tooemail se establece correo electrónico cuando esté disponible, del toohello autor de la invitación poder responder a correo electrónico toohello envía una invitador toohello atrás de correo electrónico.
 
 ### <a name="branding"></a>Personalización de marca
-Los correos electrónicos de invitación del inquilino usan la personalización de marca de la empresa que puede haberse configurado para el inquilino. Si desea beneficiarse de esta funcionalidad, [aquí](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) se proporcionan los detalles sobre cómo configurarla. El logotipo del banner aparece en el correo electrónico. Siga el tamaño de la imagen y las instrucciones de calidad indicadas [aquí](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) para obtener los mejores resultados. Además, el nombre de la empresa también se presenta en la llamada a la acción.
+invitación Hola correos electrónicos de su inquilino utilizar empresa Hola personalización de marca que puede configurar para su inquilino. Si desea que tootake aprovechar esta capacidad, [aquí](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) son Hola detalles acerca de cómo tooconfigure lo. logotipo del banner Hola aparece en el correo electrónico de Hola. Siga el tamaño de la imagen de Hola y las instrucciones de calidad [aquí](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) para obtener los mejores resultados. Además, nombre de la compañía de hello también se presenta en hello llamada tooaction.
 
-### <a name="call-to-action"></a>Llamada a la acción
-La llamada a la acción consta de dos partes: explicar por qué el destinatario ha recibido el correo electrónico y qué se pide al destinatario que haga al respecto.
-- La sección “por qué” puede seguir este patrón: Se le ha invitado a acceder a aplicaciones en la organización de &lt;nombreinquilino&gt;.
+### <a name="call-tooaction"></a>Llamar a tooaction
+Hola llamada tooaction consta de dos partes: que explique por qué destinatario Hola ha recibido correo electrónico de Hola y qué destinatario Hola se pide toodo sobre él.
+- Hola la sección "¿por qué" se puede cubrir con hello siguiente patrón: ha estado aplicaciones tooaccess invitados en hello &lt;nombreinquilino&gt; organización
 
-- Y la sección “qué se le pide que haga” está indicada por la presencia del botón **Introducción**. Cuando el destinatario se agrega sin necesidad de invitaciones, este botón no se muestra.
+- Hello sección "¿qué le piden toodo" se indica por la presencia de Hola de Hola y **Introducción** botón. Cuando se ha agregado el destinatario Hola sin necesidad de Hola de invitaciones, este botón no se muestre.
 
 ### <a name="inviters-information"></a>Información sobre el invitador
-El nombre para mostrar del invitador se incluye en el correo electrónico. Y, además, si ha configurado una imagen de perfil para la cuenta de Azure AD, el correo electrónico de invitación incluye también esa imagen. Ambas opciones están diseñadas para aumentar la confianza del destinatario en el correo electrónico.
+nombre para mostrar del invitador Hola se incluye en el mensaje de Hola. Y además, si ha configurado una imagen de perfil para la cuenta de Azure AD, Hola invitar a correo electrónico incluirá también esa imagen. Ambos es tooincrease previsto confiabilidad de la de los destinatarios de correo electrónico de Hola.
 
-Si aún no ha configurado la imagen del perfil, se muestra un icono con las iniciales del invitador en lugar de la imagen:
+Si aún no ha configurado la imagen del perfil, se muestra un icono con iniciales del invitador hello en lugar de la imagen de hello:
 
-  ![mostrar las iniciales del invitador](media/active-directory-b2b-invitation-email/inviters-initials.png)
+  ![mostrar las iniciales del invitador Hola](media/active-directory-b2b-invitation-email/inviters-initials.png)
 
 ### <a name="body"></a>Cuerpo
-Contiene el mensaje que el invitador escribe o se transmite a través de la API de invitación. Al ser un área de texto, por motivos de seguridad no se procesan las etiquetas HTML.
+cuerpo de Hello contiene mensajes de bienvenida que invitador Hola crea o se pasa a través de la invitación de hello API. Al ser un área de texto, por motivos de seguridad no se procesan las etiquetas HTML.
 
 ### <a name="footer-section"></a>Sección de pie de página
-El pie de página contiene la marca de empresa de Microsoft y permite que el destinatario sepa si el correo electrónico se envía desde un alias no supervisado. Casos especiales:
+pie de página de Hello contiene la marca de empresa de Microsoft de Hola y permite destinatario Hola saber si el correo electrónico de hello fue enviada desde un alias no supervisado. Casos especiales:
 
-- El invitador no tiene una dirección de correo electrónico en el espacio empresarial invitador.
+- invitador Hello no tiene una dirección de correo electrónico en hello invitar a los inquilinos
 
-  ![La imagen no tiene una dirección de correo electrónico en el espacio empresarial invitador.](media/active-directory-b2b-invitation-email/inviter-no-email.png)
+  ![imagen del autor de la invitación no tiene una dirección de correo electrónico en hello invitar a los inquilinos](media/active-directory-b2b-invitation-email/inviter-no-email.png)
 
 
-- El destinatario no necesita canjear la invitación.
+- destinatario de Hello no necesita la invitación de hello tooredeem
 
-  ![Si el destinatario no necesita canjear la invitación.](media/active-directory-b2b-invitation-email/when-recipient-doesnt-redeem.png)
+  ![Cuando los destinatarios no necesitan tooredeem invitación](media/active-directory-b2b-invitation-email/when-recipient-doesnt-redeem.png)
 
 
 ## <a name="next-steps"></a>Pasos siguientes

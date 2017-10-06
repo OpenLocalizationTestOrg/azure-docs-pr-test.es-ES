@@ -1,6 +1,6 @@
 ---
-title: "Depuración de microservicios de Azure en Linux | Microsoft Docs"
-description: "Aprenda a supervisar y diagnosticar sus servicios creados con Service Fabric de Microsoft Azure en una máquina de desarrollo local."
+title: aaaDebug microservicios Azure en Linux | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toomonitor y diagnosticar los servicios escritos mediante Microsoft Azure Service Fabric en un equipo de desarrollo local."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 4bc73f581f4855ebc724df19dd56fab8bf103854
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bee47bbabcf6b84ff2da14079e026529e36a198b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Supervisión y diagnóstico de servicios en una configuración de desarrollo de máquina local
 
@@ -29,16 +29,16 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-Acciones como supervisar, detectar, diagnosticar y solucionar problemas permiten a los servicios continuar con una interrupción mínima de la experiencia del usuario. La supervisión y el diagnóstico resultan fundamentales en un entorno de producción implementado real. La adopción de un modelo similar durante el desarrollo de servicios garantiza que la canalización del diagnóstico funcione cuando pasa a un entorno de producción. Service Fabric facilita a los desarrolladores de servicio la implementación de diagnósticos que puede funcionar sin problemas en configuraciones de desarrollo local de máquina única y en configuraciones de clúster de producción del mundo real.
+Toocontinue de servicios con experiencia de usuario de una interrupción mínima toohello permiten supervisar, detectar, diagnosticar y solucionar problemas. La supervisión y el diagnóstico resultan fundamentales en un entorno de producción implementado real. Adoptar un modelo similar durante el desarrollo de servicios garantiza que esa canalización diagnóstico Hola funciona cuando se mueve el entorno de producción de tooa. Service Fabric facilita a los diagnósticos del servicio a los desarrolladores tooimplement que funcionan sin problemas a través de configuraciones de desarrollo local sola máquina y configuraciones de clúster de producción reales.
 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Depuración de aplicaciones Java de Service Fabric
 
-Para aplicaciones Java, hay [varias plataformas de registro](http://en.wikipedia.org/wiki/Java_logging_framework) disponibles. Puesto que `java.util.logging` es la opción predeterminada con JRE, también se usa para los [ejemplos de código en GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started).  En la siguiente discusión se explica cómo configurar la plataforma `java.util.logging` .
+Para aplicaciones Java, hay [varias plataformas de registro](http://en.wikipedia.org/wiki/Java_logging_framework) disponibles. Puesto que `java.util.logging` es la opción predeterminada de hello con hello JRE, también se usa para hello [ejemplos de código de github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  Hello en los párrafos siguientes se explican cómo tooconfigure hello `java.util.logging` framework.
 
-Con java.util.logging puede redirigir los registros de aplicaciones a la memoria, flujos de salida, archivos de consolas o sockets. Para cada una de estas opciones, hay controladores predeterminados que se proporcionan en la plataforma. Puede crear un archivo `app.properties` para configurar el controlador de archivo para la aplicación a fin de redirigir todos los registros a un archivo local.
+Uso de java.util.logging puede redirigir la aplicación registros toomemory, flujos de salida, archivos de la consola o sockets. Para cada una de estas opciones, hay controladores predeterminados ya proporcionados en el marco de trabajo de Hola. Puede crear un `app.properties` controlador de archivo de archivo tooconfigure Hola para su tooredirect aplicación todos los registros de archivo local tooa.
 
-El fragmento de código siguiente contiene una configuración de ejemplo:
+Hola siguiente fragmento de código contiene una configuración de ejemplo:
 
 ```java
 handlers = java.util.logging.FileHandler
@@ -50,34 +50,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
 ```
 
-La carpeta señalada por el archivo `app.properties` debe existir. Una vez creado el archivo `app.properties`, debe modificar igualmente el script de punto de entrada, `entrypoint.sh` en la carpeta `<applicationfolder>/<servicePkg>/Code/` para establecer la propiedad `java.util.logging.config.file` en el archivo `app.propertes`. La entrada debería parecerse al siguiente fragmento:
+Hola de Hello carpeta apunta tooby `app.properties` archivo debe existir. Después de hello `app.properties` se crea el archivo, deberá tooalso modificar el script de punto de entrada, `entrypoint.sh` en hello `<applicationfolder>/<servicePkg>/Code/` propiedad Hola de carpeta tooset `java.util.logging.config.file` demasiado`app.propertes` archivo. entrada de Hello debería ser similar Hola siguiente fragmento de código:
 
 ```sh
-java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
+java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path tooapp.properties> -jar <service name>.jar
 ```
 
 
-Esta configuración hace que se recopilen los registros por orden de rotación en `/tmp/servicefabric/logs/`. El archivo de registro en este caso se denomina mysfapp%u.%g.log donde:
-* **%u** es un número único para resolver conflictos entre los procesos simultáneos de Java.
-* **g** es el número de generación para distinguir entre los registros de rotación.
+Esta configuración hace que se recopilen los registros por orden de rotación en `/tmp/servicefabric/logs/`. archivo de registro de Hello en este caso se denomina mysfapp%u.%g.log donde:
+* **%u** es un único tooresolve número conflictos entre procesos simultáneos de Java.
+* **%g** es toodistinguish de número de generación de hello entre la rotación de registros.
 
-De forma predeterminada, si no hay ningún controlador configurado explícitamente, se registra el controlador de la consola. Se pueden ver los registros de syslog en /var/log/syslog.
+De forma predeterminada si no hay ningún controlador se configura explícitamente, el controlador de la consola de hello está registrado. Uno puede ver registros de hello en syslog en /var/log/syslog.
 
-Para más información, consulte los [ejemplos de código en GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
+Para obtener más información, vea hello [ejemplos de código de github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Depuración de aplicaciones C# de Service Fabric
 
 
-Hay varios marcos disponibles para realizar un seguimiento de aplicaciones de CoreCLR en Linux. Para obtener más información, consulte [GitHub: logging](http:/github.com/aspnet/logging) (registro).  Dado que los desarrolladores de C# ya conocen EventSource, este artículo utiliza EventSource para realizar un seguimiento en muestras de CoreCLR en Linux.
+Hay varios marcos disponibles para realizar un seguimiento de aplicaciones de CoreCLR en Linux. Para obtener más información, consulte [GitHub: logging](http:/github.com/aspnet/logging) (registro).  Puesto que EventSource es los desarrolladores familiarizados tooC #' EventSource este artículo utiliza para realizar el seguimiento en los ejemplos de CoreCLR en Linux.
 
-El primer paso es incluir System.Diagnostics.Tracing para que pueda escribir los registros en la memoria, en flujos de salida o en archivos de consola.  Para registrarse mediante EventSource, añada el siguiente proyecto a project.json:
+Hola primer paso es tooinclude System.Diagnostics.Tracing para que pueda escribir los registros toomemory, flujos de salida o archivos de la consola.  Para el registro mediante EventSource, agregue Hola después proyecto tooyour project.json:
 
 ```
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-Puede usar un EventListener personalizado para escuchar el evento de servicio y, a continuación, redirigirlos correctamente a los archivos de seguimiento. El fragmento de código siguiente muestra un ejemplo de implementación de un registro con EventSource y un EventListener personalizado:
+Puede usar un toolisten EventListener personalizado para eventos del servicio de hello y, a continuación, adecuadamente redirigirá tootrace archivos. Hello fragmento de código siguiente muestra una implementación de ejemplo de registro mediante EventSource y un EventListener personalizado:
 
 
 ```csharp
@@ -96,7 +96,7 @@ Puede usar un EventListener personalizado para escuchar el evento de servicio y,
             }
         }
 
-        // TBD: Need to add method for sample event.
+        // TBD: Need tooadd method for sample event.
 
 }
 
@@ -130,16 +130,16 @@ Puede usar un EventListener personalizado para escuchar el evento de servicio y,
 ```
 
 
-El fragmento de código anterior genera los registros en un archivo en `/tmp/MyServiceLog.txt`. Este nombre de archivo debe actualizarse correctamente. En caso de que desee redirigir los registros a la consola, use el siguiente fragmento de código en la clase de EventListener personalizada:
+Hello fragmento de código anterior genera tooa archivo de registros de hello en `/tmp/MyServiceLog.txt`. Este nombre de archivo debe toobe actualizado correctamente. En caso de que desee tooredirect Hola registros tooconsole, use Hola siguiente fragmento de código en la clase EventListener personalizada:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-Los ejemplos de [C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) (Ejemplos de C#) usan EventSource y un EventListener personalizado para registrar eventos en un archivo.
+Hola ejemplos en [ejemplos de C#](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) usar EventSource y un archivo de tooa de eventos de toolog EventListener personalizado.
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-El mismo código de seguimiento que agregó a la aplicación también funciona con los diagnósticos de la aplicación en un clúster de Azure. Consulte estos artículos que tratan sobre las distintas opciones de las herramientas y describen cómo configurarlas.
-* [Recopilación de registros con Diagnósticos de Azure](service-fabric-diagnostics-how-to-setup-lad.md)
+Hola el mismo código de seguimiento agregado tooyour aplicación también funciona con los diagnósticos de saludo de la aplicación en un clúster de Azure. Consultar estos artículos que trata las diferentes opciones de Hola para herramientas de Hola y describen cómo tooset su seguridad.
+* [Funcionamiento de los registros toocollect con diagnósticos de Azure](service-fabric-diagnostics-how-to-setup-lad.md)

@@ -1,6 +1,6 @@
 ---
-title: "Integración del código fuente de Azure Automation con GitHub Enterprise | Microsoft Docs"
-description: "Se describen los detalles de cómo configurar la integración con GitHub Enterprise para el control del código fuente de Runbooks de Automation."
+title: "Integración de Control de código fuente de automatización con GitHub Enterprise aaaAzure | Documentos de Microsoft"
+description: "Describe los detalles de Hola de cómo la integración de tooconfigure con GitHub Enterprise para control de código fuente de runbooks de automatización."
 services: automation
 documentationCenter: 
 authors: mgoedtel
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 62793dcdbbf4c83161e95d1c165d5c231245f7c6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 915d36ccabb72fdee1dba663049a0b331249cd73
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Escenario de Azure Automation: integración del control del código fuente de Automation con GitHub Enterprise
 
-Automation admite actualmente la integración del control del código fuente, que permite asociar Runbooks de su cuenta de Automation a un repositorio de control del código fuente de GitHub.  Sin embargo, los clientes que han implementado [GitHub Enterprise](https://enterprise.github.com/home) para permitir la compatibilidad con sus prácticas de DevOps, también lo quieren usar para administrar el ciclo de vida de los Runbooks desarrollados para automatizar los procesos de negocio y las operaciones de administración de servicios.  
+Automatización actualmente admite la integración de control de código fuente, lo que permite tooassociate runbooks en el repositorio de control de código fuente de GitHub de automatización de la cuenta tooa.  Sin embargo, los clientes que hayan implementado [GitHub Enterprise](https://enterprise.github.com/home) toosupport prácticas de sus DevOps, también desea toouse, ciclo de vida de toomanage Hola de runbooks que desarrolló tooautomate los procesos empresariales y administración de servicios operaciones.  
 
-En este escenario, tendrá un equipo Windows en su centro de datos configurado como un Hybrid Runbook Worker que tiene instalados los módulos de Azure Resource Manager y herramientas de Git.  La máquina de Hybrid Worker tendrá un clon del repositorio de GIT local.  Cuando el Runbook se ejecuta en el Hybrid Worker, el directorio de GIT se sincroniza y el contenido de los archivos del Runbook se importa en la cuenta de Automation.
+En este escenario, tiene un equipo de Windows en el centro de datos configurado como un Hybrid Runbook Worker con módulos de Azure Resource Manager hello y las herramientas de Git instaladas.  máquina de trabajador híbrido de Hello tiene un clon del repositorio de Git local Hola.  Cuando se ejecuta runbook hello en hybrid worker de hello, Hola Git directory se sincroniza y contenido del archivo de runbook de Hola se importa en hello cuenta de automatización.
 
-En este artículo se describe cómo realizar esta configuración en el entorno de Azure Automation. Para comenzar, se configurará Automation con las credenciales de seguridad, los Runbooks necesarios para admitir este escenario y la implementación de un Hybrid Runbook Worker en su centro de datos para ejecutar los Runbooks y acceder al repositorio de GitHub Enterprise para sincronizarlos con la cuenta de Automation.  
+Este artículo se describe cómo tooset esta configuración en su entorno de automatización de Azure. Comenzamos mediante la configuración de automatización con las credenciales de seguridad de Hola, runbooks necesario toosupport este escenario y la implementación de un Hybrid Runbook Worker en los datos toorun Hola runbooks del centro y tener acceso a su toosynchronize de repositorio de GitHub Enterprise runbooks con su cuenta de automatización.  
 
 
-## <a name="getting-the-scenario"></a>Obtención del escenario
+## <a name="getting-hello-scenario"></a>Introducción al escenario de Hola
 
-Este escenario consta de dos Runbooks de PowerShell que puede importar directamente desde la [Galería de Runbooks](automation-runbook-gallery.md) en Azure Portal o descargar de la [Galería de PowerShell](https://www.powershellgallery.com).
+Este escenario consta de dos runbooks de PowerShell que se pueden importar directamente desde hello [Galería de runbooks](automation-runbook-gallery.md) en Hola portal de Azure o descargar desde hello [Galería de PowerShell](https://www.powershellgallery.com).
 
 ### <a name="runbooks"></a>Runbooks
 
 Runbook | Descripción| 
 --------|------------|
-Export-RunAsCertificateToHybridWorker | El Runbook exportará un certificado de ejecución desde una cuenta de Automation a un Hybrid Worker de forma que los Runbooks de trabajo puedan autenticarse con Azure a fin de importarlos en la cuenta de Automation.| 
-Sync-LocalGitFolderToAutomationAccount | El Runbook sincronizará la carpeta GIT local de la máquina híbrida y luego importará los archivos de Runbook (*.ps1) en la cuenta de Automation.|
+Export-RunAsCertificateToHybridWorker | Runbook exporta un certificado de ejecución de un trabajador de automatización de la cuenta tooa híbrido para que runbooks en el trabajo de hello pueda autenticarse con Azure en orden tooimport runbooks en hello cuenta de automatización.| 
+Sync-LocalGitFolderToAutomationAccount | Runbook sincronizaciones Hola carpeta Git local en equipo híbrido de hello y, a continuación, importación archivos de runbook de hello (*.ps1) en la cuenta de automatización de Hola.|
 
 ### <a name="credentials"></a>Credenciales
 
 Credential: | Descripción|
 -----------|------------|
-GitHRWCredential | El recurso de credencial que creará que contiene el nombre de usuario y la contraseña de un usuario con permisos para Hybrid Worker.|
+GitHRWCredential | Activo de credencial se crea el nombre de usuario de toocontain hello y una contraseña para un usuario con toohello hybrid worker de permisos.|
 
 ## <a name="installing-and-configuring-this-scenario"></a>Instalación y configuración de este escenario
 
 ### <a name="prerequisites"></a>Requisitos previos
 
-1. El Runbook Sync-LocalGitFolderToAutomationAccount se autentica mediante la [cuenta de ejecución de Azure](automation-sec-configure-azure-runas-account.md). 
+1. Hola LocalGitFolderToAutomationAccount sincronización runbook autentica mediante hello [cuenta de identificación de Azure](automation-sec-configure-azure-runas-account.md). 
 
-2. También se necesita un área de trabajo de Microsoft Operations Management Suite (OMS) con la solución Azure Automation habilitada y configurada.  Si no tiene una asociada con la cuenta de Automation usada para instalar y configurar este escenario, se creará y configurará automáticamente al ejecutar el script **New-OnPremiseHybridWorker.ps1** desde Hybrid Runbook Worker.        
+2. También es necesario un área de trabajo de Microsoft Operations Management Suite (OMS) con hello solución de automatización de Azure habilitada y configurada.  Si no tiene uno que está asociado con hello automatización de la cuenta usada tooinstall y configurar este escenario, se crea y se configuran automáticamente cuando se ejecuta hello **OnPremiseHybridWorker.ps1 New** script desde híbrida Hola trabajo de runbook.        
 
     > [!NOTE]
-    > Actualmente, solo las siguientes regiones admiten la integración de Automation con OMS: **sudeste de Australia**, **este de EE. UU. 2**, **Sudeste Asiático** y **Europa Occidental**. 
+    > Actualmente hello siguientes regiones solo admiten la automatización de la integración con OMS - **sudeste de Australia**, **UU 2**, **sudeste de Asia**, y **oeste Europa**. 
 
-3. Un equipo que puede funcionar como Hybrid Runbook Worker dedicado que también hospedará el software de GitHub y mantendrá los archivos de Runbook (*runbook*.ps1) en un directorio de origen en el sistema de archivos para sincronizarlos entre GitHub y la cuenta de Automation.
+3. Un equipo que puede actuar como un Hybrid Runbook Worker dedicado que hospedará también software de GitHub de Hola y mantener archivos de runbook de hello (*runbook*. ps1) en un directorio de origen en hello toosynchronize de sistema de archivos entre GitHub y el Cuenta de automatización.
 
-### <a name="import-and-publish-the-runbooks"></a>Instalación y publicación de los Runbooks
+### <a name="import-and-publish-hello-runbooks"></a>Importar y publicar runbooks Hola
 
-Para importar los Runbooks *Export-RunAsCertificateToHybridWorker* y *Sync-LocalGitFolderToAutomationAccount* desde la Galería de Runbooks de su cuenta de Automation en Azure Portal, siga los procedimientos que se describen en [Importación de Runbooks desde la Galería de Runbooks](automation-runbook-gallery.md#to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal). Publique los Runbooks después de que se hayan importado correctamente en su cuenta de Automation.
+Hola tooimport *exportación RunAsCertificateToHybridWorker* y *LocalGitFolderToAutomationAccount sincronización* runbooks desde Hola Galería de runbooks de su cuenta de automatización en hello portal de Azure, Siga los procedimientos de hello en [importar Runbook de hello Galería de runbooks](automation-runbook-gallery.md#to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal). Publicar Hola runbooks después de que se han importado correctamente en su cuenta de automatización.
 
 ### <a name="deploy-and-configure-hybrid-runbook-worker"></a>Implementación y configuración de Hybrid Runbook Worker
 
-Si no tiene ya implementada una solución Hybrid Runbook Worker en su centro de datos, debe revisar los requisitos y seguir los pasos de instalación automatizada mediante el procedimiento que se describe en [Azure Automation Hybrid Runbook Workers: automatización de la instalación y la configuración](automation-hybrid-runbook-worker.md#automated-deployment).  Cuando haya instalado correctamente el Hybrid Worker en un equipo, realice los siguientes pasos para completar su configuración y hacer posible este escenario.
+Si no tiene un Runbook Worker híbrido ya implementados en su centro de datos, debe revisar los requisitos de Hola y seguir los pasos de instalación automatizada de hello mediante el procedimiento de hello en [Azure Automation Hybrid Runbook Workers: automatizar la instalación Configuración y](automation-hybrid-runbook-worker.md#automated-deployment).  Una vez que haya instalado correctamente hybrid worker de hello en un equipo, realice Hola siguientes pasos toocomplete su toosupport configuración este escenario.
 
-1. Inicie sesión en el equipo que hospeda el rol Hybrid Runbook Worker con una cuenta que tenga derechos administrativos y cree un directorio que contenga los archivos de Runbook de GIT.  Clone el repositorio de GIT interno en el directorio.
-2. Si aún no tiene una cuenta de ejecución creada o quiere crear una nueva dedicada para este fin, en Azure Portal, vaya a las cuentas de Automation, seleccione su cuenta de Automation y cree un [recurso de credencial](automation-credentials.md) que contenga el nombre de usuario y la contraseña de un usuario con permisos para el Hybrid Worker.  
-3. Desde su cuenta de Automation, [edit el Runbook](automation-edit-textual-runbook.md) **Export-RunAsCertificateToHybridWorker** y modifique el valor de la variable *$Password* con una contraseña segura.  Después de modificar el valor, haga clic en **Publicar** para publicar la versión de borrador del Runbook. 
-5. Inicie el Runbook **Export-RunAsCertificateToHybridWorker**, y en la hoja **Start Runbook** (Iniciar Runbook), en la opción **Parámetros de ejecución**, seleccione la opción **Hybrid Worker**. En la lista desplegable, seleccione el grupo de Hybrid Worker que creó anteriormente para este escenario.  
+1. Sesión toohello hospedaje Hola Hybrid Runbook Worker función del equipo con una cuenta que tenga derechos administrativos locales y cree un directorio toohold Hola Git runbook los archivos.  Clon Hola interno Git toohello directorio del repositorio.
+2. Si ya no tiene una cuenta de ejecución creada o si desea toocreate uno nuevo dedicada para este fin, desde el portal de Azure Hola desplácese tooAutomation cuentas, seleccione su cuenta de automatización y crear un [activo de credencial](automation-credentials.md) que contiene Hola username y password para un usuario con permisos toohello híbrido de trabajo.  
+3. Desde su cuenta de automatización, [editar runbook hello](automation-edit-textual-runbook.md)**exportación RunAsCertificateToHybridWorker** y modificar valor de Hola de variable de hello *$Password* con una fuerte contraseña.    Después de modificar el valor de hello, haga clic en **publicar** toohave Hola versión de borrador Hola runbook publicado. 
+5. Iniciar runbook hello **exportación RunAsCertificateToHybridWorker**y en hello **iniciar Runbook** hoja, en la opción de hello **los parámetros de ejecución** seleccione opción hello **Hybrid Worker** y en el grupo Hola lista desplegable seleccione Hola Hybrid worker que creó anteriormente para este escenario.  
 
-    Esta acción exportará un certificado al Hybrid Worker para que los Runbooks de trabajo puedan autenticarse con Azure mediante la conexión de ejecución para administrar los recursos de Azure (para este escenario en concreto, importe los Runbooks en la cuenta de Automation).
+    Exporta un certificado toohello híbrido de trabajo para que runbooks en el trabajo de hello pueda autenticarse con Azure con hello ejecutar como conexión de orden toomanage recursos de Azure (en particular para este escenario: importar runbooks toohello cuenta de automatización).
 
-4. En su cuenta de Automation, seleccione el grupo de Hybrid Worker creado anteriormente y [especifique una cuenta de ejecución](automation-hrw-run-runbooks.md#runas-account) para él; a continuación, elija el recurso de credencial que ya había creado o que acaba de crear.  Esto garantiza que el Runbook de sincronización puede ejecutar comandos de GIT. 
-5. Inicie el Runbook **Sync-LocalGitFolderToAutomationAccount**, proporcione los siguientes valores de parámetros de entrada necesarios y, en la hoja **Start Runbook** (Iniciar Runbook), en la opción **Parámetros de ejecución**, seleccione la opción **Hybrid Worker**. En la lista desplegable, seleccione el grupo de Hybrid Worker que creó anteriormente para este escenario:
-    * *ResourceGroup*: el nombre del grupo de recursos asociado con la cuenta de Automation.
-    * *AutomationAccountName* : el nombre de la cuenta de Automatización.
-    * *GitPath*: la carpeta local o el archivo en el Hybrid Runbook Worker donde está configurado GIT para extraer los últimos cambios.
+4. Desde su cuenta de automatización, seleccione Hola grupo Hybrid worker que creó anteriormente y [especificar una cuenta de ejecución](automation-hrw-run-runbooks.md#runas-account) para el grupo Hybrid worker de Hola y activo de credencial de hello elegía simplemente o ya ha creado.  Esto garantiza que ese runbook de sincronización de hello puede ejecutar comandos de Git. 
+5. Iniciar runbook hello **sincronización LocalGitFolderToAutomationAccount**, proporcionar siguiente Hola requiere valores de parámetro de entrada y en hello **iniciar Runbook** hoja, en la opción de hello **ejecutar configuración de** seleccione opción hello **Hybrid Worker** y en el grupo Hola lista desplegable seleccione Hola Hybrid worker que creó anteriormente para este escenario:
+    * *ResourceGroup* : hello nombre de su grupo de recursos asociado con su cuenta de automatización
+    * *AutomationAccountName* : hello nombre de la cuenta de automatización
+    * *GitPath* : Hola carpeta local o de archivos en Hola donde se configura Git toopull cambios más recientes en Hybrid Runbook Worker
 
-    La carpeta de GIT local se sincronizará en el equipo de Hybrid Worker y luego se importarán los archivos .ps1 desde el directorio de origen hasta la cuenta de Automation.
+    Esto carpeta Git local de hello en el equipo de trabajo de hello híbrido de sincronización y, a continuación, importar archivos. ps1 de Hola de hello origen directory toohello cuenta de automatización.
 
     ![Start Sync-LocalGitFolderToAutomationAccount Runbook](media/automation-scenario-source-control-integration-with-github-ent/start-runbook-synclocalgitfoldertoautoacct.png)<br>
 
-7. Vea los detalles de resumen del trabajo del runbook; para ello, selecciónelo en la hoja **Runbooks** de su cuenta de Automation y luego seleccione el icono **Trabajos**.  Para confirmar que se ha completado correctamente, seleccione el icono **All logs** (Todos los registros) y revise la secuencia de registro detallada.  
+7. Ver los detalles de resumen de trabajo de runbook de hello seleccionándola de Hola **Runbooks** hoja en tu cuenta de automatización y, a continuación, seleccione Hola **trabajos** icono.  Confirme que se ha completado correctamente seleccionando hello **todos los registros de** icono y el flujo de registro detallado de hello revisado.  
 
 ## <a name="next-steps"></a>Pasos siguientes
 
--  Para obtener más información sobre los tipos de Runbook, sus ventajas y sus limitaciones, consulte [Tipos de runbooks de Automatización de Azure](automation-runbook-types.md)
+-  tooknow más información acerca de los tipos de runbook, sus ventajas y limitaciones, consulte [tipos de runbook de automatización de Azure](automation-runbook-types.md)
 -  Para obtener más información sobre la característica de compatibilidad con scripts de PowerShell, consulte [Announcing Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)

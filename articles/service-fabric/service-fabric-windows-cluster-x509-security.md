@@ -1,6 +1,6 @@
 ---
-title: "Protección de un clúster de Azure Service Fabric en Windows con certificaciones | Microsoft Docs"
-description: "En este artículo se describe cómo proteger la comunicación en el clúster independiente o privado, así como entre los clientes y el clúster."
+title: "aaaSecure un tejido de Azure servicio de clúster en Windows con certificados | Documentos de Microsoft"
+description: "Este artículo describe cómo toosecure comunicación dentro de hello independiente o privada del clúster así como entre los clientes y el clúster de Hola."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dekapur
-ms.openlocfilehash: 71ece1e43cc3c4ac3350cd59633065de06672420
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f0d411963615349a84edfc8125dec4ee5908f146
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="secure-a-standalone-cluster-on-windows-using-x509-certificates"></a>Protección de un clúster independiente en Windows mediante certificados X.509
-Este artículo describe cómo proteger la comunicación entre los diversos nodos del clúster de Windows independiente, así cómo autenticar a los clientes que se conectan a él, mediante certificados X.509. Esto garantiza que solo los usuarios autorizados pueden tener acceso al clúster y a las aplicaciones implementadas, y realizar tareas de administración.  La seguridad basada en certificados se debe haber habilitado en el clúster al crearlo.  
+Este artículo describe cómo toosecure Hola comunican Hola varios nodos de un clúster de Windows independiente, así como el modo clientes tooauthenticate que se conectan clúster toothis, mediante certificados X.509. Esto garantiza que sólo los usuarios autorizados pueden tener acceso a los clúster hello, hello las aplicaciones implementadas y realizar tareas de administración.  Seguridad de certificado debe estar habilitado en clúster de hello cuando se crea un clúster Hola.  
 
 Para más información sobre la seguridad de clúster, como la seguridad de nodo a nodo, la seguridad de cliente a nodo y el control de acceso basado en roles, consulte [Escenarios de seguridad de los clústeres de Service Fabric](service-fabric-cluster-security.md).
 
 ## <a name="which-certificates-will-you-need"></a>¿Qué certificados necesitará?
-Para empezar, [descargue el paquete de clúster independiente](service-fabric-cluster-creation-for-windows-server.md#downloadpackage) en uno de los nodos del clúster. En el paquete descargado, encontrará el archivo **ClusterConfig.X509.MultiMachine.json** . Abra el archivo y revise la sección **security** en la sección **properties**:
+toostart, [Descargar paquete de clúster de hello independiente](service-fabric-cluster-creation-for-windows-server.md#downloadpackage) tooone de nodos de hello en el clúster. Hola descargó paquete, encontrará un **ClusterConfig.X509.MultiMachine.json** archivo. Abra el archivo hello y revise la sección de Hola para **seguridad** en hello **propiedades** sección:
 
 ```JSON
 "security": {
-    "metadata": "The Credential type X509 indicates this is cluster is secured using X509 Certificates. The thumbprint format is - d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
+    "metadata": "hello Credential type X509 indicates this is cluster is secured using X509 Certificates. hello thumbprint format is - d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
     "ClusterCredentialType": "X509",
     "ServerCredentialType": "X509",
     "CertificateInformation": {
@@ -94,28 +94,28 @@ Para empezar, [descargue el paquete de clúster independiente](service-fabric-cl
 },
 ```
 
-En esta sección se describen los certificados que necesita para proteger el clúster de Windows independiente. Si va a especificar un certificado de clúster, establezca el valor de **ClusterCredentialType** en _**X509**_. Si va a especificar un certificado de servidor para conexiones externas, establezca **ServerCredentialType** en _**X509**_. Si bien no es obligatorio, se recomienda tener ambos certificados para contar con un clúster protegido correctamente. Si establece estos valores en *X509*, también debe especificar los certificados correspondientes. De lo contrario, Service Fabric generará una excepción. En algunos escenarios, es posible que solo desee especificar _ClientCertificateThumbprints_ o _ReverseProxyCertificate_. En esos escenarios, no es necesario establecer _ClusterCredentialType_ o _ServerCredentialType_ en _X509_.
+En esta sección se describe los certificados de Hola que necesita para proteger un clúster de Windows independiente. Si va a especificar un certificado de clúster, establezca el valor de Hola de **ClusterCredentialType** too_**X509**_. Si va a especificar el certificado de servidor para conexiones externas, establezca hello **ServerCredentialType** demasiado_**X509**_. Aunque no es obligatorio, se recomienda toohave ambos estos certificados para un clúster protegido correctamente. Si establece estos valores demasiado*X509* , a continuación, también debe especificar Hola certificados correspondientes o Service Fabric se iniciará una excepción. En algunos casos, podría desear sólo hello toospecify _ClientCertificateThumbprints_ o _ReverseProxyCertificate_. En esos escenarios, no es necesario definir _ClusterCredentialType_ o _ServerCredentialType_ too_X509_.
 
 
 > [!NOTE]
-> Una [huella digital](https://en.wikipedia.org/wiki/Public_key_fingerprint) es la identidad principal de un certificado. Consulte [Cómo recuperar la huella digital de un certificado](https://msdn.microsoft.com/library/ms734695.aspx) para averiguar la huella digital de los certificados que cree.
+> A [huella digital](https://en.wikipedia.org/wiki/Public_key_fingerprint) es Hola identidad principal de un certificado. Lectura [cómo tooretrieve huella digital de un certificado](https://msdn.microsoft.com/library/ms734695.aspx) toofind out huella digital de Hola de certificados de Hola que cree.
 > 
 > 
 
-En la siguiente tabla se enumeran los certificados que va a necesitar en su instalación del clúster:
+Hello tabla siguiente enumeran los certificados de Hola que necesita la configuración de clúster:
 
 | **Valor de CertificateInformation** | **Descripción** |
 | --- | --- |
-| ClusterCertificate |Se recomienda para el entorno de prueba. Este certificado es necesario para proteger la comunicación entre los nodos de un clúster. Puede utilizar dos certificados diferentes, uno principal y otro secundario para la actualización. Establezca la huella digital del certificado principal en la sección **Thumbprint** y la del secundario en la variable**ThumbprintSecondary**. |
-| ClusterCertificateCommonNames |Se recomienda para el entorno de producción. Este certificado es necesario para proteger la comunicación entre los nodos de un clúster. Puede utilizar uno o dos nombres comunes del certificado de clúster. |
-| ServerCertificate |Se recomienda para el entorno de prueba. Este certificado se presenta al cliente cuando intenta conectarse a este clúster. Para mayor comodidad, puede utilizar el mismo certificado para *ClusterCertificate* y *ServerCertificate*. Puede utilizar dos certificados de servidor diferentes, uno principal y otro secundario para la actualización. Establezca la huella digital del certificado principal en la sección **Thumbprint** y la del secundario en la variable**ThumbprintSecondary**. |
-| ServerCertificateCommonNames |Se recomienda para el entorno de producción. Este certificado se presenta al cliente cuando intenta conectarse a este clúster. Por comodidad, puede utilizar el mismo certificado para *ClusterCertificateCommonNames* y *ServerCertificateCommonNames*. Puede utilizar uno o dos nombres comunes de certificado de servidor. |
-| ClientCertificateThumbprints |Se trata de un conjunto de certificados que desea instalar en los clientes autenticados. Puede tener varios certificados de cliente diferentes instalados en los equipos a los que desea permitir el acceso al clúster. Establece la huella digital de cada certificado en la variable **CertificateThumbprint** . Si establece **IsAdmin** en *True*, el cliente con este certificado instalado puede realizar actividades de administración en el clúster. Si **IsAdmin** es *false*, el cliente con este certificado solo puede realizar las acciones permitidas para los derechos de acceso de usuario, normalmente de solo lectura. Para más información sobre roles, consulte [Control de acceso basado en roles (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
-| ClientCertificateCommonNames |Establezca el nombre común del primer certificado de cliente para **CertificateCommonName**. **CertificateIssuerThumbprint** es la huella digital del emisor de este certificado. Consulte [Trabajar con certificados](https://msdn.microsoft.com/library/ms731899.aspx) para más información sobre los nombres comunes y el emisor. |
-| ReverseProxyCertificate |Se recomienda para el entorno de prueba. Se trata de un certificado opcional que se puede especificar si desea proteger el [proxy inverso](service-fabric-reverseproxy.md). Asegúrese de que reverseProxyEndpointPort está establecido en nodeTypes si usa este certificado. |
-| ReverseProxyCertificateCommonNames |Se recomienda para el entorno de producción. Se trata de un certificado opcional que se puede especificar si desea proteger el [proxy inverso](service-fabric-reverseproxy.md). Asegúrese de que reverseProxyEndpointPort está establecido en nodeTypes si usa este certificado. |
+| ClusterCertificate |Se recomienda para el entorno de prueba. Este certificado es necesario toosecure Hola comunicación entre los nodos de hello en un clúster. Puede utilizar dos certificados diferentes, uno principal y otro secundario para la actualización. Establecer la huella digital de hello del certificado principal de Hola Hola **huella digital** sección y el de hello secundario en hello **ThumbprintSecondary** variables. |
+| ClusterCertificateCommonNames |Se recomienda para el entorno de producción. Este certificado es necesario toosecure Hola comunicación entre los nodos de hello en un clúster. Puede utilizar uno o dos nombres comunes del certificado de clúster. |
+| ServerCertificate |Se recomienda para el entorno de prueba. Este certificado se presenta a toohello cliente cuando intente tooconnect toothis clúster. Para mayor comodidad, puede elegir toouse Hola mismo certificado para *ClusterCertificate* y *ServerCertificate*. Puede utilizar dos certificados de servidor diferentes, uno principal y otro secundario para la actualización. Establecer la huella digital de hello del certificado principal de Hola Hola **huella digital** sección y el de hello secundario en hello **ThumbprintSecondary** variables. |
+| ServerCertificateCommonNames |Se recomienda para el entorno de producción. Este certificado se presenta a toohello cliente cuando intente tooconnect toothis clúster. Para mayor comodidad, puede elegir toouse Hola mismo certificado para *ClusterCertificateCommonNames* y *ServerCertificateCommonNames*. Puede utilizar uno o dos nombres comunes de certificado de servidor. |
+| ClientCertificateThumbprints |Se trata de un conjunto de certificados que desea tooinstall en los clientes de hello autenticado. Puede tener un número diferente de certificados de cliente instalado en los equipos de Hola que desea que el clúster de tooallow acceso toohello. Establecer Hola huella digital de cada certificado en hello **CertificateThumbprint** variable. Si establece hello **IsAdmin** demasiado*true*, cliente hello con este certificado instalado en él puede realice administrador actividades de administración de clúster de Hola. Si hello **IsAdmin** es *false*, cliente hello con este certificado solo puede realizar acciones de hello permitidas para los derechos de acceso de usuario, normalmente de solo lectura. Para más información sobre roles, consulte [Control de acceso basado en roles (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
+| ClientCertificateCommonNames |Hola de conjunto de nombre común del certificado de cliente primera Hola para hello **CertificateCommonName**. Hola **CertificateIssuerThumbprint** es la huella digital de Hola para emisor Hola de este certificado. Lectura [trabajar con certificados](https://msdn.microsoft.com/library/ms731899.aspx) tooknow más información acerca de los nombres comunes y el emisor de Hola. |
+| ReverseProxyCertificate |Se recomienda para el entorno de prueba. Se trata de un certificado opcional que se puede especificar si desea que toosecure su [un Proxy inverso](service-fabric-reverseproxy.md). Asegúrese de que reverseProxyEndpointPort está establecido en nodeTypes si usa este certificado. |
+| ReverseProxyCertificateCommonNames |Se recomienda para el entorno de producción. Se trata de un certificado opcional que se puede especificar si desea que toosecure su [un Proxy inverso](service-fabric-reverseproxy.md). Asegúrese de que reverseProxyEndpointPort está establecido en nodeTypes si usa este certificado. |
 
-Este es un ejemplo de configuración del clúster en el que se han proporcionado los certificados de clúster, servidor y cliente. Tenga en cuenta que, en lo que respecta a los certificados de clúster, servidor y reverseProxy, no se permite configurar conjuntamente huellas digitales ni nombres comunes para el mismo tipo de certificado.
+Aquí es ejemplo de configuración de clúster donde se han proporcionado los certificados de cliente, servidor y clúster de Hola. Tenga en cuenta que para clúster / server / reverseProxy certificados, la huella digital y nombre común no se permiten toobe juntos para hello misma configuración tipo de certificado.
 
  ```JSON
  {
@@ -124,14 +124,14 @@ Este es un ejemplo de configuración del clúster en el que se han proporcionado
     "apiVersion": "2016-09-26",
     "nodes": [{
         "nodeName": "vm0",
-        "metadata": "Replace the localhost below with valid IP address or FQDN",
+        "metadata": "Replace hello localhost below with valid IP address or FQDN",
         "iPAddress": "10.7.0.5",
         "nodeTypeRef": "NodeType0",
         "faultDomain": "fd:/dc1/r0",
         "upgradeDomain": "UD0"
     }, {
         "nodeName": "vm1",
-        "metadata": "Replace the localhost with valid IP address or FQDN",
+        "metadata": "Replace hello localhost with valid IP address or FQDN",
         "iPAddress": "10.7.0.4",
         "nodeTypeRef": "NodeType0",
         "faultDomain": "fd:/dc1/r1",
@@ -139,21 +139,21 @@ Este es un ejemplo de configuración del clúster en el que se han proporcionado
     }, {
         "nodeName": "vm2",
         "iPAddress": "10.7.0.6",
-        "metadata": "Replace the localhost with valid IP address or FQDN",
+        "metadata": "Replace hello localhost with valid IP address or FQDN",
         "nodeTypeRef": "NodeType0",
         "faultDomain": "fd:/dc1/r2",
         "upgradeDomain": "UD2"
     }],
     "properties": {
         "diagnosticsStore": {
-        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+        "metadata":  "Please replace hello diagnostics store with an actual file share accessible from all cluster machines.",
         "dataDeletionAgeInDays": "7",
         "storeType": "FileShare",
         "IsEncrypted": "false",
         "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
         }
         "security": {
-            "metadata": "The Credential type X509 indicates this is cluster is secured using X509 Certificates. The thumbprint format is - d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
+            "metadata": "hello Credential type X509 indicates this is cluster is secured using X509 Certificates. hello thumbprint format is - d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
             "ClusterCredentialType": "X509",
             "ServerCredentialType": "X509",
             "CertificateInformation": {
@@ -217,46 +217,46 @@ Este es un ejemplo de configuración del clúster en el que se han proporcionado
 
 ## <a name="certificate-roll-over"></a>Sustitución de certificados
 Al utilizar el nombre común del certificado en lugar de la huella digital, el proceso de sustitución de certificados no precisa actualizar la configuración de clúster.
-Si la sustitución de certificados implica también a los de emisor, mantenga el antiguo certificado de emisor en el almacén de certificados, al menos, 2 horas después de instalar el nuevo certificado de emisor.
+Si trata de la reversión de certificado emisor se sustituyen, tenga certificado emisor de la antigua hello en el almacén de certificados de hello al menos 2 horas después de instalar el nuevo certificado de emisor de Hola.
 
-## <a name="acquire-the-x509-certificates"></a>Adquisición de certificados X.509
-Para proteger la comunicación en el clúster, primero deberá obtener certificados X.509 para los nodos del clúster. Además, para limitar la conexión a este clúster a los equipos o usuarios autorizados, debe obtener e instalar certificados para los equipos cliente.
+## <a name="acquire-hello-x509-certificates"></a>Adquirir certificados X.509 Hola
+comunicación toosecure en clúster de hello, primero deberá tooobtain los certificados X.509 para los nodos del clúster. Asimismo, toolimit conexión toothis tooauthorized/users/máquinas del clúster, se necesita tooobtain e instalar certificados para equipos cliente de Hola.
 
-Para los clústeres que ejecutan cargas de trabajo de producción, debe usar un certificado X.509 firmado por una [entidad de certificación (CA)](https://en.wikipedia.org/wiki/Certificate_authority) con el fin de proteger el clúster. Para más información sobre cómo obtener estos certificados, consulte [Cómo obtener un certificado (WCF)](http://msdn.microsoft.com/library/aa702761.aspx).
+Para los clústeres que ejecutan cargas de trabajo de producción, debe usar un [entidad de certificación (CA)](https://en.wikipedia.org/wiki/Certificate_authority) firmados de clúster de Hola de toosecure de certificado X.509. Para obtener más información acerca de cómo conseguir estos certificados, vaya demasiado[Cómo: obtener un certificado](http://msdn.microsoft.com/library/aa702761.aspx).
 
-En los clústeres que se usan con fines de prueba, puede usar un certificado autofirmado.
+Para los clústeres que use para fines de prueba, puede elegir toouse un certificado autofirmado.
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Opcional: Creación de un certificado autofirmado
-Una forma de crear un certificado autofirmado que se puede proteger correctamente es usar el script *CertSetup.ps1* de la carpeta del SDK de Service Fabric en el directorio *C:\Archivos de programa\Microsoft SDKs\Service Fabric\ClusterSetup\Secure*. Edite el archivo para cambiar el nombre predeterminado del certificado (busque el valor *CN=ServiceFabricDevClusterCert*). Ejecute este script como `.\CertSetup.ps1 -Install`.
+Una manera de toocreate un certificado autofirmado que se pueden proteger correctamente es hello de toouse *CertSetup.ps1* script en carpeta de SDK del servicio Fabric hello en el directorio de hello *C:\Program Files\Microsoft SDKs\Service Fabric\ ClusterSetup\Secure*. Editar este nombre de archivo toochange Hola predeterminado del certificado de hello (Buscar valor hello *CN = ServiceFabricDevClusterCert*). Ejecute este script como `.\CertSetup.ps1 -Install`.
 
-Ahora exporte el certificado a un archivo PFX con una contraseña protegida. En primer lugar, obtenga la huella digital del certificado. Desde el menú *Inicio*, ejecute *Administrar certificados de equipo*. Vaya a la carpeta **Equipo local\Personal** y busque el certificado recién creado. Haga doble clic en el certificado para abrirlo, seleccione la pestaña *Detalles* y desplácese hacia abajo hasta el campo *Huella digital*. Copie el valor de la huella digital en el comando de PowerShell que aparece a continuación, sin espacios.  Cambie el valor `String` por una contraseña segura adecuada para protegerlo y ejecute el siguiente comando en PowerShell:
+Exportar archivo de hello certificado tooa PFX con una contraseña protegida. Obtenga primero la huella digital de hello del certificado de Hola. De hello *iniciar* menú, ejecute hello *administrar certificados de equipo*. Navegue toohello **equipo Local/personal** crear carpeta ni Hola certificado que acaba de búsqueda. Haga doble clic en hello certificado tooopen él, seleccione hello *detalles* ficha y desplácese hacia abajo toohello *huella digital* campo. Copiar valor de huella digital de hello en el comando de PowerShell de Hola a continuación, después de quitar los espacios de Hola.  Hola de cambio `String` valor tooa contraseña segura adecuado tooprotect se y ejecución Hola siguiente en PowerShell:
 
 ```powershell   
 $pswd = ConvertTo-SecureString -String "1234" -Force –AsPlainText
 Get-ChildItem -Path cert:\localMachine\my\<Thumbprint> | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $pswd
 ```
 
-Para ver los detalles de un certificado instalado en el equipo, puede ejecutar el siguiente comando de PowerShell:
+detalles de hello toosee de un certificado instalado en hello automático se puede ejecutar el siguiente comando de PowerShell de hello:
 
 ```powershell
 $cert = Get-Item Cert:\LocalMachine\My\<Thumbprint>
 Write-Host $cert.ToString($true)
 ```
 
-Como alternativa, si tiene una suscripción de Azure, consulte la sección [Add certificates to Key Vault](service-fabric-cluster-creation-via-arm.md#add-certificate-to-key-vault) (Agregar certificados a Key Vault).
+O bien, si tiene una suscripción de Azure, siga la sección de hello [agregar certificados tooKey almacén](service-fabric-cluster-creation-via-arm.md#add-certificate-to-key-vault).
 
-## <a name="install-the-certificates"></a>Instalación de los certificados
-Cuando tenga los certificados, puede instalarlos en los nodos del clúster. Los nodos deben tener instalada la versión más reciente de Windows PowerShell 3.x. Debe repetir estos pasos en cada nodo, para los certificados del clúster y el servidor y cualquier certificado secundario.
+## <a name="install-hello-certificates"></a>Instalar certificados de Hola
+Una vez que tenga certificados, puede instalarlas en nodos de clúster de Hola. Los nodos deben toohave Hola más reciente de Windows PowerShell 3.x instalado en ellos. Necesitará toorepeat estos pasos en cada nodo de clúster y el servidor de certificados y los certificados secundarios.
 
-1. Copie los archivos .pfx en el nodo.
-2. Abra una ventana de PowerShell como administrador y ejecute el siguiente comando. Reemplace *$pswd* por la contraseña que usó para crear este certificado. Reemplace *$PfxFilePath* por la ruta de acceso completa del archivo .pfx copiado en este nodo.
+1. Nodo de toohello de los archivos de copia Hola pfx.
+2. Abra una ventana de PowerShell como administrador y escriba Hola siga los comandos. Reemplace hello *$pswd* con contraseña hello usa toocreate este certificado. Reemplace hello *$PfxFilePath* con ruta de acceso completa de hello del nodo de hello .pfx toothis copiada.
    
     ```powershell
     $pswd = "1234"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Ahora debe establecer el control de acceso de este certificado para que el proceso Service Fabric, que se ejecuta en la cuenta de servicio de red, pueda usarlo al ejecutar el script siguiente. Proporcione la huella digital del certificado y especifique "SERVICIO DE RED" para la cuenta de servicio. Para comprobar que las ACL del certificado son correctas, abra el certificado en *Inicio* > *Administrar certificados de equipo* y consulte *Todas las tareas* > *Administrar claves privadas*.
+3. Configurar ahora el control de acceso de hello en este certificado para que el proceso de Service Fabric hello, que se ejecuta con hello cuenta de servicio de red, puede usar mediante la ejecución de la siguiente secuencia de comandos de Hola. Proporcione la huella digital de Hola de certificado de Hola y "Servicio de red" para la cuenta de servicio de Hola. Puede comprobar que hello las ACL en el certificado de Hola son correctos, abra el certificado de hello en *iniciar* > *administrar certificados de equipo* y examinando *todas las tareas*  >  *Administrar claves privadas*.
    
     ```powershell
     param
@@ -272,54 +272,54 @@ Cuando tenga los certificados, puede instalarlos en los nodos del clúster. Los 
    
     $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; }
    
-    # Specify the user, the permissions and the permission type
+    # Specify hello user, hello permissions and hello permission type
     $permission = "$($serviceAccount)","FullControl","Allow"
     $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission
    
-    # Location of the machine related keys
+    # Location of hello machine related keys
     $keyPath = Join-Path -Path $env:ProgramData -ChildPath "\Microsoft\Crypto\RSA\MachineKeys"
     $keyName = $cert.PrivateKey.CspKeyContainerInfo.UniqueKeyContainerName
     $keyFullPath = Join-Path -Path $keyPath -ChildPath $keyName
    
-    # Get the current acl of the private key
+    # Get hello current acl of hello private key
     $acl = (Get-Item $keyFullPath).GetAccessControl('Access')
    
-    # Add the new ace to the acl of the private key
+    # Add hello new ace toohello acl of hello private key
     $acl.SetAccessRule($accessRule)
    
-    # Write back the new acl
+    # Write back hello new acl
     Set-Acl -Path $keyFullPath -AclObject $acl -ErrorAction Stop
    
-    # Observe the access rights currently assigned to this certificate.
+    # Observe hello access rights currently assigned toothis certificate.
     get-acl $keyFullPath| fl
     ```
-4. Repita los pasos anteriores para cada certificado de servidor. También puede usar estos pasos para instalar los certificados de cliente en las máquinas a las que desea permitir el acceso al clúster.
+4. Repita los pasos de hello anteriormente para cada certificado de servidor. También puede utilizar estos pasos tooinstall Hola certificados de cliente en equipos de Hola que desea que el clúster de tooallow acceso toohello.
 
-## <a name="create-the-secure-cluster"></a>Creación del clúster seguro
-Después de configurar la sección **security** del archivo **ClusterConfig.X509.MultiMachine.json**, puede continuar con la sección [Creación del clúster](service-fabric-cluster-creation-for-windows-server.md#createcluster) para configurar los nodos y crear el clúster independiente. Recuerde usar el archivo **ClusterConfig.X509.MultiMachine.json** al crear el clúster. Por ejemplo, el comando podría ser similar al siguiente:
+## <a name="create-hello-secure-cluster"></a>Crear clúster segura Hola
+Después de configurar hello **seguridad** sección de hello **ClusterConfig.X509.MultiMachine.json** archivo, puede continuar demasiado[Creae el clúster](service-fabric-cluster-creation-for-windows-server.md#createcluster) tooconfigure de sección Hola nodos y crear clúster de hello independiente. Recuerde hello toouse **ClusterConfig.X509.MultiMachine.json** archivo al crear el clúster de Hola. Por ejemplo, el comando sería Hola siguiente:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Una vez que el clúster de Windows independiente seguro se ejecuta correctamente y que ha configurado los clientes autenticados para conectarse a él, siga la sección [Conexión a un clúster seguro con PowerShell](service-fabric-connect-to-secure-cluster.md#connectsecurecluster) para conectarse a él. Por ejemplo:
+Una vez que tenga Hola segura independiente de Windows clúster que se ejecuta correctamente y configuró Hola de clientes autenticados tooconnect tooit, siga la sección de hello [conectar tooa clúster segura mediante PowerShell](service-fabric-connect-to-secure-cluster.md#connectsecurecluster) tooconnect tooit. Por ejemplo:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Luego puede ejecutar otros comandos de PowerShell para trabajar con este clúster. Por ejemplo, [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode.md?view=azureservicefabricps) para mostrar una lista de los nodos en este clúster protegido.
+A continuación, puede ejecutar otro toowork de comandos de PowerShell con este clúster. Por ejemplo, [ServiceFabricNode Get](/powershell/module/servicefabric/get-servicefabricnode.md?view=azureservicefabricps) tooshow una lista de nodos de este clúster segura.
 
 
-Para quitar el clúster, conéctese al nodo del clúster en el que descargó el paquete de Service Fabric, abra una línea de comandos y vaya a la carpeta del paquete. Ahora ejecute el comando siguiente:
+clúster de Hola de tooremove, conectar toohello nodo en clúster de Hola donde descargó el paquete de Service Fabric hello, abra una línea de comandos y desplazarse por las carpetas de paquete toohello. Ahora ejecute hello siguiente comando:
 
 ```powershell
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
 > [!NOTE]
-> Una configuración incorrecta de un certificado puede impedir que el clúster se muestre durante la implementación. Para realizar un autodiagnóstico de los problemas de seguridad, consulte en el grupo del Visor de eventos *Registros de aplicaciones y servicios* > *Microsoft Service Fabric*.
+> Configuración de un certificado incorrecto puede impedir que el clúster de hello salga durante la implementación. tooself-diagnosticar problemas de seguridad, consulte en el grupo del Visor de eventos *registros de aplicaciones y servicios* > *Microsoft Service Fabric*.
 > 
 > 
 

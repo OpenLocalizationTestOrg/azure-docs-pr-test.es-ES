@@ -1,5 +1,5 @@
 ---
-title: Arquitectura de Resource Manager | Microsoft Docs
+title: Arquitectura del Administrador de aaaResource | Documentos de Microsoft
 description: "Información general de la arquitectura de Service Fabric Cluster Resource Manager"
 services: service-fabric
 documentationcenter: .net
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 565c20637fa93ed92bb6c52e585a4b70bdeb6f8c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 9ea80273d0566a2ac25143ada3662875656b57b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Información general de la arquitectura del Administrador de recursos de clúster
-Cluster Resource Manager de Service Fabric es un servicio centralizado que se ejecuta en el clúster. Administra el estado deseado de los servicios del clúster, concretamente con respecto al consumo de recursos y las reglas de selección de ubicación. 
+Hola, Administrador de recursos de clúster de tejido de servicio es un servicio central que se ejecuta en el clúster de Hola. Administra el estado de hello deseado de los servicios de hello en clúster de hello, especialmente con respecto al consumo tooresource y las reglas de selección de ubicación. 
 
-Para administrar los recursos del clúster, Cluster Resource Manager de Service Fabric debe disponer de varios datos:
+toomanage Hola recursos del clúster, Hola, Administrador de recursos de clúster de tejido de servicio debe tener varias piezas de información:
 
 - Qué servicios existen actualmente
 - Consumo de recursos actual (o predeterminado) de cada servicio 
-- Capacidad restante del clúster 
-- Capacidad de los nodos del clúster 
-- Cantidad de recursos consumidos en cada nodo
+- capacidad de clúster restantes Hola 
+- capacidad de Hola de nodos de hello en clúster de Hola 
+- cantidad de Hola de los recursos utilizados en cada nodo
 
-El consumo de recursos de un servicio determinado puede cambiar con el tiempo y los servicios normalmente se ocupan de más de un tipo de recurso. En los distintos servicios, es posible que se midan tanto los recursos lógicos como los recursos físicos reales. Los servicios pueden hacer seguimiento de métricas físicas, como el consumo de disco y memoria. Es más frecuentes que los servicios se ocupen de las métricas lógicas, como "WorkQueueDepth" o "TotalRequests". Se pueden usar métricas lógicas y físicas en un mismo clúster. Las métricas pueden compartirse entre varios servicios o ser específicas de un servicio concreto.
+consumo de recursos de Hola de un servicio determinado puede cambiar con el tiempo y servicios preocupa normalmente más de un tipo de recurso. En los distintos servicios, es posible que se midan tanto los recursos lógicos como los recursos físicos reales. Los servicios pueden hacer seguimiento de métricas físicas, como el consumo de disco y memoria. Es más frecuentes que los servicios se ocupen de las métricas lógicas, como "WorkQueueDepth" o "TotalRequests". Lógicas y físicas de las métricas pueden utilizarse en hello mismo clúster. Las métricas se pueden compartir entre muchos servicios o ser tooa específico de servicio determinado.
 
 ## <a name="other-considerations"></a>Otras consideraciones
-Los propietarios y operadores del clúster pueden ser distintos de los autores de los servicios y las aplicaciones o, por lo menos, tienen distintas responsabilidades. Hay algunas cosas que se saben sobre lo que necesita la aplicación al desarrollarla. Se tiene un cálculo aproximado de los recursos que consumirá y se sabe cómo deben implementarse los distintos servicios. Por ejemplo, el nivel web tiene que ejecutarse en nodos expuestos en Internet, mientras que los servicios de base de datos, no. Otro ejemplo puede ser que los servicios web probablemente estén restringidos por la CPU y la red, mientras que los servicios del nivel de datos dan más importancia al consumo de memoria y de disco. Aunque la persona que controla un incidente en un sitio activo de ese servicio en producción o que administra una actualización del servicio tiene un trabajo distinto que realizar y necesita herramientas distintas. 
+Hello propietarios y los operadores de clúster de hello pueden ser diferentes de Hola a los autores de servicio y de aplicación o en un mínimo son Hola mismo personas llevar sombreros distintos. Hay algunas cosas que se saben sobre lo que necesita la aplicación al desarrollarla. Tener una estimación de hello deben implementarse diferentes servicios y recursos que va a consumir. Por ejemplo, nivel de hello web debe toorun en nodos expuestos toohello Internet, mientras los servicios de base de datos de hello no deberían. Como otro ejemplo, servicios web de Hola probablemente están restringidos por la CPU y la red, al cuidado de servicios de nivel de hello datos más información sobre el consumo de memoria y disco. Sin embargo, persona Hola control de un incidente de sitio en vivo para ese servicio en producción, o que está administrando un servicio de actualización toohello tiene un toodo de trabajo diferentes y requiere distintas herramientas. 
 
-El clúster y los servicios son dinámicos:
+Clúster de Hola y servicios son dinámicos:
 
-- La cantidad de nodos del clúster puede aumentar o disminuir.
+- puede aumentar y reducir el número de Hola de nodos de clúster de Hola
 - Los nodos de distintos tipos y tamaños pueden ir y venir.
 - Se pueden crear y quitar servicios, así como cambiarles las asignaciones de recursos y las reglas de selección de ubicación deseadas.
-- Pueden producirse actualizaciones u otras operaciones de administración en los niveles de aplicación o de infraestructura del clúster.
+- Las actualizaciones u otras operaciones de administración pueden poner en clúster de hello en la aplicación hello en los niveles de infraestructura
 - Pueden generarse errores en cualquier momento.
 
 ## <a name="cluster-resource-manager-components-and-data-flow"></a>Componentes y flujo de datos del Administrador de recursos de clúster
-Cluster Resource Manager debe hacer seguimiento de los requisitos de cada servicio y el consumo de recursos que cada objeto de servicio hace en esos servicios. Cluster Resource Manager tiene dos partes conceptuales: los agentes que se ejecutan en cada nodo y un servicio tolerante a errores. Los agentes de cada nodo hacen seguimiento de los informes de carga de los servicios, los suman e informan de manera periódica. El servicio Cluster Resource Manager suma toda la información de los agentes locales y reacciona en función de su configuración actual.
+Hola, Administrador de recursos del clúster tiene requisitos de Hola de tootrack de cada servicio y Hola el consumo de recursos por cada objeto de servicio dentro de esos servicios. Hola, Administrador de recursos del clúster tiene dos partes conceptuales: agentes que se ejecutan en cada nodo y un servicio de tolerancia. agentes de Hello en cada nodo de la carga de seguimiento informa de los servicios, agregados y periódicamente informa de ellos. Hola servicio Administrador de recursos de clúster agrega toda la información de Hola de agentes locales de Hola y reacciona en función de su configuración actual.
 
-Observemos el diagrama siguiente:
+Echemos un vistazo a Hola siguiente diagrama:
 
 <center>
 ![Arquitectura del equilibrador de recursos][Image1]
 </center>
 
-Durante el tiempo de ejecución, pueden ocurrir muchos cambios. Por ejemplo, supongamos que la cantidad de recursos que algunos servicios consumen cambia, algunos servicios presentan errores y algunos nodos se unen y abandonan el clúster. Todos los cambios en un nodo se agregan y se envían periódicamente al servicio de Cluster Resource Manager (1, 2) donde se agregan de nuevo, se analizan y se almacenan. Cada pocos segundos, ese servicio examina los cambios y determina si es necesario llevar a cabo alguna acción (3). Por ejemplo, podría detectar que se agregaron nodos vacíos al clúster. Por consiguiente, decide mover algunos servicios a esos nodos. Cluster Resource Manager también podría detectar que un nodo en concreto está sobrecargado, o bien que determinados servicios no han funcionado o se han eliminado, y liberar recursos de otros lugares.
+Durante el tiempo de ejecución, pueden ocurrir muchos cambios. Por ejemplo, supongamos que la cantidad de Hola de recursos algunos servicios consumen cambios, algunos errores de servicios, y algunos nodos se conectan y desconectan clúster Hola. Se agregan y se envían periódicamente el servicio de administrador de recursos de clúster de toohello (1,2) donde se agrega de nuevo, analiza y almacena todos los cambios de hello en un nodo. Cada pocos segundos que servicio examina cambios hello y determina si las acciones son necesarias (3). Por ejemplo, podría observar que se han agregado algunos nodos vacíos toohello clúster. Como resultado, decisión toomove algunos nodos de toothose de servicios. Hello Administrador de recursos del clúster podría también tenga en cuenta que un nodo concreto está sobrecargado o que determinados servicios se error o se ha eliminado, lo que libera recursos en otra parte.
 
-Examinemos el siguiente diagrama y veamos qué sucede a continuación. Supongamos que Cluster Resource Manager determina que se necesitan cambios. Coordina con otros servicios del sistema (en concreto, con el Administrador de conmutación por error) la realización de los cambios necesarios. A continuación, los comandos necesarios se envían a los nodos correspondientes (4). Por ejemplo, digamos que Resource Manager ha detectado que Node5 está sobrecargado y por eso ha decidido mover el servicio B de Node5 a Node4. Al final de la reconfiguración (5), el clúster tiene el siguiente aspecto:
+Vamos a mirar Hola después de diagrama y vea Qué sucede a continuación. Vamos a decir que Hola, Administrador de recursos del clúster determina que son necesarios cambios. Coordina con otros cambios necesarios del sistema servicios (Hola determinado el Administrador de conmutación por error) toomake Hola. A continuación, los comandos necesarios de Hola se envían nodos correspondientes toohello (4). Por ejemplo, supongamos que Hola, Administrador de recursos había observado que Nodo5 sobrecarga y, por lo que decidió toomove servicio B de tooNode4 Nodo5. Al final de Hola de reconfiguración de hello (5), el clúster de hello tiene este aspecto:
 
 <center>
 ![Arquitectura del equilibrador de recursos][Image2]
 </center>
 
 ## <a name="next-steps"></a>Pasos siguientes
-- Cluster Resource Manager tiene muchas opciones para describir el clúster. Para obtener más información sobre ellas, consulte este artículo [Descripción de un clúster de Service Fabric](./service-fabric-cluster-resource-manager-cluster-description.md).
-- Las principales tareas de Cluster Resource Manager son el reequilibrado del clúster y la aplicación de reglas de selección de ubicación. Para más información sobre cómo configurar estos comportamientos, vea [Equilibrio del clúster de Service Fabric](./service-fabric-cluster-resource-manager-balancing.md)
+- Hola, Administrador de recursos del clúster tiene muchas opciones para describir el clúster de Hola. toofind más información acerca de ellos, consulte este artículo en [que describe un clúster de Service Fabric](./service-fabric-cluster-resource-manager-cluster-description.md)
+- tareas principal del Administrador de recursos de clúster Hola son reequilibrio clúster hello y exigir reglas de selección de ubicación. Para más información sobre cómo configurar estos comportamientos, vea [Equilibrio del clúster de Service Fabric](./service-fabric-cluster-resource-manager-balancing.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
 [Image2]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png

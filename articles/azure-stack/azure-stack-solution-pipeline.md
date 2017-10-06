@@ -1,6 +1,6 @@
 ---
-title: "Implementación de una aplicación en Azure Stack | Microsoft Docs"
-description: "Aprenda a implementar aplicaciones en Azure y Azure Stack con una canalización de CI/CD híbrida."
+title: "aaaDeploy su aplicación tooAzure y la pila de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toodeploy aplicaciones tooAzure y pila de Azure con un elemento de configuración/CD híbrido de canalización."
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -14,100 +14,100 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: helaw
 ms.custom: mvc
-ms.openlocfilehash: 019d743b0b3104e16a6690f438e7841fa63f09d0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a468d7da6f34d04809ee98463a8c4146da581015
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-apps-to-azure-and-azure-stack"></a>Implementación de aplicaciones en Azure y Azure Stack
-Una canalización de [integración continua](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[entrega continua](https://www.visualstudio.com/learn/what-is-continuous-delivery/) (CI/CD) híbrida le permite crear, probar e implementar una aplicación en varias nubes.  En este tutorial, se crea un entorno de ejemplo para aprender el modo en que una canalización de CI/CD híbrida puede ayudarle a:
+# <a name="deploy-apps-tooazure-and-azure-stack"></a>Implementar aplicaciones tooAzure y la pila de Azure
+Híbrido [integración continua](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[la entrega continua](https://www.visualstudio.com/learn/what-is-continuous-delivery/)canalización (CI/CD) le permite toobuild, probar e implementar sus nubes de toomultiple de aplicación.  En este tutorial, va a crear un toolearn de entorno de ejemplo cómo puede ayudarle a una canalización de CI/CD híbrida:
  
 > [!div class="checklist"]
-> * Iniciar una nueva compilación en función de las confirmaciones de código en el repositorio de Visual Studio Team Services (VSTS).
-> * Implementar automáticamente el código recién compilado en Azure para llevar a cabo las pruebas de aceptación del usuario.
-> * Una vez que el código haya pasado las pruebas, se implementan automáticamente en Azure Stack. 
+> * Iniciar una nueva compilación basada en el repositorio de código confirmaciones tooyour Visual Studio Team Services (VSTS).
+> * Implementar automáticamente su tooAzure de código recién creado para las pruebas de aceptación de usuario.
+> * Una vez que el código ha pasado la prueba, implementar automáticamente tooAzure pila. 
 
 
 ## <a name="prerequisites"></a>Requisitos previos
-Se requieren algunos componentes para crear una canalización de CI/CD híbrida y pueden tardar algún tiempo en prepararse.  Si ya tiene algunos de estos componentes, asegúrese de que cumplen los requisitos antes de comenzar.
+Algunos componentes son necesario toobuild una canalización de CI/CD híbrida y pueden tardar algún tiempo tooprepare.  Si ya tiene algunos de estos componentes, asegúrese de que cumplen los requisitos de hello antes de comenzar.
 
-En este tema también se da por supuesto que tiene algunos conocimientos de Azure y Azure Stack. Si desea más información antes de continuar, asegúrese de empezar con estos temas:
+En este tema también se da por supuesto que tiene algunos conocimientos de Azure y Azure Stack. Si desea que toolearn más antes de continuar, ser seguro toostart con estos temas:
 
-- [Introducción a Azure](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure)
+- [Introducción tooAzure](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure)
 - [Conceptos clave de Azure Stack](azure-stack-key-features.md)
 
 ### <a name="azure"></a>Azure
  - Si no tiene una suscripción a Azure, cree una [cuenta gratuita](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) antes de empezar.
- - Cree una [aplicación web](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md) y configúrela para [publicación FTP](../app-service-web/app-service-deploy-ftp.md).  Tome nota de la dirección URL de la nueva aplicación web, ya que se utiliza más adelante.
+ - Cree una [aplicación web](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md) y configúrela para [publicación FTP](../app-service-web/app-service-deploy-ftp.md).  Tome nota de Hola nuevo de dirección URL de aplicación Web, tal como se utiliza más adelante.
 
 
 ### <a name="azure-stack"></a>Azure Stack
- - [Implementación de Azure Stack](azure-stack-run-powershell-script.md).  La instalación suele tardar unas horas, de modo que planéela en consecuencia.
- - Implemente servicios PaaS de [App Service](azure-stack-app-service-deploy.md) para Azure Stack.
- - Cree una aplicación web y configúrela para [publicación FTP](azure-stack-app-service-enable-ftp.md).  Tome nota de la dirección URL de la nueva aplicación web, ya que se utiliza más adelante.  
+ - [Implementación de Azure Stack](azure-stack-run-powershell-script.md).  instalación de Hello normalmente tarda unos toocomplete horas, por lo que planear en consecuencia.
+ - Implementar [servicio de aplicaciones](azure-stack-app-service-deploy.md) tooAzure pila de servicios de PaaS.
+ - Cree una aplicación web y configúrela para [publicación FTP](azure-stack-app-service-enable-ftp.md).  Tome nota de Hola nuevo de dirección URL de aplicación Web, tal como se utiliza más adelante.  
 
 ### <a name="developer-tools"></a>Herramientas para desarrolladores
- - Cree un [área de trabajo de VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).  El proceso de registro crea un proyecto denominado "MyFirstProject".  
- - [Instale Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) e [inicie sesión en VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services#connect-and-share-code-from-visual-studio)
- - Conéctese al proyecto y [realice la clonación localmente](https://www.visualstudio.com/docs/git/gitquickstart).
+ - Cree un [área de trabajo de VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).  proceso de registro de Hello crea un proyecto denominado "MyFirstProject."  
+ - [Instalar Visual Studio de 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) y [tooVSTS de inicio de sesión](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services#connect-and-share-code-from-visual-studio)
+ - Conectar a proyecto toohello y [clonar localmente](https://www.visualstudio.com/docs/git/gitquickstart).
  - Cree un [grupo de agentes](https://www.visualstudio.com/docs/build/concepts/agents/pools-queues#creating-agent-pools-and-queues) en VSTS.
- - Instale Visual Studio e implemente un [agente de compilación de VSTS](https://www.visualstudio.com/docs/build/actions/agents/v2-windows) para una máquina virtual en Azure Stack. 
+ - Instalar Visual Studio e implementar un [agente de compilación de VSTS](https://www.visualstudio.com/docs/build/actions/agents/v2-windows) tooa virtual machine en la pila de Azure. 
  
 
-## <a name="create-app--push-to-vsts"></a>Creación de la aplicación e inserción en VSTS
+## <a name="create-app--push-toovsts"></a>Crear la aplicación e inserción tooVSTS
 
 ### <a name="create-application"></a>Creación de la aplicación
-En esta sección, va a crear una aplicación ASP.NET sencilla y la insertará en VSTS.  Estos pasos representan el flujo de trabajo habitual del desarrollador y se pueden adaptar para los diferentes lenguajes y herramientas de desarrollo. 
+En esta sección, crear una aplicación ASP.NET simple y empújelo tooVSTS.  Estos pasos representan el flujo de trabajo de saludo habitual del desarrollador y pueden adaptar para los lenguajes y herramientas de desarrollo. 
 
 1.  Abra Visual Studio.
-2.  Desde el espacio de Team Explorer y el área **Soluciones...** , haga clic en **Nuevo**.
+2.  De hello espacio de Team Explorer y **soluciones...**  área, haga clic en **nuevo**.
 3.  Seleccione **Visual C#** > **Web** > **Aplicación web ASP.NET (.NET Framework)**.
-4.  Asigne un nombre a la aplicación y haga clic en **Aceptar**.
-5.  En la siguiente pantalla, conserve los valores predeterminados (formularios Web Forms) y haga clic en **Aceptar**.
+4.  Proporcione un nombre para la aplicación hello y haga clic en **Aceptar**.
+5.  En la siguiente pantalla de bienvenida, mantenga los valores predeterminados de hello (formularios Web forms) y haga clic en **Aceptar**.
 
-### <a name="commit-and-push-changes-to-vsts"></a>Confirmación e inserción de los cambios en VSTS
-1.  Con Team Explorer en Visual Studio, seleccione la lista desplegable y haga clic en **Cambios**.
-2.  Agregue un mensaje de confirmación y seleccione **Confirmar todo**. Puede que se le pida que guarde el archivo de solución; haga clic en Sí para guardar todo.
-3.  Una vez haya confirmado, Visual Studio ofrece sincronizar los cambios en el proyecto. Seleccione **Sincronizar**.
+### <a name="commit-and-push-changes-toovsts"></a>Confirme e inserte cambios tooVSTS
+1.  Con Team Explorer en Visual Studio, seleccione la lista desplegable de Hola y haga clic en **cambios**.
+2.  Agregue un mensaje de confirmación y seleccione **Confirmar todo**. Puede ser solicitadas toosave Hola solución archivo, haga clic en Sí toosave todos.
+3.  Una vez confirmado, Visual Studio ofrece proyecto tooyour de toosync cambios. Seleccione **Sincronizar**.
 
-    ![imagen que muestra la pantalla de confirmación una vez completada la confirmación](./media/azure-stack-solution-pipeline/image1.png)
+    ![pantalla de confirmación de bienvenida de imagen que muestra una vez completada la confirmación](./media/azure-stack-solution-pipeline/image1.png)
 
-4.  En la pestaña de sincronización, en *Saliente*, verá la nueva confirmación.  Seleccione **Insertar** para sincronizar el cambio en VSTS.
+4.  En la pestaña de la sincronización de hello, en *saliente*, verá que la confirmación nuevo.  Seleccione **Push** toosynchronize Hola cambiar tooVSTS.
 
     ![imagen que muestra los pasos de sincronización](./media/azure-stack-solution-pipeline/image2.png)
 
 ### <a name="review-code-in-vsts"></a>Revisión del código en VSTS
-Una vez haya confirmado un cambio y lo haya insertado en VSTS, compruebe el código desde el portal de VSTS.  Seleccione **Código** y, a continuación, **Archivos** en el menú desplegable.  Puede ver la solución que creó.
+Una vez se ha confirmado un cambio e inserta tooVSTS, compruebe el código desde el portal VSTS Hola.  Seleccione **código**y, a continuación, **archivos** desde el menú desplegable de Hola.  Puede ver la solución de hello creada.
 
 ## <a name="create-build-definition"></a>Creación de la definición de compilación
-El proceso de compilación define el modo en que la aplicación se compila y se empaqueta para implementarse cada vez que se confirman los cambios en el código. En nuestro ejemplo, utilizamos la plantilla incluida para configurar el proceso de compilación de una aplicación ASP.NET, aunque esta configuración podría adaptarse según la aplicación.
+proceso de compilación de Hello define cómo la aplicación se compila y empaqueta para su implementación en cada confirmación de cambios de código. En nuestro ejemplo, utilizamos Hola incluida plantilla tooconfigure Hola proceso de compilación para una aplicación ASP.NET, aunque esta configuración podría ser adaptada dependiendo de la aplicación.
 
-1.  Inicie sesión en el área de trabajo de VSTS desde un explorador web.
-2.  En el encabezado, seleccione **Compilación y versión** y, a continuación, **Compilaciones**.
+1.  Inicie sesión en tooyour área de trabajo VSTS desde un explorador web.
+2.  En el banner de hello, seleccione **compilar & versión** y, a continuación, **genera**.
 3.  Haga clic en **+ Nueva definición**.
-4.  En la lista de plantillas, seleccione **ASP.NET (versión preliminar)** y **Aplicar**.
-5.  Modifique el campo *Argumentos de MSBuild* en el paso*Compilar solución* para:
+4.  En la lista Hola de plantillas, seleccione **ASP.NET (versión preliminar)** y seleccione **aplicar**.
+5.  Modificar hello *argumentos de MSBuild* campo *generar solución* paso a paso para:
 
     `/p:DeployOnBuild=True /p:WebPublishMethod=FileSystem /p:DeployDefaultTarget=WebPublish /p:publishUrl="$(build.artifactstagingdirectory)\\"`
 
-6.  Seleccione la pestaña **Opciones** y la cola del agente para el agente de compilación que implementó en una máquina virtual en Azure Stack. 
-7.  Seleccione la pestaña **Desencadenadores** y habilite **Integración continua**.
-7.  Haga clic en **Guardar y poner en cola** y, a continuación, seleccione **Guardar** en la lista desplegable. 
+6.  Seleccione hello **opciones** ficha y seleccione Hola la cola del agente para hello agente de compilación que haya implementado tooa máquina virtual en la pila de Azure. 
+7.  Seleccione hello **desencadenadores** y a habilitar **integración continua**.
+7.  Haga clic en **Guardar & cola** y, a continuación, seleccione **guardar** de lista desplegable de Hola. 
 
 ## <a name="create-release-definition"></a>Creación de la definición de versión
-El proceso de creación de versiones define el modo en que las compilaciones derivadas del paso anterior se implementan en un entorno.  En este tutorial, publicamos nuestra aplicación ASP.NET con el protocolo FTP en una aplicación web de Azure. Para configurar una versión en Azure, siga estos pasos:
+proceso de lanzamiento de Hello define cómo compilaciones del paso anterior Hola son entorno tooan implementado.  En este tutorial, publicamos nuestra aplicación ASP.NET con FTP tooan aplicación Web de Azure. tooconfigure un tooAzure versión, use Hola pasos:
 
-1.  En el encabezado de VSTS, seleccione **Compilación y versión** y, a continuación, **Versiones**.
-2.  Haga clic en la opción **+ Nueva definición** en verde.
+1.  En la pancarta VSTS hello, seleccione **compilar & versión** y, a continuación, **versiones**.
+2.  Haga clic en hello verde **+ nueva definición**.
 3.  Seleccione **Vacía** y haga clic en **Siguiente**.
-4.  Active la casilla de *Implementación continua* y, a continuación, haga clic en **Crear**.
+4.  Casilla de Hola para *implementación continua*y, a continuación, haga clic en **crear**.
 
-Ahora que ha creado una definición de versión vacía y vinculada a la compilación, agregamos los pasos para el entorno de Azure:
+Ahora que ha creado una definición de versión vacío y vinculada toohello compilación, agregamos pasos para hello entorno de Azure:
 
-1.  Haga clic en el  **+ verde**  para agregar tareas.
-2.  Seleccione **Todos** y, a continuación, en la lista, agregue **Carga por FTP** y seleccione **Cerrar**.
-3.  Seleccione la tarea **Carga por FTP** recién agregada y configure los parámetros siguientes:
+1.  Haga clic en hello verde  **+**  tooadd tareas.
+2.  Seleccione **todos los**y, a continuación, en lista de hello, agregue **FTP cargar** y seleccione **cerrar**.
+3.  Seleccione hello **FTP cargar** tarea se acaba de agregar y configurar Hola parámetros siguientes:
     
     | Parámetro | Valor |
     | ----- | ----- |
@@ -121,37 +121,37 @@ Ahora que ha creado una definición de versión vacía y vinculada a la compilac
 
 4.  Haga clic en **Guardar**
 
-Por último, configure la definición de la versión para usar el grupo de agentes que contiene al agente implementado con los pasos siguientes:
-1.  Seleccione la definición de la versión y haga clic en **Editar**.
-2.  Seleccione **Ejecutar en el agente** en la columna central.  En la columna de la derecha, seleccione la cola del agente que contiene el agente de compilación que se ejecuta en Azure Stack.  
-    ![imagen que muestra la configuración de la definición de versión para usar una cola específica](./media/azure-stack-solution-pipeline/image3.png)
+Por último, configure Hola versión definición toouse Hola agente grupo que contiene a agente Hola implementada mediante Hola pasos:
+1.  Seleccione la definición de la versión de Hola y haga clic en **editar**.
+2.  Seleccione **se ejecutan en agente** de la columna central Hola.  En la columna derecha de hello, seleccione la cola de agente de Hola que contiene el agente de compilación de hello ejecutando en la pila de Azure.  
+    ![configuración de imagen que muestra de cola específica de versión definición toouse](./media/azure-stack-solution-pipeline/image3.png)
 
 
-## <a name="deploy-your-app-to-azure"></a>Implementación de una aplicación en Azure
-Este paso usa la canalización de CI/CD recién creada para implementar la aplicación ASP.NET en una aplicación web en Azure. 
+## <a name="deploy-your-app-tooazure"></a>Implementar la aplicación tooAzure
+Este paso usa la recién creado CI/CD canalización toodeploy Hola ASP.NET aplicación tooa aplicación Web en Azure. 
 
-1.  En el encabezado de VSTS, seleccione **Compilación y versión** y, a continuación, **Compilaciones**.
-2.  Haga clic en **...**  en la definición de compilación creada anteriormente y, a continuación, seleccione **Poner nueva compilación en cola**.
-3.  Acepte el valor predeterminado y haga clic en **Aceptar**.  La compilación comienza y se muestra el progreso.
-4.  Una vez completada la compilación, puede realizar el seguimiento del estado seleccionando **Compilación y versión** y **Versiones**.
-5.  Una vez completada la compilación, visite el sitio web utilizando la dirección URL que anotó al crear la aplicación web.    
+1.  En la pancarta de hello en VSTS, seleccione **compilar & versión**y, a continuación, seleccione **genera**.
+2.  Haga clic en **...**  en hello creado previamente de definición de compilación y seleccione **poner nueva compilación en cola**.
+3.  Acepte los valores predeterminados de Hola y haga clic en **Aceptar**.  compilación de Hello comienza y muestra el progreso.
+4.  Una vez completada la compilación de hello, puede realizar seguimiento del estado Hola seleccionando **compilar & versión** y seleccionando **versiones**.
+5.  Una vez completada la compilación de hello, visite sitio Web de hello mediante dirección URL de Hola se indicó al crear la aplicación Web de Hola.    
 
 
-## <a name="add-azure-stack-to-pipeline"></a>Incorporación de Azure Stack a la canalización
-Ahora que ha probado la canalización de CI/CD implementándola en Azure, es momento de agregar Azure Stack a la canalización.  En los pasos siguientes, cree un nuevo entorno y agregue una tarea Carga por FTP para implementar la aplicación en Azure Stack.  También agrega un aprobador de versión, que actúa como medio de simular la "firma" en una versión de código para Azure Stack.  
+## <a name="add-azure-stack-toopipeline"></a>Agregar toopipeline de pila de Azure
+Ahora que ha probado la canalización de CI/CD mediante la implementación de tooAzure, es hora tooadd canalización toohello de pila de Azure.  Hola pasos, cree un nuevo entorno y agregar una tarea FTP cargar, toodeploy la pila de aplicación tooAzure.  También agregará un aprobador de versión, que actúa como un toosimulate de manera "firmar" en un tooAzure de versión de código pila.  
 
-1.  En la definición de la versión, seleccione **+ Agregar entorno** y **Crear nuevo entorno**.
+1.  En la definición de la versión de hello, seleccione **+ agregar entorno** y **crear nuevo entorno**.
 2.  Seleccione **Vacío** y haga clic en **Siguiente**.
 3.  Seleccione **Usuarios específicos** y especifique su cuenta.  Seleccione **Crear**.
-4.  Cambie el nombre del entorno seleccionando el nombre actual y escribiendo *Azure Stack*.
-5.  Ahora, seleccione el entorno de Azure Stack y después seleccione **Agregar tareas**.
-6.  Seleccione la tarea **Carga por FTP** y **Agregar**; a continuación, seleccione **Cerrar**.
+4.  Cambiar el nombre de entorno de hello seleccionando nombre existente de Hola y escribiendo *Azure pila*.
+5.  Ahora, selección Hola entorno de pila de Azure, a continuación, seleccione **agregar tareas**.
+6.  Seleccione hello **FTP cargar** de tareas y seleccione **agregar**, a continuación, seleccione **cerrar**.
 
 
 ### <a name="configure-ftp-task"></a>Configuración de la tarea FTP
-Ahora que ha creado una versión, configurará los pasos necesarios para publicarla en la aplicación web en Azure Stack.  Igual que ha configurado la tarea Carga por FTP para Azure, configurará la tarea para Azure Stack:
+Ahora que ha creado una versión, configurará los pasos de hello necesarios para toohello publicar la aplicación Web en la pila de Azure.  Al igual que configuró tarea de carga de FTP de Hola para Azure, configurar tarea hello para la pila de Azure:
 
-1.  Seleccione la tarea **Carga por FTP** recién agregada y configure los parámetros siguientes:
+1.  Seleccione hello **FTP cargar** tarea se acaba de agregar y configurar Hola parámetros siguientes:
     
     | Parámetro | Valor |
     | -----     | ----- |
@@ -165,46 +165,46 @@ Ahora que ha creado una versión, configurará los pasos necesarios para publica
 
 2.  Haga clic en **Guardar**
 
-Por último, configure la definición de la versión para usar el grupo de agentes que contiene al agente implementado con los pasos siguientes:
-1.  Seleccione la definición de la versión y haga clic en **Editar**.
-2.  Seleccione **Ejecutar en el agente** en la columna central. En la columna de la derecha, seleccione la cola del agente que contiene el agente de compilación que se ejecuta en Azure Stack.  
-    ![imagen que muestra la configuración de la definición de versión para usar una cola específica](./media/azure-stack-solution-pipeline/image3.png)
+Por último, configure Hola versión definición toouse Hola agente grupo que contiene a agente Hola implementada mediante Hola pasos:
+1.  Seleccione la definición de la versión de Hola y haga clic en **editar**
+2.  Seleccione **se ejecutan en agente** de la columna central Hola. En la columna derecha de hello, seleccione la cola de agente de Hola que contiene el agente de compilación de hello ejecutando en la pila de Azure.  
+    ![configuración de imagen que muestra de cola específica de versión definición toouse](./media/azure-stack-solution-pipeline/image3.png)
 
 ## <a name="deploy-new-code"></a>Implementación de nuevo código
-Ahora puede probar la canalización de CI/CD híbrida, con el paso final de la publicación en Azure Stack.  En esta sección, modificará el pie de página del sitio y empezará la implementación a través de la canalización.  Una vez haya terminado, verá los cambios implementados en Azure para revisarlos y, cuando apruebe la versión, se publicarán en Azure Stack.
+Ahora puede probar la canalización de CI/CD híbrida hello, con hello paso final publicación tooAzure pila.  En esta sección, modifique el pie de página del sitio de Hola y comience a través de la canalización de Hola.  Una vez completado, verá los cambios implementarán tooAzure para su revisión, a continuación, una vez que aprobar la versión de Hola, son publicado tooAzure pila.
 
-1. En Visual Studio, abra el archivo *site.master* y cambie esta línea:
+1. En Visual Studio, abra hello *site.master* y cambie esta línea:
     
     `
         <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
     `
 
-    a este:
+    toothis:
 
     `
         <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application delivered by VSTS, Azure, and Azure Stack</p>
     `
-3.  Confirme los cambios y sincronice en VSTS.  
-4.  Desde el área de trabajo de VSTS, compruebe el estado de la compilación seleccionando **Compilar y versión** > **Compilar**
-5.  Verá una compilación en curso.  Haga doble clic en el estado y podrá ver el progreso de la compilación.  Una vez que vea "Compilación finalizada" en la consola, compruebe la versión en **Compilar y versión** > **Versión**.  Haga doble clic en la versión.
-6.  Recibirá una notificación que indica que una versión requiere ser revisada. Compruebe la dirección URL de la aplicación web y que los nuevos cambios están presentes.  Apruebe la versión en VSTS.
-    ![imagen que muestra la configuración de la definición de versión para usar una cola específica](./media/azure-stack-solution-pipeline/image4.png)
+3.  Confirmar los cambios de Hola y tooVSTS de sincronización.  
+4.  Desde el área de trabajo VSTS hello, comprobar el estado de generación de hello seleccionando **compilar & versión** > **de compilación**
+5.  Verá una compilación en curso.  Haga doble clic en el estado de hello, y puede ver el progreso de compilación de Hola.  Una vez que vea "Build terminado" en la consola de hello, mover en la versión de Hola toocheck desde **compilar & versión** > **versión**.  Haga doble clic en la versión de Hola.
+6.  Recibirá una notificación que indica que una versión requiere ser revisada. Compruebe Hola URL de la aplicación Web y los cambios nuevo Hola están presentes.  Aprobar versión de hello en VSTS.
+    ![configuración de imagen que muestra de cola específica de versión definición toouse](./media/azure-stack-solution-pipeline/image4.png)
     
-7.  Compruebe que la publicación en Azure Stack se ha completado visitando el sitio web con la dirección URL que anotó al crear la aplicación web.
+7.  Compruebe la publicación tooAzure que pila está completa visitando el sitio Web de hello mediante dirección URL de Hola se indicó al crear la aplicación Web de Hola.
     ![imagen que muestra la aplicación ASP.NET con el pie de página cambiado](./media/azure-stack-solution-pipeline/image5.png)
 
 
 Ahora puede usar la nueva canalización de CI/CD híbrida como un bloque de creación para otros modelos de nube híbrida.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial, aprendió a crear una canalización de CI/CD híbrida que:
+En este tutorial, ha aprendido cómo toobuild un elemento de configuración/CD híbrido de canalización que:
 
 > [!div class="checklist"]
-> * Inicia una nueva compilación en función de las confirmaciones de código en el repositorio de Visual Studio Team Services (VSTS).
-> * Implementa automáticamente el código recién compilado en Azure para llevar a cabo las pruebas de aceptación del usuario.
-> * Una vez que el código ha pasado las pruebas, se implementan automáticamente en Azure Stack. 
+> * Inicia una nueva compilación basada en el repositorio de código confirmaciones tooyour Visual Studio Team Services (VSTS).
+> * Implementa automáticamente su tooAzure de código recién creado para las pruebas de aceptación de usuario.
+> * Una vez que el código ha pasado la prueba, implementa automáticamente tooAzure pila. 
 
-Ahora que tiene una canalización de CI/CD híbrida, continúe aprendiendo a desarrollar aplicaciones para Azure Stack.
+Ahora que tiene una canalización de CI/CD híbrida, continuar por aprendizaje cómo toodevelop aplicaciones para la pila de Azure.
 
 > [!div class="nextstepaction"]
 > [Desarrollo para Azure Stack](azure-stack-developer.md)

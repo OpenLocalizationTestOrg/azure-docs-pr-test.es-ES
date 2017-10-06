@@ -1,6 +1,6 @@
 ---
-title: "Desconexión de un disco de una máquina virtual de Linux en Azure | Microsoft Docs"
-description: "Obtenga información acerca de cómo desconectar un disco de datos de una máquina virtual de Azure creada mediante el modelo de implementación clásica."
+title: aaaDetach un disco de una VM de Linux en Azure | Documentos de Microsoft
+description: "Obtenga información acerca de un disco de datos de una máquina virtual de Azure creado mediante el modelo de implementación clásica de hello toodetach."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: ac982bc153d523de29940af9b9e2609a39cd48a6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0ae362ab756dc4636bf5574deca7471223fb7f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-detach-a-disk-from-a-linux-virtual-machine"></a>Desacoplamiento de un disco de una máquina virtual de Linux
+# <a name="how-toodetach-a-disk-from-a-linux-virtual-machine"></a>¿Cómo tooDetach un disco de una máquina Virtual de Linux
 > [!IMPORTANT] 
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos.
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola.
 
 [!INCLUDE [howto-detach-disk-windows-linux](../../../../includes/howto-detach-disk-linux.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Puede leer más sobre el uso de la máquina virtual con Linux en los siguientes artículos:
+Puede leer más sobre el uso de la VM de Linux en hello siguientes artículos:
 
-* [Acoplamiento de un disco de datos a una máquina virtual Linux](attach-disk.md)
-* [Comandos CLI de Azure en modo de Administración de servicios de Azure (asm)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [¿Cómo tooAttach una máquina Virtual Linux tooa de disco de datos](attach-disk.md)
+* [Usar Hola CLI de Azure con modelo de implementación de hello clásico](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 

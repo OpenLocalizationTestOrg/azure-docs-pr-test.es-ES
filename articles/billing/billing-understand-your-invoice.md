@@ -1,6 +1,6 @@
 ---
-title: Conocimiento de la factura de Azure | Microsoft Docs
-description: "Aprenda a leer y entender el uso y la factura de la suscripción de Azure"
+title: factura de Azure aaaUnderstand | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooread y comprender el uso de Hola y facturación para la suscripción de Azure"
 services: 
 documentationcenter: 
 author: tonguyen10
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: tonguyen
-ms.openlocfilehash: a5be3c9bcdd99128217e441d62ce9650c9764580
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7629b448fe48115ae1f7c4f462c82a3f03e3784
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Descripción de los términos en su factura de Microsoft Azure
-La factura proporciona un resumen de los gastos e incluye instrucciones del pago. Se encuentra disponible en Portable Document Format (.pdf) desde [Azure Portal](https://portal.azure.com/) o puede enviarse por correo electrónico. Para obtener más información, consulte el artículo sobre [cómo obtener los datos de uso diario y de factura de facturación de Azure](billing-download-azure-invoice-daily-usage-date.md).
+factura Hola proporciona un resumen de los cargos e incluye instrucciones para el pago. Está disponible para su descarga en hello formato de documento portátil (.pdf) de hello [portal de Azure](https://portal.azure.com/) o se puede enviar por correo electrónico. Para obtener más información, consulte [cómo tooget la facturación de Azure de factura y datos de uso diario](billing-download-azure-invoice-daily-usage-date.md).
 
-Puntos a tener en cuenta:
+Toonote algunas cosas:
 
--   Si va a usar una suscripción de prueba gratuita, puede obtener información de uso detallado desde Azure Portal, pero no tendrá una factura.
+-   Si usa una suscripción de prueba gratuita, puede obtener la información de uso detallada desde Hola portal de Azure pero no tienes una factura.
 
--   En la factura actual pueden aparecer hasta 24 horas de uso al final del período de facturación anterior.
+-   Horas de too24 del uso final Hola de hello período de facturación anterior puede aparecer en la factura actual.
 
 -   Los cargos enumerados en los extractos de facturación para clientes internacionales tienen únicamente carácter estimativo. Los bancos pueden tener costes diferentes para los tipos de conversión.
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Términos y descripciones detallados de la factura
-Las siguientes secciones enumeran los términos importantes que ve en la factura y las descripciones de cada uno.
+Hello secciones siguientes enumeran los términos de hello importantes que se ve en la factura y las descripciones de cada término.
 
 ### <a name="account-information"></a>Información de cuenta
 
-La sección de información de la cuenta de la factura se encuentra en la parte superior de la primera página y muestra información sobre el perfil y la suscripción.
+sección de información de cuenta de Hello de factura Hola se encuentra en la parte superior de saludo de la primera página y muestra información acerca de la suscripción y el perfil.
 
 ![Sección de información de cuenta de la factura](./media/billing-understand-your-invoice/1.png)
 
@@ -45,70 +45,70 @@ La sección de información de la cuenta de la factura se encuentra en la parte 
 | N.º de pedido del cliente |Un número de pedido de compra opcional asignado por usted para el seguimiento |
 | Número de factura |Un número de factura único generado por Microsoft usado para fines de seguimiento |
 | Ciclo de facturación |Intervalo de fechas que cubre esta factura |
-| Fecha de la factura |Fecha en la que se generó la factura, normalmente un día después del final del ciclo de facturación |
-| Método de pago |Tipo de pago que se utiliza en la cuenta (factura o tarjeta de crédito). |
-| Dirección de facturación |Dirección de facturación que se muestra para la cuenta |
+| Fecha de la factura |Fecha que Hola factura generó, normalmente un día después del final del ciclo de facturación de Hola |
+| Método de pago |Tipo de pago que se utiliza en la cuenta de hello (factura o tarjeta de crédito) |
+| Facturar demasiado|Dirección de facturación que aparece para la cuenta de hello |
 | Oferta de suscripción ("Pago por uso") |Tipo de oferta de suscripción que se adquirió (pago por uso, BizSpark Plus, Pase para Azure, etc.) Para más información, vea [Azure offer types](https://azure.microsoft.com/support/legal/offer-details/) (Tipos de ofertas de Azure). |
-| Correo electrónico del propietario de cuenta | La dirección de correo electrónico de la cuenta con que está registrada la cuenta de Microsoft Azure. <br /><br />Para cambiar la dirección de correo electrónico, consulte [Cómo cambiar la información de perfil de la cuenta de Azure, como el correo electrónico, la dirección y el número de teléfono de contacto](billing-how-to-change-azure-account-profile.md). |
+| Correo electrónico del propietario de cuenta | dirección de correo electrónico para la cuenta Hola que cuenta de Microsoft Azure Hola está registrado en. <br /><br />dirección de correo electrónico de toochange hello, consulte [la información de su cuenta de Azure, como correo electrónico de contacto, dirección y número de teléfono del perfil de toochange](billing-how-to-change-azure-account-profile.md). |
 
-### <a name="understand-the-invoice-summary"></a>Comprender el resumen de factura
-La sección **Resumen de factura** de la factura muestra las cantidades de transacciones totales desde el último período de facturación y los cargos de uso actuales.
+### <a name="understand-hello-invoice-summary"></a>Entender la factura de hello resumen
+Hola **resumen de factura** sección de factura de hello muestra importes de transacciones totales de Hola desde su último período de facturación y los cargos de uso actuales.
 
 ![Sección Resumen de factura](./media/billing-understand-your-invoice/2.png)
 
-En nombre de suscripción ("Almacenamiento de producción") es el nombre de la suscripción para esta factura.
+nombre de la suscripción de Hello ("almacenamiento de producción") es nombre hello de la suscripción para esta factura.
 
-#### <a name="understand-the-previous-charges"></a>Conocimiento de los cargos anteriores
-Las secciones Saldo anterior, Pagos y Saldo pendiente de la factura resumen las transacciones desde el último período de facturación.
+#### <a name="understand-hello-previous-charges"></a>Comprender los cargos de hello anterior
+Hola saldo anterior, pagos y saldo pendiente sección de la factura resumen las transacciones desde el último período de facturación.
 
 | Término | Description |
 | --- | --- |
-| Saldo anterior |El importe total debido del último período de facturación |
-| Pagos |Los pagos y créditos totales aplicados al último período de facturación |
+| Saldo anterior |cantidad total de Hello vencido desde su último período de facturación |
+| Pagos |Total de pagos y créditos aplicados tooyour último período de facturación |
 | Saldo pendiente (desde el ciclo de facturación anterior) |Los créditos o el balance restante en la cuenta desde el último período de facturación |
 
-#### <a name="understand-the-current-charges"></a>Comprender los cargos actuales
-La sección Cargos actuales de la factura muestra detalles sobre el período de facturación actual.
+#### <a name="understand-hello-current-charges"></a>Comprender los cargos actuales de Hola
+Hola cargos actuales de la sección de factura hello muestra los detalles sobre los cargos mensuales para Hola período de facturación actual.
 
 | Término | Description |
 | --- | --- |
-| Cargos de uso |Los cargos de uso son los cargos totales mensuales de una suscripción para el período de facturación actual.|
-| Descuentos |Descuentos de servicio aplicados al período de facturación actual.|
-| Ajustes |Créditos diversos (uso gratuito, créditos, etc.) o cargos pendientes aplicados al período de facturación actual.<br/><br/>Por ejemplo, si tiene la oferta de Visual Studio Enterprise con MSDN, verá un crédito mensual. Si cancela su suscripción, verá los cargos por uso mensual que superan el crédito mensual que obtiene con su oferta de suscripción. Los cargos son desde el principio de su período de facturación actual hasta la fecha de cancelación de suscripción. |
+| Cargos de uso |Los cargos de uso son cargos mensuales totales de hello en una suscripción para hello período de facturación actual|
+| Descuentos |Período de facturación del servicio descuentos aplicados tooyour actual|
+| Ajustes |Varios créditos (uso libre, créditos, etc.) o los cargos pendientes aplicados tooyour período de facturación actual.<br/><br/>Por ejemplo, si tienes Hola Visual Studio Enterprise con la oferta MSDN, verá un crédito mensual. Si cancela su suscripción, verá los cargos por uso mensual que superan el crédito mensual de Hola que obtienes con su oferta de suscripción. incurrir en cargos de Hello en Inicio de Hola de su período de facturación actual hasta la fecha de cancelación de suscripción de Hola. |
 
-#### <a name="sold-to-and-payment-instructions"></a>Dirección de venta e instrucciones de pago
+#### <a name="sold-tooand-payment-instructions"></a>Vendido tooand las instrucciones de pago
 
-En la tabla siguiente se describen la dirección de venta y las instrucciones de pago que se muestran en la segunda página de la factura.
-
-| Término |Description |
-| --- | --- |
-| Dirección de venta |Dirección de perfil que figura en la cuenta. <br/><br/>Si tiene que modificar la dirección, consulte [Cómo cambiar la información de perfil de la cuenta de Azure, como el correo electrónico, la dirección y el número de teléfono de contacto](billing-how-to-change-azure-account-profile.md).|
-| Instrucciones de pago |Instrucciones sobre cómo realizar un pago según el método de pago (por ejemplo, mediante tarjeta de crédito o factura). |
-
-#### <a name="usage-charges"></a>Cargos de uso
-
-La sección Cargos de uso de la factura muestra la información de nivel de medidor sobre los cargos.
-
-![Sección Cargos de uso](./media/billing-understand-your-invoice/3.png)
-
-La tabla siguiente describe los encabezados de columna de los cargos de uso que se muestra en la factura.
+Hello siguiente tabla describe Hola vendida tooand las instrucciones de pago que se muestra en la segunda página de saludo de la factura.
 
 | Término |Descripción |
 | --- | --- |
-| Nombre |Identifica el servicio de nivel superior para el uso. |
-| Tipo |Define el tipo de servicio de Azure que puede afectar a la tarifa. |
-| Recurso |Identifica la unidad de medida del medidor que se está utilizando. |
-| Region |Identifica la ubicación del centro de datos para ciertos servicios cuyos precios se establecen según la ubicación del centro de datos. |
-| Consumida |La cantidad del medidor usado durante el período de facturación. |
-| Se incluye |El importe del medidor incluido sin cargo en el período de facturación actual. |
-| Facturable |Muestra la diferencia entre la cantidad consumida y la cantidad incluida. Se factura este importe. En el caso de ofertas de pago por uso que no incluyen el importe en la oferta, este total será igual a la cantidad consumida. |
-| Tarifa |La tarifa que se le carga por unidad facturable. |
-| Valor |Muestra el resultado de multiplicar las columnas Cantidad superior al límite y Tarifa. Si la cantidad consumida no supera la cantidad incluida, no hay ningún cargo en esta columna. |
-| Subtotal |La suma de todos los cargos antes de impuestos para este período de facturación. |
-| Total general |La suma de todos los cargos después de impuestos para este período de facturación. |
+| Vendido demasiado|Dirección de perfil que se encuentra en la cuenta de hello. <br/><br/>Si necesita toochange Hola dirección, vea [la información de su cuenta de Azure, como correo electrónico de contacto, dirección y número de teléfono del perfil de toochange](billing-how-to-change-azure-account-profile.md).|
+| Instrucciones de pago |Instrucciones sobre cómo toopay según el método de pago (por ejemplo, como por crédito tarjeta o factura). |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>¿Cómo puedo asegurarme de que los cargos de mi factura son correctos?
+#### <a name="usage-charges"></a>Cargos de uso
+
+Hola la sección de cargos de uso de factura de hello muestra información de nivel de medidor en los cargos de.
+
+![Sección Cargos de uso](./media/billing-understand-your-invoice/3.png)
+
+Hello siguiente tabla contiene encabezados de columna de cargos Hola uso que se muestra en la factura.
+
+| Término |Descripción |
+| --- | --- |
+| Nombre |Identifica el servicio de nivel superior de hello para el uso de Hola |
+| Tipo |Define el tipo de servicio de Azure de Hola que puede afectar a la velocidad de Hola |
+| Recurso |Identifique la unidad de medida para el medidor de hello consumido Hola |
+| Region |Identifica la ubicación de hello del centro de datos de Hola para determinados servicios que tienen un precio en función de la ubicación de centro de datos |
+| Consumida |cantidad de Hola de métrica de Hola que se usa durante el período de facturación de Hola |
+| Se incluye |cantidad de Hola de medidor de Hola que se incluye sin cargo en el período de facturación actual |
+| Facturable |Muestra hello diferencia entre Hola cantidad consumida y Hola incluyen cantidad. Se factura este importe. Para las ofertas de pago por uso con ninguna cantidad incluida con la oferta de hello, este total es Hola igual que la cantidad consumida de Hola |
+| Tarifa |tasa de Hola que se le cobrará por unidad facturable |
+| Valor |Muestra el resultado de hello de multiplicación Hola columna cantidad por encima del límite de columna de la tasa de Hola. Si hello que no supera la cantidad consumida hello cantidad incluye, no hay ningún cargo en esta columna. |
+| Subtotal |suma de Hola de todos los cargos antes de impuestos para este período de facturación |
+| Total general |suma de Hola de todos los cargos después de impuesto para este período de facturación |
+
+## <a name="how-do-i-make-sure-that-hello-charges-in-my-invoice-are-correct"></a>¿Cómo puedo asegurarme de que los cargos de hello en mi factura son correctos?
 Si hay un cargo en la factura del que quiera tener más detalles, vea [Descripción de la factura de Microsoft Azure.](billing-understand-your-bill.md)
 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Póngase en contacto con el servicio de soporte técnico.
-Si sigue necesitando ayuda, [póngase en contacto con el servicio de soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente.
+Si aún necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema.

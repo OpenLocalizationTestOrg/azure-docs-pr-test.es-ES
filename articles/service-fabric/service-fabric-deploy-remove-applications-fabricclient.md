@@ -1,6 +1,6 @@
 ---
-title: "Implementación de la aplicación de Azure Service Fabric | Microsoft Docs"
-description: Use las API de FabricClient para implementar y quitar aplicaciones de Service Fabric.
+title: "implementación de aplicaciones de Service Fabric aaaAzure | Documentos de Microsoft"
+description: Usar hello FabricClient APIs toodeploy y quite las aplicaciones de Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/07/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2e4ca1069b4e8e473b26b790e81770b41e25ff50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2986b71c461f3e785ba16ec1b827fe47ad852fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Implementación y eliminación de aplicaciones mediante FabricClient
 > [!div class="op_single_selector"]
@@ -30,90 +30,90 @@ ms.lasthandoff: 07/11/2017
 
 <br/>
 
-Una vez que un [tipo de aplicación se ha empaquetado][10], está listo para la implementación en un clúster de Azure Service Fabric. La implementación implica los tres pasos siguientes:
+Una vez que un [tipo de aplicación se ha empaquetado][10], está listo para la implementación en un clúster de Azure Service Fabric. Implementación implica Hola siga tres pasos:
 
-1. Carga del paquete de aplicación en el almacén de imágenes
-2. Cargar el tipo de aplicación
-3. Crear la instancia de aplicación
+1. Cargar el almacén de imágenes de toohello de paquete de aplicación de Hola
+2. Registrar el tipo de aplicación Hola
+3. Crear instancia de la aplicación hello
 
-Después de que se ha implementado una aplicación y una instancia está en funcionamiento en el clúster, puede eliminar la instancia de aplicación y su tipo de aplicación. Para quitar completamente una aplicación del clúster, realice los siguientes pasos:
+Después de implementa una aplicación y se ejecuta una instancia en clúster de hello, puede eliminar la instancia de la aplicación hello y su tipo de aplicación. toocompletely quitar una aplicación de clúster de hello implica Hola pasos:
 
-1. Quitar (o eliminar) la instancia de la aplicación en ejecución
-2. Anular el registro del tipo de aplicación si ya no lo necesita
-3. Quitar el paquete de aplicación del almacén de imágenes
+1. Quitar (o eliminar) Hola ejecutando la instancia de la aplicación
+2. Anular el registro del tipo de aplicación Hola si ya no lo necesite
+3. Quitar el paquete de aplicación Hola Hola almacén de imágenes
 
-Si usa [Visual Studio para implementar y depurar aplicaciones](service-fabric-publish-app-remote-cluster.md) en el clúster de desarrollo local, todos los pasos anteriores se controlan automáticamente mediante un script de PowerShell,  que se encuentra en la carpeta *Scripts* del proyecto de la aplicación. En este artículo se ofrece información sobre lo que hace ese script para que pueda realizar las mismas operaciones fuera de Visual Studio. 
+Si usa [Visual Studio para implementar y depurar aplicaciones](service-fabric-publish-app-remote-cluster.md) en el clúster de desarrollo local, todo Hola pasos anteriores se administran automáticamente a través de un script de PowerShell.  Este script se encuentra en hello *Scripts* carpeta de proyecto de aplicación Hola. Este artículo proporciona información general acerca de lo que está haciendo esa secuencia de comandos para que pueda realizar Hola mismas operaciones fuera de Visual Studio. 
  
-## <a name="connect-to-the-cluster"></a>Conexión al clúster
-Para conectarse al clúster, cree una instancia de [FabricClient](/dotnet/api/system.fabric.fabricclient) antes de ejecutar cualquiera de los ejemplos de código de este artículo. Para obtener ejemplos de conexión a un clúster de desarrollo local, a un clúster remoto o a un cluster protegido con Azure Active Directory, certificados X509 o Windows Active Directory, consulte [Conexión a un clúster seguro](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Para conectarse al clúster de desarrollo local, ejecute lo siguiente:
+## <a name="connect-toohello-cluster"></a>Conectar el clúster toohello
+Conecta el clúster de toohello mediante la creación de un [FabricClient](/dotnet/api/system.fabric.fabricclient) instancia antes de ejecutar cualquiera de hello ejemplos de código de este artículo. Para obtener ejemplos de clúster de desarrollo local tooa conexión o un clúster remoto o un clúster protegido con Azure Active Directory, X509 certificados o Active Directory de Windows consulte [clúster segura de conectar tooa](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). clúster de desarrollo local en toohello tooconnect, ejecute hello siguiente:
 
 ```csharp
-// Connect to the local cluster.
+// Connect toohello local cluster.
 FabricClient fabricClient = new FabricClient();
 ```
 
-## <a name="upload-the-application-package"></a>Cargar el paquete de la aplicación
-Imagine que compila y empaqueta una aplicación denominada *MyApplication* en Visual Studio. De forma predeterminada, el nombre del tipo de aplicación que aparece en ApplicationManifest.xml es "MyApplicationType".  El paquete de aplicación, que contiene el manifiesto de aplicación necesario, así como los manifiestos de servicio y los paquetes code/config/data, se encuentra en *C:\Users\&username&gt;\Documents\Visual Studio 2017\Projects\MyApplication\MyApplication\pkg\Debug*.
+## <a name="upload-hello-application-package"></a>Cargar el paquete de aplicación Hola
+Imagine que compila y empaqueta una aplicación denominada *MyApplication* en Visual Studio. De forma predeterminada, el nombre de tipo de aplicación de hello enumerado en hello ApplicationManifest.xml es "MyApplicationType".  paquete de aplicación, que contiene el manifiesto de aplicación necesarios de hello, manifiestos de servicio y los paquetes de datos/config/código, Hello se encuentra una en *C:\Users\&lt; nombre de usuario&gt;\Documents\Visual Studio 2017\Projects\ MyApplication\MyApplication\pkg\Debug*.
 
-Cargar el paquete de aplicación lo pone en una ubicación a la que pueden tener acceso los componentes internos de Service Fabric. Service Fabric comprueba el paquete de aplicación durante su registro. Sin embargo, si quiere comprobar el paquete de aplicación de forma local (es decir, antes de cargarlo), use el cmdlet [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps).
+Paquete de aplicación Hola cargando lo coloca en una ubicación que sea accesible para los componentes internos de Service Fabric Hola. Service Fabric comprueba el paquete de aplicación Hola durante el registro de Hola Hola del paquete de aplicación. Sin embargo, si desea tooverify Hola paquete de la aplicación localmente (es decir, antes de cargar), use hello [ServiceFabricApplicationPackage prueba](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet.
 
-La API [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) carga el paquete de aplicación en el almacén de imágenes del clúster. 
+Hola [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API carga el almacén de imágenes de clúster de toohello paquete de aplicación de Hola. 
 
-Si el paquete de aplicación es grande o tiene muchos archivos, puede [comprimirlo](service-fabric-package-apps.md#compress-a-package) y copiarlo en el almacén de imágenes mediante PowerShell. La compresión reduce el tamaño y el número de archivos.
+Si el paquete de aplicación hello es grande y tiene muchos archivos, puede [comprimirlo](service-fabric-package-apps.md#compress-a-package) y cópielo toohello almacén de imágenes mediante PowerShell. compresión de Hola reduce el tamaño de Hola y el número de Hola de archivos.
 
-Consulte [Descripción del valor ImageStoreConnectionString](service-fabric-image-store-connection-string.md) para más información sobre el almacén de imágenes y su cadena de conexión.
+Vea [comprender la cadena de conexión de almacén de imágenes de hello](service-fabric-image-store-connection-string.md) para obtener información adicional sobre Hola image store e imagen almacenan la cadena de conexión.
 
-## <a name="register-the-application-package"></a>Registrar el paquete de la aplicación
-El tipo y la versión de la aplicación declarados en el manifiesto de aplicación estarán disponibles para usarse cuando se registre el paquete de aplicación. El sistema leerá el paquete cargado en el paso anterior, comprobará dicho paquete, procesará su contenido y copiará el paquete procesado en una ubicación del sistema interno.  
+## <a name="register-hello-application-package"></a>Registrar el paquete de aplicación Hola
+tipo de aplicación de Hola y la versión declarada en el manifiesto de aplicación Hola estén disponible para su uso cuando se registra el paquete de aplicación Hola. sistema Hola lee el paquete de hello cargado en el paso anterior de hello, comprueba el paquete de hello, procesa el contenido del paquete hello y copia la ubicación de hello procesa paquete tooan interno del sistema.  
 
-La API [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) registra el tipo de aplicación en el clúster y hace que esté disponible para su implementación.
+Hola [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API registros Hola tipo de aplicación en clúster de Hola y hacer que esté disponible para la implementación.
 
-La API [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) proporciona información acerca de todos los tipos de aplicaciones registradas correctamente. Puede usar esta API para determinar cuándo se realiza el registro.
+Hola [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) API proporciona información acerca de todos los tipos de aplicación se registró correctamente. Puede utilizar esta API toodetermine cuando se realizó el registro de hello.
 
 ## <a name="create-an-application-instance"></a>Creación de una instancia de aplicación
-Se pueden crear instancias de una aplicación a partir de cualquier tipo de aplicación que se haya registrado correctamente mediante la API [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync). El nombre de cada aplicación debe empezar con el esquema *"fabric:"* y ser único para cada instancia de la aplicación (dentro de un clúster). También se crean los servicios predeterminados que se hayan definido en el manifiesto de aplicación del tipo de aplicación de destino.
+Puede crear una instancia de una aplicación de cualquier tipo de aplicación que se ha registrado correctamente mediante el uso de hello [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API. Hola de cada aplicación debe empezar con hello *"fabric:"* esquema y debe ser único para cada instancia de la aplicación (dentro de un clúster). También se crean los servicios de valor predeterminado definidos en el manifiesto de aplicación Hola del tipo de aplicación de destino de Hola.
 
 Pueden crearse varias instancias de aplicación para cualquier versión concreta de un tipo de aplicación registrado. Cada instancia de la aplicación se ejecuta de forma aislada, con su propio directorio de trabajo y conjunto de procesos.
 
-Para ver qué aplicaciones y servicios con nombre se ejecutan en el clúster, ejecute las API [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) y [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync).
+toosee que el nombre de las aplicaciones y servicios se ejecutan en el clúster de hello, ejecute hello [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) y [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) API.
 
 ## <a name="create-a-service-instance"></a>Creación de una instancia de servicio
-Puede crear una instancia de un servicio a partir de un tipo de servicio mediante la API [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync).  Si el servicio se declara como servicio predeterminado en el manifiesto de aplicación, se crea una instancia de este con la aplicación.  Al llamar a la API [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) en un servicio para el que ya se ha creado una instancia se devuelve una excepción de tipo FabricException que contiene un código de error con un valor de FabricErrorCode.ServiceAlreadyExists.
+Puede crear una instancia de un servicio de un tipo de servicio con hello [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API.  Si el servicio de Hola se declara como un servicio de forma predeterminada en el manifiesto de aplicación Hola, servicio de Hola se crea una instancia cuando se crea una instancia de aplicación hello.  Llamar a hello [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API para un servicio que ya se ha creado una instancia devolverá una excepción de tipo FabricException que contiene un código de error con un valor de FabricErrorCode.ServiceAlreadyExists.
 
 ## <a name="remove-a-service-instance"></a>Eliminación de una instancia de servicio
-Cuando una instancia de servicio deja de ser necesaria, para quitarla de la instancia de aplicación en funcionamiento, hay que llamar a la API [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync).  
+Cuando ya no se necesita una instancia de servicio, puede quitarlo de hello ejecuta instancia de la aplicación que realiza la llamada hello [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) API.  
 
 > [!WARNING]
 > Esta operación no se puede revertir y el estado del servicio no se puede recuperar.
 
 ## <a name="remove-an-application-instance"></a>Eliminación de una instancia de aplicación
-Cuando una instancia de aplicación deja de ser necesaria, puede quitarla de manera permanente por el nombre mediante la API [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync). [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) quita automáticamente todos los servicios que pertenecen a la aplicación, con lo que se eliminan de forma permanente todos los estados de servicio.
+Cuando ya no se necesita una instancia de la aplicación, permanentemente puede quitar por nombre usando hello [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) API. [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) quita automáticamente todos los servicios que pertenecen, así, permanentemente quitar todo el estado de servicio de aplicación de toohello.
 
 > [!WARNING]
 > No se puede deshacer esta operación y no se puede recuperar el estado de la aplicación.
 
 ## <a name="unregister-an-application-type"></a>Anulación de un registro del tipo de aplicación
-Cuando ya no se necesita una versión concreta de un tipo de aplicación, debe anularse el registro de esa versión en particular del tipo de aplicación mediante la API [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync). La anulación del registro de versiones no usadas de tipos de aplicación permite liberar espacio de almacenamiento usado en el almacén de imágenes. Se puede anular el registro de un tipo de aplicación siempre y cuando no se haya creado ninguna instancia de la aplicación con esa versión del tipo de aplicación y ninguna actualización pendiente de la aplicación haga referencia a esa versión del tipo de aplicación.
+Cuando ya no se necesita una versión concreta de un tipo de aplicación, debe anular el registro de una versión concreta del tipo de aplicación Hola con hello [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API. Versiones sin usar al anular el registro aplicación tipos versiones de espacio de almacenamiento utilizado por el almacén de imágenes de Hola. Se puede anular una versión de un tipo de aplicación siempre y cuando ninguna de las aplicaciones se crean instancias en esa versión del tipo de aplicación hello y ninguna actualización pendiente aplicación hacen referencia a esa versión del tipo de aplicación Hola.
 
-## <a name="remove-an-application-package-from-the-image-store"></a>Eliminación de un paquete de aplicación del almacén de imágenes
-Cuando un paquete de aplicación deje de necesitarse, puede eliminarlo del almacén de imágenes para liberar recursos del sistema mediante la API [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage).
+## <a name="remove-an-application-package-from-hello-image-store"></a>Quitar un paquete de aplicación Hola almacén de imágenes
+Cuando ya no se necesita un paquete de aplicación, puede eliminarla del Hola imagen almacén toofree los recursos del sistema mediante hello [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage pide una ImageStoreConnectionString
-El entorno del SDK de Service Fabric ya debe tener configurados los valores predeterminados correctos. Pero si es necesario, ImageStoreConnectionString para todos los comandos debe coincidir con el valor que usa el clúster de Service Fabric. Puede encontrar ImageStoreConnectionString en el manifiesto del clúster, recuperado mediante los comandos [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) y Get-ImageStoreConnectionStringFromClusterManifest:
+entorno de SDK del servicio Fabric Hola ya debe tener Hola correcto de configurar los valores predeterminados. Pero si es necesario, debe coincidir con el valor de Hola Hola ImageStoreConnectionString para todos los comandos que Hola tejido de servicio de clúster. Puede encontrar Hola ImageStoreConnectionString en el manifiesto de clúster de hello, recuperar con hello [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) y comandos de Get-ImageStoreConnectionStringFromClusterManifest:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
 ```
 
-El cmdlet **Get-ImageStoreConnectionStringFromClusterManifest** , que forma parte del módulo de PowerShell correspondiente al SDK de Service Fabric, se utiliza para obtener la cadena de conexión del almacén de imágenes.  Para importar el módulo de SDK, ejecute el siguiente código:
+Hola **ImageStoreConnectionStringFromClusterManifest Get** cmdlet, que forma parte del módulo de PowerShell de SDK de tejido de servicio de hello, es la imagen de Hola de tooget usado almacenar la cadena de conexión.  módulo tooimport Hola SDK, ejecute:
 
 ```powershell
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 ```
 
 
-ImageStoreConnectionString se encuentra en el manifiesto de clúster:
+Hola ImageStoreConnectionString se encuentra en el manifiesto de clúster de hello:
 
 ```xml
 <ClusterManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -127,30 +127,29 @@ ImageStoreConnectionString se encuentra en el manifiesto de clúster:
     [...]
 ```
 
-Consulte [Descripción del valor ImageStoreConnectionString](service-fabric-image-store-connection-string.md) para más información sobre el almacén de imágenes y su cadena de conexión.
+Vea [comprender la cadena de conexión de almacén de imágenes de hello](service-fabric-image-store-connection-string.md) para obtener información adicional sobre Hola image store e imagen almacenan la cadena de conexión.
 
 ### <a name="deploy-large-application-package"></a>Implementación de un paquete de aplicación grande
 Problema: la API [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) agota el tiempo de espera para un paquete de aplicación grande (del orden de GB).
 Pruebe lo siguiente:
-- Especifique un tiempo de espera mayor para el método [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) con el parámetro `timeout`. De forma predeterminada, el tiempo de espera es de 30 minutos.
-- Compruebe la conexión de red entre la máquina de origen y el clúster. Si la conexión es lenta, considere la posibilidad de usar una máquina con una conexión de red mejor.
-Si la máquina cliente se encuentra en otra región diferente al clúster, considere el uso de una máquina cliente que se encuentre en una región más cercana o en la misma región que el clúster.
-- Compruebe si está alcanzando la limitación externa. Por ejemplo, cuando el almacén de imágenes está configurado para usar Azure Storage, se puede limitar carga.
+- Especifique un tiempo de espera mayor para el método [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) con el parámetro `timeout`. De forma predeterminada, el tiempo de espera de hello es de 30 minutos.
+- Compruebe la conexión de red de hello entre la máquina de origen y el clúster. Si Hola conexión es lenta, considere la posibilidad de usar una máquina con una conexión de red mejor.
+Si es equipo del cliente de hello en otra región de clúster de hello, considere la posibilidad de mediante un equipo cliente en una región más cerca o mismo como clúster de Hola.
+- Compruebe si está alcanzando la limitación externa. Por ejemplo, al almacén de imágenes de hello es almacenamiento configurado toouse de azure, se puede limitar carga.
 
-Problema: la carga del paquete se completó correctamente, pero la API [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) agota el tiempo de espera.
-Pruebe lo siguiente:
-- [Comprima el paquete](service-fabric-package-apps.md#compress-a-package) antes de realizar la copia en el almacén de imágenes.
-La compresión reduce el tamaño y el número de archivos lo que, a su vez, reduce la cantidad de tráfico y trabajo que Service Fabric debe realizar. La operación de carga puede ser más lenta (especialmente si incluyen el tiempo de compresión), pero el registro y la anulación del registro del tipo de aplicación son más rápidos.
+Problema: la carga del paquete se completó correctamente, pero la API [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) agota el tiempo de espera. Pruebe lo siguiente:
+- [Comprimir el paquete de hello](service-fabric-package-apps.md#compress-a-package) antes de copiar el almacén de imágenes de toohello.
+compresión Hola reduce el tamaño de Hola y número de Hola de archivos, que a su vez, reduce la cantidad de Hola de tráfico y funcionar a ese Service Fabric debe realizar. operación de carga de Hello puede ser más lento (sobre todo si se incluye el tiempo de compresión de hello), pero el tipo de aplicación Hola registrar y anular el registro son más rápidos.
 - Especifique un tiempo de espera mayor para la API [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) con el parámetro `timeout`.
 
 ### <a name="deploy-application-package-with-many-files"></a>Implementación del paquete de aplicación con muchos archivos
 Problema: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) agota el tiempo de espera para un paquete de aplicación con muchos archivos (del orden de miles).
 Pruebe lo siguiente:
-- [Comprima el paquete](service-fabric-package-apps.md#compress-a-package) antes de realizar la copia en el almacén de imágenes. La compresión reduce el número de archivos.
+- [Comprimir el paquete de hello](service-fabric-package-apps.md#compress-a-package) antes de copiar el almacén de imágenes de toohello. compresión de Hello reduce el número Hola de archivos.
 - Especifique un tiempo de espera mayor para [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) con el parámetro `timeout`.
 
 ## <a name="code-example"></a>Ejemplo de código
-En el ejemplo siguiente se copia un paquete de aplicación en el almacén de imágenes, se aprovisiona el tipo de aplicación, se crea una instancia de la aplicación, crea una instancia de servicio, se quita la instancia de la aplicación, se desaprovisiona el tipo de aplicación y se elimina el paquete de aplicación del almacén de imágenes.
+Hello en el ejemplo siguiente se copia un almacén de imágenes de toohello de paquete de aplicación, aprovisiona el tipo de aplicación Hola, crea una instancia de la aplicación, crea una instancia de servicio, instancia de la aplicación hello quita, aprovisiona un tipo de aplicación Hola, y Elimina el paquete de aplicación Hola Hola almacén de imágenes.
 
 ```csharp
 using System;
@@ -181,27 +180,27 @@ static void Main(string[] args)
     string packagePath = "C:\\Users\\username\\Documents\\Visual Studio 2017\\Projects\\MyApplication\\MyApplication\\pkg\\Debug";
     string serviceType = "Stateless1Type";
 
-    // Connect to the cluster.
+    // Connect toohello cluster.
     FabricClient fabricClient = new FabricClient(clusterConnection);
 
-    // Copy the application package to a location in the image store
+    // Copy hello application package tooa location in hello image store
     try
     {
         fabricClient.ApplicationManager.CopyApplicationPackage(imageStoreConnectionString, packagePath, packagePathInImageStore);
-        Console.WriteLine("Application package copied to {0}", packagePathInImageStore);
+        Console.WriteLine("Application package copied too{0}", packagePathInImageStore);
     }
     catch (AggregateException ae)
     {
-        Console.WriteLine("Application package copy to Image Store failed: ");
+        Console.WriteLine("Application package copy tooImage Store failed: ");
         foreach (Exception ex in ae.InnerExceptions)
         {
             Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
         }
     }
 
-    // Provision the application.  "MyApplicationV1" is the folder in the image store where the application package is located. 
-    // The application type with name "MyApplicationType" and version "1.0.0" (both are found in the application manifest) 
-    // is now registered in the cluster.            
+    // Provision hello application.  "MyApplicationV1" is hello folder in hello image store where hello application package is located. 
+    // hello application type with name "MyApplicationType" and version "1.0.0" (both are found in hello application manifest) 
+    // is now registered in hello cluster.            
     try
     {
         fabricClient.ApplicationManager.ProvisionApplicationAsync(packagePathInImageStore).Wait();
@@ -218,7 +217,7 @@ static void Main(string[] args)
         }
     }
 
-    //  Create the application instance.
+    //  Create hello application instance.
     try
     {
         ApplicationDescription appDesc = new ApplicationDescription(new Uri(appName), appType, appVersion);
@@ -234,7 +233,7 @@ static void Main(string[] args)
         }
     }
 
-    // Create the stateless service description.  For stateful services, use a StatefulServiceDescription object.
+    // Create hello stateless service description.  For stateful services, use a StatefulServiceDescription object.
     StatelessServiceDescription serviceDescription = new StatelessServiceDescription();
     serviceDescription.ApplicationName = new Uri(appName);
     serviceDescription.InstanceCount = 1;
@@ -242,8 +241,8 @@ static void Main(string[] args)
     serviceDescription.ServiceName = new Uri(serviceName);
     serviceDescription.ServiceTypeName = serviceType;
 
-    // Create the service instance.  If the service is declared as a default service in the ApplicationManifest.xml,
-    // the service instance is already running and this call will fail.
+    // Create hello service instance.  If hello service is declared as a default service in hello ApplicationManifest.xml,
+    // hello service instance is already running and this call will fail.
     try
     {
         fabricClient.ServiceManager.CreateServiceAsync(serviceDescription).Wait();
@@ -275,7 +274,7 @@ static void Main(string[] args)
         }
     }
 
-    // Delete an application instance from the application type.
+    // Delete an application instance from hello application type.
     try
     {
         DeleteApplicationDescription deleteApplicationDescription = new DeleteApplicationDescription(new Uri(appName));
@@ -292,7 +291,7 @@ static void Main(string[] args)
         }
     }
 
-    // Un-provision the application type.
+    // Un-provision hello application type.
     try
     {
         fabricClient.ApplicationManager.UnprovisionApplicationAsync(appType, appVersion).Wait();
@@ -307,7 +306,7 @@ static void Main(string[] args)
         }
     }
 
-    // Delete the application package from a location in the image store.
+    // Delete hello application package from a location in hello image store.
     try
     {
         fabricClient.ApplicationManager.RemoveApplicationPackage(imageStoreConnectionString, packagePathInImageStore);
@@ -339,6 +338,6 @@ static void Main(string[] args)
 
 [Modelar una aplicación en Service Fabric](service-fabric-application-model.md)
 
-<!--Link references--In actual articles, you only need a single period before the slash-->
+<!--Link references--In actual articles, you only need a single period before hello slash-->
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md

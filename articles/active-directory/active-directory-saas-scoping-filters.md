@@ -1,6 +1,6 @@
 ---
-title: "Aprovisionamiento de aplicaciones con filtros de ámbito | Microsoft Docs"
-description: "Obtenga información sobre cómo usar los filtros de ámbito para evitar el aprovisionamiento real de los objetos de las aplicaciones que admiten el aprovisionamiento automático de usuarios, en caso de que un objeto no satisfaga los requisitos empresariales."
+title: "aplicaciones de aaaProvisioning con filtros de ámbito | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo definir el ámbito toouse filtra los objetos de tooprevent en aplicaciones que admitan el aprovisionamiento automático de usuarios desde que se aprovisiona realmente si un objeto no satisface sus requisitos empresariales."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 109635052e2ded33831b050eb12d50745944091b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f0299390dc3fdb70aa9d271e835069a08827d635
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Aprovisionamiento de aplicaciones basado en atributos con filtros de ámbito
-El objetivo de esta sección es explicar cómo usar filtros de ámbito para definir reglas basadas en atributos que determinarán qué usuarios se aprovisionarán en la aplicación.
+objetivo de Hola de esta sección es tooexplain cómo toouse ámbito filtra toodefine basado en atributos reglas que determinan qué usuarios aprovisiona toohello aplicación.
 
 ## <a name="clauses-and-scope-groups"></a>Cláusulas y grupos de ámbitos
 ![Filtro de ámbito][1] 
 
-Los filtros de ámbito se definen mediante uno o varios **grupos de ámbitos**, y cada uno de ellos contiene una o varias **cláusulas**. Para ver las cláusulas de un grupo de ámbitos concreto, haga clic en la flecha situada a la izquierda del nombre del grupo para expandirlo.
+Los filtros de ámbito se definen mediante uno o varios **grupos de ámbitos**, y cada uno de ellos contiene una o varias **cláusulas**. cláusulas de hello toosee para un grupo de ámbito determinado, expándalo haciendo clic en hello flecha toohello a la izquierda del nombre de grupo de Hola.
 
-Una **cláusula** determina qué usuarios pueden pasar a través del filtro de ámbito mediante la evaluación de los atributos de cada usuario. Por ejemplo, podría tener una cláusula que requiere que el atributo "state" del usuario sea igual a Nueva York, de modo que solo se aprovisionará a los usuarios de Nueva York en la aplicación.
+A **cláusula** determina qué usuarios tienen permiso toopass a través de hello filtro de ámbito mediante la evaluación de atributos de cada usuario. Por ejemplo, tendrá una cláusula que requiere que "state" atributo igual Nueva York un usuario, por lo que solo los usuarios de Nueva York se aprovisionan en aplicación hello.
 
 ![Nombre del grupo de ámbito][2] 
 
-Cada **grupo de ámbitos** comienza con una **cláusula** obligatoria, como se muestra en la captura de pantalla anterior. Esta cláusula sólo indica que primero es necesario asignar al usuario a la aplicación antes de que los filtros de ámbito lo evalúen. Esta cláusula no puede eliminarse ni modificarse.
+Cada **grupo del ámbito** comienza con una obligatorio **cláusula**, tal y como se muestra en la captura de pantalla de hello anterior. Esta cláusula indica simplemente que el usuario Hola primero se debe asignar toohello aplicación antes de que se evalúa por los filtros de ámbito. Esta cláusula no puede eliminarse ni modificarse.
 
-Puede agregar cláusulas nuevas o grupos de ámbitos nuevos; para ello, haga clic en el botón correspondiente. Puede asignar un nombre a cada grupo de ámbitos; para ello, edite la propiedad **Nombre del grupo de ámbitos** .
+Puede agregar nuevas cláusulas o nuevos grupos de ámbito presionando el botón correspondiente de Hola. Puede asignar un nombre a cada grupo de ámbitos; para ello, edite la propiedad **Nombre del grupo de ámbitos** .
 
 ## <a name="how-scoping-filters-are-evaluated"></a>Evaluación de los filtros de ámbito
-Durante el aprovisionamiento, probamos a cada usuario asignado con los filtros de ámbito para determinar si es posible dar acceso a un usuario a la aplicación. Puede considerar cada cláusula como una prueba que se debe superar para evitar que el filtro rechace a un usuario. 
+Durante el aprovisionamiento, probamos cada usuario asignado en su ámbito toodetermine filtros si ese usuario merece acceso toohello aplicación. Se puede considerar cada cláusula como una prueba que se debe pasar en orden para hello usuario tooavoid obtener filtran. 
 
-Si ha definido varios grupos de ámbitos, cada usuario debe pasar al menos uno de ellos para poder tener acceso a la aplicación. Dentro de cada grupo de ámbitos, sin embargo, el usuario debe pasar cada cláusula para pasar ese grupo de ámbitos específico. 
+Si tiene varios grupos de ámbito definidos, cada usuario debe superar al menos uno de ellos tooaccess aplicación hello. Dentro de cada grupo de ámbito, sin embargo, Hola usuario debe pasar cada cláusula toopass ese grupo de ámbito específico. 
 
-En otras palabras, puede considerar los grupos de ámbitos como agrupaciones mediante el operador OR, y puede considerar las cláusulas contenidas en ellos como agrupaciones mediante el operador AND. Por ejemplo, considere el siguiente filtro de ámbito:
+En otras palabras, puede pensar en grupos de ámbito como o juntos, y se puede considerar las cláusulas de hello dentro de ellos como AND haría juntos. Por ejemplo, considere la posibilidad de hello siguiente filtro de ámbito:
 
 ![Nombre del grupo de ámbito][3]  
 
-Según este filtro de ámbito, los usuarios deben cumplir los siguientes criterios, a fin de que se les pueda aprovisionar:
+Según toothis filtro de ámbito, los usuarios deben cumplir los siguientes Hola criterios, toobe aprovisionado:
 
-1. Se les debe haber asignado a la aplicación.
-2. Deben trabajar en el departamento de ingeniería.
+1. Deben estar asignados toohello aplicación.
+2. Debe trabajar en el departamento de ingeniería de Hola
 3. Deben trabajar en San Francisco o Canadá.
 
 ## <a name="related-articles"></a>Artículos relacionados
 * [Índice de artículos sobre la administración de aplicaciones en Azure Active Directory](active-directory-apps-index.md)
-* [Aprovisionamiento y desaprovisionamiento automático de usuarios para aplicaciones SaaS](active-directory-saas-app-provisioning.md)
+* [Automatizar el aprovisionamiento de usuarios y desaprovisionamiento tooSaaS aplicaciones](active-directory-saas-app-provisioning.md)
 * [Personalización de asignaciones de atributos para el aprovisionamiento de usuarios](active-directory-saas-customizing-attribute-mappings.md)
 * [Escritura de expresiones para asignaciones de atributos](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Notificaciones de aprovisionamiento de cuentas](active-directory-saas-account-provisioning-notifications.md)
-* [Uso de SCIM para habilitar el aprovisionamiento automático de usuarios y grupos de Azure Active Directory a aplicaciones](active-directory-scim-provisioning.md)
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS](active-directory-saas-tutorial-list.md)
+* [Uso de SCIM tooenable el aprovisionamiento automático de usuarios y grupos de Azure Active Directory tooapplications](active-directory-scim-provisioning.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones SaaS](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-scoping-filters/ic782811.png

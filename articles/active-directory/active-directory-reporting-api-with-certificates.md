@@ -1,6 +1,6 @@
 ---
-title: "Obtención de datos mediante Reporting API de Azure AD con certificados | Microsoft Docs"
-description: "Explica cómo usar Reporting API de Azure AD con credenciales de certificado para obtener datos de directorios sin intervención del usuario."
+title: aaaGet datos mediante Hola AD Reporting API de Azure con certificados | Documentos de Microsoft
+description: "Explica cómo toouse Hola AD Reporting API de Azure con los datos de tooget de credenciales de certificado de directorios sin intervención del usuario."
 services: active-directory
 documentationcenter: 
 author: ramical
@@ -14,82 +14,82 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/24/2017
 ms.author: ramical
-ms.openlocfilehash: c1345dcda6e52267a8037ffd7207e6bc3b0d3b31
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 00ddfaefe32ea6ae48f276c974a17ddcf84f7894
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Obtención de datos mediante Reporting API de Azure AD con certificados
-Este artículo trata de cómo usar Reporting API de Azure AD con credenciales de certificado para obtener datos de directorios sin intervención del usuario. 
+# <a name="get-data-using-hello-azure-ad-reporting-api-with-certificates"></a>Obtener datos utilizando la API de generación de informes de hello Azure AD con certificados
+Este artículo describe cómo toouse Hola AD Reporting API de Azure con los datos de tooget de credenciales de certificado de directorios sin intervención del usuario. 
 
-## <a name="use-the-azure-ad-reporting-api"></a>Uso de Reporting API de Azure AD 
-Reporting API de Azure AD requiere que complete los pasos siguientes:
+## <a name="use-hello-azure-ad-reporting-api"></a>Use Hola API Reporting de Azure AD 
+API de informes de Azure AD requiere que se complete Hola pasos:
  *  Requisitos previos de instalación
- *  Establecimiento del certificado en la aplicación
+ *  Configure el certificado de hello en la aplicación
  *  Obtención de un token de acceso
- *  Uso del token de acceso para llamar a la API Graph
+ *  Usar Hola acceso toocall token hello API Graph
 
 Para más información sobre el código fuente, consulte el [módulo Leverage Report API](https://github.com/AzureAD/azure-activedirectory-powershell/tree/gh-pages/Modules/AzureADUtils) (Uso de Report API). 
 
 ### <a name="install-prerequisites"></a>Requisitos previos de instalación
-Debe tener instalado Azure AD PowerShell V2 y el módulo AzureADUtils.
+Necesitará toohave V2 de PowerShell de Azure AD y módulo AzureADUtils instalado.
 
-1. Descargue e instale Azure AD Powershell V2, según las instrucciones de [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md).
-2. Descargue el módulo Azure AD Utils de [AzureAD/azure-activedirectory-powershell](https://github.com/AzureAD/azure-activedirectory-powershell/blob/gh-pages/Modules/AzureADUtils/AzureADUtils.psm1). 
+1. Descargar e instalar Azure AD Powershell V2, siga las instrucciones de hello en [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md).
+2. Descargar el módulo de Azure AD Utils Hola de [organización/azure-Active Directory-powershell](https://github.com/AzureAD/azure-activedirectory-powershell/blob/gh-pages/Modules/AzureADUtils/AzureADUtils.psm1). 
   Este módulo proporciona varios cmdlets de utilidades incluidos los siguientes:
-   * La versión más reciente de ADAL mediante Nuget
+   * versión más reciente de Hola de AAL mediante Nuget
    * Los tokens de acceso de usuario, las claves de aplicación y los certificados mediante ADAL
    * API Graph con control de resultados paginados
 
-**Para instalar el módulo Azure AD Utils:**
+**módulo de Azure AD Utils de Hola tooinstall:**
 
-1. Cree un directorio para guardar el módulo de utilidades (por ejemplo, c:\azureAD) y descargar el módulo de GitHub.
-2. Abra una sesión de PowerShell y vaya al directorio que acaba de crear. 
-3. Importe el módulo e instálelo en la ruta de acceso del módulo de PowerShell mediante el cmdlet Install-AzureADUtilsModule. 
+1. Crear un módulo de utilidades de hello directorio toosave (por ejemplo, c:\azureAD) y descargue el módulo de Hola desde GitHub.
+2. Abra una sesión de PowerShell y vaya a directorio toohello que acaba de crear. 
+3. Importar el módulo de hello e instalarlo en la ruta de módulo de PowerShell de hello mediante el cmdlet de hello AzureADUtilsModule de instalación. 
 
-La sesión debe tener un aspecto similar a esta pantalla:
+sesión de Hello debe tener un aspecto similar pantalla toothis:
 
   ![Windows Powershell](./media/active-directory-report-api-with-certificates/windows-powershell.png)
 
-### <a name="set-the-certificate-in-your-app"></a>Establecimiento del certificado en la aplicación
-1. Si ya tiene una aplicación, obtenga su identificador de objeto en Azure Portal. 
+### <a name="set-hello-certificate-in-your-app"></a>Configure el certificado de hello en la aplicación
+1. Si ya tiene una aplicación, obtener su identificador de objeto de hello Portal de Azure. 
 
-  ![Portal de Azure](./media/active-directory-report-api-with-certificates/azure-portal.png)
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/azure-portal.png)
 
-2. Abra una sesión de PowerShell y conéctese a Azure AD mediante el cmdlet Connect-AzureAD.
+2. Abra una sesión de PowerShell y conéctese tooAzure AD mediante el cmdlet de hello organización conectar.
 
-  ![Portal de Azure](./media/active-directory-report-api-with-certificates/connect-azuaread-cmdlet.png)
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/connect-azuaread-cmdlet.png)
 
-3. Use el cmdlet New-AzureADApplicationCertificateCredential de AzureADUtils para agregarle una credencial de certificado. 
+3. Use el cmdlet de nuevo AzureADApplicationCertificateCredential Hola de AzureADUtils tooadd un tooit de credencial de certificado. 
 
 >[!Note]
->Debe proporcionar el identificador de objeto de aplicación capturado anteriormente, así como el objeto de certificado (se obtiene mediante la unidad Cert:).
+>Se necesita tooprovide Hola aplicación Id. de objeto que ha capturado anteriormente, así como Hola objeto de certificado (obtener esta mediante Hola Cert: unidad).
 >
 
 
-  ![Portal de Azure](./media/active-directory-report-api-with-certificates/add-certificate-credential.png)
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/add-certificate-credential.png)
   
 ### <a name="get-an-access-token"></a>Obtención de un token de acceso
 
-Para obtener un token de acceso, use el cmdlet Get-AzureADGraphAPIAccessTokenFromCert de AzureADUtils. 
+tooget un token de acceso, use el cmdlet de Get-AzureADGraphAPIAccessTokenFromCert de Hola desde AzureADUtils. 
 
 >[!NOTE]
->Debe utilizar el identificador de aplicación en lugar del identificador de objeto usado en la última sección.
+>Necesita toouse Hola Id. de aplicación en lugar de Id. de objeto que utilizó en la última sección de Hola Hola.
 >
 
- ![Portal de Azure](./media/active-directory-report-api-with-certificates/application-id.png)
+ ![Azure Portal](./media/active-directory-report-api-with-certificates/application-id.png)
 
-### <a name="use-the-access-token-to-call-the-graph-api"></a>Uso del token de acceso para llamar a la API Graph
+### <a name="use-hello-access-token-toocall-hello-graph-api"></a>Usar Hola acceso toocall token hello API Graph
 
-Ya puede crear el script. A continuación se muestra un ejemplo de cómo utilizar el cmdlet Invoke-AzureADGraphAPIQuery de AzureADUtils. Este cmdlet controla los resultados de paginado múltiple y los envía luego a la canalización de PowerShell. 
+Ahora puede crear script de Hola. A continuación se muestra un ejemplo de cómo utilizar el cmdlet Invoke-AzureADGraphAPIQuery Hola de hello AzureADUtils. Este cmdlet controla los resultados de varias páginas y, a continuación, envía esos canalización de PowerShell de toohello de resultados. 
 
- ![Portal de Azure](./media/active-directory-report-api-with-certificates/script-completed.png)
+ ![Azure Portal](./media/active-directory-report-api-with-certificates/script-completed.png)
 
-Ya puede exportar a CSV y guardar en un sistema SIEM. También puede encapsular el script en una tarea programada para obtener datos de Azure AD de su inquilino periódicamente sin tener que almacenar las claves de aplicación en el código fuente. 
+Ahora está listo tooexport tooa CSV y guardar tooa SIEM sistema. También puede ajustar la secuencia de comandos en un tooget de tarea programada datos de Azure AD desde el inquilino periódicamente sin necesidad de toostore claves de aplicación en el código fuente de Hola. 
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Aspectos básicos de la administración de identidades de Azure](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)<br>
+[aspectos básicos de Hola de administración de identidades de Azure](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)<br>
 
 
 

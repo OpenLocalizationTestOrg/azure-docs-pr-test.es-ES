@@ -1,6 +1,6 @@
 ---
-title: Referencia para navegar en el portal de Azure
-description: "Conozca las distintas experiencias de usuario web del Servicio de aplicaciones entre el portal de administración y el Portal de Azure."
+title: aaaReference para navegar por hello portal de Azure
+description: "Obtenga información acerca de hello experiencias de usuario diferentes para la aplicación de servicio Web entre el portal de administración de Hola y Hola Portal de Azure"
 services: app-service
 documentationcenter: 
 author: jaime-espinosa
@@ -14,62 +14,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: jaime-espinosa
-ms.openlocfilehash: d1ef6e87d82df0840e49412154df40cc937b320c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dcf7c1fc17f9a0c31005ad0f2fd53723d2966058
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reference-for-navigating-the-azure-portal"></a>Referencia para navegar en el portal de Azure
-Sitios web de Azure ahora se llama [Aplicaciones web del Servicio de aplicaciones](http://go.microsoft.com/fwlink/?LinkId=529714). Estamos actualizando toda nuestra documentación para reflejar este cambio de nombre y ofrecer instrucciones para el Portal de Azure. Hasta que este proceso se finalice, puede usar este documento como guía para trabajar con Aplicaciones web en el Portal de Azure.
+# <a name="reference-for-navigating-hello-azure-portal"></a>Referencia para navegar por hello portal de Azure
+Sitios web de Azure ahora se llama [Aplicaciones web del Servicio de aplicaciones](http://go.microsoft.com/fwlink/?LinkId=529714). Estamos actualizando todos nuestro tooreflect documentación este nombre cambio y tooprovide las instrucciones de hello Portal de Azure. Hasta que se realiza este proceso, puede usar este documento como guía para trabajar con aplicaciones Web de hello portal de Azure.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="the-future-of-the-azure-classic-portal"></a>El futuro del Portal de Azure clásico
-Aunque observará los cambios de personalización de marca en el Portal de Azure clásico, dicho portal se está reemplazando por el Portal de Azure. Como el portal clásico va a quedar obsoleto, las novedades de desarrollo tienden a centrarse en Portal de Azure. Todas las nuevas características de Aplicaciones web se incluirán en el Portal de Azure. Comience a usar el Portal de Azure para beneficiarse de las mejores y más recientes ventajas que ofrecen las Aplicaciones web.
+## <a name="hello-future-of-hello-azure-classic-portal"></a>Hola futuro de hello Portal clásico de Azure
+Mientras que observará Hola cambios en el Portal de Azure clásico Hola de marca, ese portal está en proceso de Hola de que será reemplazada por hello Portal de Azure. Tal y como está desapareciendo portal clásico de hello, foco de hello para el nuevo desarrollo está cambiando toohello Portal de Azure. Todas las próximas características nuevas para las aplicaciones Web aparecerá en hello Portal de Azure. Empezar a usar hello Azure Portal tootake aprovechar Hola mayor que las aplicaciones Web tienen toooffer y más reciente.
 
-## <a name="layout-differences-between-the-azure-classic-portal-and-azure-portal"></a>Diferencias de diseño entre el Portal de Azure clásico y el Portal de Azure
-En el portal clásico, todos los servicios de Azure se muestran en la parte izquierda. La navegación en este portal sigue una estructura de árbol, donde se empieza a partir del servicio y se navega a cada elemento. Esta estructura funciona bien para administrar componentes independientes. Si embargo, las aplicaciones integradas en Azure constituyen una colección de servicios interconectados y la estructura de árbol no es la ideal para trabajar con este tipo de colecciones. 
+## <a name="layout-differences-between-hello-azure-classic-portal-and-azure-portal"></a>Diferencias de diseño entre Hola Portal clásico de Azure y el Portal de Azure
+En el portal clásico de hello, todos hello Azure services se muestran en hello del lado izquierdo. La navegación en el portal clásico de hello sigue una estructura de árbol, donde inicio del servicio de Hola y navegue a cada elemento. Esta estructura funciona bien para administrar componentes independientes. Si embargo, las aplicaciones integradas en Azure constituyen una colección de servicios interconectados y la estructura de árbol no es la ideal para trabajar con este tipo de colecciones. 
 
-El Portal de Azure facilita la compilación de aplicaciones completas con componentes de varios servicios. El portal se organiza en *viajes*. Un *viaje* es una serie de *hojas*, que funcionan como contenedores de los distintos componentes. Por ejemplo, configurar el escalado automático para una aplicación web es un *viaje* que requiere varias hojas, como se muestra en el ejemplo siguiente: la hoja **sitio-web** (dicho título aún no se ha actualizado para usar la nueva terminología), la hoja **Configuración** y la hoja **Escalar horizontalmente**. En el ejemplo, el ajuste de escala automático se configura para que dependa del uso de la CPU, por lo que también hay una hoja llamada **Porcentaje de CPU** . Los componentes incluidos en las *hojas* se llaman *partes* y parecen iconos. 
+Hola portal de Azure hace fácil toobuild aplicaciones-to-end con componentes de varios servicios. portal de Hola se organiza como *viajes*. A *viaje* es una serie de *hojas*, que son contenedores de hello diferentes componentes. Por ejemplo, establecer el escalado automático para una aplicación web es un *viaje* que toma varias hojas de tal y como se muestra en el siguiente ejemplo de Hola: Hola **sitio web** hoja (que título de hoja no se ha recibido toouse actualizada Hola terminología nueva), hello **configuración** hello y hoja **escalar horizontalmente** hoja. En el ejemplo de Hola, escalado automático se va a configurar toodepend en el uso de CPU, por lo que es también un **porcentaje de CPU** hoja. Hola componentes dentro de hello *hojas* se denominan *elementos*, que el aspecto iconos. 
 
 ![](./media/app-service-web-app-azure-portal/AutoScaling.png)
 
 ## <a name="navigation-example-create-a-web-app"></a>Ejemplo de navegación: crear una aplicación web
-La creación de aplicaciones web sigue siendo muy fácil. En la imagen siguiente se muestran el portal clásico y el portal en paralelo, para demostrar que el número de pasos necesarios para poner una aplicación web en marcha no ha cambiado significativamente. 
+La creación de aplicaciones web sigue siendo muy fácil. Hola siguiente imagen muestra hello clásico hello y portal portal side-by-side toodemonstrate que no ha cambiado mucho en número de Hola de pasos necesarios tooget una aplicación web de seguridad y en ejecución. 
 
 ![](./media/app-service-web-app-azure-portal/CreateWebApp.png)
 
-En el portal puede elegir entre los tipos más comunes de aplicaciones web, incluidas conocidas aplicaciones de la galería como WordPress. Para obtener una lista completa de las aplicaciones disponibles, visite [Azure Marketplace].
+En el portal de hello puede elegir entre tipos más comunes de Hola de las aplicaciones web, incluidas las aplicaciones de la Galería populares como WordPress. Para obtener una lista completa de las aplicaciones disponibles, visite hello [Azure Marketplace].
 
-Al crear una aplicación web, se especifica la dirección URL, el plan del Servicio de aplicaciones y la ubicación en el portal de la misma forma que se hacía en el clásico. 
+Cuando se crea una aplicación web, especificar la dirección URL, el plan de servicio de aplicaciones y ubicación en el portal de hello igual que lo haría en el portal clásico de Hola. 
 
 ![](./media/app-service-web-app-azure-portal/CreateWebAppSettings.png)
 
-Además, el portal permite definir otra configuración común. Por ejemplo, los [grupos de recursos](../azure-resource-manager/resource-group-overview.md) simplifican la forma de ver y administrar recursos relacionados de Azure. 
+Además, la opción Hola portal le permite definir otras opciones de configuración comunes. Por ejemplo, [grupos de recursos](../azure-resource-manager/resource-group-overview.md) hacerla toosee simple y administrar recursos relacionados con Azure. 
 
 ## <a name="navigation-example-settings-and-features"></a>Ejemplo de navegación: configuración y características
-Todas las configuraciones y características se agrupan ahora de forma lógica en una sola hoja, a partir de la cual puede navegarse.
+Todos los valores de Hola y características ahora se agrupan lógicamente en una sola hoja, desde la que puede navegar.
 
 ![](./media/app-service-web-app-azure-portal/WebAppSettings.png)
 
-Por ejemplo, puede crear dominios personalizados si hace clic en **Dominios personalizados y SSL** en la hoja **Configuración**.
+Por ejemplo, puede crear dominios personalizados haciendo clic en **los dominios personalizados y SSL** en hello **configuración** hoja.
 
 ![](./media/app-service-web-app-azure-portal/ConfigureWebApp.png)
 
-Para configurar una alerta de supervisión, haga clic en **Solicitudes y errores** y, a continuación, use **Agregar alerta**.
+tooset una alerta de supervisión, haga clic en **solicitudes y errores** y, a continuación, **Agregar alerta**.
 
 ![](./media/app-service-web-app-azure-portal/Monitoring.png)
 
-Para habilitar los diagnósticos, haga clic en **Registros de diagnóstico** en la hoja **Configuración**.
+Diagnósticos de tooenable, haga clic en **registros de diagnóstico** en hello **configuración** hoja.
 
 ![](./media/app-service-web-app-azure-portal/Diagnostics.png)
 
-Para establecer la configuración de una aplicación, haga clic en **Configuración de la aplicación** en la hoja **Configuración**. 
+Haga clic en configuración de la aplicación de tooconfigure **configuración de la aplicación** en hello **configuración** hoja. 
 
 ![](./media/app-service-web-app-azure-portal/AppSettingsPreview.png)
 
-Aparte de la marca, algunos elementos más del portal se han cambiado de nombre o bien se han agrupado de forma distinta para encontrarlos más fácilmente. Por ejemplo, a continuación se incluye una captura de pantalla de la página correspondiente a la configuración de la aplicación (**Configurar**) en el portal clásico.
+Que no sea el nombre de la marca de hello, se han cambiado de nombre o agrupan de forma diferente algunas cosas en el portal de Hola toomake se toofind más fácil de ellos. Por ejemplo, a continuación se muestra una captura de pantalla de página correspondiente de hello para la configuración de la aplicación (**configurar**) en el portal clásico de Hola.
 
 ![](./media/app-service-web-app-azure-portal/AppSettings.png)
 
@@ -78,10 +78,10 @@ Aparte de la marca, algunos elementos más del portal se han cambiado de nombre 
 [Azure Marketplace]: /marketplace/
 
 > [!NOTE]
-> Si desea empezar a trabajar con el Servicio de aplicaciones de Azure antes de inscribirse para abrir una cuenta de Azure, vaya a [Prueba del Servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde podrá crear inmediatamente una aplicación web de inicio de corta duración en el Servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
+> Si desea tooget iniciado con el servicio de aplicación de Azure antes de registrarse para una cuenta de Azure, vaya demasiado[pruebe el servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde puede crear inmediatamente una aplicación web de inicio de corta duración en el servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
 > 
 > 
 
 ## <a name="whats-changed"></a>Lo que ha cambiado
-* Para obtener una guía del cambio de Websites a App Service, consulte: [Azure App Service y su impacto en los servicios de Azure existentes](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Para una toohello guía consulte cambio con respecto a sitios Web tooApp servicio: [servicio de aplicaciones de Azure y su impacto en los servicios de Azure existente](http://go.microsoft.com/fwlink/?LinkId=529714)
 

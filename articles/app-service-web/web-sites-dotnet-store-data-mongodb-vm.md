@@ -1,6 +1,6 @@
 ---
-title: "Creación de una aplicación web de Azure que se conecta a MongoDB en una máquina virtual"
-description: "Un tutorial que le enseña a usar Git para implementar una aplicación ASP.NET en un Servicio de aplicaciones de Azure conectado a MongoDB en una máquina virtual de Azure."
+title: "aaaCreate una aplicación web en Azure que se conecta tooMongoDB que se ejecuta en una máquina virtual"
+description: "Un tutorial que le enseña cómo toouse Git toodeploy una tooAzure de aplicación ASP.NET, servicio de aplicaciones de conectado tooMongoDB en una máquina Virtual de Azure."
 tags: azure-portal
 services: app-service\web, virtual-machines
 documentationcenter: .net
@@ -15,26 +15,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: cephalin
-ms.openlocfilehash: a3f289ed9c764d0859573de4f834e042d0f103c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1f5f42c28c3c294d92c9ebf1499374931d47c010
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-web-app-in-azure-that-connects-to-mongodb-running-on-a-virtual-machine"></a>Creación de una aplicación web de Azure que se conecta a MongoDB en una máquina virtual
-Puede utilizar Git para implementar una aplicación ASP.NET en Aplicaciones web de Servicio de aplicaciones de Azure. En este tutorial, generará una aplicación de lista de tareas ASP.NET MVC front-end simple que se conecta a una base de datos MongoDB en una máquina virtual en Azure.  [MongoDB][MongoDB] es una conocida base de datos NoSQL de código abierto y alto rendimiento. Después de ejecutar y realizar la prueba de la aplicación ASP.NET en el equipo de desarrollo, cargará la aplicación en Aplicaciones web de Servicio de aplicaciones con Git.
+# <a name="create-a-web-app-in-azure-that-connects-toomongodb-running-on-a-virtual-machine"></a>Crear una aplicación web de Azure que se conecta tooMongoDB que se ejecuta en una máquina virtual
+Con Git, puede implementar un tooAzure de aplicación aplicación del servicio de aplicaciones Web ASP.NET. En este tutorial, compilará un front-end MVC de ASP.NET simple aplicación de lista de tareas que se conecta la base de datos de MongoDB de tooa ejecuta en una máquina virtual en Azure.  [MongoDB][MongoDB] es una conocida base de datos NoSQL de código abierto y alto rendimiento. Después de ejecutar y probar la aplicación de ASP.NET de hello en el equipo de desarrollo, se cargará hello tooApp de aplicación Web del servicio de aplicaciones mediante Git.
 
 > [!NOTE]
-> Si desea empezar a trabajar con el Servicio de aplicaciones de Azure antes de inscribirse para abrir una cuenta de Azure, vaya a [Prueba del Servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde podrá crear inmediatamente una aplicación web de inicio de corta duración en el Servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
+> Si desea tooget iniciado con el servicio de aplicación de Azure antes de registrarse para una cuenta de Azure, vaya demasiado[pruebe el servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde puede crear inmediatamente una aplicación web de inicio de corta duración en el servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
 > 
 > 
 
 ## <a name="background-knowledge"></a>Conocimientos previos
-El conocimiento de los siguientes aspectos es útil para este tutorial, aunque no es obligatorio:
+El conocimiento de la siguiente hello es útil para este tutorial, aunque no es necesario:
 
-* El controlador C# para MongoDB. Para más información sobre el desarrollo de aplicaciones C# en relación con MongoDB, consulte el [Centro de lenguaje CSharp de MongoDB][MongoC#LangCenter]. 
-* El marco de la aplicación web ASP.NET. Puede obtener toda la información en el [sitio web de ASP.net][ASP.NET].
-* El marco de la aplicación web ASP .NET MVC. Puede obtener toda la información en el [sitio web de ASP.NET MVC][MVCWebSite].
+* controlador de Hello C# para MongoDB. Para obtener más información sobre cómo desarrollar aplicaciones de C# con MongoDB, vea Hola MongoDB [Center de lenguaje CSharp][MongoC#LangCenter]. 
+* marco de aplicación web de Hello ASP. NET. Puede obtener información sobre esto en hello [sitio Web de ASP.net][ASP.NET].
+* marco de aplicación de web de ASP .NET MVC Hola. Puede obtener información sobre esto en hello [sitio Web de ASP.NET MVC][MVCWebSite].
 * Azure. Puede comenzar leyendo [Azure][WindowsAzure].
 
 ## <a name="prerequisites"></a>Requisitos previos
@@ -47,58 +47,58 @@ El conocimiento de los siguientes aspectos es útil para este tutorial, aunque n
 <a id="virtualmachine"></a> 
 
 ## <a name="create-a-virtual-machine-and-install-mongodb"></a>Creación de una máquina virtual e instalación de MongoDB
-En este tutorial se presupone que ha creado una máquina virtual en Azure. Después de crear la máquina virtual, tiene que instalar MongoDB en la misma:
+En este tutorial se presupone que ha creado una máquina virtual en Azure. Después de crear la máquina virtual de hello necesita tooinstall MongoDB en la máquina virtual de hello:
 
-* Para crear una máquina virtual Windows e instalar MongoDB, consulte [Instalación de MongoDB en una máquina virtual con Windows Server en Azure][InstallMongoOnWindowsVM].
+* toocreate una máquina virtual de Windows e instale MongoDB, consulte [MongoDB instalar en una máquina virtual que ejecute Windows Server en Azure][InstallMongoOnWindowsVM].
 
-Después de haber creado la máquina virtual en Azure e instalado MongoDB, asegúrese de recordar el nombre de DNS de la máquina virtual ("testlinuxvm.cloudapp.net", por ejemplo) y el puerto externo de MongoDB que especificó en el extremo.  Necesitará esta información posteriormente en el tutorial.
+Una vez haya creado la máquina virtual de Hola en Azure e instalado MongoDB, sea seguro tooremember Hola DNS nombre de máquina virtual de hello (por ejemplo, "testlinuxvm.cloudapp.net") y el puerto externo de Hola MongoDB que especificó en el punto de conexión de Hola.  Necesitará esta información más adelante en el tutorial Hola.
 
 <a id="createapp"></a>
 
-## <a name="create-the-application"></a>Creación de la aplicación
-En esta sección creará una aplicación ASP.NET denominada "My Task List" mediante Visual Studio y realizará una implementación inicial en las Aplicaciones web del Servicio de aplicaciones de Azure. Ejecutará la aplicación localmente, pero se conectará con la máquina virtual en Azure y usará la instancia de MongoDB creada ahí.
+## <a name="create-hello-application"></a>Crear aplicación hello
+En esta sección creará una aplicación de ASP.NET denominada "Mi lista de tareas" mediante el uso de Visual Studio y realizar una aplicación del servicio de aplicaciones Web de tooAzure de implementación inicial. Va a ejecutar localmente la aplicación hello, pero se conectar la máquina virtual de tooyour en Azure y utilizará la instancia de MongoDB Hola que ha creado no existe.
 
 1. En Visual Studio, haga clic en **Nuevo proyecto**.
    
     ![Página de inicio de nuevo proyecto][StartPageNewProject]
-2. En la ventana **Nuevo proyecto**, en el panel izquierdo, seleccione **Visual C#** y, a continuación, seleccione **Web**. En el panel intermedio, seleccione **Aplicación web ASP.NET**. En la parte inferior, utilice el nombre "MyTaskListApp" para el proyecto y, a continuación, haga clic en **Aceptar**
+2. Hola **nuevo proyecto** ventana, en el panel izquierdo de hello, seleccione **Visual C#**y, a continuación, seleccione **Web**. En el panel central de hello, seleccione **aplicación Web ASP.NET**. En la parte inferior de hello, denomine el proyecto "MyTaskListApp" y, a continuación, haga clic en **Aceptar**.
    
     ![Cuadro de diálogo Nuevo proyecto][NewProjectMyTaskListApp]
-3. En el cuadro de diálogo **Nuevo proyecto de ASP.NET**, seleccione **MVC** y, a continuación, haga clic en **Aceptar**.
+3. Hola **nuevo proyecto ASP.NET** cuadro de diálogo, seleccione **MVC**y, a continuación, haga clic en **Aceptar**.
    
     ![Seleccione la plantilla MVC][VS2013SelectMVCTemplate]
-4. Si ya no está registrado en Microsoft Azure, se le solicitará que inicie sesión. Siga las indicaciones para iniciar sesión en Azure.
-5. Una vez que ha iniciado sesión, puede comenzar a configurar la aplicación web de Servicio de aplicaciones. Especifique el **nombre de aplicación web**, el **plan de App Service**, **Grupo de recursos** y **Región** y, luego, haga clic en **Crear**.
+4. Si ya no se inició sesión en Microsoft Azure, es posible que toosign solicitada en. Siga toosign de mensajes de Hola en Azure.
+5. Una vez que ha iniciado sesión, puede comenzar a configurar la aplicación web de Servicio de aplicaciones. Especificar hello **nombre de aplicación Web**, **plan de servicio de aplicaciones**, **grupo de recursos**, y **región**, a continuación, haga clic en **crear**.
    
     ![](./media/web-sites-dotnet-store-data-mongodb-vm/VSConfigureWebAppSettings.png)
-6. Una vez completada la creación del proyecto, se espera para que la aplicación web que se creará en el servicio de aplicación de Azure como se indica en la ventana **Actividad de Servicio de aplicaciones de Azure** . A continuación, haga clic en **Publicar MyTaskListApp en esta aplicación web ahora**.
+6. Una vez finalizada la creación del proyecto de hello, espere hello web app toobe creado en el servicio de aplicación de Azure como se indica en hello **actividad de servicio de aplicación de Azure** ventana. A continuación, haga clic en **toothis de MyTaskListApp publicar aplicación Web ahora**.
 7. Haga clic en **Publicar**.
    
     ![](./media/web-sites-dotnet-store-data-mongodb-vm/VSPublishWeb.png)
    
-    Una vez publicada la aplicación ASP.NET de forma predeterminada en las aplicaciones web de Servicio de aplicaciones de Azure, se iniciará en el explorador.
+    Una vez que la aplicación de ASP.NET de forma predeterminada está publicada tooAzure aplicaciones de Web del servicio de aplicación, se iniciará en el Explorador de Hola.
 
-## <a name="install-the-mongodb-c-driver"></a>Instalación del controlador C# de MongoDB
-MongoDB ofrece soporte de cliente para aplicaciones C# a través de un controlador, que tiene que instalar en el equipo de desarrollo local. El controlador C# se encuentra disponible a través de NuGet.
+## <a name="install-hello-mongodb-c-driver"></a>Instalar Hola controlador MongoDB C#
+MongoDB ofrece compatibilidad de cliente para las aplicaciones de C# mediante un controlador, que debe tooinstall en el equipo de desarrollo local. Hola C# controlador está disponible a través de NuGet.
 
-Para instalar el controlador C# de MongoDB:
+Hola tooinstall controlador MongoDB C#:
 
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto **MyTaskListApp** y seleccione **Administrar NuGetPackages**.
+1. En **el Explorador de soluciones**, contextual hello **MyTaskListApp** de proyecto y seleccione **NuGetPackages administrar**.
    
     ![Administración de paquetes de NuGet][VS2013ManageNuGetPackages]
-2. En la ventana **Administrar paquetes de NuGet**, en el panel izquierdo, haga clic en **En línea**. En el cuadro **Buscar en línea** de la derecha, escriba "mongodb.driver".  Haga clic en **Instalar** para instalar el controlador.
+2. Hola **administrar paquetes de NuGet** ventana, en el panel izquierdo de hello, haga clic en **Online**. Hola **buscar en línea** en hello derecho, escriba "mongodb.driver".  Haga clic en **instalar** controlador de hello tooinstall.
    
     ![Búsqueda del controlador C# de MongoDB][SearchforMongoDBCSharpDriver]
-3. Haga clic en **Acepto** para aceptar los términos de licencia de 10gen, Inc.
-4. Haga clic en **Cerrar** una vez que se haya instalado el controlador.
+3. Haga clic en **acepto** tooaccept hello 10gen, Inc. de términos de licencia.
+4. Haga clic en **cerrar** después de que ha instalado el controlador de Hola.
     ![Se ha instalado el controlador C# de MongoDB][MongoDBCsharpDriverInstalled]
 
-El controlador C# de MongoDB está ahora instalado.  Se han agregado al proyecto referencias a las bibliotecas **MongoDB.Bson**, **MongoDB.Driver** y **MongoDB.Driver.Core**.
+Hola MongoDB C# controlador ya está instalado.  Referencias toohello **MongoDB.Bson**, **MongoDB.Driver**, y **MongoDB.Driver.Core** bibliotecas se han agregado toohello proyecto.
 
 ![Referencias del controlador C# de MongoDB][MongoDBCSharpDriverReferences]
 
 ## <a name="add-a-model"></a>Adición de un modelo
-En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** una nueva **Clase** y asígnele el nombre *TaskModel.cs*.  En *TaskModel.cs*, reemplace el código existente por el siguiente código:
+En **el Explorador de soluciones**, contextual hello *modelos* carpeta y **agregar** un nuevo **clase** y asígnele el nombre *TaskModel.cs* .  En *TaskModel.cs*, reemplace código existente de hello con hello siguiente código:
 
     using System;
     using System.Collections.Generic;
@@ -130,8 +130,8 @@ En el **Explorador de soluciones**, haga clic con el botón derecho en la carpet
         }
     }
 
-## <a name="add-the-data-access-layer"></a>Incorporación de un nivel de acceso de datos
-En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto *MyTaskListApp* y seleccione **Agregar** una **Carpeta nueva** llamada *DAL*.  Haga clic con el botón derecho en la carpeta *DAL* y use la opción **Agregar** una nueva **Clase**. Utilice el nombre de archivo de clase *Dal.cs*.  En *Dal.cs*, reemplace el código existente por el siguiente código:
+## <a name="add-hello-data-access-layer"></a>Agregar capa de acceso a datos de Hola
+En **el Explorador de soluciones**, contextual hello *MyTaskListApp* proyecto y **agregar** una **nueva carpeta** denominado *DAL*.  Menú contextual hello *DAL* carpeta y **agregar** un nuevo **clase**. Archivo de clase de nombre hello *Dal.cs*.  En *Dal.cs*, reemplace código existente de hello con hello siguiente código:
 
     using System;
     using System.Collections.Generic;
@@ -150,13 +150,13 @@ En el **Explorador de soluciones**, haga clic con el botón derecho en el proyec
             private MongoServer mongoServer = null;
             private bool disposed = false;
 
-            // To do: update the connection string with the DNS name
+            // toodo: update hello connection string with hello DNS name
             // or IP address of your server. 
             //For example, "mongodb://testlinux.cloudapp.net"
             private string connectionString = "mongodb://mongodbsrv20151211.cloudapp.net";
 
             // This sample uses a database named "Tasks" and a 
-            //collection named "TasksList".  The database and collection 
+            //collection named "TasksList".  hello database and collection 
             //will be automatically created if they don't already exist.
             private string dbName = "Tasks";
             private string collectionName = "TasksList";
@@ -166,7 +166,7 @@ En el **Explorador de soluciones**, haga clic con el botón derecho en el proyec
             {
             }
 
-            // Gets all Task items from the MongoDB server.        
+            // Gets all Task items from hello MongoDB server.        
             public List<MyTask> GetAllTasks()
             {
                 try
@@ -180,7 +180,7 @@ En el **Explorador de soluciones**, haga clic con el botón derecho en el proyec
                 }
             }
 
-            // Creates a Task and inserts it into the collection in MongoDB.
+            // Creates a Task and inserts it into hello collection in MongoDB.
             public void CreateTask(MyTask task)
             {
                 var collection = GetTasksCollectionForEdit();
@@ -239,7 +239,7 @@ En el **Explorador de soluciones**, haga clic con el botón derecho en el proyec
     }
 
 ## <a name="add-a-controller"></a>Adición de un controlador
-Abra el archivo *Controllers\HomeController.cs* en el **Explorador de soluciones** y reemplace el código existente por lo siguiente:
+Abra hello *controllers\homecontroller* en el archivo **el Explorador de soluciones** y reemplace el código existente de hello con siguiente de hello:
 
     using System;
     using System.Collections.Generic;
@@ -319,12 +319,12 @@ Abra el archivo *Controllers\HomeController.cs* en el **Explorador de soluciones
         }
     }
 
-## <a name="set-up-the-styles"></a>Configuración de estilos
-Para cambiar el título en la parte superior de la página, abra el archivo *Views\Shared\\_Layout.cshtml* en el **Explorador de soluciones** y reemplace "Application name" en el encabezado de la barra de exploración por "My Task List Application" de manera que tenga la siguiente apariencia:
+## <a name="set-up-hello-styles"></a>Establecer estilos de Hola
+título de hello toochange al principio de Hola de página de hello, abra hello *Views\Shared\\_Layout.cshtml* en el archivo **el Explorador de soluciones** y reemplace "Nombre de la aplicación" en el encabezado de la barra de navegación de Hola a "mi tarea Aplicación lista"para que tenga un aspecto similar al siguiente:
 
      @Html.ActionLink("My Task List Application", "Index", "Home", null, new { @class = "navbar-brand" })
 
-Para configurar el menú Task List, abra el archivo *\Views\Home\Index.cshtml* y reemplace el código existente por el siguiente código:
+En orden tooset menú de la lista de tareas de hello, abra hello *\Views\Home\Index.cshtml* archivo y reemplace código existente de hello con hello siguiente código:
 
     @model IEnumerable<MyTaskListApp.Models.MyTask>
 
@@ -361,7 +361,7 @@ Para configurar el menú Task List, abra el archivo *\Views\Home\Index.cshtml* y
     <div>  @Html.Partial("Create", new MyTaskListApp.Models.MyTask())</div>
 
 
-Para agregar la capacidad de crear una nueva tarea, haga clic con el botón derecho en la carpeta *Views\Home\\\* y use la opción **Agregar** para agregar una vista en **Vista**.  Asigne a la vista el nombre *Create*. Reemplace el código por lo siguiente:
+tooadd Hola capacidad toocreate una nueva tarea, haga clic en hello *Views\Home\\*  carpeta y **agregar** una **vista**.  Nombre de la vista de hello *crear*. Reemplace el código de hello con hello siguiente:
 
     @model MyTaskListApp.Models.MyTask
 
@@ -408,42 +408,42 @@ Para agregar la capacidad de crear una nueva tarea, haga clic con el botón dere
 
 ![Explorador de soluciones][SolutionExplorerMyTaskListApp]
 
-## <a name="set-the-mongodb-connection-string"></a>Establecimiento de la cadena de conexión de MongoDB
-En el **Explorador de soluciones**, abra el archivo *DAL/Dal.cs* . Busque la siguiente línea de código:
+## <a name="set-hello-mongodb-connection-string"></a>Establece la cadena de conexión de MongoDB Hola
+En **el Explorador de soluciones**, abra hello *DAL/Dal.cs* archivo. Encontrar Hola después de la línea de código:
 
     private string connectionString = "mongodb://<vm-dns-name>";
 
-Reemplace `<vm-dns-name>` por el nombre DNS de la máquina virtual que ejecuta el MongoDB que creó en el paso [Creación de una máquina virtual e instalación de MongoDB][Create a virtual machine and install MongoDB] de este tutorial.  Para buscar el nombre de DNS de la máquina virtual, vaya a Azure Portal, seleccione **Máquinas virtuales** y busque **Nombre DNS**.
+Reemplace `<vm-dns-name>` con el nombre DNS de Hola de máquina virtual de hello ejecutando MongoDB que creó en hello [crear una máquina virtual e instale MongoDB] [ Create a virtual machine and install MongoDB] paso de este tutorial.  nombre DNS de hello toofind de la máquina virtual, vaya toohello Portal de Azure, seleccione **máquinas virtuales**y busque **nombre DNS**.
 
-Si el nombre de DNS de la máquina virtual es "testlinuxvm.cloudapp.net" y MongoDB está escuchando en el puerto predeterminado 27017, la línea de la cadena de conexión del código tendrá la siguiente apariencia:
+Si el nombre DNS de Hola de máquina virtual de hello es "testlinuxvm.cloudapp.net" y MongoDB está escuchando en el puerto predeterminado de hello 27017, línea de cadena de conexión de Hola de código será similar:
 
     private string connectionString = "mongodb://testlinuxvm.cloudapp.net";
 
-Si el extremo de la máquina virtual especifica un puerto externo distinto para MongoDB, puede especificar el puerto en la cadena de conexión:
+Si el punto de conexión de máquina virtual de hello especifica otro puerto externo para MongoDB, puede especificar puerto de hello en la cadena de conexión de hello:
 
      private string connectionString = "mongodb://testlinuxvm.cloudapp.net:12345";
 
 Para más información sobre las cadenas de conexión de MongoDB, consulte [Connections][MongoConnectionStrings] (Conexiones).
 
-## <a name="test-the-local-deployment"></a>Prueba de la implementación local
-Para ejecutar la aplicación en el equipo de desarrollo, seleccione **Iniciar depuración** en el menú **Depurar** o presione **F5**. IIS Express se iniciará y se abrirá un explorador y se iniciará la página principal de la aplicación.  Puede agregar una nueva tarea, que se agregará a la base de datos de MongoDB que se ejecuta en la máquina virtual en Azure.
+## <a name="test-hello-local-deployment"></a>Probar la implementación local de Hola
+Seleccione de la aplicación en el equipo de desarrollo, toorun **Iniciar depuración** de hello **depurar** menú o presione **F5**. IIS Express se inicia y un explorador se abre e inicia la página principal de la aplicación hello.  Puede agregar una nueva tarea, que se agregará la base de datos de MongoDB toohello ejecutando en la máquina virtual de Azure.
 
 ![Aplicación My Task List][TaskListAppBlank]
 
-## <a name="publish-to-azure-app-service-web-apps"></a>Publicación de aplicaciones web del Servicio de aplicaciones de Azure
-En esta sección publicará los cambios en las aplicaciones web del Servicio de aplicaciones de Azure.
+## <a name="publish-tooazure-app-service-web-apps"></a>Publicar aplicaciones de tooAzure aplicación de servicio Web
+En esta sección publicará la aplicación del servicio de aplicaciones Web tooAzure de cambios.
 
 1. En el Explorador de soluciones, haga nuevamente clic con el botón derecho en **MyTaskListApp** y, a continuación, haga clic en **Publicar**.
 2. Haga clic en **Publicar**.
    
-    Ahora debe ver la aplicación web ejecutándose en Servicio de aplicaciones de Azure y accediendo a la base de datos MongoDB en máquinas virtuales de Azure.
+    Ahora debería ver la aplicación web se ejecuta en el servicio de aplicaciones de Azure y obtener acceso a la base de datos de MongoDB de hello en máquinas virtuales de Azure.
 
 ## <a name="summary"></a>Resumen
-Ha implementado correctamente la aplicación ASP.NET en aplicaciones web de Servicio de aplicaciones de Azure. Para ver la aplicación web:
+Ahora se ha implementado correctamente su tooAzure de aplicación aplicación del servicio de aplicaciones Web ASP.NET. aplicación web de tooview hello:
 
-1. Inicie sesión en el Portal de Azure.
+1. Inicie sesión en hello Portal de Azure.
 2. Haga clic en **Aplicaciones web**. 
-3. Seleccione la aplicación web en la lista **Aplicaciones web** .
+3. Seleccione la aplicación web en hello **aplicaciones Web** lista.
 
 Para más información sobre el desarrollo de aplicaciones C# en relación con MongoDB, consulte el [Centro de lenguaje CSharp][MongoC#LangCenter]. 
 
@@ -483,6 +483,6 @@ Para más información sobre el desarrollo de aplicaciones C# en relación con M
 
 <!-- TOC BOOKMARKS -->
 [Create a virtual machine and install MongoDB]: #virtualmachine
-[Create and run the My Task List ASP.NET application on your development computer]: #createapp
+[Create and run hello My Task List ASP.NET application on your development computer]: #createapp
 [Create an Azure web site]: #createwebsite
-[Deploy the ASP.NET application to the web site using Git]: #deployapp
+[Deploy hello ASP.NET application toohello web site using Git]: #deployapp

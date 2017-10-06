@@ -1,6 +1,6 @@
 ---
-title: "Conexión con la cuenta de Media Services mediante la API de REST | Microsoft Azure"
-description: "En este tema se muestra cómo conectarse a Servicios multimedia con la API de REST."
+title: aaaConnecting tooMedia cuenta de servicios mediante API de REST | Documentos de Microsoft
+description: "Este tema muestra cómo usar servicios de tooconnect tooMedia REST API."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,52 +14,52 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 4feb0eb81823835e8e0b701463d85b27f5598019
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1d5064a3612dc96f5c5ad910d183d84fb70a3b6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connecting-to-media-services-account-using-media-services-rest-api"></a>Conexión con la cuenta de Servicios multimedia mediante la API de REST
+# <a name="connecting-toomedia-services-account-using-media-services-rest-api"></a>Conexión tooMedia cuenta de servicios mediante la API de REST de servicios multimedia
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-connect-programmatically.md)
 > * [REST](media-services-rest-connect-programmatically.md)
 > 
 > 
 
-En este tema se describe cómo obtener una conexión mediante programación a Microsoft Azure Media Services al programar con la API de REST de Media Services.
+Este tema describe cómo tooobtain una tooMicrosoft de conexión mediante programación los servicios de multimedia de Azure cuando se programa con Hola API de REST de servicios multimedia.
 
-Hay dos elementos necesarios al obtener acceso a Servicios multimedia de Microsoft Azure: un token de acceso proporcionado por los Servicios de control de acceso (ACS) de Azure y el propio URI de Servicios multimedia. Puede usar los métodos que desee para crear estas solicitudes siempre que especifique los valores de encabezado adecuados y pase el token de acceso correctamente al llamar a Servicios multimedia.
+Se necesitan dos cosas al obtener acceso a servicios de multimedia de Microsoft Azure: un token de acceso proporcionado por servicios de Control de acceso (ACS) de Azure y Hola URI de los servicios de multimedia propio. Puede usar los métodos que quiera para crear estas solicitudes, siempre que especifique los valores de encabezado adecuados de Hola y pasar en el token de acceso de hello correctamente al llamar a en los servicios multimedia.
 
-En los pasos siguientes se describe el flujo de trabajo más común al usar la API de REST de Servicios multimedia para conectarse a Servicios multimedia:
+Hola pasos describe el flujo de trabajo de más comunes de hello al usar Hola API de REST de servicios multimedia tooconnect tooMedia Services:
 
 1. Obtención de un token de acceso 
-2. Conexión al URI de Servicios multimedia 
+2. Toohello conexión URI de servicios multimedia 
    
    > [!NOTE]
-   > Después de conectarse correctamente a https://media.windows.net, recibirá una redirección 301 que especifica otro URI de Servicios multimedia. Debe realizar las llamadas posteriores al nuevo URI.
-   > Es posible que también reciba una respuesta HTTP/1.1 200 que contenga la descripción de metadatos de la API de ODATA.
+   > Después de conectarse correctamente toohttps://media.windows.net, recibirá una redirección 301 especificando otra URI de servicios multimedia. Debe realizar las llamadas subsiguientes toohello nuevo URI.
+   > También puede recibir una respuesta HTTP/1.1 200 que contiene Hola descripción de metadatos de API de ODATA.
    > 
    > 
-3. Registre las llamadas de API posteriores en la nueva dirección URL. 
+3. Registrar su posterior llamadas a la API toohello nueva dirección URL. 
    
-    Por ejemplo, si después de intentar conectarse, obtiene lo siguiente:
+    Por ejemplo, si después de intentar tooconnect, obtuvo siguiente hello:
    
         HTTP/1.1 301 Moved Permanently
         Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
    
-    Debe registrar las llamadas posteriores de API en https://wamsbayclus001rest-hs.cloudapp.net/api/.
+    Debe publicar los siguientes API llamadas toohttps://wamsbayclus001rest-hs.cloudapp.net/api/.
 
     >[!NOTE]
-    >Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar el mismo identificador de directiva si siempre usa los mismos permisos de acceso y días, por ejemplo, directivas para localizadores que vayan a aplicarse durante mucho tiempo (directivas distintas a carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
+    >Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar hello mismo Id. de directiva si utilizas siempre Hola mismo días / acceso permisos, por ejemplo, las directivas para localizadores que son tooremain previsto en su lugar durante mucho tiempo (directivas no carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
 
 ## <a name="access-control-address"></a>Dirección de control de acceso
 La dirección de control de acceso de Media Services es https://wamsprodglobal001acs.accesscontrol.windows.net, excepto para la región del Norte de China, que es https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn.
 
 ## <a name="getting-an-access-token"></a>Obtención de un token de acceso
-Para obtener acceso a Servicios multimedia directamente a través de la API de REST, recupere un token de acceso de ACS y úselo en todas las solicitudes HTTP que realice en el servicio. Este token es similar a otros tokens proporcionados por ACS basados en notificaciones de acceso proporcionadas en el encabezado de una solicitud HTTP y que usan el protocolo OAuth v2. No es necesario ningún otro requisito previo antes de conectarse directamente a Servicios multimedia.
+Servicios de multimedia de tooaccess directamente a través de la API de REST de hello, recuperar un token de acceso de ACS y úselo durante todas las solicitudes HTTP que realice en el servicio de Hola. Este token es similar tokens tooother proporcionados por ACS basado en notificaciones de acceso proporcionadas en el encabezado de Hola de una solicitud HTTP y el uso de protocolo de hello OAuth v2. No es necesario ningún otro requisito previo antes de conectarse directamente tooMedia servicios.
 
-En el ejemplo siguiente se muestra el encabezado y el cuerpo de solicitud HTTP que se usan para recuperar un token.
+Hello en el ejemplo siguiente se muestra encabezado de solicitud HTTP de Hola y tooretrieve cuerpo usa un token.
 
 **Encabezado**:
 
@@ -74,9 +74,9 @@ En el ejemplo siguiente se muestra el encabezado y el cuerpo de solicitud HTTP q
 
 **Cuerpo**:
 
-Debe probar los valores client_id y client_secret en el cuerpo de esta solicitud; client_id y client_secret se corresponden con los valores AccountName y AccountKey, respectivamente. Servicios multimedia le proporciona estos valores al configurar su cuenta. 
+Necesita los valores de client_id y client_secret de hello tooprove en el cuerpo de Hola de esta solicitud; client_id y client_secret corresponden toohello AccountName y AccountKey valores, respectivamente. Estos valores se proporcionan tooyou con servicios multimedia al configurar la cuenta. 
 
-Tenga en cuenta que el valor AccountKey de su cuenta de Media Services debe tener codificación URL (consulte [Percent-Encoding](http://tools.ietf.org/html/rfc3986#section-2.1) cuando se usa como el valor client_secret en la solicitud de token de acceso.
+Tenga en cuenta que hello AccountKey para su cuenta de servicios multimedia debe codificarse para URL (vea [codificación porcentual](http://tools.ietf.org/html/rfc3986#section-2.1) cuando se usa como valor de client_secret hello en la solicitud de token de acceso.
 
     grant_type=client_credentials&client_id=ams_account_name&client_secret=URL_encoded_ams_account_key&scope=urn%3aWindowsAzureMediaServices
 
@@ -86,7 +86,7 @@ Por ejemplo:
     grant_type=client_credentials&client_id=amstestaccount001&client_secret=wUNbKhNj07oqjqU3Ah9R9f4kqTJ9avPpfe6Pk3YZ7ng%3d&scope=urn%3aWindowsAzureMediaServices
 
 
-En el ejemplo siguiente se muestra la respuesta HTTP que contiene el token de acceso en el cuerpo de respuesta.
+Hello en el ejemplo siguiente se muestra hello HTTP respuesta que contiene el acceso de hello token en el cuerpo de la respuesta de Hola.
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache, no-store
@@ -108,18 +108,18 @@ En el ejemplo siguiente se muestra la respuesta HTTP que contiene el token de ac
 
 
 > [!NOTE]
-> Se recomienda almacenar en memoria caché los valores "access_token" y "expires_in" en un almacenamiento externo. Los datos del token se pueden recuperar más tarde desde el almacenamiento y se pueden reutilizar en las llamadas de API de REST de Servicios multimedia. Esto es especialmente útil para escenarios en que el token se puede compartir de forma segura entre varios procesos o equipos.
+> Se recomienda toocache Hola "access_token" y "expires_in" valores tooan almacenamiento externo. datos de token de Hello más adelante pudieron recuperar desde el almacenamiento de Hola o volver a utilizar en las llamadas de API de REST de servicios multimedia. Esto es especialmente útil para escenarios donde el token de hello puede compartirse de forma segura entre varios procesos o equipos.
 > 
 > 
 
-Asegúrese de supervisar el valor "expires_in" del token de acceso y actualice las llamadas de API de REST con nuevos tokens según sea necesario.
+Asegúrese de que toomonitor Hola "expires_in" el valor de acceso de hello token y actualice las llamadas de API de REST con nuevos tokens según sea necesario.
 
-### <a name="connecting-to-the-media-services-uri"></a>Conexión al URI de Servicios multimedia
-El URI raíz de Servicios multimedia es https://media.windows.net/. Inicialmente, debe conectarse a este URI y, si obtiene una redirección 301 como respuesta, debe realizar las llamadas posteriores al nuevo URI. Además, no use ninguna lógica de redirección automática/seguimiento en las solicitudes. Los verbos HTTP y los cuerpos de solicitud no se enviarán al nuevo URI.
+### <a name="connecting-toohello-media-services-uri"></a>Toohello conexión URI de servicios multimedia
+Hola URI raíz para los servicios multimedia es https://media.windows.net/. Debe conectarse inicialmente toothis URI y, si recibe una redirección 301 en respuesta, debe realizar las llamadas subsiguientes toohello nuevo URI. Además, no use ninguna lógica de redirección automática/seguimiento en las solicitudes. Verbos HTTP y los cuerpos de solicitud no se reenviarán toohello nuevo URI.
 
-Tenga en cuenta que el URI raíz para cargar y descargar archivos de recursos es https://yourstorageaccount.blob.core.windows.net/, donde el nombre de la cuenta de almacenamiento es el mismo que usó al configurar la cuenta de Servicios multimedia.
+Tenga en cuenta que root Hola URI para cargar y descargar archivos de recursos es https://yourstorageaccount.blob.core.windows.net/ donde nombre de cuenta de almacenamiento de Hola Hola uno mismo que usó durante la configuración de la cuenta de servicios multimedia.
 
-En el ejemplo siguiente se muestra la solicitud HTTP al URI raíz de Media Services (https://media.windows.net/). La solicitud obtiene una redirección 301 como respuesta. La solicitud siguiente usa el nuevo URI (https://wamsbayclus001rest-hs.cloudapp.net/api/).     
+Hola de ejemplo siguiente se muestra cómo HTTP solicitud toohello servicios multimedia raíz URI (https://media.windows.net/). solicitud de Hello Obtiene una redirección 301 en respuesta. Hello solicitud subsiguiente usa Hola nuevo URI (https://wamsbayclus001rest-hs.cloudapp.net/api/).     
 
 **Solicitud HTTP**:
 
@@ -143,11 +143,11 @@ En el ejemplo siguiente se muestra la solicitud HTTP al URI raíz de Media Servi
     Content-Length: 164
 
     <html><head><title>Object moved</title></head><body>
-    <h2>Object moved to <a href="https://wamsbayclus001rest-hs.cloudapp.net/api/">here</a>.</h2>
+    <h2>Object moved too<a href="https://wamsbayclus001rest-hs.cloudapp.net/api/">here</a>.</h2>
     </body></html>
 
 
-**Solicitud HTTP** (con el nuevo URI):
+**Solicitud HTTP** (usando Hola nuevo URI):
 
     GET https://wamsbayclus001rest-hs.cloudapp.net/api/ HTTP/1.1
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f19258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
@@ -176,7 +176,7 @@ En el ejemplo siguiente se muestra la solicitud HTTP al URI raíz de Media Servi
 
 
 > [!NOTE]
-> Una vez que obtenga el nuevo URI, ese será el URI que debe usarse para comunicarse con Servicios multimedia. 
+> Cuando obtenga Hola nuevo URI, que es hello URI que se debe toocommunicate utilizado con servicios multimedia. 
 > 
 > 
 

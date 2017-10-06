@@ -1,6 +1,6 @@
 ---
-title: "Movimiento de datos desde orígenes de datos ODBC | Microsoft Docs"
-description: "Obtenga información sobre cómo mover datos desde almacenes de datos ODBC mediante Factoría de datos de Azure."
+title: aaaMove datos de almacenes de datos ODBC | Documentos de Microsoft
+description: "Obtenga información acerca de cómo usar Data Factory de Azure de almacenes de datos de toomove de datos ODBC."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 269d9802ca4a6a16dbf9021929fe21104cb431f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bf96e71da449313b6144bb194205c572d2ca2030
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Movimiento de datos desde almacenes de datos ODBC mediante Factoría de datos de Azure
-En este artículo se explica el uso de la actividad de copia en Azure Data Factory para mover datos desde un almacén de datos ODBC local. Se basa en la información general ofrecida en el artículo [Actividades de movimiento de datos](data-factory-data-movement-activities.md).
+Este artículo explica cómo almacenar toouse Hola actividad de copia de datos de toomove Data Factory de Azure desde un datos ODBC local. Se basa en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo, que presenta una descripción general de movimiento de datos con la actividad de copia de Hola.
 
-Puede copiar datos de un almacén de datos ODBC a cualquier almacén de datos receptor admitido. Consulte la tabla de [almacenes de datos compatibles](data-factory-data-movement-activities.md#supported-data-stores-and-formats) para ver una lista de almacenes de datos que la actividad de copia admite como receptores. Data Factory solo admite actualmente el movimiento de datos de un almacén de datos ODBC a otros almacenes de datos, pero no viceversa. 
+Puede copiar datos desde un almacén de datos ODBC datos almacén tooany admitida receptor. Para obtener una lista de datos admite los almacenes como receptores de actividad de copia de hello, vea hello [admite almacenes de datos](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabla. Factoría de datos admite actualmente solo mover tooother almacenes de datos del almacén de datos desde un datos ODBC, pero no para mover los datos de otro almacén de datos ODBC tooan de datos almacenes. 
 
 ## <a name="enabling-connectivity"></a>Habilitación de la conectividad
-El servicio Factoría de datos admite la conexión a orígenes ODBC locales mediante Data Management Gateway. Consulte el artículo sobre cómo [mover datos entre ubicaciones locales y la nube](data-factory-move-data-between-onprem-and-cloud.md) para obtener información acerca de Data Management Gateway, así como instrucciones paso a paso sobre cómo configurar la puerta de enlace. Use la puerta de enlace para conectar con un almacén de datos ODBC, incluso si está hospedado en una máquina virtual de IaaS de Azure.
+Servicio de factoría de datos admite conectar orígenes ODBC de tooon locales mediante Hola Data Management Gateway. Vea [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) toolearn artículo acerca de la puerta de enlace de datos de administración y las instrucciones paso a paso sobre cómo configurar la puerta de enlace de Hola. Usar almacén de datos ODBC de tooan tooconnect de puerta de enlace de hello incluso si está hospedado en una máquina virtual de IaaS de Azure.
 
-Puede instalar la puerta de enlace en el mismo equipo local o en la máquina virtual de Azure como almacén de datos ODBC. Sin embargo, se recomienda que instale la puerta de enlace en un equipo o máquina virtual IaaS de Azure independiente para evitar la contención de recursos y mejorar el rendimiento. Al instalar la puerta de enlace en una máquina independiente, la máquina debería poder acceder a la máquina con el almacén de datos ODBC.
+Puede instalar la puerta de enlace de Hola en hello local mismo equipo u Hola VM de Azure como almacén de datos ODBC de Hola. Sin embargo, recomendamos que instale la puerta de enlace de hello en un equipo independiente/Azure IaaS VM tooavoid contención de recursos y para mejorar el rendimiento. Cuando se instala la puerta de enlace de hello en un equipo independiente, máquina Hola debe ser tooaccess capaz de máquina de hello con almacén de datos ODBC Hola.
 
-Aparte de Data Management Gateway, también debe instalar el controlador ODBC para el almacén de datos en la máquina de puerta de enlace.
+Además de hello Data Management Gateway, también se necesita el controlador ODBC de tooinstall Hola para Hola de almacén de datos en la máquina de puerta de enlace de Hola.
 
 > [!NOTE]
 > Consulte [Solución de problemas de la puerta de enlace](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) para obtener sugerencias para solucionar problemas de conexión o puerta de enlace.
@@ -38,32 +38,32 @@ Aparte de Data Management Gateway, también debe instalar el controlador ODBC pa
 ## <a name="getting-started"></a>Introducción
 Puede crear una canalización con una actividad de copia que mueva datos desde un almacén de datos ODBC mediante diferentes herramientas o API.
 
-La manera más fácil de crear una canalización es usar el **Asistente para copia**. Consulte [Tutorial: crear una canalización con la actividad de copia mediante el Asistente para copia de Data Factory](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial rápido sobre la creación de una canalización mediante el Asistente para copiar datos.
+toocreate de manera más fácil de Hello una canalización es hello de toouse **Asistente para copiar**. Vea [Tutorial: crear una canalización mediante el Asistente para copiar](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial sobre cómo crear una canalización mediante el Asistente para datos de copia de hello rápido.
 
-También puede usar las herramientas siguientes para crear una canalización: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **plantilla de Azure Resource Manager**, **API de .NET** y **API de REST**. Consulte el [tutorial de actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso sobre cómo crear una canalización con una actividad de copia. 
+También puede usar Hola después herramientas toocreate una canalización: **portal de Azure**, **Visual Studio**, **Azure PowerShell**, **plantilla del Administrador de recursos de Azure** , **API de .NET**, y **API de REST**. Vea [tutorial de la actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso toocreate una canalización con una actividad de copia. 
 
-Tanto si usa las herramientas como las API, realice los pasos siguientes para crear una canalización que mueva datos de un almacén de datos de origen a un almacén de datos receptor: 
+Si usa herramientas de Hola o las API, realizar Hola siguiendo los pasos toocreate una canalización que mueve el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos: 
 
-1. Cree **servicios vinculados** para vincular almacenes de datos de entrada y salida a la factoría de datos.
-2. Cree **conjuntos de datos** con el fin de representar los datos de entrada y salida para la operación de copia. 
+1. Crear **servicios vinculados** factoría de datos de tooyour de almacenes de datos de entrada y salida de toolink.
+2. Crear **conjuntos de datos** toorepresent de entrada y salida la operación de copia de datos de Hola. 
 3. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. 
 
-Cuando se usa el Asistente, se crean automáticamente definiciones de JSON para estas entidades de Data Factory (servicios vinculados, conjuntos de datos y la canalización). Al usar herramientas o API (excepto la API de .NET), se definen estas entidades de Data Factory con el formato JSON.  Si desea obtener un ejemplo con definiciones de JSON para entidades de Data Factory que se utilizan con el fin de copiar los datos desde un almacén de datos ODBC, consulte la sección [Ejemplo de JSON: Copia de datos de un almacén de datos ODBC a un blob de Azure](#json-example-copy-data-from-odbc-data-store-to-azure-blob) de este artículo. 
+Cuando se utiliza el Asistente de hello, las definiciones de JSON para estas entidades de la factoría de datos (servicios vinculados, conjuntos de datos y canalización Hola) se crean automáticamente para usted. Al usar herramientas y API (excepto la API. NET), se definen estas entidades de la factoría de datos con formato JSON de Hola.  Para obtener un ejemplo con definiciones de JSON para entidades de la factoría de datos que son datos de uso toocopy desde un almacén de datos ODBC, vea [ejemplo de JSON: tooAzure Blob del almacén de datos de copia de datos ODBC](#json-example-copy-data-from-odbc-data-store-to-azure-blob) sección de este artículo. 
 
-Las secciones siguientes proporcionan detalles sobre las propiedades JSON que se usan para definir entidades de Data Factory específicas de un almacén de datos ODBC:
+Hello las secciones siguientes proporciona detalles acerca de las propiedades JSON que son el almacén de datos de uso toodefine factoría de datos entidades tooODBC específico:
 
 ## <a name="linked-service-properties"></a>Propiedades del servicio vinculado
-En la tabla siguiente se proporciona la descripción de los elementos JSON específicos del servicio vinculado de ODBC.
+Hello en la tabla siguiente proporciona la descripción del servicio JSON elementos específicos tooODBC vinculado.
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| type |La propiedad type tiene que establecerse en: **OnPremisesOdbc** |Sí |
-| connectionString |La parte de la credencial de no acceso de la cadena de conexión, así como una credencial cifrada opcional. Vea ejemplos en las secciones siguientes. |Sí |
-| credential |La parte de la credencial de acceso de la cadena de conexión especificada en formato de valor de propiedad específico del controlador. Ejemplo: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. |No |
-| authenticationType |Tipo de autenticación que se usa para conectarse al almacén de datos ODBC. Los valores posibles son: Anonymous y Basic. |Sí |
+| type |propiedad de tipo Hello debe establecerse en: **OnPremisesOdbc** |Sí |
+| connectionString |parte de credencial de acceso no Hola de cadena de conexión de Hola y opcional cifra credenciales. Vea los ejemplos de hello las secciones siguientes. |Sí |
+| credential |Hola credencial parte de acceso a cadena de conexión de hello especificada en formato de valores de propiedad específicos del controlador. Ejemplo: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. |No |
+| authenticationType |Tipo de autenticación que utiliza el almacén de datos ODBC tooconnect toohello. Los valores posibles son: Anonymous y Basic. |Sí |
 | nombre de usuario |Especifique el nombre de usuario si usa la autenticación básica. |No |
-| contraseña |Especifique la contraseña de la cuenta de usuario especificada para el nombre de usuario. |No |
-| gatewayName |Nombre de la puerta de enlace que el servicio Factoría de datos debe usar para conectarse al almacén de datos ODBC. |Sí |
+| Contraseña |Especifique la contraseña de cuenta de usuario de Hola que especificó para el nombre de usuario de Hola. |No |
+| gatewayName |Nombre de puerta de enlace de Hola Hola servicio Data Factory debe usar el almacén de datos ODBC tooconnect toohello. |Sí |
 
 ### <a name="using-basic-authentication"></a>Uso de la autenticación básica
 
@@ -85,7 +85,7 @@ En la tabla siguiente se proporciona la descripción de los elementos JSON espec
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Uso de la autenticación básica con credenciales cifradas
-Las credenciales se pueden cifrar mediante el cmdlet [New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) (versión 1.0 de Azure PowerShell) o [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (versión 0.9 o una versión anterior de Azure PowerShell).  
+Puede cifrar las credenciales de hello con hello [New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) cmdlet (1.0 versión de PowerShell de Azure) o [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 versión o una anterior de hello Azure PowerShell).  
 
 ```json
 {
@@ -124,30 +124,30 @@ Las credenciales se pueden cifrar mediante el cmdlet [New-AzureRMDataFactoryEncr
 
 
 ## <a name="dataset-properties"></a>Propiedades del conjunto de datos
-Para una lista completa de las secciones y propiedades disponibles para definir conjuntos de datos, vea el artículo [Creación de conjuntos de datos](data-factory-create-datasets.md). Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
+Para obtener una lista completa de secciones y propiedades disponibles para definir conjuntos de datos, vea hello [crear conjuntos de datos](data-factory-create-datasets.md) artículo. Las secciones como structure, availability y policy del código JSON del conjunto de datos son similares para todos los tipos de conjunto de datos (SQL Azure, blob de Azure, tabla de Azure, etc.).
 
-La sección **typeProperties** es diferente en cada tipo de conjunto de datos y proporciona información acerca de la ubicación de los datos en el almacén de datos. La sección typeProperties del conjunto de datos del tipo **RelationalTable** (que incluye el conjunto de datos ODBC) tiene las propiedades siguientes:
+Hola **typeProperties** sección es diferente para cada tipo de conjunto de datos y proporciona información acerca de la ubicación de Hola de hello datos Hola almacén de datos. sección typeProperties Hello para el conjunto de datos de tipo **RelationalTable** (que incluye el conjunto de datos ODBC) tiene Hola propiedades siguientes
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| tableName |Nombre de la tabla en el almacén de datos ODBC. |Sí |
+| tableName |Nombre de tabla de hello en el almacén de datos ODBC Hola. |Sí |
 
 ## <a name="copy-activity-properties"></a>Propiedades de la actividad de copia
-Para ver una lista completa de las secciones y propiedades disponibles para definir actividades, consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md). Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
+Para obtener una lista completa de secciones y propiedades disponibles para la definición de actividades, vea hello [crear canalizaciones](data-factory-create-pipelines.md) artículo. Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
 
-Por otra parte, las propiedades disponibles en la sección **typeProperties** de la actividad varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de orígenes y receptores.
+Propiedades disponibles en hello **typeProperties** sección de actividad de hello en hello varían con cada tipo de actividad en otra parte. Para la actividad de copia, varían en función de los tipos de Hola de orígenes y receptores.
 
-En la actividad de copia, si el origen es del tipo **RelationalSource** (que incluye ODBC), las propiedades siguientes están disponibles en la sección typeProperties:
+En la actividad de copia, cuando el origen es de tipo **RelationalSource** (que incluye ODBC), Hola propiedades siguientes está disponible en la sección typeProperties:
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| query |Utilice la consulta personalizada para leer los datos. |Cadena de consulta SQL. Por ejemplo: select * from MyTable. |Sí |
+| query |Usar datos de tooread de hello consulta personalizada. |Cadena de consulta SQL. Por ejemplo: select * from MyTable. |Sí |
 
 
-## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Ejemplo de JSON: Copia de datos de un almacén de datos ODBC a un blob de Azure
-Este ejemplo proporciona definiciones de JSON que puede usar para crear una canalización mediante [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). En ellos, se muestra cómo copiar datos de un origen ODBC a Azure Blob Storage. Sin embargo, los datos se pueden copiar en cualquiera de los receptores indicados [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) mediante la actividad de copia en Data Factory de Azure.
+## <a name="json-example-copy-data-from-odbc-data-store-tooazure-blob"></a>Ejemplo de JSON: tooAzure Blob del almacén de datos de copia de datos ODBC
+Este ejemplo proporciona definiciones de JSON que puede usar toocreate una canalización mediante [portal de Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) o [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Muestra cómo del origen de datos de toocopy desde un ODBC tooan almacenamiento de blobs de Azure. Sin embargo, los datos pueden ser tooany copiada de receptores de hello indicadas [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) utilizando Hola actividad de copia de factoría de datos de Azure.
 
-El ejemplo consta de las siguientes entidades de factoría de datos:
+ejemplo de Hola tiene Hola después de entidades de la factoría de datos:
 
 1. Un servicio vinculado del tipo [OnPremisesOdbc](#linked-service-properties).
 2. Un servicio vinculado de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -155,11 +155,11 @@ El ejemplo consta de las siguientes entidades de factoría de datos:
 4. Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. Una [canalización](data-factory-create-pipelines.md) con la actividad de copia que usa [RelationalSource](#copy-activity-properties) y [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-El ejemplo copia los datos del resultado de una consulta en un almacén de datos ODBC en un blob cada hora. Las propiedades JSON usadas en estos ejemplos se describen en las secciones que aparecen después de los ejemplos.
+ejemplo de Hola copia datos de un resultado de consulta en un blob de tooa del almacén de datos ODBC cada hora. propiedades JSON de Hello utilizadas en estos ejemplos se describen en los apartados siguientes a los ejemplos de hello.
 
-En primer lugar, configure la puerta de enlace de administración de datos. Las instrucciones se encuentran en el artículo sobre cómo [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) .
+Como primer paso, configurar la puerta de enlace de administración de datos de Hola. instrucciones de Hola se encuentran en hello [mover datos entre ubicaciones locales y en la nube](data-factory-move-data-between-onprem-and-cloud.md) artículo.
 
-**Servicio vinculado de ODBC** En este ejemplo se usa la autenticación básica. Consulte la sección [Propiedades del servicio vinculado de ODBC](#linked-service-properties) para conocer los diferentes tipos de autenticación que se pueden usar.
+**Servicio vinculado de ODBC** en este ejemplo utiliza la autenticación básica de Hola. Consulte la sección [Propiedades del servicio vinculado de ODBC](#linked-service-properties) para conocer los diferentes tipos de autenticación que se pueden usar.
 
 ```json
 {
@@ -195,9 +195,9 @@ En primer lugar, configure la puerta de enlace de administración de datos. Las 
 
 **Conjunto de datos de entrada de ODBC**
 
-El ejemplo asume que ha creado una tabla, "MyTable", en una base de datos ODBC y que contiene una columna denominada "timestampcolumn" para los datos de series temporales.
+ejemplo de Hola se da por supuesto que ha creado una tabla "MyTable" en una base de datos ODBC y contiene una columna denominada "timestampcolumn" para los datos de serie temporal.
 
-Si se establece "external": "true", se informa al servicio Data Factory que el conjunto de datos es externo a Data Factory y que no lo genera ninguna actividad de la factoría de datos.
+Establecer "externo": "true" informa a servicio de factoría de datos de hello ese conjunto de datos de hello es factoría de datos de toohello externo y no se crea una actividad de factoría de datos de Hola.
 
 ```json
 {
@@ -225,7 +225,7 @@ Si se establece "external": "true", se informa al servicio Data Factory que el c
 
 **Conjunto de datos de salida de blob de Azure**
 
-Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1). La ruta de acceso de la carpeta para el blob se evalúa dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso de la carpeta usa las partes year, month, day y hours de la hora de inicio.
+Los datos se escriben tooa nuevo blob cada hora (frecuencia: hora, intervalo: 1). ruta de acceso de carpeta de Hola para blob Hola se evalúa dinámicamente según el tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta Hola utiliza elementos de año, mes, día y horas de tiempo de inicio de Hola.
 
 ```json
 {
@@ -286,7 +286,7 @@ Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1
 
 **Actividad de copia en una canalización con origen ODBC (RelationalSource) y receptor blob (BlobSink)**
 
-La canalización contiene una actividad de copia que está configurada para usar estos conjuntos de datos de entrada y de salida y está programada para ejecutarse cada hora. En la definición de la canalización JSON, el tipo **source** se establece en **RelationalSource** y el tipo **sink** se establece en **BlobSink**. La consulta SQL especificada para la propiedad **query** selecciona los datos de la última hora que se van a copiar.
+canalización de Hello contiene una actividad de copia que esté configurado toouse estos conjuntos de datos de entrada y salidas o toorun programada cada hora. En la definición de JSON de canalización de hello, Hola **origen** tipo está establecido demasiado**RelationalSource** y **receptor** tipo está establecido demasiado**BlobSink**. consulta SQL Hola especificada para hello **consulta** propiedad selecciona datos Hola Hola más allá de hora toocopy.
 
 ```json
 {
@@ -334,21 +334,21 @@ La canalización contiene una actividad de copia que está configurada para usar
 }
 ```
 ### <a name="type-mapping-for-odbc"></a>Asignación de tipos para ODBC
-Como se mencionó en el artículo sobre [actividades del movimiento de datos](data-factory-data-movement-activities.md) , la actividad de copia realiza conversiones automáticas de los tipos de origen a los tipos de receptor con el siguiente enfoque de dos pasos:
+Como se mencionó en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo, actividad de copia realiza conversiones de tipos automática de tipos de toosink de tipos de origen con hello enfoque de dos pasos:
 
-1. Conversión de tipos de origen nativos al tipo .NET
-2. Conversión de tipo .NET al tipo del receptor nativo
+1. Convertir del tipo de origen nativo tipos too.NET
+2. Convertir el tipo de receptor de toonative de tipo .NET
 
-Al mover datos desde almacenes de datos ODBC, los tipos de datos ODBC se asignan a tipos de .NET, tal y como se mencionó en el tema [Asignar tipos de datos ODBC](https://msdn.microsoft.com/library/cc668763.aspx) .
+Al mover los datos de almacenes de datos ODBC, tipos de datos ODBC son tipos de too.NET asignado como se mencionó en hello [asignaciones de tipos de datos de ODBC](https://msdn.microsoft.com/library/cc668763.aspx) tema.
 
-## <a name="map-source-to-sink-columns"></a>Asignación de columnas de origen a columnas de receptor
-Para obtener más información sobre la asignación de columnas del conjunto de datos de origen a las del conjunto de datos receptor, consulte [Asignación de columnas de conjunto de datos de Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-toosink-columns"></a>Asignar columnas de origen toosink
+toolearn acerca de la asignación de columnas en toocolumns de conjunto de datos de origen en el conjunto de datos del receptor, consulte [asignar columnas de conjunto de datos de Data Factory de Azure](data-factory-map-columns.md).
 
 ## <a name="repeatable-read-from-relational-sources"></a>Lectura repetible de orígenes relacionales
-Cuando se copian datos desde almacenes de datos relacionales, hay que tener presente la repetibilidad para evitar resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la directiva de reintentos para un conjunto de datos con el fin de que un segmento se vuelva a ejecutar cuando se produce un error. Cuando se vuelve a ejecutar un segmento, debe asegurarse de que los mismos datos se lean sin importar el número de ejecuciones. Consulte [Lectura repetible de orígenes relacionales](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Al copiar datos de almacenes de datos relacionales, tenga repetibilidad en mente tooavoid resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la directiva de reintentos para un conjunto de datos con el fin de que un segmento se vuelva a ejecutar cuando se produce un error. Cuando se vuelve a ejecutar un segmento de cualquier manera, debe toomake seguro de que Hola los mismos datos no se lee importa cómo se ejecuta muchas veces un segmento. Consulte [Lectura repetible de orígenes relacionales](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="ge-historian-store"></a>Almacén GE Historian
-Cree un servicio vinculado ODBC para vincular un almacén de datos [GE Proficy Historian (ahora GE Historian)](http://www.geautomation.com/products/proficy-historian) a Data Factory de Azure, tal y como se muestra en el ejemplo siguiente:
+Crear un toolink de servicio ODBC vinculada una [Proficy en GE historia (ahora en historia GE)](http://www.geautomation.com/products/proficy-historian) tooan factoría de datos de Azure del almacén de datos tal y como se muestra en el siguiente ejemplo de Hola:
 
 ```json
 {
@@ -358,7 +358,7 @@ Cree un servicio vinculado ODBC para vincular un almacén de datos [GE Proficy H
         "type": "OnPremisesOdbc",
         "typeProperties":
         {
-            "connectionString": "DSN=<name of the GE Historian store>",
+            "connectionString": "DSN=<name of hello GE Historian store>",
             "gatewayName": "<gateway name>",
             "authenticationType": "Basic",
             "userName": "<user name>",
@@ -368,24 +368,24 @@ Cree un servicio vinculado ODBC para vincular un almacén de datos [GE Proficy H
 }
 ```
 
-Debe instalar Data Management Gateway en un equipo local y registrar la puerta de enlace con el portal. La puerta de enlace instalada en su equipo local utiliza el controlador ODBC para que GE Historian se conecte al almacén de datos GE Historian. Por lo tanto, instale el controlador si no está instalado aún en el equipo de puerta de enlace. Consulte la sección [Habilitación de la conectividad](#enabling-connectivity) para más información.
+Instalar Data Management Gateway en un equipo local y registrar la puerta de enlace de hello con el portal de Hola. puerta de enlace de Hello instalada en el equipo local utiliza el controlador ODBC de Hola para en historia GE tooconnect toohello almacén de datos en historia GE. Por lo tanto, instalar a controladores de hello si aún no está instalado en la máquina de puerta de enlace de Hola. Consulte la sección [Habilitación de la conectividad](#enabling-connectivity) para más información.
 
-Antes de usar el almacén GE Historian en una solución de Data Factory, compruebe si la puerta de enlace puede conectarse al almacén de datos mediante instrucciones en la sección siguiente.
+Antes de usar hello en historia GE almacenar en una solución de factoría de datos, compruebe si la puerta de enlace de hello puede conectarse toohello almacén de datos siguiendo las instrucciones en la sección siguiente de Hola.
 
-Lea el artículo desde el principio para obtener información general detallada de uso de almacenes de datos ODBC como almacenes de datos de origen en una operación de copia.  
+Leer el artículo de Hola desde el principio de Hola para obtener una descripción detallada del uso de datos ODBC se almacena como almacenes de datos de origen en una operación de copia.  
 
 ## <a name="troubleshoot-connectivity-issues"></a>Solución de problemas de conectividad
-Use la pestaña **Diagnósticos** del **Administrador de configuración de Data Management Gateway**para solucionar problemas de conexión.
+problemas de conexión de tootroubleshoot, usar hello **diagnósticos** ficha de **Administrador de configuración de Data Management Gateway**.
 
-1. Inicie el **Administrador de configuración de Data Management Gateway**. Puede ejecutar C:\Archivos de programa\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe directamente, o bien buscar **Gateway** para encontrar un vínculo a la aplicación **Microsoft Data Management Gateway**, tal y como se muestra en la imagen siguiente.
+1. Inicie el **Administrador de configuración de Data Management Gateway**. Se puede ejecutar para la búsqueda de "C:\Program Files\Microsoft datos administración Gateway\1.0\Shared\ConfigManager.exe" directamente (o) **puerta de enlace** toofind un vínculo demasiado**Microsoft Data Management Gateway** aplicación tal como se muestra en hello después de la imagen.
 
     ![Buscar puerta de enlace](./media/data-factory-odbc-connector/search-gateway.png)
-2. Cambie a la pestaña **Diagnósticos** .
+2. Cambiar toohello **diagnósticos** ficha.
 
     ![Diagnóstico de puerta de enlace](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
-3. Seleccione el **tipo** de almacén de datos (el servicio vinculado).
-4. Especifique la **autenticación** y escriba las **credenciales**, o bien escriba la **cadena de conexión** que se usa para conectarse al almacén de datos.
-5. Haga clic en **Probar conexión** para probar la conexión con el almacén de datos.
+3. Seleccione hello **tipo** (servicio vinculado) del almacén de datos.
+4. Especifique **autenticación** y escriba **credenciales** (o) Especifique **cadena de conexión** que es el almacén de datos de uso tooconnect toohello.
+5. Haga clic en **Probar conexión** tootest Hola conexión toohello almacén de datos.
 
 ## <a name="performance-and-tuning"></a>Rendimiento y optimización
-Consulte [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) para más información sobre los factores clave que afectan al rendimiento del movimiento de datos (actividad de copia) en Azure Data Factory y las diversas formas de optimizarlo.
+Vea [guía para la optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) toolearn acerca de la clave de factores que afectan al rendimiento de movimiento de datos (actividad de copia) en la factoría de datos de Azure y toooptimize de diversas maneras.

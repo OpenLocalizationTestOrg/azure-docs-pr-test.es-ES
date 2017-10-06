@@ -1,12 +1,12 @@
 ---
-title: "Conexión de Intel Edison (Node) a Azure IoT: Lección 3: Creación de Function App | Microsoft Docs"
-description: La instancia de Azure Function App escucha los eventos de Azure IoT Hub, procesa los mensajes entrantes y los escribe en Azure Table Storage.
+title: "Conectar Intel Edison (nodo) tooAzure IoT - lección 3: crear la aplicación de la función | Documentos de Microsoft"
+description: "aplicación de Azure función Hello escucha eventos de centro de IoT tooAzure, procesa los mensajes entrantes y los escribe tooAzure el almacenamiento de tabla."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: almacenar datos en la nube, datos almacenados en la nube, servicio en la nube de iot
+keywords: almacenar datos en la nube de hello, los datos almacenados en la nube, el servicio de nube de iot
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
 ms.assetid: 37ee5962-95ce-40e8-8162-17e735eaec21
@@ -17,30 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 6ada1cbbb560f1373346eca561dceb28d7ca7242
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ea0a4cdf978158d70e47eaed57e3de378b638d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-function-app-and-azure-storage-account"></a>Creación de una instancia de Azure Function App y una cuenta de Azure Storage
-[Azure Functions](../../articles/azure-functions/functions-overview.md) es una solución que permite ejecutar *funciones* (pequeños fragmentos de código) en la nube fácilmente. Una aplicación de Azure Function hospeda la ejecución de sus funciones en Azure.
+[Las funciones de Azure](../../articles/azure-functions/functions-overview.md) es una solución para ejecutar fácilmente *funciones* (pequeños fragmentos de código) en la nube de Hola. Una aplicación de Azure función hospeda ejecución Hola de las funciones de Azure.
 
 ## <a name="what-will-you-do"></a>Qué hará
-Va a utilizar una plantilla de Azure Resource Manager para crear una instancia de Azure Function App y una cuenta de Azure Storage. La instancia de Azure Function App escucha los eventos de Azure IoT Hub, procesa los mensajes entrantes y los escribe en Azure Table Storage. La cuenta de almacenamiento se usa para leer las copias conservadas de mensajes de la tabla de Azure. Si tiene problemas, busque soluciones en [esta página][troubleshooting].
+Utilice un toocreate de plantilla de Azure Resource Manager una aplicación de Azure de función y una cuenta de almacenamiento de Azure. aplicación de Azure función Hello escucha eventos de centro de IoT tooAzure, procesa los mensajes entrantes y los escribe tooAzure el almacenamiento de tabla. cuenta de almacenamiento Hello se usa una para su lectura Hola conserva copias de los mensajes de la tabla de Azure. Si tiene problemas, buscar soluciones en hello [solución de problemas de página][troubleshooting].
 
 ## <a name="what-will-you-learn"></a>Qué aprenderá
 En este artículo, aprenderá lo siguiente:
-* Cómo utilizar [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) para implementar recursos de Azure.
-* Cómo utilizar una instancia de Azure Function App para procesar mensajes de IoT Hub y escribirlos en una tabla de Azure Table Storage.
+* Cómo toouse [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) toodeploy Azure recursos.
+* ¿Cómo toouse un Azure función tooprocess aplicación mensajes del centro de IoT y escribirlos tooa tabla en el almacenamiento de tabla de Azure.
 
 ## <a name="what-do-you-need"></a>Qué necesita
 Debe haber completado correctamente los siguientes tutoriales:
 - [Introducción a Intel Edison][get-started-with-your-intel-edison]
-- [Creación de un centro de IoT Hub de Azure][create-your-azure-iot-hub]
+- [Create your Azure IoT hub][create-your-azure-iot-hub] (Creación de un Azure IoT Hub)
 
-## <a name="open-the-sample-app"></a>Apertura de la aplicación de ejemplo
-Abra el proyecto de ejemplo en Visual Studio Code ejecutando los comandos siguientes:
+## <a name="open-hello-sample-app"></a>Aplicación de ejemplo de Hola abierto
+Abra el proyecto de ejemplo de Hola en código de Visual Studio mediante la ejecución de hello siguientes comandos:
 
 ```bash
 cd Lesson3
@@ -49,32 +49,32 @@ code .
 
 ![Estructura del repositorio][repo-structure]
 
-* El archivo de la subcarpeta `app` es el archivo de origen de la clave. Este archivo de origen contiene el código para enviar un mensaje 20 veces en su instancia de IoT Hub y hacer parpadear el LED para cada mensaje que envía.
-* El archivo `arm-template.json` es una plantilla de Azure Resource Manager que contiene una instancia de Azure Function App y una cuenta de Azure Storage.
-* El archivo `arm-template-param.json` es el archivo de configuración que utiliza la plantilla de Azure Resource Manager.
-* La subcarpeta `ReceiveDeviceMessages` contiene el código de Node.js para la función de Azure.
+* archivo de Hello en hello `app` subcarpeta es el archivo de origen de la clave de Hola. Este archivo de origen contiene código de hello toosend un mensaje 20 veces tooyour IoT hub- and blink Hola LED para cada mensaje que envía.
+* Hola `arm-template.json` archivo es hello Azure Resource Manager plantilla que contiene una aplicación de Azure de función y una cuenta de almacenamiento de Azure.
+* Hola `arm-template-param.json` archivo es el archivo de configuración de hello utilizado por la plantilla de hello Azure Resource Manager.
+* Hola `ReceiveDeviceMessages` subcarpeta contiene código de Node.js de Hola para hello Azure función.
 
 ## <a name="configure-azure-resource-manager-templates-and-create-resources-in-azure"></a>Configuración de las plantillas de Azure Resource Manager y creación de recursos de Azure
-Actualice el archivo `arm-template-param.json` en Visual Studio Code.
+Hola de actualización `arm-template-param.json` archivo de código de Visual Studio.
 
 ![Parámetros de plantilla de Azure Resource Manager][arm-template-parameters]
 
 * Sustituya **[su nombre de centro de IoT Hub]** por **{mi nombre de centro}** que especificó cuando [creó el centro de IoT Hub y registró Intel Edison][created-your-iot-hub-and-registered-intel-edison].
-* Reemplace **[prefix string for new resources]** por el prefijo que desee. El prefijo garantiza que el nombre del recurso sea globalmente único para evitar conflictos. No utilice guiones ni números al comienzo del prefijo.
+* Reemplace **[prefix string for new resources]** por el prefijo que desee. prefijo de Hola garantiza que el nombre de recurso hello es globalmente único tooavoid conflicto. No use un guión o un número inicial de prefijo de Hola.
 
-Después de actualizar el archivo `arm-template-param.json`, implemente los recursos en Azure ejecutando el comando siguiente:
+Después de actualizar hello `arm-template-param.json` de archivos, implementar Hola recursos tooAzure ejecutando Hola siguiente comando:
 
 ```bash
 az group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
 ```
 
-Este proceso tarda aproximadamente cinco minutos en crear estos recursos. Mientras espera a que se ejecute la creación de recursos, puede pasar al siguiente artículo.
+Tarda aproximadamente cinco minutos toocreate estos recursos. Mientras la creación de recursos de hello está en curso, puede mover en el artículo siguiente de toohello.
 
 ## <a name="summary"></a>Resumen
-Ha creado una instancia de Azure Function App para procesar mensajes de IoT Hub, así como una cuenta de Azure Storage para almacenar estos mensajes. Ahora puede implementar y ejecutar el ejemplo para enviar mensajes de dispositivo a nube en Edison.
+Ha creado su tooprocess de aplicación de Azure función mensajes de centro de IoT y el almacenamiento de Azure cuenta toostore estos mensajes. Ahora puede implementar y ejecutar mensajes de dispositivo a la nube de toosend de ejemplo de Hola en Edison.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Ejecución de una aplicación de ejemplo para enviar mensajes de dispositivo a nube en Intel Edison][send-device-to-cloud-messages]
+[Ejecutar un toosend de la aplicación de ejemplo mensajes del dispositivo a la nube en Intel Edison][send-device-to-cloud-messages].
 <!-- Images and links -->
 
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md

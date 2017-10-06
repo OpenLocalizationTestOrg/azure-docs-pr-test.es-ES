@@ -1,6 +1,6 @@
 ---
-title: "Invalidación del comportamiento HTTP mediante el motor de reglas de la red CDN de Azure | Microsoft Docs"
-description: "El motor de reglas permite personalizar cómo la red CDN de Azure controla las solicitudes HTTP, como el bloqueo de la entrega de determinados tipos de contenido, la definición de una directiva de almacenamiento en caché y la modificación de encabezados HTTP."
+title: comportamiento de aaaOverride HTTP mediante el motor de reglas de Azure CDN Hola | Documentos de Microsoft
+description: "motor de reglas de Hello permite toocustomize cómo se administran las solicitudes HTTP CDN de Azure, como el bloqueo de entrega de Hola de determinados tipos de contenido, definir una directiva de almacenamiento en caché y modificar los encabezados HTTP."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: abfe283476206b181018d187675b47112dc5ad2f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dd7194be9dbda43180c64568d3e1f52c5c513a7e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>Invalidación del comportamiento HTTP mediante el motor de reglas de la red CDN de Azure
+# <a name="override-http-behavior-using-hello-azure-cdn-rules-engine"></a>Invalidar el comportamiento HTTP mediante el motor de reglas de Azure CDN Hola
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Información general
-El motor de reglas le permite personalizar cómo se controlan las solicitudes HTTP, tales como el bloqueo de la entrega de determinados tipos de contenido, la definición de una directiva de almacenamiento en caché y la modificación de encabezados HTTP.  En este tutorial se mostrará la creación de una regla que cambiará el comportamiento del almacenamiento en caché de los recursos de la red CDN.  También hay contenido de vídeo en la sección "[Consulte también](#see-also)".
+motor de reglas de Hello permite toocustomize cómo se administran las solicitudes HTTP, por ejemplo, bloqueo de entrega de Hola de determinados tipos de contenido, definir una directiva de almacenamiento en caché y modificar los encabezados HTTP.  Este tutorial mostrará cómo crear una regla que cambiará el comportamiento de los activos de la red CDN de almacenamiento en caché de Hola.  También hay contenido de vídeo en hello "[Vea también](#see-also)" sección.
 
    > [!TIP] 
-   > Para consultar la sintaxis de forma detallada, vea la [Referencia del motor de reglas](cdn-rules-engine-reference.md).
+   > Para una sintaxis de toohello de referencia de forma detallada, vea [referencia de motor de reglas](cdn-rules-engine-reference.md).
    > 
 
 
 ## <a name="tutorial"></a>Tutorial
-1. En la hoja de perfil de CDN, haga clic en el botón **Administrar** .
+1. En la hoja de perfil CDN Hola, haga clic en hello **administrar** botón.
    
     ![Botón de administración de hoja de perfil de red CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
    
-    Se abre el portal de administración de CDN.
-2. Haga clic en la pestaña **HTTP Large** (HTTP grande) y, después, en **Motor de reglas**.
+    se abre el portal de administración de red CDN Hola.
+2. Haga clic en hello **HTTP grandes** ficha, seguido de **motor de reglas de**.
    
     Se muestran las opciones para una nueva regla.
    
     ![Opciones de nueva regla de CDN](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > El orden en que se muestran varias reglas afecta a la manera en que se controlan. Una regla posterior puede invalidar las acciones especificadas por una regla anterior.
+   > orden de Hello en el que se muestran varias reglas afecta a cómo se controlan. Una regla subsiguientes puede invalidar las acciones de hello especificadas por una regla anterior.
    > 
    > 
-3. Escriba un nombre en el cuadro de texto **Nombre/Descripción** .
-4. Identifique el tipo de solicitudes al que se aplicará la regla.  De forma predeterminada, se selecciona la condición de coincidencia **Siempre** .  Usará **Siempre** para este tutorial, así pues, deje esa opción seleccionada.
+3. Escriba un nombre en hello **nombre / descripción** cuadro de texto.
+4. Identificar el tipo de saludo de solicitudes Hola regla se aplicará a.  De forma predeterminada, Hola **siempre** está seleccionada la condición de coincidencia.  Usará **Siempre** para este tutorial, así pues, deje esa opción seleccionada.
    
    ![Condición de coincidencia de red CDN](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!TIP]
-   > Hay muchos tipos de condiciones de coincidencia disponibles en la lista desplegable.  Haga clic en el icono de información azul de la izquierda de la condición de coincidencia para ver una explicación de la condición seleccionada actualmente en detalle.
+   > Hay muchos tipos de coincidencia de las condiciones disponibles en la lista desplegable de Hola.  Al hacer clic en hello azul icono informativo toohello izquierda de condición de coincidencia de Hola explicará condición Hola actualmente seleccionado en detalle.
    > 
-   >  Para obtener la lista completa de las expresiones condicionales en detalle, consulte las [Expresiones condicionales del motor de reglas](cdn-rules-engine-reference-match-conditions.md).
+   >  Para hello lista completa de las expresiones condicionales en detalle, consulte [expresiones condicionales de motor de reglas](cdn-rules-engine-reference-match-conditions.md).
    >  
-   > Para obtener la lista completa de las condiciones de coincidencia en detalle, consulte las [Condiciones de coincidencia del motor de reglas](cdn-rules-engine-reference-match-conditions.md).
+   > Para hello lista completa de las condiciones de coincidencia de forma detallada, consulte [coincide con condiciones del motor de reglas](cdn-rules-engine-reference-match-conditions.md).
    > 
    > 
-5. Haga clic en el botón **+** que está al lado de **Características** para agregar una nueva característica.  En la lista desplegable de la izquierda, seleccione **Aplicar Max-Age interno**.  En el cuadro de texto que aparece, escriba **300**.  Deje los valores predeterminados restantes.
+5. Haga clic en hello  **+**  aparece al lado demasiado**características** tooadd una nueva característica.  En la lista desplegable de Hola Hola izquierda, seleccione **Force interno Max-Age**.  En el cuadro de texto hello que aparece, escriba **300**.  Deje Hola restantes valores predeterminados.
    
    ![Característica de CDN](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
-   > Como con las condiciones de coincidencia, haga clic en el icono informativo azul de la izquierda de la nueva característica para ver la información sobre esta característica.  In the case of **Force Internal Max-Age**, vamos a invalidar los encabezados **Cache-Control** y **Expires** del recurso para controlar en qué momento el nodo del borde CDN va a actualizar el recurso desde el origen.  Nuestro ejemplo de 300 segundos significa que el nodo perimetral de CDN almacenará en caché el activo durante 5 minutos antes de actualizar el activo desde su origen.
+   > Como con las condiciones de coincidencia, haga clic en hello azul icono informativo toohello dejó de hello nueva característica mostrará información sobre esta característica.  En caso de hello de **Force interno Max-Age**, nos estamos reemplazar del recurso de hello **Cache-Control** y **Expires** encabezados toocontrol al nodo del borde CDN Hola actualizará Hola activo a partir de origen de Hola.  Nuestro ejemplo de 300 segundos significa el nodo del borde CDN Hola almacenarán en caché activo de Hola durante 5 minutos antes de actualizar los activos de Hola desde su origen.
    > 
-   > Para obtener la lista completa de las características en detalle, consulte la [Información detallada de las características del motor de reglas](cdn-rules-engine-reference-features.md).
+   > Para hello lista completa de características de forma detallada, consulte [detalles de característica de motor de reglas](cdn-rules-engine-reference-features.md).
    > 
    > 
-6. Haga clic en el botón **Agregar** para guardar la nueva regla.  La nueva regla ahora está pendiente de aprobación. Una vez que se haya aprobado, el estado cambiará de **Pending XML** (XML pendiente) a **Active XML** (XML activo).
+6. Haga clic en hello **agregar** nueva regla de botón toosave Hola.  nueva regla de Hello ahora está en espera de aprobación. Una vez aprobada, estado de hello cambiará de **XML pendiente** demasiado**XML Active**.
    
    > [!IMPORTANT]
-   > Los cambios de las reglas pueden tardar hasta 90 minutos en propagarse a través de la red CDN.
+   > Cambios de reglas pueden tardar too90 minutos toopropagate a través de la red CDN Hola.
    > 
    > 
 
@@ -83,5 +83,5 @@ El motor de reglas le permite personalizar cómo se controlan las solicitudes HT
 * [Condiciones de coincidencia del motor de reglas](cdn-rules-engine-reference-match-conditions.md)
 * [Expresiones condicionales del motor de reglas](cdn-rules-engine-reference-conditional-expressions.md)
 * [Funciones del motor de reglas](cdn-rules-engine-reference-features.md)
-* [Invalidación del comportamiento HTTP predeterminado mediante el motor de reglas](cdn-rules-engine.md)
+* [Invalidar el comportamiento HTTP predeterminado mediante el motor de reglas de Hola](cdn-rules-engine.md)
 * [Azure Fridays: Azure CDN's powerful new Premium Features](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (Azure Fridays: Características nuevas y eficaces de la edición Premium de CDN de Azure) (vídeo)

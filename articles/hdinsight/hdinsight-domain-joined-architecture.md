@@ -1,6 +1,6 @@
 ---
-title: Arquitectura Azure HDInsight unida a un dominio | Microsoft Docs
-description: "Aprenda a planear clústeres de HDInsight unidos a un dominio."
+title: Unido aaaDomain arquitectura de HDInsight de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooplan Unidos al dominio HDInsight."
 services: hdinsight
 documentationcenter: 
 author: saurinsh
@@ -16,70 +16,70 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: saurinsh
-ms.openlocfilehash: 7e34f47f09466a40993b4cc797ff1cad2bdaeafe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c3ecedf3739b4f8fa54160225be9c1d6e2ca6cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Planeamiento de clústeres de Hadoop unidos a un dominio de Azure en HDInsight
 
-Tradicionalmente, Hadoop es un clúster de un solo usuario. Es apropiado para la mayor parte de las empresas que tienen equipos de aplicaciones pequeños que generan grandes cargas de trabajo de datos. A medida que aumenta la popularidad de Hadoop, muchas empresas empiezan a usar un modelo en el que los equipos de TI administran clústeres y varios equipos de aplicaciones comparten los clústeres. Por consiguiente, las funcionalidades que implican a clústeres de varios usuarios se encuentran entre las más solicitadas en HDInsight de Azure.
+Hello Hadoop tradicional es un clúster de usuario único. Es apropiado para la mayor parte de las empresas que tienen equipos de aplicaciones pequeños que generan grandes cargas de trabajo de datos. A medida que aumenta la popularidad de Hadoop, muchas empresas empiezan a usar un modelo en el que los equipos de TI administran clústeres y varios equipos de aplicaciones comparten los clústeres. Por lo tanto, las funcionalidades de clústeres multiusuario que implica que se encuentran entre Hola más solicitadas funcionalidades de HDInsight de Azure.
 
-En lugar de generar su propia autenticación y autorización multiusuario, HDInsight usa el proveedor de identidades más popular: Active Directory (AD). La eficaz funcionalidad de seguridad de AD se puede usar para administrar la autorización multiusuario en HDInsight. Mediante la integración de HDInsight con AD, se puede comunicar con los clústeres mediante sus credenciales de AD. HDInsight asigna un usuario de AD a un usuario de Hadoop local, de modo que todos los servicios que se ejecutan en HDInsight (Ambari, servidor de Hive, Ranger, servidor Thrift de Spark, etc.) funcionan perfectamente para el usuario autenticado.
+En lugar de generar su propia autenticación multiusuario y la autorización, HDInsight se basa en el proveedor de identidades de más popular de hello--Active Directory (AD). funcionalidad de seguridad eficaz de Hello en AD puede ser usado toomanage autorización multiusuario en HDInsight. Mediante la integración de HDInsight con AD, puede comunicarse con los clústeres de hello mediante las credenciales de AD. HDInsight asigna un usuario tooa local Hadoop usuario de AD, por lo que todos los servicios que se ejecutan en HDInsight de Hola (Ambari, Hive thrift de Spark de servidor, Cazador, servidor etc.) funcionan sin problemas para usuario autenticado de Hola.
 
 ## <a name="integrate-hdinsight-with-ad-and-ad-on-iaas-vm"></a>Integración de HDInsight con AD y AD en la máquina virtual de IaaS
 
-Al integrar HDInsight con Azure AD o AD, los nodos del clúster de HDInsight son unidos a un dominio para un dominio. HDInsight crea entidades de servicio para los servicios de Hadoop que se ejecutan en el clúster y las coloca en una unidad organizativa (OU) especificada de Azure AD o AD en una máquina virtual de IaaS. HDInsight también crea asignaciones de DNS inverso en el dominio para las direcciones IP de los nodos que se unen al dominio.
+Mediante la integración de HDInsight con Azure AD o AD en VM de Iaas, nodos de clúster de HDInsight de hello son dominio tooa Unidos a un dominio. HDInsight crea a entidades de servicio para hello Hadoop servicios que se ejecutan en el clúster de Hola y las coloca en una unidad organizativa especificada (OU) en Azure AD o AD en VM de IaaS. HDInsight también crea asignaciones de DNS inversas en dominio de Hola para hello direcciones IP de los nodos de Hola que están toohello Unidos a un dominio.
 
-Esta configuración se puede lograr mediante el uso de varias arquitecturas. Puede elegir entre las siguientes opciones.
+Esta configuración se puede lograr mediante el uso de varias arquitecturas. Puede elegir entre Hola después de arquitecturas.
 
 **HDInsight integrado con AD que se ejecuta en Azure IaaS**
 
-Esta es la arquitectura más sencilla para la integración de HDInsight con Active Directory. El controlador de dominio de AD se ejecuta en una máquina virtual, o en varias, en Azure. Normalmente, estas máquinas virtuales se encuentran en una red virtual. Configure otra red virtual para el clúster de HDInsight. Para que HDInsight tenga una línea de visión a Active Directory, es preciso emparejar estas redes virtuales mediante el uso del [emparejamiento de VNet a VNet](../virtual-network/virtual-network-create-peering.md). Si crea el Active Directory en ARM, a continuación, puede crear el Active Directory y HDInsight en la misma red virtual y no tiene que hacer el emparejamiento. 
+Se trata de una arquitectura más sencilla de Hola para integrar HDInsight con Active Directory. Hola controlador de dominio de AD se ejecuta en uno (o varias) máquinas virtuales (VM) en Azure. Normalmente, estas máquinas virtuales se encuentran en una red virtual. Configure otra red virtual de clúster de HDInsight Hola. Para un directorio de línea de visión tooActive de HDInsight toohave, necesita toopeer estas redes virtuales mediante el uso de [emparejamiento de VNet a VNet](../virtual-network/virtual-network-create-peering.md). Si crea Hola Active Directory en ARM, a continuación, puede crear Hola Active Directory y HDInsight en Hola misma red virtual y no es necesario toodo emparejamiento. 
 
 ![Topología de clúster de HDInsight de unión a dominio](./media/hdinsight-domain-joined-architecture/hdinsight-domain-joined-architecture_1.png)
 
 > [!NOTE]
-> En esta arquitectura, Azure Data Lake Store no se puede usar con el clúster de HDInsight.
+> En esta arquitectura, no puede usar el almacén de Azure Data Lake con clúster de HDInsight Hola.
 
 
 Requisitos previos de Active Directory:
 
-* Se debe crear una [unidad organizativa](../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md), en la que se colocan las máquinas virtuales del clúster de HDInsight y las entidades de servicio que usa el clúster.
-* [Protocolo ligero de acceso a directorios](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md) (LDAP) debe configurarse para comunicarse con AD. El certificado que se usa para instalar LDAPS debe ser un certificado real (no uno autofirmado).
-* Deben crearse zonas de DNS inverso en el dominio para el intervalo de direcciones IP de la subred de HDInsight (por ejemplo, 10.2.0.0/24 en la imagen anterior).
-* Se necesita una cuenta de servicio o una cuenta de usuario. Utilice esta cuenta para crear el clúster de HDInsight. Esta cuenta debe tener los siguientes permisos:
+* Un [unidad organizativa](../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md) deben crearse, que se coloca dentro de máquinas virtuales de clúster de HDInsight de Hola y Hola entidades de servicio utilizadas por el clúster de Hola.
+* [Protocolo ligero de acceso a directorios](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md) (LDAP) debe configurarse para comunicarse con AD. Hola tooset de certificado que se usa seguridad LDAPS debe ser un certificado real (no un certificado autofirmado).
+* Las zonas DNS inversas deben crearse en el dominio de hello para el intervalo de direcciones IP de Hola de subred de HDInsight de hello (por ejemplo, 10.2.0.0/24 en la imagen anterior de hello).
+* Se necesita una cuenta de servicio o una cuenta de usuario. Utilice este clúster de HDInsight de cuenta toocreate Hola. Esta cuenta debe tener los siguientes permisos de hello:
 
-    - Permisos para crear objetos de entidad de servicio y objetos de equipo en la unidad organizativa
-    - Permisos para crear reglas de proxy de DNS inverso
-    - Permisos para unir equipos al dominio de Active Directory
+    - Objetos de entidad de servicio de toocreate de permisos y objetos de equipo dentro de la unidad organizativa de Hola
+    - Reglas de proxy DNS inversas de permisos toocreate
+    - Dominio de Active Directory de permisos toojoin máquinas toohello
 
 **HDInsight integrado con una instancia de Azure AD solo en la nube**
 
-Para una instancia de Azure AD solo en la nube, configure un controlador de dominio para que HDInsight se pueda integrar con Azure AD. Esto se logra mediante el uso de [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md) (Azure AD DS). Azure AD DS crea equipos del controlador de dominio en la nube y les proporciona direcciones IP. Crea dos controladores de dominio para lograr alta disponibilidad.
+Para una instancia de Azure AD solo en la nube, configure un controlador de dominio para que HDInsight se pueda integrar con Azure AD. Esto se logra mediante el uso de [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md) (Azure AD DS). Azure AD DS crea máquinas de controlador de dominio en la nube de Hola y proporciona las direcciones IP para ellos. Crea dos controladores de dominio para lograr alta disponibilidad.
 
-Actualmente, Azure AD DS solo existe en redes virtuales clásicas. Solo se puede acceder a él mediante el Portal de Azure clásico. La red virtual de HDInsight existe en Azure Portal, que es preciso emparejar con la red virtual clásica mediante el emparejamiento entre redes virtuales.
+Actualmente, Azure AD DS solo existe en redes virtuales clásicas. Solo es accesible mediante el uso de hello portal de Azure clásico. Hola HDInsight red virtual existe en el portal de Azure, que debe toobe Hola emparejar con la red virtual clásica de hello mediante el uso de intercambio de tráfico de red virtual a red virtual.
 
 > [!NOTE]
-> El emparejamiento entre una red virtual clásica y una red virtual de Azure Resource Manager requiere que las dos redes virtuales estén en la misma región y en la misma suscripción de Azure.
+> Emparejamiento entre una red virtual clásica y red virtual requiere que ambas redes virtuales están en un administrador de recursos de Azure Hola la misma región y en Hola misma suscripción de Azure.
 
 ![Topología de clúster de HDInsight de unión a dominio](./media/hdinsight-domain-joined-architecture/hdinsight-domain-joined-architecture_2.png)
 
 Requisitos previos de Azure AD:
 
-* Se debe crear una [unidad organizativa](../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md), en la que se colocan las máquinas virtuales del clúster de HDInsight y las entidades de servicio que usa el clúster.
-* Al configurar Azure AD DS, se debe configurar [LDAPS](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md). El certificado que se usa para instalar LDAPS debe ser un certificado real (no uno autofirmado).
-* Deben crearse zonas de DNS inverso en el dominio para el intervalo de direcciones IP de la subred de HDInsight (por ejemplo, 10.2.0.0/24 en la imagen anterior).
-* Deben sincronizarse [hash de contraseña](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) de Azure AD a Azure AD DS.
-* Se necesita una cuenta de servicio o una cuenta de usuario. Utilice esta cuenta para crear el clúster de HDInsight. Esta cuenta debe tener los siguientes permisos:
+* Un [unidad organizativa](../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md) deben crearse dentro de la que colocar máquinas virtuales del clúster de HDInsight de Hola y Hola entidades de servicio utilizadas por el clúster de Hola.
+* Al configurar Azure AD DS, se debe configurar [LDAPS](../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md). Hola tooset de certificado que se usa seguridad LDAPS debe ser un certificado real (no un certificado autofirmado).
+* Las zonas DNS inversas deben crearse en el dominio de hello para el intervalo de direcciones IP de Hola de subred de HDInsight de hello (por ejemplo, 10.2.0.0/24 en la imagen anterior de hello).
+* [Hash de contraseña](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) deben sincronizarse desde Azure AD tooAzure AD DS.
+* Se necesita una cuenta de servicio o una cuenta de usuario. Utilice este clúster de HDInsight de cuenta toocreate Hola. Esta cuenta debe tener los siguientes permisos de hello:
 
-    - Permisos para crear objetos de entidad de servicio y objetos de equipo en la unidad organizativa
-    - Permisos para crear reglas de proxy de DNS inverso
-    - Permisos para unir equipos al dominio de Azure AD
+    - Objetos de entidad de servicio de toocreate de permisos y objetos de equipo dentro de la unidad organizativa de Hola
+    - Reglas de proxy DNS inversas de permisos toocreate
+    - Dominio de permisos toojoin máquinas toohello Azure AD
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para configurar un clúster de HDInsight unido a un dominio, consulte [Configuración de clústeres de HDInsight unidos a un dominio (versión preliminar)](hdinsight-domain-joined-configure.md).
-* Para administrar clústeres de HDInsight unidos a un dominio, consulte [Administración de clústeres de HDInsight unidos a dominio (versión preliminar)](hdinsight-domain-joined-manage.md).
-* Para configurar directivas de Hive y ejecutar consultas de Hive, consulte [Administración de clústeres de HDInsight unidos a dominio (versión preliminar)](hdinsight-domain-joined-run-hive.md).
-* Para ejecutar consultas de Hive mediante SSH en clústeres de HDInsight unidos a un dominio, consulte [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* tooconfigure un clúster de HDInsight Unidos a un dominio, consulte [configurar clústeres de HDInsight Unidos al dominio](hdinsight-domain-joined-configure.md).
+* clústeres de HDInsight Unidos a un dominio de toomanage, consulte [administrar clústeres de HDInsight Unidos al dominio](hdinsight-domain-joined-manage.md).
+* directivas de Hive tooconfigure y ejecución de las consultas de Hive, consulte [Hive configurar directivas para clústeres de HDInsight Unidos al dominio](hdinsight-domain-joined-run-hive.md).
+* consultas de Hive toorun a través de SSH en clústeres de HDInsight Unidos a un dominio, consulte [utilizar SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).

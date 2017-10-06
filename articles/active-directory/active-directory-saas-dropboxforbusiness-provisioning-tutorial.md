@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Dropbox for Business | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Dropbox for Business."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Dropbox para empresas."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,84 +13,84 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f7616e47322242f01a13d763f71c93d4ac06a92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0fb01eab4f7c6c4516eac64a4343e46ea221f98d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-dropbox-for-business-for-automatic-user-provisioning"></a>Tutorial: Configuración de Dropbox for Business para el aprovisionamiento automático de usuarios
 
-El objetivo de este tutorial es explicar los pasos que hay que realizar en Dropbox for Business y Azure AD para aprovisionar y cancelar automáticamente el aprovisionamiento de cuentas de usuario de Azure AD en Dropbox for Business.
+objetivo de Hola de este tutorial es tooshow Hola pasos que debe tooperform en Dropbox para negocios y Azure AD tooautomatically aprovisionar y eliminación de aprovisionar cuentas de usuario de Azure AD tooDropbox para la empresa.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
+escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
 
 *   Un inquilino de Azure Active Directory.
 *   Una suscripción a Dropbox for Business con inicio de sesión único habilitado.
 *   Una cuenta de usuario de Dropbox for Business con permisos de administrador de equipo.
 
-## <a name="assigning-users-to-dropbox-for-business"></a>Asignación de usuarios a Dropbox for Business
+## <a name="assigning-users-toodropbox-for-business"></a>Asignar usuarios tooDropbox para la empresa
 
-Azure Active Directory usa un concepto que se denomina "asignaciones" para determinar qué usuarios deben recibir acceso a determinadas aplicaciones. En el contexto del aprovisionamiento automático de cuentas de usuario, solo se sincronizarán los usuarios y grupos que se han "asignado" a una aplicación de Azure AD.
+Azure Active Directory utiliza un concepto que se denomina toodetermine "asignaciones" que los usuarios deben recibir acceso tooselected aplicaciones. En el contexto de Hola de aprovisionamiento de cuentas de usuario automática, se sincroniza solo los usuarios de Hola y grupos que se han "asignados" tooan aplicación en Azure AD.
 
-Antes de configurar y habilitar el servicio de aprovisionamiento, debe decidir qué usuarios o grupos de Azure AD representan a los usuarios que necesitan acceso a la aplicación Dropbox for Business. Una vez decidido, puede asignar estos usuarios a la aplicación Dropbox for Business siguiendo estas instrucciones:
+Antes de configurar y habilitar el aprovisionamiento del servicio de hello, necesita toodecide qué usuarios o grupos en Azure AD que representan a usuarios de Hola que necesitan tener acceso a tooyour Dropbox para empresas. Una vez decidido, puede asignar estas tooyour usuarios Dropbox para empresas siguiendo las instrucciones de hello aquí:
 
-[Asignar un usuario o grupo a una aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Asignar un usuario o grupo tooan su aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Sugerencias importantes para asignar usuarios a Dropbox for Business
+### <a name="important-tips-for-assigning-users-toodropbox-for-business"></a>Sugerencias importantes para asignar usuarios tooDropbox para la empresa
 
-*   Se recomienda asignar un único usuario de Azure AD a Dropbox for Business para probar la configuración de aprovisionamiento. Más tarde, se pueden asignar otros usuarios o grupos.
+*   Se recomienda que un único usuario de Azure AD se asigna tooDropbox para hello tootest de negocios aprovisionamiento de configuración. Más tarde, se pueden asignar otros usuarios o grupos.
 
-*   Al asignar a un usuario a Dropbox for Business, debe seleccionar un rol de usuario válido. El rol "Acceso predeterminado" no funciona para realizar el aprovisionamiento.
+*   Al asignar una tooDropbox de usuario para la empresa, debe seleccionar un rol de usuario válido. rol de "Acceso predeterminado" Hello no funciona para el aprovisionamiento de...
 
 ## <a name="enable-automated-user-provisioning"></a>Habilitación del aprovisionamiento automático de usuarios
 
-Esta sección lo guía a través de los pasos necesarios para conectar la API de aprovisionamiento de cuentas de usuario de Dropbox for Business, así como para configurar el servicio de aprovisionamiento con el fin de crear, actualizar y deshabilitar cuentas de usuario asignadas en Dropbox for Business en función de la asignación de grupos y usuarios de Azure AD.
+Esta sección le guía a través de conectar su tooDropbox de Azure AD para la API de aprovisionamiento de cuentas de usuario de la empresa y configurar hello toocreate de servicio de aprovisionamiento, actualizar y deshabilitar cuentas de usuario asignado en Dropbox para empresas en función de usuario y de grupo asignación de Azure AD.
 
 >[!Tip]
->Puede elegir también habilitar el inicio de sesión único basado en SAML para Dropbox for Business, mediante las instrucciones que se proporcionan en [Azure Portal](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
+>También puede elegir tooenabled basado en SAML Single Sign-On para Dropbox para empresas, siguiendo las instrucciones Hola proporcionadas en [portal de Azure](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Para configurar el aprovisionamiento automático de cuentas de usuario, siga estos pasos:
+### <a name="tooconfigure-automatic-user-account-provisioning"></a>tooconfigure aprovisionamiento de cuentas de usuario automática:
 
-1. En [Azure Portal](https://portal.azure.com), vaya a la sección **Azure Active Directory > Aplicaciones empresariales > Todas las aplicaciones**.
+1. Hola [portal de Azure](https://portal.azure.com), examinar toohello **Azure Active Directory > aplicaciones empresariales > todas las aplicaciones** sección.
 
-2. Si ya ha configurado Dropbox for Business para el inicio de sesión único, busque su instancia de Dropbox for Business mediante el campo de búsqueda. En caso contrario, seleccione **Agregar** y busque **Dropbox for Business** en la galería de aplicaciones. Seleccione Dropbox for Business en los resultados de búsqueda y agréguelo a la lista de aplicaciones.
+2. Si ya has configurado Dropbox para empresas para el inicio de sesión único, busque la instancia de Dropbox para empresas mediante el campo de búsqueda de Hola. En caso contrario, seleccione **agregar** y busque **Dropbox para empresas** en Galería de aplicaciones de Hola. Seleccione Dropbox para empresas en los resultados de búsqueda de Hola y agregarlo a tooyour lista de aplicaciones.
 
-3. Seleccione la instancia de Dropbox for Business y luego, la pestaña **Aprovisionamiento**.
+3. Seleccione la instancia de Dropbox para empresas, a continuación, seleccione hello **Provisioning** ficha.
 
-4. Establezca el **modo de aprovisionamiento** en **Automático**. 
+4. Conjunto hello **modo de aprovisionamiento** demasiado**automática**. 
 
     ![Aprovisionamiento](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/provisioning.png)
 
-5. En **Credenciales de administrador**, haga clic en **Autorizar**. Se abre un cuadro de diálogo de inicio de sesión de Dropbox for Business en una nueva ventana del explorador.
+5. En hello **las credenciales de administrador** sección, haga clic en **Authorize**. Se abre un cuadro de diálogo de inicio de sesión de Dropbox for Business en una nueva ventana del explorador.
 
-6. En el cuadro de diálogo **Sign in to Dropbox to link with Azure AD** (Iniciar sesión en Dropbox para vincularlo a Azure AD), inicie sesión en su inquilino de Dropbox for Business.
+6. En hello **toolink inicio de sesión tooDropbox con Azure AD** cuadro de diálogo de inicio de sesión tooyour Dropbox para el inquilino de negocios.
 
      ![Aprovisionamiento de usuarios](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/ic769518.png "Aprovisionamiento de usuarios")
 
-7. Confirme que desea conceder permiso de Azure Active Directory para realizar cambios en el inquilino de Dropbox for Business. Haga clic en **Permitir**.
+7. Confirme que desea toogive Azure Active Directory permiso toomake cambios tooyour Dropbox para el inquilino de negocios. Haga clic en **Permitir**.
     
       ![Aprovisionamiento de usuarios](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/ic769519.png "Aprovisionamiento de usuarios")
 
-8. En Azure Portal, haga clic en **Probar conexión** para asegurarse de que Azure AD puede conectarse a la aplicación Dropbox for Business. Si se produce un error de conexión, asegúrese de que su cuenta de Dropbox for Business tiene permisos de administrador de equipo y vuelva a intentar el paso de **Autorizar**.
+8. Hola portal de Azure, haga clic en **Probar conexión** tooensure Azure AD puede conectarse tooyour Dropbox para empresas. Si se produce un error en la conexión de hello, asegúrese de la lista desplegable para la cuenta de empresa tiene permisos de administrador de equipo e inténtelo de hello **"Autorizar"** vuelva a intentarlo.
 
-9. Escriba la dirección de correo electrónico de una persona o grupo que debe recibir las notificaciones de error de aprovisionamiento en el campo **Correo electrónico de notificación** y active la casilla.
+9. Escriba la dirección de correo electrónico de Hola de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en hello **correo electrónico de notificación** campo y active casilla Hola.
 
 10. Haga clic en **Guardar**.
 
-11. En la sección Asignaciones, seleccione **Synchronize Azure Active Directory Users to Dropbox for Business** (Sincronizar usuarios de Azure Active Directory con Dropbox for Business).
+11. En la sección asignaciones de hello, seleccione **tooDropbox sincronizar Azure usuarios de Active Directory para la empresa.**
 
-12. En la sección **Attribute Mappings** (Asignaciones de atributos), revise los atributos de usuario que se sincronizan entre Azure AD y Dropbox for Business. Tenga en cuenta que los atributos seleccionados como propiedades de **Coincidencia** se usarán para buscar coincidencias con las cuentas de usuario de Dropbox for Business con el objetivo de realizar operaciones de actualización. Seleccione el botón Guardar para confirmar los cambios.
+12. Hola **asignaciones de atributos** sección, revise los atributos de usuario de Hola que se sincronizan desde tooDropbox de Azure AD para la empresa. Hola atributos seleccionados como **coincidencia** propiedades son cuentas de usuario del hello toomatch usado en Dropbox para empresas para las operaciones de actualización. Seleccione toocommit de botón de hello guardar los cambios.
 
-13. Para habilitar el servicio de aprovisionamiento de Azure AD para Dropbox for Business, cambie el **Estado de aprovisionamiento** a **Activado** en la sección Configuración.
+13. tooenable Hola servicio de aprovisionamiento de Azure AD para Dropbox para empresas, cambio hello **estado de aprovisionamiento** demasiado**en** en hello sección de configuración
 
 14. Haga clic en **Guardar**.
 
-Comienza la sincronización inicial de todos los usuarios y grupos asignados a Dropbox for Business en la sección Usuarios y grupos. La sincronización inicial tardará más tiempo en realizarse que las posteriores, que se producen aproximadamente cada 20 minutos si se está ejecutando el servicio. Puede usar la sección **Detalles de sincronización** para supervisar el progreso y seguir los vínculos a los informes de actividad de aprovisionamiento, donde se describen todas las acciones que ha llevado a cabo el servicio de aprovisionamiento en la aplicación de Dropbox for Business.
+Inicia la sincronización inicial de Hola de todos los usuarios y grupos asignados tooDropbox para la empresa en los usuarios de Hola y sección de grupos. la sincronización inicial Hola toma tooperform más que las sincronizaciones posteriores, que se producen aproximadamente cada 20 minutos mientras se ejecuta el servicio de Hola. Puede usar hello **detalles de sincronización** sección toomonitor progreso y siga los informes de actividad del tooprovisioning vínculos, que describen todas las acciones realizadas por hello aprovisionamiento del servicio en la lista desplegable para aplicaciones de negocio.
 
-Ahora puede crear una cuenta de prueba. Espere 20 minutos para comprobar que la cuenta se ha sincronizado con Dropbox for Business.
+Ahora puede crear una cuenta de prueba. Espere a que los minutos de too20 tooverify que cuenta Hola se ha había sincronizado tooDropbox para la empresa.
 
 Un ciclo de aprovisionamiento de usuarios completado correctamente se indica con un estado relacionado:
 

@@ -1,6 +1,6 @@
 ---
-title: "¿Qué es el Programador de Azure? | Microsoft Docs"
-description: "Programador de Azure le permite describir mediante declaración las acciones para ejecutar en la nube. A continuación, programa y ejecuta esas acciones de forma automática."
+title: "¿aaaWhat es el programador de Azure? | Microsoft Docs"
+description: "El programador de Azure le permite toodeclaratively describen toorun de acciones en la nube de Hola. A continuación, programa y ejecuta esas acciones de forma automática."
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
@@ -14,34 +14,34 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: a3bf1aacd6978499d7ef77cbcb451a06b857ac38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 062e25ae473510264dc0038198c05e7ac1e86210
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-azure-scheduler"></a>¿Qué es el Programador de Azure?
-Programador de Azure le permite describir mediante declaración las acciones para ejecutar en la nube. A continuación, programa y ejecuta esas acciones de forma automática.  Para hacerlo, Programador usa [Azure Portal](scheduler-get-started-portal.md), código, [API de REST](https://msdn.microsoft.com/library/mt629143.aspx) o Azure PowerShell.
+El programador de Azure le permite toodeclaratively describen toorun de acciones en la nube de Hola. A continuación, programa y ejecuta esas acciones de forma automática.  Programador lo hace al utilizar [Hola portal de Azure](scheduler-get-started-portal.md), código, [API de REST](https://msdn.microsoft.com/library/mt629143.aspx), o Azure PowerShell.
 
 El Programador crea, mantiene e invoca el trabajo programado.  El Programador no hospeda ninguna carga de trabajo ni ejecuta código. Solo *invoca* código hospedado en cualquier otro lugar (en Azure, localmente o con otro proveedor). Realiza la invocación mediante HTTP, HTTPS, una cola de almacenamiento, una cola de bus de servicio o un tema de bus de servicio.
 
-El Programador programa [trabajos](scheduler-concepts-terms.md), mantiene un historial de los resultados de la ejecución de trabajos que se puede consultar y programa, de manera determinante y confiable, las cargas de trabajo que se ejecutarán. Azure WebJobs (parte de la característica de Aplicaciones web del Servicio de aplicaciones de Azure) y otras funcionalidades de programación de Azure usan el Programador en segundo plano. La [API de REST de Programador](https://msdn.microsoft.com/library/mt629143.aspx) ayuda a administrar la comunicación para estas acciones. De ese modo, el Programador admite [programaciones complejas y periodicidad avanzada](scheduler-advanced-complexity.md) con facilidad.
+Programaciones de programador [trabajos](scheduler-concepts-terms.md), mantiene un historial de resultados de la ejecución de trabajo que uno puede revisar y ejecutar la toobe de las cargas de trabajo de programaciones determinista y confiable. WebJobs de Azure (parte de la característica de las aplicaciones Web de hello en el servicio de aplicación de Azure) y otras capacidades de programación Azure utilizan el programador en segundo plano de Hola. Hola [API de REST de Scheduler](https://msdn.microsoft.com/library/mt629143.aspx) le ayuda a administrar las comunicaciones de Hola de estas acciones. De ese modo, el Programador admite [programaciones complejas y periodicidad avanzada](scheduler-advanced-complexity.md) con facilidad.
 
-Existen varios escenarios que se prestan para el uso del Programador. Por ejemplo:
+Hay varios escenarios que se prestan toohello uso del programador. Por ejemplo:
 
 * *Acciones de aplicaciones recurrentes*: recopilación periódica de datos desde Twitter en una fuente.
-* *Mantenimiento diario*: eliminación diaria de registros, realización de copias de seguridad y otras tareas de mantenimiento. Por ejemplo, un administrador puede optar por hacer una copia de seguridad de su base de datos a la 1:00 a.m. todos los días durante los próximos 9 meses.
+* *Mantenimiento diario*: eliminación diaria de registros, realización de copias de seguridad y otras tareas de mantenimiento. Por ejemplo, un administrador puede elegir tooback la base de datos de Hola a la 1:00 A.M. todos los días para hello en los próximos meses nueve.
 
-Programador permite crear, actualizar, eliminar, ver y administrar [colecciones de trabajos y trabajos](scheduler-concepts-terms.md) de manera programática, mediante scripts y en el portal.
+Programador permite toocreate, actualizar, eliminar, ver y administrar trabajos y [las colecciones de trabajos](scheduler-concepts-terms.md) mediante programación, mediante el uso de scripts y en el portal de Hola.
 
 ## <a name="see-also"></a>Otras referencias
  [Conceptos, terminología y jerarquía de entidades de Programador de Azure](scheduler-concepts-terms.md)
 
- [Introducción al Programador de Azure en el Portal de Azure](scheduler-get-started-portal.md)
+ [Empezar a usar a Scheduler en hello portal de Azure](scheduler-get-started-portal.md)
 
  [Planes y facturación en Programador de Azure](scheduler-plans-billing.md)
 
- [Creación de programaciones complejas y periodicidad avanzada con Programador de Azure](scheduler-advanced-complexity.md)
+ [¿Cómo se programa toobuild complejo y periodicidad avanzada con el programador de Azure](scheduler-advanced-complexity.md)
 
  [Referencia de API de REST de Programador de Azure](https://msdn.microsoft.com/library/mt629143)
 

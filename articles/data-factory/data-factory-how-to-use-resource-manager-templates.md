@@ -1,6 +1,6 @@
 ---
-title: Uso de plantillas de Resource Manager en Data Factory | Microsoft Docs
-description: Aprenda a crear y usar plantillas de Azure Resource Manager para crear entidades de Data Factory.
+title: "plantillas de administrador de recursos de aaaUse de factoría de datos | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate y use el Administrador de recursos de Azure plantillas toocreate factoría de datos entidades."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: c3ea2c047434b5b5495f0ce85be9376a502e4962
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 60d5dbd29494420006aed6d5bd9a10a63c36bec3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-templates-to-create-azure-data-factory-entities"></a>Uso de plantillas para crear entidades de Azure Data Factory
+# <a name="use-templates-toocreate-azure-data-factory-entities"></a>Usar plantillas toocreate Data Factory de Azure entidades
 ## <a name="overview"></a>Información general
-Cuando utiliza Azure Data Factory para sus necesidades de integración de datos, es posible que tenga que reutilizar el mismo patrón en distintos entornos o implementar la misma tarea repetidamente dentro de la misma solución. Las plantillas le permiten implementar y administrar estos escenarios de una forma sencilla. Las plantillas de Azure Data Factory son ideales para los escenarios que implican la reutilización y la repetición.
+Durante el uso de Data Factory de Azure para sus necesidades de integración de datos, es probable que se encuentre reutilizar Hola mismo patrón en distintos entornos o implementar Hola igual de tareas repetidamente dentro de hello misma solución. Las plantillas le permiten implementar y administrar estos escenarios de una forma sencilla. Las plantillas de Azure Data Factory son ideales para los escenarios que implican la reutilización y la repetición.
 
-Imagine una situación en la que una organización tiene 10 plantas de fabricación distribuidas por todo el mundo. Los registros de cada planta se almacenan en una base de datos de SQL Server local independiente. La empresa desea crear un único almacén de datos en la nube para análisis ad hoc. También quiere tener la misma lógica pero diferentes configuraciones para los entornos de desarrollo, prueba y producción.
+Considere la posibilidad de situación Hola donde una organización tiene 10 plantas de fabricación a través de Hola a todos. registros de Hola desde cada planta se almacenan en una base de datos de SQL Server local independiente. empresa Hola quiere toobuild un único almacén en la nube de Hola para análisis ad hoc. También quiere toohave Hola misma lógica pero diferentes configuraciones para los entornos de desarrollo, prueba y producción.
 
-En este caso, se deberá repetir una tarea dentro del mismo entorno pero con valores diferentes en 10 factorías de datos para cada planta de fabricación. En efecto, la **repetición** está presente. La creación de plantillas permite la abstracción de este flujo genérico (es decir, de las canalizaciones que tengan las mismas actividades en cada factoría de datos), pero usa un archivo de parámetros distinto para cada planta de fabricación.
+En este caso, una tarea debe toobe repite dentro Hola mismo entorno, pero con valores diferentes a través de Hola 10 factorías de datos para cada planta de fabricación. En efecto, la **repetición** está presente. Creación de plantillas permite abstracción Hola de este flujo genérico (es decir, canalizaciones tener Hola mismas actividades en cada factoría de datos), pero usa un archivo de parámetros independiente para cada planta de fabricación.
 
-Además, como la organización desea implementar estas 10 factorías de datos varias veces en distintos entornos, las plantillas pueden utilizar esta característica de **reusabilidad** mediante los archivos de parámetros independientes para entornos de desarrollo, prueba y producción.
+Además, como Hola organización quiere toodeploy estos generadores de 10 datos varias veces en distintos entornos, las plantillas pueden usar esto **reusabilidad** mediante el uso de archivos de parámetro independiente para el desarrollo, prueba, y entornos de producción.
 
 ## <a name="templating-with-azure-resource-manager"></a>Creación de plantillas con Azure Resource Manager
-Las [plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment) son una excelente manera de lograr la creación de plantillas en Azure Data Factory. Las plantillas de Resource Manager definen la infraestructura y la configuración de la solución de Azure mediante un archivo JSON. Como las plantillas de Azure Resource Manager funcionan con todos los servicios de Azure (o la mayoría de ellos), se pueden usar ampliamente para administrar fácilmente todos los recursos de Azure. Consulte [Creación de plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) para conocer más información acerca de estas plantillas en general.
+[Plantillas de administrador de recursos de Azure](../azure-resource-manager/resource-group-overview.md#template-deployment) son una creación de plantillas de tooachieve excelente manera de factoría de datos de Azure. Las plantillas de administrador de recursos definen infraestructura hello y la configuración de la solución de Azure a través de un archivo JSON. Dado que las plantillas de Azure Resource Manager funcionan con la mayoría o todos los servicios de Azure, se puede usar ampliamente tooeasily administrar todos los recursos de sus activos de Azure. Vea [plantillas del Administrador de recursos de Azure de creación](../azure-resource-manager/resource-group-authoring-templates.md) toolearn más información sobre Hola plantillas del Administrador de recursos en general.
 
 ## <a name="tutorials"></a>Tutoriales
-Consulte los siguientes tutoriales para obtener instrucciones detalladas para crear entidades de Data Factory mediante plantillas de Resource Manager:
+Vea Hola siguientes tutoriales para entidades de instrucciones paso a paso toocreate factoría de datos mediante plantillas de administrador de recursos:
 
-* [Tutorial: Create a pipeline to copy data by using Azure Resource Manager template](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md) (Tutorial: Creación de una canalización para copiar datos mediante el uso de plantillas de Azure Resource Manager)
-* [Tutorial: Create a pipeline to copy data by using Azure Resource Manager template](data-factory-build-your-first-pipeline.md) (Tutorial: Creación de una canalización para procesar datos mediante el uso de plantillas de Azure Resource Manager)
+* [Tutorial: Crear una canalización de datos de toocopy mediante el uso de la plantilla del Administrador de recursos de Azure](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Tutorial: Crear una canalización de datos de tooprocess mediante el uso de la plantilla del Administrador de recursos de Azure](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>Plantillas de Data Factory en GitHub
-Consulte las siguientes plantillas de inicio rápido de Azure en GitHub:
+Extraer del repositorio Hola siguiendo las plantillas de inicio rápido de Azure en GitHub:
 
-* [Create a Data factory to copy data from Azure Blob Storage to Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) (Creación de una instancia de Data Factory para copiar datos desde Azure Blob Storage en Azure SQL Database)
+* [Crear datos generador toocopy los datos de almacenamiento de blobs de Azure tooAzure base de datos SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [Create a Data factory with Hive activity on Azure HDInsight cluster](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) (Creación de una instancia de Data Factory con actividad de Hive en un clúster de Azure HDInsight)
-* [Create a Data factory to copy data from Salesforce to Azure Blobs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) (Creación de una instancia de Data Factory para copiar datos desde Salesforce en Azure Blobs)
-* [Create a Data factory that chains activities: copies data from an FTP server to Azure Blobs, invokes a hive script on an on-demand HDInsight cluster to transform the data, and copies result into Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob) (Creación de Data Factory que encadena actividades: copia de datos desde un servidor FTP en blobs de Azure, invocación de un script de hive en un clúster de HDInsight a petición para transformar los datos y copia del resultado en Azure SQL Database)
+* [Crear datos generador toocopy los datos de Salesforce tooAzure Blobs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
+* [Crear un generador de datos que se vincula las actividades: copia datos de un servidor FTP tooAzure Blobs, invoca un script de hive en un datos a petición HDInsight clúster tootransform hello y copia el resultado en la base de datos de SQL Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-No dude en compartir sus plantillas de Azure Data Factory en [Inicio rápido de Azure](https://azure.microsoft.com/documentation/templates/). Consulte la [Guía de contribución](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) cuando desarrolle plantillas que se puedan compartir a través de este repositorio.
+Cree tooshare libre sus plantillas de Data Factory de Azure en [inicio rápido de Azure](https://azure.microsoft.com/documentation/templates/). Consulte toohello [Guía de colaboración](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) durante el desarrollo de plantillas que se pueden compartir a través de este repositorio.
 
-Las secciones siguientes proporcionan detalles acerca de cómo definir los recursos de Data Factory en una plantilla de Resource Manager.
+Hola las secciones siguientes proporciona detalles acerca de cómo definir recursos de la factoría de datos en una plantilla de administrador de recursos.
 
 ## <a name="defining-data-factory-resources-in-templates"></a>Definición de recursos de Data Factory en plantillas
-La plantilla de nivel superior para definir una factoría de datos es:
+plantilla de nivel superior de Hola para definir una factoría de datos es:
 
 ```JSON
 "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -81,7 +81,7 @@ La plantilla de nivel superior para definir una factoría de datos es:
 ```
 
 ### <a name="define-data-factory"></a>Definición de factoría de datos
-Puede definir una factoría de datos en la plantilla de Resource Manager como se muestra en el ejemplo siguiente:
+Defina una factoría de datos en la plantilla de administrador de recursos de hello tal y como se muestra en el siguiente ejemplo de Hola:
 
 ```JSON
 "resources": [
@@ -92,7 +92,7 @@ Puede definir una factoría de datos en la plantilla de Resource Manager como se
     "location": "East US"
 }
 ```
-El dataFactoryName se define en "variables" como:
+Hola dataFactoryName se define en "variables" como:
 
 ```JSON
 "dataFactoryName": "[concat('<myDataFactoryName>', uniqueString(resourceGroup().id))]",
@@ -110,7 +110,7 @@ El dataFactoryName se define en "variables" como:
 }
 ```
 
-Consulte [Servicio vinculado de almacenamiento](data-factory-azure-blob-connector.md#azure-storage-linked-service) o [Servicios vinculados de procesos](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) para más información acerca de las propiedades JSON para el servicio vinculado específico que desea implementar. El parámetro "dependsOn" especifica el nombre de la factoría de datos correspondiente. En la siguiente definición de JSON, se muestra un ejemplo de definición de un servicio vinculado para Azure Storage:
+Vea [servicio vinculado de almacenamiento](data-factory-azure-blob-connector.md#azure-storage-linked-service) o [servicios vinculados de proceso](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) para obtener más información acerca de las propiedades JSON de Hola para servicio vinculado específico de hello desea toodeploy. parámetro de "dependsOn" Hello especifica el nombre de la factoría de datos correspondiente de Hola. Se muestra un ejemplo de definición de un servicio vinculado para el almacenamiento de Azure en hello después de la definición de JSON:
 
 ### <a name="define-datasets"></a>Definición de conjuntos de datos
 
@@ -126,7 +126,7 @@ Consulte [Servicio vinculado de almacenamiento](data-factory-azure-blob-connecto
     ...
 }
 ```
-Consulte [Almacenes de datos que se admiten](data-factory-data-movement-activities.md#supported-data-stores-and-formats) para más información acerca de las propiedades JSON para el tipo de conjunto de datos específico que desea implementar. Observe que el parámetro "dependsOn" especifica el nombre de la factoría de datos correspondiente y el servicio vinculado de almacenamiento. En la siguiente definición de JSON, se muestra un ejemplo de definición de un tipo de Azure Blob Storage:
+Consulte demasiado[admite almacenes de datos](data-factory-data-movement-activities.md#supported-data-stores-and-formats) para obtener más información acerca de las propiedades JSON de hello para el tipo de conjunto de datos específico de hello desea toodeploy. Tenga en cuenta Hola "dependsOn" parámetro especifica el nombre de los datos correspondientes de Hola generador y el almacenamiento de servicio vinculan. Se muestra un ejemplo de definición de tipo de conjunto de datos de almacenamiento de blobs de Azure en hello después de la definición de JSON:
 
 ```JSON
 "type": "datasets",
@@ -172,7 +172,7 @@ Consulte [Almacenes de datos que se admiten](data-factory-data-movement-activiti
 }
 ```
 
-Consulte [Definición de canalizaciones](data-factory-create-pipelines.md#pipeline-json) para más información acerca de las propiedades JSON para definir la canalización específica y las actividades que desea implementar. Tenga en cuenta que el parámetro "dependsOn" especifica el nombre de la factoría de datos y todos los servicios vinculados o conjuntos de datos correspondientes. En el siguiente fragmento de código JSON se muestra un ejemplo de una canalización que copia datos de Azure Blob Storage en Azure SQL Database:
+Consulte demasiado[definir canalizaciones](data-factory-create-pipelines.md#pipeline-json) para detalles acerca de las propiedades JSON de Hola para definir Hola canalización específica y las actividades que se va toodeploy. Nota Hola "dependsOn" parámetro especifica el nombre de la factoría de datos de hello y los correspondientes servicios vinculados o conjuntos de datos. Se muestra un ejemplo de una canalización que copia datos de almacenamiento de blobs de Azure tooAzure base de datos SQL en hello siguiente fragmento de JSON:
 
 ```JSON
 "type": "datapipelines",
@@ -189,7 +189,7 @@ Consulte [Definición de canalizaciones](data-factory-create-pipelines.md#pipeli
     "activities": [
     {
         "name": "CopyFromAzureBlobToAzureSQL",
-        "description": "Copy data frm Azure blob to Azure SQL",
+        "description": "Copy data frm Azure blob tooAzure SQL",
         "type": "Copy",
         "inputs": [
             {
@@ -227,12 +227,12 @@ Consulte [Definición de canalizaciones](data-factory-create-pipelines.md#pipeli
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Parametrización de la plantilla de Data Factory
-Para obtener los procedimientos recomendados sobre parametrización, consulte el artículo [Procedimientos recomendados para crear plantillas de Azure Resource Manager](../azure-resource-manager/resource-manager-template-best-practices.md#parameters). Por lo general, se debe minimizar el uso de parámetros, especialmente si se pueden utilizar variables en su lugar. Solo proporcione parámetros en los escenarios siguientes:
+Para obtener los procedimientos recomendados sobre parametrización, consulte el artículo [Procedimientos recomendados para crear plantillas de Azure Resource Manager](../azure-resource-manager/resource-manager-template-best-practices.md#parameters). Por lo general, se debe minimizar el uso de parámetros, especialmente si se pueden utilizar variables en su lugar. Solo se proporcionan parámetros Hola los escenarios siguientes:
 
 * La configuración varía según el entorno (por ejemplo: desarrollo, prueba y producción)
 * Secretos (por ejemplo, las contraseñas)
 
-Si necesita extraer los secretos de [Azure Key Vault](../key-vault/key-vault-get-started.md) al implementar las entidades de Azure Data Factory mediante plantillas, especifique el **almacén de claves** y el **nombre secreto** tal como se muestra en el ejemplo siguiente:
+Si necesita toopull secretos de [el almacén de claves de Azure](../key-vault/key-vault-get-started.md) al implementar las entidades de la factoría de datos de Azure mediante plantillas, especifique hello **el almacén de claves** y **nombre secreto** tal y como se muestra en Hola al ejemplo siguiente:
 
 ```JSON
 "parameters": {
@@ -249,6 +249,6 @@ Si necesita extraer los secretos de [Azure Key Vault](../key-vault/key-vault-get
 ```
 
 > [!NOTE]
-> Aunque todavía no se admite la exportación de plantillas para factorías de datos ya existentes, esto está en proyecto.
+> Al exportar plantillas para los generadores de datos existente actualmente todavía no es compatible, es en hello funciona.
 >
 >

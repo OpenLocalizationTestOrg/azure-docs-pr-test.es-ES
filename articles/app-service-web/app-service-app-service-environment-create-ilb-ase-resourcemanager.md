@@ -1,6 +1,6 @@
 ---
-title: "Creación de un ASE de ILB mediante las plantillas de Azure Resource Manager | Microsoft Docs"
-description: Aprenda a crear un ASE de equilibrador de carga interno mediante las plantillas de Azure Resource Manager.
+title: aaaHow tooCreate un ILB ASE usar Azure Resource Manager plantillas | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate un interno cargar ASE equilibrador usando plantillas del Administrador de recursos de Azure."
 services: app-service
 documentationcenter: 
 author: stefsch
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
-ms.openlocfilehash: 147ab76d38c8bbbf34d35ed6c2a194d97fe711ab
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 16db20eccc232ccc73107fcc8291de180fb2a323
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Creación de un ASE de un ILB mediante las plantillas de Azure Resource Manager
+# <a name="how-toocreate-an-ilb-ase-using-azure-resource-manager-templates"></a>¿Cómo tooCreate un ILB ASE usar Azure Resource Manager plantillas
 
 > [!NOTE] 
-> Este artículo trata sobre App Service Environment v1. Hay una versión más reciente que resulta más fácil de usar y se ejecuta en una infraestructura más eficaz. Para aprender más sobre la nueva versión, consulte [Introducción a App Service Environment](../app-service/app-service-environment/intro.md).
+> Este artículo trata sobre Hola v1 de entorno del servicio de aplicaciones. Hay una versión más reciente de hello entorno del servicio de aplicación que es más fácil toouse y se ejecuta en una infraestructura más eficaz. toolearn más información acerca de la nueva versión de hello iniciar con hello [toohello Introducción entono](../app-service/app-service-environment/intro.md).
 >
 
 ## <a name="overview"></a>Información general
-Los entornos del Servicio de aplicaciones pueden crearse con una dirección de red virtual interna, en lugar de una VIP pública.  Esta dirección interna la proporciona un componente de Azure denominado equilibrador de carga interno (ILB).  Un ASE del ILB se puede crear con el Portal de Azure.  También se puede crear de forma automática por medio de las plantillas de Azure Resource Manager.  Este artículo le guía por los pasos y la sintaxis necesarios para crear un ASE de ILB con plantillas de Azure Resource Manager.
+Los entornos del Servicio de aplicaciones pueden crearse con una dirección de red virtual interna, en lugar de una VIP pública.  Esta dirección interna se proporciona un componente de Azure denominado equilibrador de carga interno de hello (ILB).  Un ASE ILB pueden crearse con hello portal de Azure.  También se puede crear de forma automática por medio de las plantillas de Azure Resource Manager.  En este artículo se describe los pasos de Hola y sintaxis necesario toocreate una ASE de ILB con plantillas del Administrador de recursos de Azure.
 
 Hay tres pasos implicados en la automatización de la creación de un ASE de ILB:
 
-1. En primer lugar, el ASE base se crea en una red virtual con una dirección de equilibrador de carga interno, en lugar de una VIP pública.  Como parte de este paso, se asigna un nombre de dominio raíz al ASE de ILB.
-2. Una vez creado el ASE de ILB, se carga un certificado SSL.  
-3. El certificado SSL cargado se asigna explícitamente al ASE de ILB como su certificado SSL "predeterminado".  Este certificado SSL se usará para el tráfico SSL a las aplicaciones del ASE de ILB cuando las aplicaciones se direccionan mediante el dominio raíz común asignado al ASE (por ejemplo, https://someapp.mycustomrootcomain.com)
+1. Primer ASE de base de Hola se crea en una red virtual con una dirección de equilibrador de carga interno en lugar de una VIP pública.  Como parte de este paso, se asigna a un nombre de dominio de raíz toohello ASE de ILB.
+2. Una vez cargado Hola que ase de ILB se crea, un certificado SSL.  
+3. Hello cargado certificado SSL esté explícitamente asignado toohello ILB ASE como su propio certificado SSL "default".  Este certificado SSL se usará para tooapps de tráfico SSL en hello ILB ASE cuando aplicaciones Hola se direccionan con hello comunes raíz dominio asignado toohello ASE (p. ej. https://someapp.mycustomrootcomain.com)
 
-## <a name="creating-the-base-ilb-ase"></a>Creación del ASE de ILB base
+## <a name="creating-hello-base-ilb-ase"></a>Creación de hello Base ILB ASE
 Hay un ejemplo de plantilla de Azure Resource Manager y su archivo de parámetros asociado en GitHub, [aquí][quickstartilbasecreate].
 
-La mayoría de los parámetros del archivo *azuredeploy.parameters.json* son comunes para la creación de los dos ASE de ILB, así como de los ASE enlazados a una VIP pública.  La lista siguiente llama a los parámetros especiales o únicos al crear un ASE de ILB:
+La mayoría de los parámetros de Hola Hola *azuredeploy.parameters.json* archivo es comunes toocreating ambos ASEs ILB, así como ASEs enlazado VIP pública tooa.  lista de Hello aparece a continuación llama a parámetros de nota especial, o que sean únicos, cuando se crea una ASE de ILB:
 
-* *interalLoadBalancingMode*: en la mayoría de los casos se establece en 3, lo que significa que tanto el tráfico HTTP/HTTPS de los puertos 80 y 443 como los puertos de los canales de control o de datos a los que escucha el servicio FTP en el ASE estarán enlazados a una dirección de red virtual interna asignada al ILB.  Si esta propiedad se establece en 2, solo los puertos relacionados con el servicio FTP (los canales de control y de datos) estarán enlazados a una dirección de ILB, mientras que el tráfico HTTP/HTTPS permanecerá en la VIP pública.
-* *dnsSuffix*: este parámetro define el dominio raíz predeterminado que se asignará al ASE.  En la variación pública del Servicio de aplicaciones de Azure, el dominio raíz predeterminado de todas las aplicaciones web es *azurewebsites.net*.  Sin embargo, dado que un ASE de ILB está dentro de la red virtual de un cliente, no tiene sentido utilizar el dominio raíz predeterminado del servicio público.  En su lugar, un ASE de ILB debe tener un dominio raíz predeterminado que tenga sentido usar en la red virtual interna de una compañía.  Por ejemplo, una empresa hipotética, Contoso Corporation, puede usar el dominio raíz predeterminado *interno contoso.com* para aquellas aplicaciones que se pretende que solo se puedan resolver en la red virtual de Contoso, y a las que solo se pueda acceder desde ella. 
-* *ipSslAddressCount*: automáticamente, el valor predeterminado de este parámetro es 0 en el archivo *azuredeploy.json*, ya que los ASE de ILB solo tienen una dirección de ILB individual.  No hay direcciones IP-SSL explícitas para un ASE de ILB y, por consiguiente, el grupo de direcciones IP SSL de un ASE de ILB debe establecerse en cero, ya que, de lo contrario, se producirá un error de aprovisionamiento. 
+* *interalLoadBalancingMode*: en la mayoría de los casos, establece este too3, lo que significa que tanto el tráfico HTTP/HTTPS en los puertos 80/443, y puertos de canal de datos de control/hello escuchan tooby servicio FTP Hola Hola ASE, tooan enlazado ILB asignará red virtual dirección interna.  Si esta propiedad se establece en su lugar too2, Hola solo servicio FTP relacionada con puertos (canales de datos y de control) se enlazarán direcciones tooan ILB mientras Hola tráfico HTTP/HTTPS, permanecerá en la VIP pública Hola.
+* *sufijo DNS*: este parámetro define el dominio raíz de hello predeterminado que se va a asignar toohello ASE.  En variación pública de hello del servicio de aplicaciones de Azure, Hola raíz dominio predeterminado para todas las aplicaciones web es *azurewebsites.net*.  Sin embargo puesto que una ASE de ILB es red virtual del cliente de tooa interno, que no tiene dominio de raíz del servicio de sentido toouse Hola público predeterminado.  En su lugar, un ASE de ILB debe tener un dominio raíz predeterminado que tenga sentido usar en la red virtual interna de una compañía.  Por ejemplo, una hipotética Contoso Corporation podría usar un dominio de raíz predeterminado de *contoso.com interna* para las aplicaciones que están tooonly previsto pueden resolverse y es accesible dentro de la red virtual de Contoso. 
+* *ipSslAddressCount*: este parámetro es automáticamente su valor predeterminado tooa el valor 0 en hello *azuredeploy.json* archivo porque ILB ASEs sólo tiene una única dirección ILB.  Hay direcciones IP SSL explícitos para una ASE de ILB, y por lo tanto, Hola grupo de direcciones IP SSL para un ASE ILB debe establecerse toozero, en caso contrario, se producirá un error de aprovisionamiento. 
 
-Una vez que se haya rellenado el archivo *azuredeploy.parameters.json* de un ASE de ILB, este puede crearse mediante el siguiente fragmento de código de Powershell.  Cambie las carpetas PATH del archivo para que coincidan con la ubicación de la máquina en la que se encuentran los archivos de plantilla de Azure Resource Manager.  Recuerde también especificar sus propios valores para el nombre de implementación y el nombre del grupo de recursos de Azure Resource Manager.
+Una vez Hola *azuredeploy.parameters.json* archivo ha sido rellenado para una ASE de ILB, Hola ASE de ILB, a continuación, pueden crearse con el siguiente fragmento de código de Powershell de Hola.  Cambiar toomatch de rutas de acceso de archivo Hola donde se encuentran los archivos de plantilla de hello Azure Resource Manager en su equipo.  Recuerde también toosupply sus propios valores para nombre de la implementación de hello Azure Resource Manager y el nombre del grupo de recursos.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
     New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
-Después que se envíe la plantilla de Azure Resource Manager el ASE de ILB tardará unas horas en crearse.  Una vez completada la creación, el ASE de ILB se mostrará en el portal, en la lista de entornos de App Service de la suscripción que desencadenó la implementación.
+Después de hello Azure Resource Manager plantilla se envía tardará unas pocas horas para hello ILB ASE toobe creado.  Después de finalizar la creación de hello, Hola ASE de ILB se mostrará en el portal de hello UX en lista de Hola de entornos del servicio de aplicación para la suscripción de Hola que desencadenó la implementación de Hola.
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Carga y configuración del certificado SSL "predeterminado"
-Una vez que se crea el ASE de ILB, es preciso asociarle un certificado SSL "predeterminado" que se use para establecer conexiones SSL con las aplicaciones.  Continuando con el ejemplo de Contoso Corporation, si el sufijo DNS predeterminado del ASE es *internal-contoso.com*, una conexión a *https://some-random-app.internal-contoso.com* requiere un certificado SSL que sea válido para **.internal contoso.com*. 
+## <a name="uploading-and-configuring-hello-default-ssl-certificate"></a>Cargar y configurar Hola "Default" certificado de SSL
+Una vez Hola que ase de ILB se crea un certificado SSL debe asociarse a Hola ASE como predeterminada"hello" uso de los certificados SSL para establecer tooapps de las conexiones SSL.  Siguiendo con el ejemplo de Contoso Corporation hipotético hello, si Hola de ASE DNS como valor predeterminado es de sufijo *contoso.com interna*, a continuación, una conexión demasiado*https://some-random-app.internal-contoso.com*requiere un certificado SSL válido para **.internal contoso.com*. 
 
-Hay varias maneras de obtener un certificado SSL válido, entre las que se incluyen las CA internas, la adquisición de un certificado de un emisor externo y el uso de un certificado autofirmado.  Independientemente del origen del certificado SSL, es preciso configurar correctamente los siguientes atributos del certificado:
+Hay una variedad de formas tooobtain un certificado SSL válido como entidades de certificación internas, la adquisición de un certificado de un emisor externo y usando un certificado autofirmado.  Independientemente del origen de hello del certificado SSL de hello, hello siguientes atributos de certificado necesitan toobe configurado correctamente:
 
-* *Subject*: el valor de este atributo debe ser **.your-root-domain-here.com*
-* *Nombre alternativo del firmante*: este atributo debe incluir tanto **.your-root-domain-here.com* como **.scm.your-root-domain-here.com*.  El motivo de la segunda entrada es que las conexiones SSL con el sitio de SCM/Kudu asociadas a cada aplicación se realizarán mediante una dirección, cuyo formato será *your-app-name.scm.your-root-domain-here.com*.
+* *Asunto*: este atributo debe establecerse demasiado **.your-raíz-dominio-here.com*
+* *Nombre alternativo del firmante*: este atributo debe incluir tanto **.your-raíz-dominio-here.com*, y **.scm.your-raíz-dominio-here.com*.  motivo de la segunda entrada de Hola Hola es que toohello de las conexiones SSL sitio SCM/Kudu asociado a cada aplicación se realiza mediante una dirección de formulario de hello *your-app-name.scm.your-root-domain-here.com*.
 
-Con un certificado SSL válido, se necesitan dos pasos preparatorios adicionales.  El certificado SSL se debe guardar en formato .pfx, o bien convertirse a dicho formato.  Recuerde que es preciso que el archivo .pfx incluya todos los certificados raíz e intermedios, y también debe protegerse con una contraseña.
+Con un certificado SSL válido, se necesitan dos pasos preparatorios adicionales.  certificado SSL de Hello debe toobe convertir/guarda como un archivo. pfx.  Recuerde ese archivo .pfx de hello necesita tooinclude todo intermedio y certificados raíz y también es necesario toobe protegido con una contraseña.
 
-A continuación, el archivo .pfx resultante debe convertirse en una cadena base64, ya que el certificado SSL se cargará mediante una plantilla de Azure Resource Manager.  Dado que las plantillas de Azure Resource Manager son archivos de texto, el archivo .pfx debe convertirse en una cadena base64 para que puede incluirse como parámetro de la plantilla.
+A continuación, archivo .pfx resultante de hello debe toobe convertir en una cadena base64 porque el certificado SSL de Hola se cargará usando una plantilla de Azure Resource Manager.  Puesto que las plantillas de Azure Resource Manager son archivos de texto, archivo .pfx de hello debe toobe convierten en una cadena base64 de modo que puede incluirse como un parámetro de plantilla de Hola.
 
-El siguiente fragmento de código de Powershell muestra un ejemplo de cómo generar un certificado autofirmado, exportar el certificado como un archivo .pfx, convertir el archivo .pfx en una cadena base64 codificada y, a continuación, guardar dicha cadena en otro archivo.  El código de Powershell para la codificación Base64 se adaptó del [blog Powershell Scripts][examplebase64encoding].
+Hola Powershell siguiente fragmento de código muestra un ejemplo de cómo generar un certificado autofirmado, exportar el certificado de Hola como un archivo .pfx, convertir el archivo .pfx de hello en base64 codificado cadena y, a continuación, guardar en base64 de hello archivo independiente de cadena tooa.  Hola código de Powershell para la codificación base64 se adaptó del hello [Blog de secuencias de comandos de Powershell][examplebase64encoding].
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -79,16 +79,16 @@ El siguiente fragmento de código de Powershell muestra un ejemplo de cómo gene
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-Una vez que el certificado SSL se ha generado y convertido correctamente en una cadena con codificación Base64, se puede usar la plantilla de Azure Resource Manager de ejemplo en GitHub para [configurar el certificado SSL predeterminado][configuringDefaultSSLCertificate].
+Una vez que se generó correctamente el certificado SSL de Hola y cadena codificada en base64 tooa convertido, Hola ejemplo de plantilla de administrador de recursos de Azure en GitHub para [configurar certificado SSL de hello predeterminado] [ configuringDefaultSSLCertificate] se puede utilizar.
 
-Los parámetros del archivo *azuredeploy.parameters.json* se enumeran a continuación:
+Hola parámetros Hola *azuredeploy.parameters.json* archivo se enumeran a continuación:
 
-* *appServiceEnvironmentName*: el nombre del ASE de ILB que se configura.
-* *existingAseLocation*: cadena de texto que contiene la región de Azure en que se implementó el ASE de ILB.  Por ejemplo, "centro-sur de EE. UU.".
-* *pfxBlobString*: la representación de la cadena con codificación Base64 del archivo pfx.  Mediante el fragmento de código que se ha mostrado anteriormente, se copiaría la cadena de "exportedcert.pfx.b64" y se pegaría como el valor del atributo *pfxBlobString* .
-* *password*: la contraseña que se usa para proteger el archivo pfx.
-* *certificateThumbprint*: la huella digital del certificado.  Si este valor se recupera de Powershell (por ejemplo, *$certificate.Thumbprint* del fragmento de código anterior), se puede usar tal cual.  Sin embargo, si copia el valor del cuadro de diálogo del certificado de Windows, no olvide eliminar los espacios superfluos.  *certificateThumbprint* debería ser similar a: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificateName*: un identificador de cadena fácil de usar que elija y que se usa para identificar el certificado.  El nombre se utiliza como parte del identificador único de Azure Resource Manager para la entidad *Microsoft.Web/certificates* que representa el certificado SSL.  El nombre **debe** terminar con el sufijo siguiente: \__yourASENameHere_InternalLoadBalancingASE.  El portal utiliza este sufijo como un indicador de que el certificado se usa para asegurar un ASE habilitado para ILB.
+* *appServiceEnvironmentName*: nombre de Hola de hello ASE de ILB que se está configurando.
+* *existingAseLocation*: cadena de texto que contiene Hola región de Azure donde hello ASE de ILB se implementó.  Por ejemplo, "centro-sur de EE. UU.".
+* *pfxBlobString*: Hola based64 codificado representación de cadena del archivo PFX de hello.  Mediante el fragmento de código de hello mostrado anteriormente, debería copiar cadena Hola incluido en "exportedcert.pfx.b64" y péguelo en como valor de Hola de hello *pfxBlobString* atributo.
+* *contraseña*: Hola contraseña utilizada toosecure hello archivo.pfx.
+* *certificateThumbprint*: Hola huella digital del certificado.  Si este valor se recupera desde Powershell (p. ej. *$certificate. Huella digital* de hello fragmento de código anterior), puede usar el valor de hello como-es.  Sin embargo si copia el valor de hello del cuadro de diálogo de certificado de Windows hello, recuerde toostrip out espacios Hola.  Hola *certificateThumbprint* debe ser similar: AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *nombre de certificado*: un identificador de cadena descriptivo de su propia elección usa certificados de hello tooidentity.  nombre de Hola se usa como parte del identificador único de Azure Resource Manager de Hola para hello *Microsoft.Web/certificates* entidad que representa el certificado SSL de Hola.  nombre de Hello **debe** finalizar con hello siguiente sufijo: \_yourASENameHere_InternalLoadBalancingASE.  Portal de hello usa este sufijo como un indicador que Hola certificado se utiliza para asegurar un ASE habilitado ILB.
 
 A continuación se muestra un ejemplo abreviado de *azuredeploy.parameters.json* :
 
@@ -117,23 +117,23 @@ A continuación se muestra un ejemplo abreviado de *azuredeploy.parameters.json*
          }
     }
 
-Una vez rellenado el archivo *azuredeploy.parameters.json* , se puede configurar el certificado SSL predeterminado mediante el siguiente fragmento de código de Powershell.  Cambie las carpetas PATH del archivo para que coincidan con la ubicación de la máquina en la que se encuentran los archivos de plantilla de Azure Resource Manager.  Recuerde también especificar sus propios valores para el nombre de implementación y el nombre del grupo de recursos de Azure Resource Manager.
+Una vez Hola *azuredeploy.parameters.json* archivo ha sido rellenado, certificado SSL de saludo predeterminado se puede configurar con hello siguiente fragmento de código de Powershell.  Cambiar toomatch de rutas de acceso de archivo Hola donde se encuentran los archivos de plantilla de hello Azure Resource Manager en su equipo.  Recuerde también toosupply sus propios valores para nombre de la implementación de hello Azure Resource Manager y el nombre del grupo de recursos.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
     New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
-Una vez que se envía la plantilla de Azure Resource Manager, el front-end de ASE tarda aproximadamente 40 minutos en aplicar el cambio.  Por ejemplo, con un ASE de un tamaño predeterminado que usa dos front-ends, la plantilla tardará aproximadamente una hora y veinte minutos en completarse.  Mientras la plantilla ejecute el ASE no se podrá escalar.  
+Después de hello Azure Resource Manager plantilla se envía tardará aproximadamente cuarenta minutos minutos por cambio Hola de ASE tooapply front-end.  Por ejemplo, su valor predeterminado es ASE tamaño con dos servidores front-end, plantilla de Hola tomará alrededor de una hora y toocomplete de veinte minutos.  Mientras se ejecuta la plantilla de Hola Hola ASE no estará tooscaled pueda.  
 
-Una vez que se completa la plantilla, se puede acceder a las aplicaciones del ASE de ILB a través de HTTPS y las conexiones se protegerán mediante el certificado SSL predeterminado.  El certificado SSL predeterminado se usará cuando las direcciones de las aplicaciones del ASE de ILB sean una combinación del nombre de la aplicación y el nombre de host predeterminado.  Por ejemplo,*https://mycustomapp.internal-contoso.com* usaría el certificado SSL predeterminado para **.internal-contoso.com*.
+Una vez completada la plantilla de hello, aplicaciones en hello ILB ASE son accesibles a través de HTTPS y las conexiones de Hola se protegerán con certificado SSL de hello predeterminado.  certificado SSL de Hello predeterminado se usará cuando las aplicaciones en hello ASE de ILB se direccionan con una combinación de nombre de la aplicación hello más el nombre de host de hello predeterminado.  Por ejemplo *https://mycustomapp.internal-contoso.com* usaría el certificado SSL predeterminado de Hola para **.internal contoso.com*.
 
-Sin embargo, al igual que las aplicaciones que se ejecutan en el servicio multiinquilino público, los desarrolladores también pueden configurar nombres de host personalizados para las aplicaciones individuales y luego configurar enlaces de certificados SSL SNI únicos para aplicaciones individuales.  
+Sin embargo, como aplicaciones que se ejecutan en el servicio de varios inquilinos públicos de hello, los programadores pueden configurar también los nombres de host personalizado para aplicaciones individuales y, a continuación, configurar los enlaces de certificado SSL SNI únicos para las aplicaciones individuales.  
 
 ## <a name="getting-started"></a>Introducción
-Para empezar a trabajar con los entornos del Servicio de aplicaciones, consulte [Introducción al entorno del Servicio de aplicaciones](app-service-app-service-environment-intro.md)
+tooget iniciado con el entorno de servicio de aplicación, consulte [Introducción tooApp entorno del servicio](app-service-app-service-environment-intro.md)
 
-Todos los artículos y procedimientos correspondientes a los entornos del Servicio de aplicaciones están disponibles en el archivo [Léame para entornos del Servicio de aplicaciones](../app-service/app-service-app-service-environments-readme.md).
+Todos los artículos y cómo-para para entornos del servicio de aplicación están disponibles en hello [archivo Léame para entornos de aplicaciones de servicio](../app-service/app-service-app-service-environments-readme.md).
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

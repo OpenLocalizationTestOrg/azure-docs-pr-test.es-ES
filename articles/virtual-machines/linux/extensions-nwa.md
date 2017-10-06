@@ -1,6 +1,6 @@
 ---
-title: "Extensión de máquina virtual del agente de Azure Network Watcher para Linux | Microsoft Docs"
-description: "Implemente el agente de Network Watcher en la máquina virtual Linux mediante una extensión de máquina virtual."
+title: "extensión de máquina virtual de agente del Monitor de red para Linux aaaAzure | Documentos de Microsoft"
+description: "Implementar Hola agente del Monitor de red en la máquina virtual de Linux con una extensión de máquina virtual."
 services: virtual-machines-linux
 documentationcenter: 
 author: dennisg
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: eaadd531b9e05a54446e61f98584ae9d75470a5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84bed132cbda83d0917be490f9a50914578952a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Extensión de máquina virtual del agente de Network Watcher para Linux
 
 ## <a name="overview"></a>Información general
 
-[Azure Network Watcher](https://review.docs.microsoft.com/en-us/azure/network-watcher/) es un servicio de supervisión, diagnóstico y análisis del rendimiento de red que permite supervisar redes de Azure. La extensión de máquina virtual del agente de Network Watcher es un requisito para algunas de las características de Network Watcher en máquinas virtuales de Azure. Esto incluye la captura del tráfico de red a petición y otra funcionalidad avanzada.
+[Azure Network Watcher](https://review.docs.microsoft.com/en-us/azure/network-watcher/) es un servicio de supervisión, diagnóstico y análisis del rendimiento de red que permite supervisar redes de Azure. Hola extensión de máquina virtual de agente del Monitor de red es un requisito para algunas de las características del Monitor de red de hello en máquinas virtuales de Azure. Esto incluye la captura del tráfico de red a petición y otra funcionalidad avanzada.
 
-En este documento se especifican las plataformas compatibles y las opciones de implementación de la extensión de máquina virtual del agente de Network Watcher para Linux.
+Este Hola de detalles de documento admite opciones de implementación y plataformas para hello extensión de máquina virtual de agente del Monitor de red para Linux.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-### <a name="operating-system"></a>Sistema operativo
+### <a name="operating-system"></a>Sistema operativos
 
-La extensión del agente de Network Watcher puede ejecutarse en estas distribuciones de Linux:
+Hola extensión del agente de Monitor de red se pueden ejecutar con las distribuciones de Linux:
 
 | Distribución | Versión |
 |---|---|
@@ -49,11 +49,11 @@ Tenga en cuenta que CoreOS no se admite en este momento.
 
 ### <a name="internet-connectivity"></a>Conectividad de Internet
 
-Parte de la funcionalidad del agente de Network Watcher requiere que la máquina virtual de destino esté conectada a Internet. Sin la capacidad de establecer conexiones salientes, algunas de las características del agente de Network Watcher pueden funcionar mal o dejar de estar disponibles. Para más detalles, consulte la [documentación de Network Watcher](https://review.docs.microsoft.com/en-us/azure/network-watcher/).
+Algunos de hello funcionalidad de agente del Monitor de red requiere a esa máquina virtual de destino de Hola sea toohello conectado Internet. Sin conexiones salientes de hello capacidad tooestablish algunas de las características del agente de Monitor de red Hola pueden funcione incorrectamente o dejan de estar disponibles. Para obtener más información, vea hello [documentación del Monitor de red](https://review.docs.microsoft.com/en-us/azure/network-watcher/).
 
 ## <a name="extension-schema"></a>Esquema de extensión
 
-El siguiente JSON muestra el esquema para la extensión del agente de Network Watcher. La extensión no requiere ni admite ninguna configuración proporcionada por el usuario en este momento y se basa en su propia configuración predeterminada.
+Hello JSON siguiente muestra esquema Hola Hola extensión del agente de Monitor de red. extensión de Hello no requiere ni admite cualquier configuración proporcionada por el usuario en este momento y se basa en su configuración predeterminada.
 
 ```json
 {
@@ -84,11 +84,11 @@ El siguiente JSON muestra el esquema para la extensión del agente de Network Wa
 
 ## <a name="template-deployment"></a>Implementación de plantilla
 
-Las extensiones de VM de Azure pueden implementarse con plantillas de Azure Resource Manager. El esquema JSON detallado en la sección anterior se puede usar en una plantilla de Azure Resource Manager para ejecutar la extensión del agente de Network Watcher durante la implementación de dicha plantilla.
+Las extensiones de VM de Azure pueden implementarse con plantillas de Azure Resource Manager. esquema JSON de Hello detallado en la sección anterior de hello puede usarse en un hello toorun de plantilla de Azure Resource Manager extensión del agente de Monitor de red durante la implementación de plantilla Azure Resource Manager.
 
 ## <a name="azure-cli-deployment"></a>Implementación de la CLI de Azure
 
-La CLI de Azure puede utilizarse para implementar la extensión de VM del agente de Network Watcher en una máquina virtual existente.
+Hola CLI de Azure puede ser usado toodeploy Hola VM de agente del Monitor de red extensión tooan máquina virtual existente.
 
 ```azurecli
 azure vm extension set myResourceGroup1 myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
@@ -98,13 +98,13 @@ azure vm extension set myResourceGroup1 myVM1 NetworkWatcherAgentLinux Microsoft
 
 ### <a name="troubleshooting"></a>Solución de problemas
 
-Los datos sobre el estado de las implementaciones de extensiones pueden recuperarse desde Azure Portal y mediante la CLI de Azure. Para ver el estado de implementación de las extensiones de una VM determinada, ejecute el comando siguiente con la CLI de Azure.
+Datos acerca del estado de Hola de implementaciones de extensión se pueden recuperar desde Hola portal de Azure y mediante el uso de hello CLI de Azure. estado de implementación de hello toosee de extensiones para una máquina virtual determinada, ejecute hello después de usar el comando Hola CLI de Azure.
 
 ```azurecli
 azure vm extension get myResourceGroup1 myVM1
 ```
 
-El resultado de la ejecución de las extensiones se registra en los archivos que se encuentran en el siguiente directorio:
+Ejecución de la extensión de salida es posterior a toofiles registrados se encuentra en hello directorio:
 
 `
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
@@ -112,4 +112,4 @@ El resultado de la ejecución de las extensiones se registra en los archivos que
 
 ### <a name="support"></a>Soporte técnico
 
-Si necesita más ayuda con cualquier aspecto de este artículo, puede consultar la documentación de Network Watcher o ponerse en contacto con los expertos de Azure en los [foros de MSDN Azure o Stack Overflow](https://azure.microsoft.com/en-us/support/forums/). Como alternativa, puede registrar un incidente de soporte técnico de Azure. Vaya al [sitio de soporte técnico de Azure](https://azure.microsoft.com/en-us/support/options/) y seleccione Obtener soporte. Para obtener información sobre el uso del soporte técnico, lea las [Preguntas más frecuentes de soporte técnico de Microsoft Azure](https://azure.microsoft.com/en-us/support/faq/).
+Si necesita más ayuda en cualquier momento en este artículo, puede consulte la documentación del Monitor de red toohello o póngase en contacto con hello Azure expertos en hello [foros de Azure de MSDN y el desbordamiento de la pila](https://azure.microsoft.com/en-us/support/forums/). Como alternativa, puede registrar un incidente de soporte técnico de Azure. Vaya toohello [sitio de soporte técnico de Azure](https://azure.microsoft.com/en-us/support/options/) y seleccione la obtención de soporte técnico. Para obtener información acerca del uso de soporte técnico de Azure, lea hello [P+F de soporte de Microsoft Azure](https://azure.microsoft.com/en-us/support/faq/).

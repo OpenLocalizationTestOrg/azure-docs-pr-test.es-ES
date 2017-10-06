@@ -1,6 +1,6 @@
 ---
-title: Exigencia de Multi-Factor Authentication | Microsoft Docs
-description: "Obtenga información sobre cómo requerir Multi-Factor Authentication (MFA) para identidades con privilegios con la extensión de Privileged Identity Management de Azure Active Directory."
+title: "aaaHow toorequire la autenticación multifactor | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toorequire la autenticación multifactor (MFA) para había privilegiado identidades con extensión de Azure Active Directory Privileged Identity Management de Hola."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,37 +15,37 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: b778774fa23be8219db3f716d79bac324a7de9d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c08fad9dc80c09a14a4bd7497da4942fa227c3ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>Exigencia de MFA en Privileged Identity Management de Azure AD
-Se recomienda exigir Multi-Factor Authentication (MFA) para todos los administradores. De esta forma, se reduce el riesgo de ataques debidos a que una contraseña se ha puesto en peligro.
+# <a name="how-toorequire-mfa-in-azure-ad-privileged-identity-management"></a>Cómo toorequire MFA en Azure AD Privileged Identity Management
+Se recomienda exigir Multi-Factor Authentication (MFA) para todos los administradores. Esto reduce el riesgo de Hola de un ataque debido contraseña tooa puesto en peligro.
 
-Puede exigir que los usuarios completen un desafío de MFA cuando inician sesión. La entrada de blog [MFA for Office 365 and MFA for Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) (MFA para Office 365 y MFA para Azure) compara lo que se incluye en las suscripciones de Office y Azure con las características de la oferta de Multi-Factor Authentication de Microsoft Azure.
+Puede exigir que los usuarios completen un desafío de MFA cuando inician sesión. entrada de blog de Hola [MFA para Office 365 y autenticación Multifactor para Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) compara qué se incluye en Office y suscripciones de Azure, con características de hello incluidos en la oferta de Microsoft Azure la autenticación multifactor de Hola.
 
-También puede exigir que los usuarios realicen un desafío de MFA cuando activan un rol en PIM de Azure AD. De este modo, si el usuario no realizó un desafío de MFA cuando inició sesión, se le pedirá que lo haga en PIM.
+También puede exigir que los usuarios realicen un desafío de MFA cuando activan un rol en PIM de Azure AD. De esta manera, si el usuario de hello no completó un desafío MFA cuando inicia sesión, estarán toodo solicitada es así por PIM.
 
 ## <a name="requiring-mfa-in-azure-ad-privileged-identity-management"></a>Exigencia de MFA en Privileged Identity Management de Azure AD
-Al administrar identidades en PIM como administrador de roles con privilegios, puede ver las alertas que recomienda MFA para las cuentas con privilegios. Haga clic en la alerta de seguridad en el panel de PIM y se abrirá una nueva hoja con una lista de las cuentas de administrador que deben exigir MFA.  Para exigir MFA, seleccione varios roles y haga clic en el botón **Corregir**; también puede hacer clic en el botón de puntos suspensivos situado junto a cada rol y luego hacer clic en el botón **Corregir**.
+Al administrar identidades en PIM como administrador de roles con privilegios, puede ver las alertas que recomienda MFA para las cuentas con privilegios. Haga clic en seguridad de hello alerta en el panel de PIM de hello y una nueva hoja se abrirá con una lista de las cuentas de administrador de Hola que necesita MFA.  Puede requerir MFA seleccionando varios roles y, a continuación, haga clic en hello **corregir** botón, o haga clic en siguiente tooindividual funciones de puntos suspensivos de hello y, a continuación, haga clic en hello **corregir** botón.
 
 > [!IMPORTANT]
-> Ahora mismo, Azure MFA solo funciona con cuentas profesionales o educativas, no con cuentas de Microsoft (por lo habitual una cuenta personal que se usa para iniciar sesión en servicios de Microsoft, como Skype, Xbox, Outlook.com, etc.). Por este motivo, todo aquel que use una cuenta de Microsoft no puede ser un administrador apto ya que no podrá usar MFA para activar su rol. Si estos usuarios tienen que seguir administrando cargas de trabajo con una cuenta de Microsoft, conviértalos en administradores permanentes por el momento.
+> En este momento, Azure MFA solo funciona con el trabajo o escolares, no las cuentas de Microsoft (normalmente una cuenta personal que ha utilizado toosign en servicios de tooMicrosoft como Skype, Xbox, Outlook.com, etcetera.). Por este motivo, cualquier persona que utilice una cuenta de Microsoft no puede ser un administrador elegible porque no pueden usar MFA tooactivate sus roles. Si estos usuarios necesitan toocontinue administrar cargas de trabajo con una cuenta Microsoft, elevar ellos toopermanent administradores por ahora.
 > 
 > 
 
-Además, puede cambiar el requisito de MFA para un rol específico haciendo clic en él en la sección Roles del panel de PIM. Luego, haga clic en **Configuración** en la hoja de roles y seleccione **Habilitar** en Multi-Factor Authentication.
+Además, puede cambiar el requisito de MFA de Hola para un rol específico haciendo clic en él en la sección Roles de panel PIM Hola Hola. A continuación, haga clic en **configuración** en la hoja de rol de hello y, a continuación, seleccione **habilitar** bajo la autenticación multifactor.
 
 ## <a name="how-azure-ad-pim-validates-mfa"></a>Cómo PIM de Azure AD valida MFA
 Hay dos opciones para validar MFA cuando un usuario activa un rol.
 
-La opción más sencilla es depender de Azure MFA en el caso de los usuarios que activan un rol con privilegios. Para ello, primero compruebe que dichos usuarios cuentan con una licencia, si es necesario, y que se han registrado en Azure MFA. Más información en [Introducción a Azure Multi-Factor Authentication en la nube](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md). Se recomienda, aunque no es necesario, configurar Azure AD para imponer MFA en estos usuarios cuando inicien sesión. Esto se debe a que PIM de Azure AD realizará las comprobaciones de MFA.
+opción más sencilla de Hello es toorely en Azure MFA para los usuarios que se va a activar un rol con privilegios. toodo, primera comprobación de que los usuarios cuentan con licencia, si es necesario y se han registrado en Azure MFA. Obtener más información sobre cómo toodo trata de un [Introducción a la autenticación multifactor Azure en la nube de hello](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md). Se recomienda, pero no es necesario, configure tooenforce de Azure AD MFA para estos usuarios cuando inician sesión en. Esto es porque se realizarán comprobaciones MFA de Hola por PIM AD de Azure propia.
 
-Si los usuarios se autentican en el entorno local, también puede hacer que el proveedor de identidades se encargue de MFA. Por ejemplo, si ha configurado Servicios de federación de AD para exigir la autenticación basada en tarjeta inteligente antes de acceder a Azure AD, el artículo [Protección de recursos en la nube con Azure Multi-Factor Authentication y AD FS](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md) incluye instrucciones para configurar AD FS para enviar notificaciones a Azure AD. Cuando un usuario intenta activar un rol, PIM de Azure AD aceptará que ya se ha validado MFA para el usuario cuando reciba las notificaciones adecuadas.
+Si los usuarios se autentican en el entorno local, también puede hacer que el proveedor de identidades se encargue de MFA. Por ejemplo, si ha configurado la autenticación de basado en tarjeta inteligente toorequire de servicios de federación de AD antes de acceder a Azure AD, [recursos de nube de protección con autenticación multifactor de Azure y AD FS](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md) incluye instrucciones Para configurar AD FS toosend notificaciones tooAzure AD. Cuando un usuario intenta tooactivate un rol, PIM de Azure AD aceptará que MFA ya se ha validado para el usuario de hello después de recibir notificaciones adecuadas de Hola.
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
 ## <a name="next-steps"></a>Pasos siguientes
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

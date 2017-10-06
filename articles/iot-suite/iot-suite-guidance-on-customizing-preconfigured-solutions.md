@@ -1,6 +1,6 @@
 ---
-title: "Personalizar una solución preconfigurada | Microsoft Docs"
-description: "Proporciona directrices sobre la personalización de ñas soluciones preconfiguradas del Conjunto de aplicaciones de IoT de Azure."
+title: soluciones preconfiguradas de aaaCustomizing | Documentos de Microsoft
+description: "Proporciona instrucciones sobre cómo toocustomize hello Azure IoT conjunto había preconfigurado soluciones."
 services: 
 suite: iot-suite
 documentationcenter: .net
@@ -15,73 +15,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
-ms.openlocfilehash: bdf4cd89d5ad0392337dfe761108608d506adf18
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a8573f5ac6ed944c44459df495446f15174d513
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="customize-a-preconfigured-solution"></a>Personalizar una solución preconfigurada
 
-Las soluciones preconfiguradas proporcionadas con el conjunto de aplicaciones de IoT de Azure muestran los servicios del conjunto de aplicaciones que funcionan juntos para proporcionar una solución completa. Desde este punto de partida, existen varios lugares donde puede ampliar y personalizar la solución para cada situación específica. Las secciones siguientes describen estos puntos de personalización comunes.
+soluciones de Hello preconfigurado proporcionadas con hello Azure IoT Suite muestran los servicios de hello en hello suite trabajar juntos toodeliver una solución end-to-end. Desde este punto de partida, hay varios lugares en los que puede ampliar y personalizar soluciones de Hola para escenarios concretos. Hola siguientes secciones describe estos puntos de personalización comunes.
 
-## <a name="find-the-source-code"></a>Ubicación del código fuente
+## <a name="find-hello-source-code"></a>Buscar código fuente de Hola
 
-El código fuente de su solución preconfigurada está disponible en Github en los repositorios siguientes:
+código fuente de Hola para soluciones de hello preconfigurado está disponible en GitHub en hello después repositorios:
 
 * Supervisión remota: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
 * Mantenimiento predictivo: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
 * Fábrica conectada: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
-El código fuente de las soluciones preconfiguradas se proporciona para demostrar los patrones y los procedimientos que se usan para implementar la funcionalidad de extremo a extremo de una solución de IoT mediante el conjunto de aplicaciones de IoT de Azure. Puede encontrar más información sobre cómo crear e implementar las soluciones en los repositorios de GitHub.
+código fuente de Hola para soluciones de hello preconfigurado es proporciona recomendaciones y los patrones de hello toodemonstrate utilizan funcionalidad de tooimplement Hola-to-end de una solución de IoT con conjunto de IoT de Azure. Puede encontrar más información sobre cómo toobuild e implementar soluciones de hello en repositorios de GitHub Hola.
 
-## <a name="change-the-preconfigured-rules"></a>Cambio de las reglas previamente configuradas
+## <a name="change-hello-preconfigured-rules"></a>Cambiar las reglas de hello preconfigurado
 
-La solución de supervisión remota incluye tres trabajos de [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) para controlar la información del dispositivo, la telemetría y la lógica de reglas de la solución.
+Hello solución de supervisión remota incluye tres [análisis de transmisiones de Azure](https://azure.microsoft.com/services/stream-analytics/) trabajos toohandle información del dispositivo, telemetría y lógica de reglas en soluciones de Hola.
 
-Los tres trabajos de Stream Analytics y su sintaxis se describen detalladamente en el [Tutorial de la solución preconfigurada de supervisión remota](iot-suite-remote-monitoring-sample-walkthrough.md). 
+Hello tres transmitir trabajos de análisis y su sintaxis se describen con más detalle en hello [supervisión remota preconfigurado tutorial de la solución](iot-suite-remote-monitoring-sample-walkthrough.md). 
 
-Puede editar directamente estos trabajos y modificar la lógica, o agregar lógica específica a su escenario. Para encontrar los trabajos de Análisis de transmisiones, siga estos pasos:
+Puede editar estos trabajos directamente tooalter Hola lógica o agregar lógica específica tooyour escenario. Puede encontrar Hola trabajos de análisis de transmisiones como sigue:
 
-1. Vaya al [Portal de Azure](https://portal.azure.com).
-2. Vaya al grupo de recursos con el mismo nombre que la solución de IoT. 
-3. Seleccione el trabajo de Análisis de transmisiones de Azure que desea modificar. 
-4. Detenga el trabajo seleccionando **Detener** en el conjunto de comandos. 
-5. Edite las entradas, la consulta y las salidas.
+1. Vaya demasiado[portal de Azure](https://portal.azure.com).
+2. Navegar por grupo de recursos de toohello con el mismo nombre que la solución de IoT de Hola. 
+3. Seleccione el trabajo de análisis de transmisiones de Azure de hello le gustaría toomodify. 
+4. Detención del trabajo de hello seleccionando **detener** en conjunto Hola de comandos. 
+5. Editar salidas, consultas y las entradas de Hola.
    
-    Una modificación sencilla consiste en cambiar la consulta para que el trabajo **Reglas** use **"<"** en lugar de **">"**. El portal de la solución sigue mostrando **">"** al editar una regla, pero observe cómo varía el comportamiento debido al cambio en el trabajo subyacente.
-6. Inicio del trabajo
+    Una modificación sencilla es consultar toochange Hola Hola **reglas** trabajo toouse una **"<"** en lugar de un **">"**. portal de solución de Hello sigue mostrando **">"** al editar una regla, pero tenga en cuenta cómo se voltea el comportamiento de hello debido a cambios toohello Hola subyacente de trabajo.
+6. Iniciar el trabajo de Hola
 
 > [!NOTE]
-> El panel de supervisión remota depende de datos específicos, así que la modificación de los trabajos puede provocar errores del panel.
+> panel de supervisión remoto Hello depende de datos específicos, modificar trabajos Hola puede causar Hola panel toofail.
 
 ## <a name="add-your-own-rules"></a>Adición de reglas propias
 
-Además de cambiar los trabajos de Análisis de transmisiones de Azure preconfigurados, puede usar el Portal de Azure para agregar nuevos trabajos o nuevas consultas a los trabajos existentes.
+Además toochanging Hola había preconfigurado trabajos de análisis de transmisiones de Azure, puede usar los nuevos trabajos de hello tooadd portal Azure o agregar nuevos trabajos de tooexisting de las consultas.
 
 ## <a name="customize-devices"></a>Personalización de dispositivos
 
-Una de las actividades de extensión más comunes es trabajar con dispositivos específicos de su escenario. Existen varios métodos para trabajar con dispositivos. Entre estos se incluye la modificación de un dispositivo simulado para adaptarlo a su situación, o bien el uso del [SDK de dispositivo de IoT][IoT Device SDK] para conectar el dispositivo físico a la solución.
+Una de las actividades de extensión más comunes de Hola está trabajando con el escenario de tooyour específicos de dispositivos. Existen varios métodos para trabajar con dispositivos. Estos métodos incluyen modificar un toomatch dispositivo simulado su escenario, o mediante hello [SDK de dispositivos de IoT] [ IoT Device SDK] tooconnect la solución de toohello de dispositivo físico.
 
-Para obtener una guía paso a paso sobre cómo agregar dispositivos, consulte el artículo [Dispositivos de conexión del conjunto de aplicaciones de IoT](iot-suite-connecting-devices.md) y el [ejemplo del SDK de C de supervisión remota](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring). Este ejemplo está diseñado para funcionar con la solución de supervisión remota preconfigurada.
+Para un dispositivo de tooadding guía paso a paso, vea hello [Iot Suite conectar dispositivos](iot-suite-connecting-devices.md) hello y artículo [ejemplo de SDK de C de supervisión remota](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring). Este ejemplo es toowork diseñada con hello solución preconfigurada de supervisión remoto.
 
 ### <a name="create-your-own-simulated-device"></a>Creación de dispositivo simulado propio
 
-El [código fuente de la solución de supervisión remota](https://github.com/Azure/azure-iot-remote-monitoring) incluye un simulador. NET. Este simulador es el que se aprovisiona como parte de la solución y puede modificarlo para enviar distintos metadatos, telemetría y responder a distintos comandos y métodos.
+Incluido en hello [código fuente de solución de supervisión remota](https://github.com/Azure/azure-iot-remote-monitoring), es un simulador. NET. Este simulador es hello uno aprovisionado como parte de la solución de Hola y se puede modificar toosend distintos metadatos, telemetría y responder métodos y comandos de toodifferent.
 
-El simulador preconfigurado en la solución preconfigurada de supervisión remota imita un dispositivo de refrigeración que emite la telemetría de temperatura y humedad. Puede modificar el simulador en el proyecto [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) cuando haya bifurcado el repositorio de GitHub.
+simulador preconfigurada de Hola Hola solución preconfigurada de supervisión remota simula un dispositivo de refrigeración que emite la telemetría de temperatura y humedad. Puede modificar simulador Hola Hola [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) proyecto cuando se ha bifurcado repositorio de GitHub de Hola.
 
 ### <a name="available-locations-for-simulated-devices"></a>Ubicaciones disponibles para dispositivos simulados
 
-El conjunto predeterminado de ubicaciones es Seattle/Redmond, Washington (Estados Unidos de América). Puede cambiar estas ubicaciones en [SampleDeviceFactory.cs][lnk-sample-device-factory].
+conjunto de ubicaciones de Hello predeterminado es en Seattle y Redmond, Washington, Estados Unidos de América. Puede cambiar estas ubicaciones en [SampleDeviceFactory.cs][lnk-sample-device-factory].
 
-### <a name="add-a-desired-property-update-handler-to-the-simulator"></a>Adición de un controlador de actualización de propiedad deseada al simulador
+### <a name="add-a-desired-property-update-handler-toohello-simulator"></a>Agregar un simulador de toohello del controlador de actualización de propiedad deseada
 
-Puede establecer un valor para una propiedad deseada de un dispositivo en el portal de la solución. Es responsabilidad del dispositivo controlar la solicitud de cambio de la propiedad cuando el dispositivo recupera el valor de la propiedad deseada. Para agregar compatibilidad para un cambio del valor de propiedad mediante una propiedad deseada, debe agregar un controlador al simulador.
+Puede establecer un valor para una propiedad deseada para un dispositivo en el portal de solución de Hola. Es responsabilidad de Hola de solicitud de cambio de propiedad de Hola Hola dispositivo toohandle al dispositivo de hello recupera el valor de la propiedad de hello deseado. compatibilidad con tooadd un cambio de valor de propiedad a través de una propiedad deseada, deberá tooadd un simulador de toohello de controlador.
 
-El simulador contiene controladores para las propiedades **SetPointTemp** y **TelemetryInterval** que puede actualizar mediante el establecimiento de los valores deseados en el portal de soluciones.
+simulador de Hello contiene controladores para hello **SetPointTemp** y **TelemetryInterval** deseado de propiedades que se pueden actualizar estableciendo valores en el portal de solución de Hola.
 
-En el ejemplo siguiente se muestra el controlador para la propiedad deseada **SetPointTemp** de la clase **CoolerDevice**:
+Hello en el ejemplo siguiente se muestra controlador Hola Hola **SetPointTemp** deseado propiedad Hola **CoolerDevice** clase:
 
 ```csharp
 protected async Task OnSetPointTempUpdate(object value)
@@ -93,11 +93,11 @@ protected async Task OnSetPointTempUpdate(object value)
 }
 ```
 
-Este método permite actualizar la temperatura de telemetría y, a continuación, informa del cambio a IoT Hub estableciendo una propiedad notificada.
+Este método actualiza el punto de telemetría Hola informes hello temperatura y, a continuación, cambian atrás tooIoT concentrador estableciendo una propiedad notificada.
 
-Puede agregar sus propios controladores a sus propias propiedades siguiendo el patrón del ejemplo anterior.
+Puede agregar sus propios controladores para sus propias propiedades mediante el siguiente patrón de hello en el anterior ejemplo de Hola.
 
-También debe enlazar la propiedad deseada al controlador tal y como se muestra en el siguiente ejemplo del constructor **CoolerDevice**:
+Debe enlazar también el controlador de hello propiedad deseada toohello tal y como se muestra en el siguiente ejemplo de Hola de hello **CoolerDevice** constructor:
 
 ```csharp
 _desiredPropertyUpdateHandlers.Add(SetPointTempPropertyName, OnSetPointTempUpdate);
@@ -105,16 +105,16 @@ _desiredPropertyUpdateHandlers.Add(SetPointTempPropertyName, OnSetPointTempUpdat
 
 Tenga en cuenta que **SetPointTempPropertyName** es una constante definida como "Config.SetPointTemp".
 
-### <a name="add-support-for-a-new-method-to-the-simulator"></a>Adición de compatibilidad con un nuevo método al simulador
+### <a name="add-support-for-a-new-method-toohello-simulator"></a>Agregar compatibilidad con un simulador de toohello método nuevo
 
-Puede personalizar el simulador para agregar compatibilidad con un nuevo [método (método directo)][lnk-direct-methods]. Se necesitan dos pasos principales:
+Puede personalizar Hola simulador tooadd compatibilidad con un nuevo [método (directo)][lnk-direct-methods]. Se necesitan dos pasos principales:
 
-- El simulador debe notificar a la instancia de IoT Hub de la solución preconfigurada los detalles del método.
-- El simulador debe incluir código para controlar la llamada al método cuando se invoca desde el panel **Detalles del dispositivo** en el Explorador de soluciones o a través de un trabajo.
+- simulador Hola debe notificar al centro de IoT de hello en soluciones de hello preconfigurado con los detalles del método hello.
+- simulador de Hello debe incluir la llamada al método de código toohandle Hola al invocarlo desde hello **detalles del dispositivo** panel en el Explorador de soluciones de Hola o a través de un trabajo.
 
-La solución preconfigurada de supervisión remota usa *propiedades notificadas* para enviar los detalles sobre los métodos admitidos a IoT Hub. El back-end de soluciones mantiene una lista de todos los métodos admitidos por cada dispositivo junto con un historial de las invocaciones de cada método. Puede ver esta información acerca de los dispositivos e invocar métodos en el portal de la solución.
+Hello supervisión remota preconfigurado solución usa *notificado propiedades* toosend detalles del concentrador de tooIoT métodos admitidos. back-end de soluciones de Hello mantiene una lista de todos los métodos de hello admitidos por cada dispositivo junto con un historial de las invocaciones de método. Puede ver esta información acerca de los dispositivos e invocar métodos en el portal de solución de Hola.
 
-Para notificar a IoT Hub que un dispositivo es compatible con un método, el dispositivo debe agregar los detalles del método al nodo **SupportedMethods** en las propiedades notificadas:
+Centro de IoT de toonotify Hola que un dispositivo es compatible con un método, dispositivo Hola debe agregar detalles de hello método toohello **SupportedMethods** nodo Hola notificado propiedades:
 
 ```json
 "SupportedMethods": {
@@ -123,35 +123,35 @@ Para notificar a IoT Hub que un dispositivo es compatible con un método, el dis
 }
 ```
 
-La firma del método tiene el formato siguiente: `<method name>--<parameter #0 name>-<parameter #1 type>-...-<parameter #n name>-<parameter #n type>`. Por ejemplo, para especificar que el método **InitiateFirmwareUpdate** espera un parámetro de cadena denominado **FwPackageURI**, use la siguiente firma de método:
+firma del método Hello tiene Hola siguiendo el formato: `<method name>--<parameter #0 name>-<parameter #1 type>-...-<parameter #n name>-<parameter #n type>`. Por ejemplo, toospecify hello **InitiateFirmwareUpdate** método espera un parámetro de cadena denominado **FwPackageURI**, usar hello después de la firma del método:
 
 ```json
 InitiateFirmwareUpate--FwPackageURI-string: "description of method"
 ```
 
-Para obtener una lista de los tipos de parámetro admitidos, consulte la clase **CommandTypes** del proyecto Infrastructure.
+Para obtener una lista de tipos de parámetro admitidos, vea hello **CommandTypes** clase en el proyecto de infraestructura de Hola.
 
-Para eliminar un método, establezca la firma del método en `null` en las propiedades notificadas.
+toodelete un método, establezca la firma del método hello demasiado`null` Hola notificado propiedades.
 
 > [!NOTE]
-> El back-end de soluciones solo actualiza información acerca de los métodos compatibles cuando recibe un mensaje de *información del dispositivo* desde este.
+> Hello back-end de soluciones sólo actualiza la información sobre los métodos admitidos cuando recibe un *información del dispositivo* mensaje de Hola dispositivo.
 
-El siguiente ejemplo de código de la clase **SampleDeviceFactory** del proyecto Common muestra cómo agregar un método a la lista de **SupportedMethods** en las propiedades notificadas enviadas por el dispositivo:
+Hola siguiente código de ejemplo de Hola **SampleDeviceFactory** clase Hola comunes de proyectos se muestra cómo tooadd una lista de toohello método de **SupportedMethods** Hola notificado propiedad enviada por hello dispositivo:
 
 ```csharp
 device.Commands.Add(new Command(
     "InitiateFirmwareUpdate",
     DeliveryType.Method,
-    "Updates device Firmware. Use parameter 'FwPackageUri' to specifiy the URI of the firmware file, e.g. https://iotrmassets.blob.core.windows.net/firmwares/FW20.bin",
+    "Updates device Firmware. Use parameter 'FwPackageUri' toospecifiy hello URI of hello firmware file, e.g. https://iotrmassets.blob.core.windows.net/firmwares/FW20.bin",
     new[] { new Parameter("FwPackageUri", "string") }
 ));
 ```
 
-Este fragmento de código permite agregar los detalles del método **InitiateFirmwareUpdate**, incluido el texto para mostrar en el portal de solución, y los detalles sobre los parámetros de método necesarios.
+Este fragmento de código agrega detalles de hello **InitiateFirmwareUpdate** método incluidos toodisplay de texto en el portal de solución de Hola y los detalles del programa Hola a los parámetros de método necesarios.
 
-Al iniciarse, el simulador envía propiedades notificadas, incluida la lista de métodos admitidos, a IoT Hub.
+simulador de Hello envía propiedades notificados, incluida la lista de Hola de métodos admitidos, tooIoT concentrador cuando se inicia el simulador de Hola.
 
-Agregue un controlador al código del simulador de cada método que admite. Puede ver los controladores existentes en la clase **CoolerDevice** del proyecto Simulator.WebJob. En el ejemplo siguiente se muestra el controlador del método **InitiateFirmwareUpdate**:
+Agregar un código de controlador toohello simulador para cada método que admite. Puede ver los controladores existentes Hola Hola **CoolerDevice** clase hello Simulator.WebJob proyecto. Hello en el ejemplo siguiente se muestra el controlador de hello para **InitiateFirmwareUpdate** método:
 
 ```csharp
 public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodRequest, object userContext)
@@ -195,58 +195,58 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 }
 ```
 
-Los nombres de controlador de método deben empezar por `On` seguido del nombre del método. El parámetro **methodRequest** contiene todos los parámetros pasados con la invocación del método desde el back-end de soluciones. El valor devuelto debe ser del tipo **Task&lt;RespuestaDelMétodo&gt;**. El método de la utilidad **BuildMethodResponse** le ayudará a crear el valor devuelto.
+Los nombres de controlador de método deben empezar por `On` seguido Hola nombre del método hello. Hola **methodRequest** parámetro contiene cualquier parámetro pasado con la invocación del método hello de hello solución back-end. valor devuelto Hello debe ser una de tipo **tarea&lt;MethodResponse&gt;**. Hola **BuildMethodResponse** método de utilidad le ayudará a crear el valor devuelto de Hola.
 
-Dentro del controlador de método, puede:
+Dentro de hello método controlador, se puede realizar:
 
 - Iniciar una tarea asincrónica.
-- Recuperar las propiedades deseadas desde el *dispositivo gemelo* de IoT Hub.
-- Actualizar una única propiedad notificada mediante el método **SetReportedPropertyAsync** de la clase **CoolerDevice**.
-- Actualizar varias propiedades notificadas mediante la creación de una instancia de **TwinCollection** y la llamada al método **Transport.UpdateReportedPropertiesAsync**.
+- Recuperar propiedades deseadas de hello *gemelas dispositivo* en Centro de IoT.
+- Actualizar una única propiedad incluida con hello **SetReportedPropertyAsync** método Hola **CoolerDevice** clase.
+- Actualizar varias propiedades notificados mediante la creación de un **TwinCollection** hello que realiza la llamada y la instancia **Transport.UpdateReportedPropertiesAsync** método.
 
-El ejemplo de actualización de firmware anterior realiza los pasos siguientes:
+Hello ejemplo de actualización de firmware anterior realiza Hola pasos:
 
-- Comprueba que el dispositivo puede aceptar la solicitud de actualización de firmware.
-- Inicia la operación de actualización de firmware de forma asincrónica y restablece la telemetría cuando se completa la operación.
-- Devuelve inmediatamente el mensaje "FirmwareUpdate aceptado" para indicar que el dispositivo aceptó la solicitud.
+- Comprobaciones de hello dispositivo es solicitud de actualización de firmware de tooaccept capaz de Hola.
+- Inicia la operación de actualización de firmware de Hola de forma asincrónica y restablece la telemetría de hello cuando se completa la operación de Hola.
+- Inmediatamente devuelve Hola "FirmwareUpdate aceptado" se aceptó la solicitud de Hola de tooindicate de mensaje por dispositivo de Hola.
 
 ### <a name="build-and-use-your-own-physical-device"></a>Creación y uso de dispositivos propios (físicos)
 
-Los [SDK de IoT de Azure](https://github.com/Azure/azure-iot-sdks) proporcionan bibliotecas que permiten conectar distintos tipos de dispositivos (lenguajes y sistemas operativos) a soluciones IoT.
+Hola [SDK de Azure IoT](https://github.com/Azure/azure-iot-sdks) proporcionan bibliotecas para conectar numerosos tipos de dispositivo (idiomas y sistemas operativos) en soluciones de IoT.
 
 ## <a name="modify-dashboard-limits"></a>Modificación de los límites de panel
 
 ### <a name="number-of-devices-displayed-in-dashboard-dropdown"></a>Número de dispositivos que se muestran en la lista desplegable del panel
 
-El valor predeterminado es 200. Puede cambiar este número en [DashboardController.cs][lnk-dashboard-controller].
+Hola predeterminado es 200. Puede cambiar este número en [DashboardController.cs][lnk-dashboard-controller].
 
-### <a name="number-of-pins-to-display-in-bing-map-control"></a>Número de chinchetas que se muestran en el control de Bing Maps
+### <a name="number-of-pins-toodisplay-in-bing-map-control"></a>Número de PIN toodisplay en control de mapa de Bing
 
-El valor predeterminado es 200. Puede cambiar este número en [TelemetryApiController.cs][lnk-telemetry-api-controller-01].
+Hola predeterminado es 200. Puede cambiar este número en [TelemetryApiController.cs][lnk-telemetry-api-controller-01].
 
 ### <a name="time-period-of-telemetry-graph"></a>Periodo del gráfico de telemetría
 
-El valor predeterminado es 10 minutos. Puede cambiar este valor en [TelmetryApiController.cs][lnk-telemetry-api-controller-02].
+valor predeterminado de Hello es 10 minutos. Puede cambiar este valor en [TelmetryApiController.cs][lnk-telemetry-api-controller-02].
 
 ## <a name="manually-set-up-application-roles"></a>Configuración manual de los roles de aplicación
 
-El siguiente procedimiento describe cómo agregar los roles de aplicación **Admin** y **ReadOnly** a una solución preconfigurada. Tenga en cuenta que las soluciones preconfiguradas aprovisionadas desde el sitio azureiotsuite.com ya incluyen los roles **Admin** y **ReadOnly**.
+Hello siguiente procedimiento describe cómo tooadd **administración** y **ReadOnly** tooa de roles de aplicación configurado previamente la solución. Tenga en cuenta que las soluciones preconfiguradas aprovisionadas desde sitios de hello azureiotsuite.com ya incluyen hello **administración** y **ReadOnly** roles.
 
-Los miembros del rol **ReadOnly** pueden ver el panel y la lista de dispositivos, pero no tienen permiso para agregar dispositivos, cambiar atributos de dispositivo ni enviar comandos.  Los miembros del rol **Admin** tienen acceso total a todas las funciones de la solución.
+Los miembros de hello **ReadOnly** rol puede ver la lista de dispositivos de Hola y el panel de hello, pero no se permiten dispositivos tooadd, atributos de dispositivo de cambio o comandos de envío.  Los miembros de hello **administración** rol tiene funcionalidad de acceso completo tooall hello en solución de Hola.
 
-1. Vaya al [Portal de Azure clásico][lnk-classic-portal].
+1. Vaya toohello [portal de Azure clásico][lnk-classic-portal].
 2. Seleccione **Active Directory**.
-3. Haga clic en el nombre del inquilino de AAD que usó al aprovisionar la solución.
+3. Haga clic en nombre de hello del inquilino de AAD de Hola que usó al aprovisionar la solución.
 4. Haga clic en **Aplicaciones**.
-5. Haga clic en el nombre de la aplicación que coincida con el nombre de la solución preconfigurada. Si no ve la aplicación en la lista, seleccione **Aplicaciones que tiene mi compañía** en la lista desplegable **Mostrar** y haga clic en la marca de verificación.
-6. En la parte inferior de la página, haga clic en **Administrar manifiesto** y, luego, en **Descargar manifiesto**.
-7. Este procedimiento permite descargar un archivo .json en la máquina local. Abra este archivo para editarlo en el editor de texto que quiera.
-8. En la tercera línea del archivo .json, verá:
+5. Haga clic en el nombre de Hola de aplicación Hola que coincida con el nombre de la solución preconfigurada. Si no ve la aplicación en la lista de hello, seleccione **aplicaciones tiene mi compañía** en hello **mostrar** lista desplegable y haga clic en Hola marca de verificación.
+6. En la parte inferior de Hola de página de hello, haga clic en **administrar manifiesto** y, a continuación, **descargar manifiesto**.
+7. Este procedimiento descarga un equipo local de .json archivo tooyour. Abra este archivo para editarlo en el editor de texto que quiera.
+8. En hello tercera línea del archivo .json de hello, puede ver:
 
    ```json
    "appRoles" : [],
    ```
-   Reemplace esta línea por el código siguiente:
+   Reemplace esta línea con hello siguiente código:
 
    ```json
    "appRoles": [
@@ -254,7 +254,7 @@ Los miembros del rol **ReadOnly** pueden ver el panel y la lista de dispositivos
    "allowedMemberTypes": [
    "User"
    ],
-   "description": "Administrator access to the application",
+   "description": "Administrator access toohello application",
    "displayName": "Admin",
    "id": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
    "isEnabled": true,
@@ -264,7 +264,7 @@ Los miembros del rol **ReadOnly** pueden ver el panel y la lista de dispositivos
    "allowedMemberTypes": [
    "User"
    ],
-   "description": "Read only access to device information",
+   "description": "Read only access toodevice information",
    "displayName": "Read Only",
    "id": "e5bbd0f5-128e-4362-9dd1-8f253c6082d7",
    "isEnabled": true,
@@ -272,23 +272,23 @@ Los miembros del rol **ReadOnly** pueden ver el panel y la lista de dispositivos
    } ],
    ```
 
-9. Guarde el archivo .json actualizado (puede sobrescribir el archivo existente).
-10. En el Portal de Azure clásico, en la parte inferior de la página, seleccione **Administrar manifiesto** y, después, **Cargar manifiesto** para cargar el archivo .json que guardó en el paso anterior.
-11. Ahora, los roles **Admin** y **ReadOnly** ya están agregados a la aplicación.
-12. Para asignar uno de estos roles a un usuario del directorio, consulte [Permisos en el sitio azureiotsuite.com][lnk-permissions].
+9. Guarde el archivo de .json actualizada de hello (puede sobrescribir archivos existentes de hello).
+10. Hola portal de Azure clásico, en parte inferior de Hola de página de hello, seleccione **administrar manifiesto** , a continuación, **cargar manifiesto** archivo .json tooupload Hola que guardó en el paso anterior de Hola.
+11. Ya has agregado hello **administración** y **ReadOnly** aplicación tooyour de roles.
+12. tooassign uno de estos usuarios tooa de roles en el directorio, consulte [permisos en el sitio de hello azureiotsuite.com][lnk-permissions].
 
 ## <a name="feedback"></a>Comentarios
 
-¿Tiene una personalización que le gustaría que se tratara en este documento? Agregue las sugerencias de características a [User Voice](https://feedback.azure.com/forums/321918-azure-iot) o comente este artículo. 
+¿Tiene una personalización que le gustaría toosee cubierta por este documento? Agregar sugerencias sobre características demasiado[User Voice](https://feedback.azure.com/forums/321918-azure-iot), o un comentario en este artículo. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre las opciones para personalizar las soluciones preconfiguradas, consulte estos artículos:
+toolearn más información acerca de opciones de Hola para personalizar soluciones de hello preconfigurado, consulte:
 
-* [Tutorial: Conexión de una aplicación lógica a la solución preconfigurada de supervisión remota del Conjunto de aplicaciones de IoT de Azure][lnk-logicapp]
-* [Uso de telemetría dinámica con la solución de supervisión remota preconfigurada][lnk-dynamic]
-* [Metadatos de información de dispositivo en la solución preconfigurada de supervisión remota][lnk-devinfo]
-* [Customize how the connected factory solution displays data from your OPC UA servers][lnk-cf-customize] (Personalización de cómo muestra la solución de fábrica conectada los datos de los servidores de OPC UA)
+* [Solución de Azure de supervisión remota de conjunto de IoT preconfigurado tooyour de aplicación lógica de conexión][lnk-logicapp]
+* [Use la telemetría dinámica con hello solución preconfigurada de supervisión remota][lnk-dynamic]
+* [Metadatos de información de dispositivo en hello solución preconfigurada de supervisión remota][lnk-devinfo]
+* [Personalizar cómo Hola conectado generador solución muestra los datos de los servidores de OPC UA][lnk-cf-customize]
 
 [lnk-logicapp]: iot-suite-logic-apps-tutorial.md
 [lnk-dynamic]: iot-suite-dynamic-telemetry.md

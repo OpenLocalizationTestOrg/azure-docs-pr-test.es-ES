@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con PlanMyLeave | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y PlanMyLeave."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y PlanMyLeave."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: jeedes
-ms.openlocfilehash: ba418a641b339a0d94a3c7b2596d37fbd88a30c5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 44a6782e44ef22fc957544960be1742f9eed6e51
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Tutorial: Integración de Azure Active Directory con PlanMyLeave
 
-En este tutorial, obtendrá información sobre cómo integrar PlanMyLeave con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate PlanMyLeave con Azure Active Directory (Azure AD).
 
-Integrar PlanMyLeave con Azure AD proporciona las siguientes ventajas:
+Integración PlanMyLeave con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a PlanMyLeave.
-- Puede permitir que los usuarios inicien sesión automáticamente en PlanMyLeave (inicio de sesión único) con las cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: el Portal de administración de Azure.
+- Puede controlar en Azure AD que tenga acceso tooPlanMyLeave
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooPlanMyLeave (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: portal de administración de Azure de Hola
 
-Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con PlanMyLeave, se necesitan los siguientes elementos:
+integración de Azure AD con PlanMyLeave tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en PlanMyLeave
 
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No debe usar el entorno de producción, a menos que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Agregar PlanMyLeave desde la galería
+1. Agregar PlanMyLeave desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
 
-## <a name="adding-planmyleave-from-the-gallery"></a>Agregar PlanMyLeave desde la galería
-Para configurar la integración de PlanMyLeave en Azure AD, deberá agregar PlanMyLeave desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-planmyleave-from-hello-gallery"></a>Agregar PlanMyLeave desde la Galería de Hola
+integración de hello tooconfigure de PlanMyLeave en Azure AD, deberá tooadd PlanMyLeave de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar PlanMyLeave desde la galería, realice los pasos siguientes:**
+**tooadd PlanMyLeave de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **[Portal de administración de Azure](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[Portal de administración de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Haga clic en el botón **Agregar** situado en la parte superior del cuadro de diálogo.
+3. Haga clic en **agregar** botón en la parte superior de saludo del cuadro de diálogo de Hola.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **PlanMyLeave**.
+4. En el cuadro de búsqueda de hello, escriba **PlanMyLeave**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_001.png)
 
-5. En el panel de resultados, seleccione **PlanMyLeave** y, después, haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **PlanMyLeave**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_0001.png)
 
@@ -85,64 +85,64 @@ Para configurar la integración de PlanMyLeave en Azure AD, deberá agregar Plan
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con PlanMyLeave con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de PlanMyLeave para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de PlanMyLeave.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en PlanMyLeave es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en PlanMyLeave debe toobe establecido.
 
-Esta relación de vínculo se establece mediante la asignación del valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en PlanMyLeave.
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en PlanMyLeave.
 
-Para configurar y probar el inicio de sesión único de Azure AD con PlanMyLeave, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con PlanMyLeave, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba para PlanMyLeave](#creating-a-planmyleave-test-user)** : para tener un homólogo de Britta Simon en PlanMyLeave que esté vinculado a su representación en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba PlanMyLeave](#creating-a-planmyleave-test-user)**  -toohave un equivalente de Britta Simon en PlanMyLeave que está vinculado toohello Azure AD representación de ella.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en el Portal de administración de Azure y configurará el inicio de sesión único en la aplicación PlanMyLeave.
+En esta sección, habilitar inicio de sesión único en Azure AD en el portal de administración de Azure de Hola y configurar el inicio de sesión único en la aplicación PlanMyLeave.
 
-**Para configurar el inicio de sesión único de Azure AD con PlanMyLeave, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con PlanMyLeave, realizar Hola pasos:**
 
-1. En el Portal de administración de Azure, en la página de integración de la aplicación **PlanMyLeave**, haga clic en **Inicio de sesión único**.
+1. En el portal de administración de Azure de hello, en hello **PlanMyLeave** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En la página de diálogo **Inicio de sesión único**, en **Modo**, seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** página del cuadro de diálogo, como **modo** seleccione **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_01.png)
 
-3. En la sección **Dominio y direcciones URL de PlanMyLeave**, lleve a cabo los pasos siguientes:
+3. En hello **PlanMyLeave dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_02.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<company-name>.planmyleave.com/Login.aspx`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company-name>.planmyleave.com/Login.aspx`
     
-    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<company-name>.planmyleave.com`.
+    b. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company-name>.planmyleave.com`
 
     > [!NOTE] 
-    > Tenga en cuenta que estos no son valores reales. Tendrá que actualizarlos con la dirección URL y el identificador reales de inicio de sesión. Póngase en contacto con el [equipo de soporte técnico de PlanMyLeave](mailto:support@planmyleave.com) para obtener estos valores.
+    > Tenga en cuenta que estos no son los valores reales de Hola. Tendrá que tooupdate estos valores con hello real iniciar sesión en la dirección URL y el identificador. Póngase en contacto con [equipo de soporte técnico de PlanMyLeave](mailto:support@planmyleave.com) tooget estos valores.
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **Crear nuevo certificado**.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **crear un nuevo certificado**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_03.png)     
 
-5. En el cuadro de diálogo **Crear nuevo certificado**, haga clic en el icono del calendario y seleccione una valor en **Fecha de expiración**. Luego haga clic en el botón **Guardar**.
+5. En hello **crear nuevo certificado** cuadro de diálogo, haga clic en el icono del calendario de Hola y seleccione un **fecha de expiración**. Luego haga clic en el botón **Guardar**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_general_300.png)
 
-6. En la sección **Certificado de firma de SAML**, seleccione **Make new certificate active** (Activar el nuevo certificado) y haga clic en el botón **Guardar**.
+6. En hello **el certificado de firma de SAML** sección, seleccione **activar el nuevo certificado** y haga clic en **guardar** botón.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_04.png)
 
-7. En la ventana emergente **Rollover certificate** (Certificado de sustitución), haga clic en **Aceptar**.
+7. En la ventana emergente de hello **el certificado de sustitución** ventana, haga clic en **Aceptar**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_general_400.png)
 
-8. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
+8. En hello **el certificado de firma de SAML** sección, haga clic en **certificado (base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_05.png) 
 
-9. En la sección **Configuración de PlanMyLeave**, haga clic en **Configurar PlanMyLeave** para abrir la ventana **Configurar inicio de sesión único**.
+9. En hello **PlanMyLeave configuración** sección, haga clic en **configurar PlanMyLeave** tooopen **configurar inicio de sesión** ventana.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_06.png) 
 
@@ -150,56 +150,56 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en el Port
 
 10. En otra ventana del explorador web, inicie sesión en como administrador en el inquilino de PlanMyLeave.
 
-11. Vaya a **Configuración del sistema**. Después, en la sección **Administración de seguridad**, haga clic en **Company SAML settings** (Configuración de SAML de la empresa).
+11. Vaya demasiado**el programa de instalación de sistema**. A continuación, en hello **administración de seguridad** sección, haga clic **configuración de SAML de la empresa** .
 
     ![Configuración del inicio de sesión único en la aplicación](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_002.png) 
 
-12. En la sección **SAML Settings** (Configuración de SAML), haga clic en el icono del editor.
+12. En hello **configuración SAML** sección, haga clic en el icono de editor.
 
     ![Configuración del inicio de sesión único en la aplicación](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_003.png)
 
-13. En la sección **Update SAML Settings** (Actualizar configuración de SAML), siga estos pasos:
+13. En hello **configuración de SAML de actualización** sección, lleve a cabo Hola pasos:
 
     ![Configuración del inicio de sesión único en la aplicación](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_004.png)
 
-    a.  En el cuadro de texto **URL de inicio de sesión**, coloque el valor de **Dirección URL del servicio de inicio de sesión único** en la ventana de configuración de aplicaciones de Azure AD.
+    a.  Hola **dirección URL de inicio de sesión** cuadro de texto, coloque valor Hola de **SAML Single Sign-On dirección URL del servicio** desde la ventana de configuración de aplicación de Azure AD.
 
-    b.  Abra el archivo de certificado descargado en el bloc de notas, copie solo el contenido comprendido entre ---Begin Certificate--- y ---End certificate---- en el portapapeles y, después, péguelo en el cuadro de texto **Certificado**.
+    b.  Abra el archivo de certificado descargado en el Bloc de notas, copie solo Hola contenido entre Hola---Begin Certificate---y---End certificate---del mismo en el Portapapeles y, a continuación, péguelo toohello **certificado** cuadro de texto.
 
-    c. Establezca "**Is Enable**" en "**Yes**".
+    c. Establecer"**está habilitado**"demasiado"**Sí**".
 
     d. Haga clic en **Guardar**.
 
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en el Portal de administración de Azure llamado Britta Simon.
+objetivo de Hola de esta sección es un usuario de prueba en el portal de administración de Azure de hello llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **Portal de administración de Azure**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de administración de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_01.png) 
 
-2. Vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios** para mostrar la lista de usuarios.
+2. Vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios** toodisplay lista de Hola de usuarios.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_02.png) 
 
-3. En la parte superior del diálogo, haga clic en **Agregar** para abrir el diálogo **Usuario**.
+3. En la parte superior de saludo del cuadro de diálogo de hello haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**. 
 
@@ -207,32 +207,32 @@ El objetivo de esta sección es crear un usuario de prueba en el Portal de admin
 
 ### <a name="creating-a-planmyleave-test-user"></a>Crear un usuario de prueba de PlanMyLeave
 
-El objetivo de esta sección es crear un usuario llamado Britta Simon en PlanMyLeave. PlanMyLeave admite el aprovisionamiento Just-In-Time, que está habilitado de forma predeterminada.
+objetivo de Hola de esta sección es un usuario llamado a Britta Simon en PlanMyLeave toocreate. PlanMyLeave admite el aprovisionamiento Just-In-Time, que está habilitado de forma predeterminada.
 
-No hay ningún elemento de acción para usted en esta sección. Durante un intento de acceder a PlanMyLeave se creará un nuevo usuario, en caso de que no exista.
+No hay ningún elemento de acción para usted en esta sección. Si no existe todavía, se creará un nuevo usuario durante un tooaccess intento PlanMyLeave.
 
 > [!NOTE]
-> Si necesita crear manualmente un usuario, es preciso que se ponga contacto con el [equipo de soporte técnico de PlanMyLeave](mailto:support@planmyleave.com).
+> Si necesita un usuario toocreate manualmente, necesita toocontact [equipo de soporte técnico de PlanMyLeave](mailto:support@planmyleave.com).
 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a PlanMyLeave.
+En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooPlanMyLeave de acceso.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a PlanMyLeave, realice los pasos siguientes:**
+**tooassign Britta Simon tooPlanMyLeave, lleve a cabo Hola pasos:**
 
-1. En el Portal de administración de Azure, abra la vista de aplicaciones, vaya a la vista de directorio y seleccione **Aplicaciones empresariales**. Después, haga clic en **Todas las aplicaciones**.
+1. En el portal de administración de Azure de hello, abrir vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **PlanMyLeave**.
+2. En la lista de aplicaciones de hello, seleccione **PlanMyLeave**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_50.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -240,7 +240,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -250,14 +250,14 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de PlanMyLeave en el panel de acceso, debería iniciar sesión automáticamente en la aplicación de PlanMyLeave.
+Al hacer clic en icono de PlanMyLeave Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour PlanMyLeave aplicación.
 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

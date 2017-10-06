@@ -1,6 +1,6 @@
 ---
-title: Requerir transferencia segura en Azure Storage | Microsoft Docs
-description: "Obtenga información acerca de la característica \"Requerir transferencia segura\" de Azure Storage y cómo habilitarla."
+title: aaaRequire transferencia segura en el almacenamiento de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de la característica de \"Requerir una transferencia segura\" hello para el almacenamiento de Azure y cómo tooenable lo."
 services: storage
 documentationcenter: na
 author: fhryo-msft
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: bc5b7fc79869c632db96958f17aaf953a5fd3b19
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 27f745c5e771b50213c1dbb39dee081947be1f39
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="require-secure-transfer"></a>Requerir transferencia segura
 
-La opción "Se requiere transferencia segura" mejora la seguridad de su cuenta de almacenamiento, ya que solo permite enviar solicitudes a la cuenta de almacenamiento desde conexiones seguras. Por ejemplo, al llamar a las API de REST para acceder a una cuenta de almacenamiento, es preciso conectarse mediante HTTPS. Si "Se requiere transferencia segura" está habilitada, se rechazan todas las solicitudes en que se use HTTP.
+opción de Hola "transferencia segura necesaria" mejora la seguridad de hello de la cuenta de almacenamiento solo tiene que permitir las solicitudes de cuenta de almacenamiento de toohello de conexiones seguras. Por ejemplo, al llamar a las API de REST tooaccess su cuenta de almacenamiento, debe conectarse usando HTTPS. Si "Se requiere transferencia segura" está habilitada, se rechazan todas las solicitudes en que se use HTTP.
 
-Si se usa el servicio Azure Files, se produce un error en todas las conexiones sin cifrado cuando la opción "Se requiere transferencia segura" está habilitada. Aquí se incluyen los escenarios que usan SMB 2.1 y SMB 3.0 sin cifrado, y algunas versiones del cliente SMB de Linux. 
+Cuando se usa el servicio de archivos de Azure de hello, se produce un error en cualquier conexión sin cifrado cuando "Proteger la transferencia requerida" está habilitada. Esto incluye escenarios con algunos tipos de hello cliente Linux SMB, SMB 2.1 y SMB 3.0 sin cifrado. 
 
-De forma predeterminada, la opción "Se requiere transferencia segura" está deshabilitada.
+De forma predeterminada, la opción de Hola "transferencia segura necesaria" está deshabilitada.
 
 > [!NOTE]
 > Dado que Azure Storage no admite HTTPS para los nombres de dominio personalizados, esta opción no se aplica cuando se utiliza un nombre de dominio personalizado.
 
-## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Habilitación de "Se requiere transferencia segura" en Azure Portal
+## <a name="enable-secure-transfer-required-in-hello-azure-portal"></a>Habilitar a "Transferencia segura necesaria" Hola portal de Azure
 
-La opción de "Se requiere transferencia segura" se puede habilitar cuando se crea una cuenta de almacenamiento en [Azure Portal](https://portal.azure.com)y para las cuentas de almacenamiento existentes.
+Puede habilitar Hola "transferencia segura necesario" si se establecen cuando se crea una cuenta de almacenamiento en hello [portal de Azure](https://portal.azure.com)y para las cuentas de almacenamiento existente.
 
 ### <a name="require-secure-transfer-when-you-create-a-storage-account"></a>Solicitud de transferencia segura al crear una cuenta de almacenamiento
 
-1. Abra la hoja **Crear cuenta de almacenamiento** en Azure Portal.
+1. Abra hello **crear cuenta de almacenamiento** hoja Hola portal de Azure.
 1. En **Se requiere transferencia segura**, seleccione **Habilitado**.
 
   ![captura de pantalla](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Solicitud de transferencia segura en una cuenta de almacenamiento existente
 
-1. Seleccione una cuenta de almacenamiento existente en Azure Portal.
-1. Seleccione **Configuración** en **CONFIGURACIÓN** en la hoja del menú de la cuenta de almacenamiento.
+1. Seleccione una cuenta de almacenamiento existente en hello portal de Azure.
+1. Seleccione **configuración** en **configuración** en la hoja de menú de cuenta de almacenamiento de Hola.
 1. En **Se requiere transferencia segura**, seleccione **Habilitado**.
 
   ![captura de pantalla](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
 ## <a name="enable-secure-transfer-required-programmatically"></a>Habilitación de "Se requiere transferencia segura" mediante programación
 
-El nombre del valor es _supportsHttpsTrafficOnly_ en las propiedades de la cuenta de almacenamiento. Puede habilitar la configuración "Se requiere transferencia segura" con la API de REST, herramientas o bibliotecas:
+es el nombre de la configuración de Hello _supportsHttpsTrafficOnly_ en Propiedades de la cuenta de almacenamiento. Puede habilitar la configuración "Se requiere transferencia segura" con la API de REST, herramientas o bibliotecas:
 
 * **API de REST** (versión: 2016-12-01): [paquete comercial](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts)
 * **PowerShell** (versión: 4.1.0): [paquete comercial](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0)
@@ -64,9 +64,9 @@ El nombre del valor es _supportsHttpsTrafficOnly_ en las propiedades de la cuent
 
 ### <a name="enable-secure-transfer-required-setting-with-rest-api"></a>Habilitación de la configuración "Se requiere transferencia segura" con la API de REST
 
-Para simplificar las pruebas con la API de REST, puede usar [ArmClient](https://github.com/projectkudu/ARMClient) para llamar desde la línea de comandos.
+toosimplify pruebas con la API de REST, puede usar [ArmClient](https://github.com/projectkudu/ARMClient) toocall desde la línea de comandos.
 
- Puede utilizar la línea de comandos siguiente para comprobar la configuración con la API de REST:
+ Puede usar por debajo de la opción de línea de comandos toocheck Hola con hello API de REST:
 
 ```
 # Login Azure and proceed with your credentials
@@ -75,7 +75,7 @@ Para simplificar las pruebas con la API de REST, puede usar [ArmClient](https://
 > armclient GET  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01
 ```
 
-En la respuesta, puede encontrar el valor _supportsHttpsTrafficOnly_. Sample:
+En la respuesta de hello, encontrará _supportsHttpsTrafficOnly_ configuración. Sample:
 
 ```Json
 {
@@ -90,7 +90,7 @@ En la respuesta, puede encontrar el valor _supportsHttpsTrafficOnly_. Sample:
 }
 ```
 
-Puede utilizar la línea de comandos siguiente para habilitar la configuración con la API de REST:
+Puede usar por debajo de la opción de línea de comandos tooenable Hola con hello API de REST:
 
 ```
 # Login Azure and proceed with your credentials
@@ -109,4 +109,4 @@ Ejemplo de Input.json:
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Azure Storage proporciona un completo conjunto de funcionalidades de seguridad que, conjuntamente, permiten a los desarrolladores compilar aplicaciones seguras. Para obtener más detalles, visite la [Guía de seguridad para almacenamiento](storage-security-guide.md).
+Almacenamiento de Azure proporciona un conjunto completo de capacidades de seguridad, que juntas permiten a los desarrolladores de aplicaciones seguras toobuild. Para obtener más detalles, visite hello [Guía de seguridad de almacenamiento](storage-security-guide.md).

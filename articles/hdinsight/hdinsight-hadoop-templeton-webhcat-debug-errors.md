@@ -1,6 +1,6 @@
 ---
-title: "Información sobre errores de WebHCat y resolución en HDInsight y Azure | Microsoft Docs"
-description: "Aprenda cómo tratar errores comunes devueltos por WebHCat en HDInsight y cómo resolverlos."
+title: aaaUnderstand y resuelva los errores de WebHCat en HDInsight - Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooabout los errores comunes devuelven por WebHCat de HDInsight y cómo tooresolve ellos."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,41 +16,41 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 6d8162e0d64ec9fc42690392b7c822593c0c2767
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0071a1e9ed448ae146b93c8f4f518e31b95d27c9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Entender y resolver errores recibidos de WebHCat en HDInsight
 
-Obtener información acerca de los errores recibidos al utilizar WebHCat con HDInsight y cómo resolverlos. Las herramientas de cliente como Azure PowerShell y Data Lake Tools para Visual Studio usan WebHCat internamente.
+Obtenga información acerca de los errores recibidos al usar WebHCat con HDInsight y cómo tooresolve ellos. WebHCat se usa internamente por herramientas de cliente, como PowerShell de Azure y Hola Data Lake Tools para Visual Studio.
 
 ## <a name="what-is-webhcat"></a>¿Qué es WebHCat?
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) es una API de REST para [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), una capa de administración de almacenamiento y tablas para Hadoop. WebHCat está habilitado de manera predeterminada en los clústeres de HDInsight y se usa por diversas herramientas para enviar trabajos, obtener el estado de los trabajos, etc. sin iniciar sesión en el clúster.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) es una API de REST para [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), una capa de administración de almacenamiento y tablas para Hadoop. WebHCat está habilitada de forma predeterminada en los clústeres de HDInsight y usa varios trabajos de toosubmit de herramientas, obtener el estado del trabajo, etc. sin iniciar sesión en el clúster de toohello.
 
 ## <a name="modifying-configuration"></a>Modificación de la configuración
 
 > [!IMPORTANT]
-> Algunos de los errores que se muestran en este documento se producen porque se ha superado un máximo configurado. Cuando el paso de la resolución menciona que puede cambiar un valor, debe usar una de las acciones siguientes para realizar el cambio:
+> Algunos de los errores de hello indicados en este documento se producen porque se ha superado el máximo configurado. Cuando los pasos de resolución de hello mencionan que puede cambiar un valor, debe utilizar uno de hello siguiente tooperform Hola cambio:
 
-* Para clústeres de **Windows** : use una acción de script para configurar el valor durante la creación del clúster. Para obtener más información, vea [Desarrollar acciones de script](hdinsight-hadoop-script-actions.md).
+* Para **Windows** clústeres: usar un valor de Hola de tooconfigure de acción de secuencia de comandos durante la creación del clúster. Para obtener más información, vea [Desarrollar acciones de script](hdinsight-hadoop-script-actions.md).
 
-* Para clústeres **Linux** : use Ambari (web o API de REST) para modificar el valor. Para obtener más información, vea [Administrar HDInsight con Ambari](hdinsight-hadoop-manage-ambari.md)
+* Para **Linux** clústeres: valor de hello toomodify Ambari de uso (web o API de REST). Para obtener más información, vea [Administrar HDInsight con Ambari](hdinsight-hadoop-manage-ambari.md)
 
 > [!IMPORTANT]
-> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ### <a name="default-configuration"></a>Configuración predeterminada
 
-Si se superan los siguientes valores predeterminados, puede degradar el rendimiento de WebHCat o provocar errores:
+Si se supera Hola siguiendo los valores predeterminados, puede degradar el rendimiento de WebHCat o provocar errores:
 
 | Configuración | Qué hace | Valor predeterminado |
 | --- | --- | --- |
-| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |El número máximo de trabajos que pueden estar activos de manera simultánea (pendientes o en ejecución) |10.000 |
-| [templeton.exec.max-procs][max-procs] |El número máximo de solicitudes que se pueden atender de manera simultánea |20 |
-| [mapreduce.jobhistory.max-age-ms][max-age-ms] |El número de días que se conservará el historial de trabajos |7 días |
+| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Hola número máximo de trabajos que pueden estar activas simultáneamente (pendiente o en ejecución) |10.000 |
+| [templeton.exec.max-procs][max-procs] |número máximo de Hola de solicitudes que puede servir de forma simultánea |20 | |
+| [mapreduce.jobhistory.max-age-ms][max-age-ms] |Hola número de días que el historial de trabajos que se conservarán |7 días |
 
 ## <a name="too-many-requests"></a>Demasiadas solicitudes
 
@@ -58,7 +58,7 @@ Si se superan los siguientes valores predeterminados, puede degradar el rendimie
 
 | Causa | Resolución |
 | --- | --- |
-| Ha superado el máximo de solicitudes simultáneas atendidas por WebHCat por minuto (el valor predeterminado es 20). |Reduzca la carga de trabajo para asegurarse de que no envía más que el número máximo de solicitudes simultáneas o aumente el límite de solicitudes simultáneas modificando `templeton.exec.max-procs`. Consulte [Modificación de la configuración](#modifying-configuration) para más información. |
+| Se ha superado Hola máximo de solicitudes simultáneas atendido por WebHCat por minuto (el valor predeterminado es 20) |Reducir el tooensure de carga de trabajo que no enviar más de número máximo de solicitudes simultáneas de Hola o aumentar el límite de solicitudes simultáneas de hello modificando `templeton.exec.max-procs`. Consulte [Modificación de la configuración](#modifying-configuration) para más información. |
 
 ## <a name="server-unavailable"></a>Servidor no disponible
 
@@ -66,7 +66,7 @@ Si se superan los siguientes valores predeterminados, puede degradar el rendimie
 
 | Causa | Resolución |
 | --- | --- |
-| Este código de estado suele producirse durante la conmutación por error entre el nodo principal primario y secundario para el clúster. |Espere dos minutos y vuelva a intentar la operación. |
+| Este código de estado se produce normalmente durante la conmutación por error entre Hola principal y secundaria nodo principal para el clúster de Hola |Espere dos minutos y vuelva a intentar la operación de Hola |
 
 ## <a name="bad-request-content-could-not-find-job"></a>Contenido de solicitud incorrecta: no se encontró el trabajo.
 
@@ -74,9 +74,9 @@ Si se superan los siguientes valores predeterminados, puede degradar el rendimie
 
 | Causa | Resolución |
 | --- | --- |
-| Los detalles de los trabajos se han limpiado con el limpiador del historial de trabajos |El período de retención predeterminado para el historial de trabajos es de 7 días. El período de retención predeterminado puede cambiarse modificando `mapreduce.jobhistory.max-age-ms`. Consulte [Modificación de la configuración](#modifying-configuration) para más información. |
-| Se ha suprimido el trabajo debido a una conmutación por error |Vuelva a intentar el envío de trabajos durante un tiempo máximo de dos minutos |
-| Se usó un identificador de trabajo no válido |Compruebe si el id. de trabajo es correcto |
+| Detalles del trabajo se han limpiado por historial de trabajos de hello limpiador |período de retención predeterminado de Hello para el historial de trabajos es 7 días. período de retención de Hello predeterminado puede cambiarse modificando `mapreduce.jobhistory.max-age-ms`. Consulte [Modificación de la configuración](#modifying-configuration) para más información. |
+| Se ha suprimido el trabajo debido a tooa conmutación por error |Vuelva a intentar el envío de trabajos para la tootwo minutos |
+| Se usó un identificador de trabajo no válido |Compruebe si el Id. de trabajo de hello es correcto |
 
 ## <a name="bad-gateway"></a>Puerta de enlace incorrecta
 
@@ -84,10 +84,10 @@ Si se superan los siguientes valores predeterminados, puede degradar el rendimie
 
 | Causa | Resolución |
 | --- | --- |
-| La recolección de elementos no utilizados internos se está produciendo en el proceso de WebHCat |Espere a que termine la recolección de elementos no utilizados o reinicie el servicio de WebHCat |
-| Tiempo de espera de una respuesta desde el servicio de ResourceManager. Este error se puede producir cuando el número de aplicaciones activas alcanza el máximo configurado (el valor predeterminado es 10.000) |Espere a que finalice los trabajos actualmente en ejecución o aumente el límite de trabajos simultáneos modificando `yarn.scheduler.capacity.maximum-applications`. Consulte [Modificación de la configuración](#modifying-configuration) para más información. |
-| Al intentar recuperar todos los trabajos a través de la llamada [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) mientras `Fields` está establecido en `*` |No recupere *todos* los detalles del trabajo. En su lugar, use `jobid` para recuperar detalles de trabajos solo mayores que un id. de trabajo determinado. O bien, no use `Fields` |
-| El servicio de WebHCat está inactivo durante la conmutación por error del nodo principal |Espere dos minutos y vuelva a intentar la operación |
+| Recolección de elementos internos se está produciendo en hello WebHCat proceso |Espere toofinish de la colección de elementos no utilizados o reiniciar el servicio WebHCat de Hola |
+| Tiempo de espera esperando una respuesta de hello servicio ResourceManager. Este error puede producirse cuando sale de número de Hola de aplicaciones activas máximo Hola configurado (el valor predeterminado es 10.000) |Espere a que se está ejecutando trabajos toocomplete o aumentar el límite de trabajos simultáneos de hello modificando `yarn.scheduler.capacity.maximum-applications`. Para obtener más información, vea hello [modificar configuración](#modifying-configuration) sección. |
+| Intentar tooretrieve todos los trabajos a través de hello [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) llamada mientras `Fields` se establece demasiado`*` |No recupere *todos* los detalles del trabajo. En su lugar use `jobid` tooretrieve detalles para trabajos mayores sólo a determinados Id. de trabajo. O bien, no use `Fields` |
+| Hola servicio WebHCat está inactivo durante la conmutación por error de nodo principal |Espere dos minutos y vuelva a intentar la operación de Hola |
 | Hay más de 500 trabajos pendientes enviados a través de WebHCat |Espere hasta que hayan finalizado los trabajos pendientes actualmente antes de enviar más trabajos |
 
 [maximum-applications]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html

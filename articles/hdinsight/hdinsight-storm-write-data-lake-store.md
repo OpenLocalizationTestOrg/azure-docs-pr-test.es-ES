@@ -1,6 +1,6 @@
 ---
-title: Escritura de Apache Storm en Storage o Data Lake Store - Azure HDInsight | Microsoft Docs
-description: "Obtenga más información sobre cómo usar Apache Storm para escribir datos en almacenamiento compatible con HDFS para HDInsight. Azure Storage o Azure Data Lake Store proporcionan almacenamiento compatible con HDFS para HDInsight. En este documento y en el ejemplo relacionado se muestra cómo se puede usar el componente HfdfsBolt para escribir datos en el almacenamiento predeterminado de un clúster de HDInsight en Storm."
+title: aaaApache Storm escribir tooStorage/Data Lake Store - HDInsight de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Hola almacenamiento de Apache Storm toowrite toohello HDFS compatible para HDInsight. Almacén de Azure Data Lake o almacenamiento de Azure proporcionan almacenamiento de hello HDFS comptabile para HDInsight. Este documento y un ejemplo de Hola a asociado, muestran cómo se componente de hello HdfsBolt pueden toowrite usado toohello predeterminado almacenamiento de una tormenta en clúster de HDInsight."
 services: hdinsight
 documentationcenter: na
 author: Blackmist
@@ -15,62 +15,62 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/19/2017
 ms.author: larryfr
-ms.openlocfilehash: 10dc8789e8f4a2b27fd3a4c6fec2ab28c674170a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d76159a9ecd1be18e519511cfdb3bcfd18ae4d33
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Escritura de datos en HDFS desde Apache Storm en HDInsight
+# <a name="write-toohdfs-from-apache-storm-on-hdinsight"></a>Escribir tooHDFS desde Apache Storm en HDInsight
 
-Obtenga más información sobre cómo usar Storm para escribir datos en el almacenamiento compatible con HDFS que usa Apache Storm en HDInsight. HDInsight puede usar tanto Azure Storage como Azure Data Lake como almacenamiento compatible con HDFS. Storm proporciona un componente [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) que permite escribir datos en HDFS. En este documento se proporciona información sobre cómo escribir datos en ambos tipos de almacenamiento desde HdfsBolt. 
+Obtenga información acerca de cómo toouse Storm toowrite datos toohello almacenamiento compatible con HDFS utiliza Apache Storm en HDInsight. HDInsight puede usar tanto Azure Storage como Azure Data Lake como almacenamiento compatible con HDFS. Storm proporciona un [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) componente que escribe datos tooHDFS. Este documento proporciona información sobre cómo escribir tooeither tipo de almacenamiento de hello HdfsBolt. 
 
 > [!IMPORTANT]
-> La topología de ejemplo que se usa en este documento depende de componentes que se incluyen con Storm en HDInsight. Puede que sea necesario realizar alguna modificación para que funcione con Azure Data Lake Store al usarlo con otros clústeres de Apache Storm.
+> ejemplo de Hola topología utilizada en este documento se basa en los componentes que se incluyen con Storm en HDInsight. Puede requerir toowork modificación con almacén de Azure Data Lake cuando se usa con otros clústeres de Apache Storm.
 
-## <a name="get-the-code"></a>Obtención del código
+## <a name="get-hello-code"></a>Obtener el código de hello
 
-El proyecto que contiene esta topología está disponible como descarga en [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
+proyecto de Hola que contiene esta topología está disponible como una descarga desde [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
 
-Para compilar este proyecto, necesitará la siguiente configuración para su entorno de desarrollo:
+toocompile este proyecto, deberá Hola siguiente configuración para el entorno de desarrollo:
 
 * [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) o versiones posteriores. HDInsight 3.5 y versiones posteriores requieren Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
-Pueden establecer las siguientes variables de entorno al instalar Java y el JDK en la estación de trabajo de desarrollo. Sin embargo, debe comprobar que existen y que contienen los valores correctos para su sistema.
+Hello siguientes variables de entorno pueden establecerse cuando se instalación Java y Hola JDK en su estación de trabajo de desarrollo. Sin embargo, debe comprobar que existan y que contienen valores correctos de hello para el sistema.
 
-* `JAVA_HOME`: debe apuntar al directorio en el que esté instalado JDK.
-* `PATH`: debe contener las rutas de acceso siguientes:
+* `JAVA_HOME`-debe apuntar toohello directorio donde hello JDK está instalado.
+* `PATH`-debe contener Hola siguiendo las rutas de acceso:
   
-    * `JAVA_HOME` (o la ruta de acceso equivalente).
-    * `JAVA_HOME\bin` (o la ruta de acceso equivalente).
-    * Directorio en el que esté instalado Maven.
+    * `JAVA_HOME`(o la ruta de acceso equivalente hello).
+    * `JAVA_HOME\bin`(o la ruta de acceso equivalente hello).
+    * directorio de Hola donde está instalado Maven.
 
-## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Cómo usar HdfsBolt con HDInsight
+## <a name="how-toouse-hello-hdfsbolt-with-hdinsight"></a>¿Cómo toouse Hola HdfsBolt con HDInsight
 
 > [!IMPORTANT]
-> Antes de usar HdfsBolt con Storm en HDInsight, debe usar una acción de script para copiar los archivos .jar necesarios en `extpath` para Storm. Para obtener más información, consulte la sección [Configuración del clúster](#configure).
+> Antes de usar hello HdfsBolt con Storm en HDInsight, primero debe usar un archivos jar de script acción toocopy necesario en hello `extpath` para Storm. Para obtener más información, vea hello [configurar clústeres de hello](#configure) sección.
 
-HdfsBolt usa el esquema de archivo que usted proporcione para comprender cómo escribir datos en HDFS. Con HDInsight, use uno de los siguientes esquemas:
+Hola HdfsBolt utiliza el esquema de archivo de Hola que proporcione cómo toounderstand toowrite tooHDFS. Con HDInsight, utilice uno de hello siguientes esquemas:
 
 * `wasb://`: se usa con una cuenta de Azure Storage.
 * `adl://`: se usa con Azure Data Lake Store.
 
-En la siguiente tabla se proporcionan ejemplos de cómo usar el esquema de archivos en diferentes casos:
+Hello tabla siguiente proporciona ejemplos de uso de archivos de esquema de Hola para diferentes escenarios:
 
 | Esquema | Notas |
 | ----- | ----- |
-| `wasb:///` | La cuenta de almacenamiento predeterminada es un contenedor de blobs de una cuenta de Azure Storage. |
-| `adl:///` | La cuenta de almacenamiento predeterminada es un directorio de Azure Data Lake Store. Durante la creación del clúster, especifique el directorio de Data Lake Store que sea la raíz del HDFS del clúster. Por ejemplo, el directorio `/clusters/myclustername/`. |
-| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Cuenta de Azure Storage no predeterminada (adicional) asociada al clúster. |
-| `adl://STORENAME/` | Raíz de Data Lake Store que usa el clúster. El uso de este esquema permite acceder a datos que se encuentren fuera del directorio que contiene el sistema de archivos del clúster. |
+| `wasb:///` | cuenta de almacenamiento predeterminada de Hello es un contenedor de blob en una cuenta de almacenamiento de Azure |
+| `adl:///` | cuenta de almacenamiento predeterminada de Hello es un directorio en el almacén de Azure Data Lake. Durante la creación del clúster, debe especificar el directorio de hello en el almacén de Data Lake es Hola raíz HDFS del clúster de hello. Por ejemplo, hello `/clusters/myclustername/` directory. |
+| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Una cuenta de almacenamiento de Azure (adicional) no predeterminado asociada con el clúster de Hola. |
+| `adl://STORENAME/` | raíz de Hola de hello usa Hola clúster de almacén de Data Lake. Este esquema permite tooaccess datos que se encuentran fuera del directorio de Hola que contiene el sistema de archivos del clúster de Hola. |
 
-Para obtener más información, consulte la referencia de [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) en Apache.org.
+Para obtener más información, vea hello [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) referencia en Apache.org.
 
 ### <a name="example-configuration"></a>Configuración de ejemplo
 
-El siguiente YAML es un fragmento del archivo `resources/writetohdfs.yaml` incluido en el ejemplo. Este archivo define la topología de Storm mediante el marco [Flux](https://storm.apache.org/releases/1.1.0/flux.html) para Apache Storm.
+Hola YAML siguiente es un extracto de hello `resources/writetohdfs.yaml` archivo incluido en el ejemplo de Hola. Este archivo define la topología de aluvión de hello mediante hello [flujo](https://storm.apache.org/releases/1.1.0/flux.html) framework para Apache Storm.
 
 ```yaml
 components:
@@ -122,82 +122,82 @@ bolts:
         args: [ref: "syncPolicy"]
 ```
 
-En este YAML se definen los siguientes elementos:
+Este YAML define Hola siguientes elementos:
 
-* `syncPolicy`: define cuándo se sincronizan o vacían los archivos en el sistema de archivos. En este ejemplo, cada 1000 tuplas.
-* `fileNameFormat`: define la ruta de acceso y el patrón del nombre de archivo que se usarán al escribir archivos. En este ejemplo, la ruta de acceso se proporciona durante el tiempo de ejecución con un filtro, y la extensión de archivo es `.txt`.
-* `recordFormat`: define el formato interno de los archivos escritos. En este ejemplo, los campos están delimitados por el carácter `|`.
-* `rotationPolicy`: define cuándo se giran los archivos. En este ejemplo no se realiza ningún giro.
-* `hdfs-bolt`: usa los componentes anteriores como parámetros de configuración para la clase `HdfsBolt`.
+* `syncPolicy`: Defina cuándo archivos de sistema de archivos toohello sincronizado/vaciados. En este ejemplo, cada 1000 tuplas.
+* `fileNameFormat`: Define toouse de patrón de nombre de ruta de acceso y Hola al escribir archivos. En este ejemplo, se proporciona la ruta de acceso de hello en tiempo de ejecución mediante un filtro y extensión de archivo hello es `.txt`.
+* `recordFormat`: Define el formato interno de Hola de archivos de hello escritos. En este ejemplo, los campos están delimitados por hello `|` caracteres.
+* `rotationPolicy`: Define cuándo toorotate archivos. En este ejemplo no se realiza ningún giro.
+* `hdfs-bolt`: Utiliza Hola componentes anteriores como parámetros de configuración para hello `HdfsBolt` clase.
 
-Para obtener más información sobre el marco Flux, consulte [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html).
+Para obtener más información sobre el marco de trabajo de un flujo de hello, consulte [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html).
 
-## <a name="configure-the-cluster"></a>Configuración del clúster
+## <a name="configure-hello-cluster"></a>Configuración de clúster de Hola
 
-De manera predeterminada, Storm en HDInsight no incluye los componentes que usa HdfsBolt para la comunicación con Azure Storage o Data Lake Store en el parámetro classpath de Storm. Use la siguiente acción de script para agregar dichos componentes al directorio `extlib` de Storm en su clúster:
+De forma predeterminada, Storm en HDInsight no incluye los componentes de hello HdfsBolt utiliza toocommunicate con almacenamiento de Azure o almacén de Data Lake en classpath del aluvión. Script de uso Hola siguiente acción tooadd estos toohello componentes `extlib` aluvión de directorio en el clúster:
 
-| URI de script | Nodos en los que se aplicará| Parámetros | | `https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh` | Nimbus, supervisor | Ninguno |
+| URI de script | Nodos tooapply a | Parámetros || `https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh` | Nimbus, Supervisor | None |
 
-Para obtener más información sobre cómo usar este script con su clúster, consulte el documento [Personalización de clústeres de HDInsight mediante la acción de scripts](./hdinsight-hadoop-customize-cluster-linux.md).
+Para obtener información sobre el uso de esta secuencia de comandos con el clúster, vea hello [HDInsight personalizar clústeres mediante acciones de script](./hdinsight-hadoop-customize-cluster-linux.md) documento.
 
-## <a name="build-and-package-the-topology"></a>Compilación y empaquetado de la topología
+## <a name="build-and-package-hello-topology"></a>Compilar y empaquetar topología Hola
 
-1. Descargue el proyecto de ejemplo de [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) en su entorno de desarrollo.
+1. Descargar el proyecto de ejemplo de Hola de [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) tooyour entorno de desarrollo.
 
-2. Desde un símbolo del sistema, un terminal o una sesión de shell, cambie los directorios a la raíz del proyecto descargado. Para compilar y empaquetar la topología, use el siguiente comando:
+2. Desde un símbolo del sistema, terminal, o una sesión de shell, cambiar directorios toohello raíz de hello descarga proyecto. toobuild y paquete Hola topología, use Hola siguiente comando:
    
         mvn compile package
    
-    Al finalizar la compilación y el empaquetado, habrá un nuevo directorio denominado `target` con el archivo `StormToHdfs-1.0-SNAPSHOT.jar`. Este archivo contiene la topología compilada.
+    Una vez que se completa la compilación de Hola y el empaquetado, hay un directorio denominado `target`, que contiene un archivo denominado `StormToHdfs-1.0-SNAPSHOT.jar`. Este archivo contiene la topología de hello compilado.
 
-## <a name="deploy-and-run-the-topology"></a>Implementación y ejecución de la topología
+## <a name="deploy-and-run-hello-topology"></a>Implementar y ejecutar topología Hola
 
-1. Use el siguiente comando para copiar la topología en el clúster de HDInsight. Reemplace **USER** por el nombre de usuario SSH que usó al crear el clúster. Reemplace **CLUSTERNAME** por el nombre del clúster.
+1. Usar hello después de clúster de HDInsight de toohello de topología de comando toocopy Hola. Reemplace **usuario** con el nombre de usuario SSH de Hola que utilizó al crear el clúster de Hola. Reemplace **CLUSTERNAME** con nombre de hello del clúster de Hola.
    
         scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs1.0-SNAPSHOT.jar
    
-    Cuando se le solicite, escriba la contraseña que se usó al crear el usuario SSH del clúster. Si usó una clave pública en lugar de una contraseña, tal vez tenga que usar el parámetro `-i` para especificar la ruta de acceso a la correspondiente clave privada.
+    Cuando se le solicite, escriba contraseña de hello usada al crear el usuario SSH de hello para el clúster de Hola. Si utiliza una clave pública en lugar de una contraseña, puede que necesite toouse hello `-i` parámetro toospecify Hola ruta de acceso toohello que coinciden con la clave privada.
    
    > [!NOTE]
    > Para obtener más información sobre cómo usar `scp` con HDInsight, consulte [Conexión a través de SSH con HDInsight](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Una vez finalizada la carga, use lo siguiente para conectarse al clúster de HDInsight con SSH. Reemplace **USER** por el nombre de usuario SSH que usó al crear el clúster. Reemplace **CLUSTERNAME** por el nombre del clúster.
+2. Una vez completada la carga de hello, utilice Hola después de clúster de HDInsight de toohello tooconnect mediante SSH. Reemplace **usuario** con el nombre de usuario SSH de Hola que utilizó al crear el clúster de Hola. Reemplace **CLUSTERNAME** con nombre de hello del clúster de Hola.
    
         ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
    
-    Cuando se le solicite, escriba la contraseña que se usó al crear el usuario SSH del clúster. Si usó una clave pública en lugar de una contraseña, tal vez tenga que usar el parámetro `-i` para especificar la ruta de acceso a la correspondiente clave privada.
+    Cuando se le solicite, escriba contraseña de hello usada al crear el usuario SSH de hello para el clúster de Hola. Si utiliza una clave pública en lugar de una contraseña, puede que necesite toouse hello `-i` parámetro toospecify Hola ruta de acceso toohello que coinciden con la clave privada.
    
    Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Una vez conectado, use el comando siguiente para crear un archivo denominado `dev.properties`:
+3. Una vez conectado, use Hola comando siguiente toocreate un archivo denominado `dev.properties`:
 
         nano dev.properties
 
-4. Use el texto siguiente como contenido del archivo `dev.properties`:
+4. Hola de uso después de texto como contenido de Hola de hello `dev.properties` archivo:
 
         hdfs.write.dir: /stormdata/
         hdfs.url: wasb:///
 
     > [!IMPORTANT]
-    > En este ejemplo se da por supuesto que su clúster usa una cuenta de Azure Storage como almacenamiento predeterminado. Si el clúster usa Azure Data Lake Store, use `hdfs.url: adl:///`.
+    > En este ejemplo se da por supuesto que su clúster usa una cuenta de almacenamiento de Azure como almacenamiento predeterminado de Hola. Si el clúster usa Azure Data Lake Store, use `hdfs.url: adl:///`.
     
-    Para guardar el archivo, use __Ctrl+X__, después __Y__ y, finalmente, presione __Intro__. Los valores de este archivo establecen la URL de Data Lake Store y el nombre del directorio en el que se escriben los datos.
+    archivo de hello toosave, use __Ctrl + X__, a continuación, __Y__y, finalmente, __ENTRAR__. valores de Hello en este archivo establecen URL de almacén de Data Lake de Hola y el nombre del directorio de Hola que se escriben datos en.
 
-3. Use el comando siguiente para iniciar la topología:
+3. Usar hello después de la topología de hello toostart de comando:
    
         storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
 
-    Este comando inicia la topología con el marco de Flux enviándolo al nodo Nimbus del clúster. La topología la define el archivo `writetohdfs.yaml` incluido en el jar. El archivo `dev.properties` se pasa como un filtro y la topología lee los valores contenidos en el archivo.
+    Este comando inicia la topología de hello mediante el marco de un flujo de hello mediante el envío de nodo de Nimbus toohello de clúster de Hola. topología de Hello está definida por hello `writetohdfs.yaml` los archivos incluidos en el archivo jar de Hola. Hola `dev.properties` archivo se pasa como un filtro y se leen los valores de hello contenidos en el archivo hello topología Hola.
 
 ## <a name="view-output-data"></a>Visualización de datos de salida
 
-Para ver los datos, use el siguiente comando:
+datos de hello tooview, usar hello siguiente comando:
 
     hdfs dfs -ls /stormdata/
 
-Se muestra una lista de los archivos que ha creado la topología.
+Se muestra una lista de archivos de hello creados por esta topología.
 
-La lista siguiente es un ejemplo de los datos devueltos por los comandos anteriores:
+Hello lista siguiente es un ejemplo de datos de hello devuelto por los comandos anteriores de hello:
 
     Found 30 items
     -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt
@@ -208,9 +208,9 @@ La lista siguiente es un ejemplo de los datos devueltos por los comandos anterio
     -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-13-1488568412603.txt
     -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-14-1488568415055.txt
 
-## <a name="stop-the-topology"></a>Detención de la topología
+## <a name="stop-hello-topology"></a>Detener la topología de Hola
 
-Las topologías de Storm se ejecutarán hasta que se detengan o se elimine el clúster. Para detener la topología, use el siguiente comando:
+Topologías de Storm ejecutan hasta que detenga o se elimina el clúster de Hola. toostop Hola topología, usar hello siguiente comando:
 
     storm kill hdfswriter
 
@@ -220,5 +220,5 @@ Las topologías de Storm se ejecutarán hasta que se detengan o se elimine el cl
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que ya sabe usar Storm para escribir datos en Azure Storage y Azure Data Lake Store, descubra otros [ejemplos de Storm para HDInsight](hdinsight-storm-example-topology.md).
+Ahora que ha aprendido cómo toouse Storm toowrite tooAzure almacenamiento y almacén de Azure Data Lake, detectar otros [Storm ejemplos para HDInsight](hdinsight-storm-example-topology.md).
 

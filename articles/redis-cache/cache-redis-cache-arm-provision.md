@@ -1,6 +1,6 @@
 ---
-title: Aprovisionamiento de Redis Cache mediante Azure Resource Manager | Microsoft Docs
-description: "Use una plantilla del Administrador de recursos de Azure para implementar Caché en Redis de Azure."
+title: "aaaProvision una caché en Redis mediante el Administrador de recursos de Azure | Documentos de Microsoft"
+description: "Use el Administrador de recursos de Azure plantilla toodeploy una caché en Redis de Azure."
 services: app-service
 documentationcenter: 
 author: steved0x
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
-ms.openlocfilehash: cce5d63e8bad2dd066cb4c28e2a8a9cb16c47953
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 46e7b3b2493ac51dbe6bab0b086304802afc5d48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>Creación de una Caché en Redis mediante una plantilla
-En este tema, aprenderá a crear una plantilla de Azure Resource Manager que implementa Azure Redis Cache. La memoria caché se puede usar con una cuenta de almacenamiento existente para mantener los datos de diagnóstico. Aprenderá a definir los recursos que se implementan y los parámetros que se especifican cuando se ejecuta la implementación. Puede usar esta plantilla para sus propias implementaciones o personalizarla para satisfacer sus necesidades.
+En este tema, aprenderá cómo toocreate una plantilla de Azure Resource Manager que implementa una caché en Redis. caché de Hello puede utilizarse con un almacenamiento cuenta tookeep diagnóstico los datos existentes. También aprenderá cómo toodefine qué recursos se implementan y cómo toodefine parámetros que especifican cuando se ejecuta la implementación de Hola. Puede usar esta plantilla para sus propias implementaciones o personalizarlo toomeet sus requisitos.
 
-Actualmente, se comparten los ajustes de configuración de diagnóstico para todas las cachés de la misma región para una suscripción. Actualizar una caché en la región afectará a todas las demás cachés de la región.
+Actualmente, se comparten la configuración de diagnóstico para todas las memorias caché en hello misma región para una suscripción. La actualización de una memoria caché en la región de hello afecta a todas las demás cachés región Hola.
 
 Para obtener más información sobre la creación de plantillas, consulte [Creación de plantillas de Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Para ver la plantilla completa, consulte [Plantilla Caché en Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
+Para la plantilla de hello completa, consulte [plantilla caché de Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
 > [!NOTE]
-> Las plantillas de Resource Manager para el nuevo [nivel Premium](cache-premium-tier-intro.md) están disponibles. 
+> Plantillas de administrador de recursos para hello nueva [nivel Premium](cache-premium-tier-intro.md) están disponibles. 
 > 
 > * [Crear una caché en Redis Premium con agrupación en clústeres](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
 > * [Crear una caché en Redis Premium con persistencia de datos](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
 > * [Crear una caché en Redis Premium con una red virtual y agrupación en clústeres opcional](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
 > 
-> Para buscar las últimas plantillas, diríjase a [Plantillas de inicio rápido de Azure](https://azure.microsoft.com/documentation/templates/) y busque `Redis Cache`.
+> toocheck para las plantillas de hello más recientes, consulte [plantillas de inicio rápido de Azure](https://azure.microsoft.com/documentation/templates/) y busque `Redis Cache`.
 > 
 > 
 
 ## <a name="what-you-will-deploy"></a>Lo que implementará
 En esta plantilla, implementará una caché en Redis de Azure que utiliza una cuenta de almacenamiento de datos de diagnóstico.
 
-Para ejecutar automáticamente la implementación, haga clic en el botón siguiente:
+toorun Hola implementación automáticamente, haga clic en hello después de botón:
 
-[![Implementación en Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+[![Implementar tooAzure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
-## <a name="parameters"></a>Parámetros
-Con el Administrador de recursos de Azure, se definen los parámetros de los valores que desea especificar al implementar la plantilla. La plantilla incluye una sección denominada Parámetros que contiene todos los valores de los parámetros.
-Debe definir un parámetro para esos valores que variarán según el proyecto que vaya a implementar o según el entorno en el que vaya a realizar la implementación. No defina parámetros para valores que siempre permanezcan igual. Cada valor de parámetro se usa en la plantilla para definir los recursos que se implementan. 
+## <a name="parameters"></a>parameters
+Con el Administrador de recursos de Azure, se definen parámetros para los valores que desee toospecify cuando se implementa Hola plantilla. plantilla de Hello incluye una sección denominada parámetros que contiene todos los valores de parámetro de Hola.
+Debe definir un parámetro para aquellos valores que varían en función de que va a implementar el proyecto de Hola o según va a implementar en el entorno de Hola. No se define parámetros para valores que permanezcan siempre Hola igual. Cada valor de parámetro se usa en hello plantilla toodefine Hola los recursos que se implementan. 
 
 [!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
 
 ### <a name="rediscachelocation"></a>redisCacheLocation
-La ubicación de Redis Cache. Para un mejor rendimiento, utilice la misma ubicación que la aplicación que se usará con la memoria caché.
+ubicación de Hola de hello caché en Redis. Para un rendimiento óptimo, utilice Hola misma ubicación como Hola toobe de aplicación que se usa con la caché de Hola.
 
     "redisCacheLocation": {
       "type": "string"
     }
 
 ### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
-Nombre de la cuenta de almacenamiento existente que desea usar para el diagnóstico. 
+nombre de Hola de hello toouse de cuenta de almacenamiento existente para diagnósticos. 
 
     "existingDiagnosticsStorageAccountName": {
       "type": "string"
     }
 
 ### <a name="enablenonsslport"></a>enableNonSslPort
-Valor booleano que indica si se debe permitir el acceso a través de puertos no SSL.
+Un valor booleano que indica si tooallow acceden a través de puertos no SSL.
 
     "enableNonSslPort": {
       "type": "bool"
@@ -86,9 +86,9 @@ Un valor que indica si están activados los diagnósticos. Utilice ON (activados
         ]
     }
 
-## <a name="resources-to-deploy"></a>Recursos para implementar
-### <a name="redis-cache"></a>Caché en Redis
-Crea Caché en Redis de Azure.
+## <a name="resources-toodeploy"></a>Toodeploy de recursos
+### <a name="redis-cache"></a>Redis Cache
+Crea Hola caché en Redis de Azure.
 
     {
       "apiVersion": "2015-08-01",
@@ -122,7 +122,7 @@ Crea Caché en Redis de Azure.
 
 
 
-## <a name="commands-to-run-deployment"></a>Comandos para ejecutar la implementación
+## <a name="commands-toorun-deployment"></a>Implementación de toorun de comandos
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell

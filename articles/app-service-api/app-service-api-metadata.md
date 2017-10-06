@@ -1,6 +1,6 @@
 ---
-title: "Metadatos de App Service API Apps para la detección de API y la generación de código | Microsoft Docs"
-description: "Aprenda cómo las aplicaciones de API del Servicio de aplicaciones de Azure usan los metadatos de Swagger para facilitar la detección de API y la generación de código."
+title: "metadatos de API del servicio de aplicaciones de aaaApp para la generación de código y de detección de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo las aplicaciones de API de servicio de aplicaciones de Azure usar Swagger toofacilitate API de detección y código de generación de metadatos."
 services: app-service\api
 documentationcenter: .net
 author: alexkarcher-msft
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: alkarche
-ms.openlocfilehash: 800bb9df9b957bec2c80abb3edefbaf354b549ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b27e70b7dd6bd97f5b0b490b496320befe7442c5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="app-service-api-apps-metadata-for-api-discovery-and-code-generation"></a>Metadatos de aplicaciones de API del Servicio de aplicaciones para la detección de API y la generación de código
-La compatibilidad con los metadatos de la API de [Swagger 2.0](http://swagger.io/) está integrada en las aplicaciones de API del Servicio de aplicaciones. Aunque no es necesario usar Swagger, si lo usa, puede sacar partido de las características de aplicaciones de API que facilitan la detección y el consumo.   
+La compatibilidad con los metadatos de la API de [Swagger 2.0](http://swagger.io/) está integrada en las aplicaciones de API del Servicio de aplicaciones. No tienes toouse Swagger, pero si lo use, puede aprovechar las ventajas de las características de aplicaciones de API que facilitan la detección y el consumo.   
 
 ## <a name="swagger-endpoint"></a>Punto de conexión de Swagger
-Puede especificar un punto de conexión que proporcione metadatos JSON de Swagger 2.0 para una aplicación de API en una propiedad de la aplicación de API. El punto de conexión puede ser relativo a la dirección URL base de la aplicación de API o a una dirección URL absoluta. Las direcciones URL absolutas pueden señalar fuera de la aplicación de API. 
+Puede especificar un punto de conexión que proporciona metadatos de Swagger 2.0 JSON para una aplicación de API en una propiedad de la aplicación de API de hello. Hola extremo puede ser relativa toohello dirección URL base de la aplicación de API de Hola o una dirección URL absoluta. Las direcciones URL absolutas pueden apuntar fuera de la aplicación de API de hello. 
 
-En muchos clientes de bajada (por ejemplo, la generación de código de Visual Studio y el flujo "Agregar API" de PowerApps), es preciso que se pueda acceder públicamente a la dirección URL (que no esté protegida mediante autenticación de usuario o de servicio). Esto significa que si usa la autenticación de Servicio de aplicaciones y desea exponer la definición de la API desde su propia aplicación, será preciso que utilice la opción de autenticación que permite que llegue tráfico a la API. Para más información, consulte [Autenticación y autorización para Aplicaciones de API en el Servicio de aplicaciones](app-service-api-authentication.md).
+Muchos clientes de nivel inferiores (por ejemplo, generación de código de Visual Studio y PowerApps "Agregar API" flujo), dirección URL de hello debe ser accesible públicamente (que no esté protegido por el usuario o la autenticación de servicio). Esto significa que si utiliza la autenticación de servicio de aplicaciones y desea definición de la API tooexpose Hola desde dentro de su propia aplicación, necesita toouse opción de autenticación que permite el tráfico anónimo tooreach su API. Para más información, consulte [Autenticación y autorización para Aplicaciones de API en el Servicio de aplicaciones](app-service-api-authentication.md).
 
 ### <a name="portal-blade"></a>Hoja del portal
-En el [Portal de Azure](https://portal.azure.com/) , la dirección URL del punto de conexión se puede ver y cambiar en la hoja **Definición de API** .
+Hola [portal de Azure](https://portal.azure.com/) Hola de punto de conexión de dirección URL puede ser vista y cambiar en hello **definición de la API** hoja.
 
 ![](./media/app-service-api-metadata/apidefblade.png)
 
 ### <a name="azure-resource-manager-property"></a>Propiedad del Administrador de recursos de Azure
-También se puede configurar la dirección URL de la definición de la API de una aplicación de API mediante el [Explorador de recursos](https://resources.azure.com/) o las plantillas de [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) de las herramientas de línea de comandos, como [Azure PowerShell](/powershell/azureps-cmdlets-docs) y la [CLI de Azure](../cli-install-nodejs.md). 
+También puede configurar dirección URL de la definición de hello API para una aplicación de API mediante [Resource Explorer](https://resources.azure.com/) o [plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) en herramientas de línea de comandos como [Azure PowerShell](/powershell/azureps-cmdlets-docs)hello y [CLI de Azure](../cli-install-nodejs.md). 
 
-En el **Explorador de recursos**, vaya a **suscripciones > {su suscripción} > resourceGroups > {su grupo de recursos} > proveedores > Microsoft.Web > sitios > {su sitio} > configuración > web** y verá la propiedad `apiDefinition`:
+En **Resource Explorer**, vaya demasiado**suscripciones > {su suscripción} > resourceGroups > {el grupo de recursos} > Proveedores > Microsoft.Web > sitios > {su sitio} > Configuración > web**, y verá hello `apiDefinition` propiedad:
 
         "apiDefinition": {
           "url": "https://contactslistapi.azurewebsites.net/swagger/docs/v1"
         }
 
-Para ver un ejemplo de una plantilla de Azure Resource Manager que establece la propiedad `apiDefinition` , abra el [archivo azuredeploy.json de la lista de tareas pendientes](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json). Busque la sección de la plantilla similar al ejemplo de JSON mostrado anteriormente.
+Para obtener un ejemplo de una plantilla de Azure Resource Manager que establece hello `apiDefinition` propiedad, abra hello [azuredeploy.json archivo en la aplicación de ejemplo de lista de tareas pendientes de hello](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json). Busque la sección de Hola de plantilla de hello similar al ejemplo de Hola JSON mostrado anteriormente.
 
 ### <a name="default-value"></a>Valor predeterminado
-Si se usa Visual Studio para crear una aplicación de API, el punto de conexión de la definición de API se establece automáticamente en la URL base de la aplicación de API más `/swagger/docs/v1`. Se trata de la dirección URL predeterminada que el paquete NuGet de [Swashbuckle](https://www.nuget.org/packages/Swashbuckle) utiliza para enviar los metadatos de Swagger generados dinámicamente para un proyecto de ASP.NET Web API. 
+Cuando se usa Visual Studio toocreate una aplicación de API, el punto de conexión de hello API definición se establece automáticamente toohello dirección URL base de aplicación de API de hello más `/swagger/docs/v1`. Se trata de dirección URL predeterminada de Hola que hello [Swashbuckle](https://www.nuget.org/packages/Swashbuckle) paquete NuGet utiliza metadatos de Swagger tooserve generada dinámicamente para un proyecto de ASP.NET Web API. 
 
 ## <a name="code-generation"></a>Generación de código
-Una de las ventajas de integrar Swagger en aplicaciones de API de Azure es la generación automática de código. Las clases de cliente generadas hacen que sea más fácil escribir código que llame a una aplicación de API.
+Una de las ventajas de saludo de la integración de Swagger en aplicaciones de API de Azure es la generación automática de código. Clases de cliente generado resultará más fácil código toowrite que llama a una aplicación de API.
 
-Puede generar código de cliente para una aplicación de API con Visual Studio o desde la línea de comandos. Para información sobre cómo generar clases de cliente en Visual Studio para un proyecto de API web ASP.NET, consulte [Introducción a las aplicaciones de API y ASP.NET](app-service-api-dotnet-get-started.md#codegen). Para información sobre cómo hacerlo desde la línea de comandos en todos los lenguajes admitidos, consulte el archivo Léame del repositorio [Azure/autorest](https://github.com/azure/autorest) en GitHub.com.
+Puede generar código de cliente para una aplicación de API con Visual Studio o desde la línea de comandos de Hola. Para obtener información acerca de cómo las clases cliente toogenerate en Visual Studio para un proyecto de ASP.NET Web API, consulte [empezar a trabajar con aplicaciones de API y ASP.NET](app-service-api-dotnet-get-started.md#codegen). Para obtener información acerca de cómo toodo del comando hello línea para todos los idiomas admitidos, vea el archivo Léame de Hola de hello [Azure/autorest](https://github.com/azure/autorest) repositorio en GitHub.com.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para obtener un tutorial detallado que le guíe en el proceso de creación, implementación y consumo de una aplicación de API, consulte [Introducción a Aplicaciones de API y ASP.NET en el Servicio de aplicaciones de Azure](app-service-api-dotnet-get-started.md).
 
-Si usa Administración de API de Azure con aplicaciones de API, puede utilizar metadatos de Swagger para importar la API a Administración de API. Para más información, consulte [Importación de la definición de una API con operaciones en Administración de API de Azure](../api-management/api-management-howto-import-api.md). 
+Si usa administración de API de Azure con aplicaciones de API, puede usar la API tooimport de metadatos de Swagger en la API de administración. Para obtener más información, consulte [cómo tooimport Hola definición de una API con las operaciones de administración de API de Azure](../api-management/api-management-howto-import-api.md). 
 

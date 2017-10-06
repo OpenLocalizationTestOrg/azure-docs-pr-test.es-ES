@@ -1,6 +1,6 @@
 ---
-title: Puerta de enlace de datos local | Microsoft Docs
-description: "Necesitará una puerta de enlace local si el servidor de Analysis Services de Azure se debe conectar a orígenes de datos locales."
+title: puerta de enlace de datos de aaaOn-local | Documentos de Microsoft
+description: "Una puerta de enlace local es necesario si el servidor de Analysis Services en Azure conectará a orígenes de datos locales de tooon."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/21/2017
 ms.author: owend
-ms.openlocfilehash: 514b5404e8cbfa0baa657eb41736e20cad502638
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fc7b9c69e6f81b41deb7a5d6d963225593845d84
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Conexión a orígenes de datos locales con la puerta de enlace de datos local de Azure
-La puerta de enlace de datos local actúa como un puente, ya que proporciona una transferencia de datos segura entre orígenes de datos locales y los servidores de Azure Analysis Services en la nube. Además de funcionar con varios servidores de Azure Analysis Services en la misma región, la versión más reciente de la puerta de enlace también funciona con Azure Logic Apps, Power BI, Power Apps y Microsoft Flow. Puede asociar varios servicios de la misma región con una sola puerta de enlace. 
+# <a name="connecting-tooon-premises-data-sources-with-azure-on-premises-data-gateway"></a>Conectarse a orígenes de datos locales de tooon con puerta de enlace de datos de Azure en local
+puerta de enlace de datos de Hello local actúa como un puente, proporcionando la transferencia segura de datos entre orígenes de datos locales y los servidores de servicios de análisis de Azure en la nube de Hola. En suma tooworking con varios servidores de servicios de análisis de Azure en hello misma región, la versión más reciente de Hola de puerta de enlace de hello también funciona con aplicaciones de Azure lógica, Power BI, las aplicaciones de Power y Microsoft Flow. Puede asociar varios servicios en hello misma región con una sola puerta de enlace. 
 
- Azure Analysis Services requiere un recurso de puerta de enlace en la misma región. Por ejemplo, si tiene servidores de Azure Analysis Services en la región este de EE. UU. 2, necesita un recurso de puerta de enlace en la región este de EE. UU. 2. Varios servidores de Este de EE. UU. 2 pueden utilizar la misma puerta de enlace.
+ Azure Analysis Services requiere un recurso de puerta de enlace en hello misma región. Por ejemplo, si tiene servidores de Analysis Services de Azure en región de hello UU 2, necesita un recurso de puerta de enlace en la región Este de EE. 2 de Hola. Varios servidores de zona horaria del Pacífico oriental 2 pueden usar hello misma puerta de enlace.
 
-El proceso de instalación de la puerta de enlace consta de cuatro partes:
+Obtener el programa de instalación con hello de puerta de enlace de hello primera vez es un proceso de cuatro partes:
 
 - **Descargar y ejecutar el programa de instalación**: en este paso se instala un servicio de puerta de enlace en un equipo de la organización.
 
-- **Registrar la puerta de enlace**: en este paso se especifica el nombre y la clave de recuperación de la puerta de enlace y se selecciona la región, con lo que la puerta de enlace se registra en con el servicio en la nube de la puerta de enlace.
+- **Registrar la puerta de enlace** : en este paso, especifique un nombre y la recuperación de clave para la puerta de enlace y seleccionar una región, registrar la puerta de enlace con hello puerta de enlace de servicio en la nube.
 
 - **Crear un recurso de puerta de enlace en Azure**: en este paso se crea un recurso de puerta de enlace en una suscripción de Azure.
 
-- **Conectar los servidores a los recursos de puerta de enlace**: una vez que tiene un recurso de puerta de enlace en la suscripción, puede empezar a conectar los servidores a él.
+- **Conectar el recurso de puerta de enlace de servidores tooyour** -una vez que tenga un recurso de puerta de enlace en su suscripción, puede empezar a conectar su tooit de servidores.
 
-Una vez que tiene un recurso de puerta de enlace configurado para una suscripción, puede conectarle varios servidores y otros servicios. Solo necesita instalar otra puerta de enlace diferente y crear más recursos de puerta de enlace si tiene servidores u otros servicios en otra región.
+Una vez que tenga un recurso de puerta de enlace configurado para la suscripción, puede conectar varios servidores y otro tooit de servicios. Solo necesita una puerta de enlace diferentes tooinstall y crear recursos de puerta de enlace adicionales si tiene servidores u otros servicios en una región distinta.
 
-Para comenzar inmediatamente, consulte [Instalación y configuración de una puerta de enlace de datos local](analysis-services-gateway-install.md).
+tooget inicia inmediatamente, vea [instalar y configurar la puerta de enlace de datos local](analysis-services-gateway-install.md).
 
-## <a name="how-it-works"> </a>Funcionamiento
-La puerta de enlace que se instala en un equipo de la organización funciona como un servicio de Windows, **Puerta de enlace de datos local**. Este servicio local se registra en el servicio en la nube de puerta de enlace a través de Azure Service Bus. Luego se crea un servicio en la nube de puerta de enlace del recurso de puerta de enlace para la suscripción de Azure. Posteriormente, los servidores de servicios de Azure Analysis Services se conectan al recurso de puerta de enlace. Cuando los modelos del servidor necesitan conectarse a los orígenes de datos locales para realizar consultas o procesamiento, un flujo de datos y consultas atraviesa el recurso de puerta de enlace, Azure Service Bus, el servicio de puerta de enlace de datos local y los orígenes de datos. 
+## <a name="how-it-works"></a>Funcionamiento
+puerta de enlace de Hello instalar en un equipo de su organización se ejecuta como un servicio de Windows, **puerta de enlace de datos local**. Este servicio está registrado con hello servicio de nube de puerta de enlace a través de Service Bus de Azure. Luego se crea un servicio en la nube de puerta de enlace del recurso de puerta de enlace para la suscripción de Azure. Los servidores son, a continuación, los servicios de análisis Azure conectado tooyour recursos de puerta de enlace. Cuando modelos en su tooyour tooconnect de necesidad de servidor en el servidor local orígenes de datos para las consultas o procesamiento, Hola una consulta y datos flujo recorra Hola puerta de enlace recursos, Bus de servicio de Azure, servicio de puerta de enlace de datos en instalaciones locales y los orígenes de datos. 
 
 ![Cómo funciona](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 Flujo de datos y consultas:
 
-1. El servicio en la nube crea una consulta con las credenciales cifradas para el origen de datos local. A continuación, se envía a una cola de la puerta de enlace para su procesamiento.
-2. El servicio en la nube de puerta de enlace analiza la consulta e inserta la solicitud en la instancia de [Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/).
-3. La puerta de enlace de datos local sondea el bus de servicio de Azure en busca de solicitudes pendientes.
-4. La puerta de enlace obtiene la consulta, descifra las credenciales y se conecta a los orígenes de datos con ellas.
-5. La puerta de enlace envía la consulta al origen de datos para su ejecución.
-6. Los resultados se devuelven desde el origen de datos a la puerta de enlace y luego se envían al servicio en la nube y al servidor.
+1. Se crea una consulta de servicio de nube Hola con credenciales de hello cifrada para origen de datos local de Hola. A continuación, envió cola tooa para tooprocess de puerta de enlace de Hola.
+2. servicio de nube de puerta de enlace de Hello analiza Hola consulta e inserta Hola solicitud toohello [Service Bus de Azure](https://azure.microsoft.com/documentation/services/service-bus/).
+3. puerta de enlace de datos de Hello local sondea hello Azure Service Bus para las solicitudes pendientes.
+4. puerta de enlace de Hello obtiene Hola consulta, descifra las credenciales de Hola y conecta a orígenes de datos toohello con esas credenciales.
+5. puerta de enlace de Hello envía Hola consultar toohello origen de datos para su ejecución.
+6. Hola resultados se envían de origen de datos de hello, puerta de enlace de toohello atrás y, a continuación, en el servicio de nube de Hola y el servidor.
 
-## <a name="windows-service-account"> </a>Cuenta de servicio de Windows
-La puerta de enlace de datos local está configurada para usar *NT SERVICE\PBIEgwService* para las credenciales de inicio de sesión del servicio de Windows. De manera predeterminada, tiene el derecho de iniciar sesión como un servicio en el contexto de la máquina en la que va a instalar la puerta de enlace. Esta credencial no es la misma cuenta utilizada para conectarse a orígenes de datos locales o a la cuenta de Azure.  
+## <a name="windows-service-account"></a>Cuenta de servicio de Windows
+puerta de enlace de datos local Hello es configurado toouse *NT SERVICE\PBIEgwService* de credencial de inicio de sesión de servicio de Windows hello. De manera predeterminada, tiene Hola derecho de inicio de sesión como un servicio; en el contexto de Hola de máquina de Hola que va a instalar la puerta de enlace de hello en. Esta credencial no es Hola mismos orígenes de datos de cuenta usada tooconnect tooon local o su cuenta de Azure.  
 
-Si tiene problemas con el servidor proxy debido a la autenticación, puede cambiar la cuenta de servicio de Windows a un usuario de dominio o cuenta de servicio administrada.
+Si tiene problemas con el servidor proxy debido tooauthentication, puede que desee toochange usuario de dominio tooa la cuenta de servicio de Windows hello o administrados cuenta de servicio.
 
-## <a name="ports"> </a>Puertos
-La puerta de enlace crea una conexión de salida con el bus de servicio de Azure. Se comunica en los puertos de salida siguientes: TCP 443 (valor predeterminado), 5671, 5672 y del 9350 al 9354.  La puerta de enlace no requiere puertos de entrada.
+## <a name="ports"></a>Puertos
+puerta de enlace de Hello crea un Bus de servicio de tooAzure de conexión de salida. Se comunica en los puertos de salida siguientes: TCP 443 (valor predeterminado), 5671, 5672 y del 9350 al 9354.  puerta de enlace de Hello no requiere puertos de entrada.
 
-Se recomienda crear una lista de direcciones IP permitidas de la región de datos en el firewall. Puede descargar la [lista de direcciones IP del centro de datos de Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). La lista se actualiza semanalmente.
+Se recomienda direcciones IP de Hola de lista blanca de direcciones para la región de datos en el firewall. Puede descargar hello [lista de IP de centro de datos de Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). La lista se actualiza semanalmente.
 
 > [!NOTE]
-> Las direcciones IP mostradas en la lista de direcciones IP del centro de datos de Azure están en notación CIDR. Por ejemplo, 10.0.0.0/24 no significa de 10.0.0.0 a 10.0.0.24. Conozca más información acerca de la [notación CIDR](http://whatismyipaddress.com/cidr).
+> Direcciones IP de Hello enumerados en la lista de IP de centro de datos de Azure de Hola están en la notación CIDR. Por ejemplo, 10.0.0.0/24 no significa de 10.0.0.0 a 10.0.0.24. Obtener más información sobre hello [la notación CIDR](http://whatismyipaddress.com/cidr).
 >
 >
 
-Éstos son los nombres de dominio completos utilizados por la puerta de enlace.
+siguiente Hola es nombres de dominio de hello completo utilizados por la puerta de enlace de Hola.
 
 | Nombres de dominio | Puertos de salida | Descripción |
 | --- | --- | --- |
-| *.powerbi.com |80 |HTTP que se utiliza para descargar el instalador. |
+| *.powerbi.com |80 |Instalador de hello toodownload utiliza HTTP. |
 | *.powerbi.com |443 |HTTPS |
 | *. analysis.windows.net |443 |HTTPS |
 | *.login.windows.net |443 |HTTPS |
@@ -82,11 +82,11 @@ Se recomienda crear una lista de direcciones IP permitidas de la región de dato
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Se utiliza para probar la conectividad a Internet si el servicio Power BI no puede acceder a la puerta de enlace. |
+| *.msftncsi.com |443 |Usar tootest conectividad a internet si la puerta de enlace de hello es inaccesible por hello servicio Power BI. |
 | *.microsoftonline-p.com |443 |Se utiliza para la autenticación dependiendo de la configuración. |
 
 ### <a name="force-https"></a>Forzar la comunicación HTTPS con Azure Service Bus
-Puede hacer que la puerta de enlace se comunique con Azure Service Bus mediante HTTPS en lugar de TCP directo. Sin embargo, de ese modo puede reducir en gran medida el rendimiento. Debe modificar el archivo *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* cambiando el valor de `AutoDetect` por `Https`. Este archivo suele encontrarse en *C:\Archivos de programa\Puerta de enlace de datos local*.
+Puede forzar hello toocommunicate de puerta de enlace con el Bus de servicio de Azure mediante HTTPS en lugar de TCP directo; Sin embargo, si lo hace por lo que puede reducir considerablemente rendimiento. Puede modificar hello *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* archivo cambiando el valor de Hola de `AutoDetect` demasiado`Https`. Este archivo suele encontrarse en *C:\Archivos de programa\Puerta de enlace de datos local*.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -98,67 +98,67 @@ Puede hacer que la puerta de enlace se comunique con Azure Service Bus mediante 
 
 ### <a name="general"></a>General
 
-**P**: ¿Necesito una puerta de enlace para orígenes de datos en la nube como, por ejemplo, Azure SQL Database? <br/>
-**R:** No. Las puertas de enlace se conectan únicamente a orígenes de datos locales.
+**Preguntas**: ¿necesito una puerta de enlace para los orígenes de datos en la nube de hello, como la base de datos de SQL Azure? <br/>
+**R:** No. Una puerta de enlace conecta a orígenes de datos de tooon locales solo.
 
-**P**: ¿La puerta de enlace debe estar instalada en la misma máquina que el origen de datos? <br/>
-**R:** No. La puerta de enlace se conecta al origen de datos mediante la información de conexión que se proporcionó. Considere la puerta de enlace como una aplicación cliente en este sentido. La puerta de enlace solo necesita la funcionalidad para conectarse al nombre de servidor que se proporcionó, por lo general, en la misma red.
+**¿Preguntas**: puerta de enlace de hello tiene toobe instalado en hello mismo equipo como origen de datos de hello? <br/>
+**R:** No. puerta de enlace de Hello conecta toohello origen de datos usando la información de conexión de Hola que proporcionó. Considere la posibilidad de puerta de enlace de hello como una aplicación de cliente en este sentido. Hello puerta de enlace solo necesita Hola capacidad tooconnect toohello nombre del servidor que se proporcionó, normalmente en hello misma red.
 
 <a name="why-azure-work-school-account"></a>
 
-**P**: ¿Por qué hay que usar una cuenta profesional o educativa para iniciar sesión? <br/>
-**R**: Solo puede usar una cuenta profesional o educativa de Azure al instalar la puerta de enlace de datos local. Su cuenta de inicio de sesión se almacena en un inquilino administrado por Azure Active Directory (Azure AD). Por lo general, el nombre principal de usuario (UPN) de la cuenta de Azure AD coincide con la dirección de correo electrónico.
+**Preguntas**: ¿por qué necesita toouse un trabajo o escuela cuenta toosign en? <br/>
+**Un**: solo puede usar un trabajo de Azure o educativa cuenta cuando se instala la puerta de enlace de datos de hello en local. Su cuenta de inicio de sesión se almacena en un inquilino administrado por Azure Active Directory (Azure AD). Por lo general, nombre principal de la cuenta de Azure AD usuario (UPN) coincide con dirección de correo electrónico de Hola.
 
 **P**: ¿Dónde se almacenan mis credenciales? <br/>
-**R**: Las credenciales que especifique para un origen de datos se cifran y almacenan en el servicio en la nube de la puerta de enlace. Las credenciales se descifran en la puerta de enlace de datos local.
+**Un**: credenciales de Hola que especifique para un origen de datos se cifran y almacenan en hello puerta de enlace de servicio en la nube. las credenciales de Hola se descifran en la puerta de enlace de datos de hello en local.
 
 **P**: ¿Hay algún requisito con respecto al ancho de banda de red? <br/>
-**R**: Es aconsejable que la conexión de red tenga buen rendimiento. Cada entorno es diferente, y la cantidad de datos que se envíe afecta a los resultados. Si usa ExpressRoute, podrá ayudar a garantizar un nivel de rendimiento entre los centros de datos locales y los de Azure.
-Puede usar la aplicación Azure Speed Test (desarrollada por un tercero) para medir su rendimiento.
+**R**: Es aconsejable que la conexión de red tenga buen rendimiento. Cada entorno es diferente y cantidad de Hola de datos que se envían afecta a los resultados de Hola. Usar ExpressRoute puede ayudar a tooguarantee un nivel de rendimiento entre hello centros de datos de Azure y local.
+Puede usar Hola herramienta de otro fabricante Azure Speed Test aplicación toohelp medidor su rendimiento.
 
-**P**: ¿cuál es la latencia para la ejecución de consultas en un origen de datos desde la puerta de enlace? ¿Cuál es la mejor arquitectura? <br/>
-**R**: Para reducir la latencia de red, instale la puerta de enlace lo más cerca posible del origen de datos. Si puede instalar la puerta de enlace en el propio origen de datos, esta proximidad minimizará la latencia introducida. Tenga en cuenta también los centros de datos. Por ejemplo, si el servicio usa el centro de datos del oeste de EE. UU. y tiene SQL Server hospedado en una máquina virtual de Azure, esta debería encontrarse también en el oeste de EE. UU. Esta proximidad minimiza la latencia y evita los cargos de salida en la máquina virtual de Azure.
+**Preguntas**: ¿qué es la latencia de Hola para consultas tooa datos de origen en ejecución de puerta de enlace de hello? ¿Cuál es la mejor arquitectura de hello? <br/>
+**Un**: latencia de red tooreduce, puerta de enlace de instalación hello como origen de datos de toohello cerrar como sea posible. Si puede instalar la puerta de enlace de hello en el origen de datos real de hello, esta proximidad reduce la latencia de hello introducida. Considere la posibilidad de centros de datos de hello demasiado. Por ejemplo, si el servicio usa el centro de datos de hello oeste de Estados Unidos y tiene SQL Server hospedado en una máquina virtual de Azure, la VM de Azure deben estar en hello West US demasiado. Esta proximidad reduce la latencia y evita los cargos de salida en hello VM de Azure.
 
-**P**: ¿Cómo se devuelven los resultados a la nube? <br/>
-**R**: Los resultados se envían a través de Azure Service Bus.
+**Preguntas**: ¿de qué resultados enviados toohello atrás en la nube? <br/>
+**Un**: los resultados se envían a través de hello Azure Service Bus.
 
-**P**: ¿Hay alguna conexión de entrada a la puerta de enlace desde la nube? <br/>
-**R:** No. La puerta de enlace usa conexiones de salida al bus de servicio de Azure.
+**Preguntas**: ¿hay ninguna puerta de enlace de toohello de las conexiones entrantes de nube de hello? <br/>
+**R:** No. puerta de enlace de Hello utiliza conexiones salientes tooAzure Bus de servicio.
 
-**P**: ¿Qué sucede si bloqueo las conexiones de salida? ¿Qué tengo que abrir? <br/>
-**R**: Consulte los puertos y los hosts que usa la puerta de enlace.
+**P**: ¿Qué sucede si bloqueo las conexiones de salida? ¿Qué necesito tooopen? <br/>
+**Un**: ver los puertos de Hola y hosts que Hola usos de la puerta de enlace.
 
-**P**: ¿Cómo se llama el servicio real de Windows?<br/>
-**R**: En los servicios, la puerta de enlace se llama servicio de puerta de enlace de datos local.
+**¿Preguntas**: lo que se denomina el servicio de Windows de hello real?<br/>
+**Un**: en los servicios, puerta de enlace de Hola se llama servicio de puerta de enlace de datos local.
 
-**P**: ¿Se puede ejecutar el servicio de Windows de puerta de enlace con una cuenta de Azure Active Directory? <br/>
-**R:** No. El servicio de Windows debe tener una cuenta de Windows válida. De forma predeterminada, el servicio se ejecuta con el SID de servicio NT SERVICE\PBIEgwService.
+**¿Preguntas**: Hola a servicio de Windows de puerta de enlace que se ejecutan con una cuenta de Azure Active Directory? <br/>
+**R:** No. Hola servicio de Windows debe tener una cuenta de Windows válida. De forma predeterminada, el servicio de Hola se ejecuta con hello SID de servicio, NT SERVICE\PBIEgwService.
 
 ### <a name="high-availability"></a>Alta disponibilidad y recuperación ante desastres
 
 **P**: ¿Cuáles son las opciones de recuperación ante desastres disponibles? <br/>
-**R**: Puede usar la clave de recuperación para restaurar o mover una puerta de enlace. Cuando instale la puerta de enlace, especifique la clave de recuperación.
+**Un**: puede usar toorestore de clave de recuperación de Hola o mover una puerta de enlace. Cuando se instala la puerta de enlace de hello, especifique la clave de recuperación de Hola.
 
-**P**: ¿Qué ventaja aporta la clave de recuperación? <br/>
-**R**: La clave de recuperación proporciona una forma de migrar o recuperar la configuración de la puerta de enlace después de un desastre.
+**Preguntas**: ¿cuál es la ventaja de Hola de clave de recuperación de hello? <br/>
+**Un**: clave de recuperación de hello proporciona una manera toomigrate o recuperar la configuración de puerta de enlace después de un desastre.
 
-## <a name="troubleshooting"> </a>Solución de problemas
+## <a name="troubleshooting"></a>Solución de problemas
 
-**P**: ¿Cómo se pueden ver las consultas que se envían al origen de datos local? <br/>
-**R**: Puede habilitar el seguimiento de consultas, que incluye las consultas que se envían. No olvide devolver el seguimiento de consultas al valor original cuando haya terminado de solucionar problemas. Si lo deja activado, crea registros de mayor tamaño.
+**Preguntas**: ¿Cómo puedo ver las consultas que se están enviando el origen de datos local de toohello? <br/>
+**Un**: para habilitar el seguimiento de la consulta, que incluye las consultas de Hola que se envían. Recuerde consulta toochange remontarse toohello valor original cuando haya finalizado la solución de problemas. Si lo deja activado, crea registros de mayor tamaño.
 
 También puede examinar las herramientas de que dispone su origen de datos para el seguimiento de consultas. Por ejemplo, puede utilizar Eventos extendidos o SQL Profiler en SQL Server y Analysis Services.
 
-**P**: ¿Dónde están los registros de la puerta de enlace? <br/>
+**¿Preguntas**: donde se encuentran los registros de puerta de enlace de hello? <br/>
 **R**: Consulte la sección Registros en este mismo tema.
 
-### <a name="update"></a>Actualización a la versión más reciente
+### <a name="update"></a>Actualizar la versión más reciente de toohello
 
-Pueden surgir muchos problemas cuando la versión de la puerta de enlace deja de estar actualizada. Como buena práctica general, asegúrese de que está usando la versión más reciente. Si no ha actualizado la puerta de enlace durante un mes o más, debería plantearse instalar su versión más reciente y comprobar si puede reproducir el problema.
+Muchos problemas pueden surgir cuando la versión de la puerta de enlace de Hola quede anticuado. Como buena práctica general, asegúrese de utilizar la versión más reciente de Hola. Si no ha actualizado la puerta de enlace de Hola durante un mes o más, podría pensar en instalar la versión más reciente de Hola de puerta de enlace de Hola y vea si puede reproducir el problema de Hola.
 
-### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users"></a>Error: Error al agregar el usuario al grupo. (Usuarios del registro de rendimiento de-2147463168 PBIEgwService)
+### <a name="error-failed-tooadd-user-toogroup--2147463168-pbiegwservice-performance-log-users"></a>Error: No se pudo tooadd toogroup de usuario. (Usuarios del registro de rendimiento de-2147463168 PBIEgwService)
 
-Es posible que reciba este error si intenta instalar la puerta de enlace en un controlador de dominio, lo cual no se admite. Asegúrese de implementar la puerta de enlace en una máquina que no sea un controlador de dominio.
+Podría obtener este error si intentas puerta de enlace de tooinstall hello en un controlador de dominio que no es compatible. Asegúrese de que implemente la puerta de enlace de hello en un equipo que no es un controlador de dominio.
 
 ## <a name="logs"></a>Registros
 
@@ -177,16 +177,16 @@ Los archivos de registro son un recurso importante a la hora de solucionar probl
 
 #### <a name="event-logs"></a>Registros de eventos
 
-Puede encontrar los registros de Data Management Gateway y PowerBIGateway en **Registros de aplicaciones y servicios**.
+Puede encontrar registros de Data Management Gateway y PowerBIGateway en hello **registros de aplicaciones y servicios**.
 
 
 ## <a name="telemetry"></a>Telemetría
 La telemetría puede usarse para tareas de supervisión y solución de problemas. De forma predeterminada
 
-**Para activar la telemetría:**
+**tooturn datos de telemetría**
 
-1.  Compruebe el directorio de cliente de puerta de enlace de datos local en el equipo. Normalmente, es **%systemdrive%\Program Files\On-premises data gateway**. O bien, puede abrir una consola de servicios y comprobar la ruta de acceso al archivo ejecutable: una propiedad del servicio de puerta de enlace de datos local.
-2.  En el archivo Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config del directorio del cliente, cambie el valor SendTelemetry a true.
+1.  Compruebe el directorio del cliente de puerta de enlace Hola local datos en el equipo de Hola. Normalmente, es **%systemdrive%\Program Files\On-premises data gateway**. O bien, puede abrir una consola de servicios y compruebe tooexecutable de ruta de acceso de hello: una propiedad del servicio de puerta de enlace de datos de hello local.
+2.  En el archivo Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config de hello directorio del cliente. Cambiar hello SendTelemetry configuración tootrue.
         
     ```
         <setting name="SendTelemetry" serializeAs="String">
@@ -194,7 +194,7 @@ La telemetría puede usarse para tareas de supervisión y solución de problemas
         </setting>
     ```
 
-3.  Guarde los cambios y reinicie el servicio de Windows: el servicio de puerta de enlace de datos local.
+3.  Guarde los cambios y reinicie el servicio de Windows hello: el servicio de puerta de enlace de datos local.
 
 
 

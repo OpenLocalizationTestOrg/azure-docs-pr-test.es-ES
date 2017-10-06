@@ -1,6 +1,6 @@
 ---
-title: "Aprovisionamiento de una aplicación web que usa una base de datos SQL"
-description: "Use una plantilla de Administrador de recursos de Azure para implementar una aplicación web que incluye una base de datos SQL."
+title: "aaaProvision una aplicación web que usa una base de datos de SQL"
+description: "Utilice un toodeploy de plantilla aplicación web que incluye una base de datos SQL de Azure Resource Manager."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
-ms.openlocfilehash: cc34f684f8c50e95a62cb7b04fd2ddce5deb68d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 189c0122d201e88f15013bf241d66652ef23df4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="provision-a-web-app-with-a-sql-database"></a>Aprovisionamiento de una aplicación web con una base de datos SQL
-En este tema, aprenderá a crear una plantilla de Administrador de recursos de Azure que implementa una aplicación web y una base de datos SQL. Aprenderá a definir los recursos que se implementan y los parámetros que se especifican cuando se ejecuta la implementación. Puede usar esta plantilla para sus propias implementaciones o personalizarla para satisfacer sus necesidades.
+En este tema, aprenderá cómo toocreate una plantilla de Azure Resource Manager que se puede implementar una aplicación web y la base de datos SQL. Obtendrá información sobre cómo toodefine qué recursos se implementan y cómo toodefine parámetros que especifican cuando se ejecuta la implementación de Hola. Puede usar esta plantilla para sus propias implementaciones o personalizarlo toomeet sus requisitos.
 
 Para obtener más información sobre la creación de plantillas, consulte [Creación de plantillas de Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Para obtener más información acerca de la implementación de aplicaciones, consulte [Implementación de una aplicación compleja de forma predecible en Azure](app-service-deploy-complex-application-predictably.md).
 
-Para la plantilla completa, consulte [Aplicación web con plantilla de Base de datos SQL](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
+Para la plantilla de hello completa, consulte [plantilla Web App con base de datos SQL](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -41,29 +41,29 @@ En esta plantilla, implementará lo siguiente:
 * Las reglas de alertas
 * Detalles de la aplicación
 
-Para ejecutar automáticamente la implementación, haga clic en el botón siguiente:
+toorun Hola implementación automáticamente, haga clic en hello después de botón:
 
-[![Implementación en Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
+[![Implementar tooAzure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Parámetros para especificar
+## <a name="parameters-toospecify"></a>Parámetros toospecify
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### <a name="administratorlogin"></a>administratorLogin
-El nombre de cuenta que se va a usar para el administrador del servidor de base de datos.
+Hola toouse de nombre de cuenta de administrador del servidor de base de datos de Hola.
 
     "administratorLogin": {
       "type": "string"
     }
 
 ### <a name="administratorloginpassword"></a>administratorLoginPassword
-La contraseña que se va a usar para el administrador del servidor de base de datos.
+Hola toouse de contraseña de administrador del servidor de base de datos de Hola.
 
     "administratorLoginPassword": {
       "type": "securestring"
     }
 
 ### <a name="databasename"></a>databaseName
-El nombre de la nueva base de datos que se va a crear.
+nombre de Hola de hello toocreate de base de datos nueva.
 
     "databaseName": {
       "type": "string",
@@ -71,7 +71,7 @@ El nombre de la nueva base de datos que se va a crear.
     }
 
 ### <a name="collation"></a>collation
-La intercalación de base de datos que se va a usar para regir el uso correcto de caracteres.
+Hola toouse de intercalación de base de datos para que rige hello apropiado el uso de caracteres.
 
     "collation": {
       "type": "string",
@@ -79,7 +79,7 @@ La intercalación de base de datos que se va a usar para regir el uso correcto d
     }
 
 ### <a name="edition"></a>edition
-El tipo de base de datos que se va a crear.
+tipo de Hola de toocreate de base de datos.
 
     "edition": {
       "type": "string",
@@ -90,12 +90,12 @@ El tipo de base de datos que se va a crear.
         "Premium"
       ],
       "metadata": {
-        "description": "The type of database to create."
+        "description": "hello type of database toocreate."
       }
     }
 
 ### <a name="maxsizebytes"></a>maxSizeBytes
-El tamaño máximo, en bytes, de la base de datos.
+tamaño máximo de Hello, en bytes, de la base de datos de Hola.
 
     "maxSizeBytes": {
       "type": "string",
@@ -103,7 +103,7 @@ El tamaño máximo, en bytes, de la base de datos.
     }
 
 ### <a name="requestedserviceobjectivename"></a>requestedServiceObjectiveName
-El nombre correspondiente al nivel de rendimiento para la edición. 
+Hola nombre correspondiente toohello nivel de rendimiento de edición. 
 
     "requestedServiceObjectiveName": {
       "type": "string",
@@ -118,12 +118,12 @@ El nombre correspondiente al nivel de rendimiento para la edición.
         "P3"
       ],
       "metadata": {
-        "description": "Describes the performance level for Edition"
+        "description": "Describes hello performance level for Edition"
       }
     }
 
 ## <a name="variables-for-names"></a>Variables de nombres
-Esta plantilla incluye variables que construyen los nombres que se usan en la plantilla. Los valores de las variables usan la función **uniqueString** para generar un nombre a partir del identificador del grupo de recursos.
+Esta plantilla incluye las variables que construcción nombres utilizados en la plantilla de Hola. valores de las variables Hola usan hello **uniqueString** función toogenerate un nombre de Id. de grupo de recursos de Hola.
 
     "variables": {
         "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -132,9 +132,9 @@ Esta plantilla incluye variables que construyen los nombres que se usan en la pl
     },
 
 
-## <a name="resources-to-deploy"></a>Recursos para implementar
+## <a name="resources-toodeploy"></a>Toodeploy de recursos
 ### <a name="sql-server-and-database"></a>Servidor y Base de datos SQL
-Crea un servidor y una base de datos SQL nuevos. El nombre del servidor se especifica en el parámetro **serverName** y la ubicación en el parámetro **serverLocation**. Al crear el nuevo servidor, debe proporcionar un nombre de inicio de sesión y una contraseña para el administrador del servidor de base de datos. 
+Crea un servidor y una base de datos SQL nuevos. nombre de saludo del servidor de Hola se especifica en hello **serverName** hello y parámetro ubicación especificada en hello **serverLocation** parámetro. Al crear el nuevo servidor de hello, debe proporcionar un nombre de inicio de sesión y una contraseña de administrador del servidor de base de datos de Hola. 
 
     {
       "name": "[variables('sqlserverName')]",
@@ -373,7 +373,7 @@ Crea un servidor y una base de datos SQL nuevos. El nombre del servidor se espec
       },
       "properties": {
         "name": "[concat('CPUHigh ', variables('hostingPlanName'))]",
-        "description": "[concat('The average CPU is high across all the instances of ', variables('hostingPlanName'))]",
+        "description": "[concat('hello average CPU is high across all hello instances of ', variables('hostingPlanName'))]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -407,7 +407,7 @@ Crea un servidor y una base de datos SQL nuevos. El nombre del servidor se espec
       },
       "properties": {
         "name": "[concat('LongHttpQueue ', variables('hostingPlanName'))]",
-        "description": "[concat('The HTTP queue for the instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
+        "description": "[concat('hello HTTP queue for hello instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -446,7 +446,7 @@ Crea un servidor y una base de datos SQL nuevos. El nombre del servidor se espec
       }
     }
 
-## <a name="commands-to-run-deployment"></a>Comandos para ejecutar la implementación
+## <a name="commands-toorun-deployment"></a>Implementación de toorun de comandos
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -462,6 +462,6 @@ Crea un servidor y una base de datos SQL nuevos. El nombre del servidor se espec
     az resource deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
 > [!NOTE]
-> Para el contenido del archivo JSON de parámetros, consulte [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).
+> Para el contenido del archivo JSON de parámetros de hello, consulte [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).
 >
 >

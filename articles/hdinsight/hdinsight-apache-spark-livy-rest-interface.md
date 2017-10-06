@@ -1,6 +1,6 @@
 ---
-title: "Uso de Livy Spark para enviar trabajos a un clúster Spark de Azure HDInsight | Microsoft Docs"
-description: "Obtenga información sobre cómo usar la API de REST de Apache Spark para enviar trabajos de Spark de forma remota a un clúster de Azure HDInsight."
+title: "clúster aaaUse Livio Spark toosubmit trabajos tooSpark en HDInsight de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse API de REST de Apache Spark toosubmit Spark remotamente trabajos tooan clúster de HDInsight de Azure."
 keywords: API de REST de Apache Spark, Livy Spark
 services: hdinsight
 documentationcenter: 
@@ -17,47 +17,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: nitinme
-ms.openlocfilehash: e1a28d69bbf40ea3134a7899a0d2fe70e5fc9e71
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 417213b5f1db1522373188002fe05117faea5243
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Uso de la API de REST de Apache Spark para enviar trabajos remotos a un clúster Spark de HDInsight
+# <a name="use-apache-spark-rest-api-toosubmit-remote-jobs-tooan-hdinsight-spark-cluster"></a>Usar la API de REST de Apache Spark toosubmit trabajos remotos tooan clúster de HDInsight Spark
 
-Obtenga información sobre cómo usar Livy, la API de REST de Apache Spark, que se usa para enviar trabajos remotos a un clúster Spark de Azure HDInsight. Para obtener documentación detallada, vea [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server).
+Obtenga información acerca de cómo trabajos del clúster de Azure HDInsight Spark tooan toouse Livio, Hola Apache Spark REST API, que es usado toosubmit remoto. Para obtener documentación detallada, vea [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server).
 
-Puede usar Livy para ejecutar shells de Spark interactivos o enviar trabajos por lotes que se ejecutarán en Spark. Este artículo trata acerca de cómo utilizar Livy para enviar trabajos por lotes. Los fragmentos de código de este artículo usan cURL para realizar llamadas de la API de REST al punto de conexión de Livy Spark.
+Puede usar los shells de Spark interactivos Livio toorun o enviar toobe de trabajos por lotes ejecutar en Spark. En este artículo se habla sobre el uso de trabajos por lotes de Livio toosubmit. fragmentos de código de Hello en este artículo usan cURL toomake punto de conexión Livio Spark toohello de llamadas de API de REST.
 
 **Requisitos previos:**
 
 * Un clúster de Apache Spark en HDInsight. Para obtener instrucciones, vea [Creación de clústeres Apache Spark en HDInsight de Azure](hdinsight-apache-spark-jupyter-spark-sql.md).
 
-* [cURL](http://curl.haxx.se/). En este artículo se usa cURL para mostrar cómo realizar llamadas de la API de REST a un clúster de HDInsight Spark.
+* [cURL](http://curl.haxx.se/). En este artículo usa toodemonstrate cURL cómo toomake API de REST se llama en un clúster de HDInsight Spark.
 
 ## <a name="submit-a-livy-spark-batch-job"></a>Envío de un trabajo por lotes de Livy Spark
-Antes de enviar un trabajo por lotes, debe cargar el archivo jar de aplicación en el almacenamiento del clúster asociado al clúster. Puede usar [**AzCopy**](../storage/common/storage-use-azcopy.md), una utilidad de línea de comandos, para hacerlo. Hay muchos otros clientes que se pueden usar para cargar datos. Puede encontrar más información al respecto en [Carga de datos para trabajos de Hadoop en HDInsight](hdinsight-upload-data.md).
+Antes de enviar un trabajo por lotes, debe cargar jar de aplicación hello en el almacenamiento de clúster de hello asociado con el clúster de Hola. Puede usar [ **AzCopy**](../storage/common/storage-use-azcopy.md), una utilidad de línea de comandos, toodo para. Hay varios otros clientes que se puede usar datos de tooupload. Puede encontrar más información al respecto en [Carga de datos para trabajos de Hadoop en HDInsight](hdinsight-upload-data.md).
 
-    curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches'
+    curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path tooapplication jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches'
 
 **Ejemplos:**
 
-* Si el archivo jar se encuentra en el almacenamiento de clúster (WASB)
+* Si es el archivo jar de hello en el almacenamiento de clúster de hello (WASB)
   
         curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches"
-* Si quiere pasar el nombre del archivo jar y el nombre de clase como parte de un archivo de entrada (en este ejemplo, input.txt)
+* Si desea toopass nombre de archivo jar de Hola y Hola classname como parte de un archivo de entrada (en este ejemplo, input.txt)
   
         curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
-## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>Obtención de información sobre los lotes de Livy Spark que se ejecutan en el clúster
+## <a name="get-information-on-livy-spark-batches-running-on-hello-cluster"></a>Obtener información acerca de los lotes Livio Spark con clúster de Hola
     curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_cluster_name>.azurehdinsight.net/livy/batches"
 
 **Ejemplos:**
 
-* Si desea recuperar todos los lotes de Livy Spark que se ejecutan en el clúster:
+* Si desea que todos los lotes de Spark Livio Hola ejecutando en el clúster de Hola tooretrieve:
   
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
-* Si desea recuperar un lote específico con un determinado identificador de lote
+* Si desea que tooretrieve un lote específico con un determinado identificador de lote
   
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
 
@@ -69,24 +69,24 @@ Antes de enviar un trabajo por lotes, debe cargar el archivo jar de aplicación 
     curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
 
 ## <a name="livy-spark-and-high-availability"></a>Livy Spark y alta disponibilidad
-Livy proporciona alta disponibilidad para los trabajos de Spark que se ejecuten en el clúster. Estos son algunos ejemplos.
+Livio proporciona alta disponibilidad para los trabajos de Spark ejecutándose en el clúster de Hola. Estos son algunos ejemplos.
 
-* Si el servicio Livy deja de funcionar después de haber enviado un trabajo de forma remota a un clúster Spark, dicho trabajo continúa ejecutándose en segundo plano. Cuando se restablece el funcionamiento de Livy, restaura el estado del trabajo e informa de ello.
-* Los cuadernos de Jupyter Notebook para HDInsight cuentan con la tecnología de Livy en el backend. Si un cuaderno ejecuta un trabajo de Spark y se reinicia el servicio Livy, el cuaderno sigue ejecutando las celdas de código. 
+* Si Hola servicio Livio deja de funcionar después de que ha enviado un trabajo de forma remota tooa Spark en clúster, hello trabajo continúa toorun en segundo plano de Hola. Una vez Livio realizar copias de seguridad, restaura el estado de hello del trabajo de Hola y los informes de nuevo.
+* Jupyter blocs de notas para HDInsight cuentan con la tecnología Livio en hello back-end. Si un bloc de notas está ejecutando un trabajo de Spark y obtiene reiniciar servicio Livio hello, Bloc de notas de hello continúa celdas de código de hello toorun. 
 
 ## <a name="show-me-an-example"></a>Mostrar un ejemplo
-En esta sección se verán ejemplos de uso de Livy Spark para enviar un trabajo por lotes, supervisar el progreso del trabajo y después eliminarlo. La aplicación que se usa en este ejemplo es la que se desarrolla en el artículo [Creación de una aplicación de Scala independiente para ejecutarla en el clúster HDInsight Spark](hdinsight-apache-spark-create-standalone-application.md). En los pasos siguientes se da por hecho que:
+En esta sección, se mire el proceso por lotes toosubmit de ejemplos toouse Livio Spark, supervisar el progreso de Hola de trabajo de hello y, a continuación, elimínelo. aplicación que utilizamos en este ejemplo Hello es hello uno desarrollado en el artículo de hello [crear una aplicación independiente que se Scala y toorun en clúster de HDInsight Spark](hdinsight-apache-spark-create-standalone-application.md). pasos de Hello aquí supone que:
 
-* Ya ha copiado el archivo JAR de la aplicación en la cuenta de almacenamiento asociada con el clúster.
-* Tiene CuRL instalado en el equipo donde intenta seguir estos pasos.
+* Ya ha copiado Hola aplicación jar toohello almacenamiento cuenta asociada con el clúster de Hola.
+* Tener CuRL instalado en equipo Hola donde se intenta seguir estos pasos.
 
-Lleve a cabo los siguiente pasos:
+Lleve a cabo Hola pasos:
 
-1. Nos gustaría comprobar primero que Livy Spark se está ejecutando en el clúster. Podemos hacerlo mediante la obtención de una lista de lotes en ejecución. Si es la primera vez que ejecuta un trabajo con Livy, la salida debe devolver cero.
+1. Permítanos primero compruebe que está ejecutando Livio Spark en clúster de Hola. Podemos hacerlo mediante la obtención de una lista de lotes en ejecución. Si está ejecutando un trabajo mediante Livio para hello primera vez, la salida de hello debe devolver cero.
    
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
    
-    Debería obtener una salida similar al siguiente fragmento de código:
+    Debería obtener un toohello similar de salida siguiente fragmento de código:
    
         < HTTP/1.1 200 OK
         < Content-Type: application/json; charset=UTF-8
@@ -96,19 +96,19 @@ Lleve a cabo los siguiente pasos:
         < Date: Fri, 20 Nov 2015 23:47:53 GMT
         < Content-Length: 34
         <
-        {"from":0,"total":0,"sessions":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
+        {"from":0,"total":0,"sessions":[]}* Connection #0 toohost mysparkcluster.azurehdinsight.net left intact
    
-    Observe que la última línea de la salida indica **total: 0**, lo que sugiere que no hay lotes en ejecución.
+    Tenga en cuenta cómo indica la última línea de salida de hello de hello **total: 0**, lo que no sugiere lotes en ejecución.
 
-2. Ahora vamos a enviar un trabajo por lotes. El fragmento de código siguiente usa un archivo de entrada (input.txt) para pasar el nombre del archivo jar y el nombre de clase como parámetros. Si ejecuta estos pasos desde un equipo Windows, el enfoque recomendado es usar un archivo de entrada.
+2. Ahora vamos a enviar un trabajo por lotes. Hola siguiente fragmento de código usa un nombre de archivo de entrada (input.txt) toopass Hola jar y un nombre de clase de hello como parámetros. Si se ejecutan estos pasos desde un equipo Windows, utilizando un archivo de entrada es Hola enfoque recomendado.
    
         curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
    
-    A continuación se definen los parámetros del archivo **input.txt** :
+    Hola parámetros en el archivo hello **input.txt** se definen como sigue:
    
         { "file":"wasb:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
    
-    Debería ver una salida similar al siguiente fragmento de código:
+    Debería ver un toohello similar de salida siguiente fragmento de código:
    
         < HTTP/1.1 201 Created
         < Content-Type: application/json; charset=UTF-8
@@ -119,15 +119,15 @@ Lleve a cabo los siguiente pasos:
         < Date: Fri, 20 Nov 2015 23:51:30 GMT
         < Content-Length: 36
         <
-        {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
+        {"id":0,"state":"starting","log":[]}* Connection #0 toohost mysparkcluster.azurehdinsight.net left intact
    
-    Observe que la última línea del resultado indica **state:starting**. También indica **id:0**. Aquí, **0** es el identificador de lote.
+    Tenga en cuenta cómo indica la última línea de salida de hello de hello **estado: a partir de**. También indica **id:0**. En este caso, **0** es el identificador de lote Hola.
 
-3. Ahora puede recuperar el estado de este lote concreto con el identificador de lote.
+3. Ahora puede recuperar el estado de Hola de este lote específico mediante identificador de lote Hola.
    
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
    
-    Debería ver una salida similar al siguiente fragmento de código:
+    Debería ver un toohello similar de salida siguiente fragmento de código:
    
         < HTTP/1.1 200 OK
         < Content-Type: application/json; charset=UTF-8
@@ -137,15 +137,15 @@ Lleve a cabo los siguiente pasos:
         < Date: Fri, 20 Nov 2015 23:54:42 GMT
         < Content-Length: 509
         <
-        {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://hn0-myspar.lpel1gnnvxne3gwzqkfq5u5uzh.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
+        {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://hn0-myspar.lpel1gnnvxne3gwzqkfq5u5uzh.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 toohost mysparkcluster.azurehdinsight.net left intact
    
-    La salida muestra ahora **state:success**, lo que sugiere que el trabajo se ha completado correctamente.
+    Hola de salida muestra **estado: correcto**, lo que sugiere que el trabajo de Hola se completó correctamente.
 
-4. Si lo desea, ahora puede eliminar el lote.
+4. Si lo desea, ahora puede eliminar por lotes de Hola.
    
         curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
    
-    Debería ver una salida similar al siguiente fragmento de código:
+    Debería ver un toohello similar de salida siguiente fragmento de código:
    
         < HTTP/1.1 200 OK
         < Content-Type: application/json; charset=UTF-8
@@ -155,33 +155,33 @@ Lleve a cabo los siguiente pasos:
         < Date: Sat, 21 Nov 2015 18:51:54 GMT
         < Content-Length: 17
         <
-        {"msg":"deleted"}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
+        {"msg":"deleted"}* Connection #0 toohost mysparkcluster.azurehdinsight.net left intact
    
-    La última línea de la salida indica que el lote se ha eliminado correctamente. Al eliminar un trabajo mientras se está ejecutando también se termina. Si elimina un trabajo que se ha completado correctamente o incorrectamente, elimina la información del trabajo por completo.
+    Hola última línea de salida de hello muestra que ese lote Hola se eliminó correctamente. Eliminar un trabajo, mientras se está ejecutando, también elimina el trabajo de Hola. Si elimina un trabajo que se ha completado correctamente o en caso contrario, elimina la información sobre el trabajo de hello completamente.
 
 ## <a name="using-livy-spark-on-hdinsight-35-clusters"></a>Uso de Livy Spark en clústeres de HDInsight 3.5
 
-Un clúster de HDInsight 3.5 deshabilita de forma predeterminada el uso de rutas de acceso a archivos locales para el acceso a archivos de datos de ejemplo o archivos jar. Le recomendamos que use la ruta de acceso `wasb://` en su lugar para tener acceso a archivos jar o archivos de datos de ejemplo desde el clúster. Si desea usar la ruta de acceso local, debe actualizar la configuración de Ambari en consecuencia. Para ello:
+Clúster de HDInsight 3.5, de forma predeterminada, deshabilita el uso de archivos de datos de ejemplo de tooaccess de rutas de acceso de archivo local o archivos JAR. Le recomendamos que toouse hello `wasb://` ruta de acceso en su lugar archivos JAR tooaccess archivos o datos de ejemplo de clúster de Hola. Si desea toouse la ruta de acceso local, debe actualizar la configuración de Ambari de hello en consecuencia. toodo para:
 
-1. Vaya al portal de Ambari para el clúster. La interfaz de usuario web de Ambari está disponible en el clúster de HDInsight en https://**CLUSTERNAME**.azurehdidnsight.net, donde CLUSTERNAME es el nombre del clúster.
+1. Vaya toohello Ambari portal para clúster Hola. Hola interfaz de usuario de Ambari Web está disponible en el clúster de HDInsight en https://**CLUSTERNAME**. azurehdidnsight.net, donde CLUSTERNAME es nombre hello del clúster.
 
-2. En el panel de navegación izquierdo, haga clic en **Livy**y, a continuación, haga clic en **Configs** (Configuraciones).
+2. En la barra de navegación izquierda de hello, haga clic en **Livio**y, a continuación, haga clic en **configuraciones**.
 
-3. En **livy-default**, agregue el nombre de propiedad `livy.file.local-dir-whitelist` y establezca su valor en **"/"** si desea permitir el acceso total al sistema de archivos. Si desea permitir el acceso únicamente a un directorio específico, proporcione la ruta de acceso a ese directorio como valor.
+3. En **Livio predeterminado** Agregar nombre de la propiedad de hello `livy.file.local-dir-whitelist` y establezca su valor demasiado**"/"** si desea que el sistema de toofile de tooallow acceso completo. Si desea que el directorio específico de tooallow acceso tooa solo, especifica el directorio de toothat de ruta de acceso de hello como valor de Hola.
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Envío de trabajos de Livy para un clúster en una red virtual de Azure
 
-Si se conecta a un clúster de HDInsight Spark desde una red virtual de Azure, puede conectarse directamente a Livy en el clúster. En tal caso, la dirección URL del punto de conexión de Livy es `http://<IP address of the headnode>:8998/batches`. Aquí, **8998** es el puerto en el que se ejecuta Livy en el nodo principal del clúster. Para más información sobre el acceso a los servicios en puertos no públicos, vea [Puertos utilizados por los servicios Hadoop en HDInsight](hdinsight-hadoop-port-settings-for-services.md).
+Si se conecta tooan clúster de HDInsight Spark desde dentro de una red Virtual de Azure, puede conectar directamente tooLivy en clúster de Hola. En tal caso, Hola dirección URL de extremo Livio es `http://<IP address of hello headnode>:8998/batches`. En este caso, **8998** es el puerto de Hola donde Livio se ejecuta en el nodo principal del clúster de Hola. Para más información sobre el acceso a los servicios en puertos no públicos, vea [Puertos utilizados por los servicios Hadoop en HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
-Estos son algunos de los problemas que pueden surgir a la hora de utilizar Livy para el envío de trabajo remoto a clústeres de Spark.
+Estas son algunas causas que pueden surgir al usar Livio para clústeres de tooSpark de envío de trabajo remoto.
 
-### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>No se admite el uso de un archivo jar externo desde el almacenamiento adicional
+### <a name="using-an-external-jar-from-hello-additional-storage-is-not-supported"></a>No se admite el uso de un jar externo de almacenamiento adicional de Hola
 
-**Problema**: si el trabajo de Livy Spark hace referencia a un archivo .jar externo de la cuenta de almacenamiento adicional asociada al clúster, se produce un error en el trabajo.
+**Problema:** si su trabajo Livio Spark hace referencia a un archivo jar externo de cuenta de almacenamiento adicional de hello asociada con el clúster de hello, se produce un error en el trabajo de Hola.
 
-**Solución:** asegúrese de que el archivo jar que desea usar se encuentra disponible en el almacenamiento predeterminado asociado al clúster de HDInsight.
+**Solución:** Asegúrese de que ese jar Hola desea toouse está disponible en almacenamiento de hello predeterminado asociado con el clúster de HDInsight Hola.
 
 
 
@@ -189,6 +189,6 @@ Estos son algunos de los problemas que pueden surgir a la hora de utilizar Livy 
 
 ## <a name="next-step"></a>Paso siguiente
 
-* [Administración de recursos para el clúster Apache Spark en HDInsight de Azure](hdinsight-apache-spark-resource-manager.md)
+* [Administrar los recursos de clúster de hello Apache Spark en HDInsight de Azure](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Seguimiento y depuración de trabajos que se ejecutan en un clúster de Apache Spark en HDInsight)](hdinsight-apache-spark-job-debugging.md)
 

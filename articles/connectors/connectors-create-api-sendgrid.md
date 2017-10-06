@@ -1,5 +1,5 @@
 ---
-title: SendGrid | Microsoft Docs
+title: aaaSendGrid | Documentos de Microsoft
 description: "Cree aplicaciones lógicas con el Servicio de aplicaciones de Azure. El proveedor de conexión SendGrid permite enviar correo electrónico y administrar listas de destinatarios."
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -15,33 +15,33 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 9ff0591741899d65b8274fb14ab3f3c8db9abe36
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c89c9930310232ac4c0fc9ee474f45d7910cf27c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-sendgrid-connector"></a>Introducción al conector SendGrid
+# <a name="get-started-with-hello-sendgrid-connector"></a>Empezar a trabajar con el conector de SendGrid Hola
 El proveedor de conexión SendGrid permite enviar correo electrónico y administrar listas de destinatarios.
 
 Puede empezar creando una aplicación lógica ahora. Para ello, consulte [Creación de una nueva aplicación lógica mediante la conexión de servicios de SaaS](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-sendgrid"></a>Creación de una conexión a SendGrid
-Para crear aplicaciones lógicas con SendGrid, primero debe crear una **conexión** y, después, especificar los detalles de las siguientes propiedades: 
+## <a name="create-a-connection-toosendgrid"></a>Crear una conexión tooSendGrid
+aplicaciones de lógica de toocreate con SendGrid, primero debe crear un **conexión** especifique los detalles de Hola de hello propiedades siguientes: 
 
 | Propiedad | Obligatorio | Description |
 | --- | --- | --- |
 | ApiKey |Sí |Proporciona la clave de API de SendGrid |
 
-> [!INCLUDE [Steps to create a connection to SendGrid](../../includes/connectors-create-api-sendgrid.md)]
+> [!INCLUDE [Steps toocreate a connection tooSendGrid](../../includes/connectors-create-api-sendgrid.md)]
 > 
 
 
-Después de crear la conexión, puede usarla para ejecutar las acciones y escuchar los desencadenadores.
+Después de crear la conexión de hello, puede usar acciones de hello tooexecute y realizar escuchas de los desencadenadores de Hola.
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/sendgrid/).
+Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/sendgrid/).
 
 ## <a name="more-connectors"></a>Más conectores
-Volver a la [lista de API](apis-list.md).
+Volver atrás toohello [lista de las API](apis-list.md).

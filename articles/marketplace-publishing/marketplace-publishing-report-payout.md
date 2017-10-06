@@ -1,6 +1,6 @@
 ---
-title: "Descripción de los informes de pagos de Azure Marketplace | Microsoft Docs"
-description: "Obtenga información sobre cómo revisar e introducir el informe de pago de Azure Marketplace."
+title: aaaUnderstand hello Azure Marketplace bancarios reporting | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooreview y recopilar informes de pago de Azure Marketplace de Hola."
 services: marketplace-publishing
 documentationcenter: na
 author: v-jeana
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-ms.openlocfilehash: 5a89e9ba4376d0c4f49feb3783692e28a28902a2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2bc21fad1805c0ead80c3f8a56128c789e17798e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-your-azure-marketplace-payout-reports"></a>Descripción de los informes de pago de Azure Marketplace
 ## <a name="access-and-view-your-payout-reports"></a>Acceso a los informes de pago y su visualización
-Mientras realizamos la transición al Centro de desarrollo, puede que algunos de sus informes de pago estén disponibles en el Centro de desarrollo en https://dev.windows.com/en-us, mientras que otros siguen estando en el Portal de publicación en https://publish.windowsazure.com.
+Mientras se transición tooDev Center algunos de los informes de pago estén disponibles en hello centro de desarrollo en https://dev.windows.com/en-us mientras otros todavía pueden encontrarse en el Portal de publicación en https://publish.windowsazure.com.
 
 Para las ofertas de Marketplace asociadas con pagos modernos, los informes de pago estarán ahora disponibles en el **Centro de desarrollo** ; actualmente aquí se incluyen:
 
@@ -32,12 +32,12 @@ Para las ofertas de Marketplace asociadas con pagos modernos, los informes de pa
 
 Los informes de pagos seguirán estando en el **Portal de publicación** para:
 
-* Datos y servicios de desarrollo ofrecidos bajo Web Direct (que aún emplea el sistema de pago anterior).
+* Servicios de desarrollo y de datos que ofrece en directo de Web (que sigue utilizando el sistema de pago heredado de hello).
 
-Los informes están disponibles 45 días después del cierre del trimestre y se calculan después los reembolsos.
+Los informes están disponibles 45 días después de hello cierre de hello trimestre y se calculan después los reembolsos.
 
 ### <a name="access-payout-reports-in-dev-center"></a>Acceso a los informes de pago en el Centro de desarrollo
-1. Vaya al Centro de desarrollo en https://dev.windows.com/en-us.
+1. Navegue tooDev Center en https://dev.windows.com/en-us.
 2. Haga clic en **Panel**.
 
     ![LandingPageDashboardHighlight][1]
@@ -46,34 +46,34 @@ Los informes están disponibles 45 días después del cierre del trimestre y se 
     ![DashboardPayoutSummary][2]
 
 ## <a name="view-your-payout-reports-in-dev-center"></a>Visualización de los informes de pago en el Centro de desarrollo
-El informe de pago para cada trimestre registra todas las transacciones que se producen dentro de ese trimestre.
+informe de pago de Hola para cada trimestre registra todas las transacciones que se produjeron dentro de este trimestre.
 
-* El importe reservado indica los pagos que se acumularán fuera del ciclo de pago próximo (por ejemplo, este importe se moverá al próximo pago el mes siguiente).  Este importe suele ser normalmente 0 $ (a menos que un cliente pague con mucha antelación).
-* Haga clic en los vínculos **Ver detalles** de Próximo pago o Pago más reciente para ver una nota sobre esos pagos.
-* Haga clic en **Extractos de pagos** para ver los detalles en Ganancias por aplicación o producto.
-* Haga clic en el vínculo **Ver** para ver extractos individuales.
+* cantidad reservada Hola indica los pagos que se están acumulando fuera de ciclo de pago próximos hello (p. ej. esta cantidad moverá Hola de pago de tooupcoming siguiente mes).  Este importe suele ser normalmente 0 $ (a menos que un cliente pague con mucha antelación).
+* Haga clic en hello próximos pagos o más reciente **ver detalles** vincula toosee una nota sobre los pagos.
+* Haga clic en **las instrucciones de pago** tooview detalles de hello en lleva a cabo por aplicación y producto.
+* Haga clic en hello **vista** vincular toosee las instrucciones individuales.
 
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
-* Utilice el filtro **Desglose de ganancias** en la parte inferior del extracto individual para ver varias aplicaciones o productos, si existen.
+* Hola de uso **desglose continúa** filtrar final Hola de hello instrucción individual tooview varias aplicaciones o productos, si existen.
 
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
 ## <a name="view-your-payout-reports-in-publishing-portal"></a>Visualización de los informes de pagos en el Portal de publicación
-El informe de pago para cada trimestre registra todas las transacciones que se producen dentro de ese trimestre.
+informe de pago de Hola para cada trimestre registra todas las transacciones que se produjeron dentro de este trimestre.
 
-1. Vaya al Portal de publicación en https://publish.windowsazure.com.
-2. En la sección **Editores**, haga clic en **Informes de pago**.
-3. Haga clic en el desplegable para que aparezcan todos los informes de pago trimestrales disponibles.
+1. Navegue toohello portal de publicación en https://publish.windowsazure.com.
+2. De hello **publicadores** sección, haga clic en **informes bancarios**.
+3. Haga clic en hello desplegable toodisplay todos los informes de pago trimestral disponibles.
 
     ![accessingpayoutreport][5]
 
 ### <a name="read-your-payout-reports"></a>Lectura de los informes de pago
-El informe de pago para cada trimestre registra todas las transacciones que se producen dentro de ese trimestre.
+informe de pago de Hola para cada trimestre registra todas las transacciones que se produjeron dentro de este trimestre.
 
-* Si busca movimientos relacionados con un trimestre concreto, seleccione el informe de pago para ese trimestre en la lista desplegable. Por ejemplo, si está interesado en los movimientos de abril a junio de 2015, seleccione dicho intervalo de fechas en la lista desplegable.
-* Si busca detalles de pagos relacionados con un trimestre concreto, seleccione el informe de pago para el siguiente trimestre. Por ejemplo, si está interesado en los pagos de abril a junio de 2015, estos importes aparecerán en el siguiente informe de pagos de julio a septiembre de 2015.
+* Si desea obtener los movimientos que se relacionan tooa determinado trimestre, seleccione el informe de pago de Hola para este trimestre de hello desplegable. Por ejemplo, si está interesado en movimientos para tooJune de abril de 2015, seleccione ese intervalo de fechas en Hola de lista desplegable.
+* Si desea obtener detalles de pagos que se relacionan tooa determinado trimestre, seleccionar informe de pago de hello para el trimestre posterior Hola. Por ejemplo, si está interesado en pagos de Hola para tooJune de abril de 2015, estas cantidades aparecerá en informes de pago subsiguientes de Hola para tooSeptember de julio de 2015.
   ![readingpayoutreport][6]
-* En el panel de resumen financiero se muestran saldos, debe y haber por categoría.
+* panel de resumen financiero de Hello muestra saldos, créditos y cargos por categoría.
 * Los movimientos muestran las transacciones individuales.
 
 ## <a name="definitions"></a>Definiciones
@@ -86,11 +86,11 @@ El informe de pago para cada trimestre registra todas las transacciones que se p
 ![ledgerdefinitions][8]
 
 ## <a name="payout-questions"></a>Preguntas sobre pagos
-Si tiene alguna pregunta relacionada con sus pagos, póngase en contacto con nuestro equipo de soporte técnico.
+Si tiene alguna pregunta relacionada con pagos tooyour, póngase en contacto con nuestro equipo de soporte técnico.
 
 ![payoutquestions][9]
 
-1. Navegue a las páginas de soporte técnico.
+1. Navegar por las páginas de soporte técnico de toohello.
 2. Seleccione **Pagos**.
 3. Seleccione **Consultas relacionadas con pagos**.
 4. Haga clic en **Solicitud de inicio**.

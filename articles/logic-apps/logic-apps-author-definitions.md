@@ -1,6 +1,6 @@
 ---
-title: "Definición de flujos de trabajo con JSON: Azure Logic Apps | Microsoft Docs"
-description: "Definiciones de flujo de trabajo en JSON para aplicaciones lógicas"
+title: los flujos de trabajo aaaDefine con JSON - Azure Logic Apps | Documentos de Microsoft
+description: "¿Cómo toowrite definiciones de flujo de trabajo en JSON para logic apps"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -15,23 +15,23 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 7f9e5a10066df8a464c285273e77a85c0d562ebb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d69d334ecee9c3e7f8684cfde68ef0e85280358
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-workflow-definitions-for-logic-apps-using-json"></a>Creación de definiciones de flujo de trabajo para aplicaciones lógicas mediante JSON
 
-Puede crear definiciones de flujo de trabajo para [Azure Logic Apps](logic-apps-what-are-logic-apps.md) con un lenguaje JSON sencillo y declarativo. Si no lo ha hecho ya, primero consulte [cómo crear su primera aplicación lógica con el diseñador de aplicaciones lógicas](logic-apps-create-a-logic-app.md). Consulte también la [referencia completa del lenguaje de definición de flujo de trabajo](http://aka.ms/logicappsdocs).
+Puede crear definiciones de flujo de trabajo para [Azure Logic Apps](logic-apps-what-are-logic-apps.md) con un lenguaje JSON sencillo y declarativo. Si no lo ha hecho ya, primero consulte [cómo toocreate su primera aplicación de lógica con el Diseñador de la aplicación lógica](logic-apps-create-a-logic-app.md). Consulte también hello [completo referencia de lenguaje de definición de flujo de trabajo de hello](http://aka.ms/logicappsdocs).
 
 ## <a name="repeat-steps-over-a-list"></a>Repetición de los pasos de una lista
 
-Para repetir los elementos de una matriz que contiene hasta 10 000 elementos y realizar una acción para cada elemento, utilice el [tipo foreach](logic-apps-loops-and-scopes.md).
+tooiterate a través de una matriz que no tiene too10, 000 elementos y realiza una acción para cada elemento, utilice hello [foreach tipo](logic-apps-loops-and-scopes.md).
 
 ## <a name="handle-failures-if-something-goes-wrong"></a>Control de errores si algo va mal
 
-Normalmente desea incluir un *paso de corrección*, es decir, cierta lógica que se ejecuta *si, y solo si*, una o varias llamadas no se han podido realizar correctamente. En este ejemplo, obtenemos datos desde diversos lugares, pero si se produce un error en la llamada, es necesario PUBLICAR un mensaje en alguna parte para poder localizar ese error más adelante:  
+Por lo general, desea tooinclude una *paso de corrección* : alguna lógica que se ejecuta *si y solo si* una o varias de las llamadas producirá un error. Este ejemplo obtiene datos desde varios lugares, pero si se produce un error en la llamada de hello, deseamos tooPOST un mensaje en algún lugar por lo que se puede realizar un seguimiento de ese error más adelante:  
 
 ```
 {
@@ -66,13 +66,13 @@ Normalmente desea incluir un *paso de corrección*, es decir, cierta lógica que
 }
 ```
 
-Para especificar que `postToErrorMessageQueue` solo se ejecuta si `readData` es `Failed`, use la propiedad `runAfter`, por ejemplo, para especificar una lista de posibles valores, para que `runAfter` pueda ser `["Succeeded", "Failed"]`.
+toospecify que `postToErrorMessageQueue` solo se ejecuta después de `readData` tiene `Failed`, usar hello `runAfter` propiedad, por ejemplo, toospecify una lista de posibles valores, por lo que `runAfter` podría ser `["Succeeded", "Failed"]`.
 
-Por último, dado que en este ejemplo ya se ha controlado el error, la ejecución ya no se marcará como `Failed`. Como hemos agregado el paso para controlar este error en este ejemplo, la ejecución es `Succeeded` aunque un paso `Failed`.
+Por último, puesto que este ejemplo controla ahora error hello, ya no se marca los Hola ejecutar como `Failed`. Porque agregamos paso Hola para controlar este error en este ejemplo, hello ejecutar tiene `Succeeded` aunque un paso `Failed`.
 
 ## <a name="execute-two-or-more-steps-in-parallel"></a>Ejecución de dos o más pasos en paralelo
 
-Para ejecutar varias acciones en paralelo, la propiedad `runAfter` debe ser equivalente en tiempo de ejecución. 
+toorun varias acciones en paralelo, Hola `runAfter` propiedad debe ser equivalente en tiempo de ejecución. 
 
 ```
 {
@@ -122,13 +122,13 @@ Para ejecutar varias acciones en paralelo, la propiedad `runAfter` debe ser equi
 }
 ```
 
-En este ejemplo, se ha establecido que `branch1` y `branch2` se ejecuten después de `readData`. Como consecuencia, ambas acciones se ejecutan en paralelo. La marca de tiempo para ambas acciones es idéntica.
+En este ejemplo, ambos `branch1` y `branch2` se establecen toorun después `readData`. Como consecuencia, ambas acciones se ejecutan en paralelo. marca de tiempo de Hola para ambas bifurcaciones es idéntico.
 
 ![Paralelo](media/logic-apps-author-definitions/parallel.png)
 
 ## <a name="join-two-parallel-branches"></a>Unión de dos ramas paralelas
 
-Puede unir dos acciones que se han establecido para ejecutarse en paralelo al agregar elementos a la propiedad `runAfter` como en el ejemplo anterior.
+Puede combinar dos acciones que se establecen toorun en paralelo mediante la adición de elementos toohello `runAfter` propiedad como en el ejemplo anterior de Hola.
 
 ```
 {
@@ -199,9 +199,9 @@ Puede unir dos acciones que se han establecido para ejecutarse en paralelo al ag
 
 ![Paralelo](media/logic-apps-author-definitions/join.png)
 
-## <a name="map-list-items-to-a-different-configuration"></a>Asignación de elementos de lista a una configuración diferente
+## <a name="map-list-items-tooa-different-configuration"></a>Asignar configuración diferente de tooa de elementos de lista
 
-A continuación, supongamos que queremos obtener contenido diferente según un valor de una propiedad. Podemos crear una asignación de valores a destinos como un parámetro:  
+Después, supongamos que queremos tooget contenido diferente en función de valor de Hola de una propiedad. Podemos crear una asignación de valores toodestinations como parámetro:  
 
 ```
 {
@@ -271,19 +271,19 @@ A continuación, supongamos que queremos obtener contenido diferente según un v
 }
 ```
 
-En este caso, primero debemos obtener una lista de artículos. Según la categoría que se haya definido como parámetro, el segundo paso será utilizar una asignación para buscar la dirección URL para obtener el contenido.
+En este caso, primero debemos obtener una lista de artículos. En función de la categoría de Hola que se ha definido como un parámetro, segundo paso de hello usa un toolook de asignación de dirección URL de Hola para obtener contenido de Hola.
 
-Algunas observaciones a tener en cuenta aquí: 
+Algunas veces toonote aquí: 
 
-*   La función [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) comprueba si la categoría coincide con alguna de las categorías definidas conocidas.
+*   Hola [ `intersection()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) función comprueba si categoría Hola coincide con uno de hello conocida categorías definidas.
 
-*   Una vez que se obtiene la categoría, se puede extraer el elemento de la asignación mediante corchetes: `parameters[...]`.
+*   Una vez tenemos categoría hello, podemos extraemos elemento Hola de asignación de hello mediante corchetes:`parameters[...]`
 
 ## <a name="process-strings"></a>Cadenas de proceso
 
-Puede usar varias funciones para manipular cadenas. Por ejemplo, supongamos que tenemos una cadena que queremos pasar a un sistema, pero no estamos seguros acerca del control adecuado para la codificación de caracteres. Una opción consiste en codificar esta cadena con base64. Sin embargo, para evitar escapes en una dirección URL, vamos a reemplazar algunos caracteres. 
+Puede usar varias funciones toomanipulate cadenas. Por ejemplo, supongamos que tenemos una cadena que queremos toopass tooa sistema, pero no está seguros acerca del control adecuado para la codificación de caracteres. Una opción es toobase64 codifique esta cadena. Sin embargo, tooavoid secuencias de escape en una dirección URL, vamos tooreplace unos cuantos caracteres. 
 
-También queremos una subcadena del nombre del pedido, porque los cinco primeros caracteres no se usan.
+También queremos una subcadena del nombre del pedido de hello porque no se utilizan los cinco primeros caracteres de Hola.
 
 ```
 {
@@ -318,23 +318,23 @@ También queremos una subcadena del nombre del pedido, porque los cinco primeros
 }
 ```
 
-Si trabajamos desde dentro hacia fuera:
+Trabajar desde dentro de toooutside:
 
-1. Obtenga el valor de [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) del nombre del solicitante, lo que devuelve el número total de caracteres.
+1. Obtener hello [ `length()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) como nombre del orderer hello, por lo que obtenemos número total de Hola de caracteres.
 
 2. Reste 5 porque deseamos una cadena más corta.
 
-3. Realmente, quitamos [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring). Comenzamos con el índice `5` y pasamos al resto de la cadena.
+3. En realidad, tomar hello [ `substring()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring). Comenzamos en índice `5` y vaya Hola el resto de la cadena de Hola.
 
-4. Convierta esta subcadena en una cadena [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64).
+4. Convertir este tooa subcadena [ `base64()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) cadena.
 
-5. Use [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) para reemplazar todos los caracteres `+` por `-`.
+5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)Hola todos los `+` caracteres con `-` caracteres.
 
-6. Use [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) para reemplazar todos los caracteres `/` por `_`.
+6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)Hola todos los `/` caracteres con `_` caracteres.
 
 ## <a name="work-with-date-times"></a>Trabajo con fechas
 
-Las fechas pueden ser útiles, especialmente cuando intenta extraer datos de un origen de datos que no admite de forma natural *desencadenadores*. También puede utilizar las fechas para averiguar cuánto duran los distintos pasos.
+Fecha hora puede ser útil, especialmente cuando se intenta toopull datos desde un origen de datos que no es compatible con naturalmente *desencadenadores*. También puede utilizar las fechas para averiguar cuánto duran los distintos pasos.
 
 ```
 {
@@ -386,18 +386,18 @@ Las fechas pueden ser útiles, especialmente cuando intenta extraer datos de un 
 }
 ```
 
-En este ejemplo, vamos a extraer el valor `startTime` del paso anterior. A continuación, obtenemos la hora actual y restamos un segundo:
+En este ejemplo, se extrae hello `startTime` del paso anterior Hola. A continuación se obtener la hora actual de Hola y resta un segundo:
 
 [`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
 
-Puede usar otras unidades de tiempo, como `minutes` o `hours`. Por último, podemos comparar estos dos valores. Si el primero es inferior al segundo, significa que ha transcurrido más de un segundo desde la primera vez que se realizó el pedido.
+Puede usar otras unidades de tiempo, como `minutes` o `hours`. Por último, podemos comparar estos dos valores. Si Hola primer valor es menor que el segundo valor de hello, a continuación, en más de un segundo han transcurrido desde que primero se realizó el pedido de Hola.
 
-Para dar formato a fechas, podemos usar formateadores de cadena. Por ejemplo, para obtener el valor de RFC1123, usamos [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow). Para obtener información sobre los formatos de fecha, consulte [Lenguaje de definición de flujo de trabajo](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow).
+fechas de tooformat, podemos utilizar formateadores de cadena. Por ejemplo, tooget Hola RFC1123, usamos [ `utcnow('r')` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow). toolearn acerca del formato de fecha, vea [lenguaje de definición de flujo de trabajo](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow).
 
 ## <a name="deployment-parameters-for-different-environments"></a>Parámetros de implementación para entornos diferentes
 
-Por lo general, un ciclo de vida de implementación tiene un entorno de desarrollo, un entorno de ensayo y un entorno de producción. Por ejemplo, puede utilizar la misma definición en todos estos entornos pero utilizar diferentes bases de datos. Del mismo modo, es posible que desee utilizar la misma definición en muchas regiones diferentes para lograr una alta disponibilidad, pero que cada instancia de aplicación lógica se comunique con la base de datos de esa región.
-Este escenario no tiene que ver nada con tomar parámetros en *tiempo de ejecución* en aquellas ocasiones en las que debe utilizar la función `trigger()` como en el ejemplo anterior.
+Por lo general, un ciclo de vida de implementación tiene un entorno de desarrollo, un entorno de ensayo y un entorno de producción. Por ejemplo, podría utilizar Hola misma definición en todos estos entornos, pero usar bases de datos diferentes. Del mismo modo, puede querer toouse Hola misma definición en diferentes regiones para lograr alta disponibilidad pero desea base de datos lógica aplicación instancia tootalk toothat de cada región.
+Este escenario difiere del que toman parámetros en *en tiempo de ejecución* que en su lugar, debe usar hello `trigger()` funcionando como en el ejemplo anterior de Hola.
 
 Puede empezar con una definición muy básica, como la de este ejemplo:
 
@@ -429,13 +429,13 @@ Puede empezar con una definición muy básica, como la de este ejemplo:
 }
 ```
 
-En la solicitud `PUT` real para las aplicaciones lógicas, puede proporcionar el parámetro `uri`. Dado que ya no existe un valor predeterminado, la carga útil de la aplicación lógica requiere este parámetro:
+Hola real `PUT` solicitar para hello logic apps, puede proporcionar el parámetro hello `uri`. Dado que ya no existe un valor predeterminado, carga de aplicación lógica de hello requiere este parámetro:
 
 ```
 {
     "properties": {},
         "definition": {
-          // Use the definition from above here
+          // Use hello definition from above here
         },
         "parameters": {
             "connection": {
@@ -447,6 +447,6 @@ En la solicitud `PUT` real para las aplicaciones lógicas, puede proporcionar el
 }
 ``` 
 
-En cada entorno puede proporcionar un valor diferente para el parámetro `connection`. 
+En cada entorno, puede proporcionar un valor diferente para hello `connection` parámetro. 
 
-Consulte la [documentación sobre la API de REST](https://msdn.microsoft.com/library/azure/mt643787.aspx) para conocer todas las opciones disponibles para crear y administrar aplicaciones lógicas. 
+Para todos los hello opciones de que dispone para crear y administrar las aplicaciones lógicas, consulte hello [documentación de la API de REST](https://msdn.microsoft.com/library/azure/mt643787.aspx). 

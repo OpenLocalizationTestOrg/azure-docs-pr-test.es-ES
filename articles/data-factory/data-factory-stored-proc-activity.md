@@ -1,6 +1,6 @@
 ---
-title: Actividad de procedimiento almacenado de SQL Server
-description: "Sepa cómo usar la actividad de procedimiento almacenado de SQL Server para invocar un procedimiento almacenado en una Base de datos SQL de Azure o en un Almacenamiento de datos SQL de Azure desde una canalización de Factoría de datos."
+title: aaaSQL actividad de procedimiento almacenado de servidor
+description: "Obtenga información acerca de cómo puede usar la actividad de procedimiento almacenado de SQL Server de hello tooinvoke un procedimiento almacenado en una base de datos de SQL Azure o el almacenamiento de datos de SQL Azure desde una canalización del generador de datos."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: spelluru
-ms.openlocfilehash: 6505d9aa2c7ae003bd928e2fa82cd923a9615394
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9116f80eefc59d95e866b2ba1de2feb1bdc4b1d4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Actividad de procedimiento almacenado de SQL Server
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -34,25 +34,25 @@ ms.lasthandoff: 08/03/2017
 > * [Actividad personalizada de .NET](data-factory-use-custom-activities.md)
 
 ## <a name="overview"></a>Información general
-Las actividades de transformación en una [canalización](data-factory-create-pipelines.md) de Data Factory transforman y procesan sus datos sin procesar para convertirlos en predicciones y perspectivas. La actividad de procedimiento almacenado es una de las actividades de transformación que admite Data Factory. Este artículo se basa en el artículo sobre [actividades de transformación de datos](data-factory-data-transformation-activities.md), que presenta información general de la transformación de datos y las actividades de transformación admitidas en Data Factory.
+Usar las actividades de transformación de datos en una factoría de datos [canalización](data-factory-create-pipelines.md) tootransform y procesar datos sin formato en las predicciones y visión. Hello actividad de procedimiento almacenado es una de las actividades de transformación de Hola que admite factoría de datos. En este artículo se basa en hello [las actividades de transformación de datos](data-factory-data-transformation-activities.md) artículo, que presenta una descripción general de transformación de datos y las actividades de transformación de hello compatible de factoría de datos.
 
-Puede usar la actividad de procedimiento almacenado para invocar un procedimiento almacenado en uno de los siguientes almacenes de datos de la empresa o en una máquina virtual (VM) de Azure: 
+Puede utilizar tooinvoke de actividad de procedimiento almacenado Hola un procedimiento almacenado en uno de hello después de datos se almacena en su empresa o en una máquina virtual (VM) de Azure: 
 
-- Base de datos SQL de Azure
+- Azure SQL Database
 - Almacenamiento de datos SQL de Azure
-- Base de datos de SQL Server.  Si se usa SQL Server, se debe instalar la puerta de enlace de administración de datos en el mismo equipo que hospeda la base de datos o en un equipo independiente que tenga acceso a la base de datos. La puerta de enlace de administración de datos es un componente que conecta orígenes de datos locales o en la máquina virtual de Azure con servicios en la nube de forma segura y administrada. Consulte el artículo [Data Management Gateway](data-factory-data-management-gateway.md) para obtener detalles.
+- Base de datos de SQL Server.  Si está utilizando SQL Server, instale Data Management Gateway en el mismo equipo que hospeda Hola base de datos o en un equipo independiente que tiene la base de datos de access toohello de Hola. La puerta de enlace de administración de datos es un componente que conecta orígenes de datos locales o en la máquina virtual de Azure con servicios en la nube de forma segura y administrada. Consulte el artículo [Data Management Gateway](data-factory-data-management-gateway.md) para obtener detalles.
 
 > [!IMPORTANT]
-> Al copiar datos en Azure SQL Database o SQL Server, se puede configurar **SqlSink** en la actividad de copia para invocar un procedimiento almacenado mediante la propiedad **sqlWriterStoredProcedureName**. Para más información, consulte [Invocación del procedimiento almacenado desde la actividad de copia en Azure Data Factory](data-factory-invoke-stored-procedure-from-copy-activity.md). Para obtener más información sobre la propiedad, vea los artículos sobre los conectores siguientes: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties) y [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). No se admite la invocación de un procedimiento almacenado al copiar datos en Azure SQL Data Warehouse mediante una actividad de copia. Sin embargo, puede usar la actividad de procedimiento almacenado para invocar un procedimiento almacenado en un SQL Data Warehouse. 
+> Cuando se copian datos en la base de datos de SQL Azure o SQL Server, puede configurar hello **SqlSink** en tooinvoke de actividad de copia un procedimiento almacenado mediante el uso de hello **sqlWriterStoredProcedureName** propiedad. Para más información, consulte [Invocación del procedimiento almacenado desde la actividad de copia en Azure Data Factory](data-factory-invoke-stored-procedure-from-copy-activity.md). Para obtener más información acerca de la propiedad de hello, consulte los siguientes artículos de conector: [base de datos de SQL Azure](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). No se admite la invocación de un procedimiento almacenado al copiar datos en Azure SQL Data Warehouse mediante una actividad de copia. Sin embargo, puede utilizar tooinvoke de actividad de procedimiento almacenado de hello un procedimiento almacenado en el almacén de datos de SQL. 
 >  
-> Al copiar datos de Azure SQL Database, SQL Server o Azure SQL Data Warehouse, se puede configurar **SqlSource** en la actividad de copia para invocar un procedimiento almacenado de lectura de datos mediante la propiedad **sqlReaderStoredProcedureName**. Para más información, consulte los artículos sobre los conectores siguientes: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) y [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
+> Cuando se copian datos de base de datos de SQL Azure o SQL Server o almacenamiento de datos de SQL Azure, puede configurar **SqlSource** en tooinvoke de actividad de copia una tooread de datos de procedimiento almacenado de base de datos de origen de hello mediante hello  **sqlReaderStoredProcedureName** propiedad. Para obtener más información, vea Hola siguientes artículos de conector: [base de datos de SQL Azure](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [almacenamiento de datos de SQL Azure](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
 
 
-El siguiente procedimiento usa la actividad del procedimiento almacenado en una canalización para invocar un procedimiento almacenado en una base de datos de Azure SQL. 
+Hola siguiendo el tutorial utiliza Hola actividad de procedimiento almacenado en un tooinvoke de canalización un procedimiento almacenado en una base de datos de SQL Azure. 
 
 ## <a name="walkthrough"></a>Tutorial
 ### <a name="sample-table-and-stored-procedure"></a>Procedimiento almacenado y tabla de ejemplo
-1. Cree la siguiente **tabla** en la Base de datos SQL de Azure con SQL Server Management Studio o cualquier otra herramienta que le resulte cómoda. La columna datetimestamp indica la fecha y la hora en que se generó el identificador correspondiente.
+1. Cree Hola siguiente **tabla** en la base de datos de SQL Azure con SQL Server Management Studio o cualquier otra herramienta que está familiarizado con. columna de datetimestamp Hello es Hola fecha y hora en que cuando se genera el identificador correspondiente Hola.
 
     ```SQL
     CREATE TABLE dbo.sampletable
@@ -65,12 +65,12 @@ El siguiente procedimiento usa la actividad del procedimiento almacenado en una 
     CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
     GO
     ```
-    Id es el identificador único y la columna datetimestamp indica la fecha y la hora en que se generó el identificador correspondiente.
+    Id. es Hola único identificado y column de datetimestamp de Hola Hola fecha y hora en que cuando se genera el identificador correspondiente Hola.
     
     ![Datos de ejemplo](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    En este ejemplo, el procedimiento almacenado está en una base de datos de Azure SQL Database. Si el procedimiento almacenado está en un Azure SQL Data Warehouse y una base de datos de SQL Server, el enfoque es similar. Para una base de datos de SQL Server, debe instalar una [Puerta de enlace de administración de datos](data-factory-data-management-gateway.md).
-2. Cree el siguiente **procedimiento almacenado**, que inserta datos en **sampletable**.
+    En este ejemplo, procedimiento almacenado de hello está en una base de datos de SQL Azure. Si hello procedimiento almacenado está en un almacén de datos de SQL Azure y base de datos de SQL Server, el enfoque de hello es similar. Para una base de datos de SQL Server, debe instalar una [Puerta de enlace de administración de datos](data-factory-data-management-gateway.md).
+2. Cree Hola siguiente **procedimiento almacenado** que inserta datos en toohello **tabla de muestra**.
 
     ```SQL
     CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
@@ -83,53 +83,53 @@ El siguiente procedimiento usa la actividad del procedimiento almacenado en una 
     ```
 
    > [!IMPORTANT]
-   > El **nombre** y el **uso de mayúsculas y minúsculas** en el parámetro (DateTime en este ejemplo) tienen que coincidir con los del parámetro especificado en el código JSON de la canalización o actividad. En la definición del procedimiento almacenado, asegúrese de que se usa **@** como prefijo del parámetro.
+   > **Nombre** y **mayúsculas y minúsculas** de hello parámetro (fecha y hora en este ejemplo) debe coincidir con el de los parámetros especificados en hello canalización/JSON de la actividad. En la consulta Hola definición del procedimiento almacenado, asegúrese de que  **@**  se utiliza como un prefijo de parámetro hello.
 
 ### <a name="create-a-data-factory"></a>Crear una factoría de datos
-1. Inicie sesión en [Azure Portal](https://portal.azure.com/).
-2. En el menú de la izquierda, haga clic en **NUEVO**, en **Inteligencia y análisis** y en **Data Factory**.
+1. Inicie sesión demasiado[portal de Azure](https://portal.azure.com/).
+2. Haga clic en **NEW** en el menú de la izquierda hello, haga clic en **Intelligence + análisis**y haga clic en **factoría de datos**.
 
     ![Nueva factoría de datos](media/data-factory-stored-proc-activity/new-data-factory.png)    
-3. En la hoja **Nueva factoría de datos**, escriba **SProcDF** para el nombre. Los nombres de Azure Data Factory son **únicos globalmente**. Es necesario agregar su nombre como prefijo al nombre de la factoría de datos para permitir la creación correcta de la factoría.
+3. Hola **factoría de datos** hoja, escriba **SProcDF** para hello nombre. Los nombres de Azure Data Factory son **únicos globalmente**. Necesita tooprefix Hola nombre hello factoría de datos con el nombre, la creación correcta de hello tooenable de fábrica de Hola.
 
    ![Nueva factoría de datos](media/data-factory-stored-proc-activity/new-data-factory-blade.png)         
 4. Seleccione la **suscripción de Azure**.
-5. Para el **grupo de recursos**, realice uno de los siguientes pasos:
-   1. Haga clic en **Crear nuevo** y escriba un nombre para el grupo de recursos.
+5. Para **grupo de recursos**, realice una de hello pasos:
+   1. Haga clic en **crear nuevo** y escriba un nombre para el grupo de recursos de Hola.
    2. Haga clic en **Usar existente** y seleccione un grupo de recursos existente.  
-6. Seleccione la **ubicación** de Data Factory.
-7. Seleccione **Anclar al panel** de manera que pueda ver la factoría de datos en el panel la próxima vez que inicie sesión.
-8. Haga clic en **Crear** en la hoja **Nueva fábrica de datos**.
-9. Verá la factoría de datos que se crea en el **panel** de Azure Portal. Tras crear correctamente la factoría de datos, se ve la página de la factoría de datos, que muestra el contenido de la misma.
+6. Seleccione hello **ubicación** de factoría de datos de Hola.
+7. Seleccione **toodashboard Pin** para que puedan ver factoría de datos de hello en el panel de hello próxima vez que inicie sesión.
+8. Haga clic en **crear** en hello **factoría de datos** hoja.
+9. Vea factoría de datos de Hola se creen en hello **panel** de hello portal de Azure. Una vez creado correctamente la factoría de datos de hello, consulte página de factoría de datos de hello, que muestra Hola contenido Hola factoría de datos.
 
    ![Página principal de Data Factory](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Crear un servicio vinculado SQL de Azure.
-Después de crear la factoría de datos, cree un servicio vinculado de Azure SQL que conecte Azure SQL Database, que contiene la tabla sampletable y el procedimiento almacenado sp_sample, con la factoría de datos.
+Después de crear la factoría de datos de hello, se crea un servicio de SQL Azure vinculado que se vincula la base de datos de SQL Azure, que contiene la tabla de la tabla de muestra de Hola y procedimiento almacenado de sp_sample, tooyour factoría de datos.
 
-1. En la hoja **Crear e implementar**, haga clic en la hoja **Data Factory** para que **SProcDF** inicie Data Factory Editor.
-2. Haga clic en **Nuevo almacén de datos** en la barra de comandos y elija **Azure SQL Database**. Debería ver el script JSON para crear un servicio vinculado SQL de Azure en el editor.
+1. Haga clic en **autor e implementar** en hello **factoría de datos** hoja para **SProcDF** toolaunch Hola Editor de generador de datos.
+2. Haga clic en **nuevo almacén de datos** en Hola barra de comandos y elija **base de datos de SQL Azure**. Debería ver Hola script JSON para crear una SQL Azure vinculado servicio en el editor de Hola.
 
    ![Nuevo almacén de datos](media/data-factory-stored-proc-activity/new-data-store.png)
-3. Realice los siguientes cambios en el script JSON:
+3. Hola script JSON, asegúrese de hello siguientes cambios:
 
-   1. Reemplace `<servername>` por el nombre del servidor de Azure SQL Database.
-   2. Reemplace `<databasename>` por la base de datos en la que creó la tabla y el procedimiento almacenado.
-   3. Reemplace `<username@servername>` por la cuenta de usuario que tiene acceso a la base de datos.
-   4. Reemplace `<password>` por la contraseña de la cuenta de usuario.
+   1. Reemplace `<servername>` con el nombre de Hola de su servidor de base de datos de SQL Azure.
+   2. Reemplace `<databasename>` con base de datos de hello en el que creó hello y tabla de Hola de procedimiento almacenado.
+   3. Reemplace `<username@servername>` con cuenta de usuario de Hola que tiene la base de datos de access toohello.
+   4. Reemplace `<password>` con contraseña hello para la cuenta de usuario de Hola.
 
       ![Nuevo almacén de datos](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. Para implementar el servicio vinculado, haga clic en **Implementar** en la barra de comandos. Confirme que AzureSqlLinkedService aparece en la vista de árbol a la izquierda.
+4. toodeploy Hola servicio vinculado, haga clic en **implementar** en la barra de comandos de Hola. Confirme que aparece hello AzureSqlLinkedService en el árbol de hello ver Hola izquierda.
 
     ![vista de árbol con servicios vinculados](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>Crear un conjunto de datos de salida
-Debe especificar un conjunto de datos de salida para una actividad de procedimiento almacenado aunque el procedimiento almacenado no genere ningún dato. Esto se debe a que se trata del conjunto de datos de salida que determina la programación de la actividad (frecuencia con que se ejecuta la actividad: cada hora, diariamente, etc.). El conjunto de datos de salida debe utilizar un **servicio vinculado** que haga referencia a una Base de datos SQL de Azure, un Almacenamiento de datos SQL o una base de datos de SQL Server donde desee que el procedimiento almacenado se ejecute. El conjunto de datos de salida puede usarse como una forma de pasar el resultado del procedimiento almacenado para su posterior procesamiento por otra actividad ([encadenamiento de actividades](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) en la canalización. Sin embargo, Data Factory no escribe automáticamente la salida de un procedimiento almacenado en este conjunto de datos. Es el procedimiento almacenado el que escribe en una tabla SQL a la que apunta el conjunto de datos de salida. En algunos casos, el conjunto de datos de salida puede ser un **conjunto de datos ficticio** (un conjunto de datos que apunta a una tabla que no contiene realmente la salida del procedimiento almacenado). Este conjunto de datos ficticio solo se usa para especificar la programación de la ejecución de la actividad de procedimiento almacenado. 
+Debe especificar que un conjunto de datos de salida para una actividad de procedimiento almacenado incluso si el procedimiento almacenado de hello no produce ningún dato. Eso es porque su Hola del resultado de conjunto de datos que controla la programación de Hola de actividad de hello (¿con qué frecuencia hello actividad se ejecuta - cada hora, diariamente, etcetera.). Hello conjunto de datos de salida debe usar un **servicio vinculado** que hace referencia tooan base de datos de SQL Azure o un almacén de datos de SQL Azure o una base de datos de SQL Server en el que desea Hola toorun de procedimiento almacenado. Hello conjunto de datos de salida puede actuar como un resultado de hello de manera toopass del procedimiento de hello almacenan para su posterior procesamiento por otra actividad ([encadenamiento actividades](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) de canalización de Hola. Sin embargo, factoría de datos no escribe automáticamente Hola un resultado de un conjunto de datos de toothis de procedimiento almacenado. Es el procedimiento almacenado Hola esa tabla SQL tooa de escrituras que Hola puntos de conjunto de datos de salida a. En algunos casos, puede ser el conjunto de datos de salida de hello un **conjunto de datos ficticio** (procedimiento almacenado de un conjunto de datos que señala tooa tabla que no contienen realmente salida de hello). Se usa este conjunto de datos ficticio solo toospecify programación de Hola para ejecutar Hola actividad de procedimiento almacenado. 
 
-1. Haga clic en **... Más** en la barra de herramientas, haga clic en **Nuevo conjunto de datos** y en **Azure SQL**. Haga clic en **Nuevo conjunto de datos** en la barra de comandos y seleccione **Azure SQL**.
+1. Haga clic en **... Más** en la barra de herramientas de hello, haga clic en **nuevo conjunto de datos**y haga clic en **SQL Azure**. **Nuevo conjunto de datos** en el comando de hello barra y seleccione **SQL Azure**.
 
     ![vista de árbol con servicios vinculados](media/data-factory-stored-proc-activity/new-dataset.png)
-2. Copie y pegue el siguiente script JSON en el editor de JSON.
+2. Copie y pegue la siguiente secuencia de comandos JSON en el editor de JSON toohello de Hola.
 
     ```JSON
     {                
@@ -147,21 +147,21 @@ Debe especificar un conjunto de datos de salida para una actividad de procedimie
         }
     }
     ```
-3. Para implementar el conjunto de datos, haga clic en **Implementar** en la barra de comandos. Confirme que el conjunto de datos aparece en la vista de árbol.
+3. toodeploy Hola conjunto de datos, haga clic en **implementar** en la barra de comandos de Hola. Confirme que aparece Hola conjunto de datos en la vista de árbol de Hola.
 
     ![vista de árbol con servicios vinculados](media/data-factory-stored-proc-activity/tree-view-2.png)
 
 ### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Crear una canalización con una actividad SqlServerStoredProcedure
 Ahora, vamos a crear una canalización con una actividad de procedimiento almacenado. 
 
-Tenga en cuenta las siguientes propiedades: 
+Tenga en cuenta Hola propiedades siguientes: 
 
-- La propiedad **type** se establece en **SqlServerStoredProcedure**. 
-- El valor de **storedProcedureName** de las propiedades de tipo se establece en **sp_sample** (nombre del procedimiento almacenado).
-- La sección **storedProcedureParameters** contiene un parámetro denominado **DataTime**. El nombre y el uso de mayúsculas y minúsculas en el parámetro JSON deben coincidir con los del parámetro de la definición del procedimiento almacenado. Si necesita pasar null para un parámetro, use la sintaxis: `"param1": null` null (todo en minúsculas).
+- Hola **tipo** propiedad se establece demasiado**SqlServerStoredProcedure**. 
+- Hola **storedProcedureName** en tipo de las propiedades se establecen demasiado**sp_sample** (nombre de hello procedimiento almacenado).
+- Hola **storedProcedureParameters** sección contiene un parámetro denominado **DataTime**. Nombre y mayúsculas y minúsculas del parámetro hello en JSON deben coincidir con nombre de Hola y mayúsculas y minúsculas del parámetro hello en la definición del procedimiento almacenado de Hola. Si necesita pasar null para un parámetro, use la sintaxis de hello: `"param1": null` (en minúsculas).
  
-1. Haga clic en **... Más** en la barra de comandos y en **Nueva canalización**.
-2. Copie y pegue el siguiente fragmento de código JSON:   
+1. Haga clic en **... Más** Hola barra de comandos y haga clic en **nueva canalización**.
+2. Copiar y pegar Hola siguiente fragmento de JSON:   
 
     ```JSON
     {
@@ -194,32 +194,32 @@ Tenga en cuenta las siguientes propiedades:
         }
     }
     ```
-3. Para implementar la canalización, haga clic en **Implementar** en la barra de herramientas.  
+3. canalización de hello toodeploy, haga clic en **implementar** en la barra de herramientas de Hola.  
 
-### <a name="monitor-the-pipeline"></a>Supervisar la canalización
-1. Haga clic en el botón **X** para cerrar las hojas del Editor de Data Factory y volver a la hoja de Data Factory. A continuación, haga clic en **Diagrama**.
+### <a name="monitor-hello-pipeline"></a>Canalización de Hola de Monitor
+1. Haga clic en **X** tooclose Editor de generador de datos hojas toonavigate hacer copia de hoja de la factoría de datos de toohello y haga clic en **diagrama**.
 
     ![icono Diagrama](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
-2. En la **Vista de diagrama**, se ve información general de las canalizaciones y los conjuntos de datos empleados en este tutorial.
+2. Hola **vista de diagrama**, verá información general de las canalizaciones de Hola y conjuntos de datos utilizan en este tutorial.
 
     ![icono Diagrama](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. En la Vista de diagrama, haga doble clic en el conjunto de datos `sprocsampleout`. Verá los segmentos con estado Listo. Debería haber cinco segmentos, porque se genera un segmento para cada hora entre la hora de inicio y de finalización del código JSON.
+3. Hola vista de diagrama, haga doble clic en el conjunto de datos de hello `sprocsampleout`. Vea intervalos de hello en estado listo. Debería haber cinco segmentos porque un segmento se genera para cada hora entre la hora de inicio de Hola y hora de finalización de hello JSON.
 
     ![icono Diagrama](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Cuando un segmento tiene el estado **Listo**, ejecute una consulta `select * from sampletable` en la base de datos de Azure SQL para comprobar que el procedimiento almacenado insertó los datos en la tabla.
+4. Cuando se encuentra en un segmento **listo** estado, ejecute un `select * from sampletable` consultarlo tooverify de base de datos de SQL Azure Hola que Hola datos se insertó en la tabla de toohello por procedimiento almacenado de Hola.
 
    ![Datos de salida](./media/data-factory-stored-proc-activity/output.png)
 
-   Vea [Supervisar la canalización](data-factory-monitor-manage-pipelines.md) para obtener información detallada sobre cómo supervisar las canalizaciones de Factoría de datos de Azure.  
+   Vea [canalización de hello Monitor](data-factory-monitor-manage-pipelines.md) para obtener información detallada sobre la supervisión de las canalizaciones de factoría de datos de Azure.  
 
 
 ## <a name="specify-an-input-dataset"></a>Especificación de un conjunto de datos de entrada
-En el tutorial, la actividad de procedimiento almacenado no tiene ningún conjunto de datos de entrada. Si especifica un conjunto de datos de entrada, la actividad de procedimiento almacenado no se ejecuta hasta que el segmento del conjunto de datos de entrada esté disponible (en estado Listo). El conjunto de datos puede ser externo (no producido por otra actividad de la misma canalización) o interno que produce una actividad del canal de subida (la actividad que se ejecuta antes de esta). Puede especificar varios conjuntos de datos de entrada para la actividad de procedimiento almacenado. Si lo hace, la actividad de procedimiento almacenado solo se ejecuta cuando están disponibles todos los sectores de conjunto de datos de entrada (en estado Listo). El conjunto de datos de entrada no se puede usar en el procedimiento almacenado como parámetro. Solo se utiliza para comprobar la dependencia antes de iniciar la actividad de procedimiento almacenado.
+En el tutorial de hello, actividad de procedimiento almacenado no tiene los conjuntos de datos de entrada. Si especifica un conjunto de datos de entrada, hello actividad de procedimiento almacenado no se ejecuta hasta Hola segmento del conjunto de datos de entrada está disponible (en estado listo). conjunto de datos de Hello puede ser un conjunto de datos externo (que no se crea por otra actividad de hello misma canalización) o un conjunto de datos interno generado por una actividad de nivel superior (actividad de Hola que se ejecuta antes que esta actividad). Puede especificar varios conjuntos de datos de entrada para la actividad de procedimiento almacenado de Hola. Si lo hace, hello actividad de procedimiento almacenado se ejecuta sólo cuando todos los sectores de conjunto de datos de entrada de hello están disponibles (en estado listo). conjunto de datos de entrada de Hola no puede ser consumida en el procedimiento de hello almacenado como un parámetro. Es solo usa toocheck Hola dependencia antes de actividad de procedimiento almacenado de saludo inicial.
 
 ## <a name="chaining-with-other-activities"></a>Encadenamiento con otras actividades
-Si quiere encadenar una actividad del canal de subida a esta actividad, especifique la salida de la actividad del canal de subida como entrada de esta actividad. Al hacerlo, la actividad de procedimiento almacenado no se ejecuta hasta que la actividad del canal de subida finalice y el conjunto de datos de salida de la actividad del canal de subida esté disponible (en estado Listo). Puede especificar conjuntos de datos de salida de varias actividades del canal de subida como conjuntos de datos de entrada de la actividad de procedimiento almacenado. Si lo hace, la actividad de procedimiento almacenado solo se ejecuta cuando están disponibles todos los sectores de conjunto de datos de entrada.  
+Si desea toochain una actividad de nivel superior con esta actividad, especifique la salida de hello de actividad de nivel superior de hello como una entrada de esta actividad. Al hacerlo, hello actividad de procedimiento almacenado no se ejecuta hasta que finaliza la actividad de nivel superior de hello y conjunto de datos de salida de hello de actividad de nivel superior de hello está disponible (en estado listo). Puede especificar los conjuntos de datos de salida de varias actividades de nivel superior como los conjuntos de datos de actividad de procedimiento almacenado de Hola. Al hacerlo, Hola actividad de procedimiento almacenado se ejecuta solo cuando todos los sectores de conjunto de datos de entrada de hello están disponibles.  
 
-En el ejemplo siguiente, la salida de la actividad de copia es: OutputDataset, que es una entrada de la actividad de procedimiento almacenado. Por consiguiente, la actividad de procedimiento almacenado no se ejecuta hasta que la actividad de copia finalice y el segmento OutputDataset esté disponible (en estado Listo). Si especifica varios conjuntos de datos de entrada, la actividad de procedimiento almacenado no se ejecuta hasta que todos los segmentos del conjunto de datos de entrada estén disponibles (en estado Listo). Los conjuntos de datos de entrada no se pueden usar directamente como parámetros en la actividad de procedimiento almacenado. 
+En el siguiente ejemplo de Hola, salida de hello de actividad de copia de hello es: OutputDataset, que es una entrada de hello actividad de procedimiento almacenado. Por lo tanto, hello actividad de procedimiento almacenado no se ejecuta hasta que finaliza la actividad de copia de Hola y Hola OutputDataset segmento está disponible (en estado listo). Si especifica varios conjuntos de datos de entrada, hello actividad de procedimiento almacenado no se ejecuta hasta que estén disponibles todos los sectores de conjunto de datos de entrada de hello (en estado listo). no se puede usar conjuntos de datos de entrada de Hello directamente como actividad de procedimiento almacenado de toohello de parámetros. 
 
 Para obtener más información sobre cómo encadenar actividades, vea [Varias actividades en una canalización](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline).
 
@@ -228,7 +228,7 @@ Para obtener más información sobre cómo encadenar actividades, vea [Varias ac
 
     "name": "ADFTutorialPipeline",
     "properties": {
-        "description": "Copy data from a blob to blob",
+        "description": "Copy data from a blob tooblob",
         "activities": [
             {
                 "type": "Copy",
@@ -274,15 +274,15 @@ Para obtener más información sobre cómo encadenar actividades, vea [Varias ac
 }
 ```
 
-De manera similar, para vincular la actividad de procedimiento almacenado con **actividades de bajada** (las actividades que se ejecutan después de que finalice la actividad de procedimiento almacenado), especifique el conjunto de datos de salida de la actividad de procedimiento almacenado como entrada de la actividad de bajada en la canalización.
+De forma similar, toolink Hola almacén actividad de procedimiento con **actividades de dirección descendente** (hello las actividades que se ejecutan una vez completadas hello actividades de procedimiento almacenado), especificar el conjunto de datos de salida de hello de la actividad de procedimiento almacenado de Hola como un entrada de actividad de nivel inferior hello en canalización Hola.
 
 > [!IMPORTANT]
-> Al copiar datos en Azure SQL Database o SQL Server, se puede configurar **SqlSink** en la actividad de copia para invocar un procedimiento almacenado mediante la propiedad **sqlWriterStoredProcedureName**. Para más información, consulte [Invocación del procedimiento almacenado desde la actividad de copia en Azure Data Factory](data-factory-invoke-stored-procedure-from-copy-activity.md). Para obtener más información sobre la propiedad, vea los artículos sobre los conectores siguientes: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties) y [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
+> Cuando se copian datos en la base de datos de SQL Azure o SQL Server, puede configurar hello **SqlSink** en tooinvoke de actividad de copia un procedimiento almacenado mediante el uso de hello **sqlWriterStoredProcedureName** propiedad. Para más información, consulte [Invocación del procedimiento almacenado desde la actividad de copia en Azure Data Factory](data-factory-invoke-stored-procedure-from-copy-activity.md). Para obtener más información acerca de la propiedad de hello, vea Hola siguientes artículos de conector: [base de datos de SQL Azure](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
 >  
-> Al copiar datos de Azure SQL Database, SQL Server o Azure SQL Data Warehouse, se puede configurar **SqlSource** en la actividad de copia para invocar un procedimiento almacenado de lectura de datos mediante la propiedad **sqlReaderStoredProcedureName**. Para más información, consulte los artículos sobre los conectores siguientes: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) y [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
+> Cuando se copian datos de base de datos de SQL Azure o SQL Server o almacenamiento de datos de SQL Azure, puede configurar **SqlSource** en tooinvoke de actividad de copia una tooread de datos de procedimiento almacenado de base de datos de origen de hello mediante hello  **sqlReaderStoredProcedureName** propiedad. Para obtener más información, vea Hola siguientes artículos de conector: [base de datos de SQL Azure](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [almacenamiento de datos de SQL Azure](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
 
 ## <a name="json-format"></a>Formato JSON
-Este es el formato JSON para definir una actividad de procedimiento almacenado:
+Este es el formato JSON de Hola para definir una actividad de procedimiento almacenado:
 
 ```JSON
 {
@@ -293,7 +293,7 @@ Este es el formato JSON para definir una actividad de procedimiento almacenado:
     "outputs":  [ { "name": "outputtable" } ],
     "typeProperties":
     {
-        "storedProcedureName": "<name of the stored procedure>",
+        "storedProcedureName": "<name of hello stored procedure>",
         "storedProcedureParameters":  
         {
             "param1": "param1Value"
@@ -303,20 +303,20 @@ Este es el formato JSON para definir una actividad de procedimiento almacenado:
 }
 ```
 
-En la tabla siguiente se describen estas propiedades JSON:
+Hello en la tabla siguiente describe estas propiedades JSON:
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| name | Nombre de la actividad |Sí |
-| Descripción |Texto que describe para qué se usa la actividad. |No |
+| name | Nombre de actividad de Hola |Sí |
+| description |Texto que describe qué actividad Hola se usa para |No |
 | type | Se debe establecer en: **SqlServerStoredProcedure** | Sí |
-| inputs | Opcional. Si especifica un conjunto de datos de entrada, debe estar disponible (en estado "Listo") para que se ejecute la actividad de procedimiento almacenado. El conjunto de datos de entrada no se puede usar en el procedimiento almacenado como parámetro. Solo se utiliza para comprobar la dependencia antes de iniciar la actividad de procedimiento almacenado. |No |
-| outputs | Debe especificar un conjunto de datos para una actividad de procedimiento almacenado. El conjunto de datos de salida especifica la **programación** para la actividad de procedimiento almacenada (por hora, semanal, mensual, etc.). <br/><br/>El conjunto de datos de salida debe utilizar un **servicio vinculado** que haga referencia a una Base de datos SQL de Azure, un Almacenamiento de datos SQL o una base de datos de SQL Server donde desee que el procedimiento almacenado se ejecute. <br/><br/>El conjunto de datos de salida puede usarse como una forma de pasar el resultado del procedimiento almacenado para su posterior procesamiento por otra actividad ([encadenamiento de actividades](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) en la canalización. Sin embargo, Data Factory no escribe automáticamente la salida de un procedimiento almacenado en este conjunto de datos. Es el procedimiento almacenado el que escribe en una tabla SQL a la que apunta el conjunto de datos de salida. <br/><br/>En algunos casos, el conjunto de datos de salida puede ser un **conjunto de datos ficticio**, que solo se utilice para especificar la programación para ejecutar la actividad de procedimiento almacenado. |Sí |
-| storedProcedureName |Especifique el nombre del procedimiento almacenado de Azure SQL Database, Azure SQL Data Warehouse o la base de datos de SQL Server que se representa mediante el servicio vinculado que usa la tabla de salida. |Sí |
-| storedProcedureParameters |Especifique valores para los parámetros del procedimiento almacenado. Si necesita pasar null para un parámetro, use la sintaxis: "param1": null (todo en minúsculas). Vea el ejemplo siguiente para aprender el uso de esta propiedad. |No |
+| inputs | Opcional. Si especifica un conjunto de datos de entrada, debe estar disponible (en estado "Listo") para hello almacenado toorun de actividad de procedimiento. conjunto de datos de entrada de Hola no puede ser consumida en el procedimiento de hello almacenado como un parámetro. Es solo usa toocheck Hola dependencia antes de actividad de procedimiento almacenado de saludo inicial. |No |
+| outputs | Debe especificar un conjunto de datos para una actividad de procedimiento almacenado. Conjunto de datos de salida especifica hello **programación** para hello almacenados actividad de procedimiento (cada hora, semanalmente, mensualmente, etcetera). <br/><br/>Hello conjunto de datos de salida debe usar un **servicio vinculado** que hace referencia tooan base de datos de SQL Azure o un almacén de datos de SQL Azure o una base de datos de SQL Server en el que desea Hola toorun de procedimiento almacenado. <br/><br/>Hello conjunto de datos de salida puede actuar como un resultado de hello de manera toopass del procedimiento de hello almacenan para su posterior procesamiento por otra actividad ([encadenamiento actividades](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) de canalización de Hola. Sin embargo, factoría de datos no escribe automáticamente Hola un resultado de un conjunto de datos de toothis de procedimiento almacenado. Es el procedimiento almacenado Hola esa tabla SQL tooa de escrituras que Hola puntos de conjunto de datos de salida a. <br/><br/>En algunos casos, puede ser el conjunto de datos de salida de hello un **conjunto de datos ficticio**, que se usa solo la programación de hello toospecify para ejecutar Hola actividad de procedimiento almacenado. |Sí |
+| storedProcedureName |Especifique el nombre de hello del procedimiento de hello almacenado en la base de datos de SQL Azure de Hola o base de datos de almacenamiento de datos de SQL Azure o SQL Server que se representa mediante el servicio vinculado de Hola que Hola usos de la tabla de salida. |Sí |
+| storedProcedureParameters |Especifique valores para los parámetros del procedimiento almacenado. Si necesitas toopass null para un parámetro, use la sintaxis de hello: "param1": null (todas las minúsculas). Vea Hola después toolearn de ejemplo sobre el uso de esta propiedad. |No |
 
 ## <a name="passing-a-static-value"></a>Pasar un valor estático
-Ahora, pensemos en agregar otra columna denominada 'Escenario' en la tabla que contiene un valor estático denominado 'Ejemplo de documento'.
+Ahora, veamos agregar otra columna con el nombre 'Escenario' en tabla de Hola que contiene un valor estático denominado 'Ejemplo de documento'.
 
 ![Datos de ejemplo 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
 
@@ -347,7 +347,7 @@ BEGIN
 END
 ```
 
-Ahora, pase el parámetro **Escenario** y el valor desde la actividad de procedimiento almacenado. La sección **typeProperties** del ejemplo anterior es similar al siguiente fragmento de código:
+Ahora, pasar hello **escenario** hello y parámetro de valor de hello actividad de procedimiento almacenado. Hola **typeProperties** sección Hola anterior ejemplo parece Hola siguiente fragmento de código:
 
 ```JSON
 "typeProperties":

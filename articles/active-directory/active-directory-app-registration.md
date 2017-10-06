@@ -1,6 +1,6 @@
 ---
-title: Registro de aplicaciones de Azure Active Directory | Microsoft Docs
-description: "En este artículo se describe cómo usar Azure Portal para registrar una aplicación en Azure Active Directory"
+title: "el registro de aplicación de Active Directory aaaAzure | Documentos de Microsoft"
+description: "Este artículo describe cómo toouse Hola tooregister portal Azure una aplicación con Azure Active Directory"
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.openlocfilehash: 2f2817688beb2028fd0bba8522827d87a0097f21
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0134e299dcc53919a6f789a0878a1cf64a8e244d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>Registro de una aplicación en un inquilino de Azure Active Directory
 
-Azure Portal se puede usar para registrar una aplicación en un inquilino de Azure Active Directory (Azure AD). Esto crea un identificador para la aplicación que le permite recibir tokens.
+Puede usar la aplicación de hello tooregister de portal de Azure con su inquilino de Azure Active Directory (Azure AD). Esto crea un identificador de aplicación para la aplicación hello y permite tooreceive símbolos (tokens).
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el panel de navegación izquierdo, elija **Más servicios**, haga clic en **Registros de aplicaciones**y, luego, en **Agregar**.
-4. Siga las indicaciones y cree una nueva aplicación. Si desea ejemplos específicos de aplicaciones web o aplicaciones nativa, visite nuestras [guías de inicio rápido](active-directory-developers-guide.md).
-  * En el caso de las aplicaciones web, especifique la **URL de inicio de sesión**, que es la dirección URL base de la aplicación, donde los usuarios pueden iniciar sesión; por ejemplo, `http://localhost:12345`.
-<!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
-  * En el caso de las aplicaciones nativas, especifique un **URI de redireccionamiento**, que utilizará Azure AD para devolver las respuestas de token. Escriba un valor específico para la aplicación, por ejemplo, `http://MyFirstAADApp`
-5. Una vez que haya completado el registro, Azure AD asigna a la aplicación un identificador de cliente único, el identificador de aplicación.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el panel de navegación izquierdo de hello, elija **más servicios**, haga clic en **registros de aplicaciones**y haga clic en **agregar**.
+4. Siga las indicaciones de Hola y cree una nueva aplicación. Si desea ejemplos específicos de aplicaciones web o aplicaciones nativa, visite nuestras [guías de inicio rápido](active-directory-developers-guide.md).
+  * Para aplicaciones Web, proporcione hello **dirección URL de inicio de sesión**, que es Hola dirección URL base de la aplicación, donde los usuarios pueden iniciar sesión en, por ejemplo, `http://localhost:12345`.
+<!--TODO: add once App ID URI is configurable: hello **App ID URI** is a unique identifier for your application. hello convention is toouse `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
+  * Para aplicaciones nativas, proporcionar un **URI de redireccionamiento**, que Azure AD usa tooreturn token respuestas. Escriba una aplicación de tooyour específico de valor,. por ejemplo`http://MyFirstAADApp`
+5. Una vez completado el registro, Azure AD le asigna la aplicación un identificador de cliente único, hello identificador de aplicación.
 
-## <a name="update-application-settings-from-the-azure-portal"></a>Actualización de la configuración de la aplicación desde Azure Portal
+## <a name="update-application-settings-from-hello-azure-portal"></a>Actualizar configuración de la aplicación de portal de Azure Hola
 
-Mediante Azure Portal se puede modificar fácilmente una configuración de la aplicación existente. Por ejemplo, puede que desee configurar una dirección URL de respuesta, que es donde Azure AD emite las respuestas a los tokens. También puede configurar permisos para otras aplicaciones, por ejemplo, para permitir que una aplicación acceda a la API de Microsoft Graph. Todo esto se puede hacer desde la página de configuración de la aplicación.
+Puede modificar fácilmente la configuración de la aplicación existente mediante Hola portal de Azure. Por ejemplo, puede que desee tooconfigure una dirección URL de respuesta, que es donde Azure AD emite tokens respuestas. Puede que también desee tooconfigure permisos tooother aplicaciones, para la instancia tooallow sus tooaccess aplicación Hola API Graph de Microsoft. Puede hacer todo esto a través de la página de configuración de aplicación Hola.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el panel de navegación izquierdo, elija **Más servicios**, haga clic en **Registros de aplicaciones**y elija una aplicación en la lista.
-4. Haga clic en **Configuración** para abrir la página de configuración de la aplicación.
-  * La página **Propiedades** permite modificar la información general de la aplicación. Aquí se incluyen el nombre de la aplicación, la dirección URL de inicio de sesión y la dirección URL de cierre de sesión.
-  * La página **Direcciones URL de respuesta** le permite agregar una dirección URL de respuesta, que es el lugar al que Azure AD envía las respuestas de los tokens.
-  * La página **Propietarios** permite agregar los propietarios de las aplicaciones.
-  * La página **Permisos** permite configurar los permisos de la aplicación. Por ejemplo, para tener acceso a la API de Microsoft Graph, haga clic en **Agregar**, seleccione **Microsoft Graph** en el selector de API y, después, elija el permiso requerido, por ejemplo, **Leer datos de directorio**.
-  * La página **Claves** permite agregar secretos de aplicaciones. El secreto solo se mostrará una vez inmediatamente después de su creación, por lo que debe asegurarse de copiarlo si desea usarlo más adelante.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el panel de navegación izquierdo de hello, elija **más servicios**, haga clic en **registros de aplicación**y elija la aplicación de lista de Hola.
+4. Haga clic en **configuración** tooopen la página de configuración de hello para la aplicación hello.
+  * Hola **propiedades** página le permite modificar la información general de Hola de aplicación hello. Esto incluye el nombre de la aplicación hello, dirección URL de inicio de sesión de Hola y dirección URL de cierre de sesión de Hola.
+  * Hola **direcciones URL de respuesta** página permite tooadd una dirección URL de respuesta, que es donde Azure AD envía las respuestas de símbolo (token).
+  * Hola **propietarios** página permite tooadd propietarios de las aplicaciones.
+  * Hola **permisos** página permite tooconfigure permisos para la aplicación hello. Por ejemplo, hello tooaccess API Graph de Microsoft, haga clic en **agregar** y seleccione **Microsoft Graph** en el selector de hello API, a continuación, elija requerido, por ejemplo el permiso de hello **leer datos de directorio** .
+  * Hola **claves** página permite tooadd secretos de aplicación. Hello secreto sólo se mostrará una vez inmediatamente después de crear, por lo que debe toocopy seguro para su uso posterior.
 
-## <a name="use-the-inline-manifest-editor"></a>Utilice el editor de manifiestos en línea
+## <a name="use-hello-inline-manifest-editor"></a>Utilice el editor de manifiestos de hello en línea
 
-El editor de manifiestos en línea se puede usar para modificar determinadas propiedades de la aplicación que no se exponen directamente en Azure Portal. Por ejemplo, se puede usar para modificar el identificador URI del identificador de la aplicación o para habilitar el flujo implícito OAuth2.0, en lugar del flujo de código de concesión de autorización predeterminado.
+Puede usar Hola alineado editor de manifiestos toomodify determinadas propiedades de la aplicación que no se exponen directamente en Hola portal de Azure. Por ejemplo, puede usar App ID URI la aplicación de toomodify Hola o tooenable Hola flujo implícitos de OAuth2.0 en lugar de autorización predeterminado de hello conceder flujo de código.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Para elegir el inquilino de Azure AD, seleccione una cuenta en la esquina superior derecha de la página.
-3. En el panel de navegación izquierdo, elija **Más servicios**, haga clic en **Registros de aplicaciones**y elija una aplicación en la lista.
-4. Haga clic en **Manifiesto** en la página de la aplicación para abrir el editor de manifiestos en línea.
-5. Puede realizar los cambios directamente en el manifiesto y guardarlo cuando esté listo. Como alternativa, puede descargar el manifiesto para abrirlo en el editor que prefiera y cargar el manifiesto actualizado.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Elija al inquilino de Azure AD seleccionando su cuenta en hello superior derecho de la página de Hola.
+3. En el panel de navegación izquierdo de hello, elija **más servicios**, haga clic en **registros de aplicación**y elija la aplicación de lista de Hola.
+4. Haga clic en **manifiesto** de hello aplicación página tooopen Hola alineado editor de manifiestos.
+5. Puede hacer cambios toohello directamente manifiesto y guárdelo cuando esté listo. Como alternativa, puede descargar tooopen manifiesto hello en su favoritos Hola de editor y la carga actualiza el manifiesto.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-1. Consulte las [guías de inicio rápido](active-directory-developers-guide.md) para ver tutoriales detallados de las aplicaciones que realizan la autenticación mediante Azure AD.
+1. Extraer del repositorio hello [tutoriales](active-directory-developers-guide.md) para ver tutoriales detallados de las aplicaciones que se realiza la autenticación con Azure AD.
 2. Consulte la lista completa de ejemplos de código en [GitHub](https://github.com/azure-samples).

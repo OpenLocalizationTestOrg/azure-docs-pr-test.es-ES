@@ -1,6 +1,6 @@
 ---
-title: "Limitaciones y restricciones del punto de conexión de Azure Active Directory v2.0 | Microsoft Docs"
-description: "Una lista de las limitaciones y restricciones del punto de conexión de Azure AD v2.0."
+title: aaaAzure Active Directory v2.0 extremo limitaciones y restricciones | Documentos de Microsoft
+description: "Una lista de limitaciones y restricciones para el punto de conexión de hello Azure AD v2.0."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,102 +15,102 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 00a6749d00c6e66a957b0a89c6658511a1bafe4d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bcbb7239f1d117002d16ac23dca8f1feb13a9161
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="should-i-use-the-v20-endpoint"></a>¿Debo usar el punto de conexión v2.0?
-Cuando compile aplicaciones que se integren con Azure Active Directory, debe decidir si los protocolos de autenticación y el punto de conexión v2.0 cumplen con sus necesidades. El punto de conexión original de Azure Active Directory sigue siendo totalmente compatible y, en algunos aspectos, ofrece más características que el v2.0. Sin embargo, el punto de conexión v2.0 [presenta ventajas importantes](active-directory-v2-compare.md) para los desarrolladores.
+# <a name="should-i-use-hello-v20-endpoint"></a>¿Debe usar el punto de conexión de hello v2.0?
+Al compilar aplicaciones que se integran con Azure Active Directory, debe toodecide si protocolos de punto de conexión y autenticación v2.0 Hola satisfacen sus necesidades. El punto de conexión original de Azure Active Directory sigue siendo totalmente compatible y, en algunos aspectos, ofrece más características que el v2.0. Sin embargo, Hola extremo v2.0 [presenta ventajas significativas](active-directory-v2-compare.md) para desarrolladores.
 
 Esta es nuestra recomendación simplificada para desarrolladores en este momento:
 
-* Si tiene que admitir cuentas personales de Microsoft en la aplicación, use el punto de conexión v2.0. Pero antes, asegúrese de comprender las limitaciones que se analizan en este artículo.
-* Si la aplicación solo tiene que admitir cuentas profesionales y educativas de Microsoft, no use el punto de conexión v2.0. En su lugar, consulte nuestra [Guía del desarrollador de Azure AD](active-directory-developers-guide.md).
+* Si debe utilizar cuentas personales de Microsoft en la aplicación, utilice el punto de conexión de hello v2.0. Pero antes de que lo hace, asegúrese de que comprende las limitaciones de Hola que analizamos en este artículo.
+* Si la aplicación solo necesita toosupport trabajo de Microsoft y escolares, no use el punto de conexión de hello v2.0. En su lugar, consulte tooour [Guía del desarrollador de Azure AD](active-directory-developers-guide.md).
 
-Con el tiempo, desarrollaremos el punto de conexión v2.0 para eliminar las restricciones que mencionamos en este artículo, por lo que siempre debe usar este punto de conexión. Mientras tanto, este artículo pretender ayudarle a determinar si el punto de conexión v2.0 es correcto para usted. Actualizaremos este artículo constantemente para reflejar el estado actual del punto de conexión v2.0. Consúltelo de nuevo para volver a evaluar los requisitos en relación con las funcionalidades de v2.0.
+Con el tiempo, el punto de conexión de hello v2.0 crecerá restricciones de hello tooeliminate enumeradas aquí, por lo que siempre tendrá que el punto de conexión de toouse Hola v2.0. Hola mientras tanto, este artículo es toohelp previsto es determinar si el punto de conexión de hello v2.0 adecuado para usted. Seguiremos tooupdate este estado actual de artículo tooreflect Hola de punto de conexión de hello v2.0. Vuelva a tooreevaluate sus requisitos comparándola con las funciones de la versión 2.0.
 
-Si tiene una aplicación de Azure AD existente que no usa el punto de conexión v2.0, no es necesario empezar desde cero. En el futuro, le proporcionaremos una forma de usar las aplicaciones de Azure AD existentes con el punto de conexión v2.0.
+Si tiene una aplicación de Azure AD existente que no usa el punto de conexión de hello v2.0, no hay ningún toostart necesario desde el principio. Hola futuras, se proporcionará una forma para toouse las aplicaciones de Azure AD existentes con el punto de conexión de hello v2.0.
 
 ## <a name="restrictions-on-app-types"></a>Restricciones en los tipos de aplicación
-Actualmente, el punto de conexión v2.0 no admite los siguientes tipos de aplicaciones. Para una descripción de los tipos de aplicación admitidos, consulte [Tipos de aplicación para el punto de conexión v2.0 de Azure Active Directory](active-directory-v2-flows.md).
+Actualmente, hello siguientes tipos de aplicaciones no se admiten por el punto de conexión de hello v2.0. Para obtener una descripción de tipos de aplicaciones compatibles, consulte [tipos de aplicación para el punto de conexión de hello Azure Active Directory v2.0](active-directory-v2-flows.md).
 
 ### <a name="standalone-web-apis"></a>API web independiente
-Puede usar el punto de conexión v2.0 para [compilar una API web protegida con OAuth 2.0](active-directory-v2-flows.md#web-apis). Sin embargo, esa API web puede recibir tokens solo desde una aplicación con el mismo identificador de aplicación. No se puede obtener una API web desde un cliente con un identificador de aplicación distinto. El cliente no podrá solicitar ni obtener permisos para su API web.
+Puede utilizar el punto de conexión de hello v2.0 demasiado[crear una API Web que está protegido con OAuth 2.0](active-directory-v2-flows.md#web-apis). Sin embargo, esa API Web puede recibir tokens solo desde una aplicación que ha Hola el mismo identificador de aplicación. No se puede obtener una API web desde un cliente con un identificador de aplicación distinto. cliente de Hello no ser capaz de toorequest u obtenga permisos tooyour API Web.
 
-Para ver cómo compilar una API web que acepta tokens de un cliente con el mismo identificador de aplicación, consulte los ejemplos de API web del punto de conexión v2.0 en nuestra sección de [introducción](active-directory-appmodel-v2-overview.md#getting-started).
+Hola a toosee toobuild una API Web que acepta los tokens de un cliente que tiene Hola mismo identificador de aplicación, vea ejemplos de API Web de punto de conexión de v2.0 en nuestro [Introducción](active-directory-appmodel-v2-overview.md#getting-started) sección.
 
 ## <a name="restrictions-on-app-registrations"></a>Restricciones en los registros de aplicaciones
-Actualmente, para cada aplicación que desee integrar con el punto de conexión v2.0, debe crear un registro de aplicación en el nuevo [portal de registro de aplicaciones de Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList). Las aplicaciones existentes de Azure AD o de la cuenta de Microsoft no son compatibles con el punto de conexión v2.0. Las aplicaciones registradas en cualquier otro portal que no sea el portal de registro de aplicaciones no son compatibles con el punto de conexión v2.0. En el futuro, planeamos proporcionar una forma de usar una aplicación existente como una aplicación v2.0. Sin embargo, actualmente no hay ninguna ruta de migración para que una aplicación existente funcione con el punto de conexión v2.0.
+Actualmente, para cada aplicación que desea que se toointegrate con el punto de conexión de hello v2.0, debe crear un registro de una aplicación Hola nueva [Portal de registro de aplicación de Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList). AD de Azure existente o aplicaciones de la cuenta de Microsoft no son compatibles con el punto de conexión de hello v2.0. Las aplicaciones que están registradas en cualquier portal distinto de hello Portal de registro de aplicación no son compatibles con el punto de conexión de hello v2.0. Hola futura, tenemos previsto tooprovide un toouse de manera una aplicación existente como una aplicación de la versión 2.0. Sin embargo, actualmente, hay ninguna ruta de acceso de migración para una toowork de aplicación existente con el punto de conexión de hello v2.0.
 
-Además, los registros de aplicaciones que crea en el [portal de registro de aplicaciones](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tienen las siguientes salvedades:
+Asimismo, los registros de aplicación que se crean en hello [Portal de registro de aplicación](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tienen Hola después advertencias:
 
 * Solo se permiten dos secretos de aplicación por cada identificador de aplicación.
-* Un registro de aplicaciones realizado por un usuario con una cuenta personal de Microsoft solo se puede ver y administrar mediante una sola cuenta de desarrollador. No se puede compartir entre varios desarrolladores.  Si quiere compartir el registro de aplicaciones entre varios desarrolladores, puede crear la aplicación iniciando sesión en el portal de registro con una cuenta de Azure AD.
-* Existen varias restricciones para el formato del URI de redireccionamiento permitido. Para más información sobre los URI de redireccionamiento, consulte la sección siguiente.
+* Un registro de aplicaciones realizado por un usuario con una cuenta personal de Microsoft solo se puede ver y administrar mediante una sola cuenta de desarrollador. No se puede compartir entre varios desarrolladores.  Si desea que tooshare el registro de una aplicación entre varios desarrolladores de software, puede crear la aplicación hello al iniciar sesión en el portal de registro de hello con una cuenta de Azure AD.
+* Hay varias restricciones en formato de Hola de redirección de hello URI que se permite. Para obtener más información acerca de los URI de redirección, vea Hola siguiente sección.
 
 ## <a name="restrictions-on-redirect-uris"></a>Restricciones en los URI de redireccionamiento
-Actualmente, las aplicaciones registradas en el portal de registro de aplicaciones están restringidas a un conjunto limitado de valores de parámetro de URI de redireccionamiento. El URI de redireccionamiento de aplicaciones y servicios web debe comenzar por el esquema `https`, y todos los valores de URI de redireccionamiento deben compartir un único dominio DNS. Por ejemplo, no puede registrar una aplicación web con uno de estos URI de redirección:
+Actualmente, las aplicaciones que están registradas en el Portal de registro de aplicación Hola son conjunto restringido tooa limitado de valores URI de redireccionamiento. Hola redirección URI de las aplicaciones web y servicios debe empezar con el esquema de hello `https`, y todos los valores URI de redireccionamiento deben compartir un único dominio DNS. Por ejemplo, no puede registrar una aplicación web con uno de estos URI de redirección:
 
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`
 
-El sistema de registro compara el nombre DNS completo del URI de redireccionamiento existente con el nombre DNS del URI de redireccionamiento que va a agregar. La solicitud para agregar el nombre DNS presentará un error si se cumple alguna de las condiciones siguientes:  
+sistema de registro de Hello compara Hola de nombre DNS completo de hello existente redirección URI toohello nombre DNS de redirección de hello URI que se va a agregar. nombre DNS de Hello solicitud tooadd Hola se producirá un error si se cumple alguna de hello condiciones siguientes:  
 
-* Si el nombre DNS completo del nuevo URI de redireccionamiento no coincide con el nombre DNS del URI de redireccionamiento existente.
-* Si el nombre DNS completo del nuevo URI de redireccionamiento no es un subdominio del URI de redireccionamiento existente.
+* Hola todo DNS nombre de URI de redireccionamiento nueva hello no coincidir con hello DNS de URI de redireccionamiento existente Hola.
+* Hola todo nombre DNS de hello nueva el URI de redireccionamiento no es un subdominio del URI de redireccionamiento existente Hola.
 
-Por ejemplo, si la aplicación tiene el siguiente URI de redireccionamiento:
+Por ejemplo, si la aplicación hello tiene este URI de redireccionamiento:
 
 `https://login.contoso.com`
 
-Puede agregarla del modo siguiente:
+Puede agregar tooit, similar al siguiente:
 
 `https://login.contoso.com/new`
 
-En este caso, el nombre DNS es una coincidencia exacta. O bien, puede hacer lo siguiente:
+En este caso, el nombre DNS de hello coincide exactamente. O bien, puede hacer lo siguiente:
 
 `https://new.login.contoso.com`
 
-En este caso, hace referencia a un subdominio DNS de login.contoso.com. Si desea que una aplicación tenga login-east.contoso.com y login-west.contoso.com como URI de redireccionamiento, debe agregar estos URI de redireccionamiento en este orden:
+En este caso, está haciendo referencia subdominio DNS de tooa de login.contoso.com. Si desea que una aplicación con inicio de sesión east.contoso.com y west.contoso.com-inicio de sesión como URI de redireccionamiento toohave, debe agregar que los URI de redireccionamiento en este orden:
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-Puede agregar los dos últimos porque son subdominios del primero URI de redireccionamiento, contoso.com. Esta limitación se eliminará en una próxima versión.
+Puede agregar Hola último dos porque son subdominios de hello primero URI de redireccionamiento, contoso.com. Esta limitación se eliminará en una próxima versión.
 
-Para información sobre cómo registrar una aplicación en el portal de registro de aplicaciones, consulte [Cómo registrar una aplicación con el punto de conexión v2.0](active-directory-v2-app-registration.md).
+toolearn tooregister una aplicación Hola Portal de registro de aplicación, vea [cómo una aplicación con el punto de conexión de hello v2.0 tooregister](active-directory-v2-app-registration.md).
 
 ## <a name="restrictions-on-services-and-apis"></a>Restricciones en los servicios y API
-Actualmente, el punto de conexión v2.0 admite el inicio de sesión en cualquier aplicación registrada en el portal de registro de aplicaciones que se encuentre en la lista de [flujos de autenticación admitidos](active-directory-v2-flows.md). Sin embargo, estas aplicaciones pueden adquirir tokens de acceso OAuth 2.0 para un conjunto de recursos muy limitado. El punto de conexión v2.0 emite tokens de acceso solo para:
+Actualmente, el punto de conexión de hello v2.0 admite inicio de sesión para cualquier aplicación que se registra en el Portal de registro de la aplicación hello y que se encuentra en la lista de Hola de [admite flujos de autenticación](active-directory-v2-flows.md). Sin embargo, estas aplicaciones pueden adquirir tokens de acceso OAuth 2.0 para un conjunto de recursos muy limitado. problemas de punto de conexión de Hello v2.0 acceso solo para:
 
-* La aplicación que solicita el token. Una aplicación puede adquirir un token de acceso por sí misma si la aplicación lógica se compone de varios componentes o niveles diferentes. Para ver este escenario en acción, consulte nuestros tutoriales de [Introducción](active-directory-appmodel-v2-overview.md#getting-started) .
-* Las API de REST de Correo, Calendario y Contactos de Outlook, que se encuentran en https://outlook.office.com. Para información sobre cómo escribir una aplicación que tenga acceso a estas API, consulte los tutoriales de [Introducción a Office](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2).
-* Las API de Microsoft Graph. Puede obtener más información sobre [Microsoft Graph](https://graph.microsoft.io) y los datos que tiene a su disposición.
+* aplicación Hello que solicitó el token de Hola. Una aplicación puede adquirir un token de acceso para sí mismo, si la aplicación lógica de hello se compone de varios componentes diferentes o capas. toosee este escenario en acción, visite nuestro [Introducción](active-directory-appmodel-v2-overview.md#getting-started) tutoriales.
+* Hola correo electrónico de Outlook, calendario y las API de REST de contactos, todos ellos se encuentran en https://outlook.office.com. toolearn toowrite una aplicación que tiene acceso a estas API, vea hello [Office Introducción](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) tutoriales.
+* Las API de Microsoft Graph. Puede obtener más información acerca de [Microsoft Graph](https://graph.microsoft.io) y datos hello tooyou disponible.
 
-No hay otros servicios compatibles en este momento. En el futuro se agregarán más Microsoft Online Services, además de la compatibilidad con sus propios servicios y API web personalizados.
+No hay otros servicios compatibles en este momento. Más Microsoft Online Services se agregará en el futuro, hello además toosupport para sus propios servicios y API Web personalizadas.
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Restricciones en las bibliotecas y SDK
-En este momento, la compatibilidad del punto de conexión v2.0 con las bibliotecas es limitada. Si desea usar el punto de conexión v2.0 en una aplicación de producción, tiene las opciones siguientes:
+Actualmente, la compatibilidad con bibliotecas para el punto de conexión de hello v2.0 está limitado. Si desea que el punto de conexión de toouse Hola v2.0 en una aplicación de producción, tienes estas opciones:
 
-* Si compila una aplicación web, puede usar sin riesgo el software intermedio de lado servidor con carácter de disponibilidad general de Microsoft para realizar el inicio de sesión y la validación de tokens. Incluye el software intermedio OWIN Open ID Connect para ASP.NET y el complemento NodeJS Passport. Para ejemplos de código que usan el software intermedio de Microsoft, consulte nuestra sección de [introducción](active-directory-appmodel-v2-overview.md#getting-started).
-* Si crea una aplicación de escritorio o para dispositivos móviles, puede usar una de las bibliotecas de autenticación de Microsoft (MSAL) de versión preliminar.  Estas bibliotecas están en una versión de versión preliminar compatible con producción, por lo que su uso en aplicaciones de producción es seguro. Puede obtener más información sobre los términos y condiciones de la versión preliminar y las bibliotecas disponibles en nuestra [referencia de bibliotecas de autenticación](active-directory-v2-libraries.md).
-* En el caso de otras plataformas no cubiertas por las bibliotecas de Microsoft, pueden integrarse con el punto de conexión v2.0 enviando y recibiendo mensajes de protocolo directamente en el código de su aplicación. Los protocolos v2.0 OpenID Connect y OAuth [se documentan explícitamente](active-directory-v2-protocols.md) para ayudarle a realizar dicha integración.
-* Por último, puede usar las bibliotecas de código abierto de Open ID Connect y OAuth para integrarse con el punto de conexión v2.0. El protocolo v2.0 debe ser compatible con muchas bibliotecas de código abierto de los protocolos sin cambios importantes. La disponibilidad de estos tipos de bibliotecas varía según el lenguaje y la plataforma. Los sitios web [Open ID Connect](http://openid.net/connect/) y [OAuth 2.0](http://oauth.net/2/) mantienen una lista de las implementaciones populares. Para más información, consulte [Azure Active Directory v2.0 y bibliotecas de autenticación](active-directory-v2-libraries.md) y la lista de bibliotecas de cliente de código abierto y los ejemplos que se probaron con el punto de conexión v2.0.
+* Si está creando una aplicación web, puede utilizar sin ningún riesgo tooperform de middleware de servidor disponible con carácter general de inicio de sesión y el token de validación de Microsoft. Incluyen middleware de OWIN abrir identificador conectarse Hola para hello Node.js Passport complemento y ASP.NET. Para ejemplos de código que usan el software intermedio de Microsoft, consulte nuestra sección de [introducción](active-directory-appmodel-v2-overview.md#getting-started).
+* Si crea una aplicación de escritorio o para dispositivos móviles, puede usar una de las bibliotecas de autenticación de Microsoft (MSAL) de versión preliminar.  Estas bibliotecas están en una vista previa admite de producción, por lo que es seguro para la ejecución toouse ellas en las aplicaciones de producción. Puede obtener más información acerca de los términos de Hola de hello obtener una vista previa y Hola bibliotecas disponibles en nuestro [referencia de bibliotecas de autenticación](active-directory-v2-libraries.md).
+* Para las plataformas no cubiertas por las bibliotecas de Microsoft, puede integrar con el punto de conexión de hello v2.0 directamente enviando y recibiendo mensajes de protocolo en el código de aplicación. Hola v2.0 OpenID Connect y OAuth protocolos [documentados explícitamente](active-directory-v2-protocols.md) toohelp realizar una integración de este tipo.
+* Por último, puede usar código abierto abrir Id. de conexión y toointegrate de bibliotecas de OAuth con el punto de conexión de hello v2.0. Protocolo de Hello v2.0 debe ser compatible con muchas bibliotecas de código abierto protocolo sin cambios más importantes. disponibilidad de Hola de estos tipos de bibliotecas varía según el idioma y plataforma. Hola [conectarse de identificador abierto](http://openid.net/connect/) y [OAuth 2.0](http://oauth.net/2/) sitios Web mantener una lista de implementaciones conocidas. Para obtener más información, consulte [bibliotecas v2.0 y autenticación de Azure Active Directory](active-directory-v2-libraries.md)y lista de Hola de ejemplos que se han probado con el punto de conexión de hello v2.0 y bibliotecas de cliente de código abierto.
 
 ## <a name="restrictions-on-protocols"></a>Restricciones en los protocolos
-El punto de conexión v2.0 no admite SAML ni WS-Federation; solo admite Open ID Connect y OAuth 2.0.  No todas las características y capacidades los protocolos OAuth se han incorporado al punto de conexión v2.0. Estas funcionalidades y características de protocolo actualmente *no están disponibles* en el punto de conexión v2.0:
+el punto de conexión de Hello v2.0 no es compatible con SAML o WS-Federation; solo es compatible con OAuth 2.0 y conectarse de identificador abierto.  No todas las características y capacidades de los protocolos OAuth se han incorporado en el punto de conexión de hello v2.0. Estas capacidades y características del protocolo actualmente son *no está disponible* en el punto de conexión de hello v2.0:
 
-* Los tokens de identificador que emite el punto de conexión v2.0 no contienen una notificación `email` para el usuario, aunque adquiera el permiso del usuario para ver su correo electrónico.
-* El punto de conexión de información de usuario de OpenID Connect no está implementado en el punto de conexión v2.0. Sin embargo, todos los datos de perfil de usuario que recibiría posiblemente en este punto de conexión están disponibles desde el punto de conexión `/me` de Microsoft Graph.
-* El punto de conexión v2.0 no admite la emisión de notificaciones de roles o grupos en los tokens de identificador.
-* La [concesión de credenciales de contraseña de propietario del recurso OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3) no es compatible con el punto de conexión v2.0.
+* Los tokens de identificador que se emiten por el punto de conexión de hello v2.0 no contienen un `email` de notificación para el usuario de hello, incluso si adquiere permiso de hello usuario tooview correo electrónico.
+* punto de conexión de información de usuario de OpenID conectarse Hello no está implementada en el punto de conexión de hello v2.0. Sin embargo, todos los datos de perfil de usuario que recibiría potencialmente en este extremo está disponible desde Microsoft Graph hello `/me` punto de conexión.
+* extremo de v2.0 Hello no admite notificaciones de rol o grupo emisoras en tokens de identificador.
+* Hola [concesión de credenciales de la contraseña de propietario de OAuth 2.0 recursos](https://tools.ietf.org/html/rfc6749#section-4.3) no es compatible con el punto de conexión de hello v2.0.
 
-Además, el punto de conexión v2.0 no admite ninguna forma de los protocolos SAML o WS-Federation.
+Además, el punto de conexión de hello v2.0 no admite ninguna forma de hello SAML o protocolos WS-Federation.
 
-Para comprender mejor el alcance de la funcionalidad de protocolo que se admite en el punto de conexión v2.0, consulte nuestra [referencia a los protocolos OpenID Connect y OAuth 2.0](active-directory-v2-protocols.md).
+toobetter comprender el ámbito de Hola de funcionalidad de protocolo que se admite en el punto de conexión de hello v2.0, lea nuestra [referencia del protocolo OAuth 2.0 y OpenID Connect](active-directory-v2-protocols.md).
 
 ## <a name="restrictions-for-work-and-school-accounts"></a>Restricciones de las cuentas profesionales y educativas
-Si ha usado la biblioteca de autenticación de Active Directory (ADAL) en aplicaciones de Windows, es posible que haya aprovechado la autenticación integrada de Windows, que usa la concesión de aserción de Lenguaje de marcado de aserción de seguridad (SAML). Con esta concesión, los usuarios de los inquilinos de Azure AD federado pueden autenticarse de manera silenciosa con su instancia local de Active Directory sin escribir las credenciales. Actualmente, el punto de conexión v2.0 no admite la concesión de aserción de SAML.
+Si ha usado la biblioteca de autenticación de Active Directory (ADAL) en aplicaciones de Windows, se podrían haber aprovechado de autenticación integrada de Windows que usa permisos de aserción de lenguaje de marcado de aserción de seguridad (SAML) de Hola. Con esta concesión, los usuarios de los inquilinos de Azure AD federado pueden autenticarse de manera silenciosa con su instancia local de Active Directory sin escribir las credenciales. Actualmente, no se admiten permisos de aserción de SAML de hello en el punto de conexión de hello v2.0.

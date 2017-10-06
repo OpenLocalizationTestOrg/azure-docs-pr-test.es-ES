@@ -1,6 +1,6 @@
 ---
-title: "Administrar máquinas virtuales de Windows Azure Pack desde Azure Stack | Microsoft Docs"
-description: "Aprenda cómo administrar las máquinas virtuales de Windows Azure Pack (WAP) desde el portal de usuarios en Azure Stack."
+title: "máquinas de virtuales de Windows Azure Pack aaaManage de pila de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toomanage máquinas virtuales de Windows Azure Pack (WAP) desde el portal de usuarios de hello en la pila de Azure."
 services: azure-stack
 documentationcenter: 
 author: walterov
@@ -14,92 +14,92 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: walterov
-ms.openlocfilehash: e00cf1c3f3d74b98e84b3d3f862e3a7b1b5b65f4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 97dbe34055667a72fddc8507ae389562e885a32e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>Administrar máquinas virtuales de Windows Azure Pack desde Azure Stack
-En Azure Stack Development Kit, puede habilitar el acceso desde el portal de usuarios de Azure Stack a las máquinas virtuales de inquilinos que se ejecutan en Windows Azure Pack. Los inquilinos pueden usar el portal de Azure Stack para administrar sus máquinas virtuales y redes virtuales IaaS existentes. Estos recursos están disponibles en Windows Azure Pack a través de los componentes subyacentes Service Provider Foundation (SPF) y Virtual Machine Manager (VMM). En concreto, los inquilinos pueden:
+Hola Kit de desarrollo de pila de Azure, puede habilitar el acceso de hello Azure pila usuario tootenant portal máquinas virtuales se ejecutan en Windows Azure Pack. Los inquilinos pueden utilizar hello Azure pila portal toomanage sus máquinas virtuales de IaaS existentes y redes virtuales. Estos recursos están disponibles en el paquete de Windows Azure a través de los componentes subyacentes de Service Provider Foundation (SPF) y Virtual Machine Manager (VMM) Hola. En concreto, los inquilinos pueden:
 
 * Examinar los recursos.
 * Examinar los valores de configuración.
 * Detener o iniciar una máquina virtual.
-* Conectarse a una máquina virtual a través del Protocolo de escritorio remoto (RDP).
+* Conectar a máquina virtual de tooa a través del protocolo de escritorio remoto (RDP)
 * Crear y administrar puntos de control.
 * Eliminar máquinas virtuales y redes virtuales.
 
-Esta funcionalidad se proporciona mediante el conector de Windows Azure Pack para Azure Stack (versión preliminar). En este artículo se muestra cómo configurar el conector para un entorno de Azure Stack de nodo único.
+Esta funcionalidad se proporciona por hello conector de Windows Azure Pack para la pila de Azure (vista previa). Este artículo muestra cómo tooconfigure Hola connector para un entorno de pila de Azure de nodo único.
 
-Para esta versión preliminar del conector, tenga en cuenta lo siguiente:
-* Use el conector de Windows Azure Pack únicamente en entornos de prueba (de Azure Stack y Windows Azure Pack) y no en las implementaciones de producción.
+Para esta versión preliminar del conector de hello, tenga Hola siguiente:
+* Usar hello conector de Windows Azure Pack únicamente en entornos de prueba (de pila de Azure y Windows Azure Pack) y no en las implementaciones de producción.
 * Debe tener Windows Azure Pack Update Rollup (UR) 9.1 o una versión posterior, SPF de System Center y VMM UR 9 o posterior.
-* Los componentes VMM y SPF pueden ser System Center 2012 R2 o System Center 2016.
+* System Center 2012 R2 o System Center 2016, pueden ser Hola VMM y los componentes de SPF.
 * Debe seguir los pasos de configuración tanto en Azure Stack como en Windows Azure Pack.
-* Las instrucciones se aplican a los entornos distintos de Cloud Platform System (CPS).
-* Para revisar los problemas conocidos, consulte [Microsoft Azure Stack troubleshooting](azure-stack-troubleshooting.md) (Solución de problemas de Microsoft Azure Stack).
+* instrucciones de Hello aplican entornos de nube toonon Platform System (CPS).
+* tooreview Hola problemas conocidos, consulte [solución de problemas de Microsoft Azure pila](azure-stack-troubleshooting.md).
 
 
 ## <a name="architecture"></a>Arquitectura
-En el siguiente diagrama se muestran los componentes principales del conector de Windows Azure Pack.
+Hello siguiente diagrama muestra componentes principales de Hola de hello conector de Windows Azure Pack.
 
-![Componentes del conector de Windows Azure Pack](media/azure-stack-manage-wap/image1.png)
+![Hola componentes del conector de Windows Azure Pack](media/azure-stack-manage-wap/image1.png)
 
-Tenga en cuenta los detalles siguientes:
-* El portal de usuarios de Azure Stack tiene acceso a la información de recursos de ambas nubes (Azure Stack y Windows Azure Pack).
-* El usuario debe tener una cuenta que sea válida en ambos entornos.
-* El portal de usuarios de Azure Stack debe tener acceso de red a los componentes que se ejecutan en Windows Azure Pack.
-* En la sección **WAP** del diagrama, puede ver los nuevos módulos del conector de Windows Azure Pack (WAP Extension y Connector) y la API de inquilino existente de Windows Azure Pack con los componentes SPF y VMM.
+Tenga en cuenta Hola detalles siguientes:
+* portal de usuarios de Azure pila Hello tiene acceso a información de recursos de Hola de tanto a las nubes (pila de Azure y Windows Azure Pack).
+* usuario de Hello debe tener una cuenta que sea válida en ambos entornos.
+* portal de usuarios de Hello Azure pila debe tener los componentes de toohello de acceso de red que se ejecutan en Windows Azure Pack.
+* Hola **WAP** sección de diagrama de hello, que permite ver Hola nuevo conector de Windows Azure Pack módulos (extensión de WAP y conector) y Hola existente Windows Azure Pack API de inquilinos con componentes de SPF y VMM.
 
 
 ## <a name="identity-management"></a>Administración de identidades
-La API de inquilino de Windows Azure Pack debe confiar en el servicio de token de seguridad (STS) de Azure Stack.
+Hola API de inquilino de Windows Azure Pack debe confiar en hello servicio de token de seguridad (STS) de pila de Azure.
 
-Cuando un usuario realiza una acción a través del portal de Azure Stack dirigida a los recursos de Windows Azure Pack, el portal usa la API de inquilino de Windows Azure Pack. Por lo tanto, el token de autenticación de usuario proporcionado debe proceder de un STS de confianza. Observe el diagrama siguiente:
+Cuando un usuario realiza una acción a través del portal de Azure pila Hola destinado a los recursos de Windows Azure Pack, portal de hello usa Hola API de inquilino de Windows Azure Pack. Por lo tanto, token de autenticación de usuario de hello proporcionado debe proceder de un STS de confianza. Vea Hola siguiente diagrama:
 
 ![Diagrama de autenticación del conector de Windows Azure Pack](media/azure-stack-manage-wap/image2.png)
 
-En el entorno del kit de desarrollo, Windows Azure Pack y Azure Stack tienen proveedores de identidad independientes. Los usuarios que tienen acceso a ambos entornos del portal de Azure Stack deben tener el mismo nombre principal de usuario (UPN) en ambos proveedores de identidades. Por ejemplo, la cuenta *azurestackadmin@azurestack.local* también debe existir en el STS de Windows Azure Pack. Si AD FS no está configurado para admitir las relaciones de confianza saliente, se establecerá la confianza de los componentes de Windows Azure Pack (API de inquilino) a la instancia de Azure Stack de AD FS.
+En el entorno de kit de desarrollo de hello, Windows Azure Pack y la pila de Azure tengan proveedores de identidad independiente. Usuarios con acceso a ambos entornos de portal de Azure pila Hola deben tener Hola nombre el mismo nombre principal de usuario (UPN) en ambos proveedores de identidad. Por ejemplo, Hola cuenta  *azurestackadmin@azurestack.local*  también deben existir en hello STS para Windows Azure Pack. Cuando AD FS no se establece toosupport las relaciones de confianza saliente, se establecerá la confianza de hello Windows Azure Pack componentes (API de inquilinos) toohello Azure pila instancia de AD FS.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-### <a name="download-the-windows-azure-pack-connector"></a>Descargar el conector de Windows Azure Pack
-En el [Centro de descarga de Microsoft](https://aka.ms/wapconnectorazurestackdlc), descargue el archivo .exe y extráigalo en el equipo local. Luego, copie el contenido en un equipo que pueda acceder a su entorno de Windows Azure Pack.
+### <a name="download-hello-windows-azure-pack-connector"></a>Descargar Hola conector de Windows Azure Pack
+En hello [Microsoft Download Center](https://aka.ms/wapconnectorazurestackdlc), descargue el archivo .exe de hello y extráigalo tooyour de equipo local. Una versión posterior, copie Hola contenido tooa, equipo que puede tener acceso a su entorno de Windows Azure Pack.
 
 ### <a name="deployment-option-requirement"></a>Requisito de opción de implementación
-Para integrar con Windows Azure Pack, puede implementar Azure Stack mediante la opción de AD FS o la opción de Azure Active Directory.
+toointegrate con Windows Azure Pack, puede implementar Azure pila utilizando la opción de AD FS de Hola o hello Azure Active Directory.
 
 ### <a name="connectivity-requirements"></a>Requisitos de conectividad
-1. En el equipo en el que tiene acceso al portal de usuarios de Azure Stack, asegúrese de que puede acceder al portal de inquilinos de Windows Azure Pack a través del explorador web.
-2. La máquina virtual AzS-WASP01 en Azure Stack debe ser capaz de conectarse al equipo del portal de inquilinos de Windows Azure Pack. Use Ping.exe para comprobar la conectividad de red. 
-3.  Debe tener certificados válidos para los nuevos servicios del conector. Estos certificados SSL deben emitirlos una entidad de certificación (CA) de confianza. No puede usar certificados autofirmados. Los certificados SSL deben ser de confianza en Azure Stack (específicamente la máquina virtual de AzS-WASP01) y en cualquier otro equipo que el inquilino pueda usar para acceder al portal de usuarios de Azure Stack.
+1. Desde el equipo de hello en el que obtener acceso a portal de usuarios de Azure pila hello, asegúrese de que puede tener acceso a portal del inquilino de Windows Azure Pack Hola a través del explorador web de Hola.
+2. máquina virtual de Hello AzS WASP01 en pila de Azure debe ser equipo portal del inquilino de Windows Azure Pack toohello tooconnect pueda. Usar la conectividad de red de tooverify Ping.exe. 
+3.  Debe tener los certificados válidos para los servicios del conector nuevo Hola. Estos certificados SSL deben emitirlos una entidad de certificación (CA) de confianza. No puede usar certificados autofirmados. certificados SSL de Hello deben ser de confianza por la pila de Azure (específicamente Hola AzS WASP01 VM) y cualquier otro equipo que Hola inquilinos puede usar el portal de usuarios de Azure pila tooaccess Hola.
  
     >[!NOTE]
-    Dado que AzS-WASP01 ejecuta Windows Server con la opción de instalación Server Core, puede usar una herramienta de línea de comandos, como Certutil.ext, para importar el certificado. Por ejemplo, podría copiar el archivo .cer en c:\temp en AzS-WASP01 y luego ejecutar el comando **certutil -addstore "CA" "c:\temp\certname.cer"**.
+    Como AzS WASP01 ejecuta Windows Server con la opción de instalación Server Core de hello, puede usar una herramienta de línea de comandos como certificado de Certutil.ext tooimport Hola. Por ejemplo, podría copiar tooc:\temp de archivo .cer de hello en AzS WASP01 y, a continuación, ejecute el comando de hello **certutil - addstore "CA" "c:\temp\certname.cer"**.
 
-4.  Para establecer la conectividad RDP para máquinas virtuales de inquilino de Windows Azure Pack a través del portal de Azure Stack, el entorno de Windows Azure Pack debe permitir el tráfico de Escritorio remoto a las máquinas virtuales de inquilino.
-5.  Para la conectividad entre máquinas virtuales de inquilino de Azure Stack y máquinas virtuales de inquilino de Windows Azure Pack, sus direcciones IP externas deben poder enrutarse a través de los dos entornos. Esta conectividad podría incluir también la asociación de un servidor DNS para resolver los nombres de las máquinas virtuales entre los entornos.
+4.  tooestablish RDP conectividad tooWindows máquinas virtuales de Azure Pack inquilinos a través del portal de Azure pila hello, entorno de Windows Azure Pack Hola debe permitir que las máquinas virtuales de inquilinos de toohello del tráfico de escritorio remoto.
+5.  Para la conectividad entre máquinas virtuales de inquilinos de pila de Azure y máquinas virtuales de inquilinos de Windows Azure Pack, sus direcciones IP externas deben ser enrutables en dos entornos de Hola. Esta conectividad, podría incluir también asociar una nombres de DNS server tooresolve máquina virtual entre entornos de Hola.
 
 ### <a name="iis-requirements"></a>Requisitos de IIS
-El equipo que hospeda el portal de inquilino de Windows Azure Pack (que puede ser un host físico, una máquina virtual o varias máquinas virtuales) debe tener instalada la extensión de IIS URL Rewrite. Si aún no está instalada, puede descargarla [aquí](https://www.iis.net/downloads/microsoft/url-rewrite). Si varias máquinas virtuales hospedan el portal de inquilinos, instale la extensión en cada máquina virtual.
+equipo de Hola que hospeda el portal del inquilino de Windows Azure Pack hello (que puede ser un host físico, una máquina virtual o varias máquinas virtuales) debe tener la extensión de IIS de reescritura de dirección URL de hello instalado. Si aún no está instalada, puede descargarla [aquí](https://www.iis.net/downloads/microsoft/url-rewrite). Si varias máquinas virtuales hospedar el portal del inquilino de hello, instale la extensión de hello en cada máquina virtual.
 
 ## <a name="configure-azure-stack"></a>Configurar Azure Stack
-Antes de configurar el conector de Windows Azure Pack, debe habilitar el modo de varias nubes en el portal de usuarios de Azure Stack. Este modo permite a los usuarios seleccionar la nube desde la que se accederá a los recursos.
+Antes de configurar Hola conector de Windows Azure Pack, debe habilitar el modo de varias nube en el portal de usuarios de Azure pila Hola. Este modo permite tooselect a los usuarios de los recursos que tooaccess en la nube.
 
-Para habilitar el modo de varias nubes, debe ejecutar el script Add-AzurePackConnector.ps1 después de la implementación de Azure Stack. En la siguiente tabla se describen los parámetros del script.
+modo de varias nubes tooenable, debe ejecutar hello AzurePackConnector.ps1 agregar script después de la implementación de la pila de Azure. Hello en la tabla siguiente describe los parámetros de script de Hola.
 
 
 |  Parámetro | Description | Ejemplo |   
 | -------- | ------------- | ------- |  
-| AzurePackClouds | Los URI de los conectores de Windows Azure Pack. Estos URI deben corresponder a los portales de inquilinos de Windows Azure Pack. | @{CloudName = "AzurePack1"; CloudEndpoint = "https://waptenantportal1:40005"},@{CloudName = "AzurePack2"; CloudEndpoint = "https://waptenantportal2:40005"}<br><br>  (De manera predeterminada, el valor del puerto es 40005). |  
-| AzureStackCloudName | Etiqueta para representar la nube local de Azure Stack.| "AzureStack" |
-| DisableMultiCloud | Un conmutador para deshabilitar el modo de varias nubes.| N/D |
+| AzurePackClouds | URI de hello conectores de Windows Azure Pack. Estos URI deberían corresponder toohello portales de inquilinos de Windows Azure Pack. | @{CloudName = "AzurePack1"; CloudEndpoint = "https://waptenantportal1:40005"},@{CloudName = "AzurePack2"; CloudEndpoint = "https://waptenantportal2:40005"}<br><br>  (De forma predeterminada, el valor del puerto de hello es 40005). |  
+| AzureStackCloudName | Etiqueta toorepresent Hola local pila de Azure en la nube.| "AzureStack" |
+| DisableMultiCloud | Un modo de varias nubes toodisable de conmutador.| N/D |
 | | |
 
-Puede ejecutar el script Add-AzurePackConnector.ps1 inmediatamente después de la implementación o más adelante. Para ejecutar el script inmediatamente después de la implementación, use la misma sesión de Windows PowerShell donde se completó la implementación de Azure Stack. En caso contrario, puede abrir una nueva sesión de Windows PowerShell como administrador (con la cuenta azurestackadmin).
+Puede ejecutar script de Hola AzurePackConnector.ps1 agregar inmediatamente después de la implementación, o una versión posterior. toorun Hola implementación inmediatamente después de secuencia de comandos, utilice Hola misma sesión de Windows PowerShell donde completa la implementación de la pila de Azure. En caso contrario, puede abrir una nueva sesión de Windows PowerShell como administrador (iniciado sesión como cuenta de hello azurestackadmin).
 
-1. Ejecute el script Add-AzurePackConnector.ps1 mediante los comandos siguientes (con los valores específicos de su entorno). Tenga en cuenta que el script Add-AzurePackConnector le permite agregar más de un punto de conexión del conector de Windows Azure Pack.
+1. Ejecutar script de Hola AzurePackConnector.ps1 agregar mediante Hola después de comandos (con el entorno de tooyour específico de valores). Tenga en cuenta que script de Hola agregar AzurePackConnector permite tooadd más de un extremo de conector de Windows Azure Pack.
  
  ```powershell
     $cred = New-Object System.Management.Automation.PSCredential("cloudadmin@azurestack.local", `
@@ -117,48 +117,48 @@ Puede ejecutar el script Add-AzurePackConnector.ps1 inmediatamente después de l
 
  ```
 > [!NOTE]
-> En la compilación actual hay un problema por el que, una vez que finaliza el script Add-AzurePackConnector, permanece en un bucle de sondeo durante un largo período (varios minutos) hasta que termina. Una vez que aparezca el mensaje **VERBOSE: Step 'Configure Azure Pack Connector' status: 'Success'**, puede detener el script o esperar hasta que se detenga por sí solo. Esto no supone ninguna diferencia, ya que la configuración ya se habrá completado correctamente.
+> En la compilación actual Hola hay un problema donde una vez finalizado el Hola AzurePackConnector Agregar secuencia de comandos, permanece en un bucle de sondeo durante un largo período de tiempo (varios minutos) hasta que termina. Una vez que aparezca el mensaje de bienvenida de **VERBOSE: paso 'Configurar el conector del módulo de Azure' estado: 'Correcto'**, puede detener la secuencia de comandos de Hola o esperar hasta que se detenga por sí mismo. Dado que la configuración de hello ya se ha realizado correctamente no suponer una diferencia.
 
-2. Tome nota de los archivos de salida que genera este script, uno para cada entorno de Windows Azure Pack especificado. Los archivos se encuentran en: \\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput. Estos archivos contienen la información necesaria para configurar los entornos de Windows Azure Pack de destino. Este archivo se pasa como un parámetro a un script más adelante en estas instrucciones. Este archivo contiene la siguiente información:
+2. Tome nota de los archivos de salida de hello generados por este script, uno para cada entorno de Windows Azure Pack que especificó. Hello archivos se encuentran en: \\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput. Estos archivos contienen información de Hola que sea necesario tooconfigure Hola destino Windows Azure Pack entornos. Este archivo se pasa como una secuencia de comandos de tooa de parámetro más adelante en estas instrucciones. Este archivo contiene Hola siguiente información:
 
-    * **AzurePackConnectorEndpoint**: contiene el punto de conexión al servicio del conector de Windows Azure Pack.
-    * **AuthenticationIdentityProviderPartner** contiene el siguiente par de valores:
-        * Certificado de firma de token de autenticación en la que debe confiar la API de inquilino de Windows Azure Pack para aceptar las llamadas de la extensión del portal de Azure Stack.
+    * **AzurePackConnectorEndpoint**: contiene el servicio de conector de Windows Azure Pack toohello de hello punto de conexión.
+    * **AuthenticationIdentityProviderPartner**: contiene Hola siguiente par de valor:
+        * Token de autenticación, firma el certificado que Hola API de inquilino de Windows Azure Pack debe tootrust tooaccept llamadas de hello extensión del portal de pila de Azure.
 
-        * El dominio "kerberos" asociado con el certificado de firma. Por ejemplo: https://adfs.local.azurestack.global.external/adfs/c1d72562-534e-4aa5-92aa-d65df289a107/.
+        * Hola "Territorio" asociado Hola certificado de firma. Por ejemplo: https://adfs.local.azurestack.global.external/adfs/c1d72562-534e-4aa5-92aa-d65df289a107/.
 
-3.  Vaya a la carpeta que contiene los archivos de salida (\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput) y copie los archivos en el equipo local. Los archivos tendrán un aspecto similar al siguiente: AzurePack-06-27-15-50.txt.
+3.  Examinar las carpetas de toohello que contiene los archivos de salida de hello (\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput) y el equipo local de copia Hola archivos tooyour. archivos de Hello tendrá un aspecto similar toothis: AzurePack-06-27-15-50.txt.
 
-4.  Pruebe la configuración.
+4.  Configuración de Hola de prueba.
 
-    a. Abra el explorador e inicie sesión en el portal de usuarios de Azure Stack (https://portal.local.azurestack.external/).
+    a. Abra el explorador e inicie sesión en el portal de usuarios de Azure pila toohello (https://portal.local.azurestack.external/).
     
-    b. Después de iniciar sesión como inquilino y de que se cargue el portal, verá errores sobre la imposibilidad de capturar las suscripciones o extensiones de la nube de Azure Pack. Haga clic en **Aceptar** para cerrar estos mensajes. (Estos mensajes de error desaparecerán después de configurar Windows Azure Pack).
+    b. Después de iniciar sesión como una carga de portal hello e inquilino, verá errores acerca de no ser capaz de toofetch suscripciones o las extensiones de hello nube de Azure Pack. Haga clic en **Aceptar** tooclose estos mensajes. (Estos mensajes de error desaparecerán después de configurar Windows Azure Pack).
 
-    c. Observe la lista desplegable **Nube** situada en la esquina superior izquierda del portal.
+    c. Hola aviso **nube** lista desplegable situada en la esquina superior izquierda de hello del portal de Hola.
 
-    ![Selector de nube en la interfaz de usuario de Azure Stack](media/azure-stack-manage-wap/image3.png)
+    ![selector de Hello en la nube en la interfaz de usuario de Azure pila Hola](media/azure-stack-manage-wap/image3.png)
 
 ## <a name="configure-windows-azure-pack"></a>Configurar Windows Azure Pack
 Solo para esta versión preliminar del conector, Windows Azure Pack se debe configurar manualmente.
 
 >[!IMPORTANT]
-Para esta versión preliminar, use el conector de Windows Azure Pack únicamente en entornos de prueba y no en implementaciones de producción.
+En esta versión de vista previa, utilice Hola conector de Windows Azure Pack únicamente en entornos de prueba y no en las implementaciones de producción.
 
-1.  Instale los archivos MSI del conector en la máquina virtual del portal de inquilinos de Windows Azure Pack e instale los certificados. (Si tiene varias máquinas virtuales del portal de inquilinos, debe completar este paso en cada máquina virtual).
+1.  Instalar archivos de MSI de conector en hello Windows Azure Pack portal las máquinas virtuales e instalar certificados. (Si tiene varias máquinas virtuales del portal de inquilinos, debe completar este paso en cada máquina virtual).
 
-    a. En el Explorador de archivos, copie la carpeta **WAPConnector** (que descargó anteriormente) en una carpeta denominada **c:\temp** en la máquina virtual del portal de inquilinos.
+    a. En el Explorador de archivos, copie hello **WAPConnector** carpeta (lo que descargó anteriormente) con el nombre de carpeta de tooa **c:\temp** en hello portal las máquinas virtuales.
 
-    b. Abra una conexión de consola o RDP a la máquina virtual del portal de inquilinos.
+    b. Abra una consola o RDP conexión toohello inquilino portal máquina virtual.
 
-    c. Cambie los directorios a **c:\temp\wapconnector\setup\scripts** y ejecute el script **Install-Connector.ps1** para instalar tres archivos MSI. No hay ningún parámetro obligatorio.
+    c. Cambie los directorios demasiado**c:\temp\wapconnector\setup\scripts**, ejecución hello y **Install-Connector.ps1** tooinstall tres MSI archivos de script. No hay ningún parámetro obligatorio.
 
      ```powershell
     cd C:\temp\wapconnector\setup\scripts\
 
     .\Install-Connector.ps1
     ```
-     d. Cambie los directorios a **c:\inetpub** y compruebe que se hayan instalado los tres nuevos sitios:
+     d. Cambie los directorios demasiado**c:\inetpub** y compruebe que se instalan nuevos sitios de tres hello:
 
        * MgmtSvc-Connector
 
@@ -166,7 +166,7 @@ Para esta versión preliminar, use el conector de Windows Azure Pack únicamente
 
        * MgmtSvc-ConnectorController
 
-    e. Desde la misma carpeta **c:\temp\wapconnector\setup\scripts**, ejecute el script **Configure-Certificates.ps1** para instalar los certificados. De manera predeterminada, usará el mismo certificado que está disponible para el sitio del portal de inquilinos en Windows Azure Pack. Asegúrese de que se trata de un certificado válido (de confianza de la máquina virtual AzS-WASP01 de Azure Stack y de todos los equipos cliente que tienen acceso al portal de Azure Stack). En caso contrario, no funcionará la comunicación. (También se puede pasar explícitamente una huella digital del certificado como parámetro mediante el parámetro -Thumbprint).
+    e. De Hola mismo **c:\temp\wapconnector\setup\scripts** carpeta, ejecute hello **Certificates.ps1 configurar** tooinstall certificados de secuencias de comandos. De forma predeterminada, usará Hola mismo certificado que está disponible para el sitio del Portal del inquilino de hello en Windows Azure Pack. Asegúrese de que se trata de un certificado válido (de confianza por máquina virtual de Azure de pila AzS WASP01 de Hola y todos los equipos cliente que tiene acceso a portal de Azure pila hello). En caso contrario, no funcionará la comunicación. (Como alternativa, puede pasar explícitamente una huella digital del certificado como un parámetro mediante el uso de Hola - parámetro de huella digital.)
 
      ```powershell
         cd C:\temp\wapconnector\setup\scripts\
@@ -174,13 +174,13 @@ Para esta versión preliminar, use el conector de Windows Azure Pack únicamente
         .\Configure-Certificates.ps1
     ```
 
-    f. Para finalizar la configuración de estos tres servicios, ejecute el script **Configure-WapConnector.ps1** para actualizar los parámetros del archivo Web.config.
+    f. configuración de hello toofinish de estos tres servicios, ejecute hello **WapConnector.ps1 configurar** tooupdate Hola Web.config archivo parámetros de script.
 
     |  Parámetro | Description | Ejemplo |   
     | -------- | ------------- | ------- |  
-    | TenantPortalFQDN | FQDN del portal de inquilinos de Windows Azure Pack. | tenant.contoso.com | 
-    | TenantAPIFQDN | FQDN de la API de inquilino de Windows Azure Pack. | tenantapi.contoso.com  |
-    | AzureStackPortalFQDN | FQDN del portal de usuarios de Azure Stack. | portal.local.azurestack.external |
+    | TenantPortalFQDN | portal del inquilino Windows Azure Pack Hola FQDN. | tenant.contoso.com | 
+    | TenantAPIFQDN | Hola FQDN de API de inquilino de Windows Azure Pack. | tenantapi.contoso.com  |
+    | AzureStackPortalFQDN | portal de usuarios de Azure pila de Hello FQDN. | portal.local.azurestack.external |
     | | |
     
      ```powershell
@@ -190,17 +190,17 @@ Para esta versión preliminar, use el conector de Windows Azure Pack únicamente
     ```
     g. Si tiene varias máquinas virtuales del portal de inquilinos, repita el paso 1 para cada una de ellas.
 
-2. Instale el nuevo MSI de la API de inquilino en cada máquina virtual de la API de inquilino de Windows Azure Pack.
+2. Instalación Hola nuevo MSI de API de inquilinos en cada máquina virtual de API de inquilino de Windows Azure Pack.
 
-    a. Si está usando un equilibrador de carga, quizás quiera marcar la máquina virtual como sin conexión.
+    a. Si está usando un equilibrador de carga, puede que desee toomark Hola virtual machine como sin conexión.
 
-    b. En el Explorador de archivos, copie la carpeta **WAPConnector** a una carpeta denominada **c:\temp** en cada máquina de la API de inquilino.
+    b. En el Explorador de archivos, copie hello **WAPConnector** tooa carpeta denominado **c:\temp** en cada equipo de la API de inquilinos.
 
-    c. Copie el archivo AzurePackConnectorOutput.txt que guardó anteriormente en **c:\temp\WAPConnector**.
+    c. Archivo de copia hello AzurePackConnectorOutput.txt que guardó anteriormente, demasiado**c:\temp\WAPConnector**.
 
-    d. Abra una conexión de consola o RDP a la máquina virtual de la API de inquilino en la que copió los archivos.
+    d. Abra una conexión RDP o consola toohello VM de API de inquilinos ha copiado los archivos de Hola a.
     
-    e. Cambie los directorios a **c:\temp\wapconnector\setup\scripts** y ejecute **Update-TenantAPI.ps1**. Esta nueva versión de la API de inquilino de WAP contiene un cambio para permitir una relación de confianza no solo con el STS actual, sino también con la instancia de AD FS en Azure Stack.
+    e. Cambie los directorios demasiado**c:\temp\wapconnector\setup\scripts**y ejecute **TenantAPI.ps1 actualización**. Esta nueva versión de API de inquilinos de WAP hello contiene un tooenable de cambio de una relación de confianza no sólo con STS actual de hello, sino también con la instancia de Hola de AD FS en la pila de Azure.
 
      ```powershell
     cd C:\temp\wapconnector\setup\packages\
@@ -208,17 +208,17 @@ Para esta versión preliminar, use el conector de Windows Azure Pack únicamente
     .\Update-TenantAPI.ps1
     ```
 
-    f.  Repita el paso 2 en todas las demás máquinas virtuales que ejecuten la API de inquilino.
-3. Desde **sola una**  de las máquinas virtuales de la API de inquilino, ejecute el script Configure-TrustAzureStack.ps1 para agregar una relación de confianza entre la API de inquilino y la instancia de AD FS en Azure Stack. Debe usar una cuenta con acceso de administrador del sistema a la base de datos Microsoft.MgmtSvc.Store. Este script tiene los parámetros siguientes:
+    f.  Repita el paso 2 en cualquier otra máquina virtual ejecuta Hola API de inquilinos.
+3. De **sola** de hello máquinas virtuales de API de inquilino, ejecutar hello TrustAzureStack.ps1 Configurar secuencia de comandos tooadd una relación de confianza entre Hola API de inquilinos y la instancia de hello AD FS en la pila de Azure. Debe usar una cuenta con la base de datos Microsoft.MgmtSvc.Store toohello de acceso de administrador del sistema. Esta secuencia de comandos tiene Hola parámetros siguientes:
 
     | Parámetro | Description | Ejemplo |
     | --------- | ------------| ------- |
-   | SqlServer | Nombre de la instancia de SQL Server que contiene la base de datos Microsoft.MgmtSvc.Store. Este parámetro es obligatorio. | SQLServer | 
-   | DataFile | Archivo de salida que se generó durante la configuración del modo de varias nubes de Azure Stack con anterioridad. Este parámetro es obligatorio. | AzurePack-06-27-15-50.txt | 
-   | PromptForSqlCredential | Indica que el script debe solicitarle de manera interactiva una credencial de autenticación de SQL que se utilizará al conectarse a la instancia de SQL Server. La credencial proporcionada debe tener los permisos suficientes para desinstalar bases de datos y esquemas, así como para eliminar inicios de sesión de usuario. Si no se proporciona ninguno, el script supone que el contexto de usuario actual tiene acceso. | No se necesita ningún valor. |
+   | SqlServer | nombre de Hola de SQL Server que contiene la base de datos de hello Microsoft.MgmtSvc.Store Hola. Este parámetro es obligatorio. | SQLServer | 
+   | DataFile | archivo de salida de Hello que se generó durante la configuración de hello del modo de hello Azure pila varias nube anteriormente. Este parámetro es obligatorio. | AzurePack-06-27-15-50.txt | 
+   | PromptForSqlCredential | Indica que el script de Hola debe solicitarle interactivamente un toouse de credencial de autenticación de SQL cuando se conecta la instancia de SQL Server toohello. Hola proporcionado credenciales debe tener suficientes permisos toouninstall bases de datos, esquemas y eliminar los inicios de sesión de usuario. Si no se proporciona ninguno, el script de Hola asume que ese contexto de usuario actual tiene acceso. | No se necesita ningún valor. |
    |  |  |
 
-    Si no conoce la instancia de SQL Server que se debe usar, puede averiguarla. Conéctese al equipo de la API de inquilino, use el comando Unprotect-MgmtSvc para desproteger el archivo Web.config de la API de inquilino, y busque el nombre del servidor en la cadena de conexión. No olvide ejecutar Protect-MgmtSvc nuevamente para proteger el archivo Web.config de la API de inquilino.
+    Si no sabe hello toouse de SQL Server, puede detectarlo. Conectar el equipo de API de inquilinos toohello, usar Hola Unprotect-MgmtSvc comando toounprotect Hola Web.config de la API de inquilino archivo y busque el nombre del servidor hello en la cadena de conexión de Hola. Recuerde toorun MgmtSvc proteger nuevo archivo Web.config de la API de inquilino de tooprotect hello.
 
   ```powershell
   cd C:\temp\wapconnector\setup\scripts\
@@ -228,10 +228,10 @@ Para esta versión preliminar, use el conector de Windows Azure Pack únicamente
   ```
 
 ## <a name="example"></a>Ejemplo
-En el ejemplo siguiente se muestra una implementación completa del conector de Windows Azure Pack en una configuración de Azure Stack de nodo único y dos instalaciones rápidas de Windows Azure Pack. (Cada instalación rápida se encuentra en un único equipo, con los nombres de ejemplo *wapcomputer1* y *wapcomputer2*).
+Hello en el ejemplo siguiente se muestra una implementación completa de conector de Windows Azure Pack en una configuración de la pila de Azure de nodo único y dos instalaciones de Windows Azure Pack Express. (Cada instalación de Express se encuentra en un único equipo, con los nombres de ejemplo de Hola *wapcomputer1* y*wapcomputer2*.)
 
 ```powershell
-# Run the following script on the Azure Stack host
+# Run hello following script on hello Azure Stack host
 $cred = New-Object System.Management.Automation.PSCredential("cloudadmin@azurestack.local",`
      (ConvertTo-SecureString -String "p@ssw0rd" -AsPlainText -Force))
 $session = New-PSSession -ComputerName 'azs-ercs01' -Credential $cred `
@@ -244,35 +244,35 @@ invoke-command -Session $session -ScriptBlock { Add-AzurePackConnector -AzurePac
      -AzureStackCloudName "AzureStack" }  
 
 ```
-Descargue el archivo .exe desde el [Centro de descarga de Microsoft](https://aka.ms/wapconnectorazurestackdlc), extráigalo y copie la carpeta WAPConnector a una carpeta **c:\temp** en el equipo de Windows Azure Pack. Copie los archivos que se generaron como salida en el script anterior (ubicado en \\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput) a la carpeta **c:\temp\WAPConnector**. (Los archivos tendrán un aspecto similar al siguiente: AzurePack-06-27-15-50.txt). A continuación, ejecute el siguiente script, una vez por instancia de Windows Azure Pack:
+Descargar el archivo .exe de hello de hello [Microsoft Download Center](https://aka.ms/wapconnectorazurestackdlc), extráigalo y copie hello WAPConnector carpeta tooa **c:\temp** carpeta en el equipo de Windows Azure Pack Hola. Copie los archivos de Hola que se generaron como resultado en la secuencia de comandos anterior hello (ubicado en \\\su1fileserver\SU1_Infrastructure_1\AzurePackConnectorOutput) toohello **c:\temp\WAPConnector** carpeta. (archivos Hola se parece similar toothis: AzurePack-06-27-15-50.txt.) A continuación, ejecute hello siguiente secuencia de comandos, una vez por instancia de Windows Azure Pack:
 
  ```powershell
 # Install Connector components
 cd C:\temp\WAPConnector\Setup\Scripts
 .\Install-Connector.ps1
 
-# Configure Certificates for the new Connector services
+# Configure Certificates for hello new Connector services
 .\Configure-Certificates.ps1
 
-# Configure the Connector services
+# Configure hello Connector services
 .\Configure-WapConnector.ps1 -TenantPortalFQDN "wapcomputer1.contoso.com" `
      -TenantAPIFQDN "wapcomputer1.contoso.com" `
      -AzureStackPortalFQDN "portal.local.azurestack.external"
 
-# Install the updated TenantAPI
+# Install hello updated TenantAPI
 .\Update-TenantAPI.ps1
 
-# Establish trust with the Azure Stack AD FS
+# Establish trust with hello Azure Stack AD FS
 .\Configure-TrustAzureStack.ps1 -SqlServer "wapcomputer1" `
      -DataFile "C:\temp\wapconnector\AzurePack-06-27-15-50.txt" 
 
 ```
 ## <a name="troubleshooting-tips"></a>Sugerencias de solución de problemas
-1.  Asegúrese de que haya conectividad de red entre Azure Stack y Windows Azure Pack. Esta conectividad debe ser entre cualquier equipo de inquilino que tenga acceso al portal de Azure Stack y la máquina virtual del portal de inquilinos de Windows Azure Pack donde se ejecutan los nuevos servicios del conector.
+1.  Asegúrese de que haya conectividad de red entre Azure Stack y Windows Azure Pack. Esta conectividad debe estar entre cualquier equipo de inquilino que tiene acceso a portal de Azure pila Hola y Hola Windows Azure Pack portal las máquinas virtuales donde se ejecutan los servicios del conector nuevo Hola.
 2.  Asegúrese de que todos los FQDN especificados sean correctos.
-3.  Asegúrese de que los certificados SSL usados en los nuevos servicios del conector sean de confianza de Azure Stack (específicamente la máquina virtual AzS-WASP01) y de cualquier otro equipo que el inquilino pueda usar para acceder al portal de usuarios de Azure Stack.
+3.  Asegúrese de que son de confianza certificados SSL de Hola se usan en los servicios del conector nuevo hello en pila de Azure (específicamente Hola AzS WASP01 VM) y otro inquilino de Hola de equipo puede usar el portal de usuarios de Azure pila tooaccess Hola.
 4. Para revisar los problemas conocidos, vea [Microsoft Azure Stack troubleshooting](azure-stack-troubleshooting.md) (Solución de problemas de Microsoft Azure Stack).
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Usar los portales de administración y de usuarios en Azure Stack](azure-stack-manage-portals.md)
+[Uso de portales de administrador y usuario de hello en la pila de Azure](azure-stack-manage-portals.md)

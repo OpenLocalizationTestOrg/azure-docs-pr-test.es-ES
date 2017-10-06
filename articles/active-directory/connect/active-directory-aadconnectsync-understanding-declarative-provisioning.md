@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: conocimiento del aprovisionamiento declarativo | Microsoft Docs'
-description: "Explica el modelo de configuración de aprovisionamiento declarativo en Azure AD Connect."
+description: "Explica el modelo configuración aprovisionamiento declarativo del hello en Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,145 +14,145 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7497ec2ca658c3790227c56ef1755d9a1cb74e0a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f11e078f0aafacf94d69f0726ae41629a8470336
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Sincronización de Azure AD Connect: conocimiento del aprovisionamiento declarativo
-Este tema explica el modelo de configuración de Azure AD Connect. El modelo se denomina aprovisionamiento declarativo y permite cambiar una configuración con facilidad. Muchas cosas descritas en este tema son avanzadas y no son necesarias para la mayoría de los escenarios de los clientes.
+Este tema explica el modelo de configuración de hello en Azure AD Connect. modelo de Hola se denomina aprovisionamiento declarativo y podrá toomake un cambio de configuración con facilidad. Muchas cosas descritas en este tema son avanzadas y no son necesarias para la mayoría de los escenarios de los clientes.
 
 ## <a name="overview"></a>Información general
-El aprovisionamiento declarativo consiste en procesar objetos procedentes de un directorio de origen conectado y determina cómo el objeto y los atributos deben transformarse desde un origen a un destino. Un objeto se procesa en una canalización de sincronización, que es la misma para las reglas de entrada y salidas. Una regla de entrada es de un espacio conector al metaverso y una regla de salida del metaverso a un espacio conector.
+El aprovisionamiento declarativo es procesar objetos que proceden de un directorio de origen conectado y determina cómo deben transformarse atributos y objetos de Hola desde un origen tooa destino. Un objeto se procesa en una canalización de sincronización y canalización Hola Hola igual para las reglas entrantes y salientes. Una regla de entrada desde un metaverso toohello de espacio de conector y es una regla de salida de espacio de conector de hello metaverso tooa.
 
 ![Canalización de sincronización](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/sync1.png)  
 
-La canalización consta de varios módulos diferentes. Cada uno de ellos es responsable de un concepto de sincronización de objetos.
+canalización de Hello consta de varios módulos diferentes. Cada uno de ellos es responsable de un concepto de sincronización de objetos.
 
 ![Canalización de sincronización](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/pipeline.png)  
 
-* Origen: el objeto de origen.
+* Origen de objeto de origen de Hola
 * [Ámbito](#scope): busca todas las reglas de sincronización que están en ámbito.
 * [Unión](#join): determina la relación entre el espacio conector y el metaverso.
 * [Transformación](#transform): calcula cómo deben transformarse los atributos y el flujo.
 * [Prioridad](#precedence): resuelve las contribuciones de atributo en conflicto.
-* Destino: el objeto de destino.
+* Destino, el objeto de destino de Hola
 
-## <a name="scope"></a>Ámbito
-El módulo de ámbito consiste en evaluar un objeto, y determina las reglas que están en el ámbito y deben incluirse en el procesamiento. En función de los valores de los atributos en el objeto, se evalúan diferentes reglas de sincronización para que estén en el ámbito. Por ejemplo, un usuario deshabilitado sin ningún buzón de Exchange tiene reglas diferentes a las de un usuario con un buzón habilitado.  
-![Ámbito](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope1.png)  
+## <a name="scope"></a>Scope
+módulo de ámbito de Hello está evaluando un objeto y determina las reglas de Hola que están en el ámbito y deben incluirse en el procesamiento de Hola. Función de los valores de atributos de hello en el objeto de hello, reglas de sincronización diferentes son toobe evaluada en el ámbito. Por ejemplo, un usuario deshabilitado sin ningún buzón de Exchange tiene reglas diferentes a las de un usuario con un buzón habilitado.  
+![Scope](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope1.png)  
 
-El ámbito se define como cláusulas y grupos. Las cláusulas están dentro de un grupo. Se usa un operador lógico AND entre todas las cláusulas de un grupo. Por ejemplo, (departamento = IT AND país = Dinamarca). Se usa un operador lógico OR entre los grupos.
+Hola ámbito se define como grupos y cláusulas. cláusulas de Hello están dentro de un grupo. Se usa un operador lógico AND entre todas las cláusulas de un grupo. Por ejemplo, (departamento = IT AND país = Dinamarca). Se usa un operador lógico OR entre los grupos.
 
-![Ámbito](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope2.png)  
-El ámbito de esta imagen se debe leer como (departamento = IT AND país = Dinamarca) OR (país = Suecia). Si el grupo 1 o el grupo 2 se evalúa como verdadero, la regla está en el ámbito.
+![Scope](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope2.png)  
+ámbito de Hello en esta imagen se debe leer como (departamento = IT y país = Dinamarca) o (país = Suecia). Si el grupo 1 o 2 del grupo es evaluado tootrue, regla de hello está en ámbito.
 
-El módulo de ámbito admite las siguientes operaciones:
+módulo de ámbito de Hello es compatible con las siguientes operaciones de Hola.
 
 | Operación | Description |
 | --- | --- |
-| EQUAL, NOTEQUAL |Una comparación de cadenas que evalúa si el valor es igual al valor del atributo. Para los atributos con varios valores, consulte ISIN e ISNOTIN. |
-| LESSTHAN, LESSTHAN_OR_EQUAL |Una comparación de cadenas que evalúa si el valor es menor que el valor en el atributo. |
-| CONTAINS, NOTCONTAINS |Una comparación de cadenas que evalúa si el valor puede encontrarse en cualquier lugar dentro del valor del atributo. |
-| STARTSWITH, NOTSTARTSWITH |Una comparación de cadenas que evalúa si el valor está al principio del valor del atributo. |
-| ENDSWITH, NOTENDSWITH |Una comparación de cadenas que evalúa si el valor está al final del valor del atributo. |
-| GREATERTHAN, GREATERTHAN_OR_EQUAL |Una comparación de cadenas que evalúa si el valor es mayor que el valor en el atributo. |
-| ISNULL, ISNOTNULL |Evalúa si el atributo no está presente en el objeto. Si el atributo no está presente y, por tanto, es nulo, la regla está en el ámbito. |
-| ISIN, ISNOTIN |Evalúa si el valor está presente en el atributo definido. Esta operación es la variación con múltiples valores de EQUAL y NOTEQUAL. Se supone que el atributo es tiene múltiples valores y si el valor puede encontrarse en cualquiera de los valores de atributo; en ese caso, la regla está en el ámbito. |
-| ISBITSET, ISNOTBITSET |Evalúa si hay un determinado bit establecido. Por ejemplo, se puede usar para evaluar los bits de userAccountControl para ver si un usuario está habilitado o deshabilitado. |
-| ISMEMBEROF, ISNOTMEMBEROF |El valor debe contener un DN para un grupo en el espacio conector. Si el objeto es un miembro del grupo especificado, la regla está en el ámbito. |
+| EQUAL, NOTEQUAL |Una comparación de cadenas que se evalúa como si valor es igual toohello en atributo Hola. Para los atributos con varios valores, consulte ISIN e ISNOTIN. |
+| LESSTHAN, LESSTHAN_OR_EQUAL |Una comparación de cadenas que se evalúa como si el valor es menor que del valor de hello en el atributo de Hola. |
+| CONTAINS, NOTCONTAINS |Una comparación de cadenas que se evalúa como si el valor puede encontrarse en algún lugar dentro de valor de atributo de Hola. |
+| STARTSWITH, NOTSTARTSWITH |Una comparación de cadenas que se evalúa como si es el valor de a partir del valor de hello en el atributo de Hola Hola. |
+| ENDSWITH, NOTENDSWITH |Una comparación de cadenas que evalúa si el valor está en el final de hello del valor de hello en el atributo de Hola. |
+| GREATERTHAN, GREATERTHAN_OR_EQUAL |Una comparación de cadenas que se evalúa como si el valor es mayor que la del valor de hello en el atributo de Hola. |
+| ISNULL, ISNOTNULL |Evalúa si Hola atributo está ausente del objeto de Hola. Si el atributo de hello no está presente y, por tanto, null, regla de hello está en ámbito. |
+| ISIN, ISNOTIN |Evalúa si el valor de hello está presente en el atributo de hello definido. Esta operación es la variación con varios valores de hello de iguales y NOTEQUAL. atributo Hola debe toobe un atributo multivalor y si no se encuentra el valor de hello en cualquiera de los valores de atributo de hello, a continuación, la regla de hello es en el ámbito. |
+| ISBITSET, ISNOTBITSET |Evalúa si hay un determinado bit establecido. Por ejemplo, puede ser usado tooevaluate bits hello en userAccountControl toosee si un usuario está habilitado o deshabilitado. |
+| ISMEMBEROF, ISNOTMEMBEROF |valor de Hello debe contener un grupo de tooa DN en el espacio del conector de Hola. Si el objeto de hello es un miembro del grupo de hello especificado, regla de hello está en ámbito. |
 
 ## <a name="join"></a>Unión
-El módulo de unión en la canalización de sincronización es responsable de encontrar la relación entre el objeto en el origen y un objeto en el destino. En una regla de entrada, esta relación sería un objeto en un espacio conector que busca una relación con un objeto en el metaverso.  
+módulo de combinación de Hello en la canalización de sincronización de hello es responsable de localizar relación Hola entre el objeto de hello en el origen de Hola y un objeto de destino de Hola. En una regla de entrada, esta relación sería un objeto en un espacio de conector para buscar un objeto de relación tooan Hola metaverso.  
 ![Unión entre cs y mv](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join1.png)  
-El objetivo es ver si ya hay un objeto en el metaverso, creado por otro conector, al que debe estar asociado. Por ejemplo, en un bosque de cuenta-recurso, el usuario del bosque de cuentas debe unirse al usuario del bosque de recursos.
+objetivo de Hello es toosee si ya hay un objeto de metaverso hello, creado por otro conector, debe estar asociado. Por ejemplo, en un recurso de la cuenta de usuario de bosque Hola Hola bosque de cuenta debe combinarse con usuario Hola Hola bosque de recursos.
 
-Las uniones se utilizan principalmente en las reglas de entrada para unir objetos del espacio conector para el mismo objeto de metaverso.
+Las combinaciones se utilizan principalmente en toohello juntos objetos del espacio de conector de reglas de entrada toojoin mismo objeto de metaverso.
 
-Las uniones se definen como uno o varios grupos. Dentro de un grupo hay cláusulas. Se usa un operador lógico AND entre todas las cláusulas de un grupo. Se usa un operador lógico OR entre los grupos. El orden de procesamiento de los grupos es de arriba a abajo. Cuando un grupo encuentra exactamente una coincidencia con un objeto en el destino, no se evalúa ninguna otra regla de unión. Si se encuentran cero o más de un objeto, el procesamiento continúa con el siguiente grupo de reglas. Por este motivo, las reglas deben crearse en el orden de primero la más explícita y la más aproximada al final.  
+Hola uniones se definen como uno o varios grupos. Dentro de un grupo hay cláusulas. Se usa un operador lógico AND entre todas las cláusulas de un grupo. Se usa un operador lógico OR entre los grupos. grupos de Hola se procesan por orden, de toobottom superior. Cuando un grupo encuentra exactamente una coincidencia con un objeto de destino de hello, no se evalúa ninguna otra regla de combinación. Si cero o más de un objeto se encuentra, el procesamiento continúa toohello siguiente grupo de reglas. Por este motivo, deben crearse reglas de hello en orden de Hola de más explícito primero y más aproximada al final de Hola.  
 ![Definición de unión](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join2.png)  
-Las uniones de esta imagen se procesan de arriba a abajo. En primer lugar, la canalización de sincronización ve si hay una coincidencia en employeeID. Si no la hay, la segunda regla ve si el nombre de cuenta puede utilizarse para unir los objetos. Si tampoco hay ninguna coincidencia, la tercera y última regla es una coincidencia más aproximada que utiliza el nombre de usuario.
+combinaciones de Hello en esta imagen se procesan de toobottom superior. Canalización de sincronización de hello primera ve si se encuentra una coincidencia en employeeID. De lo contrario, segunda regla de hello ve si nombre de la cuenta de hello puede ser usado toojoin Hola objetos juntos. Si no es una coincidencia o bien, regla tercera y última de hello es una coincidencia más aproximada mediante Hola nombre de usuario.
 
-Si se han evaluado todas las reglas de unión y no hay ninguna coincidencia exacta, se usa el valor de **Tipo de vínculo** en la página **Descripción**. Si este valor se establece en **Aprovisionar**, se crea un objeto en el destino.  
+Si se han evaluado todas las reglas de unión y no hay exactamente una coincidencia, Hola **tipo de vínculo** en hello **descripción** se utiliza la página. Si esta opción se establece demasiado**aprovisionar**, a continuación, se crea un nuevo objeto de destino de Hola.  
 ![Aprovisionar o unir](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join3.png)  
 
-Un objeto solo debe tener una regla de sincronización con reglas de unión en el ámbito. Si hay varias reglas de sincronización donde se define la unión, se produce un error. No se utiliza la prioridad para resolver conflictos de unión. Un objeto debe tener una regla de unión en el ámbito para que los atributos fluyan con la misma dirección entrante y saliente. Si necesita que fluyan atributos entrantes y salientes al mismo objeto, debe tener una regla de sincronización de entrada y de salida con unión.
+Un objeto solo debe tener una regla de sincronización con reglas de unión en el ámbito. Si hay varias reglas de sincronización donde se define la unión, se produce un error. La prioridad no es tooresolve usado conflictos de combinación. Un objeto debe tener una regla de unión en el ámbito de atributos tooflow con hello misma dirección de entrada/salida. Si necesita tooflow atributos toohello entrante y saliente mismo objeto, debe tener una entrada y una regla de sincronización de salida con combinación.
 
-La unión de salida tiene un comportamiento especial cuando intenta aprovisionar un objeto en un espacio conector de destino. Se utiliza el atributo DN para probar primero una inversión-unión. Si ya hay un objeto en el espacio conector de destino con el mismo DN, los objetos se unen.
+Combinación de salida tiene un comportamiento especial cuando intente tooprovision un espacio de conector de objeto tooa destino. atributo de Hello DN es try toofirst usa una combinación inversa. Si ya existe un objeto en el espacio de conector de destino de hello con Hola mismo DN, Hola objetos se unen.
 
-El módulo de unión solo se evalúa una vez cuando una nueva regla de sincronización entra en el ámbito. Cuando se ha unido un objeto, no se anula la unión ni siquiera si ya no se cumplen los criterios de unión. Si desea anular la unión de un objeto, se debe sacar del ámbito la regla de sincronización que unió los objetos.
+módulo de combinación de Hola se evalúa solo una vez cuando se pone una nueva regla de sincronización en el ámbito. Cuando se unió un objeto, no se solucionará incluso si ya no satisface los criterios de combinación de Hola. Si desea toodisjoin un objeto, la regla de sincronización Hola que unido objetos Hola debe salir del ámbito.
 
 ### <a name="metaverse-delete"></a>Eliminación del metaverso
-Un objeto de metaverso permanece mientras hay una regla de sincronización en el ámbito con **Tipo de vínculo** establecido en **Aprovisionar** o **StickyJoin** (Unión permanente). Una unión permanente se utiliza cuando un conector no puede aprovisionar un nuevo objeto en el metaverso, pero cuando está unido, debe eliminarse en el origen antes de eliminar el objeto de metaverso.
+Un objeto de metaverso permanece siempre que hay una regla de sincronización en el ámbito con **tipo de vínculo** establecido demasiado**aprovisionar** o **StickyJoin**. Se usa un StickyJoin cuando un conector no se permite tooprovision un nuevo objeto de metaverso toohello, pero cuando haya unido, debe eliminarse en el origen de hello antes de elimina el objeto de metaverso Hola.
 
 Cuando se elimina un objeto de metaverso, todos los objetos asociados a una regla de sincronización de salida marcada para **aprovisionar** están marcados para su eliminación.
 
 ## <a name="transformations"></a>Transformaciones
-Las transformaciones se usan para definir cómo deben fluir los atributos del origen al destino. Los flujos pueden tener uno de los siguientes **tipos de flujo**: directo, constante o expresión. En un flujo directo, un valor de atributo fluye tal cual, sin transformaciones adicionales. Un valor constante establece el valor especificado. Una expresión utiliza el lenguaje de expresiones de aprovisionamiento declarativo para expresar cómo debe ser la transformación. Los detalles para el lenguaje de expresiones se pueden encontrar en el tema sobre el [conocimiento de expresiones de aprovisionamiento declarativo](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) .
+las transformaciones de Hello son utilizado toodefine cómo deberían fluir los atributos del destino de hello origen toohello. Hello flujos pueden tener uno de los siguientes hello **de flujo de tipos**: Direct, constante o expresión. En un flujo directo, un valor de atributo fluye tal cual, sin transformaciones adicionales. El valor especificado de un saludo de conjuntos de valor constante. Una expresión usa Hola declarativa aprovisionamiento expresión lenguaje tooexpress cómo debe aplicarse la transformación de Hola. Hola detalles de lenguaje de expresiones de Hola se encuentran en hello [descripción de lenguaje de expresiones de aprovisionamiento declarativo](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) tema.
 
 ![Aprovisionar o unir](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/transformations1.png)  
 
-La casilla **Aplicar una vez** define que el atributo solo se debe establecer cuando el objeto se crea inicialmente. Por ejemplo, esta configuración se puede utilizar para establecer una contraseña inicial para un nuevo objeto de usuario.
+Hola **aplicar una vez** casilla define ese Hola atributo sólo se debe establecer cuando inicialmente se crea el objeto de Hola. Por ejemplo, esta configuración puede ser tooset usado una contraseña inicial para un nuevo objeto de usuario.
 
 ### <a name="merging-attribute-values"></a>Combinación de valores de atributo
-En los flujos de atributos hay un valor que determina si se deben combinar atributos con varios valores de distintos conectores. El valor predeterminado es **Update**, que indica que debe prevalecer la regla de sincronización con prioridad más alta.
+En los flujos de atributo Hola un toodetermine de configuración si hay atributos con varios valores se deben combinar desde varios conectores diferentes. es el valor predeterminado de Hello **actualización**, lo que indica que la regla de sincronización Hola con mayor prioridad debe prevalecer.
 
 ![Mezcla de tipos](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/mergetype.png)  
 
-También se pueden seleccionar los valores **Merge** y **MergeCaseInsensitive**. Estas opciones permiten combinar valores de distintos orígenes. Por ejemplo, se pueden utilizar para combinar el miembro o el atributo proxyAddresses de varios bosques. Si utiliza esta opción, todas las reglas de sincronización del ámbito de un objeto deben utilizar el mismo tipo de combinación. No se puede definir **Update** de un conector y **Merge** de otro. Si lo intenta, recibirá un error.
+También se pueden seleccionar los valores **Merge** y **MergeCaseInsensitive**. Estas opciones permiten valores toomerge de orígenes diferentes. Por ejemplo, puede ser los atributos de miembro o proxyAddresses de hello toomerge uso de diversos bosques diferentes. Cuando se usa esta opción, todos los sincronización las reglas de ámbito para un objeto debe usar Hola mismo tipo de combinación. No se puede definir **Update** de un conector y **Merge** de otro. Si lo intenta, recibirá un error.
 
-La diferencia entre **Merge** y **MergeCaseInsensitive** es la forma en que se procesan los valores duplicados del atributo. El motor de sincronización garantiza que no se insertan valores duplicados en el atributo de destino. Con **MergeCaseInsensitive**, los valores duplicados que solo se diferencien por el uso de mayúscula y minúscula no estarán presentes. Por ejemplo, no debería ver "SMTP:bob@contoso.com" y "smtp:bob@contoso.com" en el atributo de destino. **Mezcla** solo examina los valores exactos y pueden estar presentes varios valores donde solo hay una diferencia en el uso de mayúscula y minúscula.
+Hola diferencia entre **mezcla** y **MergeCaseInsensitive** es cómo tooprocess duplicar valores de atributo. motor de sincronización de Hello asegura de que no se inserten valores duplicados en el atributo de destino de Hola. Con **MergeCaseInsensitive**, duplicar valores con solo una diferencia en caso de que no van toobe presente. Por ejemplo, no debería ver ambos "SMTP:bob@contoso.com"y"smtp:bob@contoso.com" en el atributo de destino de Hola. **Mezcla** solo examina los valores exactos de Hola y varios valores que sólo hay una diferencia en el caso podría estar presente.
 
-La opción **Replace** es igual que **Update**, pero no se usa.
+Hola opción **reemplazar** es Hola igual **actualización**, pero no se utiliza.
 
-### <a name="control-the-attribute-flow-process"></a>Control del proceso de flujo de atributo
-Cuando se configuran varias reglas de sincronización de entrada para contribuir al mismo atributo de metaverso, se utiliza la prioridad para determinar al ganador. La regla de sincronización con prioridad más alta (cuyo valor numérico es el más bajo) va a aportar el valor. Lo mismo sucede para las reglas de salida. La regla de sincronización de prioridad más alta es la que gana y aporta el valor al directorio conectado.
+### <a name="control-hello-attribute-flow-process"></a>Proceso de flujo de control hello atributo
+Cuando varias reglas de sincronización de entrada están configurados toocontribute toohello mismo atributo de metaverso, precedencia es ganador de hello toodetermine usado. valor de hello toocontribute va la regla de sincronización Hola con prioridad más alta (valor numérico más bajo). Hola que mismo sucede para reglas de salida. regla de sincronización de Hola que tengan mayor prioridad wins y contribuir toohello de valor Hola directorio conectado.
 
-En algunos casos, en lugar de aportar un valor, la regla de sincronización determina cómo deben comportarse las otras reglas. Hay algunos literales especiales que se utilizan para este caso.
+En algunos casos, en lugar de aportar un valor, debe determinar la regla de sincronización hello, lo que el comportamiento de otras reglas. Hay algunos literales especiales que se utilizan para este caso.
 
-Para las reglas de sincronización de entrada, se puede usar el literal **NULL** para indicar que el flujo no tiene ningún valor para aportar. Otra regla con una prioridad más baja puede aportar un valor. Si no hay ninguna regla que aporte un valor, se quita el atributo metaverse. Para una regla de salida, si **NULL** es el valor final después de que se han procesado todas las reglas de sincronización, se quita el valor en el directorio conectado.
+Las reglas de sincronización de entrada, Hola literal **NULL** puede ser usado tooindicate que flujo hello no tiene ningún valor toocontribute. Otra regla con una prioridad más baja puede aportar un valor. Si no hay ninguna regla aporta un valor, se quita el atributo de metaverso Hola. Para una regla de salida, si **NULL** es valor final Hola después de que se han procesado todas las reglas de sincronización, a continuación, se quita el valor de hello en el directorio conectado Hola.
 
-El literal **AuthoritativeNull** es similar a **NULL** pero con la diferencia de que ninguna regla de prioridad inferior puede aportar un valor.
+Hola literal **AuthoritativeNull** es similar demasiado**NULL** pero con la diferencia de Hola que ninguna regla de prioridad inferior puede aportar un valor.
 
-Un flujo de atributo también puede usar el atributo **IgnoreThisFlow**. Es similar a NULL en el sentido de que indica que no hay nada que aportar. La diferencia es que no se quita ningún valor existente en el destino. Es como si el flujo de atributo nunca hubiera estado allí.
+Un flujo de atributo también puede usar el atributo **IgnoreThisFlow**. Es tooNULL similar en sentido Hola que indica que hay nada toocontribute. diferencia de Hello es que no elimina un valor existente en el destino de Hola. Es como si el flujo de atributo Hola nunca ha sido no existe.
 
 Aquí tiene un ejemplo:
 
-En la regla *Out to AD - User Exchange hybrid* se puede encontrar el siguiente flujo:  
+En *Out tooAD - implementación híbrida de Exchange del usuario* Hola siga flujo puede encontrarse:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
-Esta expresión se debe leer como: si el buzón del usuario se encuentra en Azure AD, el flujo de atributo va de Azure AD a AD. Si no es así, no vuelve nada a Active Directory. En este caso, se mantiene el valor existente en AD.
+Esta expresión debe leerse como: si se encuentra el buzón de usuario de hello en Azure AD, a continuación, flujo de atributo de Hola de tooAD de Azure AD. Si no es así, ¿fluyen nada atrás tooActive Directory. En este caso, mantendría valor existente de hello en AD.
 
 ### <a name="importedvalue"></a>ImportedValue
-La función ImportedValue es diferente de todas las demás funciones, ya que el nombre del atributo debe incluirse entre comillas, en lugar de corchetes:   
+función de Hello ImportedValue es diferente de todas las demás funciones, ya que el nombre del atributo Hola debe incluirse entre comillas, en lugar de corchetes:  
 `ImportedValue("proxyAddresses")`.
 
-Normalmente, un atributo usa el valor esperado durante la sincronización, incluso si no se ha exportado todavía o se recibió un error durante la exportación ("parte superior de la torre"). Una sincronización entrante supone que un atributo que todavía no ha llegado a un directorio conectado lo alcanzará en algún momento. En algunos casos, es importante sincronizar únicamente un valor confirmado por el directorio conectado ("torre de importación delta y holograma").
+Normalmente durante la sincronización de un atributo utiliza valor esperado de hello, incluso si todavía no ha exportado todavía o se recibió un error durante la exportación ("parte superior de la torre de Hola"). Una sincronización entrante supone que un atributo que todavía no ha llegado a un directorio conectado lo alcanzará en algún momento. En algunos casos, es importante tooonly sincronizar un valor que se ha confirmado por directorio conectado de hello ("holograma y delta torre de importación").
 
-Un ejemplo de esta función se puede encontrar en la regla de sincronización de serie *In from AD – User Common from Exchange*. En Exchange híbrido, el valor agregado por Exchange Online solo se debe sincronizar cuando se ha confirmado que el valor se exportó correctamente:   
+Un ejemplo de esta función puede encontrarse en hello out-of-box regla de sincronización *en desde AD – usuario Common desde Exchange*. En Exchange híbrido, valor de hello agregada Exchange online solo se debe sincronizar cuando se haya confirmado que el valor de Hola se exportó correctamente:  
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
 ## <a name="precedence"></a>Prioridad
-Cuando varias reglas de sincronización intentan contribuir con el mismo valor de atributo al destino, el valor de prioridad se utiliza para determinar el ganador. En un conflicto, la regla con prioridad más alta y valor numérico más bajo contribuirá con el atributo.
+Cuando varias reglas de sincronización intente toocontribute Hola mismo destino de toohello del valor de atributo, valor de prioridad de hello es ganador de hello toodetermine usado. regla de Hello con prioridad más alta, el valor numérico más bajo, queda atributo de hello toocontribute en un conflicto.
 
 ![Mezcla de tipos](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/precedence1.png)  
 
-Este orden puede utilizarse para definir flujos de atributo más precisos para un pequeño subconjunto de objetos. Por ejemplo, las reglas de configuración rápida garantizan que los atributos de una cuenta habilitada (**User AccountEnabled**) tengan prioridad sobre otras cuentas.
+Esta ordenación puede ser usado toodefine más preciso flujos para un pequeño subconjunto de objetos de atributo. Por ejemplo, hello fuera-de--reglas integradas Asegúrese de que los atributos de una cuenta habilitada (**User AccountEnabled**) tienen prioridad desde otras cuentas.
 
-Se puede definir la prioridad entre conectores. Esto permite que los conectores con mejores datos sean los primeros en aportar los valores.
+Se puede definir la prioridad entre conectores. Permite los conectores con valores de toocontribute mejor los datos primero.
 
-### <a name="multiple-objects-from-the-same-connector-space"></a>Varios objetos desde el mismo espacio conector
-Si tiene varios objetos en el mismo espacio conector unido al mismo objeto de metaverso, se debe ajustar la prioridad. Si varios objetos están en el ámbito de la misma regla de sincronización, el motor de sincronización no es capaz de determinar la prioridad. Es ambiguo qué objeto de origen debe contribuir al valor en el metaverso. Esta configuración se notifica como ambigua incluso si los atributos en el origen tienen el mismo valor.  
-![Varios objetos unidos al mismo objeto de mv](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple1.png)  
+### <a name="multiple-objects-from-hello-same-connector-space"></a>Hola a varios objetos del mismo espacio de conector
+Si tiene varios objetos en hello mismo conector espacio toohello Unidos a un objeto de metaverso mismo, se deban ajustar la prioridad. Si varios objetos están en el ámbito de hello igual la regla de sincronización, motor de sincronización de hello no es capaz de toodetermine prioridad. Es ambigua qué objeto de origen debe contribuir Hola valor toohello metaverso. Esta configuración se notifica como ambigua incluso si los atributos de hello en el origen de hello tienen Hola mismo valor.  
+![Varios objetos Unidos toohello mismo objeto de máquina virtual](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple1.png)  
 
-En este escenario, debe cambiar el ámbito de las reglas de sincronización para que los objetos de origen tengan reglas de sincronización diferentes en el ámbito. Esto permite definir una prioridad diferente.  
-![Varios objetos unidos al mismo objeto de mv](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
+En este escenario, necesita ámbito de hello toochange de reglas de sincronización de Hola para que objetos de origen de hello tienen reglas de sincronización diferente en el ámbito. Eso le permite toodefine diferentes precedencia.  
+![Varios objetos Unidos toohello mismo objeto de máquina virtual](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Consulte más detalles sobre el lenguaje de expresiones en el artículo [Descripción de las expresiones de aprovisionamiento declarativo](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
-* Vea cómo se utiliza aprovisionamiento declarativo integrado en el artículo sobre la [configuración predeterminada](active-directory-aadconnectsync-understanding-default-configuration.md).
-* Descubra cómo hacer un cambio práctico utilizando el aprovisionamiento declarativo en [Sincronización de Azure AD Connect: cómo realizar un cambio en la configuración predeterminada](active-directory-aadconnectsync-change-the-configuration.md).
-* Siga leyendo sobre cómo los usuarios y contactos se utilizan juntos en el artículo de [descripción de usuarios y contactos](active-directory-aadconnectsync-understanding-users-and-contacts.md).
+* Obtener más información acerca del lenguaje de expresiones de hello en [descripción expresiones de aprovisionamiento declarativo](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
+* Vea cómo declarativa usa out-of-box en el aprovisionamiento es [configuración predeterminada de descripción hello](active-directory-aadconnectsync-understanding-default-configuration.md).
+* Vea cómo toomake un práctico cambiar mediante el aprovisionamiento declarativo en [cómo toomake una toohello de cambio de configuración predeterminados](active-directory-aadconnectsync-change-the-configuration.md).
+* Continuar tooread cómo funcionan conjuntamente los usuarios y contactos en [descripción de los usuarios y contactos](active-directory-aadconnectsync-understanding-users-and-contacts.md).
 
 **Temas de introducción**
 

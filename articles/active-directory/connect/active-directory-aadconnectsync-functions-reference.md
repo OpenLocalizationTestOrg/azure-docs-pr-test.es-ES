@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 926f52ef64eb79205dbfb344edc7d9bece2a6947
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fbe0df856ca2efda965650fb85c7e831a0be32c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: referencia de funciones
-En Azure AD Connect, las funciones se usan para manipular un valor de atributo durante la sincronización.  
-La sintaxis de las funciones se expresa con el siguiente formato:   
+En Azure AD Connect, las funciones son toomanipulate usa un valor de atributo durante la sincronización.  
+Sintaxis de las funciones de Hola Hola se expresa mediante Hola siguiendo el formato:  
 `<output type> FunctionName(<input type> <position name>, ..)`
 
 Si una función está sobrecargada y acepta varias sintaxis, se enumeran todas las sintaxis válidas.  
-Las funciones están fuertemente tipadas y comprueban que el tipo pasado coincide con el tipo documentado.  
-Si el tipo no coincide, se produce un error.
+Hola funciones están fuertemente tipadas y comprueban que coincide con el tipo de hello documentado pasado tipo hello.  
+Si no coincide con el tipo de hello, se produce un error.
 
-Los tipos se expresan con la siguiente sintaxis:
+tipos de Hola se expresan con hello según la sintaxis:
 
 * **bin** : binario
 * **bool** : booleano
 * **dt** : fecha y hora UTC
 * **enum** : enumeración de constantes conocidas
-* **exp** : expresión, que se espera que evalúe en un booleano
+* **EXP** : esperaba una expresión, que es tooevaluate tooa un valor booleano
 * **mvbin** : binario de varios valores
 * **mvstr** : cadena multivalor
 * **mvref** : referencia multivalor
@@ -45,7 +45,7 @@ Los tipos se expresan con la siguiente sintaxis:
 * **var** : una variante de (casi) cualquier otro tipo
 * **void** : no devuelve un valor
 
-Las funciones con los tipos **mvbin**, **mvstr** y **mvref** solo pueden funcionar en atributos con varios valores. Las funciones con **bin**, **str** y **ref** funcionan en atributos con un solo valor y con varios valores.
+Hola las funciones tienen tipos de hello **mvbin**, **mvstr**, y **mvref** sólo puede trabajar en atributos con varios valores. Las funciones con **bin**, **str** y **ref** funcionan en atributos con un solo valor y con varios valores.
 
 ## <a name="functions-reference"></a>Referencia de funciones
 | Lista de funciones |  |  |  |  |
@@ -88,7 +88,7 @@ Las funciones con los tipos **mvbin**, **mvstr** y **mvref** solo pueden funcion
 - - -
 ### <a name="bitand"></a>BitAnd
 **Descripción**  
-: la función BitAnd establece los bits especificados en un valor.
+Hola función BitAnd establece los bits especificados en un valor.
 
 **Sintaxis:**  
 `num BitAnd(num value1, num value2)`
@@ -96,21 +96,21 @@ Las funciones con los tipos **mvbin**, **mvstr** y **mvref** solo pueden funcion
 * value1, value2: valores numéricos que deberían estar unidos por el operador AND
 
 **Comentarios:**  
-: esta función convierte ambos parámetros en la representación binaria y establece un bit en los siguientes valores:
+Esta función convierte ambos representación binaria de parámetros toohello y establece un bit:
 
-* 0: si uno o ambos de los bits correspondientes en *mask* y *flag* son 0
-* 1: si ambos de los bits correspondientes son 1.
+* 0 - si uno o ambos bits correspondientes de Hola *máscara* y *marca* son 0
+* 1 - si ambos bits correspondientes de hello son 1.
 
-En otras palabras, devuelve 0 en todos los casos excepto cuando los bits correspondientes de los dos parámetros son 1.
+En otras palabras, devuelve 0 en todos los casos excepto cuando los bits correspondientes de Hola de ambos parámetros son 1.
 
 **Ejemplo:**  
 `BitAnd(&HF, &HF7)`  
-devuelve 7 porque los valores hexadecimales "F" y "F7" se evalúan en este valor.
+Devuelve 7 porque hexadecimal "F" y "F7" evaluación el valor de toothis.
 
 - - -
 ### <a name="bitor"></a>BitOr
 **Descripción**  
-: la función BitOr establece los bits especificados en un valor.
+Hola función BitOr establece los bits especificados en un valor.
 
 **Sintaxis:**  
 `num BitOr(num value1, num value2)`
@@ -118,28 +118,28 @@ devuelve 7 porque los valores hexadecimales "F" y "F7" se evalúan en este valor
 * value1, value2: valores numéricos que deberían estar unidos por el operador OR
 
 **Comentarios:**  
-: esta función convierte ambos parámetros en la representación binaria y establece un bit en 1 si uno o ambos de los bits correspondientes de la máscara y marca son 1, y en 0 si son 0. En otras palabras, devuelve 1 en todos los casos excepto cuando los bits correspondientes de ambos parámetros son 0.
+Esta función convierte ambos representación binaria de parámetros toohello y establece un bit too1 si uno o ambos bits correspondientes de Hola de máscara y marca son 1 y too0 si ambos bits correspondientes de hello son 0. En otras palabras, devuelve 1 en todos los casos excepto cuando los bits correspondientes de Hola de ambos parámetros son 0.
 
 - - -
 ### <a name="cbool"></a>CBool
 **Descripción**  
-: la función CBool devuelve un valor booleano basado en la expresión evaluada.
+Hola función CBool devuelve que un valor booleano en función de hello evaluar expresión
 
 **Sintaxis:**  
 `bool CBool(exp Expression)`
 
 **Comentarios:**  
-Si la expresión se evalúa en un valor distinto de cero, CBool devuelve True. En caso contrario, devuelve False.
+Si Hola se evalúa como tooa valor distinto de cero, CBool devuelve True, en caso contrario devuelve False.
 
 **Ejemplo:**  
 `CBool([attrib1] = [attrib2])`  
 
-Devuelve True si ambos atributos tienen el mismo valor.
+Devuelve True si ambos atributos tienen Hola el mismo valor.
 
 - - -
 ### <a name="cdate"></a>CDate
 **Descripción**  
-: la función CDate devuelve un valor DateTime UTC a partir de una cadena. DateTime no es un tipo de atributo nativo en Sincronización pero lo usan algunas funciones.
+Hola función CDate devuelve una fecha y hora UTC de una cadena. DateTime no es un tipo de atributo nativo en Sincronización pero lo usan algunas funciones.
 
 **Sintaxis:**  
 `dt CDate(str value)`
@@ -147,11 +147,11 @@ Devuelve True si ambos atributos tienen el mismo valor.
 * Valor: una cadena con una fecha, hora y opcionalmente, una zona horaria
 
 **Comentarios:**  
-: la cadena devuelta siempre es UTC.
+Hola devolvió una cadena siempre es en UTC.
 
 **Ejemplo:**  
 `CDate([employeeStartTime])`  
-devuelve un valor DateTime basado en la hora de inicio del empleado.
+Devuelve una fecha y hora según el tiempo de inicio del empleado de Hola
 
 `CDate("2013-01-10 4:00 PM -8")`  
 Devuelve un valor DateTime que representa "2013-01-11 12:00 AM".
@@ -165,199 +165,199 @@ Devuelve un valor DateTime que representa "2013-01-11 12:00 AM".
 
 - - -
 ### <a name="certextensionoids"></a>CertExtensionOids
-**Descripción:**  
-Devuelve los valores de Oid de todas las extensiones esenciales de un objeto de certificado.
+**Descripción**  
+Devuelve Hola valores de Oid de todas las extensiones críticas Hola de un objeto de certificado.
 
 **Sintaxis:**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certformat"></a>CertFormat
-**Descripción:**  
-Devuelve el nombre del formato de este certificado X.509v3.
+**Descripción**  
+Devuelve Hola nombre del formato de Hola de este certificado X.509v3.
 
 **Sintaxis:**  
 `str CertFormat(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certfriendlyname"></a>CertFriendlyName
-**Descripción:**  
-Devuelve el alias asociado de un certificado.
+**Descripción**  
+Devuelve Hola alias asociado para un certificado.
 
 **Sintaxis:**  
 `str CertFriendlyName(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certhashstring"></a>CertHashString
-**Descripción:**  
-Devuelve el valor de hash SHA1 del certificado X.509v3 en forma de una cadena hexadecimal.
+**Descripción**  
+Devuelve Hola valor hash SHA1 de certificados X.509v3 hello como una cadena hexadecimal.
 
 **Sintaxis:**  
 `str CertHashString(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certissuer"></a>CertIssuer
-**Descripción:**  
-Devuelve el nombre de la entidad de certificación que emitió el certificado X.509v3.
+**Descripción**  
+Devuelve Hola nombre de entidad emisora de certificados de Hola que emitió el certificado X.509v3 de Hola.
 
 **Sintaxis:**  
 `str CertIssuer(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certissuerdn"></a>CertIssuerDN
-**Descripción:**  
-Devuelve el nombre distintivo del emisor del certificado.
+**Descripción**  
+Devuelve Hola nombre distintivo del emisor de certificado de Hola.
 
 **Sintaxis:**  
 `str CertIssuerDN(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certissueroid"></a>CertIssuerOid
-**Descripción:**  
-Devuelve el Oid del emisor del certificado.
+**Descripción**  
+Devuelve Hola Oid del emisor de certificado de Hola.
 
 **Sintaxis:**  
 `str CertIssuerOid(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
-**Descripción:**  
-Devuelve la información del algoritmo de clave de este certificado X.509v3 como una cadena.
+**Descripción**  
+Devuelve información de algoritmo de clave de Hola de este certificado X.509v3 como una cadena.
 
 **Sintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
-**Descripción:**  
-Devuelve los parámetros del algoritmo de clave del certificado X.509v3 como una cadena hexadecimal.
+**Descripción**  
+Devuelve los parámetros de algoritmo de clave de hello certificado X.509v3 de hello como una cadena hexadecimal.
 
 **Sintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certnameinfo"></a>CertNameInfo
-**Descripción:**  
-Devuelve el asunto y el emisor de nombres de un certificado.
+**Descripción**  
+Devuelve emisor y el asunto de hello nombres de un certificado.
 
 **Sintaxis:**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
-*   X509NameType: el valor X509NameType para el sujeto.
-*   includesIssuerName: true para incluir el nombre del emisor; en caso contrario, false.
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
+*   X509NameType: Hola valor X509NameType asunto Hola.
+*   includesIssuerName: nombre de emisor de hello tooinclude true; en caso contrario, false.
 
 - - -
 ### <a name="certnotafter"></a>CertNotAfter
-**Descripción:**  
-Devuelve la fecha en hora local después de la cual un certificado ya no es válido.
+**Descripción**  
+Devuelve la fecha de hello en hora local después del cual un certificado ya no es válido.
 
 **Sintaxis:**  
 `dt CertNotAfter(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certnotbefore"></a>CertNotBefore
-**Descripción:**  
-Devuelve la fecha en hora local después de la cual un certificado se convierte en válido.
+**Descripción**  
+Devuelve la fecha de hello en hora local en el que un certificado es válido.
 
 **Sintaxis:**  
 `dt CertNotBefore(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
-**Descripción:**  
-Devuelve el Oid de la clave pública del certificado X.509v3.
+**Descripción**  
+Devuelve Hola Oid de clave pública de hello certificado X.509v3 de Hola.
 
 **Sintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
-**Descripción:**  
-Devuelve el Oid de los parámetros de clave pública del certificado X.509v3.
+**Descripción**  
+Devuelve Hola Oid de parámetros de clave pública de hello certificado X.509v3 de Hola.
 
 **Sintaxis:**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certserialnumber"></a>CertSerialNumber
-**Descripción:**  
-Devuelve el número de serie del certificado X.509v3.
+**Descripción**  
+Devuelve el número de serie de Hola de certificado X.509v3 de Hola.
 
 **Sintaxis:**  
 `str CertSerialNumber(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
-**Descripción:**  
-Devuelve el Oid del algoritmo utilizado para crear la firma de un certificado.
+**Descripción**  
+Hola devuelve Oid del algoritmo de hello utiliza firma de hello toocreate de un certificado.
 
 **Sintaxis:**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certsubject"></a>CertSubject
-**Descripción:**  
-Obtiene el nombre distintivo del sujeto de un certificado.
+**Descripción**  
+Obtiene Hola nombre distintivo del sujeto de un certificado.
 
 **Sintaxis:**  
 `str CertSubject(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
-**Descripción:**  
-Devuelve el nombre distintivo del sujeto de un certificado.
+**Descripción**  
+Devuelve Hola nombre distintivo del sujeto de un certificado.
 
 **Sintaxis:**  
 `str CertSubjectNameDN(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
-**Descripción:**  
-Devuelve el Oid del nombre del sujeto de un certificado.
+**Descripción**  
+Devuelve Hola Oid del nombre de sujeto de Hola de un certificado.
 
 **Sintaxis:**  
 `str CertSubjectNameOid(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
-### <a name="certthumbprint"></a>certThumbprint
-**Descripción:**  
-Devuelve la huella digital de un certificado.
+### <a name="certthumbprint"></a>CertThumbprint
+**Descripción**  
+Devuelve Hola huella digital de un certificado.
 
 **Sintaxis:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="certversion"></a>CertVersion
-**Descripción:**  
-Devuelve la versión de formato X.509 de un certificado.
+**Descripción**  
+Devuelve Hola versión en formato de un certificado X.509.
 
 **Sintaxis:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 
 - - -
 ### <a name="cguid"></a>CGuid
 **Descripción**  
-: la función CGuid convierte la representación de cadena de un GUID en su representación binaria.
+Hola función CGuid convierte la representación de cadena de Hola de una representación binaria de tooits GUID.
 
 **Sintaxis:**  
 `bin CGuid(str GUID)`
@@ -367,31 +367,31 @@ Devuelve la versión de formato X.509 de un certificado.
 - - -
 ### <a name="contains"></a>Contains
 **Descripción**  
-: la función Contains busca una cadena dentro de un atributo multivalor.
+función de Hello Contains busca una cadena dentro de un atributo multivalor
 
 **Sintaxis:**  
 `num Contains (mvstring attribute, str search)` - distingue mayúsculas y minúsculas  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
 `num Contains (mvref attribute, str search)` - distingue mayúsculas y minúsculas
 
-* attribute: el atributo con varios valores de búsqueda.
-* search: cadena para buscar en el atributo.
+* atributo: Hola atributo multivalor toosearch.
+* búsqueda: cadena toofind en atributo Hola.
 * Casetype: CaseInsensitive o CaseSensitive.
 
-Devuelve el índice en el atributo de varios valores donde se ha encontrado la cadena. Si no se encuentra la cadena, se devuelve 0.
+Devuelve el índice de atributo multivalor Hola donde se encontró la cadena de Hola. se devuelve 0 si no se encuentra la cadena de Hola.
 
 **Comentarios:**  
-: para los atributos de cadena multivalor, la búsqueda encuentra subcadenas en los valores.  
-Para los atributos de referencia, la cadena de búsqueda debe coincidir exactamente con el valor para que se considere una coincidencia.
+Para los atributos de cadena multivalor, Hola encontrar subcadenas en valores de hello.  
+Para los atributos de referencia, hello cadena buscada debe coincidir exactamente con hello valor toobe considera a una coincidencia.
 
 **Ejemplo:**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
-Si el atributo proxyAddresses tiene una dirección de correo electrónico principal (indicada mediante las mayúsculas "SMTP:"), devuelve el atributo proxyAddress. De lo contrario, devuelve un error.
+Si el atributo proxyAddresses de hello tiene una dirección de correo electrónico principal (indicada por las mayúsculas "SMTP:"), a continuación, devolver el atributo proxyAddress de hello, devolver un error en caso contrario.
 
 - - -
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **Descripción**  
-: la función ConvertFromBase64 convierte el valor codificado en base64 especificado en una cadena normal.
+Hola ConvertFromBase64 función convierte Hola especifica cadena base64 del valor tooa regular.
 
 **Sintaxis:**  
 `str ConvertFromBase64(str source)` da por hecho que se usará Unicode para la codificación.  
@@ -409,7 +409,7 @@ Ambos ejemplos devuelven "*Hola a todos*"
 - - -
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **Descripción**  
-: la función ConvertFromUTF8Hex convierte el valor codificado hexadecimal UTF8 especificado en una cadena.
+Hola ConvertFromUTF8Hex función convierte Hola especifica la cadena de tooa valor codificado en hexadecimal UTF8.
 
 **Sintaxis:**  
 `str ConvertFromUTF8Hex(str source)`
@@ -417,7 +417,7 @@ Ambos ejemplos devuelven "*Hola a todos*"
 * origen: cadena codificada de 2 bytes UTF8
 
 **Comentarios:**  
-La diferencia entre esta función y ConvertFromBase64([],UTF8) es que el resultado es descriptivo para el atributo DN.  
+Hola diferencia entre esta función y ConvertFromBase64([],UTF8) que dan lugar a hello es descriptivo para el atributo DN de Hola.  
 Azure Active Directory utiliza este formato como DN.
 
 **Ejemplo:**  
@@ -427,8 +427,8 @@ devuelve "*Hello world!*".
 - - -
 ### <a name="converttobase64"></a>ConvertToBase64
 **Descripción**  
-La función ConvertToBase64 convierte una cadena en una en base64 de Unicode.  
-Convierte el valor de una matriz de enteros en su representación de cadena equivalente que se codifica con dígitos de base 64.
+Hola función ConvertToBase64 convierte una cadena base64 de Unicode tooa de cadena.  
+Convierte el valor de Hola de una matriz de representación de cadena equivalente de tooits de enteros que se codifica con dígitos de base 64.
 
 **Sintaxis:**  
 `str ConvertToBase64(str source)`
@@ -440,13 +440,13 @@ devuelve "SABlAGwAbABvACAAdwBvAHIAbABkACEA".
 - - -
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **Descripción**  
-: la función ConvertToUTF8Hex convierte una cadena en un valor codificado hexadecimal UTF8.
+Hola función ConvertToUTF8Hex convierte un valor codificado en hexadecimal UTF8 tooa de cadena.
 
 **Sintaxis:**  
 `str ConvertToUTF8Hex(str source)`
 
 **Comentarios:**  
-: Azure Active Directory usa el formato de salida de esta función como formato de atributo DN.
+formato de salida de Hello de esta función se utiliza por Azure Active Directory como formato del atributo DN.
 
 **Ejemplo:**  
 `ConvertToUTF8Hex("Hello world!")`  
@@ -455,7 +455,7 @@ devuelve 48656C6C6F20776F726C6421.
 - - -
 ### <a name="count"></a>Recuento
 **Descripción**  
-: la función Count devuelve el número de elementos en un atributo multivalor.
+Hola función Count devuelve el número de Hola de elementos de un atributo multivalor
 
 **Sintaxis:**  
 `num Count(mvstr attribute)`
@@ -463,7 +463,7 @@ devuelve 48656C6C6F20776F726C6421.
 - - -
 ### <a name="cnum"></a>CNum
 **Descripción**  
-: la función CNum toma una cadena y devuelve un tipo de datos numérico.
+Hola función CNum toma una cadena y devuelve un tipo de datos numéricos.
 
 **Sintaxis:**  
 `num CNum(str value)`
@@ -471,7 +471,7 @@ devuelve 48656C6C6F20776F726C6421.
 - - -
 ### <a name="cref"></a>CRef
 **Descripción**  
-: convierte una cadena en un atributo de referencia.
+Convierte un atributo de referencia de cadena tooa
 
 **Sintaxis:**  
 `ref CRef(str value)`
@@ -482,7 +482,7 @@ devuelve 48656C6C6F20776F726C6421.
 - - -
 ### <a name="cstr"></a>CStr
 **Descripción**  
-: la función CStr se convierte en un tipo de datos de cadena.
+Hello para la función CStr Convierte el tipo de datos de cadena de tooa.
 
 **Sintaxis:**  
 `str CStr(num value)`  
@@ -498,12 +498,12 @@ podría devolver "cn=Joe,dc=contoso,dc=com"
 - - -
 ### <a name="dateadd"></a>DateAdd
 **Descripción**  
-: devuelve un valor Date que contiene una fecha a la que se ha agregado un intervalo de tiempo especificado.
+Devuelve una fecha que contiene un toowhich de fecha que se ha agregado un intervalo de tiempo especificado.
 
 **Sintaxis:**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* interval: expresión de cadena que es el intervalo de tiempo que desea agregar. La cadena debe tener uno de los siguientes valores:
+* intervalo: expresión de cadena que es el intervalo de saludo de tiempo que desea tooadd. cadena de Hello debe tener uno de hello siguientes valores:
   * yyyy Año
   * q Trimestre
   * m Mes
@@ -514,8 +514,8 @@ podría devolver "cn=Joe,dc=contoso,dc=com"
   * h Hora
   * n Minuto
   * s Segundo
-* value: el número de unidades que desea agregar. Puede ser positivo (para obtener fechas futuras) o negativo (para obtener fechas del pasado).
-* date: DateTime que representa la fecha a la que se agrega el intervalo.
+* valor: Hola número de unidades que desea tooadd. Puede ser positivo (tooget fechas en hello futuras) o negativo (tooget fechas en hello anterior).
+* fecha: fecha y hora se agrega el intervalo de saludo de toowhich de fecha que representa.
 
 **Ejemplo:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
@@ -524,7 +524,7 @@ agrega 3 meses y devuelve un valor DateTime que representa "2001-04-01".
 - - -
 ### <a name="datefromnum"></a>DateFromNum
 **Descripción**  
-: la función DateFromNum convierte un valor con formato de fecha de AD en un tipo DateTime.
+Hola función DateFromNum convierte el valor de tooa de formato de fecha de AD tipo DateTime.
 
 **Sintaxis:**  
 `dt DateFromNum(num value)`
@@ -537,13 +537,13 @@ devuelve un valor DateTime que representa 2012-01-01 23:00:00.
 - - -
 ### <a name="dncomponent"></a>DNComponent
 **Descripción**  
-: la función DNComponent devuelve el valor de un componente DN especificado empezando por la izquierda.
+Hola función DNComponent devuelve el valor Hola de un componente DN especificado desde la izquierda.
 
 **Sintaxis:**  
 `str DNComponent(ref dn, num ComponentNumber)`
 
-* dn: el atributo de referencia que interpretar
-* ComponentNumber: el componente en DN que devolver
+* DN: Hola referencia atributo toointerpret
+* ComponentNumber: componente hello en hello DN tooreturn
 
 **Ejemplo:**  
 `DNComponent([dn],1)`  
@@ -552,14 +552,14 @@ si dn es "cn=Joe,ou=…", devuelve Joe.
 - - -
 ### <a name="dncomponentrev"></a>DNComponentRev
 **Descripción**  
-: la función DNComponentRev devuelve el valor de un componente DN especificado empezando por la derecha (final).
+Hola función DNComponentRev devuelve valor Hola de un componente DN especificado desde la derecha (Hola final).
 
 **Sintaxis:**  
 `str DNComponentRev(ref dn, num ComponentNumber)`  
 `str DNComponentRev(ref dn, num ComponentNumber, enum Options)`
 
-* dn: el atributo de referencia que interpretar
-* ComponentNumber: el componente en DN que devolver
+* DN: Hola referencia atributo toointerpret
+* ComponentNumber - componente hello en hello DN tooreturn
 * Opciones: DC, ignora todos los componentes con “dc=”
 
 **Ejemplo:**  
@@ -571,40 +571,40 @@ Ambos devuelven US.
 - - -
 ### <a name="error"></a>Error
 **Descripción**  
-: la función Error se usa para devolver un error personalizado.
+Hola función de Error es tooreturn usado un error personalizado.
 
 **Sintaxis:**  
 `void Error(str ErrorMessage)`
 
 **Ejemplo:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
-si el atributo accountName no está presente, se produce un error en el objeto.
+Si Hola atributo accountName no está presente, produce un error en el objeto de Hola.
 
 - - -
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **Descripción**  
-: la función EscapeDNComponent toma un componente de DN y genera secuencias de escape para poder representarlo en LDAP.
+Hola función EscapeDNComponent toma un componente de un DN y secuencias de escape, por lo que puede representarse en LDAP.
 
 **Sintaxis:**  
 `str EscapeDNComponent(str value)`
 
 **Ejemplo:**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
-se asegura de que el objeto se puede crear en un directorio LDAP incluso si el atributo displayName tiene caracteres para los que deben generarse secuencias de escape en LDAP.
+Se asegura de objeto Hola puede crearse en un directorio LDAP, incluso si el atributo de hello displayName tiene caracteres que deben tener escape en LDAP.
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
 **Descripción**  
-: la función FormatDateTime se usa para dar formato a un valor DateTime en una cadena con un formato especificado.
+función FormatDateTime de Hello es tooformat usa una cadena de fecha y hora tooa con un formato especificado
 
 **Sintaxis:**  
 `str FormatDateTime(dt value, str format)`
 
-* value: un valor con el formato DateTime
-* format: una cadena que representa el formato de conversión.
+* valor: un valor en formato de fecha y hora de Hola
+* formato: una cadena que representa Hola formato tooconvert a.
 
 **Comentarios:**  
-Se pueden encontrar aquí los valores posibles para el formato: [Formatos de fecha y hora definidos por el usuario (función Format)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+Hola valores posibles para el formato de hello puede encontrarse aquí: [formatos de fecha y hora definidos por el usuario (función Format)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
 
 **Ejemplo:**  
 
@@ -617,7 +617,7 @@ Puede generar "20140905081453.0Z".
 - - -
 ### <a name="guid"></a>GUID
 **Descripción**  
-: la función GUID genera un nuevo GUID aleatorio.
+Hola función GUID genera un nuevo GUID aleatorio
 
 **Sintaxis:**  
 `str GUID()`
@@ -625,23 +625,23 @@ Puede generar "20140905081453.0Z".
 - - -
 ### <a name="iif"></a>IIF
 **Descripción**  
-: la función IIF devuelve uno de un conjunto de valores posibles según una condición especificada.
+Hola función IIF devuelve uno de un conjunto de valores posibles basado en una condición especificada.
 
 **Sintaxis:**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
-* condition: cualquier valor o expresión que pueda evaluarse en True o False.
-* valueIfTrue: si la condición se evalúa como true, el valor devuelto.
-* valueIfTrue: si la condición se evalúa como false, el valor devuelto.
+* condición: cualquier valor o expresión que se puede evaluar tootrue o false.
+* ValorSiVerdadero: si la condición de Hola se evalúa como tootrue, Hola devolvió el valor.
+* valorSiFalse: si la condición de Hola se evalúa como toofalse, Hola devolvió el valor.
 
 **Ejemplo:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
- Si el usuario está en prácticas, devuelve el alias de un usuario al que agrega "t-" al principio. De lo contrario, el alias del usuario se queda como está.
+ Si el usuario de hello es una persona en prácticas, devuelve Hola alias de un usuario con "t-" agregados toohello a partir de ella, else devuelve los alias del usuario de hello tal cual.
 
 - - -
 ### <a name="instr"></a>InStr
 **Descripción**  
-: la función InStr busca la primera repetición de una subcadena en una cadena.
+Hola función InStr busca Hola primera aparición de una subcadena en una cadena
 
 **Sintaxis:**  
 
@@ -649,38 +649,38 @@ Puede generar "20140905081453.0Z".
 `num InStr(str stringcheck, str stringmatch, num start)`  
 `num InStr(str stringcheck, str stringmatch, num start , enum compare)`
 
-* stringcheck: cadena que se va a buscar
-* stringmatch: cadena que se tiene que encontrar
-* start: posición de inicio para encontrar la subcadena
+* comprobarcadena: cadena toobe buscada
+* coincidircadena: cadena toobe encuentra
+* inicio: iniciar posición toofind Hola subcadena
 * compare: vbTextCompare o vbBinaryCompare
 
 **Comentarios:**  
-: devuelve la posición en la que se encontró la subcadena o 0 si no se encuentra.
+Posición de hello devuelve donde se encontró la subcadena de Hola o 0 si no encuentra.
 
 **Ejemplo:**  
-`InStr("The quick brown fox","quick")`  
-se evalúa en 5.
+`InStr("hello quick brown fox","quick")`  
+Evalues too5
 
 `InStr("repEated","e",3,vbBinaryCompare)`  
-Se evalúa en 7.
+Se evalúa como too7
 
 - - -
 ### <a name="instrrev"></a>InStrRev
 **Descripción**  
-: la función InStrRev busca la última repetición de una subcadena en una cadena.
+Hola función InStrRev busca la última aparición de una subcadena de hello en una cadena
 
 **Sintaxis:**  
 `num InstrRev(str stringcheck, str stringmatch)`  
 `num InstrRev(str stringcheck, str stringmatch, num start)`  
 `num InstrRev(str stringcheck, str stringmatch, num start, enum compare)`
 
-* stringcheck: cadena que se va a buscar
-* stringmatch: cadena que se tiene que encontrar
-* start: posición de inicio para encontrar la subcadena
+* comprobarcadena: cadena toobe buscada
+* coincidircadena: cadena toobe encuentra
+* inicio: iniciar posición toofind Hola subcadena
 * compare: vbTextCompare o vbBinaryCompare
 
 **Comentarios:**  
-: devuelve la posición en la que se encontró la subcadena o 0 si no se encuentra.
+Posición de hello devuelve donde se encontró la subcadena de Hola o 0 si no encuentra.
 
 **Ejemplo:**  
 `InStrRev("abbcdbbbef","bb")`  
@@ -689,40 +689,40 @@ devuelve 7.
 - - -
 ### <a name="isbitset"></a>IsBitSet
 **Descripción**  
-la función IsBitSet prueba si un bit se establece o no.
+función Hello IsBitSet pruebas si un bit está establecido o no
 
 **Sintaxis:**  
 `bool IsBitSet(num value, num flag)`
 
-* value: un valor numérico que es evaluated.flag: un valor numérico que tiene el bit que se va a evaluar
+* valor: un valor numérico que es evalúa. Flag: un valor numérico que tiene Hola bit toobe evaluada
 
 **Ejemplo:**  
 `IsBitSet(&HF,4)`  
-devuelve True porque el bit "4" se establece en el valor hexadecimal "F".
+Devuelve el valor True porque bit "4" está establecido en el valor hexadecimal de Hola "F"
 
 - - -
 ### <a name="isdate"></a>IsDate
 **Descripción**  
-si la expresión se puede evaluar como un tipo DateTime, la función IsDate se evalúa en True.
+Si expresión Hola puede ser evalúa como un tipo de fecha y hora, Hola función IsDate evalúa tooTrue.
 
 **Sintaxis:**  
 `bool IsDate(var Expression)`
 
 **Comentarios:**  
-se usa para determinar si CDate() será correcto.
+Usar toodetermine si CDate() pueda realizarse correctamente.
 
 - - -
 ### <a name="iscert"></a>IsCert
-**Descripción:**  
-Devuelve true si los datos sin procesar se pueden serializar en el objeto de certificado X509Certificate2. NET.
+**Descripción**  
+Devuelve true si se pueden serializar los datos sin procesar de hello en el objeto de certificado X509Certificate2. NET.
 
 **Sintaxis:**  
 `bool CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: representación de matriz de bytes de un certificado X.509. La matriz de bytes puede ser de datos X.509 codificados en Base64 o codificados en binario (DER).
+*   certificateRawData: representación de matriz de bytes de un certificado X.509. matriz de bytes de Hello puede ser (DER) codifica datos binarios o X.509 codificado base 64.
 - - -
 ### <a name="isempty"></a>IsEmpty
 **Descripción**  
-si el atributo está presente en CS o MV, pero se evalúa en una cadena vacía, la función IsEmpty se evalúa en True.
+Si el atributo de hello está presente en hello CS o MV pero da como resultado una cadena vacía tooan, IsEmpty (función) Hola evalúa tooTrue.
 
 **Sintaxis:**  
 `bool IsEmpty(var Expression)`
@@ -730,7 +730,7 @@ si el atributo está presente en CS o MV, pero se evalúa en una cadena vacía, 
 - - -
 ### <a name="isguid"></a>IsGuid
 **Descripción**  
-si la cadena se pudo convertir en un GUID, la función IsGuid evaluada en True.
+Si la cadena de hello podría ser convertido tooa GUID, función isguid da como resultado de hello evalúa tootrue.
 
 **Sintaxis:**  
 `bool IsGuid(str GUID)`
@@ -738,75 +738,75 @@ si la cadena se pudo convertir en un GUID, la función IsGuid evaluada en True.
 **Comentarios:**  
 un GUID se define como una cadena que sigue uno de estos patrones: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx or {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}.
 
-Se usa para determinar si CGuid() es correcto.
+Usar toodetermine si CGuid() pueda realizarse correctamente.
 
 **Ejemplo:**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
-Si StrAttribute tiene un formato GUID, devuelve una representación binaria. De lo contrario, devuelve un valor Null.
+Si hello StrAttribute tiene un formato GUID, devuelve una representación binaria, en caso contrario, devuelven un valor Null.
 
 - - -
 ### <a name="isnull"></a>IsNull
 **Descripción**  
-si la expresión se evalúa como Null, la función IsNull devuelve True.
+Si expresión Hola se evalúa como tooNull, función de hello IsNull devuelve true.
 
 **Sintaxis:**  
 `bool IsNull(var Expression)`
 
 **Comentarios:**  
-para un atributo, un valor Null se expresa mediante la ausencia del atributo.
+Para un atributo, un valor Null se expresa por falta de hello del atributo Hola.
 
 **Ejemplo:**  
 `IsNull([displayName])`  
-devuelve True si el atributo no está presente en CS o MV.
+Devuelve True si el atributo de hello no está presente en hello CS o MV.
 
 - - -
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **Descripción**  
-si la expresión es Null o una cadena vacía, la función IsNullOrEmpty devuelve True.
+Si la expresión de hello es null o una cadena vacía, función de hello IsNullOrEmpty devuelve true.
 
 **Sintaxis:**  
 `bool IsNullOrEmpty(var Expression)`
 
 **Comentarios:**  
-para un atributo, esto se evaluaría como True si el atributo no está presente o está presente, pero es una cadena vacía.  
-La función contraria a esta es IsPresent.
+Para un atributo, da como resultado tooTrue si el atributo de hello no está presente o está presente pero es una cadena vacía.  
+inverso de Hola de esta función se denomina IsPresent.
 
 **Ejemplo:**  
 `IsNullOrEmpty([displayName])`  
-devuelve True si el atributo no está presente o si es una cadena vacía en CS o MV.
+Devuelve True si el atributo de hello no está presente o es una cadena vacía en hello CS o MV.
 
 - - -
 ### <a name="isnumeric"></a>IsNumeric
 **Descripción**  
-la función IsNumeric devuelve un valor booleano que indica si una expresión se puede evaluar como un tipo de número.
+Hola función IsNumeric devuelve un valor booleano que indica si una expresión se puede evaluar como un tipo de número.
 
 **Sintaxis:**  
 `bool IsNumeric(var Expression)`
 
 **Comentarios:**  
-se usa para determinar si CNum() analizará correctamente la expresión.
+Usar toodetermine si CNum() puede ser una expresión de hello tooparse correcta.
 
 - - -
 ### <a name="isstring"></a>IsString
 **Descripción**  
-si la expresión se puede evaluar en un tipo de cadena, la función IsString se evalúa en True.
+Si la expresión de hello puede se evaluado tooa tipo string, función isstring da de hello evalúa tooTrue.
 
 **Sintaxis:**  
 `bool IsString(var expression)`
 
 **Comentarios:**  
-se usa para determinar si CStr() puede analizar correctamente la expresión.
+Usar toodetermine si CStr() puede ser una expresión de hello tooparse correcta.
 
 - - -
 ### <a name="ispresent"></a>IsPresent
 **Descripción**  
-si la expresión se evalúa como una cadena que no es Null y no está vacía, la función IsPresent devuelve True.
+Si expresión Hola se evalúa como cadena tooa que no es Null y no está vacío, a continuación, Hola IsPresent función devuelve true.
 
 **Sintaxis:**  
 `bool IsPresent(var expression)`
 
 **Comentarios:**  
-la función contraria a esta es IsNullOrEmpty.
+inverso de Hola de esta función se denomina IsNullOrEmpty.
 
 **Ejemplo:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -814,53 +814,53 @@ la función contraria a esta es IsNullOrEmpty.
 - - -
 ### <a name="item"></a>Elemento
 **Descripción**  
-la función Item devuelve un elemento de un atributo o una cadena de varios valores.
+Hola función Item devuelve un elemento de un cadena o atributo multivalor.
 
 **Sintaxis:**  
 `var Item(mvstr attribute, num index)`
 
 * attribute: atributo de varios valores
-* index: índice para un elemento en la cadena de varios valores.
+* índice: elemento de tooan de índice de cadena multivalor Hola.
 
 **Comentarios:**  
-la función Item es útil con la función Contains puesto que esta última función devuelve el índice a un elemento en el atributo de varios valores.
+Hola función Item es útil junto con hello función Contains, ya que esta última función de hello devuelve el elemento de tooan de índice de Hola de atributo con varios valores de hello.
 
 Se produce un error si el índice está fuera de los límites.
 
 **Ejemplo:**  
 `Mid(Item([proxyAddress],Contains([proxyAddress], "SMTP:")),6)`  
-devuelve la dirección de correo electrónico principal.
+Devuelve Hola dirección de correo electrónico principal.
 
 - - -
 ### <a name="itemornull"></a>ItemOrNull
 **Descripción**  
-la función ItemOrNull devuelve un elemento de un atributo o una cadena de varios valores.
+Hola función ItemOrNull devuelve un elemento de un cadena o atributo multivalor.
 
 **Sintaxis:**  
 `var ItemOrNull(mvstr attribute, num index)`
 
 * attribute: atributo de varios valores
-* index: índice para un elemento en la cadena de varios valores.
+* índice: elemento de tooan de índice de cadena multivalor Hola.
 
 **Comentarios:**  
-la función ItemOrNull es útil con la función Contains puesto que esta última función devuelve el índice a un elemento en el atributo de varios valores.
+Hola función ItemOrNull es útil junto con hello función Contains, ya que esta última función de hello devuelve el elemento de tooan de índice de Hola de atributo con varios valores de hello.
 
 Si el índice está fuera de los límites, devuelve un valor Null.
 
 - - -
 ### <a name="join"></a>Join
 **Descripción**  
-la función Join toma una cadena de varios valores y devuelve una cadena de valor único con un separador especificado insertado entre cada elemento.
+función de combinación de Hello toma una cadena multivalor y devuelve una cadena de un solo valor con el separador especificado insertado entre cada elemento.
 
 **Sintaxis:**  
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* attribute: atributo de varios valores que contiene cadenas para combinar.
-* delimiter: cualquier cadena utilizada para separar las subcadenas en la cadena devuelta. Si se omite, se usa el carácter de espacio (""). Si delimitador es una cadena de longitud cero ("") o nada, todos los elementos de la lista se concatenan sin delimitadores.
+* atributo: atributo multivalor que contiene cadenas toobe unido.
+* delimitador: cualquier cadena, tooseparate usado Hola subcadenas en hello devuelve la cadena. Si se omite, Hola carácter de espacio ("") se utiliza. Si Delimiter es una cadena de longitud cero ("") o Nothing, todos los elementos de lista de Hola se concatenan sin delimitadores.
 
-**Comentarios:**  
-hay paridad entre las funciones Join y Split. La función Join toma una matriz de cadenas y las combina con una cadena de delimitación para devolver una sola cadena. La función Split toma una cadena y la separa en el delimitador para devolver una matriz de cadenas. Sin embargo, una diferencia clave es que Join puede concatenar cadenas con cualquier cadena de delimitación, mientras que attribute puede separar solo cadenas mediante un delimitador de carácter único.
+**Comentarios**  
+Hay paridad entre las funciones de división y combinación de Hola. Hola función Join toma una matriz de cadenas y une mediante una cadena de delimitador, tooreturn una sola cadena. Hola función Split toma una cadena y la separa en delimitador de hello, tooreturn una matriz de cadenas. Sin embargo, una diferencia clave es que Join puede concatenar cadenas con cualquier cadena de delimitación, mientras que attribute puede separar solo cadenas mediante un delimitador de carácter único.
 
 **Ejemplo:**  
 `Join([proxyAddresses],",")`  
@@ -869,7 +869,7 @@ Podría devolver: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com"
 - - -
 ### <a name="lcase"></a>LCase
 **Descripción**  
-la función LCase convierte todos los caracteres de una cadena a minúsculas.
+Hola función LCase convierte todos los caracteres en un caso de toolower de cadena.
 
 **Sintaxis:**  
 `str LCase(str value)`
@@ -881,22 +881,22 @@ devuelve "test".
 - - -
 ### <a name="left"></a>Left
 **Descripción**  
-la función Left devuelve un número especificado de caracteres desde la izquierda de una cadena.
+función Left Hola devuelve un número especificado de caracteres desde la izquierda de Hola de una cadena.
 
 **Sintaxis:**  
 `str Left(str string, num NumChars)`
 
-* string: la cadena desde la que devolver los caracteres
-* NumChars: un número que identifica el número de caracteres que devolver desde el principio (izquierdo) de la cadena
+* cadena: Hola tooreturn caracteres de una cadena de
+* NumChars: un número que identifica el número de Hola de tooreturn de caracteres desde el principio de hello (izquierda) de cadena
 
 **Comentarios:**  
-una cadena que contiene los primeros caracteres numChars de la cadena:
+Una cadena que contiene los primeros caracteres numChars hello en cadena:
 
 * Con numChars = 0, se devuelve una cadena vacía.
 * Con numChars < 0, se devuelve una cadena de entrada.
 * Si la cadena es null, se devuelve una cadena vacía.
 
-Si la cadena contiene menos caracteres que el número especificado en numChars, se devuelve una cadena idéntica a la cadena (es decir, que contiene todos los caracteres en el parámetro 1).
+Si la cadena contiene menos caracteres que el número de hello especificado en numChars, se devuelve un toostring idénticos de cadena (que es, que contiene todos los caracteres en el parámetro 1).
 
 **Ejemplo:**  
 `Left("John Doe", 3)`  
@@ -905,7 +905,7 @@ devuelve “Joh”.
 - - -
 ### <a name="len"></a>Len
 **Descripción**  
-la función Len devuelve un número de caracteres de una cadena.
+Hola función Len devuelve el número de caracteres en una cadena.
 
 **Sintaxis:**  
 `num Len(str value)`
@@ -917,7 +917,7 @@ devuelve 8.
 - - -
 ### <a name="ltrim"></a>LTrim
 **Descripción**  
-la función LTrim quita los espacios en blanco del principio de una cadena.
+Hola función LTrim quita los espacios en blanco de una cadena.
 
 **Sintaxis:**  
 `str LTrim(str value)`
@@ -929,14 +929,14 @@ devuelve "Test".
 - - -
 ### <a name="mid"></a>Mid
 **Descripción**  
-la función Mid devuelve un número especificado de caracteres desde una posición especificada en una cadena.
+Hola Mid función devuelve un número especificado de caracteres desde la posición especificada en una cadena.
 
 **Sintaxis:**  
 `str Mid(str string, num start, num NumChars)`
 
-* string: la cadena desde la que devolver los caracteres
-* start: un número que identifica la posición de inicio en una cadena desde la que devolver los caracteres
-* NumChars: un número que identifica el número de caracteres que devolver desde la posición en una cadena
+* cadena: Hola tooreturn caracteres de una cadena de
+* iniciar: un número que identifica Hola a partir de la posición en la cadena de caracteres de tooreturn de
+* NumChars: un número que identifica el número de Hola de tooreturn de caracteres desde la posición en la cadena
 
 **Comentarios:**  
 devuelve caracteres numChars que comienzan por la posición de inicio en una cadena.  
@@ -944,7 +944,7 @@ Una cadena que contiene caracteres numChars de la posición de inicio en una cad
 
 * Con numChars = 0, se devuelve una cadena vacía.
 * Con numChars < 0, se devuelve una cadena de entrada.
-* Con start >,  la longitud de la cadena devuelve la cadena de entrada.
+* Si iniciar > Hola longitud de cadena, devuelven la cadena de entrada.
 * Con start <= 0, se devuelve la cadena de entrada.
 * Si la cadena es null, se devuelve una cadena vacía.
 
@@ -960,7 +960,7 @@ Devuelve "Doe".
 - - -
 ### <a name="now"></a>Now
 **Descripción**  
-la función Now devuelve DateTime que especifica la fecha y hora actuales, según la fecha y hora del sistema del equipo.
+Hello ahora función devuelve una fecha y hora especificar Hola fecha y hora, actual según tooyour fecha del sistema del equipo y la hora.
 
 **Sintaxis:**  
 `dt Now()`
@@ -968,7 +968,7 @@ la función Now devuelve DateTime que especifica la fecha y hora actuales, segú
 - - -
 ### <a name="numfromdate"></a>NumFromDate
 **Descripción**  
-la función NumFromDate devuelve una fecha en formato de fecha de AD.
+Hola función NumFromDate devuelve una fecha en formato de fecha de AD.
 
 **Sintaxis:**  
 `num NumFromDate(dt value)`
@@ -980,23 +980,23 @@ devuelve 129699324000000000.
 - - -
 ### <a name="padleft"></a>PadLeft
 **Descripción**  
-la función PadLeft rellena en la parte izquierda una cadena con una longitud especificada mediante un carácter de espaciado interno proporcionado.
+función de Hello PadLeft rellena hacia la izquierda un tooa de cadena especificado longitud mediante el carácter de relleno proporcionado.
 
 **Sintaxis:**  
 `str PadLeft(str string, num length, str padCharacter)`
 
-* string: la cadena que rellenar.
-* length: un número entero que representa la longitud deseada de la cadena.
-* padCharacter: una cadena que consta de un solo carácter que se usará como el carácter controlador
+* cadena: Hola toopad de cadena.
+* longitud: un entero que representa Hola deseado longitud de cadena.
+* padCharacter: una cadena que consta de un toouse único carácter como carácter de relleno de Hola
 
 **Comentarios:**
 
-* Si la longitud de cadena es inferior a la longitud, padCharacter se anexa repetidamente  al principio (izquierda) de la cadena hasta que tenga una longitud igual a la longitud.
+* Si la longitud de Hola de cadena es menor que la longitud, padCharacter es toohello repetidamente anexados principio (izquierda) de cadena hasta que tenga un toolength de igual longitud.
 * PadCharacter puede ser un carácter de espacio, pero no puede ser un valor Null.
-* Si la longitud de cadena es igual o mayor que la longitud, la cadena se devuelve sin cambios.
-* Si la cadena tiene una longitud mayor que o igual que la longitud, se devuelve una cadena idéntica a la cadena.
-* Si la longitud de cadena es menor que la longitud, se devuelve una cadena nueva de la longitud deseada que contiene una cadena rellenada con un padCharacter.
-* Si la cadena es Null, la función devuelve una cadena vacía.
+* Si la longitud de Hola de cadena es mayor que la longitud de tooor igual, la cadena se devuelve sin cambios.
+* Si la cadena tiene una longitud mayor que o igual toolength, se devuelve un toostring idénticos de cadena.
+* Si la longitud de Hola de cadena es menor que la longitud, una nueva cadena de hello deseado se devuelve la longitud que contiene una cadena rellenada con un padCharacter.
+* Si la cadena es null, la función hello devuelve una cadena vacía.
 
 **Ejemplo:**  
 `PadLeft("User", 10, "0")`  
@@ -1005,23 +1005,23 @@ devuelve "000000User".
 - - -
 ### <a name="padright"></a>PadRight
 **Descripción**  
-la función PadRight rellena en la parte derecha una cadena con una longitud especificada mediante un carácter de espaciado interno proporcionado.
+función de Hello PadRight rellena hacia la derecha un tooa de cadena especificado longitud mediante el carácter de relleno proporcionado.
 
 **Sintaxis:**  
 `str PadRight(str string, num length, str padCharacter)`
 
-* string: la cadena que rellenar.
-* length: un número entero que representa la longitud deseada de la cadena.
-* padCharacter: una cadena que consta de un solo carácter que se usará como el carácter controlador
+* cadena: Hola toopad de cadena.
+* longitud: un entero que representa Hola deseado longitud de cadena.
+* padCharacter: una cadena que consta de un toouse único carácter como carácter de relleno de Hola
 
 **Comentarios:**
 
-* Si la longitud de cadena es inferior a la longitud, padCharacter se anexa repetidamente  al final (derecha) de la cadena hasta que tenga una longitud igual a la longitud.
+* Si la longitud de Hola de cadena es menor que la longitud, padCharacter es toohello repetidamente anexados final (derecha) de cadena, hasta que tenga un toolength de igual longitud.
 * PadCharacter puede ser un carácter de espacio, pero no puede ser un valor Null.
-* Si la longitud de cadena es igual o mayor que la longitud, la cadena se devuelve sin cambios.
-* Si la cadena tiene una longitud mayor que o igual que la longitud, se devuelve una cadena idéntica a la cadena.
-* Si la longitud de cadena es menor que la longitud, se devuelve una cadena nueva de la longitud deseada que contiene una cadena rellenada con un padCharacter.
-* Si la cadena es Null, la función devuelve una cadena vacía.
+* Si la longitud de Hola de cadena es mayor que la longitud de tooor igual, la cadena se devuelve sin cambios.
+* Si la cadena tiene una longitud mayor que o igual toolength, se devuelve un toostring idénticos de cadena.
+* Si la longitud de Hola de cadena es menor que la longitud, una nueva cadena de hello deseado se devuelve la longitud que contiene una cadena rellenada con un padCharacter.
+* Si la cadena es null, la función hello devuelve una cadena vacía.
 
 **Ejemplo:**  
 `PadRight("User", 10, "0")`  
@@ -1030,14 +1030,14 @@ devuelve "User000000".
 - - -
 ### <a name="pcase"></a>PCase
 **Descripción**  
-la función PCase convierte el primer carácter de cada palabra delimitada por espacios de una cadena a mayúsculas, y todos los demás caracteres se convierten a minúsculas.
+Hola función PCase convierte el primer carácter de cada palabra delimitada por espacios en el caso de tooupper de cadena de Hola y todos los demás caracteres se convierten toolower caso.
 
 **Sintaxis:**  
 `String PCase(string)`
 
 **Comentarios:**
 
-* Esta función no proporciona por el momento un uso de mayúsculas correcto para convertir una palabra que esté completamente en mayúsculas, como un acrónimo.
+* Esta función no proporciona actualmente tooconvert grafía apropiada una palabra que esté completamente en mayúscula, por ejemplo, un acrónimo.
 
 **Ejemplo:**  
 `PCase("TEsT")`  
@@ -1049,13 +1049,13 @@ devuelve "Test".
 - - -
 ### <a name="randomnum"></a>RandomNum
 **Descripción**  
-la función RandomNum devuelve un número aleatorio entre un intervalo especificado.
+Hola función RandomNum devuelve un número aleatorio entre un intervalo especificado.
 
 **Sintaxis:**  
 `num RandomNum(num start, num end)`
 
-* start: un número que identifica el límite inferior del valor aleatorio que se va a generar
-* end: un número que identifica el límite superior del valor aleatorio que generar
+* iniciar: un número identificación Hola límite inferior de hello valor aleatorio toogenerate
+* extremo: un número identificación Hola límite superior de hello valor aleatorio toogenerate
 
 **Ejemplo:**  
 `Random(100,999)`  
@@ -1064,7 +1064,7 @@ puede devolver 734.
 - - -
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **Descripción**  
-la función RemoveDuplicates toma una cadena multivalor y garantiza que cada valor es único.
+Hola función RemoveDuplicates toma una cadena multivalor y asegúrese de que cada valor sea único.
 
 **Sintaxis:**  
 `mvstr RemoveDuplicates(mvstr attribute)`
@@ -1076,17 +1076,17 @@ devuelve un atributo proxyAddress saneado donde se han quitado todos los valores
 - - -
 ### <a name="replace"></a>Sustituya
 **Descripción**  
-la función Replace reemplaza todas las apariciones de una cadena por otra cadena.
+Hola función Replace reemplaza todas las apariciones de una cadena de tooanother de cadena.
 
 **Sintaxis:**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* string: una cadena en la que se reemplazarán los valores.
-* OldValue: la cadena que se va a buscar y reemplazar.
-* NewValue: la cadena que reemplazar.
+* cadena: una cadena tooreplace valores en.
+* OldValue: Hola cadena toosearch para y tooreplace.
+* NewValue: Hola tooreplace de cadena a.
 
 **Comentarios:**  
-la función reconoce los siguientes monikers especiales:
+función Hello reconoce Hola después monikers especiales:
 
 * \n: nueva línea
 * \r: retorno de carro
@@ -1094,31 +1094,31 @@ la función reconoce los siguientes monikers especiales:
 
 **Ejemplo:**  
 `Replace([address],"\r\n",", ")`  
-reemplaza CRLF por una coma y un espacio, y podría originar "One Microsoft Way, Redmond, WA, USA".
+Reemplaza CRLF por una coma y un espacio y podría provocar demasiado "One Microsoft Way, Redmond, WA, EE"
 
 - - -
 ### <a name="replacechars"></a>ReplaceChars
 **Descripción**  
-la función ReplaceChars reemplaza todas las apariciones de caracteres encontrados en la cadena ReplacePattern.
+Hola función ReplaceChars reemplaza todas las apariciones de caracteres que se encuentran en hello cadena ReplacePattern.
 
 **Sintaxis:**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* string: una cadena por la que reemplazar los caracteres.
-* ReplacePattern: una cadena que contiene un diccionario con caracteres que reemplazar.
+* cadena: caracteres de una cadena tooreplace de.
+* ReplacePattern: una cadena que contiene un diccionario con caracteres tooreplace.
 
-El formato es {source1}:{target1},{source2}:{target2},{sourceN},{targetN} donde source es el carácter que buscar y target la cadena por la que reemplazar.
+formato de Hello es {source1}: {target1}, {source2}: {target2}, {sourceN}, {targetN} que el origen es Hola carácter toofind y destino Hola cadena tooreplace con.
 
 **Comentarios:**
 
-* La función toma cada aparición de los orígenes definidos y los reemplaza por los destinos.
-* El origen debe ser exactamente un carácter (unicode).
-* El origen no puede estar vacío ni puede tener más de un carácter (error de análisis).
-* El destino puede tener varios caracteres, por ejemplo, ö:oe, β:ss.
-* El destino puede estar vacío, lo que indica que el carácter debe quitarse.
-* El origen distingue mayúsculas y minúsculas, y debe ser una coincidencia exacta.
-* La coma (,) y los dos puntos (:) son caracteres reservados y no se puede reemplazar utilizando esta función.
-* Se omiten los espacios y otros caracteres en blanco en la cadena ReplacePattern.
+* función Hello toma cada aparición de los orígenes definidos y los reemplaza con destinos de Hola.
+* origen de Hello debe ser exactamente un carácter (unicode).
+* origen de Hello no puede estar vacío ni ser más de un carácter (error de análisis).
+* destino de Hello puede tener varios caracteres, por ejemplo ö:oe, β.
+* destino de Hello puede estar vacía que indica que se deben quitar los caracteres de Hola.
+* origen de Hello distingue mayúsculas de minúsculas y debe ser una coincidencia exacta.
+* Hola, (coma) y: (dos puntos) son caracteres reservados y no se puede reemplazar utilizando esta función.
+* Se omiten los espacios y otros caracteres en blanco en hello cadena ReplacePattern.
 
 **Ejemplo:**  
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
@@ -1127,29 +1127,29 @@ El formato es {source1}:{target1},{source2}:{target2},{sourceN},{targetN} donde 
 Devuelve Raksmorgas.
 
 `ReplaceChars("O’Neil",%ReplaceString%)`  
-Devuelve "ONeil"; se define la marca única para quitarla.
+Devuelve "oneil", ya único TIC de hello es toobe definido quitado.
 
 - - -
 ### <a name="right"></a>Right
 **Descripción**  
-la función Right devuelve un número especificado de caracteres desde la derecha (final) de una cadena.
+función Right Hola devuelve un número especificado de caracteres de hello derecho (final) de una cadena.
 
 **Sintaxis:**  
 `str Right(str string, num NumChars)`
 
-* string: la cadena desde la que devolver los caracteres
-* NumChars: un número que identifica el número de caracteres que devolver desde el final (derecho) de la cadena
+* cadena: Hola tooreturn caracteres de una cadena de
+* NumChars: un número que identifica el número de Hola de tooreturn de caracteres de fin de hello (derecha) de cadena
 
 **Comentarios:**  
-los caracteres NumChars se devuelven a partir de la última posición de la cadena.
+Se devuelven caracteres NumChars desde la última posición de Hola de cadena.
 
-Una cadena que contiene los últimos caracteres numChars de la cadena:
+Una cadena que contiene los últimos caracteres numChars hello en cadena:
 
 * Con numChars = 0, se devuelve una cadena vacía.
 * Con numChars < 0, se devuelve una cadena de entrada.
 * Si la cadena es null, se devuelve una cadena vacía.
 
-Si la cadena contiene menos caracteres que el número especificado en NumChars, se devuelve una cadena idéntica a la cadena.
+Si la cadena contiene menos caracteres que Hola número especificado en NumChars, se devuelve un toostring idénticos de cadena.
 
 **Ejemplo:**  
 `Right("John Doe", 3)`  
@@ -1158,7 +1158,7 @@ devuelve "Doe".
 - - -
 ### <a name="rtrim"></a>RTrim
 **Descripción**  
-la función RTrim quita los espacios en blanco del final de una cadena.
+Hola función RTrim quita los espacios en blanco de una cadena.
 
 **Sintaxis:**  
 `str RTrim(str value)`
@@ -1176,36 +1176,36 @@ Procesa todos los valores de un atributo de valor múltiple (o el resultado de u
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
-* item: representa un elemento del atributo de valor múltiple
-* attribute: el atributo de valor múltiple
+* elemento: representa un elemento atributo multivalor Hola
+* atributo: atributo multivalor Hola
 * expression: una expresión que devuelve una colección de valores
-* condition: cualquier función que pueda procesar un elemento en el atributo
+* condición: cualquier función que puede procesar un elemento atributo Hola
 
 **Ejemplos:**  
 `Select($item,[otherPhone],Replace($item,“-”,“”))`  
-Devuelva todos los valores del atributo de valor múltiple otherPhone una vez que se han quitado los guiones (-).
+Devolver todos los valores de hello Hola atributo multivalor OtroTeléfono una vez que se han quitado los guiones (-).
 
 - - -
 ### <a name="split"></a>Dividir
 **Descripción**  
-la función Split toma una cadena separada por un delimitador y la convierte en una cadena multivalor.
+Hola función Split toma una cadena separada por un delimitador y hace que una cadena multivalor.
 
 **Sintaxis:**  
 `mvstr Split(str value, str delimiter)`  
 `mvstr Split(str value, str delimiter, num limit)`
 
-* value: la cadena con un carácter delimitador que separar.
-* delimiter: carácter único que usar como delimitador.
+* valor: Hola cadena con un tooseparate de carácter delimitador.
+* delimitador: único toobe de caracteres que se usa como delimitador de Hola.
 * limit: número máximo de valores que se pueden devolver.
 
 **Ejemplo:**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
-devuelve una cadena multivalor con dos elementos útiles para el atributo proxyAddress.
+Devuelve una cadena multivalor con 2 elementos útiles para el atributo proxyAddress de Hola.
 
 - - -
 ### <a name="stringfromguid"></a>StringFromGuid
 **Descripción**  
-la función StringFromGuid toma un GUID binario y lo convierte en una cadena.
+Hola función StringFromGuid toma un GUID binario y lo convierte en la cadena de tooa
 
 **Sintaxis:**  
 `str StringFromGuid(bin GUID)`
@@ -1213,7 +1213,7 @@ la función StringFromGuid toma un GUID binario y lo convierte en una cadena.
 - - -
 ### <a name="stringfromsid"></a>StringFromSid
 **Descripción**  
-la función StringFromSid convierte una matriz de bytes o una matriz de bytes multivalor que contiene un identificador de seguridad en una cadena o en una cadena multivalor.
+Hola función StringFromSid convierte una matriz de bytes que contiene una cadena de tooa del identificador de seguridad.
 
 **Sintaxis:**  
 `str StringFromSid(bin ObjectSID)`  
@@ -1221,36 +1221,36 @@ la función StringFromSid convierte una matriz de bytes o una matriz de bytes mu
 - - -
 ### <a name="switch"></a>Switch
 **Descripción**  
-la función Switch se utiliza para devolver un único valor según las condiciones evaluadas.
+función de conmutador de Hello es tooreturn usa un valor único basado en condiciones evaluadas.
 
 **Sintaxis:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* expr: expresión variante que desea evaluar.
-* value: valor que se va a devolver si la expresión correspondiente es True.
+* expr: expresión Variant que desee tooevaluate.
+* valor: toobe de valor devuelto si la expresión correspondiente de hello es True.
 
 **Comentarios:**  
-la lista de argumentos de la función Switch consta de pares de expresiones y valores. Las expresiones se evalúan de izquierda a derecha y se devuelve el valor asociado a la primera expresión que evaluar en True. Si los elementos no están emparejados correctamente, se produce un error en tiempo de ejecución.
+Hola argumento de la función de conmutador lista está formada por pares de expresiones y valores. Hola las expresiones se evalúan de izquierda tooright y se devuelve el valor de hello asociada Hola primera expresión tooevaluate tooTrue. Si las partes de hello no están correctamente emparejadas, se produce un error en tiempo de ejecución.
 
 Por ejemplo, si expr1 es True, Switch devuelve value1. Si expr-1 es False, pero expr-2 es True, Switch devuelve value-2, etc.
 
 Switch devuelve Nothing si:
 
-* Ninguna de las expresiones son True.
-* La primera expresión True tiene un valor correspondiente que es Null.
+* Ninguna de las expresiones de hello son True.
+* la primera expresión es True de Hello tiene un valor correspondiente que es Null.
 
-Switch evalúa todas las expresiones, aunque devuelva solo una de ellas. Por este motivo, debe vigilar efectos secundarios no deseados. Por ejemplo, si la evaluación de cualquier expresión tiene como resultado una división por cero, se produce un error.
+Switch evalúa todas las expresiones, aunque devuelva solo una de ellas. Por este motivo, debe vigilar efectos secundarios no deseados. Por ejemplo, si la evaluación de Hola de cualquier expresión tiene como resultado una división por cero error, se produce un error.
 
-El valor puede ser también la función Error que devolvería una cadena personalizada.
+Valor también puede ser la función de Error de hello, lo que devolvería una cadena personalizada.
 
 **Ejemplo:**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
-Devuelve el idioma hablado en las ciudades más importantes. De lo contrario, devuelve un error.
+Devuelve el idioma de hello hablado en algunas ciudades importantes, en caso contrario, devuelve un Error.
 
 - - -
 ### <a name="trim"></a>Trim
 **Descripción**  
-la función Trim quita los espacios en blanco del principio y del final de una cadena.
+función Trim Hello quita iniciales y finales de espacios en blanco de una cadena.
 
 **Sintaxis:**  
 `str Trim(str value)`  
@@ -1260,12 +1260,12 @@ la función Trim quita los espacios en blanco del principio y del final de una c
 devuelve "test".
 
 `Trim([proxyAddresses])`  
-Quita los espacios del principio y del final de cada valor en el atributo proxyAddress.
+Quita espacios para cada valor de atributo proxyAddress de hello iniciales y finales.
 
 - - -
 ### <a name="ucase"></a>UCase
 **Descripción**  
-: la función UCase convierte todos los caracteres de una cadena a mayúsculas.
+Hola función UCase convierte todos los caracteres en un caso de tooupper de cadena.
 
 **Sintaxis:**  
 `str UCase(str string)`
@@ -1283,23 +1283,23 @@ Devuelve un subconjunto de valores de un atributo de valor múltiple (o el resul
 **Sintaxis:**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
-* item: representa un elemento del atributo de valor múltiple
-* attribute: el atributo de valor múltiple
-* condition: cualquier expresión que pueda evaluarse en True o False
+* elemento: representa un elemento atributo multivalor Hola
+* atributo: atributo multivalor Hola
+* condición: cualquier expresión que se puede evaluar tootrue o false
 * expression: una expresión que devuelve una colección de valores
 
 **Ejemplo:**  
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
-Devuelva los valores de certificado en el atributo de valor múltiple userCertificate que no han expirado.
+Devolver valores de certificado de hello en hello userCertificate de atributo con varios valores que no se ha caducado.
 
 - - -
 ### <a name="with"></a>With
-**Descripción:**  
-La función With proporciona una manera de simplificar una expresión compleja usando una variable para representar una subexpresión que aparece una o varias veces en la expresión compleja.
+**Descripción**  
+Hola con función proporciona un toosimplify de forma una expresión compleja mediante el uso de una variable toorepresent una subexpresión que aparece una o varias veces en la expresión compleja Hola.
 
 **Sintaxis:**
 `With(var variable, exp subExpression, exp complexExpression)`  
-* variable: representa la subexpresión.
+* variable: representa Hola subexpresión.
 * subExpression: la que la variable representa.
 * complexExpression: una expresión compleja.
 
@@ -1307,23 +1307,23 @@ La función With proporciona una manera de simplificar una expresión compleja u
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
 Es funcionalmente equivalente a:  
 `IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
-Que devuelve solo los valores de los certificados que no han expirado en el atributo userCertificate.
+Que devuelve solo los valores de los certificados vigentes en el atributo userCertificate de Hola.
 
 
 - - -
 ### <a name="word"></a>Word
 **Descripción**  
-: la función Word devuelve una palabra incluida en una cadena, según los parámetros que describen los delimitadores que se usarán y el número de palabras que se devolverán.
+Hola función Word devuelve una palabra contenida dentro de una cadena según los parámetros que describen toouse de delimitadores de Hola y Hola word número tooreturn.
 
 **Sintaxis:**  
 `str Word(str string, num WordNumber, str delimiters)`
 
-* string: la cadena desde la que devolver una palabra.
+* cadena: Hola tooreturn de cadena de una palabra.
 * WordNumber: un número que identifica qué número de palabras debe devolver.
-* delimiters: una cadena que representa los delimitadores que deben usarse para identificar palabras
+* delimitadores: una cadena que representa los delimitadores de Hola que deben ser utilizados tooidentify palabras
 
 **Comentarios:**  
-: cada cadena de caracteres en la cadena separada por uno de los caracteres en los delimitadores se identifica como palabras:
+Cada cadena de caracteres de cadena separados por hello uno de los caracteres de hello en los delimitadores se identifican como palabras:
 
 * Si el número es < 1, se devuelve una cadena vacía.
 * Si la cadena es Null, se devuelve una cadena vacía.
@@ -1331,7 +1331,7 @@ Que devuelve solo los valores de los certificados que no han expirado en el atri
 Si la cadena contiene menos palabras o si la cadena no contiene palabras identificadas por los delimitadores, se devuelve una cadena vacía.
 
 **Ejemplo:**  
-`Word("The quick brown fox",3," ")`  
+`Word("hello quick brown fox",3," ")`  
 devuelve "brown".
 
 `Word("This,string!has&many separators",3,",!&#")`  

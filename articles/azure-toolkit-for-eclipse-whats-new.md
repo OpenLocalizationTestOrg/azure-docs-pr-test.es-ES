@@ -1,6 +1,6 @@
 ---
-title: Novedades del kit de herramientas de Azure para Eclipse
-description: "Obtenga información acerca las características más recientes del kit de herramientas de Azure para Eclipse."
+title: aaaWhat's nuevo en hello Azure Toolkit for Eclipse
+description: "Obtenga información acerca de las características más recientes de hello en hello Azure Toolkit for Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,355 +14,355 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm;asirveda;martinsawicki
-ms.openlocfilehash: 71c4f2d2298ea54f18e9ed64b246966b470a4ff4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d74eacfb75447a3d659a0c2dc2e247ae6e3ce1b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="whats-new-in-the-azure-toolkit-for-eclipse"></a>Novedades del kit de herramientas de Azure para Eclipse
+# <a name="whats-new-in-hello-azure-toolkit-for-eclipse"></a>What's New en hello Azure Toolkit for Eclipse
 ## <a name="azure-toolkit-for-eclipse-releases"></a>Kit de herramientas de Azure para versiones de Eclipse
-Este artículo contiene información sobre las diversas versiones y actualizaciones más recientes para el kit de herramientas de Azure para Eclipse.
+Este artículo contiene información sobre los Hola varias versiones y actualizaciones más recientes toohello Kit de herramientas de Azure para Eclipse.
 
 > [!NOTE]
-> También hay un Kit de herramientas de Azure para el IDE de IntelliJ. Para más información, consulte [Kit de herramientas de Azure para IntelliJ].
+> También es un Kit de herramientas de Azure para hello IntelliJ IDE. Para más información, consulte [Azure Toolkit for IntelliJ].
 > 
 > 
 
 ### <a name="april-14-2017"></a>14 de abril de 2017
-El kit de herramientas de Azure para Eclipse, versión de abril de 2017, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de abril de 2017 incluye Hola siguientes mejoras:
 
-* **Experiencia de inicio de sesión mejorada de Azure**: el kit de herramientas de Azure para Eclipse ahora admite dos métodos para iniciar sesión en la cuenta de Azure: *interactivo* y *automatizado*. Para más información, vea [Instrucciones de inicio de sesión de Azure del kit de herramientas de Azure para Eclipse].
-* **Publicación con contenedores de Docker**: ahora puede publicar las aplicaciones web como contenedores de Docker mediante el kit de herramientas de Azure para Eclipse. Para más información, vea [Cómo publicar una aplicación web como un contenedor de Docker mediante el kit de herramientas de Azure para Eclipse].
-* **Administración de cuentas de almacenamiento**: el kit de herramientas de Azure para Eclipse ahora admite la administración de las cuentas de almacenamiento desde la vista del explorador de Azure. Para más información, vea [Administración de cuentas de almacenamiento mediante Azure Explorer para Eclipse].
-* **Administración de máquinas virtuales**: el kit de herramientas de Azure para Eclipse ahora admite la administración de las máquinas virtuales desde la vista del explorador de Azure. Para más información, vea [Administración de máquinas virtuales mediante Azure Explorer para Eclipse].
-* **Eliminación de la compatibilidad con la depuración remota**. La depuración remota de aplicaciones web de Java en Azure App Service se ha eliminado del kit de herramientas de Azure para Eclipse; era necesario para resolver algunos problemas que los clientes experimentaban al usar el kit de herramientas.
+* **Inicio de sesión de Azure en experiencia mejorada**: Hola Kit de herramientas de Azure para Eclipse ahora admite dos métodos para iniciar sesión en su cuenta de Azure: *Interactive* y *automatizada*. Para obtener más información, consulte [Azure inicio de sesión en las instrucciones de hello Azure Toolkit for Eclipse].
+* **Publicación con contenedores de Docker**: ahora puede publicar las aplicaciones web como contenedores de Docker mediante el kit de herramientas de Azure para Eclipse. Para obtener más información, consulte [cómo toopublish una aplicación Web como un contenedor de Docker mediante hello Azure Toolkit for Eclipse].
+* **Administración de cuentas de almacenamiento**: Hola Kit de herramientas de Azure para Eclipse ahora admite la administración de sus cuentas de almacenamiento de hello Azure del explorador. Para obtener más información, consulte [utilizando Administración de cuentas de almacenamiento Hola Explorer de Azure para Eclipse].
+* **Administración de máquinas virtuales**: Hola Kit de herramientas de Azure para Eclipse ahora admite la administración de las máquinas virtuales de hello Azure del explorador. Para obtener más información, consulte [administrar las máquinas virtuales usando Hola Explorer de Azure para Eclipse].
+* **Eliminación de la compatibilidad con la depuración remota**. Depuración remota de aplicaciones web de Java en el servicio de aplicaciones de Azure se ha quitado de hello Azure Toolkit for Eclipse; Esto ha sido necesario tooresolve algunos problemas de los clientes que se experimentan al usar Hola Kit de herramientas.
 
 ### <a name="august-26-2016"></a>26 de agosto de 2016
-El kit de herramientas de Azure para Eclipse, versión de agosto de 2016, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de agosto de 2016 incluye Hola siguientes mejoras:
 
-* **Distribuciones de JDK personalizadas**. El Kit de herramientas de Azure para Eclipse ahora admite especificar e implementar una versión de JDK arbitraria en el contenedor de Azure WebApp:
-  * Además de los JDK que proporciona Azure, puede elegir entre una gran variedad de versiones de Zulu OpenJDK que pone a disposición Azul Systems en Azure.
-  * También puede especificar su propia distribución de JDK si la carga como un archivo ZIP en su cuenta de almacenamiento.
-* **Mejoras en la vista del Explorador de Azure**:
-  * Compatibilidad con la administración de máquinas virtuales mediante el nuevo modelo de Azure Resource Manager: puede crear y eliminar máquinas virtuales basadas en Resource Manager sin salir del IDE, así como incluirlas en listas.
-  * Compatibilidad con la administración de blobs de cuentas de almacenamiento mediante Azure Resource Manager, lo que complementa la funcionalidad existente para administrar las cuentas de almacenamiento clásicas.
-* **Microsoft JDBC Driver 6.0 para SQL Server**. Esta actualización incluye la versión más reciente de Microsoft JDBC Driver para Microsoft SQL Server (6.0), que ahora se incluye como una biblioteca que se puede agregar fácilmente a los proyectos de Java, con lo que sustituye a la versión anterior.
+* **Distribuciones de JDK personalizadas**. Hello Azure Toolkit for Eclipse ahora admite especificar e implementar un contenedor de Azure WebApp arbitrario de JDK versión tooyour:
+  * Además toohello JDK proporcionadas por Azure, también puede elegir entre una gran variedad de versiones de OpenJDK de Zulu pone a disposición de Azure por Azul Systems.
+  * También puede especificar su propia distribución JDK si lo carga como una cuenta de almacenamiento de tooyour de archivos ZIP.
+* **Mejoras toohello vista del explorador de Azure**:
+  * Compatibilidad con la administración de máquina Virtual con el nuevo modelo de administrador de recursos de Azure: puede enumerar, crear y eliminar máquinas virtuales basada en el Administrador de recursos sin salir de hello IDE.
+  * Compatibilidad con la administración de blob de cuenta de almacenamiento con el Administrador de recursos de Azure, que complementa la funcionalidad existente para administrar las cuentas de almacenamiento "clásico" Hola.
+* **Microsoft JDBC Driver 6.0 para SQL Server**. Esta actualización incluye el controlador JDBC más reciente de Hola para Microsoft SQL Server (versión 6.0), que ahora está incluido como una biblioteca que se pueden agregar fácilmente proyectos de Java tooyour, por tanto, reemplazando la versión anterior de Hola.
 
 ### <a name="june-29-2016"></a>29 de junio de 2016
-El kit de herramientas de Azure para Eclipse, versión de junio de 2016, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de junio de 2016 incluye Hola siguientes mejoras:
 
-* **Requisito de Java 8**. El Kit de herramientas de Azure para Eclipse ahora requiere Java 8, aunque este requisito es solo para el kit de herramientas: las aplicaciones pueden seguir usando todas las versiones de Java compatibles con Azure.
-* **Compatibilidad para el JDK más reciente de Java**. Las versiones más recientes de los JDK de Java ahora admiten el Kit de herramientas de Azure para Eclipse.
-* **Compatibilidad con la versión 2.9.1 del SDK de Azure**. La versión más reciente del SDK de Azure ahora es el requisito previo mínimo para el kit de herramientas de Azure para Eclipse.
-* **Ejemplos integrados**. El Kit de herramientas de Azure para Eclipse ahora cuenta con varias aplicaciones de ejemplo para ayudar a los desarrolladores a empezar a trabajar.
-* **Integración de herramientas de HDInsight**. Las herramientas de Azure HDInsight ahora están incluidas en el Kit de herramientas de Azure para Eclipse. Para más información, consulte [Complemento Herramientas de HDInsight para Eclipse].
-* **Depuración remota de Java Web Apps**. El Kit de herramientas de Azure para Eclipse ahora admite la depuración remota de aplicaciones web de Java en Azure App Service.
-* **Compatibilidad con la versión Kepler de Luna.** La nueva versión mínima necesaria del IDE de Eclipse es Luna.
+* **Requisito de Java 8**. Hello Azure Toolkit for Eclipse ahora requiere Java 8, aunque este requisito es sólo para el Kit de herramientas de hello: las aplicaciones pueden continuar toouse todas las versiones de Java que son compatibles con Azure.
+* **Compatibilidad con hello más reciente de Java de JDK**. versiones más recientes de Hola de hello Java JDK ahora son compatibles con hello Azure Toolkit for Eclipse.
+* **Compatibilidad con la versión 2.9.1 del SDK de Azure**. versión más reciente de Hola de hello SDK de Azure ahora es requisito previo mínimo de Hola para hello Azure Toolkit for Eclipse.
+* **Ejemplos integrados**. Hello Azure Toolkit for Eclipse ahora cuenta con varias aplicaciones de ejemplo toohelp a los desarrolladores empezar a trabajar.
+* **Integración de herramientas de HDInsight**. Herramientas de HDInsight de Azure ahora están incluidas en hello Azure Toolkit for Eclipse. Para más información, consulte [Complemento Herramientas de HDInsight para Eclipse].
+* **Depuración remota de Java Web Apps**. Hello Azure Toolkit for Eclipse ahora es compatible con la depuración remota de aplicaciones web de Java en el servicio de aplicaciones de Azure.
+* **Compatibilidad con la versión de Eclipse Luna Hola.** Hola nueva Eclipse IDE la versión mínima requerida es la Luna.
 
 ### <a name="april-12-2016"></a>12 de abril de 2016
-El kit de herramientas de Azure para Eclipse, versión de abril de 2016, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de abril de 2016 incluye Hola siguientes mejoras:
 
-* **Compatibilidad con la versión 2.9.0 del SDK de Azure**. La versión más reciente del SDK de Azure ahora es el requisito previo mínimo para el kit de herramientas de Azure para Eclipse.
-* **Mejoras variadas en la facilidad de uso, la capacidad de respuesta y el rendimiento relacionadas con la compatibilidad de aplicaciones web de Azure**. Diversas optimizaciones de rendimiento con respecto a la manera en que el kit de herramientas se comunica con Azure generan una IU con mayor capacidad de respuesta.
-* **Capacidad de eliminar un contenedor de aplicaciones web en Azure desde Eclipse**. El kit de herramientas de Azure para Eclipse ahora le permite eliminar un contenedor web de Azure existente sin salir de Eclipse.
+* **Compatibilidad con la versión 2.9.0 del SDK de Azure**. versión más reciente de Hola de hello SDK de Azure ahora es requisito previo mínimo de Hola para hello Azure Toolkit for Eclipse.
+* **Varias mejoras de facilidad de uso, el rendimiento y la capacidad de respuesta relacionados con la compatibilidad de la aplicación Web de tooAzure**. Un número de optimizaciones de rendimiento en cómo Hola Kit de herramientas se comunica con el resultado de Azure en una interfaz de usuario más sensible.
+* **Capacidad toodelete un contenedor de la aplicación Web existente en Azure desde dentro de Eclipse**. Hello Azure Toolkit for Eclipse ahora permite toodelete un contenedor existente para Web de Azure sin salir de Eclipse.
 
 ### <a name="march-7-2016"></a>7 de marzo de 2016
-El kit de herramientas de Azure para Eclipse, versión de marzo de 2016, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de marzo de 2016 incluye Hola siguientes mejoras:
 
-* **Compatibilidad para la implementación rápida de las aplicaciones Java ligeras**. El kit de herramientas de Azure para Eclipse ahora admite la implementación rápida de las aplicaciones Java ligeras en contenedores de aplicaciones web de Azure, por lo que la implementación de aplicaciones Java ahora tarda segundos en lugar de minutos.
-* **Compatibilidad con la administración de aplicaciones web mediante la vista Azure Explorer**. La vista del explorador de Azure del kit de herramientas ahora admite la enumeración, inicio y detención de Azure Web Apps.
-* **Distribuciones actualizadas de OpenJDK de Zulu, Jetty y Tomcat**. El kit de herramientas de Azure para Eclipse proporciona compatibilidad con versiones actualizadas de OpenJDK de Zulu, Jetty y Tomcat para las implementaciones de Java en servicios en la nube de Azure.
+* **Compatibilidad para la implementación rápida de las aplicaciones Java ligeras**. Hello Azure Toolkit for Eclipse ahora admite la implementación rápida de Hola de aplicaciones Java ligeras en contenedores de aplicación Web de Azure, para implementar aplicaciones de Java ahora tarda a unos segundos en lugar de minutos.
+* **Compatibilidad con la administración de la aplicación Web mediante la vista del explorador de Azure de hello**. vista del explorador de Azure en el Kit de herramientas de Hola Hola admite ahora para enumerar, iniciar y detener aplicaciones Web de Azure.
+* **Distribuciones actualizadas de OpenJDK de Zulu, Jetty y Tomcat**. Hello Azure Toolkit for Eclipse proporciona compatibilidad con las versiones actualizadas de Tomcat, Jetty y OpenJDK de Zulu para las implementaciones de Java en servicios de nube de Azure.
 
 ### <a name="january-4-2016"></a>4 de enero de 2016
-El kit de herramientas de Azure para Eclipse, versión de enero de 2016, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de enero de 2016 incluye Hola siguientes mejoras:
 
-* **Compatibilidad con las actualizaciones de Zulu de OpenJDK**. Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
-* **Distribuciones actualizadas de Tomcat y Jetty**. Se han actualizado las distribuciones de Jetty y Tomcat que están disponibles en Microsoft Azure para su uso con el kit de herramientas de Azure para Eclipse.
-* **Paridad de características entre Eclipse y kits de herramientas de IntelliJ para Azure**. El kit de herramientas de Azure para Eclipse y el [Kit de herramientas de Azure para IntelliJ] ahora admiten el mismo conjunto de características.
+* **Compatibilidad con hello actualiza OpenJDK de Zulu**. Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
+* **Distribuciones actualizadas de Tomcat y Jetty**. se actualizaron Hello Jetty y Tomcat las distribuciones que están disponibles en Microsoft Azure para su uso con hello Kit de herramientas de Azure para Eclipse.
+* **Paridad de características entre Eclipse y kits de herramientas de IntelliJ para Azure**. Kit de herramientas de Azure para Eclipse y Hola Hola [Azure Toolkit for IntelliJ] ahora admiten Hola el mismo conjunto de características.
 
 ### <a name="september-1-2015"></a>1 de septiembre de 2015
-El kit de herramientas de Azure para Eclipse, versión de septiembre de 2015, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de septiembre de 2015 incluye Hola siguientes mejoras:
 
-* **Compatibilidad con las actualizaciones de Zulu de OpenJDK**. Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
-* **Distribuciones actualizadas de Tomcat y Jetty**. Se han actualizado las distribuciones de Jetty y Tomcat que están disponibles en Microsoft Azure para su uso con el kit de herramientas de Azure para Eclipse. Estas distribuciones permiten a los desarrolladores crear proyectos de desarrollo rápido y de prueba con el kit de herramientas de Azure para Eclipse.
-* **Compatibilidad con las referencias automáticamente actualizadas de Tomcat y Jetty**. Además de las versiones específicas de Tomcat y Jetty que están disponibles en Azure, los desarrolladores ahora pueden hacer referencia a una distribución conocida como la "más reciente (autoactualizada)", que actualizará automáticamente a la distribución más reciente de cada versión principal de Jetty o Tomcat la próxima vez que las instancias de rol se reciclen. El reciclaje se produce automáticamente, pero los desarrolladores pueden desencadenar manualmente un reciclaje a través de Azure Portal. Esta nueva característica significa que los desarrolladores no tienen que volver a implementar su aplicación para poder tener el software de servidor actualizado. (
+* **Compatibilidad con hello actualiza OpenJDK de Zulu**. Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
+* **Distribuciones actualizadas de Tomcat y Jetty**. se actualizaron Hello Jetty y Tomcat las distribuciones que están disponibles en Microsoft Azure para su uso con hello Kit de herramientas de Azure para Eclipse. (Estas distribuciones permite a los desarrolladores toocreate rápidos desarrollo y proyectos de prueba con hello Azure Toolkit for Eclipse.
+* **Compatibilidad con las referencias automáticamente actualizadas de Tomcat y Jetty**. En suma toohello versiones concretas de Tomcat y Jetty que están disponibles en Azure, los desarrolladores ahora pueden hacer referencia a un Hola de distribución que se hace referencia tooas "más reciente (auto-actualizado)", que actualizará automáticamente toohello distribución más reciente de cada principales versión de Jetty o Tomcat Hola próxima vez que se reciclan las instancias del rol. (El reciclaje se produce automáticamente, pero los desarrolladores pueden desencadenar manualmente un reciclaje a través de hello portal de Azure). Esta nueva característica significa que los desarrolladores no tienen tooredeploy su toohave capaz de aplicación toobe actualizar su software de servidor. (
 * Actualmente, esta funcionalidad está pensada solo para aplicaciones con fines de desarrollo y prueba o con aplicaciones no críticas y no es recomendable para la producción.
-* **Vista del explorador de Azure para blobs, colas y tablas de Azure Storage**. Esto permite a los desarrolladores realizar un conjunto de tareas comunes con los artefactos de almacenamiento directamente desde el IDE de Eclipse. Por ejemplo: eliminar, cargar o descargar blobs.
+* **Vista del explorador de Azure para blobs, colas y tablas de almacenamiento de Azure**. Esto permite a los desarrolladores tooperform un conjunto de tareas comunes con los artefactos de almacenamiento directamente desde Hola Eclipse IDE. Por ejemplo: eliminar, cargar o descargar blobs.
 
 ### <a name="august-1-2015"></a>1 de agosto de 2015
-El kit de herramientas de Azure para Eclipse, versión de agosto de 2015, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de agosto de 2015 incluye Hola siguientes mejoras:
 
-* **Administración de claves de instrumentación de Application Insights**. Esta actualización le permite adquirir, crear y administrar las claves de instrumentación de Application Insights directamente desde el IDE de Eclipse.
-* **Microsoft JDBC Driver 4.1 para SQL Server**. Esta actualización incluye compatibilidad para la versión más reciente de JDBC Driver para Microsoft SQL Server.
-* **Versión 2.7 del SDK de Azure**. Esta última actualización para el SDK de Azure es el nuevo requisito previo para el kit de herramientas cuando se instala en Windows. Tenga en cuenta que esto no es necesario en sistemas operativos que no sean Windows.
-* **Compatibilidad con la actualización de Zulu de OpenJDK v7**. Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
+* **Administración de claves de instrumentación de Application Insights**. Esta actualización permite tooacquire, crear y administrar las claves de instrumentación de Application Insights directamente desde Hola Eclipse IDE.
+* **Microsoft JDBC Driver 4.1 para SQL Server**. Esta actualización incluye compatibilidad para el controlador JDBC más reciente de Hola para Microsoft SQL Server.
+* **La versión 2.7 de hello Azure SDK**. Esta toohello de actualización más reciente del SDK de Azure es Hola nuevo requisito previo para hello Kit de herramientas cuando está instalado en Windows. Tenga en cuenta que esto no es necesario en sistemas operativos que no sean Windows.
+* **Permite la actualización de hello v7 de Zulu OpenJDK de**. Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
 
 ### <a name="may-1-2015"></a>1 de mayo de 2015
-El kit de herramientas de Azure para Eclipse, versión de mayo de 2015, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de mayo de 2015 incluye Hola siguientes mejoras:
 
-* **Interfaz de usuario de selección de servidor mejorada**. Esta versión simplifica el uso del kit de herramientas en los sistemas operativos que no son Windows.
-* **Compatibilidad con proyectos de Maven**. Esta versión admite proyectos de Maven como aplicaciones que el kit de herramientas puede implementar en Azure y configurar en Application Insights.
-* **Versión 2.6 del SDK de Azure**. Esta última actualización para el SDK de Azure es el nuevo requisito previo para el kit de herramientas cuando se instala en Windows. Tenga en cuenta que esto no es necesario en sistemas operativos que no sean Windows.
-* **Actualización de implementación en lugar de volver a publicarla**. Si vuelve a publicar un proyecto de implementación cuando la versión anterior ya está en funcionamiento, el kit de herramientas usa ahora la funcionalidad de actualización de implementación de Azure en lugar de apagar la implementación anterior y volver a publicarla desde cero como ocurría en el pasado. Esto permite que el servicio en la nube se ejecute sin interrupción siempre que sea posible, lo cual ayuda a lograr una alta disponibilidad incluso durante una actualización y acelera el proceso para volver a publicar.
-* **Compatibilidad con la actualización 40 de Zulu de OpenJDK v8 más reciente**. Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
+* **Interfaz de usuario de selección de servidor mejorada**. Esta versión simplifica el uso de hello del Kit de herramientas de hello en sistemas operativos que no sean Windows.
+* **Compatibilidad con proyectos de Maven**. Esta versión admite proyectos de Maven como aplicaciones, el Kit de herramientas de hello tooAzure de implementar y configurar Application Insights.
+* **Versión 2.6 de hello Azure SDK**. Esta toohello de actualización más reciente del SDK de Azure es Hola nuevo requisito previo para hello Kit de herramientas cuando está instalado en Windows. Tenga en cuenta que esto no es necesario en sistemas operativos que no sean Windows.
+* **Actualización de implementación en lugar de volver a publicarla**. Si se vuelve a publicar un proyecto de implementación cuando la versión anterior de hello ya está en funcionamiento, el Kit de herramientas de hello usa ahora la funcionalidad de actualización de implementación de Azure en lugar de la implementación anterior de Hola a cerrar y volver a publicar desde el principio como se hacía en hello anterior. Esto permite la toorun de servicio de nube sin interrupción siempre que sea posible, ayudando a lograr una alta disponibilidad incluso durante una actualización y acelera Hola volver a publicar el proceso.
+* **Atención al cliente para hello más reciente de Zulu OpenJDK v8: actualización 40**. Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
 
 ### <a name="march-9-2015"></a>9 de marzo de 2015
-El kit de herramientas de Azure para Eclipse, versión de marzo de 2015, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de marzo de 2015 incluye Hola siguientes mejoras:
 
-* **Compatibilidad para Mac, Ubuntu y tipos de Linux adicionales**. Esta versión del kit de herramientas de Azure para Eclipse agrega compatibilidad para Mac OS y varias plataformas de Unix, por lo que los desarrolladores pueden instalarla para crear, configurar y publicar proyectos de Java en Azure Cloud Services (PaaS) desde Eclipse que se están ejecutando en sistemas operativos distintos de Windows.
+* **Compatibilidad para Mac, Ubuntu y tipos de Linux adicionales**. Esta versión de hello Azure Toolkit for Eclipse agrega compatibilidad para varias plataformas de Unix y Mac OS, por lo que los desarrolladores pueden instalar toocreate del Kit de herramientas de hello, configurar y publica proyectos de Java tooAzure servicios de nube (PaaS) desde Eclipse que se ejecutan en sistemas operativos distinto de Windows.
 
 > [!NOTE]
 > Esta capacidad existe solo en versión preliminar y no se recomienda su uso en entornos de producción. No hay ningún contrato de nivel de servicio (SLA) de soporte al cliente, pero se agradecen los comentarios.
 > 
 > 
 
-* **Nuevo complemento de Application Insights**. Los desarrolladores pueden ahora configurar telemetría automática de servidores con Application Insights en Azure.
-* **Automatización de la implementación de la línea de comandos basada en Ant**. Esta característica permite a los desarrolladores automatizar la publicación de las versiones más recientes de sus implementaciones usando Ant fuera de Eclipse. Un script generado previamente se configura automáticamente para un proyecto después de la primera vez que se implementa desde Eclipse y las implementaciones posteriores pueden volver a usarlo para automatizarlas por completo a través de la línea de comandos únicamente.
-* **Disponibilidad de Tomcat y Jetty en Azure para una implementación más fácil y rápida**. Los desarrolladores pueden ahora hacer referencia a distintas versiones de Tomcat y Jetty que están disponibles en Azure directamente en lugar de tener que cargar un servidor de Java a sus cuentas (o mediante el kit de herramientas), por lo que no es necesario cargar este servidor en escenarios de iniciación rápidos.
-* **Método abreviado para la publicación de aplicaciones web de Java en los servicios en la nube de Azure**. Para reducir la curva de aprendizaje para escenarios sencillos de desarrollo y pruebas, los desarrolladores ahora pueden publicar aplicaciones de Java más directamente en Azure. En lugar de tener que pasar por el proceso de crear y configurar un proyecto de implementación de Azure, las aplicaciones se implementarán con una instancia predeterminada de Tomcat v8 y Zulu JVM (OpenJDK).
+* **Nuevo complemento de Application Insights**. Los desarrolladores ahora están tooconfigure capaz de telemetría de automática de servidores con Application Insights en Azure.
+* **Automatización de la implementación de la línea de comandos basada en Ant**. Esta característica permite la publicación de hello tooautomate de los desarrolladores para las versiones más recientes de sus implementaciones utilizando Ant fuera de Eclipse. Un script generado previamente se configura automáticamente para un proyecto después de hello primera vez que se ha implementado desde Eclipse y las implementaciones posteriores puede toofully de script de Hola de uso para automatizar las implementaciones a través de hello sólo la línea de comandos.
+* **Disponibilidad de Tomcat y Jetty en Azure para una implementación más fácil y rápida**. Los desarrolladores ahora pueden hacer referencia a distintos Tomcat y versiones de Jetty que están disponibles en Azure directamente en su lugar de tener una cuenta de tootheir de servidor de Java de tooupload (o a través de hello Kit de herramientas), por lo que no es tooupload necesidad de un servidor de Java para escenarios de rápido, introducción a.
+* **Método abreviado para la publicación de servicios de nube de Java web aplicaciones tooAzure**. tooreduce Hola la curva de aprendizaje para escenarios sencillos de desarrollo y pruebas, los desarrolladores ahora pueden publicar aplicaciones de Java más directamente tooAzure. En lugar de tener toogo a través del proceso de Hola de crear y configurar un proyecto de implementación de Azure, se implementarán las aplicaciones con una instancia predeterminada de Tomcat v8 y Zulu JVM (OpenJDK).
 
 ### <a name="january-30-2015"></a>30 de enero de 2015
-El kit de herramientas de Azure para Eclipse, versión de enero de 2015, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de enero de 2015 incluye Hola siguientes mejoras:
 
-* **Compatibilidad con IBM ® WebSphere ® Application Server Liberty Core**. Esta versión agrega IBM WebSphere Application Server Liberty Core a la lista de servidores de aplicaciones compatibles desde los que el kit de herramientas es capaz de implementarse en Azure. Esta última adición amplía la lista actual de servidores de aplicaciones que el kit de herramientas admite &quot;directamente&quot;, lista que ya incluía varias versiones de Tomcat, Jetty, JBoss y GlassFish.
-* **Inclusión del SDK de Application Insights**. Esta biblioteca de API de cliente recién publicada (v0.9.0) ahora forma parte del paquete de bibliotecas de Azure para Java.
-* **Paquete actualizado para bibliotecas de Azure para Java**. Esta actualización incluye bibliotecas de Azure para Java v0.7.0 y para la API de Storage Client v2.0.0, así como el SDK de Application Insights v0.9.0 recién publicado.
+* **Compatibilidad con IBM ® WebSphere ® Application Server Liberty Core**. Esta versión agrega Hola IBM WebSphere Application Server Liberty Core toohello lista de servidores de aplicaciones compatibles desde qué Hola Kit de herramientas es capaz de toodeploy tooAzure. Esta última adición amplía la lista actual de Hola de servidores de aplicaciones que se admiten &quot;de cuadro&quot; por hello Kit de herramientas, que ya incluía diversas versiones de Tomcat, Jetty, JBoss y GlassFish.
+* **Inclusión del SDK de Application Insights**. Esta biblioteca de API de cliente recién publicada (v0.9.0) ahora forma parte del paquete para bibliotecas de Azure para Java Hola.
+* **Paquete actualizado para bibliotecas de Azure para Java**. Esta actualización incluye bibliotecas de Azure para Java v0.7.0 y almacenamiento API v2.0.0 del cliente, así como hello v0.9.0 de Application Insights SDK recién publicada.
 
 ### <a name="november-12-2014"></a>12 de noviembre de 2014
-El kit de herramientas de Azure para Eclipse, versión de noviembre de 2014, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de noviembre de 2014 incluye Hola siguientes mejoras:
 
-* **Compatibilidad con la versión 2.5 del SDK de Azure**. Esta última actualización para el SDK de Azure es el nuevo requisito previo para el kit de herramientas.
-* **Compatibilidad con la versión actualizada de los paquetes de las versiones v1.8, v1.7 y v1.6 de Zulu de OpenJDK**. Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
-* **Compatibilidad con los nuevos tamaños Standard_D para los servicios en la nube**, que ofrecen un mayor rendimiento y recursos adicionales de memoria. Para obtener más información, consulte [Tamaños de máquinas virtuales y servicios en la nube de Azure].
+* **Compatibilidad con la versión 2.5 del SDK de Azure**. Esta toohello de actualización más reciente del SDK de Azure es Hola nuevo requisito previo para hello Kit de herramientas.
+* **Compatibilidad con la versión actualizada de OpenJDK de Zulu v1.8, v1.7 y v1.6 paquetes de saludo**. Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
+* **Compatibilidad con nuevos tamaños estándar D Hola para servicios en la nube**, que ofrecen un mayor rendimiento y recursos adicionales de memoria. Para obtener más información, consulte [Tamaños de máquinas virtuales y servicios en la nube de Azure].
 
 ### <a name="october-17-2014"></a>17 de octubre de 2014
-El kit de herramientas de Azure para Eclipse, versión de octubre de 2014, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de octubre de 2014 incluye Hola siguientes mejoras:
 
-* **Mejoras de rendimiento en los escenarios de publicación en la nube**. La carga de información de suscripción es mucho más rápida cuando los usuarios tienen varias suscripciones y cuentas de almacenamiento.
-* **Compatibilidad con la versión actualizada del paquete v1.8 de Zulu de OpenJDK**. Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
-* **Compatibilidad con versiones en desuso de paquetes de JDK de terceros**. Los paquetes de JDK en desuso ya no aparecerán en el menú desplegable para los nuevos proyectos de implementación. Los proyectos ya existentes que hagan referencia a los paquetes de JDK en desuso podrán seguir haciéndolo durante un tiempo, pero se recomienda actualizar estos proyectos para que se basen en la versión más reciente.
-* **Versión actualizada del paquete para bibliotecas de Azure para la biblioteca de API de cliente de Java**. Para más información, consulte la [API de cliente de Microsoft Azure].
+* **Mejoras de rendimiento en escenarios de hello publicar tooCloud**. La carga de información de suscripción es mucho más rápida cuando los usuarios tienen varias suscripciones y cuentas de almacenamiento.
+* **Compatibilidad con la versión actualizada del paquete de hello OpenJDK de Zulu v1.8**. Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
+* **Compatibilidad con versiones en desuso de paquetes de JDK de terceros**. Los paquetes JDK en desuso ya no aparecerá en el menú desplegable de Hola para los nuevos proyectos de implementación. Los proyectos existentes que hacen referencia a los paquetes JDK en desuso continuará está toodo capaz de modo de tiempo de presentación, pero se recomienda tooupgrade tal toorely proyectos en hello más reciente.
+* **Versión actualizada de hello paquete para bibliotecas de Azure para la biblioteca de API de cliente de Java**. Para obtener más información, vea hello [API de cliente de Microsoft Azure].
 * **Correcciones de errores.** Esta versión contiene una serie de correcciones de errores que se basaban en informes de usuario y pruebas.
 
 ### <a name="august-5-2014"></a>5 de agosto de 2014
-El kit de herramientas de Azure para Eclipse, versión de agosto de 2014, incluye las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de agosto de 2014 incluye Hola después mejoras
 
-* **Compatibilidad con la versión 2.4 del SDK de Azure.** Las versiones anteriores del kit de herramientas para Eclipse no funcionan con este SDK publicado recientemente.
-* **Compatibilidad con la versión actualizada de los paquetes v1.6, 1.7 y v1.8 de Zulu de OpenJDK.** Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
-* **Versión actualizada del paquete para bibliotecas de Azure para la biblioteca de API de cliente de Java.** Para más información, consulte la [API de cliente de Microsoft Azure].
-* **Compatibilidad con la versión más reciente del formato de archivo de la configuración de publicación.** Se agregó compatibilidad para la versión 2.0 del formato de archivo de la configuración de publicación.
-* **Cambios de arquitectura detrás de la característica de publicación en la nube.** El kit de herramientas usa ahora la API de cliente más reciente de Microsoft Azure para Java para su compatibilidad con la publicación en la nube.
+* **Compatibilidad con la versión 2.4 del SDK de Azure.** Versiones anteriores de hello Kit de herramientas Eclipse no funcionarán con este SDK publicado recientemente.
+* **Las versiones actualizadas de hello OpenJDK de Zulu v1.6, 1.7 y v1.8 paquetes.** Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
+* **Versión actualizada de hello paquete para bibliotecas de Azure para la biblioteca de API de cliente de Java.** Para obtener más información, vea hello [API de cliente de Microsoft Azure].
+* **Compatibilidad con la versión más reciente del formato de archivo de la configuración de publicación.** Se agregó compatibilidad para la versión 2.0 del formato de archivo de configuración de publicación de Hola.
+* **Cambios de arquitectura tras la característica de hello publicación tooCloud.** Hola Kit de herramientas está utilizando Hola recién había publicado API de cliente de Microsoft Azure para Java para su compatibilidad de publicación a la nube.
 * **Correcciones de errores.** Esta versión contiene una serie de correcciones solicitadas por el usuario.
 
 ### <a name="june-12-2014"></a>12 de junio de 2014
-El kit de herramientas de Azure para Eclipse, versión de junio de 2014, es una actualización secundaria de servicio que proporciona las siguientes mejoras:
+Hola Kit de herramientas de Azure para Eclipse - versión de junio de 2014 es una actualización secundaria de servicios que proporciona Hola siguientes mejoras:
 
-* **Compatibilidad con el paquete de la versión v1.8 de Zulu de OpenJDK.** Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
-* **Compatibilidad con las versiones actualizadas de los paquetes v1.6 y v1.7 de Zulu de OpenJDK.** Para más información, consulte la [página web de Azul Systems para Zulu de OpenJDK].
-* **Versión actualizada del paquete para bibliotecas de Azure para la biblioteca de API de cliente de Java.** Para más información, consulte la [API de cliente de Microsoft Azure].
+* **Compatibilidad con hello OpenJDK de Zulu paquete v1.8.** Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
+* **Versiones actualizadas de hello OpenJDK de Zulu 1.6 y 1.7 paquetes.** Para obtener más información, vea hello [página web de Azul Systems para hello OpenJDK de Zulu].
+* **Versión actualizada de hello paquete para bibliotecas de Azure para la biblioteca de API de cliente de Java.** Para obtener más información, vea hello [API de cliente de Microsoft Azure].
 * **Correcciones de errores.** Esta versión contiene una serie de correcciones solicitadas por el usuario.
 
 ### <a name="april-4-2014"></a>4 de abril de 2014
-El complemento de Azure para Eclipse, versión de abril de 2014. Se trata de una actualización que acompaña a la versión 2.3 del SDK de Azure, que es un requisito previo y se descargará automáticamente al instalar el complemento. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso basadas en comentarios que se han producido desde la versión preliminar de febrero de 2014:
+Hola complemento de Azure para Eclipse - versión de abril de 2014 se ha publicado. Esto es una actualización que acompaña a versión de Hola de hello Azure SDK 2.3, que es un requisito previo y se descargará automáticamente al instalar el complemento de Hola. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso partir de comentarios desde Hola obtener una vista previa de febrero de 2014:
 
-* **Compatibilidad con la versión 2.3 del SDK de Azure.** El complemento de Azure para Eclipse, versión de abril de 2014, requiere la versión 2.3 del SDK de Azure. Al usar el nuevo complemento, si no tiene todavía la versión 2.3 del SDK de Azure, se le solicitará que permita su instalación. No utilice la versión 2.3 del SDK de Azure con versiones anteriores del complemento.
-* **Actualización de las aplicaciones sin la implementación del paquete completo.** Al implementar las aplicaciones de Java que forman parte de su proyecto, el complemento las carga ahora automáticamente en la cuenta de almacenamiento seleccionada de tal forma que pueda actualizarlo y reciclar las instancias de rol para implementar los bits más recientes de la aplicación sin tener que recompilar e implementar de nuevo todo el paquete.
-* **Tomcat 8 es ahora un servidor de aplicaciones reconocido.** Si selecciona un directorio de instalación de Tomcat 8 en el equipo en la pestaña **Servidor** del cuadro de diálogo **Proyecto de implementación de Azure**, el complemento lo detectará automáticamente y podrá implementar Tomcat 8 de forma automática, de manera similar a las versiones anteriores de Tomcat que ya están en la lista.
-* **Actualizaciones del paquete de Zulu de OpenJDK de Azul: actualización 51 de v1.7 y actualización 47 de v1.6.** A partir de esta versión, la actualización 51 del paquete de Zulu de Open JDK v7 de Azul System ya está disponible. Además, los paquetes de Zulu de Open JDK v6 empiezan a estar disponibles, empezando por la actualización 47. Estas actualizaciones son actualizaciones adicionales al paquete disponible anteriormente de Zulu de Open JDK v7, actualizaciones 45, 40 y 25.
-* **Compatibilidad con los tamaños A8 y A9 de las máquinas virtuales de Microsoft Azure.** Ahora ya puede implementar un servicio en la nube con los tamaños de máquinas virtuales de memoria alta A8 y A9. Para más información sobre estos tamaños de máquinas virtuales, consulte [Tamaños de máquinas virtuales y servicios en la nube de Azure].
-* **Redirección automática de HTTP a HTTPS para roles con SSL habilitado.** Cuando el servicio en la nube contiene solo roles HTTPS, si la solicitud de usuario especifica HTTP, este le redireccionará automáticamente a HTTPS. No hay ninguna necesidad de crear un rol independiente para controlar las solicitudes HTTP.
-* **Emulador rápido usado para la emulación local.** El emulador rápido de Azure ahora se usa como emulador a la hora de depurar las aplicaciones localmente.
+* **Compatibilidad con la versión de hello Azure SDK 2.3.** Hola complemento de Azure para Eclipse - versión de abril de 2014 requiere Azure SDK 2.3. Cuando se utiliza el nuevo complemento hello, si ya no dispone de Azure SDK 2.3, tendrá que ser solicitada tooallow su instalación. No utilice Azure SDK 2.3 con versiones anteriores de complemento de Hola.
+* **Actualización de las aplicaciones sin la implementación del paquete completo.** Al implementar aplicaciones de Java que forman parte del proyecto, Hola complemento ahora carga automáticamente en su cuenta de almacenamiento seleccionado para que pueda actualizarlo y reciclar Hola rol instancias toodeploy hello más recientes fragmentos de la aplicación sin necesidad de paquete todo hello toorebuild y volver a implementar.
+* **Tomcat 8 es ahora un servidor de aplicaciones reconocido.** Si selecciona un directorio de instalación de Tomcat 8 en el equipo en hello **Server** ficha de hello **Azure Deployment Project** cuadro de diálogo, complemento Hola ahora detectará automáticamente y ser capaz de toodeploy Tomcat 8 de forma automática, similar toohello las versiones anteriores de Tomcat ya está en la lista de Hola.
+* **Actualizaciones del paquete de Zulu de OpenJDK de Azul: actualización 51 de v1.7 y actualización 47 de v1.6.** A partir de esta versión, la actualización 51 del paquete de Zulu de Open JDK v7 de Azul System ya está disponible. Además, los paquetes de Zulu de Open JDK v6 empiezan a estar disponibles, empezando por la actualización 47. Estas actualizaciones son además toohello actualización disponible anteriormente Zulu Openjdk v7 paquete actualización 45, 40 y 25.
+* **Compatibilidad con los tamaños A8 y A9 de las máquinas virtuales de Microsoft Azure.** Ahora puede implementar un nube servicio toohello alto de memoria A8 y tamaños de máquina Virtual A9. Para más información sobre estos tamaños de máquinas virtuales, consulte [Tamaños de máquinas virtuales y servicios en la nube de Azure].
+* **Redirección automática de tooHTTPS HTTP para los roles compatibles con SSL.** Cuando el servicio de nube contiene solo los roles HTTPS, si la solicitud del usuario Hola especifica HTTP, se le redirigirá automáticamente tooHTTPS. No hay ninguna necesidad de toocreate un hello toohandle de roles independientes HTTP solicitudes.
+* **Emulador rápido usado para la emulación local.** Hola Express Emulator de Azure ahora se utiliza como emulador Hola al depurar las aplicaciones localmente.
 * **Azure ha pasado a llamarse Microsoft Azure.** Las pantallas de la interfaz de usuario reflejan ahora que Azure se ha cambiado el nombre y ya no se llama Azure.
 
 ### <a name="february-6-2014"></a>6 de febrero de 2014
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de febrero de 2014. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso basadas en comentarios que se han producido desde la versión preliminar de octubre de 2013:
+Hola complemento de Azure para Eclipse - febrero de 2014 ha publicado la vista previa. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso partir de comentarios desde Hola obtener una vista previa de octubre de 2013:
 
-* **Compatibilidad con la descarga de SSL.** La descarga de capa de sockets seguros (SSL) se ha agregado como característica, lo que le permitirá habilitar fácilmente la compatibilidad con el protocolo HTTPS en su implementación de Java en Azure, sin necesidad de configurar SSL en el servidor de aplicaciones Java. Esto es especialmente importante para la afinidad de la sesión o en escenarios de comunicación autenticados. Por ejemplo, cuando se usa el filtro Access Control Service (ACS), que ya es compatible con el kit de herramientas. Para más información, consulte [SSL Offloading] y[ Uso de la descarga de SSL].
-* **GlassFish 4 es ahora un servidor de aplicaciones reconocido**. Si selecciona un directorio de instalación de GlassFish 4 en el equipo en la pestaña **Servidor** del cuadro de diálogo **Proyecto de implementación de Azure**, el complemento lo detectará automáticamente y podrá implementar GlassFish OSE 4 de forma automática, de manera similar a la versión GlassFish OSE 3 que ya está en la lista.
-* **Actualización 45 del paquete de Zulu de OpenJDK de Azul.** A partir de esta versión, la actualización 45 de Zulu (paquete Open JDK v7) de Azul System ya está disponible; esta actualización viene a sumarse a las actualizaciones 40 y 25 disponibles anteriormente.
-* **Compatibilidad con modo 'auto' para puertos de punto de conexión privado.** Puede establecer un puerto privado en automático para los puntos de conexión de entrada y los puntos de conexión internos para permitir que Azure asigne automáticamente un puerto a ese punto de conexión. Anteriormente solo podía asignar un número de puerto específico.
-* **Compatibilidad para personalizar el nombre de certificado (CN) en la interfaz de usuario de creación de un certificado autofirmado.** Anteriormente, se usó el mismo nombre codificado de forma rígida para todos los certificados nuevos; ahora puede especificar su propio nombre de certificado para ayudar a distinguir entre varios certificados en Azure Portal usados para distintos fines.
-* **Barra de herramientas de Azure:** la barra de herramientas se ha actualizado con los siguientes cambios: 
-  * ![][ic710876] Este icono se agregó para el **nuevo proyecto de implementación de Azure**.
-  * ![][ic710877] Este icono se agregó como un acceso directo al cuadro de diálogo de creación de un certificado autofirmado.
-* **Compatibilidad con el tamaño A5 de máquina virtual de Azure.** Ahora ya puede implementar un servicio en la nube con el tamaño de máquinas virtuales de memoria alta A5. Para más información sobre este tamaño de máquinas virtuales, consulte [Tamaños de máquinas virtuales y servicios en la nube de Azure].
-* **Compatibilidad con Microsoft Windows Server 2012 R2.** Ahora puede seleccionar Windows Server 2012 R2 como sistema operativo en la nube.
+* **Compatibilidad con la descarga de SSL.** La descarga de Secure Sockets Layer (SSL) se ha agregado como una característica, lo que permite habilitar tooeasily admite la transferencia de hipertexto protocolo seguro (HTTPS) en su implementación de Java en Azure, sin necesidad de tooconfigure SSL en el servidor de aplicaciones Java. Esto es especialmente importante para la afinidad de la sesión o en escenarios de comunicación autenticados. Por ejemplo, cuando se usa Hola filtrar Access Control Service (ACS), ya que es compatible con el Kit de herramientas de Hola. Para obtener más información, consulte [la descarga de SSL] y [cómo tooUse la descarga de SSL].
+* **GlassFish 4 es ahora un servidor de aplicaciones reconocido**. Si selecciona un directorio de instalación de GlassFish 4 en el equipo en hello **Server** ficha de hello **Azure Deployment Project** cuadro de diálogo, complemento Hola ahora detectará automáticamente y ser capaz de toodeploy GlassFish OSE 4 de forma automática, versión toohello GlassFish OSE 3 similar ya está en la lista de Hola.
+* **Actualización 45 del paquete de Zulu de OpenJDK de Azul.** Vigente con esta versión, actualización de (paquete Openjdk v7) de Zulu de Azul System 45 ahora está disponible; Esto es además actualización disponible anteriormente toohello 40 y actualizar 25.
+* **Compatibilidad con modo 'auto' para puertos de punto de conexión privado.** Puede establecer un tooautomatic puerto privado para los extremos de entrada y extremos internos toolet Azure asignar un punto de conexión de puerto toothat automáticamente. Anteriormente solo podía asignar un número de puerto específico.
+* **Compatibilidad con la personalización de nombre (CN) del certificado de Hola Hola autofirmado creación del certificado de interfaz de usuario.** Anteriormente, Hola se usó el mismo nombre codificado de forma rígida para todos los certificados nuevos; Ahora puede especificar su propio toohelp de nombre de certificado distinguir entre varios certificados en hello portal de Azure utilizados para propósitos diferentes.
+* **Barra de herramientas de Azure:** hello Azure barra de herramientas tiene un controlador actualizado con hello siguientes cambios: 
+  * ![][ic710876]Este icono se agregó para hello **New Azure Deployment Project**.
+  * ![][ic710877]Este icono se agregó como un cuadro de diálogo de creación de accesos directos toohello certificado autofirmado.
+* **Compatibilidad con el tamaño A5 de máquina virtual de Azure.** Ahora puede implementar una memoria alta de toohello tamaño A5 de máquina Virtual de servicio en la nube. Para más información sobre este tamaño de máquinas virtuales, consulte [Tamaños de máquinas virtuales y servicios en la nube de Azure].
+* **Compatibilidad con Microsoft Windows Server 2012 R2.** Ahora puede seleccionar Windows Server 2012 R2 como sistema operativo de hello en la nube.
 
 ### <a name="october-22-2013"></a>22 de octubre de 2013
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de octubre de 2013. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso basadas en comentarios que se han producido desde la versión preliminar de septiembre de 2013:
+Hola complemento de Azure para Eclipse: octubre de 2013 Preview ha publicado. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso partir de comentarios desde Hola obtener una vista previa de septiembre de 2013:
 
-* **Compatibilidad con la versión 2.2 del SDK de Azure.** El complemento de Azure para Eclipse, versión preliminar de octubre de 2013, es compatible con la versión 2.2 del SDK de Azure. El complemento seguirá funcionando con la versión 2.1 del SDK de Azure e instalará automáticamente la versión 2.2 si no tiene al menos la versión 2.1 instalada.
-* **Actualización 40 del paquete de Zulu de OpenJDK de Azul.** Como se anunció para la versión preliminar de septiembre de 2013, el complemento ahora se habilita mediante un JDK proporcionado por terceros directamente en Azure, sin necesidad de cargar su propio JDK. En la versión de octubre de 2013, la actualización 40 de Zulu (paquete Open JDK v7) de Azul System ya está disponible; esta actualización viene a sumarse a la actualización 25 publicada originalmente.
-* **Vínculo de implementación en la nube en el registro de actividades.** En el registro de actividades de Azure, cuando la implementación tenga un estado **Publicado**, puede hacer clic en **Publicado** puesto que ahora es un vínculo a la implementación y esta se abrirá a continuación en el explorador. (El estado **Publicado** se etiquetaba previamente como **En ejecución**).
-* **Selección de sistema operativo de destino disponible en el momento de la publicación.** El cuadro de diálogo **Publicar en Azure** contiene un nuevo campo, **SO de destino**, que proporciona una manera más reconocible para establecer su sistema operativo de destino.
-* **Sobrescritura automática de la implementación anterior**. El cuadro de diálogo **Publicar en Azure** contiene una nueva casilla, **Sobrescribir implementación anterior**. Si se activa esta opción, cuando se publique la nueva implementación se sobrescribirá automáticamente la implementación anterior; así no experimentará problemas con el &quot;conflicto 409&quot; al publicar en la misma ubicación sin anular primero la publicación de la implementación anterior.
-* **Jetty 9 es ahora un servidor de aplicaciones reconocido.** Si selecciona un directorio de instalación de Jetty 9 en el equipo en la pestaña **Servidor** del cuadro de diálogo **Proyecto de implementación de Azure**, el complemento lo detectará automáticamente y podrá implementar Jetty 9 de forma automática, de manera similar a las versiones anteriores de Jetty que ya están en la lista.
-* **Adición de un rol desde el menú contextual del proyecto.** El menú contextual del proyecto de **Azure** contiene ahora un nuevo elemento de menú, **Agregar rol**, que proporciona una forma más rápida y reconocible de agregar un nuevo rol al proyecto de Azure.
-* **Una actualización para el paquete de las bibliotecas de Azure para la biblioteca de Java.** Esta se basa en la versión 0.4.6 de la [API de cliente de Microsoft Azure].
+* **Compatibilidad con la versión de hello Azure SDK 2.2.** Hello complemento de Azure para Eclipse - octubre de 2013 de vista previa es compatible con Azure SDK 2.2. complemento de Hello seguirá funcionando con Azure SDK 2.1 e instalará automáticamente Azure SDK 2.2 si ya no tiene al menos Azure SDK 2.1 instalado.
+* **Actualización 40 del paquete de Zulu de OpenJDK de Azul.** Como se anunció para hello septiembre 2013 Preview, complemento de hello ahora permite el uso de un JDK proporcionado por terceros directamente en Azure, sin necesidad de tooupload su propio JDK. Actualización de (paquete Openjdk v7) de Zulu de Azul System 40 Hola versión de octubre de 2013, ya está disponible; Esto es en toohello adición publicó originalmente actualizar 25.
+* **Vínculo de implementación de nube en hello registro de actividad.** Dentro de hello Azure Activity Log, cuando la implementación tiene un estado de **publicada**, puede hacer clic en **publicada** ya que ahora es una implementación de tooyour vínculo; la implementación, a continuación, se abrirá en el explorador. (Hola estado de **publicada** estaba previamente con la etiqueta **ejecutando**.)
+* **Selección de sistema operativo de destino disponible en el momento de la publicación.** Hola **publicar tooAzure** cuadro de diálogo contiene un nuevo campo, **Target OS**, que proporciona una manera más reconocible para tooset el sistema operativo de destino.
+* **Sobrescritura automática de la implementación anterior**. Hola **publicar tooAzure** cuadro de diálogo contiene una casilla nueva, **sobrescribir implementación anterior**. Si se activa esta opción, cuando se publique la nueva implementación se sobrescribirán automáticamente implementación anterior de hello; no experimentaría &quot;409 conflicto&quot; emite al publicar toohello misma ubicación sin primera implementación anterior de hello anulando la publicación.
+* **Jetty 9 es ahora un servidor de aplicaciones reconocido.** Si selecciona un directorio de instalación de Jetty 9 en el equipo en hello **Server** ficha de hello **Azure Deployment Project** cuadro de diálogo, complemento Hola ahora detectará automáticamente y ser capaz de toodeploy Jetty 9 en un modo automatizado y similar toohello las versiones anteriores de Jetty ya está en la lista de Hola.
+* **Agregar un rol desde el menú contextual del proyecto Hola.** Hola **Azure** menú contextual del proyecto contiene ahora un nuevo elemento de menú, **Agregar rol**, que proporciona una rápida y más forma reconocible para tooadd un tooyour de rol nuevo proyecto de Azure.
+* **Una actualización toohello paquete para hello bibliotecas de Azure para la biblioteca de Java.** Esto se basa en la versión 0.4.6 de hello [API de cliente de Microsoft Azure].
 
 ### <a name="september-25-2013"></a>25 de septiembre de 2013
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de septiembre de 2013. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso basadas en comentarios que se han producido desde la versión preliminar de agosto de 2013:
+Hola complemento de Azure para Eclipse: septiembre de 2013 Preview ha publicado. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso partir de comentarios desde Hola obtener una vista previa de agosto de 2013:
 
-* **Capacidad para implementar el paquete de Zulu de OpenJDK de Azul disponible en Azure.** Se ha agregado una nueva opción al especificar el JDK que desea usar con la implementación de Azure. Con esta opción, puede implementar un paquete JDK de terceros directamente en la nube de Azure, sin tener que cargar los suyos propios. Azul Systems ofrece el primer paquete de este tipo llamado Zulu, basado en OpenJDK, que ahora se puede implementar mediante esta opción.
-* **Una actualización para el paquete de las bibliotecas de Azure para la biblioteca de Java.** Esta se basa en la versión 0.4.5 de la [API de cliente de Microsoft Azure].
+* **Capacidad toodeploy hello OpenJDK de Zulu de Azul paquete disponible en Azure.** Se ha agregado una nueva opción al especificar Hola JDK toouse con la implementación de Azure. Con esta opción, puede implementar un paquete JDK de terceros directamente en hello nube de Azure, sin necesidad de tooupload su propio. Azul Systems ofrece primero Hola paquete de este tipo llamado Zulu, basado en hello OpenJDK, que ahora se puede implementar con esta opción.
+* **Una actualización toohello paquete para hello bibliotecas de Azure para la biblioteca de Java.** Esto se basa en la versión 0.4.5 de hello [API de cliente de Microsoft Azure].
 
 ### <a name="august-1-2013"></a>1 de agosto de 2013
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de agosto de 2013. Se trata de una actualización que acompaña a la versión 2.1 del SDK de Azure, que es un requisito previo y se descargará automáticamente al instalar el complemento. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso basadas en comentarios que se han producido desde la versión preliminar de julio de 2013:
+Hola complemento de Azure para Eclipse: agosto de 2013 Preview ha publicado. Esto es una actualización que acompaña a versión de Hola de hello Azure SDK 2.1, que es un requisito previo y se descargará automáticamente al instalar el complemento de Hola. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso partir de comentarios desde Hola obtener una vista previa de julio de 2013:
 
-* **Eliminación de opciones para incluir el JDK local y el servidor de aplicaciones local como parte del paquete de implementación.** Descargar el JDK y el servidor de aplicaciones del almacenamiento en la nube durante la implementación es preferible a insertar estos componentes en el paquete, puesto que la descarga de elementos da como resultado paquetes de implementación de menor tamaño, tiempos de implementación más rápidos y un mantenimiento más sencillo. Como resultado, se han quitado las opciones para incluir el JDK y el servidor de aplicaciones en el paquete de implementación. Los proyectos existentes que se configuraron para incluir el JDK local y el servidor de aplicaciones local como parte del paquete de implementación se convertirán automáticamente para la carga automática del JDK y del servidor de aplicaciones en el almacenamiento en la nube.
-* **Compatibilidad con la versión 2.1 del SDK de Azure.** El complemento de Azure para Eclipse, versión preliminar de agosto de 2013, requiere la versión 2.1 del SDK de Azure. No utilice la versión preliminar de agosto de 2013 con versiones anteriores del SDK de Azure y no utilice la versión 2.1 con versiones anteriores del complemento de Azure para Eclipse.
-* **Compatibilidad con la versión Kepler de Eclipse.** En relación con esto, la nueva versión mínima necesaria del IDE de Eclipse es Indigo. El complemento de Azure para Eclipse ha dejado de probarse oficialmente en Helios.
+* **Eliminación de opciones tooinclude Hola JDK local y el servidor de aplicaciones local como parte del paquete de implementación de Hola.** Descargar Hola JDK y servidor de aplicaciones de almacenamiento en nube durante la implementación de hello es preferible tooembedding empaquetar estos componentes en hello, desde la descarga de resultados de los elementos hello en menores tiempos de implementación más rápida, tamaño de paquete de implementación y más fácil mantenimiento. Como resultado, Hola opciones tooinclude Hola JDK y servidor de aplicaciones en el paquete de implementación de Hola se han quitado. Los proyectos existentes que estaban configurado tooinclude Hola JDK local y el servidor de aplicaciones local como parte del paquete de implementación de hello automáticamente serán convertidos tooauto-upload hello JDK y almacenamiento de toocloud de servidor de aplicaciones.
+* **Compatibilidad con la versión de hello Azure SDK 2.1.** Hola complemento de Azure para Eclipse: agosto de 2013 Preview requiere Azure SDK 2.1. No utilice la vista previa de agosto de 2013 de hello con versiones anteriores de hello Azure SDK y no utilice Azure SDK 2.1 con versiones anteriores de hello complemento de Azure para Eclipse.
+* **Compatibilidad con la versión de Hola Kepler de Eclipse.** Toothis relacionados, Hola nueva versión mínima necesaria Eclipse IDE es Indigo. Hola complemento de Azure para Eclipse oficialmente ya no se ha probado en Helios.
 
 ### <a name="july-3-2013"></a>3 de julio de 2013
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de julio de 2013. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso basadas en comentarios que se han producido desde la versión preliminar de mayo de 2013:
+Hola complemento de Azure para Eclipse - julio de 2013 Preview ha publicado. Esta actualización incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso partir de comentarios desde Hola puede 2013 obtener una vista previa:
 
-* **Capacidad de crear una cuenta de almacenamiento.** Se ha agregado el botón **Nueva** al cuadro de diálogo **Agregar cuenta de almacenamiento**. Esto le permite crear una cuenta de almacenamiento dentro del complemento de Eclipse, sin necesidad de iniciar sesión en el portal de administración de Azure. (Debe tener una suscripción de Azure para usar esta característica). Para más información acerca de la creación de una cuenta de almacenamiento, consulte [Creación de una nueva cuenta de almacenamiento].
-* **Nueva opción &quot;(automática)&quot; de cuenta de almacenamiento usada para la implementación automática de JDK y del servidor y para almacenamiento en caché.** Al usar la opción **Cargar automáticamente** para el JDK y el servidor de aplicaciones, podrá ya especificar la opción **(automática)** para la cuenta de almacenamiento y la dirección URL que se usarán al cargar el JDK y el servidor de aplicaciones, o al usar el almacenamiento en caché de Azure. En ese momento, estas características usarán automáticamente la misma cuenta de almacenamiento que la que seleccionó en el cuadro de diálogo **Publicar en Azure** . Se ha actualizado el tutorial [Creación de una aplicación Hola a todos para Azure en Eclipse] para incluir el uso de la nueva opción **(automática)** .
-* **Capacidad de configurar los puntos de conexión de servicio de Azure.** Especifique los puntos de conexión de servicio que determinan si la aplicación se implementa y se administra en la plataforma global de Azure, es operada en Azure por medio de 21Vianet en China o en una plataforma privada de Azure. Para más información, consulte [Puntos de conexión de servicio de Azure].
-* **Las implementaciones de gran tamaño pueden especificar un recurso de almacenamiento local.** En caso de que su implementación sea demasiado grande para incluirse en la carpeta approot predeterminada, ahora puede especificar un recurso de almacenamiento local como destino de implementación para el JDK y el servidor de aplicaciones. Para más información, consulte [Deploying Large Deployments].
-* **Compatibilidad con los tamaños A6 y A7 de máquinas virtuales de Azure.** Ahora ya puede implementar un servicio en la nube con los tamaños de máquinas virtuales de memoria alta A6 y A7. Para más información sobre estos tamaños, consulte [Tamaños de máquinas virtuales y servicios en la nube de Azure].
-* **Una actualización para el paquete de las bibliotecas de Azure para la biblioteca de Java.** Esta se basa en la versión 0.4.4 de la [API de cliente de Microsoft Azure].
+* **Capacidad toocreate una nueva cuenta de almacenamiento.** A **New** botón se ha agregado toohello **agregar una cuenta de almacenamiento** cuadro de diálogo. Esto le permite toocreate una cuenta de almacenamiento dentro de complemento de Eclipse hello, sin necesidad de toolog en toohello Portal de administración de Azure. (Ya debe tener una suscripción de Azure toouse esta característica.) Para obtener más información acerca de cómo crear una nueva cuenta de almacenamiento, consulte [toocreate una nueva cuenta de almacenamiento].
+* **Nueva opción &quot;(automática)&quot; de cuenta de almacenamiento usada para la implementación automática de JDK y del servidor y para almacenamiento en caché.** Cuando se usa hello **se cargue automáticamente** opción para hello JDK y servidor de aplicaciones, ahora puede especificar **(auto)** para hello el toouse de cuenta dirección URL y el almacenamiento al cargar hello JDK y servidor de aplicaciones, o bien, cuando se usa el almacenamiento en caché de Azure. A continuación, estas características utilizarán automáticamente Hola la misma cuenta de almacenamiento como uno que se seleccionan en Hola Hola **publicar tooAzure** cuadro de diálogo. Hola [crear una aplicación Hello World de Azure en Eclipse] tutorial ha sido actualizada toouse Hola nueva **(auto)** opción.
+* **Capacidad tooset los extremos de servicio de Azure.** Especificar extremos de servicio de Hola que determinan que si la aplicación está implementada tooand administrado por la plataforma global de Azure hello, Azure operado por 21Vianet en China o una privada plataforma Windows Azure. Para más información, consulte [Puntos de conexión de servicio de Azure].
+* **Las implementaciones de gran tamaño pueden especificar un recurso de almacenamiento local.** En caso de Hola que su implementación es demasiado grande toobe contenido en la carpeta approot de hello predeterminada, ahora puede especificar un recurso de almacenamiento local como destino de la implementación de hello para el JDK y servidor de aplicaciones. Para más información, consulte [Deploying Large Deployments].
+* **Compatibilidad con los tamaños A6 y A7 de máquinas virtuales de Azure.** Ahora puede implementar un nube servicio toohello alto de memoria A6 y tamaños de máquina Virtual A7. Para más información sobre estos tamaños, consulte [Tamaños de máquinas virtuales y servicios en la nube de Azure].
+* **Una actualización toohello paquete para hello bibliotecas de Azure para la biblioteca de Java.** Esto se basa en la versión 0.4.4 de hello [API de cliente de Microsoft Azure].
 
 ### <a name="may-1-2013"></a>1 de mayo de 2013
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de mayo de 2013. Se trata de una actualización principal que acompaña a la versión 2.0 del SDK de Azure, que es un requisito previo y se descargará automáticamente al instalar el complemento. Esta versión incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso basadas en comentarios que se han producido desde la versión preliminar de febrero de 2013:
+Hello Azure para Eclipse - puede 2013 Preview ha publicado el complemento. Esto es una actualización importante que acompaña a versión de Hola de hello Azure SDK 2.0, que es un requisito previo y se descargará automáticamente al instalar el complemento de Hola. Esta versión incluye nuevas características, correcciones de errores y algunas mejoras de facilidad de uso partir de comentarios desde Hola obtener una vista previa de febrero de 2013:
 
-* **Carga automática del JDK y del servidor de aplicaciones en Azure Storage, e implementación desde allí.** Una nueva opción que automáticamente cargará el JDK y el servidor de aplicaciones seleccionados, cuando sea necesario, en una cuenta de Azure Storage especificada e implementará estos componentes desde allí, en lugar de insertar en el paquete de implementación o hacer que el usuario los cargue manualmente. Esta característica habitualmente solicitada puede mejorar considerablemente la facilidad de implementación de los componentes de servidor y del JDK, especialmente para los usuarios inexpertos. Para ver un tutorial que use estas opciones, consulte [Creación de una aplicación Hola a todos para Azure en Eclipse].
-* **Seguimiento centralizado de la cuenta de almacenamiento y capacidad para hacer referencia a cuentas de almacenamiento más fácilmente (a través de un control desplegable).** Esto se aplica a varias características que dependen del almacenamiento, como el JDK y la implementación de componentes de servidor y el almacenamiento en caché. Para más información, consulte [Lista de cuentas de Azure Storage].
-* **Configuración simplificada de acceso remoto en el asistente Publicar en la nube.** Todo lo que necesita hacer es escribir un nombre de usuario y una contraseña para habilitar el acceso remoto, o dejarlos en blanco para mantener el acceso remoto deshabilitado.
-* **Una actualización para el paquete de las bibliotecas de Azure para la biblioteca de Java.** Esta se basa en la versión 0.4.2 de la [API de cliente de Microsoft Azure].
+* **Carga automática de hello JDK y servidor de aplicaciones e implementación del almacenamiento de Azure.** Una nueva opción que carga automáticamente Hola JDK seleccionado y el servidor de aplicaciones, cuando sea necesario, tooa la cuenta de almacenamiento de Azure especificada e implementa estos componentes a partir de ahí, en lugar de incrustar en el paquete de implementación de Hola o having, a continuación, carga de usuario de Hola de forma manual. Esta característica habitualmente solicitada puede mejorar considerablemente la facilidad de Hola de hello implementar JDK y los componentes de servidor, especialmente para los usuarios inexpertos. Para ver un tutorial que use estas opciones, consulte [crear una aplicación Hello World de Azure en Eclipse].
+* **Centralizado del seguimiento de la cuenta de almacenamiento y las cuentas de almacenamiento de capacidad tooreference más fácilmente (a través de un control de lista desplegable).** Esto aplica toomultiple características que dependen de almacenamiento, como el JDK y la implementación de componentes de servidor y el almacenamiento en caché. Para más información, consulte [Lista de cuentas de Azure Storage].
+* **Instalación simplificada de acceso remoto en el Asistente para tooCloud la publicación de Hola.** Todo lo que necesita toodo es de tipo en un nombre de usuario y contraseña tooenable acceso remoto o deje está en blanco tookeep deshabilitado el acceso remoto.
+* **Una actualización toohello paquete para hello bibliotecas de Azure para la biblioteca de Java.** Esto se basa en la versión 0.4.2 de hello [API de cliente de Microsoft Azure].
 * **Compatibilidad con sesiones temporales en Windows Server 2012.** Anteriormente, las sesiones temporales funcionaban solo en Windows Server 2008 R2, ahora ambos destinos de sistemas operativos en la nube admiten afinidad de sesiones.
-* **Mejoras en el rendimiento de la carga de paquete.** Incluso cuando se inserta el JDK y el servidor de aplicaciones en el paquete de implementación, la parte de carga del proceso de implementación es aproximadamente dos veces más rápida en comparación con versiones anteriores.
+* **Mejoras en el rendimiento de la carga de paquete.** Incluso cuando Hola JDK y servidor de aplicaciones se incrustan en el paquete de implementación de hello, parte de la carga de Hola Hola del proceso de implementación puede ser aproximadamente dos veces tan rápido como versiones tooprevious comparados.
 
 ### <a name="february-8-2013"></a>8 de febrero de 2013
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de febrero de 2013. Esta actualización secundaria incluye correcciones de errores, mejoras de facilidad de uso basadas en comentarios y algunas características nuevas que se han producido desde la versión preliminar de noviembre de 2012:
+Hola complemento de Azure para Eclipse - febrero de 2013 Preview ha publicado. Se trata de una actualización menor que incluye correcciones de errores, mejoras de facilidad de uso partir de comentarios y algunas nuevas características desde Hola obtener una vista previa de noviembre de 2012:
 
-* Compatibilidad para implementar JDK, servidores de aplicaciones y otros componentes arbitrarios desde descargas públicas o privadas desde Azure Blob Storage en lugar de incluirlos en el paquete de implementación a la hora de implementarlos en la nube.
-* Capacidad para cambiar el orden en que se procesan los componentes definidos por el usuario de un rol, mediante la adición de los botones **Subir** y **Bajar** en la sección **Componentes** de las **propiedades del rol de Azure**.
-* Actualización del **paquete para bibliotecas de Azure para la biblioteca de Java** , basada en la versión 0.4.0 de la [API de cliente de Microsoft Azure].
+* Compatibilidad para implementar JDK, servidores de aplicaciones y arbitrariamente otros componentes de Azure público o privado blob descargas de almacenamiento en lugar de incluirlos en el paquete de implementación de hello al implementar toohello en la nube.
+* Orden de Hola de capacidad toochange en el que se procesan los componentes definidos por el usuario de una función, a través de la adición de Hola de **Subir** y **Bajar** botones en hello **componentes** sección de hello **propiedades de rol de Azure**.
+* Una actualización toohello **paquete para bibliotecas de Azure para Java hello** biblioteca, en función de la versión 0.4.0 de hello [API de cliente de Microsoft Azure].
 
 ### <a name="november-5-2012"></a>5 de noviembre de 2012
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de noviembre de 2012. Esta es una actualización principal que incluye varias características nuevas, así como correcciones de errores adicionales y mejoras de facilidad de uso basadas en comentarios que se han producido desde la versión preliminar de septiembre de 2012:
+Hola complemento de Azure para Eclipse (noviembre de 2012) ha publicado la vista previa. Se trata de una actualización importante que incluye una serie de nuevas características, así como correcciones de errores adicionales y mejoras en el uso de partir de comentarios desde septiembre de 2012 de Hola obtener una vista previa:
 
-* Compatibilidad con Microsoft Windows Server 2012 como sistema operativo en la nube.
+* Compatibilidad con Microsoft Windows Server 2012 como sistema operativo de hello en la nube.
 * Compatibilidad con el soporte colocado de almacenamiento en caché de Azure para clientes con Memcaché.
-* Inclusión de las bibliotecas de cliente Apache Qpid JMS para aprovechar la mensajería basada en AMQP de Azure.
-* Mejora del asistente **Nuevo proyecto** , con una nueva página al final que proporciona a los usuarios la capacidad de habilitar rápidamente varias características clave comunes en el proyecto: sesiones temporales, almacenamiento en caché y depuración remota.
-* Reducción automática de instancias de rol a 1 cuando se ejecuta en el emulador de proceso, para evitar conflictos de enlace de puerto entre instancias de servidor.
+* Inclusión de bibliotecas de cliente de hello Apache Qpid JMS para aprovechar la mensajería basada en AMQP de Azure.
+* Mejora **nuevo proyecto** asistente, con una nueva página al final de Hola que proporciona a los usuarios con hello capacidad tooquickly habilitar varias características clave comunes en su proyecto: sesiones permanentes, almacenamiento en caché y la depuración remota.
+* Reducción automática de too1 de instancias de rol cuando se ejecuta en el emulador de proceso de hello, tooavoid conflictos de enlace de puerto entre instancias de servidor.
 
 ### <a name="september-28-2012"></a>28 de septiembre de 2012
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de septiembre de 2012. Esta actualización de servicio incluye una serie de correcciones de errores adicionales realizadas desde la versión preliminar de agosto de 2012, así como algunas mejoras de facilidad de uso en las características ya existentes basadas en comentarios:
+Hola complemento de Azure para Eclipse (septiembre de 2012) ha publicado la vista previa. Esta actualización de servicio incluye una serie de correcciones de errores adicionales desde Hola vista previa de agosto de 2012, así como algunas mejoras de facilidad de uso partir de comentarios en las características existentes:
 
-* Compatibilidad con Microsoft Windows 8 y Microsoft Windows Server 2012 como sistemas operativos de desarrollo, solucionando así los problemas que anteriormente impidieron que el complemento funcionara correctamente en esos sistemas operativos.
+* Compatibilidad con Microsoft Windows 8 y Microsoft Windows Server 2012 como sistema operativo de desarrollo de hello, resolver problemas que anteriormente impedían que Hola complemento funciona correctamente en esos sistemas operativos.
 * Compatibilidad mejorada para especificar intervalos de puerto del punto de conexión.
-* Correcciones de errores relacionados con las rutas de acceso a archivos que contienen espacios.
-* Mejoras en el menú contextual de rol para un acceso más rápido a los valores de configuración específicos del rol.
-* Pequeños refinamientos en el asistente **Publicar en la nube** y una serie de correcciones de errores adicionales.
+* Correcciones de errores relacionados con las rutas de acceso de toofile que contienen espacios.
+* Mejoras rol en el menú contextual para los valores de configuración específicos de toorole de acceso más rápidos.
+* Pequeñas mejoras en hello **publicar toocloud** asistente y un número de correcciones de errores adicionales.
 
 ### <a name="august-28-2012"></a>28 de agosto de 2012
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de agosto de 2012. Esta actualización de servicio incluye correcciones de errores adicionales realizadas desde la versión preliminar de julio de 2012, así como algunas mejoras de facilidad de uso en las características ya existentes basadas en comentarios:
+Hola complemento de Azure para Eclipse (agosto de 2012) ha publicado la vista previa. Esta actualización de servicio incluye correcciones de errores adicionales desde Hola vista previa de julio de 2012, así como varias mejoras de facilidad de uso partir de comentarios para las características existentes:
 
-* En el cuadro de diálogo Filtro de Azure Access Control Service:
-  * **Opción para insertar el certificado de firma** en el archivo WAR de la aplicación, para simplificar la implementación en la nube.
-  * **Opción para crear un certificado autofirmado** dentro de la interfaz de usuario del filtro ACS. Para obtener información adicional sobre el filtro de Azure Access Control Service, consulte [Autenticación de usuarios web con Azure Access Control Service mediante Eclipse].
-* En el asistente para proyectos de implementación de Azure (también se aplica a la página de propiedades de configuración del servidor del rol):
-  * **Detección automática de la ubicación del JDK** en el equipo (que puede reemplazar si lo desea).
-  * **Detección automática del tipo de servidor** al seleccionar el directorio de instalación del servidor de aplicaciones.
+* En el cuadro de diálogo de filtro de servicios de Control de acceso de Azure hello:
+  * **Hola de tooembed opción certificado de firma** en archivo WAR de la aplicación, toosimplify en la nube de implementación.
+  * **Opción toocreate un certificado autofirmado** dentro de hello ACS filtrar la interfaz de usuario. Para obtener información adicional acerca de hello filtro de servicios de Control de acceso de Azure, consulte [cómo tooAuthenticate usuarios Web con Azure Access Control Service mediante Eclipse].
+* Asistente para proyecto de implementación de Azure de hello (que también se aplica página de propiedades de configuración del servidor del rol toohello):
+  * **La detección automática de ubicación de JDK hello** en el equipo (que puede invalidar si lo desea).
+  * **La detección automática de tipo de servidor hello** al seleccionar el directorio de instalación del servidor de aplicaciones de Hola.
 
 ### <a name="july-15-2012"></a>15 de julio de 2012
-Se ha publicado el complemento de Azure para Eclipse, versión preliminar de julio de 2012, que soluciona varios de los errores más prioritarios encontrados y/o notificados por los usuarios después de la versión de junio de 2012. Esta es solo una actualización de servicio, no se incluyen nuevas características.
+Hola complemento de Azure para Eclipse - julio de 2012 Preview, que corrige una serie de hello errores más prioritarios encontrados o notificados por los usuarios después de la versión de junio de 2012 de hello, ha publicado. Esta es solo una actualización de servicio, no se incluyen nuevas características.
 
 ### <a name="june-7-2012"></a>7 de junio de 2012
 Se ha publicado el complemento de Azure para Eclipse, CTP de junio de 2012. Las nuevas características incluyen:
 
-* **Nuevo asistente para proyecto de implementación de Azure:** le permite seleccionar el JDK, el servidor de aplicaciones Java y las aplicaciones de Java directamente en la interfaz de usuario mejorada del asistente. Incluidas en la lista de configuraciones del servidor listas para usar, puede elegir Tomcat 6, Tomcat 7, GlassFish OSE 3, Jetty 7, Jetty 8, JBoss 6 y JBoss 7 (independiente). Además, puede personalizar la lista de configuraciones del servidor. Esta mejora de la interfaz de usuario es una alternativa a arrastrar y colocar archivos comprimidos y copiarlos a través de scripts de inicio, que antes era el método principal. Ese método todavía funciona bien, pero es probable que se use solo para escenarios más avanzados.
-* **Página de propiedades de rol de la configuración del servidor:** le permite cambiar fácilmente los JDK, los servidores de aplicaciones de Java y las aplicaciones asociadas con la implementación después de haber creado el proyecto. Para más información, consulte [Propiedades de configuración del servidor].
-* **&quot;Asistente &quot;Publicar en la nube** : proporciona una manera fácil de implementar el proyecto en Azure directamente desde Eclipse, automatizando el pesado proceso manual anterior de obtención de credenciales, inicio de sesión en el portal de administración de Azure, carga de un paquete, etc. Para obtener un ejemplo de cómo implementar el proyecto directamente en Azure, consulte [Creación de una aplicación Hola a todos para Azure en Eclipse]
-* **Barra de herramientas de Azure:** una barra de herramientas de Azure que está ahora disponible en Eclipse contiene botones que invocan las siguientes características:
-  * ![][ic710879] **Ejecutar en emulador de Azure**: ejecuta el proyecto en el emulador.
-  * ![][ic710880] **Restablecer emulador de Azure**: restablece el emulador.
-  * ![][ic710881] **Crear paquete en la nube para Azure**: compila el paquete para la implementación.
-  * ![][ic710876] **Nuevo proyecto de implementación de Azure**: crea un nuevo proyecto de implementación de Azure.
-  * ![][ic710882] **Publicar en la nube de Azure**: publica el proyecto en Azure.
-  * ![][ic710883] **Cancelar la publicación**: elimina la implementación.
-  * Muchos de estos botones de la barra de herramientas de Azure se usan en [Creación de una aplicación Hola a todos para Azure en Eclipse].
-* **Bibliotecas de Azure para Java:** ahora disponibles como parte del paquete único de bibliotecas de Azure para la biblioteca de Java en Eclipse, que acompaña a la instalación del complemento y que contiene también todas las dependencias necesarias. Simplemente agregue una referencia a la biblioteca en el proyecto de Java y no necesitará descargar nada por separado. Para más información, consulte [Instalación del kit de herramientas de Azure para Eclipse].
-* **Microsoft JDBC Driver 4.0 para SQL Server está disponible durante la instalación del complemento:** durante la instalación del complemento nuevo, se puede instalar la versión más reciente de Microsoft JDBC Driver para SQL Server.
-* **Filtro de Azure Access Control Service disponible durante la instalación del complemento:** este componente nuevo, incluido como una biblioteca de Eclipse en el kit de herramientas, habilita a la aplicación web de Java para aprovecharse sin problemas de la autenticación de Azure Access Control Service (ACS) mediante varios proveedores de identidades, como Google, Live.com y Yahoo!. No necesitará escribir la lógica de autenticación personalmente, solo tiene que configurar algunas opciones y dejar que el filtro haga el trabajo pesado de habilitar a los usuarios para iniciar sesión mediante ACS. Así puede centrarse solo en escribir el código que proporciona a los usuarios acceso a los recursos basándose en su identidad, tal como lo devuelve el filtro del objeto de solicitud a la aplicación. Para obtener un tutorial sobre cómo usar el filtro de ACS, consulte [Autenticación de usuarios web con Azure Access Control Service mediante Eclipse].
-* **Detección automática de los requisitos previos de la versión 1.7 del SDK de Azure:** al crear un nuevo proyecto de implementación de Azure, esta versión se descargará automáticamente si no está ya instalada.
-* **Puntos de conexión de instancia:** permite el acceso directo del punto de conexión del puerto para la comunicación con instancias de rol de carga equilibrada. Se pueden agregar los puntos de conexión de instancia a través de la interfaz de usuario de los puntos de conexión, disponible en la página [Propiedades de puntos de conexión] . Esto ayuda a habilitar la depuración remota y el diagnóstico de JMX para instancias de proceso específicas que se ejecutan en la nube en escenarios con implementaciones de varias instancias. 
-* **Interfaz de usuario para componentes:** facilita a los usuarios avanzados la configuración de las dependencias del proyecto entre los roles individuales de Azure en el proyecto y otros recursos externos como los proyectos de aplicación de Java; también facilita la descripción de su lógica de implementación. Para más información, consulte [Propiedades de componentes].
-* **Actualización automática de versiones anteriores de proyectos:** si abre un área de trabajo que tiene un proyecto creado con una versión anterior del complemento de Azure, los proyectos antiguos aparecerán en Eclipse como cerrados, porque las versiones anteriores de proyectos no son compatibles con la nueva versión. Si intenta abrir uno de estos proyectos antiguos, se iniciará un asistente de actualización. Si acepta la actualización, se creará un proyecto, con **_Upgraded** anexado al nombre, y se actualizará automáticamente para funcionar con la nueva versión. Puede cambiar el nombre del nuevo proyecto según sea necesario. Como parte de la actualización, el proyecto original no se modificará (y permanecerá cerrado).
+* **Asistente para nuevo proyecto de implementación de Azure:** permite tooselect el JDK, servidor de aplicaciones Java y las aplicaciones de Java directamente en la interfaz de usuario del asistente mejorado Hola. Incluido en la lista de Hola de toochoose de las configuraciones del servidor de son Tomcat 6, 7 de Tomcat, GlassFish OSE 3, Jetty 7, 8 de Jetty, JBoss 6 y JBoss 7 (independiente). Además, puede personalizar la lista de Hola de configuraciones de servidor. Esta mejora de la interfaz de usuario es una alternativa toodragging y colocar archivos comprimidos y copiar a través de scripts de inicio, que era anteriormente Hola enfoque principal. Ese método todavía funciona bien, pero es probable que se use solo para escenarios más avanzados.
+* **Página de propiedades de rol de servidor Configuration:** permite tooeasily conmutador Hola JDK, servidores de aplicaciones de Java y las aplicaciones asociadas con la implementación después de haber creado el proyecto de Hola. Para más información, consulte [Propiedades de configuración del servidor].
+* **&quot;Publicar toocloud&quot; asistente:** proporciona una manera sencilla de toodeploy su tooAzure proyecto directamente desde Eclipse, automatización Hola anterior proceso manual pesado de obtención de credenciales, iniciar sesión en el Portal de administración de Azure, toohello cargar un paquete, etcetera. Para obtener un ejemplo de cómo toodirectly implementar su proyecto tooAzure, consulte [crear una aplicación Hello World de Azure en Eclipse].
+* **Barra de herramientas de Azure:** barra de herramientas de Azure ahora está disponible en Eclipse, que contiene botones que invocan Hola siguientes características:
+  * ![][ic710879]**Run in Azure Emulator**: ejecuta el proyecto en el emulador de Hola.
+  * ![][ic710880]**Reset Azure Emulator**: restablece Hola emulador.
+  * ![][ic710881]**Crear paquete en la nube para Azure**: compila el paquete para la implementación.
+  * ![][ic710876]**Nuevo proyecto de implementación de Azure**: crea un nuevo proyecto de implementación de Azure.
+  * ![][ic710882]**Publicar tooAzure nube**: publica su tooAzure de proyecto.
+  * ![][ic710883]**Cancelar la publicación**: elimina la implementación.
+  * Muchos de estos botones de la barra de herramientas de Azure se usan en [crear una aplicación Hello World de Azure en Eclipse].
+* **Bibliotecas de Azure para Java:** ahora disponible como parte del programa Hola a un único paquete para bibliotecas de Azure para la biblioteca de Java en Eclipse, que acompaña a la instalación del complemento de Hola y que contenga todos dependencias necesarias de Hola. Basta con agregar una biblioteca de toohello de referencia en el proyecto de Java y no necesita toodownload nada por separado. Para obtener más información, consulte [instalar hello Azure Toolkit for Eclipse].
+* **Microsoft JDBC Driver 4.0 para SQL Server está disponible durante la instalación del complemento:** durante la instalación del complemento nuevo de hello, se puede instalar la versión más reciente de Hola de hello Microsoft JDBC Driver para SQL Server.
+* **Azure filtro de servicio Access Control disponible durante la instalación del complemento:** este componente nuevo, incluido como una biblioteca de Eclipse en el Kit de herramientas de hello, permite la Java web aplicación tooseamlessly aprovechar las ventajas de Azure Access Control Service (ACS) autenticación mediante varios proveedores de identidad, como Google, Live.com y Yahoo!. No necesita lógica de autenticación toowrite usted mismo, simplemente configure algunas opciones y dejar que filtro Hola a realice Hola pesada de elevación de la habilitación de los usuarios toosign con ACS. Puede centrarse simplemente en escribir código de hello que proporciona a los usuarios tooresources de acceso en función de su identidad, como devuelve tooyour aplicación Hola filtro dentro del objeto de solicitud de saludo. Para obtener un tutorial sobre el uso de ACS de Hola de filtro, vea [cómo tooAuthenticate usuarios Web con Azure Access Control Service mediante Eclipse].
+* **La detección automática de requisito previo de hello Azure SDK 1.7:** al crear un nuevo proyecto de implementación de Azure, Azure SDK 1.7 se descargará automáticamente si no está ya instalado.
+* **Puntos de conexión de instancia:** permite el acceso directo del punto de conexión del puerto para la comunicación con instancias de rol de carga equilibrada. Se pueden agregar extremos de instancia a través de extremos de hello interfaz de usuario, disponible a través de hello [propiedades de extremos] página. Esto ayuda a habilitar la depuración remota y diagnóstico de JMX específica para calcula instancias que se ejecutan en la nube de hello en escenarios con varios-implementaciones de la instancia. 
+* **Componentes de interfaz de usuario:** facilita a los usuarios avanzados tooset las dependencias de proyecto entre los roles individuales de Azure en proyecto de Hola y otros recursos externos como los proyectos de aplicación de Java; también hace más fácil toodescribe su lógica de implementación . Para más información, consulte [Propiedades de componentes].
+* **La actualización automática de las versiones anteriores de proyectos:** cuando se abre un área de trabajo que tiene el proyecto de Azure creado con una versión anterior del complemento de hello, proyectos antiguos Hola se mostrará en Eclipse como cerrados, porque las versiones anteriores de proyectos no son es compatible con la nueva versión de hello. Si intentas tooopen uno de estos proyectos antiguos, se iniciará un asistente de actualización. Si los acepta toohello actualizar un proyecto nuevo, con **_Upgraded** toohello anexado nombre, se creará y actualiza automáticamente toowork con la nueva versión de hello. Puede cambiar el nombre de proyecto nuevo de hello según sea necesario. Como parte de la actualización de hello, del proyecto original no se va a modificar (y permanecerá cerrado).
 
 ### <a name="december-10-2011"></a>10 de diciembre de 2011
 Se ha publicado el complemento de Azure para Eclipse, CTP de diciembre de 2011. Las nuevas características incluyen:
 
 * **Compatibilidad con afinidad de la sesión (&quot;sesiones temporales&quot;):** ayuda a habilitar las aplicaciones agrupadas en clúster de Java con estado con solo una casilla. Para más información, consulte [Enable Session Affinity].
-* **Ejemplos de scripts de inicio realizados previamente:** para los servidores Java más populares (Tomcat, Jetty, JBoss, GlassFish), que puede simplemente copiar y pegar desde el directorio de ejemplos del proyecto en el script de inicio.
-* **Resultados de inicio del emulador en tiempo real:** ahora puede ver la ejecución de todos los pasos desde el script de inicio en una ventana de consola dedicada, que muestra el progreso y los errores en el script que se ejecuta en Azure.
+* **Realizado previamente ejemplos de script de inicio:** para hello más populares servidores de Java (Tomcat, Jetty, JBoss, GlassFish), que pueden simplemente copiar y pegar desde el directorio de ejemplos del proyecto en el script de inicio.
+* **Resultados de inicio del emulador en tiempo real:** ahora puede ver ejecución Hola de todos los pasos de Hola desde el script de inicio en una ventana de consola dedicada, muestran qué Hola progreso y los errores en la secuencia de comandos que se ejecuta en Azure.
 * **Supervisión automática y ligera de java.exe:** que forzará un reciclado de rol cuando java.exe deje de funcionar, mediante un script ligero, realizado previamente e incluido automáticamente en la implementación.
-* **Interfaz de usuario de configuración de depuración de la aplicación de Java remota:** permite habilitar fácilmente el depurador remoto de Eclipse para obtener acceso a la aplicación de Java que se ejecuta en el emulador o en la nube de Azure, para que pueda recorrer paso a paso y depurar el código de Java en tiempo real. Para más información, consulte [Depuración de aplicaciones de Azure en Eclipse].
-* **Interfaz de usuario de configuración de recurso de almacenamiento local:** gracias a ello ya no tendrá que configurar recursos locales editando el XML directamente. Esta característica también le habilita para acceder a la ruta de acceso al archivo efectiva de su recurso local después de implementarlo a través de una variable de entorno a la que puede hacer referencia directamente desde el script de inicio. Para más información, consulte [Propiedades de almacenamiento local].
-* **Interfaz de usuario de configuración de variable de entorno:** gracias a ello ya no es necesario establecer variables de entorno mediante la edición manual de la configuración del XML. Para más información, consulte [Propiedades de variables de entorno].
-* **JDBC Driver para SQL Azure:** se instala a través del complemento como una biblioteca de Eclipse perfectamente integrada, lo cual permite una programación más fácil en SQL Azure. 
-* **Acceso rápido de menú contextual a la interfaz de usuario de configuración del rol**: simplemente haga clic con el botón derecho en la carpeta de rol y haga clic en **Propiedades**.
+* **Depuración de IU de configuración de la aplicación de Java remota:** permite tooeasily habilitar tooaccess del depurador remoto de Eclipse su aplicación de Java que se ejecuta en hello emulador o hello nube de Azure, para que pueda ejecutar paso a paso y depurar el código de Java en tiempo real. Para más información, consulte [Depuración de aplicaciones de Azure en Eclipse].
+* **UI de configuración de recursos de almacenamiento local:** por lo que ya no tiene recursos locales tooconfigure manipulando Hola XML directamente. Esta característica también le permite tooaccess toohello eficaz ruta de acceso de su recurso local después de que se implementa a través de una variable de entorno que se puede hacer referencia directamente desde el script de inicio. Para más información, consulte [Propiedades de almacenamiento local].
+* **Configuración de variable de entorno interfaz de usuario:** por lo que ya no tiene variables de entorno tooset mediante la edición manual de XML de configuración de Hola. Para más información, consulte [Propiedades de variables de entorno].
+* **Controlador JDBC de SQL Azure:** se instala a través del complemento de hello como una biblioteca de Eclipse perfectamente integrada, habilitar más fácil de programar en SQL Azure. 
+* **UI de configuración de toorole de acceso rápido de menú contextual**: simplemente haga doble clic en la carpeta de rol de Hola y haga clic en **propiedades**.
 * **Iconos de carpeta de rol y de proyecto de Azure personalizados:** para una mejor visibilidad y navegación más sencilla dentro de su área de trabajo y del proyecto.
 
 ## <a name="see-also"></a>Otras referencias
-Para más información acerca de los kits de herramientas de Azure para los IDE de Java, vea los siguientes vínculos:
+Para obtener más información acerca de hello kits de herramientas de Azure para Java IDE, vea Hola siguientes vínculos:
 
 * [Kit de herramientas de Azure para Eclipse]
-  * *Novedades del kit de herramientas de Azure para Eclipse (este artículo)*
-  * [Instalación del kit de herramientas de Azure para Eclipse]
+  * *What's New Hola Kit de herramientas de Azure para Eclipse (de este artículo)*
+  * [instalar hello Azure Toolkit for Eclipse]
   * [Creación de una aplicación web Hello World para Azure en Eclipse]
-  * [Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse]
-* [Kit de herramientas de Azure para IntelliJ]
-  * [Novedades del kit de herramientas de Azure para IntelliJ]
-  * [Instalación del kit de herramientas de Azure para IntelliJ]
-  * [Instrucciones de inicio de sesión del kit de herramientas de Azure para IntelliJ]
+  * [Inicio de sesión en las instrucciones de hello Azure Toolkit for Eclipse]
+* [Azure Toolkit for IntelliJ]
+  * [What's New en hello Azure Toolkit for IntelliJ]
+  * [Instalación hello Azure Toolkit for IntelliJ]
+  * [Inicio de sesión en las instrucciones de hello Azure Toolkit for IntelliJ]
   * [Creación de una aplicación web Hello World para Azure en IntelliJ]
 
-Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure].
+Para obtener más información acerca del uso de Azure con Java, vea hello [Centro para desarrolladores de Java de Azure].
 
 <!-- URL List -->
 
 [Kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse.md
-[Kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij.md
+[Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md
 [Creación de una aplicación web Hello World para Azure en Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Creación de una aplicación web Hello World para Azure en IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Instalación del kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Instalación del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md (Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse)
-[Instrucciones de inicio de sesión del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[What's New in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Novedades del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+[instalar hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Instalación hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Inicio de sesión en las instrucciones de hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Inicio de sesión en las instrucciones de hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[What's New in hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[What's New en hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
-[Instrucciones de inicio de sesión de Azure del kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Cómo publicar una aplicación web como un contenedor de Docker mediante el kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-publish-as-docker-container.md
-[Administración de cuentas de almacenamiento mediante Azure Explorer para Eclipse]: ./azure-toolkit-for-eclipse-managing-storage-accounts-using-azure-explorer.md
-[Administración de máquinas virtuales mediante Azure Explorer para Eclipse]: ./azure-toolkit-for-eclipse-managing-virtual-machines-using-azure-explorer.md
+[Azure inicio de sesión en las instrucciones de hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[cómo toopublish una aplicación Web como un contenedor de Docker mediante hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-publish-as-docker-container.md
+[utilizando Administración de cuentas de almacenamiento Hola Explorer de Azure para Eclipse]: ./azure-toolkit-for-eclipse-managing-storage-accounts-using-azure-explorer.md
+[administrar las máquinas virtuales usando Hola Explorer de Azure para Eclipse]: ./azure-toolkit-for-eclipse-managing-virtual-machines-using-azure-explorer.md
 
 [Centro para desarrolladores de Java de Azure]: http://go.microsoft.com/fwlink/?LinkID=699547
 
-[página web de Azul Systems para Zulu de OpenJDK]: http://go.microsoft.com/fwlink/?LinkId=402457
+[página web de Azul Systems para hello OpenJDK de Zulu]: http://go.microsoft.com/fwlink/?LinkId=402457
 [Puntos de conexión de servicio de Azure]: http://go.microsoft.com/fwlink/?LinkID=699526
 [Lista de cuentas de Azure Storage]: http://go.microsoft.com/fwlink/?LinkID=699528
 [Propiedades de componentes]: http://go.microsoft.com/fwlink/?LinkID=699525#components_properties
-[Creación de una aplicación Hola a todos para Azure en Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[crear una aplicación Hello World de Azure en Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
 [Depuración de aplicaciones de Azure en Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699535
 [Deploying Large Deployments]: http://go.microsoft.com/fwlink/?LinkID=699536
-[Propiedades de puntos de conexión]: http://go.microsoft.com/fwlink/?LinkID=699525#endpoints_properties
+[propiedades de extremos]: http://go.microsoft.com/fwlink/?LinkID=699525#endpoints_properties
 [Propiedades de variables de entorno]: http://go.microsoft.com/fwlink/?LinkID=699525#environment_variables_properties
 [Complemento Herramientas de HDInsight para Eclipse]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
-[Autenticación de usuarios web con Azure Access Control Service mediante Eclipse]: http://go.microsoft.com/fwlink/?LinkID=264703
-[ Uso de la descarga de SSL]: http://go.microsoft.com/fwlink/?LinkID=699545
-[Instalación del kit de herramientas de Azure para Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[cómo tooAuthenticate usuarios Web con Azure Access Control Service mediante Eclipse]: http://go.microsoft.com/fwlink/?LinkID=264703
+[cómo tooUse la descarga de SSL]: http://go.microsoft.com/fwlink/?LinkID=699545
+[Instalar hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 [Propiedades de almacenamiento local]: http://go.microsoft.com/fwlink/?LinkID=699525#local_storage_properties
 [API de cliente de Microsoft Azure]: http://go.microsoft.com/fwlink/?LinkId=280397
 [Propiedades de configuración del servidor]: http://go.microsoft.com/fwlink/?LinkID=699525#server_configuration_properties
 [Enable Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699548
-[SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549
-[Creación de una nueva cuenta de almacenamiento]: http://go.microsoft.com/fwlink/?LinkID=699528#create_new
+[la descarga de SSL]: http://go.microsoft.com/fwlink/?LinkID=699549
+[toocreate una nueva cuenta de almacenamiento]: http://go.microsoft.com/fwlink/?LinkID=699528#create_new
 [Tamaños de máquinas virtuales y servicios en la nube de Azure]: http://go.microsoft.com/fwlink/?LinkId=466520
 
 <!-- IMG List -->

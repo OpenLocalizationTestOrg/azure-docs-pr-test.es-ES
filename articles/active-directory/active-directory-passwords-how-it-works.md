@@ -16,88 +16,88 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 0fa05ee6a2df13845024e770a82f50ab7f75bafd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c177192bbe69d179a25d174b06a0813ec28e2615
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Profundización del autoservicio de restablecimiento de contraseña de Azure AD
 
-Funcionamiento de SSPR ¿Qué significa la opción en la interfaz? Siga leyendo para más información acerca del autoservicio de restablecimiento de contraseña de Azure AD.
+Funcionamiento de SSPR ¿Qué significa que la opción de interfaz de hello? Seguir leyendo toofind más información acerca de la contraseña de autoservicio de Azure AD restablecer.
 
-## <a name="how-does-the-password-reset-portal-work"></a>Funcionamiento del portal de restablecimiento de contraseñas
+## <a name="how-does-hello-password-reset-portal-work"></a>Cómo restablecer contraseña Hola trabajo portal
 
-Cuando un usuario navega al portal de restablecimiento de contraseñas, se inicia un flujo de trabajo para determinar:
+Cuando un usuario navega toohello portal de restablecimiento de contraseña, un flujo de trabajo es iniciado toodetermine:
 
-   * ¿Cómo se debe localizar la página?
-   * ¿Es válida la cuenta de usuario?
-   * ¿A qué organización pertenece el usuario?
-   * ¿Dónde se administra la contraseña del usuario?
-   * ¿Tiene el usuario licencia para usar la característica?
+   * ¿Cómo se debe traducir página Hola?
+   * ¿Es la cuenta de usuario de hello válido?
+   * ¿Qué organización pertenece usuario Hola a?
+   * ¿Donde se administra la contraseña del usuario de hello?
+   * ¿Es la característica de Hola de toouse con licencia de usuario de hello?
 
 
-Lea los pasos siguientes para obtener información sobre la lógica de la página de restablecimiento de contraseña.
+Lea estos pasos hello toolearn acerca de la lógica de hello detrás de la página de restablecimiento de contraseña de Hola.
 
-1. El usuario hace clic en el vínculo ¿No puede acceder a su cuenta? o va directamente a [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com).
-2. Según la configuración regional del explorador la experiencia se representa en el idioma adecuado. La experiencia de restablecimiento de contraseña se localiza en los idiomas que admite Office 365.
+1. El usuario hace clic Hola no puede acceder a su vínculo de la cuenta o va directamente demasiado[https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com).
+2. Basado en Hola de configuración regional del explorador de hello experiencia se representa en el idioma correspondiente de Hola. Hello experiencia de restablecimiento de contraseña se traducen Hola mismos idiomas que sea compatible con Office 365.
 3. El usuario escribe un identificador de usuario y pasa un captcha.
-4. Azure AD comprueba si el usuario es capaz de utilizar esta característica; para ello, hace lo siguiente:
-   * Comprueba que el usuario tiene esta característica habilitada y una licencia de Azure AD asignada.
-     * Si el usuario no tiene esta característica habilitada o una licencia asignada, se solicita al usuario que se ponga en contacto con el administrador para restablecer la contraseña.
-   * Comprueba que el usuario tiene los datos de comprobación correctos definidos en la cuenta según la directiva del administrador.
-     * Si la directiva requiere solo una comprobación, se garantiza que el usuario tiene los datos correspondientes definidos para al menos una de las comprobaciones habilitadas por la directiva del administrador.
-       * Si el usuario no está configurado, se le recomienda que se ponga en contacto con el administrador para restablecer la contraseña.
-     * Si la directiva requiere dos comprobaciones, se garantiza que el usuario tiene los datos correspondientes definidos para al menos dos de las comprobaciones habilitadas por la directiva del administrador.
-       * Si el usuario no está configurado, se le recomienda que se ponga en contacto con el administrador para restablecer la contraseña.
-   * Comprueba si la contraseña del usuario se administra de forma local (federada o sincronizada con hash de contraseña).
-     * Si la escritura diferida está implementada y la contraseña del usuario se administra de forma local, se le permite continuar con la autenticación y restablecer la contraseña.
-     * Si la escritura diferida de contraseñas no está implementada y la contraseña del usuario se administra de forma local, se le pide que se ponga en contacto con el administrador para restablecer la contraseña.
-5. Si se determina que el usuario puede restablecer correctamente la contraseña, se le guiará a través del proceso de restablecimiento.
+4. Azure AD comprueba si el usuario de hello toouse capaz de esta característica haciendo Hola siguiente:
+   * Comprueba que el usuario hello tiene esta característica está habilitada y asignada una licencia de Azure AD.
+     * Si el usuario de hello no tiene esta característica está habilitada o una licencia asignada, usuario de hello es más frecuentes toocontact su tooreset administrador su contraseña.
+   * Comprueba que el usuario hello tiene datos de desafío derecho Hola definidos en su cuenta de acuerdo con la directiva del administrador.
+     * Si la directiva requiere solo un desafío, se asegura que el usuario hello tiene datos correspondientes Hola definidos para al menos uno de los desafíos de hello habilitados por la directiva del Administrador de Hola.
+       * Si el usuario de hello no está configurado, Hola usuario es aconsejable toocontact su tooreset administrador su contraseña.
+     * Si directiva Hola requiere dos desafíos, se asegura que el usuario hello tiene datos correspondientes Hola definidos para al menos dos de los desafíos de hello habilitados por la directiva del Administrador de Hola.
+       * Si Hola usuario no está configurado, entonces se Hola usuario es aconsejable toocontact su tooreset administrador su contraseña.
+   * Comprueba si la contraseña del usuario de Hola se administra de forma local (federados o sincronizados de hash de contraseña).
+     * Si la escritura diferida está implementada y la contraseña del usuario de Hola se administra de forma local, el usuario de Hola se permite tooproceed tooauthenticate y restablece su contraseña.
+     * Si no se ha implementado la escritura diferida y contraseña del usuario de Hola se administra de forma local, entonces es usuario de Hola más frecuentes toocontact su tooreset administrador su contraseña.
+5. Si se determina que el usuario hello es capaz de toosuccessfully restablecer su contraseña, a continuación, Hola se le guía en el proceso de restablecimiento de Hola.
 
 ## <a name="authentication-methods"></a>Métodos de autenticación
 
-Si Autoservicio de restablecimiento de contraseña (SSPR) está habilitado, tiene que seleccionar al menos una de las opciones siguientes para los métodos de autenticación. Se recomienda encarecidamente elegir al menos dos métodos de autenticación para que los usuarios tengan más flexibilidad.
+Si está habilitado el restablecimiento de contraseña de autoservicio (SSPR), debe seleccionar al menos una de las siguientes opciones para los métodos de autenticación de Hola. Se recomienda encarecidamente elegir al menos dos métodos de autenticación para que los usuarios tengan más flexibilidad.
 
 * Email
 * Teléfono móvil
 * Teléfono del trabajo
 * Preguntas de seguridad
 
-### <a name="what-fields-are-used-in-the-directory-for-authentication-data"></a>Qué campos se usan en el directorio para los datos de autenticación
+### <a name="what-fields-are-used-in-hello-directory-for-authentication-data"></a>Qué campos se utilizan en el directorio de Hola para datos de autenticación
 
-* Teléfono de la oficina corresponde al teléfono de la oficina
-    * Los usuarios no pueden establecer este campo, lo debe definir un administrador
-* Teléfono móvil corresponde al teléfono de autenticación (no visible públicamente) o teléfono móvil (visible públicamente)
-    * El servicio busca primero el teléfono de autenticación y, a continuación, revierte al teléfono móvil si no está presente
-* Dirección de correo electrónico alternativa corresponde al correo electrónico de autenticación (no visible públicamente) o al correo electrónico alternativo
-    * El servicio busca primero el correo electrónico de autenticación y, después, revierte al correo electrónico alternativo
+* Teléfono del trabajo correspondiente tooOffice teléfono
+    * Los usuarios son no se puede tooset este campo propios debe definirse por un administrador
+* Teléfono móvil corresponde tooeither teléfono de autenticación (no visible públicamente) o un teléfono móvil (visible públicamente)
+    * servicio de Hello busca primero el teléfono de autenticación, a continuación, vuelve tooMobile teléfono si no está presente
+* Dirección de correo electrónico alternativa corresponde tooeither correo electrónico de autenticación (no visible públicamente) o correo electrónico alternativa
+    * servicio de Hello busca primero el correo electrónico de autenticación, a continuación, se produce un error tooAlternate back-correo electrónico
 
-De forma predeterminada, solo los atributos de la nube Teléfono de la oficina y Teléfono móvil se sincronizan con su directorio en la nube desde el directorio local para los datos de autenticación.
+De forma predeterminada, solo Hola nube atributos teléfono del trabajo y el teléfono móvil sincronizan tooyour directorio en la nube de su directorio local para los datos de autenticación.
 
-Los usuarios solo pueden restablecer su contraseña si tienen datos en los métodos de autenticación que el administrador haya habilitado y requiera.
+Los usuarios pueden solo restablecer su contraseña si tienen datos presentes en los métodos de autenticación de Hola que Administrador de hello habilitó y requiere.
 
-Si los usuarios no desea que su número de teléfono móvil esté visible en el directorio, pero desean usarlo para el restablecimiento de la contraseña, los administradores no deben rellenarlo en el directorio y el usuario debe rellenar su atributo **Teléfono de autenticación** a través del [portal de registro de restablecimiento de contraseña](http://aka.ms/ssprsetup). Los administradores pueden ver esta información en el perfil del usuario, pero no se publica en ningún otro lugar. Si una cuenta de administrador de Azure registra su número de teléfono de autenticación, este se rellena en el campo de teléfono móvil y está visible.
+Si los usuarios no desea que sus toobe de número de teléfono móvil visible en el directorio de hello pero sería como toouse, para restablecer la contraseña, los administradores no deben rellenarla en directorio de hello y, a continuación, debe rellenar el usuario Hola sus **teléfono de autenticación**  atributo a través de hello [portal de registro de restablecimiento de contraseña](http://aka.ms/ssprsetup). Los administradores pueden ver esta información en el perfil de usuario de hello pero no está publicada en otra parte. Si una cuenta de administrador de Azure registra el número de teléfono de autenticación, se rellena en el campo de teléfono móvil de Hola y es visible.
 
 ### <a name="number-of-authentication-methods-required"></a>Número de métodos de autenticación requeridos
 
-Esta opción determina el número mínimo de métodos de autenticación disponibles que un usuario debe superar para restablecer o desbloquear su contraseña, y se puede establecer en 1 o 2.
+Esta opción determina el número mínimo de Hola de métodos de autenticación disponibles Hola un usuario debe superar tooreset o desbloquear su contraseña y se puede establecer tooeither 1 o 2.
 
-Los usuarios pueden elegir proporcionar más métodos de autenticación si el administrador los administra.
+Los usuarios pueden elegir toosupply más métodos de autenticación si están habilitadas por el Administrador de Hola.
 
-Si un usuario no tiene los métodos necesarios mínimos registrados, verá una página de error que le insta al solicitar un administrador que restablezca su contraseña.
+Si un usuario no tiene métodos de hello mínimo necesario registrados, verá una página de error que hay que les dirija toorequest un tooreset administrador su contraseña.
 
 ### <a name="how-secure-are-my-security-questions"></a>Nivel de protección de las cuestiones de seguridad
 
-Si usa preguntas de seguridad, se recomienda que se usen con otro método, ya que pueden ser menos seguras que otros métodos puesto que algunas personas pueden conocer las respuestas a las preguntas de otros usuarios.
+Si usas preguntas de seguridad, se recomienda ellos en uso con otro método que pueden ser menos seguras que otros métodos puesto que algunas personas pueden saber respuestas hello tooanother preguntas de los usuarios.
 
 > [!NOTE] 
-> Las preguntas de seguridad se almacenan de manera privada y segura en un objeto de usuario del directorio y solo las pueden responder los usuarios durante el registro. No hay forma de que un administrador lea o modifique las preguntas o respuestas de un usuario.
+> Preguntas de seguridad se almacenan de forma privada y segura en un objeto de usuario en el directorio de Hola y solo las pueden responder los usuarios durante el registro. No hay ninguna manera de que un administrador tooread o modificar un usuario preguntas o respuestas.
 >
 
 ### <a name="security-question-localization"></a>Localización de preguntas de seguridad
 
-Todas las preguntas predefinidas que se indican a continuación están localizadas en el conjunto completo de idiomas de Office 365 en función de la configuración regional del explorador del usuario.
+Todas las preguntas predefinidas que siguen están localizadas en el conjunto completo de Hola de idiomas de Office 365 en función de la configuración regional del explorador del usuario de Hola.
 
 * ¿En qué ciudad conoció a su cónyuge o pareja?
 * ¿En qué ciudad se conocieron sus padres?
@@ -106,9 +106,9 @@ Todas las preguntas predefinidas que se indican a continuación están localizad
 * ¿En qué ciudad tuvo su primer trabajo?
 * ¿En qué ciudad nació su madre?
 * ¿En qué ciudad estaba en la Nochevieja del año 2000?
-* ¿Cuál es el apellido de su profesor favorito del instituto?
-* ¿En qué universidad solicitó plaza pero no asistió?
-* ¿Cómo se llama el lugar en el que celebró su primer matrimonio?
+* ¿Cuál es Hola apellido de su profesor favorito en alto * centro educativo?
+* ¿Qué es el nombre de Hola de una universidad aplicados toobut no asistió?
+* ¿Cuál es el nombre de hello del lugar de hello en el que celebró su primer matrimonio?
 * ¿Cuál es el segundo apellido de su padre?
 * ¿Cuál es su comida favorita?
 * ¿Cuál es el nombre y apellido de su abuela materna?
@@ -118,43 +118,43 @@ Todas las preguntas predefinidas que se indican a continuación están localizad
 * ¿Cuál es el nombre y apellido de su abuelo paterno?
 * ¿Cuántos años se lleva con el menor de sus hermanos?
 * ¿En qué escuela cursó el sexto curso?
-* ¿Cuál era el nombre y apellido de su mejor amigo de la infancia?
-* ¿Cuál era el nombre y apellido de su primera pareja?
-* ¿Cuál era el nombre de su maestro de primaria favorito?
-* ¿Cuál era la marca y modelo de su primer coche o moto?
-* ¿Cómo se llamaba la primera escuela a la que asistió?
-* ¿Cómo se llamaba el hospital en el que nació?
-* ¿Cuál era la calle de su primera casa de la infancia?
-* ¿Cuál era el nombre de su héroe de la infancia?
-* ¿Cuál era el nombre de su peluche favorito?
-* ¿Cuál era el nombre de su primera mascota?
+* ¿Qué salió Hola nombre y apellido de su mejor amigo de la infancia?
+* ¿Qué salió Hola nombre y apellido de su primera pareja?
+* ¿Cuál era el apellido de Hola de su maestro de primaria favorito?
+* ¿Cuál era la marca de Hola y el modelo de su primer coche o moto?
+* ¿Cuál era llamaba Hola Hola primera escuela a la que asistió?
+* ¿Cuál era el nombre de Hola de salud de hello en el que nació?
+* ¿Cuál era el nombre de Hola de calle de Hola de su primera casa de la infancia?
+* ¿Cuál era el nombre de Hola de su héroe de la infancia?
+* ¿Cuál era el nombre de Hola de su peluche favorito?
+* ¿Cuál era el nombre de Hola de su primera mascota?
 * ¿Cuál era su apodo en la infancia?
 * ¿Cuál era su deporte favorito en el instituto?
 * ¿Cuál fue su primer trabajo?
-* ¿Cuáles eran los cuatro últimos números de su teléfono de la infancia?
-* Cuando era joven, ¿qué quería ser de mayor?
-* ¿Cuál es la persona más famosa que ha conocido?
+* ¿Qué se Hola últimos cuatro dígitos de su número de teléfono de la infancia?
+* Cuando era joven, ¿qué quería toobe mayor?
+* ¿Cuál es Hola persona más famosa que ha conocido?
 
 ### <a name="custom-security-questions"></a>Preguntas de seguridad personalizadas
 
-Las preguntas de seguridad personalizadas no se localizan para diferentes configuraciones regionales. Todas las preguntas personalizadas se muestran en el mismo idioma en que se escriben en la interfaz de usuario administrativa, aunque la configuración regional del explorador del usuario sea diferente. Si necesita preguntas localizadas, use las preguntas predefinidas.
+Las preguntas de seguridad personalizadas no se localizan para diferentes configuraciones regionales. Se muestran todas las preguntas personalizadas en hello mismo idioma que se escriben en la interfaz de usuario administrativo de hello incluso si la configuración regional del explorador del usuario de hello es diferente. Si tiene preguntas localizados, use preguntas Hola predefinido.
 
-La longitud máxima de una pregunta de seguridad personalizada es 200 caracteres.
+longitud máxima de Hola de una pregunta de seguridad personalizado es de 200 caracteres.
 
 ### <a name="security-question-requirements"></a>Requisitos de las preguntas de seguridad
 
 * El límite mínimo de caracteres de las respuestas es de 3 caracteres
 * El límite máximo de caracteres de las respuestas es de 40 caracteres
-* Los usuarios no pueden responder a la misma pregunta más de una vez
-* Los usuarios no pueden proporcionar la misma respuesta a más de una pregunta
-* Se puede usar cualquier juego de caracteres para definir las preguntas y respuestas, incluidos los caracteres Unicode
-* El número de preguntas que se definen debe ser mayor o igual que el número de preguntas necesarias para registrarse
+* Los usuarios no pueden responder a Hola misma pregunta de más de una vez
+* Los usuarios no pueden proporcionar Hola mismo responder toomore a una pregunta
+* Puede ser cualquier conjunto de caracteres usado toodefine preguntas y respuestas, incluidos los caracteres Unicode
+* número de Hola de preguntas definidas debe ser mayor que o igual a toohello número de preguntas necesario tooregister
 
 ## <a name="registration"></a>Registro
 
-### <a name="require-users-to-register-when-signing-in"></a>Exigir a los usuarios que se registren al iniciar sesión
+### <a name="require-users-tooregister-when-signing-in"></a>Requerir a los usuarios tooregister cuando inicien sesión en
 
-La habilitación de esta opción requiere que un usuario que tenga habilitado el restablecimiento de la contraseña complete el registro de restablecimiento de la contraseña si inicia sesión en aplicaciones mediante Azure AD para iniciarla desde los siguientes lugares:
+Si se habilita esta opción requiere que un usuario que está habilitado para contraseña restablece registro de restablecimiento de contraseña de hello toocomplete si iniciar sesión tooapplications con Azure AD toosign en como las siguientes:
 
 * Office 365
 * Azure Portal
@@ -162,27 +162,27 @@ La habilitación de esta opción requiere que un usuario que tenga habilitado el
 * Aplicaciones federadas
 * Aplicaciones personalizadas mediante Azure AD
 
-La deshabilitación de esta característica permitirá a los usuarios registrar manualmente su información de contacto de dos formas diferentes: visitando [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) o haciendo clic en el vínculo de **registro para el restablecimiento de contraseña**, que se encuentra en la pestaña del perfil del panel de acceso.
+Deshabilitar esta característica seguirá permitiendo a los usuarios toomanually registrar su información de contacto, visita [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) o haciendo clic en hello **registrarse para restablecer la contraseña** vínculo situado bajo Hola pestaña de perfil en el panel de acceso de Hola.
 
 > [!NOTE]
-> Para descartar el Portal de registro de restablecimiento de contraseña, los usuarios deben hace clic en Cancelar o cerrar la ventana, algo que se les solicita cada vez que inician sesión hasta que completan el registro.
+> Los usuarios pueden descartar el portal de registro de restablecimiento de contraseña de hello haciendo clic en Cancelar o cerrando una ventana hello pero se les solicita cada vez que inicie sesión hasta que terminen de registro.
 >
 
-### <a name="number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Número de días que pasan hasta que se pide a los usuarios que vuelvan a confirmar su información de autenticación
+### <a name="number-of-days-before-users-are-asked-tooreconfirm-their-authentication-information"></a>Número de días antes de que los usuarios son más frecuentes tooreconfirm su información de autenticación
 
-Esta opción determina el período que transcurre entre el establecimiento y la confirmación de la información de autenticación, y solo está disponible si se habilita la opción **¿Desea exigir a los usuarios que se registren al iniciar sesión?**
+Esta opción determina Hola período de tiempo entre la configuración y confirmando la información de autenticación y solo está disponible si habilita hello **requieren tooregister a los usuarios cuando inician sesión en** opción.
 
-Los valores válidos son 0 - 730 días, 0 significa que no se pide a los usuarios que vuelvan a confirmar su información de autenticación
+Los valores válidos son 0 y 730 días, y 0 significa no preguntar a los usuarios tooreconfirm su información de autenticación
 
 ## <a name="notifications"></a>Notificaciones
 
 ### <a name="notify-users-on-password-resets"></a>¿Quiere notificar a los usuarios los restablecimientos de contraseña?
 
-Si esta opción está establecida en Sí, el usuario que restablece la contraseña recibe un correo electrónico que le informa de que la contraseña se ha cambiado a través del portal de SSPR a sus direcciones de correo electrónico principal y alternativa en el archivo de Azure AD. A ningún otro usuario se le informa de este evento de restablecimiento.
+Si esta opción se establece tooyes, usuario de Hola que está restableciendo la contraseña recibe un correo electrónico que les informa de que se ha cambiado su contraseña a través de hello SSPR tootheir portal principal y direcciones de correo electrónico alternativa en el archivo en Azure AD. A ningún otro usuario se le informa de este evento de restablecimiento.
 
 ### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Notificación a todos los administradores cuando otros administradores restablecen sus contraseñas
 
-Si esta opción está establecida en Sí, **todos los administradores** reciben un correo electrónico en su dirección de correo electrónico principal del archivo de Azure AD en el que se les notifica que otro administrador ha cambiado su contraseña mediante SSPR.
+Si esta opción se establece tooyes, entonces **todos los administradores** recibir una dirección de correo electrónico principal de tootheir de correo electrónico en el archivo en Azure AD que les informa de que otro administrador ha cambiado su contraseña mediante Autoservicio.
 
 Ejemplo: hay cuatro administradores en un entorno. El administrador "A" restablece su contraseña mediante SSPR. Los administradores B, C y D reciben un correo electrónico que les alertan de que esto ocurre.
 
@@ -190,19 +190,19 @@ Ejemplo: hay cuatro administradores en un entorno. El administrador "A" restable
 
 Si ha instalado, configurado y habilitado Azure AD Connect, tendrá más opciones para las integraciones locales.
 
-### <a name="write-back-passwords-to-your-on-premises-directory"></a>Escritura diferida de contraseñas en un directorio local
+### <a name="write-back-passwords-tooyour-on-premises-directory"></a>Escritura diferida de directorio local de contraseñas tooyour
 
-Controla si la escritura diferida de contraseñas está habilitada en este directorio y, si lo está, indica el estado del servicio de escritura diferida local. Esto es útil si desea deshabilitar temporalmente la escritura diferida de contraseñas sin volver a configurar Azure AD Connect.
+Controla si no está habilitada la escritura diferida de contraseñas para este directorio y, si lo está, indica el estado de Hola de servicio de escritura diferida de hello en local. Esto es útil si desea tootemporarily Deshabilitar reescritura de contraseña de hello sin volver a configurar Azure AD Connect.
 
-* Si el modificador se establece en Sí, se habilitará la escritura diferida y los usuarios federados y sincronizados por hash de contraseña podrán restablecer sus contraseñas.
-* Si el modificador se establece en No, se deshabilitará la escritura diferida y los usuarios federados y sincronizados por hash de contraseña no podrán restablecer sus contraseñas.
+* Si cambia de hello es tooyes de conjunto, reescritura se habilita y se federado y sincronizado de hash de contraseña a los usuarios será capaz de tooreset sus contraseñas.
+* Si cambia de hello es toono de conjunto, reescritura se deshabilita y se federado y sincronizado de hash de contraseña a los usuarios no será capaz de tooreset sus contraseñas.
 
-### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Permitir a los usuarios desbloquear las cuentas sin restablecer la contraseña
+### <a name="allow-users-toounlock-accounts-without-resetting-their-password"></a>Permitir que a los usuarios toounlock cuentas sin restablecer la contraseña
 
-Designa si los usuarios que visitan el portal de restablecimiento de contraseña tendrán la opción de desbloquear sus cuentas de Active Directory locales sin restablecer su contraseña. De forma predeterminada, Azure AD siempre desbloqueará las cuentas al realizar un restablecimiento de contraseña; esta opción le permite separar esas dos operaciones. 
+Indica si los usuarios que visitan el portal de restablecimiento de contraseña de hello deben ser Hola determinada opción toounlock su Active Directory local cuentas sin restablecer la contraseña. De forma predeterminada, Azure AD siempre desbloqueará cuentas al realizar un restablecimiento de contraseña, esta configuración le permite tooseparate esas dos operaciones. 
 
-* Si se establece en "sí", los usuarios tendrán la opción de restablecer su contraseña y desbloquear la cuenta, o de desbloquear la cuenta sin restablecer la contraseña.
-* Si se establece en "no", los usuarios solo podrán realizar una operación combinada de restablecimiento de contraseña y desbloqueo de cuenta.
+* Si establece demasiado "Sí", a continuación, los usuarios se Hola determinada opción tooreset su contraseña y desbloquear la cuenta de hello, o toounlock sin restablecer la contraseña de Hola.
+* Si se establece demasiado "no", los usuarios solo será capaz de tooperform un restablecimiento de contraseña combinado y la cuenta de operación de desbloqueo.
 
 ## <a name="network-requirements"></a>Requisitos de red
 
@@ -210,68 +210,67 @@ Designa si los usuarios que visitan el portal de restablecimiento de contraseña
 
 [Lista de direcciones IP y direcciones URL de Microsoft Office](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
 
-En el caso de Azure AD Connect, versiones 1.1.443.0 y posteriores, se necesita acceso HTTPS saliente al siguiente
+Para Azure AD Connect versión 1.1.443.0 y versiones posteriores, se necesita la salida siguiente de toohello de acceso HTTPS
 * passwordreset.microsoftonline.com
 * servicebus.windows.net
 
-Para obtener un acceso más detallado, [aquí](https://www.microsoft.com/download/details.aspx?id=41653) puede encontrar la lista actualizada de 
-intervalos IP de centro de datos de Microsoft Azure Datacenter que se actualiza todos los miércoles y que entra en vigor el lunes siguiente.
+Para un acceso más detallado, puede encontrar Hola actualizar lista del centro de datos de intervalos IP Microsoft Azure que se actualiza todos los miércoles y colocado en el siguiente de hello efecto el lunes [aquí](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ### <a name="idle-connection-timeouts"></a>Tiempos de espera de conexiones inactivas
 
-La herramienta Azure AD Connect envía pings o keepalives periódicos a los puntos de conexión de ServiceBus para garantizar que las conexiones se mantienen activas. Si la herramienta detecta que se están terminando demasiadas conexiones, automáticamente aumentará la frecuencia de envío de pings al punto de conexión. Los "intervalos de envío de pings" más bajos se reducen a 1 ping cada 60 segundos; sin embargo, se recomienda encarecidamente que los proxy o firewalls permitan que la conexiones inactivas persistan durante un mínimo de 2-3 minutos. *En el caso de las versiones anteriores, se sugiere una persistencia de 4 minutos, o más.
+herramienta de Hello Azure AD Connect envía pings/keepalive periódica tooServiceBus extremos tooensure que las conexiones de Hola se mantengan activos. Debería herramienta Hola detectar que se está eliminadas demasiadas conexiones, automáticamente aumentará frecuencia Hola de punto de conexión de ping toohello. Hola más bajo 'hacer ping en intervalos' quita toois 1 ping cada 60 segundos, sin embargo, recomendamos encarecidamente que los servidores proxy o firewalls permiten toopersist de conexiones inactivas de al menos 2 a 3 minutos. *En el caso de las versiones anteriores, se sugiere una persistencia de 4 minutos, o más.
 
 ## <a name="active-directory-permissions"></a>Permisos de Active Directory
 
-La cuenta especificada en la utilidad de Azure AD Connect debe tener derechos extendidos de restablecimiento de contraseña, cambio de contraseña, permisos de escritura en lockoutTime y permisos de escritura en pwdLastSet en el objeto raíz de **cada dominio** de ese bosque **O** en las unidades organizativas del usuario que desea que estén en el ámbito de SSPR.
+Hello cuenta especificada en la utilidad de hello Azure AD Connect debe tener restablecer contraseña, cambiar la contraseña, escribir permisos en lockoutTime y permisos de escritura en pwdLastSet, derechos en cualquiera de los objetos raíz Hola de extendidos **cada dominio** en ese bosque **o** en unidades organizativas de usuarios de hello desea toobe en el ámbito de Autoservicio.
 
-Si no está seguro de cuál es la cuenta a la que se hace referencia en el párrafo anterior, abra la interfaz de usuario de la configuración de Azure Active Directory Connect y haga clic en la opción Ver la configuración actual. La cuenta a la que necesita agregar permiso se enumera en "Directorios sincronizados"
+Si no está seguro de qué Hola cuenta anterior hace referencia a, abra la UI de configuración de Azure Active Directory Connect de Hola y haga clic en la opción de configuración de hello vista actual. cuenta de Hello que necesita tooadd permiso toois aparecen en "Sincronizar directorios"
 
-El establecimiento de estos permisos permite que la cuenta de servicio de agente de administración de cada bosque administre las contraseñas en nombre de las cuentas de usuario de dicho bosque. **Si no asigna estos permisos, aunque la escritura diferida parezca estar configurada correctamente, los usuarios encuentran errores al intentar administrar sus contraseñas locales desde la nube.**
+Al establecer estos permisos permite cuenta de servicio del agente de administración Hola para cada contraseñas toomanage de bosque en nombre de las cuentas de usuario en ese bosque. **Si no tooassign estos permisos, a continuación, aunque parezca que reescritura toobe configurado correctamente, los usuarios encuentran errores al intentar toomanage sus contraseñas locales desde la nube de Hola.**
 
 > [!NOTE]
-> Estos permisos pueden tardar una hora, o más, en replicarse en todos los objetos del directorio.
+> Puede tardar una hora de tooan o más de estos objetos de tooall de tooreplicate de permisos en el directorio.
 >
 
-Para configurar los permisos adecuados para que se realice la escritura diferida de contraseñas
+tooset los permisos adecuados de Hola para toooccur de reescritura de contraseña
 
-1. Abra Usuarios y equipos de Active Directory con una cuenta que tenga los permisos de administración de dominios adecuados
-2. En el menú Ver, asegúrese de que la opción Características avanzadas está activada
-3. En el panel izquierdo, haga clic con el botón derecho en el objeto que representa la raíz del dominio y elija Propiedades
-    * Haga clic en la pestaña Seguridad
+1. Abra Usuarios y equipos de usuarios de Active Directory con una cuenta que tenga permisos de administración de dominio adecuado de Hola
+2. Desde el menú de vista de hello, asegúrese de que está activado características avanzadas
+3. En el panel izquierdo de hello, haga clic en el objeto de Hola que representa la raíz de Hola de dominio de Hola y elija Propiedades
+    * Haga clic en la ficha seguridad de Hola
     * Luego, haga clic en Opciones avanzadas.
-4. En la pestaña Permisos, haga clic en Agregar
-5. Elija la cuenta a la que se van a aplicar los permisos (en el programa de instalación de Azure AD Connect)
-6. En la lista desplegable Se aplica a, seleccione Descendent User objects (Objetos de usuario descendiente)
-7. En permisos, active las casillas para los siguientes elementos
+4. Desde la ficha de permisos de hello, haga clic en Agregar
+5. Seleccionar cuenta de hello que se aplican permisos demasiado (desde el programa de instalación de Azure AD Connect)
+6. En Hola se aplica toodrop cuadro desplegable, seleccione objetos de usuario descendiente
+7. En permisos, casillas Hola siguientes Hola
     * Contraseña sin expiración
     * Restablecimiento de contraseña
     * Cambiar contraseña
     * Escribir lockoutTime
     * Escribir pwdLastSet
-8. Haga clic en Aplicar o Aceptar para aplicar los cambios y salir de los cuadros de diálogo abiertos.
+8. Haga clic en Aplicar o Aceptar a través de tooapply y salga de los cuadros de diálogo abiertos.
 
 ## <a name="how-does-password-reset-work-for-b2b-users"></a>¿Cómo funciona el restablecimiento de contraseña para usuarios B2B?
-El restablecimiento y cambio de contraseña son totalmente compatibles con todas las configuraciones de B2B.  Lea la información que encontrará a continuación para conocer los tres casos de B2B explícitos que admiten el restablecimiento de contraseña.
+El restablecimiento y cambio de contraseña son totalmente compatibles con todas las configuraciones de B2B.  Continúe leyendo para hello tres explícita B2B casos compatibles con el restablecimiento de contraseña.
 
-1. **Usuarios de una organización asociada con un inquilino de Azure AD existente**: si la organización con la que se asocia tiene un inquilino de Azure AD existente, **respetamos todas las directivas de restablecimiento de contraseña habilitadas en dicho inquilino**. Para que el restablecimiento de contraseña funcione, la organización del asociado simplemente necesita asegurarse de que la función SSPR de Azure AD esté habilitada, lo que no supone un cargo adicional para los clientes de Office 365. Se puede habilitar siguiendo los pasos descritos en nuestra guía [Introducción a la administración de contraseñas](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords).
-2. **Usuarios registrados mediante el [registro de autoservicio](active-directory-self-service-signup.md)**: si la organización con la que se asocia usaba la característica de [registro de autoservicio](active-directory-self-service-signup.md) para acceder a un inquilino, les permitimos el restablecimiento con el correo electrónico que registraron.
-3. **Usuarios de B2B**: los nuevos usuarios de B2B creados mediante las nuevas [funcionalidades de B2B de Azure AD](active-directory-b2b-what-is-azure-ad-b2b.md) también podrán restablecer sus contraseñas con el correo electrónico que registraron durante el proceso de invitación.
+1. **Los usuarios de una organización de socios comerciales con un inquilino de Azure AD existente** : si la organización de Hola se asocian con tiene un inquilino de Azure AD existente, se **respetar las directivas de restablecimiento de contraseña están habilitadas en dicho inquilino**. Para restablece toowork de contraseña, Hola asociado organización necesidades simplemente toomake seguro está habilitado el Autoservicio de Azure AD, que no es cargo adicional para los clientes de Office 365, y puede habilitarse siguiendo los pasos de Hola de nuestro [Introducción a administración de contraseñas ](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) guía.
+2. **Los usuarios que se registró mediante [registro de autoservicio](active-directory-self-service-signup.md)**  : si la organización de Hola se asocian con usó hello [registro de autoservicio](active-directory-self-service-signup.md) tooget característica en un inquilino, se les permiten restablecer con correo electrónico de Hello registran.
+3. **B2B usuarios** -los nuevos usuarios de B2B siguieron Hola nueva [capacidades de Azure AD B2B](active-directory-b2b-what-is-azure-ad-b2b.md) también será capaz de tooreset sus contraseñas con correo electrónico de Hola que registraron durante el proceso de invitación de Hola.
 
-Para probarlo, vaya a http://passwordreset.microsoftonline.com con uno de estos usuarios asociados. Siempre que tengan un correo electrónico alternativo o un correo electrónico de autenticación definido, el restablecimiento de contraseña funcionará según lo esperado.
+tootest, toohttp://passwordreset.microsoftonline.com vaya con uno de estos usuarios asociados. Siempre que tengan un correo electrónico alternativo o un correo electrónico de autenticación definido, el restablecimiento de contraseña funcionará según lo esperado.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Los vínculos siguientes proporcionan información adicional sobre el restablecimiento de contraseñas con Azure AD:
+Hola siguientes vínculos proporciona más información sobre el uso de Azure AD de restablecimiento de contraseña
 
 * [**Inicio rápido**](active-directory-passwords-getting-started.md): preparativos para el autoservicio de administración de contraseñas de Azure AD 
 * [**Licencias**](active-directory-passwords-licensing.md): configuración de licencias de Azure AD
-* [**Datos**](active-directory-passwords-data.md): información sobre los datos necesarios y cómo se usan para administrar contraseñas
-* [**Implementación**](active-directory-passwords-best-practices.md): planeamiento e implementación de SSPR para los usuarios con las directrices que aquí se proporcionan
+* [**Datos** ](active-directory-passwords-data.md) : comprender los datos de Hola que es necesarios y cómo se utiliza para la administración de contraseñas
+* [**Implementación** ](active-directory-passwords-best-practices.md) -planear e implementar a los usuarios de Autoservicio tooyour usando la orientación de hello encontrar aquí
 * [**Directiva**](active-directory-passwords-policy.md): información sobre las directivas de contraseñas de Azure AD y cómo establecerlas
 * [**Escritura diferida de contraseñas**](active-directory-passwords-writeback.md): cómo funciona la escritura diferida de contraseñas con el directorio local
-* [**Personalización**](active-directory-passwords-customize.md): personalización de la experiencia de SSPR para la empresa
-* [**Informes**](active-directory-passwords-reporting.md): informes para detectar si los usuarios acceden a la funcionalidad de SSPR que especifican el momento y el lugar del acceso
-* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? : respuestas a las preguntas que siempre se ha hecho.
-* [**Solución de problemas**](active-directory-passwords-troubleshoot.md): información para resolver problemas habituales de SSPR
+* [**Personalizar** ](active-directory-passwords-customize.md) -personalizar Hola apariencia y funcionamiento del programa Hola a la experiencia de Autoservicio de su empresa.
+* [**Informes**](active-directory-passwords-reporting.md): detectan si los usuarios acceden a la funcionalidad de SSPR, cuándo lo hacen y dónde.
+* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? -Responde tooquestions siempre deseara tooask
+* [**Solucionar problemas de** ](active-directory-passwords-troubleshoot.md) -Obtenga información acerca de cómo problemas comunes de tooresolve que vemos con SSPR
 

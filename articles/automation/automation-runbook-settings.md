@@ -1,6 +1,6 @@
 ---
-title: "Configuración de runbooks | Microsoft Docs"
-description: "Describe las opciones de configuración para un runbook en Automatización de Azure y cómo cambiarlas mediante el Portal de administración de Azure y Windows PowerShell."
+title: "configuración de aaaRunbook | Documentos de Microsoft"
+description: "Describe los valores de configuración de Hola para un runbook en automatización de Azure y cómo toochange con ambos Hola Portal de administración de Azure y Windows PowerShell."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-ms.openlocfilehash: 20ecbc270e61d234e026e6ba2634c7aad63b3355
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f0ef09c148355a351464424c22c33df9300f0dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="runbook-settings"></a>Configuración de runbook
-Cada runbook en Automatización de Azure tiene varias opciones de configuración para ayudarle a identificar y cambiar su comportamiento de registro. A continuación se describen todas estas opciones, seguido de procedimientos acerca de cómo modificarlas.
+Cada runbook de automatización de Azure tiene varias opciones de configuración para facilitar su toobe identificado y toochange su comportamiento de registro. Cada uno de estos valores se describe a continuación los procedimientos sobre cómo toomodify ellos.
 
 ## <a name="settings"></a>Settings
 ### <a name="name-and-description"></a>Nombre y descripción
-No se puede cambiar el nombre de un runbook después de su creación. La descripción es opcional y puede tener hasta 512 caracteres.
+No se puede cambiar nombre de Hola de un runbook una vez creada. Hola descripción es opcional y puede ser too512 caracteres.
 
 ### <a name="tags"></a>Etiquetas
-Las etiquetas permiten asignar diferentes palabras y frases para ayudar a identificar un runbook. Por ejemplo, cuando se envía un runbook a la [Galería de PowerShell](https://www.powershellgallery.com/), se especifican etiquetas determinadas para identificar qué categorías deben aparecer en el runbook. Puede especificar varias etiquetas para un runbook separándolas por comas.
+Las etiquetas permiten que tooassign diferentes palabras y frases toohelp identifican un runbook. Por ejemplo, cuando se envía un runbook toohello [Galería de PowerShell](https://www.powershellgallery.com/), especifique tooidentify etiquetas determinado qué categorías de Hola runbook debe aparecer en. Puede especificar varias etiquetas para un runbook separándolas por comas.
 
 ### <a name="logging"></a>Registro
-De forma predeterminada, los registros detallados y de progreso no se escriben en el historial de trabajos. Puede cambiar la configuración de un runbook determinado para estas entradas de registro. Para obtener más información sobre estos registros, consulte [Salida y mensajes de los runbooks](automation-runbook-output-and-messages.md).
+De forma predeterminada, los registros detallado y de progreso no se escriben toojob historial. Puede cambiar valores de hello para un runbook determinado toolog estos registros. Para obtener más información sobre estos registros, consulte [Salida y mensajes de los runbooks](automation-runbook-output-and-messages.md).
 
 ## <a name="changing-runbook-settings"></a>Cambio de la configuración del runbook
 
-### <a name="changing-runbook-settings-with-the-azure-portal"></a>Cambio de la configuración del runbook mediante Azure Portal
-Puede cambiar la configuración de un runbook en Azure Portal en la hoja **Configuración** del runbook.
+### <a name="changing-runbook-settings-with-hello-azure-portal"></a>Cambiar la configuración de runbook con hello portal de Azure
+Puede cambiar la configuración de un runbook en hello portal de Azure de hello **configuración** hoja Hola runbook.
 
-1. En el Portal de Azure, seleccione **Automatización** y, a continuación, haga clic en el nombre de una cuenta de Automatización.
-2. Seleccione la pestaña **Runbooks** .
-3. Haga clic en el nombre de un runbook y se le redirigirá a la hoja de configuración del runbook. Aquí podrá especificar o modificar etiquetas, la descripción del runbook, configurar opciones de seguimiento y registro, y acceder herramientas de soporte técnico para ayudarlo a solucionar problemas.     
+1. Hola portal de Azure, seleccione **automatización** y, a continuación, haga clic en nombre de Hola de una cuenta de automatización.
+2. Seleccione hello **Runbooks** ficha.
+3. Haga clic en nombre de Hola de un runbook y son toohello dirigido hoja de configuración de runbook de Hola. Desde aquí puede especificar o modificar etiquetas, Hola descripción del runbook, configurar el registro y la configuración de seguimiento y tener acceso a solucionar problemas de compatibilidad con herramientas toohelp.     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>Cambio de la configuración del runbook mediante Windows PowerShell
-Puede utilizar el cmdlet [Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) para cambiar la configuración de un runbook. Si desea especificar varias etiquetas, se puede proporcionar una matriz o una sola cadena con valores delimitados por comas al parámetro Tags. Puede obtener las etiquetas actuales con el [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
+Puede usar hello [AzureRmAutomationRunbook conjunto](https://msdn.microsoft.com/library/mt603786.aspx) configuración de cmdlet toochange Hola de un runbook. Si desea toospecify varias etiquetas, se puede proporcionar una matriz o una sola cadena con el parámetro de etiquetas de toohello de valores delimitada por comas. Puede obtener etiquetas actuales de hello con hello [AzureRmAutomationRunbook Get](https://msdn.microsoft.com/library/mt603728.aspx).
 
-Los siguientes comandos de ejemplo muestran cómo establecer las propiedades de un runbook. Este ejemplo agrega tres etiquetas a las etiquetas existentes y especifica que se deben registrar registros detallados.
+Hola después de comandos de ejemplo muestra cómo tooset Hola propiedades de un runbook. Este ejemplo agrega tres etiquetas toohello existente etiquetas y especifica que se deben registrar registros detallados.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
@@ -56,6 +56,6 @@ Los siguientes comandos de ejemplo muestran cómo establecer las propiedades de 
     –AutomationAccountName $automationAccountName –Name $runbookName –LogVerbose $true –Tags $tags
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para aprender a crear y recuperar los mensajes de salida y de error de los runbooks, consulte [Salida y mensajes de los runbooks](automation-runbook-output-and-messages.md) 
-* Para saber cómo agregar un runbook que ya haya desarrollado la Comunidad u otro medio, o para crear sus propios runbooks, consulte [Creación o importación de un runbook](automation-creating-importing-runbook.md). 
+* toolearn toocreate y recuperar mensajes de error y de salida de runbooks, vea [Runbook Output and Messages](automation-runbook-output-and-messages.md) 
+* toounderstand cómo ver un runbook que ya se haya desarrollado por hello Comunidad otro origen o toocreate su propio runbook tooadd [crear o importar un Runbook](automation-creating-importing-runbook.md) 
 

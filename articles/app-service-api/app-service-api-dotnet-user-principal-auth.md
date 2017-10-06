@@ -1,6 +1,6 @@
 ---
-title: "Autenticación de usuario para API Apps en Azure App Service | Microsoft Docs"
-description: "Obtenga información sobre cómo proteger una aplicación de API del Servicio de aplicaciones de Azure al permitir el acceso únicamente a usuarios autenticados."
+title: "autenticación de aaaUser para las aplicaciones de API de servicio de aplicaciones de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooprotect una aplicación de API de servicio de aplicaciones de Azure por lo que permite tener acceso a tooauthenticated solo a los usuarios."
 services: app-service\api
 documentationcenter: .net
 author: alexkarcher-msft
@@ -14,193 +14,193 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
 ms.author: alkarche
-ms.openlocfilehash: a5b713f3a60b3886d813438496d704f464d914e6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4702fc77fcfe736405e22b033c35d22ae3c5a300
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="user-authentication-for-api-apps-in-azure-app-service"></a>Autenticación de usuario para aplicaciones de API en el Servicio de aplicaciones de Azure
 ## <a name="overview"></a>Información general
-Este artículo muestra cómo proteger una aplicación de API de Azure para que solo puedan llamarla los usuarios autenticados. Se da por supuesto que ha leído [Autenticación y autorización en el Servicio de aplicaciones de Azure](../app-service/app-service-authentication-overview.md).
+Este artículo muestra cómo puede llamarlo tooprotect una aplicación de API de Azure para solo los usuarios autenticados. Hello artículo se da por supuesto que ha leído hello [información general de la autenticación de servicio de aplicaciones de Azure](../app-service/app-service-authentication-overview.md).
 
 Aprenderá a realizar los siguientes procedimientos:
 
-* Cómo configurar un proveedor de autenticación, con detalles para Azure Active Directory (Azure AD).
-* Cómo consumir una aplicación de API protegida mediante la [Biblioteca de autenticación de Active Directory (ADAL) para JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js).
+* ¿Cómo tooconfigure un proveedor de autenticación, con detalles de Azure Active Directory (Azure AD).
+* Cómo tooconsume una aplicación de API protegida mediante el uso de Hola [Active Directory Authentication Library (ADAL) para JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js).
 
-El artículo contiene dos secciones:
+artículo de Hello contiene dos secciones:
 
-* La sección [Configuración de la autenticación de usuarios en el Servicio de aplicaciones de Azure](#authconfig) explica de forma general cómo configurar la autenticación de usuarios de cualquier aplicación de API y se aplica por igual a todos los marcos compatibles con el Servicio de aplicaciones, incluyendo .NET, Node.js y Java.
-* A partir de la sección [Continuación de los tutoriales de aplicaciones de API de .NET](#tutorialstart) , el artículo lo guía en la configuración de una aplicación de ejemplo con un back-end de .NET y un front-end de AngularJS para que use Azure Active Directory para la autenticación de los usuarios. 
+* Hola [cómo tooconfigure autenticación de usuario en el servicio de aplicación de Azure](#authconfig) sección se explica cómo general tooconfigure de autenticación de usuario para cualquier aplicación de API y se aplica por igual marcos tooall compatibles con el servicio de aplicación, incluidos los. NET, Node.js y Java.
+* A partir de hello [continuar tutoriales de aplicaciones de API de .NET de hello](#tutorialstart) sección, Hola guías de artículo a través de la configuración de una aplicación de ejemplo con .NET crear final y un front-end de AngularJS que usa Azure Active Directory para el usuario autenticación. 
 
-## <a id="authconfig"></a> Configuración de la autenticación de usuarios en el Servicio de aplicaciones de Azure
-Esta sección proporciona instrucciones generales que se aplican a cualquier aplicación de API. Para obtener los pasos específicos para la aplicación de ejemplo de .NET To Do List, vaya a [Continuación de los tutoriales de aplicaciones de API de .NET](#tutorialstart).
+## <a id="authconfig"></a>¿Cómo tooconfigure autenticación de usuario en el servicio de aplicación de Azure
+Esta sección proporciona instrucciones generales que se aplican a la aplicación de API de tooany. Para pasos específicos toohello tooDo aplicación de ejemplo de .NET de la lista, vaya demasiado[continuar tutoriales de introducción a .NET de hello](#tutorialstart).
 
-1. En [Azure Portal](https://portal.azure.com/), vaya a la hoja **Configuración** de la aplicación de API que quiere proteger, busque la sección **Características** y haga clic en **Autenticación/autorización**.
+1. Hola [portal de Azure](https://portal.azure.com/), navegue toohello **configuración** hoja de aplicación Hola API que desea tooprotect, buscar hello **características** sección y, a continuación, haga clic en  **Autenticación / autorización**.
    
     ![Autenticación/autorización del Portal de Azure](./media/app-service-api-dotnet-user-principal-auth/features.png)
-2. En la hoja **Autenticación/autorización**, haga clic en **Activado**.
-3. Seleccione una de las opciones de la lista desplegable **Acción necesaria cuando la solicitud no está autenticada** .
+2. Hola **autenticación / autorización** hoja, haga clic en **en**.
+3. Seleccione una de las opciones de Hola de hello **tootake de acción cuando no se autentica la solicitud** lista desplegable.
    
-   * Si desea que solo puedan acceder a la aplicación de API las llamadas que estén autenticadas, elija una de las opciones de **Iniciar sesión con** . Esta opción permite proteger la aplicación de API sin escribir código que se ejecute en ella.
-   * Si desea que todas las llamadas accedan a la aplicación de API, elija **Permitir solicitud (sin acción)**. Esta opción se puede utilizar para mostrar a los autores de llamadas no autenticados los proveedores de autenticación entre los que pueden elegir. Con esta opción es preciso escribir código para controlar la autorización.
+   * Si desea que sólo llamadas autenticadas tooreach la aplicación de API, elija uno de hello **iniciar sesión con...**  opciones. Esta opción permite tooprotect API aplicación hello sin escribir ningún código que se ejecuta en él.
+   * Elija si desea que todas las llamadas tooreach la aplicación de API, **Permitir solicitud (ninguna acción)**. Puede usar esta opción de tooa opción toodirect sin autenticar los llamadores de proveedores de autenticación. Con esta opción tiene autorización de toowrite código toohandle.
      
      Para más información, consulte [Autenticación y autorización para Aplicaciones de API en el Servicio de aplicaciones de Azure](app-service-api-authentication.md#multiple-protection-options).
-4. Seleccione uno o varios **proveedores de autenticación**.
+4. Seleccione uno o varios de hello **proveedores de autenticación**.
    
-    La imagen muestra las opciones que requieren que Azure AD autentique a todos los autores de llamadas.
+    imagen de Hello muestra las opciones que requieren todos los toobe de los llamadores autentica Azure AD.
    
     ![Hoja Autenticación/autorización del Portal de Azure](./media/app-service-api-dotnet-user-principal-auth/authblade.png)
    
-    Al elegir un proveedor de autenticación, el portal muestra la hoja de configuración de dicho proveedor. 
+    Al elegir un proveedor de autenticación, el portal de hello muestra una hoja de configuración para dicho proveedor. 
    
-    Para más información sobre cómo configurar las hojas de configuración de los proveedores de autenticación, consulte [Configuración de la aplicación del Servicio de aplicaciones para usar el inicio de sesión de Azure Active Directory](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md). (El vínculo abre un artículo sobre Azure AD, pero el propio artículo contiene pestañas con vínculos a artículos para los restantes proveedores de autenticación).
-5. Cuando termine con la hoja de configuración del proveedor de autenticación, haga clic en **Aceptar**.
-6. En la hoja **Autenticación/autorización**, haga clic en **Guardar**.
+    Para obtener instrucciones detalladas que explican cómo tooconfigure Hola hojas de configuración de proveedor de autenticación, vea [cómo tooconfigure su inicio de sesión de Azure Active Directory de servicio de aplicaciones aplicación toouse](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md). (vínculo de hello queda tooan artículo sobre Azure AD, pero artículo Hola propio contiene las pestañas que vinculan tooarticles para hello otros proveedores de autenticación).
+5. Cuando haya terminado con la hoja de configuración de proveedor de autenticación de hello, haga clic en **Aceptar**.
+6. Hola **autenticación / autorización** hoja, haga clic en **guardar**.
 
-Al hacerlo, el Servicio de aplicaciones autentica todas las llamadas API antes de que lleguen a la aplicación de API. Estos servicios de autenticación funcionan igual en todos los lenguajes que admite el Servicio de aplicaciones, como .NET, Node.js y Java. 
+Cuando esto sucede, el servicio de aplicación autentica todas las llamadas API antes de alcanzar la aplicación de API de Hola. trabajo de servicios de autenticación de Hola Hola igual para todos los idiomas que admite el servicio de aplicaciones, incluido. NET, Node.js y Java. 
 
-Para realizar llamadas API autenticadas, el autor de la llamada incluye el token de portador de OAuth 2.0 del proveedor de autenticación en el encabezado de autorización de las solicitudes HTTP. El token se puede adquirir mediante el SDK del proveedor de autenticación.
+toomake había autenticado llamadas a la API, llamador Hola incluye el token de portador de OAuth 2.0 del proveedor de autenticación de Hola Hola encabezado de autorización de solicitudes HTTP. símbolo (token) de Hello puede ser adquirida mediante el uso SDK del proveedor de autenticación de hello.
 
-## <a id="tutorialstart"></a> Continuación de los tutoriales de aplicaciones de API de .NET
-Si está siguiendo la serie de tutoriales de Node.js o Java para aplicaciones de API, vaya al siguiente artículo, [Autenticación de entidad de servicio para Aplicaciones de API en el Servicio de aplicaciones de Azure](app-service-api-dotnet-service-principal-auth.md). 
+## <a id="tutorialstart"></a>Tutoriales de aplicaciones de API de .NET de hello ininterrumpidos
+Si está siguiendo los tutoriales de Node.js o Java de Hola para aplicaciones de API, omitir toohello siguiente artículo, [autenticación principal del servicio para las aplicaciones de la API](app-service-api-dotnet-service-principal-auth.md). 
 
-Si está siguiendo la serie de tutoriales de .NET para aplicaciones de API y ya ha implementado la aplicación de ejemplo como se indica en el [primer](app-service-api-dotnet-get-started.md) y el [segundo](app-service-api-cors-consume-javascript.md) tutorial, vaya a la sección [Configuración de la autenticación en App Service y Azure AD](#azureauth).
+Si está siguiendo la serie de tutoriales de hello .NET para aplicaciones de API y ya se ha implementado la aplicación de ejemplo de Hola como se indica en hello [primer](app-service-api-dotnet-get-started.md) y [segundo](app-service-api-cors-consume-javascript.md) tutoriales, omitir toohello [configurar la autenticación en el servicio de aplicaciones y Azure AD](#azureauth) sección.
 
-Si desea seguir este tutorial sin completar el primero ni el segundo, lleve a cabo los pasos siguientes que explican cómo empezar a trabajar usando un proceso automatizado para implementar la aplicación de ejemplo.
+Si desea toofollow este tutorial sin tener que pasar a través de tutoriales primeros y segunda hello, Hola siguiendo los pasos que explican cómo tooget se inicia con una aplicación de ejemplo de Hola de toodeploy proceso automatizado.
 
 > [!NOTE]
-> Los siguientes pasos lo llevan al mismo punto de partida, como si hubiera hecho los dos primeros tutoriales, con una excepción: Visual Studio ya no sabrá en qué aplicación web o aplicación de API se implementa cada proyecto. Esto significa que este tutorial no ofrecerá instrucciones exactas sobre cómo implementar en los objetivos correctos. Si no se siente cómodo averiguando los pasos de implementación por su cuenta, se recomienda que siga la serie de tutoriales desde el [primero](app-service-api-dotnet-get-started.md) en lugar de comenzar con este proceso de implementación automatizado.
+> Hello pasos siguientes permiten toohello como si Hola los dos primeros tutoriales, con una excepción de punto de partida mismo: Visual Studio ya no sabe qué aplicación web o una aplicación de API que cada proyecto se implementa en. Eso significa que no tiene las instrucciones exactas en este tutorial que explican cómo toodeploy toohello derecho destinos. Si no le convencen pensar en cómo los pasos en su propia implementación de hello toodo, es mejor serie de tutoriales de hello toofollow de hello [primer tutorial](app-service-api-dotnet-get-started.md) que toostart con este automatizar el proceso de implementación.
 > 
 > 
 
-1. Asegúrese de que cumple todos los requisitos previos descritos en el [primer tutorial](app-service-api-dotnet-get-started.md). Además de los requisitos previos descritos, en estos tutoriales de autenticación se da por hecho que ha trabajado con aplicaciones web del Servicio de aplicaciones y aplicaciones de API en Visual Studio y el Portal de Azure.
-2. Haga clic en el botón **Deploy to Azure** (Implementar en Azure) en el [archivo Léame del repositorio del ejemplo To Do List](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md) para implementar las aplicaciones de API y la aplicación web. Tome nota del grupo de recursos de Azure que se crea, ya que puede usar más adelante esta información para buscar nombres de aplicación web y de aplicación de API.
-3. Descargue o clone el [repositorio del ejemplo To Do List](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list) para obtener el código que funcionará localmente en Visual Studio.
+1. Asegúrese de que dispone de todos los requisitos previos de hello descritos en hello [primer tutorial](app-service-api-dotnet-get-started.md). En suma toohello requisitos previos descritos estos tutoriales de autenticación se supone que ha trabajado con aplicaciones de servicio de aplicaciones web y aplicaciones de API en Visual Studio y Hola portal de Azure.
+2. Haga clic en hello **implementar tooAzure** botón en hello [archivo Léame de tooDo lista sample repositorio](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md) hello y aplicaciones de API de hello toodeploy de aplicación web. Tome nota del grupo de recursos de Azure de Hola que se crea, ya puede usar este toolook más adelante la aplicación web y los nombres de aplicación de API.
+3. Descarga u Hola clon [repositorio de ejemplo de lista de tooDo](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list) código de hello tooget que trabajará con localmente en Visual Studio.
 
 ## <a id="azureauth"></a> Configuración de la autenticación en el Servicio de aplicaciones y Azure AD
-En este momento. la aplicación se ejecuta en el Servicio de aplicaciones de Azure sin necesidad de que los usuarios se autentiquen. En esta sección se agregará la autenticación, para lo que es preciso realizar las siguientes tareas:
+Ahora dispone de aplicación Hola que se ejecuta en el servicio de aplicación de Azure sin necesidad de que los usuarios se autentiquen. En esta sección agregará autenticación haciendo Hola siguientes tareas:
 
-* Configurar el Servicio de aplicaciones para que requiera la autenticación de Azure Active Directory (Azure AD) para llamar a la aplicación de API de nivel intermedio.
+* Configurar la autenticación de Azure Active Directory (Azure AD) toorequire de servicio de aplicaciones para llamar a la aplicación de API de nivel intermedio de hello.
 * Crear una aplicación de Azure.
-* Configurar la aplicación de Azure AD para enviar el token de portador después de iniciar sesión en el front-end de AngularJS. 
+* Configurar el token portador hello Azure AD aplicación toosend Hola después de front-end de inicio de sesión toohello AngularJS. 
 
-Si experimenta problemas al seguir las instrucciones del tutorial, consulte la sección [Solución de problemas](#troubleshooting) al final. 
+Si experimenta problemas al siguiente instrucciones de tutorial de hello, vea hello [solución de problemas](#troubleshooting) sección al final de hello del tutorial Hola. 
 
-### <a name="configure-authentication-for-the-middle-tier-api-app"></a>Configuración de la autenticación para la aplicación de API de nivel intermedio
-1. En [Azure Portal](https://portal.azure.com/), vaya a la hoja **Configuración** de la aplicación de API que creó para el proyecto ToDoListAPI, busque la sección **Características** y haga clic en **Autenticación/autorización**.
+### <a name="configure-authentication-for-hello-middle-tier-api-app"></a>Configurar la autenticación de nivel intermedio de hello aplicación de API
+1. Hola [portal de Azure](https://portal.azure.com/), navegue toohello **configuración** hoja de aplicación Hola API que creó para el proyecto de ToDoListAPI hello, encontrar Hola **características** sección y, a continuación, Haga clic en **autenticación / autorización**.
    
     ![Autenticación/autorización del Portal de Azure](./media/app-service-api-dotnet-user-principal-auth/features.png)
-2. En la hoja **Autenticación/autorización**, haga clic en **Activado**.
-3. En la lista desplegable **Acción por realizar cuando no se autentique la solicitud**, seleccione **Iniciar sesión con Azure Active Directory**.
+2. Hola **autenticación / autorización** hoja, haga clic en **en**.
+3. Hola **tootake de acción cuando no se autentica la solicitud** lista desplegable, seleccione **iniciar sesión con Azure Active Directory**.
    
-    Esta opción garantiza que ninguna solicitud no autenticada llegará a la aplicación de API. 
+    Esta opción garantiza que ninguna solicitud unauathenticated alcanzará la aplicación de API de hello. 
 4. En **Proveedores de autenticación**, haga clic en **Azure Active Directory**.
    
     ![Hoja Autenticación/autorización del Portal de Azure](./media/app-service-api-dotnet-user-principal-auth/authblade.png)
-5. En la hoja **Configuración de Azure Active Directory**, haga clic en **Rápido**.
+5. Hola **configuración de Azure Active Directory** hoja, haga clic en **Express**
    
     ![Opción Express de Autenticación/autorización del Portal de Azure](./media/app-service-api-dotnet-user-principal-auth/aadsettings.png)
    
-    Con la opción **Rápido**, App Service puede crear automáticamente una aplicación de Azure AD en su [inquilino](https://msdn.microsoft.com/en-us/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)de Azure AD. 
+    Con hello **Express** opción, servicio de aplicaciones puede crear automáticamente una aplicación de Azure AD en Azure AD [inquilino](https://msdn.microsoft.com/en-us/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant). 
    
-    No es preciso que cree un inquilino, porque todas las cuenta de Azure tienen uno automáticamente.
-6. En **Modo de administración**, haga clic en **Crear nueva aplicación de AD** si no está seleccionada y observe el valor que se encuentra en el cuadro de texto **Crear aplicación**; más adelante buscará esta aplicación de AAD en el Portal de Azure clásico.
+    No tienes toocreate un inquilino, porque cada cuenta de Azure automáticamente tiene uno.
+6. En **modo de administración**, haga clic en **crear nueva aplicación de AD** si no está ya seleccionada y observe el valor de Hola Hola **crear aplicación** cuadro de texto; podrá buscar este AAD aplicación Hola portal de Azure clásico más adelante.
    
     ![Configuración de Azure AD del Portal de Azure](./media/app-service-api-dotnet-user-principal-auth/aadsettings2.png)
    
-    Azure creará automáticamente una aplicación de Azure AD con el nombre indicado en su inquilino de Azure AD. De forma predeterminada, la aplicación de Azure AD recibe el mismo nombre que la aplicación de API. Si lo prefiere, escriba un nombre diferente.
+    Azure creará automáticamente una aplicación de Azure AD con el nombre indicado de hello en el inquilino de Azure AD. De forma predeterminada, se denomina aplicación de Azure AD Hola Hola igual como aplicación hello API. Si lo prefiere, escriba un nombre diferente.
 7. Haga clic en **Aceptar**.
-8. En la hoja **Autenticación/autorización**, haga clic en **Guardar**.
+8. Hola **autenticación / autorización** hoja, haga clic en **guardar**.
    
     ![Haga clic en Guardar](./media/app-service-api-dotnet-user-principal-auth/authsave.png)
 
-Ahora los usuarios de su inquilino de Azure AD son los únicos que pueden llamar a la aplicación de API.
+Ahora solo los usuarios de su inquilino de Azure AD pueden llamar a la aplicación de API de Hola.
 
-### <a name="optional-test-the-api-app"></a>Opcional: prueba de la aplicación de API
-1. En un explorador, vaya a la dirección URL de la aplicación de API: en la hoja **Aplicación de API** de Azure Portal, haga clic en el vínculo bajo **URL**.  
+### <a name="optional-test-hello-api-app"></a>Opcional: Probar la aplicación hello API
+1. En un explorador, vaya toohello URL de aplicación hello API: Hola **aplicación de API** hoja Hola portal de Azure, haga clic en vínculo hello en **URL**.  
    
-    Se le redirigirá a una pantalla de inicio de sesión porque no se permite que las solicitudes no autenticadas tengan acceso a la aplicación de API.
+    Son redirigidos tooa pantalla de inicio de sesión dado que las solicitudes no autenticadas no se permiten la aplicación de API de hello tooreach.
    
-    Si el explorador va a la página que indica que "se creó correctamente", es posible que el explorador ya haya iniciado sesión (en ese caso, abra una ventana de InPrivate o Incognito y vaya a la dirección URL de la aplicación de API).
+    Si el explorador deja de página toohello "se creó correctamente", ya se podría registrar explorador hello en--en ese caso, abra una ventana de InPrivate o de incógnito y vaya URL de la aplicación toohello API.
 2. Inicie sesión con las credenciales de un usuario en su inquilino de Azure AD.
    
-    Una vez iniciada la sesión, en el explorador aparece una página que indica que "se creó correctamente".
-3. Cierre el explorador.
+    Cuando ha iniciado sesión, Hola "se creó correctamente" página aparece en el Explorador de Hola.
+3. Explorador de hello cerrar.
 
-### <a name="configure-the-azure-ad-application"></a>Configuración de la aplicación de Azure AD
-Cuando se configuró la autenticación de Azure AD, el Servicio de aplicaciones creó automáticamente una aplicación de Azure AD. De forma predeterminada, la nueva aplicación de Azure AD se configuró para proporcionar el token de portador a la dirección URL de la aplicación de API. En esta sección, configurará la aplicación de Azure AD para que proporcione el token de portador al front-end de AngularJS, en lugar de directamente a la aplicación de API de nivel intermedio. El front-end de AngularJS enviará el token a la aplicación de API al llamarla.
+### <a name="configure-hello-azure-ad-application"></a>Configurar la aplicación hello Azure AD
+Cuando se configuró la autenticación de Azure AD, el Servicio de aplicaciones creó automáticamente una aplicación de Azure AD. De forma predeterminada la aplicación hello nuevo Azure AD era URL de la aplicación de tooprovide configurado Hola portador token toohello API. En esta sección configurará hello Azure AD aplicación tooprovide Hola portador token toohello AngularJS front-end en lugar de la aplicación de API de nivel intermedio de toohello directamente. front-end de Hello AngularJS enviará Hola token toohello API aplicación cuando llama a la aplicación de API de Hola.
 
 > [!NOTE]
-> Para mantener el proceso lo más sencillo posible, en este tutorial se utiliza una aplicación única de Azure AD tanto para el front-end como para la aplicación de API de nivel intermedio. Otra opción es usar dos aplicaciones de Azure AD. En ese caso, tendría que conceder permiso a la aplicación de Azure AD del front-end para llamar a la aplicación de Azure AD de nivel intermedio. Este enfoque de varias aplicaciones le proporcionaría un control más específico sobre los permisos para cada nivel.
+> proceso de hello tookeep tan simple como sea posible, este tutorial usa un único Azure AD aplicación front-end de Hola y aplicación de API de nivel intermedio de hello. Otra opción es toouse dos aplicaciones de Azure AD. En ese caso tendría de toogive Hola front-end Azure AD aplicación permiso toocall Hola de Azure AD aplicación de nivel medio. Este enfoque de varias aplicaciones proporcionaría más control granular sobre el nivel de permisos tooeach.
 > 
 > 
 
-1. En el [Portal de Azure clásico](https://manage.windowsazure.com/), vaya a **Azure Active Directory**.
+1. Hola [portal de Azure clásico](https://manage.windowsazure.com/), vaya demasiado**Azure Active Directory**.
    
-   Tiene que usar al portal clásico porque varias de las opciones de Azure Active Directory a las que necesita acceder aún no están disponibles en el Portal de Azure actual.
-2. En la pestaña **Directorio** , haga clic en su inquilino de AAD.
+   Tener portal clásico de hello toouse porque ciertas opciones de Azure Active Directory que necesita tener acceso a tooare no está disponible todavía en el portal de Azure actual Hola.
+2. En hello **directorio** , haga clic en su inquilino de AAD.
    
    ![Azure AD en el Portal clásico](./media/app-service-api-dotnet-user-principal-auth/selecttenant.png)
-3. Haga clic en **Aplicaciones > Aplicación propiedad de mi compañía** y, después, en la marca de verificación.
+3. Haga clic en **aplicaciones > las aplicaciones que tiene mi compañía**y, a continuación, haga clic en la casilla de verificación Hola.
    
-   También es posible que tenga que actualizar la página para ver la nueva aplicación.
-4. En la lista de aplicaciones, haga clic en el nombre de aquella que Azure creó automáticamente cuando habilitó la autenticación para la aplicación de API.
+   También tendrá la nueva aplicación de toorefresh Hola página toosee Hola.
+4. En la lista Hola de aplicaciones, haga clic en Hola Hola uno que Azure crea automáticamente cuando se ha habilitado la autenticación de la aplicación de API.
    
    ![Pestaña Aplicaciones de Azure AD](./media/app-service-api-dotnet-user-principal-auth/appstab.png)
 5. Haga clic en **Configurar**.
    
    ![Pestaña Configurar de Azure AD](./media/app-service-api-dotnet-user-principal-auth/configure.png)
-6. En **URL de inicio de sesión** , escriba la dirección URL de la aplicación web de AngularJS, sin barra diagonal final.
+6. Establecer **dirección URL de inicio de sesión** toohello URL de la aplicación web de AngularJS, ninguna barra diagonal final.
    
    Por ejemplo, https://todolistangular.azurewebsites.net.
    
    ![URL de inicio de sesión](./media/app-service-api-dotnet-user-principal-auth/signonurlazure.png)
-7. En **URL de respuesta** , escriba la dirección URL de su aplicación web, sin barra diagonal final.
+7. Establecer **dirección URL de respuesta** toohello URL de la aplicación web, ninguna barra diagonal final.
    
    Por ejemplo: https://todolistsangular.azurewebsites.net.
 8. Haga clic en **Save**.
    
    ![URL de respuesta](./media/app-service-api-dotnet-user-principal-auth/replyurlazure.png)
-9. En la parte inferior de la página, haga clic en **Administrar manifiesto > Descargar manifiesto**.
+9. En la parte inferior de Hola de página de hello, haga clic en **administrar manifiesto > descarga manifiesto**.
    
    ![Descargar el manifiesto](./media/app-service-api-dotnet-user-principal-auth/downloadmanifest.png)
-10. Descargue el archivo en una ubicación en que pueda editar.
-11. En el archivo de manifiesto descargado, busque la propiedad `oauth2AllowImplicitFlow`. Cambie el valor de esta propiedad de `false` a `true` y después guarde el archivo.
+10. Descargar la ubicación del archivo de hello tooa donde se puede editar.
+11. Hola Descargar archivo de manifiesto, busque hello `oauth2AllowImplicitFlow` propiedad. Cambiar valor Hola de esta propiedad desde `false` demasiado`true`y, a continuación, guarde el archivo hello.
     
-    Esta configuración es necesaria para el acceso desde una aplicación de una página de JavaScript. Permite que el token de portador de Oauth 2.0 se devuelva al fragmento de dirección URL.
-12. Haga clic en **Administrar manifiesto > Cargar manifiesto** y cargue el archivo actualizado en el paso anterior.
+    Esta configuración es necesaria para el acceso desde una aplicación de una página de JavaScript. Permite devuelto en el fragmento de dirección URL de Hola Hola Oauth 2.0 portador token toobe.
+12. Haga clic en **administrar manifiesto > cargar manifiesto**y el archivo de Hola de carga que actualizaron en hello anterior paso.
     
     ![Cargar el manifiesto](./media/app-service-api-dotnet-user-principal-auth/uploadmanifest.png)
-13. Copie el valor de **Id. de cliente** y guárdelo en un lugar donde pueda recuperarlo más adelante.
+13. Hola copia **Id. de cliente** valor y guárdelo en algún lugar puede obtener desde más tarde.
 
-## <a name="configure-the-todolistangular-project-to-use-authentication"></a>Configuración del proyecto ToDoListAngular para que use la autenticación
-En esta sección, cambiará el front-end de AngularJS para que use la Biblioteca de autenticación de Active Directory (ADAL) para JS para adquirir en Azure AD un token de portador de usuario que ha iniciado sesión. El código incluirá el token en las solicitudes HTTP enviadas al nivel intermedio, tal como se muestra en el diagrama siguiente. 
+## <a name="configure-hello-todolistangular-project-toouse-authentication"></a>Configurar la autenticación de hello ToDoListAngular proyecto toouse
+En esta sección Cambiar front-end de hello AngularJS para que use la biblioteca de autenticación de Active Directory (ADAL) de JS tooacquire un token de portador de hello usuario que inició sesión de Azure AD. código de Hello incluirá token hello en las solicitudes HTTP enviadas toohello nivel intermedio, como se muestra en hello siguiente diagrama. 
 
 ![Diagrama de autenticación de usuario](./media/app-service-api-dotnet-user-principal-auth/appdiagram.png)
 
-Realice los cambios siguientes en los archivos del proyecto ToDoListAngular.
+Asegúrese de hello después toofiles cambios en el proyecto de ToDoListAngular Hola.
 
-1. Abra el archivo *index.cshtml*.
-2. Quite la marca de comentario de las líneas que hacen referencia a la Biblioteca de autenticación de Active Directory (ADAL) para scripts JS.
+1. Abra hello *index.cshtml* archivo.
+2. Quite el comentario de las líneas de Hola que hacen referencia a hello biblioteca de autenticación de Active Directory (ADAL) para las secuencias de comandos JS.
    
         <script src="app/scripts/adal.js"></script>
         <script src="app/scripts/adal-angular.js"></script>
-3. Abra el archivo *app/scripts/app.js* .
-4. Convierta en comentario el bloque de código marcado para "sin autenticación" y quite la marca de comentario del bloque de código marcado para "con autenticación".
+3. Abra hello *app/scripts/app.js* archivo.
+4. Comenta bloque Hola de código marcado para "sin autenticación" y quite el bloque de Hola de código marcado para "con la autenticación".
    
-    Este cambio hace referencia al proveedor de autenticación de ADAL JS y le proporciona los valores de configuración. En los pasos siguientes, establezca los valores de configuración tanto de su aplicación de API como de la aplicación de Azure AD.
-5. En el código que establece la variable `endpoints` , establezca la dirección URL de la API en la dirección URL de la aplicación de API que creó para el proyecto ToDoListAPI y establezca el identificador de la aplicación de Azure AD en el identificador de cliente que copió del Portal de Azure clásico.
+    Este cambio hace referencia a proveedor de autenticación de ADAL JS hello y proporciona tooit de valores de configuración. Hola siguiendo los pasos debe establecer valores de configuración de Hola para su aplicación de API y la aplicación de Azure AD.
+5. En el código de hello establece hello `endpoints` URL de la API de hello variable, establezca toohello dirección URL de aplicación Hola API que se crean para hello ToDoListAPI proyecto y establecer hello Azure AD aplicación identificador toohello Id. de cliente que copió de hello portal de Azure clásico.
    
-    El código será similar al del ejemplo siguiente:
+    código de Hello está similar toohello siguiente ejemplo.
    
         var endpoints = {
             "https://todolistapi0121.azurewebsites.net/": "1cf55bc9-9ed8-4df31cf55bc9-9ed8-4df3"
         };
-6. En la llamada a `adalProvider.init`, establezca `tenant` en el nombre del inquilino y `clientId` en el mismo valor que usó en el paso anterior.
+6. Hola llamar demasiado`adalProvider.init`, establezca `tenant` tooyour nombre del inquilino y `clientId` valor toosame que utilizó en el paso anterior de Hola.
    
-    El código será similar al del ejemplo siguiente:
+    código de Hello está similar toohello siguiente ejemplo.
    
         adalProvider.init(
             {
@@ -213,61 +213,61 @@ Realice los cambios siguientes en los archivos del proyecto ToDoListAngular.
             $httpProvider
             );
    
-    Estos cambios en `app.js` especifican que el código de llamada y la API a la que se ha llamado están en la misma aplicación de Azure AD.
-7. Abra el archivo *app/scripts/homeCtrl.js* .
-8. Convierta en comentario el bloque de código marcado para "sin autenticación" y quite la marca de comentario del bloque de código marcado para "con autenticación".
-9. Abra el archivo *app/scripts/indexCtrl.js* .
-10. Convierta en comentario el bloque de código marcado para "sin autenticación" y quite la marca de comentario del bloque de código marcado para "con autenticación".
+    Estos cambios se demasiado`app.js` especificar que código de llamada de Hola y Hola denominado API están en aplicación hello misma instancia de Azure AD.
+7. Abra hello *app/scripts/homeCtrl.js* archivo.
+8. Comenta bloque Hola de código marcado para "sin autenticación" y quite el bloque de Hola de código marcado para "con la autenticación".
+9. Abra hello *app/scripts/indexCtrl.js* archivo.
+10. Comenta bloque Hola de código marcado para "sin autenticación" y quite el bloque de Hola de código marcado para "con la autenticación".
 
-### <a name="deploy-the-todolistangular-project-to-azure"></a>Implementación del proyecto ToDoListAngular en Azure
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto ToDoListAngular y, después, en **Publicar**.
+### <a name="deploy-hello-todolistangular-project-tooazure"></a>Implementar hello ToDoListAngular proyecto tooAzure
+1. En **el Explorador de soluciones**, haga clic en proyecto de hello ToDoListAngular y, a continuación, haga clic en **publicar**.
 2. Haga clic en **Publicar**.
    
-    Visual Studio implementa el proyecto y abre un explorador en la dirección URL base de la aplicación web. Esto mostrará una página de error 403, lo que es normal cuando se intenta ir a una dirección URL base de Web API desde un explorador.
+    Visual Studio implementa Hola proyecto y abre la dirección URL base de la aplicación web de toohello de explorador. Esto mostrará una página de 403 error, que es normal que un intento de toogo tooa API Web dirección URL base desde un explorador.
    
-    Para poder probar la aplicación, será preciso que previamente realice un cambio en la aplicación de API de nivel intermedio.
-3. Cierre el explorador.
+    También tendrá toomake un nivel intermedio de toohello de cambio de aplicación de API para poder probar la aplicación hello.
+3. Explorador de hello cerrar.
 
-## <a name="configure-the-todolistapi-project-to-use-authentication"></a>Configuración del proyecto ToDoListAPI para que use la autenticación
-Actualmente, el proyecto ToDoListAPI envía "*" como valor de `owner` a ToDoListDataAPI. En esta sección cambiará el código para enviar el identificador del usuario que ha iniciado sesión.
+## <a name="configure-hello-todolistapi-project-toouse-authentication"></a>Configurar la autenticación de hello ToDoListAPI proyecto toouse
+Hola actualmente envíos de proyecto ToDoListAPI "*" como hello `owner` tooToDoListDataAPI de valor. En esta sección Cambiar Hola código toosend Hola ID de usuario que inició sesión Hola.
 
-Realice los cambios siguientes en el proyecto ToDoListAPI.
+Asegúrese de hello siguientes cambios en el proyecto de ToDoListAPI Hola.
 
-1. Abra el archivo *Controllers/ToDoListController.cs* y quite la marca de comentario de la línea en cada método de acción que establece `owner` en el valor de la notificación `NameIdentifier` de Azure AD. Por ejemplo:
+1. Abra hello *Controllers/ToDoListController.cs* de archivos y quite el comentario de línea de hello en cada método de acción que establece `owner` toohello Azure AD `NameIdentifier` valor de notificación. Por ejemplo:
    
         owner = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.NameIdentifier).Value;
    
-    **Importante**: No quite la marca de comentario del código en el método `ToDoListDataAPI`; lo hará más adelante en el tutorial de autenticación de la entidad de servicio.
+    **Importante**: no quite comentarios del código de hello `ToDoListDataAPI` método; lo hará más adelante para el tutorial de autenticación principal de servicio de Hola.
 
-### <a name="deploy-the-todolistapi-project-to-azure"></a>Implementación del proyecto ToDoListAPI en Azure
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto ToDoListAPI y haga clic en **Publicar**.
+### <a name="deploy-hello-todolistapi-project-tooazure"></a>Implementar hello ToDoListAPI proyecto tooAzure
+1. En **el Explorador de soluciones**, haga clic en proyecto de hello ToDoListAPI y, a continuación, haga clic en **publicar**.
 2. Haga clic en **Publicar**.
    
-    Visual Studio implementa el proyecto y abre un explorador en la URL base de la aplicación de API.
-3. Cierre el explorador.
+    Visual Studio implementa Hola proyecto y abre la dirección URL base de la aplicación API de toohello de explorador.
+3. Explorador de hello cerrar.
 
-### <a name="test-the-application"></a>Prueba de la aplicación
-1. Vaya a la dirección URL de la aplicación web, **mediante HTTPS, no HTTP**.
-2. Haga clic en la pestaña **Lista de tareas pendientes** .
+### <a name="test-hello-application"></a>Probar la aplicación hello
+1. Ir a dirección URL de toohello de aplicación web de hello, **mediante HTTPS y no HTTP**.
+2. Haga clic en hello **tooDo lista** ficha.
    
-    Se le pedirá que inicie sesión.
-3. Inicie sesión con las credenciales de usuario en su inquilino de AAD.
-4. Aparece la página **Lista de tareas pendientes** .
+    Son toolog solicitada en.
+3. Inicie sesión con credenciales de Hola de un usuario en su inquilino de AAD.
+4. Hola **tooDo lista** aparecerá la página.
    
-   ![Página de Lista de tareas pendientes](./media/app-service-api-dotnet-user-principal-auth/webappindex.png)
+   ![página de lista tooDo](./media/app-service-api-dotnet-user-principal-auth/webappindex.png)
    
-   No se muestran tareas pendientes porque hasta todas han sido para el propietario "*". Ahora el nivel intermedio solicita tareas para el usuario que ha iniciado sesión y aún no se ha creado ninguna.
-5. Agregue nuevas tareas pendientes para comprobar que la aplicación funciona.
-6. En otra ventana del explorador, vaya a la dirección URL de la interfaz de usuario de Swagger para la aplicación de API de ToDoListDataAPI y haga clic en **ToDoList > Get** (ToDoList > Obtener). Escriba un asterisco en el parámetro `owner` y haga clic en **Try it out**(Probarlo).
+   No se muestran tareas pendientes porque hasta todas han sido para el propietario "*". Ahora nivel intermedio Hola solicita elementos para el usuario que inició sesión hello y no se ha creado aún.
+5. Agregar nueva tooverify de elementos de tarea que funciona la aplicación hello.
+6. En otra ventana del explorador, vaya toohello Swagger dirección URL de interfaz de usuario para la aplicación de API de ToDoListDataAPI hello y haga clic en **ToDoList > obtener**. Escriba un asterisco para hello `owner` parámetro y, a continuación, haga clic en **Pruébelo**.
    
-   La respuesta muestra que las nuevas tareas pendientes tienen el identificador de usuario real de Azure AD en la propiedad Owner.
+   respuesta de Hello muestra que elementos pendientes de la nueva Hola tienen Id. de usuario de hello real AD de Azure en la propiedad Owner Hola.
    
    ![Id. de propietario en respuesta JSON](./media/app-service-api-dotnet-user-principal-auth/todolistapiauth.png)
 
-## <a name="building-the-projects-from-scratch"></a>Creación de los proyectos desde cero
-Los dos proyectos de Web API se crearon con la plantilla de proyecto **Aplicación de API de Azure** y reemplazando el controlador de los valores predeterminados por un controlador de ToDoList. 
+## <a name="building-hello-projects-from-scratch"></a>Compilar proyectos de Hola desde el principio
+proyectos de Hello dos API Web se crearon con hello **aplicación de API de Azure** de proyectos de plantilla y reemplazando Hola valores de controlador predeterminado con un controlador ToDoList. 
 
-Para más información sobre cómo crear una aplicación de una página de AngularJS con un back-end de API web 2, consulte [Hands On Lab: Build a Single Page Application (SPA) with ASP.NET Web API and Angular.js](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs)(Laboratorio práctico: creación de una aplicación de una sola página con ASP.NET Web API y Angular.js). Para obtener información acerca de cómo agregar código de autenticación de Azure AD, consulte los siguientes recursos:
+Para obtener información acerca de cómo crear demasiado una aplicación de página de AngularJS con un API Web 2 back-end, vea [manos en laboratorio: compilar una aplicación de página única (SPA) con ASP.NET Web API y Angular.js](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs). Para obtener información acerca de cómo tooadd código de autenticación de Azure AD, vea Hola recursos siguientes:
 
 * [Seguridad de las aplicaciones de una sola página AngularJS con Azure AD](../active-directory/active-directory-devquickstarts-angular.md).
 * [Introducing ADAL JS v1 (Presentación de ADAL JS v1)](http://www.cloudidentity.com/blog/2015/02/19/introducing-adal-js-v1/)
@@ -275,9 +275,9 @@ Para más información sobre cómo crear una aplicación de una página de Angul
 ## <a name="troubleshooting"></a>Solución de problemas
 [!INCLUDE [troubleshooting](../../includes/app-service-api-auth-troubleshooting.md)]
 
-* Asegúrese de no confundir ToDoListAPI (nivel intermedio) con ToDoListDataAPI (capa de datos). Por ejemplo, compruebe que ha agregado autenticación a la aplicación de API de nivel intermedio, no a la capa de datos. 
-* Asegúrese de que el código fuente de AngularJS hace referencia a la URL de la aplicación de API de nivel intermedio (ToDoListAPI, no ToDoListDataAPI) y al identificador de cliente de Azure AD correcto. 
+* Asegúrese de no confundir ToDoListAPI (nivel intermedio) con ToDoListDataAPI (capa de datos). Por ejemplo, compruebe que ha agregado la aplicación de API de nivel intermedio de toohello autenticación, no la capa de datos Hola. 
+* Asegúrese de que hello y URL de la aplicación de API de nivel intermedio de AngularJS origen código referencias Hola Hola (ToDoListAPI, no ToDoListDataAPI) corrijan identificador de cliente de Azure AD. 
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial ha aprendido a utilizar la autenticación del Servicio de aplicaciones para una aplicación de API y a llamar a la aplicación de API mediante la biblioteca de ADAL JS. En el siguiente tutorial aprenderá a [acceder de forma segura a la aplicación de API en escenarios de servicio a servicio](app-service-api-dotnet-service-principal-auth.md).
+En este tutorial ha aprendido cómo toouse autenticación de servicio de aplicaciones para una aplicación de API y cómo toocall Hola aplicación de API mediante el uso de Hola biblioteca de AAL JS. En el tutorial siguiente Hola aprenderá cómo demasiado[un acceso seguro tooyour API de aplicación para los escenarios de servicio a servicio](app-service-api-dotnet-service-principal-auth.md).
 

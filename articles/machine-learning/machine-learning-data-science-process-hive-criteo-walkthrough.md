@@ -1,6 +1,6 @@
 ---
-title: "Proceso de ciencia de datos en equipos en acción: uso de un clúster de Hadoop de HDInsight de Azure en un conjunto de datos de 1 TB | Microsoft Docs"
-description: "Uso del proceso de ciencia de datos en equipos en un escenario completo con un clúster de Hadoop de HDInsight para crear e implementar un modelo con un conjunto de datos disponible públicamente de gran tamaño (1 TB)"
+title: "Hola proceso de ciencia de datos de equipo en acción: mediante un clúster de Hadoop de HDInsight de Azure en un conjunto de datos de 1 TB | Documentos de Microsoft"
+description: "Con hello proceso de ciencia de datos de equipo para un escenario de extremo a emplear un Hadoop de HDInsight toobuild de clúster e implementar un modelo con un conjunto de datos disponible públicamente grande de (1 TB)"
 services: machine-learning,hdinsight
 documentationcenter: 
 author: bradsev
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: 8e6143bca819c9a0484221f8b4feb319aaaa73f5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 59b2af02e7840cb60a4b5b2f2c8ab0611df198ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Proceso de ciencia de datos en equipos en acción: uso de un clúster de Hadoop de HDInsight de Azure en un conjunto de datos de 1 TB
+# <a name="hello-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Hola proceso de ciencia de datos de equipo en acción: mediante un clúster de Hadoop de HDInsight de Azure en un conjunto de datos de 1 TB
 
-En este tutorial, se describe cómo usar el proceso de ciencia de datos en equipos en un escenario completo con un [clúster de Hadoop de Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) para almacenar, explorar y estudiar sus características desde el punto de vista de los ingenieros y reducir los datos de ejemplo de uno de los conjuntos de datos de [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) que están disponibles públicamente. Usamos Aprendizaje automático de Azure para crear un modelo de clasificación binaria con estos datos. Asimismo, se muestra cómo publicar uno de estos modelos como un servicio web.
+En este tutorial, se muestra cómo utilizar Hola proceso de ciencia de datos de equipo en un escenario de extremo a extremo con un [clúster de HDInsight Hadoop de Azure](https://azure.microsoft.com/services/hdinsight/) toostore, explorar, ingeniero de características y el detalle de los datos de ejemplo desde uno de hello públicamente disponible [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) conjuntos de datos. Aprendizaje automático de Azure toobuild un modelo de clasificación binaria se usa en estos datos. También le mostramos cómo toopublish uno de estos modelos como un servicio Web.
 
-También es posible usar un cuaderno de iPython para realizar las tareas que se presentan en este tutorial. Los usuarios que deseen probar este método deben consultar el tema [Criteo walkthrough using a Hive ODBC connection](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) (tutorial de Criteo con una conexión de ODBC de Hive).
+También es posible toouse en este tutorial se presentan una tareas de hello IPython tooaccomplish de Bloc de notas. Los usuarios que serían como tootry debe consultar este enfoque Hola [tutorial Criteo mediante una conexión ODBC Hive](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) tema.
 
 ## <a name="dataset"></a>Descripción del conjunto de datos de Criteo
-Los datos de Criteo son un conjunto de datos de predicción de clics que ocupan aproximadamente 370 GB de archivos TSV comprimidos en gzip (1,3 TB aproximadamente sin comprimir). Constan de más de 4300 millones de registros. Estos datos proceden de 24 días de datos de clics que ofrece [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/). Para facilitar el trabajo de los científicos que estudian los datos, hemos descomprimido los datos disponibles para nosotros a fin de experimentar con ellos.
+Hola Criteo datos están un conjunto de datos de predicción de clic es de aproximadamente 370GB de archivos .tsv de gzip comprimido (~1.3TB sin comprimir), que incluye más de 4.3 mil millones de registros. Estos datos proceden de 24 días de datos de clics que ofrece [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/). Para mayor comodidad de Hola de científicos de datos, se ha descomprimido tooexperiment toous disponibles de datos con.
 
 Cada registro de este conjunto de datos contiene 40 columnas:
 
-* La primera columna es una columna de etiqueta que indica si un usuario hace clic en un **anuncio** (valor 1) o si no hace clic (valor 0)
+* Hola primera columna es una columna de etiqueta que indica si un usuario hace clic en un **agregar** (valor 1) o no haga clic en uno (valor 0)
 * Las 13 columnas siguientes son numéricas.
 * Las últimas 26 son columnas de categorías.
 
-Las columnas son anónimas y utilizan una serie de nombres enumerados: desde "Col1" (para la columna de etiqueta) hasta 'Col40 "(para la última columna de categoría).            
+columnas de Hello son anónimos y utilizar una serie de nombres enumerados: "Col1" (para la columna de etiqueta de hello) demasiado ' Col40 "(para la última columna de categorías hello).            
 
-Este es un extracto de las 20 primeras columnas de dos observaciones (filas) de este conjunto de datos:
+Este es un extracto de hello primero 20 columnas de dos observaciones (filas) de este conjunto de datos:
 
     Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
 
     0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
     0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
 
-Hay valores que faltan en las columnas numéricas y de categorías de este conjunto de datos. A continuación, se describe un método sencillo para controlar los valores que faltan. Más adelante, se describen detalles adicionales de los datos cuando se almacenen en tablas de Hive.
+Hay valores que faltan en ambas columnas numéricas y categorías de hello en este conjunto de datos. Se describe un método sencillo para controlar los valores que faltan Hola. Detalles adicionales de los datos de Hola se exploran al almacenarlos en tablas de Hive.
 
-**Definición:** *Porcentaje de clics (CTR, del inglés Click-through rate):* es el porcentaje de clics que se hacen en los datos. En este conjunto de datos de Criteo, el valor de CTR es aproximadamente del 3,3 % (o 0,033).
+**Definición:** *tasa de Click-through (CTR):* trata Hola porcentaje de clics en los datos de Hola. En este conjunto de datos Criteo, Hola CTR es aproximadamente 3.3% o 0.033.
 
 ## <a name="mltasks"></a>Ejemplos de tareas de predicción
 En este tutorial, se describen dos problemas de predicción de ejemplo:
@@ -55,76 +55,76 @@ En este tutorial, se describen dos problemas de predicción de ejemplo:
    
    * Clase 0: no hace clic.
    * Clase 1: sí hace clic.
-2. **Regresión**: predice la probabilidad de que se haga clic en un anuncio en función de las características del usuario.
+2. **Regresión**: predice la probabilidad de Hola de un clic de ad a partir de funciones de usuario.
 
 ## <a name="setup"></a>Configuración de un clúster de Hadoop de HDInsight para la ciencia de los datos
 **Nota:** Esta tarea la suelen hacer los **administradores**.
 
 Configure su entorno de ciencia de datos de Azure para crear soluciones de análisis predictivos con los clústeres de HDInsight en tres pasos:
 
-1. [Cree una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md): esta cuenta de almacenamiento se utiliza para almacenar datos en el almacenamiento de blobs de Azure. Los datos utilizados en los clústeres de HDInsight se almacenan aquí.
-2. [Personalice los clústeres de Hadoop de HDInsight de Azure para la ciencia de los datos](machine-learning-data-science-customize-hadoop-cluster.md): en este paso, se crea un clúster de Hadoop de HDInsight de Azure con Anaconda Python 2.7 de 64 bits instalado en todos los nodos. Hay que llevar a cabo dos pasos importantes (descritos en este tema) para personalizar el clúster de HDInsight.
+1. [Crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md): esta cuenta de almacenamiento es toostore usa datos en almacenamiento de blobs de Azure. datos de Hello usados en clústeres de HDInsight se almacenan aquí.
+2. [Personalice los clústeres de Hadoop de HDInsight de Azure para la ciencia de los datos](machine-learning-data-science-customize-hadoop-cluster.md): en este paso, se crea un clúster de Hadoop de HDInsight de Azure con Anaconda Python 2.7 de 64 bits instalado en todos los nodos. Al personalizar el clúster de HDInsight de hello, hay toocomplete de dos pasos importantes (descritas en este tema).
    
-   * Hay que vincular la cuenta de almacenamiento que creó en el paso 1 con el clúster de HDInsight en el momento de su creación. Esta cuenta de almacenamiento se utiliza para tener acceso a datos que se pueden procesar en el clúster.
-   * Debe habilitar el acceso remoto en el nodo principal del clúster después de crearlo. Recuerde las credenciales de acceso remoto que especifique aquí (distintas de las especificadas para el clúster durante su creación), ya que las necesitará para realizar los procedimientos a continuación.
-3. [Cree un área de trabajo de Aprendizaje automático (ML) de Azure](machine-learning-create-workspace.md): esta área de trabajo de Aprendizaje automático de Azure se usa para generar modelos de Aprendizaje automático después de una exploración de datos inicial y una reducción de su tamaño en el clúster de HDInsight.
+   * Debe vincular la cuenta de almacenamiento de hello creada en el paso 1 con el clúster de HDInsight cuando se crea. Esta cuenta de almacenamiento se utiliza para tener acceso a datos que pueden ser procesados en el clúster de Hola.
+   * Debe habilitar el nodo principal de acceso remoto toohello de clúster de Hola después de crearlo. Recordar las credenciales de acceso remoto de Hola que especifique aquí (que son distintas de las especificadas para el clúster de hello en su creación): vaya necesitando toocomplete Hola procedimientos siguientes.
+3. [Crear un área de trabajo de aprendizaje automático de Azure](machine-learning-create-workspace.md): aprendizaje automático de Azure esta área de trabajo se usa para crear modelos de aprendizaje automático después de una exploración de datos iniciales y hacia abajo de muestreo en clúster de HDInsight Hola.
 
 ## <a name="getdata"></a>Obtención y consumo de datos desde un origen público
-Para acceder al conjunto de datos de [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) , haga clic en el vínculo, acepte las condiciones de uso y especifique un nombre. Aquí se muestra una instantánea de esta pantalla:
+Hola [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) conjunto de datos puede obtenerse acceso haciendo clic en vínculo hello, acepte las condiciones de uso de Hola y proporcionar un nombre. Aquí se muestra una instantánea de esta pantalla:
 
 ![Aceptar los términos de Criteo](./media/machine-learning-data-science-process-hive-criteo-walkthrough/hLxfI2E.png)
 
-Haga clic en **Continue to download** (Continuar la descarga) para más información sobre el conjunto de datos y su disponibilidad.
+Haga clic en **tooDownload continuar** tooread más información sobre el conjunto de datos de Hola y su disponibilidad.
 
-Los datos residen en una ubicación pública de [Azure Blob Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md): wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" hace referencia a la ubicación de almacenamiento de blobs de Azure. 
+datos de Hello residen en un complemento público [almacenamiento de blobs de Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md) ubicación: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. Hola "wasb" hace referencia la ubicación de almacenamiento de blobs de tooAzure. 
 
-1. Los datos de este almacenamiento de blobs público constan de tres subcarpetas de datos sin comprimir.
+1. datos de Hello en el almacenamiento de blobs público está formada por tres subcarpetas de datos sin comprimir.
    
-   1. La subcarpeta *raw/count/* contiene los primeros 21 días de datos, desde day\_00 hasta day\_20
-   2. La subcarpeta *raw/train/* consta de un único día de datos, day\_21
-   3. La subcarpeta *raw/test/* consta de dos días de datos, day\_22 y day\_23
-2. Para aquellos que quieran empezar con los datos gzip sin formato, podrán encontrar estos datos también en la carpeta principal *raw/*, como day_NN.gz, donde NN es un valor entre 00 y 23.
+   1. Hola subcarpeta *sin formato/count/* contiene Hola primera 21 días de datos, desde el día\_tooday 00\_20
+   2. Hola subcarpeta *sin formato/entrenar/* consta de un solo día de datos, día\_21
+   3. Hola subcarpeta *sin formato/test/* consta de dos días de datos, día\_22 y día\_23
+2. Para aquellos que desean toostart con datos sin formato gzip de hello, también están disponibles en la carpeta principal de hello *sin formato /* como day_NN.gz, donde NN va de too23 00.
 
-Más adelante en este tutorial, al hablar de la creación de tablas de Hive, se expone un enfoque alternativo para acceder a estos datos, explorarlos y modelarlos que no requiere ninguna descarga local.
+Un enfoque alternativo tooaccess, explorar y modele estos datos que no requieren las descargas locales se explica más adelante en este tutorial, cuando se crean tablas de Hive.
 
-## <a name="login"></a>Inicio de sesión en el nodo principal del clúster
-Para iniciar sesión en el nodo principal del clúster, utilice [Azure Portal](https://ms.portal.azure.com) para buscar el clúster. Haga clic en el icono del elefante de HDInsight a la izquierda y, a continuación, haga doble clic en el nombre del clúster. Navegue hasta la pestaña **Configuration** (Configuración), haga doble clic en el icono Connect (Conectar), situado en la parte inferior de la página, y escriba las credenciales de acceso remoto cuando se le soliciten. Así accederá al nodo principal del clúster.
+## <a name="login"></a>Inicie sesión en el nodo principal del clúster de toohello
+toolog en el nodo principal de toohello del clúster de hello, use hello [portal de Azure](https://ms.portal.azure.com) clúster de hello toolocate. Haga clic en icono de hello HDInsight elefante en hello izquierda y, a continuación, haga doble clic en nombre de hello del clúster. Navegue toohello **configuración** ficha, haga doble clic en el icono de conectar hello en parte inferior de Hola de página de Hola y escriba sus credenciales de acceso remoto cuando se le solicite. Esto le llevará el nodo principal de toohello del clúster de Hola.
 
-Esto es lo que se ve normalmente al iniciar sesión por primera vez en el nodo principal del clúster:
+Este es el aspecto de un primer registro en el nodo principal del clúster de toohello típico:
 
-![Iniciar sesión en el clúster](./media/machine-learning-data-science-process-hive-criteo-walkthrough/Yys9Vvm.png)
+![Inicie sesión en toocluster](./media/machine-learning-data-science-process-hive-criteo-walkthrough/Yys9Vvm.png)
 
-A la izquierda, vemos el icono de "Hadoop Command Line" (Línea de comandos de Hadoop), que será nuestra herramienta de trabajo para explorar los datos. También vemos dos direcciones URL útiles: "Hadoop Yarn Status" (Estado de Hadoop Yarn) y "Hadoop Name Node" (Nombre del nodo de Hadoop). La dirección URL del estado de Yarn muestra el progreso del trabajo, mientras que la URL del nombre del nodo proporciona detalles sobre la configuración del clúster.
+Hola izquierda, vemos Hola "Hadoop línea de comandos", que es nuestro potente para la exploración de datos de Hola. También vemos dos direcciones URL útiles: "Hadoop Yarn Status" (Estado de Hadoop Yarn) y "Hadoop Name Node" (Nombre del nodo de Hadoop). dirección URL de Hello yarn estado muestra el progreso del trabajo y URL del nodo de nombre de hello proporciona detalles sobre la configuración de clúster de Hola.
 
-Ya contamos con la configuración adecuada y estamos listos para comenzar la primera parte del tutorial, que es la exploración de datos mediante Hive y la preparación de estos para el Aprendizaje automático de Azure.
+Ahora se configura y está listo toobegin primera parte del tutorial de Hola: exploración de datos con Hive y preparar datos para aprendizaje automático de Azure.
 
 ## <a name="hive-db-tables"></a> Creación de tablas y base de datos de Hive
-Para crear tablas de Hive para nuestro conjunto de datos de Criteo, abra la ***Línea de comandos de Hadoop*** en el escritorio del nodo principal y especifique el directorio de Hive con este comando:
+toocreate Hive tablas para el conjunto de datos Criteo, abra hello ***línea de comandos de Hadoop*** en Hola escritorio del nodo principal de Hola y escriba el directorio del subárbol de hello escribiendo el comando de Hola
 
     cd %hive_home%\bin
 
 > [!NOTE]
-> Ejecute todos los comandos de Hive que aparecen en este tutorial desde el símbolo del sistema del directorio bin/ de Hive. De esta manera, cualquier problema con la ruta de acceso se soluciona automáticamente. Utilizaremos indistintamente los términos "símbolo del sistema del directorio de Hive", "símbolo del sistema del directorio bin/ de Hive" y "línea de comandos de Hadoop".
+> Ejecutar todos los comandos de Hive en este tutorial de Papelera de Hive Hola / símbolo del sistema de directorio. De esta manera, cualquier problema con la ruta de acceso se soluciona automáticamente. Usamos Hola términos "Prompt de directorio de Hive", "Hive bin / símbolo del sistema de directorio" y "línea de comandos de Hadoop" indistintamente.
 > 
 > [!NOTE]
-> Para ejecutar cualquier consulta de Hive, siempre se pueden utilizar los siguientes comandos:
+> tooexecute cualquier consulta de Hive, siempre se pueden usar Hola siguientes comandos:
 > 
 > 
 
         cd %hive_home%\bin
         hive
 
-Después de que aparezca Hive REPL con un signo "hive >", solo tendrá que cortar y pegar la consulta para ejecutarla.
+Después de hello Hive REPL aparece con un "hive >" iniciar sesión, corte y pegue Hola consulta tooexecute lo.
 
-El código siguiente crea una base de datos "criteo" y, a continuación, genera 4 tablas:
+Hello código siguiente crea una base de datos "criteo" y, a continuación, genera 4 tablas:
 
-* una *tabla para generar recuentos*, correspondientes a los días desde day\_00 a day\_20,
-* una *tabla que se usa como el conjunto de datos "train"*, correspondiente a day\_21, y
-* dos *tablas que se usan como los conjuntos de datos de prueba* correspondientes a day\_22 y day\_23, respectivamente.
+* un *tabla para generar recuentos* creado en el día de días\_tooday 00\_20,
+* un *tabla para su uso como conjunto de datos de entrenamiento de Hola* basado en día\_21, y
+* dos *conjuntos de datos de prueba de tablas para su uso como hello* basado en día\_22 y día\_23 respectivamente.
 
-Dividimos nuestro conjunto de datos de prueba en dos tablas distintas porque uno de los días es festivo y queremos determinar si el modelo puede detectar las diferencias entre un día festivo y uno laborable a partir del porcentaje de clics.
+El conjunto de datos de prueba se divide en dos tablas diferentes porque uno de los días de hello es un día festivo, y queremos toodetermine si el modelo de Hola puede detectar las diferencias entre un día festivo y no de vacaciones de velocidad de Click-through de Hola.
 
-Para mayor comodidad, el script [sample&#95;hive&#95;create&#95;criteo&#95;database&#95;and&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) se muestra aquí:
+Hola script [ejemplo &#95; hive &#95; crear &#95; criteo &#95; base de datos &#95; y &#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) se muestra aquí por comodidad:
 
     CREATE DATABASE IF NOT EXISTS criteo;
     DROP TABLE IF EXISTS criteo.criteo_count;
@@ -155,22 +155,22 @@ Para mayor comodidad, el script [sample&#95;hive&#95;create&#95;criteo&#95;datab
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_23';
 
-Observamos que todas estas tablas son externas ya que simplemente señalan a ubicaciones de almacenamiento de blobs de Azure (wasb).
+Se tenga en cuenta que todas estas tablas son externas como podemos simplemente punto tooAzure ubicaciones de almacenamiento de blobs (wasb).
 
-**Hay dos maneras de ejecutar todas las consultas de Hive mencionadas.**
+**Hay dos maneras tooexecute Hive cualquier consulta que mencionamos ahora.**
 
-1. **Usar la línea de comandos de REPL de Hive**: el primer método consiste en emitir un comando "hive" y, a continuación, copiar la consulta y pegarla en la línea de comandos de REPL de Hive. Para ello, ejecute lo siguiente:
+1. **Usar Hola Hive REPL de línea de comandos**: hello en primer lugar es tooissue un comando "hive" y copie y pegue una consulta al Hola Hive REPL de línea de comandos. toodo este, no:
    
         cd %hive_home%\bin
         hive
    
-     Ahora, en la línea de comandos de REPL, la consulta se ejecuta al cortarla y pegarla.
-2. **Guardar las consultas en un archivo y ejecutar el comando**: el segundo método consiste en guardar las consultas en un archivo .hql ([sample&#95;hive&#95;create&#95;criteo&#95;database&#95;and&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) y, después, emitir el comando siguiente para ejecutar la consulta:
+     Consulta de hello ejecuta ahora en hello REPL de línea de comandos, cortar y pegar.
+2. **Guardar consultas tooa archivo y ejecutar el comando de hello**: hello en segundo lugar está el archivo .hql tooa de toosave hello las consultas ([ejemplo &#95; hive &#95; crear &#95; criteo &#95; base de datos &#95; y &#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) y, a continuación, siguiente de Hola de problema comando consulta de Hola tooexecute:
    
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
 ### <a name="confirm-database-and-table-creation"></a>Confirmación de la creación de la tabla y la base de datos
-A continuación, confirmamos la creación de la base de datos con el comando siguiente desde el símbolo del sistema del directorio bin/ de Hive:
+A continuación, se confirme la creación de hello de base de datos de hello con hello siguiente comando desde la Papelera de Hive Hola / símbolo del sistema de directorio:
 
         hive -e "show databases;"
 
@@ -180,13 +180,13 @@ Este es el resultado:
         default
         Time taken: 1.25 seconds, Fetched: 2 row(s)
 
-Esto confirma la creación de la nueva base de datos, "criteo".
+Esto confirma la creación de hello de base de datos nueva hello, "criteo".
 
-Para ver qué tablas hemos creado, simplemente emitimos este comando desde el símbolo del sistema del directorio bin/ de Hive:
+toosee qué tablas que hemos creado, se emite simplemente Hola comando aquí desde la Papelera de Hive Hola / símbolo del sistema de directorio:
 
         hive -e "show tables in criteo;"
 
-Se mostrará el siguiente resultado:
+A continuación, vemos Hola después de salida:
 
         criteo_count
         criteo_test_day_22
@@ -195,10 +195,10 @@ Se mostrará el siguiente resultado:
         Time taken: 1.437 seconds, Fetched: 4 row(s)
 
 ## <a name="exploration"></a> Exploración de datos en Hive
-Ahora estamos preparados hacer algunas exploraciones de datos básicas en Hive. Comenzamos contando el número de ejemplos de las tablas de datos "train" y "test".
+Ahora estamos listos toodo una exploración de datos básicos en el subárbol. Se empezar contando Hola número de ejemplos de entrenamiento de Hola y tablas de datos de prueba.
 
 ### <a name="number-of-train-examples"></a>Número de ejemplos de "train"
-El contenido de [sample&#95;hive&#95;count&#95;train&#95;table&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) se muestra aquí:
+Hola contenido de [ejemplo &#95; hive &#95; recuento &#95; entrenar &#95; tabla &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) se muestran a continuación:
 
         SELECT COUNT(*) FROM criteo.criteo_train;
 
@@ -207,12 +207,12 @@ El resultado es:
         192215183
         Time taken: 264.154 seconds, Fetched: 1 row(s)
 
-Como alternativa, también se puede emitir el comando siguiente desde el símbolo del sistema del directorio bin/ de Hive:
+O bien, uno puede emitir también Hola siguiente comando desde la Papelera de Hive Hola / símbolo del sistema de directorio:
 
         hive -f C:\temp\sample_hive_count_criteo_train_table_examples.hql
 
-### <a name="number-of-test-examples-in-the-two-test-datasets"></a>Número de ejemplos de "test" en los dos conjuntos de datos
-Ahora vamos a contar el número de ejemplos que hay en los dos conjuntos de datos "test". El contenido de [sample&#95;hive&#95;count&#95;criteo&#95;test&#95;day&#95;22&#95;table&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) es el siguiente:
+### <a name="number-of-test-examples-in-hello-two-test-datasets"></a>Número de ejemplos de prueba de hello dos conjuntos de datos de prueba
+Ahora contamos con número Hola de ejemplos de conjuntos de datos de dos pruebas Hola. Hola contenido de [ejemplo &#95; hive &#95; recuento &#95; criteo &#95; prueba &#95; día &#95; 22 &#95; tabla &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) aquí:
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_22;
 
@@ -221,13 +221,13 @@ El resultado es:
         189747893
         Time taken: 267.968 seconds, Fetched: 1 row(s)
 
-Como es habitual, también podemos llamar al script desde el símbolo del sistema del directorio bin/ de Hive emitiendo el comando:
+Como es habitual, también podemos llamarlo script de Hola de Papelera de Hive Hola / directory símbolo del sistema mediante la emisión de comandos de hello:
 
         hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
 
-Por último, examinamos el número de ejemplos de prueba que hay en el conjunto de datos "test" basado en day\_23.
+Por último, examinamos número Hola de ejemplos de prueba de conjunto de datos de prueba de hello en función de día\_23.
 
-El comando para hacer esto es similar al anterior (vea [sample&#95;hive&#95;count&#95;criteo&#95;test&#95;day&#95;23&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
+Hello toodo de comando es similar toohello una muestra (consulte demasiado[ejemplo &#95; hive &#95; recuento &#95; criteo &#95; prueba &#95; día &#95; 23 &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
@@ -236,21 +236,21 @@ Este es el resultado:
         178274637
         Time taken: 253.089 seconds, Fetched: 1 row(s)
 
-### <a name="label-distribution-in-the-train-dataset"></a>Distribución de etiquetas en el conjunto de datos "train"
-La distribución de etiquetas del conjunto de datos "train" es interesante. Para verlo, mostramos el contenido de [sample&#95;hive&#95;criteo&#95;label&#95;distribution&#95;train&#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
+### <a name="label-distribution-in-hello-train-dataset"></a>Distribución de etiqueta en el conjunto de datos de entrenamiento de Hola
+distribución de la etiqueta de Hello en el conjunto de datos de entrenamiento de hello es de interés. toosee esto, se muestra el contenido de [ejemplo &#95; hive &#95; criteo &#95; etiqueta &#95; distribución &#95; entrenar &#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
 
         SELECT Col1, COUNT(*) AS CT FROM criteo.criteo_train GROUP BY Col1;
 
-De esta forma, obtenemos la distribución de etiquetas:
+Esto da como resultado la distribución de la etiqueta de hello:
 
         1       6292903
         0       185922280
         Time taken: 459.435 seconds, Fetched: 2 row(s)
 
-Tenga en cuenta que el porcentaje de las etiquetas positivas es del 3,3 % (coherente con el conjunto de datos original).
+Tenga en cuenta que Hola porcentaje de las etiquetas positivas es 3.3% (coherente con el conjunto de datos original de hello).
 
-### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Distribuciones del histograma de algunas variables numéricas en el conjunto de datos "train"
-Podemos usar la función nativa de Hive "histogram\_numeric" para conocer el aspecto de la distribución de las variables numéricas. El contenido de [sample&#95;hive&#95;criteo&#95;histogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql) es el siguiente:
+### <a name="histogram-distributions-of-some-numeric-variables-in-hello-train-dataset"></a>Distribuciones de histograma de algunas variables numéricas en hello entrenar el conjunto de datos
+Podemos usar nativo del subárbol "histograma\_numérico" función toofind out qué distribución Hola de variables numéricas hello es similar. Estos son contenido Hola de [ejemplo &#95; hive &#95; criteo &#95; histograma &#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -260,7 +260,7 @@ Podemos usar la función nativa de Hive "histogram\_numeric" para conocer el asp
             ) a
             LATERAL VIEW explode(col2_hist) exploded_table as hist;
 
-El resultado es este:
+Esto da como resultado siguiente hello:
 
         26      155878415
         2606    92753
@@ -284,10 +284,10 @@ El resultado es este:
         65510   3446
         Time taken: 317.851 seconds, Fetched: 20 row(s)
 
-La combinación "LATERAL VIEW - explode" en Hive sirve para producir un resultado similar a SQL en lugar de la lista habitual. Tenga en cuenta que, en esta tabla, la primera columna corresponde al centro de bin y la segunda, a la frecuencia de bin.
+Hola LATERAL vista - seccionar combinación en Hive actúa tooproduce una salida similar a SQL en lugar de lista de saludo habitual. Tenga en cuenta que en Hola esta tabla, la primera columna de hello corresponde toohello bin hello y center segundo toohello bin frecuencia.
 
-### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Percentiles aproximados de algunas de las variables numéricas del conjunto de datos "train"
-Con respecto a las variables numéricas, también es interesante el cálculo de los percentiles aproximados. La función nativa de Hive "percentile\_approx" permite realizar esta acción. El contenido de [sample&#95;hive&#95;criteo&#95;approximate&#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) es el siguiente:
+### <a name="approximate-percentiles-of-some-numeric-variables-in-hello-train-dataset"></a>Percentiles aproximados de algunas variables numéricas en hello entrenar el conjunto de datos
+Además de interés con variables numéricas es cálculo Hola de percentiles aproximados. La función nativa de Hive "percentile\_approx" permite realizar esta acción. Hola contenido de [ejemplo &#95; hive &#95; criteo &#95; aproximado &#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) son:
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
@@ -296,10 +296,10 @@ El resultado es:
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
 
-Observamos que la distribución de los percentiles suele estar estrechamente relacionada con la distribución de histograma de cualquier variable numérica.         
+Se Comente que distribución Hola de percentiles suele toohello estrechamente relacionadas con el histograma distribución de cualquier variable numérica.         
 
-### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Búsqueda del número de valores únicos para algunas columnas de categorías en el conjunto de datos "train"
-Continuamos con la exploración de datos y ahora vamos a buscar el número de valores únicos que adoptan algunas columnas de categorías. Para ello, mostramos el contenido de [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
+### <a name="find-number-of-unique-values-for-some-categorical-columns-in-hello-train-dataset"></a>Buscar el número de valores únicos para algunas columnas de categorías en el conjunto de datos de entrenamiento de Hola
+Continuar con la exploración de datos de hello, encontramos ahora, para algunas columnas de categorías, número de Hola de valores únicos que se necesitan. toodo esto, se muestra el contenido de [ejemplo &#95; hive &#95; criteo &#95; único &#95; valores &#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
 
         SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
 
@@ -308,9 +308,9 @@ El resultado es:
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Tenga en cuenta que Col15 tiene 19 millones de valores únicos. Usar técnicas simples como la codificación "one-hot" para codificar estas variables de categorías tan altamente dimensionales no es viable. En particular, vamos a explicar y mostrar una técnica eficaz y contundente llamada [Aprendizaje con recuentos](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) para hacer frente a este problema de forma eficaz.
+Tenga en cuenta que Col15 tiene 19 millones de valores únicos. Usar técnicas de naïve como "estrechamente con una codificación" tooencode dichas variables de categorías muy dimensionales es factible. En particular, vamos a explicar y mostrar una técnica eficaz y contundente llamada [Aprendizaje con recuentos](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) para hacer frente a este problema de forma eficaz.
 
-Terminamos esta subsección examinando también el número de valores únicos de algunas otras columnas de categorías. El contenido de [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;multiple&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) es el siguiente:
+Esta subsección se finalizar examinando Hola número de valores únicos para algunas otras columnas de categorías también. Hola contenido de [ejemplo &#95; hive &#95; criteo &#95; único &#95; valores &#95; varios &#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) son:
 
         SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
         COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
@@ -321,15 +321,15 @@ El resultado es:
         30935   15200   7349    20067   3
         Time taken: 1933.883 seconds, Fetched: 1 row(s)
 
-De nuevo vemos que, excepto Col20, todas las demás columnas tienen muchos valores únicos.
+Nuevo vemos que excepto Col20, todos Hola otras columnas tienen muchos valores únicos.
 
-### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>Recuentos de aparición conjunta de pares de variables de categorías en el conjunto de datos "train"
+### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-hello-train-dataset"></a>Recuentos de repetición coadministradores de pares de variables de categorías en el conjunto de datos de entrenamiento de Hola
 
-Los recuentos de aparición conjunta de pares de variables de categorías también son interesantes. Esto se puede determinar con el código de [sample&#95;hive&#95;criteo&#95;paired&#95;categorical&#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
+Hola coadministradores repeticiones de pares de variables de categorías también es de interés. Esto se puede determinar mediante código de hello en [ejemplo &#95; hive &#95; criteo &#95; emparejada &#95; categorías &#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
-Hemos invertido el orden de los recuentos en función de su aparición y mostramos los 15 primeros en este caso. El resultado obtenido es el siguiente:
+Se invertir orden Hola recuentos por su aparición y busque en la parte superior de hello 15 en este caso. El resultado obtenido es el siguiente:
 
         ad98e872        cea68cd3        8964458
         ad98e872        3dbb483e        8444762
@@ -348,10 +348,10 @@ Hemos invertido el orden de los recuentos en función de su aparición y mostram
         265366bf        6f5c7c41        782142
         Time taken: 560.22 seconds, Fetched: 15 row(s)
 
-## <a name="downsample"></a> Reducción del tamaño de los conjuntos de datos para el Aprendizaje automático de Azure
-Una vez que hemos explorado los conjuntos de datos y que hemos mostrado cómo se hace este tipo de exploración sobre cualquier variable (incluidas las combinaciones), ahora vamos a reducir el tamaño de los conjuntos de datos para que se puedan crear modelos en el Aprendizaje automático de Azure. Recuerde que el problema en el que nos centramos es el siguiente: considerando un conjunto de atributos de ejemplo (valores de las características desde Col2 hasta Col40), vamos a predecir si Col1 tendrá un valor 0 (no se hace clic) o un valor 1 (sí se hace clic).
+## <a name="downsample"></a>Hacia abajo de conjuntos de datos de ejemplo hello para el aprendizaje automático de Azure
+Tener Hola explorar conjuntos de datos y muestra cómo podemos hacer este tipo de exploración de las variables (incluidas combinaciones), que ahora hacia abajo de conjuntos de datos de ejemplo Hola por lo que podemos crear modelos de aprendizaje automático de Azure. Recuerde error Hola nos centramos en es: dado un conjunto de atributos de ejemplo (valores de las características de Col2 - Col40), se predecir si Col1 es un 0 (no haga clic en) o 1 (hacer clic).
 
-Para reducir el tamaño de los conjuntos de datos "train" y "test" al 1 % del tamaño original, utilizamos la función RAND() nativa de Hive. El siguiente script, [sample&#95;hive&#95;criteo&#95;downsample&#95;train&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql), nos permite hacerlo con el conjunto de datos "train":
+toodown ejemplo nuestro entrenar y probar los conjuntos de datos too1% del tamaño original de hello, usamos una función RAND() nativa del subárbol. Hola la siguiente secuencia de comandos, [ejemplo &#95; hive &#95; criteo &#95; disminuir la resolución &#95; entrenar &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) hace conjunto de datos de entrenamiento de hello:
 
         CREATE TABLE criteo.criteo_train_downsample_1perc (
         col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
@@ -368,7 +368,7 @@ El resultado es:
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-El script [sample&#95;hive&#95;criteo&#95;downsample&#95;test&#95;day&#95;22&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) permite hacerlo con los datos de "test", en concreto, en day\_22:
+Hola script [ejemplo &#95; hive &#95; criteo &#95; disminuir la resolución &#95; prueba &#95; día &#95; 22 &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) lo hace para los datos de prueba, día\_22:
 
         --- Now for test data (day_22)
 
@@ -386,7 +386,7 @@ El resultado es:
         Time taken: 317.66 seconds
 
 
-Por último, el script [sample&#95;hive&#95;criteo&#95;downsample&#95;test&#95;day&#95;23&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) permite hacerlo con los datos de "test", en concreto, en day\_23:
+Por último, Hola script [ejemplo &#95; hive &#95; criteo &#95; disminuir la resolución &#95; prueba &#95; día &#95; 23 &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) lo hace para los datos de prueba, día\_23:
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -402,232 +402,232 @@ El resultado es:
         Time taken: 1.86 seconds
         Time taken: 300.02 seconds
 
-De esta forma, estamos listos para usar nuestros conjuntos de datos "train" y "test" con el tamaño reducido para crear modelos en el Aprendizaje automático de Azure.
+Con esto, se está listo toouse nuestro abajo muestrea entrenar y probar los conjuntos de datos para generar modelos de aprendizaje automático de Azure.
 
-Hay un componente importante final antes de pasar al Aprendizaje automático de Azure, que es la preocupación con la tabla de recuento. En la siguiente subsección, se trata este tema con más detalle.
+Hay un componente importante final antes de seguir adelante tooAzure aprendizaje automático, que es la tabla de recuento de hello preocupaciones. En hello siguiente subsección, se explican con más detalle.
 
-## <a name="count"></a> Breve explicación sobre la tabla de recuento
-Como hemos visto, algunas variables de categorías tienen una dimensionalidad muy alta. En nuestro tutorial, presentamos una técnica eficaz denominada [Aprendizaje con recuentos](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) para codificar estas variables de una manera eficiente y robusta. Para obtener más información sobre esta técnica, acceda al vínculo proporcionado.
+## <a name="count"></a>Obtener una breve descripción en la tabla de recuento de Hola
+Como hemos visto, algunas variables de categorías tienen una dimensionalidad muy alta. En nuestro tutorial, le presentaremos una técnica eficaz denominada [aprendizaje con recuentos](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) tooencode estas variables de una manera eficaz y sólida. Para obtener más información sobre esta técnica está en vínculo Hola proporcionado.
 
 [!NOTE]
->En este tutorial, nos centramos en el uso de las tablas de recuento para producir representaciones compactas de características de categorías con una alta dimensionalidad. Esta no es la única manera de codificar características de las categorías. Para más información sobre otras técnicas, los usuarios interesados pueden ver la información sobre la [codificación "one-hot"](http://en.wikipedia.org/wiki/One-hot) y la [aplicación de hash a las características](http://en.wikipedia.org/wiki/Feature_hashing).
+>En este tutorial, se centran en el uso de recuento tablas tooproduce compact representaciones de las características de categorías muy dimensionales. Esto no es Hola única manera tooencode las características de categorías; Para obtener más información sobre otras técnicas, los usuarios interesados pueden extraer del repositorio [uno-activos-encoding](http://en.wikipedia.org/wiki/One-hot) y [hash de características](http://en.wikipedia.org/wiki/Feature_hashing).
 >
 
-Para crear tablas de recuento en los datos de recuento, se utilizan los datos de la carpeta raw/count. En la sección de modelado, mostramos a los usuarios cómo crear estas tablas de recuento para características de categorías desde cero, así como a utilizar una tabla de recuento pregenerada para sus exploraciones. En lo sucesivo, cuando nos referimos a las "tablas de recuento pregeneradas", nos referimos a usar las tablas de recuento proporcionadas. En la siguiente sección encontrará instrucciones detalladas sobre cómo obtener acceso a estas tablas.
+tablas de recuento de toobuild en datos de la cuenta de hello, utilizamos datos de Hola Hola/sin formato de carpeta de recuento. Hola modelado sección, se muestran a los usuarios cómo toobuild estas funciones cuentan las tablas para las características de categorías desde cero o, alternativamente, toouse una tabla de recuento pregenerado para sus exploraciones. En lo que se indica a continuación, cuando se hace referencia demasiado "previamente generado tablas de recuento", nos referimos usando tablas de recuento de Hola que ofrecemos. Instrucciones detalladas sobre cómo tooaccess estas tablas se proporcionan en la sección siguiente Hola.
 
 ## <a name="aml"></a> Creación de modelos con el Aprendizaje automático de Azure
 Nuestro proceso de creación de modelos con Azure Machine Learning consta de estos pasos:
 
-1. [Obtención de los datos a partir de las tablas de Hive para el Aprendizaje automático de Azure](#step1)
-2. [Creación del experimento: limpieza de los datos y caracterización con tablas de recuento](#step2)
-3. [Crear, entrenar y puntuar el modelo](#step3)
-4. [Evaluación del modelo](#step4)
-5. [Publicación del modelo como un servicio web](#step5)
+1. [Obtener datos de Hola de las tablas de Hive en aprendizaje automático de Azure](#step1)
+2. [Crear experimento de hello: limpiar datos de Hola y caracterizar con tablas de recuento](#step2)
+3. [Compilación, entrenar y modelo de puntuación Hola](#step3)
+4. [Evaluar el modelo de Hola](#step4)
+5. [Publicar el modelo de Hola como un servicio web](#step5)
 
-Ahora estamos preparados para generar modelos en Estudio de aprendizaje automático de Azure. Nuestros datos con tamaño reducido están guardados como tablas de Hive en el clúster. Usaremos el módulo **Importar datos** de Azure Machine Learning para leer estos datos. Las credenciales para acceder a la cuenta de almacenamiento de este clúster se proporcionan a continuación.
+Ahora estamos listos toobuild modelos en estudio de aprendizaje automático de Azure. Los datos muestreados abajo se guardan como tablas de Hive en clúster de Hola. Usamos Hola aprendizaje automático de Azure **importar datos** tooread módulo estos datos. cuenta de almacenamiento de Hello credenciales tooaccess Hola de este clúster se muestran en qué se indica a continuación.
 
-### <a name="step1"></a> Paso 1: Obtención de los datos a partir de las tablas de Hive para Azure Machine Learning usando el módulo Importar datos y seleccionándolo para un experimento de aprendizaje automático
-Para empezar, seleccione **+NUEVO** -> **EXPERIMENTO** -> **Experimento en blanco**. A continuación, en el cuadro **Búsqueda** , en la parte superior izquierda, busque "Importar datos". Arrastre y coloque el módulo **Importar datos** en el lienzo del experimento (la parte central de la pantalla) para usar el módulo para acceder a los datos.
+### <a name="step1"></a>Paso 1: Obtener datos de las tablas de Hive en aprendizaje mediante el módulo de importación de datos de Hola y selecciónelo para un experimento de aprendizaje automático
+Para empezar, seleccione **+NUEVO** -> **EXPERIMENTO** -> **Experimento en blanco**. A continuación, en hello **búsqueda** cuadro en hello esquina superior izquierda, busque "Importar datos". Hola de arrastrar y colocar **importar datos** módulo en módulo toohello experimento lienzo (parte media de Hola de pantalla de bienvenida) toouse hello para el acceso a datos.
 
-Este es el aspecto del módulo **Importar datos** mientas está obteniendo los datos de la tabla de Hive:
+Esto es qué hello **importar datos** aspecto al obtener datos de tabla de Hive hello:
 
 ![Importar datos obtiene los datos](./media/machine-learning-data-science-process-hive-criteo-walkthrough/i3zRaoj.png)
 
-Para el módulo **Importar datos** , los valores de los parámetros que se proporcionan en el gráfico son solo algunos ejemplos del tipo de valores que tiene que proporcionar. A continuación se ofrecen algunas instrucciones generales acerca de cómo rellenar el conjunto de parámetros para el módulo **Importar datos** .
+Para hello **importar datos** módulo, valores de hello de parámetros de Hola que se proporcionan en hello gráfico son sólo algunos ejemplos de hello, tipo de valores necesita tooprovide. Aquí tiene algunas instrucciones generales acerca toofill parámetro hello de salida de hello **importar datos** módulo.
 
 1. Elija "Consulta de Hive" como **Origen de datos**
-2. En el cuadro **Consulta de base de datos de Hive**, basta con seleccionar SELECT * FROM <nombre\_base\_datos.nombre\_tabla\_>.
+2. Hola **consulta de base de datos de Hive** cuadro, una instrucción SELECT simple * FROM < su\_base de datos\_name.your\_tabla\_name >-es suficiente.
 3. **URI del servidor de Hcatalog**: si el clúster es "abc", este valor simplemente será: https://abc.azurehdinsight.net
-4. **Nombre de la cuenta de usuario de Hadoop**: el nombre de usuario elegido en el momento de dar de alta el clúster. (No es el nombre de usuario de acceso remoto).
-5. **Contraseña de la cuenta de usuario de Hadoop**: la contraseña de usuario elegida en el momento de dar de alta el clúster. (NO es la contraseña de acceso remoto).
+4. **Nombre de cuenta de usuario de Hadoop**: nombre de usuario de hello seleccionado en el momento de Hola de puesta en servicio de Cluster Server de Hola. (No Hola acceso remoto nombre de usuario!)
+5. **Contraseña de cuenta de usuario de Hadoop**: Hola contraseña Hola nombre de usuario seleccionado en el momento de Hola de puesta en servicio de Cluster Server de Hola. (No Hola contraseña de acceso remoto!)
 6. **Ubicación de los datos de salida**: elija "Azure".
-7. **Nombre de la cuenta de almacenamiento de Azure**: la cuenta de almacenamiento asociada al clúster.
-8. **Clave de la cuenta de almacenamiento de Azure**: la clave de almacenamiento asociada al clúster.
-9. **Nombre del contenedor de Azure**: si el nombre de clúster es "abc", este campo suele ser simplemente "abc".
+7. **Nombre de la cuenta de almacenamiento de Azure**: Hola cuenta de almacenamiento asociada con el clúster de Hola
+8. **Clave de cuenta de almacenamiento de Azure**: clave Hola de hello cuenta de almacenamiento asociada con el clúster de Hola.
+9. **Nombre de contenedor de Azure**: si el nombre del clúster de hello es "abc", esto suele ser simplemente "abc",.
 
-Una vez que el módulo **Importar datos** finaliza la obtención de datos (aparece una marca de verificación verde en el módulo), guarde estos datos como un conjunto de datos (con el nombre que desee). Este es el aspecto:
+Una vez Hola **importar datos** termina de obtención de datos (ver graduación Hola verde en hello módulo), guardar estos datos como un conjunto de datos (con un nombre de su elección). Este es el aspecto:
 
 ![Importar datos guarda los datos](./media/machine-learning-data-science-process-hive-criteo-walkthrough/oxM73Np.png)
 
-Haga clic con el botón derecho en el puerto de salida del módulo **Importar datos** . Se muestran las opciones **Guardar como conjunto de datos** y **Visualizar**. Si se hace clic en la opción **Visualize** (Visualizar), se muestran 100 filas de los datos, junto con un panel derecho que es útil para algunas estadísticas de resumen. Para guardar los datos, simplemente seleccione **Save as dataset** (Guardar como conjunto de datos) y siga las instrucciones.
+Puerto de hello de salida de hello contextual **importar datos** módulo. Se muestran las opciones **Guardar como conjunto de datos** y **Visualizar**. Hola **visualizar** opción, si hace clic en, muestra 100 filas de datos de hello, junto con un panel derecho que es útil para algunas estadísticas de resumen. datos de toosave, simplemente seleccione **Guardar como conjunto de datos** y siga las instrucciones.
 
-Para seleccionar el conjunto de datos guardado para usarlo en un experimento de aprendizaje automático, busque los conjuntos de datos usando el cuadro **Búsqueda** que se muestra en la siguiente ilustración. A continuación, escriba parcialmente el nombre que asignó al conjunto de datos para acceder a él y arrastre el conjunto de datos hasta el panel principal. Al depositarlo en el panel principal, se selecciona para su uso en el modelado de Aprendizaje automático.
+tooselect Hola guardan conjunto de datos para su uso en un experimento de aprendizaje de máquina, buscar conjuntos de datos de hello mediante hello **búsqueda** cuadro se muestra en la figura siguiente de Hola. A continuación, sólo tiene que escribir el nombre de Hola se le asignó hello conjunto de datos parcialmente tooaccess y arrastre Hola conjunto de datos a Hola panel principal. Colocar en el panel principal de hello, selecciona para su uso en el modelado de aprendizaje de máquina.
 
-![Movimiento de arrastre del conjunto de datos hasta el panel principal](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
+![Conjunto de datos de arrastre en el panel principal Hola](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> Realice esta acción para los conjuntos de datos "test" y "train". Además, recuerde usar el nombre de la base de datos y los nombres de tabla que ha asignado para este propósito. Los valores usados en la ilustración tienen únicamente fines ilustrativos.**
+> Hágalo para entrenar hello y conjuntos de datos de prueba de Hola. También, recuerde el nombre de base de datos de toouse hello y nombres de tabla que ha asignado para este propósito. valores de Hello utilizados en la figura Hola son únicamente para ilustración purposes.* *
 > 
 > 
 
-### <a name="step2"></a> Paso 2: creación de un experimento sencillo en el estudio de Aprendizaje automático de Azure para predecir los clics y los "no clics"
+### <a name="step2"></a>Paso 2: Crear un experimento sencillo en aprendizaje automático de Azure toopredict clics / no hace clic en
 Nuestro experimento de Azure Machine Learning tiene el siguiente aspecto:
 
 ![Experimento de Machine Learning](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xRpVfrY.png)
 
-Ahora examinaremos los componentes clave de este experimento. Como recordatorio, tenemos que arrastrar nuestros conjuntos de datos train y test a nuestro lienzo de experimento antes.
+Ahora se examinan los componentes clave de Hola de este experimento. Como recordatorio, necesitamos toodrag nuestro guardado entrenar y probar los conjuntos de datos en el lienzo del experimento de tooour primero.
 
 #### <a name="clean-missing-data"></a>Limpiar datos que faltan
-El módulo **Limpiar datos que faltan** hace lo que sugiere su nombre: limpia los datos que faltan siguiendo el método que especifique el usuario. En este módulo, veremos estos datos:
+Hola **limpiar datos que faltan** módulo lo que sugiere su nombre: limpia los datos que faltan de manera que puede ser especificado por el usuario. En este módulo, veremos estos datos:
 
 ![Limpiar datos que faltan](./media/machine-learning-data-science-process-hive-criteo-walkthrough/0ycXod6.png)
 
-Aquí, hemos optado por reemplazar todos los valores que faltan por un 0. Hay otras opciones, que se pueden ver al mirar las listas desplegables del módulo.
+En este caso, elegimos tooreplace todos los valores que faltan con un 0. Hay otras opciones, que pueden ser vistos examinando las listas desplegables de hello en el módulo de Hola.
 
-#### <a name="feature-engineering-on-the-data"></a>Diseño de características para los datos
-Puede haber millones de valores únicos para algunas características de categoría de grandes conjuntos de datos. El uso de métodos simples como la codificación "one-hot" para representar estas características de categorías no es viable. En este tutorial, se muestran cómo usar las características de recuento mediante módulos de Aprendizaje automático de Azure integrados para generar representaciones compactas de estas variables de categorías con una alta dimensionalidad. El resultado final es un tamaño de modelo más pequeño, tiempos de formación más rápidos y métricas de rendimiento bastante similares a usar otras técnicas.
+#### <a name="feature-engineering-on-hello-data"></a>Característica de ingeniería en datos de Hola
+Puede haber millones de valores únicos para algunas características de categoría de grandes conjuntos de datos. El uso de métodos simples como la codificación "one-hot" para representar estas características de categorías no es viable. En este tutorial, se muestra cómo las características de recuento de toouse con toogenerate de módulos de aprendizaje automático de Azure integrada compact representaciones de estas variables de categorías muy dimensionales. Hello resultado final es un tamaño más pequeño de modelo, velocidad de entrenamiento y las métricas de rendimiento que son bastante comparable toousing otras técnicas.
 
 ##### <a name="building-counting-transforms"></a>Creación de transformaciones de recuento
-Para crear características de recuento, usamos el módulo **Crear transformación de recuento** , que está disponible en Aprendizaje automático de Azure. El módulo tiene este aspecto:
+funciones de recuento de toobuild, se usa los hello **compilar contando transformar** módulo que está disponible en aprendizaje automático de Azure. módulo de Hello tiene el siguiente aspecto:
 
 ![Módulo Crear transformación de recuento](./media/machine-learning-data-science-process-hive-criteo-walkthrough/e0eqKtZ.png)
 ![Módulo Crear transformación de recuento](./media/machine-learning-data-science-process-hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT] 
-> En el cuadro **Recuento de columnas**, especificamos las columnas en las que queremos realizar recuentos. Normalmente, son columnas de categorías con una alta dimensionalidad (tal y como se mencionó). Al principio, hemos mencionado que el conjunto de datos de Criteo tiene 26 columnas de categorías: de Col15 a Col40. En este caso, contamos en todas ellas y les damos sus índices (de 15 a 40 separados por comas, como se muestra).
+> Hola **el número de columna** cuadro, escribimos las columnas que se desea tooperform cuenta. Normalmente, son columnas de categorías con una alta dimensionalidad (tal y como se mencionó). En el inicio de hello, mencionamos ese conjunto de datos de Criteo hello tiene 26 columnas de categorías: de Col15 tooCol40. En este caso, se cuentan en todos ellos y proporcionar a sus índices (de 15 too40 separados por comas, como se muestra).
 > 
 
-Para usar el módulo en el modo MapReduce (adecuado para grandes conjuntos de datos), se necesita acceso a un clúster de Hadoop de HDInsight (el que se usa para la exploración de categorías se puede reutilizar para este propósito) y sus credenciales. En las ilustraciones anteriores se muestra el aspecto de los valores rellenados (reemplace los valores de ejemplo por los que son relevantes para su propio caso de uso).
+módulo de hello toouse en Hola MapReduce modo (adecuado para grandes conjuntos de datos), necesitamos accedemos clúster de Hadoop de HDInsight tooan (Hola uno utilizado para la exploración de la característica se puede reutilizar para este propósito así) y sus credenciales. figuras anterior de Hello muestran qué valores rellena Hola apariencia (reemplazar valores de hello dan a modo ilustrativo con los que son relevantes para su propio caso de uso).
 
 ![Parámetros del módulo](./media/machine-learning-data-science-process-hive-criteo-walkthrough/05IqySf.png)
 
-En la ilustración anterior, se muestra cómo especificar la ubicación del blob de entrada. Esta ubicación tiene los datos reservados para la creación de tablas de recuento.
+En la ilustración de hello anterior, mostramos cómo tooenter Hola entrada blob ubicación. Esta ubicación tiene datos Hola reservados para la creación de tablas de recuento.
 
-Cuando finalice este módulo, se puede guardar la transformación para más adelante haciendo clic con el botón derecho en el módulo y seleccionando la opción **Save as Transform** (Guardar como transformación):
+Una vez finaliza la ejecución de este módulo, podemos guardar transformación Hola para más tarde haciendo clic en el módulo de Hola y seleccionar hello **Guardar como transformación** opción:
 
 ![Opción "Guardar como transformación"](./media/machine-learning-data-science-process-hive-criteo-walkthrough/IcVgvHR.png)
 
-En nuestra arquitectura de experimento antes mostrada, el conjunto de datos "ytransform2" corresponde exactamente a una transformación de recuento guardada. Para el resto de este experimento, se considera que el lector usó un módulo **Crear transformación de recuento** con algunos datos para generar recuentos y, a continuación, puede usar estos recuentos para generar características de recuento en los conjuntos de datos train y test.
+En nuestra arquitectura de experimento mostrado anteriormente, Hola dataset "ytransform2" corresponde exactamente tooa guarda la transformación de recuento. Para el resto de Hola de este experimento, suponemos que ese lector hello usa un **compilar contando transformar** módulo en algunos datos toogenerate recuentos y, a continuación, puede usar las características de recuento de recuentos toogenerate en tren de Hola y conjuntos de datos de prueba.
 
-##### <a name="choosing-what-count-features-to-include-as-part-of-the-train-and-test-datasets"></a>Elección de las características de recuento que se incluirán como parte de los conjuntos de datos train y test
-Una vez que tenemos una transformación de recuento lista, el usuario puede elegir las características que desea incluir en los conjuntos de datos train y test mediante el módulo **Modificar parámetros de la tabla de recuentos** . Mostramos este módulo a continuación solo para ofrecer una visión completa, pero para simplificar no lo usamos en nuestro experimento.
+##### <a name="choosing-what-count-features-tooinclude-as-part-of-hello-train-and-test-datasets"></a>Elegir qué cuenta tooinclude características como parte del entrenamiento de Hola y conjuntos de datos de prueba
+Una vez que tenemos un recuento transformar listo, usuario Hola puede elegir qué tooinclude características en su entrenar y probar los conjuntos de datos mediante hello **modificar parámetros de tabla de recuento** módulo. Mostramos este módulo a continuación solo para ofrecer una visión completa, pero para simplificar no lo usamos en nuestro experimento.
 
 ![Parámetros de la tabla de modificación de recuentos](./media/machine-learning-data-science-process-hive-criteo-walkthrough/PfCHkVg.png)
 
-En este caso, como se puede ver, hemos elegido usar solo las probabilidades e ignorar la columna de retroceso. También podemos establecer parámetros como el umbral de ubicación de elementos no utilizados, cuántos ejemplos anteriores agregar para el suavizado y si se usa cualquier ruido Laplacian o no. Todas estas son características avanzadas y es conveniente tener en cuenta que los valores predeterminados son un buen punto de partida para los usuarios que no están familiarizados con este tipo de generación de características.
+En este caso, tal y como se puede ver, que hemos elegido toouse probabilidades de registro solo Hola y Hola tooignore retroceder de columna. También podemos establecer parámetros como Hola umbral de Papelera, cuántos tooadd ejemplos pseudo anterior para suavizar, y si toouse cualquier Laplaciana ruido o no. Todos estos son características avanzados y es toobe en cuenta que los valores predeterminados de hello son un buen punto de partida para los usuarios que son el nuevo tipo de toothis de generación de la característica.
 
-##### <a name="data-transformation-before-generating-the-count-features"></a>Transformación de datos antes de generar las características de recuento
-Ahora nos centraremos en un punto importante acerca de cómo transformar los datos de train y test antes de generar realmente las características de recuento. Tenga en cuenta que hay dos módulos **Ejecutar script R** usados antes de aplicar la transformación de recuentos a nuestros datos.
+##### <a name="data-transformation-before-generating-hello-count-features"></a>Transformación de datos antes de generar características de recuento de Hola
+Ahora se centrarse en un punto importante acerca de la transformación nuestro entrenar y probar datos tooactually anterior generar características de recuento. Tenga en cuenta que hay dos **ejecutar Script de R** módulos usados para aplicar la transformación tooour datos de recuento de Hola.
 
 ![Ejecución de módulos de script R](./media/machine-learning-data-science-process-hive-criteo-walkthrough/aF59wbc.png)
 
-Este es el primer script R:
+Este es el primer script de R hello:
 
 ![Primer script de R](./media/machine-learning-data-science-process-hive-criteo-walkthrough/3hkIoMx.png)
 
-En este script R, cambiamos nuestras columnas a los nombres de "Col1" a "Col40". Esto es así porque la transformación de recuentos espera nombres con este formato.
+En este script de R, cambiamos el nombre de nuestro toonames columnas "Col1" demasiado "Col40". Esto es porque la transformación recuento de hello espera que los nombres de este formato.
 
-En el segundo script R, para equilibrar la distribución entre clases positivas y negativas (clases 1 y 0 respectivamente) reducimos la resolución de la clase negativa. El siguiente script R muestra cómo hacerlo:
+El segundo script de R hello, se un equilibrio entre la distribución de Hola entre clases positivas y negativas (clases 1 y 0, respectivamente) por clase de disminución de resolución Hola negativo. Hola R este script muestra cómo toodo esto:
 
 ![Segundo script de R](./media/machine-learning-data-science-process-hive-criteo-walkthrough/91wvcwN.png)
 
-En este script R simple, se usa "pos\_neg\_ratio" para establecer la cantidad de equilibrio entre las clases positiva y negativa. Es importante hacerlo, ya que mejorar el desequilibrio entre clases normalmente tiene ventajas de rendimiento para los problemas de clasificación en los que la distribución de las clases se había sesgado (recuerde que en nuestro caso, tenemos una clase positiva del 3,3% y una clase negativa del 96,7%).
+En esta secuencia de comandos de R simple, se utiliza "pos\_neg\_proporción" cantidad de hello tooset de equilibrio entre las clases negativo de Hola y Hola positivo. Esto es importante toodo ya que suele mejorar el desequilibrio de la clase tiene ventajas de rendimiento para problemas de clasificación donde la distribución de la clase de hello es sesgado (Recuerde que en nuestro caso, tenemos 3.3% positivo clase y clase negativo 96,7%).
 
-##### <a name="applying-the-count-transformation-on-our-data"></a>Aplicación de la transformación de recuentos a nuestros datos
-Por último, podemos usar el módulo **Aplicar transformación** para aplicar las transformaciones de recuentos a nuestros conjuntos de datos train y test. Este módulo toma la transformación de recuentos guardada como una entrada y los conjuntos de datos train o test como la otra entrada, y devuelve datos con características de recuento. Se muestra aquí:
+##### <a name="applying-hello-count-transformation-on-our-data"></a>Aplicar transformación de recuento de hello en nuestros datos
+Por último, podemos usar hello **aplicar transformación** tooapply módulo Hola transformaciones de recuento en nuestro entrenar y probar los conjuntos de datos. Este módulo toma la transformación recuento de hello guardado como una entrada y Hola entrenar o probar los conjuntos de datos como Hola otra entrada y devuelve los datos con características de recuento. Se muestra aquí:
 
 ![Módulo Aplicar transformación](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xnQvsYf.png)
 
-##### <a name="an-excerpt-of-what-the-count-features-look-like"></a>Un extracto del aspecto de las características de recuento
-Es instructivo para ver el aspecto de las características de recuento en nuestro caso. Aquí se muestra un extracto de esto:
+##### <a name="an-excerpt-of-what-hello-count-features-look-like"></a>Un extracto del aspecto de características de recuento de Hola
+Es instructivo toosee qué características de recuento de hello aspecto en nuestro caso. Aquí se muestra un extracto de esto:
 
 ![Características de recuento](./media/machine-learning-data-science-process-hive-criteo-walkthrough/FO1nNfw.png)
 
-En este extracto, se muestra que para las columnas en las que se ha hecho el recuento, se obtienen los recuentos y probabilidades, además de cualquier retroceso pertinente.
+En este extracto, se mostrará que para las columnas de Hola que se enumeran en, se obtener recuentos de Hola y probabilidades de registro en suma tooany relevante backoffs.
 
-Ahora estamos listos para crear un modelo de Aprendizaje automático de Azure con estos conjuntos de datos transformados. En la siguiente sección, veremos cómo se puede hacer esto.
+Ahora estamos listo toobuild un modelo de aprendizaje automático de Azure con estos conjuntos de datos transformados. En la siguiente sección hello, mostramos cómo puede hacerlo.
 
-### <a name="step3"></a>Paso 3: Creación, entrenamiento y puntuación del modelo
+### <a name="step3"></a>Paso 3: Crear, entrenar y puntuar modelo Hola
 
 #### <a name="choice-of-learner"></a>Elección del aprendiz
-En primer lugar, tenemos que elegir un aprendiz. Vamos a usar como nuestro aprendiz un árbol de decisiones incrementado de dos clases. Aquí están las opciones predeterminadas para este aprendiz:
+En primer lugar, necesitamos toochoose un aprendiz. Estamos continuo toouse un árbol de decisión impulsado de dos clases como nuestro aprendiz. Estas son opciones predeterminadas de Hola para este aprendiz:
 
 ![Parámetros de árbol de decisiones incrementados de dos clases](./media/machine-learning-data-science-process-hive-criteo-walkthrough/bH3ST2z.png)
 
-Para nuestro experimento elegiremos los valores predeterminados. Tenemos en cuenta que los valores predeterminados son normalmente significativos y una buena forma de obtener las líneas base rápidas del rendimiento. Puede mejorar el rendimiento mediante el barrido de parámetros si elige hacerlo una vez que tenga una línea base.
+Para nuestro experimento, estamos valores predeterminados de curso toochoose Hola. Se tenga en cuenta que hello tiene como valor predeterminado son normalmente significativa y una buena manera tooget rápido las líneas de base en el rendimiento. Puede mejorar en el rendimiento mediante el barrido de parámetros si elige tooonce que tiene una línea base.
 
-#### <a name="train-the-model"></a>Entrenamiento del modelo
-Para el entrenamiento, simplemente invocamos un módulo **Entrenar modelo** . Las dos entradas son el aprendiz de árbol de decisión incrementado de dos clases y nuestro conjunto de datos train. Esto se muestra a continuación:
+#### <a name="train-hello-model"></a>Entrenar el modelo de Hola
+Para el entrenamiento, simplemente invocamos un módulo **Entrenar modelo** . Hola dos entradas tooit son aprendiz de árbol de decisión impulsado de dos clases de Hola y el conjunto de datos de entrenamiento. Esto se muestra a continuación:
 
 ![Módulo Entrenar modelo](./media/machine-learning-data-science-process-hive-criteo-walkthrough/2bZDZTy.png)
 
-#### <a name="score-the-model"></a>Puntuación del modelo
-Una vez que tenemos un modelo entrenado, estamos preparados para puntuar el conjunto de datos test y evaluar su rendimiento. Lo hacemos mediante el módulo **Score Model (Puntuar modelo)** mostrado en la siguiente figura, con un módulo **Evaluate Model (Evaluar modelo)**:
+#### <a name="score-hello-model"></a>Modelo de Hola de puntuación
+Una vez que tenemos un modelo entrenado, estamos preparados tooscore en hello probar el conjunto de datos y tooevaluate su rendimiento. Esto se realiza mediante hello **puntuar modelo** módulo se muestra en hello siguiente figura, junto con un **evaluar modelo** módulo:
 
 ![Score Model module](./media/machine-learning-data-science-process-hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step4"></a> Paso 4: Evaluación del modelo
-Por último, vamos a analizar el rendimiento del modelo. Normalmente, para los problemas de clasificación (binarios) de dos clases, una buena medida es AUC. Para visualizar esto, conectamos el módulo **Score Model (Puntuar modelo)** con un módulo **Evaluate Model (Evaluar modelo)**. Al hacer clic en **Visualizar** en el módulo **Evaluate Model (Evaluar modelo)**, se genera un gráfico como el siguiente:
+### <a name="step4"></a>Paso 4: Evaluar el modelo de Hola
+Por último, nos gustaría tooanalyze rendimiento del modelo. Por lo general, para los dos problemas de clasificación (binaria) de clase, una buena medida es hello AUC. toovisualize esto, se enlazó hello **puntuar modelo** módulo tooan **evaluar modelo** módulo para esto. Haga clic en **visualizar** en hello **evaluar modelo** módulo da como resultado un gráfico como Hola sigue uno:
 
 ![Módulo Evaluación del modelo de BDT](./media/machine-learning-data-science-process-hive-criteo-walkthrough/0Tl0cdg.png)
 
-En los problemas de clasificación binarios (o de dos clases), una buena medida de la exactitud de la predicción es Área bajo curva (AUC). A continuación, mostramos nuestros resultados al usar este modelo en nuestro conjunto de datos "test". Para ver los resultados, haga clic con el botón derecho en el puerto de salida del módulo **Evaluate Model (Evaluar modelo)** y seleccione **Visualizar**.
+En binario (o clase dos) problemas de clasificación, una buena medida de precisión de la predicción se Hola área en curva (AUC). A continuación, mostramos nuestros resultados al usar este modelo en nuestro conjunto de datos "test". tooget, puerto de salida de hello contextual de hello **evaluar modelo** módulo y, a continuación, **visualizar**.
 
 ![Visualización del módulo Evaluar modelo](./media/machine-learning-data-science-process-hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step5"></a> Paso 5: Publicación del modelo como un servicio web
-La capacidad de publicar un modelo de Aprendizaje automático de Azure como servicios web con una complicación mínima es una característica valiosa para que esté ampliamente disponible. Una vez hecho esto, cualquier persona puede realizar llamadas al servicio web con los datos de entrada para los que necesitan predicciones, y el servicio web usa el modelo para devolver dichas predicciones.
+### <a name="step5"></a>Paso 5: Publicar modelo Hola como un servicio Web
+Hola capacidad toopublish un modelo de aprendizaje automático de Azure como servicios web con un mínimo de molestias es una característica útil para realizar ampliamente disponibles. Una vez hecho esto, cualquier usuario puede crear el servicio web de llamadas a toohello con datos de entrada que necesiten predicciones para y servicio web de hello usa Hola modelo tooreturn estas predicciones.
 
-Para ello, primero guardamos el modelo con el que hemos entrenado como un objeto del Modelo entrenado. Haga clic con el botón derecho en el módulo **Entrenar modelo** y use la opción **Save as Trained Model (Guardar como modelo entrenado)**.
+toodo, guardamos primero nuestro modelo de aprendizaje como un objeto de modelo entrenado. Esto se hace con el botón secundario hello **entrenar modelo** módulo y usar hello **Guardar como modelo entrenado** opción.
 
-A continuación, necesitamos crear puertos de entrada y salida para nuestro servicio web:
+A continuación, necesitamos toocreate entrada y salida de puertos para el servicio web:
 
-* Un puerto de entrada toma los datos de la misma forma que los datos para los que necesitamos predicciones
-* Un puerto de salida devuelve las etiquetas puntuadas y las probabilidades asociadas.
+* un puerto de entrada toma los datos en hello mismo formulario como datos de Hola que necesitamos predicciones para
+* un puerto de salida devuelve Hola puntuación de etiquetas y las probabilidades de hello asociado.
 
-#### <a name="select-a-few-rows-of-data-for-the-input-port"></a>Selección de algunas filas de datos para el puerto de entrada
-Es cómodo usar una **Transformación de aplicación de SQL** para seleccionar solo 10 filas que sirvan como los datos del puerto de entrada. Seleccione estas filas de datos para el puerto de entrada mediante la consulta SQL que se muestra aquí:
+#### <a name="select-a-few-rows-of-data-for-hello-input-port"></a>Seleccione algunas filas de datos para el puerto de entrada de Hola
+Es conveniente toouse una **aplicar transformación de SQL** módulo tooselect simplemente 10 filas tooserve como Hola los datos de puerto de entrada. Seleccione solo estas filas de datos para nuestro puerto de entrada mediante consultas SQL Hola que se muestra a continuación:
 
 ![Datos del puerto de entrada](./media/machine-learning-data-science-process-hive-criteo-walkthrough/XqVtSxu.png)
 
 #### <a name="web-service"></a>Servicio web
-Ahora estamos preparados para realizar un pequeño experimento que puede utilizarse para publicar el servicio web.
+Ahora estamos listos toorun un experimento pequeño que puede ser utilizado toopublish nuestro servicio web.
 
 #### <a name="generate-input-data-for-webservice"></a>Generación de datos de entrada para el servicio web
-Como paso inicial, ya que la tabla de recuento es grande, tomamos unas pocas líneas de datos de prueba y generamos datos de salida a partir de ellos con características de recuento. Esto puede servir como formato de datos de entrada para nuestro servicio web. Esto se muestra a continuación:
+Como paso cero, puesto que es grande, la tabla de recuento de Hola se tardar unas pocas líneas de datos de prueba y generan datos de salida a partir de él con características de recuento. Esto puede servir como formato de datos de entrada de Hola de nuestro servicio Web. Esto se muestra a continuación:
 
 ![Creación de datos de entrada de BDT](./media/machine-learning-data-science-process-hive-criteo-walkthrough/OEJMmst.png)
 
 > [!NOTE]
-> Para el formato de datos de entrada, utilizaremos ahora la salida del módulo **Count Featurizer** (Caracterizador de recuento). Una vez que este experimento termina de ejecutarse, guarde la salida del módulo **Caracterizador de recuento** como un conjunto de datos. Este conjunto de datos se usa para los datos de entrada en el servicio web.
+> Para el formato de datos de entrada de hello, usamos ahora Hola salida de hello **Count Featurizer** módulo. Una vez que esto experimentar termine la ejecución, guardar la salida de hello de hello **Count Featurizer** módulo como un conjunto de datos. Este conjunto de datos se utiliza para los datos de entrada de hello en hello webservice.
 > 
 > 
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Puntuación del experimento para la publicación del servicio web
-En primer lugar, veamos el aspecto que tiene. La estructura fundamental es un módulo **Score Model (Puntuar modelo)** que acepta el objeto del modelo entrenado y unas pocas líneas de datos de entrada que hemos generado en los pasos anteriores con el módulo **Count Featurizer (Caracterizador de recuento)**. Utilizamos "Seleccionar columnas de conjunto de datos" para proyectar las etiquetas puntuadas y las probabilidades de puntuación.
+En primer lugar, veamos el aspecto que tiene. Hola esencial estructura es una **puntuar modelo** módulo que acepta el objeto de modelo entrenado y unas pocas líneas de datos de entrada que se generan en pasos anteriores de hello con hello **Count Featurizer** módulo. Se utiliza "Seleccionar columnas de conjunto de datos" tooproject Hola puntuado etiquetas y las probabilidades de puntuación de Hola.
 
 ![Seleccionar columnas de conjunto de datos](./media/machine-learning-data-science-process-hive-criteo-walkthrough/kRHrIbe.png)
 
-Observe cómo el módulo **Seleccionar columnas de conjunto de datos** puede usarse para 'filtrar' datos de un conjunto de datos. El contenido se muestra aquí:
+Tenga en cuenta cómo Hola **seleccionar columnas de conjunto de datos** módulo puede utilizarse para 'filtrando' datos de un conjunto de datos. Se muestra contenido de hello aquí:
 
-![Filtrado con el módulo Seleccionar columnas de conjunto de datos](./media/machine-learning-data-science-process-hive-criteo-walkthrough/oVUJC9K.png)
+![Filtrar con hello seleccionar columnas en el módulo de conjunto de datos](./media/machine-learning-data-science-process-hive-criteo-walkthrough/oVUJC9K.png)
 
-Para obtener los puertos de salida y entrada azules, basta con hacer clic en **Preparar servicio web** en la esquina inferior derecha. Al realizar este experimento también podemos publicar el servicio web haciendo clic en el icono **Publicar servicio web** situado en la esquina inferior derecha, como se muestra aquí:
+puertos de hello azul de entrada y salida tooget, simplemente haga clic en **preparar webservice** final Hola derecho. Ejecuta este experimento también permite que nos toopublish Hola servicio web: haga clic en hello **publicar servicio WEB** situado en aquí de derecho, como se muestra de la parte inferior de hello:
 
 ![Publicar servicio web](./media/machine-learning-data-science-process-hive-criteo-walkthrough/WO0nens.png)
 
-Una vez publicado el servicio web, accedemos a una página como esta:
+Una vez publicado el servicio Web de hello, obtenemos tooa redirigida página que busca por lo tanto:
 
 ![Panel del servicio web](./media/machine-learning-data-science-process-hive-criteo-walkthrough/YKzxAA5.png)
 
-Podemos ver los dos vínculos a los servicios web en el lado izquierdo:
+Dos vínculos de servicios Web se muestra en el lado izquierdo de hello:
 
-* El servicio **Solicitud-respuesta** (o RRS) está destinado a predicciones únicas y es lo que usamos en este taller.
-* El Servicio de **EJECUCIÓN POR LOTES** (BES) se usa para las predicciones por lotes y requiere que los datos de entrada usados para realizar predicciones residan en Almacenamiento de blobs de Azure.
+* Hola **solicitud/respuesta** servicio (o RR) está destinados solo predicciones y es lo que se usan en el taller.
+* Hola **ejecución por lotes** servicio (BES) se utiliza para las predicciones por lotes y requiere que las predicciones de toomake de datos de entrada utilizados Hola residan en almacenamiento de blobs de Azure.
 
-Al hacer clic en el vínculo **PETICIÓN-RESPUESTA**, accedemos a una página que nos proporciona un código predefinido en C#, Python y R. Este código puede usarse fácilmente para realizar llamadas al servicio web. Tenga en cuenta que hay que utilizar la clave de API en esta página para la autenticación.
+Al hacer clic en el vínculo de hello **solicitud/respuesta** nos lleva tooa página que nos da predefinidos previamente el código en C#, python y R. Este código se puede usar de forma cómoda para realizar llamadas toohello webservice. Tenga en cuenta que Hola clave de API en esta página debe toobe utilizado para la autenticación.
 
-Se aconseja copiar este código python en una celda nueva en el cuaderno de IPython.
+Es conveniente toocopy este python código sobre tooa nueva celda en el Bloc de notas de IPython Hola.
 
-Aquí se muestra un fragmento de código python con la clave de API correcta.
+Aquí mostramos un segmento de código python con clave de API de hello correcta.
 
 ![Código de Python](./media/machine-learning-data-science-process-hive-criteo-walkthrough/f8N4L4g.png)
 
-Tenga en cuenta que reemplazamos la clave de API predeterminada por la clave de API de nuestros servicios web. Al hacer clic en **Ejecutar** en esta celda de un cuaderno de IPython, se obtiene la siguiente respuesta:
+Tenga en cuenta que reemplazamos clave de API de hello predeterminada con la clave de API de nuestros servicios Web. Haga clic en **ejecutar** en esta celda en una IPython Bloc de notas, da como resultado Hola después de respuesta:
 
 ![Respuesta de IPython](./media/machine-learning-data-science-process-hive-criteo-walkthrough/KSxmia2.png)
 
-Podemos ver que para los dos ejemplos de prueba por los que hemos preguntado (en el marco JSON del script de python), obtenemos respuestas con el formato "Scored Labels, Scored Probabilities" (Etiquetas puntuadas, Probabilidades puntuadas). Tenga en cuenta que, en este caso, elegimos los valores predeterminados que proporciona el código predefinido (0 para todas las columnas numéricas y la cadena "value" para todas las columnas de categorías).
+Se puede ver que para hello dos pruebas ejemplos que pedimos sobre (en el marco de trabajo JSON de hello del script de python Hola), obtenemos respuestas en forma de Hola "Puntuado etiquetas, las probabilidades de puntuado". Tenga en cuenta que en este caso, elegimos valores predeterminados de hello ese código predefinida Hola proporciona (0 para todas las columnas numéricas y cadena Hola "value" para todas las columnas de categorías).
 
-Con esto concluye nuestro tutorial completo que muestra cómo controlar un conjunto de datos grande mediante Azure Machine Learning. Hemos empezado con un terabyte de datos, hemos creado un modelo de predicción y lo hemos implementado como un servicio web en la nube.
+Con esto concluye nuestra tutorial to-end que se muestra cómo toohandle dataset a gran escala mediante el aprendizaje automático de Azure. Trabajar con un terabyte de datos, crea un modelo de predicción y había implementado como un servicio web en la nube de Hola.
 

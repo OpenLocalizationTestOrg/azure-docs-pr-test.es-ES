@@ -1,6 +1,6 @@
 ---
-title: "Asignación de un usuario o un grupo a una aplicación empresarial en Azure Active Directory | Microsoft Docs"
-description: "Procedimiento para seleccionar una aplicación empresarial para asignarla a un usuario o un grupo en la versión preliminar de Azure Active Directory"
+title: "una aplicación de empresa de tooan de usuario o grupo en Azure Active Directory aaaAssign | Documentos de Microsoft"
+description: "¿Cómo tooselect una tooassign de aplicación de empresa una tooit de usuario o grupo en Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: ee784704ada9238b5cd048f99aaa4cb192ec7d57
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 86c11f19892b9c947a5331677c17759178ed2806
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Asignación de un usuario o un grupo a una aplicación empresarial en Azure Active Directory
-Asignar un usuario o un grupo a una aplicación empresarial de Azure Active Directory (Azure AD) es fácil. Debe tener los permisos adecuados para administrar la aplicación de empresa y debe ser administrador global en el directorio.
+# <a name="assign-a-user-or-group-tooan-enterprise-app-in-azure-active-directory"></a>Asignar una aplicación de empresa de tooan de usuario o grupo en Azure Active Directory
+Es fácil tooassign un usuario o un grupo tooyour las aplicaciones empresariales en Azure Active Directory (Azure AD). Debe tener la aplicación empresarial de hello permisos adecuados toomanage hello y debe ser administrador global para el directorio de Hola.
 
-## <a name="how-do-i-assign-user-access-to-an-enterprise-app"></a>¿Cómo se asigna a los usuarios acceso a una aplicación empresarial?
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
-2. Seleccione **Más servicios**, escriba Azure Active Directory en el cuadro de texto y seleccione **Entrar**.
-3. En la hoja **Azure Active Directory - *nombreDelDirectorio*** (es decir, la hoja de Azure AD del directorio que está administrando), seleccione **Aplicaciones empresariales**.
+## <a name="how-do-i-assign-user-access-tooan-enterprise-app"></a>¿Cómo se puede asignar acceso de usuario tooan aplicación de empresa?
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+2. Seleccione **más servicios**, escriba Azure Active Directory en el cuadro de texto de hello y, a continuación, seleccione **ENTRAR**.
+3. En hello **Azure Active Directory - *directoryname***  hoja (es decir, hello Azure AD hoja para el directorio de hello administra), seleccione **aplicaciones empresariales**.
 
     ![Apertura de Enterprise apps (Aplicaciones empresariales)](./media/active-directory-coreapps-assign-user-azure-portal/open-enterprise-apps.png)
-4. En la hoja **Aplicaciones empresariales**, seleccione **Todas las aplicaciones**. Verá una lista de las aplicaciones que puede administrar.
-5. En la hoja **Enterprise applications (Aplicaciones empresariales) - Todas las aplicaciones** , seleccione una aplicación.
-6. En la hoja ***nombre de la aplicación*** (es decir, la hoja con el nombre de la aplicación seleccionada en el título), seleccione **Usuarios y grupos**.
+4. En hello **aplicaciones empresariales** hoja, seleccione **todas las aplicaciones**. Verá una lista de aplicaciones de hello que puede administrar.
+5. En hello **aplicaciones empresariales - todas las aplicaciones** hoja, seleccione una aplicación.
+6. En hello ***appname*** hoja (es decir, Hola hoja con nombre Hola de aplicación seleccionada de hello en el título de hello), seleccione **usuarios y grupos**.
 
-    ![Selección del comando Todas las aplicaciones](./media/active-directory-coreapps-assign-user-azure-portal/select-app-users.png)
-7. En la hoja ***nombreDeAplicación*** **- User & Group Assignment** (Asignación de usuario y de grupo), seleccione el comando **Agregar**.
-8. En la hoja **Agregar asignación**, seleccione **Usuarios y grupos**.
+    ![Selección de Hola a todos los comandos de las aplicaciones](./media/active-directory-coreapps-assign-user-azure-portal/select-app-users.png)
+7. En hello ***appname*** **-asignación de grupo de & usuario** hoja, seleccione hello **agregar** comando.
+8. En hello **Agregar asignación** hoja, seleccione **usuarios y grupos**.
 
-    ![Asignación de un usuario o un grupo a la aplicación](./media/active-directory-coreapps-assign-user-azure-portal/assign-users.png)
-9. En la hoja **Usuarios y grupos**, seleccione uno o varios usuarios o grupos de la lista y luego haga clic en el botón **Seleccionar** de la parte inferior de la hoja.
-10. En la hoja **Agregar asignación**, seleccione **Rol**. Después, en la hoja **Seleccionar rol**, seleccione el rol que desea aplicar a los usuarios o grupos seleccionados, y luego haga clic en el botón **Aceptar** de la parte inferior de la hoja.
-11. En la hoja **Agregar asignación**, haga clic en el botón **Asignar** de la parte inferior de la hoja. Los usuarios o grupos asignados tendrán definidos los permisos por el rol seleccionado para esta aplicación empresarial.
+    ![Asignar una aplicación de usuario o grupo toohello](./media/active-directory-coreapps-assign-user-azure-portal/assign-users.png)
+9. En hello **usuarios y grupos** hoja, seleccione uno o más usuarios o grupos de hello lista y, a continuación, seleccione hello **seleccione** situado en parte inferior de Hola de hoja de Hola.
+10. En hello **Agregar asignación** hoja, seleccione **rol**. A continuación, en hello **Seleccionar rol** hoja, seleccione un toohello de tooapply rol seleccionado usuarios o grupos y, a continuación, seleccione hello **Aceptar** situado en parte inferior de Hola de hoja de Hola.
+11. En hello **Agregar asignación** hoja, seleccione hello **asignar** situado en parte inferior de Hola de hoja de Hola. Hola asignados a los usuarios o grupos tendrán permisos de hello definidos por el rol seleccionado de Hola para esta aplicación de empresa.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Ver todos mis grupos](active-directory-groups-view-azure-portal.md)
 * [Eliminación de asignaciones de usuario o grupo de una aplicación empresarial](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Deshabilitar los inicios de sesión de los usuarios de una aplicación empresarial](active-directory-coreapps-disable-app-azure-portal.md)
-* [Cambio del nombre o el logotipo de una aplicación empresarial](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+* [Cambiar el nombre de Hola o el logotipo de una aplicación de empresa](active-directory-coreapps-change-app-logo-user-azure-portal.md)

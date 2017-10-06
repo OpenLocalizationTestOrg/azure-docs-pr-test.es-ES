@@ -1,6 +1,6 @@
 ---
-title: "Ejecución de runbooks en Azure Automation Hybrid Runbook Worker | Microsoft Docs"
-description: "Este artículo proporciona información acerca de cómo ejecutar runbooks en máquinas de un centro de datos local o en el proveedor de la nube con el rol Hybrid Runbook Worker."
+title: "aaaRun runbooks en Hybrid Runbook Worker de automatización de Azure | Documentos de Microsoft"
+description: "Este artículo proporciona información acerca de cómo ejecutar runbooks en equipos de su centro de datos local o el proveedor de nube con el rol de hello Hybrid Runbook Worker."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: magoedte
-ms.openlocfilehash: 993bc3ea480a329541ca4ae825189cdb5a2b4a8b
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 51961e02603e5690edd11e577594ad2ddea489a7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ejecución de runbooks en Hybrid Runbook Worker 
-No hay ninguna diferencia en la estructura de runbooks que se ejecutan en Automatización de Azure y los que se ejecutan en un Trabajo híbrido de runbook. Los runbooks que usa con cada uno de ellos probablemente sean muy distintos entre sí, debido a que los runbooks destinados a Hybrid Runbook Worker normalmente administran los recursos en el propio equipo local donde se implementan, mientras que los runbooks en Azure Automation suelen hacerlo en la nube de Azure.
+No hay ninguna diferencia en la estructura de Hola de runbooks que se ejecutan en automatización de Azure y los que se ejecutan en un Runbook Worker híbrido. Runbooks que se utilizan con cada uno de ellos más probable es que difieren de forma significativa aunque runbooks que se dirige a un Runbook Worker híbrido normalmente administran recursos en el mismo equipo local de Hola o con recursos en entorno local de Hola donde se implementa, mientras runbooks en la automatización de Azure suelen administrar recursos de nube de Azure Hola.
 
-Puede editar un runbook para Trabajo híbrido de runbook en Automatización de Azure, pero es probable que tenga dificultades si intenta probar el runbook en el editor.  Es posible que los módulos de PowerShell que tienen acceso a los recursos locales no estén instalados en el entorno de Automatización de Azure; si este es el caso, la prueba presentará errores.  Si instala los módulos necesarios, se ejecutará el runbook, pero no podrá tener acceso a los recursos locales para una prueba completa.
+Puede editar un runbook para Hybrid Runbook Worker de automatización de Azure, pero puede tener dificultades si intentas tootest Hola runbook en el editor de Hola.  módulos de PowerShell de Hola que tienen acceso a recursos locales de hello podrán no esté instalados en su entorno de automatización de Azure en cuyo caso, no podrá prueba Hola.  Si instala Hola necesario módulos, a continuación, Hola runbook se ejecutará, pero no será capaz de tooaccess recursos locales para una prueba completa.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Inicio de un runbook en Hybrid Runbook Worker
-[Inicio de un runbook en Automatización de Azure](automation-starting-a-runbook.md) describe los distintos métodos para iniciar un runbook.  Trabajo híbrido de runbook agrega una opción **Ejecutar en** donde puede especificar el nombre de un grupo de Trabajos híbridos de runbook.  Si se especifica un grupo, los trabajos de ese grupo recuperan y ejecutan el runbook.  Si no se especifica esta opción, se ejecuta en Automatización de Azure de la manera normal.
+[Inicio de un runbook en Automatización de Azure](automation-starting-a-runbook.md) describe los distintos métodos para iniciar un runbook.  Hybrid Runbook Worker agrega un **RunOn** opción donde puede especificar el nombre de Hola de un grupo de Hybrid Runbook Worker.  Si se especifica un grupo, a continuación, Hola runbook recuperan y ejecutar de trabajadores de hello en ese grupo.  Si no se especifica esta opción, se ejecuta en Automatización de Azure de la manera normal.
 
-Cuando inicie un runbook en Azure Portal, verá una opción **Ejecutar en** donde puede seleccionar **Azure** o **Hybrid Worker**.  Si selecciona **Trabajo híbrido**, puede seleccionar el grupo en una lista desplegable.
+Cuando se inicia un runbook en hello portal de Azure, se le presentará una **ejecutar en** opción donde puede seleccionar **Azure** o **Hybrid Worker**.  Si selecciona **Hybrid Worker**, después, puede seleccionar el grupo de hello en una lista desplegable.
 
-Use el parámetro **RunOn**.  Puede usar el comando siguiente para iniciar un runbook llamado Test-Runbook en un grupo de Hybrid Runbook Worker denominado MyHybridGroup con Windows PowerShell.
+Hola de uso **RunOn** parámetro.  Puede usar Hola después comando toostart un runbook denominado Test-Runbook en un grupo de Hybrid Runbook Worker denominado MyHybridGroup mediante Windows PowerShell.
 
     Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 
 > [!NOTE]
-> El parámetro **RunOn** se agregó al cmdlet **Start-AzureAutomationRunbook** en la versión 0.9.1 de Microsoft Azure PowerShell.  Si tiene instalada una versión anterior, deberá [descargar la versión más reciente](https://azure.microsoft.com/downloads/) .  Solo necesita instalar esta versión en una estación de trabajo donde inicia el runbook desde Windows PowerShell.  No es necesario que la instale en el equipo de trabajo, a menos que tenga la intención de iniciar runbooks desde ese equipo.  Actualmente no puede iniciar un runbook en un Trabajo híbrido de runbook desde otro runbook, debido a que esto requeriría que la versión más reciente de PowerShell de Azure esté instalada en su cuenta de Automatización.  La versión más reciente se actualiza automáticamente en Azure Automation y pronto se insertará de manera automática en los trabajos.
+> Hola **RunOn** parámetro agregó toohello **Start-AzureAutomationRunbook** cmdlet en la versión 0.9.1 de Microsoft Azure PowerShell.  Debería [descargar la versión más reciente de hello](https://azure.microsoft.com/downloads/) si tienes una anterior instalada.  Solo necesita tooinstall esta versión en una estación de trabajo donde está iniciando runbook Hola desde Windows PowerShell.  No es necesario tooinstall en el equipo de trabajo de Hola a menos que piense toostart runbooks desde ese equipo.  Actualmente no se puede iniciar un runbook en un Hybrid Runbook Worker desde otro runbook, ya que esto requeriría la versión más reciente de Hola de toobe de Powershell de Azure instalado en su cuenta de automatización.  versión más reciente de Hola se actualizan automáticamente en automatización de Azure y automáticamente trasladará trabajadores toohello pronto.
 >
 >
 
 ## <a name="runbook-permissions"></a>Permisos de runbooks
-Los runbooks que se ejecutan en una instancia de Hybrid Runbook Worker no pueden usar el mismo método que se usa normalmente para los runbooks que se autentican en los recursos de Azure, debido a que tendrán acceso a recursos fuera de Azure.  El runbook puede proporcionar su propia autenticación a los recursos locales, o puede especificar una cuenta RunAs para proporcionar un contexto de usuario para todos los runbooks.
+Runbooks que se ejecutan en un Runbook Worker híbrido no puede usar Hola mismo método que se utiliza normalmente para runbooks autenticar tooAzure recursos, ya que obtiene acceso a recursos fuera de Azure.  Hola runbook puede proporcionar su propia autenticación toolocal recursos, o bien puede especificar un tooprovide de cuenta de RunAs un contexto de usuario para todos los runbooks.
 
 ### <a name="runbook-authentication"></a>Autenticación de runbook
-De forma predeterminada, los Runbooks se ejecutarán en el contexto de la cuenta de sistema local en el equipo local, por lo que deben proporcionar su propia autenticación a los recursos a los que tienen acceso.  
+De forma predeterminada, los runbooks se ejecutarán en el contexto de saludo de la cuenta de sistema local de hello en el equipo local de hello, por lo que deben proporcionar sus propios tooresources de autenticación que tendrá acceso.  
 
-Puede usar los recursos [redencial](http://msdn.microsoft.com/library/dn940015.aspx) y [ertificado](http://msdn.microsoft.com/library/dn940013.aspx) en el Runbook con cmdlets que le permitan especificar las credenciales, para que así pueda autenticarse en distintos recursos.  El ejemplo siguiente muestra una porción de un runbook que reinicia un equipo.  Recupera las credenciales desde un recurso de Credencial y el nombre del equipo desde un recurso de Variable y, a continuación, usa estos valores con el cmdlet Restart-Computer.
+Puede usar [credencial](http://msdn.microsoft.com/library/dn940015.aspx) y [certificado](http://msdn.microsoft.com/library/dn940013.aspx) activos en su runbook con los cmdlets que le permiten toospecify credenciales para poder autenticar a los recursos de toodifferent.  Hello en el ejemplo siguiente se muestra una parte de un runbook que se reinicia un equipo.  Recupera las credenciales de un nombre de credencial hello y activos del equipo de Hola desde un recurso de variable y, a continuación, usa estos valores con el cmdlet de hello Restart-Computer.
 
     $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -Name "MyCredential"
     $Computer = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" -Name  "ComputerName"
 
     Restart-Computer -ComputerName $Computer -Credential $Cred
 
-También puede aprovechar [InlineScript](automation-powershell-workflow.md#inlinescript), que le permite ejecutar bloques de código en otro equipo con credenciales especificadas por el [parámetro común PSCredential](http://technet.microsoft.com/library/jj129719.aspx).
+También puede aprovechar la [InlineScript](automation-powershell-workflow.md#inlinescript), que le permite toorun bloques de código en otro equipo con las credenciales especificadas por hello [parámetro común de PSCredential](http://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="runas-account"></a>Cuenta RunAs
-En lugar de hacer que los runbooks proporcionen su propia autenticación a los recursos locales, puede especificar una cuenta **RunAs** para un grupo de Hybrid Worker.  Especifique un [recurso de credencial](automation-credentials.md) que tenga acceso a los recursos locales. Todos los runbooks se ejecutan con estas credenciales si se ejecutan en una instancia de Hybrid Runbook Worker del grupo.  
+En lugar de tener runbooks proporcionar su propia autenticación toolocal recursos, puede especificar un **RunAs** cuenta para un grupo de Hybrid worker.  Especifica un [activo de credencial](automation-credentials.md) que tiene acceso a los recursos de toolocal y todos los runbooks se ejecutan en estas credenciales cuando se ejecuta en un Hybrid Runbook Worker en grupo de Hola.  
 
-El nombre de usuario de la credencial debe tener uno de los siguientes formatos:
+nombre de usuario de Hello para la credencial de hello debe estar en uno de hello siguientes formatos:
 
 * dominio\nombre de usuario
 * username@domain
-* nombre de usuario (para cuentas locales en el equipo local)
+* nombre de usuario (por equipo de cuentas local toohello local)
 
-Utilice el procedimiento siguiente para especificar una cuenta RunAs de un grupo de Hybrid Worker:
+Usar hello siguiendo el procedimiento toospecify una cuenta de ejecución para un grupo de Hybrid worker:
 
-1. Cree un [recurso de credencial](automation-credentials.md) con acceso a los recursos locales.
-2. Abra la cuenta de Automatización en el Portal de Azure.
-3. Seleccione el icono **Grupos de Hybrid Worker** y luego seleccione el grupo.
+1. Crear un [activo de credencial](automation-credentials.md) con acceso a los recursos de toolocal.
+2. Abrir cuenta de automatización de Hola Hola portal de Azure.
+3. Seleccione hello **grupos de trabajo híbrido** icono y, a continuación, seleccione el grupo de Hola.
 4. Seleccione **Toda la configuración** y luego **Configuración del grupo de Hybrid Worker**.
-5. Cambie **Ejecutar como** de **Predeterminado** a **Personalizado**.
-6. Seleccione la credencial y haga clic en **Guardar**.
+5. Cambio **ejecución** de **predeterminado** demasiado**personalizado**.
+6. Seleccione la credencial de Hola y haga clic en **guardar**.
 
 ### <a name="automation-run-as-account"></a>Cuenta de ejecución de Automation
-Como parte del proceso de compilación automatizado para implementar recursos en Azure, es posible que sea necesario acceder a los sistemas locales para admitir una tarea o conjunto de pasos en la secuencia de implementación.  A fin de admitir la autenticación en Azure mediante la cuenta de ejecución, debe instalar el certificado de la cuenta de ejecución.  
+Como parte del proceso automatizado de compilación para implementar recursos en Azure, puede requerir acceso local tooon sistemas toosupport una tarea o un conjunto de pasos en la secuencia de implementación.  autenticación de toosupport con Azure con la cuenta de identificación de hello, debe tooinstall Hola ejecutar como certificado de cuenta.  
 
-El siguiente runbook de PowerShell, *Export-RunAsCertificateToHybridWorker*, exporta el certificado de ejecución desde la cuenta de Azure Automation y lo descarga e importa en el almacén de certificados de la máquina local de un Hybrid Worker conectado a la misma cuenta.  Una vez completado dicho paso, comprueba que el trabajo puede autenticarse correctamente en Azure con la cuenta de ejecución.
+Hola siguiente runbook de PowerShell, *RunAsCertificateToHybridWorker de exportación*, exporta Hola ejecutar como certificado de la cuenta de automatización de Azure y descarga y lo importa en el almacén de certificados del equipo local de hello en un Worker híbrido conectado toohello misma cuenta.  Una vez completado este paso, comprueba trabajo Hola puede autenticar correctamente tooAzure con hello cuenta de ejecución.
 
     <#PSScriptInfo
     .VERSION 1.0
@@ -95,12 +95,12 @@ El siguiente runbook de PowerShell, *Export-RunAsCertificateToHybridWorker*, exp
 
     <#  
     .SYNOPSIS  
-    Exports the Run As certificate from an Azure Automation account to a hybrid worker in that account. 
+    Exports hello Run As certificate from an Azure Automation account tooa hybrid worker in that account. 
   
     .DESCRIPTION  
-    This runbook exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
-    Run this runbook in the hybrid worker where you want the certificate installed.
-    This allows the use of the AzureRunAsConnection to authenticate to Azure and manage Azure resources from runbooks running in the hybrid worker.
+    This runbook exports hello Run As certificate from an Azure Automation account tooa hybrid worker in that account.
+    Run this runbook in hello hybrid worker where you want hello certificate installed.
+    This allows hello use of hello AzureRunAsConnection tooauthenticate tooAzure and manage Azure resources from runbooks running in hello hybrid worker.
 
     .EXAMPLE
     .\Export-RunAsCertificateToHybridWorker
@@ -112,19 +112,19 @@ El siguiente runbook de PowerShell, *Export-RunAsCertificateToHybridWorker*, exp
 
     [OutputType([string])] 
 
-    # Set the password used for this certificate
+    # Set hello password used for this certificate
     $Password = "YourStrongPasswordForTheCert"
 
     # Stop on errors
     $ErrorActionPreference = 'stop'
 
-    # Get the management certificate that will be used to make calls into Azure Service Management resources
+    # Get hello management certificate that will be used toomake calls into Azure Service Management resources
     $RunAsCert = Get-AutomationCertificate -Name "AzureRunAsCertificate"
        
-    # location to store temporary certificate in the Automation service host
+    # location toostore temporary certificate in hello Automation service host
     $CertPath = Join-Path $env:temp  "AzureRunAsCertificate.pfx"
    
-    # Save the certificate
+    # Save hello certificate
     $Cert = $RunAsCert.Export("pfx",$Password)
     Set-Content -Value $Cert -Path $CertPath -Force -Encoding Byte | Write-Verbose 
 
@@ -132,7 +132,7 @@ El siguiente runbook de PowerShell, *Export-RunAsCertificateToHybridWorker*, exp
     $SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
     Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\My -Password $SecurePassword -Exportable | Write-Verbose
 
-    # Test that authentication to Azure Resource Manager is working
+    # Test that authentication tooAzure Resource Manager is working
     $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection" 
     
     Add-AzureRmAccount `
@@ -143,18 +143,18 @@ El siguiente runbook de PowerShell, *Export-RunAsCertificateToHybridWorker*, exp
 
     Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
 
-    # List automation accounts to confirm Azure Resource Manager calls are working
+    # List automation accounts tooconfirm Azure Resource Manager calls are working
     Get-AzureRmAutomationAccount | Select AutomationAccountName
 
-Guarde el runbook *Export-RunAsCertificateToHybridWorker* en el equipo con una extensión `.ps1`.  Impórtelo en la cuenta de Automation y edite el runbook, cambiando el valor de la variable `$Password` con su propia contraseña.  Publique y, a continuación, ejecute el runbook dirigido al grupo de Hybrid Worker que ejecuta y autentica runbooks con la cuenta de ejecución.  La transmisión del trabajo informa sobre el intento de importar el certificado en el almacén de la máquina local y sigue con varias líneas dependiendo del número de cuentas de Automation definidas en la suscripción y de si la autenticación se realiza correctamente.  
+Guardar hello *exportación RunAsCertificateToHybridWorker* runbook tooyour equipo con un `.ps1` extensión.  Importar a la cuenta de automatización y editar runbook hello, cambiar valor Hola de variable de hello `$Password` con su propia contraseña.  Publicar y, a continuación, ejecutar runbook Hola grupo Hybrid Worker de Hola que se ejecutan y autenticar runbooks mediante Hola cuenta de ejecución de destino.  Hola trabajo flujo informes Hola intento tooimport Hola certificado en el almacén del equipo local de Hola y sigue con varias líneas, dependiendo de cuántas de las cuentas de automatización se definen en la suscripción y si la autenticación es correcta.  
 
 ## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>Solución de problemas de runbooks en Hybrid Runbook Worker
-Los registros se almacenan localmente en cada Hybrid Worker en C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes.  Hybrid Worker también registra los errores y eventos en el registro de eventos de Windows, en **Registros de aplicaciones y servicios\Microsoft-SMA\Operational**.  Los eventos relacionados con los runbooks ejecutados en el trabajo de runbook se escriben en **Registros de aplicaciones y servicios\Microsoft-Automation\Operational**.  El registro **Microsoft SMA** incluye muchos más eventos relacionados con los procesos de runbook insertados en el trabajo de runbook y el procesamiento del runbook.  Aunque el registro de eventos **Microsoft-Automation** no tenga muchos eventos con detalles relacionados con la solución de problemas de ejecución de un runbook, al menos encontrará los resultados del trabajo de runbook.  
+Los registros se almacenan localmente en cada Hybrid Worker en C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes.  Worker híbrido también registra los errores y eventos en el registro de eventos de Windows hello en **aplicaciones y servicios Logs\Microsoft-SMA\Operational**.  Eventos relacionados con toorunbooks que se ejecuta en el trabajo de Hola se escriben demasiado**aplicaciones y servicios Logs\Microsoft-Automation\Operational**.  Hola **Microsoft SMA** registro incluye muchos más eventos relacionados toohello runbook toohello insertado hello y trabajo procesamiento de trabajos de runbook de Hola.  Mientras hello **automatización de Microsoft** registro de eventos no tiene muchos eventos con detalles a prestar asistencia con hello solución de problemas de ejecución de un runbook, al menos, encontrará resultados Hola de trabajo de runbook de Hola.  
 
-[La salida y los mensajes de runbooks](automation-runbook-output-and-messages.md) se envían a Automatización de Azure desde los trabajos híbridos igual que los trabajos de runbook que se ejecutan en la nube.  También puede habilitar los flujos Detallado y Progreso de la misma manera que haría para otros runbooks.  
+[Runbook de salida y mensajes](automation-runbook-output-and-messages.md) se envían tooAzure automatización de hybrid Worker simplemente como trabajos de runbook en la nube Hola.  También puede habilitar Hola detallado y Hola secuencias de progreso de la misma manera que lo haría para otros runbooks.  
 
-Si sus runbooks no están finalizando correctamente y el resumen del trabajo muestra el estado **Suspendido**, consulte el artículo de solución de problemas [Hybrid Runbook Worker: un trabajo de Runbook finaliza con el estado Suspendido](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).   
+Si no se completan correctamente los runbooks y resumen de trabajos de hello muestra un estado de **Suspended**, revise el artículo de solución de problemas de hello [Hybrid Runbook Worker: un trabajo de runbook finaliza con el estado Suspende](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).   
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para más información sobre los distintos métodos que se pueden utilizar para iniciar un runbook, consulte [Inicio de un runbook en Azure Automation](automation-starting-a-runbook.md).  
-* Para entender los diferentes procedimientos para trabajar con runbooks de PowerShell y de flujo de trabajo de PowerShell en Automatización de Azure mediante el editor de texto, consulte [Edición de runbooks de texto en Automatización de Azure](automation-edit-textual-runbook.md)
+* toolearn más información acerca de métodos diferentes de Hola que pueden ser utilizado toostart un runbook, consulte [a partir de un Runbook en automatización de Azure](automation-starting-a-runbook.md).  
+* toounderstand Hola diferentes procedimientos para trabajar con runbooks de flujo de trabajo de PowerShell y PowerShell en automatización de Azure mediante el editor de texto hello, vea [editar un Runbook en automatización de Azure](automation-edit-textual-runbook.md)

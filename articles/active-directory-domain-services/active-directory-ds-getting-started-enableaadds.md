@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: habilitación de Azure Active Directory Domain Services | Microsoft Docs"
-description: "Habilitación de Azure Active Directory Domain Services mediante el Portal de Azure clásico"
+description: "Habilitar Azure Active Directory Domain Services mediante Hola portal de Azure clásico"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,84 +14,84 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/28/2017
 ms.author: maheshu
-ms.openlocfilehash: ed72325ca9db99405c6173eb882a92f80cd77f47
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6263eb1849808a7c85e572e1046bc9039362dd9f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-classic-portal"></a>Habilitación de Azure Active Directory Domain Services mediante el Portal de Azure clásico
+# <a name="enable-azure-active-directory-domain-services-using-hello-azure-classic-portal"></a>Habilitar Azure Active Directory Domain Services mediante Hola portal de Azure clásico
 
 ## <a name="task-3-enable-azure-active-directory-domain-services"></a>Tarea 3: Habilitación de Azure Active Directory Domain Services
-En esta tarea, habilitará Azure Active Directory Domain Services (Azure AD DS) para su directorio mediante los pasos siguientes:
+En esta tarea, habilitar Azure Active Directory Domain Services (Azure AD DS) para su directorio haciendo Hola pasos:
 
-1. Vaya al [Portal de Azure clásico](https://manage.windowsazure.com).
-2. En el panel izquierdo, seleccione el botón **Active Directory**.
-3. Seleccione el inquilino (directorio) de Azure Active Directory para el que quiere habilitar Azure AD DS.
+1. Vaya toohello [portal de Azure clásico](https://manage.windowsazure.com).
+2. En el panel izquierdo de hello, seleccione hello **Active Directory** botón.
+3. Seleccione el inquilino de Azure Active Directory (Azure AD) de hello (directorio) que se desea tooenable Azure AD DS.
 
     ![Selección de un directorio de Azure AD](./media/active-directory-domain-services-getting-started/select-aad-directory.png)
-4. En la página de **directorio de vista previa**, haga clic en la pestaña **Configurar**.
+4. En hello **directorio de vista previa** página, haga clic en hello **configurar** ficha.
 
     ![Pestaña Configurar del directorio](./media/active-directory-domain-services-getting-started/configure-tab.png)
-5. En **servicios de dominio**, cambie la opción **Habilitar Servicios de dominio para este directorio** a **Sí**.  
-    Aparecerán en la página opciones de configuración adicionales de Azure Active Directory Domain Services.
+5. En **los servicios de dominio**, cambiar hello **habilitar los servicios de dominio para este directorio** opción demasiado**Sí**.  
+    Opciones de configuración de servicios de dominio de Active Directory de Azure adicionales aparecen en la página de Hola.
 
     ![Habilitación de los Servicios de dominio](./media/active-directory-domain-services-getting-started/enable-domain-services.png)
 
    > [!NOTE]
-   > Al habilitar Azure Active Directory Domain Services para el inquilino, Azure AD genera y almacena los valores de hash de credenciales de Kerberos y NTLM que son necesarios para autenticar a los usuarios.
+   > Cuando se habilita Azure Servicios de dominio de Active Directory para el inquilino, Azure AD genera y almacena Hola Kerberos y NTLM hashes de credenciales que son necesarios para autenticar a los usuarios.
    >
    >
-6. Especifique el **Nombre de dominio DNS de Servicios de dominio**.
+6. Especificar hello **nombre de dominio DNS de servicios de dominio**.
 
-   * De forma predeterminada, se selecciona el nombre de dominio predeterminado del directorio (con el sufijo **.onmicrosoft.com**).
+   * nombre de dominio predeterminado de Hello del directorio de hello (con un **. onmicrosoft.com** sufijo) está activada de forma predeterminada.
 
-   * La lista contiene todos los dominios que se han configurado para el directorio de Azure AD, incluidos también los dominios comprobados y sin comprobar que configura en la pestaña **Dominios**.
+   * Hello lista contiene todos los dominios que se han configurado para su directorio Azure AD, las incluidas comprobado y no comprobados dominios que se configuran en hello **dominios** ficha.
 
-   * También puede escribir un nombre de dominio personalizado. En este ejemplo, el nombre de dominio personalizado es *contoso100.com*.
+   * También puede escribir un nombre de dominio personalizado. En este ejemplo, es el nombre de dominio personalizado de hello *contoso100.com*.
 
      > [!WARNING]
-     > El prefijo del nombre de dominio especificado (por ejemplo, *contoso100* en el nombre de dominio *contoso100.com*) debe contener 15 caracteres o menos. No se puede crear un dominio de Azure Active Directory Domain Services con un prefijo que contenga más de 15 caracteres.
+     > prefijo de Hola de su nombre de dominio especificado (por ejemplo, *contoso100* en hello *contoso100.com* nombre de dominio) debe contener 15 caracteres o menos. No se puede crear un dominio de Azure Active Directory Domain Services con un prefijo que contenga más de 15 caracteres.
      >
      >
-7. Asegúrese de que el nombre de dominio DNS que ha elegido para el dominio administrado no existe ya en la red virtual. En concreto, compruebe si:
+7. Asegúrese de que ha elegido para hello administrado dominio todavía no existe en la red virtual de hello ese nombre de dominio DNS de Hola. En concreto, compruebe si toosee:
 
-   * Ya tiene un dominio con el mismo nombre de dominio DNS en la red virtual.
+   * Ya tiene un dominio con hello mismo nombre de dominio DNS de red virtual de Hola.
 
-   * Si la red virtual que ha seleccionado tiene una conexión VPN con la red local y tiene un dominio con el mismo nombre de dominio DNS en la red local.
+   * Hello red virtual que ha seleccionado no tiene una conexión VPN con la red local y tiene un dominio con hello mismo nombre de dominio DNS de la red local.
 
-   * Si ya dispone de un servicio en la nube con ese nombre en la red virtual.
-8. Seleccione una red virtual en la que desee que Azure Active Directory Domain Services esté disponible. Seleccione la red virtual y la subred dedicada que ha creado en la lista desplegable **Conectar Servicios de dominio a esta red virtual**. Tenga en cuenta lo siguiente:
+   * Tiene un servicio en la nube con ese nombre de red virtual de Hola.
+8. Seleccione una red virtual en el que desea toobe de servicios de dominio de Active Directory de Azure disponible. Seleccione la red virtual de Hola y subred dedicada que creó en hello **toothis de red virtual de servicios de dominio de conectar** lista desplegable. También tenga en cuenta los siguiente de hello:
 
-   * Asegúrese de que la red virtual que ha especificado pertenece a una región de Azure compatible con Azure Active Directory Domain Services. Consulte la página [Servicios de Azure por región](https://azure.microsoft.com/regions/#services/) para saber en qué regiones de Azure está disponible Azure Active Directory Domain Services.
+   * Asegurarse de esa red virtual de Hola que ha especificado pertenece tooan región de Azure es compatible con servicios de dominio de Active Directory de Azure. tooascertain Hola regiones de Azure en servicios de dominio de Active Directory de Azure está disponible, consulte [servicios de Azure por región](https://azure.microsoft.com/regions/#services/).
 
-   * Las redes virtuales que pertenecen a una región donde no se admite Azure Active Directory Domain Services no aparecerán en la lista desplegable.
+   * Redes virtuales que pertenecen región tooa donde no se admite servicios de dominio de Active Directory de Azure no aparecen en la lista desplegable de Hola.
 
-   * Utilice una subred dedicada en la red virtual para Azure Active Directory Domain Services. *No* seleccione la subred de puerta de enlace. Consulte las [consideraciones sobre redes](active-directory-ds-networking.md).
+   * Utilice una subred dedicada dentro de la red virtual de Hola para servicios de dominio de Active Directory de Azure. Hacer *no* seleccione Hola subred de puerta de enlace. Consulte las [consideraciones sobre redes](active-directory-ds-networking.md).
 
-   * De igual forma, las redes virtuales que se crearon mediante Azure Resource Manager no aparecerán en la lista desplegable. Esto es porque las redes virtuales basadas en Resource Manager no son compatibles de momento con Azure Active Directory Domain Services.
-9. Para habilitar Azure Active Directory Domain Services, haga clic en **Guardar** en el panel de tareas de la parte inferior de la página.
-    * Durante el proceso de habilitación de Azure Active Directory Domain Services para el directorio, la página muestra un estado de *Pendiente*.
+   * De forma similar, las redes virtuales que se crearon mediante el Administrador de recursos de Azure no aparecen en la lista desplegable de Hola. Esto es porque las redes virtuales basadas en Resource Manager no son compatibles de momento con Azure Active Directory Domain Services.
+9. Haga clic en tooenable Azure Active Directory Domain Services, en panel de tareas de hello en parte inferior de Hola de página de hello, **guardar**.
+    * Mientras los servicios de dominio de Active Directory de Azure está habilitado para el directorio, página de hello muestra un estado de *pendiente*.
 
         ![Habilitación de la ventana Servicios de dominio](./media/active-directory-domain-services-getting-started/enable-domain-services-pendingstate.png)
 
         > [!NOTE]
-        > Azure Active Directory Domain Services proporciona una alta disponibilidad para el dominio administrado. Después de habilitar Azure Active Directory Domain Services, las direcciones IP en las que están disponibles los servicios de dominio en la red virtual se muestran de una en una. La segunda dirección IP se muestra poco después de la primera, en cuanto el servicio habilita la alta disponibilidad para el dominio. Cuando se configura la alta disponibilidad y está activa para su dominio, debe ver dos direcciones IP en la sección **Servicios de dominio**de la pestaña **Configurar**.
+        > Azure Active Directory Domain Services proporciona una alta disponibilidad para el dominio administrado. Después de habilitar servicios de dominio de Active Directory de Azure, direcciones IP de hello en qué dominio de servicios están disponibles en la red virtual de hello son muestran uno a la vez. dirección IP de la segunda Hola se muestra en primer lugar, poco después de hello como pronto servicio Hola permite una alta disponibilidad para el dominio. Cuando se configura la alta disponibilidad y activo para su dominio, debería ver dos direcciones IP en hello **los servicios de dominio** sección de hello **configurar** ficha.
         >
         >
-    * Al cabo de unos 20 o 30 minutos, verá la primera dirección IP en la que Domain Services está disponible en la red virtual, en el campo **Dirección IP** de la página **Configurar**.
+    * Después de aproximadamente 20 minutos de too30, primera dirección IP hello en qué dominio de servicios están disponibles en la red virtual en hello **dirección IP** campo hello **configurar** página.
 
         ![Ventana de Domain Services que muestra la primera dirección IP aprovisionada](./media/active-directory-domain-services-getting-started/domain-services-enabled-firstdc-available.png)
-    * Cuando la alta disponibilidad está operativa para el dominio, aparecen dos direcciones IP en la página. El dominio administrado está disponible en la red virtual seleccionada en estas dos direcciones IP.
+    * Cuando esté en funcionamiento para el dominio de alta disponibilidad, se muestran dos direcciones IP en la página de Hola. El dominio administrado está disponible en la red virtual seleccionada en estas dos direcciones IP.
 
-10. Anote las dos direcciones IP para que pueda actualizar la configuración de DNS de la red virtual. Con ello permite a las máquinas virtuales de la red virtual conectarse al dominio de cara para realizar operaciones como unirse a un dominio.
+10. Tenga en cuenta dos direcciones IP Hola para que pueda actualizar configuración de DNS de hello para la red virtual. Si lo hace, permite que las máquinas virtuales en dominio de toohello de tooconnect de red virtual de Hola para operaciones como la unión a un dominio.
 
     ![Ventana de Domain Services que muestra ambas direcciones IP aprovisionadas](./media/active-directory-domain-services-getting-started/domain-services-enabled-bothdcs-available.png)
 
 > [!NOTE]
-> En función del tamaño del inquilino de Azure AD (número de usuarios, grupos, etc.), la sincronización con el dominio administrado llevará tiempo. Este proceso de sincronización se produce en segundo plano. En el caso de inquilinos grandes con decenas de miles de objetos, se puede tardar uno o dos días en sincronizar todos los usuarios, pertenencias a grupos y credenciales.
+> Según el tamaño de hello del inquilino de Azure AD (por ejemplo, el número de Hola de usuarios o grupos), el dominio de sincronización tooyour administrado tarda algún tiempo. Este proceso de sincronización se produce en segundo plano de Hola. Para inquilinos grandes con decenas de miles de objetos, puede tardar un día o dos para todos los usuarios, las pertenencias a grupos y toobe credenciales sincronizado.
 >
 >
 
 ## <a name="next-step"></a>Paso siguiente
-[Tarea 4: Actualización de la configuración DNS en Azure Virtual Network](active-directory-ds-getting-started-update-dns.md)
+[Tarea 4: actualizar la configuración de DNS de Hola de hello red virtual de Azure](active-directory-ds-getting-started-update-dns.md)

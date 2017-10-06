@@ -1,6 +1,6 @@
 ---
-title: "Introducción a la API de generación de informes de Azure AD en el portal clásico de Azure AD | Microsoft Docs"
-description: "Introducción a la API de generación informes de Azure Active Directory"
+title: "aaaGetting a trabajar con la API informes de hello Azure AD en el portal clásico de hello Azure AD | Documentos de Microsoft"
+description: "Cómo tooget iniciado con hello Azure Active Directory API de informes"
 services: active-directory
 documentationcenter: 
 author: dhanyahk
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/18/2017
 ms.author: dhanyahk;markvi
-ms.openlocfilehash: 5e98b660fe19bb8abebf1c3b996b6295a6c4e728
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 52e22d442650731fc6ed28991fc65f9182af0540
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="getting-started-with-the-azure-active-directory-reporting-api-on-the-azure-ad-classic-portal"></a>Introducción a la API de generación de informes de Azure Active Directory en el portal clásico de Azure AD
-*Esta documentación forma parte de la [guía de generación de informes de Azure Active Directory](active-directory-reporting-guide.md).*
+# <a name="getting-started-with-hello-azure-active-directory-reporting-api-on-hello-azure-ad-classic-portal"></a>Introducción a hello Azure Active Directory API de informes en el portal clásico de hello Azure AD
+*Este tema forma parte del programa Hola a [Azure Active Directory Reporting guía](active-directory-reporting-guide.md).*
 
-Azure Active Directory proporciona una variedad de informes. Los datos de estos informes pueden ser muy útiles para las aplicaciones, como sistemas SIEM, auditorías y herramientas de inteligencia empresarial. Las API de generación de informes de Azure AD proporcionan acceso mediante programación a los datos a través de un conjunto de API de REST. Estas API pueden llamarse desde una variedad de lenguajes de programación y herramientas.
+Azure Active Directory proporciona una variedad de informes. datos de Hola de estos informes pueden ser muy útil tooyour aplicaciones, como sistemas SIEM, auditoría y herramientas de business intelligence. Hello Azure AD reporting que API proporcionan datos de toohello de acceso mediante programación a través de un conjunto de API basadas en REST. Estas API pueden llamarse desde una variedad de lenguajes de programación y herramientas.
 
-Este artículo proporciona la información que necesita para empezar a trabajar con las API de generación de informes de Azure AD.
-En la sección siguiente, puede encontrar más detalles sobre el uso de las API de auditoría e inicio de sesión. Para el resto de las API, consulte el artículo de [eventos e informes de Azure AD (versión preliminar)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview).
+Este artículo proporciona información de hello necesita tooget trabajar rápidamente con informes de hello Azure AD API.
+En la siguiente sección hello, puede ver más detalles sobre el uso de Hola de auditoría y las API de inicio de sesión. Para todas las demás API, vea hello [events(preview) e informes de Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview) artículo.
 
 Para ver preguntas, problemas o comentarios, póngase en contacto con el equipo de [ayuda de informes de AAD](mailto:aadreportinghelp@microsoft.com).
 
 ## <a name="learning-map"></a>Mapa de aprendizaje
-1. **Preparación** : para poder usar los ejemplos de la API, debe completar la [requisitos previos para tener acceso a la API de generación de informes de Azure AD](active-directory-reporting-api-prerequisites.md).
-2. **Exploración** : obtenga una primera impresión de las API de generación de informes.
+1. **Preparar** -para poder probar sus ejemplos de API, deberá hello toocomplete [API de generación de informes de requisitos previos tooaccess hello Azure AD](active-directory-reporting-api-prerequisites.md).
+2. **Explorar** -obtener una primera impresión de hello reporting API:
    
-   * [Uso de los ejemplos de la API de auditoría](active-directory-reporting-api-audit-samples.md) 
-   * [Uso de los ejemplos de la API de generación de informes de actividad de inicio de sesión](active-directory-reporting-api-sign-in-activity-samples.md)
+   * [Uso de ejemplos de hello para auditoría Hola API](active-directory-reporting-api-audit-samples.md) 
+   * [Uso de ejemplos de hello para la API de informes de actividad de inicio de sesión de Hola](active-directory-reporting-api-sign-in-activity-samples.md)
 3. **Personalización** : cree su propia solución: 
    
-   * [Uso de la referencia de la API de auditoría](active-directory-reporting-api-audit-reference.md) 
-   * [Uso de la referencia de la API de generación de informes de actividad de inicio de sesión](active-directory-reporting-api-sign-in-activity-reference.md)
+   * [Uso de referencia de API de auditoría de Hola](active-directory-reporting-api-audit-reference.md) 
+   * [Referencia de API con informe de actividad de inicio de sesión de Hola](active-directory-reporting-api-sign-in-activity-reference.md)
 
 ## <a name="next-steps"></a>Pasos siguientes
-Todos los puntos de conexión disponibles de API Graph de Azure se encuentran en la página [https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta](https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta).
+Si estás toosee curiosidad todos Hola extremos disponibles de la API de Azure AD Graph desplazándose demasiado[https://graph.windows.net/tenant-name/reports/$ metadatos? api-version = beta](https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta).
 

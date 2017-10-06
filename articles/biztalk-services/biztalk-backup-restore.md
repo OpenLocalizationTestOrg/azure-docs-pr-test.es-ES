@@ -1,6 +1,6 @@
 ---
-title: "Creación y restauración de una copia de seguridad en BizTalk Services | Microsoft Docs"
-description: "Entre los Servicios de BizTalk se incluye Copias de seguridad y restauración. Obtenga información acerca de cómo crear y restaurar una copia de seguridad y aprenda a determinar el contenido del que se realizan dichas copias. MABS, WABS"
+title: aaaCreate y restaurar una copia de seguridad en servicios de BizTalk | Documentos de Microsoft
+description: "Entre los Servicios de BizTalk se incluye Copias de seguridad y restauración. Obtenga información acerca de cómo toocreate y restaurar una copia de seguridad y determinar qué obtiene la copia de seguridad. MABS, WABS"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,115 +14,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 32356ad870678fa5fd5bbbbf13d9377188f770a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="biztalk-services-backup-and-restore"></a>Servicios de BizTalk: copias de seguridad y restauración
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Azure BizTalk Services incluye las capacidades de copia de seguridad y restauración. En este tema se describe cómo realizar la copia de seguridad y la restauración de los servicios de BizTalk con el Portal de Azure clásico.
+Azure BizTalk Services incluye las capacidades de copia de seguridad y restauración. Este tema describe cómo toobackup y restauración de los servicios de BizTalk mediante Hola portal de Azure clásico.
 
-También puede realizar la copia de seguridad de los Servicios de BizTalk mediante la [API REST de Servicios de BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325584). 
+También puede hacer una servicios de BizTalk mediante hello [API de REST de servicios de BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325584). 
 
 > [!NOTE]
-> NO se realiza ninguna copia de seguridad de las conexiones híbridas, independientemente de la edición. Debe volver a crear las conexiones híbridas.
+> Las conexiones híbridas no se copian de seguridad, independientemente de hello Edition. Debe volver a crear las conexiones híbridas.
 
 
 ## <a name="before-you-begin"></a>Introducción
 * Puede que las copias de seguridad y restauración no estén disponible para todas las ediciones. Consulte [Servicios de BizTalk: gráfico de ediciones](biztalk-editions-feature-chart.md).
-* En el Portal de Azure clásico puede crear una copia de seguridad bajo demanda o crear una copia de seguridad programada. 
-* El contenido de las copias de seguridad se puede restaurar en el mismo servicio de BizTalk o en uno nuevo. Para restaurar el servicio de BizTalk con el mismo nombre, es preciso eliminar el servicio de BizTalk existente y el nombre debe estar disponible. Después de eliminar un servicio de BizTalk, puede tardar más tiempo del deseado para que el mismo nombre esté disponible. Si no puede esperar a que el mismo nombre esté disponible, restaure a un nuevo servicio de BizTalk.
-* Se pueden restaurar los servicios de BizTalk en la misma edición o en una posterior. No se puede realizar la restauración de los Servicios de BizTalk en una edición anterior con respecto a la usada para realizar la copia de seguridad.
+* Hola portal de Azure clásico puede crear una copia de seguridad a petición o crear una copia de seguridad programada. 
+* Contenido de copia de seguridad puede ser restaurada toohello mismo BizTalk Service u tooa nueva BizTalk Service. toorestore Hola BizTalk Service mediante Hola debe eliminarse el mismo nombre, existentes BizTalk Service de Hola y Hola nombre debe estar disponible. Después de eliminar un BizTalk Service, puede tardar más tiempo del que deseaba Hola igual nombre toobe disponible. Si no puede esperar Hola igual nombre toobe disponible, a continuación, restaurar tooa nueva BizTalk Service.
+* Servicios de BizTalk puede ser restaurada toohello misma edición o una edición superior. No se admite la restauración de servicios de BizTalk tooa edición anterior de cuando se realizó la copia de seguridad de hello.
   
-    Por ejemplo, una copia de seguridad que usa la Basic Edition se puede restaurar a la Premium Edition. Sin embargo, una copia de seguridad que usa la Premium Edition no se puede restaurar a la Standard Edition.
-* A fin de mantener la continuidad de los números de control del intercambio electrónico de datos (EDI), estos se incluyen en una copia de seguridad. Si los mensajes se procesan después de la última copia de seguridad y se restaura el contenido de esta copia de seguridad, se pueden duplicar los números de control.
-* Si un lote tiene mensajes activos, procéselo **antes** de ejecutar una copia de seguridad. Al crear una copia de seguridad (según sea necesario o según se programe), no se almacenan nunca los mensajes en lotes. 
+    Por ejemplo, una copia de seguridad mediante Hola que edición básica se puede restaura toohello Premium Edition. Una copia de seguridad mediante Hola que Premium Edition no se puede restaura toohello Standard Edition.
+* números de Control de EDI de Hola se copian la continuidad de toomaintain Hola de números de control. Si los mensajes se procesan después de la última copia de seguridad de hello, restaurar el contenido de esta copia de seguridad puede producir números de control duplicados.
+* Si un lote tiene mensajes activos, procesar por lotes de hello **antes de** ejecuta una copia de seguridad. Al crear una copia de seguridad (según sea necesario o según se programe), no se almacenan nunca los mensajes en lotes. 
   
     **Si se realiza una copia de seguridad con mensajes activos en un lote, estos mensajes no se incluyen en la copia de seguridad y, por lo tanto, se pierden.**
-* Opcional: en el Portal de Servicios de BizTalk, detenga todas las operaciones de administración.
+* Opcional: Hola Portal de servicios de BizTalk, detenga las operaciones de administración.
 
 ## <a name="create-a-backup"></a>Creación de una copia de seguridad
-Puede realizar una copia de seguridad en cualquier momento y controlarla por completo. Esta sección muestra los pasos para crear copias de seguridad mediante el Portal de Azure clásico, entre los que se incluyen:
+Puede realizar una copia de seguridad en cualquier momento y controlarla por completo. Esta sección enumeran Hola pasos toocreate copias de seguridad con hello Azure clásico portal, incluidos:
 
 [Copia de seguridad bajo demanda](#backupnow)
 
 [Programación de una copia de seguridad](#backupschedule)
 
 #### <a name="backupnow"></a>Copia de seguridad bajo demanda
-1. En el Portal de Azure clásico, seleccione **Servicios de BizTalk**y luego el servicio de BizTalk del que quiera realizar la copia de seguridad.
-2. En la pestaña **Panel**, seleccione **Hacer una copia de seguridad** en la parte inferior de la página.
+1. Hola portal de Azure clásico, seleccione **servicios de BizTalk**, y, a continuación, seleccione Hola BizTalk Service desea toobackup.
+2. Hola **panel** ficha, seleccione **copia de seguridad** final Hola de página Hola.
 3. Escriba un nombre para la copia de seguridad. Por ejemplo, escriba *myBizTalkService*BU*Fecha*.
-4. Elija una cuenta de almacenamiento de blobs y seleccione la marca de verificación para iniciar la copia de seguridad.
+4. Elija una cuenta de almacenamiento blob y copia de seguridad de hello seleccione marca de verificación toostart Hola.
 
-Una vez que finalice la copia de seguridad, en la cuenta de almacenamiento se creará un contenedor con el nombre de copia de seguridad que escriba. Este contenedor contiene la configuración de la copia de seguridad del servicio de BizTalk.
+Una vez completada la copia de seguridad de hello, se crea un contenedor con nombre de copia de seguridad de Hola que especifique en la cuenta de almacenamiento de Hola. Este contenedor contiene la configuración de la copia de seguridad del servicio de BizTalk.
 
 #### <a name="backupschedule"></a>Programación de una copia de seguridad
-1. En el Portal de Azure clásico, seleccione **Servicios de BizTalk**, seleccione el nombre del servicio de BizTalk del que quiere programar la copia de seguridad y luego seleccione la pestaña **Configurar**.
-2. Establezca **Estado de la copia de seguridad** en **Automático**. 
-3. Seleccione la **Cuenta de almacenamiento** para almacenar la copia de seguridad, especifique la **Frecuencia** con la que desea crear las copias de seguridad y cuánto tiempo quiere conservar las copias de seguridad (**Días de retención**):
+1. Hola portal de Azure clásico, seleccione **servicios de BizTalk**, seleccione Hola nombre de BizTalk Service que desee copia de seguridad de tooschedule hello y, a continuación, seleccione hello **configurar** ficha.
+2. Conjunto hello **estado de copia de seguridad** demasiado**automática**. 
+3. Seleccione hello **cuenta de almacenamiento** toostore Hola copia de seguridad, escriba Hola **frecuencia** toocreate Hola copias de seguridad y cuánto tiempo tookeep Hola (**días de retención**):
    
     ![][AutomaticBU]
    
     **Notas**     
    
-   * En **Días de retención**, el período de retención debe ser superior a la frecuencia de las copias de seguridad.
-   * Seleccione **Conservar siempre al menos una copia de seguridad**, incluso aunque haya pasado el período de retención.
+   * En **días de retención**, período de retención de hello debe ser mayor que la frecuencia de copia de seguridad de Hola.
+   * Seleccione **mantenga siempre al menos una copia de seguridad**, incluso si ya ha transcurrido el período de retención de Hola.
 4. Seleccione **Guardar**.
 
-Cuando se ejecuta un trabajo de copia de seguridad programada, se crea un contenedor (para almacenar los datos de la copia de seguridad) en la cuenta de almacenamiento que haya especificado. El nombre del contenedor se denomina *BizTalk Service Name-date-time*. 
+Cuando se ejecuta un trabajo de copia de seguridad programado, crea un contenedor (datos de copia de seguridad de toostore) en la cuenta de almacenamiento de Hola que especificó. Hola nombre del contenedor de Hola se denomina *BizTalk Service Name-date-time*. 
 
-Si el panel del Servicios de BizTalk muestra un estado **Con error** :
+Si muestra un panel de BizTalk Service Hola un **error** estado:
 
 ![Estado de la última copia de seguridad programada][BackupStatus] 
 
-El vínculo abre los Registros de operaciones de Servicios de administración para ayudar a solucionar problemas. Consulte [Servicios de BizTalk: solución de problemas mediante registros de operaciones](http://go.microsoft.com/fwlink/p/?LinkId=391211).
+vínculo de Hello abre Hola registros de operaciones de administración de servicios toohelp solucionar problemas. Consulte [Servicios de BizTalk: solución de problemas mediante registros de operaciones](http://go.microsoft.com/fwlink/p/?LinkId=391211).
 
-## <a name="restore"></a>Restore
-Puede restaurar las copias de seguridad desde el Portal de Azure clásico o desde la [API REST para la restauración del Servicio de BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325582). En esta sección se muestran los pasos para realizar la restauración mediante el portal clásico.
+## <a name="restore"></a>Restauración
+Puede restaurar las copias de seguridad de portal de Azure clásico de Hola o de hello [API de REST de servicios de BizTalk restaurar](http://go.microsoft.com/fwlink/p/?LinkID=325582). Esta sección enumeran Hola pasos toorestore mediante el portal clásico de Hola.
 
 #### <a name="before-restoring-a-backup"></a>Antes de restaurar una copia de seguridad
 * Se pueden especificar los nuevos almacenes de seguimiento, archivado y supervisión al restaurar un servicio de BizTalk.
-* Se restauran los mismos datos del tiempo de ejecución de EDI. La copia de seguridad del tiempo de ejecución de EDI almacena los números de control. Los números de control se restauran en secuencias desde la hora de la copia de seguridad. Si los mensajes se procesan después de la última copia de seguridad y se restaura el contenido de esta copia de seguridad, se pueden duplicar los números de control.
+* Hola se restauran los mismos datos en tiempo de ejecución de EDI. copia de seguridad de Hello en tiempo de ejecución de EDI almacena números de control de Hola. números de control de Hello restaurar están en orden desde el momento de Hola de copia de seguridad de Hola. Si los mensajes se procesan después de la última copia de seguridad de hello, restaurar el contenido de esta copia de seguridad puede producir números de control duplicados.
 
 #### <a name="restore-a-backup"></a>Restauración de una copia de seguridad
-1. En el Portal de Azure clásico, seleccione **Nuevo** > **App Services** > **BizTalk Service** > **Restaurar**:
+1. Hola portal de Azure clásico, seleccione **New** > **servicios de aplicaciones** > **BizTalk Service** > **restaurar** :
    
     ![Restauración de una copia de seguridad][Restore]
-2. En **URL de copia de seguridad**, seleccione el icono de la carpeta y expanda la cuenta de almacenamiento de Azure que almacena la copia de seguridad de configuración del Servicio de BizTalk. Expanda el contenedor y, en el panel derecho, seleccione el archivo .txt de copia de seguridad correspondiente. 
+2. En **dirección URL de la copia de seguridad**, seleccione el icono de carpeta de Hola y expanda la cuenta de almacenamiento de Azure de Hola que almacenes Hola copia de seguridad de configuración de BizTalk Service. Expanda el contenedor de Hola y en el panel derecho de hello, seleccione Hola correspondiente archivo .txt de copia de seguridad. 
    <br/><br/>
    seleccione **Open**(Abrir).
-3. En la página **Restaurar servicio de BizTalk**, escriba un **Nombre del servicio de BizTalk** y compruebe la **URL de dominio**, **Edición** y la **Región** para el Servicio de BizTalk restaurado. **Cree una nueva instancia de base de datos SQL** para la base de datos de seguimiento:
+3. En hello **restaurar el servicio de BizTalk** página, escriba un **el nombre del servicio de BizTalk** y compruebe hello **dirección URL del dominio**, **edición**y **Región** para hello restaura BizTalk Service. **Crear una nueva instancia de base de datos SQL** para hello base de datos de seguimiento:
    
     ![][RestoreBizTalkService]
    
-    Seleccione la flecha siguiente.
-4. Compruebe el nombre de la base de datos SQL, especifique el servidor físico en el que se creará la base de datos SQL, y el nombre de usuario y la contraseña de dicho servidor.
+    Seleccione la flecha siguiente Hola.
+4. Comprobar nombre de Hola de base de datos SQL de hello, escriba Hola servidor físico donde se creará la base de datos SQL de Hola y un nombre de usuario y una contraseña para ese servidor.
 
-    Si desea configurar la edición de SQL Database, el tamaño y otras propiedades, seleccione **Configurar las opciones avanzadas de base de datos**. 
+    Si desea edición de base de datos SQL tooconfigure hello, tamaño y otras propiedades, seleccione **configurar opciones de base de datos avanzada**. 
 
-    Seleccione la flecha siguiente.
+    Seleccione la flecha siguiente Hola.
 
-1. Cree una nueva cuenta de almacenamiento o especifique una cuenta de almacenamiento existente para los Servicios de BizTalk.
-2. Seleccione la marca de verificación para iniciar la restauración.
+1. Crear una nueva cuenta de almacenamiento o escriba una cuenta de almacenamiento existente Hola BizTalk Service.
+2. Seleccione Hola marca de verificación toostart Hola restaurar.
 
-Cuando se haya realizado correctamente la restauración, se incluye un nuevo servicio de BizTalk cuyo estado está suspendido en la página de servicios de BizTalk del Portal de Azure clásico.
+Una vez que se complete correctamente la restauración de hello, aparece un nuevo BizTalk Service en un estado suspendido en la página de servicios de BizTalk de Hola Hola portal de Azure clásico.
 
 ### <a name="postrestore"></a>Después de restaurar una copia de seguridad
-El servicio de BizTalk siempre está restaurado en un estado **Suspendido** . En este estado, puede realizar cambios de configuración antes de que el nuevo entorno sea funcional, incluyendo:
+Hello BizTalk Service se restaura siempre en un **Suspended** estado. En este estado, puede realizar los cambios de configuración antes de hello nuevo entorno es funcional, incluyendo:
 
-* Si ha creado aplicaciones del servicio de BizTalk mediante el SDK de los Servicios de BizTalk de Azure, puede que tenga que actualizar las credenciales de control de acceso (ACS) en dichas aplicaciones para que puedan funcionar con el entorno restaurado.
-* Restaure un Servicio de BizTalk para replicar un entorno de Servicio de BizTalk existente. En esta situación, si hay contratos configurados en el portal de Servicios de BizTalk original que usa una carpeta FTP de origen, quizá desee actualizar los contratos del entorno recién restaurado para que usen una carpeta FTP con otro origen. De lo contrario, puede haber dos contratos diferentes intentando extraer el mismo mensaje.
-* Si ha llevado a cabo la restauración para tener varios entornos del Servicio de BizTalk, asegúrese de elegir el entorno correcto en las aplicaciones de Visual Studio, los cmdlets de PowerShell, las API de REST o las API de OM de administración de socios comerciales.
-* Es recomendable configurar copias de seguridad automatizadas en el entorno del Servicio de BizTalk recién restaurado.
+* Si ha creado aplicaciones de BizTalk Service mediante Hola SDK de servicios de BizTalk de Azure, deberá credenciales de Control de acceso (ACS) de tootooupdate hello en esos toowork de aplicaciones con el entorno de hello restaurar.
+* Restaurar un tooreplicate un entorno de BizTalk Service existente de BizTalk Service. En esta situación, si hay contratos configurados en el portal de servicios de BizTalk original de Hola que use una carpeta de origen FTP, deberá tooupdate contratos de hello en hello recién restaurado entorno toouse una carpeta FTP de origen diferente. En caso contrario, puede haber dos contratos diferentes intentar toopull Hola mismo mensaje.
+* Si ha restaurado toohave varios entornos de BizTalk Service, asegúrese de que el destino correcto del entorno hello en aplicaciones de Visual Studio de hello, cmdlets de PowerShell, las API de REST o API de OM de administración de socios comerciales.
+* Es una copias de seguridad de buena práctica tooconfigure automatizada en el entorno del servicio de BizTalk de hello recién restaurado.
 
-Para iniciar el Servicio de BizTalk en el Portal de Azure clásico, seleccione el Servicio de BizTalk restaurado y seleccione **Reanudar** en la barra de tareas. 
+Hola toostart BizTalk Service Hola portal de Azure clásico, seleccione Hola restaura BizTalk Service y seleccione **reanudar** en la barra de tareas de Hola. 
 
 ## <a name="what-gets-backed-up"></a>¿Qué se incluye en la copia de seguridad?
-Se incluyen los elementos siguientes al crear una copia de seguridad:
+Cuando se crea una copia de seguridad, hello siguientes elementos se copian:
 
 <table border="1"> 
 <tr bgcolor="FAF9F9">
@@ -144,7 +144,7 @@ Se incluyen los elementos siguientes al crear una copia de seguridad:
 <li>Certificados</li>
 <li>Transformaciones implementadas</li>
 <li>Procesos</li>
-<li>Plantillas creadas y guardadas en el portal de servicios de BizTalk</li>
+<li>Plantillas creado y guardado en hello Portal de servicios de BizTalk</li>
 <li>Asignaciones X12 ST01 y GS01</li>
 <li>Números de control (EDI)</li>
 <li>Valores MIC de mensaje AS2</li>
@@ -186,15 +186,15 @@ Se incluyen los elementos siguientes al crear una copia de seguridad:
 </tr> 
 <tr>
 <td>Tracking Database</td> 
-<td>Cuando se crea el Servicio de BizTalk, se definen los detalles de la base de datos de seguimiento, entre los que se incluyen el servidor de Base de datos SQL de Azure y el nombre de la base de datos de seguimiento. No se realiza la copia de seguridad de la base de datos de seguimiento de forma automática.
+<td>Cuando se crea Hola BizTalk Service, se especifican detalles de la base de datos de seguimiento de hello, incluidos el nombre de base de datos de seguimiento de Hola y Hola servidor de base de datos de SQL Azure. Hola base de datos de seguimiento no se copia automáticamente.
 <br/><br/>
 <strong>Importante</strong><br/>
-Si la base de datos de seguimiento se elimina y hay que recuperarla, debe existir una copia de seguridad previa. Si no la hay, no se podrán recuperar la base de datos de seguimiento ni sus datos. En esta situación, cree una nueva base de datos de seguimiento con el mismo nombre. Además, se recomienda la replicación geográfica.</td>
+Si Hola base de datos de seguimiento se elimina y Hola necesidades de base de datos recuperadas, debe existir una copia de seguridad anterior. Si no existe una copia de seguridad, base de datos de seguimiento de Hola y sus datos no son recuperables. En esta situación, cree una nueva base de datos de seguimiento con hello mismo nombre de base de datos. Además, se recomienda la replicación geográfica.</td>
 </tr> 
 </table>
 
 ## <a name="next"></a>Pasos siguientes
-Para crear los Servicios de BizTalk de Azure en el Portal de Azure clásico, vaya a [Creación de Servicios de BizTalk mediante el Portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=302280). Para comenzar a crear aplicaciones, vaya a [Servicios de BizTalk de Azure](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+Servicios de BizTalk de Azure toocreate en hello Azure clásico, vaya demasiado[servicios de BizTalk: portal clásico de aprovisionamiento con Azure](http://go.microsoft.com/fwlink/p/?LinkID=302280). toostart crear aplicaciones, vaya demasiado[Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="see-also"></a>Otras referencias
 * [Copia de seguridad del servicio de BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325584)
@@ -205,7 +205,7 @@ Para crear los Servicios de BizTalk de Azure en el Portal de Azure clásico, vay
 * [Servicios de BizTalk: pestañas Panel, Monitor y Escala](http://go.microsoft.com/fwlink/p/?LinkID=302281)
 * [Servicios de BizTalk: limitaciones](http://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [Servicios de BizTalk: nombre del emisor y clave del emisor](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [¿Cómo puedo comenzar a utilizar el SDK de Servicios de BizTalk de Azure?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [¿Cómo puedo comenzar a utilizar Hola SDK de servicios de BizTalk de Azure](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png

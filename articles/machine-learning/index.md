@@ -1,5 +1,5 @@
 ---
-title: "Documentación sobre Azure Machine Learning: tutoriales y referencia de API | Microsoft Docs"
+title: "aaaAzure centro de aprendizaje automático - tutoriales, referencia de API | Documentos de Microsoft"
 description: "Documentación, vídeos y modelos de ejemplo de Machine Learning, un servicio en la nube para especialistas en datos y desarrolladores que usan análisis predictivo en aplicaciones."
 services: machine-learning
 author: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 241cf0904f1c410575017f586c65f41ee3efc753
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7307d83a6c8059e581a37910d3af5a66fc502d0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="azure-machine-learning-documentation"></a>Documentación de Azure Machine Learning
 
-Vea cómo los especialistas en datos y los desarrolladores usan Machine Learning para insertar análisis predictivos en aplicaciones. En los tutoriales, los vídeos y los modelos de ejemplo, se muestra cómo compilar e implementar modelos de Machine Learning.
+Obtenga información acerca de cómo los desarrolladores y científicos de datos puede usar análisis predictivos de aprendizaje automático tooembed en las aplicaciones. Tutoriales, vídeos y modelos de ejemplo muestran cómo toobuild e implementar modelos de aprendizaje automático.
 
 <ul class="panelContent cardsFTitle">
     <li>

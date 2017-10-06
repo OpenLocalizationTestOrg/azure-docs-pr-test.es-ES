@@ -1,5 +1,5 @@
 ---
-title: "Conmutación por error regional en Azure Cosmos DB | Microsoft Docs"
+title: "conmutación por error de aaaRegional en la base de datos de Azure Cosmos | Documentos de Microsoft"
 description: "Obtenga información sobre el modo en que funciona la conmutación por error manual y automática con Azure Cosmos DB."
 services: cosmos-db
 documentationcenter: 
@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d8ba08bc9f99cb77c9f03949fc5db299eb222c8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d2fdc7b0e8958d129ab027e4b11193b12961ddae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Conmutación por error regional automática para la continuidad empresarial en Azure Cosmos DB
-Azure Cosmos DB simplifica la distribución global de datos gracias a que ofrece [cuentas de base de datos de varias regiones](distribute-data-globally.md) completamente administradas que proporcionan un claro equilibrio entre coherencia, disponibilidad y rendimiento, todo ello con sus garantías correspondientes. Las cuentas de Cosmos DB ofrecen alta disponibilidad, latencias de ms de un solo dígito, varios [niveles de coherencia bien definidos](consistency-levels.md), conmutación por error regional transparente con API de hospedaje múltiple, y la posibilidad de escalar elásticamente el rendimiento y el almacenamiento en todo el mundo. 
+Base de datos de Azure Cosmos simplifica la distribución global de Hola de los datos mediante totalmente administrados, [cuentas de base de datos de varias regiones](distribute-data-globally.md) que proporcionan desactive contrapartidas entre coherencia, disponibilidad y rendimiento, todos los datos con correspondiente garantías. Las cuentas de COSMOS DB ofrecen alta disponibilidad, las latencias de ms de un dígito, [niveles de coherencia bien definido](consistency-levels.md), transparente conmutación por error regional con las API de hospedaje múltiple y el rendimiento de escala de tooelastically de capacidad de Hola y el almacenamiento todo el mundo de Hola. 
 
-Cosmos DB admite tanto las conmutaciones por error definidas por directivas como explícitas que le permiten controlar todo el comportamiento del sistema en caso de errores. En este artículo, nos centramos en los siguientes temas:
+COSMOS DB admite tanto explícita y controlada por directivas las conmutaciones por error que le permiten comportamiento de extremo a otro sistema de hello toocontrol en caso de hello de errores. En este artículo, nos centramos en los siguientes temas:
 
 * Funcionamiento de las conmutaciones por error manuales en Cosmos DB
 * Funcionamiento de las conmutaciones por error automáticas en Cosmos DB y efectos del bloqueo de un centro de datos
@@ -35,18 +35,18 @@ También obtendrá más información sobre las conmutaciones por error en este v
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
 ## <a id="ConfigureMultiRegionApplications"></a>Configuración de aplicaciones de varias regiones
-Antes de profundizar en los modos de conmutación por error, veremos cómo puede configurar una aplicación para que aproveche las ventajas que ofrece la disponibilidad de varias regiones y para que sea resistente en caso de una conmutación por error regional.
+Antes de profundizar en los modos de conmutación por error, veremos cómo puede configurar una ventaja de tootake de aplicación de la disponibilidad de varias regiones y ser resistente a errores en la cara de Hola de las conmutaciones por error regional.
 
 * En primer lugar, implemente su aplicación en varias regiones.
-* Para garantizar un acceso de baja latencia desde todas las regiones en las que su aplicación se ha implementado, configure la correspondiente [lista de regiones preferidas](https://msdn.microsoft.com/library/microsoft.azure.documents.client.connectionpolicy.preferredlocations.aspx#P:Microsoft.Azure.Documents.Client.ConnectionPolicy.PreferredLocations) para cada región a través de uno de los SDK compatibles.
+* acceso de baja latencia tooensure de cada región de su aplicación se implementa, configurar Hola correspondiente [lista de regiones preferido](https://msdn.microsoft.com/library/microsoft.azure.documents.client.connectionpolicy.preferredlocations.aspx#P:Microsoft.Azure.Documents.Client.ConnectionPolicy.PreferredLocations) para cada región a través de una de hello compatibles SDK.
 
-El siguiente fragmento de código muestra cómo inicializar una aplicación de varias regiones. Aquí, la cuenta de Azure Cosmos DB `contoso.documents.azure.com` se configura con dos regiones: oeste de EE. UU. y Europa del Norte. 
+Hola fragmento siguiente muestra cómo tooinitialize una aplicación de varias regiones. Hola en este caso, la cuenta de base de datos de Azure Cosmos `contoso.documents.azure.com` se configura con dos regiones - oeste de Estados Unidos y Europa del Norte. 
 
-* La aplicación se implementa en la región oeste de EE. UU. (mediante Azure App Services por ejemplo). 
-* Se ha configurado con `West US` como la primera región preferida para lecturas de baja latencia.
-* Se ha configurado con `North Europe` como la segunda región preferida (para lograr alta disponibilidad en caso de errores regionales).
+* aplicación Hello se implementa en la región Oeste de Estados Unidos de hello (mediante servicios de aplicaciones de Azure por ejemplo) 
+* Configurado con `West US` como primera región preferida Hola de baja latencia lee
+* Configurado con `North Europe` como segunda región preferida hello (para lograr alta disponibilidad durante los errores de regionales)
 
-En la API de DocumentDB, esta configuración es similar al fragmento de código siguiente:
+En hello API de documentos, esta configuración es similar a Hola siguiente fragmento de código:
 
 ```cs
 ConnectionPolicy usConnectionPolicy = new ConnectionPolicy 
@@ -64,62 +64,62 @@ DocumentClient usClient = new DocumentClient(
     usConnectionPolicy);
 ```
 
-La aplicación también se implementa en la región de Europa del Norte con el orden de las regiones preferidas invertidas. Es decir, la región de Europa del Norte se especifica primero para lecturas de latencia baja. Después, la región del oeste de EE. UU. se configura como la segunda región preferida para lograr alta disponibilidad en caso de errores regionales.
+aplicación Hello también se implementa en la región de Europa del Norte de hello con orden de Hola de regiones preferidas invertidas. Es decir, región de Europa del Norte Hola se especifica primero para lecturas de latencia baja. A continuación, región del oeste de Estados Unidos de Hola se especifica como segunda región preferida Hola para lograr alta disponibilidad durante errores regionales.
 
-El siguiente diagrama de arquitectura muestra una implementación de aplicación de varias regiones donde Cosmos DB y la aplicación se configuran para que estén disponibles en cuatro regiones geográficas de Azure.  
+Hello arquitectura diagrama siguiente muestra una implementación de aplicación de varias regiones donde DB Cosmos y aplicación hello son configurado toobe disponible en cuatro regiones geográficas de Azure.  
 
 ![Implementación de aplicaciones distribuidas globalmente con Azure Cosmos DB](./media/regional-failover/app-deployment.png)
 
-Ahora, veamos cómo el servicio Cosmos DB administra los errores regionales mediante conmutaciones por error automáticas. 
+Ahora, echemos un vistazo a cómo Hola DB Cosmos servicio controla regionales errores a través de las conmutaciones por error automática. 
 
 ## <a id="AutomaticFailovers"></a>Conmutaciones por error automáticas
-En el caso excepcional de una interrupción regional de Azure o del centro de datos, Cosmos DB desencadena automáticamente conmutaciones por error de todas las cuentas de Cosmos DB presentes en la región afectada. 
+En hello extraño caso de una interrupción regional Azure o la interrupción del centro de datos, base de datos de Cosmos desencadena automáticamente la conmutaciones por error de todas las cuentas de base de datos de Cosmos con presencia en la región de hello afectado. 
 
 **¿Qué ocurre si una región de lectura sufre una interrupción?**
 
-Las cuentas de Cosmos DB con una región de lectura que esté entre las regiones afectadas se desconectan automáticamente de su área de escritura y se marcan como desconectadas. Los SDK de Cosmos DB implementan un protocolo de detección regional que les permite detectar automáticamente si una región está disponible, y redireccionan las llamadas de lectura a la siguiente región disponible de la lista de regiones preferidas. Si ninguna de las regiones de la lista de las regiones preferidas está disponible, las llamadas se devuelven automáticamente a la región actual de escritura. No es necesario realizar ningún cambio en el código de su aplicación para gestionar las conmutaciones por error regionales. Durante todo este proceso, Cosmos DB sigue cumpliendo su garantía de coherencia.
+Las cuentas de COSMOS DB con una región de lectura en una de las regiones de hello afectado automáticamente se desconecta de su región de escritura y marcado como sin conexión. Hola Cosmos DB SDK implementan un protocolo de detección regionales que les permita tooautomatically detectar cuándo está disponible una región y redirección lee región disponible de llamadas toohello siguiente en lista de región preferida de Hola. Si ninguna de las regiones de Hola Hola preferido está disponible la lista de regiones, llamadas recurren automáticamente toohello actual región de escritura. Se requiere ningún cambio en la aplicación código toohandle regional las conmutaciones por error. Durante este proceso, garantías de coherencia continúan toobe cumple con la base de datos de Cosmos.
 
 ![Errores de la región de lectura en Azure Cosmos DB](./media/regional-failover/read-region-failures.png)
 
-Una vez que la región afectada se recupera de la interrupción, el servicio recupera automáticamente todas las cuentas de Cosmos DB afectadas de la región. Las cuentas de Cosmos DB que tenían una región de lectura en la zona afectada se sincronizan automáticamente con la región de escritura actual y se conecta. Los SDK de Cosmos DB detectan la disponibilidad de la nueva región y evalúan si deben seleccionarla como la región de lectura actual de acuerdo con la lista de regiones preferidas configurada para la aplicación. Las siguientes lecturas se redirigen a la región recuperada sin necesidad de realizar cambios en el código de la aplicación.
+Una vez que la región de hello afectado se recupera de interrupción de hello, se recuperan automáticamente todas las cuentas de Cosmos DB Hola afectado en la región de hello servicio Hola. Cuentas de COSMOS DB que tenía una región de lectura en la región de hello afectado se, a continuación, automáticamente la sincronización con la actual región de escritura y activar en línea. Hola Cosmos DB SDK detectar la disponibilidad de hello de la nueva región de Hola y evaluar si la región de hello debe seleccionarse como región de lectura actual hello en función de lista de región preferida de hello establecida por aplicación Hola. Lecturas posteriores son toohello redirigida recuperada región sin necesidad de cualquier código de aplicación de tooyour de cambios.
 
 **¿Qué ocurre si una región de escritura sufre una interrupción?**
 
-Si la región afectada es la región actual de escritura de una determinada cuenta de Cosmos DB, entonces la región se marcará automáticamente como desconectadas. Después, se promueve una región alternativa como región de escritura de cada cuenta de Cosmos DB afectada. Puede controlar completamente el orden de selección de las regiones para las cuentas de Cosmos DB a través de Azure Portal o [mediante programación](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange). 
+Si región afectada hello es la región de escritura actual de Hola para una cuenta de base de datos de Cosmos determinada, a continuación, región de hello automáticamente marcará como sin conexión. A continuación, se promueve una región alternativa como Hola escribir región cada cuenta de base de datos de Cosmos afectada. Puede controlar completamente orden de selección de región de Hola para las cuentas de base de datos de Cosmos a través del portal de Azure de Hola o [mediante programación](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange). 
 
 ![Prioridades de conmutación por error de Azure Cosmos DB](./media/regional-failover/failover-priorities.png)
 
-Durante la conmutación por error automática, Cosmos DB elige automáticamente la siguiente región de escritura para una cuenta concreta de Cosmos DB según el orden de prioridad especificado. 
+Durante la conmutación por error automática, Cosmos DB elige automáticamente la siguiente área de la escritura de Hola para una determinada base de datos de Cosmos cuenta según Hola especifica el orden de prioridad. 
 
 ![Errores de la región de escritura en Azure Cosmos DB](./media/regional-failover/write-region-failures.png)
 
-Una vez que la región afectada se recupera de la interrupción, el servicio recupera automáticamente todas las cuentas de Cosmos DB afectadas de la región. 
+Una vez que la región de hello afectado se recupera de interrupción de hello, se recuperan automáticamente todas las cuentas de Cosmos DB Hola afectado en la región de hello servicio Hola. 
 
-* Las cuentas de Cosmos DB cuya región de escritura anterior se encuentre en la zona afectada permanecerán en modo desconectado con disponibilidad de lectura incluso después que se recupere dicha zona. 
-* Puede consultar esta región para calcular todas las escrituras no replicadas durante la interrupción realizando una comparación de los datos disponibles en la actual región de escritura. En función de las necesidades de su aplicación, puede realizar una combinación o resolución de conflictos y escribir el conjunto final de cambios en la región de escritura actual. 
-* Una vez que haya terminado de combinar los cambios, vuelva a poner la región afectada en línea quitando la región de la cuenta de Cosmos DB y volviéndola a agregar. Cuando la región se haya agregado, puede configurarla de nuevo como región de escritura mediante una conmutación por error manual a través de Azure Portal o [mediante programación](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate).
+* Las cuentas de COSMOS DB con su región de escritura anterior en la región de hello afectado permanecerá en un modo sin conexión con la disponibilidad de lectura incluso después de la recuperación de Hola de región de Hola. 
+* Puede consultar esta región toocompute todas las escrituras no replicadas durante la interrupción de hello mediante la comparación con datos de hello disponibles en la región actual de escritura de Hola. Según las necesidades de saludo de la aplicación, puede realizar la resolución de conflictos o de mezcla y escribir Hola conjunto final de la región actual de escritura de cambios toohello back. 
+* Una vez que haya completado combinar los cambios, puede dar región Hola afectado nuevo en línea quitar y volver a agregar cuenta de hello región tooyour Cosmos DB. Una vez que se volvió a región hello, puede configurar como área de escritura de hello mediante la realización de una conmutación por error manual a través del portal de Azure de Hola o [mediante programación](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate).
 
 ## <a id="ManualFailovers"></a> Conmutaciones por error manuales
 
-Además de la conmutación por error automática, puede cambiar de forma dinámica y manual la región de escritura actual de una cuenta de Cosmos DB a una de las regiones de lectura existentes. Las conmutaciones por error manuales se pueden iniciar a través de Azure Portal o [mediante programación](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate). 
+Además tooautomatic las conmutaciones por error, Hola actual escribir región de una cuenta de base de datos de Cosmos determinada puede cambiarse manualmente dinámicamente tooone de hello regiones de lectura existente. Las conmutaciones por error manual se pueden iniciar a través del portal de Azure de Hola o [mediante programación](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate). 
 
-Las conmutaciones por error manuales garantizan que haya **cero pérdida de datos** y **cero pérdida de disponibilidad**, y transfieren sin problemas el estado de escritura de la región de escritura anterior a la nueva para la cuenta de Cosmos DB especificada. Al igual que en la conmutación por error automática, el SDK de Cosmos DB controla automáticamente los cambios de región de escritura durante las conmutaciones por error manuales y garantiza que las llamadas se redirijan automáticamente a la nueva región de escritura. No se requiere ningún cambio de código o configuración de la aplicación para administrar las conmutaciones por error. 
+Asegúrese de conmutaciones por error manuales **cero pérdida de datos** y **cero disponibilidad** pérdida y correctamente el estado de escritura de transferencia de hello antiguo escriben región toohello uno nuevo para hello la cuenta de base de datos de Cosmos especificada. Al igual que en la conmutación por error automática, Hola Cosmos DB SDK automáticamente identificadores de escribir región cambia durante las conmutaciones por error manual y garantiza que las llamadas son toohello redirigido automáticamente una nueva área de escritura. Se requiere ningún cambio de código o configuración de la conmutación por error de aplicación toomanage. 
 
 ![Conmutaciones por error manuales de Azure Cosmos DB](./media/regional-failover/manual-failovers.png)
 
-Algunos de los escenarios comunes en los que la conmutación por error manual puede ser útil son:
+Algunos escenarios comunes de Hola donde la conmutación por error manual puede ser útil son:
 
-**Modelo de funcionamiento ininterrumpido**: si las aplicaciones tienen patrones de tráfico predecibles en función de la hora del día, puede cambiar periódicamente el estado de escritura a la región geográfica más activa en función de la hora del día.
+**Siga el modelo de reloj de Hola**: si las aplicaciones tienen patrones de tráfico de predicción según el tiempo de hello del día de hello, puede cambiar periódicamente Hola escritura estado toohello más activo región geográfica en función de la hora del día en Hola.
 
-**Actualización de servicio**: ciertas implementaciones de aplicaciones distribuidas globalmente pueden requerir que se redirija el tráfico a una región diferente mediante Traffic Manager durante actualizaciones de servicio programadas. Dicha implementación de aplicaciones puede usar la conmutación por error manual para mantener el estado de escritura en la región que tendrá tráfico activo durante el período de actualización del servicio.
+**Actualización de servicio**: puede implicar cierto implementación de aplicación distribuida globalmente reenrutamiento región toodifferent de tráfico a través del Administrador de tráfico durante la actualización de servicio planeada. Ahora la implementación de dicha aplicación puede usar conmutación por error manual región de toohello de la estado de tookeep Hola escritura donde habrá tráfico active toobe durante la ventana de actualización de servicio de hello.
 
-**Exploraciones de continuidad empresarial y recuperación ante desastres (BCDR) y alta disponibilidad y recuperación ante desastres (HADR)**: la mayoría de las aplicaciones empresariales incluyen pruebas de continuidad empresarial en su proceso de desarrollo y de lanzamiento. Las pruebas de BCDR y HADR a menudo son un paso importante de los certificados de cumplimiento y garantizan la disponibilidad del servicio en caso de una interrupción regional. Puede probar si las aplicaciones que usan Cosmos DB para el almacenamiento están preparadas para BCDR activando una conmutación por error manual de su cuenta de Cosmos DB o agregando y quitando una región de forma dinámica.
+**Exploraciones de continuidad empresarial y recuperación ante desastres (BCDR) y alta disponibilidad y recuperación ante desastres (HADR)**: la mayoría de las aplicaciones empresariales incluyen pruebas de continuidad empresarial en su proceso de desarrollo y de lanzamiento. BCDR y las pruebas de HADR es a menudo un paso importante en certificaciones de cumplimiento de normas y garantiza disponibilidad del servicio en caso de hello de interrupciones regionales. Puede probar la preparación BCDR Hola de las aplicaciones que usan DB Cosmos para almacenamiento desencadenar una conmutación por error manual de la cuenta de base de datos de Cosmos o agregando y quitando una región de forma dinámica.
 
-En este artículo, hemos revisado cómo funcionan las conmutaciones por error manuales y automáticas en Cosmos DB, y cómo puede configurar sus aplicaciones y cuentas de Cosmos DB para que estén disponibles globalmente. Use la compatibilidad con replicación global de Cosmos DB para mejorar la latencia de extremo a extremo y asegurarse de que estén altamente disponibles incluso en caso de errores de región. 
+En este artículo, se revisan cómo manuales y automáticas trabajo conmutaciones por error en la base de datos de Cosmos y cómo puede configurar su toobe de cuentas y las aplicaciones de base de datos de Cosmos disponible globalmente. Utilizando el soporte de replicación global de Cosmos DB, puede mejorar la latencia de extremo a extremo y asegurarse de que son altamente disponibles incluso en caso de hello de errores de la región. 
 
 ## <a id="NextSteps"></a>Pasos siguientes
 * Obtenga información sobre la compatibilidad de Cosmos DB con la [distribución global](distribute-data-globally.md)
 * Más información sobre la [coherencia global con Azure Cosmos DB](consistency-levels.md)
 * Desarrollo con varias regiones con la [API de DocumentDB](../cosmos-db/tutorial-global-distribution-documentdb.md) de Azure Cosmos DB
-* Obtenga información acerca de cómo crear [arquitecturas de sistema de escritura de varias regiones](multi-region-writers.md) con Azure DocumentDB.
+* Obtenga información acerca de cómo toobuild [arquitecturas de sistema de escritura de varias regiones](multi-region-writers.md) con documentos de Azure
 

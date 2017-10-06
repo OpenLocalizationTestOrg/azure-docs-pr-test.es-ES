@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de script de CLI de Azure: creación de Azure Redis Cache | Microsoft Docs"
+title: "Ejemplo de secuencia de comandos de CLI - aaaAzure crear una caché en Redis de Azure | Documentos de Microsoft"
 description: "Ejemplo de script de CLI de Azure: creación de Azure Redis Cache"
 services: redis-cache
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/14/2017
 ms.author: sdanie
-ms.openlocfilehash: c6b153d80de4cbf2bec1bc70d67be7befa0c5ec3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 85b007a426fbd4752034ec8663835963d140dd75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-redis-cache"></a>Creación de una instancia de Caché en Redis de Azure
 
-En este escenario, aprenderá a crear una instancia de Azure Redis Cache.
+En este escenario, aprenderá cómo toocreate un Redis de Azure almacenan en caché.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -35,7 +35,7 @@ En este escenario, aprenderá a crear una instancia de Azure Redis Cache.
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear un grupo de recursos y una instancia de Redis Cache. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola después comandos toocreate un grupo de recursos y una caché de redis. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
@@ -45,6 +45,6 @@ Este script usa los siguientes comandos para crear un grupo de recursos y una in
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de scripts de CLI de Azure Redis Cache en la [documentación de Azure Redis Cache](../cli-samples.md).
+Encontrará más ejemplos de secuencias de comandos de CLI de caché de Redis de Azure en hello [documentación de Azure Redis Cache](../cli-samples.md).

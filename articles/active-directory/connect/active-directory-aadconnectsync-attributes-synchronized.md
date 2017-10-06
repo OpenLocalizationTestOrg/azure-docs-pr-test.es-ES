@@ -1,6 +1,6 @@
 ---
 title: Atributos sincronizados por Azure AD Connect | Microsoft Docs
-description: Enumera los atributos que se sincronizan con Azure Active Directory.
+description: Listas de hello atributos sincronizan tooAzure Active Directory.
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 85878cbccf76e9f6faf523b89218d058fd24904b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2fe5b944a7fc832f245631416c265fb82eedeb15
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: atributos sincronizados con Azure Active Directory
-En este tema se enumeran los atributos que se sincronizan mediante la sincronización de Azure AD Connect.  
-Los atributos se agrupan por la aplicación de Azure AD relacionada.
+# <a name="azure-ad-connect-sync-attributes-synchronized-tooazure-active-directory"></a>Azure AD Connect sync: atributos sincronizados tooAzure Active Directory
+En este tema se enumera los atributos de Hola que se sincronizan mediante la sincronización de Azure AD Connect.  
+Hello atributos agrupados por hello relacionados con la aplicación de Azure AD.
 
-## <a name="attributes-to-synchronize"></a>Atributos que sincronizar
-Una pregunta frecuente es *qué es la lista de atributos mínimos que sincronizar*. El método predeterminado y recomendado consiste en mantener los atributos predeterminados para poder crear una lista global de direcciones completa en la nube y obtener todas las características en cargas de trabajo de Office 365. En algunos casos, la organización no quiere que se sincronicen ciertos atributos en la nube porque contienen datos confidenciales o PII (información de identificación personal), como en el ejemplo siguiente:   
+## <a name="attributes-toosynchronize"></a>Atributos toosynchronize
+Una pregunta frecuente es *¿qué es la lista de Hola de atributos mínimos toosynchronize*. valor predeterminado de Hola y enfoque recomendado es atributos predeterminados de tookeep Hola por lo que se puede construir una GAL completa (lista Global de direcciones) en hello en la nube y tooget todas las características de las cargas de trabajo de Office 365. En algunos casos, hay algunos atributos que su organización no desea toohello sincronizada en la nube ya contienen estos atributos confidenciales o datos PII (información de identificación personal), al igual que en este ejemplo:  
 ![Atributos incorrectos](./media/active-directory-aadconnectsync-attributes-synchronized/badextensionattribute.png)
 
-En este caso, comience con la lista de atributos de este tema e identifique aquellos que podrían contener datos confidenciales o PII y que, por tanto, no se pueden sincronizar. Después, anule la selección de ellos durante la instalación con el [filtrado de atributos y aplicaciones de Azure AD](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering).
+En este caso, comience con la lista de Hola de atributos en este tema e identificar los atributos que contengan confidencial o datos PII y no se puede sincronizar. Después, anule la selección de ellos durante la instalación con el [filtrado de atributos y aplicaciones de Azure AD](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering).
 
 > [!WARNING]
-> Al anular la selección de atributos, debe tener cuidado y solo hacerlo con aquellos que sean imposibles de sincronizar. Anular la selección de otros atributos podría afectar negativamente a las características.
+> Al anular la selección de atributos, debe tener cuidado y solo anule la selección esos toosynchronize absolutamente no son posibles atributos. Anular la selección de otros atributos podría afectar negativamente a las características.
 >
 >
 
@@ -41,11 +41,11 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | accountEnabled |X |Define si se habilita una cuenta. |
 | cn |X | |
 | DisplayName |X | |
-| objectSID |X |Propiedad mecánica. Identificador de usuario de AD usado para mantener la sincronización entre Azure AD y AD. |
-| pwdLastSet |X |Propiedad mecánica. Usada para saber cuándo invalidar tokens ya emitidos. Usada por sincronización de contraseñas y federación. |
-| sourceAnchor |X |Propiedad mecánica. Identificador inmutable para mantener la relación entre ADDS y Azure AD. |
-| usageLocation |X |Propiedad mecánica. El país del usuario. Se usa para la asignación de licencias. |
-| userPrincipalName |X |UPN es el identificador de inicio de sesión para el usuario. Frecuentemente el mismo que el valor [mail]. |
+| objectSID |X |Propiedad mecánica. Identificador de usuario de AD usa toomaintain sincronización entre Azure AD y AD. |
+| pwdLastSet |X |Propiedad mecánica. Tooknow usado cuando tooinvalidate ya los tokens emitidos. Usada por sincronización de contraseñas y federación. |
+| sourceAnchor |X |Propiedad mecánica. Relación de toomaintain identificador inmutable entre ADDS y Azure AD. |
+| usageLocation |X |Propiedad mecánica. país del usuario de Hola. Se usa para la asignación de licencias. |
+| userPrincipalName |X |UPN es Hola Id. de inicio de sesión de usuario de Hola. Con mayor frecuencia Hola igual que el valor [mail]. |
 
 ## <a name="exchange-online"></a>Exchange Online
 | Nombre del atributo | Usuario | Contacto | Grupo | Comentario |
@@ -141,7 +141,7 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | msExchTeamMailboxSharePointUrl |X | | | |
 | msExchUserHoldPolicies |X | | | |
 | msOrg-IsOrganizational | | |X | |
-| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usado para mantener la sincronización entre Azure AD y AD. |
+| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usa toomaintain sincronización entre Azure AD y AD. |
 | oOFReplyToOriginator | | |X | |
 | otherFacsimileTelephone |X |X | | |
 | otherHomePhone |X |X | | |
@@ -151,12 +151,12 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | postalCode |X |X | | |
 | proxyAddresses |X |X |X | |
 | publicDelegates |X |X |X | |
-| pwdLastSet |X | | |Propiedad mecánica. Usada para saber cuándo invalidar tokens ya emitidos. Usada por sincronización de contraseñas y federación. |
+| pwdLastSet |X | | |Propiedad mecánica. Tooknow usado cuando tooinvalidate ya los tokens emitidos. Usada por sincronización de contraseñas y federación. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | securityEnabled | | |X |Deriva de groupType |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |Propiedad mecánica. Identificador inmutable para mantener la relación entre ADDS y Azure AD. |
+| sourceAnchor |X |X |X |Propiedad mecánica. Relación de toomaintain identificador inmutable entre ADDS y Azure AD. |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
@@ -165,9 +165,9 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | thumbnailphoto |X |X | | |
 | título |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |Propiedad mecánica. El país del usuario. Se usa para la asignación de licencias. |
+| usageLocation |X | | |Propiedad mecánica. país del usuario de Hola. Se usa para la asignación de licencias. |
 | userCertificate |X |X | | |
-| userPrincipalName |X | | |UPN es el identificador de inicio de sesión para el usuario. Frecuentemente el mismo que el valor [mail]. |
+| userPrincipalName |X | | |UPN es Hola Id. de inicio de sesión de usuario de Hola. Con mayor frecuencia Hola igual que el valor [mail]. |
 | userSMIMECertificates |X |X | | |
 | wWWHomePage |X |X | | |
 
@@ -220,7 +220,7 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | msExchTeamMailboxOwners |X | | | |
 | msExchTeamMailboxSharePointLinkedBy |X | | | |
 | msExchTeamMailboxSharePointUrl |X | | | |
-| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usado para mantener la sincronización entre Azure AD y AD. |
+| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usa toomaintain sincronización entre Azure AD y AD. |
 | oOFReplyToOriginator | | |X | |
 | otherFacsimileTelephone |X |X | | |
 | otherHomePhone |X |X | | |
@@ -234,12 +234,12 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | postOfficeBox |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |Propiedad mecánica. Usada para saber cuándo invalidar tokens ya emitidos. Usada por sincronización de contraseñas y federación. |
+| pwdLastSet |X | | |Propiedad mecánica. Tooknow usado cuando tooinvalidate ya los tokens emitidos. Usada por sincronización de contraseñas y federación. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | securityEnabled | | |X |Deriva de groupType |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |Propiedad mecánica. Identificador inmutable para mantener la relación entre ADDS y Azure AD. |
+| sourceAnchor |X |X |X |Propiedad mecánica. Relación de toomaintain identificador inmutable entre ADDS y Azure AD. |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
@@ -249,8 +249,8 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | título |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| usageLocation |X | | |Propiedad mecánica. El país del usuario. Se usa para la asignación de licencias. |
-| userPrincipalName |X | | |UPN es el identificador de inicio de sesión para el usuario. Frecuentemente el mismo que el valor [mail]. |
+| usageLocation |X | | |Propiedad mecánica. país del usuario de Hola. Se usa para la asignación de licencias. |
+| userPrincipalName |X | | |UPN es Hola Id. de inicio de sesión de usuario de Hola. Con mayor frecuencia Hola igual que el valor [mail]. |
 | wWWHomePage |X |X | | |
 
 ## <a name="lync-online"></a>Lync Online
@@ -283,40 +283,40 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | msRTCSIP-OwnerUrn |X | | | |
 | msRTCSIP-PrimaryUserAddress |X |X | | |
 | msRTCSIP-UserEnabled |X |X | | |
-| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usado para mantener la sincronización entre Azure AD y AD. |
+| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usa toomaintain sincronización entre Azure AD y AD. |
 | otherTelephone |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |Propiedad mecánica. Usada para saber cuándo invalidar tokens ya emitidos. Usada por sincronización de contraseñas y federación. |
+| pwdLastSet |X | | |Propiedad mecánica. Tooknow usado cuando tooinvalidate ya los tokens emitidos. Usada por sincronización de contraseñas y federación. |
 | securityEnabled | | |X |Deriva de groupType |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |Propiedad mecánica. Identificador inmutable para mantener la relación entre ADDS y Azure AD. |
+| sourceAnchor |X |X |X |Propiedad mecánica. Relación de toomaintain identificador inmutable entre ADDS y Azure AD. |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | título |X |X | | |
-| usageLocation |X | | |Propiedad mecánica. El país del usuario. Se usa para la asignación de licencias. |
-| userPrincipalName |X | | |UPN es el identificador de inicio de sesión para el usuario. Frecuentemente el mismo que el valor [mail]. |
+| usageLocation |X | | |Propiedad mecánica. país del usuario de Hola. Se usa para la asignación de licencias. |
+| userPrincipalName |X | | |UPN es Hola Id. de inicio de sesión de usuario de Hola. Con mayor frecuencia Hola igual que el valor [mail]. |
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
 | Nombre del atributo | Usuario | Contacto | Grupo | Comentario |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Define si se habilita una cuenta. |
-| cn |X | |X |Nombre común o alias. Frecuentemente el prefijo del valor de [mail]. |
-| DisplayName |X |X |X |Una cadena que representa el nombre que se muestra a menudo como el nombre descriptivo (nombre, apellido). |
+| cn |X | |X |Nombre común o alias. Con mayor frecuencia prefijo de Hola de valor [mail]. |
+| DisplayName |X |X |X |Una cadena que representa el nombre de hello suele mostrado como nombre descriptivo de hello (nombre apellido). |
 | mail |X |X |X |Dirección de correo electrónico completa. |
 | member | | |X | |
-| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usado para mantener la sincronización entre Azure AD y AD. |
-| proxyAddresses |X |X |X |Propiedad mecánica. Usado por Azure AD. Contiene todas las direcciones de correo electrónico secundarias para el usuario. |
-| pwdLastSet |X | | |Propiedad mecánica. Usada para saber cuándo invalidar tokens ya emitidos. |
+| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usa toomaintain sincronización entre Azure AD y AD. |
+| proxyAddresses |X |X |X |Propiedad mecánica. Usado por Azure AD. Contiene todas las direcciones de correo electrónico secundarias para el usuario de Hola. |
+| pwdLastSet |X | | |Propiedad mecánica. Tooknow usado cuando tooinvalidate ya los tokens emitidos. |
 | securityEnabled | | |X |Deriva de groupType. |
-| sourceAnchor |X |X |X |Propiedad mecánica. Identificador inmutable para mantener la relación entre ADDS y Azure AD. |
-| usageLocation |X | | |Propiedad mecánica. El país del usuario. Se usa para la asignación de licencias. |
-| userPrincipalName |X | | |Este UPN es el identificador de inicio de sesión para el usuario. Frecuentemente el mismo que el valor [mail]. |
+| sourceAnchor |X |X |X |Propiedad mecánica. Relación de toomaintain identificador inmutable entre ADDS y Azure AD. |
+| usageLocation |X | | |Propiedad mecánica. país del usuario de Hola. Se usa para la asignación de licencias. |
+| userPrincipalName |X | | |Este UPN es Hola Id. de inicio de sesión de usuario de Hola. Con mayor frecuencia Hola igual que el valor [mail]. |
 
 ## <a name="intune"></a>Intune
 | Nombre del atributo | Usuario | Contacto | Grupo | Comentario |
@@ -329,13 +329,13 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
 | member | | |X | |
-| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usado para mantener la sincronización entre Azure AD y AD. |
+| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usa toomaintain sincronización entre Azure AD y AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |Propiedad mecánica. Usada para saber cuándo invalidar tokens ya emitidos. Usada por sincronización de contraseñas y federación. |
+| pwdLastSet |X | | |Propiedad mecánica. Tooknow usado cuando tooinvalidate ya los tokens emitidos. Usada por sincronización de contraseñas y federación. |
 | securityEnabled | | |X |Deriva de groupType |
-| sourceAnchor |X |X |X |Propiedad mecánica. Identificador inmutable para mantener la relación entre ADDS y Azure AD. |
-| usageLocation |X | | |Propiedad mecánica. El país del usuario. Se usa para la asignación de licencias. |
-| userPrincipalName |X | | |UPN es el identificador de inicio de sesión para el usuario. Frecuentemente el mismo que el valor [mail]. |
+| sourceAnchor |X |X |X |Propiedad mecánica. Relación de toomaintain identificador inmutable entre ADDS y Azure AD. |
+| usageLocation |X | | |Propiedad mecánica. país del usuario de Hola. Se usa para la asignación de licencias. |
+| userPrincipalName |X | | |UPN es Hola Id. de inicio de sesión de usuario de Hola. Con mayor frecuencia Hola igual que el valor [mail]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
 | Nombre del atributo | Usuario | Contacto | Grupo | Comentario |
@@ -355,28 +355,28 @@ En este caso, comience con la lista de atributos de este tema e identifique aque
 | manager |X |X | | |
 | member | | |X | |
 | mobile |X |X | | |
-| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usado para mantener la sincronización entre Azure AD y AD. |
+| objectSID |X | |X |Propiedad mecánica. Identificador de usuario de AD usa toomaintain sincronización entre Azure AD y AD. |
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
-| pwdLastSet |X | | |Propiedad mecánica. Usada para saber cuándo invalidar tokens ya emitidos. Usada por sincronización de contraseñas y federación. |
+| pwdLastSet |X | | |Propiedad mecánica. Tooknow usado cuando tooinvalidate ya los tokens emitidos. Usada por sincronización de contraseñas y federación. |
 | securityEnabled | | |X |Deriva de groupType |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |Propiedad mecánica. Identificador inmutable para mantener la relación entre ADDS y Azure AD. |
+| sourceAnchor |X |X |X |Propiedad mecánica. Relación de toomaintain identificador inmutable entre ADDS y Azure AD. |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | título |X |X | | |
-| usageLocation |X | | |Propiedad mecánica. El país del usuario. Se usa para la asignación de licencias. |
-| userPrincipalName |X | | |UPN es el identificador de inicio de sesión para el usuario. Frecuentemente el mismo que el valor [mail]. |
+| usageLocation |X | | |Propiedad mecánica. país del usuario de Hola. Se usa para la asignación de licencias. |
+| userPrincipalName |X | | |UPN es Hola Id. de inicio de sesión de usuario de Hola. Con mayor frecuencia Hola igual que el valor [mail]. |
 
 ## <a name="3rd-party-applications"></a>Aplicaciones de terceros
-Este grupo es un conjunto de atributos que se usan como atributos mínimos necesarios para una carga de trabajo o aplicación genérica. Se puede emplear para cargas de trabajo que no figuren en otra sección o para una aplicación que no sea de Microsoft. Se usa explícitamente para lo siguiente:
+Este grupo es un conjunto de atributos que se utilizan como Hola atributos mínimos necesarios para una carga de trabajo genérica o una aplicación. Se puede emplear para cargas de trabajo que no figuren en otra sección o para una aplicación que no sea de Microsoft. Explícitamente se usa para siguiente hello:
 
 * Yammer (solo se consume User)
 * [Escenarios híbridos de colaboración entre organizaciones negocio a negocio (B2B) ofrecidos por recursos como SharePoint](http://go.microsoft.com/fwlink/?LinkId=747036)
 
-Este grupo es un conjunto de atributos que se pueden usar si no se emplea el directorio de Azure AD para admitir Office 365, Dynamics o Intune. Tiene un pequeño conjunto de atributos principales.
+Este grupo es un conjunto de atributos que puede utilizarse si no es el directorio de Azure AD de hello usa toosupport Office 365, Dynamics o Intune. Tiene un pequeño conjunto de atributos principales.
 
 | Nombre del atributo | Usuario | Contacto | Grupo | Comentario |
 | --- |:---:|:---:|:---:| --- |
@@ -388,16 +388,16 @@ Este grupo es un conjunto de atributos que se pueden usar si no se emplea el dir
 | managedBy | | |X | |
 | mailNickname |X |X |X | |
 | member | | |X | |
-| objectSID |X | | |Propiedad mecánica. Identificador de usuario de AD usado para mantener la sincronización entre Azure AD y AD. |
+| objectSID |X | | |Propiedad mecánica. Identificador de usuario de AD usa toomaintain sincronización entre Azure AD y AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |Propiedad mecánica. Usada para saber cuándo invalidar tokens ya emitidos. Usada por sincronización de contraseñas y federación. |
+| pwdLastSet |X | | |Propiedad mecánica. Tooknow usado cuando tooinvalidate ya los tokens emitidos. Usada por sincronización de contraseñas y federación. |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |Propiedad mecánica. Identificador inmutable para mantener la relación entre ADDS y Azure AD. |
-| usageLocation |X | | |Propiedad mecánica. El país del usuario. Se usa para la asignación de licencias. |
-| userPrincipalName |X | | |UPN es el identificador de inicio de sesión para el usuario. Frecuentemente el mismo que el valor [mail]. |
+| sourceAnchor |X |X |X |Propiedad mecánica. Relación de toomaintain identificador inmutable entre ADDS y Azure AD. |
+| usageLocation |X | | |Propiedad mecánica. país del usuario de Hola. Se usa para la asignación de licencias. |
+| userPrincipalName |X | | |UPN es Hola Id. de inicio de sesión de usuario de Hola. Con mayor frecuencia Hola igual que el valor [mail]. |
 
 ## <a name="windows-10"></a>Windows 10
-Los equipos (dispositivos) Windows 10 unidos a un dominio sincronizarán algunos atributos con Azure AD. Para obtener más información sobre los escenarios, vea [Experiencias de conexión de dispositivos unidos a un dominio a Azure AD para Windows 10](../active-directory-azureadjoin-devices-group-policy.md). Estos atributos siempre se sincronizarán y Windows 10 no aparecerá como una aplicación de la que puede anular la selección. Un equipo unido a un dominio de Windows 10 se identifica por tener el atributo userCertificate rellenado.
+Un computer(device) Unidos a un dominio de Windows 10 sincroniza algunos tooAzure atributos AD. Para obtener más información sobre los escenarios de hello, consulte [conectar dispositivos Unidos a dominio tooAzure AD para Windows 10 experimenta](../active-directory-azureadjoin-devices-group-policy.md). Estos atributos siempre se sincronizarán y Windows 10 no aparecerá como una aplicación de la que puede anular la selección. Un equipo unido a un dominio de Windows 10 se identifica por tener Hola atributo userCertificate rellena.
 
 | Nombre del atributo | Dispositivo | Comentario |
 | --- |:---:| --- |
@@ -411,7 +411,7 @@ Los equipos (dispositivos) Windows 10 unidos a un dominio sincronizarán algunos
 | operatingSystemVersion |X |También se denomina deviceOSVersion. |
 | userCertificate |X | |
 
-Estos atributos de **User** se incluyen además de las otras aplicaciones que haya seleccionado.  
+Estos atributos para **usuario** es además toohello otras aplicaciones que ha seleccionado.  
 
 | Nombre del atributo | Usuario | Comentario |
 | --- |:---:| --- |
@@ -419,22 +419,22 @@ Estos atributos de **User** se incluyen además de las otras aplicaciones que ha
 | domainNetBios |X |También se denomina netBiosName. Por ejemplo, CONTOSO. |
 
 ## <a name="exchange-hybrid-writeback"></a>Reescritura híbrida de Exchange
-Estos atributos se reescriben desde Azure AD en Active Directory local cuando se elige habilitar la **implementación híbrida de Exchange**. Dependiendo de la versión de Exchange, puede que se sincronicen menos atributos.
+Estos atributos se reescriben desde Azure AD tooon-local de Active Directory cuando se selecciona tooenable **implementación híbrida de Exchange**. Dependiendo de la versión de Exchange, puede que se sincronicen menos atributos.
 
 | Nombre del atributo | Usuario | Contacto | Grupo | Comentario |
 | --- |:---:|:---:|:---:| --- |
 | msDS-ExternalDirectoryObjectID |X | | |Se deriva de cloudAnchor en Azure AD. Este atributo es nuevo en Exchange 2016 y en AD de Windows Server 2016. |
-| msExchArchiveStatus |X | | |Archivo en línea: permite a los clientes archivar el correo electrónico. |
+| msExchArchiveStatus |X | | |Archivo en línea: Habilita tooarchive de correo electrónico de los clientes. |
 | msExchBlockedSendersHash |X | | |Filtrado: reescribe los datos de remitentes seguros y bloqueados en línea y el filtrado de local de los clientes. |
 | msExchSafeRecipientsHash |X | | |Filtrado: reescribe los datos de remitentes seguros y bloqueados en línea y el filtrado de local de los clientes. |
 | msExchSafeSendersHash |X | | |Filtrado: reescribe los datos de remitentes seguros y bloqueados en línea y el filtrado de local de los clientes. |
-| msExchUCVoiceMailSettings |X | | |Habilitar mensajería unificada (UM) - correo de voz en línea: usado para la integración de Microsoft Lync Server para indicar a Lync Server local que el usuario tiene el correo de voz en los servicios en línea. |
-| msExchUserHoldPolicies |X | | |Retención por juicio: permite que los servicios en la nube determinen qué usuarios están bajo retención por juicio. |
-| proxyAddresses |X |X |X |Solo se inserta la dirección x500 de Exchange Online. |
-| publicDelegates |X | | |Permite conceder derechos SendOnBehalfTo a un buzón de Exchange Online para los usuarios con buzones de Exchange locales. Requiere la compilación 1.1.552.0 de Azure AD Connect o versiones posteriores. |
+| msExchUCVoiceMailSettings |X | | |Habilitar la mensajería unificada (UM) - correo de voz en línea: usa Microsoft Lync Server integración tooindicate tooLync servidor local que el usuario hello tiene correo de voz en los servicios en línea. |
+| msExchUserHoldPolicies |X | | |Suspensión de juicio: Permite toodetermine de servicios de nube que los usuarios están bajo juicio mantenga. |
+| proxyAddresses |X |X |X |Solo hello x500 dirección de Exchange Online se inserta. |
+| publicDelegates |X | | |Permite que un toobe de buzón de Exchange Online concedido SendOnBehalfTo derechos toousers con buzón de Exchange local. Requiere la compilación 1.1.552.0 de Azure AD Connect o versiones posteriores. |
 
 ## <a name="exchange-mail-public-folder"></a>Carpeta pública de correo de Exchange
-Estos atributos se sincronizan desde Active Directory local en Azure AD cuando se elige habilitar la **carpeta pública de correo de Exchange**.
+Estos atributos se sincronizan desde tooAzure de Active Directory local AD cuando selecciona tooenable **carpetas públicas de correo electrónico de Exchange**.
 
 | Nombre del atributo | PublicFolder | Comentario |
 | --- | :---:| --- |
@@ -446,7 +446,7 @@ Estos atributos se sincronizan desde Active Directory local en Azure AD cuando s
 | targetAddress | X |  |
 
 ## <a name="device-writeback"></a>Escritura diferida de dispositivos
-Los objetos de dispositivo se crean en Active Directory. Pueden ser dispositivos unidos a Azure AD o equipos Windows 10 unidos a un dominio.
+Los objetos de dispositivo se crean en Active Directory. Estos objetos pueden ser dispositivos Unidos tooAzure AD o equipos unidos a un dominio de Windows 10.
 
 | Nombre del atributo | Dispositivo | Comentario |
 | --- |:---:| --- |
@@ -466,10 +466,10 @@ Los objetos de dispositivo se crean en Active Directory. Pueden ser dispositivos
 | msDS-RegisteredOwner |X | |
 
 ## <a name="notes"></a>Notas
-* Cuando se usa un identificador alternativo, el atributo local userPrincipalName se sincronizará con el de Azure AD onPremisesUserPrincipalName. El atributo de identificador alternativo, por ejemplo, mail, se sincronizará con el de Azure AD userPrincipalName.
-* En la lista anterior, el tipo de objeto **User** también se aplica al tipo de objeto **iNetOrgPerson**.
+* Al usar un Id. alternativo, hello locales atributo userPrincipalName se sincroniza con onPremisesUserPrincipalName de atributo de hello Azure AD. Hola atributo de Id. alternativo, por ejemplo correo electrónico, se sincroniza con el atributo userPrincipalName de hello Azure AD.
+* En las listas de hello anteriores, tipo de objeto de Hola **usuario** también se aplica el tipo de objeto de toohello **iNetOrgPerson**.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre la configuración de la [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) .
+Obtener más información sobre hello [sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) configuración.
 
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

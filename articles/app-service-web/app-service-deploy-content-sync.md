@@ -1,6 +1,6 @@
 ---
-title: "Sincronización de contenido de una carpeta de nube al Servicio de aplicaciones de Azure"
-description: "Descubra cómo implementar su aplicación en el Servicio de aplicaciones de Azure mediante una sincronización de contenido desde una carpeta de la nube."
+title: aaaSync contenido desde un tooAzure de carpeta servicio de aplicaciones de nube
+description: "Obtenga información acerca de cómo toodeploy sincronizar con su tooAzure aplicación servicio de aplicaciones a través de contenido de una carpeta en la nube."
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 010e7dc492abefaa3afe814c0322af9f6fe5acd2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e1c6d53a427c36126d9cdb33cc21b4126b9d9c2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Sincronización de contenido de una carpeta de nube al Servicio de aplicaciones de Azure
-En este tutorial se muestra cómo implementar en el [Servicio de aplicaciones de Azure](http://go.microsoft.com/fwlink/?LinkId=529714) mediante la sincronización de su contenido desde servicios de almacenamiento en nube populares, como Dropbox y OneDrive. 
+# <a name="sync-content-from-a-cloud-folder-tooazure-app-service"></a>Contenido de sincronización de un tooAzure de carpeta servicio de aplicaciones de nube
+Este tutorial muestra cómo toodeploy demasiado[servicio de aplicaciones de Azure](http://go.microsoft.com/fwlink/?LinkId=529714) por sincronizando el contenido de servicios de almacenamiento de nube populares como Dropbox y OneDrive. 
 
 ## <a name="overview"></a>Información general sobre la implementación de la sincronización de contenido
-La implementación de la sincronización de contenido a petición funciona con el [motor de implementación Kudu](https://github.com/projectkudu/kudu/wiki) integrado con el Servicio de aplicaciones. En el [Portal de Azure](https://portal.azure.com), puede designar una carpeta especial en el almacenamiento en la nube, trabajar con el código de la aplicación y el contenido de dicha carpeta, y sincronizar con el Servicio de aplicaciones con solo hacer clic en un botón. La sincronización de contenido utiliza el proceso de Kudu para la compilación e implementación. 
+implementación de la sincronización de contenido a petición de Hola se realiza gracias hello [motor de implementación de Kudu](https://github.com/projectkudu/kudu/wiki) integrado con el servicio de aplicaciones. Hola [Portal de Azure](https://portal.azure.com), puede designar una carpeta en su almacenamiento en nube, trabajar con el código de la aplicación y el contenido de esa carpeta y haga clic en sincronizar tooApp servicio con hello de un botón. Sincronización de contenido utiliza el proceso de Kudu Hola de compilación e implementación. 
 
-## <a name="contentsync"></a>Habilitación de la implementación de la sincronización de contenido
-Para habilitar la sincronización de contenido en el [Portal de Azure](https://portal.azure.com), siga estos pasos:
+## <a name="contentsync"></a>Implementación de la sincronización tooenable contenido
+sincronización de contenido tooenable de hello [Portal de Azure](https://portal.azure.com), siga estos pasos:
 
-1. En la hoja de su aplicación de Azure Portal, haga clic en **Configuración** > **Origen de implementación**. Haga clic en **Elegir origen** y, después, seleccione **OneDrive** o **Dropbox** como origen de la implementación. 
+1. En la hoja de la aplicación Hola Portal de Azure, haga clic en **configuración** > **origen de la implementación**. Haga clic en **Elegir origen**, a continuación, seleccione **OneDrive** o **Dropbox** como origen de hello para la implementación. 
    
     ![Sincronización de contenido](./media/app-service-deploy-content-sync/deployment_source.png)
    
    > [!NOTE]
-   > Debido a diferencias subyacentes en las API, **OneDrive para la empresa** no se admite en este momento. 
+   > Debido a diferencias subyacentes en hello API, **OneDrive para la empresa** no se admite en este momento. 
    > 
    > 
-2. Complete el flujo de trabajo de autorización para permitir que el Servicio de aplicaciones acceda a una ruta designada y predefinida específica para OneDrive o Dropbox en la que se almacenará todo su contenido del Servicio de aplicaciones.  
-    Tras la autorización, la plataforma Servicio de aplicaciones le ofrecerá la opción de crear una carpeta de contenido en la ruta de contenido designada o de elegir una carpeta existente en dicha ruta. Las rutas de contenido designadas en sus cuentas de almacenamiento en nube utilizadas para la sincronización del Servicio de aplicaciones son las siguientes:  
+2. Tooenable de flujo de trabajo de autorización de hello completa tooaccess de servicio de aplicaciones un determinado predefinidas designado de la ruta de acceso para OneDrive o Dropbox donde se almacenará todo el contenido de servicio de aplicaciones.  
+    Después de hello autorización plataforma de servicio de aplicaciones le proporcionará Hola opción toocreate una carpeta de contenido en hello designarse ruta de contenido o toochoose una carpeta de contenido existente en esta ruta de acceso de contenido designado. las rutas de acceso de contenido de Hello designado en sus cuentas de almacenamiento en la nube utilizados para la sincronización de servicio de aplicaciones son siguientes de hello:  
    
    * **OneDrive**: `Apps\Azure Web Apps` 
    * **Dropbox**: `Dropbox\Apps\Azure`
-3. Después de la sincronización de contenido inicial, se puede iniciar la sincronización a petición desde el Portal de Azure. El historial de implementación está disponible en la hoja **Implementaciones** .
+3. Después de hello se puede iniciar sincronización de contenido de Hola de sincronización inicial de contenido a petición desde Hola portal de Azure. Historial de implementación está disponible con hello **implementaciones** hoja.
    
     ![Historial de implementaciones](./media/app-service-deploy-content-sync/onedrive_sync.png)
 

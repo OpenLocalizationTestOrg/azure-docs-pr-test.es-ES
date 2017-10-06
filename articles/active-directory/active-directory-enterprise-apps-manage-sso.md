@@ -1,6 +1,6 @@
 ---
-title: "Administración de inicio de sesión único para aplicaciones empresariales en Azure Active Directory | Microsoft Docs"
-description: "Aprenda a administrar el inicio de sesión único para aplicaciones empresariales con la versión preliminar de Azure Active Directory."
+title: "aaaSingle inicio de sesión de administración para aplicaciones empresariales en hello Azure Active Directory | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toomanage inicio de sesión único para aplicaciones empresariales mediante hello Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: asmalser
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
-ms.openlocfilehash: c975428550690254ba989935fe5110c5903e7102
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b0a8e622ab10517b7b69f786406b6e9b9f2e7eaa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Administración de inicio de sesión único para aplicaciones empresariales
 > [!div class="op_single_selector"]
@@ -26,72 +26,72 @@ ms.lasthandoff: 08/03/2017
 > * [Portal de Azure clásico](active-directory-sso-integrate-saas-apps.md)
 > 
 
-En este artículo se describe cómo utilizar [Azure Portal](https://portal.azure.com) para administrar la configuración de inicio de sesión único para aplicaciones empresariales. Las aplicaciones empresariales son aplicaciones que se implementan y se usan dentro de su organización. Este artículo se aplica especialmente a las aplicaciones agregadas desde la [Galería de aplicaciones de Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). 
+Este artículo se describe cómo hello toouse [portal de Azure](https://portal.azure.com) toomanage inicio de sesión en configuración de inicio único para aplicaciones empresariales. Las aplicaciones empresariales son aplicaciones que se implementan y se usan dentro de su organización. En este artículo se aplica especialmente tooapps que se han agregado desde hello [Galería de aplicaciones de Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). 
 
-## <a name="finding-your-apps-in-the-portal"></a>Búsqueda de aplicaciones en el portal
-Todas las aplicaciones empresariales configuradas para el inicio de sesión único se pueden ver y administrar en Azure Portal. Las aplicaciones pueden encontrarse en la sección **Más servicios** &gt; **Aplicaciones empresariales** del portal. 
+## <a name="finding-your-apps-in-hello-portal"></a>Buscar las aplicaciones de portal de Hola
+Todas las aplicaciones de empresa que se han configurado para el inicio de sesión único pueden ver y administrar en hello portal de Azure. las aplicaciones de Hello pueden encontrarse en hello **más servicios** &gt; **aplicaciones empresariales** sección del portal de Hola de. 
 
 ![Hoja Aplicaciones empresariales][1]
 
-Seleccione **Todas las aplicaciones** para ver una lista de todas las aplicaciones configuradas. Si selecciona una aplicación, se carga la hoja de recursos para esa aplicación, donde se pueden ver los informes de dicha aplicación y se pueden administrar diversas opciones de configuración.
+Seleccione **todas las aplicaciones** tooview una lista de todas las aplicaciones que se han configurado. Al seleccionar una aplicación carga la hoja de recursos de Hola para esa aplicación, donde se pueden ver informes para que la aplicación y se pueden administrar diversas opciones de configuración.
 
-Para administrar la configuración de inicio de sesión único, seleccione **Inicio de sesión único**.
+toomanage único inicio de sesión en configuración, seleccione **inicio de sesión único**.
 
 ![Hoja Recursos de aplicación][2]
 
 ## <a name="single-sign-on-modes"></a>Modos de inicio de sesión único
-La hoja **Inicio de sesión único** comienza con un menú **Modo**, que permite la configuración del modo de inicio de sesión único. Las opciones disponibles incluyen:
+Hola **inicio de sesión único** hoja comienza con un **modo** menú, lo que permite toobe de modo de inicio de sesión único de hello configurado. Hola las opciones disponibles incluyen:
 
-* **SAML-based sign on** (Inicio de sesión basado en SAML): esta opción está disponible si la aplicación admite el inicio de sesión único federado completo con Azure Active Directory mediante el protocolo SAML 2.0.
+* **Inicio de sesión basado en SAML en** -esta opción está disponible si admite la aplicación hello completa federado inicio de sesión único con Azure Active Directory con protocolo de hello SAML 2.0.
 * **Password-based sign on** (Inicio de sesión basado en contraseña): esta opción está disponible si Azure AD admite el rellenado de formularios de contraseña para esta aplicación.
-* **Inicio de sesión vinculado**: antes conocida como "Inicio de sesión único existente", esta opción permite a los administradores agregar un vínculo a esta aplicación en el Panel de acceso de Azure AD o el iniciador de aplicaciones de Office 365 del usuario.
+* **Vincula el inicio de sesión en** -anteriormente conocido como "Existing single sign-on", esta opción permite a los administradores tooplace una aplicación de toothis de vínculo en el iniciador de aplicaciones de Panel de acceso de Azure AD u Office 365 de los usuarios.
 
 Para más información acerca de estos modos, consulte la sección [¿Cómo funciona el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="saml-based-sign-on"></a>Inicio de sesión basado en SAML
-La opción **SAML-based sign on** (Inicio de sesión basado en SAML) muestra una hoja dividida en cuatro secciones:
+Hola **inicio de sesión basado en SAML en** opción muestra una tarjeta que se divide en cuatro secciones:
 
 ### <a name="domains-and-urls"></a>Dominios y direcciones URL
-Aquí es donde se agregan todos los detalles sobre las direcciones URL y el dominio de la aplicación a su directorio de Azure AD. Todas las entradas necesarias para hacer funciona la aplicación de inicio de sesión único se muestran directamente en la pantalla, mientras que todas las entradas opcionales se pueden ver mediante la selección de la casilla **Show advanced URL settings** (Mostrar configuración de URL avanzada). La lista completa de las entradas admitidas es la siguiente:
+Esto es que todos los detalles acerca de la aplicación hello dominio y las direcciones URL se agregan tooyour directorio de Azure AD. Todas las entradas necesarias toomake aplicación de trabajo de inicio de sesión único se muestran directamente en la pantalla de bienvenida, mientras que todas las entradas opcionales se pueden ver seleccionando hello **mostrar avanzadas de configuración de direcciones URL** casilla de verificación. Hola lista completa de entradas admitidos se incluyen:
 
-* **URL de inicio de sesión** : cuando el usuario va a iniciar sesión en esta aplicación. Si la aplicación está configurada para realizar el inicio de sesión único iniciado por el proveedor de servicios, cuando un usuario navega a esta dirección URL, el proveedor de servicios realiza la redirección necesaria a Azure AD para autenticar al usuario e iniciar sesión. Si este campo se rellena, Azure AD utilizará esta dirección URL para iniciar la aplicación desde el panel de acceso de Azure AD y Office 365. Si se omite este campo, Azure AD realiza un inicio de sesión iniciado por el proveedor de identidades cuando se inicie la aplicación de Office 365, el panel de acceso de Azure AD, o desde la dirección URL de inicio de sesión único de Azure AD.
-* **Identificador**: este URI debería identificar de forma exclusiva la aplicación para el inicio de sesión único que se está configurando. Este es el valor que Azure AD devuelve a la aplicación como el parámetro Audiencia del token SAML, y se espera que la aplicación lo valide. Este valor también aparece como el id. de entidad en los metadatos SAML proporcionados por la aplicación.
-* **URL de respuesta** : la dirección URL de respuesta es el lugar donde la aplicación espera recibir el token SAML. Esto también se conoce como dirección URL del Servicio de consumidor de aserciones (ACS). Después de especificar dichas direcciones, haga clic en Siguiente para pasar a la pantalla siguiente. Esta pantalla proporciona información sobre lo que es preciso configurar en la propia aplicación para que pueda aceptar un token SAML de Azure AD.
-* **Estado de la retransmisión**: el estado de retransmisión es un parámetro opcional que puede ayudar a indicar dónde redirigir al usuario una vez completada la autenticación de la aplicación. Por lo general, el valor suele ser una dirección URL válida en la aplicación; sin embargo, algunas aplicaciones usan este campo de forma diferente (consulte la documentación de inicio de sesión único de la aplicación para más información). La capacidad de establecer el estado de retransmisión es una característica nueva exclusiva para el nuevo Azure Portal.
+* **Dirección URL de inicio de sesión** : cuando el usuario de hello siga toothis toosign de aplicación. Si aplicación hello es servicio de tooperform configurado único iniciado por el proveedor de inicio de sesión, a continuación, cuando un usuario navega toothis URL, el proveedor de servicios de Hola Hola necesarios inicio de sesión y redirección tooAzure AD tooauthenticate Hola usuario en. Si este campo se rellena, Azure AD usará esta aplicación de hello toolaunch de dirección URL de hello Panel de acceso de Azure AD y Office 365. Si se omite este campo, Azure AD en su lugar, realiza el proveedor de identidades-sesión cuando aplicación hello se inicia desde Office 365, Hola el Panel de acceso de Azure AD, o de hello Azure AD único inicio de sesión iniciado por dirección URL.
+* **Identificador** -este URI debería identificar únicamente la aplicación hello para que solo inicio de sesión se está configurando. Se trata de valor de Hola que Azure AD envía tooapplication atrás como Hola parámetro audiencia del token SAML de Hola y aplicación hello toovalidate esperado lo. Este valor también aparece como Hola Id. de entidad en los metadatos SAML proporcionado por la aplicación hello.
+* **Dirección URL de respuesta** -URL de respuesta de hello es donde la aplicación hello espera token SAML de hello tooreceive. Esto también es una dirección URL de servicio de consumidor de aserción (ACS) de hello tooas que se hace referencia. Después de que se han introducido, haga clic en siguiente tooproceed toohello siguiente pantalla. Esta pantalla proporciona información sobre qué toobe necesidades configurarlo en hello aplicación lado tooenable tooaccept un token de SAML de Azure AD.
+* **Estado de la transmisión** -estado de la transmisión de hello es un parámetro opcional que puede ayudarle a indicar la aplicación hello donde tooredirect Hola usuario una vez completada la autenticación. Valor de hello suele ser una dirección URL válida en la aplicación hello, sin embargo, algunas aplicaciones utilizan este campo de forma diferente (vea el inicio de sesión único de la aplicación hello en la documentación para obtener más información). estado de la transmisión de Hello capacidad tooset hello es una característica nueva que sea único toohello nuevo portal de Azure.
 
 ### <a name="user-attributes"></a>Atributos de usuario
-Aquí es donde los administradores pueden ver y modificar los atributos que se envían en el token SAML que emite Azure AD a la aplicación cada vez que los usuarios inician sesión.
+Aquí es donde pueden ver los administradores y los atributos de Hola de edición que se envían en el token SAML de Hola que emite Azure AD toohello aplicación cada vez que los usuarios iniciar sesión en.
 
-El único atributo editable admitido es el atributo **Identificador de usuario**. El valor de este atributo es el campo de Azure AD que identifica de forma única a cada usuario dentro de la aplicación. Por ejemplo, si la aplicación se ha implementado mediante la "dirección de correo electrónico" como nombre de usuario y un identificador único, el valor se establecería en el campo "user.mail" de Azure AD.
+Hola solo admitido el atributo editable es hello **identificador de usuario** atributo. valor de Hola de este atributo es el campo de hello en Azure AD que identifica de forma única cada usuario dentro de la aplicación hello. Por ejemplo, si la aplicación hello se implementó usando "dirección de correo electrónico" hello como nombre de usuario de Hola y el identificador único, a continuación, el valor de Hola se establecería toohello "user.mail" campo en Azure AD.
 
 ### <a name="saml-signing-certificate"></a>Certificado de firma SAML
-En esta sección se muestran los detalles del certificado que Azure AD usa para firmar los tokens SAML que se emiten a la aplicación cada vez que el usuario se autentica. Permite la inspección de las propiedades del certificado actual, incluida la fecha de caducidad.
+En esta sección muestra los detalles de Hola de certificado de Hola que Azure AD usa tokens SAML de hello toosign que se emiten aplicación toohello que cada vez que lo utiliza Hola autentica. Permite que las propiedades de Hola de hello actual certificado toobe inspeccionado, incluyendo la fecha de expiración de Hola.
 
 ### <a name="application-configuration"></a>Configuración de aplicaciones
-La sección final proporciona la documentación y los controles necesarios para configurar la aplicación para que use Azure Active Directory como proveedor de identidades.
+Hola final sección proporciona documentación de Hola o controles necesarios tooconfigure Hola propia aplicación toouse Azure Active Directory como proveedor de identidades.
 
-El menú emergente **Configurar aplicación** proporciona nuevas instrucciones concisas e insertadas para configurar la aplicación. Esta es otra característica nueva y exclusiva en el nuevo Azure Portal.
+Hola **Configurar aplicación** menú emergente proporciona nuevas instrucciones concisas, incrustadas para configurar la aplicación hello. Se trata de otra nueva característica toohello único nuevo portal de Azure.
 
 > [!NOTE]
-> Para ver un ejemplo completo de documentación insertada, consulte la aplicación Salesforce.com. Continuamente se agrega documentación de otras aplicaciones.
+> Para obtener un ejemplo completo de documentación de embedded, consulte aplicación de Salesforce.com hello. Continuamente se agrega documentación de otras aplicaciones.
 > 
 > 
 
 ![Documentos insertados][3]
 
 ## <a name="password-based-sign-on"></a>Password-based sign on
-Si se admite para la aplicación, si se selecciona el modo SSO basado en contraseña y se selecciona **Guardar** , se configura instantáneamente para el inicio de sesión único basado en contraseña. Para más información sobre la implementación del inicio de sesión único basado en contraseña, consulte la sección [¿Cómo funciona el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Si se admite la aplicación hello, seleccionar Hola modo SSO basada en contraseña y seleccione **guardar** al instante lo configura toodo SSO basado en contraseña. Para más información sobre la implementación del inicio de sesión único basado en contraseña, consulte la sección [¿Cómo funciona el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ![Password-based sign on][4]
 
 ## <a name="linked-sign-on"></a>Linked sign on
-Si se admite para la aplicación, la selección del modo de inicio de sesión único vinculado permite especificar la dirección URL a la que desea que redirijan el Panel de acceso de Azure AD u Office 365 cuando los usuarios hacen clic en esta aplicación. Para más información sobre el inicio de sesión único vinculado, consulte la sección [¿Cómo funciona el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Si se admite la aplicación hello, seleccionar modo de SSO de hello vinculado permite tooenter Hola URL que desea Hola Panel de acceso de Azure AD u Office 365 tooredirect toowhen los usuarios hacer clic en esta aplicación. Para más información sobre el inicio de sesión único vinculado, consulte la sección [¿Cómo funciona el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ![Inicio de sesión vinculado][5]
 
 ##<a name="feedback"></a>Comentarios
 
-Esperamos que le guste usa la experiencia mejorada de Azure AD. Envíenos sus comentarios. Publique sus comentarios y sugerencias para la mejora en la sección **Portal de administración** de nuestro [foro de comentarios](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Nos interesa cómo crear innovaciones estupendas todos los días y usamos sus comentarios para dar forma y definir qué será lo próximo que crearemos.
+Esperamos que le gustaría usar Hola mejoras de la experiencia de Azure AD. Tenga procedentes de comentarios de Hola! Publique sus comentarios y sugerencias para la mejora en hello **Portal de administración de** sección de nuestro [foro de comentarios](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Esté emocionados acerca de cómo crear nuevos y estupendos todos los días y usar su tooshape de instrucciones y definir qué compilar después.
 
 [1]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.PNG

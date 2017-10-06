@@ -1,6 +1,6 @@
 ---
-title: Comandos de PowerShell basados en Azure Resource Manager para aplicaciones web de Azure | Microsoft Docs
-description: Aprenda a usar los nuevos comandos de PowerShell basados en Azure Resource Manager para administrar aplicaciones web de Azure.
+title: "comandos aaaAzure PowerShell basada en el Administrador de recursos para la aplicación Web de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse Hola toomanage de comandos de PowerShell basada en el Administrador de recursos de Azure nuevo las aplicaciones Web de Azure."
 services: app-service\web
 documentationcenter: 
 author: ahmedelnably
@@ -14,139 +14,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
-ms.openlocfilehash: 8d574f051a327ba0409e6f25a5886af673d3d5e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bbb821e89daa315280436e84e11316217bb644d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-azure-resource-manager-based-powershell-to-manage-azure-web-apps"></a>Uso de PowerShell basado en Azure Resource Manager para administrar aplicaciones web de Azure
+# <a name="using-azure-resource-manager-based-powershell-toomanage-azure-web-apps"></a>Uso de aplicaciones de Web de Azure PowerShell Azure Resource Manager-Based tooManage
 > [!div class="op_single_selector"]
 > * [CLI de Azure](app-service-web-app-azure-resource-manager-xplat-cli.md)
 > * [Azure PowerShell](app-service-web-app-azure-resource-manager-powershell.md)
 > 
 > 
 
-En la versión 1.0.0 de Microsoft Azure PowerShell se han agregado nuevos comandos que proporcionan al usuario la capacidad de utilizar comandos de PowerShell basados en Azure Resource Manager para administrar aplicaciones web.
+Con Microsoft Azure PowerShell versión 1.0.0 se han agregado nuevos comandos, que le proporcionan Hola usuario Hola capacidad toouse basado en el Administrador de recursos de Azure PowerShell comandos toomanage aplicaciones Web.
 
-Para obtener información acerca de cómo administrar grupos de recursos, consulte [Uso de Azure PowerShell con Azure Resource Manager](../powershell-azure-resource-manager.md). 
+toolearn acerca de cómo administrar grupos de recursos, consulte [con Azure PowerShell con el Administrador de recursos de Azure](../powershell-azure-resource-manager.md). 
 
-Para más información acerca de la lista completa de parámetros y opciones de los cmdlets de PowerShell, consulte la [referencia completa de los cmdlets de PowerShell basados en Azure Resource Manager de aplicaciones web](https://msdn.microsoft.com/library/mt619237.aspx)
+toolearn acerca de la lista completa de Hola de parámetros y las opciones de hello cmdlets de PowerShell, vea hello [completo referencia de Cmdlet basado en el Administrador de recursos de Azure de aplicación Web de Cmdlets de PowerShell](https://msdn.microsoft.com/library/mt619237.aspx)
 
 ## <a name="managing-app-service-plans"></a>Administración de planes del Servicio de aplicaciones
 ### <a name="create-an-app-service-plan"></a>Creación de un plan del Servicio de aplicaciones
-Para crear un plan de App Service, utilice el cmdlet **New-AzureRmAppServicePlan**.
+toocreate un plan de servicio de aplicaciones, usar hello **AzureRmAppServicePlan New** cmdlet.
 
-Estas son las descripciones de los distintos parámetros:
+Siguientes son las descripciones de parámetros diferentes hello:
 
-* **Name**: el nombre del plan del Servicio de aplicaciones.
+* **Nombre**: nombre del plan de servicio de aplicación Hola.
 * **Location**: ubicación del plan del servicio.
-* **ResourceGroupName**: grupo de recursos que incluye el plan del Servicio de aplicaciones recién creado.
-* **Tier**: el plan de tarifa deseado (el valor predeterminado es Gratis y las restantes opciones son Compartido, Básico, Estándar y Premium).
-* **WorkerSize**: el tamaño de los trabajos (el valor predeterminado es Pequeño si en el parámetro Tier se ha especificado el valor Básico, Estándar o Premium. Otras opciones son Mediano y Grande.)
-* **NumberofWorkers**: el número de trabajos en el plan del Servicio de aplicaciones (el valor predeterminado es 1). 
+* **ResourceGroupName**: grupo de recursos que incluye el plan de servicio de aplicación Hola recién creado.
+* **Nivel**: Hola deseado tarifa (valor predeterminado es gratuito, otras opciones son compartidos, Basic, Standard y Premium).
+* **WorkerSize**: Hola tamaño de trabajadores (el valor predeterminado es pequeña si se especificó el parámetro de nivel de hello como Basic, Standard o Premium. Otras opciones son Mediano y Grande.)
+* **NumberofWorkers**: Hola el número de trabajos en el plan de servicio de aplicación Hola (el valor predeterminado es 1). 
 
-Ejemplo para usar este cmdlet:
+En el ejemplo se toouse este cmdlet:
 
     New-AzureRmAppServicePlan -Name ContosoAppServicePlan -Location "South Central US" -ResourceGroupName ContosoAzureResourceGroup -Tier Premium -WorkerSize Large -NumberofWorkers 10
 
 ### <a name="create-an-app-service-plan-in-an-app-service-environment"></a>Creación de un plan del Servicio de aplicaciones en un entorno del Servicio de aplicaciones
-Para crear un plan de App Service en App Service Environment, use el mismo comando **New-AzureRmAppServicePlan** con parámetros adicionales para especificar el nombre del ASE y el nombre del grupo de recursos del ASE.
+toocreate planear de un servicio de aplicaciones en un entorno de servicio de aplicaciones, use Hola mismo comando **AzureRmAppServicePlan New** comando con el nombre de hello toospecify de parámetros adicionales del ASE y el nombre del grupo de recursos de ASE.
 
-Ejemplo para usar este cmdlet:
+En el ejemplo se toouse este cmdlet:
 
     New-AzureRmAppServicePlan -Name ContosoAppServicePlan -Location "South Central US" -ResourceGroupName ContosoAzureResourceGroup -AseName constosoASE -AseResourceGroupName contosoASERG -Tier Premium -WorkerSize Large -NumberofWorkers 10
 
-Para obtener más información acerca del entorno del Servicio de aplicaciones, consulte [Introducción al entorno del Servicio de aplicaciones](app-service-app-service-environment-intro.md)
+más información acerca del entorno de servicio de aplicaciones, verificación toolearn [Introducción tooApp entorno del servicio](app-service-app-service-environment-intro.md)
 
 ### <a name="list-existing-app-service-plans"></a>Enumeración de planes del Servicio de aplicaciones existentes
-Para enumerar los planes del Servicio de aplicaciones existentes, use el cmdlet **Get-AzureRmAppServicePlan** .
+usar planes de servicio de aplicación existente de toolist hello, **AzureRmAppServicePlan Get** cmdlet.
 
-Para enumerar todos los planes del Servicio de aplicaciones de su suscripción, use: 
+toolist todos los planes de servicio de aplicación en su suscripción, use: 
 
     Get-AzureRmAppServicePlan
 
-Para enumerar todos los planes del Servicio de aplicaciones de un grupo de recursos específico, use:
+toolist todos los planes de servicio de aplicaciones en un grupo de recursos específico, use:
 
     Get-AzureRmAppServicePlan -ResourceGroupname ContosoAzureResourceGroup
 
-Para obtener un plan del Servicio de aplicaciones específico, use:
+tooget un plan de servicio de aplicación específica, use:
 
     Get-AzureRmAppServicePlan -Name ContosoAppServicePlan
 
 
 ### <a name="configure-an-existing-app-service-plan"></a>Configuración de un plan del Servicio de aplicaciones existente
-Para cambiar la configuración de un plan del Servicio de aplicaciones existente, use el cmdlet **Set-AzureRmAppServicePlan** . Puede cambiar el nivel, el tamaño del trabajo y el número de trabajos 
+toochange Hola de un plan de servicio de aplicación existente, utilice hello **AzureRmAppServicePlan conjunto** cmdlet. Puede cambiar el nivel de hello, el tamaño de trabajo y el número de Hola de trabajadores 
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Tier Standard -WorkerSize Medium -NumberofWorkers 9
 
 #### <a name="scaling-an-app-service-plan"></a>Escalado de un plan del Servicio de aplicaciones
-Para escalar un plan del Servicio de aplicaciones existente, use:
+tooscale una existente aplicación Plan del servicio, use:
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -NumberofWorkers 9
 
-#### <a name="changing-the-worker-size-of-an-app-service-plan"></a>Cambio del tamaño de los trabajos de un plan del Servicio de aplicaciones
-Para cambiar el tamaño de los trabajos de un plan del Servicio de aplicaciones existente, use:
+#### <a name="changing-hello-worker-size-of-an-app-service-plan"></a>Cambiar el tamaño de trabajador de Hola de un Plan de servicio de aplicaciones
+tamaño de hello toochange de trabajadores de una existente aplicación servicio previsto, use:
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -WorkerSize Medium
 
-#### <a name="changing-the-tier-of-an-app-service-plan"></a>Cambio del nivel de un plan del Servicio de aplicaciones
-Para cambiar el nivel de un plan del Servicio de aplicaciones existente, use:
+#### <a name="changing-hello-tier-of-an-app-service-plan"></a>Hola Cambiar nivel de un Plan de servicio de aplicaciones
+nivel de hello toochange una existente aplicación de servicio del Plan de, use:
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Tier Standard
 
 ### <a name="delete-an-existing-app-service-plan"></a>Eliminación de un plan del Servicio de aplicaciones
-Para eliminar un plan de App Service existente, primero se deben mover o eliminar todas las aplicaciones web asignadas. A continuación, mediante el cmdlet **Remove-AzureRmAppServicePlan** puede eliminar el plan de App Service.
+toodelete un plan de servicio de aplicación existente, todas asignadas toobe de necesidad de aplicaciones web movido o eliminado en primer lugar. A continuación, usar hello **Remove-AzureRmAppServicePlan** cmdlet puede eliminar el plan de servicio de aplicaciones de Hola.
 
     Remove-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup
 
 ## <a name="managing-app-service-web-apps"></a>Administración de aplicaciones web del Servicio de aplicaciones
 ### <a name="create-a-web-app"></a>Creación de una aplicación web
-Para crear una aplicación web, use el cmdlet **New-AzureRmWebApp**.
+toocreate una aplicación web, utilice hello **AzureRmWebApp New** cmdlet.
 
-Estas son las descripciones de los distintos parámetros:
+Siguientes son las descripciones de parámetros diferentes hello:
 
-* **Name**: nombre de la aplicación web.
-* **AppServicePlan**: nombre del plan del servicio que se utiliza para hospedar la aplicación web.
-* **ResourceGroupName**: grupo de recursos que hospeda el plan del Servicio de aplicaciones.
-* **Location**: la ubicación de la aplicación web.
+* **Nombre**: nombre de la aplicación web de Hola.
+* **AppServicePlan**: nombre para el plan de servicio Hola utiliza toohost hello web app.
+* **ResourceGroupName**: grupo de recursos que hospeda el plan de servicio de aplicación Hola.
+* **Ubicación**: Hola ubicación de la aplicación web.
 
-Ejemplo para usar este cmdlet:
+En el ejemplo se toouse este cmdlet:
 
     New-AzureRmWebApp -Name ContosoWebApp -AppServicePlan ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Location "South Central US"
 
 ### <a name="create-a-web-app-in-an-app-service-environment"></a>Creación de una aplicación web en App Service Environment
-Creación de una aplicación web en App Service Environment (ASE). Use el mismo comando **New-AzureRmWebApp** con parámetros adicionales para especificar el nombre del ASE y el nombre del grupo de recursos al que pertenece el ASE.
+toocreate una aplicación web en un entorno de servicio de aplicación (ASE). Use Hola mismo **AzureRmWebApp New** comando con nombre de hello ASE toospecify de parámetros adicionales y el nombre de grupo de recursos de Hola Hola ASE pertenece a.
 
     New-AzureRmWebApp -Name ContosoWebApp -AppServicePlan ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Location "South Central US"  -ASEName ContosoASEName -ASEResourceGroupName ContosoASEResourceGroupName
 
-Para obtener más información acerca del entorno del Servicio de aplicaciones, consulte [Introducción al entorno del Servicio de aplicaciones](app-service-app-service-environment-intro.md)
+más información acerca del entorno de servicio de aplicaciones, verificación toolearn [Introducción tooApp entorno del servicio](app-service-app-service-environment-intro.md)
 
 ### <a name="delete-an-existing-web-app"></a>Eliminación de una aplicación web existente
-Para eliminar una aplicación web existente, puede utilizar el cmdlet **Remove-AzureRmWebApp** , pero debe especificar el nombre de la aplicación web y el nombre del grupo de recursos.
+una aplicación web existente que se puede usar hello toodelete **Remove-AzureRmWebApp** cmdlet, necesita nombre de hello toospecify de aplicación web de hello y nombre de grupo de recursos de Hola.
 
     Remove-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
 
 ### <a name="list-existing-web-apps"></a>Lista de aplicaciones web existentes
-Para enumerar las aplicaciones web existentes, use el cmdlet **Get-AzureRmWebApp** .
+aplicaciones web existentes a toolist hello, usar hello **AzureRmWebApp Get** cmdlet.
 
-Para enumerar todas las aplicaciones web de su suscripción, use:
+toolist todas las aplicaciones web en su suscripción, use:
 
     Get-AzureRmWebApp
 
-Para enumerar todas los aplicaciones web de un grupo de recursos específico, use:
+toolist todas las aplicaciones web en un grupo de recursos específico, use:
 
     Get-AzureRmWebApp -ResourceGroupname ContosoAzureResourceGroup
 
-Para obtener una aplicación web específica, use:
+tooget una aplicación web específica, use:
 
     Get-AzureRmWebApp -Name ContosoWebApp
 
 ### <a name="configure-an-existing-web-app"></a>Configuración de una aplicación web existente
-Para cambiar los valores y la configuración de una aplicación web existente, use el cmdlet **Set-AzureRmWebApp** . Para obtener la lista completa de parámetros, consulte el [vínculo de referencia de cmdlet](https://msdn.microsoft.com/library/mt652487.aspx)
+configuraciones de hello toochange y para una aplicación web existente, use hello **AzureRmWebApp conjunto** cmdlet. Para obtener una lista completa de parámetros, compruebe hello [vínculo de referencia de Cmdlet](https://msdn.microsoft.com/library/mt652487.aspx)
 
-Ejemplo (1): utilice este cmdlet para cambiar las cadenas de conexión
+Ejemplo (1): use este cmdlet toochange las cadenas de conexión
 
     $connectionstrings = @{ ContosoConn1 = @{ Type = “MySql”; Value = “MySqlConn”}; ContosoConn2 = @{ Type = “SQLAzure”; Value = “SQLAzureConn”} }
     Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -ConnectionStrings $connectionstrings
@@ -157,48 +157,48 @@ Ejemplo (2): Adición o cambio de la configuración de una aplicación
     Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -AppSettings $appsettings
 
 
-Ejemplo (3): establezca que la aplicación web se ejecute en modo de 64 bits
+Ejemplo (3): establecer toorun de aplicación web de hello en modo de 64 bits
 
     Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -Use32BitWorkerProcess $False
 
-### <a name="change-the-state-of-an-existing-web-app"></a>Cambio del estado de una aplicación web existente
+### <a name="change-hello-state-of-an-existing-web-app"></a>Cambio de estado de Hola de una aplicación Web existente
 #### <a name="restart-a-web-app"></a>Reinicio de una aplicación web
-Para reiniciar una aplicación web, debe especificar el nombre y grupo de recursos de la aplicación web.
+toorestart una aplicación web, debe especificar Hola nombre del grupo de recursos de aplicación web de hello.
 
     Restart-AzureRmWebapp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
 #### <a name="stop-a-web-app"></a>Detención de una aplicación web
-Para detener una aplicación web, debe especificar el nombre y grupo de recursos de la aplicación web.
+toostop una aplicación web, debe especificar Hola nombre del grupo de recursos de aplicación web de hello.
 
     Stop-AzureRmWebapp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
 #### <a name="start-a-web-app"></a>Inicio de una aplicación web
-Para iniciar una aplicación web, debe especificar el nombre y grupo de recursos de la aplicación web.
+toostart una aplicación web, debe especificar Hola nombre del grupo de recursos de aplicación web de hello.
 
     Start-AzureRmWebapp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
 ### <a name="manage-web-app-publishing-profiles"></a>Administración de perfiles de publicación de aplicaciones web
-Cada aplicación web tiene un perfil de publicación que se puede utilizar para publicar las aplicaciones y en dichos perfiles se pueden ejecutar varias operaciones.
+Cada aplicación web tiene un perfil de publicación que puede ser utilizado toopublish las aplicaciones, se pueden ejecutar varias operaciones en perfiles de publicación.
 
 #### <a name="get-publishing-profile"></a>Obtención de un perfil de publicación
-Para obtener el perfil de publicación de una aplicación web, use:
+tooget Hola de perfil para una aplicación web, el uso de publicación:
 
     Get-AzureRmWebAppPublishingProfile -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -OutputFile .\publishingprofile.txt
 
-Este comando reproduce el perfil de publicación en la línea de comandos y enviará el perfil de publicación a un archivo de texto.
+Este comando eco hello publicación de línea de comandos de toohello de perfil también Hola archivo de texto tooa de perfil de publicación de salida.
 
 #### <a name="reset-publishing-profile"></a>Restablecimiento de un perfil de publicación
-Para restablecer tanto la contraseña de publicación para FTP como la implementación web de una aplicación web, use:
+tooreset ambos Hola contraseña de publicación de FTP y web deploy para una aplicación web, use:
 
     Reset-AzureRmWebAppPublishingProfile -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
 ### <a name="manage-web-app-certificates"></a>Administración de certificados de aplicaciones web
-Para obtener información acerca de cómo administrar certificados de aplicaciones web, consulte [Enlace de certificados SSL con Servicio de aplicaciones de Azure mediante PowerShell](app-service-web-app-powershell-ssl-binding.md)
+toolearn acerca de cómo toomanage web certificados de aplicación, consulte [enlace de certificados SSL con PowerShell](app-service-web-app-powershell-ssl-binding.md)
 
 ### <a name="next-steps"></a>Pasos siguientes
-* Para obtener información sobre la compatibilidad de PowerShell con Azure Resource Manager, consulte [Uso de Azure PowerShell con Azure Resource Manager](../powershell-azure-resource-manager.md)
-* Para obtener información acerca de los entornos del Servicio de aplicaciones, consulte [Introducción al entorno del Servicio de aplicaciones](app-service-app-service-environment-intro.md)
-* Para obtener más información acerca de cómo administrar los certificados SSL del Servicio de aplicaciones mediante PowerShell, consulte [Enlace de certificados SSL con Servicio de aplicaciones de Azure mediante PowerShell](app-service-web-app-powershell-ssl-binding.md)
-* Para obtener más información acerca de la lista completa de los cmdlets de PowerShell basados en Azure Resource Manager para Aplicaciones web de Azure, consulte la [referencia de los cmdlets de PowerShell basados en Azure Resource Manager de aplicaciones web](https://msdn.microsoft.com/library/mt619237.aspx)
-* * Para más información acerca de cómo administrar App Service mediante una CLI, consulte [Using Azure Resource Manager-Based XPlat CLI for Azure Web App](app-service-web-app-azure-resource-manager-xplat-cli.md) (Uso de una CLI multiplataforma basada en Azure Resource Manager para aplicaciones web de Azure).
+* toolearn sobre la compatibilidad con el Administrador de recursos de Azure PowerShell, consulte [con Azure PowerShell con el Administrador de recursos de Azure.](../powershell-azure-resource-manager.md)
+* toolearn sobre los entornos de servicio de aplicación, consulte [Introducción tooApp entorno del servicio.](app-service-app-service-environment-intro.md)
+* toolearn acerca de cómo administrar certificados SSL de servicio de aplicación mediante PowerShell, consulte [enlace de certificados SSL mediante PowerShell.](app-service-web-app-powershell-ssl-binding.md)
+* toolearn acerca de la lista completa de Hola de cmdlets de PowerShell basada en el Administrador de recursos de Azure para las aplicaciones Web de Azure, consulte [referencia de cmdlets de Azure de Cmdlets de PowerShell del Administrador de recursos de Web aplicaciones de Azure.](https://msdn.microsoft.com/library/mt619237.aspx)
+* * toolearn acerca de cómo administrar el servicio de aplicaciones mediante CLI, consulte [Using Azure Resource Manager-Based XPlat CLI para la aplicación Web de Azure.](app-service-web-app-azure-resource-manager-xplat-cli.md)
 

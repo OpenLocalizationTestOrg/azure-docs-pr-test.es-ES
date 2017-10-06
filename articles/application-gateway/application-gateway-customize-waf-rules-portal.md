@@ -1,6 +1,6 @@
 ---
-title: "Personalización de reglas de firewall de aplicaciones web en Azure Application Gateway (Azure Portal) | Microsoft Docs"
-description: "En este artículo se proporciona información acerca de cómo personalizar reglas de firewall de aplicaciones web en Application Gateway con Azure Portal."
+title: "reglas de firewall de aplicación aaaCustomize web en la puerta de enlace de la aplicación de Azure: portal de Azure | Documentos de Microsoft"
+description: "Este artículo proporciona información sobre cómo las reglas firewall de aplicación web de toocustomize en la puerta de enlace de aplicaciones con hello portal de Azure."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -15,38 +15,38 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.openlocfilehash: cdcbadbc3765dfc583c26e1b1453863d421c9a72
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 36a999279e0370b9f803e12257856a56753b23a9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Personalización de reglas de firewall de aplicaciones web mediante Azure Portal
+# <a name="customize-web-application-firewall-rules-through-hello-azure-portal"></a>Personalizar reglas de firewall de aplicación web a través de hello portal de Azure
 
 > [!div class="op_single_selector"]
 > * [Portal de Azure](application-gateway-customize-waf-rules-portal.md)
 > * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
 > * [CLI de Azure 2.0](application-gateway-customize-waf-rules-cli.md)
 
-El firewall de aplicaciones web (WAF) de Azure Application Gateway proporciona protección a las aplicaciones web. Dicha protección la proporciona Open Web Application Security Project (OWASP) Core Rule Set (CRS). Algunas reglas pueden producir falsos positivos y bloquear el tráfico real. Por este motivo, Application Gateway ofrece la posibilidad de personalizar reglas y grupos de reglas. Para más información acerca de reglas y grupos de reglas específicos, consulte [Lista de reglas y grupos de reglas de CRS de firewall de aplicaciones web que se ofrecen](application-gateway-crs-rulegroups-rules.md).
+servidor de aplicaciones web de Hello puerta de enlace de aplicaciones de Azure (WAFS) proporciona protección para las aplicaciones web. Estas protecciones proceden de hello Abrir proyecto de seguridad aplicación de Web (OWASP) Core regla establecer (CR). Algunas reglas pueden producir falsos positivos y bloquear el tráfico real. Por esta razón, puerta de enlace de aplicaciones proporciona reglas y grupos de reglas de hello capacidad toocustomize. Para obtener más información sobre los grupos de reglas específicos de Hola y reglas, consulte [lista de reglas y grupos de reglas de web application firewall CR](application-gateway-crs-rulegroups-rules.md).
 
 >[!NOTE]
-> Si la puerta de enlace de aplicaciones no usa el nivel WAF, la opción para actualizar la puerta de enlace de aplicaciones al nivel WAF aparece en el panel derecho. 
+> Si la puerta de enlace de la aplicación no está usando capa de hello WAFS, Hola opción tooupgrade Hola puerta de enlace toohello WAFS capa de aplicación aparece en el panel derecho de Hola. 
 
 ![Habilitar WAF][fig1]
 
 ## <a name="view-rule-groups-and-rules"></a>Visualización de reglas y grupos de reglas
 
-**Para ver reglas y grupos de reglas**
-   1. Navegue hasta la puerta de enlace de aplicaciones y seleccione **Firewall de aplicaciones web**.  
+**las reglas y grupos de reglas de tooview**
+   1. Vaya toohello puerta de enlace de aplicaciones y, a continuación, seleccione **firewall de aplicación Web**.  
    2. Seleccione **Configuración de reglas avanzada**.  
-   Esta vista muestra una tabla en la página de todos los grupos de reglas proporcionados con el conjunto de reglas elegido. Todas las casillas de la regla están seleccionadas.
+   Esta vista muestra una tabla en la página de Hola de todos los grupos de reglas de hello proporcionada con hello elegido el conjunto de reglas. Se seleccionan todos de casillas de verificación de la regla de Hola.
 
 ![Configurar reglas deshabilitadas][1]
 
-## <a name="search-for-rules-to-disable"></a>Búsqueda de reglas para deshabilitar
+## <a name="search-for-rules-toodisable"></a>Buscar reglas toodisable
 
-La hoja **Web application firewall settings** (Configuración del firewall de aplicaciones web) ofrece la posibilidad de filtrar las reglas a través de una búsqueda de texto. El resultado muestra solo las reglas y los grupos de reglas que contienen el texto que se ha buscado.
+Hola **configuración de firewall de aplicación Web** hoja proporciona capacidad de hello toofilter reglas de Hola a través de una búsqueda de texto. resultado de Hello muestra solo los grupos de reglas de Hola y las reglas que contengan texto hello buscado.
 
 ![Buscar reglas][2]
 
@@ -54,17 +54,17 @@ La hoja **Web application firewall settings** (Configuración del firewall de ap
 
 Al deshabilitar reglas, se puede deshabilitar un grupo de reglas completo o reglas específicas de uno o más grupos de reglas. 
 
-**Para deshabilitar grupos de reglas o reglas concretas**
+**grupos de reglas de toodisable o reglas específicas**
 
-   1. Busque las reglas o los grupos de reglas que desea deshabilitar.
-   2. Desactive las casillas de las reglas que desea deshabilitar. 
+   1. Buscar reglas de Hola o grupos de reglas que desea toodisable.
+   2. Desactive casillas de verificación de Hola para hello las reglas que desea toodisable. 
    2. Seleccione **Guardar**. 
 
 ![Guardar cambios][3]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Después de configurar las reglas deshabilitadas, puede aprender a ver los registros de WAFS. Para más información, consulte [Diagnósticos de Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
+Después de configurar las reglas deshabilitadas, aprenderá cómo tooview los registros WAFS. Para más información, consulte [Diagnósticos de Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

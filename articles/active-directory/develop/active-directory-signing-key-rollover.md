@@ -1,6 +1,6 @@
 ---
-title: "Sustitución de claves de firma en Azure AD | Microsoft Docs"
-description: "En este artículo se analizan las prácticas recomendadas de sustitución de claves de firma de Azure Active Directory."
+title: "Sustitución de clave en Azure AD aaaSigning | Documentos de Microsoft"
+description: "Este artículo describe Hola prácticas recomendadas de sustitución de la clave de firma para Azure Active Directory"
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 228bb9058537af1e4eb38207c376c2eb86aee68c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ac6ade7f3ba2fbd22ea6d447aa5d07a2d6bdd451
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Sustitución de claves de firma de Azure Active Directory
-En este tema se describe lo que necesita saber de las claves públicas que se usan en Azure Active Directory (Azure AD) para firmar los tokens de seguridad. Es importante tener en cuenta que estas claves se sustituyen de forma periódica y, en caso de emergencia, podrían ser sustituidas inmediatamente. Todas las aplicaciones que usan Azure AD deben poder manejar mediante programación el proceso de sustitución de claves o establecer un proceso de sustitución manual periódico. Siga leyendo para comprender cómo funcionan las claves, cómo evaluar el impacto de la sustitución en la aplicación y cómo actualizar la aplicación o establecer un proceso de sustitución manual periódico para controlar la sustitución de claves si fuera necesario.
+Este tema describe lo que necesita tooknow acerca de las claves públicas Hola que se usan en tokens de seguridad de Azure Active Directory (Azure AD) toosign. Es importante toonote que estas claves se sustituyen de forma periódica y, en caso de emergencia, se deben sustituirse inmediatamente. Todas las aplicaciones que usan Azure AD deben ser capaz de tooprogrammatically identificador hello sustitución de claves proceso o establezca un proceso de sustitución manual periódica. Seguir leyendo toounderstand cómo funcionan las claves de hello, cómo tooassess Hola impacto de la aplicación de tooyour de sustitución incremental de hello y cómo tooupdate la aplicación o establecer una sustitución de claves de sustitución manual periódica proceso toohandle si es necesario.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Información general sobre las claves de firma de Azure AD
-Azure AD emplea una criptografía de clave pública basada en estándares del sector con el fin de establecer una relación de confianza entre ella y las aplicaciones que la utilizan. En términos prácticos, funciona de la siguiente manera: Azure AD usa una clave de firma que consta de un par de claves pública y privada. Cuando un usuario inicia sesión en una aplicación que utiliza Azure AD para realizar la autenticación, Azure AD crea un token de seguridad que contiene información sobre el usuario. Azure AD firma este token con su clave privada antes de enviarlo a la aplicación. Para comprobar que el token es válido y que realmente se originó en Azure AD, la aplicación debe validar la firma del token usando la clave pública expuesta por Azure AD que se encuentra en el [documento de detección de OpenID Connect](http://openid.net/specs/openid-connect-discovery-1_0.html) del inquilino o en el [documento de metadatos de federación](active-directory-federation-metadata.md) de SAML/WS-Fed.
+Azure AD usa criptografía de clave pública depende de la industria estándares tooestablish confianza entre él y hello las aplicaciones que lo usan. En la práctica, esto funciona en hello siguiente forma: Azure AD usa una clave de firma que consta de un par de claves público y privado. Cuando un usuario inicia sesión en la aplicación tooan que usa Azure AD para la autenticación, Azure AD crea un token de seguridad que contiene información acerca del usuario de Hola. Este token está firmado por Azure AD utilizando su clave privada antes de enviarlo aplicación toohello atrás. tooverify que Hola token es válido y realmente se ha originado en Azure AD, aplicación hello debe validar la firma del token de hello usando la clave pública de hello expuesta por Azure AD que se encuentra en el inquilino de hello [documento de detección de OpenID Connect](http://openid.net/specs/openid-connect-discovery-1_0.html) o SAML/WS-Fed [documento de metadatos de federación](active-directory-federation-metadata.md).
 
-Por motivos de seguridad, Azure AD firma la sustitución de claves de forma periódica y, en caso de emergencia, podrían sustituirse inmediatamente. Cualquier aplicación que se integra con Azure AD debe estar preparada para controlar un evento de sustitución de claves, con independencia de la frecuencia con que se produzca. Si no es así y la aplicación trata de utilizar una clave expirada para comprobar la firma de un token, se producirá un error en la solicitud de inicio de sesión.
+Por motivos de seguridad de Azure AD firma clave revierte de forma periódica y, en caso de hello de emergencia, se deben sustituirse inmediatamente. Cualquier aplicación que se integra con Azure AD debe estar preparado toohandle un evento de sustitución de claves independientemente de la frecuencia con la que ocurra. Si no es así, y la aplicación trata de toouse una firma de hello expiradas tooverify clave en un símbolo (token), se producirá un error en la solicitud de inicio de sesión Hola.
 
-Siempre hay más de una clave válida disponible en el documento de detección de OpenID Connect y en el de metadatos de federación. La aplicación debe estar preparada para utilizar cualquiera de las claves especificadas del documento, ya que una de ellas puede sustituirse pronto, otra puede ser su reemplazo, etc.
+Siempre hay más de una clave válida disponible en el documento de detección de OpenID Connect de Hola y documento de metadatos de federación de Hola. La aplicación debe estar preparada toouse cualquiera de las claves de hello especificada en el documento de hello, ya que se puede sustituir una clave pronto, otra puede ser su sustituta y así sucesivamente.
 
-## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Cómo evaluar si su aplicación se verá afectada y qué hacer al respecto
-La forma que tiene la aplicación de controlar la sustitución de claves depende de ciertas variables, como el tipo de aplicación o qué protocolo de identidad y biblioteca se han usado. Las secciones siguientes evalúan si los tipos más comunes de aplicaciones se ven afectados por la sustitución de claves y ofrecen orientación sobre cómo actualizar la aplicación para admitir la sustitución automática o actualizar manualmente la clave.
+## <a name="how-tooassess-if-your-application-will-be-affected-and-what-toodo-about-it"></a>¿Cómo tooassess si su aplicación se verá afectada y qué toodo sobre él
+Cómo la aplicación controla la sustitución de claves depende de variables como tipo de Hola de aplicación o qué protocolo de identidad y la biblioteca se usó. Hola las siguientes secciones se evaluación si los tipos más comunes de Hola de aplicaciones se ven afectados por la sustitución de claves de Hola y ofrecen orientación sobre cómo tooupdate Hola sustitución automática de aplicación toosupport o actualizar manualmente la clave de Hola.
 
 * [Aplicaciones de cliente nativas que acceden a recursos](#nativeclient)
 * [Aplicaciones y API web que acceden a recursos](#webclient)
@@ -45,30 +45,30 @@ La forma que tiene la aplicación de controlar la sustitución de claves depende
 * [API web de protección de recursos y creadas con Visual Studio 2013](#vs2013_webapi)
 * [Aplicaciones web de protección de recursos y creadas con Visual Studio 2012](#vs2012)
 * [Aplicaciones web de protección de recursos y creadas con Visual Studio 2010, 2008 o mediante Windows Identity Foundation](#vs2010)
-* [Aplicaciones y API web de protección de recursos que usan cualquier otra biblioteca o que implementan manualmente cualquiera de los protocolos admitidos](#other)
+* [Aplicaciones Web / API de protección de los recursos cualquiera otras bibliotecas o implementar manualmente cualquiera de hello admite el uso de protocolos](#other)
 
 Esta guía **no** es aplicable para:
 
-* Las aplicaciones agregadas desde la galería de aplicaciones de Azure AD (incluidas las personalizadas) disponen de instrucciones independientes para las claves de firma. [Más información.](../active-directory-sso-certs.md)
-* Las aplicaciones locales publicadas a través del proxy de la aplicación no tienen que preocuparse acerca de las claves de firma.
+* Las aplicaciones agregadas desde la Galería de aplicaciones de Azure AD (incluyendo personalizado) tienen instrucciones independientes con lo que respecta toosigning claves. [Más información.](../active-directory-sso-certs.md)
+* Las aplicaciones publicadas a través de proxy de aplicación no tienen tooworry sobre claves de firma en local.
 
 ### <a name="nativeclient"></a>Aplicaciones de cliente nativas que acceden a recursos
-Las aplicaciones que solo acceden a los recursos (es decir, Microsoft Graph, KeyVault, API de Outlook y otras API de Microsoft) únicamente obtienen por lo general un token y lo pasan al propietario del recurso. Como no protegen ningún recurso, no inspeccionan el token y, por tanto, no tienen que asegurar de que se firmó correctamente.
+Las aplicaciones que solo acceden a los recursos (es decir, Microsoft Graph, KeyVault, API de Outlook y otras APIs Microsoft) generalmente solo obtienen un token y pasan a toohello propietario del recurso. Dado que no están protegiendo todos los recursos, se inspecciona el token de hello y, por tanto, no es necesario tooensure que está firmado correctamente.
 
-Las aplicaciones de cliente nativo, ya sean de escritorio o móviles, entran en esta categoría y, por tanto, no se verán afectadas por la sustitución.
+Si escritorio o móvil, las aplicaciones cliente nativas, entran en esta categoría y, por tanto, no se ven afectadas por la sustitución de Hola.
 
 ### <a name="webclient"></a>Aplicaciones y API web que acceden a recursos
-Las aplicaciones que solo acceden a los recursos (es decir, Microsoft Graph, KeyVault, API de Outlook y otras API de Microsoft) únicamente obtienen por lo general un token y lo pasan al propietario del recurso. Como no protegen ningún recurso, no inspeccionan el token y, por tanto, no tienen que asegurar de que se firmó correctamente.
+Las aplicaciones que solo acceden a los recursos (es decir, Microsoft Graph, KeyVault, API de Outlook y otras APIs Microsoft) generalmente solo obtienen un token y pasan a toohello propietario del recurso. Dado que no están protegiendo todos los recursos, se inspecciona el token de hello y, por tanto, no es necesario tooensure que está firmado correctamente.
 
-Las aplicaciones web y las API web que usan el flujo solo de aplicación (credenciales del cliente o el certificado de cliente), entran en esta categoría y, por tanto, no se verán afectadas por la sustitución.
+Las aplicaciones Web y las API que están usando el flujo de hello solo de aplicación web (las credenciales del cliente / certificado de cliente), entran en esta categoría y, por tanto, no se ven afectadas por la sustitución de Hola.
 
 ### <a name="appservices"></a>Aplicaciones y API web que protegen recursos y creadas mediante Servicios de aplicaciones de Azure
-La funcionalidad de autenticación o autorización (EasyAuth) de Servicios de aplicaciones de Azure ya cuenta con la lógica necesaria para controlar automáticamente la sustitución de claves.
+Autenticación de Azure Servicios de aplicaciones / funcionalidad de autorización (EasyAuth) ya tiene la sustitución de clave toohandle Hola lógica necesaria automáticamente.
 
 ### <a name="owin"></a>Aplicaciones y API web que protegen recursos mediante middleware .NET OWIN OpenID Connect, WS-Fed o WindowsAzureActiveDirectoryBearerAuthentication
-Si la aplicación está utilizando el middleware .NET OWIN OpenID Connect, WS-Fed o WindowsAzureActiveDirectoryBearerAuthentication, ya tiene la lógica necesaria para controlar automáticamente la sustitución de clave.
+Si la aplicación está utilizando Hola .NET OWIN OpenID Connect, WS-Fed o WindowsAzureActiveDirectoryBearerAuthentication middleware, ya tiene la sustitución de clave toohandle Hola lógica necesaria automáticamente.
 
-Puede confirmar que la aplicación utiliza cualquiera de estos, busque cualquiera de los siguientes fragmentos de código en la aplicación Startup.cs o Startup.Auth.cs
+Puede confirmar que la aplicación está utilizando cualquiera de estos métodos, debe buscar cualquiera de los siguientes fragmentos de código de la aplicación Startup.cs o Startup.Auth.cs de Hola
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -93,9 +93,9 @@ app.UseWsFederationAuthentication(
 ```
 
 ### <a name="owincore"></a>Aplicaciones y API web que protegen recursos mediante el middleware .NET Core OpenID Connect o JwtBearerAuthentication
-Si la aplicación usa el middleware .NET Core OWIN OpenID Connect o JwtBearerAuthentication, ya tiene la lógica necesaria para controlar automáticamente la sustitución de claves.
+Si la aplicación utiliza .NET Core OWIN OpenID Connect de Hola o JwtBearerAuthentication middleware, ya tiene la sustitución de clave toohandle Hola lógica necesaria automáticamente.
 
-Puede confirmar que la aplicación utiliza cualquiera de estos, busque cualquiera de los siguientes fragmentos de código en la aplicación Startup.cs o Startup.Auth.cs
+Puede confirmar que la aplicación está utilizando cualquiera de estos métodos, debe buscar cualquiera de los siguientes fragmentos de código de la aplicación Startup.cs o Startup.Auth.cs de Hola
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -113,9 +113,9 @@ app.UseJwtBearerAuthentication(
 ```
 
 ### <a name="passport"></a>Aplicaciones y API web que protegen recursos mediante el módulo Node.js passport-azure-ad
-Si la aplicación está utilizando el módulo Node.js passport-ad, ya tiene la lógica necesaria para controlar automáticamente la sustitución de clave.
+Si la aplicación está utilizando el módulo de passport ad Node.js hello, ya tiene la sustitución de clave toohandle Hola lógica necesaria automáticamente.
 
-Puede confirmar su aplicación passport-ad si busca el siguiente fragmento en el archivo app.js de la aplicación
+Puede confirmar que su aplicación passport-ad mediante la búsqueda de hello siguiente fragmento de código en app.js la aplicación
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -126,31 +126,31 @@ passport.use(new OIDCStrategy({
 ```
 
 ### <a name="vs2015"></a>Aplicaciones y API web de protección de recursos y creadas con Visual Studio 2015 o Visual Studio 2017
-Si la aplicación se compiló mediante una plantilla de aplicación web en Visual Studio 2015 o Visual Studio 2017 y seleccionó **Cuentas profesionales o educativas** en el menú **Cambiar autenticación**, ya tiene la lógica necesaria para controlar automáticamente la sustitución de clave. Esta lógica, inserta en el middleware OWIN OpenID Connect, recupera y almacena en caché las claves del documento de detección OpenID Connect y las actualiza periódicamente.
+Si la aplicación se compiló mediante una plantilla de aplicación web en Visual Studio 2015 o Visual Studio de 2017 y seleccionó **cuentas de trabajo y educativa** de hello **Cambiar autenticación** menú, que ya se tiene automáticamente la sustitución de clave toohandle Hola lógica necesaria. Esta lógica, incrustada en middleware OWIN OpenID Connect hello, recupera y almacena en caché las claves de Hola de documento de detección de OpenID Connect de Hola y los actualiza periódicamente.
 
-Si ha agregado manualmente la autenticación a la solución, la aplicación no tendrá la lógica necesaria para la sustitución de claves. Tendrá que escribirla usted mismo o seguir los pasos que aparecen en [Aplicaciones y API web de protección de recursos que usan cualquier otra biblioteca o que implementan manualmente cualquiera de los protocolos admitidos](#other).
+Si agrega manualmente la solución de tooyour de autenticación, la aplicación podría no tener lógica de sustitución de claves necesaria Hola. Necesitará toowrite usted mismo u Hola siga los pasos de [aplicaciones Web API con cualquier otra biblioteca o implementar manualmente cualquiera de hello admite protocolos.](#other).
 
 ### <a name="vs2013"></a>Aplicaciones Web de protección de recursos y creadas con Visual Studio 2013
-Si la aplicación se compiló mediante una plantilla de aplicación web en Visual Studio 2013 y seleccionó **Cuentas profesionales** en el menú **Cambiar autenticación**, ya tiene la lógica necesaria para controlar automáticamente la sustitución de claves. Esta lógica almacena la información de la clave de firma y el identificador único de la organización en dos tablas de base de datos asociadas al proyecto. Puede encontrar la cadena de conexión de la base de datos en el archivo Web.config del proyecto.
+Si la aplicación se compiló mediante una plantilla de aplicación web en Visual Studio 2013 y seleccionó **cuentas organizativas** de hello **Cambiar autenticación** menú, ya tiene Hola necesarios lógica toohandle sustitución de clave automáticamente. Esta lógica almacena hello firma información clave en dos tablas de base de datos asociados con el proyecto de Hola e identificador único de su organización. Puede encontrar la cadena de conexión de Hola para base de datos de Hola en el archivo Web.config del proyecto de Hola.
 
-Si ha agregado manualmente la autenticación a la solución, la aplicación no tendrá la lógica necesaria para la sustitución de claves. Tendrá que escribirla usted mismo o seguir los pasos que aparecen en [Aplicaciones y API web de protección de recursos que usan cualquier otra biblioteca o que implementan manualmente cualquiera de los protocolos admitidos](#other).
+Si agrega manualmente la solución de tooyour de autenticación, la aplicación podría no tener lógica de sustitución de claves necesaria Hola. Necesitará toowrite usted mismo u Hola siga los pasos de [aplicaciones Web API con cualquier otra biblioteca o implementar manualmente cualquiera de hello admite protocolos.](#other).
 
-Los siguientes pasos lo ayudarán a comprobar que la lógica funcione correctamente en la aplicación.
+Hola pasos le ayudará a comprobar que Hola lógica funciona correctamente en la aplicación.
 
-1. En Visual Studio 2013, abra la solución y haga clic en la pestaña **Explorador de servidores** de la ventana derecha.
-2. Expanda **Conexiones de datos**, **DefaultConnection** y **Tablas**. Busque la tabla **IssuingAuthorityKeys**, haga clic con el botón derecho en ella y, después, con el botón izquierdo, en **Mostrar datos de tabla**.
-3. En la tabla **IssuingAuthorityKeys** habrá al menos una fila, que corresponde al valor de la huella digital de la clave. Elimine las filas de la tabla.
-4. Haga clic con el botón derecho en la tabla **Inquilinos** y, después, con el botón izquierdo, en **Mostrar datos de tabla**.
-5. En la tabla **Inquilinos** habrá al menos una fila, que corresponde a un identificador único del inquilino de directorio. Elimine las filas de la tabla. Si no elimina las filas de las tablas **Inquilinos** e **IssuingAuthorityKeys**, se producirá un error en el entorno de tiempo de ejecución.
-6. Compile y ejecute la aplicación. Una vez que haya iniciado sesión en la cuenta, podrá detener la aplicación.
-7. Vuelva a la pestaña **Explorador de servidores** y examine los valores de las tablas **IssuingAuthorityKeys** e **Inquilinos**. Observará que se han vuelto a rellenar automáticamente con la información correspondiente del documento de metadatos de federación.
+1. En Visual Studio 2013, abra la solución de hello y, a continuación, haga clic en hello **Explorador de servidores** ficha en la ventana derecha Hola.
+2. Expanda **Conexiones de datos**, **DefaultConnection** y **Tablas**. Busque hello **IssuingAuthorityKeys** de tabla, haga clic en él y, a continuación, haga clic en **mostrar datos de tabla**.
+3. Hola **IssuingAuthorityKeys** tabla, habrá al menos una fila, que se corresponde el valor de huella digital de toohello para la clave de Hola. Elimine las filas de tabla de Hola.
+4. Menú contextual hello **inquilinos** de tabla y, a continuación, haga clic en **mostrar datos de tabla**.
+5. Hola **inquilinos** tabla, habrá al menos una fila, que se corresponde el identificador del inquilino de directorio único tooa. Elimine las filas de tabla de Hola. Si no elimina las filas de hello en ambos hello **inquilinos** tabla y **IssuingAuthorityKeys** tabla, obtendrá un error en tiempo de ejecución.
+6. Compile y ejecute la aplicación hello. Una vez haya iniciado en tooyour cuenta, puede detener la aplicación hello.
+7. Devolver toohello **Explorador de servidores** y examine los valores de hello en hello **IssuingAuthorityKeys** y **inquilinos** tabla. Observará que ha vuelto a llenar automáticamente con información adecuada de Hola de documento de metadatos de federación de Hola.
 
 ### <a name="vs2013"></a>API web de protección de recursos y creadas con Visual Studio 2013
-Si creó una aplicación API web en Visual Studio 2013 con la plantilla de API web y, después, seleccionó **Cuentas profesionales** en el menú **Cambiar autenticación**, la aplicación ya tiene la lógica necesaria.
+Si crea una aplicación API web en Visual Studio 2013 mediante la plantilla de la API Web de hello y, a continuación, selecciona **cuentas organizativas** de hello **Cambiar autenticación** menú, ya haya Hola lógica necesaria en la aplicación.
 
-Si configura manualmente la autenticación, siga estas instrucciones para aprender a configurar la API web con el fin de actualizar automáticamente la información de claves.
+Si ha configurado manualmente la autenticación, siga instrucciones hello toolearn cómo tooconfigure su tooautomatically API Web actualizar su información de clave.
 
-El fragmento de código siguiente muestra cómo obtener las claves más recientes del documento de metadatos de federación y utilizar el [Controlador de token web de JSON](https://msdn.microsoft.com/library/dn205065.aspx) para validar el token. En el fragmento de código se da por hecho que va a utilizar su propio mecanismo de almacenamiento en caché para conservar la clave con el fin de validar los tokens futuros de Azure AD, ya sea en una base de datos, un archivo de configuración o en otro lugar.
+Hello fragmento de código siguiente muestra cómo tooget Hola claves más recientes de documento de metadatos de federación de hello y, a continuación, usar hello [controlador de Token JWT](https://msdn.microsoft.com/library/dn205065.aspx) símbolo (token) de toovalidate Hola. fragmento de código de Hello se supone que va a usar sus propio mecanismo para conservar Hola clave toovalidate futuras el almacenamiento en caché los tokens de Azure AD, ya sea en una base de datos, archivo de configuración o en otro lugar.
 
 ```
 using System;
@@ -172,7 +172,7 @@ namespace JWTValidation
     {
         private string MetadataAddress = "[Your Federation Metadata document address goes here]";
 
-        // Validates the JWT Token that's part of the Authorization header in an HTTP request.
+        // Validates hello JWT Token that's part of hello Authorization header in an HTTP request.
         public void ValidateJwtToken(string token)
         {
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler()
@@ -183,17 +183,17 @@ namespace JWTValidation
 
             TokenValidationParameters validationParams = new TokenValidationParameters()
             {
-                AllowedAudience = "[Your App ID URI goes here, as registered in the Azure Classic Portal]",
-                ValidIssuer = "[The issuer for the token goes here, such as https://sts.windows.net/68b98905-130e-4d7c-b6e1-a158a9ed8449/]",
+                AllowedAudience = "[Your App ID URI goes here, as registered in hello Azure Classic Portal]",
+                ValidIssuer = "[hello issuer for hello token goes here, such as https://sts.windows.net/68b98905-130e-4d7c-b6e1-a158a9ed8449/]",
                 SigningTokens = GetSigningCertificates(MetadataAddress)
 
-                // Cache the signing tokens by your desired mechanism
+                // Cache hello signing tokens by your desired mechanism
             };
 
             Thread.CurrentPrincipal = tokenHandler.ValidateToken(token, validationParams);
         }
 
-        // Returns a list of certificates from the specified metadata document.
+        // Returns a list of certificates from hello specified metadata document.
         public List<X509SecurityToken> GetSigningCertificates(string metadataAddress)
         {
             List<X509SecurityToken> tokens = new List<X509SecurityToken>();
@@ -226,7 +226,7 @@ namespace JWTValidation
                     }
                     else
                     {
-                        throw new InvalidOperationException("There is no RoleDescriptor of type SecurityTokenServiceType in the metadata");
+                        throw new InvalidOperationException("There is no RoleDescriptor of type SecurityTokenServiceType in hello metadata");
                     }
                 }
                 else
@@ -241,17 +241,17 @@ namespace JWTValidation
 ```
 
 ### <a name="vs2012"></a>Aplicaciones web de protección de recursos y creadas con Visual Studio 2012
-Si la aplicación se compiló en Visual Studio 2012, probablemente ha utilizado la herramienta de identidad y acceso para configurar la aplicación. También es probable que esté utilizando el [registro de nombres de emisor de validación (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). El VINR se encarga de mantener la información sobre los proveedores de identidad de confianza (Azure AD) y las claves utilizadas para validar los tokens que emiten. El VINR también facilita la tarea de actualizar automáticamente la información de claves almacenada en un archivo Web.config descargando el documento de metadatos de federación más reciente asociado a su directorio, comprobando si la configuración está actualizada con respecto al último documento y actualizando la aplicación para usar la nueva clave según sea necesario.
+Si la aplicación se compiló en Visual Studio 2012, probablemente ha utilizado hello identidad y tooconfigure de la herramienta de acceso a la aplicación. También es probable que esté utilizando hello [del registro de nombre de emisor validación (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). Hola VINR es responsable de mantener la información sobre proveedores de identidades confiables (Azure AD) y las claves de hello utilizan tokens toovalidate que han emitido. Hola VINR también facilita la información de claves tooautomatically fácil actualización Hola almacenada en un archivo Web.config descargando Hola último federación documento de metadatos asociada al directorio, comprobando si configuración de hello no está actualizada con hello más reciente documento y actualización hello toouse Hola nueva clave de aplicación según sea necesario.
 
-Si ha creado la aplicación utilizando cualquiera de los ejemplos de código o la documentación de tutorial que proporciona Microsoft, la lógica de sustitución de claves ya estará incluida en el proyecto. Observará que el código siguiente ya existe en el proyecto. Si la aplicación aún no tiene esta lógica, siga estos pasos para agregarla y comprobar que funciona correctamente.
+Si ha creado su aplicación mediante cualquiera de los ejemplos de código de hello o documentación de tutoriales proporcionados por Microsoft, la lógica de sustitución de claves de hello ya está incluido en el proyecto. Observará que código de hello siguiente ya existe en el proyecto. Si la aplicación aún no tiene esta lógica, siga los pasos hello tooadd y tooverify que funciona correctamente.
 
-1. En **Explorador de soluciones**, agregue una referencia al ensamblado **System.IdentityModel** del proyecto correspondiente.
-2. Abra el archivo **Global.asax.cs** y agregue lo siguiente utilizando directivas:
+1. En **el Explorador de soluciones**, agregar una referencia toohello **System.IdentityModel** ensamblado de proyecto adecuada de Hola.
+2. Abra hello **Global.asax.cs** de archivos y agregue Hola siguientes directivas using:
    ```
    using System.Configuration;
    using System.IdentityModel.Tokens;
    ```
-3. Agregue el método siguiente al archivo **Global.asax.cs** :
+3. Agregar Hola siguiendo el método toohello **Global.asax.cs** archivo:
    ```
    protected void RefreshValidationSettings()
    {
@@ -261,7 +261,7 @@ Si ha creado la aplicación utilizando cualquiera de los ejemplos de código o l
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. Invoque el método **RefreshValidationSettings()** en el método **Application_Start()** de **Global.asax.cs**, tal y como se muestra:
+4. Invocar hello **RefreshValidationSettings()** método Hola **Application_Start ()** método **Global.asax.cs** tal como se muestra:
    ```
    protected void Application_Start()
    {
@@ -271,11 +271,11 @@ Si ha creado la aplicación utilizando cualquiera de los ejemplos de código o l
    }
    ```
 
-Una vez que haya seguido estos pasos, el archivo Web.config de la aplicación se actualizará con la información más reciente del documento de metadatos de federación, incluidas las últimas claves. Esta actualización se producirá cada vez que recicle el grupo de aplicaciones de IIS; de forma predeterminada, esta acción se realizará cada 29 horas.
+Una vez que haya seguido estos pasos, se actualizará con la información más reciente de Hola de documento de metadatos de federación Hola, incluidas las claves más recientes de Hola Web.config de su aplicación. Esta actualización se producirá cada vez que se recicla el grupo de aplicaciones en IIS; de forma predeterminada IIS se establece toorecycle aplicaciones cada 29 horas.
 
-Siga los pasos que figuran a continuación para comprobar que la lógica de sustitución de claves funciona correctamente.
+Siga los pasos de hello debajo tooverify que funciona la lógica de sustitución de claves de Hola.
 
-1. Una vez que haya comprobado que la aplicación está utilizando el código anterior, abra el archivo **Web.config** y desplácese al bloque **<issuerNameRegistry>**; busque expresamente las siguientes líneas:
+1. Después de comprobar que la aplicación está usando código de hello anteriormente, abra hello **Web.config** de archivos y desplácese toohello  **<issuerNameRegistry>**  bloque, buscando específicamente Hola después algunas líneas:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -283,31 +283,31 @@ Siga los pasos que figuran a continuación para comprobar que la lógica de sust
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. En la tabla **<add thumbprint=””>** , cambie el valor de la huella digital reemplazando cualquier carácter por otro diferente. Guarde el archivo **Web.config** .
-3. Compile la aplicación y, después, ejecútela. Si puede completar el proceso de inicio de sesión, la aplicación actualizará correctamente la clave descargando la información necesaria del documento de metadatos de federación de su directorio. Si tiene problemas para iniciar sesión, asegúrese de que los cambios en la aplicación sean correctos; para ello, consulte el tema [Adding Sign-On to Your Web Application Using Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) (Incorporación del inicio de sesión único en aplicaciones web mediante Azure AD), o bien descargue e inspeccione el siguiente código de ejemplo: [Multi-Tenant Cloud Application for Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b) (Aplicación multiinquilino en la nube para Azure Active Directory).
+2. Hola  **<add thumbprint=””>**  configuración, cambie el valor de huella digital de hello reemplazando algún carácter por otra diferente. Guardar hello **Web.config** archivo.
+3. Compilar la aplicación hello y, a continuación, ejecútelo. Si puede completar el proceso de inicio de sesión de hello, la aplicación actualiza correctamente clave Hola descargando información de hello necesario de documento de metadatos de federación de su directorio. Si tiene problemas para iniciar sesión, asegúrese de hello cambios en la aplicación son correctos leyendo hello [tooYour agregar inicio de sesión Web aplicaciones con Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) tema, o bien descargarlos e inspeccionando el siguiente ejemplo de código de hello: [ Aplicación de nube de varios inquilinos de Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Aplicaciones web de protección de recursos y creadas con Visual Studio 2008 o 2010 y Windows Identity Foundation (WIF) v1.0 para .NET 3.5
-Si ha compilado una aplicación en la versión 1.0 de WIF, no habrá ningún mecanismo para actualizar automáticamente la configuración de la aplicación con el fin de usar una nueva clave.
+Si ha creado una aplicación en WIF v1.0, no hay ninguna actualización de tooautomatically mecanismo toouse de configuración de la aplicación una nueva clave.
 
-* *manera más sencilla* es usar las herramientas de FedUtil incluidas en el SDK de WIF, que pueden recuperar el documento de metadatos más reciente y actualizar la configuración.
-* Actualice la aplicación a .NET 4.5, que incluye la versión más reciente de WIF ubicada en el espacio de nombres del sistema. Después, podrá utilizar el [registro de nombres de emisor de validación (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) para realizar las actualizaciones automáticas de la configuración de la aplicación.
-* Realice una sustitución manual de acuerdo con las instrucciones al final de este documento de orientación.
+* *La manera más fácil* usar el utillaje de FedUtil Hola incluido en hello WIF SDK, que puede recuperar el último documento de metadatos de Hola y actualizar la configuración.
+* Actualice su too.NET aplicación 4.5, que incluye la versión más reciente de Hola de WIF ubicada en el espacio de nombres de sistema de Hola. A continuación, puede usar hello [del registro de nombre de emisor validación (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) tooperform actualizaciones automáticas de configuración de la aplicación hello.
+* Realizar una sustitución manual según las instrucciones de hello final Hola de este documento de instrucciones.
 
-Instrucciones para usar FedUtil para actualizar la configuración:
+Instrucciones toouse Hola FedUtil tooupdate su configuración:
 
-1. Compruebe que tiene instalado el SDK de la versión 1.0 de WIF en la máquina de desarrollo de Visual Studio 2008 o 2010. También puede [descargarlo desde aquí](https://www.microsoft.com/en-us/download/details.aspx?id=4451) si aún no lo ha instalado.
-2. En Visual Studio, abra la solución, haga clic con el botón derecho en el proyecto correspondiente y seleccione **Update federation metadata**(Actualizar metadatos de federación). Si esta opción no está disponible, significa que no se ha instalado FedUtil o el SDK de la versión 1.0 de WIF.
-3. En el símbolo del sistema, seleccione **Actualizar** para iniciar la actualización de los metadatos de federación. Si tiene acceso al entorno de servidor donde está hospedada la aplicación, puede utilizar el [Programador de actualización automática de metadatos](https://msdn.microsoft.com/library/ee517272.aspx)de FedUtil.
-4. Haga clic en **Finalizar** para completar el proceso de actualización.
+1. Compruebe que dispone de hello WIF v1.0 SDK instalado en el equipo de desarrollo para Visual Studio 2008 o 2010. También puede [descargarlo desde aquí](https://www.microsoft.com/en-us/download/details.aspx?id=4451) si aún no lo ha instalado.
+2. En Visual Studio, abra la solución hello y, a continuación, haga clic en proyecto aplicable de Hola y seleccione **actualizar metadatos de federación**. Si esta opción no está disponible, no se instaló FedUtil y/o Hola WIF v1.0 SDK.
+3. En el símbolo del sistema de hello, seleccione **actualización** toobegin actualizar los metadatos de federación. Si tiene un entorno de servidor de acceso a toohello donde se hospeda la aplicación hello, también puede usar FedUtil [programador de actualizaciones de metadatos automática](https://msdn.microsoft.com/library/ee517272.aspx).
+4. Haga clic en **finalizar** proceso de actualización de toocomplete Hola.
 
-### <a name="other"></a>Aplicaciones y API web de protección de recursos que usan cualquier otra biblioteca o que implementan manualmente cualquiera de los protocolos admitidos
-Si está utilizando otra biblioteca o implementa manualmente cualquiera de los protocolos admitidos, debe revisar la biblioteca o la implementación para asegurarse de que se está recuperando la clave desde el documento de detección OpenID Connect o el documento de metadatos de federación. Una forma de comprobarlo es realizar una búsqueda en el código o en el de la biblioteca de las llamadas al documento de detección OpenID o al documento de metadatos de federación.
+### <a name="other"></a>Aplicaciones Web / API de protección de los recursos cualquiera otras bibliotecas o implementar manualmente cualquiera de hello admite el uso de protocolos
+Si está utilizando alguna otra biblioteca o implementa manualmente cualquiera de los protocolos de hello admitida, necesitará tooreview biblioteca de Hola o se está recuperando el tooensure de implementación que Hola clave de documento de detección de OpenID Connect de Hola o hello documento de metadatos de federación. Toocheck una manera para que esto es toodo una búsqueda en el código o el código de la biblioteca de Hola para las llamadas a cualquier documento de descubrimiento de tooeither Hola OpenID o documento de metadatos de federación de Hola.
 
-Si la clave se está almacenando en algún lugar o está incrustada directamente en su aplicación, puede recuperar manualmente la clave y actualizarla según corresponda; para ello, realice una sustitución manual de acuerdo con las instrucciones al final de este documento de orientación. **se recomienda encarecidamente mejorar la aplicación para que admita la sustitución automática** mediante cualquiera de los enfoques descritos en este artículo.
+Si la clave se almacena en algún lugar o codificado de forma rígida en la aplicación, puede preparar manualmente recuperar clave hello y según corresponda al realizar una sustitución manual según las instrucciones de hello final Hola de este documento de instrucciones de actualización. **Se recomienda encarecidamente que mejora la sustitución automática de toosupport de aplicación** mediante cualquiera de Hola aproxima contorno en interrupciones del artículo tooavoid futuras y la sobrecarga si aumenta su cadencia de sustitución de Azure AD o si tiene un sustitución de emergencia fuera de banda.
 
-## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Cómo probar la aplicación para determinar si se verá afectada
-Puede validar si la aplicación admite la sustitución automática de claves descargando los scripts y siguiendo las instrucciones de [este repositorio de GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
+## <a name="how-tootest-your-application-toodetermine-if-it-will-be-affected"></a>Cómo tootest su toodetermine de aplicación si se verán afectado
+Puede validar si la aplicación admite la sustitución de clave automática, se descargan las secuencias de comandos de Hola y siguiendo las instrucciones de hello en [este repositorio de GitHub.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
-## <a name="how-to-perform-a-manual-rollover-if-you-application-does-not-support-automatic-rollover"></a>Cómo realizar una sustitución manual si la aplicación no admite la sustitución automática
-Si la aplicación **no** admite la sustitución automática, debe establecer un proceso que supervise periódicamente las claves de firma de Azure AD y realizar una sustitución manual cuando corresponda. [Este repositorio de GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) contiene scripts e instrucciones sobre cómo hacerlo.
+## <a name="how-tooperform-a-manual-rollover-if-you-application-does-not-support-automatic-rollover"></a>¿Cómo tooperform una sustitución manual si, su aplicación no admite la sustitución automática
+Si la aplicación **no** admite la sustitución automática, deberá tooestablish un proceso que periódicamente de monitores de Azure AD firma de claves y realiza una sustitución manual en consecuencia. [Este repositorio de GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) contiene secuencias de comandos e instrucciones sobre cómo toodo esto.
 
