@@ -1,6 +1,6 @@
 ---
-title: Control del enrutamiento y las aplicaciones virtuales con la CLI de Azure 2.0 | Microsoft Docs
-description: "Obtenga información sobre cómo controlar el enrutamiento y las aplicaciones virtuales con la CLI de Azure 2.0."
+title: dispositivos de enrutamiento y virtual aaaControl utilizando Hola 2.0 de CLI de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocontrol dispositivos de enrutamiento y virtual utilizando Hola 2.0 de CLI de Azure."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2017
 ms.author: jdial
-ms.openlocfilehash: e5d9519998346619093f443b740c8904283f76e8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 79b908848932a4365dab1b7497b6a0dbf44bbaf8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-user-defined-routes-udr-using-the-azure-cli-20"></a><span data-ttu-id="425e7-103">Creación de rutas definidas por el usuario (UDR) en la CLI de Azure 2.0</span><span class="sxs-lookup"><span data-stu-id="425e7-103">Create User-Defined Routes (UDR) using the Azure CLI 2.0</span></span>
+# <a name="create-user-defined-routes-udr-using-hello-azure-cli-20"></a><span data-ttu-id="3b789-103">Crear rutas definidas por el usuario (UDR) mediante Hola 2.0 de CLI de Azure</span><span class="sxs-lookup"><span data-stu-id="3b789-103">Create User-Defined Routes (UDR) using hello Azure CLI 2.0</span></span>
 
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="425e7-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="425e7-104">PowerShell</span></span>](virtual-network-create-udr-arm-ps.md)
-> * [<span data-ttu-id="425e7-105">CLI de Azure</span><span class="sxs-lookup"><span data-stu-id="425e7-105">Azure CLI</span></span>](virtual-network-create-udr-arm-cli.md)
-> * [<span data-ttu-id="425e7-106">Plantilla</span><span class="sxs-lookup"><span data-stu-id="425e7-106">Template</span></span>](virtual-network-create-udr-arm-template.md)
-> * [<span data-ttu-id="425e7-107">PowerShell: implementación clásica</span><span class="sxs-lookup"><span data-stu-id="425e7-107">PowerShell (Classic deployment)</span></span>](virtual-network-create-udr-classic-ps.md)
-> * [<span data-ttu-id="425e7-108">CLI: implementación clásica</span><span class="sxs-lookup"><span data-stu-id="425e7-108">CLI (Classic deployment)</span></span>](virtual-network-create-udr-classic-cli.md)
+> * [<span data-ttu-id="3b789-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="3b789-104">PowerShell</span></span>](virtual-network-create-udr-arm-ps.md)
+> * [<span data-ttu-id="3b789-105">CLI de Azure</span><span class="sxs-lookup"><span data-stu-id="3b789-105">Azure CLI</span></span>](virtual-network-create-udr-arm-cli.md)
+> * [<span data-ttu-id="3b789-106">Plantilla</span><span class="sxs-lookup"><span data-stu-id="3b789-106">Template</span></span>](virtual-network-create-udr-arm-template.md)
+> * [<span data-ttu-id="3b789-107">PowerShell: implementación clásica</span><span class="sxs-lookup"><span data-stu-id="3b789-107">PowerShell (Classic deployment)</span></span>](virtual-network-create-udr-classic-ps.md)
+> * [<span data-ttu-id="3b789-108">CLI: implementación clásica</span><span class="sxs-lookup"><span data-stu-id="3b789-108">CLI (Classic deployment)</span></span>](virtual-network-create-udr-classic-cli.md)
 
-## <a name="cli-versions-to-complete-the-task"></a><span data-ttu-id="425e7-109">Versiones de la CLI para completar la tarea</span><span class="sxs-lookup"><span data-stu-id="425e7-109">CLI versions to complete the task</span></span> 
+## <a name="cli-versions-toocomplete-hello-task"></a><span data-ttu-id="3b789-109">Tarea CLI versiones toocomplete hello</span><span class="sxs-lookup"><span data-stu-id="3b789-109">CLI versions toocomplete hello task</span></span> 
 
-<span data-ttu-id="425e7-110">Puede completar la tarea mediante una de las siguientes versiones de la CLI:</span><span class="sxs-lookup"><span data-stu-id="425e7-110">You can complete the task using one of the following CLI versions:</span></span> 
+<span data-ttu-id="3b789-110">Puede completar la tarea hello mediante uno de hello después de las versiones CLI:</span><span class="sxs-lookup"><span data-stu-id="3b789-110">You can complete hello task using one of hello following CLI versions:</span></span> 
 
-- <span data-ttu-id="425e7-111">[CLI de Azure 1.0](virtual-network-create-udr-arm-cli-nodejs.md): la CLI para los modelos de implementación clásico y de Resource Manager</span><span class="sxs-lookup"><span data-stu-id="425e7-111">[Azure CLI 1.0](virtual-network-create-udr-arm-cli-nodejs.md) – our CLI for the classic and resource management deployment models</span></span> 
-- <span data-ttu-id="425e7-112">[CLI de Azure 2.0](#Create-the-UDR-for-the-front-end-subnet): la CLI de última generación para el modelo de implementación de administración de recursos (este artículo).</span><span class="sxs-lookup"><span data-stu-id="425e7-112">[Azure CLI 2.0](#Create-the-UDR-for-the-front-end-subnet) - our next generation CLI for the resource management deployment model (this article)</span></span>
+- <span data-ttu-id="3b789-111">[Azure 1.0 de CLI](virtual-network-create-udr-arm-cli-nodejs.md) – nuestro CLI para modelos de implementación de administración de recursos y clásico Hola</span><span class="sxs-lookup"><span data-stu-id="3b789-111">[Azure CLI 1.0](virtual-network-create-udr-arm-cli-nodejs.md) – our CLI for hello classic and resource management deployment models</span></span> 
+- <span data-ttu-id="3b789-112">[Azure 2.0 CLI](#Create-the-UDR-for-the-front-end-subnet) -nuestro CLI de próxima generación para el modelo de implementación de administración de recursos de hello (en este artículo)</span><span class="sxs-lookup"><span data-stu-id="3b789-112">[Azure CLI 2.0](#Create-the-UDR-for-the-front-end-subnet) - our next generation CLI for hello resource management deployment model (this article)</span></span>
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
@@ -45,13 +45,13 @@ ms.lasthandoff: 08/18/2017
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-<span data-ttu-id="425e7-113">En los siguientes comandos de CLI de Azure de ejemplo se presupone que ya se ha creado un entorno simple según el escenario anterior.</span><span class="sxs-lookup"><span data-stu-id="425e7-113">The sample Azure CLI commands below expect a simple environment already created based on the scenario above.</span></span> <span data-ttu-id="425e7-114">Si desea ejecutar los comandos tal y como aparecen en este documento, cree primero el entorno de prueba mediante la implementación de [esta plantilla](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), haga clic en **Implementar en Azure**, reemplace los valores de parámetro predeterminados si es necesario y siga las instrucciones del portal.</span><span class="sxs-lookup"><span data-stu-id="425e7-114">If you want to run the commands as they are displayed in this document, first build the test environment by deploying [this template](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), click **Deploy to Azure**, replace the default parameter values if necessary, and follow the instructions in the portal.</span></span>
+<span data-ttu-id="3b789-113">comandos de CLI de Azure de ejemplo de Hola a continuación esperan un entorno simple ya creado basándose en el escenario de hello anterior.</span><span class="sxs-lookup"><span data-stu-id="3b789-113">hello sample Azure CLI commands below expect a simple environment already created based on hello scenario above.</span></span> <span data-ttu-id="3b789-114">Si desea toorun comandos de hello, que se muestran en este documento, en primer lugar crear entorno de prueba de hello implementando [esta plantilla](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), haga clic en **implementar tooAzure**, reemplace los valores de parámetros predeterminados de Hola Si fuera necesario y siga las instrucciones de hello en Hola portal.</span><span class="sxs-lookup"><span data-stu-id="3b789-114">If you want toorun hello commands as they are displayed in this document, first build hello test environment by deploying [this template](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), click **Deploy tooAzure**, replace hello default parameter values if necessary, and follow hello instructions in hello portal.</span></span>
 
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a><span data-ttu-id="425e7-115">Creación de la ruta definida por el usuario para la subred front-end</span><span class="sxs-lookup"><span data-stu-id="425e7-115">Create the UDR for the front-end subnet</span></span>
-<span data-ttu-id="425e7-116">Para crear la tabla de rutas y la ruta necesaria para la subred front-end según el escenario anterior, siga estos pasos.</span><span class="sxs-lookup"><span data-stu-id="425e7-116">To create the route table and route needed for the front end subnet based on the scenario above, follow the steps below.</span></span>
+## <a name="create-hello-udr-for-hello-front-end-subnet"></a><span data-ttu-id="3b789-115">Crear hello UDR para la subred de front-end de Hola</span><span class="sxs-lookup"><span data-stu-id="3b789-115">Create hello UDR for hello front-end subnet</span></span>
+<span data-ttu-id="3b789-116">tabla de rutas de hello toocreate y ruta necesarios para una subred de front-end de hello basándose en el escenario de hello anterior, siga los pasos de hello siguientes.</span><span class="sxs-lookup"><span data-stu-id="3b789-116">toocreate hello route table and route needed for hello front end subnet based on hello scenario above, follow hello steps below.</span></span>
 
-1. <span data-ttu-id="425e7-117">Cree una tabla de rutas para la subred front-end con el comando [az network route-table create](/cli/azure/network/route-table#create):</span><span class="sxs-lookup"><span data-stu-id="425e7-117">Create a route table for the front-end subnet with the [az network route-table create](/cli/azure/network/route-table#create) command:</span></span>
+1. <span data-ttu-id="3b789-117">Crear una tabla de rutas de subred de front-end de hello con hello [crear tabla de rutas de red az](/cli/azure/network/route-table#create) comando:</span><span class="sxs-lookup"><span data-stu-id="3b789-117">Create a route table for hello front-end subnet with hello [az network route-table create](/cli/azure/network/route-table#create) command:</span></span>
 
     ```azurecli
     az network route-table create \
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/18/2017
     --name UDR-FrontEnd
     ```
 
-    <span data-ttu-id="425e7-118">Salida:</span><span class="sxs-lookup"><span data-stu-id="425e7-118">Output:</span></span>
+    <span data-ttu-id="3b789-118">Salida:</span><span class="sxs-lookup"><span data-stu-id="3b789-118">Output:</span></span>
 
     ```json
     {
@@ -77,7 +77,7 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-2. <span data-ttu-id="425e7-119">Cree una ruta que envíe todo el tráfico destinado a la subred back-end (192.168.2.0/24) a la máquina virtual **FW1** (192.168.0.4) con el comando [az network route-table route create](/cli/azure/network/route-table/route#create):</span><span class="sxs-lookup"><span data-stu-id="425e7-119">Create a route that sends all traffic destined to the back-end subnet (192.168.2.0/24) to the **FW1** VM (192.168.0.4) using the [az network route-table route create](/cli/azure/network/route-table/route#create) command:</span></span>
+2. <span data-ttu-id="3b789-119">Cree una ruta que envía todo el tráfico destinado toohello subred de back-end (192.168.2.0/24) toohello **FW1** máquina virtual (192.168.0.4) con hello [crear ruta de tabla de rutas de red az](/cli/azure/network/route-table/route#create) comando:</span><span class="sxs-lookup"><span data-stu-id="3b789-119">Create a route that sends all traffic destined toohello back-end subnet (192.168.2.0/24) toohello **FW1** VM (192.168.0.4) using hello [az network route-table route create](/cli/azure/network/route-table/route#create) command:</span></span>
 
     ```azurecli 
     az network route-table route create \
@@ -89,7 +89,7 @@ ms.lasthandoff: 08/18/2017
     --next-hop-ip-address 192.168.0.4
     ```
 
-    <span data-ttu-id="425e7-120">Salida:</span><span class="sxs-lookup"><span data-stu-id="425e7-120">Output:</span></span>
+    <span data-ttu-id="3b789-120">Salida:</span><span class="sxs-lookup"><span data-stu-id="3b789-120">Output:</span></span>
 
     ```json
     {
@@ -103,14 +103,14 @@ ms.lasthandoff: 08/18/2017
     "resourceGroup": "testrg"
     }
     ```
-    <span data-ttu-id="425e7-121">Parámetros:</span><span class="sxs-lookup"><span data-stu-id="425e7-121">Parameters:</span></span>
+    <span data-ttu-id="3b789-121">Parámetros:</span><span class="sxs-lookup"><span data-stu-id="3b789-121">Parameters:</span></span>
 
-    * <span data-ttu-id="425e7-122">**--route-table-name**.</span><span class="sxs-lookup"><span data-stu-id="425e7-122">**--route-table-name**.</span></span> <span data-ttu-id="425e7-123">Nombre de la tabla de rutas a la que se agregará la ruta.</span><span class="sxs-lookup"><span data-stu-id="425e7-123">Name of the route table where the route will be added.</span></span> <span data-ttu-id="425e7-124">En este escenario, *UDR-FrontEnd*.</span><span class="sxs-lookup"><span data-stu-id="425e7-124">For our scenario, *UDR-FrontEnd*.</span></span>
-    * <span data-ttu-id="425e7-125">**--address-prefix**.</span><span class="sxs-lookup"><span data-stu-id="425e7-125">**--address-prefix**.</span></span> <span data-ttu-id="425e7-126">Prefijo de dirección de la subred a la que se destinan los paquetes.</span><span class="sxs-lookup"><span data-stu-id="425e7-126">Address prefix for the subnet where packets are destined to.</span></span> <span data-ttu-id="425e7-127">En este escenario, *192.168.2.0/24*.</span><span class="sxs-lookup"><span data-stu-id="425e7-127">For our scenario, *192.168.2.0/24*.</span></span>
-    * <span data-ttu-id="425e7-128">**--next-hop-type**.</span><span class="sxs-lookup"><span data-stu-id="425e7-128">**--next-hop-type**.</span></span> <span data-ttu-id="425e7-129">Tipo de objeto al que se enviará el tráfico.</span><span class="sxs-lookup"><span data-stu-id="425e7-129">Type of object traffic will be sent to.</span></span> <span data-ttu-id="425e7-130">Los valores posibles son *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet* o *None*.</span><span class="sxs-lookup"><span data-stu-id="425e7-130">Possible values are *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, or *None*.</span></span>
-    * <span data-ttu-id="425e7-131">**--next-hop-ip-address**.</span><span class="sxs-lookup"><span data-stu-id="425e7-131">**--next-hop-ip-address**.</span></span> <span data-ttu-id="425e7-132">Dirección IP para el próximo salto.</span><span class="sxs-lookup"><span data-stu-id="425e7-132">IP address for next hop.</span></span> <span data-ttu-id="425e7-133">En este escenario, *192.168.0.4*.</span><span class="sxs-lookup"><span data-stu-id="425e7-133">For our scenario, *192.168.0.4*.</span></span>
+    * <span data-ttu-id="3b789-122">**--route-table-name**.</span><span class="sxs-lookup"><span data-stu-id="3b789-122">**--route-table-name**.</span></span> <span data-ttu-id="3b789-123">Nombre de tabla de rutas de Hola donde se agregará la ruta de Hola.</span><span class="sxs-lookup"><span data-stu-id="3b789-123">Name of hello route table where hello route will be added.</span></span> <span data-ttu-id="3b789-124">En este escenario, *UDR-FrontEnd*.</span><span class="sxs-lookup"><span data-stu-id="3b789-124">For our scenario, *UDR-FrontEnd*.</span></span>
+    * <span data-ttu-id="3b789-125">**--address-prefix**.</span><span class="sxs-lookup"><span data-stu-id="3b789-125">**--address-prefix**.</span></span> <span data-ttu-id="3b789-126">Prefijo de dirección de subred de Hola donde los paquetes destinados a.</span><span class="sxs-lookup"><span data-stu-id="3b789-126">Address prefix for hello subnet where packets are destined to.</span></span> <span data-ttu-id="3b789-127">En este escenario, *192.168.2.0/24*.</span><span class="sxs-lookup"><span data-stu-id="3b789-127">For our scenario, *192.168.2.0/24*.</span></span>
+    * <span data-ttu-id="3b789-128">**--next-hop-type**.</span><span class="sxs-lookup"><span data-stu-id="3b789-128">**--next-hop-type**.</span></span> <span data-ttu-id="3b789-129">Tipo de objeto al que se enviará el tráfico.</span><span class="sxs-lookup"><span data-stu-id="3b789-129">Type of object traffic will be sent to.</span></span> <span data-ttu-id="3b789-130">Los valores posibles son *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet* o *None*.</span><span class="sxs-lookup"><span data-stu-id="3b789-130">Possible values are *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, or *None*.</span></span>
+    * <span data-ttu-id="3b789-131">**--next-hop-ip-address**.</span><span class="sxs-lookup"><span data-stu-id="3b789-131">**--next-hop-ip-address**.</span></span> <span data-ttu-id="3b789-132">Dirección IP para el próximo salto.</span><span class="sxs-lookup"><span data-stu-id="3b789-132">IP address for next hop.</span></span> <span data-ttu-id="3b789-133">En este escenario, *192.168.0.4*.</span><span class="sxs-lookup"><span data-stu-id="3b789-133">For our scenario, *192.168.0.4*.</span></span>
 
-3. <span data-ttu-id="425e7-134">Ejecute el comando [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) para asociar la tabla de rutas creada anteriormente a la subred **FrontEnd**:</span><span class="sxs-lookup"><span data-stu-id="425e7-134">Run the [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) command to associate the route table created above with the **FrontEnd** subnet:</span></span>
+3. <span data-ttu-id="3b789-134">Ejecute hello [actualización de subred de red virtual de red az](/cli/azure/network/vnet/subnet#update) tabla de enrutamiento de comandos tooassociate Hola creada anteriormente con hello **front-end** subred:</span><span class="sxs-lookup"><span data-stu-id="3b789-134">Run hello [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) command tooassociate hello route table created above with hello **FrontEnd** subnet:</span></span>
 
     ```azurecli
     az network vnet subnet update \
@@ -120,7 +120,7 @@ ms.lasthandoff: 08/18/2017
     --route-table UDR-FrontEnd
     ```
 
-    <span data-ttu-id="425e7-135">Salida:</span><span class="sxs-lookup"><span data-stu-id="425e7-135">Output:</span></span>
+    <span data-ttu-id="3b789-135">Salida:</span><span class="sxs-lookup"><span data-stu-id="3b789-135">Output:</span></span>
 
     ```json
     {
@@ -148,15 +148,15 @@ ms.lasthandoff: 08/18/2017
     }
     ```
 
-    <span data-ttu-id="425e7-136">Parámetros:</span><span class="sxs-lookup"><span data-stu-id="425e7-136">Parameters:</span></span>
+    <span data-ttu-id="3b789-136">Parámetros:</span><span class="sxs-lookup"><span data-stu-id="3b789-136">Parameters:</span></span>
     
-    * <span data-ttu-id="425e7-137">**--vnet-name**.</span><span class="sxs-lookup"><span data-stu-id="425e7-137">**--vnet-name**.</span></span> <span data-ttu-id="425e7-138">Nombre de la red virtual donde se encuentra la subred.</span><span class="sxs-lookup"><span data-stu-id="425e7-138">Name of the VNet where the subnet is located.</span></span> <span data-ttu-id="425e7-139">En este escenario, *TestVNet*.</span><span class="sxs-lookup"><span data-stu-id="425e7-139">For our scenario, *TestVNet*.</span></span>
+    * <span data-ttu-id="3b789-137">**--vnet-name**.</span><span class="sxs-lookup"><span data-stu-id="3b789-137">**--vnet-name**.</span></span> <span data-ttu-id="3b789-138">Nombre de red virtual donde se encuentra la subred de Hola Hola.</span><span class="sxs-lookup"><span data-stu-id="3b789-138">Name of hello VNet where hello subnet is located.</span></span> <span data-ttu-id="3b789-139">En este escenario, *TestVNet*.</span><span class="sxs-lookup"><span data-stu-id="3b789-139">For our scenario, *TestVNet*.</span></span>
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a><span data-ttu-id="425e7-140">Creación de la ruta definida por el usuario para la subred back-end</span><span class="sxs-lookup"><span data-stu-id="425e7-140">Create the UDR for the back-end subnet</span></span>
+## <a name="create-hello-udr-for-hello-back-end-subnet"></a><span data-ttu-id="3b789-140">Crear hello UDR de subred de back-end de Hola</span><span class="sxs-lookup"><span data-stu-id="3b789-140">Create hello UDR for hello back-end subnet</span></span>
 
-<span data-ttu-id="425e7-141">Para crear la tabla de rutas y la ruta necesaria para la subred back-end según el escenario anterior, siga los siguientes pasos:</span><span class="sxs-lookup"><span data-stu-id="425e7-141">To create the route table and route needed for the back-end subnet based on the scenario above, complete the following steps:</span></span>
+<span data-ttu-id="3b789-141">Hola toocreate tabla de rutas y necesarios para la subred de back-end de hello en función de hello escenario anterior, Hola completa siguiendo los pasos de ruta:</span><span class="sxs-lookup"><span data-stu-id="3b789-141">toocreate hello route table and route needed for hello back-end subnet based on hello scenario above, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="425e7-142">Ejecute el comando siguiente para crear una tabla de rutas para la subred back-end:</span><span class="sxs-lookup"><span data-stu-id="425e7-142">Run the following command to create a route table for the back-end subnet:</span></span>
+1. <span data-ttu-id="3b789-142">Ejecute hello después comando toocreate una tabla de rutas de subred de back-end de hello:</span><span class="sxs-lookup"><span data-stu-id="3b789-142">Run hello following command toocreate a route table for hello back-end subnet:</span></span>
 
     ```azurecli
     az network route-table create \
@@ -165,7 +165,7 @@ ms.lasthandoff: 08/18/2017
     --location centralus
     ```
 
-2. <span data-ttu-id="425e7-143">Ejecute el comando siguiente para crear una ruta en la tabla de rutas para enviar todo el tráfico destinado a la subred front-end (192.168.1.0/24) a la VM **FW1** (192.168.0.4):</span><span class="sxs-lookup"><span data-stu-id="425e7-143">Run the following command to create a route in the route table to send all traffic destined to the front-end subnet (192.168.1.0/24) to the **FW1** VM (192.168.0.4):</span></span>
+2. <span data-ttu-id="3b789-143">Ejecute hello después comando toocreate una ruta en toosend de tabla de ruta de hello todo el tráfico destinado toohello subred front-end (192.168.1.0/24) toohello **FW1** VM (192.168.0.4):</span><span class="sxs-lookup"><span data-stu-id="3b789-143">Run hello following command toocreate a route in hello route table toosend all traffic destined toohello front-end subnet (192.168.1.0/24) toohello **FW1** VM (192.168.0.4):</span></span>
 
     ```azurecli
     az network route-table route create \
@@ -177,7 +177,7 @@ ms.lasthandoff: 08/18/2017
     --next-hop-ip-address 192.168.0.4
     ```
 
-3. <span data-ttu-id="425e7-144">Ejecute el comando siguiente para asociar la tabla de rutas a la subred **BackEnd**:</span><span class="sxs-lookup"><span data-stu-id="425e7-144">Run the following command to associate the route table with the **BackEnd** subnet:</span></span>
+3. <span data-ttu-id="3b789-144">Ejecución hello después de la tabla de rutas de comando tooassociate Hola con hello **back-end** subred:</span><span class="sxs-lookup"><span data-stu-id="3b789-144">Run hello following command tooassociate hello route table with hello **BackEnd** subnet:</span></span>
 
     ```azurecli
     az network vnet subnet update \
@@ -187,11 +187,11 @@ ms.lasthandoff: 08/18/2017
     --route-table UDR-BackEnd
     ```
 
-## <a name="enable-ip-forwarding-on-fw1"></a><span data-ttu-id="425e7-145">Habilitación del reenvío IP en FW1</span><span class="sxs-lookup"><span data-stu-id="425e7-145">Enable IP forwarding on FW1</span></span>
+## <a name="enable-ip-forwarding-on-fw1"></a><span data-ttu-id="3b789-145">Habilitación del reenvío IP en FW1</span><span class="sxs-lookup"><span data-stu-id="3b789-145">Enable IP forwarding on FW1</span></span>
 
-<span data-ttu-id="425e7-146">Para habilitar el reenvío IP en la NIC que ha usado **FW1**, siga los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="425e7-146">To enable IP forwarding in the NIC used by **FW1**, complete the following steps:</span></span>
+<span data-ttu-id="3b789-146">reenvío de IP tooenable Hola NIC que se utiliza por **FW1**completa Hola lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="3b789-146">tooenable IP forwarding in hello NIC used by **FW1**, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="425e7-147">Ejecutar el comando [az network nic show](/cli/azure/network/nic#show) con un filtro JMESPATH para mostrar el valor actual **enable-ip-forwarding** de **Habilitar reenvío IP**.</span><span class="sxs-lookup"><span data-stu-id="425e7-147">Run the [az network nic show](/cli/azure/network/nic#show) command with a JMESPATH filter to display the current **enable-ip-forwarding** value for **Enable IP forwarding**.</span></span> <span data-ttu-id="425e7-148">Se debe establecer en *false*.</span><span class="sxs-lookup"><span data-stu-id="425e7-148">It should be set to *false*.</span></span>
+1. <span data-ttu-id="3b789-147">Ejecute hello [show de nic de red az](/cli/azure/network/nic#show) comando con un hello de toodisplay JMESPATH filtro actual **Habilitar reenvío de ip** valor **reenvío IP habilitar**.</span><span class="sxs-lookup"><span data-stu-id="3b789-147">Run hello [az network nic show](/cli/azure/network/nic#show) command with a JMESPATH filter toodisplay hello current **enable-ip-forwarding** value for **Enable IP forwarding**.</span></span> <span data-ttu-id="3b789-148">Se debe establecer demasiado*false*.</span><span class="sxs-lookup"><span data-stu-id="3b789-148">It should be set too*false*.</span></span>
 
     ```azurecli
     az network nic show \
@@ -200,11 +200,11 @@ ms.lasthandoff: 08/18/2017
     --query 'enableIpForwarding' -o tsv
     ```
 
-    <span data-ttu-id="425e7-149">Salida:</span><span class="sxs-lookup"><span data-stu-id="425e7-149">Output:</span></span>
+    <span data-ttu-id="3b789-149">Salida:</span><span class="sxs-lookup"><span data-stu-id="3b789-149">Output:</span></span>
 
         false
 
-2. <span data-ttu-id="425e7-150">Ejecute el comando siguiente para habilitar el reenvío IP:</span><span class="sxs-lookup"><span data-stu-id="425e7-150">Run the following command to enable IP forwarding:</span></span>
+2. <span data-ttu-id="3b789-150">Ejecute hello después de reenvío de IP de tooenable de comando:</span><span class="sxs-lookup"><span data-stu-id="3b789-150">Run hello following command tooenable IP forwarding:</span></span>
 
     ```azurecli
     az network nic update \
@@ -213,17 +213,17 @@ ms.lasthandoff: 08/18/2017
     --ip-forwarding true
     ```
 
-    <span data-ttu-id="425e7-151">Puede examinar la salida que se transmite a la consola de o simplemente vuelva a probar el valor **enableIpForwarding** específico:</span><span class="sxs-lookup"><span data-stu-id="425e7-151">You can examine the output streamed to the console, or just retest for the specific **enableIpForwarding** value:</span></span>
+    <span data-ttu-id="3b789-151">Puede examinar la consola de toohello transmitido por secuencias de salida de hello, o simplemente volver a probar para saludo específico **enableIpForwarding** valor:</span><span class="sxs-lookup"><span data-stu-id="3b789-151">You can examine hello output streamed toohello console, or just retest for hello specific **enableIpForwarding** value:</span></span>
 
     ```azurecli
     az network nic show -g testrg -n nicfw1 --query 'enableIpForwarding' -o tsv
     ```
 
-    <span data-ttu-id="425e7-152">Salida:</span><span class="sxs-lookup"><span data-stu-id="425e7-152">Output:</span></span>
+    <span data-ttu-id="3b789-152">Salida:</span><span class="sxs-lookup"><span data-stu-id="3b789-152">Output:</span></span>
 
         true
 
-    <span data-ttu-id="425e7-153">Parámetros:</span><span class="sxs-lookup"><span data-stu-id="425e7-153">Parameters:</span></span>
+    <span data-ttu-id="3b789-153">Parámetros:</span><span class="sxs-lookup"><span data-stu-id="3b789-153">Parameters:</span></span>
 
-    <span data-ttu-id="425e7-154">**--ip-forwarding**: *true* o *false*.</span><span class="sxs-lookup"><span data-stu-id="425e7-154">**--ip-forwarding**: *true* or *false*.</span></span>
+    <span data-ttu-id="3b789-154">**--ip-forwarding**: *true* o *false*.</span><span class="sxs-lookup"><span data-stu-id="3b789-154">**--ip-forwarding**: *true* or *false*.</span></span>
 

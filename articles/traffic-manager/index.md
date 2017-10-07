@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Traffic Manager: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a administrar el tráfico entrante para obtener un rendimiento óptimo de las aplicaciones. La documentación muestra cómo distribuir el tráfico a los puntos de conexión de servicio de Azure o externos."
+title: "aaaAzure documentación de Traffic Manager - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo el tráfico de entrada toomanage para obtener un rendimiento óptimo de las aplicaciones. La documentación muestra cómo toodistribute tráfico tooAzure o los puntos de conexión de servicio externo."
 services: traffic-manager
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5ba8a589e319928365dbdc5fb6b2295119de77ea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb547f220186c8db9020bcd61a7e4c4d47838107
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="traffic-manager-documentation"></a>Documentación de Traffic Manager
 
-Aprenda a usar Traffic Manager para enrutar el tráfico entrante para optimizar el rendimiento y la confiabilidad de las aplicaciones. Los tutoriales, las referencias de API y otra documentación muestran cómo administrar el tráfico a los puntos de conexión de servicio de Azure o externos.
+Obtenga información acerca de cómo el tráfico de entrada de toouse Traffic Manager tooroute para confiabilidad y el rendimiento óptimo de las aplicaciones. Tutoriales, referencias de API y otra documentación muestran cómo toomanage tráfico tooAzure o los puntos de conexión de servicio externo.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Aprenda a usar Traffic Manager para enrutar el tráfico entrante para optimizar 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción a la administración de puntos de conexión de Traffic Manager mediante Azure Portal</h3>
+                        <h3>Empezar a administrar los puntos de conexión de administrador de tráfico mediante Hola portal de Azure</h3>
                     </div>
                 </div>
             </div>

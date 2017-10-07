@@ -1,6 +1,6 @@
 ---
-title: "Script automatizado para crear la aplicación web de Service Manager para conectarse con IT Service Management Connector en OMS | Microsoft Docs"
-description: "Cree una aplicación web de Service Manager con un script automatizado para conectar con el conector de administración de servicios de TI en OMS y supervisar y administrar centralmente los elementos de trabajo ITSM."
+title: "secuencia de comandos de aaaAutomated toocreate tooconnect de aplicación Web de Service Manager con el conector de administración de servicios de TI en OMS | Documentos de Microsoft"
+description: "Crear una aplicación de administrador de servicios Web mediante un script automatizado tooconnect con conector de administración de servicios de TI en OMS y centralmente supervisar y administrar elementos de trabajo ITSM Hola."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: v-jysur
-ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cbe6a1f75548ac541fd428a977edf64eea959e4f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script-preview"></a><span data-ttu-id="9127d-103">Creación de una aplicación web de Service Manager mediante el script automatizado (versión preliminar)</span><span class="sxs-lookup"><span data-stu-id="9127d-103">Create Service Manager Web app using the automated script (Preview)</span></span>
+# <a name="create-service-manager-web-app-using-hello-automated-script-preview"></a><span data-ttu-id="e1c0d-103">Crear aplicación Web de Service Manager con la secuencia de comandos de hello automatizada (vista previa)</span><span class="sxs-lookup"><span data-stu-id="e1c0d-103">Create Service Manager Web app using hello automated script (Preview)</span></span>
 
-<span data-ttu-id="9127d-104">Use el siguiente script para crear la aplicación web para la instancia de Service Manager.</span><span class="sxs-lookup"><span data-stu-id="9127d-104">Use the following script to create the Web app for your Service Manager instance.</span></span> <span data-ttu-id="9127d-105">Aquí podrá obtener más información sobre la conexión de Service Manager: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service) (Aplicación web de Service Manager).</span><span class="sxs-lookup"><span data-stu-id="9127d-105">More information about Service Manager connection is here: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span></span>
+<span data-ttu-id="e1c0d-104">Usar hello después de la aplicación de script toocreate hello Web para la instancia de Service Manager.</span><span class="sxs-lookup"><span data-stu-id="e1c0d-104">Use hello following script toocreate hello Web app for your Service Manager instance.</span></span> <span data-ttu-id="e1c0d-105">Aquí podrá obtener más información sobre la conexión de Service Manager: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service) (Aplicación web de Service Manager).</span><span class="sxs-lookup"><span data-stu-id="e1c0d-105">More information about Service Manager connection is here: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span></span>
 
-<span data-ttu-id="9127d-106">Ejecute el script proporcionando los siguientes detalles necesarios:</span><span class="sxs-lookup"><span data-stu-id="9127d-106">Run the script by providing the following required details:</span></span>
+<span data-ttu-id="e1c0d-106">Ejecutar script de Hola proporcionando Hola detalles necesarios siguientes:</span><span class="sxs-lookup"><span data-stu-id="e1c0d-106">Run hello script by providing hello following required details:</span></span>
 
-- <span data-ttu-id="9127d-107">Detalles de la suscripción de Azure</span><span class="sxs-lookup"><span data-stu-id="9127d-107">Azure subscription details</span></span>
-- <span data-ttu-id="9127d-108">Definición de un nombre de grupo de recursos</span><span class="sxs-lookup"><span data-stu-id="9127d-108">Resource group name</span></span>
-- <span data-ttu-id="9127d-109">Ubicación</span><span class="sxs-lookup"><span data-stu-id="9127d-109">Location</span></span>
-- <span data-ttu-id="9127d-110">Detalles del servidor de Service Manager (nombre del servidor, dominio, nombre de usuario y contraseña)</span><span class="sxs-lookup"><span data-stu-id="9127d-110">Service Manager server details (server name,    domain, username and password)</span></span>
-- <span data-ttu-id="9127d-111">Prefijo de nombre de sitio de la aplicación web</span><span class="sxs-lookup"><span data-stu-id="9127d-111">Site name prefix for your Web app</span></span>
-- <span data-ttu-id="9127d-112">Espacio de nombres de ServiceBus.</span><span class="sxs-lookup"><span data-stu-id="9127d-112">ServiceBus Namespace.</span></span>
+- <span data-ttu-id="e1c0d-107">Detalles de la suscripción de Azure</span><span class="sxs-lookup"><span data-stu-id="e1c0d-107">Azure subscription details</span></span>
+- <span data-ttu-id="e1c0d-108">Definición de un nombre de grupo de recursos</span><span class="sxs-lookup"><span data-stu-id="e1c0d-108">Resource group name</span></span>
+- <span data-ttu-id="e1c0d-109">Ubicación</span><span class="sxs-lookup"><span data-stu-id="e1c0d-109">Location</span></span>
+- <span data-ttu-id="e1c0d-110">Detalles del servidor de Service Manager (nombre del servidor, dominio, nombre de usuario y contraseña)</span><span class="sxs-lookup"><span data-stu-id="e1c0d-110">Service Manager server details (server name,    domain, username and password)</span></span>
+- <span data-ttu-id="e1c0d-111">Prefijo de nombre de sitio de la aplicación web</span><span class="sxs-lookup"><span data-stu-id="e1c0d-111">Site name prefix for your Web app</span></span>
+- <span data-ttu-id="e1c0d-112">Espacio de nombres de ServiceBus.</span><span class="sxs-lookup"><span data-stu-id="e1c0d-112">ServiceBus Namespace.</span></span>
 
-<span data-ttu-id="9127d-113">El script creará la aplicación web con el nombre que especificó (junto con algunas cadenas adicionales para hacerlo único).</span><span class="sxs-lookup"><span data-stu-id="9127d-113">The script will create the Web app using the name that you specified (along with few additional strings to make it unique).</span></span> <span data-ttu-id="9127d-114">Genera la **dirección URL de la aplicación web**, el **id. de cliente** y el **secreto de cliente**.</span><span class="sxs-lookup"><span data-stu-id="9127d-114">It generates the **Web app URL**, **client ID** and **client secret**.</span></span>
+<span data-ttu-id="e1c0d-113">Hello script creará hello Web app con nombre hello especificado (junto con algunos toomake cadenas adicionales que único).</span><span class="sxs-lookup"><span data-stu-id="e1c0d-113">hello script will create hello Web app using hello name that you specified (along with few additional strings toomake it unique).</span></span> <span data-ttu-id="e1c0d-114">Genera hello **dirección URL de la aplicación Web**, **Id. de cliente** y **secreto de cliente**.</span><span class="sxs-lookup"><span data-stu-id="e1c0d-114">It generates hello **Web app URL**, **client ID** and **client secret**.</span></span>
 
-<span data-ttu-id="9127d-115">Guarde estos valores, ya que los necesitará cuando cree una conexión con IT Service Management Connector.</span><span class="sxs-lookup"><span data-stu-id="9127d-115">Save these values, you will need these when you create a connection with IT Service Management Connector.</span></span>
+<span data-ttu-id="e1c0d-115">Guarde estos valores, ya que los necesitará cuando cree una conexión con IT Service Management Connector.</span><span class="sxs-lookup"><span data-stu-id="e1c0d-115">Save these values, you will need these when you create a connection with IT Service Management Connector.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9127d-116">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="9127d-116">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="e1c0d-116">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="e1c0d-116">Prerequisites</span></span>
 
- <span data-ttu-id="9127d-117">Windows Management Framework 5.0 o posterior.</span><span class="sxs-lookup"><span data-stu-id="9127d-117">Windows Management Framework 5.0 or above.</span></span>
-<span data-ttu-id="9127d-118">Windows 10 tiene la versión 5.1 de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="9127d-118">Windows 10 has 5.1 by default.</span></span> <span data-ttu-id="9127d-119">Puede descargar el marco desde [aquí](https://www.microsoft.com/download/details.aspx?id=53347):</span><span class="sxs-lookup"><span data-stu-id="9127d-119">You can download the framework from [here](https://www.microsoft.com/download/details.aspx?id=53347):</span></span>
+ <span data-ttu-id="e1c0d-117">Windows Management Framework 5.0 o posterior.</span><span class="sxs-lookup"><span data-stu-id="e1c0d-117">Windows Management Framework 5.0 or above.</span></span>
+<span data-ttu-id="e1c0d-118">Windows 10 tiene la versión 5.1 de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="e1c0d-118">Windows 10 has 5.1 by default.</span></span> <span data-ttu-id="e1c0d-119">Puede descargar el marco de Hola de [aquí](https://www.microsoft.com/download/details.aspx?id=53347):</span><span class="sxs-lookup"><span data-stu-id="e1c0d-119">You can download hello framework from [here](https://www.microsoft.com/download/details.aspx?id=53347):</span></span>
 
-<span data-ttu-id="9127d-120">Use el siguiente script:</span><span class="sxs-lookup"><span data-stu-id="9127d-120">Use the following script:</span></span>
+<span data-ttu-id="e1c0d-120">Usar hello siguiente secuencia de comandos:</span><span class="sxs-lookup"><span data-stu-id="e1c0d-120">Use hello following script:</span></span>
 
 ```
 ####################################
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 # Subscription name in Azure account. Check in Azure Portal.
 $azureSubscriptionName = ""
 
-# Resource group name for resource deployment. Could be an existing resource group or a new one to be created.
+# Resource group name for resource deployment. Could be an existing resource group or a new one toobe created.
 $resourceGroupName = ""
 
 # Location for existing resource group or new resource group deployment
@@ -70,7 +70,7 @@ $username = ""
 $password = ""
 
 
-# Azure site Name Prefix. Default is "smoc". It can be configured to any desired value.
+# Azure site Name Prefix. Default is "smoc". It can be configured tooany desired value.
 $siteNamePrefix = ""
 
 # Service Bus namespace. Please provide an already existing service bus namespace.
@@ -85,7 +85,7 @@ $serviceName = ""
 # Installations
 ################
 
-# Allowing the execution of the script for current user.  
+# Allowing hello execution of hello script for current user.  
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 
 Write-Host "Checking for required modules..."
@@ -141,7 +141,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Web Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Web Resource Provider. Please register it in Azure Portal."
         exit
     }   
 }
@@ -203,7 +203,7 @@ try
 }
 catch
 {
-    # Delete the deployed web app if Azure AD application fails
+    # Delete hello deployed web app if Azure AD application fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     Write-Host "Faiure occured in Azure AD application....Try again!!"
@@ -247,10 +247,10 @@ catch
 {
     Write-Host "Web App configuration failed. Please ensure all values are provided in Service Manager Authentication Settings in User Configuration Section"
 
-    # Delete the AzureRm AD Application if confiuration fails
+    # Delete hello AzureRm AD Application if confiuration fails
     Remove-AzureRmADApplication -ObjectId $adApp.ObjectId -Force
 
-    # Delete the deployed web app if configuration fails
+    # Delete hello deployed web app if configuration fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     exit
@@ -276,7 +276,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Relay Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Relay Resource Provider. Please register it in Azure Portal."
     }   
 }
 
@@ -305,7 +305,7 @@ if(!$resource)
 
 }
 
-Write-Host "Note: Please Configure Hybrid connection in the Networking section of the web application in Azure Portal to link to the on-premises system.`n"
+Write-Host "Note: Please Configure Hybrid connection in hello Networking section of hello web application in Azure Portal toolink toohello on-premises system.`n"
 Write-Host "App Details"
 Write-Host "============"
 Write-Host "App Name:"  $siteName
@@ -318,5 +318,5 @@ if(!$err)
 }
 
 ```
-## <a name="next-steps"></a><span data-ttu-id="9127d-121">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="9127d-121">Next steps</span></span>
-<span data-ttu-id="9127d-122">[Configuración de la conexión híbrida](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span><span class="sxs-lookup"><span data-stu-id="9127d-122">[Configure the Hybrid connection](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e1c0d-121">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="e1c0d-121">Next steps</span></span>
+<span data-ttu-id="e1c0d-122">[Configurar la conexión híbrida de hello](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span><span class="sxs-lookup"><span data-stu-id="e1c0d-122">[Configure hello Hybrid connection](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span></span>

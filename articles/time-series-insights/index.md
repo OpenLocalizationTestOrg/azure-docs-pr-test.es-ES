@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Time Series Insights: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a ejecutar análisis de IoT en la nube con procesamiento de eventos totalmente administrado. Analice en tiempo real datos procedentes de aplicaciones, sensores y dispositivos, entre otros."
+title: "aaaAzure documentación de visión de las Series de tiempo - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toorun IoT funciones analíticas en hello en la nube con el procesamiento de eventos completamente administrado. Analice en tiempo real datos procedentes de aplicaciones, sensores y dispositivos, entre otros."
 services: time-series-insights
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2017
 ms.author: carolz
-ms.openlocfilehash: d22a3f0484da78d03dbe8411e74eb408185b1f30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2301d20aa2fb685279e2efc657ffcd41571af0c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-time-series-insights-documentation"></a>Documentación sobre Azure Time Series Insights 
  
-Aprenda a configurar el entorno de Time Series Insights, a explorar y a analizar los datos de series temporales de las soluciones de IoT o de otros elementos conectados. La documentación comparte los requisitos previos, los procedimientos, las referencias de API y cualquier otra documentación necesaria para ayudarle a empezar a trabajar en cuestión de minutos. 
+Obtenga información acerca de cómo tooset el entorno de visión de la serie de tiempo, explorar y analizar datos de series temporales de las soluciones de IoT o conectado cosas. Documentación de recursos compartidos de requisitos previos de hello, cómo, las referencias API y otro toohelp documentación tooget se inicia en minutos. 
  
 <ul class="panelContent cardsFTitle"> 
     <li> 

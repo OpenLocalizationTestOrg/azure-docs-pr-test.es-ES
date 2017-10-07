@@ -80,15 +80,15 @@
 #### [Creación de una máquina virtual con redes aceleradas](virtual-network-create-vm-accelerated-networking.md)
 
 ### Escenarios de conectividad
-#### [De red virtual (VNet) a red virtual](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-#### [De red virtual (Resource Manager) a red virtual (clásica)](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-#### [De red virtual a red local (VPN)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-#### [De red virtual a red local (ExpressRoute)](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [TooVNet de red virtual (VNet)](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [Red virtual (Administrador de recursos) tooa red virtual (clásica)](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [Red de tooon local de red virtual (VPN)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [Red de tooon local de red virtual (ExpressRoute)](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 #### [Arquitectura de red híbrida de alta disponibilidad](../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ### Escenarios de seguridad
 #### [Protección de redes con aplicaciones virtuales](virtual-network-scenario-udr-gw-nva.md)
-#### [Red perimetral entre Internet y Azure](../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+#### [Red Perimetral entre Azure y Hola Internet](../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 #### [Servicio en la nube y seguridad de red](../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [Red perimetral sencilla con grupos de seguridad de red](virtual-networks-dmz-nsg-asm.md)
 ##### [Red perimetral con firewall y grupos de seguridad de red](virtual-networks-dmz-nsg-fw-asm.md)
@@ -118,7 +118,7 @@
 #### [Emparejamientos](virtual-network-manage-peering.md)
 #### Clásico
 ##### [Archivo de configuración de red](virtual-networks-using-network-configuration-file.md)
-##### [Migración de un grupo de afinidad a una región](virtual-networks-migrate-to-regional-vnet.md)
+##### [Migrar desde una región de tooa grupo de afinidad](virtual-networks-migrate-to-regional-vnet.md)
 ### Grupos de seguridad de red
 #### [Portal](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
@@ -128,7 +128,7 @@
 #### [Creación, cambio o eliminación de interfaces de red](virtual-network-network-interface.md)
 #### [Adición, cambio o eliminación de direcciones IP](virtual-network-network-interface-addresses.md)
 ### Máquinas virtuales
-#### [Movimiento de VM a una subred diferente](virtual-networks-move-vm-role-to-subnet.md)
+#### [Mover una subred diferente de tooa VM](virtual-networks-move-vm-role-to-subnet.md)
 ### [Direcciones IP públicas](virtual-network-public-ip-address.md)
 
 ## Solución de problemas
@@ -140,7 +140,7 @@
 #### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### [Pruebas de rendimiento](virtual-network-bandwidth-testing.md)
 ### [No se pueden eliminar redes virtuales](virtual-network-troubleshoot-cannot-delete-vnet.md)
-### [Problemas de conectividad entre máquinas virtuales](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
+### [Problemas de conectividad de tooVM VM](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 
 # Referencia
 ## [Ejemplos de código](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)

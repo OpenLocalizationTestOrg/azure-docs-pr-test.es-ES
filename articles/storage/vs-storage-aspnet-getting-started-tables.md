@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure Table Storage y a Servicios conectados de Visual Studio (ASP.NET) | Microsoft Docs"
-description: "Introducción al uso de Azure Table Storage en un proyecto ASP.NET en Visual Studio después de conectarse a una cuenta de almacenamiento mediante Servicios conectados de Visual Studio"
+title: aaaGet a trabajar con almacenamiento de tabla de Azure y servicios conectados de Visual Studio (ASP.NET) | Documentos de Microsoft
+description: "Cómo tooget iniciado mediante el almacenamiento de tabla de Azure en un proyecto de ASP.NET en Visual Studio después de conectar la cuenta de almacenamiento de tooa con servicios conectados de Visual Studio"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: tarcher
-ms.openlocfilehash: d9cb32483d3f582bbeb0ccc6a204a8b6d9ea5c96
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e7ed17098c8742954972dc9e1b50eca77221e327
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a><span data-ttu-id="e3acb-103">Introducción a Azure Table Storage y a Servicios conectados de Visual Studio (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="e3acb-103">Get started with Azure table storage and Visual Studio Connected Services (ASP.NET)</span></span>
+# <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a><span data-ttu-id="221ee-103">Introducción a Azure Table Storage y a Servicios conectados de Visual Studio (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="221ee-103">Get started with Azure table storage and Visual Studio Connected Services (ASP.NET)</span></span>
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a><span data-ttu-id="e3acb-104">Información general</span><span class="sxs-lookup"><span data-stu-id="e3acb-104">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="221ee-104">Información general</span><span class="sxs-lookup"><span data-stu-id="221ee-104">Overview</span></span>
 
-<span data-ttu-id="e3acb-105">El almacenamiento de tabla de Azure permite almacenar una gran cantidad de datos estructurados.</span><span class="sxs-lookup"><span data-stu-id="e3acb-105">Azure Table storage enables you to store large amounts of structured data.</span></span> <span data-ttu-id="e3acb-106">El servicio es un almacén de datos NoSQL que acepta llamadas autenticadas desde dentro y fuera de la nube de Azure.</span><span class="sxs-lookup"><span data-stu-id="e3acb-106">The service is a NoSQL datastore that accepts authenticated calls from inside and outside the Azure cloud.</span></span> <span data-ttu-id="e3acb-107">Las tablas de Azure son ideales para el almacenamiento de datos estructurados no relacionales.</span><span class="sxs-lookup"><span data-stu-id="e3acb-107">Azure tables are ideal for storing structured, non-relational data.</span></span>
+<span data-ttu-id="221ee-105">El almacenamiento de tabla permite toostore grandes cantidades de datos estructurados.</span><span class="sxs-lookup"><span data-stu-id="221ee-105">Azure Table storage enables you toostore large amounts of structured data.</span></span> <span data-ttu-id="221ee-106">servicio de Hello es un almacén de datos NoSQL que acepta llamadas autenticadas de dentro y fuera Hola nube de Azure.</span><span class="sxs-lookup"><span data-stu-id="221ee-106">hello service is a NoSQL datastore that accepts authenticated calls from inside and outside hello Azure cloud.</span></span> <span data-ttu-id="221ee-107">Las tablas de Azure son ideales para el almacenamiento de datos estructurados no relacionales.</span><span class="sxs-lookup"><span data-stu-id="221ee-107">Azure tables are ideal for storing structured, non-relational data.</span></span>
 
-<span data-ttu-id="e3acb-108">Este tutorial muestra cómo escribir código ASP.NET para algunos escenarios comunes mediante entidades de Azure Table Storage.</span><span class="sxs-lookup"><span data-stu-id="e3acb-108">This tutorial shows how to write ASP.NET code for some common scenarios using Azure table storage entities.</span></span> <span data-ttu-id="e3acb-109">Entre los escenarios descritos se incluyen crear, consultar y eliminar entidades de tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-109">These scenarios include creating a table, and adding, querying, and deleting table entities.</span></span> 
+<span data-ttu-id="221ee-108">Este tutorial muestra cómo código toowrite ASP.NET en algunos escenarios comunes con las entidades de almacenamiento de tabla de Azure.</span><span class="sxs-lookup"><span data-stu-id="221ee-108">This tutorial shows how toowrite ASP.NET code for some common scenarios using Azure table storage entities.</span></span> <span data-ttu-id="221ee-109">Entre los escenarios descritos se incluyen crear, consultar y eliminar entidades de tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-109">These scenarios include creating a table, and adding, querying, and deleting table entities.</span></span> 
 
-##<a name="prerequisites"></a><span data-ttu-id="e3acb-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="e3acb-110">Prerequisites</span></span>
+##<a name="prerequisites"></a><span data-ttu-id="221ee-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="221ee-110">Prerequisites</span></span>
 
-* [<span data-ttu-id="e3acb-111">Microsoft Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e3acb-111">Microsoft Visual Studio</span></span>](https://www.visualstudio.com/downloads/)
-* [<span data-ttu-id="e3acb-112">Cuenta de Azure Storage</span><span class="sxs-lookup"><span data-stu-id="e3acb-112">Azure storage account</span></span>](storage-create-storage-account.md#create-a-storage-account)
+* [<span data-ttu-id="221ee-111">Microsoft Visual Studio</span><span class="sxs-lookup"><span data-stu-id="221ee-111">Microsoft Visual Studio</span></span>](https://www.visualstudio.com/downloads/)
+* [<span data-ttu-id="221ee-112">Cuenta de Azure Storage</span><span class="sxs-lookup"><span data-stu-id="221ee-112">Azure storage account</span></span>](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -40,21 +40,21 @@ ms.lasthandoff: 08/03/2017
 
 [!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
 
-### <a name="create-an-mvc-controller"></a><span data-ttu-id="e3acb-113">Creación de un controlador MVC</span><span class="sxs-lookup"><span data-stu-id="e3acb-113">Create an MVC controller</span></span> 
+### <a name="create-an-mvc-controller"></a><span data-ttu-id="221ee-113">Creación de un controlador MVC</span><span class="sxs-lookup"><span data-stu-id="221ee-113">Create an MVC controller</span></span> 
 
-1. <span data-ttu-id="e3acb-114">En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores** y, en el menú contextual, seleccione **Agregar > Controlador**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-114">In the **Solution Explorer**, right-click **Controllers**, and, from the context menu, select **Add->Controller**.</span></span>
+1. <span data-ttu-id="221ee-114">Hola **el Explorador de soluciones**, haga clic en **controladores**y, en el menú contextual de hello, seleccione **Agregar -> controlador**.</span><span class="sxs-lookup"><span data-stu-id="221ee-114">In hello **Solution Explorer**, right-click **Controllers**, and, from hello context menu, select **Add->Controller**.</span></span>
 
-    ![Incorporación de un controlador a una aplicación de ASP.NET MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
+    ![Agregar una aplicación de ASP.NET MVC tooan de controlador](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
 
-1. <span data-ttu-id="e3acb-116">En el cuadro de diálogo **Agregar scaffold**, seleccione **Controlador MVC 5 - Vacío** y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-116">On the **Add Scaffold** dialog, select **MVC 5 Controller - Empty**, and select **Add**.</span></span>
+1. <span data-ttu-id="221ee-116">En hello **agregar scaffolding** cuadro de diálogo, seleccione **controlador de MVC 5 - vacío**y seleccione **agregar**.</span><span class="sxs-lookup"><span data-stu-id="221ee-116">On hello **Add Scaffold** dialog, select **MVC 5 Controller - Empty**, and select **Add**.</span></span>
 
     ![Especifique el tipo de controlador MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller.png)
 
-1. <span data-ttu-id="e3acb-118">En el cuadro de diálogo **Agregar controlador**, denomine *TablesController* al controlador y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-118">On the **Add Controller** dialog, name the controller *TablesController*, and select **Add**.</span></span>
+1. <span data-ttu-id="221ee-118">En hello **Agregar controlador** cuadro de diálogo, nombre del controlador que hello *TablesController*y seleccione **agregar**.</span><span class="sxs-lookup"><span data-stu-id="221ee-118">On hello **Add Controller** dialog, name hello controller *TablesController*, and select **Add**.</span></span>
 
-    ![Asignación de nombre al controladorMVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
+    ![Controlador de MVC Hola de nombre](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
 
-1. <span data-ttu-id="e3acb-120">Agregue las siguientes directivas *using* al archivo `TablesController.cs`:</span><span class="sxs-lookup"><span data-stu-id="e3acb-120">Add the following *using* directives to the `TablesController.cs` file:</span></span>
+1. <span data-ttu-id="221ee-120">Agregue los siguiente hello *con* toohello directivas `TablesController.cs` archivo:</span><span class="sxs-lookup"><span data-stu-id="221ee-120">Add hello following *using* directives toohello `TablesController.cs` file:</span></span>
 
     ```csharp
     using Microsoft.Azure;
@@ -63,21 +63,21 @@ ms.lasthandoff: 08/03/2017
     using Microsoft.WindowsAzure.Storage.Table;
     ```
 
-### <a name="create-a-model-class"></a><span data-ttu-id="e3acb-121">Creación de una clase de modelo</span><span class="sxs-lookup"><span data-stu-id="e3acb-121">Create a model class</span></span>
+### <a name="create-a-model-class"></a><span data-ttu-id="221ee-121">Creación de una clase de modelo</span><span class="sxs-lookup"><span data-stu-id="221ee-121">Create a model class</span></span>
 
-<span data-ttu-id="e3acb-122">Muchos de los ejemplos de este artículo utilizan una clase derivada de **TableEntity** llamada **CustomerEntity**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-122">Many of the examples in this article use a **TableEntity**-derived class called **CustomerEntity**.</span></span> <span data-ttu-id="e3acb-123">Los pasos siguientes lo guiarán por el proceso de declarar esta clase como una clase de modelo:</span><span class="sxs-lookup"><span data-stu-id="e3acb-123">The following steps guide you through declaring this class as a model class:</span></span>
+<span data-ttu-id="221ee-122">Muchos de los ejemplos de hello en este artículo utilizan un **TableEntity**-deriva la clase llamada **CustomerEntity**.</span><span class="sxs-lookup"><span data-stu-id="221ee-122">Many of hello examples in this article use a **TableEntity**-derived class called **CustomerEntity**.</span></span> <span data-ttu-id="221ee-123">Hola pasos guiarle por declarar esta clase como una clase de modelo:</span><span class="sxs-lookup"><span data-stu-id="221ee-123">hello following steps guide you through declaring this class as a model class:</span></span>
 
-1. <span data-ttu-id="e3acb-124">En el **Explorador de soluciones**, haga clic con el botón derecho en **Modelos** y, en el menú contextual, seleccione **Agregar > Clase**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-124">In the **Solution Explorer**, right-click **Models**, and, from the context menu, select **Add->Class**.</span></span>
+1. <span data-ttu-id="221ee-124">Hola **el Explorador de soluciones**, haga clic en **modelos**y, en el menú contextual de hello, seleccione **Agregar -> clase**.</span><span class="sxs-lookup"><span data-stu-id="221ee-124">In hello **Solution Explorer**, right-click **Models**, and, from hello context menu, select **Add->Class**.</span></span>
 
-1. <span data-ttu-id="e3acb-125">En el cuadro de diálogo **Agregar nuevo elemento**, denomine la clase **CustomerEntity**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-125">On the **Add New Item** dialog, name the class, **CustomerEntity**.</span></span>
+1. <span data-ttu-id="221ee-125">En hello **Agregar nuevo elemento** cuadro de diálogo, clase de nombre hello, **CustomerEntity**.</span><span class="sxs-lookup"><span data-stu-id="221ee-125">On hello **Add New Item** dialog, name hello class, **CustomerEntity**.</span></span>
 
-1. <span data-ttu-id="e3acb-126">Abra el archivo `CustomerEntity.cs` y agregue el siguiente la directiva **using**:</span><span class="sxs-lookup"><span data-stu-id="e3acb-126">Open the `CustomerEntity.cs` file, and add the following **using** directive:</span></span>
+1. <span data-ttu-id="221ee-126">Hola abierto `CustomerEntity.cs` de archivos y agregue Hola siguiente **con** directiva:</span><span class="sxs-lookup"><span data-stu-id="221ee-126">Open hello `CustomerEntity.cs` file, and add hello following **using** directive:</span></span>
 
     ```csharp
     using Microsoft.WindowsAzure.Storage.Table;
     ```
 
-1. <span data-ttu-id="e3acb-127">Modifique la clase para que, cuando termine, se declare como en el código siguiente.</span><span class="sxs-lookup"><span data-stu-id="e3acb-127">Modify the class so that, when finished, the class is declared as in the following code.</span></span> <span data-ttu-id="e3acb-128">La clase declara una clase de entidad llamada **CustomerEntity** que usa el nombre del cliente como clave de fila y el apellido como clave de partición.</span><span class="sxs-lookup"><span data-stu-id="e3acb-128">The class declares an entity class called **CustomerEntity** that uses the customer's first name as the row key and last name as the partition key.</span></span>
+1. <span data-ttu-id="221ee-127">Modificar clase hello para que, cuando termine, clase de Hola se declara como en el siguiente código de hello.</span><span class="sxs-lookup"><span data-stu-id="221ee-127">Modify hello class so that, when finished, hello class is declared as in hello following code.</span></span> <span data-ttu-id="221ee-128">clase Hello declara una clase de entidad denominada **CustomerEntity** que usa Hola nombre del cliente como clave de fila de Hola y last name como clave de partición de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-128">hello class declares an entity class called **CustomerEntity** that uses hello customer's first name as hello row key and last name as hello partition key.</span></span>
 
     ```csharp
     public class CustomerEntity : TableEntity
@@ -94,63 +94,63 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-## <a name="create-a-table"></a><span data-ttu-id="e3acb-129">Creación de una tabla</span><span class="sxs-lookup"><span data-stu-id="e3acb-129">Create a table</span></span>
+## <a name="create-a-table"></a><span data-ttu-id="221ee-129">Creación de una tabla</span><span class="sxs-lookup"><span data-stu-id="221ee-129">Create a table</span></span>
 
-<span data-ttu-id="e3acb-130">Los siguientes pasos muestran cómo crear una tabla:</span><span class="sxs-lookup"><span data-stu-id="e3acb-130">The following steps illustrate how to create a table:</span></span>
+<span data-ttu-id="221ee-130">Hello siguientes pasos muestran cómo toocreate una tabla:</span><span class="sxs-lookup"><span data-stu-id="221ee-130">hello following steps illustrate how toocreate a table:</span></span>
 
 > [!NOTE]
 > 
-> <span data-ttu-id="e3acb-131">En esta sección se da por supuesto que ha completado los pasos [Configuración del entorno de desarrollo](#set-up-the-development-environment).</span><span class="sxs-lookup"><span data-stu-id="e3acb-131">This section assumes you have completed the steps in [Set up the development environment](#set-up-the-development-environment).</span></span> 
+> <span data-ttu-id="221ee-131">En esta sección se da por supuesto que ha completado los pasos de hello en [configurar el entorno de desarrollo de hello](#set-up-the-development-environment).</span><span class="sxs-lookup"><span data-stu-id="221ee-131">This section assumes you have completed hello steps in [Set up hello development environment](#set-up-the-development-environment).</span></span> 
 
-1. <span data-ttu-id="e3acb-132">Abra el archivo `TablesController.cs` .</span><span class="sxs-lookup"><span data-stu-id="e3acb-132">Open the `TablesController.cs` file.</span></span>
+1. <span data-ttu-id="221ee-132">Abra hello `TablesController.cs` archivo.</span><span class="sxs-lookup"><span data-stu-id="221ee-132">Open hello `TablesController.cs` file.</span></span>
 
-1. <span data-ttu-id="e3acb-133">Agregue un método llamado **CreateTable** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-133">Add a method called **CreateTable** that returns an **ActionResult**.</span></span>
+1. <span data-ttu-id="221ee-133">Agregue un método llamado **CreateTable** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="221ee-133">Add a method called **CreateTable** that returns an **ActionResult**.</span></span>
 
     ```csharp
     public ActionResult CreateTable()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return View();
     }
     ```
 
-1. <span data-ttu-id="e3acb-134">Dentro del método **CreateTable**, obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="e3acb-134">Within the **CreateTable** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="e3acb-135">Utilice el código siguiente para obtener la información de cuenta de almacenamiento y la cadena de conexión de almacenamiento de la configuración del servicio de Azure: (cambie *&lt;storage-account-name>*  por el nombre de la cuenta de Azure Storage a la que está obteniendo acceso).</span><span class="sxs-lookup"><span data-stu-id="e3acb-135">Use the following code to get the storage connection string and storage account information from the Azure service configuration: (Change *&lt;storage-account-name>* to the name of the Azure storage account you're accessing.)</span></span>
+1. <span data-ttu-id="221ee-134">Dentro de hello **CreateTable** método, obtener una **CloudStorageAccount** objeto que representa la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="221ee-134">Within hello **CreateTable** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="221ee-135">Siguiente de Hola de uso de código tooget Hola almacenamiento cadena y almacenamiento cuenta información de conexión de configuración de servicio de Azure de hello: (cambio  *&lt;nombre de cuenta de almacenamiento >* toohello nombre del programa Hola a almacenamiento de Azure cuenta de que está obteniendo acceso.)</span><span class="sxs-lookup"><span data-stu-id="221ee-135">Use hello following code tooget hello storage connection string and storage account information from hello Azure service configuration: (Change *&lt;storage-account-name>* toohello name of hello Azure storage account you're accessing.)</span></span>
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. <span data-ttu-id="e3acb-136">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-136">Get a **CloudTableClient** object represents a table service client.</span></span>
+1. <span data-ttu-id="221ee-136">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-136">Get a **CloudTableClient** object represents a table service client.</span></span>
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. <span data-ttu-id="e3acb-137">Obtenga un objeto **CloudTable** que representa una referencia al nombre de tabla que desea.</span><span class="sxs-lookup"><span data-stu-id="e3acb-137">Get a **CloudTable** object that represents a reference to the desired table name.</span></span> <span data-ttu-id="e3acb-138">El método **CloudTableClient.GetTableReference** no hace ninguna solicitud en Table Storage.</span><span class="sxs-lookup"><span data-stu-id="e3acb-138">The **CloudTableClient.GetTableReference** method does not make a request against table storage.</span></span> <span data-ttu-id="e3acb-139">Se devuelve la referencia tanto si la tabla existe como si no.</span><span class="sxs-lookup"><span data-stu-id="e3acb-139">The reference is returned whether or not the table exists.</span></span> 
+1. <span data-ttu-id="221ee-137">Obtener un **CloudTable** objeto que representa un nombre de tabla que desee toohello de referencia.</span><span class="sxs-lookup"><span data-stu-id="221ee-137">Get a **CloudTable** object that represents a reference toohello desired table name.</span></span> <span data-ttu-id="221ee-138">Hola **CloudTableClient.GetTableReference** método no hace una solicitud en el almacenamiento de tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-138">hello **CloudTableClient.GetTableReference** method does not make a request against table storage.</span></span> <span data-ttu-id="221ee-139">referencia de Hola se devuelve si existe la tabla de Hola o no.</span><span class="sxs-lookup"><span data-stu-id="221ee-139">hello reference is returned whether or not hello table exists.</span></span> 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. <span data-ttu-id="e3acb-140">Llame a la **CloudTable.CreateIfNotExists** método para crear la tabla si aún no existe.</span><span class="sxs-lookup"><span data-stu-id="e3acb-140">Call the **CloudTable.CreateIfNotExists** method to create the table if it does not yet exist.</span></span> <span data-ttu-id="e3acb-141">El método **CloudTable.CreateIfNotExists** devuelve **True** si la tabla no existe y se ha creado correctamente.</span><span class="sxs-lookup"><span data-stu-id="e3acb-141">The **CloudTable.CreateIfNotExists** method returns **true** if the table does not exist, and is successfully created.</span></span> <span data-ttu-id="e3acb-142">En caso contrario, se devuelve **False**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-142">Otherwise, **false** is returned.</span></span>    
+1. <span data-ttu-id="221ee-140">Llamar a hello **CloudTable.CreateIfNotExists** tabla de hello toocreate del método si aún no existe.</span><span class="sxs-lookup"><span data-stu-id="221ee-140">Call hello **CloudTable.CreateIfNotExists** method toocreate hello table if it does not yet exist.</span></span> <span data-ttu-id="221ee-141">Hola **CloudTable.CreateIfNotExists** método **true** si la tabla de hello no existe y se haya creado correctamente.</span><span class="sxs-lookup"><span data-stu-id="221ee-141">hello **CloudTable.CreateIfNotExists** method returns **true** if hello table does not exist, and is successfully created.</span></span> <span data-ttu-id="221ee-142">En caso contrario, se devuelve **false**.</span><span class="sxs-lookup"><span data-stu-id="221ee-142">Otherwise, **false** is returned.</span></span>    
 
     ```csharp
     ViewBag.Success = table.CreateIfNotExists();
     ```
 
-1. <span data-ttu-id="e3acb-143">Actualice **ViewBag** con el nombre de la tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-143">Update the **ViewBag** with the name of the table.</span></span>
+1. <span data-ttu-id="221ee-143">Hola de actualización **ViewBag** por nombre de Hola de tabla de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-143">Update hello **ViewBag** with hello name of hello table.</span></span>
 
     ```csharp
     ViewBag.TableName = table.Name;
     ```
 
-1. <span data-ttu-id="e3acb-144">En el **Explorador de soluciones**, expanda la carpeta **Vistas**, haga clic con el botón derecho en **Tables** y, en el menú contextual, seleccione **Agregar > Vista**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-144">In the **Solution Explorer**, expand the **Views** folder, right-click **Tables**, and from the context menu, select **Add->View**.</span></span>
+1. <span data-ttu-id="221ee-144">Hola **el Explorador de soluciones**, expanda hello **vistas** carpeta, haga clic en **tablas**y en el menú contextual de hello, seleccione **Agregar -> vista**.</span><span class="sxs-lookup"><span data-stu-id="221ee-144">In hello **Solution Explorer**, expand hello **Views** folder, right-click **Tables**, and from hello context menu, select **Add->View**.</span></span>
 
-1. <span data-ttu-id="e3acb-145">En el cuadro de diálogo **Agregar vista**, escriba **CreateTable** como nombre de vista y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-145">On the **Add View** dialog, enter **CreateTable** for the view name, and select **Add**.</span></span>
+1. <span data-ttu-id="221ee-145">En hello **agregar vista** cuadro de diálogo, escriba **CreateTable** de nombre de la vista de Hola y seleccione **agregar**.</span><span class="sxs-lookup"><span data-stu-id="221ee-145">On hello **Add View** dialog, enter **CreateTable** for hello view name, and select **Add**.</span></span>
 
-1. <span data-ttu-id="e3acb-146">Abra `CreateTable.cshtml` y modifíquelo de modo que se parezca al siguiente fragmento de código:</span><span class="sxs-lookup"><span data-stu-id="e3acb-146">Open `CreateTable.cshtml`, and modify it so that it looks like the following code snippet:</span></span>
+1. <span data-ttu-id="221ee-146">Abra `CreateTable.cshtml`y modifíquelo para que se parezca al siguiente fragmento de código de hello:</span><span class="sxs-lookup"><span data-stu-id="221ee-146">Open `CreateTable.cshtml`, and modify it so that it looks like hello following code snippet:</span></span>
 
     ```csharp
     @{
@@ -162,98 +162,98 @@ ms.lasthandoff: 08/03/2017
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. <span data-ttu-id="e3acb-147">En el **Explorador de soluciones**, expanda la carpeta **Vistas->Compartido** y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="e3acb-147">In the **Solution Explorer**, expand the **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
+1. <span data-ttu-id="221ee-147">Hola **el Explorador de soluciones**, expanda hello **vistas -> Shared** carpeta y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="221ee-147">In hello **Solution Explorer**, expand hello **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
 
-1. <span data-ttu-id="e3acb-148">Después del último **Html.ActionLink**, agregue el siguiente **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="e3acb-148">After the last **Html.ActionLink**, add the following **Html.ActionLink**:</span></span>
+1. <span data-ttu-id="221ee-148">Después de hello última **Html.ActionLink**, agregue los siguientes hello **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="221ee-148">After hello last **Html.ActionLink**, add hello following **Html.ActionLink**:</span></span>
 
     ```html
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. <span data-ttu-id="e3acb-149">Ejecute la aplicación y seleccione **Crear tabla** para ver resultados similares a la siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="e3acb-149">Run the application, and select **Create table** to see results similar to the following screen shot:</span></span>
+1. <span data-ttu-id="221ee-149">Ejecute la aplicación hello y seleccione **crear una tabla** toosee resultados similar toohello siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="221ee-149">Run hello application, and select **Create table** toosee results similar toohello following screen shot:</span></span>
   
     ![Crear tabla](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    <span data-ttu-id="e3acb-151">Como se dijo anteriormente, el método **CloudTable.CreateIfNotExists** devuelve **true** solo si la tabla no existía, pero se creó.</span><span class="sxs-lookup"><span data-stu-id="e3acb-151">As mentioned previously, the **CloudTable.CreateIfNotExists** method returns **true** only when the table doesn't exist and is created.</span></span> <span data-ttu-id="e3acb-152">Por lo tanto, si se ejecuta la aplicación cuando la tabla existe, el método devuelve **False**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-152">Therefore, if you run the app when the table exists, the method returns **false**.</span></span> <span data-ttu-id="e3acb-153">Para ejecutar la aplicación varias veces, debe eliminar la tabla antes de ejecutar la aplicación de nuevo.</span><span class="sxs-lookup"><span data-stu-id="e3acb-153">To run the app multiple times, you must delete the table before running the app again.</span></span> <span data-ttu-id="e3acb-154">La eliminación de la tabla puede realizarse a través del método **CloudTable.Delete**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-154">Deleting the table can be done via the **CloudTable.Delete** method.</span></span> <span data-ttu-id="e3acb-155">También puede eliminar la tabla mediante [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) o [el Explorador de Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).</span><span class="sxs-lookup"><span data-stu-id="e3acb-155">You can also delete the table using the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) or the [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).</span></span>  
+    <span data-ttu-id="221ee-151">Tal y como se mencionó anteriormente, Hola **CloudTable.CreateIfNotExists** método **true** sólo cuando la tabla de hello no existe y se crea.</span><span class="sxs-lookup"><span data-stu-id="221ee-151">As mentioned previously, hello **CloudTable.CreateIfNotExists** method returns **true** only when hello table doesn't exist and is created.</span></span> <span data-ttu-id="221ee-152">Por lo tanto, si ejecuta la aplicación hello cuando Hola tabla existe, método hello devuelve **false**.</span><span class="sxs-lookup"><span data-stu-id="221ee-152">Therefore, if you run hello app when hello table exists, hello method returns **false**.</span></span> <span data-ttu-id="221ee-153">aplicación de hello toorun varias veces, debe eliminar tabla Hola antes de ejecutar la aplicación hello nuevo.</span><span class="sxs-lookup"><span data-stu-id="221ee-153">toorun hello app multiple times, you must delete hello table before running hello app again.</span></span> <span data-ttu-id="221ee-154">Eliminar tabla de hello puede realizarse a través de hello **CloudTable.Delete** método.</span><span class="sxs-lookup"><span data-stu-id="221ee-154">Deleting hello table can be done via hello **CloudTable.Delete** method.</span></span> <span data-ttu-id="221ee-155">También puede eliminar tabla de hello mediante hello [portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) o hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).</span><span class="sxs-lookup"><span data-stu-id="221ee-155">You can also delete hello table using hello [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) or hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).</span></span>  
 
-## <a name="add-an-entity-to-a-table"></a><span data-ttu-id="e3acb-156">Adición de una entidad a una tabla</span><span class="sxs-lookup"><span data-stu-id="e3acb-156">Add an entity to a table</span></span>
+## <a name="add-an-entity-tooa-table"></a><span data-ttu-id="221ee-156">Agregar una tabla de tooa de entidad</span><span class="sxs-lookup"><span data-stu-id="221ee-156">Add an entity tooa table</span></span>
 
-<span data-ttu-id="e3acb-157">Las *entidades* se asignan a objetos C\# utilizando una clase personalizada derivada de **TableEntity**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-157">*Entities* map to C\# objects by using a custom class derived from **TableEntity**.</span></span> <span data-ttu-id="e3acb-158">Para agregar una entidad a una tabla, cree una clase que defina las propiedades de la entidad.</span><span class="sxs-lookup"><span data-stu-id="e3acb-158">To add an entity to a table, create a class that defines the properties of your entity.</span></span> <span data-ttu-id="e3acb-159">En esta sección, descubrirá cómo definir una clase de entidad que utiliza el nombre de pila del cliente como clave de fila y el apellido como clave de partición.</span><span class="sxs-lookup"><span data-stu-id="e3acb-159">In this section, you'll see how to define an entity class that uses the customer's first name as the row key and last name as the partition key.</span></span> <span data-ttu-id="e3acb-160">En conjunto, la clave de partición y la clave de fila de una entidad la identifican inequívocamente en la tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-160">Together, an entity's partition and row key uniquely identify the entity in the table.</span></span> <span data-ttu-id="e3acb-161">Las entidades con la misma clave de partición pueden consultarse más rápidamente que aquellas con diferentes claves de partición, pero el uso de claves de partición diversas permite una mayor escalabilidad de las operaciones paralelas.</span><span class="sxs-lookup"><span data-stu-id="e3acb-161">Entities with the same partition key can be queried faster than entities with different partition keys, but using diverse partition keys allows for greater scalability of parallel operations.</span></span> <span data-ttu-id="e3acb-162">Toda propiedad que deba almacenarse en Table service debe ser una propiedad pública de un tipo compatible que exponga tanto el establecimiento como la recuperación de valores.</span><span class="sxs-lookup"><span data-stu-id="e3acb-162">For any property that should be stored in the table service, the property must be a public property of a supported type that exposes both setting and retrieving values.</span></span>
-<span data-ttu-id="e3acb-163">La clase de entidad *must* declara un constructor sin parámetros público.</span><span class="sxs-lookup"><span data-stu-id="e3acb-163">The entity class *must* declare a public parameter-less constructor.</span></span>
+<span data-ttu-id="221ee-157">*Entidades* asignar tooC\# objetos mediante el uso de una clase personalizada derivan de **TableEntity**.</span><span class="sxs-lookup"><span data-stu-id="221ee-157">*Entities* map tooC\# objects by using a custom class derived from **TableEntity**.</span></span> <span data-ttu-id="221ee-158">tooadd una tabla de tooa de entidad, cree una clase que define las propiedades de saludo de la entidad.</span><span class="sxs-lookup"><span data-stu-id="221ee-158">tooadd an entity tooa table, create a class that defines hello properties of your entity.</span></span> <span data-ttu-id="221ee-159">En esta sección, podrá ver cómo toodefine una clase de entidad que utiliza Hola nombre del cliente como clave de fila de Hola y last name como clave de partición de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-159">In this section, you'll see how toodefine an entity class that uses hello customer's first name as hello row key and last name as hello partition key.</span></span> <span data-ttu-id="221ee-160">Juntos, partición de una entidad y la clave de fila identifican entidad de hello en la tabla de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-160">Together, an entity's partition and row key uniquely identify hello entity in hello table.</span></span> <span data-ttu-id="221ee-161">Las entidades con la misma clave de partición pueden consultarse más rápidamente que aquellas con diferentes claves de partición, pero el uso de claves de partición diversas permite una mayor escalabilidad de las operaciones paralelas.</span><span class="sxs-lookup"><span data-stu-id="221ee-161">Entities with the same partition key can be queried faster than entities with different partition keys, but using diverse partition keys allows for greater scalability of parallel operations.</span></span> <span data-ttu-id="221ee-162">Para cualquier propiedad que se debe almacenar en el servicio de la tabla de hello, propiedad Hola debe ser una propiedad pública de un tipo admitido que expone tanto establecer y recuperar valores.</span><span class="sxs-lookup"><span data-stu-id="221ee-162">For any property that should be stored in hello table service, hello property must be a public property of a supported type that exposes both setting and retrieving values.</span></span>
+<span data-ttu-id="221ee-163">clase de entidad de Hola *debe* declarar un constructor sin parámetros público.</span><span class="sxs-lookup"><span data-stu-id="221ee-163">hello entity class *must* declare a public parameter-less constructor.</span></span>
 
 > [!NOTE]
 > 
-> <span data-ttu-id="e3acb-164">En esta sección se da por supuesto que ha completado los pasos [Configuración del entorno de desarrollo](#set-up-the-development-environment).</span><span class="sxs-lookup"><span data-stu-id="e3acb-164">This section assumes you have completed the steps in [Set up the development environment](#set-up-the-development-environment).</span></span>
+> <span data-ttu-id="221ee-164">En esta sección se da por supuesto que ha completado los pasos de hello en [configurar el entorno de desarrollo de hello](#set-up-the-development-environment).</span><span class="sxs-lookup"><span data-stu-id="221ee-164">This section assumes you have completed hello steps in [Set up hello development environment](#set-up-the-development-environment).</span></span>
 
-1. <span data-ttu-id="e3acb-165">Abra el archivo `TablesController.cs` .</span><span class="sxs-lookup"><span data-stu-id="e3acb-165">Open the `TablesController.cs` file.</span></span>
+1. <span data-ttu-id="221ee-165">Abra hello `TablesController.cs` archivo.</span><span class="sxs-lookup"><span data-stu-id="221ee-165">Open hello `TablesController.cs` file.</span></span>
 
-1. <span data-ttu-id="e3acb-166">Agregue la siguiente directiva para que el código del archivo `TablesController.cs` pueda tener acceso a la clase **CustomerEntity**:</span><span class="sxs-lookup"><span data-stu-id="e3acb-166">Add the following directive so that the code in the `TablesController.cs` file can access the **CustomerEntity** class:</span></span>
+1. <span data-ttu-id="221ee-166">Agregar Hola después de la directiva para que Hola código de hello `TablesController.cs` archivo puede tener acceso a hello **CustomerEntity** clase:</span><span class="sxs-lookup"><span data-stu-id="221ee-166">Add hello following directive so that hello code in hello `TablesController.cs` file can access hello **CustomerEntity** class:</span></span>
 
     ```csharp
     using StorageAspnet.Models;
     ```
 
-1. <span data-ttu-id="e3acb-167">Agregue un método llamado **AddEntity** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-167">Add a method called **AddEntity** that returns an **ActionResult**.</span></span>
+1. <span data-ttu-id="221ee-167">Agregue un método llamado **AddEntity** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="221ee-167">Add a method called **AddEntity** that returns an **ActionResult**.</span></span>
 
     ```csharp
     public ActionResult AddEntity()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return View();
     }
     ```
 
-1. <span data-ttu-id="e3acb-168">Dentro del método **AddEntity**, obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="e3acb-168">Within the **AddEntity** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="e3acb-169">Utilice el código siguiente para obtener la información de cuenta de almacenamiento y la cadena de conexión de almacenamiento de la configuración del servicio de Azure: (cambie *&lt;storage-account-name>*  por el nombre de la cuenta de Azure Storage a la que está obteniendo acceso).</span><span class="sxs-lookup"><span data-stu-id="e3acb-169">Use the following code to get the storage connection string and storage account information from the Azure service configuration: (Change *&lt;storage-account-name>* to the name of the Azure storage account you're accessing.)</span></span>
+1. <span data-ttu-id="221ee-168">Dentro de hello **AddEntity** método, obtener una **CloudStorageAccount** objeto que representa la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="221ee-168">Within hello **AddEntity** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="221ee-169">Siguiente de Hola de uso de código tooget Hola almacenamiento cadena y almacenamiento cuenta información de conexión de configuración de servicio de Azure de hello: (cambio  *&lt;nombre de cuenta de almacenamiento >* toohello nombre del programa Hola a almacenamiento de Azure cuenta de que está obteniendo acceso.)</span><span class="sxs-lookup"><span data-stu-id="221ee-169">Use hello following code tooget hello storage connection string and storage account information from hello Azure service configuration: (Change *&lt;storage-account-name>* toohello name of hello Azure storage account you're accessing.)</span></span>
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. <span data-ttu-id="e3acb-170">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-170">Get a **CloudTableClient** object represents a table service client.</span></span>
+1. <span data-ttu-id="221ee-170">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-170">Get a **CloudTableClient** object represents a table service client.</span></span>
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. <span data-ttu-id="e3acb-171">Obtenga un objeto **CloudTable** que represente una referencia a la tabla a la que va a agregar la nueva entidad.</span><span class="sxs-lookup"><span data-stu-id="e3acb-171">Get a **CloudTable** object that represents a reference to the table to which you are going to add the new entity.</span></span> 
+1. <span data-ttu-id="221ee-171">Obtener un **CloudTable** objeto que representa un toowhich de tabla de referencia toohello va nueva entidad de tooadd Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-171">Get a **CloudTable** object that represents a reference toohello table toowhich you are going tooadd hello new entity.</span></span> 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. <span data-ttu-id="e3acb-172">Cree instancias e inicialice la clase **CustomerEntity**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-172">Instantiate and initialize the **CustomerEntity** class.</span></span>
+1. <span data-ttu-id="221ee-172">Crear instancias e inicializar hello **CustomerEntity** clase.</span><span class="sxs-lookup"><span data-stu-id="221ee-172">Instantiate and initialize hello **CustomerEntity** class.</span></span>
 
     ```csharp
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
     customer1.Email = "Walter@contoso.com";
     ```
 
-1. <span data-ttu-id="e3acb-173">Cree el objeto **TableOperation** que inserta la entidad del cliente.</span><span class="sxs-lookup"><span data-stu-id="e3acb-173">Create a **TableOperation** object that inserts the customer entity.</span></span>
+1. <span data-ttu-id="221ee-173">Crear un **TableOperation** objeto que inserta la entidad customer ya Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-173">Create a **TableOperation** object that inserts hello customer entity.</span></span>
 
     ```csharp
     TableOperation insertOperation = TableOperation.Insert(customer1);
     ```
 
-1. <span data-ttu-id="e3acb-174">Ejecute la operación de inserción mediante una llamada al método **CloudTable.Execute**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-174">Execute the insert operation by calling the **CloudTable.Execute** method.</span></span> <span data-ttu-id="e3acb-175">Puede comprobar el resultado de la operación inspeccionando la propiedad **TableResult.HttpStatusCode**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-175">You can verify the result of the operation by inspecting the **TableResult.HttpStatusCode** property.</span></span> <span data-ttu-id="e3acb-176">Un código de estado de 2xx indica que la acción solicitada por el cliente se procesó correctamente.</span><span class="sxs-lookup"><span data-stu-id="e3acb-176">A status code of 2xx indicates the action requested by the client was processed successfully.</span></span> <span data-ttu-id="e3acb-177">Por ejemplo, las inserciones correctas de las nuevas entidades dan lugar a un código de estado HTTP de 204, lo que significa que la operación se procesó correctamente y el servidor no devolvió ningún contenido.</span><span class="sxs-lookup"><span data-stu-id="e3acb-177">For example, successful insertions of new entities results in an HTTP status code of 204, meaning that the operation was successfully processed and the server did not return any content.</span></span>
+1. <span data-ttu-id="221ee-174">Ejecutar la operación de inserción de Hola por Hola que realiza la llamada **CloudTable.Execute** método.</span><span class="sxs-lookup"><span data-stu-id="221ee-174">Execute hello insert operation by calling hello **CloudTable.Execute** method.</span></span> <span data-ttu-id="221ee-175">Puede comprobar el resultado de hello de operación de hello inspeccionando hello **TableResult.HttpStatusCode** propiedad.</span><span class="sxs-lookup"><span data-stu-id="221ee-175">You can verify hello result of hello operation by inspecting hello **TableResult.HttpStatusCode** property.</span></span> <span data-ttu-id="221ee-176">Un código de estado de 2xx indica la acción de hello solicitada por el cliente de Hola se procesó correctamente.</span><span class="sxs-lookup"><span data-stu-id="221ee-176">A status code of 2xx indicates hello action requested by hello client was processed successfully.</span></span> <span data-ttu-id="221ee-177">Por ejemplo, correcta las inserciones de nuevas entidades da como resultado un código de estado HTTP 204, lo que significa que se procesó correctamente la operación de Hola y Hola servidor no devolvió ningún contenido.</span><span class="sxs-lookup"><span data-stu-id="221ee-177">For example, successful insertions of new entities results in an HTTP status code of 204, meaning that hello operation was successfully processed and hello server did not return any content.</span></span>
 
     ```csharp
     TableResult result = table.Execute(insertOperation);
     ```
 
-1. <span data-ttu-id="e3acb-178">Actualice **ViewBag** con el nombre de tabla y los resultados de la operación de inserción.</span><span class="sxs-lookup"><span data-stu-id="e3acb-178">Update the **ViewBag** with the table name, and the results of the insert operation.</span></span>
+1. <span data-ttu-id="221ee-178">Hola de actualización **ViewBag** con nombre de la tabla de Hola y Hola resultados de operación de inserción de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-178">Update hello **ViewBag** with hello table name, and hello results of hello insert operation.</span></span>
 
     ```csharp
     ViewBag.TableName = table.Name;
     ViewBag.Result = result.HttpStatusCode;
     ```
 
-1. <span data-ttu-id="e3acb-179">En el **Explorador de soluciones**, expanda la carpeta **Vistas**, haga clic con el botón derecho en **Tables** y, en el menú contextual, seleccione **Agregar > Vista**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-179">In the **Solution Explorer**, expand the **Views** folder, right-click **Tables**, and from the context menu, select **Add->View**.</span></span>
+1. <span data-ttu-id="221ee-179">Hola **el Explorador de soluciones**, expanda hello **vistas** carpeta, haga clic en **tablas**y en el menú contextual de hello, seleccione **Agregar -> vista**.</span><span class="sxs-lookup"><span data-stu-id="221ee-179">In hello **Solution Explorer**, expand hello **Views** folder, right-click **Tables**, and from hello context menu, select **Add->View**.</span></span>
 
-1. <span data-ttu-id="e3acb-180">En el cuadro de diálogo **Agregar vista**, escriba **AddEntity** como nombre de vista y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-180">On the **Add View** dialog, enter **AddEntity** for the view name, and select **Add**.</span></span>
+1. <span data-ttu-id="221ee-180">En hello **agregar vista** cuadro de diálogo, escriba **AddEntity** de nombre de la vista de Hola y seleccione **agregar**.</span><span class="sxs-lookup"><span data-stu-id="221ee-180">On hello **Add View** dialog, enter **AddEntity** for hello view name, and select **Add**.</span></span>
 
-1. <span data-ttu-id="e3acb-181">Abra `AddEntity.cshtml` y modifíquelo de modo que se parezca al siguiente fragmento de código:</span><span class="sxs-lookup"><span data-stu-id="e3acb-181">Open `AddEntity.cshtml`, and modify it so that it looks like the following code snippet:</span></span>
+1. <span data-ttu-id="221ee-181">Abra `AddEntity.cshtml`y modifíquelo para que se parezca al siguiente fragmento de código de hello:</span><span class="sxs-lookup"><span data-stu-id="221ee-181">Open `AddEntity.cshtml`, and modify it so that it looks like hello following code snippet:</span></span>
 
     ```csharp
     @{
@@ -264,61 +264,61 @@ ms.lasthandoff: 08/03/2017
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. <span data-ttu-id="e3acb-182">En el **Explorador de soluciones**, expanda la carpeta **Vistas->Compartido** y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="e3acb-182">In the **Solution Explorer**, expand the **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
+1. <span data-ttu-id="221ee-182">Hola **el Explorador de soluciones**, expanda hello **vistas -> Shared** carpeta y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="221ee-182">In hello **Solution Explorer**, expand hello **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
 
-1. <span data-ttu-id="e3acb-183">Después del último **Html.ActionLink**, agregue el siguiente **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="e3acb-183">After the last **Html.ActionLink**, add the following **Html.ActionLink**:</span></span>
+1. <span data-ttu-id="221ee-183">Después de hello última **Html.ActionLink**, agregue los siguientes hello **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="221ee-183">After hello last **Html.ActionLink**, add hello following **Html.ActionLink**:</span></span>
 
     ```html
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. <span data-ttu-id="e3acb-184">Ejecute la aplicación y seleccione **Agregar entidad** para ver resultados similares a la siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="e3acb-184">Run the application, and select **Add entity** to see results similar to the following screen shot:</span></span>
+1. <span data-ttu-id="221ee-184">Ejecute la aplicación hello y seleccione **Agregar entidad** toosee resultados similar toohello siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="221ee-184">Run hello application, and select **Add entity** toosee results similar toohello following screen shot:</span></span>
   
     ![Agregar entidad](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
-    <span data-ttu-id="e3acb-186">Puede comprobar que se ha agregado la entidad siguiendo los pasos descritos en la sección [Obtención de una sola entidad](#get-a-single-entity).</span><span class="sxs-lookup"><span data-stu-id="e3acb-186">You can verify that the entity was added by following the steps in the section, [Get a single entity](#get-a-single-entity).</span></span> <span data-ttu-id="e3acb-187">También puede usar [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) para ver todas las entidades de las tablas.</span><span class="sxs-lookup"><span data-stu-id="e3acb-187">You can also use the [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) to view all the entities for your tables.</span></span>
+    <span data-ttu-id="221ee-186">Puede comprobar que se ha agregado la entidad de hello siguiendo los pasos de hello en la sección de hello, [obtener una sola entidad](#get-a-single-entity).</span><span class="sxs-lookup"><span data-stu-id="221ee-186">You can verify that hello entity was added by following hello steps in hello section, [Get a single entity](#get-a-single-entity).</span></span> <span data-ttu-id="221ee-187">También puede usar hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) tooview todos Hola entidades para las tablas.</span><span class="sxs-lookup"><span data-stu-id="221ee-187">You can also use hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) tooview all hello entities for your tables.</span></span>
 
-## <a name="add-a-batch-of-entities-to-a-table"></a><span data-ttu-id="e3acb-188">Incorporación de un lote de entidades a una tabla</span><span class="sxs-lookup"><span data-stu-id="e3acb-188">Add a batch of entities to a table</span></span>
+## <a name="add-a-batch-of-entities-tooa-table"></a><span data-ttu-id="221ee-188">Agregar un lote de la tabla de entidades tooa</span><span class="sxs-lookup"><span data-stu-id="221ee-188">Add a batch of entities tooa table</span></span>
 
-<span data-ttu-id="e3acb-189">Además de poder [agregar una entidad a una tabla de una en una](#add-an-entity-to-a-table), también puede agregar entidades por lotes.</span><span class="sxs-lookup"><span data-stu-id="e3acb-189">In addition to being able to [add an entity to a table one at a time](#add-an-entity-to-a-table), you can also add entities in batch.</span></span> <span data-ttu-id="e3acb-190">Esto reduce de forma masiva el número de idas y vueltas entre el código y Azure Table service.</span><span class="sxs-lookup"><span data-stu-id="e3acb-190">Adding entities in batch reduces the number of round-trips between your code and the Azure table service.</span></span> <span data-ttu-id="e3acb-191">Los siguientes pasos muestran cómo agregar varias entidades a una tabla con una sola operación de inserción:</span><span class="sxs-lookup"><span data-stu-id="e3acb-191">The following steps illustrate how to add multiple entities to a table with a single insert operation:</span></span>
+<span data-ttu-id="221ee-189">En suma toobeing pueda demasiado[agregar una tabla de tooa de entidad uno a la vez](#add-an-entity-to-a-table), también puede agregar entidades en lote.</span><span class="sxs-lookup"><span data-stu-id="221ee-189">In addition toobeing able too[add an entity tooa table one at a time](#add-an-entity-to-a-table), you can also add entities in batch.</span></span> <span data-ttu-id="221ee-190">Agregar entidades en lotes reduce el número de Hola de ida y vuelta entre el código y Hola servicio tabla de Azure.</span><span class="sxs-lookup"><span data-stu-id="221ee-190">Adding entities in batch reduces hello number of round-trips between your code and hello Azure table service.</span></span> <span data-ttu-id="221ee-191">Hola pasos muestra cómo tooadd tooa de varias entidades de la tabla con una operación única instrucción insert:</span><span class="sxs-lookup"><span data-stu-id="221ee-191">hello following steps illustrate how tooadd multiple entities tooa table with a single insert operation:</span></span>
 
 > [!NOTE]
 > 
-> <span data-ttu-id="e3acb-192">En esta sección se da por supuesto que ha completado los pasos [Configuración del entorno de desarrollo](#set-up-the-development-environment).</span><span class="sxs-lookup"><span data-stu-id="e3acb-192">This section assumes you have completed the steps in [Set up the development environment](#set-up-the-development-environment).</span></span>
+> <span data-ttu-id="221ee-192">En esta sección se da por supuesto que ha completado los pasos de hello en [configurar el entorno de desarrollo de hello](#set-up-the-development-environment).</span><span class="sxs-lookup"><span data-stu-id="221ee-192">This section assumes you have completed hello steps in [Set up hello development environment](#set-up-the-development-environment).</span></span>
 
-1. <span data-ttu-id="e3acb-193">Abra el archivo `TablesController.cs` .</span><span class="sxs-lookup"><span data-stu-id="e3acb-193">Open the `TablesController.cs` file.</span></span>
+1. <span data-ttu-id="221ee-193">Abra hello `TablesController.cs` archivo.</span><span class="sxs-lookup"><span data-stu-id="221ee-193">Open hello `TablesController.cs` file.</span></span>
 
-1. <span data-ttu-id="e3acb-194">Agregue un método llamado **AddEntities** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-194">Add a method called **AddEntities** that returns an **ActionResult**.</span></span>
+1. <span data-ttu-id="221ee-194">Agregue un método llamado **AddEntities** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="221ee-194">Add a method called **AddEntities** that returns an **ActionResult**.</span></span>
 
     ```csharp
     public ActionResult AddEntities()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return View();
     }
     ```
 
-1. <span data-ttu-id="e3acb-195">Dentro del método **AddEntities**, obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="e3acb-195">Within the **AddEntities** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="e3acb-196">Utilice el código siguiente para obtener la información de cuenta de almacenamiento y la cadena de conexión de almacenamiento de la configuración del servicio de Azure: (cambie *&lt;storage-account-name>*  por el nombre de la cuenta de Azure Storage a la que está obteniendo acceso).</span><span class="sxs-lookup"><span data-stu-id="e3acb-196">Use the following code to get the storage connection string and storage account information from the Azure service configuration: (Change *&lt;storage-account-name>* to the name of the Azure storage account you're accessing.)</span></span>
+1. <span data-ttu-id="221ee-195">Dentro de hello **AddEntities** método, obtener una **CloudStorageAccount** objeto que representa la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="221ee-195">Within hello **AddEntities** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="221ee-196">Siguiente de Hola de uso de código tooget Hola almacenamiento cadena y almacenamiento cuenta información de conexión de configuración de servicio de Azure de hello: (cambio  *&lt;nombre de cuenta de almacenamiento >* toohello nombre del programa Hola a almacenamiento de Azure cuenta de que está obteniendo acceso.)</span><span class="sxs-lookup"><span data-stu-id="221ee-196">Use hello following code tooget hello storage connection string and storage account information from hello Azure service configuration: (Change *&lt;storage-account-name>* toohello name of hello Azure storage account you're accessing.)</span></span>
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. <span data-ttu-id="e3acb-197">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-197">Get a **CloudTableClient** object represents a table service client.</span></span>
+1. <span data-ttu-id="221ee-197">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-197">Get a **CloudTableClient** object represents a table service client.</span></span>
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. <span data-ttu-id="e3acb-198">Obtenga un objeto **CloudTable** que represente una referencia a la tabla a la que va a agregar las nuevas entidades.</span><span class="sxs-lookup"><span data-stu-id="e3acb-198">Get a **CloudTable** object that represents a reference to the table to which you are going to add the new entities.</span></span> 
+1. <span data-ttu-id="221ee-198">Obtener un **CloudTable** objeto que representa un toowhich de tabla de referencia toohello son nuevas entidades de curso tooadd Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-198">Get a **CloudTable** object that represents a reference toohello table toowhich you are going tooadd hello new entities.</span></span> 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. <span data-ttu-id="e3acb-199">Cree instancias de algunos objetos de cliente basados en la clase de modelo **CustomerEntity** de la sección [Adición de una entidad a una tabla](#add-an-entity-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="e3acb-199">Instantiate some customer objects based on the **CustomerEntity** model class presented in the section, [Add an entity to a table](#add-an-entity-to-a-table).</span></span>
+1. <span data-ttu-id="221ee-199">Crear instancias de algunos objetos de cliente en función de hello **CustomerEntity** clase presentada en la sección de hello, modelo [agregar una tabla de tooa de entidad](#add-an-entity-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="221ee-199">Instantiate some customer objects based on hello **CustomerEntity** model class presented in hello section, [Add an entity tooa table](#add-an-entity-to-a-table).</span></span>
 
     ```csharp
     CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
@@ -328,36 +328,36 @@ ms.lasthandoff: 08/03/2017
     customer2.Email = "Ben@contoso.com";
     ```
 
-1. <span data-ttu-id="e3acb-200">Obtenga un objeto **TableBatchOperation**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-200">Get a **TableBatchOperation** object.</span></span>
+1. <span data-ttu-id="221ee-200">Obtenga un objeto **TableBatchOperation**.</span><span class="sxs-lookup"><span data-stu-id="221ee-200">Get a **TableBatchOperation** object.</span></span>
 
     ```csharp
     TableBatchOperation batchOperation = new TableBatchOperation();
     ```
 
-1. <span data-ttu-id="e3acb-201">Agregue entidades al objeto de operación de inserción de por lotes.</span><span class="sxs-lookup"><span data-stu-id="e3acb-201">Add entities to the batch insert operation object.</span></span>
+1. <span data-ttu-id="221ee-201">Agregue el objeto de lote de entidades toohello operación insert.</span><span class="sxs-lookup"><span data-stu-id="221ee-201">Add entities toohello batch insert operation object.</span></span>
 
     ```csharp
     batchOperation.Insert(customer1);
     batchOperation.Insert(customer2);
     ```
 
-1. <span data-ttu-id="e3acb-202">Ejecute la operación de inserción por lotes mediante una llamada al método **CloudTable.ExecuteBatch**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-202">Execute the batch insert operation by calling the **CloudTable.ExecuteBatch** method.</span></span>   
+1. <span data-ttu-id="221ee-202">Ejecutar operación de inserción de lote de Hola Hola llamada **CloudTable.ExecuteBatch** método.</span><span class="sxs-lookup"><span data-stu-id="221ee-202">Execute hello batch insert operation by calling hello **CloudTable.ExecuteBatch** method.</span></span>   
 
     ```csharp
     IList<TableResult> results = table.ExecuteBatch(batchOperation);
     ```
 
-1. <span data-ttu-id="e3acb-203">El método **CloudTable.ExecuteBatch** devuelve una lista de objetos **TableResult** donde cada **TableResult** se puede examinar para determinar el éxito o el fracaso de cada operación individual.</span><span class="sxs-lookup"><span data-stu-id="e3acb-203">The **CloudTable.ExecuteBatch** method returns a list of **TableResult** objects where each **TableResult** object can be examined to determine the success or failure of each individual operation.</span></span> <span data-ttu-id="e3acb-204">En este ejemplo, pase la lista a una vista y permita que se muestren los resultados de cada operación.</span><span class="sxs-lookup"><span data-stu-id="e3acb-204">For this example, pass the list to a view and let the view display the results of each operation.</span></span> 
+1. <span data-ttu-id="221ee-203">Hola **CloudTable.ExecuteBatch** método devuelve una lista de **TableResult** objetos donde cada **TableResult** objeto puede ser examinado toodetermine Hola éxito o error de cada operación individual.</span><span class="sxs-lookup"><span data-stu-id="221ee-203">hello **CloudTable.ExecuteBatch** method returns a list of **TableResult** objects where each **TableResult** object can be examined toodetermine hello success or failure of each individual operation.</span></span> <span data-ttu-id="221ee-204">En este ejemplo, pasar la vista de lista tooa de Hola y deje que vista Hola mostrar resultados de Hola de cada operación.</span><span class="sxs-lookup"><span data-stu-id="221ee-204">For this example, pass hello list tooa view and let hello view display hello results of each operation.</span></span> 
  
     ```csharp
     return View(results);
     ```
 
-1. <span data-ttu-id="e3acb-205">En el **Explorador de soluciones**, expanda la carpeta **Vistas**, haga clic con el botón derecho en **Tables** y, en el menú contextual, seleccione **Agregar > Vista**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-205">In the **Solution Explorer**, expand the **Views** folder, right-click **Tables**, and from the context menu, select **Add->View**.</span></span>
+1. <span data-ttu-id="221ee-205">Hola **el Explorador de soluciones**, expanda hello **vistas** carpeta, haga clic en **tablas**y en el menú contextual de hello, seleccione **Agregar -> vista**.</span><span class="sxs-lookup"><span data-stu-id="221ee-205">In hello **Solution Explorer**, expand hello **Views** folder, right-click **Tables**, and from hello context menu, select **Add->View**.</span></span>
 
-1. <span data-ttu-id="e3acb-206">En el cuadro de diálogo **Agregar vista**, escriba **AddEntities** como nombre de vista y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-206">On the **Add View** dialog, enter **AddEntities** for the view name, and select **Add**.</span></span>
+1. <span data-ttu-id="221ee-206">En hello **agregar vista** cuadro de diálogo, escriba **AddEntities** de nombre de la vista de Hola y seleccione **agregar**.</span><span class="sxs-lookup"><span data-stu-id="221ee-206">On hello **Add View** dialog, enter **AddEntities** for hello view name, and select **Add**.</span></span>
 
-1. <span data-ttu-id="e3acb-207">Abra `AddEntities.cshtml` y modifíquelo de modo que se parezca a lo siguiente.</span><span class="sxs-lookup"><span data-stu-id="e3acb-207">Open `AddEntities.cshtml`, and modify it so that it looks like the following.</span></span>
+1. <span data-ttu-id="221ee-207">Abra `AddEntities.cshtml`y modifíquelo para que se asemeje como Hola siguiente.</span><span class="sxs-lookup"><span data-stu-id="221ee-207">Open `AddEntities.cshtml`, and modify it so that it looks like hello following.</span></span>
 
     ```csharp
     @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
@@ -384,83 +384,83 @@ ms.lasthandoff: 08/03/2017
     </table>
     ```
 
-1. <span data-ttu-id="e3acb-208">En el **Explorador de soluciones**, expanda la carpeta **Vistas->Compartido** y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="e3acb-208">In the **Solution Explorer**, expand the **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
+1. <span data-ttu-id="221ee-208">Hola **el Explorador de soluciones**, expanda hello **vistas -> Shared** carpeta y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="221ee-208">In hello **Solution Explorer**, expand hello **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
 
-1. <span data-ttu-id="e3acb-209">Después del último **Html.ActionLink**, agregue el siguiente **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="e3acb-209">After the last **Html.ActionLink**, add the following **Html.ActionLink**:</span></span>
+1. <span data-ttu-id="221ee-209">Después de hello última **Html.ActionLink**, agregue los siguientes hello **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="221ee-209">After hello last **Html.ActionLink**, add hello following **Html.ActionLink**:</span></span>
 
     ```html
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. <span data-ttu-id="e3acb-210">Ejecute la aplicación y seleccione **Agregar entidades** para ver resultados similares a la siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="e3acb-210">Run the application, and select **Add entities** to see results similar to the following screen shot:</span></span>
+1. <span data-ttu-id="221ee-210">Ejecute la aplicación hello y seleccione **agregar entidades** toosee resultados similar toohello siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="221ee-210">Run hello application, and select **Add entities** toosee results similar toohello following screen shot:</span></span>
   
     ![agregar entidades](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
-    <span data-ttu-id="e3acb-212">Puede comprobar que se ha agregado la entidad siguiendo los pasos descritos en la sección [Obtención de una sola entidad](#get-a-single-entity).</span><span class="sxs-lookup"><span data-stu-id="e3acb-212">You can verify that the entity was added by following the steps in the section, [Get a single entity](#get-a-single-entity).</span></span> <span data-ttu-id="e3acb-213">También puede usar [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) para ver todas las entidades de las tablas.</span><span class="sxs-lookup"><span data-stu-id="e3acb-213">You can also use the [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) to view all the entities for your tables.</span></span>
+    <span data-ttu-id="221ee-212">Puede comprobar que se ha agregado la entidad de hello siguiendo los pasos de hello en la sección de hello, [obtener una sola entidad](#get-a-single-entity).</span><span class="sxs-lookup"><span data-stu-id="221ee-212">You can verify that hello entity was added by following hello steps in hello section, [Get a single entity](#get-a-single-entity).</span></span> <span data-ttu-id="221ee-213">También puede usar hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) tooview todos Hola entidades para las tablas.</span><span class="sxs-lookup"><span data-stu-id="221ee-213">You can also use hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) tooview all hello entities for your tables.</span></span>
 
-## <a name="get-a-single-entity"></a><span data-ttu-id="e3acb-214">Obtención de una sola entidad</span><span class="sxs-lookup"><span data-stu-id="e3acb-214">Get a single entity</span></span>
+## <a name="get-a-single-entity"></a><span data-ttu-id="221ee-214">Obtención de una sola entidad</span><span class="sxs-lookup"><span data-stu-id="221ee-214">Get a single entity</span></span>
 
-<span data-ttu-id="e3acb-215">En esta sección se muestra cómo obtener una sola entidad de una tabla mediante la clave de fila y la clave de partición de la entidad.</span><span class="sxs-lookup"><span data-stu-id="e3acb-215">This section illustrates how to get a single entity from a table using the entity's row key and partition key.</span></span> 
+<span data-ttu-id="221ee-215">Esta sección muestra cómo tooget una entidad única desde una tabla mediante Hola clave de fila y la clave de partición de la entidad.</span><span class="sxs-lookup"><span data-stu-id="221ee-215">This section illustrates how tooget a single entity from a table using hello entity's row key and partition key.</span></span> 
 
 > [!NOTE]
 > 
-> <span data-ttu-id="e3acb-216">En esta sección se da por supuesto que ha completado los pasos descritos en [Configuración del entorno de desarrollo](#set-up-the-development-environment) y utiliza los datos de [Incorporación de un lote de entidades a una tabla](#add-a-batch-of-entities-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="e3acb-216">This section assumes you have completed the steps in [Set up the development environment](#set-up-the-development-environment), and uses data from [Add a batch of entities to a table](#add-a-batch-of-entities-to-a-table).</span></span> 
+> <span data-ttu-id="221ee-216">En esta sección se da por supuesto que ha completado los pasos de hello en [configurar el entorno de desarrollo de hello](#set-up-the-development-environment)y utiliza los datos de [agregar un lote de la tabla de entidades tooa](#add-a-batch-of-entities-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="221ee-216">This section assumes you have completed hello steps in [Set up hello development environment](#set-up-the-development-environment), and uses data from [Add a batch of entities tooa table](#add-a-batch-of-entities-to-a-table).</span></span> 
 
-1. <span data-ttu-id="e3acb-217">Abra el archivo `TablesController.cs` .</span><span class="sxs-lookup"><span data-stu-id="e3acb-217">Open the `TablesController.cs` file.</span></span>
+1. <span data-ttu-id="221ee-217">Abra hello `TablesController.cs` archivo.</span><span class="sxs-lookup"><span data-stu-id="221ee-217">Open hello `TablesController.cs` file.</span></span>
 
-1. <span data-ttu-id="e3acb-218">Agregue un método llamado **GetSingle** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-218">Add a method called **GetSingle** that returns an **ActionResult**.</span></span>
+1. <span data-ttu-id="221ee-218">Agregue un método llamado **GetSingle** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="221ee-218">Add a method called **GetSingle** that returns an **ActionResult**.</span></span>
 
     ```csharp
     public ActionResult GetSingle()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return View();
     }
     ```
 
-1. <span data-ttu-id="e3acb-219">Dentro del método **GetSingle**, obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="e3acb-219">Within the **GetSingle** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="e3acb-220">Utilice el código siguiente para obtener la información de cuenta de almacenamiento y la cadena de conexión de almacenamiento de la configuración del servicio de Azure: (cambie *&lt;storage-account-name>*  por el nombre de la cuenta de Azure Storage a la que está obteniendo acceso).</span><span class="sxs-lookup"><span data-stu-id="e3acb-220">Use the following code to get the storage connection string and storage account information from the Azure service configuration: (Change *&lt;storage-account-name>* to the name of the Azure storage account you're accessing.)</span></span>
+1. <span data-ttu-id="221ee-219">Dentro de hello **GetSingle** método, obtener una **CloudStorageAccount** objeto que representa la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="221ee-219">Within hello **GetSingle** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="221ee-220">Siguiente de Hola de uso de código tooget Hola almacenamiento cadena y almacenamiento cuenta información de conexión de configuración de servicio de Azure de hello: (cambio  *&lt;nombre de cuenta de almacenamiento >* toohello nombre del programa Hola a almacenamiento de Azure cuenta de que está obteniendo acceso.)</span><span class="sxs-lookup"><span data-stu-id="221ee-220">Use hello following code tooget hello storage connection string and storage account information from hello Azure service configuration: (Change *&lt;storage-account-name>* toohello name of hello Azure storage account you're accessing.)</span></span>
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. <span data-ttu-id="e3acb-221">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-221">Get a **CloudTableClient** object represents a table service client.</span></span>
+1. <span data-ttu-id="221ee-221">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-221">Get a **CloudTableClient** object represents a table service client.</span></span>
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. <span data-ttu-id="e3acb-222">Obtenga un objeto **CloudTable** que represente una referencia a la tabla de la que va a recuperar la entidad.</span><span class="sxs-lookup"><span data-stu-id="e3acb-222">Get a **CloudTable** object that represents a reference to the table from which you are retrieving the entity.</span></span> 
+1. <span data-ttu-id="221ee-222">Obtener un **CloudTable** objeto que representa una tabla de toohello de referencia desde el que va a recuperar la entidad de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-222">Get a **CloudTable** object that represents a reference toohello table from which you are retrieving hello entity.</span></span> 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. <span data-ttu-id="e3acb-223">Cree un objeto de operación de recuperación que tome un objeto de entidad derivado de **TableEntity**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-223">Create a retrieve operation object that takes an entity object derived from **TableEntity**.</span></span> <span data-ttu-id="e3acb-224">El primer parámetro es *partitionKey* y el segundo parámetro es *rowKey*.</span><span class="sxs-lookup"><span data-stu-id="e3acb-224">The first parameter is the *partitionKey*, and the second parameter is the *rowKey*.</span></span> <span data-ttu-id="e3acb-225">Mediante la clase **CustomerEntity** y los datos presentados en la sección [Incorporación de un lote de entidades a una tabla](#add-a-batch-of-entities-to-a-table), el fragmento de código siguiente consulta la tabla para una entidad **CustomerEntity** con un valor *partitionKey* de "Smith" y un valor *rowKey* de "Ben":</span><span class="sxs-lookup"><span data-stu-id="e3acb-225">Using the **CustomerEntity** class and data presented in the section [Add a batch of entities to a table](#add-a-batch-of-entities-to-a-table), the following code snippet queries the table for a **CustomerEntity** entity with a *partitionKey* value of "Smith" and a *rowKey* value of "Ben":</span></span>
+1. <span data-ttu-id="221ee-223">Cree un objeto de operación de recuperación que tome un objeto de entidad derivado de **TableEntity**.</span><span class="sxs-lookup"><span data-stu-id="221ee-223">Create a retrieve operation object that takes an entity object derived from **TableEntity**.</span></span> <span data-ttu-id="221ee-224">Hola primer parámetro es hello *partitionKey*, y el segundo parámetro de hello es hello *rowKey*.</span><span class="sxs-lookup"><span data-stu-id="221ee-224">hello first parameter is hello *partitionKey*, and hello second parameter is hello *rowKey*.</span></span> <span data-ttu-id="221ee-225">Con hello **CustomerEntity** clase y los datos presentados en la sección de hello [agregar un lote de la tabla de entidades tooa](#add-a-batch-of-entities-to-a-table), Hola después de la tabla de Hola de consultas de fragmento de código para un **CustomerEntity** entidad con un *partitionKey* valor de "Smith" y un *rowKey* valor de "Ben":</span><span class="sxs-lookup"><span data-stu-id="221ee-225">Using hello **CustomerEntity** class and data presented in hello section [Add a batch of entities tooa table](#add-a-batch-of-entities-to-a-table), hello following code snippet queries hello table for a **CustomerEntity** entity with a *partitionKey* value of "Smith" and a *rowKey* value of "Ben":</span></span>
 
     ```csharp
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
     ```
 
-1. <span data-ttu-id="e3acb-226">Ejecute la operación de recuperación.</span><span class="sxs-lookup"><span data-stu-id="e3acb-226">Execute the retrieve operation.</span></span>   
+1. <span data-ttu-id="221ee-226">Ejecutar la operación de recuperación de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-226">Execute hello retrieve operation.</span></span>   
 
     ```csharp
     TableResult result = table.Execute(retrieveOperation);
     ```
 
-1. <span data-ttu-id="e3acb-227">Pase el resultado a la vista para que se muestre.</span><span class="sxs-lookup"><span data-stu-id="e3acb-227">Pass the result to the view for display.</span></span>
+1. <span data-ttu-id="221ee-227">Pasar toohello vista de resultado de hello para su presentación.</span><span class="sxs-lookup"><span data-stu-id="221ee-227">Pass hello result toohello view for display.</span></span>
 
     ```csharp
     return View(result);
     ```
 
-1. <span data-ttu-id="e3acb-228">En el **Explorador de soluciones**, expanda la carpeta **Vistas**, haga clic con el botón derecho en **Tables** y, en el menú contextual, seleccione **Agregar > Vista**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-228">In the **Solution Explorer**, expand the **Views** folder, right-click **Tables**, and from the context menu, select **Add->View**.</span></span>
+1. <span data-ttu-id="221ee-228">Hola **el Explorador de soluciones**, expanda hello **vistas** carpeta, haga clic en **tablas**y en el menú contextual de hello, seleccione **Agregar -> vista**.</span><span class="sxs-lookup"><span data-stu-id="221ee-228">In hello **Solution Explorer**, expand hello **Views** folder, right-click **Tables**, and from hello context menu, select **Add->View**.</span></span>
 
-1. <span data-ttu-id="e3acb-229">En el cuadro de diálogo **Agregar vista**, escriba **GetSingle** como nombre de vista y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-229">On the **Add View** dialog, enter **GetSingle** for the view name, and select **Add**.</span></span>
+1. <span data-ttu-id="221ee-229">En hello **agregar vista** cuadro de diálogo, escriba **GetSingle** de nombre de la vista de Hola y seleccione **agregar**.</span><span class="sxs-lookup"><span data-stu-id="221ee-229">On hello **Add View** dialog, enter **GetSingle** for hello view name, and select **Add**.</span></span>
 
-1. <span data-ttu-id="e3acb-230">Abra `GetSingle.cshtml` y modifíquelo de modo que se parezca al siguiente fragmento de código:</span><span class="sxs-lookup"><span data-stu-id="e3acb-230">Open `GetSingle.cshtml`, and modify it so that it looks like the following code snippet:</span></span>
+1. <span data-ttu-id="221ee-230">Abra `GetSingle.cshtml`y modifíquelo para que se parezca al siguiente fragmento de código de hello:</span><span class="sxs-lookup"><span data-stu-id="221ee-230">Open `GetSingle.cshtml`, and modify it so that it looks like hello following code snippet:</span></span>
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -486,59 +486,59 @@ ms.lasthandoff: 08/03/2017
     </table>
     ```
 
-1. <span data-ttu-id="e3acb-231">En el **Explorador de soluciones**, expanda la carpeta **Vistas->Compartido** y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="e3acb-231">In the **Solution Explorer**, expand the **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
+1. <span data-ttu-id="221ee-231">Hola **el Explorador de soluciones**, expanda hello **vistas -> Shared** carpeta y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="221ee-231">In hello **Solution Explorer**, expand hello **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
 
-1. <span data-ttu-id="e3acb-232">Después del último **Html.ActionLink**, agregue el siguiente **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="e3acb-232">After the last **Html.ActionLink**, add the following **Html.ActionLink**:</span></span>
+1. <span data-ttu-id="221ee-232">Después de hello última **Html.ActionLink**, agregue los siguientes hello **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="221ee-232">After hello last **Html.ActionLink**, add hello following **Html.ActionLink**:</span></span>
 
     ```html
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. <span data-ttu-id="e3acb-233">Ejecute la aplicación y seleccione **GetSingle** para ver resultados similares a la siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="e3acb-233">Run the application, and select **Get Single** to see results similar to the following screen shot:</span></span>
+1. <span data-ttu-id="221ee-233">Ejecute la aplicación hello y seleccione **obtener único** toosee resultados similar toohello siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="221ee-233">Run hello application, and select **Get Single** toosee results similar toohello following screen shot:</span></span>
   
     ![GetSingle](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
-## <a name="get-all-entities-in-a-partition"></a><span data-ttu-id="e3acb-235">Obtención de todas las entidades de una partición</span><span class="sxs-lookup"><span data-stu-id="e3acb-235">Get all entities in a partition</span></span>
+## <a name="get-all-entities-in-a-partition"></a><span data-ttu-id="221ee-235">Obtención de todas las entidades de una partición</span><span class="sxs-lookup"><span data-stu-id="221ee-235">Get all entities in a partition</span></span>
 
-<span data-ttu-id="e3acb-236">Como se mencionó en la sección [Adición de una entidad a una tabla](#add-an-entity-to-a-table), la combinación de una partición y una clave de fila identifican de forma única una entidad de una tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-236">As mentioned in the section, [Add an entity to a table](#add-an-entity-to-a-table), the combination of a partition and a row key uniquely identify an entity in a table.</span></span> <span data-ttu-id="e3acb-237">Puede realizarse una consulta en las entidades con la misma clave de partición de manera más rápida que en aquellas que tienen claves de partición distintas.</span><span class="sxs-lookup"><span data-stu-id="e3acb-237">Entities with the same partition key can be queried faster than entities with different partition keys.</span></span> <span data-ttu-id="e3acb-238">Esta sección muestra cómo consultar una tabla en todas las entidades de una partición especificada.</span><span class="sxs-lookup"><span data-stu-id="e3acb-238">This section illustrates how to query a table for all the entities from a specified partition.</span></span>  
+<span data-ttu-id="221ee-236">Como se mencionó en la sección de hello, [agregar una tabla de tooa de entidad](#add-an-entity-to-a-table), combinación de Hola de una partición y una clave de fila identifican de forma única una entidad en una tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-236">As mentioned in hello section, [Add an entity tooa table](#add-an-entity-to-a-table), hello combination of a partition and a row key uniquely identify an entity in a table.</span></span> <span data-ttu-id="221ee-237">Puede realizarse una consulta en las entidades con la misma clave de partición de manera más rápida que en aquellas que tienen claves de partición distintas.</span><span class="sxs-lookup"><span data-stu-id="221ee-237">Entities with the same partition key can be queried faster than entities with different partition keys.</span></span> <span data-ttu-id="221ee-238">Esta sección se muestra cómo tooquery una tabla para todas las entidades de Hola de una partición especificada.</span><span class="sxs-lookup"><span data-stu-id="221ee-238">This section illustrates how tooquery a table for all hello entities from a specified partition.</span></span>  
 
 > [!NOTE]
 > 
-> <span data-ttu-id="e3acb-239">En esta sección se da por supuesto que ha completado los pasos descritos en [Configuración del entorno de desarrollo](#set-up-the-development-environment) y utiliza los datos de [Incorporación de un lote de entidades a una tabla](#add-a-batch-of-entities-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="e3acb-239">This section assumes you have completed the steps in [Set up the development environment](#set-up-the-development-environment), and uses data from [Add a batch of entities to a table](#add-a-batch-of-entities-to-a-table).</span></span> 
+> <span data-ttu-id="221ee-239">En esta sección se da por supuesto que ha completado los pasos de hello en [configurar el entorno de desarrollo de hello](#set-up-the-development-environment)y utiliza los datos de [agregar un lote de la tabla de entidades tooa](#add-a-batch-of-entities-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="221ee-239">This section assumes you have completed hello steps in [Set up hello development environment](#set-up-the-development-environment), and uses data from [Add a batch of entities tooa table](#add-a-batch-of-entities-to-a-table).</span></span> 
 
-1. <span data-ttu-id="e3acb-240">Abra el archivo `TablesController.cs` .</span><span class="sxs-lookup"><span data-stu-id="e3acb-240">Open the `TablesController.cs` file.</span></span>
+1. <span data-ttu-id="221ee-240">Abra hello `TablesController.cs` archivo.</span><span class="sxs-lookup"><span data-stu-id="221ee-240">Open hello `TablesController.cs` file.</span></span>
 
-1. <span data-ttu-id="e3acb-241">Agregue un método llamado **GetPartition** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-241">Add a method called **GetPartition** that returns an **ActionResult**.</span></span>
+1. <span data-ttu-id="221ee-241">Agregue un método llamado **GetPartition** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="221ee-241">Add a method called **GetPartition** that returns an **ActionResult**.</span></span>
 
     ```csharp
     public ActionResult GetPartition()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return View();
     }
     ```
 
-1. <span data-ttu-id="e3acb-242">Dentro del método **GetPartition**, obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="e3acb-242">Within the **GetPartition** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="e3acb-243">Utilice el código siguiente para obtener la información de cuenta de almacenamiento y la cadena de conexión de almacenamiento de la configuración del servicio de Azure: (cambie *&lt;storage-account-name>*  por el nombre de la cuenta de Azure Storage a la que está obteniendo acceso).</span><span class="sxs-lookup"><span data-stu-id="e3acb-243">Use the following code to get the storage connection string and storage account information from the Azure service configuration: (Change *&lt;storage-account-name>* to the name of the Azure storage account you're accessing.)</span></span>
+1. <span data-ttu-id="221ee-242">Dentro de hello **GetPartition** método, obtener una **CloudStorageAccount** objeto que representa la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="221ee-242">Within hello **GetPartition** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="221ee-243">Siguiente de Hola de uso de código tooget Hola almacenamiento cadena y almacenamiento cuenta información de conexión de configuración de servicio de Azure de hello: (cambio  *&lt;nombre de cuenta de almacenamiento >* toohello nombre del programa Hola a almacenamiento de Azure cuenta de que está obteniendo acceso.)</span><span class="sxs-lookup"><span data-stu-id="221ee-243">Use hello following code tooget hello storage connection string and storage account information from hello Azure service configuration: (Change *&lt;storage-account-name>* toohello name of hello Azure storage account you're accessing.)</span></span>
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. <span data-ttu-id="e3acb-244">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-244">Get a **CloudTableClient** object represents a table service client.</span></span>
+1. <span data-ttu-id="221ee-244">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-244">Get a **CloudTableClient** object represents a table service client.</span></span>
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. <span data-ttu-id="e3acb-245">Obtenga un objeto **CloudTable** que represente una referencia a la tabla de la que va a recuperar las entidades.</span><span class="sxs-lookup"><span data-stu-id="e3acb-245">Get a **CloudTable** object that represents a reference to the table from which you are retrieving the entities.</span></span> 
+1. <span data-ttu-id="221ee-245">Obtener un **CloudTable** objeto que representa una tabla de toohello de referencia desde el que va a recuperar entidades de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-245">Get a **CloudTable** object that represents a reference toohello table from which you are retrieving hello entities.</span></span> 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. <span data-ttu-id="e3acb-246">Cree una instancia de un objeto **TableQuery** especificando la consulta en la cláusula **Where**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-246">Instantiate a **TableQuery** object specifying the query in the **Where** clause.</span></span> <span data-ttu-id="e3acb-247">Mediante la clase **CustomerEntity** y los datos presentados en la sección [Incorporación de un lote de entidades a una tabla](#add-a-batch-of-entities-to-a-table), el fragmento de código siguiente consulta la tabla para todas las entidades donde **PartitionKey** (apellidos del cliente) tiene un valor de "Smith":</span><span class="sxs-lookup"><span data-stu-id="e3acb-247">Using the **CustomerEntity** class and data presented in the section [Add a batch of entities to a table](#add-a-batch-of-entities-to-a-table), the following code snippet queries the table for a all entities where the **PartitionKey** (customer's last name) has a value of "Smith":</span></span>
+1. <span data-ttu-id="221ee-246">Crear una instancia de un **TableQuery** objeto que especifica la consulta de Hola Hola **donde** cláusula.</span><span class="sxs-lookup"><span data-stu-id="221ee-246">Instantiate a **TableQuery** object specifying hello query in hello **Where** clause.</span></span> <span data-ttu-id="221ee-247">Con hello **CustomerEntity** clase y los datos presentados en la sección de hello [agregar un lote de la tabla de entidades tooa](#add-a-batch-of-entities-to-a-table), siguiente de hello tabla de Hola de consultas de fragmento de código para una todas las entidades de código donde hello  **PartitionKey** (apellido del cliente) tiene un valor de "Smith":</span><span class="sxs-lookup"><span data-stu-id="221ee-247">Using hello **CustomerEntity** class and data presented in hello section [Add a batch of entities tooa table](#add-a-batch-of-entities-to-a-table), hello following code snippet queries hello table for a all entities where hello **PartitionKey** (customer's last name) has a value of "Smith":</span></span>
 
     ```csharp
     TableQuery<CustomerEntity> query = 
@@ -546,7 +546,7 @@ ms.lasthandoff: 08/03/2017
         .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
     ```
 
-1. <span data-ttu-id="e3acb-248">Dentro de un bucle, llame al método **CloudTable.ExecuteQuerySegmented** pasando el objeto de consulta del que creó una instancia en el paso anterior.</span><span class="sxs-lookup"><span data-stu-id="e3acb-248">Within a loop, call the **CloudTable.ExecuteQuerySegmented** method passing the query object you instantiated in the previous step.</span></span>  <span data-ttu-id="e3acb-249">El método **CloudTable.ExecuteQuerySegmented** devuelve un objeto **TableContinuationToken** que, cuando es **null**, indica que no hay más entidades para recuperar.</span><span class="sxs-lookup"><span data-stu-id="e3acb-249">The **CloudTable.ExecuteQuerySegmented** method returns a **TableContinuationToken** object that - when **null** - indicates that there are no more entities to retrieve.</span></span> <span data-ttu-id="e3acb-250">Dentro del bucle, use otro bucle para iterar las entidades devueltas.</span><span class="sxs-lookup"><span data-stu-id="e3acb-250">Within the loop, use another loop to iterate over the returned entities.</span></span> <span data-ttu-id="e3acb-251">En el ejemplo de código siguiente, cada entidad devuelta se agrega a una lista.</span><span class="sxs-lookup"><span data-stu-id="e3acb-251">In the following code example, each returned entity is added to a list.</span></span> <span data-ttu-id="e3acb-252">Una vez que finaliza el bucle, la lista se pasa a una vista para mostrar los resultados:</span><span class="sxs-lookup"><span data-stu-id="e3acb-252">Once the loop ends, the list is passed to a view for display:</span></span> 
+1. <span data-ttu-id="221ee-248">Dentro de un bucle, llame a hello **CloudTable.ExecuteQuerySegmented** método pasando el objeto de consulta de Hola crea una instancia en el paso anterior de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-248">Within a loop, call hello **CloudTable.ExecuteQuerySegmented** method passing hello query object you instantiated in hello previous step.</span></span>  <span data-ttu-id="221ee-249">Hola **CloudTable.ExecuteQuerySegmented** método devuelve un **TableContinuationToken** objeto, cuando **null** -indica que no hay más entidades tooretrieve.</span><span class="sxs-lookup"><span data-stu-id="221ee-249">hello **CloudTable.ExecuteQuerySegmented** method returns a **TableContinuationToken** object that - when **null** - indicates that there are no more entities tooretrieve.</span></span> <span data-ttu-id="221ee-250">En el bucle de hello, usar otro tooiterate de bucle sobre Hola devuelve entidades.</span><span class="sxs-lookup"><span data-stu-id="221ee-250">Within hello loop, use another loop tooiterate over hello returned entities.</span></span> <span data-ttu-id="221ee-251">En el siguiente ejemplo de código de hello, cada entidad devuelta se agrega tooa lista.</span><span class="sxs-lookup"><span data-stu-id="221ee-251">In hello following code example, each returned entity is added tooa list.</span></span> <span data-ttu-id="221ee-252">Una vez Hola bucle finaliza, lista de Hola se pasa tooa vista para mostrar:</span><span class="sxs-lookup"><span data-stu-id="221ee-252">Once hello loop ends, hello list is passed tooa view for display:</span></span> 
 
     ```csharp
     List<CustomerEntity> customers = new List<CustomerEntity>();
@@ -565,11 +565,11 @@ ms.lasthandoff: 08/03/2017
     return View(customers);
     ```
 
-1. <span data-ttu-id="e3acb-253">En el **Explorador de soluciones**, expanda la carpeta **Vistas**, haga clic con el botón derecho en **Tables** y, en el menú contextual, seleccione **Agregar > Vista**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-253">In the **Solution Explorer**, expand the **Views** folder, right-click **Tables**, and from the context menu, select **Add->View**.</span></span>
+1. <span data-ttu-id="221ee-253">Hola **el Explorador de soluciones**, expanda hello **vistas** carpeta, haga clic en **tablas**y en el menú contextual de hello, seleccione **Agregar -> vista**.</span><span class="sxs-lookup"><span data-stu-id="221ee-253">In hello **Solution Explorer**, expand hello **Views** folder, right-click **Tables**, and from hello context menu, select **Add->View**.</span></span>
 
-1. <span data-ttu-id="e3acb-254">En el cuadro de diálogo **Agregar vista**, escriba **GetPartition** como nombre de vista y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-254">On the **Add View** dialog, enter **GetPartition** for the view name, and select **Add**.</span></span>
+1. <span data-ttu-id="221ee-254">En hello **agregar vista** cuadro de diálogo, escriba **GetPartition** de nombre de la vista de Hola y seleccione **agregar**.</span><span class="sxs-lookup"><span data-stu-id="221ee-254">On hello **Add View** dialog, enter **GetPartition** for hello view name, and select **Add**.</span></span>
 
-1. <span data-ttu-id="e3acb-255">Abra `GetPartition.cshtml` y modifíquelo de modo que se parezca al siguiente fragmento de código:</span><span class="sxs-lookup"><span data-stu-id="e3acb-255">Open `GetPartition.cshtml`, and modify it so that it looks like the following code snippet:</span></span>
+1. <span data-ttu-id="221ee-255">Abra `GetPartition.cshtml`y modifíquelo para que se parezca al siguiente fragmento de código de hello:</span><span class="sxs-lookup"><span data-stu-id="221ee-255">Open `GetPartition.cshtml`, and modify it so that it looks like hello following code snippet:</span></span>
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -596,82 +596,82 @@ ms.lasthandoff: 08/03/2017
     </table>
     ```
 
-1. <span data-ttu-id="e3acb-256">En el **Explorador de soluciones**, expanda la carpeta **Vistas->Compartido** y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="e3acb-256">In the **Solution Explorer**, expand the **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
+1. <span data-ttu-id="221ee-256">Hola **el Explorador de soluciones**, expanda hello **vistas -> Shared** carpeta y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="221ee-256">In hello **Solution Explorer**, expand hello **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
 
-1. <span data-ttu-id="e3acb-257">Después del último **Html.ActionLink**, agregue el siguiente **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="e3acb-257">After the last **Html.ActionLink**, add the following **Html.ActionLink**:</span></span>
+1. <span data-ttu-id="221ee-257">Después de hello última **Html.ActionLink**, agregue los siguientes hello **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="221ee-257">After hello last **Html.ActionLink**, add hello following **Html.ActionLink**:</span></span>
 
     ```html
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. <span data-ttu-id="e3acb-258">Ejecute la aplicación y seleccione **GetPartition** para ver resultados similares a la siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="e3acb-258">Run the application, and select **Get Partition** to see results similar to the following screen shot:</span></span>
+1. <span data-ttu-id="221ee-258">Ejecute la aplicación hello y seleccione **obtener partición** toosee resultados similar toohello siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="221ee-258">Run hello application, and select **Get Partition** toosee results similar toohello following screen shot:</span></span>
   
     ![GetPartition](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
-## <a name="delete-an-entity"></a><span data-ttu-id="e3acb-260">Eliminación de una entidad</span><span class="sxs-lookup"><span data-stu-id="e3acb-260">Delete an entity</span></span>
+## <a name="delete-an-entity"></a><span data-ttu-id="221ee-260">Eliminación de una entidad</span><span class="sxs-lookup"><span data-stu-id="221ee-260">Delete an entity</span></span>
 
-<span data-ttu-id="e3acb-261">Esta sección muestra cómo eliminar una entidad de una tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-261">This section illustrates how to delete an entity from a table.</span></span>
+<span data-ttu-id="221ee-261">Esta sección se muestra cómo toodelete una entidad de una tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-261">This section illustrates how toodelete an entity from a table.</span></span>
 
 > [!NOTE]
 > 
-> <span data-ttu-id="e3acb-262">En esta sección se da por supuesto que ha completado los pasos descritos en [Configuración del entorno de desarrollo](#set-up-the-development-environment) y utiliza los datos de [Incorporación de un lote de entidades a una tabla](#add-a-batch-of-entities-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="e3acb-262">This section assumes you have completed the steps in [Set up the development environment](#set-up-the-development-environment), and uses data from [Add a batch of entities to a table](#add-a-batch-of-entities-to-a-table).</span></span> 
+> <span data-ttu-id="221ee-262">En esta sección se da por supuesto que ha completado los pasos de hello en [configurar el entorno de desarrollo de hello](#set-up-the-development-environment)y utiliza los datos de [agregar un lote de la tabla de entidades tooa](#add-a-batch-of-entities-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="221ee-262">This section assumes you have completed hello steps in [Set up hello development environment](#set-up-the-development-environment), and uses data from [Add a batch of entities tooa table](#add-a-batch-of-entities-to-a-table).</span></span> 
 
-1. <span data-ttu-id="e3acb-263">Abra el archivo `TablesController.cs` .</span><span class="sxs-lookup"><span data-stu-id="e3acb-263">Open the `TablesController.cs` file.</span></span>
+1. <span data-ttu-id="221ee-263">Abra hello `TablesController.cs` archivo.</span><span class="sxs-lookup"><span data-stu-id="221ee-263">Open hello `TablesController.cs` file.</span></span>
 
-1. <span data-ttu-id="e3acb-264">Agregue un método llamado **DeleteEntity** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-264">Add a method called **DeleteEntity** that returns an **ActionResult**.</span></span>
+1. <span data-ttu-id="221ee-264">Agregue un método llamado **DeleteEntity** que devuelve un **ActionResult**.</span><span class="sxs-lookup"><span data-stu-id="221ee-264">Add a method called **DeleteEntity** that returns an **ActionResult**.</span></span>
 
     ```csharp
     public ActionResult DeleteEntity()
     {
-        // The code in this section goes here.
+        // hello code in this section goes here.
 
         return View();
     }
     ```
 
-1. <span data-ttu-id="e3acb-265">Dentro del método **DeleteEntity**, obtenga un objeto **CloudStorageAccount** que represente la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="e3acb-265">Within the **DeleteEntity** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="e3acb-266">Utilice el código siguiente para obtener la información de cuenta de almacenamiento y la cadena de conexión de almacenamiento de la configuración del servicio de Azure: (cambie *&lt;storage-account-name>*  por el nombre de la cuenta de Azure Storage a la que está obteniendo acceso).</span><span class="sxs-lookup"><span data-stu-id="e3acb-266">Use the following code to get the storage connection string and storage account information from the Azure service configuration: (Change *&lt;storage-account-name>* to the name of the Azure storage account you're accessing.)</span></span>
+1. <span data-ttu-id="221ee-265">Dentro de hello **DeleteEntity** método, obtener una **CloudStorageAccount** objeto que representa la información de su cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="221ee-265">Within hello **DeleteEntity** method, get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="221ee-266">Siguiente de Hola de uso de código tooget Hola almacenamiento cadena y almacenamiento cuenta información de conexión de configuración de servicio de Azure de hello: (cambio  *&lt;nombre de cuenta de almacenamiento >* toohello nombre del programa Hola a almacenamiento de Azure cuenta de que está obteniendo acceso.)</span><span class="sxs-lookup"><span data-stu-id="221ee-266">Use hello following code tooget hello storage connection string and storage account information from hello Azure service configuration: (Change *&lt;storage-account-name>* toohello name of hello Azure storage account you're accessing.)</span></span>
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. <span data-ttu-id="e3acb-267">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="e3acb-267">Get a **CloudTableClient** object represents a table service client.</span></span>
+1. <span data-ttu-id="221ee-267">Obtenga un objeto **CloudTableClient** que representa un cliente de servicio de tabla.</span><span class="sxs-lookup"><span data-stu-id="221ee-267">Get a **CloudTableClient** object represents a table service client.</span></span>
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. <span data-ttu-id="e3acb-268">Obtenga un objeto **CloudTable** que represente una referencia a la tabla de la que va a eliminar la entidad.</span><span class="sxs-lookup"><span data-stu-id="e3acb-268">Get a **CloudTable** object that represents a reference to the table from which you are deleting the entity.</span></span> 
+1. <span data-ttu-id="221ee-268">Obtener un **CloudTable** objeto que representa una tabla de toohello de referencia desde el que va a eliminar entidad Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-268">Get a **CloudTable** object that represents a reference toohello table from which you are deleting hello entity.</span></span> 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. <span data-ttu-id="e3acb-269">Cree un objeto de operación de eliminación que tome un objeto de entidad derivado de **TableEntity**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-269">Create a delete operation object that takes an entity object derived from **TableEntity**.</span></span> <span data-ttu-id="e3acb-270">En este caso, usamos la clase **CustomerEntity** y a los datos presentados en la sección [Incorporación de un lote de entidades a una tabla](#add-a-batch-of-entities-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="e3acb-270">In this case, we use the **CustomerEntity** class and data presented in the section [Add a batch of entities to a table](#add-a-batch-of-entities-to-a-table).</span></span> <span data-ttu-id="e3acb-271">La **ETag** de la entidad debe establecerse en un valor válido.</span><span class="sxs-lookup"><span data-stu-id="e3acb-271">The entity's **ETag** must be set to a valid value.</span></span>  
+1. <span data-ttu-id="221ee-269">Cree un objeto de operación de eliminación que tome un objeto de entidad derivado de **TableEntity**.</span><span class="sxs-lookup"><span data-stu-id="221ee-269">Create a delete operation object that takes an entity object derived from **TableEntity**.</span></span> <span data-ttu-id="221ee-270">En este caso, usamos hello **CustomerEntity** clase y los datos presentados en la sección de hello [agregar un lote de la tabla de entidades tooa](#add-a-batch-of-entities-to-a-table).</span><span class="sxs-lookup"><span data-stu-id="221ee-270">In this case, we use hello **CustomerEntity** class and data presented in hello section [Add a batch of entities tooa table](#add-a-batch-of-entities-to-a-table).</span></span> <span data-ttu-id="221ee-271">Hola la entidad **ETag** debe establecerse el valor válido de tooa.</span><span class="sxs-lookup"><span data-stu-id="221ee-271">hello entity's **ETag** must be set tooa valid value.</span></span>  
 
     ```csharp
     TableOperation deleteOperation = 
         TableOperation.Delete(new CustomerEntity("Smith", "Ben") { ETag = "*" } );
     ```
 
-1. <span data-ttu-id="e3acb-272">Ejecute la operación de eliminación.</span><span class="sxs-lookup"><span data-stu-id="e3acb-272">Execute the delete operation.</span></span>   
+1. <span data-ttu-id="221ee-272">Ejecutar la operación de eliminación de Hola.</span><span class="sxs-lookup"><span data-stu-id="221ee-272">Execute hello delete operation.</span></span>   
 
     ```csharp
     TableResult result = table.Execute(deleteOperation);
     ```
 
-1. <span data-ttu-id="e3acb-273">Pase el resultado a la vista para que se muestre.</span><span class="sxs-lookup"><span data-stu-id="e3acb-273">Pass the result to the view for display.</span></span>
+1. <span data-ttu-id="221ee-273">Pasar toohello vista de resultado de hello para su presentación.</span><span class="sxs-lookup"><span data-stu-id="221ee-273">Pass hello result toohello view for display.</span></span>
 
     ```csharp
     return View(result);
     ```
 
-1. <span data-ttu-id="e3acb-274">En el **Explorador de soluciones**, expanda la carpeta **Vistas**, haga clic con el botón derecho en **Tables** y, en el menú contextual, seleccione **Agregar > Vista**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-274">In the **Solution Explorer**, expand the **Views** folder, right-click **Tables**, and from the context menu, select **Add->View**.</span></span>
+1. <span data-ttu-id="221ee-274">Hola **el Explorador de soluciones**, expanda hello **vistas** carpeta, haga clic en **tablas**y en el menú contextual de hello, seleccione **Agregar -> vista**.</span><span class="sxs-lookup"><span data-stu-id="221ee-274">In hello **Solution Explorer**, expand hello **Views** folder, right-click **Tables**, and from hello context menu, select **Add->View**.</span></span>
 
-1. <span data-ttu-id="e3acb-275">En el cuadro de diálogo **Agregar vista**, escriba **DeleteEntity** como nombre de vista y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e3acb-275">On the **Add View** dialog, enter **DeleteEntity** for the view name, and select **Add**.</span></span>
+1. <span data-ttu-id="221ee-275">En hello **agregar vista** cuadro de diálogo, escriba **DeleteEntity** de nombre de la vista de Hola y seleccione **agregar**.</span><span class="sxs-lookup"><span data-stu-id="221ee-275">On hello **Add View** dialog, enter **DeleteEntity** for hello view name, and select **Add**.</span></span>
 
-1. <span data-ttu-id="e3acb-276">Abra `DeleteEntity.cshtml` y modifíquelo de modo que se parezca al siguiente fragmento de código:</span><span class="sxs-lookup"><span data-stu-id="e3acb-276">Open `DeleteEntity.cshtml`, and modify it so that it looks like the following code snippet:</span></span>
+1. <span data-ttu-id="221ee-276">Abra `DeleteEntity.cshtml`y modifíquelo para que se parezca al siguiente fragmento de código de hello:</span><span class="sxs-lookup"><span data-stu-id="221ee-276">Open `DeleteEntity.cshtml`, and modify it so that it looks like hello following code snippet:</span></span>
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -696,20 +696,20 @@ ms.lasthandoff: 08/03/2017
 
     ```
 
-1. <span data-ttu-id="e3acb-277">En el **Explorador de soluciones**, expanda la carpeta **Vistas->Compartido** y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="e3acb-277">In the **Solution Explorer**, expand the **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
+1. <span data-ttu-id="221ee-277">Hola **el Explorador de soluciones**, expanda hello **vistas -> Shared** carpeta y abra `_Layout.cshtml`.</span><span class="sxs-lookup"><span data-stu-id="221ee-277">In hello **Solution Explorer**, expand hello **Views->Shared** folder, and open `_Layout.cshtml`.</span></span>
 
-1. <span data-ttu-id="e3acb-278">Después del último **Html.ActionLink**, agregue el siguiente **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="e3acb-278">After the last **Html.ActionLink**, add the following **Html.ActionLink**:</span></span>
+1. <span data-ttu-id="221ee-278">Después de hello última **Html.ActionLink**, agregue los siguientes hello **Html.ActionLink**:</span><span class="sxs-lookup"><span data-stu-id="221ee-278">After hello last **Html.ActionLink**, add hello following **Html.ActionLink**:</span></span>
 
     ```html
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. <span data-ttu-id="e3acb-279">Ejecute la aplicación y seleccione **Eliminar entidad** para ver resultados similares a la siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="e3acb-279">Run the application, and select **Delete entity** to see results similar to the following screen shot:</span></span>
+1. <span data-ttu-id="221ee-279">Ejecute la aplicación hello y seleccione **eliminar entidad** toosee resultados similar toohello siguiente captura de pantalla:</span><span class="sxs-lookup"><span data-stu-id="221ee-279">Run hello application, and select **Delete entity** toosee results similar toohello following screen shot:</span></span>
   
     ![GetSingle](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
-## <a name="next-steps"></a><span data-ttu-id="e3acb-281">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="e3acb-281">Next steps</span></span>
-<span data-ttu-id="e3acb-282">Consulte más guías de características para obtener información acerca de otras opciones del almacenamiento de datos en Azure.</span><span class="sxs-lookup"><span data-stu-id="e3acb-282">View more feature guides to learn about additional options for storing data in Azure.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="221ee-281">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="221ee-281">Next steps</span></span>
+<span data-ttu-id="221ee-282">Ver más características guías toolearn acerca de otras opciones para almacenar datos en Azure.</span><span class="sxs-lookup"><span data-stu-id="221ee-282">View more feature guides toolearn about additional options for storing data in Azure.</span></span>
 
-  * [<span data-ttu-id="e3acb-283">Introducción a Azure Blob Storage y los servicios conectados de Visual Studio (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="e3acb-283">Get started with Azure blob storage and Visual Studio Connected Services (ASP.NET)</span></span>](./vs-storage-aspnet-getting-started-blobs.md)
-  * [<span data-ttu-id="e3acb-284">Introducción a Azure Queue Storage y a Servicios conectados de Visual Studio (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="e3acb-284">Get started with Azure queue storage and Visual Studio Connected Services (ASP.NET)</span></span>](./vs-storage-aspnet-getting-started-queues.md)
+  * [<span data-ttu-id="221ee-283">Introducción a Azure Blob Storage y los servicios conectados de Visual Studio (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="221ee-283">Get started with Azure blob storage and Visual Studio Connected Services (ASP.NET)</span></span>](./vs-storage-aspnet-getting-started-blobs.md)
+  * [<span data-ttu-id="221ee-284">Introducción a Azure Queue Storage y a Servicios conectados de Visual Studio (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="221ee-284">Get started with Azure queue storage and Visual Studio Connected Services (ASP.NET)</span></span>](./vs-storage-aspnet-getting-started-queues.md)

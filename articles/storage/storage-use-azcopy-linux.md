@@ -1,6 +1,6 @@
 ---
-title: Copia o movimiento de datos a Azure Storage con AzCopy en Linux | Microsoft Docs
-description: "Use la utilidad AzCopy en Linux para mover o copiar datos hacia contenido de blobs y archivos o desde ellos. Copie datos a Almacenamiento de Azure desde archivos locales o copie datos en o entre cuentas de almacenamiento. Migre fácilmente sus datos a Almacenamiento de Azure."
+title: aaaCopy o mover datos tooAzure almacenamiento con AzCopy en Linux | Documentos de Microsoft
+description: "Usar hello AzCopy en la utilidad de Linux a toomove o copia de la tooor de datos con el del contenido de blob y archivo. Copiar datos tooAzure almacenamiento de archivos locales, o copiar datos dentro de o entre cuentas de almacenamiento. Migrar fácilmente el almacenamiento de datos tooAzure."
 services: storage
 documentationcenter: 
 author: seguler
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: seguler
-ms.openlocfilehash: d17f63dcee590529756d48d699f78b3fb30f973c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dccb03c9e8cc3ea661494e7834f307b0e3e30cb9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="transfer-data-with-azcopy-on-linux"></a><span data-ttu-id="8c571-105">Transferencia de datos con AzCopy en Linux</span><span class="sxs-lookup"><span data-stu-id="8c571-105">Transfer data with AzCopy on Linux</span></span>
-<span data-ttu-id="8c571-106">AzCopy en Linux es una utilidad de la línea de comandos diseñada para copiar datos hacia almacenamiento de archivos y blobs de Microsoft Azure o desde estos mediante comandos sencillos con un rendimiento óptimo.</span><span class="sxs-lookup"><span data-stu-id="8c571-106">AzCopy on Linux is a command-line utility designed for copying data to and from Microsoft Azure Blob and File storage using simple commands with optimal performance.</span></span> <span data-ttu-id="8c571-107">También puede copiar datos de un objeto a otro dentro de la cuenta de almacenamiento o entre cuentas de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="8c571-107">You can copy data from one object to another within your storage account, or between storage accounts.</span></span>
+# <a name="transfer-data-with-azcopy-on-linux"></a><span data-ttu-id="a4798-105">Transferencia de datos con AzCopy en Linux</span><span class="sxs-lookup"><span data-stu-id="a4798-105">Transfer data with AzCopy on Linux</span></span>
+<span data-ttu-id="a4798-106">AzCopy en Linux es una utilidad de línea de comandos diseñada para copiar datos tooand de almacenamiento de blobs de Microsoft Azure y el archivo mediante comandos sencillos con un rendimiento óptimo.</span><span class="sxs-lookup"><span data-stu-id="a4798-106">AzCopy on Linux is a command-line utility designed for copying data tooand from Microsoft Azure Blob and File storage using simple commands with optimal performance.</span></span> <span data-ttu-id="a4798-107">Puede copiar datos de una tooanother de objeto dentro de la cuenta de almacenamiento, o entre cuentas de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="a4798-107">You can copy data from one object tooanother within your storage account, or between storage accounts.</span></span>
 
-<span data-ttu-id="8c571-108">Hay dos versiones de AzCopy que puede descargar.</span><span class="sxs-lookup"><span data-stu-id="8c571-108">There are two versions of AzCopy that you can download.</span></span> <span data-ttu-id="8c571-109">AzCopy en Linux se compila con .NET Core Framework, que tiene como destino plataformas Linux que ofrecen opciones de línea de comandos con estilo POSIX.</span><span class="sxs-lookup"><span data-stu-id="8c571-109">AzCopy on Linux is built with .NET Core Framework, which targets Linux platforms offering POSIX style command-line options.</span></span> <span data-ttu-id="8c571-110">[AzCopy en Windows](storage-use-azcopy.md) se compila con .NET Framework y ofrece opciones de línea de comandos con estilo Windows.</span><span class="sxs-lookup"><span data-stu-id="8c571-110">[AzCopy on Windows](storage-use-azcopy.md) is built with .NET Framework, and offers Windows style command-line options.</span></span> <span data-ttu-id="8c571-111">En este artículo se describe AzCopy en Linux.</span><span class="sxs-lookup"><span data-stu-id="8c571-111">This article covers AzCopy on Linux.</span></span>
+<span data-ttu-id="a4798-108">Hay dos versiones de AzCopy que puede descargar.</span><span class="sxs-lookup"><span data-stu-id="a4798-108">There are two versions of AzCopy that you can download.</span></span> <span data-ttu-id="a4798-109">AzCopy en Linux se compila con .NET Core Framework, que tiene como destino plataformas Linux que ofrecen opciones de línea de comandos con estilo POSIX.</span><span class="sxs-lookup"><span data-stu-id="a4798-109">AzCopy on Linux is built with .NET Core Framework, which targets Linux platforms offering POSIX style command-line options.</span></span> <span data-ttu-id="a4798-110">[AzCopy en Windows](storage-use-azcopy.md) se compila con .NET Framework y ofrece opciones de línea de comandos con estilo Windows.</span><span class="sxs-lookup"><span data-stu-id="a4798-110">[AzCopy on Windows](storage-use-azcopy.md) is built with .NET Framework, and offers Windows style command-line options.</span></span> <span data-ttu-id="a4798-111">En este artículo se describe AzCopy en Linux.</span><span class="sxs-lookup"><span data-stu-id="a4798-111">This article covers AzCopy on Linux.</span></span>
 
-## <a name="download-and-install-azcopy"></a><span data-ttu-id="8c571-112">Descarga e instalación de AzCopy</span><span class="sxs-lookup"><span data-stu-id="8c571-112">Download and install AzCopy</span></span>
-### <a name="installation-on-linux"></a><span data-ttu-id="8c571-113">Instalación en Linux</span><span class="sxs-lookup"><span data-stu-id="8c571-113">Installation on Linux</span></span>
+## <a name="download-and-install-azcopy"></a><span data-ttu-id="a4798-112">Descarga e instalación de AzCopy</span><span class="sxs-lookup"><span data-stu-id="a4798-112">Download and install AzCopy</span></span>
+### <a name="installation-on-linux"></a><span data-ttu-id="a4798-113">Instalación en Linux</span><span class="sxs-lookup"><span data-stu-id="a4798-113">Installation on Linux</span></span>
 
-<span data-ttu-id="8c571-114">AzCopy en Linux requiere .NET Core Framework en la plataforma.</span><span class="sxs-lookup"><span data-stu-id="8c571-114">AzCopy on Linux requires .NET Core framework on the platform.</span></span> <span data-ttu-id="8c571-115">Consulte las instrucciones de instalación en la página [.NET Core](https://www.microsoft.com/net/core#linuxubuntu).</span><span class="sxs-lookup"><span data-stu-id="8c571-115">See the installation instructions on the [.NET Core](https://www.microsoft.com/net/core#linuxubuntu) page.</span></span>
+<span data-ttu-id="a4798-114">AzCopy en Linux requiere el marco de trabajo de .NET Core en la plataforma de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-114">AzCopy on Linux requires .NET Core framework on hello platform.</span></span> <span data-ttu-id="a4798-115">Consulte las instrucciones de instalación de hello en hello [.NET Core](https://www.microsoft.com/net/core#linuxubuntu) página.</span><span class="sxs-lookup"><span data-stu-id="a4798-115">See hello installation instructions on hello [.NET Core](https://www.microsoft.com/net/core#linuxubuntu) page.</span></span>
 
-<span data-ttu-id="8c571-116">Como ejemplo, instalemos .NET Core en Ubuntu 16.10.</span><span class="sxs-lookup"><span data-stu-id="8c571-116">As an example, let's install .NET Core on Ubuntu 16.10.</span></span> <span data-ttu-id="8c571-117">Para la guía de instalación más reciente, visite la página de instalación de [.NET Core en Linux](https://www.microsoft.com/net/core#linuxubuntu).</span><span class="sxs-lookup"><span data-stu-id="8c571-117">For the latest installation guide, visit [.NET Core on Linux](https://www.microsoft.com/net/core#linuxubuntu) installation page.</span></span>
+<span data-ttu-id="a4798-116">Como ejemplo, instalemos .NET Core en Ubuntu 16.10.</span><span class="sxs-lookup"><span data-stu-id="a4798-116">As an example, let's install .NET Core on Ubuntu 16.10.</span></span> <span data-ttu-id="a4798-117">Para la Guía de instalación más reciente de hello, visite [.NET Core en Linux](https://www.microsoft.com/net/core#linuxubuntu) página de instalación.</span><span class="sxs-lookup"><span data-stu-id="a4798-117">For hello latest installation guide, visit [.NET Core on Linux](https://www.microsoft.com/net/core#linuxubuntu) installation page.</span></span>
 
 
 ```bash
@@ -40,7 +40,7 @@ sudo apt-get update
 sudo apt-get install dotnet-dev-1.0.3
 ```
 
-<span data-ttu-id="8c571-118">Una vez que instale .NET Core, descargue e instale AzCopy.</span><span class="sxs-lookup"><span data-stu-id="8c571-118">Once you have installed .NET Core, download and install AzCopy.</span></span>
+<span data-ttu-id="a4798-118">Una vez que instale .NET Core, descargue e instale AzCopy.</span><span class="sxs-lookup"><span data-stu-id="a4798-118">Once you have installed .NET Core, download and install AzCopy.</span></span>
 
 ```bash
 wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
@@ -48,20 +48,20 @@ tar -xf azcopy.tar.gz
 sudo ./install.sh
 ```
 
-<span data-ttu-id="8c571-119">Puede quitar los archivos extraídos una vez que se instale AzCopy en Linux.</span><span class="sxs-lookup"><span data-stu-id="8c571-119">You can remove the extracted files once AzCopy on Linux is installed.</span></span> <span data-ttu-id="8c571-120">También, si no tiene privilegios de superusuario, también puede ejecutar AzCopy con el script de shell "azcopy" en la carpeta extraída.</span><span class="sxs-lookup"><span data-stu-id="8c571-120">Alternatively if you do not have superuser privileges, you can also run AzCopy using the shell script 'azcopy' in the extracted folder.</span></span> 
+<span data-ttu-id="a4798-119">Puede quitar archivos de hello extraída una vez instalado AzCopy en Linux.</span><span class="sxs-lookup"><span data-stu-id="a4798-119">You can remove hello extracted files once AzCopy on Linux is installed.</span></span> <span data-ttu-id="a4798-120">O bien si no tiene privilegios de superusuario, también puede ejecutar AzCopy mediante script de shell de hello 'azcopy' en la carpeta extraída de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-120">Alternatively if you do not have superuser privileges, you can also run AzCopy using hello shell script 'azcopy' in hello extracted folder.</span></span> 
 
-### <a name="alternative-installation-on-ubuntu"></a><span data-ttu-id="8c571-121">Instalación alternativa en Ubuntu</span><span class="sxs-lookup"><span data-stu-id="8c571-121">Alternative Installation on Ubuntu</span></span>
+### <a name="alternative-installation-on-ubuntu"></a><span data-ttu-id="a4798-121">Instalación alternativa en Ubuntu</span><span class="sxs-lookup"><span data-stu-id="a4798-121">Alternative Installation on Ubuntu</span></span>
 
-<span data-ttu-id="8c571-122">**Ubuntu 14.04**</span><span class="sxs-lookup"><span data-stu-id="8c571-122">**Ubuntu 14.04**</span></span>
+<span data-ttu-id="a4798-122">**Ubuntu 14.04**</span><span class="sxs-lookup"><span data-stu-id="a4798-122">**Ubuntu 14.04**</span></span>
 
-<span data-ttu-id="8c571-123">Agregue apt source para .NET Core:</span><span class="sxs-lookup"><span data-stu-id="8c571-123">Add apt source for .Net Core:</span></span>
+<span data-ttu-id="a4798-123">Agregue apt source para .NET Core:</span><span class="sxs-lookup"><span data-stu-id="a4798-123">Add apt source for .Net Core:</span></span>
 
 ```bash
 sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list' 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 ```
 
-<span data-ttu-id="8c571-124">Agregue apt source para el repositorio de productos de Linux para Microsoft e instale AzCopy:</span><span class="sxs-lookup"><span data-stu-id="8c571-124">Add apt source for Microsoft Linux product repository and install AzCopy:</span></span>
+<span data-ttu-id="a4798-124">Agregue apt source para el repositorio de productos de Linux para Microsoft e instale AzCopy:</span><span class="sxs-lookup"><span data-stu-id="a4798-124">Add apt source for Microsoft Linux product repository and install AzCopy:</span></span>
 
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list > ./microsoft-prod.list
@@ -75,16 +75,16 @@ sudo apt-get update
 sudo apt-get install azcopy
 ```
 
-<span data-ttu-id="8c571-125">**Ubuntu 16.04**</span><span class="sxs-lookup"><span data-stu-id="8c571-125">**Ubuntu 16.04**</span></span>
+<span data-ttu-id="a4798-125">**Ubuntu 16.04**</span><span class="sxs-lookup"><span data-stu-id="a4798-125">**Ubuntu 16.04**</span></span>
 
-<span data-ttu-id="8c571-126">Agregue apt source para .NET Core:</span><span class="sxs-lookup"><span data-stu-id="8c571-126">Add apt source for .Net Core:</span></span>
+<span data-ttu-id="a4798-126">Agregue apt source para .NET Core:</span><span class="sxs-lookup"><span data-stu-id="a4798-126">Add apt source for .Net Core:</span></span>
 
 ```bash
 sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list' 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 ```
 
-<span data-ttu-id="8c571-127">Agregue apt source para el repositorio de productos de Linux para Microsoft e instale AzCopy:</span><span class="sxs-lookup"><span data-stu-id="8c571-127">Add apt source for Microsoft Linux product repository and install AzCopy:</span></span>
+<span data-ttu-id="a4798-127">Agregue apt source para el repositorio de productos de Linux para Microsoft e instale AzCopy:</span><span class="sxs-lookup"><span data-stu-id="a4798-127">Add apt source for Microsoft Linux product repository and install AzCopy:</span></span>
 
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
@@ -98,16 +98,16 @@ sudo apt-get update
 sudo apt-get install azcopy
 ```
 
-<span data-ttu-id="8c571-128">**Ubuntu 16.10**</span><span class="sxs-lookup"><span data-stu-id="8c571-128">**Ubuntu 16.10**</span></span>
+<span data-ttu-id="a4798-128">**Ubuntu 16.10**</span><span class="sxs-lookup"><span data-stu-id="a4798-128">**Ubuntu 16.10**</span></span>
 
-<span data-ttu-id="8c571-129">Agregue apt source para .NET Core:</span><span class="sxs-lookup"><span data-stu-id="8c571-129">Add apt source for .Net Core:</span></span>
+<span data-ttu-id="a4798-129">Agregue apt source para .NET Core:</span><span class="sxs-lookup"><span data-stu-id="a4798-129">Add apt source for .Net Core:</span></span>
 
 ```bash
 sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 ```
 
-<span data-ttu-id="8c571-130">Agregue apt source para el repositorio de productos de Linux para Microsoft e instale AzCopy:</span><span class="sxs-lookup"><span data-stu-id="8c571-130">Add apt source for Microsoft Linux product repository and install AzCopy:</span></span>
+<span data-ttu-id="a4798-130">Agregue apt source para el repositorio de productos de Linux para Microsoft e instale AzCopy:</span><span class="sxs-lookup"><span data-stu-id="a4798-130">Add apt source for Microsoft Linux product repository and install AzCopy:</span></span>
 
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/16.10/prod.list > ./microsoft-prod.list
@@ -121,17 +121,17 @@ sudo apt-get update
 sudo apt-get install azcopy
 ```
 
-## <a name="writing-your-first-azcopy-command"></a><span data-ttu-id="8c571-131">Escritura del primer comando de AzCopy</span><span class="sxs-lookup"><span data-stu-id="8c571-131">Writing your first AzCopy command</span></span>
-<span data-ttu-id="8c571-132">La sintaxis básica del comando AzCopy es:</span><span class="sxs-lookup"><span data-stu-id="8c571-132">The basic syntax for AzCopy commands is:</span></span>
+## <a name="writing-your-first-azcopy-command"></a><span data-ttu-id="a4798-131">Escritura del primer comando de AzCopy</span><span class="sxs-lookup"><span data-stu-id="a4798-131">Writing your first AzCopy command</span></span>
+<span data-ttu-id="a4798-132">sintaxis básica de Hola para comandos de AzCopy es:</span><span class="sxs-lookup"><span data-stu-id="a4798-132">hello basic syntax for AzCopy commands is:</span></span>
 
 ```azcopy
 azcopy --source <source> --destination <destination> [Options]
 ```
 
-<span data-ttu-id="8c571-133">Los ejemplos siguientes demuestran diversos escenarios para copiar datos a los blobs y archivos de Microsoft Azure y desde estos.</span><span class="sxs-lookup"><span data-stu-id="8c571-133">The following examples demonstrate various scenarios for copying data to and from Microsoft Azure Blobs and Files.</span></span> <span data-ttu-id="8c571-134">Consulte el menú `azcopy --help` para una explicación detallada de los parámetros que se usan en cada ejemplo.</span><span class="sxs-lookup"><span data-stu-id="8c571-134">Refer to the `azcopy --help` menu for a detailed explanation of the parameters used in each sample.</span></span>
+<span data-ttu-id="a4798-133">Hello en los ejemplos siguientes muestra varios escenarios para copiar datos tooand de Blobs de Microsoft Azure y los archivos.</span><span class="sxs-lookup"><span data-stu-id="a4798-133">hello following examples demonstrate various scenarios for copying data tooand from Microsoft Azure Blobs and Files.</span></span> <span data-ttu-id="a4798-134">Consulte toohello `azcopy --help` menú para obtener una explicación detallada de los parámetros de hello utilizadas en cada ejemplo.</span><span class="sxs-lookup"><span data-stu-id="a4798-134">Refer toohello `azcopy --help` menu for a detailed explanation of hello parameters used in each sample.</span></span>
 
-## <a name="blob-download"></a><span data-ttu-id="8c571-135">Blob: descarga</span><span class="sxs-lookup"><span data-stu-id="8c571-135">Blob: Download</span></span>
-### <a name="download-single-blob"></a><span data-ttu-id="8c571-136">Descarga de un solo blob</span><span class="sxs-lookup"><span data-stu-id="8c571-136">Download single blob</span></span>
+## <a name="blob-download"></a><span data-ttu-id="a4798-135">Blob: descarga</span><span class="sxs-lookup"><span data-stu-id="a4798-135">Blob: Download</span></span>
+### <a name="download-single-blob"></a><span data-ttu-id="a4798-136">Descarga de un solo blob</span><span class="sxs-lookup"><span data-stu-id="a4798-136">Download single blob</span></span>
 
 ```azcopy
 azcopy \
@@ -141,9 +141,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-<span data-ttu-id="8c571-137">Si la carpeta `/mnt/myfiles` no existe, AzCopy la crea y descarga `abc.txt ` a la carpeta nueva.</span><span class="sxs-lookup"><span data-stu-id="8c571-137">If the folder `/mnt/myfiles` does not exist, AzCopy creates it and downloads `abc.txt ` into the new folder.</span></span>
+<span data-ttu-id="a4798-137">Si carpeta hello `/mnt/myfiles` no existe, AzCopy lo crea y descarga `abc.txt ` en la nueva carpeta de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-137">If hello folder `/mnt/myfiles` does not exist, AzCopy creates it and downloads `abc.txt ` into hello new folder.</span></span>
 
-### <a name="download-single-blob-from-secondary-region"></a><span data-ttu-id="8c571-138">Descarga de un solo blob desde la región secundaria</span><span class="sxs-lookup"><span data-stu-id="8c571-138">Download single blob from secondary region</span></span>
+### <a name="download-single-blob-from-secondary-region"></a><span data-ttu-id="a4798-138">Descarga de un solo blob desde la región secundaria</span><span class="sxs-lookup"><span data-stu-id="a4798-138">Download single blob from secondary region</span></span>
 
 ```azcopy
 azcopy \
@@ -153,9 +153,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-<span data-ttu-id="8c571-139">Tenga en cuenta que debe tener almacenamiento con redundancia geográfica con acceso de lectura habilitado.</span><span class="sxs-lookup"><span data-stu-id="8c571-139">Note that you must have read-access geo-redundant storage enabled.</span></span>
+<span data-ttu-id="a4798-139">Tenga en cuenta que debe tener almacenamiento con redundancia geográfica con acceso de lectura habilitado.</span><span class="sxs-lookup"><span data-stu-id="a4798-139">Note that you must have read-access geo-redundant storage enabled.</span></span>
 
-### <a name="download-all-blobs"></a><span data-ttu-id="8c571-140">Descarga de todos los blobs</span><span class="sxs-lookup"><span data-stu-id="8c571-140">Download all blobs</span></span>
+### <a name="download-all-blobs"></a><span data-ttu-id="a4798-140">Descarga de todos los blobs</span><span class="sxs-lookup"><span data-stu-id="a4798-140">Download all blobs</span></span>
 
 ```azcopy
 azcopy \
@@ -165,7 +165,7 @@ azcopy \
     --recursive
 ```
 
-<span data-ttu-id="8c571-141">Supongamos que los siguientes blobs residen en el contenedor especificado:</span><span class="sxs-lookup"><span data-stu-id="8c571-141">Assume the following blobs reside in the specified container:</span></span>  
+<span data-ttu-id="a4798-141">Suponga la siguiente Hola blobs residen en el contenedor especificado de hello:</span><span class="sxs-lookup"><span data-stu-id="a4798-141">Assume hello following blobs reside in hello specified container:</span></span>  
 
 ```
 abc.txt
@@ -175,7 +175,7 @@ vd1/a.txt
 vd1/abcd.txt
 ```
 
-<span data-ttu-id="8c571-142">Después de la operación de descarga, el directorio `/mnt/myfiles` incluye los archivos siguientes:</span><span class="sxs-lookup"><span data-stu-id="8c571-142">After the download operation, the directory `/mnt/myfiles` includes the following files:</span></span>
+<span data-ttu-id="a4798-142">Después de la operación de descarga de Hola Hola directory `/mnt/myfiles` incluye Hola siguientes archivos:</span><span class="sxs-lookup"><span data-stu-id="a4798-142">After hello download operation, hello directory `/mnt/myfiles` includes hello following files:</span></span>
 
 ```
 /mnt/myfiles/abc.txt
@@ -185,9 +185,9 @@ vd1/abcd.txt
 /mnt/myfiles/vd1/abcd.txt
 ```
 
-<span data-ttu-id="8c571-143">Si no especifica la opción `--recursive`, no se descargará ningún blob.</span><span class="sxs-lookup"><span data-stu-id="8c571-143">If you do not specify option `--recursive`, no blob will be downloaded.</span></span>
+<span data-ttu-id="a4798-143">Si no especifica la opción `--recursive`, no se descargará ningún blob.</span><span class="sxs-lookup"><span data-stu-id="a4798-143">If you do not specify option `--recursive`, no blob will be downloaded.</span></span>
 
-### <a name="download-blobs-with-specified-prefix"></a><span data-ttu-id="8c571-144">Descarga de blobs con el prefijo especificado</span><span class="sxs-lookup"><span data-stu-id="8c571-144">Download blobs with specified prefix</span></span>
+### <a name="download-blobs-with-specified-prefix"></a><span data-ttu-id="a4798-144">Descarga de blobs con el prefijo especificado</span><span class="sxs-lookup"><span data-stu-id="a4798-144">Download blobs with specified prefix</span></span>
 
 ```azcopy
 azcopy \
@@ -198,7 +198,7 @@ azcopy \
     --recursive
 ```
 
-<span data-ttu-id="8c571-145">Supongamos que los siguientes blobs residen en el contenedor especificado.</span><span class="sxs-lookup"><span data-stu-id="8c571-145">Assume the following blobs reside in the specified container.</span></span> <span data-ttu-id="8c571-146">Se descargarán todos los blobs que comiencen con el prefijo `a`.</span><span class="sxs-lookup"><span data-stu-id="8c571-146">All blobs beginning with the prefix `a` are downloaded.</span></span>
+<span data-ttu-id="a4798-145">Suponga la siguiente Hola blobs residen en el contenedor especificado de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-145">Assume hello following blobs reside in hello specified container.</span></span> <span data-ttu-id="a4798-146">Todos los blobs que comienzan con el prefijo de hello `a` se descargan.</span><span class="sxs-lookup"><span data-stu-id="a4798-146">All blobs beginning with hello prefix `a` are downloaded.</span></span>
 
 ```
 abc.txt
@@ -209,7 +209,7 @@ vd1\a.txt
 vd1\abcd.txt
 ```
 
-<span data-ttu-id="8c571-147">Después de la operación de descarga, la carpeta `/mnt/myfiles` incluye los archivos siguientes:</span><span class="sxs-lookup"><span data-stu-id="8c571-147">After the download operation, the folder `/mnt/myfiles` includes the following files:</span></span>
+<span data-ttu-id="a4798-147">Después de la operación de descarga de Hola Hola carpeta `/mnt/myfiles` incluye Hola siguientes archivos:</span><span class="sxs-lookup"><span data-stu-id="a4798-147">After hello download operation, hello folder `/mnt/myfiles` includes hello following files:</span></span>
 
 ```
 /mnt/myfiles/abc.txt
@@ -217,9 +217,9 @@ vd1\abcd.txt
 /mnt/myfiles/abc2.txt
 ```
 
-<span data-ttu-id="8c571-148">El prefijo se aplica al directorio virtual, que forma la primera parte del nombre del blob.</span><span class="sxs-lookup"><span data-stu-id="8c571-148">The prefix applies to the virtual directory, which forms the first part of the blob name.</span></span> <span data-ttu-id="8c571-149">En el ejemplo mostrado anteriormente, el directorio virtual no coincide con el prefijo especificado, por lo que no se descarga ningún blob.</span><span class="sxs-lookup"><span data-stu-id="8c571-149">In the example shown above, the virtual directory does not match the specified prefix, so no blob is downloaded.</span></span> <span data-ttu-id="8c571-150">Además, si no se especifica la opción `--recursive`, AzCopy no descarga ningún blob.</span><span class="sxs-lookup"><span data-stu-id="8c571-150">In addition, if the option `--recursive` is not specified, AzCopy does not download any blobs.</span></span>
+<span data-ttu-id="a4798-148">prefijo de Hello aplica toohello directorio virtual, que forma Hola primera parte del nombre de blob de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-148">hello prefix applies toohello virtual directory, which forms hello first part of hello blob name.</span></span> <span data-ttu-id="a4798-149">Ejemplo de Hola mostrado anteriormente, directorio virtual hello no coincide con el prefijo especificado de hello, por lo que no se descarga ningún blob.</span><span class="sxs-lookup"><span data-stu-id="a4798-149">In hello example shown above, hello virtual directory does not match hello specified prefix, so no blob is downloaded.</span></span> <span data-ttu-id="a4798-150">Además, si hello opción `--recursive` no se especifica, AzCopy descargar los blobs.</span><span class="sxs-lookup"><span data-stu-id="a4798-150">In addition, if hello option `--recursive` is not specified, AzCopy does not download any blobs.</span></span>
 
-### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a><span data-ttu-id="8c571-151">Establecimiento de la hora de la última modificación de los archivos exportados para que coincida con la de los blobs de origen</span><span class="sxs-lookup"><span data-stu-id="8c571-151">Set the last-modified time of exported files to be same as the source blobs</span></span>
+### <a name="set-hello-last-modified-time-of-exported-files-toobe-same-as-hello-source-blobs"></a><span data-ttu-id="a4798-151">Establecer la hora de última modificación de Hola de los archivos exportados toobe igual que Hola blobs de origen</span><span class="sxs-lookup"><span data-stu-id="a4798-151">Set hello last-modified time of exported files toobe same as hello source blobs</span></span>
 
 ```azcopy
 azcopy \
@@ -229,7 +229,7 @@ azcopy \
     --preserve-last-modified-time
 ```
 
-<span data-ttu-id="8c571-152">También puede excluir los blobs de la operación de descarga basándose en la hora de su última modificación.</span><span class="sxs-lookup"><span data-stu-id="8c571-152">You can also exclude blobs from the download operation based on their last-modified time.</span></span> <span data-ttu-id="8c571-153">Por ejemplo, si desea excluir los blobs cuya hora de la última modificación es igual o más reciente que la del archivo de destino, agregue la opción `--exclude-newer` :</span><span class="sxs-lookup"><span data-stu-id="8c571-153">For example, if you want to exclude blobs whose last modified time is the same or newer than the destination file, add the `--exclude-newer` option:</span></span>
+<span data-ttu-id="a4798-152">También puede excluir blobs de operación de descarga de hello según su hora de última modificación.</span><span class="sxs-lookup"><span data-stu-id="a4798-152">You can also exclude blobs from hello download operation based on their last-modified time.</span></span> <span data-ttu-id="a4798-153">Por ejemplo, si desea que los blobs tooexclude cuya hora de última modificación es hello igual o más reciente que el archivo de destino de hello, agregar hello `--exclude-newer` opción:</span><span class="sxs-lookup"><span data-stu-id="a4798-153">For example, if you want tooexclude blobs whose last modified time is hello same or newer than hello destination file, add hello `--exclude-newer` option:</span></span>
 
 ```azcopy
 azcopy \
@@ -240,7 +240,7 @@ azcopy \
     --exclude-newer
 ```
 
-<span data-ttu-id="8c571-154">O, si desea excluir los blobs cuya hora de la última modificación es igual o anterior a la del archivo de destino, agregue la opción `--exclude-older` :</span><span class="sxs-lookup"><span data-stu-id="8c571-154">Or if you want to exclude blobs whose last modified time is the same or older than the destination file, add the `--exclude-older` option:</span></span>
+<span data-ttu-id="a4798-154">O si desea que los blobs tooexclude cuya hora de última modificación es hello igual o anterior a archivo de destino de hello, agregue hello `--exclude-older` opción:</span><span class="sxs-lookup"><span data-stu-id="a4798-154">Or if you want tooexclude blobs whose last modified time is hello same or older than hello destination file, add hello `--exclude-older` option:</span></span>
 
 ```azcopy
 azcopy \
@@ -251,8 +251,8 @@ azcopy \
     --exclude-older
 ```
 
-## <a name="blob-upload"></a><span data-ttu-id="8c571-155">Blob: carga</span><span class="sxs-lookup"><span data-stu-id="8c571-155">Blob: Upload</span></span>
-### <a name="upload-single-file"></a><span data-ttu-id="8c571-156">Carga de un solo archivo</span><span class="sxs-lookup"><span data-stu-id="8c571-156">Upload single file</span></span>
+## <a name="blob-upload"></a><span data-ttu-id="a4798-155">Blob: carga</span><span class="sxs-lookup"><span data-stu-id="a4798-155">Blob: Upload</span></span>
+### <a name="upload-single-file"></a><span data-ttu-id="a4798-156">Carga de un solo archivo</span><span class="sxs-lookup"><span data-stu-id="a4798-156">Upload single file</span></span>
 
 ```azcopy
 azcopy \
@@ -262,9 +262,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-<span data-ttu-id="8c571-157">Si el contenedor de destino especificado no existe, AzCopy lo crea y carga el archivo en él.</span><span class="sxs-lookup"><span data-stu-id="8c571-157">If the specified destination container does not exist, AzCopy creates it and uploads the file into it.</span></span>
+<span data-ttu-id="a4798-157">Si no existe el contenedor de destino especificado de hello, AzCopy lo crea y cargas Hola archivos en él.</span><span class="sxs-lookup"><span data-stu-id="a4798-157">If hello specified destination container does not exist, AzCopy creates it and uploads hello file into it.</span></span>
 
-### <a name="upload-single-file-to-virtual-directory"></a><span data-ttu-id="8c571-158">Carga de un solo archivo en el directorio virtual</span><span class="sxs-lookup"><span data-stu-id="8c571-158">Upload single file to virtual directory</span></span>
+### <a name="upload-single-file-toovirtual-directory"></a><span data-ttu-id="a4798-158">Cargar archivo único directorio toovirtual</span><span class="sxs-lookup"><span data-stu-id="a4798-158">Upload single file toovirtual directory</span></span>
 
 ```azcopy
 azcopy \
@@ -274,9 +274,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-<span data-ttu-id="8c571-159">Si el directorio virtual especificado no existe, AzCopy carga el archivo para incluir el directorio virtual en el nombre del blob (*por ejemplo*, `vd/abc.txt` en el ejemplo anterior).</span><span class="sxs-lookup"><span data-stu-id="8c571-159">If the specified virtual directory does not exist, AzCopy uploads the file to include the virtual directory in the blob name (*e.g.*, `vd/abc.txt` in the example above).</span></span>
+<span data-ttu-id="a4798-159">Si Hola especifica el directorio virtual no existe, se AzCopy carga Hola archivo tooinclude Hola directorio virtual en el nombre del blob de hello (*p. ej.*, `vd/abc.txt` en el ejemplo de Hola anterior).</span><span class="sxs-lookup"><span data-stu-id="a4798-159">If hello specified virtual directory does not exist, AzCopy uploads hello file tooinclude hello virtual directory in hello blob name (*e.g.*, `vd/abc.txt` in hello example above).</span></span>
 
-### <a name="upload-all-files"></a><span data-ttu-id="8c571-160">Carga de todos los archivos</span><span class="sxs-lookup"><span data-stu-id="8c571-160">Upload all files</span></span>
+### <a name="upload-all-files"></a><span data-ttu-id="a4798-160">Carga de todos los archivos</span><span class="sxs-lookup"><span data-stu-id="a4798-160">Upload all files</span></span>
 
 ```azcopy
 azcopy \
@@ -286,7 +286,7 @@ azcopy \
     --recursive
 ```
 
-<span data-ttu-id="8c571-161">Al especificar la opción `--recursive` se carga el contenido del directorio especificado en Blob Storage de forma recursiva, lo que significa que todas las subcarpetas y sus archivos también se cargan.</span><span class="sxs-lookup"><span data-stu-id="8c571-161">Specifying option `--recursive` uploads the contents of the specified directory to Blob storage recursively, meaning that all subfolders and their files are uploaded as well.</span></span> <span data-ttu-id="8c571-162">Por ejemplo, supongamos que los siguientes archivos residen en la carpeta `/mnt/myfiles`:</span><span class="sxs-lookup"><span data-stu-id="8c571-162">For instance, assume the following files reside in folder `/mnt/myfiles`:</span></span>
+<span data-ttu-id="a4798-161">Especificar la opción `--recursive` cargas Hola contenido de hello especificado directorios tooBlob almacenamiento de manera recursiva, lo que significa que todas las subcarpetas y sus archivos se cargan también.</span><span class="sxs-lookup"><span data-stu-id="a4798-161">Specifying option `--recursive` uploads hello contents of hello specified directory tooBlob storage recursively, meaning that all subfolders and their files are uploaded as well.</span></span> <span data-ttu-id="a4798-162">Por ejemplo, suponga el siguiente Hola archivos residen en la carpeta `/mnt/myfiles`:</span><span class="sxs-lookup"><span data-stu-id="a4798-162">For instance, assume hello following files reside in folder `/mnt/myfiles`:</span></span>
 
 ```
 /mnt/myfiles/abc.txt
@@ -296,7 +296,7 @@ azcopy \
 /mnt/myfiles/subfolder/abcd.txt
 ```
 
-<span data-ttu-id="8c571-163">Después de la operación de carga, el contenedor incluye los archivos siguientes:</span><span class="sxs-lookup"><span data-stu-id="8c571-163">After the upload operation, the container includes the following files:</span></span>
+<span data-ttu-id="a4798-163">Después de la operación de carga de hello, contenedor Hola incluye Hola siguientes archivos:</span><span class="sxs-lookup"><span data-stu-id="a4798-163">After hello upload operation, hello container includes hello following files:</span></span>
 
 ```
 abc.txt
@@ -306,7 +306,7 @@ subfolder/a.txt
 subfolder/abcd.txt
 ```
 
-<span data-ttu-id="8c571-164">Cuando la opción `--recursive` no se especifica, solo se cargan los tres archivos siguientes:</span><span class="sxs-lookup"><span data-stu-id="8c571-164">When the option `--recursive` is not specified, only the following three files are uploaded:</span></span>
+<span data-ttu-id="a4798-164">Hola cuando la opción `--recursive` no se especifica, solo hello siguientes tres archivos se cargan:</span><span class="sxs-lookup"><span data-stu-id="a4798-164">When hello option `--recursive` is not specified, only hello following three files are uploaded:</span></span>
 
 ```
 abc.txt
@@ -314,7 +314,7 @@ abc1.txt
 abc2.txt
 ```
 
-### <a name="upload-files-matching-specified-pattern"></a><span data-ttu-id="8c571-165">Carga de archivos que coincidan con el patrón especificado</span><span class="sxs-lookup"><span data-stu-id="8c571-165">Upload files matching specified pattern</span></span>
+### <a name="upload-files-matching-specified-pattern"></a><span data-ttu-id="a4798-165">Carga de archivos que coincidan con el patrón especificado</span><span class="sxs-lookup"><span data-stu-id="a4798-165">Upload files matching specified pattern</span></span>
 
 ```azcopy
 azcopy \
@@ -325,7 +325,7 @@ azcopy \
     --recursive
 ```
 
-<span data-ttu-id="8c571-166">Supongamos que los siguientes archivos residen en la carpeta `/mnt/myfiles`:</span><span class="sxs-lookup"><span data-stu-id="8c571-166">Assume the following files reside in folder `/mnt/myfiles`:</span></span>
+<span data-ttu-id="a4798-166">Suponga la siguiente Hola archivos residen en la carpeta `/mnt/myfiles`:</span><span class="sxs-lookup"><span data-stu-id="a4798-166">Assume hello following files reside in folder `/mnt/myfiles`:</span></span>
 
 ```
 /mnt/myfiles/abc.txt
@@ -336,7 +336,7 @@ azcopy \
 /mnt/myfiles/subfolder/abcd.txt
 ```
 
-<span data-ttu-id="8c571-167">Después de la operación de carga, el contenedor incluye los archivos siguientes:</span><span class="sxs-lookup"><span data-stu-id="8c571-167">After the upload operation, the container includes the following files:</span></span>
+<span data-ttu-id="a4798-167">Después de la operación de carga de hello, contenedor Hola incluye Hola siguientes archivos:</span><span class="sxs-lookup"><span data-stu-id="a4798-167">After hello upload operation, hello container includes hello following files:</span></span>
 
 ```
 abc.txt
@@ -346,7 +346,7 @@ subfolder/a.txt
 subfolder/abcd.txt
 ```
 
-<span data-ttu-id="8c571-168">Cuando no se especifica la opción `--recursive`, AzCopy omite los archivos que se encuentran en subdirectorios:</span><span class="sxs-lookup"><span data-stu-id="8c571-168">When the option `--recursive` is not specified, AzCopy skips files that are in sub-directories:</span></span>
+<span data-ttu-id="a4798-168">Hola cuando la opción `--recursive` no se especifica, AzCopy omite los archivos que están en subdirectorios:</span><span class="sxs-lookup"><span data-stu-id="a4798-168">When hello option `--recursive` is not specified, AzCopy skips files that are in sub-directories:</span></span>
 
 ```
 abc.txt
@@ -354,8 +354,8 @@ abc1.txt
 abc2.txt
 ```
 
-### <a name="specify-the-mime-content-type-of-a-destination-blob"></a><span data-ttu-id="8c571-169">Especificación del tipo de contenido MIME de un blob de destino</span><span class="sxs-lookup"><span data-stu-id="8c571-169">Specify the MIME content type of a destination blob</span></span>
-<span data-ttu-id="8c571-170">De forma predeterminada, AzCopy define el tipo de contenido de un blob de destino como `application/octet-stream`.</span><span class="sxs-lookup"><span data-stu-id="8c571-170">By default, AzCopy sets the content type of a destination blob to `application/octet-stream`.</span></span> <span data-ttu-id="8c571-171">Sin embargo, puede especificar explícitamente el tipo de contenido a través de la opción `--set-content-type [content-type]`.</span><span class="sxs-lookup"><span data-stu-id="8c571-171">However, you can explicitly specify the content type via the option `--set-content-type [content-type]`.</span></span> <span data-ttu-id="8c571-172">Esta sintaxis establece el tipo de contenido para todos los blobs de una operación de carga.</span><span class="sxs-lookup"><span data-stu-id="8c571-172">This syntax sets the content type for all blobs in an upload operation.</span></span>
+### <a name="specify-hello-mime-content-type-of-a-destination-blob"></a><span data-ttu-id="a4798-169">Especifique el tipo de contenido MIME de Hola de un blob de destino</span><span class="sxs-lookup"><span data-stu-id="a4798-169">Specify hello MIME content type of a destination blob</span></span>
+<span data-ttu-id="a4798-170">De forma predeterminada, AzCopy establece tipo de contenido de Hola de un blob de destino demasiado`application/octet-stream`.</span><span class="sxs-lookup"><span data-stu-id="a4798-170">By default, AzCopy sets hello content type of a destination blob too`application/octet-stream`.</span></span> <span data-ttu-id="a4798-171">Sin embargo, puede especificar explícitamente los tipo de contenido de Hola a través de la opción de hello `--set-content-type [content-type]`.</span><span class="sxs-lookup"><span data-stu-id="a4798-171">However, you can explicitly specify hello content type via hello option `--set-content-type [content-type]`.</span></span> <span data-ttu-id="a4798-172">Esta sintaxis establece el tipo de contenido de Hola para todos los blobs en una operación de carga.</span><span class="sxs-lookup"><span data-stu-id="a4798-172">This syntax sets hello content type for all blobs in an upload operation.</span></span>
 
 ```azcopy
 azcopy \
@@ -366,7 +366,7 @@ azcopy \
     --set-content-type "video/mp4"
 ```
 
-<span data-ttu-id="8c571-173">Si la opción `--set-content-type` se especifica sin un valor, AzCopy establece el tipo de contenido de cada blob o archivo según su extensión de archivo.</span><span class="sxs-lookup"><span data-stu-id="8c571-173">If the option `--set-content-type` is specified without a value, then AzCopy sets each blob or file's content type according to its file extension.</span></span>
+<span data-ttu-id="a4798-173">Si hello opción `--set-content-type` se especifica sin un valor, AzCopy establece cada blob o el archivo del tipo de contenido según tooits extensión de archivo.</span><span class="sxs-lookup"><span data-stu-id="a4798-173">If hello option `--set-content-type` is specified without a value, then AzCopy sets each blob or file's content type according tooits file extension.</span></span>
 
 ```azcopy
 azcopy \
@@ -377,8 +377,8 @@ azcopy \
     --set-content-type
 ```
 
-## <a name="blob-copy"></a><span data-ttu-id="8c571-174">Blob: copia</span><span class="sxs-lookup"><span data-stu-id="8c571-174">Blob: Copy</span></span>
-### <a name="copy-single-blob-within-storage-account"></a><span data-ttu-id="8c571-175">Copia de un solo blob dentro de una cuenta de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="8c571-175">Copy single blob within Storage account</span></span>
+## <a name="blob-copy"></a><span data-ttu-id="a4798-174">Blob: copia</span><span class="sxs-lookup"><span data-stu-id="a4798-174">Blob: Copy</span></span>
+### <a name="copy-single-blob-within-storage-account"></a><span data-ttu-id="a4798-175">Copia de un solo blob dentro de una cuenta de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="a4798-175">Copy single blob within Storage account</span></span>
 
 ```azcopy
 azcopy \
@@ -389,9 +389,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-<span data-ttu-id="8c571-176">Cuando copia un blob sin la opción --syn-copy, se realiza una operación de [copia de lado servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).</span><span class="sxs-lookup"><span data-stu-id="8c571-176">When you copy a blob without --sync-copy option, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
+<span data-ttu-id="a4798-176">Cuando copia un blob sin la opción --syn-copy, se realiza una operación de [copia de lado servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).</span><span class="sxs-lookup"><span data-stu-id="a4798-176">When you copy a blob without --sync-copy option, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
 
-### <a name="copy-single-blob-across-storage-accounts"></a><span data-ttu-id="8c571-177">Copia de un solo blob entre cuentas de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="8c571-177">Copy single blob across Storage accounts</span></span>
+### <a name="copy-single-blob-across-storage-accounts"></a><span data-ttu-id="a4798-177">Copia de un solo blob entre cuentas de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="a4798-177">Copy single blob across Storage accounts</span></span>
 
 ```azcopy
 azcopy \
@@ -402,9 +402,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-<span data-ttu-id="8c571-178">Cuando copia un blob sin la opción --syn-copy, se realiza una operación de [copia de lado servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).</span><span class="sxs-lookup"><span data-stu-id="8c571-178">When you copy a blob without --sync-copy option, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
+<span data-ttu-id="a4798-178">Cuando copia un blob sin la opción --syn-copy, se realiza una operación de [copia de lado servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).</span><span class="sxs-lookup"><span data-stu-id="a4798-178">When you copy a blob without --sync-copy option, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
 
-### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a><span data-ttu-id="8c571-179">Copia de un solo blob desde la región secundaria a la región primaria</span><span class="sxs-lookup"><span data-stu-id="8c571-179">Copy single blob from secondary region to primary region</span></span>
+### <a name="copy-single-blob-from-secondary-region-tooprimary-region"></a><span data-ttu-id="a4798-179">Copiar blob único de una región secundaria tooprimary otra</span><span class="sxs-lookup"><span data-stu-id="a4798-179">Copy single blob from secondary region tooprimary region</span></span>
 
 ```azcopy
 azcopy \
@@ -415,9 +415,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-<span data-ttu-id="8c571-180">Tenga en cuenta que debe tener almacenamiento con redundancia geográfica con acceso de lectura habilitado.</span><span class="sxs-lookup"><span data-stu-id="8c571-180">Note that you must have read-access geo-redundant storage enabled.</span></span>
+<span data-ttu-id="a4798-180">Tenga en cuenta que debe tener almacenamiento con redundancia geográfica con acceso de lectura habilitado.</span><span class="sxs-lookup"><span data-stu-id="a4798-180">Note that you must have read-access geo-redundant storage enabled.</span></span>
 
-### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a><span data-ttu-id="8c571-181">Copia de un solo blob y de sus instantáneas entre cuentas de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="8c571-181">Copy single blob and its snapshots across Storage accounts</span></span>
+### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a><span data-ttu-id="a4798-181">Copia de un solo blob y de sus instantáneas entre cuentas de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="a4798-181">Copy single blob and its snapshots across Storage accounts</span></span>
 
 ```azcopy
 azcopy \
@@ -429,7 +429,7 @@ azcopy \
     --include-snapshot
 ```
 
-<span data-ttu-id="8c571-182">Después de la operación de copia, el contenedor de destino incluye el blob y sus instantáneas.</span><span class="sxs-lookup"><span data-stu-id="8c571-182">After the copy operation, the target container includes the blob and its snapshots.</span></span> <span data-ttu-id="8c571-183">El contenedor incluye el siguiente blob y sus instantáneas:</span><span class="sxs-lookup"><span data-stu-id="8c571-183">The container includes the following blob and its snapshots:</span></span>
+<span data-ttu-id="a4798-182">Después de la operación de copia de hello, contenedor de destino de hello incluye blob hello y sus instantáneas.</span><span class="sxs-lookup"><span data-stu-id="a4798-182">After hello copy operation, hello target container includes hello blob and its snapshots.</span></span> <span data-ttu-id="a4798-183">Hello contenedor incluye siguiente Hola blob y sus instantáneas:</span><span class="sxs-lookup"><span data-stu-id="a4798-183">hello container includes hello following blob and its snapshots:</span></span>
 
 ```
 abc.txt
@@ -437,10 +437,10 @@ abc (2013-02-25 080757).txt
 abc (2014-02-21 150331).txt
 ```
 
-### <a name="synchronously-copy-blobs-across-storage-accounts"></a><span data-ttu-id="8c571-184">Copia sincrónica de blobs entre cuentas de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="8c571-184">Synchronously copy blobs across Storage accounts</span></span>
-<span data-ttu-id="8c571-185">De forma predeterminada, AzCopy copia datos entre dos extremos de almacenamiento asincrónicamente.</span><span class="sxs-lookup"><span data-stu-id="8c571-185">AzCopy by default copies data between two storage endpoints asynchronously.</span></span> <span data-ttu-id="8c571-186">Por lo tanto, la operación de copia se ejecuta en segundo plano con una capacidad de ancho de banda de reserva que no tiene contrato de nivel de servicio en términos de la rapidez con que se copia un blob.</span><span class="sxs-lookup"><span data-stu-id="8c571-186">Therefore, the copy operation runs in the background using spare bandwidth capacity that has no SLA in terms of how fast a blob is copied.</span></span> 
+### <a name="synchronously-copy-blobs-across-storage-accounts"></a><span data-ttu-id="a4798-184">Copia sincrónica de blobs entre cuentas de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="a4798-184">Synchronously copy blobs across Storage accounts</span></span>
+<span data-ttu-id="a4798-185">De forma predeterminada, AzCopy copia datos entre dos extremos de almacenamiento asincrónicamente.</span><span class="sxs-lookup"><span data-stu-id="a4798-185">AzCopy by default copies data between two storage endpoints asynchronously.</span></span> <span data-ttu-id="a4798-186">Por lo tanto, se copia la copia de hello operación se ejecuta en segundo plano de hello utilizando la capacidad de reserva de ancho de banda que no tenga ningún SLA en cuanto a la rapidez con que un blob.</span><span class="sxs-lookup"><span data-stu-id="a4798-186">Therefore, hello copy operation runs in hello background using spare bandwidth capacity that has no SLA in terms of how fast a blob is copied.</span></span> 
 
-<span data-ttu-id="8c571-187">La opción `--sync-copy` garantiza que la operación de copia tiene una velocidad uniforme.</span><span class="sxs-lookup"><span data-stu-id="8c571-187">The `--sync-copy` option ensures that the copy operation gets consistent speed.</span></span> <span data-ttu-id="8c571-188">Para hacer la copia sincrónica, AzCopy descarga los blobs que se deben copiar desde el origen especificado a la memoria local y, a continuación, los carga en el destino de almacenamiento de blobs.</span><span class="sxs-lookup"><span data-stu-id="8c571-188">AzCopy performs the synchronous copy by downloading the blobs to copy from the specified source to local memory, and then uploading them to the Blob storage destination.</span></span>
+<span data-ttu-id="a4798-187">Hola `--sync-copy` opción garantiza que la operación de copia de Hola obtiene velocidad coherente.</span><span class="sxs-lookup"><span data-stu-id="a4798-187">hello `--sync-copy` option ensures that hello copy operation gets consistent speed.</span></span> <span data-ttu-id="a4798-188">AzCopy realiza copia sincrónica hello mediante la descarga de blobs de hello toocopy de hello especificado memoria toolocal de origen y, a continuación, cargarlos toohello destino de almacenamiento de blobs.</span><span class="sxs-lookup"><span data-stu-id="a4798-188">AzCopy performs hello synchronous copy by downloading hello blobs toocopy from hello specified source toolocal memory, and then uploading them toohello Blob storage destination.</span></span>
 
 ```azcopy
 azcopy \
@@ -452,10 +452,10 @@ azcopy \
     --sync-copy
 ```
 
-<span data-ttu-id="8c571-189">`--sync-copy` podría generar un costo de salida adicional en comparación con la copia asincrónica.</span><span class="sxs-lookup"><span data-stu-id="8c571-189">`--sync-copy` might generate additional egress cost compared to asynchronous copy.</span></span> <span data-ttu-id="8c571-190">El enfoque recomendado es usar esta opción en una máquina virtual de Azure que se encuentre en la misma región que la cuenta de almacenamiento de origen, para evitar el costo de salida.</span><span class="sxs-lookup"><span data-stu-id="8c571-190">The recommended approach is to use this option in an Azure VM, that is in the same region as your source storage account to avoid egress cost.</span></span>
+<span data-ttu-id="a4798-189">`--sync-copy`puede generar una salida adicional en comparación con el costo tooasynchronous copia.</span><span class="sxs-lookup"><span data-stu-id="a4798-189">`--sync-copy` might generate additional egress cost compared tooasynchronous copy.</span></span> <span data-ttu-id="a4798-190">Hola enfoque recomendado es toouse esta opción en una máquina virtual de Azure, que se encuentra en hello misma región que el costo de salida origen tooavoid de cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="a4798-190">hello recommended approach is toouse this option in an Azure VM, that is in hello same region as your source storage account tooavoid egress cost.</span></span>
 
-## <a name="file-download"></a><span data-ttu-id="8c571-191">Archivo: descarga</span><span class="sxs-lookup"><span data-stu-id="8c571-191">File: Download</span></span>
-### <a name="download-single-file"></a><span data-ttu-id="8c571-192">Descarga de un solo archivo</span><span class="sxs-lookup"><span data-stu-id="8c571-192">Download single file</span></span>
+## <a name="file-download"></a><span data-ttu-id="a4798-191">Archivo: descarga</span><span class="sxs-lookup"><span data-stu-id="a4798-191">File: Download</span></span>
+### <a name="download-single-file"></a><span data-ttu-id="a4798-192">Descarga de un solo archivo</span><span class="sxs-lookup"><span data-stu-id="a4798-192">Download single file</span></span>
 
 ```azcopy
 azcopy \
@@ -465,9 +465,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-<span data-ttu-id="8c571-193">Si el origen especificado es un recurso compartido de archivos de Azure, entonces tiene que especificar el nombre de archivo exacto (*p. ej.* `abc.txt`) para descargar un solo archivo, o especificar la opción `--recursive` para descargar todos los archivos en el recurso compartido de forma recursiva.</span><span class="sxs-lookup"><span data-stu-id="8c571-193">If the specified source is an Azure file share, then you must either specify the exact file name, (*e.g.* `abc.txt`) to download a single file, or specify option `--recursive` to download all files in the share recursively.</span></span> <span data-ttu-id="8c571-194">Si intenta especificar tanto un patrón de archivos como la opción `--recursive` en conjunto, se produce un error.</span><span class="sxs-lookup"><span data-stu-id="8c571-194">Attempting to specify both a file pattern and option `--recursive` together results in an error.</span></span>
+<span data-ttu-id="a4798-193">Si no especifica Hola origen es un recurso compartido de archivos de Azure, o bien debe especificar el nombre exacto del archivo de hello, (*p. ej.* `abc.txt`) toodownload un solo archivo, o especificar la opción `--recursive` toodownload todos los archivos en el recurso compartido de Hola de forma recursiva.</span><span class="sxs-lookup"><span data-stu-id="a4798-193">If hello specified source is an Azure file share, then you must either specify hello exact file name, (*e.g.* `abc.txt`) toodownload a single file, or specify option `--recursive` toodownload all files in hello share recursively.</span></span> <span data-ttu-id="a4798-194">Intentar toospecify un patrón de archivo y la opción `--recursive` junto produce un error.</span><span class="sxs-lookup"><span data-stu-id="a4798-194">Attempting toospecify both a file pattern and option `--recursive` together results in an error.</span></span>
 
-### <a name="download-all-files"></a><span data-ttu-id="8c571-195">Descarga de todos los archivos</span><span class="sxs-lookup"><span data-stu-id="8c571-195">Download all files</span></span>
+### <a name="download-all-files"></a><span data-ttu-id="a4798-195">Descarga de todos los archivos</span><span class="sxs-lookup"><span data-stu-id="a4798-195">Download all files</span></span>
 
 ```azcopy
 azcopy \
@@ -477,10 +477,10 @@ azcopy \
     --recursive
 ```
 
-<span data-ttu-id="8c571-196">Tenga en cuenta que no se descarga ninguna carpeta vacía.</span><span class="sxs-lookup"><span data-stu-id="8c571-196">Note that any empty folders are not downloaded.</span></span>
+<span data-ttu-id="a4798-196">Tenga en cuenta que no se descarga ninguna carpeta vacía.</span><span class="sxs-lookup"><span data-stu-id="a4798-196">Note that any empty folders are not downloaded.</span></span>
 
-## <a name="file-upload"></a><span data-ttu-id="8c571-197">Archivo: carga</span><span class="sxs-lookup"><span data-stu-id="8c571-197">File: Upload</span></span>
-### <a name="upload-single-file"></a><span data-ttu-id="8c571-198">Carga de un solo archivo</span><span class="sxs-lookup"><span data-stu-id="8c571-198">Upload single file</span></span>
+## <a name="file-upload"></a><span data-ttu-id="a4798-197">Archivo: carga</span><span class="sxs-lookup"><span data-stu-id="a4798-197">File: Upload</span></span>
+### <a name="upload-single-file"></a><span data-ttu-id="a4798-198">Carga de un solo archivo</span><span class="sxs-lookup"><span data-stu-id="a4798-198">Upload single file</span></span>
 
 ```azcopy
 azcopy \
@@ -490,7 +490,7 @@ azcopy \
     --include abc.txt
 ```
 
-### <a name="upload-all-files"></a><span data-ttu-id="8c571-199">Carga de todos los archivos</span><span class="sxs-lookup"><span data-stu-id="8c571-199">Upload all files</span></span>
+### <a name="upload-all-files"></a><span data-ttu-id="a4798-199">Carga de todos los archivos</span><span class="sxs-lookup"><span data-stu-id="a4798-199">Upload all files</span></span>
 
 ```azcopy
 azcopy \
@@ -500,9 +500,9 @@ azcopy \
     --recursive
 ```
 
-<span data-ttu-id="8c571-200">Tenga en cuenta que no se carga ninguna carpeta vacía.</span><span class="sxs-lookup"><span data-stu-id="8c571-200">Note that any empty folders are not uploaded.</span></span>
+<span data-ttu-id="a4798-200">Tenga en cuenta que no se carga ninguna carpeta vacía.</span><span class="sxs-lookup"><span data-stu-id="a4798-200">Note that any empty folders are not uploaded.</span></span>
 
-### <a name="upload-files-matching-specified-pattern"></a><span data-ttu-id="8c571-201">Carga de archivos que coincidan con el patrón especificado</span><span class="sxs-lookup"><span data-stu-id="8c571-201">Upload files matching specified pattern</span></span>
+### <a name="upload-files-matching-specified-pattern"></a><span data-ttu-id="a4798-201">Carga de archivos que coincidan con el patrón especificado</span><span class="sxs-lookup"><span data-stu-id="a4798-201">Upload files matching specified pattern</span></span>
 
 ```azcopy
 azcopy \
@@ -513,8 +513,8 @@ azcopy \
     --recursive
 ```
 
-## <a name="file-copy"></a><span data-ttu-id="8c571-202">Archivo: copia</span><span class="sxs-lookup"><span data-stu-id="8c571-202">File: Copy</span></span>
-### <a name="copy-across-file-shares"></a><span data-ttu-id="8c571-203">Copia a través de recursos compartidos de archivos</span><span class="sxs-lookup"><span data-stu-id="8c571-203">Copy across file shares</span></span>
+## <a name="file-copy"></a><span data-ttu-id="a4798-202">Archivo: copia</span><span class="sxs-lookup"><span data-stu-id="a4798-202">File: Copy</span></span>
+### <a name="copy-across-file-shares"></a><span data-ttu-id="a4798-203">Copia a través de recursos compartidos de archivos</span><span class="sxs-lookup"><span data-stu-id="a4798-203">Copy across file shares</span></span>
 
 ```azcopy
 azcopy \
@@ -524,9 +524,9 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-<span data-ttu-id="8c571-204">Al copiar un archivo en distintos recursos compartidos de archivos, se realiza una operación de [copia del lado del servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).</span><span class="sxs-lookup"><span data-stu-id="8c571-204">When you copy a file across file shares, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
+<span data-ttu-id="a4798-204">Al copiar un archivo en distintos recursos compartidos de archivos, se realiza una operación de [copia del lado del servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).</span><span class="sxs-lookup"><span data-stu-id="a4798-204">When you copy a file across file shares, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
 
-### <a name="copy-from-file-share-to-blob"></a><span data-ttu-id="8c571-205">Copia desde el recurso compartido de archivos al blob</span><span class="sxs-lookup"><span data-stu-id="8c571-205">Copy from file share to blob</span></span>
+### <a name="copy-from-file-share-tooblob"></a><span data-ttu-id="a4798-205">Copiar desde tooblob del recurso compartido de archivo</span><span class="sxs-lookup"><span data-stu-id="a4798-205">Copy from file share tooblob</span></span>
 
 ```azcopy
 azcopy \ 
@@ -536,9 +536,9 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-<span data-ttu-id="8c571-206">Al copiar un archivo desde un recurso compartido de archivos en un blob, se realiza una [copia del lado del servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).</span><span class="sxs-lookup"><span data-stu-id="8c571-206">When you copy a file from file share to blob, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
+<span data-ttu-id="a4798-206">Al copiar un archivo de tooblob de recurso compartido de archivo, un [copia del lado servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) se realiza la operación.</span><span class="sxs-lookup"><span data-stu-id="a4798-206">When you copy a file from file share tooblob, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
 
-### <a name="copy-from-blob-to-file-share"></a><span data-ttu-id="8c571-207">Copia desde el blob al recurso compartido de archivos</span><span class="sxs-lookup"><span data-stu-id="8c571-207">Copy from blob to file share</span></span>
+### <a name="copy-from-blob-toofile-share"></a><span data-ttu-id="a4798-207">Copiar desde el recurso compartido de blob toofile</span><span class="sxs-lookup"><span data-stu-id="a4798-207">Copy from blob toofile share</span></span>
 
 ```azcopy
 azcopy \
@@ -548,10 +548,10 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-<span data-ttu-id="8c571-208">Al copiar un archivo desde un blob en un recurso compartido de archivos, se realiza una operación de [copia del lado del servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).</span><span class="sxs-lookup"><span data-stu-id="8c571-208">When you copy a file from blob to file share, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
+<span data-ttu-id="a4798-208">Al copiar un archivo de recurso compartido de blob toofile, un [copia del lado servidor](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) se realiza la operación.</span><span class="sxs-lookup"><span data-stu-id="a4798-208">When you copy a file from blob toofile share, a [server-side copy](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operation is performed.</span></span>
 
-### <a name="synchronously-copy-files"></a><span data-ttu-id="8c571-209">Copia sincrónica de archivos</span><span class="sxs-lookup"><span data-stu-id="8c571-209">Synchronously copy files</span></span>
-<span data-ttu-id="8c571-210">Puede especificar la opción `--sync-copy` para copiar datos de File Storage a File Storage, de File Storage a Blob Storage y de Blob Storage a File Storage de manera sincrónica.</span><span class="sxs-lookup"><span data-stu-id="8c571-210">You can specify the `--sync-copy` option to copy data from File Storage to File Storage, from File Storage to Blob Storage and from Blob Storage to File Storage synchronously.</span></span> <span data-ttu-id="8c571-211">AzCopy ejecuta esta operación mediante la descarga de los datos de origen a la memoria local y, luego, su carga en el destino.</span><span class="sxs-lookup"><span data-stu-id="8c571-211">AzCopy runs this operation by downloading the source data to local memory, and then uploading it to destination.</span></span> <span data-ttu-id="8c571-212">En este caso, se aplica el costo de salida estándar.</span><span class="sxs-lookup"><span data-stu-id="8c571-212">In this case, standard egress cost applies.</span></span>
+### <a name="synchronously-copy-files"></a><span data-ttu-id="a4798-209">Copia sincrónica de archivos</span><span class="sxs-lookup"><span data-stu-id="a4798-209">Synchronously copy files</span></span>
+<span data-ttu-id="a4798-210">Puede especificar hello `--sync-copy` opción toocopy datos de almacenamiento de archivos tooFile almacenamiento, de almacenamiento de archivos tooBlob almacenamiento y de almacenamiento de blobs tooFile almacenamiento de forma sincrónica.</span><span class="sxs-lookup"><span data-stu-id="a4798-210">You can specify hello `--sync-copy` option toocopy data from File Storage tooFile Storage, from File Storage tooBlob Storage and from Blob Storage tooFile Storage synchronously.</span></span> <span data-ttu-id="a4798-211">AzCopy ejecuta esta operación, se descargan de memoria de toolocal de datos de origen de hello y, a continuación, cargarlo toodestination.</span><span class="sxs-lookup"><span data-stu-id="a4798-211">AzCopy runs this operation by downloading hello source data toolocal memory, and then uploading it toodestination.</span></span> <span data-ttu-id="a4798-212">En este caso, se aplica el costo de salida estándar.</span><span class="sxs-lookup"><span data-stu-id="a4798-212">In this case, standard egress cost applies.</span></span>
 
 ```azcopy
 azcopy \
@@ -563,13 +563,13 @@ azcopy \
     --sync-copy
 ```
 
-<span data-ttu-id="8c571-213">Al realizar la copia del Almacenamiento de archivos al Almacenamiento de blobs, el tipo de blob predeterminado es el blob en bloques, por lo tanto, el usuario puede especificar la opción `/BlobType:page` para cambiar el tipo de blob de destino.</span><span class="sxs-lookup"><span data-stu-id="8c571-213">When copying from File Storage to Blob Storage, the default blob type is block blob, user can specify option `/BlobType:page` to change the destination blob type.</span></span>
+<span data-ttu-id="a4798-213">Cuando se copia desde el almacenamiento de archivos tooBlob almacenamiento, tipo de blob de hello predeterminado es blob en bloques, usuario puede especificar la opción `/BlobType:page` tipo de blob de destino de toochange Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-213">When copying from File Storage tooBlob Storage, hello default blob type is block blob, user can specify option `/BlobType:page` toochange hello destination blob type.</span></span>
 
-<span data-ttu-id="8c571-214">Tenga en cuenta que `--sync-copy` podría generar un costo de salida adicional en comparación con la copia asincrónica.</span><span class="sxs-lookup"><span data-stu-id="8c571-214">Note that `--sync-copy` might generate additional egress cost comparing to asynchronous copy.</span></span> <span data-ttu-id="8c571-215">El enfoque recomendado es usar esta opción en una máquina virtual de Azure que se encuentre en la misma región que la cuenta de almacenamiento de origen, para evitar el costo de salida.</span><span class="sxs-lookup"><span data-stu-id="8c571-215">The recommended approach is to use this option in an Azure VM, that is in the same region as your source storage account to avoid egress cost.</span></span>
+<span data-ttu-id="a4798-214">Tenga en cuenta que `--sync-copy` podría generar salida adicional costo comparar copia tooasynchronous.</span><span class="sxs-lookup"><span data-stu-id="a4798-214">Note that `--sync-copy` might generate additional egress cost comparing tooasynchronous copy.</span></span> <span data-ttu-id="a4798-215">Hola enfoque recomendado es toouse esta opción en una máquina virtual de Azure, que se encuentra en hello misma región que el costo de salida origen tooavoid de cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="a4798-215">hello recommended approach is toouse this option in an Azure VM, that is in hello same region as your source storage account tooavoid egress cost.</span></span>
 
-## <a name="other-azcopy-features"></a><span data-ttu-id="8c571-216">Otras características de AzCopy</span><span class="sxs-lookup"><span data-stu-id="8c571-216">Other AzCopy features</span></span>
-### <a name="only-copy-data-that-doesnt-exist-in-the-destination"></a><span data-ttu-id="8c571-217">Solo copie los datos que no existan en el destino</span><span class="sxs-lookup"><span data-stu-id="8c571-217">Only copy data that doesn't exist in the destination</span></span>
-<span data-ttu-id="8c571-218">Los parámetros `--exclude-older` y `--exclude-newer` le permiten excluir los recursos de origen anteriores o posteriores a la copia, respectivamente.</span><span class="sxs-lookup"><span data-stu-id="8c571-218">The `--exclude-older` and `--exclude-newer` parameters allow you to exclude older or newer source resources from being copied, respectively.</span></span> <span data-ttu-id="8c571-219">Si solo desea copiar los recursos de origen que no existen en el destino, puede especificar ambos parámetros en el comando de AzCopy:</span><span class="sxs-lookup"><span data-stu-id="8c571-219">If you only want to copy source resources that don't exist in the destination, you can specify both parameters in the AzCopy command:</span></span>
+## <a name="other-azcopy-features"></a><span data-ttu-id="a4798-216">Otras características de AzCopy</span><span class="sxs-lookup"><span data-stu-id="a4798-216">Other AzCopy features</span></span>
+### <a name="only-copy-data-that-doesnt-exist-in-hello-destination"></a><span data-ttu-id="a4798-217">Sólo copia los datos que no existen en el destino de Hola</span><span class="sxs-lookup"><span data-stu-id="a4798-217">Only copy data that doesn't exist in hello destination</span></span>
+<span data-ttu-id="a4798-218">Hola `--exclude-older` y `--exclude-newer` parámetros permiten tooexclude recursos de origen anterior o posterior que copien, respectivamente.</span><span class="sxs-lookup"><span data-stu-id="a4798-218">hello `--exclude-older` and `--exclude-newer` parameters allow you tooexclude older or newer source resources from being copied, respectively.</span></span> <span data-ttu-id="a4798-219">Si solo desea toocopy recursos de origen que no existen en el destino de hello, puede especificar los dos parámetros en hello AzCopy comando:</span><span class="sxs-lookup"><span data-stu-id="a4798-219">If you only want toocopy source resources that don't exist in hello destination, you can specify both parameters in hello AzCopy command:</span></span>
 
     --source http://myaccount.blob.core.windows.net/mycontainer --destination /mnt/myfiles --source-key <sourcekey> --recursive --exclude-older --exclude-newer
 
@@ -577,19 +577,19 @@ azcopy \
 
     --source http://myaccount.blob.core.windows.net/mycontainer --destination http://myaccount.blob.core.windows.net/mycontainer1 --source-key <sourcekey> --dest-key <destkey> --recursive --exclude-older --exclude-newer
 
-### <a name="use-a-configuration-file-to-specify-command-line-parameters"></a><span data-ttu-id="8c571-220">Uso de un archivo de configuración para especificar parámetros de línea de comandos</span><span class="sxs-lookup"><span data-stu-id="8c571-220">Use a configuration file to specify command-line parameters</span></span>
+### <a name="use-a-configuration-file-toospecify-command-line-parameters"></a><span data-ttu-id="a4798-220">Usar un parámetros de línea de comandos de toospecify de archivo de configuración</span><span class="sxs-lookup"><span data-stu-id="a4798-220">Use a configuration file toospecify command-line parameters</span></span>
 
 ```azcopy
 azcopy --config-file "azcopy-config.ini"
 ```
 
-<span data-ttu-id="8c571-221">Puede incluir cualquier parámetro de la línea de comandos de AzCopy en un archivo de configuración.</span><span class="sxs-lookup"><span data-stu-id="8c571-221">You can include any AzCopy command-line parameters in a configuration file.</span></span> <span data-ttu-id="8c571-222">AzCopy procesa los parámetros del archivo como si hubieran sido especificados en la línea de comandos, realizando una sustitución directa con el contenido del archivo.</span><span class="sxs-lookup"><span data-stu-id="8c571-222">AzCopy processes the parameters in the file as if they had been specified on the command line, performing a direct substitution with the contents of the file.</span></span>
+<span data-ttu-id="a4798-221">Puede incluir cualquier parámetro de la línea de comandos de AzCopy en un archivo de configuración.</span><span class="sxs-lookup"><span data-stu-id="a4798-221">You can include any AzCopy command-line parameters in a configuration file.</span></span> <span data-ttu-id="a4798-222">Procesos de AzCopy Hola parámetros en el archivo hello como si hubieran especificado en la línea de comandos de hello, realizar una sustitución directa con contenido de Hola de archivo hello.</span><span class="sxs-lookup"><span data-stu-id="a4798-222">AzCopy processes hello parameters in hello file as if they had been specified on hello command line, performing a direct substitution with hello contents of hello file.</span></span>
 
-<span data-ttu-id="8c571-223">Imaginemos un archivo de configuración denominado `copyoperation`, que contiene las siguientes líneas.</span><span class="sxs-lookup"><span data-stu-id="8c571-223">Assume a configuration file named `copyoperation`, that contains the following lines.</span></span> <span data-ttu-id="8c571-224">Cada parámetro de AzCopy se puede especificar en una sola línea.</span><span class="sxs-lookup"><span data-stu-id="8c571-224">Each AzCopy parameter can be specified on a single line.</span></span>
+<span data-ttu-id="a4798-223">Se supone un archivo de configuración denominado `copyoperation`, que contiene Hola siguiendo las líneas.</span><span class="sxs-lookup"><span data-stu-id="a4798-223">Assume a configuration file named `copyoperation`, that contains hello following lines.</span></span> <span data-ttu-id="a4798-224">Cada parámetro de AzCopy se puede especificar en una sola línea.</span><span class="sxs-lookup"><span data-stu-id="a4798-224">Each AzCopy parameter can be specified on a single line.</span></span>
 
     --source http://myaccount.blob.core.windows.net/mycontainer --destination /mnt/myfiles --source-key <sourcekey> --recursive --quiet
 
-<span data-ttu-id="8c571-225">o bien, en líneas independientes:</span><span class="sxs-lookup"><span data-stu-id="8c571-225">or on separate lines:</span></span>
+<span data-ttu-id="a4798-225">o bien, en líneas independientes:</span><span class="sxs-lookup"><span data-stu-id="a4798-225">or on separate lines:</span></span>
 
     --source http://myaccount.blob.core.windows.net/mycontainer
     --destination /mnt/myfiles
@@ -597,7 +597,7 @@ azcopy --config-file "azcopy-config.ini"
     --recursive
     --quiet
 
-<span data-ttu-id="8c571-226">AzCopy genera un error si divide el parámetro en dos líneas, tal como se muestra aquí para el parámetro `--source-key`:</span><span class="sxs-lookup"><span data-stu-id="8c571-226">AzCopy fails if you split the parameter across two lines, as shown here for the `--source-key` parameter:</span></span>
+<span data-ttu-id="a4798-226">AzCopy se produce un error si parámetro hello se divide en dos líneas, como se muestra aquí para hello `--source-key` parámetro:</span><span class="sxs-lookup"><span data-stu-id="a4798-226">AzCopy fails if you split hello parameter across two lines, as shown here for hello `--source-key` parameter:</span></span>
 
     http://myaccount.blob.core.windows.net/mycontainer
     /mnt/myfiles
@@ -606,7 +606,7 @@ azcopy --config-file "azcopy-config.ini"
     --recursive
     --quiet
 
-### <a name="specify-a-shared-access-signature-sas"></a><span data-ttu-id="8c571-227">Especificación de una firma de acceso compartido (SAS)</span><span class="sxs-lookup"><span data-stu-id="8c571-227">Specify a shared access signature (SAS)</span></span>
+### <a name="specify-a-shared-access-signature-sas"></a><span data-ttu-id="a4798-227">Especificación de una firma de acceso compartido (SAS)</span><span class="sxs-lookup"><span data-stu-id="a4798-227">Specify a shared access signature (SAS)</span></span>
 
 ```azcopy
 azcopy \
@@ -617,7 +617,7 @@ azcopy \
     --include abc.txt
 ```
 
-<span data-ttu-id="8c571-228">También puede especificar una SAS en el identificador URI del contenedor:</span><span class="sxs-lookup"><span data-stu-id="8c571-228">You can also specify a SAS on the container URI:</span></span>
+<span data-ttu-id="a4798-228">También puede especificar una SAS en el contenedor de hello URI:</span><span class="sxs-lookup"><span data-stu-id="a4798-228">You can also specify a SAS on hello container URI:</span></span>
 
 ```azcopy
 azcopy \
@@ -626,14 +626,14 @@ azcopy \
     --recursive
 ```
 
-<span data-ttu-id="8c571-229">Tenga en cuenta que AzCopy actualmente admite solo [SAS de cuenta](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1).</span><span class="sxs-lookup"><span data-stu-id="8c571-229">Note that AzCopy currently only supports the [Account SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1).</span></span>
+<span data-ttu-id="a4798-229">Tenga en cuenta que AzCopy actualmente sólo admite hello [cuenta SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1).</span><span class="sxs-lookup"><span data-stu-id="a4798-229">Note that AzCopy currently only supports hello [Account SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1).</span></span>
 
-### <a name="journal-file-folder"></a><span data-ttu-id="8c571-230">Carpeta de archivo de diario</span><span class="sxs-lookup"><span data-stu-id="8c571-230">Journal file folder</span></span>
-<span data-ttu-id="8c571-231">Cada vez que emite un comando a AzCopy, comprueba si existe un archivo de diario en la carpeta predeterminada o si existe una carpeta que especificó a través de esta opción.</span><span class="sxs-lookup"><span data-stu-id="8c571-231">Each time you issue a command to AzCopy, it checks whether a journal file exists in the default folder, or whether it exists in a folder that you specified via this option.</span></span> <span data-ttu-id="8c571-232">Si el archivo de diario no existe en ningún lugar, AzCopy trata la operación como una nueva y genera un nuevo archivo de diario.</span><span class="sxs-lookup"><span data-stu-id="8c571-232">If the journal file does not exist in either place, AzCopy treats the operation as new and generates a new journal file.</span></span>
+### <a name="journal-file-folder"></a><span data-ttu-id="a4798-230">Carpeta de archivo de diario</span><span class="sxs-lookup"><span data-stu-id="a4798-230">Journal file folder</span></span>
+<span data-ttu-id="a4798-231">Cada vez que se emite un tooAzCopy de comando, comprueba si existe un archivo de diario en la carpeta predeterminada de hello, o si se encuentra en una carpeta que especifica mediante esta opción.</span><span class="sxs-lookup"><span data-stu-id="a4798-231">Each time you issue a command tooAzCopy, it checks whether a journal file exists in hello default folder, or whether it exists in a folder that you specified via this option.</span></span> <span data-ttu-id="a4798-232">Si no existe el archivo de diario de Hola en cualquier lugar, AzCopy trata operación hello como nueva y genera un nuevo archivo de diario.</span><span class="sxs-lookup"><span data-stu-id="a4798-232">If hello journal file does not exist in either place, AzCopy treats hello operation as new and generates a new journal file.</span></span>
 
-<span data-ttu-id="8c571-233">Si el archivo de diario existe, AzCopy comprueba si la línea de comandos escrita coincide con la línea de comandos de dicho archivo.</span><span class="sxs-lookup"><span data-stu-id="8c571-233">If the journal file does exist, AzCopy checks whether the command line that you input matches the command line in the journal file.</span></span> <span data-ttu-id="8c571-234">Si las dos líneas de comandos coinciden, AzCopy reanudará la operación incompleta.</span><span class="sxs-lookup"><span data-stu-id="8c571-234">If the two command lines match, AzCopy resumes the incomplete operation.</span></span> <span data-ttu-id="8c571-235">Si no coinciden, AzCopy le pide al usuario que sobrescriba el archivo de diario para iniciar una operación nueva o que cancele la operación actual.</span><span class="sxs-lookup"><span data-stu-id="8c571-235">If they do not match, AzCopy prompts user to either overwrite the journal file to start a new operation, or to cancel the current operation.</span></span>
+<span data-ttu-id="a4798-233">Si existe el archivo de diario de hello, AzCopy comprueba si línea de comandos de hello especificado coincide con hello de línea de comandos en el archivo de diario de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-233">If hello journal file does exist, AzCopy checks whether hello command line that you input matches hello command line in hello journal file.</span></span> <span data-ttu-id="a4798-234">Si coincide con dos líneas de comandos hello, AzCopy reanuda la operación incompleta de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-234">If hello two command lines match, AzCopy resumes hello incomplete operation.</span></span> <span data-ttu-id="a4798-235">Si no coinciden, AzCopy solicita diario archivo toostart una nueva operación de usuario tooeither sobrescribir Hola o toocancel operación en curso Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-235">If they do not match, AzCopy prompts user tooeither overwrite hello journal file toostart a new operation, or toocancel hello current operation.</span></span>
 
-<span data-ttu-id="8c571-236">Si desea usar la ubicación predeterminada para el archivo de diario:</span><span class="sxs-lookup"><span data-stu-id="8c571-236">If you want to use the default location for the journal file:</span></span>
+<span data-ttu-id="a4798-236">Si desea que toouse Hola esta ubicación para el archivo de diario de hello:</span><span class="sxs-lookup"><span data-stu-id="a4798-236">If you want toouse hello default location for hello journal file:</span></span>
 
 ```azcopy
 azcopy \
@@ -643,9 +643,9 @@ azcopy \
     --resume
 ```
 
-<span data-ttu-id="8c571-237">Si omite la opción `--resume` o especifica la opción `--resume` sin la ruta de acceso a la carpeta, tal y como se muestra anteriormente, AzCopy crea el archivo de diario en la ubicación predeterminada, que es `~\Microsoft\Azure\AzCopy`.</span><span class="sxs-lookup"><span data-stu-id="8c571-237">If you omit option `--resume`, or specify option `--resume` without the folder path, as shown above, AzCopy creates the journal file in the default location, which is `~\Microsoft\Azure\AzCopy`.</span></span> <span data-ttu-id="8c571-238">Si el archivo de diario ya existe, AzCopy reanuda la operación basándose en dicho archivo.</span><span class="sxs-lookup"><span data-stu-id="8c571-238">If the journal file already exists, then AzCopy resumes the operation based on the journal file.</span></span>
+<span data-ttu-id="a4798-237">Si se omite la opción `--resume`, o especificar la opción `--resume` sin ruta de acceso de carpeta de hello, como se muestra arriba, AzCopy crea archivo diario de hello en la ubicación predeterminada de hello, que es `~\Microsoft\Azure\AzCopy`.</span><span class="sxs-lookup"><span data-stu-id="a4798-237">If you omit option `--resume`, or specify option `--resume` without hello folder path, as shown above, AzCopy creates hello journal file in hello default location, which is `~\Microsoft\Azure\AzCopy`.</span></span> <span data-ttu-id="a4798-238">Si ya existe un archivo de diario de hello, a continuación, AzCopy reanuda la operación de hello basado en archivo de diario de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-238">If hello journal file already exists, then AzCopy resumes hello operation based on hello journal file.</span></span>
 
-<span data-ttu-id="8c571-239">Si desea especificar una ubicación personalizada para el archivo de diario:</span><span class="sxs-lookup"><span data-stu-id="8c571-239">If you want to specify a custom location for the journal file:</span></span>
+<span data-ttu-id="a4798-239">Si desea que una ubicación personalizada para el archivo de diario de Hola toospecify:</span><span class="sxs-lookup"><span data-stu-id="a4798-239">If you want toospecify a custom location for hello journal file:</span></span>
 
 ```azcopy
 azcopy \
@@ -655,15 +655,15 @@ azcopy \
     --resume "/mnt/myjournal"
 ```
 
-<span data-ttu-id="8c571-240">Este ejemplo crea el archivo de diario si todavía no existe.</span><span class="sxs-lookup"><span data-stu-id="8c571-240">This example creates the journal file if it does not already exist.</span></span> <span data-ttu-id="8c571-241">Si no existe, AzCopy reanuda la operación basándose en el archivo de diario.</span><span class="sxs-lookup"><span data-stu-id="8c571-241">If it does exist, then AzCopy resumes the operation based on the journal file.</span></span>
+<span data-ttu-id="a4798-240">Este ejemplo crea el archivo de diario de hello si aún no existe.</span><span class="sxs-lookup"><span data-stu-id="a4798-240">This example creates hello journal file if it does not already exist.</span></span> <span data-ttu-id="a4798-241">Si existe, a continuación, AzCopy reanuda la operación de hello basado en archivo de diario de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-241">If it does exist, then AzCopy resumes hello operation based on hello journal file.</span></span>
 
-<span data-ttu-id="8c571-242">Si desea reanudar una operación de AzCopy, repita el mismo comando.</span><span class="sxs-lookup"><span data-stu-id="8c571-242">If you want to resume an AzCopy operation, repeat the same command.</span></span> <span data-ttu-id="8c571-243">AzCopy en Linux le pedirá confirmación:</span><span class="sxs-lookup"><span data-stu-id="8c571-243">AzCopy on Linux then will prompt for confirmation:</span></span>
+<span data-ttu-id="a4798-242">Si desea que una operación de AzCopy tooresume, repita Hola mismo comando.</span><span class="sxs-lookup"><span data-stu-id="a4798-242">If you want tooresume an AzCopy operation, repeat hello same command.</span></span> <span data-ttu-id="a4798-243">AzCopy en Linux le pedirá confirmación:</span><span class="sxs-lookup"><span data-stu-id="a4798-243">AzCopy on Linux then will prompt for confirmation:</span></span>
 
 ```azcopy
-Incomplete operation with same command line detected at the journal directory "/home/myaccount/Microsoft/Azure/AzCopy", do you want to resume the operation? Choose Yes to resume, choose No to overwrite the journal to start a new operation. (Yes/No)
+Incomplete operation with same command line detected at hello journal directory "/home/myaccount/Microsoft/Azure/AzCopy", do you want tooresume hello operation? Choose Yes tooresume, choose No toooverwrite hello journal toostart a new operation. (Yes/No)
 ```
 
-### <a name="output-verbose-logs"></a><span data-ttu-id="8c571-244">Registros detallados de salida</span><span class="sxs-lookup"><span data-stu-id="8c571-244">Output verbose logs</span></span>
+### <a name="output-verbose-logs"></a><span data-ttu-id="a4798-244">Registros detallados de salida</span><span class="sxs-lookup"><span data-stu-id="a4798-244">Output verbose logs</span></span>
 
 ```azcopy
 azcopy \
@@ -673,88 +673,88 @@ azcopy \
     --verbose
 ```
 
-### <a name="specify-the-number-of-concurrent-operations-to-start"></a><span data-ttu-id="8c571-245">Especificación del número de operaciones simultáneas para iniciar</span><span class="sxs-lookup"><span data-stu-id="8c571-245">Specify the number of concurrent operations to start</span></span>
-<span data-ttu-id="8c571-246">La opción `--parallel-level` especifica el número de operaciones de copia simultáneas.</span><span class="sxs-lookup"><span data-stu-id="8c571-246">Option `--parallel-level` specifies the number of concurrent copy operations.</span></span> <span data-ttu-id="8c571-247">De manera predeterminada, AzCopy inicia un número determinado de operaciones simultáneas para aumentar el rendimiento de la transferencia de datos.</span><span class="sxs-lookup"><span data-stu-id="8c571-247">By default, AzCopy starts a certain number of concurrent operations to increase the data transfer throughput.</span></span> <span data-ttu-id="8c571-248">El número de operaciones simultáneas equivale a ocho veces el número de procesadores que posee.</span><span class="sxs-lookup"><span data-stu-id="8c571-248">The number of concurrent operations is equal eight times the number of processors you have.</span></span> <span data-ttu-id="8c571-249">Si ejecuta AzCopy en una red de ancho de banda bajo, puede especificar un número inferior para --parallel-level con el fin de evitar errores provocados por la competencia de recursos.</span><span class="sxs-lookup"><span data-stu-id="8c571-249">If you are running AzCopy across a low-bandwidth network, you can specify a lower number for --parallel-level to avoid failure caused by resource competition.</span></span>
+### <a name="specify-hello-number-of-concurrent-operations-toostart"></a><span data-ttu-id="a4798-245">Especificar número de Hola de operaciones simultáneas toostart</span><span class="sxs-lookup"><span data-stu-id="a4798-245">Specify hello number of concurrent operations toostart</span></span>
+<span data-ttu-id="a4798-246">Opción `--parallel-level` especifica Hola número de operaciones de copia simultáneas.</span><span class="sxs-lookup"><span data-stu-id="a4798-246">Option `--parallel-level` specifies hello number of concurrent copy operations.</span></span> <span data-ttu-id="a4798-247">De forma predeterminada, AzCopy inicia un número determinado de rendimiento de transferencia de datos de las operaciones simultáneas tooincrease Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-247">By default, AzCopy starts a certain number of concurrent operations tooincrease hello data transfer throughput.</span></span> <span data-ttu-id="a4798-248">Hola número de operaciones simultáneas es igual ocho veces Hola número de procesadores de que disponga.</span><span class="sxs-lookup"><span data-stu-id="a4798-248">hello number of concurrent operations is equal eight times hello number of processors you have.</span></span> <span data-ttu-id="a4798-249">Si está ejecutando AzCopy a través de una red de ancho de banda bajo, puede especificar un número menor para: error de tooavoid de nivel de paralelo causado por la competencia de recursos.</span><span class="sxs-lookup"><span data-stu-id="a4798-249">If you are running AzCopy across a low-bandwidth network, you can specify a lower number for --parallel-level tooavoid failure caused by resource competition.</span></span>
 
 [!TIP]
-><span data-ttu-id="8c571-250">Para ver la lista completa de parámetros de AzCopy, compruebe el menú "azcopy --help".</span><span class="sxs-lookup"><span data-stu-id="8c571-250">To view the complete list of AzCopy parameters, check out 'azcopy --help' menu.</span></span>
+><span data-ttu-id="a4798-250">lista completa de hello tooview de parámetros de AzCopy, desproteger 'azcopy--ayuda' menú.</span><span class="sxs-lookup"><span data-stu-id="a4798-250">tooview hello complete list of AzCopy parameters, check out 'azcopy --help' menu.</span></span>
 
-## <a name="known-issues-and-best-practices"></a><span data-ttu-id="8c571-251">Problemas conocidos y procedimientos recomendados</span><span class="sxs-lookup"><span data-stu-id="8c571-251">Known issues and best practices</span></span>
-### <a name="error-net-core-is-not-found-in-the-system"></a><span data-ttu-id="8c571-252">Error: .NET Core no se encuentra en el sistema.</span><span class="sxs-lookup"><span data-stu-id="8c571-252">Error: .NET Core is not found in the system.</span></span>
-<span data-ttu-id="8c571-253">Si encuentra un error que indica que .NET Core no está instalado en el sistema, es probable que falte la variable PATH al archivo binario `dotnet` de .NET Core.</span><span class="sxs-lookup"><span data-stu-id="8c571-253">If you encounter an error stating that .NET Core is not installed in the system, the PATH to the .NET Core binary `dotnet` may be missing.</span></span>
+## <a name="known-issues-and-best-practices"></a><span data-ttu-id="a4798-251">Problemas conocidos y procedimientos recomendados</span><span class="sxs-lookup"><span data-stu-id="a4798-251">Known issues and best practices</span></span>
+### <a name="error-net-core-is-not-found-in-hello-system"></a><span data-ttu-id="a4798-252">Error: No se encuentra .NET Core en sistema Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-252">Error: .NET Core is not found in hello system.</span></span>
+<span data-ttu-id="a4798-253">Si se produce un error que indica que no está instalado .NET Core en sistema de hello, Hola binario de .NET Core de ruta de acceso toohello `dotnet` posible que falte.</span><span class="sxs-lookup"><span data-stu-id="a4798-253">If you encounter an error stating that .NET Core is not installed in hello system, hello PATH toohello .NET Core binary `dotnet` may be missing.</span></span>
 
-<span data-ttu-id="8c571-254">Para solucionar este problema, busque el archivo binario de .NET Core en el sistema:</span><span class="sxs-lookup"><span data-stu-id="8c571-254">In order to address this issue, find the .NET Core binary in the system:</span></span>
+<span data-ttu-id="a4798-254">En Ordenar tooaddress este problema, busque binario de .NET Core hello en el sistema de hello:</span><span class="sxs-lookup"><span data-stu-id="a4798-254">In order tooaddress this issue, find hello .NET Core binary in hello system:</span></span>
 ```bash
 sudo find / -name dotnet
 ```
 
-<span data-ttu-id="8c571-255">Con esto se devuelve la ruta de acceso al archivo binario dotnet.</span><span class="sxs-lookup"><span data-stu-id="8c571-255">This returns the path to the dotnet binary.</span></span> 
+<span data-ttu-id="a4798-255">Esto devuelve Hola ruta de acceso toohello dotnet binario.</span><span class="sxs-lookup"><span data-stu-id="a4798-255">This returns hello path toohello dotnet binary.</span></span> 
 
     /opt/rh/rh-dotnetcore11/root/usr/bin/dotnet
     /opt/rh/rh-dotnetcore11/root/usr/lib64/dotnetcore/dotnet
     /opt/rh/rh-dotnetcore11/root/usr/lib64/dotnetcore/shared/Microsoft.NETCore.App/1.1.2/dotnet
 
-<span data-ttu-id="8c571-256">Ahora agregue esta ruta de acceso a la variable PATH.</span><span class="sxs-lookup"><span data-stu-id="8c571-256">Now add this path to the PATH variable.</span></span> <span data-ttu-id="8c571-257">Para sudo, edite secure_path para que contenga el archivo binario dotnet:</span><span class="sxs-lookup"><span data-stu-id="8c571-257">For sudo, edit secure_path to contain the path to the dotnet binary:</span></span>
+<span data-ttu-id="a4798-256">Ahora agregue esta variable de ruta de acceso de toohello de ruta de acceso.</span><span class="sxs-lookup"><span data-stu-id="a4798-256">Now add this path toohello PATH variable.</span></span> <span data-ttu-id="a4798-257">Para sudo, edite secure_path toocontain Hola ruta de acceso toohello dotnet binario:</span><span class="sxs-lookup"><span data-stu-id="a4798-257">For sudo, edit secure_path toocontain hello path toohello dotnet binary:</span></span>
 ```bash 
 sudo visudo
-### Append the path found in the preceding example to 'secure_path' variable
+### Append hello path found in hello preceding example too'secure_path' variable
 ```
 
-<span data-ttu-id="8c571-258">En este ejemplo, la variable secure_path se lee de la siguiente manera:</span><span class="sxs-lookup"><span data-stu-id="8c571-258">In this example, secure_path variable reads as:</span></span>
+<span data-ttu-id="a4798-258">En este ejemplo, la variable secure_path se lee de la siguiente manera:</span><span class="sxs-lookup"><span data-stu-id="a4798-258">In this example, secure_path variable reads as:</span></span>
 
 ```
 secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/rh/rh-dotnetcore11/root/usr/bin/
 ```
 
-<span data-ttu-id="8c571-259">En el caso del usuario actual, edite .bash_profile/.profile para incluir la ruta de acceso al archivo binario dotnet en la variable PATH</span><span class="sxs-lookup"><span data-stu-id="8c571-259">For the current user, edit .bash_profile/.profile to include the path to the dotnet binary in PATH variable</span></span> 
+<span data-ttu-id="a4798-259">Para el usuario actual de hello, editar.bash_profile/.profile tooinclude Hola ruta de acceso toohello dotnet binario en la variable de ruta de acceso</span><span class="sxs-lookup"><span data-stu-id="a4798-259">For hello current user, edit .bash_profile/.profile tooinclude hello path toohello dotnet binary in PATH variable</span></span> 
 ```bash
 vi ~/.bash_profile
-### Append the path found in the preceding example to 'PATH' variable
+### Append hello path found in hello preceding example too'PATH' variable
 ```
 
-<span data-ttu-id="8c571-260">Compruebe que .NET Core ahora esté en PATH:</span><span class="sxs-lookup"><span data-stu-id="8c571-260">Verify that .NET Core is now in PATH:</span></span>
+<span data-ttu-id="a4798-260">Compruebe que .NET Core ahora esté en PATH:</span><span class="sxs-lookup"><span data-stu-id="a4798-260">Verify that .NET Core is now in PATH:</span></span>
 ```bash
 which dotnet
 sudo which dotnet
 ```
 
-### <a name="error-installing-azcopy"></a><span data-ttu-id="8c571-261">Error al instalar AzCopy</span><span class="sxs-lookup"><span data-stu-id="8c571-261">Error Installing AzCopy</span></span>
-<span data-ttu-id="8c571-262">Si encuentra problemas para instalar AzCopy, puede intentar ejecutar AzCopy con el script de Bash en la carpeta `azcopy` extraída.</span><span class="sxs-lookup"><span data-stu-id="8c571-262">If you encounter issues with AzCopy installation, you may try to run AzCopy using the bash script in the extracted `azcopy` folder.</span></span>
+### <a name="error-installing-azcopy"></a><span data-ttu-id="a4798-261">Error al instalar AzCopy</span><span class="sxs-lookup"><span data-stu-id="a4798-261">Error Installing AzCopy</span></span>
+<span data-ttu-id="a4798-262">Si encuentra problemas con la instalación de AzCopy, puede intentar toorun AzCopy mediante scripts de bash Hola Hola extraído `azcopy` carpeta.</span><span class="sxs-lookup"><span data-stu-id="a4798-262">If you encounter issues with AzCopy installation, you may try toorun AzCopy using hello bash script in hello extracted `azcopy` folder.</span></span>
 
 ```bash
 cd azcopy
 ./azcopy
 ```
 
-### <a name="limit-concurrent-writes-while-copying-data"></a><span data-ttu-id="8c571-263">Limitación de escrituras concurrentes mientras se copian datos</span><span class="sxs-lookup"><span data-stu-id="8c571-263">Limit concurrent writes while copying data</span></span>
-<span data-ttu-id="8c571-264">Cuando copie blobs o archivos con AzCopy, recuerde que otra aplicación puede estar modificando los datos mientras se copian.</span><span class="sxs-lookup"><span data-stu-id="8c571-264">When you copy blobs or files with AzCopy, keep in mind that another application may be modifying the data while you are copying it.</span></span> <span data-ttu-id="8c571-265">Si es posible, asegúrese de que los datos no se modifican durante la operación de copia.</span><span class="sxs-lookup"><span data-stu-id="8c571-265">If possible, ensure that the data you are copying is not being modified during the copy operation.</span></span> <span data-ttu-id="8c571-266">Por ejemplo, cuando copie un VHD asociado con una máquina virtual de Azure, asegúrese de que ninguna otra aplicación está escribiendo actualmente en el VHD.</span><span class="sxs-lookup"><span data-stu-id="8c571-266">For example, when copying a VHD associated with an Azure virtual machine, make sure that no other applications are currently writing to the VHD.</span></span> <span data-ttu-id="8c571-267">Una buena manera de hacerlo es mediante la concesión de los recursos que se van a copiar.</span><span class="sxs-lookup"><span data-stu-id="8c571-267">A good way to do this is by leasing the resource to be copied.</span></span> <span data-ttu-id="8c571-268">Alternativamente, puede crear una instantánea del VHD primero y, después, copiar la instantánea.</span><span class="sxs-lookup"><span data-stu-id="8c571-268">Alternately, you can create a snapshot of the VHD first and then copy the snapshot.</span></span>
+### <a name="limit-concurrent-writes-while-copying-data"></a><span data-ttu-id="a4798-263">Limitación de escrituras concurrentes mientras se copian datos</span><span class="sxs-lookup"><span data-stu-id="a4798-263">Limit concurrent writes while copying data</span></span>
+<span data-ttu-id="a4798-264">Cuando copia blobs o archivos con AzCopy, tenga en cuenta que otra aplicación puede modificar datos de hello mientras que va a copiar.</span><span class="sxs-lookup"><span data-stu-id="a4798-264">When you copy blobs or files with AzCopy, keep in mind that another application may be modifying hello data while you are copying it.</span></span> <span data-ttu-id="a4798-265">Si es posible, asegúrese de que los datos de hello que va a copiar no se está modificando durante la operación de copia de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-265">If possible, ensure that hello data you are copying is not being modified during hello copy operation.</span></span> <span data-ttu-id="a4798-266">Por ejemplo, al copiar un disco duro virtual asociado a una máquina virtual de Azure, asegúrese de que ninguna otra aplicación actualmente está escribiendo toohello disco duro virtual.</span><span class="sxs-lookup"><span data-stu-id="a4798-266">For example, when copying a VHD associated with an Azure virtual machine, make sure that no other applications are currently writing toohello VHD.</span></span> <span data-ttu-id="a4798-267">Una buena manera toodo es mediante la concesión de hello recursos toobe copiado.</span><span class="sxs-lookup"><span data-stu-id="a4798-267">A good way toodo this is by leasing hello resource toobe copied.</span></span> <span data-ttu-id="a4798-268">Como alternativa, puede crear una instantánea de disco duro virtual de hello en primer lugar y, a continuación, copiar instantáneas Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-268">Alternately, you can create a snapshot of hello VHD first and then copy hello snapshot.</span></span>
 
-<span data-ttu-id="8c571-269">Si no puede impedir que otras aplicaciones escriban en blobs o archivos mientras se copian, recuerde que para cuando el trabajo finalice, los recursos copiados puede que ya no tengan una paridad total con los recursos de origen.</span><span class="sxs-lookup"><span data-stu-id="8c571-269">If you cannot prevent other applications from writing to blobs or files while they are being copied, then keep in mind that by the time the job finishes, the copied resources may no longer have full parity with the source resources.</span></span>
+<span data-ttu-id="a4798-269">Si no se puede impedir que otras aplicaciones escribir tooblobs o archivos mientras se se copian y tenga en cuenta que al trabajo Hola Hola finaliza, hello recursos copiados pueden ya no tiene paridad completa con recursos de origen de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-269">If you cannot prevent other applications from writing tooblobs or files while they are being copied, then keep in mind that by hello time hello job finishes, hello copied resources may no longer have full parity with hello source resources.</span></span>
 
-### <a name="run-one-azcopy-instance-on-one-machine"></a><span data-ttu-id="8c571-270">Ejecutar una instancia de AzCopy en un solo equipo.</span><span class="sxs-lookup"><span data-stu-id="8c571-270">Run one AzCopy instance on one machine.</span></span>
-<span data-ttu-id="8c571-271">AzCopy está diseñado para maximizar el uso de los recursos del equipo para acelerar la transferencia de datos. Se recomienda ejecutar solo una instancia de AzCopy en un equipo y especificar la opción `--parallel-level` si necesita más operaciones simultáneas.</span><span class="sxs-lookup"><span data-stu-id="8c571-271">AzCopy is designed to maximize the utilization of your machine resource to accelerate the data transfer, we recommend you run only one AzCopy instance on one machine, and specify the option `--parallel-level` if you need more concurrent operations.</span></span> <span data-ttu-id="8c571-272">Para obtener más detalles, escriba `AzCopy --help parallel-level` en la línea de comandos.</span><span class="sxs-lookup"><span data-stu-id="8c571-272">For more details, type `AzCopy --help parallel-level` at the command line.</span></span>
+### <a name="run-one-azcopy-instance-on-one-machine"></a><span data-ttu-id="a4798-270">Ejecutar una instancia de AzCopy en un solo equipo.</span><span class="sxs-lookup"><span data-stu-id="a4798-270">Run one AzCopy instance on one machine.</span></span>
+<span data-ttu-id="a4798-271">AzCopy es toomaximize diseñada Hola utilización de la transferencia de datos de máquina recursos tooaccelerate hello, le recomendamos que ejecute solo una instancia de AzCopy en un equipo y especifica la opción de hello `--parallel-level` si necesita las operaciones más simultáneas.</span><span class="sxs-lookup"><span data-stu-id="a4798-271">AzCopy is designed toomaximize hello utilization of your machine resource tooaccelerate hello data transfer, we recommend you run only one AzCopy instance on one machine, and specify hello option `--parallel-level` if you need more concurrent operations.</span></span> <span data-ttu-id="a4798-272">Para obtener más información, escriba `AzCopy --help parallel-level` en línea de comandos de Hola.</span><span class="sxs-lookup"><span data-stu-id="a4798-272">For more details, type `AzCopy --help parallel-level` at hello command line.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="8c571-273">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="8c571-273">Next steps</span></span>
-<span data-ttu-id="8c571-274">Para más información sobre Azure Storage y AzCopy, consulte los recursos siguientes:</span><span class="sxs-lookup"><span data-stu-id="8c571-274">For more information about Azure Storage and AzCopy, see the following resources:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="a4798-273">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="a4798-273">Next steps</span></span>
+<span data-ttu-id="a4798-274">Para obtener más información sobre el almacenamiento de Azure y AzCopy, vea Hola recursos siguientes:</span><span class="sxs-lookup"><span data-stu-id="a4798-274">For more information about Azure Storage and AzCopy, see hello following resources:</span></span>
 
-### <a name="azure-storage-documentation"></a><span data-ttu-id="8c571-275">Documentación de Almacenamiento de Azure:</span><span class="sxs-lookup"><span data-stu-id="8c571-275">Azure Storage documentation:</span></span>
-* [<span data-ttu-id="8c571-276">Introducción a Almacenamiento de Azure</span><span class="sxs-lookup"><span data-stu-id="8c571-276">Introduction to Azure Storage</span></span>](storage-introduction.md)
-* [<span data-ttu-id="8c571-277">Cree una cuenta de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="8c571-277">Create a storage account</span></span>](storage-create-storage-account.md)
-* [<span data-ttu-id="8c571-278">Administración de blobs con el Explorador de Storage</span><span class="sxs-lookup"><span data-stu-id="8c571-278">Manage blobs with Storage Explorer</span></span>](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs)
-* [<span data-ttu-id="8c571-279">Uso de la CLI de Azure 2.0 con Azure Storage</span><span class="sxs-lookup"><span data-stu-id="8c571-279">Using the Azure CLI 2.0 with Azure Storage</span></span>](storage-azure-cli.md)
-* [<span data-ttu-id="8c571-280">Uso del almacenamiento de blobs en C++</span><span class="sxs-lookup"><span data-stu-id="8c571-280">How to use Blob storage from C++</span></span>](storage-c-plus-plus-how-to-use-blobs.md)
-* [<span data-ttu-id="8c571-281">Uso del almacenamiento de blobs de Java</span><span class="sxs-lookup"><span data-stu-id="8c571-281">How to use Blob storage from Java</span></span>](storage-java-how-to-use-blob-storage.md)
-* [<span data-ttu-id="8c571-282">Uso de almacenamiento de blobs en Node.js</span><span class="sxs-lookup"><span data-stu-id="8c571-282">How to use Blob storage from Node.js</span></span>](storage-nodejs-how-to-use-blob-storage.md)
-* [<span data-ttu-id="8c571-283">Uso del almacenamiento de blobs de Python</span><span class="sxs-lookup"><span data-stu-id="8c571-283">How to use Blob storage from Python</span></span>](storage-python-how-to-use-blob-storage.md)
+### <a name="azure-storage-documentation"></a><span data-ttu-id="a4798-275">Documentación de Almacenamiento de Azure:</span><span class="sxs-lookup"><span data-stu-id="a4798-275">Azure Storage documentation:</span></span>
+* [<span data-ttu-id="a4798-276">Introducción tooAzure almacenamiento</span><span class="sxs-lookup"><span data-stu-id="a4798-276">Introduction tooAzure Storage</span></span>](storage-introduction.md)
+* [<span data-ttu-id="a4798-277">crear una cuenta de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="a4798-277">Create a storage account</span></span>](storage-create-storage-account.md)
+* [<span data-ttu-id="a4798-278">Administración de blobs con el Explorador de Storage</span><span class="sxs-lookup"><span data-stu-id="a4798-278">Manage blobs with Storage Explorer</span></span>](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs)
+* [<span data-ttu-id="a4798-279">Uso de hello Azure CLI 2.0 con el almacenamiento de Azure</span><span class="sxs-lookup"><span data-stu-id="a4798-279">Using hello Azure CLI 2.0 with Azure Storage</span></span>](storage-azure-cli.md)
+* [<span data-ttu-id="a4798-280">¿Cómo toouse almacenamiento de blobs de C++</span><span class="sxs-lookup"><span data-stu-id="a4798-280">How toouse Blob storage from C++</span></span>](storage-c-plus-plus-how-to-use-blobs.md)
+* [<span data-ttu-id="a4798-281">¿Cómo toouse almacenamiento de blobs desde Java</span><span class="sxs-lookup"><span data-stu-id="a4798-281">How toouse Blob storage from Java</span></span>](storage-java-how-to-use-blob-storage.md)
+* [<span data-ttu-id="a4798-282">¿Cómo toouse almacenamiento de blobs de Node.js</span><span class="sxs-lookup"><span data-stu-id="a4798-282">How toouse Blob storage from Node.js</span></span>](storage-nodejs-how-to-use-blob-storage.md)
+* [<span data-ttu-id="a4798-283">¿Cómo toouse almacenamiento de blobs de Python</span><span class="sxs-lookup"><span data-stu-id="a4798-283">How toouse Blob storage from Python</span></span>](storage-python-how-to-use-blob-storage.md)
 
-### <a name="azure-storage-blog-posts"></a><span data-ttu-id="8c571-284">Publicaciones en blobs de Almacenamiento de Azure</span><span class="sxs-lookup"><span data-stu-id="8c571-284">Azure Storage blog posts:</span></span>
-* [<span data-ttu-id="8c571-285">Anuncio de AzCopy en Linux (versión preliminar)</span><span class="sxs-lookup"><span data-stu-id="8c571-285">Announcing AzCopy on Linux Preview</span></span>](https://azure.microsoft.com/en-in/blog/announcing-azcopy-on-linux-preview/)
-* [<span data-ttu-id="8c571-286">Introducción a la versión de vista previa de la biblioteca de movimiento de datos de Almacenamiento de Azure</span><span class="sxs-lookup"><span data-stu-id="8c571-286">Introducing Azure Storage Data Movement Library Preview</span></span>](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [<span data-ttu-id="8c571-287">AzCopy: Introducción a la copia sincrónica y el tipo de contenido personalizado</span><span class="sxs-lookup"><span data-stu-id="8c571-287">AzCopy: Introducing synchronous copy and customized content type</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [<span data-ttu-id="8c571-288">AzCopy: Presentación de la disponibilidad general de AzCopy 3.0 y de la versión de vista previa de AzCopy 4.0 compatible con tablas y archivos</span><span class="sxs-lookup"><span data-stu-id="8c571-288">AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [<span data-ttu-id="8c571-289">AzCopy: Optimizada para escenarios de copia a gran escala</span><span class="sxs-lookup"><span data-stu-id="8c571-289">AzCopy: Optimized for Large-Scale Copy Scenarios</span></span>](http://go.microsoft.com/fwlink/?LinkId=507682)
-* [<span data-ttu-id="8c571-290">AzCopy: Compatibilidad para almacenamiento con redundancia geográfica de acceso de lectura</span><span class="sxs-lookup"><span data-stu-id="8c571-290">AzCopy: Support for read-access geo-redundant storage</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [<span data-ttu-id="8c571-291">AzCopy: Transferencia de datos con modo reiniciable y token SAS</span><span class="sxs-lookup"><span data-stu-id="8c571-291">AzCopy: Transfer data with restartable mode and SAS token</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [<span data-ttu-id="8c571-292">AzCopy: Uso de copia de blobs entre cuentas</span><span class="sxs-lookup"><span data-stu-id="8c571-292">AzCopy: Using cross-account Copy Blob</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [<span data-ttu-id="8c571-293">AzCopy: Carga y descarga de archivos para blobs de Azure</span><span class="sxs-lookup"><span data-stu-id="8c571-293">AzCopy: Uploading/downloading files for Azure Blobs</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+### <a name="azure-storage-blog-posts"></a><span data-ttu-id="a4798-284">Publicaciones en blobs de Almacenamiento de Azure</span><span class="sxs-lookup"><span data-stu-id="a4798-284">Azure Storage blog posts:</span></span>
+* [<span data-ttu-id="a4798-285">Anuncio de AzCopy en Linux (versión preliminar)</span><span class="sxs-lookup"><span data-stu-id="a4798-285">Announcing AzCopy on Linux Preview</span></span>](https://azure.microsoft.com/en-in/blog/announcing-azcopy-on-linux-preview/)
+* [<span data-ttu-id="a4798-286">Introducción a la versión de vista previa de la biblioteca de movimiento de datos de Almacenamiento de Azure</span><span class="sxs-lookup"><span data-stu-id="a4798-286">Introducing Azure Storage Data Movement Library Preview</span></span>](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
+* [<span data-ttu-id="a4798-287">AzCopy: Introducción a la copia sincrónica y el tipo de contenido personalizado</span><span class="sxs-lookup"><span data-stu-id="a4798-287">AzCopy: Introducing synchronous copy and customized content type</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [<span data-ttu-id="a4798-288">AzCopy: Presentación de la disponibilidad general de AzCopy 3.0 y de la versión de vista previa de AzCopy 4.0 compatible con tablas y archivos</span><span class="sxs-lookup"><span data-stu-id="a4798-288">AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [<span data-ttu-id="a4798-289">AzCopy: Optimizada para escenarios de copia a gran escala</span><span class="sxs-lookup"><span data-stu-id="a4798-289">AzCopy: Optimized for Large-Scale Copy Scenarios</span></span>](http://go.microsoft.com/fwlink/?LinkId=507682)
+* [<span data-ttu-id="a4798-290">AzCopy: Compatibilidad para almacenamiento con redundancia geográfica de acceso de lectura</span><span class="sxs-lookup"><span data-stu-id="a4798-290">AzCopy: Support for read-access geo-redundant storage</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [<span data-ttu-id="a4798-291">AzCopy: Transferencia de datos con modo reiniciable y token SAS</span><span class="sxs-lookup"><span data-stu-id="a4798-291">AzCopy: Transfer data with restartable mode and SAS token</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [<span data-ttu-id="a4798-292">AzCopy: Uso de copia de blobs entre cuentas</span><span class="sxs-lookup"><span data-stu-id="a4798-292">AzCopy: Using cross-account Copy Blob</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [<span data-ttu-id="a4798-293">AzCopy: Carga y descarga de archivos para blobs de Azure</span><span class="sxs-lookup"><span data-stu-id="a4798-293">AzCopy: Uploading/downloading files for Azure Blobs</span></span>](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 

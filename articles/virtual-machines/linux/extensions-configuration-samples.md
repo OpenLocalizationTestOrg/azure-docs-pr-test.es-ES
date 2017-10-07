@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de configuración para extensiones de máquina virtual Linux | Microsoft Docs"
+title: "configuración de aaaSample para las extensiones de VM de Linux | Documentos de Microsoft"
 description: "Configuración de ejemplo para crear plantillas con extensiones para máquinas virtuales de Linux"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2016
 ms.author: kundanap
-ms.openlocfilehash: 7bdc28328f29005ae48cc281a05fce7067c96556
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bc19b8d7d6fdb1783be99ec7fdd5cde5e1f8ca80
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="linux-vm-extension-configuration-samples"></a><span data-ttu-id="159cf-103">Ejemplos de configuración de la extensión de máquina virtual Linux</span><span class="sxs-lookup"><span data-stu-id="159cf-103">Linux VM extension configuration samples</span></span>
+# <a name="linux-vm-extension-configuration-samples"></a><span data-ttu-id="87012-103">Ejemplos de configuración de la extensión de máquina virtual Linux</span><span class="sxs-lookup"><span data-stu-id="87012-103">Linux VM extension configuration samples</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="159cf-104">PowerShell: plantilla</span><span class="sxs-lookup"><span data-stu-id="159cf-104">PowerShell - Template</span></span>](../windows/extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-> * [<span data-ttu-id="159cf-105">CLI: plantilla</span><span class="sxs-lookup"><span data-stu-id="159cf-105">CLI - Template</span></span>](../windows/extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+> * [<span data-ttu-id="87012-104">PowerShell: plantilla</span><span class="sxs-lookup"><span data-stu-id="87012-104">PowerShell - Template</span></span>](../windows/extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> * [<span data-ttu-id="87012-105">CLI: plantilla</span><span class="sxs-lookup"><span data-stu-id="87012-105">CLI - Template</span></span>](../windows/extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > 
 > 
 
 <br>
 
-<span data-ttu-id="159cf-106">Este artículo proporciona un ejemplo de configuración para configurar las extensiones de máquina virtual de Azure para máquinas virtuales Linux.</span><span class="sxs-lookup"><span data-stu-id="159cf-106">This article provides sample configuration for configuring Azure VM extensions for Linux VMs.</span></span>
+<span data-ttu-id="87012-106">Este artículo proporciona un ejemplo de configuración para configurar las extensiones de máquina virtual de Azure para máquinas virtuales Linux.</span><span class="sxs-lookup"><span data-stu-id="87012-106">This article provides sample configuration for configuring Azure VM extensions for Linux VMs.</span></span>
 
-<span data-ttu-id="159cf-107">Para obtener más información sobre estas extensiones, haga clic aquí: [Información general de las extensiones de máquinas virtuales de Azure.](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="159cf-107">To learn more about these extensions click here : [Azure VM Extensions Overview.](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span></span>
+<span data-ttu-id="87012-107">toolearn más acerca de estas extensiones, haga clic aquí: [información general de extensiones de VM de Azure.](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="87012-107">toolearn more about these extensions click here : [Azure VM Extensions Overview.](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span></span>
 
-<span data-ttu-id="159cf-108">Para obtener más información sobre la creación de plantillas de extensión, haga clic aquí: [Creación de plantillas de extensión.](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="159cf-108">To learn more about authoring extension templates click here : [Authoring Extension Templates.](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span></span>
+<span data-ttu-id="87012-108">toolearn más sobre la creación de plantillas de extensión, haga clic aquí: [creación de plantillas de extensión.](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="87012-108">toolearn more about authoring extension templates click here : [Authoring Extension Templates.](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)</span></span>
 
-<span data-ttu-id="159cf-109">En este artículo se indican los valores de configuración esperados para algunas de las extensiones de Linux.</span><span class="sxs-lookup"><span data-stu-id="159cf-109">This article lists expected configuration values for some of the Linux Extensions.</span></span>
+<span data-ttu-id="87012-109">Este artículo enumeran los valores de configuración esperado para algunos de hello las extensiones de Linux.</span><span class="sxs-lookup"><span data-stu-id="87012-109">This article lists expected configuration values for some of hello Linux Extensions.</span></span>
 
-## <a name="sample-template-snippet-for-vm-extensions"></a><span data-ttu-id="159cf-110">Fragmento de plantilla de ejemplo para extensiones de VM.</span><span class="sxs-lookup"><span data-stu-id="159cf-110">Sample template snippet for VM Extensions.</span></span>
-<span data-ttu-id="159cf-111">El fragmento de plantilla para extensiones de implementación tiene el aspecto siguiente:</span><span class="sxs-lookup"><span data-stu-id="159cf-111">The template snippet for Deploying extensions looks as following:</span></span>
+## <a name="sample-template-snippet-for-vm-extensions"></a><span data-ttu-id="87012-110">Fragmento de plantilla de ejemplo para extensiones de VM.</span><span class="sxs-lookup"><span data-stu-id="87012-110">Sample template snippet for VM Extensions.</span></span>
+<span data-ttu-id="87012-111">fragmento de código de plantilla de Hello para la implementación de extensiones es como sigue:</span><span class="sxs-lookup"><span data-stu-id="87012-111">hello template snippet for Deploying extensions looks as following:</span></span>
 
       {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
       }
       }
 
-## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets"></a><span data-ttu-id="159cf-112">Fragmento de plantilla de ejemplo para extensiones de VM con conjuntos de escalado de VM.</span><span class="sxs-lookup"><span data-stu-id="159cf-112">Sample template snippet for VM Extensions with VM Scale Sets.</span></span>
+## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets"></a><span data-ttu-id="87012-112">Fragmento de plantilla de ejemplo para extensiones de VM con conjuntos de escalado de VM.</span><span class="sxs-lookup"><span data-stu-id="87012-112">Sample template snippet for VM Extensions with VM Scale Sets.</span></span>
           {
            "type":"Microsoft.Compute/virtualMachineScaleSets",
           ....
@@ -80,21 +80,21 @@ ms.lasthandoff: 07/11/2017
                   }
                 }
 
-<span data-ttu-id="159cf-113">Antes de implementar la extensión, compruebe la versión más reciente de la extensión y reemplace la "typeHandlerVersion" por la versión más reciente actual.</span><span class="sxs-lookup"><span data-stu-id="159cf-113">Before deploying the extension please check the latest extension version and replace the "typeHandlerVersion" with the current latest version.</span></span>
+<span data-ttu-id="87012-113">Antes de implementar la extensión de hello comprobar la versión más reciente de la extensión de Hola y reemplace typeHandlerVersion"hello" con la versión más reciente de hello actual.</span><span class="sxs-lookup"><span data-stu-id="87012-113">Before deploying hello extension please check hello latest extension version and replace hello "typeHandlerVersion" with hello current latest version.</span></span>
 
-<span data-ttu-id="159cf-114">El resto del artículo proporciona ejemplos de configuraciones para las extensiones de máquina virtual de Linux.</span><span class="sxs-lookup"><span data-stu-id="159cf-114">Rest of the article provides sample configurations for Linux VM Extensions.</span></span>
+<span data-ttu-id="87012-114">Resto del artículo Hola proporciona las configuraciones de ejemplo para extensiones de VM de Linux.</span><span class="sxs-lookup"><span data-stu-id="87012-114">Rest of hello article provides sample configurations for Linux VM Extensions.</span></span>
 
-### <a name="cloudlink-securevm-agent"></a><span data-ttu-id="159cf-115">Agente de SecureVM de CloudLink</span><span class="sxs-lookup"><span data-stu-id="159cf-115">CloudLink SecureVM Agent</span></span>
+### <a name="cloudlink-securevm-agent"></a><span data-ttu-id="87012-115">Agente de SecureVM de CloudLink</span><span class="sxs-lookup"><span data-stu-id="87012-115">CloudLink SecureVM Agent</span></span>
           {
             "publisher": "CloudLinkEMC.SecureVM",
             "type": "CloudLinkSecureVMLinuxAgent",
             "typeHandlerVersion": "4.0",
             "settings": {
-              "CloudLinkCenter" : "specify valid IP/FQDN to CloudLinkCenter"
+              "CloudLinkCenter" : "specify valid IP/FQDN tooCloudLinkCenter"
             }
           }
 
-### <a name="customscript-extension-for-linux"></a><span data-ttu-id="159cf-116">Extensión de CustomScript para Linux.</span><span class="sxs-lookup"><span data-stu-id="159cf-116">CustomScript Extension for Linux.</span></span>
+### <a name="customscript-extension-for-linux"></a><span data-ttu-id="87012-116">Extensión de CustomScript para Linux.</span><span class="sxs-lookup"><span data-stu-id="87012-116">CustomScript Extension for Linux.</span></span>
     {
         "publisher": " Microsoft.Azure.Extensions",
         "type": "CustomScript",
@@ -109,7 +109,7 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-### <a name="datadog-agent"></a><span data-ttu-id="159cf-117">Agente de Datadog</span><span class="sxs-lookup"><span data-stu-id="159cf-117">Datadog Agent</span></span>
+### <a name="datadog-agent"></a><span data-ttu-id="87012-117">Agente de Datadog</span><span class="sxs-lookup"><span data-stu-id="87012-117">Datadog Agent</span></span>
         {
           "publisher": "Datadog.Agent",
           "type": "DatadogLinuxAgent",
@@ -119,7 +119,7 @@ ms.lasthandoff: 07/11/2017
           }
         }
 
-### <a name="chef-agent"></a><span data-ttu-id="159cf-118">Agente de Chef</span><span class="sxs-lookup"><span data-stu-id="159cf-118">Chef Agent</span></span>
+### <a name="chef-agent"></a><span data-ttu-id="87012-118">Agente de Chef</span><span class="sxs-lookup"><span data-stu-id="87012-118">Chef Agent</span></span>
         {
           "publisher": "Chef.Bootstrap.WindowsAzure",
           "type": "CentosChefClient|LinuxChefClient",
@@ -131,24 +131,24 @@ ms.lasthandoff: 07/11/2017
           }
         }
 
-### <a name="vm-access-extension-password-reset"></a><span data-ttu-id="159cf-119">Extensión de acceso máquina virtual (restablecimiento de contraseña)</span><span class="sxs-lookup"><span data-stu-id="159cf-119">VM Access Extension (Password Reset)</span></span>
-<span data-ttu-id="159cf-120">Para el esquema actualizado, consulte la [Documentación de VMAccessForLinux](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)</span><span class="sxs-lookup"><span data-stu-id="159cf-120">For updated schema refer to the [VMAccessForLinux Documentation](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)</span></span>
+### <a name="vm-access-extension-password-reset"></a><span data-ttu-id="87012-119">Extensión de acceso máquina virtual (restablecimiento de contraseña)</span><span class="sxs-lookup"><span data-stu-id="87012-119">VM Access Extension (Password Reset)</span></span>
+<span data-ttu-id="87012-120">Para el esquema actualizado, consulte toohello [VMAccessForLinux documentación](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)</span><span class="sxs-lookup"><span data-stu-id="87012-120">For updated schema refer toohello [VMAccessForLinux Documentation](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)</span></span>
 
         {
           "publisher": "Microsoft.OSTCExtensions",
           "type": "VMAccessForLinux",
           "typeHandlerVersion": "1.2",
           "protectedSettings": {
-            "username": "(required, string) the name of the user",
-            "password": "(optional, string) the password of the user",
-            "reset_ssh": "(optional, boolean) whether or not reset the ssh",
-            "ssh_key": "(optional, string) the public key of the user, base64 encoded pem",
-            "remove_user": "(optional, string) the user name to remove"
+            "username": "(required, string) hello name of hello user",
+            "password": "(optional, string) hello password of hello user",
+            "reset_ssh": "(optional, boolean) whether or not reset hello ssh",
+            "ssh_key": "(optional, string) hello public key of hello user, base64 encoded pem",
+            "remove_user": "(optional, string) hello user name tooremove"
           }
         }
 
-### <a name="os-patching"></a><span data-ttu-id="159cf-121">Revisión de SO</span><span class="sxs-lookup"><span data-stu-id="159cf-121">OS Patching</span></span>
-<span data-ttu-id="159cf-122">Para el esquema actualizado, consulte la [Documentación de OSPatching](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)</span><span class="sxs-lookup"><span data-stu-id="159cf-122">For updated schema refer to the [OSPatching Documentation](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)</span></span>
+### <a name="os-patching"></a><span data-ttu-id="87012-121">Revisión de SO</span><span class="sxs-lookup"><span data-stu-id="87012-121">OS Patching</span></span>
+<span data-ttu-id="87012-122">Para el esquema actualizado, consulte toohello [OSPatching de documentación](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)</span><span class="sxs-lookup"><span data-stu-id="87012-122">For updated schema refer toohello [OSPatching Documentation](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)</span></span>
 
         {
         "publisher": "Microsoft.OSTCExtensions",
@@ -172,8 +172,8 @@ ms.lasthandoff: 07/11/2017
         }
         }
 
-### <a name="docker-extension"></a><span data-ttu-id="159cf-123">Extensión de Docker</span><span class="sxs-lookup"><span data-stu-id="159cf-123">Docker Extension</span></span>
-<span data-ttu-id="159cf-124">Para el esquema actualizado, consulte la [Documentación la extensión de Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)</span><span class="sxs-lookup"><span data-stu-id="159cf-124">For updated schema refer to the [Docker Extension Documentation](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)</span></span>
+### <a name="docker-extension"></a><span data-ttu-id="87012-123">Extensión de Docker</span><span class="sxs-lookup"><span data-stu-id="87012-123">Docker Extension</span></span>
+<span data-ttu-id="87012-124">Para el esquema actualizado, consulte toohello [documentación sobre la extensión Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)</span><span class="sxs-lookup"><span data-stu-id="87012-124">For updated schema refer toohello [Docker Extension Documentation](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)</span></span>
 
         {
           "publisher": "Microsoft.Azure.Extensions ",
@@ -199,8 +199,8 @@ ms.lasthandoff: 07/11/2017
 
         ### Linux Diagnostics Extension
         {
-        "storageAccountName": "storage account to receive data",
-        "storageAccountKey": "key of the account",
+        "storageAccountName": "storage account tooreceive data",
+        "storageAccountKey": "key of hello account",
         "perfCfg": [
         {
             "query": "SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
@@ -215,9 +215,9 @@ ms.lasthandoff: 07/11/2017
         ]
         }
 
-<span data-ttu-id="159cf-125">En los ejemplos anteriores, reemplace el número de versión por el número de versión más reciente.</span><span class="sxs-lookup"><span data-stu-id="159cf-125">In the examples above, replace the version number with the latest version number.</span></span>
+<span data-ttu-id="87012-125">En ejemplos anteriores de hello, reemplace el número de versión de Hola con número de versión más reciente de Hola.</span><span class="sxs-lookup"><span data-stu-id="87012-125">In hello examples above, replace hello version number with hello latest version number.</span></span>
 
-<span data-ttu-id="159cf-126">Esta es una plantilla de máquina virtual completa para la creación de una VM de Linux con una extensión:</span><span class="sxs-lookup"><span data-stu-id="159cf-126">Here is a full VM template for creating a Linux VM with an extension:</span></span>
+<span data-ttu-id="87012-126">Esta es una plantilla de máquina virtual completa para la creación de una VM de Linux con una extensión:</span><span class="sxs-lookup"><span data-stu-id="87012-126">Here is a full VM template for creating a Linux VM with an extension:</span></span>
 
-[<span data-ttu-id="159cf-127">Extensión del script personalizado en una máquina virtual de Linux</span><span class="sxs-lookup"><span data-stu-id="159cf-127">Custom Script Extension on a Linux VM</span></span>](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
+[<span data-ttu-id="87012-127">Extensión del script personalizado en una máquina virtual de Linux</span><span class="sxs-lookup"><span data-stu-id="87012-127">Custom Script Extension on a Linux VM</span></span>](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 

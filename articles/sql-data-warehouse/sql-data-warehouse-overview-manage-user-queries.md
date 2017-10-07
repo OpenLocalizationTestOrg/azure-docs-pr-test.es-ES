@@ -1,6 +1,6 @@
 ---
-title: "Supervisión de las consultas de usuario en Azure SQL Data Warehouse | Microsoft Docs"
-description: "Información general de las consideraciones, prácticas recomendadas y tareas para supervisar las consultas de usuario en Almacenamiento de datos SQL de Azure."
+title: "las consultas de usuario de aaaMonitor en el almacén de datos de SQL de Azure | Documentos de Microsoft"
+description: "Información general sobre consideraciones de hello, prácticas recomendadas y tareas para supervisar las consultas de usuario en el almacén de datos de SQL Azure"
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,22 +15,22 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 65509a65c2b34553822cc02d7a7fa5a614adc57f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 67639e81b04635452e1ed844fe2d7245aa96a4fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-user-queries-in-azure-sql-data-warehouse"></a><span data-ttu-id="06502-103">Supervisión de las consultas de usuario en Almacenamiento de datos SQL de Azure</span><span class="sxs-lookup"><span data-stu-id="06502-103">Monitor user queries in Azure SQL Data Warehouse</span></span>
-<span data-ttu-id="06502-104">Información general de las consideraciones, prácticas recomendadas y tareas para supervisar las consultas de usuario en Almacenamiento de datos SQL.</span><span class="sxs-lookup"><span data-stu-id="06502-104">Overview of the considerations, best practices, and tasks for monitoring user queries in SQL Data Warehouse.</span></span>
+# <a name="monitor-user-queries-in-azure-sql-data-warehouse"></a><span data-ttu-id="ad51c-103">Supervisión de las consultas de usuario en Almacenamiento de datos SQL de Azure</span><span class="sxs-lookup"><span data-stu-id="ad51c-103">Monitor user queries in Azure SQL Data Warehouse</span></span>
+<span data-ttu-id="ad51c-104">Información general sobre consideraciones de hello, prácticas recomendadas y tareas para supervisar las consultas de usuario en el almacén de datos de SQL.</span><span class="sxs-lookup"><span data-stu-id="ad51c-104">Overview of hello considerations, best practices, and tasks for monitoring user queries in SQL Data Warehouse.</span></span>
 
-| <span data-ttu-id="06502-105">Categoría</span><span class="sxs-lookup"><span data-stu-id="06502-105">Category</span></span> | <span data-ttu-id="06502-106">Tarea o consideración</span><span class="sxs-lookup"><span data-stu-id="06502-106">Task or consideration</span></span> | <span data-ttu-id="06502-107">Description</span><span class="sxs-lookup"><span data-stu-id="06502-107">Description</span></span> |
+| <span data-ttu-id="ad51c-105">Categoría</span><span class="sxs-lookup"><span data-stu-id="ad51c-105">Category</span></span> | <span data-ttu-id="ad51c-106">Tarea o consideración</span><span class="sxs-lookup"><span data-stu-id="ad51c-106">Task or consideration</span></span> | <span data-ttu-id="ad51c-107">Description</span><span class="sxs-lookup"><span data-stu-id="ad51c-107">Description</span></span> |
 |:--- |:--- |:--- |
-| <span data-ttu-id="06502-108">Rendimiento lento</span><span class="sxs-lookup"><span data-stu-id="06502-108">Slow performance</span></span> |<span data-ttu-id="06502-109">Buscar una consulta de usuario de larga ejecución</span><span class="sxs-lookup"><span data-stu-id="06502-109">Find a long-running user query</span></span> |<span data-ttu-id="06502-110">[Buscar consultas de ejecución prolongada][Find long-running queries]</span><span class="sxs-lookup"><span data-stu-id="06502-110">[Find long-running queries][Find long-running queries]</span></span> |
-| <span data-ttu-id="06502-111">Simultaneidad</span><span class="sxs-lookup"><span data-stu-id="06502-111">Concurrency</span></span> |<span data-ttu-id="06502-112">Asignar recursos simultáneos a consultas de usuario</span><span class="sxs-lookup"><span data-stu-id="06502-112">Assign concurrent resources to user queries</span></span> |<span data-ttu-id="06502-113">[Administración de simultaneidad y cargas de trabajo][Concurrency and workload management]</span><span class="sxs-lookup"><span data-stu-id="06502-113">[Concurrency and workload management][Concurrency and workload management]</span></span> |
+| <span data-ttu-id="ad51c-108">Rendimiento lento</span><span class="sxs-lookup"><span data-stu-id="ad51c-108">Slow performance</span></span> |<span data-ttu-id="ad51c-109">Buscar una consulta de usuario de larga ejecución</span><span class="sxs-lookup"><span data-stu-id="ad51c-109">Find a long-running user query</span></span> |<span data-ttu-id="ad51c-110">[Buscar consultas de ejecución prolongada][Find long-running queries]</span><span class="sxs-lookup"><span data-stu-id="ad51c-110">[Find long-running queries][Find long-running queries]</span></span> |
+| <span data-ttu-id="ad51c-111">Simultaneidad</span><span class="sxs-lookup"><span data-stu-id="ad51c-111">Concurrency</span></span> |<span data-ttu-id="ad51c-112">Asignar recursos simultáneos toouser consultas</span><span class="sxs-lookup"><span data-stu-id="ad51c-112">Assign concurrent resources toouser queries</span></span> |<span data-ttu-id="ad51c-113">[Administración de simultaneidad y cargas de trabajo][Concurrency and workload management]</span><span class="sxs-lookup"><span data-stu-id="ad51c-113">[Concurrency and workload management][Concurrency and workload management]</span></span> |
 
-## <a name="next-steps"></a><span data-ttu-id="06502-114">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="06502-114">Next steps</span></span>
-<span data-ttu-id="06502-115">Para obtener más sugerencias de administración, vaya a la [información general sobre la administración][Management overview].</span><span class="sxs-lookup"><span data-stu-id="06502-115">For more management tips, head over to the [Management overview][Management overview].</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ad51c-114">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="ad51c-114">Next steps</span></span>
+<span data-ttu-id="ad51c-115">Para obtener más sugerencias administración, diríjase toohello [Introducción a la administración][Management overview].</span><span class="sxs-lookup"><span data-stu-id="ad51c-115">For more management tips, head over toohello [Management overview][Management overview].</span></span>
 
 <!--Image references-->
 

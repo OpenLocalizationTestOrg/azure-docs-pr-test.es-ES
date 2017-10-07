@@ -1,0 +1,110 @@
+---
+title: "batería de aaaReplace de dispositivo de la serie 8000 de StorSimple de Microsoft Azure | Documentos de Microsoft"
+description: "Describe cómo reemplazar tooremove y mantener el módulo de batería de reserva de hello en el dispositivo StorSimple."
+services: storsimple
+documentationcenter: 
+author: alkohli
+manager: timlt
+editor: 
+ms.assetid: 
+ms.service: storsimple
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: TBD
+ms.date: 06/05/2017
+ms.author: alkohli
+ms.openlocfilehash: 5ac767807e6c3fd817d8d522629db2aceaac9bdf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/06/2017
+---
+# <a name="replace-hello-backup-battery-module-on-your-storsimple-device"></a><span data-ttu-id="7993a-103">Reemplazar el módulo de batería de reserva de hello en el dispositivo StorSimple</span><span class="sxs-lookup"><span data-stu-id="7993a-103">Replace hello backup battery module on your StorSimple device</span></span>
+
+## <a name="overview"></a><span data-ttu-id="7993a-104">Información general</span><span class="sxs-lookup"><span data-stu-id="7993a-104">Overview</span></span>
+<span data-ttu-id="7993a-105">alojamiento principal Hola Power y módulo de refrigeración (PCM) en el dispositivo de StorSimple de Microsoft Azure tiene un paquete de baterías adicional.</span><span class="sxs-lookup"><span data-stu-id="7993a-105">hello primary enclosure Power and Cooling Module (PCM) on your Microsoft Azure StorSimple device has an additional battery pack.</span></span> <span data-ttu-id="7993a-106">Este módulo proporciona alimentación para que hello dispositivo StorSimple puede guardar los datos si hay pérdida de alojamiento principal de toohello de alimentación de CA.</span><span class="sxs-lookup"><span data-stu-id="7993a-106">This pack provides power so that hello StorSimple device can save data if there is loss of AC power toohello primary enclosure.</span></span> <span data-ttu-id="7993a-107">Este módulo de batería es que se hace referencia tooas hello *módulo de batería de reserva*.</span><span class="sxs-lookup"><span data-stu-id="7993a-107">This battery pack is referred tooas hello *backup battery module*.</span></span> <span data-ttu-id="7993a-108">módulo de batería de reserva de Hello existe únicamente para el alojamiento principal de hello en el dispositivo StorSimple (Hola alojamiento de EBOD no contiene un módulo de batería de reserva).</span><span class="sxs-lookup"><span data-stu-id="7993a-108">hello backup battery module exists only for hello primary enclosure in your StorSimple device (hello EBOD enclosure does not contain a backup battery module).</span></span>
+
+<span data-ttu-id="7993a-109">Este tutorial explica cómo realizar lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="7993a-109">This tutorial explains how to:</span></span>
+
+* <span data-ttu-id="7993a-110">Quitar el módulo de batería de reserva de Hola</span><span class="sxs-lookup"><span data-stu-id="7993a-110">Remove hello backup battery module</span></span>
+* <span data-ttu-id="7993a-111">Instalar un nuevo módulo de baterías de reserva</span><span class="sxs-lookup"><span data-stu-id="7993a-111">Install a new backup battery module</span></span>
+* <span data-ttu-id="7993a-112">Mantener el módulo de batería de reserva de Hola</span><span class="sxs-lookup"><span data-stu-id="7993a-112">Maintain hello backup battery module</span></span>
+
+> [!IMPORTANT]
+> <span data-ttu-id="7993a-113">Antes de quitar y reemplazar un módulo de baterías de reserva, revise la información de seguridad de Hola Hola [sustitución de componentes de hardware de introducción tooStorSimple](storsimple-8000-hardware-component-replacement.md).</span><span class="sxs-lookup"><span data-stu-id="7993a-113">Before removing and replacing a backup battery module, review hello safety information in hello [Introduction tooStorSimple hardware component replacement](storsimple-8000-hardware-component-replacement.md).</span></span>
+
+
+## <a name="remove-hello-backup-battery-module"></a><span data-ttu-id="7993a-114">Quitar el módulo de batería de reserva de Hola</span><span class="sxs-lookup"><span data-stu-id="7993a-114">Remove hello backup battery module</span></span>
+<span data-ttu-id="7993a-115">módulo de batería de reserva de Hello para el dispositivo StorSimple es una unidad reemplazable en campo.</span><span class="sxs-lookup"><span data-stu-id="7993a-115">hello backup battery module for your StorSimple device is a field-replaceable unit.</span></span> <span data-ttu-id="7993a-116">Antes de instalarla en hello PCM, módulo de baterías de hello debe almacenarse en su embalaje original.</span><span class="sxs-lookup"><span data-stu-id="7993a-116">Before it is installed in hello PCM, hello battery module should be stored in its original packaging.</span></span> <span data-ttu-id="7993a-117">Realizar Hola después de batería de reserva de pasos tooremove Hola.</span><span class="sxs-lookup"><span data-stu-id="7993a-117">Perform hello following steps tooremove hello backup battery.</span></span>
+
+#### <a name="tooremove-hello-backup-battery-module"></a><span data-ttu-id="7993a-118">módulo de batería de reserva de hello tooremove</span><span class="sxs-lookup"><span data-stu-id="7993a-118">tooremove hello backup battery module</span></span>
+1. <span data-ttu-id="7993a-119">Hola portal de Azure, vaya tooyour módulo de servicio de administrador de dispositivos de StorSimple.</span><span class="sxs-lookup"><span data-stu-id="7993a-119">In hello Azure portal, go tooyour StorSimple Device Manager service blade.</span></span> <span data-ttu-id="7993a-120">Vaya demasiado**dispositivos** y, a continuación, seleccione el dispositivo de la lista de Hola de dispositivos.</span><span class="sxs-lookup"><span data-stu-id="7993a-120">Go too**Devices** and then select your device from hello list of devices.</span></span> <span data-ttu-id="7993a-121">Navegue demasiado**Monitor** > **estado del Hardware**.</span><span class="sxs-lookup"><span data-stu-id="7993a-121">Navigate too**Monitor** > **Hardware health**.</span></span> <span data-ttu-id="7993a-122">En **componentes compartidos**, mire Hola estado de batería Hola.</span><span class="sxs-lookup"><span data-stu-id="7993a-122">Under **Shared Components**, look at hello status of hello battery.</span></span>
+2. <span data-ttu-id="7993a-123">Identifique el PCM de hello en qué Hola batería ha fallado.</span><span class="sxs-lookup"><span data-stu-id="7993a-123">Identify hello PCM in which hello battery has failed.</span></span> <span data-ttu-id="7993a-124">La figura 1 muestra hello parte posterior del dispositivo de StorSimple Hola.</span><span class="sxs-lookup"><span data-stu-id="7993a-124">Figure 1 shows hello back of hello StorSimple device.</span></span>
+   
+    ![Backplane de módulos del gabinete principal del dispositivo](./media/storsimple-battery-replacement/IC740994.png)
+   
+    <span data-ttu-id="7993a-126">**Figura 1** Vista posterior del dispositivo primario que muestra los módulos PCM y del controlador</span><span class="sxs-lookup"><span data-stu-id="7993a-126">**Figure 1** Back of primary device showing PCM and controller modules</span></span>
+   
+   | <span data-ttu-id="7993a-127">Etiqueta</span><span class="sxs-lookup"><span data-stu-id="7993a-127">Label</span></span> | <span data-ttu-id="7993a-128">Descripción</span><span class="sxs-lookup"><span data-stu-id="7993a-128">Description</span></span> |
+   |:--- |:--- |
+   | <span data-ttu-id="7993a-129">1</span><span class="sxs-lookup"><span data-stu-id="7993a-129">1</span></span> |<span data-ttu-id="7993a-130">PCM 0</span><span class="sxs-lookup"><span data-stu-id="7993a-130">PCM 0</span></span> |
+   | <span data-ttu-id="7993a-131">2</span><span class="sxs-lookup"><span data-stu-id="7993a-131">2</span></span> |<span data-ttu-id="7993a-132">PCM 1</span><span class="sxs-lookup"><span data-stu-id="7993a-132">PCM 1</span></span> |
+   | <span data-ttu-id="7993a-133">3</span><span class="sxs-lookup"><span data-stu-id="7993a-133">3</span></span> |<span data-ttu-id="7993a-134">Controlador 0</span><span class="sxs-lookup"><span data-stu-id="7993a-134">Controller 0</span></span> |
+   | <span data-ttu-id="7993a-135">4</span><span class="sxs-lookup"><span data-stu-id="7993a-135">4</span></span> |<span data-ttu-id="7993a-136">Controlador 1</span><span class="sxs-lookup"><span data-stu-id="7993a-136">Controller 1</span></span> |
+   
+    <span data-ttu-id="7993a-137">Como se muestra en el número 3 en la figura 2 hello, Hola supervisión indicador LED en PCM 0 que corresponde demasiado**error de batería** debe estar encendido.</span><span class="sxs-lookup"><span data-stu-id="7993a-137">As shown by number 3 in hello Figure 2, hello monitoring indicator LED on PCM 0 that corresponds too**Battery Fault** should be lit.</span></span>
+   
+    ![Backplane de supervisión de LED indicadores de supervisión del PCM del dispositivo](./media/storsimple-battery-replacement/IC740992.png)
+   
+    <span data-ttu-id="7993a-139">**Figura 2** Hola de mostrando parte posterior del PCM LED indicadores de supervisión</span><span class="sxs-lookup"><span data-stu-id="7993a-139">**Figure 2** Back of PCM showing hello monitoring indicator LEDs</span></span>
+   
+   | <span data-ttu-id="7993a-140">Etiqueta</span><span class="sxs-lookup"><span data-stu-id="7993a-140">Label</span></span> | <span data-ttu-id="7993a-141">Descripción</span><span class="sxs-lookup"><span data-stu-id="7993a-141">Description</span></span> |
+   |:--- |:--- |
+   | <span data-ttu-id="7993a-142">1</span><span class="sxs-lookup"><span data-stu-id="7993a-142">1</span></span> |<span data-ttu-id="7993a-143">Error de corriente alterna</span><span class="sxs-lookup"><span data-stu-id="7993a-143">AC power failure</span></span> |
+   | <span data-ttu-id="7993a-144">2</span><span class="sxs-lookup"><span data-stu-id="7993a-144">2</span></span> |<span data-ttu-id="7993a-145">Error del ventilador</span><span class="sxs-lookup"><span data-stu-id="7993a-145">Fan failure</span></span> |
+   | <span data-ttu-id="7993a-146">3</span><span class="sxs-lookup"><span data-stu-id="7993a-146">3</span></span> |<span data-ttu-id="7993a-147">Error de la batería</span><span class="sxs-lookup"><span data-stu-id="7993a-147">Battery fault</span></span> |
+   | <span data-ttu-id="7993a-148">4</span><span class="sxs-lookup"><span data-stu-id="7993a-148">4</span></span> |<span data-ttu-id="7993a-149">PCM correcto</span><span class="sxs-lookup"><span data-stu-id="7993a-149">PCM OK</span></span> |
+   | <span data-ttu-id="7993a-150">5</span><span class="sxs-lookup"><span data-stu-id="7993a-150">5</span></span> |<span data-ttu-id="7993a-151">Error de alimentación de CD</span><span class="sxs-lookup"><span data-stu-id="7993a-151">DC power failure</span></span> |
+   | <span data-ttu-id="7993a-152">6</span><span class="sxs-lookup"><span data-stu-id="7993a-152">6</span></span> |<span data-ttu-id="7993a-153">Batería en funcionamiento</span><span class="sxs-lookup"><span data-stu-id="7993a-153">Battery healthy</span></span> |
+3. <span data-ttu-id="7993a-154">Hola tooremove PCM con una batería averiada, siga los pasos de hello en [quite el PCM con](storsimple-power-cooling-module-replacement.md#remove-a-pcm).</span><span class="sxs-lookup"><span data-stu-id="7993a-154">tooremove hello PCM with a failed battery, follow hello steps in [Remove a PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm).</span></span>
+4. <span data-ttu-id="7993a-155">Con hello PCM extraído, elevación y batería Hola girar módulo controlar hacia arriba tal como se indica en la figura siguiente de Hola y extraer la batería de hello tooremove.</span><span class="sxs-lookup"><span data-stu-id="7993a-155">With hello PCM removed, lift and rotate hello battery module handle upward as indicated in hello following figure, and pull it up tooremove hello battery.</span></span>
+   
+    ![Quitar batería del PCM](./media/storsimple-battery-replacement/IC741019.png)
+   
+    <span data-ttu-id="7993a-157">**Figura 3** quitando batería de Hola de hello PCM</span><span class="sxs-lookup"><span data-stu-id="7993a-157">**Figure 3** Removing hello battery from hello PCM</span></span>
+5. <span data-ttu-id="7993a-158">Coloque el módulo de hello en unidad reemplazable en campo Hola empaquetado.</span><span class="sxs-lookup"><span data-stu-id="7993a-158">Place hello module in hello field-replaceable unit packaging.</span></span>
+6. <span data-ttu-id="7993a-159">Devolver Hola unidad defectuosa tooMicrosoft de servicio y gestión adecuados.</span><span class="sxs-lookup"><span data-stu-id="7993a-159">Return hello defective unit tooMicrosoft for proper servicing and handling.</span></span>
+
+## <a name="install-a-new-backup-battery-module"></a><span data-ttu-id="7993a-160">Instalar un nuevo módulo de baterías de reserva</span><span class="sxs-lookup"><span data-stu-id="7993a-160">Install a new backup battery module</span></span>
+<span data-ttu-id="7993a-161">Realizar Hola después de módulo de baterías de sustitución pasos tooinstall hello en Hola PCM del alojamiento principal de hello de dispositivo StorSimple.</span><span class="sxs-lookup"><span data-stu-id="7993a-161">Perform hello following steps tooinstall hello replacement battery module in hello PCM in hello primary enclosure of your StorSimple device.</span></span>
+
+#### <a name="tooinstall-hello-battery-module"></a><span data-ttu-id="7993a-162">módulo de baterías de hello tooinstall</span><span class="sxs-lookup"><span data-stu-id="7993a-162">tooinstall hello battery module</span></span>
+1. <span data-ttu-id="7993a-163">Coloque el módulo de batería de reserva de hello en la orientación correcta de Hola Hola PCM.</span><span class="sxs-lookup"><span data-stu-id="7993a-163">Place hello backup battery module in hello proper orientation in hello PCM.</span></span>
+2. <span data-ttu-id="7993a-164">Presione hacia abajo el módulo de baterías de hello controlar conector de todas las Hola forma tooseat Hola.</span><span class="sxs-lookup"><span data-stu-id="7993a-164">Press down hello battery module handle all hello way tooseat hello connector.</span></span>
+3. <span data-ttu-id="7993a-165">Reemplace Hola PCM en el alojamiento principal Hola siguiendo las instrucciones de hello en [reemplazar una alimentación y refrigeración módulo en el dispositivo StorSimple](storsimple-power-cooling-module-replacement.md).</span><span class="sxs-lookup"><span data-stu-id="7993a-165">Replace hello PCM in hello primary enclosure by following hello guidelines in [Replace a Power and Cooling Module on your StorSimple device](storsimple-power-cooling-module-replacement.md).</span></span>
+4. <span data-ttu-id="7993a-166">Una vez completada la sustitución de hello, vaya tooyour dispositivo y, a continuación, vaya demasiado**Monitor** > **estado del Hardware** Hola portal de Azure.</span><span class="sxs-lookup"><span data-stu-id="7993a-166">After hello replacement is complete, go tooyour device and then go too**Monitor** > **Hardware health** in hello Azure portal.</span></span> <span data-ttu-id="7993a-167">Comprobar estado de Hola de hello batería toomake seguro de que Hola instalación es correcta.</span><span class="sxs-lookup"><span data-stu-id="7993a-167">Verify hello status of hello battery toomake sure that hello installation was successful.</span></span> <span data-ttu-id="7993a-168">Estado verde indica que la batería de hello es correcto.</span><span class="sxs-lookup"><span data-stu-id="7993a-168">A green status indicates that hello battery is healthy.</span></span>
+
+## <a name="maintain-hello-backup-battery-module"></a><span data-ttu-id="7993a-169">Mantener el módulo de batería de reserva de Hola</span><span class="sxs-lookup"><span data-stu-id="7993a-169">Maintain hello backup battery module</span></span>
+<span data-ttu-id="7993a-170">En el dispositivo StorSimple, módulo de batería de reserva de hello proporciona controlador toohello de energía durante un evento de pérdida de energía.</span><span class="sxs-lookup"><span data-stu-id="7993a-170">In your StorSimple device, hello backup battery module provides power toohello controller during a power loss event.</span></span> <span data-ttu-id="7993a-171">Permite hello StorSimple dispositivo toosave datos críticos anterior tooshutting hacia abajo de una manera controlada.</span><span class="sxs-lookup"><span data-stu-id="7993a-171">It allows hello StorSimple device toosave critical data prior tooshutting down in a controlled manner.</span></span> <span data-ttu-id="7993a-172">Con dos baterías totalmente cargadas en hello PCM, sistema de hello puede controlar dos eventos de corte consecutivos.</span><span class="sxs-lookup"><span data-stu-id="7993a-172">With two fully charged batteries in hello PCMs, hello system can handle two consecutive loss events.</span></span>
+
+<span data-ttu-id="7993a-173">Hola portal de Azure, Hola **estado del Hardware** en hello **Monitor** hoja indica si está funcionando mal batería Hola o de obsolescencia de saludo se está agotando.</span><span class="sxs-lookup"><span data-stu-id="7993a-173">In hello Azure portal, hello **Hardware health** under hello **Monitor** blade indicates whether hello battery is malfunctioning or hello end-of-life is approaching.</span></span> <span data-ttu-id="7993a-174">estado de la batería de Hola se indica mediante **batería en PCM 0** o **batería en PCM 1** en **componentes compartidos**.</span><span class="sxs-lookup"><span data-stu-id="7993a-174">hello battery status is indicated by **Battery in PCM 0** or **Battery in PCM 1** under **Shared Components**.</span></span> <span data-ttu-id="7993a-175">Esta hoja muestra un estado **DEGRADADO** cuando se aproxima el final del ciclo de vida, y **ERROR** cuando se alcanza el final del ciclo de vida.</span><span class="sxs-lookup"><span data-stu-id="7993a-175">This blade will show a **DEGRADED** state for end-of-life approaching, and **FAILED** for end-of-life reached.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="7993a-176">Hola batería puede mostrar **error** cuando necesita simplemente toobe cobra.</span><span class="sxs-lookup"><span data-stu-id="7993a-176">hello battery can report **FAILED** when it simply needs toobe charged.</span></span>
+
+
+<span data-ttu-id="7993a-177">Si hello **degradado** aparece estado, se recomienda Hola siguiendo el curso de acción:</span><span class="sxs-lookup"><span data-stu-id="7993a-177">If hello **DEGRADED** state appears, we recommend hello following course of action:</span></span>
+
+* <span data-ttu-id="7993a-178">sistema de Hola que haya tenido una pérdida de energía reciente o baterías Hola pueden se está llevando a cabo mantenimiento periódico.</span><span class="sxs-lookup"><span data-stu-id="7993a-178">hello system may have experienced a recent power loss or hello batteries may be undergoing periodic maintenance.</span></span> <span data-ttu-id="7993a-179">Observe el sistema de Hola durante 12 horas antes de continuar.</span><span class="sxs-lookup"><span data-stu-id="7993a-179">Observe hello system for 12 hours before proceeding.</span></span>
+  
+  * <span data-ttu-id="7993a-180">Si el estado de hello sigue siendo **degradado** después de 12 horas de alimentación de tooAC de conexión continua con hello de controladores y PCM en ejecución, a continuación, Hola batería debe toobe reemplazado.</span><span class="sxs-lookup"><span data-stu-id="7993a-180">If hello state is still **DEGRADED** after 12 hours of continuous connection tooAC power with hello controllers and PCMs running, then hello battery needs toobe replaced.</span></span> <span data-ttu-id="7993a-181">[Póngase en contacto con Microsoft Support](storsimple-8000-contact-microsoft-support.md) para obtener un módulo de baterías de reserva de reemplazo.</span><span class="sxs-lookup"><span data-stu-id="7993a-181">Please [contact Microsoft Support](storsimple-8000-contact-microsoft-support.md) for a replacement backup battery module.</span></span>
+  * <span data-ttu-id="7993a-182">Si se convierte en un estado de hello correcto después de 12 horas, batería Hola está operativo y solo necesita un coste de mantenimiento.</span><span class="sxs-lookup"><span data-stu-id="7993a-182">If hello state becomes OK after 12 hours, hello battery is operational, and it only needed a maintenance charge.</span></span>
+* <span data-ttu-id="7993a-183">Si no ha habido un corte de alimentación de CA y Hola PCM asociado esté encendido y conectado tooAC power, batería Hola debe toobe reemplazado.</span><span class="sxs-lookup"><span data-stu-id="7993a-183">If there has not been an associated loss of AC power and hello PCM is turned on and connected tooAC power, hello battery needs toobe replaced.</span></span> <span data-ttu-id="7993a-184">[Póngase en contacto con Microsoft Support](storsimple-8000-contact-microsoft-support.md) tooorder un módulo de batería de reserva de reemplazo.</span><span class="sxs-lookup"><span data-stu-id="7993a-184">[Contact Microsoft Support](storsimple-8000-contact-microsoft-support.md) tooorder a replacement backup battery module.</span></span>
+
+> [!IMPORTANT]
+> <span data-ttu-id="7993a-185">Dispose de hello error batería según toonational y la normativa regional.</span><span class="sxs-lookup"><span data-stu-id="7993a-185">Dispose of hello failed battery according toonational and regional regulations.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="7993a-186">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="7993a-186">Next steps</span></span>
+<span data-ttu-id="7993a-187">Obtenga más información sobre el [Reemplazo de los componentes de hardware de StorSimple](storsimple-8000-hardware-component-replacement.md).</span><span class="sxs-lookup"><span data-stu-id="7993a-187">Learn more about [StorSimple hardware component replacement](storsimple-8000-hardware-component-replacement.md).</span></span>
+

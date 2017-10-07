@@ -1,6 +1,6 @@
 ---
-title: Contenedores en Azure Virtual Machines de Windows | Microsoft Docs
-description: "Describe las máquinas virtuales, los contenedores de Docker y Linux y su uso en grupos en Azure, incluyendo las ventajas de cada uno y los escenarios en los que cada enfoque funciona muy bien."
+title: "aaaContainers en máquinas virtuales de ventana de Azure | Documentos de Microsoft"
+description: "Describe las máquinas virtuales, Docker y contenedores de Linux y su uso en los grupos de cada uno de ellos en Azure, con beneficios Hola de cada uno y escenarios en que cada enfoque funciona muy bien."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: squillace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
-ms.openlocfilehash: 9d03e9a98aa990d6747a3e06c008f54ee18445cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7acf984e1bcafbb78728156c07533629b9d62149
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="virtual-machines-and-containers-in-azure"></a><span data-ttu-id="36858-103">Máquinas virtuales y contenedores de Azure</span><span class="sxs-lookup"><span data-stu-id="36858-103">Virtual machines and containers in Azure</span></span>
+# <a name="virtual-machines-and-containers-in-azure"></a><span data-ttu-id="7a3b5-103">Máquinas virtuales y contenedores de Azure</span><span class="sxs-lookup"><span data-stu-id="7a3b5-103">Virtual machines and containers in Azure</span></span>
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 [!INCLUDE [virtual-machines-common-and-containers](../../../includes/virtual-machines-common-containers.md)]

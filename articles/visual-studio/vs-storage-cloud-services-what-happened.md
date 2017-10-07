@@ -1,6 +1,6 @@
 ---
-title: "¿Qué le ha ocurrido a mi proyecto de servicio en la nube? | Microsoft Docs"
-description: "Describe lo que sucede en un proyecto de servicios en la nube después de conectarse a una cuenta de almacenamiento de Azure mediante los servicios conectados de Visual Studio"
+title: "¿aaaWhat ha ocurrido toomy proyecto de servicio de nube? | Microsoft Docs"
+description: "Describe lo que sucede en un proyecto de servicios de nube después de conectar tooan cuenta de almacenamiento de Azure con Visual Studio servicios conectados"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 4c9de56f6daf07097c0f593db37d14dce3bce05f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 52e292558fb66b56e9d2e8e06ff489ae7a4bc845
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a><span data-ttu-id="5732f-104">¿Qué le ha ocurrido a mi proyecto de servicios en la nube (servicio conectado a Almacenamiento de Azure de Visual Studio)?</span><span class="sxs-lookup"><span data-stu-id="5732f-104">What happened to my cloud services project (Visual Studio Azure Storage connected service)?</span></span>
-## <a name="references-added"></a><span data-ttu-id="5732f-105">Se han agregado referencias</span><span class="sxs-lookup"><span data-stu-id="5732f-105">References added</span></span>
-<span data-ttu-id="5732f-106">El paquete NuGet de Almacenamiento de Azure se agregó al proyecto de Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="5732f-106">The Azure Storage NuGet package was added to your Visual Studio project.</span></span>  
-<span data-ttu-id="5732f-107">Este paquete agrega las siguientes referencias. NET:</span><span class="sxs-lookup"><span data-stu-id="5732f-107">This package adds the following .NET references:</span></span>
+# <a name="what-happened-toomy-cloud-services-project-visual-studio-azure-storage-connected-service"></a><span data-ttu-id="1c831-104">¿Qué servicios de nube toomy problema proyectos (servicio de Visual Studio de almacenamiento de Azure conectado)?</span><span class="sxs-lookup"><span data-stu-id="1c831-104">What happened toomy cloud services project (Visual Studio Azure Storage connected service)?</span></span>
+## <a name="references-added"></a><span data-ttu-id="1c831-105">Se han agregado referencias</span><span class="sxs-lookup"><span data-stu-id="1c831-105">References added</span></span>
+<span data-ttu-id="1c831-106">paquete de NuGet de almacenamiento de Azure de Hola se agregó el proyecto de Visual Studio tooyour.</span><span class="sxs-lookup"><span data-stu-id="1c831-106">hello Azure Storage NuGet package was added tooyour Visual Studio project.</span></span>  
+<span data-ttu-id="1c831-107">Este paquete agrega Hola siguientes referencias de. NET:</span><span class="sxs-lookup"><span data-stu-id="1c831-107">This package adds hello following .NET references:</span></span>
 
-* <span data-ttu-id="5732f-108">**Microsoft.Data.Edm**</span><span class="sxs-lookup"><span data-stu-id="5732f-108">**Microsoft.Data.Edm**</span></span>
-* <span data-ttu-id="5732f-109">**Microsoft.Data.OData**</span><span class="sxs-lookup"><span data-stu-id="5732f-109">**Microsoft.Data.OData**</span></span>
-* <span data-ttu-id="5732f-110">**Microsoft.Data.Services.Client**</span><span class="sxs-lookup"><span data-stu-id="5732f-110">**Microsoft.Data.Services.Client**</span></span>
-* <span data-ttu-id="5732f-111">**Microsoft.WindowsAzure.Configuration**</span><span class="sxs-lookup"><span data-stu-id="5732f-111">**Microsoft.WindowsAzure.Configuration**</span></span>
-* <span data-ttu-id="5732f-112">**Microsoft.WindowsAzure.Storage**</span><span class="sxs-lookup"><span data-stu-id="5732f-112">**Microsoft.WindowsAzure.Storage**</span></span>
-* <span data-ttu-id="5732f-113">**Newtonsoft.Json**</span><span class="sxs-lookup"><span data-stu-id="5732f-113">**Newtonsoft.Json**</span></span>
-* <span data-ttu-id="5732f-114">**System.Data**</span><span class="sxs-lookup"><span data-stu-id="5732f-114">**System.Data**</span></span>
-* <span data-ttu-id="5732f-115">**System.Spatial**</span><span class="sxs-lookup"><span data-stu-id="5732f-115">**System.Spatial**</span></span>
+* <span data-ttu-id="1c831-108">**Microsoft.Data.Edm**</span><span class="sxs-lookup"><span data-stu-id="1c831-108">**Microsoft.Data.Edm**</span></span>
+* <span data-ttu-id="1c831-109">**Microsoft.Data.OData**</span><span class="sxs-lookup"><span data-stu-id="1c831-109">**Microsoft.Data.OData**</span></span>
+* <span data-ttu-id="1c831-110">**Microsoft.Data.Services.Client**</span><span class="sxs-lookup"><span data-stu-id="1c831-110">**Microsoft.Data.Services.Client**</span></span>
+* <span data-ttu-id="1c831-111">**Microsoft.WindowsAzure.Configuration**</span><span class="sxs-lookup"><span data-stu-id="1c831-111">**Microsoft.WindowsAzure.Configuration**</span></span>
+* <span data-ttu-id="1c831-112">**Microsoft.WindowsAzure.Storage**</span><span class="sxs-lookup"><span data-stu-id="1c831-112">**Microsoft.WindowsAzure.Storage**</span></span>
+* <span data-ttu-id="1c831-113">**Newtonsoft.Json**</span><span class="sxs-lookup"><span data-stu-id="1c831-113">**Newtonsoft.Json**</span></span>
+* <span data-ttu-id="1c831-114">**System.Data**</span><span class="sxs-lookup"><span data-stu-id="1c831-114">**System.Data**</span></span>
+* <span data-ttu-id="1c831-115">**System.Spatial**</span><span class="sxs-lookup"><span data-stu-id="1c831-115">**System.Spatial**</span></span>
 
-## <a name="connection-string-for-azure-storage-added"></a><span data-ttu-id="5732f-116">Se ha agregado la cadena de conexión para Almacenamiento de Azure.</span><span class="sxs-lookup"><span data-stu-id="5732f-116">Connection string for Azure Storage added</span></span>
-<span data-ttu-id="5732f-117">Se han creado elementos con la cadena y la clave de conexión de la cuenta de almacenamiento seleccionada.</span><span class="sxs-lookup"><span data-stu-id="5732f-117">Elements were created with the selected storage account's connection string and key.</span></span> <span data-ttu-id="5732f-118">Se han hecho modificaciones en los archivos siguientes:</span><span class="sxs-lookup"><span data-stu-id="5732f-118">Modifications were made to the following files:</span></span>
+## <a name="connection-string-for-azure-storage-added"></a><span data-ttu-id="1c831-116">Se ha agregado la cadena de conexión para Almacenamiento de Azure.</span><span class="sxs-lookup"><span data-stu-id="1c831-116">Connection string for Azure Storage added</span></span>
+<span data-ttu-id="1c831-117">Se crea ningún elemento con la cadena de conexión y la clave de la cuenta de almacenamiento de hello seleccionado.</span><span class="sxs-lookup"><span data-stu-id="1c831-117">Elements were created with hello selected storage account's connection string and key.</span></span> <span data-ttu-id="1c831-118">Se han realizado modificaciones toohello siguientes archivos:</span><span class="sxs-lookup"><span data-stu-id="1c831-118">Modifications were made toohello following files:</span></span>
 
-* <span data-ttu-id="5732f-119">**ServiceDefinition.csdef**</span><span class="sxs-lookup"><span data-stu-id="5732f-119">**ServiceDefinition.csdef**</span></span>
-* <span data-ttu-id="5732f-120">**ServiceConfiguration.Cloud.cscfg**</span><span class="sxs-lookup"><span data-stu-id="5732f-120">**ServiceConfiguration.Cloud.cscfg**</span></span>
-* <span data-ttu-id="5732f-121">**ServiceConfiguration.Local.cscfg**</span><span class="sxs-lookup"><span data-stu-id="5732f-121">**ServiceConfiguration.Local.cscfg**</span></span>
+* <span data-ttu-id="1c831-119">**ServiceDefinition.csdef**</span><span class="sxs-lookup"><span data-stu-id="1c831-119">**ServiceDefinition.csdef**</span></span>
+* <span data-ttu-id="1c831-120">**ServiceConfiguration.Cloud.cscfg**</span><span class="sxs-lookup"><span data-stu-id="1c831-120">**ServiceConfiguration.Cloud.cscfg**</span></span>
+* <span data-ttu-id="1c831-121">**ServiceConfiguration.Local.cscfg**</span><span class="sxs-lookup"><span data-stu-id="1c831-121">**ServiceConfiguration.Local.cscfg**</span></span>
 

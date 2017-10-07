@@ -25,15 +25,15 @@
 # Procedimientos
 
 ## [Migración de datos de usuario desde Azure RemoteApp](remoteapp-migrate.md)
-## [Migración a MyCloudIT](remoteapp-migrate-mycloudit.md)
-## [Migración a Citrix XenApp Essentials](remoteapp-migrate-citrix.md)
+## [Migrar tooMyCloudIT](remoteapp-migrate-mycloudit.md)
+## [Migrar tooCitrix XenApp Essentials](remoteapp-migrate-citrix.md)
 ## Creación de una colección de RemoteApp
 ### [¿Qué colección necesita?](remoteapp-collections.md)
 ### [Creación de una colección en la nube](remoteapp-create-cloud-deployment.md)
 ### [Creación de una colección híbrida](remoteapp-create-hybrid-deployment.md)
 ### [Actualización de la colección](remoteapp-update.md)
 ### [Creación de una imagen de RemoteApp](remoteapp-imageoptions.md)
-### [¿Qué incluye la imagen de plantilla?](remoteapp-images.md)
+### [¿Novedades en la imagen de la plantilla de hello?](remoteapp-images.md)
 ### [Requisitos de imagen](remoteapp-imagereqs.md)
 ### [Carga de una imagen](remoteapp-uploadimage.md)
 ### [Creación de una imagen de una máquina virtual de Azure](remoteapp-image-on-azurevm.md)
@@ -41,13 +41,13 @@
 ### [Planeamiento de una red virtual](remoteapp-planvnet.md)
 ### [Información sobre puertos y URL](remoteapp-ports.md)
 ### [Validación de una red virtual](remoteapp-vnet.md)
-### [Migración a una red virtual de Azure](remoteapp-migratevnet.md)
+### [Migrar tooan red virtual de Azure](remoteapp-migratevnet.md)
 ## Publicación de aplicaciones
-### [Publicación de una aplicación](remoteapp-publish.md)
+### [¿Cómo toopublish una aplicación](remoteapp-publish.md)
 ## Administrar usuarios
-### [Incorporación de usuarios](remoteapp-user.md)
+### [Cómo los usuarios de tooadd](remoteapp-user.md)
 ### [Configuración de Active Directory](remoteapp-ad.md)
-### [Cambio del inquilino de Azure AD](remoteapp-changetenant.md)
+### [Inquilino de hello Azure AD de cambio](remoteapp-changetenant.md)
 ### [Cuentas de usuario de Office 365](remoteapp-o365user.md)
 ### [Protección de los datos](remoteapp-secureaccess.md)
 ### [Datos de usuario](remoteapp-upd.md)

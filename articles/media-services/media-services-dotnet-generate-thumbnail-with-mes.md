@@ -1,6 +1,6 @@
 ---
-title: "Cómo generar vistas en miniatura mediante el Codificador multimedia estándar con .NET"
-description: "En este tema, se muestra cómo se usa .NET para codificar un recurso y generar miniaturas al mismo tiempo con Media Encoder Standard."
+title: "aaaHow toogenerate miniaturas utilizando Media Encoder estándar con .NET"
+description: "Este tema se muestra cómo toouse .NET tooencode un activo y generen miniaturas en hello simultánea mediante el estándar de codificador multimedia."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: juliako
-ms.openlocfilehash: 89d15cbdf71a140e78f34e07ff208776b7d4cab3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 23d3e4d9bf64a688d45499c045f19d2792167990
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a><span data-ttu-id="bf023-103">Cómo generar vistas en miniatura mediante el Codificador multimedia estándar con .NET</span><span class="sxs-lookup"><span data-stu-id="bf023-103">How to generate thumbnails using Media Encoder Standard with .NET</span></span>
+# <a name="how-toogenerate-thumbnails-using-media-encoder-standard-with-net"></a><span data-ttu-id="93b49-103">Cómo miniaturas toogenerate utilizando Media Encoder estándar con .NET</span><span class="sxs-lookup"><span data-stu-id="93b49-103">How toogenerate thumbnails using Media Encoder Standard with .NET</span></span>
 
-<span data-ttu-id="bf023-104">Puede utilizar Media Encoder Standard para generar una o varias vistas en miniatura de la entrada de vídeo en formatos de archivo de imagen [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), o [BMP](https://en.wikipedia.org/wiki/BMP_file_format).</span><span class="sxs-lookup"><span data-stu-id="bf023-104">You can use Media Encoder Standard to generate one or more thumbnails from your input video in [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), or [BMP](https://en.wikipedia.org/wiki/BMP_file_format) image file formats.</span></span> <span data-ttu-id="bf023-105">Puede enviar tareas que producen solo las imágenes o puede combinar la generación de miniaturas con la codificación.</span><span class="sxs-lookup"><span data-stu-id="bf023-105">You can submit Tasks that produce only images, or you can combine thumbnail generation with encoding.</span></span> <span data-ttu-id="bf023-106">Este tema proporciona algunos ejemplos de valores preestablecidos de miniaturas en código XML y JSON para estos escenarios.</span><span class="sxs-lookup"><span data-stu-id="bf023-106">This topic provides a few sample XML and JSON thumbnail presets for such scenarios.</span></span> <span data-ttu-id="bf023-107">Al final del tema, hay un [código de ejemplo](#code_sample) que muestra cómo utilizar el SDK de .NET de Media Services para realizar la tarea de codificación.</span><span class="sxs-lookup"><span data-stu-id="bf023-107">At the end of the topic, there is a [sample code](#code_sample) that shows how to use the Media Services .NET SDK to accomplish the encoding task.</span></span>
+<span data-ttu-id="93b49-104">Puede usar toogenerate Media Encoder estándar uno o más de las vistas en miniatura de la entrada de vídeo en [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), o [BMP](https://en.wikipedia.org/wiki/BMP_file_format) formatos de archivo de imagen.</span><span class="sxs-lookup"><span data-stu-id="93b49-104">You can use Media Encoder Standard toogenerate one or more thumbnails from your input video in [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), or [BMP](https://en.wikipedia.org/wiki/BMP_file_format) image file formats.</span></span> <span data-ttu-id="93b49-105">Puede enviar tareas que producen solo las imágenes o puede combinar la generación de miniaturas con la codificación.</span><span class="sxs-lookup"><span data-stu-id="93b49-105">You can submit Tasks that produce only images, or you can combine thumbnail generation with encoding.</span></span> <span data-ttu-id="93b49-106">Este tema proporciona algunos ejemplos de valores preestablecidos de miniaturas en código XML y JSON para estos escenarios.</span><span class="sxs-lookup"><span data-stu-id="93b49-106">This topic provides a few sample XML and JSON thumbnail presets for such scenarios.</span></span> <span data-ttu-id="93b49-107">Al final de Hola de tema de hello, hay un [código de ejemplo](#code_sample) que muestra cómo toouse Hola Media Services .NET SDK tooaccomplish Hola tarea de codificación.</span><span class="sxs-lookup"><span data-stu-id="93b49-107">At hello end of hello topic, there is a [sample code](#code_sample) that shows how toouse hello Media Services .NET SDK tooaccomplish hello encoding task.</span></span>
 
-<span data-ttu-id="bf023-108">Para más detalles sobre los elementos que se usan en los valores preestablecidos de ejemplo, consulte [Esquema de Media Encoder Standard](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="bf023-108">For more details on the elements that are used in sample presets, you should review [Media Encoder Standard schema](media-services-mes-schema.md).</span></span>
+<span data-ttu-id="93b49-108">Para obtener más detalles sobre elementos de Hola que se usan en los valores preestablecidos de ejemplo, debe revisar [Media Encoder estándar esquema](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="93b49-108">For more details on hello elements that are used in sample presets, you should review [Media Encoder Standard schema](media-services-mes-schema.md).</span></span>
 
-<span data-ttu-id="bf023-109">Asegúrese de revisar la sección [Consideraciones](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) .</span><span class="sxs-lookup"><span data-stu-id="bf023-109">Make sure to review the [Considerations](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) section.</span></span>
+<span data-ttu-id="93b49-109">Realizar seguro hello tooreview [consideraciones](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) sección.</span><span class="sxs-lookup"><span data-stu-id="93b49-109">Make sure tooreview hello [Considerations](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) section.</span></span>
 
-## <a name="example--single-png-file"></a><span data-ttu-id="bf023-110">Ejemplo: archivo PNG único</span><span class="sxs-lookup"><span data-stu-id="bf023-110">Example – single PNG file</span></span>
+## <a name="example--single-png-file"></a><span data-ttu-id="93b49-110">Ejemplo: archivo PNG único</span><span class="sxs-lookup"><span data-stu-id="93b49-110">Example – single PNG file</span></span>
 
-<span data-ttu-id="bf023-111">El siguiente valor preestablecido en código JSON y XML puede usarse para generar un único archivo PNG de salida fuera de los primeros segundos de la entrada de vídeo, donde el codificador realiza un intento de mejor esfuerzo para buscar un marco "interesante".</span><span class="sxs-lookup"><span data-stu-id="bf023-111">The following JSON and XML preset can be used to produce a single output PNG file out of the first few seconds of the input video, where the encoder makes a best-effort attempt at finding an “interesting” frame.</span></span> <span data-ttu-id="bf023-112">Tenga en cuenta que las dimensiones de la imagen de salida se han establecido en 100%, lo que significa que se corresponderán con las dimensiones de la entrada de vídeo.</span><span class="sxs-lookup"><span data-stu-id="bf023-112">Note that the output image dimensions have been set to 100%, meaning these will match the dimensions of the input video.</span></span> <span data-ttu-id="bf023-113">Tenga en cuenta también que es necesaria la configuración de "Format" en "Outputs" para que coincida con el uso de "PngLayers" en la sección "Codecs".</span><span class="sxs-lookup"><span data-stu-id="bf023-113">Note also how the “Format” setting in “Outputs” is required to match the use of “PngLayers” in the “Codecs” section.</span></span> 
+<span data-ttu-id="93b49-111">Hola después de JSON y valor preestablecido XML puede ser tooproduce usa una única salida PNG archivo fuera de hello primero algunos segundos de vídeo de entrada de hello, donde codificador Hola hace un intento de mejor esfuerzo en búsqueda de un marco "interesante".</span><span class="sxs-lookup"><span data-stu-id="93b49-111">hello following JSON and XML preset can be used tooproduce a single output PNG file out of hello first few seconds of hello input video, where hello encoder makes a best-effort attempt at finding an “interesting” frame.</span></span> <span data-ttu-id="93b49-112">Tenga en cuenta que se han establecido Hola dimensiones de la imagen de salida too100%, lo que significa que estos coincidirá con dimensiones de Hola de vídeo de entrada de Hola.</span><span class="sxs-lookup"><span data-stu-id="93b49-112">Note that hello output image dimensions have been set too100%, meaning these will match hello dimensions of hello input video.</span></span> <span data-ttu-id="93b49-113">Tenga en cuenta también cómo se requiere la configuración de "Format" Hola "Salidas" uso de hello toomatch de "PngLayers" en la sección de "Códecs" Hola.</span><span class="sxs-lookup"><span data-stu-id="93b49-113">Note also how hello “Format” setting in “Outputs” is required toomatch hello use of “PngLayers” in hello “Codecs” section.</span></span> 
 
-### <a name="json-preset"></a><span data-ttu-id="bf023-114">Valor preestablecido JSON</span><span class="sxs-lookup"><span data-stu-id="bf023-114">JSON preset</span></span>
+### <a name="json-preset"></a><span data-ttu-id="93b49-114">Valor preestablecido JSON</span><span class="sxs-lookup"><span data-stu-id="93b49-114">JSON preset</span></span>
 
     {
       "Version": 1.0,
@@ -59,7 +59,7 @@ ms.lasthandoff: 08/29/2017
       ]
     }
     
-### <a name="xml-preset"></a><span data-ttu-id="bf023-115">Valor preestablecido XML</span><span class="sxs-lookup"><span data-stu-id="bf023-115">XML preset</span></span>
+### <a name="xml-preset"></a><span data-ttu-id="93b49-115">Valor preestablecido XML</span><span class="sxs-lookup"><span data-stu-id="93b49-115">XML preset</span></span>
 
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -80,11 +80,11 @@ ms.lasthandoff: 08/29/2017
       </Outputs>
     </Preset>
 
-## <a name="example--a-series-of-jpeg-images"></a><span data-ttu-id="bf023-116">Ejemplo: una serie de imágenes JPEG</span><span class="sxs-lookup"><span data-stu-id="bf023-116">Example – a series of JPEG images</span></span>
+## <a name="example--a-series-of-jpeg-images"></a><span data-ttu-id="93b49-116">Ejemplo: una serie de imágenes JPEG</span><span class="sxs-lookup"><span data-stu-id="93b49-116">Example – a series of JPEG images</span></span>
 
-<span data-ttu-id="bf023-117">El siguiente valor preestablecido en código JSON y XML puede usarse para generar un conjunto de 10 imágenes en marcas de tiempo de 5%, 15%,..., el 95% de la escala de tiempo de entrada y donde se especifica que el tamaño de la imagen sea un cuarto del tamaño de la entrada de vídeo.</span><span class="sxs-lookup"><span data-stu-id="bf023-117">The following JSON and XML preset can be used to produce a set of 10 images at timestamps of 5%, 15%, …, 95% of the input timeline, where the image size is specified to be one quarter that of the input video.</span></span>
+<span data-ttu-id="93b49-117">Hola después de JSON y valor preestablecido XML puede ser tooproduce usa un conjunto de 10 imágenes en las marcas de tiempo del 5%, 15%,..., el 95% de la escala de tiempo de entrada hello, donde el tamaño de imagen de Hola es toobe especificado un cuarto que de hello una entrada de vídeo.</span><span class="sxs-lookup"><span data-stu-id="93b49-117">hello following JSON and XML preset can be used tooproduce a set of 10 images at timestamps of 5%, 15%, …, 95% of hello input timeline, where hello image size is specified toobe one quarter that of hello input video.</span></span>
 
-### <a name="json-preset"></a><span data-ttu-id="bf023-118">Valor preestablecido JSON</span><span class="sxs-lookup"><span data-stu-id="bf023-118">JSON preset</span></span>
+### <a name="json-preset"></a><span data-ttu-id="93b49-118">Valor preestablecido JSON</span><span class="sxs-lookup"><span data-stu-id="93b49-118">JSON preset</span></span>
 
     {
       "Version": 1.0,
@@ -114,7 +114,7 @@ ms.lasthandoff: 08/29/2017
       ]
     }
 
-### <a name="xml-preset"></a><span data-ttu-id="bf023-119">Valor preestablecido XML</span><span class="sxs-lookup"><span data-stu-id="bf023-119">XML preset</span></span>
+### <a name="xml-preset"></a><span data-ttu-id="93b49-119">Valor preestablecido XML</span><span class="sxs-lookup"><span data-stu-id="93b49-119">XML preset</span></span>
     
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -136,11 +136,11 @@ ms.lasthandoff: 08/29/2017
       </Outputs>
     </Preset>
 
-## <a name="example--one-image-at-a-specific-timestamp"></a><span data-ttu-id="bf023-120">Ejemplo: una imagen en una marca de tiempo específica</span><span class="sxs-lookup"><span data-stu-id="bf023-120">Example – one image at a specific timestamp</span></span>
+## <a name="example--one-image-at-a-specific-timestamp"></a><span data-ttu-id="93b49-120">Ejemplo: una imagen en una marca de tiempo específica</span><span class="sxs-lookup"><span data-stu-id="93b49-120">Example – one image at a specific timestamp</span></span>
 
-<span data-ttu-id="bf023-121">El siguiente valor preestablecido en código JSON y XML puede usarse para generar una única imagen JPEG en la marca de 30 segundos de la entrada de vídeo.</span><span class="sxs-lookup"><span data-stu-id="bf023-121">The following JSON and XML preset can be used to produce a single JPEG image at the 30 second mark of the input video.</span></span> <span data-ttu-id="bf023-122">Este valor preestablecido espera que la entrada sea más de 30 segundos de duración (de lo contrario el trabajo producirá un error).</span><span class="sxs-lookup"><span data-stu-id="bf023-122">This preset expects the input to be more than 30 seconds in duration (else the job will fail).</span></span>
+<span data-ttu-id="93b49-121">Hola siguiente valor preestablecido de JSON y XML puede ser utilizado tooproduce marca de 30 segundos de una sola imagen JPEG en Hola de vídeo de entrada de Hola.</span><span class="sxs-lookup"><span data-stu-id="93b49-121">hello following JSON and XML preset can be used tooproduce a single JPEG image at hello 30 second mark of hello input video.</span></span> <span data-ttu-id="93b49-122">Este valor preestablecido espera Hola entrada toobe más de 30 segundos de duración (trabajo de hello else se producirá un error).</span><span class="sxs-lookup"><span data-stu-id="93b49-122">This preset expects hello input toobe more than 30 seconds in duration (else hello job will fail).</span></span>
 
-### <a name="json-preset"></a><span data-ttu-id="bf023-123">Valor preestablecido JSON</span><span class="sxs-lookup"><span data-stu-id="bf023-123">JSON preset</span></span>
+### <a name="json-preset"></a><span data-ttu-id="93b49-123">Valor preestablecido JSON</span><span class="sxs-lookup"><span data-stu-id="93b49-123">JSON preset</span></span>
 
     {
       "Version": 1.0,
@@ -170,7 +170,7 @@ ms.lasthandoff: 08/29/2017
       ]
     }
     
-### <a name="xml-preset"></a><span data-ttu-id="bf023-124">Valor preestablecido XML</span><span class="sxs-lookup"><span data-stu-id="bf023-124">XML preset</span></span>
+### <a name="xml-preset"></a><span data-ttu-id="93b49-124">Valor preestablecido XML</span><span class="sxs-lookup"><span data-stu-id="93b49-124">XML preset</span></span>
     
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -192,23 +192,23 @@ ms.lasthandoff: 08/29/2017
       </Outputs>
     </Preset>
 
-## <span data-ttu-id="bf023-125"><a id="code_sample"></a>Ejemplo: codificar vídeo y generar miniatura</span><span class="sxs-lookup"><span data-stu-id="bf023-125"><a id="code_sample"></a>Example – encode video and generate thumbnail</span></span>
+## <span data-ttu-id="93b49-125"><a id="code_sample"></a>Ejemplo: codificar vídeo y generar miniatura</span><span class="sxs-lookup"><span data-stu-id="93b49-125"><a id="code_sample"></a>Example – encode video and generate thumbnail</span></span>
 
-<span data-ttu-id="bf023-126">En el ejemplo de código siguiente se usa el último SDK para .NET de Servicios multimedia para realizar las siguientes tareas:</span><span class="sxs-lookup"><span data-stu-id="bf023-126">The following code example uses Media Services .NET SDK to perform the following tasks:</span></span>
+<span data-ttu-id="93b49-126">Hola el ejemplo de código siguiente utiliza Hola de Media Services .NET SDK tooperform siguiente las tareas:</span><span class="sxs-lookup"><span data-stu-id="93b49-126">hello following code example uses Media Services .NET SDK tooperform hello following tasks:</span></span>
 
-* <span data-ttu-id="bf023-127">Crear un trabajo de codificación.</span><span class="sxs-lookup"><span data-stu-id="bf023-127">Create an encoding job.</span></span>
-* <span data-ttu-id="bf023-128">Obtener una referencia al codificador Codificador multimedia estándar.</span><span class="sxs-lookup"><span data-stu-id="bf023-128">Get a reference to the Media Encoder Standard encoder.</span></span>
-* <span data-ttu-id="bf023-129">Cargue el valor preestablecido [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) o [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) que contiene los valores preestablecidos de codificación, así como la información necesaria para generar vistas en miniatura.</span><span class="sxs-lookup"><span data-stu-id="bf023-129">Load the preset [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) or [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) that contain the encoding preset as well as information needed to generate thumbnails.</span></span> <span data-ttu-id="bf023-130">Puede guardar este  [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) o [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) en un archivo y usar el siguiente código para cargar el archivo.</span><span class="sxs-lookup"><span data-stu-id="bf023-130">You can save this  [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) or [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) in a file and use the following code to load the file.</span></span>
+* <span data-ttu-id="93b49-127">Crear un trabajo de codificación.</span><span class="sxs-lookup"><span data-stu-id="93b49-127">Create an encoding job.</span></span>
+* <span data-ttu-id="93b49-128">Obtiene un Codificador multimedia codificador estándar toohello de referencia.</span><span class="sxs-lookup"><span data-stu-id="93b49-128">Get a reference toohello Media Encoder Standard encoder.</span></span>
+* <span data-ttu-id="93b49-129">Valor preestablecido Hola carga [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) o [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) que contienen Hola codificación preestablecido, así como información necesaria toogenerate miniaturas.</span><span class="sxs-lookup"><span data-stu-id="93b49-129">Load hello preset [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) or [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) that contain hello encoding preset as well as information needed toogenerate thumbnails.</span></span> <span data-ttu-id="93b49-130">Puede guardar esta [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) o [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) un Hola de archivo y use el archivo de código tooload Hola siguiente.</span><span class="sxs-lookup"><span data-stu-id="93b49-130">You can save this  [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) or [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) in a file and use hello following code tooload hello file.</span></span>
   
-        // Load the XML (or JSON) from the local file.
+        // Load hello XML (or JSON) from hello local file.
         string configuration = File.ReadAllText(fileName);  
-* <span data-ttu-id="bf023-131">Agregar una única tarea de codificación al trabajo.</span><span class="sxs-lookup"><span data-stu-id="bf023-131">Add a single encoding task to the job.</span></span> 
-* <span data-ttu-id="bf023-132">Especificar el recurso de entrada que se va a codificar.</span><span class="sxs-lookup"><span data-stu-id="bf023-132">Specify the input asset to be encoded.</span></span>
-* <span data-ttu-id="bf023-133">Crear un recurso de salida que contendrá el recurso codificado.</span><span class="sxs-lookup"><span data-stu-id="bf023-133">Create an output asset that will contain the encoded asset.</span></span>
-* <span data-ttu-id="bf023-134">Agregar un controlador de eventos para comprobar el progreso del trabajo.</span><span class="sxs-lookup"><span data-stu-id="bf023-134">Add an event handler to check the job progress.</span></span>
-* <span data-ttu-id="bf023-135">Envíe el trabajo.</span><span class="sxs-lookup"><span data-stu-id="bf023-135">Submit the job.</span></span>
+* <span data-ttu-id="93b49-131">Agregar un único trabajo de codificación tarea toohello.</span><span class="sxs-lookup"><span data-stu-id="93b49-131">Add a single encoding task toohello job.</span></span> 
+* <span data-ttu-id="93b49-132">Especificar la entrada de hello toobe activo codificado.</span><span class="sxs-lookup"><span data-stu-id="93b49-132">Specify hello input asset toobe encoded.</span></span>
+* <span data-ttu-id="93b49-133">Crear un recurso de salida que contendrá asset Hola codificado.</span><span class="sxs-lookup"><span data-stu-id="93b49-133">Create an output asset that will contain hello encoded asset.</span></span>
+* <span data-ttu-id="93b49-134">Agregue un progreso del controlador de eventos toocheck Hola trabajo.</span><span class="sxs-lookup"><span data-stu-id="93b49-134">Add an event handler toocheck hello job progress.</span></span>
+* <span data-ttu-id="93b49-135">Enviar el trabajo de Hola.</span><span class="sxs-lookup"><span data-stu-id="93b49-135">Submit hello job.</span></span>
 
-<span data-ttu-id="bf023-136">Consulte el tema [Desarrollo en Media Services con .NET](media-services-dotnet-how-to-use.md) para obtener instrucciones acerca de cómo configurar el entorno de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="bf023-136">See the [Media Services development with .NET](media-services-dotnet-how-to-use.md) topic for directions on how to set up your dev environment.</span></span>
+<span data-ttu-id="93b49-136">Vea hello [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md) tema para obtener instrucciones acerca de cómo tooset del entorno de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="93b49-136">See hello [Media Services development with .NET](media-services-dotnet-how-to-use.md) topic for directions on how tooset up your dev environment.</span></span>
 
         using System;
         using System.Configuration;
@@ -221,7 +221,7 @@ ms.lasthandoff: 08/29/2017
         {
         class Program
         {
-            // Read values from the App.config file.
+            // Read values from hello App.config file.
             private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -245,7 +245,7 @@ ms.lasthandoff: 08/29/2017
             // Get an uploaded asset.
             var asset = _context.Assets.FirstOrDefault();
 
-            // Encode and generate the thumbnails.
+            // Encode and generate hello thumbnails.
             EncodeToAdaptiveBitrateMP4Set(asset);
 
             Console.ReadLine();
@@ -255,11 +255,11 @@ ms.lasthandoff: 08/29/2017
             {
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-            // Get a media processor reference, and pass to it the name of the 
-            // processor to use for the specific task.
+            // Get a media processor reference, and pass tooit hello name of hello 
+            // processor toouse for hello specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-            // Load the XML (or JSON) from the local file.
+            // Load hello XML (or JSON) from hello local file.
             string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
 
             // Create a task
@@ -268,11 +268,11 @@ ms.lasthandoff: 08/29/2017
                 configuration,
                 TaskOptions.None);
 
-            // Specify the input asset to be encoded.
+            // Specify hello input asset toobe encoded.
             task.InputAssets.Add(asset);
-            // Add an output asset to contain the results of the job. 
+            // Add an output asset toocontain hello results of hello job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means the output asset is not encrypted. 
+            // means hello output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset",
                 AssetCreationOptions.None);
 
@@ -326,8 +326,8 @@ ms.lasthandoff: 08/29/2017
         }
         }
 
-## <span data-ttu-id="bf023-137"><a id="json"></a>Valor preestablecido JSON de miniatura</span><span class="sxs-lookup"><span data-stu-id="bf023-137"><a id="json"></a>Thumbnail JSON preset</span></span>
-<span data-ttu-id="bf023-138">Para obtener información sobre el esquema, consulte [este](https://msdn.microsoft.com/library/mt269962.aspx) tema.</span><span class="sxs-lookup"><span data-stu-id="bf023-138">For information about schema, see [this](https://msdn.microsoft.com/library/mt269962.aspx) topic.</span></span>
+## <span data-ttu-id="93b49-137"><a id="json"></a>Valor preestablecido JSON de miniatura</span><span class="sxs-lookup"><span data-stu-id="93b49-137"><a id="json"></a>Thumbnail JSON preset</span></span>
+<span data-ttu-id="93b49-138">Para obtener información sobre el esquema, consulte [este](https://msdn.microsoft.com/library/mt269962.aspx) tema.</span><span class="sxs-lookup"><span data-stu-id="93b49-138">For information about schema, see [this](https://msdn.microsoft.com/library/mt269962.aspx) topic.</span></span>
 
     {
       "Version": 1.0,
@@ -389,8 +389,8 @@ ms.lasthandoff: 08/29/2017
       ]
     }
 
-## <span data-ttu-id="bf023-139"><a id="xml"></a>Valor preestablecido XML de miniatura</span><span class="sxs-lookup"><span data-stu-id="bf023-139"><a id="xml"></a>Thumbnail XML preset</span></span>
-<span data-ttu-id="bf023-140">Para obtener información sobre el esquema, consulte [este](https://msdn.microsoft.com/library/mt269962.aspx) tema.</span><span class="sxs-lookup"><span data-stu-id="bf023-140">For information about schema, see [this](https://msdn.microsoft.com/library/mt269962.aspx) topic.</span></span>
+## <span data-ttu-id="93b49-139"><a id="xml"></a>Valor preestablecido XML de miniatura</span><span class="sxs-lookup"><span data-stu-id="93b49-139"><a id="xml"></a>Thumbnail XML preset</span></span>
+<span data-ttu-id="93b49-140">Para obtener información sobre el esquema, consulte [este](https://msdn.microsoft.com/library/mt269962.aspx) tema.</span><span class="sxs-lookup"><span data-stu-id="93b49-140">For information about schema, see [this](https://msdn.microsoft.com/library/mt269962.aspx) topic.</span></span>
     
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -442,32 +442,32 @@ ms.lasthandoff: 08/29/2017
       </Outputs>
     </Preset>
 
-## <a name="considerations"></a><span data-ttu-id="bf023-141">Consideraciones</span><span class="sxs-lookup"><span data-stu-id="bf023-141">Considerations</span></span>
-<span data-ttu-id="bf023-142">Se aplican las siguientes consideraciones:</span><span class="sxs-lookup"><span data-stu-id="bf023-142">The following considerations apply:</span></span>
+## <a name="considerations"></a><span data-ttu-id="93b49-141">Consideraciones</span><span class="sxs-lookup"><span data-stu-id="93b49-141">Considerations</span></span>
+<span data-ttu-id="93b49-142">Hola siguientes consideraciones se aplica:</span><span class="sxs-lookup"><span data-stu-id="93b49-142">hello following considerations apply:</span></span>
 
-* <span data-ttu-id="bf023-143">El uso de marcas de tiempo explícitas para inicio/paso/intervalo asume que el origen de la entrada tiene al menos 1 minuto de duración.</span><span class="sxs-lookup"><span data-stu-id="bf023-143">The use of explicit timestamps for Start/Step/Range assumes that the input source is at least 1 minute long.</span></span>
-* <span data-ttu-id="bf023-144">Los elementos Jpg/Png/BmpImage tienen atributos de cadena Start, Step y Range, que se pueden interpretar como:</span><span class="sxs-lookup"><span data-stu-id="bf023-144">Jpg/Png/BmpImage elements have Start, Step and Range string attributes – these can be interpreted as:</span></span>
+* <span data-ttu-id="93b49-143">uso de Hola de marcas de tiempo explícito para el inicio/paso/intervalo supone que ese origen de entrada de hello es larga de 1 minuto como mínimo.</span><span class="sxs-lookup"><span data-stu-id="93b49-143">hello use of explicit timestamps for Start/Step/Range assumes that hello input source is at least 1 minute long.</span></span>
+* <span data-ttu-id="93b49-144">Los elementos Jpg/Png/BmpImage tienen atributos de cadena Start, Step y Range, que se pueden interpretar como:</span><span class="sxs-lookup"><span data-stu-id="93b49-144">Jpg/Png/BmpImage elements have Start, Step and Range string attributes – these can be interpreted as:</span></span>
   
-  * <span data-ttu-id="bf023-145">Número de marco si son enteros no negativos, por ejemplo,</span><span class="sxs-lookup"><span data-stu-id="bf023-145">Frame Number if they are non-negative integers, eg.</span></span> <span data-ttu-id="bf023-146">"Start": "120",</span><span class="sxs-lookup"><span data-stu-id="bf023-146">"Start": "120",</span></span>
-  * <span data-ttu-id="bf023-147">Relativos a la duración de origen si se expresan como sufijo de %, por ejemplo,</span><span class="sxs-lookup"><span data-stu-id="bf023-147">Relative to source duration if expressed as %-suffixed, eg.</span></span> <span data-ttu-id="bf023-148">"Start": "15%", O</span><span class="sxs-lookup"><span data-stu-id="bf023-148">"Start": "15%", OR</span></span>
-  * <span data-ttu-id="bf023-149">Marca de tiempo si se</span><span class="sxs-lookup"><span data-stu-id="bf023-149">Timestamp if expressed as HH:MM:SS…</span></span> <span data-ttu-id="bf023-150">expresa como formato HH:MM:SS…</span><span class="sxs-lookup"><span data-stu-id="bf023-150">format.</span></span> <span data-ttu-id="bf023-151">P. ej.</span><span class="sxs-lookup"><span data-stu-id="bf023-151">Eg.</span></span> <span data-ttu-id="bf023-152">"Start" : "00:01:00"</span><span class="sxs-lookup"><span data-stu-id="bf023-152">"Start" : "00:01:00"</span></span>
+  * <span data-ttu-id="93b49-145">Número de marco si son enteros no negativos, por ejemplo,</span><span class="sxs-lookup"><span data-stu-id="93b49-145">Frame Number if they are non-negative integers, eg.</span></span> <span data-ttu-id="93b49-146">"Start": "120",</span><span class="sxs-lookup"><span data-stu-id="93b49-146">"Start": "120",</span></span>
+  * <span data-ttu-id="93b49-147">Duración de toosource relativa si expresado como sufijo de %, p. ej.</span><span class="sxs-lookup"><span data-stu-id="93b49-147">Relative toosource duration if expressed as %-suffixed, eg.</span></span> <span data-ttu-id="93b49-148">"Start": "15%", O</span><span class="sxs-lookup"><span data-stu-id="93b49-148">"Start": "15%", OR</span></span>
+  * <span data-ttu-id="93b49-149">Marca de tiempo si se</span><span class="sxs-lookup"><span data-stu-id="93b49-149">Timestamp if expressed as HH:MM:SS…</span></span> <span data-ttu-id="93b49-150">expresa como formato HH:MM:SS…</span><span class="sxs-lookup"><span data-stu-id="93b49-150">format.</span></span> <span data-ttu-id="93b49-151">P. ej.</span><span class="sxs-lookup"><span data-stu-id="93b49-151">Eg.</span></span> <span data-ttu-id="93b49-152">"Start" : "00:01:00"</span><span class="sxs-lookup"><span data-stu-id="93b49-152">"Start" : "00:01:00"</span></span>
     
-    <span data-ttu-id="bf023-153">Puede mezclar y hacer coincidir notaciones a su conveniencia.</span><span class="sxs-lookup"><span data-stu-id="bf023-153">You can mix and match notations as you please.</span></span>
+    <span data-ttu-id="93b49-153">Puede mezclar y hacer coincidir notaciones a su conveniencia.</span><span class="sxs-lookup"><span data-stu-id="93b49-153">You can mix and match notations as you please.</span></span>
     
-    <span data-ttu-id="bf023-154">Además, Start también admite una macro especial:{Best}, que intenta determinar el primer marco "interesante" del contenido. NOTA: (Step y Range se omiten cuando Start se establece en {Best}).</span><span class="sxs-lookup"><span data-stu-id="bf023-154">Additionally, Start also supports a special Macro:{Best}, which attempts to determine the first “interesting” frame of the content NOTE: (Step and Range are ignored when Start is set to {Best})</span></span>
-  * <span data-ttu-id="bf023-155">Valores predeterminados: Start:{Best}</span><span class="sxs-lookup"><span data-stu-id="bf023-155">Defaults: Start:{Best}</span></span>
-* <span data-ttu-id="bf023-156">Es necesario proporcionar explícitamente el formato de salida para cada formato de imagen: Jpg, Png o BmpFormat.</span><span class="sxs-lookup"><span data-stu-id="bf023-156">Output format needs to be explicitly provided for each Image format: Jpg/Png/BmpFormat.</span></span> <span data-ttu-id="bf023-157">Cuando está presente, MES hará coincidir JpgVideo con JpgFormat y así sucesivamente.</span><span class="sxs-lookup"><span data-stu-id="bf023-157">When present, MES will match JpgVideo to JpgFormat and so on.</span></span> <span data-ttu-id="bf023-158">OutputFormat presenta una nueva macro específica de códec de imagen: {Index}, que debe estar presente (una vez y sólo una vez) para formatos de salida de imagen.</span><span class="sxs-lookup"><span data-stu-id="bf023-158">OutputFormat introduces a new image-codec specific Macro: {Index}, which needs to be present (once and only once) for image output formats.</span></span>
+    <span data-ttu-id="93b49-154">Además, inicio también admite una Macro especial: {recomendados}, que intenta toodetermine Hola primer "interesante" marco de contenido de hello Nota: (paso y el intervalo se omiten al inicio se establece demasiado {mejor})</span><span class="sxs-lookup"><span data-stu-id="93b49-154">Additionally, Start also supports a special Macro:{Best}, which attempts toodetermine hello first “interesting” frame of hello content NOTE: (Step and Range are ignored when Start is set too{Best})</span></span>
+  * <span data-ttu-id="93b49-155">Valores predeterminados: Start:{Best}</span><span class="sxs-lookup"><span data-stu-id="93b49-155">Defaults: Start:{Best}</span></span>
+* <span data-ttu-id="93b49-156">Formato de salida debe toobe indicado de forma explícita para cada formato de imagen: Jpg o Png/BmpFormat.</span><span class="sxs-lookup"><span data-stu-id="93b49-156">Output format needs toobe explicitly provided for each Image format: Jpg/Png/BmpFormat.</span></span> <span data-ttu-id="93b49-157">Cuando está presente, MES coincidirá JpgVideo tooJpgFormat y así sucesivamente.</span><span class="sxs-lookup"><span data-stu-id="93b49-157">When present, MES will match JpgVideo tooJpgFormat and so on.</span></span> <span data-ttu-id="93b49-158">OutputFormat presenta una nueva Macro específica de códecs de imagen: {Index}, que necesita toobe presente (una vez y solo una vez) para formatos de salida de imagen.</span><span class="sxs-lookup"><span data-stu-id="93b49-158">OutputFormat introduces a new image-codec specific Macro: {Index}, which needs toobe present (once and only once) for image output formats.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="bf023-159">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="bf023-159">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="93b49-159">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="93b49-159">Next steps</span></span>
 
-<span data-ttu-id="bf023-160">Puede comprobar el [progreso del trabajo](media-services-check-job-progress.md) mientras el trabajo de codificación está pendiente.</span><span class="sxs-lookup"><span data-stu-id="bf023-160">You can check the [job progress](media-services-check-job-progress.md) while the encoding job is pending.</span></span>
+<span data-ttu-id="93b49-160">Puede comprobar hello [progreso del trabajo](media-services-check-job-progress.md) al Hola trabajo de codificación está pendiente.</span><span class="sxs-lookup"><span data-stu-id="93b49-160">You can check hello [job progress](media-services-check-job-progress.md) while hello encoding job is pending.</span></span>
 
-## <a name="media-services-learning-paths"></a><span data-ttu-id="bf023-161">Rutas de aprendizaje de Servicios multimedia</span><span class="sxs-lookup"><span data-stu-id="bf023-161">Media Services learning paths</span></span>
+## <a name="media-services-learning-paths"></a><span data-ttu-id="93b49-161">Rutas de aprendizaje de Servicios multimedia</span><span class="sxs-lookup"><span data-stu-id="93b49-161">Media Services learning paths</span></span>
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="bf023-162">Envío de comentarios</span><span class="sxs-lookup"><span data-stu-id="bf023-162">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="93b49-162">Envío de comentarios</span><span class="sxs-lookup"><span data-stu-id="93b49-162">Provide feedback</span></span>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a><span data-ttu-id="bf023-163">Otras referencias</span><span class="sxs-lookup"><span data-stu-id="bf023-163">See Also</span></span>
-[<span data-ttu-id="bf023-164">Información general sobre la codificación de Servicios multimedia</span><span class="sxs-lookup"><span data-stu-id="bf023-164">Media Services Encoding Overview</span></span>](media-services-encode-asset.md)
+## <a name="see-also"></a><span data-ttu-id="93b49-163">Otras referencias</span><span class="sxs-lookup"><span data-stu-id="93b49-163">See Also</span></span>
+[<span data-ttu-id="93b49-164">Información general sobre la codificación de Servicios multimedia</span><span class="sxs-lookup"><span data-stu-id="93b49-164">Media Services Encoding Overview</span></span>](media-services-encode-asset.md)
 
