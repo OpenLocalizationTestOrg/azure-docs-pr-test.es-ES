@@ -1,5 +1,5 @@
 ---
-title: "Integración de Application Gateway con Azure Security Center | Microsoft Docs"
+title: "aaaApplication integración de puerta de enlace con el centro de seguridad de Azure | Documentos de Microsoft"
 description: "Esta página proporciona información sobre cómo se integra Application Gateway en Azure Security Center."
 documentationcenter: na
 services: application-gateway
@@ -15,73 +15,73 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: gwallace
-ms.openlocfilehash: 737cdff3140be68cf9d6d396b470dd09c65c52f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f6ace105e84c01f525ab02938e81ce040c5c9d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Introducción a la integración entre Application Gateway y Azure Security Center
 
-Conozca más información acerca de cómo Application Gateway y Security Center le ayudan a proteger los recursos de la aplicación web. El firewall de la aplicación web (WAF) de Application Gateway se integra con [Security Center](../security-center/security-center-intro.md) para proporcionar una vista integrada que evite, detecte y responda a las amenazas a las aplicaciones web no protegidas de su entorno.
+Conozca más información acerca de cómo Application Gateway y Security Center le ayudan a proteger los recursos de la aplicación web. Servidor de aplicaciones web de aplicación puerta de enlace (WAFS) se integra con [centro de seguridad](../security-center/security-center-intro.md) tooprovide un tooprevent vista integrada, detectar y responder a las aplicaciones web de toothreats toounprotected en su entorno.
 
 ## <a name="overview"></a>Información general
 
-El WAF de Application Gateway es una recomendación de Security Center para proteger las aplicaciones web frente a ataques y vulnerabilidades. Los recursos con conexión que no están protegidos con WAF aparecen en Security Center como recomendaciones de gravedad alta. Las recomendaciones para los firewalls de aplicaciones web aparecen en la página **Introducción**, en **Aplicaciones**.
+El WAF de Application Gateway es una recomendación de Security Center para proteger las aplicaciones web frente a ataques y vulnerabilidades. Recursos de Web habilitado que no están protegidos por WAFS se muestran en el centro de seguridad de hello como recomendaciones de gravedad alta. Recomendaciones para los firewalls de aplicación web se muestran en hello **Introducción** página, en **aplicaciones**.
 
 ![integración con security center][1]
 
-Al hacer clic en las recomendaciones sobre el firewall de aplicación web se abre una nueva hoja que muestra los detalles de la recomendación.
+Al pulsar ninguna recomendación relacionada con el servidor de aplicaciones web, abre una nueva hoja muestra los detalles de saludo de la recomendación de Hola.
 
-## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Adición del firewall de aplicaciones web a un recurso existente
+## <a name="add-a-web-application-firewall-tooan-existing-resource"></a>Agregar un recurso web de aplicación firewall tooan existente
 
-Vaya a **Más servicios** > **Seguridad e identidad** > **Security Center** y en la hoja **Security Center - Información general**, haga clic en **Aplicaciones**. En la hoja **Security Center - Aplicaciones**, la tabla contiene una lista de las aplicaciones que Security Center ha detectado en su suscripción.
+Navegue demasiado**más servicios** > **seguridad e identidad** > **centro de seguridad** y en hello **centro de seguridad - información general**  hoja, haga clic en **aplicaciones**. En hello **centro de seguridad - aplicaciones** hoja, tabla de hello contiene una lista de aplicaciones que el centro de seguridad ha detectado en su suscripción.
 
 ![aplicaciones web][3]
 
-Al hacer clic en una aplicación web con un problema crítico, aparecerá la hoja **Estado de seguridad de la aplicación**. En la imagen siguiente, se ve la aplicación web que no está protegida por un firewall de aplicaciones web. 
+Al hacer clic en una aplicación web con un problema crítico, obtendrá hello **estado de seguridad de la aplicación** hoja. En la imagen de hello siguiente, Hola aplicación web que no está protegido por un servidor de seguridad de la aplicación web. 
 
 ![recursos web no protegidos][2]
 
-Haga clic en **Agregar un firewall de aplicaciones web** en **Recomendaciones** para que se abra la hoja **Agregar un firewall de aplicaciones web**.
+Haga clic en **agregar un servidor de seguridad de la aplicación web** en **recomendaciones** tooopen hello **agregar un servidor de seguridad de la aplicación Web** hoja.
 
-Si no tiene una instancia de Application Gateway existente o quiere crear una nueva, haga clic en **Crear nuevo** y en la hoja **Create a new Web Application Firewall** (Crear un nuevo firewall de aplicaciones web) y haga clic en **Microsoft - Application Gateway**. Esto le guiará por los pasos para crear una instancia de Application Gateway. En este punto, la aplicación web se agrega como un recurso protegido y Security Center realiza un seguimiento para asegurarse de que este recurso está protegido por un firewall de aplicaciones web. No se agrega como miembro del grupo de back-end.
+Si no tiene una puerta de enlace de la aplicación existente, o desea toocreate uno nuevo, haga clic en **crear nuevo** y en hello **crear un nuevo servidor de aplicaciones Web** hoja y haga clic en **Microsoft: Puerta de enlace de aplicaciones**. Esto le llevará a través de hello pasos toocreate una puerta de enlace de la aplicación. En este punto, la aplicación web se agrega como un recurso protegido y Security Center realiza un seguimiento para asegurarse de que este recurso está protegido por un firewall de aplicaciones web. No se agrega como miembro del grupo de back-end.
 
 Si ya tiene una instancia de Application Gateway, puede elegirla en **Usar solución existente**
 
 ![hoja de adición de firewall de aplicaciones web][4]
 
-La adición de una aplicación web a una instancia de Application Gateway a través de Security Center no agrega el recurso como miembro del grupo de back-end. Esto se debe hacer directamente en el recurso de Application Gateway.
+Agregar que una puerta de enlace de web application tooan aplicación a través del centro de seguridad no agrega recursos Hola como un miembro del grupo back-end, debe hacerlo en el recurso de puerta de enlace de aplicación Hola directamente.
 
-## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Adición de un recurso a un firewall de aplicaciones web existente
+## <a name="add-a-resource-tooan-existing-web-application-firewall"></a>Agregar un servidor de aplicaciones de web existente de recursos tooan
 
-Vaya a **Más servicios** > **Seguridad e identidad** > **Security Center** y en la hoja **Security Center - Información general**, haga clic en **Soluciones de asociados**. Las instancias de Application Gateway existentes reconocidas en Security Center aparecen en la hoja **Soluciones de asociados**.
+Navegue demasiado**más servicios** > **seguridad e identidad** > **centro de seguridad** y en hello **centro de seguridad - información general**  hoja, haga clic en **soluciones de asociados**. Puertas de enlace de aplicación compatible con el centro de seguridad existentes se muestran en hello **soluciones de socios** hoja.
 
 ![soluciones de asociados][7]
 
-Haga clic en **Vincular aplicación** para abrir la hoja **Vincular aplicaciones**. Aquí se proporcionan las opciones para seleccionar las aplicaciones existentes. Elija las aplicaciones que desea proteger y haga clic en **Aceptar**. Este procedimiento no agregará la aplicación web al grupo de back-end de la instancia de Application Gateway. Esto establece los recursos como recursos protegidos, por lo que Security Center puede realizar un seguimiento de ellos. Para agregar el recurso como un miembro del grupo de back-end, debe hacerlo en la instancia de Application Gateway. En la hoja actual puede hacer clic en **Consola de soluciones** para ir al recurso de Application Gateway donde podrá agregar la aplicación web al grupo de back-end.
+Haga clic en **aplicación vínculo** tooopen hello **aplicaciones de vínculo** hoja, aquí se proporcionan aplicaciones existentes de hello opciones tooselect. Elija Hola aplicaciones tooprotect y haga clic en **Aceptar**. Este método no agrega grupo hello web aplicación toohello back-end de puerta de enlace de aplicación Hola. Recursos de Hola se establece como un recurso protegido para que el centro de seguridad puede realizar un seguimiento. recurso de hello tooadd como un miembro del grupo back-end, esto debe hacerse en puerta de enlace de aplicación Hola, desde la hoja actual de hello puede hacer clic **consola de solución** toobe realizada toohello de recursos de puerta de enlace de aplicación donde puede agregar web Hola grupo de aplicaciones toohello back-end.
 
 ![aplicaciones de soluciones de asociados][6]
 
 ## <a name="finalize-configuration"></a>Finalización de la configuración
 
-Security Center realiza un seguimiento de las aplicaciones agregadas a una instancia de Application Gateway como recursos protegidos.  Supervisa el estado de este recurso y se asegura de que está protegido mediante una instancia de Application Gateway. El siguiente paso consiste en agregar la dirección IP privada, la dirección IP pública o el NIC de la máquina virtual al grupo de back-end de la instancia de Application Gateway. Hasta que esto se hace, aparece una recomendación adicional de **Finalizar protección de la aplicación** hasta que se agrega el recurso.
+Las aplicaciones de las pistas del centro de seguridad agregan tooan puerta de enlace de aplicaciones como un recurso protegido.  Supervisa el estado de Hola de este recurso y se asegura de que está protegida por una puerta de enlace de la aplicación. Hola siguiente paso es tooadd Hola privada IP, IP pública o NIC de su grupo de back-end de toohello de máquina virtual de puerta de enlace de aplicación Hola. Hasta que esto se hace una recomendación adicional de **finalizar la protección de la aplicación** se muestra hasta que se agregan recursos de Hola.
 
 ![hoja de adición de firewall de aplicaciones web][5]
 
 ## <a name="security-alerts"></a>Alertas de seguridad
 
-En Security Center, vaya a **DETECCIÓN** > **Alertas de seguridad**.  Aquí encontrará las alertas de WAF para las instancias de Application Gateway. Las alertas se desglosan según las reglas de WAF.
+En el centro de seguridad desplazarse demasiado**detección** > **alertas de seguridad**.  Aquí encontrará las alertas de WAF para las instancias de Application Gateway. Las alertas se desglosan según las reglas de WAF.
 
 ![alertas de seguridad][8]
 
-Si hace clic en una regla proporcionará una lista de alertas para esa regla de WAF específica. Cada alerta muestra detalles adicionales sobre la búsqueda. Los detalles de proporcionan un vínculo a la instancia de Application Gateway.
+Si hace clic en una regla proporcionará una lista de alertas para esa regla de WAF específica. Cada alerta muestra detalles adicionales acerca de cómo buscar Hola. detalles de Hello proporcionan una puerta de enlace de aplicaciones de toohello de vínculo.
  
 ![detalles de alertas][9]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para aprender a habilitar un firewall de aplicaciones web en una instancia existente de Application Gateway, visite [Creación o actualización de una instancia de Azure Application Gateway con el firewall de aplicaciones web](application-gateway-web-application-firewall-portal.md#add-web-application-firewall-to-an-existing-application-gateway)
+toolearn cómo tooenable firewall de aplicación web en una puerta de enlace de aplicación existente, visite [crear o actualizar una puerta de enlace de aplicaciones de Azure con firewall de aplicación web](application-gateway-web-application-firewall-portal.md#add-web-application-firewall-to-an-existing-application-gateway)
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

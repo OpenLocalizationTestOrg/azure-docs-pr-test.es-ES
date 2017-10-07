@@ -1,6 +1,6 @@
 ---
-title: "API de REST de búsqueda de registros de Log Analytics | Microsoft Docs"
-description: "Esta guía proporciona un tutorial básico en el que se describe cómo puede usar la API de REST de búsqueda de Log Analytics en Operations Management Suite (OMS) y, además, brinda ejemplos que muestran cómo usar los comandos."
+title: "API de REST de búsqueda de registro del análisis de aaaLog | Documentos de Microsoft"
+description: "Esta guía proporciona un tutorial básico que describe cómo puede utilizar Hola análisis de registros buscar API de REST de hello Operations Management Suite (OMS) y se incluyen ejemplos que muestran cómo comandos de hello toouse."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.openlocfilehash: 78afb2f065dde4a3e7a3ab787c939b3c52b72cc6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dafe5eeb8cc11a339f2cbf78cec657e344d87cac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="log-analytics-log-search-rest-api"></a>API de REST de búsqueda de registros de Log Analytics
-Esta guía proporciona un tutorial básico, incluidos ejemplos, de cómo puede usar la API de REST de búsqueda de Log Analytics. Log Analytics forma parte de Operations Management Suite (OMS).
+Esta guía proporciona un tutorial básico, incluidos ejemplos de cómo puede usar Hola API de REST de búsqueda de análisis de registros. Análisis de registros es parte del programa Hola a Operations Management Suite (OMS).
 
 > [!NOTE]
-> Si el área de trabajo se ha actualizado al [nuevo lenguaje de consulta de Log Analytics](log-analytics-log-search-upgrade.md), debe continuar usando el lenguaje de consulta heredado con la API de búsqueda de registros, según se describe en este artículo.  Se publicará una nueva API para áreas de trabajo actualizadas, y la documentación se actualizará en ese mismo momento. 
+> Si el área de trabajo se ha actualizado toohello [lenguaje de consulta de análisis de registros nueva](log-analytics-log-search-upgrade.md), a continuación, debe seguir el lenguaje de consulta heredado de toouse Hola con API de búsqueda de registro de hello tal como se describe en este artículo.  Se publicará una nueva API para áreas de trabajo actualizados y documentación de Hola se actualizará en ese momento. 
 
 > [!NOTE]
-> Log Analytics se llamaba anteriormente Operational Insights, razón por la cual se utiliza este nombre en el proveedor de recursos.
+> Análisis de registros se llamaba anteriormente visión operativa, motivo por el cual es nombre de hello usado en el proveedor de recursos de Hola.
 >
 >
 
-## <a name="overview-of-the-log-search-rest-api"></a>Información general sobre la API de REST de búsqueda de registros
-La API de REST de búsqueda de Log Analytics es de tipo RESTful y se puede obtener acceso a ella a través de la API de Azure Resource Manager. En este artículo se proporcionan ejemplos de acceso a la API a través de [ARMClient](https://github.com/projectkudu/ARMClient), una herramienta de línea de comandos de código abierto que simplifica la invocación de la API de Azure Resource Manager. El uso de ARMClient es una de las muchas opciones para tener acceso a la API de búsqueda de Log Analytics. Otra opción es utilizar el módulo Azure PowerShell para Operational Insights, que incluye cmdlets para obtener acceso a la búsqueda. Con estas herramientas, puede usar la API de Azure Resource Manager para realizar llamadas a las áreas de trabajo de OMS y ejecutar comandos de búsqueda dentro de ellas. La API genera resultados de búsqueda en formato JSON, lo que le permite usar los resultados de búsqueda de muchas formas distintas mediante programación.
+## <a name="overview-of-hello-log-search-rest-api"></a>Información general de hello API de REST de búsqueda de registros
+Hola API de REST de búsqueda de análisis de registros es RESTful y son accesibles a través de hello API del Administrador de recursos de Azure. Este artículo proporcionan ejemplos de obtener acceso a las API de Hola a través de [ARMClient](https://github.com/projectkudu/ARMClient), una herramienta de línea de comandos de código abierto que simplifica la invocación Hola API del Administrador de recursos de Azure. uso de Hola de ARMClient es una de muchas opciones tooaccess hello API de búsqueda de análisis de registros. Otra opción es el módulo de PowerShell de Azure de hello toouse para OperationalInsights, que incluye cmdlets para tener acceso a la búsqueda. Con estas herramientas, puede usar áreas de trabajo de hello API del Administrador de recursos de Azure toomake llamadas tooOMS y ejecutar comandos de búsqueda dentro de ellos. Hola API genera resultados de búsqueda en formato JSON, permitiéndole toouse resultados de la búsqueda de Hola de muchas formas distintas mediante programación.
 
-Azure Resource Manager se puede usar mediante una [biblioteca para .NET](https://msdn.microsoft.com/library/azure/dn910477.aspx) y la [API de REST](https://msdn.microsoft.com/library/azure/mt163658.aspx). Para más información, revise las páginas web vinculadas.
+Hello Azure Resource Manager se puede usar mediante una [biblioteca para .NET](https://msdn.microsoft.com/library/azure/dn910477.aspx) hello y [API de REST](https://msdn.microsoft.com/library/azure/mt163658.aspx). toolearn más información, revise las páginas web Hola vinculado.
 
 > [!NOTE]
-> Si utiliza un comando de agregación como `|measure count()` o `distinct`, cada llamada a la búsqueda puede devolver hasta 500 000 registros. Las búsquedas que no incluyen un comando de agregación devuelven hasta 5000 registros.
+> Si utiliza un comando de agregación como `|measure count()` o `distinct`, cada llamada toosearch puede devolver hasta 500.000 registros. Las búsquedas que no incluyen un comando de agregación devuelven hasta 5000 registros.
 >
 >
 
 ## <a name="basic-log-analytics-search-rest-api-tutorial"></a>Tutorial básico de la API de REST de búsqueda de Log Analytics
-### <a name="to-use-armclient"></a>Para usar ARMClient
-1. Instale [Chocolatey](https://chocolatey.org/), que es un administrador de paquetes de código abierto para Windows. Abra una ventana de símbolo del sistema como administrador y luego ejecute el siguiente comando:
+### <a name="toouse-armclient"></a>toouse ARMClient
+1. Instale [Chocolatey](https://chocolatey.org/), que es un administrador de paquetes de código abierto para Windows. Abra una ventana del símbolo del sistema como administrador y, a continuación, ejecute hello siguiente comando:
 
     ```
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
     ```
-2. Instale ARMClient ejecutando el siguiente comando:
+2. Instale ARMClient con hello siguiente comando:
 
     ```
     choco install armclient
     ```
 
-### <a name="to-perform-a-search-using-armclient"></a>Para realizar una búsqueda mediante ARMClient
+### <a name="tooperform-a-search-using-armclient"></a>tooperform una búsqueda mediante ARMClient
 1. Inicie sesión con su cuenta de Microsoft o su cuenta profesional o educativa:
 
     ```
     armclient login
     ```
 
-    Si la sesión se ha iniciado correctamente, se muestran todas las suscripciones vinculadas a la cuenta especificada.
+    Un inicio de sesión correcto, enumera todos los toohello de las suscripciones vinculadas dado cuenta:
 
     ```
     PS C:\Users\SampleUserName> armclient login
@@ -72,13 +72,13 @@ Azure Resource Manager se puede usar mediante una [biblioteca para .NET](https:/
     Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (Example Name 2)
     Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (Example Name 3)
     ```
-2. Obtenga las áreas de trabajo de Operations Management Suite:
+2. Obtener áreas de trabajo de hello Operations Management Suite:
 
     ```
     armclient get /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces?api-version=2015-03-20
     ```
 
-    Una llamada Get correcta generaría todas las áreas de trabajo vinculadas a la suscripción:
+    Una llamada Get correcta generaría que todas las áreas de trabajo vinculado toohello suscripción:
 
     ```
     {
@@ -108,7 +108,7 @@ Azure Resource Manager se puede usar mediante una [biblioteca para .NET](https:/
     ```
 
 ## <a name="log-analytics-search-rest-api-reference-examples"></a>Ejemplos de referencia de la API de REST de búsqueda de Log Analytics
-Los siguientes ejemplos muestran cómo se puede usar la API de búsqueda.
+Hello en los ejemplos siguientes muestra cómo puede usar Hola API de búsqueda.
 
 ### <a name="search---actionread"></a>Search - Action/Read
 **Dirección Url de ejemplo:**
@@ -133,17 +133,17 @@ Los siguientes ejemplos muestran cómo se puede usar la API de búsqueda.
     }
     armclient post /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/search?api-version=2015-03-20 $searchParametersJson
 ```
-En la tabla siguiente se describen las propiedades que están disponibles.
+Hello en la tabla siguiente describe las propiedades de Hola que están disponibles.
 
 | **Propiedad** | **Descripción** |
 | --- | --- |
-| top |El número máximo de resultados que se devolverán. |
+| top |número máximo de Hola de tooreturn de resultados. |
 | highlight |Contiene parámetros pre y post, usados normalmente para resaltar los campos coincidentes |
-| pre |Agrega la cadena especificada delante de los campos coincidentes. |
-| post |Anexa la cadena especificada a los campos coincidentes. |
-| query |La consulta de búsqueda que se usa para recopilar y devolver resultados. |
-| start |El comienzo de la ventana de tiempo en la que desea encontrar resultados. |
-| end |El final de la ventana de tiempo en la que desea encontrar resultados. |
+| pre |Agrega el prefijo Hola dado tooyour coincide con los campos de cadena. |
+| post |Anexa Hola dado tooyour coincide con los campos de cadena. |
+| query |consulta de búsqueda de Hello usa toocollect y devolver resultados. |
+| start |principio de Hola Hola período de tiempo que desee toobe de resultados que se encuentra en. |
+| end |final de Hola Hola período de tiempo que desee toobe de resultados que se encuentra en. |
 
 **Respuesta:**
 
@@ -197,14 +197,14 @@ En la tabla siguiente se describen las propiedades que están disponibles.
 ```
 
 ### <a name="searchid---actionread"></a>Search/{ID} - Action/Read
-**Solicitar el contenido de una búsqueda guardada:**
+**Contenido de Hola la solicitud de una búsqueda guardada:**
 
 ```
     armclient post /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search/{SearchId}?api-version=2015-03-20
 ```
 
 > [!NOTE]
-> Si la búsqueda se devuelve con el estado 'Pendiente', el sondeo de los resultados actualizados puede realizarse a través de esta API. Después de seis minutos, el resultado de la búsqueda se eliminará de la caché y se devolverá HTTP Ya no existe. Si la solicitud de búsqueda inicial devuelve un estado ‘Correcto’ inmediatamente, los resultados no se agregan a la memoria caché, lo que provocará que esta API devuelva HTTP Ya no existe si se consulta. El contenido de un resultado HTTP 200 está en el mismo formato que la solicitud de búsqueda inicial, solo que con valores actualizados.
+> Si la búsqueda de hello devuelve con el estado 'Pendiente', a continuación, resultados de sondeo Hola actualizado pueden realizarse a través de esta API. Después de 6 minutos, resultado de hello de la búsqueda de Hola se quitarán de la caché de Hola y se devolverá HTTP ya no existe. Si la solicitud de búsqueda inicial de hello devuelve inmediatamente un estado 'Correcto', resultados de hello no se agregan caché toohello causando este tooreturn API HTTP ya no existe si se consulta. contenido de Hola de un resultado HTTP 200 estará en el mismo formato que la solicitud de búsqueda inicial de hello solo con valores actualizados de Hola.
 >
 >
 
@@ -219,18 +219,18 @@ Métodos admitidos: GET PUT DELETE
 
 Métodos de colección admitidos: GET
 
-En la tabla siguiente se describen las propiedades que están disponibles.
+Hello en la tabla siguiente describe las propiedades de Hola que están disponibles.
 
 | Propiedad | Descripción |
 | --- | --- |
-| Id |Identificador único. |
-| Etag |**Obligatoria para la revisión**. Actualizada por el servidor en cada escritura. El valor debe ser igual al valor actual almacenado o ' *' para actualizar. 409 devuelto para valores antiguos o no válidos. |
-| properties.query |**Obligatoria**. Consulta de la búsqueda. |
-| properties.displayName |**Obligatoria**. Nombre para mostrar definido por el usuario de la consulta. |
-| properties.category |**Obligatoria**. Categoría de la consulta definida por el usuario. |
+| Id |Identificador único de Hola. |
+| Etag |**Obligatoria para la revisión**. Actualizada por el servidor en cada escritura. Valor debe ser igual toohello actual almacenado o ' *' tooupdate. 409 devuelto para valores antiguos o no válidos. |
+| properties.query |**Obligatoria**. consulta de búsqueda de Hola. |
+| properties.displayName |**Obligatoria**. nombre para mostrar definido por el usuario Hola de consulta de Hola. |
+| properties.category |**Obligatoria**. categoría definida por el usuario Hola de consulta de Hola. |
 
 > [!NOTE]
-> Actualmente, la API de búsqueda de Log Analytics devuelve las búsquedas guardadas creadas por el usuario cuando se realiza un sondeo de búsquedas guardadas en un área de trabajo. La API no devuelve las búsquedas guardadas proporcionadas por soluciones.
+> Hola API de búsqueda de análisis de registros devuelve actualmente creadas por el usuario cuando se realiza un sondeo de búsquedas guardadas en un área de trabajo de búsquedas guardadas. Hola API no devuelve búsquedas guardadas proporcionadas por soluciones.
 >
 >
 
@@ -243,7 +243,7 @@ En la tabla siguiente se describen las propiedades que están disponibles.
 ```
 
 > [!NOTE]
-> El nombre de todas las búsquedas guardadas, programaciones y acciones creadas con Log Analytics API debe estar en minúsculas.
+> nombre de Hola para búsquedas guardadas, las programaciones y acciones creadas con hello API de análisis de registros debe estar en minúsculas.
 
 ### <a name="delete-saved-searches"></a>Eliminación de búsquedas guardadas
 **Solicitud:**
@@ -261,7 +261,7 @@ En la tabla siguiente se describen las propiedades que están disponibles.
 ```
 
 ### <a name="metadata---json-only"></a>Metadatos: solo JSON
-Aquí se proporciona una manera de ver los campos de todos los tipos de registro para los datos recopilados en el área de trabajo. Por ejemplo, si desea saber si el tipo de evento tiene un campo denominado Computer, esta consulta es una manera de comprobarlo.
+Este es un campo de hello toosee manera para todos los tipos de registro para datos de hello recopilados en el área de trabajo. Por ejemplo, si desea que saber si el tipo de evento de hello tiene un campo denominado Computer, esta consulta es una manera de toocheck.
 
 **Solicitud de campos:**
 
@@ -300,25 +300,25 @@ Aquí se proporciona una manera de ver los campos de todos los tipos de registro
     }
 ```
 
-En la tabla siguiente se describen las propiedades que están disponibles.
+Hello en la tabla siguiente describe las propiedades de Hola que están disponibles.
 
 | **Propiedad** | **Descripción** |
 | --- | --- |
 | name |Nombre del campo. |
-| DisplayName |Nombre para mostrar del campo. |
-| type |Tipo del valor del campo. |
+| DisplayName |Hola nombre para mostrar del campo de Hola. |
+| type |Tipo del valor de campo de Hola Hola. |
 | facetable |Combinación de las propiedades actuales ‘indexed’, ‘stored ‘y ‘facet’. |
 | display |Propiedad 'display' actual. True si el campo está visible en la búsqueda. |
-| ownerType |Se reduce a solo los tipos que pertenecen a las IP incorporadas. |
+| ownerType |Tipos de tooonly reducida que pertenecen las IP tooonboarded. |
 
 ## <a name="optional-parameters"></a>Parámetros opcionales
-La siguiente información describe los parámetros opcionales disponibles.
+Hola siguiente información describe los parámetros opcionales disponibles.
 
 ### <a name="highlighting"></a>Resaltado
-El parámetro "Highlight" es un parámetro opcional que se puede usar para solicitar al subsistema de búsqueda que incluya un conjunto de marcadores en la respuesta.
+parámetro de Hello "Highlight" es un parámetro opcional que se puede utilizar el subsistema de búsqueda de hello toorequest incluyen un conjunto de marcadores en la respuesta.
 
-Estos marcadores indican el inicio y fin del texto resaltado que coincide con los términos que se proporcionan en la consulta de búsqueda.
-Puede especificar los marcadores de inicio y final que se usan en la búsqueda para envolver el término resaltado.
+Estos marcadores indican Hola inicio y fin del texto resaltado que coincide con los términos de hello proporcionados en la consulta de búsqueda.
+Se pueden especificar inicio hello y finalizar marcadores utilizados por el término de búsqueda toowrap Hola resaltado.
 
 **Ejemplo de consulta de la búsqueda**
 
@@ -361,10 +361,10 @@ Puede especificar los marcadores de inicio y final que se usan en la búsqueda p
     }
 ```
 
-Observe que el resultado anterior contiene un mensaje de error que se ha incluido como prefijo y se ha anexado.
+Tenga en cuenta que Hola resultado anterior contiene un mensaje de error que se ha incluido como prefijo y anexa.
 
 ## <a name="computer-groups"></a>Grupos de equipos
-Los grupos de equipos son búsquedas guardadas especiales que devuelven un conjunto de equipos.  Puede usar un grupo de equipos en otras consultas para limitar los resultados a los equipos del grupo.  Un grupo de equipos se implementa como una búsqueda guardada con una etiqueta Grupo con un valor de Equipo.
+Los grupos de equipos son búsquedas guardadas especiales que devuelven un conjunto de equipos.  Puede usar un grupo de equipos en otros equipos de toohello de resultados de consultas toolimit hello en el grupo de Hola.  Un grupo de equipos se implementa como una búsqueda guardada con una etiqueta Grupo con un valor de Equipo.
 
 La siguiente es una respuesta de ejemplo para un grupo de equipos.
 
@@ -383,18 +383,18 @@ La siguiente es una respuesta de ejemplo para un grupo de equipos.
 ```
 
 ### <a name="retrieving-computer-groups"></a>Recuperación de grupos de equipos
-Para recuperar un grupo de equipos, use el método Get con el identificador de grupo.
+Id. de un grupo de equipos, use Hola método Get con el grupo de hello tooretrieve
 
 ```
 armclient get /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Group ID}`?api-version=2015-03-20
 ```
 
 ### <a name="creating-or-updating-a-computer-group"></a>Creación o actualización de un grupo de equipos
-Para crear un grupo de equipos, use el método Put con un identificador de búsqueda guardada único. Si usa un identificador de grupo de equipos existente, se modifica. Cuando crea un grupo de equipos en el portal de Log Analytics, se crea el identificador a partir del grupo y el nombre.
+toocreate un grupo de equipos, use Hola método Put con un identificador único búsqueda guardada. Si usa un identificador de grupo de equipos existente, se modifica. Cuando se crea un grupo de equipos en el portal de análisis de registros de hello, Id. de Hola se crea de nombre y grupo de Hola.
 
-La consulta que se usa para la definición de grupo debe devolver un conjunto de equipos para que el grupo funcione correctamente.  Se recomienda que finalice la consulta con `| Distinct Computer` para asegurarse de que se devuelven los datos correctos.
+consulta de Hello utilizada para la definición de grupo de hello debe devolver un conjunto de equipos para hello grupo toofunction correctamente.  Se recomienda que terminar la consulta con `| Distinct Computer` tooensure Hola correcta de los datos se devuelven.
 
-La definición de la búsqueda guardada debe incluir una etiqueta denominada Grupo con un valor de Equipo para que la búsqueda se clasifique como un grupo de equipos.
+definición de Hola de hello búsqueda guardada debe incluir una etiqueta con el nombre de grupo con un valor del equipo para hello búsqueda toobe clasificado como un grupo de equipos.
 
 ```
     $etag=Get-Date -Format yyyy-MM-ddThh:mm:ss.msZ
@@ -409,7 +409,7 @@ La definición de la búsqueda guardada debe incluir una etiqueta denominada Gru
 ```
 
 ### <a name="deleting-computer-groups"></a>Eliminación de grupos de equipos
-Para eliminar un grupo de equipos, use el método Delete con el identificador de grupo.
+Id. de un grupo de equipos, use Hola método Delete con grupo de hello toodelete
 
 ```
 armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/$groupId`?api-version=2015-03-20
@@ -417,4 +417,4 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Si desea crear consultas con campos personalizados en función de unos criterios, obtenga más información acerca de las [búsquedas de registros](log-analytics-log-searches.md) .
+* Obtenga información acerca de [búsquedas de registro](log-analytics-log-searches.md) consultas toobuild con campos personalizados para los criterios.

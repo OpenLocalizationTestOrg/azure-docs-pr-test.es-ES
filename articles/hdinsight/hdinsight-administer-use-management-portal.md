@@ -1,6 +1,6 @@
 ---
-title: "Administración de clústeres de Hadoop en HDInsight basados en Windows con el portal Azure | Microsoft Docs"
-description: "Vea cómo administrar el servicio HDInsight. Cree un clúster de HDInsight, abra la consola interactiva de JavaScript y la consola de comandos de Hadoop."
+title: "clústeres de Hadoop basado en Windows de aaaManage en HDInsight utilizando Hola portal de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooadminister HDInsight Service. Crear un clúster de HDInsight, la consola de JavaScript interactivo Hola abierto y la consola de comandos de Hadoop de hello abierto."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,89 +16,89 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: f69fa4f838b22ccbb25186c08cac9744bb31c6d1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a237726b0e37a08005ce22e96581739e93edb050
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Administración de clústeres de Hadoop basados en Windows en HDInsight con el portal de Azure
+# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-hello-azure-portal"></a>Administrar clústeres basados en Windows Hadoop en HDInsight con hello portal de Azure
 
-Con el [portal de Azure][azure-portal], puede crear clústeres de Hadoop basados en Windows en Azure HDInsight, cambiar la contraseña de usuario de Hadoop y habilitar el Protocolo de escritorio remoto (RDP) para que pueda tener acceso a la consola de comandos de Hadoop en el clúster.
+Con hello [portal de Azure][azure-portal], puede crear clústeres basados en Windows Hadoop en HDInsight de Azure, cambiar la contraseña de usuario de Hadoop y habilitar el protocolo de escritorio remoto (RDP) para que pueda acceder Hola Hadoop consola de comandos en el clúster de Hola.
 
-La información de este artículo solo se aplica a los clústeres de HDInsight para Windows. Para más información sobre la administración de clústeres basados en Linux, consulte [Administración de clústeres de Hadoop en HDInsight mediante el portal de Azure](hdinsight-administer-use-portal-linux.md).
+información de Hello en este artículo solo aplica a clústeres de HDInsight basados en tooWindow. Para obtener información acerca de cómo administrar clústeres basados en Linux, consulte [Hadoop administrar clústeres de HDInsight mediante el uso de Hola portal de Azure](hdinsight-administer-use-portal-linux.md).
 
 > [!IMPORTANT]
-> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Antes de empezar este artículo, debe tener lo siguiente:
+Antes de comenzar este artículo, debe tener el siguiente hello:
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Cuenta de Almacenamiento de Azure** : un clúster de HDInsight usa contenedores de almacenamiento de blobs de Azure como sistemas de archivos predeterminados. Para obtener más información acerca de cómo el almacenamiento de blobs de Azure ofrece una experiencia perfecta con los clústeres de HDInsight, consulte [Uso del almacenamiento de blobs de Azure con HDInsight](hdinsight-hadoop-use-blob-storage.md). Para obtener información acerca de la creación de una cuenta de Almacenamiento de Azure, consulte [Creación de una cuenta de Almacenamiento](../storage/common/storage-create-storage-account.md).
+* **Cuenta de almacenamiento de Azure** -HDInsight un clúster usa un contenedor de almacenamiento de blobs de Azure como sistema de archivos predeterminado de Hola. Para obtener más información acerca de cómo el almacenamiento de blobs de Azure ofrece una experiencia perfecta con los clústeres de HDInsight, consulte [Uso del almacenamiento de blobs de Azure con HDInsight](hdinsight-hadoop-use-blob-storage.md). Para obtener más información acerca de cómo crear una cuenta de almacenamiento de Azure, consulte [cómo tooCreate una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md).
 
-## <a name="open-the-portal"></a>Abrir el portal
-1. Inicie sesión en [https://portal.azure.com/](https://portal.azure.com).
-2. Después de abrir el portal, puede:
+## <a name="open-hello-portal"></a>Abra Hola Portal
+1. Inicie sesión en demasiado[https://portal.azure.com](https://portal.azure.com).
+2. Después de abrir el portal de hello, hacer lo siguiente:
 
-   * Hacer clic en **Nuevo** en el menú de la izquierda para crear un nuevo clúster:
+   * Haga clic en **New** de hello menú izquierdo toocreate un nuevo clúster:
 
        ![botón nuevo clúster de HDInsight](./media/hdinsight-administer-use-management-portal/azure-portal-new-button.png)
-   * Haga clic en **Clústeres de HDInsight** en el menú de la izquierda.
+   * Haga clic en **clústeres de HDInsight** desde el menú de la izquierda Hola.
 
        ![Portal de Azure botón clúster de HDInsight](./media/hdinsight-administer-use-management-portal/azure-portal-hdinsight-button.png)
 
-     Si **HDInsight** no aparece en el menú de la izquierda, haga clic en **Examinar**.
+     Si **HDInsight** no aparece en el menú izquierdo hello, haga clic en **examinar**.
 
      ![Botón Examinar clúster de Azure Portal](./media/hdinsight-administer-use-management-portal/azure-portal-browse-button.png)
 
 ## <a name="create-clusters"></a>Creación de clústeres
-Para obtener instrucciones sobre la creación mediante el Portal, consulte [Creación de clústeres de HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+Para obtener instrucciones de creación de hello mediante Hola Portal, consulte [HDInsight crear clústeres](hdinsight-hadoop-provision-linux-clusters.md).
 
-HDInsight trabaja con una amplia gama de componentes de Hadoop. Para ver la lista de los componentes que han sido comprobados y admitidos, consulte [¿Qué versión de Hadoop tiene HDInsight de Azure?](hdinsight-component-versioning.md). Puede personalizar HDInsight mediante una de las opciones siguientes:
+HDInsight trabaja con una amplia gama de componentes de Hadoop. Para hello lista de componentes de Hola que se han comprobado y compatibles, consulte [es la versión de Hadoop en HDInsight de Azure](hdinsight-component-versioning.md). Puede personalizar HDInsight mediante una de las siguientes opciones de hello:
 
-* Use Generar script de acción para ejecutar scripts que pueden personalizar un clúster para cambiar la configuración del clúster o para instalar los componentes personalizados, como Giraph o Solr. Para obtener más información, consulte [Personalización de un clúster de HDInsight mediante Generar acción de script](hdinsight-hadoop-customize-cluster.md).
-* Use los parámetros de personalización de clústeres de .NET SDK de HDInsight o de Azure PowerShell durante la creación de los clústeres. Estos cambios de configuración se conservan durante toda la vida del clúster y no se ven afectados por el restablecimiento de imágenes de nodos del clúster que la plataforma Azure realiza periódicamente para su mantenimiento. Para obtener más información acerca del uso de los parámetros de personalización de clústeres, consulte [Creación de clústeres de HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-* Algunos de los componentes nativos de Java, como Mahout y Cascading, se pueden ejecutar en el clúster como archivos JAR. Estos archivos JAR se pueden distribuir al almacenamiento de blobs de Azure y enviarse a los clústeres de HDInsight usando los mecanismos de envío de trabajo de Hadoop. Para obtener más información, consulte [Envío de trabajos de Hadoop mediante programación](hdinsight-submit-hadoop-jobs-programmatically.md).
+* Use acción de secuencia de comandos toorun scripts personalizados que pueden personalizar un clúster tooeither cambiar la configuración del clúster o instalación componentes personalizados, como Giraph o Solr. Para obtener más información, consulte [Personalización de un clúster de HDInsight mediante la acción de script](hdinsight-hadoop-customize-cluster.md).
+* Usar parámetros de personalización de clúster de hello en hello HDInsight .NET SDK o Azure PowerShell durante la creación del clúster. Estos cambios de configuración, a continuación, se conservan a través de la duración de Hola de clúster de hello y no se ven afectados por reimages de nodo de clúster que plataforma Windows Azure se realiza periódicamente de mantenimiento. Para obtener más información sobre el uso de parámetros de personalización de clúster de hello, consulte [HDInsight crear clústeres](hdinsight-hadoop-provision-linux-clusters.md).
+* Algunos componentes de Java nativo, como Mahout y en cascada, se pueden ejecutar en el clúster de hello como archivos JAR. Estos archivos JAR pueden ser distribuida tooAzure almacenamiento de blobs y los envían tooHDInsight clústeres a través de mecanismos de envío de trabajos de Hadoop. Para obtener más información, consulte [Envío de trabajos de Hadoop mediante programación](hdinsight-submit-hadoop-jobs-programmatically.md).
 
   > [!NOTE]
-  > Si tiene problemas con la implementación de los archivos JAR en los clústeres de HDInsight o con la llamada de los archivos JAR en los clústeres de HDInsight, póngase en contacto con [Soporte técnico de Microsoft](https://azure.microsoft.com/support/options/).
+  > Si tiene problemas de implementación de clústeres de tooHDInsight archivos JAR o llamar a archivos JAR en clústeres de HDInsight, póngase en contacto con [Microsoft Support](https://azure.microsoft.com/support/options/).
   >
-  > La presentación en cascada no se admite en HDInsight, y no puede optar a recibir soporte técnico de Microsoft. Para ver las listas de los componentes compatibles, consulte [Novedades en las versiones de clústeres proporcionadas por HDInsight](hdinsight-component-versioning.md).
+  > La presentación en cascada no se admite en HDInsight, y no puede optar a recibir soporte técnico de Microsoft. Para obtener listas de componentes compatibles, vea [cuáles son las novedades en las versiones de clúster Hola proporcionadas por HDInsight](hdinsight-component-versioning.md).
   >
   >
 
-La instalación de software personalizado en el clúster mediante la Conexión a Escritorio remoto no es compatible. Debe evitar el almacenamiento de cualquier archivo en las unidades del nodo principal, debido a que se perderán si necesita volver a crear los clústeres. Recomendamos almacenar los archivos en el almacenamiento de blobs de Azure. El almacenamiento de blobs es persistente.
+No se admite la instalación de software personalizado en clúster de hello mediante conexión a Escritorio remoto. No se deben almacenar los archivos en unidades de hello del nodo principal de hello, tal y como se perderán si necesita toore-crear clústeres de Hola. Recomendamos almacenar los archivos en el almacenamiento de blobs de Azure. El almacenamiento de blobs es persistente.
 
 ## <a name="list-and-show-clusters"></a>Enumeración y visualización de clústeres
-1. Inicie sesión en [https://portal.azure.com/](https://portal.azure.com).
-2. Haga clic en **Clústeres de HDInsight** en el menú de la izquierda.
-3. Haga clic en el nombre del clúster. Si la lista de clústeres es extensa, puede usar el filtro de la parte superior de la página.
-4. Haga doble clic en un clúster de la lista para mostrar los detalles.
+1. Inicie sesión en demasiado[https://portal.azure.com](https://portal.azure.com).
+2. Haga clic en **clústeres de HDInsight** desde el menú de la izquierda Hola.
+3. Haga clic en el nombre del clúster de Hola. Si la lista de clústeres de hello es larga, puede utilizar el filtro en la parte superior de Hola de página Hola.
+4. Haga doble clic en un clúster de detalles de hello lista tooshow Hola.
 
     **Menú y operaciones básicas**:
 
     ![Azure Portal: aspectos básicos del clúster de HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-essentials.png)
 
-   * Para personalizar el menú, haga clic con el botón derecho en el menú y, después, haga clic en **Personalizar**.
-   * **Configuración** y **Toda la configuración**: Muestra la hoja **Configuración** del clúster, que permite obtener acceso a información de configuración detallada para el clúster.
-   * **Panel**, **Panel de clúster** y **Dirección URL: todas son formas de acceder al panel del clúster, que es la web de Ambari para los clústeres basados en Linux. -**Secure Shell**: muestra las instrucciones para conectarse al clúster mediante la conexión de Secure Shell (SSH).
-   * **Escalar clúster**: Permite cambiar el número de nodos de trabajo para este clúster.
-   * **Eliminar**: elimina el clúster.
+   * menú de hello toocustomize, haga doble clic en cualquier lugar en el menú de hello y, a continuación, haga clic en **personalizar**.
+   * **Configuración de** y **toda la configuración de**: Hola muestra **configuración** hoja para clúster de hello, que le permite tooaccess detallada información de configuración de clúster de Hola.
+   * **Panel**, **panel clúster** y **dirección URL: estas son todas las formas tooaccess Hola panel clúster, que es Ambari Web para clústeres basados en Linux. -**Secure Shell **: Muestra hello instrucciones tooconnect toohello clúster con conexión de Secure Shell (SSH).
+   * **Escalar Cluster**: permite el número de hello toochange de nodos de trabajador para este clúster.
+   * **Eliminar**: clúster de Hola de eliminaciones.
    * **Inicio rápido**: muestra información que le ayudará a empezar a usar HDInsight.
-   * **Usuarios: permite establecer permisos para la *administración del portal* de este clúster para otros usuarios de la suscripción de Azure.
+   * **: Le permite tooset permisos para *portal administración* de este clúster para otros usuarios en su suscripción de Azure.
 
      > [!IMPORTANT]
-     > Esto *solo* afecta al acceso y a los permisos para este clúster en el Portal de Azure, y no tiene ningún efecto sobre quién puede conectarse o enviar trabajos al clúster de HDInsight.
+     > Esto *sólo* afecta al acceso y permisos clúster toothis Hola portal de Azure, y no tiene ningún efecto en la que puede conectar el clúster de HDInsight de toohello de tooor enviar trabajos.
      >
      >
-   * **Etiquetas**: las etiquetas permiten establecer pares clave-valor para definir una taxonomía personalizada de sus Cloud Services. Por ejemplo, puede crear una clave denominada **proyecto**y luego usar un valor común para todos los servicios asociados a un proyecto específico.
-   * **Vistas de Ambari**: se trata de vínculos a la página web de Ambari.
+   * **Etiquetas**: las etiquetas permiten tooset clave-valor pares toodefine una taxonomía personalizada de servicios en la nube. Por ejemplo, puede crear una clave denominada **proyecto**y luego usar un valor común para todos los servicios asociados a un proyecto específico.
+   * **Vistas de Ambari**: vincula tooAmbari Web.
 
      > [!IMPORTANT]
-     > Para administrar los servicios que proporciona el clúster de HDInsight, debe usar la web de Ambari o la API de REST de Ambari. Para obtener más información sobre el uso de Ambari, consulte [Administración de clústeres de HDInsight con Ambari](hdinsight-hadoop-manage-ambari.md).
+     > Servicios de hello toomanage proporcionan por hello clúster de HDInsight, se debe usar Ambari Web u Hola API de REST de Ambari. Para obtener más información sobre el uso de Ambari, consulte [Administración de clústeres de HDInsight con Ambari](hdinsight-hadoop-manage-ambari.md).
      >
      >
 
@@ -109,13 +109,13 @@ La instalación de software personalizado en el clúster mediante la Conexión a
 
     ![Uso del clúster de HDInsight en Azure Portal](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
-   * **Propiedades**: muestra las propiedades del clúster.
+   * **Propiedades**: ver las propiedades del clúster Hola.
    * **Identidad AAD de clúster**:
-   * **Claves de almacenamiento de Azure**: consulte la cuenta de almacenamiento predeterminada y su clave. La cuenta de almacenamiento se configura durante el proceso de creación del clúster.
-   * **Inicio de sesión de clúster**: cambie el nombre de usuario y la contraseña HTTP del clúster.
-   * **Tiendas de metadatos externas**: consulte las tiendas de metadatos de Hive y Oozie. Las tiendas de metadatos solo pueden configurarse durante el proceso de creación del clúster.
-   * **Escalar clúster**: aumente o disminuya el número de nodos de trabajo del clúster.
-   * **Escritorio remoto**: habilite y deshabilite el acceso de Escritorio remoto (RDP) y configure el nombre de usuario de RDP.  El nombre de usuario de RDP debe ser diferente del nombre de usuario de HTTP.
+   * **Las claves de almacenamiento Azure**: ver la cuenta de almacenamiento predeterminada de Hola y su clave. cuenta de almacenamiento de Hello es configuración durante el proceso de creación de clúster de Hola.
+   * **Inicio de sesión del clúster**: cambiar el nombre de usuario del clúster HTTP de Hola y la contraseña.
+   * **Las tiendas de metadatos externos**: ver las tiendas de metadatos de Hive y Oozie de Hola. las tiendas de metadatos de Hello solo pueden configurarse durante el proceso de creación de clúster de Hola.
+   * **Escalar Cluster**: aumento y reducción Hola número de nodos de trabajador del clúster.
+   * **Escritorio remoto**: habilitar y deshabilitar el acceso de escritorio remoto (RDP) y configurar el nombre de usuario de hello RDP.  nombre de usuario RDP Hola debe ser distinto del nombre de usuario HTTP de Hola.
    * **Socio de registro**:
 
      > [!NOTE]
@@ -124,114 +124,114 @@ La instalación de software personalizado en el clúster mediante la Conexión a
      >
 6. Haga clic en **Propiedades**.
 
-    En la sección de propiedades se muestra lo siguiente:
+    sección de propiedades de Hello muestra siguiente de hello:
 
    * **Nombre del clúster**: nombre del clúster.
    * **Dirección URL del clúster**.
    * **Estado**: puede ser Aborted, Accepted, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, Error, Deleting, Deleted, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, ClusterCustomization
-   * **Región**: ubicación de Azure. Para una lista de ubicaciones de Azure admitidas, vea el cuadro de lista desplegable **Región** en [Precios de HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+   * **Región**: ubicación de Azure. Para obtener una lista de ubicaciones de Azure compatibles, vea hello **región** cuadro de lista desplegable en [precios HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
    * **Datos creados**.
    * **Sistema operativo**: **Windows** o **Linux**.
    * **Tipo**: Hadoop, HBase, Storm, Spark.
    * **Versión**. Consulte [Versiones de HDInsight](hdinsight-component-versioning.md)
    * **Suscripción**: nombre de la suscripción.
    * **Id. de suscripción**.
-   * **Origen de datos principal**. Cuenta de almacenamiento de blobs de Azure usada como sistema de archivos predeterminado de Hadoop.
+   * **Origen de datos principal**. Hola cuenta de almacenamiento Blob de Azure usa como valor predeterminado de hello sistema de archivos Hadoop.
    * **Plan de tarifa de los nodos de trabajo**.
    * **Plan de tarifa de los nodos de Head**.
 
 ## <a name="delete-clusters"></a>Eliminación de clústeres
-Al eliminar un clúster, no se elimina la cuenta de almacenamiento predeterminada ni otras cuentas de almacenamiento vinculadas. Puede volver a crear el clúster con las mismas cuentas de almacenamiento y las mismas tiendas de metadatos.
+Eliminar un clúster no elimina cuenta de almacenamiento predeterminada de Hola o las cuentas de almacenamiento vinculadas. Puede volver a crear el clúster de hello mediante el uso de hello las mismas cuentas de almacenamiento y hello las tiendas de metadatos mismo.
 
-1. Inicie sesión en el [portal][azure-portal].
-2. Haga clic en **Examinar todo**, **Clústeres de HDInsight** y en el nombre del clúster.
-3. Haga clic en **Eliminar** en el menú superior y luego siga las instrucciones.
+1. Inicie sesión en toohello [Portal][azure-portal].
+2. Haga clic en **examinar todos los** Hola menú izquierdo, haga clic en **clústeres de HDInsight**, haga clic en el nombre del clúster.
+3. Haga clic en **eliminar** desde el menú superior de hello y, a continuación, siga las instrucciones de Hola.
 
 Vea también [Pausa o apagado de clústeres](#pauseshut-down-clusters).
 
 ## <a name="scale-clusters"></a>Escalado de clústeres
-La característica de escalado de clústeres permite cambiar la cantidad de nodos de trabajo que usa un clúster que se ejecuta en HDInsight de Azure sin necesidad de volver a crear el clúster.
+característica de ajuste de escala de clúster de Hola permite toochange número de Hola de nodos de trabajador usado por un clúster que se ejecuta en HDInsight de Azure sin necesidad de toore-crear clúster Hola.
 
 > [!NOTE]
-> Solo son compatibles los clústeres con la versión 3.1.3 de HDInsight, o superior. Si no está seguro de la versión del clúster, puede comprobar la página de propiedades.  Vea [Enumeración y visualización de clústeres](#list-and-show-clusters).
+> Solo son compatibles los clústeres con la versión 3.1.3 de HDInsight, o superior. Si no está seguro de la versión de Hola del clúster, puede comprobar la página de propiedades de Hola.  Consulte [Enumeración y visualización de clústeres](#list-and-show-clusters).
 >
 >
 
-A continuación se muestra el efecto que tiene cambiar la cantidad de nodos de datos de cada tipo de clúster compatible con HDInsight:
+impacto de Hola de cambiar el número de Hola de nodos de datos para cada tipo de clúster compatible con HDInsight:
 
 * Hadoop
 
-    Puede aumentar sin ningún problema la cantidad de nodos de trabajo en un clúster de Hadoop que se encuentre en ejecución, sin que afecte a ningún trabajo pendiente o en ejecución. También se pueden enviar trabajos nuevos mientras la operación está en curso. Los errores que puedan surgir en una operación de escalado se enfrentan oportunamente, por lo que el clúster siempre queda en estado funcional.
+    Perfectamente puede aumentar el número de Hola de nodos de trabajador en un clúster de Hadoop que se ejecuta sin afectar a los trabajos pendientes o en ejecución. También se pueden enviar trabajos nuevos mientras Hola operación está en curso. Errores en una operación de ajuste de escala se controlan correctamente para que hello clúster siempre se deja en un estado funcional.
 
-    Cuando se realiza la reducción vertical de un clúster de Hadoop al disminuir la cantidad de nodos de datos, se reinician algunos de los servicios del clúster. Esto provoca que todos los trabajos pendientes y en ejecución fallen al completarse la operación de escalado. Sin embargo, puede volver a enviar los trabajos una vez finalizada la operación.
+    Cuando un clúster de Hadoop es reducido reduciendo el número de Hola de nodos de datos, algunos de los servicios de hello en clúster de Hola se reinician. Esto hace que ejecutan todos y pendiente de trabajos toofail al término de Hola Hola la operación de escalado. Sin embargo, puede volver a enviar trabajos de hello una vez completada la operación de Hola.
 * HBase
 
-    Puede agregar nodos sin problemas al clúster de HBase mientras se encuentra en ejecución, así como eliminarlos. Los servidores regionales se equilibran automáticamente en unos pocos minutos tras completar la operación de escalado. Sin embargo, puede equilibrar manualmente los servidores regionales iniciando sesión en el nodo principal del clúster y ejecutando los comandos siguientes desde una ventana del símbolo del sistema:
+    Sin problemas, puede agregar o quitar el clúster de HBase tooyour nodos mientras se está ejecutando. Los servidores regionales se equilibran automáticamente dentro de unos pocos minutos después de completar la operación de escalado de Hola. No obstante, puede equilibrar manualmente servidores regionales Hola iniciando sesión en el nodo principal de hello del clúster y ejecución Hola siguientes comandos de una ventana del símbolo del sistema:
 
         >pushd %HBASE_HOME%\bin
         >hbase shell
         >balancer
 
-    Para más información sobre el uso del shell HBase, consulte []
+    Para obtener más información sobre cómo usar el shell de HBase hello, consulte]
 * Storm
 
-    Puede agregar o quitar sin problemas nodos de datos de su clúster de Storm mientras se encuentra en ejecución. Sin embargo, después de finalizar correctamente la operación de escalado, deberá volver a equilibrar la topología.
+    Sin problemas, puede agregar o quitar el clúster de Storm de tooyour de nodos de datos mientras se está ejecutando. Sin embargo, tras finalizar correctamente la operación de escalado de hello, debe topología de hello toorebalance.
 
     Esto se puede realizar de dos formas:
 
   * La interfaz de usuario web de Storm
   * La herramienta de la interfaz de línea de comandos (CLI)
 
-    Consulte la [documentación de Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) para obtener más detalles.
+    Consulte toohello [documentación de Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) para obtener más detalles.
 
-    La interfaz de usuario web de Storm se encuentra disponible en el clúster de HDInsight:
+    interfaz de usuario de web de Storm Hola está disponible en el clúster de HDInsight de hello:
 
     ![reequilibrio de escalado de storm de HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
-    El siguiente es un ejemplo de cómo usar el comando CLI para volver a equilibrar la topología de Storm:
+    Este es un ejemplo cómo toouse Hola CLI comando topología de Storm Hola toorebalance:
 
-        ## Reconfigure the topology "mytopology" to use 5 worker processes,
-        ## the spout "blue-spout" to use 3 executors, and
-        ## the bolt "yellow-bolt" to use 10 executors
+        ## Reconfigure hello topology "mytopology" toouse 5 worker processes,
+        ## hello spout "blue-spout" toouse 3 executors, and
+        ## hello bolt "yellow-bolt" toouse 10 executors
         $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
-**Para escalar clústeres**
+**clústeres de tooscale**
 
-1. Inicie sesión en el [portal][azure-portal].
-2. Haga clic en **Examinar todo**, **Clústeres de HDInsight** y en el nombre del clúster.
-3. En el menú superior, haga clic en **Configuración** y en **Escalar clúster**.
-4. Escriba el **Número de nodos de trabajo**. El límite del número de nodos del clúster varía según las suscripciones de Azure. Puede ponerse en contacto con el servicio de soporte relacionado con la facturación para aumentar el límite.  La información de costo reflejará los cambios realizados en el número de nodos.
+1. Inicie sesión en toohello [Portal][azure-portal].
+2. Haga clic en **examinar todos los** Hola menú izquierdo, haga clic en **clústeres de HDInsight**, haga clic en el nombre del clúster.
+3. Haga clic en **configuración** desde el menú superior de hello y, a continuación, haga clic en **escala clúster**.
+4. Escriba el **Número de nodos de trabajo**. Hola Hola número límite de nodo de clúster varía para las suscripciones de Azure. Puede ponerse en contacto con facturación límite de hello tooincrease de soporte técnico.  información de costos de Hello reflejará los cambios de hello realizados toohello número de nodos.
 
     ![HDInsight Hadoop HBase Storm Spark escalar](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
 
 ## <a name="pauseshut-down-clusters"></a>Pausa o apagado de clústeres
-La mayoría de los trabajos de Hadoop son trabajos por lotes que se ejecutan sol ocasionalmente. En la mayoría de los clústeres de Hadoop, hay grandes períodos de tiempo en los que el clúster no se usa para el procesamiento. Con HDInsight, los datos se almacenan en Almacenamiento de Azure, por lo que puede eliminar un clúster de forma segura cuando no está en uso.
-También se le cargará por un clúster de HDInsight aunque no esté en uso. Como en muchas ocasiones los cargos por el clúster son más que los cargos por el almacenamiento, desde el punto de vista económico tiene sentido eliminar clústeres cuando no estén en uso.
+La mayoría de los trabajos de Hadoop son trabajos por lotes que se ejecutan sol ocasionalmente. Para la mayoría de los clústeres de Hadoop, hay períodos largos de tiempo no se utiliza ese clúster hello para el procesamiento. Con HDInsight, los datos se almacenan en Almacenamiento de Azure, por lo que puede eliminar un clúster de forma segura cuando no está en uso.
+También se le cargará por un clúster de HDInsight aunque no esté en uso. Puesto que los cargos de Hola de clúster de hello son muchas veces más que los cargos de hello para el almacenamiento, conviene económico toodelete clústeres cuando no están en uso.
 
-Hay muchas maneras de programar el proceso:
+Hay muchas maneras se puede programar el proceso de hello:
 
 * Usar Factoría de datos de Azure. Consulte [Servicios vinculados de Azure HDInsight](../data-factory/data-factory-compute-linked-services.md) y [Transformación y análisis mediante Azure Data Factory](../data-factory/data-factory-data-transformation-activities.md) para conocer los servicios vinculados de HDInsight a petición y definidos por el usuario.
 * Usar Azure PowerShell.  Vea [Análisis de datos de retrasos de vuelos](hdinsight-analyze-flight-delay-data.md).
 * Uso de CLI de Azure. Consulte [Administrar clústeres de HDInsight con la CLI de Azure](hdinsight-administer-use-command-line.md).
 * Usar .NET SDK de HDInsight. Vea [Envío de trabajos de Hadoop](hdinsight-submit-hadoop-jobs-programmatically.md).
 
-Para información sobre precios, vea [Precios de HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Para eliminar un clúster desde el portal, vea [Eliminación de clústeres](#delete-clusters)
+Para obtener información sobre precios de hello, consulte [precios HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). toodelete un clúster de hello Portal, consulte [eliminar clústeres](#delete-clusters)
 
 ## <a name="change-cluster-username"></a>Cambio del nombre de usuario del clúster
-Un clúster de HDInsight puede tener dos cuentas de usuario. La cuenta de usuario del clúster de HDInsight se crea durante el proceso de creación. También puede crear una cuenta de usuario de RDP para tener acceso al clúster mediante RDP. Consulte [Habilitación de escritorio remoto](#connect-to-hdinsight-clusters-by-using-rdp).
+Un clúster de HDInsight puede tener dos cuentas de usuario. Hola cuenta de usuario del clúster de HDInsight se crea durante el proceso de creación de hello. También puede crear una cuenta de usuario RDP para tener acceso a cluster de Hola a través de RDP. Consulte [Habilitación de escritorio remoto](#connect-to-hdinsight-clusters-by-using-rdp).
 
-**Para cambiar el nombre de usuario y contraseña del clúster de HDInsight**
+**contraseña y nombre de usuario del clúster de HDInsight de toochange Hola**
 
-1. Inicie sesión en el [portal][azure-portal].
-2. Haga clic en **Examinar todo**, **Clústeres de HDInsight** y en el nombre del clúster.
-3. En el menú superior, haga clic en **Configuración** y luego en **Inicio de sesión de clúster**.
-4. Si la opción **Inicio de sesión de clúster** está habilitada, debe hacer clic en **Deshabilitar** y luego en **Habilitar** para poder cambiar el nombre de usuario y la contraseña.
-5. Cambie los valores de **nombre de inicio de sesión del clúster** o **contraseña de inicio de sesión del clúster** y haga clic en **Guardar**.
+1. Inicie sesión en toohello [Portal][azure-portal].
+2. Haga clic en **examinar todos los** Hola menú izquierdo, haga clic en **clústeres de HDInsight**, haga clic en el nombre del clúster.
+3. Haga clic en **configuración** desde el menú superior de hello y, a continuación, haga clic en **inicio de sesión de clúster**.
+4. Si **inicio de sesión de clúster** ha sido habilitada, debe hacer clic **deshabilitar**y, a continuación, haga clic en **habilitar** antes de poder cambiar Hola username y password...
+5. Hola de cambio **nombre de inicio de sesión del clúster** o hello **contraseña de inicio de sesión de clúster**y, a continuación, haga clic en **guardar**.
 
     ![HDInsight change cluster user username password http user](./media/hdinsight-administer-use-management-portal/hdinsight.portal.change.username.password.png)
 
 ## <a name="grantrevoke-access"></a>Concesión o revocación del acceso
-Los clústeres de HDInsight tienen los siguientes servicios web HTTP (todos estos servicios tienen extremos RESTful):
+Clústeres de HDInsight tienen Hola después de servicios web HTTP (todos estos servicios tienen extremos RESTful):
 
 * ODBC
 * JDBC
@@ -239,51 +239,51 @@ Los clústeres de HDInsight tienen los siguientes servicios web HTTP (todos esto
 * Oozie
 * Templeton
 
-De manera predeterminada, estos servicios se conceden para el acceso. Puede revocar/conceder el acceso desde el Portal de Azure.
+De manera predeterminada, estos servicios se conceden para el acceso. Se puede revoke y conceder acceso de Hola de hello portal de Azure.
 
 > [!NOTE]
-> Al conceder/revocar el acceso, restablecerá el nombre de usuario y la contraseña del clúster.
+> Por conceder o revocar el acceso de hello, se restablecerá la contraseña y el nombre de usuario del clúster de Hola.
 >
 >
 
-**Para conceder/revocar el acceso a los servicios web de HTTP**
+**acceso de los servicios web de toogrant/revoke HTTP**
 
-1. Inicie sesión en el [portal][azure-portal].
-2. Haga clic en **Examinar todo**, **Clústeres de HDInsight** y en el nombre del clúster.
-3. En el menú superior, haga clic en **Configuración** y luego en **Inicio de sesión de clúster**.
-4. Si la opción **Inicio de sesión de clúster** está habilitada, debe hacer clic en **Deshabilitar** y luego en **Habilitar** para poder cambiar el nombre de usuario y la contraseña.
-5. Como **Nombre de usuario de inicio de sesión del clúster** y **Contraseña de inicio de sesión de clúster**, escriba el nombre de usuario y la contraseña nuevos (respectivamente) del clúster.
+1. Inicie sesión en toohello [Portal][azure-portal].
+2. Haga clic en **examinar todos los** Hola menú izquierdo, haga clic en **clústeres de HDInsight**, haga clic en el nombre del clúster.
+3. Haga clic en **configuración** desde el menú superior de hello y, a continuación, haga clic en **inicio de sesión de clúster**.
+4. Si **inicio de sesión de clúster** ha sido habilitada, debe hacer clic **deshabilitar**y, a continuación, haga clic en **habilitar** antes de poder cambiar Hola username y password...
+5. Para **nombre de usuario de inicio de sesión de clúster** y **contraseña de inicio de sesión de clúster**, escriba Hola nuevo nombre de usuario y contraseña (respectivamente) para el clúster de Hola.
 6. Haga clic en **GUARDAR**.
 
     ![HDInsight grand remove http web service access](./media/hdinsight-administer-use-management-portal/hdinsight.portal.change.username.password.png)
 
-## <a name="find-the-default-storage-account"></a>Búsqueda de la cuenta de almacenamiento predeterminada
-Cada clúster de HDInsight tiene una cuenta de almacenamiento predeterminada. La cuenta de almacenamiento predeterminada y sus claves para un clúster aparecen en **Configuración**/**Propiedades**/**Claves de almacenamiento de Azure**. Vea [Enumeración y visualización de clústeres](#list-and-show-clusters).
+## <a name="find-hello-default-storage-account"></a>Busque la cuenta de almacenamiento predeterminada de Hola
+Cada clúster de HDInsight tiene una cuenta de almacenamiento predeterminada. Hola cuenta de almacenamiento predeterminada y sus claves para un clúster aparece en **configuración**/**propiedades**/**las claves de almacenamiento de Azure**. Consulte [Enumeración y visualización de clústeres](#list-and-show-clusters).
 
-## <a name="find-the-resource-group"></a>Búsqueda del grupo de recursos
-En el modo de Azure Resource Manager, cada clúster de HDInsight se crea con un grupo de recursos de Azure. El grupo de recursos de Azure al que pertenece un clúster aparece en:
+## <a name="find-hello-resource-group"></a>Encontrar el grupo de recursos de Hola
+En el modo de administrador de recursos de Azure de hello, cada clúster de HDInsight se crea con un grupo de recursos de Azure. grupo de recursos de Azure de Hola que un clúster pertenece tooappears en:
 
-* La lista de clústeres tiene una columna **Grupo de recursos** .
+* lista de clúster de Hello tiene un **grupo de recursos** columna.
 * Icono **Esencial** del clúster.  
 
 Vea [Enumeración y visualización de clústeres](#list-and-show-clusters).
 
 ## <a name="open-hdinsight-query-console"></a>Apertura de la consola de consulta de HDInsight
-La consola de consulta de HDInsight incluye las siguientes características:
+Hola consola de consultas de HDInsight incluye Hola siguientes características:
 
-* **Editor Hive**: interfaz de web de GUI para el envío de trabajos de Hive.  Vea [Ejecución de consultas de Hive mediante la consola de consulta](hdinsight-hadoop-use-hive-query-console.md).
+* **Editor Hive**: interfaz de web de GUI para el envío de trabajos de Hive.  Vea [consultas ejecutar Hive mediante Hola consola de consultas](hdinsight-hadoop-use-hive-query-console.md).
 
     ![HDInsight portal hive editor](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
 * **Historial de trabajos**: supervise los trabajos de Hadoop.  
 
     ![HDInsight portal job history](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
-    Haga clic en **Nombre de la consulta** para mostrar los detalles, incluidas las propiedades del trabajo, la **consulta del trabajo** y la **salida del trabajo. También puede descargar la consulta y la salida a la estación de trabajo.
-* **Explorador de archivos**: explore la cuenta de almacenamiento predeterminada y las cuentas de almacenamiento vinculadas.
+    Haga clic en **nombre de la consulta** tooshow detalles de hello incluidas las propiedades de trabajo, **consulta de trabajo**, y ** salida del trabajo. También puede descargar consulta Hola y Hola salida tooyour workstation.
+* **Explorador de archivos**: examinar la cuenta de almacenamiento predeterminada de Hola y Hola cuentas de almacenamiento vinculadas.
 
     ![HDInsight portal file browser browse](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)
 
-    En la captura de pantalla, el tipo **<Account>** indica que el elemento es una cuenta de almacenamiento de Azure.  Haga clic en el nombre de la cuenta para examinar los archivos.
+    En la captura de pantalla de hello, Hola  **<Account>**  tipo indica el elemento de hello es una cuenta de almacenamiento de Azure.  Haga clic en archivos hello toobrowse nombre de cuenta de hello.
 * **IU de Hadoop**.
 
     ![HDInsight portal Hadoop UI](./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-ui.png)
@@ -294,69 +294,69 @@ La consola de consulta de HDInsight incluye las siguientes características:
     ![HDInsight portal YARN UI](./media/hdinsight-administer-use-management-portal/hdinsight-yarn-ui.png)
 
 ## <a name="run-hive-queries"></a>Ejecución de consultas de Hive
-Para ejecutar trabajos de Hive desde el Portal, haga clic en **Editor Hive** en la consola de HDInsight Query. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
+trabajos de Hive tooran de hello Portal, haga clic en **Editor de Hive** en hello HDInsight consulta de la consola. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
 
 ## <a name="monitor-jobs"></a>Supervisión de trabajos
-Para supervisar trabajos desde el Portal, haga clic en **Historial de trabajos** en la consola de HDInsight Query. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
+trabajos de toomonitor de hello Portal, haga clic en **historial de trabajos** en hello HDInsight consulta de la consola. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
 
 ## <a name="browse-files"></a>Examinar archivos
-Para examinar los archivos almacenados en la cuenta de almacenamiento predeterminada y las cuentas de almacenamiento vinculadas, haga clic en **Explorador de archivos** en la consola de consulta de HDInsight. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
+toobrowse archivos almacenados en la cuenta de almacenamiento predeterminada de Hola y Hola cuentas de almacenamiento vinculado, haga clic en **Explorador de archivos** en hello HDInsight consulta de la consola. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
 
-También puede usar la utilidad **Examinar el sistema de archivos** de la **IU de Hadoop** en la consola de HDInsight.  Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
+También puede usar hello **examinar el sistema de archivos de hello** utilidad de hello **Hadoop UI** en la consola de HDInsight Hola.  Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
 
 ## <a name="monitor-cluster-usage"></a>Supervisión del uso de los clústeres
-La sección **Uso** de la hoja del clúster de HDInsight muestra información sobre el número de núcleos disponibles con la suscripción para su uso con HDInsight, así como el número de núcleos asignados al clúster y cómo se asignan a los nodos de este clúster. Vea [Enumeración y visualización de clústeres](#list-and-show-clusters).
+Hola **uso** sección de hoja de clúster de HDInsight de hello muestra información sobre el número de Hola de suscripción de núcleos tooyour disponibles para su uso con HDInsight, así como número de Hola de núcleos asignados toothis clúster y cómo se asignar para nodos de hello en este clúster. Consulte [Enumeración y visualización de clústeres](#list-and-show-clusters).
 
 > [!IMPORTANT]
-> Para supervisar los servicios que proporciona el clúster de HDInsight, debe usar la web de Ambari o la API de REST de Ambari. Para obtener más información sobre el uso de Ambari, consulte [Administración de clústeres de HDInsight con Ambari](hdinsight-hadoop-manage-ambari.md)
+> Servicios de hello toomonitor proporcionan por hello clúster de HDInsight, se debe usar Ambari Web u Hola API de REST de Ambari. Para obtener más información sobre el uso de Ambari, consulte [Administración de clústeres de HDInsight con Ambari](hdinsight-hadoop-manage-ambari.md)
 >
 >
 
 ## <a name="open-hadoop-ui"></a>Apertura de la IU de Hadoop
-Para supervisar el clúster, examinar el sistema de archivos y comprobar los registros, haga clic en **UI de Hadoop** en la consola de consulta de HDInsight. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
+clúster de hello toomonitor, sistema de archivos de examinar hello y compruebe los registros, haga clic en **Hadoop UI** en hello HDInsight consulta de la consola. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
 
 ## <a name="open-yarn-ui"></a>Apertura de la UI de Yarn
-Para usar la interfaz de usuario de Yarn, haga clic en **UI de Yarn** en la consola de consulta de HDInsight. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
+toouse interfaz de usuario de Yarn, haga clic en **Yarn UI** en hello HDInsight consulta de la consola. Vea [Apertura de la consola de consulta de HDInsight](#open-hdinsight-query-console).
 
-## <a name="connect-to-clusters-using-rdp"></a>Conexión a los clústeres mediante RDP
-Las credenciales para el clúster que proporcionó en su creación dan acceso a los servicios en el clúster, pero no al clúster mismo a través del Escritorio remoto. Puede activar el acceso de Escritorio remoto cuando aprovisiona un clúster o después de su aprovisionamiento. Para instrucciones sobre cómo habilitar Escritorio remoto durante la creación, vea [Creación de clústeres de HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+## <a name="connect-tooclusters-using-rdp"></a>Conectar tooclusters mediante RDP
+las credenciales de Hola para clúster Hola que haya especificado en su creación conceda acceso toohello servicios en clúster de hello, pero no toohello propio clúster a través de escritorio remoto. Puede activar el acceso de Escritorio remoto cuando aprovisiona un clúster o después de su aprovisionamiento. Para obtener instrucciones acerca de cómo habilitar Escritorio remoto durante la creación de hello, consulte [clúster de HDInsight crear](hdinsight-hadoop-provision-linux-clusters.md).
 
-**Para habilitar el Escritorio remoto**
+**tooenable escritorio remoto**
 
-1. Inicie sesión en el [portal][azure-portal].
-2. Haga clic en **Examinar todo**, **Clústeres de HDInsight** y en el nombre del clúster.
-3. En el menú superior, haga clic en **Configuración** y en **Escritorio remoto**.
+1. Inicie sesión en toohello [Portal][azure-portal].
+2. Haga clic en **examinar todos los** Hola menú izquierdo, haga clic en **clústeres de HDInsight**, haga clic en el nombre del clúster.
+3. Haga clic en **configuración** desde el menú superior de hello y, a continuación, haga clic en **escritorio remoto**.
 4. Especifique los valores de **Expira en**, **Nombre de usuario de Escritorio remoto** y **Contraseña de Escritorio remoto** y haga clic en **Habilitar**.
 
     ![HDInsight habilitar deshabilitar configurar escritorio remoto](./media/hdinsight-administer-use-management-portal/hdinsight.portal.remote.desktop.png)
 
-    El valor predeterminado de "Expira el" es de una semana.
+    valores predeterminados de Hola de expiración es una semana.
 
    > [!NOTE]
-   > También puede usar .NET SDK de HDInsight para habilitar el Escritorio remoto en un clúster. Use el método **EnableRdp** en el objeto de cliente de HDInsight de la siguiente manera: **client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**. De forma similar, para deshabilitar el Escritorio remoto en el clúster, puede usar **client.DisableRdp(clustername, location)**. Para obtener más información sobre estos métodos, consulte [Referencia de .NET SDK de HDInsight](http://go.microsoft.com/fwlink/?LinkId=529017). Esto solo se aplica a los clústeres de HDInsight que se ejecutan en Windows.
+   > También puede usar hello HDInsight .NET SDK tooenable escritorio remoto en un clúster. Hola de uso **EnableRdp** método en el objeto de cliente de HDInsight de Hola Hola después de manera: **cliente. EnableRdp (nombre del clúster, ubicación, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**. De forma similar, toodisable escritorio remoto en clúster de hello, puede usar **cliente. DisableRdp (nombre del clúster, la ubicación)**. Para obtener más información sobre estos métodos, consulte [Referencia de .NET SDK de HDInsight](http://go.microsoft.com/fwlink/?LinkId=529017). Esto solo se aplica a los clústeres de HDInsight que se ejecutan en Windows.
    >
    >
 
-**Para conectarse a un clúster con RDP**
+**tooconnect tooa clúster mediante RDP**
 
-1. Inicie sesión en el [portal][azure-portal].
-2. Haga clic en **Examinar todo**, **Clústeres de HDInsight** y en el nombre del clúster.
-3. En el menú superior, haga clic en **Configuración** y en **Escritorio remoto**.
-4. Haga clic en **Conectar** y siga las instrucciones. Si Conectar está deshabilitado, debe habilitarlo primero. Asegúrese de usar el nombre de usuario y la contraseña de Escritorio remoto.  No puede usar las credenciales de usuario del clúster.
+1. Inicie sesión en toohello [Portal][azure-portal].
+2. Haga clic en **examinar todos los** Hola menú izquierdo, haga clic en **clústeres de HDInsight**, haga clic en el nombre del clúster.
+3. Haga clic en **configuración** desde el menú superior de hello y, a continuación, haga clic en **escritorio remoto**.
+4. Haga clic en **conectar** y siga las instrucciones de Hola. Si Conectar está deshabilitado, debe habilitarlo primero. Asegúrese de que con nombre de usuario del usuario de escritorio remoto de hello y una contraseña.  No puede usar las credenciales de usuario del clúster de Hola.
 
 ## <a name="open-hadoop-command-line"></a>Apertura de la línea de comandos de Hadoop
-Para conectarse al clúster mediante el Escritorio remoto y usar la línea de comandos de Hadoop, primero debe tener habilitado el acceso del Escritorio remoto al clúster como se describe en la sección anterior.
+tooconnect toohello clúster mediante el uso de escritorio remoto y la línea de comandos de uso hello Hadoop, debe primero ha habilitado clúster de toohello de acceso de escritorio remoto tal como se describe en la sección anterior de Hola.
 
-**Para abrir una línea de comandos de Hadoop**
+**tooopen una línea de comandos de Hadoop**
 
-1. Conéctese al clúster a través del Escritorio remoto.
-2. En el escritorio, haga doble clic en **Línea de comandos de Hadoop**.
+1. Conecte el clúster toohello mediante Escritorio remoto.
+2. En el escritorio de hello, haga doble clic en **línea de comandos de Hadoop**.
 
     ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
     Para obtener más información acerca de los comandos de Hadoop, consulte [Referencia de comandos de Hadoop](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 
-En la captura de pantalla anterior, el nombre de la carpeta tiene el número de versión de Hadoop incrustado. El número de versión se puede cambiar según la versión de los componentes de Hadoop instalados en el clúster. Puede usar las variables de entorno de Hadoop para referirse a esas carpetas. Por ejemplo:
+En hello captura de pantalla anterior, nombre de la carpeta de hello tiene el número de versión de Hadoop de hello incrustado. número de versión de Hola pueden utilizar modificada hello en función de versiones de componentes de Hadoop de hello instalados en el clúster de Hola. Puede usar carpetas de Hadoop entorno variables toorefer toothose. Por ejemplo:
 
     cd %hadoop_home%
     cd %hive_home%
@@ -366,7 +366,7 @@ En la captura de pantalla anterior, el nombre de la carpeta tiene el número de 
     cd %hcatalog_home%
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este artículo, ha aprendido a crear un clúster de HDInsight mediante el Portal y a abrir la herramienta de línea de comandos de Hadoop. Para obtener más información, consulte los artículos siguientes:
+En este artículo, ha aprendido cómo toocreate un clúster de HDInsight mediante el uso de Hola Portal y cómo tooopen Hola herramienta de línea de comandos de Hadoop. toolearn más información, vea Hola siguientes artículos:
 
 * [Administración de HDInsight con PowerShell de Azure](hdinsight-administer-use-powershell.md)
 * [Administración de HDInsight con la CLI de Azure](hdinsight-administer-use-command-line.md)

@@ -1,6 +1,6 @@
 ---
-title: Conector de Trello en Azure Logic Apps | Microsoft Docs
-description: "Cree aplicaciones lógicas con el Servicio de aplicaciones de Azure. Trello le ofrece perspectiva sobre todos los proyectos, en el trabajo y en casa.  Es una manera fácil, gratis, flexible y visual de administrar los proyectos y organizar todo.  Conéctese a Trello para administrar los paneles, listas y tarjetas"
+title: "Conector de aaaTrello en las aplicaciones lógicas de Azure | Documentos de Microsoft"
+description: "Cree aplicaciones lógicas con el Servicio de aplicaciones de Azure. Trello le ofrece perspectiva sobre todos los proyectos, en el trabajo y en casa.  Es una forma sencilla, libre, flexible y visual toomanage los proyectos y organizar nada.  Conectar tooTrello toomanage los paneles, listas y tarjetas"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 526a14710f24ee4a4b61a11873aa6caa0b47dc10
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 08aaea394c790ac41632490b7bbc84dcdfbab9da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-trello-connector"></a>Introducción al conector Trello
-Trello le ofrece perspectiva sobre todos los proyectos, en el trabajo y en casa.  Es una manera fácil, gratis, flexible y visual de administrar los proyectos y organizar todo.  Conéctese a Trello para administrar los paneles, listas y tarjetas.
+# <a name="get-started-with-hello-trello-connector"></a>Empezar a trabajar con el conector de hello Trello
+Trello le ofrece perspectiva sobre todos los proyectos, en el trabajo y en casa.  Es una forma sencilla, libre, flexible y visual toomanage los proyectos y organizar nada.  Conectar tooTrello toomanage los paneles, listas y tarjetas.
 
 Para empezar, cree una aplicación lógica; consulte [Creación de su primer flujo de trabajo de aplicación lógica para automatizar los procesos entre aplicaciones de nube y servicios en la nube](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-trello"></a>Creación de una conexión a Trello
-Para crear aplicaciones lógicas con Trello, cree una **conexión** y especifique los detalles de las siguientes propiedades:
+## <a name="create-a-connection-tootrello"></a>Crear una conexión tooTrello
+aplicaciones de la lógica de toocreate con Trello, cree primero un **conexión**y escriba los detalles de Hola de hello propiedades siguientes:
 
 | Propiedad | Obligatorio | Descripción |
 | --- | --- | --- |
 | Se necesita el cifrado de tokens |Sí |Proporciona las credenciales de Trello |
 
-Después de crear la conexión, puede usarla para ejecutar las acciones y escuchar los desencadenadores.
+Después de crear la conexión de hello, puede usar acciones de hello tooexecute y realizar escuchas de los desencadenadores de Hola.
 
-> [!INCLUDE [Steps to create a connection to Trello](../../includes/connectors-create-api-trello.md)]
+> [!INCLUDE [Steps toocreate a connection tooTrello](../../includes/connectors-create-api-trello.md)]
 > 
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/trello/).
+Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/trello/).
 
 ## <a name="more-connectors"></a>Más conectores
-Volver a la [lista de API](apis-list.md).
+Volver atrás toohello [lista de las API](apis-list.md).

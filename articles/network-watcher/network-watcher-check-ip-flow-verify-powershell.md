@@ -1,6 +1,6 @@
 ---
-title: "Comprobación del tráfico con la Comprobación del flujo de IP de Azure Network Watcher con PowerShell | Microsoft Docs"
-description: "En este artículo se describe cómo comprobar si se permite o se deniega el tráfico hacia o desde una máquina virtual mediante PowerShell"
+title: "tráfico de aaaverify con flujo de IP de Monitor de red de Azure Compruebe - PowerShell | Documentos de Microsoft"
+description: "Este artículo se describe cómo toocheck si tooor de tráfico de una máquina virtual se permite o deniega con PowerShell"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: bf0c01a9af0e28647d11ad89a9d164716d5c8312
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 924da1de1bd554e15816886f8e51d7f170f0e7ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Comprobar si se permite o se deniega el tráfico hacia o desde una máquina virtual con la Comprobación del flujo de IP, un componente de Azure Network Watcher
+# <a name="check-if-traffic-is-allowed-or-denied-tooor-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Compruebe si el tráfico se permitirá o denegará tooor de una máquina virtual con el flujo de IP compruebe un componente de Monitor de red de Azure
 
 > [!div class="op_single_selector"]
 > - [Portal de Azure](network-watcher-check-ip-flow-verify-portal.md)
@@ -30,19 +30,19 @@ ms.lasthandoff: 07/11/2017
 > - [API de REST de Azure](network-watcher-check-ip-flow-verify-rest.md)
 
 
-La Comprobación del flujo de IP es una característica de Network Watcher que permite comprobar si se permite el tráfico hacia o desde una máquina virtual. Este escenario es útil para averiguar si una máquina virtual puede comunicarse con un recurso externo o con un back-end. Comprobación del flujo de IP se puede usar para comprobar si las reglas de grupos de seguridad de red (NSG) se han configurado correctamente y solucionar los problemas de flujos que las reglas de NSG bloquean. Otra razón para usar la Comprobación del flujo de IP es asegurarse de que el NSG está bloqueando correctamente el tráfico que quiere bloquear.
+Flujo IP comprobar es una característica de Monitor de red que le permite tooverify si se permite el tráfico tooor desde una máquina virtual. Este escenario es útil tooget un estado actual del si una máquina virtual puede comunicarse un recurso externo tooan o back-end. Flujo IP comprobar puede ser usado tooverify si las reglas del grupo de seguridad de red (NSG) se han configurado correctamente y solucionar los problemas flujos que se bloquean las reglas de NSG. Otra razón para usar IP flujo Compruebe es que quiera bloquear el tráfico de tooensure está bloqueando correctamente hello NSG.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create a Network Watcher](network-watcher-create.md) (Creación de una instancia de Network Watcher) o que ya tiene una instancia de Network Watcher. En este escenario también se da por hecho que existe un grupo de recursos con una máquina virtual válida.
+Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red o tiene una instancia existente de Monitor de red. escenario de Hello también supone que un grupo de recursos con una máquina virtual válida existe toobe usa.
 
 ## <a name="scenario"></a>Escenario
 
-Este escenario usa la comprobación del flujo de IP para comprobar si una máquina virtual pueden comunicarse con una dirección IP de Bing conocida. Si se deniega el tráfico, devuelve la regla de seguridad que está denegando ese tráfico. Para más información sobre la Comprobación del flujo de IP, vea [Introducción a la comprobación del flujo de IP](network-watcher-ip-flow-verify-overview.md)
+Este flujo de escenario usa IP comprobar tooverify si una máquina virtual puede comunicarse conocidos tooa dirección IP de Bing. Si se deniega el tráfico de hello, devuelve la regla de seguridad de Hola que deniega ese tráfico. más información sobre el flujo IP comprobar, visite toolearn [flujo IP comprobar información general](network-watcher-ip-flow-verify-overview.md)
 
 ## <a name="retrieve-network-watcher"></a>Recuperación de Network Watcher
 
-El primer paso consiste en recuperar la instancia de Network Watcher. La variable `$networkWatcher` pasa al cmdlet Comprobación del flujo de IP.
+Hola primer paso es instancia de Monitor de red de tooretrieve Hola. Hola `$networkWatcher` pasa una variable toohello IP flujo comprobar cmdlet.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -51,15 +51,15 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="get-a-vm"></a>Obtención de una máquina virtual
 
-La Comprobación del flujo de IP comprueba el tráfico hacia o desde la dirección IP de una máquina virtual, hacia o desde un destino remoto. Se necesita el identificador de una máquina virtual para ejecutar el cmdlet. Si ya conoce el identificador de la máquina virtual que se va a usar, puede omitir este paso.
+Flujo IP Compruebe tooor de tráfico de pruebas desde una dirección IP en un tooor de máquina virtual de un destino remoto. Un identificador de una máquina virtual se requiere para hello cmdlet. Si ya conoce el identificador de Hola de hello toouse de máquina virtual, puede omitir este paso.
 
 ```powershell
 $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
-## <a name="get-the-nics"></a>Obtención de las NIC
+## <a name="get-hello-nics"></a>Obtener Hola NIC
 
-Se necesita la dirección IP de una NIC en la máquina virtual; en este ejemplo, se recuperan las NIC de una máquina virtual. Si ya conoce la dirección IP que desea probar en la máquina virtual, puede omitir este paso.
+se necesita la dirección IP de Hola de una NIC en la máquina virtual de Hola, en este ejemplo recuperamos Hola NIC en una máquina virtual. Si ya sabe Hola IP de direcciones que desea tootest en la máquina virtual de hello, puede omitir este paso.
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -67,7 +67,7 @@ $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.Networ
 
 ## <a name="run-ip-flow-verify"></a>Ejecución de la Comprobación del flujo de IP
 
-Ahora que tenemos la información necesaria para ejecutar el cmdlet `Test-AzureRmNetworkWatcherIPFlow`, lo ejecutamos para comprobar el tráfico. En este ejemplo, usamos la primera dirección IP en la primera NIC.
+Ahora que tenemos información Hola necesarios toorun Hola cmdlet, ejecutamos hello `Test-AzureRmNetworkWatcherIPFlow` tráfico de cmdlet tootest Hola. En este ejemplo, estamos utilizando dirección IP de la primera hello en la NIC de hello primero.
 
 ```powershell
 Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id `
@@ -76,11 +76,11 @@ Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualM
 ```
 
 > [!NOTE]
-> La comprobación del flujo de IP requiere que el recurso de máquina virtual esté asignado para ejecución.
+> Flujo IP comprobar requiere que el recurso de máquina virtual de Hola se asigna toorun.
 
 ## <a name="review-results"></a>Revisión de los resultados
 
-Después de ejecutar `Test-AzureRmNetworkWatcherIPFlow`, se devuelven los resultados. Los siguientes son los resultados devueltos por el paso anterior.
+Después de ejecutar `Test-AzureRmNetworkWatcherIPFlow` Hola resultados se devuelven, en el ejemplo siguiente se hello es Hola devuelva resultados de hello anterior paso.
 
 ```
 Access RuleName                                  
@@ -90,7 +90,7 @@ Allow  defaultSecurityRules/AllowInternetOutBound
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si se está bloqueando el tráfico y no debería ser así, vea [Administración de grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) para realizar un seguimiento de las reglas del grupo de seguridad de red y de seguridad definidas.
+Si se está bloqueando el tráfico y no debe ser, consulte [administrar grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack hacia abajo Hola red seguridad y el grupo de reglas de seguridad que se definen.
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

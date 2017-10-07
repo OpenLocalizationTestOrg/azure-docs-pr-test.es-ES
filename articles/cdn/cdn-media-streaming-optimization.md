@@ -1,5 +1,5 @@
 ---
-title: "Optimización del streaming multimedia mediante Azure Content Delivery Network"
+title: "aaaMedia optimización a través de la red de entrega de contenido de Azure Hola de transmisión por secuencias"
 description: Optimizar el streaming de archivos multimedia para una entrega sin problemas
 services: cdn
 documentationcenter: 
@@ -14,50 +14,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 1221f4f50b8b9c4b9f9f88be4d04a65375c36062
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a05a86204708c7ea7ef1f9be04323cdda6a2d403
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>Optimización del streaming multimedia mediante Azure Content Delivery Network 
+# <a name="media-streaming-optimization-via-hello-azure-content-delivery-network"></a>Optimización a través de la red de entrega de contenido de Azure Hola la transmisión por secuencias 
  
-El uso de vídeo de alta definición está aumentando en Internet, lo que crea problemas de entrega eficaz de archivos grandes. Los clientes esperan una reproducción fluida de vídeo bajo demanda o de recursos de vídeo en vivo en una variedad de redes y clientes en todo el mundo. Un mecanismo de entrega rápido y eficiente de los archivos de streaming multimedia es fundamental para garantizar una experiencia sin complicaciones y divertida para el consumidor.  
+Uso de vídeo de alta definición está aumentando en hello Internet, lo que crea problemas de entrega eficaz de archivos grandes. Los clientes esperan una reproducción suave de vídeo a petición o live recursos de vídeo en una variedad de clientes y redes todo Hola a todos. Un mecanismo de entrega rápida y eficiente para archivos de la transmisión por secuencias es crítico tooensure una experiencia de consumidor suaves y divertida.  
 
-El streaming en vivo de contenido multimedia es especialmente difícil de entregar, debido a los grandes tamaños y al número de usuarios simultáneos. Los retardos prolongados hacen que los usuarios se marchen. Como las transmisiones en vivo no se pueden almacenar en caché por adelantado y las latencias de gran tamaño no son aceptables para el público, los fragmentos de vídeo se deben entregar de una manera oportuna. 
+Multimedia de transmisión por secuencias en directo es especialmente difícil toodeliver debido a tamaños grandes de Hola y el número de usuarios simultáneos. Grandes retrasos provocar tooleave de los usuarios. Porque secuencias en directo no pueden almacenarse en memoria caché antes de tiempo y las latencias largas no tooviewers aceptable, se deben entregar fragmentos de vídeo de una manera oportuna. 
 
-Los patrones de solicitud de streaming también ofrecen algunos desafíos nuevos. Cuando se publica para vídeo bajo demanda una transmisión en vivo popular o una nueva serie, es posible que miles o millones de espectadores soliciten la transmisión al mismo tiempo. En este caso, la consolidación de solicitud inteligente es vital para no sobrecargar los servidores de origen cuando los recursos todavía no están almacenados en caché.
+los patrones de solicitud de Hola de transmisión por secuencias también proporcionan algunos desafíos nuevos. Cuando se publica una secuencia en directo popular o una nueva serie de vídeo bajo demanda, miles toomillions de visores podría solicitar el flujo de hello en hello mismo tiempo. En este caso, solicitud inteligente consolidación es vital toonot sobrecargando servidores de origen de hello cuando no se almacena en caché activos Hola todavía.
  
-Azure Content Delivery Network de Akamai ahora proporciona una característica que entrega recursos de elementos multimedia en streaming de manera eficaz a usuarios en todo el mundo a escala. La característica reduce las latencias porque reduce la carga en los servidores de origen. Esta característica está disponible con el plan de tarifa Standard de Akamai. 
+Hola red de entrega de contenido de Azure de Akamai ahora proporciona una característica que proporciona a recursos de transmisión por secuencias multimedia eficazmente toousers entre mundo Hola a escala. característica de Hello reduce las latencias porque se reduce la carga de hello en los servidores de origen Hola. Esta característica está disponible con el nivel de precios de hello Akamai estándar. 
 
-Azure Content Delivery Network de Verizon puede ofrecer streaming multimedia directamente en el tipo de optimización de entrega web general.
+Hola red de entrega de contenido de Azure desde Verizon entrega multimedia de transmisión por secuencias directamente en el tipo de optimización de entrega de hello web general.
  
-## <a name="configure-an-endpoint-to-optimize-media-streaming-in-the-azure-content-delivery-network-from-akamai"></a>Configurar un punto de conexión para optimizar el streaming multimedia en Azure Content Delivery Network de Akamai
+## <a name="configure-an-endpoint-toooptimize-media-streaming-in-hello-azure-content-delivery-network-from-akamai"></a>Configurar un punto de conexión toooptimize streaming multimedia en red de entrega de contenido de Azure de Akamai Hola
  
-Puede configurar el punto de conexión de la red de entrega de contenido (CDN) para optimizar la entrega de archivos grandes a través de Azure Portal. También puede utilizar nuestras API de REST o cualquiera de los SDK de cliente para hacer esto. En los pasos siguientes se muestra el proceso a través de Azure Portal:
+Puede configurar la entrega de toooptimize de punto de conexión de entrega de contenido (CDN) de red para archivos grandes a través del portal de Azure de Hola. También puede usar nuestras API de REST o cualquiera de Hola cliente SDK toodo esto. Hello pasos siguientes muestran proceso Hola a través de hello portal de Azure:
 
-1. Para agregar un nuevo punto de conexión, en la página **Perfil de CDN**, seleccione **Punto de conexión**.
+1. un nuevo extremo en hello tooadd **perfil de CDN** página, seleccione **punto de conexión**.
   
     ![Nuevo punto de conexión](./media/cdn-media-streaming-optimization/01_Adding.png)
 
-2. En la lista desplegable **Optimizado para**, seleccione **Streaming multimedia de vídeo a petición** para los recursos de vídeo bajo demanda. Si realiza una combinación de streaming en vivo y bajo demanda, seleccione **Streaming multimedia general**.
+2. Hola **optimizado para** lista desplegable, seleccione **vídeo de transmisión por secuencias de multimedia de petición** para los activos de vídeo bajo demanda. Si realiza una combinación de streaming en vivo y bajo demanda, seleccione **Streaming multimedia general**.
 
     ![Streaming seleccionado](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
-Después de crear el punto de conexión, aplica la optimización para todos los archivos que coincidan con determinados criterios. En la sección siguiente se describe este proceso. 
+Después de crear el punto de conexión de hello, se aplica la optimización de Hola para todos los archivos que cumplan ciertos criterios. Hola siguiente sección describe este proceso. 
  
-## <a name="media-streaming-optimizations-for-the-azure-content-delivery-network-from-akamai"></a>Optimizaciones del streaming multimedia para Azure Content Delivery Network de Akamai
+## <a name="media-streaming-optimizations-for-hello-azure-content-delivery-network-from-akamai"></a>Optimizaciones de red de entrega de contenido de Azure de Akamai Hola la transmisión por secuencias
  
 La optimización del streaming multimedia de Akamai es eficaz para el streaming multimedia en vivo o de vídeo bajo demanda que usa fragmentos multimedia individuales para la entrega. Este proceso es diferente a la transferencia de un solo recurso de gran tamaño a través de descarga progresiva o mediante solicitudes de intervalo de bytes. Para obtener información sobre ese estilo de entrega multimedia, vea [Optimización de archivos grandes](cdn-large-file-optimization.md).
 
 
-Los tipos de optimización de entrega multimedia general o de vídeo bajo demanda usan una red CDN con optimizaciones de back-end para entregar los recursos multimedia más rápidamente. También usan configuraciones para recursos multimedia en función de procedimientos recomendados aprendidos con el tiempo.
+Hello general vídeo bajo demanda o entrega multimedia entrega optimización tipos de medios utilizan el CDN con recursos multimedia de optimizaciones de back-end toodeliver con mayor rapidez. También usan configuraciones para recursos multimedia en función de procedimientos recomendados aprendidos con el tiempo.
 
 ### <a name="caching"></a>Almacenamiento en caché
 
-Si Azure Content Delivery Network de Akamai detecta que el recurso es un fragmento o manifiesto de streaming, usa diferentes tiempos de expiración de almacenamiento en caché que la entrega web general. (Vea la lista completa en la tabla siguiente). Como siempre, se respetan los encabezados Cache-Control o Expires enviados desde el origen. Si el recurso no es un recurso multimedia, almacena en caché mediante los tiempos de expiración para la entrega web general.
+Si Hola red de entrega de contenido de Azure de Akamai detecta que dicho activo hello es un manifiesto de transmisión por secuencias o fragmento, usa distintos tiempos de expiración de almacenamiento en caché de entrega de web general. (Vea la lista completa de hello en hello en la tabla siguiente). Como siempre, se respetan cache-control o encabezados Expires enviados desde el origen de Hola. Si Hola activo no es un recurso multimedia, almacena en caché mediante el uso de tiempos de expiración de hello para la entrega de web general.
 
-El tiempo de almacenamiento en caché negativo corto es útil para la descarga de origen cuando muchos usuarios solicitan un fragmento que no existe todavía. Un ejemplo es una transmisión en directo en la que los paquetes no están disponibles desde el origen en ese segundo. Un intervalo de almacenamiento en caché más largo también ayuda a descargar solicitudes del origen, ya que el contenido de vídeo no suele modificarse.
+tiempo de almacenamiento en caché negativo corto Hello es útil para la descarga de origen cuando muchos usuarios solicitan un fragmento que no existe todavía. Un ejemplo es una secuencia en directo que paquetes de saludo no están disponibles desde el origen de hello ese segundo. intervalo de almacenamiento en caché ya Hello también ayuda a descargar las solicitudes desde el origen de hello porque normalmente no se modifique el contenido de vídeo.
  
 
 |    | General<br> web<br>entrega | General<br> medios<br> streaming | Vídeo bajo demanda <br>medios<br> streaming  
@@ -67,15 +67,15 @@ Almacenamiento en caché: negativo <br> HTTP 204, 305, 404, <br> y 405 | None | 
  
 ### <a name="deal-with-origin-failure"></a>Tratamiento del error de origen  
 
-La entrega multimedia general y la entrega multimedia de vídeo bajo demanda también tienen tiempo de espera de origen y un registro de reintentos basado en los procedimientos recomendados para patrones de solicitud típicos. Por ejemplo, dado que la entrega multimedia general es para la entrega multimedia en vivo y de vídeo bajo demanda, usa un tiempo de espera de conexión más corto debido a la importancia intrínseca del tiempo del streaming en vivo.
+La entrega multimedia general y la entrega multimedia de vídeo bajo demanda también tienen tiempo de espera de origen y un registro de reintentos basado en los procedimientos recomendados para patrones de solicitud típicos. Por ejemplo, como entrega multimedia general es para en vivo y entrega de medios de vídeo bajo demanda, usa un tiempo de espera de conexión más corta debido toohello naturaleza de sujetos a limitación temporal de streaming en vivo.
 
-Cuando se agota el tiempo de espera de una conexión, la red CDN lo intenta un número de veces antes de enviar al cliente un error de "504 - Tiempo de espera agotado para la puerta de enlace". 
+Cuando se agota el tiempo de espera de una conexión, CDN Hola vuelve a intentar un número de veces antes de enviar a un cliente de toohello de error de "504: tiempo de espera de puerta de enlace". 
 
-Cuando un archivo cumple la lista de condiciones de tamaño y tipo de archivo, la red CDN usa el comportamiento de streaming multimedia. De lo contrario, se usa la entrega web general.
+Cuando un archivo coincide con la lista de condiciones de tipo y el tamaño de los archivos de hello, CDN Hola usa un comportamiento de hello para la transmisión por secuencias. De lo contrario, se usa la entrega web general.
    
 ### <a name="conditions-for-media-streaming-optimization"></a>Condiciones para la optimización de streaming multimedia 
 
-En la tabla siguiente se enumera el conjunto de criterios que se deben cumplir para la optimización de streaming multimedia: 
+Hello en la tabla siguiente enumera conjunto Hola de criterios toobe satisfecho para la optimización de transmisión por secuencias: 
  
 Tipos de streaming admitidos | Extensiones de archivo  
 --- | ---  
@@ -86,15 +86,15 @@ Streaming con velocidad de transmisión adaptable | /manifest/,/QualityLevels/Fr
   
 
  
-## <a name="media-streaming-optimizations-for-the-azure-content-delivery-network-from-verizon"></a>Optimizaciones del streaming multimedia para Azure Content Delivery Network de Verizon
+## <a name="media-streaming-optimizations-for-hello-azure-content-delivery-network-from-verizon"></a>Optimizaciones de red de entrega de contenido de Azure desde Verizon Hola la transmisión por secuencias
 
-Azure Content Delivery Network de Verizon entrega recursos de streaming multimedia directamente mediante el tipo de optimización de entrega web general. Algunas características en la red CDN ayudan directamente en la entrega de recursos multimedia de forma predeterminada.
+Hola red de entrega de contenido de Azure desde Verizon ofrece a recursos de multimedia de transmisión por secuencias directamente mediante el tipo de optimización de entrega de hello web general. Algunas de las características de red CDN Hola assist directamente en la entrega de recursos multimedia de forma predeterminada.
 
 ### <a name="partial-cache-sharing"></a>Uso compartido de caché parcial
 
-El uso compartido de caché parcial permite que la red CDN entregue contenido parcialmente almacenado en caché a las nuevas solicitudes. Por ejemplo, si la primera solicitud a la red CDN produce un error de caché, la solicitud se envía al origen. Aunque este contenido incompleto se cargue en la memoria caché de la red CDN, las demás solicitudes a la red CDN pueden empezar a obtener estos datos. 
+Uso compartido de caché parcial permite que las solicitudes de contenido toonew de hello CDN tooserve parcialmente en caché. Por ejemplo, si Hola primera solicitud toohello CDN da como resultado un error de caché, Hola se envía solicitud toohello origen. Aunque este contenido incompleta se carga en memoria caché CDN Hola, otro toohello solicitudes CDN puede empezar a recibir estos datos. 
 
 ### <a name="cache-fill-wait-time"></a>Tiempo de espera de relleno de caché
 
- La característica del tiempo de espera de relleno de caché exige al servidor perimetral mantener todas las solicitudes posteriores para el mismo recurso hasta que los encabezados de respuesta HTTP lleguen desde el servidor de origen. Si los encabezados de respuesta HTTP del servidor de origen llegan antes de que el temporizador expire, todas las solicitudes colocadas en espera se sirven desde la memoria caché creciente. Al mismo tiempo, la memoria caché se rellena con datos del origen. De forma predeterminada, el tiempo de espera de relleno de caché se establece en 3.000 milisegundos. 
+ característica de tiempo de espera de relleno de caché de Hello fuerza hello borde server toohold todas las solicitudes subsiguientes para Hola mismo recurso hasta que la respuesta HTTP encabezados proceden del servidor de origen Hola. Si los encabezados de respuesta HTTP desde el origen de hello llegan antes de que expire el temporizador de hello, todas las solicitudes que se han puesto en espera se sirven de hello aumentando la memoria caché. En hello mismo tiempo, hello caché se llena con datos de origen de Hola. De forma predeterminada, el tiempo de espera de relleno de caché de Hola se establece too3, 000 milisegundos. 
 

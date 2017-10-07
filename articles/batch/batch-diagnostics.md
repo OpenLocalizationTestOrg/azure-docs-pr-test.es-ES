@@ -1,5 +1,5 @@
 ---
-title: "Habilitación del registro de diagnóstico en eventos de Batch - Azure | Microsoft Docs"
+title: "registro de diagnóstico para eventos de lote - Azure aaaEnable | Documentos de Microsoft"
 description: "Registre y analice los eventos de registro de diagnóstico de los recursos de la cuenta de Azure Batch como tareas y grupos."
 services: batch
 documentationcenter: 
@@ -15,41 +15,41 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9d03303a3e857e9303f40cc6de5c32b5a51d8f8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Eventos de registro para la evaluación de diagnósticos y la supervisión de soluciones de Batch
 
-Como ocurre con muchos de los servicios de Azure, el servicio Batch emite eventos de registro para determinados recursos mientras dure el recurso. Puede habilitar los registros de diagnóstico de Azure Batch para registrar los eventos de los recursos, como los grupos y las tareas y, después, utilizar los registros para la evaluación y supervisión de diagnóstico. En los registros de diagnóstico de Batch se incluyen eventos como la creación de grupos, la eliminación de grupos, el inicio de tareas y la finalización de tareas, entre otros.
+Como ocurre con muchos servicios de Azure, Hola servicio por lotes emite eventos de registro para determinados recursos durante Hola duración del recurso de Hola. Puede habilitar los eventos de toorecord registros de diagnóstico de Azure Batch para recursos, como los grupos y las tareas y, a continuación, usar los registros de Hola para evaluación de diagnóstico y supervisión. En los registros de diagnóstico de Batch se incluyen eventos como la creación de grupos, la eliminación de grupos, el inicio de tareas y la finalización de tareas, entre otros.
 
 > [!NOTE]
-> En este artículo se explica el registro de eventos para los propios recursos de la cuenta de Batch, no lo datos de salida de tareas y trabajos. Para más información sobre el almacenamiento de los datos de salida de trabajos y tareas, consulte [Almacenamiento de la salida de trabajos y tareas de Azure Batch](batch-task-output.md).
+> En este artículo se explica el registro de eventos para los propios recursos de la cuenta de Batch, no lo datos de salida de tareas y trabajos. Para obtener más información sobre cómo almacenar los datos de salida de hello de sus trabajos y tareas, consulte [salida de trabajos y tareas de lote de Azure se conservan](batch-task-output.md).
 > 
 > 
 
 ## <a name="prerequisites"></a>Requisitos previos
 * [Una cuenta de Azure Batch](batch-account-create-portal.md)
-* [Una cuenta de Azure Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account)
+* [cuenta de Azure Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account)
   
-  Para conservar los registros de diagnóstico de Batch, es preciso crear la cuenta de Azure Storage en la que Azure va a almacenar los registros. Especifique esta cuenta de Storage cuando [habilite el registro de diagnóstico](#enable-diagnostic-logging) para su cuenta de Batch. La cuenta de Storage que especifique al habilitar la recopilación de registros no es la misma que la cuenta de almacenamiento vinculada a la que se hace referencia en los artículos sobre [paquetes de aplicación](batch-application-packages.md) y [persistencia de salida de tarea](batch-task-output.md).
+  registros de diagnóstico de toopersist por lotes, debe crear una cuenta de almacenamiento de Azure que Azure almacenará Hola registros. Especifique esta cuenta de Storage cuando [habilite el registro de diagnóstico](#enable-diagnostic-logging) para su cuenta de Batch. Hola cuenta de almacenamiento que especifique cuando se habilita la recopilación de registros es Hola mismo no como un hello tooin que se hace referencia de cuenta de almacenamiento vinculadas [paquetes de aplicación](batch-application-packages.md) y [persistencia de salida de la tarea](batch-task-output.md) artículos.
   
   > [!WARNING]
-  > Se le **cobra** por los datos almacenados en su cuenta de Azure Storage. Aquí se incluyen los registros de diagnóstico que se describen en este artículo. Téngalo en cuenta al diseñar su [directiva de retención de registro](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md).
+  > Está **cobra** para datos de hello almacenados en su cuenta de almacenamiento de Azure. Esto incluye los registros de diagnóstico Hola descritos en este artículo. Téngalo en cuenta al diseñar su [directiva de retención de registro](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md).
   > 
   > 
 
 ## <a name="enable-diagnostic-logging"></a>Activación del registro de diagnóstico
-El registro de diagnóstico no está habilitado de manera predeterminada en la cuenta de Batch. Por consiguiente, es preciso habilitarlo explícitamente en cada cuenta de Batch que se desea supervisar:
+El registro de diagnóstico no está habilitado de manera predeterminada en la cuenta de Batch. Debe habilitar explícitamente el registro de diagnóstico para cada cuenta de lote que desee toomonitor:
 
-[Cómo habilitar la recopilación de registros de diagnóstico](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)
+[¿Cómo tooenable colección de registros de diagnóstico](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)
 
-Se recomienda leer toda el artículo [Información general sobre los registros de diagnóstico de Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) para conocer no solo cómo habilitar el registro, sino también las categorías de registro que admiten los diversos servicios de Azure. Por ejemplo, actualmente Azure Batch admite una categoría de registro: **registros de servicio**.
+Le recomendamos que lea Hola completa [información general de Azure registros de diagnóstico](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) artículo toogain entender no solo cómo tooenable registro pero Hola registro categorías admite Hola varios servicios de Azure. Por ejemplo, actualmente Azure Batch admite una categoría de registro: **registros de servicio**.
 
 ## <a name="service-logs"></a>Registros de servicios
-Los registros de servicio de Azure Batch contienen los eventos emitidos por Azure Batch mientras dure un recurso de Batch como un grupo o una tarea. Cada evento que emite Batch se almacena en la cuenta de Storage especificada en formato JSON. Por ejemplo, este es el cuerpo de un **evento de creación de grupos** de ejemplo:
+Registros de servicio de Azure por lotes contienen eventos emitidos por el servicio de Azure Batch Hola durante la duración de Hola de un recurso de proceso por lotes como un grupo o una tarea. Cada evento emitido por lote se almacena en hello especificada cuenta de almacenamiento en formato JSON. Por ejemplo, esto es cuerpo Hola de las muestras **eventos de creación de grupo de**:
 
 ```json
 {
@@ -73,10 +73,10 @@ Los registros de servicio de Azure Batch contienen los eventos emitidos por Azur
 }
 ```
 
-Cada cuerpo del evento reside en un archivo .json de la cuenta de Azure Storage especificada. Si desea acceder directamente a los registros, puede revisar el [esquema de registros de diagnóstico en la cuenta de almacenamiento](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+Cada cuerpo de evento reside en un .json archivo Hola especifica la cuenta de almacenamiento de Azure. Si desea tooaccess Hola registros directamente, es recomendable hello tooreview [esquema de registros de diagnóstico en la cuenta de almacenamiento de hello](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
 
 ## <a name="service-log-events"></a>Eventos del registro del servicio
-Actualmente, el servicio Batch emite los siguientes eventos del registro del servicio. Es posible que la lista no sea exhaustiva, ya que se pueden haber agregado eventos adicionales desde la última vez que se actualizó este artículo.
+Hola servicio por lotes actualmente emite Hola después de los eventos de registro del servicio. Es posible que la lista no sea exhaustiva, ya que se pueden haber agregado eventos adicionales desde la última vez que se actualizó este artículo.
 
 | **Eventos del registro del servicio** |
 | --- |
@@ -90,14 +90,14 @@ Actualmente, el servicio Batch emite los siguientes eventos del registro del ser
 | [Error en la tarea][task_fail] |
 
 ## <a name="next-steps"></a>Pasos siguientes
-Además de almacenar los eventos de registro de diagnóstico en una cuenta de Azure Storage, los eventos del registro del servicio Batch también se pueden transmitir a un [Centro de eventos de Azure](../event-hubs/event-hubs-what-is-event-hubs.md) y enviarlos a [Azure Log Analytics](../log-analytics/log-analytics-overview.md).
+En eventos de registro de diagnóstico de toostoring de adición de una cuenta de almacenamiento de Azure, también puede transmitir tooan de eventos de registro del servicio por lotes [concentrador de eventos de Azure](../event-hubs/event-hubs-what-is-event-hubs.md)y les envíe demasiado[Azure Log Analytics](../log-analytics/log-analytics-overview.md).
 
-* [Transmita registros de diagnóstico de Azure a centros de eventos](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Transmitir tooEvent centros de registros de diagnóstico de Azure](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
   
-  Transmita eventos de diagnóstico de Batch al servicio de entrada de datos altamente escalable, Event Hubs. Event Hubs puede ingerir millones de eventos por segundo, que posteriormente se pueden transformar y almacenar con cualquier proveedor de análisis en tiempo real.
+  Secuencia de servicio de entrada de lote eventos de diagnóstico toohello datos altamente escalable, los concentradores de eventos. Event Hubs puede ingerir millones de eventos por segundo, que posteriormente se pueden transformar y almacenar con cualquier proveedor de análisis en tiempo real.
 * [Análisis de los registros de diagnóstico de Azure mediante Log Analytics](../log-analytics/log-analytics-azure-storage.md)
   
-  Envíe los registros de diagnóstico a Log Analytics, donde puede analizarlos en el portal de Operations Management Suite (OMS), o bien exportarlos para su análisis en Power BI o Excel.
+  Enviar su tooLog registros de diagnóstico análisis donde puede analizarlas en portal de Operations Management Suite (OMS) de Hola o exportarlos para su análisis en Power BI o Excel.
 
 [pool_create]: https://msdn.microsoft.com/library/azure/mt743615.aspx
 [pool_delete_start]: https://msdn.microsoft.com/library/azure/mt743610.aspx

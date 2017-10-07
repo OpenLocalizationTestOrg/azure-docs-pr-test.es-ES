@@ -1,6 +1,6 @@
 ---
-title: Copia de datos con Oracle como origen o destino mediante Data Factory | Microsoft Docs
-description: Aprenda a copiar datos con una base de datos de Oracle local como origen o destino mediante Azure Data Factory.
+title: "aaaCopy datos de Oracle se realiza mediante la factoría de datos | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocopy datos de base de datos de Oracle que sea de manera local mediante Data Factory de Azure."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
-ms.openlocfilehash: bb6af719fe6f1a30c5933ce4342a4c0c072f3ff4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: adb6d5fbe38e18791616ac77e8179970bbea37fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Copia de datos con una instancia local Oracle como origen o destino mediante Azure Data Factory
-En este artículo se explica el uso de la actividad de copia en Azure Data Factory para mover datos con una base de datos de Oracle local como origen o destino. Se basa en la información general ofrecida en el artículo [Actividades de movimiento de datos](data-factory-data-movement-activities.md).
+Este artículo explica cómo toouse Hola actividad de copia de datos de toomove Data Factory de Azure desde una base de datos de Oracle local. Se basa en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo, que presenta una descripción general de movimiento de datos con la actividad de copia de Hola.
 
 ## <a name="supported-scenarios"></a>Escenarios admitidos
-Puede copiar datos **de una base de datos de Oracle** a los siguientes almacenes de datos:
+Puede copiar datos **desde una base de datos de Oracle** toohello siguientes almacenes de datos:
 
 [!INCLUDE [data-factory-supported-sink](../../includes/data-factory-supported-sinks.md)]
 
-Puede copiar datos de los siguientes almacenes de datos **a una base de datos de Oracle**:
+Puede copiar los datos de hello siguientes almacenes de datos **tooan base de datos de Oracle**:
 
 [!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Requisitos previos
-Data Factory admite la conexión a orígenes de Oracle locales mediante la puerta de enlace de administración de datos. Consulte el artículo [Data Management Gateway](data-factory-data-management-gateway.md) para más información acerca de la puerta de enlace de administración de datos y el artículo [Movimiento de datos entre orígenes locales y la nube con la puerta de enlace de administración de datos](data-factory-move-data-between-onprem-and-cloud.md) para obtener instrucciones detalladas sobre cómo configurar la puerta de enlace de una canalización de datos para mover los datos.
+Factoría de datos admite conexión orígenes de Oracle de tooon locales mediante Hola Data Management Gateway. Vea [Data Management Gateway](data-factory-data-management-gateway.md) toolearn artículo acerca de Data Management Gateway y [mover datos desde local toocloud](data-factory-move-data-between-onprem-and-cloud.md) artículo para obtener instrucciones paso a paso sobre cómo configurar la puerta de enlace de hello una canalización de datos datos de toomove.
 
-La puerta de enlace es necesaria incluso si Oracle está hospedado en una máquina virtual de IaaS de Azure. Puede instalar la puerta de enlace en la misma máquina virtual de IaaS como almacén de datos o en una máquina virtual diferente, siempre y cuando la puerta de enlace se pueda conectar a la base de datos.
+Puerta de enlace es necesaria incluso aunque hello Oracle hospedado en una VM de IaaS de Azure. Puede instalar la puerta de enlace de hello en Hola mismo IaaS VM como datos de hello almacenar o en una máquina virtual diferente siempre que la puerta de enlace de Hola pueden conectar toohello base de datos.
 
 > [!NOTE]
 > Consulte [Solución de problemas de la puerta de enlace](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) para obtener sugerencias para solucionar problemas de conexión o puerta de enlace.
@@ -43,7 +43,7 @@ La puerta de enlace es necesaria incluso si Oracle está hospedado en una máqui
 ## <a name="supported-versions-and-installation"></a>Versiones compatibles e instalación
 Este conector de Oracle admite dos versiones de controladores:
 
-- **Controlador de Microsoft para Oracle (recomendado)**: a partir de Data Management Gateway versión 2.7, un controlador de Microsoft para Oracle se instala automáticamente junto con la puerta de enlace, por lo que no será necesario realizar ningún control adicional en el controlador para establecer la conectividad con Oracle y podrá también experimentar un mejor rendimiento de copia mediante este controlador. Se admiten las siguientes versiones de bases de datos de Oracle:
+- **Controlador de Microsoft para Oracle (recomendado)**: a partir de Data Management Gateway versión 2.7, un controlador de Microsoft para Oracle se instala automáticamente junto con la puerta de enlace de hello, por lo que no necesita tooadditionally identificador hello controlador en orden tooestablish conectividad tooOracle y, también puede experimentar un mejor rendimiento de copia con este controlador. Se admiten las siguientes versiones de bases de datos de Oracle:
     - Oracle 12c R1 (12.1)
     - Oracle 11g R1, R2 (11.1, 11.2)
     - Oracle 10g R1, R2 (10.1, 10.2)
@@ -51,44 +51,44 @@ Este conector de Oracle admite dos versiones de controladores:
     - Oracle 8i R3 (8.1.7)
 
 > [!IMPORTANT]
-> Actualmente, el controlador de Microsoft para Oracle solo permite copiar datos de Oracle, pero no escribir en Oracle. Y tenga en cuenta que la funcionalidad de conexión de prueba de la pestaña Diagnósticos de Data Management Gateway. Como alternativa, puede usar al Asistente para copiar para validar la conectividad.
+> Controlador de Microsoft para Oracle sólo admite actualmente copiaría datos de Oracle, pero no escribir tooOracle. Y capacidad de conexión de prueba de nota hello en la pestaña de diagnóstico de puerta de enlace de administración de datos no es compatible con este controlador. Como alternativa, puede usar la conectividad de Hola de hello copia Asistente toovalidate.
 >
 
-- **Proveedor de datos de Oracle para. NET:** también es posible usar el proveedor de datos de Oracle para copiar datos desde Oracle o en Oracle. Este componente se incluye en [Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/) (Componentes de acceso a datos Oracle para Windows). Instale la versión adecuada (32/64 bits) en la máquina en la que está instalada la puerta de enlace. [Proveedor de datos de Oracle para NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) puede tener acceso a bases de datos Oracle 10g Release 2 o posterior.
+- **Proveedor de datos de Oracle para. NET:** también puede elegir el proveedor de datos de Oracle toocopy datos de toouse de / tooOracle. Este componente se incluye en [Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/) (Componentes de acceso a datos Oracle para Windows). Instale la versión adecuada de hello (32 o 64 bits) en la máquina de Hola donde se instala la puerta de enlace de Hola. [Proveedor de datos de Oracle .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) puede tener acceso a tooOracle base de datos 10 g versión 2 o posterior.
 
-    Si elige XCopy Installation (Instalación de XCopy), siga los pasos del archivo readme.htm. Se recomienda elegir el programa de instalación con la interfaz de usuario (no puede ser una de XCopy).
+    Si elige "Instalación de XCopy", siga los pasos de hello readme.htm. Se recomienda que elegir a instalador Hola con interfaz de usuario (no-XCopy uno).
 
-    Después de instalar el proveedor, **reinicie** el servicio de host de la puerta de enlace de administración de datos en la máquina con el applet Servicios o el Administrador de configuración de la puerta de enlace de administración de datos.  
+    Después de instalar el proveedor de hello, **reiniciar** Hola servicio de host de Data Management Gateway en su equipo con servicios de applet (u) Administrador de configuración de Data Management Gateway.  
 
-Si utiliza el asistente para copia para crear la canalización de copia, el tipo de controlador se determinará automáticamente. El controlador de Microsoft se usará de forma predeterminada, a menos que la versión de la puerta de enlace sea inferior a 2.7 o elija Oracle como receptor.
+Si utiliza copia Asistente tooauthor Hola copia canalización, tipo de controlador de hello será determina automáticamente. El controlador de Microsoft se usará de forma predeterminada, a menos que la versión de la puerta de enlace sea inferior a 2.7 o elija Oracle como receptor.
 
 ## <a name="getting-started"></a>Introducción
 Puede crear una canalización con una actividad de copia que mueva datos desde una base de datos de Oracle local o hacia ella mediante el uso de diferentes herramientas o API.
 
-La manera más fácil de crear una canalización es usar el **Asistente para copia**. Consulte [Tutorial: crear una canalización con la actividad de copia mediante el Asistente para copia de Data Factory](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial rápido sobre la creación de una canalización mediante el Asistente para copiar datos.
+toocreate de manera más fácil de Hello una canalización es hello de toouse **Asistente para copiar**. Vea [Tutorial: crear una canalización mediante el Asistente para copiar](data-factory-copy-data-wizard-tutorial.md) para ver un tutorial sobre cómo crear una canalización mediante el Asistente para datos de copia de hello rápido.
 
-También puede usar las herramientas siguientes para crear una canalización: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **plantilla de Azure Resource Manager**, **API de .NET** y **API de REST**. Consulte el [tutorial de actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso sobre cómo crear una canalización con una actividad de copia.
+También puede usar Hola después herramientas toocreate una canalización: **portal de Azure**, **Visual Studio**, **Azure PowerShell**, **plantilla del Administrador de recursos de Azure** , **API de .NET**, y **API de REST**. Vea [tutorial de la actividad de copia](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) para obtener instrucciones paso a paso toocreate una canalización con una actividad de copia.
 
-Tanto si usa las herramientas como las API, realice los pasos siguientes para crear una canalización que mueva datos de un almacén de datos de origen a un almacén de datos receptor:
+Si usa herramientas de Hola o las API, realizar Hola siguiendo los pasos toocreate una canalización que mueve el almacén de datos del receptor de tooa del almacén de datos desde un origen de datos:
 
 1. Crear una **factoría de datos**. Una factoría de datos puede contener una o más canalizaciones. 
-2. Cree **servicios vinculados** para vincular almacenes de datos de entrada y salida a la factoría de datos. Por ejemplo, si copia datos de una base de datos de Oracle a Azure Blob Storage, crea dos servicios vinculados para vincular la base de datos de Oracle y la cuenta de Azure Storage a su factoría de datos. Para conocer las propiedades de los servicios vinculados que son específicas de Oracle, consulte la sección [Propiedades del servicio vinculado](#linked-service-properties).
-3. Cree **conjuntos de datos** con el fin de representar los datos de entrada y salida para la operación de copia. En el ejemplo mencionado en el último paso, cree un conjunto de datos para especificar la tabla de la base de datos de Oracle que contiene los datos de entrada. Cree también otro conjunto de datos para especificar el contenedor de blobs y la carpeta que contiene los datos copiados de la base de datos de Oracle. Para conocer las propiedades del conjunto de datos que son específicas de Oracle, consulte la sección [Propiedades del conjunto de datos](#dataset-properties).
-4. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. En el ejemplo mencionado anteriormente, se usa OracleSource como origen y BlobSink como receptor para la actividad de copia. De igual forma, si realiza la copia de Azure Blob Storage a Oracle Database, usa BlobSource y OracleSink en la actividad de copia. Para conocer las propiedades de la actividad de copia que son específicas de la base de datos de Oracle, consulte la sección [Propiedades de la actividad de copia](#copy-activity-properties). Para obtener más información sobre cómo usar un almacén de datos como origen o receptor, haga clic en el vínculo de la sección anterior para el almacén de datos. 
+2. Crear **servicios vinculados** factoría de datos de tooyour de almacenes de datos de entrada y salida de toolink. Por ejemplo, si va a copiar datos desde un tooan de base de datos de Oralce almacenamiento de blobs de Azure, cree dos toolink servicios vinculados su base de datos de Oracle y la factoría de datos de tooyour de cuenta de almacenamiento de Azure. Para las propiedades de servicio vinculado que son tooOracle específico, consulte [vinculado propiedades del servicio](#linked-service-properties) sección.
+3. Crear **conjuntos de datos** toorepresent de entrada y salida la operación de copia de datos de Hola. En el ejemplo de Hola mencionado en el último paso de hello, creará una tabla de hello toospecify de conjunto de datos en la base de datos de Oracle que contiene datos de entrada de Hola. Crear contenedor de blobs Hola de otro conjunto de datos toospecify y carpeta Hola que contiene datos de hello copiados de Hola de base de datos de Oracle. Para las propiedades de conjunto de datos que son tooOracle específico, consulte [propiedades de conjunto de datos](#dataset-properties) sección.
+4. Cree una **canalización** con una actividad de copia que tome como entrada un conjunto de datos y un conjunto de datos como salida. En el ejemplo de Hola que se ha mencionado anteriormente, use OracleSource como un origen y BlobSink como un receptor para la actividad de copia de Hola. De forma similar, si va a copiar desde la base de datos del almacenamiento de blobs de Azure tooOracle, usar BlobSource y OracleSink de actividad de copia de Hola. Para copiar propiedades de actividad que son la base de datos tooOracle específica, consulte [copiar propiedades de la actividad](#copy-activity-properties) sección. Para obtener detalles sobre cómo toouse un almacén de datos como un origen o un receptor, haga clic en el vínculo de hello en la sección anterior de hello para el almacén de datos. 
 
-Cuando se usa el Asistente, se crean automáticamente definiciones de JSON para estas entidades de Data Factory (servicios vinculados, conjuntos de datos y la canalización). Al usar herramientas o API (excepto la API de .NET), se definen estas entidades de Data Factory con el formato JSON.  Para ver ejemplos con definiciones de JSON de entidades de Data Factory que se usan para copiar datos a una base de datos de Oracle local o desde ella, consulte la sección [Ejemplos de JSON](#json-examples-for-copying-data-to-and-from-oracle-database) de este artículo.
+Cuando se utiliza el Asistente de hello, las definiciones de JSON para estas entidades de la factoría de datos (servicios vinculados, conjuntos de datos y canalización Hola) se crean automáticamente para usted. Al usar herramientas y API (excepto la API. NET), se definen estas entidades de la factoría de datos con formato JSON de Hola.  Para obtener ejemplos con definiciones de JSON para entidades de la factoría de datos que son utilizados toocopy datos hacia y desde una base de datos de Oracle local, vea [ejemplos JSON](#json-examples-for-copying-data-to-and-from-oracle-database) sección de este artículo.
 
-Las secciones siguientes proporcionan detalles sobre las propiedades JSON que se usan para definir entidades de Data Factory:
+Hola las secciones siguientes proporciona detalles acerca de las propiedades JSON que son entidades de factoría de datos de uso toodefine:
 
 ## <a name="linked-service-properties"></a>Propiedades del servicio vinculado
-En la tabla siguiente se proporciona la descripción de los elementos JSON específicos al servicio vinculado de Oracle.
+Hello en la tabla siguiente proporciona la descripción del servicio JSON elementos específicos tooOracle vinculado.
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| type |La propiedad type debe establecerse en: **OnPremisesOracle** |Sí |
-| driverType | Especifique qué controlador usar para copiar datos en bases de datos de Oracle o desde ellas. Los valores permitidos son **Microsoft** u **ODP** (valor predeterminado). Consulte la sección [Versiones compatibles e instalación](#supported-versions-and-installation) para obtener información detallada sobre los controladores. | No |
-| connectionString | Especifique la información necesaria para conectarse a la instancia de Base de datos de Oracle para la propiedad connectionString. | Sí |
-| gatewayName | Nombre de la puerta de enlace que se usa para conectarse al servidor de Oracle local |Sí |
+| type |propiedad de tipo Hello debe establecerse en: **OnPremisesOracle** |Sí |
+| driverType | Especificar qué controlador toouse toocopy datos / tooOracle base de datos. Los valores permitidos son **Microsoft** u **ODP** (valor predeterminado). Consulte la sección [Versiones compatibles e instalación](#supported-versions-and-installation) para obtener información detallada sobre los controladores. | No |
+| connectionString | Especifique la información necesaria la instancia de base de datos de Oracle toohello tooconnect para la propiedad connectionString de Hola. | Sí |
+| gatewayName | Nombre de puerta de enlace de Hola que es usado tooconnect toohello servidor Oracle local |Sí |
 
 **Ejemplo: Uso del controlador de Microsoft**
 ```json
@@ -107,7 +107,7 @@ En la tabla siguiente se proporciona la descripción de los elementos JSON espec
 
 **Ejemplo: uso del controlador de ODP**
 
-Consulte [este sitio](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/) para conocer los formatos permitidos.
+Consulte demasiado[este sitio](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/) para hello formatos permitido.
 
 ```json
 {
@@ -124,45 +124,45 @@ User Id=<username>;Password=<password>;",
 ```
 
 ## <a name="dataset-properties"></a>Propiedades del conjunto de datos
-Para una lista completa de las secciones y propiedades disponibles para definir conjuntos de datos, vea el artículo [Creación de conjuntos de datos](data-factory-create-datasets.md). Las secciones como structure, availability y policy de un conjunto de datos JSON son similares en todos los tipos de conjunto de datos (Oracle, Azure Blob, Azure Table, etc.).
+Para obtener una lista completa de secciones y propiedades disponibles para definir conjuntos de datos, vea hello [crear conjuntos de datos](data-factory-create-datasets.md) artículo. Las secciones como structure, availability y policy de un conjunto de datos JSON son similares en todos los tipos de conjunto de datos (Oracle, Azure Blob, Azure Table, etc.).
 
-La sección typeProperties es diferente en cada tipo de conjunto de datos y proporciona información acerca de la ubicación de los datos en el almacén de datos. La sección typeProperties del conjunto de datos de tipo OracleTable tiene las propiedades siguientes:
+sección de typeProperties Hello es diferente para cada tipo de conjunto de datos y proporciona información acerca de la ubicación de Hola de hello datos Hola almacén de datos. sección de typeProperties Hello para el conjunto de datos de Hola de tipo OracleTable tiene Hola propiedades siguientes:
 
 | Propiedad | Descripción | Obligatorio |
 | --- | --- | --- |
-| tableName |Nombre de la tabla en la instancia de Base de datos de Oracle a la que hace referencia el servicio vinculado. |No (si se especifica **oracleReaderQuery** de **OracleSource**) |
+| tableName |Nombre de tabla de Hola Hola base de datos de Oracle que Hola servicio vinculado que hace referencia a. |No (si se especifica **oracleReaderQuery** de **OracleSource**) |
 
 ## <a name="copy-activity-properties"></a>Propiedades de la actividad de copia
-Para ver una lista completa de las secciones y propiedades disponibles para definir actividades, consulte el artículo [Creación de canalizaciones](data-factory-create-pipelines.md). Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
+Para obtener una lista completa de secciones y propiedades disponibles para la definición de actividades, vea hello [crear canalizaciones](data-factory-create-pipelines.md) artículo. Las propiedades (como nombre, descripción, tablas de entrada y salida, y directivas) están disponibles para todos los tipos de actividades.
 
 > [!NOTE]
-> La actividad de copia toma solo una entrada y genera una única salida.
+> Hola actividad de copia toma solo una entrada y produce un único resultado.
 
-Por otra parte, las propiedades disponibles en la sección typeProperties de la actividad varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de orígenes y receptores.
+Mientras que las propiedades disponibles en la sección de typeProperties de Hola de actividad hello varían con cada tipo de actividad. Para la actividad de copia, varían en función de los tipos de Hola de orígenes y receptores.
 
 ### <a name="oraclesource"></a>OracleSource
-En la actividad de copia, si el origen es de tipo **OracleSource**, están disponibles las propiedades siguientes en la sección **typeProperties**:
+En la actividad de copia, cuando el origen de hello es de tipo **OracleSource** Hola propiedades siguientes está disponible en **typeProperties** sección:
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Utilice la consulta personalizada para leer los datos. |Cadena de consulta SQL. Por ejemplo: select * from MyTable. <br/><br/>Si no se especifica, la instrucción SQL que se ejecuta es select * from MyTable. |No (si se especifica **tableName** de **dataset**) |
+| oracleReaderQuery |Usar datos de tooread de hello consulta personalizada. |Cadena de consulta SQL. Por ejemplo: select * from MyTable. <br/><br/>Si no se especifica, Hola instrucción SQL que se ejecuta: seleccione * from MyTable |No (si se especifica **tableName** de **dataset**) |
 
 ### <a name="oraclesink"></a>OracleSink
-**OracleSink** admite las siguientes propiedades:
+**OracleSink** admite Hola propiedades siguientes:
 
 | Propiedad | Descripción | Valores permitidos | Obligatorio |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Tiempo de espera para que la operación de inserción por lotes se complete antes de que se agote el tiempo de espera. |timespan<br/><br/> Ejemplo: 00:30:00 (30 minutos). |No |
-| writeBatchSize |Inserta datos en la tabla SQL cuando el tamaño del búfer alcanza el valor writeBatchSize. |Entero (número de filas) |No (valor predeterminado: 100) |
-| sqlWriterCleanupScript |Especifique una consulta para que se ejecute la actividad de copia de tal forma que se limpien los datos de un segmento específico. |Una instrucción de consulta. |No |
-| sliceIdentifierColumnName |Especifique el nombre de columna para que la rellene la actividad de copia con un identificador de segmentos generado automáticamente, que se usará para limpiar los datos de un segmento específico cuando se vuelva a ejecutar. |Nombre de columna de una columna con el tipo de datos binarios (32). |No |
+| writeBatchTimeout |Tiempo de espera para toocomplete de operación de inserción de lote de hello antes de expirar. |timespan<br/><br/> Ejemplo: 00:30:00 (30 minutos). |No |
+| writeBatchSize |Inserta datos en tablas SQL de hello cuando el tamaño de búfer de hello alcance el valor writeBatchSize. |Entero (número de filas) |No (valor predeterminado: 100) |
+| sqlWriterCleanupScript |Especificar una consulta para tooexecute de actividad de copia de forma que los datos de un determinado segmento se limpian. |Una instrucción de consulta. |No |
+| sliceIdentifierColumnName |Especifique el nombre de columna para la actividad de copia toofill con el identificador de segmento generados automáticamente, que es usado tooclean los datos de un determinado segmento cuando vuelva a ejecutar. |Nombre de columna de una columna con el tipo de datos binarios (32). |No |
 
-## <a name="json-examples-for-copying-data-to-and-from-oracle-database"></a>Ejemplos de JSON para copiar datos a la base de datos de Oracle y desde esta
-En el siguiente ejemplo, se proporcionan definiciones JSON de ejemplo que puede usar para crear una canalización mediante [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Se muestra cómo copiar datos desde una base de datos de Oracle a Azure Blob Storage y viceversa. Sin embargo, los datos se pueden copiar en cualquiera de los receptores indicados [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) mediante la actividad de copia en Azure Data Factory.   
+## <a name="json-examples-for-copying-data-tooand-from-oracle-database"></a>Ejemplos JSON para copiar datos tooand de base de datos de Oracle
+Hello en el ejemplo siguiente se proporciona definiciones de JSON de ejemplo que puede utilizar toocreate una canalización mediante [portal de Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) o [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) o [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Muestran cómo toocopy datos de Oracle tooan la base de datos de almacenamiento de blobs de Azure. Sin embargo, los datos pueden ser tooany copiada de receptores de hello indicadas [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) utilizando Hola actividad de copia de factoría de datos de Azure.   
 
-## <a name="example-copy-data-from-oracle-to-azure-blob"></a>Ejemplo: Copia de datos de Oracle a un blob de Azure
+## <a name="example-copy-data-from-oracle-tooazure-blob"></a>Ejemplo: Copiar los datos de Oracle tooAzure Blob
 
-El ejemplo consta de las siguientes entidades de factoría de datos:
+ejemplo de Hola tiene Hola después de entidades de la factoría de datos:
 
 1. Un servicio vinculado de tipo [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
 2. Un servicio vinculado de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -170,7 +170,7 @@ El ejemplo consta de las siguientes entidades de factoría de datos:
 4. Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. Una [canalización](data-factory-create-pipelines.md) con la actividad de copia que usa [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) como origen y [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) como receptor.
 
-En el ejemplo de copian datos de una tabla de una base de datos de Oracle local en un blob cada hora. Para más información sobre las distintas propiedades usadas en el ejemplo, consulte la documentación de las secciones que vienen a continuación de los ejemplos.
+ejemplo de Hola copia datos de una tabla en un blob de tooa de base de datos de Oracle local cada hora. Para obtener más información sobre varias propiedades utilizadas en el ejemplo de Hola, consulte la documentación en los apartados siguientes a los ejemplos de hello.
 
 **Servicio vinculado de Oracle:**
 
@@ -204,9 +204,9 @@ En el ejemplo de copian datos de una tabla de una base de datos de Oracle local 
 
 **Conjunto de datos de entrada de Oracle:**
 
-El ejemplo supone que ha creado una tabla "MyTable" en Oracle que contiene una columna denominada "timestampcolumn" para los datos de serie temporales.
+ejemplo de Hola se da por supuesto que ha creado una tabla "MyTable" en Oracle y contiene una columna denominada "timestampcolumn" para los datos de serie temporal.
 
-Si se establece "external": "true", se informa al servicio Data Factory que el conjunto de datos es externo a la factoría de datos y que no lo genera ninguna actividad de la factoría de datos.
+Establecer "externo": "true" informa a servicio de factoría de datos de hello ese conjunto de datos de hello es factoría de datos de toohello externo y no se crea una actividad de factoría de datos de Hola.
 
 ```json
 {
@@ -237,7 +237,7 @@ Si se establece "external": "true", se informa al servicio Data Factory que el c
 
 **Conjunto de datos de salida de blob de Azure:**
 
-Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1). La ruta de acceso de la carpeta y el nombre de archivo para el blob se evalúan dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso de la carpeta usa las partes year, month, day y hours de la hora de inicio.
+Los datos se escriben tooa nuevo blob cada hora (frecuencia: hora, intervalo: 1). Hola ruta de acceso y nombre de la carpeta para el blob de Hola se evalúan dinámicamente en función del tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta Hola utiliza elementos de año, mes, día y horas de tiempo de inicio de Hola.
 
 ```json
 {
@@ -297,7 +297,7 @@ Los datos se escriben en un nuevo blob cada hora (frecuencia: hora, intervalo: 1
 
 **Canalización con actividad de copia:**
 
-La canalización contiene una actividad de copia que está configurada para usar los conjuntos de datos de entrada y de salida y está programada para ejecutarse cada hora. En la definición de JSON de canalización, el tipo **source** se establece en **OracleSource** y el tipo **sink**, en **BlobSink**.  La consulta SQL especificada para la propiedad **oracleReaderQuery** selecciona los datos de la última hora que se van a copiar.
+Hello canalización contiene una actividad de copia que está configurado toouse Hola conjuntos de datos de entrada y salida y es toorun programada cada hora. En la definición de JSON de canalización de hello, Hola **origen** tipo está establecido demasiado**OracleSource** y **receptor** tipo está establecido demasiado**BlobSink**.  consulta SQL Hola especificada con **oracleReaderQuery** propiedad selecciona datos Hola Hola más allá de hora toocopy.
 
 ```json
 {  
@@ -346,10 +346,10 @@ La canalización contiene una actividad de copia que está configurada para usar
 }
 ```
 
-## <a name="example-copy-data-from-azure-blob-to-oracle"></a>Ejemplo: Copia de datos de un blob de Azure a Oracle
-En este ejemplo se muestra cómo se copian datos de Azure Blob Storage a una base de datos Oracle local. Sin embargo, se pueden copiar datos **directamente** desde cualquiera de los orígenes indicados [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) mediante la actividad de copia de Azure Data Factory.  
+## <a name="example-copy-data-from-azure-blob-toooracle"></a>Ejemplo: Copiar los datos de Blob de Azure tooOracle
+Este ejemplo muestra cómo toocopy datos desde un almacenamiento de blobs de Azure tooan locales base de datos de Oracle. Sin embargo, se pueden copiar datos **directamente** desde cualquiera de los orígenes de hello indicados [aquí](data-factory-data-movement-activities.md#supported-data-stores-and-formats) utilizando Hola actividad de copia de factoría de datos de Azure.  
 
-El ejemplo consta de las siguientes entidades de factoría de datos:
+ejemplo de Hola tiene Hola después de entidades de la factoría de datos:
 
 1. Un servicio vinculado de tipo [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
 2. Un servicio vinculado de tipo [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -357,7 +357,7 @@ El ejemplo consta de las siguientes entidades de factoría de datos:
 4. Un [conjunto de datos](data-factory-create-datasets.md) de salida de tipo [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
 5. Una [canalización](data-factory-create-pipelines.md) con la actividad de copia que usa [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) como origen y [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) como receptor.
 
-El ejemplo copia datos de un blob a una tabla de una base de datos de Oracle local cada hora. Para más información sobre las distintas propiedades usadas en el ejemplo, consulte la documentación de las secciones que vienen a continuación de los ejemplos.
+ejemplo de Hola copia datos de una tabla de tooa de blob en una base de datos de Oracle local cada hora. Para obtener más información sobre varias propiedades utilizadas en el ejemplo de Hola, consulte la documentación en los apartados siguientes a los ejemplos de hello.
 
 **Servicio vinculado de Oracle:**
 ```json
@@ -374,7 +374,7 @@ El ejemplo copia datos de un blob a una tabla de una base de datos de Oracle loc
 }
 ```
 
-**Servicio vinculado Azure Blob Storage:**
+**Servicio vinculado de almacenamiento de blobs de Azure:**
 ```json
 {
     "name": "StorageLinkedService",
@@ -389,7 +389,7 @@ El ejemplo copia datos de un blob a una tabla de una base de datos de Oracle loc
 
 **Conjunto de datos de entrada de blob de Azure**
 
-Los datos se seleccionan de un nuevo blob cada hora (frecuencia: hora, intervalo: 1). La ruta de acceso de la carpeta y el nombre de archivo para el blob se evalúan dinámicamente según la hora de inicio del segmento que se está procesando. La ruta de acceso de la carpeta usa la parte year, month y day de la hora de inicio y el nombre de archivo, la parte hour. El valor "external": "true" informa al servicio Data Factory que esta tabla es externa a la factoría de datos y no la produce una actividad de la factoría de datos.
+Los datos se seleccionan de un nuevo blob cada hora (frecuencia: hora, intervalo: 1). Hola ruta de acceso y nombre de la carpeta para el blob de Hola se evalúan dinámicamente en función del tiempo de inicio de Hola de sector de Hola que se está procesando. ruta de acceso de carpeta de Hello utiliza year, month y parte del día de la hora de inicio de Hola y el nombre de archivo usa parte de hora de inicio de Hola Hola. "externo": "true" configuración informa a servicio de factoría de datos de Hola que esta tabla es factoría de datos de toohello externos y no se crea una actividad de factoría de datos de Hola.
 
 ```json
 {
@@ -449,7 +449,7 @@ Los datos se seleccionan de un nuevo blob cada hora (frecuencia: hora, intervalo
 
 **Conjunto de datos de salida de Oracle:**
 
-En el ejemplo se supone que ha creado una tabla "MyTable" en Oracle. Cree la tabla en Oracle con el mismo número de columnas que espera que contenga el archivo CSV de Blob. Se agregan nuevas filas a la tabla cada hora.
+ejemplo de Hola se da por supuesto que ha creado una tabla "MyTable" en Oracle. Crear tabla de hello en Oracle con Hola mismo número de columnas, tal como se esperaba toocontain de archivo CSV de Blob de Hola. Se agregan nuevas filas toohello tabla cada hora.
 
 ```json
 {
@@ -470,7 +470,7 @@ En el ejemplo se supone que ha creado una tabla "MyTable" en Oracle. Cree la tab
 
 **Canalización con actividad de copia:**
 
-La canalización contiene una actividad de copia que está configurada para usar los conjuntos de datos de entrada y de salida y está programada para ejecutarse cada hora. En la definición de JSON de canalización, el tipo **source** se establece en **BlobSource** y el tipo **sink**, en **OracleSink**.  
+Hello canalización contiene una actividad de copia que está configurado toouse Hola conjuntos de datos de entrada y salida y está programada toorun cada hora. En la definición de JSON de canalización de hello, Hola **origen** tipo está establecido demasiado**BlobSource** hello y **receptor** tipo está establecido demasiado**OracleSink**.  
 
 ```json
 {  
@@ -522,44 +522,44 @@ La canalización contiene una actividad de copia que está configurada para usar
 ## <a name="troubleshooting-tips"></a>Sugerencias de solución de problemas
 ### <a name="problem-1-net-framework-data-provider"></a>Problema 1: proveedor de datos .NET Framework
 
-Se muestra el siguiente **mensaje de error**:
+Ve a continuación hello **mensaje de error**:
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed”.  
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable toofind hello requested .Net Framework Data Provider. It may not be installed”.  
 
 **Causas posibles:**
 
-1. No se instaló el proveedor de datos de .NET Framework para Oracle.
-2. El proveedor de datos de .NET Framework para Oracle se instaló en .NET Framework 2.0 y no se encuentra en las carpetas de .NET Framework 4.0.
+1. no se instaló el proveedor de datos de .NET Framework para Oracle Hola.
+2. Hola proveedor de datos de .NET Framework para Oracle era too.NET instalado Framework 2.0 y no se encuentra en carpetas de hello .NET Framework 4.0.
 
 **Resolución o solución alternativa:**
 
-1. Si no ha instalado el proveedor de .NET para Oracle, [instálelo](http://www.oracle.com/technetwork/topics/dotnet/downloads/) e intente de nuevo este escenario.
-2. Si recibe el mensaje de error incluso después de instalar el proveedor, lleve a cabo los siguientes pasos:
-   1. Abra la configuración de máquina de .NET 2.0 desde la carpeta: <system disk>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-   2. Busque **Proveedor de datos de Oracle para .NET**; debería encontrar una entrada tal y como se muestra en el siguiente ejemplo, en **system.data** -> **DbProviderFactories**: “<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Proveedor de datos de Oracle para .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
-3. Copie esta entrada en el archivo machine.config en la siguiente carpeta v4.0: <system disk>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config, y cambie la versión a 4.xxx.x.x.
-4. Instale “<Ruta de instalación de ODP.NET>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll” en la caché global de ensamblados (GAC) ejecutando `gacutil /i [provider path]`.## Sugerencias de solución de problemas
+1. Si no ha instalado Hola proveedor .NET para Oracle, [instalarlo](http://www.oracle.com/technetwork/topics/dotnet/downloads/) e intente de nuevo escenario de Hola.
+2. Si recibe el mensaje de error de hello incluso después de instalar el proveedor de hello, Hola lo siguiente:
+   1. Abrir configuración de máquina de .NET 2.0 desde la carpeta de hello: <system disk>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+   2. Busque **proveedor de datos de Oracle para .NET**, y debe ser capaz de toofind una entrada como se muestra en hello según muestra en **system.data** -> **DbProviderFactories**: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Proveedor de datos de oracle para .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
+3. Copie este archivo de entrada toohello machine.config Hola después carpeta v4.0: <system disk>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config y too4.xxx.x.x de versión de Hola de cambio.
+4. Instalar "< ruta de instalación ODP.NET > \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll" en la caché de ensamblados global (GAC) de hello ejecutando `gacutil /i [provider path]`. ## sugerencias para solucionar problemas
 
 ### <a name="problem-2-datetime-formatting"></a>Problema 2: formato de fecha y hora
 
-Se muestra el siguiente **mensaje de error**:
+Ve a continuación hello **mensaje de error**:
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+    Message=Operation failed in Oracle Database with hello following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
 **Resolución o solución alternativa:**
 
-Es posible que deba ajustar la cadena de consulta en la actividad de copia en función de cómo estén configuradas las fechas en la base de datos de Oracle, tal y como se muestra en el ejemplo siguiente (con la función to_date):
+Puede que necesite tooadjust cadena de consulta de hello en la actividad de copia según cómo se configuran las fechas en la base de datos de Oracle, como se muestra en la siguiente Hola ejemplo (mediante la función to_date de hello):
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
 ## <a name="type-mapping-for-oracle"></a>Asignación de tipos para Oracle
-Como se mencionó en el artículo sobre [actividades del movimiento de datos](data-factory-data-movement-activities.md), la actividad de copia realiza conversiones automáticas de los tipos de origen a los tipos de receptor con el siguiente enfoque de dos pasos:
+Como se mencionó en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo actividad de copia realiza conversiones de tipos automática de tipos de toosink de tipos de origen con hello enfoque del paso 2:
 
-1. Conversión de tipos de origen nativos al tipo .NET
-2. Conversión de tipo .NET al tipo del receptor nativo
+1. Convertir del tipo de origen nativo tipos too.NET
+2. Convertir el tipo de receptor de toonative de tipo .NET
 
-Al mover datos de Oracle, se usan las siguientes asignaciones del tipo de datos de Oracle al tipo de .NET, y viceversa.
+Al mover los datos de Oracle, se usa Hola siguiendo las asignaciones del tipo de too.NET del tipo de datos de Oracle y viceversa.
 
 | Tipo de datos de Oracle | Tipo de datos de .NET Framework |
 | --- | --- |
@@ -570,8 +570,8 @@ Al mover datos de Oracle, se usan las siguientes asignaciones del tipo de datos 
 | DATE |DateTime |
 | FLOAT |Decimal, String (si la precisión > 28) |
 | INTEGER |Decimal, String (si la precisión > 28) |
-| INTERVAL YEAR TO MONTH |Int32 |
-| INTERVAL DAY TO SECOND |timespan |
+| INTERVALO año tooMONTH |Int32 |
+| INTERVALO día tooSECOND |TimeSpan |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
@@ -588,13 +588,13 @@ Al mover datos de Oracle, se usan las siguientes asignaciones del tipo de datos 
 | XML |String |
 
 > [!NOTE]
-> Los tipos de datos **INTERVAL YEAR TO MONTH** e **INTERVAL DAY TO SECOND** no se admiten cuando se utiliza el controlador de Microsoft.
+> Tipo de datos **año del intervalo tooMONTH** y **tooSECOND INTERVAL DAY** no se admiten cuando se utiliza el controlador de Microsoft.
 
-## <a name="map-source-to-sink-columns"></a>Asignación de columnas de origen a columnas de receptor
-Para obtener más información sobre la asignación de columnas del conjunto de datos de origen a las del conjunto de datos receptor, consulte [Asignación de columnas de conjunto de datos de Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-toosink-columns"></a>Asignar columnas de origen toosink
+toolearn acerca de la asignación de columnas en toocolumns de conjunto de datos de origen en el conjunto de datos del receptor, consulte [asignar columnas de conjunto de datos de Data Factory de Azure](data-factory-map-columns.md).
 
 ## <a name="repeatable-read-from-relational-sources"></a>Lectura repetible de orígenes relacionales
-Cuando se copian datos desde almacenes de datos relacionales, hay que tener presente la repetibilidad para evitar resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la directiva de reintentos para un conjunto de datos con el fin de que un segmento se vuelva a ejecutar cuando se produce un error. Cuando se vuelve a ejecutar un segmento, debe asegurarse de que los mismos datos se lean sin importar el número de ejecuciones. Consulte [Lectura repetible de orígenes relacionales](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Al copiar datos de almacenes de datos relacionales, tenga repetibilidad en mente tooavoid resultados imprevistos. En Azure Data Factory, puede volver a ejecutar un segmento manualmente. También puede configurar la directiva de reintentos para un conjunto de datos con el fin de que un segmento se vuelva a ejecutar cuando se produce un error. Cuando se vuelve a ejecutar un segmento de cualquier manera, debe toomake seguro de que Hola los mismos datos no se lee importa cómo se ejecuta muchas veces un segmento. Consulte [Lectura repetible de orígenes relacionales](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Rendimiento y optimización
-Consulte [Guía de optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) para más información sobre los factores clave que afectan al rendimiento del movimiento de datos (actividad de copia) en Azure Data Factory y las diversas formas de optimizarlo.
+Vea [guía para la optimización y rendimiento de la actividad de copia](data-factory-copy-activity-performance.md) toolearn acerca de la clave de factores que afectan al rendimiento de movimiento de datos (actividad de copia) en la factoría de datos de Azure y toooptimize de diversas maneras.

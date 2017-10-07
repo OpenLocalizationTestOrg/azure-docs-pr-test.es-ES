@@ -1,6 +1,6 @@
 ---
-title: Puerta de enlace de protocolos de IoT de Azure | Microsoft Docs
-description: "Describe cómo usar una puerta de enlace de protocolo de IoT de Azure para extender el protocolo y las funcionalidades de IoT Hub para permitir que los dispositivos se conecten al centro que usa los protocolos no compatibles con IoT de forma nativa."
+title: puerta de enlace de protocolo de aaaAzure IoT | Documentos de Microsoft
+description: "¿Cómo toouse un IoT de Azure protocolo capacidades de centro de IoT tooextend de puerta de enlace y protocolo compatibilidad tooenable dispositivos tooconnect tooyour concentrador mediante protocolos no admitidos por centro de IoT de forma nativa."
 services: iot-hub
 documentationcenter: 
 author: kdotchkoff
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2017
 ms.author: kdotchko
-ms.openlocfilehash: b2ad2c6f5eeec2f803e2d2f5f98831b551efa8b1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9cfed30149672d8f7e021a9899192105bbcdd400
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # Compatibilidad con protocolos adicionales para centro de IoT Hub
-IoT Hub de Azure admite de forma nativa la comunicación a través de los protocolos MQTT, AMQP y HTTP. En algunos casos, puede que los dispositivos o las puertas de enlace de campo no puedan usar uno de estos protocolos estándar y requerirán la adaptación del mismo. En esos casos, puede usar una puerta de enlace personalizada. Una puerta de enlace personalizada puede habilitar la adaptación de protocolos para los extremos del Centro de IoT reduciendo el tráfico que se origina o finaliza en el Centro de IoT. Puede usar la [Puerta de enlace de protocolos de IoT de Azure](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) como puerta de enlace personalizada para permitir la adaptación de protocolos para el Centro de IoT.
+Centro de IoT de Azure admite de forma nativa la comunicación a través de protocolos de hello MQTT, AMQP y HTTP. En algunos casos, los dispositivos o puertas de enlace de campo podrían no ser capaz de toouse uno de estos protocolos estándar y requerirán la adaptación de protocolo. En esos casos, puede usar una puerta de enlace personalizada. Una puerta de enlace personalizado puede habilitar la adaptación de protocolo para extremos de centro de IoT Hola tráfico tooand centro de IoT de protocolo de puente. Puede usar hello [puerta de enlace de IoT de Azure protocolo](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) como una adaptación de protocolo de puerta de enlace personalizado tooenable para el centro de IoT.
 
 ## Puerta de enlace de protocolos de IoT de Azure
-La puerta de enlace de protocolos de IoT de Azure es un marco para la adaptación de protocolos diseñado para la comunicación bidireccional a gran escala de dispositivos con el Centro de IoT. La puerta de enlace de protocolo es un componente de acceso directo que acepta conexiones de dispositivos a través de un protocolo específico. Une el tráfico al Centro de IoT sobre AMQP 1.0. La puerta de enlace de protocolo de IoT de Azure está disponible como proyecto de software de código abierto para ofrecer flexibilidad para agregar compatibilidad con una variedad de protocolos y versiones de protocolo.
+puerta de enlace de protocolo de Hello IoT de Azure es un marco para la adaptación de protocolo que está diseñado para la comunicación de dispositivos de bidireccional con el centro de IoT de gran escala. puerta de enlace de protocolo de Hello es un componente de acceso directo que acepta conexiones de dispositivos a través de un protocolo específico. Une Hola tráfico tooIoT concentrador en AMQP 1.0. puerta de enlace de protocolo de Hello IoT de Azure está disponible como una flexibilidad de tooprovide del proyecto de software de código abierto para agregar compatibilidad con distintos protocolos y las versiones de protocolo.
 
-Puede implementar la puerta de enlace de protocolo en Azure de forma muy escalable con Azure Service Fabric, los roles de trabajo de Azure Cloud Services o Windows Virtual Machines. Además, la puerta de enlace de protocolos puede implementarse en entornos locales como puertas de enlace de campo.
+Puede implementar la puerta de enlace de protocolo de hello en Azure de una manera altamente escalable mediante Azure Service Fabric, los roles de trabajo de servicios en la nube o máquinas virtuales de Windows. Además, la puerta de enlace de protocolo de hello puede implementarse en entornos locales, como puertas de enlace de campo.
 
-La puerta de enlace de protocolos de IoT de Azure incluye un adaptador de protocolos de MQTT que le permite personalizar el comportamiento del protocolo de MQTT si es necesario. Puesto que IoT Hub proporciona compatibilidad integrada para el protocolo de MQTT v3.1.1, solo debe considerar el uso del adaptador de protocolo MQTT si necesita personalizaciones de protocolo o requisitos específicos para una funcionalidad adicional.
+puerta de enlace de protocolo de Hello IoT de Azure incluye un adaptador de protocolo MQTT que permite toocustomize Hola comportamiento del protocolo MQTT si es necesario. Puesto que el centro de IoT proporciona compatibilidad integrada para el protocolo de hello MQTT v3.1.1, sólo puede utilizar adaptador de protocolo de hello MQTT si son necesarios las personalizaciones de protocolo o requisitos específicos para una funcionalidad adicional.
 
-El adaptador de MQTT también muestra el modelo de programación para la creación de adaptadores de protocolo para otros protocolos. Además, el modelo de programación de puerta de enlace de protocolo de IoT de Azure le permite conectar componentes personalizados para su procesamiento especializado como, por ejemplo, autenticación personalizada, transformaciones de mensajes, compresión y descompresión o cifrado y descifrado de tráfico entre los dispositivos y el IoT Hub.
+adaptador de Hello MQTT también muestra el modelo de programación de hello para la creación de adaptadores de protocolo para otros protocolos. Además, modelo de programación de la puerta de enlace del protocolo de hello IoT de Azure permite especializados tooplug en componentes personalizados para su procesamiento como autenticación personalizada, transformaciones de mensajes, compresión y descompresión o cifrado y descifrado de tráfico entre los dispositivos de Hola y centro de IoT.
 
-Para mayor flexibilidad, la puerta de enlace de protocolos y la implementación de MQTT se ofrecen como proyecto de software de código abierto. Esto le permite personalizar la implementación según sea necesario.
+Para mayor flexibilidad, la puerta de enlace de protocolo de Hola y la implementación de MQTT se proporcionan en un proyecto de software de código abierto. Esto le permite la implementación de hello toocustomize según sea necesario.
 
 ## Pasos siguientes
-Para más información sobre la puerta de enlace de protocolos de IoT de Azure y cómo usarlo e implementarlo como parte de su solución de IoT, vea:
+toolearn más información acerca de la puerta de enlace de protocolo de hello IoT de Azure y cómo toouse e implementar como parte de la solución de IoT, consulte:
 
 * [Repositorio de puerta de enlace de protocolos de IoT de Azure en GitHub](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
 * [Guía para desarrolladores de puerta de enlace de protocolos de IoT de Azure](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
-Para más información acerca de planificación de la implementación del Centro de IoT, consulte:
+toolearn más información acerca de la planeación de la implementación del centro de IoT, vea:
 
 * [Comparación con Event Hubs][lnk-compare]
 * [Escalado, alta disponibilidad y recuperación ante desastres][lnk-scaling]

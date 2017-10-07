@@ -1,6 +1,6 @@
 ---
-title: SDK y recursos de .NET para la API Graph de Azure CosmosDB | Microsoft Docs
-description: "Infórmese acerca de la API Graph de Azure CosmosDB, incluidas las fechas de lanzamiento, las fechas de retirada y los cambios realizados en cada versión."
+title: aaaAzure CosmosDB Graph API .NET SDK & recursos | Documentos de Microsoft
+description: "Infórmese acerca de hello Azure API de Graph CosmosDB como fechas de inicio, fechas de retirada y los cambios realizados entre cada versión."
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 27e24d7a58a7fd9af7a9298d8a7770e80f9b3233
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c6abcb6dfdff3d6e011542ee952868a93056888b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-graph-net-api-download-and-release-notes"></a>API Graph .NET de Azure Cosmos DB: descarga y notas de la versión
 
@@ -26,8 +26,8 @@ ms.lasthandoff: 07/11/2017
 |---|---|
 |**Descarga del SDK**|[NuGet](https://aka.ms/acdbgraphnuget)|
 |**Documentación de la API**|[Documentación de referencia de API de .NET](https://aka.ms/acdbgraphapiref)|
-|**Guía de inicio rápido**|[Azure Cosmos DB: Creación de una aplicación de gráficos con .NET y la API Graph](create-graph-dotnet.md)|
-|**Tutorial**|[Azure CosmosDB: creación de un contenedor con la API Graph](tutorial-develop-graph-dotnet.md)|
+|**Guía de inicio rápido**|[Azure Cosmos DB: Crear una aplicación de graph mediante .NET y Hola API Graph](create-graph-dotnet.md)|
+|**Tutorial**|[Azure CosmosDB: Crear un contenedor con hello API Graph](tutorial-develop-graph-dotnet.md)|
 |**Plataforma admitida actualmente**|[Microsoft .NET 4.5 Framework](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Notas de la versión
@@ -35,11 +35,11 @@ ms.lasthandoff: 07/11/2017
 * Versión preliminar inicial.
 
 ## <a name="release--retirement-dates"></a>Fechas de lanzamiento y de retirada
-Microsoft notificará la retirada de un SDK con al menos **12 meses** de antelación para facilitar la transición a una versión compatible o más reciente.
+Microsoft proporcionará la notificación al menos **12 meses** antes de retirar un SDK en la versión de más reciente admitida de orden toosmooth Hola transición tooa.
 
-Solo se agregan nuevas características, funcionalidad y optimizaciones al SDK actual, por lo que se recomienda actualizar siempre a la última versión del SDK tan pronto como sea posible. 
+Nuevas características y funcionalidad y las optimizaciones se agregan solo toohello actual SDK, como por ejemplo, se recomienda que se realice siempre la actualización toohello última versión del SDK tan pronto como sea posible. 
 
-El servicio rechazará cualquier solicitud realizada a Azure Cosmos DB mediante un SDK retirado.
+Servicio de hello rechazará cualquier base de datos de Cosmos con un SDK retirado tooAzure de solicitud.
 
-## <a name="see-also"></a>Consulte también
-Para más información acerca de la API Graph de Azure Cosmos DB, consulte [Introducción a Azure Cosmos DB: API Graph](graph-introduction.md). 
+## <a name="see-also"></a>Otras referencias
+toolearn más información acerca de hello API Graph de Azure Cosmos DB, vea [Introducción tooAzure DB Cosmos: API Graph](graph-introduction.md). 

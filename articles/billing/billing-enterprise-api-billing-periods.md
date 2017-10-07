@@ -1,6 +1,6 @@
 ---
-title: "API de facturación de Azure Enterprise - Períodos de facturació| Microsoft Docs"
-description: "Obtenga información acerca de las API de informes que permiten a los clientes de Azure Enterprise extraer datos de consumo mediante programación."
+title: "aaaAzure Enterprise API de facturación - períodos de facturación | Documentos de Microsoft"
+description: "Obtenga información acerca de hello las API de generación de informes que permiten a los datos de consumo de Azure Enterprise los clientes toopull mediante programación."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: c6880b79189e0683387a7aafbd6fa4805b3b42ef
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d4e17f25b22729a7f213306fb019ee0dbeca87ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---billing-periods"></a>API de informes para clientes de Enterprise: períodos de facturación
 
-La API de períodos de facturación devuelve una lista de períodos de facturación que tienen datos de consumo para la inscripción especificada en orden cronológico inverso. Cada período contiene una propiedad que señala a la ruta de la API para los cuatro conjuntos de datos: BalanceSummary, UsageDetails, Marketplace Charges y PriceSheet. Si el período no tiene datos, la propiedad correspondiente es null. 
+Hola API de períodos de facturación devuelve una lista de períodos que tienen datos de consumo para Hola de facturación especificado inscripción en orden cronológico inverso. Cada período contiene una propiedad que señala la ruta de la API de toohello para cuatro conjuntos de datos - BalanceSummary, UsageDetails, Marktplace cargos y PriceSheet de Hola. Si el período de hello no tiene datos, propiedad correspondiente de hello es null. 
 
 
 ##<a name="request"></a>Solicitud 
-Las propiedades de encabezado comunes que tienen que agregarse se especifican [aquí](billing-enterprise-api.md). 
+Se especifican las propiedades de encabezado comunes que necesitan toobe agrega [aquí](billing-enterprise-api.md). 
 
 |Método | URI de solicitud|
 |-|-|
 |GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingperiods|
 
 > [!Note]
-> Para usar la versión preliminar de la API, reemplace v2 por v1 en la dirección URL anterior.
+> versión de vista previa de hello toouse de API, reemplace v2 con v1 en hello por encima de la dirección URL.
 >
 
-## <a name="response"></a>Respuesta
+## <a name="response"></a>Response
  
     
     
@@ -59,13 +59,13 @@ Las propiedades de encabezado comunes que tienen que agregarse se especifican [a
 
 |Nombre de propiedad| Tipo| Descripción
 |-|-|-|
-|billingPeriodId| cadena| El identificador único que representa un período de facturación determinado|
-|billingStart| datetime| Cadena ISO 8601 que representa la fecha de inicio del período|
-|billingEnd| datetime| Cadena ISO 8601 que representa la fecha de finalización del período|
-|balanceSummary| cadena| La ruta de acceso de la dirección URL que se enruta a los datos de resumen de saldos para este período|
-|usageDetails| cadena| La ruta de acceso de la dirección URL que se enruta a los datos de detalles de uso para este período|
-|marketplaceCharges| cadena| La ruta de acceso de la dirección URL que se enruta a los datos de gastos en Marketplace para este período|
-|priceSheet| cadena| La ruta de acceso de la dirección URL que se enruta a los datos de PriceSheet para este período|
+|billingPeriodId| cadena| Hola identificador único que representa un período de facturación determinado|
+|billingStart| datetime| Cadena de ISO 8601 que representa la fecha de inicio del periodo de Hola|
+|billingEnd| datetime| Cadena de ISO 8601 que representa la fecha de finalización del periodo de Hola|
+|balanceSummary| cadena| la ruta de acceso de dirección URL de Hola que enruta los datos de resumen de Balance de toohello para este período|
+|usageDetails| cadena| la ruta de acceso de dirección URL de Hola que enruta los datos de detalles de uso de toohello para este período|
+|marketplaceCharges| cadena| la ruta de acceso de dirección URL de Hola que enruta los datos de cargos de Marketplace de toohello para este período|
+|priceSheet| cadena| la ruta de acceso de dirección URL de Hola que enruta toohello PriceSheet datos para este período|
 
 <br/>
 ## <a name="see-also"></a>Otras referencias

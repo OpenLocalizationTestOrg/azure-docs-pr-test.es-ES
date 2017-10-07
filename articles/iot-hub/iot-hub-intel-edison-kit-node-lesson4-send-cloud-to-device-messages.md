@@ -1,6 +1,6 @@
 ---
-title: "Conexión de Intel Edison (Node) a Azure IoT: Lección 4: Recepción de mensajes | Microsoft Docs"
-description: "Una aplicación de ejemplo se ejecuta en Edison y supervisa los mensajes entrantes provenientes desde su instancia de IoT Hub. Una nueva tarea de Gulp envía mensajes a Edison desde su instancia de IoT Hub para que parpadee el LED."
+title: "Conectar Intel Edison (nodo) tooAzure IoT - lección 4: recibir mensajes | Documentos de Microsoft"
+description: "Una aplicación de ejemplo se ejecuta en Edison y supervisa los mensajes entrantes provenientes desde su instancia de IoT Hub. Una nueva tarea de gulp envía mensajes tooEdison desde su hello tooblink de centro de IoT LED."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,75 +17,75 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 76ea59acd848f60663a0c821bff42166aac5823a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: aab0ced4810dd3d4f5ba636940b06563f1db9241
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>Ejecución de una aplicación de ejemplo para recibir mensajes de la nube al dispositivo
-En este artículo se implementará una aplicación de ejemplo en Intel Edison. La aplicación de ejemplo supervisa los mensajes entrantes de IoT Hub. También ejecutará una tarea de Gulp en el equipo para enviar mensajes a Edison desde su instancia de IoT Hub. Cuando la aplicación de ejemplo reciba los mensajes, el LED parpadeará. Si tiene problemas, busque soluciones en la [página de solución de problemas][troubleshooting].
+# <a name="run-a-sample-application-tooreceive-cloud-to-device-messages"></a>Ejecutar un tooreceive de la aplicación de ejemplo en la nube al dispositivo mensajes
+En este artículo se implementará una aplicación de ejemplo en Intel Edison. aplicación de ejemplo de Hola supervisa los mensajes entrantes desde el centro de IoT. También permite ejecutar una tarea de gulp en su tooEdison de mensajes de toosend de equipo, el centro de IoT. Cuando la aplicación de ejemplo de Hola recibe mensajes de Hola, parpadea Hola LED. Si tiene problemas, buscar soluciones en hello [solución de problemas de página][troubleshooting].
 
 ## <a name="what-you-will-do"></a>Lo que hará
-* Conecte la aplicación de ejemplo a su instancia de IoT Hub.
-* Implemente y ejecute la aplicación de ejemplo.
-* Envíe mensajes desde su instancia de IoT Hub a Edison para que el LED parpadee.
+* Conectar el centro de IoT de tooyour de aplicación de ejemplo de Hola.
+* Implemente y ejecute la aplicación de ejemplo de Hola.
+* Enviar mensajes desde su Hola de IoT hub tooEdison tooblink LED.
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 En este artículo, aprenderá lo siguiente:
-* Cómo supervisar los mensajes entrantes desde IoT Hub
-* Envío a Edison de mensajes de la nube al dispositivo desde su instancia de IoT Hub.
+* Cómo los mensajes entrantes de toomonitor desde el centro de IoT.
+* ¿Cómo toosend en la nube al dispositivo mensajes desde su tooEdison de centro de IoT.
 
 ## <a name="what-you-need"></a>Lo que necesita
-* Intel Edison, configurado para su uso. Para obtener información sobre cómo configurar Edison, consulte [Configuración del dispositivo][configure-your-device].
-* Una instancia de IoT Hub creada en su suscripción de Azure. Para obtener información sobre cómo crear su instancia de IoT Hub, consulte [Creación de su instancia de IoT Hub de Azure][create-your-azure-iot-hub].
+* Intel Edison, configurado para su uso. toolearn tooset seguridad Edison, vea [configurar su dispositivo][configure-your-device].
+* Una instancia de IoT Hub creada en su suscripción de Azure. toolearn cómo toocreate su centro de IoT, consulte [crea el centro de IoT de Azure][create-your-azure-iot-hub].
 
-## <a name="connect-the-sample-application-to-your-iot-hub"></a>Conexión de la aplicación de ejemplo con el centro de IoT Hub
-1. Asegúrese de que se encuentra en la carpeta del repositorio `iot-hub-node-edison-getting-started`. Abra la aplicación de ejemplo en Visual Studio Code ejecutando los comandos siguientes:
+## <a name="connect-hello-sample-application-tooyour-iot-hub"></a>Conectar el centro de IoT de tooyour de aplicación de ejemplo de Hola
+1. Asegúrese de que se encuentra en la carpeta de repositorio de hello `iot-hub-node-edison-getting-started`. Abra la aplicación de ejemplo de Hola en código de Visual Studio mediante la ejecución de hello siguientes comandos:
 
    ```bash
    cd Lesson4
    code .
    ```
 
-   El archivo que se encuentra en la carpeta `app` es el archivo de origen de la clave que contiene el código para supervisar los mensajes entrantes desde la instancia de IoT Hub. La función `blinkLED` hace parpadear el LED.
+   archivo de Hello en hello `app` subcarpeta es el archivo de origen de la clave de Hola que contiene código de hello toomonitor mensajes entrantes Hola centro de IoT. Hola `blinkLED` función parpadea Hola LED.
 
-   ![Estructura del repositorio en la aplicación de ejemplo][repo-structure]
-2. Inicialice el archivo de configuración con los siguientes comandos:
+   ![Estructura de repositorio en la aplicación de ejemplo de Hola][repo-structure]
+2. Inicializar el archivo de configuración de hello ejecutando Hola siguientes comandos:
 
    ```bash
    npm install
    gulp init
    ```
 
-   Si completó los pasos que aparecen en [Creación de una instancia de Azure Function App y una cuenta de Azure Storage][create-an-azure-function-app-and-storage-account] en este equipo, se heredarán todas las configuraciones, por lo que no tendrá que implementar ni ejecutar la aplicación de ejemplo. Si completó los pasos que aparecen en [Creación de una instancia de Azure Function App y una cuenta de Azure Storage][create-an-azure-function-app-and-storage-account] en otro equipo, debe reemplazar los marcadores de posición en el archivo `config-edison.json`. El archivo `config-edison.json` se encuentra en la subcarpeta de la carpeta principal.
+   Si completó los pasos de hello en [crear una cuenta de aplicación y el almacenamiento de Azure función] [ create-an-azure-function-app-and-storage-account] en este equipo, se heredan todas las configuraciones de hello, por lo que puede omitir la tarea de toohello hello paso de la implementación de y ejecutar la aplicación de ejemplo de Hola. Si completó los pasos de hello en [crear una cuenta de aplicación y el almacenamiento de Azure función] [ create-an-azure-function-app-and-storage-account] en un equipo diferente, deberá marcadores de posición de tooreplace Hola Hola `config-edison.json` archivo. Hola `config-edison.json` archivo se encuentra en la subcarpeta de Hola de su carpeta principal.
 
-   ![Contenido del archivo config-edison.json](media/iot-hub-intel-edison-lessons/lesson4/config-edison.png)
+   ![Contenido del archivo de configuración edison.json Hola](media/iot-hub-intel-edison-lessons/lesson4/config-edison.png)
 
-   * Sustituya **[device hostname or IP address]** por la dirección IP del dispositivo que anotó cuando configuró el dispositivo.
-   * Sustituya **[IoT device connection string]** por la cadena de conexión del dispositivo que obtendrá al ejecutar el comando `az iot device show-connection-string --hub-name {my hub name} --device-id {device id}`.
-   * Sustituya **[IoT hub connection string]** por la cadena de conexión de IoT Hub que obtendrá al ejecutar el comando `az iot hub show-connection-string --name {my hub name}`.
+   * Reemplace **[nombre de host de dispositivo o dirección IP]** con la dirección IP del dispositivo Hola marcados como inactivos cuando se configura el dispositivo.
+   * Reemplace **[cadena de conexión de dispositivos de IoT]** con cadena de conexión de dispositivo de Hola que obtiene mediante la ejecución de hello `az iot device show-connection-string --hub-name {my hub name} --device-id {device id}` comando.
+   * Reemplace **[cadena de conexión de base de datos central de IoT]** con la cadena de conexión de base de datos central de IoT que obtiene mediante la ejecución de Hola Hola `az iot hub show-connection-string --name {my hub name}` comando.
 
-## <a name="deploy-and-run-the-sample-application"></a>Implementación y ejecución de la aplicación de ejemplo
-Implemente y ejecute la aplicación de ejemplo en Edison usando los comandos siguientes:
+## <a name="deploy-and-run-hello-sample-application"></a>Implementar y ejecutar la aplicación de ejemplo de Hola
+Implementar y ejecutar la aplicación de ejemplo de Hola en Edison ejecutando Hola siguientes comandos:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-El comando de Gulp implementa la aplicación de ejemplo en Edison. Luego, ejecuta la aplicación en Edison y una tarea independiente en el equipo host para enviar 20 mensajes de parpadeo a Edison desde su instancia de IoT Hub.
+comando de Hello gulp implementa tooEdison de aplicación de ejemplo de Hola. A continuación, se ejecuta aplicación hello en Edison y una tarea independiente en su host de equipo toosend 20 parpadeo mensajes tooEdison desde el centro de IoT.
 
-Una vez que se ejecuta, la aplicación de ejemplo empieza a escuchar los mensajes de IoT Hub. Mientras tanto, la tarea de Gulp envía varios mensajes de parpadeo desde su instancia de IoT Hub a Edison. Cada vez que Edison recibe un mensaje de parpadeo, la aplicación de ejemplo llama a la función `blinkLED` para hacer parpadear el LED.
+Después de ejecuta la aplicación de ejemplo de Hola, empieza a escuchar toomessages desde el centro de IoT. Mientras tanto, hello gulp tarea puede enviar varios mensajes "blink" de su tooEdison de centro de IoT. Para cada mensaje de intermitencia Edison recibe, aplicación de ejemplo de Hola llama hello `blinkLED` hello de la función tooblink LED.
 
-A medida que la tarea de Gulp envía 20 mensajes a Edison desde su instancia de IoT Hub, el LED debería parpadear cada dos segundos. El último es un mensaje "stop" que indica a la aplicación que deje de ejecutarse.
+Verá parpadear LED de hello cada dos segundos como hello gulp tarea envía 20 mensajes desde su tooEdison de centro de IoT. Hello en último lugar uno es un mensaje de "stop" que detiene la aplicación hello se ejecute.
 
 ![Aplicación de ejemplo con comandos de Gulp y mensajes de parpadeo][gulp-command-and-blink-messages]
 
 ## <a name="summary"></a>Resumen
-Envió correctamente mensajes desde su instancia de IoT Hub a Edison para que el LED parpadee. La siguiente tarea es optativa y consiste en cambiar el comportamiento de encendido y apagado del LED.
+Ha enviado correctamente los mensajes desde su Hola de IoT hub tooEdison tooblink LED. Hola siguiente tarea es opcional: cambie Hola activar y desactivar el comportamiento de hello LED.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Modificación del comportamiento de encendido y apagado del LED][change-the-on-and-off-behavior-of-the-led]
+[Cambiar Hola activar y desactivar el comportamiento de hello LED][change-the-on-and-off-behavior-of-the-led]
 
 <!-- Images and links -->
 

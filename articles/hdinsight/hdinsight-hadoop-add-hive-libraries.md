@@ -1,6 +1,6 @@
 ---
-title: "Incorporación de bibliotecas de Hive durante la creación de clústeres de HDInsight - Azure | Microsoft Docs"
-description: "Aprenda a agregar bibliotecas de Hive (archivos JAR) a un clúster de HDInsight durante la creación del clúster."
+title: "creación - Azure de clústeres de bibliotecas de Hive aaaAdd durante HDInsight | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooadd Hive bibliotecas (archivos jar), tooan HDInsight clúster durante la creación del clúster."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,29 +15,29 @@ ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 3412864384961e8820d6700c1bf22a4cae64ba4b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2e028a07c3248205def0789af2c262a0774a8f19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Incorporación de bibliotecas personalizadas de Hive al crear el clúster de HDInsight
 
-Este documento contiene información sobre el uso de una acción de script para cargar previamente bibliotecas durante la creación de un clúster, por lo que puede resultarle interesante si dispone de bibliotecas que utiliza con frecuencia con Hive en HDInsight. Las bibliotecas que se agregan mediante los pasos de este documento están disponibles globalmente en Hive: no hace falta usar [ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) para cargarlos.
+Si dispone de las bibliotecas que utilizan con frecuencia con Hive en HDInsight, este documento contiene información sobre el uso de una biblioteca de acción de secuencia de comandos toopre carga Hola durante la creación del clúster. Las bibliotecas que se agregan mediante los pasos de hello en este documento están disponibles globalmente en el subárbol: no hay ninguna necesidad de toouse [agregar JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) tooload ellos.
 
 ## <a name="how-it-works"></a>Cómo funciona
 
-Cuando cree un clúster, también tiene la posibilidad de especificar opcionalmente una acción de script que ejecute un script en los nodos del clúster mientras estos se crean. El script de este documento acepta un único parámetro, que es una ubicación de WASB que contiene las bibliotecas (almacenadas como archivos JAR) que se cargarán previamente.
+Al crear un clúster, también puede especificar una acción de secuencia de comandos que se ejecuta una secuencia de comandos en nodos de clúster de hello mientras se crea. script de Hola en este documento acepta un único parámetro, que es una ubicación de WASB que contenga Hola bibliotecas (almacenadas como archivos jar) toobe previamente cargado.
 
-Durante la creación del clúster, el script enumera los archivos, los copia en el directorio `/usr/lib/customhivelibs/` de los nodos principal y de trabajo y luego los agrega a la propiedad `hive.aux.jars.path` en el archivo `core-site.xml`. En los clústeres basados en Linux, también actualiza el archivo `hive-env.sh` con la ubicación de los archivos.
+Durante la creación del clúster, script de Hola enumera los archivos de hello, copiarlos en toohello `/usr/lib/customhivelibs/` directorio en los nodos principal y de trabajo, a continuación, agrega toohello `hive.aux.jars.path` propiedad Hola `core-site.xml` archivo. En los clústeres basados en Linux, también actualiza hello `hive-env.sh` archivo con la ubicación Hola archivos Hola.
 
 > [!NOTE]
-> El uso de las acciones de script de este artículo permite que las bibliotecas estén disponibles en las situaciones siguientes:
+> Con las acciones de script de Hola en este artículo incluye bibliotecas de hello en hello los escenarios siguientes:
 >
-> * **HDInsight basado en Linux**: cuando se usa un cliente de Hive, **WebHCat** y **HiveServer2**.
-> * **HDInsight basado en Windows**: cuando se usa el cliente de Hive y **WebHCat**.
+> * **HDInsight basados en Linux** : al usar Hola un cliente de Hive, **WebHCat**, y **HiveServer2**.
+> * **HDInsight basados en Windows** : cuando se usa el cliente de Hive de Hola y **WebHCat**.
 
-## <a name="the-script"></a>La secuencia de comandos
+## <a name="hello-script"></a>script de Hola
 
 **Ubicación del script**
 
@@ -46,35 +46,35 @@ En los **clústeres basados en Linux**: [https://hdiconfigactions.blob.core.wind
 En los **clústeres basados en Windows**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
 > [!IMPORTANT]
-> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 **Requisitos**
 
-* Las scripts deben aplicarse tanto a los **nodos principales** como a los **nodos de trabajo**.
+* scripts de Hello deben ser aplicado tooboth Hola **Head nodos** y **nodos de trabajador**.
 
-* Los archivos JAR que se van a instalar deben almacenarse en Azure Blob Storage en un **único contenedor**.
+* Hola JAR desea tooinstall deben estar almacenados en almacenamiento de blobs de Azure en un **único contenedor**.
 
-* La cuenta de almacenamiento que contiene la biblioteca de archivos JAR **debe** vincularse al clúster de HDInsight durante la creación. Debe ser la cuenta de almacenamiento predeterminada o una agregada a través de la __configuración opcional__.
+* cuenta de almacenamiento de Hola que contiene la biblioteca de Hola de archivos jar **debe** ser toohello vinculado HDInsight clúster durante la creación. Debe ser cuenta de almacenamiento predeterminada de Hola o agrega una cuenta a través de __configuración opcional__.
 
-* La ruta de acceso de WASB al contenedor debe especificarse como un parámetro para la acción de script. Por ejemplo, si los archivos JAR se almacenan en un contenedor llamado **libs** en una cuenta de almacenamiento llamada **mystorage**, el parámetro sería **wasb://libs@mystorage.blob.core.windows.net/**.
+* contenedor de toohello de ruta de acceso de Hello WASB debe especificarse como una acción de secuencia de comandos de toohello de parámetro. Por ejemplo, si hello archivos JAR se almacena en un contenedor denominado **bibliotecas** en una cuenta de almacenamiento denominada **mystorage**, sería el parámetro hello  **wasb://libs@mystorage.blob.core.windows.net/** .
 
   > [!NOTE]
-  > En este documento se supone que ha creado ya una cuenta de almacenamiento, contenedora de blobs, y ha cargado los archivos en ella.
+  > Este documento se supone que ya ha crear una cuenta de almacenamiento, contenedor de blobs y tooit de archivos cargados Hola.
   >
-  > Si no ha creado una cuenta de almacenamiento, puede hacerlo a través de [Azure Portal](https://portal.azure.com). Después, puede usar una utilidad como el [Explorador de almacenamiento de Azure](http://storageexplorer.com/) para crear un contenedor en la cuenta y cargar archivos en él.
+  > Si no ha creado una cuenta de almacenamiento, puede hacerlo a través de hello [portal de Azure](https://portal.azure.com). A continuación, puede usar una utilidad como [Azure Storage Explorer](http://storageexplorer.com/) toocreate un contenedor en la cuenta de hello y carga archivos tooit.
 
-## <a name="create-a-cluster-using-the-script"></a>Creación de un clúster mediante el script
+## <a name="create-a-cluster-using-hello-script"></a>Crear un clúster mediante el script de Hola
 
 > [!NOTE]
-> Al seguir estos pasos, se crea un clúster de HDInsight basado en Linux. Para crear un clúster basado en Windows, seleccione **Windows** como sistema operativo del clúster en el momento de su creación y use el script de Windows (PowerShell) en lugar del script de Bash.
+> Hola pasos crea un clúster de HDInsight basados en Linux. Seleccione un clúster basado en Windows, toocreate **Windows** como Hola clúster SO al crear el clúster de Hola y utilizar secuencias de comandos de Windows (PowerShell) de hello en lugar de la secuencia de comandos de hello intensiva de errores.
 >
-> También puede usar Azure PowerShell o el SDK de .NET para HDInsight para crear un clúster mediante este script. Para obtener más información sobre el uso de estos métodos, consulte [Personalización de clústeres de HDInsight mediante acciones de script](hdinsight-hadoop-customize-cluster-linux.md).
+> También puede usar PowerShell de Azure o hello HDInsight .NET SDK toocreate un clúster mediante esta secuencia de comandos. Para obtener más información sobre el uso de estos métodos, consulte [Personalización de clústeres de HDInsight mediante acciones de script](hdinsight-hadoop-customize-cluster-linux.md).
 
-1. Inicie el aprovisionamiento de un clúster siguiendo los pasos que se describen en [Aprovisionamiento de clústeres de HDInsight en Linux](hdinsight-hadoop-provision-linux-clusters.md), pero no complete la operación.
+1. Iniciar el aprovisionamiento de un clúster mediante el uso de pasos de hello en [clústeres de HDInsight de aprovisionar en Linux](hdinsight-hadoop-provision-linux-clusters.md), pero no complete el aprovisionamiento.
 
-2. En la hoja **Configuración opcional**, seleccione **Acciones de script** y proporcione la información siguiente:
+2. En hello **configuración opcional** hoja, seleccione **acciones de Script**y proporcionar Hola siguiente información:
 
-   * **NOMBRE**: escriba un nombre descriptivo para la acción de script.
+   * **NOMBRE**: escriba un nombre descriptivo para la acción de secuencia de comandos de Hola.
 
    * **URI DEL SCRIPT**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
 
@@ -84,17 +84,17 @@ En los **clústeres basados en Windows**: [https://hdiconfigactions.blob.core.wi
 
    * **ZOOKEEPER**: déjelo en blanco.
 
-   * **PARÁMETROS**: escriba la dirección WASB que dirige al contenedor y la cuenta de almacenamiento que contiene los archivos JAR. Por ejemplo, **wasb://libs@mystorage.blob.core.windows.net/**.
+   * **PARÁMETROS**: escriba hello WASB toohello contenedor y el almacenamiento cuenta de dirección que contiene archivos JAR Hola. Por ejemplo, **wasb://libs@mystorage.blob.core.windows.net/**.
 
-3. En la parte inferior de **Acciones de scripts**, use el botón **Seleccionar** para guardar la configuración.
+3. Final de Hola de hello **acciones de Script**, usar hello **seleccione** configuración del botón toosave Hola.
 
-4. En la hoja **Configuración opcional**, seleccione **Cuentas de almacenamiento vinculadas** y luego el vínculo **Agregar una clave de almacenamiento**. Seleccione la cuenta de almacenamiento que contiene los archivos JAR y, después, use los botones de **selección** para guardar la configuración y volver a la hoja **Configuración opcional**.
+4. En hello **configuración opcional** hoja, seleccione **cuentas de almacenamiento vinculadas** y seleccione hello **agregar una clave de almacenamiento** vínculo. Seleccionar cuenta de almacenamiento de Hola que contiene archivos JAR hello y, a continuación, usar hello **seleccione** devuelto hello y configuración de botones toosave **configuración opcional** hoja.
 
-5. Use el botón **Seleccionar** situado en la parte inferior de la hoja **Configuración opcional** para guardar la información de configuración opcional.
+5. Hola de uso **seleccione** situado en la parte inferior de Hola de hello **configuración opcional** información de configuración opcional de hoja toosave Hola.
 
-6. Continúe aprovisionando el clúster tal como se describe en [Aprovisionamiento de clústeres de HDInsight en Linux](hdinsight-hadoop-provision-linux-clusters.md).
+6. Continuar aprovisionamiento clúster Hola tal y como se describe en [clústeres de HDInsight de aprovisionar en Linux](hdinsight-hadoop-provision-linux-clusters.md).
 
-Una vez finalizada la creación del clúster, podrá utilizar los archivos JAR agregados a través de este script desde Hive sin tener que utilizar la instrucción `ADD JAR`.
+Una vez finalizada la creación del clúster, es capaz de toouse archivos JAR Hola agregada a través de este script de Hive sin necesidad de hello toouse `ADD JAR` instrucción.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

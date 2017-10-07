@@ -1,6 +1,6 @@
 ---
-title: "Creación de una aplicación web en el Servicio de aplicaciones de Azure mediante el SDK de Azure para Java"
-description: "Obtenga información acerca de cómo crear una aplicación web en el Servicio de aplicaciones de Azure mediante programación usando el SDK de Azure para Java."
+title: "aaaCreate una aplicación Web en el servicio de aplicaciones de Azure con hello Azure SDK para Java"
+description: "Obtenga información acerca de cómo toocreate una aplicación Web de servicio de aplicaciones de Azure mediante programación con hello Azure SDK para Java."
 tags: azure-classic-portal
 services: app-service-web
 documentationcenter: Java
@@ -15,70 +15,70 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: v-donntr
-ms.openlocfilehash: 08bb53de8cf437a5a2b1c3b38bce9f81b8349493
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 42ba86b7fbb5668b3675198d0c5bb454525f706b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-web-app-in-azure-app-service-using-the-azure-sdk-for-java"></a>Creación de una aplicación web en el Servicio de aplicaciones de Azure mediante el SDK de Azure para Java
-<!-- Azure Active Directory workflow is not yet available on the Azure Portal -->
+# <a name="create-a-web-app-in-azure-app-service-using-hello-azure-sdk-for-java"></a>Crear una aplicación Web en el servicio de aplicación de Azure con hello Azure SDK para Java
+<!-- Azure Active Directory workflow is not yet available on hello Azure Portal -->
 
 ## <a name="overview"></a>Información general
-En este tutorial se muestra cómo crear una instancia de Azure SDK para la aplicación Java que crea una aplicación web en [Azure App Service][Azure App Service]. A continuación, se explica cómo implementar una aplicación en ella. Consta de dos partes:
+Este tutorial muestra cómo toocreate un SDK de Azure para aplicaciones de Java que crea una aplicación Web en [servicio de aplicaciones de Azure][Azure App Service], a continuación, implemente un tooit de aplicación. Consta de dos partes:
 
-* En la parte 1, se describe cómo crear una aplicación Java que crea una aplicación web.
-* En la parte 2, se explica cómo crear una aplicación JSP sencilla ("Hello World") y, a continuación, se describe el uso de un cliente FTP para implementar código en un servicio de aplicaciones.
+* Parte 1 explica cómo toobuild una aplicación Java crea una aplicación web.
+* Parte 2 se muestra cómo toocreate un JSP simple "Hola mundo" aplicación y, a continuación, use un FTP cliente toodeploy código tooApp servicio.
 
 ## <a name="prerequisites"></a>Requisitos previos
 ### <a name="software-installations"></a>Instalaciones de software
-El código de aplicación de AzureWebDemo de este artículo se escribió con el SDK 0.7.0 de Azure Java, que se instala mediante el [instalador de plataforma web (WebPI)][Web Platform Installer]. Además, asegúrese de utilizar la versión más reciente del [kit de herramientas de Azure para Eclipse][Azure Toolkit for Eclipse]. Después de instalar el SDK, actualice las dependencias del proyecto de Eclipse ejecutando **Update index** (Actualizar índice) en **Maven Repositories** (Repositorios de Maven). A continuación, vuelva a agregar la versión más reciente de cada paquete en la ventana **Dependencies** (Dependencias). Para comprobar la versión del software instalado en Eclipse, haga clic en **Help (Ayuda) > Installation Details (Detalles de la instalación)**. Debe tener al menos las siguientes versiones:
+Hola AzureWebDemo código de la aplicación en este artículo se escribió con SDK de Java de Azure 0.7.0, que se puede instalar con hello [instalador de plataforma Web] [ Web Platform Installer] (WPI). Además, compruebe que toouse hello más reciente de versión hello [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]. Después de instalar el SDK de hello, actualizar las dependencias de hello en el proyecto de Eclipse ejecutando **Actualizar índice** en **repositorios de Maven**, a continuación, vuelva a agregar la versión más reciente de Hola de cada paquete en hello  **Dependencias** ventana. Puede comprobar la versión de Hola del software instalado en Eclipse haciendo clic en **Ayuda > detalles de la instalación**; debe haber Hola al menos siguientes versiones:
 
 * Paquete para bibliotecas de Microsoft Azure para Java 0.7.0.20150309
 * IDE de Eclipse para desarrolladores de Java EE 4.4.2.20150219
 
 ### <a name="create-and-configure-cloud-resources-in-azure"></a>Creación y configuración de recursos en la nube en Azure
-Antes de comenzar este procedimiento, debe tener una suscripción activa de Azure y configurar un Active Directory (AD) predeterminado en Azure.
+Antes de comenzar este procedimiento, es necesario toohave una suscripción activa de Azure y configurar un valor predeterminado de Active Directory (AD) en Azure.
 
 ### <a name="create-an-active-directory-ad-in-azure"></a>Creación de un Active Directory (AD) en Azure
-Si no tiene todavía un Active Directory (AD) en su suscripción de Azure, inicie sesión en el [Portal de Azure clásico][Azure classic portal] con su cuenta Microsoft. Si tiene varias suscripciones, haga clic en **Suscripciones** y elija el directorio predeterminado de la suscripción que desee usar en este proyecto. A continuación, haga clic en **Aplicar** para acceder a esa vista de suscripción.
+Si no tiene ya un Active Directory (AD) en su suscripción de Azure, inicie sesión en hello [portal de Azure clásico] [ Azure classic portal] con tu cuenta de Microsoft. Si tiene varias suscripciones, haga clic en **suscripciones** y directorio de hello seleccione predeterminado para la suscripción de Hola que desee toouse para este proyecto. A continuación, haga clic en **aplicar** tooswitch toothat vista de la suscripción.
 
-1. Elija **Active Directory** en el menú de la izquierda. Haga clic en **Nuevo > Directorio > Creación personalizada**.
+1. Seleccione **Active Directory** desde el menú de Hola a la izquierda. Haga clic en **Nuevo > Directorio > Creación personalizada**.
 2. En **Agregar directorio**, elija **Crear nuevo directorio**.
 3. En **Nombre**, escriba un nombre para el directorio.
-4. En **Dominio**, escriba un nombre de dominio. Se trata de un nombre de dominio básico que se incluye de forma predeterminada en el directorio. Tiene el formato `<domain_name>.onmicrosoft.com`. Puede asignarle un nombre basado en el nombre del directorio o en otro nombre de dominio que posea. Más adelante, puede agregar otro nombre de dominio que ya use su organización.
+4. En **Dominio**, escriba un nombre de dominio. Se trata de un nombre de dominio básico que se incluye de forma predeterminada con el directorio; tiene forma de hello `<domain_name>.onmicrosoft.com`. Puede asignarle un nombre basado en el nombre del directorio de hello u otro nombre de dominio que posee. Más adelante, puede agregar otro nombre de dominio que ya use su organización.
 5. En **País o región**, elija la configuración regional que corresponda.
 
 Para obtener más información sobre AD, consulte [¿Qué es un directorio de Azure AD?][What is an Azure AD directory]
 
 ### <a name="create-a-management-certificate-for-azure"></a>Creación de un certificado de administración para Azure
-El SDK de Azure para Java usa certificados de administración para autenticar con las suscripciones de Azure. Se trata de certificados X.509 v3 que se utilizan para autenticar una aplicación cliente que utiliza la API de administración de servicios para actuar en nombre del propietario de la suscripción a fin de administrar los recursos de suscripción.
+Hello Azure SDK para Java utiliza tooauthenticate de certificados de administración con las suscripciones de Azure. Se trata de usar una aplicación cliente que utiliza hello tooact de API de administración de servicios en nombre de recursos de la suscripción de hello suscripción propietario toomanage tooauthenticate los certificados X.509 v3.
 
-El código de este procedimiento utiliza un certificado autofirmado para autenticarse con Azure. Para este procedimiento, deberá crear un certificado y cargarlo previamente en el [Portal de Azure clásico][Azure classic portal]. Esto implica los pasos siguientes:
+código de Hello en este procedimiento utiliza un certificado autofirmado tooauthenticate de Azure. Para este procedimiento, se necesita un certificado de toocreate y cargarlo toohello [portal de Azure clásico] [ Azure classic portal] con antelación. Esto implica Hola pasos:
 
 * Generar un archivo PFX que represente el certificado de cliente y guardarlo localmente.
-* Generar un certificado de administración (archivo CER) a partir del archivo PFX.
-* Cargar el archivo CER en su suscripción de Azure.
-* Convertir el archivo PFX en JKS, ya que Java utiliza ese formato para la autenticación mediante certificados.
-* Escribir el código de autenticación de la aplicación, que hace referencia al archivo JKS local.
+* Generar un certificado de administración (archivo .cer) del archivo PFX de Hola.
+* Cargar Hola CER archivo tooyour suscripción de Azure.
+* Convertir archivo PFX de hello en el almacén JKS, dado que Java utiliza ese tooauthenticate formato mediante certificados.
+* Escribir código de autenticación de la aplicación hello, que hace referencia el archivo de almacén JKS local toohello.
 
-Al completar este procedimiento, el certificado CER residirá en su suscripción de Azure y el certificado JKS, en la unidad local. Para obtener más información sobre la administración de certificados, consulte [Crear y cargar un certificado de administración para Azure][Create and Upload a Management Certificate for Azure].
+Al completar este procedimiento, certificado CER de hello residirá en la suscripción de Azure y certificado de almacén JKS Hola residirá en la unidad local. Para obtener más información sobre la administración de certificados, consulte [Crear y cargar un certificado de administración para Azure][Create and Upload a Management Certificate for Azure].
 
 #### <a name="create-a-certificate"></a>Creación de un certificado
-Para crear su propio certificado autofirmado, abra una consola de comandos en el sistema operativo y ejecute los siguientes comandos.
+toocreate su propio certificado autofirmado, abra una consola de comandos en el sistema operativo y ejecute hello siga los comandos.
 
-> **Nota:** El equipo en el que se ejecute este comando debe tener instalado el JDK. Además, la ruta a la herramienta de generación de claves (keytool) depende de la ubicación en la que se instale el JDK. Para obtener más información, consulte [Keytool: herramienta para administrar certificados y claves][Key and Certificate Management Tool (keytool)] en la documentación en línea de Java.
+> **Nota:** equipo hello en el que se ejecuta este comando debe tener Hola JDK instalado. Además, la Hola ruta de acceso toohello keytool depende de la ubicación de Hola de instalación de JDK Hola. Para obtener más información, consulte [clave y la herramienta de administración de certificados (keytool)] [ Key and Certificate Management Tool (keytool)] en documentos de hello Java en línea.
 > 
 > 
 
-Para crear el archivo .pfx:
+archivo .pfx de toocreate hello:
 
     <java-install-dir>/bin/keytool -genkey -alias <keystore-id>
      -keystore <cert-store-dir>/<cert-file-name>.pfx -storepass <password>
      -validity 3650 -keyalg RSA -keysize 2048 -storetype pkcs12
      -dname "CN=Self Signed Certificate 20141118170652"
 
-Para crear el archivo .cer:
+archivo .cer de toocreate hello:
 
     <java-install-dir>/bin/keytool -export -alias <keystore-id>
      -storetype pkcs12 -keystore <cert-store-dir>/<cert-file-name>.pfx
@@ -86,37 +86,37 @@ Para crear el archivo .cer:
 
 donde:
 
-* `<java-install-dir>` es la ruta al directorio donde se instaló Java.
-* `<keystore-id>` es el identificador de entrada del almacén de claves (por ejemplo, `AzureRemoteAccess`).
-* `<cert-store-dir>` es la ruta al directorio en el que desea almacenar los certificados (por ejemplo, `C:/Certificates`).
-* `<cert-file-name>` es el nombre del archivo de certificado (por ejemplo, `AzureWebDemoCert`).
-* `<password>` es la contraseña elegida para proteger el certificado. Debe tener 6 caracteres como mínimo. Se puede optar por no escribir ninguna contraseña, aunque no se recomienda.
-* `<dname>` es el nombre distintivo X.500 que debe asociarse con el alias. Se utiliza en los campos del asunto y del emisor en el certificado autofirmado.
+* `<java-install-dir>`es el directorio de toohello de ruta de acceso de hello en el que se instaló Java.
+* `<keystore-id>`es el identificador de entrada del almacén de claves de hello (por ejemplo, `AzureRemoteAccess`).
+* `<cert-store-dir>`es Hola ruta de acceso toohello directorio en el que desea que los certificados de toostore (por ejemplo `C:/Certificates`).
+* `<cert-file-name>`es el nombre de Hola Hola del archivo de certificado (por ejemplo `AzureWebDemoCert`).
+* `<password>`es la contraseña Hola elige tooprotect Hola certificado; debe ser al menos 6 caracteres. Se puede optar por no escribir ninguna contraseña, aunque no se recomienda.
+* `<dname>`es Hola nombre distintivo X.500 toobe asociado con el alias y se utiliza como emisor de Hola y los campos de sujeto de certificado autofirmado Hola.
 
 Para obtener más información, consulte [Crear y cargar un certificado de administración para Azure][Create and Upload a Management Certificate for Azure].
 
-#### <a name="upload-the-certificate"></a>Carga del certificado
-Para cargar un certificado autofirmado en Azure, vaya a la página **Configuración** en el portal de clásico. A continuación, haga clic en la pestaña **Certificados de administración**. Haga clic en **Cargar**, en la parte inferior de la página, y desplácese hasta la ubicación del archivo CER que creó previamente.
+#### <a name="upload-hello-certificate"></a>Cargar certificado Hola
+tooupload tooAzure de un certificado autofirmado, vaya toohello **configuración** página portal clásico de hello, haga clic en hello **certificados de administración** ficha. Haga clic en **cargar** final Hola de hello página y navegar toohello ubicación del archivo CER Hola creado.
 
-#### <a name="convert-the-pfx-file-into-jks"></a>Conversión del archivo PFX en JKS
-Como administrador, acceda al símbolo del sistema de Windows. Cambie al directorio que contiene los certificados y ejecute el comando siguiente, donde `<java-install-dir>` es el directorio donde instaló Java en su equipo:
+#### <a name="convert-hello-pfx-file-into-jks"></a>Convertir archivo PFX de hello en el almacén JKS
+Hola de línea de comandos de Windows (que se ejecuta como administrador), cd toohello directorio que contiene Hola certificados y ejecute hello siguiente comando, donde `<java-install-dir>` es el directorio de hello en el que instaló Java en el equipo:
 
     <java-install-dir>/bin/keytool.exe -importkeystore
      -srckeystore <cert-store-dir>/<cert-file-name>.pfx
      -destkeystore <cert-store-dir>/<cert-file-name>.jks
      -srcstoretype pkcs12 -deststoretype JKS
 
-1. Cuando se le pida, escriba la contraseña del almacén de claves de destino. Se trata de la contraseña para el archivo JKS.
-2. Cuando se le pida, escriba la contraseña del almacén de claves de origen. Esta es la contraseña que especificó para el archivo PFX.
+1. Cuando se le solicite, escriba la contraseña del almacén de claves de destino de hello; se trata de contraseña de hello para el archivo de almacén JKS hello.
+2. Cuando se le solicite, escriba la contraseña del almacén de claves de origen de hello; se trata de una contraseña de Hola que especificó para el archivo PFX de Hola.
 
-Las dos contraseñas no deben ser iguales. Se puede optar por no escribir ninguna contraseña, aunque no se recomienda.
+las dos contraseñas de Hello no tiene toobe Hola igual. Se puede optar por no escribir ninguna contraseña, aunque no se recomienda.
 
 ## <a name="build-a-web-app-creation-application"></a>Compilación de una aplicación para crear aplicaciones web
-### <a name="create-the-eclipse-workspace-and-maven-project"></a>Creación del área de trabajo de Eclipse y el proyecto de Maven
-En esta sección, creará un área de trabajo y un proyecto de Maven para la aplicación de creación de aplicaciones web, denominada AzureWebDemo.
+### <a name="create-hello-eclipse-workspace-and-maven-project"></a>Crear Hola área de trabajo de Eclipse y proyectos de Maven
+En esta sección se creará un área de trabajo y un proyecto de Maven para la aplicación de creación de aplicaciones de web hello, denominado AzureWebDemo.
 
 1. Cree un nuevo proyecto de Maven. Haga clic en **File (Archivo) > New (Nuevo) > Maven Project (Proyecto de Maven)**. En **New Maven Project** (Nuevo proyecto de Maven), elija **Create a simple project** (Crear proyecto sencillo) y, a continuación, elija **Use default workspace location** (Usar ubicación de espacio de trabajo predeterminada).
-2. En la segunda página de **New Maven Project**(Nuevo proyecto de Maven), especifique lo siguiente:
+2. En la segunda página de Hola de **Maven proyecto**, especifique Hola siguiente:
    
    * Group ID (Identificador del grupo): `com.<username>.azure.webdemo`
    * Artifact ID (Identificador de artefacto): AzureWebDemo
@@ -125,37 +125,37 @@ En esta sección, creará un área de trabajo y un proyecto de Maven para la apl
    * Name (Nombre): AzureWebDemo
      
      Haga clic en **Finalizar**
-3. Abra el nuevo archivo pom.xml del proyecto en el Explorador de proyectos. Elija la pestaña **Dependencies** (Dependencias). Como se trata de un nuevo proyecto, todavía no se muestra ningún paquete.
-4. Abra la vista Maven Repositories (Repositorios de Maven). **Haga clic en Window (Ventana) > Show View (Mostrar vista) > Other (Otro) > Maven > Maven Repositories (Repositorios de Maven)** y luego en **OK** (Aceptar). La vista **Maven Repositories** (Repositorios de Maven) aparece en la parte inferior de IDE.
-5. Abra **Global Repositories** (Repositorios globales), haga clic con el botón derecho en el repositorio **Central** y elija **Rebuild Index** (Volver a generar el índice).
+3. Abra el archivo de pom.xml del nuevo proyecto de hello en el Explorador de proyectos. Seleccione hello **dependencias** ficha. Como se trata de un nuevo proyecto, todavía no se muestra ningún paquete.
+4. Ver los repositorios de Maven Hola abierto. **Haga clic en Window (Ventana) &gt; Show View (Mostrar vista) &gt; Other (Otro) &gt; Maven &gt; Maven Repositories (Repositorios de Maven)** y luego en **OK** (Aceptar). Hola **Maven repositorios** vista aparecerá en parte inferior de Hola de hello IDE.
+5. Abra **repositorios globales**, contextual hello **central** repositorio y seleccione **volver a generar índice**.
    
     ![][1]
    
-    Este paso puede tardar varios minutos, según la velocidad de la conexión. Cuando se vuelve a generar el índice, deberían mostrarse los paquetes de Microsoft Azure en el repositorio **central** de Maven.
-6. En **Dependencies** (Dependencias), haga clic en **Add** (Agregar). En **Enter Group ID...** (Especificar identificador de grupo), escriba `azure-management`. Elija los paquetes para la administración de base y la administración de aplicaciones web del Servicio de aplicaciones:
+    Este paso puede tardar varios minutos, según la velocidad de saludo de la conexión. Cuando se vuelve a generar el índice de hello, debería ver paquetes de Microsoft Azure de hello en hello **central** repositorio de Maven.
+6. En **Dependencies** (Dependencias), haga clic en **Add** (Agregar). En **Enter Group ID...** (Especificar identificador de grupo), escriba `azure-management`. Seleccionar paquetes de saludo para administración de la base y la administración de aplicaciones Web de servicio de aplicación:
    
         com.microsoft.azure  azure-management
         com.microsoft.azure  azure-management-websites
    
-   > **Nota:** si va a actualizar las dependencias después de que se haya lanzado una nueva versión, tendrá que volver a agregar cada una de las dependencias en esta lista.
-   > Después de hacer clic en **Add** (Agregar) y elegir cada dependencia, esta aparece con el nuevo número de versión en la lista **Dependencies** (Dependencias).
+   > **Nota:** si va a actualizar las dependencias de hello después de una nueva versión de lanzamiento, necesita toore-agregar cada una de las dependencias de hello en esta lista.
+   > Tras hacer clic en **agregar** y seleccione cada dependencia, ésta aparece con el nuevo número de versión Hola Hola **dependencias** lista.
    > 
    > 
 
-Haga clic en **Aceptar**. Los paquetes de Azure aparecen entonces en la lista **Dependencies** (Dependencias).
+Haga clic en **Aceptar**. Hola paquetes de Azure, a continuación, aparecen en hello **dependencias** lista.
 
-### <a name="writing-java-code-to-create-a-web-app-by-calling-the-azure-sdk"></a>Escritura de código Java para crear una aplicación web mediante una llamada al SDK de Azure
-A continuación, escriba el código que efectúa la llamada a las API en el SDK de Azure para que Java cree la aplicación web de Servicio de aplicaciones.
+### <a name="writing-java-code-toocreate-a-web-app-by-calling-hello-azure-sdk"></a>Escribir código Java tooCreate una aplicación Web que realiza la llamada hello Azure SDK
+A continuación, escribir código de hello que llama a las API de hello Azure SDK para hello de Java toocreate aplicación de servicio de aplicaciones web.
 
-1. Cree una clase de Java que contenga el código de punto de entrada principal. En el Explorador de proyectos, haga clic con el botón derecho en el nodo del proyecto y elija **Nueva (Nuevo) > Clase (Clase)**.
-2. En **New Java Class** (Nueva clase de Java) asigne un nombre a la clase `WebCreator` y active la casilla **public static void main**. Las selecciones deberían aparecer de la siguiente forma:
+1. Crear un código de punto de entrada principal de Java clase toocontain Hola. En el Explorador de proyectos, haga doble clic en el nodo del proyecto de Hola y seleccione **nuevo > clase**.
+2. En **nueva clase de Java**, el nombre de clase hello `WebCreator` y comprobar hello **principal de void estático público** casilla de verificación. selecciones de Hello deberían aparecer como sigue:
    
     ![][2]
-3. Haga clic en **Finalizar** El archivo WebCreator.java aparece en el Explorador de proyectos.
+3. Haga clic en **Finalizar** archivo de Hello WebCreator.java aparece en el Explorador de proyectos.
 
-### <a name="calling-the-azure-api-to-create-an-app-service-web-app"></a>Llamada a la API de Azure para crear una aplicación web de Servicio de la aplicaciones
+### <a name="calling-hello-azure-api-toocreate-an-app-service-web-app"></a>Al llamar a hello Azure API tooCreate una aplicación de servicio de aplicaciones Web
 #### <a name="add-necessary-imports"></a>Adición de las importaciones necesarias
-En WebCreator.java, agregue las siguientes importaciones. Estas importaciones proporcionan acceso a las clases en las bibliotecas de administración para utilizar las API de Azure:
+En WebCreator.java, agregue Hola siguiendo las importaciones; estas importaciones proporcionan acceso tooclasses en hello las bibliotecas de administración para utilizar las API de Azure:
 
     // General imports
     import java.net.URI;
@@ -180,10 +180,10 @@ En WebCreator.java, agregue las siguientes importaciones. Estas importaciones pr
     import com.microsoft.windowsazure.core.utils.KeyStoreType;
 
 
-#### <a name="define-the-main-entry-point-class"></a>Definición de la clase de punto de entrada principal
-Dado que el propósito de la aplicación AzureWebDemo es crear una aplicación web de Servicio de aplicaciones, asigne un nombre a la clase principal para esta aplicación `WebAppCreator`. Esta clase proporciona el código de punto de entrada principal que efectúa la llamada a la API de administración de Servicios de Azure para crear la aplicación web.
+#### <a name="define-hello-main-entry-point-class"></a>Definir la clase de punto de entrada principal de hello
+Porque Hola de hello AzureWebDemo aplicación sirve toocreate una aplicación de servicio de aplicaciones Web, name clase principal de Hola para esta aplicación `WebAppCreator`. Esta clase proporciona código de punto de entrada principal de Hola que llama la aplicación web de hello API de administración de servicios de Azure toocreate Hola.
 
-Agregue las siguientes definiciones de parámetros para la aplicación web y el espacio web. Deberá proporcionar su propia información de certificado y de identificador de suscripción de Azure.
+Agregar Hola siguiendo las definiciones de parámetro para la aplicación web de hello y espacio Web. Necesitará tooprovide su propia información de identificador y el certificado de suscripción de Azure.
 
     public class WebAppCreator {
 
@@ -201,37 +201,37 @@ Agregue las siguientes definiciones de parámetros para la aplicación web y el 
 
 donde:
 
-* `<subscription-id>` es el identificador de suscripción de Azure en el que desea crear el recurso.
-* `<certificate-store-path>` es la ruta y el nombre de archivo del archivo JKS en el directorio del almacén de certificados local. Por ejemplo, `C:/Certificates/CertificateName.jks` para Linux y `C:\Certificates\CertificateName.jks` para Windows.
-* `<certificate-password>` es la contraseña que se especificó al crear el certificado de JKS.
-* `webAppName` puede ser cualquier nombre que elija. En este procedimiento, se utiliza el nombre `WebDemoWebApp`. El nombre de dominio completo es la `webAppName` con el `domainName` anexado, por lo que, en este caso, el dominio completo es `webdemowebapp.azurewebsites.net`.
+* `<subscription-id>`es el Id. de suscripción de Azure de hello en el que desea que el recurso de Hola de toocreate.
+* `<certificate-store-path>`es la ruta de acceso y nombre de archivo toohello almacén JKS archivo hello en el directorio de almacén de certificados local. Por ejemplo, `C:/Certificates/CertificateName.jks` para Linux y `C:\Certificates\CertificateName.jks` para Windows.
+* `<certificate-password>`es la contraseña de Hola que especificó cuando creó el certificado del almacén JKS.
+* `webAppName`puede ser cualquier nombre que elija; Este procedimiento utiliza el nombre de hello `WebDemoWebApp`. nombre de dominio completo de Hello es hello `webAppName` con hello `domainName` anexado, por lo que en este caso dominio completo de hello es `webdemowebapp.azurewebsites.net`.
 * `domainName` debe especificarse del modo indicado anteriormente.
-* `webSpaceName` debe ser uno de los valores definidos en la clase [WebSpaceNames][WebSpaceNames].
+* `webSpaceName`debe ser uno de los valores de hello definidos en hello [WebSpaceNames] [ WebSpaceNames] clase.
 * `appServicePlanName` debe especificarse del modo indicado anteriormente.
 
-> **Nota:** Cada vez que ejecute esta aplicación, deberá cambiar el valor de `webAppName` y `appServicePlanName` (o eliminar la aplicación web en Azure Portal) antes de ejecutar la aplicación de nuevo. De lo contrario, se producirá un error de ejecución porque ya existe el mismo recurso en Azure.
+> **Nota:** cada vez que se ejecuta esta aplicación, necesita toochange Hola valo `webAppName` y `appServicePlanName` (o eliminar la aplicación web de hello en hello Portal de Azure) antes de ejecutar de nuevo la aplicación hello. En caso contrario, se producirá un error la ejecución porque hello mismo recurso ya existe en Azure.
 > 
 > 
 
-#### <a name="define-the-web-creation-method"></a>Definición del método de creación web
-A continuación, defina un método para crear la aplicación web. Este método, `createWebApp`, especifica los parámetros de la aplicación web y el espacio web. También crea y configura el cliente de administración de aplicaciones web de App Service Web Apps, que se define mediante el objeto [WebSiteManagementClient][WebSiteManagementClient]. El cliente de administración es fundamental para crear aplicaciones web. Proporciona servicios web RESTful que permiten a las aplicaciones administrar aplicaciones web (realizar operaciones tales como crear, actualizar y eliminar) mediante una llamada a la API de administración de servicios.
+#### <a name="define-hello-web-creation-method"></a>Definir el método de creación de hello web
+A continuación, defina una aplicación web de método toocreate Hola. Este método, `createWebApp`, especifica los parámetros de Hola de hello web app y espacio Web Hola. También crea y configura el cliente de administración de aplicaciones Web de servicio de aplicación hello, que se define por hello [WebSiteManagementClient] [ WebSiteManagementClient] objeto. cliente de administración de Hello es clave toocreating las aplicaciones Web. Proporciona servicios web RESTful que permiten a las aplicaciones toomanage aplicaciones web (realizar operaciones como crear, update y delete) mediante una llamada a la API de administración de servicios de Hola.
 
     private static void createWebApp() throws Exception {
 
-        // Specify configuration settings for the App Service management client.
+        // Specify configuration settings for hello App Service management client.
         Configuration config = ManagementConfiguration.configure(
             new URI(uri),
             subscriptionId,
-            keyStoreLocation,  // Path to the JKS file
-            keyStorePassword,  // Password for the JKS file
+            keyStoreLocation,  // Path toohello JKS file
+            keyStorePassword,  // Password for hello JKS file
             KeyStoreType.jks   // Flag that you are using a JKS keystore
         );
 
-        // Create the App Service Web Apps management client to call Azure APIs
-        // and pass it the App Service management configuration object.
+        // Create hello App Service Web Apps management client toocall Azure APIs
+        // and pass it hello App Service management configuration object.
         WebSiteManagementClient webAppManagementClient = WebSiteManagementService.create(config);
 
-        // Create an App Service plan for the web app with the specified parameters.
+        // Create an App Service plan for hello web app with hello specified parameters.
         WebHostingPlanCreateParameters appServicePlanParams = new WebHostingPlanCreateParameters();
         appServicePlanParams.setName(appServicePlanName);
         appServicePlanParams.setSKU(SkuOptions.Free);
@@ -244,7 +244,7 @@ A continuación, defina un método para crear la aplicación web. Este método, 
         webSpaceDetails.setName(webSpaceName);
 
         // Set web app parameters.
-        // Note that the server farm name takes the Azure App Service plan name.
+        // Note that hello server farm name takes hello Azure App Service plan name.
         WebSiteCreateParameters webAppCreateParameters = new WebSiteCreateParameters();
         webAppCreateParameters.setName(webAppName);
         webAppCreateParameters.setServerFarm(appServicePlanName);
@@ -255,30 +255,30 @@ A continuación, defina un método para crear la aplicación web. Este método, 
         usageMetric.setSiteMode(WebSiteMode.Basic);
         usageMetric.setComputeMode(WebSiteComputeMode.Shared);
 
-        // Define the web app object.
+        // Define hello web app object.
         ArrayList<String> fullWebAppName = new ArrayList<String>();
         fullWebAppName.add(webAppName + domainName);
         WebSite webApp = new WebSite();
         webApp.setHostNames(fullWebAppName);
 
-        // Create the web app.
+        // Create hello web app.
         WebSiteCreateResponse webAppCreateResponse = webAppManagementClient.getWebSitesOperations().create(webSpaceName, webAppCreateParameters);
 
-        // Output the HTTP status code of the response; 200 indicates the request succeeded; 4xx indicates failure.
+        // Output hello HTTP status code of hello response; 200 indicates hello request succeeded; 4xx indicates failure.
         System.out.println("----------");
         System.out.println("Web app created - HTTP response " + webAppCreateResponse.getStatusCode() + "\n");
 
-        // Output the name of the web app that this application created.
+        // Output hello name of hello web app that this application created.
         String shinyNewWebAppName = webAppCreateResponse.getWebSite().getName();
         System.out.println("----------\n");
         System.out.println("Name of web app created: " + shinyNewWebAppName + "\n");
         System.out.println("----------\n");
     }
 
-El código dará como resultado el estado de HTTP de la respuesta indicando si es correcto o erróneo. Si es correcto, se generará el nombre de la aplicación web creada.
+código de Hello dará como resultado de estado HTTP Hola de respuesta de Hola que indica éxito o error y si se realiza correctamente, dará como resultado el nombre de Hola de hello creado la aplicación web.
 
-#### <a name="define-the-main-method"></a>Definición del método main()
-Especifique el código del método main() que efectúa la llamada a createWebApp() para crear la aplicación web.
+#### <a name="define-hello-main-method"></a>Definir el método main() de Hola
+Proporcionar código del método main() Hola esa aplicación web de llamadas createWebApp() toocreate Hola.
 
 Por último, efectúe una llamada a `createWebApp` desde `main`:
 
@@ -294,8 +294,8 @@ Por último, efectúe una llamada a `createWebApp` desde `main`:
     }  // end of WebAppCreator class
 
 
-#### <a name="run-the-application-and-verify-web-app-creation"></a>Ejecución de la aplicación y verificación de la creación de aplicaciones web
-Para verificar que la aplicación puede ejecutarse, haga clic en **Ejecutar > Ejecutar**. Cuando la aplicación complete la ejecución, verá el siguiente resultado en la consola de Eclipse:
+#### <a name="run-hello-application-and-verify-web-app-creation"></a>Ejecutar la aplicación hello y comprobar la creación de aplicaciones web
+tooverify que se ejecuta la aplicación, haga clic en **ejecutar > ejecutar**. Cuando complete la ejecución de aplicación hello, debería ver Hola después de salida en la consola de Eclipse hello:
 
     ----------
     Web app created - HTTP response 200
@@ -306,23 +306,23 @@ Para verificar que la aplicación puede ejecutarse, haga clic en **Ejecutar > Ej
 
     ----------
 
-Inicie sesión en el portal clásico de Azure y haga clic en **Aplicaciones web**. La nueva aplicación web debería aparecer en la lista Aplicaciones web dentro de unos minutos.
+Inicie sesión en el portal de Azure clásico de Hola y haga clic en **aplicaciones Web**. aplicación web nueva de Hello debe aparecer en la lista de aplicaciones Web de hello dentro de unos minutos.
 
-## <a name="deploying-an-application-to-the-web-app"></a>Implementación de una aplicación en la aplicación web
-Después de ejecutar AzureWebDemo y crear la nueva aplicación web, inicie sesión en el portal clásico, haga clic en **Aplicaciones web** y elija **WebDemoWebApp** en la lista **Aplicaciones web**. En la página del panel de la aplicación web, haga clic en **Examinar** (o en la dirección URL, `webdemowebapp.azurewebsites.net`) para acceder a ella. Se mostrará una página con un marcador de posición en blanco, porque todavía no hay contenido publicado en la aplicación web.
+## <a name="deploying-an-application-toohello-web-app"></a>Implementar una aplicación Web de aplicación toohello
+Después de que han ejecutado AzureWebDemo y creó Hola nueva aplicación web, inicie sesión en el portal clásico de hello, haga clic en **aplicaciones Web**y seleccione **WebDemoWebApp** en hello **aplicaciones Web** lista. En la página del panel de la aplicación de hello web, haga clic en **examinar** (o haga clic en la dirección URL de hello, `webdemowebapp.azurewebsites.net`) toonavigate tooit. Verá una página de marcador de posición en blanco, porque no hay contenido ha sido publicado toohello web app aún.
 
-A continuación, creará una aplicación "Hello World" y la implementará en la aplicación web.
+A continuación creará una aplicación "Hello World" e implementar toohello web app.
 
 ### <a name="create-a-jsp-hello-world-application"></a>Creación de una aplicación Hello World en JSP
-#### <a name="create-the-application"></a>Creación de la aplicación
-Para demostrar cómo se implementa una aplicación en la web, el siguiente procedimiento describe cómo se crea una aplicación "Hello World" sencilla de Java y cómo se carga en la aplicación web del Servicio de aplicaciones que se creó con la aplicación.
+#### <a name="create-hello-application"></a>Crear aplicación hello
+En toodemonstrate orden cómo Hola toodeploy web toohello aplicación, siga el procedimiento muestra cómo toocreate una sencilla aplicación de Java de "Hello World" y la carga toohello aplicación Web de aplicación de servicio que creó la aplicación.
 
-1. Haga clic en **File (Archivo) > New (Nuevo) > Dynamic Web Project (Proyecto web dinámico)**. Asígnele el nombre `JSPHello`. No es necesario cambiar ninguna otra configuración en este cuadro de diálogo. Haga clic en **Finalizar**
+1. Haga clic en **File (Archivo) > New (Nuevo) > Dynamic Web Project (Proyecto web dinámico)**. Asígnele el nombre `JSPHello`. No es necesario toochange ninguna otra configuración de este cuadro de diálogo. Haga clic en **Finalizar**
    
     ![][3]
-2. En el Explorador de proyectos, expanda el proyecto **JSPHello**, haga clic con el botón derecho en **WebContent**. A continuación, haga clic en **New (Nuevo) > JSP File (Archivo JSP)**. En el cuadro de diálogo Nuevo archivo JSP, asigne al archivo el nombre `index.jsp`. Haga clic en **Siguiente**.
-3. En el cuadro de diálogo **Select JSP Template** (Seleccionar plantilla JSP), seleccione **New JSP File (html)** [Nuevo archivo JSP (htlm)] y haga clic en **Finish** (Finalizar).
-4. En index.jsp, agregue el siguiente código en las secciones de las etiquetas `<head>` y `<body>`:
+2. En el Explorador de proyectos, expanda hello **JSPHello** proyecto de equipo y haga clic en **WebContent**, a continuación, haga clic en **nuevo > archivo JSP**. En el cuadro de diálogo de nuevo archivo JSP hello, nombre hello nuevo archivo `index.jsp`. Haga clic en **Siguiente**.
+3. Hola **Select JSP Template** cuadro de diálogo, seleccione **New JSP File (html)** y haga clic en **finalizar**.
+4. En el archivo index.jsp agregar Hola después el código de hello `<head>` y `<body>` etiquetar secciones:
    
         <head>
           ...
@@ -330,82 +330,82 @@ Para demostrar cómo se implementa una aplicación en la web, el siguiente proce
         </head>
    
         <body>
-          Hello, the time is <%= date %> 
+          Hello, hello time is <%= date %> 
         </body>
 
-#### <a name="run-the-hello-world-application-in-localhost"></a>Ejecución de la aplicación Hello World en el host local
-Antes de ejecutar esta aplicación, deberá configurar algunas propiedades.
+#### <a name="run-hello-hello-world-application-in-localhost"></a>Ejecutar la aplicación hello World Hello en localhost
+Antes de ejecutar esta aplicación, necesita tooconfigure algunas propiedades.
 
-1. Haga clic con el botón derecho en el proyecto **JSPHello** y elija **Properties** (Propiedades).
-2. En el cuadro de diálogo **Propiedades** (Propiedades), elija **Java Build Path** (Ruta de compilación de Java), elija la pestaña **Order and Export** (Ordenar y exportar), elija **JRE System Library** (Biblioteca del sistema JRE), a continuación, haga clic en **Up** (Arriba) para moverla a la parte superior de la lista.
+1. Menú contextual hello **JSPHello** de proyecto y seleccione **propiedades**.
+2. Hola **propiedades** diálogo: seleccione **Java Build Path**, seleccione hello **ordenar y exportar** ficha, comprobación de **JRE biblioteca del sistema**, a continuación, haga clic en **Una** toomove se toohello superior de la lista de Hola.
    
     ![][4]
-3. También, en el cuadro de diálogo **Propiedades** (Propiedades), elija **Targeted Runtimes** (Tiempo de ejecución de destino) y haga clic en **New** (Nuevo).
-4. En el cuadro de diálogo **New Server Runtime Environment** (Entorno de ejecución del nuevo servidor), elija un servidor, como **Apache Tomcat v7.0**, y haga clic en **Next** (Siguiente). En el cuadro de diálogo **Tomcat Server** (Servidor de Tomcat), configure el valor de **Name** (Nombre) en `Apache Tomcat v7.0` y establezca **Tomcat Installation Directory** (Directorio de instalación de Tomcat) en el directorio en el que se instaló la versión del servidor de Tomcat que desea usar.
+3. También en hello **propiedades** diálogo: seleccione **tiempos de ejecución de destino** y haga clic en **nuevo**.
+4. Hola **nuevo entorno de tiempo de ejecución de servidor** cuadro de diálogo, seleccione un servidor como **Apache Tomcat v7.0** y haga clic en **siguiente**. Hola **servidor de Tomcat** cuadro de diálogo, establezca **nombre** demasiado`Apache Tomcat v7.0`y establezca **directorio de instalación de Tomcat** directorio toohello en el que instaló la versión de Hola de Servidor de Tomcat que desee toouse.
    
     ![][5]
    
     Haga clic en **Finalizar**
-5. Volverá a la página **Targeted Runtimes** (Tiempo de ejecución de destino) del cuadro de diálogo **Properties** (Propiedades). Elija **Apache Tomcat v7.0** y haga clic en **OK** (Aceptar).
+5. A continuación, devolver toohello **tiempos de ejecución de destino** página de hello **propiedades** cuadro de diálogo. Elija **Apache Tomcat v7.0** y haga clic en **OK** (Aceptar).
    
     ![][6]
-6. En Eclipse, en el menú **Run** (Ejecutar), haga clic en **Run** (Ejecutar). En el cuadro de diálogo **Run As** (Ejecutar como), elija **Run on Server** (Ejecutar en el servidor). En el cuadro de diálogo **Run on Server** (Ejecutar en el servidor), elija **Tomcat v7.0 Server**:
+6. Hola Eclipse **ejecutar** menú, haga clic en **ejecutar**. Hola **ejecución** cuadro de diálogo, seleccione **ejecutar en el servidor**. Hola **ejecutar en el servidor** cuadro de diálogo, seleccione **Tomcat v7.0 Server**:
    
     ![][7]
    
     Haga clic en **Finalizar**
-7. Cuando se ejecute la aplicación, la página **JSPHello** debería aparecer en una ventana del host local en Eclipse (`http://localhost:8080/JSPHello/`), con el mensaje siguiente:
+7. Hola cuando ejecuta la aplicación, debería ver Hola **JSPHello** página aparecen en una ventana de localhost en Eclipse (`http://localhost:8080/JSPHello/`), mostrar Hola siguiente mensaje:
    
-    `Hello World, the time is Tue Mar 24 23:21:10 GMT 2015`
+    `Hello World, hello time is Tue Mar 24 23:21:10 GMT 2015`
 
-#### <a name="export-the-application-as-a-war"></a>Exportación de la aplicación como WAR
-Exporte los archivos de proyecto web como un archivo web (WAR) para que pueda implementarlo en la aplicación web. Los siguientes archivos del proyecto web residen en la carpeta WebContent:
+#### <a name="export-hello-application-as-a-war"></a>Exportar aplicación hello como una guerra
+Exportar archivos de proyecto de hello web como un archivo web (WAR) para que pueda implementar toohello web app. Hello siguientes archivos de proyecto web residen en hello WebContent carpeta:
 
     META-INF
     WEB-INF
     index.jsp
 
-1. Haga clic con el botón derecho en la carpeta WebContent y elija **Exportar**.
-2. En el cuadro de diálogo **Exportar selección**, haga clic en **Web > WAR**. Después, haga clic en **Siguiente**.
-3. En el cuadro de diálogo **Exportar WAR** , elija el directorio de origen del proyecto actual e incluya el nombre del archivo WAR al final. Por ejemplo:
+1. Haga clic en carpeta de hello WebContent y seleccione **exportar**.
+2. Hola **Exportar seleccione** cuadro de diálogo, haga clic en **Web > WAR** de archivos, a continuación, haga clic en **siguiente**.
+3. Hola **exportar WAR** cuadro de diálogo, seleccione el directorio de src de hello en el proyecto actual de hello e incluir nombre de Hola de archivo WAR de hello final Hola. Por ejemplo:
    
     `<project-path>/JSPHello/src/JSPHello.war`
 
-Para obtener más información sobre cómo implementar archivos WAR, consulte [Adición de una aplicación Java a las aplicaciones web del Servicio de aplicaciones de Azure](web-sites-java-add-app.md).
+Para obtener más información sobre cómo implementar archivos WAR, consulte [agregar una tooAzure de aplicación de Java aplicación del servicio de aplicaciones Web](web-sites-java-add-app.md).
 
-### <a name="deploying-the-hello-world-application-using-ftp"></a>Implementación de la aplicación Hello World mediante FTP
-Elija un cliente FTP de terceros para publicar la aplicación. En este procedimiento, se describen dos opciones: la consola Kudu integrada en Azure y FileZilla, una herramienta popular con una cómoda interfaz de usuario gráfica.
+### <a name="deploying-hello-hello-world-application-using-ftp"></a>Implementar Hola Hola mundo aplicación mediante FTP
+Seleccione una aplicación de terceros FTP cliente toopublish Hola. Este procedimiento describe dos opciones: consola de Kudu Hola integrada en Azure; y FileZilla, una herramienta muy usada con una interfaz de usuario adecuada, gráfica.
 
-> **Nota:** el Kit de herramientas de Azure para Eclipse admite la implementación en cuentas de almacenamiento y servicios en la nube, pero no admite actualmente la implementación en aplicaciones web. Puede realizar implementaciones en cuentas de almacenamiento y servicios en la nube mediante un proyecto de implementación de Azure, tal y como se describe en [Creación de una aplicación Hola a todos para Azure en Eclipse](http://msdn.microsoft.com/library/azure/hh690944.aspx), pero no en aplicaciones web. Utilice otros métodos, como GitHub o FTP, para transferir archivos a su aplicación web.
+> **Nota:** Hola Kit de herramientas de Azure para Eclipse es compatible con cuentas de implementación de toostorage y servicios en la nube, pero no admite actualmente las aplicaciones de tooweb de implementación. Puede implementar toostorage cuentas y servicios mediante un proyecto de implementación de Azure como se describe en la nube [crear una aplicación Hello World de Azure en Eclipse](http://msdn.microsoft.com/library/azure/hh690944.aspx), pero no a las aplicaciones tooweb. Utilizar otros métodos, como FTP o GitHub tootransfer archivos tooyour aplicación web.
 > 
-> **Nota:** no se recomienda utilizar FTP desde el símbolo del sistema de Windows (la utilidad línea de comandos FTP.EXE que se incluye con Windows). Los clientes FTP que utilizan FTP activo, como FTP.EXE, a menudo no funcionan a través de firewalls. El FTP activo especifica una dirección interna basada en LAN a la que es difícil que pueda conectarse un servidor FTP.
+> **Nota:** no se recomienda usar FTP desde la línea de comandos de Windows hello (Hola de línea de comandos FTP.EXE utilidad que se incluye con Windows). Los clientes FTP que utilicen FTP activo, por ejemplo, FTP.EXE, a menudo no toowork a través de firewalls. FTP activo especifica una dirección interna basado en LAN, servidor FTP toowhich probablemente se producirá un error tooconnect.
 > 
 > 
 
-Para obtener más información acerca de la implementación en una aplicación web del Servicio de aplicaciones mediante FTP, consulte los temas siguientes:
+Para obtener más información sobre la aplicación del servicio de aplicaciones web de implementación tooan mediante FTP, vea Hola temas siguientes:
 
 * [Implementación mediante una utilidad FTP](web-sites-deploy.md)
 
 #### <a name="set-up-deployment-credentials"></a>Configurar credenciales de implementación
-Debe haber ejecutado la aplicación **AzureWebDemo** para crear una aplicación web. Los archivos se transfieren a esta ubicación.
+Asegúrese de que ha ejecutado hello **AzureWebDemo** aplicación toocreate una aplicación web. Transferirá ubicación toothis de archivos.
 
-1. Inicie sesión en el portal clásico y haga clic en **Aplicaciones web**. Asegúrese de que **WebDemoWebApp** aparezca en la lista de aplicaciones web y de que esté en ejecución. Haga clic en **WebDemoWebApp** para abrir la página **Panel**.
-2. En la página **Panel**, en **Vista rápida**, haga clic en **Configurar credenciales de implementación** (si ya cuenta con credenciales de implementación, la opción será **Restablecer credenciales de implementación**).
+1. Inicie sesión en el portal clásico de Hola y haga clic en **aplicaciones Web**. Asegúrese de que **WebDemoWebApp** aparece en la lista de Hola de aplicaciones web y asegúrese de que se está ejecutando. Haga clic en **WebDemoWebApp** tooopen su **panel** página.
+2. En hello **panel** página, en **vista rápida**, haga clic en **configurar las credenciales de implementación** (si ya tiene las credenciales de implementación, éste lee  **Restablecer las credenciales de implementación**).
    
-    Credenciales de implementación asociadas con una cuenta de Microsoft. Deberá especificar un nombre de usuario y una contraseña que pueda utilizar para realizar la implementación con Git y FTP. Puede usar estas credenciales para la implementación en cualquier aplicación web en todas las suscripciones de Azure asociadas a su cuenta de Microsoft. Especifique las credenciales de implementación de Git y FTP en el cuadro de diálogo. Tome nota del nombre de usuario y la contraseña para usarlos en el futuro.
+    Credenciales de implementación asociadas con una cuenta de Microsoft. Deberá toospecify un nombre de usuario y la contraseña que se puede usar toodeploy mediante Git y FTP. Puede usar estas aplicaciones web de credenciales toodeploy tooany en todas las suscripciones de Azure asociadas a su cuenta de Microsoft. Proporcione las credenciales de implementación de Git y FTP en el cuadro de diálogo de hello y el nombre de usuario de registro hello y una contraseña para un uso futuro.
 
 #### <a name="get-ftp-connection-information"></a>Obtención de la información de conexión para FTP
-Si desea utilizar FTP para implementar archivos de aplicación en la aplicación web recién creada, deberá obtener información de conexión. Hay dos maneras de obtener información de conexión. Una de ellas es visitar la página **Panel** de la aplicación web. La otra manera es descargar el perfil de publicación de la aplicación web. El perfil de publicación es un archivo XML que proporciona información como las credenciales de inicio de sesión y el nombre de host FTP para sus aplicaciones web en el Servicio de aplicaciones de Azure. Puede usar este nombre de usuario y contraseña para realizar la implementación en cualquier aplicación web en todas las suscripciones asociadas a la cuenta de Azure y no únicamente esta.
+toouse FTP toodeploy aplicación archivos toohello que acaba de crear aplicación web, necesitará información de conexión de tooobtain. Hay dos maneras de obtener información de conexión de tooobtain. Una manera es la aplicación web de toovisit hello **panel** página; hello otra manera es perfil de publicación de la aplicación web de toodownload Hola. perfil de publicación de Hello es un archivo XML que proporciona información como credenciales de inicio de sesión y el nombre de host FTP para las aplicaciones web en el servicio de aplicaciones de Azure. Puede usar esta aplicación toodeploy tooany web de nombre de usuario y contraseña en todas las suscripciones asociadas con hello cuenta de Azure, no solo este uno.
 
-Para obtener información de conexión de FTP a partir de las hojas de la aplicación web en [Azure Portal][Azure Portal]:
+información de conexión de tooobtain FTP de hoja de la aplicación web Hola Hola [Portal de Azure][Azure Portal]:
 
-1. En **Essentials**, busque y copie **Nombre de host de FTP**. Se trata de un URI similar a `ftp://waws-prod-bay-NNN.ftp.azurewebsites.windows.net`.
-2. En **Essentials**, busque y copie **FTP/Nombre de usuario de implementación**. Tendrá el formato *nombreaplicaciónweb\nombreusuarioimplementación*, por ejemplo `WebDemoWebApp\deployer77`.
+1. En **Essentials**, busque y copie hello **nombre de host FTP**. Esto es un URI similar demasiado`ftp://waws-prod-bay-NNN.ftp.azurewebsites.windows.net`.
+2. En **Essentials**, busque y copie **FTP/Nombre de usuario de implementación**. Esto provocará que el formulario de hello *webappname\deployment-username*; por ejemplo `WebDemoWebApp\deployer77`.
 
-Para obtener información sobre la conexión FTP desde el perfil de publicación:
+perfil de publicación de información de conexión de FTP tooobtain de hello:
 
-1. En la hoja de la aplicación web, haga clic en **Obtener perfil de publicación**. Se descargará un archivo .publishsettings en la unidad local.
-2. Abra el archivo .publishsettings en un editor XML o un editor de texto y busque el elemento `<publishProfile>` que contiene `publishMethod="FTP"`. Debería tener este aspecto:
+1. En la hoja de la aplicación de hello web, haga clic en **Get perfil de publicación**. Se descargará una unidad local de .publishsettings archivo tooyour.
+2. Abra el archivo .publishsettings de hello en un editor XML o editor de texto y busque hello `<publishProfile>` que contiene el elemento `publishMethod="FTP"`. Debería ser similar Hola siguiente:
    
         <publishProfile
             profileName="WebDemoWebApp - FTP"
@@ -416,87 +416,87 @@ Para obtener información sobre la conexión FTP desde el perfil de publicación
             userPWD="<deployment-password>"
             ...
         </publishProfile>
-3. Tenga en cuenta que la configuración `publishProfile` de la aplicación web se asigna a la configuración del administrador del sitio de FileZilla de esta forma:
+3. Tenga en cuenta esa aplicación de web hello `publishProfile` configuración asignar configuración de administrador del sitio FileZilla toohello como sigue:
 
-* `publishUrl` es el mismo valor que el **Nombre de host de FTP**, el valor establecido en **Host**.
-* `publishMethod="FTP"` significa que se establece el valor **Protocolo** en **FTP - Protocolo de transferencia de archivos**. El valor de **Cifrado** debe ser **Usar FTP sin formato**.
-* `userName` y `userPWD` son claves para los valores reales del nombre de usuario y la contraseña que especificó al restablecer las credenciales de la implementación. `userName` es el mismo que **Implementación/Usuario FTP**. Se asignan a **Usuario** y **Contraseña** en FileZilla.
-* `ftpPassiveMode="True"` significa que el sitio FTP utiliza la transferencia FTP pasiva. Elija **Pasivo** en la pestaña **Opciones de Transferencia**.
+* `publishUrl`se Hola igual **nombre de host FTP**, Hola valor establecido en **Host**.
+* `publishMethod="FTP"`significa que se establece **protocolo** demasiado**FTP: protocolo de transferencia de archivos**, y **cifrado** demasiado**usar FTP sin formato**.
+* `userName`y `userPWD` son claves para hello valores reales de nombre de usuario y la contraseña que especificó al restablecer credenciales de implementación de Hola. `userName`se Hola igual **implementación / FTP usuario**. Se asignan demasiado**usuario** y **contraseña** en FileZilla.
+* `ftpPassiveMode="True"`significa que ese sitio Hola FTP utiliza a transferencia FTP pasivo; Seleccione **pasivo** en hello **configuración de transferencia** ficha.
 
-#### <a name="configure-the-web-app-to-host-a-java-application"></a>Configuración de la aplicación web para hospedar una aplicación Java
-Antes de publicar la aplicación, deberá cambiar algunos valores de configuración para que la aplicación web pueda hospedar una aplicación Java.
+#### <a name="configure-hello-web-app-toohost-a-java-application"></a>Configurar la aplicación Web de hello toohost una aplicación de Java
+Antes de publicar la aplicación hello, tendrá que toochange algunos valores de configuración para que hello aplicación web puede hospedar una aplicación Java.
 
-1. En el portal clásico, vaya a la página **Panel** de la aplicación web y haga clic en **Configurar**. En la página **Configurar** , especifique la configuración siguiente.
-2. En **Versión de Java**, el valor predeterminado es **Desactivar**. Elija la versión de Java a la que se dirige su aplicación, por ejemplo 1.7.0_51. Después de esto, asegúrese de que **Contenedor web** esté establecido en una versión del servidor de Tomcat.
-3. En **Documentos predeterminados**, agregue index.jsp y colóquelo en la parte superior de la lista. (El archivo predeterminado para las aplicaciones web es hostingstart.html).
+1. En el portal clásico de hello, vaya toohello web app **panel** página y haga clic en **configurar**. En hello **configurar** página, especifique Hola después de la configuración.
+2. En **versión de Java** Hola predeterminado es **desactivar**; seleccione versión de Java de hello destine su aplicación; por ejemplo 1.7.0_51. Después de hacer esto, también Asegúrese de que **contenedor Web** se establece la versión de tooa de servidor de Tomcat.
+3. En **documentos predeterminados**, agregue index.jsp y moverlo hacia arriba de la parte superior de toohello de lista de Hola. (archivo de saludo predeterminado para las aplicaciones web es hostingstart.html).
 4. Haga clic en **Guardar**.
 
 #### <a name="publish-your-application-using-kudu"></a>Publicación de la aplicación mediante Kudu
-Una manera de publicar la aplicación consiste en utilizar la consola de depuración Kudu integrada en Azure. Kudu es conocido por su estabilidad y coherencia con las aplicaciones web del Servicio de aplicaciones y el servidor de Tomcat. Puede obtener acceso a la consola para la aplicación web a través de una dirección URL de la forma siguiente:
+Aplicación de una manera toopublish hello es hello toouse que kudu depurar consola integrada en Azure. Kudu se conoce toobe estable y coherente con la aplicación del servicio de aplicaciones Web y el servidor de Tomcat. Tener acceso a la consola de hello para la aplicación web de hello examinando la dirección URL de tooa de hello siguiendo el formato:
 
 `https://<webappname>.scm.azurewebsites.net/DebugConsole`
 
-1. Para este procedimiento, la consola Kudu se encuentra en la siguiente dirección URL. Acceda a esta ubicación:
+1. Para este procedimiento, consola de hello Kudu se encuentra en hello después de la dirección URL; Busque la ubicación de toothis:
    
     `https://webdemowebapp.scm.azurewebsites.net/DebugConsole`
-2. En el menú superior, elija **Consola de depuración > CMD**.
-3. En la línea de comandos de la consola, vaya a `/site/wwwroot` (o haga clic en `site` y en `wwwroot`, en la parte superior de la página de la vista de directorios):
+2. En el menú superior de hello, seleccione **consola Depurar > CMD**.
+3. En la línea de comandos de consola de hello, navegue demasiado`/site/wwwroot` (o haga clic en `site`, a continuación, `wwwroot` en la vista de directorio de hello al principio de Hola de página de hello):
    
     `cd /site/wwwroot`
-4. Después de especificar un valor en **Versión de Java**, el servidor de Tomcat debe crear un directorio de aplicaciones web. En la línea de comandos de la consola, acceda al directorio de aplicaciones web:
+4. Después de especificar un valor en **Versión de Java**, el servidor de Tomcat debe crear un directorio de aplicaciones web. En la línea de comandos de consola de hello, desplácese toohello directorio de aplicaciones Web:
    
     `mkdir webapps`
    
     `cd webapps`
-5. Arrastre JSPHello.war desde `<project-path>/JSPHello/src/` y colóquelo en la vista de directorio Kudu, en `/site/wwwroot/webapps`. No lo arrastre hasta el área "Arrastre aquí para cargar y comprimir", porque Tomcat lo descomprimirá.
+5. Arrastre JSPHello.war de `<project-path>/JSPHello/src/` y colóquelo en la vista de directorio de hello Kudu en `/site/wwwroot/webapps`. No lo arrastre toohello "Arrastre aquí tooupload y zip" área, porque descomprímalo Tomcat.
    
    ![][8]
 
-En primer lugar, JSPHello.war aparece en el área de directorio por sí solo:
+En JSPHello.war primera aparece en el área de directorio de Hola por sí solo:
 
   ![][9]
 
-Poco tiempo después (probablemente, menos de 5 minutos), el servidor de Tomcat descomprimirá el archivo WAR en un directorio JSPHello desempaquetado. Haga clic en el directorio raíz para ver si index.jsp se ha descomprimido y copiado allí. Si es así, acceda de nuevo al directorio de aplicaciones web para ver si se ha creado el directorio JSPHello desempaquetado. Si no ve estos elementos, espere y repita el procedimiento.
+En poco tiempo (probablemente menos de 5 minutos) servidor de Tomcat se descomprima el archivo WAR de hello en un directorio JSPHello desempaquetado. Haga clic en hello raíz directory toosee si se ha descomprimido index.jsp y se copiarán allí. Si es así, vaya toosee de directorio de aplicaciones Web toohello atrás si Hola desempaqueta JSPHello se ha creado el directorio. Si no ve estos elementos, espere y repita el procedimiento.
 
   ![][10]
 
 #### <a name="publish-your-application-using-filezilla-optional"></a>Publicación de la aplicación mediante FileZilla (opcional)
-Otra herramienta que puede usar para publicar la aplicación es FileZilla, un cliente FTP de terceros popular con una cómoda interfaz de usuario gráfica. Puede descargar e instalar FileZilla desde [http://filezilla-project.org/](http://filezilla-project.org/) en caso de que no lo tenga. Para más información sobre cómo utilizar el cliente, consulte la [documentación de FileZilla](https://wiki.filezilla-project.org/Documentation) y esta entrada de blog en [FTP Clients - Part 4: FileZilla](http://blogs.msdn.com/b/robert_mcmurray/archive/2008/12/17/ftp-clients-part-4-filezilla.aspx) (Clientes FTP - Parte 4: FileZilla).
+Otra herramienta que puede usar la aplicación de hello toopublish es FileZilla, un cliente FTP de otros fabricantes popular con una interfaz de usuario adecuada, gráfico. Puede descargar e instalar FileZilla desde [http://filezilla-project.org/](http://filezilla-project.org/) en caso de que no lo tenga. Para obtener más información sobre el uso de cliente hello, vea hello [FileZilla documentación](https://wiki.filezilla-project.org/Documentation) y esta entrada de blog en [los clientes FTP - parte 4: FileZilla](http://blogs.msdn.com/b/robert_mcmurray/archive/2008/12/17/ftp-clients-part-4-filezilla.aspx).
 
 1. En FileZilla, haga clic en **Archivo > Gestor de sitios**.
-2. En el cuadro de diálogo **Gestor de sitios**, haga clic en **Nuevo sitio**. Aparecerá un nuevo sitio FTP en blanco en **Select Entry** (Seleccionar entrada), en el que se le solicitará que proporcione un nombre. Para este procedimiento, asígnele el nombre `AzureWebDemo-FTP`.
+2. Hola **Site Manager** cuadro de diálogo, haga clic en **nuevo sitio**. Aparecerá un nuevo sitio FTP en blanco en **Seleccionar entrada** preguntar tooprovide un nombre. Para este procedimiento, asígnele el nombre `AzureWebDemo-FTP`.
    
-    En la pestaña **General** , especifique la configuración siguiente:
+    En hello **General** ficha, especifique Hola después de configuración:
    
-   * **Servidor:** escriba el **Nombre de host de FTP** que ha copiado del panel.
-   * **Puerto:** (déjelo en blanco, puesto que se trata de una transferencia pasiva y el servidor determinará el puerto que se utilizará).
+   * **Host:** ENTRAR hello **nombre de Host FTP** que copió desde el panel de Hola.
+   * **Puerto:** (dejarlo en blanco, tal y como se trata de una transferencia de pasivo y servidor hello determinará Hola puerto toouse.)
    * **Protocolo:** FTP - Protocolo de Transferencia de Archivos
    * **Cifrado:** Use plain FTP (Usar FTP sin formato)
    * **Modo de acceso:** Normal
-   * **Usuario:** introduzca el usuario de implementación / FTP que haya copiado del panel. Se trata del nombre de usuario FTP completo, que tiene la forma *nombredeaplicaciónweb\nombredeusuario*.
-   * **Contraseña:** escriba la contraseña que haya especificado al configurar las credenciales de implementación.
+   * **Usuario:** ENTRAR Hola implementación / FTP de usuario que ha copiado en el panel de Hola. Se trata de hello nombre de usuario FTP completo, que tiene formato de hello *webappname\username*.
+   * **Contraseña:** escriba la contraseña de Hola que especificó al configurar las credenciales de implementación de Hola.
      
-     En la pestaña **Opciones de Transferencia**, elija **Pasivo**.
-3. Haga clic en **Conectar**. Si la configuración es correcta, la consola de FileZilla mostrará el mensaje `Status: Connected` y emitirá un comando `LIST` para mostrar el contenido del directorio.
-4. En el panel del sitio **Local** , elija el directorio de origen en el que reside el archivo JSPHello.war; la ruta será similar a la siguiente:
+     En hello **configuración de transferencia** ficha, seleccione **pasivo**.
+3. Haga clic en **Conectar**. Si es correcta, consola del FileZilla se mostrará un `Status: Connected` mensaje y emitir un `LIST` comando contenido del directorio toolist Hola.
+4. Hola **Local** el panel de sitio, directorio de origen de hello seleccione en qué archivo de JSPHello.war hello reside; ruta de acceso de hello será similar siguiente toohello:
    
     `<project-path>/JSPHello/src/`
-5. En el panel del sitio **Remote** (Remoto), elija la carpeta de destino. El archivo WAR se implementará en el directorio `webapps` , en la raíz de la aplicación web. Vaya a `/site/wwwroot`, haga clic con el botón derecho en `wwwroot` y elija **Crear directorio**. Asigne al directorio el nombre `webapps` y acceda a él.
-6. Transfiera JSPHello.war a `/site/wwwroot/webapps`. Elija JSPHello.war en la lista de archivos **Local**, haga clic con el botón derecho en él y elija **Cargar**. Deberá mostrarse en `/site/wwwroot/webapps`.
-7. Después de copiar JSPHello.war en el directorio de aplicaciones web, el servidor de Tomcat desempaquetará automáticamente (descomprimirá) los archivos en el archivo WAR. Aunque el servidor de Tomcat comienza a desempaquetar casi inmediatamente, puede pasar mucho tiempo (posiblemente horas) para que los archivos aparezcan en el cliente FTP.
+5. Hola **remoto** panel sitio, la carpeta de destino de hello select. Implementará Hola WAR archivo toohello `webapps` directorio en la raíz de la aplicación hello web. Navegue demasiado`/site/wwwroot`, haga doble clic en `wwwroot`y seleccione **crear directorio**. Directorio de nombres de hello `webapps` y escriba ese directorio.
+6. Transferir JSPHello.war demasiado`/site/wwwroot/webapps`. Seleccione JSPHello.war en hello **Local** lista de archivos, haga doble clic en él y seleccione **cargar**. Deberá mostrarse en `/site/wwwroot/webapps`.
+7. Una vez copiado el directorio de aplicaciones Web de JSPHello.war toohello, automáticamente se desempaquetar el servidor de Tomcat (Descomprimir) Hola archivos en archivo WAR de hello. Aunque el servidor de Tomcat comienza a desempaquetar casi de inmediato, es posible que tarde mucho tiempo (posiblemente horas) para hello tooappear de archivos de cliente de hello FTP.
 
-#### <a name="run-the-hello-world-application-on-the-web-app"></a>Ejecución de la aplicación Hello World en la aplicación web
-1. Una vez que cargue el archivo WAR y verifique que el servidor de Tomcat ha creado un directorio `JSPHello` desempaquetado, vaya a `http://webdemowebapp.azurewebsites.net/JSPHello` para ejecutar la aplicación.
+#### <a name="run-hello-hello-world-application-on-hello-web-app"></a>Ejecutar aplicación hello Hello World en hello aplicación Web
+1. Una vez que haya cargado el archivo WAR de hello y comprobar que el servidor de Tomcat ha creado un desempaquetados `JSPHello` directory, examinar demasiado`http://webdemowebapp.azurewebsites.net/JSPHello` aplicación de hello toorun.
    
-   > **Nota:** Si hace clic en **Examinar** desde el portal clásico, es posible que se muestre la página web predeterminada, en la que se indica que la aplicación web de Java se ha creado correctamente. Tendrá que actualizar la página web para poder ver el resultado de la aplicación en lugar de la página web predeterminada.
+   > **Nota:** si hace clic en **examinar** desde portal clásico de hello, podría obtener página Web predeterminada de hello, que dice "esta aplicación web de Java según se creó correctamente." Podría tener página Web de hello toorefresh en orden tooview Hola salida de la aplicación en lugar de la página Web predeterminada de Hola.
    > 
    > 
-2. Cuando se ejecuta la aplicación, debería mostrarse una página web con el siguiente resultado:
+2. Cuando se ejecuta la aplicación hello, verá una página web con hello después de salida:
    
-    `Hello World, the time is Tue Mar 24 23:21:10 GMT 2015`
+    `Hello World, hello time is Tue Mar 24 23:21:10 GMT 2015`
 
 #### <a name="clean-up-azure-resources"></a>Limpieza de los recursos de Azure
-Este procedimiento crea una aplicación web de Servicio de aplicaciones. Se le facturará por el recurso durante toda su existencia. A menos que vaya a continuar usando la aplicación web para propósitos de pruebas o desarrollo, debería plantearse si desea detenerla o eliminarla. Una aplicación web detenida generará un gasto pequeño, pero podrá volver a iniciarla en cualquier momento. Al eliminar una aplicación web, se borran todos los datos que se hayan cargado en ella.
+Este procedimiento crea una aplicación web de Servicio de aplicaciones. Se le facturará para el recurso de hello mientras existe. A menos que piense toocontinue con hello web app para pruebas o desarrollo, debería considerar detener o eliminarlo. Una aplicación web detenida generará un gasto pequeño, pero podrá volver a iniciarla en cualquier momento. Eliminar una aplicación web, borra todos los datos que se ha cargado tooit.
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: "Patrón de diseño de Azure Cosmos DB: aplicaciones de redes sociales | Microsoft Docs"
-description: "Obtenga información sobre un patrón de diseño para redes sociales con la flexibilidad de almacenamiento de Azure Cosmos DB y otros servicios de Azure."
+description: "Obtenga información acerca de un modelo de diseño para las redes sociales aprovechando la flexibilidad de almacenamiento de Hola de base de datos de Azure Cosmos y otros servicios de Azure."
 keywords: aplicaciones de redes sociales
 services: cosmos-db
 author: ealsur
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.openlocfilehash: 43025adeaf954fedfbcee32e636fb30935f2126b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 47a22f2c5762d62b176921c8052e7bd75d8cf6ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Redes sociales y Azure Cosmos DB
-Vivir en una sociedad enormemente interconectada significa que, en algún momento de la vida, uno formará parte de una **red social**. Las redes sociales se usan para mantenerse en contacto con amigos, compañeros de trabajo y familiares y, a veces, para compartir intereses comunes con otras personas.
+Vivir en una sociedad enormemente interconectada significa que, en algún momento de la vida, uno formará parte de una **red social**. Se usa las redes sociales tookeep en contacto con tus amigos, compañeros de trabajo, familia o a veces tooshare nuestra pasión con usuarios con intereses comunes.
 
-Como ingenieros o desarrolladores, es probable que nos hayamos preguntado cómo almacenan e interconectan nuestros datos estas redes sociales, o incluso puede que nos hayan encargado crear o diseñar la arquitectura de una nueva red social para un segmento de mercado específico. Y ahí surge la gran duda: ¿cómo se almacenan todos estos datos?
+Como ingenieros o a los desarrolladores, tengamos que se pregunte cómo estas redes almacenar y nuestros datos se interconectan, podría haber incluso ha toocreate de trabajo que pidieron o arquitecto de una nueva red social para un nicho específico mercado o su propio. ¿Es decir, cuando Hola big pregunta que surge: cómo se almacenan todos estos datos?
 
-Supongamos que queremos crear una red social nueva en la que los usuarios puedan publicar artículos y materiales como imágenes, vídeos o incluso música. En esta red social, los usuarios podrán comentar y valorar las publicaciones con fines de clasificación. Además, en la página de aterrizaje del sitio web, los usuarios podrán ver e interactuar con una fuente de publicaciones. En un principio, esto no parece muy complejo, pero, para mayor simplicidad, lo dejaremos así (podríamos diseñar fuentes de usuario personalizadas en las que se tuvieran en cuenta las relaciones, pero supera el objetivo de este artículo).
+Supongamos que queremos crear una red social nueva en la que los usuarios puedan publicar artículos y materiales como imágenes, vídeos o incluso música. En esta red social, los usuarios podrán comentar y valorar las publicaciones con fines de clasificación. Habrá una fuente de entradas que los usuarios se ven y ser capaz de toointeract con en la página de inicio del sitio Web principal de Hola. Esto no parezca muy complicada (al principio), pero para hello simplificar, vamos a parar ahí (podríamos profundizar en las fuentes de usuario personalizada afectadas por las relaciones, pero supera el objetivo de Hola de este artículo).
 
 Entonces, ¿cómo y dónde almacenamos estos datos?
 
-En caso de tener experiencia en bases de datos SQL o al menos tener nociones de [modelado de datos relacional](https://en.wikipedia.org/wiki/Relational_model) , podría verse tentado a empezar a dibujar algo parecido a esto:
+Muchos de los usuarios podrían tener experiencia en bases de datos SQL o como mínimo, tener noción de [de modelado de datos relacional](https://en.wikipedia.org/wiki/Relational_model) y es posible que vea tentado toostart dibujar algo parecido a esto:
 
 ![Diagrama que ilustra un modelo relacional relativo](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -38,12 +38,12 @@ Sin embargo, a pesar de ser una estructura de datos perfectamente normalizada, n
 
 No me malinterpreten, he trabajado con bases de datos SQL toda mi vida y me parecen excelentes, pero, al igual que todos los modelos, prácticas y plataformas de software, no son perfectas para todos los escenarios.
 
-¿Por qué SQL no es la mejor opción en este escenario? Echemos un vistazo a la estructura de una entrada única, si quisiéramos esa publicación en un sitio web o una aplicación, tendríamos que realizar una consulta con 8 combinaciones de tablas para mostrar una sola publicación. Ahora, cree una secuencia de entradas que se cargue dinámicamente y aparezcan en la pantalla.
+¿Por qué no es mejor opción de Hola SQL en este escenario? Echemos un vistazo a la estructura de Hola de un solo elemento para exponer, si deseaba tooshow que publique en un sitio Web o aplicación, ¿tengo toodo una consulta con... tabla 8 combinaciones (!) tooshow solo un único post, ahora, imagen podría ver una secuencia de entradas que se cargaron dinámicamente y aparecen en pantalla de bienvenida y donde voy.
 
-Por supuesto, podríamos usar una instancia de SQL enorme con capacidad suficiente para resolver miles de consultas con las combinaciones necesarias para servir el contenido, pero ¿por qué habríamos de hacerlo cuando existe una solución más sencilla?
+Podríamos, por supuesto, usar una instancia SQL humongous con suficiente toosolve power miles de consultas con estos tooserve muchas de las combinaciones nuestro contenido, pero realmente, ¿por qué se cuando una solución más sencilla existe?
 
-## <a name="the-nosql-road"></a>La vía NoSQL
-Este artículo lo ayudará a modelar los datos de su plataforma social con una base de datos NoSQL de Azure, [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), de una manera rentable y aprovechando otras funciones de Azure Cosmos DB, como la [API Graph de Gremlin](../cosmos-db/graph-introduction.md). Con un enfoque [NoSQL](https://en.wikipedia.org/wiki/NoSQL), almacenamiento de datos en formato JSON y la aplicación de [desnormalización](https://en.wikipedia.org/wiki/Denormalization), nuestra publicación, que antes era complicada, ahora puede transformarse en un único [documento](https://en.wikipedia.org/wiki/Document-oriented_database):
+## <a name="hello-nosql-road"></a>carretera de NoSQL Hola
+En este artículo le ayudará a modelar datos de su plataforma sociales con una base de datos de SQL de Azure [base de datos de Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/) de una manera rentable y con el uso de otras características de base de datos de Azure Cosmos como hello [Gremlin API de Graph ](../cosmos-db/graph-introduction.md). Con un enfoque [NoSQL](https://en.wikipedia.org/wiki/NoSQL), almacenamiento de datos en formato JSON y la aplicación de [desnormalización](https://en.wikipedia.org/wiki/Denormalization), nuestra publicación, que antes era complicada, ahora puede transformarse en un único [documento](https://en.wikipedia.org/wiki/Document-oriented_database):
 
 
     {
@@ -54,18 +54,18 @@ Este artículo lo ayudará a modelar los datos de su plataforma social con una b
         "createdBy":User,
         "images":["http://myfirstimage.png","http://mysecondimage.png"],
         "videos":[
-            {"url":"http://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"http://mysecondvideo.mp4", "title":"The second video"}
+            {"url":"http://myfirstvideo.mp4", "title":"hello first video"},
+            {"url":"http://mysecondvideo.mp4", "title":"hello second video"}
         ],
         "audios":[
-            {"url":"http://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"http://mysecondaudio.mp3", "title":"The second audio"}
+            {"url":"http://myfirstaudio.mp3", "title":"hello first audio"},
+            {"url":"http://mysecondaudio.mp3", "title":"hello second audio"}
         ]
     }
 
-Además, puede obtenerse con una sola consulta y sin combinaciones. Esto es mucho más sencillo, directo, económico y requiere menos recursos para conseguir un mejor resultado.
+Además, puede obtenerse con una sola consulta y sin combinaciones. Esto es mucho más sencilla y directa y budget-wise, requiere menos recursos tooachieve mejores resultados.
 
-Azure Cosmos DB se asegura de que todas las propiedades se indexen con su indexación automática, que incluso se puede [personalizar](indexing-policies.md). El enfoque sin esquema nos permite almacenar documentos con estructuras dinámicas y diferentes. Así, por ejemplo, si en el futuro queremos que las publicaciones tengan una lista de categorías o hashtags asociados, Cosmos DB gestionará los nuevos documentos con los atributos agregados y sin ningún esfuerzo adicional requerido por nuestra parte.
+Base de datos de Azure Cosmos se asegura de que todas las propiedades de hello están indizadas con su indización automática, lo que puede ser incluso [personalizada](indexing-policies.md). Hola sin esquemas enfoque nos permite almacenar documentos con diferentes y las estructuras dinámicas, quizás mañana que queremos toohave entradas de una lista de categorías o hashtags asociados a ellos, Cosmos DB controlará Hola nuevos documentos con hello agrega atributos con sin adicional trabajo necesario para nosotros.
 
 Los comentarios en una publicación pueden tratarse del mismo modo que otras publicaciones con una propiedad primaria (esto simplifica la asignación de objetos). 
 
@@ -103,13 +103,13 @@ Para la creación de fuentes solo es necesario crear documentos que puedan conte
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Podríamos tener un flujo "más reciente" con publicaciones ordenadas por fecha de creación o un flujo "favoritos" con las publicaciones que más han gustado en las últimas 24 horas. Incluso se puede implementar un flujo personalizado para cada usuario basado en lógica como seguidores e intereses, y seguiría siendo una lista de publicaciones. La cuestión es cómo crear estas listas, pero el rendimiento de lectura no se verá afectado. Una vez que se adquiere una de estas listas, se emite una consulta única a Cosmos DB con el [operador IN](documentdb-sql-query.md#WhereClause) para obtener páginas de publicaciones a la vez.
+Podríamos tener una secuencia "más reciente" con entradas ordenadas por fecha de creación, una secuencia "más reciente" con los que se envía con más similares en hello últimas 24 horas, incluso podríamos implementamos una secuencia personalizada para cada usuario según la lógica como seguidores e intereses y todavía sería una lista de  las entradas. Es una cuestión de cómo toobuild estas listas, pero rendimiento de lectura de hello permanece sin problemas. Una vez que se adquiere una de estas listas, se emiten una base de datos de consulta única tooCosmos con hello [IN (operador)](documentdb-sql-query.md#WhereClause) tooobtain páginas de entradas a la vez.
 
-Los flujos de fuente se pueden generar mediante procesos en segundo plano de [Azure App Service](https://azure.microsoft.com/services/app-service/): [Webjobs](../app-service-web/web-sites-create-web-jobs.md). Una vez que se crea una publicación, el procesamiento en segundo plano puede activarse mediante el uso de [Azure Storage](https://azure.microsoft.com/services/storage/) [Queues](../storage/queues/storage-dotnet-how-to-use-queues.md) y Webjobs desencadenados mediante el [SDK Azure Webjobs](../app-service-web/websites-dotnet-webjobs-sdk.md), implementando la propagación de publicaciones dentro de los flujos en función de nuestra lógica personalizada. 
+Hola fuente secuencias podría generarse utilizando [servicios de aplicaciones de Azure](https://azure.microsoft.com/services/app-service/) procesos en segundo plano: [Webjobs](../app-service-web/web-sites-create-web-jobs.md). Una vez que se crea una entrada de blog, el procesamiento en segundo plano puede activarse mediante el uso de [el almacenamiento de Azure](https://azure.microsoft.com/services/storage/) [colas](../storage/queues/storage-dotnet-how-to-use-queues.md) y trabajos Web desencadenado mediante hello [SDK de Webjobs de Azure](../app-service-web/websites-dotnet-webjobs-sdk.md), implementación Hola posteriores a la propagación en secuencias en función de nuestra propia lógica personalizada. 
 
-La puntuación y los "me gusta" de una publicación se pueden procesar de manera aplazada usando esta misma técnica para crear un entorno coherente.
+Puntos y LIKE sobre una publicación puede procesarse de forma diferida usando este mismo toocreate de técnica un entorno coherente.
 
-Con los seguidores es más complicado. Cosmos DB tiene un límite de tamaño máximo del documento y los documentos de gran tamaño de lectura/escritura pueden afectar a la escalabilidad de la aplicación. Por esta razón, debería plantearse almacenar los seguidores como un documento con esta estructura:
+Con los seguidores es más complicado. COSMOS base de datos tiene un límite de tamaño máximo del documento y documentos de gran tamaño de lectura/escritura puede afectar a la escalabilidad de hello de la aplicación. Por esta razón, debería plantearse almacenar los seguidores como un documento con esta estructura:
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -122,9 +122,9 @@ Con los seguidores es más complicado. Cosmos DB tiene un límite de tamaño má
         ]
     }
 
-Este enfoque podría funcionar con un usuario que tenga unos miles de seguidores, pero si se trata de una persona famosa este enfoque produciría un tamaño de documento grande y terminaría superándose el límite de tamaño de documentos.
+Esto puede funcionar en un usuario con unos miles seguidores, pero si algunos famosos combina nuestra rangos, este enfoque llevará tooa tamaño de documento de gran tamaño y podría limitar tamaño del documento Hola finalmente llamadas.
 
-Para solucionar esto, podemos adoptar un enfoque mixto. Como parte del documento Estadísticas de usuario, podemos almacenar el número de seguidores:
+toosolve, podemos usar un enfoque mixto. Como parte del documento de estadísticas de usuarios de hello podemos almacenar número Hola de seguidores de:
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -134,16 +134,16 @@ Para solucionar esto, podemos adoptar un enfoque mixto. Como parte del documento
         "totalPoints":11342
     }
 
-Y el gráfico real de los seguidores puede almacenarse con [API Graph de Gremlin](../cosmos-db/graph-introduction.md) de Azure Cosmos DB, para crear [vértices](http://mathworld.wolfram.com/GraphVertex.html) para cada usuario y [bordes](http://mathworld.wolfram.com/GraphEdge.html) que mantienen relaciones del tipo "A sigue a B". La API Graph le permite no solo obtener los seguidores de un determinado usuario, sino también crear consultas más complejas que incluso permiten sugerir personas en común. Si se agregan al gráfico de las categorías de contenido que gustan o encantan a los individuos, podemos comenzar a componer escenarios que incluyen detección inteligente de contenido, sugerencias de contenido que gustan a las personas a las que seguimos o encontrar personas con quienes puede que tengamos mucho en común.
+Y gráfico real de Hola de seguidores puede almacenarse con base de datos de Azure Cosmos [API de Graph Gremlin](../cosmos-db/graph-introduction.md), toocreate [vértices](http://mathworld.wolfram.com/GraphVertex.html) para cada usuario y [bordes](http://mathworld.wolfram.com/GraphEdge.html) que mantener hello " Relaciones se indica a continuación-A-B". Hello API Graph vamos a no sólo obtener seguidores de Hola de un determinado usuario sino crear consultas más complejas tooeven sugerir personas en común. Si se agrega Hola de gráfico toohello categorías de contenido que las personas como o disfrute, podemos iniciar tejido experiencias que incluyen detección inteligente de contenido, lo que sugiere contenido que los que se siga como, o buscar personas con quienes se tengamos que tienen mucho en común.
 
-El documento de Estadísticas de usuario se sigue pudiendo usar para crear tarjetas en la interfaz de usuario o vistas previas rápidas de los perfiles.
+documento de Hello estadísticas de usuario puede seguir siendo toocreate usado tarjetas de interfaz de usuario de Hola o vistas previas de perfil rápido.
 
-## <a name="the-ladder-pattern-and-data-duplication"></a>El modelo "Escalera" y la duplicación de datos
-Como habrá observado en el documento JSON que hace referencia a una publicación, hay varias apariciones de un usuario. Y, como ya habrá imaginado, esto significa que la información que representa a un usuario, dada esta desnormalización, puede existir en más de un lugar.
+## <a name="hello-ladder-pattern-and-data-duplication"></a>Hola duplicación de datos y el patrón de "Escala"
+Como puede que haya observado en el documento JSON de Hola que hace referencia a una entrada de blog, hay varias apariciones de un usuario. Y habría adivinado correctamente, que esto significa que información de Hola que representa un especificada por el usuario, esta desnormalización, podría estar presente en más de un lugar.
 
-Para permitir consultas más rápidas, incurrimos en duplicación de datos. El problema con este efecto secundario es que si, por alguna acción, cambian los datos de un usuario, necesitaremos buscar todas las actividades que ha hecho y actualizarlas. Lo cierto es que no parece muy práctico.
+En orden tooallow para las consultas más rápidas, se incurre en la desduplicación de datos. problema de Hola con este efecto secundario es que si por alguna acción, cambian los datos de un usuario, necesitamos toofind todas las actividades de hello alguna vez ha y actualizar todos ellos. Lo cierto es que no parece muy práctico.
 
-Nosotros vamos a resolverlo mediante la identificación de los atributos clave de un usuario que mostramos en nuestra aplicación para cada actividad. Si en nuestra aplicación mostramos una publicación tan solo con el nombre y la imagen del creador, ¿por qué almacenar todos los datos del usuario en el atributo "createdBy"? Si en cada comentario solo se muestra la imagen del usuario, no es necesario el resto de su información. Y aquí es donde entra en juego lo que yo llamo el modelo "escalera".
+Estamos toosolve continuo, mediante la identificación de Hola atributos de clave de un usuario que se muestra en nuestra aplicación para cada actividad. Si se muestra una entrada de blog en nuestra aplicación visualmente y mostrar simplemente del creador de Hola y el nombre imagen, ¿por qué almacenar todos los datos del usuario de hello en atributo createdBy"hello"? Si cada comentario que mostramos imagen de usuario de hello, realmente no es necesario rest Hola de su información. Es donde entra en juego la algo que llamaré Hola "escalera pattern".
 
 Tomemos como ejemplo información de usuario:
 
@@ -165,13 +165,13 @@ Al examinar esta información, podemos detectar rápidamente cuál es informaci�
 
 ![Diagrama de un modelo de escalera](./media/social-media-apps/social-media-apps-ladder.png)
 
-El paso más pequeño se denomina UserChunk: es el fragmento mínimo de información que identifica a un usuario y se usa para la duplicación de datos. Al reducir el tamaño de los datos duplicados a la información que "mostraremos", se reduce también la posibilidad de actualizaciones masivas.
+paso más pequeño de Hola se denomina un UserChunk, parte mínima de hello de la información que identifica a un usuario y se usa para la desduplicación de datos. Al reducir el tamaño de Hola Hola duplicada tooonly Hola de información de datos "mostraremos", se reducirán las posibilidades de Hola de actualizaciones masivas.
 
-El paso intermedio se denomina usuario: son todos los datos que se usarán en la mayoría de las consultas dependientes del rendimiento en Cosmos DB, a los que más se accede y los más críticos. Incluye la información representada por un UserChunk.
+paso intermedio de Hola se denomina usuario hello, resulta Hola a todos los datos de Hola que se utilizará en la mayoría de las consultas dependientes de rendimiento en la base de datos de Cosmos más graves y que se accede. Incluye información de hello representado por un UserChunk.
 
-El mayor es el usuario extendido. Incluye toda la información crítica del usuario además de otros datos que no es necesario leer rápidamente o cuyo uso es eventual (como el proceso de inicio de sesión). Estos datos pueden almacenarse fuera de Cosmos DB, en Azure SQL Database o en tablas de Azure Storage.
+Hola más grande es hello usuario extendido. Incluye toda la información crítica usuario hello además de otros datos que realmente no requieren la lectura de toobe rápidamente o su uso es final (por ejemplo, proceso de inicio de sesión de hello). Estos datos pueden almacenarse fuera de Cosmos DB, en Azure SQL Database o en tablas de Azure Storage.
 
-¿Por qué habríamos de dividir el usuario e incluso almacenar esta información en diferentes lugares? Porque desde el punto de vista del rendimiento, cuanto mayores sean los documentos, más costosas serán las consultas. No sobrecargue los documentos; que tengan la información adecuada para realizar todas las consultas dependientes del rendimiento de la red social, y almacene el resto de la información adicional para escenarios eventuales, como modificaciones del perfil completo, inicios de sesión e incluso minería de datos para análisis de uso e iniciativas de macrodatos. No nos importa que la recopilación de información para minería de datos sea lenta, ya que se ejecuta en la Base de datos SQL de Microsoft Azure. Lo que sí nos importa es que los usuarios tengan una experiencia rápida y ligera. La apariencia de un usuario almacenado en Cosmos DB sería la siguiente:
+¿Por qué podría se dividir usuario Hola e incluso almacenar esta información en distintos lugares? Dado que desde un punto de vista del rendimiento, hello documentos hello más grandes, Hola costosa consultas Hola. Mantener documentos finos con hello derecho información toodo realiza consultas en todos los dependientes de rendimiento con su red social y almacén Hola otra información adicional para posibles escenarios como, modificaciones de perfil completo, los inicios de sesión, incluso la minería de datos para análisis de uso y Big Iniciativas de datos. Realmente no nos interesa si Hola recopilación de datos para minería de datos están más lentos porque se está ejecutando en la base de datos de SQL Azure, se han conciernen aunque los usuarios tengan una experiencia rápida y delgada. La apariencia de un usuario almacenado en Cosmos DB sería la siguiente:
 
     {
         "id":"dse4-qwe2-ert4-aad2",
@@ -194,61 +194,61 @@ Asimismo, una solicitud Post tendría el aspecto siguiente:
         }
     }
 
-Si se produce una modificación que afecte a uno de los atributos del fragmento, es fácil encontrar los documentos afectados mediante consultas que señalen a los atributos indexados (SELECT * FROM posts p WHERE p.createdBy.id == “edited_user_id”) y, a continuación, actualizando los fragmentos.
+Y cuando una operación de edición se produce en uno de los atributos de hello del fragmento de Hola se ve afectado, resulta fácil toofind documentos de hello afectado mediante el uso de las consultas que señalan toohello indizado atributos (seleccione * FROM envía p WHERE p.createdBy.id == "edited_user_id") y, a continuación, actualizar fragmentos de Hola.
 
-## <a name="the-search-box"></a>El cuadro de búsqueda
-Los usuarios generarán, con suerte, una gran cantidad de contenido. Debemos proporcionar la capacidad de buscar y encontrar contenido que podría no estar directamente en los flujos de contenido de los usuarios, quizás porque no siguen a los creadores o quizás porque están buscando una publicación antigua de hace seis meses.
+## <a name="hello-search-box"></a>cuadro de búsqueda de Hola
+Los usuarios generarán, con suerte, una gran cantidad de contenido. Y deberíamos estar tooprovide capaz de hello capacidad toosearch y buscar contenido que podría no ser directamente en sus secuencias de contenido, quizás porque no seguimos creadores de hello, o quizás que simplemente tratamos toofind esa entrada anterior que se realizó hace 6 meses.
 
-Afortunadamente, y gracias al empleo de Azure Cosmos DB, se puede implementar fácilmente un motor de búsqueda con [Azure Search](https://azure.microsoft.com/services/search/) en un par de minutos y sin escribir una sola línea de código (aparte de, obviamente, el proceso de búsqueda y la interfaz de usuario).
+Por suerte, y dado que usamos la base de datos de Azure Cosmos, podemos implementar con facilidad un motor de búsqueda con [búsqueda de Azure](https://azure.microsoft.com/services/search/) en un par de minutos y sin escribir una sola línea de código (distinto de hello Obviamente, Buscar proceso e interfaz de usuario).
 
 ¿Por qué es tan fácil?
 
-Azure Search implementa lo que llaman "[indexadores](https://msdn.microsoft.com/library/azure/dn946891.aspx)"; es decir, procesos en segundo plano que se enlazan en los repositorios de datos y automáticamente agregan, actualizan o quitan objetos en los índices. Son compatibles con [indexadores de Azure SQL Database](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [indexadores de Blobs de Azure](../search/search-howto-indexing-azure-blob-storage.md) y, afortunadamente, [indexadores de Cosmos DB](../search/search-howto-index-documentdb.md). La transición de información de Cosmos DB a Azure Search es sencilla porque ambos almacenan la información en formato JSON; tan solo debemos [crear nuestro índice](../search/search-create-index-portal.md) y asignar los atributos de los documentos que deseamos indexar. En cuestión de minutos (según el tamaño de los datos), todo el contenido estará disponible para buscarse con la mejor solución de búsqueda como servicio en la infraestructura de nube. 
+Búsqueda de Azure implementa lo que llame a [indizadores](https://msdn.microsoft.com/library/azure/dn946891.aspx), procesos en segundo plano que enlace en los repositorios de datos y de modo automático agregar, actualizar o quitar los objetos en los índices de Hola. Son compatibles con [indexadores de Azure SQL Database](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [indexadores de Blobs de Azure](../search/search-howto-indexing-azure-blob-storage.md) y, afortunadamente, [indexadores de Cosmos DB](../search/search-howto-index-documentdb.md). Hello transición de información de base de datos de Cosmos tooAzure búsqueda es sencilla, como ambos almacenar la información en formato JSON, solo tenemos demasiado[crear nuestro índice](../search/search-create-index-portal.md) y asignar los atributos de nuestros documentos desea indizar y eso es todo, en cuestión de minutos (depende de tamaño de Hola de nuestros datos), todo el contenido estará disponible toobe buscado, solución de hello mejor búsqueda como servicio en la infraestructura de nube. 
 
-Para obtener más información sobre Búsqueda de Azure, puede consultar la guía [Hitchhiker’s Guide to Search](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)(Guía de búsqueda de Hitchhiker).
+Para obtener más información acerca de la búsqueda de Azure, puede visitar hello [tooSearch de guía de Autoestopista](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/).
 
-## <a name="the-underlying-knowledge"></a>La información subyacente
+## <a name="hello-underlying-knowledge"></a>conocimiento subyacente Hola
 Después de almacenar todo este contenido que crece y crece diariamente, podríamos pensar: ¿qué puedo hacer con todo este flujo de información de mis usuarios?
 
-La respuesta es sencilla: póngala a trabajar y aprenda de ella.
+respuesta de Hello es sencillo: colocarla toowork y obtenga información acerca de él.
 
-Pero, ¿qué podemos aprender? Por ejemplo, [análisis de opinión](https://en.wikipedia.org/wiki/Sentiment_analysis), recomendaciones de contenido según las preferencias de un usuario o, incluso, un moderador automatizado que garantiza que todo el contenido que publique nuestra red social sea adecuado para todos los públicos.
+Pero, ¿qué podemos aprender? Algunos ejemplos fácil son [análisis de opiniones](https://en.wikipedia.org/wiki/Sentiment_analysis), contenido recomendaciones se basan en las preferencias del usuario o incluso un automatizadas moderador contenido que garantiza que todos los Hola contenido publicado en nuestra red social es seguro para Hola familia.
 
-Ahora que ya está interesado, probablemente pensará que necesita un doctorado en ciencias matemáticas para extraer estos patrones y la información de los archivos y las bases de datos, pero no es así.
+Ahora que tengo que enlazar, se podrá considerar probablemente necesita algunos doctorado en matemáticas ciencia tooextract estos patrones y la información de archivos y bases de datos simples, pero podría ser incorrecto.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), que forma parte de [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), es un servicio en la nube totalmente administrado que permite crear flujos de trabajo mediante algoritmos en una sencilla interfaz de arrastrar y colocar, programar sus propios algoritmos en [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) o usar algunas de las API integradas y listas para usar, como [Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator](https://www.microsoft.com/moderator) o [Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
+[Aprendizaje automático de Azure](https://azure.microsoft.com/services/machine-learning/), parte del programa Hola a [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), es un servicio de nube totalmente administrado que le permite crear flujos de trabajo mediante algoritmos en una sencilla interfaz de arrastrar y colocar, sus propios algoritmos de código de hello en [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) o usar algunas de hello ya creado y listo toouse API como: [análisis de texto](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [moderador contenido](https://www.microsoft.com/moderator) o [recomendaciones](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
 
-Para posibilitar cualquiera de estos escenarios de Machine Learning, podemos usar [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) para introducir la información de distintos orígenes, así como [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) para procesar dicha información y generar una salida que pueda tratar Azure Machine Learning.
+tooachieve cualquier de estos escenarios de aprendizaje automático, podemos usar [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) tooingest Hola información procedente de diferentes orígenes y usar [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) tooprocess Hola información y generar una salida que pueden ser procesados por aprendizaje automático de Azure.
 
-Otra opción disponible es usar [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) para analizar el contenido de nuestros usuarios; no solo podemos comprenderlos mejor (mediante el análisis de lo que escriben con [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), sino que también podemos detectar contenido no deseado o contenido para adultos y actuar en consecuencia con [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). Cognitive Services incluye una gran cantidad de soluciones listas para usar que no requieren ningún conocimiento de Machine Learning para usarlas.
+Otra opción disponible es toouse [Microsoft Services cognitivos](https://www.microsoft.com/cognitive-services) tooanalyze nuestros usuarios contenidos; no solo podemos se entienda mejor (a través de analizar lo que escribe con [API de análisis de texto](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), pero También podríamos detectar contenido no deseado o maduro y actuar en consecuencia con [equipo Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). Servicios cognitivos incluyen muchas soluciones de cuadro que no requieren ningún tipo de aprendizaje automático conocimiento toouse.
 
 ## <a name="a-planet-scale-social-experience"></a>Una experiencia social a escala mundial
-Hay un último, pero no por ello menos importante, tema que abordaremos: la **escalabilidad**. Cuando se diseña una arquitectura, resulta fundamental que cada componente pueda escalar por sí mismo, ya sea porque es necesario procesar más datos o porque se desea tener una mayor cobertura geográfica (o ambas opciones). Afortunadamente, llevar a cabo una tarea así de compleja es una **experiencia inmediata** con Cosmos DB.
+Hay un último, pero no por ello menos importante, tema que abordaremos: la **escalabilidad**. Al diseñar una arquitectura que es fundamental que cada componente puede escalar por sí mismo, ya sea porque se necesitan tooprocess más datos o porque deseamos toohave una cobertura geográfica más grande (o ambos). Afortunadamente, llevar a cabo una tarea así de compleja es una **experiencia inmediata** con Cosmos DB.
 
-Cosmos DB admite la [creación de particiones dinámica](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) inmediata mediante la creación automática de particiones según una **clave de partición** determinada (que se define como uno de los atributos en los documentos). Definir la clave de partición correcta se debe realizar en el momento del diseño, teniendo en cuenta los [procedimientos recomendados](../cosmos-db/partition-data.md#designing-for-partitioning) disponibles; en caso de una experiencia social, la estrategia de creación de particiones debe alinearse con la forma en que consulta (se prefieren las lecturas dentro de la misma partición) y escribe (evite las "zonas activas" distribuyendo las escrituras en varias particiones). Algunas opciones son: particiones basadas en una clave temporal (día/mes/semana), por categoría de contenido, por región geográfica, por usuario; en realidad, todo depende de cómo consultará los datos y cómo los mostrará en la experiencia social. 
+Admite COSMOS DB [crear particiones dinámicas](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) out-of-the-box mediante la creación automática de las particiones basadas en un determinado **clave de partición** (definido como uno de los atributos de hello en los documentos). Definir Hola correcta de clave de partición debe realizarse en tiempo de diseño y mantener en hello cuenta [prácticas recomendadas](../cosmos-db/partition-data.md#designing-for-partitioning) está disponible; en caso de hello de una experiencia sociales, la estrategia de partición debe estar alineada con forma de hello consultar (lecturas dentro de hello son deseables misma partición) y escritura (evitar "zonas activas" extendiendo escrituras en varias particiones). Algunas opciones son: las particiones basadas en una clave temporal (día/mes/semana), por categoría de contenido, por región geográfica, por usuario; todo realmente depende de cómo consultar datos de Hola y mostrarla en su experiencia sociales. 
 
-Un punto interesante que vale la pena mencionar es que Cosmos DB ejecutará las consultas (incluidas las [agregaciones](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) en todas las particiones de forma transparente, por lo que no necesita agregar ninguna lógico a medida que crecen los datos.
+Un aspecto interesante de vale la pena mencionar es que Cosmos DB ejecutará las consultas (incluidos [agregados](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) a través de todas las particiones de forma transparente, no es necesario tooadd ninguna lógica que crecen los datos.
 
-Con el tiempo, a la larga el tráfico crecerá y su consumo de recursos (que se mide en [RU](request-units.md) o unidades de solicitud) aumentará. Leerá y escribirá con más frecuencia a medida que crece la base de usuarios y ellos comenzarán a crear y leer más contenido; la capacidad de **escalar el rendimiento** resulta vital. Aumentar las unidades de solicitud es muy simple: podemos hacerlo con algunos clics en Azure Portal o a través de la [emisión de comandos mediante la API](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer).
+Con el tiempo, a la larga el tráfico crecerá y su consumo de recursos (que se mide en [RU](request-units.md) o unidades de solicitud) aumentará. Leerá y escribirá con mayor frecuencia medida que crece su userbase y se inician la creación y lectura de contenido más; Hola capacidad de **ajuste de escala en el rendimiento** es vital. Aumentar nuestro RUs es muy fácil, podemos hacerlo con unos pocos clics en hello Portal de Azure o [emitir comandos a través de la API de hello](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer).
 
 ![Escalado vertical y definición de una clave de partición](./media/social-media-apps/social-media-apps-scaling.png)
 
 ¿Qué ocurre si las cosas siguen mejorando y los usuarios de otra región, otro país u otro continente descubren su plataforma y comienzan a usarla? ¡Una gran sorpresa!
 
-Pero... momento: pronto se da cuenta de que su experiencia con la plataforma no es óptima, porque están tan lejos de la región de operaciones que la latencia es enorme y, por supuesto, no quiere que abandonen la plataforma. ¡Si tan solo hubiese una forma sencilla de **extender su alcance global**! Y la hay.
+Pero, espere... pronto se da cuenta de su experiencia con la plataforma no es óptimo; únicamente son hasta ahora fuera de su región operativa que la latencia de hello es terrible y obviamente no gusto tooquit. ¡Si tan solo hubiese una forma sencilla de **extender su alcance global**! Y la hay.
 
-Cosmos DB le permite [replicar los datos global](../cosmos-db/tutorial-global-distribution-documentdb.md) y transparentemente con un par de clics y seleccionar de forma automática entre las regiones disponibles del [código de cliente](../cosmos-db/tutorial-global-distribution-documentdb.md). Esto también significa que tiene [varias regiones de conmutación por error](regional-failover.md). 
+COSMOS DB permite [los datos se replica globalmente](../cosmos-db/tutorial-global-distribution-documentdb.md) y de forma transparente con un par de clics y automáticamente selecciona entre las regiones disponibles de Hola desde su [código de cliente](../cosmos-db/tutorial-global-distribution-documentdb.md). Esto también significa que tiene [varias regiones de conmutación por error](regional-failover.md). 
 
-Cuando replica globalmente los datos, debe asegurarse de que los clientes puedan aprovecharlos. Si usa un front-end web o tiene acceso a las API desde clientes para dispositivos móviles, puede implementar [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) y clonar la instancia de Azure App Service en todas las regiones deseadas mediante una [configuración de rendimiento](../app-service-web/web-sites-traffic-manager.md) para admitir la cobertura global extendida. Cuando los clientes tienen acceso al front-end o a las API, se enrutarán a la instancia de App Service más cercana, que, a su vez, se conectará a la réplica local de Cosmos DB.
+Al replicar los datos de forma global, deberá toomake seguro de que los clientes pueden beneficiarse de ella. Si usas un front-end web o el acceso a las API desde clientes móviles, puede implementar [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) y clonar el servicio de aplicaciones de Azure en todas las regiones de hello deseado, mediante una [configuración de rendimiento](../app-service-web/web-sites-traffic-manager.md)toosupport la cobertura global extendida. Cuando los clientes tienen acceso a su front-end o las API, estarán toohello enrutado el servicio de aplicación más cercano, que a su vez, se conectará la réplica de base de datos de Cosmos local toohello.
 
-![Incorporación de la cobertura global en la plataforma social](./media/social-media-apps/social-media-apps-global-replicate.png)
+![Agregar plataforma sociales de cobertura global tooyour](./media/social-media-apps/social-media-apps-global-replicate.png)
 
 ## <a name="conclusion"></a>Conclusión
-Este artículo trata de ofrecer alternativas de bajo costo y excelentes resultados en el proceso integral de creación de redes sociales en Azure. Con este objetivo, se fomenta el uso de una solución de almacenamiento en varias capas y distribución de datos denominada "Escalera".
+Este artículo intenta tooshed algunos claro en alternativas de Hola de crear las redes sociales completamente en Azure con los servicios de bajo costo y proporcionar excelentes resultados mediante el uso de hello fomentando de una distribución de datos y la solución de varias capas de almacenamiento denominada "Escala".
 
 ![Diagrama de interacción entre los servicios de Azure para redes sociales](./media/social-media-apps/social-media-apps-azure-solution.png)
 
-La verdad es que no hay ninguna fórmula milagrosa para este tipo de escenarios, sino que es la sinergia creada mediante la combinación de excelentes servicios lo que nos permite crear grandes experiencias: la velocidad y la libertad de Azure Cosmos DB para proporcionar una gran aplicación social; la inteligencia de una solución de búsqueda de primera clase como Azure Search; la flexibilidad de Azure App Services para hospedar aplicaciones independientes del lenguaje y eficaces procesos en segundo plano; los ampliables Azure Storage y Azure SQL Database para guardar enormes cantidades de datos; y la potencia analítica de Azure Machine Learning para crear conocimiento e inteligencia que proporcionen información a nuestros procesos y nos ayuden a suministrar el contenido correcto a los usuarios adecuados.
+verdad de Hello es que no hay ningún mágica para este tipo de escenarios, tiene Hola synergy creado por la combinación de hello de servicios excelentes que nos permiten experiencias inmejorables toobuild: Hola velocidad y ausencia de base de datos de Azure Cosmos tooprovide una gran aplicación sociales, inteligencia de Hello detrás de una solución de búsqueda de primera clase, como búsqueda de Azure, flexibilidad de hello de servicios de aplicaciones de Azure toohost no incluso aplicaciones independientes del lenguaje pero procesos en segundo plano eficaz y Hola puede expandir el almacenamiento de Azure y base de datos de SQL de Azure para almacenar grandes cantidades de datos y Hola potencia analítica de toocreate de aprendizaje automático de Azure conocimiento e inteligencia que puede proporcionar comentarios tooour procesos y nos ayudarán a entregar hello toohello derecha contenido derecho a los usuarios.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre los casos de uso de Cosmos DB, consulte [Casos de uso comunes de Cosmos DB](use-cases.md).
+toolearn más información acerca de los casos de uso de la base de datos de Cosmos, consulte [casos de uso de la base de datos común de Cosmos](use-cases.md).

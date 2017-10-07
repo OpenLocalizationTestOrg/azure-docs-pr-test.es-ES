@@ -1,6 +1,6 @@
 ---
-title: "Mantenimiento predictivo para empresas aeroespaciales con Azure: arquitectura de la solución Cortana Intelligence | Microsoft Docs"
-description: "Diagrama de arquitectura de la plantilla de solución de Microsoft Cortana Intelligence orientada al mantenimiento predictivo en los sectores aeroespacial, de servicios públicos y de transporte."
+title: "Mantenimiento de aaaPredictive para aeroespacial con Azure: arquitectura de la solución de inteligencia de Cortana | Documentos de Microsoft"
+description: "Diagrama de arquitectura de hello plantilla de solución de inteligencia de Cortana de Microsoft para un mantenimiento predictivo en aeroespacial, utilidades, transporte"
 services: cortana-analytics
 documentationcenter: 
 author: garyericson
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: 3c7b8238ee1d28deca9845462808252636f0d68f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 642abedbe2751ec4720d5d64f92354a3dd2821e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Arquitectura de la plantilla de solución de Cortana Intelligence orientada al mantenimiento predictivo en empresas aeroespaciales y otras
-En el diagrama siguiente se ofrece una introducción a la arquitectura de la [plantilla de solución de Cortana Intelligence orientada al mantenimiento predictivo](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
+# <a name="architecture-of-hello-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Arquitectura de hello plantilla de solución de inteligencia de Cortana para un mantenimiento predictivo en aeroespacial y otras empresas
+diagrama de Hello siguiente proporciona una introducción a la arquitectura de hello [plantilla de solución de inteligencia de Cortana para un mantenimiento predictivo](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
 
-Puede descargar una versión en tamaño completo del diagrama aquí: [diagrama de arquitectura: Plantilla de solución orientada al mantenimiento predictivo](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+Puede descargar una versión a tamaño completo del diagrama de hello aquí: [diagrama de arquitectura: plantilla de solución para un mantenimiento predictivo](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
 ![Diagrama de arquitectura de la plantilla de solución de Microsoft Cortana Intelligence orientada al mantenimiento predictivo][image]
 

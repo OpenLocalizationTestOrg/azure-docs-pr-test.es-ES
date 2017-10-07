@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas: Creación de un área de trabajo de Machine Learning y conexión a la misma | Microsoft Docs"
-description: "Soluciones para problemas comunes al crear y conectarse a un área de trabajo de aprendizaje automático de Azure"
+title: "Solucionar problemas: Crear y conectar el área de trabajo de aprendizaje automático de tooa | Documentos de Microsoft"
+description: "Soluciones para problemas comunes de creación y la conexión de área de trabajo de aprendizaje automático de Azure tooan"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 398ac3d9c9d32a1ab10413ce0d7ce8d448890409
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 965a0025e85ba4e22c2b037edfa923e7f7599069
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Guía de solución de problemas: Creación de un área de trabajo de Aprendizaje automático y conexión a la misma
+# <a name="troubleshooting-guide-create-and-connect-tooan-machine-learning-workspace"></a>Guía de solución de problemas: crear y conectar el área de trabajo de aprendizaje automático de tooan
 Esta guía proporciona soluciones para algunos de los desafíos más comunes al configurar áreas de trabajo de Aprendizaje automático de Azure.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="workspace-owner"></a>Propietario del espacio de trabajo
-Para abrir un área de trabajo en Machine Learning Studio, debe iniciar sesión en la cuenta Microsoft que utilizó para crear el área de trabajo, o bien, puede ser necesario que reciba una invitación del propietario para unirse al área de trabajo. Desde Azure Portal puede administrar el área de trabajo, lo que incluye la capacidad de configurar el acceso.
+tooopen un área de trabajo en estudio de aprendizaje automático, debe ser firmado en toohello Account de Microsoft usa el área de trabajo de toocreate hello, o si debe tooreceive una invitación de área de trabajo de hello propietario toojoin Hola. De hello portal de Azure puede administrar Hola área de trabajo, que incluye el acceso de hello capacidad tooconfigure.
 
 Para obtener más información sobre cómo administrar un área de trabajo, consulte [Administración de un área de trabajo de Aprendizaje automático de Azure].
 
 [Administración de un área de trabajo de Aprendizaje automático de Azure]: machine-learning-manage-workspace.md
 
 ## <a name="allowed-regions"></a>Regiones permitidas
-Aprendizaje automático se encuentra actualmente disponible en un número limitado de regiones. Si su suscripción no incluye una de estas regiones, es posible que vea el mensaje de error "No dispone de una suscripción en las regiones permitidas".
+Aprendizaje automático se encuentra actualmente disponible en un número limitado de regiones. Si su suscripción no incluye una de estas regiones, verá el mensaje de error de hello, "No tiene suscripciones en hello permiten regiones."
 
-Para solicitar que una región se agregue a su suscripción, cree una nueva solicitud de soporte técnico de Microsoft desde Azure Portal, elija **Facturación** como el tipo de problema y siga las indicaciones para enviar su solicitud.
+toorequest que una región de ser agregado tooyour suscripción, cree una nueva solicitud de soporte técnico de Microsoft de hello portal de Azure, elija **facturación** como tipo de problema de Hola y seguir Hola solicita toosubmit su solicitud.
 
 ## <a name="storage-account"></a>Cuenta de almacenamiento
-El servicio de Aprendizaje automático necesita una cuenta de almacenamiento para almacenar los datos. Puede utilizar una cuenta de almacenamiento existente o crear una nueva cuenta de almacenamiento al crear la nueva área de trabajo de Aprendizaje automático (si dispone de cuota para crear una nueva cuenta de almacenamiento).
+Hola servicio aprendizaje automático necesita un toostore de datos de la cuenta de almacenamiento. Puede usar una cuenta de almacenamiento existente, o puede crear una nueva cuenta de almacenamiento al crear el área de trabajo de aprendizaje automático nuevo hello (si tiene una cuenta de almacenamiento toocreate de cuota).
 
-Tras crear la nueva área de trabajo de Machine Learning, puede iniciar sesión en Machine Learning Studio con la cuenta de Microsoft que usó para crear el área de trabajo. Si encuentra el mensaje de error "No se encontró el área de trabajo" (similar a la captura de pantalla siguiente), use estos pasos para eliminar las cookies del explorador.
+Después de crea el área de trabajo de hello nuevo aprendizaje automático, puede iniciar sesión tooMachine estudio de aprendizaje con cuenta de Microsoft hello que usa el área de trabajo de toocreate Hola. Si se produce el mensaje de error de hello, "Área de trabajo no encontrado" (toohello similar siguiente captura de pantalla), utilice Hola siguiendo los pasos toodelete las cookies del explorador.
 
 ![Espacio de trabajo no encontrado][screen3]
 
-**Para eliminar las cookies del explorador**
+**cookies del explorador toodelete**
 
-1. Si usa Internet Explorer, haga clic en el botón **Herramientas** en la esquina superior derecha y seleccione **Opciones de Internet**.  
+1. Si utiliza Internet Explorer, haga clic en hello **herramientas** situado en la esquina superior derecha de Hola y seleccione **opciones de Internet**.  
 
 ![Opciones de Internet][screen4]
 
-2. En la pestaña **General**, haga clic en **Eliminar…**
+2. En hello **General** , haga clic en **eliminar...**
 
 ![Pestaña General][screen5]
 
-3. En el cuadro de diálogo **Eliminar el historial de exploración**, asegúrese de que **Cookies y datos del sitio web** está seleccionado y haga clic en **Eliminar**.
+3. Hola **eliminar el historial de exploración** diálogo cuadro, asegúrese de que **Cookies y datos del sitio Web** está seleccionada y haga clic en **eliminar**.
 
 ![Eliminación de cookies][screen6]
 
-Una vez eliminadas las cookies, reinicie el explorador y vaya a la página [Aprendizaje automático de Microsoft Azure](https://studio.azureml.net) . Cuando se le solicite un nombre de usuario y contraseña, especifique la misma cuenta Microsoft que usó para crear el área de trabajo.
+Después de eliminarán las cookies de hello, reinicie el Explorador de hello y, a continuación, vaya toohello [aprendizaje automático de Microsoft Azure](https://studio.azureml.net) página. Cuando se le pida, escriba un nombre de usuario y una contraseña, Hola la misma cuenta de Microsoft que usa el área de trabajo de toocreate Hola.
 
 ## <a name="comments"></a>Comentarios
 
-Nuestro objeto es hacer que la experiencia de Aprendizaje automático sea lo más directa posible. Publique cualquier comentario o problema en el [foro de Aprendizaje automático de Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) para ayudarnos a ofrecerle un mejor servicio.
+Nuestro objetivo es toomake Hola máxima uniformidad posible de experiencia de aprendizaje automático. Publique los comentarios y problemas en hello [foro de aprendizaje automático de Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) toohelp nos ofrecerle un servicio mejor.
 
 [screen1]:media/machine-learning-troubleshooting-creating-ml-workspace/screen1.png
 [screen2]:media/machine-learning-troubleshooting-creating-ml-workspace/screen2.png

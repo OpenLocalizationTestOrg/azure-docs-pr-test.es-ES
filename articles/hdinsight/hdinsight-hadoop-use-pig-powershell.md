@@ -1,6 +1,6 @@
 ---
-title: Uso de Pig en Hadoop con PowerShell en HDInsight (Azure) | Microsoft Docs
-description: "Aprenda a enviar trabajos de Pig a un clúster de Hadoop en HDInsight mediante Azure PowerShell."
+title: aaaUse Hadoop Pig con PowerShell en HDInsight - Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo agrupar toosubmit Pig trabajos tooa Hadoop en HDInsight con Azure PowerShell."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,27 +16,27 @@ ms.workload: big-data
 ms.date: 06/16/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 28904b07609ffb40a8195278fd1afd3957896733
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 771617df203011eaec715a0dba6f5014a42877f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Uso de Azure PowerShell para ejecutar trabajos de Pig con HDInsight
+# <a name="use-azure-powershell-toorun-pig-jobs-with-hdinsight"></a>Utilice trabajos de Pig de Azure PowerShell toorun con HDInsight
 
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-Este documento proporciona un ejemplo de uso de Azure PowerShell para enviar trabajos de Pig a un clúster de Hadoop en HDInsight. Pig permite escribir trabajos de MapReduce mediante un lenguaje (Pig Latin) que modela las transformaciones de datos, en lugar de asignar y reducir las funciones.
+Este documento proporciona un ejemplo del uso de PowerShell de Azure toosubmit Pig trabajos tooa Hadoop en clúster de HDInsight. Pig permite toowrite MapReduce trabajos mediante el lenguaje (Pig latino) que modela las transformaciones de datos, en lugar de asignar y reducir las funciones.
 
 > [!NOTE]
-> Este documento no ofrece una descripción detallada de cómo funcionan las instrucciones de Pig Latin que se usan en los ejemplos. Para obtener información sobre Pig Latin utilizado en este ejemplo, consulte [Uso de Hive con Hadoop en HDInsight](hdinsight-use-pig.md).
+> Este documento no proporciona una descripción detallada de lo que las instrucciones de Pig latino Hola usadas en ejemplos de hello. Para obtener información acerca de hello latino Pig utilizado en este ejemplo, vea [uso de Pig con Hadoop en HDInsight](hdinsight-use-pig.md).
 
 ## <a id="prereq"></a>Requisitos previos
 
 * **Un clúster de Azure HDInsight**.
 
   > [!IMPORTANT]
-  > Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Una estación de trabajo con Azure PowerShell**.
 
@@ -44,33 +44,33 @@ Este documento proporciona un ejemplo de uso de Azure PowerShell para enviar tra
 
 ## <a id="powershell"></a>Ejecución de trabajos de Pig mediante PowerShell
 
-Azure PowerShell proporciona *cmdlets* que le permiten ejecutar de manera remota trabajos de Pig en HDInsight. Internamente, PowerShell realiza llamadas de REST a la instancia de [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) que se ejecuta en el clúster de HDInsight.
+Azure PowerShell ofrece *cmdlets* que le permiten tooremotely ejecutar trabajos de Pig en HDInsight. Internamente, PowerShell usa llamadas REST demasiado[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) con clúster de HDInsight Hola.
 
-Los cmdlets siguientes se utilizan cuando se ejecutan trabajos de Pig en un clúster de HDInsight remoto:
+Hello siguientes cmdlets se utilizan al ejecutar los trabajos de Pig en un clúster de HDInsight remoto:
 
-* **Login-AzureRmAccount**: autentica Azure PowerShell en la suscripción de Azure.
-* **New-AzureRmHDInsightPigJobDefinition**: crea una *definición de trabajo* con las instrucciones de Pig Latin especificadas.
-* **Start-AzureRmHDInsightJob**: envía la definición del trabajo a HDInsight, inicia el trabajo y devuelve un objeto de *trabajo* que se puede usar para comprobar el estado del trabajo.
-* **Wait-AzureRmHDInsightJob**: usa el objeto de trabajo para comprobar el estado del trabajo. Esperará hasta que el trabajo se haya completado o haya superado el tiempo de espera.
-* **Get-AzureRmHDInsightJobOutput**: se usa para recuperar la salida del trabajo.
+* **Inicio de sesión AzureRmAccount**: autentica Azure PowerShell tooyour suscripción de Azure
+* **Nueva AzureRmHDInsightPigJobDefinition**: crea un *definición de trabajo* mediante el uso de hello especifica instrucciones de Pig latino
+* **Start-AzureRmHDInsightJob**: envía tooHDInsight de definición de trabajo de hello, inicia el trabajo de Hola y devuelve un *trabajo* objetos que pueden ser utilizados toocheck Hola estado del trabajo de Hola
+* **Espera AzureRmHDInsightJob**: utiliza el estado del objeto toocheck Hola de hello trabajo del trabajo de Hola. Espera hasta que se haya completado el trabajo de hello, o se ha superado el tiempo de espera de Hola.
+* **Get-AzureRmHDInsightJobOutput**: utiliza la salida de hello tooretrieve de trabajo de Hola
 
-Los pasos siguientes muestran cómo usar estos cmdlets para ejecutar un trabajo en el clúster de HDInsight.
+Hello pasos siguientes demuestran cómo toouse estos toorun cmdlets un trabajo en el clúster de HDInsight.
 
-1. Mediante un editor, guarde el código siguiente como **pigjob.ps1**.
+1. Con el editor, guardar Hola siguiente código como **pigjob.ps1**.
 
     [!code-powershell[main](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]
 
-1. Abra un nuevo símbolo del sistema de Windows PowerShell. Cambie los directorios a la ubicación del archivo **pigjob.ps1** y, a continuación, utilice el siguiente comando para ejecutar el script:
+1. Abra un nuevo símbolo del sistema de Windows PowerShell. Cambiar ubicación de toohello de directorios de hello **pigjob.ps1** de archivos, a continuación, usar hello sigue la secuencia de comandos de Hola toorun:
 
         .\pigjob.ps1
 
-    Se le indica que inicie sesión en su suscripción de Azure. Luego, se le pedirá que proporcione el nombre de cuenta y la contraseña de HTTPS/Admin para el clúster de HDInsight.
+    Son toolog solicitada en tooyour suscripción de Azure. A continuación, se le pedirán Hola HTTPs/Admin nombre y la contraseña para el clúster de HDInsight Hola.
 
-2. Cuando el trabajo se complete, debe devolver información de manera similar al siguiente texto:
+2. Cuando se completa el trabajo de hello, debe devolver información toohello similar siguiente texto:
 
-        Start the Pig job ...
-        Wait for the Pig job to complete ...
-        Display the standard output ...
+        Start hello Pig job ...
+        Wait for hello Pig job toocomplete ...
+        Display hello standard output ...
         (TRACE,816)
         (DEBUG,434)
         (INFO,96)
@@ -80,20 +80,20 @@ Los pasos siguientes muestran cómo usar estos cmdlets para ejecutar un trabajo 
 
 ## <a id="troubleshooting"></a>Solución de problemas
 
-Si no se devuelve ninguna información cuando se completa el trabajo, pudo haberse producido un error durante el procesamiento. Para ver la información de error para este trabajo, agregue lo siguiente al final del archivo **pigjob.ps1** , guárdelo y, a continuación, ejecútelo de nuevo.
+Si no se devuelve información cuando se completa el trabajo de hello, puede deberse a un error durante el procesamiento. información de error de tooview para este trabajo, agregar Hola siguiente comando toohello final de hello **pigjob.ps1** archivo, guárdelo y, a continuación, vuelva a ejecutarlo.
 
-    # Print the output of the Pig job.
-    Write-Host "Display the standard error output ..." -ForegroundColor Green
+    # Print hello output of hello Pig job.
+    Write-Host "Display hello standard error output ..." -ForegroundColor Green
     Get-AzureRmHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-Se devuelve la información escrita en STDERR en el servidor cuando ejecute el trabajo y puede ayudar a determinar por qué se ha producido el error en el trabajo.
+Devuelve información de Hola que escribió tooSTDERR en servidor hello cuando ejecutó el trabajo de Hola y puede ayudar a determinar por qué se producen errores en trabajo Hola.
 
 ## <a id="summary"></a>Resumen
-Como puede ver, Azure PowerShell proporciona una manera fácil de ejecutar trabajos de Pig en un clúster de HDInsight, de supervisar el estado del trabajo y de recuperar el resultado.
+Como puede ver, Azure PowerShell ofrece una manera sencilla de toorun trabajos de Pig en un clúster de HDInsight, supervisar el estado de trabajo de Hola y salida de hello de recuperar.
 
 ## <a id="nextsteps"></a>Pasos siguientes
 Para obtener información general sobre Pig en HDInsight, siga estos pasos:

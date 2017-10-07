@@ -1,6 +1,6 @@
 ---
-title: "Creación de una imagen de máquina virtual para Azure Marketplace | Microsoft Docs"
-description: "Instrucciones detalladas sobre cómo crear una imagen de máquina virtual para Azure Marketplace para que otros usuarios la compren."
+title: "aaaCreating una imagen de máquina virtual para hello Azure Marketplace | Documentos de Microsoft"
+description: "Instrucciones detalladas sobre cómo toocreate una máquina virtual de la imagen para hello Azure Marketplace para que otros lo toopurchase."
 services: Azure Marketplace
 documentationcenter: 
 author: HannibalSII
@@ -14,215 +14,215 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 65e1c0530bb050fb379a52544e36c55faacd84df
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Guía para la creación de una imagen de máquina virtual para Azure Marketplace
-En este artículo, **paso 2**, se explica cómo puede preparar los discos duros virtuales (VHD) que va a implementar en Azure Marketplace. Los VHD constituyen el fundamento de la SKU. El proceso difiere en función de si la SKU que va a proporcionar está basada en Linux o en Windows. En este artículo se tratan ambos escenarios. Este proceso puede realizarse en paralelo con la [creación y registro de cuentas][link-acct-creation].
+# <a name="guide-toocreate-a-virtual-machine-image-for-hello-azure-marketplace"></a>Guía toocreate una imagen de máquina virtual para hello Azure Marketplace
+En este artículo, **paso 2**, le guía a través de preparar los discos duros virtuales (VHD) que se implementará toohello Azure Marketplace de Hola. Los discos duros virtuales son la base de hello del SKU. proceso de Hello varía según si va a proporcionar una SKU basado en Windows o Linux. En este artículo se tratan ambos escenarios. Este proceso puede realizarse en paralelo con la [creación y registro de cuentas][link-acct-creation].
 
 ## <a name="1-define-offers-and-skus"></a>1. Definición de ofertas y SKU
-En esta sección aprenderá a definir las ofertas y sus SKU.
+En esta sección, aprenderá toodefine Hola ofertas y sus SKU asociado.
 
-Una oferta es un "elemento primario" de todas sus SKU. Puede tener varias ofertas. Usted elige cómo desea estructurarlas. Cuando se inserta una oferta en un entorno de ensayo, se inserta con todas sus SKU. Sea cauteloso a la hora de elegir los identificadores de sus SKU, ya que serán visibles en la dirección URL.
+Una oferta es un tooall "primario" de su SKU. Puede tener varias ofertas. Cómo decidir toostructure sus ofertas está tooyou. Cuando una oferta se inserta toostaging, se inserta junto con todas sus SKU. Considere cuidadosamente los identificadores SKU, dado que serán visibles en la dirección URL de hello:
 
 * Azure.com: http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
 * Portal de vista previa de Azure: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
-Una SKU es el nombre comercial de una imagen de máquina virtual. Una imagen de máquina virtual contiene un disco del sistema operativo y cero o más discos de datos. Se trata, básicamente, del perfil de almacenamiento completo de una máquina virtual. Es necesario un VHD por disco. Incluso los discos de datos vacíos requieren la creación de un VHD.
+Un SKU es nombre comercial de Hola para una imagen de máquina virtual. Una imagen de máquina virtual contiene un disco del sistema operativo y cero o más discos de datos. Es básicamente Hola perfil de almacenamiento completo para una máquina virtual. Es necesario un VHD por disco. Los discos de datos incluso en blanco requieren un toobe de disco duro virtual creado.
 
-Independientemente del sistema operativo que use, agregue solo el número mínimo de discos de datos necesarios para la SKU. Los usuarios no pueden quitar discos que formen parte de una imagen durante la implementación pero siempre pueden agregar discos durante o después de la implementación si los necesitan.
+Independientemente de qué sistema operativo que use, agregue solo Hola número mínimo de discos de datos necesita Hola SKU. Los clientes no pueden quitar los discos que forman parte de una imagen en el momento de saludo de la implementación, pero siempre pueden agregar discos durante o después de la implementación si se necesitan.
 
 > [!IMPORTANT]
-> **No cambie el número de discos en una nueva versión de imagen.** Si necesita volver a configurar los discos de datos de la imagen, defina una nueva SKU. Si publica una nueva versión de la imagen con un número de discos distinto, las nuevas implementaciones que se realicen con arreglo a la nueva versión pueden registrar problemas con la autoescala, con la implementación automática de soluciones mediante plantillas de ARM y con otros escenarios.
+> **No cambie el número de discos en una nueva versión de imagen.** Si debe volver a configurar los discos de datos en la imagen de hello, defina una SKU nuevo. Publicar una nueva versión de imagen con recuentos de otro disco tendrá potencial de Hola de nueva implementación basada en la nueva versión de imagen hello en el caso de implementaciones de escalado automático, automático de soluciones a través de las plantillas ARM y otros escenarios de que se interrumpa.
 >
 >
 
 ### <a name="11-add-an-offer"></a>1.1 Agregar una oferta
-1. Inicie sesión en el [Portal de publicación][link-pubportal] con su cuenta de vendedor.
-2. Seleccione la pestaña **Máquinas virtuales** del Portal de publicación. En el campo de entrada, escriba el nombre de la oferta. El nombre de la oferta es normalmente el nombre del producto o servicio que vaya a vender en Azure Marketplace.
+1. Inicie sesión en toohello [Portal de publicación] [ link-pubportal] mediante el uso de tu cuenta de vendedor.
+2. Seleccione hello **máquinas virtuales** ficha de hello Portal de publicación. En el campo de entrada solicitadas de hello, escriba el nombre de la oferta. nombre de la oferta de Hello suele ser el nombre de Hola de producto de Hola o servicio que piensa toosell en hello Azure Marketplace.
 3. Seleccione **Crear**.
 
 ### <a name="12-define-a-sku"></a>1.2 Definir una SKU
-Una vez agregada una oferta, tiene que definir e identificar sus SKU. Puede tener varias ofertas y cada oferta puede tener varias SKU. Cuando se inserta una oferta en un entorno de ensayo, se inserta con todas sus SKU.
+Después de haber agregado una oferta, se necesita toodefine e identifican las SKU. Puede tener varias ofertas y cada oferta puede tener varias SKU. Cuando una oferta se inserta toostaging, se inserta junto con todas sus SKU.
 
-1. **Agregue una SKU.** La SKU requiere un identificador que se usa en la dirección URL. El identificador tiene que ser único dentro de su perfil de publicación, pero no existe riesgo de colisión de identificadores con otros anunciantes.
+1. **Agregue una SKU.** Hola SKU requiere un identificador, que se usa en la dirección URL de Hola. Hola identificador debe ser único dentro de su perfil de publicación, pero no hay ningún riesgo de colisiones entre los identificadores con otros publicadores.
 
    > [!NOTE]
-   > La oferta y los identificadores de SKU se muestran en la dirección URL de la oferta en Marketplace.
+   > oferta de Hola y los identificadores SKU se muestran en la dirección URL de la oferta de Hola Hola Marketplace.
    >
    >
-2. **Agregue una descripción resumida de la SKU.** Las descripciones resumidas serán visibles para los clientes, así que es recomendable que sean fáciles de leer. No es necesario que esta información esté bloqueada hasta que se inserte en la fase de entorno de ensayo. Hasta entonces, puede editarla como desee.
-3. Si usa SKU basadas en Windows, siga los vínculos sugeridos para adquirir las versiones aprobadas de Windows Server.
+2. **Agregue una descripción resumida de la SKU.** Descripciones resumidas son toocustomers visible, por lo que debería que sean fácilmente legibles. Esta información no es necesario toobe bloqueado hasta que la fase de "Inserción tooStaging" Hola. Hasta entonces, son tooedit libre se.
+3. Si está utilizando SKU basados en Windows, siga los vínculos recomendados de Hola Hola tooacquire aprobado versiones de Windows Server.
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2. Creación de un VHD compatible con Azure (basado en Linux)
-Esta sección se centra en los procedimientos recomendados para crear una imagen de máquina virtual basada en Linux para Azure Marketplace. Vea un tutorial detallado en la documentación siguiente: [Creación y carga de un disco duro virtual que contiene el sistema operativo Linux](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+En esta sección se centra en los procedimientos recomendados para crear una imagen VM basadas en Linux para hello Azure Marketplace. Para ver un tutorial paso a paso, consulte toohello siguiente documentación: [crear y cargar un disco duro Virtual que contiene Hola sistema operativo Linux](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>3. Creación de un VHD compatible con Azure (basado en Windows)
-En esta sección se indican los pasos necesarios para crear una SKU basada en Windows Server para Azure Marketplace.
+En esta sección se centra en hello pasos toocreate una SKU basada en Windows Server para hello Azure Marketplace.
 
-### <a name="31-ensure-that-you-are-using-the-correct-base-vhds"></a>3.1 Asegurarse de que se usan los VHD base correctos
-Los VHD del sistema operativo para su imagen de máquina virtual deben basarse en una imagen aprobada para Azure que contenga Windows Server o SQL Server.
+### <a name="31-ensure-that-you-are-using-hello-correct-base-vhds"></a>3.1 Asegúrese de que está usando Hola corregir VHD base
+Hola VHD del sistema operativo para la imagen de máquina virtual debe basarse en una imagen base aprobado de Azure que contiene Windows Server o SQL Server.
 
-Para comenzar, cree una máquina virtual a partir de alguna de las siguientes imágenes, que encontrará en el [Portal de Microsoft Azure][link-azure-portal]:
+toobegin, crear una máquina virtual a partir de uno de hello después de imágenes, ubicadas en hello [portal de Microsoft Azure][link-azure-portal]:
 
 * Windows Server ([2012 R2 Datacenter][link-datactr-2012-r2], [2012 Datacenter][link-datactr-2012], [2008 R2 SP1][link-datactr-2008-r2])
 * SQL Server 2014 ([Enterprise][link-sql-2014-ent], [Standard][link-sql-2014-std], [Web][link-sql-2014-web])
 * SQL Server 2012 SP2 ([Enterprise][link-sql-2012-ent], [Standard][link-sql-2012-std], [Web][link-sql-2012-web])
 
-Estos vínculos se encuentran también en el portal de publicación, en la página de la SKU.
+Estos vínculos también pueden encontrarse en hello Portal de publicación en la página SKU de Hola.
 
 > [!TIP]
-> Si usa el Portal de Azure actual o PowerShell, las imágenes de Windows Server publicadas a partir del 8 de septiembre de 2014 están aprobadas.
+> Si utilizas el portal de Azure actual de Hola o PowerShell, se aprueban las imágenes de Windows Server publicadas en el 8 de septiembre de 2014 y versiones posteriores.
 >
 >
 
 ### <a name="32-create-your-windows-based-vm"></a>3.2 Crear su propia máquina virtual basada en Windows
-Desde el Portal de Microsoft Azure, puede crear su máquina virtual basada en una imagen base aprobada con solo algunos pasos sencillos. A continuación se ofrece información general del proceso:
+Desde el portal de Microsoft Azure hello, puede crear la máquina virtual en función de una imagen base aprobada en unos pocos pasos sencillos. Hola es una visión general del proceso de hello:
 
-1. En la página de la imagen base, seleccione **Crear máquina virtual** para ir al nuevo [Portal de Microsoft Azure][link-azure-portal].
+1. Desde la página de la imagen base de hello, seleccione **crear Máquina Virtual** toobe dirige toohello nueva [portal de Microsoft Azure][link-azure-portal].
 
     ![dibujo][img-acom-1]
-2. Inicie sesión en el portal con la cuenta Microsoft y la contraseña de la suscripción de Azure que desee usar.
-3. Siga las indicaciones para crear una máquina virtual con la imagen base que seleccionó. Tendrá que proporcionar un nombre de host (nombre del equipo), un nombre de usuario (registrado como administrador) y una contraseña para la máquina virtual.
+2. Inicie sesión en el portal de toohello con hello cuenta Microsoft y la contraseña de hello suscripción de Azure que desee toouse.
+3. Siga toocreate de mensajes de Hola una máquina virtual usando Hola imagen base que seleccionó. Debe tooprovide un nombre de host (nombre de equipo de hello), un nombre de usuario (registrado como administrador) y una contraseña para hello máquina virtual.
 
     ![dibujo][img-portal-vm-create]
-4. Seleccione el tamaño de la máquina virtual que desea implementar:
+4. Seleccione el tamaño de Hola de hello VM toodeploy:
 
-    a.    Si planea desarrollar el VHD en modo local, el tamaño no importa. Considere usar una de las máquinas virtuales de menor tamaño.
+    a.    Si tiene previsto toodevelop Hola VHD local, tamaño de hello no importa. Considere el uso de uno de hello máquinas virtuales más pequeñas.
 
-    b.    Si planea desarrollar la imagen en Azure, considere usar uno de los tamaños de máquina virtual recomendados para la imagen seleccionada.
+    b.    Si tiene previsto toodevelop imagen de hello en Azure, considere la posibilidad de tamaños de máquina virtual para la imagen seleccionada de hello recomienda el uso de uno de Hola.
 
-    c.    Para obtener información de precios, consulte el selector de **plan de tarifa recomendada** que se muestra en el portal. Mostrará los tres precios recomendados proporcionados por el anunciante. (En este caso, el anunciante es Microsoft.)
+    c.    Para obtener más información, consulte toohello **recomienda los niveles de precios** selector que se muestra en el portal de Hola. Proporcionará Hola tres tamaños recomendados proporcionados por el Editor de Hola. (En este caso, el publicador de hello es Microsoft).
 
     ![dibujo][img-portal-vm-size]
 5. Establezca las propiedades:
 
-    a.    Para conseguir una implementación rápida, puede dejar los valores predeterminados de las propiedades en **Configuración opcional** y **Grupo de recursos**.
+    a.    Para una implementación rápida, puede dejar Hola valores predeterminados para las propiedades de hello en **configuración opcional** y **grupo de recursos**.
 
-    b.    En **Cuenta de almacenamiento**, puede seleccionar opcionalmente la cuenta de almacenamiento donde se almacenará el VHD del sistema operativo.
+    b.    En **cuenta de almacenamiento**, opcionalmente, puede seleccionar la cuenta de almacenamiento de hello en qué sistema operativo de Hola se almacenará el disco duro virtual.
 
-    c.    En **Grupo de recursos**, puede seleccionar opcionalmente el grupo lógico donde ubicar la máquina virtual.
-6. Seleccione la **Ubicación** para la implementación:
+    c.    En **grupo de recursos**, opcionalmente, puede seleccionar el grupo lógico de hello en qué tooplace Hola máquina virtual.
+6. Seleccione hello **ubicación** para la implementación:
 
-    a.    Si planea desarrollar el VHD en modo local, la ubicación no importa, ya que cargará la imagen más tarde en Azure.
+    a.    Si tiene previsto toodevelop Hola VHD local, ubicación de hello no importa porque se cargará Hola imagen tooAzure más tarde.
 
-    b.    Si planea desarrollar la imagen en Azure, considere usar una de las regiones de Microsoft Azure en Estados Unidos desde el principio. Esto agiliza el proceso de copia del VHD que Microsoft realiza por usted cuando envía la imagen para certificarla.
+    b.    Si tiene previsto toodevelop imagen de hello en Azure, considere el uso de uno de regiones de Azure de Microsoft basado en Estados Unidos de Hola desde el principio de Hola. Esto acelera el proceso copia de hello discos duros virtuales que Microsoft lleva a cabo en su nombre al enviar la imagen para la certificación.
 
     ![dibujo][img-portal-vm-location]
-7. Haga clic en **Crear**. La máquina virtual empieza a implementarse. En cuestión de minutos, dispondrá de una implementación correcta y podrá comenzar a crear la imagen para su SKU.
+7. Haga clic en **Crear**. Hola VM inicia toodeploy. En minutos, tendrá una implementación correcta y, a continuación, puede empezar la imagen de hello toocreate para el SKU.
 
-### <a name="33-develop-your-vhd-in-the-cloud"></a>3.3 Desarrollar el VHD en la nube
-Se recomienda encarecidamente desarrollar el VHD en la nube mediante el Protocolo de escritorio remoto (RDP). La conexión a RDP se realiza con el nombre de usuario y la contraseña que especificó durante el aprovisionamiento.
+### <a name="33-develop-your-vhd-in-hello-cloud"></a>3.3 desarrollar el disco duro virtual en la nube de Hola
+Se recomienda encarecidamente que desarrollar el disco duro virtual en la nube de hello mediante el protocolo de escritorio remoto (RDP). Conectar tooRDP con el nombre de usuario de Hola y la contraseña especificados durante el aprovisionamiento.
 
 > [!IMPORTANT]
-> Si está desarrollando su VHD de forma local (aunque no se recomienda), consulte [Creación de una imagen de máquina virtual de forma local](marketplace-publishing-vm-image-creation-on-premise.md). Si desarrolla el VHD en la nube, no es necesario descargarlo.
+> Si está desarrollando su VHD de forma local (aunque no se recomienda), consulte [Creación de una imagen de máquina virtual de forma local](marketplace-publishing-vm-image-creation-on-premise.md). Descargar el disco duro virtual no es necesario si va a desarrollar en nube Hola.
 >
 >
 
-**Conectarse mediante RDP usando el [Portal de Microsoft Azure][link-azure-portal]**
+**Conectarse a través de RDP mediante hello [portal de Microsoft Azure][link-azure-portal]**
 
 1. Seleccione **Examinar** > **Máquinas virtuales**.
-2. Se abre la hoja Máquinas virtuales. Compruebe que la máquina virtual con la que desea conectarse está ejecutándose y selecciónela en la lista de máquinas virtuales implementadas.
-3. Se abre una hoja en la que se describe la máquina virtual seleccionada. En la parte superior, haga clic en **Conectar**.
-4. Se le pide que proporcione el nombre de usuario y la contraseña que especificó durante el aprovisionamiento.
+2. se abre la hoja de máquinas virtuales de Hola. Asegúrese de esa máquina virtual que desee tooconnect con hello está ejecutando y, a continuación, selecciónelo en la lista de Hola de máquinas virtuales implementadas.
+3. Abre una hoja que describe Hola selecciona máquina virtual. En la parte superior de hello, haga clic en **conectar**.
+4. Son nombre de usuario de hello tooenter solicitadas y la contraseña que especificó durante el aprovisionamiento.
 
 **Conectarse mediante RDP con PowerShell**
 
-Para descargar un archivo de escritorio remoto en una máquina local, use el [cmdlet Get-AzureRemoteDesktopFile][link-technet-2]. Para usar este cmdlet, tiene que conocer el nombre del servicio y el de la máquina virtual. Si creó la máquina virtual desde el [Portal de Microsoft Azure][link-azure-portal], puede ver esta información en las propiedades de la máquina virtual:
+toodownload un equipo local tooa de archivo de escritorio remoto, use hello [cmdlet Get-AzureRemoteDesktopFile][link-technet-2]. En Ordenar toouse este cmdlet, necesita nombre de hello tooknow del servicio de Hola y nombre del programa Hola a máquina virtual. Si ha creado Hola VM de hello [portal de Microsoft Azure][link-azure-portal], puede encontrar esta información en Propiedades de la máquina virtual:
 
-1. En Microsoft Azure Portal, seleccione **Examinar** > **Máquinas virtuales**.
-2. Se abre la hoja Máquinas virtuales. Seleccione la máquina virtual que ha implementado.
-3. Se abre una hoja en la que se describe la máquina virtual seleccionada.
+1. En el portal de Microsoft Azure hello, seleccione **examinar** > **máquinas virtuales**.
+2. se abre la hoja de máquinas virtuales de Hola. Seleccione Hola VM que ha implementado.
+3. Abre una hoja que describe Hola selecciona máquina virtual.
 4. Haga clic en **Propiedades**.
-5. La primera parte del nombre del dominio es el nombre del servicio. El nombre de host es el nombre de la máquina virtual.
+5. primera parte del nombre de dominio de Hola de Hello es el nombre del servicio de Hola. nombre de host de Hello es el nombre VM de Hola.
 
     ![dibujo][img-portal-vm-rdp]
-6. El cmdlet para descargar el archivo RDP de la máquina virtual creada en el escritorio local del administrador es el siguiente.
+6. Hola cmdlet toodownload Hola archivo RDP de escritorio local del Administrador de hello creado VM toohello es como sigue.
 
         Get‐AzureRemoteDesktopFile ‐ServiceName “baseimagevm‐6820cq00” ‐Name “BaseImageVM” –LocalPath “C:\Users\Administrator\Desktop\BaseImageVM.rdp”
 
-Encontrará más información acerca de RDP en el artículo de MSDN [Conectarse a una máquina virtual de Azure con RDP o SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx).
+Se puede encontrar más información acerca de RDP en MSDN en el artículo de hello [conectar tooan máquina virtual de Azure con RDP o SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx).
 
 **Configurar una máquina virtual y crear la SKU**
 
-Una vez descargado el VHD del sistema operativo, use Hyper-V y configure una máquina virtual para comenzar a crear la SKU. Encontrará los pasos detallados en el siguiente vínculo de TechNet: [Instalar Hyper-V y crear una máquina virtual](http://technet.microsoft.com/library/hh846766.aspx).
+Después de disco duro virtual se descarga el sistema de operativo hello, use Hyper-v y configurar un toobegin VM crear el SKU. Encontrará pasos detallados en Hola siguiendo el vínculo de TechNet: [HyperV instalar y configurar una máquina virtual](http://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="34-choose-the-correct-vhd-size"></a>3.4 Elegir el tamaño de VHD correcto
-El VHD del sistema operativo Windows en la imagen de máquina virtual debe crearse como VHD de 128 GB con formato fijo.  
+### <a name="34-choose-hello-correct-vhd-size"></a>3.4 elegir tamaño de disco duro virtual correcto Hola
+Hola Windows VHD del sistema operativo en la imagen de máquina virtual debe crearse como un disco duro virtual de 128 GB formato fijo.  
 
-Si el tamaño físico es inferior a 128 GB, el VHD debe ser disperso. Las imágenes base de Windows y SQL Server proporcionadas cumplen ya estos requisitos, por lo que no es necesario que cambie el formato ni el tamaño del VHD obtenido.  
+Si el tamaño físico de hello es inferior a 128 GB, Hola VHD debe ser disperso. Hola imágenes básicas de Windows y SQL Server proporcionadas ya cumple estos requisitos, por lo que no cambie el tamaño de formato u Hola Hola Hola obtenido de disco duro virtual.  
 
-Los discos de datos pueden tener un tamaño de hasta 1 TB. A la hora de decidir el tamaño de disco, tenga en cuenta que los clientes no pueden cambiar el tamaño de los VHD de una imagen en el momento de la implementación. Los VHD para discos de datos deben crearse como VHD de formato fijo. También deben ser dispersos. Los discos de datos pueden estar vacíos o contener datos.
+Los discos de datos pueden tener un tamaño de hasta 1 TB. Cuando se decida por tamaño de disco de hello, recuerde que los clientes no pueden cambiar discos duros virtuales dentro de una imagen en tiempo de Hola de implementación. Los VHD para discos de datos deben crearse como VHD de formato fijo. También deben ser dispersos. Los discos de datos pueden estar vacíos o contener datos.
 
-### <a name="35-install-the-latest-windows-patches"></a>3.5 Instalar las últimas revisiones de Windows
-Las imágenes base contienen las últimas revisiones hasta su fecha de publicación. Antes de publicar el VHD del sistema operativo que ha creado, asegúrese de que se ejecutó Windows Update y se instalaron todas las revisiones de seguridad Críticas e Importantes.
+### <a name="35-install-hello-latest-windows-patches"></a>3.5 instalar revisiones de Windows más recientes de Hola
+las imágenes base Hello contienen revisiones más recientes de Hola seguridad tootheir fecha de publicación. Antes de publicar el VHD del sistema operativo Hola ha creado y, a continuación, asegúrese de que Windows Update se ha ejecutado y que todos Hola crítico más reciente y que se instalaron las actualizaciones de seguridad importantes.
 
 ### <a name="36-perform-additional-configuration-and-schedule-tasks-as-necessary"></a>3.6 Configurar opciones adicionales y programar tareas según sea necesario
-Si es necesaria alguna configuración adicional, considere la posibilidad de usar una tarea programada que se ejecute al inicio para realizar posibles cambios finales en la máquina virtual una vez implementada.
+Si se necesita configuración adicional, considere el uso de una tarea programada que se ejecuta en Inicio toomake cualquier toohello cambios finales VM después de que se haya implementado:
 
-* Se recomienda que la propia tarea se elimine después de ejecutarse correctamente.
-* Ninguna configuración debe depender de unidades que no sean C o D, ya que estas son las dos únicas unidades cuya existencia está garantizada. La unidad C es el disco del sistema operativo y unidad D es el disco local temporal.
+* Es una tarea de hello de mejor práctica toohave eliminar a sí mismo tras la ejecución correcta.
+* Ninguna configuración debe confiarse en unidades distintas unidades C y D, porque se trata de hello solo dos unidades de disco que se garantiza que siempre tooexist. La unidad C es el disco del sistema operativo de Hola y unidad D es disco local temporal de Hola.
 
-### <a name="37-generalize-the-image"></a>3.7 Generalizar la imagen
-Todas las imágenes de Azure Marketplace deben ser reutilizables de forma genérica. Dicho de otro modo, el VHD del sistema operativo debe generalizarse:
+### <a name="37-generalize-hello-image"></a>3.7 generalizar la imagen de Hola
+Todas las imágenes de hello Azure Marketplace deben ser reutilizables de forma genérica. En otras palabras, debe generalizarse Hola VHD del sistema operativo:
 
-* Para Windows, la imagen debe estar preparada con sysprep y no deben realizarse configuraciones que no admitan el comando **sysprep** .
-* Puede ejecutar el siguiente comando desde el directorio % windir%\System32\Sysprep.
+* Para Windows, la imagen de hello debe estar "preparada con Sysprep" y no debe realizarse ninguna configuración que no admiten hello **sysprep** comando.
+* Puede ejecutar Hola siguiente comando de hello directory WINDIR%\System32\Sysprep.
 
         sysprep.exe /generalize /oobe /shutdown
 
-  En uno de los pasos del artículo de MSDN [Crear y cargar un VHD de Windows Server a Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json), se explica cómo preparar el sistema operativo con Sysprep.
+  Instrucciones sobre cómo se proporciona el sistema operativo de toosysprep hello en el paso de hello artículo MSDN siguiente: [crear y cargar un VHD de Windows Server tooAzure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4. Implementación de una máquina virtual a partir de VHD
-Una vez cargados en una cuenta de almacenamiento de Azure sus VHD (el VHD del sistema operativo generalizado y cero o más VHD de discos de datos), puede registrarlos como imagen de máquina virtual de usuario. A continuación, puede probar esa imagen. Tenga en cuenta que, como el VHD del sistema operativo está generalizado, no puede implementar la máquina virtual directamente proporcionando la dirección URL del VHD.
+Después de haber cargado los discos duros virtuales (VHD del sistema operativo generalizado de Hola y datos de cero o más discos duros virtuales en disco) tooan cuenta de almacenamiento de Azure, puede registrarlos como una imagen de máquina virtual de usuario. A continuación, puede probar esa imagen. Tenga en cuenta que porque se ha generalizado el sistema operativo del disco duro virtual, no se puede implementar directamente Hola VM proporcionando Hola dirección URL del VHD.
 
-Para obtener más información sobre las imágenes de máquina virtual consulte las siguientes entradas de blog:
+toolearn más acerca de las imágenes de máquina virtual, siguiendo las entradas de blog de Hola de revisión:
 
 * [Imagen de máquina virtual](https://azure.microsoft.com/blog/vm-image-blog-post/)
 * [Procedimientos para trabajar con imágenes de máquina virtual en PowerShell](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 * [Acerca de las imágenes de máquina virtual en Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-### <a name="set-up-the-necessary-tools-powershell-and-azure-cli"></a>Configurar las herramientas necesarias, PowerShell y la CLI de Azure
-* [Cómo configurar PowerShell](/powershell/azure/overview)
-* [Cómo configurar la CLI de Azure](../cli-install-nodejs.md)
+### <a name="set-up-hello-necessary-tools-powershell-and-azure-cli"></a>Configurar herramientas que necesitan hello, PowerShell y la CLI de Azure
+* [¿Cómo toosetup PowerShell](/powershell/azure/overview)
+* [¿Cómo toosetup CLI de Azure](../cli-install-nodejs.md)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 Crear una imagen de máquina virtual de usuario
 #### <a name="capture-vm"></a>Captura de máquina virtual
-Vea los vínculos siguientes para obtener instrucciones sobre cómo capturar la máquina virtual con API/PowerShell/CLI de Azure.
+Lea los vínculos de hello indica a continuación para obtener instrucciones sobre cómo capturar Hola máquina virtual mediante PowerShell/API/Azure CLI.
 
 * [API](https://msdn.microsoft.com/library/mt163560.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [CLI de Azure](../virtual-machines/linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="generalize-image"></a>Generalización de una imagen
-Vea los vínculos siguientes para obtener instrucciones sobre cómo capturar la máquina virtual con API/PowerShell/CLI de Azure.
+Lea los vínculos de hello indica a continuación para obtener instrucciones sobre cómo capturar Hola máquina virtual mediante PowerShell/API/Azure CLI.
 
 * [API](https://msdn.microsoft.com/library/mt269439.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [CLI de Azure](../virtual-machines/linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="42-deploy-a-vm-from-a-user-vm-image"></a>4.2 Implementar una máquina virtual a partir de una imagen de máquina virtual de usuario
-Para implementar una máquina virtual a partir de una imagen de máquina virtual de usuario, puede usar el [Portal de Azure](https://manage.windowsazure.com) actual o PowerShell.
+toodeploy una máquina virtual desde una imagen de máquina virtual de usuario, puede usar actual hello [portal de Azure](https://manage.windowsazure.com) o PowerShell.
 
-**Implementar una máquina virtual desde el Portal de Azure actual**
+**Implementar una máquina virtual desde el portal de Azure actual Hola**
 
-1. Vaya a **Nuevo** > **Proceso** > **Máquina virtual** > **De la galería**.
+1. Vaya demasiado**New** > **proceso** > **Máquina Virtual** > **de galería**.
 
     ![dibujo][img-manage-vm-new]
-2. Vaya a **Mis imágenes**y seleccione la imagen de máquina virtual con la que quiere implementar una máquina virtual:
+2. Vaya demasiado**Mis imágenes**, y, a continuación, seleccione Hola imagen de máquina virtual desde qué toodeploy una máquina virtual:
 
-   1. Preste mucha atención a la imagen que selecciona, porque la vista **Mis imágenes** enumera tanto imágenes del sistema operativo como imágenes de máquina virtual.
-   2. Comprobar el número de discos puede ayudar a determinar el tipo de imagen que va a implementar, ya que la mayoría de las imágenes de máquina virtual tienen más de un disco. No obstante, es posible tener una imagen de máquina virtual con un solo disco del sistema operativo, es decir, tendría **Número de discos** establecido en un 1.
+   1. Imagen de preste especial atención toowhich seleccione, porque hello **Mis imágenes** vista muestra imágenes de sistema operativo y de imágenes de máquina virtual.
+   2. Examinando el número de Hola de discos puede ayudar a determinar qué tipo de imagen va a implementar, porque la mayoría de Hola de imágenes de máquina virtual tiene más de un disco. Sin embargo, es posible toohave una imagen de máquina virtual con solo un disco de sistema operativo único, que, a continuación, tendría **número de discos** establecer too1.
 
       ![dibujo][img-manage-vm-select]
-3. Siga el asistente para crear máquinas virtuales y especifique el nombre de la máquina virtual, el tamaño, la ubicación, el nombre de usuario y la contraseña.
+3. Siga el Asistente para la creación de VM de Hola y especifique el nombre de la máquina virtual de hello, tamaño VM, ubicación, nombre de usuario y contraseña.
 
 **Implementación de una máquina virtual a partir de PowerShell**
 
-Para implementar una máquina virtual de gran tamaño, puede usar los siguientes cmdlets desde la imagen de máquina virtual generalizada que acaba de crear.
+toodeploy que una máquina virtual grande de hello generalizar la imagen de máquina virtual que acaba de crear, puede usar Hola siguientes cmdlets.
 
     $img = Get-AzureVMImage -ImageName "myVMImage"
     $user = "user123"
@@ -236,66 +236,66 @@ Para implementar una máquina virtual de gran tamaño, puede usar los siguientes
 >
 
 ## <a name="5-obtain-certification-for-your-vm-image"></a>5. Obtención de la certificación para su imagen de máquina virtual
-El siguiente paso para preparar su imagen de máquina virtual para Azure Marketplace es certificarla.
+Hola siguiente paso en preparar la imagen VM para hello Azure Marketplace es toohave que cuando certificadas.
 
-Este proceso incluye ejecutar una herramienta de certificación especial, cargar los resultados de la comprobación en el contenedor de Azure donde residen sus VHD, agregar una oferta, definir su SKU y enviar su imagen de máquina virtual para que la certifiquen.
+Este proceso incluye la ejecución de una herramienta de certificación especiales, cargar toohello de resultados de comprobación de hello Azure contenedor donde residen sus VHD, agregar una oferta, definir el SKU y enviando la máquina virtual de la imagen para la certificación.
 
-### <a name="51-download-and-run-the-certification-test-tool-for-azure-certified"></a>5.1 Descargar e instalar “Certification Test Tool for Azure Certified”
-La herramienta de certificación se ejecuta en una máquina virtual en ejecución, aprovisionada desde su imagen de máquina virtual de usuario, para comprobar que la imagen de máquina virtual es compatible con Microsoft Azure. Comprueba que se han cumplido las instrucciones y los requisitos para preparar su VHD. El resultado de la herramienta es un informe de compatibilidad que se debe cargar en el Portal de publicación al solicitar la certificación.
+### <a name="51-download-and-run-hello-certification-test-tool-for-azure-certified"></a>5.1 Descargue y ejecute hello herramienta Certification Test de Azure Certified
+herramienta de certificación de Hola se ejecuta en una máquina virtual en ejecución, aprovisionada desde su imagen de máquina virtual de usuario, tooensure que Hola imagen de máquina virtual es compatible con Microsoft Azure. Comprobará que se han cumplido las instrucciones de Hola y requisitos sobre cómo preparar el disco duro virtual. salida de Hello de herramienta de hello es un informe de compatibilidad, que se debe cargar en hello Portal de publicación mientras se solicita la certificación.
 
-La herramienta de certificación se puede usar con máquinas virtuales basadas tanto en Windows como en Linux. Se conecta con las máquinas virtuales basadas en Windows a través de PowerShell y, con las máquinas virtuales basadas en Linux, mediante SSH.Net:
+herramienta de certificación de Hello puede usarse con máquinas virtuales de Linux y Windows. Se conecta a las máquinas virtuales de la basadas en tooWindows a través de PowerShell y se conecta tooLinux las máquinas virtuales a través de SSH.Net:
 
-1. En primer lugar, descargue la herramienta de certificación en el [sitio de descargas de Microsoft][link-msft-download].
-2. Abra la herramienta de certificación y haga clic en el botón **Iniciar nueva prueba** .
-3. En la pantalla **Información de la prueba** , escriba un nombre para la serie de pruebas.
-4. Especifique si la máquina virtual está basada en Linux o Windows. En función de lo que especifique, seleccione las demás opciones.
+1. En primer lugar, descargar herramienta de certificación de hello en hello [sitio de descarga de Microsoft][link-msft-download].
+2. Abrir herramienta de certificación de hello y, a continuación, haga clic en hello **Iniciar nueva prueba** botón.
+3. De hello **probar información** pantalla, escriba un nombre para la ejecución de pruebas de Hola.
+4. Especifique si la máquina virtual está basada en Linux o Windows. Dependiendo de cuál elegir, seleccione las opciones siguientes de Hola.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>**Conexión de la herramienta de certificación a una imagen de máquina virtual basada en Linux**
-1. Seleccione el modo de autenticación con SSH: contraseña o archivo de clave.
-2. Si usa autenticación por contraseña, escriba el Sistema de nombres de dominio (DNS), el nombre de usuario y la contraseña.
-3. Si usa autenticación con archivo de clave, escriba el nombre DNS, el nombre de usuario y la ubicación de la clave privada.
+### <a name="connect-hello-certification-tool-tooa-linux-vm-image"></a>**Conectar Hola certificación herramienta tooa imagen de VM de Linux**
+1. Modo de autenticación de SSH seleccione hello: archivo de contraseña o clave.
+2. Si utiliza la autenticación basada en contraseña, escriba el nombre de sistema de nombres de dominio (DNS) de hello, nombre de usuario y contraseña.
+3. Si utiliza la autenticación de archivo de clave, escriba el nombre DNS de hello, el nombre de usuario y la ubicación de la clave privada.
 
    ![Autenticación de contraseña de imagen de máquina virtual de Linux][img-cert-vm-pswd-lnx]
 
    ![Autenticación de archivo de clave de máquina virtual de Linux][img-cert-vm-key-lnx]
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Conexión de la herramienta de certificación a una imagen de máquina virtual basada en Windows**
-1. Escriba el nombre DNS completo de la máquina virtual (por ejemplo, MyVMName.ClOudapp.net).
-2. Escriba el nombre de usuario y la contraseña.
+### <a name="connect-hello-certification-tool-tooa-windows-based-vm-image"></a>**Conectar la imagen de VM basadas en Windows de hello certificación herramienta tooa**
+1. Escriba el nombre DNS de la máquina virtual de hello completo (por ejemplo, MyVMName.Cloudapp.net).
+2. Escriba la contraseña y el nombre de usuario de Hola.
 
    ![Autenticación de contraseña de imagen de máquina virtual de Windows][img-cert-vm-pswd-win]
 
-Después de seleccionar las opciones correctas para la imagen de máquina virtual basada en Linux o Windows, elija **Probar conexión** para comprobar que SSH.Net o PowerShell tienen una conexión válida con fines de prueba. Una vez establecida la conexión, seleccione **Siguiente** para iniciar la prueba.
+Después de haber seleccionado opciones correctas de hello para la imagen de Linux o máquinas virtuales basadas en Windows, seleccione **Probar conexión** tooensure que SSH.Net o PowerShell tiene una conexión válida con fines de prueba. Una vez establecida una conexión, seleccione **siguiente** prueba de hello toostart.
 
-Cuando termine la prueba, recibirá los resultados (sin errores/error/con advertencia) para cada elemento de la prueba.
+Una vez completada la prueba de hello, recibirá Hola resultados (paso/error/advertencia) para cada elemento de prueba.
 
 ![Casos de prueba para la imagen de máquina virtual de Linux][img-cert-vm-test-lnx]
 
 ![Casos de prueba para la imagen de máquina virtual de Windows][img-cert-vm-test-win]
 
-Si se produce un error en alguna de las pruebas, la imagen no se certificará. Si ocurre esto, revise los requisitos y realice los cambios necesarios.
+Si alguna de las pruebas de hello no, no se clasifique la imagen. Si esto ocurre, revise los requisitos de Hola y realice los cambios necesarios.
 
-Después de la prueba automatizada, se le pedirá que proporcione información adicional en la imagen de máquina virtual a través de una pantalla de cuestionario.  Complete las preguntas y seleccione **Siguiente**
+Después de hello prueba automática, se le preguntará tooprovide una entrada adicional en la imagen de máquina virtual a través de una pantalla de cuestionario.  Complete preguntas de hello y, a continuación, seleccione **siguiente**.
 
 ![Cuestionario de la herramienta de certificación][img-cert-vm-questionnaire]
 
 ![Cuestionario de la herramienta de certificación][img-cert-vm-questionnaire-2]
 
-Una vez haya completado el cuestionario, puede proporcionar información adicional, como información de acceso SSH para la imagen de máquina virtual de Linux y una explicación sobre las evaluaciones que han dado errores. Puede descargar los resultados de la prueba y los archivos de registro de las pruebas ejecutadas, además de sus respuestas al cuestionario. Guarde los resultados en el mismo contenedor que los VHD.
+Después de haber completado cuestionario hello, puede proporcionar información adicional, como información de acceso SSH para hello imagen de VM de Linux y una explicación para las evaluaciones error. Puede descargar los resultados de pruebas de Hola y archivos de registro de hello ejecutar casos de prueba en cuestionario toohello de suma tooyour respuestas. Guardar los resultados de Hola Hola mismo contenedor que los discos duros virtuales.
 
 ![Guardar resultados de la prueba de certificación][img-cert-vm-results]
 
-### <a name="52-get-the-shared-access-signature-uri-for-your-vm-images"></a>5.2 Obtener el identificador URI de firma de acceso compartido para sus imágenes de máquina virtual
-Durante el proceso de publicación, tiene que especificar los identificadores uniformes de recursos (URI) que llevan a cada uno de los VHD que creó para su SKU. Microsoft necesita tener acceso a estos VHD durante el proceso de certificación. Por lo tanto, debe crear un URI de firma de acceso compartido para cada VHD. Este es el URI que debe proporcionar en la pestaña **Imágenes** del portal de publicación.
+### <a name="52-get-hello-shared-access-signature-uri-for-your-vm-images"></a>5.2 obtener el URI de la firma de acceso compartido Hola para las imágenes de máquina virtual
+Durante el proceso de publicación de hello, especificar identificadores de uniforme de recursos (URI) de Hola que mejoren tooeach de hello discos duros virtuales que ha creado para el SKU. Microsoft necesita acceso toothese discos duros virtuales durante el proceso de certificación de Hola. Por lo tanto, necesitará toocreate un URI de firma de acceso compartido para cada disco duro virtual. Se trata de hello URI que se debe escribir en el **imágenes** ficha Hola Portal de publicación.
 
-El URI de firma de acceso compartido creado debe cumplir los siguientes requisitos:
+firma de acceso compartido de Hello URI creado debe respetar toohello según los requisitos:
 
 * Para generar los URI de firma de acceso compartido para sus VHD, son suficientes los permisos de lista y lectura. No proporcione acceso de escritura o eliminación.
-* La duración del acceso debe ser un mínimo de tres (3) semanas a partir de la creación del URI de firma de acceso compartido.
-* Para proteger la hora UTC, seleccione el día anterior a la fecha actual. Por ejemplo, si la fecha actual es el 6 de octubre de 2014, seleccione 5/10/2014.
+* duración de Hello para el acceso debe ser un mínimo de tres (3) semanas de cuando se crea el URI de la firma de acceso compartido Hola.
+* toosafeguard en hora UTC, día Hola select antes de hello fecha actual. Por ejemplo, si Hola fecha actual es el 6 de octubre de 2014, seleccione 10/5/2014.
 
-La dirección URL de SAS puede generarse de varias maneras a fin de compartir el disco duro virtual para Azure Marketplace.
-Estos son las 3 herramientas recomendadas:
+Dirección URL de SAS puede ser generado en tooshare de varias maneras el disco duro virtual de Azure Marketplace.
+A continuación se Hola 3 herramientas recomendadas:
 
 1.  Explorador de Azure Storage
 2.  Explorador de almacenamiento de Microsoft
@@ -303,9 +303,9 @@ Estos son las 3 herramientas recomendadas:
 
 **Explorador de Azure Storage (recomendado para los usuarios de Windows)**
 
-A continuación se enumeran los pasos para generar la dirección URL de SAS mediante el Explorador de Azure Storage.
+Estos son los pasos de Hola para generar la dirección URL de SAS mediante el Explorador de almacenamiento de Azure
 
-1. Descargue [Explorador de Azure Storage 6 versión preliminar 3](https://azurestorageexplorer.codeplex.com/) desde CodePlex. Vaya a [Azure Storage Explorer 6 Preview](https://azurestorageexplorer.codeplex.com/) (Versión preliminar del explorador de Azure Storage 6) y haga clic en **"Downloads"** (Descargas).
+1. Descargue [Explorador de Azure Storage 6 versión preliminar 3](https://azurestorageexplorer.codeplex.com/) desde CodePlex. Vaya demasiado[Azure Storage Explorer 6 Preview](https://azurestorageexplorer.codeplex.com/) y haga clic en **"Descarga"**.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_01.png)
 
@@ -313,76 +313,76 @@ A continuación se enumeran los pasos para generar la dirección URL de SAS medi
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_02.png)
 
-3. Una vez instalado, abra la aplicación.
+3. Después de instalarlo, abra la aplicación hello.
 4. Haga clic en **Agregar cuenta**.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_03.png)
 
-5. Especifique el nombre de cuenta de almacenamiento, la clave de la cuenta de almacenamiento y el dominio de los puntos de conexión de almacenamiento. Esta es la cuenta de almacenamiento de su suscripción de Azure en la que guardó el disco duro virtual en Azure Portal.
+5. Especifique el nombre de cuenta de almacenamiento de hello, clave de la cuenta de almacenamiento y dominio de los puntos de conexión de almacenamiento. Esto es, cuenta de almacenamiento de hello en su suscripción de Azure donde ha guardado el disco duro virtual en el portal de Azure.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_04.png)
 
-6. Una vez que el Explorador de Azure Storage se conecte a su cuenta de almacenamiento específica, empezará a mostrar todos los contenedores de la cuenta de almacenamiento. Seleccione el contenedor en el que copió el archivo VHD del disco del sistema operativo (también los discos de datos si son aplicables en su caso).
+6. Una vez que se conecta a Azure Storage Explorer tooyour cuenta de almacenamiento específica, se iniciará mostrando todas hello contiene dentro de la cuenta de almacenamiento de Hola. Seleccionar contenedor Hola donde copió el archivo VHD de disco de sistema operativo hello (también discos de datos, si son aplicables para su escenario).
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_05.png)
 
-7. Después de seleccionar el contenedor de blobs, se iniciará la aplicación Explorador de almacenamiento de Azure con los archivos dentro del contenedor. Seleccione el archivo de imagen (.vhd) que tiene que enviarse.
+7. Después de seleccionar el contenedor de blobs de hello, Azure Storage Explorer inicia mostrando archivos Hola contenedor Hola. Seleccione el archivo de imagen de hello (.vhd) que necesita toobe enviado.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_06.png)
 
-8.  Después de seleccionar el archivo (.vhd) en el contenedor, haga clic en la pestaña **Seguridad** .
+8.  Después de seleccionar el archivo .vhd de hello en el contenedor de hello, haga clic en hello **seguridad** ficha.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_07.png)
 
-9.  En el cuadro de diálogo **Seguridad del contenedor de blobs**, deje los valores predeterminados de la pestaña **Nivel de acceso** y, después, haga clic en la pestaña **Firmas de acceso compartido**.
+9.  Hola **seguridad del contenedor de Blob** cuadro de diálogo, los valores predeterminados de deje hello en hello **nivel de acceso** ficha y, a continuación, haga clic en **firmas de acceso compartido** ficha.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_08.png)
 
-10. Siga estos pasos a fin de generar un URI de firma de acceso compartido para la imagen .vhd:
+10. Siga los pasos de Hola por debajo de un URI de firma de acceso compartido para la imagen de VHD de Hola toogenerate:
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
-    a. **Acceso permitido desde**: para proteger la hora UTC, seleccione el día anterior a la fecha actual. Por ejemplo, si la fecha actual es el 6 de octubre de 2014, seleccione 5/10/2014.
+    a. **Permite el acceso:** toosafeguard en hora UTC, día Hola select antes de hello fecha actual. Por ejemplo, si Hola fecha actual es el 6 de octubre de 2014, seleccione 10/5/2014.
 
-    b. **Acceso permitido hasta**: seleccione una fecha que sea al menos 3 semanas después de la fecha de **Acceso permitido desde**.
+    b. **Permite el acceso a:** seleccione una fecha que sea al menos 3 semanas después de hello **permite el acceso** fecha.
 
-    c. **Acciones permitidas**: seleccione los permisos **Lista** y **Lectura**.
+    c. **Acciones permitidas:** Hola seleccione **lista** y **lectura** permisos.
 
-    d. Si seleccionó correctamente el archivo .vhd, en **Nombre de blob para acceder** aparece el archivo con la extensión .vhd
+    d. Si ha seleccionado el archivo .vhd correctamente, el archivo aparece en **tooaccess de nombre de Blob** con extensión .vhd.
 
     e. Haga clic en **Generar firma**.
 
-    f. En **URI de firma de acceso compartido generado de este contenedor**, compruebe lo siguiente tal como se ha resaltado anteriormente:
+    f. En **genera compartido acceso firma URI de este contenedor**, busque Hola siguientes como se indica anteriormente:
 
-       - Compruebe que el nombre de archivo de imagen y **".vhd"** están en el URI.
-       - Asegúrese de que **"=rl"** aparece al final de la firma. Esto demuestra que el acceso de lectura y lista se ha proporcionado correctamente.
-       - En el centro de la firma, asegúrese de que aparece **"sr=c"**. Esto demuestra que tiene acceso de nivel de contenedor.
+       - Asegúrese de que el nombre de archivo de la imagen y **".vhd"** están en hello URI.
+       - Al final de Hola de firma de hello, asegúrese de que **"= rl"** aparece. Esto demuestra que el acceso de lectura y lista se ha proporcionado correctamente.
+       - En el centro de firma de hello, asegúrese de que **"sr = c"** aparece. Esto demuestra que tiene acceso de nivel de contenedor.
 
-11. Para asegurarse de que el URI de firma de acceso compartido generado funciona correctamente, haga clic en **Probar en el explorador**. El proceso de descarga debería comenzar.
+11. tooensure Hola genera compartidos funciona URI de firma de acceso, haga clic en **pruebas en explorador**. Debe iniciar el proceso de descarga de Hola.
 
-12. Copie el URI de firma de acceso compartido. Este es el URI que debe pegar en el portal de publicación.
+12. Copie el URI de la firma de acceso compartido Hola. Se trata de hello URI toopaste en hello Portal de publicación.
 
-13. Repita los pasos de 6 a 10 para cada disco duro virtual en la SKU.
+13. Repita los pasos 6 y 10 para cada disco duro virtual en hello SKU.
 
 **Explorador de Microsoft Azure Storage (Windows/MAC/Linux)**
 
-A continuación se muestran los pasos para generar la dirección URL de SAS mediante el Explorador de Microsoft Azure Storage.
+Estos son los pasos de Hola para generar la dirección URL de SAS mediante el Explorador de almacenamiento de Microsoft Azure
 
-1.  Descargue el Explorador de Microsoft Azure Storage desde el sitio web [http://storageexplorer.com/](http://storageexplorer.com/). Vaya a [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html) (Explorador de Microsoft Azure Storage) y haga clic en **"Download for Windows"** (Descargar para Windows).
+1.  Descargue el Explorador de Microsoft Azure Storage desde el sitio web [http://storageexplorer.com/](http://storageexplorer.com/). Vaya demasiado[Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html) y haga clic en **"Descargar para Windows"**.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
 
-2.  Una vez instalado, abra la aplicación.
+2.  Después de instalarlo, abra la aplicación hello.
 
 3.  Haga clic en **Agregar cuenta**.
 
-4.  Configure el Explorador de Microsoft Azure Storage con su suscripción iniciando sesión en su cuenta.
+4.  Configurar suscripción de Microsoft Azure Storage Explorer tooyour tooyour cuenta de inicio de sesión
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 
-5.  Vaya a la cuenta de almacenamiento y seleccione el contenedor.
+5.  Vaya toostorage cuenta y seleccione Hola contenedor
 
-6.  Seleccione **"Get Share Access Signature"** (Obtener la firma de acceso compartido) haciendo clic derecho en el **contenedor**.
+6.  Seleccione **"Get Share Access Signature"** (Obtener la firma de acceso compartido) con un clic derecho de hello **contenedor**
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
 
@@ -390,41 +390,41 @@ A continuación se muestran los pasos para generar la dirección URL de SAS medi
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.  **Hora de inicio**: para proteger la hora UTC, seleccione el día anterior a la fecha actual. Por ejemplo, si la fecha actual es el 6 de octubre de 2014, seleccione 5/10/2014.
+    a.  **Hora de inicio:** toosafeguard en hora UTC, día Hola select antes de hello fecha actual. Por ejemplo, si Hola fecha actual es el 6 de octubre de 2014, seleccione 10/5/2014.
 
-    b.  **Hora de caducidad:** seleccione una fecha que sea al menos 3 semanas después de la **Hora de inicio**.
+    b.  **La hora de expiración:** seleccione una fecha que sea al menos 3 semanas después de hello **Start Time** fecha.
 
-    c.  **Permisos**: seleccione los permisos **Lista** y **Lectura**.
+    c.  **Permisos:** Hola seleccione **lista** y **lectura** permisos
 
 8.  Copie el URI de la firma de acceso compartido del contenedor.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_14.png)
 
-    La dirección URL de SAS generada es de nivel de contenedor, y ahora tenemos que agregarle el nombre del disco duro virtual.
+    Dirección URL de SAS generada es de nivel de contenedor y ahora necesitamos tooadd nombre del VHD en ella.
 
     Formato de la dirección URL de SAS de nivel de contenedor:`https://testrg009.blob.core.windows.net/vhds?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
-    Inserte el nombre del disco duro virtual después del nombre del contenedor en la dirección URL de SAS como se indica a continuación:`https://testrg009.blob.core.windows.net/vhds/<VHD NAME>?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
+    Inserte el nombre de disco duro virtual después de nombre de contenedor de hello en dirección URL de SAS como a continuación`https://testrg009.blob.core.windows.net/vhds/<VHD NAME>?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
     Ejemplo:
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_15.png)
 
-    TestRGVM201631920152.vhd es el nombre de disco duro virtual, así que la dirección URL de SAS del disco duro virtual será `https://testrg009.blob.core.windows.net/vhds/TestRGVM201631920152.vhd?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
+    TestRGVM201631920152.vhd es hello nombre de disco duro virtual, será la dirección URL de SAS del disco duro virtual`https://testrg009.blob.core.windows.net/vhds/TestRGVM201631920152.vhd?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
-    - Compruebe que el nombre de archivo de imagen y **".vhd"** están en el URI.
-    - Asegúrese de que **"sp=rl"** aparece en el medio de la firma. Esto demuestra que el acceso de lectura y lista se ha proporcionado correctamente.
-    - En el centro de la firma, asegúrese de que aparece **"sr=c"**. Esto demuestra que tiene acceso de nivel de contenedor.
+    - Asegúrese de que el nombre de archivo de la imagen y **".vhd"** están en hello URI.
+    - En el centro de firma de hello, asegúrese de que **"sp = rl"** aparece. Esto demuestra que el acceso de lectura y lista se ha proporcionado correctamente.
+    - En el centro de firma de hello, asegúrese de que **"sr = c"** aparece. Esto demuestra que tiene acceso de nivel de contenedor.
 
-9.  Para asegurarse de que el URI de firma de acceso compartido generado funciona correctamente, pruébelo en el explorador. El proceso de descarga debería comenzar.
+9.  tooensure que Hola funciona URI de firma de acceso compartido generada, probarlo en el explorador. Debe iniciar el proceso de descarga de Hola
 
-10. Copie el URI de firma de acceso compartido. Este es el URI que debe pegar en el portal de publicación.
+10. Copie el URI de la firma de acceso compartido Hola. Se trata de hello URI toopaste en hello Portal de publicación.
 
-11. Repita estos pasos para cada VHD de la SKU.
+11. Repita estos pasos para cada disco duro virtual en hello SKU.
 
 **CLI de Azure (recomendado para la integración continua y distinta de Windows)**
 
-A continuación se enumeran los pasos para generar la dirección URL de SAS mediante la CLI de Azure.
+Estos son los pasos de Hola para generar la dirección URL de SAS mediante CLI de Azure
 
 1.  Descargue la CLI de Microsoft Azure desde [aquí](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). También puede encontrar vínculos diferentes para **[Windows](http://aka.ms/webpi-azure-cli)** y **[MAC OS](http://aka.ms/mac-azure-cli)**.
 
@@ -436,17 +436,17 @@ A continuación se enumeran los pasos para generar la dirección URL de SAS medi
           azure storage container list vhds -c $conn
           azure storage container sas create vhds rl <Permission End Date> -c $conn --start <Permission Start Date>  
 
-    Actualice los siguientes parámetros especificados anteriormente.
+    Actualizar siguiente Hola parámetros en anteriormente
 
     a. **`<StorageAccountName>`**: indique el nombre de la cuenta de almacenamiento
 
     b. **`<Storage Account Key>`**: indique la clave de la cuenta de almacenamiento
 
-    c. **`<Permission Start Date>`**: para proteger la hora UTC, seleccione el día anterior a la fecha actual. Por ejemplo, si la fecha actual es el 26 de octubre de 2016, el valor debe ser 10/25/2016.
+    c. **`<Permission Start Date>`**: toosafeguard en hora UTC, día Hola select antes de hello fecha actual. Por ejemplo, si hello fecha actual es el 26 de octubre de 2016, entonces debe ser el valor 10/25/2016
 
-    d. **`<Permission End Date>`**: seleccione una fecha que sea al menos 3 semanas después de la **Fecha de inicio**. Así, el valor debería ser **11/02/2016**.
+    d. **`<Permission End Date>`**: Seleccione una fecha que sea al menos 3 semanas después de hello **Start Date**. Así, el valor debería ser **11/02/2016**.
 
-    A continuación se muestra el código de ejemplo después de actualizar los parámetros adecuados.
+    Siguiente es un código de ejemplo de Hola después de actualizar los parámetros adecuados
 
           $conn="DefaultEndpointsProtocol=https;AccountName=st20151;AccountKey=TIQE5QWMKHpT5q2VnF1bb+NUV7NVMY2xmzVx1rdgIVsw7h0pcI5nMM6+DVFO65i4bQevx21dmrflA91r0Vh2Yw=="
           azure storage container list vhds -c $conn
@@ -454,54 +454,54 @@ A continuación se enumeran los pasos para generar la dirección URL de SAS medi
 
 4.  Abra el editor de Powershell con el modo de "Ejecutar como administrador" y abra el archivo del paso 3.
 
-5.  Ejecute el script para conseguir la dirección URL de SAS para el acceso de nivel de contenedor.
+5.  Secuencia de comandos de ejecución hello y proporcionará que Hola URL de SAS para el acceso de nivel de contenedor
 
-    A continuación se muestra el resultado de la firma de SAS; copie la parte resaltada en el Bloc de notas.
+    Estos son resultado de hello de parte de hello resaltado de hello firma de SAS y copia en el Bloc de notas
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
 
-6.  Ahora tendrá la dirección URL de SAS de nivel de contenedor y tendrá que agregar el nombre del disco duro virtual en ella.
+6.  Ahora obtendrá la dirección URL de SAS de nivel de contenedor y deberá tooadd nombre del VHD en ella.
 
     N.º de URL de SAS de nivel de contenedor
 
     `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-7.  Inserte el nombre del disco duro virtual después del nombre del contenedor en la dirección URL de SAS como se indica a continuación:`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+7.  Inserte el nombre de disco duro virtual después de nombre de contenedor de hello en dirección URL de SAS tal y como se muestra a continuación`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
     Ejemplo:
 
-    TestRGVM201631920152.vhd es el nombre de disco duro virtual, así que la dirección URL de SAS del disco duro virtual será
+    TestRGVM201631920152.vhd es hello nombre de disco duro virtual, será la dirección URL de SAS del disco duro virtual
 
     `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-    - Compruebe que el nombre de archivo de imagen y ".vhd" están en el URI.
-    -   Asegúrese de que "sp=rl" aparece en el medio de la firma. Esto demuestra que el acceso de lectura y lista se ha proporcionado correctamente.
-    -   Asegúrese de que "sr=c" aparece en el medio de la firma. Esto demuestra que tiene acceso de nivel de contenedor.
+    - Asegúrese de que el nombre de archivo de imagen y ".vhd" están en hello URI.
+    -   En el centro de firma de hello, compruebe que aparece "sp = rl". Esto demuestra que el acceso de lectura y lista se ha proporcionado correctamente.
+    -   En el centro de firma de hello, asegúrese de que "sr = c" aparece. Esto demuestra que tiene acceso de nivel de contenedor.
 
-8.  Para asegurarse de que el URI de firma de acceso compartido generado funciona correctamente, pruébelo en el explorador. El proceso de descarga debería comenzar.
+8.  tooensure que Hola funciona URI de firma de acceso compartido generada, probarlo en el explorador. Debe iniciar el proceso de descarga de Hola
 
-9.  Copie el URI de firma de acceso compartido. Este es el URI que debe pegar en el portal de publicación.
+9.  Copie el URI de la firma de acceso compartido Hola. Se trata de hello URI toopaste en hello Portal de publicación.
 
-10. Repita estos pasos para cada VHD de la SKU.
+10. Repita estos pasos para cada disco duro virtual en hello SKU.
 
 
-### <a name="53-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal"></a>5.3 Proporcionar información acerca de la imagen de máquina virtual y solicitar su certificación en el portal de publicación
-Una vez que haya creado su oferta y SKU, debe proporcionar los datos de la imagen asociados con esa SKU.
+### <a name="53-provide-information-about-hello-vm-image-and-request-certification-in-hello-publishing-portal"></a>5.3 proporcionan información acerca de la imagen de máquina virtual de Hola y solicitar la certificación en hello Portal de publicación
+Una vez haya creado la oferta y SKU, debe especificar detalles de la imagen de hello asociados a esa SKU:
 
-1. Vaya al [Portal de publicación][link-pubportal] e inicie sesión con su cuenta de vendedor.
-2. Seleccione la pestaña **Imágenes de VM** .
-3. El identificador que aparece en la parte superior de la página es realmente el identificador de la oferta, no de la SKU.
-4. Rellene las propiedades de la sección **SKUs** .
-5. En **Familia del sistema operativo**, haga clic en el tipo de sistema operativo asociado con el VHD del sistema operativo.
-6. En el cuadro **Sistema operativo** , describa el sistema operativo. Considere un formato como familia de sistemas operativos, tipo, versión y actualizaciones. Por ejemplo, "Windows Server Datacenter 2014 R2".
-7. Seleccione hasta seis tamaños de máquina virtual recomendados. Estas recomendaciones se muestran al cliente en la hoja del plan de tarifa del Portal de Azure cuando este decide comprar e implementar su imagen. **Estas son solo recomendaciones. El cliente puede seleccionar cualquier tamaño de máquina virtual que admita los discos especificados en su imagen.**
-8. Especifique la versión. El campo de versión encapsula una versión semántica para identificar el producto y sus actualizaciones:
-   * Las versiones deben ser del tipo X.Y.Z, donde X, Y y Z son números enteros.
+1. Vaya toohello [Portal de publicación][link-pubportal]y, a continuación, inicie sesión con tu cuenta de vendedor.
+2. Seleccione hello **imágenes de máquina virtual** ficha.
+3. identificador de Hello aparece al principio de Hola de página de hello es realmente identificador de oferta de hello y no el identificador SKU Hola.
+4. Rellene las propiedades de hello en hello **SKU** sección.
+5. En **familia del sistema operativo**, haga clic en el tipo de sistema operativo de hello asociado Hola VHD del sistema operativo.
+6. Hola **sistema operativo** cuadro, describa el sistema operativo de Hola. Considere un formato como familia de sistemas operativos, tipo, versión y actualizaciones. Por ejemplo, "Windows Server Datacenter 2014 R2".
+7. Seleccione seguridad toosix recomendada tamaños de máquina virtual. Estas son las recomendaciones que obtener del cliente de toohello mostrada en la hoja de nivel de precios de Hola Hola Portal de Azure al decidir toopurchase e implementar la imagen. **Se trata únicamente de recomendaciones. el cliente de Hello es capaz de tooselect cualquier tamaño de máquina virtual que dé cabida a discos de hello especificado en la imagen.**
+8. Escriba la versión de Hola. campo de la versión de Hola encapsula una versión semántica tooidentify hello y las actualizaciones:
+   * Versiones deben tener formato de hello X.Y.Z, donde X, Y y Z son números enteros.
    * Imágenes de SKU diferentes pueden tener distintas versiones principales y secundarias.
-   * Las versiones dentro de una SKU solo deberían ser los cambios incrementales que aumenten la versión de revisión (Z de X.Y.Z).
-9. En el cuadro **Dirección URL del VHD del sistema operativo** , escriba el URI de firma de acceso compartido creado para el VHD del sistema operativo.
-10. Si hay discos de datos asociados con esta SKU, seleccione el número de unidad lógica (LUN) donde desea que se monte este disco de datos durante la implementación.
-11. En el cuadro **Dirección URL del VHD de LUN X** , escriba el URI de firma de acceso compartido creado para el primer VHD de datos.
+   * Las versiones en una SKU sólo deberían ser los cambios incrementales que aumentar la versión de revisión de hello (Z desde X.Y.Z).
+9. Hola **dirección URL del VHD OS** cuadro, escriba la firma de acceso compartido de hello URI creado para hello VHD del sistema operativo.
+10. Si no hay discos de datos asociados a esta SKU, seleccione hello toowhich del (LUN) número de unidad lógica que desea que este toobe de disco de datos montado durante la implementación.
+11. Hola **dirección URL del VHD de LUN X** cuadro, escriba la firma de acceso compartido de hello identificador URI creado para los datos de hello primer disco duro virtual.
 
     ![dibujo](media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-3.png)
 
@@ -510,18 +510,18 @@ Una vez que haya creado su oferta y SKU, debe proporcionar los datos de la image
 
 |Problema|Mensaje de error|Solución|Vínculo a documentación|
 |---|---|---|---|
-|Error al copiar imágenes: "?" no se encuentra en la dirección URL de SAS|Error al copiar imágenes No se puede descargar el blob mediante la dirección URL de SAS indicada.|Actualización de la dirección URL de SAS mediante las herramientas recomendadas|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Error al copiar imágenes: los parámetros "st" y "se" no están en la dirección URL de SAS|Error al copiar imágenes No se puede descargar el blob mediante la dirección URL de SAS indicada.|Actualización de la dirección URL de SAS incluyendo las fechas de inicio y finalización|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Error al copiar imágenes: "sp=rl" no está en la dirección URL de SAS|Error al copiar imágenes No se puede descargar el blob mediante la dirección URL de SAS indicada.|Actualización de la dirección Url de SAS con los permisos establecidos como "Lectura" y "Lista"|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Error al copiar imágenes: la dirección URL de SAS tiene espacios en blanco en el nombre de disco duro virtual.|Error al copiar imágenes No se puede descargar el blob mediante la dirección URL de SAS indicada.|Actualización de la dirección URL de SAS sin espacios en blanco|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Error al copiar imágenes: error de autorización de dirección Url de SAS|Error al copiar imágenes No se puede descargar blob debido a un error de autorización.|Regeneración de la dirección URL de SAS|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Error al copiar imágenes: "?" no se encuentra en la dirección URL de SAS|Error al copiar imágenes No se puede toodownload blob mediante proporciona el Uri de SAS.|Actualización Hola Url de SAS mediante herramientas recomendadas|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Error al copiar imágenes: los parámetros "st" y "se" no están en la dirección URL de SAS|Error al copiar imágenes No se puede toodownload blob mediante proporciona el Uri de SAS.|Actualizar Hola Url de SAS con fechas de inicio y finalización en él|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Error al copiar imágenes: "sp=rl" no está en la dirección URL de SAS|Error al copiar imágenes No se puede toodownload blob mediante proporciona el Uri de SAS|Actualizar Hola Url de SAS con permisos establecidos como "Lectura" y "lista|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Error al copiar imágenes: la dirección URL de SAS tiene espacios en blanco en el nombre de disco duro virtual.|Error al copiar imágenes No se puede toodownload blob mediante proporciona el Uri de SAS.|Actualizar Hola Url de SAS, sin espacios en blanco|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Error al copiar imágenes: error de autorización de dirección Url de SAS|Error al copiar imágenes Blob no se puede toodownload debido a error de tooauthorization|Volver a generar Hola Url de SAS|[https://azure.microsoft.com/es-es/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 
 ## <a name="next-step"></a>Paso siguiente
-Cuando termine con los detalles de SKU, podrá continuar con la [guía de contenido de marketing de Azure Marketplace][link-pushstaging]. En este paso del proceso de publicación, proporciona el contenido de marketing, precios y demás información necesaria antes del **Paso 3: Prueba de la oferta de máquina virtual en ensayo**, donde prueba varios escenarios de caso de uso antes de implementar la oferta en Azure Marketplace para la compra y visibilidad pública.  
+Cuando termine con detalles SKU de hello, puede mover hacia delante toohello [Guía de contenido de marketing de Azure Marketplace][link-pushstaging]. En este paso del proceso de publicación de hello, proporcionar Hola marketing contenido, precios y otros antes es necesario obtener información demasiado**paso 3: probar la máquina virtual ofrecen en almacenamiento provisional**, en el que probar varios escenarios de casos de uso antes de implementar Hola oferta toohello Azure Marketplace para la compra y visibilidad pública.  
 
-## <a name="see-also"></a>Consulte también
-* [Introducción: Publicación de una oferta en Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>Otras referencias
+* [Introducción: cómo toopublish una toohello de oferta de Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
 [img-portal-vm-size]:media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png

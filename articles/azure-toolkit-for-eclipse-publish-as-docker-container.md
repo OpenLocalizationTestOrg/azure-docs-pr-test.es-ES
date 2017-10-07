@@ -1,6 +1,6 @@
 ---
-title: "Publicación de un contenedor de Docker con el kit de herramientas de Azure para Eclipse| Microsoft Docs"
-description: "Aprenda a publicar una aplicación web en Microsoft Azure como un contenedor de Docker con el kit de herramientas de Azure para Eclipse."
+title: aaaPublish un contenedor de Docker mediante el uso de hello Azure Toolkit for Eclipse | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toopublish una tooMicrosoft de aplicación web Azure como un contenedor de Docker mediante el uso de hello Azure Toolkit for Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,160 +14,160 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 746bb0a073396b84fa8592adda6748a2a5692ee8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53ec3a7f7a171691024e03622fd48d6f1e257b50
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-a-web-app-as-a-docker-container-by-using-the-azure-toolkit-for-eclipse"></a>Publicación de una aplicación web como contenedor de Docker con el kit de herramientas de Azure para Eclipse
+# <a name="publish-a-web-app-as-a-docker-container-by-using-hello-azure-toolkit-for-eclipse"></a>Publicar una aplicación web como un contenedor de Docker mediante Hola Kit de herramientas de Azure para Eclipse
 
-Los contenedores de Docker son un método muy utilizado para implementar aplicaciones web. Usando contenedores de Docker, los desarrolladores pueden consolidar todos sus archivos de proyecto y dependencias en un único paquete para implementarlo en un servidor. El kit de herramientas de Azure para Eclipse simplifica este proceso para los desarrolladores de Java, ya que agrega características de *publicación como contenedor de Docker* para su implementación en Microsoft Azure. En este artículo se le guía por los pasos necesarios para publicar aplicaciones en Azure como contenedores de Docker.
+Los contenedores de Docker son un método muy utilizado para implementar aplicaciones web. Mediante el uso de contenedores de Docker, los desarrolladores pueden consolidar todos sus archivos de proyecto y las dependencias en un único paquete para el servidor de implementación tooa. Hello Azure Toolkit for Eclipse simplifica este proceso para los desarrolladores de Java agregando *publicar como contenedor de Docker* características de implementación tooMicrosoft Azure. Este artículo le guiará a través de hello pasos necesarios toopublish su tooAzure de aplicaciones como contenedores de Docker.
 
 > [!NOTE]
-> Hay más información disponible sobre Docker en el [sitio web de Docker].
+> Para obtener más información sobre Docker está disponible en hello [sitio Web de Docker].
 >
 
 [!INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
-## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Publicación de su aplicación web en Azure mediante un contenedor de Docker
+## <a name="publish-your-web-app-tooazure-by-using-a-docker-container"></a>Publicar su tooAzure de aplicación web mediante el uso de un contenedor de Docker
 
 1. Abra el proyecto de aplicación web en Eclipse.
 
-2. Para iniciar el asistente **Publish as Docker Container** (Publicar como contenedor de Docker), realice una de las siguientes acciones:
+2. Hola toostart **publicar como contenedor de Docker** asistente, realice una de las siguientes de hello:
 
-   * En la vista **Navegador**, haga clic con el botón derecho en el proyecto y haga clic en **Azure** y en **Publish as Docker Container** (Publicar como contenedor de Docker).
+   * Hola **navegador** ver, haga clic en el proyecto, haga clic en **Azure**y, a continuación, haga clic en **publicar como contenedor de Docker**.
 
       ![Vista de navegador del comando Publish as Docker Container (Publicar como contenedor de Docker)][PUB01]
 
-   * En la barra de herramientas de Eclipse, haga clic en el botón **Publish** (Publicar) y en **Publish as Docker Container** (Publicar como contenedor de Docker).
+   * En la barra de herramientas de Eclipse hello, haga clic en hello **publicar** botón y, a continuación, haga clic en **publicar como contenedor de Docker**.
 
       ![Barra de herramientas de Eclipse del comando Publish as Docker Container (Publicar como contenedor de Docker)][PUB02]
       
-    Se abre el asistente **Deploy Docker Container on Azure** (Implementar contenedor de Docker en Azure).
+    Hola **implementar contenedor de Docker en Azure** abre el asistente.
 
-    ![Asistente Deploy Docker Container on Azure (Implementar contenedor de Docker en Azure)][PUB03]
+    ![Hola implementar contenedor de Docker en el Asistente de Azure][PUB03]
 
-3. En la ventana **Type an image name, select the artifact's path and check a Docker host to be used** (Escriba un nombre de imagen, seleccione la ruta de acceso del artefacto y elija el host de Docker que se usará), haga lo siguiente:
+3. Hola **escriba un nombre de imagen, seleccione la ruta de acceso del artefacto de Hola y comprobar una toobe de host de Docker usan** ventana, Hola siguientes:
 
-    a. En el cuadro **Docker image name** (Nombre de imagen de Docker), escriba un nombre único para el host de Docker. (El asistente crea automáticamente un nombre, pero se puede modificar).
+    a. Hola **nombre de la imagen de Docker** cuadro, escriba un nombre único para el host Docker. (Asistente de hello crea automáticamente un nombre, pero se puede modificar.)
 
-    b. En el área **Hosts**, se muestran todos los hosts de Docker que ya haya creado. Realice cualquiera de las siguientes acciones:
+    b. Hola **Hosts** área muestra todos los hosts de Docker que ya haya creado. Realice una de las siguientes de hello:
 
-    * Si tiene un host de Docker existente, puede implementar la aplicación web en él.
-    * Para crear un nuevo host de Docker, haga clic en **Agregar**.  
+    * Si tiene un host Docker existente, puede implementar su tooit de aplicación web.
+    * Haga clic en un nuevo host Docker, toocreate **agregar**.  
       
-    Se abre el cuadro de diálogo **Create Docker Host** (Crear host de Docker).
+    Hola **crear un Host Docker** abre el cuadro de diálogo.
 
     ![Asistente Deploy Docker Container on Azure (Implementar contenedor de Docker en Azure)][PUB04a]
 
-4. En la ventana **Configure the new virtual machine** (Configurar la nueva máquina virtual), especifique las siguientes opciones de su host de Docker (el asistente genera automáticamente la mayor parte de las opciones, pero puede modificarla).
+4. Hola **configurar la máquina virtual nueva de hello** ventana, especifique Hola siguientes opciones para el host de Docker. (Asistente de hello genera automáticamente la mayoría de las opciones de Hola para usted, pero puede modificar cualquiera de ellos).
 
-   a. **Name** (Nombre): escriba un nombre único para el host de Docker (no es lo mismo que el nombre de imagen de Docker que especificó antes).
+   a. **Nombre**: escriba un nombre único para el host de Docker Hola. (Es no Hola igual Hola nombre de la imagen de Docker que especificó anteriormente).
 
-   b. **Subscription** (Suscripción): escriba la suscripción de Azure que usa para el host.
+   b. **Suscripción**: escriba Hola suscripción de Azure que usa para el host.
 
-   c. **Region** (Región): escriba la región geográfica donde se encuentra el host.
+   c. **Región**: ENTRAR Hola región geográfica donde se encuentra el host.
 
-   d. En la pestaña **Host OS and Size** (Sistema operativo y tamaño del host):
-     * **Host OS** (Sistema operativo de host): escriba el sistema operativo de la máquina virtual que contiene el host.
-     * **Size** (Tamaño): escriba el tamaño de la máquina virtual del host.
+   d. En hello **SO Host y el tamaño** ficha:
+     * **Sistema operativo de host**: escriba el sistema operativo de hello para la máquina virtual de Hola que contiene el host.
+     * **Tamaño**: especifique el tamaño de la máquina virtual de hello para el host.
 
-   e. En la pestaña **Resource Group** (Grupo de recursos):
+   e. En hello **grupo de recursos** ficha:
      * **New resource group** (Nuevo grupo de recursos): cree un grupo de recursos para el host.
      * **Existing resource group** (Grupo de recursos existente): especifique un grupo de recursos existente desde su cuenta de Azure.
 
-   f. En la pestaña**Network** (Red):
+   f. En hello **red** ficha:
      * **New virtual network** (Nueva red virtual): cree una red virtual para el host.
      * **Existing virtual network** (Red virtual existente): especifique una red virtual existente desde su cuenta de Azure.
 
-   g. Haga clic en la pestaña **Storage** (Almacenamiento):
+   g. En hello **almacenamiento** ficha:
      * **New storage account** (Nueva cuenta de almacenamiento): cree una cuenta de almacenamiento para el host.
      * **Existing storage account** (Cuenta de almacenamiento existente): especifique una cuenta de almacenamiento existente desde su cuenta de Azure.
 
 5. Haga clic en **Siguiente**.
 
-6. En la ventana **Configure log in credentials and port settings** (Configurar credenciales de inicio de sesión y configuración de puerto), seleccione una de las siguientes opciones:
+6. Hola **configurar registro en las credenciales y configuración de puerto** ventana, seleccione una de las siguientes opciones de hello:
 
     * **Import credentials from Azure Key Vault** (Importar credenciales de Azure Key Vault): especifique un conjunto de credenciales previamente guardadas que están almacenadas en la suscripción de Azure.
 
       >[!NOTE]
-      >Una instancia de Azure Key Vault que se crea con una cuenta o entidad de servicio específica no es accesible automáticamente para otra cuenta o entidad de servicio que comparta la suscripción. Para permitir que otra cuenta o entidad de servicio use la instancia de Key Vault, debe usar Azure Portal para agregar la cuenta o entidad de servicio.
+      >Un almacén de claves de Azure que se crea con una cuenta específica o una entidad de servicio no es automáticamente accesible por otra cuenta o entidad de servicio que comparte suscripción Hola. tooallow toouse de entidad de seguridad otra cuenta o servicio Hola el almacén de claves, debe utilizar cuenta de Azure tooadd portal Hola Hola o entidad de servicio.
 
-    * **New log in credentials** (Nuevas credenciales de inicio de sesión): crea un conjunto de credenciales de inicio de sesión. Si selecciona esta opción, haga lo siguiente:
+    * **New log in credentials** (Nuevas credenciales de inicio de sesión): crea un conjunto de credenciales de inicio de sesión. Si selecciona esta opción, Hola siguientes:
     
-      * En la pestaña **VM Credentials** (Credenciales de máquina virtual), elija una de las siguientes opciones para el inicio de sesión de máquina virtual del host de Docker:
+      * En hello **las credenciales de la máquina virtual** ficha, elija una de hello siguientes opciones para las credenciales de inicio de sesión de máquina virtual de hello del host Docker:
 
-          * **Username** (Nombre de usuario): especifica el nombre de usuario de las credenciales inicio de sesión de la máquina virtual.
-          * **Password** (Contraseña) y **Confirm** (Confirmar): escriba la contraseña para las credenciales del inicio de sesión de la máquina virtual.
-          * **SSH**: especifique la configuración de Secure Shell (SSH) para el host de Docker. Puede elegir entre las siguientes opciones:
+          * **Nombre de usuario**: escriba el nombre de usuario de hello las credenciales de inicio de sesión de máquina virtual.
+          * **Contraseña** y **confirmar**: escriba la contraseña de hello las credenciales de inicio de sesión de máquina virtual.
+          * **SSH**: especifique la configuración de Shell seguro (SSH) de hello para el host de Docker. Puede elegir entre Hola siguientes opciones:
             * **None** (Ninguna): especifica que la máquina virtual no permitirá conexiones SSH.
-            * **Auto-generate** (Generar automáticamente): crea automáticamente la configuración necesaria para la conexión mediante SSH.
-            * **Import from directory** (Importar desde directorio): especifica un directorio que contiene un conjunto de configuraciones de SSH previamente guardadas. El directorio debe contener los dos archivos siguientes:
-                * *id_rsa*: contiene la identificación de RSA de un usuario.
-                * *id_rsa.pub*: contiene la clave pública de RSA que se usa para la autenticación.
+            * **Generar automáticamente**: automáticamente crea Hola la configuración necesaria para conectarse a través de SSH.
+            * **Import from directory** (Importar desde directorio): especifica un directorio que contiene un conjunto de configuraciones de SSH previamente guardadas. directorio de Hello debe contener Hola después de dos archivos:
+                * *id_rsa*: contiene la identificación de RSA de Hola para un usuario.
+                * *id_rsa.pub*: contiene la clave pública de hello RSA que se utiliza para la autenticación.
         
         ![Create Docker Host (Crear host de Docker)][PUB05]
 
-      * En la pestaña **Docker Daemon Credentials** (Credenciales demonio de Docker), especifique las siguientes opciones:
+      * En hello **Docker Daemon credenciales** ficha, especifique Hola siguientes opciones:
 
-          * **Docker Daemon port** (Puerto de demonio de Docker): especifica el puerto TCP único de su host de Docker.
-          * **Seguridad de TLS**: especifique la configuración de seguridad de la capa de transporte para el host de Docker. Puede elegir entre las siguientes opciones:
+          * **Puerto de demonio de docker**: escriba el puerto TCP único hello para el host Docker.
+          * **Seguridad de TLS**: especifique la configuración de seguridad de la capa de transporte de Hola de su host de Docker. Puede elegir entre Hola siguientes opciones:
             * **None** (Ninguna): especifica que su máquina virtual no permitirá conexiones TLS.
-            * **Auto-generate** (Generar automáticamente): crea automáticamente la configuración necesaria para la conexión mediante TLS.
-            * **Import from directory** (Importar desde directorio): especifica un directorio que contiene un conjunto de configuraciones de TLS previamente guardadas. Más concretamente, el directorio debe contener los seis archivos siguientes:
-                * *ca.pem* y *ca-key.pem*: contienen el certificado y la clave pública de la entidad de certificación de TLS.
-                * *cert.pem* y *key.pem*: contienen el certificado de cliente y la clave pública que se usarán para la autenticación TLS.
-                * *server.pem* y *server-key.pem*: contienen el certificado de servidor y la clave pública del host.
+            * **Generar automáticamente**: automáticamente crea Hola la configuración necesaria para conectarse a través de TLS.
+            * **Import from directory** (Importar desde directorio): especifica un directorio que contiene un conjunto de configuraciones de TLS previamente guardadas. Más concretamente, el directorio de hello debe contener Hola siguientes seis archivos:
+                * *CA.PEM* y *key.pem ca*: contienen el certificado de hello y una clave pública para hello entidad emisora de certificados de TLS.
+                * *CERT.PEM* y *key.pem*: contienen el certificado de cliente de hello y una clave pública que se utiliza para la autenticación TLS.
+                * *Server.PEM* y *key.pem server*: contienen el certificado de servidor de Hola y de clave pública para el host de Hola.
 
         ![Create Docker Host (Crear host de Docker)][PUB06]
 
-7. Después de haber escrito toda la información anterior, haga clic en **Finish** (Finalizar).
+7. Después de haber escrito todos Hola información anterior, haga clic en **finalizar**.
 
-8. En el asistente **Deploy Docker Container on Azure** (Implementar contenedor de Docker en Azure), haga clic en **Next** (Siguiente).
+8. Hola **implementar contenedor de Docker en Azure** asistente, haga clic en **siguiente**.
 
-   ![Asistente Deploy Docker Container on Azure (Implementar contenedor de Docker en Azure)][PUB07]
+   ![Hola implementar contenedor de Docker en el Asistente de Azure][PUB07]
 
-9. En la ventana **Configure the Docker container to be created** (Configurar el contenedor de Docker que se va a crear), realice lo siguiente:
+9. Hola **configurar hello Docker contenedor toobe crea** ventana, Hola siguientes:
 
-   a. En el cuadro **Docker container name** (Nombre del contenedor de Docker), escriba un nombre único para el contenedor de Docker.
+   a. Hola **nombre del contenedor de Docker** cuadro, escriba un nombre único para el contenedor de Docker.
 
-   b. Elija una de las siguientes imágenes de Docker:
+   b. Elija uno de hello después de imágenes de Docker:
      * **Predefined Docker image** (Imagen de Docker predefinida): especifica una imagen de Docker preexistente de Azure.
 
        >[!NOTE]
-       >La lista de imágenes de Docker de este cuadro consta de varias imágenes para las que se ha configurado el kit de herramientas de Azure para aplicar revisiones, de modo que su artefacto se implementa automáticamente.
+       >Hola lista de imágenes de Docker en este cuadro está formada por varias imágenes que hello Azure Toolkit ha sido configurado toopatch para que el artefacto se implementa automáticamente.
 
      * **Custom Dockerfile** (Dockerfile personalizado): especifica un Dockerfile guardado antes desde el equipo local.
 
        >[!NOTE]
-       >Esta es una característica más avanzada para desarrolladores que deseen implementar su propio Dockerfile. Sin embargo, es responsabilidad de los desarrolladores que usen esta opción asegurarse de que su Dockerfile se ha creado correctamente. El kit de herramientas de Azure no valida el contenido de un Dockerfile personalizado, por lo que la implementación puede dar error si el Dockerfile tiene problemas. Además, dado que el kit de herramientas de Azure espera que el Dockerfile personalizado contenga un artefacto de aplicación web, intenta abrir una conexión HTTP. Si los desarrolladores publican un tipo diferente de artefacto, podrían recibir errores inofensivos después de la implementación.
+       >Se trata de una característica más avanzada para los desarrolladores que deseen toodeploy su propios Dockerfile. Sin embargo, resulta una toodevelopers que usan este tooensure opción que sus Dockerfile se ha creado correctamente. Hola Kit de herramientas de Azure no validar el contenido de hello en un archivo Dockerfile personalizado, por lo que puede producir un error en la implementación de Hola si hello Dockerfile tiene problemas. Además, hello Azure Toolkit espera Hola personalizado Dockerfile toocontain un artefacto de la aplicación web y tratará de tooopen una conexión HTTP. Si los desarrolladores publican un tipo diferente de artefacto, podrían recibir errores inofensivos después de la implementación.
 
-   c. **Port settings** (Configuración de puerto): escriba el enlace de puerto TCP único para su contenedor de Docker.
+   c. **Configuración de puertos**: especifique el enlace de puerto TCP único de hello para el contenedor de Docker.
 
-     ![Ventana Configure the Docker container to be created (Configurar el contenedor de Docker que se va a crear)][PUB08]
+     ![ventana de Hello configurar hello Docker contenedor toobe creado][PUB08]
 
-10. Después de completar todos los pasos anteriores, haga clic en **Finish** (Finalizar).
+10. Después de haber completado todos los pasos anteriores de Hola, haga clic en **finalizar**.
 
-El kit de herramientas de Azure comienza a implementar la aplicación web en Azure en un contenedor de Docker. 
+Hello Azure Toolkit comienza implementar su tooAzure de aplicación web en un contenedor de Docker. 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre los kits de herramientas de Azure para los IDE de Java, consulte los siguientes recursos:
+Para obtener más información acerca de hello kits de herramientas de Azure para Java IDE, vea Hola recursos siguientes:
 
 * [Kit de herramientas de Azure para Eclipse]
-  * [Novedades del kit de herramientas de Azure para Eclipse]
-  * [Instalación del Kit de herramientas de Azure para Eclipse]
-  * [Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse]
+  * [Novedades de hello Azure Toolkit for Eclipse]
+  * [Instalar hello Azure Toolkit for Eclipse]
+  * [Instrucciones de inicio de sesión para hello Azure Toolkit for Eclipse]
   * [Creación de una aplicación web Hello World para Azure en Eclipse]
 * [Kit de herramientas de Azure para IntelliJ]
-  * [Novedades del kit de herramientas de Azure para IntelliJ]
-  * [Instalación del kit de herramientas de Azure para IntelliJ]
-  * [Instrucciones de inicio de sesión del kit de herramientas de Azure para IntelliJ]
+  * [Novedades de hello Azure Toolkit for IntelliJ]
+  * [Instalación hello Azure Toolkit for IntelliJ]
+  * [Instrucciones de inicio de sesión para hello Azure Toolkit para IntelliJ]
   * [Creación de una aplicación web Hello World para Azure en IntelliJ]
 
 Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure] y la página de [herramientas de Java para Visual Studio Team Services].
 
-Para más recursos de Docker, consulte el [sitio web de Docker] oficial.
+Para obtener recursos adicionales de Docker, consulte oficial de hello [sitio Web de Docker].
 
 <!-- URL List -->
 
@@ -175,17 +175,17 @@ Para más recursos de Docker, consulte el [sitio web de Docker] oficial.
 [Kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij.md
 [Creación de una aplicación web Hello World para Azure en Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Creación de una aplicación web Hello World para Azure en IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Instalación del Kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Instalación del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Instrucciones de inicio de sesión del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Novedades del kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Novedades del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+[Instalar hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Instalación hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Instrucciones de inicio de sesión para hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Instrucciones de inicio de sesión para hello Azure Toolkit para IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Novedades de hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Novedades de hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Centro para desarrolladores de Java de Azure]: https://azure.microsoft.com/develop/java/
 [herramientas de Java para Visual Studio Team Services]: https://java.visualstudio.com/
 
-[sitio web de Docker]: https://www.docker.com/
+[sitio Web de Docker]: https://www.docker.com/
 
 <!-- IMG List -->
 

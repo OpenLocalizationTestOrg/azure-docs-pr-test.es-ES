@@ -1,6 +1,6 @@
 ---
-title: "Habilitación automática de Configuración de diagnóstico con una plantilla de Resource Manager | Microsoft Docs"
-description: "Aprenda a usar una plantilla de Resource Manager para crear una configuración de diagnóstico que le permitirá transmitir los registros de diagnóstico a centros de eventos o almacenarlos en una cuenta de almacenamiento."
+title: "aaaAutomatically habilitar la configuración de diagnóstico mediante una plantilla de administrador de recursos | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse un administrador de recursos plantilla toocreate configuración de diagnóstico que le permitirá toostream su diagnóstico registra tooEvent concentradores o almacenarlas en una cuenta de almacenamiento."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2017
 ms.author: johnkem
-ms.openlocfilehash: dde2435e976bbd14ca35cccc714ea21dcc5817b7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8f38731107029928029c6d940da7bd076fea5d49
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Habilitación automática de Configuración de diagnóstico al crear recursos con una plantilla de Resource Manager
-En este artículo se muestra cómo usar una [plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) para establecer Configuración de diagnóstico en un recurso cuando se crea. Esto permite empezar automáticamente a transmitir las métricas y los registros de diagnóstico a Event Hubs, a archivarlos en una cuenta de almacenamiento o a enviarlos a Log Analytics cuando se crea un recurso.
+En este artículo se muestra cómo se puede utilizar un [plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) tooconfigure configuración de diagnóstico en un recurso cuando se crea. Esto le permite iniciar tooautomatically su tooEvent registros de diagnóstico y las métricas de los concentradores, archivarlos en una cuenta de almacenamiento, o bien enviarlas tooLog análisis cuando se crea un recurso de transmisión por secuencias.
 
-El método para habilitar registros de diagnóstico mediante una plantilla de Resource Manager depende del tipo de recurso.
+método Hello para habilitar registros de diagnóstico mediante una plantilla de administrador de recursos depende del tipo de recurso de Hola.
 
 * **no de proceso** (por ejemplo, Grupos de seguridad de red, Logic Apps, Automatización) usan [Configuración de diagnóstico como se describe en este artículo](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-* **de proceso** (basados en WAD/LAD) usan el [archivo de configuración de WAD/LAD descrito en este artículo](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+* **Proceso** (WAD/LAD-based) recursos usan hello [archivo de configuración de WAD/LAD descrito en este artículo](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
-En este artículo se describe cómo configurar diagnósticos mediante cualquiera de estos métodos.
+En este artículo se describe cómo diagnósticos de tooconfigure mediante cualquiera de estos métodos.
 
-Los pasos básicos son los siguientes:
+pasos básicos de Hello son los siguientes:
 
-1. Cree una plantilla como archivo JSON que describa cómo crear el recurso y habilitar los diagnósticos.
-2. [Implemente la plantilla mediante cualquier método de implementación](../azure-resource-manager/resource-group-template-deploy.md).
+1. Crear una plantilla como un archivo JSON que describe cómo toocreate Hola recursos y habilitar los diagnósticos.
+2. [Implementar la plantilla de hello mediante cualquier método de implementación](../azure-resource-manager/resource-group-template-deploy.md).
 
-A continuación, se ofrece un ejemplo del archivo JSON de plantilla que debe generar para los recursos de proceso y los que no lo son.
+A continuación le ofrecemos un ejemplo de Hola plantilla archivo JSON que necesita toogenerate para no son de cálculo y los recursos de proceso.
 
 ## <a name="non-compute-resource-template"></a>Plantilla para recursos no de proceso
-Para recursos no de proceso, debe hacer dos cosas:
+Para recursos de proceso distinta, deberá toodo dos cosas:
 
-1. Agregue parámetros al blob de parámetros para el nombre de cuenta de almacenamiento, el identificador de regla de Service Bus o el identificador del área de trabajo de Log Analytics de OMS (esto habilita el archivado de registros de diagnóstico en una cuenta de almacenamiento, el streaming de registros a Event Hubs o el envío de registros a Log Analytics).
+1. Agregue el blob de parámetros de toohello de parámetros para el nombre de cuenta de almacenamiento de hello, Id. de regla de bus de servicio o Id. de área de trabajo de análisis de registros de OMS (habilitar el archivado de registros de diagnóstico en una cuenta de almacenamiento, la transmisión por secuencias de registros tooEvent concentradores, y/o el envío de registros tooLog análisis).
    
     ```json
     "storageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+        "description": "Name of hello Storage Account in which Diagnostic Logs should be saved."
       }
     },
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Service Bus Rule Id for hello Service Bus Namespace in which hello Event Hub should be created or streamed to."
       }
     },
     "workspaceId":{
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Log Analytics workspace ID for hello Log Analytics workspace toowhich logs will be sent."
       }
     }
     ```
-2. En la matriz de recursos del recurso para el que desea habilitar los registros de diagnóstico, agregue un recurso de tipo `[resource namespace]/providers/diagnosticSettings`.
+2. En la matriz de recursos de hello del recurso de hello para el que desea que los registros de diagnóstico de tooenable, agregue un recurso de tipo `[resource namespace]/providers/diagnosticSettings`.
    
     ```json
     "resources": [
@@ -102,9 +102,9 @@ Para recursos no de proceso, debe hacer dos cosas:
     ]
     ```
 
-El blob de propiedades para la configuración de diagnóstico sigue [el formato descrito en este artículo](https://msdn.microsoft.com/library/azure/dn931931.aspx). Al agregar la propiedad `metrics`, también podrá enviar métricas de recursos para estos mismos resultados, siempre y cuando [los recursos admitan las métricas de Azure Monitor](monitoring-supported-metrics.md).
+sigue Hello blob de propiedades de configuración de diagnóstico de hello [formato de hello descrito en este artículo](https://msdn.microsoft.com/library/azure/dn931931.aspx). Agregar hello `metrics` propiedad le permitirá toothese de métricas de recursos tooalso envío mismo genera, siempre que [recursos hello es compatible con métricas de supervisión de Azure](monitoring-supported-metrics.md).
 
-Este es un ejemplo completo en el que se crea una aplicación lógica y se activa la transmisión a Event Hubs y el almacenamiento en una cuenta de almacenamiento.
+Este es un ejemplo completo que crea una aplicación de la lógica y activa la transmisión por secuencias tooEvent centros y el almacenamiento en una cuenta de almacenamiento.
 
 ```json
 
@@ -115,7 +115,7 @@ Este es un ejemplo completo en el que se crea una aplicación lógica y se activ
     "logicAppName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Logic App that will be created."
+        "description": "Name of hello Logic App that will be created."
       }
     },
     "testUri": {
@@ -125,19 +125,19 @@ Este es un ejemplo completo en el que se crea una aplicación lógica y se activ
     "storageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+        "description": "Name of hello Storage Account in which Diagnostic Logs should be saved."
       }
     },
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Service Bus Rule Id for hello Service Bus Namespace in which hello Event Hub should be created or streamed to."
       }
     },
     "workspaceId": {
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Log Analytics workspace ID for hello Log Analytics workspace toowhich logs will be sent."
       }
     }
   },
@@ -224,20 +224,20 @@ Este es un ejemplo completo en el que se crea una aplicación lógica y se activ
 ```
 
 ## <a name="compute-resource-template"></a>Plantilla para recursos de proceso
-Para habilitar los diagnósticos en un recurso de proceso, por ejemplo, un clúster de Service Fabric o de máquinas virtuales, necesitará hacer lo siguiente:
+tooenable diagnósticos en un recurso de proceso, por ejemplo, una máquina Virtual o clúster de Service Fabric, debe:
 
-1. Agregue la extensión de Diagnósticos de Azure a la definición de recurso de máquina virtual.
+1. Agregar definición de recursos de la extensión toohello Hola diagnósticos de Azure VM.
 2. Especifique una cuenta de almacenamiento y/o un centro de eventos como parámetro.
-3. Agregue el contenido del archivo XML de WADCfg a la propiedad XMLCfg y dé el formato de escape correcto a todos los caracteres XML.
+3. Adición de contenido de hello del archivo WADCfg XML en la propiedad XMLCfg de hello, secuencias de escape correctamente todos los caracteres XML.
 
 > [!WARNING]
-> Este último paso puede ser complicado de realizar correctamente. [Consulte este artículo](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) para ver un ejemplo que divide el esquema de configuración de diagnóstico en variables con el formato y el escape correctos.
+> Este último paso puede ser difícil tooget derecha. [Consulte este artículo](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) para obtener un ejemplo que divisiones Hola esquema de configuración de diagnóstico en las variables que son caracteres de escape y tiene el formato correcto.
 > 
 > 
 
-Se describe el proceso completo, con ejemplos, [en este documento](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Hello proceso completo, incluidos ejemplos, se describe [en este documento](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Más información sobre los registros de Diagnósticos de Azure](monitoring-overview-of-diagnostic-logs.md)
-* [Transmita registros de diagnóstico de Azure a centros de eventos](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Transmitir tooEvent centros de registros de diagnóstico de Azure](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

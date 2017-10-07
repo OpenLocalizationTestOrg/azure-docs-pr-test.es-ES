@@ -1,6 +1,6 @@
 ---
-title: "Adición de retraso en Logic Apps | Microsoft Docs"
-description: "Información general sobre las acciones de retraso y retraso hasta y cómo usarlas con una aplicación lógica de Azure."
+title: "un retraso en las aplicaciones lógicas aaaAdd | Documentos de Microsoft"
+description: "Información general de hello retraso y retraso-hasta que las acciones y cómo toouse con una aplicación de Azure lógica."
 services: 
 documentationcenter: 
 author: jeffhollan
@@ -15,62 +15,62 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 5f4f7052d48b4ca4ed91212d970551141e78e852
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e5bc9d639adbddc01ee0f6a4c68716f586d4344a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-delay-and-delay-until-actions"></a>Introducción a las acciones de retraso y retraso hasta
-Con las acciones de retraso y retraso hasta, puede completar escenarios de flujo de trabajo como los siguientes.
+# <a name="get-started-with-hello-delay-and-delay-until-actions"></a>Empezar a trabajar con hello retraso y retraso-hasta acciones
+Mediante el uso de retraso de Hola y "retraso-hasta" acciones, puede completar los escenarios de flujo de trabajo.
 
 Por ejemplo, puede:
 
-* Esperar hasta un día de la semana para enviar una actualización de estado por correo electrónico.
-* Retrasar el flujo de trabajo hasta que una llamada HTTP tenga tiempo para completarse antes de reanudarse y recuperar el resultado.
+* Espere hasta que actualice un estado de día de la semana toosend por correo electrónico.
+* Flujo de trabajo de hello de retraso hasta que una llamada HTTP tiene toofinish de tiempo antes de reanudar y recuperar el resultado de hello.
 
-Para empezar a usar la acción de retraso en una aplicación lógica, consulte [Creación de una nueva aplicación lógica mediante la conexión de servicios de SaaS](../logic-apps/logic-apps-create-a-logic-app.md).
+tooget se hayan iniciado mediante la acción de retraso de hello en una aplicación de lógica, consulte [crear una aplicación de lógica](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="use-the-delay-actions"></a>Uso de las acciones de retraso
-Una acción es una operación que se lleva a cabo mediante el flujo de trabajo definido en una aplicación lógica. [Más información acerca de las acciones](connectors-overview.md).
+## <a name="use-hello-delay-actions"></a>Usar acciones de retraso de Hola
+Una acción es una operación que se lleva a cabo por flujo de trabajo de Hola que se define en una aplicación de lógica. [Más información acerca de las acciones](connectors-overview.md).
 
-Esta es una secuencia de ejemplo de cómo usar un paso de retraso en una aplicación lógica:
+Este es un ejemplo de secuencia de cómo toouse un retraso paso a paso en una aplicación de lógica:
 
-1. Después de agregar un desencadenador, haga clic en **Nuevo paso** para agregar una acción.
-2. Busque **delay** para mostrar las acciones de retraso. En este ejemplo, se seleccionará **Delay**.
+1. Después de agregar un desencadenador, haga clic en **nuevo paso** tooadd una acción.
+2. Busque **retraso** toobring las acciones de retraso de Hola. En este ejemplo, se seleccionará **Delay**.
    
     ![Acciones de retraso](./media/connectors-native-delay/using-action-1.png)
-3. Complete cualquiera de las propiedades de acción para configurar el retraso.
+3. Siga cualquiera de retraso de hello acción propiedades tooconfigure Hola.
    
     ![Configuración de retraso](./media/connectors-native-delay/using-action-2.png)
-4. Haga clic en **Guardar** para publicar y activar la aplicación lógica.
+4. Haga clic en **guardar** toopublish y activar la aplicación de la lógica de hello.
 
 ## <a name="action-details"></a>Detalles de la acción
-El desencadenador de periodicidad tiene las siguientes propiedades que se pueden configurar.
+desencadenador de periodicidad de Hello tiene Hola propiedades que se pueden configurar siguientes.
 
 ### <a name="delay-action"></a>Acción de retraso
-Esta acción retrasa la ejecución durante un determinado intervalo de tiempo.
+Ejecute este Hola de retrasos de acción para un intervalo de tiempo determinado.
 Un * significa que es un campo obligatorio.
 
 | Nombre para mostrar | Nombre de propiedad | Description |
 | --- | --- | --- |
-| Recuento* |count |El número de unidades de tiempo de retraso |
-| Unidad* |unit |La unidad de tiempo: `Second`, `Minute`, `Hour` o `Day`. |
+| Recuento* |count |número de Hola de toodelay de unidades de tiempo |
+| Unidad* |unit |unidad de Hola de tiempo: `Second`, `Minute`, `Hour`, o`Day` |
 
 <br>
 
 ### <a name="delay-until-action"></a>Acción de retraso hasta
-Esta acción retrasa la ejecución hasta una fecha u hora especificada.
+Esta acción retrasa Hola ejecutar hasta una fecha u hora especificada.
 Un * significa que es un campo obligatorio.
 
 | Nombre para mostrar | Nombre de propiedad | Description |
 | --- | --- | --- |
-| Año* |timestamp |El año hasta el que retrasar (GMT) |
-| Mes* |timestamp |El mes hasta el que retrasar (GMT) |
-| Día* |timestamp |El día hasta el que retrasar (GMT) |
+| Año* |timestamp |Hola toodelay año hasta (GMT) |
+| Mes* |timestamp |Hola toodelay mes hasta (GMT) |
+| Día* |timestamp |Hola toodelay día hasta (GMT) |
 
 <br>
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora, pruebe la plataforma y [cree una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md). Puede explorar los demás conectores disponibles en aplicaciones lógicas consultando nuestra [lista de API](apis-list.md).
+Ahora, pruebe plataforma hello y [crear una aplicación de lógica](../logic-apps/logic-apps-create-a-logic-app.md). Puede explorar Hola otros conectores disponibles en las aplicaciones lógicas examinando nuestro [lista de las API](apis-list.md).
 

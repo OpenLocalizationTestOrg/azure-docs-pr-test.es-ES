@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure IoT Hub (Java) | Microsoft Docs"
-description: "Obtenga información sobre cómo enviar mensajes del dispositivo a la nube a una instancia de Azure IoT Hub mediante los SDK de IoT para Java. Cree aplicaciones de servicio y de dispositivo simuladas para registrar el dispositivo, enviar mensajes y leerlos en IoT Hub."
+title: aaaGet a trabajar con el centro de IoT de Azure (Java) | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toosend dispositivo a la nube mensajes tooAzure centro de IoT con IoT SDK para Java. Crear dispositivo simulado y tooregister de aplicaciones de servicio, el dispositivo, enviar mensajes y leer los mensajes de centro de IoT."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 707356a49970bcd76a55ee1b8a6fbddf6a6ba390
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac954f0522b46ed2a5b4a819bc611c13be0b9a9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-your-iot-hub-using-java"></a>Conexión del dispositivo en IoT Hub con Java
+# <a name="connect-your-device-tooyour-iot-hub-using-java"></a>Conectar el centro de IoT de tooyour dispositivo usa Java
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-Al final de este tutorial tendrá tres aplicaciones de consola de Java:
+Al final de Hola de este tutorial, tendrá tres aplicaciones de consola de Java:
 
-* **create-device-identity**, que crea una identidad de dispositivo y una clave de seguridad asociada para conectar la aplicación de dispositivo.
-* **read-d2c-messages**, que muestra los datos de telemetría enviados por la aplicación de dispositivo.
-* **simulated-device**, que se conecta con su instancia de IoT Hub con la identidad del dispositivo creada anteriormente y envía un mensaje de telemetría cada segundo mediante el protocolo MQTT.
+* **identidad del dispositivo crear**, que crea una identidad de dispositivo y la clave de seguridad asociadas tooconnect la aplicación de dispositivo.
+* **leer mensajes de d2c**, que muestra la telemetría de hello enviado por la aplicación de dispositivo.
+* **dispositivo simulado**, que se conecta el centro de IoT tooyour con la identidad del dispositivo Hola creado anteriormente y envía un mensaje de telemetría cada segundo mediante Hola protocolo MQTT.
 
 > [!NOTE]
-> En el artículo [Azure Iot SDKs][lnk-hub-sdks] (SDK de IoT de Azure) se proporciona información acerca de los diversos SDK que puede usar para crear ambas aplicaciones para que se ejecuten en dispositivos y en el back-end de la solución.
+> artículo de Hello [SDK de Azure IoT] [ lnk-hub-sdks] proporciona información acerca de hello Azure IoT SDK que puede usar ambos toorun aplicaciones toobuild en dispositivos y el back-end de soluciones.
 
-Para completar este tutorial, necesitará lo siguiente:
+toocomplete este tutorial, necesita Hola siguientes:
 
-* La versión más reciente de [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+* Hola más reciente [8 del Kit de desarrollo de Java SE](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
 * [Maven 3](https://maven.apache.org/install.html) 
 * Una cuenta de Azure activa. (En caso de no tenerla, puede crear una [cuenta gratuita][lnk-free-trial] en solo unos minutos).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-El último paso es tomar nota del valor de **Primary key** (Clave principal). A continuación, haga clic en **Endpoints** (Puntos de conexión) y en el punto de conexión integrado en **Events** (Eventos). En la hoja **Properties** (Propiedades), anote los valores del **nombre compatible con el centro de eventos** y con la dirección del **punto de conexión compatible con centro de eventos**. Necesita estos tres valores al crear la aplicación **read-d2c-messages**.
+Como paso final, tome nota de hello **clave principal** valor. A continuación, haga clic en **extremos** hello y **eventos** extremo predefinido. En hello **propiedades** hoja, tome nota de hello **nombre de concentrador de eventos-compatible con** hello y **punto de conexión de concentrador de eventos-compatible con** dirección. Necesita estos tres valores al crear la aplicación **read-d2c-messages**.
 
 ![Hoja de mensajería de IoT Hub de Azure Portal][6]
 
-Ahora ha creado su instancia de IoT Hub. Ahora tiene el nombre de host de IoT Hub, la cadena de conexión de IoT Hub, la clave principal de IoT Hub, el nombre compatible con Event Hubs y el punto de conexión compatible con Event Hubs que necesita para completar este tutorial.
+Ahora ha creado su instancia de IoT Hub. Tener Hola nombre de host del centro de IoT, cadena de conexión de centro de IoT, clave principal del centro de IoT, nombre de concentrador de eventos-compatible con y punto de conexión compatible de concentrador de eventos necesita toocomplete este tutorial.
 
 ## <a name="create-a-device-identity"></a>Creación de una identidad de dispositivo
-En esta sección, creará una aplicación de consola Java que crea una identidad de dispositivo en el registro de identidades de su instancia de IoT Hub. No se puede conectar un dispositivo a IoT Hub a menos que tenga una entrada en el registro de identidades. Para más información, consulte la sección sobre el **registro de la identidad** de la [guía para desarrolladores de IoT Hub][lnk-devguide-identity]. Cuando ejecuta esta aplicación de consola, se genera una clave y un identificador de dispositivo únicos con el que el dispositivo puede identificarse cuando envía mensajes de dispositivo a la nube a IoT Hub.
+En esta sección, creará una aplicación de consola de Java que crea una identidad de dispositivo en el registro de la identidad de hello en el centro de IoT. Un dispositivo no puede conectar tooIoT concentrador a menos que tenga una entrada en el registro de la identidad de Hola. Para obtener más información, vea hello **del registro de identidad** sección de hello [Guía del desarrollador de centro de IoT][lnk-devguide-identity]. Al ejecutar esta aplicación de consola, se generará un identificador de dispositivo único y clave que el dispositivo pueda usar tooidentify propio cuando el dispositivo a la nube sitio envía mensajes tooIoT concentrador.
 
-1. Cree una carpeta vacía denominada iot-java-get-started. En la carpeta iot-java-get-started, cree un proyecto de Maven denominado **create-device-identity** mediante el comando siguiente en el símbolo del sistema. Observe que este es un comando único y largo:
+1. Cree una carpeta vacía denominada iot-java-get-started. En carpeta iot java-get-iniciada hello, cree un proyecto de Maven denominado **identidad del dispositivo crear** mediante el siguiente comando en el símbolo del sistema de Hola. Observe que este es un comando único y largo:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. En el símbolo del sistema, vaya a la nueva carpeta create-device-identity.
+2. En el símbolo del sistema, desplazarse por las carpetas de identidad del dispositivo crear toohello.
 
-3. Con un editor de texto, abra el archivo pom.xml en la carpeta create-device-identity y agregue la siguiente dependencia al nodo **dependencies** . Esta dependencia le permite usar el paquete iot-service-client en su aplicación:
+3. Con un editor de texto, abra el archivo de pom.xml de hello en la carpeta de identidad del dispositivo crear Hola y agregue Hola después toohello de dependencia **dependencias** nodo. Esta dependencia permite toouse Hola iot-servicio-paquete de cliente de la aplicación:
 
     ```xml
     <dependency>
@@ -69,13 +69,13 @@ En esta sección, creará una aplicación de consola Java que crea una identidad
     ```
 
     > [!NOTE]
-    > Puede comprobar la versión más reciente de **iot-service-client** mediante la [funcionalidad de búsqueda de Maven][lnk-maven-service-search].
+    > Puede comprobar la versión más reciente de Hola de **cliente del servicio de iot** con [búsqueda Maven][lnk-maven-service-search].
 
-4. Guarde y cierre el archivo pom.xml.
+4. Guarde y cierre el archivo de hello pom.xml.
 
-5. Mediante un editor de texto, abra el archivo create-device-identity\src\main\java\com\mycompany\app\App.java.
+5. Con un editor de texto, abra el archivo create-device-identity\src\main\java\com\mycompany\app\App.java de hello.
 
-6. Agregue las siguientes instrucciones **import** al archivo:
+6. Agregue los siguiente hello **importar** archivo toohello de instrucciones:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
@@ -86,7 +86,7 @@ En esta sección, creará una aplicación de consola Java que crea una identidad
     import java.net.URISyntaxException;
     ```
 
-7. Agregue las siguientes variables de nivel de clase a la clase **App** y sustituya **{yourhubconnectionstring}** por el valor anotado anteriormente:
+7. Agregar Hola después de las variables de nivel de clase toohello **aplicación** de la clase, reemplazando **{yourhubconnectionstring}** con hello valor su se indicó anteriormente:
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -94,13 +94,13 @@ En esta sección, creará una aplicación de consola Java que crea una identidad
     ```
 [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
-8. Modifique la firma del método **main** para incluir las excepciones de la siguiente manera:
+8. Modificar firma Hola de hello **principal** método tooinclude Hola excepciones como se indica a continuación:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException, Exception
     ```
 
-9. Agregue el siguiente código como cuerpo del método **main** . Este código crea un dispositivo denominado *javadevice* en el registro de identidades de IoT Hub, si no existe. Después muestra el identificador de dispositivo y la clave que necesitará más adelante:
+9. Agregar Hola siguiente código como cuerpo del mensaje de Hola Hola **principal** método. Este código crea un dispositivo denominado *javadevice* en el registro de identidades de IoT Hub, si no existe. A continuación, muestra la Id. de dispositivo de Hola y la clave que necesita más adelante:
 
     ```java
     RegistryManager registryManager = RegistryManager.createFromConnectionString(connectionString);
@@ -112,7 +112,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -130,7 +130,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -144,41 +144,41 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     System.out.println("Device key: " + device.getPrimaryKey());
     ```
 
-10. Guarde y cierre el archivo App.java.
+10. Guarde y cierre el archivo de hello App.java.
 
-11. Para compilar la aplicación **create-device-identity** con Maven, ejecute el siguiente comando en el símbolo del sistema en la carpeta create-device-identity:
+11. Hola toobuild **identidad del dispositivo crear** aplicación con Maven, ejecutar el siguiente comando en línea de comandos de hello en la carpeta de identidad del dispositivo crear Hola de hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-12. Para ejecutar la aplicación **create-device-identity** con Maven, ejecute el siguiente comando en el símbolo del sistema en la carpeta create-device-identity:
+12. Hola toorun **identidad del dispositivo crear** aplicación con Maven, ejecutar el siguiente comando en línea de comandos de hello en la carpeta de identidad del dispositivo crear Hola de hello:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-13. Anote el **identificador del dispositivo** y la **clave del dispositivo**. Los necesitará más adelante cuando cree una aplicación que se conecta a IoT Hub como dispositivo.
+13. Tome nota de hello **Id. de dispositivo** y **clave de dispositivo**. Necesita estos valores más tarde cuando se crea una aplicación que se conecte tooIoT concentrador como un dispositivo.
 
 > [!NOTE]
-> El registro de identidades de IoT Hub solo almacena identidades de dispositivos para permitir el acceso seguro a IoT Hub. Almacena las claves y los identificadores de dispositivo para usarlos como credenciales de seguridad, y un indicador de habilitado o deshabilitado que permite deshabilitar el acceso a un dispositivo individual. Si la aplicación necesita almacenar otros metadatos específicos del dispositivo, debe usar un almacén específico de la aplicación. Consulte la [guía para desarrolladores de IoT Hub][lnk-devguide-identity] para más información.
+> Hola del registro de identidad de centro de IoT solo almacena centro de IoT toohello de dispositivo identidades tooenable un acceso seguro. Toouse de identificadores y las claves de dispositivo almacena como credenciales de seguridad y una marca de habilitado/deshabilitado que puede usar acceso toodisable para un dispositivo individual. Si la aplicación necesita toostore otros metadatos específicos del dispositivo, debe usar un almacén específico de la aplicación. Para obtener más información, vea hello [Guía del desarrollador de centro de IoT][lnk-devguide-identity].
 
 ## <a name="receive-device-to-cloud-messages"></a>Recepción de mensajes de dispositivo a nube
 
-En esta sección, creará una aplicación de consola de Java que lee los mensajes de dispositivo a nube desde IoT Hub. IoT Hub expone un punto de conexión compatible con [Event Hubs][lnk-event-hubs-overview] para poder leer los mensajes de dispositivo a la nube. Para simplificar las cosas, este tutorial crea un lector básico que no es apto para una implementación de alta capacidad de procesamiento. El [tutorial: procesamiento de mensajes de dispositivo a la nube][lnk-process-d2c-tutorial] muestra cómo procesar mensajes de dispositivo a la nube a escala. En el tutorial [Introducción a Event Hubs][lnk-eventhubs-tutorial] se proporciona información adicional acerca de cómo procesar los mensajes desde Event Hubs. Dicha información se puede aplicar a los puntos de conexión de IoT Hub compatibles con Event Hubs.
+En esta sección, creará una aplicación de consola de Java que lee los mensajes de dispositivo a nube desde IoT Hub. Un centro de IoT expone un [concentrador de eventos][lnk-event-hubs-overview]-extremo compatible tooenable tooread mensajes de dispositivo a la nube. tookeep cosas simples, en este tutorial se crea un lector básico que no es adecuado para una implementación de alto rendimiento. Hola [procesar mensajes del dispositivo a la nube] [ lnk-process-d2c-tutorial] tutorial muestra cómo los mensajes tooprocess dispositivo a la nube a escala. Hola [empezar a trabajar con concentradores de eventos] [ lnk-eventhubs-tutorial] tutorial proporciona información adicional acerca de cómo tooprocess mensajes desde los centros de eventos y es aplicable toohello los puntos de conexión compatibles con eventos de centro de IoT Hub.
 
 > [!NOTE]
-> El punto de conexión compatible con Event Hubs para leer mensajes de dispositivo a la nube siempre usa el protocolo AMQP.
+> Hola extremo compatible de concentrador de eventos para leer mensajes de dispositivo para la nube siempre utiliza Hola protocolo AMQP.
 
-1. En la carpeta iot-java-get-started creada en la sección *Creación de una identidad de dispositivo*, cree un proyecto de Maven denominado **read-d2c-messages** mediante el comando siguiente en el símbolo del sistema. Observe que este es un comando único y largo:
+1. En la carpeta de hello iot java-get-iniciada por el que creó en hello *crear una identidad de dispositivo* sección, cree un proyecto de Maven denominado **leer mensajes de d2c** mediante el siguiente comando en el símbolo del sistema de Hola. Observe que este es un comando único y largo:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. En el símbolo del sistema, vaya a la nueva carpeta read-d2c-messages.
+2. En el símbolo del sistema, desplazarse por las carpetas de toohello d2c de lectura de mensajes.
 
-3. Con un editor de texto, abra el archivo pom.xml en la carpeta read-d2c-messages y agregue la siguiente dependencia al nodo **dependencies** . Esta dependencia permite usar el paquete eventhubs-client en la aplicación para leer desde el punto de conexión compatible con Event Hubs:
+3. Con un editor de texto, abra el archivo de pom.xml de hello en la carpeta de d2c de lectura de mensajes de Hola y agregue Hola después toohello de dependencia **dependencias** nodo. Esta dependencia permite toouse paquete de cliente eventhubs hello en su tooread de aplicación desde el punto de conexión de hello compatible de concentrador de eventos:
 
     ```xml
     <dependency> 
@@ -188,11 +188,11 @@ En esta sección, creará una aplicación de consola de Java que lee los mensaje
     </dependency>
     ```
 
-4. Guarde y cierre el archivo pom.xml.
+4. Guarde y cierre el archivo de hello pom.xml.
 
-5. Con un editor de texto, abra el archivo read-d2c-messages\src\main\java\com\mycompany\app\App.java.
+5. Con un editor de texto, abra el archivo read-d2c-messages\src\main\java\com\mycompany\app\App.java de hello.
 
-6. Agregue las siguientes instrucciones **import** al archivo:
+6. Agregue los siguiente hello **importar** archivo toohello de instrucciones:
 
     ```java
     import java.io.IOException;
@@ -204,13 +204,13 @@ En esta sección, creará una aplicación de consola de Java que lee los mensaje
     import java.util.function.*;
     ```
 
-7. Agregue la siguiente variable de nivel de clase a la clase **App** . Reemplace **{youriothubkey}**, **{youreventhubcompatiblenamespace}** y **{youreventhubcompatiblename}** por los valores anotados anteriormente:
+7. Agregar Hola después toohello variable de nivel de clase **aplicación** clase. Reemplace **{youriothubkey}**, **{youreventhubcompatibleendpoint}**, y **{youreventhubcompatiblename}** con valores de hello que anotó anteriormente:
 
     ```java
     private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
-8. Agregue el siguiente método **receiveMessages** a la clase **App**. Dicho método crea una instancia de **EventHubClient** para conectarse al punto de conexión compatible con Event Hubs y, luego, crea una instancia de **PartitionReceiver** de forma asincrónica para leer desde una partición de Event Hubs. Se repite continuamente e imprime los detalles de los mensajes hasta que finaliza la aplicación.
+8. Agregue los siguiente hello **receiveMessages** método toohello **aplicación** clase. Este método crea un **EventHubClient** tooconnect toohello compatible con el concentrador de eventos extremo de la instancia y, a continuación, crea de forma asincrónica un **PartitionReceiver** tooread de instancia de un concentrador de eventos partición. Se reproduce en bucle continuo y detalles del mensaje Hola se imprimen hasta que finaliza la aplicación hello.
 
     ```java
     // Create a receiver on a partition.
@@ -219,7 +219,7 @@ En esta sección, creará una aplicación de consola de Java que lee los mensaje
       try {
         client = EventHubClient.createFromConnectionStringSync(connStr);
       } catch (Exception e) {
-        System.out.println("Failed to create client: " + e.getMessage());
+        System.out.println("Failed toocreate client: " + e.getMessage());
         System.exit(1);
       }
       try {
@@ -251,33 +251,33 @@ En esta sección, creará una aplicación de consola de Java que lee los mensaje
                   System.out.println(String.format("Partition: %s, ReceivedBatch Size: %s", partitionId, batchSize));
                 }
               } catch (Exception e) {
-                System.out.println("Failed to receive messages: " + e.getMessage());
+                System.out.println("Failed tooreceive messages: " + e.getMessage());
               }
             }
           });
         } catch (Exception e) {
-          System.out.println("Failed to create receiver: " + e.getMessage());
+          System.out.println("Failed toocreate receiver: " + e.getMessage());
       }
       return client;
     }
     ```
 
    > [!NOTE]
-   > Este método utiliza un filtro cuando crea el receptor para que este solo lea los mensajes enviados a IoT Hub después de que el receptor comience a ejecutarse. Esta técnica es útil en un entorno de prueba, porque puede ver el conjunto actual de mensajes. En un entorno de producción, el código debe garantizar que se procesan todos los mensajes. Consulte el tutorial[procesamiento de mensajes de dispositivo a la nube de IoT Hub][lnk-process-d2c-tutorial] para más información.
+   > Este método usa un filtro cuando se crea el receptor de Hola para que hello receptor solo lee los mensajes enviados tooIoT concentrador después de receptor de hello empieza a ejecutarse. Esta técnica es útil en un entorno de prueba para que pueda ver el conjunto actual de Hola de mensajes. En un entorno de producción, el código debe asegurarse de que procesa todos los mensajes de Hola - para obtener más información, vea hello [cómo tooprocess mensajes del dispositivo a la nube de centro de IoT] [ lnk-process-d2c-tutorial] tutorial.
 
-9. Modifique la firma del método **main** para incluir la excepción de la siguiente manera:
+9. Modificar firma Hola de hello **principal** método tooinclude Hola excepción como sigue:
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-10. Agregue el siguiente código al método **main** de la clase **App**. Este código crea las dos instancias de **EventHubClient** y **PartitionReceiver**, lo que le permite cerrar la aplicación cuando haya terminado de procesar los mensajes:
+10. Agregar Hola después código toohello **principal** método Hola **aplicación** clase. Este código crea dos hello **EventHubClient** y **PartitionReceiver** instancias y le permite tooclose Hola aplicación cuando haya terminado de procesar los mensajes:
 
     ```java
     // Create receivers for partitions 0 and 1.
     EventHubClient client0 = receiveMessages("0");
     EventHubClient client1 = receiveMessages("1");
-    System.out.println("Press ENTER to exit.");
+    System.out.println("Press ENTER tooexit.");
     System.in.read();
     try {
       client0.closeSync();
@@ -289,28 +289,28 @@ En esta sección, creará una aplicación de consola de Java que lee los mensaje
     ```
 
     > [!NOTE]
-    > Este código supone que usted creó la instancia de IoT Hub en el nivel F1 (gratis). Una instancia gratuita de IoT Hub tiene dos particiones denominadas "0" y "1".
+    > Este código supone que se creó el centro de IoT en nivel de hello F1 (gratis). Una instancia gratuita de IoT Hub tiene dos particiones denominadas "0" y "1".
 
-11. Guarde y cierre el archivo App.java.
+11. Guarde y cierre el archivo de hello App.java.
 
-12. Para compilar la aplicación **read-d2c-messages** con Maven, ejecute el siguiente comando en el símbolo del sistema en la carpeta read-d2c-messages:
+12. Hola toobuild **leer mensajes de d2c** aplicación con Maven, ejecutar el siguiente comando en línea de comandos de hello en carpeta de hello d2c de lectura de mensajes de Hola:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 ## <a name="create-a-device-app"></a>Creación de una aplicación de dispositivo
-En esta sección, creará una aplicación de consola de Java que simula un dispositivo que envía mensajes de dispositivo a nube a IoT Hub.
+En esta sección, creará una aplicación de consola de Java que simula un dispositivo que envía el centro de IoT tooan de mensajes del dispositivo a la nube.
 
-1. En la carpeta iot-java-get-started que ha creado en la sección *Creación de una identidad de dispositivo*, cree un proyecto de Maven denominado **simulated-device** mediante el comando siguiente en el símbolo del sistema. Observe que este es un comando único y largo:
+1. En la carpeta de hello iot java-get-iniciada por el que creó en hello *crear una identidad de dispositivo* sección, cree un proyecto de Maven denominado **dispositivo simulado** mediante el siguiente comando en el símbolo del sistema de Hola. Observe que este es un comando único y largo:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. En el símbolo del sistema, vaya a la nueva carpeta simulated-device.
+2. En el símbolo del sistema, desplazarse por las carpetas de toohello dispositivo simulado.
 
-3. Con un editor de texto, abra el archivo pom.xml de la carpeta simulated-device y agregue las siguientes dependencias al nodo **dependencies** . Esta dependencia le permite usar el paquete iothub-java-client en la aplicación para comunicarse con la instancia de IoT Hub y serializar los objetos de Java a JSON:
+3. Con un editor de texto, abra archivo pom.xml de hello en la carpeta del dispositivo simulado de Hola y agregue Hola siguiendo las dependencias toohello **dependencias** nodo. Esta dependencia permite toouse Hola el centro de IOT-java-paquete de cliente de su toocommunicate de aplicación con el centro de IoT y tooserialize tooJSON de objetos de Java:
 
     ```xml
     <dependency>
@@ -326,13 +326,13 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     ```
 
     > [!NOTE]
-    > Puede comprobar la versión más reciente de **iot-device-client** mediante la [funcionalidad de búsqueda de Maven][lnk-maven-device-search].
+    > Puede comprobar la versión más reciente de Hola de **cliente de dispositivo iot** con [búsqueda Maven][lnk-maven-device-search].
 
-4. Guarde y cierre el archivo pom.xml.
+4. Guarde y cierre el archivo de hello pom.xml.
 
-5. Con un editor de texto, abra el archivo simulated-device\src\main\java\com\mycompany\app\App.java.
+5. Con un editor de texto, abra el archivo simulated-device\src\main\java\com\mycompany\app\App.java de hello.
 
-6. Agregue las siguientes instrucciones **import** al archivo:
+6. Agregue los siguiente hello **importar** archivo toohello de instrucciones:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -345,7 +345,7 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     import java.util.concurrent.ExecutorService;
     ```
 
-7. Agregue las siguientes variables de nivel de clase a la clase **App** . Reemplace **{youriothubname}** por el nombre de la instancia de IoT Hub y **{yourdevicekey}** por el valor de la clave de dispositivo que ha generado en la sección *Creación de una identidad de dispositivo*:
+7. Agregar Hola después de las variables de nivel de clase toohello **aplicación** clase. Reemplazar **{youriothubname}** por el nombre del centro de IoT, y **{yourdevicekey}** con hello dispositivo clave-valor que generó en hello *crear una identidad de dispositivo* sección:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
@@ -354,9 +354,9 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     private static DeviceClient client;
     ```
    
-    Esta aplicación de ejemplo usa la variable **protocol** al crear una instancia de un objeto **DeviceClient**. Puede usar el protocolo MQTT, AMQP o HTTP para comunicarse con IoT Hub.
+    Esta aplicación de ejemplo usa hello **protocolo** variable cuando se crea una instancia de un **DeviceClient** objeto. Puede usar cualquier toocommunicate de protocolo hello MQTT, AMQP o HTTP con el centro de IoT.
 
-8. Agregue la siguiente clase **TelemetryDataPoint** anidada dentro de la clase **App** para especificar los datos de telemetría que el dispositivo envía a IoT Hub:
+8. Agregue los siguiente Hola anidados **TelemetryDataPoint** clase dentro de hello **aplicación** clase toospecify los datos de telemetría Hola el dispositivo envía tooyour centro de IoT:
 
     ```java
     private static class TelemetryDataPoint {
@@ -370,12 +370,12 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
       }
     }
     ```
-9. Agregue la siguiente clase **EventCallback** anidada dentro de la clase **App** para mostrar el estado de confirmación que devuelve IoT Hub cuando procesa un mensaje de la aplicación de dispositivo. Este método también notifica el subproceso principal de la aplicación cuando se ha procesado el mensaje:
+9. Agregue los siguiente Hola anidados **EventCallback** clase dentro de hello **aplicación** toodisplay Hola confirmación estado de la clase que Hola centro de IoT devuelve cuando procesa un mensaje de aplicación de dispositivo de hello. Este método también notifica al subproceso principal de hello en aplicación hello cuando se ha procesado el mensaje de bienvenida:
    
     ```java
     private static class EventCallback implements IotHubEventCallback {
       public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to message with status: " + status.name());
+        System.out.println("IoT Hub responded toomessage with status: " + status.name());
    
         if (context != null) {
           synchronized (context) {
@@ -386,7 +386,7 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     }
     ```
 
-10. Agregue la siguiente clase **MessageSender** anidada dentro de la clase **App**. El método **run** de esta clase genera datos de telemetría de ejemplo que se envían a IoT Hub y espera confirmación antes de enviar el siguiente mensaje:
+10. Agregue los siguiente Hola anidados **MessageSender** clase dentro de hello **aplicación** clase. Hola **ejecutar** método en esta clase genera el centro de IoT de tooyour de toosend datos de telemetría de ejemplo y espera una confirmación antes de enviar mensajes de bienvenida del siguiente:
 
     ```java
     private static class MessageSender implements Runnable {
@@ -426,9 +426,9 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     }
     ```
 
-    Este método envía un nuevo mensaje de dispositivo a nube un segundo después de que IoT Hub reconozca el mensaje anterior. El mensaje contiene un objeto JSON serializado con el valor de deviceId y un número generado aleatoriamente para simular un sensor de temperatura y otro de humedad.
+    Este método envía un nuevo mensaje de dispositivo para la nube un segundo después de centro de IoT Hola confirma los mensajes de bienvenida del anterior. mensaje de bienvenida contiene un objeto JSON serializado con deviceId hello y genera de forma aleatoria los números toosimulate un sensor de temperatura y un sensor de humedad.
 
-11. Reemplace el método **main** por el siguiente código, que crea un subproceso para enviar mensajes del dispositivo a la nube a IoT Hub:
+11. Reemplace hello **principal** método con hello después el código que crea un centro de IoT de tooyour de subproceso toosend mensajes del dispositivo a la nube:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException {
@@ -440,58 +440,58 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
       ExecutorService executor = Executors.newFixedThreadPool(1);
       executor.execute(sender);
     
-      System.out.println("Press ENTER to exit.");
+      System.out.println("Press ENTER tooexit.");
       System.in.read();
       executor.shutdownNow();
       client.closeNow();
     }
     ```
 
-12. Guarde y cierre el archivo App.java.
+12. Guarde y cierre el archivo de hello App.java.
 
-13. Para compilar la aplicación **simulated-device** con Maven, ejecute el siguiente comando en el símbolo del sistema en la carpeta simulated-device:
+13. Hola toobuild **dispositivo simulado** aplicación con Maven, ejecute hello siguiente comando en línea de comandos de hello en la carpeta del dispositivo simulado de hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 > [!NOTE]
-> Por simplificar, este tutorial no implementa ninguna directiva de reintentos. En el código de producción, deberá implementar directivas de reintentos (por ejemplo, retroceso exponencial), tal y como se sugiere en el artículo de MSDN [Transient Fault Handling][lnk-transient-faults] (Tratamiento de errores temporales).
+> tookeep cosas simples, este tutorial no implementa ninguna directiva de reintento. En el código de producción, debe implementar directivas de reintento (por ejemplo, un retroceso exponencial), como se indica en el artículo de MSDN de hello [control de errores transitorios][lnk-transient-faults].
 
-## <a name="run-the-apps"></a>Ejecución de las aplicaciones
+## <a name="run-hello-apps"></a>Ejecutar aplicaciones de Hola
 
-Ya está preparado para ejecutar las aplicaciones.
+Ya estás listo toorun Hola aplicaciones.
 
-1. En un símbolo del sistema, en la carpeta read-d2c, ejecute el siguiente comando para empezar la supervisión de la primera partición de IoT Hub:
+1. En un símbolo del sistema en carpeta de lectura d2c hello, ejecute hello después toobegin comando primera partición de hello en el centro de IoT de supervisión:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Aplicación cliente de servicio de IoT Hub de Java para supervisar mensajes del dispositivo a la nube][7]
+    ![Mensajes de dispositivo a la nube de toomonitor de aplicación de servicio de centro de IoT de Java][7]
 
-2. En un símbolo del sistema, en la carpeta simulated-device, ejecute el siguiente comando para empezar el envío de datos de telemetría a IoT Hub:
+2. En un símbolo del sistema en la carpeta del dispositivo simulado de hello, ejecute hello después toobegin comando Enviar centro de IoT de tooyour de datos de telemetría:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![Aplicación de dispositivo de IoT Hub de Java para enviar mensajes del dispositivo a la nube][8]
+    ![Mensajes de dispositivo a la nube de toosend de aplicación de dispositivo de centro de IoT de Java][8]
 
-3. El icono **Uso** de [Azure Portal][lnk-portal] muestra el número de mensajes enviados a IoT Hub:
+3. Hola **uso** el icono Servicios hello [portal de Azure] [ lnk-portal] muestra Hola número de mensajes enviados toohello centro de IoT:
 
-    ![Icono Uso de Azure Portal que muestra el número de mensajes enviados a IoT Hub][43]
+    ![Azure portal uso icono que muestra el número de mensajes enviados tooIoT concentrador][43]
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial, configuró un centro de IoT nuevo en Azure Portal y, después, creó una identidad de dispositivo en el registro de identidades del centro de IoT. Usó esta identidad de dispositivo para habilitar la aplicación del dispositivo para enviar a IoT Hub los mensajes del dispositivo a la nube. También creó otra aplicación que muestra los mensajes recibidos por el centro de IoT.
+En este tutorial, configura un nuevo centro de IoT Hola portal de Azure y, a continuación, crea una identidad de dispositivo en el registro de identidad del centro de IoT Hola. Usar este dispositivo identidad tooenable Hola dispositivo aplicación toosend mensajes del dispositivo a la nube toohello centro de IoT. También crea una aplicación que muestra los mensajes de saludo recibidos por centro de IoT Hola.
 
-Para continuar la introducción a IoT Hub y explorar otros escenarios de IoT, consulte:
+toocontinue introducción con el centro de IoT y tooexplore otros escenarios de IoT, vea:
 
 * [Conexión del dispositivo][lnk-connect-device]
 * [Introducción a la administración de dispositivos][lnk-device-management]
 * [Introducción a Azure IoT Edge][lnk-iot-edge]
 
-Para aprender a ampliar su solución IoT y cómo procesar mensajes de dispositivo a la nube a escala, consulte [Tutorial: procesamiento de mensajes de dispositivo a la nube][lnk-process-d2c-tutorial].
+toolearn tooextend mensajes de dispositivo a la nube de su solución y proceso de IoT a escala, vea hello [procesar mensajes del dispositivo a la nube] [ lnk-process-d2c-tutorial] tutorial.
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->

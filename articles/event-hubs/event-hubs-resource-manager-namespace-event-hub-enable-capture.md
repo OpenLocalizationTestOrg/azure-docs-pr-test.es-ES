@@ -1,5 +1,5 @@
 ---
-title: "Creación de un espacio de nombres de Azure Event Hubs y habilitación de la funcionalidad de captura mediante una plantilla | Microsoft Docs"
+title: un espacio de nombres de los centros de eventos de Azure y habilite capturan con una plantilla de aaaCreate | Documentos de Microsoft
 description: "Creación de un espacio de nombres de Azure Event Hubs con un centro de eventos y habilitación de la funcionalidad de captura mediante una plantilla de Azure Resource Manager"
 services: event-hubs
 documentationcenter: .net
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/28/2017
 ms.author: sethm
-ms.openlocfilehash: 19bbb51868e767aa1d15f4574628b7fd36607207
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a43b4e8d690ae825047e8a9d609bfda89cf2a06f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-event-hubs-namespace-with-an-event-hub-and-enable-capture-using-an-azure-resource-manager-template"></a>Creación de un espacio de nombres de Event Hubs con un centro de eventos y habilitación de Capture mediante una plantilla de Azure Resource Manager
 
-En este artículo se muestra cómo usar una plantilla de Azure Resource Manager que crea un espacio de nombres de Event Hubs, con una instancia de centro de eventos, y también habilita la [característica Capture](event-hubs-capture-overview.md) en el centro de eventos. En este artículo se describe cómo definir los recursos que se implementan y los parámetros que se especifican cuando se ejecuta la implementación. Puede usar esta plantilla para sus propias implementaciones o personalizarla para satisfacer sus necesidades.
+Este artículo muestra cómo toouse una plantilla de administrador de recursos de Azure que crea un espacio de nombres de los centros de eventos, instancia de base de datos central de un evento, y también permite hello [característica de captura](event-hubs-capture-overview.md) en concentrador de eventos de Hola. Hola artículo se describe cómo toodefine qué recursos se implementan y cómo toodefine parámetros que especifican cuando se ejecuta la implementación de Hola. Puede usar esta plantilla para sus propias implementaciones o personalizarlo toomeet sus requisitos.
 
-En este artículo también se muestra cómo especificar los eventos que se capturan en instancias de Azure Storage Blob o de Azure Data Lake Store, basándose en el destino que elija.
+En este artículo también se muestra cómo toospecify que los eventos se capturan en Blobs de almacenamiento de Azure o un almacén de Azure Data Lake, en función de hello destino que elija.
 
 Para más información sobre la creación de plantillas, consulte [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Creación de plantillas de Azure Resource Manager).
 
 Para más información sobre patrones y prácticas de convenciones de nomenclatura de recursos de Azure, consulte [Convenciones de nomenclatura de recursos de Azure][Azure Resources naming conventions].
 
-Para ver las plantillas completas, haga clic en los siguientes vínculos de GitHub:
+Para las plantillas de hello completa, haga clic en hello siguientes vínculos de GitHub:
 
-- [Centro de eventos y habilitación de Capture en una plantilla de Storage][Event Hub and enable Capture to Storage template] 
-- [Centro de eventos y habilitación de Capture en una plantilla de Azure Data Lake Store][Event Hub and enable Capture to Azure Data Lake Store template]
+- [Plantilla de tooStorage de captura de concentrador y habilitar eventos][Event Hub and enable Capture tooStorage template] 
+- [Concentrador y habilitar captura tooAzure almacén de Data Lake plantilla de evento][Event Hub and enable Capture tooAzure Data Lake Store template]
 
 > [!NOTE]
-> Para buscar las plantillas más recientes, visite la galería de [Plantillas de inicio rápido de Azure][Azure Quickstart Templates] y busque Event Hubs.
+> toocheck para las plantillas de hello más recientes, visite hello [plantillas de inicio rápido de Azure] [ Azure Quickstart Templates] galería y busque los centros de eventos.
 > 
 > 
 
@@ -44,51 +44,51 @@ Para ver las plantillas completas, haga clic en los siguientes vínculos de GitH
 
 Con esta plantilla, implementará un espacio de nombres de Event Hubs con un centro de eventos y habilitará la [captura de Event Hubs](event-hubs-capture-overview.md).
 
-[Centros de eventos](event-hubs-what-is-event-hubs.md) es un servicio de procesamiento de eventos que se usa para ofrecer la entrada de telemetría y eventos en Azure a escala masiva, con una latencia baja y una alta confiabilidad. Event Hubs Capture le permite entregar automáticamente los datos de streaming de sus instancias de Event Hubs a una instancia de Azure Blob Storage o Azure Data Lake Store, en el tiempo especificado o el intervalo de tamaño que prefiera.
+[Los concentradores de eventos](event-hubs-what-is-event-hubs.md) es un evento de procesamiento tooprovide de servicio que se utiliza a eventos y telemetría de la tooAzure de entrada con el a escala masiva, con baja latencia y alta fiabilidad. Evento concentradores capturar permite tooautomatically entregar Hola transmisión por secuencias de datos en el almacenamiento de blobs de los centros de eventos tooAzure o almacén de Azure Data Lake, dentro de un tiempo especificado o un intervalo de tamaño de su elección.
 
-Haga clic en el botón siguiente para habilitar Event Hubs Capture en Azure Storage:
+Haga clic en hello después tooenable botón capturar de concentradores de eventos en el almacenamiento de Azure:
 
-[![Implementación en Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
+[![Implementar tooAzure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
-Haga clic en el botón siguiente para habilitar Event Hubs Capture en Azure Data Lake Store:
+Haga clic en hello después tooenable botón capturar de concentradores de eventos en el almacén de Azure Data Lake:
 
-[![Implementación en Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
+[![Implementar tooAzure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
-## <a name="parameters"></a>Parámetros
+## <a name="parameters"></a>parameters
 
-Con el Administrador de recursos de Azure, se definen los parámetros de los valores que desea especificar al implementar la plantilla. La plantilla incluye una sección denominada `Parameters` que contiene todos los valores de los parámetros. Debe definir un parámetro para esos valores que variarán según el proyecto que vaya a implementar o según el entorno en el que vaya a realizar la implementación. No defina parámetros para valores que siempre permanezcan igual. Cada valor de parámetro se usa en la plantilla para definir los recursos que se implementan.
+Con el Administrador de recursos de Azure, se definen parámetros para los valores que desee toospecify cuando se implementa Hola plantilla. plantilla de Hello incluye una sección denominada `Parameters` que contiene todos los valores de parámetro de Hola. Debe definir un parámetro para aquellos valores que varían en función de que va a implementar el proyecto de Hola o según va a implementar en el entorno de Hola. No se define parámetros para valores que permanezcan siempre Hola igual. Cada valor de parámetro se usa en hello plantilla toodefine Hola los recursos que se implementan.
 
-La plantilla define los parámetros siguientes.
+plantilla de Hello define Hola parámetros siguientes.
 
 ### <a name="eventhubnamespacename"></a>eventHubNamespaceName
 
-El nombre del [espacio de nombres de Event Hubs](event-hubs-create.md) que se va a crear.
+nombre de Hola de hello [espacio de nombres de los centros de eventos](event-hubs-create.md) toocreate.
 
 ```json
 "eventHubNamespaceName":{  
      "type":"string",
      "metadata":{  
-         "description":"Name of the EventHub namespace"
+         "description":"Name of hello EventHub namespace"
       }
 }
 ```
 
 ### <a name="eventhubname"></a>eventHubName
 
-El nombre del centro de eventos creado en el [espacio de nombres de Event Hubs](event-hubs-create.md).
+nombre de Hello del concentrador de eventos de hello creado en hello [espacio de nombres de los centros de eventos](event-hubs-create.md).
 
 ```json
 "eventHubName":{  
     "type":"string",
     "metadata":{  
-        "description":"Name of the event hub"
+        "description":"Name of hello event hub"
     }
 }
 ```
 
 ### <a name="messageretentionindays"></a>messageRetentionInDays
 
-El número de días que se deben conservar los mensajes en el centro de eventos. 
+número de Hola de mensajes de saludo de tooretain días en el concentrador de eventos de Hola. 
 
 ```json
 "messageRetentionInDays":{
@@ -97,14 +97,14 @@ El número de días que se deben conservar los mensajes en el centro de eventos.
     "minValue":"1",
     "maxValue":"7",
     "metadata":{
-       "description":"How long to retain the data in event hub"
+       "description":"How long tooretain hello data in event hub"
      }
  }
 ```
 
 ### <a name="partitioncount"></a>partitionCount
 
-El número de particiones que se van a crear en el centro de eventos.
+número de Hola de toocreate de particiones en el centro de eventos de Hola.
 
 ```json
 "partitionCount":{
@@ -120,7 +120,7 @@ El número de particiones que se van a crear en el centro de eventos.
 
 ### <a name="captureenabled"></a>captureEnabled
 
-Habilita la funcionalidad de captura en el centro de eventos.
+Habilitar la captura en el concentrador de eventos de Hola.
 
 ```json
 "captureEnabled":{
@@ -130,13 +130,13 @@ Habilita la funcionalidad de captura en el centro de eventos.
     "false",
     "true"],
     "metadata":{
-        "description":"Enable or disable the Capture for your event hub"
+        "description":"Enable or disable hello Capture for your event hub"
     }
  }
 ```
 ### <a name="captureencodingformat"></a>captureEncodingFormat
 
-El formato de codificación que especifica para serializar los datos de eventos.
+especificar datos de eventos de hello tooserialize el formato de codificación de Hola.
 
 ```json
 "captureEncodingFormat":{
@@ -145,14 +145,14 @@ El formato de codificación que especifica para serializar los datos de eventos.
     "allowedValues":[
     "Avro"],
     "metadata":{
-        "description":"The encoding format in which Capture serializes the EventData"
+        "description":"hello encoding format in which Capture serializes hello EventData"
     }
 }
 ```
 
 ### <a name="capturetime"></a>captureTime
 
-El intervalo de tiempo en el que Event Hubs Capture comienza a capturar los datos.
+intervalo de tiempo de Hello en el que captura de los centros de eventos se inicia la captura de datos de Hola.
 
 ```json
 "captureTime":{
@@ -161,13 +161,13 @@ El intervalo de tiempo en el que Event Hubs Capture comienza a capturar los dato
     "minValue":60,
     "maxValue":900,
     "metadata":{
-         "description":"the time window in seconds for the capture"
+         "description":"hello time window in seconds for hello capture"
     }
 }
 ```
 
 ### <a name="capturesize"></a>captureSize
-El intervalo de tamaño en el que Capture comienza a capturar los datos.
+intervalo de tamaño de saludo donde captura inicia la captura de datos de Hola.
 
 ```json
 "captureSize":{
@@ -176,14 +176,14 @@ El intervalo de tamaño en el que Capture comienza a capturar los datos.
     "minValue":10485760,
     "maxValue":524288000,
     "metadata":{
-        "description":"The size window in bytes for capture"
+        "description":"hello size window in bytes for capture"
     }
 }
 ```
 
 ###<a name="capturenameformat"></a>captureNameFormat
 
-El formato de nombre que usa Event Hubs Capture para escribir archivos Avro. Tenga en cuenta que un formato de nombre de Capture debe contener los campos `{Namespace}`, `{EventHub}`, `{PartitionId}`, `{Year}`, `{Month}`, `{Day}`, `{Hour}`, `{Minute}` y `{Second}`. Estos se pueden organizar en cualquier orden, con o sin delimitadores.
+formato de nombre de Hello utilizado por los archivos de captura de los centros de eventos toowrite hello Avro. Tenga en cuenta que un formato de nombre de Capture debe contener los campos `{Namespace}`, `{EventHub}`, `{PartitionId}`, `{Year}`, `{Month}`, `{Day}`, `{Hour}`, `{Minute}` y `{Second}`. Estos se pueden organizar en cualquier orden, con o sin delimitadores.
  
 ```json
 "captureNameFormat": {
@@ -198,51 +198,51 @@ El formato de nombre que usa Event Hubs Capture para escribir archivos Avro. Ten
 
 ### <a name="apiversion"></a>apiVersion
 
-La versión de API de la plantilla.
+versión de API de Hola de plantilla de Hola.
 
 ```json
  "apiVersion":{  
     "type":"string",
     "defaultValue":"2015-08-01",
     "metadata":{  
-        "description":"ApiVersion used by the template"
+        "description":"ApiVersion used by hello template"
     }
  }
 ```
 
-Si elige como destino Azure Storage, use los parámetros siguientes.
+Usar hello parámetros siguientes si elige como destino de almacenamiento de Azure.
 
 ### <a name="destinationstorageaccountresourceid"></a>destinationStorageAccountResourceId
 
-La funcionalidad de captura requiere un identificador de recurso de una cuenta de Azure Storage para habilitar esta funcionalidad en la cuenta deseada de Storage.
+Captura de requiere un tooenable de Id. de recurso de almacenamiento de Azure cuenta capturar tooyour deseado cuenta de almacenamiento.
 
 ```json
  "destinationStorageAccountResourceId":{
     "type":"string",
     "metadata":{
-        "description":"Your existing Storage account resource ID where you want the blobs be captured"
+        "description":"Your existing Storage account resource ID where you want hello blobs be captured"
     }
  }
 ```
 
 ### <a name="blobcontainername"></a>blobContainerName
 
-El contenedor de blobs en el que se van a capturar los datos del evento.
+Hola contenedor de blobs en qué toocapture los datos del evento.
 
 ```json
  "blobContainerName":{
     "type":"string",
     "metadata":{
-        "description":"Your existing storage container in which you want the blobs captured"
+        "description":"Your existing storage container in which you want hello blobs captured"
     }
 }
 ```
 
-Si elige como destino Azure Data Lake Store, use los parámetros siguientes. Debe establecer permisos en la ruta de acceso de Data Lake Store, en el que desea capturar el evento. Para establecer los permisos, consulte [este artículo](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account).
+Usar hello parámetros siguientes si elige como destino de almacén de Azure Data Lake. Debe establecer permisos en la ruta de acceso del almacén de Data Lake, en el que desea eventos de hello tooCapture. permisos de tooset, consulte [este artículo](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account).
 
 ###<a name="subscriptionid"></a>subscriptionId
 
-El identificador de suscripción para el espacio de nombres de Event Hubs y Azure Data Lake Store. Ambos recursos deben estar en el mismo identificador de suscripción.
+Identificador de suscripción para el espacio de nombres de los centros de eventos de Hola y almacén de Azure Data Lake. Ambos estos recursos deben estar en hello mismo identificador de suscripción.
 
 ```json
 "subscriptionId": {
@@ -255,7 +255,7 @@ El identificador de suscripción para el espacio de nombres de Event Hubs y Azur
 
 ###<a name="datalakeaccountname"></a>dataLakeAccountName
 
-El nombre de Azure Data Lake Store para los eventos capturados.
+nombre de almacén de Azure Data Lake de Hola para hello los eventos capturados.
 
 ```json
 "dataLakeAccountName": {
@@ -268,7 +268,7 @@ El nombre de Azure Data Lake Store para los eventos capturados.
 
 ###<a name="datalakefolderpath"></a>dataLakeFolderPath
 
-La ruta de acceso de la carpeta de destino para los eventos capturados.
+ruta de carpeta de destino de Hola de hello los eventos capturados.
 
 ```json
 "dataLakeFolderPath": {
@@ -279,9 +279,9 @@ La ruta de acceso de la carpeta de destino para los eventos capturados.
 }
 ```
 
-## <a name="resources-to-deploy-for-azure-storage-as-destination-to-captured-events"></a>Recursos que deben implementarse para Azure Storage como destino para los eventos capturados
+## <a name="resources-toodeploy-for-azure-storage-as-destination-toocaptured-events"></a>Toodeploy de recursos para el almacenamiento de Azure como eventos de toocaptured de destino
 
-Crea un espacio de nombres de tipo **EventHubs**, con un centro de eventos, y también habilita Capture en Azure Blob Storage.
+Crea un espacio de nombres del tipo **EventHubs**, centro de un evento, y también permite capturar tooAzure almacenamiento de blobs.
 
 ```json
 "resources":[  
@@ -328,9 +328,9 @@ Crea un espacio de nombres de tipo **EventHubs**, con un centro de eventos, y ta
    ]
 ```
 
-## <a name="resources-to-deploy-for-azure-data-lake-store-as-destination"></a>Recursos que deben implementarse para Azure Data Lake Store como destino
+## <a name="resources-toodeploy-for-azure-data-lake-store-as-destination"></a>Toodeploy de recursos para el almacén de Data Lake de Azure como destino
 
-Crea un espacio de nombres de tipo **EventHubs**, con un centro de eventos, y también habilita Capture en Azure Data Lake Store.
+Crea un espacio de nombres del tipo **EventHubs**, centro de un evento, y también habilita el almacén de captura tooAzure Data Lake.
 
 ```json
  "resources": [
@@ -375,19 +375,19 @@ Crea un espacio de nombres de tipo **EventHubs**, con un centro de eventos, y ta
     ]
 ```
 
-## <a name="commands-to-run-deployment"></a>Comandos para ejecutar la implementación
+## <a name="commands-toorun-deployment"></a>Implementación de toorun de comandos
 
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
 
-Implemente la plantilla para habilitar Event Hubs Capture en Azure Storage:
+Implemente su tooenable plantilla capturar de concentradores de eventos en el almacenamiento de Azure:
  
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json
 ```
 
-Implemente la plantilla para habilitar Event Hubs Capture en Azure Data Lake Store:
+Implemente su tooenable plantilla capturar de concentradores de eventos en el almacén de Azure Data Lake:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json
@@ -413,9 +413,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-También puede configurar la funcionalidad de captura de Events Hubs mediante [Azure Portal](https://portal.azure.com). Para más información, consulte [Habilitación de la funcionalidad de captura de Event Hubs mediante Azure Portal](event-hubs-capture-enable-through-portal.md).
+También puede configurar la captura de los centros de eventos a través de hello [portal de Azure](https://portal.azure.com). Para obtener más información, consulte [habilitar la captura de concentradores de eventos utilizando Hola portal de Azure](event-hubs-capture-enable-through-portal.md).
 
-Para más información acerca de Event Hubs, visite los vínculos siguientes:
+Para obtener más información acerca de los centros de eventos información visitando Hola siguientes vínculos:
 
 * [Información general de Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Creación de un centro de eventos](event-hubs-create.md)
@@ -424,5 +424,5 @@ Para más información acerca de Event Hubs, visite los vínculos siguientes:
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Azure Resources naming conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
-[Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
-[Event hub and enable Capture to Azure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls
+[Event hub and enable Capture tooStorage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
+[Event hub and enable Capture tooAzure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls

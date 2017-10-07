@@ -1,12 +1,12 @@
 ---
-title: "Conexión de Raspberry Pi (Node) a Azure IoT: Lección 1: Configuración del dispositivo | Microsoft Docs"
-description: Configure Raspberry Pi 3 for first-time use and install the Raspbian OS, a free operating system that is optimized for the Raspberry Pi hardware.
+title: "Conectar frambuesa Pi (nodo) tooAzure IoT - lección 1: Configurar dispositivo | Documentos de Microsoft"
+description: "Configure frambuesa Pi 3 para usarlo por primera vez e instale hello Raspbian OS, un sistema operativo disponible que esté optimizado para hello hardware frambuesa Pi."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
-keywords: "instalación de raspbian, descarga de raspbian, cómo instalar raspbian, configuración de raspbian, instalar raspbian para raspberry pi, instalar so para raspberry pi, instalar tarjeta sd para raspberry pi, conexión de raspberry pi, conectar a raspberry pi, conectividad de raspberry pi"
+keywords: "instalación raspbian, descarga raspbian, cómo tooinstall raspbian, raspbian el programa de instalación, frambuesas pi instalación raspbian, frambuesas pi instalar os, frambuesas pi sd tarjeta install, frambuesas pi connect, conectar conectividad de pi de pi, frambuesas tooraspberry"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 43f7c2cf-f1a5-4dd5-93f0-7e546c6dc91e
@@ -17,105 +17,105 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: b848c48157a2310f0eb1d6398f8b9aaa4395d47f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 504a4d2a3f29717f955530812442cce2a78a6448
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-your-device"></a>Configuración del dispositivo
 ## <a name="what-you-will-do"></a>Lo que hará
-Configure la Pi para utilizarla por primera vez e instale el sistema operativo Raspbian. Raspbian es un sistema operativo gratuito que está optimizado para el hardware de Raspberry Pi. Si tiene problemas, puede encontrar soluciones en la [página de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
+Configure Pi para usarlos por primera vez e instale el sistema operativo de hello Raspbian. Raspbian es un sistema operativo disponible que esté optimizado para hello hardware frambuesa Pi. Si tiene problemas, se pueden buscar soluciones en hello [página solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 En este artículo, aprenderá lo siguiente:
 
-* Cómo instalar Raspbian en la Pi
-* Cómo encender la Pi mediante un cable USB
-* Cómo conectar la Pi a la red mediante un cable Ethernet o una red inalámbrica
-* Cómo agregar un LED a la placa de pruebas y conectarlo a la Pi
+* Cómo tooinstall Raspbian sobre Pi.
+* ¿Cómo toopower seguridad Pi mediante un cable USB.
+* ¿Cómo tooconnect Pi toohello de red mediante un cable Ethernet o una red inalámbrica.
+* Cómo breadboard tooadd un toohello LED y conéctelo tooPi.
 
 ## <a name="what-you-will-need"></a>Qué necesita
-Para completar esta operación, necesita las siguientes piezas del kit de inicio de Raspberry Pi 3:
+toocomplete esta operación, necesita Hola siguientes partes de los Starter Kit de frambuesa Pi 3:
 
-* La placa Raspberry Pi 3
-* La tarjeta microSD de 16 GB
-* La fuente de alimentación de 5 V y 2 A con un cable microUSB de 6 pies
-* La placa de pruebas
+* Hola placa de frambuesa Pi 3
+* tarjeta microSD de 16 GB de Hola
+* Hola 5 voltios 2 amp alimentación con cable de hello pie 6 micro USB
+* breadboard Hola
 * Los cables conectores
 * Una resistencia de 560 Ohm
 * Un LED difuso de 10 mm
-* El cable Ethernet
+* Hola cable Ethernet
 
 ![Los elementos del kit de inicio](media/iot-hub-raspberry-pi-lessons/lesson1/starter_kit.jpg)
 
 También necesita lo siguiente:
 
-* Una conexión cableada o inalámbrica para que la Pi se conecte a los siguientes elementos.
-* Un adaptador de USB a SD o una tarjeta miniSD para grabar la imagen del SO en la tarjeta microSD.
-* Un equipo con Windows, Mac o Linux. El equipo se usa para instalar Raspbian en la tarjeta microSD.
-* Una conexión a Internet para descargar las herramientas y el software necesarios.
+* Una conexión con cable o inalámbrica para Pi tooconnect a.
+* Un SD USB adaptador o miniSD tarjeta tooburn Hola imagen de sistema operativo en tarjeta microSD de Hola.
+* Un equipo con Windows, Mac o Linux. equipo de Hello es usado tooinstall Raspbian en tarjeta microSD de Hola.
+* Un toodownload de conexión de Internet Hola software y herramientas que necesitan.
 
-## <a name="install-raspbian-on-the-microsd-card"></a>Instalación de Raspbian en la tarjeta microSD
-Prepare la tarjeta microSD para instalar la imagen de Raspbian.
+## <a name="install-raspbian-on-hello-microsd-card"></a>Instalar Raspbian en tarjeta microSD de Hola
+Preparar la tarjeta microSD de hello para la instalación de la imagen de Raspbian Hola.
 
 1. Descargue Raspbian.
-   1. [Descargue](https://www.raspberrypi.org/downloads/raspbian/) el archivo .zip para Raspbian Jessie con Pixel.
-   2. Extraiga la imagen de Raspbian en una carpeta del equipo.
-2. Instale Raspbian en la tarjeta microSD.
-   1. [Descargue](https://www.etcher.io) e instale la utilidad de grabadora de tarjetas SD Etcher.
-   2. Ejecute Etcher y seleccione la imagen de Raspbian que extrajo en el paso 1.
-   3. Seleccione la unidad de la tarjeta microSD.
-      Tenga en cuenta que es posible que Etcher ya haya seleccionado la unidad correcta.
-   4. Haga clic en **Flash** para instalar Raspbian en la tarjeta microSD.
-   5. Quite la tarjeta microSD del equipo cuando se complete la instalación.
-      Es seguro quitar la tarjeta microSD directamente porque Etcher expulsa o desmonta la tarjeta microSD automáticamente al acabar.
-   6. Inserte la tarjeta microSD en la Pi.
+   1. [Descargar](https://www.raspberrypi.org/downloads/raspbian/) archivo .zip de hello para Raspbian Jessie con píxeles.
+   2. Extraer hello Raspbian imagen tooa carpeta del equipo.
+2. Instalar Raspbian toohello microSD tarjeta.
+   1. [Descargar](https://www.etcher.io) e instalar la utilidad de grabadora de tarjeta de hello SD de creación.
+   2. Ejecute creación y seleccione la imagen de Raspbian Hola que ha extraído en el paso 1.
+   3. Seleccione la unidad de tarjeta microSD Hola.
+      Tenga en cuenta que creación probablemente ya seleccionó unidad correcta Hola.
+   4. Haga clic en **Flash** tooinstall Raspbian toohello microSD tarjeta.
+   5. Quitar tarjeta microSD de hello del equipo cuando se completa la instalación.
+      Es tarjeta microSD de tooremove seguro Hola directamente porque creación expulsa automáticamente o desmonta tarjeta microSD de hello tras la finalización.
+   6. Inserte la tarjeta microSD de hello en Pi.
 
-![Inserción de la tarjeta SD](media/iot-hub-raspberry-pi-lessons/lesson1/insert_sdcard.jpg)
+![Inserte una tarjeta SD Hola](media/iot-hub-raspberry-pi-lessons/lesson1/insert_sdcard.jpg)
 
 ## <a name="turn-on-pi"></a>Encendido de la Pi
-Encienda la Pi mediante un cable microUSB y la fuente de alimentación.
+Activar Pi mediante cable USB micro de Hola y fuente de alimentación de Hola.
 
 ![Encendido](media/iot-hub-raspberry-pi-lessons/lesson1/micro_usb_power_on.jpg)
 
 > [!NOTE]
-> Es importante utilizar la fuente de alimentación del kit, que tiene al menos 2 A, para asegurarse de que el dispositivo Raspberry cuente con la energía suficiente como para funcionar correctamente.
+> Es importante toouse Hola de alimentación en el kit de Hola por lo menos 2A toomake seguro de que su frambuesa tiene suficiente energía toowork correctamente.
 
 ## <a name="enable-ssh"></a>Habilite SSH
-A partir de la versión de noviembre de 2016, Raspbian tiene el servidor SSH deshabilitado de forma predeterminada. Debe habilitarlo manualmente. Puede consultar las [instrucciones oficiales](https://www.raspberrypi.org/documentation/remote-access/ssh/) o conectar un monitor e ir a **Preferences -> Raspberry Pi Configuration** (Preferencias -> Configuración de Raspberry Pi) para habilitar SSH.
+A partir de la versión de noviembre de 2016 de hello, Raspbian tiene servidor SSH Hola deshabilitada de forma predeterminada. Necesita tooenable lo manualmente. Puede hacer referencia a toohello [oficiales instrucciones](https://www.raspberrypi.org/documentation/remote-access/ssh/) o conectar un monitor y vaya demasiado**Preferencias -> configuración de frambuesa Pi** tooenable SSH.
 
-## <a name="connect-raspberry-pi-3-to-the-network"></a>Conexión de Raspberry Pi 3 a la red
-Puede conectar la Pi a una red cableada o a una red inalámbrica. Asegúrese de que la Pi se conecta a la misma red que el equipo. Por ejemplo, puede conectar el dispositivo al mismo conmutador al que está conectado su equipo.
+## <a name="connect-raspberry-pi-3-toohello-network"></a>Conectar red toohello de frambuesa Pi 3
+Puede conectarse tooa Pi con el cable de red o red inalámbrica tooa. Asegúrese de que ese Pi está conectado toohello misma red que el equipo. Por ejemplo, puede conectarse toohello Pi a que mismo conmutador que el equipo está conectado.
 
-### <a name="connect-to-a-wired-network"></a>Conexión a una red cableada
-Utilice el cable Ethernet para conectar la Pi a la red cableada. Los dos LED de la Pi se encienden si se establece la conexión.
+### <a name="connect-tooa-wired-network"></a>Conectar tooa de red cableada
+Utilice Hola Ethernet por cable tooconnect tooyour de Pi de red cableada. Hello dos LED de Pi activar si se establece conexión Hola.
 
 ![Conexión mediante un cable Ethernet](media/iot-hub-raspberry-pi-lessons/lesson1/connect_ethernet.jpg)
 
-### <a name="connect-to-a-wireless-network"></a>Conexión a una red inalámbrica
-Siga las [instrucciones](https://www.raspberrypi.org/learning/software-guide/wifi/) de Raspberry Pi Foundation para conectar la Pi a la red inalámbrica. Estas instrucciones requieren que primero conecte un monitor y un teclado a la Pi.
+### <a name="connect-tooa-wireless-network"></a>Conectar red inalámbrica tooa
+Siga hello [instrucciones](https://www.raspberrypi.org/learning/software-guide/wifi/) de red inalámbrica de hello frambuesa Pi Foundation tooconnect Pi tooyour. Estas instrucciones requieren toofirst conectar un monitor y un teclado tooPi.
 
-## <a name="connect-the-led-to-pi"></a>Conexión del LED a la Pi
-Para completar esta tarea, utilice la [placa de pruebas](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard), los cables conectores, el LED y la resistencia. Conecte estas piezas a los puertos de [entrada y salida de uso general](https://www.raspberrypi.org/documentation/usage/gpio/) (GPIO) de la Pi.
+## <a name="connect-hello-led-toopi"></a>Conectar Hola LED tooPi
+toocomplete esta tarea, utilice hello [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard), Hola cables de conector, LED de Hola y Hola resistencia. Conéctelos toohello [entrada/salida de propósito general](https://www.raspberrypi.org/documentation/usage/gpio/) puertos (GPIO) de Pi.
 
 ![Placa de pruebas, LED y resistencia](media/iot-hub-raspberry-pi-lessons/lesson1/breadboard_led_resistor.jpg)
 
-1. Conecte la pata más corta del LED a la **GND de los GPIO (pin 6)**.
-2. Conecte la pata más larga del LED a una de la resistencia.
-3. Conecte la otra pata de la resistencia a los **GPIO 4 (pin 7)**.
+1. Conectar la autenticación mutua más corto de Hola de hello LED demasiado**GPIO GND (Pin 6)**.
+2. Conectar la autenticación mutua en más de autenticación mutua de tooone LED de resistencia de Hola Hola Hola.
+3. Conectar Hola otra sección de resistencia de hello demasiado**GPIO 4 (Pin 7)**.
 
-Tenga en cuenta que la polaridad LED es importante. Esta opción de polaridad comúnmente se conoce como "bajo activo".
+Tenga en cuenta que la polaridad Hola LED es importante. Esta opción de polaridad comúnmente se conoce como "bajo activo".
 
 ![Diagrama de asignación de pines](media/iot-hub-raspberry-pi-lessons/lesson1/pinout_breadboard.png)
 
 ¡Enhorabuena! Ha configurado correctamente la Pi.
 
 ## <a name="summary"></a>Resumen
-En este artículo, ha aprendido a configurar la Pi instalando Raspbian, conectándola a una red y agregando un LED a la Pi. Tenga en cuenta que todavía el LED no se encenderá. En la siguiente tarea, instalará las herramientas y el software necesarios como preparativo para ejecutar una aplicación de ejemplo en la Pi.
+En este artículo, ha aprendido cómo Pi tooconfigure mediante la instalación Raspbian, conexión Pi tooa de la red y conecta un tooPi LED. Tenga en cuenta que Hola que LED aún no ilumina. Hola siguiente tarea es software en preparación para la ejecución de una aplicación de ejemplo sobre Pi y herramientas que necesitan tooinstall Hola.
 
 ![El hardware está listo.](media/iot-hub-raspberry-pi-lessons/lesson1/hardware_ready.jpg)
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Obtener las herramientas](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
+[Obtener herramientas de Hola](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
 

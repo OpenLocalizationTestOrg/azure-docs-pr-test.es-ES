@@ -1,6 +1,6 @@
 ---
-title: "Guía para vendedores de Azure Marketplace | Microsoft Docs"
-description: "Esta guía está orientada a los usuarios empresariales y administradores de productos para proveedores de software independientes (ISV) que están interesados en vender sus imágenes de máquina virtual con certificación de Azure a desarrolladores y profesionales de TI."
+title: "Guía de vendedor de Marketplace aaaAzure | Documentos de Microsoft"
+description: "Esta guía está dirigida a los usuarios empresariales y directores de producto en proveedores de software independientes (ISV) que estén interesados en las ventas a sus desarrolladores y profesionales de tooIT de imágenes de máquina virtual de Azure Certified."
 documentationcenter: 
 author: rupeshazure
 manager: hamidm
@@ -12,93 +12,93 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: rupesk@microsoft.com
 ms.robots: NOINDEX, NOFOLLOW
-ms.openlocfilehash: c78708687fbb5716e3e8d62967013310d6ccc735
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a3eb107b2b642c1fcde844173741b9381d892d82
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-marketplace-seller-guide"></a>Guía para vendedores de Azure Marketplace
 
-Esta es la guía para vendedores de Azure Marketplace. Esta guía está diseñada para usuarios empresariales y administradores para productos de proveedores de software independientes (ISV) que están interesados en vender sus imágenes de máquina virtual con certificación de Azure a desarrolladores y profesionales de TI. Dado que los clientes de Azure se reparten por todo el mundo, [Marketplace](https://azuremarketplace.microsoft.com/) puede conseguir un gran alcance y exposición para sus productos.
+Éste es a toohello Azure Marketplace vendedor manual. Esta guía está diseñada para los usuarios empresariales y los administradores de producto de proveedores de software independientes (ISV) que estén interesados en las ventas a sus desarrolladores y profesionales de tooIT de imágenes de máquina virtual de Azure Certified. Con los clientes de Azure ubicados en todo el mundo de hello, Hola [Marketplace](https://azuremarketplace.microsoft.com/) puede proporcionar alcance excelente y exposición para sus productos.
 
 
 > [!NOTE]
-> Si está interesado en vender sus productos terminados de software como-servicio (SaaS) a usuarios empresariales, puede investigar las opciones para que aparezcan en [AppSource](https://appsource.microsoft.com).
+> Si está interesado en el software finalizado las ventas como un toobusiness de productos de servicio (SaaS) a los usuarios, puede investigar toolist opciones ellas en [AppSource](https://appsource.microsoft.com).
 
-Al final de esta guía, sabrá dónde encontrar información más detallada sobre estos temas:
+Al final de Hola de esta guía, podrá saber donde toofind información más detallada acerca de estos temas:
 
-- ¿Qué es Azure Marketplace?
-- ¿Cómo puedo determinar si mi producto se ajusta a Marketplace?
-- ¿Qué ventajas ofrece vender en Marketplace?
-- ¿Cuáles son los requisitos previos (técnicos y no técnicos) para vender en Marketplace?
+- ¿Qué es hello Azure Marketplace?
+- ¿Cómo se puede determinar si el producto se ajusta con hello Marketplace?
+- ¿Cuáles son las ventajas de Hola de venta en hello Marketplace?
+- ¿Qué Hola requisitos previos (técnicos y no técnicos) toosell en hello Marketplace?
 - ¿Cómo creo discos duros virtuales (VHD) compatibles con Azure?
 - ¿Cómo solicito ser vendedor y cómo me registro para ello?
 - ¿Cómo creo y publico mi oferta?
-- ¿Cómo salgo al mercado y busco recursos disponibles?
-- ¿Qué informes y perspectivas ofrece Marketplace?
+- ¿Cómo ir toomarket y buscar recursos disponibles?
+- ¿Los informes y la visión proporcionan Hola Marketplace?
 - ¿Dónde puedo obtener ayuda y soporte técnico?
 
 Comencemos.
 
-## <a name="whats-the-azure-marketplace"></a>¿Qué es Azure Marketplace?
+## <a name="whats-hello-azure-marketplace"></a>¿Qué es hello Azure Marketplace?
 
-Azure Marketplace es una tienda en línea de aplicaciones y servicios donde los fabricantes de software independientes (tanto emergentes como otros ya consolidados) pueden ofrecer sus soluciones a clientes de Azure de todo el mundo. En Marketplace, los publicadores de Azure pueden distribuir y vender sus imágenes de máquina virtual a otros profesionales que deseen desarrollar rápidamente sus aplicaciones basadas en la nube y sus soluciones móviles en Azure. Marketplace admite una amplia gama de ofertas –desde aplicaciones de análisis integral de datos con procesamiento de la información, almacenamiento de datos y capas de análisis hasta aplicaciones de comercio electrónico en capas (datos, servicio e Internet).
+Hello Azure Marketplace es un marketplace de aplicaciones y servicios en línea que a los ISV--desde el inicio tooenterprises--ofrecer a sus clientes de tooAzure soluciones alrededor de Hola a todos. A través de hello Marketplace, publicadores Azure pueden distribuir y vender sus imágenes de máquina virtual tooother de profesionales de TI que deseen tooquickly desarrollar sus aplicaciones basadas en la nube y las soluciones móviles en Azure. Hola Marketplace es compatible con una amplia gama de ofertas: desde las aplicaciones de análisis de datos to-end con procesamiento de datos, almacenamiento de datos y las capas analysis tootiered comercio electrónico las aplicaciones (datos, servicio e Internet).
 
-Los clientes en la nube afrontan diferentes desafíos a la hora de buscar soluciones que se ajusten a sus necesidades únicas. Marketplace proporciona una forma de resolver estos desafíos y conectar a los clientes con soluciones innovadoras de ISV, tal como se describe en la tabla siguiente:
+La nube se enfrentan los clientes varios desafíos cuando se buscan soluciones toofit sus necesidades únicas. Hola Marketplace proporciona una manera toosolve estos desafíos y conectar los clientes con soluciones innovadoras de ISV, como se explica en hello en la tabla siguiente:
 
 | Necesidad del cliente | Solución de Azure Marketplace |
 | --- | --- |
-| Demanda una funcionalidad de plataforma en la nube adicional que satisfaga las necesidades empresariales y técnicas | Ofrece una cartera creciente de servicios y aplicaciones complementarias en Azure |
-| Le resulta difícil detectar la aplicación o el servicio correcto | Proporciona una tienda integral donde descubrir, buscar y comprar aplicaciones y servicios |
-| Necesita un mecanismo de implementación escalable para servicios y aplicaciones de otros fabricantes | Permite la creación y la configuración de implementaciones escalables para servicios y aplicaciones de terceros |
-| Requiere nuevas aplicaciones y servicios para integrar las soluciones existentes y trabajar con ellas | Integra con facilidad servicios y aplicaciones de terceros con las soluciones existentes en Azure |
+| Las demandas adicionales en la nube plataforma funcionalidad toomeet necesidades empresariales y técnicas | Ofrece una cartera creciente de servicios y aplicaciones complementarias en Azure |
+| Cree que es un reto toodiscover Hola derecha aplicación o servicio | Proporciona un toodiscover tienda integral, buscar y las aplicaciones de la compra y servicios |
+| Necesita un mecanismo de implementación escalable para servicios y aplicaciones de otros fabricantes | Permite la creación de hello y configuración de las implementaciones escalables para servicios y aplicaciones de terceros |
+| Requiere toointegrate nuevo de aplicaciones y servicios y trabajar con las soluciones existentes | Integra con facilidad servicios y aplicaciones de terceros con las soluciones existentes en Azure |
 
-Marketplace aporta la calidad, la elección y la fortaleza del ecosistema de asociados de Azure a los clientes internacionales. Entre las ventajas clave se incluyen las siguientes:
+Hola Marketplace aporta calidad hello, elección y solidez de los clientes de hello asociado de Azure ecosistema tooglobal. Entre las ventajas clave se incluyen las siguientes:
 
 - Ubicación unificada para ofertas basadas en Azure de Microsoft y asociados.
 - Más de 5000 ofertas.
 - Experiencia de plataforma integrada.
 - Configuración, implementación y administración simplificadas.
 
-## <a name="is-the-marketplace-right-for-my-business"></a>¿Es Marketplace adecuado para mi negocio?
+## <a name="is-hello-marketplace-right-for-my-business"></a>¿Es adecuado de Marketplace de hello para el negocio?
 
-Es posible que en este momento simplemente se esté preguntando si Azure Marketplace es lo que más se ajusta a su negocio. y, de ser así, qué podría obtener de esta plataforma. Marketplace crea nuevas oportunidades de ventas para usted:
+Por ahora tal vez se pregunte si hello Azure Marketplace es hello correcta para su negocio. Y si es así, ¿qué se obtiene fuera de ella? Hola Marketplace crea nuevas oportunidades de ventas para usted:
 
-- **Vender en nuevos mercados de clientes con una amplia cartera de soluciones en Azure**. Incremente las ventas y consiga ventas cruzadas de las ofertas de Marketplace con servicios de Azure que están disponibles para los clientes del Programa de suscripción en línea de Microsoft (MOSP) y del Contrato Microsoft Enterprise. Puede incorporar fácilmente las ofertas de Marketplace a la solución de clientes y el escenario de Azure.
-- **Mejorar el valor para el negocio y aumentar las transacciones con cuentas de clientes nuevas y existentes**. Marketplace puede ayudarle a aumentar las transacciones, solucionar las inquietudes de los clientes al trasladar las cargas de trabajo a la nube e incrementar la rentabilidad de las operaciones. Puede aumentar el valor del negocio mediante la venta de soluciones completas y abordar las lagunas de la plataforma en la nube de Azure para satisfacer los requisitos del cliente.
-- **Recurrir a un abanico más amplio de clientes potenciales mediante la venta de servicios y aplicaciones de Marketplace**. Marketplace puede facilitar la búsqueda y la retención de nuevos clientes. En la actualidad, muchas empresas necesitan trasladar cargas de trabajo a la nube y adaptarse a los entornos de infraestructura cambiantes. Puede proporcionar los servicios y aplicaciones adecuados para ayudarles a salvar las distancias.
-- **Complementar y ampliar la funcionalidad de Azure mediante la agrupación de ofertas de Marketplace con servicios de Azure**. Marketplace puede ayudarle a enmarcar las conversaciones basadas en escenarios con sus clientes. También puede resolver carencias específicas de la plataforma y las necesidades del cliente tratando las soluciones integrales. Por último, mediante la venta de paquetes de soluciones, puede usar el ecosistema de la plataforma de Azure para solucionar diversos problemas del cliente y aumentar las ventas.
+- **Vender en nuevos mercados de clientes con una amplia cartera de soluciones en Azure**. Incremento de ventas y ofertas de Marketplace de ventas cruzadas con servicios de Azure que son clientes de programa de suscripción en línea (MOSP) y el contrato Microsoft Enterprise tooMicrosoft disponible. Puede incorporar fácilmente las ofertas de Marketplace a la solución de clientes y el escenario de Azure.
+- **Mejorar el valor para el negocio y aumentar las transacciones con cuentas de clientes nuevas y existentes**. Hola Marketplace puede ayudar a aumentar el tamaño del acuerdo, puntos de dolor de dirección del cliente al mover en la nube toohello las cargas de trabajo y aumentar la rentabilidad de acuerdo. Aumente el valor empresarial mediante la venta soluciones completas y requisitos del cliente de toomeet de brechas de plataforma de dirección nube de Azure.
+- **Recurrir tooa gama más amplia de clientes potenciales mediante la venta de servicios y aplicaciones de Marketplace**. Hola Marketplace puede que sea más fácil toofind y conservar los nuevos clientes. Hoy en día, muchas empresas necesitan tootransition toohello de las cargas de trabajo en la nube y adaptar los entornos de infraestructura de toochanging. Puede proporcionar aplicaciones correctas de Hola y toohelp de servicios a salvar la brecha de Hola.
+- **Complementar y ampliar la funcionalidad de Azure mediante la agrupación de ofertas de Marketplace con servicios de Azure**. Hola Marketplace puede ayudarle a marco basada en escenario conversaciones con sus clientes. También puede resolver carencias específicas de la plataforma y las necesidades del cliente tratando las soluciones integrales. Por último, mediante la venta de paquetes de soluciones, puede usar Hola plataforma Windows Azure ecosistema tooaddress una variedad de problemas de los clientes y aumentar las ventas.
 
-## <a name="what39s-the-customer-base-for-the-marketplace"></a>¿Cuál es la base de clientes para Marketplace?
+## <a name="what39s-hello-customer-base-for-hello-marketplace"></a>¿Qué &#39; s Hola clientela Hola Marketplace?
 
-Los clientes de Marketplace son diversos. Además, Azure cuenta con una de las bases de clientes de crecimiento más rápido entre todos los proveedores de nube. Obtiene acceso a profesionales de TI y desarrolladores que trabajan para empresas de todo tipo, tanto emergentes como consolidadas, en diversas industrias, en los sectores público y privado.
+Los clientes de Marketplace son diversos. Además, Azure tiene una de las bases de clientes más rápido crecimiento Hola de todos los proveedores de nube. Obtendrá profesionales tooIT de acceso y los desarrolladores que trabajan para empresas comprendido entre las nuevas empresas tooenterprises, entre empresas y en hello pública y privada sectores.
 
-## <a name="how-does-the-marketplace-work"></a>¿Cómo funciona Marketplace?
+## <a name="how-does-hello-marketplace-work"></a>¿Cómo funciona Hola Marketplace?
 
-Es bastante sencillo. Una vez reciba la aprobación, cree la imagen de máquina virtual con certificación de Azure y publíquela en Marketplace. Allí, los clientes de Azure pueden encontrar su producto, comprarlo e implementarlo en cuestión de minutos. Aún mejor, los clientes implementan la solución con confianza. Saben que el entorno está adaptado a Azure y que la infraestructura está lista en unos minutos.
+Es bastante sencillo. Después de se &#39; re aprobado, crear la imagen de máquina virtual de Azure Certified y publicarlo toohello Marketplace. Allí, los clientes de Azure pueden encontrar su producto, comprarlo e implementarlo en cuestión de minutos. Aún mejor, los clientes implementan la solución con confianza. Que sepan que Hola entorno está configurado para el éxito en Azure y que la infraestructura de hello es toogo listo en unos pocos minutos.
 
-Cloud Partner Portal es el punto central donde crear su oferta en Marketplace. Las imágenes de máquina virtual están preconfiguradas con un sistema operativo completamente instalado y una o varias aplicaciones. Para certificar su imagen de forma que esté lista para publicarse, se deben cumplir ciertos requisitos previos. Se explican en la sección siguiente.
+Hola Portal de partners de la nube es Centro de Hola para crear su oferta en hello Marketplace. Las imágenes de máquina virtual están preconfiguradas con un sistema operativo completamente instalado y una o varias aplicaciones. toocertify la imagen para que se &#39; s listo para su publicación, tener toomeet determinados requisitos previos. Se explican estas opciones en la sección siguiente Hola.
 
 
 ## <a name="whats-next"></a>Pasos siguientes
 
-Quizá piense que Azure Marketplace es realmente perfecto para su producto. ¿Cómo se empieza? Esta sección se centra en cómo empezar a utilizar Marketplace (Figura 1): 
+Quizás esté pensando que hello Azure Marketplace es realmente hello derecha apto para su producto. ¿Cómo se empieza? En esta sección consiste en poner en funcionamiento y esté ejecutando en hello Marketplace (figura 1): 
 * Consiga la certificación de Azure.
-* Obtenga aprobación para vender su producto.
-* Cree su oferta en Cloud Partner Portal. 
+* Obtener toosell aprobado su producto.
+* Creación de su oferta en hello Portal de partners de la nube. 
 
-![Proceso para vender en Azure Marketplace](./media/cloud-partner-portal-seller-guide/processforselling.png)
+![Proceso para la venta en hello Azure Marketplace](./media/cloud-partner-portal-seller-guide/processforselling.png)
 
-Figura 1: proceso para vender en Azure Marketplace
+Figura 1: Proceso para la venta en hello Azure Marketplace
 
-En primer lugar, debe cumplir una serie de requisitos previos técnicos y no técnicos, y preparar la imagen de máquina virtual. A continuación, proponga el producto y regístrese como vendedor. Por último, agregue contenido de marketing y envíelo para su publicación. Puede revisar su oferta en un entorno de ensayo o de vista previa antes de publicarla definitivamente en Marketplace.
+En primer lugar, debe cumplir una serie de requisitos previos técnicos y no técnicos, y preparar la imagen de máquina virtual. A continuación, proponga el producto y regístrese como vendedor. Por último, agregue contenido de marketing y envíelo para su publicación. Puede revisar la oferta en una vista previa/staging entorno toomaking anteriores en hello Marketplace en directo.
 
-La primera vez que cree una oferta para Azure Marketplace, debería prever unas cuatro semanas para su incorporación básica. Si es posible, comience unas seis semanas antes del lanzamiento de la oferta para dedicar más tiempo a las tareas relacionadas con los medios y la publicación.
+Hello primera vez que cree una oferta de hello Azure Marketplace, debe planear en aproximadamente cuatro semanas para incorporar básica. Si es posible, puede generar en seis semanas antes del inicio de hello del tiempo tooallow oferta para medios y las tareas de publicación.
 
 ## <a name="how-do-i-become-azure-certified"></a>¿Cómo obtengo la certificación de Azure?
 
-El primer paso del proceso de creación de su oferta para Azure Marketplace es obtener la certificación de Azure. Esto implica compilar información de la empresa, aceptar las directivas de participación, descargar las herramientas necesarias y generar componentes técnicos (Figura 2).
+Hola primer paso para crear la oferta para hello Azure Marketplace es toobecome Azure Certified. Esto significa compilar información de la empresa, acepta las directivas de tooparticipation, descargar las herramientas necesarias y generar componentes técnicos (ilustración 2).
 
 ![Requisitos para obtener la certificación de Azure](./media/cloud-partner-portal-seller-guide/azurecertified.png)
 
@@ -106,103 +106,103 @@ Figura 2: Requisitos para obtener la certificación de Azure
 
 ### <a name="technical-prerequisites"></a>Requisitos previos técnicos
 
-Revise detenidamente y cumpla todos los requisitos previos técnicos antes del lanzamiento. Necesitará acceso a Windows o Linux, así como discos duros virtuales compatibles con Azure vinculados a las herramientas de prueba.
+Revise detenidamente y cumpla todos los requisitos previos técnicos antes del lanzamiento. Necesitará acceso tooWindows o Linux y también tooAzure compatible con discos duros virtuales tootesting vinculado herramientas.
 
-Se recomienda desarrollar el disco duro virtual de Azure directamente en la nube con el Protocolo de escritorio remoto. Sin embargo, si es su única opción, es posible descargar un disco duro virtual y desarrollarlo con la [infraestructura local](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-on-premise).
+Se recomienda que desarrolle su disco duro virtual de Azure directamente en la nube de hello mediante el uso de protocolo de escritorio remoto. Sin embargo, si es la única opción &#39; toodownload posibles de s un disco duro virtual y desarrollar mediante [infraestructura local](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-on-premise).
 
-Para obtener más información, consulte la página de [requisitos previos técnicos](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites).
+Para obtener más información, vea hello [requisitos previos técnicos](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites) página.
 
 ### <a name="nontechnical-prerequisites"></a>Requisitos previos no técnicos
 
-Para formar parte de Marketplace, debe cumplir algunos requisitos previos no técnicos. Primero, revise y acepte los términos de las [directivas de participación de Azure Marketplace](https://azure.microsoft.com/support/legal/marketplace/participation-policies/). El software y los servicios ofrecidos en Marketplace deben cumplir al menos uno de los siguientes requisitos:
+parte de toobecome de Hola Marketplace, deberá toomeet algunos requisitos previos no técnicos. En primer lugar, revise y acepte toohello términos de hello [Azure Marketplace participación directivas](https://azure.microsoft.com/support/legal/marketplace/participation-policies/). Hola software y los servicios que se ofrecen en hello que Marketplace debe cumplir al menos uno de hello según los requisitos:
 
-- **Ejecutarse en Azure**. La función principal del software o servicio debe ejecutarse en Microsoft Azure.
-- **Implementarse en Azure**. En la información de descripción, debe indicar cómo se implementa el software o servicio en Azure.
+- **Ejecutarse en Azure**. función principal de Hello del software de Hola o el servicio debe ejecutarse en Microsoft Azure.
+- **Implementar tooAzure**. En la lista de información, debe describir cómo se implementa el software de Hola o un servicio en Azure.
 - **Integrarse con un servicio de Azure o ampliarlo**. Debe indicar en la información de descripción:
-  - Con qué servicio de Azure se integra el software o servicio, o cuál amplía
-  - Cómo el software o el servicio se integra con el servicio de Azure o lo amplía
+  - El software de servicio de Azure Hola o el servicio se integra con o la extiende
+  - Cómo Hola software o servicio se integra con o extiende Hola servicio de Azure
 
-También debe cumplir estos requisitos empresariales, como se describe en las directivas de participación de Azure Marketplace:
+También deberá toomeet estos requisitos empresariales, tal y como se describe en las directivas de hello Azure Marketplace participación:
 
-- La empresa o sus subsidiarias deben encontrarse en uno de los países de origen de venta admitidos por Marketplace.
-- El producto debe contar con una licencia que sea compatible con los modelos de facturación admitidos por Marketplace.
-- Usted es el responsable de poner el soporte técnico a disposición de los clientes de forma comercialmente razonable, ya sea de forma gratuita, de pago o a través del soporte técnico de la comunidad.
-- Debe tener licencias para el software y las dependencias de software de terceros.
-- Su contenido debe cumplir determinados criterios para que su oferta se publique en [azure.microsoft.com](../../C:/Users/Lisa.Rosenberger/Desktop/azure.microsoft.com) y en Azure Portal.
+- Su empresa (o sus filiales) deben encontrarse en un país de ventas de compatible con hello Marketplace.
+- Debe tener una licencia del producto de forma que sea compatible con facturación modelos admitidos por hello Marketplace.
+- Usted es responsable de realizar toocustomers de soporte técnico disponibles de manera comercialmente razonable, si libre, pago, o a través de soporte técnico de la Comunidad.
+- También es toolicense requiere el software y las dependencias de software de terceros.
+- El contenido debe cumplir ciertos criterios para su toobe oferta aparece en [azure.microsoft.com](../../C:/Users/Lisa.Rosenberger/Desktop/azure.microsoft.com) y Hola portal de Azure.
 
-Por último, tendrá que aceptar los [Términos de uso](https://azure.microsoft.com/support/legal/website-terms-of-use/), la [Declaración de privacidad de Microsoft](http://www.microsoft.com/privacystatement/default.aspx) y el [Contrato del programa Microsoft Azure Certified](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/). 
+Por último, necesitará tooagree con hello [términos de uso](https://azure.microsoft.com/support/legal/website-terms-of-use/), [declaración de privacidad de Microsoft](http://www.microsoft.com/privacystatement/default.aspx), y [contrato de Microsoft Azure Certified programa](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/). 
 
-Para conocer las preguntas más frecuentes, consulte la sección de [Preguntas más frecuentes de Marketplace](https://azure.microsoft.com/marketplace/faq/).
+Para obtener una lista de preguntas más frecuentes, consulte hello [preguntas más frecuentes de Azure Marketplace](https://azure.microsoft.com/marketplace/faq/).
 
 
 ### <a name="azure-certification"></a>Certificación de Azure
 
-El logro del estado de _certificación de Azure_ representa la finalización correcta del proceso de incorporación. Este estado genera confianza en los clientes porque implica que los profesionales de TI y los desarrolladores están adquiriendo soluciones de calidad que se ejecutan en tecnología de Azure o se compilan con esta por medio de un asociado de confianza. Las soluciones con certificación de Azure incluyen lo siguiente:
+Ganancia _Azure Certified_ estado representa la finalización correcta de Hola Hola proceso de incorporación. Este estado genera confianza en los clientes porque implica que los profesionales de TI y los desarrolladores están adquiriendo soluciones de calidad que se ejecutan en tecnología de Azure o se compilan con esta por medio de un asociado de confianza. Las soluciones con certificación de Azure incluyen lo siguiente:
 
 - Investigación global.
-- Determinación de la compatibilidad con la plataforma Azure.
+- Determinación de la compatibilidad con hello plataforma Windows Azure.
 - Cumplimiento de seguridad de imagen en línea.
 - Ningún virus ni malware.
 - Modelos de facturación admitidos.
 
 ## <a name="how-do-i-nominate-my-product-and-get-approved"></a>¿Cómo puedo proponer mi producto y obtener la aprobación?
 
-Ahora es el momento de obtener la aprobación para vender su producto en Marketplace (Figura 3). Microsoft facilita el proceso de propuesta de su producto, completado del proceso de publicación y registro como vendedor.
+Ahora es tiempo tooget aprobación toosell su producto en Hola Marketplace (ilustración 3). Microsoft hace fácil toonominate su producto, proceso de publicación completa hello y registrar como vendedor.
 
-![aprobación para vender en Azure Marketplace](./media/cloud-partner-portal-seller-guide/gettingapprovedsteps.png)
+![obtener toosell aprobado en hello Azure Marketplace](./media/cloud-partner-portal-seller-guide/gettingapprovedsteps.png)
 
-Figura 3: pasos para obtener la aprobación para vender en Azure Marketplace
+Figura 3: Pasos para obtener toosell aprobado hello Azure Marketplace
 
-El primer paso hacia la aprobación es [proponer](https://createopportunity.azurewebsites.net/) el producto antes del registro y la publicación. La aprobación puede tardar _hasta tres días hábiles_.
+primer paso hacia la aprobación de Hello es demasiado[nombrará](https://createopportunity.azurewebsites.net/) tooregistration anteriores de producto y de la publicación. Puede tomar aprobación _una copia de seguridad días laborables de toothree_.
 
-Una vez conseguida la aprobación, recibe lo siguiente:
+Tras la aprobación, recibirá el siguiente hello:
 
-- Correo electrónico con un código de promoción que exonera de la tasa de solicitud de 99 $ para el Centro de desarrollo y un perfil en Cloud Partner Portal.
-- Preaprobación técnica del estado de certificación de Azure, junto con la opción de crear una oferta y certificar el disco duro virtual. (la solicitud del Centro de desarrollo debe aprobarse antes de poder crear la oferta).
-- Instrucciones para acceder al portal Cloud Partner Portal y una introducción al proceso de publicación.
-- Posibilidad de optar a una llamada con el equipo de incorporación de Microsoft para guiar el proceso y formular preguntas.
-- Capacidad de publicar una segunda oferta. Las ofertas publicadas en un segundo momento no tienen que pasar por el proceso de aprobación. Pueden ir directamente al Cloud Partner Portal, pero aún será necesario que las máquinas virtuales se certifiquen mediante el proceso de publicación.
-- Instrucciones sobre cómo se solicita ayuda con la publicación (las preguntas se deben dirigir al [vínculo de soporte técnico](https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=16230&ccsid=636282352448485256) del publicador de Marketplace).
+- Recepción de correo electrónico con un código de promoción renuncia a tasa de solicitud de hello $99 para hello centro de desarrollo y un perfil en hello Portal de partners de la nube.
+- Preapproval técnica para el estado de Azure Certified, junto con hello opción toocreate una oferta y certificar el disco duro virtual. (la solicitud del Centro de desarrollo debe aprobarse antes de poder crear la oferta).
+- Instrucciones para tener acceso a Hola Portal de partners de nube y una visión general del proceso de publicación de Hola.
+- Elegibilidad para una llamada con la incorporación de Microsoft hello toowalk a través del proceso de Hola de equipo y hacer preguntas.
+- Capacidad toopublish una oferta de segundo. Tiempo de un segundo ofrece don &#39; t necesario toogo a través de aprobación. Puede ir directamente toohello Portal de partners de la nube, pero todavía deben estar certificadas hello las máquinas virtuales a través del proceso de publicación de Hola.
+- Instrucciones sobre cómo se solicita ayuda con la publicación (Preguntas deben ser dirigido toohello Marketplace Publisher [vínculo de soporte técnico](https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=16230&ccsid=636282352448485256).)
 
-Por último, [registre la cuenta](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-accounts-creation-registration) como vendedor de Microsoft. La aprobación y la investigación pueden tardar _hasta dos semanas_, así que invierta este tiempo en crear su oferta de Azure Marketplace en Cloud Partner Portal.
+Por último, [registre la cuenta](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-accounts-creation-registration) como vendedor de Microsoft. Aprobación y proceder a la instrucción pueden tardar _una copia de seguridad tootwo semanas_, por lo que usar esta toocreate tiempo su oferta de Azure Marketplace en hello Portal de partners de la nube.
 
-## <a name="how-do-i-publish-my-offer-on-the-azure-marketplace"></a>¿Cómo publico mi oferta en Azure Marketplace?
+## <a name="how-do-i-publish-my-offer-on-hello-azure-marketplace"></a>¿Cómo publico mi oferta en hello Azure Marketplace?
 
-Ahora está listo para certificar la imagen de máquina virtual y publicar la oferta. Para ello, use Cloud Partner Portal. Puede considerar Cloud Partner Portal como un punto central desde el que publicar y administrar la solución. Básicamente, basta con que cargue un disco duro virtual, agregue contenido de marketing y detalles de SKU, y envíe su oferta para revisión y certificación. Puede obtener una vista previa de su oferta y ver cómo quedará antes de publicarla en Marketplace.
+Está ahora listo toocertify la imagen de máquina virtual y publicar su oferta. toodo esto, utilice Hola Portal de partners de la nube. Hola Portal de partners de la nube se puede considerar como concentrador de publicación y administración de la solución. Básicamente, basta con tooupload el VHD, agregar contenido de marketing y detalles SKU así como enviar su oferta para revisión y certificación. Obtener toopreview su oferta y ver cómo quedarán antes de activarse en hello Marketplace.
 
 ## <a name="what-about-best-practices"></a>¿Cuáles son los procedimientos recomendados?
 
-Estas son algunas herramientas y procedimientos recomendados que pueden ayudarle a aprovechar la oportunidad de vender en Marketplace.
+Estas son algunas herramientas y prácticas recomendadas que le permitirá obtener Hola máximo que se va a un vendedor en hello Marketplace.
 
 ### <a name="azure-test-drives"></a>Versiones de prueba de Azure
 
-[Las versiones de prueba de Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/test-drives?page=1) representan una excelente manera de mostrar su producto a los clientes potenciales y darles la posibilidad de probarlo antes de adquirirlo. Las versiones de prueba pueden ayudar a aumentar la conversión y generar clientes potenciales.
+[Las unidades de prueba de Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/test-drives?page=1) es una excelente manera tooshowcase los clientes de toopotential de producto y asígneles Hola opción tootry antes de que compren. Las versiones de prueba pueden ayudar a aumentar la conversión y generar clientes potenciales.
 
 Después de proporcionar su información de contacto, los clientes pueden acceder a la versión de prueba creada previamente. Experimentan de forma autodidacta una evaluación práctica de las principales características y ventajas de su producto en un escenario real.
 
-Actualmente, la publicación de una versión de prueba solo está disponible en el portal de publicación clásico. Para más información, vaya a la documentación sobre [cómo publicar una nueva versión de prueba](https://github.com/Azure/AzureTestDrive/wiki).
+Actualmente, la publicación de una unidad de prueba del producto solo está disponible en portal de publicación clásico Hola. Más información por van toodocumentation en [cómo toopublish una nueva unidad de prueba](https://github.com/Azure/AzureTestDrive/wiki).
 
 Aprenda más sobre las [versiones de prueba de Azure](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf).
 
 ### <a name="go-to-market-checklist"></a>Lista de comprobación de salida al mercado
 
-Obtenga más información sobre nuestros [programas de salida al mercado](https://partner.microsoft.com/go-to-market/) que pueden ayudarle a ampliar el alcance global de su organización. También puede aprovechar los recursos en el [centro de marketing para asociados](http://smartpartnermarketing.microsoft.com/isv).
+Obtenga más información sobre nuestros [programas de salida al mercado](https://partner.microsoft.com/go-to-market/) que pueden ayudarle a ampliar el alcance global de su organización. También puede aprovechar los recursos en hello [partner marketing center](http://smartpartnermarketing.microsoft.com/isv).
 
-Antes de su lanzamiento, se recomienda realizar algunas acciones para dar un impulso a su oferta de Marketplace. Use esta lista de comprobación para averiguar si está listo:
+Antes de su lanzamiento, se recomienda realizar unos pasos tooget rápido fuerza en su oferta de Marketplace. Utilice este toofind de lista de comprobación out si usted &#39; re listo:
 
-- **He anunciado que mi oferta está disponible en Marketplace** mediante una publicación de blog, el envío de mensajes de correo electrónico o la emisión de un comunicado de prensa.
-- **He promocionado mi oferta en mi propio sitio web**, que dirige a los clientes a mi oferta en Marketplace.
+- **&#39; ha anunciado que mi oferta está disponible en hello Marketplace** o un blog, enviar mensajes de correo electrónico, o emitir un comunicado de prensa.
+- **&#39; m promocionar mi oferta en mi propio sitio Web de**, seleccionando los clientes toomy oferta en hello Marketplace.
 - **He publicado una versión de prueba** para que los clientes puedan experimentar mi oferta de manera real en Azure durante un descanso.
-- **He habilitado la generación de clientes potenciales a petición** de manera que cada vez que un cliente hace clic para implementar la aplicación, recibo su nombre y su información de contacto.
-- **He conectado con el administrador de socios comerciales** de Microsoft (en caso de tenerlo) para explorar oportunidades adicionales.
+- **&#39; ha habilitado responsable de petición generación** para que cada vez que un cliente hace clic toodeploy mi aplicación, recibir su información de contacto y nombre.
+- **&#39; ha conectado con el Administrador de socios comerciales** de Microsoft (si dispone de una) tooexplore más oportunidades.
 
 ## <a name="what-about-reports"></a>¿Y qué ocurre con los informes?
 
-Marketplace ofrece informes sobre los pedidos, el uso y los clientes, los cuales están accesibles a través del [portal de informes de publicador](https://reports.azure.com) de Marketplace. Además de información útil y análisis, se proporcionan datos sin procesar en una tabla navegable que se puede descargar como archivo CSV o XLS.
+Hola Marketplace ofrece informes para sus uso, los pedidos, y los clientes que son accesibles a través de Hola Marketplace [portal publicador Reporting](https://reports.azure.com). Además toohelpful visión y análisis, datos sin procesar se proporcionan en una tabla navegable y se pueden descargar como un archivo CSV o XLS.
 
 En [este vídeo](https://player.vimeo.com/video/200859918) se ofrece una vista rápida de las características y las ventajas de los informes, como:
 
-- Tipos de informes: instantánea resumen de pedidos, uso y tendencias de clientes en la página principal.
+- Tipos de informes: instantánea resumen de pedidos, el uso y las tendencias de cliente en la página de inicio de Hola.
 - Pedidos detallados, uso y datos de clientes.
 - Pedidos y uso mostrados como resumen mensual o como vista de tendencias de seis meses.
 - Varias perspectivas mostradas de serie.
@@ -212,7 +212,7 @@ En [este vídeo](https://player.vimeo.com/video/200859918) se ofrece una vista r
   - Ofertas en tendencia
   - Tipo de licencia de Marketplace
 
-Los informes detallados muestran información del cliente, como el nombre de la empresa y la ubicación geográfica, incluso el código postal, de forma que pueda realizar comparativas de los clientes. En la lista siguiente se incluyen los atributos específicos que proporcionamos acerca de sus clientes:
+Informes detallados mostrar información de clientes, como nombre de la compañía y la ubicación geográfica hacia abajo toohello código postal, por lo que puede comparar a los clientes. Hello lista siguiente incluye atributos específicos de hello que proporcionamos acerca de los clientes:
 
 - Vendedor
 - Nombre
@@ -231,6 +231,6 @@ Los informes detallados muestran información del cliente, como el nombre de la 
 
 También se ofrece entrenamiento mediante una demostración grabada, un glosario y documentación de ayuda. Si necesita ayuda o soporte técnico con los informes, puede abrir un [vale de soporte](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=636233723471685249).
 
-Le damos la bienvenida a nuestra comunidad de vendedores de ISV y esperamos ver su oferta.
+Lo valoramos Bienvenido a tooour Comunidad de vendedores de ISV y esperamos el tooseeing su oferta.
 
 ---

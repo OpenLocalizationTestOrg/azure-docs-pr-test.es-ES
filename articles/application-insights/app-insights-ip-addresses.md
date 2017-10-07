@@ -1,5 +1,5 @@
 ---
-title: Direcciones IP que emplea Application Insights | Microsoft Docs
+title: direcciones de aaaIP usadas por Application Insights | Documentos de Microsoft
 description: Excepciones para el firewall del servidor requeridas por Application Insights
 services: application-insights
 documentationcenter: .net
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/11/2017
 ms.author: bwren
-ms.openlocfilehash: 3bb076c63223fc1567c6b7b25c1a513bbc81ed58
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2c101b8da2ba9594fbff607f4f7551cda80c3c25
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="ip-addresses-used-by-application-insights"></a>Direcciones IP que emplea Application Insights
-El servicio [Azure Application Insights](app-insights-overview.md) usa diversas direcciones IP. Quizás deba conocer estas direcciones si la aplicación que está supervisando se hospeda bajo el amparo de un firewall.
+Hola [Azure Application Insights](app-insights-overview.md) servicio utiliza un número de direcciones IP. Podría necesitar tooknow estas direcciones si se hospeda la aplicación hello que se está supervisando detrás de un firewall.
 
 > [!NOTE]
-> Aunque estas direcciones son estáticas, es posible que tengamos que cambiarlas de vez en cuando.
+> Aunque estas direcciones son estáticas, es posible que necesitaremos toochange del tootime de tiempo.
 > 
 > 
 
 ## <a name="outgoing-ports"></a>Puertos de salida
-Debe abrir algunos puertos de salida en el firewall del servidor para permitir que el SDK de Application Insights o el Monitor de estado envíe datos al portal:
+Necesita tooopen algunos puertos de salida de hello tooallow de firewall del servidor Application Insights SDK o el portal de supervisión de estado toosend datos toohello:
 
 | Propósito | URL | IP | Puertos |
 | --- | --- | --- | --- |
@@ -56,7 +56,7 @@ Configuración del Monitor de estado; solo lo necesitará en caso de que tenga q
 | Datos de bloqueo |gate.hockeyapp.net |104.45.136.42 |80, 443 |
 
 ## <a name="availability-tests"></a>Pruebas de disponibilidad
-Esta es la lista de direcciones a partir de las cuales se ejecutan [pruebas web de disponibilidad](app-insights-monitor-web-app-availability.md) . Si quiere ejecutar pruebas web en su aplicación, pero su servidor web está restringido atender únicamente las solicitudes de clientes específicos, tendrá que permitir el tráfico entrante de nuestros servidores de pruebas de disponibilidad.
+Se trata Hola lista de direcciones desde el que [disponibilidad las pruebas web](app-insights-monitor-web-app-availability.md) se ejecutan. Si desea toorun las pruebas web en la aplicación, pero el servidor web está restringido tooserving clientes específicos, tendrá que toopermit el tráfico entrante desde nuestros servidores de prueba de disponibilidad.
 
 Abra los puertos 80 (http) y 443 (https) para asumir el tráfico entrante de estas direcciones (las IP se agrupan por ubicación):
 

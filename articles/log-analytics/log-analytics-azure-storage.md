@@ -1,6 +1,6 @@
 ---
-title: "Recopilación de registros y métricas de servicios de Azure en Log Analytics | Microsoft Docs"
-description: "Configure los diagnósticos en recursos de Azure para escribir registros y métricas en Log Analytics."
+title: "aaaCollect Azure del servicio registros y métricas de análisis de registros | Documentos de Microsoft"
+description: "Configurar los diagnósticos en Azure recursos toowrite registros y métricas de tooLog análisis."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1cede9a94ec83c4e3a95853dc2ec355d8df06d6e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Recopilación de registros y métricas de Azure para servicios de Log Analytics
 
 Hay cuatro maneras diferentes de recopilar registros y métricas para servicios de Azure:
 
-1. Diagnósticos de Azure directos a Log Analytics (*Diagnósticos* en la tabla siguiente)
-2. Diagnósticos de Azure al almacenamiento de Azure y luego a Log Analytics (*almacenamiento* en la tabla siguiente)
-3. Conectores para servicios de Azure (*Conectores* en la tabla siguiente)
-4. Scripts para recopilar y después publicar datos en Log Analytics (espacios en blanco en la tabla siguiente y para servicios que no aparecen)
+1. Diagnósticos de Azure dirigir tooLog Analytics (*diagnósticos* en hello en la tabla siguiente)
+2. Diagnósticos de Azure tooAzure almacenamiento tooLog Analytics (*almacenamiento* en hello en la tabla siguiente)
+3. Conectores para los servicios de Azure (*conectores* en hello en la tabla siguiente)
+4. Las secuencias de comandos toocollect y, a continuación, los datos de entrada en el análisis de registros (espacios en blanco en hello en la tabla siguiente y servicios que no aparecen)
 
 
 | Servicio                 | Tipo de recurso                           | Registros        | Métricas     | Solución |
@@ -60,22 +60,22 @@ Hay cuatro maneras diferentes de recopilar registros y métricas para servicios 
 
 
 > [!NOTE]
-> Para la supervisión de máquinas virtuales de Azure (Linux y Windows), se recomienda instalar la [extensión para máquinas virtuales de Log Analytics](log-analytics-azure-vm-extension.md). El agente proporciona información recopilada desde dentro de las máquinas virtuales. También puede utilizar la extensión para conjuntos de escalado de máquinas virtuales.
+> Para la supervisión de máquinas virtuales Azure (Linux y Windows), se recomienda instalar hello [extensión de máquina virtual de análisis de registro](log-analytics-azure-vm-extension.md). agente de Hello proporciona información recopilada desde dentro de las máquinas virtuales. También puede utilizar la extensión de Hola para conjuntos de escalas de máquina Virtual.
 >
 >
 
-## <a name="azure-diagnostics-direct-to-log-analytics"></a>Diagnósticos de Azure directos a Log Analytics
-Muchos recursos de Azure son capaces de escribir registros de diagnóstico y métricas directamente en Log Analytics; de hecho, esta es la forma preferida de recopilar los datos para el análisis. Al utilizar los diagnósticos de Azure, los datos se escriben inmediatamente en Log Analytics y no es necesario escribir primero los datos en el almacenamiento.
+## <a name="azure-diagnostics-direct-toolog-analytics"></a>Diagnósticos de Azure directa tooLog análisis
+Muchos recursos de Azure son métricas y registros de diagnóstico pueda toowrite directamente tooLog análisis y esto forma Hola preferido para recopilar datos de hello para el análisis. Al utilizar Diagnósticos de Azure, se escriben inmediatamente datos tooLog análisis y no hay ningún toostorage necesidad toofirst escritura Hola datos.
 
-Los recursos de Azure que admiten [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) pueden enviar sus registros y métricas directamente a Log Analytics.
+Recursos de Azure que admiten [monitor Azure](../monitoring-and-diagnostics/monitoring-overview.md) puede enviar sus registros y métricas directamente tooLog análisis.
 
-* Para obtener información detallada sobre las métricas disponibles, consulte las [métricas admitidas con Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
-* Para obtener información detallada sobre los registros disponibles, consulte los [servicios admitidos y el esquema de los registros de diagnóstico](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+* Para obtener detalles de Hola de métricas disponibles hello, consulte demasiado[métricas con el Monitor de Azure admitidas](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+* Para obtener detalles de Hola de registros disponibles de hello, consulte demasiado[admite servicios y el esquema para los registros de diagnóstico](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Habilitación de diagnósticos con PowerShell
-Necesita la versión de noviembre de 2016 (v2.3.0), o una posterior, de [Azure PowerShell](/powershell/azure/overview).
+Necesita Hola noviembre de 2016 (v2.3.0) o posterior de la versión de [Azure PowerShell](/powershell/azure/overview).
 
-En el ejemplo de PowerShell siguiente se muestra cómo usar [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) para habilitar los diagnósticos en un grupo de seguridad de red. El mismo enfoque funciona para todos los recursos admitidos: establezca `$resourceId` en el identificador de recurso del recurso para el que desea habilitar los diagnósticos.
+Hola después PowerShell de ejemplo muestra cómo toouse [AzureRmDiagnosticSetting conjunto](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) tooenable diagnósticos en un grupo de seguridad de red. Hello mismo enfoque funciona para todos los recursos admitidos: establecer `$resourceId` toohello Id. de recurso del recurso de Hola que desea tooenable los diagnósticos para.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -87,7 +87,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
 
 ### <a name="enable-diagnostics-with-resource-manager-templates"></a>Habilitación de diagnósticos con plantillas de Resource Manager
 
-Para habilitar los diagnósticos en un recurso cuando se crea, y que los diagnósticos se envíen al área de trabajo de Log Analytics, puede usar una plantilla similar a la siguiente. Este ejemplo es para una cuenta de automatización, pero funciona con todos los tipos de recursos admitidos.
+tooenable diagnósticos en un recurso cuando se crea y le han enviado diagnósticos hello tooyour área de trabajo de análisis de registros que puede usar un toohello similar de plantilla uno a continuación. Este ejemplo es para una cuenta de automatización, pero funciona con todos los tipos de recursos admitidos.
 
 ```json
         {
@@ -116,11 +116,11 @@ Para habilitar los diagnósticos en un recurso cuando se crea, y que los diagnó
 
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Diagnósticos de Azure a almacenamiento y luego a Log Analytics
+## <a name="azure-diagnostics-toostorage-then-toolog-analytics"></a>Toostorage de diagnósticos de Azure, a continuación, tooLog análisis
 
-Para recopilar registros desde dentro de algunos recursos, es posible enviar los registros al almacenamiento de Azure y luego configurar Log Analytics para leer los registros del almacenamiento.
+Para recopilar registros desde dentro de algunos recursos, es posible toosend Hola registros tooAzure almacenamiento y, a continuación, configurar registros de hello tooread de análisis de registros de almacenamiento.
 
-Log Analytics puede usar este enfoque para recopilar diagnósticos del almacenamiento de Azure para los recursos y registros siguientes:
+Análisis de registros pueden usar este diagnóstico toocollect de enfoque del almacenamiento de Azure para hello después de recursos y los registros:
 
 | Recurso | Registros |
 | --- | --- |
@@ -129,26 +129,26 @@ Log Analytics puede usar este enfoque para recopilar diagnósticos del almacenam
 | Roles web <br> Roles de trabajo |Syslog de Linux <br> Evento de Windows <br> Registro de IIS <br> Windows ETWEvent |
 
 > [!NOTE]
-> Al enviar diagnósticos a una cuenta de almacenamiento y por las lecturas de Log Analytics de los datos de la cuenta de almacenamiento se le cobrarán las tarifas de datos de Azure habituales por el almacenamiento y las transacciones.
+> Se le cobra Azure tarifas normales para almacenamiento y las transacciones cuando envíe diagnósticos tooa cuenta de almacenamiento y al análisis de registros lee datos de Hola desde su cuenta de almacenamiento.
 >
 >
 
-Vea [Uso de Blob Storage para IIS y Table Storage para eventos](log-analytics-azure-storage-iis-table.md) para más información sobre cómo Log Analytics puede recopilar estos registros.
+Vea [Use el almacenamiento de blobs para almacenamiento IIS y la tabla de eventos](log-analytics-azure-storage-iis-table.md) toolearn más información acerca de cómo análisis de registros puede recopilar estos registros.
 
 ## <a name="connectors-for-azure-services"></a>Conectores para servicios de Azure
 
-Hay un conector para Application Insights, que permite que los datos que recopila Application Insights se envíen a Log Analytics.
+Hay un conector para Application Insights, que permite que los datos recopilados por toobe Application Insights enviado tooLog análisis.
 
-Obtenga más información sobre el [conector de Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
+Obtener más información sobre hello [conector de Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
 
-## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>Scripts para recopilar datos y publicarlos en Log Analytics
+## <a name="scripts-toocollect-and-post-data-toolog-analytics"></a>Las secuencias de comandos toocollect y post datos tooLog análisis
 
-Para los servicios de Azure que no proporcionan una manera directa de enviar registros y métricas a Log Analytics, puede usar un script de Azure Automation para recopilar el registro y las métricas. Después, el script puede enviar los datos a Log Analytics utilizando la [API del recopilador de datos](log-analytics-data-collector-api.md).
+Para los servicios de Azure que no proporcionan un tooLog de registros y las métricas de toosend de forma directa análisis puede usar un toocollect de script de automatización de Azure Hola métricas y registro. Hola Hola script a continuación, envío Hola datos tooLog análisis mediante [API del recopilador de datos](log-analytics-data-collector-api.md)
 
-La galería de plantillas de Azure tiene [ejemplos del uso de Azure Automation](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) para recopilar datos de servicios y enviarlos a Log Analytics.
+Galería de plantillas de Azure de Hello tiene [ejemplos del uso de automatización de Azure](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) toocollect datos de servicios y enviarlo tooLog análisis.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Consulte [Use blob storage for IIS and table storage for events](log-analytics-azure-storage-iis-table.md) (Uso de Blob Storage para IIS y de Table Storage para eventos) para aprender a leer los registros para servicios de Azure que escriben diagnósticos en Table Storage o registros ISS en Blob Storage.
-* [Incorporación de soluciones de Log Analytics desde la galería de soluciones](log-analytics-add-solutions.md) para más información sobre los datos.
-* [Búsquedas de registros en Log Analytics](log-analytics-log-searches.md) para analizar los datos.
+* [Usar almacenamiento de blobs para almacenamiento IIS y la tabla de eventos](log-analytics-azure-storage-iis-table.md) tooread registros de Hola para servicios de Azure que escriben diagnósticos tootable tooblob escrito almacenamiento de registros de almacenamiento o IIS.
+* [Habilitar soluciones](log-analytics-add-solutions.md) visión tooprovide datos Hola.
+* [Usar consultas de búsqueda](log-analytics-log-searches.md) tooanalyze datos de saludo.

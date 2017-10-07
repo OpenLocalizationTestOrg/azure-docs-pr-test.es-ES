@@ -1,6 +1,6 @@
 ---
-title: "Información general de Conjunto de aplicaciones de IoT de Microsoft Azure | Microsoft Docs"
-description: "Información general sobre cómo el Conjunto de aplicaciones de IoT de Azure ofrece soluciones preconfiguradas de Internet de las cosas para recopilar, analizar y almacenar datos, proporcionar visualizaciones e integrarlos con otros sistemas."
+title: "Introducción a Azure IoT Suite aaaMicrosoft | Documentos de Microsoft"
+description: "Información general sobre cómo Suite de IoT de Azure ofrece internet de las cosas soluciones preconfiguradas toocollect, analizar y almacenar los datos, proporcionar visualizaciones e integrar con otros sistemas."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfa8dbbd0b1d943a9eb7a042df0bac25189d9ac9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 385025c5ec0d37c74689a928bc09e85b33439634
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-azure-iot-suite"></a>Información general de Azure IoT Suite
 
-Los servicios de Internet de las cosas (IoT) de Azure ofrecen una amplia gama de funcionalidades. Estos servicios de nivel empresarial le permiten:
+Hello Azure internet de servicios de las cosas (IoT) ofrecen una amplia gama de capacidades. Estos servicios de nivel empresarial le permiten:
 
 * Recopilar datos de dispositivos
 * Analizar flujos de datos en movimiento
@@ -33,37 +33,37 @@ Los servicios de Internet de las cosas (IoT) de Azure ofrecen una amplia gama de
 * Integración con sistemas del área de operaciones
 * Administración de los dispositivos
 
-Con el fin de ofrecer estas funcionalidades, el Conjunto de aplicaciones de IoT de Azure ofrece paquetes de múltiples servicios de Azure con extensiones personalizadas como *soluciones preconfiguradas*. Estas soluciones preconfiguradas son implementaciones base de patrones comunes de soluciones de IoT que le ayudan a reducir el tiempo que dedica a entregar sus soluciones de IoT. Con los [kits de desarrollo de software de IoT][lnk-sdks], puede personalizar y extender estas soluciones para satisfacer sus requisitos. También puede usar estas soluciones como ejemplos o plantillas al desarrollar nuevas soluciones de IoT.
+toodeliver estas capacidades, conjunto de IoT de Azure incorpora varios servicios de Azure con las extensiones personalizadas como *soluciones preconfiguradas*. Estas soluciones preconfiguradas son implementaciones base de patrones comunes de solución de IoT que ayudan a la hora de hello tooreduce que tomar toodeliver sus soluciones de IoT. Con hello [kits de desarrollo de software de IoT][lnk-sdks], puede personalizar y extender estos toomeet soluciones sus propios requisitos. También puede usar estas soluciones como ejemplos o plantillas al desarrollar nuevas soluciones de IoT.
 
-El vídeo siguiente proporciona una introducción al conjunto de aplicaciones de IoT de Azure:
+Hello vídeo siguiente proporciona un conjunto de IoT tooAzure de introducción:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON309/player]
 > 
 > 
 
 ## <a name="azure-iot-services-in-azure-iot-suite"></a>Servicios IoT de Azure en Azure IoT Suite
-Normalmente, las soluciones preconfiguradas usan los siguientes servicios:
+soluciones de Hello preconfigurado suelen usar Hola siguientes servicios:
 
-* El componente esencial del Conjunto de aplicaciones de IoT de Azure es el servicio [Azure IoT Hub][lnk-iot-hub]. Este servicio ofrece las capacidades de mensajería de dispositivo a la nube y de la nube al dispositivo y actúa como la puerta de enlace para la nube y los demás servicios del Conjunto de aplicaciones de IoT clave. El servicio le permite recibir mensajes de los dispositivos, a escala, y enviar comandos a los dispositivos. El servicio también le permite [administrar los dispositivos][lnk-device-management]. Por ejemplo, puede configurar, reiniciar o realizar un restablecimiento de fábrica de uno o varios dispositivos conectados al centro.
-* [Azure Stream Analytics][lnk-asa] ofrece análisis de datos en movimiento. El Conjunto de aplicaciones de IoT usa este servicio para procesar la telemetría entrante, realizar la agregación y detectar eventos. Las soluciones preconfiguradas también usan el análisis de transmisiones para procesar los mensajes informativos que contienen datos como los metadatos y las respuestas de comandos de dispositivos. Las soluciones usan Análisis de transmisiones para procesar los mensajes de los dispositivos y entregarlos a otros servicios.
-* [Azure Storage][lnk-azure-storage] y [Azure Cosmos DB][lnk-document-db] ofrecen las funcionalidades de almacenamiento de datos. Las soluciones preconfiguradas usan el almacenamiento de blobs para almacenar la telemetría y que esté disponible para análisis. Las soluciones usan Cosmos DB para almacenar los metadatos de dispositivo y habilitar la funcionalidad de administración de dispositivos de las soluciones.
-* [Azure Web Apps][lnk-web-apps] y [Microsoft Power BI][lnk-power-bi] ofrecen las funcionalidades de visualización de datos. La flexibilidad de Power BI le permite compilar rápidamente sus propios paneles interactivos que usan los datos del conjunto de aplicaciones de IoT.
+* Core tooAzure IoT Suite es hello [centro de IoT de Azure] [ lnk-iot-hub] servicio. Este servicio proporciona Hola dispositivo a la nube y capacidades de mensajería de nube al dispositivo y actúa como Hola toohello de puerta de enlace en la nube y Hola otros servicios IoT Suite clave. servicio de Hello permite tooreceive mensajes desde los dispositivos a escala y enviar comandos tooyour dispositivos. Hola servicio también permite demasiado[administrar sus dispositivos][lnk-device-management]. Por ejemplo, puede configurar, reiniciar o realizar una restablecimiento de fábrica en Centro de toohello conectado uno o varios dispositivos.
+* [Azure Stream Analytics][lnk-asa] ofrece análisis de datos en movimiento. IoT Suite utiliza esta telemetría entrantes tooprocess de servicio, realizar la agregación y detectar eventos. las soluciones de Hello preconfigurado también usan stream analytics tooprocess mensajes informativos que contienen datos como las respuestas de metadatos o el comando de dispositivos. soluciones de Hello utilizan mensajes de Hola tooprocess de análisis de transmisiones de los dispositivos y ofrecen servicios de tooother de esos mensajes.
+* [Almacenamiento de Azure] [ lnk-azure-storage] y [base de datos de Azure Cosmos] [ lnk-document-db] proporcionan capacidades de almacenamiento de datos de Hola. Hello soluciones preconfiguradas usan telemetría de toostore de almacenamiento de blobs y toomake estén disponibles para su análisis. soluciones de Hello usan metadatos del dispositivo de base de datos de Cosmos toostore y habilitan las capacidades de administración del dispositivo de Hola de soluciones de Hola.
+* [Las aplicaciones Web de Azure] [ lnk-web-apps] y [Microsoft Power BI] [ lnk-power-bi] proporcionan capacidades de visualización de datos de Hola. flexibilidad de Hola de Power BI permite tooquickly compilar sus propios paneles interactivos que utilizan datos de conjunto de IoT.
 
-Para información general de la arquitectura de una solución de IoT típica, consulte [Microsoft Azure e Internet de las cosas (IoT)][iot-suite-what-is-azure-iot].
+Para obtener información general de arquitectura de Hola de una solución de IoT típica, vea [hello Internet de las cosas (IoT) y Microsoft Azure][iot-suite-what-is-azure-iot].
 
 ## <a name="preconfigured-solutions"></a>soluciones preconfiguradas
 
-El Conjunto de aplicaciones de IoT incluye soluciones preconfiguradas que le permiten empezar a trabajar rápidamente con los escenarios comunes de IoT, como:
+IoT Suite incluye las soluciones preconfiguradas que habilitar tooquickly empezar a trabajar con y tooexplore Hola IoT los escenarios comunes, como:
 
 * Supervisión remota
 * Mantenimiento predictivo
 * Fábrica conectada
 
-Puede implementar estas soluciones en su suscripción de Azure y luego ejecutar un escenario de IoT completo e integral.
+Puede implementar estos tooyour soluciones suscripción de Azure y, a continuación, ejecutar un escenario IoT completando-to-end.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que tiene una visión general de lo que puede hacer el Conjunto de aplicaciones de IoT y cuáles son sus componentes principales, puede obtener más información acerca de las soluciones preconfiguradas que incluye. Para más información, consulte [¿Cuáles son las soluciones preconfiguradas de IoT de Azure?][lnk-what-are-preconfig]
+Ahora que tiene información general sobre lo que puede hacer IoT Suite y cuáles son sus componentes principales, se puede obtener más información sobre las soluciones de Hola preconfigurado en el conjunto de IoT. Para obtener más información, vea [¿qué hello Azure IoT soluciones preconfiguradas?][lnk-what-are-preconfig]
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/

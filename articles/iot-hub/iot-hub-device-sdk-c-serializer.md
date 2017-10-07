@@ -1,6 +1,6 @@
 ---
-title: 'SDK de dispositivo IoT de Azure para C: serializador | Microsoft Docs'
-description: "Describe cómo usar la biblioteca de serializador del SDK de dispositivo IoT de Azure para C con el fin de crear aplicaciones para dispositivos que se comunican con un centro de IoT Hub."
+title: dispositivos de IoT aaaAzure SDK para C - serializador | Documentos de Microsoft
+description: La biblioteca de serializador toouse hello en dispositivo de hello IoT de Azure SDK para aplicaciones de C toocreate dispositivos que se comunican con un centro de IoT.
 services: iot-hub
 documentationcenter: 
 author: olivierbloch
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
-ms.openlocfilehash: aa03c29c54d75538b1fdf987cac5f09d5d344f73
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c5776e9b50ffea71df96cb2d342ea2fc045f5a0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>SDK de dispositivo IoT de Azure para C: más información sobre el serializador
-En el [primer el artículo](iot-hub-device-sdk-c-intro.md) de esta serie se presentaba el **SDK de dispositivo IoT de Azure**. A este le siguió un artículo que proporcionaba una descripción más detallada de [**IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md). En este artículo terminaremos de analizar el SDK y proporcionaremos una descripción más detallada del componente que queda: la biblioteca de **serializador** .
+Hola [primero el artículo](iot-hub-device-sdk-c-intro.md) en este Hola serie introducida **dispositivos de IoT de Azure SDK para C**. artículo siguiente Hola proporciona una descripción más detallada de hello [ **IoTHubClient** ](iot-hub-device-sdk-c-iothubclient.md). En este artículo se completa cobertura de hello SDK al proporcionar una descripción más detallada de hello restantes componente: Hola **serializador** biblioteca.
 
-En el artículo de introducción se describía cómo usar la biblioteca de **serializador** para enviar eventos al Centro de IoT y recibir mensajes de él. En este artículo ampliaremos esta discusión con una explicación más completa de cómo modelar los datos con el macrolenguaje de **serializador** . También incluiremos en él más detalles sobre cómo la biblioteca serializa los mensajes (y, en algunos casos, cómo se puede controlar el comportamiento de serialización). Asimismo, describiremos algunos parámetros que se pueden modificar que determinan el tamaño de los modelos que se crean.
+artículo introductorio Hola se describe cómo hello toouse **serializador** biblioteca toosend eventos tooand recibir mensajes desde el centro de IoT. En este artículo, se amplía esa discusión proporcionando una explicación más completa de cómo toomodel los datos con hello **serializador** lenguaje de macros. artículo Hello también incluye información más detallada sobre cómo biblioteca Hola serializa los mensajes (y en algunos casos cómo se puede controlar un comportamiento de serialización hello). Describiremos también puede modificar algunos parámetros que determinan el tamaño de Hola de modelos de Hola que haya creado.
 
-Terminaremos examinando de nuevo algunos de los temas tratados en artículos anteriores, como el control de los mensajes y las propiedades. Como veremos, estas características funcionan del mismo modo con la biblioteca de **serializador** que con la biblioteca de **IoTHubClient**.
+Por último, artículo Hola repasa algunos temas que se tratan en los artículos anteriores como mensaje y control de la propiedad. Hola mismo utilizando hello como buscaremos el esas características, trabajar en **serializador** biblioteca como lo hacen con hello **IoTHubClient** biblioteca.
 
-Todo lo que se describe en este artículo se basa en los ejemplos del SDK del **serializador** . Si desea continuar, consulte las aplicaciones **simplesample\_amqp** y **simplesample\_http** que se incluyen en el SDK de dispositivo IoT de Azure para C.
+Todo lo descrito en este artículo se basa en hello **serializador** ejemplos del SDK. Si desea que toofollow a lo largo de, vea hello **simplesample\_amqp** y **simplesample\_http** aplicaciones incluidas en el SDK de dispositivos de IoT de Azure Hola de C.
 
-Puede encontrar el [**SDK de dispositivo IoT de Azure para C**](https://github.com/Azure/azure-iot-sdk-c) en el repositorio de GitHub y ver los detalles de la API en la [referencia de la API de C](https://azure.github.io/azure-iot-sdk-c/index.html).
+Puede encontrar Hola [ **dispositivos de IoT de Azure SDK para C** ](https://github.com/Azure/azure-iot-sdk-c) GitHub repositorio y ver los detalles de la API de Hola Hola [referencia de la API de C](https://azure.github.io/azure-iot-sdk-c/index.html).
 
-## <a name="the-modeling-language"></a>El lenguaje de modelado
-En el [artículo de introducción](iot-hub-device-sdk-c-intro.md) de esta serie se presentaba el lenguaje de modelado del **SDK de dispositivo IoT de Azure para C** mediante el ejemplo proporcionado en la aplicación **simplesample\_amqp**:
+## <a name="hello-modeling-language"></a>lenguaje de modelado de Hola
+Hola [artículo introductorio](iot-hub-device-sdk-c-intro.md) en este Hola serie introducida **dispositivos de IoT de Azure SDK para C** modeling language a través de ejemplo de Hola incluido en hello **simplesample\_amqp**  aplicación:
 
 ```
 BEGIN_NAMESPACE(WeatherStation);
@@ -48,21 +48,21 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-Como puede observar, el lenguaje de modelado se basa en macros de C. La definición comienza siempre con **BEGIN\_NAMESPACE** y termina siempre con **END\_NAMESPACE**. Es habitual asignar un nombre al espacio de nombres de su compañía o, como en este ejemplo, al proyecto en el que trabaja.
+Como puede ver, Hola lenguaje de modelado se basa en las macros de C. La definición comienza siempre con **BEGIN\_NAMESPACE** y termina siempre con **END\_NAMESPACE**. Es tooname Hola espacio de nombres común para su empresa o, como en este ejemplo, el proyecto de Hola que estás trabajando en.
 
-Lo que hay dentro del espacio de nombres son definiciones de modelo. En este caso, hay un único modelo para un anemómetro. Una vez más, el modelo puede tener cualquier nombre pero, normalmente, se denomina para el dispositivo o el tipo de datos que quiere intercambiar con el Centro de IoT.  
+¿Qué va en el interior de espacio de nombres de hello son definiciones de modelo. En este caso, hay un único modelo para un anemómetro. Una vez más, el modelo de hello puede tener cualquier nombre, pero normalmente se denomina para el dispositivo de Hola o un tipo de datos que desee tooexchange con el centro de IoT.  
 
-Los modelos contienen una definición de los eventos que puede insertar en el IoT Hub (los *datos*), así como de los mensajes que puede recibir de él (las *acciones*). Como puede ver por el ejemplo, los eventos tienen un tipo y un nombre; las acciones tienen un nombre y parámetros opcionales (cada uno con un tipo).
+Los modelos contienen una definición de eventos de hello puede entrada tooIoT concentrador (hello *datos*), así como mensajes de saludo puede recibir de centro de IoT (hello *acciones*). Como puede ver en el ejemplo de Hola, los eventos tienen un tipo y un nombre; las acciones tienen un nombre y parámetros opcionales (cada uno con un tipo).
 
-Lo que no se demuestra en este ejemplo son tipos de datos adicionales que se admiten en el SDK. Los trataremos a continuación.
+Lo que no se muestra en este ejemplo son tipos de datos adicionales que son compatibles con hello SDK. Los trataremos a continuación.
 
 > [!NOTE]
-> El IoT Hub hace referencia a los datos que un dispositivo envía a dicho centro como *eventos*, mientras que el lenguaje de modelado hace referencia a ellos como *datos* (definidos mediante **WITH_DATA**). De igual forma, el IoT Hub hace referencia a los datos que se envían a los dispositivos como *mensajes*, mientras que el modelado de datos hace referencia a ellos como *acciones* (definidas mediante **WITH_ACTION**). Tenga en cuenta que estos términos pueden usarse indistintamente en este artículo.
+> Centro de IoT hace referencia a un dispositivo envía tooit como de datos de toohello *eventos*, mientras que Hola lenguaje de modelado refiere tooit como *datos* (definido mediante **WITH_DATA**). Del mismo modo, centro de IoT hace referencia a datos toohello enviar toodevices como *mensajes*, mientras que Hola lenguaje de modelado refiere tooit como *acciones* (definido mediante **WITH_ACTION**). Tenga en cuenta que estos términos pueden usarse indistintamente en este artículo.
 > 
 > 
 
 ### <a name="supported-data-types"></a>Tipos de datos admitidos
-Se admiten los siguientes tipos de datos en modelos creados con la biblioteca de **serializador** :
+Hola siguientes tipos de datos se admite en los modelos creados con hello **serializador** biblioteca:
 
 | Tipo | Description |
 | --- | --- |
@@ -81,7 +81,7 @@ Se admiten los siguientes tipos de datos en modelos creados con la biblioteca de
 | EDM\_BINARY |binary |
 | DECLARE\_STRUCT |tipo de dato complejo |
 
-Comencemos con el último tipo de datos. **DECLARE\_STRUCT** permite definir tipos de datos complejos, que son agrupaciones de los otros tipos primitivos. Estas agrupaciones nos permiten definir un modelo parecido a este:
+Comencemos con hello último tipo de datos. Hola **DECLARE\_STRUCT** permite tipos de datos complejos toodefine, que son agrupaciones de hello otros tipos primitivos. Estas agrupaciones nos permiten toodefine un modelo que el siguiente aspecto:
 
 ```
 DECLARE_STRUCT(TestType,
@@ -106,9 +106,9 @@ WITH_DATA(TestType, Test)
 );
 ```
 
-Nuestro modelo contiene un evento de datos único de tipo **TestType**. **TestType** es un tipo complejo que incluye varios miembros que, de forma colectiva, muestran los tipos primitivos admitidos por el lenguaje de modelado de **serializador**.
+Nuestro modelo contiene un evento de datos único de tipo **TestType**. **TestType** es un tipo complejo que incluye varios miembros, que se muestran colectivamente tipos primitivos de hello admitidos por hello **serializador** lenguaje de modelado.
 
-Con un modelo como este podemos escribir código para enviar datos al Centro de IoT, que tendría este aspecto:
+Con un modelo similar al siguiente, podemos escribir código toosend datos tooIoT concentrador que aparece como sigue:
 
 ```
 TestModel* testModel = CREATE_MODEL_INSTANCE(MyThermostat, TestModel);
@@ -139,7 +139,7 @@ testModel->Test.aBinary = binaryData;
 SendAsync(iotHubClientHandle, (const void*)&(testModel->Test));
 ```
 
-Básicamente, lo que hacemos es asignar un valor a todos los miembros de la estructura **Test** y, luego, llamar a **SendAsync** para enviar el evento de datos de **Test** a la nube. **SendAsync** es una función auxiliar que envía un solo evento de datos al Centro de IoT:
+Básicamente, asignamos un miembro de valor tooevery de hello **prueba** estructura y, a continuación, llamar a **SendAsync** toosend hello **prueba** datos evento toohello en la nube. **SendAsync** es una función auxiliar que envía un tooIoT de eventos de datos único concentrador:
 
 ```
 void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent)
@@ -148,7 +148,7 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
     size_t destinationSize;
     if (SERIALIZE(&destination, &destinationSize, *(const unsigned char*)dataEvent) ==
     {
-        // null terminate the string
+        // null terminate hello string
         char* destinationAsString = (char*)malloc(destinationSize + 1);
         if (destinationAsString != NULL)
         {
@@ -168,9 +168,9 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 }
 ```
 
-Esta función serializa el evento de datos dado y lo envía al IoT Hub mediante **IoTHubClient\_SendEventAsync**. Este es el mismo código que hemos examinado en artículos anteriores (**SendAsync** encapsula la lógica en una función adecuada).
+Esta función serializa Hola determinado evento de datos y lo envía tooIoT concentrador mediante **IoTHubClient\_SendEventAsync**. Se trata de hello mismo código se describe en los artículos anteriores (**SendAsync** encapsula la lógica de hello en una función adecuada).
 
-Otra función auxiliar que se usa en el código anterior es **GetDateTimeOffset**. Esta función transforma el tiempo especificado en un valor de tipo **EDM\_DATE\_TIME\_OFFSET**:
+Es una otra función auxiliar que se utiliza en el código anterior hello **GetDateTimeOffset**. Esta función transforma Hola momento dado en un valor de tipo **EDM\_fecha\_tiempo\_desplazamiento**:
 
 ```
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -188,29 +188,29 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 }
 ```
 
-Si ejecuta este código, se envía el siguiente mensaje al Centro de IoT:
+Si ejecuta este código, Hola siguiente mensaje se envía tooIoT concentrador:
 
 ```
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-Observe que la serialización es JSON, que es el formato generado por la biblioteca de **serializador** . Observe también que cada miembro del objeto JSON serializado coincide con los miembros de **TestType** que definimos en nuestro modelo. Los valores también coinciden exactamente con los usados en el código. Sin embargo, observe que los datos binarios están codificados en base64: "AQID" es la codificación en base64 de {0 x 01, 0 x 02, 0 x 03}.
+Tenga en cuenta que la serialización de hello es JSON, que es el formato de hello generado por hello **serializador** biblioteca. También tenga en cuenta que cada miembro de hello serializa el objeto JSON coincide con los miembros de Hola de hello **TestType** que hemos definido en nuestro modelo. valores de Hello también coinciden exactamente con los utiliza en el código de hello. Sin embargo, tenga en cuenta que los datos binarios de hello tiene una codificación base64: "AQID" es Hola codificación base64 de {0 x 01, 0 x 02, 0 x 03}.
 
-En este ejemplo se demuestra la ventaja de usar la biblioteca de **serializador** , y es que nos permite enviar JSON a la nube, sin tener que tratar explícitamente con la serialización en nuestra aplicación. De lo único de lo que nos tenemos que preocupar es de configurar los valores de los eventos de datos de nuestro modelo y, luego, llamar a API sencillas para enviar esos eventos a la nube.
+Este ejemplo muestra la ventaja de Hola de usar hello **serializador** biblioteca--permite poner en la nube toosend JSON toohello, sin necesidad de tooexplicitly tratar con la serialización en nuestra aplicación. Todo lo que hay tooworry sobre es establecer valores de hello de hello eventos de datos en nuestro modelo y, a continuación, llamar a simple toosend API esos nube toohello de eventos.
 
-Con esta información podemos definir modelos que comprendan el intervalo de tipos de datos compatibles, incluidos los tipos complejos (podríamos incluso incluir tipos complejos dentro de otros tipos complejos). No obstante, el JSON serializado generado por el ejemplo anterior nos lleva a un punto importante. *El modo en que* enviamos datos con la biblioteca de **serializador** determina exactamente cómo se forma el JSON. Este punto en particular es de lo que hablaremos a continuación.
+Con esta información, podemos definir modelos, que incluyen el intervalo de Hola de tipos de datos compatibles, incluidos los tipos complejos (podríamos incluso incluimos tipos complejos dentro de otros tipos complejos). No obstante, serializa texto JSON generado por hello ejemplo anterior muestra un aspecto importante. *Cómo* enviamos datos con hello **serializador** biblioteca determina exactamente cómo se forma Hola JSON. Este punto en particular es de lo que hablaremos a continuación.
 
 ## <a name="more-about-serialization"></a>Más información sobre la serialización
-En la sección anterior se resalta un ejemplo de la salida generada por la biblioteca de **serializador** . En esta sección explicaremos cómo la biblioteca serializa los datos y cómo puede controlar este comportamiento mediante las API de serialización.
+sección anterior de Hello resalta un ejemplo de resultado de hello generado por hello **serializador** biblioteca. En esta sección, explicaremos cómo biblioteca Hola serializa los datos y cómo se puede controlar este comportamiento mediante la API de serialización de Hola.
 
-Para avanzar en la discusión sobre la serialización, trabajaremos con un nuevo modelo basado en un termostato. Primero vamos a proporcionar alguna información de contexto sobre el escenario que tratamos de abordar.
+En las conversaciones de Hola de orden tooadvance durante la serialización, trabajamos con un nuevo modelo basado en un termostato. En primer lugar, vamos a proporcionar cierta información general sobre el escenario de hello estamos intentando tooaddress.
 
-Queremos modelar un termostato que mida la temperatura y la humedad. Cada fragmento de datos se va a enviar al Centro de IoT de una manera diferente. De forma predeterminada, el termostato introduce un evento de temperatura cada 2 minutos y un evento de humedad, cada 15 minutos. Cuando se introduce uno de estos eventos, se debe incluir una marca de tiempo que indique el tiempo durante el cual se midió la temperatura o humedad correspondientes.
+Queremos toomodel un termostato que mide la temperatura y humedad. Cada elemento de datos va toobe enviado tooIoT concentrador de manera diferente. De forma predeterminada, Hola ingresses termostato un evento de temperatura una vez cada 2 minutos; un evento de humedad es ingressed una vez cada 15 minutos. Una vez ingressed cualquier evento, debe incluir una marca de tiempo que muestra el tiempo de hello esa temperatura correspondiente Hola o humedad medirla.
 
-Dado este escenario, demostraremos dos formas diferentes de modelar los datos y explicaremos el efecto que tiene el modelado en el resultado serializado.
+Con este escenario, podrá mostrar datos de dos maneras diferentes toomodel hello y explicaremos efecto Hola que modelado se en hello serializado salida.
 
 ### <a name="model-1"></a>Modelo 1
-Esta es la primera versión de un modelo que admite el escenario anterior:
+Aquí es Hola primera versión de un modelo que admite Hola escenario anterior:
 
 ```
 BEGIN_NAMESPACE(Contoso);
@@ -231,9 +231,9 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Observe que el modelo incluye dos eventos de datos: **Temperature** y **Humidity**. A diferencia de los ejemplos anteriores, el tipo de cada evento es una estructura definida mediante **DECLARE\_STRUCT**. **TemperatureEvent** incluye una medida de la temperatura y una marca de tiempo; **HumidityEvent** contiene una medida de humedad y una marca de tiempo. Este modelo nos proporciona una manera natural de modelar los datos para el escenario descrito anteriormente. Cuando enviemos un evento a la nube, enviaremos un par temperatura/marca de tiempo o humedad/marca de tiempo.
+Tenga en cuenta ese modelo Hola incluye dos eventos de datos: **temperatura** y **humedad**. A diferencia de los ejemplos anteriores, el tipo de Hola de cada evento es una estructura definida mediante **DECLARE\_STRUCT**. **TemperatureEvent** incluye una medida de la temperatura y una marca de tiempo; **HumidityEvent** contiene una medida de humedad y una marca de tiempo. Este modelo nos da una manera natural toomodel Hola de datos para el escenario de Hola que se ha descrito anteriormente. Cuando se envía una nube de toohello de eventos, ya sea te enviaremos una temperatura/marca de tiempo o un par de humedad/marca de tiempo.
 
-Podemos enviar un evento de temperatura a la nube mediante un código similar al siguiente:
+Podemos enviarle una temperatura evento toohello en la nube mediante código como Hola siguiente:
 
 ```
 time_t now;
@@ -249,9 +249,9 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 }
 ```
 
-Usaremos valores codificados de forma rígida para temperatura y humedad en el código de ejemplo; pero imagine que en realidad vamos a recuperar estos valores mediante el muestreo de los sensores correspondientes en el termostato.
+Se podrá utilizar valores codificados de forma rígida de temperatura y humedad en el código de ejemplo de Hola, pero suponga que estamos recuperando realmente estos valores mediante el muestreo de sensores correspondiente de hello en termostato Hola.
 
-El código anterior usa la aplicación auxiliar **GetDateTimeOffset** que se especificó anteriormente. Por motivos que más tarde aclararemos, este código separa explícitamente la tarea de serializar y enviar el evento. El código anterior serializa el evento de temperatura en un búfer. Entonces, **sendMessage** es una función auxiliar (incluida en **simplesample\_amqp**) que envía el evento a IoT Hub:
+código de Hello anterior utiliza hello **GetDateTimeOffset** auxiliar que se introdujo previamente. Por motivos que se convertirá en claro posteriores, este código separa explícitamente tarea hello de serializar y enviar eventos de Hola. código de Hello anterior serializa el evento de temperatura de hello en un búfer. A continuación, **sendMessage** es una función auxiliar (incluido en **simplesample\_amqp**) que envía Hola tooIoT concentrador de eventos:
 
 ```
 static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -268,15 +268,15 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 }
 ```
 
-Este código es un subconjunto de la aplicación auxiliar **SendAsync** descrita en la sección anterior, por lo que no volveremos aquí sobre ella de nuevo.
+Este código es un subconjunto de hello **SendAsync** auxiliar que se describe en la sección anterior de hello, por lo que no entraremos sobre él nuevo aquí.
 
-Al ejecutar el código anterior para enviar el evento de temperatura, esta forma serializada del evento se envía al Centro de IoT:
+Al ejecutar el evento de temperatura para hello el anterior toosend código hello, este formulario serializado de evento Hola se envía tooIoT concentrador:
 
 ```
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Vamos a enviar una temperatura que es de tipo **TemperatureEvent** y esa estructura contiene un miembro **Temperature** y **Time**. Esto se refleja directamente en los datos serializados.
+Vamos a enviar una temperatura que es de tipo **TemperatureEvent** y esa estructura contiene un miembro **Temperature** y **Time**. Esto se refleja directamente en datos Hola serializado.
 
 Del mismo modo, podemos enviar un evento de humedad con este código:
 
@@ -289,7 +289,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 }
 ```
 
-La forma serializada que se envía al Centro de IoT tiene este aspecto:
+formulario de Hello serializado que ha enviado tooIoT concentrador aparece como sigue:
 
 ```
 {"Humidity":45, "Time":"2015-09-17T18:45:56Z"}
@@ -297,12 +297,12 @@ La forma serializada que se envía al Centro de IoT tiene este aspecto:
 
 Nuevamente, es lo que se esperaba.
 
-Con este modelo, puede imaginar lo fácil que se podrían agregar eventos adicionales. Define más estructuras mediante **DECLARE\_STRUCT** e incluye el evento correspondiente en el modelo mediante **WITH\_DATA**.
+Con este modelo, puede imaginar lo fácil que se podrían agregar eventos adicionales. Definir estructuras más mediante **DECLARE\_STRUCT**e incluir el evento correspondiente de hello en hello modelo con **WITH\_datos**.
 
-Ahora vamos a modificar el modelo para que incluya los mismos datos pero con una estructura diferente.
+Ahora, vamos a modificar el modelo de Hola para que incluya Hola mismos datos, pero con una estructura diferente.
 
 ### <a name="model-2"></a>Modelo 2
-Considere este modelo como una alternativa al anterior:
+Tenga en cuenta este toohello modelo alternativo uno anteriormente:
 
 ```
 DECLARE_MODEL(Thermostat,
@@ -312,9 +312,9 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-En este caso hemos eliminado las macros **DECLARE\_STRUCT** y simplemente va a definir los elementos de datos de nuestro escenario con tipos simples del lenguaje de modelado.
+En este caso hemos eliminado hello **DECLARE\_STRUCT** macros y simplemente está definiendo elementos de datos de Hola desde nuestro escenario utiliza tipos simples de hello lenguaje de modelado.
 
-Solo por el momento, omitiremos el evento **Time** . Dejando este a un lado, este es el código para especificar **Temperature**:
+Solo para el momento de hello vamos a pasar por alto hello **tiempo** eventos. Con esa aside, mostramos Hola código tooingress **temperatura**:
 
 ```
 time_t now;
@@ -329,13 +329,13 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 }
 ```
 
-Este código envía el siguiente evento serializado al Centro de IoT:
+Este código, se envían siguiente Hola serializa tooIoT concentrador de eventos:
 
 ```
 {"Temperature":75}
 ```
 
-Y el código para enviar el evento de humedad tiene este aspecto:
+Y código de hello para el envío de eventos de humedad Hola aparezca como sigue:
 
 ```
 thermostat->Humidity = 45;
@@ -345,15 +345,15 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 }
 ```
 
-Este código envía esto al Centro de IoT:
+Este código envía este tooIoT concentrador:
 
 ```
 {"Humidity":45}
 ```
 
-Hasta ahora, no hay novedades. Ahora vamos a cambiar cómo usamos la macro SERIALIZE.
+Hasta ahora, no hay novedades. Ahora vamos a cambiar cómo utilizamos macro SERIALIZE de Hola.
 
-La macro **SERIALIZE** puede tomar varios eventos de datos como argumentos. Esto nos permite serializar los eventos **Temperature** y **Humidity** juntos y enviarlos al IoT Hub en una llamada:
+Hola **SERIALIZE** macro puede tomar varios eventos de datos como argumentos. Esto nos permite hello tooserialize **temperatura** y **humedad** evento junto y enviar tooIoT concentrador en una llamada:
 
 ```
 if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermostat->Humidity) == IOT_AGENT_OK)
@@ -362,7 +362,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 }
 ```
 
-Podría suponer que el resultado de este código es que dos eventos de datos se envían al Centro de IoT:
+Se puede suponer que el resultado de hello de este código es que se envían eventos de datos de dos tooIoT concentrador:
 
 [
 
@@ -372,7 +372,7 @@ Podría suponer que el resultado de este código es que dos eventos de datos se 
 
 ]
 
-En otras palabras, puede esperar que este código sea lo mismo que enviar **Temperature** y **Humidity** por separado. Solo por comodidad se pasan ambos eventos a **SERIALIZE** en la misma llamada. Sin embargo, ese no es el caso. Por el contrario, el código anterior envía este único evento de datos al Centro de IoT:
+En otras palabras, podría esperar que este código es Hola igual que enviar **temperatura** y **humedad** por separado. Es simplemente una toopass comodidad ambos eventos demasiado**SERIALIZE** Hola misma llamada. Sin embargo, no es el caso de hello. En su lugar, código de hello anterior envía este tooIoT de eventos de datos único concentrador:
 
 {"Temperature":75, "Humidity":45}
 
@@ -386,7 +386,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-Más concretamente, no modelamos estos eventos cuando **Temperature** y **Humidity** están en la misma estructura:
+Punto de toohello más, se no modelar estos eventos donde **temperatura** y **humedad** están en hello misma estructura:
 
 ```
 DECLARE_STRUCT(TemperatureAndHumidityEvent,
@@ -399,9 +399,9 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 );
 ```
 
-Si usáramos este modelo, sería más fácil entender cómo **Temperature** y **Humidity** se enviarían en el mismo mensaje serializado. No obstante, es posible que no quede claro por qué esto funciona de esa forma cuando se pasan ambos eventos de datos a **SERIALIZE** con el modelo 2.
+Si se usa este modelo, sería más fácil toounderstand cómo **temperatura** y **humedad** se enviarían en hello mismo mensaje serializado. Sin embargo puede no estar claro por qué funciona de este modo al pasar ambos eventos de datos demasiado**SERIALIZE** con modelo 2.
 
-Este comportamiento es más fácil de entender si sabe las suposiciones que realiza la biblioteca de **serializador** . Para que esto tenga sentido, volvamos a nuestro modelo:
+Este comportamiento es más fácil toounderstand si sabe suposiciones Hola ese hello **serializador** biblioteca está realizando. sentido toomake de este volvamos atrás tooour modelo:
 
 ```
 DECLARE_MODEL(Thermostat,
@@ -413,7 +413,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 
 Considere este modelo en términos de orientación a objetos. En este caso, estamos modelando un dispositivo físico (un termostato) y ese dispositivo incluye atributos como **Temperature** y **Humidity**.
 
-Podemos enviar todo el estado de nuestro modelo con código como el siguiente:
+Podemos enviar un estado completo de Hola de nuestro modelo de código como Hola siguiente:
 
 ```
 if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermostat->Humidity, thermostat->Time) == IOT_AGENT_OK)
@@ -422,36 +422,36 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 }
 ```
 
-Suponiendo que los valores de Temperature, Humidity y Time estén establecidos, veríamos que se envía un evento como éste al Centro de IoT:
+Suponiendo que se establecen valores de hello de temperatura y humedad, la hora, se vería un evento como este concentrador de tooIoT enviado:
 
 ```
 {"Temperature":75, "Humidity":45, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-A veces, quizás solo quiera enviar *algunas* propiedades del modelo a la nube (esto es especialmente cierto si el modelo contiene un gran número de eventos de datos). Resulta útil enviar solo un subconjunto de eventos de datos, como en el ejemplo anterior:
+En ocasiones, podría desear sólo toosend *algunos* propiedades de nube de hello modelo toohello (Esto es especialmente cierto si el modelo contiene un gran número de eventos de datos). Resulta útil toosend solo un subconjunto de eventos de datos, como en el ejemplo anterior:
 
 ```
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Se genera exactamente el mismo evento serializado que si hubiéramos definido **TemperatureEvent** con un miembro **Temperature** y **Time**, como hicimos con el modelo 1. En este caso, pudimos generar exactamente el mismo evento serializado con un modelo diferente (modelo 2) porque llamamos a **SERIALIZE** de una manera diferente.
+Esto genera exactamente Hola mismo evento serializa como si hubiéramos definimos un **TemperatureEvent** con un **temperatura** y **tiempo** miembro, como se con 1 del modelo. En este caso hemos toogenerate pueda exactamente hello mismo eventos serializados mediante el uso de un modelo diferente (modelo 2) porque se llamó a **SERIALIZE** de forma diferente.
 
-Lo importante aquí es que si se pasan varios eventos de datos a **SERIALIZE,** , se supone que cada evento es una propiedad en un único objeto JSON.
+Hello importante es que si pasar varios eventos de datos demasiado**SERIALIZE,** , a continuación, se supone que cada evento es una propiedad en un único objeto JSON.
 
-El mejor enfoque dependerá de usted y de su forma de pensar sobre el modelo. Si envía "eventos" a la nube y cada evento contiene un conjunto definido de propiedades, entonces el primer enfoque cobra mucho sentido. En ese caso, usaría **DECLARE\_STRUCT** para definir la estructura de cada evento y luego incluirlos en el modelo con la macro **WITH\_DATA**. A continuación, enviaría cada evento como hicimos en el primer ejemplo anterior. En este enfoque, solo pasaría un evento de datos a **SERIALIZADOR**.
+mejor método de Hello depende de y cómo pensar en el modelo. Si va a enviar "eventos" toohello en la nube y cada evento contiene un conjunto de propiedades definido, primer enfoque de hello hace mucho sentido. En ese caso utilizaría **DECLARE\_STRUCT** toodefine Hola estructura de cada evento y, a continuación, incluirlos en el modelo con hello **WITH\_datos** macro. A continuación, enviar cada evento como hicimos en hello primer ejemplo. En este enfoque solo pasaría un evento único datos demasiado**SERIALIZADOR**.
 
-Si piensa en su modelo como orientado a objetos, entonces el segundo enfoque puede ser adecuado para usted. En este caso, los elementos definidos mediante **WITH\_DATA** son las "propiedades" del objeto. Pasaría cualquier subconjunto de eventos de su elección a **SERIALIZE** , según la cantidad de estado del "objeto" que quiera enviar a la nube.
+Si piensa sobre el modelo de una manera orientada a objetos, puede satisfacer segundo enfoque de Hola se. En este caso, Hola elementos definidos mediante **WITH\_datos** Hola "propiedades" del objeto. Pasar cualquier subconjunto de eventos demasiado**SERIALIZE** que le gusta, dependiendo de la cantidad de estado de "del objeto" desea toosend toohello en la nube.
 
-Ningún enfoque es bueno ni malo. Lo importante es saber cómo funciona la biblioteca de **serializador** y seleccionar el enfoque de modelado que mejor se ajuste a sus necesidades.
+Ningún enfoque es bueno ni malo. Solo debes tener en cuenta cómo hello **serializador** funciona de la biblioteca y un nuevo enfoque de modelado de Hola de selección que mejor se adapte a sus necesidades.
 
 ## <a name="message-handling"></a>Administración de mensajes
-Hasta ahora solo hemos examinado en este artículo el envío de eventos al Centro de IoT y no hemos hablado de la recepción de mensajes. La razón de ello es que lo que necesitamos saber sobre la recepción de mensajes se ha tratado en gran medida en un [artículo anterior](iot-hub-device-sdk-c-intro.md). Como se explicaba en ese artículo, los mensajes se procesan mediante el registro de una función de devolución de llamada de mensaje:
+Hasta ahora en este artículo solo se han tratado el envío eventos tooIoT concentrador y no se ha resuelto recibir mensajes. Hola razón para que esto es lo que necesitamos tooknow acerca de la recepción de mensajes ha sido cubierto en gran medida en un [anteriormente artículo](iot-hub-device-sdk-c-intro.md). Como se explicaba en ese artículo, los mensajes se procesan mediante el registro de una función de devolución de llamada de mensaje:
 
 ```
 IoTHubClient_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather)
 ```
 
-Luego, se escribe la función de devolución de llamada que se invoca cuando se recibe un mensaje:
+A continuación, puede escribir la función de devolución de llamada de Hola que se invoca cuando se recibe un mensaje:
 
 ```
 static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -461,7 +461,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
     size_t size;
     if (IoTHubMessage_GetByteArray(message, &buffer, &size) != IOTHUB_MESSAGE_OK)
     {
-        printf("unable to IoTHubMessage_GetByteArray\r\n");
+        printf("unable tooIoTHubMessage_GetByteArray\r\n");
         result = EXECUTE_COMMAND_ERROR;
     }
     else
@@ -470,7 +470,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
         char* temp = malloc(size + 1);
         if (temp == NULL)
         {
-            printf("failed to malloc\r\n");
+            printf("failed toomalloc\r\n");
             result = EXECUTE_COMMAND_ERROR;
         }
         else
@@ -489,7 +489,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-Esta implementación de **IoTHubMessage** llama a la función específica para cada acción del modelo. Por ejemplo, si el modelo define esta acción:
+Esta implementación de **IoTHubMessage** llamadas Hola función específica para cada acción en el modelo. Por ejemplo, si el modelo define esta acción:
 
 ```
 WITH_ACTION(SetAirResistance, int, Position)
@@ -501,51 +501,51 @@ Debe definir una función con esta firma:
 EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 {
     (void)device;
-    (void)printf("Setting Air Resistance Position to %d.\r\n", Position);
+    (void)printf("Setting Air Resistance Position too%d.\r\n", Position);
     return EXECUTE_COMMAND_SUCCESS;
 }
 ```
 
-**SetAirResistance** cuando ese mensaje se envía al dispositivo.
+**SetAirResistance** , a continuación, se llama cuando se envía ese mensaje tooyour dispositivo.
 
-Lo que no hemos explicado aún es cuál es el aspecto de la versión serializada del mensaje. En otras palabras, si desea enviar un mensaje **SetAirResistance** a su dispositivo, ¿cómo se hará?
+Aún se lo que no hemos explicado es qué versión de Hola serializado de aspecto del mensaje. ¿En otras palabras, si desea toosend una **SetAirResistance** dispositivo de tooyour de mensaje, lo que ese aspecto tiene?
 
-Si va a enviar un mensaje a un dispositivo, debería hacerlo a través del SDK del servicio IoT de Azure. Necesitará saber aun así qué cadena se envía para invocar una acción determinada. El formato general para enviar un mensaje aparece del modo siguiente:
+Si va a enviar un dispositivo de tooa de mensaje, podría hacerlo a través de SDK del servicio Hola IoT de Azure. Todavía necesita tooknow qué cadena toosend tooinvoke una acción concreta. formato general de Hola para enviar un mensaje aparece como sigue:
 
 ```
 {"Name" : "", "Parameters" : "" }
 ```
 
-Si envía un objeto JSON serializado con dos propiedades: **Name** es el nombre de la acción (mensaje) y **Parameters** contiene los parámetros de esa acción.
+Va a enviar un objeto JSON serializado con dos propiedades: **nombre** es Hola nombre de acción de hello (mensaje) y **parámetros** contiene parámetros de Hola de esa acción.
 
-Por ejemplo, para invocar **SetAirResistance** , puede enviar este mensaje a un dispositivo:
+Por ejemplo, tooinvoke **SetAirResistance** puede enviar este dispositivo de tooa mensaje:
 
 ```
 {"Name" : "SetAirResistance", "Parameters" : { "Position" : 5 }}
 ```
 
-El nombre de la acción debe coincidir exactamente con una acción definida en el modelo. Los nombres de los parámetros deben coincidir también. Tenga en cuenta que existe una distinción de mayúsculas y minúsculas. **Name** y **Parameters** van siempre en mayúsculas. Asegúrese de que las mayúsculas y minúsculas coincidan en el nombre de la acción y los parámetros del modelo. En este ejemplo, el nombre de la acción es "SetAirResistance" y no "setairresistance".
+nombre de la acción de Hello debe coincidir exactamente con una acción definida en el modelo. nombres de parámetro de Hello deben coincidir también. Tenga en cuenta que existe una distinción de mayúsculas y minúsculas. **Name** y **Parameters** van siempre en mayúsculas. Que el caso de hello toomatch seguro de su nombre de acción y los parámetros en el modelo. En este ejemplo, el nombre de la acción de hello es "SetAirResistance" y no "setairresistance".
 
-Las otras dos acciones **TurnFanOn** y **TurnFanOff** se pueden invocar mediante el envío de estos mensajes a un dispositivo:
+Hola dos otras acciones **TurnFanOn** y **TurnFanOff** puede invocarse mediante el envío de estos dispositivos de tooa de mensajes:
 
 ```
 {"Name" : "TurnFanOn", "Parameters" : {}}
 {"Name" : "TurnFanOff", "Parameters" : {}}
 ```
 
-En esta sección se describe todo lo que necesita saber al enviar eventos y recibir mensajes con la biblioteca de **serializador** . Antes de continuar, vamos a examinar algunos parámetros que puede configurar que controlan lo grande que es su modelo.
+En esta sección se describe todo lo que necesita tooknow cuando el envío de eventos y recibir mensajes con Hola **serializador** biblioteca. Antes de continuar, vamos a examinar algunos parámetros que puede configurar que controlan lo grande que es su modelo.
 
 ## <a name="macro-configuration"></a>Configuración de macros
-Si está usando la biblioteca de **serializador**, una parte importante del SDK que se debe tener en cuenta se encuentra en la biblioteca azure-c-shared-utility.
-Si ha clonado el repositorio Azure-iot-sdk-c desde GitHub con la opción --recursive, encontrará esta biblioteca de utilidad compartida aquí:
+Si usas hello **serializador** biblioteca una parte importante de hello SDK toobe en cuenta se encuentra en la biblioteca de azure-c-compartido-utilidad de Hola.
+Si ha clonado repositorio hello Azure-iot-sdk-c desde GitHub con opción de hello--recursiva, encontrará esta biblioteca de utilidad compartida aquí:
 
 ```
 .\\c-utility
 ```
 
-Si no ha clonado la biblioteca, podrá encontrarla [aquí](https://github.com/Azure/azure-c-shared-utility).
+Si no ha clonado biblioteca hello, lo encontrará [aquí](https://github.com/Azure/azure-c-shared-utility).
 
-Dentro de la biblioteca de utilidad compartida, encontrará la siguiente carpeta:
+Biblioteca de utilidad compartida hello, encontrará Hola después de la carpeta:
 
 ```
 azure-c-shared-utility\\macro\_utils\_h\_generator.
@@ -555,9 +555,9 @@ Esta carpeta contiene una solución de Visual Studio denominada **macro\_utils\_
 
   ![](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.PNG)
 
-El programa de esta solución genera el archivo **macro\_utils.h**. Hay un archivo macro\_utils.h predeterminado incluido con el SDK. Esta solución le permite modificar algunos parámetros y luego volver a crear el archivo de encabezado en función de ellos.
+programa Hello en esta solución genera hello **macro\_utils.h** archivo. Hay una macro predeterminado\_archivo utils.h incluido con hello SDK. Esta solución permite toomodify algunos parámetros y, a continuación, vuelva a crear Hola basado en estos parámetros de archivo de encabezado.
 
-Los dos parámetros clave que se deben tener en cuenta son **nArithmetic** y **nMacroParameters**, que se definen en estas dos líneas que se encuentran en macro\_utils.tt:
+Hola dos parámetros clave toobe preocupan son **nArithmetic** y **nMacroParameters** que se definen en estas dos líneas que se encuentra en la macro\_utils.tt:
 
 ```
 <#int nArithmetic=1024;#>
@@ -565,12 +565,12 @@ Los dos parámetros clave que se deben tener en cuenta son **nArithmetic** y **n
 
 ```
 
-Estos valores son los parámetros predeterminados incluidos con el SDK. Cada parámetro tiene el significado siguiente:
+Estos valores son parámetros de hello predeterminados incluidos con hello SDK. Cada parámetro tiene Hola siguiente significado:
 
 * nMacroParameters: controla el número de parámetros que puede tener en una definición de macro DECLARE\_MODEL.
-* nArithmetic: controla el número total de miembros permitidos en un modelo.
+* nArithmetic: número total de controles Hola de miembros permitidos en un modelo.
 
-El motivo de que estos parámetros sean importantes es que controlan lo grande que puede ser el modelo. Por ejemplo, tenga en cuenta esta definición de modelo:
+motivo de Hello que estos parámetros son importantes es porque controlan lo grande que puede ser el modelo. Por ejemplo, tenga en cuenta esta definición de modelo:
 
 ```
 DECLARE_MODEL(MyModel,
@@ -578,21 +578,21 @@ WITH_DATA(int, MyData)
 );
 ```
 
-Como se mencionó antes, **DECLARE\_MODEL** es simplemente una macro de C. Los nombres del modelo y la instrucción **WITH\_DATA** (todavía otra macro) son parámetros de **DECLARE\_MODEL**. **nMacroParameters** define la cantidad de parámetros que puede incluirse en **DECLARE\_MODEL**. Esto permite definir de manera efectiva cuántas declaraciones de evento y acción puede tener. Con el límite predeterminado de 124, significa que puede definir un modelo con una combinación de unas 60 acciones y eventos de datos. Si intenta superar este límite, obtendrá errores de compilación parecidos a estos:
+Como se mencionó antes, **DECLARE\_MODEL** es simplemente una macro de C. Hola nombres de modelo de Hola y Hola **WITH\_datos** instrucción (todavía otra macro) es parámetros de **DECLARE\_modelo**. **nMacroParameters** define la cantidad de parámetros que puede incluirse en **DECLARE\_MODEL**. Esto permite definir de manera efectiva cuántas declaraciones de evento y acción puede tener. Por lo tanto, con el límite predeterminado de Hola de 124 Esto significa que puede definir un modelo con una combinación de aproximadamente 60 acciones y eventos de datos. Si intentas tooexceed este límite, recibirá errores de compilador que tengan un aspecto similar toothis:
 
   ![](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.PNG)
 
-El parámetro **nArithmetic** tiene más que ver con el funcionamiento interno del lenguaje de macros que con la aplicación.  Controla el número total de miembros que puede tener en el modelo, incluidas las macros **DECLARE_STRUCT**. Si comienza a ver errores del compilador como este, debería intentar aumentar el valor de **nArithmetic**:
+Hola **nArithmetic** parámetro es más sobre el funcionamiento interno de Hola de lenguaje de macros de hello de la aplicación.  Controla el número total de Hola de miembros que puede haber en el modelo, incluidos los **DECLARE_STRUCT** macros. Si comienza a ver errores del compilador como este, debería intentar aumentar el valor de **nArithmetic**:
 
    ![](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.PNG)
 
-Si desea cambiar estos parámetros, modifique los valores del archivo macro\_utils.tt, vuelva a compilar la solución macro\_utils\_h\_generator.sln y ejecute el programa compilado. Al hacerlo, se genera un nuevo archivo macro\_utils.h y se coloca en el directorio .\\common\\inc.
+Si desea toochange estos parámetros, modifique los valores de hello en macro hello\_archivo utils.tt, recompile Hola macro\_utils\_h\_generator.sln solución y Hola ejecución el programa compilado. Al hacer esto, una macro nueva\_utils.h archivo generado y lo coloca en Hola.\\ Common\\directorio inc.
 
-Para poder usar la nueva versión de macro\_utils.h, quite el paquete NuGet de **serializador** de la solución y, en su lugar, incluya el proyecto de Visual Studio de **serializador**. Esto permite a su código compilarse con el código fuente de la biblioteca de serializador. Incluye la macro\_utils.h. actualizada. Si desea hacer esto para **simplesample\_amqp**, empiece quitando el paquete NuGet para la biblioteca de serializador de la solución:
+En la versión nuevo Hola de orden toouse de macro\_utils.h, remove hello **serializador** paquete de NuGet con la solución y, en su lugar incluir hello **serializador** proyecto de Visual Studio. Esto permite la toocompile código contra el código fuente de Hola de biblioteca de serializador de Hola. Esto incluye la macro Hola actualiza\_utils.h. Si desea toodo para **simplesample\_amqp**, iniciar mediante la eliminación de paquete de NuGet hello para la biblioteca de serializador de Hola de solución de hello:
 
    ![](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.PNG)
 
-Luego agregue este proyecto a la solución de Visual Studio:
+A continuación, agregue esta solución de Visual Studio tooyour de proyecto:
 
 > .\\c\\serializer\\build\\windows\\serializer.vcxproj
 > 
@@ -602,16 +602,16 @@ Cuando haya terminado, su solución debe tener este aspecto:
 
    ![](media/iot-hub-device-sdk-c-serializer/05-serializer-project.PNG)
 
-Ahora, cuando se compila la solución, la macro\_utils.h actualizada se incluye en el archivo binario.
+Ahora cuando se compila la solución, hello actualizado macro\_utils.h se incluye en el archivo binario.
 
-Tenga en cuenta que, si se aumentan estos valores mucho, se podrían exceder los límites del compilador. En este punto, **nMacroParameters** es el parámetro principal del que nos tenemos que ocupar. La especificación C99 especifica que se permiten 127 parámetros como mínimo en una definición de macro. El compilador de Microsoft sigue la especificación exactamente (y tiene un límite de 127) por lo que no podrá aumentar **nMacroParameters** por encima de su valor predeterminado. Es posible que otros compiladores le permitan hacerlo (por ejemplo, el compilador GNU admite un límite más alto).
+Tenga en cuenta que, si se aumentan estos valores mucho, se podrían exceder los límites del compilador. toothis punto, hello **nMacroParameters** es Hola parámetro principal con qué toobe que se trate. especificación de C99 Hola especifica que un mínimo de 127 parámetros se permiten en una definición de macro. Hello Microsoft compilador sigue la especificación de hello exactamente (y tiene un límite de 127), por lo que no será capaz de tooincrease **nMacroParameters** más allá del valor predeterminado de Hola. Otros compiladores le puede permitir toodo así (por ejemplo, compilador de GNU hello es compatible con un límite más alto).
 
-Hasta ahora hemos visto casi todo lo que necesita saber sobre cómo escribir código con la biblioteca de **serializador** . Antes de concluir, vamos a revisar algunos temas de artículos anteriores sobre los que es posible que se esté preguntando.
+Hasta ahora hemos cubierto casi todo lo que necesita tooknow acerca de cómo toowrite código con hello **serializador** biblioteca. Antes de concluir, vamos a revisar algunos temas de artículos anteriores sobre los que es posible que se esté preguntando.
 
-## <a name="the-lower-level-apis"></a>API de nivel inferior
-La aplicación de ejemplo en la que se centró este artículo es **simplesample\_amqp**. En este ejemplo se usan las API de nivel superior (las no "LL") para enviar eventos y recibir mensajes. Si usa estas API, se ejecuta un subproceso en segundo plano que se encarga de enviar eventos y recibir mensajes. Sin embargo, puede usar las API de nivel inferior (LL) para eliminar este subproceso en segundo plano y tener un control explícito sobre cuándo envía eventos o recibe mensajes de la nube.
+## <a name="hello-lower-level-apis"></a>Hola las API de nivel inferior
+aplicación de ejemplo de Hola en la que se centra en este artículo es **simplesample\_amqp**. Este ejemplo usa Hola eventos de nivel superior (hello no-"LL") las API toosend y recibir mensajes. Si usa estas API, se ejecuta un subproceso en segundo plano que se encarga de enviar eventos y recibir mensajes. Sin embargo, puede usar Hola nivel inferior (LL) API tooeliminate este subproceso en segundo plano y tener un control explícito al enviar eventos o recibir mensajes de la nube de Hola.
 
-Como se describió en un [artículo anterior](iot-hub-device-sdk-c-iothubclient.md), hay conjuntos de funciones que constan de API de nivel superior:
+Como se describe en un [artículo anterior](iot-hub-device-sdk-c-iothubclient.md), hay un conjunto de funciones que consta de hello APIs de nivel superior:
 
 * IoTHubClient\_CreateFromConnectionString
 * IoTHubClient\_SendEventAsync
@@ -627,12 +627,12 @@ Hay un conjunto similar de API de nivel inferior.
 * IoTHubClient\_LL\_SetMessageCallback
 * IoTHubClient\_LL\_Destroy
 
-Tenga en cuenta que las API de nivel inferior funcionan exactamente como se describió en los artículos anteriores. Puede usar el primer conjunto de API, si quiere que un subproceso en segundo plano controle el envío de eventos y la recepción de mensajes. Si quiere un control explícito sobre cuándo envía y recibe datos del Centro de IoT, usará el segundo conjunto de API. Cualquier conjunto de API funciona igual de bien con la biblioteca de **serializador** .
+Tenga en cuenta que trabajo de las API de nivel inferior de Hola Hola exactamente como se describe en los artículos de hello anterior. Puede usar el primer conjunto de API de hello si desea que un toohandle de subproceso de fondo eventos de enviar y recibir mensajes. Use el segundo conjunto de API de hello si desea que un control explícito sobre al enviar y recibir datos desde el centro de IoT. Cualquier conjunto de trabajo de las API igualmente bien con hello **serializador** biblioteca.
 
-Para ver un ejemplo de cómo se usan las API de nivel inferior con la biblioteca de **serializador**, vea la aplicación **simplesample\_http**.
+Para obtener un ejemplo de cómo hello las API de nivel inferior se usan con hello **serializador** biblioteca, vea hello **simplesample\_http** aplicación.
 
 ## <a name="additional-topics"></a>Otros temas
-Algunos otros temas que merece la pena mencionar de nuevo son el control de propiedades, el uso de credenciales de dispositivo alternativas y las opciones de configuración. Todos estos temas se trataron en un [artículo anterior](iot-hub-device-sdk-c-iothubclient.md). Lo que hay que destacar es que todas estas características funcionan igual con la biblioteca de **serializador** que con la biblioteca de **IoTHubClient**. Por ejemplo, si desea adjuntar propiedades a un evento del modelo, use **IoTHubMessage\_Properties** y **Map**\_**AddorUpdate** de la misma forma que se describió anteriormente:
+Algunos otros temas que merece la pena mencionar de nuevo son el control de propiedades, el uso de credenciales de dispositivo alternativas y las opciones de configuración. Todos estos temas se trataron en un [artículo anterior](iot-hub-device-sdk-c-iothubclient.md). Hello punto más importante es que todas estas características funcionan en hello misma manera con hello **serializador** biblioteca como lo hacen con hello **IoTHubClient** biblioteca. Por ejemplo, si desea eventos tooan de tooattach propiedades del modelo, se utiliza **IoTHubMessage\_propiedades** y **mapa**\_**AddorUpdate**, Hola misma forma en que se ha descrito anteriormente:
 
 ```
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -640,13 +640,13 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-Da igual que el evento se generara con la biblioteca de **serializador** o se creara de forma manual con la biblioteca **IoTHubClient**.
+Si generó un suceso Hola de hello **serializador** biblioteca o creados manualmente mediante hello **IoTHubClient** no importa la biblioteca.
 
-En cuanto a las credenciales de dispositivo alternativas, el uso de **IoTHubClient\_LL\_Create** funciona igual de bien que **IoTHubClient\_CreateFromConnectionString** para asignar **IOTHUB\_CLIENT\_HANDLE**.
+Para hello alternar las credenciales del dispositivo, usando **IoTHubClient\_LL\_crear** funciona tan bien como **IoTHubClient\_CreateFromConnectionString** para asignar un **el centro de IOT\_cliente\_controlar**.
 
-Por último, si usa la biblioteca de **serializador**, puede establecer opciones de configuración con **IoTHubClient\_LL\_SetOption** lo mismo que hizo al usar la biblioteca **IoTHubClient**.
+Por último, si usas hello **serializador** biblioteca, puede establecer opciones de configuración con **IoTHubClient\_LL\_SetOption** tal y como lo hizo cuando se usa hello **IoTHubClient** biblioteca.
 
-Una característica que es exclusiva de la biblioteca de **serializador** son las API de inicialización. Antes de empezar a trabajar con la biblioteca, debe llamar a **serializer\_init**:
+Una característica que sea único toohello **serializador** library son inicialización Hola API. Para poder empezar a trabajar con la biblioteca de hello, debe llamar a **serializador\_init**:
 
 ```
 serializer_init(NULL);
@@ -654,22 +654,22 @@ serializer_init(NULL);
 
 Esto se hace justo antes de llamar a **IoTHubClient\_CreateFromConnectionString**.
 
-Del mismo modo, cuando termine de trabajar con la biblioteca, la última llamada que hará es a **serializer\_deinit**:
+De forma similar, cuando haya acabado trabajar con la biblioteca de hello, última llamada de hello conseguirá que es demasiado**serializador\_deinit**:
 
 ```
 serializer_deinit();
 ```
 
-Por lo demás, todas las demás características enumeradas anteriormente funcionan igual en la biblioteca de **serializador** que en la biblioteca **IoTHubClient**. Para más información sobre cualquiera de estos temas, consulte el [artículo anterior](iot-hub-device-sdk-c-iothubclient.md) de esta serie.
+En caso contrario, Hola a todos los de otras funcionalidades enumeradas anteriormente trabajo mismo Hola Hola **serializador** biblioteca como lo hacen en hello **IoTHubClient** biblioteca. Para obtener más información acerca de cualquiera de estos temas, vea hello [artículo anterior](iot-hub-device-sdk-c-iothubclient.md) en esta serie.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este artículo se describen en detalle los aspectos únicos de la biblioteca de **serializador** contenida en el **SDK de dispositivo IoT de Azure para C**. Con la información proporcionada, habrá comprendido perfectamente cómo usar los modelos para enviar eventos y recibir mensajes del Centro de IoT.
+Este artículo se describe en aspectos exclusivos de detalle Hola de hello **serializador** biblioteca contenido en hello **dispositivos de IoT de Azure SDK para C**. Con información de hello proporcionada debe tener una buena comprensión de cómo toouse modela toosend eventos y recibir mensajes desde centro de IoT.
 
-Con esto también concluye la serie de tres partes sobre cómo desarrollar aplicaciones con el **SDK de dispositivo IoT de Azure para C**. Esta información debería ser suficiente no solo para ayudarle en sus primeros pasos sino también para proporcionarle una comprensión profunda de cómo funcionan las API. Para obtener información adicional, existen algunos ejemplos en el SDK que no se tratan aquí. Por lo demás, la [documentación del SDK](https://github.com/Azure/azure-iot-sdk-c) es un buen recurso para conseguir información adicional.
+Con esto concluye también serie de tres partes de hello en cómo las aplicaciones de toodevelop con Hola **dispositivos de IoT de Azure SDK para C**. Esto debe ser suficiente información toonot solo introducción pero ofrecerle una explicación exhaustiva sobre el funcionamiento de las API de Hola. Para obtener información adicional, hay algunos ejemplos en hello que SDK no se trata aquí. En caso contrario, Hola [documentación del SDK de](https://github.com/Azure/azure-iot-sdk-c) es un buen recurso para obtener información adicional.
 
-Para más información acerca del desarrollo para IoT Hub, consulte los [SDK de IoT Hub][lnk-sdks].
+toolearn más sobre el desarrollo de centro de IoT, vea hello [SDK de Azure IoT][lnk-sdks].
 
-Para explorar aún más las funcionalidades de IoT Hub, consulte:
+toofurther explorar las capacidades de Hola de centro de IoT, vea:
 
 * [Simular un dispositivo con Azure IoT Edge][lnk-iotedge]
 

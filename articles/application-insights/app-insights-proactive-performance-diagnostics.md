@@ -1,5 +1,5 @@
 ---
-title: "Detección inteligente: anomalías de rendimiento de Smart | Microsoft Docs"
+title: "aaaSmart - detección de anomalías de rendimiento | Documentos de Microsoft"
 description: "Application Insights realiza un análisis inteligente de la telemetría de su aplicación y le advierte de los posibles problemas. Esta característica no necesita ninguna configuración."
 services: application-insights
 documentationcenter: windows
@@ -13,131 +13,131 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: bwren
-ms.openlocfilehash: fbcd0c4bf0bf959f8a447d922e1e411b8a2af95f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 60f10612188920330030129f7464e2f398ef1f2a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="smart-detection---performance-anomalies"></a>Detección inteligente: anomalías de rendimiento
 
-[Application Insights](app-insights-overview.md) analiza automáticamente el rendimiento de su aplicación web y puede advertirle de los posibles problemas. Podría estar leyendo este artículo porque ha recibido una de nuestras notificaciones de detección inteligente.
+[Application Insights](app-insights-overview.md) automáticamente analiza el rendimiento de saludo de la aplicación web y puede avisarle sobre posibles problemas. Podría estar leyendo este artículo porque ha recibido una de nuestras notificaciones de detección inteligente.
 
 Esta característica no requiere ninguna configuración especial, tan solo ajustar los parámetros de la aplicación para Application Insights (en [ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md) o [Node.js](app-insights-nodejs.md), así como en el [código de la página web](app-insights-javascript.md)). Se activará cuando la aplicación genera suficientes datos de telemetría.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>¿Cuándo recibiría una notificación de detección inteligente?
 
-Application Insights ha detectado que el rendimiento de la aplicación se ha degradado en una de estas maneras:
+Visión de la aplicación ha detectado que el rendimiento de saludo de la aplicación ha disminuido en una de estas maneras:
 
-* **Degradación del tiempo de respuesta**: la aplicación ha comenzado a responder a las solicitudes de una forma más lenta de lo habitual. El cambio podría haber sido rápido, por ejemplo, porque hubo una regresión en la implementación más reciente. También podría haber sido gradual, probablemente debido a una fuga de memoria. 
-* **Degradación de la duración de la dependencia**: la aplicación realiza llamadas a una API de REST, una base de datos u otra dependencia. La dependencia responde de una forma más lenta de lo habitual.
-* **Patrón de rendimiento lento**: la aplicación parece tener un problema de rendimiento que está afectando solo a algunas solicitudes. Por ejemplo, las páginas se cargan mucho más lentamente en un tipo de explorador que en otros, o las solicitudes se atienden de una forma más lenta desde un servidor concreto. En la actualidad, nuestros algoritmos examinan tiempos de carga de página, tiempos de respuesta de solicitud y tiempos de respuesta de dependencia.  
+* **Degradación de tiempo de respuesta** -se ha iniciado la aplicación responde toorequests más lentamente que antes. cambio de Hello puede haber sido rápido, por ejemplo porque no había una regresión en la implementación más reciente. También podría haber sido gradual, probablemente debido a una fuga de memoria. 
+* **Degradación de la duración de dependencia** -la aplicación realiza llamadas API de REST de tooa, base de datos u otra dependencia. dependencia de Hello responde más lentamente que antes.
+* **Patrón de un rendimiento lento** -la aplicación aparece toohave emitirá un rendimiento que está afectando a sólo algunas solicitudes. Por ejemplo, las páginas se cargan mucho más lentamente en un tipo de explorador que en otros, o las solicitudes se atienden de una forma más lenta desde un servidor concreto. En la actualidad, nuestros algoritmos examinan tiempos de carga de página, tiempos de respuesta de solicitud y tiempos de respuesta de dependencia.  
 
-Detección inteligente requiere, al menos, 8 días de datos de telemetría en un volumen de trabajo con el fin de establecer una línea de base de rendimiento normal. Por lo tanto, después de que la aplicación se haya estado ejecutando durante ese periodo, se generará una notificación cuando se produzca un problema significativo.
+Detección inteligente requiere al menos 8 días de telemetría en un volumen factible en orden tooestablish una línea de base de rendimiento normal. Por lo tanto, después de que la aplicación se haya estado ejecutando durante ese periodo, se generará una notificación cuando se produzca un problema significativo.
 
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>Entonces, ¿mi aplicación tiene un problema?
 
-No, una notificación no significa que la aplicación tenga un problema. Simplemente es una sugerencia sobre algo que puede que desee examinar con más detenimiento.
+No, una notificación no significa que la aplicación tenga un problema. Es simplemente una sugerencia relacionada con algo que conviene toolook en forma más estrecha.
 
 ## <a name="how-do-i-fix-it"></a>¿Cómo puedo corregirlo?
 
-Las notificaciones incluyen información de diagnóstico. Este es un ejemplo:
+las notificaciones de Hello incluir información de diagnóstico. Este es un ejemplo:
 
 
 ![Este es un ejemplo de detección de degradación del tiempo de respuesta del servidor](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
 
-1. **Evaluación de errores**. La notificación muestra el número de usuarios u operaciones afectado. Esto puede ayudarlo a asignar una prioridad al problema.
-2. **Ámbito**. ¿Está el problema afectando a todo el tráfico o solo a algunas páginas? ¿Está limitado a ubicaciones o exploradores determinados? Esta información puede obtenerse de la notificación.
-3. **Diagnóstico**. A menudo, la información de diagnóstico de la notificación sugiere cuál es la naturaleza del problema. Por ejemplo, si el tiempo de respuesta se ralentiza cuando la velocidad de solicitudes es alta, el problema podría estar en que su servidor o dependencias están sobrecargadas. 
+1. **Evaluación de errores**. notificación de Hello muestra el número de usuarios o cuántas operaciones se ven afectadas. Esto puede ayudarle a asignar un problema de toohello de prioridad.
+2. **Ámbito**. ¿Problema de hello afecta a todo el tráfico, o solo algunas páginas? ¿Está restringido de TI tooparticular exploradores o ubicaciones? Esta información puede obtenerse de notificación de Hola.
+3. **Diagnóstico**. A menudo, información de diagnóstico de hello en la notificación de hello sugerirá naturaleza Hola de problema de Hola. Por ejemplo, si el tiempo de respuesta se ralentiza cuando la velocidad de solicitudes es alta, el problema podría estar en que su servidor o dependencias están sobrecargadas. 
 
-    Si no sugiere la causa, abra la hoja Rendimiento de Application Insights. Allí encontrará los datos de [Profiler](app-insights-profiler.md). Si se producen excepciones, también puede probar el [Depurador de instantáneas](app-insights-snapshot-debugger.md).
+    De lo contrario, abra hoja de rendimiento de hello en Application Insights. Allí encontrará los datos de [Profiler](app-insights-profiler.md). Si se detectan excepciones, también puede intentar hello [depurador instantánea](app-insights-snapshot-debugger.md).
 
 
 
 ## <a name="configure-email-notifications"></a>Configuración de notificaciones de correo electrónico
 
-Las notificaciones de Detección inteligentes se habilitan de forma predeterminada y se envían a aquellos que tienen [acceso como propietarios, colaboradores y lectores a los recursos de Application Insights](app-insights-resources-roles-access-control.md). Para cambiar esta configuración, haga clic en la opción **Configurar** de la notificación por correo electrónico, o bien abra la configuración de Detección inteligente en Application Insights. 
+Las notificaciones de detección inteligentes se habilita de forma predeterminada y se envían toothose con [sus propietarios, contribuidores y lectores de tener acceso a recursos de Application Insights toohello](app-insights-resources-roles-access-control.md). toochange esto, haga clic en **configurar** en Hola notificación por correo electrónico o se abre la configuración de detección inteligente en Application Insights. 
   
   ![Configuración de Detección inteligente](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
   
-  * Para dejar de recibir notificaciones por correo electrónico, puede usar el vínculo de **cancelación de suscripción** del correo electrónico de Detección inteligente .
+  * Puede usar hello **cancelar la suscripción** vínculo en toostop de correo electrónico de detección inteligente de Hola recibir notificaciones de correo electrónico de Hola.
 
-Los mensajes de correo electrónico de las anomalías de rendimiento de Detección inteligente tienen una limitación de un correo electrónico al día por recurso de Application Insights. El mensaje de correo electrónico solo se enviará si se ha detectado, como mínimo, un problema nuevo ese día. No obtendrá repeticiones de ningún mensaje. 
+Mensajes de correo electrónico acerca de las anomalías de rendimiento de las detecciones inteligentes son correo electrónico de tooone limitado al día por recurso de Application Insights. se enviará correo electrónico de Hello solo si hay al menos un problema nuevo que se ha detectado ese día. No obtendrá repeticiones de ningún mensaje. 
 
 ## <a name="faq"></a>P+F
 
 * *¿Entonces están mirando mis datos?*
-  * No. El servicio es completamente automático. Solo obtendrá las notificaciones. Sus datos son [privados](app-insights-data-retention-privacy.md).
-* *¿Analiza todos los datos recopilados por Application Insights?*
+  * No. servicio de Hello es completamente automático. Solo se reciben las notificaciones de Hola. Sus datos son [privados](app-insights-data-retention-privacy.md).
+* *¿Se analizan todos los datos de hello recopilados por Application Insights?*
   * No en este momento. Actualmente, analizamos el tiempo de respuesta de la solicitud, el tiempo de respuesta de dependencia y el tiempo de carga de la página. En un futuro analizaremos más métricas.
 
 * ¿En qué tipos de aplicación funciona?
-  * Estas degradaciones se detectan en cualquier aplicación que generan los datos de telemetría. Si instaló Application Insights en su aplicación web, el seguimiento de las solicitudes y las dependencias se realiza automáticamente. Sin embargo, en los servicios back-end u otras aplicaciones, si insertó llamadas a [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) o [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency), la Detección inteligente funcionará de la misma manera.
+  * Se detecta estos degradación en cualquier aplicación que genera la telemetría de hello adecuado. Si instaló Application Insights en su aplicación web, el seguimiento de las solicitudes y las dependencias se realiza automáticamente. Pero en servicios back-end u otras aplicaciones, si se hubiera insertado llamadas demasiado[TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) o [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency), detección inteligente funcionará en hello igual manera.
 
 * *¿Puedo crear mis propias reglas de detección de anomalías o personalizar las existentes?*
 
   * Aún no, pero puede realizar lo siguiente:
     * [Configurar alertas](app-insights-alerts.md) que le indiquen cuándo una métrica cruza un umbral.
-    * [Exportar telemetría](app-insights-export-telemetry.md) a una [base de datos](app-insights-code-sample-export-sql-stream-analytics.md) o a [PowerBI](app-insights-export-power-bi.md) para poder realizar un análisis usted mismo.
-* *¿Con qué frecuencia se lleva a cabo el análisis?*
+    * [Exportar telemetría](app-insights-export-telemetry.md) tooa [base de datos](app-insights-code-sample-export-sql-stream-analytics.md) o [tooPowerBI](app-insights-export-power-bi.md), donde se puede analizar usted mismo.
+* *¿Con qué frecuencia se lleva a cabo análisis Hola?*
 
-  * Ejecutamos el análisis diariamente en la telemetría del día anterior (día completo en la zona horaria UTC).
+  * Ejecutamos analysis Hola diariamente de telemetría de Hola de hello anterior día (día completo en la zona horaria UTC).
 * *¿Sustituye esto a las [alertas de métricas](app-insights-alerts.md)?*
-  * No.  No nos comprometemos a detectar cada comportamiento que el usuario podría anómalo.
+  * No.  No asigne toodetecting cada comportamiento que podría considerar anómala.
 
 
-* *Si no tomo ninguna medida como respuesta a una notificación, ¿recibiré un aviso?*
-  * No, obtendrá un mensaje sobre cada problema solo una vez. Si el problema persiste, se actualizará en la hoja de fuente de Detección inteligente.
-* *Perdí el mensaje de correo electrónico. ¿Dónde puedo encontrar las notificaciones en el portal?*
-  * En la información general de Application Insights de su aplicación, haga clic en el icono **Detección inteligente**. Allí encontrará todas las notificaciones de los 90 últimos días.
+* *¿Si no hacer nada en respuesta tooa notificación, obtendrá un aviso?*
+  * No, obtendrá un mensaje sobre cada problema solo una vez. Si persiste el problema de Hola se actualizará en hello que detección inteligente fuente hoja.
+* *He perdido el correo electrónico de Hola. ¿Dónde puedo encontrar las notificaciones de hello en el portal de hello?*
+  * En información general de Application Insights hello de la aplicación, haga clic en hello **detección inteligente** icono. Se le toofind capaz de que realizar copias de todas las notificaciones de los días de too90.
 
 ## <a name="how-can-i-improve-performance"></a>¿Cómo puedo mejorar el rendimiento?
-Las respuestas lentas y los errores se encuentran entre los principales motivos de frustración entre los usuarios de los sitios web, como bien sabrá por su propia experiencia. Por lo tanto, es importante que trate los problemas.
+Las respuestas lenta pero no lo consiguió son uno de frustraciones más grandes de Hola para los usuarios del sitio web, como se indicó en su propia experiencia. Por lo tanto, es importante tooaddress Hola problemas.
 
 ### <a name="triage"></a>Evaluación de errores
-En primer lugar, ¿es realmente importante? Si una página siempre tarda en cargarse, pero solo un 1 % de los usuarios del sitio accede a ella, es posible que tenga cosas más importantes de las que ocuparse. Por otro lado, si solo un 1 % de los usuarios la abren, pero aún así produce excepciones cada vez, puede que merezca la pena investigar el problema.
+En primer lugar, ¿es realmente importante? Si una página siempre está tooload lenta, pero sólo un 1% de los usuarios del sitio tienen alguna vez toolook en él, puede que tenga más importante toothink cosas sobre. En Hola otra parte, si solo 1% de los usuarios para abrirlo, pero produce excepciones cada vez, lo que podría ser conveniente investigar.
 
-Use la instrucción de impacto (usuarios afectados o porcentaje de tráfico) como guía general, pero tenga en cuenta que esta no le va a explicar todo lo que pasa. Recopile otras pruebas para confirmar.
+Utilizar la instrucción de impacto de hello (usuarios afectados o % de tráfico) como directriz general, pero tenga en cuenta que no es todo Hola. Recopilar otro tooconfirm evidencia.
 
-Tenga en cuenta los parámetros del problema. Si es dependiente de la ubicación, configure [pruebas de disponibilidad](app-insights-monitor-web-app-availability.md) que incluyan la región: simplemente puede que haya problemas de red en esa área.
+Considere la posibilidad de parámetros de Hola de problema de Hola. Si es dependiente de la ubicación, configure [pruebas de disponibilidad](app-insights-monitor-web-app-availability.md) que incluyan la región: simplemente puede que haya problemas de red en esa área.
 
 ### <a name="diagnose-slow-page-loads"></a>Diagnostico de cargas de página lentas
-¿Dónde está el problema? ¿Es el servidor lento para responder, es la página muy larga o requiere mucho trabajo del explorador para mostrarla?
+¿Dónde está el problema de hello? ¿Es toorespond lento del servidor de hello, es muy larga de página de Hola o explorador hello tiene toodo una gran cantidad de trabajo toodisplay?
 
-Abra la hoja de métricas del navegador. La visualización segmentada del tiempo de carga de página del explorador muestra en qué se va el tiempo. 
+Abra la hoja de métricas de exploradores de Hola. Hola segmentada visualización del explorador página carga tiempo de muestra que se va tiempo Hola. 
 
-* Si el **tiempo de solicitud de envío** es alto, o bien el servidor responde con lentitud o la solicitud es un envío con una gran cantidad de datos. Mire las [métricas de rendimiento](app-insights-web-monitor-performance.md#metrics) para investigar los tiempos de respuesta.
-* Configure el [seguimiento de dependencias](app-insights-asp-net-dependencies.md) para ver si la lentitud se debe a los servicios externos o a su base de datos.
-* Si predomina la **recepción de respuesta** , la página y sus elementos dependientes (JavaScript, CSS, imágenes y demás, excluyendo los datos cargados de forma asincrónica) son largos. Configure una [prueba de disponibilidad](app-insights-monitor-web-app-availability.md), y asegúrese de establecer la opción de cargar los elementos dependientes. Cuando obtenga algunos resultados, abra el detalle de un resultado y expándalo para ver los tiempos de carga de los distintos archivos.
-* Un **Tiempo de procesamiento del cliente** alto sugiere que los scripts se ejecutan con lentitud. Si el motivo no es obvio, considere la posibilidad de agregar algún código de control de tiempo y enviar las horas en llamadas de trackMetric.
+* Si **tiempo de solicitud de envío** es alto, ya sea servidor hello responde lentamente o solicitud de hello es una publicación con una gran cantidad de datos. Mire hello [las métricas de rendimiento](app-insights-web-monitor-performance.md#metrics) tooinvestigate los tiempos de respuesta.
+* Configurar [seguimiento de dependencias](app-insights-asp-net-dependencies.md) toosee si es la lentitud de hello debido tooexternal servicios o la base de datos.
+* Si predomina la **recepción de respuesta** , la página y sus elementos dependientes (JavaScript, CSS, imágenes y demás, excluyendo los datos cargados de forma asincrónica) son largos. Configurar un [prueba de disponibilidad](app-insights-monitor-web-app-availability.md), y ser seguro tooset elementos dependientes de hello opción tooload. Cuando se obtienen algunos resultados, abrir detalle Hola de un resultado y expándalo toosee Hola tiempos de varios archivos de carga.
+* Un **Tiempo de procesamiento del cliente** alto sugiere que los scripts se ejecutan con lentitud. Si motivo hello no es obvio, considere la posibilidad de agregar código de control de tiempo y enviar veces de hello en las llamadas de trackMetric.
 
 ### <a name="improve-slow-pages"></a>Mejora de páginas lentas
-Hay un sitio web completo de consejos sobre cómo mejorar las respuestas del servidor y los tiempos de carga de página, por lo que no intentaremos repetirlo aquí todo otra vez. Estas son algunas sugerencias que probablemente ya conozca, pero que pueden ayudarle a pensar en soluciones:
+Hay un servidor web repleto de consejos sobre cómo mejorar las respuestas del servidor y los tiempos de carga de página, por lo que no intentaremos toorepeat todas aquí. Estas son algunas sugerencias que probablemente ya sabe sobre tooget simplemente está pensando en:
 
-* Lentitud debida a archivos de gran tamaño: cargar los scripts y otras partes de forma asincrónica. Use la agrupación de scripts. Divida la página principal en widgets que cargan sus datos por separado. No envíe simples HTML antiguos para tablas de gran tamaño: use un script para solicitar los datos como JSON u otro formato compacto y luego rellene la tabla en su lugar. Existen excelentes marcos para ayudarle con todo esto. (Lo que también implican grandes scripts, por supuesto.)
-* Dependencias de un servidor lento: tenga en cuenta las ubicaciones geográficas de los componentes. Por ejemplo, si usa Azure, asegúrese de que el servidor web y la base de datos se encuentran en la misma región. ¿Es posible que consultas las consultas recuperen más información de la que necesitan? ¿Podría ayudar el almacenamiento en caché o el procesamiento por lotes?
-* Problemas de capacidad: eche una ojeada a las métricas de servidor de tiempos de respuesta y recuentos de solicitudes. Si los tiempos de respuesta presentan picos desproporcionados en recuentos de solicitud, es probable que se está tirando en exceso de los servidores.
+* Lenta cargar debido a los archivos de gran tamaño: cargar secuencias de comandos de Hola y otras partes de forma asincrónica. Use la agrupación de scripts. Salto de página principal de hello en widgets que cargan sus datos por separado. No enviar HTML antiguo sin formato para tablas de gran tamaño: usar una secuencia de comandos toorequest Hola de datos como JSON u otro formato compacto y luego rellenar tabla hello en su lugar. No hay marcos excelente toohelp con todo esto. (Lo que también implican grandes scripts, por supuesto.)
+* Reducir las dependencias de servidor: considere la posibilidad de hello ubicaciones geográficas de sus componentes. Por ejemplo, si usa Azure, asegurarse de que servidor web de Hola y de base de datos de Hola Hola misma región. ¿Es posible que consultas las consultas recuperen más información de la que necesitan? ¿Podría ayudar el almacenamiento en caché o el procesamiento por lotes?
+* Problemas de capacidad: mirar las métricas de servidor hello de tiempos de respuesta y solicitud de cuenta. Si los tiempos de respuesta presentan picos desproporcionados en recuentos de solicitud, es probable que se está tirando en exceso de los servidores.
 
 
 ## <a name="server-response-time-degradation"></a>Degradación del tiempo de respuesta del servidor
 
-La notificación de degradación del tiempo de respuesta indica lo siguiente:
+notificación de degradación de tiempo de respuesta de Hello indica lo siguiente:
 
-* El tiempo de respuesta en comparación con el tiempo de respuesta normal de esta operación.
+* tiempo de respuesta de Hello en comparación con toonormal tiempo de respuesta para esta operación.
 * El número de usuarios afectados.
-* El tiempo promedio de respuesta y el tiempo de respuesta del percentil 90 de esta operación en el día de la detección y 7 días antes. 
-* El número de solicitudes de esta operación en el día de la detección y 7 días antes.
+* Tiempo medio de respuesta y tiempo de respuesta de percentil 90 para esta operación en el día de Hola de detección de Hola y 7 días antes. 
+* Número de esta operación solicitudes en el día de Hola de detección de Hola y 7 días antes de.
 * La correlación entre la degradación en esta operación y las degradaciones en las dependencias relacionadas. 
-* Los vínculos para ayudarlo a diagnosticar el problema:
-  * Los seguimientos del generador de perfiles para ayudarlo a ver en qué se ha invertido el tiempo de operación (el vínculo está disponible si se han recopilado ejemplos de seguimientos del generador de perfiles para esta operación durante el periodo de detección). 
+* Vínculos toohelp diagnosticar el problema de Hola.
+  * Realiza un seguimiento de Profiler toohelp ver dónde se dedica tiempo de funcionamiento (vínculo de hello está disponible si se han recopilado ejemplos del seguimiento de generador de perfiles para esta operación durante el período de detección de hello). 
   * Los informes de rendimiento del Explorador de métrica, donde puede segmentar y desglosar los filtros o intervalos de tiempo de esta operación.
-  * Busque estas llamadas ver las propiedades de llamadas específicas.
-  * Informes de error: si el número es mayor que 1, significa que hubo errores en esta operación que pueden haber contribuido a la degradación del rendimiento.
+  * Buscar este llama tooview propiedades llamadas específicas.
+  * Informes de error: si contar > 1 Esto significa que hubo errores en esta operación que puede haber contribuido tooperformance degradación.
 
 ## <a name="dependency-duration-degradation"></a>Degradación de la duración de la dependencia
 
-Las aplicaciones modernas adoptan cada vez más enfoques de diseño de microservicios, lo que en muchos casos conduce a que el nivel de confiabilidad en los servicios externos sea muy elevado. Por ejemplo, si la aplicación se basa en alguna plataforma de datos o incluso si genera su propio servicio de bots, probablemente confiará en algún proveedor de servicios cognitivos para habilitar sus bots con el fin de que interactúen de una forma más humana, así como en algún servicio de almacenamiento de datos que utilicen dichos bots para responder.  
+Aplicación moderna más adoptar el enfoque de diseño de servicios micro, lo que en muchos casos conduce tooheavy confiabilidad en los servicios externos. Por ejemplo, si la aplicación se basa en la plataforma de algunos datos o incluso si crea su propio bot servicio se retransmitirá probablemente en algunos tooenable de proveedor de servicios cognitivos su toointeract bots de maneras más usuarios y algunos datos almacenan servicio para Hola de bot toopull respuestas de.  
 
 Notificación de degradación de dependencia de ejemplo:
 
@@ -145,48 +145,48 @@ Notificación de degradación de dependencia de ejemplo:
 
 Observe que le indica:
 
-* La duración en comparación con el tiempo de respuesta normal de esta operación
+* duración de Hello en comparación con toonormal tiempo de respuesta para esta operación
 * El número de usuarios afectados.
-* Duración promedio y duración del percentil 90 de esta dependencia en el día de la detección y 7 días antes.
-* Número de llamadas de dependencia en el día de la detección y 7 días antes.
-* Los vínculos para ayudarlo a diagnosticar el problema:
+* Duración media y duración de percentil 90 para esta dependencia en el día de Hola de detección de Hola y 7 días antes de
+* Número de dependencia llama en día Hola de detección de Hola y 7 días antes de
+* Toohelp vínculos diagnosticar el problema de Hola
   * Informes de rendimiento del Explorador de métrica de esta dependencia.
-  * Busque estas llamadas de dependencia para ver las propiedades de llamadas.
-  * Informes de error: si el número es mayor que 1, significa esto que hubo errores de llamadas de dependencia durante el periodo de detección que podrían haber contribuido a la degradación de la duración. 
+  * Llamadas de búsqueda de esta dependencia tooview propiedades de llamadas
+  * Los informes de error - si recuento > 1 significa que no hubo errores dependencia llama durante la detección de Hola período que puede haber contribuido tooduration degradación. 
   * Abra Análisis con las consultas que calculan el número y la duración de esta dependencia.  
 
 ## <a name="smart-detection-of-slow-performing-patterns"></a>Detección inteligente de los patrones de rendimiento lento 
 
 Application Insights busca los problemas de rendimiento que podrían afectar solo a algunos de sus usuarios, o bien exclusivamente a sus usuarios en algunos casos. Por ejemplo, una notificación de si las páginas de su aplicación se cargan más lentamente en un tipo de explorador que en otros, o de si las solicitudes se atienden de una forma más lenta desde un servidor determinado. También puede detectar problemas asociados con combinaciones de propiedades, como los clientes que usan un determinado sistema operativo y experimentan cargas lentas de página.  
 
-Anomalías como estas son muy difíciles de detectar con tan solo inspeccionar los datos, pero son más comunes de lo que puede creer. A menudo, solo se muestran cuando se quejan los clientes. Para entonces, ya es demasiado tarde: los usuarios afectados ya se han pasado a sus competidores.
+Las anomalías como estas son muy difícil toodetect inspeccionando datos Hola, pero son más frecuentes que piense. A menudo, solo se muestran cuando se quejan los clientes. En ese momento, es demasiado tarde: usuarios Hola afectado ya están desactivando tooyour competidores.
 
-En la actualidad, nuestros algoritmos examinan tiempos de carga de página, tiempos de respuesta de solicitud en el servidor y tiempos de respuesta de dependencia.  
+En la actualidad, nuestra algoritmos mire tiempos de carga de página, tiempos de respuesta de solicitud en el servidor de Hola y tiempos de respuesta de dependencia.  
 
-No tiene que establecer ningún umbral o regla de configuración. El aprendizaje automático y los algoritmos de minería de datos se usan para detectar patrones anormales.
+No tiene tooset los umbrales o configurar las reglas. Aprendizaje automático y algoritmos de minería de datos son patrones anormal de toodetect usado.
 
-![En la alerta de correo electrónico, haga clic en el vínculo para abrir el informe de diagnóstico en Azure.](./media/app-insights-proactive-performance-diagnostics/03.png)
+![De alerta de correo electrónico de hello, haga clic en hello vínculo tooopen Hola informe de diagnóstico de Azure](./media/app-insights-proactive-performance-diagnostics/03.png)
 
-* **Cuándo** muestra la hora en que se detectó el problema.
+* **Cuando** muestra se ha detectado el problema de hello tiempo Hola.
 * **Qué** describe:
 
-  * el problema detectado;
-  * las características del conjunto de eventos que encontramos mostraron el comportamiento del problema.
-* La tabla compara el conjunto de bajo rendimiento con el comportamiento medio de todos los demás eventos.
+  * problema de Hello detectado;
+  * características Hola de hello configuran de eventos que se encuentran muestra el comportamiento de problema de Hola.
+* tabla de Hello compara el conjunto de bajo rendimiento de hello con un comportamiento promedio de todos los demás eventos Hola.
 
-Haga clic en los vínculos para abrir el Explorador de métricas y Búsqueda en los informes relevantes, filtrados en la hora y las propiedades del conjunto de rendimiento lento.
+Haga clic en hello vínculos tooopen métrica explorador y busque en los informes relevantes, filtrados en tiempo de Hola y propiedades de hello lenta realizar conjunto.
 
-Modifique los filtros y el intervalo de tiempo para explorar la telemetría.
+Modificar Hola tiempo intervalo y los filtros tooexplore Hola telemetría.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Estas herramientas de diagnóstico lo ayudarán a inspeccionar los datos de telemetría de su aplicación:
+Estas herramientas de diagnóstico le ayudarán a inspeccionar telemetría Hola desde su aplicación:
 
 * [Generador de perfiles](app-insights-profiler.md) 
 * [Depurador de instantáneas](app-insights-snapshot-debugger.md)
 * [Analytics](app-insights-analytics-tour.md)
 * [Diagnóstico de análisis inteligente](app-insights-analytics-diagnostics.md)
 
-Las detecciones inteligentes son completamente automáticas. Pero ¿quizás le gustaría configurar algunas alertas más?
+Las detecciones inteligentes son completamente automáticas. ¿Pero quizás le gustaría tooset algunas alertas más?
 
 * [Alertas de métricas configuradas manualmente](app-insights-alerts.md)
 * [Pruebas web de disponibilidad](app-insights-monitor-web-app-availability.md)

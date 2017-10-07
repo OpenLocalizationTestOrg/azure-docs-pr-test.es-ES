@@ -1,6 +1,6 @@
 ---
-title: "Análisis del uso de datos en Log Analytics | Microsoft Docs"
-description: "Utilice el panel Uso de Log Analytics para ver la cantidad de datos que se envían al servicio Log Analytics y resolver el motivo del envío de grandes cantidades de datos."
+title: "uso de datos de aaaAnalyze en análisis de registros | Documentos de Microsoft"
+description: "Usar el panel de uso de hello en análisis de registros tooview cuántos datos se enviaran a servicio de análisis de registros toohello y solucionar el motivo por el que se envían grandes cantidades de datos."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: magoedte
-ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c30373dd6edbe3ff900fbebc865575fee61ce14c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Análisis del uso de datos en Log Analytics
-Log Analytics incluye información sobre la cantidad de datos recopilados, qué equipos envían los datos y los diferentes tipos de datos enviados.  Use el panel **Uso de Log Analytics** para ver la cantidad de datos enviados al servicio Log Analytics. El panel muestra la cantidad de datos que recopila cada solución y cuántos datos envían los equipos.
+Análisis de registros incluyen información sobre la cantidad de Hola de datos recopilados, que los equipos envían datos de Hola y Hola distintos tipos de datos que se envían.  Hola de uso **uso de análisis de registro** cantidad de hello toosee de panel de datos envía toohello servicio de análisis de registros. panel de Hello muestra la cantidad de datos y la cantidad de datos se recopila por cada solución de los equipos envían.
 
-## <a name="understand-the-usage-dashboard"></a>Comprender el panel Uso
-El panel **Uso de Log Analytics** muestra la siguiente información:
+## <a name="understand-hello-usage-dashboard"></a>Comprender el panel de uso de Hola
+Hola **uso de análisis de registros** panel muestra hello siguiente información:
 
 - Volumen de datos
     - Data volume over time (Volumen de datos con el tiempo), en función del ámbito temporal actual
@@ -38,94 +38,94 @@ El panel **Uso de Log Analytics** muestra la siguiente información:
     - Automation and Control nodes (Nodos Automation y Control)
     - Security nodes (Nodos de seguridad)
 - Rendimiento
-    - Time taken to collect and index data (Tiempo dedicado a recopilar e indexar datos)
+    - Tiempo que tarda datos toocollect e índice
 - Lista de consultas
 
 ![panel de uso](./media/log-analytics-usage/usage-dashboard01.png)
 
-### <a name="to-work-with-usage-data"></a>Para trabajar con datos de uso, siga estos pasos:
-1. Si aún no lo ha hecho, inicie sesión en [Azure Portal](https://portal.azure.com) mediante su suscripción de Azure.
-2. En el menú **central**, haga clic en **Más servicios** y, en la lista de recursos, escriba **Log Analytics**. Cuando comience a escribir, la lista se filtrará en función de la entrada. Haga clic en **Log Analytics**.  
+### <a name="toowork-with-usage-data"></a>toowork con datos de uso
+1. Si aún no lo ha hecho, inicie sesión en toohello [portal de Azure](https://portal.azure.com) con su suscripción de Azure.
+2. En hello **concentrador** menú, haga clic en **más servicios** y en la lista de Hola de recursos, escriba **análisis de registros**. Cuando empiece a escribir, Hola filtros de la lista con los datos especificados. Haga clic en **Log Analytics**.  
     ![Menú central de Azure](./media/log-analytics-usage/hub.png)
-3. El panel **Log Analytics** muestra una lista de las áreas de trabajo. Seleccione un área de trabajo.
-4. En el panel del *área de trabajo*, haga clic en **Uso de Log Analytics**.
-5. En el panel **Uso de Log Analytics**, haga clic en **Tiempo: Últimas 24 horas** para cambiar el intervalo de tiempo.  
+3. Hola **análisis de registros** panel muestra una lista de las áreas de trabajo. Seleccione un área de trabajo.
+4. Hola *área de trabajo* panel, haga clic en **uso de análisis de registros**.
+5. En hello **uso de análisis de registro** panel, haga clic en **tiempo: últimas 24 horas** intervalo de tiempo de toochange Hola.  
     ![Intervalo de tiempo](./media/log-analytics-usage/time.png)
-6. Vea las hojas de categoría de uso que muestren áreas que le interesen. Elija una hoja y haga clic en un elemento en ella para ver más detalles en [Búsqueda de registros](log-analytics-log-searches.md).  
+6. Hojas de categoría de uso de Hola de vista que muestran las áreas que le interesa. Elija una hoja y, a continuación, haga clic en un elemento en él tooview más detalles en [búsqueda de registros](log-analytics-log-searches.md).  
     ![Hoja de uso de datos de ejemplo](./media/log-analytics-usage/blade.png)
-7. En el panel Búsqueda de registros, revise los resultados devueltos por la búsqueda.  
+7. En el panel de búsqueda de registros de hello, revise los resultados de Hola que se devuelven desde la búsqueda de Hola.  
     ![Búsqueda de registros de uso de ejemplo](./media/log-analytics-usage/usage-log-search.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Creación de una alerta cuando la colección de datos es mayor de lo esperado
-En esta sección se describe cómo crear una alerta si:
+Esta sección se describe cómo toocreate una alerta si:
 - El volumen de datos supera una cantidad especificada.
-- Se prevé que el volumen de datos supere un importe especificado.
+- Volumen de datos es tooexceed predicho una cantidad especificada.
 
-Las [alertas](log-analytics-alerts-creating.md) de Log Analytics utilizan consultas de búsqueda. La consulta siguiente produce un resultado cuando hay más de 100 GB de datos recopilados en las últimas 24 horas:
+Las [alertas](log-analytics-alerts-creating.md) de Log Analytics utilizan consultas de búsqueda. Hello consulta siguiente tiene un resultado cuando hay más de 100 GB de datos recopilados en hello últimas 24 horas:
 
 `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
 
-La consulta siguiente utiliza una fórmula simple para predecir cuándo se enviarán más de 100 GB de datos en un día: 
+Hello consulta siguiente utiliza una simple toopredict fórmulas cuando se enviarán más de 100 GB de datos en un día: 
 
 `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
 
-Para generar una alerta en un volumen de datos diferente, cambie el 100 de las consultas por el número de GB sobre el que desea alertar.
+tooalert en un volumen de datos diferentes, cambio Hola 100 Hola consulta toohello número de GB desee tooalert en.
 
-Siga los pasos explicados en [Crear una regla de alerta](log-analytics-alerts-creating.md#create-an-alert-rule) para recibir una notificación cuando la colección de datos sea mayor de lo previsto.
+Siga los pasos de hello descritos en [crear una regla de alerta](log-analytics-alerts-creating.md#create-an-alert-rule) toobe una notificación cuando la recopilación de datos es mayor de lo esperado.
 
-Al crear la alerta en la primera consulta; cuando hay más de 100 GB de datos en 24 horas, establezca los siguientes valores:
-- **Nombre** en *Volumen de datos mayor que 100 GB en 24 horas*
-- **Gravedad** en *Advertencia*
-- **Consulta de búsqueda** en `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
-- **Ventana de tiempo** en *24 horas*.
-- **Frecuencia de la alerta** para que sea una hora, ya que los datos de uso solo se actualizan una vez a la hora.
-- **Generar alerta según** para que sea *número de resultados*
-- **Número de resultados** para que sea *Mayor que 0*
+Al crear la alerta de hello para la primera consulta Hola--cuando hay más de 100 GB de datos en 24 horas, establezca el:
+- **Nombre** demasiado*volumen de datos mayor que 100 GB en 24 horas*
+- **Gravedad** demasiado*advertencia*
+- **Consulta de búsqueda** demasiado`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+- **Período de tiempo** demasiado*24 horas*.
+- **Frecuencia de alerta** toobe una hora desde que los datos de uso de hello sólo se actualizan una vez por hora.
+- **Generar alerta basada en** toobe *número de resultados*
+- **Número de resultados** toobe *mayor que 0*
 
-Siga los pasos explicados en [Agregar acciones a reglas de alerta](log-analytics-alerts-actions.md) para configurar una acción de correo electrónico, webhook o runbook para la regla de alerta.
+Siga los pasos de hello descritos en [agregar acciones tooalert reglas](log-analytics-alerts-actions.md) configurar una acción de correo electrónico, webhook o runbook de regla de alerta de Hola.
 
-Al crear la alerta para la segunda consulta; cuando se prevé que va a haber más de 100 GB de datos en 24 horas, establezca los siguientes valores:
-- **Nombre** en *Volumen de datos que se espera que sea mayor que 100 GB en 24 horas*
-- **Gravedad** en *Advertencia*
-- **Consulta de búsqueda** en `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
-- **Ventana de tiempo** en *3 horas*.
-- **Frecuencia de la alerta** para que sea una hora, ya que los datos de uso solo se actualizan una vez a la hora.
-- **Generar alerta según** para que sea *número de resultados*
-- **Número de resultados** para que sea *Mayor que 0*
+Al crear alerta de hello para la segunda consulta Hola--cuando se prevé que va a haber más de 100 GB de datos en 24 horas, establezca el:
+- **Nombre** demasiado*toogreater de 100 GB de espera un volumen de datos en 24 horas*
+- **Gravedad** demasiado*advertencia*
+- **Consulta de búsqueda** demasiado`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+- **Período de tiempo** demasiado*3 horas*.
+- **Frecuencia de alerta** toobe una hora desde que los datos de uso de hello sólo se actualizan una vez por hora.
+- **Generar alerta basada en** toobe *número de resultados*
+- **Número de resultados** toobe *mayor que 0*
 
-Cuando se recibe una alerta, siga los pasos de la sección siguiente para solucionar el problema del uso mayor de lo esperado.
+Cuando reciba una alerta, realice los pasos de Hola Hola después tootroubleshoot sección ¿por qué uso es mayor de lo esperado.
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Solución del problema de un uso mayor de lo esperado
-El panel de uso le ayuda a identificar por qué el uso (y, por tanto, el costo) es mayor del previsto.
+Hola uso panel le ayudará a tooidentify ¿por qué uso (y, por tanto, los costos) es mayor que esperaba.
 
 Un mayor uso está provocado por una de estas causas o por ambas:
-- Más datos de lo esperado enviados a Log Analytics
-- Más nodos de lo previsto que envían datos a Log Analytics
+- Más datos de lo esperado que se envían tooLog análisis
+- Nodos más de lo esperado enviar datos tooLog análisis
 
 ### <a name="check-if-there-is-more-data-than-expected"></a>Compruebe si hay más datos de lo esperado 
-Hay dos secciones fundamentales de la página de uso que ayudan a identificar qué es lo que está causando la recopilación de la mayoría de los datos.
+Hay dos secciones claves de la página de uso de Hola que ayudan a identificar cuál es la causa hello toobe mayoría de datos recopilado.
 
-El gráfico *Volumen de datos con el tiempo* muestra el volumen total de los datos enviados y los equipos que envían la mayor cantidad de datos. El gráfico de la parte superior permite ver si aumenta el uso de datos general, si permanece constante o disminuye. La lista de equipos muestra los 10 equipos que envían la mayoría de los datos.
+Hola *volumen de datos con el tiempo* gráfico muestra el volumen total de los datos enviados de Hola y equipos de hello enviar Hola mayoría de los datos. gráfico de Hello en la parte superior de hello permite toosee si aumenta el uso de la generalidad de los datos, permanece constante o decreciente. lista de Hola de equipos muestra los equipos de hello 10 enviar Hola mayoría de los datos.
 
-El gráfico *Volumen de datos por solución* muestra el volumen de datos que se envía con cada solución y las soluciones que envían la mayoría de los datos. El gráfico de la parte superior muestra el volumen total de datos enviados por cada solución a lo largo del tiempo. Esta información le permite identificar si una solución envía más datos, más o menos la misma cantidad de datos, o menos datos a lo largo del tiempo. La lista de soluciones muestra las 10 soluciones que envían la mayoría de los datos. 
+Hola *volumen de datos por solución* gráfico muestra el volumen de Hola de datos que se envían con cada solución y soluciones de hello enviar Hola mayoría de los datos. gráfico de Hello en la parte superior de hello muestra volumen total de Hola de datos que se envían con cada solución con el tiempo. Esta información permite tooidentify si una solución está enviando más datos, acerca de la misma cantidad de datos, o menos datos con el tiempo de Hola. lista de Hola de soluciones muestra soluciones Hola 10 enviar Hola mayoría de los datos. 
 
-Estos dos gráficos muestran todos los datos. Algunos datos son facturables, mientras que otros son gratis. Para centrarse solo en los datos facturables, modifique la consulta en la página de búsqueda para incluir `IsBillable=true`.  
+Estos dos gráficos muestran todos los datos. Algunos datos son facturables, mientras que otros son gratis. toofocus únicamente con los datos es facturables, modifique la consulta de hello en tooinclude de página de búsqueda de hello `IsBillable=true`.  
 
 ![gráficos de volumen de datos](./media/log-analytics-usage/log-analytics-usage-data-volume.png)
 
-Eche un vistazo al gráfico *Volumen de datos con el tiempo*. Para ver las soluciones y los tipos de datos que envían la mayoría de los datos a un equipo específico, haga clic en el nombre del equipo. Haga clic en el nombre del primer equipo de la lista.
+Mire hello *volumen de datos con el tiempo* gráfico. soluciones de hello toosee y tipos de datos que va a enviar Hola mayoría de los datos para un equipo específico, haga clic en nombre de hello del equipo de Hola. Haga clic en nombre de hello del primer equipo de hello en lista de Hola.
 
-En la captura de pantalla siguiente, el tipo de datos *Log Management / Perf* envía la mayoría de los datos al equipo. 
+En la siguiente captura de pantalla de Hola Hola *administración de registros / rendimiento* tipo de datos está enviando Hola mayoría de los datos para el equipo de Hola. 
 
 ![volumen de datos a un equipo](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
 
-Ahora, vuelva al panel *Uso* y mire el gráfico *Volumen de datos por solución*. Para ver los equipos que envían la mayoría de los datos a una solución, haga clic en el nombre de la solución en la lista. Haga clic en el nombre de la primera solución de la lista. 
+A continuación, vuelva atrás toohello *uso* panel y mire hello *volumen de datos por solución* gráfico. equipos de hello toosee enviar Hola mayoría de los datos para una solución, haga clic en nombre de Hola de solución de hello en lista de Hola. Haga clic en el nombre de Hola de primera solución de hello en lista de Hola. 
 
-En la captura de pantalla siguiente, se confirma que el equipo *acmetomcat* envía la mayoría de los datos a la solución de administración de registros.
+En la siguiente captura de pantalla de hello, se confirma que hello *acmetomcat* equipo esté enviando Hola mayoría de los datos para la solución de administración de registros de Hola.
 
 ![volumen de datos a una solución](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)
 
-Si es necesario, realice análisis adicionales para identificar grandes volúmenes dentro de una solución o tipo de datos. Entre las consultas de ejemplo se incluyen:
+Si es necesario, realizar tooidentify grandes volúmenes dentro de un tipo de datos o solución de análisis adicionales. Entre las consultas de ejemplo se incluyen:
 
 + Solución **Security**
   - `Type=SecurityEvent | measure count() by EventID`
@@ -143,31 +143,31 @@ Si es necesario, realice análisis adicionales para identificar grandes volúmen
 + Tipo de datos de **AzureDiagnostics**
   - `Type=AzureDiagnostics | measure count() by ResourceProvider, ResourceId`
 
-Use los pasos siguientes para reducir el volumen de registros recopilados:
+Usar hello siguiente pasos tooreduce Hola volumen de los registros recopilados:
 
-| Origen del mayor volumen de datos | Cómo reducir el volumen de datos |
+| Origen del mayor volumen de datos | ¿Cómo tooreduce volumen de datos |
 | -------------------------- | ------------------------- |
-| Eventos de seguridad            | Seleccione los [eventos de seguridad común o mínima](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/). <br> Cambie la directiva de auditoría de seguridad para recopilar únicamente los eventos necesarios. En particular, revise la necesidad de recopilar eventos para <br> - [auditar plataforma de filtrado](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [auditar registro](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [auditar sistema de archivos](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [auditar objeto de kernel](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [auditar manipulación de identificadores](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [auditar almacenamiento extraíble](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
-| contadores de rendimiento       | Cambie la [configuración de los contadores de rendimiento](log-analytics-data-sources-performance-counters.md) para: <br> - Reducir la frecuencia de la colección <br> - Reducir el número de contadores de rendimiento |
-| Registros de eventos                 | Cambie la [configuración del registro de eventos](log-analytics-data-sources-windows-events.md) para: <br> - Reducir el número de registros de eventos recopilados <br> - Recopilar solo los niveles de eventos necesarios Por ejemplo, no recopile eventos de nivel de *información*. |
-| syslog                     | Cambie la [configuración de syslog](log-analytics-data-sources-syslog.md) para: <br> - Reducir el número de instalaciones recopiladas <br> - Recopilar solo los niveles de eventos necesarios Por ejemplo, no recopile eventos de nivel de *información* y *depuración*. |
-| AzureDiagnostics           | Cambie la colección de registros de recursos para: <br> - Reducir el número de registros de recursos enviados a Log Analytics <br> - Recopilar solo los registros necesarios |
-| Datos de la solución procedentes de equipos que no necesitan la solución | Use la [selección de destino de solución](../operations-management-suite/operations-management-suite-solution-targeting.md) para recopilar datos solo de los grupos de equipos necesarios. |
+| Eventos de seguridad            | Seleccione los [eventos de seguridad común o mínima](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/). <br> Cambiar los eventos de toocollect solamente es necesario de directiva de auditoría de seguridad de Hola. En concreto, revise Hola necesidad toocollect eventos <br> - [auditar plataforma de filtrado](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [auditar registro](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [auditar sistema de archivos](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [auditar objeto de kernel](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [auditar manipulación de identificadores](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [auditar almacenamiento extraíble](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
+| contadores de rendimiento       | Cambie la [configuración de los contadores de rendimiento](log-analytics-data-sources-performance-counters.md) para: <br> -Reduzca la frecuencia de Hola de colección <br> - Reducir el número de contadores de rendimiento |
+| Registros de eventos                 | Cambie la [configuración del registro de eventos](log-analytics-data-sources-windows-events.md) para: <br> -Reducir el número de Hola de registros de eventos recopilados <br> - Recopilar solo los niveles de eventos necesarios Por ejemplo, no recopile eventos de nivel de *información*. |
+| syslog                     | Cambie la [configuración de syslog](log-analytics-data-sources-syslog.md) para: <br> -Reducir el número de hello de servicios recopilada <br> - Recopilar solo los niveles de eventos necesarios Por ejemplo, no recopile eventos de nivel de *información* y *depuración*. |
+| AzureDiagnostics           | Cambie la colección de registros de recursos para: <br> -Reducir el número de Hola de recursos envío registros tooLog análisis <br> - Recopilar solo los registros necesarios |
+| Datos de la solución de los equipos que no tienen solución Hola | Use [solución destinatarios](../operations-management-suite/operations-management-suite-solution-targeting.md) toocollect datos de solo requiere grupos de equipos. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Comprobar si hay más nodos de lo esperado
-Si está en el plan de tarifa *por nodo (OMS)*, se le cobra según el número de nodos y soluciones que utilice. Puede ver cuántos nodos de cada oferta se usan en la sección de *ofertas* del panel de uso.
+Si se encuentra en hello *por nodo (OMS)* tarifa, a continuación, se le cobra según el número de Hola de nodos y las soluciones que se usa. Puede ver cuántos nodos de cada oferta que se usan en hello *ofertas* sección del panel de uso de Hola.
 
 ![panel de uso](./media/log-analytics-usage/log-analytics-usage-offerings.png)
 
-Haga clic en **Ver todos...**  para ver la lista completa de los equipos que envían datos a la oferta seleccionada.
+Haga clic en **ver todos...**  lista completa de hello tooview de equipos que envían datos de oferta de hello seleccionada.
 
-Use la [selección de destino de solución](../operations-management-suite/operations-management-suite-solution-targeting.md) para recopilar datos solo de los grupos de equipos necesarios.
+Use [solución destinatarios](../operations-management-suite/operations-management-suite-solution-targeting.md) toocollect datos de solo requiere grupos de equipos.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Consulte [Búsquedas de registro en Log Analytics](log-analytics-log-searches.md) para obtener información sobre cómo usar el lenguaje de búsqueda. Puede utilizar las consultas de búsqueda para realizar análisis adicionales sobre los datos de uso.
-* Siga los pasos explicados en [Crear una regla de alerta](log-analytics-alerts-creating.md#create-an-alert-rule) para recibir una notificación cuando se cumplan los criterios de búsqueda.
-* Use la [selección de destino de solución](../operations-management-suite/operations-management-suite-solution-targeting.md) para recopilar datos solo de los grupos de equipos necesarios.
+* Vea [búsquedas de registro de análisis de registros](log-analytics-log-searches.md) toolearn cómo toouse Hola buscar idioma. Puede usar análisis adicionales de tooperform de las consultas de búsqueda de datos de uso de Hola.
+* Siga los pasos de hello descritos en [crear una regla de alerta](log-analytics-alerts-creating.md#create-an-alert-rule) se cumple toobe una notificación cuando un criterio de búsqueda
+* Use [solución destinatarios](../operations-management-suite/operations-management-suite-solution-targeting.md) toocollect datos de solo requiere grupos de equipos
 * Seleccione los [eventos de seguridad común o mínima](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/).
 * Cambie la [configuración de los contadores de rendimiento](log-analytics-data-sources-performance-counters.md).
 * Cambie la [configuración del registro de eventos](log-analytics-data-sources-windows-events.md).

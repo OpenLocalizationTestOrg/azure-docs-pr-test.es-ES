@@ -1,6 +1,6 @@
 ---
-title: "Implementación de Azure Mobile Engagement para una aplicación de juegos"
-description: "Escenario de aplicación de juegos para implementar Azure Mobile Engagement"
+title: "implementación de Mobile Engagement aaaAzure para la aplicación de juegos"
+description: "Tooimplement de escenario de aplicación de juegos Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b82b4a868a33f42e5b759e43e66103556c097f9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>Implementación de Mobile Engagement con una aplicación de juegos
 ## <a name="overview"></a>Información general
-Una nueva empresa de juegos ha lanzado una aplicación de juego de estrategia/juego de rol dedicada a la pesca. El juego lleva 6 meses en activo. Ha cosechado un gran éxito, con millones de descargas, y la retención es muy alta en comparación con otras aplicaciones de juego de nuevas empresas. En la reunión de revisión trimestral, las partes interesadas están de acuerdo en que necesitan aumentar los ingresos medios por usuario (ARPU). Los módulos premium en el juego están disponibles como ofertas especiales. Estos módulos de juego permiten a los usuarios actualizar la apariencia y el rendimiento de los sedales y los cebos o aparejos en el juego. Sin embargo, las ventas de módulos son muy bajas. Por tanto, deciden en primer lugar analizar la experiencia del cliente con una herramienta de análisis y después desarrollar un programa de compromiso para aumentar las ventas mediante la segmentación avanzada.
+Una nueva empresa de juegos ha lanzado una aplicación de juego de estrategia/juego de rol dedicada a la pesca. juego Hola ha estado ejecutando durante 6 meses. Este juego es una enorme se ejecuta correctamente y tiene millones de descargas y retención de hello es muy alta tooother comparados inicio juego aplicaciones. En la reunión de revisión trimestral de hello, las partes interesadas acuerdan que necesitan tooincrease ingresos medios por usuario (ARPU). Los módulos premium en el juego están disponibles como ofertas especiales. Estos módulos de juegos permiten la apariencia de los usuarios tooupgrade Hola y el rendimiento de sus líneas de pesca y cebos para o enfrenta en juego Hola. Sin embargo, las ventas de módulos son muy bajas. Por lo que deciden primer cliente de hello tooanalyze experiencia con una herramienta de análisis y, a continuación, toodevelop una interacción programa tooincrease ventas mediante avanzado segmentación.
 
-Partiendo de [Azure Mobile Engagement: Guía de introducción con procedimientos recomendados](mobile-engagement-getting-started-best-practices.md) , crean una estrategia de compromiso.
+En función de hello [Azure Mobile Engagement - Guía de introducción a los procedimientos recomendados](mobile-engagement-getting-started-best-practices.md) , crear una estrategia de contratación.
 
 ## <a name="objectives-and-kpis"></a>Objetivos y KPI
-Las partes interesadas clave para el juego se reúnen. Todos están de acuerdo en un objetivo principal: aumentar las ventas de módulos premium en un 15%. Crean indicadores clave de rendimiento (KPI) de negocio para medir y promover este objetivo.
+Cumplir con las partes interesadas para el juego de Hola. Todos los equipos acuerdan un objetivo principal - tooincrease ventas de paquete premium en un 15%. Crear unidad y los indicadores clave de rendimiento (KPI) empresariales toomeasure este objetivo
 
-* ¿En qué nivel del juego se compran estos módulos?
-* ¿Cuáles son los ingresos por usuario, por sesión, por semana y por mes?
-* ¿Cuáles son los tipos favoritos de compra?
+* ¿En qué nivel de juego Hola se compran estos paquetes?
+* ¿Qué es ingresos de Hola por usuario, por sesión, por semana y al mes?
+* ¿Qué tipos de compra favoritos Hola?
 
-En la parte 1 de la [Guía de introducción](mobile-engagement-getting-started-best-practices.md) , se explica cómo definir los objetivos y los KPI. 
+Parte 1 de hello [Getting Started Guide](mobile-engagement-getting-started-best-practices.md) explica cómo toodefine Hola objetivos y los KPI. 
 
-Con los KPI de negocio ya definidos, la encargada de productos móviles crea los KPI de compromiso para determinar la retención y las nuevas tendencias de usuarios.
+Con hello que KPI comerciales ya definido, Hola Mobile producto Manager crea la retención y tendencias de KPI de contratación toodetermine nuevo usuario.
 
-* Supervisar la retención y el uso en los siguientes intervalos: a diario, cada 2 días, semanalmente, mensualmente y cada tres meses
+* Supervisar la retención y usar a través de hello siguientes intervalos: diariamente, cada 2 días, semanales, mensuales y cada tres meses.
 * Recuentos de usuarios activos
-* La clasificación de la aplicación en la tienda
+* clasificación de aplicación Hola Hola almacenar
 
-Según las recomendaciones del equipo de TI, se han agregado los siguientes KPI técnicos para responder a las preguntas siguientes:
+En función de las recomendaciones del equipo de TI de hello, Hola siguientes KPI técnica se agregaron hello tooanswer siguientes preguntas:
 
 * ¿Cuál es la ruta de acceso de los usuarios (qué página visitan, cuánto tiempo pasan los usuarios en ella)?
 * Número de bloqueos o errores encontrados por sesión
 * ¿Qué versiones de sistema operativo ejecutan mis usuarios?
-* ¿Cuál es el tamaño medio de pantalla de mis usuarios?
+* ¿Qué es el tamaño medio de Hola de pantalla para Mis usuarios?
 * ¿Qué tipo de conectividad de Internet tienen mis usuarios?
 
-Para cada KPI, la encargada de productos móviles especifica los datos que necesita y dónde se encuentran en su cuaderno de estrategias.
+Para cada KPI Hola Mobile producto Manager especifica los datos de Hola que necesita y donde se encuentra en la guía.
 
 ## <a name="engagement-program-and-integration"></a>Programa de compromiso e integración
-Antes de crear un programa avanzado de compromiso, el director de proyectos móviles a cargo del proyecto debe comprender a fondo cómo y cuándo los usuarios consumen los productos.
+Antes de compilar un programa de interacción avanzada, Hola Director de proyecto móvil responsable de proyecto de Hola debe tener un conocimiento profundo de cómo y cuándo productos son consumidos por los usuarios de Hola.
 
-Después de 3 meses, el director de proyectos móviles ha recopilado datos suficientes para mejorar las ventas por notificación push en aplicación. Descubre que:
+Después de 3 meses, Hola Director de proyecto móvil ha recopilado suficiente tooenhance datos sus ventas de notificación de inserción de la aplicación. Descubre que:
 
-* La primera compra generalmente se produce en el nivel 14. En el 90% de los casos, la compra es de nuevas armas legendarias por 3 USD.
-* En el 80% de los casos, los usuarios que han realizado una compra siguen usando el producto y hacen más compras.
-* Los usuarios que han superado el nivel 20 empiezan a gastar más de 10 USD por semana.
-* Los usuarios tienden a comprar módulos premium en los niveles 16, 24 y 32.
+* primera compra de Hello generalmente se produce en el nivel de hello 14. Durante el 90% de los casos, compra hello es nuevas armas legendario para $3.
+* En el 80% de los casos, los usuarios que hayan realizado ninguna compra, continuar con el producto de Hola y hacer más compras.
+* Los usuarios que han superado el nivel de hello 20, inicie toospend más de 10 $/ semana.
+* Los usuarios suelen toobuy paquetes de premium en nivel 16, 24 y 32.
 
-Gracias a este análisis, el director de proyectos móviles decide crear secuencias específicas de notificaciones push para aumentar las ventas en aplicación. Crea tres secuencias push denominadas: Programa de bienvenida, Programa de ventas y Programa de inactivos. Para obtener más información, consulte el [guías](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)![][1]
+Gracias a analysis toothis Hola Director de proyecto móvil decide toocreate inserción específico notificación secuencias tooincrease en las ventas de la aplicación. Crea tres secuencias push denominadas: Programa de bienvenida, Programa de ventas y Programa de inactivos. Para obtener más información, consulte toohello [guías](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)![][1]
 
 <!--Image references-->
 

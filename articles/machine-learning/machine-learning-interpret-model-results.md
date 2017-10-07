@@ -1,6 +1,6 @@
 ---
-title: "Cómo interpretar los resultados del modelo de Machine Learning | Microsoft Docs"
-description: "Cómo elegir el conjunto de parámetros óptimo para un algoritmo que use y visualice resultados del modelo de puntuación."
+title: "resultados del modelo aaaInterpret en aprendizaje automático | Documentos de Microsoft"
+description: "Cómo parámetro óptimo de hello toochoose establecida para un algoritmo de uso y visualizar los resultados del modelo de puntuación."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: 939dd7b359b4f5c248ade47b794102f4930994b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 52161b1aa5ff3e7a63fc4b1bfb7c5e354eabcc50
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="interpret-model-results-in-azure-machine-learning"></a>Cómo interpretar los resultados del modelo de Azure Machine Learning
-En este tema se explica cómo ver e interpretar los resultados de predicción en Azure Machine Learning Studio. Después de entrenar un modelo y realizar predicciones sobre él ("puntuar el modelo"), deberá comprender e interpretar el resultado de predicción.
+Este tema se explica cómo toovisualize e interpretar los resultados de predicción en estudio de aprendizaje automático de Azure. Después de entrenar un modelo y realizar predicciones sobre él ("puntúan modelo Hola"), es necesario toounderstand e interpretar los resultados de predicción de Hola.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -32,40 +32,40 @@ Hay cuatro tipos de modelos de aprendizaje automático principales en Aprendizaj
 * regresión
 * Sistemas de recomendación
 
-Los módulos usados para la predicción sobre estos modelos son:
+módulos de Hello usados para la predicción encima de estos modelos son:
 
 * módulo [Modelo de puntuación][score-model] para la clasificación y regresión
-* módulo [Asignar a clústeres][assign-to-clusters] para la agrupación en clústeres
+* [Asignar tooClusters] [ assign-to-clusters] módulo de agrupación en clústeres
 * [Score Matchbox Recommender][score-matchbox-recommender] para sistemas de recomendación
 
-Este documento explica cómo interpretar los resultados de predicción para cada uno de estos módulos. Para obtener información general sobre estos módulos, consulte [Cómo elegir parámetros para optimizar los algoritmos de Azure Machine Learning](machine-learning-algorithm-parameters-optimize.md).
+Este documento explica cómo resultados de predicción toointerpret para cada uno de estos módulos. Para obtener información general de estos módulos, vea [cómo toochoose parámetros toooptimize sus algoritmos de aprendizaje automático de Azure](machine-learning-algorithm-parameters-optimize.md).
 
-Este tema aborda la interpretación de predicción, pero no la evaluación de modelos. Para más información sobre cómo evaluar su modelo, consulte [Evaluación del rendimiento de un modelo en Azure Machine Learning](machine-learning-evaluate-model-performance.md).
+Este tema aborda la interpretación de predicción, pero no la evaluación de modelos. Para obtener más información acerca de cómo tooevaluate el modelo, vea [cómo tooevaluate modelo rendimiento aprendizaje automático de Azure](machine-learning-evaluate-model-performance.md).
 
-Si no está familiarizado con Azure Machine Learning y necesita ayuda para crear un experimento simple para comenzar, consulte [Crear un experimento simple en Azure Machine Learning Studio](machine-learning-create-experiment.md) en Azure Machine Learning Studio.
+Si va a tooAzure nuevo aprendizaje automático y necesita ayuda para la creación de un tooget de experimento sencillo iniciado, consulte [crear un experimento sencillo en estudio de aprendizaje automático de Azure](machine-learning-create-experiment.md) en estudio de aprendizaje automático de Azure.
 
-## <a name="classification"></a>clasificación
+## <a name="classification"></a>Clasificación
 Existen dos subcategorías de problemas de clasificación:
 
 * Problemas con solo dos clases (clasificación de dos clases o binaria)
 * Problemas con más de dos clases (clasificación multiclase)
 
-Azure Machine Learning tiene diversos módulos para tratar con cada uno de estos tipos de clasificación, pero los métodos para interpretar sus resultados de predicción son similares.
+Aprendizaje automático de Azure tiene toodeal módulos diferentes a cada uno de estos tipos de clasificación, pero los métodos de Hola para interpretar los resultados de predicción son similares.
 
 ### <a name="two-class-classification"></a>Clasificación multiclase
 **Experimento de ejemplo**
 
-Un ejemplo de un problema de clasificación de dos clases es la clasificación de flores de iris. La tarea consiste en clasificar flores de iris en función de sus características. El conjunto de datos de Iris proporcionado en Azure Machine Learning es un subconjunto del [conjunto de datos de Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) popular, que contiene instancias de solo dos especies de flor (clases 0 y 1). Existen cuatro características para cada flor (longitud del sépalo, ancho del sépalo, longitud del pétalo y ancho del pétalo).
+Un ejemplo de un problema de clasificación de dos clases es la clasificación de Hola de flores iris. tarea Hello es tooclassify flores de iris en función de sus características. conjunto de datos de Iris especificado en aprendizaje automático de Azure Hello es un subconjunto de hello popular [conjunto de datos de Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) que contiene instancias de solo dos flor especies (clases 0 y 1). Existen cuatro características para cada flor (longitud del sépalo, ancho del sépalo, longitud del pétalo y ancho del pétalo).
 
 ![Captura de pantalla del experimento de iris](./media/machine-learning-interpret-model-results/1.png)
 
 Figura 1. Experimento del problema de clasificación de dos clases de iris
 
-Como se muestra en la figura 1, se ha realizado un experimento para solucionar este problema. Se ha entrenado y puntuado un modelo de árbol de decisión de dos clases. Ahora podemos visualizar los resultados de predicción del módulo [Puntuar modelo][score-model] haciendo clic en el puerto de salida del módulo [Puntuar modelo][score-model] y, a continuación, haciendo clic en **Visualizar**.
+Un experimento se ha realizado toosolve este problema, tal como se muestra en la figura 1. Se ha entrenado y puntuado un modelo de árbol de decisión de dos clases. Ahora puede visualizar los resultados de predicción de Hola de hello [puntuar modelo] [ score-model] módulo haciendo clic en el puerto de salida de hello de hello [puntuar modelo] [ score-model]módulo y, a continuación, haga clic en **visualizar**.
 
 ![Módulo Puntuar modelo](./media/machine-learning-interpret-model-results/1_1.png)
 
-Esto mostrará los resultados de puntuación, como se muestra en la figura 2.
+Se abrirá Hola resultados de puntuación, como se muestra en la figura 2.
 
 ![Resultados del experimento de clasificación de dos clases de iris](./media/machine-learning-interpret-model-results/2.png)
 
@@ -73,23 +73,23 @@ Ilustración 2. Visualización del resultado del modelo de puntuación en la cla
 
 **Interpretación de resultados**
 
-Hay seis columnas en la tabla de resultados. Las cuatro columnas de la izquierda son las cuatro características. Las dos columnas de la derecha, Etiquetas puntuadas y Probabilidades puntuadas, son los resultados de predicción. La columna Probabilidades puntuadas muestra la probabilidad de que una flor pertenezca a la clase positiva (Clase 1). Por ejemplo, el primer número de la columna (0,028571) significa que hay una probabilidad de 0,028571 de que la primera flor pertenezca a la Clase 1. La columna Etiquetas puntuadas muestra la clase prevista de cada flor. Esto se basa en la columna Probabilidades de puntuación. Si la probabilidad puntuada de una flor es mayor que 0,5, se prevé que sea la Clase 1. En caso contrario, se prevé que sea la Clase 0.
+Hay seis columnas en tabla de resultados de Hola. columnas de cuatro izquierdo Hola son características de cuatro Hola. Hola derecha dos columnas, puntuación de etiquetas y las probabilidades con puntuación, son los resultados de predicción de Hola. Hola probabilidades con puntuación columna muestra hello probabilidad que una flor pertenece toohello positivo clase (clase 1). Por ejemplo, Hola primer número de hello columna (0.028571) significa que no existe probabilidad 0.028571 que Hola flor primera pertenece tooClass 1. Hola Hola de muestra de columna de puntuación de etiquetas predecir la clase para cada flor. Esto se basa en la columna de probabilidades con puntuación Hola. Si es mayor que 0.5 Hola con puntuación de probabilidad de una flor, se predice como clase 1. En caso contrario, se prevé que sea la Clase 0.
 
 **Publicación de servicios web**
 
-Una vez comprendidos los resultados de la predicción, el experimento puede publicarse como un servicio web, de forma que pueda implementarlo en diversas aplicaciones y llamarlo para que obtenga las predicciones de clase en cualquier flor de iris nueva. Para obtener información sobre cómo cambiar un experimento de entrenamiento a un experimento de puntuación y publicarlo como un servicio web, consulte [Publicar el servicio web Azure Machine Learning](machine-learning-walkthrough-5-publish-web-service.md). Este procedimiento proporciona un experimento de puntuación, como muestra la figura 3.
+Tras han entender los resultados de predicción de Hola y considera sonido, hello experimento puede publicarse como un servicio web para que pueda implementar en varias aplicaciones y llamar a las predicciones de clase tooobtain en una flor iris nueva. toolearn cómo toochange entrenamiento experimentar en un experimento de puntuación y publicarlo como un servicio web, consulte [publicar el servicio web de aprendizaje automático de Azure de hello](machine-learning-walkthrough-5-publish-web-service.md). Este procedimiento proporciona un experimento de puntuación, como muestra la figura 3.
 
 ![Captura de pantalla del experimento de puntuación](./media/machine-learning-interpret-model-results/3.png)
 
-Figura 3. Puntuación del experimento del problema de clasificación de dos clases de iris
+Figura 3. La puntuación del experimento de problema de clasificación de dos clases de hello iris
 
-Ahora debe establecer la entrada y salida del servicio web. Obviamente, la entrada es el puerto de entrada derecho del [Módulo de puntuación][score-model], que es la entrada de las características de la flor Iris. La elección del resultado depende de si está interesado en la clase de predicción (etiqueta puntuada), en la probabilidad puntuada o en ambas. En este ejemplo, se supone que está interesado en ambas. Para seleccionar las columnas de salida deseadas, use un módulo [Seleccionar columnas de conjunto de datos][select-columns]. Haga clic en [Seleccionar columnas de conjunto de datos][select-columns] y en **Iniciar el selector de columnas**, y seleccione **Etiquetas puntuadas** y **Probabilidades puntuadas**. Después de configurar el puerto de salida de [Seleccionar columnas de conjunto de datos][select-columns] y ejecutarlo de nuevo, deberíamos estar preparados para publicar el experimento de puntuación como un servicio web haciendo clic en **PUBLICAR SERVICIO WEB**. El experimento final es similar a la figura 4.
+Ahora debe tooset Hola entrada y salida para el servicio web de Hola. entrada Hello es puerto de entrada derecho Hola de [puntuar modelo][score-model], que es Hola Iris flor características entrada. Hello elección de salida de hello depende de si está interesado en hello predecir clase (etiqueta con puntuación), Hola con puntuación de probabilidad, o ambos. En este ejemplo, se supone que está interesado en ambas. Hola tooselect deseado columnas de salida, use un [seleccionar las columnas de conjunto de datos] [ select-columns] módulo. Haga clic en [Seleccionar columnas de conjunto de datos][select-columns] y en **Iniciar el selector de columnas**, y seleccione **Etiquetas puntuadas** y **Probabilidades puntuadas**. Después de configurar el puerto de salida de hello de [seleccionar las columnas de conjunto de datos] [ select-columns] y ejecutarlo de nuevo, debe ser experimento de puntuación de hello toopublish listo como un servicio web, haga clic en **publicar WEB SERVICIO**. experimento final Hello es similar a la figura 4.
 
-![El experimento de clasificación de dos clases de iris](./media/machine-learning-interpret-model-results/4.png)
+![experimento de clasificación de dos clases de Hello iris](./media/machine-learning-interpret-model-results/4.png)
 
 Figura 4. Experimento de puntuación final de un problema de clasificación de dos clases de iris
 
-Después de la ejecución del servicio web y de escribir algunos valores de las características de una instancia de prueba, el resultado devuelve dos números. El primer número es la etiqueta puntuada y, el segundo, la probabilidad puntuada. Se prevé que esta flor sea de Clase 1 con probabilidad de 0,9655.
+Después de ejecutar el servicio web de Hola y escriba algunos valores de las características de una instancia de prueba, el resultado de hello devuelve dos números. primer número de Hello es Hola puntuado etiqueta, y hello en segundo lugar es hello con puntuación de probabilidad. Se prevé que esta flor sea de Clase 1 con probabilidad de 0,9655.
 
 ![Modelo de puntuación de interpretación de prueba](./media/machine-learning-interpret-model-results/4_1.png)
 
@@ -100,17 +100,17 @@ Figura 5. Resultado de servicio web de la clasificación de dos clases de iris
 ### <a name="multi-class-classification"></a>Clasificación multiclase
 **Experimento de ejemplo**
 
-En este experimento se llevará a cabo una tarea de reconocimiento de letras como un ejemplo de clasificación multiclase. El clasificador intentará predecir una letra determinada (clase) en función de algunos valores de atributo escritos a mano extraídos de las imágenes realizadas a mano.
+En este experimento se llevará a cabo una tarea de reconocimiento de letras como un ejemplo de clasificación multiclase. Hello clasificador intenta toopredict un determinado letra (clase) en función de algunos valores de atributo escrita a mano extraídos de imágenes de hello escrita a mano.
 
 ![Ejemplo de reconocimiento de letras](./media/machine-learning-interpret-model-results/5_1.png)
 
-En los datos de entrenamiento, hay 16 funciones extraídas de imágenes de letras escritas a mano. Las 26 letras forman nuestras 26 clases. En la figura 6 se muestra un experimento que entrenará un modelo de clasificación multiclase para el reconocimiento de letras y predecirá en el mismo conjunto de características de un conjunto de datos de prueba.
+En los datos de entrenamiento hello, hay 16 características extraídos de imágenes de letra escrita a mano. Hola 26 letras forman nuestro 26 clases. La figura 6 se muestra en un experimento entrenará una clasificación multiclase de modelo para reconocimiento de letras y predecir Hola mismo conjunto en un conjunto de datos de prueba de características.
 
 ![Experimento de clasificación multiclase de reconocimiento de letras](./media/machine-learning-interpret-model-results/6.png)
 
 Figura 6. Experimento del problema de clasificación multiclase de reconocimiento de letras
 
-Al visualizar los resultados del módulo [Puntuar modelo][score-model] haciendo clic en el puerto de salida del módulo [Puntuar modelo][score-model] y, a continuación, haciendo clic en **Visualizar**, debería ver contenido como el que se muestra en la figura 7.
+Visualizar los resultados de Hola de hello [puntuar modelo] [ score-model] módulo haciendo clic en el puerto de salida de hello de [puntuar modelo] [ score-model] módulo y, a continuación, Haga clic en **visualizar**, debería ver el contenido tal como se muestra en la figura 7.
 
 ![Resultados del modelo de puntuación](./media/machine-learning-interpret-model-results/7.png)
 
@@ -118,21 +118,21 @@ Figura 7. Visualización de los resultados del modelo de puntuación en una clas
 
 **Interpretación de resultados**
 
-Las 16 columnas de la izquierda representan los valores de funciones del conjunto de pruebas. Las columnas con nombres como Probabilidades puntuadas de la clase "XX" son iguales que la columna Probabilidades puntuadas en el caso de dos clases. Muestran la probabilidad de que la entrada correspondiente se encuentre en una clase determinada. Por ejemplo, para la primera entrada, hay una probabilidad de 0,003571 de que sea una "A", una probabilidad de 0,000451 de que sea una "B", etc. Las última columna (Etiquetas puntuadas) es la misma que Etiquetas puntuadas en el caso de dos clases. Selecciona la clase con la mayor probabilidad puntuada como la clase de predicción de la entrada correspondiente. Por ejemplo, para la primera entrada, la etiqueta puntuada es "F", ya que tiene la mayor probabilidad de que sea una "F" (0,916995).
+izquierda 16 columnas de Hello representan valores de las características del conjunto de pruebas de Hola Hola. Hola las columnas con nombres como las probabilidades con puntuación para la clase "XX" son como columna de probabilidades con puntuación hello en caso de dos clases de Hola. Muestran la probabilidad de Hola Hola entrada correspondiente se encuentra dentro de una clase determinada. Por ejemplo, para la primera entrada de hello, hay 0.003571 probabilidad de que sea una "A" 0.000451 probabilidad de que sea una "B" y así sucesivamente. última columna de Hello (puntuado etiquetas) es Hola igual que la puntuación de etiquetas en caso de dos clases de Hola. Selecciona la clase hello con hello mayor puntuado de probabilidad como Hola clase de predicción de entrada correspondiente de Hola. Por ejemplo, para la primera entrada de hello, Hola puntuado etiqueta es "F" porque tiene Hola mayor probabilidad toobe una "F" (0.916995).
 
 **Publicación de servicios web**
 
-También puede obtener la etiqueta puntuada para cada entrada y la probabilidad de la etiqueta puntuada. La lógica básica es encontrar la probabilidad más alta entre todas las probabilidades puntuadas. Para ello, debe usar el módulo [Ejecutar script R][execute-r-script]. El código R se muestra en la figura 8, mientras que el resultado del experimento se muestra en la figura 9.
+También puede obtener Hola puntuado etiqueta para cada probabilidad hello y entrada de hello puntúan etiqueta. lógica básica de Hello es mayor probabilidad de Hola de toofind entre Hola todas las probabilidades de puntuación. toodo, necesita hello toouse [ejecutar Script de R] [ execute-r-script] módulo. Hola código R se muestra en la figura 8 y resultado de hello del experimento de Hola se muestra en la figura 9.
 
 ![Ejemplo de código R](./media/machine-learning-interpret-model-results/8.png)
 
-Figura 8. Código R para extraer etiquetas puntuadas y las probabilidades asociadas de las etiquetas
+Figura 8. Código de R para extraer hello y puntuación de etiquetas asociadas las probabilidades de las etiquetas de Hola
 
 ![Resultado del experimento](./media/machine-learning-interpret-model-results/9.png)
 
-Figura 9. Experimento de puntuación final del problema de clasificación multiclase de reconocimiento de letras
+Figura 9. Experimento de puntuación final del problema de clasificación multiclase de reconocimiento de letras de Hola
 
-Después de publicar y ejecutar el servicio web y especificar algunos valores de características de entrada, el resultado devuelto será como el mostrado en la figura 10. Se prevé que esta letra escrita a mano, con sus 16 funciones extraídas, sea una "T", con una probabilidad de 0,9715.
+Después de publicar y ejecutar el servicio web de Hola y escriba algunos valores de las características de entrada, Hola devuelve el resultado parece figura 10. Esta letra escrita a mano, con sus características de 16 extraídos es predicho toobe una "T" con probabilidad 0.9715.
 
 ![Módulo de puntuación de interpretación de prueba](./media/machine-learning-interpret-model-results/9_1.png)
 
@@ -141,35 +141,35 @@ Después de publicar y ejecutar el servicio web y especificar algunos valores de
 Figura 10. Resultado de servicio web de la clasificación multiclase
 
 ## <a name="regression"></a>regresión
-Los problemas de regresión son diferentes de los problemas de clasificación. En un problema de clasificación, intenta predecir clases discretas, como a qué clase pertenece una flor iris. Sin embargo, como puede ver en el siguiente ejemplo de un problema de regresión, intenta predecir una variable continua, como el precio de un automóvil.
+Los problemas de regresión son diferentes de los problemas de clasificación. En un problema de clasificación, que está tratando de clases de toopredict discreta, como qué clase pertenece una flor iris. Pero, como puede ver en el siguiente ejemplo de un problema de regresión de hello, que está tratando de toopredict una variable continua, como el precio de Hola de un automóvil.
 
 **Experimento de ejemplo**
 
-Use la predicción de precios de automóviles como su ejemplo de regresión. Intentaremos predecir el precio de un automóvil en función de sus características, como la fabricación, el tipo de combustible, el tipo de carrocería y el volante. El experimento se muestra en la figura 11.
+Use la predicción de precios de automóviles como su ejemplo de regresión. Está tratando de precio de hello toopredict de un automóvil en función de sus características, incluidos la marca, tipo de combustible, tipo de cuerpo y rueda de unidad. el experimento de Hola se muestra en la figura 11.
 
 ![Experimento de regresión de precios de automóviles](./media/machine-learning-interpret-model-results/11.png)
 
 Figura 11. Experimento del problema de regresión de precios de automóviles
 
-Al ver el módulo [Modelo de puntuación][score-model], el resultado es parecido al de la figura 12.
+Hola visualizar [puntuar modelo] [ score-model] módulo, el resultado de hello es similar a la figura 12.
 
 ![Resultados de puntuación del problema de predicción de precios de automóviles](./media/machine-learning-interpret-model-results/12.png)
 
-Ilustración 12. Resultado de puntuación del problema de predicción de precios de automóviles
+Ilustración 12. La puntuación del resultado para el problema de predicción de precios de automóviles Hola
 
 **Interpretación de resultados**
 
-Etiquetas puntuadas es la columna de resultados en el resultado de esta puntuación. Los números son el precio de predicción de cada uno.
+Las etiquetas con puntuación es la columna de resultado de hello en este resultado de puntuación. Hola números son precios previstos de Hola para cada uno.
 
 **Publicación de servicios web**
 
-Puede publicar el experimento de regresión en un servicio web y llamarlo para la predicción de precios de automóviles de la misma forma que con el caso de uso de clasificación de dos clases.
+Puede publicar el experimento de regresión de hello en un servicio web y llamarlo para la predicción de precios de automóviles en hello igual que en la clasificación de dos clases de hello caso de uso.
 
 ![Experimento de puntuación del problema de regresión de precios de automóviles](./media/machine-learning-interpret-model-results/13.png)
 
 Ilustración 13. Experimento de puntuación de un problema de regresión de precios de automóviles
 
-Al ejecutar el servicio web, el resultado devuelto es similar al de la figura 14. El precio de predicción para este automóvil es de 15.085,52 $.
+Ejecute servicio web de hello, hello devuelve el resultado parece figura 14. precio de predicción de Hola para este coche es $15,085.52.
 
 ![Módulo de puntuación de interpretación de prueba](./media/machine-learning-interpret-model-results/13_1.png)
 
@@ -180,21 +180,21 @@ Figura 14. Resultado del servicio web de un problema de regresión de precios de
 ## <a name="clustering"></a>agrupación en clústeres
 **Experimento de ejemplo**
 
-Usemos de nuevo el conjunto de datos de Iris para generar un experimento de agrupación en clústeres. Aquí puede filtrar las etiquetas de clase del conjunto de datos, de forma que solo tenga características y pueda usarse para la agrupación en clústeres. En este caso de uso de iris, especifique el número de clústeres en dos durante el proceso de entrenamiento, lo que significa que le gustaría agrupar las flores en dos clases. El experimento se muestra en la figura 15.
+Vamos a usar Hola conjunto de datos de Iris nuevo toobuild un experimento de agrupación en clústeres. Aquí, se puede filtrar las etiquetas de clase de Hola Hola conjunto de datos para que solo tiene características y puede usarse para la agrupación en clústeres. En este iris caso de uso, especifique el número de Hola de toobe clústeres dos durante el proceso de entrenamiento de hello, lo que significa que podría agrupar flores hello en dos clases. el experimento de Hola se muestra en la figura 15.
 
 ![Experimento del problema de agrupación en clústeres de iris](./media/machine-learning-interpret-model-results/15.png)
 
 Figura 15. Experimento del problema de agrupación en clústeres de iris
 
-La agrupación en clústeres difiere de la clasificación en que el conjunto de datos de entrenamiento no tiene etiquetas de realidad por sí mismo. La agrupación en clústeres agrupa las instancias del conjunto de datos en clústeres diferentes. Durante el proceso de entrenamiento, el modelo etiqueta las entradas al conocer las diferencias entre sus características. Después, el modelo entrenado se puede usar para clasificar entradas futuras. Hay dos partes del resultado que nos interesan en un problema de agrupación en clústeres. La primera parte es el etiquetado del conjunto de datos de entrenamiento y, la segunda, la clasificación de un nuevo conjunto de datos con el modelo entrenado.
+Agrupación en clústeres difiere de la clasificación de ese conjunto de datos de entrenamiento de hello no tienen etiquetas de datos verdaderos por sí mismo. Grupos de agrupación en clústeres Hola instancias de conjunto de datos de entrenamiento en clústeres distintos. Durante el proceso de entrenamiento de hello, las etiquetas de modelo de Hola Hola entradas diferencias de hello entre sus características de aprendizaje. Después de eso, puede utilizarse el modelo entrenado hello toofurther clasificar las entradas futuras. Hay dos partes del resultado de hello que nos interesa dentro de un problema de agrupación en clústeres. primera parte de Hello está etiquetado conjunto de datos de entrenamiento de Hola y Hola en segundo lugar está clasificando un nuevo conjunto de datos con el modelo entrenado Hola.
 
-La primera parte del resultado se puede visualizar haciendo clic en el puerto de salida izquierdo de [Entrenar modelo de agrupación en clústeres][train-clustering-model] y, a continuación, en **Visualizar**. La visualización se muestra en la figura 16.
+Hello primera parte del resultado de hello se puede visualizar haciendo clic en hello dejado el puerto de salida del [entrenar el modelo de agrupación en clústeres] [ train-clustering-model] y, a continuación, haga clic en **visualizar**. Visualización de Hola se muestra en la figura 16.
 
 ![Resultado de la agrupación en clústeres](./media/machine-learning-interpret-model-results/16.png)
 
-Figura 16. Visualización de resultado de agrupación en clústeres para el conjunto de datos de entrenamiento
+Figura 16. Visualizar el resultado de conjunto de datos de entrenamiento de Hola de agrupación en clústeres
 
-El resultado de la segunda parte, agrupación en clústeres nuevas entradas con el modelo de agrupación en clústeres de aprendizaje, se muestra en la figura 17.
+resultado de Hello de la segunda parte hello, agrupación en clústeres nuevas entradas con el modelo de agrupación en clústeres entrenado hello, se muestra en la figura 17.
 
 ![Visualización de resultado de agrupación en clústeres](./media/machine-learning-interpret-model-results/17.png)
 
@@ -202,17 +202,17 @@ Figura 17. Visualización de resultado de agrupación en clústeres en un nuevo 
 
 **Interpretación de resultados**
 
-Aunque los resultados de las dos partes se derivan de diferentes fases del experimento, tienen el mismo aspecto y se interpretan de la misma manera. Las primeras cuatro columnas son características. La última columna, Asignaciones, es el resultado de predicción. Se prevé que las entradas asignadas al mismo número estén en el mismo clúster, es decir, que compartan similitudes de alguna manera (este experimento usa la métrica de distancia euclidiana predeterminada). Al haber especificado que el número de clústeres es 2, las entradas de Asignaciones se etiquetan como 0 o 1.
+Aunque los resultados de Hola de partes de hello dos derivan de un experimento diferentes fases, parecen Hola mismo y se interpretan en hello igual. Hello cuatro primeras columnas son características. última columna Hello, asignaciones, es resultado de predicción de Hola. Hola Hola de entradas asignadas se ha predicho tantos toobe Hola mismo clúster, es decir, comparten similitudes de alguna manera (este experimento usa métrica de hello predeterminado calcula la distancia Euclidiana). Dado que especifica el número de Hola de clústeres toobe 2, las entradas de hello en las asignaciones se etiquetan 0 ó 1.
 
 **Publicación de servicios web**
 
-Puede publicar el experimento de agrupación en clústeres en un servicio web y llamarlo para las predicciones de agrupación en clústeres de la misma forma que con el caso de uso de clasificación de dos clases.
+Puede publicar Hola experimento de agrupación en clústeres en un servicio web y llamarlo para las predicciones de agrupación en clústeres Hola misma manera que en la clasificación de dos clases de hello caso de uso.
 
 ![Experimento de puntuación del problema de agrupación en clústeres de iris](./media/machine-learning-interpret-model-results/18.png)
 
 Figura 18. Experimento de puntuación de un problema de agrupación en clústeres de iris
 
-Tras ejecutar el servicio web, el resultado devuelto es similar al de la figura 19. Se prevé que esta flor esté en el clúster 0.
+Después de ejecutar el servicio web de hello, Hola devuelve resultados parece figura 19. Este flor es toobe previsto en el clúster 0.
 
 ![Módulo de puntuación de interpretación de prueba](./media/machine-learning-interpret-model-results/18_1.png)
 
@@ -223,24 +223,24 @@ Figura 19. Resultado de servicio web de la clasificación de dos clases de iris
 ## <a name="recommender-system"></a>Sistema de recomendación
 **Experimento de ejemplo**
 
-Para los sistemas de recomendación, puede usar el problema de la recomendación de restaurante como ejemplo: puede recomendar restaurantes a los clientes basándose en su historial de valoración. Los datos de entrada constan de tres partes:
+Para los sistemas de recomendación, puede usar el problema de recomendación de restaurante de hello como ejemplo: puede recomendar restaurantes para los clientes según su historial de clasificación. datos de entrada de Hello consta de tres partes:
 
 * Valoraciones de restaurantes de los clientes
 * Datos de características de los clientes
 * Datos de características de restaurantes
 
-Hay varias tareas que podemos hacer con el módulo integrado [Train Matchbox Recommender][train-matchbox-recommender] de Azure Machine Learning:
+Hay varias cosas que podemos hacer con hello [entrenar el Recomendador Matchbox] [ train-matchbox-recommender] módulo aprendizaje automático de Azure:
 
 * predecir las valoraciones para un usuario determinado y un elemento;
-* recomendar elementos a un usuario determinado;
-* buscar usuarios relacionados con un usuario determinado;
-* buscar elementos relacionados con un elemento determinado.
+* Recomienda tooa de elementos de usuario
+* Buscar usuarios tooa relacionados de usuario
+* Buscar elementos tooa relacionados dado elemento
 
-Puede elegir lo que quiere hacer mediante la selección de las cuatro opciones en el menú **Tipo de predicción de recomendación**. De este modo, podrá recorrer los cuatro escenarios.
+Puede elegir qué desea toodo mediante la selección de opciones de hello cuatro Hola **tipo de predicción de Recomendador** menú. De este modo, podrá recorrer los cuatro escenarios.
 
 ![Recomendador Matchbox](./media/machine-learning-interpret-model-results/19_1.png)
 
-Un experimento de Azure Machine Learning típico para un sistema de recomendación es similar al de la figura 20. Para información sobre cómo usar los módulos del sistema de recomendación, vea la página de ayuda [Train Matchbox Recommender][train-matchbox-recommender] y [Score Matchbox Recommender][score-matchbox-recommender].
+Un experimento de Azure Machine Learning típico para un sistema de recomendación es similar al de la figura 20. Para obtener información acerca de cómo toouse los módulos del sistema Recomendador, consulte [entrenar el Recomendador matchbox] [ train-matchbox-recommender] y [Recomendador matchbox] [ score-matchbox-recommender].
 
 ![Experimento del sistema de recomendación](./media/machine-learning-interpret-model-results/20.png)
 
@@ -250,55 +250,55 @@ Figura 20. Experimento del sistema de recomendación
 
 **Predecir las valoraciones para un usuario determinado y un elemento**
 
-Al seleccionar la **predicción de valoración** en **Tipo de predicción de recomendación**, pide al sistema de recomendación que prediga la valoración de un usuario y un elemento determinados. La visualización del resultado del [Score Matchbox Recommender][score-matchbox-recommender] es similar a la de la figura 21.
+Si selecciona **predicción de clasificación** en **tipo de predicción de Recomendador**, le pregunta Recomendador Hola Hola toopredict de sistema de clasificación para un usuario determinado y un elemento. Hola visualización de hello [Recomendador Matchbox] [ score-matchbox-recommender] salida es similar a la figura 21.
 
-![Resultado de puntuación del sistema de recomendación: valoración de predicción](./media/machine-learning-interpret-model-results/21.png)
+![Resultados del sistema de Recomendador hello: predicción de clasificación de puntuación](./media/machine-learning-interpret-model-results/21.png)
 
-Figura 21. Visualización del resultado de puntuación del sistema de recomendación: valoración de predicción
+Figura 21. Visualizar el resultado de la puntuación de Hola de sistema de Recomendador hello: predicción de clasificación
 
-Las dos primeras columnas son los pares de elemento-usuario proporcionados por los datos de entrada. La tercera columna es la valoración de predicción de un usuario para un elemento determinado. Por ejemplo, en la primera fila, se prevé que el cliente U1048 valore el restaurante 135026 como 2.
+Hola dos primeras columnas son pares de usuario-elemento Hola proporcionadas por los datos de entrada de Hola. tercera columna de Hello es Hola clasificación de predicción de un usuario para un elemento determinado. Por ejemplo, en la primera fila de Hola, cliente que U1048 es predecir toorate restaurante 135026 como 2.
 
-**Recomendar elementos a un usuario determinado**
+**Recomienda tooa de elementos de usuario**
 
-Al seleccionar **Recomendación de elementos** en **Tipo de predicción de recomendación**, pide al sistema de recomendación que recomiende elementos a un usuario determinado. El último parámetro que elegir en este escenario es la *selección de elementos recomendados*. La opción **De elementos valorados (para la evaluación de modelos)** es principalmente para la evaluación de modelos durante el proceso de entrenamiento. Para esta fase de predicción, elegiremos **De todos los elementos**. La visualización del resultado del [Score Matchbox Recommender][score-matchbox-recommender] es similar a la de la figura 22.
+Si selecciona **recomendación de elementos** en **tipo de predicción de Recomendador**, está solicitando el Recomendador Hola sistema toorecommend elementos tooa de usuario. Hola último parámetro toochoose en este escenario es *recomienda la selección de elementos*. Hola opción **de los elementos clasificados (para evaluación de modelos)** es principalmente para la evaluación de modelos durante el proceso de entrenamiento de Hola. Para esta fase de predicción, elegiremos **De todos los elementos**. Hola visualización de hello [Recomendador Matchbox] [ score-matchbox-recommender] salida es similar a la figura 22.
 
 ![Resultado de puntuación del sistema de recomendación: recomendación de elementos](./media/machine-learning-interpret-model-results/22.png)
 
-Figura 22. Visualización del resultado de puntuación del sistema de recomendación: recomendación de elementos
+Figura 22. Visualizar el resultado de la puntuación del sistema de Recomendador hello: recomendación de elementos
 
-La primera de las seis columnas representa los id. de usuario determinados para los que recomendar elementos, proporcionados por los datos de entrada. Las otras cinco columnas representan los elementos que se recomiendan para el usuario en orden descendente de relevancia. Por ejemplo, en la primera fila, el restaurante más recomendado para el cliente U1048 es 134986, seguido de 135018, 134975, 135021 y 132862.
+Hola primero de hello representa Hola seis columnas que tiene elementos de toorecommend de Id. de usuario, proporcionado por los datos de entrada de Hola. Hello otras cinco columnas representan los elementos de hello recomendados usuario toohello en orden descendente de relevancia. Por ejemplo, en la primera fila de hello, hello más recomendable restaurante para cliente U1048 es 134986, seguido por 135018, 134975, 135021 y 132862.
 
-**Buscar usuarios relacionados con un usuario determinado**
+**Buscar usuarios tooa relacionados de usuario**
 
-Al seleccionar **usuarios relacionados** en **Tipo de predicción de recomendación**, pide al sistema de recomendación que busque usuarios relacionados a un usuario determinado. Los usuarios relacionados son los usuarios que tienen preferencias similares. El último parámetro que elegir en este escenario es la *selección de usuarios relacionados*. La opción **De elementos valorados (para la evaluación de modelos)** es principalmente para la evaluación de modelos durante el proceso de entrenamiento. Para esta fase de predicción, elija **De todos los usuarios**. La visualización del resultado del [Score Matchbox Recommender][score-matchbox-recommender] es similar a la de la figura 23.
+Si selecciona **usuarios relacionados** en **tipo de predicción de Recomendador**, está solicitando el Recomendador Hola usuario del sistema toofind usuarios relacionados tooa dado. Usuarios relacionados son los usuarios de Hola que tengan preferencias similares. Hola último parámetro toochoose en este escenario es *relacionados con la selección del usuario*. Hola opción **de los usuarios que clasificaron elementos (para evaluación de modelos)** es principalmente para la evaluación de modelos durante el proceso de entrenamiento de Hola. Para esta fase de predicción, elija **De todos los usuarios**. Hola visualización de hello [Recomendador Matchbox] [ score-matchbox-recommender] salida es similar a la figura 23.
 
 ![Resultado de puntuación del sistema de recomendación: usuarios relacionados](./media/machine-learning-interpret-model-results/23.png)
 
-Figura 23. Visualización de los resultados de puntuación del sistema de recomendación: usuarios relacionados
+Figura 23. Visualizar los resultados de puntuación de sistema de Recomendador Hola--usuarios relacionados
 
-La primera de las seis columnas muestra los id. de usuario determinados necesarios para encontrar usuarios relacionados, proporcionados por los datos de entrada. Las otras cinco columnas almacenan los usuarios relacionados previstos del usuario en orden descendente de relevancia. Por ejemplo, en la primera fila, el cliente más pertinente para el cliente U1048 es U1051, seguido de U1066, U1044, U1017 y U1072.
+Hola primero de hello de muestra de Hola seis columnas dado toofind de identificadores que necesita de usuario relacionados con los usuarios, proporcionados por los datos de entrada. Hello otro almacén de cinco columnas Hola usuarios relacionados previstos de usuario de hello en orden descendente de relevancia. Por ejemplo, en la primera fila de hello, hello más relevante para el cliente U1048 es cliente U1051, seguido por U1066, U1044, U1017 y U1072.
 
-**Buscar elementos relacionados con un elemento determinado**
+**Buscar elementos tooa relacionados dado elemento**
 
-Al seleccionar **usuarios relacionados** en **Tipo de predicción de recomendación**, pide al sistema de recomendación que busque elementos relacionados a un elemento determinado. Los elementos relacionados son los que tienen mayor probabilidad de estar vinculados al mismo usuario. El último parámetro que elegir en este escenario es la *selección de elementos relacionados*. La opción **De elementos valorados (para la evaluación de modelos)** es principalmente para la evaluación de modelos durante el proceso de entrenamiento. Para esta fase de predicción, elegiremos **De todos los elementos** . La visualización del resultado del [Score Matchbox Recommender][score-matchbox-recommender] es similar a la de la figura 24.
+Si selecciona **elementos relacionados** en **tipo de predicción de Recomendador**, le pregunta Recomendador hello tooa dado elemento de sistema toofind elementos relacionados. Relacionados con los elementos son Hola elementos probablemente toobe gustó por hello mismo usuario. Hola último parámetro toochoose en este escenario es *relacionados con la selección de elementos*. Hola opción **de los elementos clasificados (para evaluación de modelos)** es principalmente para la evaluación de modelos durante el proceso de entrenamiento de Hola. Para esta fase de predicción, elegiremos **De todos los elementos** . Hola visualización de hello [Recomendador Matchbox] [ score-matchbox-recommender] salida es similar a la figura 24.
 
 ![Resultado de puntuación del sistema de recomendación: elementos relacionados](./media/machine-learning-interpret-model-results/24.png)
 
-Figura 24. Visualización de los resultados de puntuación del sistema de recomendación: elementos relacionados
+Figura 24. Visualizar los resultados de puntuación de sistema de Recomendador Hola--elementos relacionados
 
-La primera de las seis columnas representa los id. de elemento determinados necesarios para encontrar elementos relacionados, proporcionados por los datos de entrada. Las otras cinco columnas almacenan los elementos relacionados previstos del elemento en orden descendente en términos de relevancia. Por ejemplo, en la primera fila, el elemento más pertinente para el elemento 135026 es 135074, seguido de 135035, 132875, 135055 y 134992.
+Hola primero de hello representa Hola seis columnas que tiene los identificadores de elemento que sea necesitados toofind relacionados con los elementos proporcionados por los datos de entrada de Hola. Hello otro almacén de cinco columnas Hola elementos relacionados previstos de elemento de hello en orden descendente en términos de relevancia. Por ejemplo, en la primera fila de hello, elemento más relevante de hello para el elemento 135026 es 135074, seguido por 135035, 132875, 135055 y 134992.
 
 **Publicación de servicios web**
 
-El proceso de publicación de estos experimentos como servicios web para obtener predicciones es similar para cada uno de los cuatro escenarios. Aquí veremos el segundo escenario (el de recomendar elementos a un usuario determinado) como ejemplo. Puede seguir el mismo procedimiento con los otros tres.
+proceso de Hello sobre la publicación de estos experimentos como predicciones de tooget de servicios web es similar para cada uno de los cuatro escenarios de Hola. Aquí se toman segundo escenario de hello (recomendar elementos tooa dado usuario) como un ejemplo. Puede seguir Hola mismo procedimiento con hello otras tres.
 
-Al guardar el sistema entrenado de recomendación como un modelo entrenado y filtrar los datos de entrada a una columna de identificador de usuario único como se solicitó, puede enlazar el experimento como se muestra en la figura 25 y publicarlo como un servicio web.
+Hola guardar entrenado sistema Recomendador como un modelo entrenado y filtrado tooa de datos de entrada de hello columna de Id. de usuario único como solicitado, puede enlazar experimento hello como se muestra en la figura 25 y publicarlo como un servicio web.
 
-![Experimento de puntuación del problema de recomendación de restaurante](./media/machine-learning-interpret-model-results/25.png)
+![La puntuación del experimento de problema de recomendación de hello restaurante](./media/machine-learning-interpret-model-results/25.png)
 
-Figura 25. Experimento de puntuación del problema de recomendación de restaurante
+Figura 25. La puntuación del experimento de problema de recomendación de hello restaurante
 
-Al ejecutar el servicio web, el resultado devuelto es similar al de la figura 26. Los cinco restaurantes recomendados para el usuario U1048 son 134986, 135018, 134975, 135021 y 132862.
+Ejecute servicio web de hello, hello devuelve el resultado parece figura 26. los restaurantes recomendada cinco Hello para el usuario U1048 son 134986, 135018, 134975, 135021 y 132862.
 
 ![Ejemplo de servicio del sistema de recomendación](./media/machine-learning-interpret-model-results/25_1.png)
 

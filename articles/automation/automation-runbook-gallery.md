@@ -1,6 +1,6 @@
 ---
-title: "Galerías de runbooks y módulos para Azure Automation | Microsoft Docs"
-description: "Dispone de runbooks y módulos de Microsoft y la comunidad para instalarlos y usarlos en su entorno de Automatización de Azure.  En este artículo, se describe cómo acceder a estos recursos y contribuir sus runbooks a la galería."
+title: "galerías de aaaRunbook y el módulo de automatización de Azure | Documentos de Microsoft"
+description: "Los runbooks y módulos de comunidad hello y Microsoft están disponibles para tooinstall y usar en su entorno de automatización de Azure.  Este artículo describe cómo se puede tener acceso a estos recursos y toocontribute la Galería de runbooks toohello."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: 04cfafc9e7a037d915f63723fd0b67a07954460b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10b634460edf66dd7548017e3a2f7111b7125f30
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerías de runbooks y módulos para Automatización de Azure
-En lugar de crear sus propios runbooks y módulos en Automatización de Azure, dispone de acceso a diversos escenarios ya compilados por Microsoft y la comunidad.  Puede usar estos escenarios sin modificaciones o como punto de partida para modificarlos según sus requisitos específicos.
+En lugar de crear sus propios módulos y runbooks en automatización de Azure, puede tener acceso a una variedad de escenarios que ya se han generado por la Comunidad de Microsoft y Hola.  Puede usar estos escenarios sin modificaciones o como punto de partida para modificarlos según sus requisitos específicos.
 
-Puede obtener runbooks en la [Galería de Runbook](#runbooks-in-runbook-gallery) y módulos en la [Galería de PowerShell](#modules-in-powerShell-gallery).  También puede contribuir a la comunidad si comparte los escenarios que desarrolle.
+Puede obtener runbooks de hello [Galería de runbooks](#runbooks-in-runbook-gallery) y módulos de hello [Galería de PowerShell](#modules-in-powerShell-gallery).  También puede contribuir toohello Comunidad compartiendo escenarios que desarrolle.
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbooks en la Galería de runbooks
-La [Galería de Runbook](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) ofrece diversos runbooks de Microsoft y la comunidad que se pueden importar a Azure Automation. Puede descargar un Runbook de la galería que se hospeda en el [Centro de scripts de TechNet](https://gallery.technet.microsoft.com/scriptcenter/site/upload) o puede importar Runbooks directamente desde la galería del Portal de Azure (o desde su versión clásica).
+Hola [Galería de runbooks](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) proporciona una variedad de runbooks de comunidad hello y Microsoft que puede importar a automatización de Azure. Puede optar por descargar un runbook de galería de Hola que se hospeda en hello [centro de scripts de TechNet](https://gallery.technet.microsoft.com/scriptcenter/site/upload), o puede importar runbooks directamente desde la Galería de Hola de hello portal de Azure clásico o portal de Azure.
 
-Solo se puede importar directamente desde la Galería de Runbooks mediante el Portal de Azure (o su versión clásica). No se puede llevar a cabo esta función mediante Windows PowerShell.
+Sólo puede importar directamente desde la Galería de runbooks hello mediante Hola portal de Azure clásico o el portal de Azure. No se puede llevar a cabo esta función mediante Windows PowerShell.
 
 > [!NOTE]
-> Debería validar el contenido de los runbooks que obtenga de la Galería de runbooks y extremar el cuidado al instalarlos y ejecutarlos en un entorno de producción.|
+> Debe validar el contenido de Hola de los runbooks que obtiene de hello Galería de runbooks y tener mucho cuidado al instalar y ejecutarlos en un entorno de producción. |
 > 
 > 
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-classic-portal"></a>Para importar un Runbook desde la Galería de Runbooks con el Portal de Azure clásico
-1. En Azure Portal, haga clic en **Nuevo**, **App Services**, **Automation**, **Runbook**, **De la galería**.
-2. Seleccione una categoría para ver runbooks relacionados y seleccione uno para ver sus detalles. Cuando seleccione el Runbook que desee, haga clic en el botón de flecha derecha.
+### <a name="tooimport-a-runbook-from-hello-runbook-gallery-with-hello-azure-classic-portal"></a>tooimport un runbook de hello Galería de runbooks con hello portal de Azure clásico
+1. Hola Portal de Azure, haga clic en, **New**, **servicios de aplicaciones**, **automatización**, **Runbook**, **de la galería**.
+2. Seleccione una categoría tooview relacionadas con runbooks y seleccione un runbook tooview sus detalles. Cuando se selecciona runbook Hola que desee, haga clic en botón de flecha derecha Hola.
    
     ![Galería de runbooks](media/automation-runbook-gallery/runbook-gallery.png)
-3. Revise el contenido del runbook y tenga en cuenta los requisitos de la descripción. Haga clic en el botón de flecha derecha cuando termine.
-4. Escriba los detalles del runbook y haga clic en el botón de marca de verificación. El nombre del runbook ya estará rellenado.
-5. Aparecerá el runbook en la pestaña **Runbooks** de la cuenta de automatización.
+3. Revise Hola contenido de runbook de Hola y tenga en cuenta los requisitos de descripción de Hola. Cuando haya terminado, haga clic en botón de flecha derecha Hola.
+4. Escriba los detalles de runbook de hello y, a continuación, haga clic en botón de marca de verificación de Hola. nombre del runbook Hola ya se rellenará.
+5. Hola runbook aparecerá en hello **Runbooks** pestaña Hola cuenta de automatización.
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Para importar un runbook de la Galería de runbooks con el Portal de Azure
-1. En el Portal de Azure, abra su cuenta de Automatización.
-2. Haga clic en el icono **Runbooks** para abrir la lista de runbooks.
+### <a name="tooimport-a-runbook-from-hello-runbook-gallery-with-hello-azure-portal"></a>tooimport un runbook de hello Galería de runbooks con hello portal de Azure
+1. Hola Portal de Azure, abra su cuenta de automatización.
+2. Haga clic en hello **Runbooks** icono tooopen Hola lista de runbooks.
 3. Haga clic en el botón **Examinar galería** .
    
     ![Botón Examinar galería](media/automation-runbook-gallery/browse-gallery-button.png)
-4. Busque el elemento de la galería que desee y selecciónelo para ver sus detalles.
+4. Busque el elemento de la Galería de Hola que desee y seleccione tooview sus detalles.
    
     ![Examinar galería](media/automation-runbook-gallery/browse-gallery.png)
-5. Haga clic en **Ver proyecto de origen** para ver el elemento en el [Centro de scripts de TechNet](http://gallery.technet.microsoft.com/).
-6. Para importar un elemento, haga clic en él para ver sus detalles y después haga clic en el botón **Importar** .
+5. Haga clic en **proyecto de código fuente de vista** tooview elemento Hola Hola [centro de scripts de TechNet](http://gallery.technet.microsoft.com/).
+6. tooimport un elemento, haga clic en ella tooview sus detalles y, a continuación, haga clic en hello **importación** botón.
    
     ![Botón Importar](media/automation-runbook-gallery/gallery-item-detail.png)
-7. Si lo desea, cambie el nombre del runbook y después haga clic en **Aceptar** para importarlo.
-8. Aparecerá el runbook en la pestaña **Runbooks** de la cuenta de automatización.
+7. Opcionalmente, cambiar nombre de Hola de runbook de hello y, a continuación, haga clic en **Aceptar** tooimport Hola runbook.
+8. Hola runbook aparecerá en hello **Runbooks** pestaña Hola cuenta de automatización.
 
-### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Adición de un runbook a la Galería de runbooks
-Microsoft recomienda agregar a la Galería de Runbooks aquellos runbooks que piense que podrían ser útiles para otros clientes.  Puede agregar un runbook si [lo carga al Centro de scripts](http://gallery.technet.microsoft.com/site/upload) teniendo en cuenta los siguientes detalles.
+### <a name="adding-a-runbook-toohello-runbook-gallery"></a>Agregar una galería de runbooks runbook toohello
+Microsoft le anima tooadd runbooks toohello Galería de runbooks que cree que sería útil tooother clientes.  Puede agregar un runbook por [cargarlo toohello centro de scripts de](http://gallery.technet.microsoft.com/site/upload) teniendo en hello cuenta detalles siguientes.
 
-* Necesita especificar *Windows Azure* como **categoría** y *Automation* como **subcategoría** para el runbook que se mostrará en el asistente.  
-* Se debe cargar un único archivo. ps1 o .graphrunbook.  Si el runbook requiere módulos, runbooks secundarios o recursos, debe enumerarlos en la descripción del envío y en la sección de comentarios del runbook.  Si tiene un escenario que requiere varios runbooks, cargue cada uno por separado e indique los nombres de los runbooks relacionados en cada una de sus descripciones. Asegúrese de usar las mismas etiquetas para que se muestren en la misma categoría. Un usuario tendrá que leer la descripción para saber que se requieren otros runbooks para que funcione el escenario.
-* Agregue la etiqueta "GraphicalPS" si va a publicar un **runbook gráfico** (no en un flujo de trabajo gráfico). 
-* Inserte un fragmento de código de Flujo de trabajo de PowerShell o PowerShell en la descripción con el icono **Insertar sección de código** .
-* El resumen de la descarga se mostrará en los resultados de la Galería de runbooks, por lo que debería proporcionar información detallada que ayude a un usuario a identificar la funcionalidad del runbook.
-* Debería asignar entre una y tres de las etiquetas siguientes a la carga.  El runbook se mostrará en el asistente en las categorías que coincidan con sus etiquetas.  El asistente pasará por alto las etiquetas que no aparezcan en esta lista. Si no especifica ninguna etiqueta coincidente, el runbook se incluirá en la categoría Otros.
+* Debe especificar *Windows Azure* para hello **categoría** y *automatización* para hello **subcategoría** de muestra de Hola runbook toobe en el Asistente de Hola.  
+* carga de Hello debe ser un único archivo. ps1 o .graphrunbook.  Si runbook Hola requiere los módulos, los runbooks secundarios o los activos, a continuación, debe indicarlos en la descripción de hello del envío de Hola y en la sección de comentarios de Hola de runbook de Hola.  Si tiene un escenario que requiere varios runbooks, a continuación, cargar cada uno de ellos por separado y nombres Hola de lista de hello relacionados con runbooks en cada uno de sus descripciones. Asegúrese de que usa Hola mismo etiquetas para que se mostrarán en hello misma categoría. Un usuario tenga tooread Hola descripción tooknow que otros runbooks son necesarios Hola escenario toowork.
+* Agregar etiquetas de Hola "GraphicalPS" Si va a publicar un **runbook gráfico** (no en un flujo de trabajo gráfico). 
+* Insertar fragmento de código de un PowerShell o el flujo de trabajo de PowerShell en hello descripción utilizando **Insertar sección de código** icono.
+* Hello resumen para la carga de Hola se mostrará en hello que Galería de runbooks provoca por lo que debe proporcionar información detallada que le ayudará a un usuario para identificar la funcionalidad de Hola de runbook de Hola.
+* Debe asignar una toothree de hello después carga toohello de etiquetas.  Hola runbook se mostrarán en el Asistente de hello en categorías de Hola que coincidan con sus etiquetas.  Asistente de hello omitirá las etiquetas no estén en esta lista. Si no se especifica ninguna etiqueta coincidente, será Hola runbook aparecen en hello otra categoría.
   
-  * Copia de seguridad
+  * Backup
   * Administración de la capacidad
   * Control de cambios
   * Cumplimiento normativo
@@ -81,44 +81,44 @@ Microsoft recomienda agregar a la Galería de Runbooks aquellos runbooks que pie
   * Aprovisionamiento
   * Corrección
   * Administración del ciclo de vida de VM
-* Automatización actualiza la galería una vez a la hora, por lo que no verá sus contribuciones de inmediato.
+* La automatización actualiza Hola Galería cada hora, por lo que no verá sus contribuciones inmediatamente.
 
 ## <a name="modules-in-powershell-gallery"></a>Módulos en la Galería de PowerShell
-Los módulos de PowerShell contienen cmdlets que puede usar en sus runbooks; los módulos existentes que se pueden instalar en Automatización de Azure están disponibles en la [Galería de PowerShell](http://www.powershellgallery.com).  Puede iniciar esta galería desde el Portal de Azure e instalarlos directamente en Automatización de Azure o puede descargarlos e instalarlos de forma manual.  No puede instalar los módulos directamente desde el Portal de Azure clásico, pero puede descargarlos e instalarlos como cualquier otro módulo.
+Módulos de PowerShell contienen cmdlets que puede usar en sus runbooks y módulos existentes que se pueden instalar en automatización de Azure están disponibles en hello [Galería de PowerShell](http://www.powershellgallery.com).  También puede iniciar esta galería de hello portal de Azure e instalarlos directamente en la automatización de Azure, o se puede descargarlas e instalarlas manualmente.  No se puede instalar módulos de hello directamente desde el portal de Azure clásico hello, pero puede descargarlos instalarlos como lo haría con cualquier otro módulo.
 
-### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Para importar un módulo de la Galería de módulos de automatización con el Portal de Azure
-1. En el Portal de Azure, abra su cuenta de Automatización.
-2. Haga clic en el icono **Recursos** para abrir la lista de recursos.
-3. Haga clic en el icono **Módulos** para abrir la lista de módulos.
-4. Haga clic en el botón **Examinar la galería** y se iniciará la hoja Examinar la galería.
+### <a name="tooimport-a-module-from-hello-automation-module-gallery-with-hello-azure-portal"></a>tooimport un módulo de hello Galería de módulos de automatización con hello portal de Azure
+1. Hola Portal de Azure, abra su cuenta de automatización.
+2. Haga clic en hello **activos** icono tooopen Hola lista de activos.
+3. Haga clic en hello **módulos** icono tooopen Hola lista de módulos.
+4. Haga clic en hello **explorar la galería** hoja de galería hello y el botón Examinar se inicia.
    
     ![Galería de módulos](media/automation-runbook-gallery/modules-blade.png) <br>
-5. Cuando haya aparecido la hoja Examinar galería, puede buscar por los campos siguientes:
+5. Una vez que haya iniciado la hoja de hello examinar la galería, puede buscar por hello siguientes campos:
    
    * Nombre de módulo
    * Etiquetas
    * Autor
    * Nombre de cmdlet/recurso de DSC
-6. Busque un módulo que le interese y selecciónelo para ver sus detalles.  
-   Cuando explore un módulo específico, podrá ver más información sobre el módulo, incluido un vínculo a la Galería de PowerShell, las dependencias necesarias y todos los cmdlets o recursos de DSC que contiene el módulo.
+6. Localice un módulo que le interesa y seleccione tooview sus detalles.  
+   Al agrupar los datos en un módulo específico, puede ver más información sobre el módulo de hello, incluyendo un toohello de espera de vínculo Galería de PowerShell, las dependencias de necesarias y todos los cmdlets de Hola o los recursos de DSC que Hola módulo contiene.
    
     ![Detalles del módulo de PowerShell](media/automation-runbook-gallery/gallery-item-details-blade.png) <br>
-7. Para instalar el módulo directamente en Automatización de Azure, haga clic en el botón **Importar** .
+7. módulo de hello tooinstall directamente en la automatización de Azure, haga clic en hello **importación** botón.
    
     ![Botón de importación de módulo](media/automation-runbook-gallery/module-import-button.png)
-8. Al hacer clic en el botón Importar, verá el nombre del módulo que se va a importar. Si están instaladas todas las dependencias, el botón **Aceptar** estará activo. Si faltan dependencias, debe importarlas antes de importar este módulo.
-9. Haga clic en **Aceptar** para importar el módulo y se iniciará la hoja del módulo. Cuando Automatización de Azure importa un módulo en la cuenta, extrae metadatos sobre el módulo y los cmdlets.
+8. Al hacer clic en botón Importar de hello, verá el nombre de módulo de Hola que va tooimport. Si se instalan todas las dependencias de hello, Hola **Aceptar** botón estará activo. Si no tiene dependencias, debe tooimport los para poder importar este módulo.
+9. Haga clic en **Aceptar** tooimport Hola módulo y hoja de módulo de Hola se iniciarán. Cuando una cuenta de tooyour de módulo se importa en automatización de Azure, extrae metadatos sobre el módulo de Hola y Hola cmdlets.
    
     ![Hoja de importación de módulo](media/automation-runbook-gallery/module-import-blade.png)
    
-    Esto puede tardar un par de minutos, ya que cada actividad debe extraerse.
-10. Recibirá una notificación de que se va a implementar el módulo y otra cuando se haya completado.
-11. Una vez importado el módulo, verá las actividades disponibles y podrá usar sus recursos en los runbooks y en la Configuración de estado deseado.
+    Puesto que cada actividad necesita toobe extraído, esto puede tardar unos minutos.
+10. Recibirá una notificación se va a implementar ese módulo hello y una notificación cuando se ha completado.
+11. Una vez importado el módulo de hello, verá actividades disponibles hello y puede usar sus recursos en sus runbooks y la configuración de estado deseado.
 
 ## <a name="requesting-a-runbook-or-module"></a>Solicitud de un runbook o módulo
-Puede enviar solicitudes a [Voz de usuario](https://feedback.azure.com/forums/246290-azure-automation/).  Si necesita ayuda para escribir un runbook o se plantea preguntas acerca de PowerShell, publique una pregunta en nuestro [foro](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
+Puede enviar solicitudes demasiado[User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Si necesita ayuda para escribir un runbook o tiene alguna pregunta acerca de PowerShell, publique una pregunta tooour [foro](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para empezar a trabajar con runbooks, consulte [Creación o importación de un runbook en Automatización de Azure](automation-creating-importing-runbook.md)
-* Para comprender las diferencias entre PowerShell y los flujos de trabajo de PowerShell para runbooks, consulte [Aprendizaje del flujo de trabajo de Windows PowerShell](automation-powershell-workflow.md)
+* tooget a trabajar con runbooks, vea [crear o importar un runbook en automatización de Azure](automation-creating-importing-runbook.md)
+* diferencias de hello toounderstand entre PowerShell y flujo de trabajo de PowerShell a runbooks, vea [flujo de trabajo de PowerShell de aprendizaje](automation-powershell-workflow.md)
 

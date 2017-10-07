@@ -1,6 +1,6 @@
 ---
-title: "Creación de un equilibrador de carga con conexión a Internet con IPv6: CLI de Azure | Microsoft Docs"
-description: "Obtenga información sobre cómo crear un equilibrador de carga orientado a Internet con IPv6 en Azure Resource Manager con la CLI de Azure"
+title: "equilibrador de carga de aaaCreate una conexión a Internet con IPv6 - CLI de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate un Internet orientados al equilibrador de carga con IPv6 en el Administrador de recursos de Azure en Hola CLI de Azure"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,55 +15,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: efb4771800c42df544c3cc37d1d164045fdcaf3e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ff75ac90d74a74e3d0c27672b36fbd955a086a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-the-azure-cli"></a>Creación de un equilibrador de carga orientado a Internet con IPv6 en Azure Resource Manager con la CLI de Azure
+# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-hello-azure-cli"></a>Crear una red orientada hacia el equilibrador de carga con IPv6 en Azure Resource Manager mediante Hola CLI de Azure
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
 > * [CLI de Azure](load-balancer-ipv6-internet-cli.md)
 > * [Plantilla](load-balancer-ipv6-internet-template.md)
 
-Azure Load Balancer es un equilibrador de carga de nivel 4 (TCP y UDP) que distribuye proporcionando una alta disponibilidad el tráfico entrante entre las instancias de servicio correctas de los servicios en la nube o las máquinas virtuales de un conjunto de carga equilibrada. Azure Load Balancer también pueden presentar prestar servicios en varios puertos, varias direcciones IP o ambos.
+Azure Load Balancer es un equilibrador de carga de nivel 4 (TCP y UDP) equilibrador de carga de Hello proporciona alta disponibilidad mediante la distribución de tráfico entrante entre instancias de servicio de estado de servicios en la nube o máquinas virtuales en un conjunto de equilibrador de carga. Azure Load Balancer también pueden presentar prestar servicios en varios puertos, varias direcciones IP o ambos.
 
 ## <a name="example-deployment-scenario"></a>Escenario de implementación de ejemplo
 
-En el siguiente diagrama se ilustra la solución de equilibrio de carga que se implementa mediante la plantilla de ejemplo descrita en este artículo.
+Hello siguiente diagrama ilustra Hola solución equilibrio de carga que se implementarán mediante la plantilla de ejemplo de Hola se describe en este artículo.
 
 ![Escenario del equilibrador de carga](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
-En este escenario creará los siguientes recursos de Azure:
+En este escenario, creará hello Azure recursos siguientes:
 
 * dos máquinas virtuales (VM)
 * una interfaz de red virtual para cada máquina virtual con las direcciones IPv4 e IPv6 asignadas
 * un equilibrador de carga orientado a Internet con una dirección IP pública IPv4 e IPv6
-* un conjunto de disponibilidad con las dos máquinas virtuales
-* dos reglas de equilibrio de carga para asignar las VIP públicas a los puntos de conexión privados
+* un conjunto de disponibilidad toothat contiene máquinas virtuales de hello dos
+* dos equilibrio reglas toomap Hola VIP toohello privados extremos públicos de carga
 
-## <a name="deploying-the-solution-using-the-azure-cli"></a>Implementación de la solución mediante la CLI de Azure
+## <a name="deploying-hello-solution-using-hello-azure-cli"></a>Implementar soluciones de hello mediante Hola CLI de Azure
 
-Los pasos siguientes muestran cómo crear un equilibrador de carga orientado a Internet mediante Azure Resource Manager con la CLI. Con Azure Resource Manager, cada recurso se crea y configura de forma individual, y luego se juntan para crear un recurso.
+Hola pasos muestra cómo toocreate una conexión a Internet cargar equilibrador con Azure Resource Manager CLI. Con el Administrador de recursos de Azure, cada recurso se crea y configura de forma individual y, a continuación, reunir toocreate un recurso.
 
-Para implementar un equilibrador de carga, debe crear y configurar los siguientes objetos:
+toodeploy un equilibrador de carga, se crea y configura Hola siguientes objetos:
 
 * Configuración de direcciones IP de front-end: contiene direcciones IP públicas para el tráfico de red entrante.
-* Grupo de direcciones de back-end: contiene interfaces de red (NIC) para que las máquinas virtuales reciban tráfico de red del equilibrador de carga.
-* Reglas de equilibrio de carga: contiene reglas que asignan un puerto público en el equilibrador de carga al del grupo de direcciones de back-end.
-* Reglas NAT de entrada: contiene reglas que asignan un puerto público en el equilibrador de carga a un puerto para una máquina virtual específica en el grupo de direcciones de back-end.
-* Sondeos: contiene los sondeos de estado que se usan para comprobar la disponibilidad de las instancias de las máquinas virtuales del grupo de direcciones de back-end.
+* Grupo de direcciones de back-end - contiene interfaces de red (NIC) de tráfico de red de tooreceive de máquinas virtuales de Hola Hola equilibrador de carga.
+* Reglas de equilibrio de carga - contiene reglas de asignación de un puerto público en tooport de equilibrador de carga de hello en el grupo de direcciones de back-end de Hola.
+* Reglas NAT de entrada: contiene las reglas de asignación de un puerto público en el puerto de tooa de equilibrador de carga de Hola para una máquina virtual específica en el grupo de direcciones de back-end de Hola.
+* Sondea: contiene toocheck disponibilidad de sondeos que se usan de mantenimiento de instancias de máquinas virtuales en el grupo de direcciones de back-end de Hola.
 
 Para más información, consulte [Compatibilidad de Azure Resource Manager con el equilibrador de carga](load-balancer-arm.md).
 
-## <a name="set-up-your-cli-environment-to-use-azure-resource-manager"></a>Configuración del entorno de CLI para usar Azure Resource Manager
+## <a name="set-up-your-cli-environment-toouse-azure-resource-manager"></a>Configurar la toouse de entorno de CLI Azure Resource Manager
 
-En este ejemplo, ejecutamos las herramientas de la CLI en una ventana Comandos de PowerShell. No usamos los cmdlets de Azure PowerShell, pero utilizamos las capacidades de scripting de PowerShell para mejorar la legibilidad y reutilización.
+En este ejemplo, se está ejecutando herramientas CLI de hello en una ventana de comandos de PowerShell. No estamos utilizando cmdlets de PowerShell de Azure de hello, sin embargo, los usamos capacidades tooimprove legibilidad y reutilización de secuencias de comandos de PowerShell.
 
-1. Si nunca ha usado la CLI de Azure, consulte [Instalación y configuración de la CLI de Azure](../cli-install-nodejs.md) y siga las instrucciones hasta el punto donde deba seleccionar su cuenta y suscripción de Azure.
-2. Ejecute el comando **azure config mode** para cambiar al modo de Resource Manager.
+1. Si nunca ha utilizado la CLI de Azure, consulte [instalar y configurar hello Azure CLI](../cli-install-nodejs.md) y siga las instrucciones de hello punto toohello donde seleccionar su cuenta de Azure y la suscripción.
+2. Ejecute hello **configuración azure modo** modo de comando tooswitch tooResource Manager.
 
     ```azurecli
     azure config mode arm
@@ -73,7 +73,7 @@ En este ejemplo, ejecutamos las herramientas de la CLI en una ventana Comandos d
 
         info:    New mode is arm
 
-3. Inicie sesión en Azure y obtenga una lista de suscripciones.
+3. Inicie sesión en tooAzure y obtener una lista de suscripciones.
 
     ```azurecli
     azure login
@@ -85,9 +85,9 @@ En este ejemplo, ejecutamos las herramientas de la CLI en una ventana Comandos d
     azure account list
     ```
 
-    Seleccione la suscripción que desea usar. Tome nota del Id. de suscripción para el siguiente paso.
+    Seleccionar suscripción Hola que desea toouse. Tome nota del identificador de la suscripción de hello para el paso siguiente de saludo.
 
-4. Configure variables de PowerShell para usarlas con los comandos de la CLI.
+4. Configurar variables de PowerShell para su uso con los comandos de CLI de Hola.
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -130,16 +130,16 @@ En este ejemplo, ejecutamos las herramientas de la CLI en una ventana Comandos d
     $subnet2 = azure network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
     ```
 
-## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Creación de direcciones IP públicas para el grupo de servidores front-end
+## <a name="create-public-ip-addresses-for-hello-front-end-pool"></a>Crear direcciones IP públicas para el grupo de servidores front-end de Hola
 
-1. Configure las variables de PowerShell
+1. Establecer las variables de PowerShell de Hola
 
     ```powershell
     $publicIpv4Name = "myIPv4Vip"
     $publicIpv6Name = "myIPv6Vip"
     ```
 
-2. Cree una dirección IP pública para el grupo de servidores front-end
+2. Crear un público Hola front-end IP grupo de direcciones IP.
 
     ```azurecli
     $publicipV4 = azure network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --ip-version IPv4 --allocation-method Dynamic --domain-name-label $dnsLabel
@@ -147,14 +147,14 @@ En este ejemplo, ejecutamos las herramientas de la CLI en una ventana Comandos d
     ```
 
     > [!IMPORTANT]
-    > El equilibrador de carga usa la etiqueta de dominio de la dirección IP pública como su FQDN. Esto representa un cambio en la implementación clásica, que usa el nombre del servicio en la nube como el FQDN del equilibrador de carga.
-    > En este ejemplo, el FQDN es *contoso09152016.southcentralus.cloudapp.azure.com*.
+    > equilibrador de carga de Hello usa la etiqueta de Hola de dominio de la dirección IP pública de hello como su FQDN. Este un cambio de implementación clásico, que utiliza el nombre de servicio de nube de hello como Hola FQDN del equilibrador de carga.
+    > En este ejemplo, hello FQDN es *contoso09152016.southcentralus.cloudapp.azure.com*.
 
 ## <a name="create-front-end-and-back-end-pools"></a>Creación de grupos de servidores front-end y back-end
 
-En este ejemplo se crea el grupo de direcciones IP de front-end que recibe el tráfico de red que entra al equilibrador de carga y el grupo de direcciones IP de back-end donde el grupo de servidores front-end envía el tráfico de red con equilibrio de carga.
+Este ejemplo crea el grupo IP front-end Hola que recibe el tráfico de red entrante de hello en el equilibrador de carga de Hola y grupo de direcciones IP de back-end de Hola donde grupo front-end de hello envía tráfico de red con equilibrio de carga de Hola.
 
-1. Configure las variables de PowerShell
+1. Establecer las variables de PowerShell de Hola
 
     ```powershell
     $frontendV4Name = "FrontendVipIPv4"
@@ -163,7 +163,7 @@ En este ejemplo se crea el grupo de direcciones IP de front-end que recibe el tr
     $backendAddressPoolV6Name = "BackendPoolIPv6"
     ```
 
-2. Cree un grupo de direcciones IP de front-end mediante la asociación de la dirección IP pública creada en el paso anterior y el equilibrador de carga.
+2. Cree un grupo IP front-end asociar IP pública Hola creado en el paso anterior de Hola y equilibrador de carga de Hola.
 
     ```azurecli
     $frontendV4 = azure network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-name $publicIpv4Name --lb-name $lbName
@@ -172,18 +172,18 @@ En este ejemplo se crea el grupo de direcciones IP de front-end que recibe el tr
     $backendAddressPoolV6 = azure network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-lb-rules"></a>Creación del sondeo, las reglas NAT y las reglas del equilibrador de carga
+## <a name="create-hello-probe-nat-rules-and-lb-rules"></a>Crear reglas de carga Equilibrada, las reglas NAT y sondeo Hola
 
-En este ejemplo se crean los siguientes elementos:
+Este ejemplo crea Hola siguientes elementos:
 
-* una regla de sondeo para comprobar la conectividad con el puerto TCP 80
-* una regla NAT para trasladar todo el tráfico entrante del puerto 3389 al puerto 3389 para RDP<sup>1</sup>
-* una regla NAT para trasladar todo el tráfico entrante del puerto 3391 al puerto 3389 para RDP<sup>1</sup>
-* Una regla de equilibrador de carga para equilibrar todo el tráfico entrante del puerto 80 al puerto 80 en las direcciones del grupo de back-end.
+* un toocheck de regla de sondeo para el puerto de la conectividad tooTCP 80
+* un dispositivo NAT regla tootranslate todo el tráfico entrante en el puerto 3389 tooport 3389 para RDP<sup>1</sup>
+* un dispositivo NAT regla tootranslate todo el tráfico entrante en el puerto 3391 tooport 3389 para RDP<sup>1</sup>
+* un toobalance de regla de equilibrador de carga todo el tráfico entrante en el puerto 80 tooport 80 en hello direcciones de grupo de back-end de Hola.
 
-<sup>1</sup> Las reglas NAT están asociadas a una instancia de máquina virtual específica detrás del equilibrador de carga. El tráfico de red que llega al puerto 3389 se envía a la máquina virtual específica y el puerto asociado a la regla NAT. Debe especificar un protocolo (UDP o TCP) para una regla NAT. Los dos protocolos no se pueden asignar al mismo puerto.
+<sup>1</sup> reglas NAT son la instancia de máquina virtual específica de tooa asociado detrás de equilibrador de carga de Hola. máquina virtual específica de toohello y el puerto asociado con la regla NAT de hello, se envía tráfico de red de Hola que llegan en el puerto 3389. Debe especificar un protocolo (UDP o TCP) para una regla NAT. Ambos protocolos no se pueden asignar toohello mismo puerto.
 
-1. Configure las variables de PowerShell
+1. Establecer las variables de PowerShell de Hola
 
     ```powershell
     $probeV4V6Name = "ProbeForIPv4AndIPv6"
@@ -193,22 +193,22 @@ En este ejemplo se crean los siguientes elementos:
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. Elaboración del sondeo
+2. Crear el sondeo de Hola
 
-    En el siguiente ejemplo se crea un sondeo TCP que comprueba la conectividad con el puerto TCP 80 de back-end cada 15 segundos. Marcará el recurso de back-end no disponible tras dos errores consecutivos.
+    Hello en el ejemplo siguiente se crea un sondeo TCP comprueba para el puerto TCP de tooback final conectividad 80 cada 15 segundos. Marcará los recursos de back-end de hello disponible después de dos errores consecutivos.
 
     ```azurecli
     $probeV4V6 = azure network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --count 2 --lb-name $lbName
     ```
 
-3. Cree reglas NAT de entrada que permitan conexiones RDP a los recursos de back-end
+3. Crear reglas NAT de entrada que permiten las conexiones RDP toohello recursos de back-end
 
     ```azurecli
     $inboundNatRuleRdp1 = azure network lb inbound-nat-rule create --resource-group $rgname --name $natRule1V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3389 --backend-port 3389 --lb-name $lbName
     $inboundNatRuleRdp2 = azure network lb inbound-nat-rule create --resource-group $rgname --name $natRule2V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3391 --backend-port 3389 --lb-name $lbName
     ```
 
-4. Cree reglas de equilibrador de carga que envíen tráfico a distintos puertos de back-end dependiendo de qué front-end recibió la solicitud
+4. Crear reglas que envían el tráfico de puertos de back-end de toodifferent dependiendo de qué solicitud de Hola de front-end que recibió de un equilibrador de carga
 
     ```azurecli
     $lbruleIPv4 = azure network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-address-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
@@ -224,7 +224,7 @@ En este ejemplo se crean los siguientes elementos:
     Resultado esperado:
 
         info:    Executing command network lb show
-        info:    Looking up the load balancer "myIPv4IPv6Lb"
+        info:    Looking up hello load balancer "myIPv4IPv6Lb"
         data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
         data:    Name                            : myIPv4IPv6Lb
         data:    Type                            : Microsoft.Network/loadBalancers
@@ -263,9 +263,9 @@ En este ejemplo se crean los siguientes elementos:
 
 ## <a name="create-nics"></a>Cree tarjetas NIC
 
-Cree tarjetas NIC y asócielas a reglas NAT, reglas de equilibrador de carga y sondeos.
+Crear NIC y asociarlos tooNAT reglas, reglas de equilibrador de carga y sondeos.
 
-1. Configure las variables de PowerShell
+1. Establecer las variables de PowerShell de Hola
 
     ```powershell
     $nic1Name = "myIPv4IPv6Nic1"
@@ -288,11 +288,11 @@ Cree tarjetas NIC y asócielas a reglas NAT, reglas de equilibrador de carga y s
     $nic2IPv6 = azure network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic2Name
     ```
 
-## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Creación de los recursos de la máquina virtual de back-end y conexión de cada NIC
+## <a name="create-hello-back-end-vm-resources-and-attach-each-nic"></a>Crear recursos de máquina virtual de back-end de Hola y asociar cada NIC
 
-Para crear máquinas virtuales, debe tener una cuenta de almacenamiento. Para el equilibrio de carga, es necesario que las máquinas virtuales formen parte de un conjunto de disponibilidad. Para obtener más información sobre cómo crear máquinas virtuales, consulte [Creación de una máquina virtual de Azure con PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+toocreate las máquinas virtuales, debe tener una cuenta de almacenamiento. Equilibrio de carga, las máquinas virtuales de hello necesitan a toobe miembros de un conjunto de disponibilidad. Para obtener más información sobre cómo crear máquinas virtuales, consulte [Creación de una máquina virtual de Azure con PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
-1. Configure las variables de PowerShell
+1. Establecer las variables de PowerShell de Hola
 
     ```powershell
     $storageAccountName = "ps08092016v6sa0"
@@ -311,23 +311,23 @@ Para crear máquinas virtuales, debe tener una cuenta de almacenamiento. Para el
     ```
 
     > [!WARNING]
-    > En este ejemplo se usan el nombre de usuario y contraseña de las máquinas virtuales en texto no cifrado. Al usar credenciales sin cifrar, debe prestarse la atención adecuada. Para ver un método más seguro de administración de credenciales en PowerShell, consulte el cmdlet [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) .
+    > Este ejemplo utiliza Hola username y password para máquinas virtuales de hello en texto no cifrado. Adecuada se debe tener cuidado al utilizando credenciales de hello claro. Para obtener un método más seguro de controlar las credenciales en PowerShell, vea hello [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet.
 
-2. Creación de la cuenta de almacenamiento y el conjunto de disponibilidad
+2. Crear conjunto de cuenta y la disponibilidad de almacenamiento de Hola
 
-    Puede usar una cuenta de almacenamiento existente al crear las máquinas virtuales. El siguiente comando crea una nueva cuenta de almacenamiento.
+    Puede usar una cuenta de almacenamiento existente al crear hello las máquinas virtuales. Hola siguiente comando crea una nueva cuenta de almacenamiento.
 
     ```azurecli
     $storageAcc = azure storage account create $storageAccountName --resource-group $rgName --location $location --sku-name "LRS" --kind "Storage"
     ```
 
-    A continuación, cree el conjunto de disponibilidad.
+    A continuación, crear conjunto de disponibilidad de Hola.
 
     ```azurecli
     $availabilitySet = azure availset create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-3. Creación de las máquinas virtuales con las NIC asociadas
+3. Crear máquinas virtuales de hello con NIC Hola asociado
 
     ```azurecli
     $vm1 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm1Name --nic-id $nic1Id --os-disk-vhd $osDisk1Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension

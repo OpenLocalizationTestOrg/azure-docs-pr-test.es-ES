@@ -1,13 +1,13 @@
 ---
-title: Enlace de Twilio de Azure Functions | Microsoft Docs
-description: "Entender cómo usar enlaces de Twilio con Azure Functions."
+title: enlace de funciones Twilio aaaAzure | Documentos de Microsoft
+description: "Comprender cómo toouse Twilio enlaces con funciones de Azure."
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: erikre
 editor: 
 tags: 
-keywords: "funciones de azure, funciones, procesamiento de eventos, proceso dinámico, arquitectura sin servidor"
+keywords: "azure functions, funciones, procesamiento de eventos, proceso dinámico, arquitectura sin servidor"
 ms.assetid: a60263aa-3de9-4e1b-a2bb-0b52e70d559b
 ms.service: functions
 ms.devlang: multiple
@@ -17,32 +17,32 @@ ms.workload: na
 ms.date: 10/20/2016
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 870e47ec7f8ce41ee4acadc7b8ed59298958acbe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 882853947850e7d6795ca5b2f3fb6b9a83ede182
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-sms-messages-from-azure-functions-using-the-twilio-output-binding"></a>Envío de mensajes SMS desde Azure Functions mediante el enlace de salida de Twilio
+# <a name="send-sms-messages-from-azure-functions-using-hello-twilio-output-binding"></a>Enviar mensajes SMS desde funciones de Azure con hello Twilio el enlace de salida
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-En este artículo se explica cómo configurar y usar enlaces de Twilio con Azure Functions. 
+Este artículo se explica cómo tooconfigure y usar enlaces de Twilio con funciones de Azure. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Azure Functions admite enlaces de salida de Twilio para permitir a sus funciones enviar mensajes de texto SMS con unas cuantas líneas de código y una cuenta de [Twilio](https://www.twilio.com/). 
+Las funciones de Azure es compatible con Twilio salida enlaces tooenable el texto SMS de funciones toosend mensajes con unas pocas líneas de código y un [Twilio](https://www.twilio.com/) cuenta. 
 
-## <a name="functionjson-for-the-twilio-output-binding"></a>function.json para el enlace de salida de Twilio
-El archivo function.json ofrece las siguientes propiedades:
+## <a name="functionjson-for-hello-twilio-output-binding"></a>enlace de salida de Twilio de Function.JSON para hello
+archivo de Hello function.json proporciona Hola propiedades siguientes:
 
-* `name`: nombre de variable usado en el código de función para el mensaje de texto SMS de Twilio.
-* `type`: se debe establecer en *"twilioSms"*.
-* `accountSid`: este valor debe establecerse en el nombre de una configuración de aplicación que contiene al SID de la cuenta de Twilio.
-* `authToken`: este valor debe establecerse en el nombre de una configuración de aplicación que contiene el token de autenticación de Twilio.
-* `to`: este valor se establece en el número de teléfono al que se envía el texto SMS.
-* `from`: este valor se establece en el número de teléfono desde el que se envía el texto del SMS.
-* `direction` : debe establecerse en *out*.
-* `body`: este valor se puede usar para codificar el mensaje de texto SMS si no necesita establecerlo dinámicamente en el código de la función. 
+* `name`: Nombre variable utilizado en el código de función para hello mensaje de texto SMS Twilio.
+* `type`: se debe establecer demasiado*"twilioSms"*.
+* `accountSid`: Este valor debe establecerse toohello nombre de una configuración de aplicación que contiene al Sid de la cuenta de Twilio.
+* `authToken`: Este valor debe establecerse toohello nombre de una configuración de aplicación que contiene el token de autenticación de Twilio.
+* `to`: Este valor se establece el número de teléfono de toohello texto SMS de Hola se envía a.
+* `from`: Este valor se establece el número de teléfono de toohello texto SMS de Hola se envía desde.
+* `direction`: se debe establecer demasiado*"out"*.
+* `body`: Este valor puede ser el mensaje de texto SMS de toohard usa código Hola si no necesita tooset dinámicamente en Hola de código para la función. 
 
 Function.json de ejemplo:
 
@@ -62,7 +62,7 @@ Function.json de ejemplo:
 
 ## <a name="example-c-queue-trigger-with-twilio-output-binding"></a>Ejemplo de desencadenador de cola de C# con enlace de salida de Twilio
 #### <a name="synchronous"></a>Sincrónico
-Este código de ejemplo sincrónico de un desencadenador de cola de Azure Storage usa un parámetro de salida para enviar un mensaje de texto a un cliente que ha realizado un pedido.
+Este código de ejemplo sincrónica de un desencadenador de la cola de almacenamiento de Azure usa un fuera parámetro toosend un cliente de tooa de mensaje de texto que ha realizado un pedido.
 
 ```cs
 #r "Newtonsoft.Json"
@@ -76,25 +76,25 @@ public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter 
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
 
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
+    // In this example hello queue item is a JSON string representing an order that contains hello name of a 
+    // customer and a mobile number toosend text updates to.
     dynamic order = JsonConvert.DeserializeObject(myQueueItem);
     string msg = "Hello " + order.name + ", thank you for your order.";
 
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
+    // Even if you want toouse a hard coded message and number in hello binding, you must at least 
+    // initialize hello SMSMessage variable.
     message = new SMSMessage();
 
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
+    // A dynamic message can be set instead of hello body in hello output binding. In this example, we use 
+    // hello order information toopersonalize a text message toohello mobile number provided for
     // order status updates.
     message.Body = msg;
-    message.To = order.mobileNumber;
+    message.too= order.mobileNumber;
 }
 ```
 
 #### <a name="asynchronous"></a>Asincrónico
-Este código de ejemplo asincrónico de un desencadenador de cola de Azure Storage envía un mensaje de texto a un cliente que ha realizado un pedido.
+Este código de ejemplo asincrónico de un desencadenador de la cola de almacenamiento de Azure envía a un cliente de tooa de mensaje de texto que ha realizado un pedido.
 
 ```cs
 #r "Newtonsoft.Json"
@@ -108,46 +108,46 @@ public static async Task Run(string myQueueItem, IAsyncCollector<SMSMessage> mes
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
 
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
+    // In this example hello queue item is a JSON string representing an order that contains hello name of a 
+    // customer and a mobile number toosend text updates to.
     dynamic order = JsonConvert.DeserializeObject(myQueueItem);
     string msg = "Hello " + order.name + ", thank you for your order.";
 
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
+    // Even if you want toouse a hard coded message and number in hello binding, you must at least 
+    // initialize hello SMSMessage variable.
     SMSMessage smsText = new SMSMessage();
 
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
+    // A dynamic message can be set instead of hello body in hello output binding. In this example, we use 
+    // hello order information toopersonalize a text message toohello mobile number provided for
     // order status updates.
     smsText.Body = msg;
-    smsText.To = order.mobileNumber;
+    smsText.too= order.mobileNumber;
 
     await message.AddAsync(smsText);
 }
 ```
 
 ## <a name="example-nodejs-queue-trigger-with-twilio-output-binding"></a>Ejemplo de desencadenador de cola de Node.js con enlace de salida de Twilio
-En este ejemplo de Node.js se envía un mensaje de texto a un cliente que ha realizado un pedido.
+En este ejemplo de Node.js envía a un cliente de tooa de mensaje de texto que ha realizado un pedido.
 
 ```javascript
 module.exports = function (context, myQueueItem) {
     context.log('Node.js queue trigger function processed work item', myQueueItem);
 
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
+    // In this example hello queue item is a JSON string representing an order that contains hello name of a 
+    // customer and a mobile number toosend text updates to.
     var msg = "Hello " + myQueueItem.name + ", thank you for your order.";
 
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the message binding.
+    // Even if you want toouse a hard coded message and number in hello binding, you must at least 
+    // initialize hello message binding.
     context.bindings.message = {};
 
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
+    // A dynamic message can be set instead of hello body in hello output binding. In this example, we use 
+    // hello order information toopersonalize a text message toohello mobile number provided for
     // order status updates.
     context.bindings.message = {
         body : msg,
-        to : myQueueItem.mobileNumber
+        too: myQueueItem.mobileNumber
     };
 
     context.done();

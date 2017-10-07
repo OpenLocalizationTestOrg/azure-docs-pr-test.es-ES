@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Factory - Casos prácticos de clientes | Microsoft Docs"
+title: "Factoría de datos: casos prácticos de clientes de aaaAzure | Documentos de Microsoft"
 description: "Obtenga información sobre la manera en que algunos de nuestros clientes han venido utilizando la Factoría de datos de Azure."
 services: data-factory
 documentationcenter: 
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
-ms.openlocfilehash: c5620a2c02ec4d2abfef40ab5c41bf6ad393a3d9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8787a27c10cb9509d8f0d811b4fed3100595e480
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory - Casos prácticos de clientes
-Factoría de datos es un servicio de administración de información basado en la nube que automatiza el movimiento y la transformación de datos. Los clientes de numerosos sectoress usan la Factoría de datos y otros servicios de Azure para crear su canalizaciones de análisis y solucionar sus problemas empresariales.  Aprenda directamente de nuestros clientes cómo y por qué usan la Factoría de datos.
+Factoría de datos es un servicio de administración de información basada en la nube que automatiza el movimiento de Hola y la transformación de datos. Los clientes a través de numerosos sectores utilizar factoría de datos y otro servicios de Azure toobuild sus canalizaciones de análisis y solución sus problemas empresariales.  Aprenda directamente de nuestros clientes cómo y por qué usan la Factoría de datos.
 
 ## <a name="milliman"></a>Milliman
-[Importante compañía actuarial superior transforma el sector de los seguros](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
+[La empresa Actuarial superior transforma sector de seguros de Hola](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
 
 ## <a name="rockwell-automation"></a>Rockwell Automation
-[La compañía de automatización industrial reduce los costos hasta en un 90 % con las soluciones de macrodatos](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
+[Industrial automatización abogados corta los costos por ciento de too90 con grandes cantidades de datos de soluciones](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
 
 ## <a name="ziosk"></a>Ziosk
-[¿Qué juego quiere con la hamburguesa? Puede que Ziosk lo sepa.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
+[¿Qué juego desee toogo con ese hamburguesa? Puede que Ziosk lo sepa.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
 ## <a name="alaska-airlines"></a>Alaska Airlines
-[Compañía aérea usa tabletas, servicios en la nube para ofrecer un entretenimiento en vuelo más atractivo](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
+[Airline utiliza tabletas, servicios en la nube tooOffer más atractivas en proceso entretenimiento](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
 
 ## <a name="tacoma-public-schools"></a>Escuelas Públicas de Tacoma
 [Predicción de riesgos de abandono de estudiantes, aumento de las tasas de graduación con análisis en la nube](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
 
 ## <a name="real-madrid-fc"></a>Real Madrid FC
-[Real Madrid acerca el estadio a 450 millones de aficionados de todo el mundo con la nube de Microsoft](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
+[Madrid real pone hello más cerca de millones ventiladores de too450 estadio mundo Hola con hello Microsoft Cloud](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
 
 ## <a name="pier-1-imports"></a>Pier 1 Imports
 [Búsqueda de una mejor conexión con los clientes a través del aprendizaje automático en la nube](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)

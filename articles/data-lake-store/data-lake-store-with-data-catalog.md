@@ -1,5 +1,5 @@
 ---
-title: Registro de datos de Data Lake Store en Azure Data Catalog | Microsoft Docs
+title: "aaaRegister datos de almacén de Data Lake en el catálogo de datos de Azure | Documentos de Microsoft"
 description: "Registro de datos del Almacén de Data Lake en el Catálogo de datos de Azure"
 services: data-lake-store,data-catalog
 documentationcenter: 
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: 41f7ca0d638479b013e77cb949a71c566bc66aa4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3e895b42cab4ba39d288950763312a243883cbdf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Registro de datos del Almacén de Data Lake en el Catálogo de datos de Azure
-En este artículo aprenderá a integrar el Almacén de Azure Data Lake con el Catálogo de datos de Azure para hacer que los datos sean reconocibles dentro de una organización mediante la integración con el Catálogo de datos. Para más información sobre la catalogación de datos, consulte [¿Qué es el Catálogo de datos de Azure?](../data-catalog/data-catalog-what-is-data-catalog.md). Para saber en qué escenarios se puede utilizar el Catálogo de datos, consulte [Escenarios comunes del Catálogo de datos de Azure](../data-catalog/data-catalog-common-scenarios.md).
+En este artículo, aprenderá cómo las toointegrate Azure Data Lake almacenar con el catálogo de datos toomake los datos que se pueda detectables dentro de una organización mediante la integración con el catálogo de datos. Para más información sobre la catalogación de datos, consulte [¿Qué es el Catálogo de datos de Azure?](../data-catalog/data-catalog-what-is-data-catalog.md). escenarios de toounderstand en el que puede usar el catálogo de datos, vea [escenarios comunes de catálogo de datos de Azure](../data-catalog/data-catalog-common-scenarios.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de empezar este tutorial, debe contar con lo siguiente:
+Antes de comenzar este tutorial, debe tener el siguiente hello:
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Habilite su suscripción de Azure** para la versión preliminar pública de Azure Data Lake Store. Consulte las [instrucciones](data-lake-store-get-started-portal.md).
-* **Cuenta del Almacén de Azure Data Lake**. Siga las instrucciones que se describen en [Introducción al Almacén de Azure Data Lake mediante el Portal de Azure](data-lake-store-get-started-portal.md). Para este tutorial, vamos a crear una cuenta de Almacén de datos de Data Lake denominada **datacatalogstore**.
+* **Cuenta del Almacén de Azure Data Lake**. Siga las instrucciones de hello en [empezar a trabajar con el almacén de Azure Data Lake con hello Azure Portal](data-lake-store-get-started-portal.md). Para este tutorial, vamos a crear una cuenta de Almacén de datos de Data Lake denominada **datacatalogstore**.
 
-    Una vez creada la cuenta, cargue un conjunto de datos de ejemplo en ella. En este tutorial, vamos a cargar todos los archivos .csv en la carpeta **AmbulanceData** del [repositorio Git de Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Puede utilizar varios clientes, como el [explorador de Almacenamiento de Azure](http://storageexplorer.com/), para cargar datos en un contenedor de blobs.
+    Una vez haya creado la cuenta de hello, cargue un tooit de conjunto de datos de ejemplo. Para este tutorial, nos gustaría cargar todos los archivos .csv de hello en hello **AmbulanceData** carpeta Hola [repositorio de Git de Azure datos Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Puede usar varios clientes, como [Azure Storage Explorer](http://storageexplorer.com/), contenedor de blobs de tooupload datos tooa.
 * **Catálogo de datos de Azure**. Su organización ya debe tener un Catálogo de datos de Azure creado. Se permite solo un catálogo por cada organización.
 
 ## <a name="register-data-lake-store-as-a-source-for-data-catalog"></a>Registro del Almacén de Data Lake como origen para el Catálogo de datos
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
-1. Vaya a `https://azure.microsoft.com/services/data-catalog`y haga clic en **Iniciado**.
-2. Inicie sesión en el portal del Catálogo de datos de Azure y haga clic en **Publicar datos**.
+1. Vaya demasiado`https://azure.microsoft.com/services/data-catalog`y haga clic en **Introducción**.
+2. Inicie sesión en el portal del catálogo de datos de Azure de Hola y haga clic en **publicar datos**.
 
     ![Registrar un origen de datos](./media/data-lake-store-with-data-catalog/register-data-source.png "Registrar un origen de datos")
-3. En la siguiente página, haga clic en **Iniciar aplicación**. Esto descargará el archivo de manifiesto de la aplicación en el equipo. Haga doble clic en este archivo para iniciar la aplicación.
-4. En la página principal, haga clic en **Iniciar sesión**y escriba sus credenciales.
+3. En la página siguiente de hello, haga clic en **Iniciar aplicación**. Se descargará el archivo de manifiesto de aplicación hello en el equipo. Haga doble clic en la aplicación de hello toostart de hello archivo de manifiesto.
+4. En la página de bienvenida de hello, haga clic en **iniciar sesión en**y escriba sus credenciales.
 
     ![Pantalla de bienvenida](./media/data-lake-store-with-data-catalog/welcome.screen.png "Pantalla de bienvenida")
-5. En la página Seleccionar un origen de datos, seleccione **Azure Data Lake**, y, a continuación, haga clic en **Siguiente**.
+5. En la página Seleccionar un origen de datos de hello, seleccione **Azure Data Lake**y, a continuación, haga clic en **siguiente**.
 
     ![Seleccionar origen de datos](./media/data-lake-store-with-data-catalog/select-source.png "Seleccionar origen de datos")
-6. En la siguiente página, proporcione el nombre de la cuenta del Almacén de Data Lake que desea registrar en el Catálogo de datos. Deje las demás opciones con el valor predeterminado y, a continuación, haga clic en **Conectar**.
+6. En la página siguiente de hello, proporcionar Hola nombre de cuenta de almacén de Data Lake que deseas tooregister en el catálogo de datos. Deje Hola otras opciones como valor predeterminado y, a continuación, haga clic en **conectar**.
 
-    ![Conectar al origen de datos](./media/data-lake-store-with-data-catalog/connect-to-source.png "Conectar al origen de datos")
-7. La página resultante se puede dividir en los siguientes segmentos.
+    ![Conectar toodata origen](./media/data-lake-store-with-data-catalog/connect-to-source.png "conectar toodata origen")
+7. página siguiente de Hello puede dividirse en hello después de segmentos.
 
-    a. El cuadro **Jerarquía de servidor** representa la estructura de carpetas de la cuenta del Almacén de Data Lake. **$Root** representa la raíz de la cuenta de Data Lake Store y **AmbulanceData** representa la carpeta creada en la raíz de dicha cuenta.
+    a. Hola **jerarquía del servidor** cuadro representa la estructura de carpetas de cuenta de almacén de Data Lake Hola. **$Root** representa Hola raíz de la cuenta de almacén de Data Lake, y **AmbulanceData** representa Hola carpeta creada en la raíz de Hola de hello cuenta de almacén de Data Lake.
 
-    b. El cuadro **Objetos disponibles** muestra los archivos y carpetas de la carpeta **AmbulanceData**.
+    b. Hola **objetos disponibles** cuadro muestra hello archivos y carpetas en hello **AmbulanceData** carpeta.
 
-    c. **Objetos que se registrarán** enumera los archivos y carpetas que desea registrar en el Catálogo de datos de Azure.
+    c. **Objetos toobe registrado cuadro** Hola de listas de archivos y carpetas que desea que tooregister en el catálogo de datos.
 
     ![Ver estructura de datos](./media/data-lake-store-with-data-catalog/view-data-structure.png "Ver estructura de datos")
-8. Para este tutorial, deberá registrar todos los archivos del directorio. Para ello, haga clic en el botón (![Mover objetos](./media/data-lake-store-with-data-catalog/move-objects.png "Mover objetos")) para mover todos los archivos al cuadro **Objetos que se registrarán**.
+8. Para este tutorial, debe registrar todos los archivos de hello en el directorio de Hola. Para ello, haga clic en hello (![mover objetos](./media/data-lake-store-with-data-catalog/move-objects.png "mover objetos")) toomove botón Hola a todos los archivos demasiado**toobe de objetos registrado** cuadro.
 
-    Dado que los datos se registrarán en un catálogo de datos de toda la organización, es recomendable agregar algunos metadatos que podrá utilizar posteriormente para localizar rápidamente los datos. Por ejemplo, puede agregar una dirección de correo electrónico del propietario de los datos (por ejemplo, la persona que está cargando los datos) o agregar una etiqueta para identificar los datos. La captura de pantalla siguiente muestra una etiqueta que se ha agregado a los datos.
+    Dado que datos de Hola se registrará en un catálogo de datos de toda la organización, es un recomendado enfocar tooadd algunos metadatos que se pueden usar más adelante tooquickly localizar datos Hola. Por ejemplo, puede agregar una dirección de correo electrónico para el propietario de datos de hello (por ejemplo, uno que está cargando datos hello) o agregar una etiqueta tooidentify Hola de datos. en la siguiente captura de pantalla de Hello muestra una etiqueta que se agregue toohello datos.
 
     ![Ver estructura de datos](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Ver estructura de datos")
 
     Haga clic en **Registrar**.
-9. La captura de pantalla siguiente indica que los datos se han registrado correctamente en el Catálogo de datos.
+9. Hello captura de pantalla siguiente indica que se ha registrado correctamente datos de Hola Hola catálogo de datos.
 
     ![Registro completo](./media/data-lake-store-with-data-catalog/registration-complete.png "Ver estructura de datos")
-10. Haga clic en **Ver portal** para volver atrás al portal del Catálogo de datos y comprobar que ya puede acceder a los datos registrados desde el portal. Para realizar búsquedas en los datos, puede utilizar la etiqueta que usó al registrar los datos.
+10. Haga clic en **Portal de vista** toogo copia portal del catálogo de datos de toohello y compruebe que puede ahora Hola acceso registrado datos desde el portal de Hola. datos de Hola de toosearch, se puede utilizar la etiqueta de Hola que usó al registrar datos de Hola.
 
      ![Buscar datos en el catálogo](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Buscar datos en el catálogo")
-11. Ahora ya puede realizar operaciones como agregar anotaciones y documentación a los datos. Para más información, consulte los vínculos siguientes:
+11. Ahora puede realizar operaciones como agregar anotaciones y datos de toohello de documentación. Para obtener más información, vea Hola siguientes vínculos.
 
     * [Anotación de orígenes de datos](../data-catalog/data-catalog-how-to-annotate.md)
     * [Orígenes de datos de documentos](../data-catalog/data-catalog-how-to-documentation.md)

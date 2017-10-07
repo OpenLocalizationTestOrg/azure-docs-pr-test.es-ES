@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure IoT Edge (Windows) | Documentos de Microsoft"
-description: "Cómo crear una puerta de enlace de Azure IoT Edge en un equipo Windows y obtener información sobre los conceptos claves de Azure IoT Edge, como los módulos y los archivos de configuración de JSON."
+title: aaaGet a trabajar con el borde de IoT de Azure (Windows) | Documentos de Microsoft
+description: "¿Cómo toobuild una puerta de enlace de borde de IoT de Azure en una ventana de la máquina y obtener información sobre los conceptos clave de borde de IoT de Azure como módulos y archivos de configuración de JSON."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/07/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5db39bab8e31a8e7026b34e72b4614b0f6f57772
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5dd13cbfc02eeb55d9f2dbffca5021f2624acf14
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-azure-iot-edge-architecture-on-windows"></a>Explorar la arquitectura de Azure IoT Edge en Windows
 
@@ -27,16 +27,16 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [iot-hub-iot-edge-install-build-windows](../../includes/iot-hub-iot-edge-install-build-windows.md)]
 
-## <a name="how-to-run-the-sample"></a>Ejecución del ejemplo
+## <a name="how-toorun-hello-sample"></a>¿Cómo toorun Hola ejemplo
 
-El script **build.cmd** genera su salida en la carpeta **build** de la copia local del repositorio **iot-edge**. Esta salida incluye los dos módulos de IoT Edge utilizados en este ejemplo.
+Hola **build.cmd** script genera su resultado en hello **generar** carpeta de la copia local de hello **iot borde** repositorio. Esta salida incluye dos módulos de borde IoT Hola utilizados en este ejemplo.
 
-El script de compilación coloca **logger.dll** en la carpeta **build\\modules\\logger\\Debug** y **hello\_world.dll** en la carpeta **build\\modules\\hello_world\\Debug**. Utilice estas rutas de acceso para los valores de **ruta de acceso del módulo**, tal y como se muestra en el archivo de configuración JSON siguiente.
+Hola lugares de la secuencia de comandos de compilación **logger.dll** en hello **generar\\módulos\\registrador\\depurar** carpeta y **hello\_world.dll**  en hello **generar\\módulos\\hello_world\\depurar** carpeta. Usar estas rutas de acceso para hello **ruta de acceso del módulo** valores tal y como se muestra en el siguiente archivo de configuración de JSON de Hola.
 
-El proceso de hello\_world\_sample toma la ruta de acceso a un archivo de configuración JSON como argumento de línea de comandos. El siguiente archivo JSON de ejemplo se encuentra en el repositorio de SDK, en **samples\\hello\_world\\src\\hello\_world\_win.json**. Este archivo de configuración funcionará tal y como está, a menos que se modifique el script de compilación para colocar los módulos de IoT Edge o los ejecutables de ejemplo en ubicaciones que no sean las predeterminadas.
+Hola Hola\_world\_proceso de ejemplo toma el archivo de configuración de hello ruta de acceso tooa JSON como un argumento de línea de comandos. siguiente archivo JSON de ejemplo Hola se proporciona una en el repositorio SDK de hello en **ejemplos\\hello\_world\\src\\hello\_world\_win.json**. Este archivo de configuración funciona tal cual a menos que modifique Hola compilar hello de la secuencia de comandos tooplace IoT borde módulos o archivos ejecutables en ubicaciones no predeterminadas de ejemplo.
 
 > [!NOTE]
-> Las rutas de acceso del módulo son relativas al directorio en el que se encuentra hello\_world\_sample.exe. De manera predeterminada, el archivo de configuración JSON de ejemplo escribe "log.txt" en el directorio de trabajo actual.
+> las rutas de acceso del módulo de Hello son toohello relativa directorio donde hello hello\_world\_sample.exe se encuentra. ejemplo de Hola a JSON configuración archivo los valores predeterminados toowriting 'log.txt' en el directorio de trabajo actual.
 
 ```json
 {
@@ -71,9 +71,9 @@ El proceso de hello\_world\_sample toma la ruta de acceso a un archivo de config
 }
 ```
 
-1. Vaya a la carpeta **build** en la raíz de la copia local del repositorio **iot-edge**.
+1. Navegue toohello **generar** carpeta del directorio raíz de Hola de su copia local de hello **iot borde** repositorio.
 
-1. Ejecute el siguiente comando:
+1. Ejecute el siguiente comando de hello:
 
     ```cmd
     samples\hello_world\Debug\hello_world_sample.exe ..\samples\hello_world\src\hello_world_win.json

@@ -1,6 +1,6 @@
 ---
-title: "Creación de un sondeo personalizado para Azure Application Gateway mediante PowerShell clásico | Microsoft Docs"
-description: "Aprenda a crear un sondeo personalizado para la puerta de enlace de aplicaciones mediante PowerShell en el modelo de implementación clásica."
+title: "aaaCreate un clásico de PowerShell de sondeo personalizado - puerta de enlace de aplicaciones de Azure - | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate personalizado de sondeo para puerta de enlace de aplicaciones mediante el uso de PowerShell en el modelo de implementación clásica de Hola"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: gwallace
-ms.openlocfilehash: bf190741b10c10e885d927ad21a9f2b25107943f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 68332367c99328bd6456b0c339923765637be986
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Creación de un sondeo personalizado para la Puerta de enlace de aplicaciones de Azure (clásica) mediante PowerShell
 
@@ -28,49 +28,49 @@ ms.lasthandoff: 07/11/2017
 > * [PowerShell de Azure Resource Manager](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
-En este artículo, agregará un sondeo personalizado a una puerta de enlace de aplicaciones existente con PowerShell. Los sondeos personalizados son útiles para aplicaciones que tienen una página de comprobación del estado o para aplicaciones que no proporcionan una respuesta correcta en la aplicación web predeterminada.
+En este artículo, se agregará un sondeo personalizado tooan aplicación puerta de enlace existente con PowerShell. Sondeos personalizados son útiles para las aplicaciones que tienen una página de comprobación de mantenimiento específico o para aplicaciones que no proporcionan una respuesta correcta en la aplicación web de hello predeterminada.
 
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Obtenga información sobre cómo [realizar estos pasos con el modelo de Resource Manager](application-gateway-create-probe-ps.md).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Obtenga información acerca de cómo demasiado[realizar estos pasos con el modelo del Administrador de recursos de hello](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 ## <a name="create-an-application-gateway"></a>Creación de una puerta de enlace de aplicaciones
 
-Para crear una Puerta de enlace de aplicaciones:
+toocreate una puerta de enlace de la aplicación:
 
-1. Cree un recurso de Puerta de enlace de aplicaciones.
+1. Cree un recurso de Application Gateway.
 2. Cree un archivo de configuración XML o un objeto de configuración.
-3. Confirme la configuración para el recurso de la Puerta de enlace de aplicaciones recién creado.
+3. Confirmar Hola configuración toohello recién creado recursos de puerta de enlace de aplicaciones.
 
 ### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>Creación de un recurso de puerta de enlace de aplicaciones con un sondeo personalizado
 
-Para crear la puerta de enlace, use el cmdlet `New-AzureApplicationGateway` y reemplace los valores por los suyos. La facturación de la puerta de enlace no se inicia en este momento. La facturación comienza en un paso posterior, cuando la puerta de enlace se ha iniciado correctamente.
+puerta de enlace de toocreate hello, use hello `New-AzureApplicationGateway` cmdlet, reemplazando los valores de hello por los suyos propios. La facturación de puerta de enlace de hello no se inicia en este momento. Facturación comienza en un paso posterior, cuando la puerta de enlace de Hola se ha iniciado correctamente.
 
-En el ejemplo siguiente se crea una puerta de enlace de aplicaciones nueva mediante una red virtual denominada testvnet1 y una subred llamada subnet-1.
+Hello en el ejemplo siguiente se crea una puerta de enlace de la aplicación mediante el uso de una red virtual denominada "testvnet1" y una subred denominada "subred-1".
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-Para validar la creación de la puerta de enlace, puede usar el cmdlet `Get-AzureApplicationGateway`.
+se creó toovalidate que Hola puerta de enlace, puede usar hello `Get-AzureApplicationGateway` cmdlet.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> El valor predeterminado de *InstanceCount* es 2, con un valor máximo de 10. El valor predeterminado de *GatewaySize* es Medium. Puede elegir entre Pequeño, Mediano y Grande.
+> Hola valor predeterminado de *InstanceCount* es 2, con un valor máximo de 10. Hola valor predeterminado de *GatewaySize* es Medium. Puede elegir entre Pequeño, Mediano y Grande.
 > 
 > 
 
-*VirtualIPs* y *DnsName* se muestran en blanco porque todavía no se ha iniciado la puerta de enlace. Estos valores se crearán una vez que la puerta de enlace esté en estado de ejecución.
+*VirtualIPs* y *DnsName* se muestran como en blanco porque no se inició aún la puerta de enlace de Hola. Estos valores se crean una vez que la puerta de enlace de hello está en estado de ejecución de Hola.
 
 ### <a name="configure-an-application-gateway-by-using-xml"></a>Configuración de una puerta de enlace de aplicaciones mediante XML
 
-En el ejemplo siguiente, se usa un archivo XML para configurar todos los valores de la puerta de enlace de aplicaciones y confirmarlos en el recurso de dicha puerta de enlace.  
+En el siguiente ejemplo de Hola, utilice un tooconfigure de archivo XML todos los valores de puerta de enlace de la aplicación y, a continuación, confirmarlos toohello de recursos de puerta de enlace de aplicación.  
 
-Copie el texto siguiente y péguelo en el Bloc de notas.
+Copie Hola después tooNotepad de texto.
 
 ```xml
 <ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
@@ -136,39 +136,39 @@ Copie el texto siguiente y péguelo en el Bloc de notas.
 </ApplicationGatewayConfiguration>
 ```
 
-Edite los valores entre paréntesis de los elementos de configuración. Guarde el archivo con extensión .xml.
+Editar valores de hello entre paréntesis Hola Hola elementos de configuración. Guarde el archivo hello con extensión .xml.
 
-En el ejemplo siguiente se muestra cómo usar un archivo de configuración para configurar la puerta de enlace de aplicaciones para que equilibre la carga de tráfico HTTP en el puerto público 80 y envíe el tráfico de red al puerto back-end 80 entre dos direcciones IP mediante sondeo personalizado.
+Hello en el ejemplo siguiente se muestra cómo toouse una tooset de archivo de configuración de tooload de puerta de enlace de aplicación Hola equilibrar el tráfico HTTP en el puerto público 80 y enviar tráfico de red en el puerto 80 de final de tooback entre dos direcciones IP mediante el uso de un sondeo personalizado.
 
 > [!IMPORTANT]
-> El elemento de protocolo Http o Https distingue mayúsculas de minúsculas.
+> elemento de Hello protocolo Http o Https distingue mayúsculas de minúsculas.
 
-Se agrega un nuevo elemento de configuración \<Probe\> para configurar sondeos personalizados.
+Un nuevo elemento de configuración \<sondeo\> se agrega tooconfigure personalizado sondeos.
 
-Los parámetros de configuración son:
+parámetros de configuración de Hello son:
 
 |Parámetro|Descripción|
 |---|---|
 |**Name** |Nombre de referencia del sondeo personalizado. |
 * **Protocol** | Protocolo usado (los valores posibles son HTTP o HTTPS).|
-| **Host** y **Path** | Dirección URL completa que invoca la puerta de enlace de aplicaciones para determinar el mantenimiento de la instancia. Por ejemplo, si tiene el sitio web http://contoso.com/, el sondeo personalizado se puede configurar para "http://contoso.com/path/custompath.htm", con el fin de que las comprobaciones del sondeo tengan una respuesta HTTP satisfactoria.|
-| **Intervalo** | Configura las comprobaciones de intervalo de sondeo en segundos.|
-| **Tiempo de espera** | Define el tiempo de espera de sondeo para una comprobación de respuesta HTTP.|
-| **UnhealthyThreshold** | El número de respuestas HTTP con error que es necesario para marcar la instancia del back-end como *incorrecta*.|
+| **Host** y **Path** | Escriba la ruta de acceso de dirección URL que se invoca con el estado hello toodetermine de puerta de enlace de aplicaciones de Hola de instancia de Hola. Por ejemplo, si tiene un sitio Web http://contoso.com/, a continuación, el sondeo personalizado Hola puede configurarse para "http://contoso.com/path/custompath.htm" para la sonda comprueba toohave una respuesta HTTP correcta.|
+| **Intervalo** | Configura las comprobaciones de intervalo de sondeo de hello en segundos.|
+| **Tiempo de espera** | Define el tiempo de espera de sondeo de Hola para una comprobación de la respuesta HTTP.|
+| **UnhealthyThreshold** | Hola número de respuestas error HTTP necesario tooflag Hola back-end de la instancia como *incorrecto*.|
 
-Se hace referencia al nombre del sondeo en la configuración de \<BackendHttpSettings\> para asignar el grupo de back-end que usará la configuración de sondeo personalizado.
+nombre del sondeo Hola se hace referencia en hello \<BackendHttpSettings\> tooassign configuración qué grupo back-end utiliza la configuración de sondeo personalizado.
 
-## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Adición de un sondeo personalizado a una puerta de enlace de aplicaciones existente
+## <a name="add-a-custom-probe-tooan-existing-application-gateway"></a>Agregar un sondeo personalizado tooan aplicación puerta de enlace existente
 
-El cambio de la configuración actual de una puerta de enlace de aplicaciones requiere tres pasos: obtener el archivo de configuración XML actual, modificarlo para que tenga un sondeo personalizado y configurar la puerta de enlace de aplicaciones con la nueva configuración XML.
+Cambiar la configuración actual Hola de una puerta de enlace de la aplicación requiere tres pasos: obtener el archivo de configuración XML actual hello, modificar toohave un sondeo personalizado y configurar puerta de enlace de aplicaciones de hello con una nueva configuración de XML Hola.
 
-1. Obtenga el archivo XML mediante `Get-AzureApplicationGatewayConfig`. De esta forma, el cmdlet exportará el XML de configuración que se debe modificar para agregar una configuración de sondeo.
+1. Obtener el archivo XML de hello mediante `Get-AzureApplicationGatewayConfig`. Esta toobe XML de configuración de cmdlet exportaciones Hola había modificado tooadd una configuración de sondeo.
 
   ```powershell
-  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
+  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path toofile>"
   ```
 
-1. Abra el archivo XML en un editor de texto. Agregue una sección `<probe>` después de `<frontendport>`.
+1. Abra el archivo XML de hello en un editor de texto. Agregue una sección `<probe>` después de `<frontendport>`.
 
   ```xml
 <Probes>
@@ -184,7 +184,7 @@ El cambio de la configuración actual de una puerta de enlace de aplicaciones re
 </Probes>
   ```
 
-  En la sección backendHttpSettings del XML, agregue el nombre del sondeo tal y como se muestra en el ejemplo siguiente:
+  En sección de backendHttpSettings de Hola de hello XML, agregue el nombre del sondeo de hello tal y como se muestra en el siguiente ejemplo de Hola:
 
   ```xml
     <BackendHttpSettings>
@@ -197,17 +197,17 @@ El cambio de la configuración actual de una puerta de enlace de aplicaciones re
     </BackendHttpSettings>
   ```
 
-  Guarde el archivo XML.
+  Guarde el archivo XML de hello.
 
-1. Actualice la configuración de la instancia de Application Gateway con el nuevo archivo XML mediante `Set-AzureApplicationGatewayConfig`. De esta forma, el cmdlet actualizará la instancia de Application Gateway con la nueva configuración.
+1. Configuración de puerta de enlace de la aplicación de actualización Hola con el nuevo archivo XML hello mediante el uso de `Set-AzureApplicationGatewayConfig`. Este cmdlet actualiza la puerta de enlace de la aplicación con una nueva configuración de Hola.
 
 ```powershell
-Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
+Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path toofile>"
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si quiere configurar la descarga de Capa de sockets seguros (SSL), vea [Configure an application gateway for SSL offload](application-gateway-ssl.md)(Configuración de una puerta de enlace de aplicaciones para la descarga SSL mediante el modelo de implementación clásica).
+Si desea que tooconfigure la descarga de capa de Sockets seguros (SSL), consulte [configurar una puerta de enlace de la aplicación para la descarga SSL](application-gateway-ssl.md).
 
-Si quiere configurar una puerta de enlace de aplicaciones para usarla con el equilibrador de carga interno, consulte [Creación de una puerta de enlace de aplicaciones con un equilibrador de carga interno (ILB)](application-gateway-ilb.md).
+Si desea tooconfigure una toouse de puerta de enlace de la aplicación con un equilibrador de carga interno, consulte [crear una puerta de enlace de la aplicación con un equilibrador de carga interno (ILB)](application-gateway-ilb.md).
 

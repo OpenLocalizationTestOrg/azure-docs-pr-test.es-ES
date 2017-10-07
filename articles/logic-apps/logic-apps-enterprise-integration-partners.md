@@ -1,6 +1,6 @@
 ---
-title: "Creación de asociados para mensajes de negocio a negocio (B2B): Azure Logic Apps | Microsoft Docs"
-description: "Información sobre cómo agregar asociados a una cuenta de integración con Enterprise Integration Pack y Logic Apps"
+title: "asociados de aaaCreate para mensajes de negocio a negocio (B2B): las aplicaciones lógicas de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooyour integración de tooadd asociados cuenta con hello paquete de integración empresarial y las aplicaciones lógicas"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,75 +15,75 @@ ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 950cb449b53f400f0f0f860caf5415bbb5212269
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8dc70a8f441fcf228ed178029dcdbac940d794b3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>Incorporación o actualización de asociados de contratos de negocio a negocio del flujo de trabajo
 
-Los asociados son entidades que participan en transacciones de negocio a negocio (B2B) e intercambian mensajes entre ellos. Antes de poder crear asociados que le representen a usted y a otra organización en estas transacciones, debe compartir la información que identifica y valida los mensajes enviados por cada uno. Después de analizar estos detalles y prepararse para comenzar la relación de negocios, podrá crear asociados en la cuenta de integración para que los represente a ambos.
+Los asociados son entidades que participan en transacciones de negocio a negocio (B2B) e intercambian mensajes entre ellos. Antes de poder crear asociados que le representen a usted y a otra organización en estas transacciones, debe compartir la información que identifica y valida los mensajes enviados por cada uno. Después de que analizan estos detalles y toostart preparado su relación de negocios, puede crear socios en su toorepresent de cuenta de integración que ambos.
 
 ## <a name="what-roles-do-partners-have-in-your-integration-account"></a>¿Qué roles tienen los asociados en la cuenta de integración?
 
-Para definir los detalles acerca de los mensajes intercambiados entre los asociados, debe crear contratos entre ellos. No obstante, antes de crear uno, hay que agregar, como mínimo, dos asociados a la cuenta de integración. La organización debe formar parte del contrato como **asociado del host**. El otro asociado, o **asociado invitado**, representa la organización que intercambia mensajes con su organización. El asociado invitado puede ser otra compañía o incluso un departamento de su organización.
+toodefine obtener más información acerca de los mensajes de Hola intercambiados entre los asociados, crear acuerdos entre los socios. Sin embargo, antes de poder crear un acuerdo, debe haber agregado cuenta de integración de tooyour de al menos dos socios comerciales. Su organización debe formar parte del contrato de Hola Hola **socio del host**. Hola otro asociado o **socio invitado** representa Hola organización que intercambia mensajes con su organización. Socio invitado de Hello puede ser otra compañía, o incluso un departamento de su propia organización.
 
 Después de agregar a estos asociados, puede crear un contrato.
 
-La configuración de recepción y de envío afecta exclusivamente al partner anfitrión. Por ejemplo, la configuración de recepción de un contrato determina cómo el partner anfitrión recibe los mensajes enviados de un partner invitado. Del mismo modo, la configuración de envío del contrato indica cómo el partner anfitrión envía mensajes al partner invitado.
+Recepción y configuración de envío se orientan de hello punto de vista de hello Hosted asociado. Por ejemplo, hello configuración de recepción de un acuerdo determinar cómo asociado Hola hospedado recibe los mensajes enviados desde un socio invitado. Del mismo modo, configuración de envío Hola acuerdo Hola indica cómo asociado Hola hospedado envía a socio invitado de toohello de mensajes.
 
-## <a name="how-to-create-a-partner"></a>¿Cómo se crean partners?
+## <a name="how-toocreate-a-partner"></a>¿Cómo toocreate un socio?
 
-1. En Azure Portal, seleccione **Examinar**.
+1. Hola portal de Azure, seleccione **examinar**.
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-1.png)
 
-2. En el cuadro de búsqueda, especifique **integración** y seleccione **Integration Accounts** (Cuentas de integración) en la lista de resultados.
+2. En el cuadro de búsqueda del filtro de hello, escriba **integración**, a continuación, seleccione **cuentas de integración** en la lista de resultados de Hola.
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-2.png)
 
-3. Seleccione la cuenta integración en la que desea agregar a los asociados.
+3. Seleccione la cuenta de integración de Hola donde desea tooadd sus socios.
 
     ![](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
-4. Seleccione el icono de **Asociados** .
+4. Seleccione hello **socios** icono.
 
     ![](./media/logic-apps-enterprise-integration-partners/partner-1.png)
 
-5. En la hoja de asociados, seleccione **Agregar**.
+5. En la hoja de socios de hello, elija **agregar**.
 
     ![](./media/logic-apps-enterprise-integration-partners/partner-2.png)
 
-6. Escriba un nombre para el asociado y, a continuación, seleccione un **Calificador**. Finalmente, escriba un **valor** para ayudar a identificar los documentos que se incluyen en las aplicaciones.
+6. Escriba un nombre para el asociado y, a continuación, seleccione un **Calificador**. Por último, especifique un **valor** toohelp identificar documentos que acompañan a las aplicaciones.
 
     ![](./media/logic-apps-enterprise-integration-partners/partner-3.png)
 
-7. Seleccione el icono de notificación de *campana* para ver el progreso del proceso de creación de asociados.
+7. progreso de hello toosee para el proceso de creación de socios comerciales, seleccione hello *campana* icono de notificación.
 
     ![](./media/logic-apps-enterprise-integration-partners/partner-4.png)
 
-8. Para confirmar que los nuevos asociados se agregaron correctamente, seleccione el icono de **Asociados**.
+8. tooconfirm que los socios nueva estaban correctamente agregado, seleccione hello **socios** icono.
 
     ![](./media/logic-apps-enterprise-integration-partners/partner-5.png)
 
-    Cuando haya seleccionado el icono de Asociados, también verá que los asociados que acaba de agregar aparecen en la hoja Asociados.
+    Después de seleccionar el icono de socios de hello, también verá recién agregados asociados en la hoja de socios de Hola.
 
     ![](./media/logic-apps-enterprise-integration-partners/partner-6.png)
 
-## <a name="how-to-edit-existing-partners-in-your-integration-account"></a>Edición de asociados existentes en su cuenta de integración
+## <a name="how-tooedit-existing-partners-in-your-integration-account"></a>Cómo los partners de tooedit existente en su cuenta de integración
 
-1. Seleccione el icono de **Asociados** .
-2. Seleccione el asociado que quiera editar cuando se abra la hoja Asociados.
-3. En el icono **Actualizar asociado**, realice los cambios.
-4. Cuando haya terminado, elija **Guardar** o, para cancelar los cambios, seleccione **Descartar**.
+1. Seleccione hello **socios** icono.
+2. Después de abre la hoja de socios de hello, seleccione a socio comercial de hello desea tooedit.
+3. En hello **actualización asociado** icono, realice los cambios.
+4. Cuando haya terminado, elija **guardar**, o toocancel los cambios, seleccione **descartar**.
 
     ![](./media/logic-apps-enterprise-integration-partners/edit-1.png)
 
-## <a name="how-to-delete-a-partner"></a>¿Cómo se eliminan partners?
+## <a name="how-toodelete-a-partner"></a>¿Cómo toodelete un socio
 
-1. Seleccione el icono de **Asociados** .
-2. Seleccione el asociado que desea eliminar cuando se abra la hoja Asociados.
+1. Seleccione hello **socios** icono.
+2. Después de abre la hoja de socio comercial de hello, seleccione a socio comercial de Hola que desea toodelete.
 3. Elija **Eliminar**.
 
     ![](./media/logic-apps-enterprise-integration-partners/delete-1.png)

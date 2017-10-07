@@ -1,6 +1,6 @@
 ---
-title: "Migración de una cuenta de Automation y sus recursos | Microsoft Docs"
-description: "En este artículo se describe cómo mover una cuenta de Automatización en Automatización de Azure y sus recursos relacionados correspondientes de una suscripción a otra."
+title: "aaaMigrate cuenta de automatización y los recursos | Documentos de Microsoft"
+description: "Este artículo describe cómo toomove una automatización de la cuenta en automatización de Azure y recursos asociados de tooanother de una suscripción."
 services: automation
 documentationcenter: 
 author: MGoedtel
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: magoedte
-ms.openlocfilehash: 687da15bdaf854254321b59350f47549781676f5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 201c9091cd2d78d7ea407c1e5fb27f366bb4fa8c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="migrate-automation-account-and-resources"></a>Migrar una cuenta de Automatización y sus recursos
-Para las cuentas de Automation y los recursos asociados (es decir, recuros, runbooks, módulos, etc.) que ha creado en Azure Portal y que desea migrar de un grupo de recursos a otro o de una suscripción a otra, puede hacerlo fácilmente con la característica de [mover recursos](../azure-resource-manager/resource-group-move-resources.md), disponible en Azure Portal. Pero, antes de llevar esto a cabo, conviene revisar la siguiente [lista de comprobación antes de mover recursos](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources) y, además, la siguiente lista específica de Automation.   
+Para las cuentas de automatización y los recursos asociados (es decir, activos, runbooks, módulos, etc.) que ha creado en hello portal de Azure y desea toomigrate desde un recurso de grupo tooanother o de tooanother de una suscripción, puede hacerlo fácilmente con Hola [mover recursos](../azure-resource-manager/resource-group-move-resources.md) característica disponible en hello portal de Azure. Sin embargo, antes de continuar con esta acción, primero debe revisar siguiente hello [lista de comprobación antes de mover recursos](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources) y además, la lista de hello debajo tooAutomation específico.   
 
-1. El grupo de recursos/suscripción de destino debe estar en la misma región que el origen.  Es decir, no se pueden mover cuentas de Automatización de una región a otra.
-2. Al mover recursos (por ejemplo, Runbooks, trabajos, etc.), el grupo de origen y el grupo de destino se bloquean durante la operación. Las operaciones de escritura y eliminación están bloqueadas en los grupos hasta que se completa el movimiento.  
-3. Los Runbooks o variables que hacen referencia a un identificador de suscripción o recurso de la suscripción existente deben actualizarse después de completar la migración.   
+1. grupo de recursos/suscripción de destino de Hello debe estar en la misma región como origen de Hola.  Es decir, no se pueden mover cuentas de Automatización de una región a otra.
+2. Al mover los recursos (por ejemplo, runbooks, trabajos, etc.), los grupos de código fuente de Hola y Hola destino se bloquean durante Hola de operación de Hola. Escribir y eliminar operaciones están bloqueados en grupos de hello hasta que se completa el movimiento de Hola.  
+3. Los runbooks o las variables que hacen referencia a un identificador de recursos o suscripción de la suscripción existente Hola deberá toobe actualiza una vez completada la migración.   
 
 > [!NOTE]
 > Con esta característica no se pueden mover recursos de Automatización clásicos.
 >
 >
 
-## <a name="to-move-the-automation-account-using-the-portal"></a>Para mover la cuenta de Automatización a través del Portal
-1. En la cuenta de Automation, haga clic en **Mover** en la parte superior de la hoja. <br> ![Opción Mover](media/automation-migrate-account-subscription/automation-menu-move.png)<br>
-2. En la hoja **Mover recursos** , vea que se muestran recursos relacionados tanto con la cuenta de Automatización como con los grupos de recursos.  Seleccione la **suscripción** y el **grupo de recursos** en las listas desplegables, o seleccione la opción **Crear un nuevo grupo de recursos** y escriba el nombre del nuevo grupo de recursos en el campo proporcionado.  
-3. Revise y active la casilla *Entiendo que las herramientas y los scripts necesitarán actualizarse para usar los nuevos identificadores de recursos después de que los recursos se hayan movido*. Tras ello, haga clic en **Aceptar**.<br> ![Hoja Mover recursos](media/automation-migrate-account-subscription/automation-move-resources-blade.png)<br>   
+## <a name="toomove-hello-automation-account-using-hello-portal"></a>Cuenta de automatización mediante el portal de Hola Hola a toomove
+1. En su cuenta de automatización, haga clic en **mover** princip Hola de hoja de Hola.<br> ![Opción Mover](media/automation-migrate-account-subscription/automation-menu-move.png)<br>
+2. En hello **mover recursos** hoja, tenga en cuenta que presenta tooboth de recursos relacionados con su cuenta de automatización y los grupos de recursos.  Seleccione hello **suscripción** y **grupo de recursos** de listas desplegables de Hola u Hola seleccione opción **crear un nuevo grupo de recursos** y escriba un nuevo nombre de grupo de recursos en campo de Hello proporcionado.  
+3. Revise y seleccione Hola casilla tooacknowledge se *comprender will scripts y herramientas necesidad toobe actualiza toouse nuevos identificadores de recursos después de que se han movido recursos* y, a continuación, haga clic en **Aceptar**.<br> ![Hoja Mover recursos](media/automation-migrate-account-subscription/automation-move-resources-blade.png)<br>   
 
-Este paso puede tardar varios minutos en completarse.  En **Notificaciones**, aparecerá el estado de cada acción que haya tenido lugar: validación, migración y, por último, cuando el proceso finalice.     
+Esta acción tendrá varias toocomplete minutos.  En **Notificaciones**, aparecerá el estado de cada acción que haya tenido lugar: validación, migración y, por último, cuando el proceso finalice.     
 
-## <a name="to-move-the-automation-account-using-powershell"></a>Para mover la cuenta de Automatización con PowerShell
-Para mover los recursos de Automation existentes a otro grupo de recursos o suscripción, use el cmdlet **Get-AzureRmResource** para obtener la cuenta de Automation específica y, después, el **Move-AzureRmResource** para realizar el movimiento.
+## <a name="toomove-hello-automation-account-using-powershell"></a>toomove Hola cuenta de automatización mediante PowerShell
+toomove existente suscripción, utilice Hola o grupo de recursos de automatización recursos tooanother **Get-AzureRmResource** cuenta de automatización específico de cmdlet tooget hello y, a continuación, **Move-AzureRmResource** Mueva el cmdlet tooperform Hola.
 
-El primer ejemplo muestra cómo mover una cuenta de Automatización a un nuevo grupo de recursos.
+Hola primer ejemplo muestra cómo toomove una automatización cuenta tooa nuevo grupo de recursos.
 
    ```
     $resource = Get-AzureRmResource -ResourceName "TestAutomationAccount" -ResourceGroupName "ResourceGroup01"
     Move-AzureRmResource -ResourceId $resource.ResourceId -DestinationResourceGroupName "NewResourceGroup"
    ```
 
-Después de ejecutar el ejemplo de código anterior, se le pedirá que confirme que quiere realizar esta acción.  Cuando haga clic en **Sí** y deje que el script continúe, no recibirá ninguna notificación mientras la migración se realiza.  
+Después de ejecutar Hola ejemplo de código anterior, es posible que tooverify solicitada desea tooperform esta acción.  Una vez que pulses **Sí** y permitirá Hola tooproceed de script, no recibirá ninguna notificación mientras está realizando la migración de Hola.  
 
-Para moverlos a una nueva suscripción, especifique un valor para el parámetro *DestinationSubscriptionId* .
+toomove tooa nueva suscripción, especifique un valor para hello *DestinationSubscriptionId* parámetro.
 
    ```
     $resource = Get-AzureRmResource -ResourceName "TestAutomationAccount" -ResourceGroupName "ResourceGroup01"
     Move-AzureRmResource -ResourceId $resource.ResourceId -DestinationResourceGroupName "NewResourceGroup" -DestinationSubscriptionId "SubscriptionId"
    ```
 
-Al igual que en el ejemplo anterior, se le pedirá que confirme el movimiento.  
+Al igual que con el ejemplo anterior de hello, será tooconfirm solicitadas Hola move.  
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para más información sobre cómo mover recursos a un nuevo grupo de recursos o a una nueva suscripción, consulte [Traslado de los recursos a un nuevo grupo de recursos o a una nueva suscripción](../azure-resource-manager/resource-group-move-resources.md)
-* Para más información acerca del control de acceso basado en rol de Automatización de Azure, consulte [Control de acceso basado en rol en Automatización de Azure](automation-role-based-access-control.md).
-* Para más información sobre los cmdlets de PowerShell que permiten administrar su suscripción, vea [Uso de Azure PowerShell con Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
-* Para conocer las características del Portal que permiten administrar la suscripción, vea [Uso del Portal de Azure para implementar y administrar los recursos de Azure](../azure-resource-manager/resource-group-portal.md).
+* Para obtener más información acerca de cómo mover grupo de recursos de toonew de recursos o suscripción, vea [Mover grupo de recursos de toonew de recursos o suscripción](../azure-resource-manager/resource-group-move-resources.md)
+* Para obtener más información sobre el Control de acceso basado en roles en automatización de Azure, consulte demasiado[control de acceso basado en roles en automatización de Azure](automation-role-based-access-control.md).
+* toolearn acerca de los cmdlets de PowerShell para administrar su suscripción, vea [mediante PowerShell de Azure con el Administrador de recursos](../azure-resource-manager/powershell-azure-resource-manager.md)
+* toolearn acerca de características del portal para administrar su suscripción, vea [uso de recursos de hello Azure Portal toomanage](../azure-resource-manager/resource-group-portal.md).

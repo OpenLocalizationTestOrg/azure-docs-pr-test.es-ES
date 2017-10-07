@@ -1,6 +1,6 @@
 ---
-title: "Configuración del enrutamiento (emparejamiento) de un circuito ExpressRoute: Resource Manager (Azure PowerShell) | Microsoft Docs"
-description: "Este artículo le guiará por los pasos necesarios para crear y aprovisionar las configuraciones entre pares privados, públicos y de Microsoft de un circuito ExpressRoute. Este artículo también muestra cómo comprobar el estado, actualizar, o eliminar configuraciones entre pares en el circuito."
+title: "¿Cómo tooconfigure enrutamiento (emparejamiento) por un circuito ExpressRoute: el Administrador de recursos: PowerShell: Azure | Documentos de Microsoft"
+description: "En este artículo le guiará por los pasos de Hola para crear y aprovisionamiento Hola privado, público y emparejamiento de Microsoft de un circuito de ExpressRoute. Este artículo también muestra cómo toocheck estado de hello, actualizar o eliminar emparejamientos para el circuito."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: af68955b78239832e413e1b59e033d7d3da8d599
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: eb3ddf5c05a086ac3e22c64417e51381ef465921
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Creación y modificación del emparejamiento de un circuito ExpressRoute mediante PowerShell
 
-Este artículo le ayuda a crear y administrar la configuración de enrutamiento de un circuito ExpressRoute en el modelo de implementación de Resource Manager mediante PowerShell. También puede ver cómo comprobar el estado de los emparejamientos de un circuito ExpressRoute, así como el modo de actualizarlos o eliminarlos y desaprovisionarlos. Si quiere usar un método diferente para trabajar con el circuito, seleccione un artículo de la lista siguiente:
+En este artículo le ayuda a crear y administrar la configuración de enrutamiento para un circuito ExpressRoute en modelo de implementación de administrador de recursos de hello mediante PowerShell. También puede comprobar el estado de hello, update o delete y desaprovisionar los emparejamientos de un circuito de ExpressRoute. Si desea toouse una toowork otro método con el circuito, seleccione un artículo de hello lista siguiente:
 
 > [!div class="op_single_selector"]
 > * [Portal de Azure](expressroute-howto-routing-portal-resource-manager.md)
@@ -37,69 +37,69 @@ Este artículo le ayuda a crear y administrar la configuración de enrutamiento 
 
 ## <a name="configuration-prerequisites"></a>Requisitos previos de configuración
 
-* Necesitará la versión más reciente de los cmdlets de PowerShell de Azure Resource Manager. Para más información, vea [Instalación y configuración de Azure PowerShell](/powershell/azure/overview). 
-* Antes de comenzar la configuración, asegúrese de que ha revisado la página de [requisitos previos](expressroute-prerequisites.md), la página de [requisitos de enrutamiento](expressroute-routing.md) y la página de [flujos de trabajo](expressroute-workflows.md).
-* Tiene que tener un circuito ExpressRoute activo. Antes de continuar, siga las instrucciones para [crear un circuito ExpressRoute](expressroute-howto-circuit-arm.md) y para que el proveedor de conectividad habilite el circuito. El circuito ExpressRoute debe estar en un estado habilitado y aprovisionado para poder ejecutar los cmdlets que se describen en este artículo.
+* Necesitará la versión más reciente de Hola de hello cmdlets de PowerShell del Administrador de recursos de Azure. Para obtener más información, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview). 
+* Asegúrese de que ha revisado hello [requisitos previos](expressroute-prerequisites.md) página hello [requisitos de enrutamiento](expressroute-routing.md) hello y página [flujos de trabajo](expressroute-workflows.md) página antes de comenzar la configuración.
+* Tiene que tener un circuito ExpressRoute activo. Siga las instrucciones de hello demasiado[crear un circuito ExpressRoute](expressroute-howto-circuit-arm.md) y tener circuito de hello habilitada por el proveedor de conectividad antes de continuar. Hola circuito de ExpressRoute debe estar en un estado habilitado y aprovisionado para usted toobe toorun capaz de hello cmdlets en este artículo.
 
-Estas instrucciones se aplican solo a los circuitos creados con proveedores de servicios que ofrecen servicios de conectividad de capa 2. Si usa un proveedor de servicios que ofrece servicios administrados de nivel 3 (normalmente VPN IP, como MPLS), el mismo proveedor de conectividad configurará y administrará el enrutamiento.
+Estas instrucciones aplican solo toocircuits creado con proveedores de servicios que ofrece servicios de conectividad de nivel 2. Si usa un proveedor de servicios que ofrece servicios administrados de nivel 3 (normalmente VPN IP, como MPLS), el mismo proveedor de conectividad configurará y administrará el enrutamiento.
 
 > [!IMPORTANT]
-> Actualmente no anunciamos los emparejamientos configurados por proveedores de servicios a través del Portal de administración de servicios. Se está trabajando para habilitar esta funcionalidad pronto. Antes de configurar los emparejamientos BGP, realice las comprobaciones pertinentes con su proveedor de servicios.
+> Se actualmente no se publica emparejamientos configurados por los proveedores de servicios a través del portal de administración de servicios de Hola. Se está trabajando para habilitar esta funcionalidad pronto. Antes de configurar los emparejamientos BGP, realice las comprobaciones pertinentes con su proveedor de servicios.
 > 
 > 
 
-Puede configurar una, dos o las tres configuraciones entre pares (Azure privado, Azure público y Microsoft) para un circuito ExpressRoute. Puede establecer las configuraciones entre pares en cualquier orden. Pero tiene que asegurarse de que completa cada configuración entre pares de una en una. 
+Puede configurar una, dos o las tres configuraciones entre pares (Azure privado, Azure público y Microsoft) para un circuito ExpressRoute. Puede establecer las configuraciones entre pares en cualquier orden. Sin embargo, debe asegurarse de completar configuración de Hola de cada uno de ellos emparejamiento a la vez. 
 
 ## <a name="azure-private-peering"></a>Configuración entre pares privados de Azure
 
-Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración de emparejamiento privado de Azure para un circuito ExpressRoute.
+En esta sección le ayuda a crear, obtener, actualizar y eliminar hello Azure configuración privada de emparejamiento de un circuito de ExpressRoute.
 
-### <a name="to-create-azure-private-peering"></a>Creación de un emparejamiento privado de Azure
+### <a name="toocreate-azure-private-peering"></a>toocreate emparejamiento privado de Azure
 
-1. Importe el módulo de PowerShell para ExpressRoute.
+1. Importe el módulo de PowerShell de Hola para ExpressRoute.
 
-  Para comenzar a usar los cmdlets de ExpressRoute, debe instalar el programa de instalación de PowerShell más reciente desde la [Galería de PowerShell](http://www.powershellgallery.com/) e importar los módulos de Azure Resource Manager en la sesión de PowerShell. Deberá ejecutar PowerShell como administrador.
+  Debe instalar Hola installer más reciente de PowerShell de [Galería de PowerShell](http://www.powershellgallery.com/) e importar módulos de Azure Resource Manager hello en la sesión de PowerShell de hello en toostart orden mediante cmdlets de ExpressRoute Hola. Necesitará toorun PowerShell como administrador.
 
   ```powershell
   Install-Module AzureRM
   Install-AzureRM
   ```
 
-  Importe todos los módulos de AzureRM.* dentro del intervalo de versiones semánticas conocidas.
+  Importar todos los módulos de AzureRM.* hello en hello conocida el intervalo de versiones semántico de.
 
   ```powershell
   Import-AzureRM
   ```
 
-  También puede importar un módulo determinado en dicho intervalo.
+  También puede importar un módulo seleccione dentro de hello conocida el intervalo de versiones semántico.
 
   ```powershell
   Import-Module AzureRM.Network 
   ```
 
-  Inicie sesión en su cuenta.
+  Inicie sesión en la cuenta de tooyour.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Seleccione la suscripción en la que desea crear un circuito ExpressRoute.
+  Seleccione la suscripción de hello desea toocreate circuito de ExpressRoute.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   ```
 2. Crear un circuito ExpressRoute.
 
-  Siga las instrucciones para crear un [circuito ExpressRoute](expressroute-howto-circuit-arm.md) y habilite su aprovisionamiento a través del proveedor de conectividad.
+  Siga Hola instrucciones toocreate una [circuito de ExpressRoute](expressroute-howto-circuit-arm.md) y hacer que se aprovisiona proveedor de conectividad de Hola.
 
-  Si su proveedor de conectividad ofrece servicios administrados de nivel 3, puede solicitarle que habilite la configuración entre pares privados de Azure. En ese caso, no necesita seguir las instrucciones que aparecen en las secciones siguientes. Sin embargo, si el proveedor de conectividad no administra el enrutamiento por usted, después de crear el circuito, continúe con la configuración mediante los pasos siguientes.
-3. Compruebe el circuito ExpressRoute para asegurarse de que está aprovisionado y también habilitado. Utilice el ejemplo siguiente:
+  Si el proveedor de conectividad ofrece servicios administrados de capa 3, puede solicitar su tooenable de proveedor de conectividad Azure privada emparejamiento para usted. En ese caso, no necesitará toofollow instrucciones que se indican en las secciones siguientes se Hola. Sin embargo, si el proveedor de conectividad no administra el enrutamiento para usted, después de crear el circuito, continuar la configuración mediante los pasos siguientes de Hola.
+3. Compruebe hello toomake de circuito de ExpressRoute seguro de que esté aprovisionado y también habilitado. Utilice el siguiente ejemplo de Hola:
 
   ```powershell
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  La respuesta es similar al siguiente ejemplo:
+  respuesta de Hello es similar toohello siguiente ejemplo:
 
   ```
   Name                             : ExpressRouteARMCircuit
@@ -124,15 +124,15 @@ Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración
   ServiceKey                       : **************************************
   Peerings                         : []
   ```
-4. Establecimiento de la configuración entre pares privados de Azure para el circuito. Asegúrese de que tiene los elementos siguientes antes de continuar con los siguientes pasos:
+4. Configurar Azure intercambio de tráfico privado para el circuito de Hola. Asegúrese de que dispone de hello siguientes elementos antes de continuar con los pasos siguientes de hello:
 
-  * Una subred /30 para el vínculo principal. La subred no debe ser parte de ningún espacio de direcciones reservado para redes virtuales.
-  * Una subred /30 para el vínculo secundario. La subred no debe ser parte de ningún espacio de direcciones reservado para redes virtuales.
-  * Un identificador VLAN válido para establecer esta configuración entre pares. Asegúrese de que ninguna otra configuración entre pares en el circuito usa el mismo identificador de VLAN.
+  * / 30 subred para el vínculo principal Hola. subred de Hello no debe formar parte de cualquier espacio de direcciones reservada para las redes virtuales.
+  * / 30 subred para el vínculo secundario Hola. subred de Hello no debe formar parte de cualquier espacio de direcciones reservada para las redes virtuales.
+  * Un tooestablish de Id. de VLAN válido este emparejamiento correctamente. No Asegúrese de que ningún otro emparejamiento en el circuito de hello usa Hola mismo identificador de VLAN.
   * Número de sistema autónomo (AS) para la configuración entre pares. Puede usar 2 bytes o 4 bytes como números AS. Puede usar un número AS privado para esta configuración entre pares. Asegúrese de que no usa 65515.
-  * **Opcional:** un hash MD5 si elige usar uno.
+  * **Opcional:** un hash MD5 si elige toouse uno.
 
-  Use el ejemplo siguiente para configurar el emparejamiento privado de Azure para su circuito:
+  Usar hello después tooconfigure Azure privada de emparejamiento para el circuito de ejemplo:
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -140,7 +140,7 @@ Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-  Si decide usar un hash MD5, use el ejemplo siguiente:
+  Si elige toouse un hash MD5, use Hola siguiente ejemplo:
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200  -SharedKey "A1B2C3D4"
@@ -151,9 +151,9 @@ Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración
   > 
   >
 
-### <a name="to-view-azure-private-peering-details"></a>Visualización de los detalles del emparejamiento privado
+### <a name="tooview-azure-private-peering-details"></a>tooview privada emparejamiento detalles de Azure
 
-Puede obtener detalles sobre la configuración mediante el ejemplo siguiente:
+Puede obtener detalles de configuración mediante el siguiente ejemplo de Hola:
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -161,9 +161,9 @@ $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGr
 Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt
 ```
 
-### <a name="to-update-azure-private-peering-configuration"></a>Actualización del establecimiento de configuración del emparejamiento privado de Azure
+### <a name="tooupdate-azure-private-peering-configuration"></a>tooupdate configuración de emparejamiento privada de Azure
 
-Puede actualizar cualquier parte de la configuración mediante el ejemplo siguiente. En este ejemplo, se va a actualizar el identificador de VLAN del circuito de 100 a 500.
+Puede actualizar cualquier parte de la configuración de hello mediante el siguiente ejemplo de Hola. En este ejemplo, Id. de VLAN del circuito de Hola Hola se está actualizando desde too500 100.
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -171,12 +171,12 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-delete-azure-private-peering"></a>Eliminación del emparejamiento privado de Azure
+### <a name="toodelete-azure-private-peering"></a>toodelete emparejamiento privado de Azure
 
-Puede quitar la configuración de emparejamiento mediante la ejecución del ejemplo siguiente:
+Puede quitar la configuración de emparejamiento ejecutando el siguiente ejemplo de Hola:
 
 > [!WARNING]
-> Debe asegurarse de que todas las redes virtuales estén desvinculadas del circuito ExpressRoute antes de ejecutar este ejemplo. 
+> También debe asegurarse de que todas las redes virtuales se desvincula de hello circuito de ExpressRoute antes de ejecutar este ejemplo. 
 > 
 > 
 
@@ -188,13 +188,13 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ## <a name="azure-public-peering"></a>Configuración entre pares públicos de Azure
 
-Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración de emparejamiento público de Azure para un circuito ExpressRoute.
+En esta sección le ayuda a crear, obtener, actualizar y eliminar hello Azure configuración de emparejamiento público de un circuito de ExpressRoute.
 
-### <a name="to-create-azure-public-peering"></a>Creación de un emparejamiento público de Azure
+### <a name="toocreate-azure-public-peering"></a>toocreate pares públicos de Azure
 
-1. Importe el módulo de PowerShell para ExpressRoute.
+1. Importe el módulo de PowerShell de Hola para ExpressRoute.
 
-  Para comenzar a usar los cmdlets de ExpressRoute, debe instalar el programa de instalación de PowerShell más reciente desde la [Galería de PowerShell](http://www.powershellgallery.com/) e importar los módulos de Azure Resource Manager en la sesión de PowerShell. Deberá ejecutar PowerShell como administrador.
+  Debe instalar Hola installer más reciente de PowerShell de [Galería de PowerShell](http://www.powershellgallery.com/) e importar módulos de Azure Resource Manager hello en la sesión de PowerShell de hello en toostart orden mediante cmdlets de ExpressRoute Hola. Necesitará toorun PowerShell como administrador.
 
   ```powershell
   Install-Module AzureRM
@@ -202,41 +202,41 @@ Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración
   Install-AzureRM
 ```
 
-  Importe todos los módulos de AzureRM.* dentro del intervalo de versiones semánticas conocidas.
+  Importar todos los módulos de AzureRM.* hello en hello conocida el intervalo de versiones semántico de.
 
   ```powershell
   Import-AzureRM
   ```
 
-  También puede importar un módulo determinado en dicho intervalo.
+  También puede importar un módulo seleccione dentro de hello conocida el intervalo de versiones semántico.
 
   ```powershell
   Import-Module AzureRM.Network
 ```
 
-  Inicie sesión en su cuenta.
+  Inicie sesión en la cuenta de tooyour.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Seleccione la suscripción en la que desea crear un circuito ExpressRoute.
+  Seleccione la suscripción de hello desea toocreate circuito de ExpressRoute.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   ```
 2. Crear un circuito ExpressRoute.
 
-  Siga las instrucciones para crear un [circuito ExpressRoute](expressroute-howto-circuit-arm.md) y habilite su aprovisionamiento a través del proveedor de conectividad.
+  Siga Hola instrucciones toocreate una [circuito de ExpressRoute](expressroute-howto-circuit-arm.md) y hacer que se aprovisiona proveedor de conectividad de Hola.
 
-  Si su proveedor de conectividad ofrece servicios administrados de nivel 3, puede solicitarle que habilite la configuración entre pares privados de Azure. En ese caso, no necesita seguir las instrucciones que aparecen en las secciones siguientes. Sin embargo, si el proveedor de conectividad no administra el enrutamiento por usted, después de crear el circuito, continúe con la configuración mediante los pasos siguientes.
-3. Compruebe el circuito ExpressRoute para asegurarse de que está aprovisionado y también habilitado. Utilice el ejemplo siguiente:
+  Si el proveedor de conectividad ofrece servicios administrados de capa 3, puede solicitar su tooenable de proveedor de conectividad Azure privada emparejamiento para usted. En ese caso, no necesitará toofollow instrucciones que se indican en las secciones siguientes se Hola. Sin embargo, si el proveedor de conectividad no administra el enrutamiento para usted, después de crear el circuito, continuar la configuración mediante los pasos siguientes de Hola.
+3. Compruebe tooensure de circuito de ExpressRoute Hola está aprovisionado y también está habilitado. Utilice el siguiente ejemplo de Hola:
 
   ```powershell
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  La respuesta es similar al siguiente ejemplo:
+  respuesta de Hello es similar toohello siguiente ejemplo:
 
   ```
   Name                             : ExpressRouteARMCircuit
@@ -261,15 +261,15 @@ Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración
   ServiceKey                       : **************************************
   Peerings                         : []
   ```
-4. Establezca la configuración del emparejamiento publico de Azure para el circuito. Asegúrese de que tiene la siguiente información antes de continuar.
+4. Configure pares públicos de Azure para el circuito de Hola. Asegúrese de que dispone de hello siguiente información antes de continuar.
 
-  * Una subred /30 para el vínculo principal. Tiene que ser un prefijo IPv4 público válido.
-  * Una subred /30 para el vínculo secundario. Tiene que ser un prefijo IPv4 público válido.
-  * Un identificador VLAN válido para establecer esta configuración entre pares. Asegúrese de que ninguna otra configuración entre pares en el circuito usa el mismo identificador de VLAN.
+  * / 30 subred para el vínculo principal Hola. Tiene que ser un prefijo IPv4 público válido.
+  * / 30 subred para el vínculo secundario Hola. Tiene que ser un prefijo IPv4 público válido.
+  * Un tooestablish de Id. de VLAN válido este emparejamiento correctamente. No Asegúrese de que ningún otro emparejamiento en el circuito de hello usa Hola mismo identificador de VLAN.
   * Número de sistema autónomo (AS) para la configuración entre pares. Puede usar 2 bytes o 4 bytes como números AS.
-  * **Opcional:** un hash MD5 si elige usar uno.
+  * **Opcional:** un hash MD5 si elige toouse uno.
 
-  Ejecute el siguiente ejemplo para configurar el emparejamiento público de Azure para su circuito:
+  Ejecute hello siguiendo el ejemplo tooconfigure pública de emparejamiento para el circuito de Azure
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
@@ -277,7 +277,7 @@ Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-  Si decide usar un hash MD5, use el ejemplo siguiente:
+  Si elige toouse un hash MD5, use Hola siguiente ejemplo:
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
@@ -290,9 +290,9 @@ Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración
   > 
   >
 
-### <a name="to-view-azure-public-peering-details"></a>Visualización de detalles de un emparejamiento público de Azure
+### <a name="tooview-azure-public-peering-details"></a>tooview Azure pública emparejamiento detalles
 
-Puede obtener detalles sobre la configuración mediante el siguiente cmdlet:
+Puede obtener detalles de configuración mediante Hola siguiente cmdlet:
 
 ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -300,9 +300,9 @@ Puede obtener detalles sobre la configuración mediante el siguiente cmdlet:
   Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-### <a name="to-update-azure-public-peering-configuration"></a>Actualización del establecimiento de configuración del emparejamiento público de Azure
+### <a name="tooupdate-azure-public-peering-configuration"></a>tooupdate configuración de interconexión pública de Azure
 
-Puede actualizar cualquier parte de la configuración mediante el ejemplo siguiente. En este ejemplo, se va a actualizar el identificador de VLAN del circuito de 200 a 600.
+Puede actualizar cualquier parte de la configuración de hello mediante el siguiente ejemplo de Hola. En este ejemplo, Id. de VLAN del circuito de Hola Hola se está actualizando desde too600 200.
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
@@ -310,9 +310,9 @@ Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -Express
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-delete-azure-public-peering"></a>Eliminación del emparejamiento público de Azure
+### <a name="toodelete-azure-public-peering"></a>toodelete pares públicos de Azure
 
-Puede quitar la configuración de emparejamiento mediante la ejecución del ejemplo siguiente:
+Puede quitar la configuración de emparejamiento ejecutando el siguiente ejemplo de Hola:
 
 ```powershell
 Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
@@ -321,18 +321,18 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ## <a name="microsoft-peering"></a>Emparejamiento de Microsoft
 
-Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración de emparejamiento de Microsoft para un circuito ExpressRoute.
+En esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración de emparejamiento de Microsoft de Hola por un circuito ExpressRoute.
 
 > [!IMPORTANT]
-> Se anunciarán todos los prefijos de servicio para el emparejamiento de Microsoft de los circuitos ExpressRoute que se configuraron antes del 1 de agosto de 2017, incluso si no se definen filtros de ruta. No se anunciará ningún prefijo para el emparejamiento de Microsoft de los circuitos ExpressRoute que se configuraron el 1 de agosto de 2017 o con posterioridad, hasta que se asocie un filtro de ruta al circuito. Para más información, consulte [Configuración de un filtro de ruta para el emparejamiento de Microsoft](how-to-routefilter-powershell.md).
+> Emparejamiento de Microsoft de circuitos ExpressRoute que estaban configurados anterior tooAugust 1, 2017 tendrá todos los prefijos de servicio implementados a través de emparejamiento de Microsoft hello, incluso si no se definen los filtros de ruta. Emparejamiento de Microsoft de circuitos ExpressRoute configurados en o después del 1 de agosto de 2017 no tendrá todos los prefijos anunciados hasta que se conecte un filtro de ruta toohello circuito. Para más información, consulte [Configuración de un filtro de ruta para el emparejamiento de Microsoft](how-to-routefilter-powershell.md).
 > 
 > 
 
-### <a name="to-create-microsoft-peering"></a>Creación del emparejamiento de Microsoft
+### <a name="toocreate-microsoft-peering"></a>emparejamiento de Microsoft toocreate
 
-1. Importe el módulo de PowerShell para ExpressRoute.
+1. Importe el módulo de PowerShell de Hola para ExpressRoute.
 
-  Para comenzar a usar los cmdlets de ExpressRoute, debe instalar el programa de instalación de PowerShell más reciente desde la [Galería de PowerShell](http://www.powershellgallery.com/) e importar los módulos de Azure Resource Manager en la sesión de PowerShell. Deberá ejecutar PowerShell como administrador.
+  Debe instalar Hola installer más reciente de PowerShell de [Galería de PowerShell](http://www.powershellgallery.com/) e importar módulos de Azure Resource Manager hello en la sesión de PowerShell de hello en toostart orden mediante cmdlets de ExpressRoute Hola. Necesitará toorun PowerShell como administrador.
 
   ```powershell
   Install-Module AzureRM
@@ -340,41 +340,41 @@ Esta sección le ayuda a crear, obtener, actualizar y eliminar la configuración
   Install-AzureRM
   ```
 
-  Importe todos los módulos de AzureRM.* dentro del intervalo de versiones semánticas conocidas.
+  Importar todos los módulos de AzureRM.* hello en hello conocida el intervalo de versiones semántico de.
 
   ```powershell
   Import-AzureRM
   ```
 
-  También puede importar un módulo determinado en dicho intervalo.
+  También puede importar un módulo seleccione dentro de hello conocida el intervalo de versiones semántico.
 
   ```powershell
   Import-Module AzureRM.Network
   ```
 
-  Inicie sesión en su cuenta.
+  Inicie sesión en la cuenta de tooyour.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Seleccione la suscripción en la que desea crear un circuito ExpressRoute.
+  Seleccione la suscripción de hello desea toocreate circuito de ExpressRoute.
 
   ```powershell
 Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   ```
 2. Crear un circuito ExpressRoute.
 
-  Siga las instrucciones para crear un [circuito ExpressRoute](expressroute-howto-circuit-arm.md) y habilite su aprovisionamiento a través del proveedor de conectividad.
+  Siga Hola instrucciones toocreate una [circuito de ExpressRoute](expressroute-howto-circuit-arm.md) y hacer que se aprovisiona proveedor de conectividad de Hola.
 
-  Si su proveedor de conectividad ofrece servicios administrados de nivel 3, puede solicitarle que habilite la configuración entre pares privados de Azure. En ese caso, no necesita seguir las instrucciones que aparecen en las secciones siguientes. Sin embargo, si el proveedor de conectividad no administra el enrutamiento por usted, después de crear el circuito, continúe con la configuración mediante los pasos siguientes.
-3. Compruebe el circuito ExpressRoute para asegurarse de que está aprovisionado y también habilitado. Utilice el ejemplo siguiente:
+  Si el proveedor de conectividad ofrece servicios administrados de capa 3, puede solicitar su tooenable de proveedor de conectividad Azure privada emparejamiento para usted. En ese caso, no necesitará toofollow instrucciones que se indican en las secciones siguientes se Hola. Sin embargo, si el proveedor de conectividad no administra el enrutamiento para usted, después de crear el circuito, continuar la configuración mediante los pasos siguientes de Hola.
+3. Compruebe hello toomake de circuito de ExpressRoute seguro de que esté aprovisionado y también habilitado. Utilice el siguiente ejemplo de Hola:
 
   ```powershell
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  La respuesta es similar al siguiente ejemplo:
+  respuesta de Hello es similar toohello siguiente ejemplo:
 
   ```
   Name                             : ExpressRouteARMCircuit
@@ -399,18 +399,18 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   ServiceKey                       : **************************************
   Peerings                         : []
   ```
-4. Establezca la configuración del emparejamiento de Microsoft para el circuito. Asegúrese de que tiene la siguiente información antes de empezar:
+4. Configurar Microsoft emparejamiento para el circuito de Hola. Asegúrese de que haya Hola siguiente información antes de continuar.
 
-  * Una subred /30 para el vínculo principal. Debe ser un prefijo de IPv4 público válido que sea de su propiedad y esté registrado en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
-  * Una subred /30 para el vínculo secundario. Debe ser un prefijo de IPv4 público válido que sea de su propiedad y esté registrado en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
-  * Un identificador VLAN válido para establecer esta configuración entre pares. Asegúrese de que ninguna otra configuración entre pares en el circuito usa el mismo identificador de VLAN.
+  * / 30 subred para el vínculo principal Hola. Debe ser un prefijo de IPv4 público válido que sea de su propiedad y esté registrado en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
+  * / 30 subred para el vínculo secundario Hola. Debe ser un prefijo de IPv4 público válido que sea de su propiedad y esté registrado en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
+  * Un tooestablish de Id. de VLAN válido este emparejamiento correctamente. No Asegúrese de que ningún otro emparejamiento en el circuito de hello usa Hola mismo identificador de VLAN.
   * Número de sistema autónomo (AS) para la configuración entre pares. Puede usar 2 bytes o 4 bytes como números AS.
-  * Prefijos anunciados: tiene que proporcionar una lista de todos los prefijos que planea anunciar en la sesión BGP. Se aceptan solo prefijos de direcciones IP públicas. Si tiene pensado enviar un conjunto de prefijos, puede enviar una lista separada por comas. Estos prefijos tienen que estar registrados a su nombre en un Registro regional de Internet (RIR) o un Registro de enrutamiento de Internet (IRR).
-  * **Opcional:** Cliente ASN: si los prefijos anunciados no están registrados en el número AS de emparejamiento, puede especificar el número de AS en el que están registrados.
-  * Nombre del enrutamiento del Registro: puede especificar el RIR o TIR en el que están registrados el número AS y los prefijos.
-  * **Opcional:** un hash MD5 si elige usar uno.
+  * Anuncian prefijos: debe proporcionar una lista de todos los prefijos piensa tooadvertise en las sesiones BGP Hola. Se aceptan solo prefijos de direcciones IP públicas. Si tiene previsto toosend un conjunto de prefijos, puede enviar una lista separada por comas. Estos prefijos deben ser tooyou registrado en un RIR / IRR.
+  * **Opcional:** cliente ASN: si es que los prefijos de publicidad que no están registrado toohello emparejamiento como número, puede especificar hello como número toowhich están registrados.
+  * Nombre del enrutamiento del registro: Puede especificar Hola RIR / IRR en qué hello como número y los prefijos registrados.
+  * **Opcional:** un hash MD5 si elige toouse uno.
 
-   Use el ejemplo siguiente para configurar el emparejamiento de Microsoft para el circuito:
+   Usar hello siguiendo la emparejamiento de Microsoft tooconfigure de ejemplo para el circuito:
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -418,9 +418,9 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-### <a name="to-get-microsoft-peering-details"></a>Obtención de detalles del emparejamiento de Microsoft
+### <a name="tooget-microsoft-peering-details"></a>detalles de emparejamiento de Microsoft tooget
 
-Puede obtener detalles sobre la configuración mediante el ejemplo siguiente:
+Puede obtener detalles de configuración mediante el siguiente ejemplo de Hola:
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -428,9 +428,9 @@ $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGr
 Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-update-microsoft-peering-configuration"></a>Actualización de la configuración de emparejamiento de Microsoft
+### <a name="tooupdate-microsoft-peering-configuration"></a>configuración de emparejamiento de Microsoft tooupdate
 
-Puede actualizar cualquier parte de la configuración mediante el ejemplo siguiente:
+Puede actualizar cualquier parte de la configuración de hello mediante el siguiente ejemplo de Hola:
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -438,9 +438,9 @@ Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRo
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-delete-microsoft-peering"></a>Eliminación del emparejamiento de Microsoft
+### <a name="toodelete-microsoft-peering"></a>emparejamiento de Microsoft toodelete
 
-Puede quitar la configuración de emparejamiento ejecutando el siguiente cmdlet:
+Puede quitar la configuración de intercambio de tráfico mediante la ejecución de hello siguiente cmdlet:
 
 ```powershell
 Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
@@ -450,7 +450,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Siguiente paso, [Vinculación de redes virtuales a circuitos ExpressRoute](expressroute-howto-linkvnet-arm.md).
+Siguiente paso, [vincular un circuito de ExpressRoute de red virtual tooan](expressroute-howto-linkvnet-arm.md).
 
 * Para más información sobre los flujos de trabajo de ExpressRoute, vea [Flujos de trabajo de ExpressRoute](expressroute-workflows.md).
 * Para más información sobre el emparejamiento de circuitos, vea [Circuitos y dominios de enrutamiento de ExpressRoute](expressroute-circuit-peerings.md).

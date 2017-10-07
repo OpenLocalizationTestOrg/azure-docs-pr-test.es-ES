@@ -1,12 +1,12 @@
 ---
-title: "Conexión de Raspberry Pi (C) a Azure IoT: Lección 4: De la nube al dispositivo | Microsoft Docs"
-description: "La aplicación de ejemplo se ejecuta en Pi y supervisa los mensajes entrantes de IoT Hub. Una nueva tarea de Gulp envía mensajes a Pi desde su centro de IoT para que parpadee el LED."
+title: "Connect Raspberry PI (C) tooAzure IoT - lección 4: en la nube al dispositivo | Documentos de Microsoft"
+description: "La aplicación de ejemplo se ejecuta en Pi y supervisa los mensajes entrantes de IoT Hub. Una nueva tarea de gulp envía mensajes tooPi desde su hello tooblink de centro de IoT LED."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: de la nube al dispositivo, mensaje de la nube
+keywords: en la nube toodevice, mensaje de nube
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: fcbc0dd0-cae3-47b0-8e58-240e4f406f75
@@ -17,75 +17,75 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 86c7be931319d9995c2a7311267c7e7c03c3c1b8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5596bf3a83c21f2bd54b2f83e2a8fdad7a608b94
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>Ejecución de la aplicación de ejemplo para recibir mensajes de nube a dispositivo
-En este artículo, implementará una aplicación de ejemplo en Raspberry Pi 3. La aplicación de ejemplo supervisa los mensajes entrantes de IoT Hub. También ejecutará una tarea de Gulp en el equipo para enviar mensajes a Pi desde IoT Hub. Cuando la aplicación de ejemplo reciba los mensajes, el LED parpadeará. Si tiene problemas, busque soluciones en la [página de solución de problemas](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
+# <a name="run-a-sample-application-tooreceive-cloud-to-device-messages"></a>Ejecutar un tooreceive de la aplicación de ejemplo en la nube al dispositivo mensajes
+En este artículo, implementará una aplicación de ejemplo en Raspberry Pi 3. aplicación de ejemplo de Hola supervisa los mensajes entrantes desde el centro de IoT. También permite ejecutar una tarea de gulp en su tooPi de mensajes de toosend de equipo, el centro de IoT. Cuando la aplicación de ejemplo de Hola recibe mensajes de Hola, parpadea Hola LED. Si tiene problemas, buscar soluciones en hello [página solución de problemas](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-do"></a>Lo que hará
-* Conecte la aplicación de ejemplo a su instancia de IoT Hub.
-* Implemente y ejecute la aplicación de ejemplo.
-* Envíe mensajes desde el centro de IoT Hub a Pi para que el LED parpadee.
+* Conectar el centro de IoT de tooyour de aplicación de ejemplo de Hola.
+* Implemente y ejecute la aplicación de ejemplo de Hola.
+* Enviar mensajes desde su Hola de IoT hub tooPi tooblink LED.
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 En este artículo, aprenderá lo siguiente:
-* Cómo supervisar los mensajes entrantes desde IoT Hub
-* Envío a Pi de mensajes de la nube al dispositivo desde IoT Hub
+* Cómo los mensajes entrantes de toomonitor desde el centro de IoT.
+* ¿Cómo toosend en la nube al dispositivo mensajes desde su tooPi de centro de IoT.
 
 ## <a name="what-you-need"></a>Lo que necesita
-* Un dispositivo Raspberry Pi 3, con la configuración lista para utilizarse. Para aprender a configurar Pi, consulte [Configure your device](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md) (Configuración del dispositivo).
-* Una instancia de IoT Hub creada en su suscripción de Azure. Para aprender a crear la instancia de IoT Hub, consulte [Creación de un centro de IoT y registro de Raspberry Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md).
+* Un dispositivo Raspberry Pi 3, con la configuración lista para utilizarse. toolearn tooset seguridad Pi, vea [configurar el dispositivo](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md).
+* Una instancia de IoT Hub creada en su suscripción de Azure. toolearn cómo toocreate su centro de IoT, consulte [crear su centro de IoT y registrar frambuesa Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md).
 
-## <a name="connect-the-sample-application-to-your-iot-hub"></a>Conexión de la aplicación de ejemplo con el centro de IoT Hub
-1. Asegúrese de que se encuentra en la carpeta del repositorio `iot-hub-c-raspberrypi-getting-started`. Abra la aplicación de ejemplo en Visual Studio Code ejecutando los comandos siguientes:
+## <a name="connect-hello-sample-application-tooyour-iot-hub"></a>Conectar el centro de IoT de tooyour de aplicación de ejemplo de Hola
+1. Asegúrese de que se encuentra en la carpeta de repositorio de hello `iot-hub-c-raspberrypi-getting-started`. Abra la aplicación de ejemplo de Hola en código de Visual Studio mediante la ejecución de hello siguientes comandos:
 
    ```bash
    cd Lesson4
    code .
    ```
 
-   Observe el archivo `app.c` en la subcarpeta `app`. El archivo `app.c` es el archivo de origen de la clave y contiene el código para supervisar los mensajes entrantes de IoT Hub. La función `blinkLED` hace parpadear el LED.
+   Hola aviso `app.c` archivo Hola `app` subcarpeta. Hola `app.c` es archivo de origen de la clave de Hola que contiene código de hello toomonitor mensajes entrantes Hola centro de IoT. Hola `blinkLED` función parpadea Hola LED.
 
-   ![Estructura del repositorio en la aplicación de ejemplo](media/iot-hub-raspberry-pi-lessons/lesson4/repo_structure_c.png)
-2. Inicialice el archivo de configuración con los siguientes comandos:
+   ![Estructura de repositorio en la aplicación de ejemplo de Hola](media/iot-hub-raspberry-pi-lessons/lesson4/repo_structure_c.png)
+2. Inicializar el archivo de configuración de hello ejecutando Hola siguientes comandos:
 
    ```bash
    npm install
    gulp init
    ```
 
-   Si completó el tutorial [Create an Azure function app and storage account](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md) (Creación de una instancia de Azure Function App y una cuenta de almacenamiento) en este equipo, se heredarán todas las configuraciones, por lo que no tendrá que implementar ni ejecutar la aplicación de ejemplo. Si completó el tutorial [Create an Azure function app and storage account](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md) (Creación de una instancia de Azure Function App y una cuenta de almacenamiento) en otro equipo, tendrá que reemplazar los marcadores de posición del archivo `config-raspberrypi.json`. El archivo `config-raspberrypi.json` se encuentra en la subcarpeta de la carpeta principal.
+   Si completó los pasos de hello en [crear una cuenta de aplicación y el almacenamiento de Azure función](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md) en este equipo, se heredan todas las configuraciones de hello, por lo que puede omitir toostep toohello tarea de implementar y ejecutar la aplicación de ejemplo de Hola. Si completó los pasos de hello en [crear una cuenta de aplicación y el almacenamiento de Azure función](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md) en un equipo diferente, deberá marcadores de posición de tooreplace Hola Hola `config-raspberrypi.json` archivo. Hola `config-raspberrypi.json` archivo se encuentra en la subcarpeta de Hola de su carpeta principal.
 
-   ![Contenido del archivo config-raspberrypi.json](media/iot-hub-raspberry-pi-lessons/lesson4/config_raspberrypi.png)
+   ![Contenido del archivo de configuración raspberrypi.json Hola](media/iot-hub-raspberry-pi-lessons/lesson4/config_raspberrypi.png)
 
-* Reemplace **[device hostname or IP address]** por la dirección IP o el nombre de host de Pi que obtendrá ejecutando el comando `devdisco list --eth`.
-* Sustituya **[IoT device connection string]** por la cadena de conexión del dispositivo que obtendrá al ejecutar el comando `az iot device show-connection-string --hub-name {my hub name} --device-id {device id} -g iot-sample {resource group name}`.
-* Sustituya **[IoT hub connection string]** por la cadena de conexión de IoT Hub que obtendrá al ejecutar el comando `az iot hub show-connection-string --name {my hub name} -g iot-sample {resource group name}`.
+* Reemplace **[nombre de host de dispositivo o dirección IP]** con de WPI IP dirección o nombre de host que obtiene mediante la ejecución de hello `devdisco list --eth` comando.
+* Reemplace **[cadena de conexión de dispositivos de IoT]** con cadena de conexión de dispositivo de Hola que obtiene mediante la ejecución de hello `az iot device show-connection-string --hub-name {my hub name} --device-id {device id} -g iot-sample {resource group name}` comando.
+* Reemplace **[cadena de conexión de base de datos central de IoT]** con la cadena de conexión de base de datos central de IoT que obtiene mediante la ejecución de Hola Hola `az iot hub show-connection-string --name {my hub name} -g iot-sample {resource group name}` comando.
 
 > [!NOTE]
 > Ejecute también **gulp install-tools** si no lo hizo en la lección 1.
 
-## <a name="deploy-and-run-the-sample-application"></a>Implementación y ejecución de la aplicación de ejemplo
-Implemente y ejecute la aplicación de ejemplo en Pi mediante el comando siguiente:
+## <a name="deploy-and-run-hello-sample-application"></a>Implementar y ejecutar la aplicación de ejemplo de Hola
+Implementar y ejecutar la aplicación de ejemplo de Hola en Pi ejecutando Hola siguientes comandos:
 
 ```
 gulp deploy && gulp run
 ```
 
-El comando gulp primero ejecuta la tarea de instalación de herramientas. A continuación, implementa la aplicación de ejemplo en Pi. Finalmente, ejecuta la aplicación en Pi. También ejecuta una tarea independiente en el equipo host que envía 20 mensajes de parpadeo a Pi desde IoT Hub.
+ejecución del comando gulp Hola Hola tareas de instalación de herramientas en primer lugar. A continuación, implementa tooPi de aplicación de ejemplo de Hola. Por último, se ejecuta aplicación hello en Pi y una tarea independiente en su host de equipo toosend 20 parpadeo mensajes tooPi desde el centro de IoT.
 
-Una vez que se ejecuta, la aplicación de ejemplo empieza a escuchar los mensajes de IoT Hub. Mientras tanto, la tarea de Gulp envía a Pi varios mensajes de parpadeo desde el centro de IoT Hub. Cada vez que Pi recibe un mensaje de parpadeo, la aplicación de ejemplo llama a la función `blinkLED` para hacer parpadear el LED.
+Después de ejecuta la aplicación de ejemplo de Hola, empieza a escuchar toomessages desde el centro de IoT. Mientras tanto, hello gulp tarea puede enviar varios mensajes "blink" de su tooPi de centro de IoT. Para cada mensaje parpadeo que recibe de Pi, aplicación de ejemplo de Hola llama hello `blinkLED` hello de la función tooblink LED.
 
-A medida que la tarea de Gulp envía a Pi los 20 mensajes desde el centro de IoT Hub, el LED debería parpadear cada dos segundos. El último es un mensaje "stop" que indica a la aplicación que deje de ejecutarse.
+Verá parpadear LED de hello cada dos segundos como hello gulp tarea envía 20 mensajes desde su tooPi de centro de IoT. Hello en último lugar uno es un mensaje de "stop" que detiene la aplicación hello se ejecute.
 
 ![Aplicación de ejemplo con comandos de Gulp y mensajes de parpadeo](media/iot-hub-raspberry-pi-lessons/lesson4/gulp_blink_c.png)
 
 ## <a name="summary"></a>Resumen
-Ha enviado correctamente mensajes desde el centro de IoT Hub a Pi para que el LED parpadee. La siguiente tarea es optativa y consiste en cambiar el comportamiento de encendido y apagado del LED.
+Ha enviado correctamente los mensajes desde su Hola de IoT hub tooPi tooblink LED. Hola siguiente tarea es opcional: cambie Hola activar y desactivar el comportamiento de hello LED.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Modificación del comportamiento de encendido y apagado del LED](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
+[Cambiar Hola activar y desactivar el comportamiento de hello LED](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)

@@ -1,6 +1,6 @@
 ---
-title: Disponibilidad y coherencia en Azure Event Hubs | Microsoft Docs
-description: "Cómo proporcionar el máximo nivel de disponibilidad y coherencia con Azure Event Hubs mediante el uso de particiones."
+title: aaaAvailability y la coherencia en los centros de eventos de Azure | Documentos de Microsoft
+description: "Cómo crea particiones de cantidad máxima de hello tooprovide de disponibilidad y la coherencia con el uso de los centros de eventos de Azure."
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 681a9d1636d547492f6f827461c6b2494b918778
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a8ededaae1589830da21cb8910ca694d2d628bd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Disponibilidad y coherencia en Event Hubs
 
 ## <a name="overview"></a>Información general
-Azure Event Hubs usa un [modelo de creación de particiones](event-hubs-features.md#partitions) para mejorar la disponibilidad y paralelización dentro de un solo centro de eventos. Por ejemplo, si un centro de eventos tiene cuatro particiones y una de ellas se mueve de un servidor a otro en una operación de equilibrio de carga, se puede enviar y recibir desde las otras tres. Además, tener un mayor número de particiones permite que más lectores simultáneos procesen los datos, lo que mejora el rendimiento agregado. Conocer las implicaciones de la creación de particiones y la ordenación de un sistema distribuido es un aspecto fundamental del diseño de soluciones.
+Centros de eventos de Azure usan un [particiones modelo](event-hubs-features.md#partitions) tooimprove disponibilidad y la ejecución en paralelo en un centro de eventos único. Por ejemplo, si un centro de eventos tiene cuatro particiones y una de estas particiones se mueve desde un servidor tooanother en una operación de equilibrio de carga, puede enviar y recibir de tres otras particiones. Además, tener varias particiones permite toohave lectores simultáneos más procesamiento de los datos, mejorar el rendimiento global. Entender las implicaciones de Hola de particiones y el orden en un sistema distribuido es un aspecto crucial de diseño de la solución.
 
-Para ayudar a explicar el equilibrio entre ordenación y disponibilidad, consulte el [teorema CAP](https://en.wikipedia.org/wiki/CAP_theorem), que también se conoce como teorema de Brewer. Dicho teorema trata la elección entre coherencia, disponibilidad y tolerancia a la partición.
+toohelp explican equilibrio de hello entre la ordenación y la disponibilidad, vea hello [teorema CAP](https://en.wikipedia.org/wiki/CAP_theorem), también conocido como teorema de Brewer. Este teorema describe elección Hola entre coherencia, la disponibilidad y tolerancia a la partición.
 
 El teorema de Brewer define la coherencia y la disponibilidad de la forma siguiente:
-* Tolerancia a la partición: la capacidad de un sistema de procesamiento de datos de continuar procesando datos aunque se produzcan errores en una partición.
+* Tolerancia de partición: Hola capacidad de un toocontinue de sistema de procesamiento de datos de procesamiento de datos incluso si se produce un error de la partición.
 * Disponibilidad: un nodo sin error devuelve una respuesta razonable en un plazo prudente (sin errores ni tiempos de espera).
-* Coherencia: se garantiza que una lectura devuelva la última escritura de un cliente determinado.
+* : Una lectura se garantiza la coherencia tooreturn hello más reciente de escritura para un cliente determinado.
 
 ## <a name="partition-tolerance"></a>Tolerancia a la partición
-Event Hubs se basa en un modelo de datos con particiones. Se puede configurar el número de particiones en el centro de eventos durante la instalación, pero no se puede cambiar este valor más adelante. Puesto que se deben utilizar particiones con Event Hubs, debe tomar una decisión con respecto a la disponibilidad y la coherencia de la aplicación.
+Event Hubs se basa en un modelo de datos con particiones. Puede configurar Hola número de particiones en el centro de eventos durante la instalación, pero no se puede cambiar este valor más adelante. Puesto que se deben utilizar particiones con concentradores de eventos, tiene una toomake una decisión sobre la disponibilidad y coherencia para la aplicación.
 
 ## <a name="availability"></a>Disponibilidad
-La manera más sencilla de empezar a trabajar con Event Hubs es usar el comportamiento predeterminado. Si crea un objeto `EventHubClient` nuevo y usa el método `Send`, los eventos se distribuyen automáticamente entre las particiones del centro de eventos. Este comportamiento permite disfrutar del máximo tiempo de actividad.
+Hello tooget de manera más sencilla a trabajar con concentradores de eventos es el comportamiento predeterminado de toouse Hola. Si crea un nuevo `EventHubClient` de objetos y usar hello `Send` método, los eventos se distribuyen automáticamente entre las particiones en el centro de eventos. Este comportamiento permite Hola mayor cantidad de tiempo de actividad.
 
-Para los casos de uso que requieren el máximo tiempo de actividad, se prefiere este modelo.
+Para los casos de uso que requieren el máximo de hello tiempo, este modelo es preferido.
 
 ## <a name="consistency"></a>Coherencia
-En algunos escenarios, el orden de los eventos puede ser importante. Por ejemplo, puede que prefiera el sistema back-end para procesar un comando de actualización antes que un comando de eliminación. En este caso, puede establecer la clave de partición en un evento, o usar un objeto `PartitionSender` para enviar eventos solo a una determinada partición. De esta forma, se garantiza que, cuando se lean eventos de la partición, la lectura siga un orden.
+En algunos casos, puede ser importante Hola clasificación de eventos. Por ejemplo, puede que desee su tooprocess sistema back-end un comando de actualización antes de un comando de eliminación. En este caso, puede establecer la clave de partición de hello en un evento, o usar un `PartitionSender` tooonly objeto enviar eventos tooa determinada partición. Este modo se asegura que si estos eventos se leen desde la partición de hello, se leen en orden.
 
-Con esta configuración, tenga en cuenta que si la partición concreta a la que se realiza el envío no se encuentra disponible, recibirá una respuesta de error. Como punto de comparación, si no tiene una afinidad para una sola partición, el servicio Event Hubs envía el evento a la siguiente partición disponible.
+Con esta configuración, tenga en cuenta que si hello toowhich de partición determinada que está enviando no está disponible, recibirá una respuesta de error. Como punto de comparación, si no tiene una partición única tooa de afinidad, Hola servicio de centros de eventos envía el evento toohello siguiente partición disponible.
 
-Una posible solución para garantizar el orden, mientras también se maximiza el tiempo de actividad, sería agregar eventos como parte de la aplicación de procesamiento de eventos. La manera más fácil de lograr esto es marcar el evento con una propiedad de número de secuencia personalizada. El código siguiente muestra un ejemplo:
+Tooensure de solución posible una ordenación, a la vez que también se minimiza el tiempo, sería tooaggregate eventos como parte de la aplicación de procesamiento de eventos. Hola tooaccomplish de manera más fácil esto es toostamp el evento con una propiedad de número de secuencia personalizada. Hola siguiente código muestra un ejemplo:
 
 ```csharp
-// Get the latest sequence number from your application
+// Get hello latest sequence number from your application
 var sequenceNumber = GetNextSequenceNumber();
 // Create a new EventData object by encoding a string as a byte array
 var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
@@ -58,10 +58,10 @@ data.Properties.Add("SequenceNumber", sequenceNumber);
 await eventHubClient.SendAsync(data);
 ```
 
-Este ejemplo envía el evento a una de las particiones disponibles en el centro de eventos y establece el número de secuencia correspondiente a partir de la aplicación. Esta solución requiere que la aplicación de procesamiento conserve el estado, pero proporciona a los remitentes un punto de conexión con más probabilidades de estar disponible.
+Este ejemplo envía su tooone de eventos de particiones disponibles hello en el centro de eventos y establece el número de secuencia correspondiente de Hola desde su aplicación. Esta solución requiere toobe estado mantenido por la aplicación de procesamiento, pero proporciona a las remitentes de un punto de conexión que es más probable que toobe disponible.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información acerca de Event Hubs, visite los vínculos siguientes:
+Para obtener más información acerca de los centros de eventos información visitando Hola siguientes vínculos:
 
 * [Información general sobre el servicio Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Creación de un centro de eventos](event-hubs-create.md)

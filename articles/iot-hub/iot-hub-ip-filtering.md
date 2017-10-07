@@ -1,6 +1,6 @@
 ---
-title: "Filtros de conexión IP de Azure IoT Hub | Microsoft Docs"
-description: "Describe cómo usar el filtrado de IP para bloquear las conexiones de direcciones IP específicas de su instancia de Azure IoT Hub. Puede bloquear conexiones de direcciones IP concretas o de intervalos."
+title: "filtros de conexión de IP del centro de IoT aaaAzure | Documentos de Microsoft"
+description: "Cómo las direcciones IP toouse filtrado de conexiones de tooblock de IP específica para tooyour centro de IoT de Azure. Puede bloquear conexiones de direcciones IP concretas o de intervalos."
 services: iot-hub
 documentationcenter: 
 author: BeatriceOltean
@@ -14,80 +14,80 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: boltean
-ms.openlocfilehash: 85f5f044faddd5180f0c19d3f2c235b20f6373d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 45e5906a494561b6108895d86d6a04fc3b52b8fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-ip-filters"></a>Uso de filtros IP
 
-La seguridad es un aspecto importante de cualquier solución de IoT basada en Azure IoT Hub. En ciertas ocasiones necesitará especificar explícitamente las direcciones IP desde las que se pueden conectar los dispositivos como parte de la configuración de seguridad. La característica de _filtro IP_ le permite configurar reglas para rechazar o aceptar tráfico de direcciones IPv4 específicas.
+La seguridad es un aspecto importante de cualquier solución de IoT basada en Azure IoT Hub. En ciertas ocasiones necesitará tooexplicitly especificar direcciones IP de Hola desde el que pueden conectar dispositivos como parte de la configuración de seguridad. Hola _filtro IP_ característica permite tooconfigure reglas para rechazar o aceptar tráfico de direcciones IPv4 específicas.
 
-## <a name="when-to-use"></a>Cuándo se deben usar
+## <a name="when-toouse"></a>Cuando toouse
 
-Hay dos casos específicos cuando resulta útil bloquear los puntos de conexión de IoT hub para determinadas direcciones IP:
+Hay dos casos de uso específicos cuando resulta útil tooblock Hola centro de IoT los puntos de conexión para determinadas direcciones IP:
 
-- IoT Hub debe recibir tráfico solo de un intervalo concreto de direcciones IP y rechazar todo lo demás. Por ejemplo, cuando se usa IoT Hub con [Azure ExpressRoute] para crear conexiones privadas entre una instancia de IoT Hub y la infraestructura local.
-- Cuando necesite rechazar el tráfico de direcciones IP que el administrador de IoT Hub haya identificado como sospechosas.
+- IoT Hub debe recibir tráfico solo de un intervalo concreto de direcciones IP y rechazar todo lo demás. Por ejemplo, se utiliza el centro de IoT con [Azure Express Route] toocreate conexiones privadas entre un centro de IoT y su infraestructura local.
+- Necesita tooreject tráfico de direcciones IP que se han identificado como sospechosa por administrador de base de datos central de hello IoT.
 
 ## <a name="how-filter-rules-are-applied"></a>Cómo se aplican las reglas de filtro
 
-Las reglas de filtro IP se aplican en el nivel de servicio de IoT Hub. Por lo tanto, las reglas de filtro IP se aplican a todas las conexiones de los dispositivos y aplicaciones de back-end mediante un protocolo admitido.
+se aplican las reglas de filtro IP de Hello en Hola de nivel de servicio del centro de IoT. Por lo tanto, las reglas de filtro IP de hello aplican las conexiones de tooall desde dispositivos y aplicaciones de back-end mediante un protocolo admitido.
 
-Cualquier intento de conexión desde una dirección IP que coincida con una regla IP de rechazo en su centro de IoT recibe un código de estado 401 no autorizado y la descripción. El mensaje de respuesta no menciona la regla IP.
+Cualquier intento de conexión desde una dirección IP que coincida con una regla IP de rechazo en su centro de IoT recibe un código de estado 401 no autorizado y la descripción. mensaje de respuesta de Hello no mencione la regla IP de Hola.
 
 ## <a name="default-setting"></a>Configuración predeterminada
 
-De forma predeterminada, la cuadrícula de **filtro IP** del portal para un centro de IoT está vacía. Esta configuración predeterminada significa que el centro de acepta la conexión de cualquier dirección IP. Esta configuración predeterminada es equivalente a una regla que acepta el intervalo de direcciones IP 0.0.0.0/0.
+De forma predeterminada, Hola **filtro IP** cuadrícula en el portal de Hola para un centro de IoT está vacío. Esta configuración predeterminada significa que el centro de acepta la conexión de cualquier dirección IP. Esta configuración predeterminada es la regla de tooa equivalente que acepta el intervalo de direcciones IP de hello 0.0.0.0/0.
 
 ![Configuración predeterminada de filtro de direcciones IP de IoT Hub][img-ip-filter-default]
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>Incorporación o edición de una regla de filtro IP
 
-Al agregar una regla de filtro IP, le pediremos los siguientes valores:
+Cuando se agrega una regla de filtrado IP, le pediremos Hola siguientes valores:
 
-- Un **nombre de regla de filtro IP** que debe ser una cadena única, que distinta mayúsculas de minúsculas y alfanumérica de hasta 128 caracteres. Solo se aceptan los caracteres alfanuméricos de 7 bits ASCII más `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`.
-- Seleccione un **Rechazar** o **Aceptar** como **acción** para la regla de filtro IP.
-- Proporcione una única dirección IPv4 o un bloque de direcciones IP en la notación CIDR. Por ejemplo, en notación CIDR, 192.168.100.0/22 representa las direcciones IPv4 de 1024 de 192.168.100.0 a 192.168.103.255.
+- Un **nombre de regla de filtro IP** que debe ser una cadena única, entre mayúsculas y minúsculas, alfanumérica seguridad too128 caracteres. Solo caracteres alfanuméricos de hello ASCII 7 bits más `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` se aceptan.
+- Seleccione un **rechazar** o **Aceptar** como hello **acción** para regla de filtrado IP de Hola.
+- Proporcione una única dirección IPv4 o un bloque de direcciones IP en la notación CIDR. Por ejemplo, en CIDR notación 192.168.100.0/22 representa las direcciones IPv4 Hola 1024 de 192.168.100.0 too192.168.103.255.
 
-![Incorporación de una regla de filtro IP a una instancia de IoT Hub][img-ip-filter-add-rule]
+![Agregar un centro de IoT IP tooan de regla de filtro][img-ip-filter-add-rule]
 
-Tras guardar la regla, se mostrará una alerta que le informará de que la actualización está en curso.
+Después de guardar la regla de hello, verá una alerta que le avise que esa actualización Hola está en curso.
 
 ![Notificación acerca de cómo guardar una regla de filtro IP][img-ip-filter-save-new-rule]
 
-La opción **Agregar** está deshabilitada cuando se alcanza el máximo de 10 reglas de filtro IP.
+Hola **agregar** opción está deshabilitada cuando se alcanza el máximo de Hola de 10 reglas de filtrado IP.
 
-Puede editar una regla existente al hacer doble clic en la fila que la contiene.
+Puede editar una regla existente haciendo doble clic en la fila de Hola que contiene la regla de Hola.
 
 > [!NOTE]
-> Rechazar direcciones de IP puede evitar que otros servicios de Azure (por ejemplo, Azure Stream Analytics, Azure Virtual Machines o el Explorador de dispositivos del portal) interactúen con el centro de IoT.
+> Rechazar IP direcciones pueden impedir que otros servicios de Azure (por ejemplo, análisis de transmisiones de Azure, máquinas virtuales de Azure o hello explorador del dispositivo en el portal de hello) interactuar con el centro de IoT Hola.
 
 > [!WARNING]
-> Si usa Azure Stream Analytics (ASA) para leer mensajes de una instancia de IoT Hub con el filtrado IP habilitado, use el punto de conexión y el nombre compatibles con Event Hub de su instancia de IoT Hub en la cadena de conexión de ASA.
+> Si usa mensajes de tooread de análisis de transmisiones de Azure (ASA) de un centro de IoT con filtrado de IP habilitada, utilizar nombre de concentrador de eventos-compatible de Hola y el extremo de su centro de IoT Hola cadena de conexión del ASA.
 
 ## <a name="delete-an-ip-filter-rule"></a>Eliminación de una regla de filtro IP
 
-Para eliminar una regla de filtro IP, seleccione una o varias reglas en la cuadrícula y haga clic en **Eliminar**.
+toodelete una regla de filtro IP, seleccione una o varias reglas en la cuadrícula de Hola y haga clic en **eliminar**.
 
 ![Eliminación de una regla de filtro IP de IoT Hub][img-ip-filter-delete-rule]
 
 ## <a name="ip-filter-rule-evaluation"></a>Evaluación de las reglas de filtro IP
 
-Las reglas de filtro IP se aplican en orden y la primera regla que coincida con la dirección IP determina la acción de aceptar o rechazar.
+Se aplican las reglas de filtro IP en orden y primera regla Hola de esa dirección IP de coincidencias Hola determina Hola Aceptar o rechazar la acción.
 
-Por ejemplo, si desea aceptar las direcciones del intervalo 192.168.100.0/22 y rechazar todas las demás, la primera regla de la cuadrícula debe aceptar el intervalo de direcciones 192.168.100.0/22. La siguiente regla debe rechazar todas las direcciones mediante el intervalo 0.0.0.0/0.
+Por ejemplo, si desea direcciones tooaccept en hello intervalo 192.168.100.0/22 y todo lo demás rechazar, Hola primera regla cuadrícula Hola debe aceptar Hola dirección intervalo 192.168.100.0/22. regla siguiente Hola debe rechazar todas las direcciones mediante el uso de intervalo de hello 0.0.0.0/0.
 
-Puede cambiar el orden de las reglas de filtro IP en la cuadrícula al hacer clic en los tres puntos verticales situados al principio de las filas y mediante el método arrastrar y colocar.
+Puede cambiar el orden de Hola de las reglas de filtrado IP en la cuadrícula de hello haciendo clic en hello tres puntos verticales situados al principio de Hola de una fila y mediante arrastrar y colocar.
 
-Para guardar el nuevo orden de reglas de filtro IP, haga clic en **Guardar**.
+filtrar de la IP nueva toosave orden de reglas, haga clic en **guardar**.
 
-![Cambiar el orden de las reglas de filtro IP de IoT Hub][img-ip-filter-rule-order]
+![Cambiar el orden de Hola de las reglas de filtrado de IP del centro de IoT][img-ip-filter-rule-order]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para explorar aún más las funcionalidades de IoT Hub, consulte:
+toofurther explorar las capacidades de Hola de centro de IoT, vea:
 
 - [Supervisión de operaciones][lnk-monitor]
 - [Métricas de IoT Hub][lnk-metrics]
@@ -103,7 +103,7 @@ Para explorar aún más las funcionalidades de IoT Hub, consulte:
 <!-- Links -->
 
 [IoT Hub developer guide]: iot-hub-devguide.md
-[Azure ExpressRoute]:  https://azure.microsoft.com/en-us/documentation/articles/expressroute-faqs/#supported-services
+[Azure Express Route]:  https://azure.microsoft.com/en-us/documentation/articles/expressroute-faqs/#supported-services
 
 [lnk-monitor]: iot-hub-operations-monitoring.md
 [lnk-metrics]: iot-hub-metrics.md

@@ -1,6 +1,6 @@
 ---
-title: "Supervisión del estado de replicación de Active Directory con Azure Log Analytics | Microsoft Docs"
-description: "El paquete de la solución de Estado de replicación de Active Directory supervisa con regularidad el entorno de Active Directory para comprobar si existen errores de replicación y muestra los resultados en el panel de OMS."
+title: "estado de replicación de Active Directory con Azure Log Analytics aaaMonitor | Documentos de Microsoft"
+description: "Hola paquete de solución de estado de replicación de Active Directory con regularidad supervisa el entorno de Active Directory para cualquier error de replicación y notifica los resultados de hello en el panel OMS."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -15,142 +15,142 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfe52ef5d9d09ffe179faaf6ffbd90ef964fbda9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 235e4f7a066ea50b79f681398182b22c91fb6d31
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Supervisión del estado de replicación de Active Directory con Azure Log Analytics
 
 ![Símbolo de AD Replication Status](./media/log-analytics-ad-replication-status/ad-replication-status-symbol.png)
 
-Active Directory es un componente clave de un entorno de TI empresarial. Para garantizar la alta disponibilidad y el alto rendimiento, cada controlador de dominio tiene su propia copia de la base de datos de Active Directory. Los controladores de dominio se replican entre sí con el fin de propagar los cambios en toda la empresa. Los errores en este proceso de replicación pueden provocar una serie de problemas en toda la empresa.
+Active Directory es un componente clave de un entorno de TI empresarial. tooensure alta disponibilidad y alto rendimiento, cada controlador de dominio tiene su propia copia de base de datos de Active Directory de Hola. Controladores de dominio se replican entre sí en toopropagate ordenar los cambios a través de la empresa de Hola. Errores en este proceso de replicación pueden provocar una variedad de problemas en enterprise Hola.
 
-El paquete de la solución de Estado de replicación de AD supervisa con regularidad el entorno de Active Directory para comprobar si existen errores de replicación y muestra los resultados en el panel de OMS.
+Hola paquete de solución de estado de replicación de AD con regularidad supervisa el entorno de Active Directory para cualquier error de replicación y notifica los resultados de hello en el panel OMS.
 
-## <a name="installing-and-configuring-the-solution"></a>Instalación y configuración de la solución
-Utilice la siguiente información para instalar y configurar la solución.
+## <a name="installing-and-configuring-hello-solution"></a>Instalar y configurar soluciones de Hola
+Usar hello después tooinstall de información y configurar soluciones de Hola.
 
-* Debe instalar los agentes en controladores del dominio que se vaya a evaluar. Como alternativa, instale los agentes en servidores miembros y configure los agentes para que envíen datos de replicación de AD a OMS. Para conocer el proceso de conexión de equipos Windows a OMS, consulte [Conexión de equipos Windows a Log Analytics](log-analytics-windows-agents.md). Si el controlador de dominio ya forma parte de un entorno de System Center Operations Manager que le gustaría conectar a OMS, consulte [Conexión de Operations Manager con Log Analytics](log-analytics-om-agents.md).
-* Agregue la solución de Estado de replicación de Active Directory al área de trabajo de OMS mediante el proceso descrito en [Incorporación de soluciones de Log Analytics desde la galería de soluciones](log-analytics-add-solutions.md).  No es necesario realizar ninguna configuración más.
+* Debe instalar a agentes en los controladores de dominio que son miembros de hello dominio toobe evaluada. O bien, debe instalar los agentes en servidores miembro y configurar tooOMS de datos de replicación de hello agentes toosend AD. toounderstand tooconnect tooOMS de equipos de Windows, vea [tooLog de equipos de Windows conectarse análisis](log-analytics-windows-agents.md). Si el controlador de dominio ya forma parte de un entorno de System Center Operations Manager existente que desea tooconnect tooOMS, consulte [tooLog de conexión de Operations Manager análisis](log-analytics-om-agents.md).
+* Agregar tooyour solución Hola estado de replicación de Active Directory que se describe el área de trabajo OMS mediante el proceso de hello en [soluciones de análisis de registro agregar desde la Galería de soluciones de hello](log-analytics-add-solutions.md).  No es necesario realizar ninguna configuración más.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Detalles de recopilación de datos de Estado de replicación de AD
-En la tabla siguiente se muestran los métodos de recolección de datos y otros detalles sobre cómo se recopilan los datos para el Estado de replicación de AD.
+Hello tabla siguiente muestran los métodos de recopilación de datos y otros detalles acerca de cómo se recopilan los datos de estado de replicación de AD.
 
 | plataforma | Agente directo | Agente de SCOM | Azure Storage | ¿Se necesita SCOM? | Datos del agente de SCOM enviados a través del grupo de administración | Frecuencia de recopilación |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |cada cinco días |
 
-## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Habilitación opcional de un controlador que no es de dominio para enviar datos de AD a OMS
-Si no desea conectar ninguno de los controladores de dominio directamente a OMS, puede usar cualquier otro equipo conectado a OMS del dominio para recopilar datos para el paquete de solución de AD Replication Status y hacer que este envíe los datos.
+## <a name="optionally-enable-a-non-domain-controller-toosend-ad-data-toooms"></a>Opcionalmente, puede habilitar un tooOMS de datos de controlador de dominio no toosend AD
+Si no desea tooconnect de cualquiera de los controladores de dominio directamente tooOMS, puede usar cualquier otro equipo conectado a OMS en su toocollect dominio datos de hello solución de estado de replicación de AD pack y que se envíe datos de Hola.
 
-### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Para habilitar un controlador que no sea de dominio para enviar datos de AD a OMS
-1. Compruebe que el equipo es miembro del dominio que desea supervisar mediante la solución de Estado de replicación de AD.
-2. [Conecte el equipo Windows a OMS](log-analytics-windows-agents.md) o [conéctelo con su entorno existente de Operations Manager a OMS](log-analytics-om-agents.md), si no está conectado aún.
-3. En el equipo, configure la siguiente clave del Registro:
+### <a name="tooenable-a-non-domain-controller-toosend-ad-data-toooms"></a>tooenable un tooOMS de datos de controlador de dominio no toosend AD
+1. Compruebe que ese equipo hello es un miembro de dominio de Hola que desea toomonitor con soluciones de estado de replicación de AD de Hola.
+2. [Conectar tooOMS de equipo de Windows hello](log-analytics-windows-agents.md) o [conéctela mediante su tooOMS de entorno de Operations Manager existente](log-analytics-om-agents.md), si ya no está conectado.
+3. En ese equipo, establezca Hola después de la clave del registro:
 
    * Clave: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
    * Valor: **IsTarget**
    * Datos del valor: **true**
 
    > [!NOTE]
-   > Estos cambios no surten efecto hasta que reinicia el servicio Microsoft Monitoring Agent (HealthService.exe).
+   > Estos cambios no surtirán efecto hasta la Hola de reinicio del servicio del agente de supervisión de Microsoft (HealthService.exe).
    >
    >
 
 ## <a name="understanding-replication-errors"></a>Descripción de los errores de replicación
-Una vez que se hayan enviado los datos de AD Replication Status a OMS, verá un icono similar al siguiente en el panel de OMS que indica cuántos errores de replicación hay actualmente.  
+Una vez que tenga datos de estado de replicación de AD enviados tooOMS, verá un toohello similar de mosaico después de imagen en el panel de OMS de Hola que indica cuántos errores de replicación tiene actualmente.  
 ![Icono del Estado de replicación de AD](./media/log-analytics-ad-replication-status/oms-ad-replication-tile.png)
 
-Los **errores críticos de replicación** son aquellos que están al 75 % de la [vigencia del marcador de exclusión](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) o por encima para el bosque de Active Directory.
+**Errores críticos de replicación** son errores que son igual o superior al 75% de hello [desecho](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) para el bosque de Active Directory.
 
-Al hacer clic en el icono, se ve más información sobre los errores.
+Al hacer clic en el icono de hello, puede ver más información sobre los errores de Hola.
 ![Panel del estado de replicación de AD](./media/log-analytics-ad-replication-status/oms-ad-replication-dash.png)
 
 ### <a name="destination-server-status-and-source-server-status"></a>Estado del servidor de destino y estado del servidor de origen
-Estas columnas muestran el estado de los servidores de destino y los servidores de origen que experimentan errores de replicación. El número después de cada nombre de controlador de dominio indica el número de errores de replicación en ese controlador de dominio.
+Estas columnas muestran el estado de Hola de servidores de destino y los servidores de origen que experimentan errores de replicación. número de Hello después de cada nombre de controlador de dominio indica Hola de errores de replicación en ese controlador de dominio.
 
-Dado que algunos problemas son más fáciles de solucionar desde la perspectiva del servidor de origen y otros desde la perspectiva del servidor de destino, se muestran los errores tanto de los servidores de destino como de los servidores de origen.
+errores de Hola para los servidores de destino y los servidores de origen se muestran debido a algunos problemas son más fácil tootroubleshoot desde la perspectiva del servidor de origen de Hola y otros desde la perspectiva del servidor de destino de Hola.
 
-En este ejemplo, verá que muchos servidores de destino tienen aproximadamente el mismo número de errores, pero hay un servidor de origen (ADDC35) que tiene muchos más errores que los demás. Es probable que haya algún problema en ADDC35 que esté provocando un error al enviar datos a sus asociados de replicación. Con la solución de los problemas de ADDC35 se podrían resolver muchos de los errores que aparecen en el área del servidor de destino.
+En este ejemplo, puede ver que muchos servidores de destino tienen aproximadamente Hola el mismo número de errores, pero no hay un servidor de origen (ADDC35) que tiene muchas más errores que Hola todos los otros usuarios. Es probable que haya algún problema en ADDC35 que está causando a asociados de replicación de toofail toosend datos tooits. Solucionar problemas de hello en ADDC35 puede resolver muchos de los errores de Hola que aparecen en el área de servidor de destino de Hola.
 
 ### <a name="replication-error-types"></a>Tipos de errores de replicación
-Esta área proporciona información sobre los tipos de errores detectados en toda la empresa. Cada error posee un código numérico único y un mensaje que puede ayudarle a determinar la causa del error.
+Esta área proporciona información acerca de los tipos de Hola de errores detectados en toda la empresa. Cada error tiene un código numérico único y un mensaje que le permitirá determinar Hola causa del error de Hola.
 
-El anillo de la parte superior le permite hacerse una idea de los errores que aparecen con mayor y menor frecuencia en su entorno.
+anillo de Hello en la parte superior de hello ofrece una idea de que aparezcan errores más y menos frecuentemente en su entorno.
 
-Muestra si hay varios controladores de dominio que experimentan el mismo error de replicación. En este caso, es posible que pueda detectar o identificar una solución en un controlador de dominio y repetirla en los demás controladores de dominio afectados.
+Muestra cuando varios controladores de dominio producen Hola mismo error de replicación. En este caso, puede ser capaz de toodiscover o identificar una solución en un controlador de dominio, y repita en otros controladores de dominio afectados por hello mismo error.
 
 ### <a name="tombstone-lifetime"></a>vigencia de objetos de desecho
-La vigencia de objetos de desecho determina el tiempo que un objeto eliminado permanece en la base de datos de Active Directory. Cuando un objeto eliminado supera la vigencia de objetos de desecho, el proceso de recopilación de elementos no utilizados lo quita automáticamente de la base de datos de Active Directory.
+duración de objetos de desecho de Hello determina cuánto tiempo un objeto eliminado, se hace referencia tooas un marcador de exclusión, se conserva en la base de datos de Active Directory de Hola. Cuando una duración de objetos de desecho de objeto eliminado pasadas hello, un proceso de recopilación de elementos no utilizados lo elimina automáticamente de la base de datos de Active Directory de Hola.
 
-La vigencia predeterminada de objetos de desecho es de 180 días para las versiones más recientes de Windows (60 días en versiones anteriores) y puede cambiarse explícitamente por un administrador de Active Directory.
+duración de objetos de desecho de Hello predeterminada es de 180 días para las versiones más recientes de Windows, pero era 60 días en versiones anteriores y puede cambiarse explícitamente por un administrador de Active Directory.
 
-Es importante saber si tiene errores de replicación próximos al fin de la vigencia del marcador de exclusión o la hayan superado. Si dos controladores de dominio experimentan un error de replicación que se mantiene una vez superada la vigencia del marcador de exclusión, se deshabilita la replicación entre esos dos controladores de dominio, aunque se corrija el error de replicación subyacente.
+Es importante tooknow si experimenta errores de replicación que se aproximan a o están más allá de la duración de objetos de desecho de Hola. Si dos controladores de dominio produce un error de replicación que se conserva más allá de la duración de objetos de desecho de hello, es deshabilitar la replicación entre los dos controladores de dominio, incluso si se corrige Hola error de replicación subyacente.
 
-El área de la vigencia de marcadores de exclusión le ayuda a identificar los lugares donde existe el riesgo de que se deshabilite la replicación. Cada error en la categoría **Más del 100 % de la vigencia de objetos de desecho** representa una partición que no se ha replicado entre su servidor de origen y destino durante al menos la vigencia de objetos de desecho para el bosque.
+Hola área desecho le ayuda a identificar los lugares donde replicación deshabilitada corre el riesgo de que ocurra. Cada error contenido en hello **más de 100% TSL** categoría representa una partición que no se ha replicado entre su servidor de origen y destino para al menos de desecho de hello para el bosque de Hola.
 
-En este caso, no bastará con corregir el error de replicación. Como mínimo, debe investigar manualmente para identificar y limpiar los objetos persistentes antes de reiniciar la replicación. Puede incluso que deba dar de baja un controlador de dominio.
+En esta situación, simplemente corrige los errores de replicación de hello no será suficiente. Como mínimo, necesita toomanually investigar tooidentify y limpiar objetos persistentes antes de poder reiniciar la replicación. Incluso puede que tenga toodecommission un controlador de dominio.
 
-Además de identificar los errores de replicación que se hayan mantenido una vez expirada la vigencia del marcador de exclusión, deberá prestar atención a los errores de las categorías **50-75 % de la vigencia del marcador de exclusión** o **75-100 % de la vigencia del marcador de exclusión**.
+En suma tooidentifying los errores de replicación que se conservan más allá de la duración de objetos de desecho de hello, también desea toopay atención tooany errores caer en hello **50 y un 75% TSL** o **TSL 75-100%** categorías.
 
-Estos son errores que son claramente persistentes, no transitorios, por lo que es probable que necesiten la intervención del usuario para resolverse. Lo bueno es que no han alcanzado aún el fin de la vigencia de objetos de desecho. Si soluciona estos problemas con prontitud y *antes* de que lleguen al límite de la vigencia de objetos de desecho, puede reiniciar la replicación con la mínima intervención manual.
+Se trata de errores que son claramente persistentes y no transitoria, por lo que es probable que necesiten su tooresolve intervención. Hola buenas noticias son que no hayan alcanzado aún desecho Hola. Si soluciona estos problemas rápidamente y *antes de* que lleguen a la duración de objetos de desecho de hello, puede reiniciar la replicación con una intervención manual mínima.
 
-Como se indicó anteriormente, el icono del panel de la solución de Estado de replicación de AD muestra el número de errores de replicación *críticos* en su entorno, que se definen como errores que están por encima del 75 % de la vigencia de objetos de desecho (incluidos los errores que están en el 100 % de la vigencia de objetos de desecho). El objetivo es mantener este número en 0.
+Como se indicó anteriormente, icono de panel de hello para la solución de estado de replicación de AD hello muestra el número de Hola de *crítico* en su entorno, que se define como errores que son más del 75% de duración de objetos de desecho (incluidos los errores de replicación errores de más de 100% de TSL). Procurar tookeep este número en 0.
 
 > [!NOTE]
-> Todos los cálculos de porcentaje de la vigencia de objetos de desecho se basan en la vigencia de objetos de desecho real para el bosque de Active Directory, por lo que puede confiar en que los porcentajes son precisos, incluso si ha configurado un valor personalizado para la vigencia de objetos de desecho.
+> Todos los cálculos de porcentaje de duración de objetos de desecho de Hola se basan en la duración de objetos de desecho real de hello para el bosque de Active Directory, por lo que puede confiar en que los porcentajes son correctas, incluso si tiene un valor de duración de objetos de desecho personalizado establecido.
 >
 >
 
 ### <a name="ad-replication-status-details"></a>Detalles del Estado de replicación de AD
-Al hacer clic en cualquier elemento de las listas, con la búsqueda de registros verá detalles adicionales sobre este. Los resultados se filtran para mostrar solo los errores relacionados con ese elemento. Por ejemplo, al hacer clic en el primer controlador de dominio que aparece en **Destination Server Status (ADDC02)** (Estado del servidor de destino [ADDC02]), verá los resultados de búsqueda filtrados para mostrar errores con ese controlador de dominio cuando figura como servidor de destino:
+Al hacer clic en cualquier elemento en una de las listas de hello, puede ver detalles adicionales sobre mediante la búsqueda de registros. resultados de Hello son tooshow filtrado único Hola errores relacionados toothat elemento. Por ejemplo, si hace clic en controlador de dominio de primer Hola aparece en **estado del servidor de destino (ADDC02)**, verá resultados de búsqueda filtran tooshow errores con ese controlador de dominio aparece como servidor de destino de hello:
 
 ![Errores del Estado de replicación de AD en resultados de búsqueda](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-Desde aquí, puede filtrar aún más, modificar la consulta de la búsqueda, etc. Para obtener más información acerca del uso de la Búsqueda de registros, consulte [Búsquedas de registros](log-analytics-log-searches.md).
+Desde aquí, puede filtrar aún más, modifique la consulta de búsqueda de Hola y así sucesivamente. Para obtener más información acerca del uso de hello búsqueda de registros, vea [búsquedas de registro](log-analytics-log-searches.md).
 
-El campo **HelpLink** muestra la dirección URL de una página de TechNet con detalles adicionales acerca de ese error específico. Puede copiar y pegar este vínculo en la ventana del explorador para ver información sobre la solución de problemas y corregir el error.
+Hola **HelpLink** campo muestra hello URL de una página de TechNet con detalles adicionales acerca del error específico. Puede copiar y pegar este vínculo en la información de toosee de ventana de explorador sobre solución de problemas y corregir el error de Hola.
 
-También puede hacer clic **Exportar** para exportar los resultados a Excel. La exportación de datos le ayuda a visualizar los datos del error de replicación de la forma que prefiera.
+También puede hacer clic en **exportar** tooexport Hola da como resultado tooExcel. Exportar datos de hello puede ayudarle a visualizar los datos de error de replicación en cualquier forma que desee.
 
 ![errores del Estado de replicación de AD exportados en Excel](./media/log-analytics-ad-replication-status/oms-ad-replication-export.png)
 
 ## <a name="ad-replication-status-faq"></a>P+F del Estado de replicación de AD
 **P: ¿Con qué frecuencia se actualizan los datos del Estado de replicación de AD?**
-R: La información se actualiza cada cinco días.
+R: información de Hola se actualiza cada cinco días.
 
-**P: ¿Existe es una manera de configurar la frecuencia de actualización de estos datos?**
+**P: ¿existe un tooconfigure de forma que la frecuencia de actualización de estos datos?**
 R: De momento, no.
 
-**P: ¿Tengo que agregar todos mis controladores de dominio a mi área de trabajo de OMS para ver el estado de replicación?**
-R: No, basta con que se agregue un único controlador de dominio. Si tiene varios controladores de dominio en el área de trabajo de OMS, los datos de todos ellos se envían a OMS.
+**P: ¿necesito tooadd todos de Mi área de trabajo de dominio controladores toomy OMS en estado de replicación de orden toosee?**
+R: No, basta con que se agregue un único controlador de dominio. Si tiene varios controladores de dominio en el área de trabajo OMS, datos de todas ellas se envían tooOMS.
 
-**P: No quiero agregar controladores de dominio a mi área de trabajo de OMS. ¿Puedo usar la solución de estado de replicación de AD?**
-R: Sí. Puede configurar el valor de una clave del Registro para habilitar esta opción. Consulte [Para habilitar un controlador que no sea de dominio para enviar datos de AD a OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+**P: no deseo tooadd cualquier área de trabajo OMS de dominio controladores toomy. ¿Puedo seguir usando Hola solución de estado de replicación de AD?**
+R: Sí. Se puede establecer el valor de Hola de un tooenable de clave del registro. Vea [tooenable un tooOMS de datos de controlador de dominio no toosend AD](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
-**P: ¿Cuál es el nombre del proceso que realiza la recopilación de datos?**
+**P: ¿cuál es el nombre de hello del proceso de Hola que Hola la recopilación de datos?**
 R: AdvisorAssessment.exe
 
-**P: ¿Cuánto tiempo se tarda en recopilar datos?**
-R: El tiempo de recopilación de datos depende del tamaño del entorno de Active Directory, pero normalmente tarda menos de 15 minutos.
+**P: ¿cuánto tarda para toobe de datos que se recopilan?**
+R: tiempo de recopilación de datos de depende Hola tamaño del entorno de Active Directory de hello, pero suele tarda menos de 15 minutos.
 
 **R: ¿Qué tipo de datos se recopilan?**
 R: La información de replicación se recopila a través de LDAP.
 
-**P: ¿Se puede configurar el momento en que se recopilan los datos?**
+**P: ¿existe una manera tooconfigure cuando los datos se recopilan?**
 R: De momento, no.
 
-**P: ¿Qué permisos necesito para recopilar datos?**
-R: Los permisos de usuario normal para Active Directory son suficientes.
+**P: ¿qué hacer permisos necesito toocollect datos?**
+R: permisos de usuario normal de tooActive Directory son suficientes.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Solución de problemas de recopilación de datos
-A fin de recopilar datos, el paquete de solución de Estado de replicación de AD requiere que haya al menos un controlador de dominio conectado a su área de trabajo de OMS. Hasta que se conecte a un controlador de dominio, aparece un mensaje que indica que **todavía se están recopilando datos**.
+Datos de pedidos toocollect, paquete de solución de estado de replicación de hello AD requiere al menos un dominio controlador toobe conectado tooyour área de trabajo OMS. Hasta que se conecte a un controlador de dominio, aparece un mensaje que indica que **todavía se están recopilando datos**.
 
-Si necesita ayuda para conectarse a uno de los controladores de dominio, puede ver la documentación en [Conexión de equipos Windows a Log Analytics](log-analytics-windows-agents.md). Como alternativa, si el controlador de dominio ya está conectado a un entorno existente de System Center Operations Manager, puede ver documentación en [Conexión de Operations Manager con Log Analytics](log-analytics-om-agents.md).
+Si necesita ayuda para conectarse a uno de los controladores de dominio, puede ver la documentación en [tooLog de equipos de Windows conectarse análisis](log-analytics-windows-agents.md). O bien, si el controlador de dominio ya está conectado tooan entorno de System Center Operations Manager existente, puede ver la documentación en [tooLog conectar System Center Operations Manager análisis](log-analytics-om-agents.md).
 
-Si no desea conectar ninguno de los controladores de dominio directamente a OMS o SCOM, consulte [Para habilitar un controlador que no sea de dominio para enviar datos de AD a OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+Si no desea tooconnect cualquiera de los controladores de dominio directamente tooOMS o tooSCOM, consulte [tooenable un tooOMS de datos de controlador de dominio no toosend AD](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Utilice [Búsquedas de registros en Log Analytics](log-analytics-log-searches.md) para ver datos detallados de estado de replicación de Active Directory.
+* Use [búsquedas de registro de análisis de registros](log-analytics-log-searches.md) tooview obtener datos de estado de replicación de Active Directory.

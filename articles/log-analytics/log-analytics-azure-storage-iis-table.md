@@ -1,6 +1,6 @@
 ---
-title: Uso de Blob Storage para IIS y Table Storage para eventos en Azure Log Analytics | Microsoft Docs
-description: "Log Analytics puede leer los registros de los servicios de Azure que escriben los diagnósticos en Table Storage o los registros de IIS Blob Storage."
+title: "almacenamiento de blobs de aaaUse para IIS y la tabla de almacenamiento para los eventos de análisis de registros de Azure | Documentos de Microsoft"
+description: "Análisis de registros pueden leer registros de Hola para servicios de Azure que escriben tootable almacenamiento de diagnóstico o registros de IIS que se escriban tooblob almacenamiento."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ff3de04dc8cb6729c1443372ec31a0e8dc47f273
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Uso de Azure Blob Storage para el almacenamiento de tablas de Azure e IIS de eventos con Log Analytics
 
-Log Analytics puede leer los registros de los siguientes servicios que escriben los diagnósticos Table Storage o los registros de IIS en Blob Storage:
+Análisis de registros pueden leer los registros de Hola para hello después servicios que escriben diagnósticos tootable tooblob escrito almacenamiento de registros de almacenamiento o IIS:
 
 * Clústeres de Service Fabric (versión preliminar)
 * Máquinas virtuales
@@ -31,11 +31,11 @@ Log Analytics puede leer los registros de los siguientes servicios que escriben 
 
 Antes de que Log Analytics pueda recopilar los datos de estos recursos, es necesario habilitar Diagnósticos de Azure.
 
-Una vez que se habilitan los diagnósticos, puede usar Azure Portal o PowerShell para configurar Log Analytics para recopilar los registros.
+Una vez que se habilitan los diagnósticos, puede usar Hola portal de Azure o PowerShell configurar registros de análisis de registros toocollect Hola.
 
-Diagnósticos de Azure es una extensión de Azure que le permite recopilar datos de diagnóstico de un rol de trabajo, un rol web o una máquina virtual en ejecución en Azure. Los datos se almacenan en una cuenta de Azure Storage para que se puedan recopilar con Log Analytics.
+Diagnósticos de Azure es una extensión de Azure que permite toocollect de datos de diagnóstico de un rol de trabajo, el rol web o la máquina virtual se ejecuta en Azure. datos de Hola se almacenan en una cuenta de almacenamiento de Azure y, a continuación, se pueden recopilar mediante el análisis de registros.
 
-Para que Log Analytics recopile estos registros de Diagnóstico de Azure, deben estar en las siguientes ubicaciones:
+Para el análisis de registros toocollect estos registros de diagnósticos de Azure, registros de hello deben estar en hello ubicaciones siguientes:
 
 | Tipo de registro | Tipo de recurso | La ubicación |
 | --- | --- | --- |
@@ -52,38 +52,38 @@ Para que Log Analytics recopile estos registros de Diagnóstico de Azure, deben 
 >
 >
 
-Para máquinas virtuales, también tiene la opción de instalar el [agente de Log Analytics](log-analytics-azure-vm-extension.md) en la máquina virtual para permitir información adicional. Además de poder analizar registros de IIS y registros de eventos, también podrá realizar análisis adicionales, como seguimiento de cambios de configuración, evaluación de SQL y evaluación de actualizaciones.
+Para máquinas virtuales, tiene la opción de hello de la instalación de hello [agente de análisis de registros](log-analytics-azure-vm-extension.md) en la visión adicional de tooenable de máquina virtual. Además toobeing tooanalyze capaz de los registros de IIS y registros de eventos, puede realizar análisis adicionales como seguimiento de cambios de configuración, evaluación de SQL y evaluación de actualizaciones.
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Habilitación de Diagnósticos de Azure en una máquina virtual para la recopilación de registros de IIS y de eventos
-Use el siguiente procedimiento para habilitar Diagnósticos de Azure en una máquina virtual para la recopilación de registros de IIS y de eventos mediante Microsoft Azure Portal.
+Hola de uso siguiendo el procedimiento tooenable diagnósticos de Azure en una máquina virtual para la colección mediante el portal de Microsoft Azure Hola de registros de IIS y el registro de eventos.
 
-### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Pasos para habilitar Diagnósticos de Azure en una máquina virtual con Azure Portal
-1. Instale al agente de máquina virtual cuando cree una máquina virtual. Si la máquina virtual ya existe, compruebe que el agente de máquina virtual ya está instalado.
+### <a name="tooenable-azure-diagnostics-in-a-virtual-machine-with-hello-azure-portal"></a>tooenable diagnósticos de Azure en una máquina virtual con hello portal de Azure
+1. Instalar agente de máquina virtual de hello cuando se crea una máquina virtual. Si ya existe una máquina virtual de hello, compruebe que Hola que ya está instalado el agente de máquina virtual.
 
-   * En Azure Portal, acceda a la máquina virtual, seleccione **Configuración opcional**, luego **Diagnósticos** y establezca **Estado** en **Activado**.
+   * En Hola portal de Azure, navegue toohello virtual machine, seleccione **configuración opcional**, a continuación, **diagnósticos** y establecer **estado** demasiado**en**.
 
-     Tras la finalización, la máquina virtual tendrá la extensión de Diagnósticos de Azure instalada y ejecutándose. Esta extensión se encarga de recopilar datos de diagnóstico.
-2. Habilite la supervisión y configure el registro de eventos en una máquina virtual existente. Puede habilitar el diagnóstico en el nivel de máquina virtual. Para activar el diagnóstico y, a continuación, configurar el registro de eventos, realice los siguientes pasos:
+     Al finalizar, Hola VM tiene la extensión de diagnósticos de Azure de hello instalada y en ejecución. Esta extensión se encarga de recopilar datos de diagnóstico.
+2. Habilite la supervisión y configure el registro de eventos en una máquina virtual existente. Puede habilitar el diagnóstico en hello nivel de máquina virtual. tooenable diagnósticos y, a continuación, configurar el registro de eventos, realice Hola pasos:
 
-   1. Seleccione la máquina virtual.
+   1. Seleccione Hola máquina virtual.
    2. Haga clic en **Supervisión**.
    3. Haga clic en **Diagnósticos**.
-   4. Establezca el **Estado** en **Activado**.
-   5. Seleccione los registros de diagnóstico que desee recopilar.
+   4. Conjunto hello **estado** demasiado**ON**.
+   5. Seleccione cada registro de diagnósticos que desea toocollect.
    6. Haga clic en **Aceptar**.
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Activación de Diagnósticos de Azure en un rol web para la recopilación de eventos y registros de IIS
-Consulte [Cómo habilitar diagnósticos en un servicio en la nube](../cloud-services/cloud-services-dotnet-diagnostics.md) para conocer los pasos generales para habilitar Diagnósticos de Azure. Las instrucciones siguientes utilizan esta información y la personalizan para utilizarse con Log Analytics.
+Consulte demasiado[cómo tooEnable diagnósticos en un servicio de nube](../cloud-services/cloud-services-dotnet-diagnostics.md) para conocer los pasos generales acerca de cómo habilitar diagnósticos de Azure. Estas instrucciones Hola utilizan esta información y personalizarla para su uso con análisis de registros.
 
 Con el diagnóstico de Azure habilitado:
 
-* Los registros de IIS se almacenan de forma predeterminada, con los datos transferidos en el intervalo de transferencia de scheduledTransferPeriod.
+* Registros de IIS se almacenan de forma predeterminada, con los datos transferidos en el intervalo de transferencia de scheduledTransferPeriod Hola.
 * Los registros de eventos de Windows no se transfieren de forma predeterminada.
 
-### <a name="to-enable-diagnostics"></a>Para habilitar diagnósticos
-Para habilitar los registros de eventos de Windows, o para cambiar scheduledTransferPeriod, configure Diagnósticos de Azure con el archivo de configuración XML (diagnostics.wadcfg) como se muestra en el [Paso 4: crear el archivo de configuración de Diagnósticos e instalar la extensión](../cloud-services/cloud-services-dotnet-diagnostics.md).
+### <a name="tooenable-diagnostics"></a>diagnóstico de tooenable
+tooenable registros de eventos de Windows o toochange Hola scheduledTransferPeriod, configure diagnósticos de Azure mediante el archivo de configuración de hello XML (diagnostics.wadcfg), como se muestra en [paso 4: crear el archivo de configuración de diagnóstico e instalar Hola extensión](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-El siguiente archivo de configuración de ejemplo recopila los registros de IIS y todos los eventos desde los registros de aplicación y sistema:
+Hello siguiente archivo de configuración de ejemplo recopila registros de IIS y todos los eventos de aplicación hello y registros del sistema:
 
 ```
     <?xml version="1.0" encoding="utf-8" ?>
@@ -93,7 +93,7 @@ El siguiente archivo de configuración de ejemplo recopila los registros de IIS 
 
       <Directories bufferQuotaInMB="0"
          scheduledTransferPeriod="PT10M">  
-        <!-- IISLogs are only relevant to Web roles -->
+        <!-- IISLogs are only relevant tooWeb roles -->
         <IISLogs container="wad-iis" directoryQuotaInMB="0" />
       </Directories>
 
@@ -107,7 +107,7 @@ El siguiente archivo de configuración de ejemplo recopila los registros de IIS 
     </DiagnosticMonitorConfiguration>
 ```
 
-Asegúrese de que ConfigurationSettings especifica una cuenta de almacenamiento, como en el ejemplo siguiente:
+Asegúrese de que ConfigurationSettings especifica una cuenta de almacenamiento, como en el siguiente ejemplo de Hola:
 
 ```
     <ConfigurationSettings>
@@ -115,60 +115,60 @@ Asegúrese de que ConfigurationSettings especifica una cuenta de almacenamiento,
     </ConfigurationSettings>
 ```
 
-Los valores de **AccountName** y **AccountKey** se encuentran en el panel de cuentas de almacenamiento de Azure Portal, en Administrar claves de acceso. El protocolo de la cadena de conexión debe ser **https**.
+Hola **AccountName** y **AccountKey** valores se encuentran en hello portal de Azure en el panel de cuenta de almacenamiento de hello, bajo administrar claves de acceso. Protocolo de Hola de cadena de conexión de hello debe ser **https**.
 
-Una vez que se aplica la configuración de diagnóstico actualizada al servicio en la nube y se escribe el diagnóstico en Azure Storage, está preparado para configurar Log Analytics.
+Una vez que se aplica la configuración de diagnóstico actualizada hello tooyour servicio en la nube y se está escribiendo tooAzure almacenamiento de información de diagnóstico, tú eres listo tooconfigure análisis de registros.
 
-## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Uso de Azure Portal para recopilar registros de Azure Storage
-Con Azure Portal puede configurar Log Analytics para recopilar los registros para los siguientes servicios de Azure:
+## <a name="use-hello-azure-portal-toocollect-logs-from-azure-storage"></a>Usar registros de Azure toocollect portal Hola desde el almacenamiento de Azure
+Puede usar los registros de Hola de toocollect de hello tooconfigure portal Azure análisis de registros para hello después de los servicios de Azure:
 
 * Clústeres de Service Fabric
 * Máquinas virtuales
 * Roles web y de trabajo
 
-En Azure Portal, vaya hasta el área de trabajo de Log Analytics y realice las siguientes tareas:
+Hola portal de Azure, navegar por el área de trabajo de análisis de registros tooyour y realizar Hola siguientes tareas:
 
 1. Haga clic en *Storage accounts logs* (Registros de las cuentas de almacenamiento)
-2. Haga clic en la tarea *Agregar*
-3. Seleccione la cuenta de almacenamiento que contenga los registros de diagnóstico
+2. Haga clic en hello *agregar* tarea
+3. Seleccionar cuenta de almacenamiento de Hola que contiene registros de diagnósticos de Hola
    * Esta cuenta puede ser una cuenta de almacenamiento clásico o una cuenta de almacenamiento de Azure Resource Manager
-4. Seleccione el tipo de datos de los cuales desea recopilar registros
-   * Las opciones serán registros de IIS; eventos; Syslog (Linux); registros de ETW; eventos de Service Fabric
-5. El valor de origen se rellenará automáticamente según el tipo de datos y no se puede cambiar
-6. Haga clic en Aceptar para guardar la configuración
+4. Seleccione Hola desea toocollect registros para el tipo de datos
+   * Opciones de Hello son registros de IIS; Eventos; Syslog (Linux); Registros ETW; Eventos de Service Fabric
+5. valor de Hello para el origen se rellena automáticamente en función de hello, tipo de datos y no se puede cambiar
+6. Haga clic en Aceptar toosave Hola configuración
 
-Repita los pasos 2 a 6 para los tipos de datos y cuentas de almacenamiento adicionales que quiera que recopile Log Analytics.
+Repita los pasos 2 a 6 para los tipos de cuentas y los datos de almacenamiento adicional que desee toocollect de análisis de registros.
 
-En aproximadamente 30 minutos podrá ver los datos de la cuenta de almacenamiento en Log Analytics. Solo verá los datos que se escriban en el almacenamiento de una vez aplicada la configuración. Log Analytics no lee los datos preexistentes de la cuenta de almacenamiento.
+En aproximadamente 30 minutos, es capaz de toosee datos de cuenta de almacenamiento de hello en análisis de registros. Sólo verá los datos que se escriben toostorage después de aplica la configuración de Hola. Análisis de registros no leen datos preexistentes Hola de cuenta de almacenamiento de Hola.
 
 > [!NOTE]
-> El portal no valida la existencia del origen en la cuenta de almacenamiento o si se escriben nuevos datos.
+> portal de Hello no valida que Hola origen existe en la cuenta de almacenamiento de Hola o si se está escribiendo datos nuevos.
 >
 >
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Habilitación de Diagnósticos de Azure en una máquina virtual para la recopilación de registros de IIS y de eventos con PowerShell
-Siga los pasos de [Configuración de Log Analytics para indizar Diagnósticos de Azure](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) para usar PowerShell con el fin de leer datos desde los diagnósticos de Azure que se escribe en Table Storage.
+Hola de uso de los pasos de [tooindex de análisis de registros de configuración de diagnósticos de Azure](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) toouse PowerShell tooread diagnósticos de Azure que se escriben tootable almacenamiento.
 
-Con PowerShell de Azure puede especificar con mayor precisión los eventos que se escriben en Almacenamiento de Azure.
+Con Azure PowerShell puede especificar con mayor precisión los eventos de Hola que se escriben tooAzure almacenamiento.
 Para obtener más información, vea[Habilitación de Diagnósticos en Azure](../virtual-machines-dotnet-diagnostics.md).
 
-Puede habilitar y actualizar Diagnósticos de Azure mediante el siguiente script de PowerShell.
+Puede habilitar y actualizar los diagnósticos de Azure mediante el siguiente script de PowerShell de Hola.
 También puede utilizar este script con una configuración de registro personalizada.
-Modifique el script para establecer la cuenta de almacenamiento, el nombre del servicio y el nombre de máquina virtual.
-El script usa cmdlets para máquinas virtuales clásicas.
+Modificar la cuenta de almacenamiento de hello script tooset Hola, nombre del servicio y nombre de máquina virtual.
+script de Hola usa cmdlets para máquinas virtuales clásicas.
 
-Revise el siguiente ejemplo de script, cópielo, modifíquelo según sea necesario, guarde el ejemplo como un archivo de script de PowerShell y, a continuación, ejecute el script.
+Revisar Hola siguiendo el ejemplo de script, cópielo, modifíquelo según sea necesario, guarde el ejemplo de Hola como un archivo de script de PowerShell y, a continuación, ejecute el script de Hola.
 
 ```
-    #Connect to Azure
+    #Connect tooAzure
     Add-AzureAccount
 
-    # settings to change:
+    # settings toochange:
     $wad_storage_account_name = "myStorageAccount"
     $service_name = "myService"
     $vm_name = "myVM"
 
-    #Construct Azure Diagnostics public config and convert to config format
+    #Construct Azure Diagnostics public config and convert tooconfig format
 
     # Collect just system error events:
     $wad_xml_config = "<WadCfg><DiagnosticMonitorConfiguration><WindowsEventLog scheduledTransferPeriod=""PT1M""><DataSource name=""System!* "" /></WindowsEventLog></DiagnosticMonitorConfiguration></WadCfg>"
@@ -185,7 +185,7 @@ Revise el siguiente ejemplo de script, cópielo, modifíquelo según sea necesar
 
     $wad_extension_name = "IaaSDiagnostics"
     $wad_publisher = "Microsoft.Azure.Diagnostics"
-    $wad_version = (Get-AzureVMAvailableExtension -Publisher $wad_publisher -ExtensionName $wad_extension_name).Version # Gets latest version of the extension
+    $wad_version = (Get-AzureVMAvailableExtension -Publisher $wad_publisher -ExtensionName $wad_extension_name).Version # Gets latest version of hello extension
 
     (Get-AzureVM -ServiceName $service_name -Name $vm_name) | Set-AzureVMExtension -ExtensionName $wad_extension_name -Publisher $wad_publisher -PublicConfiguration $wad_public_config -PrivateConfiguration $wad_private_config -Version $wad_version | Update-AzureVM
 ```
@@ -193,5 +193,5 @@ Revise el siguiente ejemplo de script, cópielo, modifíquelo según sea necesar
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Recopilación de registros y métricas de los servicios de Azure](log-analytics-azure-storage.md) para los servicios compatibles de Azure.
-* [Incorporación de soluciones de Log Analytics desde la galería de soluciones](log-analytics-add-solutions.md) para más información sobre los datos.
-* [Búsquedas de registros en Log Analytics](log-analytics-log-searches.md) para analizar los datos.
+* [Habilitar soluciones](log-analytics-add-solutions.md) visión tooprovide datos Hola.
+* [Usar consultas de búsqueda](log-analytics-log-searches.md) tooanalyze datos de saludo.

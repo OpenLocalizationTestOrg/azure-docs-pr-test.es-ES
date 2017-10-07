@@ -1,6 +1,6 @@
 ---
-title: "Incorporación de una nueva cuenta de inquilino de Azure Stack en Azure Active Directory | Microsoft Docs"
-description: "Después de implementar Microsoft Azure Stack Development Kit, tendrá que crear una cuenta de usuario de al menos un inquilino para poder explorar el portal del inquilino."
+title: aaaAdd una nueva cuenta de inquilino de pila de Azure en Azure Active Directory | Documentos de Microsoft
+description: "Después de implementar el Kit de desarrollo de pila de Microsoft Azure, necesitará toocreate al menos una cuenta de usuario de inquilinos para que puedan explorar el portal del inquilino de Hola."
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -14,53 +14,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: helaw
-ms.openlocfilehash: 4401de010dec808f080f5460298bb738ddd39312
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f0cd380d4fc0b52f4e5f6f0c9ef80d3dd0d64443
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Adición de una nueva cuenta de inquilino de Azure Stack en Azure Active Directory
-Después de [implementar Azure Stack Development Kit](azure-stack-run-powershell-script.md), necesitará una cuenta de usuario inquilino para explorar el portal del inquilino y probar las ofertas y los planes. Puede crear una cuenta de inquilino con [Azure Portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) o con [PowerShell](#create-an-azure-stack-tenant-account-using-powershell).
+Después de [implementar Hola Kit de desarrollo de Azure pila](azure-stack-run-powershell-script.md), necesitará una cuenta de usuario inquilino para que pueda explorar el portal del inquilino de Hola y sus ofertas y planes de pruebas. Puede crear una cuenta de inquilino por [utilizando Hola portal de Azure](#create-an-azure-stack-tenant-account-using-the-azure-portal) o [con PowerShell](#create-an-azure-stack-tenant-account-using-powershell).
 
-## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Creación de una cuenta de inquilino de Azure Stack con el Portal de Azure+
-Debe tener una suscripción de Azure para usar el Portal de Azure.
+## <a name="create-an-azure-stack-tenant-account-using-hello-azure-portal"></a>Crear una cuenta de inquilino de Azure pila utilizando Hola portal de Azure
+Debe tener un hello toouse de suscripción de Azure portal de Azure.
 
-1. Inicie sesión en [Azure](http://manage.windowsazure.com).
+1. Inicie sesión demasiado[Azure](http://manage.windowsazure.com).
 2. En la barra de navegación izquierda de Microsoft Azure, haga clic en **Active Directory**.
-3. En la lista de directorios, haga clic en el directorio que desea usar para Azure Stack o cree uno nuevo.
+3. En la lista de directorios de hello, haga clic en directorio de Hola que desee toouse para la pila de Azure, o cree uno nuevo.
 4. En este directorio, haga clic en **Usuarios**.
 5. Haga clic en **Agregar usuario**.
-6. En el **Asistente para agregar usuario**, en la lista **Tipo de usuario**, elija **nuevo usuario de la organización**.
-7. En el cuadro **Nombre de usuario** escriba un nombre para el usuario.
-8. En el asistente **@** , seleccione la entrada apropiada.
-9. Haga clic en la flecha siguiente.
-10. En la página **Perfil de usuario** del asistente, escriba un **Nombre**, **Apellidos** y **Nombre para mostrar**.
-11. En la lista **Rol**, seleccione **Usuario**.
-12. Haga clic en la flecha siguiente.
-13. En la página **Obtener contraseña temporal**, haga clic en **Crear**.
-14. Copie la **nueva contraseña**.
-15. Inicie sesión en Microsoft Azure con la nueva cuenta. Cambie la contraseña cuando se le solicite.
-16. Inicie sesión en `https://portal.local.azurestack.external` con la nueva cuenta para ver el portal del inquilino.
+6. Hola **para agregar un usuario** asistente, hello **tipo de usuario** elija **nuevo usuario de su organización**.
+7. Hola **nombre de usuario** , escriba un nombre de usuario de Hola.
+8. Hola  **@**  cuadro, seleccione la entrada adecuada de Hola.
+9. Haga clic en la flecha siguiente Hola.
+10. Hola **perfil de usuario** página del Asistente de hello, escriba un **nombre**, **apellidos**, y **nombre para mostrar**.
+11. Hola **rol** elija **usuario**.
+12. Haga clic en la flecha siguiente Hola.
+13. En hello **obtener contraseña temporal** página, haga clic en **crear**.
+14. Hola copia **nueva contraseña**.
+15. Inicie sesión en tooMicrosoft Azure con la nueva cuenta de hello. Cambiar la contraseña de hello cuando se le solicite.
+16. Inicie sesión demasiado`https://portal.local.azurestack.external` con hello nueva toosee Hola inquilino portal de la cuenta.
 
 ## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Creación de una cuenta de inquilino de Azure Stack con PowerShell
-Si no tiene una suscripción de Azure, no puede usar Azure Portal para agregar una cuenta de usuario de inquilino. En este caso, puede usar el módulo Azure Active Directory para Windows PowerShell.
+Si no tiene una suscripción de Azure, no se puede usar hello tooadd portal Azure una cuenta de usuario de inquilino. En este caso, puede usar hello Azure módulo Active Directory para Windows PowerShell en su lugar.
 
 > [!NOTE]
-> Si usa una cuenta Microsoft (Live ID) para implementar Azure Stack Development Kit, no se puede usar PowerShell de AAD para crear la cuenta de inquilino. 
+> Si usas Microsoft Account (Live ID) toodeploy Kit de desarrollo de pila de Azure, no puede usar la cuenta de inquilino de AAD PowerShell toocreate. 
 > 
 > 
 
-1. Instale el [Ayudante para el inicio de sesión de Microsoft Online Services para profesionales de TI (RTW)](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
-2. Instale el [módulo de Azure Active Directory para Windows PowerShell (versión de 64 bits)](http://go.microsoft.com/fwlink/p/?linkid=236297) y ábralo.
-3. Ejecute los siguientes cmdlets:
+1. Instalar hello [Microsoft Online Services Sign-In Assistant para profesionales de TI RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
+2. Instalar hello [Azure módulo Active Directory para Windows PowerShell (versión de 64 bits)](http://go.microsoft.com/fwlink/p/?linkid=236297) y ábralo.
+3. Ejecute hello siguientes cmdlets:
 
     ```powershell
-    # Provide the AAD credential you use to deploy Azure Stack Development Kit
+    # Provide hello AAD credential you use toodeploy Azure Stack Development Kit
 
             $msolcred = get-credential
 
-    # Add a tenant account "Tenant Admin <username>@<yourdomainname>" with the initial password "<password>".
+    # Add a tenant account "Tenant Admin <username>@<yourdomainname>" with hello initial password "<password>".
 
             connect-msolservice -credential $msolcred
             $user = new-msoluser -DisplayName "Tenant Admin" -UserPrincipalName <username>@<yourdomainname> -Password <password>
@@ -68,6 +68,6 @@ Si no tiene una suscripción de Azure, no puede usar Azure Portal para agregar u
 
     ```
 
-1. Inicie sesión en Microsoft Azure con la nueva cuenta. Cambie la contraseña cuando se le solicite.
-2. Inicie sesión en `https://portal.local.azurestack.external` con la nueva cuenta para ver el portal del inquilino.
+1. Inicie sesión en tooMicrosoft Azure con la nueva cuenta de hello. Cambiar la contraseña de hello cuando se le solicite.
+2. Inicie sesión en demasiado`https://portal.local.azurestack.external` con hello nueva toosee Hola inquilino portal de la cuenta.
 

@@ -1,6 +1,6 @@
 ---
-title: "Límites y configuración de Logic Apps | Microsoft Docs"
-description: "Información general de los límites de servicio y los valores de configuración disponibles para Logic Apps."
+title: "aaaLogic aplicación límites y configuración | Documentos de Microsoft"
+description: "Información general de los límites de servicio de Hola y valores de configuración disponibles para las aplicaciones de la lógica."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: da23bd9fe71a0c41bc236b55bc9f56e123a9d77a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 739509afe5c9a7b7e946ba3571951264127e5297
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logic-app-limits-and-configuration"></a>Límites y configuración de Logic Apps
 
-A continuación se muestra información sobre los límites actuales y los detalles de configuración de Azure Logic Apps.
+A continuación encontrará información sobre los límites actuales de Hola y detalles de configuración para las aplicaciones lógicas de Azure.
 
 ## <a name="limits"></a>límites
 
@@ -47,22 +47,22 @@ Los límites de una única solicitud HTTP o llamada a un conector son los siguie
 
 |Nombre|Límite|Notas|
 |----|----|----|
-|Número de reintentos|10| El valor predeterminado es 4. Se puede configurar con el [parámetro de directiva de reintento](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Retraso máximo entre reintentos|1 hora|Se puede configurar con el [parámetro de directiva de reintento](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Retraso mínimo entre reintentos|5 segundos|Se puede configurar con el [parámetro de directiva de reintento](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Número de reintentos|10| El valor predeterminado es 4. Puede configurar con hello [vuelva a intentar el parámetro de directiva](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Retraso máximo entre reintentos|1 hora|Puede configurar con hello [vuelva a intentar el parámetro de directiva](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Retraso mínimo entre reintentos|5 segundos|Puede configurar con hello [vuelva a intentar el parámetro de directiva](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
 
 ### <a name="run-duration-and-retention"></a>Retención y duración de ejecución
 
-Los límites de ejecución de una única aplicación lógica son los siguientes.
+Siguiente es límites de Hola para ejecutar una aplicación de lógica única.
 
 |Nombre|Límite|Notas|
 |----|----|----|
 |Duración de la ejecución|90 días||
-|Retención de almacenamiento|90 días|A partir de la hora de inicio de la ejecución|
+|Retención de almacenamiento|90 días|A partir de hello inicio tiempo de ejecución|
 |Intervalo de periodicidad mínima|1 segundo|| 15 segundos para aplicaciones lógicas con un plan de App Service
 |Intervalo de periodicidad máxima|500 días||
 
-Si espera superar la duración de ejecución o los límites de retención de almacenamiento del flujo de procesamiento normal, [póngase en contacto con nosotros](mailto://logicappsemail@microsoft.com) para que podamos ayudarle con sus necesidades.
+Si espera que tooexceed ejecutar duración o almacenamiento de los límites de retención en el flujo de procesamiento normal, [en contacto con nosotros](mailto://logicappsemail@microsoft.com) por lo que podemos ayudarle con sus requisitos.
 
 
 ### <a name="looping-and-debatching-limits"></a>Límites de bucle y anulación de procesamiento por lotes
@@ -71,10 +71,10 @@ Los límites de ejecución de una única aplicación lógica son los siguientes.
 
 |Nombre|Límite|Notas|
 |----|----|----|
-|Elementos ForEach|100 000|Puede usar la [acción de consulta](../connectors/connectors-native-query.md) para filtrar matrices más grandes, según sea necesario.|
+|Elementos ForEach|100 000|Puede usar hello [consultar acción](../connectors/connectors-native-query.md) matrices mayores de toofilter según sea necesario|
 |Iteraciones Until|5.000||
 |Elementos SplitOn|100 000||
-|Paralelismo de ForEach|50| El valor predeterminado es 20. Puede establecerlo en una instrucción foreach secuencial agregando `"operationOptions": "Sequential"` a la acción `foreach` o en un nivel específico de paralelismo mediante `runtimeConfiguration`.|
+|Paralelismo de ForEach|50| El valor predeterminado es 20. Puede establecer foreach secuencial tooa agregando `"operationOptions": "Sequential"` toohello `foreach` acción o un nivel específico de paralelismo mediante`runtimeConfiguration`|
 
 
 ### <a name="throughput-limits"></a>Límites de rendimiento
@@ -84,12 +84,12 @@ Los límites para una instancia de aplicación lógica única son los siguientes
 |Nombre|Límite|Notas|
 |----|----|----|
 |Ejecuciones de acciones cada 5 minutos |100 000|Puede distribuir cargas de trabajo entre varias aplicaciones, según sea necesario.|
-|Llamadas salientes simultáneas de acciones |Aproximadamente 2500|Reducir el número de solicitudes simultáneas o reducir la duración según sea necesario|
-|Llamadas entrantes simultáneas de puntos de conexión en tiempo de ejecución |~1000|Reducir el número de solicitudes simultáneas o reducir la duración según sea necesario|
+|Llamadas salientes simultáneas de acciones |Aproximadamente 2500|Reducir el número de solicitudes simultáneas o reducir la duración de hello según sea necesario|
+|Llamadas entrantes simultáneas de puntos de conexión en tiempo de ejecución |~1000|Reducir el número de solicitudes simultáneas o reducir la duración de hello según sea necesario|
 |Llamadas de lectura de punto de conexión en tiempo de ejecución por 5 minutos |60 000|Puede distribuir cargas de trabajo entre varias aplicaciones, según sea necesario.|
 |Llamadas de invocación de punto de conexión en tiempo de ejecución por 5 minutos |45 000|Puede distribuir cargas de trabajo entre varias aplicaciones, según sea necesario.|
 
-Si espera superar este límite en el procesamiento normal o desea ejecutar una prueba de carga que puede exceder este límite durante un tiempo, [póngase en contacto con nosotros](mailto://logicappsemail@microsoft.com) para que podamos ayudarle con sus requisitos.
+Si espera que tooexceed este límite en el procesamiento normal o las pruebas de carga de deseos toorun que puede superar este límite durante un período de tiempo, [en contacto con nosotros](mailto://logicappsemail@microsoft.com) por lo que podemos ayudarle con sus requisitos.
 
 ### <a name="definition-limits"></a>Límites de definición
 
@@ -97,41 +97,41 @@ Los límites de una definición de aplicación lógica única son los siguientes
 
 |Nombre|Límite|Notas|
 |----|----|----|
-|Acciones por flujo de trabajo|500|Puede agregar flujos de trabajo anidados para ampliar este límite según sea necesario|
-|Niveles de anidamiento de acciones permitidos|8|Puede agregar flujos de trabajo anidados para ampliar este límite según sea necesario|
+|Acciones por flujo de trabajo|500|Puede agregar flujos de trabajo anidados tooextend este límite según sea necesario|
+|Niveles de anidamiento de acciones permitidos|8|Puede agregar flujos de trabajo anidados tooextend este límite según sea necesario|
 |Flujos de trabajo por región y suscripción|1000||
 |Desencadenadores por flujo de trabajo|10||
 |Límite de cambio de ámbito de casos|25||
 |Número de variables por flujo de trabajo|250||
 |Número máximo de caracteres por expresión|8192||
 |Tamaño máximo de `trackedProperties` expresado en caracteres|16 000|
-|`action`/`trigger` |80||
-|`description` |256||
+|`action`/`trigger`|80||
+|`description`|256||
 |`parameters` limit|50||
 |`outputs` limit|10||
 
 ### <a name="integration-account-limits"></a>Límites de cuenta de integración
 
-Los límites para los artefactos agregados a la cuenta de integración son los siguientes
+Siguiente es límites artefactos agregado toointegration cuenta
 
 |Nombre|Límite|Notas|
 |----|----|----|
-|Esquema|8 MB|Puede usar el [identificador URI del blob](logic-apps-enterprise-integration-schemas.md) para cargar archivos mayores de 2 MB |
+|Esquema|8 MB|Puede usar [URI de blob](logic-apps-enterprise-integration-schemas.md) tooupload archivos superiores a 2 MB |
 |Asignación (archivo XSLT)|2 MB| |
 |Llamadas de lectura de punto de conexión en tiempo de ejecución por 5 minutos |60 000|Puede distribuir cargas de trabajo entre varias cuentas según sea necesario.|
 |Llamadas de invocación de punto de conexión en tiempo de ejecución por 5 minutos |45 000|Puede distribuir cargas de trabajo entre varias cuentas según sea necesario.|
 |Llamadas de seguimiento de punto de conexión en tiempo de ejecución por 5 minutos |45 000|Puede distribuir cargas de trabajo entre varias cuentas según sea necesario.|
-|Llamadas simultáneas de bloqueo de puntos de conexión en tiempo de ejecución |~1000|Reducir el número de solicitudes simultáneas o reducir la duración según sea necesario|
+|Llamadas simultáneas de bloqueo de puntos de conexión en tiempo de ejecución |~1000|Reducir el número de solicitudes simultáneas o reducir la duración de hello según sea necesario|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>Tamaño de mensaje de protocolos B2B (AS2, X12 y EDIFACT)
 
-Los límites de los protocolos B2B son los siguientes
+Siguiente es límites de Hola para protocolos B2B
 
 |Nombre|Límite|Notas|
 |----|----|----|
-|AS2|50 MB|Aplicable para descodificar y codificar|
-|X12|50 MB|Aplicable para descodificar y codificar|
-|EDIFACT|50 MB|Aplicable para descodificar y codificar|
+|AS2|50 MB|Toodecode aplicable y codificar|
+|X12|50 MB|Toodecode aplicable y codificar|
+|EDIFACT|50 MB|Toodecode aplicable y codificar|
 
 ## <a name="configuration"></a>Configuración
 
@@ -139,7 +139,7 @@ Los límites de los protocolos B2B son los siguientes
 
 #### <a name="logic-app-service"></a>Servicio de aplicación lógica
 
-Las llamadas realizadas directamente desde una aplicación lógica (es decir, a través de [HTTP](../connectors/connectors-native-http.md) o [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)) o de otras solicitudes HTTP procederán de la dirección IP especificada en la siguiente lista:
+Las llamadas realizadas desde una aplicación de lógica directamente (es decir, a través de [HTTP](../connectors/connectors-native-http.md) o [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)) o las demás solicitudes HTTP proceden de hello dirección IP especificada en hello lista siguiente:
 
 |Región de aplicación lógica|IP de salida|
 |-----|----|
@@ -168,7 +168,7 @@ Las llamadas realizadas directamente desde una aplicación lógica (es decir, a 
 
 #### <a name="connectors"></a>Conectores
 
-Las llamadas realizadas desde un [conector](../connectors/apis-list.md) proceden de la dirección IP especificada en la siguiente lista:
+Las llamadas realizadas desde una [conector](../connectors/apis-list.md) proceden de hello dirección IP especificada en hello lista siguiente:
 
 |Región de aplicación lógica|IP de salida|
 |-----|----|
@@ -198,7 +198,7 @@ Las llamadas realizadas desde un [conector](../connectors/apis-list.md) proceden
 
 ## <a name="next-steps"></a>Pasos siguientes  
 
-- Para comenzar con las aplicaciones lógicas, siga el tutorial [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).  
+- tooget partió Logic Apps, siga hello [crear una aplicación de lógica](../logic-apps/logic-apps-create-a-logic-app.md) tutorial.  
 - [Ejemplos de aplicaciones lógicas y escenarios comunes](../logic-apps/logic-apps-examples-and-scenarios.md)
 - [Con las aplicaciones lógicas puede automatizar procesos empresariales.](http://channel9.msdn.com/Events/Build/2016/T694) 
-- [Obtenga información acerca de cómo integrar sus sistemas con Aplicaciones lógicas](http://channel9.msdn.com/Events/Build/2016/P462)
+- [Obtenga información acerca de cómo tooIntegrate los sistemas con las aplicaciones lógicas](http://channel9.msdn.com/Events/Build/2016/P462)

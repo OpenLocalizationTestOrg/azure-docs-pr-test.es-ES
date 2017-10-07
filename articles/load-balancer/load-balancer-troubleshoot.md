@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de Azure Load Balancer | Microsoft Docs"
+title: aaaTroubleshoot equilibrador de carga de Azure | Documentos de Microsoft
 description: "Solución de problemas conocidos de Azure Load Balancer"
 services: load-balancer
 documentationcenter: na
@@ -14,122 +14,122 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/10/2017
 ms.author: kumud
-ms.openlocfilehash: df5c836abbf09889f4859170359c0ee6c1b03378
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 56b73fcbf0bbf18cedfd113a280cfafa2a3dc9f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Solución de problemas de Azure Load Balancer
 
-En esta página se proporcionan soluciones de problemas para preguntas frecuentes sobre Azure Load Balancer. Cuando el equilibrador de carga no tenga conectividad, los síntomas más comunes son los siguientes: 
-- Las máquinas virtuales detrás del equilibrador de carga no responden a los sondeos de estado 
-- Las máquinas virtuales detrás del equilibrador de carga no responden al tráfico del puerto configurado
+En esta página se proporcionan soluciones de problemas para preguntas frecuentes sobre Azure Load Balancer. Cuando Hola conectividad de equilibrador de carga no está disponible, síntomas de hello más comunes son los siguientes: 
+- Máquinas virtuales detrás de equilibrador de carga no están respondiendo toohealth sondeos de Hola 
+- Máquinas virtuales detrás de hello equilibrador de carga no están respondiendo toohello tráfico en el puerto de hello configurado
 
-## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Síntoma: las máquinas virtuales detrás del equilibrador de carga no responden a los sondeos de estado
-Para que los servidores back-end participen en el conjunto del equilibrador de carga, deben pasar la comprobación del sondeo. Para más información sobre los sondeos de estado, consulte [Descripción de los sondeos del equilibrador de carga](load-balancer-custom-probe-overview.md). 
+## <a name="symptom-vms-behind-hello-load-balancer-are-not-responding-toohealth-probes"></a>Síntoma: Las máquinas virtuales detrás de equilibrador de carga no están respondiendo toohealth sondeos de Hola
+Para tooparticipate de servidores de back-end de hello en el conjunto de equilibrador de carga de hello, debe pasar Hola sondeo comprobación. Para más información sobre los sondeos de estado, consulte [Descripción de los sondeos del equilibrador de carga](load-balancer-custom-probe-overview.md). 
 
-Es posible que las máquinas virtuales del grupo de back-end del equilibrador de carga no responda a los sondeos por alguno de los motivos siguientes: 
+grupo de back-end de equilibrador de carga de Hello las máquinas virtuales posible que no responda toohello sondeos tooany vencimiento de hello siguientes motivos: 
 - Que una máquina virtual del grupo de back-end del equilibrador de carga esté dañada 
-- Que una máquina virtual del grupo de back-end del equilibrador de carga no escuche en el puerto de sondeo 
-- Que el firewall o un grupo de seguridad de red esté bloqueando el puerto de las máquinas virtuales del grupo de back-end del equilibrador de carga 
+- Máquina virtual no está escuchando en el puerto de sondeo de hello grupo de back-end del equilibrador de carga 
+- Firewall o un grupo de seguridad de red está bloqueando el puerto Hola Hola grupo back-end de equilibrador de carga las máquinas virtuales 
 - Otros errores de configuración del equilibrador de carga
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Motivo 1: una máquina virtual del grupo de back-end del equilibrador de carga está dañada 
 
 **Validación y resolución**
 
-Para resolver este problema, inicie sesión en las máquinas virtuales participantes, compruebe si el estado de la máquina virtual es correcto y responde a **PsPing** o **TCPing** de otra máquina virtual del grupo. Si la máquina virtual está dañada o no responde al sondeo, debe corregir el problema y reparar la máquina virtual para que pueda volver a participar en el equilibrio de carga.
+tooresolve este problema, inicie sesión en toohello participan de las máquinas virtuales y compruebe si Hola estado de la máquina virtual está en buen estado así como responder demasiado**PsPing** o **TCPing** desde otra máquina virtual en el grupo de Hola. Si Hola VM está en mal estado, o es no se puede toorespond toohello sondeo, debe corregir el problema de Hola y obtener Hola VM hacer la copia de estado correcto de tooa para poder participar en el equilibrio de carga.
 
-### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>Motivo 2: una máquina virtual del grupo de back-end del equilibrador de carga no escucha en el puerto de sondeo
-Si la máquina virtual está correcta, pero no responde al sondeo, una razón podría ser que el puerto de sondeo no esté abierto en la máquina virtual participante o que esta no escuche en ese puerto.
+### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-hello-probe-port"></a>Causa 2: Grupo de back-end de equilibrador de carga VM no está escuchando en el puerto de sondeo de Hola
+Si Hola VM está en buen estado, pero no responde toohello sondeo, una posible razón podría ser que no está abierto en hello participa VM puerto de sondeo de Hola u Hola VM no está escuchando en ese puerto.
 
 **Validación y resolución**
 
-1. Inicie sesión en la máquina virtual de back-end. 
-2. Abra un símbolo del sistema y ejecute el siguiente comando para validar que existe una aplicación de escucha en el puerto de sondeo:   
+1. Inicie sesión en toohello back-end de máquina virtual. 
+2. Abra un símbolo del sistema y ejecute hello después toovalidate comando hay una aplicación escuchando en el puerto de sondeo de hello:   
             netstat -an
-3. Si el estado del puerto no aparece como **LISTENING** (ESCUCHANDO), configure el puerto correcto. 
+3. Si no aparece como el estado del puerto hello **escucha**, configurar puerto apropiado Hola. 
 4. Como alternativa, seleccione otro puerto que aparezca como **LISTENING** (ESCUCHANDO) y actualice en consecuencia la configuración del equilibrador de carga.              
 
-###<a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Motivo 3: el firewall o un grupo de seguridad de red está bloqueando el puerto de las máquinas virtuales del grupo de back-end del equilibrador de carga  
-Si el firewall de la máquina virtual está bloqueando el puerto de sondeo, o uno o varios grupos de seguridad de red configurados en la subred o en la máquina virtual no permite que el sondeo alcance el puerto, la máquina virtual no puede responder al sondeo de estado.          
+###<a name="cause-3-firewall-or-a-network-security-group-is-blocking-hello-port-on-hello-load-balancer-backend-pool-vms"></a>Causa 3: Firewall o un grupo de seguridad de red está bloqueando puerto hello en el grupo back-end de equilibradores de carga hello las máquinas virtuales  
+Si firewall de hello en hello que VM está bloqueando el puerto de sondeo de Hola o uno o varios grupos de seguridad de red configurados en la subred de Hola o en Hola de máquina virtual, no está permitiendo el puerto de hello sondeo tooreach hello, Hola VM es sondeo de estado no se puede toorespond toohello.          
 
 **Validación y resolución**
 
-* Si el firewall está habilitado, compruebe si está configurado para permitir el puerto de sondeo. De lo contrario, configure el firewall para permitir el tráfico en el puerto de sondeo y pruebe de nuevo. 
-* En la lista de grupos de seguridad de red, compruebe si el tráfico entrante o saliente del puerto de sondeo tiene interferencias. 
-* Además, compruebe si hay una regla de grupos de seguridad de red **Deny All** en la NIC de la máquina virtual o la subred que tenga una prioridad mayor que la regla predeterminada que permite los sondeos de equilibrio de carga y tráfico (los grupos de seguridad de red deben permitir la dirección IP del equilibrador de carga 168.63.129.16). 
-* Si cualquiera de estas reglas bloquea el tráfico del sondeo, elimine y vuelva a configurar las reglas para permitirlo.  
-* Pruebe si la máquina virtual ahora responde a los sondeos de estado. 
+* Si está habilitado firewall de hello, compruebe si se configura el puerto de sondeo de tooallow Hola. Si no es así, configurar el tráfico de tooallow de firewall de hello en el puerto de sondeo de Hola y pruebe de nuevo. 
+* En la lista Hola de grupos de seguridad de red, compruebe si el tráfico entrante o saliente hello en el puerto de sondeo de hello tiene interferencias. 
+* Además, compruebe si un **Deny All** regla en hello NIC de hello VM de grupos de seguridad de red u Hola subred que tiene una prioridad más alta que la regla predeterminada de Hola que permite a los sondeos LB & tráfico (grupos de seguridad de red deben permitir dirección IP del equilibrador de carga de 168.63.129.16). 
+* Si cualquiera de estas reglas están bloqueando el tráfico de sondeo de hello, quitar y volver a configurar el tráfico de sondeo de hello reglas tooallow Hola.  
+* Prueba si Hola VM ahora inició responde sondeos de estado de toohello. 
 
 ### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Motivo 4: otros errores de configuración del equilibrador de carga
-Si parece que los motivos anteriores se han validado y resuelto correctamente, y aun así la máquina virtual de back-end sigue sin responder al sondeo de estado, compruebe manualmente la conectividad y recopile algunos seguimientos para entenderla.
+Si Hola a todos causas anteriores parecen toobe validan y resolver correctamente y back-end de hello VM todavía no responde toohello sondeo de estado, a continuación, manualmente comprobar la conectividad y recopilar seguimientos toounderstand Hola conectividad.
 
 **Validación y resolución**
 
-* Use **Psping** de una de las otras máquinas virtuales dentro de la red virtual para probar la respuesta del puerto de sondeo (ejemplo: .\psping.exe -t 10.0.0.4:3389) y registre los resultados. 
-* Use **TCPing** de una de las otras máquinas virtuales dentro de la red virtual para probar la respuesta del puerto de sondeo (ejemplo: .\tcping.exe 10.0.0.4 3389) y registre los resultados. 
+* Use **Psping** desde uno de hello otras máquinas virtuales dentro de Hola respuesta del puerto de análisis de red virtual tootest hello (ejemplo:.\psping.exe -t 10.0.0.4:3389) y registrar los resultados. 
+* Use **TCPing** desde uno de hello otras máquinas virtuales dentro de Hola respuesta del puerto de análisis de red virtual tootest hello (ejemplo:.\tcping.exe 10.0.0.4 3389) y registrar los resultados. 
 * Si no se recibe respuesta con estas pruebas de ping:
-    - Ejecute un seguimiento Netsh en la máquina virtual del grupo de back-end de destino y en otra máquina virtual de prueba de la misma red virtual simultáneamente. Ahora, ejecute una prueba de PsPing durante algún tiempo, recopile seguimientos de red y detenga la prueba. 
-    - Analizar la captura de red y observe si hay paquetes entrantes y salientes relacionados con la consulta de ping. 
-        - Si no se observan paquetes entrantes se observan en la máquina virtual del grupo de back-end, puede haber grupos de seguridad de red o una configuración incorrecta de UDR que bloquee el tráfico. 
-        - Si no se observan paquetes salientes en la máquina virtual del grupo de back-end, la máquina virtual podría tener otros problemas ajenos (por ejemplo, que la aplicación bloquee el puerto de sondeo). 
-    - Compruebe si los paquetes de sondeo se fuerzan a otro destino (probablemente mediante la configuración de UDR) antes de alcanzar el equilibrador de carga. Esto puede hacer que el tráfico nunca alcance la máquina virtual de back-end. 
-* Cambiar el tipo de sondeo (por ejemplo, de HTTP a TCP) y configure el puerto correspondiente en las ACL de los grupos de seguridad de red y firewall para comprobar si el problema está relacionado con la configuración de respuesta del sondeo. Para más información acerca de la configuración del sondeo de estado, consulte [Endpoint Load Balancing health probe configuration](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/) (Configuración del sondeo de estado en el punto de conexión del equilibrador de carga).
+    - Ejecutar un simultáneas Netsh realizar el seguimiento de grupo back-end de destino Hola VM y otra máquina virtual de prueba de hello mismo red virtual. Ahora, ejecute una prueba de PsPing durante algún tiempo, recopilar algunos seguimientos de red y, a continuación, detener la prueba de Hola. 
+    - Analizar la captura de red de Hola y ver si existen ambos consulta de ping de toohello relacionados de paquetes entrantes y salientes. 
+        - Si no los paquetes entrantes se observan en el grupo de back-end de hello VM, potencialmente hay grupos de seguridad de red o el tráfico de hello bloqueo UDR mal configurada. 
+        - Si no los paquetes salientes se observan en el grupo de back-end de hello VM, Hola VM debe toobe comprueba los problemas no relacionados (para eample, puerto de sondeo de hello bloqueo de aplicación). 
+    - Compruebe si paquetes de sondeo de saludo se están tooanother forzada destino (posiblemente a través de configuración de UDR) antes de llegar a equilibrador de carga de Hola. Esto puede causar Hola tráfico toonever alcance Hola back-end de máquina virtual. 
+* Cambiar tipo de sondeo de hello (por ejemplo, HTTP tooTCP) y configurar puerto correspondiente de hello en grupos de seguridad de red ACL y firewall toovalidate si el problema de hello es con la configuración de Hola de respuesta de sondeo. Para más información acerca de la configuración del sondeo de estado, consulte [Endpoint Load Balancing health probe configuration](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/) (Configuración del sondeo de estado en el punto de conexión del equilibrador de carga).
 
-## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Síntoma: las máquinas virtuales detrás del equilibrador de carga no responden al tráfico del puerto de datos configurado
+## <a name="symptom-vms-behind-load-balancer-are-not-responding-tootraffic-on-hello-configured-data-port"></a>Síntoma: Máquinas virtuales detrás de equilibrador de carga no están respondiendo tootraffic en hello configura el puerto de datos
 
-Si una máquina virtual del grupo de back-end aparece como correcta y responde a los sondeos de estado, pero aun así no participa en el equilibrio de carga o no responde al tráfico de datos, puede deberse a alguno de los motivos siguientes: 
-* Que una máquina virtual del grupo de back-end del equilibrador de carga no escuche en el puerto de datos 
-* Que un grupo de seguridad de red esté bloqueando el puerto de la máquina virtual del grupo de back-end del equilibrador de carga  
-* Que se acceda al equilibrador de carga desde la misma máquina virtual y NIC 
-* Que se acceda a la VIP del equilibrador de carga en Internet desde la máquina virtual del grupo de back-end del equilibrador de carga participante 
+Si un grupo back-end VM aparece como correcto y responde toohello comprobaciones de mantenimiento, pero todavía no participa de equilibrio de carga de hello o no responde toohello el tráfico de datos, es posible due tooany de hello siguientes motivos: 
+* Máquina virtual no está escuchando en el puerto de datos de Hola de grupo de back-end de equilibrador de carga 
+* Grupo de seguridad de red está bloqueando el puerto de hello en hello grupo back-end de equilibrador de carga VM  
+* Equilibrador de carga de tener acceso a Hola Hola misma máquina virtual y la NIC 
+* Obtiene acceso a Hola VIP de equilibrador de carga de Internet desde Hola participa grupo back-end de equilibrador de carga VM 
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Motivo 1: una máquina virtual del grupo de back-end del equilibrador de carga no escucha en el puerto de datos 
-Si una máquina virtual no responde al tráfico de datos, puede deberse a que el puerto de destino no esté abierto en la máquina virtual participante, o a que la máquina virtual no escuche en ese puerto. 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-hello-data-port"></a>Causa 1: Grupo de back-end de equilibrador de carga VM no está escuchando en el puerto de datos de Hola 
+Si una máquina virtual no responde toohello el tráfico de datos, puede ser porque el puerto de destino de hello no está abierto en hello participa VM o, Hola VM no está escuchando en ese puerto. 
 
 **Validación y resolución**
 
-1. Inicie sesión en la máquina virtual de back-end. 
-2. Abra un símbolo del sistema y ejecute el siguiente comando para validar que existe una aplicación de escucha en el puerto de datos:  
+1. Inicie sesión en toohello back-end de máquina virtual. 
+2. Abra un símbolo del sistema y ejecute hello después toovalidate comando hay una aplicación escuchando en el puerto de datos de hello:  
             netstat -an 
-3. Si el puerto no aparece con el estado "LISTENING" (ESCUCHANDO), configure el puerto de escucha 
-4. Si el puerto está marcado como Listening (Escuchando), compruebe si hay problemas en la aplicación de destino de ese puerto. 
+3. Si no aparece el puerto de hello con estado "Escucha", configurar el puerto de escucha apropiado de Hola 
+4. Si puerto Hola se marca como escuchar, consulte aplicación de destino de hello en ese puerto para los posibles problemas. 
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Motivo 2: un grupo de seguridad de red está bloqueando el puerto de la máquina virtual del grupo de back-end del equilibrador de carga  
+### <a name="cause-2-network-security-group-is-blocking-hello-port-on-hello-load-balancer-backend-pool-vm"></a>Causa 2: Grupo de seguridad de red está bloqueando el puerto de hello en hello grupo back-end de equilibrador de carga VM  
 
-Si uno o varios grupos de seguridad de red configurados en la subred o en la máquina virtual bloquean la dirección IP de origen o el puerto, la máquina virtual no puede responder.
+Si uno o varios grupos de seguridad configurados en la subred de Hola o en hello VM de red, está bloqueando IP de origen de Hola o puerto, hello VM es toorespond no se puede.
 
-* Enumere los grupos de seguridad de red configurados en la máquina virtual de back-end. Para más información, consulte:
-    -  [Administración de grupos de seguridad de red mediante el portal](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
+* Lista de grupos de seguridad de red de hello configurados en hello back-end de máquina virtual. Para más información, consulte:
+    -  [Administrar grupos de seguridad de red mediante Hola Portal](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
     -  [Administración de grupos de seguridad de red mediante PowerShell](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
-* En la lista de grupos de seguridad de red, compruebe si:
-    - el tráfico entrante o saliente del puerto de datos tiene interferencias. 
-    - hay una regla de grupos de seguridad de red **Deny All** en la NIC de la máquina virtual o la subred que tenga una prioridad mayor que la regla predeterminada que permite los sondeos del equilibrador de carga y de tráfico (los grupos de seguridad de red deben permitir la dirección IP del equilibrador de carga 168.63.129.16, que es el puerto de sondeo) 
-* Si cualquiera de estas reglas bloquea el tráfico, elimine y vuelva a configurar las reglas para permitir el tráfico de datos.  
-* Pruebe si la máquina virtual ahora responde a los sondeos de estado.
+* En la lista Hola de grupos de seguridad de red, compruebe si:
+    - el tráfico entrante o saliente Hello en el puerto de datos de hello tiene interferencias. 
+    - un **Deny All** regla de grupo de seguridad de red en hello NIC de subred VM u Hola Hola que tiene una prioridad más alta de esa regla predeterminada de Hola que permite sondeos del equilibrador de carga y el tráfico de (grupos de seguridad de red deben permitir dirección IP del equilibrador de carga de 168.63.129.16, que es el puerto de sondeo) 
+* Si cualquiera de las reglas de hello están bloqueando el tráfico de hello, quitar y volver a configurar esas tráfico de datos de reglas tooallow Hola.  
+* Probar si Hola VM ahora ha iniciado el sondeo de estado de toorespond toohello.
 
-### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Motivo 3: acceso al equilibrador de carga desde la misma máquina virtual e interfaz de red 
+### <a name="cause-3-accessing-hello-load-balancer-from-hello-same-vm-and-network-interface"></a>Causa 3: Obtener acceso a Hola equilibrador de carga de hello misma interfaz de red y máquinas virtuales 
 
-Que la aplicación hospedada en la máquina virtual de back-end del equilibrador de carga intente acceder a otra aplicación que se hospeda en la misma máquina virtual de back-end a través de la misma interfaz de red es un escenario incompatible y producirá un error. 
+Si la aplicación hospedada en hello back-end de máquina virtual de un equilibrador de carga está intentando tooaccess otra aplicación hospedada en hello mismo back-end de máquina virtual a través de hello misma interfaz de red, que es un escenario no compatible y se producirá un error. 
 
-**Resolución**: Este problema se puede resolver por una de las siguientes vías:
+**Resolución** para resolver este problema a través de uno de los siguientes métodos de hello:
 * Configure las máquinas virtuales del grupo de back-end por separado para cada aplicación. 
-* Configure la aplicación en máquinas virtuales de NIC doble para que cada aplicación use su propia interfaz de red y dirección IP. 
+* Configurar aplicación hello en máquinas virtuales de NIC dual para que cada aplicación estaba usando su propia interfaz de red y la dirección IP. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>Motivo 4: acceso a la dirección VIP del equilibrador de carga interno desde la máquina virtual del grupo de back-end del equilibrador de carga participante
+### <a name="cause-4-accessing-hello-internal-load-balancer-vip-from-hello-participating-load-balancer-backend-pool-vm"></a>Causa 4: Obtener acceso a Hola VIP de equilibrador de carga interno desde Hola participa grupo back-end de equilibrador de carga VM
 
-Si se configura una dirección VIP para el equilibrador de carga interno en una red virtual y una de las máquinas virtuales de back-end participantes intenta acceder a ella, se produce un error. Se trata de un escenario no admitido.
-**Resolución**: evalúe Application Gateway u otros servidores proxy (por ejemplo, nginx o haproxy) para que admitan esta variante de escenario. Para más información acerca de Application Gateway, consulte [Introducción a Application Gateway](../application-gateway/application-gateway-introduction.md)
+Si se configura una VIP ILB dentro de una red virtual, y uno de hello participante back-end de las máquinas virtuales está intentando tooaccess Hola a VIP de equilibrador de carga interno, que es el resultado de error. Se trata de un escenario no admitido.
+**Resolución** evaluar puerta de enlace de aplicaciones o de otro toosupport servidores proxy (por ejemplo, nginx o haproxy) de ese tipo de escenario. Para más información acerca de Application Gateway, consulte [Introducción a Application Gateway](../application-gateway/application-gateway-introduction.md)
 
 ## <a name="additional-network-captures"></a>Capturas de red adicionales
-Si decide abrir un caso de soporte técnico, recopile la información siguiente para una resolución más rápida. Elija una sola máquina virtual de back-end para realizar las pruebas siguientes:
-- Use Psping de una de las máquinas virtuales de back-end de la red virtual para probar la respuesta del puerto de sondeo (ejemplo: psping 10.0.0.4:3389) y registre los resultados. 
-- Use TCPing de una de las máquinas virtuales de back-end de la red virtual para probar la respuesta del puerto de sondeo (ejemplo: psping 10.0.0.4:3389) y registre los resultados.
-- Si no se recibe respuesta con estas pruebas de ping, ejecute un seguimiento Netsh simultáneo en la máquina virtual de back-end y la máquina virtual de prueba de la red virtual mientras ejecuta PsPing y detenga el seguimiento Netsh. 
+Si decide tooopen un caso de soporte técnico, recopilar Hola siguiente información para una resolución más rápida. Elija un Hola de tooperform único back-end VM después de pruebas:
+- Usar Psping desde uno de hello back-end máquinas virtuales dentro de la respuesta del puerto de red virtual tootest Hola análisis hello (ejemplo: psping 10.0.0.4:3389) y registrar los resultados. 
+- Usar TCPing desde uno de hello back-end máquinas virtuales dentro de la respuesta del puerto de red virtual tootest Hola análisis hello (ejemplo: psping 10.0.0.4:3389) y registrar los resultados.
+- Si se recibe ninguna respuesta en estas pruebas de ping, ejecutar un seguimiento Netsh simultáneo en hello back-end VM y Hola máquina virtual de prueba de red virtual mientras se ejecute PsPing, a continuación, Detener seguimiento Netsh de Hola. 
   
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si los pasos anteriores no resuelven el problema, abra una [incidencia de soporte técnico](https://azure.microsoft.com/support/options/).
+Si hello pasos anteriores no resuelven Hola problema, abra un [incidencia de soporte técnico](https://azure.microsoft.com/support/options/).
 

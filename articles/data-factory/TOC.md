@@ -1,12 +1,12 @@
 # Información general
-## [Introducción al servicio Data Factory de Azure](data-factory-introduction.md)
+## [Introducción tooAzure factoría de datos](data-factory-introduction.md)
 ## Conceptos
 ### [Canalizaciones y actividades](data-factory-create-pipelines.md)
 ### [Conjuntos de datos](data-factory-create-datasets.md)
 ### [Programación y ejecución con Data Factory](data-factory-scheduling-and-execution.md)
 
 # Introducción
-## [Tutorial: creación de una canalización para copiar datos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+## [Tutorial: Crear una canalización de datos de toocopy](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 ### [Asistente para copia](data-factory-copy-data-wizard-tutorial.md)
 ### [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 ### [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
@@ -14,8 +14,8 @@
 ### [Plantilla de Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 ### [API DE REST](data-factory-copy-activity-tutorial-using-rest-api.md)
 ### [API de .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-## [Tutorial: creación de una canalización para transformar datos](data-factory-build-your-first-pipeline.md)
-### [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
+## [Tutorial: Crear una canalización de datos de tootransform](data-factory-build-your-first-pipeline.md)
+### [Portal de Azure](data-factory-build-your-first-pipeline-using-editor.md)
 ### [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 ### [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 ### [Plantilla de Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
@@ -64,7 +64,7 @@
 ### Data Management Gateway
 #### [Información general](data-factory-data-management-gateway.md)
 #### [Alta disponibilidad y escalabilidad (versión preliminar)](data-factory-data-management-gateway-high-availability-scalability.md)
-#### [Tutorial: mover datos de una instancia de SQL Server local a Azure Blob Storage](data-factory-move-data-between-onprem-and-cloud.md)
+#### [Tutorial: Mover los datos de un tooAzure de SQL Server local almacenamiento de blobs](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## [Transformación de datos](data-factory-data-transformation-activities.md)

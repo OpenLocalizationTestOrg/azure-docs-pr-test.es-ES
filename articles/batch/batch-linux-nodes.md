@@ -1,6 +1,6 @@
 ---
-title: "Ejecución de Linux en nodos de proceso de máquinas virtuales - Azure Batch | Microsoft Docs"
-description: "Obtenga información acerca de cómo procesar las cargas de trabajo de proceso paralelas en grupos de máquinas virtuales de Linux en el servicio Lote de Azure."
+title: "aaaRun Linux en la máquina virtual de proceso nodos - Azure Batch | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooprocess su paralelo calcular cargas de trabajo en grupos de máquinas virtuales de Linux en el lote de Azure."
 services: batch
 documentationcenter: python
 author: tamram
@@ -15,32 +15,32 @@ ms.workload: na
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b2257917e2368478beb75957677de23d4157865
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3daabd5c577baaafd0544f9f7913cb7b116d74d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Aprovisionamiento de nodos de proceso de Linux en grupos de Batch
 
-Puede usar el servicio Lote de Azure para ejecutar cargas de trabajo de proceso paralelas en máquinas virtuales Linux y Windows. Este artículo detalla cómo crear grupos de nodos de proceso de Linux en el servicio Lote mediante las bibliotecas de cliente de [Python de Lote][py_batch_package] y [.NET de Lote][api_net].
+Puede usar las cargas de trabajo de Azure Batch toorun proceso paralelo en máquinas virtuales Linux y Windows. Este artículo detalla cómo toocreate grupos de Linux nodos de proceso en el servicio de lote de hello mediante el uso de ambos hello [lote Python] [ py_batch_package] y [.NET de lotes] [ api_net] bibliotecas de cliente.
 
 > [!NOTE]
-> Los paquetes de aplicaciones se admiten en todos los grupos de Batch creados después del 5 de julio de 2017. Se admiten en los grupos de Batch creados entre el 10 de marzo de 2016 y el 5 de julio de 2017 únicamente si el grupo se creó mediante una configuración de Cloud Services. Los grupos de Batch creados antes del 10 de marzo de 2016 no admiten los paquetes de aplicaciones. Para más información sobre el uso de los paquetes de aplicación para implementar las aplicaciones en los nodos de Batch, consulte [Implementación de aplicaciones en nodos de proceso con paquetes de aplicaciones de Batch](batch-application-packages.md).
+> Los paquetes de aplicaciones se admiten en todos los grupos de Batch creados después del 5 de julio de 2017. Ahora se admiten en los grupos de lote creados entre el 10 de marzo de 2016 y 5 de julio de 2017 solo si se creó el grupo de hello mediante una configuración del servicio de nube. Los grupos de lote creados too10 anteriores de marzo de 2016 son compatibles con los paquetes de aplicaciones. Para obtener más información sobre el uso de la aplicación paquetes toodeploy los nodos de proceso por lotes de tooyour de aplicaciones, consulte [implementar aplicaciones toocompute nodos con paquetes de aplicaciones de lote](batch-application-packages.md).
 >
 >
 
 ## <a name="virtual-machine-configuration"></a>Configuración de la máquina virtual
-Cuando crea un grupo de nodos de proceso en el servicio Lote, tiene dos opciones para seleccionar el sistema operativo y el tamaño de nodo: configuración de servicios en la nube y configuración de la máquina virtual.
+Cuando se crea un grupo de nodos de proceso en lote, tienes dos opciones desde la cual tooselect tamaño de nodo de Hola y el sistema operativo: configuración de máquina Virtual y la configuración de servicios de nube.
 
-**configuración de Servicios en la nube**  *solo*. Los tamaños de nodos de proceso disponibles se muestran en [Tamaños de los servicios en la nube](../cloud-services/cloud-services-sizes-specs.md) y los sistemas operativos disponibles se enumeran en [Matriz de compatibilidad del SDK y versiones del SO invitado de Azure](../cloud-services/cloud-services-guestos-update-matrix.md). Al crear un grupo que contiene nodos de Azure Cloud Services, debe especificar el tamaño del nodo y la familia del SO, que se describen en los artículos mencionados anteriormente. Para los grupos de nodos de proceso de Windows, la mayoría de las veces se utilizan los servicios en la nube.
+**Cloud Services Configuration** (Configuración de servicios en la nube) *solo*proporciona nodos de proceso de Windows. Tamaños de nodo de proceso disponibles se muestran en [tamaños para servicios en la nube](../cloud-services/cloud-services-sizes-specs.md), y sistemas operativos disponibles se enumeran en hello [versiones del SO invitado de Azure y la matriz de compatibilidad SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Cuando se crea un grupo que contiene los nodos de servicios en la nube, especifica el tamaño del nodo de Hola y Hola familia del SO, que se describen en hello mencionado previamente artículos. Para los grupos de nodos de proceso de Windows, la mayoría de las veces se utilizan los servicios en la nube.
 
-**Configuración de la máquina virtual** proporciona imágenes de Linux y Windows para los nodos de proceso. Los tamaños de nodos de proceso disponibles se muestran en [Tamaños de las máquinas virtuales Linux en Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) y [Tamaños de las máquinas virtuales Windows en Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Cuando se crea un grupo que contiene los nodos de configuración de la máquina virtual, debe especificar su tamaño, la referencia de la imagen de máquina virtual y el SKU del agente de nodo del servicio Lote que desea instalar en los nodos.
+**Configuración de la máquina virtual** proporciona imágenes de Linux y Windows para los nodos de proceso. Los tamaños de nodos de proceso disponibles se muestran en [Tamaños de las máquinas virtuales Linux en Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) y [Tamaños de las máquinas virtuales Windows en Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Cuando se crea un grupo que contiene los nodos de configuración de máquina Virtual, debe especificar tamaño Hola de nodos de hello, referencia de imagen de máquina virtual de Hola y Hola lote nodo agente SKU toobe instalados en nodos de Hola.
 
 ### <a name="virtual-machine-image-reference"></a>Referencia de imagen de máquina virtual
-El servicio de Batch usa [conjuntos de escalado de máquinas virtuales](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) para proporcionar nodos de proceso de Linux. Puede especificar una imagen de [Azure Marketplace][vm_marketplace] o proporcionar una imagen personalizada que haya preparado. Para más información acerca de las imágenes personalizadas, consulte [Desarrollo de soluciones de procesos paralelos a gran escala con Batch](batch-api-basics.md#pool).
+Hola servicio por lotes utiliza [conjuntos de escalas de máquina virtual](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) tooprovide Linux nodos de proceso. Puede especificar una imagen de hello [Azure Marketplace][vm_marketplace], o proporcionar una imagen personalizada que haya preparado. Para más información acerca de las imágenes personalizadas, consulte [Desarrollo de soluciones de procesos paralelos a gran escala con Batch](batch-api-basics.md#pool).
 
-Al configurar una referencia de la imagen de máquina virtual, especifique las propiedades de la imagen de máquina virtual. Las propiedades siguientes son necesarias cuando se crea una referencia de la imagen de máquina virtual:
+Cuando se configura una referencia de imagen de máquina virtual, se especifican propiedades de Hola de imagen de máquina virtual de Hola. Hola propiedades siguientes es necesario cuando se crea una referencia de imagen de máquina virtual:
 
 | **Propiedades de la referencia de la imagen** | **Ejemplo** |
 | --- | --- |
@@ -50,29 +50,29 @@ Al configurar una referencia de la imagen de máquina virtual, especifique las p
 | Versión |más reciente |
 
 > [!TIP]
-> Puede obtener más información sobre estas propiedades y cómo mostrar imágenes de Marketplace en [Navegación y selección de las imágenes de máquina virtual Linux en Azure con la CLI o PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tenga en cuenta que no todas las imágenes de Marketplace son actualmente compatibles con el servicio Lote. Para más información, consulte [SKU del agente de nodo](#node-agent-sku).
+> Puede aprender más acerca de estas propiedades y cómo toolist Marketplace imágenes en [navegar y seleccionadas imágenes de máquinas virtuales de Linux en Azure con CLI o PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tenga en cuenta que no todas las imágenes de Marketplace son actualmente compatibles con el servicio Lote. Para más información, consulte [SKU del agente de nodo](#node-agent-sku).
 >
 >
 
 ### <a name="node-agent-sku"></a>SKU del agente de nodo
-El agente de nodo del servicio Lote es un programa que se ejecuta en cada nodo del grupo y proporciona la interfaz de comandos y control entre el nodo y el servicio. Hay diferentes implementaciones del agente de nodo, conocidas como SKU, para distintos sistemas operativos. Básicamente, al crear una configuración de la máquina virtual, debe especificar primero la referencia de la imagen de máquina virtual y, después, el agente de nodo que se va a instalar en la imagen. Normalmente, cada SKU del agente de nodo es compatible con varias imágenes de máquina virtual. Estos son algunos ejemplos de SKU del agente de nodo:
+agente de nodo de proceso por lotes de Hello es un programa que se ejecuta en cada nodo de grupo de Hola y proporciona interfaz de comando y control de hello entre el nodo de Hola y el servicio por lotes Hola. Hay diferentes implementaciones de agente de nodo de hello, conocido como las SKU para diferentes sistemas operativos. Básicamente, cuando se crea una configuración de máquina Virtual, especifique primero la referencia de imagen de máquina virtual de hello y, a continuación, especificar Hola nodo agente tooinstall en la imagen de Hola. Normalmente, cada SKU del agente de nodo es compatible con varias imágenes de máquina virtual. Estos son algunos ejemplos de SKU del agente de nodo:
 
 * batch.node.ubuntu 14.04
 * batch.node.centos 7
 * batch.node.windows amd64
 
 > [!IMPORTANT]
-> No todas las imágenes de máquinas virtuales que están disponibles en Marketplace son compatibles con los agentes de nodo de Lote disponibles actualmente. Use los SDK de Batch para mostrar las SKU del agente de nodo disponibles y las imágenes de máquina virtual con las que son compatibles. Consulte la [lista de imágenes de máquinas virtuales](#list-of-virtual-machine-images), que se detalla más adelante en este artículo, para obtener más información y ejemplos sobre cómo recuperar una lista de imágenes válidas en tiempo de ejecución.
+> No todas las imágenes de máquina virtual que están disponibles en hello Marketplace son compatibles con agentes de nodo de lote actualmente disponibles Hola. Usar el agente de nodo disponible de hello SDK de lote toolist Hola SKU y Hola imágenes de máquina virtual con el que son compatibles. Vea hello [imágenes de la lista de la máquina Virtual](#list-of-virtual-machine-images) más adelante en este artículo para obtener más información y ejemplos de cómo tooretrieve una lista de imágenes válidas en tiempo de ejecución.
 >
 >
 
 ## <a name="create-a-linux-pool-batch-python"></a>Cree un grupo de Linux: Python de Lote
-El fragmento de código siguiente muestra un ejemplo de cómo usar la [biblioteca de cliente de Lote de Microsoft Azure para Python][py_batch_package] para crear un grupo de nodos de proceso del servidor de Ubuntu. Puede encontrar la documentación de referencia del módulo de Python de Batch en [azure.batch package][py_batch_docs] (sección Lea los documentos).
+Hello fragmento de código siguiente muestra un ejemplo de cómo hello toouse [biblioteca de cliente de Microsoft Azure Batch para Python] [ py_batch_package] toocreate un grupo de Ubuntu Server nodos de proceso. Hacer referencia a documentación de hello módulo de Python de lote puede encontrarse en [azure.batch paquete] [ py_batch_docs] en documentos de Hola de lectura.
 
-En este fragmento de código, se crea una [ImageReference][py_imagereference] explícitamente y se especifica cada una de sus propiedades (publicador, oferta, SKU, versión). No obstante, en el código de producción recomendamos usar el método [list_node_agent_skus][py_list_skus] para determinar y seleccionar entre las combinaciones disponibles de SKU del agente de nodo y las imágenes en tiempo de ejecución.
+En este fragmento de código, se crea una [ImageReference][py_imagereference] explícitamente y se especifica cada una de sus propiedades (publicador, oferta, SKU, versión). En el código de producción, sin embargo, se recomienda que realice hello [list_node_agent_skus] [ py_list_skus] toodetermine de método y seleccionar Hola imagen y el nodo agente SKU combinaciones disponibles en tiempo de ejecución.
 
 ```python
-# Import the required modules from the
+# Import hello required modules from the
 # Azure Batch Client Library for Python
 import azure.batch.batch_service_client as batch
 import azure.batch.batch_auth as batchauth
@@ -88,66 +88,66 @@ pool_id = "LinuxNodesSamplePoolPython"
 vm_size = "STANDARD_A1"
 node_count = 1
 
-# Initialize the Batch client
+# Initialize hello Batch client
 creds = batchauth.SharedKeyCredentials(account, key)
 config = batch.BatchServiceClientConfiguration(creds, base_url = batch_url)
 client = batch.BatchServiceClient(config)
 
-# Create the unbound pool
+# Create hello unbound pool
 new_pool = batchmodels.PoolAddParameter(id = pool_id, vm_size = vm_size)
 new_pool.target_dedicated = node_count
 
-# Configure the start task for the pool
+# Configure hello start task for hello pool
 start_task = batchmodels.StartTask()
 start_task.run_elevated = True
 start_task.command_line = "printenv AZ_BATCH_NODE_STARTUP_DIR"
 new_pool.start_task = start_task
 
-# Create an ImageReference which specifies the Marketplace
-# virtual machine image to install on the nodes.
+# Create an ImageReference which specifies hello Marketplace
+# virtual machine image tooinstall on hello nodes.
 ir = batchmodels.ImageReference(
     publisher = "Canonical",
     offer = "UbuntuServer",
     sku = "14.04.2-LTS",
     version = "latest")
 
-# Create the VirtualMachineConfiguration, specifying
-# the VM image reference and the Batch node agent to
-# be installed on the node.
+# Create hello VirtualMachineConfiguration, specifying
+# hello VM image reference and hello Batch node agent to
+# be installed on hello node.
 vmc = batchmodels.VirtualMachineConfiguration(
     image_reference = ir,
     node_agent_sku_id = "batch.node.ubuntu 14.04")
 
-# Assign the virtual machine configuration to the pool
+# Assign hello virtual machine configuration toohello pool
 new_pool.virtual_machine_configuration = vmc
 
-# Create pool in the Batch service
+# Create pool in hello Batch service
 client.pool.add(new_pool)
 ```
 
-Tal y como se mencionó anteriormente, es recomendable que en lugar de crear una [ImageReference][py_imagereference] explícitamente, utilice el método [list_node_agent_skus][py_list_skus] para seleccionar dinámicamente entre las combinaciones de imágenes de Marketplace y los agentes de nodo admitidas actualmente. El siguiente fragmento de código de Python muestra cómo usar este método.
+Como se mencionó anteriormente, se recomienda que en lugar de crear hello [ImageReference] [ py_imagereference] explícitamente, utilice hello [list_node_agent_skus] [ py_list_skus] método toodynamically seleccionar Hola admite combinaciones de imagen del agente/Marketplace de nodo. Hola Python fragmento siguiente muestra cómo toouse este método.
 
 ```python
-# Get the list of node agents from the Batch service
+# Get hello list of node agents from hello Batch service
 nodeagents = client.account.list_node_agent_skus()
 
-# Obtain the desired node agent
+# Obtain hello desired node agent
 ubuntu1404agent = next(agent for agent in nodeagents if "ubuntu 14.04" in agent.id)
 
-# Pick the first image reference from the list of verified references
+# Pick hello first image reference from hello list of verified references
 ir = ubuntu1404agent.verified_image_references[0]
 
-# Create the VirtualMachineConfiguration, specifying the VM image
-# reference and the Batch node agent to be installed on the node.
+# Create hello VirtualMachineConfiguration, specifying hello VM image
+# reference and hello Batch node agent toobe installed on hello node.
 vmc = batchmodels.VirtualMachineConfiguration(
     image_reference = ir,
     node_agent_sku_id = ubuntu1404agent.id)
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>Cree un grupo de Linux: .NET de Lote
-El fragmento de código siguiente muestra un ejemplo de cómo utilizar la biblioteca de cliente [.NET de lote][nuget_batch_net] para crear un grupo de nodos de proceso del servidor de Ubuntu. Puede encontrar la [documentación de referencia de .NET de Lote][api_net] en MSDN.
+Hello fragmento de código siguiente muestra un ejemplo de cómo hello toouse [.NET de lotes] [ nuget_batch_net] toocreate de biblioteca de cliente del servidor de Ubuntu de un grupo de nodos de proceso. Puede encontrar Hola [documentación de referencia de .NET de lotes] [ api_net] en MSDN.
 
-El fragmento de código siguiente utiliza el método [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] para seleccionar entre la lista de combinaciones de imágenes de Marketplace y SKU del agente de nodo admitidas actualmente. Esta técnica es deseable porque la lista de combinaciones admitidas puede cambiar de vez en cuando. Normalmente, se agregan las combinaciones admitidas.
+fragmento de código siguiente Hello usa hello [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] tooselect de método de lista de Hola de actualmente Marketplace imagen y el nodo agente SKU combinaciones admitidas. Esta técnica es deseable, porque puede cambiar lista Hola de combinaciones admitidas de tootime de tiempo. Normalmente, se agregan las combinaciones admitidas.
 
 ```csharp
 // Pool settings
@@ -156,19 +156,19 @@ const string vmSize = "STANDARD_A1";
 const int nodeCount = 1;
 
 // Obtain a collection of all available node agent SKUs.
-// This allows us to select from a list of supported
+// This allows us tooselect from a list of supported
 // VM image/node agent combinations.
 List<NodeAgentSku> nodeAgentSkus =
     batchClient.PoolOperations.ListNodeAgentSkus().ToList();
 
-// Define a delegate specifying properties of the VM image
-// that we wish to use.
+// Define a delegate specifying properties of hello VM image
+// that we wish toouse.
 Func<ImageReference, bool> isUbuntu1404 = imageRef =>
     imageRef.Publisher == "Canonical" &&
     imageRef.Offer == "UbuntuServer" &&
     imageRef.Sku.Contains("14.04");
 
-// Obtain the first node agent SKU in the collection that matches
+// Obtain hello first node agent SKU in hello collection that matches
 // Ubuntu Server 14.04. Note that there are one or more image
 // references associated with this node agent SKU.
 NodeAgentSku ubuntuAgentSku = nodeAgentSkus.First(sku =>
@@ -178,12 +178,12 @@ NodeAgentSku ubuntuAgentSku = nodeAgentSkus.First(sku =>
 ImageReference imageReference =
     ubuntuAgentSku.VerifiedImageReferences.First(isUbuntu1404);
 
-// Create the VirtualMachineConfiguration for use when actually
-// creating the pool
+// Create hello VirtualMachineConfiguration for use when actually
+// creating hello pool
 VirtualMachineConfiguration virtualMachineConfiguration =
     new VirtualMachineConfiguration(imageReference, ubuntuAgentSku.Id);
 
-// Create the unbound pool object using the VirtualMachineConfiguration
+// Create hello unbound pool object using hello VirtualMachineConfiguration
 // created above
 CloudPool pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
@@ -191,11 +191,11 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     virtualMachineConfiguration: virtualMachineConfiguration,
     targetDedicatedComputeNodes: nodeCount);
 
-// Commit the pool to the Batch service
+// Commit hello pool toohello Batch service
 await pool.CommitAsync();
 ```
 
-Aunque el fragmento de código anterior usa el método [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] para mostrar y seleccionar entre las combinaciones admitidas de imágenes y SKU del agente de nodo (recomendadas), también puede configurar una [ImageReference][net_imagereference] explícitamente:
+Aunque fragmento anterior hello usa hello [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] método toodynamically y seleccione entre admite imagen y nodo combinaciones de SKU de agente (recomendados), también puede configurar un [ImageReference] [ net_imagereference] explícitamente:
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -206,10 +206,10 @@ ImageReference imageReference = new ImageReference(
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>Lista de imágenes de máquinas virtuales
-En la tabla siguiente se enumeran las imágenes de máquinas virtuales de Marketplace que son compatibles con los agentes de nodo de Lote disponibles cuando se actualizó por última vez este artículo. Es importante tener en cuenta que esta lista no es definitiva, ya que se pueden agregar o quitar imágenes y agentes de nodo en cualquier momento. Se recomienda que los servicios y aplicaciones de Lote utilicen siempre los métodos [list_node_agent_skus][py_list_skus] (Python) y [ListNodeAgentSkus][net_list_skus] (.NET de Lote) para determinar y seleccionar entre las SKU disponibles.
+Hello siguiente tabla enumera las imágenes de máquina virtual de Marketplace de Hola que son compatibles con agentes de nodo de lote disponibles hello cuando este artículo se actualizó por última vez. Es importante toonote que esta lista no es definitiva porque las imágenes y los agentes de nodo pueden agregarse o quitarse en cualquier momento. Se recomienda que siempre utilizan los servicios y aplicaciones de lote [list_node_agent_skus] [ py_list_skus] (Python) y [ListNodeAgentSkus] [ net_list_skus] Toodetermine (lote .NET) y seleccione de Hola SKU disponibles actualmente.
 
 > [!WARNING]
-> La siguiente lista se puede cambiar en cualquier momento. Use siempre los métodos **list_node_agent_SKU** disponibles en las API de Batch para mostrar los SKU de máquina virtual y del agente de nodo disponibles al ejecutar los trabajos de Batch.
+> Hola después de la lista puede cambiar en cualquier momento. Utilice siempre hello **agente de nodo de lista SKU** métodos disponibles en toolist de las API de lote de Hola Hola máquina virtual compatibles y el nodo agente SKU al ejecutar los trabajos por lotes.
 >
 >
 
@@ -236,10 +236,10 @@ En la tabla siguiente se enumeran las imágenes de máquinas virtuales de Market
 | Microsoft Windows Server | Windows Server | 2016-Datacenter | más reciente | batch.node.windows amd64 |
 | Microsoft Windows Server | Windows Server | 2016-Datacenter-with-Containers | más reciente | batch.node.windows amd64 |
 
-## <a name="connect-to-linux-nodes-using-ssh"></a>Conexión a los nodos de Linux mediante SSH
-Durante el desarrollo o solución de problemas, es posible que necesite iniciar sesión en los nodos del grupo. A diferencia de los nodos de proceso de Windows, no puede utilizar el protocolo de escritorio remoto (RDP) para conectarse a los nodos de Linux. En su lugar, el servicio de Lote habilita el acceso SSH en cada nodo para la conexión remota.
+## <a name="connect-toolinux-nodes-using-ssh"></a>Conectar los nodos tooLinux mediante SSH
+Durante el desarrollo, o si se intenta solucionar, quizá le resulte necesario toosign en los nodos de toohello en el grupo. A diferencia de los nodos de proceso de Windows, no puede usar los nodos de tooLinux tooconnect de protocolo de escritorio remoto (RDP). En su lugar, Hola servicio por lotes permite el acceso SSH en cada nodo para la conexión remota.
 
-El siguiente fragmento de código de Python crea un usuario en cada nodo de un grupo, que es necesario para la conexión remota. A continuación, imprime la información de conexión de SSH para cada nodo.
+Hello fragmento de código Python siguiente crea un usuario en cada nodo en un grupo, que es necesario para la conexión remota. A continuación, imprime la información de conexión de hello shell seguro (SSH) para cada nodo.
 
 ```python
 import datetime
@@ -253,11 +253,11 @@ batch_account_name = ''
 batch_account_key = ''
 batch_account_url = ''
 
-# Specify the ID of an existing pool containing Linux nodes
-# currently in the 'idle' state
+# Specify hello ID of an existing pool containing Linux nodes
+# currently in hello 'idle' state
 pool_id = ''
 
-# Specify the username and prompt for a password
+# Specify hello username and prompt for a password
 username = 'linuxuser'
 password = getpass.getpass()
 
@@ -271,34 +271,34 @@ batch_client = batch.BatchServiceClient(
         base_url=batch_account_url
 )
 
-# Create the user that will be added to each node in the pool
+# Create hello user that will be added tooeach node in hello pool
 user = batchmodels.ComputeNodeUser(username)
 user.password = password
 user.is_admin = True
 user.expiry_time = \
     (datetime.datetime.today() + datetime.timedelta(days=30)).isoformat()
 
-# Get the list of nodes in the pool
+# Get hello list of nodes in hello pool
 nodes = batch_client.compute_node.list(pool_id)
 
-# Add the user to each node in the pool and print
-# the connection information for the node
+# Add hello user tooeach node in hello pool and print
+# hello connection information for hello node
 for node in nodes:
-    # Add the user to the node
+    # Add hello user toohello node
     batch_client.compute_node.add_user(pool_id, node.id, user)
 
-    # Obtain SSH login information for the node
+    # Obtain SSH login information for hello node
     login = batch_client.compute_node.get_remote_login_settings(pool_id,
                                                                 node.id)
 
-    # Print the connection info for the node
+    # Print hello connection info for hello node
     print("{0} | {1} | {2} | {3}".format(node.id,
                                          node.state,
                                          login.remote_login_ip_address,
                                          login.remote_login_port))
 ```
 
-Este es un ejemplo de resultado del código anterior para un grupo que contiene cuatro nodos de Linux:
+Este es el resultado de ejemplo de código anterior de Hola para un grupo que contiene cuatro nodos de Linux:
 
 ```
 Password:
@@ -308,22 +308,22 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-En lugar de una contraseña, puede especificar una clave pública SSH al crear un usuario en un nodo. En el SDK de Python, use el parámetro **ssh_public_key** en [ComputeNodeUser][py_computenodeuser]. En .NET, use la propiedad [ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key].
+En lugar de una contraseña, puede especificar una clave pública SSH al crear un usuario en un nodo. Hola SDK de Python, usar hello **ssh_public_key** parámetro en [ComputeNodeUser][py_computenodeuser]. En. NET, use hello [ComputeNodeUser][net_computenodeuser].[ SshPublicKey] [ net_ssh_key] propiedad.
 
 ## <a name="pricing"></a>Precios
-El servicio Lote de Azure se basa en la tecnología de Servicios en la nube de Azure y en la de Máquinas virtuales de Azure. El propio servicio Lote se ofrece sin costo, lo que significa que solo se cobrará por los recursos de proceso utilizados por las soluciones del servicio. Al elegir **Cloud Services Configuration** (Configuración de Cloud Services), se le cobrará según la estructura de [precios de Cloud Services][cloud_services_pricing]. Al elegir **Configuración de la máquina virtual**, se le cobrará según la estructura de [precios de máquinas virtuales][vm_pricing]. 
+El servicio Lote de Azure se basa en la tecnología de Servicios en la nube de Azure y en la de Máquinas virtuales de Azure. Hola propio servicio de lote se ofrece sin costo alguno, que significa que se le cobra solo de hello recursos que consumen las soluciones de lote de proceso. Cuando eliges **configuración de servicios de nube**, se le cobra según hello [de precios de servicios de nube] [ cloud_services_pricing] estructura. Cuando eliges **configuración de máquina Virtual**, se le cobra según hello [precios de máquinas virtuales] [ vm_pricing] estructura. 
 
-Si implementa aplicaciones en los nodos de Batch mediante [paquetes de aplicaciones](batch-application-packages.md), también se le cobrarán los recursos de Azure Storage que consumen los paquetes de aplicaciones. En general, los costos de Azure Storage son mínimos. 
+Si implementa nodos de lote de aplicaciones tooyour con [paquetes de aplicación](batch-application-packages.md), también se cobra por los recursos de almacenamiento de Azure de Hola que consumen los paquetes de aplicaciones. En general, los costos de almacenamiento de Azure de hello son mínimos. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 ### <a name="batch-python-tutorial"></a>Tutorial de Python de Lote
-Para ver un tutorial más completo sobre cómo trabajar con Lote mediante Python, consulte [Introducción al cliente Python de Lote de Azure](batch-python-tutorial.md). El [código de ejemplo][github_samples_pyclient] complementario incluye una función auxiliar, `get_vm_config_for_distro`, que muestra otra técnica para obtener una configuración de la máquina virtual.
+Para obtener un tutorial más detallado acerca de cómo toowork con lote mediante el uso de Python, desprotección [empezar a trabajar con el cliente de Python de lote de Azure de hello](batch-python-tutorial.md). Su complementario [código de ejemplo] [ github_samples_pyclient] incluye una función auxiliar, `get_vm_config_for_distro`, que muestra otro tooobtain técnica una configuración de máquina virtual.
 
 ### <a name="batch-python-code-samples"></a>Ejemplos de código de Python de lote
-Los [ejemplos de código de Python][github_samples_py] del repositorio [azure-batch-samples][github_samples] de GitHub contienen scripts que muestran cómo llevar a cabo operaciones comunes de Batch, como crear grupos, trabajos y tareas. El archivo [LÉAME][github_py_readme] que acompaña a los ejemplos de Python incluye detalles sobre cómo instalar los paquetes necesarios.
+Hola [ejemplos de código de Python] [ github_samples_py] en hello [ejemplos de lote de azure] [ github_samples] repositorio en GitHub contienen secuencias de comandos que le muestran cómo tooperform operaciones comunes de lote, como el grupo de trabajo y creación de tareas. Hola [Léame] [ github_py_readme] que acompaña a ejemplos de Python Hola con información detallada acerca de cómo tooinstall Hola necesario paquetes.
 
 ### <a name="batch-forum"></a>Foro de Lote
-El [foro de Azure Batch][forum] en MSDN es un lugar excelente para debatir y formular preguntas sobre el servicio. Lea los mensajes útiles publicados y envíe sus preguntas a medida que surjan mientras compila sus soluciones de Batch.
+Hola [foro de lote de Azure] [ forum] en MSDN es una gran colocar toodiscuss por lotes y formular preguntas acerca del servicio de Hola. Lea los mensajes útiles publicados y envíe sus preguntas a medida que surjan mientras compila sus soluciones de Batch.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx

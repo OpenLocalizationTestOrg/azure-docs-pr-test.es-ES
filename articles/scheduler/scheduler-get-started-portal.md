@@ -1,5 +1,5 @@
 ---
-title: "Introducción al Programador de Azure en Azure Portal | Microsoft Docs"
+title: aaaGet a trabajar con el programador de Azure en el portal de Azure | Documentos de Microsoft
 description: "Introducción al Programador de Azure en el Portal de Azure"
 services: scheduler
 documentationcenter: .NET
@@ -14,33 +14,33 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 58255c0ad19da65932f8b1d36cb8fef1ff6e651b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Introducción al Programador de Azure en el Portal de Azure
-Es fácil crear trabajos programados en el Programador de Azure. En este tutorial, aprenderá a crear un trabajo: También aprenderá las funcionalidades de supervisión y administración del Programador.
+Es fácil toocreate programar trabajos en el programador de Azure. En este tutorial, aprenderá cómo toocreate un trabajo. También aprenderá las funcionalidades de supervisión y administración del Programador.
 
 ## <a name="create-a-job"></a>Creación de un trabajo
-1. Inicie sesión en el [portal de Azure](https://portal.azure.com/).  
-2. Haga clic en **+Nuevo** > escriba *Programador* en el cuadro de búsqueda > seleccione **Programador** en resultados > haga clic en **Crear**.
+1. Inicie sesión en demasiado[portal de Azure](https://portal.azure.com/).  
+2. Haga clic en **+ nuevo** > tipo *programador* en el cuadro de búsqueda de hello > seleccione **programador** en resultados > haga clic en **crear**.
    
     ![][marketplace-create]
-3. Vamos a crear un trabajo que simplemente selecciona http://www.microsoft.com/ con una solicitud GET. En la pantalla **Trabajo del Programador** , escriba la siguiente información:
+3. Vamos a crear un trabajo que simplemente selecciona http://www.microsoft.com/ con una solicitud GET. Hola **trabajo del programador** pantalla, escriba Hola siguiente información:
    
-   1. **Nombre:** `getmicrosoft`  
+   1. **Nombre:**`getmicrosoft`  
    2. **Suscripción** : su suscripción a Azure.   
    3. **Colección de trabajos:** seleccione una colección de trabajos existente o haga clic en **Crear nueva** y escriba un nombre.
-4. Después, en **Configuración de la acción**, defina los siguientes valores:
+4. Después, en **configuración de la acción**, definir Hola siguientes valores:
    
-   1. **Tipo de acción:** ` HTTP`  
-   2. **Método:** `GET`  
-   3. **URL:** ` http://www.microsoft.com`  
+   1. **Tipo de acción:**` HTTP`  
+   2. **Método:**`GET`  
+   3. **URL:**` http://www.microsoft.com`  
       
       ![][action-settings]
-5. Por último, vamos a definir una programación. El trabajo se puede definir como un trabajo único, pero vamos a seleccionar una programación de periodicidad:
+5. Por último, vamos a definir una programación. trabajo de Hello puede definirse como un trabajo único, pero vamos a seleccionar una programación de periodicidad:
    
    1. **Periocidad**: `Recurring`
    2. **Inicio**: la fecha de hoy
@@ -51,7 +51,7 @@ Es fácil crear trabajos programados en el Programador de Azure. En este tutoria
 6. Haga clic en **Crear**
 
 ## <a name="manage-and-monitor-jobs"></a>Administración y supervisión de trabajos
-Una vez que se crea un trabajo, aparece en el Panel principal de Azure. Haga clic en el trabajo y se abrirá una nueva ventana con las pestañas siguientes:
+Una vez que se crea un trabajo, aparece en el panel de Azure principal Hola. Haga clic en trabajo hello y una nueva ventana se abrirá con hello siguientes pestañas:
 
 1. Propiedades  
 2. Configuración de la acción  
@@ -62,34 +62,34 @@ Una vez que se crea un trabajo, aparece en el Panel principal de Azure. Haga cli
    ![][job-overview]
 
 ### <a name="properties"></a>Propiedades
-Estas propiedades de solo lectura describen los metadatos de administración para el trabajo del Programador.
+Estas propiedades de sólo lectura describen los metadatos de la administración de hello para el trabajo del programador de Hola.
 
    ![][job-properties]
 
 ### <a name="action-settings"></a>Configuración de la acción
-Al hacer clic en un trabajo en la pantalla **Trabajos** puede configurar ese trabajo. Esto le permitirá configurar opciones avanzadas, si no las ha configurado en el Asistente de creación rápida.
+Al hacer clic en un trabajo en hello **trabajos** pantalla le permite tooconfigure ese trabajo. Esto le permite configurar opciones avanzadas, si no configura Hola Asistente de creación rápida.
 
-Para todos los tipos de acción, puede cambiar la directiva de reintentos y la acción en caso de error.
+Para todos los tipos de acción, puede cambiar la directiva de reintentos hello y acción de error de Hola.
 
-Para los tipos de acción de los trabajos HTTP y HTTPS, puede cambiar el método a cualquier verbo HTTP permitido. También puede agregar, eliminar o cambiar los encabezados y la información de autenticación básica.
+Para los tipos de acción de trabajo HTTP y HTTPS, puede cambiar Hola método tooany permitida el verbo HTTP. También se pueden agregar, eliminar o cambiar los encabezados de Hola y la información de autenticación básica.
 
-Para los tipos de acciones de la cola de almacenamiento, puede cambiar la cuenta de almacenamiento, el nombre de la cola, el token SAS y el cuerpo.
+Para los tipos de acción de cola de almacenamiento, puede cambiar la cuenta de almacenamiento de hello, nombre de la cola, token SAS y cuerpo.
 
-Para los tipos de acción del Bus de servicio, puede cambiar el espacio de nombres, la ruta de tema/cola, la configuración de autenticación, el tipo de transporte, las propiedades de mensaje y el cuerpo del mensaje.
+Para los tipos de acción de bus de servicio, puede cambiar el espacio de nombres de hello, ruta de acceso de cola/tema, configuración de autenticación, tipo de transporte, propiedades del mensaje y el cuerpo del mensaje.
 
    ![][job-action-settings]
 
 ### <a name="schedule"></a>Schedule
-Esto le permite volver a configurar la programación, si es que desea cambiar la programación que creó en el Asistente de creación rápida.
+Esto le permite volver a configurar programación de hello, si desea que la programación de hello toochange que creó en hello Asistente de creación rápida.
 
-Esta es una oportunidad para crear [programaciones complejas y periodicidad avanzada en el trabajo](scheduler-advanced-complexity.md)
+Se trata de una oportunidad toobuild [programaciones complejas y periodicidad avanzada en el trabajo](scheduler-advanced-complexity.md)
 
-Puede cambiar la fecha y hora de inicio, la programación de periodicidad y la fecha y hora de finalización (si el trabajo es periódico).
+Puede cambiar la fecha de inicio de Hola y Hola, la programación de periodicidad y la hora fecha de finalización y hora (si el trabajo de hello es periódico).
 
    ![][job-schedule]
 
 ### <a name="history"></a>Historial
-La pestaña **Historial** muestra métricas seleccionadas para cada ejecución del trabajo en el sistema para el trabajo seleccionado. Estas métricas proporcionan valores en tiempo real relacionados con el estado del Programador:
+Hola **historial** pestaña muestra las métricas seleccionadas para cada ejecución del trabajo de sistema de hello para el trabajo seleccionado de Hola. Estas métricas proporcionan valores en tiempo real con respecto a estado Hola de Scheduler:
 
 1. Estado  
 2. Detalles  
@@ -100,12 +100,12 @@ La pestaña **Historial** muestra métricas seleccionadas para cada ejecución d
    
    ![][job-history]
 
-Puede hacer clic en una ejecución para ver su información en **Detalles del historial**, incluida la respuesta completa a cada ejecución. Este cuadro de diálogo también le permite copiar la respuesta en el Portapapeles.
+Puede hacer clic en una ejecución tooview su **detalles del historial de**, incluida la respuesta completa de Hola para cada ejecución. Este cuadro de diálogo también permite Portapapeles toohello de toocopy Hola respuesta.
 
    ![][job-history-details]
 
 ### <a name="users"></a>Usuarios
-El control de acceso basado en roles (RBAC) de Azure permite realizar una administración detallada del acceso al Programador de Azure. Para aprender a usar la pestaña Usuarios, consulte [Control de acceso basado en rol de Azure](../active-directory/role-based-access-control-configure.md)
+El control de acceso basado en roles (RBAC) de Azure permite realizar una administración detallada del acceso al Programador de Azure. toolearn cómo toouse Hola ficha de usuarios, consulte demasiado[Azure Role-Based el Control de acceso](../active-directory/role-based-access-control-configure.md)
 
 ## <a name="see-also"></a>Otras referencias
  [¿Qué es Programador?](scheduler-intro.md)
@@ -114,7 +114,7 @@ El control de acceso basado en roles (RBAC) de Azure permite realizar una admini
 
  [Planes y facturación en Programador de Azure](scheduler-plans-billing.md)
 
- [Creación de programaciones complejas y periodicidad avanzada con Programador de Azure](scheduler-advanced-complexity.md)
+ [¿Cómo se programa toobuild complejo y periodicidad avanzada con el programador de Azure](scheduler-advanced-complexity.md)
 
  [Referencia de API de REST del Programador](https://msdn.microsoft.com/library/mt629143)
 

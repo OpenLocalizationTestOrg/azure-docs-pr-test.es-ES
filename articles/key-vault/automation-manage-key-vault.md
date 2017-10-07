@@ -1,6 +1,6 @@
 ---
-title: "Administración de Azure Key Vault con Azure Automation | Microsoft Docs"
-description: "Obtenga información acerca de cómo puede usarse el servicio de Automatización de Azure para administrar el Almacén de claves de Azure."
+title: "aaaManage almacén de claves de Azure mediante automatización de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo se Hola servicio automatización de Azure pueden toomanage usa el almacén de claves de Azure."
 services: Key-Vault, automation
 documentationcenter: 
 author: mgoedtel
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: magoedte;csand
-ms.openlocfilehash: dee39662472fe54776b591977f2b1ecb39d15b00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7f46ecc1206a96e8aeb1d086285461cb5b205472
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Administración del Almacén de claves de Azure mediante Automatización de Azure
-Esta guía le ofrece el servicio Automatización de Azure y cómo se puede usar para simplificar la administración de claves y secretos en el Almacén de claves de Azure.
+Esta guía le presentará los toohello servicio de automatización de Azure y cómo puede resultarle toosimplify usa administración de sus claves y secretos en el almacén de claves de Azure.
 
 ## <a name="what-is-azure-automation"></a>¿Qué es Automatización de Azure?
-[Automatización de Azure](../automation/automation-intro.md) es un servicio de Azure para simplificar la administración en la nube mediante la automatización de procesos y la configuración de estado deseado. Mediante Automatización de Azure, se pueden automatizar las tareas de ejecución prolongada, manuales, propensas a errores y que se repiten para aumentar la confiabilidad, la eficiencia y el valioso tiempo para su organización.
+[Automatización de Azure](../automation/automation-intro.md) es un servicio de Azure para simplificar la administración en la nube mediante la automatización de procesos y la configuración de estado deseado. Mediante automatización de Azure, pueden ser, repetidas, larga ejecución, tareas manuales y propensas a errores tooincrease automatizadas confiabilidad y eficacia, toovalue de tiempo para su organización.
 
-Automatización de Azure proporciona un motor de ejecución de flujo de trabajo altamente confiable y de alta disponibilidad que realiza la escalación para satisfacer sus necesidades. En Automatización de Azure, los sistemas de terceros pueden interrumpir los procesos manualmente o en intervalos programados para que las tareas se realicen justo cuando sea necesario.
+Automatización de Azure ofrece un motor de ejecución de flujo de trabajo altamente confiable y de alta disponibilidad que escala toomeet sus necesidades. En Automatización de Azure, los sistemas de terceros pueden interrumpir los procesos manualmente o en intervalos programados para que las tareas se realicen justo cuando sea necesario.
 
-Reduzca la sobrecarga operativa y libere al personal de TI/DevOps para concentrarse en el trabajo que proporciona valor al negocio trasladando las tareas de administración en la nube para que se ejecuten automáticamente mediante Automatización de Azure.
+Reducir la sobrecarga operativa y liberar TI y DevOps toofocus de personal en el trabajo que agrega valor empresarial moviendo el toobe de tareas de administración en la nube se ejecute automáticamente mediante la automatización de Azure.
 
 ## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>¿Cómo puede ayudar Automatización de Azure a administrar el Almacén de claves de Azure?
-Key Vault se puede administrar en Azure Automation mediante los [cmdlets AzureRM de Key Vault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) y los [cmdlets de Azure Key Vault clásico](https://msdn.microsoft.com/library/azure/dn868052.aspx). El módulo de Azure para administrar el Almacén de claves clásico está disponible automáticamente en Automatización de Azure, mientras que el [módulo AzureRM-KeyVault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) se puede importar a Automatización de Azure para poder realizar muchas de las tareas de administración de Almacén de claves dentro del servicio. También puede emparejar estos cmdlets en Automatización de Azure con los cmdlets para otros servicios de Azure, para automatizar tareas complejas a través de los servicios de Azure y sistemas de terceros.
+El almacén de claves se pueden administrar en automatización de Azure mediante hello [cmdlets del almacén de claves de AzureRM](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) y [cmdlets del almacén de claves de Azure clásico](https://msdn.microsoft.com/library/azure/dn868052.aspx). Hola módulo de Azure para administrar el almacén de claves clásico está disponible automáticamente en automatización de Azure y se puede importar hello [AzureRM KeyVault módulo](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) en automatización de Azure, por lo que puede realizar muchas de la administración de almacén de claves tareas de servicio de Hola. También se puede emparejar estos cmdlets en automatización de Azure con los cmdlets de Hola para otros servicios de Azure, tareas complejas tooautomate a través de los servicios de Azure y sistemas de terceros 3rd.
 
-Con los cmdlets del Almacén de claves de Azure puede realizar estas tareas entre otras: 
+Con los cmdlets del almacén de claves de Azure Hola puede realizar estas tareas, entre otros: 
 
 * Crear y configurar un almacén de claves
 * Crear o importar una clave
@@ -42,14 +42,14 @@ Con los cmdlets del Almacén de claves de Azure puede realizar estas tareas entr
 * Obtener una clave o un secreto
 * Eliminar una clave o un secreto
 
-Estos son algunos ejemplos de cómo usar PowerShell para administrar el Almacén de claves:  
+Estos son algunos ejemplos del uso de PowerShell toomanage el almacén de claves:  
 
 * [Azure Key Vault - Step by Step (Almacén de claves de Azure: paso a paso)](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step)
 * [Setting Up and Configuring an Azure Key Vault (Instalar y configurar un Almacén de claves de Azure)](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha aprendido los aspectos básicos de Automatización de Azure y cómo se puede usar para administrar el Almacén de claves de Azure, siga estos vínculos para obtener más información acerca de Automatización de Azure.
+Ahora que conoce los fundamentos de Hola de automatización de Azure y cómo puede resultarle toomanage usa el almacén de claves de Azure, siga estas toolearn de vínculos más información acerca de la automatización de Azure.
 
-* Consulte el [Tutorial de introducción](../automation/automation-first-runbook-graphical.md)de Automatización de Azure.
-* Consulte los [scripts de PowerShell del Almacén de claves de Azure](https://gallery.technet.microsoft.com/scriptcenter/site/search?query=azure%20key%20vault&f%5B0%5D.Value=azure%20key%20vault&f%5B0%5D.Type=SearchText&ac=5).
+* Vea Hola automatización de Azure [Tutorial de introducción](../automation/automation-first-runbook-graphical.md).
+* Vea hello [scripts de PowerShell de almacén de claves de Azure](https://gallery.technet.microsoft.com/scriptcenter/site/search?query=azure%20key%20vault&f%5B0%5D.Value=azure%20key%20vault&f%5B0%5D.Type=SearchText&ac=5).
 

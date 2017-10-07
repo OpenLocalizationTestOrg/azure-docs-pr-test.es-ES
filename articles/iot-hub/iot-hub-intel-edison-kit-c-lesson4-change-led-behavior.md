@@ -1,6 +1,6 @@
 ---
-title: "Conexión de Intel Edison (C) a Azure IoT: Lección 4: Parpadeo del LED | Microsoft Docs"
-description: Personalice los mensajes para cambiar el comportamiento de encendido y apagado del LED.
+title: "Connect Intel Edison (C) tooAzure IoT - lección 4: hacer parpadear LED de hello | Documentos de Microsoft"
+description: Personalizar Hola de toochange de mensajes de Hola LED de activar y desactivar el comportamiento.
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,30 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 4852b1cca4c6186ef4857b903b771f76cc20adb8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c51acb42aa297ca91cfe76d7b0361ad95e2fb2e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-on-and-off-behavior-of-the-led"></a>Modificación del comportamiento de encendido y apagado del LED
+# <a name="change-hello-on-and-off-behavior-of-hello-led"></a>Cambiar Hola activar y desactivar el comportamiento de hello LED
 ## <a name="what-you-will-do"></a>Lo que hará
-Personalice los mensajes para cambiar el comportamiento de encendido y apagado del LED. Si tiene problemas, busque soluciones en [esta página][troubleshooting].
+Personalizar Hola de toochange de mensajes de Hola LED de activar y desactivar el comportamiento. Si tiene problemas, buscar soluciones en hello [solución de problemas de página][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
-Utilice las funciones adicionales para cambiar el comportamiento de encendido y apagado del LED.
+Utilice Hola de funciones adicionales toochange LED de activar y desactivar el comportamiento.
 
 ## <a name="what-you-need"></a>Lo que necesita
-Para seguir este procedimiento, debe haber completado correctamente el tutorial sobre la [ejecución de una aplicación de ejemplo en Intel Edison para recibir mensajes de nube a dispositivo][receive-cloud-to-device-messages].
+Debe haber completado correctamente [ejecutar una aplicación de ejemplo en la nube de Intel Edison tooreceive mensajes toodevice][receive-cloud-to-device-messages].
 
-## <a name="add-functions-to-mainc-and-gulpfilejs"></a>Adición de funciones a main.c y gulpfile.js
-1. Abra la aplicación de ejemplo en Visual Studio Code ejecutando los comandos siguientes:
+## <a name="add-functions-toomainc-and-gulpfilejs"></a>Agregar gulpfile.js y toomain.c de funciones
+1. Aplicación de ejemplo de Hola abierto en el código de Visual Studio mediante la ejecución de hello siguientes comandos:
 
    ```bash
    cd Lesson4
    code .
    ```
-2. Abra el archivo `main.c` y, luego, agregue las siguientes funciones después de blinkLED():
+2. Abra hello `main.c` de archivos y después agregue Hola siguientes funciones después de la función blinkLED():
 
    ```c
    static void turnOnLED()
@@ -56,7 +56,7 @@ Para seguir este procedimiento, debe haber completado correctamente el tutorial 
 
    ![Archivo main.c con funciones agregadas](media/iot-hub-intel-edison-lessons/lesson4/updated_app_c.png)
 
-3. Agregue las siguientes condiciones antes del bloqueo `else if` de la función `receiveMessageCallback`:
+3. Agregar Hola siguientes condiciones antes de hello `else if` bloque de hello `receiveMessageCallback` función:
 
    ```c
    else if (0 == strcmp((const char*)value, "\"on\""))
@@ -69,8 +69,8 @@ Para seguir este procedimiento, debe haber completado correctamente el tutorial 
    }
    ```
 
-   Ahora ha configurado la aplicación de ejemplo para responder a más instrucciones a través de mensajes. La instrucción "on" enciende el LED, mientras que la instrucción "off" lo apaga.
-4. Abra el archivo gulpfile.js y, después, agregue una función nueva antes de la función `sendMessage`:
+   Ahora ha configurado instrucciones toomore toorespond de aplicación de ejemplo de Hola a través de mensajes. Hola "en" instrucción activa el LED de Hola y Hola "off" instrucción desactiva Hola LED.
+4. Abra el archivo gulpfile.js de hello y, a continuación, agregar una nueva función antes de la función hello `sendMessage`:
 
    ```javascript
    var buildCustomMessage = function (messageId) {
@@ -85,28 +85,28 @@ Para seguir este procedimiento, debe haber completado correctamente el tutorial 
    ```
 
    ![Archivo Gulpfile.js con una función agregada][gulpfile]
-5. En la función `sendMessage`, reemplace la línea `var message = buildMessage(sentMessageCount);` por la nueva línea que se muestra en el siguiente fragmento:
+5. Hola `sendMessage` función, reemplace la línea hello `var message = buildMessage(sentMessageCount);` con la nueva línea de saludo se muestra en el siguiente fragmento de código de hello:
 
    ```javascript
    var message = buildCustomMessage(sentMessageCount);
    ```
-6. Guarde todos los cambios.
+6. Guarde todos los cambios de Hola.
 
-### <a name="deploy-and-run-the-sample-application"></a>Implementación y ejecución de la aplicación de ejemplo
-Implemente y ejecute la aplicación de ejemplo en Edison usando el comando siguiente:
+### <a name="deploy-and-run-hello-sample-application"></a>Implementar y ejecutar la aplicación de ejemplo de Hola
+Implementar y ejecutar la aplicación de ejemplo de Hola en Edison ejecutando Hola siguiente comando:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-El LED debería encenderse durante dos segundos y apagarse después otros dos segundos. El último mensaje "stop" detiene la ejecución de la aplicación de ejemplo.
+Debería ver Hola LED activar durante dos segundos y, a continuación, desactive para otro dos segundos. mensaje de "stop" último Hola deja de aplicación de ejemplo de Hola de ejecución.
 
 ![Encendido y apagado][on-and-off]
 
-¡Enhorabuena! Ha personalizado correctamente los mensajes que se envían a Edison desde IoT Hub.
+¡Enhorabuena! Mensajes de saludo que se envían tooEdison desde el centro de IoT se personalizó correctamente.
 
 ### <a name="summary"></a>Resumen
-En esta sección opcional, se explica cómo personalizar los mensajes para que la aplicación de ejemplo pueda controlar el comportamiento de encendido y apagado del LED de manera diferente.
+Esta sección opcional muestra cómo toocustomize mensajes para que la aplicación de ejemplo de Hola puedan controlar Hola activar y desactivar el comportamiento de hello LED de forma diferente.
 
 <!-- Images and links -->
 

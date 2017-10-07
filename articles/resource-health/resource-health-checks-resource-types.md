@@ -1,5 +1,5 @@
 ---
-title: "Tipos de recursos que se admiten a través de Azure Resource Health | Microsoft Docs"
+title: "aaaSupported tipos de recursos a través de estado de los recursos de Azure | Documentos de Microsoft"
 description: "Tipos de recursos que se admiten a través de Azure Resource Health"
 services: Resource health
 documentationcenter: 
@@ -14,102 +14,102 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/19/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: ece853d90f051828e07e48110c85dd9ad2dac5d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a37d5c33f6ef6fdfbce0daf392bc7fa57853c7d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Tipos de recursos y comprobaciones de estado en Azure Resource Health
-A continuación se muestra una lista completa de todas las comprobaciones que se ejecutan a través de Resource Health por tipos de recursos.
+A continuación se muestra una lista completa de todas las comprobaciones de hello ejecutadas a través de mantenimiento de recursos por tipos de recursos.
 
 ## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Funcionan todos los nodos de la memoria caché?</li><li>¿Se puede acceder a la memoria caché desde el centro de datos?</li><li>¿Ha alcanzado la memoria caché el número máximo de conexiones?</li><li> ¿Ha agotado la caché su memoria disponible? </li><li>¿Sufre la memoria caché un gran número de errores de página?</li><li>¿Tiene mucha carga la memoria caché?</li></ul>|
+|<ul><li>¿Están todos los nodos de la memoria caché de Hola y ejecutar?</li><li>¿Hola caché pueden alcanzar desde dentro de centros de datos de hello?</li><li>¿Tiene Hola que caché alcanza el número máximo de Hola de conexiones?</li><li> ¿Caché Hola agotó su memoria disponible? </li><li>¿Hola caché tiene un gran número de errores de página?</li><li>¿Se Hola caché con mucha carga?</li></ul>|
 
 ## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profile
 |Comprobaciones ejecutadas|
 |---|
-|<ul> <li>¿Se ha detenido, eliminado o configurado mal alguno de los puntos de conexión?</li><li>¿Pueden acceder las operaciones de configuración de la red CDN al portal complementario?</li><li>¿Hay problemas de entrega en curso con los puntos de conexión de la red CDN?</li><li>¿Pueden los usuarios cambiar la configuración de sus recursos de la red CDN?</li><li>¿Se propagan los cambios en la configuración a la velocidad esperada?</li><li>¿Pueden los usuarios administrar la configuración de CDN mediante Azure Portal, Powershell o la API?</li> </ul>|
+|<ul> <li>¿Cualquiera de los puntos de conexión de Hola se detuvo, mal configurada o eliminada?</li><li>¿Es accesible para las operaciones de configuración de red CDN portal complementario de hello?</li><li>¿Son hay problemas de entrega continua con hello puntos de conexión CDN?</li><li>¿Pueden los usuarios cambiar configuración Hola de sus recursos de red CDN?</li><li>¿Están propagando cambios de configuración a velocidad de hello esperada?</li><li>¿Pueden administrar los usuarios configuración de red CDN Hola mediante Hola portal de Azure, PowerShell o API de hello?</li> </ul>|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Está el servidor en funcionamiento?</li><li>¿Se ha completado el arranque del sistema operativo host?</li><li>¿Está l contenedor de la máquina virtual aprovisionado y encendido?</li><li>¿Hay conectividad de red entre el host y la cuenta de almacenamiento?</li><li>¿Se ha completado el arranque del SO invitado?</li><li>¿Hay mantenimiento planeado en curso?</li></ul>|
+|<ul><li>¿Depende de servidor de host de Hola y ejecutar?</li><li>¿Arranque de sistema operativo de host de hello ha completado?</li><li>¿Contenedor de máquina virtual de hello aprovisionado y encendida?</li><li>¿Hay conectividad de red entre el host de Hola y cuenta de almacenamiento de hello?</li><li>¿Hola arranque de sistema operativo invitado de hello ha completado?</li><li>¿Hay mantenimiento planeado en curso?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Se puede acceder a la cuenta desde el centro de datos?</li><li>¿Está disponible el proveedor de recursos de Cognitive Services?</li><li>¿Está disponible Cognitive Services en la región adecuada?</li><li>¿Se pueden realizar operaciones de lectura en la cuenta de almacenamiento que contiene los metadatos de recursos?</li><li>¿Se ha alcanzado la cuota de llamadas a la API?</li><li>¿Se ha alcanzado el límite de lectura de las llamadas a la API?</li></ul>|
+|<ul><li>¿Cuenta de hello pueden alcanzar desde dentro de centros de datos de hello?</li><li>¿Se Hola cognitivos proveedor de recursos de servicios disponibles?</li><li>¿Se Hola cognitivos servicio disponible en la región adecuada de hello?</li><li>¿Puede leer operaciones pueden realizarse en la cuenta de almacenamiento de Hola que contiene metadatos de recursos de hello?</li><li>¿Se ha alcanzado la cuota de llamada de API de hello?</li><li>¿Ha alcanzado el límite de lectura de hello API llamadas?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Funciona el servidor que hospeda esta máquina virtual?</li><li>¿Se ha completado el arranque del sistema operativo host?</li><li>¿Está l contenedor de la máquina virtual aprovisionado y encendido?</li><li>¿Hay conectividad de red entre el host y la cuenta de almacenamiento?</li><li>¿Se ha completado el arranque del SO invitado?</li><li>¿Hay mantenimiento planeado en curso?</li></ul>|
+|<ul><li>¿Servidor de hello hospeda esta máquina virtual una y ejecutando?</li><li>¿Arranque de sistema operativo de host de hello ha completado?</li><li>¿Contenedor de máquina virtual de hello aprovisionado y encendida?</li><li>¿Hay conectividad de red entre el host de Hola y cuenta de almacenamiento de hello?</li><li>¿Hola arranque de sistema operativo invitado de hello ha completado?</li><li>¿Hay mantenimiento planeado en curso?</li></ul>|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Pueden los usuarios enviar trabajos a Data Lake Analytics en la región?</li><li>¿Se ejecutan y completan correctamente los trabajos básicos en la región?</li><li>¿Pueden los usuarios enumerar elementos del catálogo en la región?</li>|
+|<ul><li>¿Pueden los usuarios enviar trabajos de análisis de tooData Lake en Hola región?</li><li>¿Hacer la región de Hola de ejecución y se completa correctamente en trabajos básica?</li><li>¿Pueden enumerar los usuarios elementos de catálogo en la región de hello?</li>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Pueden los usuarios cargar datos en Data Lake Store en la región?</li><li>¿Pueden los usuarios descargar datos de Data Lake Store en la región?</li></ul>|
+|<ul><li>¿Pueden cargar los usuarios datos tooData Lake almacén en la región de hello?</li><li>¿Pueden a los usuarios descargar datos de almacén de Data Lake en la región de hello?</li></ul>|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Ha habido solicitudes de bases de datos o recopilaciones que no se han atendido debido a una falta de disponibilidad del servicio DocumentDB?</li><li>¿Ha habido solicitudes de documentos que no se han atendido debido a una falta de disponibilidad del servicio DocumentDB?</li></ul>|
+|<ul><li>¿Se han producido las solicitudes de base de datos o una colección no sirven debido a falta de disponibilidad del servicio de documentos de tooa?</li><li>¿Se ha producido ninguna solicitud de documento no sirven debido a falta de disponibilidad del servicio de documentos de tooa?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Está conectado el túnel VPN?</li><li>¿Existen conflictos de configuración en la conexión?</li><li>¿Están configuradas correctamente las claves precompartidas?</li><li>¿Se puede acceder al dispositivo local de VPN?</li><li>¿Hay discrepancias en la directiva de seguridad de IPSec/IKE?</li><li>¿Está la conexión VPN de sitio a sitio aprovisionada correctamente o está en estado de error?</li><li>¿Está la conexión entre redes virtuales aprovisionada correctamente o está en estado de error?</li></ul>|
+|<ul><li>¿Está conectado el túnel VPN de hello?</li><li>¿Hay conflictos de configuración de conexión de hello?</li><li>¿Las claves previamente compartidas Hola configuradas correctamente?</li><li>¿Dispositivo de hello VPN local se encuentra accesible?</li><li>¿Hay discrepancias en la directiva de seguridad de IPSec/IKE Hola?</li><li>¿Es la conexión de VPN de S2S de hello aprovisionado correctamente o en estado de error?</li><li>¿Es la conexión de red virtual a red virtual de hello aprovisionado correctamente o en estado de error?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Se puede acceder desde Internet a VPN Gateway?</li><li>¿Está VPN Gateway en modo de espera?</li><li>¿Se ejecuta el servicio VPN en la puerta de enlace?</li></ul>|
+|<ul><li>¿Es accesible desde la puerta de enlace VPN de Hola Hola internet?</li><li>¿Se Hola puerta de enlace VPN en modo de suspensión?</li><li>¿Está ejecutando Hola servicio VPN en puerta de enlace de hello?</li></ul>|
 
 ## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li> ¿Se pueden realizar operaciones de tiempo de ejecución, como el registro, la instalación o el envío, en el espacio de nombres?</li></ul>|
+|<ul><li> ¿Se pueden realizar operaciones de tiempo de ejecución como registro, la instalación o envío en el espacio de nombres de hello?</li></ul>|
 
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Está el SO del host en funcionamiento?</li><li>¿Se puede acceder a workspaceCollection desde fuera del centro de datos?</li><li>¿Está disponible el proveedor de recursos de Power BI?</li><li>¿Está disponible el servicio de PowerBI en la región adecuada?</li></ul>|
+|<ul><li>¿Depende de los sistemas operativos de host de Hola y ejecutar?</li><li>¿Es accesible desde fuera de centro de datos de Hola Hola workspaceCollection?</li><li>¿Se Hola proveedor de recursos de Power BI disponible?</li><li>¿Se Hola PowerBI Service disponible en la región adecuada de hello?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Se pueden realizar operaciones de diagnóstico en el clúster?</li></ul>|
+|<ul><li>¿Se pueden realizar operaciones de diagnóstico en el clúster de hello?</li></ul>|
 
 ## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li> ¿Se han producido inicios de sesión en la base de datos?</li></ul>|
+|<ul><li> ¿Ha habido una base de datos de los inicios de sesión toohello?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Están en funcionamiento todos los hosts en los que se ejecuta el trabajo?</li><li>¿No pudo iniciarse el trabajo?</li><li>¿Hay actualizaciones del runtime en curso?</li><li>¿Está el trabajo en un estado esperado (por ejemplo, en ejecución o detenido por el cliente)?</li><li>¿Ha encontrado el trabajo excepciones de memoria insuficiente?</li><li>¿Hay actualizaciones del proceso programado en curso?</li><li>¿Está disponible Execution Manager (plan de control)?</li></ul>|
+|<ul><li>¿Son todos los hosts de Hola donde se ejecuta una y ejecutar trabajo Hola?</li><li>¿Era Hola trabajo no se puede toostart?</li><li>¿Hay actualizaciones del runtime en curso?</li><li>¿Es trabajo hello en el estado esperado (por ejemplo en ejecución o detenido por el cliente)?</li><li>¿Hello trabajo encontró fuera de las excepciones de memoria?</li><li>¿Hay actualizaciones del proceso programado en curso?</li><li>¿Se Hola Administrador de ejecución (plan de control) disponible?</li></ul>|
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Está el servidor en funcionamiento?</li><li>¿Se ejecuta Internet Information Services (IIS)?</li><li>¿Funciona el equilibrador de carga?</li><li>¿Se puede acceder al plan de servicio web desde el centro de datos?</li><li>¿Hospeda la cuenta de almacenamiento el contenido de los sitios de serverFarm disponible?</li></ul>|
+|<ul><li>¿Depende de servidor de host de Hola y ejecutar?</li><li>¿Se ejecuta Internet Information Services (IIS)?</li><li>¿Se está ejecutando el equilibrador de carga de hello?</li><li>¿Hola Plan del servicio Web pueden alcanzar desde dentro de centros de datos de hello?</li><li>¿Está Hola almacenamiento cuenta hospedaje Hola contenido de los sitios de la granja de servidores de hello disponible?</li></ul>|
 
 ## <a name="microsoftwebsites"></a>Microsoft.web/sites
 |Comprobaciones ejecutadas|
 |---|
-|<ul><li>¿Está el servidor en funcionamiento?</li><li>¿Se ejecuta Internet Information Server?</li><li>¿Funciona el equilibrador de carga?</li><li>¿Se puede acceder a la aplicación web desde el centro de datos?</li><li>¿Hospeda la cuenta de almacenamiento el contenido del sitio disponible?</li></ul>|
+|<ul><li>¿Depende de servidor de host de Hola y ejecutar?</li><li>¿Se ejecuta Internet Information Server?</li><li>¿Se está ejecutando el equilibrador de carga de hello?</li><li>¿Hola aplicación Web se puede acceder desde dentro de centros de datos de hello?</li><li>¿Cuenta de almacenamiento de hello hospeda contenido de sitio de hello disponible?</li></ul>|
 
-Consulte estos recursos para más información acerca de Resource Health:
--  [Introducción a Azure Resource Health](Resource-health-overview.md)
+Consulte estos toolearn recursos más información sobre el estado de los recursos:
+-  [Estado de los recursos tooAzure Introducción](Resource-health-overview.md)
 -  [Preguntas más frecuentes acerca de Azure Resource Health](Resource-health-faq.md)
 

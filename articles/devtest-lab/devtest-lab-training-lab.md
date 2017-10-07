@@ -1,6 +1,6 @@
 ---
-title: Uso de Azure DevTest Labs para entrenamiento | Microsoft Docs
-description: Aprenda a usar Azure DevTest Labs para escenarios de entrenamiento.
+title: aaaUse laboratorios de desarrollo y pruebas de Azure para el entrenamiento | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse laboratorios de desarrollo y pruebas de Azure para escenarios de aprendizaje."
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: steved0x
@@ -14,87 +14,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
 ms.author: sdanie
-ms.openlocfilehash: a85999b7963e9a07d3f91ec47f298f91439c0808
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4a5f44a282d8f6a58849c730ff89237ccff39ca8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Uso de Azure DevTest Labs para entrenamiento
-Azure DevTest Labs se puede utilizar para implementar muchos escenarios claves además de los de desarrollo y pruebas. Uno de estos escenarios es la configuración de un laboratorio para entrenamiento. Azure DevTest Labs le permite crear un laboratorio en el que puede proporcionar plantillas personalizadas que cada aprendiz puede usar para crear entornos idénticos y aislados con fines de entrenamiento. Puede aplicar directivas para garantizar que los entornos de entrenamiento estarán disponibles para cada aprendiz solo cuando sea necesario y cuando contengan los suficientes recursos necesarios como, por ejemplo, máquinas virtuales, para el entrenamiento. Por último, puede compartir fácilmente el laboratorio con los aprendices y estos podrán acceder fácilmente a él con un solo clic.
+Laboratorios de desarrollo y pruebas de Azure puede ser usado tooimplement muchos escenarios claves de prueba/toodev de suma. Uno de estos escenarios es tooset un laboratorio para el entrenamiento. Laboratorios de desarrollo y pruebas de Azure permite toocreate un laboratorio donde se pueden especificar plantillas personalizadas que cada aprendiz puede usar entornos de toocreate idénticos y aislado para el entrenamiento. Puede aplicar tooensure directivas que entornos de entrenamiento son aprendiz tooeach disponible solo cuando se necesiten y contienen suficientes recursos - como máquinas virtuales - necesarias para el entrenamiento de Hola. Por último, puede compartir fácilmente laboratorio Hola con prácticas, que puede tener acceso a un solo clic.
 
 ![Uso de DevTest Labs para entrenamiento](./media/devtest-lab-training-lab/devtest-lab-training.png)
 
-Azure DevTest Labs cumple los siguientes requisitos necesarios para llevar a cabo el entrenamiento en cualquier entorno virtual: 
+Laboratorios de desarrollo y pruebas Azure cumple Hola según los requisitos que son necesarios tooconduct entrenamiento en cualquier entorno virtual: 
 
 * Los aprendices no pueden ver las máquinas virtuales creadas por otros aprendices
 * Cada máquina de entrenamiento debe ser idéntica
 * Los aprendices pueden aprovisionar rápidamente sus entornos de entrenamiento
-* Se pueden controlar los costos garantizando que los aprendices no obtengan más máquinas virtuales de las necesarias para el entrenamiento y también apagando estas cuando no estén en uso
-* Se puede compartir fácilmente el laboratorio de entrenamiento con cada aprendiz
-* El laboratorio de entrenamiento se puede volver a usar una y otra vez
+* Controlar los costos al garantizar que prácticas no pueden obtener más máquinas virtuales de las se necesitan para el entrenamiento de Hola y también apagar las máquinas virtuales cuando no está utilizando
+* Compartir fácilmente el laboratorio de entrenamiento de hello con cada aprendiz
+* Laboratorio de entrenamiento de Hola de reutilización y otra vez
 
-En este artículo, aprenderá acerca de las diversas características de Azure DevTest Labs que se pueden utilizar para cumplir los requisitos de entrenamiento descritos anteriormente y los pasos detallados que puede seguir para configurar un laboratorio para el entrenamiento.  
+En este artículo, aprenderá acerca de diversas características de laboratorios de desarrollo y pruebas de Azure que se pueden usar toomeet Hola descrito anteriormente requerimientos de capacitación y pasos detallados que puede seguir tooset un laboratorio para el entrenamiento.  
 
 ## <a name="implementing-training-with-azure-devtest-labs"></a>Implementación de un entrenamiento con Azure DevTest Labs
-1. **Creación del laboratorio** 
+1. **Cree el laboratorio de Hola** 
    
-    Los laboratorios son el punto de partida en Azure DevTest Labs. Una vez creado un laboratorio, puede realizar tareas tales como agregar usuarios (aprendices) al laboratorio, establecer directivas para controlar los costos, definir imágenes de máquinas virtuales que se pueden crear rápidamente y muchas más.   
+    Laboratorios son Hola punto inicial en los laboratorios de desarrollo y pruebas de Azure. Una vez que cree un laboratorio, puede realizar tareas tales como agregar laboratorio toohello de usuarios (prácticas), los costos de conjunto de directivas toocontrol, definen imágenes de máquina virtual que pueden crear rápidamente y mucho más.   
    
-    Para más información, haga clic en los vínculos de la tabla siguiente:
+    Más información, haga clic en vínculos de hello en hello en la tabla siguiente:
    
    | Tarea | Conocimientos que adquirirá |
    | --- | --- |
-   | [Creación de un laboratorio con Laboratorios de desarrollo y pruebas de Azure](devtest-lab-create-lab.md) |Aprenderá a crear un laboratorio en Azure DevTest Labs en Azure Portal. |
+   | [Creación de un laboratorio con Laboratorios de desarrollo y pruebas de Azure](devtest-lab-create-lab.md) |Obtenga información acerca de cómo toocreate un laboratorio de prácticas de desarrollo y pruebas de Azure de Hola portal de Azure. |
 2. **Creación de máquinas virtuales de entrenamiento en cuestión de minutos mediante imágenes listas para usar de Marketplace e imágenes personalizadas** 
    
-    Puede elegir imágenes listas para usar a partir de una gran variedad de imágenes de Azure Marketplace y hacer que estas estén disponibles para los aprendices del laboratorio. Si estas imágenes no satisfacen sus necesidades, puede crear una imagen personalizada mediante la creación de una máquina virtual de laboratorio con una imagen lista para usar de Azure Marketplace. Para ello, instale todo el software que necesita para el entrenamiento y guarde la máquina virtual como imagen personalizada en el laboratorio. 
+    Puede elegir imágenes prediseñadas desde una gran variedad de imágenes en hello Azure Marketplace y ponerlos a disposición de prácticas de hello en laboratorio Hola. Si imágenes prediseñadas hello no satisfacen sus necesidades, puede crear una imagen personalizada mediante la creación de un máquina virtual con una imagen listos para su uso de Azure Marketplace, instalar todo el software de Hola que necesita para el entrenamiento de Hola y conseguir un ahorro Hola VM como imagen personalizada en el laboratorio de Hola de laboratorio. 
    
-    Para más información, haga clic en los vínculos de la tabla siguiente:
+    Más información, haga clic en vínculos de hello en hello en la tabla siguiente:
    
    | Tarea | Conocimientos que adquirirá |
    | --- | --- |
-   | [Configuración de imágenes de Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Aprenda a incluir imágenes de Azure Marketplace en una lista de permitidos y haga que estén disponibles para su selección solo las imágenes que desee para el entrenamiento. |
-   | [Creación de una imagen personalizada](devtest-lab-create-template.md) |Cree una imagen personalizada instalando previamente el software que necesita para el entrenamiento para que los aprendices puedan crear rápidamente una máquina virtual con la imagen personalizada. |
+   | [Configuración de imágenes de Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Obtenga información acerca de cómo puede imágenes de Azure Marketplace de lista blanca de direcciones; hacer que estén disponibles para las imágenes de Hola de selección única que desee para el entrenamiento de Hola. |
+   | [Creación de una imagen personalizada](devtest-lab-create-template.md) |Crear una imagen personalizada mediante la instalación previamente el software de Hola que necesitará para el entrenamiento de Hola para que prácticas pueden crear rápidamente una máquina virtual con una imagen personalizada hello. |
 3. **Creación de plantillas reutilizables para las máquinas de entrenamiento** 
    
-    Una fórmula en Azure DevTest Labs es una lista de valores de propiedad predeterminados que se usan para crear una máquina virtual. Puede crear una fórmula en el laboratorio seleccionando una imagen, un tamaño de máquina virtual (una combinación de CPU y RAM) y una red virtual. Cada aprendiz puede ver la fórmula en el laboratorio y usarla para crear una máquina virtual. 
+    Una fórmula de laboratorios de desarrollo y pruebas de Azure es que una lista de valores de propiedad predeterminados utiliza toocreate una máquina virtual. Puede crear una fórmula en el laboratorio de hello escogiendo una imagen, un tamaño de memoria virtual (una combinación de CPU y RAM) y una red virtual. Cada aprendiz puede ver fórmula hello en el laboratorio de Hola y usarlo toocreate una máquina virtual. 
    
-    Para más información, haga clic en los vínculos de la tabla siguiente:
+    Más información, haga clic en vínculos de hello en hello en la tabla siguiente:
    
    | Tarea | Conocimientos que adquirirá |
    | --- | --- |
-   | [Administración de fórmulas de DevTest Labs para crear máquinas virtuales](devtest-lab-manage-formulas.md) |Aprenda cómo crear una fórmula en el laboratorio seleccionando una imagen, un tamaño de máquina virtual (una combinación de CPU y RAM) y una red virtual. |
+   | [Administrar las fórmulas de laboratorios de desarrollo y pruebas toocreate máquinas virtuales](devtest-lab-manage-formulas.md) |Aprenda cómo crear una fórmula en el laboratorio seleccionando una imagen, un tamaño de máquina virtual (una combinación de CPU y RAM) y una red virtual. |
 4. **Control de los costos**
    
-    Azure DevTest Labs le permite establecer una directiva en el laboratorio para especificar el número máximo de máquinas virtuales que un aprendiz puede crear en el laboratorio. 
+    Azure laboratorios de desarrollo y pruebas permite tooset una directiva de hello laboratorio toospecify Hola número máximo de máquinas virtuales que se pueden crear mediante un aprendiz en laboratorio Hola. 
    
-    Si está realizando un entrenamiento de varios días y desea detener todas las máquinas virtuales en un momento determinado del día y, posteriormente, reiniciarlas automáticamente al día siguiente, lo puede hacer fácilmente mediante el establecimiento de directivas de apagado e inicio automático en el laboratorio. 
+    Si se realiza el entrenamiento de día y desea toostop todas las máquinas virtuales de hello en un momento determinado del día de Hola y automáticamente reinícielos Hola siguiente día, puede fácilmente hacerlo por apagado automático de configuración y directivas en el laboratorio de Hola de inicio a automático. 
    
-    Por último, al finalizar el entrenamiento puede eliminar todas las máquinas virtuales a la vez mediante la ejecución de un sencillo script de PowerShell. 
+    Por último, una vez completado entrenamiento puede eliminar todas las máquinas virtuales de Hola de a la vez mediante la ejecución de un script de PowerShell único. 
    
-    Para más información, haga clic en los vínculos de la tabla siguiente:
-   
-   | Tarea | Conocimientos que adquirirá |
-   | --- | --- |
-   | [Definición de directivas de laboratorio](devtest-lab-set-lab-policy.md) |Controle los costos mediante el establecimiento de directivas en el laboratorio. |
-   | [Eliminación de todas las máquinas virtuales del laboratorio mediante un script de PowerShell](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Elimine todos los laboratorios en una sola operación al finalizar el entrenamiento. |
-5. **Uso compartido del laboratorio con cada aprendiz**
-   
-    Se puede acceder directamente a los laboratorios mediante un vínculo que puede compartir con los aprendices. Ni siquiera es necesario que estos tengan una cuenta de Azure, siempre que dispongan de una [cuenta Microsoft](devtest-lab-faq.md#what-is-a-microsoft-account). Los aprendices no pueden ver las máquinas virtuales creadas por otros aprendices.  
-   
-    Para más información, haga clic en los vínculos de la tabla siguiente:
+    Más información, haga clic en vínculos de hello en hello en la tabla siguiente:
    
    | Tarea | Conocimientos que adquirirá |
    | --- | --- |
-   | [Incorporación de un aprendiz a un laboratorio de Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Utilice Azure Portal para agregar aprendices al laboratorio de entrenamiento. |
-   | [Incorporación de aprendices al laboratorio mediante un script de PowerShell](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Use PowerShell para automatizar la incorporación de aprendices al laboratorio de entrenamiento. |
-   | [Obtención de un vínculo al laboratorio](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Aprenda cómo se puede acceder directamente a un laboratorio a través de un hipervínculo. |
-6. **Reutilización sin límites del laboratorio** 
+   | [Definición de directivas de laboratorio](devtest-lab-set-lab-policy.md) |Controlar los costos mediante el establecimiento de directivas en el laboratorio de Hola. |
+   | [Eliminar el laboratorio de hello todas las máquinas virtuales con un script de PowerShell](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Eliminar todas las prácticas de hello en una sola operación una vez completado el entrenamiento de Hola. |
+5. **Compartir laboratorio Hola con cada aprendiz**
    
-    Puede automatizar la creación de laboratorios, incluso con una configuración personalizada, mediante la creación de una plantilla de Resource Manager que puede utilizar para crear laboratorios idénticos una y otra vez. 
+    Se puede acceder directamente a los laboratorios mediante un vínculo que puede compartir con los aprendices. Sus prácticas no incluso tienen toohave una cuenta de Azure, siempre tienen un [cuenta de Microsoft](devtest-lab-faq.md#what-is-a-microsoft-account). Los aprendices no pueden ver las máquinas virtuales creadas por otros aprendices.  
    
-    Para más información, haga clic en los vínculos de la tabla siguiente:
+    Más información, haga clic en vínculos de hello en hello en la tabla siguiente:
+   
+   | Tarea | Conocimientos que adquirirá |
+   | --- | --- |
+   | [Agregar un laboratorio de prácticas tooa en los laboratorios de desarrollo y pruebas de Azure](devtest-lab-add-devtest-user.md) |Use hello tooadd portal Azure prácticas tooyour entrenamiento laboratorio. |
+   | [Agregar el laboratorio de prácticas toohello mediante un script de PowerShell](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Utilice tooautomate PowerShell agregar laboratorio de prácticas tooyour entrenamiento. |
+   | [Obtener un laboratorio de toohello de vínculo](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Aprenda cómo se puede acceder directamente a un laboratorio a través de un hipervínculo. |
+6. **Volver a usar una y otra vez laboratorio Hola** 
+   
+    Puede automatizar la creación de laboratorio, incluida la configuración personalizada, crear una plantilla de administrador de recursos y utilizándolo laboratorios idénticos toocreate una y otra vez. 
+   
+    Más información, haga clic en vínculos de hello en hello en la tabla siguiente:
    
    | Tarea | Conocimientos que adquirirá |
    | --- | --- |

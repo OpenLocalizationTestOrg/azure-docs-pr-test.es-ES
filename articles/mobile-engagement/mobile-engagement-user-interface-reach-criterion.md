@@ -1,6 +1,6 @@
 ---
-title: 'Interfaz de usuario de Azure Mobile Engagement: criterio de cobertura'
-description: "Aprenda a usar los criterios de orientación para enviar campañas de inserción a un subconjunto seleccionado de usuarios mediante Azure Mobile Engagement"
+title: aaaAzure interfaz de usuario de Mobile Engagement - alcanzar criterio
+description: "Obtenga información acerca de cómo toouse destinatarios criterios toosend inserción campañas tooa Seleccionar subconjunto de los usuarios mediante Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 803b44721d0ab1ac7b5a8074e18857fc57adb724
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d956add1b7edc1d49451596019c5a4dec098d724
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>Cómo usar los criterios de orientación para enviar campañas de inserción a un subconjunto seleccionado de usuarios
-Orientar su audiencia según criterios específicos mediante el botón "Nuevos criterios" es uno de los conceptos más eficaces de Azure Mobile Engagement, que le ayuda a enviar notificaciones de inserción relevantes a las que responderán los clientes en lugar de enviar spam a todo el mundo. Puede limitar la audiencia basándose en criterios estándar y simular inserciones para determinar cuántas personas recibirán la notificación.
+# <a name="how-toouse-targeting-criteria-toosend-push-campaigns-tooa-select-subset-of-your-users"></a>¿Cómo toouse destinatarios criterios toosend inserción campañas tooa Seleccionar subconjunto de usuarios
+La audiencia de destino según unos criterios específicos con el botón de "Nuevo criterio" hello es uno de los conceptos de hello más eficaces en Azure Mobile Engagement que le ayuda a que enviar relevante inserción notificaciones de que los clientes de hello responderá tooinstead de spam todos los usuarios. Puede limitar la audiencia basándose en criterios estándares y simular inserciones toodetermine cuántas personas recibirán la notificación de Hola.
 
 **Consulte también:**
 
 * [Documentación de la interfaz de usuario - Alcance - Nueva campaña de inserción][Link 27]
 
 ## <a name="audience-criteria-can-include"></a>Dentro de los criterios de audiencia se pueden incluir:
-* ** Technicals: ** puede tener como destino en función de la misma información técnica que puede ver en las secciones de análisis y el Monitor. **Consulte también**: [Documentación de la interfaz de usuario - Análisis][Link 15], [Documentación de la interfaz de usuario - Supervisión][Link 16]
-* **Ubicación:** las aplicaciones que usan "informes de ubicación en tiempo real" con el geovallado pueden usar la ubicación geográfica como criterio para dirigirse a una audiencia desde la ubicación de GPS. La llamada "Informes de ubicación de área diferida" también se puede usar para orientarse a una audiencia desde la ubicación del teléfono móvil ("Informes de ubicación en tiempo real" e " Informes de ubicación de área diferida" deben activarse desde el SDK) **Consulte también:** [Documentación del SDK - iOS -][Link 5], [Documentación del SDK - Android - Integración][Link 5]
-* **Comentarios sobre la cobertura:** puede tener como destino su audiencia según sus comentarios de notificaciones de cobertura anteriores a través de comentarios sobre la cobertura de Anuncios, Sondeos e Inserciones de datos. Esto le permite orientarse mejor a la audiencia después de dos o tres campañas de cobertura que la primera vez. También puede usarse para filtrar los usuarios que ya han recibido una notificación con contenido similar, al establecer una campaña para NO enviarse a los usuarios que ya han recibido una determinada campaña anterior. Incluso puede excluir a los usuarios incluidos en una campaña específica que está todavía activa para recibir inserciones nuevas. **Vea también:** [Documentación de la interfaz de usuario - Cobertura - Insertar contenido][Link 29]
-* **Seguimiento de la instalación:** puede realizar un seguimiento de información basada en dónde instalaron los usuarios su aplicación. **Consulte también:** [Documentación de interfaz de usuario - Configuración][Link 20]
-* **Perfil de usuario:** puede orientarse según la información de usuario estándar y basándose en la información de la aplicación personalizada que ha creado. Aquí se incluye a los usuarios que han iniciado sesión y a los que han respondido preguntas específicas que les ha solicitado definir en la propia aplicación en lugar de tan solo cómo han respondido a campañas anteriores. Toda la información de la aplicación definida para la aplicación aparece en esta lista.
-* Segmentos: también puede orientarse en función de segmentos que ha creado según el comportamiento específico del usuario que contiene varios criterios. Todos los segmentos definidos para la aplicación aparecen en esta lista. **Consulte también:** [Documentación de interfaz de usuario - Segmentos][Link 18]
-* **Información de la aplicación:** es posible crear etiquetas de información de aplicación personalizadas desde "Configuración" para realizar un seguimiento del comportamiento de los usuarios. **Consulte también:** [Documentación de interfaz de usuario - Configuración][Link 20]
+* ** Technicals: ** puede tener como destino en función de hello misma información técnica puede ver en hello análisis y secciones de Monitor. **Consulte también**: [Documentación de la interfaz de usuario - Análisis][Link 15], [Documentación de la interfaz de usuario - Supervisión][Link 16]
+* **Ubicación:** las aplicaciones que usan "informes de ubicación en tiempo Real" con barrera geográfica pueden usar ubicación geográfica como una tootarget criterios una audiencia de hello ubicación GPS. Llamada "Informes de ubicación de área diferida" también ser utilizado tootarget una audiencia de ubicación de teléfono móvil de hello ("informes de ubicación en tiempo Real" y "Diferida área informes de ubicación" deben activarse desde Hola SDK). **Consulte también:**[Documentación del SDK - iOS -][Link 5], [Documentación del SDK - Android - Integración][Link 5]
+* **Comentarios sobre la cobertura:** puede tener como destino su audiencia según sus comentarios de notificaciones de cobertura anteriores a través de comentarios sobre la cobertura de Anuncios, Sondeos e Inserciones de datos. Esto le permite destino toobetter la audiencia después de dos o tres alcancen las campañas que se podría Hola la primera vez. Se puede utilizar también toofilter los usuarios que ya ha recibido una notificación con contenido similar, estableciendo una campaña tooNOT enviará toousers que han recibido una determinada campaña anterior. Incluso puede excluir a los usuarios incluidos en una campaña específica que está todavía activa para recibir inserciones nuevas. **Vea también:**[Documentación de la interfaz de usuario - Cobertura - Insertar contenido][Link 29]
+* **Seguimiento de la instalación:** puede realizar un seguimiento de información basada en dónde instalaron los usuarios su aplicación. **Consulte también:**[Documentación de interfaz de usuario - Configuración][Link 20]
+* **Perfil de usuario:** puede destino basándose en información de usuario estándar y usted puede destino basándose en información de la aplicación personalizada de Hola que haya creado. Esto incluye los usuarios que han iniciado sesión en y los usuarios que responder a preguntas específicas que se ha solicitado tooset en hello propia aplicación en lugar de simplemente cómo han respondido tooprevious campañas. Toda la información de la aplicación definida para la aplicación aparece en esta lista.
+* Segmentos: también puede orientarse en función de segmentos que ha creado según el comportamiento específico del usuario que contiene varios criterios. Todos los segmentos definidos para la aplicación aparecen en esta lista. **Consulte también:**[Documentación de interfaz de usuario - Segmentos][Link 18]
+* **Información de la aplicación:** etiquetas de información de aplicación personalizadas se pueden crear de comportamiento del usuario tootrack "Configuración". **Consulte también:**[Documentación de interfaz de usuario - Configuración][Link 20]
 
 ## <a name="example"></a>Ejemplo:
-Si desea insertar un anuncio solo en el subconjunto de los usuarios que han realizado una acción de compra en la aplicación.
+Si desea que toopush un anuncio solo toohello subjuego de los usuarios que ha llevado a cabo una aplicación de compra acción.
 
-1. Vaya a la página de configuración de la aplicación, seleccione el menú "App info" (Información de la aplicación) y seleccione "New app info" (Nueva información de la aplicación).
+1. Ir a página de configuración de aplicación tooyour, seleccione el menú de "Información de la aplicación" hello y seleccione "Nueva información de aplicación"
 2. Registre una nueva información de aplicación de booleano denominada "inAppPurchase"
-3. Haga que la aplicación establezca esta información de aplicación en "true" cuando el usuario realice correctamente una compra en la aplicación (mediante el uso de la función sendAppInfo ("inAppPurchase",...))
-4. Si no desea hacerlo desde la aplicación, puede hacerlo desde el backend mediante el uso de la API del dispositivo)
-5. A continuación, solo necesita crear el anuncio con un criterio que limite la audiencia a los usuarios que tienen "inAppPurchase" establecido en "true")
+3. Hacer que su aplicación establecer esta información de aplicación demasiado "true" cuando el usuario de hello correctamente realiza una compra en la aplicación (mediante el uso de hello sendAppInfo ("inAppPurchase",...) función)
+4. Si no desea toodo esto desde la aplicación, puede hacerlo desde el back-end a través de API de dispositivo de hello)
+5. A continuación, simplemente deberá toocreate anuncio, con un criterio limitar su toousers de audiencia tener "inAppPurchase" establecido demasiado "true")
 
 > [!NOTE]
-> La orientación basada en criterios que no sean etiquetas de información de aplicación requiere que Azure Mobile Engagement recopile información de los dispositivos de los usuarios antes de enviar la inserción para poder provocar un retraso. Las opciones de configuración de inserción complejas (como la actualización de insignias) también pueden retrasar las inserciones. El uso de una campaña de "Monoestable" de la API de inserción es el método de inserción de más rápido absoluto en Azure Mobile Engagement. Utilizar solo etiquetas de información de aplicación como criterios de inserción para una campaña de cobertura (ya sea desde la API de cobertura o la interfaz de usuario) es el siguiente método más rápido, dado que las etiquetas de información de la aplicación se almacenan en el servidor. Usar otros criterios de orientación para una campaña de inserción es el método de inserción más flexible pero más lento, ya que Azure Mobile Engagement tiene que consultar los dispositivos para enviar la campaña.
+> Según los criterios que no sea de etiquetas de información de aplicación de destino, requiere información de toogather de Azure Mobile Engagement de dispositivos de los usuarios antes de inserción de Hola se envía y puede producir un retraso. Las opciones de configuración de inserción complejas (como la actualización de insignias) también pueden retrasar las inserciones. Usando una campaña "Monoestable" de hello API de inserción es absoluta método de inserción hello más rápido de Azure Mobile Engagement. Usar sólo las etiquetas de información de aplicación como criterios de inserción para una campaña de cobertura (ya sea de hello API de cobertura o hello interfaz de usuario) es Hola next más rápido (método) puesto que las etiquetas de información de aplicación se almacenan en el lado del servidor de Hola. Usando otros criterios de destino para una campaña de inserción es Hola método de inserción más flexible pero más lento debido a que Azure Mobile Engagement tiene dispositivos de hello tooquery de campaña de orden toosend Hola.
 
 ![Reach-Criterion1][29] 
 

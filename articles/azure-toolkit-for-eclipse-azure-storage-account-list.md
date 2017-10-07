@@ -1,6 +1,6 @@
 ---
-title: Lista de cuentas de almacenamiento de Azure
-description: "Administrar la configuración de su cuenta de almacenamiento con el Kit de herramientas de Azure para Eclipse"
+title: aaaAzure lista de cuentas de almacenamiento
+description: "Administrar la configuración de la cuenta de almacenamiento mediante Hola Kit de herramientas de Azure para Eclipse"
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,90 +14,90 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: f859efa389d3fe0b4b7b16255d57f1aa13123319
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 35e25881ca95ae4050a26283e4726d9549b37f46
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-account-list"></a>Lista de cuentas de almacenamiento de Azure
-Las cuentas de almacenamiento de Azure permiten el uso de las ubicaciones de descarga para su JDK, el servidor de aplicaciones y los componentes arbitrarios, así como para almacenar el estado cuando se usa el almacenamiento en caché. Eclipse mantiene una lista de cuentas de almacenamiento conocidas que están disponibles para sus proyectos en el área de trabajo de Eclipse. Para abrir el cuadro de diálogo **Cuentas de almacenamiento** que se usa para administrar esa lista, en Eclipse, haga clic en **Ventana**, en **Preferencias**, expanda **Azure** y luego haga clic en **Cuentas de almacenamiento**.
+Almacenamiento de Azure cuentas permiten descargar toobe de ubicaciones que se usa para el JDK, servidor de aplicaciones y componentes arbitrarios, así como para almacenar el estado cuando se usa el almacenamiento en caché. Eclipse mantiene una lista de cuentas de almacenamiento conocidas que son proyectos tooyour disponible en el área de trabajo de Eclipse. Hola tooopen **cuentas de almacenamiento** cuadro de diálogo, que es usado toomanage que enumeran, en Eclipse, haga clic en **ventana**, haga clic en **preferencias**, expanda **Azure** y, a continuación, haga clic en **cuentas de almacenamiento**.
 
-Lo siguiente muestra el cuadro de diálogo **Cuentas de almacenamiento** .
+siguiente Hello muestra hello **cuentas de almacenamiento** cuadro de diálogo.
 
 ![][ic719496]
 
-También se puede abrir este cuadro de diálogo desde un vínculo **Cuentas** en cuadros de diálogo que usan cuentas de almacenamiento, como los siguientes:
+También se puede abrir este cuadro de diálogo desde un **cuentas** vínculo en los cuadros de diálogo que utilizan cuentas de almacenamiento, como siguiente hello:
 
-* La pestaña **JDK** del cuadro de diálogo **Configuración del servidor**.
-* La pestaña **Servidor** del cuadro de diálogo **Configuración del servidor**.
-* El cuadro de diálogo **Agregar componente** .
-* El cuadro de diálogo de propiedades de **Almacenamiento en caché** .
+* Hola **JDK** ficha de hello **configuración del servidor** cuadro de diálogo.
+* Hola **Server** ficha de hello **configuración del servidor** cuadro de diálogo.
+* Hola **Agregar componente** cuadro de diálogo.
+* Hola **Caching** cuadro de diálogo Propiedades.
 
-## <a name="to-import-your-storage-accounts-using-a-publish-settings-file"></a>Para importar sus cuentas de almacenamiento mediante un archivo de configuración de publicación
-1. Dentro del cuadro de diálogo **Cuentas de almacenamiento**, haga clic en **Importar desde el archivo PUBLISH-SETTINGS**.
+## <a name="tooimport-your-storage-accounts-using-a-publish-settings-file"></a>tooimport el almacenamiento de cuentas con un archivo de configuración de publicación
+1. Dentro de hello **cuentas de almacenamiento** cuadro de diálogo, haga clic en **importar desde el archivo de configuración de publicación**.
 
-2. (Omita este paso si ya ha guardado un archivo de configuración de publicación en su máquina local). En el cuadro de diálogo **Importar desde el archivo de suscripción**, haga clic en **Descargar archivo PUBLISH-SETTINGS**. Si todavía no ha iniciado sesión en su cuenta de Azure, se le solicitará que lo haga. Después, se le solicitará que guarde un archivo de configuración de publicación de Azure. (Puede ignorar las instrucciones resultantes que se muestran en las páginas de inicio de sesión: se ofrecen por el portal de Azure y están pensadas para los usuarios de Visual Studio.) Guárdelo en su equipo local.
+2. (Omita este paso si ya ha guardado un equipo local tooyour del archivo de publicación configuración). Hola **Import Subscription Information** cuadro de diálogo, haga clic en **Download PUBLISH-SETTINGS File**. Si no ha iniciado ya sesión en su cuenta de Azure, es posible que toolog solicitada en. A continuación, se le pedirá una Azure toosave archivo de configuración de publicación. (Puede omitir instrucciones de hello resultante que se muestra en las páginas de inicio de sesión de hello - se proporcionan por hello portal de Azure y están pensadas para usuarios de Visual Studio.) Guárdelo tooyour de equipo local.
 
-3. Todavía en el cuadro de diálogo **Importar información de suscripción**, haga clic en el botón **Examinar**, seleccione el archivo de configuración de publicación que guardó localmente anteriormente y luego haga clic en **Abrir**.
+3. Aún en hello **Import Subscription Information** cuadro de diálogo, haga clic en hello **examinar** button, seleccione Hola publicar el archivo de configuración que ha guardado localmente anteriormente y, a continuación, haga clic en **abrir**.
 
-4. Haga clic en **Aceptar** para cerrar el cuadro de diálogo **Importar información de la suscripción**.
+4. Haga clic en **Aceptar** tooclose hello **Import Subscription Information** cuadro de diálogo.
 
-## <a name="to-create-a-new-storage-account"></a>Para crear una cuenta de almacenamiento
-1. En el cuadro de diálogo **Cuentas de almacenamiento**, haga clic en **Agregar**.
+## <a name="toocreate-a-new-storage-account"></a>toocreate una cuenta de almacenamiento
+1. Dentro de hello **cuentas de almacenamiento** cuadro de diálogo, haga clic en **agregar**.
 
-2. En el cuadro de diálogo **Agregar cuenta de almacenamiento**, haga clic en **Nueva**.
+2. Dentro de hello **agregar una cuenta de almacenamiento** cuadro de diálogo, haga clic en **nuevo**.
 
-3. En el cuadro de diálogo **Nueva cuenta de almacenamiento** , especifique los siguientes valores:
+3. Dentro de hello **nueva cuenta de almacenamiento** cuadro de diálogo, especifique los valores siguientes de hello:
 
    * Nombre de la cuenta de almacenamiento.
 
-   * Ubicación de la cuenta de almacenamiento.
+   * Ubicación de la cuenta de almacenamiento de Hola.
 
-   * Descripción de la cuenta de almacenamiento.
+   * Descripción de la cuenta de almacenamiento de Hola.
 
-   * La suscripción a la que pertenece la cuenta de almacenamiento.
+   * cuenta de almacenamiento de Hello suscripción toowhich Hola pertenece.
 
-4. Haga clic en **Aceptar** para cerrar el cuadro de diálogo **Nueva cuenta de almacenamiento**.
+4. Haga clic en **Aceptar** tooclose hello **nueva cuenta de almacenamiento** cuadro de diálogo.
 
-Se puede tardar unos minutos en crearse su cuenta de almacenamiento. Una vez creada, haga clic en **Aceptar** para cerrar el cuadro de diálogo **Agregar cuenta de almacenamiento** y se agregará la nueva cuenta de almacenamiento a la lista de cuentas de almacenamiento disponibles.
+Puede tardar varios minutos para su toobe de cuenta de almacenamiento creado. Después de crearla, haga clic en **Aceptar** tooclose hello **agregar una cuenta de almacenamiento** cuadro de diálogo y la nueva cuenta de almacenamiento se agregarán toohello lista de cuentas de almacenamiento disponible.
 
-## <a name="to-add-an-existing-storage-account-to-the-list"></a>Para agregar una cuenta de almacenamiento existente a la lista
-1. Si no dispone ya de una cuenta de almacenamiento de Azure, cree una siguiendo los pasosde la sección **Creación de una cuenta de almacenamiento nueva** que aparece anteriormente. (También puede crear una cuenta de almacenamiento nueva en el [Portal de administración de Azure][Azure Management Portal]).
+## <a name="tooadd-an-existing-storage-account-toohello-list"></a>tooadd una lista de toohello de cuenta de almacenamiento existente
+1. Si ya tiene un almacenamiento de Azure de la cuenta, cree una forma Hola pasos enumeran en hello **toocreate una nueva sección de la cuenta de almacenamiento** anteriormente. (O bien, puede crear una nueva cuenta de almacenamiento en hello [Portal de administración de Azure][Azure Management Portal].)
 
-2. En el cuadro de diálogo **Cuentas de almacenamiento**, haga clic en **Agregar**.
+2. Dentro de hello **cuentas de almacenamiento** cuadro de diálogo, haga clic en **agregar**.
 
-3. En el cuadro de diálogo **Agregar cuenta de almacenamiento**, especifique valores para **Nombre** y **Clave de acceso**. El nombre de la cuenta y la clave de acceso deben ser para una cuenta de almacenamiento de Azure existente. Use la sección **Almacenamiento** del [Portal de administración de Azure][Azure Management Portal] para ver sus claves y nombres de cuenta de almacenamiento. Su cuadro de diálogo **Agregar cuenta de almacenamiento** tendrá un aspecto similar al siguiente.
+3. Dentro de hello **agregar una cuenta de almacenamiento** cuadro de diálogo, especifique los valores de **nombre** y **clave de acceso**. clave de acceso y nombre de la cuenta de Hello debe ser para una cuenta de almacenamiento de Azure existente. Hola de uso **almacenamiento** sección de hello [Portal de administración de Azure] [ Azure Management Portal] tooview nombres y claves de la cuenta de almacenamiento. Su **agregar una cuenta de almacenamiento** cuadro de diálogo tendrá un aspecto similar a continuación toohello.
    
    ![][ic719497]
 
-4. Haga clic en **Aceptar** para cerrar el cuadro de diálogo **Agregar cuenta de almacenamiento**.
+4. Haga clic en **Aceptar** tooclose hello **agregar una cuenta de almacenamiento** cuadro de diálogo.
 
-## <a name="to-modify-a-storage-account-to-use-a-new-access-key"></a>Para modificar una cuenta de almacenamiento para que use una nueva clave de acceso
-1. En el cuadro de diálogo **Cuentas de almacenamiento**, haga clic en la cuenta de almacenamiento que quiera editar y luego haga clic en **Editar**.
+## <a name="toomodify-a-storage-account-toouse-a-new-access-key"></a>toomodify un toouse de cuenta de almacenamiento una nueva clave de acceso
+1. Dentro de hello **cuentas de almacenamiento** cuadro de diálogo, haga clic en la cuenta de almacenamiento de Hola que desee tooedit y, a continuación, haga clic en **editar**.
 
-2. En el cuadro de diálogo **Editar la clave de acceso de la cuenta de almacenamiento**, modifique el valor de la **Clave de acceso**.
+2. Dentro de hello **editar la clave de acceso de la cuenta de almacenamiento** cuadro de diálogo Modificar hello **clave de acceso** valor.
 
-3. Haga clic en **Aceptar** para cerrar el cuadro de diálogo **Editar la clave de acceso de la cuenta de almacenamiento**.
+3. Haga clic en **Aceptar** tooclose hello **editar la clave de acceso de la cuenta de almacenamiento** cuadro de diálogo.
 
-## <a name="to-remove-a-storage-account-from-the-list-maintained-in-eclipse"></a>Para quitar una cuenta de almacenamiento de la lista mantenida en Eclipse
-1. En el cuadro de diálogo **Cuentas de almacenamiento**, haga clic en la cuenta de almacenamiento que quiera editar y luego haga clic en **Quitar**.
+## <a name="tooremove-a-storage-account-from-hello-list-maintained-in-eclipse"></a>tooremove mantiene de una cuenta de almacenamiento de la lista de hello en Eclipse
+1. Dentro de hello **cuentas de almacenamiento** cuadro de diálogo, haga clic en la cuenta de almacenamiento de Hola que desee tooedit y, a continuación, haga clic en **quitar**.
 
-2. Haga clic en **Aceptar** cuando se pregunte si quiere quitar la cuenta de almacenamiento.
+2. Haga clic en **Aceptar** cuando tooremove solicitada Hola cuenta de almacenamiento.
 
 > [!NOTE]
-> Al quitar la cuenta de almacenamiento mediante el cuadro de diálogo **Cuentas de almacenamiento** solo se quita de la lista de cuentas de almacenamiento que se pueden ver en Eclipse. No elimina la cuenta de almacenamiento de su suscripción de Azure. Además, la cuenta de almacenamiento podría aparecer de nuevo en la lista después de que Eclipse vuelva a cargar los detalles de su suscripción.
+> Quitar la cuenta de almacenamiento de Hola a través de hello **cuentas de almacenamiento** cuadro de diálogo solo quita de la lista de Hola de cuentas de almacenamiento pueden visualizar en Eclipse. No quita la cuenta de almacenamiento de Hola desde su suscripción de Azure. Además, cuenta de almacenamiento de hello podría aparecer de nuevo en la lista después de que Eclipse vuelva a cargar los detalles de Hola de su suscripción.
 > 
 > 
 
 ## <a name="see-also"></a>Otras referencias
 [kit de herramientas de Azure para Eclipse][Azure Toolkit for Eclipse]
 
-[Instalación del Kit de herramientas de Azure para Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Instalar hello Azure Toolkit for Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
 [Creación de una aplicación Hola a todos para Azure en Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
+Para obtener más información acerca del uso de Azure con Java, vea hello [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -105,8 +105,8 @@ Para obtener más información sobre el uso de Azure con Java, vea el [Centro pa
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[What's New in hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->
 

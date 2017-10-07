@@ -1,6 +1,6 @@
 ---
 title: "Dispositivo simulado y puerta de enlace de Azure IoT: Lección 1: Configuración de NUC | Microsoft Docs"
-description: "Configure Intel NUC para que funcione como puerta de enlace de IoT entre un sensor e IoT Hub de Azure para recopilar información del sensor y enviarla a IoT Hub."
+description: "Intel NUC toowork configurado como una puerta de enlace de IoT entre un sensor y la información del sensor toocollect centro de IoT de Azure y enviar tooIoT concentrador."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,32 +17,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: b87974be9570f7d03fe84ae0a1d1fa7e346ff189
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c2146c7cd8ca54adbd0af279364ec8484be1b45b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-intel-nuc-as-an-iot-gateway"></a>Configuración de Intel NUC como puerta de enlace de IoT
 
 ## <a name="what-you-will-do"></a>Lo que hará
 
 - Configure Intel NUC como puerta de enlace de IoT.
-- Instale el paquete de Azure IoT Edge en Intel NUC.
-- Ejecute una aplicación de ejemplo "hola_mundo" en Intel NUC para comprobar la funcionalidad de la puerta de enlace.
-Si tiene problemas, busque soluciones en la [página de solución de problemas](iot-hub-gateway-kit-c-sim-troubleshooting.md).
+- Instalar paquete de hello borde de IoT de Azure en NUC de Intel.
+- Ejecutar una aplicación de ejemplo "hello_world" en la funcionalidad de puerta de enlace de Intel NUC tooverify Hola.
+Si tiene problemas, buscar soluciones en hello [página solución de problemas](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 
 En esta lección, aprenderá lo siguiente:
 
-- Conexión de Intel NUC con periféricos.
-- Instalación y actualización de los paquetes necesarios en Intel NUC mediante Smart Package Manager.
-- Ejecución de una aplicación de ejemplo "hola_mundo" para comprobar la funcionalidad de la puerta de enlace.
+- ¿Cómo tooconnect Intel NUC con dispositivos periféricos.
+- ¿Cómo tooinstall y actualizar paquetes de hello necesario sobre el uso de Intel NUC Hola inteligente Administrador de paquetes.
+- Cómo hello toorun "hello_world" ejemplo de funcionalidad de puerta de enlace de aplicaciones tooverify Hola.
 
 ## <a name="what-you-need"></a>Lo que necesita
 
-- Un kit Intel NUC DE3815TYKE con Intel IoT Gateway Software Suite (Wind River Linux *7.0.0.13) preinstalado.
+- Un Intel NUC Kit DE3815TYKE con hello Suite de Software de puerta de enlace de IoT de Intel (viento demarcación Linux * 7.0.0.13) preinstalado.
 - Un cable Ethernet.
 - Un teclado.
 - Un cable HDMI o VGA.
@@ -50,53 +50,53 @@ En esta lección, aprenderá lo siguiente:
 
 ![Kit de puerta de enlace](media/iot-hub-gateway-kit-lessons/lesson1/kit_without_sensortag.png)
 
-## <a name="connect-intel-nuc-with-the-peripherals"></a>Conexión de Intel NUC con los periféricos
+## <a name="connect-intel-nuc-with-hello-peripherals"></a>Conectar Intel NUC con dispositivos periféricos de Hola
 
-La imagen siguiente es un ejemplo de Intel NUC conectado con varios periféricos:
+imagen de Hello siguiente es un ejemplo de NUC de Intel que está conectado a periféricos distintos:
 
-1. Conectado a un teclado.
-2. Conectado al monitor mediante un cable VGA o HDMI.
-3. Conectado a una red cableada mediante un cable Ethernet.
-4. Conectado a la fuente de alimentación con un cable de alimentación.
+1. Teclado tooa conectado.
+2. Conectado toohello monitor mediante un cable VGA o HDMI.
+3. Red cableada mediante tooa conectado mediante un cable Ethernet.
+4. Fuente de alimentación de toohello conectado con un cable de alimentación.
 
-![Intel NUC conectado a periféricos](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
+![Intel NUC conectado tooperipherals](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
 
-## <a name="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>Conexión al sistema Intel NUC desde el equipo host a través de Secure Shell (SSH)
+## <a name="connect-toohello-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>Toohello Intel NUC sistema conectado a la del equipo host a través de Shell seguro (SSH)
 
-Aquí necesita un teclado y un monitor para obtener la dirección IP del dispositivo NUC. Si ya conoce la dirección IP, puede ir al paso 3 de esta sección.
+Aquí necesitará teclado y monitor tooget Hola dirección IP del dispositivo NUC. Si ya sabe Hola IP dirección, puede omitir toostep 3 en esta sección.
 
-1. Encienda Intel NUC presionando el botón de encendido e inicie sesión en el sistema.
+1. Activar Intel NUC presionando el botón de encendido de Hola y de registro en el sistema de Hola.
 
-   El nombre de usuario y la contraseña predeterminados son `root`.
+   nombre de usuario predeterminado de Hola y la contraseña son ambos `root`.
 
-2. Obtenga la dirección IP de NUC mediante la ejecución del comando `ifconfig`. Este paso se realiza en el dispositivo NUC.
+2. Obtener dirección IP de Hola de NUC ejecutando hello `ifconfig` comando. Este paso se realiza en el dispositivo NUC Hola.
 
-   Este es un ejemplo del resultado del comando.
+   Este es un ejemplo de salida del comando Hola.
 
    ![Salida de ifconfig que muestra la dirección IP de NUC](media/iot-hub-gateway-kit-lessons/lesson1/ifconfig.png)
 
-   En este ejemplo, el valor que sigue a `inet addr:` es la dirección IP que necesita si tiene previsto conectarse remotamente desde un equipo host a Intel NUC.
+   En este ejemplo, Hola valor siguiente `inet addr:` es dirección IP de Hola que necesita, si tiene previsto tooconnect remotamente desde un tooIntel del equipo host NUC.
 
-3. Utilice uno de los siguientes clientes SSH desde el equipo host para conectarse a Intel NUC.
+3. Utilice uno de hello siguiendo a los clientes SSH de su tooIntel tooconnect de máquina de host NUC.
 
    - [PuTTY](http://www.putty.org/) para Windows.
-   - El cliente de SSH integrado en Ubuntu o macOS.
+   - Hola compilación en el cliente de SSH en Ubuntu o macOS.
 
-   Resulta más eficaz y productivo operar en Intel NUC desde un equipo host. Necesita la dirección IP, el nombre de usuario y la contraseña para conectarse a NUC a través del cliente de SSH. Este es el ejemplo de cliente de SSH que se usa en macOS.
+   Es más eficaz y productiva toooperate en Intel NUC desde un equipo host. Necesita la dirección IP de Hola Hola, nombre de usuario y contraseña tooconnect hello NUC mediante el cliente de SSH. Este es el cliente de SSH de uso de ejemplo de Hola en macOS.
    ![Cliente de SSH que se ejecuta en macOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
-## <a name="install-the-azure-iot-edge-package"></a>Instalación del paquete de Azure IoT Edge
+## <a name="install-hello-azure-iot-edge-package"></a>Instalar el paquete de hello borde de IoT de Azure
 
-El paquete de Azure IoT Edge contiene los archivos binarios compilados previamente del SDK y sus dependencias. Estos archivos binarios forman Azure IoT Edge, el SDK de IoT de Azure y las herramientas correspondientes. El paquete también contiene una aplicación de ejemplo "hello_world" que se utiliza para validar la funcionalidad de la puerta de enlace. IoT Edge es la parte principal de la puerta de enlace. Para instalar el paquete, siga estos pasos:
+paquete de Hello borde de IoT de Azure contiene archivos binarios precompilados de Hola de hello SDK y sus dependencias. Estos archivos binarios forman borde de IoT de Azure, Hola IoT de Azure SDK y herramientas correspondientes de Hola. paquete de Hello también contiene una aplicación de ejemplo de "hello_world" es la funcionalidad de puerta de enlace de hello toovalidate usado. Borde de IoT es parte del núcleo de Hola de puerta de enlace de Hola. Hola tooinstall del paquete, siga estos pasos:
 
-1. Agregue el repositorio de la nube de IoT mediante la ejecución de los comandos siguientes en una ventana de terminal:
+1. Agregar repositorio de nube de hello IoT ejecutando Hola siga los comandos en una ventana de terminal:
 
    ```bash
    rpm --import http://iotdk.intel.com/misc/iot_pub.key
    smart channel --add IoT_Cloud type=rpm-md name="IoT_Cloud" baseurl=http://iotdk.intel.com/repos/iot-cloud/wrlinux7/rcpl13/ -y
    ```
 
-   El comando `rpm` importa la clave rpm. El comando `smart channel` agrega el canal rpm a Smart Package Manager. Antes de ejecutar el comando `smart update`, verá una salida similar a la siguiente.
+   Hola `rpm` comando importaciones Hola clave rpm. Hola `smart channel` comando agrega rpm Hola canal toohello inteligente Administrador de paquetes. Antes de ejecutar hello `smart update` comando, verá una salida similar a continuación.
 
    ![salida de los comandos rpm y de canal inteligente](media/iot-hub-gateway-kit-lessons/lesson1/rpm_smart_channel.png)
 
@@ -104,36 +104,36 @@ El paquete de Azure IoT Edge contiene los archivos binarios compilados previamen
    smart update
    ```
 
-2. Instale el paquete ejecutando el comando siguiente:
+2. Instalar paquete Hola ejecutando Hola siguiente comando:
 
    ```bash
    smart install packagegroup-cloud-azure -y
    ```
 
-   `packagegroup-cloud-azure` es el nombre del paquete. El comando `smart install` se usa para instalar el paquete.
+   `packagegroup-cloud-azure`es el nombre de Hola de paquetes de saludo. Hola `smart install` comando es paquete de hello tooinstall usado.
 
-   Después de instalar el paquete, Intel NUC debería funcionar como puerta de enlace.
+   Después de instalar el paquete de hello, Intel NUC es toowork esperado como una puerta de enlace.
 
-## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a>Ejecución de la aplicación de ejemplo "hola_mundo" de Azure IoT Edge
+## <a name="run-hello-azure-iot-edge-helloworld-sample-application"></a>Ejecutar aplicación de ejemplo de "hello_world" hello borde de IoT de Azure
 
-Vaya a `azureiotgatewaysdk/samples` y ejecute la aplicación de ejemplo "hola_mundo". Esta aplicación de ejemplo crea una puerta de enlace del archivo `hello_world.json` y utiliza los componentes fundamentales de la arquitectura de Azure IoT Edge para registrar un mensaje de "Hola mundo" en un archivo cada 5 segundos.
+Vaya demasiado`azureiotgatewaysdk/samples` y ejecute la aplicación de ejemplo de Hola ejemplo "hello_world". Esta aplicación de ejemplo crea una puerta de enlace de hello `hello_world.json` archivo y usa los componentes fundamentales de Hola de hello borde de IoT de Azure arquitectura toolog un archivo de tooa de hello world mensaje cada 5 segundos.
 
-Puede ejecutar la aplicación de ejemplo "hola_mundo" ejecutando el comando siguiente:
+Puede ejecutar la aplicación de ejemplo de "hello_world" de ejemplo de Hola ejecutando el siguiente comando de hello:
 
 ```bash
 cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 ./hello_world hello_world.json
 ```
 
-La aplicación de ejemplo produce el siguiente resultado si la funcionalidad de puerta de enlace funciona correctamente:
+aplicación de ejemplo de Hola produce siguiente de hello resultado si la funcionalidad de puerta de enlace de hello funciona correctamente:
 
 ![resultado de la aplicación](media/iot-hub-gateway-kit-lessons/lesson1/hello_world.png)
 
-Si tiene problemas, busque soluciones en la [página de solución de problemas](iot-hub-gateway-kit-c-troubleshooting.md).
+Si tiene problemas, buscar soluciones en hello [página solución de problemas](iot-hub-gateway-kit-c-troubleshooting.md).
 
 ## <a name="summary"></a>Resumen
 
-¡Enhorabuena! Ha terminado de configurar Intel NUC como puerta de enlace. Ahora está listo para pasar a la lección siguiente donde configurará el equipo host, creará una instancia de IoT hub de Azure y registrará el dispositivo lógico de la instancia de IoT Hub de Azure.
+¡Enhorabuena! Ha terminado de configurar Intel NUC como puerta de enlace. Ahora está listo toomove en toohello siguiente lección tooset el equipo host, crear un centro de IoT de Azure y registrar el dispositivo lógico de centro de IoT de Azure.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Preparación del equipo host y de IoT Hub de Azure](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)

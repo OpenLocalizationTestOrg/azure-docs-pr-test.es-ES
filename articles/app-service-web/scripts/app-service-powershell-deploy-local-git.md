@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de script de Azure PowerShell: creación de una aplicación web e implementación de código desde un repositorio local de Git | Microsoft Docs"
+title: "aaaAzure ejemplo de Script de PowerShell: crear una aplicación web e implementar código desde un repositorio Git local | Documentos de Microsoft"
 description: "Ejemplo de script de Azure PowerShell: creación de una aplicación web e implementación de código desde un repositorio local de Git"
 services: app-service\web
 documentationcenter: 
@@ -15,25 +15,25 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 855b8c643bf2a742e763bda2e2c21c6a86331aac
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a90996658bf0b609315460324d0dcd3a411a6512
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Creación de una aplicación web e implementación de código desde un repositorio local de Git
 
 Este script de ejemplo crea una aplicación web en App Service con sus recursos relacionados y, después, implementa el código de la aplicación web en un repositorio local de GitHub.
 
-Si es necesario, instale Azure PowerShell con la instrucción que se encuentra en la [Guía de Azure PowerShell](/powershell/azure/overview) y, luego, ejecute `Login-AzureRmAccount` para crear una conexión con Azure. Además, el código de aplicación debe confirmarse en un repositorio de Git local.
+Si es necesario, instale hello Azure PowerShell con hello instrucción se encuentra en hello [Guía de Azure PowerShell](/powershell/azure/overview)y, a continuación, ejecute `Login-AzureRmAccount` toocreate una conexión con Azure. Además, el código de aplicación debe toobe confirmado en un repositorio Git local.
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-powershell[main](../../../powershell_scripts/app-service/deploy-local-git/deploy-local-git.ps1?highlight=1 "Creación de una aplicación web e implementación de código desde un repositorio local de Git")]
+[!code-powershell[main](../../../powershell_scripts/app-service/deploy-local-git/deploy-local-git.ps1?highlight=1 "Create a web app and deploy code from a local Git repository")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Después de ejecutar el script de ejemplo, se puede usar el comando siguiente para quitar el grupo de recursos, la aplicación web y todos los recursos relacionados.
+Después de ejecutar el ejemplo de script de Hola, Hola siguiente comando puede ser grupo de recursos de hello tooremove usado, aplicación web y todos ellos relacionados con recursos.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -41,7 +41,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola siga los comandos. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
@@ -53,6 +53,6 @@ Este script usa los siguientes comandos. Cada comando de la tabla crea un víncu
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre el módulo de Azure PowerShell, consulte la [documentación de Azure PowerShell](/powershell/azure/overview).
+Para obtener más información sobre el módulo de PowerShell de Azure de hello, consulte [documentación de Azure PowerShell](/powershell/azure/overview).
 
-Puede encontrar ejemplos de Azure PowerShell para Azure App Service Web Apps en los [ejemplos de PowerShell](../app-service-powershell-samples.md).
+Encontrará más ejemplos de Powershell de Azure para aplicaciones de Web del servicio de aplicación de Azure en hello [ejemplos de PowerShell de Azure](../app-service-powershell-samples.md).

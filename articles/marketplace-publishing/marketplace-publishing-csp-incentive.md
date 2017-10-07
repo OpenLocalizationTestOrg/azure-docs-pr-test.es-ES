@@ -1,6 +1,6 @@
 ---
-title: "Visualización y cambio del incentivo de revendedores para proveedores de soluciones en la nube | Microsoft Docs"
-description: "Visualización y cambio de su selección referente al incentivo de revendedores para proveedores de soluciones en la nube"
+title: aaaHow tooview y cambio Hola Reseller Incentive del proveedor de soluciones de nube | Documentos de Microsoft
+description: "¿Cómo tooview y cambiar la selección de CSP Reseller Incentive"
 services: marketplace-publishing
 documentationcenter: na
 author: DavidBosland
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: DavidBosland
-ms.openlocfilehash: d6e6e13f352dea5c27939c39ecb8be97bf6990ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4702d0167c38d100755a872f9b23e49cc7a46ba2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="view-and-change-your-cloud-solution-provider-reseller-incentive-in-the-azure-marketplace"></a>Visualización y cambio del "Incentivo de revendedores" para proveedores de soluciones en la nube de Azure Marketplace
-El 15 de marzo de 2016 pondremos el "Incentivo de revendedores" para proveedores de soluciones en la nube a disposición de los anunciantes de Marketplace.  El valor predeterminado para este valor incentivo es **Sí**.  Como anunciante, puede optar por no participar en el programa de incentivos.  En este artículo se muestra cómo cambiar la configuración en el perfil de anunciante para no participar en el programa.
+# <a name="view-and-change-your-cloud-solution-provider-reseller-incentive-in-hello-azure-marketplace"></a>Ver y cambiar su proveedor de soluciones de nube "Reseller Incentive" Hola Azure Marketplace
+De 15 de marzo de 2016 nos aseguraremos de hacer proveedores de soluciones de hello en la nube (CSP) "Reseller Incentive" publicadores de tooMarketplace disponible.  Hola la configuración predeterminada para este valor estímulo es **Sí**.  Como un publicador puede decidir tooopt fuera del programa de incentivos Hola.  Este artículo muestra cómo generar perfiles de configuración de hello toochange en el publicador por lo que puede cancelar voluntariamente la suscripción.
 
-Para ver o cambiar el estado del "Incentivo de revendedores", siga estos pasos:
+tooview o cambiar el estado de "Reseller Incentive", siga estos pasos:
 
-1. Inicie sesión en su [cuenta de publicación de Microsoft Azure](https://publish.windowsazure.com/workspace)
+1. Inicie sesión en tooyour [cuenta de publicación de Microsoft Azure](https://publish.windowsazure.com/workspace)
 
    ![Pantalla de aterrizaje del perfil][1]
 2. Haga clic en **Anunciantes**
 
    ![Pantalla de aterrizaje del perfil - Vínculo para anunciantes][2]
-3. Observe la información de su perfil relativa a los proveedores de soluciones en la nube.  Hay un **modificador para cambiar a Si o No** el "Incentivo para revendedores" (el estado predeterminado es "Sí").
+3. Tenga en cuenta información de hello en su perfil sobre CSP.  Hay un **cambiar toosay Sí o no** toohello "Reseller Incentive" - estado de saludo predeterminado es "Sí".
 
    ![Perfil - Anunciantes][3]
-4. Para cambiar el estado del "Incentivo de revendedores", acceda a su perfil de anunciante, haga su elección y guarde:
+4. toochange el estado de "Reseller Incentive" tener acceso a su perfil del publicador, a continuación, seleccione y guardar su elección:
 
-   * Seleccione **Sí** para proporcionar un descuento del 20% a los proveedores de soluciones en la nube que distribuyen las aplicaciones y los servicios que anuncia en Azure Marketplace.  O seleccione **No** para no participar en este programa de incentivos.  En cualquier caso, el anunciante recibe la misma cantidad.
-   * Cuando haya elegido una opción, asegúrese de hacer clic en **Guardar** en la esquina superior derecha.
+   * Seleccione **Sí** toochoose tooprovide Hola 20% de descuento toohello CSP que revenden aplicaciones de Hola y servicios que ha enumerado en hello Azure Marketplace.  O seleccione **No** tooopt fuera de este programa de incentivos.  En ambos caso Hola publicador recibe Hola mismo pago.
+   * Después de realizar una selección Asegúrese de hacer clic en **guardar** en la esquina superior derecha de Hola.
 
    ![Perfil - Anunciantes - Cuadros de cambio][4]
 
