@@ -1,5 +1,5 @@
 ---
-title: Procedimientos recomendados de seguridad de la red de Azure | Microsoft Docs
+title: "Prácticas recomendadas de seguridad de red aaaAzure | Documentos de Microsoft"
 description: "Este artículo proporciona un conjunto de procedimientos recomendados de seguridad de la red con funcionalidades de Azure integradas."
 services: security
 documentationcenter: na
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: TomSh
-ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5867dea358b4da65c65b3e52fcab7e687e981642
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-network-security-best-practices"></a>Procedimientos recomendados de seguridad de la red de Azure
-Microsoft Azure permite conectar máquinas virtuales y aplicaciones a otros dispositivos en red, colocándolos en redes virtuales de Azure. Una red virtual de Azure es una construcción de red virtual que permite conectar tarjetas de interfaz de red virtual a una red virtual para permitir las comunicaciones basadas en TCP/IP entre dispositivos habilitados para red. Las máquinas virtuales conectadas a una red virtual de Azure pueden conectarse a dispositivos en la misma red virtual de Azure, distintas redes virtuales de Azure, en Internet o, incluso, en sus propias redes locales.
+Microsoft Azure permite dispositivos de tooother conectados en red de máquinas virtuales y aparatos tooconnect situándolos en redes virtuales de Azure. Red Virtual de Azure es una construcción de red virtual que permite a tooconnect red virtual interfaz tarjetas tooa virtual tooallow basadas en TCP/IP comunicaciones de red entre dispositivos habilitados para red. Máquinas virtuales de Azure conectado tooan red Virtual de Azure están tooconnect puede toodevices en Hola misma Azure red Virtual, redes virtuales diferentes de Azure, en Internet de Hola o incluso en sus propias redes locales.
 
-En este artículo veremos un conjunto de procedimientos recomendados de seguridad de la red de Azure. Estos procedimientos recomendados se derivan de nuestra experiencia con las redes en Azure, y las experiencias de clientes como usted.
+En este artículo veremos un conjunto de procedimientos recomendados de seguridad de la red de Azure. Estas prácticas recomendadas se derivan de nuestra experiencia con las redes Azure y experiencias de Hola de clientes como usted.
 
 Para cada procedimiento recomendado, explicaremos:
 
-* Qué es el procedimiento recomendado
-* Por qué le conviene habilitar este procedimiento recomendado
-* Cuál podría ser el resultado si no habilita el procedimiento recomendado
-* Alternativas posibles al procedimiento recomendado
-* Cómo aprender a habilitar el procedimiento recomendado
+* ¿Qué recomienda Hola
+* ¿Por qué desea tooenable este procedimiento recomendado
+* ¿Qué podría ser resultado de hello si no se recomienda tooenable Hola
+* Procedimiento recomendado de las alternativas posibles toohello
+* ¿Cómo puede obtener información práctica recomendada de hello tooenable
 
-Este artículo de Procedimientos recomendados de seguridad de la red de Azure se basa en las funcionalidades y los conjuntos de características de la plataforma Azure existentes cuando se redactó. Las opiniones y las tecnologías cambian con el tiempo, por lo que se actualizará de forma periódica para reflejar esos cambios.
+En este artículo de prácticas recomendadas de seguridad de red de Azure se basa en una opinión de consenso y capacidades de la plataforma Windows Azure y conjuntos de características, tal como aparecen en tiempo de Hola que se escribió este artículo. Las opiniones y las tecnologías que cambian con el tiempo y este artículo será esos cambios se actualizaron en un tooreflect de forma periódica.
 
 Los procedimientos recomendados de seguridad de la red de Azure descritos en este artículo incluyen:
 
@@ -42,61 +42,61 @@ Los procedimientos recomendados de seguridad de la red de Azure descritos en est
 * Habilitación de la tunelización forzada
 * Uso de aplicaciones de red virtual
 * Implementación de redes perimetrales para zonas de seguridad
-* Uso de vínculos WAN dedicados para evitar la exposición en Internet
+* Evitar la exposición toohello Internet con vínculos WAN dedicados
 * Optimización del rendimiento y el tiempo de actividad
 * Uso del equilibrio de carga global
-* Deshabilitación del acceso RDP a máquinas virtuales de Azure
+* Deshabilitar el acceso RDP tooAzure máquinas virtuales
 * Habilitación de Azure Security Center
 * Extensión de su centro de datos en Azure
 
 ## <a name="logically-segment-subnets"></a>Segmentación lógica de subredes
-Las [redes virtuales de Azure](https://azure.microsoft.com/documentation/services/virtual-network/) son similares a una LAN de la red local. La idea detrás de una red virtual de Azure es crear una sola red basada en espacios de direcciones IP privados en la que puede colocar todas las [máquinas virtuales de Azure](https://azure.microsoft.com/services/virtual-machines/). Los espacios de direcciones IP privados están en los intervalos de clase A (10.0.0.0/8), B (172.16.0.0/12) y C (192.168.0.0/16).
+[Redes virtuales de Azure](https://azure.microsoft.com/documentation/services/virtual-network/) son similares LAN tooa en su red local. Hello idea que subyace a una red Virtual de Azure es que se crea una único privada red dirección IP basada en el espacio en el que puede colocar todos los [máquinas virtuales de Azure](https://azure.microsoft.com/services/virtual-machines/). Hola privados espacios de direcciones IP disponibles están en hello (10.0.0.0/8), de la clase A clase B (172.16.0.0/12) y la clase C de intervalos (192.168.0.0/16).
 
-Similar a lo que lo hace en local, querrá segmentar el mayor espacio de direcciones en subredes. Puede usar los principios de subred basado en [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) para crear las subredes.
+Toowhat similar local, debe tener más de espacio de direcciones de toosegment hello en subredes. Puede usar [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) según las subredes principios toocreate las subredes.
 
-El enrutamiento entre subredes se realizará automáticamente y no es necesario configurar manualmente las tablas de enrutamiento. Sin embargo, el valor predeterminado es que no hay ningún control de acceso a la red entre las subredes creadas en la red virtual de Azure. Para crear controles de acceso a la red entre subredes, debe poner algo entre las subredes.
+Enrutamiento entre subredes realizará automáticamente y no es necesario toomanually configurar tablas de enrutamiento. Sin embargo, la configuración predeterminada de hello es que no hay ningún control de acceso de red entre las subredes de hello que crear en hello red Virtual de Azure. En los controles de acceso de orden toocreate red entre subredes, necesitará tooput algo entre subredes Hola.
 
-Una de las cosas que puede usar para realizar esta tarea es un [grupo de seguridad de red](../virtual-network/virtual-networks-nsg.md) (NSG). Los NSG son dispositivos de inspección de paquetes con estado simple que utilizan el enfoque tupla 5 (IP de origen, puerto de origen, dirección IP de destino, puerto de destino y el protocolo de nivel 4) para crear reglas de permiso o denegación del tráfico de la red. Puede permitir o denegar el tráfico a y de una sola dirección IP, a y de varias direcciones IP o, incluso, a y de subredes enteras.
+Una de estas cosas Hola usar tooaccomplish esta tarea es un [grupo de seguridad de red](../virtual-network/virtual-networks-nsg.md) (NSG). Los NSG son la inspección de paquetes con estado simple dispositivos que usan Hola 5-tupla (Hola IP de origen, puerto de origen, dirección IP de destino, puerto de destino y el protocolo de capa 4) enfocan toocreate permitir/denegar reglas para el tráfico de red. Puede permitir o denegar el tráfico tooand desde la dirección IP única, tooand desde varias direcciones IP o incluso tooand de subredes enteras.
 
-El uso de NSG para el control de acceso a la red entre subredes permite poner recursos que pertenecen a la misma zona de seguridad o función en sus propias subredes. Por ejemplo, imagine una aplicación sencilla de 3 niveles con un nivel de web, un nivel lógico de aplicación y un nivel de base de datos. Las máquinas virtuales que pertenecen a cada uno de estos niveles se colocan en sus propias subredes. A continuación, se usan los NSG para controlar el tráfico entre las subredes:
+Con los NSG de control de acceso de red entre subredes permite tooput recursos que pertenecen toohello misma zona de seguridad o una función de sus propias subredes. Por ejemplo, imagine una aplicación sencilla de 3 niveles con un nivel de web, un nivel lógico de aplicación y un nivel de base de datos. Coloque las máquinas virtuales que pertenecen tooeach de estos niveles en sus propias subredes. A continuación, use los NSG toocontrol tráfico entre subredes hello:
 
-* Las máquinas virtuales del nivel de web solo pueden iniciar conexiones con las máquinas del nivel lógico de aplicación y aceptar conexiones de Internet.
-* Las máquinas virtuales del nivel lógico de aplicación solo pueden iniciar conexiones con el nivel de base de datos y aceptar conexiones de la capa de web.
-* Las máquinas virtuales de nivel de base de datos no pueden iniciar la conexión con nada fuera de su propia subred y solo pueden aceptar conexiones del nivel lógico de aplicación.
+* Máquinas virtuales de nivel de Web solo se pueden iniciar máquinas de lógica de aplicación de las conexiones toohello y solo se pueden aceptar conexiones de Internet de Hola
+* Máquinas virtuales de lógica de aplicación sólo se pueden iniciar conexiones con el nivel de base de datos y solo se pueden aceptar conexiones de nivel de web Hola
+* Máquinas virtuales de nivel de base de datos no se puede iniciar la conexión con cualquier elemento fuera de su propia subred y solo se pueden aceptar conexiones de capa de lógica de aplicación Hola
 
-Para más información acerca de los grupos de seguridad de red y cómo puede usarlos para segmentar lógicamente las redes virtuales de Azure, lea el artículo [¿Qué es un grupo de seguridad de red?](../virtual-network/virtual-networks-nsg.md) (NSG).
+toolearn más acerca de los grupos de seguridad de red y cómo puede usarlos toologically segmento las redes virtuales de Azure, lea el artículo de hello [¿qué es un grupo de seguridad de red](../virtual-network/virtual-networks-nsg.md) (NSG).
 
 ## <a name="control-routing-behavior"></a>Control del comportamiento de enrutamiento
-Cuando coloca una máquina virtual en una red virtual de Azure, observará que la máquina virtual puede conectarse a cualquier otra máquina virtual de la misma red virtual de Azure, incluso si las otras máquinas virtuales están en subredes diferentes. El motivo es que hay una colección de rutas del sistema que están habilitadas de forma predeterminada y que permiten a este tipo de comunicación. Estas rutas predeterminadas permiten a las máquinas virtuales de la misma red virtual de Azure iniciar conexiones entre sí y con Internet (solo para comunicaciones salientes a Internet).
+Cuando se coloca una máquina virtual en una red Virtual de Azure, observará que la máquina virtual Hola puede conectarse tooany otra máquina virtual en Hola misma red Virtual de Azure, incluso si hello otras máquinas virtuales están en subredes diferentes. motivo de Hello ¿por qué esto es posible es que hay una colección de rutas de sistema que están habilitadas de forma predeterminada que permiten a este tipo de comunicación. Estas rutas predeterminadas permiten a las máquinas virtuales de hello misma red Virtual de Azure tooinitiate las conexiones entre sí y con hello Internet (para comunicaciones salientes a toohello Internet solo).
 
-Si bien las rutas del sistema predeterminadas son útiles para muchos escenarios de implementación, habrá veces en las que preferirá personalizar la configuración de enrutamiento para las implementaciones. Estas personalizaciones permiten configurar la dirección del próximo salto para que acceda a destinos específicos.
+Mientras que las rutas de sistema de hello predeterminadas son útiles para muchos escenarios de implementación, hay veces que desee toocustomize configuración de enrutamiento de Hola para las implementaciones. Estas personalizaciones le permitirá tooconfigure Hola siguiente salto dirección tooreach destinos concretos.
 
 Se recomienda configurar rutas definidas por el usuario al implementar una aplicación de seguridad de la red virtual; en otro procedimiento recomendado, más adelante, se tratará este tema.
 
 > [!NOTE]
-> No son necesarias rutas definidas por el usuario, y las rutas del sistema predeterminadas funcionan en la mayoría de lo casos.
+> Rutas definidas por el usuario no son necesarias y las rutas de sistema de hello predeterminadas funcionará en la mayoría de las instancias.
 >
 >
 
-Para más información sobre las rutas definidas por el usuario y cómo configurarlas, lea el artículo [¿Qué son las rutas definidas por el usuario y el reenvío IP?](../virtual-network/virtual-networks-udr-overview.md)
+Puede aprender más acerca de rutas definidas por el usuario y cómo tooconfigure usarlas, lea el artículo de hello [¿qué son rutas definidas por el usuario y el reenvío IP](../virtual-network/virtual-networks-udr-overview.md).
 
 ## <a name="enable-forced-tunneling"></a>Habilitación de la tunelización forzada
-Para entender mejor la tunelización forzada, resulta útil entender qué es el "túnel dividido".
-El ejemplo más común de túnel dividido se ve con conexiones VPN. Imagine que establece una conexión VPN de la habitación de hotel a su red corporativa. Esta conexión le permite conectarse a recursos de la red corporativa y todas las comunicaciones a los recursos de la red corporativa pasan a través del túnel VPN.
+toobetter comprender la tunelización forzada, resulta útil toounderstand qué "división de túnel" es.
+ejemplo de Hola a más comunes de túnel dividido se ve con conexiones VPN. Imagine que establecer una conexión VPN de la red corporativa de hotel sala tooyour. Esta conexión permite tooconnect tooresources en su red corporativa y vaya tooresources de todas las comunicaciones de la red corporativa a través de túnel VPN de Hola.
 
-¿Qué ocurre si desea conectarse a recursos de Internet? Cuando se habilita el túnel dividido, esas conexiones van directamente a Internet, no a través del túnel VPN. Algunos expertos en seguridad lo consideran un riesgo potencial y, por tanto, recomiendan deshabilitar el túnel dividido y que todas las conexiones, las destinadas a Internet y las destinadas a recursos corporativos, pasen a través del túnel VPN. La ventaja de hacerlo es que se fuerza que las conexiones a Internet pasen a través de los dispositivos de seguridad de la red corporativa, lo que no ocurriría si el cliente VPN se conectara a Internet fuera del túnel VPN.
+¿Qué ocurre cuando se desea tooconnect tooresources en hello Internet? Cuando se habilita el túnel dividido, estas conexiones ir directamente a toohello Internet y no a través de hello VPN de túnel. Tenga en cuenta este toobe un riesgo potencial de algunos expertos en seguridad y, por tanto, se recomienda que se deshabilite el túnel dividido y todas las conexiones, los destinados a Hola Internet y los destinados a recursos corporativos, vaya a través del túnel VPN de Hola. ventaja de Hola de hacerlo es que toohello conexiones Internet, a continuación, se convierten obligatoriamente a través de dispositivos de seguridad de red corporativa de hello, que no sería el caso de hello si había conectado de cliente VPN de hello toohello Internet fuera de túnel VPN de Hola.
 
-Ahora volvamos a las máquinas virtuales en una red virtual de Azure. Las rutas predeterminadas para una red virtual de Azure permiten a las máquinas virtuales iniciar el tráfico a Internet. Esto también puede representar un riesgo de seguridad, ya que estas conexiones salientes podrían aumentar la superficie de ataque de una máquina virtual y los atacantes podrían aprovecharlo.
+Ahora vamos a hacer esto encenderlo toovirtual máquinas de red Virtual de Azure. las rutas predeterminadas de Hola para una red Virtual de Azure permite que las máquinas virtuales tooinitiate tráfico toohello Internet. Esto demasiado puede representar un riesgo de seguridad, que pudieron aumentar la superficie expuesta a ataques Hola de una máquina virtual de estas conexiones salientes y ser usadas por atacantes.
 Por este motivo, se recomienda habilitar la tunelización forzada en las máquinas virtuales cuando tiene conectividad entre locales entre la red virtual de Azure y su red local. Hablaremos acerca de conectividad entre entornos locales más adelante en este documento de procedimientos recomendados de redes de Azure.
 
-Si no tiene ninguna conexión entre locales, asegúrese de que puede aprovechar los grupos de seguridad de red (descritos antes) o las aplicaciones de seguridad de la red virtual de Azure (descritas a continuación) para impedir las conexiones salientes a Internet desde sus máquinas virtuales de Azure.
+Si no tiene una conexión entre entornos, asegúrese de que sacar partido de los grupos de seguridad de red (descrito anteriormente) o Azure tooprevent conexiones salientes toohello Internet desde su Virtual de Azure de red virtual seguridad aparatos (descrito a continuación) Máquinas.
 
-Para más información sobre la tunelización forzada y cómo habilitarla, consulte el artículo [Configuración de tunelización forzada mediante PowerShell y Azure Resource Manager](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md).
+Obtenga más información sobre toolearn tunelización forzada y cómo tooenable, lea el artículo de hello [configurar tunelización forzada mediante PowerShell y el Administrador de recursos de Azure](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md).
 
 ## <a name="use-virtual-network-appliances"></a>Uso de aplicaciones de red virtual
-Si bien los grupos de seguridad de red y el enrutamiento definido por el usuario pueden proporcionar un cierto grado de seguridad de la red en los niveles de red y de transporte del [modelo OSI](https://en.wikipedia.org/wiki/OSI_model), habrá situaciones en la que deseará o necesitará habilitar la seguridad en los niveles altos de la pila. En tales situaciones, se recomienda implementar aplicaciones de seguridad de la red virtual proporcionadas por asociados de Azure.
+Mientras que los grupos de seguridad de red y usuario definido el enrutamiento pueden proporcionar un cierto grado de seguridad de red en hello las capas de red y el transporte de hello [modelo OSI](https://en.wikipedia.org/wiki/OSI_model), va toobe situaciones en la que desea o necesita tooenable seguridad en los niveles altos de pila de Hola. En tales situaciones, se recomienda implementar aplicaciones de seguridad de la red virtual proporcionadas por asociados de Azure.
 
-Las aplicaciones de seguridad de la red de Azure pueden proporcionar niveles de seguridad mucho mejores que los proporcionados por los controles de nivel de red. Algunas de las funcionalidades de seguridad de la red proporcionadas por las aplicaciones de seguridad de la red virtual son:
+Las aplicaciones de seguridad de la red de Azure pueden proporcionar niveles de seguridad mucho mejores que los proporcionados por los controles de nivel de red. Algunas de las capacidades de seguridad de red Hola proporcionadas por dispositivos de seguridad de red virtual son:
 
 * Firewalls
 * Detección y prevención de intrusiones
@@ -109,129 +109,129 @@ Las aplicaciones de seguridad de la red de Azure pueden proporcionar niveles de 
 
 Si necesita un nivel de seguridad de la red mayor que el que se puede obtener con los controles de acceso al nivel de red, se recomienda investigar e implementar aplicaciones de seguridad de la red virtual de Azure.
 
-Para aprender acerca de qué las aplicaciones de seguridad de la red virtual están disponibles y sus funcionalidades, visite [Azure Marketplace](https://azure.microsoft.com/marketplace/) y busque "seguridad" y "seguridad de la red".
+toolearn acerca de los dispositivos de seguridad de red virtual de Azure están disponibles y sus capacidades, visite hello [Azure Marketplace](https://azure.microsoft.com/marketplace/) y busque "seguridad" y "seguridad de la red".
 
 ## <a name="deploy-dmzs-for-security-zoning"></a>Implementación de redes perimetrales para zonas de seguridad
-Una red perimetral es un segmento de red físico o lógico que está diseñado para proporcionar un nivel de seguridad adicional entre los recursos e Internet. El objetivo de la red perimetral es colocar dispositivos de control de acceso a la red especializados en el borde de la red perimetral, de forma que solo se permita al tráfico deseado pasar por el dispositivo de seguridad de la red y en la red virtual de Azure.
+Una red Perimetral o "red perimetral" es físico o segmento de red lógica que está diseñado tooprovide una capa adicional de seguridad entre los activos y Hola Internet. propósito de Hola de hello DMZ es tooplace especializado dispositivos de control de acceso a redes en borde de Hola de red de hello red Perimetral para que se permita solo el tráfico deseado más allá de los dispositivos de seguridad de red de Hola y en la red Virtual de Azure.
 
-Las redes perimetrales son útiles porque permiten centrar la administración, supervisión, registro y generación de informes sobre los dispositivos del control de acceso a la red en el borde de la red virtual de Azure. Aquí normalmente habilitaría la prevención DDoS, los sistemas de prevención y detección de intrusiones (IDS/IPS), las reglas y directivas de firewall, el filtrado web, el antimalware de la red, etc. Los dispositivos de seguridad de la red se sitúan entre Internet y la red virtual de Azure y tienen una interfaz en ambas redes.
+DMZ es útiles porque puede Centrar la administración de control de acceso de red, supervisión, registros e informes en dispositivos de hello en el perímetro de saludo de la red Virtual de Azure. Aquí normalmente habilitaría la prevención DDoS, los sistemas de prevención y detección de intrusiones (IDS/IPS), las reglas y directivas de firewall, el filtrado web, el antimalware de la red, etc. dispositivos de seguridad de red de Hola se colocan entre Hola Internet y la red Virtual de Azure y tienen una interfaz en ambas redes.
 
-Aunque este es el diseño básico de una red perimetral, existen muchos diseños diferentes, como configuración opuesta, con triple alojamiento, con múltiple alojamiento, etc.
+Aunque se trata de diseño básico de Hola de una red Perimetral, hay muchos distintos diseños de red Perimetral, como opuesta, alojada tri, host múltiple y otros.
 
-Para todas las implementaciones de alta seguridad, se recomienda tener en cuenta la posibilidad de implementar una red perimetral para mejorar el nivel de seguridad de la red para los recursos de Azure.
+Se recomienda que considere la posibilidad de implementar un nivel de red Perimetral tooenhance Hola de seguridad de red para los recursos de Azure para todas las implementaciones de alta seguridad.
 
-Para más información acerca de las redes perimetrales y cómo implementarlas en Azure, consulte el artículo [Microsoft Cloud Services y seguridad de red](../best-practices-network-security.md).
+más información acerca de DMZ y cómo toodeploy en Azure, lea el artículo de hello toolearn [servicios de nube de Microsoft y seguridad de red](../best-practices-network-security.md).
 
-## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Uso de vínculos WAN dedicados para evitar la exposición en Internet
-Muchas organizaciones han elegido la ruta de TI híbrida. En la TI híbrida, algunos de los recursos de información de la compañía están en Azure, mientras que otros siguen siendo locales. En muchos casos, algunos componentes de un servicio se ejecutan en Azure, mientras que otros componentes siguen siendo locales.
+## <a name="avoid-exposure-toohello-internet-with-dedicated-wan-links"></a>Evitar la exposición toohello Internet con vínculos WAN dedicados
+Muchas organizaciones han elegido la ruta de TI híbrida Hola. En TI híbrida, algunos de los activos de información de la compañía de hello son en Azure, mientras que otros usuarios permanecen en local. En muchos casos, algunos componentes de un servicio se ejecutan en Azure, mientras que otros componentes siguen siendo locales.
 
-En el escenario de TI híbrida, suele haber algún tipo de conectividad entre locales. Esta conectividad entre locales permite a la compañía conectar sus redes locales con redes virtuales de Azure. Hay dos soluciones de conectividad entre locales:
+En entornos híbridos de hello escenario de TI, normalmente hay algún tipo de conectividad entre entornos. Esto entre entornos conectividad permite Hola empresa tooconnect su tooAzure de redes locales redes virtuales. Hay dos soluciones de conectividad entre locales:
 
 * VPN de sitio a sitio
 * ExpressRoute
 
-[VPN de sitio a sitio](../vpn-gateway/vpn-gateway-site-to-site-create.md) representa una conexión privada virtual entre su red local y una red virtual de Azure. Esta conexión tiene lugar a través de Internet y permite colocar la información en un "túnel" dentro de un vínculo cifrado entre la red y Azure. La VPN de sitio a sitio es una tecnología segura y madura que empresas de todos los tamaños han implementado durante décadas. El cifrado del túnel se realiza con el [modo de túnel IPsec](https://technet.microsoft.com/library/cc786385.aspx).
+[VPN de sitio a sitio](../vpn-gateway/vpn-gateway-site-to-site-create.md) representa una conexión privada virtual entre su red local y una red virtual de Azure. Esta conexión tiene lugar en Hola Internet y le permite demasiado "tunelizar" información dentro de un vínculo entre la red y Azure cifrado. La VPN de sitio a sitio es una tecnología segura y madura que empresas de todos los tamaños han implementado durante décadas. El cifrado del túnel se realiza con el [modo de túnel IPsec](https://technet.microsoft.com/library/cc786385.aspx).
 
-Si bien la VPN de sitio a sitio es una tecnología de confianza y establecida, el tráfico del túnel no atraviesa Internet. Además, el ancho de banda está relativamente limitado a un máximo de aproximadamente 200 Mbps.
+Mientras VPN de sitio a sitio es una tecnología de confianza, confiable y establecida, tráfico de túnel de hello atravesar Hola Internet. Además, el ancho de banda es relativamente limitada tooa máximo de sobre (200 Mbps).
 
-Si necesita un nivel de seguridad o de rendimiento excepcional para las conexiones entre locales, se recomienda utilizar Azure ExpressRoute para su conectividad. ExpressRoute es un vínculo de WAN dedicada entre su ubicación local o un proveedor de hospedaje de Exchange. Se trata de una conexión de telecomunicaciones, los datos no viajan a través de Internet y, por tanto, no se exponen a los posibles riesgos inherentes a las comunicaciones de Internet.
+Si necesita un nivel de seguridad o de rendimiento excepcional para las conexiones entre locales, se recomienda utilizar Azure ExpressRoute para su conectividad. ExpressRoute es un vínculo de WAN dedicada entre su ubicación local o un proveedor de hospedaje de Exchange. Porque se trata de una conexión de telecomunicaciones, los datos no se transmiten a través de Internet de Hola y es, por tanto, no se expone toohello posibles riesgos inherentes a las comunicaciones de Internet.
 
-Para más información sobre cómo funciona Azure ExpressRoute y cómo implementarlo, consulte el artículo [Información técnica de ExpressRoute](../expressroute/expressroute-introduction.md).
+toolearn más acerca del funcionamiento de ExpressRoute de Azure y cómo toodeploy, por favor, lea el artículo de hello [información general técnica de ExpressRoute](../expressroute/expressroute-introduction.md).
 
 ## <a name="optimize-uptime-and-performance"></a>Optimización del rendimiento y el tiempo de actividad
-La confidencialidad, la integridad y la disponibilidad (CIA) constituyen la triada del modelo de seguridad más influyente en la actualidad. La confidencialidad se refiere al cifrado y la privacidad, la integridad consiste en garantizar que personas no autorizadas no modifiquen los datos, y la disponibilidad consiste en asegurarse de que las personas autorizadas puedan acceder a la información para la que tengan autorización. Un error en cualquiera de estas áreas representa una posible infracción de seguridad.
+Confidencialidad, integridad y disponibilidad (CIA) comprenden tres Hola del modelo de seguridad más influyente de hoy en día. Confidencialidad es acerca del cifrado y la privacidad, la integridad es asegurarse de que personal no autorizado no cambian los datos y disponibilidad consiste en asegurarse de que las personas autorizadas son tooaccess capaz de obtener información de hello que están autorizados tooaccess. Un error en cualquiera de estas áreas representa una posible infracción de seguridad.
 
-La disponibilidad puede referirse al tiempo de actividad y el rendimiento. Si un servicio está inactivo, no puede accederse a la información. Si el rendimiento es tan bajo que no se pueden utilizar los datos, podemos considerar que los datos son inaccesibles. Por lo tanto, desde una perspectiva de seguridad, necesitamos hacer todo lo posible para asegurarnos de que nuestros servicios tienen un rendimiento y un tiempo de actividad óptimos.
-Un método popular y eficaz usado para mejorar la disponibilidad y el rendimiento es usar el equilibrio de carga. El equilibrio de carga es un método para distribuir el tráfico de la red entre los servidores que forman parte de un servicio. Por ejemplo, si tiene servidores web front-end que forman parte de su servicio, puede usar el equilibrio de carga para distribuir el tráfico entre ellos.
+La disponibilidad puede referirse al tiempo de actividad y el rendimiento. Si un servicio está inactivo, no puede accederse a la información. Si el rendimiento es tan bajo como datos de hello toomake inutilizables, a continuación, podemos consideramos Hola datos toobe inaccesible. Por lo tanto, desde una perspectiva de seguridad, necesitamos toodo cualquier podemos toomake que nuestros servicios tengan tiempo de actividad óptimo y el rendimiento.
+Un método eficaz y popular usa tooenhance disponibilidad y el rendimiento es toouse equilibrio de carga. El equilibrio de carga es un método para distribuir el tráfico de la red entre los servidores que forman parte de un servicio. Por ejemplo, si tiene servidores web front-end como parte de su servicio, puede usar Equilibrio de carga tráfico de hello toodistribute entre los servidores web front-end varios.
 
-Esta distribución del tráfico aumenta la disponibilidad, ya que si uno de los servidores web no está disponible, el equilibrio de carga dejará de enviarle tráfico y lo redirigirá a los servidores que aún están en línea. El equilibrio de carga también mejora el rendimiento, ya que la sobrecarga del procesador, la red y la memoria para atender a las solicitudes se distribuye entre todos los servidores con carga equilibrada.
+Esta distribución del tráfico de aumenta la disponibilidad ya que si uno de los servidores web Hola deja de estar disponible, equilibrador de carga de hello dejará de enviar toothat el tráfico de servidor y los servidores de toohello de tráfico de redireccionamiento que aún estén en línea. Equilibrio de carga también mejora el rendimiento, porque hello procesador, la red y la sobrecarga de memoria para servir solicitudes se distribuye entre todos los servidores de equilibrio de carga de Hola
 
-Se recomienda usar el equilibrio de carga siempre que se pueda y, según sea adecuado para los servicios. Abordaremos la adecuación en las secciones siguientes.
-En el nivel de red virtual de Azure, Azure proporciona tres opciones principales para el equilibrio de carga:
+Se recomienda usar el equilibrio de carga siempre que se pueda y, según sea adecuado para los servicios. También se abordará idoneidad en hello las secciones siguientes.
+En el nivel de red Virtual de Azure hello, Azure proporciona, con tres primarias opciones de equilibrio de carga:
 
 * Equilibrio de carga basado en HTTP
 * Equilibrio de carga externo
 * Equilibrio de carga interno
 
 ## <a name="http-based-load-balancing"></a>Equilibrio de carga basado en HTTP
-El equilibrio de carga basado en HTTP toma las decisiones acerca de a qué servidor enviar las conexiones de acuerdo con las características del protocolo HTTP. Azure tiene un equilibrio de carga HTTP llamado Puerta de enlace de aplicaciones.
+Equilibrio de carga basado en HTTP envergadura ninguna decisión sobre qué conexiones toosend del servidor mediante las características del protocolo de hello HTTP. Azure tiene un equilibrador de carga HTTP que pasa el nombre de Hola de puerta de enlace de aplicaciones.
 
 Se recomienda usar la Puerta de enlace de aplicaciones de Azure cuando hay:
 
-* Aplicaciones que requieren solicitudes de la misma sesión de usuario o cliente para llegar a la misma máquina virtual back-end. Ejemplos de esto serían las aplicaciones de carro de la compra y los servidores de correo web.
-* Aplicaciones que desean liberar las granjas de servidores web de la sobrecarga de la terminación SSL mediante la característica [Descarga SSL](https://f5.com/glossary/ssl-offloading) de Application Gateway.
-* Aplicaciones, como la red de entrega de contenido, que requieren que varias solicitudes HTTP en la misma conexión TCP de ejecución prolongada se enruten a servidores backend diferentes o su carga se equilibre entre estos.
+* Las aplicaciones que requieren las solicitudes de hello mismo tooreach de sesión de usuario o cliente Hola misma máquina virtual de back-end. Ejemplos de esto serían las aplicaciones de carro de la compra y los servidores de correo web.
+* Aplicaciones que desean toofree granjas de servidores web de terminación SSL sobrecarga aprovechando las ventajas de la puerta de enlace de aplicaciones [descarga SSL](https://f5.com/glossary/ssl-offloading) característica.
+* Las aplicaciones, como una red de entrega de contenido, que requieren varias solicitudes HTTP en hello mismo toobe de conexión de TCP de larga ejecución enrutar o servidores de back-end de toodifferent con equilibrio de carga.
 
-Para más información sobre cómo Azure Application Gateway y cómo puede usarlo en las implementaciones, lea el artículo [Introducción a Application Gateway](../application-gateway/application-gateway-introduction.md).
+toolearn más información acerca de cómo funciona la puerta de enlace de aplicaciones de Azure y cómo se pueden utilizar en las implementaciones, lea el artículo de hello [información general sobre la puerta de enlace de aplicaciones](../application-gateway/application-gateway-introduction.md).
 
 ## <a name="external-load-balancing"></a>Equilibrio de carga externo
-El equilibrio de carga externo tiene lugar cuando se realiza una carga equilibrada de las conexiones entrantes de Internet entre los servidores situados en una red virtual de Azure. El equilibrio de carga externo de Azure puede proporcionar esta funcionalidad, y se recomienda utilizarlo cuando no se requieren sesiones persistentes o la descarga SSL.
+Equilibrio de carga externo tiene lugar cuando las conexiones entrantes de Internet Hola carga equilibrada entre los servidores que se encuentran en una red Virtual de Azure. equilibrador de carga externo de Azure de Hello puede proporcionar esta capacidad y se recomienda que se usa cuando no requieren sesiones permanentes de Hola o la descarga de SSL.
 
-A diferencia de equilibrio de carga basado en HTTP, el equilibrio de carga externo utiliza información en los niveles de red y transporte del modelo de redes OSI para tomar decisiones sobre en qué servidor equilibrar la carga de la conexión.
+En cambio basado en tooHTTP equilibrio de carga, Hola equilibrador de carga externo usa información en capas de red y el transporte de Hola de hello OSI modelo toomake sus decisiones de red en qué conexión del saldo tooload servidor a.
 
-Recomendamos usar el equilibrio de carga externo siempre que tenga [aplicaciones sin estado](http://whatis.techtarget.com/definition/stateless-app) que aceptan solicitudes entrantes de Internet.
+Recomendamos que use el equilibrio de carga externo siempre que tenga [aplicaciones sin estado](http://whatis.techtarget.com/definition/stateless-app) Aceptar solicitudes entrantes de hello Internet.
 
-Para más información sobre cómo funciona el equilibrio de carga externo de Azure y cómo implementarlo, lea el artículo [Introducción a la creación de un equilibrio de carga orientado a Internet en Resource Manager con PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+toolearn más información acerca de cómo funciona la Hola equilibrador de carga externo de Azure y cómo implementarla, lea el artículo de hello [empezar a crear un equilibrador de carga con conexión a Internet en el Administrador de recursos con PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## <a name="internal-load-balancing"></a>Equilibrio de carga interno
-El equilibrio de carga interno es similar al equilibrio de carga externo y utiliza el mismo mecanismo para equilibrar las conexiones a los servidores tras ellas. La única diferencia es que, en este caso, el equilibrio de carga acepta conexiones procedentes de máquinas virtuales que no están en Internet. En la mayoría de los casos, las conexiones que se aceptan para el equilibrio de carga son iniciadas por dispositivos en una red virtual de Azure.
+Equilibrio de carga interno es tooexternal similar el equilibrio de carga y utiliza Hola mismo mecanismo tooload equilibrar conexiones toohello servidores detrás de ellos. Hello la única diferencia es que equilibrador de carga de hello en este caso acepta conexiones desde máquinas virtuales que no están en Internet Hola. En la mayoría de los casos, las conexiones de Hola que se aceptan para equilibrio de carga se inicien por dispositivos de red Virtual de Azure.
 
-Se recomienda utilizar el equilibrio de carga interno para escenarios que se beneficiarán de esta funcionalidad, como cuando necesite equilibrar las conexiones a servidores SQL o servidores web internos.
+Se recomienda que realice para escenarios que puede beneficiarse de esta funcionalidad, como cuando se necesitan tooload equilibrar conexiones tooSQL servidores o servidores web interna de equilibrio de carga interna.
 
-Para más información sobre cómo funciona el equilibrio de carga interno de Azure y cómo se puede implementar, lea el artículo [Introducción a la creación de un equilibrio de carga orientado a Internet en Resource Manager con PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md#update-an-existing-load-balancer).
+toolearn más información acerca de cómo funciona el equilibrio de carga interno de Azure y cómo implementarla, lea el artículo de hello [empezar a crear un equilibrador de carga interno mediante PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md#update-an-existing-load-balancer).
 
 ## <a name="use-global-load-balancing"></a>Uso del equilibrio de carga global
-El proceso de la nube pública permite implementar globalmente aplicaciones distribuidas que tienen componentes ubicados en centros de datos de todo el mundo. Esto es posible en Microsoft Azure gracias a la presencia de un centro de datos global de Azure. A diferencia de la tecnologías de equilibrio de carga mencionadas anteriormente, el equilibrio de carga global permite que los servicios estén disponibles incluso aunque ninguno de los centros de datos esté disponible.
+Hace posible de la informática en nube pública toodeploy distribuida globalmente las aplicaciones que tienen componentes que se encuentran en los centros de datos distribuidas por todo el mundo de Hola. Esto es posible en Microsoft Azure debido presencia de tooAzure centro de datos global. Por el contrario las tecnologías de equilibrio de carga de toohello se ha mencionado anteriormente, equilibrio de carga global hace posible toomake servicios disponibles incluso cuando todo centros de datos podrían estar disponible.
 
-Puede obtener este tipo de equilibrio de carga global en Azure mediante [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/). El Administrador de tráfico permite equilibrar las conexiones a los servicios según la ubicación del usuario.
+Puede obtener este tipo de equilibrio de carga global en Azure mediante [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/). Hace que el Administrador de tráfico está equilibrado de posibles tooload servicios de tooyour las conexiones basan en ubicación de hello del usuario de Hola.
 
-Por ejemplo, si el usuario realiza una solicitud a su servicio desde la Unión Europea, la conexión se dirige a sus servicios situados en un centro de datos de la Unión Europea. Esta parte del equilibrio de carga global del Administrador de tráfico ayuda a mejorar el rendimiento, ya que la conexión al centro de datos más cercano es más rápida que a los centros de datos que están lejos.
+Por ejemplo, si usuario Hola realiza un servicio de tooyour de solicitud de hello Europa, conexión hello es dirigido tooyour servicios que están ubicados en un centro de datos de Europa. Esta parte del Administrador de tráfico global de equilibrio de carga ayuda a tooimprove rendimiento dado conectarse toohello más cercano de centro de datos es más rápida que la conexión toodatacenters que están lejos.
 
-En relación con la disponibilidad, el equilibrio de carga global garantiza que el servicio esté disponible incluso si todo un centro de datos deja de estarlo.
+En el lado de la disponibilidad de hello, equilibrio de carga global se asegura de que el servicio está disponible incluso si todo un centro de datos debe estar disponible.
 
-Por ejemplo, si un centro de datos de Azure deja de estar disponible por motivos ambientales o debido a interrupciones (como errores en la red regional), las conexiones al servicio se vuelven a enrutar al centro de datos en línea más cercano. Este equilibrio de carga global se logra al aprovechar las directivas DNS que se pueden crear en el Administrador de tráfico.
+Por ejemplo, si un centro de datos de Azure debe estar disponible debido a motivos de tooenvironmental o vencimiento toooutages (por ejemplo, errores de red regional), las conexiones de servicio tooyour sería vuelve a enrutar toohello más cercano de centro de datos en línea. Este equilibrio de carga global se logra al aprovechar las directivas DNS que se pueden crear en el Administrador de tráfico.
 
-Se recomienda usar el Administrador de tráfico para cualquier solución en la nube que desarrolle, tenga un ámbito ampliamente distribuido en varias regiones y requiera el tiempo de actividad más alto posible.
+Se recomienda usar el Administrador de tráfico para cualquier solución de nube que desarrolle que tiene un ámbito ampliamente distribuido en varias regiones y requiere el nivel más alto de Hola de tiempo de actividad posible.
 
-Para más información sobre Azure Traffic Manager y cómo implementarlo, lea el artículo [¿Qué es Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
+toolearn más sobre Azure Traffic Manager y cómo toodeploy, lea el artículo de hello [¿qué es el Administrador de tráfico](../traffic-manager/traffic-manager-overview.md).
 
-## <a name="disable-rdpssh-access-to-azure-virtual-machines"></a>Deshabilitación del acceso RDP o SSH para máquinas virtuales de Azure
-Es posible obtener acceso a Azure Virtual Machines mediante los protocolos [Protocolo de escritorio remoto](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) y [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) (SSH). Estos protocolos permiten administrar máquinas virtuales desde ubicaciones remotas y son estándar para calcular el centro de datos.
+## <a name="disable-rdpssh-access-tooazure-virtual-machines"></a>Deshabilitar el acceso RDP/SSH tooAzure máquinas virtuales
+Es posible tooreach máquinas virtuales de Azure con hello [protocolo de escritorio remoto](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) hello y [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) protocolos (SSH). Estos protocolos que sea posible toomanage las máquinas virtuales desde ubicaciones remotas y son estándar para calcular el centro de datos.
 
-El posible problema de seguridad con el uso de estos protocolos a través de Internet es que los atacantes pueden utilizar diversas técnicas [por fuerza bruta](https://en.wikipedia.org/wiki/Brute-force_attack) para obtener acceso a Azure Virtual Machines. Una vez que los atacantes obtienen acceso, pueden utilizar la máquina virtual como punto de inicio para poner en peligro otros equipos de la red virtual de Azure o incluso atacar dispositivos en red fuera de Azure.
+posible problema de seguridad Hola con el uso de estos protocolos a través de Internet de hello es que los atacantes pueden usar distintas [por fuerza bruta](https://en.wikipedia.org/wiki/Brute-force_attack) técnicas toogain acceso tooAzure máquinas virtuales. Una vez que los atacantes Hola obtienen acceso, pueden usar la máquina virtual como un punto de inicio para poner en peligro otros equipos de la red Virtual de Azure o incluso ataques dispositivos de red fuera de Azure.
 
-Por este motivo, se recomienda deshabilitar el acceso directo de RDP y SSH a las máquinas virtuales de Azure desde Internet. Cuando se deshabilita el acceso directo de RDP y SSH desde Internet, tiene otras opciones que puede utilizar para acceder a estas máquinas virtuales para la administración remota:
+Por este motivo, le recomendamos que deshabilite directa RDP y SSH acceso tooyour máquinas virtuales de Azure de hello Internet. Una vez directa RDP y SSH tener acceso desde Hola que Internet está deshabilitada, tiene otras opciones que puede usar estas máquinas virtuales tooaccess para la administración remota:
 
 * VPN de punto a sitio
 * VPN de sitio a sitio
 * ExpressRoute
 
-[VPN de punto a sitio](../vpn-gateway/vpn-gateway-point-to-site-create.md) es otro término para una conexión cliente/servidor de VPN con acceso remoto. Una VPN de punto a sitio permite a un solo usuario conectarse a una red virtual de Azure a través de Internet. Una vez establecida la conexión de punto a sitio, el usuario podrá usar RDP o SSH para conectarse a cualquier máquina virtual situada en la red virtual de Azure a la que el usuario se conectó mediante la VPN de punto a sitio. Esto supone que el usuario está autorizado para acceder a dichas máquinas virtuales.
+[VPN de punto a sitio](../vpn-gateway/vpn-gateway-point-to-site-create.md) es otro término para una conexión cliente/servidor de VPN con acceso remoto. Una VPN de punto a sitio permite un tooan de tooconnect de usuario única red Virtual de Azure a través de Internet de Hola. Después de que se establezca la conexión de punto a sitio Hola, usuario de hello será capaz de toouse RDP o SSH tooconnect tooany máquinas virtuales ubicadas en hello red Virtual de Azure que Hola usuario conectado toovia point-to-site VPN. Esto se da por supuesto que el usuario hello es tooreach autorizado esas máquinas virtuales.
 
-La VPN de punto a sitio es más segura que las conexiones de RDP o SSH directas, ya que el usuario tiene que autenticarse dos veces antes de conectarse a una máquina virtual. En primer lugar, el usuario debe autenticar (y ser autorizado) para establecer la conexión VPN de sitio a punto; en segundo lugar, el usuario debe autenticar (y ser autorizado) para establecer la sesión RDP o SSH.
+Point-to-site VPN es más seguro que las conexiones directas de RDP o SSH porque el usuario de hello tiene tooauthenticate dos veces para que conecta tooa virtual machine. En primer lugar, Hola tooauthenticate de necesidades del usuario (y autorizar) conexión de tooestablish Hola point-to-site VPN; en segundo lugar, Hola tooauthenticate de necesidades del usuario (y autorizar) sesión RDP o SSH hello tooestablish.
 
-Una [VPN de sitio a sitio](../vpn-gateway/vpn-gateway-site-to-site-create.md) conecta toda una red a otra a través de Internet. Puede usar una VPN de sitio a sitio para conectar su red local a una red virtual de Azure. Si va a implementar una VPN de sitio a sitio, los usuarios de la red local podrán conectarse a máquinas virtuales de la red virtual de Azure mediante el protocolo RDP o SSH a través de la conexión VPN de sitio a sitio; no requiere que permita el acceso RDP o SSH directo a través de Internet.
+A [VPN de sitio a sitio](../vpn-gateway/vpn-gateway-site-to-site-create.md) se conecta a una red de tooanother de toda la red a través de Internet de Hola. Puede usar un tooconnect VPN de sitio a sitio en su tooan de red local red Virtual de Azure. Si implementa una VPN de sitio a sitio, los usuarios de su red local será capaz de tooconnect toovirtual máquinas de la red Virtual de Azure mediante el uso de hello RDP o protocolo SSH en Hola conexión de VPN de sitio a sitio y no requiere tooallow directo RDP o SSH tener acceso a través de Internet de Hola.
 
-También puede utilizar un vínculo WAN dedicado para ofrecer una funcionalidad similar a la VPN de sitio a sitio. Las principales diferencias son: 1. El vínculo WAN dedicado no recorre Internet, y 2. Los vínculos WAN dedicados suelen ser más estables y eficaces. Azure proporciona una solución de vínculo WAN dedicado mediante [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
+También puede utilizar un toohello similar de un vínculo WAN dedicado tooprovide funcionalidad VPN de sitio a sitio. Hola principales diferencias son 1. vínculo WAN dedicado de Hello no atraviesan Hola Internet y 2. Los vínculos WAN dedicados suelen ser más estables y eficaces. Azure proporciona una solución de un vínculo WAN dedicado en forma de Hola de [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
 
 ## <a name="enable-azure-security-center"></a>Habilitación de Azure Security Center
-Azure Security Center ayuda a evitar, detectar y responder a amenazas, al tiempo que proporciona más visibilidad y control de la seguridad de los recursos de Azure. Proporciona administración de directivas y supervisión de la seguridad integrada en las suscripciones de Azure, ayuda a detectar las amenazas que podrían pasar desapercibidas y funciona con un amplio ecosistema de soluciones de seguridad.
+Centro de seguridad de Azure le ayuda a evitar, detectar y responder toothreats y proporciona que mayor visibilidad en y control sobre, seguridad de Hola de los recursos de Azure. Proporciona administración de directivas y supervisión de la seguridad integrada en las suscripciones de Azure, ayuda a detectar las amenazas que podrían pasar desapercibidas y funciona con un amplio ecosistema de soluciones de seguridad.
 
 Azure Security Center le ayuda a optimizar y controlar la seguridad de la red al:
 
 * Proporcionar recomendaciones de seguridad de la red
-* Supervisar el estado de la configuración de seguridad de la red
-* Alertar de las amenazas basadas en la red en los niveles de red y de punto de conexión
+* Supervisión del estado de saludo de la configuración de seguridad de red
+* Las alertas toonetwork según las amenazas tanto en los niveles de red y de punto de conexión de Hola
 
 Recomendamos encarecidamente habilitar Azure Security Center para todas las implementaciones de Azure.
 
-Para aprender más acerca de Azure Security Center y cómo habilitarlo para las implementaciones, lea el artículo [Introducción a Azure Security Center](../security-center/security-center-intro.md).
+más información sobre el centro de seguridad de Azure y cómo tooenable para las implementaciones, lea el artículo de hello toolearn [Introducción tooAzure centro de seguridad](../security-center/security-center-intro.md).
 
 ## <a name="securely-extend-your-datacenter-into-azure"></a>Extensión de su centro de datos en Azure de forma segura
-Muchas organizaciones de TI desean expandirse en la nube en lugar de hacer que crezcan sus centros de datos locales. Esta expansión representa una extensión de la infraestructura de TI existente en la nube pública. Al aprovechar las opciones de conectividad entre locales, es posible tratar las redes virtuales de Azure como otra subred en la infraestructura de red local.
+TI de las empresas muchas organizaciones buscan tooexpand en nube de hello en lugar de crecimiento de sus centros de datos local. Este aumento representa una extensión de la infraestructura de TI existente en la nube pública de Hola. Aprovechando las ventajas de entre entornos opciones de conectividad, es posible tootreat las redes virtuales de Azure como simplemente otra subred en sus instalaciones en la infraestructura de red.
 
-Sin embargo, hay mucho planeamiento y problemas de diseño que deben solucionarse antes. Esto es especialmente importante en el área de seguridad de la red. Una de las mejores formas de comprender cómo enfocar dicho diseño es ver un ejemplo.
+Sin embargo, hay muchas tareas de planificación y los problemas de diseño que necesitan toobe atienden primero. Esto es especialmente importante en el área de Hola de seguridad de red. Uno de hello mejores formas toounderstand cómo tratar este tipo de diseño es toosee un ejemplo.
 
-Microsoft creó el [Datacenter Extension Reference Architecture Diagram](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content) (Diagrama de arquitectura de referencia de extensión de centro de datos) y otro material auxiliar para ayudarle a comprender cuál sería la apariencia de una extensión del centro de datos. Esto proporciona un ejemplo de implementación de referencia que puede usar para planear y diseñar una extensión del centro de datos empresarial seguro en la nube. Se recomienda leer este documento para hacerse una idea de los componentes clave de una solución segura.
+Microsoft ha creado hello [diagrama de arquitectura de referencia de extensión de centro de datos](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content) y admitir toohelp colateral comprender cuál sería una extensión de centro de datos de este tipo. Esto proporciona una implementación de referencia de ejemplo que puede utilizar tooplan y diseñar una nube de toohello de extensión de centro de datos empresarial seguro. Se recomienda que revise este tooget documento una idea de los componentes clave de Hola de una solución segura.
 
-Para más información sobre cómo extender su centro de datos de forma segura en Azure, vea el vídeo [Extending Your Datacenter to Microsoft Azure](https://www.youtube.com/watch?v=Th1oQQCb2KA) (Extensión de su centro de datos a Microsoft Azure).
+toolearn más información acerca de cómo toosecurely ampliar su centro de datos en Azure, vea el vídeo de hello [tooMicrosoft de ampliar su centro de datos Azure](https://www.youtube.com/watch?v=Th1oQQCb2KA).

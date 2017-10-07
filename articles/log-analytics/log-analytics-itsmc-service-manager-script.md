@@ -1,6 +1,6 @@
 ---
-title: "Script automatizado para crear la aplicación web de Service Manager para conectarse con IT Service Management Connector en OMS | Microsoft Docs"
-description: "Cree una aplicación web de Service Manager con un script automatizado para conectar con el conector de administración de servicios de TI en OMS y supervisar y administrar centralmente los elementos de trabajo ITSM."
+title: "secuencia de comandos de aaaAutomated toocreate tooconnect de aplicación Web de Service Manager con el conector de administración de servicios de TI en OMS | Documentos de Microsoft"
+description: "Crear una aplicación de administrador de servicios Web mediante un script automatizado tooconnect con conector de administración de servicios de TI en OMS y centralmente supervisar y administrar elementos de trabajo ITSM Hola."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: v-jysur
-ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cbe6a1f75548ac541fd428a977edf64eea959e4f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script-preview"></a>Creación de una aplicación web de Service Manager mediante el script automatizado (versión preliminar)
+# <a name="create-service-manager-web-app-using-hello-automated-script-preview"></a>Crear aplicación Web de Service Manager con la secuencia de comandos de hello automatizada (vista previa)
 
-Use el siguiente script para crear la aplicación web para la instancia de Service Manager. Aquí podrá obtener más información sobre la conexión de Service Manager: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service) (Aplicación web de Service Manager).
+Usar hello después de la aplicación de script toocreate hello Web para la instancia de Service Manager. Aquí podrá obtener más información sobre la conexión de Service Manager: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service) (Aplicación web de Service Manager).
 
-Ejecute el script proporcionando los siguientes detalles necesarios:
+Ejecutar script de Hola proporcionando Hola detalles necesarios siguientes:
 
 - Detalles de la suscripción de Azure
 - Definición de un nombre de grupo de recursos
@@ -33,16 +33,16 @@ Ejecute el script proporcionando los siguientes detalles necesarios:
 - Prefijo de nombre de sitio de la aplicación web
 - Espacio de nombres de ServiceBus.
 
-El script creará la aplicación web con el nombre que especificó (junto con algunas cadenas adicionales para hacerlo único). Genera la **dirección URL de la aplicación web**, el **id. de cliente** y el **secreto de cliente**.
+Hello script creará hello Web app con nombre hello especificado (junto con algunos toomake cadenas adicionales que único). Genera hello **dirección URL de la aplicación Web**, **Id. de cliente** y **secreto de cliente**.
 
 Guarde estos valores, ya que los necesitará cuando cree una conexión con IT Service Management Connector.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
  Windows Management Framework 5.0 o posterior.
-Windows 10 tiene la versión 5.1 de forma predeterminada. Puede descargar el marco desde [aquí](https://www.microsoft.com/download/details.aspx?id=53347):
+Windows 10 tiene la versión 5.1 de forma predeterminada. Puede descargar el marco de Hola de [aquí](https://www.microsoft.com/download/details.aspx?id=53347):
 
-Use el siguiente script:
+Usar hello siguiente secuencia de comandos:
 
 ```
 ####################################
@@ -52,7 +52,7 @@ Use el siguiente script:
 # Subscription name in Azure account. Check in Azure Portal.
 $azureSubscriptionName = ""
 
-# Resource group name for resource deployment. Could be an existing resource group or a new one to be created.
+# Resource group name for resource deployment. Could be an existing resource group or a new one toobe created.
 $resourceGroupName = ""
 
 # Location for existing resource group or new resource group deployment
@@ -70,7 +70,7 @@ $username = ""
 $password = ""
 
 
-# Azure site Name Prefix. Default is "smoc". It can be configured to any desired value.
+# Azure site Name Prefix. Default is "smoc". It can be configured tooany desired value.
 $siteNamePrefix = ""
 
 # Service Bus namespace. Please provide an already existing service bus namespace.
@@ -85,7 +85,7 @@ $serviceName = ""
 # Installations
 ################
 
-# Allowing the execution of the script for current user.  
+# Allowing hello execution of hello script for current user.  
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 
 Write-Host "Checking for required modules..."
@@ -141,7 +141,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Web Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Web Resource Provider. Please register it in Azure Portal."
         exit
     }   
 }
@@ -203,7 +203,7 @@ try
 }
 catch
 {
-    # Delete the deployed web app if Azure AD application fails
+    # Delete hello deployed web app if Azure AD application fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     Write-Host "Faiure occured in Azure AD application....Try again!!"
@@ -247,10 +247,10 @@ catch
 {
     Write-Host "Web App configuration failed. Please ensure all values are provided in Service Manager Authentication Settings in User Configuration Section"
 
-    # Delete the AzureRm AD Application if confiuration fails
+    # Delete hello AzureRm AD Application if confiuration fails
     Remove-AzureRmADApplication -ObjectId $adApp.ObjectId -Force
 
-    # Delete the deployed web app if configuration fails
+    # Delete hello deployed web app if configuration fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     exit
@@ -276,7 +276,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Relay Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Relay Resource Provider. Please register it in Azure Portal."
     }   
 }
 
@@ -305,7 +305,7 @@ if(!$resource)
 
 }
 
-Write-Host "Note: Please Configure Hybrid connection in the Networking section of the web application in Azure Portal to link to the on-premises system.`n"
+Write-Host "Note: Please Configure Hybrid connection in hello Networking section of hello web application in Azure Portal toolink toohello on-premises system.`n"
 Write-Host "App Details"
 Write-Host "============"
 Write-Host "App Name:"  $siteName
@@ -319,4 +319,4 @@ if(!$err)
 
 ```
 ## <a name="next-steps"></a>Pasos siguientes
-[Configuración de la conexión híbrida](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
+[Configurar la conexión híbrida de hello](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).

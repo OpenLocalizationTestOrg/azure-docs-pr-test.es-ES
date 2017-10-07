@@ -1,6 +1,6 @@
 ---
-title: "Tecnologías en memoria de Azure SQL Database | Microsoft Docs"
-description: "Las tecnologías en memoria de Azure SQL Database mejoran notablemente el rendimiento de las cargas de trabajo transaccionales y de análisis. Aprenda a sacar partido de estas tecnologías."
+title: "tecnologías de base de datos de SQL en memoria aaaAzure | Documentos de Microsoft"
+description: "Las tecnologías de base de datos de SQL en memoria Azure mejoran considerablemente el rendimiento Hola de transaccional y cargas de trabajo de análisis. Obtenga información acerca de cómo tootake aprovechar estas tecnologías."
 services: sql-database
 documentationCenter: 
 author: jodebrui
@@ -15,138 +15,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jodebrui
-ms.openlocfilehash: 4cb45551c486263f26947e5684d54b4f2ecc7410
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1bacd7297b2f9b018853088eabf2a2ee66a9cb43
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimización del rendimiento mediante las tecnologías en memoria de SQL Database
 
-Mediante el uso de tecnologías en memoria en Azure SQL Database, puede lograr mejoras de rendimiento con diversas cargas de trabajo: transaccionales (procesamiento de transacciones en línea [OLTP]), analíticas (procesamiento analítico en línea [OLAP]) y mixtas (procesamiento analítico y transaccional híbrido [HTAP]). Gracias al procesamiento más eficiente de las consultas y las transacciones, las tecnologías en memoria también lo ayudan a reducir costos. Normalmente no necesita actualizar el plan de tarifa de la base de datos para lograr mejoras de rendimiento. En algunos casos, tal vez pueda reducir incluso el plan de tarifa sin dejar de observar mejoras de rendimiento con las tecnologías en memoria.
+Mediante el uso de tecnologías en memoria en Azure SQL Database, puede lograr mejoras de rendimiento con diversas cargas de trabajo: transaccionales (procesamiento de transacciones en línea [OLTP]), analíticas (procesamiento analítico en línea [OLAP]) y mixtas (procesamiento analítico y transaccional híbrido [HTAP]). Causa de Hola más eficiente de las consultas y procesamiento de transacciones, tecnologías en memoria también le ayudarán a tooreduce costo. Normalmente no es necesario hello tooupgrade tarifa de mejoras de rendimiento de tooachieve de base de datos de Hola. En algunos casos, es posible que incluso pueda reducir Hola tarifa, mientras se sigue viendo mejoras de rendimiento con tecnologías en memoria.
 
-A continuación se muestran dos ejemplos de cómo OLTP en memoria ayudó significativamente a mejorar el rendimiento:
+Estos son dos ejemplos de cómo OLTP en memoria ayudó a toosignificantly a mejorar el rendimiento:
 
-- Gracias al uso de OLTP en memoria, [Quorum Business Solutions pudo duplicar la carga de trabajo al mismo tiempo que mejoró las DTU en un 70 %](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- Mediante el uso de OLTP en memoria, [quórum Business Solutions era capaz de toodouble la carga de trabajo mientras mejoran la Dtu en un 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
     - DTU significa *Unidad de transmisión de datos*, e incluye una medida del consumo de recursos.
-- El vídeo siguiente muestra la mejora significativa del consumo de recursos con una carga de trabajo de ejemplo: [In-Memory OLTP in Azure SQL Database Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (Vídeo sobre OLTP en memoria en Azure SQL Database).
-    - Para más información, consulte la entrada de blog: [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (OLTP en memoria en la entrada de Blog de base de datos de SQL de Azure).
+- Hello vídeo siguiente muestra mejora significativa del consumo de recursos con una carga de trabajo de ejemplo: [OLTP en memoria en el vídeo para la base de datos de SQL Azure](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
+    - Para obtener más información, consulte el blog de hello: [OLTP en memoria en la entrada de Blog de base de datos de SQL de Azure](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-Las tecnologías en memoria están disponibles en todas las bases de datos del plan Premium, incluidas las de grupos elásticos Premium.
+Tecnologías en memoria están disponibles en todas las bases de datos de nivel Premium de hello, incluidas bases de datos en grupos elásticos Premium.
 
-En el siguiente vídeo se explican posibles mejoras de rendimiento obtenidas con las tecnologías en memoria de Azure SQL Database. Tenga presente que la mejora de rendimiento que obtenga depende siempre de muchos factores, como la naturaleza de la carga de trabajo y los datos, los patrones de acceso de la base de datos, etc.
+Hello vídeo siguiente explica posibles mejoras de rendimiento con tecnologías en memoria en la base de datos de SQL Azure. Recuerde que la ganancia de rendimiento de Hola que siempre verá depende de muchos factores, como la naturaleza de Hola de carga de trabajo de Hola y de datos, el patrón de acceso de base de datos de hello y así sucesivamente.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
 >
 >
 
-Azure SQL Database cuenta con las siguientes tecnologías en memoria:
+La base de datos de SQL Azure tiene Hola después de tecnologías en memoria:
 
 - *OLTP en memoria* aumenta el rendimiento y reduce la latencia del procesamiento de transacciones. Estas son las situaciones en las que se obtienen ventajas con OLTP en memoria: procesamiento de transacciones de alto rendimiento, como operaciones comerciales y juegos, ingesta de datos de eventos o dispositivos de IoT, almacenamiento en caché, carga de datos y escenarios de tablas temporales y variables de tablas.
-- Los *índices de almacén de columnas en clúster* reducen el espacio de almacenamiento necesario (hasta 10 veces) y mejoran el rendimiento de las consultas de análisis e informes. Puede usarlos con las tablas de hechos de sus data marts para incluir más datos en la base de datos y mejorar el rendimiento. También puede usarlos con los datos históricos de la base de datos operativa para archivar hasta 10 veces más datos, así como para disfrutar de un incremento equivalente en el número de consultas realizadas sobre ellos.
-- Con los *índices de almacén de columnas no clúster* para HTAP, podrá obtener información en tiempo real sobre su negocio realizando consultas directamente a la base de datos operativa, sin necesidad de ejecutar un caro proceso de extracción, transformación y carga (ETL) ni esperar a que se rellene el almacén de datos. Los índices de almacén de columnas no clúster permiten una ejecución muy rápida de las consultas de análisis en la base de datos OLTP y, a la vez, reducen el impacto en la carga de trabajo operativa.
-- También puede tener la combinación de una tabla optimizada para memoria con un índice de almacén de columnas. Esta combinación le permite realizar el procesamiento de transacciones de manera muy rápida y ejecutar consultas de análisis *simultáneamente* de manera muy rápida en los mismos datos.
+- *Índices de almacén de columnas clúster* reducen el consumo de almacenamiento (arriba too10 veces) y mejorar el rendimiento de las consultas de informes y análisis. Puede utilizarlo con las tablas de hechos en su toofit de los puestos de datos más datos en la base de datos y mejorar el rendimiento. Además, puede utilizarlo con datos históricos en la base de datos operativa tooarchive y ser capaz de tooquery too10 horas más datos.
+- *Los índices no agrupados* para obtener ayuda HTAP toogain información en tiempo real sobre su empresa mediante la consulta Hola operativa base de datos directamente, sin Hola necesidad toorun costoso extracción, transformación y el proceso de carga (ETL) y espere para toobe de almacenamiento de datos de hello rellena. Índices no agrupados permiten una ejecución muy rápida de las consultas de análisis en la base de datos OLTP hello, al tiempo que reduce el impacto de hello en la carga de trabajo operativa Hola.
+- También puede tener la combinación de Hola de una tabla con optimización para memoria con un índice de almacén. Esta combinación le permite tooperform muy rápido procesamiento de transacciones y demasiado*simultáneamente* análisis de ejecución consulta a muy rápidamente en hello mismo datos.
 
-Las opciones de índices de almacén de columnas y OLTP en memoria forman parte de SQL Server desde 2012 y 2014, respectivamente. Azure SQL Database y SQL Server comparten la misma implementación de tecnologías en memoria. A partir de ahora, las nuevas funciones para estas tecnologías se publican primero en Azure SQL Database y después, en SQL Server.
+Los índices de almacén de columnas y OLTP en memoria han formado parte del producto de SQL Server de Hola desde 2012 y 2014, respectivamente. Base de datos SQL de Azure y SQL Server comparten Hola misma implementación de tecnologías en memoria. A partir de ahora, las nuevas funciones para estas tecnologías se publican primero en Azure SQL Database y después, en SQL Server.
 
-En este tema se describen aspectos de OLTP en memoria y los índices de almacén de columnas específicos de Azure SQL Database; además, se incluyen ejemplos:
-- Veremos la repercusión de estas tecnologías en el almacenamiento, así como en los límites de tamaño de los datos.
-- Después trataremos cómo administrar el movimiento de bases de datos que usan estas tecnologías entre los distintos planes de tarifa.
-- Y también eremos dos ejemplos que ilustran el uso de OLTP en memoria y de los índices del almacén de columnas en Azure SQL Database.
+En este tema se describe los aspectos de los índices de OLTP en memoria y almacén de columnas que están tooAzure específico de base de datos SQL y también incluye ejemplos:
+- Podrá ver impacto Hola de estas tecnologías en límites de tamaño de almacenamiento y los datos.
+- Podrá ver cómo toomanage Hola movimiento de bases de datos que usan estas tecnologías entre Hola diferente niveles de precios.
+- Podrá ver dos ejemplos que ilustran el uso de Hola de OLTP en memoria, así como los índices de almacén de columnas de base de datos de SQL Azure.
 
-Para obtener más información, consulte los siguientes recursos.
+Vea Hola siguientes recursos para obtener más información.
 
-Información detallada sobre las tecnologías:
+Obtener información detallada acerca de las tecnologías de hello:
 
-- [Información general y escenarios de uso de OLTP en memoria](https://msdn.microsoft.com/library/mt774593.aspx) (incluye referencias a información y casos prácticos de clientes para familiarizarse)
+- [Información general de OLTP en memoria y escenarios de uso](https://msdn.microsoft.com/library/mt774593.aspx) (incluye referencias toocustomer casos prácticos y tooget información iniciado)
 - [Documentación de In-Memory OLTP](http://msdn.microsoft.com/library/dn133186.aspx)
 - [Descripción de los índices de almacén de columnas](https://msdn.microsoft.com/library/gg492088.aspx)
 - Procesamiento analítico y transaccional híbrido (HTAP), también conocido como [análisis operativo en tiempo real](https://msdn.microsoft.com/library/dn817827.aspx)
 
-Una guía rápida sobre OLTP en memoria: [Inicio rápido 1: Tecnologías OLTP en memoria para acelerar el rendimiento de Transact-SQL](http://msdn.microsoft.com/library/mt694156.aspx) (es otro artículo que lo ayudará a empezar a trabajar)
+Un texto elemental sobre rápido en OLTP en memoria: [inicio rápido 1: tecnologías de OLTP en memoria para el rendimiento de T-SQL con mayor rapidez](http://msdn.microsoft.com/library/mt694156.aspx) (empezar a otro artículo toohelp)
 
-Vídeos detallados sobre las tecnologías:
+Vídeos en profundidad acerca de las tecnologías de hello:
 
-- [In-Memory OLTP in Azure SQL Database](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (OLTP en memoria en Azure SQL Database), que contiene una demostración de las ventajas de rendimiento y los pasos para reproducir estos resultados
-- [In-Memory OLTP Videos: What it is and When/How to use it](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/) (Vídeos de OLTP en memoria: qué es y cuándo/cómo usarlo)
+- [OLTP en memoria en la base de datos de SQL Azure](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (que contiene una demostración de rendimiento ventajas y los pasos tooreproduce estos resultados usted mismo)
+- [Vídeos OLTP en memoria: ¿Qué es/cómo y cuándo toouse,](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 - [Columnstore Index: In-Memory Analytics Videos from Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/) (Índice de almacén de columnas: vídeos sobre análisis en memoria de Ignite 2016)
 
 ## <a name="storage-and-data-size"></a>Almacenamiento y tamaño de datos
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Límite de almacenamiento y tamaño de datos para OLTP en memoria
 
-OLTP en memoria incluye tablas con optimización de memoria, que se usan para almacenar los datos de los usuarios. Estas tablas deben caber en la memoria. Dado que administra la memoria directamente en el servicio de SQL Database, tenemos el concepto de una cuota para datos de usuario. Esta idea se conoce como *almacenamiento de OLTP en memoria*.
+OLTP en memoria incluye tablas con optimización de memoria, que se usan para almacenar los datos de los usuarios. Estas tablas forman toofit necesario en la memoria. Dado que administra la memoria directamente en hello servicio de base de datos SQL, tenemos concepto Hola de una cuota para los datos de usuario. Esta idea es que se hace referencia tooas *almacenamiento de OLTP en memoria*.
 
-Cada plan de tarifa de grupo elástico y de base de datos independiente admitido incluye una cantidad determinada de almacenamiento de OLTP en memoria. En el momento de escribir este artículo, obtiene un gigabyte de almacenamiento por cada 125 unidades de transacción de base de datos (DTU) o unidades de transacción de base de datos elástica (eDTU).
+Cada plan de tarifa de grupo elástico y de base de datos independiente admitido incluye una cantidad determinada de almacenamiento de OLTP en memoria. En tiempo de Hola de escritura, obtendrá un gigabyte de almacenamiento por cada 125 unidades de transacción de base de datos (Dtu) o la base de datos elástica unidades de transacción (Edtu).
 
-En el artículo sobre los [niveles de servicio de SQL Database](sql-database-service-tiers.md), podrá encontrar la lista oficial de almacenamiento de OLTP en memoria disponible para cada plan de tarifa de grupo elástico y de base de datos independiente admitido.
+Hola [niveles de servicio de base de datos SQL](sql-database-service-tiers.md) artículo tiene lista oficial de Hola de almacenamiento de OLTP en memoria de Hola que está disponible para cada una de las base de datos independiente y nivel de precios de grupo elástico.
 
-Los siguientes elementos cuentan para su límite de almacenamiento de OLTP en memoria:
+Hola siguiendo el recuento de elementos hacia su límite de almacenamiento de OLTP en memoria:
 
-- Las filas de datos de usuarios activos en tablas con optimización de memoria y variables de tabla. Tenga en cuenta que las versiones antiguas de las filas no cuentan para el límite.
+- Las filas de datos de usuarios activos en tablas con optimización de memoria y variables de tabla. Tenga en cuenta que las versiones de fila anteriores no cuentan para el límite de Hola.
 - Los índices de tablas con optimización de memoria.
 - La sobrecarga operacional de operaciones ALTER TABLE.
 
-Si alcanza el límite, recibirá un error que le notificará que se ha quedado sin cuota y no podrá volver a insertar o actualizar datos. Para mitigar este error, elimine datos o aumente el plan de tarifa de la base de datos o del grupo.
+Si alcanza el límite de hello, recibirá un error fuera de cuota y ya no es capaz de tooinsert o actualizar los datos. toomitigate este error, elimine datos o aumente Hola nivel de base de datos de Hola o un grupo de precios.
 
-Para obtener más información sobre cómo supervisar la utilización del almacenamiento de OLTP en memoria y configurar alertas que se activen cuando casi haya alcanzado el límite, consulte [Supervisión del almacenamiento en memoria](sql-database-in-memory-oltp-monitoring.md).
+Para obtener más información acerca de cómo supervisar la utilización de almacenamiento de OLTP en memoria y la configuración de alertas cuando se alcance casi cap hello, consulte [almacenamiento en memoria de Monitor](sql-database-in-memory-oltp-monitoring.md).
 
 #### <a name="about-elastic-pools"></a>Acerca de los grupos elásticos
 
-Con grupos elásticos, el almacenamiento de OLTP en memoria se comparte entre todas las bases de datos del grupo. Por lo tanto, el uso de una base de datos puede afectar a otras bases de datos. Existen dos formas de mitigar este problema:
+Con grupos elásticos, Hola almacenamiento de OLTP en memoria se comparte entre todas las bases de datos en bloque de Hola. Por lo tanto, el uso de hello en una base de datos puede afectar a otras bases de datos. Existen dos formas de mitigar este problema:
 
-- Establecer un valor de eDTU máx. para las bases de datos que sea inferior al número de eDTU del grupo en su conjunto. De este modo, se limita la utilización del almacenamiento de OLTP en memoria en cualquier base de datos del grupo al tamaño correspondiente al número de eDTU.
-- Configurar un valor de eDTU mín. que sea mayor que 0. Este mínimo garantiza que cada base de datos del grupo tenga la cantidad de almacenamiento de OLTP en memoria disponible que corresponde al valor configurado para eDTU mín.
+- Configurar un Max-eDTU para bases de datos que es menor que el número de eDTU de Hola para grupo de Hola como un todo. Este valor máximo limita la utilización del almacenamiento de OLTP en memoria de hello, en cualquier base de datos en el grupo de hello, tamaño de toohello que corresponde el número de eDTU de toohello.
+- Configurar un valor de eDTU mín. que sea mayor que 0. Este mínimo garantiza que cada base de datos en bloque de hello tiene cantidad Hola del almacenamiento de OLTP en memoria disponible que corresponde toohello habían configurado Min eDTU.
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Almacenamiento y tamaño de datos para los índices de almacén de columnas
 
-No se requiere que los índices de almacén de columnas quepan en la memoria. Por lo tanto, el único límite del tamaño de los índices es el tamaño máximo global de la base de datos, que está documentado en el artículo sobre los [niveles de servicio de SQL Database](sql-database-service-tiers.md).
+Índices de almacén de columnas no son necesario toofit en la memoria. Por lo tanto, Hola solo límite en el tamaño de Hola de índices de hello es el tamaño de base de datos total máximo de hello, que se documenta en hello [niveles de servicio de base de datos SQL](sql-database-service-tiers.md) artículo.
 
-Al utilizar los índices de almacén de columnas en clúster, se emplea una compresión de columnas para el almacenamiento de la tabla base. Esta compresión puede reducir considerablemente el consumo de almacenamiento de sus datos de usuario, lo que significa que la base de datos podrá albergar más información. Y es posible aumentar este compresión aún más con la [compresión de archivo de columnas](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). La cantidad de compresión que puede lograr depende de la naturaleza de los datos, pero no es raro obtener una compresión que reduzca el tamaño en 10 veces.
+Cuando se utilicen índices de almacén de columnas agrupado, compresión de columna se utiliza para el almacenamiento de tabla base Hola. Esta compresión puede reducir significativamente el espacio de almacenamiento de información de Hola de los datos de usuario, lo que significa que caben más datos en la base de datos de Hola. Y compresión de hello puede aumentarse aún más con [compresión de archivo columna](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). cantidad de Hola de compresión que se puede lograr depende de naturaleza Hola de datos de hello, pero la compresión 10 veces hello no es raro que.
 
-Por ejemplo, si tiene una base de datos con el tamaño máximo de 1 terabyte (TB) y logra una compresión de 10 veces con índices de almacén de columnas, puede incluir un total de 10 TB de datos de usuario en la base de datos.
+Por ejemplo, si tiene una base de datos con un tamaño máximo de 1 terabyte (TB) y logran una compresión de hello 10 veces mediante el uso de índices de almacén de columnas, puede incluir un total de 10 TB de datos de usuario de base de datos de Hola.
 
-Al utilizar índices de almacén de columnas no agrupados, la tabla base sigue almacenada en el formato de almacenamiento de filas tradicional. Por lo tanto, el ahorro de almacenamiento no es tan grande como con los índices de almacén de columnas agrupados. Pero si sustituye diversos índices no agrupados tradicionales por un único índice de almacén de columnas, aún podrá obtener un ahorro global en el espacio de almacenamiento de la tabla.
+Cuando utiliza los índices no agrupados, tabla de base de hello todavía se almacena en formato de almacén de filas tradicionales de Hola. Por lo tanto, no es tan grande como con índices de almacén de columnas agrupado Hola ahorro de almacenamiento. Sin embargo, si desea reemplazar un número de índices no clúster tradicionales con un índice de almacén de columnas único, todavía puede ver un ahorro general en el espacio de almacenamiento de información de hello para la tabla de Hola.
 
 ## <a name="moving-databases-that-use-in-memory-technologies-between-pricing-tiers"></a>Movimiento de bases de datos que usan tecnologías en memoria entre planes de tarifa
 
-Nunca hay incompatibilidades u otros problemas al actualizar a un plan de tarifas superior, como de Estándar a Premium. Solo aumenta la funcionalidad y los recursos disponibles.
+Hay nunca las incompatibilidades u otros problemas al actualizar tooa superior tarifa, como de tooPremium estándar. solo aumentan los recursos y la funcionalidad disponible Hola.
 
-Pero cambiar a un plan de tarifas inferior puede repercutir negativamente en la base de datos. El impacto es especialmente evidente al cambiar de Premium a Estándar o Básico cuando la base de datos contiene objetos de OLTP en memoria. Las tablas optimizadas para memoria y los índices de almacén de columnas no están disponibles después del cambio a una versión anterior (aunque sigan estando visibles). Lo mismo se aplica al reducir el plan de tarifa de un grupo elástico o mover bases de datos con tecnologías en memoria a un grupo elástico Estándar o Básico.
+Pero instalar versiones anteriores Hola tarifa puede repercutir negativamente en la base de datos. impacto de Hello es especialmente aparente cuando degrade desde tooStandard Premium o Basic cuando la base de datos contiene objetos de OLTP en memoria. Tablas optimizadas en memoria e índices de almacén de columnas, no están disponibles después de la degradación de hello (aunque sigan siendo visibles). Hola mismas consideraciones se aplican al bajar la Hola tarifa de un grupo elástico, o mover una base de datos con tecnologías en memoria, en un estándar o básico grupo elástico.
 
 ### <a name="in-memory-oltp"></a>In-Memory OLTP
 
-*Reducción a Básico o Estándar*: OLTP en memoria no se admite en bases de datos que se encuentren en los planes Estándar o Básico. Además, no es posible mover una base de datos con objetos de OLTP en memoria a los planes Estándar o Básico.
+*Degradar tooBasic/Standard*: OLTP en memoria no se admite en bases de datos de hello nivel estándar o básico. Además, no es posible toomove una base de datos que tiene cualquier toohello de objetos de OLTP en memoria nivel estándar o básico.
 
-Antes de degradar el plan de tarifa de una base de datos a Estándar o Básico, quite todos los tipos de tabla y las tablas con optimización de memoria, así como todos los módulos de Transact-SQL compilados de forma nativa.
+Antes de degradar la base de datos de hello tooStandard/Basic, quite todas las tablas optimizadas en memoria y tipos de tabla, así como todos los módulos T-SQL compilados de forma nativa.
 
-No existe ningún mecanismo de programación para comprender si una base de datos específica admite OLTP en memoria. Puede ejecutar la siguiente consulta de Transact-SQL:
+No hay un mecanismo de programación toounderstand si una base de datos es compatible con OLTP en memoria. Puede ejecutar Hola después de consulta de Transact-SQL:
 
 ```
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Si la consulta devuelve **1**, OLTP en memoria se admite en esta base de datos.
+Si consulta Hola devuelve **1**, OLTP en memoria se admite en esta base de datos.
 
 
-*Reducción a un plan Premium inferior*: los datos de las tablas con optimización de memoria deben caber en el almacenamiento de OLTP en memoria asociado al plan de tarifa de la base de datos o disponible en el grupo elástico. Si trata de reducir el plan de tarifa o mover la base de datos a un grupo que no disponga de almacenamiento de OLTP en memoria suficiente, la operación no se desarrolla correctamente.
+*Degradar de nivel inferior de Premium de tooa*: datos en tablas optimizadas en memoria deben caber dentro del almacenamiento de OLTP en memoria de Hola que está asociado con hello tarifa de base de datos de Hola o está disponible en el grupo elástico Hola. Si intente hello toolower tarifa o mover la base de datos de hello en un grupo que no tiene suficiente espacio disponible de OLTP en memoria, se produce un error en la operación de Hola.
 
 ### <a name="columnstore-indexes"></a>Índices de almacén de columnas
 
-*Cambiar a Básico o Estándar*: los índices de almacén de columnas solo se admiten en el plan de tarifa Premium y no en los planes Estándar o Básico. Cuando se cambie la base de datos a Estándar o Básico, el índice de almacén de columnas no estará disponible. El sistema mantiene el índice de almacén de columnas, pero no aprovecha el índice. Si después actualiza a Premium, el índice de almacén de columnas está listo para volver a sacar el máximo partido.
+*Degradar tooBasic o estándar*: los índices se admiten únicamente en el nivel de precios Premium hello y no en el almacén de columnas Hola niveles estándar o básico. Cuando degrade la base de datos tooStandard o Basic, el índice de almacén de columnas no estará disponible. sistema de Hello mantiene el índice de almacén de columnas, pero nunca aprovecha el índice de Hola. Si más tarde actualiza tooPremium atrás, el índice de almacén de columnas es toobe inmediatamente listo aprovechado de nuevo.
 
-Si tiene un índice de almacén de columnas **en clúster**, toda la tabla deja de estar disponible después del cambio a un nivel inferior. Por lo tanto, se recomienda quitar todos los índices de almacén de columnas *en clúster* antes de cambiar la base de datos por debajo del nivel Premium.
+Si tiene una **agrupado** índice de almacén de columnas, toda la tabla Hola deja de estar disponible después de la degradación de la capa. Por lo tanto, se recomienda quitar todas *agrupado* antes de degradar la base de datos por debajo del nivel Premium de Hola de índices de almacén de columnas.
 
-*Cambio a un plan Premium inferior*: este cambio se realiza correctamente si toda la base de datos se adapta al tamaño máximo de la base de datos del plan de tarifa objetivo o al almacenamiento disponible en el grupo elástico. Los índices de almacén de columnas no tienen ningún impacto concreto en este caso.
+*Degradar de nivel inferior de Premium de tooa*: esta degradación se realiza correctamente si la base de datos completa de hello quepa dentro de tamaño de base de datos máximo de hello para el nivel de precios de destino de hello, o dentro del almacenamiento disponible de hello en grupo elástico de Hola. No hay ningún impacto específico de índices de almacén de columnas de Hola.
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. Instalación del ejemplo de In-Memory OLTP.
+## <a name="1-install-hello-in-memory-oltp-sample"></a>1. Instalar el ejemplo de Hola a OLTP en memoria
 
-La base de datos de ejemplo AdventureWorksLT se puede crear con unos pocos clics en el [Azure Portal](https://portal.azure.com/). Los pasos descritos en esta sección explican cómo puede enriquecer la base de datos AdventureWorksLT con objetos de OLTP en memoria y muestran las ventajas de rendimiento.
+Puede crear base de datos de ejemplo de Hola AdventureWorksLT con unos pocos clics en hello [portal de Azure](https://portal.azure.com/). A continuación, hello en esta sección se explica cómo puede enriquecer la base de datos AdventureWorksLT con objetos de OLTP en memoria y mostrar las ventajas de rendimiento.
 
 Si desea ver una demostración más simple, pero más atractiva visualmente, del rendimiento de OLTP en memoria, consulte:
 
@@ -155,13 +155,13 @@ Si desea ver una demostración más simple, pero más atractiva visualmente, del
 
 #### <a name="installation-steps"></a>Pasos de instalación
 
-1. En el [Azure Portal](https://portal.azure.com/), cree una base de datos Premium en un servidor. Establezca el **Origen** en la base de datos de ejemplo de AdventureWorksLT. Para obtener instrucciones detalladas, consulte [Creación de la primera Base de datos SQL de Azure](sql-database-get-started-portal.md).
+1. Hola [portal de Azure](https://portal.azure.com/), crear una base de datos Premium en un servidor. Conjunto hello **origen** toohello datos de ejemplo AdventureWorksLT. Para obtener instrucciones detalladas, consulte [Creación de la primera Base de datos SQL de Azure](sql-database-get-started-portal.md).
 
-2. Conéctese a la base de datos con SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
+2. Conectar la base de datos de toohello con SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
 
-3. Copie el [script Transact-SQL de In-Memory OLTP](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) en el Portapapeles. El script T-SQL crea los objetos en memoria necesarios en la base de datos de ejemplo AdventureWorksLT que se creó en el paso 1.
+3. Hola copia [secuencia de comandos de Transact-SQL de OLTP en memoria](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) tooyour Portapapeles. Hola script T-SQL crea Hola objetos necesarios en memoria Hola datos de ejemplo AdventureWorksLT que creó en el paso 1.
 
-4. Pegue el script T-SQL en SSMS.exe y, luego, ejecútelo. Es crucial la instrucción CREATE TABLE de la cláusula `MEMORY_OPTIMIZED = ON`. Por ejemplo:
+4. Pegue el script de T-SQL de hello en SSMS y, a continuación, ejecute el script de Hola. Hola `MEMORY_OPTIMIZED = ON` instrucciones CREATE TABLE, cláusula son cruciales. Por ejemplo:
 
 
 ```
@@ -175,7 +175,7 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 #### <a name="error-40536"></a>Error 40536
 
 
-Si recibe el error 40536 cuando ejecuta el script T-SQL, ejecute el siguiente script de T-SQL para comprobar que la base de datos admite In-Memory:
+Si recibe el error 40536 al ejecutar script de Hola T-SQL, ejecute hello después tooverify de script de T-SQL si admite la base de datos de hello en memoria:
 
 
 ```
@@ -183,12 +183,12 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-Un resultado de **0** significa que no se admite en memoria, mientras que un resultado de **1** significa que se admite. Para diagnosticar el problema, asegúrese de que la base de datos se encuentra en el nivel de servicio Premium.
+Un resultado de **0** significa que no se admite en memoria, mientras que un resultado de **1** significa que se admite. problema de hello toodiagnose, asegurarse de esa base de datos de hello está en nivel de servicio Premium de Hola.
 
 
-#### <a name="about-the-created-memory-optimized-items"></a>Acerca de los elementos creados con optimización para memoria
+#### <a name="about-hello-created-memory-optimized-items"></a>Acerca de hello creó elementos optimizadas en memoria
 
-**Tablas**: el ejemplo contiene las siguientes tablas con optimización para memoria:
+**Tablas**: ejemplo de Hola contiene hello las tablas optimizadas en memoria siguientes:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -197,10 +197,10 @@ Un resultado de **0** significa que no se admite en memoria, mientras que un res
 - Demo.DemoSalesOrderDetailSeed
 
 
-Puede inspeccionar las tablas con optimización para memoria a través del **Explorador de objetos** en SSMS. Haga clic con el botón derecho en **Tablas** > **Filtro** > **Configuración de filtro** > **Con optimización para memoria**. El valor es igual a 1.
+Puede inspeccionar las tablas optimizadas en memoria a través de hello **Explorador de objetos** en SSMS. Haga clic con el botón derecho en **Tablas** > **Filtro** > **Configuración de filtro** > **Con optimización para memoria**. valor de Hello es igual a 1.
 
 
-O bien puede consultar las vistas de catálogo como:
+O bien, puede consultar vistas de catálogo de hello, como:
 
 
 ```
@@ -222,33 +222,33 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 &nbsp;
 
-### <a name="run-the-sample-oltp-workload"></a>Ejecución de la carga de trabajo de OLTP de ejemplo
+### <a name="run-hello-sample-oltp-workload"></a>Ejecutar la carga de trabajo OLTP de ejemplo de Hola
 
-La única diferencia entre los dos *procedimientos almacenados* siguientes es que el primer procedimiento usa las versiones de las tablas con optimización para memoria, mientras que el segundo procedimiento usa las tablas en disco habituales:
+Hola la única diferencia entre Hola siguiendo dos *procedimientos almacenados* es que el primer procedimiento de hello usa versiones optimizadas en memoria de tablas de hello, mientras Hola segundo procedimiento usa las tablas de hello normales en disco:
 
 - SalesLT**.**usp_InsertSalesOrder**_inmem**
 - SalesLT**.**usp_InsertSalesOrder**_ondisk**
 
 
-En esta sección verá cómo usar la práctica utilidad **ostress.exe** para ejecutar los dos procedimientos almacenados a niveles de esfuerzo. Puede comparar el tiempo que tardan en completarse las dos ejecuciones de esfuerzo.
+En esta sección, verá cómo Hola práctica toouse **ostress.exe** tooexecute utilidad Hola dos procedimientos almacenados en los niveles de estrés. Puede comparar cuánto tiempo tarda Hola dos esfuerzo ejecuciones toofinish.
 
 
-Cuando se ejecuta ostress.exe, le recomendamos pasar los valores de parámetros diseñados para estos dos casos:
+Cuando se ejecuta ostress.exe, se recomienda pasar valores de parámetro diseñados para los dos procedimientos siguientes de Hola:
 
 - Ejecute un gran número de conexiones simultáneas, mediante el uso de -n100.
 - Haga que cada conexión se repita en bucle cientos de veces, mediante el uso de -r500.
 
 
-Pero es posible que quiera comenzar con valores mucho más pequeños, como -n10 y -r50, para garantizar que todo está funcionando.
+Sin embargo, conviene toostart con valores mucho más pequeños como - tooensure n10 y - r50 que todo funciona.
 
 
 ### <a name="script-for-ostressexe"></a>Script para ostress.exe
 
 
-En esta sección se muestra el script de T-SQL que se inserta en la línea de comandos de ostress.exe. El script usa elementos creados por el script de T-SQL que instaló antes.
+Esta sección muestra la secuencia de comandos de T-SQL de Hola que se incrusta en la línea de comandos ostress.exe. script de Hola usa elementos creados por hello script T-SQL que instaló con anterioridad.
 
 
-El siguiente script inserta un pedido de ventas de ejemplo con cinco elementos de línea en las siguientes *tablas*con optimización para memoria:
+Hello secuencia de comandos siguiente inserta un pedido de ventas de ejemplo con cinco elementos de línea siguiente Hola optimizadas en memoria *tablas*:
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -278,27 +278,27 @@ end
 ```
 
 
-Para hacer que la versión *_ondisk* del script T-SQL anterior sirva para ostress.exe, hay que reemplazar ambas repeticiones de la subcadena *_inmem* por *_ondisk*. Estos reemplazos afectan a los nombres de tablas y procedimientos almacenados.
+Hola toomake *_ondisk* versión de Hola anterior script T-SQL para ostress.exe, podría reemplazar las apariciones de hello *_inmem* substring con *_ondisk*. Estos reemplazos afectan a los nombres de Hola de tablas y procedimientos almacenados.
 
 
 ### <a name="install-rml-utilities-and-ostress"></a>Instalación de ostress y utilidades de RML
 
 
-Lo ideal sería planear la ejecución de ostress.exe en una máquina virtual de Azure (VM). Se crearía una [VM de Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) en la misma región geográfica de Azure en que reside la base de datos AdventureWorksLT. Pero puede ejecutar si lo desea ostress.exe en el equipo portátil.
+Idealmente, debería planear toorun ostress.exe en una máquina virtual (VM) de Azure. Debe crear un [Azure VM](https://azure.microsoft.com/documentation/services/virtual-machines/) Hola misma región geográfica Azure donde reside la base de datos AdventureWorksLT. Pero puede ejecutar si lo desea ostress.exe en el equipo portátil.
 
 
-En la VM, o en cualquier host que elija, instale las utilidades de Replay Markup Language (RML). Las utilidades incluyen ostress.exe.
+Hola VM o en cualquier host, elija, instalar utilidades de lenguaje de marcado de reproducción (RML) de Hola. Utilidades de Hello incluyen ostress.exe.
 
 Para más información, consulte:
-- La explicación de ostress.exe en [Base de datos de ejemplo para OLTP en memoria](http://msdn.microsoft.com/library/mt465764.aspx).
+- Hola ostress.exe discusión en [base de datos de ejemplo para OLTP en memoria](http://msdn.microsoft.com/library/mt465764.aspx).
 - [Base de datos de ejemplo para OLTP en memoria](http://msdn.microsoft.com/library/mt465764.aspx).
-- El [blog para instalar ostress.exe](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
+- Hola [blog para la instalación de ostress.exe](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
 
 
 
 <!--
 dn511655.aspx is for SQL 2014,
-[Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
+[Extensions tooAdventureWorks tooDemonstrate In-Memory OLTP]
 (http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
 
 whereas for SQL 2016+
@@ -308,13 +308,13 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>Ejecute de la carga de trabajo de esfuerzo *_inmem* en primer lugar
+### <a name="run-hello-inmem-stress-workload-first"></a>Ejecute hello *_inmem* efectuar una carga de trabajo de esfuerzo en primer lugar
 
 
-Puede usar una ventana *del símbolo del sistema de RML* para ejecutar la línea de comandos de ostress.exe. Los parámetros de la línea de comandos dirigen ostress para:
+Puede usar un *RML Cmd Prompt* ventana toorun la línea de comandos ostress.exe. parámetros de línea de comandos de Hello directa ostress para:
 
 - Ejecutar 100 conexiones simultáneamente (-n100).
-- Hacer que cada conexión ejecute el script de T-SQL 50 veces (-r50).
+- Dispone de cada conexión ejecutar script de Hola T-SQL 50 veces (-r50).
 
 
 ```
@@ -322,18 +322,18 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 ```
 
 
-Para ejecutar la línea de comandos ostress.exe anterior:
+Hola de toorun delante de la línea de comandos de ostress.exe:
 
 
-1. Restablezca el contenido de los datos de la base de datos mediante la ejecución del siguiente comando en SSMS para eliminar todos los datos que se insertaron en las ejecuciones anteriores:
+1. Restablecer contenido de datos de base de datos de hello ejecutando Hola siguiente comando en SSMS, toodelete todos los datos de Hola que fuera insertados por todas las ejecuciones anteriores:
 
     ``` tsql
     EXECUTE Demo.usp_DemoReset;
     ```
 
-2. Copie el texto de la línea de comandos ostress.exe anterior en el Portapapeles.
+2. Copiar texto hello de hello anterior ostress.exe línea de comandos tooyour Portapapeles.
 
-3. Reemplace el `<placeholders>` de los parámetros -S -U -P -d por los valores reales correctos.
+3. Reemplace hello `<placeholders>` para hello parámetros -S - U -P -d con hello corregir valores reales.
 
 4. Ejecute la línea de comandos modificada en una ventana del símbolo del sistema de RML.
 
@@ -341,7 +341,7 @@ Para ejecutar la línea de comandos ostress.exe anterior:
 #### <a name="result-is-a-duration"></a>El resultado es una duración
 
 
-Cuando finaliza ostress.exe, escribe la duración de la ejecución como la última línea de la salida en la ventana de símbolo del sistema de RML. Por ejemplo, una ejecución de prueba más corta duró aproximadamente 1,5 minutos:
+Cuando finaliza el ostress.exe, escribe Hola duración de la ejecución como su última línea de salida en la ventana de hello RML Cmd. Por ejemplo, una ejecución de prueba más corta duró aproximadamente 1,5 minutos:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
@@ -349,93 +349,93 @@ Cuando finaliza ostress.exe, escribe la duración de la ejecución como la últi
 #### <a name="reset-edit-for-ondisk-then-rerun"></a>Restablezca y edite *_ondisk* y, después, vuelva a ejecutarlo
 
 
-Una vez que tenga el resultado de la ejecución de *_inmem*, realice los pasos siguientes para la ejecución de *_ondisk*:
+Una vez haya resultado Hola Hola *_inmem* ejecutar, lleve a cabo Hola siguiendo los pasos para hello *_ondisk* ejecutar:
 
 
-1. Restablezca la base de datos mediante la ejecución del siguiente comando en SSMS para eliminar todos los datos que insertó la ejecución anterior:
+1. Restablecer la base de datos de hello ejecutando Hola siguiente comando en SSMS toodelete todos los datos de Hola que fuera insertados por hello anterior ejecutar:
 ```
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. Edite la línea de comandos de ostress.exe para reemplazar todos los *_inmem* con *_ondisk*.
+2. Editar la línea de comandos de hello ostress.exe tooreplace todos los *_inmem* con *_ondisk*.
 
-3. Ejecute ostress.exe por segunda vez y capture el resultado de la duración.
+3. Vuelva a ejecutar ostress.exe para hello por segunda vez y capturar los resultados de la duración de Hola.
 
-4. Vuelva a restablecer la base de datos (para la eliminación responsable de lo que puede constituir una gran cantidad de datos de prueba).
+4. Restablecer de nuevo, base de datos de hello (de forma responsable eliminación cuál puede ser una gran cantidad de datos de prueba).
 
 
 #### <a name="expected-comparison-results"></a>Resultados de la comparación esperados
 
-Las pruebas de en memoria demostraron tener un rendimiento **9 veces** mejor en esta carga de trabajo simplista, con ostress ejecutándose en una VM de Azure ubicada en la misma región de Azure que la base de datos.
+Nuestras pruebas en memoria han demostrado que el rendimiento mejorado gracias a **nueve veces** para esta carga de trabajo simplista, con ostress se ejecuta en una máquina virtual de Azure en Hola misma región de Azure como base de datos de Hola.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. Instalación del ejemplo de In-Memory Analytics.
+## <a name="2-install-hello-in-memory-analytics-sample"></a>2. Instalar el ejemplo de Hola a análisis en memoria
 
 
-En esta sección, compara los resultados de optimización de infraestructura y de estadísticas cuando usa un índice del almacén de columnas en lugar de un índice de árbol b tradicional.
+En esta sección, comparar Hola E/S y los resultados de las estadísticas cuando se usa un índice de almacén frente a un índice de árbol b tradicional.
 
 
-Para realizar análisis en tiempo real en una carga de trabajo de OLTP, suele ser mejor usar un índice del almacén de columnas no agrupado. Para obtener más información, consulte [Guía de índices de almacén de columnas](http://msdn.microsoft.com/library/gg492088.aspx).
+Para realizar análisis en tiempo real en una carga de trabajo OLTP, suele ser mejor toouse un índice no clúster de almacén de columnas. Para obtener más información, consulte [Guía de índices de almacén de columnas](http://msdn.microsoft.com/library/gg492088.aspx).
 
 
 
-### <a name="prepare-the-columnstore-analytics-test"></a>Preparación de la prueba de análisis del almacén de columnas
+### <a name="prepare-hello-columnstore-analytics-test"></a>Preparar la prueba de análisis de almacén de columnas de Hola
 
 
-1. Use el Portal de Azure para crear una nueva base de datos AdventureWorksLT a partir del ejemplo.
+1. Usar hello toocreate portal Azure una base de datos AdventureWorksLT actualizada de ejemplo de Hola.
  - Use ese nombre exacto.
  - Elija un nivel de servicio Premium.
 
-2. Copie [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) en el Portapapeles.
- - El script T-SQL crea los objetos en memoria necesarios en la base de datos de ejemplo AdventureWorksLT que se creó en el paso 1.
- - El script crea la tabla de dimensiones y dos tablas de hechos. Las tablas de hechos se rellenan con 3,5 millones de filas cada una.
- - El script podría tardar 15 minutos en completarse.
+2. Hola copia [sql_in memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) tooyour Portapapeles.
+ - Hola script T-SQL crea Hola objetos necesarios en memoria Hola datos de ejemplo AdventureWorksLT que creó en el paso 1.
+ - script de Hola crea la tabla de dimensiones de Hola y dos tablas de hechos. tablas de hechos de Hola se rellenan con 3,5 millones de filas cada uno.
+ - script de Hola podría tardar toocomplete de 15 minutos.
 
-3. Pegue el script T-SQL en SSMS.exe y, luego, ejecútelo. La palabra clave **COLUMNSTORE** es crucial en la instrucción **CREATE INDEX**, como en:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. Pegue el script de T-SQL de hello en SSMS y, a continuación, ejecute el script de Hola. Hola **almacén de columnas** palabra clave en hello **CREATE INDEX** instrucción es fundamental, como en:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
-4. Establezca AdventureWorksLT en un nivel de compatibilidad 130:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
+4. Establecer el nivel de toocompatibility AdventureWorksLT 130:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
-    El nivel 130 no está directamente relacionado con las características de In-Memory. Pero el nivel 130 suele ofrecer un rendimiento de consultas más rápido que el nivel 120.
+    Nivel de 130 no es características memoria tooIn está directamente relacionado. Pero el nivel 130 suele ofrecer un rendimiento de consultas más rápido que el nivel 120.
 
 
 #### <a name="key-tables-and-columnstore-indexes"></a>Tablas e índices de almacén de columnas clave
 
 
-- dbo.FactResellerSalesXL_CCI es una tabla con un índice de almacén de columnas agrupado que tiene una compresión avanzada a nivel de *datos*.
+- dbo. FactResellerSalesXL_CCI es una tabla que tiene un índice de almacén de columnas agrupado, que se ha avanzado compresión en hello *datos* nivel.
 
-- dbo.FactResellerSalesXL_PageCompressed es una tabla con un índice agrupado equivalente normal, que se comprime solo a nivel de *página*.
-
-
-#### <a name="key-queries-to-compare-the-columnstore-index"></a>Consultas cruciales para comparar el índice de almacén de columnas
+- dbo. FactResellerSalesXL_PageCompressed es una tabla que tiene un equivalente índice normal en clúster se comprime solo en hello *página* nivel.
 
 
-Aquí hay [varios tipos de consultas de T-SQL que se pueden ejecutar](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) para ver las mejoras de rendimiento. En el paso 2 del script T-SQL, preste atención a estas dos consultas. Difieren solo en una línea:
+#### <a name="key-queries-toocompare-hello-columnstore-index"></a>Índice de almacén de columnas de clave consultas toocompare Hola
+
+
+Hay [varios tipos de consulta de T-SQL que se pueden ejecutar](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) toosee mejoras de rendimiento. En el paso 2 en hello script T-SQL, paga par de toothis de atención de consultas. Difieren solo en una línea:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Un índice de almacén de columnas en clúster se encuentra en la tabla FactResellerSalesXL\_CCI.
+Es un índice de almacén de columnas agrupado en hello FactResellerSalesXL\_tabla CCI.
 
-El siguiente fragmento de script de T-SQL imprime las estadísticas de IO y TIME para la consulta de cada tabla.
+Hello extracto de script de T-SQL siguiente imprime las estadísticas de E/S y el tiempo de consulta de Hola de cada tabla.
 
 
 ```
 /*********************************************************************
 Step 2 -- Overview
 -- Page Compressed BTree table v/s Columnstore table performance differences
--- Enable actual Query Plan in order to see Plan differences when Executing
+-- Enable actual Query Plan in order toosee Plan differences when Executing
 */
 -- Ensure Database is in 130 compatibility mode
 ALTER DATABASE AdventureworksLT SET compatibility_level = 130
 GO
 
--- Execute a typical query that joins the Fact Table with dimension tables
--- Note this query will run on the Page Compressed table, Note down the time
+-- Execute a typical query that joins hello Fact Table with dimension tables
+-- Note this query will run on hello Page Compressed table, Note down hello time
 SET STATISTICS IO ON
 SET STATISTICS TIME ON
 GO
@@ -460,8 +460,8 @@ SET STATISTICS TIME OFF
 GO
 
 
--- This is the same Prior query on a table with a clustered columnstore index CCI
--- The comparison numbers are even more dramatic the larger the table is (this is an 11 million row table only)
+-- This is hello same Prior query on a table with a clustered columnstore index CCI
+-- hello comparison numbers are even more dramatic hello larger hello table is (this is an 11 million row table only)
 SET STATISTICS IO ON
 SET STATISTICS TIME ON
 GO
@@ -486,7 +486,7 @@ SET STATISTICS TIME OFF
 GO
 ```
 
-En una base de datos con el plan de tarifa P2, puede esperar un rendimiento nueve veces superior, aproximadamente, para esta consulta al usar el índice de almacén de columnas en clúster, en comparación con el índice tradicional. Con P15, puede esperar, aproximadamente, un rendimiento 57 veces superior gracias al uso de índice de almacén de columnas.
+En una base de datos con el nivel de precios de hello P2, puede esperar aproximadamente nueve veces el aumento del rendimiento de Hola para esta consulta utilizando el índice de almacén de columnas agrupado hello en comparación con índice tradicional de Hola. Con P15, puede esperar ganancia de rendimiento de aproximadamente 57 veces Hola utilizando el índice de almacén de columnas de Hola.
 
 
 

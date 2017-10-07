@@ -1,6 +1,6 @@
 ---
-title: "Creación de una red virtual (Azure PowerShell) | Microsoft Docs"
-description: "Obtenga información sobre cómo crear una red virtual mediante PowerShell."
+title: aaaCreate una red virtual - PowerShell de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate a virtual de red con PowerShell."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7072ddf51570d46578111e2e392e3cbea53f2aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8d6e395a77f71de9f94b6304b05450e46b47544f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>Creación de una red virtual mediante PowerShell
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure cuenta con dos modelos de implementación: Azure Resource Manager y el clásico. Microsoft recomienda crear recursos mediante el modelo de implementación de Resource Manager. Para más información acerca de las diferencias entre los dos modelos, lea el artículo [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md) (Descripción de los modelos de implementación de Azure).
+Azure cuenta con dos modelos de implementación: Azure Resource Manager y el clásico. Microsoft recomienda crear recursos a través del modelo de implementación del Administrador de recursos de Hola. Obtenga más información sobre toolearn Hola diferencias entre Hola dos modelos, leer hello [modelos de implementación de Azure comprender](../azure-resource-manager/resource-manager-deployment-model.md) artículo.
  
-En este artículo se describe cómo crear una red virtual con el modelo de implementación de Resource Manager mediante PowerShell. También puede crear una red virtual mediante Resource Manager con otras herramientas o crear una red virtual a través del modelo de implementación clásica seleccionando una opción diferente en la lista siguiente:
+Este artículo explica cómo toocreate una red virtual a través de la implementación del Administrador de recursos de hello modelar con PowerShell. También puede crear una red virtual mediante el Administrador de recursos con otras herramientas o crear una red virtual a través del modelo de implementación clásica de hello seleccionando una opción diferente de hello lista siguiente:
 
 > [!div class="op_single_selector"]
 > * [Portal](virtual-networks-create-vnet-arm-pportal.md)
@@ -43,9 +43,9 @@ En este artículo se describe cómo crear una red virtual con el modelo de imple
 
 ## <a name="create-a-virtual-network"></a>Crear una red virtual
 
-Para crear una red virtual mediante PowerShell, realice los siguientes pasos:
+toocreate una red virtual con PowerShell, Hola completa siguiendo los pasos:
 
-1. Instale y configure Azure PowerShell siguiendo los pasos del artículo [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview).
+1. Instalar y configurar Azure PowerShell, siguiendo los pasos de Hola Hola [cómo tooInstall y configurar Azure PowerShell](/powershell/azure/overview) artículo.
 
 2. Si es necesario, cree un nuevo grupo de recursos, como se muestra a continuación. En este escenario, cree un grupo de recursos denominado *TestRG*. Para más información acerca de los grupos de recursos, visite [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
@@ -84,7 +84,7 @@ Para crear una red virtual mediante PowerShell, realice los siguientes pasos:
         DhcpOptions                : {}
         Subnets                    : []
         VirtualNetworkPeerings     : []
-4. Almacene el objeto de red virtual en una variable:
+4. Almacenar objetos de red virtual de hello en una variable:
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -94,7 +94,7 @@ Para crear una red virtual mediante PowerShell, realice los siguientes pasos:
    > Puede combinar los pasos 3 y 4 si ejecuta `$vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus`.
    > 
 
-5. Agregue una subred a la nueva variable de red virtual:
+5. Agregue una variable de red virtual nueva subred toohello:
 
     ```powershell
     Add-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd `
@@ -124,14 +124,14 @@ Para crear una red virtual mediante PowerShell, realice los siguientes pasos:
                                 ]
         VirtualNetworkPeerings     : []
 
-6. Repita el paso 5 anterior para cada subred que quiera crear. El siguiente comando crea la subred *BackEnd* para el escenario:
+6. Repita el paso 5 anterior para cada subred que desee toocreate. Hello siguiente comando crea hello *back-end* subred para el escenario de hello:
 
     ```powershell
     Add-AzureRmVirtualNetworkSubnetConfig -Name BackEnd `
     -VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
     ```
 
-7. Aunque cree subredes, actualmente solo existen en la variable local que se usa para recuperar la red virtual creada en el paso 4 anterior. Para guardar los cambios en Azure, ejecute el siguiente comando:
+7. Aunque se crean subredes, actualmente solo existen en Hola tooretrieve uso de variable local Hola red virtual se crea en el paso 4 anterior. tooAzure toosave Hola cambios, ejecute el siguiente comando de hello:
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -176,8 +176,8 @@ Para crear una red virtual mediante PowerShell, realice los siguientes pasos:
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a conectar:
+Obtenga información acerca de cómo tooconnect:
 
-- Una máquina virtual (VM) a una red virtual, para lo cual debería leer el artículo [Creación de una máquina virtual Windows](../virtual-machines/virtual-machines-windows-ps-create.md). En lugar de crear una red virtual y la subred en los pasos de los artículos, puede seleccionar una red virtual y una subred a la que conectar una máquina virtual.
-- La red virtual a otras redes virtuales. Para ello, lea el artículo [Conexión de redes virtuales](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
-- La red virtual a una red local mediante una red privada virtual (VPN) de sitio a sitio o un circuito ExpressRoute. Aprenda cómo hacerlo mediante los artículos [Connect a VNet to an on-premises network using a site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) (Conexión de una red virtual a una red local mediante una VPN de sitio a sitio) y [Vinculación de una red virtual a un circuito ExpressRoute](../expressroute/expressroute-howto-linkvnet-arm.md).
+- Una red virtual de máquina virtual (VM) tooa leyendo hello [crear una VM de Windows](../virtual-machines/virtual-machines-windows-ps-create.md) artículo. En lugar de crear una red virtual y la subred en los pasos de Hola de artículos de hello, puede seleccionar una red virtual existente y la subred tooconnect una máquina virtual a.
+- Hola redes virtuales de red virtual tooother leyendo hello [conectar redes virtuales](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) artículo.
+- Hola tooan de red virtual local de la red mediante una red privada virtual (VPN) de sitio a sitio o el circuito de ExpressRoute. Obtenga información acerca de cómo leyendo hello [conectar una red de red virtual tooan local mediante una VPN de sitio a sitio](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) y [vincular un circuito de ExpressRoute de red virtual tooan](../expressroute/expressroute-howto-linkvnet-arm.md) artículos.

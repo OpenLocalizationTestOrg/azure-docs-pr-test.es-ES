@@ -1,5 +1,5 @@
 ---
-title: "Escenarios y disponibilidad de características de Microsoft Azure Media Services en centros de datos | Microsoft Docs"
+title: "aaaMicrosoft servicios multimedia de Azure escenarios y la disponibilidad de características en centros de datos | Documentos de Microsoft"
 description: "Este tema ofrece información general de los escenarios y la disponibilidad de las características y servicios de Microsoft Azure Media Services en centros de datos."
 services: media-services
 documentationcenter: 
@@ -13,91 +13,91 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: d9994dd7bfb6b6bf949a7708c07651d667929ae4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3dbab6998ed5da738baf8f1e2fb096dfba336e19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Escenarios y disponibilidad de características de Media Services en centros de datos
 
-Microsoft Azure Media Services (AMS) permite cargar, almacenar, codificar y empaquetar de forma segura contenido de audio o vídeo para su entrega a petición y mediante streaming en vivo a varios clientes (por ejemplo, televisión, PC y dispositivos móviles).
+Servicios de multimedia de Microsoft Azure (AMS) le permite toosecurely cargar, almacenar, codificar y empaquetar contenido de audio o vídeo a petición y en vivo streaming entrega toovarious para clientes de (por ejemplo, televisión, PC y dispositivos móviles).
 
-AMS opera en varios centros de datos del mundo. Dichos centros se agrupan en regiones geográficas, lo que proporciona flexibilidad al elegir en lugar en que se van a crear aplicaciones. Puede revisar la [lista de regiones y sus ubicaciones](https://azure.microsoft.com/regions/). 
+AMS funciona en varios centros de datos alrededor de Hola a todos. Estos centros de datos se agrupan en las regiones de toogeographic, lo que le proporciona flexibilidad al elegir dónde toobuild sus aplicaciones. Puede revisar hello [lista de regiones y sus ubicaciones](https://azure.microsoft.com/regions/). 
 
-En este tema se muestran escenarios comunes para la entrega de contenido [en directo](#live_scenarios) o [a petición](#vod_scenarios). El tema también proporciona detalles acerca de la disponibilidad de las características y servicios multimedia en centros de datos.
+En este tema se muestran escenarios comunes para la entrega de contenido [en directo](#live_scenarios) o [a petición](#vod_scenarios). tema de Hello también proporciona detalles acerca de la disponibilidad de características multimedia y servicios en centros de datos.
 
 ## <a name="overview"></a>Información general
 
 ### <a name="prerequisites"></a>Requisitos previos
 
-Para empezar a usar Azure Media Services, debe tener lo siguiente:
+toostart con servicios multimedia de Azure, como tener Hola siguiente:
 
 * Una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com).
 * Una cuenta de Azure Media Services. Para obtener más información, consulte [Creación de una cuenta](media-services-portal-create-account.md).
-* El punto de conexión de streaming desde el que va a transmitir el contenido debe estar en estado **Running** (En ejecución).
+* Hola origen desde el que desea que el contenido de toostream tiene toobe en hello **ejecutando** estado.
 
-    Cuando se crea una cuenta de AMS, se agrega un punto de conexión de streaming **predeterminado** a la cuenta en estado **Stopped** (Detenido). Para iniciar la transmisión del contenido y sacar provecho del empaquetado y cifrado dinámicos, el punto de conexión de streaming debe estar en estado **Running** (En ejecución).
+    Cuando se crea la cuenta de AMS, un **predeterminado** extremo de streaming se agrega la cuenta tooyour Hola **detenido** estado. toostart transmisión por secuencias el contenido y beneficiarse del empaquetado dinámico y cifrado dinámico, extremo de streaming de hello tiene toobe en hello **ejecutando** estado.
 
-### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>Objetos utilizados con frecuencia al desarrollar con el modelo OData de AMS
+### <a name="commonly-used-objects-when-developing-against-hello-ams-odata-model"></a>Objetos utilizados con frecuencia al desarrollar con hello modelo AMS OData
 
-En la ilustración siguiente, se muestran algunos de los objetos que se utilizan más a menudo al desarrollar con el modelo OData de Media Services.
+Hello siguiente imagen muestra algunos de los objetos de hello suelen usada al desarrollar con modelo de OData de servicios multimedia de Hola.
 
-Haga clic en la imagen para verla a tamaño completo.  
+Haga clic en tooview de imagen de hello tamaño completo.  
 
 <a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
 
-Puede ver el modelo completo [aquí](https://media.windows.net/API/$metadata?api-version=2.15).  
+Puede ver todo el modelo de hello [aquí](https://media.windows.net/API/$metadata?api-version=2.15).  
 
-## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Protección del contenido en almacenamiento y entrega de contenido multimedia en streaming sin cifrar
+## <a name="protect-content-in-storage-and-deliver-streaming-media-in-hello-clear-non-encrypted"></a>Proteger el contenido en el almacenamiento y entregar contenido multimedia de transmisión por secuencias en hello Borrar (sin cifrar)
 
 ![Flujo de trabajo de VoD](./media/scenarios-and-availability/scenarios-and-availability01.png)
 
 1. Cargue un archivo multimedia de alta calidad en un recurso.
 
-    Se recomienda aplicar la opción de cifrado de almacenamiento a su recurso con el fin de proteger su contenido durante la carga y mientras se encuentra en reposo en el almacenamiento.
-2. Codifique en conjunto de archivos MP4 de velocidades de bits adaptativas.
+    Se recomienda activo tooyour opción de cifrado de almacenamiento de tooapply en orden tooprotect su contenido durante la carga y mientras almacenados en almacenamiento.
+2. Codificar tooa conjunto de archivos MP4 de velocidad de bits adaptativa.
 
-    Se recomienda aplicar la opción de cifrado de almacenamiento al recurso de salida con el fin de proteger su contenido mientras se encuentra en reposo.
+    Se recomienda toohello de opción de cifrado de almacenamiento de tooapply de salida de los activos de orden tooprotect su contenido en reposo.
 3. Configure la directiva de entrega de recursos(usada por paquetes dinámicos).
 
     Si el recurso tiene el almacenamiento cifrado, **asegúrese** de configurar la directiva de entrega de recursos.
-4. Publique el recurso mediante la creación de un localizador bajo demanda.
+4. Publicar el recurso de hello mediante la creación de un localizador OnDemand.
 5. Trasmita el contenido publicado.
 
-Para obtener información acerca de la disponibilidad en los centros de datos, consulte la sección [Disponibilidad](#availability).
+Para obtener información acerca de la disponibilidad en centros de datos, vea hello [disponibilidad](#availability) sección.
 
 ## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>Protección del contenido en el almacenamiento, entrega de soportes de streaming cifrados dinámicamente
 
 ![Protección con PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-1. Cargue un archivo multimedia de alta calidad en un recurso. Aplique una opción de cifrado de almacenamiento al recurso.
-2. Codifique en conjunto de archivos MP4 de velocidades de bits adaptativas. Aplique una opción de cifrado de almacenamiento al recurso de salida.
-3. Cree la clave de cifrado de contenido para el recurso que desee que se cifre dinámicamente durante la reproducción.
+1. Cargue un archivo multimedia de alta calidad en un recurso. Aplicar el recurso de toohello de opción de cifrado de almacenamiento.
+2. Codificar tooa conjunto de archivos MP4 de velocidad de bits adaptativa. Aplicar el recurso de salida de toohello de opción de cifrado de almacenamiento.
+3. Crear clave de cifrado de contenido de los activos de hello que desea toobe cifra dinámicamente durante la reproducción.
 4. Configure la directiva de autorización de claves de contenido.
 5. Configure la directiva de entrega de recursos (usada por el empaquetado y el cifrado dinámicos).
-6. Publique el recurso mediante la creación de un localizador bajo demanda.
+6. Publicar el recurso de hello mediante la creación de un localizador OnDemand.
 7. Trasmita el contenido publicado.
 
-Para obtener información acerca de la disponibilidad en los centros de datos, consulte la sección [Disponibilidad](#availability).
+Para obtener información acerca de la disponibilidad en centros de datos, vea hello [disponibilidad](#availability) sección.
 
-## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Use Análisis multimedia para obtener conocimientos útiles de los vídeos
+## <a name="use-media-analytics-tooderive-actionable-insights-from-your-videos"></a>Use la información procesable de análisis multimedia tooderive de vídeos
 
-Análisis multimedia es una colección de componentes de voz y visión que facilita a las empresas y organizaciones obtener conocimiento útil de sus archivos de vídeo. Para más información, consulte [Información general de análisis de Azure Media Services](media-services-analytics-overview.md).
+Análisis multimedia es una colección de componentes de voz y la visión que resulte más fácil para las organizaciones y empresas información procesable tooderive de sus archivos de vídeo. Para más información, consulte [Información general de análisis de Azure Media Services](media-services-analytics-overview.md).
 
 1. Cargue un archivo multimedia de alta calidad en un recurso.
-2. Procesar sus vídeos con uno de los servicios de Media Analytics que se describen en la sección [Información general de Media Analytics](media-services-analytics-overview.md).
-3. Los procesadores multimedia de Análisis multimedia generan archivos MP4 o JSON. Si un procesador multimedia genera un archivo MP4, puede descargar progresivamente el archivo. Si un procesador multimedia genera un archivo JSON, puede descargar el archivo desde Azure Blob Storage.
+2. Procesar sus vídeos con uno de los servicios de análisis de medios de hello descritos en hello [información general de análisis de medios](media-services-analytics-overview.md) sección.
+3. Los procesadores multimedia de Análisis multimedia generan archivos MP4 o JSON. Si un procesador multimedia genera un archivo MP4, puede descargar progresivamente archivo hello. Si un procesador multimedia genera un archivo JSON, puede descargar el archivo hello de hello almacenamiento de blobs de Azure.
 
-Para obtener información acerca de la disponibilidad en los centros de datos, consulte la sección [Disponibilidad](#availability).
+Para obtener información acerca de la disponibilidad en centros de datos, vea hello [disponibilidad](#availability) sección.
 
 ## <a name="deliver-progressive-download"></a>Entregar la descarga progresiva
 
 1. Cargue un archivo multimedia de alta calidad en un recurso.
-2. Codifique en un solo archivo MP4.
-3. Publique el recurso creando un localizador OnDemand o SAS.
+2. Codificar tooa solo el archivo MP4.
+3. Publicar el recurso de hello mediante la creación de un localizador OnDemand o SAS.
 
-    Si utiliza un localizador SAS, el contenido se descarga desde Azure Blob Storage. En este caso, no necesita tener puntos de conexión de streaming en estado iniciado.
+    Si usa el localizador SAS, se descarga contenido de Hola desde Hola almacenamiento de blobs de Azure. En este caso, no es necesario toohave streaming extremos en estado iniciado.
 4. Descargue contenido de forma progresiva.
 
 ## <a id="live_scenarios"></a>Entrega de eventos de streaming en vivo 
@@ -105,57 +105,57 @@ Para obtener información acerca de la disponibilidad en los centros de datos, c
 1. Ingiera contenido en vivo mediante el uso de varios protocolos de streaming en vivo (por ejemplo, RTMP o Smooth Streaming).
 2. (Opcionalmente) Codifique la transmisión en un flujo de datos con velocidad de bits adaptable.
 3. Obtenga una vista previa del flujo de datos en vivo.
-4. Entregue el contenido mediante protocolos de streaming comunes (por ejemplo, MPEG DASH, Smooth o HLS) directamente a sus clientes o a una red de entrega de contenido (CDN) para ampliar la distribución.
+4. Entregar contenido de Hola a través de protocolos de transmisión por secuencias comunes (por ejemplo, MPEG DASH, Smooth, HLS) directamente los clientes de tooyour o tooa red de entrega de contenido (CDN) para su distribución posterior.
 
     O bien
 
-    Registre y almacene el contenido recibido para transmitirlo posteriormente (vídeo bajo demanda).
+    Registro y almacén de contenido de hello ingerida en orden toobe transmite más adelante (vídeo bajo demanda).
 
-Cuando se realiza streaming en vivo, puede elegir una de las rutas siguientes:
+Cuando se realiza la transmisión por secuencias en directo, puede elegir uno de los siguientes Hola enruta:
 
 ### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Uso de canales que reciben transmisión por secuencias en directo con velocidad de bits múltiple de codificadores locales (paso a través)
 
-En el diagrama siguiente se muestran las partes principales de la plataforma AMS que intervienen en el flujo de trabajo de **paso a través** .
+Hello siguiente diagrama muestra hello las partes principales de la plataforma de hello AMS que intervienen en hello **acceso directo** flujo de trabajo.
 
 ![Flujo de trabajo activo](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
 Para más información, consulte [Uso de canales que reciben streaming en vivo con velocidad de bits múltiple de codificadores locales](media-services-live-streaming-with-onprem-encoders.md).
 
-### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Uso de canales habilitados para realizar la codificación en directo con Azure Media Services
+### <a name="working-with-channels-that-are-enabled-tooperform-live-encoding-with-azure-media-services"></a>Trabajar con los canales que son habilitado tooperform live codificar con servicios multimedia de Azure
 
-El diagrama siguiente muestra las partes principales de la plataforma AMS que intervienen en el flujo de trabajo de streaming en vivo, en la que se habilita un canal para realizar la codificación en directo con Media Services.
+Hello siguiente diagrama muestra hello principal partes de plataforma de AMS Hola que intervienen en el flujo de trabajo de Streaming en directo donde un canal está habilitado tooperform live codificar con servicios multimedia.
 
 ![Flujo de trabajo activo](./media/scenarios-and-availability/media-services-live-streaming-new.png)
 
-Para obtener más información, vea [Uso de canales habilitados para realizar la codificación en directo con Servicios multimedia de Azure](media-services-manage-live-encoder-enabled-channels.md).
+Para obtener más información, consulte [trabajar con los canales que es habilitado tooPerform Live codificar con servicios multimedia de Azure](media-services-manage-live-encoder-enabled-channels.md).
 
-Para obtener información acerca de la disponibilidad en los centros de datos, consulte la sección [Disponibilidad](#availability).
+Para obtener información acerca de la disponibilidad en centros de datos, vea hello [disponibilidad](#availability) sección.
 
 ## <a name="consuming-content"></a>Consumo de contenido
 
-Azure Media Services proporciona las herramientas que necesita para crear aplicaciones cliente de reproductor enriquecidas y dinámicas para la mayoría de las plataformas, como dispositivos iOS, dispositivos Android, Windows, Windows Phone, Xbox y decodificadores (set-top boxes). El tema siguiente proporciona vínculos a los SDK y Player Framework que puede usar para desarrollar sus propias aplicaciones cliente que pueden consumir contenido multimedia en streaming desde Media Services. Para más información, consulte [Desarrollo de aplicaciones para reproductor de vídeo](media-services-develop-video-players.md)
+Servicios multimedia de Azure proporciona hello las herramientas necesita toocreate enriquecido, aplicaciones de reproducción de cliente dinámico para la mayoría de las plataformas incluidas: dispositivos con iOS, dispositivos Android, Windows, Windows Phone, Xbox y Set-top cuadros. Hola tema siguiente proporciona vínculos tooSDKs y marcos de Reproductor puede usar toodevelop en sus propias aplicaciones de cliente que puedan consumir contenido multimedia de transmisión por secuencias de servicios multimedia. Para más información, consulte [Desarrollo de aplicaciones para reproductor de vídeo](media-services-develop-video-players.md)
 
 ## <a name="enabling-azure-cdn"></a>Habilitación de CDN de Azure
 
-Media Services admite la integración con Azure CDN. Para obtener información sobre cómo habilitar Azure CDN, consulte [Administración de extremos de streaming en una cuenta de Media Services](media-services-portal-manage-streaming-endpoints.md).
+Media Services admite la integración con Azure CDN. Para obtener información acerca de cómo tooenable CDN de Azure, consulte [cómo tooManage los extremos de Streaming en una cuenta de servicios multimedia](media-services-portal-manage-streaming-endpoints.md).
 
 ## <a id="scaling"></a>Escalado de una cuenta de Media Services
 
 Los clientes de AMS pueden escalar los puntos de conexión de streaming, el procesamiento multimedia y el almacenamiento en sus cuentas de AMS.
 
-* Los clientes de Media Services pueden elegir un punto de conexión de streaming **estándar** o uno **premium**. Un punto de conexión de streaming **estándar** es adecuado para la mayoría de las cargas de trabajo de streaming. Incluye las mismas características que los puntos de conexión **premium** y escala automáticamente el ancho de banda de salida. 
+* Los clientes de Media Services pueden elegir un punto de conexión de streaming **estándar** o uno **premium**. Un punto de conexión de streaming **estándar** es adecuado para la mayoría de las cargas de trabajo de streaming. Incluye Hola mismas características como un **Premium** streaming automáticamente los puntos de conexión y las escalas ancho de banda saliente. 
 
-    Los puntos de conexión de streaming **Premium** son adecuados para cargas de trabajo avanzadas y proporcionan una capacidad de ancho de banda dedicada y escalable. Los clientes que tienen un punto de conexión de streaming **Premium**, de forma predeterminada, obtienen una unidad de streaming (SU). El punto de conexión de streaming puede ampliarse agregando unidades de streaming. Cada unidad de streaming proporciona capacidad de ancho de banda adicional a la aplicación. Para más información acerca de cómo escalar puntos de conexión de streaming **premium**, consulte el tema [Escalado de puntos de conexión de streaming con Azure Portal](media-services-portal-scale-streaming-endpoints.md).
+    Los puntos de conexión de streaming **Premium** son adecuados para cargas de trabajo avanzadas y proporcionan una capacidad de ancho de banda dedicada y escalable. Los clientes que tienen un punto de conexión de streaming **Premium**, de forma predeterminada, obtienen una unidad de streaming (SU). Hola extremo de streaming puede ampliarse mediante la adición de SUs. Cada SU proporciona aplicaciones de toohello de capacidad de ancho de banda adicional. Para obtener más información acerca de cómo escalar **Premium** los extremos de streaming, vea hello [ajuste de escala en los extremos de streaming](media-services-portal-scale-streaming-endpoints.md) tema.
 
-* Una cuenta de Servicios multimedia está asociada con un tipo de unidad reservada que determina la rapidez con la que se procesan las tareas de procesamiento multimedia. Puede elegir uno de los siguientes tipos de unidad reservada: **S1**, **S2** o **S3**. Por ejemplo, el mismo trabajo de codificación se ejecuta más rápido cuando se usa el tipo de unidad reservada **S2** en comparación con el tipo**S1**.
+* Una cuenta de servicios multimedia está asociada a un tipo de unidad reservada, que determina la velocidad de hello con la que se procesan los medios de las tareas de procesamiento. Puede elegir entre como consecuencia de hello reservado los tipos de unidad: **S1**, **S2**, o **S3**. Por ejemplo, hello mismo trabajo de codificación se ejecuta con mayor rapidez cuando se usa hello **S2** tipo de unidad reservada comparar toohello **S1** tipo.
 
-    Además de especificar el tipo de unidad reservada, puede especificar el aprovisionamiento de su cuenta con **unidades reservadas**. El número de unidades reservadas aprovisionadas determina el número de tareas de medios que se pueden procesar de forma simultánea en una cuenta determinada.
+    Además toospecifying Hola reservado del tipo de unidad, puede especificar su cuenta con tooprovision **unidades reservadas** (RUs). número de Hola de RUs aprovisionados determina número Hola de tareas multimedia que se pueden procesar simultáneamente en una cuenta determinada.
 
     >[!NOTE]
     >Las unidades reservadas sirven para establecer paralelismos en todo el procesamiento multimedia, incluida la indexación de trabajos mediante Azure Media Indexer. Sin embargo, a diferencia de la codificación, la indexación de los trabajos no se procesará más rápido con unidades reservadas de mayor rapidez.
 
     Para más información, consulte [Escalado del procesamiento de elementos multimedia mediante Azure Portal](media-services-portal-scale-media-processing.md).
-* También puede escalar la cuenta de Media Services agregándole cuentas de almacenamiento. Cada cuenta de almacenamiento está limitada a 500 TB. Para ampliar el almacenamiento más allá del límite predeterminado, puede asociar varias cuentas de almacenamiento a una sola cuenta de Media Services. Para más información, consulte [Administración de recursos de Servicios multimedia entre varias cuentas de almacenamiento](meda-services-managing-multiple-storage-accounts.md).
+* También puede escalar su cuenta de servicios multimedia mediante la adición de tooit de cuentas de almacenamiento. Cada cuenta de almacenamiento es limitado too500 TB. tooexpand su almacenamiento más allá de limitaciones de hello predeterminadas, puede elegir tooattach varias cuentas tooa único servicios multimedia cuentas de almacenamiento. Para más información, consulte [Administración de recursos de Servicios multimedia entre varias cuentas de almacenamiento](meda-services-managing-multiple-storage-accounts.md).
 
 ##<a id="availability"></a>Disponibilidad de características de Media Services en centros de datos
 
@@ -165,11 +165,11 @@ En esta sección se proporcionan detalles acerca de la disponibilidad de las car
 
 #### <a name="availability"></a>Disponibilidad
 
-Se pueden crear cuentas de Media Services en las siguientes regiones: Europa del Norte, Europa Occidental, oeste de EE. UU., este de EE. UU., Sudeste Asiático, Asia Oriental, Japón Occidental, Japón Oriental, Sur de Brasil, India occidental, Sur de India e India central. 
+Puede crear cuentas de servicios multimedia en hello siguientes regiones: Europa del Norte, Europa occidental, oeste de Estados Unidos, este de EE., sudeste de Asia, este de Asia, oeste de Japón, este de Japón, sur de Brasil, India occidental, sur de India y India Central. 
 
 ### <a name="streaming-endpoints"></a>Puntos de conexión de streaming 
 
-Los clientes de Media Services pueden elegir un punto de conexión de streaming **estándar** o uno **premium**. Para más información, consulte la sección acerca del [escalado](#scaling).
+Los clientes de Media Services pueden elegir un punto de conexión de streaming **estándar** o uno **premium**. Para obtener más información, vea hello [escalado](#scaling) sección.
 
 #### <a name="availability"></a>Disponibilidad
 
@@ -197,7 +197,7 @@ AMS ofrece dos codificadores a petición **Media Encoder Standard** y **Flujo de
 
 ### <a name="analytics-media-processors"></a>Procesadores de multimedia de Analytics
 
-Análisis multimedia es una colección de componentes de voz y visión que facilita a las empresas y organizaciones obtener conocimiento útil de sus archivos de vídeo. Para más información, consulte [Información general de análisis de Azure Media Services](media-services-analytics-overview.md).
+Análisis multimedia es una colección de componentes de voz y visión que resulta más fácil para las organizaciones y empresas información procesable tooderive de sus archivos de vídeo. Para más información, consulte [Información general de análisis de Azure Media Services](media-services-analytics-overview.md).
 
 #### <a name="availability"></a>Disponibilidad
 
@@ -215,7 +215,7 @@ Análisis multimedia es una colección de componentes de voz y visión que facil
 
 ### <a name="protection"></a>Protección
 
-Servicios multimedia de Microsoft Azure le permite proteger su contenido multimedia desde el momento en que deja el equipo a través de almacenamiento, procesamiento y entrega. Para más información, consulte [Protección de contenido de AMS](media-services-content-protection-overview.md).
+Servicios de multimedia de Microsoft Azure permite toosecure su media de tiempo de hello sale del equipo a través de almacenamiento, procesamiento y entrega. Para más información, consulte [Protección de contenido de AMS](media-services-content-protection-overview.md).
 
 #### <a name="availability"></a>Disponibilidad
 
@@ -229,9 +229,9 @@ Servicios multimedia de Microsoft Azure le permite proteger su contenido multime
 
 ### <a name="reserved-units-rus"></a>Unidades reservadas (RU)
 
-El número de unidades reservadas de codificación aprovisionadas determina el número de tareas de medios que se pueden procesar de forma simultánea en una cuenta determinada. 
+número de Hola de unidades reservadas aprovisionadas determina número Hola de tareas multimedia que se pueden procesar simultáneamente en una cuenta determinada. 
 
-Para más información, consulte la sección acerca del [escalado](#scaling).
+Para obtener más información, vea hello [escalado](#scaling) sección.
 
 #### <a name="availability"></a>Disponibilidad
 
@@ -239,9 +239,9 @@ Está disponible en todos los centros de datos.
 
 ### <a name="reserved-unit-ru-type"></a>Tipo de unidad reservada (RU)
 
-Una cuenta de Media Services está asociada con un tipo de unidad reservada, lo que determina la rapidez con la que se procesan las tareas de procesamiento multimedia. Puede elegir uno de los siguientes tipos de unidad reservada: S1, S2 o S3.
+Una cuenta de servicios multimedia está asociada a un tipo de unidad reservada, que determina la velocidad de hello con la que se procesan los medios de las tareas de procesamiento. Puede elegir entre como consecuencia de hello reservado los tipos de unidades: S1, S2 o S3.
 
-Para más información, consulte la sección acerca del [escalado](#scaling).
+Para obtener más información, vea hello [escalado](#scaling) sección.
 
 #### <a name="availability"></a>Disponibilidad
 

@@ -1,6 +1,6 @@
 ---
-title: "Creación de un equilibrador de carga con conexión a Internet para Azure Cloud Services | Microsoft Docs"
-description: "Obtenga información acerca de cómo crear un equilibrador de carga orientado a Internet en el modelo de implementación clásica para servicios en la nube"
+title: "equilibrador de carga de aaaCreate una conexión a Internet para los servicios de nube de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate una conexión a Internet equilibrador de carga de modelo de implementación clásica para servicios en la nube"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: 1ceaafebcaebecb04314c7da62c69b2e9b5ba39a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d93cf76d417cbfc744cf07ba48c43a63cc14df69
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>Introducción a la creación de un equilibrador de carga orientado a Internet para servicios en la nube
 
@@ -26,22 +26,22 @@ ms.lasthandoff: 07/11/2017
 > * [Portal de Azure clásico](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-classic-ps.md)
 > * [CLI de Azure](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
-> * [Azure Cloud Services](../load-balancer/load-balancer-get-started-internet-classic-cloud.md)
+> * [Servicios en la nube de Azure](../load-balancer/load-balancer-get-started-internet-classic-cloud.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Antes de trabajar con recursos de Azure, es importante comprender que Azure tiene actualmente dos modelos de implementación: Azure Resource Manager y el clásico. Asegúrese de que comprende los [modelos de implementación y las herramientas](../azure-classic-rm.md) antes de trabajar con recursos de Azure. Puede ver la documentación de las distintas herramientas haciendo clic en las fichas en la parte superior de este artículo. Este artículo trata sobre el modelo de implementación clásico. También puede [obtener información sobre cómo crear un equilibrador de carga orientado a Internet con el Administrador de recursos de Azure](load-balancer-get-started-internet-arm-ps.md).
+> Antes de trabajar con recursos de Azure, es importante toounderstand que Azure tiene dos modelos de implementación: Administrador de recursos de Azure y clásico. Asegúrese de que comprende los [modelos de implementación y las herramientas](../azure-classic-rm.md) antes de trabajar con recursos de Azure. Puede ver documentación de Hola de distintas herramientas, haga clic en las pestañas de hello en parte superior de Hola de este artículo. Este artículo trata el modelo de implementación clásica de Hola. También puede [Obtenga información acerca de cómo toocreate una conexión a Internet cargar equilibrador mediante Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
 
-Los servicios en la nube se configuran automáticamente con un equilibrador de carga y se pueden personalizar mediante el modelo de servicio.
+Servicios en la nube se configuran automáticamente con un equilibrador de carga y se pueden personalizar mediante el modelo de servicio de Hola.
 
-## <a name="create-a-load-balancer-using-the-service-definition-file"></a>Crear un equilibrador de carga mediante el archivo de definición de servicio
+## <a name="create-a-load-balancer-using-hello-service-definition-file"></a>Crear un equilibrador de carga con el archivo de definición de servicio de Hola
 
-Puede aprovechar el SDK de Azure para .NET 2.5 para actualizar el servicio en la nube. La configuración de puntos de conexión para los servicios en la nube se realiza en el archivo .csdef de [definición de servicio](https://msdn.microsoft.com/library/azure/gg557553.aspx).
+Puede aprovechar hello Azure SDK para .NET 2.5 tooupdate su servicio en la nube. Configuración de punto de conexión de servicios en la nube se realiza en hello [definición del servicio](https://msdn.microsoft.com/library/azure/gg557553.aspx) archivo .csdef.
 
-En el ejemplo siguiente se muestra cómo se configura un archivo servicedefinition.csdef para una implementación en la nube:
+Hello en el ejemplo siguiente se muestra cómo se configura un archivo servicedefinition.csdef para una implementación de nube:
 
-Si comprueba el fragmento de código para el archivo .csdef generado por una implementación en la nube, verá el punto de conexión externo configurado para usar puertos HTTP en los puertos 10000, 10001 y 10002.
+La comprobación de fragmento de código de hello hello .csdef archivo generado por una implementación de nube, puede ver Hola extremo externo configurado toouse puertos HTTP en el puerto 10000 y 10001, 10002.
 
 ```xml
 <ServiceDefinition name=“Tenant“>
@@ -66,7 +66,7 @@ Si comprueba el fragmento de código para el archivo .csdef generado por una imp
 
 ## <a name="check-load-balancer-health-status-for-cloud-services"></a>Comprobación del estado de mantenimiento del equilibrador de carga para servicios en la nube
 
-A continuación se muestra un sondeo de estado:
+Hola te mostramos un ejemplo de un sondeo de estado:
 
 ```xml
 <LoadBalancerProbes>
@@ -74,13 +74,13 @@ A continuación se muestra un sondeo de estado:
 </LoadBalancerProbes>
 ```
 
-El equilibrador de carga combina la información del punto de conexión y la información del sondeo para crear una dirección URL con el formato `http://{DIP of VM}:80/Probe.aspx` que se puede usar para consultar el estado del servicio.
+Hello equilibrador de carga combina información de Hola de punto de conexión de Hola y Hola de hello sondeo toocreate una dirección URL en forma de Hola de `http://{DIP of VM}:80/Probe.aspx` que puede ser usado tooquery Hola mantenimiento del servicio de Hola.
 
-El servicio detecta sondeos periódicos desde la misma dirección IP. Se trata de la solicitud de sondeo de estado procedente del host del nodo donde se ejecuta la máquina virtual. El servicio debe responder con un código de estado HTTP 200 para que el equilibrador de carga asuma que el estado del servicio es correcto. Cualquier otro código de estado HTTP (por ejemplo, el 503) extrae directamente la máquina virtual de la rotación.
+Hello servicio detecta las comprobaciones periódicas de hello misma dirección IP. Se trata de una solicitud de sondeo de estado de hello procedentes de host de hello del nodo de Hola donde se ejecuta la máquina virtual de Hola. servicio de Hello tiene toorespond con un código de estado HTTP 200 para tooassume de equilibrador de carga de Hola que Hola servicio es correcto. Cualquier otro código de estado HTTP de código (por ejemplo 503) directamente toma Hola máquina virtual fuera de la rotación.
 
-La definición de sondeo también controla la frecuencia del sondeo. En nuestro caso anterior, el equilibrador de carga está sondeando el extremo de cada 5 segundos. Si no se recibe una respuesta positiva durante 10 segundos (dos intervalos de sondeo), se supone que el sondeo es negativo y la máquina virtual se excluye de la rotación. De forma similar, si el servicio está fuera de la rotación y se recibe una respuesta positiva, el servicio se pone de nuevo en rotación de forma inmediata. Si el servicio fluctúa entre correcto e incorrecto, el equilibrador de carga puede decidir retrasar la reintroducción del servicio a rotación hasta que ha sido correcto durante un número de sondeos.
+definición de sondeo de Hello también controla la frecuencia de Hola de sondeo de Hola. En nuestro caso anterior, el equilibrador de carga de hello es sondeo extremo Hola cada 5 segundos. Si no se recibe ninguna respuesta positiva de 10 segundos (dos intervalos de sondeo), se supone que el sondeo de hello hacia abajo, y máquina virtual de Hola se realiza fuera de la rotación. De forma similar, si el servicio de hello está fuera de la rotación y se recibe una respuesta positiva, servicio de Hola se vuelve a colocar toorotation inmediatamente. Si el servicio de hello fluctúa entre correcto y negativa, equilibrador de carga de hello puede decidir reintroducción hello toodelay de hello servicio back-toorotation hasta que ha sido correcto durante un número de sondeos.
 
-Compruebe el esquema de definición del [sondeo de estado](https://msdn.microsoft.com/library/azure/jj151530.aspx) para obtener más información.
+Compruebe el esquema de definición de servicio de Hola para hello [sondeo de estado](https://msdn.microsoft.com/library/azure/jj151530.aspx) para obtener más información.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

@@ -1,6 +1,6 @@
 ---
-title: "Adición de Azure Storage con Servicios conectados en Visual Studio | Microsoft Docs"
-description: "Adición de almacenamiento de Azure a la aplicación mediante el cuadro de diálogo Agregar servicios conectados de Visual Studio"
+title: aaaAdd almacenamiento de Azure mediante el uso de servicios conectados en Visual Studio | Documentos de Microsoft
+description: "Agregar aplicación tooyour de almacenamiento de Azure mediante el cuadro de diálogo de Visual Studio agregar servicios conectados de Hola"
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2017
 ms.author: kraigb
-ms.openlocfilehash: 35638083cd75e1b751d00a9c8163a3bc7480f0cd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 56b42063d86510b330e405108e28d50e6ba4da05
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Adición de almacenamiento de Azure mediante Servicios conectados de Visual Studio
-Con Visual Studio, puede conectar cualquiera de lo siguiente a Azure Storage mediante el uso del cuadro de diálogo **Add Connected Services** (Agregar servicios conectados):
+Con Visual Studio, puede conectarse a cualquiera de hello después tooAzure almacenamiento mediante el uso de hello **agregar servicios conectados** cuadro de diálogo:
 
 - Servicio en la nube de C#
 - Servició móvil de back-end de .NET
@@ -29,41 +29,41 @@ Con Visual Studio, puede conectar cualquiera de lo siguiente a Azure Storage med
 - Servicio de ASP.NET Core
 - Servicio de trabajos web de Azure 
 
-La funcionalidad del servicio conectado agrega todo el código de conexión y las referencias necesarios al proyecto y modifica los archivos de configuración de forma adecuada. 
+Hola funcionalidad del servicio conectado agrega todas las referencias de hello necesitado y el proyecto de tooyour de código de conexión y modifica los archivos de configuración correctamente. 
 
-Cuando se completa, el cuadro de diálogo **Add Connected Services** (Agregar servicios conectados) muestra automáticamente documentación que detalla los pasos necesarios para empezar a trabajar con el almacenamiento de blobs, colas y tablas.
+Una vez realizado, Hola **agregar servicios conectados** cuadro de diálogo muestra automáticamente la documentación que detalla Hola pasos toostart necesario trabajar con el almacenamiento de blobs, colas y tablas.
 
-## <a name="connect-to-azure-storage-using-the-connected-services-dialog"></a>Conexión con Almacenamiento de Azure mediante el cuadro de diálogo Servicios conectados
+## <a name="connect-tooazure-storage-using-hello-connected-services-dialog"></a>Conectar tooAzure almacenamiento mediante servicios conectados de hello diálogo
 1. Abra el proyecto en Visual Studio.
 
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en el nodo **Servicios conectados** y, en el menú contextual, seleccione **Agregar servicio conectado**.
+1. En **el Explorador de soluciones**, contextual hello **servicios conectados** nodo y, en el menú contextual de Hola y seleccione **Agregar servicio conectado**.
    
     ![Incorporación de un servicio conectado de Azure](./media/vs-azure-tools-connected-services-storage/IC796702.png)
 
-1. En la página **Servicios conectados**, seleccione **Almacenamiento en la nube con Azure Storage**.
+1. Hola **servicios conectados** página, seleccione **almacenamiento en la nube con el almacenamiento de Azure**.
    
     ![Incorporación de Azure Storage](./media/vs-azure-tools-connected-services-storage/add-azure-storage.png)
 
-1. En el cuadro de diálogo **Azure Storage**, elija una cuenta de almacenamiento existente y seleccione **Agregar**.
+1. Hola **el almacenamiento de Azure** cuadro de diálogo, seleccione una cuenta de almacenamiento existente y seleccione **agregar**.
    
-    Si necesita crear una cuenta de almacenamiento, vaya al siguiente paso. De lo contrario, vaya al paso 6.
+    Si necesita toocreate una cuenta de almacenamiento, vaya toohello siguiente paso. De lo contrario, vaya toostep 6.
     
-    ![Incorporación de una cuenta de almacenamiento existente al proyecto](./media/vs-azure-tools-connected-services-storage/select-azure-storage-account.png)
+    ![Agregar tooproject de cuenta de almacenamiento existente](./media/vs-azure-tools-connected-services-storage/select-azure-storage-account.png)
 
-1. Para crear una cuenta de almacenamiento: 
+1. toocreate una cuenta de almacenamiento: 
    
-   1. Seleccione **Crear una nueva cuenta de almacenamiento** en la parte inferior del cuadro de diálogo.
+   1. Seleccione **crear una nueva cuenta de almacenamiento** final Hola del cuadro de diálogo de Hola.
 
-   1. Rellene el cuadro de diálogo **Crear cuenta de almacenamiento** y seleccione **Crear**.
+   1. Rellene hello **crear cuenta de almacenamiento** cuadro de diálogo y seleccione **crear**.
       
        ![Nueva cuenta de almacenamiento de Azure](./media/vs-azure-tools-connected-services-storage/create-storage-account.png)
       
-   1. Cuando se muestre el cuadro de diálogo **Azure Storage**, la nueva cuenta de almacenamiento aparecerá en la lista. Seleccione la nueva cuenta de almacenamiento en la lista y seleccione **Agregar**.
+   1. Cuando Hola **el almacenamiento de Azure** se muestra el cuadro de diálogo, Hola nueva cuenta de almacenamiento aparece en la lista de Hola. Seleccione la nueva cuenta de almacenamiento hello en lista de Hola y seleccione **agregar**.
 
-1. El servicio de almacenamiento conectado aparece bajo el nodo **Referencias de servicio** del proyecto.
+1. Hola almacenamiento servicio conectado aparece bajo hello **referencias de servicio** nodo del proyecto.
    
 ## <a name="how-your-project-is-modified"></a>¿Cómo se modifica el proyecto?
-Cuando haya terminado con el cuadro de diálogo, Visual Studio agrega referencias y modifica determinados archivos de configuración. Los cambios específicos dependen del tipo de proyecto: 
+Cuando termine de cuadro de diálogo de hello, Visual Studio agrega referencias y modifica determinados archivos de configuración. cambios concretos de Hello dependen del tipo de proyecto de hello: 
 
 - Proyecto de ASP.NET - [¿Qué ha ocurrido? - Proyectos de ASP.NET](http://go.microsoft.com/fwlink/p/?LinkId=513126)
 - Proyecto de ASP.NET Core - [¿Qué ha ocurrido? - Proyectos de ASP.NET 5](http://go.microsoft.com/fwlink/p/?LinkId=513124) 

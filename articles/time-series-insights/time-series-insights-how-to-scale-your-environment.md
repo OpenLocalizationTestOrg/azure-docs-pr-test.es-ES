@@ -1,6 +1,6 @@
 ---
-title: Escalado del entorno de Azure Time Series Insights | Microsoft Docs
-description: "Este tutorial describe cómo escalar el entorno de Azure Time Series Insights"
+title: "aaaHow tooscale el entorno de visión de serie de tiempo de Azure | Documentos de Microsoft"
+description: "Este tutorial trata cómo tooscale su entorno de visión de serie de tiempo de Azure"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/19/2017
 ms.author: edett
-ms.openlocfilehash: 8f6c66ea2173c98179ec899d6626c2ab6f7ec4b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55eda388997589185bd34228762b95e182b228ba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Escalado de su entorno de Time Series Insights
+# <a name="how-tooscale-your-time-series-insights-environment"></a>Cómo tooscale su entorno de visión de la serie de tiempo
 
-Este tutorial describe cómo escalar el entorno de Time Series Insights.
+Este tutorial trata cómo tooscale su entorno de visión de la serie de tiempo.
 
 > [!NOTE]
 > No se permite el escalado vertical entre los tipos de SKU. Un entorno con una SKU S1 no se puede convertir en un entorno de S2.
@@ -44,12 +44,12 @@ Este tutorial describe cómo escalar el entorno de Time Series Insights.
 
 Las capacidades se escalan linealmente, por lo que una SKU de S1 con capacidad 2 admite una tasa de entrada de 2 GB (2 millones) de eventos al día y 60 GB (60 millones de eventos) al mes.
 
-## <a name="changing-the-capacity-of-your-environment"></a>Cambio de la capacidad del entorno
+## <a name="changing-hello-capacity-of-your-environment"></a>Cambiar la capacidad de Hola de su entorno
 
-1. En Azure Portal, seleccione el entorno cuya capacidad desee cambiar.
+1. Hola portal de Azure, seleccione Hola entorno cuya capacidad desea toochange.
 1. En Configuración, haga clic en Configurar.
-1. Utilice el control deslizante de la capacidad para seleccionar la capacidad que cumple los requisitos para las tarifas de entrada y la capacidad de almacenamiento.
+1. Utilice Hola capacidad control deslizante tooselect Hola capacidad que cumpla los requisitos de Hola para las tarifas de entrada y almacenamiento.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Compruebe que la nueva capacidad sea suficiente para evitar la limitación. Para más información, vea la sección *Puede que se esté limitando el entorno* [aquí](time-series-insights-diagnose-and-solve-problems.md).
+* Compruebe que la nueva capacidad de hello es suficiente tooprevent limitación. Para obtener más información, vea hello *el entorno podría obtener limitarán* sección [aquí](time-series-insights-diagnose-and-solve-problems.md).

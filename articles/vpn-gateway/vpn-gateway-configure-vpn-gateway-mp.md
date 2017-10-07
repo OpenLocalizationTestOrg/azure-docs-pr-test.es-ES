@@ -1,6 +1,6 @@
 ---
 title: "Configuración de VPN Gateway: Portal de Azure clásico | Microsoft Docs"
-description: "Este artículo le lleva por la configuración de la puerta de enlace de VPN de red virtual y el cambio de un tipo de enrutamiento de VPN de puerta de enlace. Estos pasos corresponden al modelo de implementación clásica y el Portal de Azure clásico."
+description: "Este artículo le lleva por la configuración de la puerta de enlace de VPN de red virtual y el cambio de un tipo de enrutamiento de VPN de puerta de enlace. Estos pasos aplican toohello implementación clásica hello y modelo portal clásico."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,120 +15,120 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2ea4e6bb86b1ba6f7b501b193d0713d3901457af
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 00d2fa18bab6eb24b33ddb18113f2a557db638d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-a-vpn-gateway-in-the-classic-portal"></a>Configuración de VPN Gateway en el Portal de Azure clásico 
-Si quiere crear una conexión segura entre locales segura entre Azure y su ubicación local, debe crear una puerta de enlace de red virtual. Una puerta de enlace de VPN es un tipo de puerta de enlace de red virtual. En el modelo de implementación clásica, una puerta de enlace de VPN puede ser uno de dos tipos de enrutamiento de VPN: estático o dinámico. El tipo de VPN que elija depende tanto del plan de diseño de la red como del dispositivo VPN local que quiera usar. Para obtener más información sobre dispositivos VPN, consulte [Acerca de los dispositivos VPN](vpn-gateway-about-vpn-devices.md).
+# <a name="configure-a-vpn-gateway-in-hello-classic-portal"></a>Configurar una puerta de enlace VPN en el portal clásico de Hola 
+Si desea que toocreate una conexión segura entre entornos entre Azure y su ubicación local, deberá toocreate una puerta de enlace de red virtual. Una puerta de enlace de VPN es un tipo de puerta de enlace de red virtual. En el modelo de implementación clásica de hello, una puerta de enlace VPN puede ser uno de los dos tipos de enrutamiento de VPN: estática o dinámica. Hola tipo VPN que elija depende de su plan de diseño de red tanto dispositivo VPN Hola local que desea toouse. Para obtener más información sobre dispositivos VPN, consulte [Acerca de los dispositivos VPN](vpn-gateway-about-vpn-devices.md).
 
 **Información acerca de los modelos de implementación de Azure**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-overview"></a>Información general sobre la configuración
-Los siguientes pasos lo llevan por la configuración de una puerta de enlace de VPN en el Portal de Azure clásico. Estos pasos se aplican a las puertas de enlace de redes virtuales que se crearon con el modelo de implementación clásica. Actualmente, no todos los valores de configuración de puertas de enlace están disponibles en el Portal de Azure. Cuando lo estén, crearemos un nuevo conjunto de instrucciones que se aplicarán al Portal de Azure.
+Hello pasos siguientes le guían a través de la configuración de la puerta de enlace VPN en el portal clásico de Hola. Estos pasos aplican toogateways para redes virtuales que se crearon con el modelo de implementación clásica de Hola. Actualmente, no todos los valores de configuración de Hola para puertas de enlace están disponibles en hello portal de Azure. Cuando están, se creará un nuevo conjunto de instrucciones que se aplican toohello portal de Azure.
 
 ### <a name="before-you-begin"></a>Antes de empezar
-Antes de configurar la puerta de enlace, primero deberá crear la red virtual. Vea los pasos para crear una red virtual para la conectividad entre locales en [Creación de una red virtual con una conexión de sitio a sitio mediante el Portal de Azure clásico](vpn-gateway-site-to-site-create.md) o [Configuración de una conexión de punto a sitio a una red virtual mediante el portal clásico](vpn-gateway-point-to-site-create.md). A continuación, utilice los pasos siguientes para configurar la puerta de enlace de VPN y recopilar la información necesaria para configurar el dispositivo VPN. 
+Antes de configurar la puerta de enlace, primero debe toocreate la red virtual. Para pasos toocreate una red virtual para conectividad entre entornos, consulte [configurar una red virtual con una conexión de VPN de sitio a sitio](vpn-gateway-site-to-site-create.md), o [configurar una red virtual con una conexión de VPN de punto a sitio](vpn-gateway-point-to-site-create.md). A continuación, usar hello después de puerta de enlace VPN de pasos tooconfigure Hola y de recopilar información de hello necesita tooconfigure el dispositivo VPN. 
 
-Si ya tiene una puerta de enlace de VPN y desea cambiar el tipo de enrutamiento, consulte [Cambio del tipo de enrutamiento de puerta de enlace de VPN](#how-to-change-the-vpn-routing-type-for-your-gateway).
+Si ya tiene una puerta de enlace VPN y desea que el tipo de enrutamiento toochange Hola VPN, consulte [cómo toochange Hola tipo de enrutamiento de VPN para la puerta de enlace](#how-to-change-the-vpn-routing-type-for-your-gateway).
 
 ## <a name="create-a-vpn-gateway"></a>Creación de una puerta de enlace de VPN
-1. En la página **Redes** del [Portal de Azure clásico](https://manage.windowsazure.com), compruebe que la columna de estado de la red virtual muestra **Creado**.
-2. En la columna **Nombre** , haga clic en el nombre de la red virtual.
-3. En la página **Panel** , observe que esta red virtual aún no tiene configurada ninguna puerta de enlace. Verá que este estado cambia a medida que avance por los pasos para configurar la puerta de enlace.
+1. Hola [portal de Azure clásico](https://manage.windowsazure.com), en hello **redes** , comprueba esa columna de estado de hello para la red virtual es **creado**.
+2. Hola **nombre** columna, haga clic en nombre de saludo de la red virtual.
+3. En hello **panel** página, tenga en cuenta que esta red virtual no tiene una puerta de enlace configurado todavía. Verá este estado a medida que avances en hello pasos tooconfigure la puerta de enlace.
 
 ![Puerta de enlace no creada](./media/vpn-gateway-configure-vpn-gateway-mp/IC717025.png)
 
-A continuación, en la parte inferior de la página, haga clic en **Crear puerta de enlace**. Puede seleccionar *Enrutamiento estático* o *Enrutamiento dinámico*. El tipo de enrutamiento de VPN que seleccione depende de algunos factores. Por ejemplo, del dispositivo VPN que será compatible y de si será necesario admitir conexiones de punto a sitio. Consulte [Acerca de los dispositivos VPN para la conectividad de redes virtuales](vpn-gateway-about-vpn-devices.md) para comprobar el tipo de enrutamiento de VPN que necesita. Una vez creada la puerta de enlace, no se puede cambiar entre los tipos de enrutamiento VPN de puerta de enlace sin eliminar y volver a crear la puerta de enlace. Cuando el sistema le pida confirmación de que desea crear la puerta de enlace, haga clic en **SÍ**.
+A continuación, en parte inferior de Hola de página de hello, haga clic en **crear puerta de enlace**. Puede seleccionar *Enrutamiento estático* o *Enrutamiento dinámico*. Hola tipo VPN de enrutamiento que seleccione depende de algunos factores. Por ejemplo, ¿qué es compatible con el dispositivo VPN y si necesita las conexiones de sitio a punto de toosupport. Comprobar [acerca de los dispositivos VPN para la conectividad de red Virtual](vpn-gateway-about-vpn-devices.md) tooverify Hola tipo de enrutamiento de VPN que necesite. Una vez creada la puerta de enlace de hello, no se puede cambiar entre los tipos de enrutamiento de VPN de puerta de enlace sin tener que eliminar y volver a crear la puerta de enlace de Hola. Cuando el sistema de hello le indique tooconfirm que desee Hola puerta de enlace creada, haga clic en **Sí**.
 
 ![Tipo de enrutamiento VPN de puerta de enlace](./media/vpn-gateway-configure-vpn-gateway-mp/IC717026.png)
 
-Una vez creada la puerta de enlace, verá que el gráfico de la puerta de enlace de la página cambia a amarillo e indica *Creando puerta de enlace*. La puerta de enlace puede tardar hasta 45 minutos en crearse. Espere a que la puerta de enlace se haya completado antes de avanzar con otras opciones de configuración.
+Cuando está creando la puerta de enlace, observe gráfico de puerta de enlace de hello en página Hola cambia tooyellow y dice *crear puerta de enlace*. Puede tardar minutos too45 hello toocreate de puerta de enlace. Espere hasta que se complete la puerta de enlace de hello antes de poder avanzar con otras opciones de configuración.
 
 ![Creación de una puerta de enlace](./media/vpn-gateway-configure-vpn-gateway-mp/IC717027.png)
 
-Cuando la puerta de enlace cambia a *Conectando*, puede recopilar la información que necesitará para el dispositivo VPN.
+Cuando Hola cambios de puerta de enlace demasiado*conexión*, puede recopilar información de Hola que necesitará para el dispositivo VPN.
 
 ![Conexión de una puerta de enlace](./media/vpn-gateway-configure-vpn-gateway-mp/IC717028.png)
 
 ## <a name="site-to-site-connections"></a>Conexiones de sitio a sitio
 
 ### <a name="step-1-gather-information-for-your-vpn-device-configuration"></a>Paso 1. Recopilación de información para la configuración del dispositivo VPN
-Si va a crear una conexión de sitio a sitio, una vez que se cree la puerta de enlace, recopile la información de la configuración del dispositivo VPN. Esta información se encuentra en la página **Panel** de la red virtual:
+Si va a crear una conexión de sitio a sitio, una vez creada la puerta de enlace de hello, recopilar información para la configuración del dispositivo VPN. Esta información se encuentra en hello **panel** página de la red virtual:
 
-1. **Dirección IP de puerta de enlace:** la dirección IP se encuentra en la página **Panel**. No podrá verla hasta después de que ha terminado de crear la puerta de enlace.
-2. **Clave compartida:** haga clic en el botón **Administrar clave**, en la parte inferior de la pantalla. Haga clic en el icono situado junto a la clave para copiarlo en el Portapapeles y, a continuación, pegue y guarde la clave. Este botón solo funciona cuando hay un solo túnel VPN S2S. Si tiene varios túneles de VPN S2S, utilice la API *Get Virtual Network Gateway Shared Key* o el cmdlet de PowerShell.
+1. **Dirección IP de puerta de enlace -** dirección IP de hello puede encontrarse en hello **panel** página. No será capaz de toosee hasta después de la puerta de enlace ha terminado de crear.
+2. **Clave compartida -** haga clic en **administrar clave** final Hola de pantalla de bienvenida. Haga clic en hello icono siguiente toohello clave toocopy se tooyour Portapapeles y, a continuación, pegar y Guardar clave de Hola. Este botón solo funciona cuando hay un solo túnel VPN S2S. Si tiene varios túneles VPN S2S, usar hello *Get Virtual Network Gateway Shared Key* cmdlet de PowerShell o API.
 
 ![Administrar claves](./media/vpn-gateway-configure-vpn-gateway-mp/IC717029.png)
 
 ### <a name="step-2--configure-your-vpn-device"></a>Paso 2:  Configurar el dispositivo VPN
-Las conexiones de sitio a sitio a una red local requieren un dispositivo VPN. Aunque no se proporcionan todos los pasos de configuración para todos los dispositivos VPN, se puede encontrar información en los siguientes vínculos útiles:
+Red local de las conexiones de sitio a sitio tooan requieren un dispositivo VPN. Mientras se no proporcionan los pasos de configuración para todos los dispositivos VPN, puede encontrar información de Hola Hola siguientes vínculos útiles:
 
-- Para obtener más información sobre dispositivos VPN compatibles, vea [Dispositivos VPN](vpn-gateway-about-vpn-devices.md). 
-- Para obtener vínculos a los valores de configuración de dispositivo, vea [Dispositivos VPN validados](vpn-gateway-about-vpn-devices.md#devicetable). Estos vínculos se proporcionan dentro de lo posible. Siempre es mejor ponerse en contacto con el fabricante del dispositivo para obtener la información de configuración más reciente.
-- Para obtener información sobre cómo modificar los ejemplos de configuración de dispositivo, vea [Edición de ejemplos](vpn-gateway-about-vpn-devices.md#editing).
+- Para obtener más información sobre dispositivos VPN compatibles, consulte [Dispositivos VPN](vpn-gateway-about-vpn-devices.md). 
+- Para valores de configuración de toodevice de vínculos, consulte [valida los dispositivos VPN](vpn-gateway-about-vpn-devices.md#devicetable). Estos vínculos se proporcionan dentro de lo posible. Siempre es mejor toocheck con el fabricante del dispositivo para obtener información de configuración más reciente Hola.
+- Para obtener información sobre cómo modificar los ejemplos de configuración de dispositivo, consulte [Edición de ejemplos](vpn-gateway-about-vpn-devices.md#editing).
 - Para los parámetros de IPsec/IKE, vea [Parámetros](vpn-gateway-about-vpn-devices.md#ipsec).
-- Antes de configurar el dispositivo VPN, compruebe si hay [problemas conocidos de compatibilidad de dispositivos](vpn-gateway-about-vpn-devices.md#known) para el dispositivo VPN que desea usar.
+- Antes de configurar el dispositivo VPN, compruebe si existe alguno [los problemas de compatibilidad de dispositivo](vpn-gateway-about-vpn-devices.md#known) para dispositivo VPN de Hola que desea toouse.
 
-Al configurar el dispositivo VPN, necesitará los elementos siguientes:
+Al configurar el dispositivo VPN, necesitará Hola siguientes elementos:
 
-- La dirección IP pública de la puerta de enlace de red virtual. Para encontrarla, vaya a la hoja **Introducción** de la red virtual.
-- Una clave compartida. Se trata de la misma clave compartida que se especifica al crear la conexión VPN de sitio a sitio. En nuestros ejemplos, se utiliza una clave compartida muy básica. Debe generar una clave más compleja para su uso.
+- Hola dirección IP pública de la puerta de enlace de red virtual. Puede buscar por van toohello **Introducción** hoja de la red virtual.
+- Una clave compartida. Esto es Hola mismo compartido clave que se especifique al crear la conexión VPN de sitio a sitio. En nuestros ejemplos, se utiliza una clave compartida muy básica. Debe generar un toouse clave más compleja.
 
-Una vez configurado el dispositivo VPN, puede ver la información de conexión actualizada en la página Panel para la red virtual.
+Una vez configurado el dispositivo VPN de hello, puede ver la información de conexión actualizada en la página del panel de hello para la red virtual.
 
 ### <a name="step-3-verify-your-local-network-ranges-and-vpn-gateway-ip-address"></a>Paso 3: Verificación de los intervalos de red local y la dirección IP de puerta de enlace de VPN
 #### <a name="verify-your-vpn-gateway-ip-address"></a>Verificación de la dirección IP de la puerta de enlace de VPN
-Para que la puerta de enlace se conecte correctamente, la dirección IP del dispositivo VPN debe configurarse correctamente para la red local que especificó para la configuración entre entornos. Normalmente, esto se configura durante el proceso de configuración de sitio a sitio. Sin embargo, si anteriormente usó esta red local con un dispositivo diferente o ha cambiado la dirección IP de esta red local, edite la configuración para especificar la dirección IP de la puerta de enlace correcta.
+Para tooconnect de puerta de enlace correctamente, dirección IP de hello para el dispositivo VPN debe configurarse correctamente para hello red Local que especificó para la configuración entre entornos. Normalmente, esto se configura durante el proceso de configuración de sitio a sitio de Hola. Sin embargo, si anteriormente usó esta red local con otro dispositivo o dirección IP de hello ha cambiado para esta red local, modificar la dirección de IP de puerta de enlace correcta de hello configuración toospecify Hola.
 
-1. Para comprobar la dirección IP de la puerta de enlace, haga clic en **Redes** en el panel izquierdo del portal y seleccione **Redes locales** en la parte superior de la página. Verá la dirección de la puerta de enlace de VPN para cada red local que ha creado. Para modificar la dirección IP, seleccione la red virtual y haga clic en **Editar** en la parte inferior de la página.
-2. En la página **Especificación de detalles de la red local** , modifique la dirección IP y, a continuación, haga clic en la flecha siguiente en la parte inferior de la página.
-3. En la página **Especificación del espacio de direcciones** , haga clic en la marca de verificación de la parte inferior derecha para guardar la configuración.
+1. tooverify la dirección IP de puerta de enlace, haga clic en **redes** en Hola panel izquierdo del portal y, a continuación, seleccione **redes locales** al principio de Hola de página de Hola. Podrá ver Hola dirección de puerta de enlace de VPN para cada red local que ha creado. dirección IP de tooedit hello, seleccione Hola red virtual y haga clic en **editar** final Hola de página Hola.
+2. En hello **especificar los detalles de la red local** página, Editar dirección IP de hello y, a continuación, haga clic en siguiente flecha de hello final Hola de página Hola.
+3. En hello **especificar el espacio de direcciones de hello** página, haga clic en marca de verificación de hello en hello inferior derecho toosave su configuración.
 
-#### <a name="verify-the-address-ranges-for-your-local-networks"></a>Verificación de los intervalos de direcciones de sus redes locales
-Para que el tráfico correcto fluya por la puerta de enlace hasta la ubicación local, debe comprobar que se especifique cada intervalo de direcciones IP. Cada intervalo debe mostrarse en la configuración de **Redes locales** de Azure. Según la configuración de red de su ubicación local, esta tarea puede ser bastante pesada. A continuación, el tráfico vinculado a una dirección IP que está dentro de los intervalos especificados se enviará a través de la puerta de enlace de VPN de la red virtual. Los intervalos que indique no tienen que ser intervalos privados, aunque deberá comprobar que la configuración local puede recibir el tráfico entrante.
+#### <a name="verify-hello-address-ranges-for-your-local-networks"></a>Comprobar los intervalos de direcciones de Hola para las redes locales
+Para hello tooflow de tráfico correcto a través de la ubicación de hello puerta de enlace tooyour local, deberá tooverify que cada intervalo de direcciones IP se ha especificado. Cada intervalo debe mostrarse en la configuración de **Redes locales** de Azure. Según la configuración de red Hola de su ubicación local, esto puede ser una tarea bastante pesada. Tráfico que está limitado por una dirección IP que se encuentra dentro de los intervalos de hello enumerado se enviará a través de puerta de enlace VPN de red virtual de Hola. Hola intervalos que indique no tienen intervalos privados toobe, aunque es conveniente tooverify que puede recibir la configuración local Hola tráfico entrante.
 
-Para agregar o editar los intervalos de una red local, siga estos pasos:
+intervalos de hello tooadd o edición de una red Local, use Hola pasos:
 
-1. Para editar los intervalos de direcciones IP de una red local, haga clic en **Redes** en el panel izquierdo del portal y seleccione **Redes locales** en la parte superior de la página. En el portal, la manera más fácil de ver los intervalos que ha enumerado es en la página **Editar** . Para ver los intervalos, seleccione la red virtual y haga clic en **Editar** en la parte inferior de la página.
-2. No realice ningún cambio en la página **Especificación de detalles de la red local** . Haga clic en la flecha siguiente de la parte inferior de la página.
-3. En la página **Especificación del espacio de direcciones** , realice los cambios del espacio de direcciones de red. A continuación, haga clic en la marca de verificación para guardar la configuración.
+1. intervalos de direcciones IP tooedit de Hola para una red local, haga clic en **redes** en Hola panel izquierdo del portal y, a continuación, seleccione **redes locales** al principio de Hola de página de Hola. En el portal de hello, hello más fácil manera tooview Hola intervalos que ha enumerado es en hello **editar** página. toosee los intervalos, seleccione Hola red virtual y haga clic en **editar** final Hola de página Hola.
+2. En hello **especificar los detalles de la red local** página, no realiza ningún cambio. Haga clic en la flecha siguiente de hello en parte inferior de Hola de página Hola.
+3. En hello **especificar el espacio de direcciones de hello** página, realice los cambios de espacio de dirección de red. A continuación, haga clic en toosave de marca de verificación de hello, su configuración.
 
-## <a name="how-to-view-gateway-traffic"></a>Visualización del tráfico de la puerta de enlace
+## <a name="how-tooview-gateway-traffic"></a>Cómo el tráfico de puerta de enlace de tooview
 Puede ver la puerta de enlace y el tráfico de la puerta de enlace desde la página **Panel** de la red virtual.
 
-En la página **Panel** puede ver lo siguiente:
+En hello **panel** página puede ver Hola siguiente:
 
-* La cantidad de datos que fluyen a través de la puerta de enlace, tanto de entrada como de salida.
-* Los nombres de los servidores DNS especificados para la red virtual.
-* La conexión entre la puerta de enlace y el dispositivo VPN.
-* La clave compartida que se utiliza para configurar la conexión de la puerta de enlace para el dispositivo VPN.
+* cantidad de Hola de datos que se envíen a través de la puerta de enlace, datos y datos de salida.
+* nombres de Hola de servidores DNS de Hola que se especifican para la red virtual.
+* conexión de Hello entre la puerta de enlace y el dispositivo VPN.
+* Hola comparten clave tooconfigure usa el dispositivo VPN de puerta de enlace conexión tooyour.
 
-## <a name="how-to-change-the-vpn-routing-type-for-your-gateway"></a>Cambio del tipo de enrutamiento de puerta de enlace de VPN
-Puesto que algunas configuraciones de conectividad solo están disponibles para ciertos tipos de enrutamiento de puerta de enlace, puede que necesite cambiar el tipo de enrutamiento VPN de puerta de enlace de una puerta de enlace VPN existente. Por ejemplo, puede desear agregar conectividad punto a sitio a una conexión de sitio a sitio ya existente que tiene una puerta de enlace estática. Las conexiones de punto a sitio requieren una puerta de enlace dinámica. Esto significa que para configurar una conexión P2S, tendrá que cambiar el tipo de enrutamiento de VPN de puerta de enlace de estático a dinámico.
+## <a name="how-toochange-hello-vpn-routing-type-for-your-gateway"></a>¿Cómo toochange Hola tipo de enrutamiento de VPN para la puerta de enlace
+Dado que algunas configuraciones de conectividad solo están disponibles para ciertos tipos de enrutamiento de puerta de enlace, es posible que necesite toochange Hola puerta de enlace VPN tipo de enrutamiento de puerta de enlace VPN existente. Por ejemplo, puede que desee tooadd conectividad punto a sitio tooan ya sitio a sitio conexión existente que tiene una puerta de enlace estática. Las conexiones de punto a sitio requieren una puerta de enlace dinámica. Esto significa que tooconfigure una conexión P2S, tendrá que toochange el tipo de enrutamiento de VPN de puerta de enlace de toodynamic estático.
 
-Si necesita cambiar un tipo de enrutamiento VPN de puerta de enlace, deberá eliminar la puerta de enlace existente y, a continuación, volver a crearla con el nuevo tipo de enrutamiento. No es necesario eliminar toda la red virtual para cambiar el tipo de enrutamiento de la puerta de enlace.
+Si necesita toochange un tipo de enrutamiento de VPN de puerta de enlace, podrá eliminar la puerta de enlace existente de hello y, a continuación, crear una nueva puerta de enlace con el nuevo tipo de enrutamiento Hola. No es necesario toodelete Hola toda la red virtual toochange Hola puerta de enlace tipo de enrutamiento.
 
-Antes de cambiar el tipo de enrutamiento de VPN de puerta de enlace, asegúrese de comprobar que el dispositivo VPN sea compatible con el tipo de enrutamiento que quiere usar. Para descargar nuevos ejemplos de configuración de enrutamiento y comprobar los requisitos del dispositivo VPN, consulte [Acerca de los dispositivos VPN para la conectividad de redes virtuales](vpn-gateway-about-vpn-devices.md).
+Antes de cambiar el tipo de enrutamiento de VPN de puerta de enlace, ser tooverify seguro de que el dispositivo VPN es compatible con tipo de enrutamiento de Hola que desea toouse. ejemplos de configuración de enrutamiento nuevo de toodownload y comprobación de requisitos del dispositivo VPN, consulte [acerca de los dispositivos VPN para la conectividad de red Virtual](vpn-gateway-about-vpn-devices.md).
 
 > [!IMPORTANT]
-> Cuando se elimina una puerta de enlace de VPN de red virtual, se libera la VIP asignada a la puerta de enlace. Cuando vuelva a crear la puerta de enlace, se la asignará una nueva VIP.
+> Cuando se elimina una puerta de enlace VPN de red virtual, se libera Hola VIP asignada toohello puerta de enlace. Cuando se vuelve a crear la puerta de enlace de hello, una nueva VIP se asigna tooit.
 > 
 > 
 
-1. **Elimine la puerta de enlace VPN existente.**
+1. **Elimine la puerta de enlace VPN existente Hola.**
    
-    En la página **Panel** de la red virtual, desplácese a la parte inferior de la página y haga clic en **Eliminar puerta de enlace**. Espere la notificación de que se ha eliminado la puerta de enlace. Cuando reciba una notificación en la pantalla de que se ha eliminado la puerta de enlace, podrá crear una nueva puerta de enlace.
+    En hello **panel** página de la red virtual, navegue toohello inferior de la página de Hola y haga clic en **eliminar puerta de enlace**. Espere la notificación de Hola Hola puerta de enlace se ha eliminado. Una vez que reciba notificaciones de hello en pantalla de bienvenida que se ha eliminado la puerta de enlace, puede crear una nueva puerta de enlace.
 2. **Cree una puerta de enlace de VPN.**
    
-    Utilice el procedimiento que aparece en la parte superior de la página para crear una nueva puerta de enlace: [Creación de una puerta de enlace de VPN](#create-a-vpn-gateway).
+    Utilice el procedimiento de hello en parte superior de Hola de hello página toocreate una nueva puerta de enlace: [crear una puerta de enlace VPN](#create-a-vpn-gateway).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Puede agregar máquinas virtuales a la red virtual. Vea [Creación de una máquina virtual personalizada](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Puede agregar la red virtual de máquinas virtuales tooyour. Vea [cómo toocreate una máquina virtual personalizada](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Si quiere configurar una conexión VPN de punto a sitio, vea [Configuración de una conexión VPN de punto a sitio](vpn-gateway-point-to-site-create.md).
+Si desea que la conexión de tooconfigure un point-to-site VPN, consulte [configurar una conexión VPN punto a sitio](vpn-gateway-point-to-site-create.md).
 

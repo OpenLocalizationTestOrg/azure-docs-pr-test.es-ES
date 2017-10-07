@@ -1,5 +1,5 @@
 ---
-title: "Proceso de ciencia de datos en equipos en acción: uso de SQL Data Warehouse | Microsoft Docs"
+title: "Hola proceso de ciencia de datos de equipo en acción: con almacenamiento de datos SQL | Documentos de Microsoft"
 description: "Tecnología y procesos de análisis avanzado en acción"
 services: machine-learning
 documentationcenter: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
-ms.openlocfilehash: ce7de48af0f2f21576c66a962b88635a0f9f8333
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b1b6371583a023d32e33db59464cafd8c3b767d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Proceso de ciencia de datos en equipos en acción: uso de Almacenamiento de datos SQL
-En este tutorial le guiaremos a través de la creación e implementación de un modelo de aprendizaje automático mediante Almacenamiento de datos SQL (SQL DW) para un conjunto de datos disponible públicamente: el conjunto de datos [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) . El modelo de clasificación binaria construido predice si se va a pagar o no una propina para la carrera, y también se describen los modelos de clasificación y regresión multiclase que predicen la distribución de los importes pagados en concepto de propina.
+# <a name="hello-team-data-science-process-in-action-using-sql-data-warehouse"></a>Hola proceso de ciencia de datos de equipo en acción: con almacenamiento de datos SQL
+En este tutorial, se le guían en la creación e implementación de un modelo de aprendizaje automático con almacenamiento de datos de SQL (SQL DW) para un conjunto de datos disponible públicamente--hello [NYC Taxi viajes](http://www.andresmh.com/nyctaxitrips/) conjunto de datos. modelo de clasificación binaria de Hello construido predice si no se le paga una sugerencia para un recorrido, y los modelos de regresión y de clasificación multiclase también se tratan que predicen distribución Hola para hello cantidades de sugerencia de pago.
 
-El procedimiento sigue el flujo de trabajo del [proceso de ciencia de datos en equipos (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) . Se muestra cómo configurar un entorno de ciencia de datos, cómo cargar los datos en Almacenamiento de datos SQL y cómo usar Almacenamiento de datos SQL o un IPython Notebook para explorar las características de datos y de diseño para modelar. Luego se muestra cómo compilar e implementar un modelo con Aprendizaje automático de Azure.
+procedimiento de Hello sigue hello [proceso de ciencia de datos de equipo (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) flujo de trabajo. Le mostramos cómo toosetup un entorno de ciencia de datos, cómo tooload Hola datos en almacenamiento de datos de SQL y cómo usar el almacenamiento de datos de SQL o un bloc de notas de IPython tooexplore Hola datos e ingeniero características toomodel. A continuación, mostramos cómo toobuild e implementar un modelo de aprendizaje automático de Azure.
 
-## <a name="dataset"></a>Conjunto de datos NYC Taxi Trips
-El conjunto de datos NYC Taxi Trips consta de aproximadamente 20 GB de archivos de valores separados por comas (CSV) comprimidos (aproximadamente, 48 GB sin comprimir), que registran más de 173 millones de carreras individuales y las tarifas pagadas por cada carrera. Cada registro de carrera incluye la hora y el lugar de recogida y llegada, el número de licencia del taxista anonimizado y el número de placa (número de identificación único del taxi). Los datos cubren todos los viajes del año 2013 y se proporcionan en los dos conjuntos de datos siguientes para cada mes:
+## <a name="dataset"></a>el conjunto de datos de Hello NYC Taxi viajes
+Hola datos NYC Taxi recorridos consta de unos 20GB de archivos comprimidos de CSV (sin comprimir de ~ 48GB), más de 173 millones de grabación hello y viajes individuales puntuación de pago para cada recorrido. Cada registro de ida y vuelta incluye ubicaciones de recogida y entrega de Hola y tiempos, anónimos hack número de licencia (del controlador) y Hola número medallion (identificador único del taxi). datos de Hello cubre todos los viajes y en el año de hello 2013 y se proporcionan en hello siguiendo dos conjuntos de datos de cada mes:
 
-1. El archivo **trip_data.csv** contiene información detallada de las carreras, como el número de pasajeros, los puntos de recogida y destino, la duración de las carreras y la longitud del recorrido. Estos son algunos registros de ejemplo:
+1. Hola **trip_data.csv** archivo contiene los detalles de ida y vuelta, como el número de los pasajeros, puntos de recogida y caída, duración de ida y vuelta y duración del viaje. Estos son algunos registros de ejemplo:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -36,7 +36,7 @@ El conjunto de datos NYC Taxi Trips consta de aproximadamente 20 GB de archivos
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. El archivo **trip_fare.csv** contiene información detallada de la tarifa que se paga en cada carrera, como el tipo de pago, el importe de la tarifa, los suplementos e impuestos, las propinas y los peajes, y el importe total pagado. Estos son algunos registros de ejemplo:
+2. Hola **trip_fare.csv** archivo contiene detalles de tarifa de Hola de pago para cada recorrido, como tipo de pago, cantidad de tarifa, suplemento e impuestos, sugerencias y peajes y cantidad total de Hola de pago. Estos son algunos registros de ejemplo:
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -45,39 +45,39 @@ El conjunto de datos NYC Taxi Trips consta de aproximadamente 20 GB de archivos
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-La **clave única** para unir trip\_data y trip\_fare se compone de los tres campos siguientes:
+Hola **clave única** utilizan recorridos toojoin\_datos y recorridos\_tarifa se compone de hello después de tres campos:
 
 * medallion,
 * hack\_license y
 * pickup\_datetime.
 
 ## <a name="mltasks"></a>Realicemos tres tipos de tareas de predicción
-Se formulan tres problemas de predicción basados en el valor *tip\_amount* para mostrar tres tipos de tareas de modelado:
+Se formular tres problemas de predicción basándose en hello *sugerencia\_cantidad* tooillustrate tres tipos de tareas de modelado:
 
-1. **Clasificación binaria**: permite predecir si se pagó una propina tras una carrera, o no; es decir, un valor de *tip\_amount* mayor que 0 $ es un ejemplo positivo, mientras que un valor de *tip\_amount* de 0 $ es un ejemplo negativo.
-2. **Clasificación con múltiples clases**: para predecir el intervalo de la propina de la carrera. Dividimos *tip\_amount* en cinco ubicaciones o clases:
+1. **Clasificación binaria**: toopredict o no se pagó una sugerencia para un recorrido, es decir, un *sugerencia\_cantidad* que es mayor que $0 es un ejemplo positivo, mientras un *sugerencia\_cantidad* $ 0 es un ejemplo negativo.
+2. **Clasificación multiclase**: intervalo de hello toopredict de sugerencia de pago para recorridos de Hola. Se divide hello *sugerencia\_cantidad* en cinco bandejas o clases:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **Tarea de regresión**: para predecir la cantidad de propina pagada en una carrera.  
+3. **Tarea de regresión**: cantidad de hello toopredict de sugerencia de pago para un recorrido.  
 
-## <a name="setup"></a>Configuración del entorno de ciencia de datos de Azure para análisis avanzado
-Para configurar el entorno de ciencia de datos de Azure, siga estos pasos.
+## <a name="setup"></a>Configurar el entorno de ciencia de datos de Azure de Hola para análisis avanzado
+tooset del entorno de ciencia de datos de Azure, siga estos pasos.
 
 **Cree su propia cuenta de Almacenamiento de blobs de Azure.**
 
-* Cuando aprovisione su propia instancia de Azure Blob Storage, elija una ubicación geográfica para esta en la región **centro-sur de EE.UU.**, o lo más cerca posible de esta región, ya que es donde se almacenan los datos de NYC Taxi. Los datos se copian con AzCopy desde el contenedor de Almacenamiento de blobs público a un contenedor de su propia cuenta de almacenamiento. Cuanto más se acerque el Almacenamiento de blobs de Azure a la región centro-sur de EE. UU., más rápida se completará esta tarea (paso 4).
-* Para crear una cuenta propia de almacenamiento de Azure, siga los pasos descritos en [Acerca de las cuentas de almacenamiento de Azure](../storage/common/storage-create-storage-account.md). Asegúrese de hacer anotaciones en los valores de las credenciales de la cuenta de almacenamiento siguientes, que necesitará más adelante en este tutorial.
+* Al proporcionar su propio almacenamiento de blobs de Azure, elija una ubicación geográfica del almacenamiento de blobs de Azure en o tan cerca como sea posible demasiado**Ee.uu. Central sur**, que es donde se almacena los datos de Nueva York Taxi Hola. datos de Hola se copiarán con AzCopy de contenedor de tooa de contenedor de almacenamiento de blobs públicos de hello en su propia cuenta de almacenamiento. Hello cuando se acerque el almacenamiento de blobs de Azure es tooSouth Central US, hello más rápido (paso 4) se puede realizar esta tarea.
+* cuenta de su propio almacenamiento de Azure toocreate, Hola seguir pasos que se describen en [cuentas de almacenamiento de Azure sobre](../storage/common/storage-create-storage-account.md). Estar seguro de notas de toomake valores de hello para las siguientes credenciales de cuenta de almacenamiento que se necesitarán más adelante en este tutorial.
   
   * **Nombre de cuenta de almacenamiento**
   * **Clave de cuenta de almacenamiento**
-  * **Nombre de contenedor** (en donde los datos se van a almacenar en el Almacenamiento de blobs de Azure)
+  * **Nombre del contenedor** (que quiere hello toobe de datos almacenado en hello almacenamiento de blobs de Azure)
 
 **Aprovisione la instancia de Almacenamiento de datos SQL de Azure.**
-Siga la documentación de [Creación de Almacenamiento de datos SQL](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) para aprovisionar una instancia de Almacenamiento de datos SQL. Asegúrese de que hacer anotaciones en las credenciales de Almacenamiento de datos SQL siguientes que se usarán en los pasos posteriores.
+Seguir la documentación de hello en [crear un almacén de datos de SQL](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) tooprovision una instancia de almacenamiento de datos SQL. Asegúrese de que realiza las notaciones en hello siguiendo las credenciales de almacén de datos de SQL que se utilizarán en pasos posteriores.
 
 * **Nombre del servidor**: <server Name>.database.windows.net
 * **Nombre de SQLDW (base de datos)**
@@ -86,28 +86,28 @@ Siga la documentación de [Creación de Almacenamiento de datos SQL](../sql-data
 
 **Instale Visual Studio y SQL Server Data Tools.** Para ver instrucciones, consulte [Instalación de Visual Studio 2015 y SSDT para Almacenamiento de datos SQL](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
 
-**Conéctese a Almacenamiento de datos SQL de Azure con Visual Studio.** Para obtener instrucciones, consulte los pasos 1 y 2 de [Conexión a Azure SQL Data Warehouse con Visual Studio](../sql-data-warehouse/sql-data-warehouse-connect-overview.md).
+**Conectar tooyour almacenamiento de datos de SQL Azure con Visual Studio.** Para obtener instrucciones, consulte los pasos 1 y 2 en [conectar tooAzure almacenamiento de datos de SQL con Visual Studio](../sql-data-warehouse/sql-data-warehouse-connect-overview.md).
 
 > [!NOTE]
-> Ejecute la siguiente consulta SQL en la base de datos que creó en SQL Data Warehouse (en lugar de la consulta proporcionada en el paso 3 del tema sobre la conexión) para **crear una clave maestra**.
+> Ejecución hello consulta SQL en la base de datos de Hola que creó en el almacenamiento de datos de SQL siguiente (en lugar de consulta de hello proporcionada en el paso 3 de hello conectar tema) demasiado**crear una clave maestra de**.
 > 
 > 
 
     BEGIN TRY
-           --Try to create the master key
+           --Try toocreate hello master key
         CREATE MASTER KEY
     END TRY
     BEGIN CATCH
-           --If the master key exists, do nothing
+           --If hello master key exists, do nothing
     END CATCH;
 
 **Cree un área de trabajo de Azure Machine Learning en su suscripción de Azure.** Para ver instrucciones, consulte [Creación de un área de trabajo de Aprendizaje automático de Azure](machine-learning-create-workspace.md).
 
-## <a name="getdata"></a>Carga de datos en Almacenamiento de datos SQL
-Abra una consola de comandos de Windows PowerShell. Ejecute los comandos de PowerShell siguientes para descargar los archivos de script SQL de ejemplo que compartimos en GitHub en un directorio local especificado con el parámetro *-DestDir*. Puede cambiar el valor del parámetro *-DestDir* en cualquier directorio local. Si *-DestDir* no existe, lo creará el script de PowerShell.
+## <a name="getdata"></a>Cargar datos de hello en almacenamiento de datos SQL
+Abra una consola de comandos de Windows PowerShell. Ejecute hello siguiente comandos de PowerShell toodownload Hola ejemplo archivos de script SQL que se comparten con usted en GitHub tooa directorio local que se especifica con el parámetro hello *- DestDir*. Puede cambiar Hola valor del parámetro *- DestDir* tooany de directorio local. Si *- DestDir* no existe, se creará Hola script de PowerShell.
 
 > [!NOTE]
-> Es posible que necesite **ejecutar como administrador** el siguiente script de PowerShell si su directorio *DestDir* necesita privilegios de administrador para crearlo o escribir en él.
+> Es posible que tenga demasiado**ejecutar como administrador** al ejecutar Hola siguiente script de PowerShell si su *DestDir* directorio debe tooit de toocreate o toowrite de privilegios de administrador.
 > 
 > 
 
@@ -117,22 +117,22 @@ Abra una consola de comandos de Windows PowerShell. Ejecute los comandos de Powe
     $wc.DownloadFile($source, $ps1_dest)
     .\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
 
-Cuando se haya ejecutado correctamente, el directorio de trabajo actual cambia a *-DestDir*. Debe ver una pantalla similar a la siguiente:
+Tras la ejecución correcta, el directorio de trabajo actual cambia demasiado*- DestDir*. Debería poder toosee pantalla como a continuación:
 
 ![][19]
 
-En su *-DestDir*, ejecute el siguiente script de PowerShell en modo de administrador:
+En su *- DestDir*, ejecute hello siguiente script de PowerShell en modo de administrador:
 
     ./SQLDW_Data_Import.ps1
 
-Cuando se ejecuta el script de PowerShell por primera vez, se le pedirá que introduzca información desde Almacenamiento de datos SQL de Azure y la cuenta de Almacenamiento de blobs de Azure. Cuando este script de PowerShell termine de ejecutarse por primera vez, las credenciales indicadas se habrán escrito en un archivo de configuración SQLDW.conf del directorio de trabajo actual. La ejecución futura de este archivo de script de PowerShell puede leer todos los parámetros necesarios de este archivo de configuración. Si necesita cambiar algunos parámetros, puede elegir escribir los parámetros en la pantalla después del aviso mediante la eliminación de este archivo de configuración y de escribir los valores de parámetros cuando se le solicite o cambiar los valores de parámetros mediante la edición del archivo SQLDW.conf en el directorio *-DestDir* .
+Cuando Hola script de PowerShell se ejecuta para hello primera vez, se le pedirá información de hello tooinput desde el almacenamiento de datos de SQL Azure y la cuenta de almacenamiento de blobs de Azure. Cuando se completa este script de PowerShell ejecuta para hello primera vez, las credenciales de hello proporcionados por el habrá se han escrito archivo de configuración de tooa SQLDW.conf en el directorio de trabajo presente Hola. Hello ejecución futuras de este archivo de script de PowerShell tiene Hola opción tooread necesarios todos los parámetros de este archivo de configuración. Si necesita toochange algunos parámetros, puede elegir parámetros hello en pantalla de bienvenida al símbolo del sistema si elimina este archivo de configuración y especificar valores de parámetros de hello cuando se le solicite o con valores de parámetro de hello toochange tooinput editando el archivo de hello SQLDW.conf en su *- DestDir* directory.
 
 > [!NOTE]
-> Para evitar conflictos de nombres de esquema con los que ya existen en Almacenamiento de datos SQL de Azure, al leer los parámetros directamente desde el archivo SQLDW.conf, se agrega un número aleatorio de tres dígitos al nombre del esquema desde el archivo SQLDW.conf como el nombre de esquema predeterminado para cada ejecución. El script de PowerShell puede pedirle un nombre de esquema: se puede especificar el nombre a discreción del usuario.
+> En orden tooavoid esquema nombre entra en conflicto con los que ya existen en el almacenamiento de datos de SQL Azure, al leer parámetros directamente desde el archivo de SQLDW.conf hello, un número aleatorio de 3 dígitos se agrega toohello nombre del esquema de archivo de hello SQLDW.conf como nombre de esquema predeterminado de Hola para cada ejecución. Hola script de PowerShell puede pedirle un nombre de esquema: se puede especificar el nombre de Hola a discreción del usuario.
 > 
 > 
 
-Este archivo de **script de PowerShell** realiza las tareas siguientes:
+Esto **script de PowerShell** archivo completa Hola siguiente las tareas:
 
 * **Descarga e instala AzCopy**, si AzCopy no se ha instalado aún
   
@@ -155,17 +155,17 @@ Este archivo de **script de PowerShell** realiza las tareas siguientes:
                     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
                     $env_path = $env:Path
                 }
-* **Copia datos en la cuenta de Almacenamiento de blobs privada** desde el blob público con AzCopy
+* **Copia de la cuenta de almacenamiento de blobs privado de datos tooyour** de blob públicos de hello con AzCopy
   
-        Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
+        Write-Host "AzCopy is copying data from public blob tooyo storage account. It may take a while..." -ForegroundColor "Yellow"
         $start_time = Get-Date
         AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
         $end_time = Get-Date
         $time_span = $end_time - $start_time
         $total_seconds = [math]::Round($time_span.TotalSeconds,2)
-        Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
-        Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
-* **Carga datos mediante Polybase (mediante la ejecución de LoadDataToSQLDW.sql) para el Almacenamiento de datos SQL de Azure** de la cuenta de almacenamiento de blobs privada con los siguientes comandos.
+        Write-Host "AzCopy finished copying data. Please check your storage account tooverify." -ForegroundColor "Yellow"
+        Write-Host "This step (copying data from public blob tooyour storage account) takes $total_seconds seconds." -ForegroundColor "Green"
+* **Carga datos mediante Polybase (mediante la ejecución de LoadDataToSQLDW.sql) tooyour Azure SQL DW** de la cuenta de almacenamiento de blobs privado con hello siga los comandos.
   
   * Creación de un esquema
     
@@ -194,7 +194,7 @@ Este archivo de **script de PowerShell** realiza las tareas siguientes:
               CREDENTIAL = {KeyAlias}
           )
           ;
-  * Cree un formato de archivo externo para un archivo .csv. Los datos se descomprimen y los campos se separan con el carácter de barra vertical.
+  * Cree un formato de archivo externo para un archivo .csv. Datos sin comprimir y los campos están separados con carácter de canalización de Hola.
     
           CREATE EXTERNAL FILE FORMAT {csv_file_format}
           WITH
@@ -256,7 +256,7 @@ Este archivo de **script de PowerShell** realiza las tareas siguientes:
                 REJECT_VALUE = 12         
             )
 
-    - Carga de datos de tablas externas del Almacenamiento de blobs de Azure en Almacenamiento de datos SQL
+    - Cargar datos de tablas externas de almacenamiento de blobs de Azure tooSQL almacenamiento de datos
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
@@ -280,7 +280,7 @@ Este archivo de **script de PowerShell** realiza las tareas siguientes:
             FROM   {external_nyctaxi_trip}
             ;
 
-    - Cree una tabla de datos de ejemplo (NYCTaxi_Sample) e inserte datos en ella mediante la selección de consultas SQL en las tablas de carreras y tarifas. (Algunos pasos de este tutorial necesitan usar esta tabla de ejemplo).
+    - Crear una tabla de datos de ejemplo (NYCTaxi_Sample) e insertar tooit de datos de la selección de consultas SQL en tablas de tarifas y recorridos de Hola. (Algunos pasos de este tutorial debe toouse esta tabla de ejemplo.)
 
             CREATE TABLE {schemaname}.{nyctaxi_sample}
             WITH
@@ -309,55 +309,55 @@ Este archivo de **script de PowerShell** realiza las tareas siguientes:
             )
             ;
 
-La ubicación geográfica de las cuentas de almacenamiento afecta a los tiempos de carga.
+ubicación geográfica de Hola de sus cuentas de almacenamiento afecta a los tiempos de carga.
 
 > [!NOTE]
-> Según la ubicación geográfica de la cuenta de almacenamiento de blobs privada, el proceso de copiar datos de un blob público a su cuenta de almacenamiento privada puede tardar unos 15 minutos o incluso más tiempo, y el proceso de carga de datos desde la cuenta de almacenamiento al Almacenamiento de datos SQL de Azure podría tardar 20 minutos o más tiempo.  
+> Según la ubicación geográfica de saludo de la cuenta de almacenamiento de blobs privado, proceso Hola de copiar datos de una cuenta de almacenamiento privado tooyour blob público puede tardar unos 15 minutos o incluso ya y hello del proceso de carga de datos de la cuenta de almacenamiento tooyour almacenamiento de datos de SQL Azure puede tardar 20 minutos o más.  
 > 
 > 
 
-Tendrá que decidir qué hacer si tiene archivos de origen y de destino duplicados.
+Deberá toodecide ¿qué hacer si tiene un origen duplicado y archivos de destino.
 
 > [!NOTE]
-> Si los archivos .csv que se van a copiar desde el almacenamiento de blobs público a la cuenta de almacenamiento de blobs privada ya existen en la cuenta de almacenamiento de blobs privada, AzCopy le preguntará si desea sobrescribirlos. Si no desea sobrescribirlos, escriba **n** cuando se le solicite. Si desea sobrescribir **todos** ellos, escriba **a** cuando se le solicite. También puede escribir **y** para sobrescribir los archivos .csv individualmente.
+> Si toobe de archivos .csv Hola copiado de cuenta de almacenamiento de blobs privado de hello blob público almacenamiento tooyour ya existe en la cuenta de almacenamiento de blobs privado, AzCopy le preguntará si desea toooverwrite ellos. Si no desea toooverwrite éstos, entrada  **n**  cuando se le solicite. Si desea que toooverwrite **todos los** de ellos, de entrada **un** cuando se le solicite. También puede introducir **y** toooverwrite .csv archivos individualmente.
 > 
 > 
 
 ![Diagrama 21][21]
 
-Puede usar sus propios datos. Si los datos están en la máquina local en la aplicación de la vida real, todavía puede usar AzCopy para cargar los datos locales a su área privada de Azure Blob Storage. Solo tiene que cambiar la ubicación de **origen**, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, en el comando de AzCopy del archivo de scripts de PowerShell por un directorio local que contiene los datos.
+Puede usar sus propios datos. Si los datos están en el equipo local en su aplicación en la vida real, todavía puede usar el almacenamiento de blobs de Azure privada de tooyour de datos de AzCopy tooupload local. Solo necesita hello toochange **origen** ubicación, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, Hola comandos de AzCopy de hello PowerShell script archivo toohello directorio local que contiene los datos.
 
 > [!TIP]
-> Si los datos ya están en el Almacenamiento de blobs de Azure privado en la aplicación de la vida real, puede omitir el paso de AzCopy en el script de PowerShell y cargar directamente los datos en Almacenamiento de datos SQL de Azure. Esto requerirá modificaciones adicionales del script para adaptarlo al formato de los datos.
+> Si los datos ya están en el almacenamiento de blobs de Azure privada en la aplicación de la vida real, puede omitir hello AzCopy paso Hola script de PowerShell y cargar directamente hello tooAzure de datos SQL DW. Esto requerirá adicionales edita de hello script tootailor toohello formato de los datos.
 > 
 > 
 
-Este script de Powershell también conecta la información de Almacenamiento de datos SQL de Azure en los archivos de ejemplo de exploración de datos SQLDW_Explorations.sql, SQLDW_Explorations.ipynb y SQLDW_Explorations_Scripts.py para que estos tres archivos están listos para ser probados de inmediato cuando finalice el script de PowerShell.
+Este script de Powershell también se conecta en hello información de almacenamiento de datos de SQL Azure en archivos ejemplo de Hola datos exploración SQLDW_Explorations.sql, SQLDW_Explorations.ipynb y SQLDW_Explorations_Scripts.py para que estos tres archivos sean toobe listo probado al instante una vez completada la Hola script de PowerShell.
 
 Después de una ejecución correcta, verá una pantalla similar a la siguiente:
 
 ![][20]
 
 ## <a name="dbexplore"></a>Exploración de datos y diseño de características en Almacenamiento de datos SQL de Azure
-En esta sección, realizamos la generación de características y la exploración de datos mediante la ejecución de consultas SQL en Almacenamiento de datos SQL de Azure directamente mediante **Visual Studio Data Tools**. Todas las consultas SQL que se usan en esta sección se pueden encontrar en el script de ejemplo llamado *SQLDW_Explorations.sql*. Este archivo ya lo ha descargado en el directorio local el script de PowerShell. También puede recuperarlo desde [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). Pero el archivo de GitHub no tiene la información de Azure SQL DW conectada.
+En esta sección, realizamos la generación de características y la exploración de datos mediante la ejecución de consultas SQL en Almacenamiento de datos SQL de Azure directamente mediante **Visual Studio Data Tools**. Todas las consultas SQL que se utilizan en esta sección pueden encontrarse en el script de ejemplo de Hola denominado *SQLDW_Explorations.sql*. Este archivo ya ha sido descargado tooyour directorio local por script de PowerShell de Hola. También puede recuperarlo desde [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). Pero el archivo hello en GitHub no tiene información de almacenamiento de datos de SQL Azure Hola enchufado.
 
-Conéctese con Almacenamiento de datos SQL de Azure utilizando Visual Studio con el nombre de inicio de sesión de Almacenamiento de datos SQL y la contraseña y abra el **Explorador de objetos SQL** para confirmar que la base de datos y las tablas se han importado. Recupere el archivo *SQLDW_Explorations.sql*.
+Conectar tooyour almacenamiento de datos de SQL de Azure con Visual Studio con el nombre de inicio de sesión de SQL DW hello y una contraseña y se abrirán hello **Explorador de objetos SQL** base de datos de tooconfirm hello y las tablas se han importado. Recuperar hello *SQLDW_Explorations.sql* archivo.
 
 > [!NOTE]
-> Para abrir un editor de consultas de Almacenamiento de datos paralelos (PDW), utilice el comando **Nueva consulta** mientras el PDW está seleccionado en el **Explorador de objetos SQL**. El editor de consultas estándar de SQL no es compatible con PDW.
+> tooopen un editor de consultas de almacenamiento de datos paralelo (PDW), usar hello **nueva consulta** comando mientras está seleccionado el PDW en hello **Explorador de objetos SQL**. editor de consultas SQL estándar de Hello no es compatible con PDW.
 > 
 > 
 
-A continuación se muestra el tipo de tareas de exploración de datos y de generación de características realizado en esta sección:
+Estos son tipo hello de datos realizan tareas de generación de exploración y la característica de esta sección:
 
 * Explorar distribuciones de datos de algunos campos en diferentes ventanas de tiempo.
-* Investigar la calidad de los datos de los campos de longitud y latitud.
-* Generar etiquetas de clasificación binaria y multiclase según **tip\_amount**.
+* Investigue la calidad de los datos de los campos de longitud y latitud de Hola.
+* Generar etiquetas de clasificación multiclase y binaria basándose en hello **sugerencia\_cantidad**.
 * Generar características y calcular o comparar distancias de carreras.
-* Combinar las dos tablas y extraer una muestra aleatoria que se usará para generar modelos.
+* Combinar Hola dos tablas y extraer una muestra aleatoria que será usado toobuild modelos.
 
 ### <a name="data-import-verification"></a>Comprobación de la importación de datos
-Estas consultas proporcionan una comprobación rápida del número de filas y columnas en las tablas que se rellenaron anteriormente mediante la importación masiva paralela de Polybase.
+Estas consultas proporcionan una comprobación rápida del número de Hola de filas y columnas de hello importan tablas rellenadas anteriormente con masiva paralela de Polybase,
 
     -- Report number of rows in table <nyctaxi_trip> without table scan
     SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
@@ -368,7 +368,7 @@ Estas consultas proporcionan una comprobación rápida del número de filas y co
 **Salida:** debe obtener 173 179 759 filas y 14 columnas.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Exploración: distribución de carreras por licencia
-Esta consulta de ejemplo identifica las licencias (números de taxi) que han completado más de 100 carreras dentro de un período de tiempo especificado. La consulta se beneficiaría del acceso de la tabla con particiones, ya que está condicionada por el esquema de partición de **pickup\_datetime**. La consulta el conjunto de datos completo también hará uso de la tabla con particiones o del recorrido de índice.
+Esta consulta de ejemplo identifica medallions Hola (taxi números) que completar más de 100 viajes dentro de un período de tiempo especificado. consulta de Hola se beneficiaría de acceso a la tabla con particiones de hello porque está condicionado por esquema de partición de Hola de **recogida\_datetime**. Consultar el conjunto de datos completo de hello también hará que el uso de la tabla con particiones de Hola o examen de índice.
 
     SELECT medallion, COUNT(*)
     FROM <schemaname>.<nyctaxi_fare>
@@ -376,10 +376,10 @@ Esta consulta de ejemplo identifica las licencias (números de taxi) que han com
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-**Salida:** la consulta debe devolver una tabla con filas en las que se especifiquen las 13 369 licencias (taxis) y el número de carreras completadas por ellos en 2013. La última columna contiene el recuento del número de carreras realizadas.
+**Salida:** deben devolver una tabla con filas especificando medallions hello 13,369 (taxis) de consultas de Hola y Hola número de recorridos realizarla en 2013. Hola última columna contiene recuento de hello del número de Hola de viajes y completado.
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Exploración: distribución de carreras por medallion y hack_license
-Este ejemplo identifica las licencias (números de taxi) y los números de hack_license (conductores) que han completado más de 100 carreras dentro de un período de tiempo.
+Este ejemplo identifica medallions Hola (taxi números) y hack_license números (controladores) que completar más de 100 viajes dentro de un período de tiempo especificado.
 
     SELECT medallion, hack_license, COUNT(*)
     FROM <schemaname>.<nyctaxi_fare>
@@ -387,10 +387,10 @@ Este ejemplo identifica las licencias (números de taxi) y los números de hack_
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-**Salida:** la consulta debe devolver una tabla con 13 369 filas en las que se especifiquen los 13 369 identificadores de vehículo/conductor que han realizado más de 100 carreras en 2013. La última columna contiene el recuento del número de carreras realizadas.
+**Salida:** consulta Hola debe devolver una tabla con 13,369 filas especificar hello 13,369 automóvil/controlador identificadores que se han completado más que 100 viajes en 2013. Hola última columna contiene recuento de hello del número de Hola de viajes y completado.
 
 ### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Evaluación de la calidad de los datos: comprobar los registros con longitud o latitud incorrectas
-En este ejemplo se investiga si alguno de los campos de longitud y latitud contiene un valor no válido (los grados radianes deben encontrarse entre -90 y 90) o tienen coordenadas (0, 0).
+En este ejemplo se investiga si alguno de los campos de longitud o latitud de Hola o contiene un valor no válido (grados Radián deben estar entre -90 y 90), o tener (0, 0) coordenadas.
 
     SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
     WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
@@ -401,10 +401,10 @@ En este ejemplo se investiga si alguno de los campos de longitud y latitud conti
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-**Salida:** la consulta devuelve 837 467 carreras con campos de latitud o longitud no válidos.
+**Salida:** consulta Hola devuelve 837,467 viajes y que tiene campos no válidos de longitud o latitud.
 
 ### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Exploración: distribución de carreras con propinas frente a sin propinas
-Este ejemplo busca el número de carreras en las que se han dado propinas frente a aquellas en las que no se han dado en un período de tiempo especificado (o en el conjunto de datos completo si se abarca todo el año, como se establece aquí). Esta distribución refleja la distribución de etiquetas binarias que se usará más adelante para el modelado de clasificación binaria.
+Este ejemplo busca el número de Hola de viajes que se han superpuesto frente a número de Hola y que no se han superpuesto en un período de tiempo especificado (o conjunto de datos completa de hello si cubriendo año completo Hola tal y como se configura aquí). Esta distribución refleja Hola etiqueta binario distribución toobe que más adelante se usa para el modelo de clasificación binaria.
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
       SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
@@ -412,10 +412,10 @@ Este ejemplo busca el número de carreras en las que se han dado propinas frente
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**Salida** : la consulta debe devolver las siguientes frecuencias de propinas para el año 2013: 90 447 622 con propina y 82 264 709 sin propina.
+**Salida:** Hola consulta debe siguiente Hola devuelto sugerencia frecuencias de hello año 2013: 90,447,622 superpuesto y 82,264,709 superpuesto no.
 
 ### <a name="exploration-tip-classrange-distribution"></a>Exploración: distribución por intervalos y clases de propinas
-Este ejemplo calcula la distribución de los intervalos de propinas de un período de tiempo determinado (o en el conjunto de datos completo si abarca todo el año). Esta es la distribución de las clases de etiquetas que se usarán posteriormente para el modelado de clasificación multiclase.
+Este ejemplo calcula distribución Hola de intervalos de sugerencia en un momento determinado período (o en el conjunto de datos completo de hello si relativo Hola completa año). Se trata de distribución de Hola de clases de etiqueta de Hola que usará más adelante para el modelado de clasificación multiclase.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -440,7 +440,7 @@ Este ejemplo calcula la distribución de los intervalos de propinas de un perío
 | 4 |85 765 |
 
 ### <a name="exploration-compute-and-compare-trip-distance"></a>Exploración: proceso y comparación de la distancia de la carrera
-En este ejemplo se convierte la longitud y latitud de los puntos de recogida y destino a puntos geográficos de SQL, se calcula la distancia de la carrera mediante la diferencia de puntos geográficos de SQL y se devuelve una muestra aleatoria de los resultados de la comparación. En el ejemplo se limitan los resultados a coordenadas válidas usando solo la consulta de evaluación de calidad de datos tratada anteriormente.
+Este ejemplo convierte la longitud de recogida y entrega de Hola y geografía de latitud tooSQL señala, calcula la distancia de viaje hello mediante diferencia de puntos de geography SQL y devuelve una muestra aleatoria de resultados de hello para la comparación. ejemplo de Hola limita los resultados de hello toovalid coordina únicamente con la consulta de evaluación de calidad Hola datos cubierto anteriormente.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
     SET ANSI_NULLS ON
@@ -453,21 +453,21 @@ En este ejemplo se convierte la longitud y latitud de los puntos de recogida y d
       DROP FUNCTION fnCalculateDistance
     GO
 
-    -- User-defined function to calculate the direct distance  in mile between two geographical coordinates.
+    -- User-defined function toocalculate hello direct distance  in mile between two geographical coordinates.
     CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 
     RETURNS float
     AS
     BEGIN
           DECLARE @distance decimal(28, 10)
-          -- Convert to radians
+          -- Convert tooradians
           SET @Lat1 = @Lat1 / 57.2958
           SET @Long1 = @Long1 / 57.2958
           SET @Lat2 = @Lat2 / 57.2958
           SET @Long2 = @Long2 / 57.2958
           -- Calculate distance
           SET @distance = (SIN(@Lat1) * SIN(@Lat2)) + (COS(@Lat1) * COS(@Lat2) * COS(@Long2 - @Long1))
-          --Convert to miles
+          --Convert toomiles
           IF @distance <> 0
           BEGIN
             SET @distance = 3958.75 * ATAN(SQRT(1 - POWER(@distance, 2)) / @distance);
@@ -485,9 +485,9 @@ En este ejemplo se convierte la longitud y latitud de los puntos de recogida y d
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
 ### <a name="feature-engineering-using-sql-functions"></a>Diseño de características con las funciones de SQL
-A veces, las funciones de SQL pueden ser una opción eficiente de diseño de características. En este tutorial, hemos definido una función SQL para calcular la distancia directa entre las ubicaciones de recogida y entrega. Puede ejecutar los scripts SQL siguientes en **Visual Studio Data Tools**.
+A veces, las funciones de SQL pueden ser una opción eficiente de diseño de características. En este tutorial, definimos una SQL función toocalculate Hola distancia directa entre las ubicaciones de recogida y caída de Hola. Puede ejecutar Hola siguientes secuencias de comandos SQL en **herramientas de datos de Visual Studio**.
 
-Este es el script SQL que define la función de distancia.
+Esta es la secuencia de comandos SQL de Hola que define la función de distancia de hello.
 
     SET ANSI_NULLS ON
     GO
@@ -499,21 +499,21 @@ Este es el script SQL que define la función de distancia.
       DROP FUNCTION fnCalculateDistance
     GO
 
-    -- User-defined function calculate the direct distance between two geographical coordinates.
+    -- User-defined function calculate hello direct distance between two geographical coordinates.
     CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 
     RETURNS float
     AS
     BEGIN
           DECLARE @distance decimal(28, 10)
-          -- Convert to radians
+          -- Convert tooradians
           SET @Lat1 = @Lat1 / 57.2958
           SET @Long1 = @Long1 / 57.2958
           SET @Lat2 = @Lat2 / 57.2958
           SET @Long2 = @Long2 / 57.2958
           -- Calculate distance
           SET @distance = (SIN(@Lat1) * SIN(@Lat2)) + (COS(@Lat1) * COS(@Lat2) * COS(@Long2 - @Long1))
-          --Convert to miles
+          --Convert toomiles
           IF @distance <> 0
           BEGIN
             SET @distance = 3958.75 * ATAN(SQRT(1 - POWER(@distance, 2)) / @distance);
@@ -522,9 +522,9 @@ Este es el script SQL que define la función de distancia.
     END
     GO
 
-Este es un ejemplo para llamar a esta función para generar características en la consulta SQL:
+Este es un toocall de ejemplo esta característica de toogenerate de función en la consulta SQL:
 
-    -- Sample query to call the function to create features
+    -- Sample query toocall hello function toocreate features
     SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
     dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
     FROM <schemaname>.<nyctaxi_trip>
@@ -533,7 +533,7 @@ Este es un ejemplo para llamar a esta función para generar características en 
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**Salida:** esta consulta genera una tabla (con 2 803 538 filas) con las latitudes y longitud de los puntos de origen y destino y las distancias directas correspondientes en millas. Estos son los resultados de las tres primeras filas:
+**Salida:** esta consulta genera una tabla (con 2,803,538 filas) con recogida y caída latitudes y longitudes y Hola correspondiente dirigen distancias en millas. Estos son los resultados de Hola para primero 3 filas:
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
@@ -542,7 +542,7 @@ Este es un ejemplo para llamar a esta función para generar características en 
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0,7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Preparar datos para la generación de modelos
-La siguiente consulta combina las tablas **nyctaxi\_trip** y **nyctaxi\_fare**, genera una etiqueta de clasificación binaria **tipped**, una etiqueta de clasificación multiclase **tip\_class** y extrae una muestra aleatoria del conjunto de datos combinado completo. El muestreo se realiza mediante la recuperación de un subconjunto de los viajes en función de la hora de recogida.  Esta consulta se puede copiar y pegar directamente en el módulo [Importar datos](https://studio.azureml.net) de [Microsoft Azure Machine Learning Studio][import-data] para la ingesta directa de datos desde la instancia de SQL Database de Azure. La consulta excluye los registros con coordenadas (0, 0) incorrectas.
+Hola de combinaciones de consulta siguiente Hello **nyctaxi\_recorridos** y **nyctaxi\_tarifa** tablas, genera una etiqueta de clasificación binaria **superpuesto**, etiqueta de clasificación multiclase **sugerencia\_clase**y extrae un ejemplo de Hola completa Unidos a un conjunto de datos. muestreo de Hola se realiza mediante la recuperación de un subconjunto de viajes de hello en función del tiempo de recogida.  Esta consulta se puede copiar y pegar directamente en hello [estudio de aprendizaje automático de Azure](https://studio.azureml.net) [importar datos] [ import-data] módulo de recopilación de datos directa de instancia de base de datos SQL de Hola en Azure. consulta de Hello excluye los registros con incorrecto (0, 0) coordenadas.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -559,32 +559,32 @@ La siguiente consulta combina las tablas **nyctaxi\_trip** y **nyctaxi\_fare**, 
     AND   t.pickup_datetime = f.pickup_datetime
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
-Cuando esté listo para continuar con Aprendizaje automático de Azure, puede:  
+Cuando esté listo tooproceed tooAzure aprendizaje automático, puede:  
 
-1. Guardar la consulta SQL final para extraer y muestrear los datos, y copiar y pegar la consulta directamente en un módulo [Importar datos][import-data] de Azure Machine Learning; o bien
-2. Conservar los datos muestreados y de ingeniería que planea usar para la generación de modelos en una nueva tabla de SQL Data Warehouse y usar la nueva tabla en el módulo [Importar datos][import-data] de Azure Machine Learning. El script de PowerShell del paso anterior se ha encargado de hacerlo. Puede leer directamente de esta tabla en el módulo Importar datos.
+1. Guardar Hola final SQL consulta tooextract y ejemplo Hola datos y copiar y pegar Hola consulta directamente en un [importar datos] [ import-data] módulo aprendizaje automático de Azure, o
+2. Hola muestreada se conservan e ingeniería datos que tiene previsto toouse para el modelo de creación de un nuevo almacenamiento de datos de SQL de la tabla y usar nueva tabla de hello en hello [importar datos] [ import-data] módulo aprendizaje automático de Azure. Hola script de PowerShell en el paso anterior hace esto automáticamente. Puede leer directamente en esta tabla en el módulo de importación de datos de Hola.
 
 ## <a name="ipnb"></a>Exploración de datos e ingeniería de características en IPython Notebook
-En esta sección, se llevará a cabo la exploración de datos y la generación de características con consultas Python y SQL en el Almacenamiento de datos SQL creado anteriormente. Se han descargado un cuaderno de IPython Notebook de ejemplo denominado **SQLDW_Explorations.ipynb** y un archivo de script de Python **SQLDW_Explorations_Scripts.py** en el directorio local. También están disponibles en [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW). Estos dos archivos son idénticos en los scripts de Python. El archivo de script de Python se proporciona en caso de que no tenga un servidor de IPython Notebook. Estos dos archivos de Python de muestra están diseñados en **Python 2.7**.
+En esta sección, se llevará a cabo una exploración de datos y la generación de característica con ambas Python y consultas SQL en hello SQL DW crean anteriormente. Un bloc de notas de IPython de ejemplo denominado **SQLDW_Explorations.ipynb** y un archivo de script de Python **SQLDW_Explorations_Scripts.py** se han descargado tooyour directorio local. También están disponibles en [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW). Estos dos archivos son idénticos en los scripts de Python. archivo de script de Python Hola se proporciona tooyou en caso de que no tiene un servidor de Bloc de notas de IPython. Estos dos archivos de Python de muestra están diseñados en **Python 2.7**.
 
-La información necesaria de Almacenamiento de datos SQL de Azure en el cuaderno de IPython Notebook de ejemplo y el archivo de script de Python descargados en el equipo local está conectada por el script PowerShell. Son ejecutables sin ninguna modificación.
+Hola información necesaria de almacenamiento de datos de SQL Azure en el Bloc de notas de IPython de ejemplo de Hola y Hola Python máquina local de tooyour descargado de archivos de script se ha conectado por script de PowerShell de hello previamente. Son ejecutables sin ninguna modificación.
 
-Si ya ha configurado un área de trabajo de Aprendizaje automático de Azure, puede cargar el cuaderno de IPython Notebook de ejemplo en el servicio IPython Notebook de Aprendizaje automático de Azure y comenzar a ejecutarlo. Estos son los pasos para cargar en el servicio IPython Notebook de Aprendizaje automático de Azure:
+Si ya ha configurado un área de trabajo de aprendizaje automático de Azure, puede cargar muestra de Hola a servicio de Bloc de notas de IPython toohello Bloc de notas de IPython de aprendizaje automático de Azure y comenzar a ejecutarla directamente. A continuación, incluimos Hola pasos tooupload tooAzureML servicio Bloc de notas de IPython:
 
-1. Inicie sesión en el área de trabajo de Aprendizaje automático de Azure, haga clic en "Estudio" en la parte superior y después en "CUADERNOS" en el lado izquierdo de la página web.
+1. Inicie sesión en el área de trabajo de tooyour aprendizaje automático de Azure, haga clic en "Studio" en la parte superior de Hola y haga clic en "Blocs de notas" en el lado izquierdo de Hola de página web de Hola.
    
     ![Diagrama 22][22]
-2. Haga clic en "NUEVO" en la esquina inferior izquierda de la página web y seleccione "Python 2". A continuación, proporcione un nombre para el cuaderno y haga clic en la marca de verificación para crear el nuevo cuaderno de IPython Notebook en blanco.
+2. Haga clic en "Nuevo" en la esquina inferior izquierda de Hola de página web de Hola y seleccione "Python 2". A continuación, proporcionar un bloc de notas de toohello de nombre y haga clic en hello marca de verificación toocreate Hola nuevo en blanco Bloc de notas de IPython.
    
     ![Diagrama 23][23]
-3. Haga clic en el símbolo "Jupyter" en la esquina superior izquierda del nuevo cuaderno de IPython Notebook.
+3. Haga clic en el símbolo de "Jupyter" hello en la esquina superior izquierda de Hola de hello nuevo bloc de notas de IPython.
    
     ![Diagrama 24][24]
-4. Arrastre y coloque el cuaderno de IPython Notebook de ejemplo en la página **árbol** del servicio IPython Notebook de Azure Machine Learning y haga clic en **Cargar**. A continuación, se cargará el cuaderno de IPython Notebook de ejemplo en el servicio IPython Notebook de Aprendizaje automático de Azure.
+4. Arrastre y coloque Hola ejemplo Bloc de notas de IPython toohello **árbol** página del servicio de Bloc de notas de IPython de aprendizaje automático de Azure y haga clic en **cargar**. A continuación, muestra de Hola Bloc de notas de IPython será cargado toohello servicio Bloc de notas de IPython de aprendizaje automático de Azure.
    
     ![Diagrama 25][25]
 
-Para ejecutar el cuaderno de IPython Notebook de ejemplo o el archivo de script de Python, son necesarios los siguientes paquetes Python. Si usa el servicio IPython Notebook de Aprendizaje automático de Azure, estos paquetes ya están preinstalados.
+Hola toorun de pedido de ejemplo Bloc de notas de IPython u Hola archivo de script de Python, hello siguientes Python paquetes son necesarios. Si usas el servicio de hello Bloc de notas de IPython de aprendizaje automático de Azure, estos paquetes se hayan instalado previamente.
 
     - Pandas
     - numpy
@@ -592,18 +592,18 @@ Para ejecutar el cuaderno de IPython Notebook de ejemplo o el archivo de script 
     - pyodbc
     - PyTables
 
-La secuencia recomendada al crear soluciones analíticas avanzadas en Aprendizaje automático de Azure con gran cantidad de datos es la siguiente:
+Hola recomendada secuencia al compilar las soluciones analíticas avanzadas en aprendizaje automático de Azure con datos de gran tamaño es siguiente de hello:
 
-* Leer una pequeña muestra de los datos en una trama de datos en memoria.
-* Realizar algunas visualizaciones y exploraciones con los datos de muestreo.
-* Experimentar con el diseño de características con los datos de muestreo.
-* Para el diseño de características, la exploración y la manipulación de datos más grandes, usar Python para emitir consultas SQL directamente en Almacenamiento de datos SQL.
-* Decidir el tamaño de muestra que se usará para la creación del modelo de Aprendizaje automático de Azure.
+* Leer en una pequeña muestra de datos de hello en un marco de datos en memoria.
+* Realizar algunas visualizaciones y exploraciones con los datos de ejemplo de Hola.
+* Experimente con ingeniería de característica con hello los datos de ejemplo.
+* Exploración de datos mayor, manipulación de datos y la ingeniería de característica, utilizar consultas de SQL de tooissue de Python directamente en hello SQL DW.
+* Decidir toobe de tamaño de ejemplo de Hola adecuado para la compilación del modelo de aprendizaje automático de Azure.
 
-A continuación, se muestran algunas exploraciones de datos, visualizaciones de datos y ejemplos de diseño de características. Se pueden encontrar más exploraciones de datos en el cuaderno de IPython Notebook de ejemplo y en el archivo de script de Python de ejemplo.
+siguiente Hola es unos exploración de datos, visualización de datos y ejemplos de ingeniería de característica. Más exploraciones de datos pueden encontrarse en el ejemplo hello Bloc de notas de IPython y archivo de script de Python de ejemplo de Hola.
 
 ### <a name="initialize-database-credentials"></a>Inicialización de las credenciales de la base de datos
-Inicialice la configuración de conexión de base de datos en las variables siguientes:
+Inicializar la configuración de conexión de base de datos en hello siguientes variables:
 
     SERVER_NAME=<server name>
     DATABASE_NAME=<database name>
@@ -612,7 +612,7 @@ Inicialice la configuración de conexión de base de datos en las variables sigu
     DB_DRIVER = <database driver>
 
 ### <a name="create-database-connection"></a>Creación de conexiones de base de datos
-Esta es la cadena de conexión que crea la conexión a la base de datos.
+Aquí es cadena de conexión de Hola que crea la base de datos de hello conexión toohello.
 
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
@@ -653,7 +653,7 @@ Esta es la cadena de conexión que crea la conexión a la base de datos.
 * Número total de filas = 173179759  
 * Número total de columnas = 11
 
-### <a name="read-in-a-small-data-sample-from-the-sql-data-warehouse-database"></a>Lectura de una muestra de datos pequeña de la base de datos de Almacenamiento de datos SQL
+### <a name="read-in-a-small-data-sample-from-hello-sql-data-warehouse-database"></a>Lectura de un pequeño datos de ejemplo de Hola base de datos de almacenamiento de datos de SQL
     t0 = time.time()
 
     query = '''
@@ -669,27 +669,27 @@ Esta es la cadena de conexión que crea la conexión a la base de datos.
     df1 = pd.read_sql(query, conn)
 
     t1 = time.time()
-    print 'Time to read the sample table is %f seconds' % (t1-t0)
+    print 'Time tooread hello sample table is %f seconds' % (t1-t0)
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-El tiempo empleado en leer la tabla de ejemplo es 14,096495 segundos  
+Tabla de ejemplo de Hola de tiempo tooread es 14.096495 segundos.  
 Número de filas y columnas recuperadas = (1000, 21)
 
 ### <a name="descriptive-statistics"></a>Estadísticas descriptivas
-Ya puede explorar los datos de muestreo. Comenzamos echando un vistazo a algunas estadísticas descriptivas del campo **trip\_distance** (o de cualquier otro que elija).
+Ahora está listo tooexplore Hola muestreada datos. Empezaremos con mirando algunas estadísticas descriptivas para hello **recorridos\_distancia** (o cualquier otro campo elija toospecify).
 
     df1['trip_distance'].describe()
 
 ### <a name="visualization-box-plot-example"></a>Visualización: ejemplo de diagrama de caja
-A continuación, observaremos el diagrama de caja de la distancia de la carrera para ver los cuantiles.
+A continuación, veremos caja Hola para Hola de ida y vuelta distancia toovisualize hello cuantiles.
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
 ![Diagrama 1][1]
 
 ### <a name="visualization-distribution-plot-example"></a>Visualización: ejemplo de diagrama de distribución
-Diagramas que visualizan la distribución y un histograma de las distancias de las carreras muestreadas.
+Los trazados que visualización la distribución de Hola y un histograma para hello muestrearon las distancias de ida y vuelta.
 
     fig = plt.figure()
     ax1 = fig.add_subplot(1,2,1)
@@ -700,14 +700,14 @@ Diagramas que visualizan la distribución y un histograma de las distancias de l
 ![Diagrama 2][2]
 
 ### <a name="visualization-bar-and-line-plots"></a>Visualización: diagramas de barras y líneas
-En este ejemplo, se discretiza la distancia de la carrera en cinco discretizaciones y se visualizan los resultados de la discretización.
+En este ejemplo, hemos discretizar distancia de viaje hello en cinco cubos y visualizar Hola discretizar los resultados.
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
     df1['trip_distance']
     trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
     trip_dist_bin_id
 
-Podemos trazar la distribución de discretización anterior en un gráfico de barras o líneas con:
+Podemos trazar Hola por encima de la distribución de la Papelera de una barra o línea trazado con:
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
@@ -720,22 +720,22 @@ y
 ![Diagrama 4][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Visualización: ejemplos de gráfico de dispersión
-Se muestra el gráfico de dispersión entre **trip\_time\_in\_secs** y **trip\_distance** para ver si existe algún tipo de correlación
+Se muestra el gráfico de dispersión entre **recorridos\_tiempo\_en\_s** y **recorridos\_distancia** toosee si hay alguna correlación
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Diagrama 6][6]
 
-También podemos comprobar la relación entre **rate\_code** y **trip\_distance**.
+De igual forma podemos comprobar relación Hola entre **velocidad\_código** y **recorridos\_distancia**.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
 ![Diagrama 8][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>Exploración de datos en datos de muestreo mediante consultas SQL en IPython Notebook
-En esta sección, se explorarán las distribuciones de datos con los datos de muestreo que se conservan en la nueva tabla que se creó anteriormente. Tenga en cuenta que se pueden realizar exploraciones similares con las tablas originales.
+En esta sección, exploramos distribuciones de datos utilizando los datos de hello muestreada que se guardan en la nueva tabla de hello que hemos creado anteriormente. Tenga en cuenta que se pueden realizar exploraciones similar mediante tablas originales de Hola.
 
-#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Exploración: notificación del número de filas y columnas de la tabla de muestreo
+#### <a name="exploration-report-number-of-rows-and-columns-in-hello-sampled-table"></a>Exploración: Número de informes de filas y columnas de hello muestreadas tabla
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
     print 'Number of rows in sample = %d' % nrows.iloc[0,0]
 
@@ -760,7 +760,7 @@ En esta sección, se explorarán las distribuciones de datos con los datos de mu
 
     tip_class_dist = pd.read_sql(query, conn)
 
-#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Exploración: trazado de la distribución de propinas por clase
+#### <a name="exploration-plot-hello-tip-distribution-by-class"></a>Exploración: Trazar la distribución de la sugerencia de Hola por clase
     tip_class_dist['tip_freq'].plot(kind='bar')
 
 ![Diagrama 26][26]
@@ -800,88 +800,88 @@ En esta sección, se explorarán las distribuciones de datos con los datos de mu
     query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
     pd.read_sql(query,conn)
 
-#### <a name="verify-the-final-form-of-the-featurized-table"></a>Comprobar el formulario final de la tabla con características
+#### <a name="verify-hello-final-form-of-hello-featurized-table"></a>Comprobar el formulario final de Hola de tabla de caracterizará Hola
     query = '''SELECT TOP 100 * FROM <schemaname>.<nyctaxi_sample>'''
     pd.read_sql(query,conn)
 
 ## <a name="mlmodel"></a>Creación de modelos en Aprendizaje automático de Azure
-Ya está todo listo para pasar a la creación del modelo y la implementación del mismo en [Aprendizaje automático de Azure](https://studio.azureml.net). Los datos están listos para usarse en cualquiera de los problemas de predicción identificados anteriormente, a saber:
+Ahora estamos listos tooproceed toomodel creación e implementación de modelo en [aprendizaje automático de Azure](https://studio.azureml.net). datos Hello están listo toobe usado en cualquiera de los problemas de predicción de hello identificados anteriormente, a saber:
 
-1. **Clasificación binaria**: para predecir si se dio propina en una carrera o no.
-2. **Clasificación multiclase**: para predecir el intervalo de la propina dada, según las clases definidas anteriormente.
-3. **Tarea de regresión**: para predecir la cantidad de propina pagada en una carrera.  
+1. **Clasificación binaria**: toopredict o no se pagó una sugerencia para un recorrido.
+2. **Clasificación multiclase**: intervalo de hello toopredict de sugerencia de pago, según toohello clases definidas previamente.
+3. **Tarea de regresión**: cantidad de hello toopredict de sugerencia de pago para un recorrido.  
 
-Para iniciar el ejercicio de modelado, inicie sesión en el área de trabajo de **Aprendizaje automático de Azure** . Si aún no ha creado un área de trabajo de aprendizaje automático, consulte [Creación de un área de trabajo de Aprendizaje automático de Azure](machine-learning-create-workspace.md).
+toobegin Hola modelado ejercicio, inicie sesión en tooyour **aprendizaje automático de Azure** área de trabajo. Si aún no ha creado un área de trabajo de aprendizaje automático, consulte [Creación de un área de trabajo de Aprendizaje automático de Azure](machine-learning-create-workspace.md).
 
-1. Para empezar a usar el Aprendizaje automático de Azure, consulte [¿Qué es Estudio de aprendizaje automático de Microsoft Azure?](machine-learning-what-is-ml-studio.md)
-2. Inicie sesión en [Estudio de aprendizaje automático de Azure](https://studio.azureml.net).
-3. La página principal del Estudio ofrece una gran cantidad de información, vídeos, tutoriales, vínculos a referencias de módulos y otros recursos. Para obtener más información sobre Aprendizaje automático de Azure, visite el [Centro de documentación de aprendizaje automático de Azure](https://azure.microsoft.com/documentation/services/machine-learning/).
+1. tooget a trabajar con aprendizaje automático de Azure, consulte [¿qué es el estudio de aprendizaje automático de Azure?](machine-learning-what-is-ml-studio.md)
+2. Inicie sesión demasiado[estudio de aprendizaje automático de Azure](https://studio.azureml.net).
+3. página de inicio de Studio Hola proporciona una gran cantidad de información, vídeos, tutoriales, vínculos toohello referencia de módulos y otros recursos. Para obtener más información acerca de aprendizaje automático de Azure, consulte hello [centro de documentación de aprendizaje automático](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Un experimento de entrenamiento típico consta de los pasos siguientes:
+Un experimento de entrenamiento típico consta de hello pasos:
 
 1. Crear un experimento **+NUEVO** .
-2. Proporcionar los datos a Aprendizaje automático de Azure.
-3. Preprocesar, transformar y manipular los datos según sea necesario.
+2. Obtener datos de hello en aprendizaje automático de Azure.
+3. Preprocesar, transformar y manipular datos Hola según sea necesario.
 4. Generar características según sea necesario.
-5. Dividir los datos en conjuntos de datos de entrenamiento, validación y pruebas (o disponer de conjuntos de datos independientes para cada uno).
-6. Seleccionar uno o varios algoritmos de aprendizaje automático, según el problema de aprendizaje que se quiera resolver. Por ejemplo: clasificación binaria, clasificación multiclase, regresión.
-7. Entrenar uno o varios modelos utilizando el conjunto de datos de entrenamiento.
-8. Puntuar el conjunto de datos de validación con los modelos entrenados.
-9. Evaluar los modelos para calcular las métricas relevantes para el problema de aprendizaje.
-10. Ajustar los modelos y seleccionar el mejor para su implementación.
+5. Dividir los datos de hello en conjuntos de datos de entrenamiento / / pruebas de validación (o tiene conjuntos de datos independiente para cada uno).
+6. Seleccionar algoritmos función hello toosolve problema de aprendizaje de aprendizaje automático de uno o más. Por ejemplo: clasificación binaria, clasificación multiclase, regresión.
+7. Entrenar uno o varios modelos utilizando el conjunto de datos de entrenamiento de Hola.
+8. Puntuación Hola de conjunto de datos de validación utilizando modelos entrenados Hola.
+9. Evaluar Hola modelos toocompute Hola métricas pertinente para hello problema de aprendizaje.
+10. Ajustar los modelos de Hola y Hola seleccione mejor modelo toodeploy.
 
-En este ejercicio, ya se han explorado y diseñado los datos en Almacenamiento de datos SQL, y también se ha decidido el tamaño de la muestra para la ingesta en Aprendizaje automático de Azure. Este es el procedimiento para crear uno o varios de los modelos de predicción:
+En este ejercicio, hemos ya explorar e ingeniería datos hello en el almacén de datos de SQL y decidido tooingest de tamaño de ejemplo de Hola en aprendizaje automático de Azure. Aquí es Hola procedimiento toobuild uno o varios de los modelos de predicción de hello:
 
-1. Obtenga los datos e introdúzcalos en Azure ML mediante el módulo [Importar datos][import-data], que se encuentra disponible en la sección **Entrada y salida de datos**. Para obtener más información, consulte la página de referencia sobre el módulo [Importar datos][import-data].
+1. Obtener datos de hello en aprendizaje automático de Azure con hello [importar datos] [ import-data] módulo, disponibles en hello **datos de entrada y salida** sección. Para obtener más información, vea hello [importar datos] [ import-data] página de referencia de módulo.
    
     ![Datos de importación de Aprendizaje automático de Azure][17]
-2. Seleccionar **Azure SQL Database** como **Origen de datos** en el panel **Propiedades**.
-3. Escribir el nombre DNS de la base de datos en el campo **Nombre del servidor de la base de datos** . Formato: `tcp:<your_virtual_machine_DNS_name>,1433`
-4. Escribir el **nombre de la base de datos** en el campo correspondiente.
-5. Escribir el *nombre de usuario de SQL* en **Nombre de la cuenta de usuario del servidor** y la *contraseña* en **Contraseña de la cuenta de usuario del servidor**.
-6. Activar la opción **Aceptar cualquier certificado de servidor** .
-7. En el área de texto editable **Consulta de base de datos** , pegar la consulta que extrae los campos de la base de datos necesarios (incluidos los campos calculados, como las etiquetas) y reducir la muestra al tamaño de muestra deseado.
+2. Seleccione **base de datos de SQL Azure** como hello **origen de datos** en hello **propiedades** panel.
+3. Escriba el nombre DNS de base de datos de Hola Hola **el nombre del servidor de base de datos** campo. Formato: `tcp:<your_virtual_machine_DNS_name>,1433`
+4. Escriba hello **nombre de base de datos** en el campo correspondiente Hola.
+5. Escriba hello *nombre de usuario SQL* en hello **nombre de cuenta de usuario de servidor**, hello y *contraseña* en hello **contraseña de cuenta de usuario de servidor**.
+6. Comprobar hello **Aceptar cualquier certificado de servidor** opción.
+7. Hola **consulta de base de datos** editar el área de texto, pegue la consulta de Hola que extrae Hola necesarios campos (incluidos los campos calculados, como las etiquetas de hello) de la base de datos y el detalle de ejemplos de tamaño de la muestra de Hola datos toohello deseado.
 
-En la ilustración siguiente se muestra un ejemplo de un experimento de clasificación binaria que lee datos directamente desde la base de datos de Almacenamiento de datos SQL (no olvide reemplazar los nombres de tabla nyctaxi_trip y nyctaxi_fare por el nombre de esquema y los nombres de tabla que utilizó en el tutorial). Se pueden construir experimentos similares para problemas de clasificación multiclase y de regresión.
+Es un ejemplo de un experimento de clasificación binaria leer los datos directamente desde la base de datos de almacenamiento de datos SQL de hello en figura Hola siguiente (recuerde tooreplace Hola nombres de tabla nyctaxi_trip y nyctaxi_fare por esquema Hola hello y nombre de los nombres de tabla que usó en el tutorial). Se pueden construir experimentos similares para problemas de clasificación multiclase y de regresión.
 
 ![Entrenamiento de Aprendizaje automático de Azure][10]
 
 > [!IMPORTANT]
-> En los ejemplos de consultas de extracción y muestreo de datos de modelado de las secciones anteriores, **las etiquetas de los tres ejercicios de modelado se incluyen en la consulta**. Un paso importante (requerido) en cada uno de los ejercicios de modelado consiste en **excluir** las etiquetas innecesarias de los otros dos problemas y cualquier otra **fuga de destino**. Por ejemplo, cuando use clasificación binaria, utilice la etiqueta **tipped** y excluya los campos **tip\_class**, **tip\_amount** y **total\_amount**. Estos últimos son fugas de destino ya que implican que se pagó propina.
+> Hola, extracción de datos de modelado y realizando un muestreo ejemplos de consultas que se proporcionan en las secciones anteriores, **todas las etiquetas de ejercicios de modelado de hello tres se incluyen en la consulta de hello**. Un paso importante (obligatorio) en cada uno de los ejercicios de modelado de hello es demasiado**excluir** Hola etiquetas innecesarias para hello otros problemas de dos y cualquier otro **destino pérdidas**. Por ejemplo, cuando se usa la clasificación binaria, usar etiqueta hello **superpuesto** y excluir los campos de hello **sugerencia\_clase**, **sugerencia\_cantidad**, y **total\_cantidad**. Hola este último se pagan de pérdidas de destino ya que implican sugerencia Hola.
 > 
-> Para excluir cualquier columna innecesaria o fugas de destino, puede usar el módulo [Seleccionar columnas de conjunto de datos][select-columns] o [Editar metadatos][edit-metadata]. Para obtener más información, consulte las páginas de referencia de [Seleccionar columnas de conjunto de datos][select-columns] y [Editar metadatos][edit-metadata].
+> tooexclude las columnas innecesarias o pérdidas de destino, puede usar hello [seleccionar columnas de conjunto de datos] [ select-columns] módulo o hello [editar metadatos] [ edit-metadata]. Para obtener más información, consulte las páginas de referencia de [Seleccionar columnas de conjunto de datos][select-columns] y [Editar metadatos][edit-metadata].
 > 
 > 
 
 ## <a name="mldeploy"></a>Implementación de modelos en Aprendizaje automático de Azure
-Cuando el modelo esté listo, podrá implementarlo fácilmente como un servicio web directamente desde el experimento. Para obtener más información sobre la implementación de servicios web de Aprendizaje automático de Azure, vea [Implementación de un servicio web de Aprendizaje automático de Azure](machine-learning-publish-a-machine-learning-web-service.md).
+Cuando el modelo está listo, puede implementar fácilmente como un servicio web directamente desde el experimento de Hola. Para obtener más información sobre la implementación de servicios web de Aprendizaje automático de Azure, vea [Implementación de un servicio web de Aprendizaje automático de Azure](machine-learning-publish-a-machine-learning-web-service.md).
 
-Para implementar un nuevo servicio web, deberá:
+toodeploy un nuevo servicio web, debe:
 
 1. Crear un experimento de puntuación.
-2. Implemente el servicio web.
+2. Implementar el servicio web de Hola.
 
-Para crear un experimento de puntuación a partir de un experimento de entrenamiento **Finalizado**, haga clic en **CREAR EXPERIMENTO DE PUNTUACIÓN** en la barra de acciones inferior.
+toocreate una puntuación experimentar de un **finalizado** experimento de entrenamiento, haga clic en **crear EXPERIMENTO de puntuación** en la barra de acción inferior de Hola.
 
 ![Puntuación de Azure][18]
 
-Aprendizaje automático de Azure intentará crear un experimento de puntuación en función de los componentes del experimento de entrenamiento. En concreto, hará lo siguiente:
+Aprendizaje automático de Azure intentará toocreate un experimento de puntuación en función de los componentes de hello del experimento de entrenamiento de Hola. En concreto, hará lo siguiente:
 
-1. Guardar el modelo entrenado y quitar los módulos de entrenamiento del modelo.
-2. Identificar un **puerto de entrada** lógico que represente el esquema de datos de entrada esperado.
-3. Identificar un **puerto de salida** lógico que represente el esquema de salida del servicio web.
+1. Guardar modelo entrenado hello y quite los módulos de entrenamiento del modelo de Hola.
+2. Identificar un valor lógico **puerto de entrada** toorepresent Hola esperaba el esquema de datos de entrada.
+3. Identificar un valor lógico **puerto de salida** esquema de salida del servicio de toorepresent hello web esperado.
 
-Cuando se crea el experimento de puntuación, revíselo y ajústelo según sea necesario. Un ajuste común consiste en reemplazar la consulta o el conjunto de datos de entrada por uno que excluya los campos de etiqueta, ya que estos no estarán disponibles cuando se llame al servicio. También es una buena práctica reducir el tamaño de la consulta o del conjunto de datos de entrada a unos pocos registros, los necesarios para indicar el esquema de entrada. En el caso del puerto de salida, es habitual excluir todos los campos de entrada e incluir solo las **etiquetas puntuadas** y las **probabilidades puntuadas** en la salida mediante el módulo [Seleccionar columnas de conjunto de datos][select-columns].
+Cuando se crea el experimento de puntuación de hello, revisarlo y asegúrese de ajustar según sea necesario. Un ajuste típico es el conjunto de datos de entrada de hello tooreplace o consulta con uno que excluye los campos de etiqueta, ya estos no estarán disponibles cuando se llama servicio de Hola. También es que un tamaño de hello tooreduce buenas prácticas de hello entrada tooa de conjunto de datos o de consultas pocos registros, suficiente esquema de entrada tooindicate Hola. Para el puerto de salida de hello, es común tooexclude entrados todos los campos y solo se incluyen hello **puntuación de etiquetas** y **probabilidades con puntuación** Hola Hola de salida [seleccionar columnas de conjunto de datos ] [ select-columns] módulo.
 
-En la ilustración siguiente se muestra un ejemplo de experimento de puntuación. Cuando todo esté listo para implementar, haga clic en el botón **PUBLICAR SERVICIO WEB** de la barra de acciones inferior.
+Se proporciona un ejemplo experimento de puntuación en hello siguiente ilustración. Cuando esté listo toodeploy, haga clic en hello **publicar servicio WEB** botón de barra de acción de hello inferior.
 
 ![Publicación de Aprendizaje automático de Azure][11]
 
 ## <a name="summary"></a>Resumen
-A modo de recapitulación, en este tutorial paso a paso se ha creado un entorno de ciencia de datos de Azure, se ha trabajado con un conjunto de datos público grande de principio a fin, llevándolo a través del proceso de ciencia de datos en equipos, desde la adquisición de los datos al entrenamiento del modelo, para finalizar con la implementación de un servicio web de Aprendizaje automático de Azure.
+toorecap lo que hemos realizado en este tutorial del tutorial, ha creado un entorno de ciencia de datos de Azure, ha trabajado con un gran conjunto de datos público, si vamos a través del proceso de ciencia de datos de equipo, todas las forma de Hola de entrenamiento de toomodel de adquisición de datos, de hello y, a continuación, toohello la implementación de un servicio web de aprendizaje automático de Azure.
 
 ### <a name="license-information"></a>Información de licencia
-Microsoft comparte este tutorial de ejemplo y sus scripts adjuntos y Blocs de notas de IPython bajo la licencia MIT. Consulte el archivo LICENSE.txt que se encuentra en el directorio del código de ejemplo en GitHub para obtener más detalles.
+En este tutorial de ejemplo y sus elementos notebook(s) IPython y secuencias de comandos que se comparten por Microsoft bajo licencia MIT de Hola. Compruebe archivo LICENSE.txt de hello directorio de hello del código de ejemplo de Hola en GitHub para obtener más detalles.
 
 ## <a name="references"></a>Referencias
 •   [Página de descarga de NYC Taxi Trips de Andrés Monroy](http://www.andresmh.com/nyctaxitrips/)  

@@ -1,6 +1,6 @@
 ---
-title: "Uso de PowerShell para cambiar el tamaño de una máquina virtual Windows en Azure | Microsoft Docs"
-description: "Cambie el tamaño de una máquina virtual Windows creada con el modelo de implementación de Resource Manager utilizando Azure PowerShell."
+title: aaaUse PowerShell tooresize una VM de Windows en Azure | Documentos de Microsoft
+description: "Cambiar el tamaño de una máquina virtual de Windows creada en el modelo de implementación de administrador de recursos de hello, uso de Powershell de Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: Drewm3
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-ms.openlocfilehash: 742efd1496de9ce76b1e5636297ef30f546bd108
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a4a80f3bc99911e4f1a095f0ce63aca00fa50694
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resize-a-windows-vm"></a>Cambio de tamaño de una máquina virtual Windows
-En este artículo se muestra cómo cambiar de tamaño una máquina virtual Windows creada con el modelo de implementación de Resource Manager utilizando Azure PowerShell.
+Este artículo muestra cómo se tooresize una VM de Windows, creado en el modelo de implementación del Administrador de recursos Hola con Azure Powershell.
 
-Después de crear una máquina virtual, puede escalarla o reducirla verticalmente cambiando su tamaño. En algunos casos, hay que desasignarla antes. Esto puede suceder si el nuevo tamaño no está disponible en el clúster de hardware que hospeda la actualmente la máquina virtual.
+Después de crear una máquina virtual (VM), puede escalar Hola VM hacia arriba o hacia abajo al cambiar el tamaño de la máquina virtual de Hola. En algunos casos, debe desasignar Hola VM en primer lugar. Esto puede ocurrir si no está disponible en clúster de hardware de Hola que hospeda actualmente Hola VM nuevo tamaño de Hola.
 
 ## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Cambio de tamaño de una máquina virtual Windows que no está en un conjunto de disponibilidad
-1. Muestre los tamaños de máquina virtual que están disponibles en el clúster de hardware donde se hospeda la máquina virtual. 
+1. Lista de tamaños de máquinas virtuales de Hola que están disponibles en el clúster de hardware de Hola donde se hospeda Hola máquina virtual. 
    
     ```powershell
     Get-AzureRmVMSize -ResourceGroupName <resourceGroupName> -VMName <vmName> 
     ```
-2. Si se muestra el tamaño deseado, ejecute el comando siguiente para cambiar el tamaño de la máquina virtual. Si el tamaño deseado no aparece, vaya al paso 3.
+2. Si Hola deseado se muestra el tamaño, ejecute hello después comandos tooresize Hola VM. Si Hola deseado tamaño no aparece, vaya toostep 3.
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -VMName <vmName>
     $vm.HardwareProfile.VmSize = "<newVMsize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
     ```
-3. Si, por el contrario, no aparece el tamaño deseado, ejecute los siguientes comandos para desasignar la máquina virtual, cambiar su tamaño y reiniciarla.
+3. Si Hola deseado no se especifica tamaño, ejecute hello siga los comandos toodeallocate Hola VM, cambiar su tamaño y reiniciar Hola VM.
    
     ```powershell
     $rgname = "<resourceGroupName>"
@@ -52,27 +52,27 @@ Después de crear una máquina virtual, puede escalarla o reducirla verticalment
     ```
 
 > [!WARNING]
-> Al desasignar la máquina virtual, se liberan todas las direcciones IP dinámicas asignadas a ella. Esto no afecta a los discos del SO y de datos. 
+> Hola desasignar VM libera todas las direcciones IP dinámicas asignadas toohello máquina virtual. Hola OS y discos de datos no se ven afectados. 
 > 
 > 
 
 ## <a name="resize-a-windows-vm-in-an-availability-set"></a>Cambio de tamaño de una máquina virtual Windows que está en un conjunto de disponibilidad
-Si el nuevo tamaño de una máquina virtual de un conjunto de disponibilidad no está disponible en el clúster de hardware que hospeda la máquina virtual, habrá que desasignar todas las máquinas virtuales del conjunto de disponibilidad para cambiar el tamaño de la máquina virtual. También tendrá que actualizar el tamaño de otras máquinas virtuales del conjunto de disponibilidad después de cambiar el tamaño de una máquina virtual. Para cambiar el tamaño de una máquina virtual de un conjunto de disponibilidad, siga estos pasos.
+Si hello nuevo tamaño de una máquina virtual en un conjunto de disponibilidad no está disponible en el clúster de hardware de hello hospedando Hola VM y, a continuación, todas las máquinas virtuales en el conjunto de disponibilidad de Hola será necesario toobe desasignado tooresize Hola máquina virtual. También podrían necesitar tooupdate tamaño de Hola de otras máquinas virtuales en la disponibilidad de hello establecer después de que se ha cambiado el tamaño de una máquina virtual. tooresize una máquina virtual en un conjunto de disponibilidad, realizar Hola pasos.
 
-1. Muestre los tamaños de máquina virtual que están disponibles en el clúster de hardware donde se hospeda la máquina virtual.
+1. Lista de tamaños de máquinas virtuales de Hola que están disponibles en el clúster de hardware de Hola donde se hospeda Hola máquina virtual.
    
     ```powershell
     Get-AzureRmVMSize -ResourceGroupName <resourceGroupName> -VMName <vmName>
     ```
-2. Si se muestra el tamaño deseado, ejecute el comando siguiente para cambiar el tamaño de la máquina virtual. Si no aparece, vaya al paso 3.
+2. Si Hola deseado se muestra el tamaño, ejecute hello después comandos tooresize Hola VM. Si no aparece, vaya toostep 3.
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -VMName <vmName>
     $vm.HardwareProfile.VmSize = "<newVmSize>"
     Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
     ```
-3. Si el tamaño deseado no aparece, continúe con los pasos siguientes para cancelar todas las máquinas virtuales dl conjunto de disponibilidad, cambiarles el tamaño y reiniciarlas.
-4. Detenga todas las máquinas virtuales del conjunto de disponibilidad.
+3. Si Hola deseado no se especifica tamaño, continuar con hello siguiendo los pasos toodeallocate todas las máquinas virtuales en el conjunto de disponibilidad de hello, cambiar el tamaño de las máquinas virtuales y reiniciarlas una vez.
+4. Detener todas las máquinas virtuales en el conjunto de disponibilidad de Hola.
    
    ```powershell
    $rg = "<resourceGroupName>"
@@ -84,7 +84,7 @@ Si el nuevo tamaño de una máquina virtual de un conjunto de disponibilidad no 
      Stop-AzureRmVM -ResourceGroupName $rg -Name $vmName -Force
    } 
    ```
-5. Cambie el tamaño de todas las máquinas virtuales del conjunto de disponibilidad y reinícielas.
+5. Cambiar el tamaño y reinicie hello las máquinas virtuales en el conjunto de disponibilidad de Hola.
    
    ```powershell
    $rg = "<resourceGroupName>"

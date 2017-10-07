@@ -1,6 +1,6 @@
 ---
-title: "Versión preliminar de Azure Service Fabric Docker Compose | Microsoft Docs"
-description: "Azure Service Fabric acepta el formato de Docker Compose para facilitar la orquestación de los contenedores existentes mediante Service Fabric. Esta compatibilidad se encuentra actualmente en versión preliminar."
+title: Crear vista previa en el tejido de Docker servicio aaaAzure | Documentos de Microsoft
+description: "Azure Service Fabric acepta Docker Compose toomake de formato sea más fáciles contenedores de exsiting tooorchestrate mediante Service Fabric. Esta compatibilidad se encuentra actualmente en versión preliminar."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: b12ef95add6347621f7d4865fac46568f91a1e12
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 824044fd698f0ed94c4212722bc82187905315dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="specifying-volume-plugins-and-logging-drivers-for-your-container"></a>Especificación de los complementos de volumen y los controladores de registro para el contenedor
 
-Service Fabric admite la determinación de los [complementos de volumen de Docker](https://docs.docker.com/engine/extend/plugins_volume/) y de los [controladores de registro de Docker](https://docs.docker.com/engine/admin/logging/overview/) para Container Service. Los complementos se especifican en el manifiesto de aplicación, como se muestra en el siguiente manifiesto:
+Service Fabric admite la determinación de los [complementos de volumen de Docker](https://docs.docker.com/engine/extend/plugins_volume/) y de los [controladores de registro de Docker](https://docs.docker.com/engine/admin/logging/overview/) para Container Service. Hola complementos se especifican en el manifiesto de aplicación Hola tal como se muestra en hello después de manifiesto:
 
 
 ```xml
@@ -56,9 +56,9 @@ Service Fabric admite la determinación de los [complementos de volumen de Docke
 </ApplicationManifest>
 ```
 
-En el ejemplo anterior, la etiqueta `Source` de `Volume` hace referencia a la carpeta de origen. La carpeta de origen puede ser una carpeta de la máquina virtual que hospeda los contenedores o un almacén remoto persistente. La etiqueta `Destination` es la ubicación a la que `Source` está asignado dentro del contenedor en ejecución. 
+En el anterior ejemplo de Hola Hola `Source` etiqueta para hello `Volume` hace referencia a la carpeta de origen toohello. carpeta de origen de Hello podría ser una carpeta en hello máquina virtual que hospeda contenedores de Hola o un almacén persistente remoto. Hola `Destination` etiqueta es la ubicación de Hola Hola `Source` toowithin asignadas Hola ejecuta contenedor. 
 
-Al especificar un complemento de volumen, Service Fabric crea automáticamente el volumen con los parámetros especificados. La etiqueta `Source` es el nombre del volumen y la etiqueta `Driver` especifica el complemento de controlador del volumen. Las opciones pueden especificarse mediante la etiqueta `DriverOption`, como se muestra en el fragmento de código siguiente:
+Al especificar un complemento de volumen, Service Fabric crea automáticamente el volumen Hola con parámetros de hello especificados. Hola `Source` etiqueta es el nombre de hello del volumen de Hola y Hola `Driver` etiqueta Especifica Hola volumen controlador complemento. Opciones pueden especificarse mediante hello `DriverOption` etiqueta como se muestra en el siguiente fragmento de código de hello:
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azurefile" IsReadOnly="true">
@@ -66,9 +66,9 @@ Al especificar un complemento de volumen, Service Fabric crea automáticamente e
 </Volume>
 ```
 
-Si se especifica un controlador de registro de Docker, es necesario implementar agentes o contenedores para controlar los registros en el clúster.  La etiqueta `DriverOption` además se puede usar para especificar opciones del controlador de registro.
+Si se especifica un controlador de registro de Docker, es necesario toodeploy hello toohandle agentes (o contenedores) inicia sesión en el clúster de Hola.  Hola `DriverOption` etiqueta puede ser también las opciones de controlador del registro de toospecify usado.
 
-Consulte los artículos siguientes para implementar contenedores en un clúster de Service Fabric:
+Consulte toohello después de clúster de Service Fabric tooa de artículos toodeploy contenedores:
 
 
 [Implementación de un contenedor en Service Fabric](service-fabric-deploy-container.md)

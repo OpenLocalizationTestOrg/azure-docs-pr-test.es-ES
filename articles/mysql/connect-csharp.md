@@ -1,6 +1,6 @@
 ---
-title: "Conexión a Azure Database for MySQL desde C# | Microsoft Docs"
-description: "En este tutorial rápido se proporciona un ejemplo de código de C# (.NET) que puede usar para conectarse a Azure Database for MySQL y consultar datos en este servicio."
+title: Conectar tooAzure base de datos de MySQL desde C# | Documentos de Microsoft
+description: "Este tutorial rápido proporciona un ejemplo código de C# (. NET) puede usar tooconnect y consultar los datos de la base de datos MySQL."
 services: MySQL
 author: seanli1988
 ms.author: seal
@@ -11,39 +11,39 @@ ms.custom: mvc
 ms.devlang: csharp
 ms.topic: hero-article
 ms.date: 07/10/2017
-ms.openlocfilehash: f1488f6b4a240165c71c95f759af73d6b9fd7bfe
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 0dca98186199a40ef9cc592b93c3b2e815260273
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL: uso de .NET (C#) para conectarse y consultar datos
-En este tutorial rápido se muestra cómo conectarse a una instancia de Azure Database for MySQL mediante una aplicación de C#. Se indica cómo usar instrucciones SQL para consultar, insertar, actualizar y eliminar datos en la base de datos. En los pasos de este artículo se da por hecho que está familiarizado con el desarrollo mediante C# y que nunca ha utilizado Azure Database for MySQL.
+# <a name="azure-database-for-mysql-use-net-c-tooconnect-and-query-data"></a>Base de datos de Azure para MySQL: Use .NET (C#) tooconnect y consultar datos
+Este tutorial rápido muestra cómo tooconnect tooan Azure la base de datos de MySQL mediante una aplicación de C#. Muestra cómo toouse tooquery de instrucciones de SQL, insertar, actualizar y eliminar datos en la base de datos de Hola. Hello pasos en este artículo se supone que está familiarizado con el desarrollo con C#, y que tooworking nueva con la base de datos de Azure para MySQL.
 
 ## <a name="prerequisites"></a>Requisitos previos
-En este tutorial rápido se usan como punto de partida los recursos creados en una de estas guías:
+Este tutorial rápido usa recursos de hello creados en cualquiera de estas guías como punto de partida:
 - [Create an Azure Database for MySQL server using Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md) (Creación de un servidor de Azure Database for MySQL mediante Azure Portal)
 - [Create an Azure Database for MySQL server using Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) (Creación de un servidor de Azure Database for MySQL mediante la CLI de Azure)
 
 Además, deberá:
-- Instale [.NET](https://www.microsoft.com/net/download). Siga los pasos descritos en el artículo vinculado para instalar .NET específicamente para su plataforma (Windows, Ubuntu Linux o macOS). 
+- Instale [.NET](https://www.microsoft.com/net/download). Siga los pasos de Hola Hola vinculado artículo tooinstall .NET específicamente para la plataforma (Windows, Ubuntu Linux o Mac OS). 
 - Instale [Visual Studio](https://www.visualstudio.com/downloads/).
 - Instale [ODBC Driver for MySQL](https://dev.mysql.com/downloads/connector/odbc/).
 
 ## <a name="get-connection-information"></a>Obtención de información sobre la conexión
-Obtenga la información de conexión necesaria para conectarse a Azure Database for MySQL. Necesitará el nombre completo del servidor y las credenciales de inicio de sesión.
+Obtener Hola conexión información necesaria tooconnect toohello base de datos MySQL. Es necesario Hola credenciales de inicio de sesión y nombre de servidor completo.
 
-1. Inicie sesión en [Azure Portal](https://portal.azure.com/).
-2. En el menú izquierdo de Azure Portal, haga clic en **Todos los recursos** y busque el servidor que ha creado, por ejemplo, **myserver4demo**.
-3. Haga clic en el nombre del servidor.
-4. Seleccione la página **Propiedades** del servidor. Tome nota del **Nombre del servidor** y del **Server admin login name** (Nombre de inicio de sesión del administrador del servidor).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
+2. En el menú de la izquierda de hello en el portal de Azure, haga clic en **todos los recursos** y busque el servidor de Hola se haya creado, como **myserver4demo**.
+3. Haga clic en el nombre del servidor de Hola.
+4. Servidor de hello seleccione **propiedades** página. Tome nota de hello **nombre del servidor** y **nombre de inicio de sesión del Administrador de servidor**.
  ![Nombre del servidor de Azure Database for MySQL](./media/connect-csharp/1_server-properties-name-login.png)
-5. Si olvida la información de inicio de sesión del servidor, navegue hasta la página **Información general** para ver el nombre de inicio de sesión del administrador del servidor y, si es necesario, restablecer la contraseña.
+5. Si olvida su información de inicio de sesión de servidor, vaya a toohello **información general sobre** página Nombre de inicio de sesión de administrador del servidor de tooview hello y, si es necesario, restablecer la contraseña de Hola.
 
 ## <a name="connect-create-table-and-insert-data"></a>Conexión, creación de una tabla e inserción de datos
-Use el código siguiente para conectarse y cargar los datos mediante las instrucciones SQL **CREATE TABLE** e **INSERT INTO**. El código usa la clase ODBC con el método [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) para establecer una conexión con MySQL. A continuación, el código usa el método [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx), establece la propiedad CommandText y llama al método [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) para ejecutar los comandos de base de datos. 
+Código tooconnect siguiente de Hola de uso y cargar datos de hello mediante **CREATE TABLE** y **INSERT INTO** instrucciones SQL. código de Hello usa la clase de ODBC con el método [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) tooestablish una tooMySQL de conexión. A continuación, el código de hello usa el método [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx), Establece la propiedad CommandText de Hola y llama a método [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) comandos de base de datos de toorun Hola. 
 
-Reemplace los parámetros host, dbname, user y password por los valores especificados al crear el servidor y la base de datos. 
+Reemplazar parámetros de Host, DBName, usuario y contraseña de hello con valores de hello que especificó cuando creó el servidor de Hola y de base de datos. 
 
 ```csharp
 using System;
@@ -91,7 +91,7 @@ namespace driver
             Console.Out.WriteLine("Closing connection");
             conn.Close();
 
-            Console.WriteLine("Press RETURN to exit");
+            Console.WriteLine("Press RETURN tooexit");
             Console.ReadLine();
         }
 
@@ -102,9 +102,9 @@ namespace driver
 
 ## <a name="read-data"></a>Lectura de datos
 
-Use el código siguiente para conectarse y leer los datos mediante la instrucción SQL **SELECT**. El código usa la clase ODBC con el método [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) para establecer una conexión con MySQL. A continuación, el código usa el método [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) y el método [ExecuteReader()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executereader(v=vs.110).aspx) para ejecutar los comandos de base de datos. A continuación, el código usa [Read()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcdatareader.read(v=vs.110).aspx) para avanzar a los registros de los resultados. A continuación, el código usa GetInt32() y GetString() para analizar los valores del registro.
+Código tooconnect siguiente de Hola de uso y leer datos de hello mediante un **seleccione** instrucción SQL. código de Hello usa la clase de ODBC con el método [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) tooestablish una tooMySQL de conexión. A continuación, el código de hello usa el método [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx) y método [ExecuteReader()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executereader(v=vs.110).aspx) comandos de base de datos de toorun Hola. A continuación Hola código usa [Read()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcdatareader.read(v=vs.110).aspx) tooadvance toohello registros en los resultados de Hola. A continuación, código de hello usa GetInt32 y GetString valores de hello de tooparse en el registro de hello.
 
-Reemplace los parámetros host, dbname, user y password por los valores especificados al crear el servidor y la base de datos. 
+Reemplazar parámetros de Host, DBName, usuario y contraseña de hello con valores de hello que especificó cuando creó el servidor de Hola y de base de datos. 
 
 ```csharp
 using System;
@@ -148,7 +148,7 @@ namespace driver
             Console.Out.WriteLine("Closing connection");
             conn.Close();
 
-            Console.WriteLine("Press RETURN to exit");
+            Console.WriteLine("Press RETURN tooexit");
             Console.ReadLine();
         }
     }
@@ -158,9 +158,9 @@ namespace driver
 ```
 
 ## <a name="update-data"></a>Actualización de datos
-Use el código siguiente para conectarse y leer los datos mediante la instrucción SQL **UPDATE**. El código usa la clase ODBC con el método [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) para establecer una conexión con MySQL. A continuación, el código usa el método [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx), establece la propiedad CommandText y llama al método [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) para ejecutar los comandos de base de datos.
+Código tooconnect siguiente de Hola de uso y leer datos de hello mediante un **actualización** instrucción SQL. código de Hello usa la clase de ODBC con el método [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) tooestablish una tooMySQL de conexión. A continuación, el código de hello usa el método [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx), Establece la propiedad CommandText de Hola y llama a método [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) comandos de base de datos de toorun Hola.
 
-Reemplace los parámetros host, dbname, user y password por los valores especificados al crear el servidor y la base de datos. 
+Reemplazar parámetros de Host, DBName, usuario y contraseña de hello con valores de hello que especificó cuando creó el servidor de Hola y de base de datos. 
 
 ```csharp
 using System;
@@ -195,7 +195,7 @@ namespace driver
             Console.Out.WriteLine("Closing connection");
             conn.Close();
 
-            Console.WriteLine("Press RETURN to exit");
+            Console.WriteLine("Press RETURN tooexit");
             Console.ReadLine();
         }
     }
@@ -207,11 +207,11 @@ namespace driver
 
 
 ## <a name="delete-data"></a>Eliminación de datos
-Use el código siguiente para conectarse y leer los datos mediante la instrucción SQL **DELETE**. 
+Código tooconnect siguiente de Hola de uso y eliminar datos de hello con un **eliminar** instrucción SQL. 
 
-El código usa la clase ODBC con el método [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) para establecer una conexión con MySQL. A continuación, el código usa el método [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx), establece la propiedad CommandText y llama al método [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) para ejecutar los comandos de base de datos.
+código de Hello usa la clase de ODBC con el método [Open()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.open(v=vs.110).aspx) tooestablish una tooMySQL de conexión. A continuación, el código de hello usa el método [CreateCommand()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbcconnection.createcommand(v=vs.110).aspx), Establece la propiedad CommandText de Hola y llama a método [ExecuteNonQuery()](https://msdn.microsoft.com/en-us/library/system.data.odbc.odbccommand.executenonquery(v=vs.110).aspx) comandos de base de datos de toorun Hola.
 
-Reemplace los parámetros host, dbname, user y password por los valores especificados al crear el servidor y la base de datos. 
+Reemplazar parámetros de Host, DBName, usuario y contraseña de hello con valores de hello que especificó cuando creó el servidor de Hola y de base de datos. 
 
 ```csharp
 using System;
@@ -243,7 +243,7 @@ namespace driver
             Console.Out.WriteLine("Closing connection");
             conn.Close();
 
-            Console.WriteLine("Press RETURN to exit");
+            Console.WriteLine("Press RETURN tooexit");
             Console.ReadLine();
         }
     }
@@ -253,4 +253,4 @@ namespace driver
 
 ## <a name="next-steps"></a>Pasos siguientes
 > [!div class="nextstepaction"]
-> [Migre su Base de datos MySQL a Azure Database for MySQL mediante el volcado y la restauración](concepts-migrate-dump-restore.md)
+> [Migrar su tooAzure de base de datos base de datos de MySQL para uso de volcado de memoria y la restauración de MySQL](concepts-migrate-dump-restore.md)

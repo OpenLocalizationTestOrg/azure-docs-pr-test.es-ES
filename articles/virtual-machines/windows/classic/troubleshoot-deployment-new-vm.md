@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de implementación de máquinas virtuales Windows en el modelo clásico | Microsoft Docs"
+title: "aaaTroubleshoot clásico de implementación de máquina virtual de Windows | Documentos de Microsoft"
 description: "Solución de problemas de implementación clásica al crear una nueva máquina virtual de Windows en Azure"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cjiang
-ms.openlocfilehash: 990914e3d9541e8574ce6ba0bf6c996cb394470a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aa12cb013a18e0572fbef8b7ea69106dd47c1fd9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-windows-virtual-machine-in-azure"></a>Solución de problemas de la implementación clásica con la creación de una máquina virtual de Windows en Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-selectors-include.md)]
@@ -27,66 +27,66 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 > [!IMPORTANT] 
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Para la versión de Resource Manager de este artículo, consulte [aquí](../../virtual-machines-windows-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Para la versión del Administrador de recursos de Hola de este artículo, consulte [aquí](../../virtual-machines-windows-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
 ## <a name="collect-audit-logs"></a>Recopilación de registros de auditoría
-Para iniciar la solución de problemas, recopile los registros de auditoría para identificar el error asociado con el problema.
+toostart solución de problemas, auditoría de hello recopilar registra el error de Hola de tooidentify asociada con el problema de Hola.
 
-En Azure Portal, haga clic en **Examinar** > **Máquinas virtuales** > *su máquina virtual de Windows* > **Configuración** > **Registros de auditoría**.
+Hola portal de Azure, haga clic en **examinar** > **máquinas virtuales** > *la máquina virtual de Windows*  >   **Configuración de** > **registros de auditoría**.
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** si el sistema operativo es Windows generalizado y se carga o captura con la configuración generalizada, no habrá errores. De forma similar, si el sistema operativo es Windows especializado y se carga o captura con la configuración especializada, no habrá errores.
+**Y:** si Hola sistema operativo es Windows generalizado y se ha cargado ni capturado con hello generalizado configuración, no habrá errores. Del mismo modo, si Hola sistema operativo es Windows especializado, y se ha cargado ni capturado con hello especializados configuración, a continuación, no habrá errores.
 
 **Errores de carga:**
 
-**N<sup>1</sup>:** si el sistema operativo es Windows generalizado y se carga como especializado, aparecerá un error de tiempo de espera de aprovisionamiento con la máquina virtual bloqueada en la pantalla de OOBE.
+**N<sup>1</sup>:** si Hola sistema operativo es Windows generalizado, y se carga como especializado, obtendrá un error de tiempo de espera aprovisionamiento con hello VM atascada en pantalla de bienvenida OOBE.
 
-**N<sup>2</sup>:** si el sistema operativo es Windows especializado y se carga como generalizado, recibirá un error de aprovisionamiento con la máquina virtual bloqueada en la pantalla de OOBE porque la nueva máquina virtual se ejecuta con el nombre del equipo, el nombre de usuario y la contraseña originales.
+**N<sup>2</sup>:** si hello sistema operativo es Windows especializados y cargarlo como generalizado, obtendrá un error de aprovisionamiento con hello VM atascada en pantalla de bienvenida OOBE porque hello nueva máquina virtual se está ejecutando con el equipo original de Hola nombre, nombre de usuario y contraseña.
 
 **Resolución:**
 
-Para resolver estos errores, cargue el VHD original, disponible en el entorno local, con la misma configuración que para el sistema operativo (generalizada o especializada). Para cargar como generalizado, no olvide ejecutar sysprep antes. Para más información, consulte [Crear y cargar un VHD de Windows Server a Azure](createupload-vhd.md) .
+tooresolve ambos estos errores, cargar Hola VHD original, disponible en local, con Hola misma configuración que para hello OS (generalizado/especializado). tooupload como generalizado, recuerde toorun sysprep en primer lugar. Vea [crear y cargar un VHD de Windows Server tooAzure](createupload-vhd.md) para obtener más información.
 
 **Errores de captura:**
 
-**N<sup>3</sup>:** si el sistema operativo es Windows generalizado y se captura como especializado, recibirá un error de tiempo de espera de aprovisionamiento porque la máquina virtual original no se puede utilizar, ya que está marcada como generalizada.
+**N<sup>3</sup>:** si Hola sistema operativo es Windows generalizado, y se capturan como especializado, obtendrá un error de tiempo de espera de aprovisionamiento porque Hola original máquina virtual no se puede usar tal y como está marcado como generalizado.
 
-**N<sup>4</sup>:** si el sistema operativo es Windows especializado y se captura como generalizado, recibirá un error de aprovisionamiento porque la nueva máquina virtual se está ejecutando con el nombre del equipo, el nombre de usuario y la contraseña originales. Además, no se puede utilizar la máquina virtual original ya que está marcada como especializada.
+**N<sup>4</sup>:** si hello sistema operativo es Windows especializada y se capturan como generalizado, obtendrá un error de aprovisionamiento porque hello nueva máquina virtual se está ejecutando con el nombre de equipo original de hello, username y password. Además, Hola original VM no es puede usar porque está marcado como especializadas.
 
 **Resolución:**
 
-Para resolver estos errores, elimine la imagen actual del portal y [vuelva a capturarla desde los discos duros virtuales actuales](capture-image.md) con la misma configuración que para el sistema operativo (generalizada o especializada).
+tooresolve ambos estos errores, eliminar la imagen actual de Hola desde el portal de hello, y [capturar de hello VHD actual](capture-image.md) con Hola la misma configuración que para hello OS (generalizado/especializado).
 
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problema: Imagen de galería/marketplace/personalizada; error de asignación
-Este error se produce en situaciones en las que la nueva solicitud de máquina virtual se envía a un clúster que no tiene espacio libre disponible para alojar la solicitud o no admite el tamaño de la máquina virtual que se solicita. No es posible mezclar varias series diferentes de máquinas virtuales en el mismo servicio en la nube. Por tanto, si desea crear una nueva máquina virtual de un tamaño distinto al que puede admitir el servicio en la nube, la solicitud de proceso producirá un error.
+Este error se produce en situaciones cuando se envía una solicitud de máquina virtual nueva de hello tooa clúster que no tengan solicitud de hello tooaccommodate de espacio libre disponible, o no es compatible con el tamaño de la máquina virtual de Hola que se solicita. No es posible toomix distintas series de máquinas virtuales en hello mismo servicio en la nube. Por lo que si desea toocreate una nueva máquina virtual de un tamaño distinto de lo que puede admitir el servicio en la nube, solicitud de proceso de Hola se producirá un error.
 
-Según las restricciones del servicio en la nube que utilice para crear la nueva máquina virtual, podría recibir un error debido a una de estas dos situaciones.
+Dependiendo de las restricciones de hello del servicio de nube de hello usar toocreate Hola nueva máquina virtual, podría encontrar un error provocado por una de dos situaciones.
 
-**Causa 1:** El servicio en la nube está anclado a un clúster concreto o está vinculado a un grupo de afinidad y anclado, por tanto, a un clúster específico por diseño. Por ello, las nuevas solicitudes de recursos de proceso de ese grupo de afinidad se intentan llevar a cabo en el mismo clúster en el que están hospedados los recursos existentes. Sin embargo, el mismo clúster puede no admitir el tamaño solicitado de la máquina virtual o no tener suficiente espacio disponible, lo que generará un error de asignación. Esto es así con independencia de que los nuevos recursos se creen mediante un servicio en la nube nuevo o existente.
+**Causa 1:** servicio en la nube hello es tooa anclados específico, o en clúster es grupo de afinidad de tooan vinculado y por lo tanto, anclado tooa clúster concreto por cuestiones de diseño. Por lo que solicita el nuevo recurso de proceso en ese grupo de afinidad se prueban en hello mismo clúster donde se hospedan los recursos existentes de Hola. Sin embargo, hello mismo clúster puede no Hola de soporte técnico de tamaño de máquina virtual solicitado o tiene suficiente espacio disponible, lo que produce un error de asignación. Esto es cierto si Hola nuevos recursos se crean a través de un nuevo servicio de nube o un servicio de nube existente.
 
 **Resolución 1:**
 
 * Cree un nuevo servicio en la nube y asócielo a una región o a una red virtual basada en regiones.
-* Cree una nueva máquina virtual en el nuevo servicio en la nube.
-  Si se produce un error al intentar crear un nuevo servicio en la nube, vuelva a intentarlo más tarde o cambie la región de dicho servicio.
+* Crear una nueva máquina virtual en el servicio de nube nuevo Hola.
+  Si se produce un error al tratar de toocreate un nuevo servicio de nube, vuelva a intentarlo más tarde o cambiar región Hola Hola servicio de nube.
 
 > [!IMPORTANT]
-> Si intentó crear una nueva máquina virtual en un servicio en la nube existente, pero no lo logró y tuvo que crear uno nuevo para la nueva máquina virtual, puede consolidar todas las máquinas virtuales en el mismo servicio en la nube. Para ello, elimine las máquinas virtuales en el servicio en la nube existente y vuelva a capturarlas desde los discos del nuevo servicio en la nube. No obstante, es importante recordar que el nuevo servicio en la nube tendrá un nuevo nombre y dirección VIP, por lo que deberá actualizar esta información en todas las dependencias que utilicen esta información para el servicio en la nube existente.
+> Si se tratara de toocreate una nueva máquina virtual en un servicio de nube existente pero no se pudo y tenía toocreate un nuevo servicio de nube para la nueva máquina virtual, puede elegir tooconsolidate todas las máquinas virtuales en hello mismo servicio en la nube. por lo tanto, toodo eliminar máquinas virtuales de Hola Hola existente del servicio en nube y capturarlos desde sus discos Hola nuevo servicio en nube. Sin embargo, es importante tooremember que el servicio de nube nuevo de Hola tendrá un nuevo nombre y la dirección VIP, por lo que deberá tooupdate para todas las dependencias de Hola que actualmente utilizan esta información para servicio de nube existente de Hola.
 > 
 > 
 
-**Causa 2:** El servicio en la nube está asociado con una red virtual que está vinculada a un grupo de afinidad y anclada, por tanto, a un clúster específico por diseño. Por tanto, todas las nuevas solicitudes de recursos de proceso de ese grupo de afinidad se intentarán llevar a cabo en el mismo clúster en el que están hospedados los recursos existentes. Sin embargo, el mismo clúster puede no admitir el tamaño solicitado de la máquina virtual o no tener suficiente espacio disponible, lo que generará un error de asignación. Esto es así con independencia de que los nuevos recursos se creen mediante un servicio en la nube nuevo o existente.
+**Causa 2:** servicio de nube de hello está asociado a una red virtual que esté vinculado tooan grupo de afinidad, por lo que es tooa anclados clúster concreto por cuestiones de diseño. Todas las nuevas solicitudes de recursos de proceso en ese grupo de afinidad, por tanto, se prueban en hello mismo clúster donde se hospedan los recursos existentes de Hola. Sin embargo, hello mismo clúster puede no Hola de soporte técnico de tamaño de máquina virtual solicitado o tiene suficiente espacio disponible, lo que produce un error de asignación. Esto es cierto si Hola nuevos recursos se crean a través de un nuevo servicio de nube o un servicio de nube existente.
 
 **Resolución 2:**
 
 * Cree una nueva red virtual regional.
-* Cree la nueva máquina virtual en la nueva red virtual.
-* [Conecte la red virtual existente](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) a la nueva red virtual. Consulte más información sobre las [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/). Asimismo, puede [migrar la red virtual basada en un grupo de afinidad a una red virtual regional](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)y, después, crear la nueva máquina virtual.
+* Crear nueva máquina virtual en la nueva red virtual de Hola de Hola.
+* [Conectar su red virtual existente](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) toohello nueva red virtual. Consulte más información sobre las [redes virtuales regionales](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/). Como alternativa, puede [migrar la red virtual de red virtual basado en el grupo de afinidad tooa regional](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)y, a continuación, crear Hola nueva máquina virtual.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Si tiene problemas al iniciar una máquina virtual Windows detenida o al cambiar el tamaño de una máquina virtual Windows existente en Azure, consulte [Solución de problemas de la implementación clásica con el reinicio o el cambio de tamaño de una máquina virtual de Windows existente en Azure](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md).

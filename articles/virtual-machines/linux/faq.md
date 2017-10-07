@@ -1,6 +1,6 @@
 ---
-title: "Preguntas más frecuentes sobre VM de Linux en Azure | Microsoft Docs"
-description: "Proporciona respuestas a algunas de las preguntas frecuentes sobre las máquinas virtuales de Linux creadas con el modelo de Resource Manager."
+title: "aaaFrequently pregunta para máquinas virtuales de Linux en Azure | Documentos de Microsoft"
+description: "Proporciona respuestas toosome de preguntas frecuentes de hello sobre máquinas virtuales Linux creadas con el modelo del Administrador de recursos de Hola."
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,50 +15,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e06d21bd0b6ef807f38e41dcd50c9cd715607a3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 0afd08123dddc408851065c46deedc3146dbec20
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Preguntas frecuentes sobre las máquinas virtuales de Linux
-En este artículo se responden algunas preguntas comunes que los usuarios plantean sobre las máquinas virtuales Linux creadas en Azure mediante el modelo de implementación de Resource Manager. Para ver la versión de Windows de este tema, consulte [Preguntas más frecuentes sobre máquinas virtuales Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Este artículo tratan algunas preguntas comunes sobre máquinas virtuales Linux creadas en Azure con el modelo de implementación del Administrador de recursos de Hola. Para la versión de Windows hello de este tema, consulte [preguntas más frecuentes acerca de máquinas virtuales de Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>¿Qué puedo ejecutar en una máquina virtual de Azure?
 Todos los suscriptores pueden ejecutar software de servidor en una máquina virtual de Azure. Para más información, consulte [Linux en distribuciones aprobadas por Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>¿Cuánto almacenamiento puedo usar con una máquina virtual?
-Cada disco de datos puede ser de hasta 1 TB. El número de discos de datos que puede usar depende del tamaño de la máquina virtual. Para obtener más información, consulte [Tamaños de máquinas virtuales](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Cada disco de datos puede ser hasta too1 TB. número de Hola de discos de datos que puede usar depende de tamaño de Hola de máquina virtual de Hola. Para obtener más información, consulte [Tamaños de máquinas virtuales](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Una cuenta de almacenamiento de Azure proporciona almacenamiento para el disco del sistema operativo y los discos de datos. Cada disco es un archivo .vhd almacenado como un blob en páginas. Para obtener información detallada sobre los precios, consulte [Detalles de precios de almacenamiento](https://azure.microsoft.com/pricing/details/storage/).
+Una cuenta de almacenamiento de Azure proporciona almacenamiento para el disco del sistema operativo de Hola y los discos de datos. Cada disco es un archivo .vhd almacenado como un blob en páginas. Para obtener información detallada sobre los precios, consulte [Detalles de precios de almacenamiento](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>¿Cómo puedo tener acceso a mi máquina virtual?
-Establezca una conexión remota para iniciar sesión en la máquina virtual mediante Secure Shell (SSH). Consulte las instrucciones sobre cómo conectarse [desde Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) o [desde Linux y Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). De forma predeterminada, SSH permite un máximo de 10 conexiones simultáneas. Puede aumentar este número editando el archivo de configuración.
+Establecer un toolog de conexión remota en la máquina virtual de toohello, mediante Shell seguro (SSH). Vea Hola instrucciones sobre cómo tooconnect [desde Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) o [de Linux y Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). De forma predeterminada, SSH permite un máximo de 10 conexiones simultáneas. Puede aumentar este número editando el archivo de configuración de Hola.
 
 Si tiene problemas, consulte [Solución de problemas de conexiones de Secure Shell (SSH)](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>¿Puedo usar el disco temporal (/dev/sdb1) para almacenar datos?
-No utilice el disco temporal (/dev/sdb1) para almacenar datos. Solo existe para el almacenamiento temporal. Corre el riesgo de perder datos que no se podrán recuperar.
+## <a name="can-i-use-hello-temporary-disk-devsdb1-toostore-data"></a>¿Puedo usar datos de toostore de saludo disco temporal (/ dev/sdb1)?
+No use datos de toostore de saludo disco temporal (/ dev/sdb1). Solo existe para el almacenamiento temporal. Corre el riesgo de perder datos que no se podrán recuperar.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>¿Puedo copiar o clonar una máquina virtual de Azure existente?
-Sí. Para obtener instrucciones, consulte [Creación de una copia de una máquina virtual Linux en el modelo de implementación de Resource Manager](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Sí. Para obtener instrucciones, consulte [cómo toocreate una copia de una máquina virtual de Linux en Hola modelo de implementación del Administrador de recursos](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>¿Por qué no veo las regiones de Canadá central y Canadá oriental por medio de Azure Resource Manager?
-Las dos nuevas áreas Canadá central y Canadá oriental no se registran automáticamente para la creación de máquinas virtuales en las suscripciones de Azure existentes. Este registro se realizará automáticamente cuando se implementa una máquina virtual mediante el Portal de Azure en cualquier otra región usando Azure Resource Manager. Después de implementar una máquina virtual en cualquier otra región de Azure, las áreas nuevas deberán estar disponibles para las máquinas virtuales siguientes.
+Hola dos nuevas áreas de Canadá Central y este de Canadá no se registran automáticamente para la creación de máquinas virtuales para las suscripciones de Azure existentes. Este registro se realiza automáticamente cuando se implementa una máquina virtual a través de Hola tooany portal Azure otra región con el Administrador de recursos de Azure. Después de una máquina virtual está implementada tooany otra región de Azure, nuevas áreas de hello deben estar disponibles para máquinas virtuales posteriores.
 
-## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>¿Puedo agregar una NIC a mi máquina virtual después de crearla?
-Sí, ahora es posible. En primer lugar, la máquina virtual debe detenerse desasignada. A continuación, puede agregar o quitar una NIC (a menos que sea la última en la máquina virtual). 
+## <a name="can-i-add-a-nic-toomy-vm-after-its-created"></a>¿Puedo agregar una VM de NIC toomy después de crearla?
+Sí, ahora es posible. Hola VM primera necesidades toobe detenida desasignada. A continuación, puede agregar o quitar una NIC (a menos que sea Hola última NIC en hello VM). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>¿Hay algún requisito de nombre de equipo?
-Sí. El nombre del equipo puede tener un máximo de 64 caracteres. Consulte el artículo sobre las [convenciones y restricciones de nomenclatura](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) para más información sobre la denominación de los recursos.
+Sí. nombre del equipo Hola puede ser un máximo de 64 caracteres de longitud. Consulte el artículo sobre las [convenciones y restricciones de nomenclatura](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) para más información sobre la denominación de los recursos.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>¿Existen algunos requisitos para los nombres de grupos de recursos?
-Sí. El nombre del grupo de recursos puede tener como máximo 90 caracteres. Consulte el artículo sobre las [convenciones y restricciones de nomenclatura](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) para más información sobre los grupos de recursos.
+Sí. nombre de grupo de recursos de Hello puede tener un máximo de 90 caracteres de longitud. Consulte el artículo sobre las [convenciones y restricciones de nomenclatura](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) para más información sobre los grupos de recursos.
 
-## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>¿Cuáles son los requisitos de nombre de usuario cuando se crea una VM?
+## <a name="what-are-hello-username-requirements-when-creating-a-vm"></a>¿Cuáles son los requisitos de nombre de usuario de hello al crear una máquina virtual?
 Los nombres de usuario deben tener entre 1 y 64 caracteres.
 
-No se permiten los siguientes nombres de usuario:
+no se permite Hola siguiendo los nombres de usuario:
 
 <table>
     <tr>
@@ -88,15 +88,15 @@ No se permiten los siguientes nombres de usuario:
 </table>
 
 
-## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>¿Cuáles son los requisitos de contraseña cuando se crea una VM?
-Las contraseñas deben tener entre 6 y 72 caracteres y deben cumplir 3 de estos 4 requisitos de complejidad:
+## <a name="what-are-hello-password-requirements-when-creating-a-vm"></a>¿Cuáles son los requisitos de contraseña de hello al crear una máquina virtual?
+Las contraseñas deben tener 6 a 72 caracteres de longitud y cumplen 3 fuera Hola según los requisitos de complejidad 4:
 
 * Deben incluir caracteres en minúsculas.
 * Deben incluir caracteres en mayúsculas.
 * Deben incluir un dígito.
 * Deben incluir un carácter especial (REGEX.MATCH [\W_]).
 
-No se permiten las siguientes contraseñas:
+no se permite Hola siguientes contraseñas:
 
 <table>
     <tr>

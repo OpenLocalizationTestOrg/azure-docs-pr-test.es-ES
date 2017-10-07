@@ -1,6 +1,6 @@
 ---
-title: "Creación de hosts de Docker en Azure con Docker Machine | Microsoft Docs"
-description: "Describe el uso de la máquina de Docker para crear hosts de docker en Azure."
+title: "aaaCreate Docker se hospeda en Azure con Docker máquina | Documentos de Microsoft"
+description: "Describe el uso de los hosts de máquina Docker toocreate docker en Azure."
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fbf67e8189bbf33f874c4a9b619a931f28ccee12
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Creación de hosts de Docker en Azure con docker-machine
-La ejecución de contenedores de [Docker](https://www.docker.com/) requiere una máquina virtual host que ejecute el demonio de Docker.
-En este tema, se describe cómo usar el comando [docker-machine](https://docs.docker.com/machine/) para crear máquinas virtuales Linux, configuradas con el demonio de Docker, que se ejecuten en Azure. 
+Ejecuta [Docker](https://www.docker.com/) contenedores requiere un demonio de docker host VM ejecución Hola.
+Este tema se describe cómo hello toouse [máquina docker](https://docs.docker.com/machine/) comando toocreate nuevas máquinas virtuales de Linux, configurada con hello demonio de Docker, se está ejecutando en Azure. 
 
 **Nota:** 
 
 * *Este artículo depende de la versión 0.9.0-rc2 de docker-machine, o de una versión superior*
-* *Muy pronto será posible usar contenedores de Windows a través del comando docker-machine*
+* *Se admitirán los contenedores de Windows a través de la máquina de docker en hello futuro próximo*
 
 ## <a name="create-vms-with-docker-machine"></a>Creación de VM con la máquina de Docker
-Cree máquinas virtuales host de Docker en Azure con el comando `docker-machine create` mediante el controlador `azure`. 
+Crear máquinas virtuales del host docker en Azure con hello `docker-machine create` comando con hello `azure` controlador. 
 
-El controlador de Azure necesita su identificador de suscripción. Para recuperar su suscripción de Azure, puede usar la [CLI de Azure](cli-install-nodejs.md) o [Azure Portal](https://portal.azure.com). 
+Hola controlador Azure requiere el identificador de suscripción. Puede usar hello [CLI de Azure](cli-install-nodejs.md) o hello [Portal de Azure](https://portal.azure.com) tooretrieve su suscripción de Azure. 
 
-**Uso del portal de Azure**
+**Uso de hello Portal de Azure**
 
-* Seleccione **Suscripciones** de la página de navegación izquierda y copie el identificador de suscripción.
+* Seleccione **suscripciones** de hello izquierdo página y copiar Hola Id. de suscripción.
 
-**Uso de la CLI de Azure**
+**Uso de hello CLI de Azure**
 
-* Escriba ```azure account list``` y copie el identificador de suscripción.
+* Tipo ```azure account list``` y el Id. de suscripción de Hola de copia.
 
-Escriba `docker-machine create --driver azure` para ver las opciones y sus valores predeterminados.
-Para más información, también puede consultar la [documentación del controlador de Azure de Docker](https://docs.docker.com/machine/drivers/azure/) . 
+Tipo `docker-machine create --driver azure` toosee Hola opciones y sus valores predeterminados.
+También puede ver hello [documentación del controlador de Azure Docker](https://docs.docker.com/machine/drivers/azure/) para obtener más información. 
 
-En el siguiente ejemplo se usan los [valores predeterminados](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22), pero se configuran opcionalmente estos valores: 
+Hello siguiente ejemplo se basa en hello [valores predeterminados](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22), pero si lo desea establecer estos valores: 
 
-* azure-dns para el nombre asociado a la dirección IP pública y los certificados generados. Este es el nombre DNS de la máquina virtual. La máquina virtual puede así detenerse sin ningún riesgo, liberar la dirección IP dinámica y ofrecer la posibilidad de volver a conectarse una vez que la máquina virtual se inicia de nuevo con una dirección IP nueva. El prefijo del nombre debe ser único para esa región UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com.
-* abrir el puerto 80 en la máquina virtual para el acceso a internet saliente
-* tamaño de la máquina virtual para usar Premium Storage más rápido
-* Premium Storage utilizado para el disco de máquina virtual
+* dns de Azure para nombre de hello asociado con la dirección IP pública de Hola y certificados generados. Este es el nombre DNS de saludo de la máquina virtual. Hola VM puede, a continuación, con seguridad detener, versión IP dinámicas de Hola y proporcionar Hola capacidad tooreconnect después Hola vm se inicia de nuevo con una dirección IP nueva. prefijo del nombre de Hello debe ser único para esa región UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com.
+* abrir el puerto 80 en hello VM para el acceso a internet saliente
+* tamaño de almacenamiento de máquina virtual tooutilize más rápido premium hello
+* almacenamiento Premium usarse como disco de máquina virtual de Hola
 
 ```
 docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_ID> --azure-dns <Your UNIQUE_DNSNAME_PREFIX> --azure-open-port 80 --azure-size Standard_DS1_v2 --azure-storage-type "Premium_LRS" mydockerhost 
 ```
 
 ## <a name="choose-a-docker-host-with-docker-machine"></a>Elección de un host de Docker con una docker-machine
-Una vez que tenga una entrada en docker-machine para su host, puede establecer el host predeterminado al ejecutar comandos de Docker.
+Una vez que tenga una entrada en la máquina de docker para el host, puede establecer el host predeterminado de hello cuando ejecuta comandos de docker.
 
 ## <a name="using-powershell"></a>Con PowerShell
 ```powershell
@@ -69,7 +69,7 @@ docker-machine env MyDockerHost | Invoke-Expression
 eval $(docker-machine env MyDockerHost)
 ```
 
-Ya se pueden ejecutar comandos de Docker en el host especificado
+Ahora puede ejecutar comandos de docker en host especificado Hola
 
 ```
 docker ps
@@ -77,17 +77,17 @@ docker info
 ```
 
 ## <a name="run-a-container"></a>Ejecución de un contenedor
-Con un host configurado, ya se puede ejecutar un servidor web simple para probar si dicho host se ha configurado correctamente.
-Aquí se usará una imagen de nginx estándar, se especifica que debe escuchar el puerto 80 y que si la máquina virtual host se reinicia, el contenedor también se reiniciará (`--restart=always`). 
+Con un host configurado, ahora puede ejecutar un tootest de servidor web simple si el host se configuró correctamente.
+Aquí se usa una imagen de nginx estándar, especifique que debe escuchar en el puerto 80, y que si se reinicia la máquina virtual del host de hello, contenedor Hola reiniciarán también (`--restart=always`). 
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
 ```
 
-La salida debe tener un aspecto similar al siguiente:
+salida de Hello debe tener un aspecto similar Hola siguiente:
 
 ```
-Unable to find image 'nginx:latest' locally
+Unable toofind image 'nginx:latest' locally
 latest: Pulling from library/nginx
 efd26ecc9548: Pull complete
 a3ed95caeb02: Pull complete
@@ -98,7 +98,7 @@ Status: Downloaded newer image for nginx:latest
 25942c35d86fe43c688d0c03ad478f14cc9c16913b0e1c2971cb32eb4d0ab721
 ```
 
-## <a name="test-the-container"></a>Prueba del contenedor
+## <a name="test-hello-container"></a>Contenedor de prueba Hola
 Examine los contenedores en ejecución mediante `docker ps`:
 
 ```bash
@@ -106,7 +106,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago       Up 5 minutes        0.0.0.0:80->80/tcp, 443/tcp   goofy_mahavira
 ```
 
-Y para comprobar el contenedor en ejecución, escriba `docker-machine ip <VM name>` para buscar la dirección IP que debe especificar en el explorador:
+Toosee hello y ejecución de contenedor, tipo `docker-machine ip <VM name>` tooenter de dirección IP toofind hello en el Explorador de hello:
 
 ```
 PS C:\> docker-machine ip MyDockerHost
@@ -117,7 +117,7 @@ PS C:\> docker-machine ip MyDockerHost
 
 ## <a name="summary"></a>Resumen
 Con docker-machine se pueden aprovisionar fácilmente hosts de Docker en Azure para las validaciones de host de Docker individuales.
-Para la creación de hospedaje de contenedores, consulte el [Servicio de contenedores de Azure](http://aka.ms/AzureContainerService)
+Para la producción de hospedaje de contenedores, vea hello [servicio de contenedor de Azure](http://aka.ms/AzureContainerService)
 
-Para desarrollar aplicaciones de .NET Core con Visual Studio, consulte [Docker Tools para Visual Studio](http://aka.ms/DockerToolsForVS)
+toodevelop .NET Core aplicaciones con Visual Studio, vea [Docker Tools para Visual Studio](http://aka.ms/DockerToolsForVS)
 

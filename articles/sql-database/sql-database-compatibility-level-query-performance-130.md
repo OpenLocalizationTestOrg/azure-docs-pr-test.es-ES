@@ -1,6 +1,6 @@
 ---
-title: Nivel de compatibilidad 130 en bases de datos - Azure SQL Database | Microsoft Docs
-description: "En este artículo, se exploran las ventajas de ejecutar Azure SQL Database en el nivel de compatibilidad 130 y se analiza cómo aprovechar las ventajas de las nuevas características del optimizador de consultas y del procesador de consultas. También se abordan los posibles efectos secundarios en el rendimiento de las consultas para las aplicaciones existentes de SQL."
+title: nivel de compatibilidad de aaaDatabase 130 - base de datos de SQL de Azure | Documentos de Microsoft
+description: "En este artículo, nos explore Hola ventajas de ejecutar la base de datos de SQL Azure en el nivel de compatibilidad 130 y aprovechar las ventajas de Hola de nuevo el optimizador de consultas de Hola y características del procesador de consultas. También tratamos Hola posibles efectos secundarios en el rendimiento de las consultas para las aplicaciones existentes de SQL Hola Hola."
 services: sql-database
 documentationcenter: 
 author: alainlissoir
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: NA
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: alainl
-ms.openlocfilehash: c08c0690df4f389416e4ed2e2df2dbb72d6fd567
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 25693c5f7b01405b7073fa7d4cc2833fbe125e2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="improved-query-performance-with-compatibility-level-130-in-azure-sql-database"></a>Rendimiento mejorado de consultas con el nivel de compatibilidad 130 en Base de datos SQL de Azure
-Base de datos SQL de Azure ejecuta de forma transparente cientos de miles de bases de datos en muchos niveles de compatibilidad diferentes, conservando y garantizando la compatibilidad con versiones anteriores para la versión correspondiente de Microsoft SQL Server para todos sus clientes.
+La base de datos de SQL Azure se ejecuta transparente cientos de miles de bases de datos en varios niveles de compatibilidad diferentes, conservar y garantizan toohello de versión correspondiente de Microsoft SQL Server para la compatibilidad con versiones anteriores Hola a todos sus clientes!
 
-En este artículo, se exploran las ventajas de ejecutar Azure SQL Database en el nivel de compatibilidad 130 y se analiza cómo aprovechar las ventajas de las nuevas características del optimizador de consultas y del procesador de consultas. También se abordan los posibles efectos secundarios en el rendimiento de las consultas para las aplicaciones existentes de SQL.
+En este artículo, nos explore Hola ventajas de la ejecución de su base de datos de SQL Azure en el nivel de compatibilidad 130 y aprovechar las ventajas de Hola de nuevo el optimizador de consultas de Hola y características del procesador de consultas. También tratamos Hola posibles efectos secundarios en el rendimiento de las consultas para las aplicaciones existentes de SQL Hola Hola.
 
-Como recordatorio del historial, la alineación de las versiones SQL con los niveles de compatibilidad predeterminados es la siguiente:
+Como recordatorio del historial, la alineación de Hola de niveles de compatibilidad de toodefault de versiones SQL son los siguientes:
 
 * 100: en SQL Server 2008 y Base de datos SQL de Azure V11.
 * 110: en SQL Server 2012 y Base de datos SQL de Azure V11.
@@ -34,13 +34,13 @@ Como recordatorio del historial, la alineación de las versiones SQL con los niv
 * 130: en SQL Server 2016 y Base de datos SQL de Azure V12.
 
 > [!IMPORTANT]
-> A partir de **mediados de junio de 2016**, el nivel de compatibilidad predeterminado en Azure SQL Database será 130, en lugar de 120, para las bases de datos **de nueva creación**.
+> A partir de **mid junio de 2016**, en la base de datos de SQL Azure, nivel de compatibilidad de hello predeterminado será 130 en lugar de 120 para **recién creado** bases de datos.
 > 
-> Las bases de datos creadas antes de mediados de junio de 2016 *no* se verán afectadas y mantendrán su nivel de compatibilidad actual (100, 110 o 120). Las bases de datos migradas de la versión 11 de Azure SQL Database a la versión 12 tendrán un nivel de compatibilidad de 100 o 110. 
+> Las bases de datos creadas antes de mediados de junio de 2016 *no* se verán afectadas y mantendrán su nivel de compatibilidad actual (100, 110 o 120). Bases de datos que se migran de la base de datos de SQL Azure versión V11 tooV12 tendrá un nivel de compatibilidad de 100 o 110. 
 > 
 
 ## <a name="about-compatibility-level-130"></a>Acerca del nivel de compatibilidad 130
-En primer lugar, si desea conocer el nivel de compatibilidad actual de una base de datos, ejecute la siguiente instrucción de Transact-SQL.
+En primer lugar, si desea que el nivel tooknow Hola de compatibilidad actual de la base de datos, ejecute hello después de la instrucción Transact-SQL.
 
 ```
 SELECT compatibility_level
@@ -49,13 +49,13 @@ SELECT compatibility_level
 ```
 
 
-Antes de que se produzca este cambio al nivel 130 en las bases de datos **de nueva creación** , vamos a revisar en qué consiste este cambio a través de algunos ejemplos de consultas muy básicos y ver cómo cualquiera puede beneficiarse de él.
+Antes de este cambio se produce para los toolevel 130 **recién** crear bases de datos, vamos a revisar lo que este cambio consiste en ver algunos ejemplos de consulta muy básica y ver cómo cualquiera puede beneficiarse de él.
 
-El procesamiento de consultas en las bases de datos relacionales puede ser muy complejo y llevar al uso de un volumen importante de matemáticas y ciencias informáticas para poder comprender los comportamientos y opciones de diseño inherentes. En este documento, el contenido se ha simplificado intencionadamente para garantizar que cualquier persona con unos conocimientos técnicos mínimos pueda entender el impacto del cambio de nivel de compatibilidad y determinar cómo puede beneficiar a las aplicaciones.
+Procesamiento de consultas en bases de datos relacionales puede ser muy complejo y puede provocar toolots de equipo informática y matemáticas toounderstand Hola inherentes a las opciones de diseño y comportamientos. En este documento, contenido de hello ha sido tooensure intencionadamente simplificada que cualquier persona con algunos conocimientos técnicos mínimos puede comprender el impacto del cambio del nivel de compatibilidad Hola Hola y determinar cómo puede beneficiar a las aplicaciones.
 
-Echemos un vistazo a lo que aporta el nivel de compatibilidad 130.  Puede encontrar más detalles en [Nivel de compatibilidad de ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/bb510680.aspx), pero aquí tiene un breve resumen:
+Echemos un vistazo qué nivel de compatibilidad de hello 130 pone en la tabla de Hola.  Puede encontrar más detalles en [Nivel de compatibilidad de ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/bb510680.aspx), pero aquí tiene un breve resumen:
 
-* La operación Insert de una instrucción Insert-select puede ser de subprocesos múltiples o puede tener un plan paralelo, mientras que antes esta operación era de subproceso único.
+* pueden ser multiproceso Hello operación de inserción de una instrucción Insert select o puede tener un plan paralelo, mientras que antes de que esta operación se un único subproceso.
 * Las consultas de tabla con optimización de memoria y variables de tabla pueden tener ahora planes paralelos, mientras que antes esta operación también era de subproceso único.
 * Las estadísticas de una tabla con optimización de memoria ahora pueden muestrearse y se actualizan de forma automática. Consulte [Novedades (motor de base de datos): OLTP en memoria](https://msdn.microsoft.com/library/bb510411.aspx#InMemory) para más detalles.
 * El modo por lotes frente al modo de fila cambia con los índices de almacenamiento de columnas
@@ -63,10 +63,10 @@ Echemos un vistazo a lo que aporta el nivel de compatibilidad 130.  Puede encont
   * Los agregados basados en ventanas operan ahora en modo por lotes, tal como instrucciones de TSQL LAG/LEAD.
   * Las consultas en tablas de almacenamiento de columnas con varias cláusulas Distinct funcionan en modo por lotes.
   * Las consultas que se ejecutan en DOP = 1 o con un plan en serie también se ejecutan en modo por lotes.
-* Por último, las mejoras de estimación de cardinalidad vienen con el nivel de compatibilidad 120, pero para aquellos que estén trabajando en un nivel de compatibilidad inferior (es decir, 100 o 110), el cambio al nivel de compatibilidad 130 también aportará estas mejoras, y éstas a su vez pueden beneficiar también al rendimiento de las consultas de las aplicaciones.
+* Por último, mejoras de estimación de cardinalidad proceden realmente con el nivel de compatibilidad 120, pero para los que ejecutar en una compatibilidad más bajo nivel (es decir, 100 o 110), hello move toocompatibility nivel 130 también aparecerá estas mejoras y los usuarios pueden también mejorar el rendimiento de la consulta de Hola de las aplicaciones.
 
 ## <a name="practicing-compatibility-level-130"></a>Prácticas con el nivel de compatibilidad 130
-Primero vamos a juntar algunas tablas, índices y datos aleatorios creados para practicar algunas de estas nuevas funcionalidades. Los ejemplos de script TSQL se pueden ejecutar en SQL Server 2016, o en Base de datos SQL de Azure. Sin embargo, al crear una base de datos SQL de Azure, asegúrese de que elige como mínimo una base de datos P2 porque necesita al menos un par de núcleos para permitir subprocesamiento múltiple y por lo tanto beneficiarse de estas características.
+Primero vamos a algunas tablas, índices y datos aleatorios creados toopractice algunas de estas nuevas capacidades. ejemplos de script de Hola TSQL se pueden ejecutar en SQL Server 2016 o base de datos de SQL Azure. Sin embargo, al crear una base de datos de SQL Azure, asegúrese de que elija en el mínimo de hello P2 de base de datos porque necesita al menos un par de núcleos tooallow subprocesamiento múltiple y por lo tanto beneficiarse de estas características.
 
 ```
 -- Create a Premium P2 Database in Azure SQL Database
@@ -76,7 +76,7 @@ CREATE DATABASE MyTestDB
 GO
 
 -- Create 2 tables with a column store index on
--- the second one (only available on Premium databases)
+-- hello second one (only available on Premium databases)
 
 CREATE TABLE T_source
     (Color varchar(10), c1 bigint, c2 bigint);
@@ -104,10 +104,10 @@ GO 10
 ```
 
 
-Ahora, echemos un vistazo a algunas de las características de procesamiento de consultas que trae el nivel de compatibilidad de 130.
+Ahora, echemos un toosome del aspecto de las características de procesamiento de consultas de hello procedentes con nivel de compatibilidad 130.
 
 ## <a name="parallel-insert"></a>INSERT en paralelo
-La ejecución de las siguientes instrucciones de TSQL, ejecuta la operación INSERT en los niveles de compatibilidad 120 y 130, que ejecutan respectivamente la operación INSERT en un modelo de subproceso único (120) y en un modelo de subprocesos múltiples (130).
+Ejecutar instrucciones de TSQL Hola siguiente ejecuta Hola operación de INSERCIÓN en el nivel de compatibilidad 120 y 130, que ejecuta respectivamente Hola operación de INSERCIÓN en un único modelo de subproceso (120) y en un modelo multiproceso (130).
 
 ```
 -- Parallel INSERT … SELECT … in heap or CCI
@@ -119,7 +119,7 @@ ALTER DATABASE MyTestDB
     SET COMPATIBILITY_LEVEL = 120;
 GO 
 
--- The INSERT part is in serial
+-- hello INSERT part is in serial
 
 INSERT t_target WITH (tablock)
     SELECT C1, COUNT(C2) * 10 * RAND()
@@ -131,7 +131,7 @@ ALTER DATABASE MyTestDB
     SET COMPATIBILITY_LEVEL = 130
 GO
 
--- The INSERT part is in parallel
+-- hello INSERT part is in parallel
 
 INSERT t_target WITH (tablock)
     SELECT C1, COUNT(C2) * 10 * RAND()
@@ -143,14 +143,14 @@ SET STATISTICS XML OFF;
 ```
 
 
-Si solicita el estado del plan de consulta, y examina su representación gráfica o su contenido XML, puede determinar qué función de estimación de cardinalidad se está usando. Al examinar en paralelo los planes en la figura 1, podemos ver claramente que la ejecución del almacenamiento de columnas INSERT va de en serie en 120 a en paralelo en 130. Observe además el cambio del icono de iterador en el plan de 130 que muestra dos flechas paralelas, esto ilustra el hecho de que ahora la ejecución del iterador es realmente en paralelo. Si tiene que realizar grandes operaciones INSERT, la ejecución en paralelo, vinculada al número de núcleos que tiene a su disposición para la base de datos, le proporcionará un mejor rendimiento (hasta 100 veces más rápido, dependiendo de la situación).
+Solicitando el plan de consulta de Hola Hola real, examinando su representación gráfica o su contenido XML, puede determinar qué función se encuentra en la reproducción de estimación de cardinalidad. Examinando los planes de hello en paralelo en la figura 1, podemos ver claramente que Hola insertar de la tienda en la columna ejecución va de serie en 120 tooparallel en 130. Además, tenga en cuenta ese cambio Hola del icono de iterador de hello en plan 130 Hola que muestra dos flechas paralelas, que ilustra el hecho de Hola que ahora Hola ejecución de iterador es realmente paralela. Si tiene grande toocomplete de operaciones de INSERCIÓN, Hola la ejecución en paralelo, vinculado toohello número de núcleos que tiene a su disposición para base de datos de hello, llevará a cabo mejor; seguridad tooa 100 veces más rápido dependiendo de su situación.
 
-*Figura 1: Operación INSERT cambia de en serie a en paralelo con el nivel de compatibilidad 130.*
+*Figura 1: Inserte los cambios de la operación de tooparallel serie con el nivel de compatibilidad 130.*
 
 ![En la Ilustración 1](./media/sql-database-compatibility-level-query-performance-130/figure-1.jpg)
 
 ## <a name="serial-batch-mode"></a>Modo por lotes EN SERIE
-De forma similar, pasar al nivel de compatibilidad 130 para el procesamiento de filas de datos permite el procesamiento de modo por lotes. En primer lugar, las operaciones en modo por lotes solo están disponibles cuando tenga un índice de almacenamiento de columnas preparado. En segundo lugar, un lote normalmente representa aproximadamente 900 filas y utiliza una lógica de código optimizada para una CPU de varios núcleos, un mayor rendimiento de la memoria y aprovecha directamente los datos comprimidos del almacenamiento de columnas, siempre que sea posible. En estas condiciones, SQL Server 2016 puede procesar aproximadamente 900 filas a la vez, en lugar de la 1 fila de cada vez, y en consecuencia, los costos generales de la operación se comparten ahora entre todo el lote, lo que reduce el costo global por fila. Esta cantidad de operaciones compartidas combinadas con la compresión de almacenamiento de columnas, básicamente reduce la latencia implicada en una operación de modo por lotes SELECT. Puede encontrar más detalles sobre el almacenamiento de columnas y el modo por lotes en [Descripción de los índices de almacén de columnas](https://msdn.microsoft.com/library/gg492088.aspx).
+De forma similar, mover el nivel de toocompatibility 130 al procesar las filas de datos permite el procesamiento de modo por lotes. En primer lugar, las operaciones en modo por lotes solo están disponibles cuando tenga un índice de almacenamiento de columnas preparado. En segundo lugar, un lote que normalmente representa aproximadamente 900 filas y utiliza una lógica de código optimizada para varios núcleos de CPU, un mayor rendimiento de memoria y directamente aprovecha Hola datos comprimidos de hello almacén de columnas siempre que sea posible. En estas condiciones, SQL Server 2016 puede procesar aproximadamente 900 filas a la vez, en lugar de 1 fila en el momento de hello, y en consecuencia, hello coste total general de operación de hello ahora compartida por lote completo de hello, reducir Hola general costo por fila. Esta cantidad de operaciones combinadas con compresión de almacén de columnas de hello básicamente compartida reduce la latencia de hello implicada en una operación de modo por lotes SELECT. Puede encontrar más detalles sobre el almacén de columnas de hello y procesar por lotes en el modo en [Guía de índices de almacén de columnas](https://msdn.microsoft.com/library/gg492088.aspx).
 
 ```
 -- Serial batch mode execution
@@ -161,7 +161,7 @@ ALTER DATABASE MyTestDB
     SET COMPATIBILITY_LEVEL = 120;
 GO
 
--- The scan and aggregate are in row mode
+-- hello scan and aggregate are in row mode
 
 SELECT C1, COUNT (C2)
     FROM T_target
@@ -173,8 +173,8 @@ ALTER DATABASE MyTestDB
     SET COMPATIBILITY_LEVEL = 130;
 GO 
 
--- The scan and aggregate are in batch mode,
--- and force MAXDOP to 1 to show that batch mode
+-- hello scan and aggregate are in batch mode,
+-- and force MAXDOP too1 tooshow that batch mode
 -- also now works in serial mode.
 
 SELECT C1, COUNT(C2)
@@ -187,14 +187,14 @@ SET STATISTICS XML OFF;
 ```
 
 
-Como se ve a continuación observando los planes de consulta en paralelo en la figura 2, el modo de procesamiento ha cambiado con el nivel de compatibilidad y, como consecuencia, cuando se ejecutan las consultas juntas en el nivel de compatibilidad de ambos, podemos ver que la mayor parte del tiempo de procesamiento se dedica al modo de fila (86 %), en comparación con el modo por lotes (14 %), donde se han procesado 2 lotes. Al aumentar el conjunto de datos, aumentará el beneficio.
+Como visible a continuación, mediante la observación de hello consulta planes side-by-side en la figura 2, podemos ver que ha cambiado el modo de procesamiento de hello con nivel de compatibilidad de hello y, en consecuencia, al ejecutar consultas de hello en el nivel de compatibilidad de ambos por completo, podemos ver que la mayoría del tiempo de procesamiento de Hola se invierte en fila modo (86%) en comparación con toohello modo por lotes (14%), donde se han procesado 2 lotes. Aumentar el conjunto de datos de hello, hello beneficio aumentará.
 
-*Figura 2: Operación SELECT cambia de modo en serie a modo por lotes con el nivel de compatibilidad 130.*
+*Figura 2: Seleccione los cambios de operación del modo serie toobatch con nivel de compatibilidad 130.*
 
 ![Ilustración 2](./media/sql-database-compatibility-level-query-performance-130/figure-2.jpg)
 
 ## <a name="batch-mode-on-sort-execution"></a>Modo por lotes en ejecución SORT
-Similar a la anterior, pero aplicado a una operación SORT, la transición del modo de fila (nivel de compatibilidad 120) al modo por lotes (nivel de compatibilidad de 130) mejora el rendimiento de la operación SORT por las mismas razones.
+Toohello similar anterior, pero la operación de ordenación aplicada tooa, transición Hola de fila (nivel de compatibilidad 120) toobatch modo (nivel de compatibilidad 130) mejora el rendimiento de Hola de hello operación de ordenación para hello las mismas razones.
 
 ```
 -- Batch mode on sort execution
@@ -205,7 +205,7 @@ ALTER DATABASE MyTestDB
     SET COMPATIBILITY_LEVEL = 120;
 GO
 
--- The scan and aggregate are in row mode
+-- hello scan and aggregate are in row mode
 
 SELECT C1, COUNT(C2)
     FROM T_target
@@ -218,8 +218,8 @@ ALTER DATABASE MyTestDB
     SET COMPATIBILITY_LEVEL = 130;
 GO
 
--- The scan and aggregate are in batch mode,
--- and force MAXDOP to 1 to show that batch mode
+-- hello scan and aggregate are in batch mode,
+-- and force MAXDOP too1 tooshow that batch mode
 -- also now works in serial mode.
 
 SELECT C1, COUNT(C2)
@@ -233,21 +233,21 @@ SET STATISTICS XML OFF;
 ```
 
 
-En la figura 3, se puede ver en paralelo que la operación SORT en el modo de fila representa el 81 % del costo, mientras que el modo por lotes solo representa el 19 % del costo (respectivamente 81 % y 56 % en la ordenación).
+Visible side-by-side en la figura 3, podemos ver que operación de ordenación de hello en el modo de fila representa 81% de hello un costo, mientras que en modo por lotes Hola solo representa 19% del costo de hello (respectivamente 81% y % de 56 en ordenación Hola propio).
 
-*Figura 3: Operación SORT cambia de modo de fila a modo por lotes con el nivel de compatibilidad 130.*
+*Figura 3: Operación de ordenación cambia de modo de fila toobatch con nivel de compatibilidad 130.*
 
 ![Ilustración 3](./media/sql-database-compatibility-level-query-performance-130/figure-3.png)
 
-Obviamente, estos ejemplos solo contienen decenas de miles de filas, esto es una cantidad insignificante comparada con la de los datos disponibles en la mayoría de los servidores SQL de hoy en día. No hay más que pensar en estos resultados aplicados a millones de filas y veremos que esto podría traducirse en varios minutos de ejecución que se ahorrarían cada día, dependiendo de la naturaleza de la carga de trabajo.
+Evidentemente, estos ejemplos sólo contienen decenas de miles de filas, que es nada cuando se examinan datos Hola disponibles en la mayoría de los servidores SQL de hoy en día. Simplemente proyecto estos en millones de filas en su lugar, y esto puede convertir en varios minutos de ejecución ahorran cada día pendiente naturaleza hello de la carga de trabajo.
 
 ## <a name="cardinality-estimation-ce-improvements"></a>Mejoras de estimación de cardinalidad (CE)
-Desde que se introdujo con SQL Server 2014, cualquier base de datos que se ejecuta en un nivel de compatibilidad 120 o superior hace uso de la nueva funcionalidad de estimación de cardinalidad. Básicamente, la estimación de cardinalidad es la lógica utilizada para determinar cómo SQL Server ejecutará una consulta en base a su costo estimado. La estimación se calcula usando la entrada de datos de estadísticas asociadas con los objetos que participan en esa consulta. En la práctica, en un nivel alto, las funciones de estimación de cardinalidad son estimaciones de recuento de filas junto con información sobre la distribución de los valores, recuentos de valores distintos y recuentos duplicados, contenidas en las tablas y los objetos a los que se hace referencia en la consulta. Si se obtienen estimaciones incorrectas, se puede producir E/S de disco innecesarias debidas a concesiones de memoria insuficientes (es decir, vertidos TempDB), o a la selección de una ejecución de un plan en serie en lugar de una ejecución de plan paralelo, por solo mencionar algunos problemas. La conclusión es que las estimaciones incorrectas pueden provocar una degradación del rendimiento general de la ejecución de consultas. Por el contrario, las estimaciones mejoradas y más precisas, llevan a la mejora de las ejecuciones de consultas.
+Se introdujo con SQL Server 2014, cualquier base de datos que se ejecute en un nivel de compatibilidad 120 o superior hará que el uso de la nueva funcionalidad de estimación de cardinalidad Hola. En esencia, estimación de cardinalidad es lógica hello usa toodetermine cómo SQL server ejecutará una consulta basada en su costo estimado. estimación de Hola se calcula con la entrada de las estadísticas asociadas con los objetos implicados en la consulta. En la práctica, en un alto nivel, las funciones de estimación de cardinalidad son estimaciones de recuento de filas junto con información sobre la distribución de Hola de valores de hello, recuentos de valores distintos, y recuentos duplicados contenidos en Hola tablas y objetos que se hace referencia en la consulta de Hola. Obtener estas estimaciones incorrecto, puede provocar la E/S de disco toounnecessary debido concesiones de memoria tooinsufficient (es decir, los volcados de TempDB), o ejecutar, tooname el plan de selección de tooa de la ejecución de un plan en serie a través de un paralelo algunas. Conclusión, estimaciones incorrectas pueden provocar tooan degradación del rendimiento general de la ejecución de la consulta de Hola. En hello otro lado, mejor las estimaciones, estimaciones más precisas, las ejecuciones de consulta de clientes potenciales toobetter!
 
-Como se mencionó antes, las optimizaciones de consultas y las estimaciones son una cuestión compleja, pero si desea más información acerca de los planes de consulta y el calculador de cardinalidad, puede consultar el documento [Optimizing Your Query Plans with the SQL Server 2014 Cardinality Estimator](https://msdn.microsoft.com/library/dn673537.aspx) (Optimización de los planes de consultas con el calculador de cardinalidad de SQL Server 2014) para un análisis más profundo.
+Como se mencionó antes, optimizaciones de consultas y las estimaciones son un asunto complejo, pero si desea más información acerca de los planes de consulta y Estimador de cardinalidad toolearn, puede hacer referencia a documento toohello en [optimizar los planes de consulta con hello SQL Server 2014 Estimador de cardinalidad](https://msdn.microsoft.com/library/dn673537.aspx) para un análisis más profundo.
 
 ## <a name="which-cardinality-estimation-do-you-currently-use"></a>¿Qué estimación de cardinalidad está usando actualmente?
-Para determinar con qué estimaciones de cardinalidad se ejecutan las consultas, usemos los siguientes ejemplos de consulta. Tenga en cuenta que este primer ejemplo se ejecutará en el nivel de compatibilidad 110, lo que implica el uso de las antiguas funciones de estimación de cardinalidad.
+toodetermine bajo qué estimaciones de cardinalidad se ejecutan las consultas, vamos a usar solo la consulta de hello ejemplos a continuación. Tenga en cuenta que este primer ejemplo se ejecutará en el nivel de compatibilidad 110, lo que implica el uso de Hola de funciones de estimación de cardinalidad anteriores de Hola.
 
 ```
 -- Old CE
@@ -267,13 +267,13 @@ SET STATISTICS XML OFF;
 ```
 
 
-Una vez completada la ejecución, haga clic en el vínculo XML y examine las propiedades del primer iterador como se muestra a continuación. Tenga en cuenta el nombre de propiedad llamado CardinalityEstimationModelVersion establecido actualmente en 70. Esto no significa que el nivel de compatibilidad de base de datos está establecida en la versión 7.0 de SQL Server (se establece en 110 como puede verse en las instrucciones de TSQL anteriores), pero el valor 70 simplemente representa la funcionalidad heredada de estimación de cardinalidad disponible desde SQL Server 7.0, que no ha sufrido revisiones sustanciales hasta SQL Server 2014 (que viene con un nivel de compatibilidad de 120).
+Una vez completada la ejecución, haga clic en el vínculo XML de Hola y examine las propiedades de Hola de iterador primera Hola tal y como se muestra a continuación. Nombre de la propiedad de nota Hola llama CardinalityEstimationModelVersion actualmente establecido en 70. Eso no significa que nivel de compatibilidad de base de datos de Hola se establece la versión de SQL Server 7.0 toohello (se establece en 110 como visible en las instrucciones de TSQL Hola anteriores), pero valor Hola 70 simplemente representa la funcionalidad de estimación de cardinalidad heredada de hello disponible desde SQL Server 7.0, que no tenía ningún revisiones principales hasta que SQL Server 2014 (que se incluye con un nivel de compatibilidad de 120).
 
-*Figura 4: CardinalityEstimationModelVersion está establecida en 70, cuando se usa un nivel de compatibilidad de 110 o inferior.*
+*Figura 4: Hola CardinalityEstimationModelVersion se establece too70 cuando se usa un nivel de compatibilidad de 110 o inferior.*
 
 ![Ilustración 4](./media/sql-database-compatibility-level-query-performance-130/figure-4.png)
 
-Como alternativa, puede cambiar el nivel de compatibilidad a 130 y deshabilitar el uso de la nueva función de estimación de cardinalidad usando LEGACY_CARDINALITY_ESTIMATION establecido en ON con [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) (Modificar configuración de ámbito de base de datos). Esto será exactamente lo mismo que usar 110 desde el punto de vista de una función de estimación de cardinalidad, mientras se utiliza el nivel de compatibilidad de procesamiento de consultas más reciente. De esta forma, puede beneficiarse de las nuevas características de procesamiento de consultas que vienen con el nivel de compatibilidad más reciente (es decir, el modo por lotes), y a la vez seguir dependiendo de la funcionalidad de estimación de cardinalidad anterior si es necesario.
+Como alternativa, puede cambiar too130 de nivel de compatibilidad de Hola y deshabilitar el uso de Hola de función de hello nueva estimación de cardinalidad mediante el uso de hello LEGACY_CARDINALITY_ESTIMATION establecer tooON con [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx). Esto se puede exactamente Hola igual que utilizando 110 desde un punto de vista de la función de estimación de cardinalidad, mientras que usa el nivel de compatibilidad de procesamiento de consultas más reciente de Hola. De esta forma, puede beneficiarse de nuevas con el nivel de compatibilidad más reciente de hello (es decir, el modo por lotes) características de procesamiento de consultas nuevo de hello, pero aun así, delegar en la funcionalidad de estimación de cardinalidad anterior Hola si es necesario.
 
 ```
 -- Old CE
@@ -298,7 +298,7 @@ SET STATISTICS XML OFF;
 ```
 
 
-Basta con mover el nivel de compatibilidad 120 o 130 para habilitar la nueva funcionalidad de estimación de cardinalidad. En tal caso, el valor predeterminado CardinalityEstimationModelVersion se configurará según corresponda a 120 o 130 como se puede ver a continuación.
+Mover simplemente toohello de nivel de compatibilidad 120 o 130 habilita la funcionalidad de estimación de cardinalidad nueva Hola. En tal caso, el predeterminado hello CardinalityEstimationModelVersion se establecerá en consecuencia too120 o 130 como visible.
 
 ```
 -- New CE
@@ -323,12 +323,12 @@ SET STATISTICS XML OFF;
 ```
 
 
-*Figura 5: CardinalityEstimationModelVersion está establecida en 130, cuando se usa un nivel de compatibilidad de 130.*
+*Figura 5: Hola CardinalityEstimationModelVersion se establece too130 cuando se usa un nivel de compatibilidad de 130.*
 
 ![Ilustración 5.](./media/sql-database-compatibility-level-query-performance-130/figure-5.jpg)
 
-## <a name="witnessing-the-cardinality-estimation-differences"></a>Observación de las diferencias de estimación de cardinalidad
-Ahora, vamos a ejecutar una consulta un poco más compleja que implica una INNER JOIN con una cláusula WHERE con algunos predicados, y vamos a echar un vistazo en primer lugar a la estimación del recuento de filas de la antigua función de estimación de cardinalidad.
+## <a name="witnessing-hello-cardinality-estimation-differences"></a>Diferencias de estimación de cardinalidad de Hola que hayan presenciado
+Ahora, vamos a ejecutar ligeramente más complejo que implica una operación INNER JOIN con una cláusula WHERE con algunos de los predicados de consulta y echemos un vistazo a Hola estimación del recuento de filas en función de estimación de cardinalidad anterior hello en primer lugar.
 
 ```
 -- Old CE row estimate with INNER JOIN and WHERE clause
@@ -359,13 +359,13 @@ SET STATISTICS XML OFF;
 ```
 
 
-La ejecución de esta consulta devuelve eficazmente 200.704 filas, mientras que la estimación de filas con la antigua funcionalidad de estimación de cardinalidad notifica 194.284 filas. Obviamente, como ya se dijo antes, estos resultados del recuento de filas también dependerán de la frecuencia con la que haya ejecutado los ejemplos anteriores, que rellenan las tablas de ejemplo una y otra vez en cada ejecución. Obviamente, los predicados de la consulta influirán también en la estimación real aparte de la forma de tabla, el contenido de datos, y la forma en la que estos datos s relacionan entre sí.
+Para ejecutar esta consulta eficazmente devuelve 200.704 filas, mientras la estimación de la fila de hello con funcionalidad de estimación de cardinalidad anterior Hola notificaciones 194,284 filas. Obviamente, como hemos comentado, estos resultados de recuento de filas también dependerán de la frecuencia con ejecutó Hola ejemplos anteriores, que rellena las tablas de ejemplo de Hola y otra vez en cada ejecución. Obviamente, los predicados de hello en la consulta también tendrá una influencia en la estimación real de hello excepto en forma de tabla de hello, el contenido de datos y cómo estos datos realmente correlación entre sí.
 
-*Figura 6: La estimación del número de filas es 194.284 es decir 6.000 filas menos de las 200.704 filas esperadas.*
+*Figura 6: estimación del recuento de filas Hola procede 194,284 o 6.000 filas desactivar 200.704 filas Hola esperado.*
 
 ![Ilustración 6.](./media/sql-database-compatibility-level-query-performance-130/figure-6.jpg)
 
-Del mismo modo, vamos ahora a ejecutar la misma consulta con la nueva funcionalidad de estimación de cardinalidad.
+Hola igual, vamos a ejecutar ahora Hola misma consulta con la nueva funcionalidad de estimación de cardinalidad Hola.
 
 ```
 -- New CE row estimate with INNER JOIN and WHERE clause
@@ -396,39 +396,39 @@ SET STATISTICS XML OFF;
 ```
 
 
-Mirando a continuación vemos que la estimación de filas es 202.877, es decir mucho más cercana y superior que la antigua estimación de cardinalidad.
+Examinando Hola a continuación, se pueden ver que el cálculo de esa fila de hello es 202,877, o mucho más cercano y superiores a Hola estimación de cardinalidad anterior.
 
-*Figura 7: La estimación del número de filas es ahora 202.877, en lugar de 194.284.*
+*Figura 7: estimación del recuento de filas Hola ahora es 202,877, en lugar de 194,284.*
 
 ![Ilustración 7.](./media/sql-database-compatibility-level-query-performance-130/figure-7.jpg)
 
-En realidad, el conjunto de resultados es 200.704 filas (pero todo depende de la frecuencia con la que se ejecutaron las consultas de los ejemplos anteriores, y lo que es más importante porque el TSQL utiliza la instrucción de RAND(), los valores reales que se devuelven pueden variar de una ejecución a la siguiente). Por lo tanto, en este ejemplo concreto, la nueva estimación de cardinalidad hace una mejor estimación del número de filas, no cabe duda de que 202.877 está mucho más cerca de 200.704 que 194.284. Por último, si se cambian los predicados de la cláusula WHERE para igualdad (en lugar de ">" por ejemplo), esto podría hacer que haya incluso más diferencia entre las estimaciones de la antigua y la nueva función de cardinalidad, dependiendo de las coincidencias que se obtengan.
+En realidad, el conjunto de resultados de hello es 200.704 filas (pero completamente depende de la frecuencia con ejecutó ejemplos anteriores de consultas Hola de hello, pero es más importante, porque Hola TSQL utiliza la instrucción de RAND() hello, devueltos los valores reales Hola pueden variar desde una toohello de ejecución junto). Por consiguiente, en este ejemplo concreto, hello nueva estimación de cardinalidad no más eficaces al calcular el número de Hola de filas porque 202,877 es mucho más cerca de too200, 704, que 194,284! Por último, si cambia hello tooequality de predicados de la cláusula WHERE (en lugar de ">" por ejemplo), esto podría realizar estimaciones de hello entre Hola antigua y nueva función de cardinalidad incluso más diferentes, dependiendo de cuántas coincidencias que puedas.
 
-En este caso, una diferencia de aproximadamente 6000 filas con respecto recuento real, en algunas situaciones no representa una gran cantidad de datos. Ahora, si se traspone esto a millones de filas en varias tablas y consultas más complejas, a veces, puede haber una diferencia de millones de filas en la estimación y, por lo tanto, el riesgo de seleccionar el plan de ejecución equivocado, o de solicitar concesiones de memoria insuficientes provocando desbordamientos de TempDB y con ello más operaciones de E/S, son mucho mayores.
+En este caso, una diferencia de aproximadamente 6000 filas con respecto recuento real, en algunas situaciones no representa una gran cantidad de datos. Ahora, transponer este toomillions de filas a través de varias tablas y consultas más complejas, y en ocasiones Hola estimación puede ser incorrecta millones de filas y por lo tanto, Hola a riesgo de Hola de selección de seguridad incorrecto de plan de ejecución, o la solicitud de memoria insuficiente concede inicial los volcados de tooTempDB y por lo que más i/OS, son mucho mayores.
 
-Si tiene oportunidad practique esta comparación con sus consultas y conjuntos de datos más habituales, y vea por usted mismo la diferencia entre las estimaciones nuevas y las antiguas, mientras que algunas se pueden alejar más de la realidad, en otras se acerca más al recuento real devuelto en los conjuntos de resultados. Todo dependerá de la forma de las consultas, las características de base de datos SQL de Azure, la naturaleza y el tamaño de los conjuntos de datos y las estadísticas disponibles sobre ellos. Si acaba de crear la instancia de Base de datos SQL de Azure, el optimizador de consultas tendrá que generar su conocimiento desde cero en lugar de reutilizar las estadísticas de las ejecuciones de consultas anteriores. Por lo tanto, las estimaciones son muy contextuales y casi específicas para cada situación de aplicación y servidor. Es un aspecto importante que no hay que olvidar.
+Si tiene la oportunidad de hello, esta comparación con las consultas más frecuentes y los conjuntos de datos de procedimientos y descubrir por sí mismo cuánto algunas de las estimaciones nuevos y antiguos de Hola se ven afectados, mientras que algunos simplemente dejen de estar más desactivado en realidad de Hola o algunos otros simplemente Cuanto más se acerque toohello real de la fila cuenta realmente devueltos en los conjuntos de resultados de Hola. Completamente dependerán de la forma de Hola de consultas, las características de base de datos de SQL Azure Hola, naturaleza Hola y tamaño de Hola de conjuntos de datos y estadísticas de hello disponibles sobre ellos. Si acaba de crear la instancia de base de datos de SQL Azure, realice una consulta de hello optimizador tendrá toobuild ejecuta su conocimiento desde cero en lugar de reutilizar las estadísticas formadas consulta anterior Hola. Por lo tanto, las estimaciones de hello son situación de servidor y la aplicación de tooevery muy contextuales y casi específico. Es un tookeep aspecto importante en mente.
 
-## <a name="some-considerations-to-take-into-account"></a>Algunas consideraciones a tener en cuenta
-Aunque la mayoría de las cargas se benefician del nivel de compatibilidad 130, antes de adoptar el nivel de compatibilidad para el entorno de producción, tiene básicamente 3 opciones:
+## <a name="some-considerations-tootake-into-account"></a>Algunos tootake consideraciones en cuenta
+Aunque la mayoría de las cargas de trabajo se beneficiarían de nivel de compatibilidad de hello 130, antes de la adopción de nivel de compatibilidad de hello para el entorno de producción, básicamente tiene 3 opciones:
 
-1. Mover al nivel de compatibilidad 130 y ver cómo funciona todo. Si nota algunas regresiones simplemente vuelva a establecer la compatibilidad de nivel en el nivel original, o mantenga el nivel 130 y devuelva solo la estimación de cardinalidad al modo heredado (como se explicó anteriormente, esto por sí solo podría solucionar el problema).
-2. Probar detalladamente las aplicaciones existentes con una carga similar a la de producción, ajustar y validar el rendimiento antes de pasar a producción. En el caso de que aparezcan problemas, igual que en el caso anterior, siempre puede volver al nivel de compatibilidad original, o simplemente devolver la estimación de cardinalidad al modo heredado.
-3. Como última opción, y la forma más reciente resolver estas cuestiones, puede aprovechar el Almacén de consultas. Esta es la opción recomendada en este momento. Para ayudarle en el análisis de las consultas con el nivel de compatibilidad 120 o inferior frente al nivel 130, no podemos insistir lo suficiente en nuestra recomendación de que use el Almacén de consultas. El Almacén de consultas está disponible con la versión más reciente de Base de datos SQL de Azure V12 y se ha diseñado para ayudarle a solucionar problemas de rendimiento de las consultas. Piense en el Almacén de consultas como una caja negra para la base de datos en donde se recopila y presenta información detallada del historial de todas las consultas. Esto simplifica enormemente el análisis forense del rendimiento, reduciendo el tiempo de diagnóstico y la resolución de problemas. Puede encontrar más información en [A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/)(Una caja negra para la base de datos).
+1. Mover el nivel de toocompatibility 130 y vea cómo realizan cosas. En caso de que observe algunas regresiones, simplemente establezca tooits atrás de hello compatibilidad nivel nivel original, o mantener 130 y sólo invertir modo heredado de hello estimación de cardinalidad toohello back-(como se explicó anteriormente, esto solo podría solucionar Hola problema).
+2. Probar exhaustivamente las aplicaciones existentes en la carga de producción similares, ajustar y validar el rendimiento de hello antes de ir tooproduction. En el caso de problemas, igual que el anterior, puede siempre volver atrás toohello nivel de compatibilidad original, o simplemente invertir modo heredado de hello estimación de cardinalidad toohello atrás.
+3. Como última opción y Hola tooaddress más reciente de manera estas preguntas, es el almacén de consultas de hello tooleverage. Esta es la opción recomendada en este momento. análisis de hello tooassist de las consultas con la compatibilidad con nivel 120 o por debajo frente a 130, no le recomendamos suficiente toouse almacén de consultas. Almacén de consultas está disponible con la versión más reciente de Hola de V12 de base de datos de SQL Azure, y está diseñada toohelp, con la solución de problemas de rendimiento de consulta. Considerar Hola almacén de consultas como una caja negra de datos para la base de datos, recopilar y presentar información histórica detallada sobre todas las consultas. En gran medida Esto simplifica el análisis forense de rendimiento reduciendo Hola tiempo toodiagnose y resolver problemas. Puede encontrar más información en [A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/)(Una caja negra para la base de datos).
 
-En el nivel superior, si ya tiene un conjunto de bases de datos que se ejecuta en el nivel de compatibilidad 120 o por debajo y planea cambiar algunas de ellas a 130, o si la carga de trabajo aprovisiona automáticamente nuevas bases de datos que pronto se establecerán de forma predeterminada en el nivel 130, tenga en cuenta lo siguiente:
+En alto nivel, si ya tiene un conjunto de bases de datos que se ejecuta en el nivel de compatibilidad 120 o por debajo y planear toomove Hola algunas de ellas too130, o porque la carga de trabajo aprovisionar automáticamente nuevas bases de datos que se va convertirse establecido por too130 de manera predeterminada, considere la posibilidad de siguiente Hello:
 
-* Antes de cambiar al nuevo nivel de compatibilidad en producción, habilite el Almacén de consultas. Puede consultar [Change the Database Compatibility Mode and Use the Query Store](https://msdn.microsoft.com/library/bb895281.aspx) (Cambio del modo de compatibilidad de la base de datos y uso del Almacén de consultas) para más información.
-* A continuación, pruebe todas las cargas de trabajo críticas con datos representativos y las consultas en un entorno similar al de producción y compare el rendimiento que ha experimentado y la información proporcionada por el Almacén de consultas. Si se producen algunas regresiones, puede identificar las consultas con regresión con el Almacén de consultas y utilizar la opción para forzar el plan del Almacén de consultas (también conocido como plan de anclaje). En este caso, permanezca con el nivel de compatibilidad 130 y use el plan de consulta anterior como sugiere el Almacén de consultas.
-* Si desea aprovechar las nuevas características y capacidades de Base de datos SQL de Azure (que ejecuta SQL Server 2016), pero es susceptible en relación a los cambios realizados por el nivel de compatibilidad 130, como último recurso, puede considerar la posibilidad de forzar el nivel de compatibilidad para volver al nivel que mejor se adapte a su carga de trabajo usando una instrucción ALTER DATABASE. Pero en primer lugar, tenga en cuenta que la opción de anclaje de plan de Almacén de consultas es la mejor opción, porque no usar el nivel 130 es básicamente mantenerse en el nivel de funcionalidad de una versión anterior de SQL Server.
-* Si tiene aplicaciones multiinquilinos que abarcan varias bases de datos, puede ser necesario actualizar la lógica de aprovisionamiento de las bases de datos para asegurar un nivel de compatibilidad coherente en todas las bases de datos, las antiguas y las creadas recientemente. El rendimiento de carga de trabajo de su aplicación podría ser sensible al hecho de que algunas bases de datos se ejecutan en niveles diferentes de compatibilidad y, por lo tanto, podría ser necesaria la coherencia de nivel de compatibilidad en cualquier base de datos con el fin de proporcionar la misma experiencia a todos los clientes. Tenga en cuenta que esto no es obligatorio, realmente depende de cómo afecte el nivel de compatibilidad a la aplicación.
-* Por último, con respecto a la estimación de cardinalidad, igual que con el cambio de nivel de compatibilidad, antes de proceder con los cambios en el nivel de producción, se recomienda probar la carga de trabajo de producción en las nuevas condiciones para determinar si la aplicación se beneficia de las mejoras de estimación de cardinalidad.
+* Antes de cambiar toohello nuevo nivel de compatibilidad en producción, habilite el almacén de consultas. Puede hacer referencia demasiado[cambiar el almacén de consultas de Hola de modo de compatibilidad de base de datos y el uso hello](https://msdn.microsoft.com/library/bb895281.aspx) para obtener más información.
+* A continuación, pruebe todas estas cargas de trabajo con datos representativos y las consultas de un entorno de producción similar y compare el rendimiento de hello experimentó así como información proporcionada por el almacén de consultas. Si se producen algunas regresiones, puede identificar Hola consultas devueltas con hello almacén de consultas y usar la opción de almacén de consultas de forzado de plan de hello (también conocido como plan de anclaje). En tal caso, definitivamente permanecerá con el nivel de compatibilidad de hello 130 y utilizar el plan de consulta anterior de hello tal como se sugiere por hello almacén de consultas.
+* Si desea tooleverage nuevas características y funcionalidad de la base de datos de SQL de Azure (que se está ejecutando SQL Server 2016), pero son confidenciales toochanges pone el nivel de compatibilidad de hello 130, como último recurso, podría considerar la posibilidad de forzar el nivel de compatibilidad Hola nivel de toohello que se ajuste a la carga de trabajo mediante el uso de una instrucción ALTER DATABASE. Pero en primer lugar, tenga en cuenta ese plan de almacén de consultas de hello fijar opción es la mejor opción porque no utiliza 130 básicamente se mantiene en el nivel de funcionalidad de Hola de una versión anterior de SQL Server.
+* Si tiene aplicaciones para varios inquilinos que abarcan varias bases de datos, es posible hello tooupdate necesarios aprovisionamiento lógica de su tooensure de bases de datos un nivel de compatibilidad coherente en todas las bases de datos; los antiguos y recién suministrados. El rendimiento de carga de trabajo de la aplicación podría ser hechos toohello confidenciales que algunas bases de datos se ejecutan en los niveles de compatibilidad diferentes, y por lo tanto, podría ser necesaria la coherencia de nivel de compatibilidad a través de cualquier base de datos en orden tooprovide Hola igual experiencia de clientes tooyour todo en el tablero de Hola. Tenga en cuenta que no es obligatorio, realmente depende de cómo su aplicación se ve afectada por el nivel de compatibilidad de Hola.
+* Por último, con respecto a la estimación de cardinalidad de hello y, como cambiar el nivel de compatibilidad de hello, antes de continuar en producción, es recomendable tootest la carga de trabajo de producción en hello nuevas condiciones toodetermine si su aplicación se beneficia de mejoras de estimación de cardinalidad de Hola.
 
 ## <a name="conclusion"></a>Conclusión
-El uso de Base de datos SQL de Azure para beneficiarse de todas las mejoras de SQL Server 2016 puede mejorar claramente sus ejecuciones de consultas. Así de simple. Por supuesto, al igual que con cualquier característica nueva, tiene que realizarse una evaluación adecuada para determinar las condiciones exactas en las que la carga de trabajo de la base de datos funciona mejor. La experiencia demuestra que es de esperar que la mayoría de las cargas de trabajo se ejecuten al menos de forma transparente en el nivel de compatibilidad 130, mientras se aprovechan las nuevas funciones de procesamiento de consultas y la nueva estimación de cardinalidad. De todas formas, siendo realistas, siempre hay algunas excepciones y actuar con la debida diligencia es una valoración importante para determinar cuánto puede beneficiarse de estas mejoras. Y repetimos que el Almacén de consultas puede ser una gran ayuda para realizar este trabajo.
+Uso de base de datos de SQL Azure toobenefit de todas las mejoras de SQL Server 2016 puede mejorar claramente las ejecuciones de la consulta. Así de simple. Por supuesto, como ocurre con cualquier característica nueva, una evaluación adecuada debe realizarse en la que la carga de trabajo de la base de datos funciona Hola mejor condiciones toodetermine Hola exactas. Experiencia muestra que la mayoría de la carga de trabajo son tooat esperado menos ejecutan de forma transparente en el nivel de compatibilidad 130, mientras aprovecha las funciones y la nueva estimación de cardinalidad de procesamiento de consultas nuevas. Que dice, de forma realista, siempre hay algunas excepciones y realizar vencimiento apropiado diligencia es un toodetermine de evaluación importante cuánto puede beneficiarse de estas mejoras. Y una vez más, almacén de consultas de Hola de puede ser de gran ayuda para realizar este trabajo.
 
-A medida que SQL Azure evoluciona, se puede esperar un nivel de compatibilidad 140 en el futuro. Cuando el momento sea apropiado, empezaremos a hablar de lo que aportará este futuro nivel de compatibilidad 140, igual que hemos explicado brevemente aquí lo que el nivel de compatibilidad 130 aporta hoy.
+Medida que evoluciona SQL Azure, puede esperar un nivel de compatibilidad 140 Hola futuras. Cuando el momento sea apropiado, empezaremos a hablar de lo que aportará este futuro nivel de compatibilidad 140, igual que hemos explicado brevemente aquí lo que el nivel de compatibilidad 130 aporta hoy.
 
-Por ahora, no olvide que a partir de junio de 2016, Base de datos SQL de Azure cambiará el nivel de compatibilidad predeterminado de 120 a 130 para las bases de datos de nueva creación. ¡Prepárese!
+Por ahora, no se olvide, a partir de junio de 2016, base de datos de SQL Azure dejará nivel de compatibilidad de saludo predeterminado de 120 too130 para bases de datos recién creadas. ¡Prepárese!
 
 ## <a name="references"></a>Referencias
 * [Novedades (motor de base de datos)](https://msdn.microsoft.com/library/bb510411.aspx#InMemory)
@@ -436,7 +436,7 @@ Por ahora, no olvide que a partir de junio de 2016, Base de datos SQL de Azure c
 * [Nivel de compatibilidad de ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/bb510680.aspx)
 * [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx)
 * [Compatibility Level 130 for Azure SQL Database V12](https://azure.microsoft.com/updates/compatibility-level-130-for-azure-sql-database-v12/)
-* [Optimizing Your Query Plans with the SQL Server 2014 Cardinality Estimator](https://msdn.microsoft.com/library/dn673537.aspx)
+* [Optimizar los planes de consulta con hello Estimador de cardinalidad de SQL Server 2014](https://msdn.microsoft.com/library/dn673537.aspx)
 * [Descripción de los índices de almacén de columnas](https://msdn.microsoft.com/library/gg492088.aspx)
 * [Blog: Improved Query Performance with Compatibility Level 130 in Azure SQL Database (Rendimiento mejorado de consultas con el nivel de compatibilidad 130 en Base de datos SQL de Azure) por Alain Lissoir, 6 de mayo de 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/05/06/improved-query-performance-with-compatibility-level-130-in-azure-sql-database/)
 

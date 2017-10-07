@@ -1,5 +1,5 @@
 ---
-title: Expresiones de etiqueta y enrutamiento
+title: aaaRouting y expresiones de etiqueta
 description: En este tema se explican las expresiones de etiqueta y enrutamiento de los Centros de notificaciones de Azure.
 services: notification-hubs
 documentationcenter: .net
@@ -14,34 +14,34 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 18faa88641623e1248d6a33bc2d87099e1c9f624
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c2c60500f7469f1cb1a73a5cf63c221a9ad6cbb4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="routing-and-tag-expressions"></a>Expresiones de etiqueta y enrutamiento
 ## <a name="overview"></a>Información general
-Las expresiones de etiqueta le permiten dirigirse a conjuntos específicos de dispositivos, o más específicamente a registros, al enviar una notificación push a través de Centros de notificaciones.
+Expresiones de etiqueta permiten tootarget conjuntos específicos de dispositivos, o más específicamente registros, al enviar una notificación de inserción a través de los centros de notificaciones.
 
 ## <a name="targeting-specific-registrations"></a>Selección del destino de registros específicos
-La única forma de seleccionar el destino de registros de notificaciones específicos es asociar etiquetas con ellos y, a continuación, seleccionar el destino de esas etiquetas. Como se describe en [Administración de registros](notification-hubs-push-notification-registration-management.md), con el fin de recibir notificaciones de inserción, una aplicación tiene que registrar un identificador de dispositivo en un centro de notificaciones. Una vez que se crea un registro en un centro de notificaciones, el back-end de la aplicación puede enviar notificaciones de inserción a este.
-El back-end de la aplicación puede elegir a qué registros dirigirse con una notificación específica de las maneras siguientes:
+Hello solo forma tootarget notificación específica registros es tooassociate etiquetas con ellos, a continuación, tener como destino esas etiquetas. Como se describe en [administración de registro](notification-hubs-push-notification-registration-management.md), en la inserción de pedido tooreceive controlen las notificaciones de una aplicación tiene tooregister un dispositivo en un centro de notificaciones. Una vez que se crea un registro en un centro de notificaciones, el back-end de hello aplicación puede enviar tooit de notificaciones de inserción.
+back-end de Hello aplicación puede elegir Hola registros tootarget con una notificación específica de hello siguientes maneras:
 
-1. **Difusión**: todos los registros del centro de notificaciones reciben la notificación.
-2. **Etiquetar**: todos los registros que contienen la etiqueta especificada reciben la notificación.
-3. **Expresión de etiqueta**: todos los registros cuyo conjunto de etiquetas coincide con la expresión especificada reciben la notificación.
+1. **Difusión**: todos los registros en el centro de notificaciones de Hola reciban una notificación de Hola.
+2. **Etiqueta**: todos los registros que contienen Hola especificado etiqueta recibir una notificación de Hola.
+3. **Expresión de etiqueta**: todos los registros cuyo conjunto de coincidencia de etiquetas Hola expresión especificada reciben notificación Hola.
 
 ## <a name="tags"></a>Etiquetas
-Una etiqueta puede ser cualquier cadena, hasta 120 caracteres, que contiene y los siguientes caracteres no alfanuméricos: '_', ' @', '#', '. ',':', '-'. En el ejemplo siguiente se muestra una aplicación desde la que puede recibir notificaciones del sistema sobre grupos musicales específicos. En este escenario, una manera sencilla de enrutar notificaciones es etiquetar los registros con etiquetas que representan las distintas bandas, como se muestra en la siguiente imagen.
+Una etiqueta puede ser cualquier cadena, los caracteres de too120, que contiene alfanuméricos y Hola siguientes caracteres no alfanuméricos: '_', ' @', '#', '. ',':', '-'. Hello en el ejemplo siguiente se muestra una aplicación desde el que puede recibir notificaciones del sistema sobre grupos musicales específicos. En este escenario, un notificaciones de tooroute de manera sencilla es toolabel registros con etiquetas que representan distintas bandas hello, como en hello después de la imagen.
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
-En esta imagen, el mensaje etiquetado **Beatles** llega solamente a la tableta registrada con la etiqueta **Beatles**.
+En esta imagen, el mensaje de Hola etiquetado **Beatles** tableta Hola solo alcanza registrada con etiqueta de hello **Beatles**.
 
 Para obtener más información acerca de la creación de registros de etiquetas, consulte [Administración de registros](notification-hubs-push-notification-registration-management.md).
 
-Puede enviar notificaciones a etiquetas mediante los métodos de las notificaciones de envío de la clase `Microsoft.Azure.NotificationHubs.NotificationHubClient` en el SDK de [Centros de notificaciones de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) . También puede usar Node.js o las API de REST de notificaciones de inserción.  A continuación se facilita un ejemplo mediante el uso del SDK.
+Se puede enviar tootags notificaciones mediante Hola métodos de las notificaciones de hello `Microsoft.Azure.NotificationHubs.NotificationHubClient` clase Hola [centros de notificaciones de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. También puede usar Node.js, u Hola API de REST de notificaciones de inserción.  Este es un ejemplo con hello SDK.
 
     Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
 
@@ -58,36 +58,36 @@ Puede enviar notificaciones a etiquetas mediante los métodos de las notificacio
 
 
 
-Las etiquetas no tienen que aprovisionarse previamente y pueden hacer referencia a varios conceptos específicos de la aplicación. Por ejemplo, los usuarios de esta aplicación de ejemplo pueden comentar sobre bandas y desean recibir notificaciones del sistema, no solo de los comentarios sobre sus bandas preferidas, sino también de todos los comentarios de sus amigos, independientemente de la banda sobre la que estén comentando. En la siguiente imagen se muestra un ejemplo de este escenario:
+Las etiquetas no tiene toobe aprovisionado previamente y pueden hacer referencia los conceptos de toomultiple específico de la aplicación. Por ejemplo, los usuarios de esta aplicación de ejemplo pueden comentar sobre bandas y desea tooreceive notificaciones del sistema, no solo para los comentarios de Hola en sus bandas preferidas, sino también para todos los comentarios de sus amigos, independientemente de la banda de hello en el que desea hacer comentarios. Hola siguiente imagen muestra un ejemplo de este escenario:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
 
-En esta imagen, Ana está interesada en recibir actualizaciones sobre los Beatles y Pedro está interesado en las actualizaciones sobre los Wailers. Bob también está interesado en los comentarios de Juan Carlos, y Juan Carlos está interesado en los Wailers. Cuando se envía una notificación sobre el comentario de Juan Carlos acerca de los Beatles, Ana y Pedro la reciben.
+En esta imagen, Alice está interesada en las actualizaciones de hello Beatles y Bob está interesado en las actualizaciones de hello Wailers. Bob también está interesado en comentarios de Charlie, y Charlie está interesado en hello Wailers. Cuando se envía una notificación de comentario de Charlie sobre Hola Beatles, Alice y Bob recibirlo.
 
-Aunque se pueden codificar varios intereses en etiquetas (por ejemplo, "banda_Beatles" o "sigue_Juan Carlos"), las etiquetas son cadenas simples y no propiedades con valores. Los registros coinciden solo con la presencia o ausencia de una etiqueta específica.
+Aunque se pueden codificar varios intereses en etiquetas (por ejemplo, "banda_Beatles" o "sigue_Juan Carlos"), las etiquetas son cadenas simples y no propiedades con valores. Un registro coincide solo con hello presencia o ausencia de una etiqueta específica.
 
-Para obtener un tutorial completo detallado sobre cómo usar etiquetas para enviar a grupos de interés, consulte [Noticias de última hora](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
+Para obtener un tutorial completo paso a paso sobre cómo toouse etiquetas para enviar toointerest grupos, consulte [noticias de última hora](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
-## <a name="using-tags-to-target-users"></a>Uso de etiquetas para los usuarios de destino
-Otra forma de usar etiquetas es identificar todos los dispositivos de un usuario concreto. Los registros se pueden etiquetar con una etiqueta que contenga un identificador de usuario, como se muestra en la siguiente imagen:
+## <a name="using-tags-tootarget-users"></a>Use etiquetas tootarget usuarios
+Etiquetas de toouse de otra manera es tooidentify todos los dispositivos de Hola de un usuario concreto. Los registros se pueden etiquetar con una etiqueta que contiene un identificador de usuario, como en hello después de imagen:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-En esta imagen, el mensaje etiquetado mediante uid:Ana llega a todos los registros etiquetados como uid:Ana; por lo tanto, a todos los dispositivos de Ana.
+En esta imagen, etiquetada de mensaje de Hola UID: Alice llega a todos los registros etiquetados UID: Alice; por lo tanto, todos los dispositivos de Alice.
 
 ## <a name="tag-expressions"></a>Expresiones de etiqueta
-Hay casos en que una notificación tiene como destino un conjunto de registros identificado no por una sola etiqueta, sino por una expresión booleana en las etiquetas.
+Hay casos en que una notificación tiene tootarget un conjunto de registros identificado no por una sola etiqueta, sino por una expresión booleana en las etiquetas.
 
-Tome una aplicación de deportes que envía un recordatorio a todas las personas de Boston sobre un partido entre los Red Sox y los Cardinals. Si la aplicación cliente registra etiquetas sobre intereses en equipos y ubicaciones, la notificación deberá dirigirse a todas las personas de Boston interesadas en los Red Sox o en los Cardinals. Esta condición se puede expresar mediante la siguiente expresión booleana:
+Considere la posibilidad de una aplicación de deportes que envía un recordatorio tooeveryone en Boston sobre un partido entre Hola Red Sox y Cardinals. Si la aplicación de cliente de hello registra etiquetas sobre interés en los equipos y la ubicación, notificación de hello debe ser destino tooeveryone en Boston interesadas en hello Red Sox u Hola Cardinals. Esta condición se puede expresar con hello siguiente expresión booleana:
 
     (follows_RedSox || follows_Cardinals) && location_Boston
 
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
 
-Las expresiones de etiqueta pueden contener todos los operadores booleanos, por ejemplo, AND (& &), OR (||) y NOT (!). También pueden contener paréntesis. Las expresiones de etiqueta se limita a 20 etiquetas si contienen solamente OR; de lo contrario, se limitan a 6 etiquetas.
+Las expresiones de etiqueta pueden contener todos los operadores booleanos, por ejemplo, AND (& &), OR (||) y NOT (!). También pueden contener paréntesis. Expresiones de etiqueta están limitados too20 etiquetas si contienen solo or; en caso contrario, son etiquetas too6 limitado.
 
-A continuación se muestra un ejemplo de envío de notificaciones con expresiones de etiqueta mediante el SDK.
+Este es un ejemplo para enviar notificaciones con expresiones de etiqueta con hello SDK.
 
     Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
 
@@ -95,10 +95,10 @@ A continuación se muestra un ejemplo de envío de notificaciones con expresione
 
     // Windows 8.1 / Windows Phone 8.1
     var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
-    "You want info on the Red Socks</text></binding></visual></toast>";
+    "You want info on hello Red Socks</text></binding></visual></toast>";
     outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
 
     // Windows 10
     toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
-    "You want info on the Red Socks</text></binding></visual></toast>";
+    "You want info on hello Red Socks</text></binding></visual></toast>";
     outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);

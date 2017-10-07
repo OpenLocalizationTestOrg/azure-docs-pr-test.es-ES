@@ -1,5 +1,5 @@
 ---
-title: "Optimización de transacciones para SQL Data Warehouse | Microsoft Docs"
+title: las transacciones de aaaOptimizing de almacenamiento de datos SQL | Documentos de Microsoft
 description: "Guía de procedimientos recomendados sobre la escritura de actualizaciones de transacciones eficientes en Almacenamiento de datos SQL de Azure"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,36 +15,36 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: f9f19d75a37351b3562ce8c2f3629df14c5437c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a821161711db9460b7e10d3cf7ba498d711448b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="optimizing-transactions-for-sql-data-warehouse"></a>Optimización de transacciones para Almacenamiento de datos SQL
-En este artículo se explica cómo optimizar el rendimiento del código transaccional minimizando al mismo tiempo el riesgo de que se produzcan reversiones extensas.
+Este artículo explica cómo toooptimize Hola rendimiento del código transaccional al minimizar el riesgo de reversión largo.
 
 ## <a name="transactions-and-logging"></a>Transacciones y registro
-Las transacciones son un componente importante de un motor de base de datos relacional. Almacenamiento de datos SQL usa transacciones durante la modificación de los datos. Estas transacciones pueden ser explícitas o implícitas. Las instrucciones `INSERT`, `UPDATE` y `DELETE` son ejemplos de transacciones implícitas. Un desarrollador escribe explícitamente las transacciones explícitas con `BEGIN TRAN`, `COMMIT TRAN` o `ROLLBACK TRAN`; normalmente, estas transacciones se utilizan cuando es necesario vincular varias instrucciones de modificación entre sí en una unidad atómica única. 
+Las transacciones son un componente importante de un motor de base de datos relacional. Almacenamiento de datos SQL usa transacciones durante la modificación de los datos. Estas transacciones pueden ser explícitas o implícitas. Las instrucciones `INSERT`, `UPDATE` y `DELETE` son ejemplos de transacciones implícitas. Las transacciones explícitas se escriben explícitamente por un desarrollador que utiliza `BEGIN TRAN`, `COMMIT TRAN` o `ROLLBACK TRAN` y se usan normalmente cuando varias instrucciones de modificación necesitan toobe unido entre sí en una unidad atómica única. 
 
-Almacenamiento de datos SQL de Azure confirma los cambios en la base de datos con registros de transacciones. Cada distribución tiene su propio registro de transacciones. Las escrituras en el registro de transacciones son automáticas. No es necesario realizar ninguna configuración. Sin embargo, si bien este proceso garantiza la escritura, introduce una sobrecarga en el sistema. Para minimizar este impacto, puede escribir código transaccionalmente eficiente. De forma amplia, un código transaccionalmente eficiente pertenece en dos categorías.
+Almacenamiento de datos de SQL Azure confirma la base de datos de cambios toohello mediante registros de transacciones. Cada distribución tiene su propio registro de transacciones. Las escrituras en el registro de transacciones son automáticas. No es necesario realizar ninguna configuración. Sin embargo, mientras que este proceso garantiza la escritura de hello agrega una sobrecarga en el sistema de Hola. Para minimizar este impacto, puede escribir código transaccionalmente eficiente. De forma amplia, un código transaccionalmente eficiente pertenece en dos categorías.
 
 * Aproveche las construcciones con registro mínimo, siempre que sea posible.
-* Procese datos con lotes con ámbito para evitar transacciones singulares de larga ejecución.
-* Adopte un modelo de conmutación de particiones para realizar grandes modificaciones en una partición determinada.
+* Procesamiento de datos con ámbito singular de lotes tooavoid transacciones de larga ejecución
+* Adoptar un modelo para tooa grandes modificaciones dada la partición de conmutación de particiones
 
 ## <a name="minimal-vs-full-logging"></a>Registro mínimo frente a registro completo
-A diferencia de las operaciones con registro completo, que usan el registro de transacciones para realizar un seguimiento de cada cambio en las filas, las operaciones con registro mínimo solo realizan un seguimiento de las asignaciones de extensión y los cambios en los metadatos. Por lo tanto, el registro mínimo implica registrar solo la información necesaria para revertir la transacción si se produce un error o una solicitud explícita (`ROLLBACK TRAN`). Puesto que se realiza un seguimiento de mucha menos información en el registro de transacciones, una operación con registro mínimo funciona mejor que una operación con registro completo de tamaño similar. Además, dado que menos escrituras van al registro de transacciones, se genera una cantidad mucho menor de datos de registro y sus operaciones de E/S son más eficientes.
+A diferencia de las operaciones de registro completo, que usan Hola transacciones registro tookeep realizar un seguimiento de cada cambio en la fila, realizar un seguimiento de las operaciones registradas al mínimo las asignaciones de extensiones y solo los cambios de metadatos. Por lo tanto, el registro mínimo implica registrar únicamente la información de Hola que sea necesario toorollback Hola transacciones en caso de hello de un error o una solicitud explícita (`ROLLBACK TRAN`). Como mucho menos se realiza un seguimiento de información de registro de transacciones de hello, una operación registrada al mínimo se comporta mejor que una operación completamente registrada dimensiones similares. Además, dado que escribe menos dejan de registro de transacciones de hello, se genera una menor cantidad de datos de registro y por lo que es más i/OS eficaz.
 
-Los límites de seguridad de la transacción solo se aplican a las operaciones de registro completo.
+límites de seguridad de transacciones de Hello solo aplican operaciones toofully iniciado.
 
 > [!NOTE]
-> Las operaciones con registro mínimo pueden participar en transacciones explícitas. Puesto que se realiza el seguimiento de todos los cambios en las estructuras de asignación, es posible revertir las operaciones con registro mínimo. Es importante comprender que el cambio se registra "mínimamente", no se elimina el registro.
+> Las operaciones con registro mínimo pueden participar en transacciones explícitas. Tal y como se realiza el seguimiento de todos los cambios en las estructuras de asignación, es posible tooroll back mínimamente las operaciones registradas. Es importante toounderstand que el cambio de hello es "mínimo" optimizado no se ha iniciado sin.
 > 
 > 
 
 ## <a name="minimally-logged-operations"></a>Operaciones con registro mínimo
-Las siguientes operaciones admiten el registro mínimo:
+Hello operaciones siguientes son capaces de que se va a registrar mínimamente:
 
 * CREATE TABLE AS SELECT ([CTAS][CTAS])
 * INSERT..SELECT
@@ -62,12 +62,12 @@ Las siguientes operaciones admiten el registro mínimo:
 -->
 
 > [!NOTE]
-> Las operaciones de movimiento de datos internos (como `BROADCAST` y `SHUFFLE`) no se ven afectados por el límite de seguridad de la transacción.
+> Las operaciones de movimiento de datos internos (como `BROADCAST` y `SHUFFLE`) no se ven afectadas por el límite de seguridad de transacciones de Hola.
 > 
 > 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Registro mínimo con carga masiva
-`CTAS` y `INSERT...SELECT` son operaciones de carga masiva. Sin embargo, ambas se ven afectadas por la definición de la tabla de destino y dependen del escenario de carga. A continuación se muestra una tabla que explica si la operación masiva tendrá un registro completo o mínimo:  
+`CTAS` y `INSERT...SELECT` son operaciones de carga masiva. Sin embargo, ambas se ven afectadas por la definición de tabla de destino de Hola y dependen de escenario de carga de Hola. A continuación se muestra una tabla que explica si la operación masiva tendrá un registro completo o mínimo:  
 
 | Índice principal | Escenario de carga | Modo de registro |
 | --- | --- | --- |
@@ -78,22 +78,22 @@ Las siguientes operaciones admiten el registro mínimo:
 | Índice de almacén de columnas agrupado |Tamaño del lote > = 102.400 por cada distribución con particiones alineadas |**Mínimo** |
 | Índice de almacén de columnas agrupado |Tamaño del lote < = 102.400 por cada distribución con particiones alineadas |Completo |
 
-Conviene tener en cuenta que cualquier escritura para actualizar índices secundarios o no agrupados será siempre una operación con registro completo.
+Merece la pena indicar que todas las escrituras tooupdate secundaria o no clúster índices siempre estará totalmente las operaciones registran.
 
 > [!IMPORTANT]
-> Almacenamiento de datos SQL tiene 60 distribuciones. Por lo tanto, suponiendo que todas las filas tengan una distribución uniforme y una sola partición como destino, el lote deberá contener 6.144.000 filas o más para un registro mínimo cuando se escribe en un índice de almacén de columnas agrupado. Si la tabla tiene particiones y las filas que se insertan traspasan los límites de las particiones, serán necesarias 6 144 000 filas por límite de partición, lo que supone una distribución de datos uniforme. Cada partición de cada distribución debe superar de forma independiente el umbral de 102.400 filas para que la inserción se registre mínimamente en la distribución.
+> Almacenamiento de datos SQL tiene 60 distribuciones. Por lo tanto, suponiendo que todas las filas se distribuyen uniformemente y de inicio en una sola partición, el lote deberá toocontain 6,144,000 filas o toobe mayor mínimamente registrados al escribir tooa Clustered Columnstore Index. Si tiene particiones tabla hello y filas de Hola que se insertan abarcan límites de la partición, deberá 6,144,000 filas por límite de la partición suponiendo que incluso la distribución de datos. Cada partición de cada distribución independientemente debe sobrepasan el umbral de fila 102.400 de Hola para hello insert toobe mínimamente en distribución Hola.
 > 
 > 
 
-A menudo, la carga de datos en una tabla no vacía con un índice agrupado puede contener una mezcla de filas con registro completo y filas con registro mínimo. Un índice agrupado es un árbol equilibrado (árbol B) de las páginas. Si la página que se escribe ya contiene filas de otra transacción, estas escrituras se registrarán completamente. Sin embargo, si la página está vacía, la escritura en esa página se registrará mínimamente.
+A menudo, la carga de datos en una tabla no vacía con un índice agrupado puede contener una mezcla de filas con registro completo y filas con registro mínimo. Un índice agrupado es un árbol equilibrado (árbol B) de las páginas. Si se escribe página hello tooalready contiene filas de otra transacción, a continuación, estas escrituras totalmente registrarán. Sin embargo, si Hola página está vacía, a continuación, página de toothat de escritura de hello mínimamente registrará.
 
 ## <a name="optimizing-deletes"></a>Optimización de eliminaciones
-`DELETE` es una operación con registro completo.  Si necesita eliminar una gran cantidad de datos de una tabla o una partición, suele tener más sentido realizar una instrucción `SELECT` en los datos que desea conservar, que pueden ejecutarse como operación con registro completo.  Para ello, cree una nueva tabla con [CTAS][CTAS].  Cuando lo haga, utilice [RENAME][RENAME] para intercambiar la tabla por la que se acaba de crear.
+`DELETE` es una operación con registro completo.  Si necesita toodelete una gran cantidad de datos en una tabla o una partición, resulta más conveniente demasiado`SELECT` datos Hola desea tookeep, que se puede ejecutar como una operación registrada al mínimo.  tooaccomplish esto, cree una nueva tabla con [CTAS][CTAS].  Una vez creado, use [cambiar el nombre de] [ RENAME] tooswap fuera de la tabla anterior con la tabla de hello recién creado.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
 
---Step 01. Create a new table select only the records we want to kep (PromotionKey 2)
+--Step 01. Create a new table select only hello records we want tookep (PromotionKey 2)
 CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
@@ -113,20 +113,20 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
-RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
-RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
+--Step 02. Rename hello Tables tooreplace hello 
+RENAME OBJECT [dbo].[FactInternetSales]   too[FactInternetSales_old];
+RENAME OBJECT [dbo].[FactInternetSales_d] too[FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optimización de actualizaciones
-`UPDATE` es una operación con registro completo.  Si necesita actualizar un gran número de filas de una tabla o una partición, suele ser mucho más eficiente utilizar una operación con registro mínimo, como [CTAS][CTAS], para hacerlo.
+`UPDATE` es una operación con registro completo.  Si necesita tooupdate un gran número de filas de una tabla o una partición suele ser mucho más eficaz toouse una operación registrada al mínimo como [CTAS] [ CTAS] toodo para.
 
-En el ejemplo siguiente, se ha convertido la actualización de una tabla completa en una operación `CTAS` para que sea posible el registro mínimo.
+Hola ejemplo a continuación de una actualización de tabla completa ha sido convertido tooa `CTAS` para que el registro mínimo es posible.
 
-En este caso, estamos agregando retrospectivamente un importe de descuento a las ventas en la tabla:
+En este caso retrospectivamente estamos agregando una venta de toohello de importe de descuento en la tabla de hello:
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing hello "Update". 
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
@@ -171,31 +171,31 @@ FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
 ;
 
---Step 02. Rename the tables
-RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
-RENAME OBJECT [dbo].[FactInternetSales_u] TO [FactInternetSales];
+--Step 02. Rename hello tables
+RENAME OBJECT [dbo].[FactInternetSales]   too[FactInternetSales_old];
+RENAME OBJECT [dbo].[FactInternetSales_u] too[FactInternetSales];
 
---Step 03. Drop the old table
+--Step 03. Drop hello old table
 DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Volver a crear tablas de gran tamaño puede beneficiarse del uso de las características de administración de cargas de trabajo de Almacenamiento de datos SQL. Para obtener más información, consulte la sección de administración de cargas de trabajo en el artículo sobre [simultaneidad][concurrency].
+> Volver a crear tablas de gran tamaño puede beneficiarse del uso de las características de administración de cargas de trabajo de Almacenamiento de datos SQL. Para obtener más detalles, consulte la sección de administración de cargas de trabajo de toohello en hello [simultaneidad] [ concurrency] artículo.
 > 
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimización con modificación de particiones
-Cuando se enfrenta a modificaciones a gran escala dentro de una [partición de tabla][table partition], un patrón de modificación de particiones constituye un buen enfoque. Si la modificación de datos es importante y abarca varias particiones, basta con iterar en las particiones para obtener el mismo resultado.
+Cuando se enfrenta a modificaciones a gran escala dentro de una [partición de tabla][table partition], un patrón de modificación de particiones constituye un buen enfoque. Si hello modificación de datos es importante e intervalos logra varias particiones, a continuación, recorrer simplemente particiones Hola Hola mismo resultado.
 
-Los pasos para realizar una conmutación de particiones son los siguientes:
+Hola pasos tooperform un cambio de partición son los siguientes:
 
 1. Crear una partición vacía de salida
-2. Realizar la actualización como una operación CTAS
-3. Desactivar los datos existentes en la tabla de salida
-4. Activar los datos nuevos
-5. Limpiar los datos
+2. Realizar actualización' hello' como un CTAS
+3. Hola toohello existente de datos tabla de desactivación
+4. Intercambiar datos nuevos de Hola
+5. Limpiar los datos de Hola
 
-Sin embargo, para ayudar a identificar las particiones que se van a conmutar, primero necesitamos crear un procedimiento auxiliar como el siguiente. 
+Sin embargo, toohelp identificar Hola particiones tooswitch primero necesitamos toobuild un procedimiento auxiliar como Hola uno a continuación. 
 
 ```sql
 CREATE PROCEDURE dbo.partition_data_get
@@ -241,12 +241,12 @@ OPTION (LABEL = 'dbo.partition_data_get : CTAS : #ptn_data')
 GO
 ```
 
-Este procedimiento maximiza la reutilización del código y mantiene el ejemplo de modificación de particiones más compacto.
+Este procedimiento maximiza la reutilización de código y mantiene modificación más compacta del ejemplo de la partición de Hola.
 
-El código siguiente muestra los cinco pasos mencionados anteriormente para conseguir una rutina de conmutación de particiones completa.
+código de Hello siguiente muestra cinco pasos de hello mencionadas anteriormente tooachieve una rutina de modificación de la partición completa.
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table tooswitch out hello data 
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -268,7 +268,7 @@ WHERE 1=2
 OPTION (LABEL = 'CTAS : Partition Switch IN : UPDATE')
 ;
 
---Create a partitioned aligned table and update the data in the select portion of the CTAS
+--Create a partitioned aligned table and update hello data in hello select portion of hello CTAS
 IF OBJECT_ID('[dbo].[FactInternetSales_in]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_in]
@@ -315,29 +315,29 @@ WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
 OPTION (LABEL = 'CTAS : Partition Switch IN : UPDATE')
 ;
 
---Use the helper procedure to identify the partitions
---The source table
+--Use hello helper procedure tooidentify hello partitions
+--hello source table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales',20030101
 DECLARE @ptn_nmbr_src INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_src
 
---The "in" table
+--hello "in" table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales_in',20030101
 DECLARE @ptn_nmbr_in INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_in
 
---The "out" table
+--hello "out" table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales_out',20030101
 DECLARE @ptn_nmbr_out INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_out
 
---Switch the partitions over
+--Switch hello partitions over
 DECLARE @SQL NVARCHAR(4000) = '
-ALTER TABLE [dbo].[FactInternetSales]    SWITCH PARTITION '+CAST(@ptn_nmbr_src AS VARCHAR(20))    +' TO [dbo].[FactInternetSales_out] PARTITION '    +CAST(@ptn_nmbr_out AS VARCHAR(20))+';
-ALTER TABLE [dbo].[FactInternetSales_in] SWITCH PARTITION '+CAST(@ptn_nmbr_in AS VARCHAR(20))    +' TO [dbo].[FactInternetSales] PARTITION '        +CAST(@ptn_nmbr_src AS VARCHAR(20))+';'
+ALTER TABLE [dbo].[FactInternetSales]    SWITCH PARTITION '+CAST(@ptn_nmbr_src AS VARCHAR(20))    +' too[dbo].[FactInternetSales_out] PARTITION '    +CAST(@ptn_nmbr_out AS VARCHAR(20))+';
+ALTER TABLE [dbo].[FactInternetSales_in] SWITCH PARTITION '+CAST(@ptn_nmbr_in AS VARCHAR(20))    +' too[dbo].[FactInternetSales] PARTITION '        +CAST(@ptn_nmbr_src AS VARCHAR(20))+';'
 EXEC sp_executesql @SQL
 
---Perform the clean-up
+--Perform hello clean-up
 TRUNCATE TABLE dbo.FactInternetSales_out;
 TRUNCATE TABLE dbo.FactInternetSales_in;
 
@@ -347,9 +347,9 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>Minimización del registro con lotes pequeños
-Para operaciones de modificación de datos de gran tamaño, puede tener sentido dividir la operación en fragmentos o lotes para definir el ámbito de la unidad de trabajo.
+Para las operaciones de modificación de datos de gran tamaño, puede tener sentido toodivide Hola el funcionamiento en unidad de hello tooscope fragmentos o lotes de trabajo.
 
-A continuación, se proporciona un ejemplo de trabajo. El tamaño del lote se estableció en un número trivial para resaltar la técnica. En realidad, el tamaño del lote sería mucho mayor. 
+A continuación, se proporciona un ejemplo de trabajo. se ha establecido el tamaño del lote de Hello tooa trivial técnica número toohighlight Hola. En realidad, el tamaño del lote de Hola sería mucho mayor. 
 
 ```sql
 SET NO_COUNT ON;
@@ -408,20 +408,20 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Instrucciones de operaciones de pausa y escalado
-Almacenamiento de datos SQL de Azure permite pausar, reanudar y escalar su almacenamiento de datos a petición. Al pausar o escalar Almacenamiento de datos SQL es importante entender que las transacciones en curso se terminan inmediatamente, lo que hace que las transacciones abiertas se reviertan. Si la carga de trabajo había emitido una modificación de datos incompleta y de larga ejecución antes de la operación de pausa o escalado, será necesario deshacer este trabajo. Esto puede afectar al tiempo que tarda en pausar completamente la base de datos de Almacenamiento de datos SQL de Azure. 
+Almacenamiento de datos SQL de Azure permite pausar, reanudar y escalar su almacenamiento de datos a petición. Al pausar o escalar el almacenamiento de datos de SQL es toounderstand importante que las transacciones en curso terminan inmediatamente; haciendo que las transacciones abiertas toobe revierte. Si la carga de trabajo había emitido una larga ejecución y la modificación de datos incompletos anterior toohello pausa u operación de escala, este trabajo será necesario toobe deshacer. Esto puede afectar a Hola tarda toopause o escalar la base de datos de almacenamiento de datos de SQL Azure. 
 
 > [!IMPORTANT]
 > `UPDATE` y `DELETE` son operaciones con registro completo y, por tanto, estas operaciones de deshacer y rehacer pueden tardar bastante más que las operaciones con registro mínimo equivalentes. 
 > 
 > 
 
-Lo mejor es dejar que las transacciones de modificación de datos en curso se completen antes de pausar o escalar Almacenamiento de datos SQL. Sin embargo, esto no siempre es posible. Para mitigar el riesgo de que se produzca una reversión extensa, considere una de las siguientes opciones:
+escenario "mejor" Hello es toolet en vuelo datos modificación transacciones completa anterior toopausing o escala almacenamiento de datos de SQL. Sin embargo, esto no siempre es posible. riesgo de hello toomitigate de una reversión largo, considere la posibilidad de una de las siguientes opciones de hello:
 
 * Vuelva a escribir las operaciones de ejecución prolongada con [CTAS][CTAS].
-* Divida la operación en fragmentos, lo que opera en un subconjunto de las filas
+* Operación de Hola se dividen en fragmentos; operar en un subconjunto de filas de Hola
 
 ## <a name="next-steps"></a>Pasos siguientes
-Consulte [Transactions in SQL Data Warehouse][Transactions in SQL Data Warehouse] (Transacciones en SQL Data Warehouse) para obtener más información sobre los niveles de aislamiento y los límites transaccionales.  Para obtener información general de otros procedimientos recomendados, consulte [Procedimientos recomendados para SQL Data Warehouse][SQL Data Warehouse Best Practices].
+Vea [las transacciones en el almacén de datos de SQL] [ Transactions in SQL Data Warehouse] toolearn más información acerca de los niveles de aislamiento y límites transaccionales.  Para obtener información general de otros procedimientos recomendados, consulte [Procedimientos recomendados para SQL Data Warehouse][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

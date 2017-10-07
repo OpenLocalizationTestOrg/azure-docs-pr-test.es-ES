@@ -1,5 +1,5 @@
 ---
-title: 'Ejemplo de script de Azure PowerShell: WordPress | Microsoft Docs'
+title: Ejemplo de Script de PowerShell - aaaAzure de WordPress | Documentos de Microsoft
 description: 'Ejemplo de script de Azure PowerShell: WordPress'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 778a6d5cfc63f80aa66654d682fedb178cfd67a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b011726a772bb4d13fcfcba088eac4d0305967c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>Creación de una máquina virtual WordPress con PowerShell
 
-Este script crea una máquina virtual y, a continuación, usa la extensión de scripts personalizados para máquinas virtuales de Azure para instalar WordPress. Después de ejecutar el script, puede acceder al sitio de configuración de WordPress en `http://<public IP of VM>/wordpress`. 
+Este script crea una máquina virtual y usa tooinstall de extensión de script personalizado de máquina Virtual de Azure de hello WordPress. Después de ejecutar script de Hola, puede tener acceso a sitio de configuración de WordPress hello en `http://<public IP of VM>/wordpress`. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -32,11 +32,11 @@ Este script crea una máquina virtual y, a continuación, usa la extensión de s
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-wordpress-mysql/create-wordpress-mysql.ps1 "Creación de una máquina virtual WordPress")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-wordpress-mysql/create-wordpress-mysql.ps1 "Create VM WordPress")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Ejecute el siguiente comando para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
+Ejecute hello después el grupo de recursos de comando tooremove hello, la VM y todos ellos relacionados con recursos.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -44,25 +44,25 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear la implementación. Cada elemento de la tabla incluye vínculos a la documentación específica del comando.
+Este script utiliza Hola después de la implementación de comandos toocreate Hola. Cada elemento de la documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Crea una configuración de subred. Esta configuración se utiliza con el proceso de creación de la red virtual. |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Crea una configuración de subred. Esta configuración se utiliza con el proceso de creación de red virtual de Hola. |
 | [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | Crea una red virtual. |
 | [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Crea una dirección IP pública. |
-| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) | Crea configuración de regla de grupo de seguridad de red. Esta configuración se utiliza para crear una regla NSG cuando se crea el NSG. |
+| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) | Crea configuración de regla de grupo de seguridad de red. Esta configuración es toocreate usa una regla de NSG cuando se crea hello NSG. |
 | [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) | Crea un grupo de seguridad de red. |
 | [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig) | Obtiene la información de subred. Esta información se usa al crear una interfaz de red. |
 | [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Crea una interfaz de red. |
-| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Crea una configuración de máquina virtual. Esta configuración incluye diversa información, como el nombre de la máquina virtual, sistema el operativo y las credenciales administrativas. La configuración se utiliza durante la creación de las máquinas virtuales. |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Crea una configuración de máquina virtual. Esta configuración incluye diversa información, como el nombre de la máquina virtual, sistema el operativo y las credenciales administrativas. configuración de Hola se utiliza durante la creación de máquinas virtuales. |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Cree una máquina virtual. |
-| [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Agregue la extensión de scripts personalizados a la máquina virtual que invoca un script para instalar WordPress. |
+| [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Agregar máquina virtual de hello extensión de Script personalizado toohello, que invoca un tooinstall script WordPress. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Quita un grupo de recursos y todos los recursos incluidos en él. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre el módulo de Azure PowerShell, consulte la [documentación de Azure PowerShell](/powershell/azure/overview).
+Para obtener más información sobre el módulo de PowerShell de Azure de hello, consulte [documentación de Azure PowerShell](/powershell/azure/overview).
 
-Encontrará más ejemplos de scripts de PowerShell de máquina virtual en la [documentación sobre máquinas virtuales Linux de Azure](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ejemplos de secuencias de comandos de PowerShell de máquina virtual adicional pueden encontrarse en hello [documentación de Azure VM de Linux](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

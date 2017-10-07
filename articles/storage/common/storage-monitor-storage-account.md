@@ -1,6 +1,6 @@
 ---
-title: "Supervisión de una cuenta de Azure Storage | Microsoft Docs"
-description: Aprenda a supervisar una cuenta de almacenamiento en Azure usando el Portal de Azure.
+title: aaaHow toomonitor una cuenta de almacenamiento de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toomonitor una cuenta de almacenamiento de Azure mediante el uso de Hola portal de Azure."
 services: storage
 documentationcenter: 
 author: mmacy
@@ -14,145 +14,145 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: marsma
-ms.openlocfilehash: e8fbc4ecdffe62806019f494e1412cfedbccf71f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9a939e0b5db687c1b7b7857399321f681df2056a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Supervisión de una cuenta de almacenamiento en el Portal de Azure
+# <a name="monitor-a-storage-account-in-hello-azure-portal"></a>Supervisar una cuenta de almacenamiento en hello portal de Azure
 
-[Análisis de Azure Storage](../storage-analytics.md) proporciona métricas para todos los servicios de almacenamiento y registros para blobs, colas y tablas. Puede usar [Azure Portal](https://portal.azure.com) para configurar qué registros y métricas se registran para su cuenta y configurar gráficos que proporcionen representaciones visuales de los datos de las métricas.
+[Análisis de Azure Storage](../storage-analytics.md) proporciona métricas para todos los servicios de almacenamiento y registros para blobs, colas y tablas. Puede usar hello [portal de Azure](https://portal.azure.com) tooconfigure qué métricas y los registros se registra para su cuenta y configura gráficos que proporcionan representaciones visuales de los datos de métricas.
 
 > [!NOTE]
-> Existen costos asociados con el análisis de los datos de supervisión en Azure Portal. Para obtener más información, consulte [Facturación y análisis de almacenamiento](/rest/api/storageservices/Storage-Analytics-and-Billing).
+> Hay costos asociados a examinar los datos de supervisión de hello portal de Azure. Para obtener más información, consulte [Facturación y análisis de almacenamiento](/rest/api/storageservices/Storage-Analytics-and-Billing).
 >
 > Almacenamiento de archivos de Azure admite actualmente las métricas del Análisis de almacenamiento, pero aún no admite el registro.
 >
-> En la actualidad, las cuentas de almacenamiento con un tipo de replicación de almacenamiento con redundancia de zona (ZRS) no tienen habilitadas las métricas ni la funcionalidad de registro.
+> Cuentas de almacenamiento con un tipo de replicación de almacenamiento con redundancia de zona (ZRS) actualmente no tiene las métricas de Hola o capacidad de registro habilitados.
 > 
-> Para obtener orientación exhaustiva sobre el uso de análisis de almacenamiento y otras herramientas para identificar, diagnosticar y solucionar problemas relacionados con el Almacenamiento de Azure, consulte [Supervisión, diagnóstico y solución de problemas de Almacenamiento de Microsoft Azure](../storage-monitoring-diagnosing-troubleshooting.md).
+> Para obtener una guía detallada sobre el uso de análisis de almacenamiento y otra herramientas tooidentify, diagnosticar y solucionar problemas relacionados con el almacenamiento de Azure, vea [supervisar, diagnosticar y solucionar problemas de almacenamiento de Microsoft Azure](../storage-monitoring-diagnosing-troubleshooting.md).
 >
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>la supervisión para una cuenta de almacenamiento
 
-1. En [Azure Portal](https://portal.azure.com), seleccione **Cuentas de almacenamiento**y, después, seleccione el nombre de la cuenta de almacenamiento para abrir el panel de esta.
-1. En la sección **SUPERVISIÓN** de la hoja de menú, seleccione **Diagnósticos**.
+1. Hola [portal de Azure](https://portal.azure.com), seleccione **cuentas de almacenamiento**, a continuación, panel de cuenta hello tooopen de nombre de la cuenta de almacenamiento de Hola.
+1. Seleccione **diagnósticos** en hello **supervisión** sección de hoja de menú de Hola.
 
     ![OpcionesSupervisión](./media/storage-monitor-storage-account/stg-enable-metrics-00.png)
 
-1. Seleccione el **tipo** de datos de métricas para cada **servicio** que desee supervisar y la **directiva de retención** para los datos. También puede deshabilitar la supervisión estableciendo el **estado** en **Desactivado**.
+1. Seleccione hello **tipo** de datos de métricas para cada **servicio** desea toomonitor y Hola **directiva de retención** para datos de Hola. También puede deshabilitar la supervisión estableciendo **estado** demasiado**desactivar**.
 
     ![OpcionesSupervisión](./media/storage-monitor-storage-account/stg-enable-metrics-01.png)
 
    Hay dos tipos de métricas que puede habilitar para cada servicio. Ambos están habilitados de forma predeterminada en el caso de nuevas cuentas de almacenamiento:
 
-   * **Agregados**: recopila métricas como entrada/salida, disponibilidad, latencia y porcentajes de éxito. Estas métricas se agregan a los servicios Blob, Cola, Tabla y Archivo.
-   * **Por API**: además de las métricas de agregados, recopila el mismo conjunto de métricas para cada operación de almacenamiento en la API del servicio Azure Storage.
+   * **Agregados**: recopila métricas como entrada/salida, disponibilidad, latencia y porcentajes de éxito. Estas métricas se agregan para hello blob, cola, tabla y servicios de archivo.
+   * **Por API**: en suma toohello las métricas agregadas, recopila Hola el mismo conjunto de métricas para cada operación de almacenamiento en hello API del servicio de almacenamiento de Azure.
 
-   Para configurar la directiva de retención de datos, mueva el control deslizante **Retención (en días)** o escriba el número de días que se deben retener los datos, entre 1 y 365. El valor predeterminado para las nuevas cuentas de almacenamiento es de siete días. Si no desea configurar una directiva de retención, escriba un cero. Si no existe una directiva de retención, es posible eliminar los datos de supervisión.
+   Directiva de retención de datos de hello tooset, mover hello **retención (días)** control deslizante o escriba Hola número de días de tooretain de datos, de 1 too365. valor predeterminado de Hola para las nuevas cuentas de almacenamiento es siete días. Si no desea tooset una directiva de retención, escriba cero. Si no hay ninguna directiva de retención, es tooyou toodelete Hola datos de supervisión.
 
    > [!WARNING]
-   > Se le cobrará si elimina manualmente datos de métricas. El sistema eliminará los datos de análisis obsoletos (aquellos anteriores a la directiva de retención de datos) sin costo alguno. Es recomendable configurar una directiva de retención basada en el tiempo que desee retener los datos de análisis de almacenamiento de su cuenta. Consulte [¿Qué se le facturará cuando habilite las métricas de almacenamiento?](../common/storage-enable-and-view-metrics.md#what-charges-do-you-incur-when-you-enable-storage-metrics) para más información.
+   > Se le cobrará si elimina manualmente datos de métricas. Datos de análisis obsoleto (anterior a la directiva de retención de datos) se eliminan por sistema Hola sin costo alguno. Se recomienda establecer una directiva de retención en función de cuánto tiempo desea tooretain datos de análisis de almacenamiento para su cuenta. Consulte [¿Qué se le facturará cuando habilite las métricas de almacenamiento?](../common/storage-enable-and-view-metrics.md#what-charges-do-you-incur-when-you-enable-storage-metrics) para más información.
    >
 
-1. Al finalizar la configuración de la supervisión, seleccione **Guardar**.
+1. Cuando haya terminado la configuración de supervisión de hello, seleccione **guardar**.
 
-Se muestra un conjunto predeterminado de métricas en los gráficos de la hoja de la cuenta de almacenamiento, así como las hojas de cada servicio (Blob, Cola, Tabla y Archivo). Una vez que ha habilitado las métricas de un servicio, puede tardar una hora hasta que los datos aparezcan en los gráficos. Puede seleccionar **Editar** en cualquier gráfico de métricas para [configurar qué métricas](#how-to-customize-metrics-charts) se muestran en el gráfico.
+Un conjunto predeterminado de las métricas se muestra en los gráficos en la hoja de cuenta de almacenamiento de hello, así como las hojas de servicio individuales de hello (blob, cola, tabla y archivo). Una vez que ha habilitado las métricas para un servicio, puede llevar hasta hora tooan para tooappear de datos en sus gráficos. Puede seleccionar **editar** en cualquier métrica del gráfico demasiado[configurar qué métricas](#how-to-customize-metrics-charts) se muestran en el gráfico de Hola.
 
-Puede deshabilitar la recopilación y el registro de métricas estableciendo el **estado** en **Desactivado**.
+Puede deshabilitar la colección de métricas y registro estableciendo **estado** demasiado**desactivar**.
 
 > [!NOTE]
-> Azure Storage usa [Table Storage](../common/storage-introduction.md#table-storage) para almacenar las métricas para la cuenta de almacenamiento y almacena las métricas en tablas en su cuenta. Para más información, consulte [Cómo se almacenan las métricas](../common/storage-analytics.md#how-metrics-are-stored).
+> Almacenamiento de Azure usa [almacenamiento de tablas](../common/storage-introduction.md#table-storage) toostore las métricas de hello para la cuenta de almacenamiento y las métricas de Hola de almacenes en tablas en su cuenta. Para más información, consulte [Cómo se almacenan las métricas](../common/storage-analytics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Personalización de gráficos de métricas
 
-Utilice el procedimiento siguiente para elegir las métricas de almacenamiento que desea ver en un gráfico de métricas. 
+Usar hello siguiendo el procedimiento toochoose qué tooview de métricas de almacenamiento en un gráfico de métricas. 
 
-1. Comience por mostrar un gráfico de métricas de almacenamiento en Azure Portal. Puede encontrar los gráficos en la **hoja de la cuenta de almacenamiento** y en la hoja **Métricas** de un servicio individual (Blob, Cola, Tabla, Archivo).
+1. Muestra un gráfico de métricas de almacenamiento en el portal de Azure Hola primero. Puede encontrar los gráficos en hello **hoja de la cuenta de almacenamiento** y Hola **métricas** hoja para un servicio concreto (blob, cola, tabla, archivo).
 
-   En este ejemplo, se trabaja con el siguiente gráfico que aparece en la **hoja de la cuenta de almacenamiento**:
+   En este ejemplo, trabajamos con hello después de gráfico que aparece en hello **hoja de la cuenta de almacenamiento**:
 
    ![Selección de gráfico en Azure Portal](./media/storage-monitor-storage-account/stg-customize-chart-00.png)
 
-1. A continuación, haga clic en cualquier lugar dentro del gráfico para abrir la hoja **Métricas**. Seleccione **Editar gráfico** para abrir la hoja **Editar gráfico**.
+1. A continuación, haga clic en cualquier lugar dentro de Hola Hola de tooopen de gráfico **métrica** hoja. Seleccione **Editar gráfico** tooopen hello **Editar gráfico** hoja.
 
    ![Botón Editar gráfico de la hoja del gráfico](./media/storage-monitor-storage-account/stg-customize-chart-01.png)
 
-1. En la hoja **Editar gráfico**, seleccione el **intervalo de tiempo** de las métricas que se van a mostrar en el gráfico y el **servicio** (Blob, Cola, Tabla, Archivo) cuyas métricas desea mostrar. Aquí hemos seleccionado para mostrar las métricas de la semana anterior para el servicio Blob:
+1. En hello **Editar gráfico** hoja, seleccione hello **intervalo de tiempo** de toodisplay de métricas de hello en gráfico de Hola y Hola **servicio** (blob, cola, tabla o archivo) cuyas métricas que desea toodisplay. Aquí hemos seleccionado hello toodisplay más allá de las métricas de la semana para servicio de blob de hello:
 
-   ![Selección de intervalo de tiempo y servicio en la hoja Editar gráfico](./media/storage-monitor-storage-account/stg-customize-chart-02.png)
+   ![Selección de intervalo y el servicio de hora en la hoja de hello Editar gráfico](./media/storage-monitor-storage-account/stg-customize-chart-02.png)
 
-1. Seleccione las **métricas** individuales que desea que aparezcan en el gráfico y, a continuación, haga clic en **Aceptar**. Por ejemplo, aquí hemos decidido mostrar las métricas *ContainerCount* y *ObjectCount*:
+1. Seleccione Hola individuales **métricas** tenía como aparece en gráfico de Hola, a continuación, haga clic en **Aceptar**. Por ejemplo, aquí hemos elegido hello toodisplay *ContainerCount* y *ObjectCount* métricas:
 
    ![Selección de métricas individuales en la hoja Editar gráfico](./media/storage-monitor-storage-account/stg-customize-chart-03.png)
 
-Estas configuraciones del gráfico no afectan a la recopilación, agregación ni almacenamiento de los datos de supervisión en la cuenta de almacenamiento, solo afectan a la visualización de los datos de las métricas.
+La configuración del gráfico no afectan a la colección de hello, agregación o almacenamiento de datos en la cuenta de almacenamiento de Hola de supervisión, solo Hola visualización de los datos de métricas.
 
 ### <a name="metrics-availability-in-charts"></a>Disponibilidad de las métricas en los gráficos
 
-La lista de las métricas disponibles cambia en función de qué servicio haya elegido en la lista desplegable y del tipo de unidad del gráfico que está editando. Por ejemplo, puede seleccionar métricas de porcentaje como *PercentNetworkError* y *PercentThrottlingError* solo si está editando un gráfico que muestra las unidades en porcentajes:
+lista de Hola de cambios de métricas disponibles en función de servicio que ha elegido en la lista desplegable de Hola y tipo de unidad de hello del gráfico de Hola que está editando. Por ejemplo, puede seleccionar métricas de porcentaje como *PercentNetworkError* y *PercentThrottlingError* solo si está editando un gráfico que muestra las unidades en porcentajes:
 
-![Solicitud de gráfico de porcentaje de errores en Azure Portal](./media/storage-monitor-storage-account/stg-customize-chart-04.png)
+![Gráfico de porcentaje de error de solicitud en hello portal de Azure](./media/storage-monitor-storage-account/stg-customize-chart-04.png)
 
 ### <a name="metrics-resolution"></a>Resolución de métricas
 
-Las métricas seleccionadas en Diagnóstico determinan la resolución de las métricas que están disponibles para su cuenta:
+las métricas de Hello seleccionado en el diagnóstico determina la resolución de Hola de métricas de Hola que están disponibles para su cuenta:
 
-* **Agregados**: la supervisión proporciona métricas como entrada/salida, disponibilidad, latencia y porcentajes de éxito. Estas métricas se agregan a los servicios Blob, Cola, Tabla y Archivo.
-* **Por API** proporciona una resolución más precisa, con métricas disponibles para operaciones de almacenamiento individuales, además de los agregados de nivel de servicio.
+* **Agregados**: la supervisión proporciona métricas como entrada/salida, disponibilidad, latencia y porcentajes de éxito. Estas métricas se agregan de hello, tabla, archivo, servicios blob y cola.
+* **Por API** proporciona una solución más preciso, con las métricas disponibles para las operaciones de almacenamiento individuales, además de toohello agregados de nivel de servicio.
 
 ## <a name="configure-metrics-alerts"></a>Configuración de las alertas de métricas
 
-Puede crear alertas para recibir una notificación cuando se alcancen los umbrales para las métricas de los recursos de almacenamiento.
+Puede crear alertas toonotify cuando se alcanzan los umbrales para las métricas de recursos de almacenamiento.
 
-1. Para abrir la **hoja de reglas de alerta**, desplácese hacia abajo hasta la sección **SUPERVISIÓN** de la **hoja de menú** y seleccione **Reglas de alerta**.
-1. Seleccione **Agregar alerta** para abrir la hoja **Agregar una regla de alerta**
-1. Seleccione **Recurso** (blob, archivo, cola, tabla) en la lista desplegable y escriba un **nombre** y una **descripción** para la nueva regla de alerta.
-1. Seleccione la **métrica** para la que desea agregar una alerta, una **condición** de alerta y un **umbral** de alerta. El tipo de unidad de umbral cambiará en función de la métrica que haya elegido. Por ejemplo, "número" es el tipo de unidad para *ContainerCount*, mientras que la unidad para la métrica *PercentNetworkError* es un porcentaje.
-1. Seleccione el **período**. Las métricas que alcancen o superen el umbral dentro de ese período de tiempo desencadenarán una alerta.
-1. (Opcional) Configure las notificaciones de **Correo electrónico** y **Webhook**. Para más información sobre webhooks, consulte [Configuración de un webhook en una alerta de métrica de Azure](../../monitoring-and-diagnostics/insights-webhooks-alerts.md). Si no configura las notificaciones de correo electrónico o webhook, las alertas solo aparecerán en Azure Portal.
+1. Hola tooopen **hoja de reglas de alerta**, desplácese hacia abajo toohello **supervisión** sección de hello **hoja de menú** y seleccione **reglas de alerta**.
+1. Seleccione **Agregar alerta** tooopen hello **agregar una regla de alerta** hoja
+1. Seleccione un **recursos** (blob, archivo, poner en cola, tabla) de Hola desplegable y escriba un **nombre** y **descripción** para la nueva regla de alerta.
+1. Seleccione hello **métrica** para que le gustaría tooadd una alerta, una alerta **condición**y un **umbral**. cambios de tipo de unidad de umbral de Hello según la métrica de Hola que ha elegido. Por ejemplo, "count" es el tipo de unidad de Hola para *ContainerCount*, durante la unidad de Hola para hello *PercentNetworkError* métrica es un porcentaje.
+1. Seleccione hello **período**. Las métricas que alcanzan o superan Hola umbral en desencadenador de período de hello una alerta.
+1. (Opcional) Configure las notificaciones de **Correo electrónico** y **Webhook**. Para más información sobre webhooks, consulte [Configuración de un webhook en una alerta de métrica de Azure](../../monitoring-and-diagnostics/insights-webhooks-alerts.md). Si no configura las notificaciones de correo electrónico o webhook, alertas aparecerá solo en hello portal de Azure.
 
-![Hoja "Agregar una regla de alerta" en Azure Portal](./media/storage-monitor-storage-account/stg-alert-rules-01.png)
+!['Agregar una regla de alerta' hoja Hola portal de Azure](./media/storage-monitor-storage-account/stg-alert-rules-01.png)
 
-## <a name="add-metrics-charts-to-the-portal-dashboard"></a>Adición de gráficos de métricas al panel del portal
+## <a name="add-metrics-charts-toohello-portal-dashboard"></a>Agregar panel del portal toohello métricas gráficos
 
-Puede agregar gráficos de métricas de Azure Storage a cualquiera de las cuentas de almacenamiento del panel del portal.
+Puede agregar gráficos de métricas de almacenamiento de Azure para cualquiera de su panel de portal de tooyour de cuentas de almacenamiento.
 
-1. Seleccione **Editar panel** mientras lo ve en [Azure Portal](https://portal.azure.com).
-1. En la **galería de iconos**, seleccione **Buscar iconos por** > **Tipo**.
+1. Seleccione haga clic en **editar panel** mientras se visualiza el panel en hello [portal de Azure](https://portal.azure.com).
+1. Hola **icono galería**, seleccione **buscar iconos por** > **tipo**.
 1. Seleccione **Tipo** > **Cuentas de almacenamiento**.
-1. En **Recursos**, seleccione la cuenta de almacenamiento cuyas métricas desea agregar al panel.
+1. En **recursos**, seleccione cuenta de almacenamiento de hello cuyas métricas que se va tooadd toohello panel.
 1. Seleccione **Categorías** > **Supervisión**.
-1. Arrastre y coloque el icono del gráfico en el panel de la métrica que desea mostrar. Repita este paso para todas las métricas que desee que se muestren en el panel. En la siguiente imagen, se resalta el gráfico "Blobs: Número total de solicitudes" como un ejemplo, pero todos los gráficos están disponibles para su ubicación en el panel.
+1. Gráfico de Hola de arrastrar y colocar en mosaico en el panel de métrica de hello le gustaría mostrar. Repita para todas las métricas le gustaría que se muestra en el panel de Hola. Hola después de la imagen, se resalta el gráfico de "Blobs - Nº Total de solicitudes" hello como un ejemplo, pero todos los gráficos de hello están disponibles para la ubicación en el panel.
 
    ![Galería de iconos de Azure Portal](./media/storage-monitor-storage-account/stg-customize-dashboard-01.png)
-1. Seleccione la opción **Personalización finalizada** situada cerca de la parte superior del panel cuando haya terminado de agregar los gráficos.
+1. Seleccione **realiza personalizar** cerca parte superior de hello del panel de hello cuando haya terminado de agregar los gráficos.
 
-Una vez que haya agregado los gráficos al panel, los puede personalizar aún más tal y como se describe en [Personalización de gráficos de métricas](#how-to-customize-metrics-charts).
+Una vez que ha agregado el panel de tooyour de gráficos, se puede personalizar aún más tal y como se describe en [personalizar gráficos de métricas](#how-to-customize-metrics-charts).
 
 ## <a name="configure-logging"></a>registro
 
-También puede indicar a Azure Storage que guarde los registros de diagnóstico de lectura, escritura y eliminación de las solicitudes de los servicios Blob, Tabla y Cola. La directiva de retención de datos que estableció también se aplica a estos registros.
+Puede indicar a registros de diagnósticos de toosave de almacenamiento de Azure para lectura, escritura y eliminación de solicitudes de hello, tabla, servicios blob y cola. Directiva de retención de datos de Hello establece también aplica a registros de toothese.
 
 > [!NOTE]
 > Almacenamiento de archivos de Azure admite actualmente las métricas del Análisis de almacenamiento, pero aún no admite el registro.
 >
 
-1. En [Azure Portal](https://portal.azure.com), seleccione **Cuentas de almacenamiento**y, después, seleccione el nombre de la cuenta de almacenamiento para abrir la hoja de esta.
-1. En la sección **SUPERVISIÓN** de la hoja de menú, seleccione **Diagnósticos**.
+1. Hola [portal de Azure](https://portal.azure.com), seleccione **cuentas de almacenamiento**, y después el nombre de hoja de hello almacenamiento cuenta tooopen Hola almacenamiento cuenta Hola.
+1. Seleccione **diagnósticos** en hello **supervisión** sección de hoja de menú de Hola.
 
-    ![Elemento de menú Diagnóstico de la sección SUPERVISIÓN de Azure Portal.](./media/storage-monitor-storage-account/stg-enable-metrics-00.png)
+    ![Elemento de menú de diagnósticos en supervisión en hello portal de Azure.](./media/storage-monitor-storage-account/stg-enable-metrics-00.png)
     
-1. Asegúrese de que el **estado** está establecido en **Activado** y seleccione los **servicios** para los que desea habilitar el registro.
+1. Asegúrese de **estado** se establece demasiado**en**, seleccione hello y **servicios** para el que desea que el registro tooenable.
 
-    ![Configure el registro en Azure Portal.](./media/storage-monitor-storage-account/stg-enable-logging-01.png)
+    ![Configurar el registro de hello portal de Azure.](./media/storage-monitor-storage-account/stg-enable-logging-01.png)
 1. Haga clic en **Guardar**.
 
-Los registros de diagnóstico se guardan en un contenedor de blobs denominado $logs en su cuenta de almacenamiento. Puede ver los datos de registro mediante un explorador de almacenamiento como el [Explorador de Microsoft Storage](http://storageexplorer.com), o mediante programación con la biblioteca de cliente de almacenamiento o PowerShell.
+registros de diagnóstico de Hola se guardan en un contenedor de blobs denominado $logs en su cuenta de almacenamiento. Puede ver los datos de registro de hello mediante un explorador de almacenamiento como hello [Explorador de almacenamiento de Microsoft](http://storageexplorer.com), o mediante programación con la biblioteca de cliente de almacenamiento de Hola o PowerShell.
 
-Para más información acerca del acceso al contenedor $logs, consulte [Habilitar el registro de almacenamiento y acceso a los datos del registro](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data).
+Para obtener información sobre cómo acceder al contenedor de hello $logs, consulte [habilitar el registro de almacenamiento y acceso a datos de registro](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data).
 
 ## <a name="next-steps"></a>Pasos siguientes
 

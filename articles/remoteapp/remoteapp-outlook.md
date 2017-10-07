@@ -1,6 +1,6 @@
 ---
-title: Uso de Outlook en Azure RemoteApp | Microsoft Docs
-description: Aprenda a configurar y usar Outlook en Azure RemoteApp | Microsoft Azure
+title: aaaUsing Outlook en Azure RemoteApp | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooconfigure y usar Outlook en Azure RemoteApp | Microsoft Azure"
 services: remoteapp
 documentationcenter: 
 author: pavithir
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 3feb21385a8b7fa219153c16181887e34d6ea41a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 119d2629ac47bd8d20d617985a9b488068aa959f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-microsoft-outlook-in-azure-remoteapp"></a>Uso de Microsoft Outlook en Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
 Azure RemoteApp admite Microsoft Outlook O365. Obtenga más información sobre la manera en que [Office funciona en Azure RemoteApp](remoteapp-officesubscription.md). Hay algunas opciones de configuración recomendadas para Outlook cuando se usa en Azure RemoteApp.
 
 ## <a name="cached-mode"></a>Modo de almacenamiento en caché
-El modo de almacenamiento en caché es una configuración recomendada al usar Outlook en Azure RemoteApp. Al configurar una cuenta de Outlook 2013 para usar el modo caché de Exchange, Outlook 2013 funciona desde una copia local del buzón de Microsoft Exchange del usuario que se almacena en un archivo de datos sin conexión (archivo OST) en el equipo del usuario, junto con la libreta de direcciones sin conexión (OAB). El buzón en la caché y OAB se actualizan periódicamente desde el servicio de Office 365. Obtenga más información sobre [las diferencias entre el modo en caché y en línea](https://technet.microsoft.com/library/jj683103.aspx).
+El modo de almacenamiento en caché es una configuración recomendada al usar Outlook en Azure RemoteApp. Cuando se configura un toouse de cuenta de Outlook 2013 funciona el modo de intercambio en caché, Outlook 2013 desde una copia local del buzón de correo del usuario de Hola de Microsoft Exchange que se almacena en un archivo de datos sin conexión (archivo OST) en el equipo del usuario de hello, junto con hello libreta de direcciones sin conexión (OAB). buzón en la caché de Hola y OAB se actualizan periódicamente de hello servicio de Office 365. Obtenga más información sobre [Hola diferencias entre el modo en línea y en caché](https://technet.microsoft.com/library/jj683103.aspx).
 
-El usuario puede seleccionar **Modo caché de Exchange** o **Modo en línea** durante la configuración de la cuenta o cambiando su configuración. También puede implementar un modo u otro mediante la herramienta de personalización de Office (OCT) o la directiva de grupo.  
+Puede seleccionar usuario Hello **el modo de intercambio en caché** o **modo en línea** durante la instalación de la cuenta o cambiando la configuración de la cuenta de hello. También puede implementar un modo o hello otro mediante Hola herramienta de personalización de Office (OCT) o directiva de grupo.  
 
 Lectura las [instrucciones detalladas sobre cómo habilitar el modo en caché](https://technet.microsoft.com/library/c6f4cad9-c918-420e-bab3-8b49e1885034#proc).
 
 ## <a name="search"></a>Search
-En Azure RemoteApp, el uso de la búsqueda dentro de Outlook tiene limitaciones. Azure RemoteApp usa máquinas virtuales agrupadas para adaptarse a las sesiones de usuario. La indexación de la búsqueda depende del id. de máquina, que es diferente para las distintas máquinas virtuales. Es posible que cada vez que un usuario inicie sesión en Azure RemoteApp, se dirija a una nueva máquina virtual. Eso significaría que, si se habilitase la búsqueda local, el indizador se ejecutaría cada vez que cambiase el id. de máquina (cuando el usuario estuviese en una máquina virtual diferente). En función del tamaño del archivo .OST, el indexador podría tardar mucho tiempo en completarse y usar los recursos necesarios para otras aplicaciones. La búsqueda no solo sería lenta, sino que quizás tampoco daría resultados. Mediante un perfil de cuenta del modo en línea podría solucionar este problema, pero el rendimiento general sufriría debido a la falta de una caché local (consulte el vínculo de arriba para más información acerca de la diferencia entre el modo en caché y en línea). Lamentablemente, no se puede deshabilitar la búsqueda local o indexada y no se puede habilitar la búsqueda en línea de forma predeterminada en Outlook 2013.
+En Azure RemoteApp, el uso de la búsqueda dentro de Outlook tiene limitaciones. RemoteApp de Azure utiliza las sesiones de usuario de tooaccommodate máquinas virtuales agrupadas. Indización de búsqueda depende de Id. de máquina de hello, que es diferente para diferentes máquinas virtuales. Es posible que cada vez que un usuario inicia sesión en Azure RemoteApp, son tooa dirigido nueva máquina virtual. Se significaría que, si se habilita la búsqueda local, indizador Hola se ejecutará cada vez que cambia de Id. de máquina de hello (si es usuario de hello en una máquina virtual diferente). Según el tamaño de Hola Hola. Archivo OST, indizador Hola podría tardar un toocomplete mucho tiempo y utilizar los recursos necesarios para otras aplicaciones. La búsqueda no solo sería lenta, sino que quizás tampoco daría resultados. Con un perfil de cuenta de modo en línea podría solucionar este problema, pero se vería afectado el rendimiento general debido a falta de toohello de una memoria caché local (vea Hola por encima de vínculos para obtener más información acerca de la diferencia de hello entre el modo en línea y en caché). Lamentablemente, no se puede deshabilitar la búsqueda local o indexada y no se puede habilitar la búsqueda en línea de forma predeterminada en Outlook 2013.
 

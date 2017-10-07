@@ -1,6 +1,6 @@
 ---
-title: "Codificación de mensajes X12: Azure Logic Apps | Microsoft Docs"
-description: "Valide EDI y convierta mensajes con codificación XML con el codificador de mensajes X12 en Enterprise Integration Pack para Azure Logic Apps"
+title: mensajes de aaaEncode X12 - Azure Logic Apps | Documentos de Microsoft
+description: "Validar EDI y convertir la codificación XML mensajes con X12 mensaje codificador Hola paquete de integración empresarial para las aplicaciones lógicas de Azure"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 29d19364b9a98e351c95f13e68a2e63b9f6439f8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 785dbd2c7c82463154732921e07e3586d2307840
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="encode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Codificación de mensajes X12 para Azure Logic Apps con Enterprise Integration Pack
+# <a name="encode-x12-messages-for-azure-logic-apps-with-hello-enterprise-integration-pack"></a>Codificar X12 mensajes para las aplicaciones lógicas de Azure con hello paquete de integración empresarial
 
-Con el conector de codificación de mensajes X12, puede validar propiedades EDI y específicas del asociado, convertir mensajes con codificación XML en conjuntos de transacciones EDI en el intercambio y solicitar una confirmación técnica, una funcional o ambas.
-Para usar este conector, debe agregarlo a un desencadenador existente en la aplicación lógica.
+Con el conector de mensaje de Hola Encode X12, puede validar EDI y propiedades específicas del partner, convertir los mensajes codificados en XML en conjuntos de transacciones EDI en el intercambio de Hola y solicitar una confirmación técnica, la confirmación funcional o ambos.
+toouse este conector, debe agregar Hola conector tooan existente desencadenador en la aplicación lógica.
 
 ## <a name="before-you-start"></a>Antes de comenzar
 
-Esto es lo que necesita:
+Aquí es elementos de Hola que necesita:
 
 * Una cuenta de Azure; puede crear una [gratuita](https://azure.microsoft.com/free)
-* Una [cuenta de integración](logic-apps-enterprise-integration-create-integration-account.md) que ya esté definida y asociada a su suscripción de Azure. Debe tener una cuenta de integración para usar el conector de codificación de mensajes X12.
+* Una [cuenta de integración](logic-apps-enterprise-integration-create-integration-account.md) que ya esté definida y asociada a su suscripción de Azure. Debe tener un conector integración cuenta toouse Hola Encode X12 mensaje.
 * Al menos dos [asociados](logic-apps-enterprise-integration-partners.md) que ya estén definidos en su cuenta de integración.
 * Un [contrato X12](logic-apps-enterprise-integration-x12.md) ya definido en su cuenta de integración
 
@@ -38,13 +38,13 @@ Esto es lo que necesita:
 
 1. [Creación de una aplicación lógica](logic-apps-create-a-logic-app.md).
 
-2. El conector de codificación de mensajes X12 no tiene desencadenadores, por lo que debe agregar uno para iniciar la aplicación lógica, como un desencadenador de solicitud. En el Diseñador de aplicaciones lógicas, agregue un desencadenador y una acción a la aplicación lógica.
+2. Conector de mensaje de Hola Encode X12 no tiene desencadenadores, por lo que debe agregar un desencadenador para iniciar la aplicación lógica, como un desencadenador de la solicitud. Hola diseñador la lógica de aplicación, agregar un desencadenador y, a continuación, agregar una aplicación de lógica de tooyour de acción.
 
-3.  En el cuadro de búsqueda, escriba "x12" para el filtro. Seleccione **X12 - Codificar en mensaje X12 por nombre de contrato** o **X12 - Codificar en mensaje X12 por identidades**.
+3.  En el cuadro de búsqueda de hello, escriba "x12" para el filtro. Seleccione **X12-codificar los mensajes tooX12 por el nombre del contrato** o **X12-codificar tooX12 mensaje identidades**.
    
     ![Búsqueda de "x12"](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
-3. Si no había creado ninguna conexión a la cuenta de integración, se le pedirá que lo haga ahora. Asigne un nombre a la conexión y seleccione la cuenta de integración que desee conectar. 
+3. Si previamente no creó ninguna conexión de cuenta de integración de tooyour, se te pedirá toocreate ahora esa conexión. Nombre de la conexión y seleccione cuenta de integración de Hola que desea tooconnect. 
    
     ![conexión de la cuenta de integración](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
 
@@ -53,9 +53,9 @@ Esto es lo que necesita:
     | Propiedad | Detalles |
     | --- | --- |
     | Nombre de la conexión * |Escriba cualquier nombre para la conexión. |
-    | Cuenta de integración* |Escriba un nombre para la cuenta de integración. Asegúrese de que la cuenta de integración y la aplicación lógica se encuentren en la misma ubicación de Azure. |
+    | Cuenta de integración* |Escriba un nombre para la cuenta de integración. Asegúrese de que la aplicación de cuenta y la lógica de integración están en hello misma ubicación de Azure. |
 
-5.  Cuando haya terminado, los detalles de la conexión deberían parecerse a este ejemplo. Para terminar de crear la conexión, elija **Crear**.
+5.  Cuando haya terminado, los detalles de la conexión deben tener un aspecto similar ejemplo toothis. toofinish crear la conexión, elija **crear**.
 
     ![creación de la conexión de la cuenta de integración](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
@@ -65,36 +65,36 @@ Esto es lo que necesita:
 
 #### <a name="encode-x12-messages-by-agreement-name"></a>Encode X12 Message por nombre de acuerdo
 
-Si decide codificar mensajes X12 por nombre de contrato, abra la lista **Nombre del contrato X12** y escriba o seleccione el contrato X12 existente. Escriba el mensaje XML para codificar.
+Si ha elegido tooencode X12 mensajes por nombre de contrato, abra hello **nombre de X12 acuerdo** lista, escriba o seleccione el X12 existente acuerdo. Escriba tooencode de mensaje de Hola XML.
 
-![Escriba el nombre del contrato X12 y el mensaje XML para codificar](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
+![Escriba X12 tooencode de mensajes XML y el nombre de contrato](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 
 #### <a name="encode-x12-messages-by-identities"></a>Encode X12 Message por identidades
 
-Si elige codificar mensajes X12 por identidades, especifique el identificador y el calificador del remitente, así como el identificador y el calificador del receptor, tal y como están configurados en el contrato X12. Seleccione el mensaje XML para codificar.
+Si elige tooencode X12 mensajes para las identidades, escriba el identificador del remitente de hello, calificador de remitente, identificador de receptor y calificador de receptor como está configurado en su X12 acuerdo. Seleccione tooencode de mensaje de Hola XML.
    
-![Proporcione la identidad del remitente y del receptor, y seleccione el mensaje XML para codificar.](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
+![Proporcione las identidades de remitente y receptor, seleccione tooencode de mensaje XML](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
 ## <a name="x12-encode-details"></a>Detalles de la codificación de X12
 
-El conector de codificación X12 lleva a cabo estas tareas:
+Hola X12 Encode conector lleva a cabo estas tareas:
 
 * Resolución del acuerdo haciendo coincidir las propiedades de contexto de remitente y receptor.
-* Serializa el intercambio EDI, convirtiendo los mensajes codificados en XML en conjuntos de transacciones EDI en el intercambio.
+* Serializa el intercambio EDI de hello, convertir los mensajes codificados en XML en conjuntos de transacciones EDI en el intercambio de Hola.
 * Aplica segmentos de encabezado y finalizador del conjunto de transacciones.
 * Genera un número de control de intercambio, un número de control de grupo y un número de control del conjunto de transacciones para cada intercambio de salida.
-* Reemplaza los separadores en los datos de carga útil.
+* Reemplaza los separadores en datos de carga de Hola
 * Valida propiedades EDI y específicas del asociado.
-  * Validación del esquema de los elementos de datos del conjunto de transacciones con respecto al esquema de mensaje.
+  * Validación de esquema de los elementos de datos de conjuntos de transacciones de hello en mensajes de bienvenida del esquema
   * Validación de EDI realizada en los elementos de datos del conjunto de transacciones.
   * Validación extendida realizada en los elementos de datos del conjunto de transacciones.
 * Solicita una confirmación técnica o funcional (si esta opción está configurada).
-  * Se genera una confirmación técnica como resultado de la validación del encabezado. La confirmación técnica informa del estado del procesamiento de un encabezado y finalizador de intercambio por parte del receptor de la dirección.
-  * Se genera una confirmación funcional como resultado de la validación del cuerpo. La confirmación funcional informa de cada error encontrado al procesar el documento recibido.
+  * Se genera una confirmación técnica como resultado de la validación del encabezado. Hola confirmación técnica informa Hola del estado de procesamiento de Hola de un encabezado de intercambio y finalizador mediante el receptor de direcciones de Hola
+  * Se genera una confirmación funcional como resultado de la validación del cuerpo. confirmación funcional Hello notifica cada error al procesar Hola recibió el documento
 
-## <a name="view-the-swagger"></a>Visualización de Swagger
-Vea los [detalles de Swagger](/connectors/x12/). 
+## <a name="view-hello-swagger"></a>Swagger de hello de vista
+Vea hello [swagger detalles](/connectors/x12/). 
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Más información sobre Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Información sobre Enterprise Integration Pack") 
+[Obtener más información sobre Hola paquete de integración empresarial](logic-apps-enterprise-integration-overview.md "Obtenga más información sobre el paquete de integración empresarial") 
 

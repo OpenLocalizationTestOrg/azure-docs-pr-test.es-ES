@@ -1,6 +1,6 @@
 ---
-title: "Extensión de máquina virtual de AzureLogCollector | Microsoft Docs"
-description: "Describe la extensión de máquina virtual de AzureLogCollector, que recopila todos los archivos de registro y los reúne en una ubicación de Almacenamiento de Azure."
+title: "Extensión de máquina virtual aaaAzureLogCollector | Documentos de Microsoft"
+description: "Describe Hola extensión AzureLogCollector VM, que recopila todos los archivos de registro de hello y reúne en una ubicación de almacenamiento de Azure."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: squillace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
-ms.openlocfilehash: 629fc1f95f8596c11ceadeda44a9b57eaefc702e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 40b3d8bbf82445aa12d2f77d5db859d3019ff179
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azurelogcollector-extension"></a>AzureLogCollector Extension
 [!INCLUDE [virtual-machines-common-log-collector-extension](../../../includes/virtual-machines-common-log-collector-extension.md)]

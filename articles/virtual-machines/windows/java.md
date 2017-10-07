@@ -1,6 +1,6 @@
 ---
-title: "Creación y administración de una máquina virtual de Azure con Java | Microsoft Docs"
-description: "Use Java y Azure Resource Manager para implementar una máquina virtual y todos sus recursos de apoyo."
+title: "aaaCreate y administrar un Java de uso de máquina Virtual de Azure | Documentos de Microsoft"
+description: "Utilice toodeploy Java y el Administrador de recursos de Azure una máquina virtual y todos sus recursos de soporte."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: b9e739a07c5863577285fb3a221b372b385c6762
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 31ac8d59f92ecff887e64906940933dd6fd50815
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Creación y administración de máquinas virtuales Windows en Azure mediante Java
 
@@ -32,15 +32,15 @@ Las [máquinas virtuales de Azure](overview.md?toc=%2fazure%2fvirtual-machines%2
 > * Crear recursos
 > * Realizar tareas de administración
 > * Eliminar recursos
-> * Ejecución de la aplicación
+> * Ejecutar la aplicación hello
 
-Tardará unos 20 minutos en realizar estos pasos.
+Tarda aproximadamente 20 minutos toodo estos pasos.
 
 ## <a name="create-a-maven-project"></a>Creación de un proyecto de Maven
 
 1. Si aún no lo ha hecho, instale [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 2. Instale [Maven](http://maven.apache.org/download.cgi).
-3. Cree una nueva carpeta y el proyecto:
+3. Cree un nuevo proyecto de hello y carpeta:
     
     ```
     mkdir java-azure-test
@@ -51,7 +51,7 @@ Tardará unos 20 minutos en realizar estos pasos.
 
 ## <a name="add-dependencies"></a>Adición de dependencias
 
-1. En la carpeta `testAzureApp`, abra el archivo `pom.xml` y agregue la configuración de compilación al &lt;proyecto&gt; para habilitar la compilación de la aplicación:
+1. En hello `testAzureApp` carpeta, abra hello `pom.xml` de archivos y agregue una configuración de compilación de hello demasiado&lt;proyecto&gt; tooenable creación de hello de la aplicación:
 
     ```xml
     <build>
@@ -67,7 +67,7 @@ Tardará unos 20 minutos en realizar estos pasos.
     </build>
     ```
 
-2. Agregue las dependencias necesarias para acceder al SDK de Java de Azure.
+2. Agregue las dependencias de Hola Hola tooaccess necesarios SDK de Java de Azure.
 
     ```xml
     <dependency>
@@ -112,15 +112,15 @@ Tardará unos 20 minutos en realizar estos pasos.
     </dependency>
     ```
 
-3. Guarde el archivo .
+3. Guarde el archivo hello.
 
 ## <a name="create-credentials"></a>Crear credenciales
 
-Antes de empezar este paso, asegúrese de que tiene acceso a una [entidad de servicio de Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). También debe registrar el identificador de aplicación, la clave de autenticación y el identificador del inquilino que necesitará en un paso posterior.
+Antes de empezar este paso, asegúrese de que tiene acceso tooan [entidad de servicio de Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). También debe registrar el identificador de la aplicación hello y clave de autenticación de hello, Id. de inquilino de Hola que necesita en un paso posterior.
 
-### <a name="create-the-authorization-file"></a>Creación del archivo de autorización
+### <a name="create-hello-authorization-file"></a>Crear archivo de autorización de hello
 
-1. Cree un archivo denominado "`azureauth.properties`" y agregar estas propiedades:
+1. Cree un archivo denominado `azureauth.properties` y agregue estos tooit de propiedades:
 
     ```
     subscription=<subscription-id>
@@ -133,20 +133,20 @@ Antes de empezar este paso, asegúrese de que tiene acceso a una [entidad de ser
     graphURL=https://graph.windows.net/
     ```
 
-    Reemplace **&lt;subscription-id&gt;** por su identificador de suscripción, **&lt;application-id&gt;** por el identificador de aplicación de Active Directory, **&lt;authentication-key&gt;** por la clave de aplicación y **&lt;tenant-id&gt;** por el identificador de inquilino.
+    Reemplace  **&lt;Id. de suscripción&gt;**  con su identificador de suscripción,  **&lt;identificador de la aplicación&gt;**  con hello aplicación de Active Directory identificador,  **&lt;clave de autenticación&gt;**  con clave de la aplicación hello, y  **&lt;Id. de inquilino&gt;**  con inquilinos de Hola identificador.
 
-2. Guarde el archivo .
-3. Establezca una variable de entorno denominada "AZURE_AUTH_LOCATION" en el shell con la ruta de acceso completa al archivo de autenticación.
+2. Guarde el archivo hello.
+3. Establecer una variable de entorno denominada AZURE_AUTH_LOCATION en el shell con archivo de autenticación de toohello de ruta de acceso completa de hello.
 
-### <a name="create-the-management-client"></a>Creación del cliente de administración
+### <a name="create-hello-management-client"></a>Crear el cliente de administración de Hola
 
-1. Abra el archivo `App.java` en `src\main\java\com\fabrikam` y asegúrese de que esta instrucción del paquete esté en la parte superior:
+1. Abra hello `App.java` de archivos en `src\main\java\com\fabrikam` y asegúrese de que esta declaración de paquete está en la parte superior de hello:
 
     ```java
     package com.fabrikam.testAzureApp;
     ```
 
-2. En la instrucción del paquete, agregue estas instrucciones de importación:
+2. En la instrucción de paquete de hello, agrega estas instrucciones de importación:
    
     ```java
     import com.microsoft.azure.management.Azure;
@@ -168,7 +168,7 @@ Antes de empezar este paso, asegúrese de que tiene acceso a una [entidad de ser
     import java.util.Scanner;
     ```
 
-2. Para crear las credenciales de Active Directory que necesita para realizar solicitudes, agregue este código al método Main de la clase App:
+2. las credenciales de Active Directory de hello toocreate necesita toomake solicitudes, agregue este método principal de toohello de código de hello clase de aplicación:
    
     ```java
     try {    
@@ -186,11 +186,11 @@ Antes de empezar este paso, asegúrese de que tiene acceso a una [entidad de ser
 
 ## <a name="create-resources"></a>Crear recursos
 
-### <a name="create-the-resource-group"></a>Creación del grupo de recursos
+### <a name="create-hello-resource-group"></a>Crear grupo de recursos de Hola
 
 Todos los recursos deben encontrarse en un [grupo de recursos](../../azure-resource-manager/resource-group-overview.md).
 
-Para especificar los valores de la aplicación y crear el grupo de recursos, agregue este código al bloque Try del método Main:
+toospecify los valores de hello aplicación y crear grupo de recursos de hello, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Creating resource group...");
@@ -200,11 +200,11 @@ ResourceGroup resourceGroup = azure.resourceGroups()
     .create();
 ```
 
-### <a name="create-the-availability-set"></a>Creación del conjunto de disponibilidad
+### <a name="create-hello-availability-set"></a>Crear conjunto de disponibilidad de Hola
 
-Los [conjuntos de disponibilidad](tutorial-availability-sets.md) facilitan el mantenimiento de las máquinas virtuales que utiliza la aplicación.
+[Conjuntos de disponibilidad](tutorial-availability-sets.md) resultará más fácil máquinas virtuales toomaintain Hola que usa la aplicación.
 
-Para crear el conjunto de disponibilidad, agregue este código al bloque Try del método Main:
+disponibilidad de hello toocreate establecer, agregar este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Creating availability set...");
@@ -215,11 +215,11 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
     .withSku(AvailabilitySetSkuTypes.MANAGED)
     .create();
 ```
-### <a name="create-the-public-ip-address"></a>Crear la dirección IP pública
+### <a name="create-hello-public-ip-address"></a>Crear dirección IP pública de Hola
 
-Se necesita una [dirección IP pública](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) para la comunicación con la máquina virtual.
+A [dirección IP pública](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) es necesario toocommunicate con la máquina virtual de Hola.
 
-Para crear la dirección IP pública de la máquina virtual, agregue este código al bloque Try del método Main:
+dirección IP toocreate Hola pública para la máquina virtual de hello, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Creating public IP address...");
@@ -231,11 +231,11 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
     .create();
 ```
 
-### <a name="create-the-virtual-network"></a>Crear la red virtual
+### <a name="create-hello-virtual-network"></a>Crear red virtual de Hola
 
 Debe haber una máquina virtual en una subred de una [red virtual](../../virtual-network/virtual-networks-overview.md).
 
-Para crear una subred y una red virtual, agregue este código al bloque Try del método Main:
+toocreate una subred y una red virtual, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Creating virtual network...");
@@ -248,11 +248,11 @@ Network network = azure.networks()
     .create();
 ```
 
-### <a name="create-the-network-interface"></a>Creación de la interfaz de red
+### <a name="create-hello-network-interface"></a>Crear la interfaz de red de Hola
 
-Una máquina virtual requiere una interfaz de red para comunicarse en la red virtual que acaba de crear.
+Una máquina virtual necesita un toocommunicate de interfaz de red en la red virtual de Hola.
 
-Para crear una interfaz de red, agregue este código al bloque Try del método Main:
+toocreate una interfaz de red, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Creating network interface...");
@@ -267,11 +267,11 @@ NetworkInterface networkInterface = azure.networkInterfaces()
     .create();
 ```
 
-### <a name="create-the-virtual-machine"></a>Creación de la máquina virtual
+### <a name="create-hello-virtual-machine"></a>Crear la máquina virtual de Hola
 
-Ahora que ha creado todos los recursos auxiliares, puede crear una máquina virtual.
+Ahora que ha creado Hola todos los recursos de soporte, puede crear una máquina virtual.
 
-Para crear la máquina virtual, agregue este código al bloque Try del método Main:
+toocreate Hola máquina virtual, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Creating virtual machine...");
@@ -288,16 +288,16 @@ VirtualMachine virtualMachine = azure.virtualMachines()
     .withSize("Standard_DS1")
     .create();
 Scanner input = new Scanner(System.in);
-System.out.println("Press enter to get information about the VM...");
+System.out.println("Press enter tooget information about hello VM...");
 input.nextLine();
 ```
 
 > [!NOTE]
-> En este tutorial se crea una máquina virtual donde se ejecuta una versión del sistema operativo Windows Server. Para más información sobre cómo seleccionar otras imágenes, consulte [Seleccione y navegue por imágenes de máquina virtual de Azure con PowerShell y la CLI de Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Este tutorial crea una máquina virtual con una versión de sistema operativo de Windows Server de Hola. toolearn más acerca de cómo seleccionar otras imágenes, vea [navegue y seleccione las imágenes de máquina virtual de Azure con Windows PowerShell y hello Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Si desea usar un disco existente en lugar de una imagen de Marketplace, use este código: 
+Si desea toouse un disco existente en lugar de una imagen de marketplace, use este código: 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk") 
@@ -320,17 +320,17 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Realizar tareas de administración
 
-Durante el ciclo de vida de una máquina virtual, puede ejecutar tareas de administración como iniciar, detener o eliminar una máquina virtual. Además, puede crear código para automatizar tareas repetitivas o complejas.
+Durante el ciclo de vida de Hola de una máquina virtual, puede desear toorun tareas de administración, como iniciar, detener o eliminar una máquina virtual. Además, puede que desee toocreate tooautomate repetitivas o complejas tareas de código.
 
-Cuando tenga que hacerlas con la máquina virtual, deberá obtener una instancia de ella. Agregue este código al bloque Try del método Main:
+Cuando necesite toodo nada con hello VM, debe tooget una instancia del mismo. Agregue este bloque de try toohello de código del método principal de hello:
 
 ```java
 VirtualMachine vm = azure.virtualMachines().getByResourceGroup("myResourceGroup", "myVM");
 ```
 
-### <a name="get-information-about-the-vm"></a>Obtención de información acerca de la máquina virtual
+### <a name="get-information-about-hello-vm"></a>Obtener información acerca de hello VM
 
-Para obtener información sobre la máquina virtual, agregue este código al bloque Try del método Main:
+tooget información acerca de la máquina virtual de hello, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("hardwareProfile");
@@ -382,94 +382,94 @@ for(InstanceViewStatus status : vm.instanceView().statuses()) {
     System.out.println("  code: " + status.code());
     System.out.println("  displayStatus: " + status.displayStatus());
 }
-System.out.println("Press enter to continue...");
+System.out.println("Press enter toocontinue...");
 input.nextLine();   
 ```
 
-### <a name="stop-the-vm"></a>Parada de la máquina virtual
+### <a name="stop-hello-vm"></a>Detener Hola VM
 
-Puede detener una máquina virtual y mantener toda su configuración, pero se le seguirá cobrando, o puede detener una máquina virtual y desasignarla. Cuando se desasigna una máquina virtual, todos los recursos asociados a ella también se desasignan y se le deja de cobrar por ellos.
+Puede detener una máquina virtual y mantener todas sus opciones, pero continuar toobe cobra por él, o puede detener una máquina virtual y cancelar la asignación lo. Cuando se desasigna una máquina virtual, todos los recursos asociados a ella también se desasignan y se le deja de cobrar por ellos.
 
-Para detener la máquina virtual sin desasignarla, agregue este código al bloque Try del método Main:
+toostop Hola virtual machine sin cancelar su asignación, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Stopping vm...");
 vm.powerOff();
-System.out.println("Press enter to continue...");
+System.out.println("Press enter toocontinue...");
 input.nextLine();
 ```
 
-Si desea desasignar la máquina virtual, cambie la llamada de PowerOff por este código:
+Si desea que la máquina virtual de toodeallocate hello, cambiar código de hello apagado llamada toothis:
 
 ```java
 vm.deallocate();
 ```
 
-### <a name="start-the-vm"></a>Inicio de la máquina virtual
+### <a name="start-hello-vm"></a>Iniciar Hola VM
 
-Para iniciar la máquina virtual, agregue este código al bloque Try del método Main:
+toostart Hola máquina virtual, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Starting vm...");
 vm.start();
-System.out.println("Press enter to continue...");
+System.out.println("Press enter toocontinue...");
 input.nextLine();
 ```
 
-### <a name="resize-the-vm"></a>Cambio de tamaño de la máquina virtual
+### <a name="resize-hello-vm"></a>Cambiar el tamaño de hello VM
 
 Para decidir un tamaño de máquina virtual, se deben considerar muchos aspectos de la implementación. Para más información, consulte el artículo sobre los [tamaños de máquina virtual](sizes.md).  
 
-Para cambiar el tamaño de la máquina virtual, agregue este código al bloque Try del método Main:
+toochange tamaño de máquina virtual de hello, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Resizing vm...");
 vm.update()
     .withSize(VirtualMachineSizeTypes.STANDARD_DS2)
     .apply();
-System.out.println("Press enter to continue...");
+System.out.println("Press enter toocontinue...");
 input.nextLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Incorporación de un disco de datos a la máquina virtual
+### <a name="add-a-data-disk-toohello-vm"></a>Agregar un toohello de disco de datos VM
 
-Para agregar un disco de datos a la máquina virtual, agregue este código al bloque Try del método Main para agregar un disco de datos de 2 GB de tamaño, tener un LUN de 0 y un tipo de almacenamiento en caché de lectura y escritura:
+tooadd una máquina de virtual disco toohello de datos es de 2 GB de tamaño, tiene un LUN de 0 y un tipo de almacenamiento en caché de lectura y escritura, agregue este bloque try de toohello de código en el método main de hello:
 
 ```java
 System.out.println("Adding data disk...");
 vm.update()
     .withNewDataDisk(2, 0, CachingTypes.READ_WRITE)
     .apply();
-System.out.println("Press enter to delete resources...");
+System.out.println("Press enter toodelete resources...");
 input.nextLine();
 ```
 
 ## <a name="delete-resources"></a>Eliminar recursos
 
-Dado que se le cobrará por los recursos utilizados en Azure, siempre es conveniente eliminar los recursos que ya no sean necesarios. Si quiere eliminar las máquinas virtuales y todos los recursos auxiliares, lo único que tiene que hacer es eliminar el grupo de recursos.
+Dado que se le cobra por recursos que usa en Azure, siempre es recursos toodelete de buena práctica que ya no son necesarios. Si desea que las máquinas virtuales de toodelete Hola y Hola a todos los recursos de soporte todo lo que tiene toodo es el grupo de recursos de Hola de eliminación.
 
-1. Para eliminar el grupo de recursos, agregue este código al bloque Try del método Main:
+1. recursos de hello toodelete grupo, agregue este bloque try de toohello de código en el método main de hello:
    
 ```java
 System.out.println("Deleting resources...");
 azure.resourceGroups().deleteByName("myResourceGroup");
 ```
 
-2. Guarde el archivo App.java.
+2. Guarde el archivo de hello App.java.
 
-## <a name="run-the-application"></a>Ejecución de la aplicación
+## <a name="run-hello-application"></a>Ejecutar la aplicación hello
 
-Esta aplicación de consola tardará unos cinco minutos en ejecutarse completamente de principio a fin.
+Tardará aproximadamente cinco minutos para este toorun de aplicación de consola completamente de toofinish de inicio.
 
-1. Para ejecutar la aplicación, use este comando de Maven:
+1. toorun Hola aplicación, use este comando Maven:
 
     ```
     mvn compile exec:java
     ```
 
-2. Antes de presionar **Entrar** para comenzar la eliminación de recursos, puede dedicar unos minutos a comprobar la creación de los recursos en Azure Portal. Haga clic en el estado de implementación para ver información de la implementación.
+2. Antes de presionar **ENTRAR** toostart eliminar recursos, podría tardar unos minutos creación de hello tooverify de recursos de Hola Hola portal de Azure. Haga clic en información de toosee de estado de implementación de hello acerca de la implementación de Hola.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener más información sobre cómo usar las [bibliotecas de Azure para Java](https://docs.microsoft.com/en-us/java/azure/java-sdk-azure-overview).
+* Más información sobre el uso de hello [bibliotecas de Azure para Java](https://docs.microsoft.com/en-us/java/azure/java-sdk-azure-overview).
 

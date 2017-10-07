@@ -1,6 +1,6 @@
 ---
-title: "Creación de clústeres de MySQL con conjuntos con equilibrio de carga | Microsoft Docs"
-description: "Configuración de un clúster MySQL Linux de carga equilibrada y alta disponibilidad creado con el modelo de implementación clásica en Azure"
+title: aaaClusterize MySQL con conjuntos de carga equilibrada | Documentos de Microsoft
+description: "Configurar un equilibrio de carga, la alta disponibilidad Linux MySQL clúster creado con el modelo de implementación clásica de hello en Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: bureado
@@ -15,34 +15,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: 4eaf86c9ac3e4dc2b51b88383626eda774cab0e9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1829fd877c4b0ed177b23a8e3404dbb3db746561
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>Uso de conjuntos de carga equilibrada para crear clústeres en MySQL en Linux
+# <a name="use-load-balanced-sets-tooclusterize-mysql-on-linux"></a>Usar conjuntos de carga equilibrada tooclusterize MySQL en Linux
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Azure Resource Manager](../../../resource-manager-deployment-model.md) y el modelo clásico. Este artículo trata del modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Hay disponible una [plantilla de Resource Manager](https://azure.microsoft.com/documentation/templates/mysql-replication/) si necesita implementar un clúster de MySQL.
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Azure Resource Manager](../../../resource-manager-deployment-model.md) y el clásico. Este artículo incluye el uso de modelo de implementación clásica de Hola. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. A [plantilla del Administrador de recursos](https://azure.microsoft.com/documentation/templates/mysql-replication/) está disponible si necesita toodeploy un clúster de MySQL.
 
-Este artículo explora e ilustra los diferentes enfoques disponibles para implementar servicios basados en Linux altamente disponibles en Microsoft Azure, explorando la alta disponibilidad de MySQL Server como base. En [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL)hay un vídeo disponible que ilustra este enfoque.
+Este artículo explora y Hola distintos enfoques disponibles toodeploy basados en Linux servicios de alta disponibilidad en Microsoft Azure, exploración de alta disponibilidad del servidor de MySQL como instrucciones detalladas muestra. En [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL)hay un vídeo disponible que ilustra este enfoque.
 
-Describiremos una solución de alta disponibilidad de MySQL de un solo maestro y dos nodos independientes basada en DRBD, Corosync y Pacemaker. Solamente se ejecuta un nodo MySQL en cada momento. La lectura y escritura desde el recurso DRBD también se limitan a un solo nodo en cada momento.
+Describiremos una solución de alta disponibilidad de MySQL de un solo maestro y dos nodos independientes basada en DRBD, Corosync y Pacemaker. Solamente se ejecuta un nodo MySQL en cada momento. Lectura y escritura de hello recursos DRBD son también un nodo de tooonly limitado a la vez.
 
-No se necesita una solución VIP como LVS porque usará conjuntos de carga equilibrada de Microsoft Azure para proporcionar tanto funcionalidad round robin como detección, eliminación y recuperación estable de puntos de conexión de VIP. VIP es una dirección IPv4 globalmente enrutable asignada por Microsoft Azure cuando crea el servicio en la nube.
+No es necesario para una solución VIP como informes LV, dado que va a utilizar conjuntos de carga equilibrada en tooprovide round robin funcionalidad y punto de conexión de detección de Microsoft Azure, eliminación y recuperación correcta de hello VIP. Hola VIP es una dirección IPv4 globalmente enrutable asignada por Microsoft Azure al servicio en la nube Hola crearlo.
 
-Hay otras posibles arquitecturas para MySQL, como, por ejemplo, NBD Cluster, Percona, Galera y diversas soluciones middleware que incluyen, al menos, una disponible como máquina virtual en [VM Depot](http://vmdepot.msopentech.com). Mientras que estas soluciones pueden replicarse en unidifusión frente a multidifusión o difusión, y no se basan en almacenamiento compartido o interfaces de varias redes, los escenarios deben ser fáciles de implementar en Microsoft Azure.
+Hay otras posibles arquitecturas para MySQL, como, por ejemplo, NBD Cluster, Percona, Galera y diversas soluciones middleware que incluyen, al menos, una disponible como máquina virtual en [VM Depot](http://vmdepot.msopentech.com). Siempre que estas soluciones se pueden replicar en unidifusión y multidifusión o difusión y no dependen del almacenamiento compartido o varias interfaces de red, escenarios de hello deben ser fácil toodeploy en Microsoft Azure.
 
-Estas arquitecturas de clúster se pueden extender a otros productos como PostgreSQL y OpenLDAP de forma similar. Por ejemplo, este procedimiento de equilibro de carga independiente se probó correctamente con OpenLDAP multimaestro y puede verlo en nuestro blog de Channel 9.
+Estas arquitecturas de agrupación en clústeres pueden ampliarse tooother productos como PostgreSQL y OpenLDAP de un modo similar. Por ejemplo, este procedimiento de equilibro de carga independiente se probó correctamente con OpenLDAP multimaestro y puede verlo en nuestro blog de Channel 9.
 
 ## <a name="get-ready"></a>Prepárese
-Necesita los siguientes recursos y capacidades:
+Necesita Hola siguiente recursos y la capacidad de:
 
-  - Una cuenta de Microsoft Azure con una suscripción válida que permita crear al menos dos VM (en este ejemplo se usó XS)
+  - Una Microsoft Azure cuenta con una suscripción válida, toocreate capaz de al menos dos máquinas virtuales (extra se usó en este ejemplo)
   - Una red y una subred
   - Un grupo de afinidad
   - Un conjunto de disponibilidad
-  - La capacidad para crear VHD en la misma región que el servicio en la nube y adjuntarlos a las VM de Linux
+  - Hola capacidad toocreate discos duros virtuales en Hola misma región que el servicio de nube de Hola y conéctelas toohello máquinas virtuales de Linux
 
 ### <a name="tested-environment"></a>Entorno probado
 * Ubuntu 13.10
@@ -51,36 +51,36 @@ Necesita los siguientes recursos y capacidades:
   * Corosync y Pacemaker
 
 ### <a name="affinity-group"></a>Grupo de afinidad
-Cree un grupo de afinidad para la solución. Para ello, inicie sesión en el portal de Azure clásico, seleccione **Configuración** y cree el grupo de afinidad. Los recursos asignados creados más tarde se asignarán a este grupo de afinidad.
+Crear un grupo de afinidad para la solución de hello debe iniciar sesión en el portal de Azure clásico toohello seleccionar **configuración**y la creación de un grupo de afinidad. Recursos asignados que se crean con posterioridad se asignarán toothis grupo de afinidad.
 
 ### <a name="networks"></a>Redes
-Se crea una nueva red y, a su vez, se crea una subred dentro de la red. En este ejemplo se usa una red 10.10.10.0/24 con una sola subred /24 dentro.
+Se crea una nueva red y se crea una subred dentro de la red de Hola. En este ejemplo se usa una red 10.10.10.0/24 con una sola subred /24 dentro.
 
 ### <a name="virtual-machines"></a>Máquinas virtuales
-La primera VM Ubuntu 13.10 se crea usando una imagen de la galería de Ubuntu refrendada llamada `hadb01`. En el proceso, se crea un nuevo servicio en la nube llamado hadb. El nombre refleja la naturaleza compartida y de carga equilibrada que tendrá el servicio cuando agreguemos más recursos. La creación de `hadb01` no presenta ningún problema y se completa mediante el portal. Se crea un punto de conexión para SSH automáticamente y se selecciona la nueva red. Ahora puede crear un conjunto de disponibilidad para las VM.
+Hola primera Ubuntu 13.10 VM se crea mediante una imagen de la Galería de Ubuntu Endorsed y se denomina `hadb01`. Se crea un nuevo servicio de nube en proceso de hello, denominado hadb. Este nombre muestra hello compartido, naturaleza con equilibrio de carga que el servicio de hello tendrán cuando se agregan más recursos. Hola creación de `hadb01` está sin incidentes y se rellena mediante el portal de Hola. Se crea automáticamente un punto de conexión de SSH, y se selecciona la nueva red de Hola. Ahora puede crear un conjunto de disponibilidad para hello las máquinas virtuales.
 
-Tras crear la primera VM (técnicamente, cuando se crea el servicio en la nube), creamos la segunda máquina virtual, `hadb02`. Para la segunda VM, usaremos la VM Ubuntu 13.10 desde la galería a través del Portal, pero usaremos un servicio en la nube existente, `hadb.cloudapp.net`, en lugar de crear uno nuevo. La red y el conjunto de disponibilidad se deben seleccionar automáticamente. También se creará un extremo SSH.
+Después de hello primera máquina virtual se crea (técnicamente, cuando se crea el servicio de nube de hello), crear Hola segunda máquina virtual, `hadb02`. Para hello segunda máquina virtual, utilizar Ubuntu 13.10 VM de hello galería mediante el portal de hello, pero usar un servicio de nube existente, `hadb.cloudapp.net`, en lugar de crear uno nuevo. conjunto de red y la disponibilidad de Hello debe seleccionarse automáticamente. También se creará un extremo SSH.
 
-Una vez creadas ambas VM, tomaremos nota del puerto SSH para `hadb01` (TCP 22) y `hadb02` (automáticamente asignado por Azure).
+Después de que se han creado dos máquinas virtuales, tome nota del puerto SSH de Hola para `hadb01` (puerto TCP 22) y `hadb02` (asignado automáticamente por Azure).
 
 ### <a name="attached-storage"></a>Almacenamiento acoplado
-Acoplamos un nuevo disco a ambas VM y creamos discos de 5 GB en el proceso. Los discos se hospedan en el contenedor VHD en uso para nuestros discos del sistema operativo principal. Una vez creados y acoplados los discos, no es necesario que reiniciemos Linux, ya que el kernel verá el nuevo dispositivo. Este dispositivo suele ser `/dev/sdc`. Compruebe el resultado en `dmesg`.
+Adjuntar un tooboth de disco nuevas máquinas virtuales y crear discos de 5 GB en proceso de Hola. discos de Hola se hospedan en el contenedor VHD de hello en uso para los discos de sistema operativo principal. Después de que se crean y se adjuntan discos, no hay ningún toorestart necesidad Linux porque kernel Hola ver Hola nuevo dispositivo. Este dispositivo suele ser `/dev/sdc`. Comprobar `dmesg` para la salida de hello.
 
-En cada VM crearemos una partición mediante `cfdisk` (partición de Linux primaria) y escribiremos la nueva tabla de particiones. No cree un sistema de archivos en esta partición.
+En cada máquina virtual, cree una partición utilizando `cfdisk` (partición primaria, de Linux) y escribir Hola nueva tabla de partición. No cree un sistema de archivos en esta partición.
 
-## <a name="set-up-the-cluster"></a>Configuración del clúster
-Use APT para instalar Corosync, Pacemaker y DRBD en ambas VM de Ubuntu. Para hacerlo con `apt-get`, ejecute el siguiente código:
+## <a name="set-up-hello-cluster"></a>Configurar el clúster de Hola
+Utilice APT tooinstall Corosync, marcapasos y DRBD en ambas máquinas virtuales Ubuntu. toodo con `apt-get`, ejecute hello código siguiente:
 
     sudo apt-get install corosync pacemaker drbd8-utils.
 
-No instale MySQL en este momento. Los scripts de instalación de Debian y Ubuntu inicializarán un directorio de datos de MySQL en `/var/lib/mysql`, pero dado que el directorio se sustituirá por un sistema de archivos DRBD, necesita instalar MySQL más tarde.
+No instale MySQL en este momento. Debian y Ubuntu scripts de instalación se inicializarán en un directorio de datos de MySQL en `/var/lib/mysql`, pero porque el directorio de hello será reemplazado por un sistema de archivos DRBD, necesita tooinstall MySQL más adelante.
 
-Compruebe (con `/sbin/ifconfig`) que ambas VM usan las direcciones de la subred 10.10.10.0/24 y que pueden ejecutar el comando ping entre ellas por nombre. También puede usar `ssh-keygen` y `ssh-copy-id` para asegurarse de que ambas VM pueden comunicarse a través de SSH sin necesidad de contraseña.
+Comprobar (mediante el uso de `/sbin/ifconfig`) que ambas máquinas virtuales usan direcciones de subred 10.10.10.0/24 de Hola y que puede hacer ping entre sí por su nombre. También puede usar `ssh-keygen` y `ssh-copy-id` toomake seguro ambas máquinas virtuales pueden comunicarse a través de SSH sin necesidad de una contraseña.
 
 ### <a name="set-up-drbd"></a>Configure DRBD
-Cree un recurso DRBD que usa la partición `/dev/sdc1` subyacente para generar un recurso `/dev/drbd1` que puede asumir el formato ext3 y usarse tanto en nodos principales como secundarios.
+Crear un recurso DRBD que usa subyacente hello `/dev/sdc1` partición tooproduce un `/dev/drbd1` recursos que se ha dado formato mediante ext3 y usar en los nodos principales y secundarios.
 
-1. Abra `/etc/drbd.d/r0.res` y copie la siguiente definición de recurso en ambas VM:
+1. Abra `/etc/drbd.d/r0.res` y Hola copia siguiendo la definición de recursos en ambas máquinas virtuales:
 
         resource r0 {
           on `hadb01` {
@@ -97,70 +97,70 @@ Cree un recurso DRBD que usa la partición `/dev/sdc1` subyacente para generar u
           }
         }
 
-2. Inicialice el recurso mediante `drbdadm` en ambas VM:
+2. Inicializar recursos hello mediante `drbdadm` en ambas máquinas virtuales:
 
         sudo drbdadm -c /etc/drbd.conf role r0
         sudo drbdadm up r0
 
-3. En la VM principal (`hadb01`), fuerce la propiedad (principal) del recurso DRBD:
+3. En Hola VM principal (`hadb01`), forzar (principal) de la propiedad de recurso DRBD de hello:
 
         sudo drbdadm primary --force r0
 
-Si examina el contenido de /proc/drbd (`sudo cat /proc/drbd`) en ambas máquinas virtuales, debe ver `Primary/Secondary` en `hadb01` y `Secondary/Primary` en `hadb02`, que concuerda con la solución en este punto. El disco de 5 GB se sincronizara través de la red 10.10.10.0/24 sin coste alguno para los clientes.
+Si examina el contenido de Hola de/proc/drbd (`sudo cat /proc/drbd`) en ambas máquinas virtuales, debería ver `Primary/Secondary` en `hadb01` y `Secondary/Primary` en `hadb02`, coherentes con la solución de hello en este momento. disco de 5 GB de Hola se sincroniza en la red de 10.10.10.0/24 de hello en ningún toocustomers de forma gratuita.
 
-Una vez sincronizado el disco, puede crear el sistema de archivos en `hadb01`. Para tareas de prueba usamos ext2, pero el siguiente código creará un sistema de archivos ext3:
+Después de haber sincronizado disco hello, puede crear sistema de archivos de hello en `hadb01`. Para realizar pruebas, hemos usado ext2, pero Hola sigue código creará un sistema de archivos ext3:
 
     mkfs.ext3 /dev/drbd1
 
-### <a name="mount-the-drbd-resource"></a>Montaje del recurso DRBD
-Ahora está preparado para montar los recursos DRBD en `hadb01`. Debian y productos derivados usan `/var/lib/mysql` como directorio de datos de MySQL. Dado que no ha instalado MySQL, cree el directorio y monte el recurso DRBD. Para llevar a cabo esta opción, ejecute el siguiente código en `hadb01`:
+### <a name="mount-hello-drbd-resource"></a>Montar hello DRBD recurso
+Está ahora listo toomount hello DRBD recursos `hadb01`. Debian y productos derivados usan `/var/lib/mysql` como directorio de datos de MySQL. Dado que no tiene instalado MySQL, cree el directorio de Hola y montar hello DRBD recurso. tooperform esta opción, ejecute hello siguiente código de `hadb01`:
 
     sudo mkdir /var/lib/mysql
     sudo mount /dev/drbd1 /var/lib/mysql
 
 ## <a name="set-up-mysql"></a>Instalación de MySQL
-Ahora estamos preparados para instalar MySQL en `hadb01`:
+Ahora está listo tooinstall MySQL en `hadb01`:
 
     sudo apt-get install mysql-server
 
-Para `hadb02`, tiene dos opciones. Puede instalar mysql-server, lo que creará /var/lib/mysql, lo rellenará con un nuevo directorio de datos y después quitará el contenido. Para llevar a cabo esta opción, ejecute el siguiente código en `hadb02`:
+Para `hadb02`, tiene dos opciones. Puede instalar a mysql server, que se crean /var/lib/mysql, rellenar con un nuevo directorio de datos y, a continuación, quite el contenido de Hola. tooperform esta opción, ejecute hello siguiente código de `hadb02`:
 
     sudo apt-get install mysql-server
     sudo service mysql stop
     sudo rm –rf /var/lib/mysql/*
 
-La segunda opción consiste en un realizar una conmutación por error para `hadb02` y después instalar mysql-server allí. Los scripts de instalación tendrán en cuenta la instalación existente y no la tocarán.
+segunda opción de Hello es toofailover demasiado`hadb02` y, a continuación, instalar servidor mysql no existe. Las secuencias de comandos de instalación dará cuenta de instalación existente de hello y no toque.
 
-Ejecute el siguiente fragmento de código en `hadb01`:
+Ejecución hello código en siguiente `hadb01`:
 
     sudo drbdadm secondary –force r0
 
-Ejecute el siguiente fragmento de código en `hadb02`:
+Ejecución hello código en siguiente `hadb02`:
 
     sudo drbdadm primary –force r0
     sudo apt-get install mysql-server
 
-Si no pretende conmutar por error DRBD ahora, la primera opción es más sencilla aunque posiblemente menos elegante. Después de configurar esto, puede comenzar a trabajar en su base de datos MySQL. Ejecute el código siguiente en `hadb02` (o en cualquiera de los servidores activos, conforme a DRBD):
+Si no tiene pensado toofailover DRBD ahora, Hola primera opción es más fácil aunque sin duda es menos elegante. Después de configurar esto, puede comenzar a trabajar en su base de datos MySQL. Ejecución hello código en siguiente `hadb02` (o cualquiera de los servidores de hello está activo, según tooDRBD):
 
     mysql –u root –p
     CREATE DATABASE azureha;
     CREATE TABLE things ( id SERIAL, name VARCHAR(255) );
     INSERT INTO things VALUES (1, "Yet another entity");
-    GRANT ALL ON things.\* TO root;
+    GRANT ALL ON things.\* tooroot;
 
 > [!WARNING]
-> esta última instrucción deshabilita de forma eficaz la autenticación para el usuario raíz en esta tabla. Las instrucciones GRANT de producción deben reemplazar esto y solamente se incluye por motivos ilustrativos.
+> Esta última instrucción eficazmente deshabilita la autenticación de usuario de la raíz de hello en esta tabla. Las instrucciones GRANT de producción deben reemplazar esto y solamente se incluye por motivos ilustrativos.
 
-Si desea realizar consultas desde fuera de las máquinas virtuales, que es la finalidad de esta guía, también necesita habilitar las redes para MySQL. Abra `/etc/mysql/my.cnf` en ambas VM y vaya a `bind-address`. Cambie la dirección de 127.0.0.1 a 0.0.0.0. Después de guardar el archivo, emita `sudo service mysql restart` en su principal actual.
+Si desea que las consultas de toomake desde máquinas virtuales de hello exterior (que es el propósito de Hola de esta guía), también necesita tooenable redes para MySQL. En ambas máquinas virtuales, abra `/etc/mysql/my.cnf` y vaya demasiado`bind-address`. Cambiar dirección de hello en 127.0.0.1 too0.0.0.0. Después de guardar el archivo hello, emitir una `sudo service mysql restart` en su objeto principal actual.
 
-### <a name="create-the-mysql-load-balanced-set"></a>Creación del conjunto de carga equilibrada de MySQL
-Vuelva al portal, vaya a `hadb01` y elija **Puntos de conexión**. Para crear un punto de conexión, elija MySQL (TCP 3306) en la lista desplegable y seleccione **Crear nuevo conjunto de carga equilibrada**. Dé un nombre al conjunto de punto de conexión de carga equilibrada `lb-mysql`. Establezca **Tiempo** en 5 segundos como mínimo.
+### <a name="create-hello-mysql-load-balanced-set"></a>Crear conjunto de equilibrio de carga de MySQL de Hola
+Volver atrás toohello portal, vaya demasiado`hadb01`y elija **extremos**. toocreate un extremo, elija MySQL (TCP 3306) de la lista desplegable de Hola y seleccione **conjunto con equilibrio de carga nueva creación**. Extremo de carga equilibrada de nombre hello `lb-mysql`. Establecer **tiempo** too5 segundos, mínimos.
 
-Tras crear el punto de conexión, vaya a `hadb02`, elija **Puntos de conexión** y cree un punto de conexión. Elija `lb-mysql` y seleccione MySQL en la lista desplegable. También puede usar la CLI de Azure para este paso.
+Después de crear el punto de conexión de hello, vaya demasiado`hadb02`, elija **extremos**y crear un punto de conexión. Elija `lb-mysql`y, a continuación, seleccione MySQL desde la lista desplegable de Hola. También puede utilizar Hola CLI de Azure para este paso.
 
-Ya tiene todo lo que necesita para una operación manual del clúster.
+Ahora tienes todo lo que necesita para una operación manual del clúster de Hola.
 
-### <a name="test-the-load-balanced-set"></a>Prueba del conjunto de carga equilibrada
+### <a name="test-hello-load-balanced-set"></a>Probar el conjunto de equilibrio de carga de Hola
 Las pruebas se pueden realizar desde un equipo externo usando cualquier cliente MySQL, o bien mediante ciertas aplicaciones, como phpMyAdmin ejecutada como un sitio web de Azure. En este caso, utiliza una herramienta de línea de comandos de MySQL en otro cuadro de Linux:
 
     mysql azureha –u root –h hadb.cloudapp.net –e "select * from things;"
@@ -168,7 +168,7 @@ Las pruebas se pueden realizar desde un equipo externo usando cualquier cliente 
 ### <a name="manually-failing-over"></a>Conmutación por error manual
 Puede simular conmutaciones por error cerrando MySQL, cambiando el rol principal de DRBD e iniciando MySQL de nuevo.
 
-Para llevar a cabo esta opción, ejecute el siguiente código en hadb01:
+tooperform esta tarea, ejecute hello siguiente código de hadb01:
 
     service mysql stop && umount /var/lib/mysql ; drbdadm secondary r0
 
@@ -179,16 +179,16 @@ Después en hadb02:
 Una vez realizada la conmutación por error manualmente, puede repetir la consulta remota, que debe funcionar perfectamente.
 
 ## <a name="set-up-corosync"></a>Configuración de Corosync
-Corosync es la infraestructura de clúster subyacente que Pacemaker necesita para trabajar. Para Heartbeat (y otras metodologías como Ultramonkey), Corosync es una división de las funcionalidades CRM, mientras que la funcionalidad de Pacemaker es más similar a Hearbeat.
+Corosync es Hola subyacente clúster infraestructura necesaria para marcapasos toowork. Para el latido (y otros métodos como Ultramonkey), Corosync es una división de las funcionalidades CRM de hello, mientras marcapasos permanecen tooHeartbeat más similar en la funcionalidad.
 
-La restricción principal para Corosync en Azure es que Corosync prefiere comunicaciones multidifusión mejor que difusión y difusión mejor que unidifusión, pero las redes de Microsoft Azure solo admiten unidifusión.
+restricción principal Hola para Corosync en Azure es que Corosync prefiere multidifusión a través de difusión a las comunicaciones de unidifusión, pero las redes de Microsoft Azure solo admite unidifusión.
 
-Por suerte, Corosync tiene un modo de unidifusión activo. La única restricción real es que, dado que todos los nodos no se comunican entre sí, necesita definir dichos nodos en los archivos de configuración, incluidas sus direcciones IP. Podemos utilizar los archivos de ejemplo de Corosync para Unidifusión y cambiar la dirección de enlace, las listas de nodos y los directorios de registro (Ubuntu usa `/var/log/corosync`, mientras que los archivos de ejemplo usan `/var/log/cluster`) y habilitar las herramientas de cuórum.
+Por suerte, Corosync tiene un modo de unidifusión activo. Hola única restricción real es que, dado que todos los nodos no se comunican entre sí, es necesario nodos de hello toodefine en los archivos de configuración, incluidas las direcciones IP. Podemos usar archivos de ejemplo de Hola Corosync de unidifusión y cambio enlazan la dirección, listas de nodos y directorios de registro (Ubuntu usa `/var/log/corosync` al uso de archivos de ejemplo de Hola a `/var/log/cluster`) y permitir a las herramientas de quórum.
 
 > [!NOTE]
-> Use la siguiente directiva `transport: udpu` y las direcciones IP definidas manualmente para ambos nodos.
+> Utilice siguiente hello `transport: udpu` hello y directiva definir manualmente las direcciones IP para ambos nodos.
 
-Ejecute el siguiente fragmento de código en `/etc/corosync/corosync.conf` en ambos nodos:
+Ejecución hello código en siguiente `/etc/corosync/corosync.conf` para ambos nodos:
 
     totem {
       version: 2
@@ -236,18 +236,18 @@ Copie este archivo de configuración en ambas VM e inicie Corosync en los dos no
 
     sudo service start corosync
 
-Poco después de iniciar el servicio, el clúster se debe establecer en el anillo actual y se debe constituir el cuórum. Podemos comprobar esta funcionalidad revisando registros o ejecutando el código siguiente:
+Justo después de iniciar el servicio de hello, clúster Hola se debe establecer en anillo actual de Hola y debe estar constituido quórum. Podemos comprobar esta funcionalidad si examina los registros o ejecutando el siguiente código de hello:
 
     sudo corosync-quorumtool –l
 
-Verá un resultado similar al de la imagen siguiente:
+Verá toohello similar de salida después de imagen:
 
 ![corosync-quorumtool -l sample output](./media/mysql-cluster/image001.png)
 
 ## <a name="set-up-pacemaker"></a>Configuración de Pacemaker
-Pacemaker usa el clúster para supervisar recursos, definir el momento en el que los principales dejan de funcionar y cambiar estos recursos a los secundarios. Entre las diferentes posibilidades que existen, los recursos se pueden definir desde un conjunto de scripts disponibles o desde scripts LSB (de tipo init).
+Usa marcapasos Hola toomonitor de clúster para los recursos, define cuando los elementos dejan de funcionar y cambia esos toosecondaries de recursos. Entre las diferentes posibilidades que existen, los recursos se pueden definir desde un conjunto de scripts disponibles o desde scripts LSB (de tipo init).
 
-Queremos que Pacemaker "posea" el recurso DRBD, el punto de montaje y el servicio MySQL. Si Pacemaker puede activar y desactivar DRBD, montarlo y desmontarlo y después iniciar y detener MySQL en el orden correcto cuando algo vaya mal con la máquina principal, la configuración se habrá completado.
+Queremos marcapasos demasiado "propio" hello DRBD recurso, punto de montaje de hello y servicio de MySQL Hola. Si marcapasos pueden activar y desactivar DRBD, montar y desmontar y, a continuación, iniciar y detener MySQL Hola derecha orden cuando algo mal ocurre con hello principal, el programa de instalación está completa.
 
 Cuando instalé por primera vez Pacemaker, la configuración debe ser suficientemente sencilla, algo como lo siguiente:
 
@@ -256,8 +256,8 @@ Cuando instalé por primera vez Pacemaker, la configuración debe ser suficiente
     node $id="2" hadb02
       attributes standby="off"
 
-1. Compruebe la configuración ejecutando `sudo crm configure show`.
-2. Después cree un archivo (por ejemplo, `/tmp/cluster.conf`) con los siguiente recursos:
+1. Compruebe la configuración de hello ejecutando `sudo crm configure show`.
+2. A continuación, cree un archivo (como `/tmp/cluster.conf`) con hello recursos siguientes:
 
         primitive drbd_mysql ocf:linbit:drbd \
               params drbd_resource="r0" \
@@ -287,7 +287,7 @@ Cuando instalé por primera vez Pacemaker, la configuración debe ser suficiente
 
         property no-quorum-policy=ignore
 
-3. Cargue el archivo en la configuración. Solo tiene que hacer esto en un nodo.
+3. Cargar archivo hello en configuración de Hola. Solo necesita toodo esto en un nodo.
 
         sudo crm configure
           load update /tmp/cluster.conf
@@ -298,9 +298,9 @@ Cuando instalé por primera vez Pacemaker, la configuración debe ser suficiente
 
         sudo update-rc.d pacemaker defaults
 
-5. Use `sudo crm_mon –L` para comprobar que uno de los nodos se ha convertido en el maestro para el clúster y se ejecuta en todos los recursos. Puede usar mount y ps para comprobar que los recursos se están ejecutando.
+5. Mediante el uso de `sudo crm_mon –L`, compruebe que uno de los nodos se ha convertido en maestro de hello para el clúster de Hola y todos los recursos de Hola está ejecutando. Puede usar toocheck de montaje y ps que ejecutan recursos Hola.
 
-La siguiente captura de pantalla muestra `crm_mon` con un nodo detenido (salga seleccionando Ctrl+C):
+Hola siguiente captura de pantalla muestra `crm_mon` con un nodo detenido (salida seleccionando Ctrl + C):
 
 ![crm_mon node stopped](./media/mysql-cluster/image002.png)
 
@@ -309,16 +309,16 @@ Esta captura de pantalla muestra ambos nodos, uno maestro y otro subordinado:
 ![crm_mon operational master/slave](./media/mysql-cluster/image003.png)
 
 ## <a name="testing"></a>Prueba
-Ya puede llevar a cabo una simulación de conmutación por error automática. Existen dos formas de hacerlo: suave y dura.
+Ya puede llevar a cabo una simulación de conmutación por error automática. Hay dos toodo formas esto: flexibles y forzados.
 
-Para llevar a cabo la simulación suave, usaremos la función de cierre del clúster: ``crm_standby -U `uname -n` -v on``. Si usa esto en el maestro, el subordinado asume el control. No olvide volver a establecer esto en desconectado. Si no lo hace, crm_mon mostrará un nodo en espera.
+Hello forma parcial con la función de cierre del clúster de hello: ``crm_standby -U `uname -n` -v on``. Si usa esto en el patrón de hello, esclavo hello tiene sobre. Recuerde tooset esta toooff atrás. Si no lo hace, crm_mon mostrará un nodo en espera.
 
-La forma dura consiste en cerrar la VM principal (hadb01) mediante el portal o cambiando el nivel de ejecución en la VM (es decir, detener, apagar). Esto ayuda a Corosync y Pacemaker indicando que el maestro deja de funcionar. Puede probar esto (útil para ventanas de mantenimiento), pero también puede forzar el escenario congelando la VM.
+Hello malas se va a cerrar hacia abajo Hola VM principal (hadb01) mediante el portal de Hola o cambiando Hola runlevel en hello VM (es decir, detener, cierre). Esto ayuda a Corosync y marcapasos mediante señales ir del patrón Hola hacia abajo. Puede probarlo (es útil para las ventanas de mantenimiento), pero también puede forzar el escenario de hello inmovilizando Hola máquina virtual.
 
 ## <a name="stonith"></a>STONITH
-Debe ser posible emitir un cierre de máquina virtual a través de la CLI de Azure en lugar de un script STONITH que controle un dispositivo físico. Puede usar `/usr/lib/stonith/plugins/external/ssh` como base y habilitar STONITH en la configuración del clúster. La CLI de Azure se debe instalar globalmente y la configuración y el perfil de publicación se deben cargar para el usuario del clúster.
+Debe ser posible tooissue un apagado de máquina virtual a través de hello Azure CLI en lugar de una secuencia de comandos STONITH que controla un dispositivo físico. Puede usar `/usr/lib/stonith/plugins/external/ssh` como base y habilitar STONITH en la configuración del clúster de Hola. Debe instalarse globalmente CLI de Azure y configuración de publicación de Hola y se debe cargar el perfil de usuario del clúster de Hola.
 
-Ejemplo de código para el recurso disponible en [GitHub](https://github.com/bureado/aztonith). Cambie la configuración del clúster agregando lo siguiente a `sudo crm configure`:
+Está disponible en el código de ejemplo para el recurso de hello [GitHub](https://github.com/bureado/aztonith). Cambiar configuración del clúster de hello agregando Hola después demasiado`sudo crm configure`:
 
     primitive st-azure stonith:external/azure \
       params hostlist="hadb01 hadb02" \
@@ -327,14 +327,14 @@ Ejemplo de código para el recurso disponible en [GitHub](https://github.com/bur
       commit
 
 > [!NOTE]
-> El script no realiza comprobaciones ascendentes o descendentes. El recurso SSH original tenía 15 comprobaciones ping, pero el tiempo de recuperación para una VM de Azure podría ser más variable.
+> script de Hola no realiza comprobaciones de arriba/abajo. recurso de Hello original SSH tenía 15 comprobaciones de ping, pero el tiempo de recuperación para una máquina virtual de Azure puede ser más variables.
 
 ## <a name="limitations"></a>Limitaciones
-Se aplican las siguientes limitaciones:
+Hola siguientes limitaciones se aplica:
 
-* El script de recursos DRBD linbit que administra DRBD como un recurso en Pacemaker usa `drbdadm down` al cerrar un nodo, aunque dicho nodo esté entrando en modo de espera. No se trata de la situación ideal porque el subordinado no sincronizará el recurso DRBD mientras se escribe en el maestro. Si no se produce un error en el maestro, el subordinado podrá asumir el control y el estado del sistema de archivos anterior. Hay dos formas posibles de resolver este problema:
+* Hola de script de recursos DRBD linbit que administra DRBD como un recurso en usos marcapasos `drbdadm down` al apagar un nodo, incluso si solo se va nodo hello en espera. Esto no es lo ideal porque esclavo hello no va a sincronizar recursos DRBD de Hola a pesar de master Hola lo escribe. Si master hello no amablemente, esclavo Hola puede asumir un estado anterior del sistema de archivos. Hay dos formas posibles de resolver este problema:
   * Aplicando un comando `drbdadm up r0` en todos los nodos del clúster mediante un guardián local (sin clústeres)
-  * Editando el script DRBD linbit, asegurándose de que no se llama a `down`, en `/usr/lib/ocf/resource.d/linbit/drbd`
-* El equilibrador de carga necesita al menos cinco segundos para responder, por lo que las aplicaciones deben ser compatibles con clústeres y ser más tolerantes a errores de tiempo de espera. También pueden ayudar otras arquitecturas, como las colas de la aplicación y middlewares de consulta.
-* El ajuste de MySQL es necesario para garantizar que la escritura se realiza a un ritmo apropiado y las memorias caché se vacían en disco con la máxima frecuencia posible para minimizar la pérdida de memoria.
-* El rendimiento de escritura depende de la interconexión de las VM en la conmutación virtual ya que este es el mecanismo que usa DRBD para replicar el dispositivo.
+  * Editar el script de Hola linbit DRBD, asegurándose de que `down` en no se llama`/usr/lib/ocf/resource.d/linbit/drbd`
+* equilibrador de carga de Hello necesita toorespond de al menos cinco segundos, por lo que las aplicaciones deben ser compatible con clústeres y ser más tolerante a errores de tiempo de espera. También pueden ayudar otras arquitecturas, como las colas de la aplicación y middlewares de consulta.
+* MySQL para la optimización es tooensure necesario que realiza la escritura a un ritmo administrable y memorias caché son toodisk vaciado con tanta frecuencia como toominimize posible pérdida de memoria.
+* Escribir el rendimiento depende en VM de interconexión de conmutador virtual de hello porque se trata de mecanismo de hello DRBD tooreplicate Hola dispositivo usado.

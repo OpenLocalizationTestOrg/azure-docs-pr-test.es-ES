@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Service Fabric: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a usar la plataforma de middleware Service Fabric para empaquetar e implementar microservicios para aplicaciones a escala de nube. Tutoriales, referencias de API y ejemplos de código."
+title: "aaaAzure documentación del servicio de Fabric - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse Service Fabric middleware plataforma toopackage e implementar microservicios para aplicaciones de escala de nube. Tutoriales, referencias de API y ejemplos de código."
 services: service-fabric
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 95499b3ca42e17a6586f97ca3e28919d2fc64a80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0758059e7f8604fc2fe9cff4acb826204ff8d686
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="service-fabric-documentation"></a>Documentación de Service Fabric
 
-Aprenda a usar Service Fabric para empaquetar, implementar y administrar microservicios escalables y confiables. En los tutoriales, las referencias de API y los ejemplos de código, se muestra cómo usar esta plataforma de middleware para crear y administrar aplicaciones a escala de nube.
+Obtenga información acerca de cómo toouse Service Fabric toopackage, implementar y administrar microservicios escalables y confiables. Tutoriales, referencias de API y el código ejemplos se muestra cómo toouse esta toobuild de plataforma middleware y administrar aplicaciones de escala de nube.
 
 <ul class="panelContent cardsFTitle">
     <li>

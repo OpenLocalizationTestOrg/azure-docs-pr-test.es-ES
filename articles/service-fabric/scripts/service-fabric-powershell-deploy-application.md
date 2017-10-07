@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de script de Azure PowerShell: implementar una aplicación en un clúster | Microsoft Docs"
-description: "Ejemplo de script de Azure PowerShell: implementar una aplicación en un clúster de Service Fabric."
+title: "Ejemplo de Script de PowerShell: aaaAzure implementar aplicación tooa clúster | Documentos de Microsoft"
+description: "Script de Azure PowerShell de ejemplo: implementar un clúster de Service Fabric tooa de aplicación."
 services: service-fabric
 documentationcenter: 
 author: rwike77
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2863823205dbd70f63948ecd4af8898220fe1ff8
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: b417c9908c72f016e930c43ff2d13e0cc5451f46
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Implementación de una aplicación en un clúster de Service Fabric
+# <a name="deploy-an-application-tooa-service-fabric-cluster"></a>Implementar un clúster de Service Fabric tooa de aplicación
 
-Este script de ejemplo copia un paquete de aplicación en un almacén de imágenes de clúster, registra el tipo de aplicación en el clúster y crea una instancia de la aplicación a partir del tipo de aplicación.  Si se definieron servicios predeterminados en el manifiesto de aplicación del tipo de aplicación de destino, también se crean en este momento. Personalice los parámetros según sea necesario. 
+Este script de ejemplo copia un almacén de imágenes de clúster de aplicación paquete tooa, registra el tipo de aplicación hello en clúster de Hola y crea una instancia de la aplicación del tipo de aplicación Hola.  Si los servicios predeterminados se definieron en el manifiesto de aplicación Hola del tipo de aplicación de destino de hello, dichos servicios se crean en este momento. Personalizar los parámetros de hello según sea necesario. 
 
-Si es necesario, instale el módulo Service Fabric PowerShell con el [SDK de Service Fabric](../service-fabric-get-started.md). 
+Si es necesario, instale el módulo de PowerShell de tejido de servicio de hello con hello [SDK del servicio de Fabric](../service-fabric-get-started.md). 
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-powershell[main](../../../powershell_scripts/service-fabric/deploy-application/deploy-application.ps1 "Implementación de una aplicación en un clúster")]
+[!code-powershell[main](../../../powershell_scripts/service-fabric/deploy-application/deploy-application.ps1 "Deploy an application tooa cluster")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Después de que el ejemplo de script se haya ejecutado, el script de [Remove an application](service-fabric-powershell-remove-application.md) (Quitar una aplicación) puede utilizarse para quitar la instancia de la aplicación, anular el registro del tipo de aplicación y eliminar el paquete de aplicación del almacén de imágenes.
+Después de ejecutar el ejemplo de script de Hola, Hola script en [quitar una aplicación](service-fabric-powershell-remove-application.md) puede ser instancia de la aplicación hello tooremove usado, anular el registro del tipo de aplicación hello y eliminar paquete de aplicación Hola Hola almacén de imágenes.
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola siga los comandos. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
-| [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Copie un paquete de aplicación en el almacén de imágenes del clúster.  |
-|[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Registra el tipo y la versión de una aplicación en el clúster. |
+| [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Copie un almacén de imágenes de clúster de aplicación paquete toohello.  |
+|[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Registra un tipo de aplicación y la versión en clúster de Hola. |
 |[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Crea una aplicación a partir de un tipo de aplicación registrada. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre el módulo Service Fabric PowerShell, consulte la [documentación de Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
+Para obtener más información sobre el módulo de PowerShell de tejido de servicio de hello, consulte [documentación de Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
-Puede encontrar ejemplos de PowerShell para Azure Service Fabric en los [ejemplos de Azure PowerShell](../service-fabric-powershell-samples.md).
+Encontrará más ejemplos de Powershell para Azure Service Fabric en hello [ejemplos de PowerShell de Azure](../service-fabric-powershell-samples.md).

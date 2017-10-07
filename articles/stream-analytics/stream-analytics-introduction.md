@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Stream Analytics | Microsoft Docs"
-description: "Obtenga información sobre Stream Analytics, un servicio administrado que le ayudará a analizar datos de streaming desde Internet de las cosas (IoT) en tiempo real."
+title: "aaaIntroduction tooStream análisis | Documentos de Microsoft"
+description: "Obtenga información sobre análisis de transmisiones, un servicio administrado que le ayuda a analizar los datos de transmisión por secuencias desde Internet de las cosas (IoT) hello en tiempo real."
 keywords: "análisis como servicio, servicios administrados, procesamiento de transmisiones, análisis de transmisiones, qué es stream analytics"
 services: stream-analytics
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/08/2017
 ms.author: jhubbard
-ms.openlocfilehash: daaec2b986af8b3f2fc020e01d8fb0f47ffb2df0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6dd7ea1d358bcc94e927a3e699a2771a25104d72
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-stream-analytics"></a>¿Qué es Stream Analytics?
 
-Azure Stream Analytics es un motor de procesamiento de eventos totalmente administrado que le permite configurar cálculos analíticos en tiempo real sobre datos en streaming. Los datos pueden proceder de dispositivos, sensores, sitios web, fuentes de redes sociales, aplicaciones, sistemas de infraestructura, etc. 
+Azure Stream Analytics es un motor de procesamiento de eventos totalmente administrado que le permite configurar cálculos analíticos en tiempo real sobre datos en streaming. Hola datos pueden proceder de dispositivos, sensores, sitios web, las fuentes de redes sociales, aplicaciones, sistemas de infraestructura y más. 
 
 ## <a name="what-can-i-do-with-stream-analytics"></a>¿Qué se puede hacer con Stream Analytics?
 
-Use Stream Analytics para examinar grandes volúmenes de datos que fluyen desde dispositivos o procesos, extraer información del flujo de datos y buscar relaciones, tendencias y patrones. En función de lo que contengan los datos, después puede realizar tareas de aplicación. Por ejemplo, puede generar alertas, iniciar flujos de trabajo de automatización, proporcionar información a una herramienta de informes como Power BI o almacenar datos para analizarlos más adelante. 
+Usar tooexamine grandes volúmenes de datos que fluyen desde los dispositivos o los procesos de análisis de transmisiones, extraer información de flujo de datos de Hola y buscar las relaciones, las tendencias y patrones. En función de lo que aparece en los datos de hello, a continuación, puede realizar tareas de la aplicación. Por ejemplo, puede generar alertas, iniciar los flujos de trabajo de automatización, fuente tooa información reporting herramienta como Power BI o almacenar datos para analizarlo más adelante. 
 
 Ejemplos:
 
@@ -40,61 +40,61 @@ Ejemplos:
 
 ## <a name="how-does-stream-analytics-work"></a>¿Cómo funciona Stream Analytics?
 
-En el diagrama se muestra la canalización de Stream Analytics y cómo se ingieren datos, se analizan y después se envían para presentarlos o para tomar una acción. 
+Este diagrama muestra la canalización de análisis de transmisiones de hello, que muestra cómo se ingestión datos, analizar y, a continuación, se envían para su presentación o acción. 
 
 ![Canalización de Stream Analytics](./media/stream-analytics-introduction/stream_analytics_intro_pipeline.png)
 
-Stream Analytics comienza con un origen de datos en streaming. Los datos se pueden ingerir en Azure desde un dispositivo mediante Azure Event Hubs o IoT Hub. También se pueden extraer los datos de un almacén de datos como Azure Blob Storage. 
+Stream Analytics comienza con un origen de datos en streaming. datos de Hello pueden ingestión en Azure desde un dispositivo mediante un concentrador de eventos de Azure o el centro de IoT. También se pueden extraer datos de Hola desde un almacén de datos como el almacenamiento de blobs de Azure. 
 
-Para examinar el flujo de datos, se crea un *trabajo* de Stream Analytics que especifica de dónde provienen los datos. Además, el trabajo especifica una *transformación*&mdash;cómo buscar datos, patrones o relaciones. Para esta tarea, Stream Analytics admite un lenguaje de consulta similar a SQL que le permite filtrar, ordenar, agregar y combinar datos en streaming durante un período de tiempo.
+secuencia de hello tooexamine, se crea un análisis de transmisiones *trabajo* que especifica donde provienen los datos de Hola. trabajo de Hello también especifica un *transformación*&mdash;cómo toolook de datos, los patrones o relaciones. Para esta tarea, Stream Analytics admite un lenguaje de consulta similar a SQL que le permite filtrar, ordenar, agregar y combinar datos en streaming durante un período de tiempo.
 
-Por último, el trabajo especifica una salida a la que enviar datos transformados. Esto le permite controlar qué hacer en respuesta a la información que se ha analizado. Por ejemplo, en respuesta al análisis, puede:
+Por último, trabajo Hola especifica un datos de salida toosend Hola transformado a. Esto le permite controlar qué toodo en información de respuesta toohello ha analizado. Por ejemplo, en tooanalysis de respuesta, puede:
 
-* Enviar un comando para cambiar la configuración de un dispositivo. 
-* Enviar datos a una cola supervisada por un proceso que realiza una acción en función de lo que encuentre. 
-* Enviar datos a un panel de Power BI para crear informes.
-* Enviar datos a un almacenamiento como Data Lake Store, una base de datos de SQL Server o Azure Blob o Table Storage.
+* Enviar un comando toochange configuración del dispositivo. 
+* Cola de tooa de datos que se supervisa mediante un proceso que realiza una acción en función de lo que encuentre de envío. 
+* Panel de Power BI tooa de datos para los informes de envío.
+* Enviar datos toostorage como almacén de Data Lake, base de datos de SQL Server o almacenamiento en tablas o blobs de Azure.
 
 Puede supervisar este trabajo y ajustar la cantidad de eventos que procesa por segundo mientras se ejecuta. También puede hacer que los trabajos generen registros de diagnóstico para solucionar problemas.
 
 ## <a name="key-capabilities-and-benefits"></a>Ventajas y principales capacidades
 
-Stream Analytics se ha diseñado para ser fácil de usar, flexible, escalable a cualquier tamaño de trabajo y económico.
+Análisis de transmisiones es fácil toouse diseñada toobe, flexible y escalable tooany trabajo tamaño y económica.
 
-### <a name="connectivity-to-many-inputs-and-outputs"></a>Conectividad con muchas entradas y salidas
+### <a name="connectivity-toomany-inputs-and-outputs"></a>Conectividad toomany entradas y salidas
 
-Stream Analytics se conecta directamente con [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) y con [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) para la ingesta de flujo de datos, y con el [servicio Azure Blob Storage](https://docs.microsoft.com/azure/storage/storage-introduction#blob-storage-accounts) para la ingesta de datos históricos. Si obtiene datos de Event Hubs, puede combinar Stream Analytics con otros orígenes de datos y motores de procesamiento.
+Análisis de transmisiones se conecta directamente demasiado[centros de eventos de Azure](https://azure.microsoft.com/services/event-hubs/) y [centro de IoT de Azure](https://azure.microsoft.com/services/iot-hub/) para la ingesta de secuencia y hello [servicio de almacenamiento de blobs de Azure](https://docs.microsoft.com/azure/storage/storage-introduction#blob-storage-accounts) tooingest los datos históricos. Si obtiene datos de Event Hubs, puede combinar Stream Analytics con otros orígenes de datos y motores de procesamiento.
 
-La entrada de trabajo también puede incluir datos de referencia (datos estáticos o que cambian con lentitud). Puede combinar datos en streaming con estos datos de referencia para realizar operaciones de búsqueda de la misma manera que lo haría con las consultas de base de datos.
+La entrada de trabajo también puede incluir datos de referencia (datos estáticos o que cambian con lentitud). Puede combinar la transmisión por secuencias datos toothis referencia datos tooperform búsqueda operaciones Hola igual que lo haría con las consultas de base de datos.
 
-Redirija la salida del trabajo de Stream Analytics en muchas direcciones. Puede escribir en el almacenamiento, como blobs o tablas de Azure Storage, Azure SQL DB, instancias de Azure Data Lake Store o Azure Cosmos DB. Desde allí, los datos pueden pasar por el análisis por lotes mediante Azure HDInsight. Podría enviar la salida a otro servicio para que la consuma otro proceso, como Event Hubs o temas o colas de Azure Service Bus. Podría enviar la salida a Power BI para obtener una visualización.
+Redirija la salida del trabajo de Stream Analytics en muchas direcciones. Puede escribir toostorage como blobs de almacenamiento de Azure o tablas, base de datos de SQL Azure, Azure Lake almacenes de datos o base de datos de Azure Cosmos. Desde allí, pueden pasar datos hello para el análisis por lotes a través de HDInsight de Azure. Puede enviar Hola salida tooanother servicio para su uso por otro proceso, como colas, temas de Service Bus de Azure o centros de eventos. Puede enviar tooPower de salida de hello BI para visualización.
 
 ### <a name="ease-of-use"></a>Facilidad de uso
 
-Para definir transformaciones, use un [lenguaje de consulta de Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx) declarativo simple que le permite crear análisis sofisticados sin emplear programación. El lenguaje de consulta toma datos en streaming como entrada. Después, puede filtrar y ordenar los datos, agregar valores, realizar cálculos, combinar datos (dentro de un flujo o con datos de referencia) y usar funciones geoespaciales. Puede editar consultas en el portal, con IntelliSense y comprobación de sintaxis, y puede probar consultas usando datos de ejemplo que extraiga del flujo de datos en directo.
+transformaciones de toodefine, utiliza una sencilla declarativa [lenguaje de consulta de análisis de transmisiones](https://msdn.microsoft.com/library/azure/dn834998.aspx) que le permite crear análisis sofisticados con ninguna programación. lenguaje de consulta de Hello toma datos de transmisión por secuencias como entrada. Puede filtrar y ordenar datos hello, agregar valores, realizar cálculos, combinar datos (dentro de una secuencia o tooreference de datos) y usar funciones geoespaciales. Puede editar las consultas en el portal de hello, con IntelliSense y la comprobación de sintaxis, y puede probar las consultas que utilizan datos de ejemplo que puede extraer de la secuencia en directo de Hola.
 
 ### <a name="extensible-query-language"></a>Lenguaje de consulta extensible
 
-Puede ampliar la funcionalidad del lenguaje de consulta si define e invoca funciones adicionales. Puede definir llamadas a funciones en el servicio Azure Machine Learning para aprovechar las ventajas de las soluciones de Azure Machine Learning. También puede integrar funciones definidas por el usuario (UDF) de JavaScript para realizar cálculos complejos como parte de una consulta de Stream Analytics.
+Puede ampliar las capacidades de Hola de lenguaje de consulta de hello definiendo y invocar funciones adicionales. Puede definir las llamadas a funciones en hello aprendizaje automático de Azure servicio tootake aprovechar soluciones de aprendizaje automático de Azure. También puede integrar las funciones JavaScript definido por el usuario (UDF) en los cálculos complejos de orden tooperform como parte de una consulta de análisis de transmisiones.
 
 ### <a name="scalability"></a>Escalabilidad
 
-Stream Analytics puede controlar hasta 1 GB de datos entrantes por segundo. La integración con [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) y [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) permite que los trabajos ingieran millones de eventos por segundo procedentes de dispositivos conectados, secuencias de clic y archivos de registro, entre otros. Mediante la característica de partición de Event Hubs, puede dividir los cálculos en pasos lógicos, cada uno con la capacidad de ser subdividido aún más para aumentar la escalabilidad.
+Análisis de transmisiones puede controlar la too1 GB de datos entrantes por segundo. Integración con [centros de eventos de Azure](https://azure.microsoft.com/services/event-hubs/) y [centro de IoT de Azure](https://azure.microsoft.com/services/iot-hub/) permite trabajos tooingest millones de eventos por segundo que provienen de dispositivos conectados, clickstreams y archivos de registro, tooname algunas. Usar la característica de partición de Hola de centros de eventos, se pueden dividir los cálculos en pasos lógicos, cada uno con hello capacidad adicional toobe particiones tooincrease escalabilidad.
 
 ### <a name="low-cost"></a>Bajo costo
 
-Como servicio en la nube, Stream Analytics se optimiza para que pueda empezar a usarlo a bajo costo. Se paga según se usa, basándose en la utilización de unidades de streaming y la cantidad de datos procesados por el sistema. La utilización se calcula en función del volumen de eventos procesados y la cantidad de potencia de proceso aprovisionada dentro del clúster para administrar trabajos de Stream Analytics.
+Como un servicio en la nube, análisis de transmisiones está optimizado toolet empezar a bajo costo. Pagar a medida que avance basándose en la cantidad de hello y uso de unidad de streaming de datos procesada por el sistema de Hola. Uso se deriva en función de volumen de Hola de eventos procesados y cantidad de Hola de capacidad de proceso aprovisiona en hello clúster toohandle trabajos de análisis de transmisiones.
 
 ### <a name="reliability-quick-recovery-and-repeatability"></a>Confiabilidad, recuperación rápida y capacidad de repetición
 
-Como servicio administrado en la nube, Stream Analytics ayuda a evitar la pérdida de datos y proporciona continuidad empresarial. Si se producen errores, el servicio proporciona funcionalidades de recuperación integradas. Gracias a la posibilidad de mantener el estado internamente, el servicio proporciona resultados repetibles donde sea posible archivar eventos y volver a aplicar el procesamiento en el futuro, mientras que se obtienen los mismos resultados. Todo esto le permite retroceder en el tiempo e investigar los cálculos cuando realice análisis de causas raíz o análisis de hipótesis, entre otros.
+Como un servicio administrado en la nube de hello, análisis de transmisiones ayuda a evitar la pérdida de datos y proporciona continuidad del negocio. Si se producen errores, el servicio de hello proporciona capacidades de recuperación integradas. Con capacidad de hello toointernally mantener el estado, servicio de hello proporciona resultados repetibles asegurarse de sea tooarchive posibles eventos y volver a aplicar el procesamiento en un futuro hello, siempre obtendrá Hola mismos resultados. Esto le permite toogo en un momento e investigar los cálculos al realizar el análisis de causa raíz, análisis de escenarios condicionales y así sucesivamente.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 * Empiece [experimentando con entradas y consultas desde dispositivos de IoT](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md).
-* Cree una [solución de Stream Analytics de principio a fin](stream-analytics-real-time-fraud-detection.md) que examine metadatos de teléfono para buscar llamadas fraudulentas.
-* Aprenda sobre el lenguaje de consulta similar a SQL para Stream Analytics y sobre conceptos únicos como [funciones de ventana](stream-analytics-window-functions.md).
-* Aprenda a [escalar trabajos de Stream Analytics](stream-analytics-scale-jobs.md). 
-* Aprenda a [integrar Stream Analytics y Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
-* Encuentre respuestas a sus preguntas sobre Stream Analytics en el [foro de Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+* Crear un [soluciones de análisis de transmisiones de extremo a extremo](stream-analytics-real-time-fraud-detection.md) que examina toolook de metadatos de teléfono para llamadas fraudulentas.
+* Obtén información sobre lenguaje de consulta similar a SQL para el análisis de transmisiones de hello y conceptos únicos como [funciones de ventana](stream-analytics-window-functions.md).
+* Obtenga información acerca de cómo demasiado[escalar trabajos de análisis de transmisiones](stream-analytics-scale-jobs.md). 
+* Obtenga información acerca de cómo demasiado[integrar el análisis de transmisiones y aprendizaje automático de Azure](stream-analytics-machine-learning-integration-tutorial.md).
+* Encuentre respuestas tooyour preguntas de análisis de transmisiones de hello [foro de análisis de transmisiones de Azure](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 

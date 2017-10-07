@@ -1,5 +1,5 @@
 ---
-title: 'Azure RemoteApp: probar el uso de ancho de banda de red con algunos escenarios comunes | Microsoft Docs'
+title: aaaAzure RemoteApp - probar el uso de ancho de banda de red con algunos escenarios comunes | Documentos de Microsoft
 description: "Obtenga más información sobre escenarios de uso comunes que pueden ayudarle a descubrir las necesidades de ancho de banda de la red de Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 8ad172a06e34cd0647079d787097cb2696cf116e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 22c1dbb61d956d58d01eb4e11363266168e337e8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-remoteapp---testing-your-network-bandwidth-usage-with-some-common-scenarios"></a>Azure RemoteApp: probar el uso de ancho de banda de red con algunos escenarios comunes
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-Como se explicó en [Calcular el uso del ancho de banda de red de Azure RemoteApp](remoteapp-bandwidth.md), la mejor manera de averiguar cuál es el impacto de Azure RemoteApp en la red es ejecutar algunas pruebas de uso. Ejecute estas pruebas para establecer un período de tiempo y medir el ancho de banda necesario para cada escenario. Si dispone de la funcionalidad, también puede medir la vibración de red y la pérdida de paquetes de red para comprender los patrones de red que se crean en su entorno específico.
+Como se explicó en [uso de ancho de banda de red de estimación Azure RemoteApp](remoteapp-bandwidth.md), Hola toofigure de manera mejor qué impacto Hola de red de Azure RemoteApp tooyour es toorun algunas pruebas de uso. Ejecutar estas pruebas para un conjunto de tiempo período y medida Hola ancho de banda necesario para cada escenario. Si tiene capacidad de hello, también puede medir Hola red pérdida y red vibración toounderstand Hola red modelos de paquetes que se creará en su entorno específico.
 
-Al evaluar el uso de ancho de banda, recuerde que el uso varía de un usuario a otro dentro de la empresa. Por ejemplo, los usuarios que escriben y leen texto suelen consumir menos ancho de banda que los usuarios que trabajan con vídeo. Para obtener mejores resultados, estudie las necesidades de sus propios usuarios y cree una combinación de los siguientes escenarios que mejor represente a los usuarios de la empresa. No olvide [revisar los factores que afectan al uso de ancho de banda y a la experiencia del usuario](remoteapp-bandwidthexperience.md). Esto lo ayudará a identificar las pruebas ideales.
+Al evaluar el uso de ancho de banda de hello, recuerde que uso varía entre distintos usuarios dentro de su empresa. Por ejemplo, los usuarios que escriben y leen texto suelen consumir menos ancho de banda que los usuarios que trabajan con vídeo. Para obtener mejores resultados, revise atentamente las necesidades del usuario y crear una combinación de hello los escenarios siguientes que mejor representa a los usuarios de hello en su empresa. Recuerde demasiado[factores de Hola de revisión que afectan el uso de ancho de banda y el usuario experimentan](remoteapp-bandwidthexperience.md) -que le ayudará a identificar pruebas ideal de Hola.
 
-Infórmese primero sobre las pruebas, seleccione la combinación y después ejecútelas. Puede usar la tabla siguiente para realizar un seguimiento del rendimiento.
+Leer acerca de las pruebas de hello, elegir la combinación y, a continuación, ejecutarlos. Puede usar tabla de hello siguiente toohelp seguir el rendimiento.
 
 > [!NOTE]
-> Si no puede realizar sus propias pruebas de red, o no dispone de tiempo para hacerlo, consulte nuestras [recomendaciones y cálculos básicos de ancho de banda de red](remoteapp-bandwidthguidelines.md). Como es posible que el consumo por kilómetro varíe, debe ejecutar sus propias pruebas si *puede* .
+> Si no puede realizar sus propias pruebas de red, o no tiene Hola tiempo toodo por lo tanto, visite nuestro [estimaciones/recomendaciones de ancho de banda de red básica](remoteapp-bandwidthguidelines.md). Como es posible que el consumo por kilómetro varíe, debe ejecutar sus propias pruebas si *puede* .
 > 
 > 
 
-## <a name="the-usage-tests"></a>Pruebas de uso
-Cada una de estas pruebas se ejecutan durante distintos períodos de tiempo y prueban diferentes funciones y características que consumen ancho de banda de red. Recuerde que debe elegir la combinación de pruebas que mejor se ajuste a los usuarios individuales de la empresa.
+## <a name="hello-usage-tests"></a>pruebas de uso de Hola
+Cada una de estas pruebas se ejecutan durante distintos períodos de tiempo y prueban diferentes funciones y características que consumen ancho de banda de red. Recuerde la combinación de hello toochoose de prueba que mejor coincida con los usuarios individuales de la empresa.
 
 ### <a name="executivecomplex-powerpoint---run-for-900-1000-seconds"></a>PowerPoint executivo/complejo: ejecución entre 1000 y 900 segundos
-Un usuario presenta entre 45 y 50 diapositivas de alta fidelidad mediante Microsoft Office PowerPoint en modo de pantalla completa. Las diapositivas deben contener imágenes, transiciones (con animaciones) y fondos con degradado de color que sean habituales en su empresa. El usuario debe dedicar al menos 20 segundos a cada diapositiva.
+Un usuario presenta entre 45 y 50 diapositivas de alta fidelidad mediante Microsoft Office PowerPoint en modo de pantalla completa. diapositivas de Hello deben contener imágenes, las transiciones (con animaciones) y fondos con degradado de color que son típicos de su empresa. usuario de Hello debe dedicar al menos 20 segundos en cada diapositiva.
 
-En este escenario se crea tráfico por ráfagas cuando pasa de una diapositiva a la siguiente en la presentación.
+Este escenario crea el tráfico por ráfagas, cuando realiza una transición una diapositiva toohello siguiente diapositiva de presentación de Hola.
 
 ### <a name="simple-powerpoint---run-for-620-seconds"></a>PowerPoint simple: ejecución durante aprox. 620 segundos
-Un usuario presenta un archivo sencillo de PowerPoint de aproximadamente 30 diapositivas mediante Microsoft Office PowerPoint en modo de pantalla completa. Las diapositivas incluyen más texto que en el escenario de PowerPoint ejecutivo/complejo y tienen fondos e imágenes más sencillos (diagramas en negro). 
+Un usuario presenta un archivo sencillo de PowerPoint de aproximadamente 30 diapositivas mediante Microsoft Office PowerPoint en modo de pantalla completa. diapositivas de Hello consumen más texto que en escenario de hello PowerPoint ejecutivo o que son complejas y tienen más sencillo fondos e imágenes (diagramas negros). 
 
 ### <a name="internet-explorer---run-for-250-seconds"></a>Internet Explorer: ejecución durante aprox. 250 segundos
-Un usuario explora la web mediante Internet Explorer. El usuario explora una combinación de texto, imágenes naturales y algunos diagramas esquemáticos y se desplaza por ellos. Las páginas web se almacenan en la unidad de disco local del servidor host de sesión de Escritorio remoto como archivo .MHT. El usuario se desplaza con las teclas Re Pág, Av Pág, Inicio y Fin, con distintos intervalos para cada tecla/tipo de desplazamiento.
+Un usuario examina web hello mediante Internet Explorer. usuario de Hello examina y se desplaza a través de una combinación de texto, imágenes naturales y algunos de los diagramas esquemáticos. Hola páginas web almacenadas en Hola de unidad de disco local del servidor de Host de sesión de escritorio remoto (RD Session Host) Hola como un. Archivo MHT. usuario de Hola se desplaza con RE PÁG, AV PÁG, arriba y hacia abajo de claves, con distintos intervalos de cada clave o el tipo de desplazamiento:
 
     - Abajo: 250 pulsaciones de teclas cada 500 ms
     - Re Pág: 36 pulsaciones de teclas cada 1000 ms
@@ -57,44 +57,44 @@ Un usuario explora la web mediante Internet Explorer. El usuario explora una com
     - Hasta: 120 pulsaciones cada 300 ms
 
 ### <a name="pdf-document---simple---run-for-610-seconds"></a>Documento PDF - simple: ejecución durante aprox. 610 segundos
-El usuario busca y lee un documento PDF de diversas maneras mediante Adobe Acrobat Reader. El documento debe constar de tablas, gráficos sencillos y varias fuentes de texto. El documento tiene entre 35 y 40 páginas. El usuario se desplaza por el documento en dos direcciones distintas, hacia atrás y hacia delante, en cuatro tamaños de zoom diferentes (ajustar a la página, ajustar al ancho, 100% y otro de su elección). La función de zoom garantiza que el texto (fuente) se representa en distintos tamaños. El desplazamiento se reduce al uso de las teclas Re Pág, Av Pág, Inicio y Fin, con distintos intervalos para cada desplazamiento.
+El usuario busca y lee un documento PDF de diversas maneras mediante Adobe Acrobat Reader. documento de Hello debe constar de varias fuentes de texto, tablas y gráficos simples. documento de Hello es 35-40 páginas. usuario de Hola se desplaza a través de dos tipos diferentes, con las versiones anteriores y reenvía en cuatro tamaños diferentes zoom (ajustar toopage, ajuste toowidth, 100% y otro de su elección). Hola zoom garantiza que se representará el texto hello (font) de diferentes tamaños. El desplazamiento es por medio de hello RE PÁG, AV PÁG, arriba y hacia abajo de claves, con distintos intervalos de cada desplazamiento.
 
 ### <a name="pdf-document---mixed---run-for-320-seconds"></a>Documento PDF - mixto: ejecución durante aprox. 320 segundos
-El usuario busca y lee un documento PDF de diversas maneras mediante Adobe Acrobat Reader. El documento consta de imágenes de alta calidad (como fotografías), tablas, gráficos sencillos y varias fuentes de texto. El usuario se desplaza por el documento en dos direcciones distintas, hacia atrás y hacia delante, en cuatro tamaños de zoom diferentes (ajustar a la página, ajustar al ancho, 100% y otro de su elección). La función de zoom garantiza que el texto (fuente) se representa en distintos tamaños. El desplazamiento se reduce al uso de las teclas Re Pág, Av Pág, Inicio y Fin, con distintos intervalos para cada desplazamiento.
+El usuario busca y lee un documento PDF de diversas maneras mediante Adobe Acrobat Reader. documento de Hello consta de imágenes de alta calidad (incluidos fotografías), tablas, gráficos simples y múltiples fuentes de texto. usuario de Hola se desplaza a través de dos tipos diferentes, con las versiones anteriores y reenvía en cuatro tamaños diferentes zoom (ajustar toopage, ajuste toowidth, 100% y otro de su elección). Hola zoom garantiza que se representará el texto hello (font) de diferentes tamaños. El desplazamiento es por medio de hello RE PÁG, AV PÁG, arriba y hacia abajo de claves, con distintos intervalos de cada desplazamiento.
 
 ### <a name="flash-video-playback---run-for-180-seconds"></a>Reproducción de vídeo Flash: ejecución durante aprox. 180 segundos
-Un usuario ve un vídeo con codificación de Adobe Flash insertado en una página web. La página web se almacena en el disco duro local del servidor host de sesión de Escritorio remoto. El vídeo se reproduce en Internet Explorer mediante un complemento de reproductor incrustado.
+Un usuario ve un vídeo con codificación de Adobe Flash insertado en una página web. página web de Hola se almacena en la unidad de disco duro local de Hola de servidor de Host de sesión de escritorio remoto de Hola. Hola vídeo se reproduce en Internet Explorer mediante un reproductor incrustado de complemento.
 
-En este escenario se emulan a los usuarios que ven páginas web con contenido enriquecido que incluye contenido multimedia. La mayoría de los datos debe ir a través de VOBR.
+En este escenario se emulan a los usuarios que ven páginas web con contenido enriquecido que incluye contenido multimedia. La mayoría de los datos de hello debe a bo a través de VOBR.
 
 ### <a name="word-remote-typing---run-for-1800-seconds"></a>Escritura remota en Word: ejecución durante aprox. 1800 segundos
-Un usuario escribe un documento en una sesión de RDP. Las pulsaciones de teclas se envían desde el cliente a través de la sesión de RDP hasta un documento de Microsoft Word que se ejecuta en la sesión remota. La velocidad de escritura es un carácter cada 250 ms (total 7050 caracteres). 
+Un usuario escribe un documento en una sesión de RDP. Pulsaciones de teclas se envían desde el cliente hello por documento de tooa de sesión RDP de hello en Microsoft Word ejecuta en una sesión remota de Hola. Hola escribe tasa es un carácter cada 250 ms (total 7050 caracteres). 
 
-Se trata de una de las situaciones más comunes en el caso de un trabajador del conocimiento. En este escenario se comprueba la capacidad de respuesta de un usuario que escribe en un procesador de textos moderno. Este escenario es sensible a los más mínimos cambios en el uso de ancho de banda.
+Este es uno de los escenarios más comunes de Hola para un trabajador del conocimiento. Este escenario comprueba la capacidad de respuesta de Hola de un usuario que escribe en un procesador de trabajo modernas. Este escenario es confidencial tooeven pequeños cambios en el uso de ancho de banda.
 
-## <a name="tracking-the-test-results"></a>Seguimiento de los resultados de pruebas
-Puede usar la siguiente tabla para evaluar los escenarios en su entorno. Los datos que se ofrecen a continuación son meramente ilustrativos: pueden ser considerablemente diferentes de lo que observe. 
+## <a name="tracking-hello-test-results"></a>Seguimiento de resultados de pruebas de Hola
+Puede usar Hola siguientes escenarios de tabla tooevaluate hello en su entorno. datos de Hello proporcionados a continuación tienen solo fines ilustrativos: puede ser considerablemente diferente de lo que se muestra. 
 
-Para simplificar, se asume que todos los escenarios se prueban utilizando la misma resolución de pantalla de 1920 x 1080 píxeles y se transmiten por TCP en una red con una latencia (retraso) inferior a 200 ms y una vibración de red de aproximadamente un 1 % en la marca de más de 120 ms.
+Para simplificar, se supone que todos los escenarios se prueban utilizando la resolución de pantalla de hello mismo 1920 x 1080 píxeles y transportes TCP en una red con latencia (un retardo) inferior a 200 ms y red vibración en hello 120 ms + marca de aproximadamente un 1%.
 
-Acerca de la tabla:
+Acerca de la tabla de hello:
 
-* **Experiencia promedio** contiene el ancho de banda de red donde la productividad del usuario no se ve afectada significativamente, pero no excluye problemas ocasionales de audio o vídeo. El sistema es capaz de recuperarse rápidamente aprovechando las ventajas de la lógica dinámica. Los cálculos aproximados de ancho de banda de red intentan garantizar la calidad de la experiencia del usuario.
-  * **Problemas perceptibles (punto de interrupción)** contiene el ancho de banda de red donde los usuarios pueden notar problemas importantes en su experiencia, y donde la productividad se ve afectada durante períodos de tiempo mensurables. En este momento, los algoritmos de RDP tienen dificultades para garantizar la calidad de la experiencia del usuario y no pueden debido a falta de ancho de banda.
-  * **Recomendado** contiene el ancho de banda de red recomendado para una experiencia buena o excelente. Suele ser el nivel superior siguiente al valor de la columna **Experiencia promedio** correspondiente.
+* **Promedio de experiencia** contiene el ancho de banda de red de Hola donde la productividad del usuario no es considerablemente afectada, pero no excluye los problemas de vídeo o audio ocasionales. sistema de Hello es capaz de toorecover rápidamente aprovechando las ventajas de lógica dinámica Hola. Hola ancho de banda estimaciones intento tooguarantee Hola calidad de la red de la experiencia del usuario Hola.
+  * **Problemas apreciables (punto de interrupción)** contiene el ancho de banda de red de Hola donde los usuarios podrían observar problemas importantes en su experiencia y su productividad se ve afectada durante períodos de tiempo puede medir. En este momento algoritmos RDP Hola se esfuerzan por y no pueden garantizar la calidad del usuario de saludo de la experiencia a causa de ancho de banda de red son insuficientes.
+  * **Se recomienda** contiene el ancho de banda de red de hello recomendado para buena o excelente experiencia. Es normalmente un paso superior valor hello en hello correspondientes **promedio experiencia** columna.
   * **Notas** se incluyen observaciones y comentarios.
 
 | Prueba | Experiencia promedio | Problemas perceptibles (punto de interrupción) | Ancho de banda de red recomendado | Notas |
 | --- | --- | --- | --- | --- |
 | PPT ejecutivo/complejo |10 MB/s |1 MB/s |>10 MB/s, 100 MB/s (preferible) |A 1 MB/s se pierden muchas animaciones |
-| PPT simple |5 MB/s |256 KB/s |10 MB/s |A 256 KB/s las diapositivas se cargan con retraso evidente |
+| PPT simple |5 MB/s |256 KB/s |10 MB/s |En 256 KB/seg. de carga con retraso notable diapositivas de Hola |
 | Internet Explorer |10 MB/s |1 MB/s |>10 MB/s, 100 MB/s (preferible) |A 1 MB/s, los vídeos web son borrosos y se entrecortan, el desplazamiento rápido presenta problemas |
-| PDF simple |1 MB/s |256 KB/s |5 MB/s |A 256 KB/s se tarda cierto tiempo en cargar la página |
-| PDF mixto |1 MB/s |256 KB/s |5 MB/s |A 256 KB/s se tarda una cantidad considerable de tiempo en cargar la página |
-| Reproducción de vídeo Flash |10 MB/s |1 MB/s |>10 MB/s, 100 MB/s (preferible) |A 1 MB/s, el vídeo tiene una textura granulada y se pierden algunos fotogramas |
-| Escritura remota en Word |256 KB/s |128 KB/s |1 MB/s |A 256 KB/s el usuario puede notar el tiempo entre pulsaciones de teclas |
+| PDF simple |1 MB/s |256 KB/s |5 MB/s |A 256 KB/s se tarda un tiempo página de hello tooload |
+| PDF mixto |1 MB/s |256 KB/s |5 MB/s |A 256 KB/s página Hola lleva una cantidad considerable de tooload de tiempo |
+| Reproducción de vídeo Flash |10 MB/s |1 MB/s |>10 MB/s, 100 MB/s (preferible) |A 1 MB/s Hola vídeo se muestra granulado y se quitan algunos marcos |
+| Escritura remota en Word |256 KB/s |128 KB/s |1 MB/s |A 256 KB/s usuario puede observar Hola tiempo que transcurre entre las pulsaciones de teclas |
 
-Para evaluar el ancho de banda de red por usuario, cree una combinación de los escenarios anteriores y la proporción correspondiente de ancho de banda de red necesario. Elija el número más alto que se requiera para los escenarios. Debido a que los usuarios no usan casi nunca el sistema por sí solo, considere la posibilidad de reservar una parte para usuarios que trabajen simultáneamente en la misma red.
+tooevaluate Hola ancho de banda por usuario, cree una combinación de Hola por encima de los escenarios y proporción correspondiente de Hola de ancho de banda de red necesario. Seleccionar un número más alto de hello necesario para los escenarios. Puesto que los usuarios no utilizan casi nunca sistema Hola por sí sola, tenga en cuenta algunas reserva para los usuarios que trabajan simultáneamente en Hola la misma red.
 
 ## <a name="learn-more"></a>Más información
 * [Cálculo aproximado del uso del ancho de banda de red de Azure RemoteApp](remoteapp-bandwidth.md)

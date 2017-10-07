@@ -1,5 +1,5 @@
 ---
-title: "Información general sobre API de Azure Relay | Microsoft Docs"
+title: "Introducción a la API de retransmisión aaaAzure | Documentos de Microsoft"
 description: "Información general sobre las API de Azure Relay disponibles"
 services: event-hubs
 documentationcenter: na
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: sethm
-ms.openlocfilehash: 8d93a0344adc3b0b7617f3a7d85124142d7a7555
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3c4d737d5fee9a8babce094fa6dfddb28910834b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="available-relay-apis"></a>API de Relay disponibles
 
 ## <a name="runtime-apis"></a>API de tiempo de ejecución
 
-La siguiente table enumera todos los clientes del runtime de Relay disponibles.
+Hello tabla siguiente enumeran a todos los clientes en tiempo de ejecución de retransmisión disponibles actualmente.
 
-La sección de [información adicional](#additional-information) contiene más información sobre el estado de cada biblioteca de runtime.
+Hola [información adicional](#additional-information) sección contiene más información sobre el estado de Hola de cada biblioteca en tiempo de ejecución.
 
 | Lenguaje/plataforma | Característica disponible | Paquete del cliente | Repositorio |
 | --- | --- | --- | --- |
@@ -37,9 +37,9 @@ La sección de [información adicional](#additional-information) contiene más i
 ### <a name="additional-information"></a>Información adicional
 
 #### <a name="net"></a>.NET
-El ecosistema de .NET tiene varios entornos de ejecución y, por tanto, hay varias bibliotecas de .NET para Event Hubs. La biblioteca de .NET Standard se puede ejecutar mediante .NET Core o .NET Framework, mientras que la biblioteca de .NET Framework solo puede ejecutarse en un entorno de .NET Framework. Para ampliar la información sobre las versiones de .NET Framework, consulte [Versiones de marcos de trabajo](/dotnet/articles/standard/frameworks#framework-versions).
+ecosistema de .NET de Hello tiene varios tiempos de ejecución, por lo tanto, hay varias bibliotecas de .NET para los concentradores de eventos. biblioteca estándar de .NET de Hello puede ejecutarse mediante .NET Core u Hola .NET Framework, mientras la biblioteca de .NET Framework de hello solo puede ejecutarse en un entorno de .NET Framework. Para ampliar la información sobre las versiones de .NET Framework, consulte [Versiones de marcos de trabajo](/dotnet/articles/standard/frameworks#framework-versions).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información sobre Azure Relay, visite estos vínculos:
+toolearn más información acerca de la retransmisión de Azure, visite estos vínculos:
 * [¿Qué es Relay de Azure?](relay-what-is-it.md)
 * [Preguntas más frecuentes acerca de Relay](relay-faq.md)

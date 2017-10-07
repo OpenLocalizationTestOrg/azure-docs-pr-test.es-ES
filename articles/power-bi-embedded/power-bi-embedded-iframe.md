@@ -1,6 +1,6 @@
 ---
-title: Procedimiento para usar Power BI Embedded con REST | Microsoft Docs
-description: 'Aprenda a usar Power BI Embedded con REST. '
+title: aaaHow toouse Power BI Embedded con REST | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Power BI Embedded con REST "
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,55 +15,55 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 02/06/2017
 ms.author: asaxton
-ms.openlocfilehash: 31624b9d15772a4f08cf013ac713b3aa636acfca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 98057724e60ba868f9c93de8c50383569eb8852d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-power-bi-embedded-with-rest"></a>Procedimiento para usar Power BI Embedded con REST
+# <a name="how-toouse-power-bi-embedded-with-rest"></a>¿Cómo toouse Power BI Embedded con REST
 
 ## <a name="power-bi-embedded-what-it-is-and-what-its-for"></a>Power BI Embedded: qué es y para qué sirve
 
-En el sitio oficial de [Power BI Embedded](https://azure.microsoft.com/services/power-bi-embedded/)puede encontrar información general sobre este servicio, pero vamos a resumir brevemente sus aspectos principales antes de adentrarnos en los detalles sobre cómo utilizarlo con REST.
+Información general sobre Power BI Embedded se describe en oficial de hello [sitio Power BI Embedded](https://azure.microsoft.com/services/power-bi-embedded/), pero vamos a echar un vistazo rápido antes de entrar en detalles de hello sobre el uso con REST.
 
-Es bastante sencillo. Puede que desee usar las visualizaciones de datos dinámicos de [Power BI](https://powerbi.microsoft.com) en su propia aplicación.
+Es bastante sencillo. Puede que desee visualizaciones de datos dinámicos de hello toouse de [Power BI](https://powerbi.microsoft.com) en su propia aplicación.
 
-La mayoría de las aplicaciones personalizadas tienen que entregar los datos de sus propios clientes, que no tienen por qué ser usuarios de su organización. Por ejemplo, si brinda algún servicio a la compañía A y B, los usuarios de la A solo deberían ver datos de su propia empresa. Es decir, deben habilitarse los servicios multiinquilino para realizar la entrega.
+La mayoría de las aplicaciones personalizadas necesitan datos de hello toodeliver para sus propios clientes, no necesariamente a los usuarios de su propia organización. Por ejemplo, si está entrega algún servicio de la compañía A y B de la empresa, los usuarios de la compañía A solo deben ver datos de su propia empresa A. Es decir, la arquitectura multiempresa de Hola es necesario para la entrega de Hola.
 
-La aplicación personalizada también podría ofrecer sus propios métodos de autenticación, como la autenticación de formularios, la autenticación básica, etc. Después, la solución de incrustación debe colaborar con este método de autenticación existente de forma segura. También se requiere que los usuarios puedan usar estas aplicaciones de ISV sin comprar más licencias de suscripción de Power BI.
+aplicación personalizada Hello también podría ofrecer sus propios métodos de autenticación, como autenticación de formularios, la autenticación básica etcetera... A continuación, Hola incrustar solución debe colaborar con este método de autenticación existente sin ningún riesgo. También es necesario para los usuarios toobe pueda toouse esas aplicaciones de ISV sin Hola compra adicional o las licencias de una suscripción de Power BI.
 
- **Power BI Embedded** se ha diseñado, precisamente, para estos tipos de escenario. Por tanto, ahora que ya hemos visto una breve introducción de este servicio, pasemos a los detalles.
+ **Power BI Embedded** se ha diseñado, precisamente, para estos tipos de escenario. Por lo tanto, ahora que tenemos que introducción rápida fuera de hello, vamos a profundizar algunos detalles
 
-Puede utilizar el SDK de .NET \(C#) o Node.js para compilar fácilmente una aplicación con Power BI Embedded. Sin embargo, en este artículo explicaremos el flujo HTTP \(incluida la autorización) de Power BI sin los SDK. Al entender este flujo, podrá compilar su aplicación **con cualquier lenguaje de programación** y comprender a fondo la esencia de Power BI Embedded.
+Puede usar .NET hello \(C#) o Node.js SDK, tooeasily Compile su aplicación con Power BI Embedded. Sin embargo, en este artículo explicaremos el flujo HTTP \(incluida la autorización) de Power BI sin los SDK. Descripción de este flujo, puede compilar su aplicación **con cualquier lenguaje de programación**, y puede comprender profundamente esencia Hola de Power BI Embedded.
 
 ## <a name="create-power-bi-workspace-collection-and-get-access-key-provisioning"></a>Creación de una colección de áreas de trabajo de Power BI y obtención de la clave de acceso \(aprovisionamiento)
 
-Power BI Embedded es uno de los servicios de Azure. Solo al ISV que usa Azure Portal se le cobran cuotas de uso \(por sesión de usuario y hora); al usuario que ve el informe no se le cobra nada ni se le exige tener una suscripción de Azure.
-Antes de comenzar a desarrollar nuestra aplicación, debemos crear la **colección de áreas de trabajo de Power BI** mediante el Portal de Azure.
+Power BI Embedded es uno de hello servicios de Azure. Hola solo ISV que usa el Portal de Azure se cobra por las cuotas de uso \(por sesión de usuario cada hora), y el usuario de Hola que informe de hello vistas no está cargada o incluso requieren una suscripción de Azure.
+Antes de iniciar el desarrollo de aplicaciones, debemos crear hello **colección del área de trabajo de Power BI** mediante el Portal de Azure.
 
-Cada área de trabajo de Power BI Embedded es también la de cada cliente (inquilino); podemos agregar numerosas áreas de trabajo en cada colección de áreas de trabajo. En cada colección de áreas de trabajo se utiliza la misma clave de acceso. De hecho, la colección de áreas de trabajo constituye el límite de seguridad de Power BI Embedded.
+Cada área de trabajo de Power BI Embedded es el área de trabajo de Hola para cada cliente (inquilino) y que podemos agregar muchas áreas de trabajo en cada colección de área de trabajo. Hola se utiliza la misma clave de acceso de cada colección de área de trabajo. En efecto, colección de área de trabajo de Hola es el límite de seguridad de Hola para Power BI Embedded.
 
 ![](media/power-bi-embedded-iframe/create-workspace.png)
 
-Cuando termine de crear la colección de áreas de trabajo, copie la clave de acceso desde el Portal de Azure.
+Cuando se termine de crear la colección de área de trabajo de hello, copie la clave de acceso de Hola desde el Portal de Azure.
 
 ![](media/power-bi-embedded-iframe/copy-access-key.png)
 
 > [!NOTE]
-> También podemos aprovisionar la colección de áreas de trabajo y obtener la clave de acceso a través de la API de REST. Para obtener más información, consulte [Power BI Resource Provider APIs](https://msdn.microsoft.com/library/azure/mt712306.aspx)(API del proveedor de recursos de Power BI).
+> También podemos aprovisionar la colección del área de trabajo de Hola y obtener la clave de acceso a través de la API de REST. más información, consulte toolearn [API de proveedor de recursos de Power BI](https://msdn.microsoft.com/library/azure/mt712306.aspx).
 
 ## <a name="create-pbix-file-with-power-bi-desktop"></a>Creación del archivo .pbix con Power BI Desktop
 
-Después, tenemos que crear la conexión de datos y los informes que vamos a incrustar.
+A continuación, que debemos crear la conexión de datos de Hola y toobe informes incrustados.
 Para esta tarea no hay que agregar código ni realizar trabajos de programación; basta con usar Power BI Desktop.
-En este artículo, no veremos los detalles de cómo usar Power BI Desktop. Si necesita más ayuda con este tema, consulte [Introducción a Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/). En nuestro ejemplo, usaremos el [ejemplo Análisis de venta directa](https://powerbi.microsoft.com/documentation/powerbi-sample-datasets/).
+En este artículo, no entraremos en detalles de hello acerca de cómo toouse Power BI Desktop. Si necesita más ayuda con este tema, consulte [Introducción a Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/). En nuestro ejemplo, vamos a usar solo hello [ejemplo de análisis de minoristas](https://powerbi.microsoft.com/documentation/powerbi-sample-datasets/).
 
 ![](media/power-bi-embedded-iframe/power-bi-desktop-1.png)
 
 ## <a name="create-a-power-bi-workspace"></a>Creación de un área de trabajo de Power BI
 
-Ahora que hemos terminado de realizar el aprovisionamiento, comenzaremos creando el área de trabajo del cliente en la colección de áreas de trabajo a través de las API de REST. La siguiente solicitud POST HTTP (REST) va a crear la nueva área de trabajo en nuestra colección de áreas de trabajo existente. Se trata de [POST Workspace API](https://msdn.microsoft.com/library/azure/mt711503.aspx). En nuestro ejemplo, el nombre de la colección de áreas de trabajo es **mypbiapp**. Solo hay que establecer la clave de acceso, que copiamos anteriormente, como **AppKey**. Como podrá comprobar, se trata de una autenticación muy sencilla.
+Ahora que el aprovisionamiento de hello todo se hace, vamos a empezar a crear área de trabajo de un cliente en la colección del área de trabajo de Hola a través de las API de REST. Hello solicitud de POST de HTTP siguiente (REST) es crear nueva área de trabajo de hello en la colección de área de trabajo existente. Se trata de hello [API de área de trabajo de POST](https://msdn.microsoft.com/library/azure/mt711503.aspx). En nuestro ejemplo, es el nombre de colección del área de trabajo de hello **mypbiapp**. Se acaba de establecer tecla de acceso de hello, que se copió anteriormente, como **AppKey**. Como podrá comprobar, se trata de una autenticación muy sencilla.
 
 **Solicitud HTTP**
 
@@ -87,13 +87,13 @@ RequestId: 4220d385-2fb3-406b-8901-4ebe11a5f6da
 }
 ```
 
-El valor devuelto **workspaceId** se utiliza en las siguientes llamadas de API posteriores. Nuestra aplicación debe conservar este valor.
+Hola devuelve **workspaceId** se usa para hello siguiendo las subsiguientes llamadas a la API. Nuestra aplicación debe conservar este valor.
 
-## <a name="import-pbix-file-into-the-workspace"></a>Importación del archivo .pbix en el área de trabajo
+## <a name="import-pbix-file-into-hello-workspace"></a>Importar archivo .pbix en el área de trabajo de Hola
 
-Cada informe de un área de trabajo corresponde a un solo archivo de Power BI Desktop con un conjunto de datos \(incluida la configuración de los orígenes de datos). Podemos importar el archivo .pbix al área de trabajo, tal y como se muestra en el código siguiente. Como puede observar, podemos cargar el binario del archivo .pbix utilizando varias partes MIME en HTTP.
+Cada informe en un área de trabajo corresponde tooa único archivo de Power BI Desktop con un conjunto de datos \(incluida la configuración del origen de datos). Podemos importar nuestro .pbix archivo toohello área de trabajo como se muestra en el siguiente código de hello. Como puede ver, hemos podemos cargar binario Hola de archivo .pbix con varias partes MIME en http.
 
-El fragmento de URI **32960a09-6366-4208-a8bb-9e0678cdbb9d** es el id. del área de trabajo, y el parámetro de consulta **datasetDisplayName** es el nombre del conjunto de datos que se va a crear. El conjunto de datos creado contiene todos los artefactos relacionados con los datos del archivo .pbix, como los datos importados, el puntero al origen de datos, etc.
+fragmento de uri de Hello **32960a09-6366-4208-a8bb-9e0678cdbb9d** es workspaceId Hola y el parámetro de consulta **datasetDisplayName** es toocreate de nombre de conjunto de datos de Hola. Hola crear conjunto de datos contiene todos los datos relacionados con artefactos de archivo .pbix como datos importados, Hola origen de datos de puntero toohello, etcetera...
 
 ```
 POST https://api.powerbi.com/v1.0/collections/mypbiapp/workspaces/32960a09-6366-4208-a8bb-9e0678cdbb9d/imports?datasetDisplayName=mydataset01
@@ -103,11 +103,11 @@ Content-Type: multipart/form-data; boundary="A300testx"
 --A300testx
 Content-Disposition: form-data
 
-{the content (binary) of .pbix file}
+{hello content (binary) of .pbix file}
 --A300testx--
 ```
 
-La ejecución de esta tarea de importación puede durar unos instantes. Cuando haya finalizado, nuestra aplicación puede solicitar el estado de la tarea mediante el id. de importación. En nuestro ejemplo, el id. de importación es **4eec64dd-533b-47c3-a72c-6508ad854659**.
+La ejecución de esta tarea de importación puede durar unos instantes. Cuando haya finalizado, nuestra aplicación puede solicitar el estado de la tarea de hello con el Id. de importación. En nuestro ejemplo, es el Id. de importación de hello **4eec64dd-533b-47c3-a72c-6508ad854659**.
 
 ```
 HTTP/1.1 202 Accepted
@@ -118,14 +118,14 @@ RequestId: 658bd6b4-b68d-4ec3-8818-2a94266dc220
 {"id":"4eec64dd-533b-47c3-a72c-6508ad854659"}
 ```
 
-El siguiente código solicita el estado con este id. de importación:
+siguiente Hola pide estado utilizando este identificador de importación:
 
 ```
 GET https://api.powerbi.com/v1.0/collections/mypbiapp/workspaces/32960a09-6366-4208-a8bb-9e0678cdbb9d/imports/4eec64dd-533b-47c3-a72c-6508ad854659
 Authorization: AppKey MpaUgrTv5e...
 ```
 
-Si la tarea no finaliza, la respuesta HTTP podría ser similar a la siguiente:
+Si no está completa la tarea hello, Hola respuesta HTTP podría ser similar al siguiente:
 
 ```
 HTTP/1.1 200 OK
@@ -141,7 +141,7 @@ RequestId: 614a13a5-4de7-43e8-83c9-9cd225535136
 }
 ```
 
-Si la tarea finaliza, la respuesta HTTP podría ser más parecida a esta:
+Si está completa la tarea hello, Hola respuesta HTTP podría ser parecido a lo siguiente:
 
 ```
 HTTP/1.1 200 OK
@@ -176,9 +176,9 @@ RequestId: eb2c5a85-4d7d-4cc2-b0aa-0bafee4b1606
 
 ## <a name="data-source-connectivity-and-multi-tenancy-of-data"></a>Conectividad de los orígenes de datos \(y servicio multiinquilino de datos)
 
-Aunque casi todos los artefactos del archivo .pbix se importan en nuestra área de trabajo, no lo hacen las credenciales de los orígenes de datos. Como resultado, al utilizar el **modo DirectQuery**, no se mostrará correctamente el informe incrustado. Sin embargo, al usar el **modo de importación**, podremos ver el informe usando los datos importados existentes. En este caso, debemos establecer la credencial siguiendo los pasos que figuran abajo a través de llamadas REST.
+Mientras casi todos los artefactos de hello en el archivo .pbix se importan en el área de trabajo, no son credenciales de Hola para orígenes de datos. Como resultado, cuando se usa **directquerymode**, hello informes incrustados no se puede mostrar correctamente. Pero, si se usa **modo de importación**, podemos ver informes de hello con los datos importados existentes Hola. En tal caso, debemos establecemos la credencial de hello utilizando Hola siguiendo los pasos a través de llamadas de REST.
 
-En primer lugar, debe obtener el origen de datos de la puerta de enlace. Sabemos que el conjunto de datos **id** es el identificador que se devolvió antes.
+En primer lugar, debemos obtenemos el origen de datos de puerta de enlace de Hola. Sabemos que el conjunto de datos de hello **identificador** Hola previamente aparece Id. de.
 
 **Solicitud HTTP**
 
@@ -207,7 +207,7 @@ RequestId: 574b0b18-a6fa-46a6-826c-e65840cf6e15
 }
 ```
 
-Cuando obtengamos el id. del conjunto de datos y de la puerta de enlace \(consulte los identificadores **gatewayId** e **id** anteriores en el resultado devuelto), podremos cambiar la credencial de este origen de datos de la siguiente manera:
+Usar Hola devolvió el Id. de puerta de enlace y el Id. de origen de datos \(vea Hola anterior **gatewayId** y **Id. de** en hello devuelven resultados), podemos cambiar credenciales Hola de este origen de datos como se indica a continuación:
 
 **Solicitud HTTP**
 
@@ -233,9 +233,9 @@ Content-Type: application/octet-stream
 RequestId: 0e533c13-266a-4a9d-8718-fdad90391099
 ```
 
-En el entorno de producción, también podemos establecer la cadena de conexión diferente para cada área de trabajo mediante la API de REST. \(es decir, podemos separar la base de datos de cada cliente).
+En producción, también podemos establecer cadena de conexión diferentes de Hola para cada área de trabajo mediante API de REST. \(es decir, se puede separar base de datos de Hola para cada cliente.)
 
-El siguiente código va a cambiar la cadena de conexión del origen de datos a través de REST.
+siguiente Hello es cambiar la cadena de conexión de Hola de origen de datos a través de REST.
 
 ```
 POST https://api.powerbi.com/v1.0/collections/mypbiapp/workspaces/32960a09-6366-4208-a8bb-9e0678cdbb9d/datasets/458e0451-7215-4029-80b3-9627bf3417b0/Default.SetAllConnections
@@ -247,25 +247,25 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-También podemos usar la característica de seguridad de nivel de fila de Power BI Embedded y separar los datos de cada uno de los usuarios en un informe. Como resultado, podemos aprovisionar cada informe de cliente con el mismo archivo .pbix \(interfaz de usuario, etc.) y distintos orígenes de datos.
+O bien, se puede usar seguridad de nivel de fila en Power BI Embedded y se pueden separar los datos de Hola para los usuarios en un informe. Como resultado, podemos aprovisionar cada informe de cliente con el mismo archivo .pbix \(interfaz de usuario, etc.) y distintos orígenes de datos.
 
 > [!NOTE]
-> Si está utilizando el **modo de importación** en lugar del **modo DirectQuery**, no se podrán actualizar modelos a través de la API. Además, en Power BI Embedded todavía no se admiten orígenes de datos locales a través de la puerta de enlace de Power BI. Sin embargo, le recomendamos que eche un vistazo al [blog de Power BI](https://powerbi.microsoft.com/blog/) para ver las novedades y los cambios que incorporarán las futuras versiones.
+> Si usas **modo de importación** en lugar de **directquerymode**, no hay ningún modelo de toorefresh de manera a través de API. Además, en Power BI Embedded todavía no se admiten orígenes de datos locales a través de la puerta de enlace de Power BI. Sin embargo, realmente desea tookeep un ojo en hello [blog de Power BI](https://powerbi.microsoft.com/blog/) what's new y qué viene a continuación en futuras versiones.
 
 ## <a name="authentication-and-hosting-embedding-reports-in-our-web-page"></a>Autenticación y hospedaje de informes (incrustación) en nuestra página web
 
-En la API de REST anterior, podemos usar la clave de acceso **AppKey** como encabezado de autorización. Como estas llamadas pueden controlarse en el servidor backend, se trata de un método seguro.
+En Hola anterior API de REST, podemos usar la clave de acceso hello **AppKey** como encabezado de autorización de Hola. Dado que estas llamadas pueden controlarse en el lado de servidor de back-end de hello, es seguro para la ejecución.
 
-Sin embargo, cuando incrustamos el informe en nuestra página web, este tipo de información de seguridad se controlaría con JavaScript \(front-end). Después, debe protegerse el valor del encabezado de autorización. Si un código o un usuario malintencionados averiguan nuestra clave de acceso, pueden llamar a cualquier operación con esta clave.
+Pero, cuando se incrusta informe hello en nuestra página web, este tipo de información de seguridad tratar con JavaScript \(front-end). A continuación, el valor de encabezado de autorización de hello debe estar protegido. Si un código o un usuario malintencionados averiguan nuestra clave de acceso, pueden llamar a cualquier operación con esta clave.
 
-Cuando incrustamos el informe se incrusta en nuestra página web, debemos utilizar el token calculado en lugar de la clave de acceso **AppKey**. Nuestra aplicación debe crear el token JSON Web Token \(JWT) de OAuth, que consta de las notificaciones y la firma digital calculada. Tal y como se muestra a continuación, este JWT de OAuth es un token de cadena codificada delimitada por puntos.
+Cuando se incrusta informe hello en nuestra página web, debemos usar Hola calculada símbolo (token) en lugar de la clave de acceso **AppKey**. Nuestra aplicación debe crear hello OAuth Json Web Token \(JWT) que consta de notificaciones de Hola y firma digital de hello calculada. Tal y como se muestra a continuación, este JWT de OAuth es un token de cadena codificada delimitada por puntos.
 
 ![](media/power-bi-embedded-iframe/oauth-jwt.png)
 
-En primer lugar, debemos preparar el valor de entrada, que se firma más adelante. Este valor es la cadena con codificación URL en formato Base64 (rfc4648) del siguiente JSON, y está delimitada por el carácter de punto \(.). del informe.
+En primer lugar, debemos preparamos el valor de entrada de hello, que está firmada más adelante. Este valor es la cadena de dirección url codificada (rfc4648) de base64 de Hola de hello después de json y estos están delimitados por punto de hello \(.) caracteres. Más adelante, explicaremos cómo tooget Hola Id. de informe.
 
 > [!NOTE]
-> Si quiere usar la característica de seguridad de nivel de fila (RLS) con Power BI Embedded, debe especificar también el **nombre de usuario** y los **roles** en las notificaciones.
+> Si queremos toouse seguridad de nivel de fila (RLS) con Power BI Embedded, debemos también especificamos **nombre de usuario** y **roles** en las notificaciones de Hola.
 
 ```
 {
@@ -287,9 +287,9 @@ En primer lugar, debemos preparar el valor de entrada, que se firma más adelant
 }
 ```
 
-Después, deberemos crear la cadena codificada en Base64 de HMAC \(la firma) con el algoritmo SHA256. Este valor de entrada firmado es la cadena anterior.
+A continuación, debemos crear cadena codificada en base64 de Hola de HMAC \(firma hello) con el algoritmo SHA256. Este valor de entrada con signo es cadena anterior Hola.
 
-Por último, debemos combinar la cadena de valor y la cadena de firma con el carácter de punto \(.). La cadena completa es el token de aplicación para la incrustación de informes. Aunque un usuario malintencionado averigüe el token de aplicación, no podrá obtener la clave de acceso original. Este token de aplicación expira rápidamente.
+Por último, se deben combinar valor de entrada de Hola y cadena de firma con punto \(.) caracteres. cadena de Hello completado es token de aplicación Hola Hola inserción de informes. Incluso si un usuario malintencionado detectan un token de aplicación hello, no pueden obtener clave de acceso original de Hola. Este token de aplicación expira rápidamente.
 
 Este es un ejemplo PHP de estos pasos:
 
@@ -324,7 +324,7 @@ $hash = hash_hmac("sha256",
     true);
 $sig = rfc4648_base64_encode($hash);
 
-// 4. show result (which is the apptoken)
+// 4. show result (which is hello apptoken)
 $apptoken = $inputval . "." . $sig;
 echo($apptoken);
 
@@ -340,9 +340,9 @@ function rfc4648_base64_encode($arg) {
 ?>
 ```
 
-## <a name="finally-embed-the-report-into-the-web-page"></a>Incrustación del informe en la página web (último paso)
+## <a name="finally-embed-hello-report-into-hello-web-page"></a>Por último, incrustar informes de hello en la página web de Hola
 
-Para incrustar el informe, debe obtener la URL de incrustación y el **id.** del informe mediante la siguiente API de REST.
+Para incrustar el informe, debemos obtener Hola incrustar la dirección url y el informe **identificador** mediante Hola después de la API de REST.
 
 **Solicitud HTTP**
 
@@ -372,11 +372,11 @@ RequestId: d4099022-405b-49d3-b3b7-3c60cf675958
 }
 ```
 
-Podemos incrustar el informe en nuestra aplicación web con el token de aplicación anterior.
-Si observamos el código de ejemplo siguiente, la primera parte es la misma que la del ejemplo anterior. En la última parte, este ejemplo muestra el elemento **embedUrl** \(consulte el resultado anterior) del iframe y va a publicar el token de aplicación en dicho iframe.
+Se puedan incrustar informes de hello en nuestra aplicación web con token de aplicación anterior de Hola.
+Si miramos siguiente código de ejemplo Hola, parte anterior hello es Hola igual que el anterior ejemplo de Hola. En la última parte de hello, este ejemplo muestra hello **embedUrl** \(ver Hola de resultados anterior) en Hola iframe y está enviando el token de aplicación hello en hello iframe.
 
 > [!NOTE]
-> Tendrá que cambiar el valor del id. del informe a uno suyo. Además, debido a un error de nuestro sistema de gestión de contenidos, la etiqueta iframe del ejemplo de código se lee literalmente. Quite el texto en mayúsculas de la etiqueta si va a copiar y pegar este código de ejemplo.
+> Necesitará tooone toochange Hola informe Id. valor de su elección. Además, debido a errores de tooa en nuestro sistema de administración de contenido, se lee literalmente etiqueta de iframe de hello en el ejemplo de código de hello. Quitar texto hello limitado de etiqueta de hello si copia y pega este código de ejemplo.
 
 ```
     <?php
@@ -460,10 +460,10 @@ Este es el resultado:
 
 ![](media/power-bi-embedded-iframe/view-report.png)
 
-En este momento, Power BI Embedded solo muestra el informe en el iframe. No obstante, eche un vistazo al [blog de Power BI](https://powerbi.microsoft.com/blog/). En futuras mejoras se podrán usar nuevas API del lado cliente con la que podremos enviar información en el iframe, además de extraer datos. Sin duda, una característica realmente útil.
+En este momento, Power BI Embedded solo muestra hello informe en hello iframe. Pero, esté atento hello [Blog de Power BI](https://powerbi.microsoft.com/blog/). Mejoras futuras pudieron utilizar cliente nueva API que se Permítanos enviar información en hello iframe así como para obtener información de. Sin duda, una característica realmente útil.
 
 ## <a name="see-also"></a>Otras referencias
 * [Autenticación y autorización con Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-¿Tiene más preguntas? [Pruebe la comunidad de Power BI](http://community.powerbi.com/)
+¿Tiene más preguntas? [Intente Hola Comunidad de Power BI](http://community.powerbi.com/)
 

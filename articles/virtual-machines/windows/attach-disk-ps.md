@@ -1,6 +1,6 @@
 ---
-title: "Conexión de un disco de datos a una VM con Windows en Azure mediante PowerShell | Microsoft Docs"
-description: "Cómo conectar un disco de datos nuevo o existente a una VM con Windows mediante PowerShell con el modelo de implementación de Resource Manager."
+title: aaaAttach un tooa de disco de datos VM de Windows en Azure mediante PowerShell | Documentos de Microsoft
+description: "Cómo los datos nuevo o existente de tooattach disco tooa máquina virtual de Windows con PowerShell con el modelo de implementación del Administrador de recursos de Hola."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
-ms.openlocfilehash: 486e6a27fa28ec63001d824fe9f59c03a7aea5a7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 12ffdd4ced791ba0948047d3af24ad73e36c7ad6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>Conexión de un disco a una VM con Windows mediante PowerShell
+# <a name="attach-a-data-disk-tooa-windows-vm-using-powershell"></a>Adjuntar un tooa de disco de datos VM de Windows con PowerShell
 
-En este artículo se explica cómo conectar discos nuevos y existentes a una máquina virtual con Windows mediante PowerShell. Si la VM utiliza discos administrados, puede conectar discos de datos administrados adicionales. También puede conectar discos de datos no administrados a una VM que usa discos no administrados en una cuenta de almacenamiento.
+Este artículo muestra cómo tooattach nueva y existente discos de máquina virtual de Windows de tooa mediante PowerShell. Si la VM utiliza discos administrados, puede conectar discos de datos administrados adicionales. También puede adjuntar discos de datos no administrados tooa VM que use un disco no administrado en una cuenta de almacenamiento.
 
 Antes de hacerlo, revise estas sugerencias:
-* El tamaño de la máquina virtual controla cuántos discos de datos puede conectar. Para obtener más información, consulte [Tamaños de máquinas virtuales](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Para usar Premium Storage, necesitará una VM con Premium Storage habilitado con un tamaño como el de las VM de las series DS o GS. Puede utilizar discos de cuentas de almacenamiento premium y estándar con estas máquinas virtuales. Almacenamiento premium está disponible en determinadas regiones. Para obtener más información, consulte [Almacenamiento Premium: Almacenamiento de alto rendimiento para cargas de trabajo de máquina virtual de Azure](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* tamaño de Hola de máquina virtual de hello controla cuántos discos de datos que puede conectar. Para obtener más información, consulte [Tamaños de máquinas virtuales](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* toouse almacenamiento Premium, necesitará un almacenamiento Premium habilitado tamaño de máquina virtual como Hola DS-series o GS-series máquina virtual. Puede utilizar discos de cuentas de almacenamiento premium y estándar con estas máquinas virtuales. Almacenamiento premium está disponible en determinadas regiones. Para obtener más información, consulte [Almacenamiento Premium: Almacenamiento de alto rendimiento para cargas de trabajo de máquina virtual de Azure](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="before-you-begin"></a>Antes de empezar
-Si usa PowerShell, asegúrese de que tiene la versión más reciente del módulo de PowerShell AzureRM.Compute. Ejecute el siguiente comando para instalarla.
+Si se usa PowerShell, asegúrese de que tiene versión más reciente de Hola de hello módulo AzureRM.Compute PowerShell. Ejecutar Hola siguientes tooinstall de comando.
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -38,9 +38,9 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 Para más información, consulte [Azure PowerShell Versioning](/powershell/azure/overview) (Control de versiones de Azure PowerShell).
 
 
-## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Incorporación de un disco de datos vacío a una máquina virtual
+## <a name="add-an-empty-data-disk-tooa-virtual-machine"></a>Agregar una máquina virtual de datos vacíos disco tooa
 
-En este ejemplo se muestra cómo agregar un disco de datos vacío a una máquina virtual existente.
+Este ejemplo muestra cómo tooadd una datos vacíos disco de máquina virtual existente de tooan.
 
 ### <a name="using-managed-disks"></a>Uso de discos administrados
 
@@ -71,9 +71,9 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 ```
 
 
-### <a name="initialize-the-disk"></a>Initialize the disk
+### <a name="initialize-hello-disk"></a>Inicializar disco Hola
 
-Después de agregar un disco vacío, debe inicializarlo. Para hacerlo, puede iniciar sesión en una VM y usar la administración de discos. Si habilitó WinRM y un certificado en la VM cuando la creó, puede usar PowerShell remoto para inicializar el disco. También puede utilizar una extensión de script personalizada: 
+Después de agregar un disco vacío, necesita tooinitialize lo. disco de hello tooinitialize, puede iniciar sesión en administración de discos de máquina virtual y el uso de tooa. Si habilita WinRM y un certificado en hello VM al crearlo, puede usar disco de hello tooinitialize de PowerShell remoto. También puede utilizar una extensión de script personalizada: 
 
 ```powershell
     $location = "location-name"
@@ -82,7 +82,7 @@ Después de agregar un disco vacío, debe inicializarlo. Para hacerlo, puede ini
     Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
         
-El archivo de script puede tener un contenido parecido a este código para inicializar los discos:
+archivo de script de Hola puede contener algo parecido a los discos de Hola de tooinitialize de este código:
 
 ```powershell
     $disks = Get-Disk | Where partitionstyle -eq 'raw' | sort number
@@ -102,9 +102,9 @@ El archivo de script puede tener un contenido parecido a este código para inici
 ```
 
 
-## <a name="attach-an-existing-data-disk-to-a-vm"></a>Incorporación de un disco de datos existente a una VM
+## <a name="attach-an-existing-data-disk-tooa-vm"></a>Adjuntar un tooa de disco de datos VM existente
 
-También puede conectar un VHD existente como un disco de datos administrado a una máquina virtual. 
+También puede adjuntar un disco duro virtual existente como una máquina virtual de datos administrados disco tooa. 
 
 ### <a name="using-managed-disks"></a>Uso de discos administrados
 

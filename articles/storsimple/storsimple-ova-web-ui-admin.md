@@ -1,6 +1,6 @@
 ---
-title: "Administración de la interfaz de usuario web de la matriz virtual de StorSimple | Microsoft Docs"
-description: "Describe cómo realizar tareas de administración básicas en los dispositivos mediante la interfaz de usuario web de la matriz virtual de StorSimple."
+title: "web de Virtual Array aaaStorSimple administración de la interfaz de usuario | Documentos de Microsoft"
+description: "Describe cómo las tareas de administración de dispositivos básicos tooperform a través de la interfaz de usuario de web de StorSimple Virtual Array Hola."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,100 +14,100 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: 989e7b697f9b527df549fb32be18edd1d3c8d224
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 31a20a587c4302231f027fcf772a50df33b23407
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Usar la interfaz de usuario web para administrar la matriz virtual de StorSimple
+# <a name="use-hello-web-ui-tooadminister-your-storsimple-virtual-array"></a>Usar tooadminister de interfaz de usuario Web Hola la matriz Virtual de StorSimple
 ![flujo del proceso de instalación](./media/storsimple-ova-web-ui-admin/manage4.png)
 
 ## <a name="overview"></a>Información general
-Los tutoriales de este artículo se aplican a la matriz virtual de Microsoft Azure StorSimple (también conocida como dispositivo virtual local de StorSimple) que se ejecuta en la versión de disponibilidad general de marzo de 2016. En este artículo se describen algunos de los flujos de trabajo complejos y tareas de administración que se pueden realizar en la matriz virtual de StorSimple. Puede administrar la matriz virtual de StorSimple mediante la interfaz de usuario del servicio StorSimple Manager (denominada portal de interfaz de usuario) y la interfaz de usuario web local del dispositivo. En este artículo nos centraremos en las tareas que puede realizar mediante la interfaz de usuario web.
+tutoriales de Hello en este artículo aplican versión de disponibilidad general (GA) de marzo de 2016 ejecución de toohello Microsoft Azure StorSimple Virtual Array (también conocido como hello StorSimple en dispositivo virtual local). En este artículo se describe algunos de los flujos de trabajo complejos de Hola y tareas de administración que se pueden realizar en hello StorSimple Virtual Array. Puede administrar Hola StorSimple Virtual Array mediante UI (portal de hello tooas que se hace referencia UI) del servicio de administrador de StorSimple de Hola y Hola de interfaz de usuario web local para dispositivos de Hola. En este artículo se centra en las tareas de Hola que puede realizar mediante la interfaz de usuario web de Hola.
 
-Este artículo incluye los siguientes tutoriales:
+Este artículo incluye Hola tutoriales:
 
-* Obtener la clave de cifrado de los datos del servicio
+* Obtener la clave de cifrado de datos del servicio de Hola
 * Solucionar los problemas de instalación de la interfaz de usuario web
 * Crear un paquete de registro
 * Apagar o reiniciar el dispositivo
 
-## <a name="get-the-service-data-encryption-key"></a>Obtener la clave de cifrado de los datos del servicio
-Una clave de cifrado de los datos del servicio se genera cuando se registra el primer dispositivo mediante el servicio StorSimple Manager. Esta clave y la clave de registro del servicio son necesarias para registrar dispositivos adicionales en el servicio StorSimple Manager.
+## <a name="get-hello-service-data-encryption-key"></a>Obtener la clave de cifrado de datos del servicio de Hola
+Se genera una clave de cifrado de datos de servicio al registrar su primer dispositivo con hello el servicio StorSimple Manager. Esta clave es, a continuación, se requiere con hello servicio Registro tooregister clave dispositivos adicionales con el servicio StorSimple Manager hello.
 
-Si ha perdido su clave de cifrado de los datos del servicio y necesita recuperarla, siga los siguientes pasos en la interfaz de usuario web local del dispositivo que haya registrado con el servicio.
+Si el usuario ha perdido la clave de cifrado de datos de servicio y necesita tooretrieve, realizar Hola siguientes pasos de la interfaz de usuario del dispositivo de Hola de web local Hola registrados con el servicio.
 
-#### <a name="to-get-the-service-data-encryption-key"></a>Cómo obtener la clave de cifrado de los datos del servicio
-1. Conéctese a la interfaz de usuario web local Vaya a **Configuración** > **Configuración de la nube**.
-2. En la parte inferior de la página, haga clic en **Obtener clave de cifrado de datos del servicio**. Aparecerá una clave. Cópiela y guárdela.
+#### <a name="tooget-hello-service-data-encryption-key"></a>clave de cifrado de datos del servicio de tooget Hola
+1. Conectar la interfaz de usuario de web local toohello. Vaya demasiado**configuración** > **configuración de nube**.
+2. En la parte inferior de Hola de página de hello, haga clic en **clave de cifrado de datos de servicio Get**. Aparecerá una clave. Cópiela y guárdela.
    
     ![obtener la clave de cifrado de los datos del servicio 1](./media/storsimple-ova-web-ui-admin/image27.png)
 
 ## <a name="troubleshoot-web-ui-setup-errors"></a>Solucionar los problemas de instalación de la interfaz de usuario web
-Es posible que vea algún error cuando configure el dispositivo a través de la interfaz de usuario web local. Para diagnosticar y solucionar estos errores, puede ejecutar las pruebas de diagnóstico.
+Al configurar el dispositivo de Hola a través de web local de hello interfaz de usuario, en algunos casos pueden surgir de errores. toodiagnose y solucionar estos errores, puede ejecutar pruebas de diagnóstico de Hola.
 
-#### <a name="to-run-the-diagnostic-tests"></a>Ejecutar las pruebas de diagnóstico
-1. En la interfaz de usuario web local, vaya a **Solución de problemas** > **Pruebas de diagnóstico**.
+#### <a name="toorun-hello-diagnostic-tests"></a>pruebas de diagnóstico de hello toorun
+1. En la interfaz de usuario web local de hello, vaya demasiado**solución de problemas** > **pruebas de diagnóstico**.
    
     ![ejecutar diagnósticos 1](./media/storsimple-ova-web-ui-admin/image29.png)
-2. En la parte inferior de la página, haga clic en **Ejecutar pruebas de diagnóstico**. Con esto, iniciará las pruebas para diagnosticar los posibles problemas con la red, el dispositivo, el proxy web, la hora o la configuración de la nube. Verá una notificación que le indica que el dispositivo está ejecutando algunas pruebas.
-3. Cuando hayan terminado estas pruebas, podrá ver los resultados. En el siguiente ejemplo se muestra el resultado de las pruebas de diagnóstico. Tenga en cuenta que la configuración del proxy web no se ha realizado en este dispositivo y que, por lo tanto, no se ejecutó la prueba del proxy web. El resto de las pruebas de la configuración de red, el servidor DNS y la hora se realizaron correctamente.
+2. En la parte inferior de Hola de página de hello, haga clic en **ejecutar pruebas de diagnóstico**. Esto iniciará pruebas toodiagnose los posibles problemas con la red, dispositivos, proxy web, hora o configuración de la nube. Se le notificará que ese dispositivo Hola está ejecutando pruebas.
+3. Una vez completadas las pruebas de hello, resultados de Hola se mostrarán. Hello en el ejemplo siguiente se muestra los resultados de Hola de pruebas de diagnóstico. Tenga en cuenta que no se configuraron la configuración del proxy web hello en este dispositivo y, por lo tanto, no se ejecutó la prueba de hello web proxy. Todos los Hola otras pruebas para la configuración de red, servidor DNS, y configuración de hora obtuvieron resultados satisfactorios.
    
     ![ejecutar diagnósticos 2](./media/storsimple-ova-web-ui-admin/image30.png)
 
 ## <a name="generate-a-log-package"></a>Crear un paquete de registro
-Un paquete de registro contiene todos los registros relevantes que pueden ayudar al equipo de soporte técnico de Microsoft a solucionar los problemas del dispositivo. En esta versión, se puede generar un paquete de registro a través de la interfaz de usuario web local.
+Un paquete de registros está formado por todos los registros pertinentes Hola que pueden ayudar a Microsoft Support a solucionar los problemas del dispositivo. En esta versión, se puede generar un paquete de registros a través de la interfaz de usuario de web local Hola.
 
-#### <a name="to-generate-the-log-package"></a>Generar el paquete de registro
-1. En la interfaz de usuario web local, vaya a **Solución de problemas** > **Registros del sistema**.
+#### <a name="toogenerate-hello-log-package"></a>paquete de registros de hello toogenerate
+1. En la interfaz de usuario web local de hello, vaya demasiado**solución de problemas** > **registros del sistema**.
    
     ![crear un paquete de registro 1](./media/storsimple-ova-web-ui-admin/image31.png)
-2. En la parte inferior de la página, haga clic en **Crear paquete de registro**. Se creará un paquete de los registros del sistema. Este proceso tardará unos minutos.
+2. En la parte inferior de Hola de página de hello, haga clic en **crear paquete de registro**. Se creará un paquete de registros de sistema de Hola. Este proceso tardará unos minutos.
    
     ![crear un paquete de registro 2](./media/storsimple-ova-web-ui-admin/image32.png)
    
-    Verá una notificación una vez el paquete se cree correctamente y la página se actualizará para indicar la hora y la fecha durante las cuales se creó el mismo.
+    Se le notificará una vez Hola paquete se creó correctamente y se actualizará la página de hello fecha cuando se creó el paquete de Hola y tooindicate Hola.
    
     ![crear un paquete de registro 3](./media/storsimple-ova-web-ui-admin/image33.png)
 3. Haga clic en **Descargar paquete de registro**. Se descargará un paquete comprimido en su sistema.
    
     ![crear un paquete de registro 4](./media/storsimple-ova-web-ui-admin/image34.png)
-4. Puede descomprimir el paquete de registro que haya descargado y ver los archivos de registro del sistema.
+4. Puede descomprimir paquete de registro descargado de Hola y ver archivos de registro del sistema de Hola.
 
 ## <a name="shut-down-and-restart-your-device"></a>Apagar y reiniciar el dispositivo
-Puede apagar o reiniciar el dispositivo virtual mediante la interfaz de usuario web local. Se recomienda que antes de reiniciar, desconecte los volúmenes o recursos compartidos en el host y, luego, el dispositivo. Esto minimizará la posibilidad de daños en los datos. 
+Puede apagar o reiniciar el dispositivo virtual mediante la interfaz de usuario de web local Hola. Se recomienda, antes de reiniciar, desconecte los volúmenes de Hola o recursos compartidos sin conexión en el host de hello y, a continuación, Hola dispositivo. Esto minimizará la posibilidad de daños en los datos. 
 
-#### <a name="to-shut-down-your-virtual-device"></a>Apagar el dispositivo virtual
-1. En la interfaz de usuario web local, vaya a **Mantenimiento** > **Configuración de energía**.
-2. En la parte inferior de la página, haga clic en **Apagar**.
+#### <a name="tooshut-down-your-virtual-device"></a>tooshut hacia abajo el dispositivo virtual
+1. En la interfaz de usuario web local de hello, vaya demasiado**mantenimiento** > **la configuración de energía**.
+2. En la parte inferior de Hola de página de hello, haga clic en **apagado**.
    
     ![apagar el dispositivo 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Aparecerá una advertencia que le indicará que si apaga el dispositivo se interrumpirá cualquier operación de E/S que estuviera en curso, lo que producirá un tiempo de inactividad. Haga clic en el icono de marca de verificación  ![icono de marca de verificación](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Aparecerá una advertencia que indica que un apagado de dispositivo de Hola interrumpirá la E/S que se encuentran en curso, lo que produce un tiempo de inactividad. Haga clic en el icono de verificación de Hola ![icono de marca de verificación](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![advertencia de apagado del dispositivo](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Cuando se haya iniciado el apagado verá una notificación.
+    Se le notificará que el cierre Hola se ha iniciado.
    
     ![proceso de apagado del dispositivo iniciado](./media/storsimple-ova-web-ui-admin/image38.png)
    
-    El dispositivo se apagará. Si quiere iniciar el dispositivo, debe hacerlo a través del Administrador de Hyper-V.
+    dispositivo de Hola se cerrará ahora. Si desea toostart el dispositivo, necesitará toodo que a través de administrador de Hyper-V de Hola.
 
-#### <a name="to-restart-your-virtual-device"></a>Reiniciar el dispositivo virtual
-1. En la interfaz de usuario web local, vaya a **Mantenimiento** > **Configuración de energía**.
-2. En la parte inferior de la página, haga clic en **Reiniciar**.
+#### <a name="toorestart-your-virtual-device"></a>toorestart el dispositivo virtual
+1. En la interfaz de usuario web local de hello, vaya demasiado**mantenimiento** > **la configuración de energía**.
+2. En la parte inferior de Hola de página de hello, haga clic en **reiniciar**.
    
     ![proceso de reinicio del dispositivo](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Aparecerá una advertencia que le indicará que si reinicia el dispositivo se interrumpirá cualquier operación de E/S que estuviera en curso, lo que resultará en un tiempo de inactividad. Haga clic en el icono de marca de verificación  ![icono de marca de verificación](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Aparecerá una advertencia que indica que ese dispositivo Hola reiniciar interrumpirá cualquier IOs que se encuentran en curso, lo que produce un tiempo de inactividad. Haga clic en el icono de verificación de Hola ![icono de marca de verificación](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![advertencia de reinicio](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Verá una notificación cuando comience el reinicio.
+    Se le notificará que el reinicio Hola se ha iniciado.
    
     ![proceso de reinicio comenzado](./media/storsimple-ova-web-ui-admin/image39.png)
    
-    Mientras el proceso de reinicio esté en curso, perderá la conexión a la interfaz de usuario. De todos modos, puede supervisar el proceso de reinicio si actualiza la interfaz de usuario de forma regular. Como alternativa, puede supervisar el estado del proceso de reinicio del dispositivo a través del Administrador de Hyper-V.
+    Mientras Hola reinicio está en curso, perderá Hola conexión toohello interfaz de usuario. Puede supervisar Hola reinicio, actualice periódicamente Hola interfaz de usuario. Como alternativa, puede supervisar el estado de reinicio del dispositivo de Hola a través de administrador de Hyper-V de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre cómo [usar el servicio StorSimple Manager para administrar su dispositivo](storsimple-virtual-array-manager-service-administration.md).
+Obtenga información acerca de cómo demasiado[uso Hola toomanage de servicio de StorSimple Manager el dispositivo](storsimple-virtual-array-manager-service-administration.md).
 

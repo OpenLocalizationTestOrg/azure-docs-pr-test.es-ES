@@ -1,6 +1,6 @@
 ---
-title: "Obtención de un procesador de multimedia mediante REST | Microsoft Docs"
-description: Aprenda a crear un componente de procesador de multimedia para codificar, cifrar, descifrar o convertir el formato de contenido multimedia para Servicios multimedia de Azure.
+title: "aaa cómo tooget una instancia de procesador multimedia mediante REST | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate un tooencode de componente del procesador de multimedia, convertir el formato, cifrar o descifrar contenido multimedia para servicios multimedia de Azure."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 4ad90ad979c5bd74fc55155098c88d5c13cb12e2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9f423648ab73c90405c64895ce0f5b6a457862e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Obtención de una instancia del procesador de multimedia
+# <a name="how-tooget-a-media-processor-instance"></a>¿Cómo tooget una instancia de procesador multimedia
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
@@ -28,11 +28,11 @@ ms.lasthandoff: 08/29/2017
 > 
 
 ## <a name="overview"></a>Información general
-En los Servicios multimedia, un procesador multimedia es un componente que controla una tarea de procesamiento específica, como codificación, conversión de formato, cifrado o descifrado de contenido multimedia. Normalmente crea un procesador multimedia cuando crea una tarea para codificar, cifrar o convertir el formato de contenido multimedia.
+En los Servicios multimedia, un procesador multimedia es un componente que controla una tarea de procesamiento específica, como codificación, conversión de formato, cifrado o descifrado de contenido multimedia. Suele crear un procesador multimedia cuando se crea una tarea tooencode, cifrar o convertir el formato de saludo del contenido multimedia.
 
 ## <a name="azure-media-processors"></a>Procesadores de multimedia de Azure 
 
-En el siguiente tema se proporcionan listas de procesadores de multimedia:
+Hola tema siguiente proporciona listas de procesadores multimedia:
 
 * [Codificación de procesadores de multimedia](scenarios-and-availability.md#encoding-media-processors)
 * [Procesadores de multimedia de Analytics](scenarios-and-availability.md#analytics-media-processors)
@@ -40,16 +40,16 @@ En el siguiente tema se proporcionan listas de procesadores de multimedia:
 >[!NOTE]
 >Al obtener acceso a las entidades de Servicios multimedia, debe establecer los campos de encabezado específicos y los valores en las solicitudes HTTP. Para obtener más información, consulte [Configuración del desarrollo de la API de REST de Servicios multimedia](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Conexión con Servicios multimedia
+## <a name="connect-toomedia-services"></a>Conectar servicios de tooMedia
 
-Para obtener más información sobre cómo conectarse a la API de Azure Media Services, consulte [Acceso a la API de Azure Media Services con la autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Para obtener información sobre cómo tooconnect toohello AMS API, consulte [Hola acceso API de servicios multimedia de Azure con autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Después de conectarse correctamente a https://media.windows.net, recibirá una redirección 301 que especifica otro URI de Servicios multimedia. Debe realizar las llamadas posteriores al nuevo URI.
+>Después de conectarse correctamente toohttps://media.windows.net, recibirá una redirección 301 especificando otra URI de servicios multimedia. Debe realizar las llamadas subsiguientes toohello nuevo URI.
 
 ## <a name="get-a-media-processor"></a>Obtención de un procesador multimedia
 
-La siguiente llamada REST muestra cómo obtener una instancia de procesador multimedia por nombre (en este caso, **Codificador multimedia estándar**). 
+Hola después de la llamada de REST, muestra cómo tooget un procesador multimedia instancia por su nombre (en este caso, **Media Encoder estándar**). 
 
 Solicitud:
 
@@ -89,5 +89,5 @@ Respuesta:
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que sabe cómo obtener una instancia de procesador multimedia, consulte el tema sobre la [codificación de un recurso](media-services-rest-get-started.md) , que le mostrará cómo utilizar el servicio Media Encoder estándar para codificar un recurso.
+Ahora que sabe cómo tooget una instancia de procesador multimedia, vaya toohello [cómo tooEncode un activo](media-services-rest-get-started.md) tema que le mostrará cómo toouse Hola tooencode Media Encoder estándar a un recurso.
 

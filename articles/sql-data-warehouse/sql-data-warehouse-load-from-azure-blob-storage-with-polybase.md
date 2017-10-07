@@ -1,6 +1,6 @@
 ---
-title: Carga desde blob de Azure a un almacenamiento de datos de Azure | Microsoft Docs
-description: "Aprenda a usar PolyBase para cargar datos de Almacenamiento de blobs de Azure en Almacenamiento de datos SQL. Cargue algunas tablas de datos públicos en el esquema Contoso Retail Data Warehouse."
+title: aaaLoad de almacenamiento de datos de blob de Azure tooAzure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse datos de tooload de PolyBase de Azure almacenamiento de blobs en almacenamiento de datos de SQL. Cargar algunas tablas de datos públicos en el esquema de almacenamiento de datos de Contoso Retail Hola."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 2859c1144f72fd685af89f83024df1409902ab0c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b4978ccefa4d55ff5c89fba84c5e705422ddbb7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Load data from Azure blob storage into SQL Data Warehouse (PolyBase) [Carga de datos de Almacenamiento de blobs de Azure en Almacenamiento de datos SQL (PolyBase)]
 > [!div class="op_single_selector"]
@@ -28,37 +28,37 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Use PolyBase y comandos de T-SQL para cargar datos de Almacenamiento de blobs de Azure en Almacenamiento de datos SQL. 
+Use PolyBase y T-SQL comandos tooload datos desde el almacenamiento de blobs de Azure en almacenamiento de datos de SQL Azure. 
 
-Para no complicarlo, este tutorial carga dos tablas de un Blob de almacenamiento de Azure público en el esquema Contoso Retail Data Warehouse. Para cargar el conjunto de datos completo, ejecute el ejemplo [Load the full Contoso Retail Data Warehouse][Load the full Contoso Retail Data Warehouse] (Carga del esquema Contoso Retail Data Warehouse completo) del repositorio de ejemplos de Microsoft SQL Server.
+tookeep simple, este tutorial carga dos tablas de un Blob de almacenamiento de Azure público en el esquema de almacenamiento de datos de Contoso Retail Hola. tooload Hola completo conjunto de datos, ejecutar el ejemplo de Hola [carga Hola completa almacenamiento de datos de Contoso Retail] [ Load hello full Contoso Retail Data Warehouse] del repositorio de ejemplos de Microsoft SQL Server Hola.
 
 En este tutorial, aprenderá lo siguiente:
 
-1. Configuración de PolyBase para realizar la carga desde Almacenamiento de blobs de Azure
+1. Configurar PolyBase tooload desde el almacenamiento de blobs de Azure
 2. Carga de datos públicos en su base de datos
-3. Realización de optimizaciones una vez finalizada la carga
+3. Una vez finalizada la carga de hello, realizar las optimizaciones.
 
 ## <a name="before-you-begin"></a>Antes de empezar
-Para ejecutar este tutorial, necesita una cuenta de Azure que cuente ya con una base de datos de Almacenamiento de datos SQL. Si todavía no la tiene, consulte [Creación de una instancia de SQL Data Warehouse][Create a SQL Data Warehouse].
+toorun este tutorial, necesita una cuenta de Azure que ya tiene una base de datos de almacenamiento de datos SQL. Si todavía no la tiene, consulte [Creación de una instancia de SQL Data Warehouse][Create a SQL Data Warehouse].
 
-## <a name="1-configure-the-data-source"></a>1. Configuración del origen de datos
-PolyBase usa objetos externos T-SQL para definir la ubicación y los atributos de los datos externos. Las definiciones de objeto externo se almacenan en Almacenamiento de datos SQL. Los propios datos se almacenan externamente.
+## <a name="1-configure-hello-data-source"></a>1. Configurar origen de datos de Hola
+PolyBase usa la ubicación de T-SQL objetos externos toodefine hello y atributos de datos externos de Hola. las definiciones de objeto externo Hola se almacenan en el almacén de datos de SQL. datos Hello en sí se almacenan externamente.
 
 ### <a name="11-create-a-credential"></a>1.1. Creación de una credencial
-**Omita este paso** si va a cargar los datos públicos de Contoso. No es necesario un acceso seguro a los datos públicos, pues ya son accesibles para cualquier persona.
+**Omita este paso** si va a cargar los datos públicos de hello Contoso. No necesita datos públicos de un acceso seguro toohello porque ya está tooanyone accesible.
 
-**No omita este paso** si va a usar este tutorial como plantilla para cargar sus propios datos. Para tener acceso a los datos a través de una credencial, use el siguiente script para crear una credencial con ámbito de base de datos y utilizarla al definir la ubicación del origen de datos.
+**No omita este paso** si va a usar este tutorial como plantilla para cargar sus propios datos. tooaccess datos a través de una credencial, Hola de uso después de credencial toocreate un ámbito de base de datos de secuencias de comandos y, a continuación, utilizarlo al definir la ubicación de Hola Hola del origen de datos.
 
 ```sql
 -- A: Create a master key.
 -- Only necessary if one does not already exist.
--- Required to encrypt the credential secret in the next step.
+-- Required tooencrypt hello credential secret in hello next step.
 
 CREATE MASTER KEY;
 
 
 -- B: Create a database scoped credential
--- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
+-- IDENTITY: Provide any string, it is not used for authentication tooAzure storage.
 -- SECRET: Provide your Azure storage account key.
 
 
@@ -70,9 +70,9 @@ WITH
 
 
 -- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs tooaccess data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
--- CREDENTIAL: Provide the credential created in the previous step.
+-- CREDENTIAL: Provide hello credential created in hello previous step.
 
 CREATE EXTERNAL DATA SOURCE AzureStorage
 WITH (
@@ -82,10 +82,10 @@ WITH (
 );
 ```
 
-Vaya al paso 2.
+Omitir toostep 2.
 
-### <a name="12-create-the-external-data-source"></a>1.2. Creación del origen de datos externo
-Utilice este comando [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] para almacenar la ubicación de los datos y el tipo de datos. 
+### <a name="12-create-hello-external-data-source"></a>1.2. Crear origen de datos externo de Hola
+Utilícelo [CREATE EXTERNAL DATA SOURCE] [ CREATE EXTERNAL DATA SOURCE] comando ubicación de hello toostore de datos de Hola y tipo de Hola de datos. 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -97,12 +97,12 @@ WITH
 ```
 
 > [!IMPORTANT]
-> Si decide que sus contenedores de Almacenamiento de blobs de Azure serán públicos, recuerde que, como propietario de los datos, se le aplicarán cargos de salida de datos cuando los datos dejen el centro de datos. 
+> Si elige toomake el público de contenedores de almacenamiento de blobs de azure, recuerde que como propietario de los datos Hola se le cobrará por datos cargos de salida cuando los datos dejan de centro de datos de Hola. 
 > 
 > 
 
 ## <a name="2-configure-data-format"></a>2. Configuración del formato de datos
-Los datos se almacenan en archivos de texto en Almacenamiento de blobs de Azure y un delimitador separa cada campo. Ejecute este comando [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] para especificar el formato de los datos en los archivos de texto. Los datos de Contoso no están comprimidos y están delimitados por canalización.
+Hola datos se almacenan en archivos de texto en el almacenamiento de blobs de Azure, y cada campo se separa con un delimitador. Ejecute este [crear formato de archivo externo] [ CREATE EXTERNAL FILE FORMAT] formato de comando toospecify Hola de datos de Hola Hola en archivos de texto. Hola datos de Contoso se descomprime y delimitado por canalización.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -116,21 +116,21 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3. Creación de la tablas externas
-Ahora que ha especificado el origen de datos y el formato de archivo, está listo para crear las tablas externas. 
+## <a name="3-create-hello-external-tables"></a>3. Crear tablas externas de Hola
+Ahora que ha especificado el formato de origen y el archivo de datos de hello, son tablas externas de hello toocreate listo. 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. Creación de un esquema de los datos
-A fin de crear un lugar para almacenar los datos de Contoso en su base de datos, cree un esquema.
+### <a name="31-create-a-schema-for-hello-data"></a>3.1. Crear un esquema para los datos de Hola.
+toocreate un Hola de toostore lugar datos de Contoso en la base de datos, crear un esquema.
 
 ```sql
 CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3.2. Creación de la tablas externas
-Ejecute este script para crear las tablas externas DimProduct y FactOnlineSales. Todo lo que hacemos aquí es definir nombres de columna y tipos de datos, que enlazamos a la ubicación y formato de los archivos de Almacenamiento de blobs de Azure. La definición se almacena en Almacenamiento de datos SQL y los datos siguen en el Blob de almacenamiento de Azure.
+### <a name="32-create-hello-external-tables"></a>3.2. Crear tablas externas de Hola.
+Ejecute este hello toocreate de secuencia de comandos DimProduct y FactOnlineSales tablas externas. Lo que estamos haciendo aquí es definir nombres de columna y tipos de datos y enlazarlos toohello ubicación y el formato de archivos de almacenamiento de blobs de Azure Hola. Hola definición se almacena en el almacén de datos de SQL y datos de hello aún están en hello Blob de almacenamiento de Azure.
 
-El parámetro **LOCATION** es la carpeta situada bajo la carpeta raíz en Azure Blob Storage. Cada tabla está en una carpeta diferente.
+Hola **ubicación** parámetro es la carpeta de hello en carpeta de raíz de Hola Hola Blob de almacenamiento de Azure. Cada tabla está en una carpeta diferente.
 
 ```sql
 
@@ -215,23 +215,23 @@ WITH
 ;
 ```
 
-## <a name="4-load-the-data"></a>4. Carga de los datos
-Hay diferentes maneras de obtener acceso a datos externos.  Puede consultar datos directamente en la tabla externa, cargar los datos en nuevas tablas de base de datos o agregar datos externos a tablas de base de datos existentes.  
+## <a name="4-load-hello-data"></a>4. Cargar datos de Hola
+No hay datos externos de tooaccess de maneras diferentes.  Puede consultar los datos directamente desde la tabla externa de hello, cargar datos de hello en tablas de base de datos nueva o agregar tablas de base de datos de tooexisting datos externos.  
 
 ### <a name="41-create-a-new-schema"></a>4.1. Creación de un nuevo esquema
-CTAS crea una nueva tabla que contiene datos.  En primer lugar, cree un esquema de los datos de Contoso.
+CTAS crea una nueva tabla que contiene datos.  En primer lugar, cree un esquema para los datos de contoso Hola.
 
 ```sql
 CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. Carga de los datos en nuevas tablas
-Para cargar datos de Azure Blob Storage y guardarlos en una tabla dentro de su base de datos, use la instrucción [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)]. Al realizarse la carga con CTAS, se aprovechan las tablas externas fuertemente tipadas que acaba de crear. Para cargar los datos en nuevas tablas, use una instrucción [CTAS][CTAS] por tabla. 
+### <a name="42-load-hello-data-into-new-tables"></a>4.2. Cargar datos de hello en nuevas tablas
+datos de tooload de Azure almacenamiento de blobs y guardarlo en una tabla dentro de la base de datos, utilice hello [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] instrucción. Cargando la CTAS aprovecha Hola fuertemente tipadas tablas externas tienen created.tooload simplemente Hola datos en tablas nuevas, utilice uno [CTAS] [ CTAS] instrucción por tabla. 
  
-CTAS crea una nueva tabla y la rellena con los resultados de una instrucción SELECT. CTAS define la nueva tabla para tener las mismas columnas y tipos de datos que los resultados de la instrucción SELECT. Si selecciona todas las columnas de una tabla externa, la nueva tabla será una réplica de las columnas y los tipos de datos de la tabla externa.
+CTAS crea una nueva tabla y lo rellena con resultados de Hola de una instrucción select. CTAS define Hola nueva tabla toohave Hola mismos tipos de datos y columnas como resultados de Hola de hello instrucción select. Si selecciona todas las columnas de hello en una tabla externa, tabla nueva Hola será una réplica de columnas de Hola y tipos de datos en la tabla externa de Hola.
 
-En este ejemplo, creamos la tabla de dimensiones y la de hechos como tablas hash distribuidas. 
+En este ejemplo, creamos dimensión hello y tabla de hechos de hello como hash tablas distribuidas. 
 
 ```sql
 SELECT GETDATE();
@@ -241,20 +241,20 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4.3. Seguimiento del progreso de carga
-Puede seguir el progreso de la carga con las vistas de administración dinámica (DMV). 
+### <a name="43-track-hello-load-progress"></a>4.3 seguir el progreso de carga de Hola
+Pueda seguir el progreso de saludo de la carga mediante vistas de administración dinámica (DMV). 
 
 ```sql
--- To see all requests
+-- toosee all requests
 SELECT * FROM sys.dm_pdw_exec_requests;
 
--- To see a particular request identified by its label
+-- toosee a particular request identified by its label
 SELECT * FROM sys.dm_pdw_exec_requests as r
 WHERE r.[label] = 'CTAS : Load [cso].[DimProduct]             '
       OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 ;
 
--- To track bytes and files
+-- tootrack bytes and files
 SELECT
     r.command,
     s.request_id,
@@ -278,9 +278,9 @@ ORDER BY
 ```
 
 ## <a name="5-optimize-columnstore-compression"></a>5. Optimización de compresión de almacén de columnas
-De forma predeterminada, Almacenamiento de datos SQL almacena la tabla como índice de almacén de columnas agrupado. Una vez completada una carga, puede que algunas de las filas de datos no se compriman en el almacén de columnas.  Existen varios motivos por los que esto puede ocurrir. Para aprender más, consulte el artículo sobre [administración de índices de almacén de columnas][manage columnstore indexes].
+De forma predeterminada, almacenamiento de datos de SQL almacena la tabla de Hola como un índice de almacén de columnas agrupado. Una vez completada una carga, algunas de las filas de datos de hello podrían no va a comprimir con almacén de columnas de Hola.  Existen varios motivos por los que esto puede ocurrir. más información, consulte toolearn [administrar índices de almacén de columnas][manage columnstore indexes].
 
-Para optimizar el rendimiento de las consultas y la compresión de almacén de columnas después de una carga, vuelva a crear la tabla para obligar al índice de almacén de columnas a comprimir todas las filas. 
+rendimiento de las consultas toooptimize y compresión de almacén de columnas después de una carga, vuelva a generar toocompress de índice de almacén de columnas de hello tabla tooforce Hola todas las filas de Hola. 
 
 ```sql
 SELECT GETDATE();
@@ -290,14 +290,14 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-Para más información sobre el mantenimiento de los índices de almacén de columnas, consulte el artículo sobre [administración de índices de almacén de columnas][manage columnstore indexes].
+Para obtener más información sobre el mantenimiento de índices de almacén de columnas, vea hello [administrar índices de almacén de columnas] [ manage columnstore indexes] artículo.
 
 ## <a name="6-optimize-statistics"></a>6. Optimización de estadísticas
-Es mejor crear estadísticas de columna única inmediatamente después de una carga. Hay algunas opciones para las estadísticas. Por ejemplo, si crea estadísticas de columna única en cada columna, la recompilación de todas las estadísticas puede llevar mucho tiempo. Si sabe que algunas columnas no van a estar en predicados de consulta, puede omitir la creación de estadísticas en dichas columnas.
+Es mejor estadísticas de columna única de toocreate inmediatamente después de una carga. Hay algunas opciones para las estadísticas. Por ejemplo, si crea estadísticas de columna única en todas las columnas puede tardar un toorebuild mucho tiempo todas las estadísticas de Hola. Si sabe que las columnas que no van toobe predicados de consulta, puede ir creando estadísticas sobre esas columnas.
 
-Si decide crear estadísticas de columna única en todas las columnas de cada una de las tablas, puede usar el ejemplo de código de procedimiento almacenado `prc_sqldw_create_stats` en el artículo sobre [estadísticas][statistics].
+Si decide toocreate estadísticas de columna única en todas las columnas de cada tabla, puede usar el ejemplo de código de procedimiento almacenado Hola `prc_sqldw_create_stats` en hello [estadísticas] [ statistics] artículo.
 
-El ejemplo siguiente es un buen punto de partida para la creación de estadísticas. Crea estadísticas de columna única en cada una de las columnas de la tabla de dimensiones y en cada una de las columnas de combinación de las tablas de hechos. Siempre puede agregar estadísticas de columna única o de varias columnas a otras columnas de la tabla de hechos más adelante.
+Hola siguiente ejemplo es un buen punto de partida para crear las estadísticas. Crea estadísticas de columna única en cada columna de tabla de dimensiones de Hola y en cada columna de combinación en las tablas de hechos Hola. Siempre puede agregar columnas de la tabla de hechos de uno o varias columnas de estadísticas tooother más adelante.
 
 ```sql
 CREATE STATISTICS [stat_cso_DimProduct_AvailableForSaleDate] ON [cso].[DimProduct]([AvailableForSaleDate]);
@@ -344,7 +344,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ## <a name="achievement-unlocked"></a>Logro conseguido.
 Ha cargado correctamente datos públicos en Almacenamiento de datos SQL de Azure. Buen trabajo.
 
-Ya puede empezar a consultar las tablas mediante consultas como las siguientes:
+Ahora puede comenzar a realizar consultas en tablas de hello mediante consultas como Hola siguiente:
 
 ```sql
 SELECT  SUM(f.[SalesAmount]) AS [sales_by_brand_amount]
@@ -355,7 +355,7 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para cargar todos los datos de Contoso Retail Data Warehouse, use el script que aparece. Para más sugerencias sobre desarrollo, consulte la [información general sobre desarrollo de SQL Data Warehouse][SQL Data Warehouse development overview].
+datos tooload Hola completa almacenamiento de datos de Contoso Retail, use el script de Hola en para obtener más sugerencias de desarrollo, consulte [Introducción al desarrollo de almacenamiento de datos SQL][SQL Data Warehouse development overview].
 
 <!--Image references-->
 
@@ -377,4 +377,4 @@ Para cargar todos los datos de Contoso Retail Data Warehouse, use el script que 
 
 <!--Other Web references-->
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
-[Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
+[Load hello full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md

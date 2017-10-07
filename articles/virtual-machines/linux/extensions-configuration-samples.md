@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de configuración para extensiones de máquina virtual Linux | Microsoft Docs"
+title: "configuración de aaaSample para las extensiones de VM de Linux | Documentos de Microsoft"
 description: "Configuración de ejemplo para crear plantillas con extensiones para máquinas virtuales de Linux"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2016
 ms.author: kundanap
-ms.openlocfilehash: 7bdc28328f29005ae48cc281a05fce7067c96556
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bc19b8d7d6fdb1783be99ec7fdd5cde5e1f8ca80
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="linux-vm-extension-configuration-samples"></a>Ejemplos de configuración de la extensión de máquina virtual Linux
 > [!div class="op_single_selector"]
@@ -32,14 +32,14 @@ ms.lasthandoff: 07/11/2017
 
 Este artículo proporciona un ejemplo de configuración para configurar las extensiones de máquina virtual de Azure para máquinas virtuales Linux.
 
-Para obtener más información sobre estas extensiones, haga clic aquí: [Información general de las extensiones de máquinas virtuales de Azure.](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+toolearn más acerca de estas extensiones, haga clic aquí: [información general de extensiones de VM de Azure.](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-Para obtener más información sobre la creación de plantillas de extensión, haga clic aquí: [Creación de plantillas de extensión.](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+toolearn más sobre la creación de plantillas de extensión, haga clic aquí: [creación de plantillas de extensión.](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-En este artículo se indican los valores de configuración esperados para algunas de las extensiones de Linux.
+Este artículo enumeran los valores de configuración esperado para algunos de hello las extensiones de Linux.
 
 ## <a name="sample-template-snippet-for-vm-extensions"></a>Fragmento de plantilla de ejemplo para extensiones de VM.
-El fragmento de plantilla para extensiones de implementación tiene el aspecto siguiente:
+fragmento de código de plantilla de Hello para la implementación de extensiones es como sigue:
 
       {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -80,9 +80,9 @@ El fragmento de plantilla para extensiones de implementación tiene el aspecto s
                   }
                 }
 
-Antes de implementar la extensión, compruebe la versión más reciente de la extensión y reemplace la "typeHandlerVersion" por la versión más reciente actual.
+Antes de implementar la extensión de hello comprobar la versión más reciente de la extensión de Hola y reemplace typeHandlerVersion"hello" con la versión más reciente de hello actual.
 
-El resto del artículo proporciona ejemplos de configuraciones para las extensiones de máquina virtual de Linux.
+Resto del artículo Hola proporciona las configuraciones de ejemplo para extensiones de VM de Linux.
 
 ### <a name="cloudlink-securevm-agent"></a>Agente de SecureVM de CloudLink
           {
@@ -90,7 +90,7 @@ El resto del artículo proporciona ejemplos de configuraciones para las extensio
             "type": "CloudLinkSecureVMLinuxAgent",
             "typeHandlerVersion": "4.0",
             "settings": {
-              "CloudLinkCenter" : "specify valid IP/FQDN to CloudLinkCenter"
+              "CloudLinkCenter" : "specify valid IP/FQDN tooCloudLinkCenter"
             }
           }
 
@@ -132,23 +132,23 @@ El resto del artículo proporciona ejemplos de configuraciones para las extensio
         }
 
 ### <a name="vm-access-extension-password-reset"></a>Extensión de acceso máquina virtual (restablecimiento de contraseña)
-Para el esquema actualizado, consulte la [Documentación de VMAccessForLinux](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
+Para el esquema actualizado, consulte toohello [VMAccessForLinux documentación](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
         {
           "publisher": "Microsoft.OSTCExtensions",
           "type": "VMAccessForLinux",
           "typeHandlerVersion": "1.2",
           "protectedSettings": {
-            "username": "(required, string) the name of the user",
-            "password": "(optional, string) the password of the user",
-            "reset_ssh": "(optional, boolean) whether or not reset the ssh",
-            "ssh_key": "(optional, string) the public key of the user, base64 encoded pem",
-            "remove_user": "(optional, string) the user name to remove"
+            "username": "(required, string) hello name of hello user",
+            "password": "(optional, string) hello password of hello user",
+            "reset_ssh": "(optional, boolean) whether or not reset hello ssh",
+            "ssh_key": "(optional, string) hello public key of hello user, base64 encoded pem",
+            "remove_user": "(optional, string) hello user name tooremove"
           }
         }
 
 ### <a name="os-patching"></a>Revisión de SO
-Para el esquema actualizado, consulte la [Documentación de OSPatching](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)
+Para el esquema actualizado, consulte toohello [OSPatching de documentación](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)
 
         {
         "publisher": "Microsoft.OSTCExtensions",
@@ -173,7 +173,7 @@ Para el esquema actualizado, consulte la [Documentación de OSPatching](https://
         }
 
 ### <a name="docker-extension"></a>Extensión de Docker
-Para el esquema actualizado, consulte la [Documentación la extensión de Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)
+Para el esquema actualizado, consulte toohello [documentación sobre la extensión Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)
 
         {
           "publisher": "Microsoft.Azure.Extensions ",
@@ -199,8 +199,8 @@ Para el esquema actualizado, consulte la [Documentación la extensión de Docker
 
         ### Linux Diagnostics Extension
         {
-        "storageAccountName": "storage account to receive data",
-        "storageAccountKey": "key of the account",
+        "storageAccountName": "storage account tooreceive data",
+        "storageAccountKey": "key of hello account",
         "perfCfg": [
         {
             "query": "SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
@@ -215,7 +215,7 @@ Para el esquema actualizado, consulte la [Documentación la extensión de Docker
         ]
         }
 
-En los ejemplos anteriores, reemplace el número de versión por el número de versión más reciente.
+En ejemplos anteriores de hello, reemplace el número de versión de Hola con número de versión más reciente de Hola.
 
 Esta es una plantilla de máquina virtual completa para la creación de una VM de Linux con una extensión:
 

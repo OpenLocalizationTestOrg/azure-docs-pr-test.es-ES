@@ -1,6 +1,6 @@
 ---
-title: "Información general sobre la prueba comparativa Base de datos SQL de Azure"
-description: "Este tema describe la prueba comparativa Base de datos SQL de Azure Benchmark, que se usa para la medición del rendimiento de la Base de datos SQL de Azure."
+title: "información general sobre el criterio de referencia de base de datos SQL aaaAzure"
+description: "Este tema describe Hola prueba comparativa de base de datos de SQL Azure usa en la medición de rendimiento de Hola de base de datos de SQL Azure."
 services: sql-database
 documentationcenter: na
 author: jan-eng
@@ -15,41 +15,41 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: 57178352e0a402f3559c94ce25f125dcbefd1374
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1024e9ada511935f911cb1345b4dc5508997c702
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Información general sobre la prueba comparativa Base de datos SQL de Azure
 ## <a name="overview"></a>Información general
-La Base de datos SQL de Microsoft Azure ofrece tres [niveles de servicio](sql-database-service-tiers.md) con varios niveles de rendimiento. Cada nivel de rendimiento proporciona un conjunto de recursos (o "capacidad") cada vez mayor, diseñado para proporcionar un mayor rendimiento.
+La Base de datos SQL de Microsoft Azure ofrece tres [niveles de servicio](sql-database-service-tiers.md) con varios niveles de rendimiento. Cada nivel de rendimiento proporciona un rendimiento cada vez mayor de creciente conjunto de recursos o 'power', diseñado toodeliver.
 
-Es importante poder cuantificar cómo se traduce la potencia creciente de cada nivel de rendimiento en un rendimiento de base de datos mejorado. Para ello, Microsoft ha desarrollado la prueba comparativa Base de datos SQL de Azure Benchmark (ASDB). La prueba comparativa ejerce una combinación de operaciones básicas que se encuentran en todas las cargas de trabajo OLTP. Medimos el rendimiento conseguido para bases de datos que se ejecuten en cada nivel de rendimiento.
+Es importante toobe tooquantify capaz de cómo traduce la potencia creciente de Hola de cada nivel de rendimiento en el rendimiento de la base de datos mayor. toodo que Microsoft ha desarrollado hello Azure SQL Database Benchmark (ASDB). criterio de referencia de Hello ejerce una mezcla de operaciones básicas que se encuentra en todas las cargas de trabajo OLTP. Medimos el rendimiento de hello conseguido para bases de datos que se ejecuta en cada nivel de rendimiento.
 
-Los recursos y la potencia de cada nivel de servicio y nivel de rendimiento se expresan en términos de [unidades de transacción de base de datos (DTU)](sql-database-what-is-a-dtu.md). Las DTU proporcionan un modo de describir la capacidad relativa de un nivel de rendimiento basándose en una medición combinada de CPU, memoria y velocidades de lectura y escritura ofrecidas por cada nivel de rendimiento. Doblar la tasa de DTU de una base de datos es equiparable a doblar la potencia de la base de datos. La prueba comparativa nos permite evaluar el impacto en el rendimiento de la base de datos de la cada vez mayor capacidad que ofrece cada nivel de rendimiento realizando operaciones reales en la base de datos, mientras se escala el tamaño de la base de datos, el número de usuarios y las velocidades de transacción en proporción a los recursos proporcionados a la base de datos.
+Hello recursos y la potencia de cada nivel de rendimiento y de nivel de servicio se expresan en términos de [unidades de transacción de base de datos (Dtu)](sql-database-what-is-a-dtu.md). Las Dtu proporcionan un modo capacidad relativa de hello toodescribe de un nivel de rendimiento basándose en una medición mezclada de CPU, memoria y lee y escribe las tasas que ofrece cada nivel de rendimiento. Duplica la tasa de DTU de Hola de una base de datos equivale power de base de datos de toodoubling Hola. prueba comparativa de Hello nos permite tooassess impacto de hello en el rendimiento de la base de datos de menor a mayor potencia que ofrece cada nivel de rendimiento realizando operaciones de base de datos real, mientras se escala el tamaño de base de datos, el número de usuarios y velocidades de transacción en proporción de hello toohello base de datos de toohello de recursos proporcionados.
 
-Al expresar el rendimiento del nivel de servicio Básico mediante el uso de transacciones por hora, el nivel de servicio Estándar mediante el uso de transacciones por minuto y el nivel de servicio Premium mediante el uso de transacciones por segundo, se facilita la rápida correlación del potencial rendimiento de cada nivel de servicio con los requisitos de una aplicación.
+Al expresar el rendimiento de Hola Hola básica de nivel de servicio con transacciones por hora, nivel de servicio Standard Hola usando transacciones por minuto y el nivel de servicio Premium de hello mediante transacciones por segundo, hace que resulte más fácil tooquickly relacionar Hola potencial de rendimiento de cada requisitos de toohello de nivel de servicio de una aplicación.
 
-## <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Correlación de los resultados de la prueba comparativa con el rendimiento real de la base de datos
-Es importante comprender que el ASDB, al igual que todas las pruebas comparativas, solo es representativo e indicativo. Las velocidades de transacción logradas con la aplicación de la prueba comparativa no serán iguales que las que se podrían lograr con otras aplicaciones. La prueba comparativa comprende un conjunto de diferentes tipos de transacción ejecutados en un esquema que contiene una variedad de tipos de datos y tablas. Si bien la prueba comparativa ejerce las mismas operaciones básicas que son comunes para todas las cargas de trabajo OLTP, no representa ninguna clase específica de base de datos o aplicación. El objetivo de la prueba comparativa es proporcionar una orientación razonable del rendimiento relativo de una base de datos que se puede esperar al aumentar o reducir el nivel de rendimiento. En realidad, las bases de datos son de distintos tamaños y complejidad, tienen distintas combinaciones de cargas de trabajo y responden de maneras diferentes. Por ejemplo, una aplicación que haga un uso intensivo de ES podría alcanzar antes el umbral de ES, o una que haga un uso intensivo de la CPU podría alcanzar antes los límites de CPU. No se garantiza que una base de datos concreta se escale de la misma manera que la prueba comparativa bajo una carga creciente.
+## <a name="correlating-benchmark-results-tooreal-world-database-performance"></a>Correlación de rendimiento de base de datos de prueba comparativa resultados tooreal world
+Es importante toounderstand ese ASDB, al igual que todas las pruebas comparativas, solo es representativo e indicativo. Hola transacción tasas de conseguir con las aplicaciones de la prueba comparativa de hello no se Hola igual a los que se pueden lograr con otras aplicaciones. prueba comparativa de Hello consta de una colección de diferentes tipos de transacción ejecutados en un esquema que contiene una variedad de tablas y tipos de datos. Mientras los ejercicios de la prueba comparativa de Hola Hola mismas operaciones básicas que son comunes tooall cargas de trabajo OLTP, no representa ninguna clase específica de la base de datos o aplicación. objetivo de Hello de la prueba comparativa de hello es tooprovide un rendimiento relativo de toohello de orientación razonable de una base de datos que se puede esperar cuando se escala hacia arriba o hacia abajo entre los niveles de rendimiento. En realidad, las bases de datos son de distintos tamaños y complejidad, tienen distintas combinaciones de cargas de trabajo y responden de maneras diferentes. Por ejemplo, una aplicación que haga un uso intensivo de ES podría alcanzar antes el umbral de ES, o una que haga un uso intensivo de la CPU podría alcanzar antes los límites de CPU. No hay ninguna garantía de que cualquier base de datos concreta se escale de hello que igual manera como prueba comparativa de hello en aumento de carga.
 
-La prueba comparativa y su metodología se describen a continuación de forma más detallada.
+Hello prueba comparativa y su metodología se describen con más detalle a continuación.
 
 ## <a name="benchmark-summary"></a>Resumen de la prueba comparativa
-El ASDB mide el rendimiento de una combinación de operaciones de bases de datos básicas que se producen con mayor frecuencia en las cargas de trabajo de procesamiento de transacciones en línea (OLTP). Aunque la prueba comparativa está diseñada teniendo en cuenta la computación en la nube, el esquema de la base de datos, el rellenado de datos y las transacciones se diseñaron para representar ampliamente los elementos básicos usados con mayor frecuencia en las cargas de trabajo OLTP.
+El ASDB mide el rendimiento de Hola de una combinación de operaciones de base de datos básicas que ocurren con más frecuencia en cargas de trabajo (OLTP) de procesamiento de transacciones en línea. Aunque prueba comparativa de hello está diseñado con la informática en la cuenta en la nube, esquema de base de datos de hello, rellenado de datos y transacciones han sido diseñada toobe ampliamente representativo de los elementos básicos de hello suelen usados en las cargas de trabajo OLTP.
 
 ## <a name="schema"></a>Esquema
-El esquema se ha diseñado para que presente una variedad y complejidad suficientes como para permitir una amplia gama de operaciones. La prueba comparativa se ejecuta en una base de datos formada por seis tablas. Las tablas pertenecen a tres categorías: de tamaño fijo, de escalado y de crecimiento. Existen dos tablas de tamaño fijo, tres tablas de escalado y una tabla de crecimiento. Las tablas de tamaño fijo tienen un número de filas constante. Las tablas de escalado presentan una cardinalidad proporcional al rendimiento de la base de datos, pero no cambian durante la prueba comparativa. La tabla de crecimiento tiene un tamaño igual que la tabla de escalado en la carga inicial, pero después la cardinalidad cambia durante el transcurso de la prueba comparativa según se van insertando y eliminando filas.
+esquema de Hello es toohave diseñada suficiente toosupport una variedad y complejidad una amplia gama de operaciones. prueba comparativa de Hola se ejecuta en una base de datos compuesta por seis tablas. tablas de Hola se dividen en tres categorías: tamaño fijo, escala y de crecimiento. Existen dos tablas de tamaño fijo, tres tablas de escalado y una tabla de crecimiento. Las tablas de tamaño fijo tienen un número de filas constante. Tablas de escala presentan una cardinalidad proporcional toodatabase rendimiento, pero no cambia durante la prueba comparativa de Hola. Hola aumentando la tabla tiene un tamaño como tabla de escala en la carga inicial, pero, a continuación, cambia la cardinalidad de hello en curso de hello de la ejecución de prueba comparativa de hello tal y como se insertan o eliminan filas.
 
-El esquema incluye una combinación de tipos de datos que incluyen valores enteros, numéricos, caracteres y fecha/hora. El esquema incluye claves principales y secundarias, pero no claves externas; es decir, no hay restricciones de integridad referenciales entre las tablas.
+esquema Hello incluye una combinación de tipos de datos, que incluyen valores enteros, numéricos, de carácter y de fecha y hora. esquema de Hello incluye claves primarias y secundarias, pero no claves externas; es decir, hay ninguna restricción de integridad referencial entre tablas.
 
-Un programa de generación de datos genera los datos para la base de datos inicial. Los datos enteros y numéricos se generan con diversas estrategias. En algunos casos, los valores se distribuyen al azar a lo largo de un intervalo. En otros casos, se permuta al azar un conjunto de valores para asegurarse de que se mantiene una distribución específica. Los campos de texto se generan a partir de una lista ponderada de palabras para producir datos con aspecto real.
+Un programa de generación de datos genera los datos de Hola de base de datos inicial de Hola. Los datos enteros y numéricos se generan con diversas estrategias. En algunos casos, los valores se distribuyen al azar a lo largo de un intervalo. En otros casos, un conjunto de valores es tooensure permutado aleatoriamente que se mantiene una distribución específica. Campos de texto se generan a partir de una lista ponderada de datos con aspecto real palabras tooproduce.
 
-La base de datos se dimensiona basándose en un “factor de escala”. El factor de escala (abreviado SF) determina la cardinalidad de las tablas de escalado y de crecimiento. Como se describe a continuación en la sección Usuarios y velocidad, el tamaño de la base de datos, el número de usuarios y el rendimiento máximo se escalan de modo proporcional entre sí.
+base de datos de Hola se dimensiona basándose en un "factor de escala". factor de escala de Hello (abreviado SF) determina la cardinalidad de Hola de hello escala y de crecimiento de las tablas. Tal y como se describe a continuación en Hola sección usuarios y velocidad, el tamaño de la base de datos de hello, el número de usuarios y el rendimiento máximo se escalan en proporción tooeach otros.
 
 ## <a name="transactions"></a>Transacciones
-La carga de trabajo consta de nueve tipos de transacciones, como se muestra en la tabla siguiente. Cada transacción se diseño para destacar un conjunto determinado de características del sistema en el motor de la base de datos y en el hardware del sistema, con un elevado contraste con respecto a las otras transacciones. Este enfoque facilita la evaluación del impacto de diferentes componentes sobre el rendimiento global. Por ejemplo, la transacción “Lectura intensa” produce un número significativo de operaciones de lectura de disco.
+carga de trabajo de Hello consta de tipos de transacciones nueve, tal y como se muestra en la siguiente tabla se Hola. Cada transacción está diseñada toohighlight un conjunto determinado de características del sistema en el hardware de sistema y el motor de base de datos hello, con un alto contraste de Hola otras transacciones. Este enfoque resulta más fácil de impacto de hello tooassess de rendimiento de toooverall de diferentes componentes. Por ejemplo, la transacción de Hola "Lectura intensa" produce un número significativo de operaciones de lectura de disco.
 
 | Tipo de transacción | Descripción |
 | --- | --- |
@@ -64,7 +64,7 @@ La carga de trabajo consta de nueve tipos de transacciones, como se muestra en l
 | CPU intensa |SELECT; en memoria; carga en CPU relativamente intensa; solo lectura |
 
 ## <a name="workload-mix"></a>Combinación de cargas de trabajo
-Las transacciones se seleccionan aleatoriamente de una distribución ponderada con la siguiente combinación global. La combinación global presenta una relación de lectura/escritura aproximadamente de 2:1.
+Las transacciones se seleccionan aleatoriamente de una distribución ponderada con hello siguiente mezcla global. Hello mezcla global tiene una relación de lectura/escritura de aproximadamente 2:1.
 
 | Tipo de transacción | % de combinación |
 | --- | --- |
@@ -79,24 +79,24 @@ Las transacciones se seleccionan aleatoriamente de una distribución ponderada c
 | CPU intensa |10 |
 
 ## <a name="users-and-pacing"></a>Usuarios y velocidad
-La carga de trabajo de la prueba comparativa está dirigida a partir de una herramienta que envía transacciones a través de un conjunto de conexiones para simular el comportamiento de numerosos usuarios simultáneos. Aunque todas las conexiones y transacciones son generadas a máquina, para simplificar nos referiremos a estas conexiones como “usuarios”. Aunque cada usuario opera independientemente de todos los demás usuarios, todos los usuarios realizan el mismo ciclo de pasos mostrado a continuación:
+carga de trabajo de prueba comparativa de Hola se controla desde una herramienta que envía transacciones a través de un conjunto de conexiones toosimulate Hola comportamiento de un número de usuarios simultáneos. Aunque todas las transacciones y las conexiones de hello son generadas a máquina, para simplificar nos referiremos conexiones toothese como "usuarios". Aunque cada usuario opera independientemente de los demás usuarios, todos los usuarios realizan Hola mismo ciclo de pasos que se muestra a continuación:
 
 1. Establecer una conexión de base de datos.
-2. Repetir hasta que se señale la salida:
+2. Repetir hasta tooexit señalado:
    * Seleccionar una transacción aleatoriamente (a partir de una distribución ponderada).
-   * Realizar la transacción seleccionada y medir el tiempo de respuesta.
+   * Realizar transacciones de hello seleccionada y medir el tiempo de respuesta de Hola.
    * Esperar un retraso de velocidad.
-3. Cerrar la conexión de la base de datos.
+3. Cierre la conexión de base de datos de Hola.
 4. Salir.
 
-El retraso de velocidad (en el paso 2c) se selecciona aleatoriamente, pero con una distribución que tenga un promedio de 1,0 segundos. De este modo, cada usuario puede, en promedio, generar como máximo una transacción por segundo.
+Hola velocidad retraso (en el paso 2c) se selecciona aleatoriamente, pero con una distribución que tenga un promedio de 1,0 segundos. De este modo, cada usuario puede, en promedio, generar como máximo una transacción por segundo.
 
 ## <a name="scaling-rules"></a>Reglas de escalado
-El número de usuarios viene determinado por el tamaño de la base de datos (en unidades de factor de escala). Hay un usuario por cada cinco unidades de factor de escala. Debido al retraso de velocidad, un usuario puede, en promedio, generar como máximo una transacción por segundo.
+número de Hola de usuarios viene determinado por el tamaño de la base de datos de hello (en unidades de factor de escala). Hay un usuario por cada cinco unidades de factor de escala. Debido a Hola retraso del ritmo, un usuario puede generar como máximo una transacción por segundo, en promedio.
 
-Por ejemplo, una base de datos que tenga un factor de escala 500 (SF=500) tendrá 100 usuarios y podrá alcanzar una velocidad máxima de 100 TPS. Para generar una velocidad de TPS mayor, son necesarios más usuarios y una base de datos mayor.
+Por ejemplo, una base de datos que tenga un factor de escala 500 (SF=500) tendrá 100 usuarios y podrá alcanzar una velocidad máxima de 100 TPS. toodrive una mayor velocidad TPS requiere más usuarios y una base de datos mayor.
 
-La tabla siguiente muestra el número de usuarios sostenidos realmente para cada nivel de servicio y nivel de rendimiento.
+siguiente de la tabla de Hello muestra el número de Hola de usuarios sostenidos realmente para cada nivel de rendimiento y de nivel de servicio.
 
 | Nivel de servicio (nivel de rendimiento) | Usuarios | Tamaño de base de datos |
 | --- | --- | --- |
@@ -112,10 +112,10 @@ La tabla siguiente muestra el número de usuarios sostenidos realmente para cada
 Una ejecución válida de la prueba comparativa precisa una duración de medición en estado fijo de al menos una hora.
 
 ## <a name="metrics"></a>Métricas
-Las métricas clave de la prueba comparativa son rendimiento y tiempo de respuesta.
+las métricas clave de Hello en la prueba comparativa de hello son rendimiento y tiempo de respuesta.
 
-* El rendimiento es la medición de rendimiento esencial en la prueba comparativa. El rendimiento se indica en transacciones por unidad de tiempo, contando todos los tipos de transacciones.
-* El tiempo de respuesta es una medición de la previsibilidad del rendimiento. La restricción del tiempo de respuesta varía con la clase de servicio, presentando las clases de servicio mayores un requisito de tiempo de respuesta más estricto, como se muestra a continuación.
+* El rendimiento es Hola de medición de rendimiento esencial en la prueba comparativa de Hola. El rendimiento se indica en transacciones por unidad de tiempo, contando todos los tipos de transacciones.
+* El tiempo de respuesta es una medición de la previsibilidad del rendimiento. restricción del tiempo de respuesta de Hello varía según la clase de servicio, con las clases de servicio que tiene un requisito de tiempo de respuesta más riguroso, tal y como se muestra a continuación elevadas.
 
 | Clase de servicio | Medición del rendimiento | Requisito del tiempo de respuesta |
 | --- | --- | --- |
@@ -124,10 +124,10 @@ Las métricas clave de la prueba comparativa son rendimiento y tiempo de respues
 | Básica |Transacciones por hora |Percentil 80 en 2,0 segundos |
 
 ## <a name="conclusion"></a>Conclusión
-La prueba comparativa Base de datos SQL de Azure Benchmark mide el rendimiento relativo de la Base de datos SQL de Azure que se ejecuta a lo largo del intervalo de niveles de servicio y niveles de rendimiento disponibles. La prueba comparativa ejerce una combinación de operaciones de bases de datos básicas que se producen con mayor frecuencia en las cargas de trabajo de procesamiento de transacciones en línea (OLTP). Mediante la medición del rendimiento real, la prueba comparativa proporciona una evaluación más significativa del impacto que tiene sobre el rendimiento el cambio del nivel de rendimiento de lo que sería posible con solo enumerando los recursos proporcionados por cada nivel, como velocidad de CPU, tamaño de memoria e IOPS. En el futuro, continuaremos evolucionando la prueba comparativa para ampliar su ámbito y los datos proporcionados.
+Hola criterio de referencia de base de datos de SQL de Azure mide rendimiento relativo de Hola de dispuestos a lo largo del intervalo de Hola de niveles de servicio disponible y los niveles de rendimiento de base de datos SQL Azure. criterio de referencia de Hello ejerce una combinación de operaciones de base de datos básicas que ocurren con más frecuencia en cargas de trabajo (OLTP) de procesamiento de transacciones en línea. Mediante la medición de rendimiento real, prueba comparativa de hello proporciona una evaluación más significativa del impacto de hello en el rendimiento de cambiar el nivel de rendimiento de Hola que sería posible con solo enumerando los recursos de hello proporcionados por cada nivel, como la velocidad de CPU, tamaño de la memoria y e/s por segundo . Hola futuras, se continuará tooevolve Hola prueba comparativa toobroaden su ámbito y expanda datos Hola proporcionados.
 
 ## <a name="resources"></a>Recursos
-[Introducción a Base de datos SQL](sql-database-technical-overview.md)
+[Introducción tooSQL base de datos](sql-database-technical-overview.md)
 
 [Niveles de servicio y niveles de rendimiento](sql-database-service-tiers.md)
 

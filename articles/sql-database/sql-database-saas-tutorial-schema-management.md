@@ -1,7 +1,7 @@
 ---
-title: "Administración del esquema de Azure SQL Database en una aplicación multiinquilino | Microsoft Docs"
+title: "esquema de base de datos de SQL Azure aaaManage en una aplicación de varios inquilinos | Documentos de Microsoft"
 description: "Administración del esquema para varios inquilinos en una aplicación multiinquilino que usa Azure SQL Database"
-keywords: tutorial de base de datos sql
+keywords: tutorial de SQL Database
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,17 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 78d76efb88bf11fa18a416b59e6f881539141232
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ea946e556808dabd60dd39cb8173d0512d4bddec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-schema-for-multiple-tenants-in-the-wingtip-saas-application"></a>Administración del esquema para varios inquilinos en la aplicación SaaS de Wingtip
+# <a name="manage-schema-for-multiple-tenants-in-hello-wingtip-saas-application"></a>Administrar esquemas para varios inquilinos en hello aplicación Wingtip SaaS
 
-El [primer tutorial sobre SaaS de Wingtip](sql-database-saas-tutorial.md) muestra cómo la aplicación puede aprovisionar una base de datos de inquilino y registrarla en el catálogo. Como cualquier otra aplicación, la aplicación SaaS de Wingtip evolucionará con el tiempo y, en ocasiones, requerirá que se hagan cambios en la base de datos. Estos cambios pueden incluir un esquema nuevo o modificado, datos de referencia nuevos o modificados y tareas de mantenimiento de la base de datos rutinarias para garantizar un rendimiento óptimo de la aplicación. Con una aplicación SaaS, estos cambios deben implementarse de manera coordinada a lo largo de una línea potencialmente masiva de bases de datos de inquilino. Para que estos cambios estén presentes en futuras bases de datos de inquilino, deben incorporarse en el proceso de aprovisionamiento.
+Hola [primer tutorial de SaaS Wingtip](sql-database-saas-tutorial.md) muestra cómo puede proporcionar una base de datos de inquilino y registrarlo en el catálogo de hello aplicación hello. Como cualquier aplicación Hola aplicación SaaS Wingtip evolucionará con el tiempo y a veces será necesario base de datos de cambios toohello. Pueden incluir cambios de esquema nueva o modificada, datos de referencia nuevos o modificados y el rendimiento de la aplicación óptimo de tooensure de las tareas rutinarias de la base de datos mantenimiento. Con una aplicación SaaS, estos cambios deben toobe implementa de manera coordinada a través de una línea potencialmente masiva de las bases de datos de inquilino. Para estos toobe cambios en el futuro de inquilinos bases de datos, será necesario toobe incorporar Hola proceso de aprovisionamiento.
 
-Este tutorial explora dos escenarios: la implementación de actualizaciones de datos de referencia para todos los inquilinos y el reajuste de un índice en la tabla que contiene los datos de referencia. La característica [Trabajos elásticos](sql-database-elastic-jobs-overview.md) se usa para ejecutar estas operaciones en todos los inquilinos y la base de datos de inquilino *maestra* se utiliza como plantilla para nuevas bases de datos.
+Este tutorial explora dos escenarios - implementación de las actualizaciones de datos de referencia para todos los inquilinos y reoptimización un índice en hello de la tabla que contiene datos de referencia de Hola. Hola [trabajos elásticos](sql-database-elastic-jobs-overview.md) característica es tooexecute usa estas operaciones en todos los inquilinos y hello *dorada* base de datos de inquilinos que se utiliza como plantilla para nuevas bases de datos.
 
 En este tutorial, aprenderá a:
 
@@ -38,81 +38,81 @@ En este tutorial, aprenderá a:
 > * Crear un índice en una tabla en todas las bases de datos de inquilino
 
 
-Para completar este tutorial, asegúrese de cumplir estos requisitos previos:
+toocomplete este tutorial, asegúrese de hello seguro siguiendo los requisitos previos se cumplen:
 
-* Se implementa la aplicación SaaS de Wingtip. Para implementarla en menos de cinco minutos, consulte el artículo sobre la [implementación y exploración de la aplicación SaaS de Wingtip](sql-database-saas-tutorial.md).
+* se implementa la aplicación de SaaS Wingtip Hello. vea toodeploy en menos de cinco minutos, [implementar y explorar la aplicación de SaaS Wingtip hello](sql-database-saas-tutorial.md)
 * Azure PowerShell está instalado. Para más información, consulte [Introducción a Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* La versión más reciente de SQL Server Management Studio (SSMS) está instalada. [Descarga e instalación de SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+* se instala la versión más reciente de Hola de SQL Server Management Studio (SSMS). [Descarga e instalación de SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
-*En este tutorial se usan características del servicio SQL Database que se encuentran en una versión preliminar limitada (trabajos de Elastic Database). Si desea seguir este tutorial, envíe su identificador de suscripción a SaaSFeedback@microsoft.com con el asunto Elastic Jobs Preview. Después de recibir la confirmación de que se ha habilitado su suscripción, [descargue e instale los cmdlets de trabajos de versión preliminar más recientes](https://github.com/jaredmoo/azure-powershell/releases). Esta versión preliminar es limitada, de modo que póngase en contacto SaaSFeedback@microsoft.com si necesita asistencia.*
+*Este tutorial usa características de hello servicio de base de datos SQL que se encuentran en una vista previa limitada (trabajos de base de datos elástica). Si desea toodo en este tutorial, proporcione el identificador de suscripción tooSaaSFeedback@microsoft.com con el asunto = elástico de vista previa de los trabajos. Después de recibir la confirmación de que se ha habilitado la suscripción, [descargar e instalar los cmdlets de trabajos de la versión preliminar más reciente de hello](https://github.com/jaredmoo/azure-powershell/releases). Esta versión preliminar es limitada, de modo que póngase en contacto SaaSFeedback@microsoft.com si necesita asistencia.*
 
 
-## <a name="introduction-to-saas-schema-management-patterns"></a>Introducción a los patrones de administración de esquema de SaaS
+## <a name="introduction-toosaas-schema-management-patterns"></a>Introducción tooSaaS patrones de la administración de esquema
 
-El patrón de inquilino único por base de datos de SaaS se aprovecha de varias maneras del aislamiento de los datos resultante, pero al mismo tiempo introduce la complejidad adicional de mantener y administrar muchas bases de datos. La característica [Trabajos elásticos](sql-database-elastic-jobs-overview.md) facilita la administración de la capa de datos SQL. Los trabajos permiten ejecutar tareas (scripts T-SQL) en un grupo de bases de datos de manera segura y confiable independientemente de las interacciones o entradas del usuario. Este método puede utilizarse para implementar cambios en el esquema y los datos de referencia comunes en todos los inquilinos de una aplicación. Trabajos elásticos también se puede utilizar para mantener una copia *golden* de la base de datos utilizada para crear nuevos inquilinos, garantizando así que siempre tenga el esquema y los datos de referencia más recientes.
+Hello inquilino único por base de datos de SaaS patrón ventajas de muchas maneras de aislamiento de los datos Hola que da como resultado, pero en hello mismo tiempo que aumenta la complejidad adicional de Hola de mantener y administrar muchas bases de datos. [Trabajos elásticos](sql-database-elastic-jobs-overview.md) facilita la administración y la administración de nivel de datos SQL de Hola. Trabajos permiten toosecurely y ejecutan de forma confiable, tareas (secuencias de comandos de T-SQL) independientes de la interacción del usuario o una entrada, en un grupo de bases de datos. Este método puede ser utilizado toodeploy esquema y los cambios de datos de referencia entre todos los inquilinos en una aplicación. Trabajos elásticos también pueden ser utilizado toomaintain una *dorada* utiliza la copia de base de datos de hello toocreate nuevos inquilinos, así se garantiza siempre tenga hello más recientes esquema y datos de referencia.
 
 ![pantalla](media/sql-database-saas-tutorial-schema-management/schema-management.png)
 
 
 ## <a name="elastic-jobs-limited-preview"></a>Versión preliminar limitada de Trabajos elásticos
 
-Hay una nueva versión de Trabajos elásticos que ahora es una característica integrada de Azure SQL Database (no requiere servicios ni componentes adicionales). Esta nueva versión de Trabajos elásticos ofrece actualmente una versión preliminar limitada. Esta versión preliminar limitada admite PowerShell para crear cuentas de trabajo y T-SQL para crear y administrar trabajos.
+Hay una nueva versión de Trabajos elásticos que ahora es una característica integrada de Azure SQL Database (no requiere servicios ni componentes adicionales). Esta nueva versión de Trabajos elásticos ofrece actualmente una versión preliminar limitada. Esta vista previa limitada actualmente admite cuentas de trabajo de PowerShell toocreate y toocreate de T-SQL y administrar trabajos.
 
 > [!NOTE]
-> *En este tutorial se usan características del servicio SQL Database que se encuentran en una versión preliminar limitada (trabajos de Elastic Database). Si desea seguir este tutorial, envíe su identificador de suscripción a SaaSFeedback@microsoft.com con el asunto Elastic Jobs Preview. Después de recibir la confirmación de que se ha habilitado su suscripción, [descargue e instale los cmdlets de trabajos de versión preliminar más recientes](https://github.com/jaredmoo/azure-powershell/releases). Esta versión preliminar es limitada, de modo que póngase en contacto SaaSFeedback@microsoft.com si necesita asistencia.*
+> *Este tutorial usa características de hello servicio de base de datos SQL que se encuentran en una vista previa limitada (trabajos de base de datos elástica). Si desea toodo en este tutorial, proporcione el identificador de suscripción tooSaaSFeedback@microsoft.com con el asunto = elástico de vista previa de los trabajos. Después de recibir la confirmación de que se ha habilitado la suscripción, [descargar e instalar los cmdlets de trabajos de la versión preliminar más reciente de hello](https://github.com/jaredmoo/azure-powershell/releases). Esta versión preliminar es limitada, de modo que póngase en contacto SaaSFeedback@microsoft.com si necesita asistencia.*
 
-## <a name="get-the-wingtip-application-scripts"></a>Obtener scripts de la aplicación Wingtip
+## <a name="get-hello-wingtip-application-scripts"></a>Obtener scripts de la aplicación hello Wingtip
 
-Los scripts SaaS de Wingtip y el código fuente de la aplicación están disponibles en el repositorio de GitHub [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS). [Pasos para descargar los scripts SaaS de Wingtip](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
+Hello Wingtip SaaS scripts y código fuente de aplicación están disponibles en hello [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) repositorio de github. [Pasos de secuencias de comandos de toodownload Hola Wingtip SaaS](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>Creación de una base de datos de cuentas de trabajo y una nueva cuenta de trabajo
 
-Para este tutorial, es necesario usar PowerShell para crear la base de datos de cuentas de trabajo y una nueva cuenta de trabajo. Al igual que MSDB y el Agente SQL, Trabajos Elásticos utiliza una instancia de Azure SQL Database para almacenar definiciones de trabajos, estados de trabajo y el historial. Una vez creada la cuenta de trabajo, puede crear y supervisar trabajos inmediatamente.
+Este tutorial necesita que usar PowerShell toocreate Hola trabajo base de datos y el trabajo de cuenta. Como MSDB y el Agente SQL, trabajos elástico usa SQL Azure base de datos toostore definiciones de trabajos, el estado de trabajo y el historial. Una vez creada la cuenta de trabajo de hello, puede crear y supervisar trabajos inmediatamente.
 
-1. Abra …\\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1* en **PowerShell ISE**.
-1. Presione **F5** para ejecutar el script.
+1. Abra... \\Módulos de aprendizaje\\Schema Management\\*demostración SchemaManagement.ps1* en hello **PowerShell ISE**.
+1. Presione **F5** secuencia de comandos de toorun Hola.
 
-El script *Demo-SchemaManagement.ps1* llama al script *Deploy-SchemaManagement.ps1* para crear una base de datos *S2* llamada **jobaccount** en el servidor de catálogo. A continuación, crea la cuenta de trabajo, transfiriendo la base de datos jobaccount como un parámetro a la llamada de creación de la cuenta de trabajo.
+Hola *demostración SchemaManagement.ps1* Hola de llamadas de script *implementar SchemaManagement.ps1* script toocreate una *S2* base de datos denominada **jobaccount** en el servidor de catálogo Hola. A continuación, crea la cuenta de trabajo de hello, pasar la base de datos de hello jobaccount como una llamada de creación de cuenta de trabajo de parámetro toohello.
 
-## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Creación de un trabajo para implementar nuevos datos de referencia en todos los inquilinos
+## <a name="create-a-job-toodeploy-new-reference-data-tooall-tenants"></a>Crear un trabajo de los inquilinos tooall de datos nueva referencia toodeploy
 
-Cada base de datos de inquilinos incluye un conjunto de tipos de ubicación que definen la clase de eventos que se celebran en una ubicación. En este ejercicio, se implementa una actualización en todas las bases de datos de inquilinos para agregar dos tipos de ubicación adicionales: *Motorcycle Racing* (motociclismo) y *Swimming Club* (club de natación). Estos tipos de ubicación se corresponden con la imagen de fondo que se ve en la aplicación de eventos de inquilino.
+Cada base de datos de inquilinos incluye un conjunto de tipos de ubicación que definen el tipo de saludo de eventos que se hospedan en un lugar. En este ejercicio, implementar un tipo de ubicación adicional actualización tooall Hola inquilino bases de datos tooadd dos: *motocicleta competir* y *natación Club*. Estos tipos de jurisdicción corresponden toohello imagen de fondo que se ven en la aplicación de eventos de hello inquilino.
 
-Haga clic en el menú desplegable Tipo de lugar de celebración y asegúrese de que solo haya 10 opciones de tipo de ubicación disponibles y, en concreto, que "Motorcycle Racing" y "Swimming Club" no se encuentren en la lista.
+Haga clic en el menú desplegable menú de tipo de ubicación de Hola y validar que están disponibles solo 10 opciones de tipo de ubicación y específicamente esa 'Motocicleta competir' y 'Natación Club' no están incluidos en la lista de Hola.
 
-Ahora vamos a crear un trabajo para actualizar la tabla *VenueTypes* en todas las bases de datos de inquilino y agregar los nuevos tipos de ubicación.
+Ahora vamos a crear un Hola de trabajo tooupdate *VenueTypes* de tabla en todas las bases de datos de inquilino de Hola y agregar nuevos tipos de jurisdicción Hola.
 
-Para crear un nuevo trabajo, utilizamos un conjunto de procedimientos almacenados en el sistema de trabajos creados en la base de datos jobaccount cuando se creó la cuenta de trabajo.
+toocreate un nuevo trabajo, se utiliza un conjunto de trabajos creados en la base de datos de hello jobaccount cuando se creó la cuenta de trabajo de Hola de procedimientos almacenados del sistema.
 
-1. Abra SSMS y conéctese al servidor de catálogo: catalog-\<usuario\>.database.windows.net server.
-1. Conéctese también al servidor de inquilino: tenants1-\<usuario\>.database.windows.net.
-1. Vaya a la base de datos *contosoconcerthall* del servidor *tenants1* y consulte la tabla *VenueTypes* para confirmar que *Motorcycle Racing* y *Swimming Club* **no figuran** en la lista de resultados.
-1. Abra el archivo …\\Learning Modules\\Schema Management\\DeployReferenceData.sql.
-1. Modifique la instrucción: SET @wtpUser = &lt;usuario&gt; y sustituya el valor Usuario utilizado al implementar la aplicación Wingtip
-1. Asegúrese de que está conectado a la base de datos jobaccount y presione **F5** para ejecutar el script.
+1. Abra SSMS y conectar el servidor de catálogo toohello: catálogo -\<usuario\>. database.windows.net server
+1. Conecte también servidor de inquilinos de toohello: tenants1 -\<usuario\>. database.windows.net
+1. Examinar toohello *contosoconcerthall* base de datos en hello *tenants1* Hola de servidor y consulta *VenueTypes* tooconfirm de tabla que *motocicleta competir*  y *natación Club* **no son** en la lista de resultados de Hola.
+1. Archivo de hello abrir... \\Módulos de aprendizaje\\administración del esquema\\DeployReferenceData.sql
+1. Modificar la instrucción de hello: establecer @wtpUser = &lt;usuario&gt; y sustituya el valor de usuario de hello usa al implementar la aplicación de Wingtip hello
+1. Asegúrese de base de datos de jobaccount toohello conectado y presione **F5** para ejecutar el script de Hola
 
-* **sp\_add\_target\_group** crea el nombre del grupo de destino DemoServerGroup. Ahora hay que agregar miembros de destino.
-* **sp\_add\_target\_group\_member** agrega un tipo de miembro de destino *servidor* que considera que todas las bases de datos de ese servidor (tenga en cuenta que se trata del servidor tenants1-&lt;Usuario&gt; que contiene las bases de datos de inquilino) en el momento de la ejecución del trabajo deben incluirse en el trabajo. A continuación, se agrega un tipo de miembro de destino *base de datos*, en concreto la base de datos "maestra" (basetenantdb) que reside en el servidor catalog-&lt;Usuario&gt;. Por último, se agrega otro tipo de miembro de destino *base de datos* para incluir la base de datos adhocanalytics que se utiliza en un tutorial posterior.
+* **SP\_agregar\_destino\_grupo** crea el nombre de grupo de destino de hello DemoServerGroup, ahora tenemos tooadd miembros de destino.
+* **SP\_agregar\_destino\_grupo\_miembro** agrega un *server* tipo de miembro que considere todas las bases de datos dentro de ese servidor (tenga en cuenta esto es hello tenants1-dedestino&lt; Usuario&gt; servidor que contiene las bases de datos del inquilino de Hola) en tiempo de trabajo de ejecución debe incluirse en el trabajo de hello, hello en segundo lugar está agregando un *base de datos* tienen como destino el tipo de miembro, específicamente Hola (base de datos 'maestra' basetenantdb) que reside en el catálogo -&lt;usuario&gt; server y por último otro *base de datos* destino grupo miembro tipo tooinclude hello adhocanalytics base de datos que se usa en un tutorial posterior.
 * **sp\_add\_job** crea un trabajo llamado “Reference Data Deployment”.
-* **sp\_add\_jobstep** crea el paso de trabajo que contiene el texto del comando T-SQL para actualizar la tabla de referencia VenueTypes.
-* En las demás vistas del script se muestran los objetos existentes y se supervisa la ejecución de los trabajos. Use estas consultas para revisar el valor de estado en la columna **ciclo de vida** a fin de determinar si el trabajo ha finalizado correctamente en todas las bases de datos de inquilino y las dos bases de datos adicionales que contienen la tabla de referencia.
+* **SP\_agregar\_jobstep** crea Hola paso de trabajo que contiene la tabla de referencia en la Hola por tooupdate de texto de comando de T-SQL, VenueTypes
+* Hola restantes en el script de Hola muestran existencia Hola de objetos de Hola y supervisar la ejecución de trabajo. Use este valor de estado de las consultas tooreview Hola Hola **ciclo de vida de** toodetermine de columna al trabajo de hello ha finalizado correctamente en todas las bases de datos de inquilino y Hola dos bases de datos adicionales que contiene la tabla de referencia de Hola.
 
-1. En SSMS, vaya a la base de datos *contosoconcerthall* del servidor *tenants1* y consulte la tabla *VenueTypes* para confirmar que *Motorcycle Racing* y *Swimming Club* **figuran** ahora en la lista de resultados.
+1. En SSMS, busque toohello *contosoconcerthall* base de datos en hello *tenants1* Hola de servidor y consulta *VenueTypes* tooconfirm de tabla que *motocicleta Competir* y *natación Club* **son** ahora en la lista de resultados de Hola.
 
 
-## <a name="create-a-job-to-manage-the-reference-table-index"></a>Creación de un trabajo para administrar el índice de tabla de referencia
+## <a name="create-a-job-toomanage-hello-reference-table-index"></a>Crear un índice de tabla de referencia de trabajo toomanage Hola
 
-Al igual que en el ejercicio anterior, en este ejercicio se crea un trabajo para volver a crear el índice en la clave principal de la tabla de referencia, una operación de administración de bases de datos habitual que puede realizar un administrador después de cargar una gran cantidad de datos en una tabla.
+Similar toohello ejercicio anterior, este ejercicio crea un índice de hello toorebuild de trabajo en la clave principal de la tabla de referencia de hello, puede realizar una operación de administración de bases de datos habituales un administrador después de una carga de datos de gran tamaño en una tabla.
 
-Cree un trabajo con los mismos procedimientos almacenados del "sistema" de trabajos.
+Crear un trabajo mediante Hola trabajos mismo 'sistema' procedimientos almacenados.
 
-1. Abra SSMS y conéctese al servidor catalog-&lt;Usuario&gt;.database.windows.net.
-1. Abra el archivo …\\Learning Modules\\Schema Management\\OnlineReindex.sql.
-1. Haga clic con el botón derecho, seleccione Conexión y conéctese al servidor catalog-&lt;Usuario&gt;.database.windows.net si aún no lo está.
-1. Asegúrese de que está conectado a la base de datos jobaccount y presione F5 para ejecutar el script.
+1. Abra SSMS y conéctese toohello catálogo -&lt;usuario&gt;. database.windows.net server
+1. Archivo de hello abrir... \\Módulos de aprendizaje\\administración del esquema\\OnlineReindex.sql
+1. Haga clic en, seleccione la conexión y conectarse toohello catálogo -&lt;usuario&gt;. database.windows.net server, si aún no está conectado
+1. Asegúrese de que es la base de datos de jobaccount toohello conectado y presione script de Hola toorun F5
 
 * sp\_add\_job crea un nuevo trabajo denominado “Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885”.
-* sp\_add\_jobstep crea el paso de trabajo que contiene el texto del comando T-SQL para actualizar el índice.
+* SP\_agregar\_jobstep crea paso de trabajo de Hola que contiene código T-SQL comando texto tooupdate Hola índice
 
 
 
@@ -123,7 +123,7 @@ En este tutorial, ha aprendido cómo:
 
 > [!div class="checklist"]
 
-> * Crear una cuenta de trabajo para consultar en varios inquilinos
+> * Crear un tooquery de la cuenta de trabajo en varios inquilinos
 > * Actualizar datos en todas las bases de datos de inquilino
 > * Crear un índice en una tabla en todas las bases de datos de inquilino
 
@@ -132,6 +132,6 @@ En este tutorial, ha aprendido cómo:
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Otros tutoriales basados en la implementación de la aplicación SaaS de Wingtip](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* [Tutoriales adicionales que se basan en la implementación de aplicaciones de SaaS Wingtip Hola](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Administración de bases de datos escaladas horizontalmente en la nube](sql-database-elastic-jobs-overview.md)
 * [Creación y administración de bases de datos escaladas horizontalmente](sql-database-elastic-jobs-create-and-manage.md)

@@ -1,5 +1,5 @@
 ---
-title: Transacciones en SQL Data Warehouse | Microsoft Docs
+title: "aaaTransactions en el almacén de datos de SQL | Documentos de Microsoft"
 description: Sugerencias para implementar transacciones en el Almacenamiento de datos SQL Azure para el desarrollo de soluciones.
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,25 +15,25 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c541648553238443b407666612561918096eb61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>Transacciones en el Almacenamiento de datos SQL
-Como cabría esperar, el Almacenamiento de datos SQL admite transacciones como parte de la carga de trabajo de dicho servicio. Sin embargo, para garantizar que se mantiene a escala el rendimiento del Almacenamiento de datos SQL, algunas características están limitadas en comparación con SQL Server. En este artículo se destacan las diferencias entre las características y se enumeran las demás. 
+Como cabría esperar, almacenamiento de datos SQL admite transacciones como parte de la carga de trabajo de almacenamiento de datos de Hola. Sin embargo, rendimiento de hello tooensure de almacenamiento de datos de SQL se mantiene a escala que algunas características están limitadas cuando comparado tooSQL Server. Este artículo resalta las diferencias de Hola y Hola listas de otros usuarios. 
 
 ## <a name="transaction-isolation-levels"></a>Niveles de aislamiento de transacciones
-El Almacenamiento de datos SQL implementa las transacciones ACID. Sin embargo, el aislamiento de la compatibilidad transaccional está limitado a `READ UNCOMMITTED` y no puede cambiarse. Puede implementar una serie de métodos para evitar lecturas de datos sucios si esto le plantea alguna preocupación. Los métodos más populares utilizan CTAS y la modificación de particiones de tabla (que suele conocerse como un patrón de ventana deslizante) para evitar que los usuarios consulten datos que aún se encuentran en fase de preparación. Las vistas que filtran los datos previamente también constituyen un enfoque popular.  
+El Almacenamiento de datos SQL implementa las transacciones ACID. Sin embargo, aislamiento de compatibilidad transaccional Hola Hola se limita demasiado`READ UNCOMMITTED` y no puede cambiarse. Puede implementar una serie de métodos de codificación tooprevent desfasada lee de datos si se trata de un problema para usted. Hello más populares métodos aprovechan CTAS y modificación de particiones de tabla (a menudo conocido como Hola patrón de ventana deslizante) tooprevent a los usuarios de consultar los datos aún se está preparando. Vistas que filtran previamente los datos de hello también es un enfoque popular.  
 
 ## <a name="transaction-size"></a>Tamaño de la transacción
-Una transacción de modificación de datos única tiene un tamaño limitado. Actualmente, el límite se aplica "por distribución". Por lo tanto, la asignación total puede calcularse multiplicando el límite por el recuento de distribución. Para aproximar el número máximo de filas de la transacción, divida el extremo de la distribución entre el tamaño total de cada fila. Para las columnas de longitud variable, en lugar de utilizar el tamaño máximo, tenga en cuenta la longitud media de la columna.
+Una transacción de modificación de datos única tiene un tamaño limitado. Hola hoy en día se aplique el límite "por distribución". Por lo tanto, se puede calcular la asignación total Hola multiplicando el límite de Hola por recuento de distribución de Hola. número máximo de hello tooapproximate de filas de la transacción de hello divide cap de distribución de Hola por tamaño total de Hola de cada fila. Columnas de longitud variable considere la posibilidad de tomar una longitud de la columna promedio, en lugar de usar tamaño máximo de Hola.
 
-En la tabla siguiente se han considerado estas hipótesis:
+En la tabla Hola Hola se realizaron suposiciones siguientes:
 
 * Se ha producido una distribución uniforme de los datos 
-* La longitud media de la fila es de 250 bytes
+* longitud media de fila de Hello es 250 bytes
 
 | [DWU][DWU] | Extremo por distribución (GiB) | Número de distribuciones | Tamaño máximo de la transacción (GiB) | # Filas por distribución | Máximo de filas por transacción |
 | --- | --- | --- | --- | --- | --- |
@@ -50,21 +50,21 @@ En la tabla siguiente se han considerado estas hipótesis:
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-Se aplica el límite de tamaño de la transacción por transacción u operación. No se aplica en todas las transacciones simultáneas. Por tanto, cada transacción puede escribir esta cantidad de datos en el registro. 
+límite de tamaño de transacción de Hola se aplica por transacción u operación. No se aplica en todas las transacciones simultáneas. Por lo tanto, cada transacción está permitido toowrite esta cantidad de datos toohello registro. 
 
-Para optimizar y minimizar la cantidad de datos que se escriben en el registro, consulte el artículo sobre [procedimientos recomendados relacionados con las transacciones][Transactions best practices].
+toooptimize y minimizar la cantidad de Hola de los datos escritos toohello registro consulte toohello [prácticas recomendadas de las transacciones] [ Transactions best practices] artículo.
 
 > [!WARNING]
-> El tamaño máximo de la transacción solo se puede conseguir para las tablas de distribución HASH o ROUND_ROBIN donde la propagación de los datos es uniforme. Si la transacción está escribiendo datos de forma sesgada en las distribuciones, es posible que el límite se alcance antes de que la transacción llegue al máximo de su tamaño.
+> Hola máximo tamaño de las transacciones solo se pueden conseguir para HASH o tablas ROUND_ROBIN distribuidas donde propagarse Hola Hola datos es par. Si transacción Hola está escribiendo datos en un modo sesgado distribuciones toohello, a continuación, hello límite es probable toobe alcanzado el tamaño máximo de la transacción de toohello anteriores.
 > <!--REPLICATED_TABLE-->
 > 
 > 
 
 ## <a name="transaction-state"></a>Estado de las transacciones
-El Almacenamiento de datos SQL usa la función XACT_STATE() para notificar una transacción errónea con el valor -2. Esto significa que se ha producido un error en la transacción y que está marcada para reversión únicamente.
+Almacenamiento de datos de SQL utiliza hello xact_state función tooreport una transacción errónea con hello valor -2. Esto significa que transacción Hola ha fallado y se marca para la reversión solo
 
 > [!NOTE]
-> El uso de -2 por la función XACT_STATE para denotar una transacción errónea representa un comportamiento diferente para SQL Server. SQL Server utiliza el valor -1 para representar una transacción no confirmable. SQL Server puede tolerar errores dentro de una transacción sin necesidad de que se marque como no confirmable. Por ejemplo, `SELECT 1/0` producirá un error pero no fuerza una transacción en un estado no confirmable. SQL Server también permite lecturas en la transacción no confirmable. Sin embargo, Almacenamiento de datos SQL no permite hacerlo. Si se produce un error dentro de una transacción de Almacenamiento de datos SQL, especificará automáticamente el estado 2 y no podrá realizar más instrucciones select hasta que la instrucción se haya revertido. Por lo tanto, es importante comprobar el código de aplicación para ver si utiliza XACT_STATE() cuando necesite realizar modificaciones de código.
+> Hola el uso de -2 por hello XACT_STATE función toodenote un comportamiento diferente de representa transacción errónea tooSQL Server. SQL Server utiliza el valor -1 de hello toorepresent una transacción no confirmable. SQL Server puede tolerar algunos errores dentro de una transacción sin necesidad de toobe marcado como no confirmable. Por ejemplo, `SELECT 1/0` producirá un error pero no fuerza una transacción en un estado no confirmable. SQL Server también permite a las lecturas de transacción no confirmable Hola. Sin embargo, Almacenamiento de datos SQL no permite hacerlo. Si se produce un error dentro de una transacción de almacenamiento de datos SQL se pasará automáticamente al estado de hello -2 y no será capaz de toomake cualquiera más instrucciones select hasta que se ha revertido instrucción Hola. Por lo tanto es toocheck importante que su toosee de código de aplicación si usa xact_state que puede requerir modificaciones en el código toomake.
 > 
 > 
 
@@ -106,13 +106,13 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Si deja el código como aparecía anteriormente, obtendrá el siguiente mensaje de error:
+Si deja el código tal cual está por encima obtendrá Hola mensaje de error siguiente:
 
-Msg 111233, Level 16, State 1, Line 1 111233; La transacción actual se ha anulado y se han revertido los cambios pendientes. Causa: una transacción en estado de solo reversión no se ha revertido explícitamente antes de la instrucción DDL, DML o SELECT.
+Msg 111233, nivel 16, estado 1, línea 1 111233; Hola actual anuló la transacción y los cambios pendientes se han revertido. Causa: una transacción en estado de solo reversión no se ha revertido explícitamente antes de la instrucción DDL, DML o SELECT.
 
-Tampoco obtendrá el resultado de las funciones ERROR_*.
+También puede obtener no salida Hola de hello error. * funciones.
 
-En el Almacenamiento de datos SQL debe modificarse ligeramente el código:
+En el almacén de datos de SQL código de hello necesita toobe ligeramente modificado:
 
 ```sql
 SET NOCOUNT ON;
@@ -149,22 +149,22 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Ahora se observa el comportamiento esperado. Se administra el error en la transacción y las funciones ERROR_* proporcionan los valores esperados.
+Hola espera ahora se observa el comportamiento. se administra el error de Hello en transacciones de Hola y Hola error. * funciones que proporcionan valores según lo previsto.
 
-Todo lo que ha cambiado es que se tuvo que aplicar `ROLLBACK` de la transacción para leer la información de error en el bloque `CATCH`.
+Todo lo que ha cambiado es ese hello `ROLLBACK` de hello transacción tenía toohappen antes de que Hola de lectura de la información de error de Hola Hola `CATCH` bloque.
 
 ## <a name="errorline-function"></a>Función Error_Line()
-También cabe destacar que el Almacenamiento de datos SQL no implementa o admite la función ERROR_LINE(). Si tiene esto en el código, tendrá que eliminarlo para que sea compatible con el Almacenamiento de datos SQL. En su lugar, utilice etiquetas de consulta en el código para implementar una funcionalidad equivalente. Consulte el artículo sobre [USO DE ETIQUETAS][LABEL] para más información sobre esta característica.
+También merece la pena destacar que almacenamiento de datos SQL no implementar admitir o función de hello error_line (). Si tiene esto en el código debe tooremove toobe compatible con el almacenamiento de datos de SQL. Usar etiquetas de consulta en el código en su lugar tooimplement una funcionalidad equivalente. Consulte toohello [etiqueta] [ LABEL] artículo para obtener más información acerca de esta característica.
 
 ## <a name="using-throw-and-raiserror"></a>Uso de THROW y RAISERROR
-THROW es la implementación más moderna para producir excepciones en el Almacenamiento de datos SQL, pero también se admite RAISERROR. Sin embargo, hay algunas diferencias a las que se debe prestar atención.
+THROW es Hola implementación más moderno para generar excepciones en el almacén de datos de SQL pero RAISERROR también se admite. Hay algunas diferencias que son vale la pena prestar atención toohowever.
 
-* Los números de mensajes de error definidos no pueden encontrarse en el intervalo 100.000 a 150.000 para THROW.
+* Números no pueden estar en hello 100.000 150.000 intervalo para THROW de mensajes de error definidos por el usuario
 * Los mensajes de error RAISERROR se fijan en 50.000.
 * No se admite el uso de sys.messages.
 
 ## <a name="limitiations"></a>Limitaciones
-El Almacenamiento de datos SQL tiene algunas otras restricciones relacionadas con las transacciones.
+Almacenamiento de datos de SQL tiene algunas otras restricciones que se relacionan tootransactions.
 
 Los pasos son los siguientes:
 
@@ -176,7 +176,7 @@ Los pasos son los siguientes:
 * No existe compatibilidad con DDL como el elemento `CREATE TABLE` de una transacción definida por el usuario
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información acerca de la optimización de transacciones, consulte [Procedimientos recomendados relacionados con las transacciones][Transactions best practices].  Para más información sobre otros procedimientos recomendados de SQL Data Warehouse, consulte [Procedimientos recomendados para SQL Data Warehouse][SQL Data Warehouse best practices].
+toolearn más acerca de cómo optimizar las transacciones, vea [prácticas recomendadas de las transacciones][Transactions best practices].  toolearn sobre otras prácticas recomendadas de almacenamiento de datos SQL, consulte [prácticas recomendadas de almacenamiento de datos SQL][SQL Data Warehouse best practices].
 
 <!--Image references-->
 

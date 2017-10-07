@@ -1,6 +1,6 @@
 ---
-title: "SDK de .NET de administración para Azure Stream Analytics | Microsoft Docs"
-description: "Introducción al uso del SDK de .NET de administración de Análisis de transmisiones Aprenda a configurar y ejecutar trabajos de análisis. Cree un proyecto, entradas, salidas y transformaciones."
+title: "aaaManagement .NET SDK para el análisis de transmisiones de Azure | Documentos de Microsoft"
+description: "Introducción al uso del SDK de .NET de administración de Análisis de transmisiones Obtenga información acerca de cómo tooset una copia de seguridad y ejecutar trabajos de análisis. Cree un proyecto, entradas, salidas y transformaciones."
 keywords: "SDK de .NET, API de análisis"
 services: stream-analytics
 documentationcenter: 
@@ -15,53 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: jeffstok
-ms.openlocfilehash: f9aa812e6e82cc0f72d0cd1fe63058e53f794775
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 507c11938bc5bf2249a2e41f6bcc076db8ead3f6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>SDK de .NET de administración: Configuración y ejecución de trabajos de análisis con la API de Análisis de transmisiones de Azure para .NET
-Aprenda a configurar y ejecutar trabajos de análisis con la API de Stream Analytics para .NET mediante el SDK de .NET de administración. Configure un proyecto, cree orígenes de entrada y salida, transformaciones, e inicie y detenga trabajos. En los trabajos de análisis puede transmitir datos desde el almacenamiento de blobs o desde un centro de eventos.
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-hello-azure-stream-analytics-api-for-net"></a>SDK de .NET de administración: Configurar y ejecutar trabajos de análisis mediante Hola API de análisis de transmisiones de Azure para .NET
+Obtenga información acerca de cómo tooset seguridad y trabajos de análisis de ejecución mediante API de análisis de transmisiones de Hola para usar .NET Hola administración .NET SDK. Configure un proyecto, cree orígenes de entrada y salida, transformaciones, e inicie y detenga trabajos. En los trabajos de análisis puede transmitir datos desde el almacenamiento de blobs o desde un centro de eventos.
 
-Consulte la [documentación de referencia de administración de la API de Análisis de transmisiones para .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+Vea hello [documentación de referencia de administración de API de análisis de transmisiones de Hola para .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
 
-Análisis de transmisiones de Azure es un servicio totalmente administrado que proporciona un procesamiento completo de eventos de baja latencia, alta disponibilidad y escalable a través de la transmisión de datos en la nube. Análisis de transmisiones permite a los clientes configurar trabajos de streaming para analizar flujos de datos y realizar análisis casi en tiempo real.  
+Análisis de transmisiones de Azure es un servicio completamente administrado, lo que proporciona el procesamiento de eventos de baja latencia, alta disponibilidad, escalable y complejos en la transmisión de datos en la nube de Hola. Análisis de transmisiones permite que los clientes tooset la transmisión por secuencias de flujos de datos de tooanalyze de trabajos y les permite toodrive cerca de análisis en tiempo real.  
 
 > [!NOTE]
-> El código de ejemplo de este artículo se ha actualizado con la versión v2.x del SDK de .NET de administración de Azure Stream Analytics. Para código de ejemplo con la versión heredada (1.x) del SDK, vea [Uso del SDK v1.x de .NET de administración para Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
+> Código de ejemplo de Hola en este artículo hemos actualizado con la versión de SDK de .NET de Azure Stream Analytics administración v2.x. Para código de ejemplo con hello usa lagecy (1.x) versión del SDK, visite [usar Hola v1.x de SDK de .NET de administración de análisis de transmisiones](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de empezar este artículo, debe tener lo siguiente:
+Antes de comenzar este artículo, debe tener el siguiente hello:
 
 * Instale Visual Studio 2017 o 2015.
 * Descargue e instale el [SDK de .NET de Azure](https://azure.microsoft.com/downloads/).
-* Cree un grupo de recursos de Azure en su suscripción. A continuación se muestra un ejemplo de script de Azure PowerShell. Para obtener información sobre Azure PowerShell, consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).  
+* Cree un grupo de recursos de Azure en su suscripción. Hola aquí te mostramos una secuencia de comandos de PowerShell de Azure de ejemplo. Para obtener información sobre Azure PowerShell, consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).  
 
-        # Log in to your Azure account
+        # Log in tooyour Azure account
         Add-AzureAccount
 
-        # Select the Azure subscription you want to use to create the resource group
+        # Select hello Azure subscription you want toouse toocreate hello resource group
         Select-AzureSubscription -SubscriptionName <subscription name>
 
-            # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
+            # If Stream Analytics has not been registered toohello subscription, remove hello remark symbol (#) toorun hello Register-AzureRMProvider cmdlet tooregister hello provider namespace
             #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
         # Create an Azure resource group
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* Configure un origen de entrada y un destino de salida para usar. Para más instrucciones, vea [Agregar entradas](stream-analytics-add-inputs.md) para configurar una entrada de muestra y [Agregar salidas](stream-analytics-add-outputs.md) para configurar una salida de muestra.
+* Configurar un origen de entrada y salida toouse de destino. Para obtener más instrucciones, consulte [agregar entradas](stream-analytics-add-inputs.md) tooset una entrada de ejemplo y [agregar resultados](stream-analytics-add-outputs.md) tooset la salida de ejemplo.
 
 ## <a name="set-up-a-project"></a>Configuración de un proyecto
-Para crear un trabajo de análisis que use la API de Análisis de transmisiones para. NET, configure primero el proyecto.
+toocreate un trabajo de análisis usar hello API de análisis de secuencia para. NET, primero configura el proyecto.
 
 1. Cree una aplicación de consola .NET de Visual Studio C#.
-2. En la consola del administrador de paquetes, ejecute los siguientes comandos para instalar los paquetes NuGet. El primero es el SDK de .NET de administración de Análisis de transmisiones de Azure. El segundo corresponde a la autenticación de cliente de Azure.
+2. Hola Package Manager Console, siguiente ejecución Hola comandos paquetes de NuGet tooinstall Hola. Hello primero uno es hello Azure Stream Analytics administración .NET SDK. Hello segunda es para la autenticación de cliente de Azure.
    
         Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 2.0.0
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.3.1
-3. Agregue la siguiente sección **appSettings** al archivo App.config:
+3. Agregue los siguiente hello **appSettings** archivo App.config de sección toohello:
    
         <appSettings>
           <add key="ClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
@@ -70,15 +70,15 @@ Para crear un trabajo de análisis que use la API de Análisis de transmisiones 
           <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
         </appSettings>
 
-    Reemplace los valores para **SubscriptionId** y **ActiveDirectoryTenantId** por sus identificadores de inquilino y de suscripción de Azure. Para obtener estos valores, ejecute el siguiente cmdlet de Azure PowerShell:
+    Reemplace los valores para **SubscriptionId** y **ActiveDirectoryTenantId** por sus identificadores de inquilino y de suscripción de Azure. Puede obtener estos valores mediante la ejecución de hello siguiente cmdlet de PowerShell de Azure:
 
         Get-AzureAccount
 
-4. Agregue la siguiente referencia al archivo .csproj:
+4. Agregue Hola después de referencia en el archivo .csproj:
 
         <Reference Include="System.Configuration" />
 
-5. Agregue las siguientes instrucciones **using** al archivo de origen (Program.cs) en el proyecto:
+5. Agregue los siguiente hello **con** el archivo de código fuente de toohello de instrucciones (Program.cs) en el proyecto de hello:
    
         using System;
         using System.Collections.Generic;
@@ -103,9 +103,9 @@ Para crear un trabajo de análisis que use la API de Análisis de transmisiones 
    ```
 
 ## <a name="create-a-stream-analytics-management-client"></a>Cree un cliente de administración de Análisis de transmisiones
-Un objeto **StreamAnalyticsManagementClient** le permite administrar el trabajo y los componentes del trabajo, como la entrada, la salida y la transformación.
+A **StreamAnalyticsManagementClient** objeto permite toomanage Hola hello y trabajo trabajo componentes, como entrada, salida y transformación.
 
-Agregue el siguiente código al comienzo del método **Main** :
+Agregar Hola sigue el principio de toohello de código de hello **Main** método:
 
    ```
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -126,14 +126,14 @@ Agregue el siguiente código al comienzo del método **Main** :
     };
    ```
 
-El valor de la variable **resourceGroupName** debe ser el mismo que el nombre del grupo de recursos que creó o eligió en los pasos de requisitos previos.
+Hola **resourceGroupName** valor de la variable debe ser Hola igual Hola nombre de recurso de hello grupo se crea o se ha seleccionado en los pasos de requisitos previos de Hola.
 
-Para automatizar el aspecto de la presentación de credenciales de creación del trabajo, consulte [Autenticación de una entidad de servicio con el Administrador de recursos de Azure](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+aspecto de presentación de credencial tooautomate Hola de creación de trabajos, consulte demasiado[autenticar una entidad de servicio con el Administrador de recursos de Azure](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
-Las secciones restantes de este artículo suponen que este código se encuentra al comienzo del método **Main** .
+Hello las secciones restantes de este artículo se suponen que este código está al principio de Hola de hello **Main** método.
 
 ## <a name="create-a-stream-analytics-job"></a>Creación de un trabajo de Análisis de transmisiones
-El siguiente código crea un trabajo de Análisis de transmisiones bajo el grupo de recursos que ha definido. Agregará una entrada, salida y transformación al trabajo más adelante.
+Hello código siguiente crea un trabajo de análisis de transmisiones en el grupo de recursos de Hola que haya definido. Se agregarán más adelante un trabajo de toohello de entrada, salida y transformación.
 
    ```
    // Create a streaming job
@@ -160,7 +160,7 @@ El siguiente código crea un trabajo de Análisis de transmisiones bajo el grupo
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Creación de un origen de entrada de Análisis de transmisiones
-El código siguiente crea un origen de entrada de Análisis de transmisiones con el tipo de origen de entrada de blob y la serialización de CSV. Para crear un origen de entrada de centro de eventos, use **EventHubStreamInputDataSource** en lugar de **BlobStreamInputDataSource**. De manera similar, puede personalizar el tipo de serialización del origen de entrada.
+Hello código siguiente crea un origen de entrada de análisis de transmisiones con el tipo de origen de entrada de blob de Hola y serialización de CSV. toocreate un origen de entrada de concentrador de eventos, use **EventHubStreamInputDataSource** en lugar de **BlobStreamInputDataSource**. De forma similar, puede personalizar el tipo de serialización de Hola Hola de origen de entrada.
 
    ```
    // Create an input
@@ -192,20 +192,20 @@ El código siguiente crea un origen de entrada de Análisis de transmisiones con
    Input createInputResult = streamAnalyticsManagementClient.Inputs.CreateOrReplace(input, resourceGroupName, streamingJobName, inputName);
    ```
 
-Los orígenes de entrada, ya sean desde el almacenamiento de blobs o un centro de eventos, están vinculados a un trabajo específico. Para usar el mismo origen de entrada para distintos trabajos, debe llamar nuevamente al método y especificar un nombre de trabajo distinto.
+Orígenes de entrada, ya sea de almacenamiento de blobs o un concentrador de eventos, son tooa relacionados de trabajo específico. toouse Hola mismo origen de entrada para los distintos trabajos, debe llamar al método hello nuevo y especifique un nombre de trabajo diferente.
 
 ## <a name="test-a-stream-analytics-input-source"></a>Prueba del origen de entrada de Análisis de transmisiones
-El método **TestConnection** prueba si el trabajo de Análisis de transmisiones puede conectarse al origen de entrada así como otros aspectos específicos para el tipo de origen de entrada. Por ejemplo, en el origen de entrada de blob que creó en un paso anterior, el método comprobará que el par de claves y el nombre de cuenta de almacenamiento se pueden usar para conectarse a la cuenta de almacenamiento, así como para comprobar que existe el contenedor especificado.
+Hola **TestConnection** pruebas método si el trabajo de análisis de transmisiones de hello es capaz de tooconnect toohello de entrada de origen, así como otro toohello específico de aspectos de entrada de tipo de origen. Por ejemplo, en hello blob origen de entrada que creó en un paso anterior, método hello comprobará que nombre de cuenta de almacenamiento de Hola y par de claves puede ser usado tooconnect toohello cuenta de almacenamiento, así como comprobar que existe ese contenedor especificado Hola.
 
    ```
-   // Test the connection to the input
+   // Test hello connection toohello input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Creación de un destino de salida de Análisis de transmisiones
-La creación de un destino de salida es muy similar a crear un origen de entrada de Análisis de transmisiones. Al igual que los orígenes de entrada, los destinos de salida están vinculados a un trabajo específico. Para usar el mismo destino de salida para distintos trabajos, debe llamar nuevamente al método y especificar un nombre de trabajo distinto.
+Crear un destino de salida es un origen de entrada de análisis de transmisiones de toocreating muy similar. Como orígenes de entrada, los destinos de salida son tooa relacionados de trabajo específico. toouse Hola mismo destino de salida para los distintos trabajos, debe llamar al método hello nuevo y especifique un nombre de trabajo diferente.
 
-El siguiente código crea un destino de salida (Base de datos SQL de Azure). Puede personalizar el tipo de datos y/o el tipo de serialización del destino de salida.
+Hola siguiente código crea un destino de salida (base de datos de SQL Azure). Puede personalizar el tipo de datos del destino de salida de Hola o tipo de serialización.
 
    ```
    // Create an output
@@ -224,32 +224,32 @@ El siguiente código crea un destino de salida (Base de datos SQL de Azure). Pue
    ```
 
 ## <a name="test-a-stream-analytics-output-target"></a>Prueba de un destino de salida de Análisis de transmisiones
-Un destino de salida de Análisis de transmisiones también tiene el método **TestConnection** para probar conexiones.
+Un destino de los resultados del análisis de transmisiones también tiene hello **TestConnection** método para probar las conexiones.
 
    ```
-   // Test the connection to the output
+   // Test hello connection toohello output
    ResourceTestStatus testOutputResult = streamAnalyticsManagementClient.Outputs.Test(resourceGroupName, streamingJobName, outputName);
    ```
 
 ## <a name="create-a-stream-analytics-transformation"></a>Creación de una transformación de Análisis de transmisiones
-El siguiente código crea una transformación de Análisis de transmisiones con la consulta "select * from Input" y especifica para asignar una unidad de streaming para el trabajo de Análisis de transmisiones. Para obtener más información sobre el ajuste de las unidades de streaming, consulte [Escalación de trabajos de Análisis de transmisiones](stream-analytics-scale-jobs.md).
+Hello código siguiente crea una transformación de análisis de transmisiones con consulta Hola "seleccionar * de entrada" y especifica una unidad de streaming tooallocate de trabajo de análisis de transmisiones de Hola. Para obtener más información sobre el ajuste de las unidades de streaming, consulte [Escalación de trabajos de Análisis de transmisiones](stream-analytics-scale-jobs.md).
 
    ```
    // Create a transformation
    Transformation transformation = new Transformation()
    {
-       Query = "Select Id, Name from <your input name>", // '<your input name>' should be replaced with the value you put for the 'inputName' variable above or in a previous step
+       Query = "Select Id, Name from <your input name>", // '<your input name>' should be replaced with hello value you put for hello 'inputName' variable above or in a previous step
        StreamingUnits = 1
    };
    Transformation createTransformationResult = streamAnalyticsManagementClient.Transformations.CreateOrReplace(transformation, resourceGroupName, streamingJobName, transformationName);
    ```
 
-Al igual que la entrada y la salida, una transformación también está vinculada al trabajo de Stream Analytics específico en el que se creó.
+Al igual que la entrada y salida, una transformación también es trabajo de análisis de transmisiones específico toohello relacionados que se creó en.
 
 ## <a name="start-a-stream-analytics-job"></a>Inicio de un trabajo de Análisis de transmisiones
-Después de crear un trabajo de Análisis de transmisiones y sus entradas, salidas y transformaciones, puede iniciar el trabajo si llama al método **Start** .
+Después de crear un trabajo de análisis de transmisiones y su las entradas, salidas y transformación, puede iniciar el trabajo de Hola Hola que realiza la llamada **iniciar** método.
 
-El siguiente código de ejemplo inicia un trabajo de Análisis de transmisiones con una hora de inicio de salida personalizada definida para el 12 de diciembre de 2012, 12:12:12 UTC:
+Hola siguiente código de ejemplo inicia un trabajo de análisis de transmisiones con una salida personalizada inicio tiempo conjunto tooDecember 12, 2012, 12:12:12 UTC:
 
    ```
    // Start a streaming job
@@ -262,7 +262,7 @@ El siguiente código de ejemplo inicia un trabajo de Análisis de transmisiones 
    ```
 
 ## <a name="stop-a-stream-analytics-job"></a>Detención de un trabajo de Análisis de transmisiones
-Puede detener un trabajo de Análisis de transmisiones en ejecución si llama al método **Stop** .
+Puede detener un trabajo de análisis de transmisiones de ejecución que realiza la llamada hello **detener** método.
 
    ```
    // Stop a streaming job
@@ -270,7 +270,7 @@ Puede detener un trabajo de Análisis de transmisiones en ejecución si llama al
    ```
 
 ## <a name="delete-a-stream-analytics-job"></a>Eliminación de un trabajo de Análisis de transmisiones
-El método **Delete** eliminará el trabajo, además de los subrecursos subyacentes, incluidas las entradas, salidas y transformaciones del trabajo.
+Hola **eliminar** método eliminará trabajo hello, así como Hola subyacente recursos secundarios, incluidos las entradas, salidas y transformación de trabajo de Hola.
 
    ```
    // Delete a streaming job
@@ -281,9 +281,9 @@ El método **Delete** eliminará el trabajo, además de los subrecursos subyacen
 Para obtener más ayuda, pruebe nuestro [foro de Análisis de transmisiones de Azure](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ha aprendido los conceptos básicos del uso de un SDK de .NET para crear y ejecutar trabajos de análisis. Para obtener más información, consulte:
+Ha aprendido Fundamentos de hello del uso de un toocreate del SDK de .NET y ejecutar trabajos de análisis. toolearn más información, vea Hola recursos siguientes:
 
-* [Introducción al Análisis de transmisiones de Azure](stream-analytics-introduction.md)
+* [Introducción tooAzure análisis de transmisiones](stream-analytics-introduction.md)
 * [Introducción al uso de Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Escalación de trabajos de Análisis de transmisiones de Azure](stream-analytics-scale-jobs.md)
 * [SDK de .NET de administración de Análisis de transmisiones de Azure](https://msdn.microsoft.com/library/azure/dn889315.aspx)

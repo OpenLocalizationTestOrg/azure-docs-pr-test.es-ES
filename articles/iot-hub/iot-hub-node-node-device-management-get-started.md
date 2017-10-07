@@ -1,6 +1,6 @@
 ---
-title: "Introducción a la administración de dispositivos de IoT Hub de Azure (Node) | Microsoft Docs"
-description: "Describe cómo usar la administración de dispositivos de IoT Hub para iniciar un reinicio del dispositivo remoto. Usará los SDK de IoT de Azure para Node.js con el fin de implementar una aplicación de dispositivo simulado que incluye un método directo y un servicio que invoque el método directo."
+title: "aaaGet comenzar con la administración de dispositivos del centro de IoT de Azure (nodo) | Documentos de Microsoft"
+description: "Cómo toouse tooinitiate de administración de dispositivos de centro de IoT reiniciar un dispositivo remoto. Usar hello IoT de Azure SDK para Node.js tooimplement una aplicación de dispositivo simulado que incluye un método directo y una aplicación de servicio que invoca el método directo Hola."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: juanpere
-ms.openlocfilehash: 332a3e62cb1ef75e2c6dd5562ee799465c401128
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5dd1878e71231850fb95f4170b823f1e86c3ee83
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-device-management-node"></a>Introducción a la administración de dispositivos (Node)
 
@@ -26,19 +26,19 @@ ms.lasthandoff: 08/29/2017
 
 En este tutorial se muestra cómo realizar las siguientes acciones:
 
-* Usar Azure Portal para un IoT Hub y una identidad de dispositivo en este.
-* Crear una aplicación de dispositivo simulado que contiene un método directo que reinicia ese dispositivo. Los métodos directos se invocan desde la nube.
-* Crear una aplicación de consola de Node.js que llame a un método directo de reinicio en la aplicación de dispositivo simulado mediante su centro de IoT Hub.
+* Usar hello toocreate portal Azure un centro de IoT y cree una identidad de dispositivo en el centro de IoT.
+* Crear una aplicación de dispositivo simulado que contiene un método directo que reinicia ese dispositivo. Se invocan métodos directos de nube de Hola.
+* Crear una aplicación de consola de Node.js que llama a métodos directas de reinicio de hello en la aplicación de dispositivo simulado de hello a través de su centro de IoT.
 
-Al final de este tutorial tendrá dos aplicaciones de consola de Node.js:
+Al final de Hola de este tutorial, tiene dos aplicaciones de consola de Node.js:
 
-**dmpatterns_getstarted_device.js**, que se conecta al IoT Hub con la identidad del dispositivo creada anteriormente, recibe un método directo de reinicio, simula un reinicio físico y notifica la hora del último reinicio.
+**dmpatterns_getstarted_device.js**, centro de IoT tooyour que conecta con la identidad del dispositivo Hola creado anteriormente, recibe un método directo de reinicio, simula reiniciar el equipo físico e informa Hola el tiempo de último reinicio de Hola.
 
-**dmpatterns_getstarted_service.js**, que llama a un método directo en la aplicación de dispositivo simulado, muestra la respuesta y muestra las propiedades notificadas actualizadas.
+**dmpatterns_getstarted_service.js**, que llama a un método directo en la aplicación de dispositivo simulado de hello, muestra la respuesta de Hola y Hola muestra actualizado notificado propiedades.
 
-Para completar este tutorial, necesitará lo siguiente:
+toocomplete este tutorial, necesita Hola siguientes:
 
-* Node.js versión 0.12.x o posteriores. <br/>  En [Preparación del entorno de desarrollo][lnk-dev-setup] se describe cómo instalar Node.js para este tutorial en Windows o Linux.
+* Node.js versión 0.12.x o posteriores. <br/>  [Preparar el entorno de desarrollo] [ lnk-dev-setup] describe cómo tooinstall Node.js para este tutorial en Windows o Linux.
 * Una cuenta de Azure activa. (En caso de no tenerla, puede crear una [cuenta gratuita][lnk-free-trial] en solo unos minutos).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -48,22 +48,22 @@ Para completar este tutorial, necesitará lo siguiente:
 ## <a name="create-a-simulated-device-app"></a>Creación de una aplicación de dispositivo simulado
 En esta sección:
 
-* Creará una aplicación de consola de Node.js que responda a un método directo que se llama desde la nube.
+* Crear una aplicación de consola de Node.js que responde tooa método directo llamado en la nube Hola
 * Desencadenará un reinicio del dispositivo simulado.
-* Usará las propiedades notificadas para permitir consultas de dispositivo gemelo a fin de identificar los dispositivos y cuándo se reiniciaron por última vez.
+* Hola uso notificado propiedades tooenable dispositivos gemelas consultas tooidentify dispositivos y cuándo reinició por última vez
 
-1. Cree una nueva carpeta vacía denominada **manageddevice**.  En la carpeta **manageddevice** , cree un archivo package.json con el siguiente comando en el símbolo del sistema.  Acepte todos los valores predeterminados:
+1. Cree una nueva carpeta vacía denominada **manageddevice**.  Hola **manageddevice** carpeta, cree un archivo de package.json mediante Hola siguiente comando en el símbolo del sistema.  Acepte todos los valores predeterminados de hello:
    
     ```
     npm init
     ```
-2. En el símbolo del sistema, en la carpeta **manageddevice**, ejecute el siguiente comando para instalar el paquete del SDK de dispositivo **azure-iot-device** y el paquete **azure-iot-device-mqtt**:
+2. En el símbolo del sistema en hello **manageddevice** carpeta, ejecute hello después comando tooinstall hello **dispositivos de iot de azure** paquete del SDK de dispositivo y **azure iot dispositivo-mqtt**paquete:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Con un editor de texto, cree un archivo **dmpatterns_getstarted_device.js** en la carpeta **manageddevice**.
-4. Agregue las siguientes instrucciones "require" al principio del archivo **dmpatterns_getstarted_device.js**:
+3. Con un editor de texto, cree un **dmpatterns_getstarted_device.js** archivo Hola **manageddevice** carpeta.
+4. Agregar siguiente hello 'requiere' instrucciones al principio de Hola de hello **dmpatterns_getstarted_device.js** archivo:
    
     ```
     'use strict';
@@ -71,27 +71,27 @@ En esta sección:
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Agregue una variable **connectionString** y utilícela para crear una instancia de **cliente**.  Reemplace la cadena de conexión por la cadena de conexión del dispositivo.  
+5. Agregar un **connectionString** variable y utilizar toocreate un **cliente** instancia.  Reemplace la cadena de conexión de hello con la cadena de conexión del dispositivo.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. Agregue la siguiente función para implementar el método directo en el dispositivo
+6. Agregar Hola siguiendo métodos directas de función tooimplement hello en dispositivo Hola
    
     ```
     var onReboot = function(request, response) {
    
-        // Respond the cloud app for the direct method
+        // Respond hello cloud app for hello direct method
         response.send(200, 'Reboot started', function(err) {
             if (!err) {
                 console.error('An error occured when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
             }
         });
    
-        // Report the reboot before the physical restart
+        // Report hello reboot before hello physical restart
         var date = new Date();
         var patch = {
             iothubDM : {
@@ -118,7 +118,7 @@ En esta sección:
         console.log('Rebooting!');
     };
     ```
-7. Abra la conexión al IoT Hub e inicie la escucha del método directo:
+7. Abrir el centro de IoT de hello conexión tooyour e iniciar el agente de escucha de hello método directo:
    
     ```
     client.open(function(err) {
@@ -130,26 +130,26 @@ En esta sección:
         }
     });
     ```
-8. Guarde y cierre el archivo **dmpatterns_getstarted_device.js**.
+8. Guarde y cierre hello **dmpatterns_getstarted_device.js** archivo.
 
 > [!NOTE]
-> Por simplificar, este tutorial no implementa ninguna directiva de reintentos. En el código de producción, deberá implementar directivas de reintentos (por ejemplo, retroceso exponencial), tal y como se sugiere en el artículo de MSDN [Transient Fault Handling][lnk-transient-faults] (Tratamiento de errores temporales).
+> tookeep cosas simples, este tutorial no implementa ninguna directiva de reintento. En el código de producción, debe implementar directivas de reintento (por ejemplo, un retroceso exponencial), como se indica en el artículo de MSDN de hello [control de errores transitorios][lnk-transient-faults].
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Desencadenar un reinicio remoto en el dispositivo con un método directo
-En esta sección, creará una aplicación de consola de Node.js que inicia un reinicio remoto en un dispositivo mediante un método directo. La aplicación usa las consultas gemelas de dispositivo para detectar la hora en que se reinició por última vez el dispositivo.
+## <a name="trigger-a-remote-reboot-on-hello-device-using-a-direct-method"></a>Desencadenar un reinicio remoto en dispositivo Hola utilizando un método directo
+En esta sección, creará una aplicación de consola de Node.js que inicia un reinicio remoto en un dispositivo mediante un método directo. aplicación Hello usa Hola de toodiscover de consultas última hora de reinicio de dispositivo gemelas para dicho dispositivo.
 
-1. Cree una carpeta vacía denominada **triggerrebootondevice**.  En la carpeta **triggerrebootondevice**, cree un archivo package.json con el siguiente comando en el símbolo del sistema.  Acepte todos los valores predeterminados:
+1. Cree una carpeta vacía denominada **triggerrebootondevice**.  Hola **triggerrebootondevice** carpeta, cree un archivo de package.json mediante Hola siguiente comando en el símbolo del sistema.  Acepte todos los valores predeterminados de hello:
    
     ```
     npm init
     ```
-2. En el símbolo del sistema, en la carpeta **triggerrebootondevice**, ejecute el siguiente comando para instalar el paquete del SDK de dispositivo **azure-iothub** y el paquete **azure-iot-device-mqtt**:
+2. En el símbolo del sistema en hello **triggerrebootondevice** carpeta, ejecute hello después comando tooinstall hello **el centro de IOT de azure** paquete del SDK de dispositivo y **azure iot dispositivo-mqtt** paquete:
    
     ```
     npm install azure-iothub --save
     ```
-3. Con un editor de texto, cree un archivo **dmpatterns_getstarted_service.js** en la carpeta **triggerrebootondevice**.
-4. Agregue las siguientes instrucciones "require" al principio del archivo **dmpatterns_getstarted_service.js**:
+3. Con un editor de texto, cree un **dmpatterns_getstarted_service.js** archivo Hola **triggerrebootondevice** carpeta.
+4. Agregar siguiente hello 'requiere' instrucciones al principio de Hola de hello **dmpatterns_getstarted_service.js** archivo:
    
     ```
     'use strict';
@@ -157,7 +157,7 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un re
     var Registry = require('azure-iothub').Registry;
     var Client = require('azure-iothub').Client;
     ```
-5. Agregue las siguientes declaraciones de variable y reemplace los valores de marcador de posición:
+5. Agregue Hola siguiendo las declaraciones de variable y reemplace los valores de marcador de posición de hello:
    
     ```
     var connectionString = '{iothubconnectionstring}';
@@ -165,7 +165,7 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un re
     var client = Client.fromConnectionString(connectionString);
     var deviceToReboot = 'myDeviceId';
     ```
-6. Agregue la siguiente función para invocar el método del dispositivo con el fin de reiniciar el dispositivo de destino:
+6. Agregue Hola después de la función tooinvoke Hola dispositivo método tooreboot Hola dispositivo de destino:
    
     ```
     var startRebootDevice = function(twin) {
@@ -182,12 +182,12 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un re
             if (err) { 
                 console.error("Direct method error: "+err.message);
             } else {
-                console.log("Successfully invoked the device to reboot.");  
+                console.log("Successfully invoked hello device tooreboot.");  
             }
         });
     };
     ```
-7. Agregue la siguiente función para consultar el dispositivo y obtener la última hora de reinicio:
+7. Agregar siguiente Hola función tooquery para dispositivo hello y obtener Hola última hora de reinicio:
    
     ```
     var queryTwinLastReboot = function() {
@@ -203,32 +203,32 @@ En esta sección, creará una aplicación de consola de Node.js que inicia un re
                     console.log('Last reboot time: ' + JSON.stringify(lastRebootTime, null, 2));
                 }
             } else 
-                console.log('Waiting for device to report last reboot time.');
+                console.log('Waiting for device tooreport last reboot time.');
         });
     };
     ```
-8. Agregue el siguiente código para llamar a las funciones que desencadenan el método directo de reinicio y la consulta de última hora de reinicio:
+8. Agregue Hola siguiendo las funciones de código toocall Hola que desencadenan Hola reinicie método directo y consultar Hola reiniciar última hora:
    
     ```
     startRebootDevice();
     setInterval(queryTwinLastReboot, 2000);
     ```
-9. Guarde y cierre el archivo **dmpatterns_getstarted_service.js**.
+9. Guarde y cierre hello **dmpatterns_getstarted_service.js** archivo.
 
-## <a name="run-the-apps"></a>Ejecución de las aplicaciones
-Ya está preparado para ejecutar las aplicaciones.
+## <a name="run-hello-apps"></a>Ejecutar aplicaciones de Hola
+Ya estás listo toorun Hola aplicaciones.
 
-1. En el símbolo del sistema dentro de la carpeta **manageddevice**, ejecute el siguiente comando para iniciar la escucha del método directo de reinicio.
+1. En línea de comandos de Hola Hola **manageddevice** carpeta, ejecute hello después toobegin comando realizar escuchas de método directo de reinicio de Hola.
    
     ```
     node dmpatterns_getstarted_device.js
     ```
-2. En el símbolo del sistema dentro de la carpeta **triggerrebootondevice**, ejecute el siguiente comando para desencadenar el reinicio remoto y la consulta en el dispositivo gemelo para buscar la hora del último reinicio.
+2. En línea de comandos de Hola Hola **triggerrebootondevice** carpeta, ejecute hello después comando tootrigger Hola remoto de reinicio y de consulta de Hola de hello dispositivo gemelas toofind reiniciar última hora.
    
     ```
     node dmpatterns_getstarted_service.js
     ```
-3. Verá la respuesta del dispositivo al método directo en la consola.
+3. Consulte dispositivo respuesta toohello directo método hello en la consola de Hola.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 
@@ -240,7 +240,7 @@ Ya está preparado para ejecutar las aplicaciones.
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure portal]: https://portal.azure.com/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
+[Using resource groups toomanage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md

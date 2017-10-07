@@ -1,6 +1,6 @@
 ---
-title: "Flujo de trabajo de ejemplo para preparar unidades de disco duro para un trabajo de importación de Azure Import/Export | Microsoft Docs"
-description: "Vea un tutorial para conocer el proceso completo de preparación de las unidades para un trabajo de importación en el servicio Azure Import/Export."
+title: "trabajo de importación de aaaSample flujo de trabajo tooprep unidades de disco duro para una importación y exportación de Azure | Documentos de Microsoft"
+description: "Vea un tutorial para completar el proceso de preparar las unidades para un trabajo de importación en el servicio de importación y exportación de Hola Hola."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
-ms.openlocfilehash: 78d7ce3bbd3205fd995ba331af08d830097c8156
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 560220b7dc9f87416f1fec1ff30fa5cd65812ce5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Flujo de trabajo de ejemplo para preparar las unidades de disco duro para un trabajo de importación
+# <a name="sample-workflow-tooprepare-hard-drives-for-an-import-job"></a>Unidades de disco duro de tooprepare de flujo de trabajo y ejemplo de un trabajo de importación
 
-Este artículo le guiará por el proceso completo de preparar las unidades para un trabajo de importación.
+Este artículo le guiará por el proceso completo de Hola de preparar las unidades para un trabajo de importación.
 
 ## <a name="sample-data"></a>Datos de ejemplo
 
-Este ejemplo importa los datos siguientes en una cuenta de Azure Storage denominada `mystorageaccount`:
+Este ejemplo importan Hola después de datos en una cuenta de almacenamiento de Azure denominada `mystorageaccount`:
 
 |Ubicación|Descripción|Tamaño de los datos|
 |--------------|-----------------|-----|
@@ -37,7 +37,7 @@ Este ejemplo importa los datos siguientes en una cuenta de Azure Storage denomin
 
 ## <a name="storage-account-destinations"></a>Destinos de la cuenta de almacenamiento
 
-El trabajo de importación importará los datos en los siguientes destinos en la cuenta de almacenamiento:
+trabajo de importación de Hello importará datos hello en hello después de destinos en la cuenta de almacenamiento de hello:
 
 |Origen|Directorio virtual o blob de destino|
 |------------|-------------------------------------------|
@@ -46,25 +46,25 @@ El trabajo de importación importará los datos en los siguientes destinos en la
 |K:\Temp\FavoriteMovie.ISO|favorite/FavoriteMovies.ISO|
 |\\\bigshare\john\music\ |music|
 
-Con esta asignación, el archivo `H:\Video\Drama\GreatMovie.mov` se importará al blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.
+Con esta asignación, Hola archivo `H:\Video\Drama\GreatMovie.mov` será toohello importados blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.
 
 ## <a name="determine-hard-drive-requirements"></a>Determinación de los requisitos de la unidad de disco duro
 
-A continuación, para determinar cuántas unidades de disco duro se necesitan, calcule el tamaño de los datos:
+Después, toodetermine cuántas unidades de disco duro son necesarias, tamaño de Hola de cálculo de los datos de hello:
 
 `12TB + 30GB + 25GB + 10GB = 12TB + 65GB`
 
-En este ejemplo, dos unidades de disco duro de 8 TB deberían ser suficientes. Sin embargo, dado que el directorio de origen `H:\Video` tiene 12 TB de datos y la capacidad de la unidad de disco duro es de solo 8 TB, podrá especificarlo de la siguiente manera en el archivo **driveset.csv**:
+En este ejemplo, dos unidades de disco duro de 8 TB deberían ser suficientes. Sin embargo, desde el directorio de origen de hello `H:\Video` tiene 12TB de datos y la capacidad de la unidad de disco duro es solo 8TB, será capaz de toospecify en Hola después de manera Hola **driveset.csv** archivo:
 
 ```
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 X,Format,SilentMode,Encrypt,
 Y,Format,SilentMode,Encrypt,
 ```
-La herramienta distribuirá datos en las dos unidades de disco duro de forma optimizada.
+herramienta de Hola encargará de distribuir datos a través de dos unidades de disco duro de forma optimizada.
 
-## <a name="attach-drives-and-configure-the-job"></a>Conexión de unidades y configuración del trabajo
-Conectará ambos discos a la máquina y creará volúmenes. Luego, cree el archivo **dataset.csv**:
+## <a name="attach-drives-and-configure-hello-job"></a>Conecte unidades y configurar el trabajo de Hola
+Podrá conectar ambos máquina toohello de discos y crear volúmenes. Luego, cree el archivo **dataset.csv**:
 ```
 BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 H:\Video\,video/,BlockBlob,rename,None,H:\mydirectory\properties.xml
@@ -73,13 +73,13 @@ K:\Temp\FavoriteVideo.ISO,favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\my
 \\myshare\john\music\,music/,BlockBlob,rename,None,H:\mydirectory\properties.xml
 ```
 
-Además, puede establecer los metadatos siguientes para todos los archivos:
+Además, puede establecer Hola después de metadatos para todos los archivos:
 
 * **UploadMethod:** servicio Microsoft Azure Import/Export
 * **DataSetName:** SampleData
 * **CreationDate:** 10/1/2013
 
-Para establecer los metadatos de los archivos importados, cree un archivo de texto, `c:\WAImportExport\SampleMetadata.txt`, con el siguiente contenido:
+tooset metadatos para los archivos de hello importado, cree un archivo de texto, `c:\WAImportExport\SampleMetadata.txt`, con hello siguen contenido:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -90,13 +90,13 @@ Para establecer los metadatos de los archivos importados, cree un archivo de tex
 </Metadata>
 ```
 
-También puede establecer algunas propiedades para el blob `FavoriteMovie.ISO`:
+También puede establecer algunas propiedades para hello `FavoriteMovie.ISO` blob:
 
 * **Content-Type:** application/octet-stream
 * **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ==
 * **Cache-Control:** no-cache
 
-Para establecer estas propiedades, cree un archivo de texto, `c:\WAImportExport\SampleProperties.txt`:
+tooset estas propiedades, cree un archivo de texto, `c:\WAImportExport\SampleProperties.txt`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -107,27 +107,27 @@ Para establecer estas propiedades, cree un archivo de texto, `c:\WAImportExport\
 </Properties>
 ```
 
-## <a name="run-the-azure-importexport-tool-waimportexportexe"></a>Ejecución de la herramienta Azure Import/Export (WAImportExport.exe)
+## <a name="run-hello-azure-importexport-tool-waimportexportexe"></a>Hola ejecución herramienta de importación y exportación de Azure (WAImportExport.exe)
 
-Ahora está listo para ejecutar la herramienta Azure Import/Export para preparar las dos unidades de disco duro.
+Ahora está listo toorun Hola herramienta de importación y exportación de Azure tooprepare Hola dos unidades de disco duro.
 
-**Para la primera sesión:**
+**Para la primera sesión de hello:**
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset-1.csv /DataSet:dataset-1.csv /logdir:F:\logs
 ```
 
-Si es necesario agregar más datos, cree otro archivo de conjunto de datos (con el mismo formato que Initialdataset).
+Si los datos más necesitan toobe agregado, cree otro archivo de conjunto de datos (mismo formato que Initialdataset).
 
-**Para la segunda sesión:**
+**Para hello segunda sesión:**
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-Cuando se hayan completado las sesiones de copia, podrá desconectar las dos unidades del equipo de copia y enviarlas al centro de datos de Azure adecuado. Cargará los dos archivos de diario, `<FirstDriveSerialNumber>.xml` y `<SecondDriveSerialNumber>.xml`, cuando cree el trabajo de importación en Azure Portal.
+Una vez completaron las sesiones de copia de hello, puede desconectarse dos unidades de Hola de equipo de copia de Hola y enviarlas toohello centro de datos adecuado de Azure. Cargue archivos de diario de hello dos, `<FirstDriveSerialNumber>.xml` y `<SecondDriveSerialNumber>.xml`, al crear trabajo de importación de Hola Hola portal de Azure.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 * [Preparación de unidades de disco duro para un trabajo de importación](storage-import-export-tool-preparing-hard-drives-import.md)
-* [Quick reference for frequently used commands for import jobs](storage-import-export-tool-quick-reference.md) (Referencia rápida para comandos usados con frecuencia)
+* [Referencia rápida de comandos usados con frecuencia para trabajos de importación](storage-import-export-tool-quick-reference.md)

@@ -1,6 +1,6 @@
 ---
-title: "Introducción al escalado automático mediante métricas personalizadas en Azure | Microsoft Docs"
-description: "Obtenga información sobre cómo escalar recursos mediante métricas personalizadas en Azure."
+title: "aaaGet iniciada con escalado automático por métrica personalizada en Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooscale el recurso por métrica personalizado en Azure."
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: ancav
-ms.openlocfilehash: de8f7acadc282e4b81c657b1723f00fd3e5fd4f2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d3e268ec322698d0d367361cd9c156b21e0fb6e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Introducción al escalado automático mediante métricas personalizadas en Azure
-En este artículo se describe cómo escalar el recurso mediante una métrica personalizada en Azure Portal.
+Este artículo se describe cómo tooscale el recurso por una métrica personalizada en el portal de Azure.
 
-El escalado automático de Azure Monitor solo se aplica a Conjuntos de escalado de máquinas virtuales, Cloud Services, planes de App Service y App Service Environment. 
+Azure Autoescala de Monitor aplica solo tooVirtual conjuntos de escala de máquina (VMSS), servicios en la nube, planes de servicio de aplicaciones y entornos del servicio de aplicación. 
 
 # <a name="lets-get-started"></a>Introducción
 En este artículo se presupone que tiene una aplicación web con Application Insights configurado. Si aún no la tiene, puede [configurar Application Insights para el sitio web ASP.NET][1].
 
 - Abra [Azure Portal][2].
-- Haga clic en el icono de Azure Monitor en el panel de navegación izquierdo.
+- Haga clic en el icono de Monitor de Azure en el panel de navegación izquierdo de Hola.
   ![Inicio de Azure Monitor][3]
-- Haga clic en la opción Escalado automático para ver todos los recursos a los que se aplica el escalado automático, junto con su estado de escalado automático actual ![Detección de escalado automático en Azure Monitor][4]
-- Abra la hoja "Escalado automático" en Azure Monitor y seleccione un recurso que desee escalar.
-> Nota: En los pasos siguientes se usa un plan de App Service asociado con una aplicación web con Application Insights configurado.
-- En la hoja de configuración de escalado del recurso, tenga en cuenta que el recuento de la instancia actual es 1. Haga clic en "Enable autoscale" (Habilitar escalado automático).
+- Haga clic en configuración tooview todos los recursos de Hola para que automáticamente la escala es aplicable, junto con su estado actual de escalado automático de escalado automático ![detectar Autoescala en el monitor de Azure][4]
+- Abrir la hoja de 'Escalado automático' en el Monitor de Azure y seleccione un recurso que desee tooscale
+> Nota: estos pasos Hola usan un plan de servicio de aplicación asociado a una aplicación web que tiene detalles de aplicaciones configurados.
+- En la hoja de configuración de la escala de hello para el recurso de hello, tenga en cuenta que el recuento de instancias actual de hello es 1. Haga clic en "Enable autoscale" (Habilitar escalado automático).
   ![Configuración de escalado para la nueva aplicación web][5]
-- Proporcione un nombre para la configuración de escalado y haga clic en "Agregar una regla". Tenga en cuenta que las opciones de la regla de escalado se abren como un panel Contexto en el lado derecho. De forma predeterminada, establece la opción para escalar el recuento de instancias en 1 si el porcentaje de CPU del recurso supera el 70 %. Cambie el origen de métricas en la parte superior a "Application Insights", seleccione el recurso de Application Insights en el menú desplegable "Recurso" y luego seleccione la métrica personalizada en la que quiere basar el escalado.
+- Proporcione un nombre para la configuración de escala de Hola y Hola, haga clic en "Agregar una regla de". Observe las opciones de regla de escala de Hola que se abre como un panel de contexto en hello del lado derecho. De forma predeterminada, Establece la instancia de recuento en 1 si Hola CPU percetage del recurso de hello supera el 70% de hello opción tooscale. Origen de métricas de Hola de cambio en la parte superior de hello demasiado "Application Insights", seleccione Hola recursos de información de aplicación en lista desplegable de 'Resource' hello y métrica de hello, a continuación, seleccione personalizada basada en la que desea tooscale.
   ![Escalar por métrica personalizada][6]
-- De forma similar al paso anterior, agregue una regla de escalado que reduzca horizontalmente y disminuya el recuento de escala en 1 si la métrica personalizada está por debajo del umbral.
+- Paso de toohello similar anterior, agregar una regla de escala que se escale en y reduzca el recuento de escala de hello en 1 si la métrica personalizada hello está por debajo del umbral.
   ![Escala en función de la CPU][7]
-- Establezca los límites de instancias. Por ejemplo, si desea escalar entre 2-5 instancias en función de las fluctuaciones de la métrica personalizada, establezca el "mínimo" en "2", el "máximo" en "5" y el "valor predeterminado" en "2".
-> Nota: En caso de que haya algún problema al leer las métricas de recursos y la capacidad actual sea inferior a la predeterminada, el escalado automático escalará horizontalmente al valor predeterminado a fin de garantizar la disponibilidad del recurso. Si la capacidad actual ya es mayor que la predeterminada, el escalado automático no reducirá horizontalmente.
+- Establecer hello para la instancia de límites. Por ejemplo, si desea tooscale entre 2 y 5 instancias según las fluctuaciones de métrica personalizada hello, establezca 'mínimo"demasiado '2', 'máximo' demasiado '5' y 'default' demasiado '2'
+> Nota: en caso de que hay un problema al leer las métricas de recursos de Hola y capacidad actual de hello está por debajo de la capacidad predeterminada de hello, a continuación, disponibilidad de hello tooensure del recurso de hello, escalado automático se espera el valor predeterminado de toohello. Si la capacidad actual de hello ya es mayor que la capacidad predeterminada, escalado automático no se ajusta en.
 - Haga clic en "Guardar".
 
-¡Enhorabuena! Ya ha establecido correctamente la configuración del escalado para escalar automáticamente la aplicación web en función de una métrica personalizada.
+¡Enhorabuena! Es ahora correctamente una vez creado el tooauto de configuración de escala escalar la aplicación web en función de una métrica personalizada.
 
-> Nota: Los mismos pasos son aplicables para empezar a trabajar con un rol de servicio en la nube o VMSS.
+> Nota: hello mismos pasos son aplicable tooget a trabajar con un rol de servicio VMSS o en la nube.
 
 <!--Reference-->
 [1]: https://docs.microsoft.com/en-us/azure/application-insights/app-insights-asp-net

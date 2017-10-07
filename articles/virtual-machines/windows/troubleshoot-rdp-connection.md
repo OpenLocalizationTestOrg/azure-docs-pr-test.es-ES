@@ -1,7 +1,7 @@
 ---
-title: "No es posible conectarse mediante RDP a una máquina virtual Windows en Azure | Microsoft Docs"
-description: "Solución de problemas cuando no se puede conectar a la máquina virtual Windows en Azure mediante Escritorio remoto"
-keywords: "Error de escritorio remoto, error de conexión del escritorio remoto, no se puede conectar a la máquina virtual, solución de problemas con el escritorio remoto"
+title: aaaCannot conectarse con RDP tooa VM de Windows en Azure | Documentos de Microsoft
+description: "Solucionar problemas cuando no se puede conectar la máquina virtual de Windows tooyour en Azure mediante Escritorio remoto"
+keywords: "Error de escritorio remoto, error de conexión a Escritorio remoto, no se puede conectar tooVM, solución de problemas de escritorio remoto"
 services: virtual-machines-windows
 documentationcenter: 
 author: genlin
@@ -16,27 +16,27 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 07/25/2017
 ms.author: genli
-ms.openlocfilehash: 87b6c99c28a95c9be37486717e689baa22804882
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bbb36136e7a4b187fe8deea621d2b8d46d8aa102
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Solución de problemas de conexiones del Escritorio remoto a una máquina virtual de Azure
-La conexión de Protocolo de escritorio remoto (RDP) a la máquina virtual (VM) de Azure basada en Windows puede presentar errores por varios motivos que le impedirán acceder a la máquina virtual. El problema puede originar en el servicio de Escritorio remoto de la máquina virtual, la conexión de red o el cliente de Escritorio remoto en el equipo host. Este artículo le guía por algunos de los métodos más comunes para resolver problemas de conexión de RDP. 
+# <a name="troubleshoot-remote-desktop-connections-tooan-azure-virtual-machine"></a>Solucionar problemas de conexiones de escritorio remoto tooan máquina virtual de Azure
+Hola protocolo de escritorio remoto (RDP) conexión tooyour basados en Windows Azure máquina virtual (VM) puede producir un error por diversas razones, dejando tooaccess no se puede la máquina virtual. problema de Hello puede ser con hello servicios de escritorio remoto en hello VM, la conexión de red de Hola o el cliente de escritorio remoto de hello en el equipo host. En este artículo le guía a través de algunas Hola problemas más comunes que métodos tooresolve RDP conexión. 
 
-Si necesita más ayuda con cualquier aspecto de este artículo, puede ponerse en contacto con los expertos de Azure en [los foros de MSDN Azure o Stack Overflow](https://azure.microsoft.com/support/forums/). Como alternativa, puede registrar un incidente de soporte técnico de Azure. Vaya al [sitio de soporte técnico de Azure](https://azure.microsoft.com/support/options/) y seleccione **Obtener soporte**.
+Si necesita más ayuda en cualquier momento en este artículo, puede ponerse en contacto con hello Azure expertos en [Hola foros de Azure de MSDN y el desbordamiento de la pila](https://azure.microsoft.com/support/forums/). Como alternativa, puede registrar un incidente de soporte técnico de Azure. Vaya toohello [sitio de soporte técnico de Azure](https://azure.microsoft.com/support/options/) y seleccione **obtener admiten**.
 
 <a id="quickfixrdp"></a>
 
 ## <a name="quick-troubleshooting-steps"></a>Pasos rápidos para solucionar problemas
-Después de cada paso de solución de problemas, intente volver a conectarse a la máquina virtual:
+Después de cada paso de la solución de problemas, intente volver a conectarse toohello VM:
 
 1. Restablezca la configuración de Escritorio remoto.
 2. Compruebe las reglas de grupo de seguridad de red/puntos de conexión de Cloud Services.
 3. Revise los registros de la consola de máquina virtual.
-4. Restablezca el NIC para la máquina virtual.
-5. Compruebe el estado del recurso de la máquina virtual.
+4. Restablecer hello NIC para VM Hola.
+5. Hola de comprobación de mantenimiento de recursos de máquina virtual.
 6. Restablezca la contraseña de la máquina virtual.
 7. Reinicie la máquina virtual.
 8. Vuelva a implementar la máquina virtual.
@@ -44,93 +44,93 @@ Después de cada paso de solución de problemas, intente volver a conectarse a l
 Si necesita instrucciones más detalladas y explicaciones, siga leyendo. Compruebe que el equipo de red local, como enrutadores y firewalls, no están bloqueando el puerto TCP 3389 saliente, como se indicó en [los escenarios de solución de problemas de RDP detallados](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!TIP]
-> Si el botón **Conectar** de la máquina virtual está atenuado en el portal y no está conectado a Azure a través de una conexión [Express Route](../../expressroute/expressroute-introduction.md) o [VPN de sitio a sitio](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), deberá crear y asignar a la máquina virtual una dirección IP pública antes de poder usar RDP. Aquí puede leer más sobre [direcciones IP públicas en Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+> Si hello **conectar** botón de la máquina virtual aparece en gris horizontal en el portal de Hola y no es tooAzure conectado a través de un [Express Route](../../expressroute/expressroute-introduction.md) o [VPN de sitio a sitio](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) conexión, que necesita toocreate y asignar la máquina virtual una IP pública resolver antes de puedan utilizar RDP. Aquí puede leer más sobre [direcciones IP públicas en Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
 
 
-## <a name="ways-to-troubleshoot-rdp-issues"></a>Formas de solucionar problemas de RDP
-Puede solucionar los problemas de las máquinas virtuales creadas mediante el modelo de implementación de Resource Manager con uno de los métodos siguientes:
+## <a name="ways-tootroubleshoot-rdp-issues"></a>Problemas de RDP de formas tootroubleshoot
+Puede solucionar el problema de máquinas virtuales creadas mediante el modelo de implementación del Administrador de recursos de hello mediante uno de los siguientes métodos de hello:
 
-* [Azure Portal](#using-the-azure-portal): este método es perfecto si necesita restablecer rápidamente las credenciales de usuario o de configuración de RDP y no tiene instaladas las herramientas de Azure.
-* [Azure PowerShell](#using-azure-powershell): si está familiarizado con el símbolo del sistema de PowerShell, restablezca rápidamente las credenciales de usuario o la configuración de RDP mediante los cmdlets de Azure PowerShell.
+* [Portal de Azure](#using-the-azure-portal) : great si necesita tooquickly restablece credenciales de usuario o configuración de RDP hello y no haya Hola instaladas herramientas de Azure.
+* [Azure PowerShell](#using-azure-powershell) : si está familiarizado con un símbolo del sistema de PowerShell, rápidamente restablecimiento Hola RDP configuración o credenciales de usuario con los cmdlets de PowerShell de Azure de Hola.
 
-También puede encontrar los pasos para solucionar problemas con las máquinas virtuales creadas mediante el [modelo de implementación clásica](#troubleshoot-vms-created-using-the-classic-deployment-model).
+También puede consultar los pasos para solucionar problemas de máquinas virtuales creadas mediante hello [modelo de implementación clásica](#troubleshoot-vms-created-using-the-classic-deployment-model).
 
 <a id="fix-common-remote-desktop-errors"></a>
 
-## <a name="troubleshoot-using-the-azure-portal"></a>Solución de problemas mediante Azure Portal
-Después de cada paso de solución de problemas, intente conectarse de nuevo a la máquina virtual. Si sigue sin poder conectarse, pruebe el paso siguiente.
+## <a name="troubleshoot-using-hello-azure-portal"></a>Solucionar problemas mediante Hola portal de Azure
+Después de cada paso de la solución de problemas, intente conectarse de nuevo tooyour máquina virtual. Si sigue sin poder conectarse, pruebe el paso siguiente Hola.
 
-1. **Restablezca la conexión RDP**. En este paso para solucionar problemas se restablece la configuración de RDP cuando las conexiones remotas están deshabilitadas o las reglas de Firewall de Windows están bloqueando el RDP, por ejemplo.
+1. **Restablezca la conexión RDP**. Este paso para solucionar problemas restablece la configuración de RDP de hello cuando las conexiones remotas están deshabilitadas o las reglas de Firewall de Windows están bloqueando RDP, por ejemplo.
    
-    Seleccione la máquina virtual en Azure Portal. Desplácese hacia abajo en el panel de configuración a la sección **Soporte y solución de problemas** cerca de la parte inferior de la lista. Haga clic en el botón **Restablecer contraseña**. Establezca el **Modo** en **Reset configuration only** (Configuración del restablecimiento solo) y, después, haga clic en el botón **Actualizar**:
+    Seleccione la máquina virtual en hello portal de Azure. Desplácese hacia abajo en hello configuración panel toohello **soporte técnico y solución de problemas** sección cerca de la parte inferior de la lista de Hola. Haga clic en hello **de restablecimiento de contraseña** botón. Conjunto hello **modo** demasiado**Restablecer configuración solo** y, a continuación, haga clic en hello **actualización** botón:
    
-    ![Restablecimiento de la configuración de RDP en Azure Portal](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **Compruebe las reglas del grupo de seguridad de red**. Use la [verificación del flujo IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) para confirmar si una regla en un grupo de seguridad de red está bloqueando el tráfico hacia o desde una máquina virtual. También puede revisar cómo crear reglas de grupo de seguridad eficaces para garantizar que exista la regla NSG "Permitir" de entrada y tenga prioridad para el puerto RDP (valor predeterminado 3389). Para obtener más información, consulte [Uso de las reglas de seguridad vigentes para solucionar problemas de flujo de tráfico de máquinas virtuales](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+    ![Restablecer configuración de RDP Hola Hola portal de Azure](./media/troubleshoot-rdp-connection/reset-rdp.png)
+2. **Compruebe las reglas del grupo de seguridad de red**. Use [comprobar flujo IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) tooconfirm si una regla en un grupo de seguridad de red está bloqueando el tráfico tooor desde una máquina virtual. También puede revisar el grupo de seguridad eficaz reglas tooensure de entrada "Permitir" NSG regla existe y se establece una prioridad para el puerto RDP (valor predeterminado 3389). Para obtener más información, consulte [flujo del tráfico con reglas de seguridad efectivo tootroubleshoot VM](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
 
-3. **Revise los diagnósticos de arranque de la máquina virtual**. En este paso para solucionar problemas se revisan los registros de la consola de la máquina virtual para determinar si la máquina virtual está notificando de un problema. No todas las máquinas virtuales tienen diagnósticos de arranque habilitados, por lo que este paso para solucionar problemas puede ser opcional.
+3. **Revise los diagnósticos de arranque de la máquina virtual**. Este paso para solucionar problemas revisa Hola VM consola registros toodetermine si Hola VM está informando de un problema. No todas las máquinas virtuales tienen diagnósticos de arranque habilitados, por lo que este paso para solucionar problemas puede ser opcional.
    
-    Los pasos para solucionar problemas específicos quedan fuera del ámbito de este artículo, pero pueden indicar un problema más amplio que está afectando a la conectividad RDP. Para más información acerca de cómo revisar los registros de la consola y la captura de pantalla de la máquina virtual, consulte la entrada del blog [Boot Diagnostics for VMs](boot-diagnostics.md) (Diagnósticos de arranque para máquinas virtuales).
+    Pasos de solución de problemas específicos son más allá del ámbito de Hola de este artículo, pero pueden indicar un problema más amplio que está afectando a la conectividad RDP. Para obtener más información acerca de cómo revisar los registros de la consola de Hola y captura de pantalla de máquina virtual, consulte [el diagnóstico de arranque para máquinas virtuales](boot-diagnostics.md).
 
-4. **Restablezca el NIC para la máquina virtual**. Para más información, consulte [Procedimiento para establecer el NIC para la máquina virtual de Windows Azure](reset-network-interface.md).
-5. **Compruebe el estado del recurso de la máquina virtual**. En este paso para solucionar problemas se comprueba que no hay ningún problema conocido con la plataforma Azure que pueda afectar a la conectividad de la máquina virtual.
+4. **Restablecimiento de hello NIC para VM de hello**. Para obtener más información, consulte [cómo tooreset NIC para VM de Windows Azure](reset-network-interface.md).
+5. **Comprobar Hola mantenimiento de recursos de máquina virtual**. Este paso para solucionar problemas comprueba que no hay ningún problema conocido con hello plataforma Windows Azure que afecte a conectividad toohello máquina virtual.
    
-    Seleccione la máquina virtual en Azure Portal. Desplácese hacia abajo en el panel de configuración a la sección **Soporte y solución de problemas** cerca de la parte inferior de la lista. Haga clic en el botón **Estado de los recursos**. Una máquina virtual correcta se notifica como **Disponible**:
+    Seleccione la máquina virtual en hello portal de Azure. Desplácese hacia abajo en hello configuración panel toohello **soporte técnico y solución de problemas** sección cerca de la parte inferior de la lista de Hola. Haga clic en hello **estado de los recursos** botón. Una máquina virtual correcta se notifica como **Disponible**:
    
-    ![Comprobación del estado del recurso de máquina virtual en Azure Portal](./media/troubleshoot-rdp-connection/check-resource-health.png)
-6. **Restablezca las credenciales de usuario**. En este paso para solucionar problemas se restablece la contraseña en una cuenta de administrador local cuando no está seguro de las credenciales o las ha olvidado.
+    ![Comprobar estado de recursos de máquina virtual en hello portal de Azure](./media/troubleshoot-rdp-connection/check-resource-health.png)
+6. **Restablezca las credenciales de usuario**. Este paso para solucionar problemas restablece la contraseña de hello en una cuenta de administrador local cuando no está seguro o ha olvidado credenciales Hola.
    
-    Seleccione la máquina virtual en Azure Portal. Desplácese hacia abajo en el panel de configuración a la sección **Soporte y solución de problemas** cerca de la parte inferior de la lista. Haga clic en el botón **Restablecer contraseña**. Asegúrese de que el **Modo** está establecido en **Restablecer contraseña** y, después, escriba su nombre de usuario y una nueva contraseña. Finalmente, haga clic en el botón **Actualizar**:
+    Seleccione la máquina virtual en hello portal de Azure. Desplácese hacia abajo en hello configuración panel toohello **soporte técnico y solución de problemas** sección cerca de la parte inferior de la lista de Hola. Haga clic en hello **de restablecimiento de contraseña** botón. Asegúrese de hello seguro **modo** se establece demasiado**de restablecimiento de contraseña** y, a continuación, escriba el nombre de usuario y una contraseña nueva. Por último, haga clic en hello **actualización** botón:
    
-    ![Restablecimiento de las credenciales de usuario en Azure Portal](./media/troubleshoot-rdp-connection/reset-password.png)
-7. **Reinicie la máquina virtual**. En este paso para solucionar problemas se puede corregir cualquier problema subyacente que tenga la misma máquina virtual.
+    ![Restablecer credenciales de usuario de Hola Hola portal de Azure](./media/troubleshoot-rdp-connection/reset-password.png)
+7. **Reinicie la máquina virtual**. Este paso de solución de problemas puede corregir cualquier problema subyacente tiene Hola propia máquina virtual.
    
-    Seleccione la máquina virtual en Azure Portal y haga clic en la pestaña **Información general**. Haga clic en el botón **Reiniciar**:
+    Seleccione la máquina virtual en Hola portal de Azure y haga clic en hello **Introducción** ficha. Haga clic en hello **reiniciar** botón:
    
-    ![Reinicio de máquina virtual en Azure Portal](./media/troubleshoot-rdp-connection/restart-vm.png)
-8. **Vuelva a implementar la máquina virtual**. En este paso para solucionar problemas se vuelve a implementar la máquina virtual en otro host dentro de Azure para corregir cualquier problema de red o de plataforma subyacente.
+    ![Reiniciar VM Hola Hola portal de Azure](./media/troubleshoot-rdp-connection/restart-vm.png)
+8. **Vuelva a implementar la máquina virtual**. Este paso para solucionar problemas vuelve a implementar el host de máquina virtual tooanother dentro de Azure toocorrect cualquier problema de plataforma o conexión de red subyacente.
    
-    Seleccione la máquina virtual en Azure Portal. Desplácese hacia abajo en el panel de configuración a la sección **Soporte y solución de problemas** cerca de la parte inferior de la lista. Haga clic en el botón **Volver a implementar** y, después, haga clic en **Volver a implementar**:
+    Seleccione la máquina virtual en hello portal de Azure. Desplácese hacia abajo en hello configuración panel toohello **soporte técnico y solución de problemas** sección cerca de la parte inferior de la lista de Hola. Haga clic en hello **volver a implementar** botón y, a continuación, haga clic en **volver a implementar**:
    
-    ![Reimplementación de la máquina virtual en Azure Portal](./media/troubleshoot-rdp-connection/redeploy-vm.png)
+    ![Volver a implementar Hola VM Hola portal de Azure](./media/troubleshoot-rdp-connection/redeploy-vm.png)
    
-    Cuando finalice esta operación, se pierden datos de disco efímeros y se actualizan las direcciones IP dinámicas que están asociadas a la máquina virtual.
+    Una vez finalizada esta operación, datos de disco efímero están dinámicas y perdidas direcciones IP que están asociadas con hello VM se actualizan.
 
 Si sigue teniendo problemas con RDP, puede [abrir una solicitud de soporte técnico](https://azure.microsoft.com/support/options/) o leer [más pasos y conceptos detallados de solución de problemas de RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Solución de problemas mediante Azure PowerShell
-Si aún no lo ha hecho, [instale y configure la última versión de Azure PowerShell](/powershell/azure/overview).
+Si no lo ha hecho ya, [instalar y configurar Hola más reciente de PowerShell de Azure](/powershell/azure/overview).
 
-Los ejemplos siguientes usan variables como `myResourceGroup`, `myVM` y `myVMAccessExtension`. Reemplace estos nombres de variables y las ubicaciones por sus propios valores.
+Hello en los ejemplos siguientes utilizan variables como `myResourceGroup`, `myVM`, y `myVMAccessExtension`. Reemplace estos nombres de variables y las ubicaciones por sus propios valores.
 
 > [!NOTE]
-> Restablecerá las credenciales de usuario y la configuración de RDP mediante el cmdlet [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) de PowerShell. En los ejemplos siguientes, `myVMAccessExtension` es un nombre que ha especificado como parte del proceso. Si ha trabajado previamente con VMAccessAgent, use `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` para obtener el nombre de la extensión existente y comprobar las propiedades de la máquina virtual. Para ver el nombre, busque en la sección "Extensiones" de la salida.
+> Restablecer las credenciales de usuario de Hola y configuración de RDP hello mediante hello [AzureRmVMAccessExtension conjunto](/powershell/module/azurerm.compute/set-azurermvmaccessextension) cmdlet de PowerShell. Hola, en los ejemplos siguientes `myVMAccessExtension` es un nombre que especifique como parte del proceso de Hola. Si ha trabajado previamente con hello VMAccessAgent, puede obtener nombre de Hola de extensión existente de Hola mediante `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` toocheck propiedades de Hola de hello máquina virtual. nombre de hello tooview, busque sección Hola "Extensions" de la salida de hello.
 
-Después de cada paso de solución de problemas, intente conectarse de nuevo a la máquina virtual. Si sigue sin poder conectarse, pruebe el paso siguiente.
+Después de cada paso de la solución de problemas, intente conectarse de nuevo tooyour máquina virtual. Si sigue sin poder conectarse, pruebe el paso siguiente Hola.
 
-1. **Restablezca la conexión RDP**. En este paso para solucionar problemas se restablece la configuración de RDP cuando las conexiones remotas están deshabilitadas o las reglas de Firewall de Windows están bloqueando el RDP, por ejemplo.
+1. **Restablezca la conexión RDP**. Este paso para solucionar problemas restablece la configuración de RDP de hello cuando las conexiones remotas están deshabilitadas o las reglas de Firewall de Windows están bloqueando RDP, por ejemplo.
    
-    En el ejemplo siguiente se restablece la conexión RDP en una máquina virtual denominada `myVM` en la ubicación `WestUS` y en el grupo de recursos denominado `myResourceGroup`:
+    Hola seguimiento en el ejemplo se restablece la conexión RDP de hello en una máquina virtual denominada `myVM` en hello `WestUS` ubicación y en el grupo de recursos de hello llamado `myResourceGroup`:
    
     ```powershell
     Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location Westus -Name "myVMAccessExtension"
     ```
-2. **Compruebe las reglas del grupo de seguridad de red**. En este paso para solucionar problemas se comprueba que dispone de una regla en el grupo de seguridad de red para permitir el tráfico RDP. El puerto predeterminado para RDP es el puerto TCP 3389. No se creará automáticamente una regla que permita el tráfico RDP cuando se crea la máquina virtual.
+2. **Compruebe las reglas del grupo de seguridad de red**. Este paso para la solución comprueba que dispones de una regla en el tráfico RDP toopermit de grupo de seguridad de red. puerto predeterminado de Hola para RDP es el puerto TCP 3389. Un tráfico de RDP toopermit de regla no se crean automáticamente al crear la máquina virtual.
    
-    En primer lugar, asigne todos los datos de configuración para el grupo de seguridad de red a la variable `$rules`. En el ejemplo siguiente se obtiene información sobre el grupo de seguridad de red denominado `myNetworkSecurityGroup` en el grupo de recursos denominado `myResourceGroup`:
+    En primer lugar, asigne todos los datos de configuración de hello para el grupo de seguridad de red toohello `$rules` variable. Hello en el ejemplo siguiente se obtiene información sobre Hola grupo de seguridad de red denominado `myNetworkSecurityGroup` en grupo de recursos de hello llamado `myResourceGroup`:
    
     ```powershell
     $rules = Get-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
         -Name "myNetworkSecurityGroup"
     ```
    
-    Ahora, vea las reglas que están configuradas para este grupo de seguridad de red. Compruebe que existe una regla que permite las conexiones de entrada en el puerto TCP 3389, tal como se indica a continuación:
+    Ahora, ver las reglas de Hola que están configuradas para este grupo de seguridad de red. Compruebe que existe una regla tooallow el puerto TCP 3389 para las conexiones entrantes como se indica a continuación:
    
     ```powershell
     $rules.SecurityRules
     ```
    
-    En el ejemplo siguiente se muestra una regla de seguridad válida que permita el tráfico de RDP. Puede ver que `Protocol`, `DestinationPortRange`, `Access` y `Direction` están configurados correctamente:
+    Hello en el ejemplo siguiente se muestra una regla de seguridad válido que permita el tráfico de RDP. Puede ver que `Protocol`, `DestinationPortRange`, `Access` y `Direction` están configurados correctamente:
    
     ```powershell
     Name                     : default-allow-rdp
@@ -149,15 +149,15 @@ Después de cada paso de solución de problemas, intente conectarse de nuevo a l
     ```
    
     Si no dispone de una regla que permita el tráfico RDP, [cree una regla de grupo de seguridad de red](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Permita el puerto TCP 3389.
-3. **Restablezca las credenciales de usuario**. En este paso para solucionar problemas se restablece la contraseña en una cuenta de administrador local que haya especificado cuando no está seguro de las credenciales o las haya olvidado.
+3. **Restablezca las credenciales de usuario**. Este paso para solucionar problemas restablece la contraseña de hello en la cuenta de administrador local de Hola que especifique cuando no está seguro de, o ha olvidado, las credenciales de Hola.
    
-    En primer lugar, especifique el nombre de usuario y una contraseña nueva mediante la asignación de credenciales a la variable `$cred`, tal como se indica a continuación:
+    En primer lugar, especifique Hola nombre de usuario y una contraseña nueva mediante la asignación de credenciales toohello `$cred` variable como se indica a continuación:
    
     ```powershell
     $cred=Get-Credential
     ```
    
-    Ahora, actualice las credenciales en la máquina virtual. En el ejemplo siguiente se actualizan las credenciales en una máquina virtual denominada `myVM` en la ubicación `WestUS` y en el grupo de recursos `myResourceGroup`:
+    Ahora, actualice las credenciales de hello en su máquina virtual. Hello en el ejemplo siguiente se actualiza las credenciales de hello en una máquina virtual denominada `myVM` en hello `WestUS` ubicación y en el grupo de recursos de hello llamado `myResourceGroup`:
    
     ```powershell
     Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -165,16 +165,16 @@ Después de cada paso de solución de problemas, intente conectarse de nuevo a l
         -UserName $cred.GetNetworkCredential().Username `
         -Password $cred.GetNetworkCredential().Password
     ```
-4. **Reinicie la máquina virtual**. En este paso para solucionar problemas se puede corregir cualquier problema subyacente que tenga la misma máquina virtual.
+4. **Reinicie la máquina virtual**. Este paso de solución de problemas puede corregir cualquier problema subyacente tiene Hola propia máquina virtual.
    
-    En el ejemplo siguiente se reinicia la máquina virtual llamada `myVM` en el grupo de recursos `myResourceGroup`:
+    Después de reinicios del ejemplo de Hola Hola máquina virtual denominada `myVM` en grupo de recursos de hello llamado `myResourceGroup`:
    
     ```powershell
     Restart-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
-5. **Vuelva a implementar la máquina virtual**. En este paso para solucionar problemas se vuelve a implementar la máquina virtual en otro host dentro de Azure para corregir cualquier problema de red o de plataforma subyacente.
+5. **Vuelva a implementar la máquina virtual**. Este paso para solucionar problemas vuelve a implementar el host de máquina virtual tooanother dentro de Azure toocorrect cualquier problema de plataforma o conexión de red subyacente.
    
-    En el ejemplo siguiente se vuelve a implementar la máquina virtual denominada `myVM` en la ubicación `WestUS` y en el grupo de recursos `myResourceGroup`:
+    Después de nuevas implementaciones de ejemplo de Hola Hola máquina virtual denominada `myVM` en hello `WestUS` ubicación y en el grupo de recursos de hello llamado `myResourceGroup`:
    
     ```powershell
     Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -182,55 +182,55 @@ Después de cada paso de solución de problemas, intente conectarse de nuevo a l
 
 Si sigue teniendo problemas con RDP, puede [abrir una solicitud de soporte técnico](https://azure.microsoft.com/support/options/) o leer [más pasos y conceptos detallados de solución de problemas de RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>Solución de problemas de máquinas virtuales creadas con el modelo de implementación clásica
-Después de cada paso de solución de problemas, intente volver a conectarse a la máquina virtual.
+## <a name="troubleshoot-vms-created-using-hello-classic-deployment-model"></a>Solucionar problemas de máquinas virtuales creadas mediante el modelo de implementación de hello clásico
+Después de cada paso de la solución de problemas, intente volver a conectarse toohello máquina virtual.
 
-1. **Restablezca la conexión RDP**. En este paso para solucionar problemas se restablece la configuración de RDP cuando las conexiones remotas están deshabilitadas o las reglas de Firewall de Windows están bloqueando el RDP, por ejemplo.
+1. **Restablezca la conexión RDP**. Este paso para solucionar problemas restablece la configuración de RDP de hello cuando las conexiones remotas están deshabilitadas o las reglas de Firewall de Windows están bloqueando RDP, por ejemplo.
    
-    Seleccione la máquina virtual en Azure Portal. Haga clic en el botón **...Más** y, después, haga clic en **Restablecer acceso remoto**:
+    Seleccione la máquina virtual en hello portal de Azure. Haga clic en hello **... Más** , a continuación, haga clic en **restablecer el acceso remoto**:
    
-    ![Restablecimiento de la configuración de RDP en Azure Portal](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
-2. **Compruebe los puntos de conexión de Cloud Services**. En este paso para solucionar problemas se comprueba que dispone de puntos de conexión en Cloud Services para permitir el tráfico RDP. El puerto predeterminado para RDP es el puerto TCP 3389. No se creará automáticamente una regla que permita el tráfico RDP cuando se crea la máquina virtual.
+    ![Restablecer configuración de RDP Hola Hola portal de Azure](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
+2. **Compruebe los puntos de conexión de Cloud Services**. Este paso para la solución comprueba que dispones de puntos de conexión en el tráfico RDP de toopermit de servicios en la nube. puerto predeterminado de Hola para RDP es el puerto TCP 3389. Un tráfico de RDP toopermit de regla no se crean automáticamente al crear la máquina virtual.
    
-   Seleccione la máquina virtual en Azure Portal. Haga clic en el botón **Puntos de conexión** para ver los puntos de conexión configurados para la máquina virtual. Compruebe que hay puntos de conexión que permiten el tráfico RDP en el puerto TCP 3389.
+   Seleccione la máquina virtual en hello portal de Azure. Haga clic en hello **extremos** botón extremos de hello tooview configurados actualmente para la máquina virtual. Compruebe que hay puntos de conexión que permiten el tráfico RDP en el puerto TCP 3389.
    
-   En el ejemplo siguiente se muestran los puntos de conexión válidos que permiten el tráfico RDP:
+   Hola siguiente ejemplo muestra los puntos de conexión válidos que permitan el tráfico RDP:
    
-   ![Comprobación de los puntos de conexión de Cloud Services en Azure Portal](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
+   ![Comprobar los extremos de servicios en la nube de hello portal de Azure](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
-   Si no tiene un punto de conexión que permita el tráfico RDP, [cree un punto de conexión de Cloud Services](classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Permita TCP en el puerto 3389 privado.
-3. **Revise los diagnósticos de arranque de la máquina virtual**. En este paso para solucionar problemas se revisan los registros de la consola de la máquina virtual para determinar si la máquina virtual está notificando de un problema. No todas las máquinas virtuales tienen diagnósticos de arranque habilitados, por lo que este paso para solucionar problemas puede ser opcional.
+   Si no tiene un punto de conexión que permita el tráfico RDP, [cree un punto de conexión de Cloud Services](classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Permitir TCP tooprivate puerto 3389.
+3. **Revise los diagnósticos de arranque de la máquina virtual**. Este paso para solucionar problemas revisa Hola VM consola registros toodetermine si Hola VM está informando de un problema. No todas las máquinas virtuales tienen diagnósticos de arranque habilitados, por lo que este paso para solucionar problemas puede ser opcional.
    
-    Los pasos para solucionar problemas específicos quedan fuera del ámbito de este artículo, pero pueden indicar un problema más amplio que está afectando a la conectividad RDP. Para más información acerca de cómo revisar los registros de la consola y la captura de pantalla de la máquina virtual, consulte la entrada del blog [Boot Diagnostics for VMs](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) (Diagnósticos de arranque para máquinas virtuales).
-4. **Compruebe el estado del recurso de la máquina virtual**. En este paso para solucionar problemas se comprueba que no hay ningún problema conocido con la plataforma Azure que pueda afectar a la conectividad de la máquina virtual.
+    Pasos de solución de problemas específicos son más allá del ámbito de Hola de este artículo, pero pueden indicar un problema más amplio que está afectando a la conectividad RDP. Para obtener más información acerca de cómo revisar los registros de la consola de Hola y captura de pantalla de máquina virtual, consulte [el diagnóstico de arranque para máquinas virtuales](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/).
+4. **Comprobar Hola mantenimiento de recursos de máquina virtual**. Este paso para solucionar problemas comprueba que no hay ningún problema conocido con hello plataforma Windows Azure que afecte a conectividad toohello máquina virtual.
    
-    Seleccione la máquina virtual en Azure Portal. Desplácese hacia abajo en el panel de configuración a la sección **Soporte y solución de problemas** cerca de la parte inferior de la lista. Haga clic en el botón **Estado de los recursos**. Una máquina virtual correcta se notifica como **Disponible**:
+    Seleccione la máquina virtual en hello portal de Azure. Desplácese hacia abajo en hello configuración panel toohello **soporte técnico y solución de problemas** sección cerca de la parte inferior de la lista de Hola. Haga clic en hello **estado de los recursos** botón. Una máquina virtual correcta se notifica como **Disponible**:
    
-    ![Comprobación del estado del recurso de máquina virtual en Azure Portal](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
-5. **Restablezca las credenciales de usuario**. En este paso para solucionar problemas se restablece la contraseña en la cuenta de administrador local que haya especificado cuando no está seguro de las credenciales o las haya olvidado.
+    ![Comprobar estado de recursos de máquina virtual en hello portal de Azure](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
+5. **Restablezca las credenciales de usuario**. Este paso para solucionar problemas restablece la contraseña de hello en la cuenta de administrador local de Hola que se especifica cuando no está seguro o ha olvidado credenciales Hola.
    
-    Seleccione la máquina virtual en Azure Portal. Desplácese hacia abajo en el panel de configuración a la sección **Soporte y solución de problemas** cerca de la parte inferior de la lista. Haga clic en el botón **Restablecer contraseña**. Escriba su nombre de usuario y una nueva contraseña. Finalmente, haga clic en el botón **Guardar**:
+    Seleccione la máquina virtual en hello portal de Azure. Desplácese hacia abajo en hello configuración panel toohello **soporte técnico y solución de problemas** sección cerca de la parte inferior de la lista de Hola. Haga clic en hello **de restablecimiento de contraseña** botón. Escriba su nombre de usuario y una nueva contraseña. Por último, haga clic en hello **guardar** botón:
    
-    ![Restablecimiento de las credenciales de usuario en Azure Portal](./media/troubleshoot-rdp-connection/classic-reset-password.png)
-6. **Reinicie la máquina virtual**. En este paso para solucionar problemas se puede corregir cualquier problema subyacente que tenga la misma máquina virtual.
+    ![Restablecer credenciales de usuario de Hola Hola portal de Azure](./media/troubleshoot-rdp-connection/classic-reset-password.png)
+6. **Reinicie la máquina virtual**. Este paso de solución de problemas puede corregir cualquier problema subyacente tiene Hola propia máquina virtual.
    
-    Seleccione la máquina virtual en Azure Portal y haga clic en la pestaña **Información general**. Haga clic en el botón **Reiniciar**:
+    Seleccione la máquina virtual en Hola portal de Azure y haga clic en hello **Introducción** ficha. Haga clic en hello **reiniciar** botón:
    
-    ![Reinicio de máquina virtual en Azure Portal](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+    ![Reiniciar VM Hola Hola portal de Azure](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
 Si sigue teniendo problemas con RDP, puede [abrir una solicitud de soporte técnico](https://azure.microsoft.com/support/options/) o leer [más pasos y conceptos detallados de solución de problemas de RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="troubleshoot-specific-rdp-errors"></a>Solución de errores específicos de RDP
-Es posible que al intentar conectarse a la máquina virtual mediante RDP, encuentre un mensaje error específico. Los siguientes son los mensajes de error más comunes:
+Puede encontrar un mensaje de error específico al tratar de tooconnect tooyour máquina virtual a través de RDP. siguiente Hola es mensajes de error más comunes de saludo:
 
-* [Se desconectó la sesión remota porque no hay servidores de licencias de Escritorio remoto disponibles para proporcionar una licencia](troubleshoot-specific-rdp-errors.md#rdplicense).
-* [Escritorio remoto no encuentra el equipo "nombre"](troubleshoot-specific-rdp-errors.md#rdpname).
-* [Error de autenticación. No se puede conectar con la autoridad de seguridad local](troubleshoot-specific-rdp-errors.md#rdpauth).
+* [se desconectó la sesión remota de Hello porque no hay ningún tooprovide disponible servidores de licencias de escritorio remoto una licencia](troubleshoot-specific-rdp-errors.md#rdplicense).
+* [Escritorio remoto no puede encontrar Hola "nombre" del equipo](troubleshoot-specific-rdp-errors.md#rdpname).
+* [Se ha producido un error de autenticación. Hello autoridad de seguridad Local no se puede establecer contacto con](troubleshoot-specific-rdp-errors.md#rdpauth).
 * [Error de Seguridad de Windows: Las credenciales no funcionaron](troubleshoot-specific-rdp-errors.md#wincred).
-* [Este equipo no se puede conectar al equipo remoto](troubleshoot-specific-rdp-errors.md#rdpconnect).
+* [Este equipo no puede conectar el equipo remoto toohello](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
 ## <a name="additional-resources"></a>Recursos adicionales
-Si no se ha producido ninguno de estos errores y sigue sin poder conectarse a la máquina virtual a través de Escritorio remoto, consulte [Solucionar problemas de conexiones de Escritorio remoto a una máquina virtual de Azure basada en Windows](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Para ver los pasos sobre cómo solucionar problemas de acceso a las aplicaciones, consulte [Solucionar problemas de acceso a una aplicación que se ejecuta en una máquina virtual de Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Si tiene problemas con Secure Shell (SSH) para conectarse a una máquina virtual Linux en Azure, consulte el artículo sobre cómo [solucionar problemas con las conexiones SSH en una máquina virtual Linux en Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Si ninguno de estos errores se produjeron y sigue sin poder conectarse toohello máquina virtual mediante Escritorio remoto, lea Hola detallada [guía para escritorio remoto para solucionar problemas](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Para solucionar problemas de pasos al obtener acceso a aplicaciones que se ejecutan en una máquina virtual, consulte [aplicación tooan solucionar access que ejecuta en una VM de Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Si tiene problemas con el Shell seguro (SSH) tooconnect tooa VM de Linux en Azure, consulte [solucionar problemas de SSH conexiones tooa VM de Linux en Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

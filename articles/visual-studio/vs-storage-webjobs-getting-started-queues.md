@@ -1,6 +1,6 @@
 ---
-title: "Introducción al almacenamiento de colas y servicios conectados de Visual Studio (proyectos de WebJobs) | Microsoft Docs"
-description: "Cómo empezar a usar el almacenamiento de colas de Azure en un proyecto de WebJob después de conectarse a una cuenta de almacenamiento con los servicios conectados de Visual Studio."
+title: aaaGetting a trabajar con Visual Studio y el almacenamiento de cola servicios conectados (proyectos de trabajo Web) | Documentos de Microsoft
+description: "Cómo tooget iniciado mediante el almacenamiento de cola de Azure en un proyecto WebJob después de conectar la cuenta de almacenamiento de tooa con Visual Studio servicios conectados."
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: ef40db782114bfdaa02dafeabcfc6da6c41423e1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 47a446aa5c6bbf25526339823db4952ac1a8802f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Introducción al Almacenamiento de colas de Azure y servicios conectados de Visual Studio (proyectos de WebJobs)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Información general
-En este artículo se describe cómo empezar a usar Azure Queue Storage en un proyecto de WebJobs de Azure de Visual Studio después de crear una cuenta de almacenamiento de Azure o hacer referencia a ella con el cuadro de diálogo **Agregar servicios conectados** de Visual Studio. Al agregar una cuenta de almacenamiento a un proyecto de WebJobs con el cuadro de diálogo **Agregar servicios conectados** de Visual Studio, se instalan los paquetes de NuGet de Almacenamiento de Azure adecuados, se agregan las referencias de .NET adecuadas al proyecto y se actualizan las cadenas de conexión para la cuenta de almacenamiento en el archivo App.config.  
+Este artículo se describe cómo obtener iniciado mediante la cola de Azure Hola de almacenamiento en un proyecto WebJob de Azure de Visual Studio después de haber creado o hace referencia a una cuenta de almacenamiento de Azure mediante Visual Studio **agregar servicios conectados** cuadro de diálogo. Cuando agrega un proyecto de WebJob de tooa de cuenta de almacenamiento mediante el uso de Visual Studio hello **agregar servicios conectados** cuadro de diálogo, se han instalado paquetes de NuGet de almacenamiento de Azure adecuados de hello, referencias de hello adecuadas .NET son toohello agregado proyecto y cadenas de conexión para la cuenta de almacenamiento de Hola se actualizan en el archivo App.config de hello.  
 
-En este artículo se ofrecen ejemplos de código C# que muestran cómo usar la versión 1.x del SDK de WebJobs de Azure con el servicio Almacenamiento de colas de Azure.
+Este artículo proporciona ejemplos de código de C# que muestran cómo toouse Hola versión del SDK de WebJobs de Azure 1.x con hello servicio de almacenamiento de cola de Azure.
 
-El almacenamiento en cola de Azure es un servicio para almacenar grandes cantidades de mensajes a los que puede obtenerse acceso desde cualquier lugar del mundo a través de llamadas autenticadas con HTTP o HTTPS. Un único mensaje en cola puede tener un tamaño de hasta 64 KB y una cola puede contener millones de mensajes, hasta el límite de capacidad total de una cuenta de almacenamiento. Consulte [Introducción al Almacenamiento en cola de Azure mediante .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) para más información. Para obtener más información acerca de ASP.NET, consulte [ASP.NET](http://www.asp.net).
+Almacenamiento de la cola de Azure es un servicio para almacenar grandes cantidades de mensajes que pueden tener acceso desde cualquier lugar Hola mundo a través de llamadas autenticadas mediante HTTP o HTTPS. Un mensaje de la cola solo puede estar too64 KB de tamaño y una cola puede contener millones de mensajes, seguridad toohello límite de capacidad total de una cuenta de almacenamiento. Consulte [Introducción al Almacenamiento en cola de Azure mediante .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) para más información. Para obtener más información acerca de ASP.NET, consulte [ASP.NET](http://www.asp.net).
 
-## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>Desencadenar una función cuando se recibe un mensaje de cola
-Para escribir una función que el SDK de WebJobs llama cuando se recibe un mensaje en cola, use el atributo **QueueTrigge** . El constructor de atributo toma un parámetro de cadena que especifica el nombre de la cola para sondear. Para ver cómo establecer dinámicamente el nombre de la cola, consulte [Establecimiento de opciones de configuración](#how-to-set-configuration-options).
+## <a name="how-tootrigger-a-function-when-a-queue-message-is-received"></a>¿Cómo tootrigger una función cuando se recibe un mensaje de la cola
+llama a una función que Hola SDK de WebJobs toowrite cuando se recibe un mensaje de la cola, utilice hello **QueueTrigger** atributo. constructor de atributo de Hello toma un parámetro de cadena que especifica el nombre hello de hello cola toopoll. toosee cómo tooset Hola nombre de la cola de forma dinámica, consulte [cómo tooset opciones de configuración](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Mensajes en cola de cadena
-En el ejemplo siguiente, la cola contiene un mensaje de cadena, por lo que **QueueTrigger** se aplica a un parámetro de cadena llamado **logMessage** que tiene el contenido del mensaje de la cola. La función [escribe un mensaje de registro en el panel](#how-to-write-logs).
+En el siguiente ejemplo de Hola, cola de hello contiene un mensaje de cadena, por lo que **QueueTrigger** es tooa aplicado parámetro de cadena denominado **logMessage** que incluye contenido de hello del mensaje de bienvenida de cola. Hola función [escribe un toohello de mensaje de registro panel](#how-to-write-logs).
 
         public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
         {
             logger.WriteLine(logMessage);
         }
 
-Además de **string**, el parámetro puede ser una matriz de bytes, un objeto **CloudQueueMessage** o un objeto POCO que defina.
+Además **cadena**, parámetro hello puede ser una matriz de bytes, un **CloudQueueMessage** objeto o un POCO que defina.
 
 ### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>Mensajes en cola POCO [(objeto CRL estándar](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
-En el ejemplo siguiente, el mensaje de cola contiene JSON para un objeto **BlobInformation** que incluye una propiedad **BlobName**. El SDK automáticamente deserializa el objeto.
+En el siguiente ejemplo de Hola, mensaje de bienvenida de cola contiene un valor JSON para un **BlobInformation** objeto que incluye un **BlobName** propiedad. Hola SDK automáticamente deserializa el objeto de Hola.
 
         public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
         {
-            logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
+            logger.WriteLine("Queue message refers tooblob: " + blobInfo.BlobName);
         }
 
-El SDK usa el [paquete Newtonsoft.Json NuGet](http://www.nuget.org/packages/Newtonsoft.Json) para serializar y deserializar los mensajes. Si crea mensajes en cola en un programa que no usa el SDK de WebJobs, puede escribir código similar al siguiente ejemplo para crear un mensaje en cola POCO que pueda analizar el SDK.
+Hola SDK utiliza hello [paquete NuGet de Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json) tooserialize y deserializar los mensajes. Si crea mensajes en cola en un programa que no utilice Hola SDK de WebJobs, puede escribir código como sigue toocreate un POCO de la cola de mensajes de ejemplo de Hola ese Hola que SDK puede analizar.
 
         BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
         var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
         logQueue.AddMessage(queueMessage);
 
 ### <a name="async-functions"></a>Funciones asincrónicas
-La siguiente función async [escribe un registro en el panel](#how-to-write-logs).
+Hola después de la función asincrónica [escribe un panel de registro toohello](#how-to-write-logs).
 
         public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
         {
             await logger.WriteLineAsync(logMessage);
         }
 
-Las funciones asincrónicas pueden tomar un [token de cancelación](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), como se muestra en el siguiente ejemplo, que copia un blob. (Para obtener una explicación del marcador de posición **queueTrigger** , consulte la sección [Blobs](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) ).
+Funciones asincrónicas pueden tardar un [token de cancelación](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), tal y como se muestra en el siguiente ejemplo que copia un blob de Hola. (Para obtener una explicación de hello **queueTrigger** marcador de posición, vea hello [Blobs](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) sección.)
 
         public async static Task ProcessQueueMessageAsyncCancellationToken(
             [QueueTrigger("blobcopyqueue")] string blobName,
@@ -76,8 +76,8 @@ Las funciones asincrónicas pueden tomar un [token de cancelación](http://www.a
             await blobInput.CopyToAsync(blobOutput, 4096, token);
         }
 
-## <a name="types-the-queuetrigger-attribute-works-with"></a>Tipos con los que funciona el atributo QueueTrigger
-Puede usar **QueueTrigger** con los tipos siguientes:
+## <a name="types-hello-queuetrigger-attribute-works-with"></a>Atributo de tipos hello QueueTrigger funciona con
+Puede usar **QueueTrigger** con hello siguientes tipos:
 
 * **cadena**
 * Un tipo de POCO serializado como JSON
@@ -85,18 +85,18 @@ Puede usar **QueueTrigger** con los tipos siguientes:
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Algoritmo de sondeo
-El SDK implementa un algoritmo de interrupción exponencial aleatorio para reducir el efecto del sondeo de cola inactiva en los costos de transacción de almacenamiento.  Cuando se encuentra un mensaje, el SDK espera dos segundos y, a continuación, comprueba si hay otro mensaje; cuando no se encuentra ningún mensaje, espera unos cuatro segundos antes de intentarlo de nuevo. Después de varios intentos fallidos para obtener un mensaje de la cola, el tiempo de espera sigue aumentando hasta que alcanza el tiempo de espera máximo, predeterminado en un minuto. [El tiempo de espera máximo es configurable](#how-to-set-configuration-options).
+Hola SDK implementa un efecto de hello tooreduce aleatorio algoritmo de retroceso exponencial de sondeo en los costos de transacciones de almacenamiento de cola inactiva.  Cuando se encuentra un mensaje, Hola SDK espera dos segundos y, a continuación, comprueba si otro mensaje; Cuando se encuentra ningún mensaje espera unos cuatro segundos antes de volver a intentarlo. Después de los intentos subsiguientes tooget un mensaje de la cola, tiempo de espera de hello continúa tooincrease hasta que alcanza el tiempo de espera máximo de hello, qué minuto de tooone los valores predeterminados. [Hello tiempo de espera máximo es configurable](#how-to-set-configuration-options).
 
 ## <a name="multiple-instances"></a>Varias instancias
-Si la aplicación web se ejecuta en varias instancias, un WebJobs continuo se ejecuta en cada máquina y estas, a su vez, esperarán a los desencadenadores e intentarán ejecutar funciones. En algunos escenarios puede ocurrir que algunas funciones procesen los mismos datos dos veces, por lo que las funciones deben ser idempotentes (escritas de tal forma que al llamarlas repetidamente con los mismos datos de entrada no se generen resultados duplicados).  
+Si la aplicación web se ejecuta en varias instancias, una trabajos Web continuos se ejecuta en cada equipo e intentará toorun funciones y espere a que los desencadenadores cada máquina. En algunos casos que esto puede provocar funciones toosome procesamiento Hola mismos datos dos veces, por lo que funciones deben ser idempotentes (escrito por lo llamar varias veces con hello no generan los mismos datos de entrada Duplicar resultados).  
 
 ## <a name="parallel-execution"></a>Ejecución en paralelo
-Si tiene varias funciones escuchando en diferentes colas, el SDK las llamará en paralelo cuando se reciban mensajes simultáneamente.
+Si tiene varias funciones que escuchan en diferentes colas, Hola SDK llamará a ellos en paralelo cuando se reciben los mensajes al mismo tiempo.
 
-Esto también se da cuando se reciben varios mensajes de una sola cola. De forma predeterminada, el SDK obtiene un lote de 16 mensajes de la cola a la vez y ejecuta la función que se procesa en paralelo. [El tamaño del lote es configurable](#how-to-set-configuration-options). Cuando el número que se está procesando llegue a la mitad del tamaño del lote, el SDK obtiene otro lote y empieza a procesar los mensajes. Por lo tanto, el número máximo de mensajes simultáneos que se procesan por función es uno y medio por el tamaño del lote. Este límite se aplica por separado para cada función que tenga un atributo **QueueTrigger** . Si no desea la ejecución en paralelo de los mensajes en una cola, establezca el tamaño del lote en 1.
+Hello mismo puede decirse cuando se reciben varios mensajes de una sola cola. De forma predeterminada, Hola SDK Obtiene un lote de 16 mensajes en cola a la vez y ejecuta la función hello que los procesa en paralelo. [tamaño de lote de Hello es configurable](#how-to-set-configuration-options). Cuando se obtiene el número Hola procesando hacia abajo toohalf del tamaño de lote de hello, Hola SDK obtiene otro lote y empieza a procesar los mensajes. Por lo tanto, número máximo de Hola de mensajes simultáneos que se procesan por función es el tamaño del lote de una vez y Media Hola. Este límite aplica por separado tooeach función que tiene un **QueueTrigger** atributo. Si no desea que la ejecución en paralelo para los mensajes recibidos en una cola, Establece too1 de tamaño de lote de Hola.
 
 ## <a name="get-queue-or-queue-message-metadata"></a>Obtener metadatos de cola o de mensaje en cola
-Puede obtener las siguientes propiedades de mensaje agregando parámetros a la firma del método:
+Puede obtener Hola siguientes propiedades del mensaje mediante la adición de la firma del método toohello parámetros:
 
 * **DateTimeOffset** expirationTime
 * **DateTimeOffset** insertionTime
@@ -106,9 +106,9 @@ Puede obtener las siguientes propiedades de mensaje agregando parámetros a la f
 * **string** popReceipt
 * **int** dequeueCount
 
-Si desea trabajar directamente con la API de almacenamiento de Azure, también puede agregar un parámetro **CloudStorageAccount** .
+Si desea que toowork directamente con hello API de almacenamiento de Azure, también puede agregar un **CloudStorageAccount** parámetro.
 
-En el siguiente ejemplo escribirá todos estos metadatos en un registro de aplicación de información. En el ejemplo, logMessage y queueTrigger contienen el contenido del mensaje en cola.
+Hello en el ejemplo siguiente se escribe todos este metadatos tooan información registro de aplicación. En el ejemplo de Hola, logMessage y queueTrigger contengan Hola Hola del mensaje de cola.
 
         public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
             DateTimeOffset expirationTime,
@@ -135,7 +135,7 @@ En el siguiente ejemplo escribirá todos estos metadatos en un registro de aplic
                 queueTrigger);
         }
 
-Este es un registro de ejemplo escrito por el código de ejemplo:
+Este es un registro de ejemplo escrito código de ejemplo de Hola:
 
         logMessage=Hello world!
         expirationTime=10/14/2014 10:31:04 PM +00:00
@@ -148,9 +148,9 @@ Este es un registro de ejemplo escrito por el código de ejemplo:
         queueTrigger=Hello world!
 
 ## <a name="graceful-shutdown"></a>Apagado correcto
-Una función que se ejecuta en un WebJob continuo puede aceptar un parámetro **CancellationToken** que permite al sistema operativo notificar a la función cuando el WebJob está a punto de terminar. Puede utilizar esta notificación para asegurarse de que la función no se termina inesperadamente en una forma que deje los datos en un estado incoherente.
+Una función que se ejecuta en un trabajo Web continuo puede aceptar un **CancellationToken** parámetro que permite Hola sistema operativo toonotify Hola función cuando hello trabajo Web es sobre toobe terminada. Puede usar este toomake notificación seguro función hello no finalizar inesperadamente de forma que deja los datos en un estado incoherente.
 
-En el ejemplo siguiente se muestra cómo comprobar la finalización de WebJob inminente en una función.
+Hola siguiente ejemplo se muestra cómo toocheck de inminente finalización del trabajo Web en una función.
 
     public static void GracefulShutdownDemo(
                 [QueueTrigger("inputqueue")] string inputText,
@@ -169,15 +169,15 @@ En el ejemplo siguiente se muestra cómo comprobar la finalización de WebJob in
         }
     }
 
-**Nota:** el Panel puede no mostrar correctamente el estado y la salida de funciones que se hayan cerrado.
+**Nota:** Hola panel no podría mostrar correctamente el estado de Hola y salida de funciones que se haya cerrado.
 
 Para obtener más información, consulte [Cierre estable de WebJobs](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
-## <a name="how-to-create-a-queue-message-while-processing-a-queue-message"></a>Creación de un mensaje de cola al procesar un mensaje de cola
-Para escribir una función que crea un mensaje en cola nuevo, use el atributo **Queue** . Al igual que **QueueTrigger**, pasa el nombre de cola como una cadena o puede [establecer el nombre de la cola dinámicamente](#how-to-set-configuration-options).
+## <a name="how-toocreate-a-queue-message-while-processing-a-queue-message"></a>¿Cómo toocreate una cola de mensajes al procesar un mensaje de cola
+una función que crea un nuevo mensaje de cola, use hello toowrite **cola** atributo. Al igual que **QueueTrigger**, se pasa el nombre de la cola de hello como una cadena o bien puede [establecer nombre de la cola de hello dinámicamente](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Mensajes en cola de cadena
-El siguiente ejemplo de código no asincrónico crea un mensaje en cola nuevo en la cola llamada "outputqueue", con el mismo contenido que el mensaje en cola recibido en la cola llamada "inputqueue". (En el caso de las funciones asincrónicas, use **IAsyncCollector<T>** como se muestra más adelante en esta sección).
+Hola siguiendo el ejemplo de código asincrónico no crea un nuevo mensaje de cola en la cola de hello denominado "outputqueue" con hello igual contenido como mensaje de bienvenida de cola se recibió en cola Hola denominado "inputqueue". (En el caso de las funciones asincrónicas, use **IAsyncCollector<T>** como se muestra más adelante en esta sección).
 
         public static void CreateQueueMessage(
             [QueueTrigger("inputqueue")] string queueMessage,
@@ -187,7 +187,7 @@ El siguiente ejemplo de código no asincrónico crea un mensaje en cola nuevo en
         }
 
 ### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>Mensajes en cola POCO [(objeto CRL estándar](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
-Para crear un mensaje en cola que contiene un objeto POCO en lugar de una cadena, pase el tipo POCO como un parámetro de salida al constructor de atributo **Queue** .
+tipo de un mensaje de la cola que contiene un POCO en lugar de una cadena, pase Hola POCO toocreate como un toohello de parámetro de salida **cola** constructor de atributos.
 
         public static void CreateQueueMessage(
             [QueueTrigger("inputqueue")] BlobInformation blobInfoInput,
@@ -196,10 +196,10 @@ Para crear un mensaje en cola que contiene un objeto POCO en lugar de una cadena
             blobInfoOutput = blobInfoInput;
         }
 
-El SDK serializa automáticamente el objeto a JSON. Siempre se crea un mensaje en cola, incluso si el objeto es null.
+Hola SDK serializa automáticamente Hola objeto tooJSON. Siempre se crea un mensaje de cola, incluso si el objeto de hello es null.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Crear varios mensajes o en funciones asincrónicas
-Para crear varios mensajes, convierta el tipo de parámetro para la cola de salida **ICollector<T>** o **IAsyncCollector<T>**, como se muestra en el siguiente ejemplo.
+toocreate varios mensajes, asegúrese de tipo de parámetro de hello para la cola de salida de hello **ICollector<T>**  o **IAsyncCollector<T>**, tal y como se muestra en el siguiente ejemplo de Hola.
 
         public static void CreateQueueMessages(
             [QueueTrigger("inputqueue")] string queueMessage,
@@ -211,23 +211,23 @@ Para crear varios mensajes, convierta el tipo de parámetro para la cola de sali
             outputQueueMessage.Add(queueMessage + "2");
         }
 
-Cada mensaje de cola se crea inmediatamente cuando se llama al método **Add** .
+Cada mensaje de la cola se crea inmediatamente cuando hello **agregar** se llama al método.
 
-### <a name="types-that-the-queue-attribute-works-with"></a>Tipos con los que funciona el atributo Queue
-Puede usar el atributo **Queue** en los siguientes tipos de parámetro:
+### <a name="types-that-hello-queue-attribute-works-with"></a>Tipos de ese atributo de la cola de hello funciona con
+Puede usar hello **cola** atributo Hola siguientes tipos de parámetro:
 
-* **out string** (crea un mensaje en cola si el valor de parámetro es no nulo cuando termina la función)
+* **cadena** (crea la cola de mensajes si el valor del parámetro es distinto de null cuando finaliza la función hello)
 * **out byte** (funciona como **cadena**)
 * **out CloudQueueMessage** (funciona como **cadena**)
-* **out POCO** (un tipo serializable, crea un mensaje con un objeto nulo si el parámetro es nulo cuando termina la función)
+* **out POCO** (un tipo serializable, crea un mensaje con un objeto null si el parámetro hello es nulo cuando finaliza la función hello)
 * **ICollector**
 * **IAsyncCollector**
-* **CloudQueue** (para crear manualmente mensajes usando directamente la API de Almacenamiento de Azure)
+* **CloudQueue** (para crear mensajes manualmente utilizando Hola API de almacenamiento de Azure directamente)
 
-### <a name="use-webjobs-sdk-attributes-in-the-body-of-a-function"></a>Utilizar atributos del SDK de WebJobs en el cuerpo de una función
-Si necesita realizar algún trabajo en la función antes de usar un atributo del SDK de WebJobs como **Queue**, **Blob** o **Table**, puede usar la interfaz **IBinder**.
+### <a name="use-webjobs-sdk-attributes-in-hello-body-of-a-function"></a>Utilizar atributos de SDK de WebJobs en el cuerpo de Hola de una función
+Si necesita toodo algunas funcionan en la función antes de usar como un atributo de SDK de WebJobs **cola**, **Blob**, o **tabla**, puede usar hello **IBinder** interfaz.
 
-En el siguiente ejemplo se toma un mensaje de la cola de entrada y se crea un mensaje nuevo con el mismo contenido en una cola de salida. El nombre de la cola de salida se establece por el código en el cuerpo de la función.
+Hola siguiente ejemplo toma un mensaje de la cola de entrada y crea un nuevo mensaje con hello mismo contenido en una cola de salida. nombre de cola de salida de Hello se establece por código Hola cuerpo de función hello.
 
         public static void CreateQueueMessage(
             [QueueTrigger("inputqueue")] string queueMessage,
@@ -239,15 +239,15 @@ En el siguiente ejemplo se toma un mensaje de la cola de entrada y se crea un me
             outputQueue.AddMessage(new CloudQueueMessage(queueMessage));
         }
 
-La interfaz **IBinder** también puede usarse con los atributos **Table** y **Blob**.
+Hola **IBinder** interfaz también se puede usar con hello **tabla** y **Blob** atributos.
 
-## <a name="how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a>Lectura y escritura de blobs y tablas al procesar un mensaje de cola
-Los atributos **Blob** y **Table** permiten leer y escribir los blobs y tablas. Los ejemplos en esta sección se aplican a los blobs. Para ejemplos de código que muestran cómo desencadenar procesos cuando se crean o actualizan los blobs, consulte [Uso de Azure Blob Storage con el SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), y para obtener ejemplos de código que leen y escriben tablas, consulte [Cómo usar Azure Table Storage con el SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md).
+## <a name="how-tooread-and-write-blobs-and-tables-while-processing-a-queue-message"></a>¿Cómo tooread y escritura de blobs y tablas al procesar un mensaje de cola
+Hola **Blob** y **tabla** atributos permiten tooread y escribir los blobs y tablas. ejemplos de Hello en esta sección aplican tooblobs. Para obtener ejemplos de código que muestran cómo tootrigger procesa cuando se crean o actualizan los blobs, vea [cómo toouse Azure blob storage con hello SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)y para obtener ejemplos de código que leen y escriben las tablas, vea [cómo toouse tabla de Azure almacenamiento con hello SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md).
 
 ### <a name="string-queue-messages-triggering-blob-operations"></a>Mensajes en cola de cadena que desencadenan operaciones de blob
-Para un mensaje de cola que contiene una cadena, **queueTrigger** es un marcador de posición que se puede usar en el parámetro **blobPath** del atributo **Blob** que tiene el contenido del mensaje.
+Para un mensaje de la cola que contiene una cadena, **queueTrigger** es un marcador de posición que se puede usar en hello **Blob** del atributo **blobPath** parámetro que contiene el contenido de Hola de mensaje de saludo.
 
-El ejemplo siguiente usa objetos **Stream** para leer y escribir blobs. El mensaje en cola es el nombre de un blob ubicado en el contenedor textblobs. Se creará una copia del blob con "-new" anexado al nombre en el mismo contenedor.
+Hello siguiente ejemplo se utiliza **flujo** objetos tooread y escritura de blobs. mensaje de bienvenida de cola es nombre Hola de un blob ubicado en hello textblobs contenedor. Una copia de blob de hello con "-nuevo" anexado toohello nombre se crea en Hola mismo contenedor.
 
         public static void ProcessQueueMessage(
             [QueueTrigger("blobcopyqueue")] string blobName,
@@ -257,11 +257,11 @@ El ejemplo siguiente usa objetos **Stream** para leer y escribir blobs. El mensa
             blobInput.CopyTo(blobOutput, 4096);
         }
 
-El constructor de atributo **Blob** toma un parámetro **blobPath** que especifica el nombre del contenedor y el nombre del blob. Para más información acerca de este marcador de posición, consulte [Uso del almacenamiento de blobs de Azure con el SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md).
+Hola **Blob** atributo constructor toma un **blobPath** parámetro que especifica el contenedor de Hola y el nombre de blob. Para obtener más información acerca de este marcador de posición, vea [cómo toouse Azure blob storage con hello SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md).
 
-Cuando el atributo representa a un objeto **Stream**, otro parámetro de constructor especifica el modo **FileAccess** como lectura, escritura o lectura/escritura.
+Cuando el atributo de hello decora un **flujo** objeto, otro parámetro de constructor especifica hello **FileAccess** modo como lectura, escritura o lectura/escritura.
 
-En el ejemplo siguiente se usa un objeto **CloudBlockBlob** para eliminar un blob. El mensaje en cola es el nombre del blob.
+Hello ejemplo siguiente se usa un **CloudBlockBlob** toodelete un blob del objeto. mensaje de bienvenida de cola es nombre Hola de blob de Hola.
 
         public static void DeleteBlob(
             [QueueTrigger("deleteblobqueue")] string blobName,
@@ -271,9 +271,9 @@ En el ejemplo siguiente se usa un objeto **CloudBlockBlob** para eliminar un blo
         }
 
 ### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>Mensajes en cola POCO [(objeto CRL estándar](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
-Para un objeto POCO almacenado como JSON en el mensaje de la cola, puede usar marcadores de posición que asignen nombre a propiedades del objeto en el parámetro **blobPath** del atributo **Queue**. También puede utilizar nombres de propiedad de metadatos de cola como marcadores de posición. Consulte [Obtener metadatos de cola o de mensaje en cola](#get-queue-or-queue-message-metadata).
+Para un POCO almacenado como JSON en el mensaje de bienvenida de cola, puede utilizar marcadores de posición que nombres de las propiedades del objeto de Hola Hola **cola** del atributo **blobPath** parámetro. También puede utilizar nombres de propiedad de metadatos de cola como marcadores de posición. Consulte [Obtener metadatos de cola o de mensaje en cola](#get-queue-or-queue-message-metadata).
 
-El ejemplo siguiente copia un blob a un blob nuevo con una extensión distinta. El mensaje de la cola es un objeto **BlobInformation** que incluye las propiedades **BlobName** y **BlobNameWithoutExtension**. Los nombres de propiedad se usan como marcadores de posición en la ruta de acceso del blob para los atributos **Blob** .
+Hello en el ejemplo siguiente se copia un blob nuevo de blob tooa con una extensión diferente. mensaje de bienvenida de cola es un **BlobInformation** objeto que incluya **BlobName** y **BlobNameWithoutExtension** propiedades. nombres de propiedad de Hola se utilizan como marcadores de posición en la ruta de acceso de blob de Hola para hello **Blob** atributos.
 
         public static void CopyBlobPOCO(
             [QueueTrigger("copyblobqueue")] BlobInformation blobInfo,
@@ -283,38 +283,38 @@ El ejemplo siguiente copia un blob a un blob nuevo con una extensión distinta. 
             blobInput.CopyTo(blobOutput, 4096);
         }
 
-El SDK usa el [paquete Newtonsoft.Json NuGet](http://www.nuget.org/packages/Newtonsoft.Json) para serializar y deserializar los mensajes. Si crea mensajes en cola en un programa que no usa el SDK de WebJobs, puede escribir código similar al siguiente ejemplo para crear un mensaje en cola POCO que pueda analizar el SDK.
+Hola SDK utiliza hello [paquete NuGet de Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json) tooserialize y deserializar los mensajes. Si crea mensajes en cola en un programa que no utilice Hola SDK de WebJobs, puede escribir código como sigue toocreate un POCO de la cola de mensajes de ejemplo de Hola ese Hola que SDK puede analizar.
 
         BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
         var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
         logQueue.AddMessage(queueMessage);
 
-Si necesita realizar algún trabajo en la función antes de enlazar un blob a un objeto, puede usar el atributo en el cuerpo de la función, como se ha mostrado en [Utilizar atributos del SDK de WebJobs en el cuerpo de una función](#use-webjobs-sdk-attributes-in-the-body-of-a-function).
+Si necesita toodo algunas funcionan en la función antes de enlazar un objeto de tooan de blob, puede utilizar atributos de hello en el cuerpo de Hola de función de hello, tal y como se muestra en [atributos de usar el SDK de WebJobs en el cuerpo de Hola de una función](#use-webjobs-sdk-attributes-in-the-body-of-a-function).
 
-### <a name="types-you-can-use-the-blob-attribute-with"></a>Tipos con los que puede usar el atributo Blob
-El atributo **Blob** se puede usar con los siguientes tipos:
+### <a name="types-you-can-use-hello-blob-attribute-with"></a>Tipos que puede usar Hola Blob de atributo con
+Hola **Blob** atributo se puede usar con hello siguientes tipos:
 
-* **Stream** (lectura o escritura, especificado según el uso del parámetro del constructor FileAccess)
+* **Secuencia** (lectura o escritura, especificado mediante el parámetro de constructor de hello FileAccess)
 * **TextReader**
 * **TextWriter**
 * **string** (lectura)
-* **out string** (escritura; crea un blob solo si el parámetro de cadena es no nulo cuando se devuelve la función)
+* **cadena** (escribir; crea un blob solo si el parámetro de cadena de hello es distinto de null cuando la devolución de función hello)
 * POCO (lectura)
-* out POCO (escritura; siempre crea un blob, crea como objeto nulo si el parámetro POCO es nulo cuando se devuelve la función)
+* out POCO (escribir; siempre crea un blob, se crea como objeto null si POCO parámetro es null cuando la devolución de función hello)
 * **CloudBlobStream** (escritura)
 * **ICloudBlob** (lectura o escritura)
 * **CloudBlockBlob** (lectura o escritura)
 * **CloudPageBlob** (lectura o escritura)
 
-## <a name="how-to-handle-poison-messages"></a>Control de mensajes dudosos
-Los mensajes cuyo contenido produce un error de una función se denominan *mensajes dudosos*. Cuando se produce un error en la función, el mensaje de la cola no se elimina y se recoge de nuevo, provocando que el ciclo se repita. El SDK puede interrumpir automáticamente el ciclo después de un número limitado de iteraciones, o puede hacerlo usted manualmente.
+## <a name="how-toohandle-poison-messages"></a>¿Cómo toohandle dudosos mensajes
+Se denominan mensajes cuyo contenido hace que una función toofail *mensajes dudosos*. Cuando se produce un error en la función hello, mensaje de bienvenida de cola no se elimina y finalmente recoge nuevo, que producen Hola ciclo toobe repetido. Hola SDK automáticamente puede interrumpir el ciclo de hello después de un número limitado de iteraciones, o puede hacerlo manualmente.
 
 ### <a name="automatic-poison-message-handling"></a>Control automático de mensajes dudosos
-El SDK llamará a una función hasta 5 veces para procesar un mensaje de la cola. Si se produce un error en el quinta intento, el mensaje se mueve a una cola de mensajes dudosos. Puede ver cómo configurar el número máximo de reintentos en [Establecimiento de opciones de configuración](#how-to-set-configuration-options).
+Hola SDK llamará a una función de seguridad too5 veces tooprocess un mensaje de la cola. Si se produce un error en try quinto hello, mensaje de bienvenida es movida tooa cola de mensajes dudosos. Puede ver cómo tooconfigure Hola número máximo de reintentos en [cómo opciones de configuración de tooset](#how-to-set-configuration-options).
 
-La cola de mensajes dudosos se denomina *{originalqueuename}*-poison. Puede escribir una función para procesar los mensajes desde la cola de mensajes dudosos registrándolos o enviando una notificación indicando que se necesita atención manual.
+cola de mensajes dudosos Hola se denomina *{originalqueuename}*-dudoso. Puede escribir una función tooprocess mensajes desde la cola de mensajes dudosos Hola registrarlos o enviar una notificación que se necesita atención manual.
 
-En el siguiente ejemplo la función **CopyBlob** generará un error cuando un mensaje de cola contenga el nombre de un blob que no existe. Cuando esto ocurre, el mensaje se mueve desde la cola de copyblobqueue a la cola copyblobqueue-poison. Después, **ProcessPoisonMessage** registra el mensaje dudoso.
+Después de hello de ejemplo de Hola **CopyBlob** function no funcionará correctamente cuando un mensaje de la cola contiene el nombre de Hola de un blob que no existe. Cuando esto ocurre, mensaje de saludo se mueve desde hello copyblobqueue toohello copyblobqueue dudosos cola. Hola **ProcessPoisonMessage** , a continuación, registros de Hola de mensajes dudosos.
 
         public static void CopyBlob(
             [QueueTrigger("copyblobqueue")] string blobName,
@@ -327,15 +327,15 @@ En el siguiente ejemplo la función **CopyBlob** generará un error cuando un me
         public static void ProcessPoisonMessage(
             [QueueTrigger("copyblobqueue-poison")] string blobName, TextWriter logger)
         {
-            logger.WriteLine("Failed to copy blob, name=" + blobName);
+            logger.WriteLine("Failed toocopy blob, name=" + blobName);
         }
 
-La ilustración siguiente muestra la salida de consola de estas funciones cuando se procesa un mensaje dudoso.
+Hello en la ilustración siguiente se muestra la salida de consola de estas funciones cuando se procesa un mensaje dudoso.
 
 ![Salida de consola para el control de mensajes dudosos](./media/vs-storage-webjobs-getting-started-queues/poison.png)
 
 ### <a name="manual-poison-message-handling"></a>Control manual de mensajes dudosos
-Puede obtener el número de veces que se ha recogido un mensaje para el procesamiento agregando un parámetro **int** llamado **dequeueCount** a la función. Puede consultar el recuento de eliminación de cola en el código de función y realizar su propio control de mensajes dudosos cuando el número supere un umbral, tal y como se muestra en el ejemplo siguiente.
+Puede obtener Hola número de veces que se ha detectado un mensaje para su procesamiento mediante la adición de un **int** parámetro denominado **dequeueCount** tooyour (función). También puede, a continuación, Hola de comprobación de recuento en el código de la función de eliminación de cola y realizar su propio control de mensajes dudosos al número de hello supera un umbral, como se muestra en el siguiente ejemplo de Hola.
 
         public static void CopyBlob(
             [QueueTrigger("copyblobqueue")] string blobName, int dequeueCount,
@@ -345,7 +345,7 @@ Puede obtener el número de veces que se ha recogido un mensaje para el procesam
         {
             if (dequeueCount > 3)
             {
-                logger.WriteLine("Failed to copy blob, name=" + blobName);
+                logger.WriteLine("Failed toocopy blob, name=" + blobName);
             }
             else
             {
@@ -353,15 +353,15 @@ Puede obtener el número de veces que se ha recogido un mensaje para el procesam
             }
         }
 
-## <a name="how-to-set-configuration-options"></a>Establecimiento de opciones de configuración
-Puede usar el tipo **JobHostConfiguration** para establecer las opciones de configuración siguientes:
+## <a name="how-tooset-configuration-options"></a>¿Cómo tooset las opciones de configuración
+Puede usar hello **JobHostConfiguration** Hola de tipo tooset opciones de configuración siguientes:
 
-* Establecer las cadenas de conexión de SDK en el código.
+* Establecer las cadenas de conexión de SDK de hello en el código.
 * Definir la configuración **QueueTrigger** como el número máximo de eliminaciones de la cola.
 * Obtener nombres de cola a partir de la configuración.
 
-### <a name="set-sdk-connection-strings-in-code"></a>Establecimiento de cadenas de conexión del SDK en código
-Configurar las cadenas de conexión de SDK en el código permite utilizar sus propios nombres de cadena de conexión en archivos de configuración o las variables de entorno, como se muestra en el ejemplo siguiente.
+### <a name="set-sdk-connection-strings-in-code"></a>Establecer cadenas de conexión de SDK en el código
+Establecer las cadenas de conexión de SDK de hello en el código permite toouse sus propios nombres de cadena de conexión en archivos de configuración o las variables de entorno, como se muestra en el siguiente ejemplo de Hola.
 
         static void Main(string[] args)
         {
@@ -383,13 +383,13 @@ Configurar las cadenas de conexión de SDK en el código permite utilizar sus pr
         }
 
 ### <a name="configure-queuetrigger--settings"></a>Configurar QueueTrigger
-Puede configurar los siguientes valores, que se aplican para el procesamiento de mensajes de la cola:
+Puede configurar Hola después de la configuración que se aplica el procesamiento de mensajes de cola de toohello:
 
-* El número máximo de mensajes en cola que se recogen simultáneamente para ejecutarse en paralelo (el valor predeterminado es 16).
-* El número máximo de reintentos antes de enviar un mensaje de la cola a una cola de mensajes dudosos (el valor predeterminado es 5).
-* El tiempo de espera máximo antes de volver a sondear cuando una cola está vacía (el valor predeterminado es 1 minuto).
+* número máximo de mensajes en cola que se recogen simultáneamente toobe ejecutada en paralelo de Hola (el valor predeterminado es 16).
+* Hola número máximo de reintentos antes de enviar un mensaje de cola de cola de mensajes dudosos tooa (el valor predeterminado es 5).
+* tiempo de espera máximo de Hello antes de volver a sondear cuando una cola está vacía (el valor predeterminado es 1 minuto).
 
-En el ejemplo siguiente se muestra cómo configurar estas opciones:
+Hola siguiente ejemplo se muestra cómo tooconfigure esta configuración:
 
         static void Main(string[] args)
         {
@@ -402,18 +402,18 @@ En el ejemplo siguiente se muestra cómo configurar estas opciones:
         }
 
 ### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>Establecer valores para los parámetros del constructor del SDK de WebJobs en el código
-En ocasiones, deseará especificar un nombre de cola, un contenedor o nombre de blob o un nombre de cola en el código en lugar de codificarlo. Por ejemplo, es posible que desee especificar el nombre de la cola para **QueueTrigger** en un archivo de configuración o una variable de entorno.
+A veces desea toospecify un nombre de cola, un nombre de blob o contenedor o una tabla asígnele el nombre en código, en lugar de codificar de forma rígida. Por ejemplo, puede querer toospecify nombre de cola de Hola para **QueueTrigger** en una variable de entorno o de archivo de configuración.
 
-Puede hacerlo pasando un objeto **NameResolver** para el tipo **JobHostConfiguration**. Incluya marcadores de posición especiales rodeados de signos de porcentaje (%) en los parámetros del constructor de atributos del SDK de WebJobs y el código **NameResolver** especifica los valores reales que se usarán en lugar de esos marcadores de posición.
+Puede hacerlo pasando un **NameResolver** objeto toohello **JobHostConfiguration** tipo. Incluir marcadores de posición especial entre signos de porcentaje (%) en los parámetros del constructor de atributo de SDK de WebJobs y su **NameResolver** código especifica Hola valores reales toobe usar en lugar de los marcadores de posición.
 
-Por ejemplo, suponga que desea usar una cola denominada logqueuetest en el entorno de prueba y un logqueueprod denominado en producción. En lugar de un nombre de cola codificado de forma rígida, desea especificar el nombre de una entrada en la colección **appSettings** que tendría el nombre de cola real. Si la clave **appSettings** es logqueue, la función podría ser similar al ejemplo siguiente.
+Por ejemplo, suponga que desea toouse una cola denominada logqueuetest en entorno de prueba de hello y una logqueueprod con nombre en producción. En lugar de un nombre de cola codificado de forma rígida, desea que el nombre de Hola de toospecify de una entrada en hello **appSettings** colección que tendría el nombre de la cola real de Hola. Si hello **appSettings** clave es logqueue, la función podría tener el aspecto como el siguiente ejemplo de Hola.
 
         public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
         {
             Console.WriteLine(logMessage);
         }
 
-La clase **NameResolver** podría entonces obtener el nombre de la cola de **appSettings** como se muestra en el ejemplo siguiente:
+Su **NameResolver** clase, a continuación, pudo obtener el nombre de la cola de Hola de **appSettings** tal y como se muestra en el siguiente ejemplo de Hola:
 
         public class QueueNameResolver : INameResolver
         {
@@ -423,7 +423,7 @@ La clase **NameResolver** podría entonces obtener el nombre de la cola de **app
             }
         }
 
-Pasa la clase **NameResolver** en el objeto **JobHost** tal y como se muestra en el ejemplo siguiente.
+Pasar hello **NameResolver** clase toohello **JobHost** objeto tal y como se muestra en el siguiente ejemplo de Hola.
 
         static void Main(string[] args)
         {
@@ -433,10 +433,10 @@ Pasa la clase **NameResolver** en el objeto **JobHost** tal y como se muestra en
             host.RunAndBlock();
         }
 
-**Nota** : los nombres de cola, tabla y blob se resuelven cada vez que se llama a una función, pero los nombres de contenedores de blobs solo se resuelven cuando se inicia la aplicación. No puede cambiar el nombre del contenedor de blobs mientras el trabajo está en ejecución.
+**Nota:** nombres de blob, cola y tabla son de resolver cada vez que se invoque una función, pero se resuelven los nombres de contenedor de blob solamente cuando se inicia la aplicación hello. No se puede cambiar el nombre del contenedor de blob mientras se ejecuta el trabajo de Hola.
 
-## <a name="how-to-trigger-a-function-manually"></a>Desencadenar una función manualmente
-Para desencadenar una función manualmente, use el método **Call** o **CallAsync** en el objeto **JobHost** y el atributo **NoAutomaticTrigger** en la función, tal y como se muestra en el ejemplo siguiente.
+## <a name="how-tootrigger-a-function-manually"></a>¿Cómo tootrigger una función manualmente
+una función de tootrigger manualmente, use hello **llamar a** o **CallAsync** método en hello **JobHost** hello y objeto **NoAutomaticTrigger** atributo en función de hello, como se muestra en el siguiente ejemplo de Hola.
 
         public class Program
         {
@@ -457,24 +457,24 @@ Para desencadenar una función manualmente, use el método **Call** o **CallAsyn
             }
         }
 
-## <a name="how-to-write-logs"></a>Escritura de registros
-El Panel muestra registros en dos lugares: la página del trabajo web y la página de una invocación de trabajo web en especial.
+## <a name="how-toowrite-logs"></a>Funcionamiento de los registros toowrite
+Hola panel muestra los registros en dos lugares: Hola para hello trabajo Web y Hola página para una invocación de trabajo Web determinada.
 
 ![Registros en la página del trabajo web](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
 ![Registros en la página de invocación de la función](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-El resultado de los métodos de consola que llama en una función o en el método **Main()** aparece en la página Panel del WebJob y no en la página de una invocación de método en especial. El resultado del objeto TextWriter que obtiene a partir de un parámetro en la firma del método aparece en la página Panel de una invocación de un método.
+Salida de métodos de consola que se llama en una función o en hello **Main()** método aparece en la página de panel de Hola de hello trabajo Web, no en la página de Hola para una invocación de método determinado. Resultado del objeto de TextWriter Hola que obtendrá de un parámetro en la firma del método aparece en la página de panel de Hola de una invocación de método.
 
-El resultado de la consola no se puede vincular a una invocación de método en especial, porque la consola tiene un solo subproceso, mientras que muchas funciones de trabajo se pueden ejecutar al mismo tiempo. Esta es la razón por la que el SDK proporciona a cada invocación de función su objeto escritor de registros único.
+Salida de la consola no puede ser la invocación del método determinado tooa vinculado porque Hola consola tiene un único subproceso, mientras que muchas de las funciones de trabajo pueden estar ejecutando en hello mismo tiempo. Por eso Hola SDK proporciona cada invocación de función con su propio objeto de escritor de inicio de sesión únicos.
 
-Para escribir [registros de seguimiento de aplicación](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), use **Console.Out** (crea registros marcados como INFO) y **Console.Error** (crea registros marcados como ERROR). Una alternativa es usar [Trace o TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), que proporciona niveles de Modo detallado, Advertencia y Críticos, además de Info y Error. Los registros de seguimiento de aplicaciones aparecen en los archivos de registro de la aplicación web, tablas de Azure o blobs de Azure, dependiendo de cómo se configuró la aplicación web de Azure. Como ocurre en todos los resultados de la consola, los 100 registros de aplicación más recientes también aparecen en la página Panel para el trabajo web, no en la página para una innovación de función.
+toowrite [registros de seguimiento de la aplicación](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), use **Console.Out** (crea registros marcados como información) y **Console.Error** (crea registros marcados como ERROR). Una alternativa es toouse [seguimiento o TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), que proporciona Verbose, advertencia, y niveles de crítico en tooInfo de adición y Error. Registros de seguimiento de la aplicación aparecen en archivos de registro en la aplicación web de hello, tablas de Azure, o blobs de Azure según cómo configure la aplicación web de Azure. Como ocurre con todos los resultados de la consola, registros de aplicación 100 más recientes de hello también aparecen en la página de panel de Hola de hello trabajo Web, no la página de Hola de una invocación de función.
 
-El resultado de la consola aparece en el Panel solo si el programa se ejecuta en un Azure WebJob, no si el programa se ejecuta localmente o en algún otro entorno.
+Salida de la consola aparece en hello panel únicamente si se ejecuta el programa de hello en un trabajo Web de Azure, no si programa Hola se ejecuta localmente o en algún otro entorno.
 
-Para deshabilitar el registro estableciendo la cadena de conexión del panel en null. Para más información, consulte [Establecimiento de opciones de configuración](#how-to-set-configuration-options).
+Puede deshabilitar el registro estableciendo toonull de cadena de conexión de hello panel. Para obtener más información, consulte [cómo tooset opciones de configuración](#how-to-set-configuration-options).
 
-En el ejemplo siguiente se muestran varias maneras de escribir registros:
+Hello en el ejemplo siguiente se muestra varias maneras de toowrite registros:
 
         public static void WriteLog(
             [QueueTrigger("logqueue")] string logMessage,
@@ -486,30 +486,30 @@ En el ejemplo siguiente se muestran varias maneras de escribir registros:
             logger.WriteLine("TextWriter - " + logMessage);
         }
 
-En el panel del SDK de WebJobs, la salida del objeto **TextWriter** aparece cuando va a la página para una invocación de función determinada y selecciona **Alternar salida**:
+En el panel de SDK de WebJobs de hello, Hola salida de hello **TextWriter** se muestra cuando se desplace página toohello para un determinado invocación de función y seleccione objetos **alternar salida**:
 
 ![Vínculo de invocación](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
 ![Registros en la página de invocación de la función](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-En el panel del SDK de WebJobs, las 100 líneas más recientes de los resultados de la consola aparecen cuando va a la página de WebJob (no de la invocación de función) y selecciona **Toggle Output**(Alternar salida).
+En el panel de SDK de WebJobs de hello, líneas de hello 100 más reciente de la consola de salida mostrar una al ir a página toohello para hello trabajo Web (no de invocación de función hello) y seleccione **alternar salida**.
 
 ![Toggle Output](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-En un WebJob continuo, los registros de aplicación aparecen en /data/jobs/continuous/*{nombrewebjob}*/job_log.txt en el sistema de archivos de la aplicación web.
+En un trabajo Web continuo, registros de aplicaciones se mostrarán en/datos/trabajos/continua/*{webjobname}*/job_log.txt en sistema de archivos de aplicación web de Hola.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-En un blob de Azure  el aspecto de los registros de aplicación es similar al siguiente: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
+En una aplicación Hola de blobs de Azure registros este aspecto: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write: Hola a todos!, 2014-09-26T21:01:13, Error, contosoadsnew, 491e54, 635473620738373502,0,17404,19,Console.Error - Hola a todos!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out: Hola a todos!,
 
-Y en una tabla de Azure, los registros **Console.Out** y **Console.Error** tienen el siguiente aspecto:
+Y en un saludo de la tabla de Azure **Console.Out** y **Console.Error** registros tiene este aspecto:
 
 ![Registro de información en la tabla](./media/vs-storage-webjobs-getting-started-queues/tableinfo.png)
 
 ![Registro de errores en la tabla](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este artículo se han proporcionado ejemplos de código que muestran cómo tratar escenarios comunes para trabajar con colas de Azure. Para más información acerca de cómo usar el SDK de WebJobs y WebJobs de Azure, consulte [Recursos de documentación de WebJobs de Azure](http://go.microsoft.com/fwlink/?linkid=390226).
+En este artículo ha proporcionado el código de ejemplos que muestran cómo toohandle escenarios comunes para trabajar con colas de Azure. Para obtener más información sobre cómo toouse WebJobs de Azure y Hola SDK de WebJobs, vea [recursos de documentación de WebJobs de Azure](http://go.microsoft.com/fwlink/?linkid=390226).
 

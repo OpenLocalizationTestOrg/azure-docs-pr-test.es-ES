@@ -1,6 +1,6 @@
 ---
-title: "Servicios y esquemas admitidos de los registros de diagnóstico de Azure | Microsoft Docs"
-description: "Conozca el esquema de los eventos y servicios admitidos para los registros de diagnóstico de Azure."
+title: "aaaAzure los servicios admiten registros de diagnóstico y esquemas | Documentos de Microsoft"
+description: "Comprender hello y compatibles con servicios de esquema de eventos de registros de diagnóstico de Azure."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem
-ms.openlocfilehash: aa4fa6e0310b2725005dfa34e3225c89fb4282d6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a3cbf5267e1bd0dc257f4fb4f42c323644046a6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Servicios, esquemas y categorías admitidos en los registros de diagnóstico de Azure
 
-Los [registros de diagnóstico de recursos de Azure](monitoring-overview-of-diagnostic-logs.md) son los registros emitidos por los recursos de Azure que describen el funcionamiento de ese recurso. Estos registros son específicos del tipo de recurso. En este artículo se describe el conjunto de servicios y el esquema de eventos admitidos para los eventos emitidos por cada servicio. También se incluye una lista completa de las categorías de registro disponibles por tipo de recurso.
+[Registros de diagnóstico de recursos de Azure](monitoring-overview-of-diagnostic-logs.md) son registros emitidos por los recursos de Azure que describen el funcionamiento de Hola de ese recurso. Estos registros son específicos del tipo de recurso. En este artículo, describimos conjunto Hola de esquema compatible de servicios y eventos para los eventos emitidos por cada servicio. También se incluye una lista completa de las categorías de registro disponibles por tipo de recurso.
 
 ## <a name="supported-services-and-schemas-for-resource-diagnostic-logs"></a>Servicios y esquemas admitidos para los registros de diagnóstico de recursos
-El esquema para los registros de diagnóstico de recursos varía según la categoría de registro y el recurso.   
+esquema Hola para registros de diagnóstico de recursos varía según la categoría de recursos y de registro de hello.   
 
 | Servicio | Esquema y documentos |
 | --- | --- |
@@ -52,12 +52,12 @@ El esquema para los registros de diagnóstico de recursos varía según la categ
 ## <a name="supported-log-categories-per-resource-type"></a>Categorías de registro admitidas por tipo de recurso
 |Tipo de recurso|Categoría|Nombre para mostrar de categoría|
 |---|---|---|
-|Microsoft.ApiManagement/service|GatewayLogs|Registros relacionados con la puerta de enlace de ApiManagement|
+|Microsoft.ApiManagement/service|GatewayLogs|Registros relacionados con tooApiManagement puerta de enlace|
 |Microsoft.Automation/automationAccounts|JobLogs|Registros de trabajo|
 |Microsoft.Automation/automationAccounts|JobStreams|Flujos de trabajo|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Estado del nodo de DSC|
 |Microsoft.Batch/batchAccounts|ServiceLog|Registros de servicios|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Obtiene las métricas del punto de conexión; por ejemplo, ancho de banda, salida, etc.|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Obtiene las métricas de Hola de punto de conexión de hello, p. ej., ancho de banda, salida, etcetera.|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataLakeAnalytics/accounts|Auditoría|Registros de auditoría|
 |Microsoft.DataLakeAnalytics/accounts|Solicitudes|Registros de solicitud|
@@ -89,6 +89,6 @@ El esquema para los registros de diagnóstico de recursos varía según la categ
 ## <a name="next-steps"></a>Pasos siguientes
 
 * [Más información sobre los registros de diagnóstico](monitoring-overview-of-diagnostic-logs.md)
-* [Transmisión de registros de diagnóstico a **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Cambio de la configuración de diagnóstico de recursos con la API de REST de Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Registros de diagnóstico de recursos de secuencia demasiado**centros de eventos**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Cambiar la configuración de diagnóstico de recursos mediante Hola API de REST de Monitor de Azure](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [Análisis de registros desde Azure Storage con Log Analytics](../log-analytics/log-analytics-azure-storage.md)

@@ -1,6 +1,6 @@
 ---
-title: "Crear y administrar máquinas virtuales con Windows en Azure que usan varias NIC | Microsoft Docs"
-description: "Obtenga información sobre cómo crear y administrar una máquina virtual con Windows que tenga varias tarjetas de interfaz de red (NIC) conectadas a ella mediante Azure PowerShell o las plantillas de Resource Manager."
+title: "aaaCreate y administrar máquinas virtuales de Windows en Azure que usan varios NIC | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate y administrar una máquina virtual de Windows que tenga varias NIC a adjunto tooit mediante plantillas de Azure PowerShell o administrador de recursos."
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/05/2017
 ms.author: iainfou
-ms.openlocfilehash: 3bd99a67dae41de3533d7f6e244eb7ee3ecc4049
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3c7d7569aca6f047238146d84b2ffccf05d4079
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Crear y administrar una máquina virtual con Windows que tiene varias NIC
-En Azure, las máquinas virtuales (VM) pueden tener varias tarjetas de interfaz de red virtual (NIC) conectadas a ellas. Un escenario común es tener distintas subredes para la conectividad front-end y back-end o una red dedicada a una solución de supervisión o copia de seguridad. En este artículo se describe cómo crear una máquina virtual con varias NIC conectadas. También obtendrá información sobre cómo agregar o quitar NIC de una máquina virtual existente. Diferentes [tamaños de máquina virtual](sizes.md) admiten un número distinto de NIC, así que ajuste el tamaño de su máquina virtual teniendo esto en cuenta.
+Máquinas virtuales (VM) en Azure puede tener varios toothem de tarjetas (NIC) adjuntadas de interfaz de red virtual. Un escenario común es toohave subredes diferentes para la conectividad de front-end y back-end o una red dedicada tooa supervisión o una solución de copia de seguridad. Este artículo detalla cómo toocreate una máquina virtual con varias NIC había conectado tooit. También aprenderá cómo NIC tooadd o quitar de una máquina virtual existente. Diferentes [tamaños de máquina virtual](sizes.md) admiten un número distinto de NIC, así que ajuste el tamaño de su máquina virtual teniendo esto en cuenta.
 
-Para obtener más detalles, incluido cómo crear varias NIC dentro de sus propios scripts de PowerShell, vea la [implementación de máquinas virtuales con varias NIC](../../virtual-network/virtual-network-deploy-multinic-arm-ps.md).
+Para obtener información detallada, incluyendo cómo toocreate varios NIC dentro de sus propios scripts de PowerShell, consulte [implementar máquinas virtuales de varias NIC](../../virtual-network/virtual-network-deploy-multinic-arm-ps.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Asegúrese de que tiene la [versión de Azure PowerShell más reciente instalada y configurada](/powershell/azure/overview).
+Asegúrese de que dispone de hello [versión más reciente de Azure PowerShell instalado y configurado](/powershell/azure/overview).
 
-En los ejemplos siguientes, reemplace los nombres de parámetros de ejemplo por los suyos propios. Los nombres de parámetro de ejemplo incluyen *myResourceGroup*, *myVnet* y *myVM*.
+En hello en los ejemplos siguientes, reemplace los nombres de parámetros de ejemplo con sus propios valores. Los nombres de parámetro de ejemplo incluyen *myResourceGroup*, *myVnet* y *myVM*.
 
 
 ## <a name="create-a-vm-with-multiple-nics"></a>Creación de una máquina virtual con varias NIC
-En primer lugar, cree un grupo de recursos. En el ejemplo siguiente se crea un grupo de recursos denominado *myResourceGroup* en la ubicación *EastUs*:
+En primer lugar, cree un grupo de recursos. Hello en el ejemplo siguiente se crea un grupo de recursos denominado *myResourceGroup* en hello *EastUs* ubicación:
 
 ```powershell
 New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
 ### <a name="create-virtual-network-and-subnets"></a>Creación de redes virtuales y subredes
-Un escenario común es que una red virtual tenga dos o más subredes. Una subred puede ser para el tráfico de front-end y la otra para el tráfico de back-end. Para conectarse a las dos subredes, se usan varias NIC en la máquina virtual.
+Un escenario común es para una red virtual toohave dos o más subredes. Puede ser una subred para el tráfico de front-end, Hola otro para el tráfico de back-end. tooconnect tooboth subredes, a continuación, usa varios NIC en la máquina virtual.
 
-1. Defina dos subredes de red virtual con [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). En el ejemplo siguiente se definen dos subredes para *mySubnetFrontEnd* y *mySubnetBackEnd*:
+1. Defina dos subredes de red virtual con [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Hello en el ejemplo siguiente se define subredes Hola de *mySubnetFrontEnd* y *mySubnetBackEnd*:
 
     ```powershell
     $mySubnetFrontEnd = New-AzureRmVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
@@ -50,7 +50,7 @@ Un escenario común es que una red virtual tenga dos o más subredes. Una subred
         -AddressPrefix "192.168.2.0/24"
     ```
 
-2. Cree la red virtual y las subredes con [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). En el ejemplo siguiente se crea una red virtual denominada *myVnet*:
+2. Cree la red virtual y las subredes con [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Hello en el ejemplo siguiente se crea una red virtual denominada *myVnet*:
 
     ```powershell
     $myVnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" `
@@ -62,7 +62,7 @@ Un escenario común es que una red virtual tenga dos o más subredes. Una subred
 
 
 ### <a name="create-multiple-nics"></a>Creación de varias NIC
-Cree dos NIC con [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Conecte una NIC a la subred de front-end y la otra a la subred de back-end. En el ejemplo siguiente se crean las NIC denominadas *myNic1* y *myNic2*:
+Cree dos NIC con [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Adjuntar una subred de front-end de toohello NIC y una subred de back-end de toohello NIC. Hello en el ejemplo siguiente se crea con el nombre de NIC *myNic1* y *myNic2*:
 
 ```powershell
 $frontEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetFrontEnd'}
@@ -78,24 +78,24 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Normalmente también se crea un [grupo de seguridad de red](../../virtual-network/virtual-networks-nsg.md) o un [equilibrador de carga](../../load-balancer/load-balancer-overview.md) que ayuden a administrar y distribuir el tráfico entre las distintas máquinas virtuales. En el [artículo más detallado sobre máquinas virtuales con varias NIC](../../virtual-network/virtual-network-deploy-multinic-arm-ps.md) se proporcionan los pasos para crear un grupo de seguridad de red y asignar NIC.
+Normalmente se crea también un [grupo de seguridad de red](../../virtual-network/virtual-networks-nsg.md) o [equilibrador de carga](../../load-balancer/load-balancer-overview.md) toohelp administrar y distribuir el tráfico entre las máquinas virtuales. Hola [más VM de varias NIC](../../virtual-network/virtual-network-deploy-multinic-arm-ps.md) artículo le guía en la creación de un grupo de seguridad de red y la asignación de NIC.
 
-### <a name="create-the-virtual-machine"></a>Creación de la máquina virtual
-Comience ahora a compilar la configuración de la máquina virtual. El tamaño de cada máquina virtual tiene un límite en cuanto al número total de NIC que se pueden agregar a una máquina virtual. Para más información, vea [Tamaños de las máquinas virtuales con Windows](sizes.md).
+### <a name="create-hello-virtual-machine"></a>Crear la máquina virtual de Hola
+Iniciar toobuild la configuración de máquina virtual. El tamaño de cada máquina virtual tiene un límite para el número total de Hola de NIC que se puede agregar tooa VM. Para más información, vea [Tamaños de las máquinas virtuales con Windows](sizes.md).
 
-1. Establezca las credenciales de la máquina virtual en la variable `$cred` como se indica a continuación:
+1. Establecer el toohello de las credenciales de la máquina virtual `$cred` variable como se indica a continuación:
 
     ```powershell
     $cred = Get-Credential
     ```
 
-2. Defina la máquina virtual con [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). En el ejemplo siguiente se define una máquina virtual denominada *myVM* y se usa un tamaño de máquina virtual que admite hasta dos NIC (*Standard_DS3_v2*):
+2. Defina la máquina virtual con [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). Hello en el ejemplo siguiente se define una máquina virtual denominada *myVM* y utiliza un tamaño de memoria virtual que es compatible con más de dos NIC (*Standard_DS3_v2*):
 
     ```powershell
     $vmConfig = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
     ```
 
-3. Cree el resto de la configuración de máquinas virtuales con [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) y [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage). En el ejemplo siguiente se crea una máquina virtual con Windows Server 2016:
+3. Crear el resto de saludo de la configuración de máquina virtual con [conjunto AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) y [AzureRmVMSourceImage conjunto](/powershell/module/azurerm.compute/set-azurermvmsourceimage). Hola de ejemplo siguiente crea una máquina virtual de Windows Server 2016:
 
     ```powershell
     $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig `
@@ -111,7 +111,7 @@ Comience ahora a compilar la configuración de la máquina virtual. El tamaño d
         -Version "latest"
    ```
 
-4. Conecte las dos NIC que creó anteriormente con [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
+4. Adjuntar Hola dos NIC que creó anteriormente con [AzureRmVMNetworkInterface agregar](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
 
     ```powershell
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
@@ -124,25 +124,25 @@ Comience ahora a compilar la configuración de la máquina virtual. El tamaño d
     New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
     ```
 
-## <a name="add-a-nic-to-an-existing-vm"></a>Adición de una NIC a una máquina virtual existente
-Para agregar una NIC virtual a una máquina virtual existente, se desasigna la máquina virtual, se agrega la NIC virtual y, después, se inicia la máquina virtual.
+## <a name="add-a-nic-tooan-existing-vm"></a>Agregar un tooan NIC existente de la máquina virtual
+Agregar tooadd una tooan NIC virtual existente de la máquina virtual, se cancela la asignación de hello VM, Hola NIC virtual e inicie Hola máquina virtual.
 
-1. Desasigne la máquina virtual con [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm). En el ejemplo siguiente se desasigna la máquina virtual denominada *myVM* en *myResourceGroup*:
+1. Cancela la asignación de Hola VM con [AzureRmVM Stop](/powershell/module/azurerm.compute/stop-azurermvm). Hello en el ejemplo siguiente se desasigna Hola máquina virtual denominada *myVM* en *myResourceGroup*:
 
     ```powershell
     Stop-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. Obtenga la configuración existente de la máquina virtual con [Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm). En el ejemplo siguiente se obtiene información de la máquina virtual denominada *myVM* en *myResourceGroup*:
+2. Obtener la configuración existente de Hola de hello VM con [AzureRmVm Get](/powershell/module/azurerm.compute/get-azurermvm). Hello en el ejemplo siguiente se obtiene información de máquina virtual denominada hello *myVM* en *myResourceGroup*:
 
     ```powershell
     $vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. En el ejemplo siguiente se crea una NIC virtual con [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) denominada *myNic3* que está conectada a *mySubnetBackEnd*. Después, la NIC virtual se conecta a la máquina virtual denominada *myVM* en *myResourceGroup* con [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
+3. Hello en el ejemplo siguiente se crea una NIC virtual con [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) denominado *myNic3* que está conectada demasiado*mySubnetBackEnd*. Hola NIC virtual es, a continuación, adjunta toohello máquina virtual denominada *myVM* en *myResourceGroup* con [AzureRmVMNetworkInterface agregar](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
 
     ```powershell
-    # Get info for the back end subnet
+    # Get info for hello back end subnet
     $myVnet = Get-AzureRmVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
     $backEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetBackEnd'}
 
@@ -152,71 +152,71 @@ Para agregar una NIC virtual a una máquina virtual existente, se desasigna la m
         -Location "EastUs" `
         -SubnetId $backEnd.Id
 
-    # Get the ID of the new virtual NIC and add to VM
+    # Get hello ID of hello new virtual NIC and add tooVM
     $nicId = (Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" -Name "MyNic3").Id
     Add-AzureRmVMNetworkInterface -VM $vm -Id $nicId | Update-AzureRmVm -ResourceGroupName "myResourceGroup"
     ```
 
     ### <a name="primary-virtual-nics"></a>NIC virtuales principales
-    En una máquina virtual de varias NIC una de las NIC debe ser la principal. Si una de las NIC virtuales existentes en la máquina virtual ya se ha establecido como principal, puede omitir este paso. En el siguiente ejemplo se da por supuesto que hay dos NIC virtuales en una máquina virtual y que se va a agregar la primera NIC (`[0]`) como la principal:
+    Uno de hello NIC en una VM de varias NIC debe toobe principal. Si uno de Hola NIC virtuales existentes en hello VM ya está establecida como principal, puede omitir este paso. Hello en el ejemplo siguiente se supone que dos NIC virtuales ahora están presentes en una máquina virtual y desea tooadd Hola primera NIC (`[0]`) como Hola principal:
         
     ```powershell
-    # List existing NICs on the VM and find which one is primary
+    # List existing NICs on hello VM and find which one is primary
     $vm.NetworkProfile.NetworkInterfaces
     
-    # Set NIC 0 to be primary
+    # Set NIC 0 toobe primary
     $vm.NetworkProfile.NetworkInterfaces[0].Primary = $true
     $vm.NetworkProfile.NetworkInterfaces[1].Primary = $false
     
-    # Update the VM state in Azure
+    # Update hello VM state in Azure
     Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroup"
     ```
 
-4. Inicie la máquina virtual con [Start-AzureRmVm](/powershell/module/azurerm.compute/start-azurermvm):
+4. Iniciar Hola VM con [AzureRmVm inicio](/powershell/module/azurerm.compute/start-azurermvm):
 
     ```powershell
     Start-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
 ## <a name="remove-a-nic-from-an-existing-vm"></a>Eliminación de una NIC de una máquina virtual existente
-Para quitar una NIC virtual de una máquina virtual existente, se desasigna la máquina virtual, se quita la NIC virtual y, después, se inicia la máquina virtual.
+tooremove una NIC virtual de una máquina virtual existente, se cancela la asignación de hello VM, quite Hola NIC virtual y, a continuación, inicio Hola máquina virtual.
 
-1. Desasigne la máquina virtual con [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm). En el ejemplo siguiente se desasigna la máquina virtual denominada *myVM* en *myResourceGroup*:
+1. Cancela la asignación de Hola VM con [AzureRmVM Stop](/powershell/module/azurerm.compute/stop-azurermvm). Hello en el ejemplo siguiente se desasigna Hola máquina virtual denominada *myVM* en *myResourceGroup*:
 
     ```powershell
     Stop-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. Obtenga la configuración existente de la máquina virtual con [Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm). En el ejemplo siguiente se obtiene información de la máquina virtual denominada *myVM* en *myResourceGroup*:
+2. Obtener la configuración existente de Hola de hello VM con [AzureRmVm Get](/powershell/module/azurerm.compute/get-azurermvm). Hello en el ejemplo siguiente se obtiene información de máquina virtual denominada hello *myVM* en *myResourceGroup*:
 
     ```powershell
     $vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. Obtenga información sobre la eliminación de NIC con [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface). En el ejemplo siguiente se obtiene información sobre *myNic3*:
+3. Obtener información acerca de hello NIC quitar con [AzureRmNetworkInterface Get](/powershell/module/azurerm.network/get-azurermnetworkinterface). Hello en el ejemplo siguiente se obtiene información sobre *myNic3*:
 
     ```powershell
-    # List existing NICs on the VM if you need to determine NIC name
+    # List existing NICs on hello VM if you need toodetermine NIC name
     $vm.NetworkProfile.NetworkInterfaces
 
     $nicId = (Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Quite la NIC con [Remove-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface) y, después, actualice la máquina virtual con [Update-AzureRmVm](/powershell/module/azurerm.compute/update-azurermvm). En el ejemplo siguiente se quita *myNic3* obtenida por `$nicId` en el paso anterior:
+4. Quitar Hola NIC con [Remove-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface) y actualice Hola VM con [AzureRmVm actualización](/powershell/module/azurerm.compute/update-azurermvm). Quita de Hello en el ejemplo siguiente se *myNic3* obtenida por `$nicId` Hola anterior paso:
 
     ```powershell
     Remove-AzureRmVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
         Update-AzureRmVm -ResourceGroupName "myResourceGroup"
     ```   
 
-5. Inicie la máquina virtual con [Start-AzureRmVm](/powershell/module/azurerm.compute/start-azurermvm):
+5. Iniciar Hola VM con [AzureRmVm inicio](/powershell/module/azurerm.compute/start-azurermvm):
 
     ```powershell
     Start-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>Crear varias NIC con plantillas
-Las plantillas de Azure Resource Manager ofrecen una manera de crear varias instancias de un recurso durante la implementación; por ejemplo, se pueden crear varias NIC. Las plantillas de Resource Manager usan archivos JSON declarativos para definir el entorno. Para más información, vea [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Puede usar *copy* para especificar el número de instancias que se crearán:
+Plantillas de administrador de recursos de Azure proporcionan una manera toocreate varias instancias de un recurso durante la implementación, como la creación de varias NIC. Plantillas de administrador de recursos utilizan declarativa toodefine de archivos JSON en su entorno. Para más información, vea [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Puede usar *copia* número de hello toospecify de toocreate de instancias:
 
 ```json
 "copy": {
@@ -227,7 +227,7 @@ Las plantillas de Azure Resource Manager ofrecen una manera de crear varias inst
 
 Para más información, vea [Creación de varias instancias mediante *copy*](../../resource-group-create-multiple.md). 
 
-También puede usar `copyIndex()` para anexar un número a un nombre de recurso. Después, puede crear *myNic1*, *MyNic2* y así sucesivamente. En el código siguiente se muestra un ejemplo de cómo anexar el valor de índice:
+También puede usar `copyIndex()` tooappend un nombre de recurso tooa número. Después, puede crear *myNic1*, *MyNic2* y así sucesivamente. Hello código siguiente muestra un ejemplo de anexar el valor de índice de hello:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -236,6 +236,6 @@ También puede usar `copyIndex()` para anexar un número a un nombre de recurso.
 Puede leer un ejemplo completo de [cómo crear varias NIC mediante plantillas de Resource Manager](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Revise [Tamaños de máquina virtual con Windows](sizes.md) cuando esté intentando crear una máquina virtual que tiene varias NIC. Preste atención al número máximo de NIC que admite cada tamaño de máquina virtual. 
+Revisión [tamaños de máquina virtual de Windows](sizes.md) al que está tratando de toocreate una máquina virtual que tiene varios NIC. Pagar el número máximo de toohello de atención de NIC que admite cada tamaño de máquina virtual. 
 
 

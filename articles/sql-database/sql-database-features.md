@@ -1,6 +1,6 @@
 ---
-title: "Información general de las características de Azure SQL Database | Microsoft Docs"
-description: "En esta página se proporciona información general sobre las bases de datos y los servidores lógicos de Azure SQL Database y, además, se incluye una matriz de compatibilidad de características con vínculos para cada característica enumerada."
+title: "Introducción a características de base de datos SQL aaaAzure | Documentos de Microsoft"
+description: "Esta página proporciona una visión general de los servidores lógicos de base de datos de SQL Azure de Hola y bases de datos e incluye una matriz de compatibilidad de característica con vínculos cada característica enumerado."
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: 4ef119d5218c844f3949bf4fc17fb320a7cbf7b4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 463c88edcd38eabbc768cfb701bc74461836aa36
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-features"></a>Características de Azure SQL Database
 
-Azure SQL Database comparte un código base común con SQL Server y, en el nivel de base de datos, admite la mayoría de las mismas características. Las principales diferencias de características entre Azure SQL Database y SQL Server se encuentran en el nivel de instancia. 
+La base de datos de SQL Azure comparte un código base común con SQL Server y, en el nivel de base de datos de hello, admite la mayoría de hello características similares. diferencias de características principales de Hello entre la base de datos de SQL Azure y SQL Server están en el nivel de instancia de Hola. 
 
-Se continúan agregando características a Azure SQL Database. Por lo tanto, le recomendamos que visite nuestra página web Actualizaciones del servicio para Azure y que use los filtros:
+Seguimos tooadd características tooAzure base de datos SQL. Por lo que le recomendamos toovisit nuestro servicio de actualizaciones de página Web de Azure y toouse sus filtros:
 
-* Filtrado a [Servicio de Base de datos SQL](https://azure.microsoft.com/updates/?service=sql-database).
-* Filtrado a Disponibilidad general [Anuncios (GA)](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) para características de Base de datos SQL.
+* Filtrado toohello [servicio de base de datos SQL](https://azure.microsoft.com/updates/?service=sql-database).
+* Filtrar tooGeneral disponibilidad [anuncios (GA)](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) para características de base de datos SQL.
 
 ## <a name="sql-server-and-sql-database-feature-support"></a>Compatibilidad con las características de SQL Server y SQL Database
 
-En las tablas siguientes se enumeran las características principales de SQL Server y se proporciona información sobre si se admite cada característica en concreto, así como un vínculo para obtener más información sobre dicha característica. Para consultar las diferencias de Transact-SQL que hay que tener en cuenta al migrar a una solución de base de datos diferente, consulte [Resolución de diferencias de Transact-SQL durante la migración a SQL Database](sql-database-transact-sql-information.md).
+Hola tabla siguiente enumera las características principales de Hola de SQL Server y proporciona información sobre si se admite cada característica en particular y un vínculo toomore acerca de la característica de Hola. Para tooconsider de diferencias de Transact-SQL, al migrar una solución de base de datos existente, vea [diferencias de Transact-SQL resolver durante la migración tooSQL base de datos](sql-database-transact-sql-information.md).
 
 
 | **Característica de SQL Server** | **Compatible con Azure SQL Database** | 
@@ -127,5 +127,5 @@ En las tablas siguientes se enumeran las características principales de SQL Ser
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Para obtener más información sobre el servicio Azure SQL Database, consulte el artículo que explica [en qué consiste SQL Database](sql-database-technical-overview.md).
-- Para conocer detalles de la compatibilidad y las diferencias de Transact-SQL, consulte [Resolución de diferencias de Transact-SQL durante la migración a SQL Database](sql-database-transact-sql-information.md).
+- Para obtener información acerca de hello servicio de base de datos de SQL Azure, consulte [¿qué es la base de datos SQL?](sql-database-technical-overview.md)
+- Para obtener información sobre compatibilidad con Transact-SQL y las diferencias, vea [diferencias de Transact-SQL resolver durante la migración tooSQL base de datos](sql-database-transact-sql-information.md).

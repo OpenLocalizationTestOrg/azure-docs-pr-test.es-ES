@@ -1,6 +1,6 @@
 ---
-title: "Configuración del equipo para el desarrollo de Servicios multimedia con .NET"
-description: "Conozca los requisitos previos de Servicios multimedia usando el SDK de Servicios multimedia para .NET. Aprenda también a crear una aplicación de Visual Studio."
+title: aaaHow tooSet equipo para el desarrollo de servicios multimedia con .NET
+description: "Obtenga información sobre los requisitos previos de Hola para servicios multimedia con hello SDK de servicios multimedia para. NET. También aprenderá cómo toocreate una aplicación de Visual Studio."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,58 +14,58 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: juliako
-ms.openlocfilehash: 15828bc74937a036871b26493498232ec7cf6f06
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a5a2af3211d8156fd7dea99831fb769df4130d41
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="media-services-development-with-net"></a>Desarrollo de Servicios multimedia con .NET
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
 
-En este tema se explica cómo empezar a desarrollar aplicaciones de Servicios multimedia con .NET.
+Este tema describe cómo de servicios multimedia de desarrollo de toostart aplicaciones con. NET.
 
-La **biblioteca del SDK de Azure Media Services para .NET** le permite programar en los Media Services mediante. NET. Para que el desarrollo con .NET sea aún más fácil, se proporciona la biblioteca **Extensiones del SDK de Azure Media Services para .NET**. Esta biblioteca contiene un conjunto de métodos de extensión y funciones auxiliares que simplifican el código de .NET. Las dos bibliotecas están disponibles a través de **NuGet** y **GitHub**.
+Hola **Azure Media Services .NET SDK** biblioteca le permite tooprogram en servicios multimedia con. NET. toomake incluso más fácil toodevelop con. NET, hello **Azure Media Services .NET SDK Extensions** se proporciona la biblioteca. Esta biblioteca contiene un conjunto de métodos de extensión y funciones auxiliares que simplifican el código de .NET. Las dos bibliotecas están disponibles a través de **NuGet** y **GitHub**.
 
 ## <a name="prerequisites"></a>Requisitos previos
-* Una cuenta de Servicios multimedia en una suscripción de Azure nueva o existente. Vea el tema [Cómo crear una cuenta de Media Services](media-services-portal-create-account.md).
+* Una cuenta de Servicios multimedia en una suscripción de Azure nueva o existente. Vea el tema de hello [cómo tooCreate una cuenta de servicios multimedia](media-services-portal-create-account.md).
 * Sistemas operativos: Windows 10, Windows 7, Windows 2008 R2 o Windows 8.
 * .NET Framework 4.5.
 * Visual Studio.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Creación y configuración de un proyecto de Visual Studio
-En esta sección se muestra cómo crear un proyecto en Visual Studio y configurarlo para el desarrollo de Servicios multimedia.  En este caso, el proyecto es una aplicación de consola Windows de C#, pero los pasos de configuración que se muestran aquí se aplican a otros tipos de proyectos que puede crear para las aplicaciones de Media Services (por ejemplo, una aplicación de Windows Forms o una aplicación web ASP.NET).
+Esta sección muestra cómo toocreate un proyecto en Visual Studio y configurarla para el desarrollo de servicios multimedia.  En este caso, proyecto de hello es una aplicación de consola de Windows en C#, pero hello mismos pasos de configuración se muestra aquí aplican tooother tipos de proyectos que puede crear para las aplicaciones de servicios multimedia (por ejemplo, una aplicación de formularios Windows Forms o una aplicación Web ASP.NET).
 
-En esta sección se muestra cómo usar **NuGet** para agregar las extensiones del SDK de .NET para Media Services y otras bibliotecas dependientes.
+Esta sección se muestra cómo toouse **NuGet** tooadd Media Services .NET SDK extensions y otras bibliotecas dependientes.
 
-También puede obtener los bits más recientes del SDK de Media Services para .NET en GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) o [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), compilar la solución y agregar las referencias al proyecto de cliente. Todas las dependencias necesarias se descargan y extraen automáticamente.
+Como alternativa, puede obtener los bits más recientes de SDK de .NET de servicios multimedia de Hola desde GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) o [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), compilar soluciones de Hola y Agregar proyecto de cliente de hello referencias toohello. Todas las dependencias necesarias de hello obtengan descargadas y extraídas automáticamente.
 
-1. Cree una aplicación de consola en C# mediante Visual Studio. Escriba el **Nombre**, la **Ubicación** y el **Nombre de la solución** y, a continuación, haga clic en Aceptar.
-2. Compile la solución.
-3. Use **NuGet** para instalar y agregar **Extensiones del SDK de .NET para Azure Media Services** (**windowsazure.mediaservices.extensions**). Al instalar este paquete, también se instala el **SDK de Servicios multimedia para .NET** y agrega todas las demás dependencias necesarias.
+1. Cree una aplicación de consola en C# mediante Visual Studio. Escriba hello **nombre**, **ubicación**, y **nombre de la solución**y, a continuación, haga clic en Aceptar.
+2. Compile la solución de Hola.
+3. Use **NuGet** tooinstall y agregue **Azure Media Services .NET SDK Extensions** (**windowsazure.mediaservices.extensions**). Al instalar este paquete, también se instala el **SDK de Servicios multimedia para .NET** y agrega todas las demás dependencias necesarias.
    
-    Asegúrese de que tiene instalada la versión más reciente de NuGet. Para más información e instrucciones de instalación, consulte [NuGet](http://nuget.codeplex.com/).
-4. En el Explorador de soluciones, haga clic con el botón derecho en el nombre del proyecto y elija Administrar paquetes NuGet.
+    Asegúrese de que tiene la versión más reciente de Hola de NuGet instalada. Para más información e instrucciones de instalación, consulte [NuGet](http://nuget.codeplex.com/).
+4. En el Explorador de soluciones, haga clic en nombre de hello del proyecto de Hola y elija Administrar paquetes NuGet.
    
-    Aparecerá el cuadro de diálogo Administrar paquetes de NuGet.
-5. En la galería en línea, busque Extensiones de Servicios multimedia de Azure, elija Extensiones del SDK de Servicios multimedia de Azure para .NET y luego haga clic en el botón Instalar.
+    aparece el cuadro de diálogo Administrar paquetes de NuGet Hola.
+5. En la galería en línea de hello, busque las extensiones de MediaServices de Azure, elija Azure Media Services .NET SDK Extensions y, a continuación, haga clic en botón de instalar Hola.
    
-    El proyecto se modifica y se agregan referencias a Extensiones del SDK de Media Services para .NET, al SDK de .NET de Media Services y a otros ensamblados dependientes.
-6. Para promover un entorno de desarrollo más limpio, considere la posibilidad de habilitar la restauración de paquetes de NuGet. Para obtener más información, consulte [Restauración de paquetes de NuGet](http://docs.nuget.org/consume/package-restore).
-7. Agregue una referencia al ensamblado **System.Configuration** . Este ensamblado contiene la clase de Configuración del sistema.**Administrador de configuración** que se usa para tener acceso a los archivos de configuración (por ejemplo, App.config).
+    proyecto de Hola se modifica y hace referencia a toohello Media Services .NET SDK Extensions, Media Services .NET SDK, y se agregan otros ensamblados dependientes.
+6. toopromote un entorno de desarrollo más limpio, considere la posibilidad de habilitar la restauración de paquetes de NuGet. Para obtener más información, consulte [Restauración de paquetes de NuGet](http://docs.nuget.org/consume/package-restore).
+7. Agregue una referencia demasiado**System.Configuration** ensamblado. Este ensamblado contiene Hola System.Configuration. **ConfigurationManager** clase que es tooaccess usa archivos de configuración (por ejemplo, App.config).
    
-    Para agregar referencias usando el cuadro de diálogo de administración de referencias, haga clic con el botón derecho en el nombre del proyecto en el Explorador de soluciones. A continuación, seleccione Agregar y Referencias.
+    referencias de tooadd mediante el cuadro de diálogo de administrar referencias de hello, haga clic en el nombre del proyecto hello en el Explorador de soluciones de Hola. A continuación, seleccione Agregar y Referencias.
    
-    Aparecerá el cuadro de diálogo Administrar referencias.
-8. En los ensamblados de .NET Framework, busque, seleccione el ensamblado System.Configuration y haga clic en Aceptar.
-9. Abra el archivo App.config y agregue una sección *appSettings* al archivo.     
+    aparece el cuadro de diálogo de administrar referencias de Hola.
+8. En los ensamblados de .NET framework, buscar y seleccionar ensamblado System.Configuration de Hola y haga clic en Aceptar.
+9. Abra el archivo App.config de hello y agregue un *appSettings* archivo toohello de sección.     
    
-    Establezca los valores que se necesitan para conectarse a la API de Media Services. Para más información, consulte [Acceso a Azure Media Services API con la autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+    Establecer valores de hello que son necesarios tooconnect toohello API de servicios multimedia. Para obtener más información, consulte [Hola acceso API de servicios multimedia de Azure con autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-    Si usa la [autenticación de usuario](media-services-use-aad-auth-to-access-ams-api.md#types-of-authentication), el archivo de configuración probablemente tendrá valores para el dominio del inquilino de Azure AD y el punto de conexión de la API de REST de AMS.
+    Si utilizas [autenticación de usuario](media-services-use-aad-auth-to-access-ams-api.md#types-of-authentication) el archivo de configuración tendrá probablemente valores para el dominio del inquilino de Azure AD y Hola extremo de la API de REST de AMS.
     
     >[!Important]
-    >La mayoría de los ejemplos de código que aparecen en el conjunto de documentación de Azure Media Services usan un tipo de autenticación de usuario (interactivo) para conectarse a la API de AMS. Este método de autenticación funcionará bien para administrar o supervisar aplicaciones nativas: aplicaciones móviles, aplicaciones Windows y aplicaciones de consola. Este método de autenticación no es adecuado para los tipos de aplicaciones de servidor, servicios web ni tipo de API.  Para más información, consulte [Acceso a Azure Media Services API con la autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
+    >La mayoría de ejemplos de código de hello documentación de servicios multimedia de Azure establecido, utilice un tipo de autenticación tooconnect toohello AMS API (interactiva) de usuario. Este método de autenticación funcionará bien para administrar o supervisar aplicaciones nativas: aplicaciones móviles, aplicaciones Windows y aplicaciones de consola. Este método de autenticación no es adecuado para los tipos de aplicaciones de servidor, servicios web ni tipo de API.  Para obtener más información, consulte [Hola AMS API de acceso con autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 
         <configuration>
         ...
@@ -76,7 +76,7 @@ También puede obtener los bits más recientes del SDK de Media Services para .N
 
         </configuration>
 
-10. Sobrescriba las instrucciones **using** existentes siguiendo las instrucciones al comienzo del archivo Program.cs con el siguiente código.
+10. Sobrescribir Hola existente **con** al principio de hello las instrucciones del archivo Program.cs de hello con hello siguiente código.
            
         using System;
         using System.Configuration;
@@ -86,15 +86,15 @@ También puede obtener los bits más recientes del SDK de Media Services para .N
         using System.Collections.Generic;
         using System.Linq;
 
-En este punto, está listo para iniciar el desarrollo de una aplicación de Servicios multimedia.    
+En este punto, está listo toostart desarrollar una aplicación de servicios multimedia.    
 
 ## <a name="example"></a>Ejemplo
 
-Este es un pequeño ejemplo en que se establece una conexión a la API de AMS y muestra todos los procesadores de multimedia disponibles.
+Este es un pequeño ejemplo que se conecta toohello AMS API y enumera todos los procesadores de medios disponibles.
     
     class Program
     {
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -118,7 +118,7 @@ Este es un pequeño ejemplo en que se establece una conexión a la API de AMS y 
 
 ##<a name="next-steps"></a>Pasos siguientes
 
-Ahora [puede conectarse a la API de AMS](media-services-use-aad-auth-to-access-ams-api.md) y empezar a [desarrollar](media-services-dotnet-get-started.md).
+Ahora [puede conectarse toohello AMS API](media-services-use-aad-auth-to-access-ams-api.md) e iniciar [desarrollar](media-services-dotnet-get-started.md).
 
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia

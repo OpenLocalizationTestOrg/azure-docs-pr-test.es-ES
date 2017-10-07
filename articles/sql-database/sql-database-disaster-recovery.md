@@ -1,6 +1,6 @@
 ---
-title: "Recuperación ante desastres de SQL Database | Microsoft Docs"
-description: "Obtenga información sobre cómo recuperar una base de datos tras un error o una interrupción de un centro de datos regional con las funcionalidades de replicación geográfica activa y restauración geográfica de Azure SQL Database."
+title: "recuperación ante desastres de bases de datos aaaSQL | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toorecover una base de datos de un centro de datos regional suministro o con Hola base de datos de SQL Azure la replicación geográfica activa y las capacidades de restauración geográfica."
 services: sql-database
 documentationcenter: 
 author: anosov1960
@@ -15,88 +15,88 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/14/2017
 ms.author: sashan
-ms.openlocfilehash: e33f69bf04b32a31aae3c311c41aa44e4da5016a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bae08485863067748107ec4808e52d8e88e2de0d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Restauración de una base de datos SQL de Azure o una conmutación por error en una secundaria
-Base de datos SQL de Azure ofrece las siguientes capacidades para recuperarse de un corte en el suministro eléctrico:
+# <a name="restore-an-azure-sql-database-or-failover-tooa-secondary"></a>Restaurar tooa secundario para una base de datos de SQL Azure o conmutación por error
+La base de datos de SQL Azure ofrece Hola después de capacidades para recuperarse de una interrupción del servicio:
 
 * [Replicación geográfica activa](sql-database-geo-replication-overview.md)
 * [Restauración geográfica](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-Para obtener información sobre los escenarios de continuidad empresarial y sus características, consulte el artículo sobre [continuidad empresarial](sql-database-business-continuity.md).
+toolearn sobre escenarios de continuidad empresarial y características de hello compatibles con estos escenarios, vea [continuidad del negocio](sql-database-business-continuity.md).
 
-### <a name="prepare-for-the-event-of-an-outage"></a>Preparación ante interrupciones
-Para que el proceso de recuperación pueda realizarse sin problemas en otra región de datos mediante la replicación geográfica activa o las copias de seguridad con redundancia geográfica, debe preparar un servidor en otra interrupción de un centro de datos para convertirlo en el nuevo servidor principal si lo considera necesario. También hay que contar con pasos bien definidos que se hayan documentado y probado para garantizar que la recuperación se lleve a cabo correctamente. Estos son algunos de los pasos correspondientes a la fase de preparación:
+### <a name="prepare-for-hello-event-of-an-outage"></a>Preparar para eventos de Hola de una interrupción del servicio
+Para lograr el éxito con la región de datos de recuperación tooanother con replicación geográfica activa o las copias de seguridad con redundancia geográfica, necesita tooprepare un servidor en otro datos center interrupción toobecome Hola nuevo servidor principal debe Hola necesita surgen así como tener pasos bien definidos probado y documentado tooensure una recuperación sin problemas. Estos son algunos de los pasos correspondientes a la fase de preparación:
 
-* Identificar el servidor lógico en otra región para convertirse en el nuevo servidor principal. Con la replicación geográfica activa, será, como mínimo, uno de los servidores secundarios (y probablemente todos). Para la restauración geográfica, normalmente suele ser un servidor de la [región asociada](../best-practices-availability-paired-regions.md) a aquella en donde se encuentre la base de datos.
-* Identificar y, de manera opcional, definir las reglas de firewall de nivel de servidor que deben estar activas para que los usuarios accedan la nueva base de datos principal.
-* Determinar cómo va a redirigir a los usuarios al nuevo servidor principal; por ejemplo, cambiar las cadenas de conexión o las entradas DNS.
-* Identificar y, de manera opcional, crear los inicios de sesión que deben estar presentes en la base de datos maestra del nuevo servidor principal, así como asegurarse de que tienen los permisos adecuados en la base de datos maestra, si procede. Para obtener más información, consulte [Administración de la seguridad de Base de datos SQL de Azure después de la recuperación ante desastres](sql-database-geo-replication-security-config.md)
-* Identificar las reglas de alerta que deben actualizarse para que se asignen a la nueva base de datos principal.
-* Documentar la configuración de auditoría de la base de datos principal actual.
-* Realice [maniobras de recuperación ante desastres](sql-database-disaster-recovery-drills.md). Para simular una interrupción con la restauración geográfica, puede eliminar o cambiar el nombre de la base de datos de origen para provocar el error de conectividad de la aplicación. Para realizar el mismo proceso con la replicación geográfica activa, puede deshabilitar la aplicación web o la máquina virtual conectadas a la base de datos, o bien llevar a cabo una conmutación por error en la base de datos para provocar errores de conectividad en la aplicación.
+* Identifique el servidor lógico de hello en otra región toobecome Hola nuevo servidor principal. Con la replicación geográfica activa, esta será al menos uno y quizás cada uno de los servidores secundarios de Hola. Para la restauración geográfica, esto suele ser un servidor en hello [región emparejada](../best-practices-availability-paired-regions.md) de región de hello en el que se encuentra la base de datos.
+* Identificar y, opcionalmente, definir, las reglas de firewall de nivel de servidor de hello necesarios en los usuarios tooaccess Hola nueva base de datos principal.
+* Determinar cómo se van tooredirect usuarios toohello nuevo servidor principal, como cambiar las cadenas de conexión o cambiando las entradas de DNS.
+* Identificar y, opcionalmente, crear, Hola inicios de sesión que deben estar presente en la base de datos maestra de hello en el nuevo servidor principal de Hola y asegúrese de que estos inicios de sesión tienen los permisos adecuados en la base de datos maestra de hello, si lo hay. Para obtener más información, consulte [Administración de la seguridad de Base de datos SQL de Azure después de la recuperación ante desastres](sql-database-geo-replication-security-config.md)
+* Identificar las reglas de alerta que necesitan toobe toomap actualizada toohello nueva base de datos principal.
+* Configuración de auditoría de Hola de documento en la base de datos principal Hola actual
+* Realice [maniobras de recuperación ante desastres](sql-database-disaster-recovery-drills.md). toosimulate una interrupción para la restauración geográfica, puede eliminar o cambiar el nombre de error de conectividad de la aplicación de toocause de hello origen base de datos. toosimulate una interrupción del servicio de replicación geográfica activa, puede deshabilitar aplicación de hello web o máquina virtual conectada toohello base de datos o de conmutación por error Hola base de datos toocause conectividad errores de aplicación.
 
-## <a name="when-to-initiate-recovery"></a>Cuándo iniciar la recuperación
-La operación de recuperación repercute en la aplicación. Este proceso requiere cambiar el redireccionamiento o la cadena de conexión SQL mediante DNS, y podría provocar la pérdida de datos permanente. Por lo tanto, debe realizarse solo cuando la duración de la interrupción pueda durar más que el objetivo de tiempo de recuperación de la aplicación. Cuando se implementa la aplicación en producción, deberá supervisar con frecuencia el estado de la aplicación. Para ello, use los siguientes puntos de datos para garantizar la recuperación:
+## <a name="when-tooinitiate-recovery"></a>Cuando tooinitiate recuperación
+operación de recuperación de Hello afecta aplicación hello. Es necesario cambiar la cadena de conexión de SQL de Hola o redirección con DNS y dar lugar a pérdida de datos permanente. Por lo tanto, debe realizarse solo una vez interrupción hello toolast es probable que más de objetivo de tiempo de recuperación de la aplicación. Una vez hello aplicación tooproduction implementado debe realizar la supervisión regular de estado de la aplicación hello y usar hello es garantizar la sobresuscripción tooassert puntos que Hola de recuperación de datos siguientes:
 
-1. Error de conectividad permanente de la capa de aplicación en la base de datos.
-2. El Portal de Azure muestra una alerta sobre una incidencia en una región con un gran impacto.
-3. El servidor de Base de datos SQL de Azure está marcado como degradado.
+1. Error de conectividad permanente de base de datos toohello capa de aplicación de Hola.
+2. Hola portal de Azure, muestra una alerta sobre un incidente en la región de hello con gran impacto.
+3. servidor de base de datos de SQL Azure de Hello está marcado como degradado.
 
-En función de la tolerancia de la aplicación al tiempo de inactividad y de la posible responsabilidad civil, puede considerar las siguientes opciones de recuperación.
+Dependiendo de su responsabilidad de negocio de toodowntime y posibles de tolerancia de aplicación puede considerar Hola siguientes opciones de recuperación.
 
-Use la opción [Get Recoverable Database](https://msdn.microsoft.com/library/dn800985.aspx) (Obtener base de datos recuperable) (*LastAvailableBackupDate*) para obtener el último punto de restauración de replicación geográfica.
+Hola de uso [obtener base de datos recuperable](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) punto de restauración de replicación geográfica más reciente de tooget Hola.
 
 ## <a name="wait-for-service-recovery"></a>Espera para la recuperación del servicio
-Los equipos de Azure trabajan diligentemente para restaurar la disponibilidad del servicio lo antes posible, pero dependiendo de la causa principal pueden tardar horas, o incluso días.  Si la aplicación puede tolerar un tiempo de inactividad considerable, puede esperar hasta que se complete la recuperación. En este caso, no se requieren acciones por su parte. El estado actual del servicio se puede ver en el [panel de estado de los servicios de Azure](https://azure.microsoft.com/status/). Después de la recuperación de la región se restaurará la disponibilidad de su aplicación.
+Hello Azure los equipos trabajan minuciosamente toorestore disponibilidad del servicio tal y como rápidamente como sea posible, pero dependiendo de la causa raíz de hello puede tardar horas o días.  Si su aplicación tolera mucho tiempo de inactividad puede esperar simplemente hello toocomplete de recuperación. En este caso, no se requieren acciones por su parte. Puede ver el estado actual del servicio hello en nuestro [panel de estado del servicio de Azure](https://azure.microsoft.com/status/). Después de la recuperación de Hola de región de Hola se restaurará la disponibilidad de su aplicación.
 
-## <a name="fail-over-to-geo-replicated-secondary-database"></a>Conmutación por error de la base de datos secundaria de replicación geográfica
-Si el tiempo de inactividad de la aplicación puede dar lugar a responsabilidades civiles, debería utilizar bases de datos con replicación geográfica en la aplicación. Esto permitirá que la aplicación restaure rápidamente la disponibilidad en una región diferente en caso de interrupción. Obtenga información sobre cómo [configurar la replicación geográfica](sql-database-geo-replication-portal.md).
+## <a name="fail-over-toogeo-replicated-secondary-database"></a>Conmutar por error toogeo con replicación de base de datos secundaria
+Si el tiempo de inactividad de la aplicación puede dar lugar a responsabilidades civiles, debería utilizar bases de datos con replicación geográfica en la aplicación. Se habilitará la disponibilidad de restauración tooquickly hello las aplicaciones en una región distinta en el caso de una interrupción. Obtenga información acerca de cómo demasiado[configurar la replicación geográfica](sql-database-geo-replication-portal.md).
 
-Para restaurar la disponibilidad de las bases de datos, es preciso iniciar la conmutación por error en la secundaria con replicación geográfica mediante uno de los métodos admitidos.
+disponibilidad de toorestore del programa Hola a bases de datos necesita tooinitiate Hola mediante uno de los métodos de hello admitida la conmutación por error toohello replicación geográfica secundaria.
 
-Utilice una de las siguientes guías para realizar la conmutación por error en una base de datos secundaria con replicación geográfica:
+Use uno de hello siguiendo guías toofail a través de la base de datos de tooa replicación geográfica secundaria:
 
-* [Configuración de replicación geográfica con Azure Portal](sql-database-geo-replication-portal.md)
-* [Configuración de la replicación geográfica con PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-* [Conmutación por error a una base de datos secundaria con replicación geográfica mediante Transact-SQL](sql-database-geo-replication-transact-sql.md)
+* [Conmutar por error tooa georreplicadas base de datos secundaria mediante el Portal de Azure](sql-database-geo-replication-portal.md)
+* [Conmutar por error tooa replicación geográfica secundaria mediante PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+* [Conmutar por error tooa georreplicadas base de datos secundaria mediante T-SQL](sql-database-geo-replication-transact-sql.md)
 
 ## <a name="recover-using-geo-restore"></a>Recuperación mediante la restauración geográfica
-Si el tiempo de inactividad de la aplicación no da lugar a responsabilidades civiles, puede usar la [restauración geográfica](sql-database-recovery-using-backups.md) como método para recuperar las bases de datos de la aplicación. Dicho método crea una copia de la base de datos a partir de la última copia de seguridad con redundancia geográfica.
+Si el tiempo de inactividad de la aplicación no da como resultado la responsabilidad de negocio puede usar [georestauración](sql-database-recovery-using-backups.md) como un método toorecover las bases de datos de aplicación. Crea una copia de base de datos de Hola desde su última copia de seguridad con redundancia geográfica.
 
 ## <a name="configure-your-database-after-recovery"></a>Configuración de la base de datos después de realizar la recuperación
-Si se usa la conmutación por error con replicación geográfica o la funcionalidad de restauración geográfica para recuperar la base de datos tras una interrupción, hay que asegurarse de que la conectividad con las bases de datos nuevas está configurada correctamente para que se pueda reanudar el funcionamiento normal de la aplicación. Esta es una lista de comprobación de las tareas necesarias para que la producción de la base de datos recuperada esté lista.
+Si usas conmutación por error de replicación geográfica o la restauración geográfica toorecover desde una interrupción, debe asegurarse de que Hola conectividad toohello nuevas bases de datos está configurado correctamente para que se puede reanudar la función de aplicación normal de hello. Esto es una lista de comprobación de tareas tooget listos para la producción de base de datos recuperada.
 
 ### <a name="update-connection-strings"></a>Actualización de cadenas de conexión
-Dado que la base de datos recuperada residirá en otro servidor, es preciso que actualice la cadena de conexión de la aplicación para que apunte a dicho servidor.
+Dado que la base de datos recuperada residen en un servidor diferente, deberá tooupdate servidor toothat toopoint cadena de conexión a la aplicación.
 
-Para obtener más información sobre cómo cambiar las cadenas de conexión, consulte el lenguaje de desarrollo adecuado para la [biblioteca de conexiones](sql-database-libraries.md).
+Para obtener más información acerca de cómo cambiar las cadenas de conexión, vea el lenguaje de desarrollo adecuada de Hola para su [biblioteca de conexiones de](sql-database-libraries.md).
 
 ### <a name="configure-firewall-rules"></a>Configuración de las reglas del firewall
-Es preciso que se asegure de que las reglas del firewall configuradas tanto en el servidor como en la base de datos coinciden con las configuradas en el servidor principal y en la base de datos principal. Para obtener más información, consulte [Configuración del firewall (Base de datos SQL de Azure)](sql-database-configure-firewall-settings.md).
+Necesita toomake Asegúrese de que las reglas de firewall de hello configurado en servidor y en la coincidencia de la base de datos de hello aquellos que se han configurado en el servidor principal de Hola y base de datos principal. Para obtener más información, consulte [Configuración del firewall (Base de datos SQL de Azure)](sql-database-configure-firewall-settings.md).
 
 ### <a name="configure-logins-and-database-users"></a>Configuración de inicios de sesión de y de usuarios de la base de datos
-Es preciso asegurarse de que todos los inicios de sesión que usa la aplicación existen en el servidor que hospeda la base de datos recuperada. Para obtener más información, consulte [Configuración de seguridad para Replicación geográfica activa o estándar](sql-database-geo-replication-security-config.md).
+Necesita toomake seguro de que todos los inicios de sesión de hello utilizados por la aplicación existen en el servidor de Hola que hospeda la base de datos recuperada. Para obtener más información, consulte [Configuración de seguridad para Replicación geográfica activa o estándar](sql-database-geo-replication-security-config.md).
 
 > [!NOTE]
-> Debe configurar y probar las reglas de firewall del servidor y los inicios de sesión (y sus permisos) durante una maniobra de recuperación ante desastres. Es posible que estos objetos de nivel de servidor y su configuración no estén disponibles durante la interrupción.
+> Debe configurar y probar las reglas de firewall del servidor y los inicios de sesión (y sus permisos) durante una maniobra de recuperación ante desastres. Estos objetos de nivel de servidor y su configuración no estén disponibles durante la interrupción de Hola.
 > 
 > 
 
 ### <a name="setup-telemetry-alerts"></a>Configuración de alertas de telemetría
-Debe asegurarse de que la configuración actual de la regla de alertas está actualizada para asignarla a la base de datos recuperada y al otro servidor.
+Debe toomake que la configuración de regla de alerta existente estén actualizados toomap toohello recuperado hello y base de datos de otro servidor.
 
 Para obtener más información sobre las reglas de alerta de las bases de datos, consulte [Recibir notificaciones de alerta](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) y [Realización de seguimiento del estado](../monitoring-and-diagnostics/insights-service-health.md).
 
 ### <a name="enable-auditing"></a>Habilitar auditoría
-Si se requiere una auditoría para tener acceso a una base de datos, será preciso habilitar Auditoría tras la recuperación de la base de datos. Para obtener más información, consulte [este artículo sobre la realización de auditorías en las bases de datos](sql-database-auditing.md).
+Si la auditoría está tooaccess requiere la base de datos, necesita tooenable auditoría después de una recuperación de base de datos de Hola. Para obtener más información, consulte [este artículo sobre la realización de auditorías en las bases de datos](sql-database-auditing.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener información sobre las copias de seguridad automatizadas de Base de datos SQL de Azure, consulte [Información general: copias de seguridad automatizadas de Base de datos SQL](sql-database-automated-backups.md)
-* Para obtener información sobre los escenarios de recuperación y diseño de la continuidad empresarial, consulte el artículo sobre [escenarios de continuidad](sql-database-business-continuity.md)
-* Si quiere saber cómo utilizar las copias de seguridad automatizadas para procesos de recuperación, consulte [Recover an Azure SQL database using automated database backups](sql-database-recovery-using-backups.md)
+* toolearn acerca de las copias de seguridad de base de datos de SQL de Azure automatizada, vea [copias de seguridad automáticas de base de datos SQL](sql-database-automated-backups.md)
+* toolearn sobre escenarios de recuperación y diseño de continuidad de negocio, vea [escenarios de continuidad](sql-database-business-continuity.md)
+* toolearn sobre el uso de copias de seguridad automatizadas para la recuperación, vea [restaurar una base de datos de copias de seguridad de hello iniciadas por el servicio](sql-database-recovery-using-backups.md)
 

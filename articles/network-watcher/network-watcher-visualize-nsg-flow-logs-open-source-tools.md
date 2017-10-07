@@ -1,6 +1,6 @@
 ---
-title: "Visualización de registros de flujo de grupo de seguridad de red de Azure Network Watcher con herramientas de código abierto | Microsoft Docs"
-description: "En esta página se describe cómo utilizar herramientas de código abierto para visualizar los registros de flujo de grupo de seguridad de red."
+title: "registros de aaaVisualize flujo NSG de Monitor de red de Azure con herramientas de código abierto | Documentos de Microsoft"
+description: "Esta página describe cómo toouse abrir registros de flujo de origen herramientas toovisualize NSG."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 20f60ccd9108a7473705c2368f28d3152d0dd614
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 47cb529d4a1e00e8c4c0fa6885cbf72aed3e74c4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Visualización de registros de flujo de grupo de seguridad de red de Azure Network Watcher con herramientas de código abierto
 
-Los registros de flujo de grupo de seguridad de red proporcionan información que sirve para comprender el tráfico IP de entrada y salida en grupos de seguridad de red. Estos registros de flujo muestran los flujos de entrada y salida en función de cada regla, la NIC a la que se aplica el flujo, 5 datos sobre el flujo (IP de origen y de destino, puerto de origen y de destino, protocolo), y si se permitió o denegó el tráfico.
+Los registros de flujo de grupo de seguridad de red proporcionan información que sirve para comprender el tráfico IP de entrada y salida en grupos de seguridad de red. Estos registros de flujo muestran salientes y flujos de entrada en cada regla, Hola flujo Hola NIC que se aplica, información de tupla 5 acerca del flujo de hello (origen/destino IP, puerto de origen/destino, protocolo), y si el tráfico de Hola se permitirá o denegará.
 
-El análisis y la extracción de información de forma manual de estos registros de flujo pueden resultar difíciles. Sin embargo, hay varias herramientas de código abierto que pueden ayudar a visualizar estos datos. En este artículo se proporciona una solución para visualizar estos registros mediante Elastic Stack, lo que le permitirá indexar y visualizar rápidamente el flujo de registros en un panel de Kibana.
+Estos registros de flujo pueden ser difícil toomanually análisis y obtener información de. Sin embargo, hay varias herramientas de código abierto que pueden ayudar a visualizar estos datos. Este artículo proporcionará una solución toovisualize estos registros mediante Hola pila elástica, que le permiten tooquickly índice y visualizar los registros de flujo en un panel de Kibana.
 
 ## <a name="scenario"></a>Escenario
 
-En este artículo, se configurará una solución que le permitirá visualizar registros de flujo de grupo de seguridad de red con Elastic Stack.  Un complemento de entrada de Logstash obtendrá los registros de flujo directamente del blob de almacenamiento configurado como contenedor de los registros de flujo. A continuación, con Elastic Stack, se indexarán los registros de flujo y se usarán para crear un panel de Kibana para visualizar la información.
+En este artículo, se configurará una solución que le permitirá registros de flujo de grupo de seguridad de red toovisualize con hello pila elástico.  Un complemento de entrada Logstash obtendrá los registros de flujo de hello directamente desde el blob de almacenamiento de hello configurado para que contenga los registros de flujo de Hola. A continuación, con hello pila elástica, se indizarán y utilizan toocreate una información de hello toovisualize del panel de Kibana de registros de flujo de Hola.
 
 ![escenario][scenario]
 
 ## <a name="steps"></a>Pasos
 
 ### <a name="enable-network-security-group-flow-logging"></a>Habilitación de los registros de flujo de grupo de seguridad de red
-En este escenario, debe tener el registro de flujo de grupo de seguridad de red habilitado en al menos un grupo de seguridad de red de su cuenta. Para ver instrucciones para habilitar los registros de flujo de grupo de seguridad de red, consulte el artículo siguiente [Introducción a los registros de flujo de grupos de seguridad de red con Azure Network Watcher](network-watcher-nsg-flow-logging-overview.md).
+En este escenario, debe tener el registro de flujo de grupo de seguridad de red habilitado en al menos un grupo de seguridad de red de su cuenta. Para obtener instrucciones acerca de cómo habilitar los registros de flujo de seguridad de red, consulte toohello artículo siguiente [registro tooflow de introducción para grupos de seguridad de red](network-watcher-nsg-flow-logging-overview.md).
 
 
-### <a name="set-up-the-elastic-stack"></a>Configuración de Elastic Stack
-Mediante la conexión de los registros de flujo de grupo de seguridad con Elastic Stack, se puede crear un panel de Kibana que permita buscar, representar, analizar y extraer información de los registros.
+### <a name="set-up-hello-elastic-stack"></a>Configurar Hola pila elástica
+Mediante la conexión NSG flujo registros con hello pila elástica, podemos crear un panel de Kibana lo que nos permite toosearch, gráfico, analizar y obtener la percepción de nuestros registros.
 
 #### <a name="install-elasticsearch"></a>Instalación de Elasticsearch
 
-1. La versión 5.0 y superiores de Elastic Stack requieren Java 8. Ejecute el comando `java -version` para comprobar la versión. Si no tiene instalado Java, consulte la documentación en el [sitio web de Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html).
-1. Descargue el paquete binario correcto para su sistema:
+1. Hola pila elástico desde la versión 5.0 y versiones posteriores requiere Java 8. Ejecute el comando de hello `java -version` toocheck su versión. Si no tiene java de instalación, consulte toodocumentation en [sitio Web de Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+1. Descargue el paquete binario correcto de hello para el sistema:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
@@ -54,13 +54,13 @@ Mediante la conexión de los registros de flujo de grupo de seguridad con Elasti
 
     Puede encontrar otros métodos de instalación en [Elasticsearch Installation](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html) (Instalación de Elasticsearch).
 
-1. Compruebe que Elasticsearch se esté ejecutando con el comando:
+1. Compruebe que se está ejecutando con el comando Hola Elasticsearch:
 
     ```
     curl http://127.0.0.1:9200
     ```
 
-    La respuesta debe ser similar a la siguiente:
+    Debería ver un toothis similar de respuesta:
 
     ```
     {
@@ -77,23 +77,23 @@ Mediante la conexión de los registros de flujo de grupo de seguridad con Elasti
     }
     ```
 
-Para más instrucciones sobre cómo instalar Elasticsearch, consulte la página de [instalación](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html).
+Para obtener más instrucciones sobre instalación búsqueda elástica, consulte toohello página [instalación](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)
 
 ### <a name="install-logstash"></a>Instalación de Logstash
 
-1. Para instalar Logstash, ejecute los siguientes comandos:
+1. tooinstall Logstash ejecute hello siguientes comandos:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. A continuación, necesitamos configurar Logstash para tener acceso a los registros de flujo y analizarlos. Cree un archivo logstash.conf mediante:
+1. A continuación se necesita tooconfigure Logstash tooaccess y analicen los registros de flujo de Hola. Cree un archivo logstash.conf mediante:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Agregue el siguiente contenido al archivo:
+1. Agregue hello toohello contenido el archivo siguiente:
 
   ```
     input {
@@ -151,94 +151,94 @@ Para más instrucciones sobre cómo instalar Elasticsearch, consulte la página 
 
   ```
 
-Para más instrucciones sobre cómo instalar Logstash, consulte la [documentación oficial](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
+Para obtener más instrucciones acerca de cómo instalar Logstash, consulte toohello [documentación oficial](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Instalación del complemento de entrada de Logstash para Azure Blob Storage
+### <a name="install-hello-logstash-input-plugin-for-azure-blob-storage"></a>Instalar el complemento de entrada de Logstash hello para el almacenamiento de blobs de Azure
 
-Este complemento de Logstash le permitirá acceder directamente a los registros de flujo desde su cuenta de almacenamiento designada. Para instalar este complemento, desde el directorio de instalación predeterminado de Logstash (en este caso /usr/share/logstash/bin), ejecute el comando:
+Este complemento Logstash le permitirá los registros de flujo Hola acceso toodirectly desde su cuenta de almacenamiento designadas. tooinstall este complemento, desde el directorio de instalación predeterminado de hello Logstash (en este caso /usr/share/logstash/bin) ejecute hello comando:
 
 ```
 logstash-plugin install logstash-input-azureblob
 ```
 
-Para iniciar Logstash, ejecute el comando:
+toostart Logstash ejecutar comando hello:
 
 ```
 sudo /etc/init.d/logstash start
 ```
 
-Para obtener más información sobre este complemento, consulte la documentación [aquí](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+Para obtener más información sobre este complemento, consulte toodocumentation [aquí](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)
 
 ### <a name="install-kibana"></a>Instalación de Kibana
 
-1. Ejecute los siguientes comandos para instalar Kibana:
+1. Ejecute hello después comandos tooinstall Kibana:
 
   ```
   curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
   tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
   ```
 
-1. Para ejecutar Kibana, use los comandos:
+1. toorun Kibana use comandos de hello:
 
   ```
   cd kibana-5.2.0-linux-x86_64/
   ./bin/kibana
   ```
 
-1. Para ver la interfaz web de Kibana, vaya a `http://localhost:5601`.
-1. En este escenario, el patrón de índice usado para los registros de flujo es "nsg-flow-logs". Puede cambiarlo en la sección "output" del archivo logstash.conf.
+1. tooview web Kibana interfaz, vaya demasiado`http://localhost:5601`
+1. En este escenario, el patrón de índice de hello utilizado para los registros de flujo de hello es "registros de flujo de nsg". Puede cambiar el patrón de índice de hello en la sección de "resultado" hello del archivo logstash.conf.
 
-1. Si quiere ver el panel de Kibana de forma remota, cree una regla de grupo de seguridad de red de entrada que permita acceder al **puerto 5601**.
+1. Si desea Kibana panel de tooview Hola remotamente, cree una regla de NSG entrada permitir el acceso demasiado**puerto 5601**.
 
 ### <a name="create-a-kibana-dashboard"></a>Creación de un panel de Kibana
 
-En este artículo, se proporciona un panel de ejemplo para que vea tendencias y detalles de sus alertas.
+Para este artículo, proporcionamos un panel de ejemplo para que tooview tendencias y los detalles de las alertas.
 
 ![Figura 1][1]
 
-1. Descargue el archivo de panel de [aquí](https://aka.ms/networkwatchernsgflowlogdashboard), el archivo de visualización de [aquí](https://aka.ms/networkwatchernsgflowlogvisualizations) y el archivo de búsqueda guardada de [aquí](https://aka.ms/networkwatchernsgflowlogsearch).
+1. Descargar archivo de panel de hello [aquí](https://aka.ms/networkwatchernsgflowlogdashboard), archivo de visualización de hello [aquí](https://aka.ms/networkwatchernsgflowlogvisualizations)y el archivo de búsqueda de hello guarda [aquí](https://aka.ms/networkwatchernsgflowlogsearch).
 
-1. En la pestaña **Management** (Administración) de Kibana, vaya a **Saved Objects** (Objetos guardados) e importe los tres archivos. A continuación, en la pestaña **Dashboard** (Panel), puede abrir y cargar el panel de ejemplo.
+1. En hello **administración** ficha de Kibana, navegue demasiado**objetos guardados** e importar los tres archivos. A continuación en hello **panel** ficha puede abrir y carga Hola panel de ejemplo.
 
 También puede crear visualizaciones y paneles propios que se adapten a las métricas que le interesen. Puede leer más sobre la creación de visualizaciones de Kibana en la [documentación oficial](https://www.elastic.co/guide/en/kibana/current/visualize.html) de Kibana.
 
 ### <a name="visualize-nsg-flow-logs"></a>Visualización de registros de flujo de grupo de seguridad de red
 
-El panel de ejemplo proporciona varias visualizaciones de los registros de flujo:
+panel de ejemplo de Hola proporciona varias visualizaciones de registros de flujo de hello:
 
-1. Flujos por decisión o dirección a lo largo del tiempo: gráficos de serie temporal que muestran el número de flujos en el período de tiempo. Puede editar la unidad de tiempo y el alcance de estas dos visualizaciones. Flows by Decision (Flujos por decisión) muestra la proporción de decisiones de permitir o denegar tomadas, mientras que Flows by Direction (Flujos por dirección) muestra la proporción de tráfico de entrada y de salida. Con estos objetos visuales, puede examinar las tendencias del tráfico a lo largo del tiempo y buscar picos o patrones poco habituales.
+1. Los flujos por decisión/dirección de un período - gráficos de series de tiempo que muestra el número de Hola de flujos en hello período de tiempo. Puede editar unidad Hola de tiempo y tramo de ambos estas visualizaciones. Flujos por decisión muestra hello proporción de permiten o denegación las decisiones tomadas, mientras que fluye por dirección muestra hello proporción de tráfico entrante y saliente. Con estos objetos visuales, puede examinar las tendencias del tráfico a lo largo del tiempo y buscar picos o patrones poco habituales.
 
   ![Figura 2][2]
 
-1. Flujos por puerto de origen o destino (Flows by Destination Port y Flows by Source Port): gráficos circulares que muestran el desglose de los flujos a sus puertos respectivos. En esta vista se ven los puertos de uso más frecuente. Si hace clic en un puerto específico en el gráfico circular, el resto del panel se filtrará para mostrar flujos de ese puerto.
+1. Flujos de puerto de origen/destino: gráficos circulares que desglosan Hola flujos tootheir respectivos puertos. En esta vista se ven los puertos de uso más frecuente. Si hace clic en un puerto específico dentro de un gráfico circular hello, rest Hola de panel de hello filtrará hacia abajo tooflows de ese puerto.
 
   ![Figura 3][3]
 
-1. Number of Flows (Número de flujos) y Earliest Log Time (Hora de registro más antigua): métricas que muestran el número de flujos registrados y la fecha del registro más antiguo capturado.
+1. Número de flujos y la hora de registro más antiguo: métricas muestran qué Hola número de flujos que se registraron y fecha de Hola de registro más antiguo de hello capturado.
 
   ![Figura 4][4]
 
-1. Flows by NSG and Rule (Flujos por grupo de seguridad de red y regla): gráfico de barras que muestra la distribución de los flujos dentro de cada grupo de seguridad de red, así como la distribución de reglas en cada uno de ellos. Desde aquí puede ver qué grupo de seguridad de red y qué reglas generan la mayor parte del tráfico.
+1. Flujos de NSG y regla: un gráfico de barras que muestra la distribución de Hola de flujos dentro de cada NSG, así como la distribución de Hola de reglas en cada NSG. Desde aquí puede ver qué NSG y las reglas que genera Hola mayor cantidad de tráfico.
 
   ![Figura 5][5]
 
-1. Diez principales IP de origen o destino (Top 10 Source IPs y Top 10 Destination IPs): gráficos de barras que muestran las diez principales direcciones IP de origen y de destino. Puede ajustar estos gráficos para mostrar más o menos direcciones IP principales. Desde aquí puede ver las direcciones IP más frecuentes, así como la decisión de tráfico (permitir o denegar) que se está tomando para cada IP.
+1. Top 10 origen/destino IP: gráficos de barras que muestra hello 10 mejores origen e IP de destino. Puede ajustar estos tooshow gráficos más o menos superior direcciones IP. Desde aquí puede vea Hola normalmente está produciendo direcciones IP, así como Hola decisión de tráfico (permitir o denegar) que se va a realizar en cada IP.
 
   ![Figura 6][6]
 
-1. Flow Tuples (Tuplas de flujo): en esta tabla se muestra la información contenida en cada tupla de flujo, así como su grupo de seguridad de red y regla correspondiente.
+1. Tuplas de flujo: esta tabla muestra Hola información contenida en cada tupla flujo, así como sus NGS correspondiente y la regla.
 
   ![Figura 7][7]
 
-Mediante la barra de consulta en la parte superior del panel, puede filtrar el panel en función de cualquier parámetro de los flujos, como el id. de suscripción, los grupos de recursos, la regla o cualquier otra variable de interés. Para más información sobre las consultas y los filtros de Kibana, consulte la [documentación oficial](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html).
+Using barra de consulta de Hola Hola principio del panel de hello, puede filtrar hacia abajo el panel de hello basado en cualquier parámetro de flujos de hello, por ejemplo, Id. de suscripción, grupos de recursos, regla o cualquier otra variable de interés. Para obtener más información sobre las consultas y los filtros del Kibana, consulte toohello [documentación oficial](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
 
 ## <a name="conclusion"></a>Conclusión
 
-Al combinar los registros de flujo de grupo de seguridad de red con Elastic Stack, dispone de una forma eficaz y personalizable para visualizar el tráfico de red. Estos paneles permiten obtener y compartir rápidamente información detallada sobre el tráfico de red, así como filtrar e investigar cualquier posible anomalía. Con Kibana, puede personalizar estos paneles y crear visualizaciones específicas para satisfacer las necesidades de seguridad, cumplimiento y auditoría.
+Mediante la combinación de registros de flujo de grupo de seguridad de red de hello con hello pila elástica, hemos creado con toovisualize de forma eficaz y puede personalizar el tráfico de red. Estos paneles permiten ganancia tooquickly y compartan información sobre el tráfico de red, así como filtro hacia abajo e investigar en cualquier posibles anomalías. Kibana puede personalizar estos paneles y crear visualizaciones específico toomeet las necesidades de seguridad, cumplimiento y auditoría.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a visualizar los registros de flujo de grupo de seguridad de red con Power BI en el artículo [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md) (Visualización de registros de flujo de grupo de seguridad de red con Power BI).
+Obtenga información acerca de cómo toovisualize su flujo NSG registra con Power BI visitando [flujos de NSG visualizar registros con Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 
 <!--Image references-->

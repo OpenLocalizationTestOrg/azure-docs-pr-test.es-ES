@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Site Recovery: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a configurar la recuperación ante desastres y la continuidad del negocio en la nube para servidores físicos y máquinas virtuales mediante la implementación y administración de la replicación."
+title: "aaaAzure documentación de recuperación del sitio - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooset una nube disaster recovery y continuidad del negocio para servidores físicos y máquinas virtuales mediante la implementación y administración de replicación."
 services: site-recovery
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/05/2017
 ms.author: carolz
-ms.openlocfilehash: ef7a25de4536cfd54331e1bce7d22f351768585c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 08c295488f2e9058922a495ffac24ee96f33fbda
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="site-recovery-documentation"></a>Documentación de Site Recovery
 
-Aprenda a usar Site Recovery para mejorar las estrategias de continuidad empresarial y de recuperación ante desastres, y poder así mantener las aplicaciones y cargas de trabajo disponibles durante el tiempo de inactividad. Los tutoriales y otros artículos le explican cómo planear, implementar y administrar la replicación, la conmutación por error y la recuperación de máquinas locales y máquinas virtuales de Azure.
+Obtenga información acerca de cómo toouse Site Recovery toocontribute tooyour negocio continuidad y ante desastres estrategia de recuperación, tookeep aplicaciones y cargas de trabajo disponibles durante el tiempo de inactividad. Tutoriales y otros artículos mostrarle cómo tooplan, implementar y administrar la replicación de hello, conmutación por error y recuperación de máquinas locales y máquinas virtuales de Azure.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Aprenda a usar Site Recovery para mejorar las estrategias de continuidad empresa
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción a la replicación de máquinas virtuales de Hyper-V en Azure (sin VMM)</h3>
+                        <h3>Introducción a la replicación de máquinas virtuales de Hyper-V tooAzure (sin WMM)</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Aprenda a usar Site Recovery para mejorar las estrategias de continuidad empresa
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción a la replicación de máquinas virtuales de Hyper-V en nubes VMM en Azure</h3>
+                        <h3>Introducción a la replicación de máquinas virtuales de Hyper-V en tooAzure de nubes VMM</h3>
                     </div>
                 </div>
             </div>

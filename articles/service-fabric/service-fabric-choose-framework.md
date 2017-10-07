@@ -1,6 +1,6 @@
 ---
-title: "Introducción al modelo de programación de Service Fabric | Microsoft Docs"
-description: "Service Fabric ofrece dos marcos para la creación de servicios: el marco de actores y el marco de servicios. Ofrecen distintas ventajas e inconvenientes en simplicidad y control."
+title: "Introducción al modelo de programación aaaService tejido | Documentos de Microsoft"
+description: 'Service Fabric ofrece dos marcos para compilar servicios: Hola actor y Hola services framework. Ofrecen distintas ventajas e inconvenientes en simplicidad y control.'
 services: service-fabric
 documentationcenter: .net
 author: seanmck
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: vturecek
-ms.openlocfilehash: ca36f42897cd44d6da1a3cb6db53f656cf6256ee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b48af2a7b41935bdf0e4594c765f363e520c254e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-programming-model-overview"></a>Información general del modelo de programación de Service Fabric
-Service Fabric ofrece varias maneras de escribir y administrar los servicios. Los servicios pueden optar por usar las API de Service Fabric para sacar el máximo provecho de los marcos de aplicaciones y las características de la plataforma. Los servicios también pueden ser cualquier programa ejecutable compilado escrito en cualquier lenguaje o código que se ejecute en un contenedor hospedado simplemente en un clúster de Service Fabric.
+Service Fabric ofrece toowrite de varias maneras y administre sus servicios. Servicios pueden elegir toouse hello las API de tejido de servicio tootake aprovechar características y marcos de aplicaciones de la plataforma de Hola. Los servicios también pueden ser cualquier programa ejecutable compilado escrito en cualquier lenguaje o código que se ejecute en un contenedor hospedado simplemente en un clúster de Service Fabric.
 
 ## <a name="guest-executables"></a>Ejecutables de invitado
-Un [ejecutable de invitado](service-fabric-deploy-existing-app.md) es un ejecutable arbitrario y existente (escrito en cualquier lenguaje) que se pueda ejecutar como un servicio en la aplicación. Los ejecutables de invitado no llaman directamente a las API del SDK de Service Fabric. Sin embargo, todavía se beneficiarán de las características que ofrece la plataforma, como la detección de servicio y la creación de informes de carga y de estado personalizada mediante la llamada a API de REST expuestas por Service Fabric. También tienen soporte técnico completo de ciclo de vida de aplicación.
+Un [ejecutable de invitado](service-fabric-deploy-existing-app.md) es un ejecutable arbitrario y existente (escrito en cualquier lenguaje) que se pueda ejecutar como un servicio en la aplicación. Ejecutables de invitado no llame directamente a Hola API del SDK de tejido de servicio. Sin embargo seguir sacando provecho de funciones de la plataforma de hello ofrece, como la detectabilidad del servicio, personalizada del estado y cargar informes mediante una llamada a las API de REST expuesto por Service Fabric. También tienen soporte técnico completo de ciclo de vida de aplicación.
 
 Introducción a los archivos ejecutables de invitado mediante la implementación de la primera [aplicación ejecutable de invitado](service-fabric-deploy-existing-app.md).
 
 ## <a name="containers"></a>Contenedores
-De forma predeterminada, Service Fabric implementa y activa estos servicios como procesos. Service Fabric puede implementar también servicios en [contenedores](service-fabric-containers-overview.md). Service Fabric admite la implementación de contenedores de Linux y contenedores de Windows en Windows Server 2016. Las imágenes de contenedor se pueden extraer de cualquier repositorio de contenedor e implementarse en la máquina. Puede implementar las aplicaciones existentes como ejecutables de invitado, servicios de confianza con estado o sin estado de Service Fabric o Reliable Actors en contenedores, y puede mezclar los servicios en procesos y servicios en contenedores en la misma aplicación.
+De forma predeterminada, Service Fabric implementa y activa estos servicios como procesos. Service Fabric puede implementar también servicios en [contenedores](service-fabric-containers-overview.md). Service Fabric admite la implementación de contenedores de Linux y contenedores de Windows en Windows Server 2016. Las imágenes de contenedor pueden extraerse de cualquier repositorio de contenedor e implementan toohello máquina. Puede implementar las aplicaciones existentes como invitado exectuables, servicios confiables de Service Fabric con o sin estado o Reliable Actors de contenedores y pueden mezclar servicios en procesos y servicios en contenedores Hola la misma aplicación.
 
 [más información sobre la inclusión en contenedores de los servicios de Windows o Linux](service-fabric-deploy-container.md)
 
 ## <a name="reliable-services"></a>Reliable Services
-Reliable Services es un marco de trabajo ligero para escribir servicios que se integran con la plataforma Service Fabric y que se benefician de todo el conjunto de características de la plataforma. Reliable Services proporciona un conjunto mínimo de API que permiten que el tiempo de ejecución de Service Fabric administre el ciclo de vida de los servicios y que permiten a los servicios interactuar con el tiempo de ejecución. El marco de trabajo de la aplicación es mínimo, lo que proporciona un control total sobre las opciones de diseño e implementación, y puede usarse para hospedar cualquier otro marco de trabajo de la aplicación, como ASP.NET Core.
+Servicios de confianza es un marco de ligera para escribir servicios que se integran con la plataforma de Service Fabric hello y aprovechan el conjunto completo de Hola de características de la plataforma. Servicios de confianza proporcionan un conjunto mínimo de las API que permiten Hola Service Fabric en tiempo de ejecución toomanage Hola del ciclo de vida de los servicios y que permiten su toointeract servicios con hello en tiempo de ejecución. marco de aplicación Hello es mínima, ofrecerle completa control sobre las opciones de diseño e implementación, y puede ser usado toohost cualquier otro marco de aplicación, como ASP.NET Core.
 
-Reliable Services puede no tener estado, de forma similar a la mayoría de las plataformas de servicios, como servidores web, en que cada instancia del servicio se crea de la misma y se conserva el estado en una solución externa, como Almacenamiento de tablas de Azure y Base de datos de Azure.
+Servicios de confianza pueden ser plataformas de servicio toomost sin estado, de forma similar, como los servidores web, en el que cada instancia del servicio de Hola se crea de la misma y se conserva el estado en una solución externa, como base de datos de Azure o almacenamiento de tabla de Azure.
 
-Reliable Services también pueden tener estado, exclusivo de Service Fabric, donde se conserva el estado directamente en el propio servicio mediante Colecciones confiables. El estado cuenta con una alta disponibilidad mediante la replicación y se distribuye a través de particiones, todo administrado automáticamente por Service Fabric.
+Servicios de confianza también pueden ser con estado, exclusivo tooService tejido, donde se conserva el estado directamente en el servicio de hello utilizando colecciones confiable. El estado cuenta con una alta disponibilidad mediante la replicación y se distribuye a través de particiones, todo administrado automáticamente por Service Fabric.
 
 [Aprenda más sobre Reliable Services](service-fabric-reliable-services-introduction.md) o comience por [escribir su primer Reliable Service](service-fabric-reliable-services-quick-start.md).
 
 ## <a name="reliable-actors"></a>Reliable Actors
-Basado en Reliable Services, el marco de Reliable Actor es un marco de aplicación que implementa el diseño de Virtual Actor, basado en el patrón de diseño del actor. El marco de Reliable Actor usa unidades independientes del proceso y el estado con la ejecución de subproceso único denominadas actores. El marco de Reliable Actor proporciona comunicaciones integradas para actores y las configuraciones de escalado horizontal y persistencia de estado establecidas previamente.
+Se basa en servicios de confianza, framework Actor confiable de hello es un marco de aplicación que implementa el patrón de Actor Virtual hello, basándose en el patrón de diseño de hello actor. marco de Actor confiable de Hello usa unidades independientes del proceso y el estado con la ejecución de un único subproceso denominada actores. Hola Actor confiable framework proporciona comunicaciones predefinidas actores y configuraciones de escalado horizontal y persistencia de estado establecido previamente.
 
-Como Reliable Actors es en sí mismo un marco de aplicación basado en Reliable Services, está totalmente integrado con la plataforma Service Fabric y se beneficia del conjunto completo de características que ofrece la plataforma.
+Reliable Actors propio sea el marco de una aplicación basado en los servicios de confianza, está totalmente integrado con la plataforma Service Fabric de Hola y se beneficia del conjunto completo de Hola de características que ofrece la plataforma de Hola.
 
 [Aprenda más sobre Reliable Actors](service-fabric-reliable-actors-introduction.md) o comience por [escribir el primer servicio de Reliable Actor](service-fabric-reliable-actors-get-started.md).
 

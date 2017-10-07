@@ -1,5 +1,5 @@
 ---
-title: "Configuración del estado deseado con una plantilla de Resource Manager| Microsoft Docs"
+title: "aaaDesired plantilla de estado del Administrador de recursos de configuración | Documentos de Microsoft"
 description: "Definición de la plantilla de Resource Manager para la configuración de estado deseado en Azure con ejemplos y solución de problemas"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,17 +16,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
-ms.openlocfilehash: 4292f9d8cd181073fdf0adff99fcb9624e0e9f55
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fc47ac149b1179d9305797eaa8ed8a83c0958c37
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-vmss-and-desired-state-configuration-with-azure-resource-manager-templates"></a>VMSS de Windows y configuración de estado deseado con plantillas de Azure Resource Manager
-En este artículo, se describe la plantilla de Resource Manager para el [controlador de extensiones de configuración de estado deseado](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Este artículo describe la plantilla de administrador de recursos de Hola para hello [controlador de extensión de configuración de estado deseado](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 ## <a name="template-example-for-a-windows-vm"></a>Ejemplo de plantilla para una máquina virtual de Windows
-El siguiente fragmento corresponde a la sección Resource de la plantilla.
+Hello fragmento de código siguiente va en hello sección de recursos de plantilla de Hola.
 
 ```json
             "name": "Microsoft.Powershell.DSC",
@@ -60,7 +60,7 @@ El siguiente fragmento corresponde a la sección Resource de la plantilla.
 ```
 
 ## <a name="template-example-for-windows-vmss"></a>Ejemplo de plantilla para VMSS de Windows
-Un nodo de VMSS tiene una sección "properties" con el atributo "extensionProfile" de "VirtualMachineProfile". DSC se agrega en "extensions". 
+Un nodo VMSS tiene una sección "propiedades" con hello "VirtualMachineProfile", "extensionProfile" atributo. DSC se agrega en "extensions". 
 
 ```json
 "extensionProfile": {
@@ -93,7 +93,7 @@ Un nodo de VMSS tiene una sección "properties" con el atributo "extensionProfil
 ```
 
 ## <a name="detailed-settings-information"></a>Información de configuración detallada
-Este es el esquema para la parte de configuración (settings) de la extensión DSC de Azure en una plantilla de Azure Resource Manager.
+Hola esquema siguiente es para la parte de la configuración de Hola de hello extensión de DSC de Azure en una plantilla de Azure Resource Manager.
 
 ```json
 
@@ -140,24 +140,24 @@ Este es el esquema para la parte de configuración (settings) de la extensión D
 ## <a name="details"></a>Detalles
 | Nombre de propiedad | Tipo | Description |
 | --- | --- | --- |
-| settings.wmfVersion |string |Especifica la versión de Windows Management Framework que debe instalarse en la máquina virtual. Si se establece esta propiedad en "latest", se instala la versión más reciente de WMF. Los únicos valores posibles actuales para esta propiedad son **"4.0", "5.0", "5.0PP" y "latest"**. Estos valores posibles están sujetos a actualizaciones. El valor predeterminado es "latest". |
-| settings.configuration.url |string |Especifica la ubicación de la dirección URL desde la que descargar el archivo zip de la configuración de DSC. Si la dirección URL proporcionada requiere un token de SAS para el acceso, debe establecer la propiedad protectedSettings.configurationUrlSasToken en el valor de su token de SAS. Esta propiedad es necesaria si se definen settings.configuration.script o settings.configuration.function. |
-| settings.configuration.script |string |Especifica el nombre de archivo del script que contiene la definición de la configuración de DSC. Este script debe estar en la carpeta raíz del archivo zip descargado de la dirección URL especificada en la propiedad configuration.url. Esta propiedad es necesaria si se definen settings.configuration.url o settings.configuration.script. |
-| settings.configuration.function |string |Especifica el nombre de la configuración de DSC. La configuración con nombre debe incluirse en el script definido en configuration.script. Esta propiedad es necesaria si se definen settings.configuration.url o settings.configuration.function. |
-| settings.configurationArguments |Colección |Define los parámetros que desea pasar a la configuración de DSC. Esta propiedad no está cifrada. |
-| settings.configurationData.url |string |Especifica la dirección URL desde la que descargar el archivo de datos de configuración (.psd1) que se usará como entrada para la configuración de DSC. Si la dirección URL proporcionada requiere un token de SAS para el acceso, debe establecer la propiedad protectedSettings.configurationDataUrlSasToken en el valor de su token de SAS. |
-| settings.privacy.dataEnabled |string |Habilita o deshabilita la recopilación de telemetría. Los únicos valores posibles para esta propiedad son **"Enable", "Disable", '' o $null**. Si se deja esta propiedad en blanco o como null, se habilita la telemetría. El valor predeterminado es ". [Más información](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) |
-| settings.advancedOptions.downloadMappings |Colección |Define las ubicaciones alternativas desde las que descargar WMF. [Más información](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx) |
-| protectedSettings.configurationArguments |Colección |Define los parámetros que desea pasar a la configuración de DSC. Esta propiedad no está cifrada. |
-| protectedSettings.configurationUrlSasToken |string |Especifica el token de SAS para acceder a la dirección URL definida en configuration.url. Esta propiedad no está cifrada. |
-| protectedSettings.configurationDataUrlSasToken |string |Especifica el token de SAS para acceder a la dirección URL definida en configurationData.url. Esta propiedad no está cifrada. |
+| settings.wmfVersion |cadena |Especifica la versión de Hola de hello Windows Management Framework que debe instalarse en la máquina virtual. Establecer esta propiedad too'latest' instala Hola versión más actualizada de WMF. Hola, solo actual, valores posibles para esta propiedad son **'4.0', '5.0', ' 5.0PP' y 'última ' hora**. Estos valores posibles son tooupdates de asunto. valor predeterminado de Hello es 'última'. |
+| settings.configuration.url |cadena |Especifica el archivo zip de configuración de DSC de ubicación de dirección URL de Hola desde qué toodownload. Si la dirección URL de hello proporcionada requiere un token de SAS para el acceso, debe tooset hello protectedSettings.configurationUrlSasToken toohello valor de propiedad su token SAS. Esta propiedad es necesaria si se definen settings.configuration.script o settings.configuration.function. |
+| settings.configuration.script |cadena |Especifica el nombre de archivo de hello del script de Hola que contiene la definición de saludo de la configuración de DSC. Esta secuencia de comandos debe estar en la carpeta raíz de hello del archivo zip de hello descargado de dirección URL de hello especificada por la propiedad de configuration.url Hola. Esta propiedad es necesaria si se definen settings.configuration.url o settings.configuration.script. |
+| settings.configuration.function |cadena |Especifica el nombre de saludo de la configuración de DSC. configuración de Hello denominada debe estar contenido en script de Hola definido por configuration.script. Esta propiedad es necesaria si se definen settings.configuration.url o settings.configuration.function. |
+| settings.configurationArguments |Colección |Define los parámetros que le gustaría toopass tooyour la configuración de DSC. Esta propiedad no está cifrada. |
+| settings.configurationData.url |cadena |Especifica la dirección de URL de Hola desde qué toodownload los datos de configuración (. psd1) de archivos toouse como entrada para la configuración de DSC. Si la dirección URL de hello proporcionada requiere un token de SAS para el acceso, debe tooset hello protectedSettings.configurationDataUrlSasToken toohello valor de propiedad su token SAS. |
+| settings.privacy.dataEnabled |string |Habilita o deshabilita la recopilación de telemetría. Hello solo los valores posibles para esta propiedad son **'Enable', 'Disable', '', o $null**. Si se deja esta propiedad en blanco o como null, se habilita la telemetría. valor predeterminado de Hello es ''. [Más información](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) |
+| settings.advancedOptions.downloadMappings |Colección |Define las ubicaciones alternativas que desde qué toodownload Hola WMF. [Más información](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx) |
+| protectedSettings.configurationArguments |Colección |Define los parámetros que le gustaría toopass tooyour la configuración de DSC. Esta propiedad no está cifrada. |
+| protectedSettings.configurationUrlSasToken |cadena |Especifica Hola SAS tooaccess token Hola dirección URL definida por configuration.url. Esta propiedad no está cifrada. |
+| protectedSettings.configurationDataUrlSasToken |cadena |Especifica Hola SAS tooaccess token Hola dirección URL definida por configurationData.url. Esta propiedad no está cifrada. |
 
 ## <a name="settings-vs-protectedsettings"></a>Settings frente a ProtectedSettings
-Todas las configuraciones se guardan en un archivo de texto de configuración en la máquina virtual.
-Las propiedades en "settings" son públicas porque no están cifradas en el archivo de texto de configuración.
-Las propiedades en "protectedSettings" se cifran con un certificado y no se muestran en texto sin formato en este archivo de la máquina virtual.
+Todas las configuraciones se guardan en un archivo de texto de configuración en hello máquina virtual.
+Propiedades, en "configuración" son propiedades públicas porque no se cifran en el archivo de texto de configuración de Hola.
+Propiedades de 'protectedSettings' se cifran con un certificado y no se muestran en texto sin formato de este archivo en hello máquina virtual.
 
-Si la configuración necesita credenciales, pueden incluirse en protectedSettings:
+Si la configuración de hello necesita credenciales, pueden incluirse en protectedSettings:
 
 ```json
 "protectedSettings": {
@@ -171,10 +171,10 @@ Si la configuración necesita credenciales, pueden incluirse en protectedSetting
 ```
 
 ## <a name="example"></a>Ejemplo
-El ejemplo siguiente se deriva de la sección "Introducción" de la [página de introducción al controlador de extensiones DSC](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-Este ejemplo usa plantillas de Resource Manager en lugar de cmdlets para implementar la extensión. Guardar la configuración "IisInstall.ps1", colóquela en un archivo .ZIP y cargue el archivo en una dirección URL accesible. Este ejemplo usa el almacenamiento de blobs de Azure, pero es posible descargar archivos .ZIP desde cualquier ubicación.
+Hello en el ejemplo siguiente se deriva de sección "Introducción" de Hola de hello [página información general sobre el controlador de extensión de DSC](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Este ejemplo utiliza plantillas de administrador de recursos en lugar de cmdlets toodeploy Hola. Guardar configuración de "IisInstall.ps1" Hola, colóquelo en una. COMPRIMIR archivos y cargue el archivo de hello en una dirección URL accesible. Este ejemplo utiliza el almacenamiento de blobs de Azure, pero es posible toodownload. Archivos ZIP desde cualquier ubicación arbitraria.
 
-En la plantilla de Azure Resource Manager, el siguiente código indica a la máquina virtual que descargue el archivo correcto y ejecute la función de PowerShell adecuada:
+En plantilla de Azure Resource Manager hello, hello código siguiente indica al archivo correcto de hello VM toodownload Hola y ejecuta la función de PowerShell adecuado de hello:
 
 ```json
 "settings": {
@@ -190,16 +190,16 @@ En la plantilla de Azure Resource Manager, el siguiente código indica a la máq
 }
 ```
 
-## <a name="updating-from-the-previous-format"></a>Actualización del formato anterior
-Cualquier configuración en el formato anterior (que contiene las propiedades públicas ModulesUrl, ConfigurationFunction, SasToken o Properties) se adaptará automáticamente al formato actual y se ejecutará tal como lo hacía antes.
+## <a name="updating-from-hello-previous-format"></a>Actualizar desde Hola formato anterior
+Cualquier opción de hello formato anterior (que contiene propiedades públicas de hello ModulesUrl, ConfigurationFunction, SasToken o propiedades) automáticamente adapta toohello actual formato y ejecuta tal y como lo hacían antes.
 
-El esquema de configuración anterior tenía un aspecto similar al siguiente:
+Hola después de esquema es qué esquema de configuración anterior de hello tenía el siguiente aspecto:
 
 ```json
 "settings": {
     "WMFVersion": "latest",
     "ModulesUrl": "https://UrlToZipContainingConfigurationScript.ps1.zip",
-    "SasToken": "SAS Token if ModulesUrl points to private Azure Blob Storage",
+    "SasToken": "SAS Token if ModulesUrl points tooprivate Azure Blob Storage",
     "ConfigurationFunction": "ConfigurationScript.ps1\\ConfigurationFunction",
     "Properties":  {
         "ParameterToConfigurationFunction1":  "Value1",
@@ -223,7 +223,7 @@ El esquema de configuración anterior tenía un aspecto similar al siguiente:
 }
 ```
 
-Así se adapta el formato anterior al actual:
+Le mostramos cómo formato anterior de Hola adapta toohello actual formato:
 
 | Nombre de propiedad | Equivalente en el esquema anterior |
 | --- | --- |
@@ -240,37 +240,37 @@ Así se adapta el formato anterior al actual:
 | protectedSettings.configurationDataUrlSasToken |Token de SAS de protectedSettings.DataBlobUri |
 
 ## <a name="troubleshooting---error-code-1100"></a>Solución de problemas: código de error 1100
-El código de error 1100 indica que hay un problema con la entrada del usuario a la extensión DSC.
-El texto de estos errores es variable y puede cambiar.
-Estos son algunos de los errores que pueden surgir y cómo corregirlos.
+Código de error 1100 indica que hay un problema con hello extensión toohello DSC de intervención del usuario.
+texto Hello de estos errores es variable y se puede cambiar.
+Estas son algunas de los errores de hello con que puede encontrarse y cómo corregirlos.
 
 ### <a name="invalid-values"></a>Valores no válidos
-"Privacy.dataCollection is '{0}'. The only possible values are '', 'Enable', and 'Disable'" (Privacy.dataCollection es '{0}'. Los únicos valores posibles son ", "Enable" y "Disable") "WmfVersion is '{0}'. Los únicos valores posibles son: y "latest".
+"Privacy.dataCollection is '{0}'. Hello solo los valores posibles son ","Habilitar"y"Deshabilitar"" "WmfVersion es '{0}'. Los únicos valores posibles son: y "latest".
 
 Problema: No se permite un valor proporcionado.
 
-Solución: Cambie el valor no válido a uno válido. Consulte la tabla en la sección Detalles.
+Solución: Cambie el valor válido de tooa de valor no válido de Hola. Vea la tabla de hello en la sección de detalles de Hola.
 
 ### <a name="invalid-url"></a>Dirección URL no válida
 "ConfigurationData.url is '{0}'. This is not a valid URL" (ConfigurationData.url es '{0}'. No es una dirección URL válida) "DataBlobUri is '{0}'. This is not a valid URL" (DataBlobUri es '{0}'. No es una dirección URL válida) "Configuration.url is '{0}'. This is not a valid URL" This is not a valid URL" (Configuration.url es '{0}'. No es una dirección URL válida)
 
 Problema: Se ha proporcionado una dirección URL que no es válida.
 
-Solución: Compruebe todas las direcciones URL proporcionadas. Asegúrese de que todas las direcciones URL se resuelvan en ubicaciones válidas a las que la extensión pueda acceder en la máquina remota.
+Solución: Compruebe todas las direcciones URL proporcionadas. Asegúrese de que todas las direcciones URL resolver las ubicaciones de toovalid que puede tener acceso extensión hello en el equipo remoto de Hola.
 
 ### <a name="invalid-configurationargument-type"></a>Tipo de ConfigurationArguments no válido
 "Invalid configurationArguments type {0}" (Tipo de configurationArguments no válido {0})
 
-Problema: La propiedad ConfigurationArguments no se puede resolver en un objeto Hashtable. 
+Problema: Hola ConfigurationArguments propiedad no puede resolver tooa objeto de tabla hash. 
 
-Solución: Convierta la propiedad ConfigurationArguments en Hashtable. Siga el formato proporcionado en el ejemplo anterior. Esté atento a las comillas, comas y llaves.
+Solución: Convierta la propiedad ConfigurationArguments en Hashtable. Tener el formato de hello proporcionada en el ejemplo de Hola precedente. Esté atento a las comillas, comas y llaves.
 
 ### <a name="duplicate-configurationarguments"></a>ConfigurationArguments duplicadas
 "Found duplicate arguments '{0}' in both public and protected configurationArguments" (Se encontraron argumentos duplicados '{0}' en propiedades configurationArguments públicas y privadas)
 
-Problema: La propiedad ConfigurationArguments en la configuración pública y la propiedad ConfigurationArguments en la configuración protegida contienen propiedades con el mismo nombre.
+Problema: Hola ConfigurationArguments en la configuración pública y ConfigurationArguments en configuración protegida hello contienen propiedades con hello mismo nombre.
 
-Solución: Quite una de las propiedades duplicadas.
+Solución: Quite una de las propiedades duplicadas Hola.
 
 ### <a name="missing-properties"></a>Propiedades que faltan
 "Configuration.function requires that configuration.url or configuration.module is specified" (Configuration.function requiere que se especifiquen configuration.url o configuration.module)
@@ -289,15 +289,15 @@ Problema: Una propiedad definida requiere otra propiedad que falta.
 
 Soluciones: 
 
-* Proporcione la propiedad que falta.
-* Quite la propiedad que necesita la propiedad que falta.
+* Proporcionar falta la propiedad Hola.
+* Quite la propiedad de Hola que necesita la propiedad que falta Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Aprenda sobre DSC y los conjuntos de escalado de máquina virtual en [Using Virtual Machine Scale Sets with the Azure DSC Extension](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)
+Obtenga información sobre DSC y escalas de máquina virtual se establece [usar escala conjuntos de máquina Virtual con hello extensión de DSC de Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)
 
 Puede encontrar más información en el artículo sobre [administración segura de credenciales de DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Para más información sobre el controlador de extensiones DSC de Azure, consulte [Introducción al controlador de extensiones de configuración de estado deseado de Azure](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Para obtener más información sobre el controlador de extensión de DSC de Azure de hello, consulte [controlador de extensión de configuración de estado deseado de Azure de introducción toohello](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Para más información sobre DSC de PowerShell, [visite el centro de documentación de PowerShell](https://msdn.microsoft.com/powershell/dsc/overview). 
+Para obtener más información sobre PowerShell DSC, [visite el centro de documentación de PowerShell de hello](https://msdn.microsoft.com/powershell/dsc/overview). 
 

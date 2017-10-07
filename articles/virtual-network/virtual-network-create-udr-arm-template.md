@@ -1,6 +1,6 @@
 ---
-title: Control del enrutamiento y las aplicaciones virtuales en Azure | Microsoft Docs
-description: Aprenda a controlar el enrutamiento y las aplicaciones virtuales con una plantilla de Azure Resource Manager.
+title: 'dispositivos de enrutamiento y virtual aaaControl de Azure: plantilla | Documentos de Microsoft'
+description: "Obtenga información acerca de cómo toocontrol los dispositivos virtuales y enrutamiento usando una plantilla de Azure Resource Manager."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.openlocfilehash: b2c962d5449d18b51cfd84b0e1992695b54d1c48
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 781340593541784d2d9772d310c041ad4a5c3101
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Creación de rutas definidas por el usuario (UDR) con una plantilla
 
@@ -31,14 +31,14 @@ ms.lasthandoff: 07/11/2017
 > * [CLI (clásico)](virtual-network-create-udr-classic-cli.md)
 
 > [!IMPORTANT]
-> Antes de trabajar con recursos de Azure, es importante comprender que Azure tiene actualmente dos modelos de implementación: Azure Resource Manager y el clásico. Asegúrese de que comprende los [modelos de implementación y las herramientas](../azure-resource-manager/resource-manager-deployment-model.md) antes de trabajar con recursos de Azure. Puede ver la documentación de las distintas herramientas haciendo clic en las fichas en la parte superior de este artículo. Este artículo trata sobre el modelo de implementación del Administrador de recursos. 
+> Antes de trabajar con recursos de Azure, es importante toounderstand que Azure tiene dos modelos de implementación: Administrador de recursos de Azure y clásico. Asegúrese de que comprende los [modelos de implementación y las herramientas](../azure-resource-manager/resource-manager-deployment-model.md) antes de trabajar con recursos de Azure. Puede ver documentación de Hola de distintas herramientas, haga clic en las pestañas de hello en parte superior de Hola de este artículo. Este artículo trata el modelo de implementación del Administrador de recursos de Hola. 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
 ## <a name="udr-resources-in-a-template-file"></a>Recursos de las rutas definidas por el usuario en un archivo de plantilla
-Puede ver y descargar la [plantilla de ejemplo](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR).
+Puede ver y descargar hello [plantilla de ejemplo](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR).
 
-En la sección siguiente se muestra la definición de las rutas definidas por el usuario (UDR) de front-end en el archivo **azuredeploy-vnet-nsg-udr.json** para el escenario:
+Hello siguiente sección muestra hello definición de hello UDR front-end en hello **azuredeploy-vnet-nsg-udr.json** archivo para el escenario de hello:
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/routeTables",
@@ -59,7 +59,7 @@ En la sección siguiente se muestra la definición de las rutas definidas por el
         }
       ]
 
-Para asociar las rutas definidas por el usuario a la subred front-end, debe cambiar la definición de la subred en la plantilla y usar el identificador de referencia para la ruta definida por el usuario.
+tooassociate subred de front-end de toohello de hello UDR, tienes toochange la definición de subred hello en plantilla de Hola y usar Id. de referencia de Hola para hello UDR.
 
     "subnets": [
         "name": "[parameters('frontEndSubnetName')]",
@@ -73,9 +73,9 @@ Para asociar las rutas definidas por el usuario a la subred front-end, debe camb
           }
         },
 
-Se hace lo mismo para el grupo de seguridad de red de back-end y la subred back-end en la plantilla.
+Tenga en cuenta Hola mismo hace para hello subred back-end hello y NSG back-end en la plantilla de Hola.
 
-También debe asegurarse de que la máquina virtual **FW1** tiene la propiedad de reenvío de IP habilitada en la NIC, que se usará para recibir y reenviar paquetes. La sección siguiente muestra la definición de la NIC para FW1 en el archivo azuredeploy-nsg-udr.json, según el escenario anterior.
+También necesita tooensure ese hello **FW1** VM tiene propiedad habilitada en hello NIC que será usado tooreceive y reenviar paquetes de reenvío de IP de Hola. sección de Hola por debajo de la definición de Hola de muestra de Hola NIC para FW1 en el archivo azuredeploy-nsg-udr.json de hello, en función de hello escenario anterior.
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/networkInterfaces",
@@ -111,17 +111,17 @@ También debe asegurarse de que la máquina virtual **FW1** tiene la propiedad d
       "count": "[parameters('fwCount')]"
     }
 
-## <a name="deploy-the-template-by-using-click-to-deploy"></a>Implementar la plantilla por medio de un solo clic para implementar
-La plantilla de ejemplo disponible en el repositorio público usa un archivo de parámetros que contiene los valores predeterminados utilizados para generar el escenario descrito anteriormente. Para implementar esta plantilla mediante el método de hacer clic para implementar, siga [esta plantilla](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), haga clic en **Implementar en Azure**, reemplace los valores de parámetro predeterminados si es necesario y siga las instrucciones del portal.
+## <a name="deploy-hello-template-by-using-click-toodeploy"></a>Implementar la plantilla de hello mediante haga clic en toodeploy
+plantilla de ejemplo Hola disponible en el repositorio público de hello usa un archivo de parámetros que contiene el escenario Hola predeterminada valores utilizados toogenerate Hola descrito anteriormente. toodeploy este uso de la plantilla, haga clic en toodeploy, siga [este vínculo](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), haga clic en **implementar tooAzure**, reemplazar valores de parámetro predeterminados de hello si es necesario y siga las instrucciones de hello del portal de Hola.
 
-1. Si es la primera vez que usa Azure PowerShell, consulte [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview) y siga las instrucciones hasta el final para iniciar sesión en Azure y seleccionar su suscripción.
-2. Ejecute el comando siguiente para crear un grupo de recursos:
+1. Si nunca ha usado PowerShell de Azure, consulte [cómo tooInstall y configurar Azure PowerShell](/powershell/azure/overview) y siga instrucciones de hello todos los toohello de manera Hola finalizar toosign en Azure y seleccione su suscripción.
+2. Ejecute hello después toocreate de comando en un grupo de recursos:
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location westus
     ```
 
-3. Ejecute el siguiente comando para implementar la plantilla.
+3. Ejecute hello después de la plantilla del comando toodeploy hello:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeployUDR -ResourceGroupName TestRG `
@@ -171,22 +171,22 @@ La plantilla de ejemplo disponible en el repositorio público usa un archivo de 
 
         ResourceId        : /subscriptions/[Subscription Id]/resourceGroups/TestRG
 
-## <a name="deploy-the-template-by-using-the-azure-cli"></a>Implementación la plantilla ARM mediante la CLI de Azure
+## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Implementar la plantilla de hello mediante Hola CLI de Azure
 
-Para implementar la plantilla de ARM mediante la CLI de Azure, complete los siguientes pasos:
+plantilla de ARM toodeploy Hola utilizando Hola CLI de Azure, Hola completa pasos:
 
-1. Si nunca ha usado la CLI de Azure, consulte [Instalación y configuración de la CLI de Azure](../cli-install-nodejs.md) y siga las instrucciones hasta el punto donde deba seleccionar su cuenta y suscripción de Azure.
-2. Ejecute el siguiente comando para cambiar al modo de Resource Manager:
+1. Si nunca ha utilizado la CLI de Azure, consulte [instalar y configurar hello Azure CLI](../cli-install-nodejs.md) y siga las instrucciones de hello punto toohello donde seleccionar su cuenta de Azure y la suscripción.
+2. Ejecute hello después de modo de comando tooswitch tooResource Manager:
 
     ```azurecli
     azure config mode arm
     ```
 
-    Este es el resultado esperado del comando anterior:
+    Este es el resultado de hello esperada en comando hello anterior:
 
         info:    New mode is arm
 
-3. En el explorador, vaya a **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, copie el contenido del archivo json y péguelo en un archivo nuevo en el equipo. En este escenario, va a copiar los valores siguientes en un archivo denominado **c:\udr\azuredeploy.parameters.json**.
+3. Desde el explorador, navegue demasiado**https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, copie el contenido de Hola de archivo json de hello y pegue en un archivo nuevo en el equipo. En este escenario, podría copiar valores de hello a continuación con el nombre de archivo de tooa **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {
@@ -206,7 +206,7 @@ Para implementar la plantilla de ARM mediante la CLI de Azure, complete los sigu
         }
     ```
 
-4. Ejecute el siguiente comando para implementar la nueva red virtual mediante la plantilla y los archivos de parámetros que descargó y modificó antes:
+4. Ejecute hello siguiente comando toodeploy Hola red virtual nueva mediante Hola de archivos de plantilla y los parámetros que descargó y modificado anteriormente:
 
     ```azurecli
     azure group create -n TestRG -l westus --template-uri 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' -e 'c:\udr\azuredeploy.parameters.json'
@@ -229,7 +229,7 @@ Para implementar la plantilla de ARM mediante la CLI de Azure, complete los sigu
         data:    
         info:    group create command OK
 
-5. Ejecute el siguiente comando para ver los recursos creados en el nuevo grupo de recursos:
+5. Ejecute hello comando tooview Hola recursos creados en el nuevo grupo de recursos Hola siguientes:
 
     ```azurecli
     azure group show TestRG
@@ -239,7 +239,7 @@ Para implementar la plantilla de ARM mediante la CLI de Azure, complete los sigu
 
             info:    Executing command group show
             info:    Listing resource groups
-            info:    Listing resources for the group
+            info:    Listing resources for hello group
             data:    Id:                  /subscriptions/[Subscription Id]/resourceGroups/TestRG
             data:    Name:                TestRG
             data:    Location:            westus
@@ -404,5 +404,5 @@ Para implementar la plantilla de ARM mediante la CLI de Azure, complete los sigu
             info:    group show command OK
 
 > [!TIP]
-> Si no ve todos los recursos, ejecute el comando `azure group deployment show` para asegurarse de que el estado de aprovisionamiento de la implementación sea *Correcto*.
+> Si no ve todos los recursos de hello, ejecute hello `azure group deployment show` comando tooensure hello estado de aprovisionamiento de la implementación de hello es *realizado*.
 > 

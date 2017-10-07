@@ -1,6 +1,6 @@
 ---
-title: "Configuración de Key Vault para máquinas virtuales Windows en Azure Resource Manager | Microsoft Docs"
-description: "Cómo configurar un Almacén de claves para usarlo con una máquina virtual de Azure Resource Manager."
+title: "aaaSet la clave de almacén para máquinas virtuales de Windows en el Administrador de recursos de Azure | Documentos de Microsoft"
+description: "Cómo tooset el almacén de claves para su uso con una máquina virtual de Azure Resource Manager."
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: a5083a5216efbfd76fd912ec48c2f0ec3b30c4a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53bbe90708202ecfdcf754822d04bf2469631f08
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Configuración de un Almacén de claves para máquinas virtuales en Azure Resource Manager
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-En la pila de Azure Resource Manager, los certificados o secretos se modelan como recursos que se proporcionan mediante el proveedor de recursos del Almacén de claves. Para más información sobre el Almacén de claves, consulte [¿Qué es el Almacén de claves de Azure?](../../key-vault/key-vault-whatis.md)
+En la pila del Administrador de recursos de Azure, los secretos/certificados se modelan como recursos proporcionados por el proveedor de recursos de Hola de almacén de claves. toolearn más información sobre el almacén de claves, consulte [¿qué es el almacén de claves de Azure?](../../key-vault/key-vault-whatis.md)
 
 > [!NOTE]
-> 1. Para que un Almacén de claves se utilice con máquinas virtuales de Azure Resource Manager, la propiedad **EnabledForDeployment** del Almacén de claves se debe establecer en true. Puede hacer esto en varios clientes.
-> 2. El Almacén de claves debe crearse en la misma ubicación y suscripción que la máquina virtual.
+> 1. En orden para toobe de almacén de claves que se utiliza con máquinas virtuales del Administrador de recursos de Azure, Hola **EnabledForDeployment** propiedad en el almacén de claves se debe establecer tootrue. Puede hacer esto en varios clientes.
+> 2. necesidades del almacén de claves de Hello toobe creado en Hola misma suscripción y ubicación como Hola Máquina Virtual.
 >
 >
 
-## <a name="use-powershell-to-set-up-key-vault"></a>Uso de PowerShell para configurar el Almacén de claves
-Para crear un almacén de claves usando PowerShell, consulte [Introducción al Almacén de claves de Azure](../../key-vault/key-vault-get-started.md#vault).
+## <a name="use-powershell-tooset-up-key-vault"></a>Usar PowerShell tooset el almacén de claves
+toocreate un almacén de claves mediante PowerShell, consulte [empezar a trabajar con el almacén de claves de Azure](../../key-vault/key-vault-get-started.md#vault).
 
 Para almacenes de claves nuevos, puede usar este cmdlet de PowerShell:
 
@@ -44,15 +44,15 @@ Para almacenes de claves existentes, puede usar este cmdlet de PowerShell:
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
-## <a name="us-cli-to-set-up-key-vault"></a>Uso de la CLI para configurar el Almacén de claves
-Para crear un almacén de claves mediante la interfaz de la línea de comandos (CLI), consulte [Administración del Almacén de claves mediante CLI](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
+## <a name="us-cli-tooset-up-key-vault"></a>Nos CLI tooset el almacén de claves
+toocreate un almacén de claves mediante Hola interfaz de línea de comandos (CLI), consulte [administrar el almacén de claves con CLI](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
 
-Para la CLI, primero debe crear el almacén de claves y luego asignar la directiva de implementación. Para ello, puede usar el siguiente comando:
+Para CLI, es necesario el almacén de claves de hello toocreate antes de asignar la directiva de implementación de Hola. Puede hacerlo mediante el uso de hello siguiente comando:
 
     azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
 
-## <a name="use-templates-to-set-up-key-vault"></a>Uso de plantillas para configurar el Almacén de claves
-Al utilizar plantillas, deberá establecer la propiedad `enabledForDeployment` en `true` para el recurso de Almacén de claves.
+## <a name="use-templates-tooset-up-key-vault"></a>Usar plantillas tooset el almacén de claves
+Mientras usa una plantilla, deberá hello tooset `enabledForDeployment` propiedad demasiado`true` para hello recursos de almacén de claves.
 
     {
       "type": "Microsoft.KeyVault/vaults",

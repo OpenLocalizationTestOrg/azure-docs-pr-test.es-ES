@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de script de la CLI de Azure: crear una máquina virtual con un disco duro virtual | Microsoft Docs"
+title: "Ejemplo de secuencia de comandos de CLI - aaaAzure crear una máquina virtual con un disco duro virtual | Documentos de Microsoft"
 description: "Ejemplo de script de la CLI de Azure: crear una máquina virtual mediante un disco duro virtual."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,20 +16,20 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: fab65296a552c1839522c5254a868a3dc96227f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ce39092697a51e4e8a8e59ba8eb919955f616458
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Crear una máquina virtual con un disco duro virtual
 
 Este ejemplo crea una máquina virtual con un disco duro virtual (VHD).
-Crea un grupo de recursos, una cuenta de almacenamiento y un contenedor, y después carga el VHD en el contenedor para crear una máquina virtual.
-Reemplaza la clave pública SSH con su clave pública para que tenga acceso a la máquina virtual.
+Crea un grupo de recursos, una cuenta de almacenamiento y un contenedor, a continuación, crea una máquina virtual mediante la carga de contenedor de hello VHD toohello.
+Reemplaza Hola ssh público de clave con la clave pública para que tenga acceso toohello máquina virtual.
 
 Necesitará un VHD de arranque.
-Puede usar su propio VHD o descargar el que hemos usado desde https://azclisamples.blob.core.windows.net/vhds/sample.vhd. El script busca `~/sample.vhd`.
+Puede descargar Hola VHD que hemos usado desde https://azclisamples.blob.core.windows.net/vhds/sample.vhd o usar un VHD propio. busca el script de Hola `~/sample.vhd`.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -37,11 +37,11 @@ Puede usar su propio VHD o descargar el que hemos usado desde https://azclisampl
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-azurecli-interactive[principal](../../../cli_scripts/virtual-machine/create-vm-vhd/create-vm-vhd.sh "Crear máquina virtual con un disco duro virtual")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-vhd/create-vm-vhd.sh "Create VM using a VHD")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Ejecute el siguiente comando para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
+Ejecute hello después el grupo de recursos de comando tooremove hello, la VM y todos ellos relacionados con recursos.
 
 ```azurecli-interactive 
 az group delete -n az-cli-vhd
@@ -49,24 +49,24 @@ az group delete -n az-cli-vhd
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear un grupo de recursos, una máquina virtual, un conjunto de disponibilidad, un equilibrador de carga y todos los recursos relacionados. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola después comandos toocreate un grupo de recursos, máquina virtual, conjunto de disponibilidad, equilibrador de carga y todos los recursos relacionados. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
 | [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#list) | Enumera las cuentas de almacenamiento |
 | [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#check-name) | Comprueba que un nombre de cuenta de almacenamiento es válido y que no existe ya |
-| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#list) | Enumera las claves de las cuentas de almacenamiento |
-| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#exists) | Comprueba si existe el blob |
+| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#list) | Enumera las claves hello las cuentas de almacenamiento |
+| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#exists) | Comprueba si existe el blob de Hola |
 | [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#create) | Crea un contenedor en una cuenta de almacenamiento. |
-| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#upload) | Crea un blob en el contenedor cargando el VHD. |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#list) | Se usa con `--query` para comprobar si el nombre de la máquina virtual está en uso. | 
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Crea las máquinas virtuales. |
-| [az vm access set-linux-user](https://docs.microsoft.com/cli/azure/vm/access#set-linux-user) | Restablece la clave SSH para permitir el acceso del usuario actual a la máquina virtual. |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#list-ip-addresses) | Obtiene la dirección IP de la máquina virtual que se creó. |
+| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#upload) | Crea un blob en contenedor Hola Hola cargar VHD. |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm#list) | Usar con `--query` comprobar si el nombre de la máquina virtual de hello está en uso. | 
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Crea hello las máquinas virtuales. |
+| [az vm access set-linux-user](https://docs.microsoft.com/cli/azure/vm/access#set-linux-user) | Restablece Hola SSH toogive clave Hola actual usuario acceso toohello máquina virtual. |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#list-ip-addresses) | Obtiene la dirección IP de Hola de hello máquina virtual que se creó. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de scripts de la CLI de máquina virtual en la [documentación sobre máquinas virtuales Linux de Azure](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ejemplos de secuencias de comandos CLI de máquina virtual adicional pueden encontrarse en hello [documentación de Azure VM de Linux](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

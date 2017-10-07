@@ -1,5 +1,5 @@
 ---
-title: "Azure Stream Analytics: optimización del trabajo para usar unidades de streaming de forma efectiva | Microsoft Docs"
+title: "Análisis de transmisiones de Azure: Optimizar su unidades de transmisión por secuencias de trabajo toouse eficazmente | Documentos de Microsoft"
 description: Procedimientos de consulta recomendados para escalado y rendimiento en Azure Stream Analytics.
 keywords: unidad de streaming, rendimiento de consulta
 services: stream-analytics
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
-ms.openlocfilehash: 1441a5df4fd92abf85763ca9a1512503b1a0da56
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5ad98b34d625190a879260f54c9eff0294e230cb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="optimize-your-job-to-use-streaming-units-efficiently"></a>Optimización del trabajo para usar unidades de streaming de forma eficaz
+# <a name="optimize-your-job-toouse-streaming-units-efficiently"></a>Optimizar eficazmente la toouse trabajo unidades de transmisión por secuencias
 
-Azure Stream Analytics agrega el "peso" de rendimiento de ejecutar un trabajo en unidades de streaming (SU). Las SU representan los recursos informáticos que se usan para ejecutar un trabajo. Las SU proporcionan una forma de describir la capacidad de procesamiento del evento relativo en función de una medida que combina la CPU, la memoria y las tasas de lectura y escritura. Esta capacidad le permite centrarse en la lógica de consulta y elimina la necesidad de conocer las consideraciones de rendimiento de los niveles de almacenamiento, de asignar memoria para su trabajo manualmente y de aproximar el número de núcleos de CPU para ejecutar su trabajo de manera oportuna.
+Análisis de transmisiones de Azure agrega rendimiento Hola "peso" de la ejecución de un trabajo en unidades de transmisión por secuencias (SUs). SUs representan recursos informáticos Hola que son consumido tooexecute un trabajo. SUs proporcionan una manera toodescribe Hola relativa de eventos basándose en una medición mezclada de CPU, memoria, la capacidad de procesamiento y se leen y escriben las tasas. Esta capacidad le permite centrarse en la lógica de la consulta de Hola y quita también de la necesidad de consideraciones de rendimiento de nivel de almacenamiento de tooknow, asignar memoria para el trabajo manualmente y aproximado Hola CPU core-recuento necesario toorun su trabajo de manera oportuna.
 
 ## <a name="how-many-sus-are-required-for-a-job"></a>¿Cuántas SU son necesarias para un trabajo?
 
-La elección del número de SU necesarias para un trabajo determinado depende de la configuración de particiones de las entradas y de la consulta definida dentro del trabajo. La hoja **Escala** le permite establecer el número correcto de SU. Es recomendable asignar más unidades de streaming de las necesarias. El motor de procesamiento de Stream Analytics se optimiza para la latencia y el rendimiento, a costa de asignar memoria adicional.
+Elegir número Hola de SUs necesarias para un trabajo determinado depende de la configuración de partición de Hola para las entradas de Hola y consulta de Hola que se define en el trabajo de Hola. Hola **escala** hoja permite tooset Hola derecha número de SUs. Es una práctica recomendada tooallocate SUs más de los necesarios. motor de procesamiento de análisis de transmisiones de Hola se optimiza para la latencia y rendimiento en el costo de Hola de asignar memoria adicional.
 
-En general, el procedimiento recomendado es comenzar con 6 SU para consultas que no usen *PARTITION BY*. Luego, determine el punto favorable mediante un método de prueba y error en el que modifica el número de SU después de pasar las cantidades de datos representativas y examinar la métrica de porcentaje de uso de SU.
+En general, se recomienda hello es toostart con 6 SUs para consultas que no utilizan *PARTITION BY*. A continuación, determine Hola idóneo mediante un método de prueba y error en el que modifican número Hola de SUs después de pasar representativos cantidades de datos y examine la métrica de uso de hello SU %.
 
-Azure Stream Analytics mantiene los eventos en una ventana llamada "búfer de reordenación" antes de comenzar cualquier procesamiento. Los eventos se ordenan dentro de la ventana de reordenación por hora y las operaciones posteriores se realizan en los eventos ordenados temporalmente. La reordenación de eventos por hora garantiza que el operador tiene visibilidad sobre los tres eventos en el período de tiempo estipulado. También permite al operador realizar el procesamiento de requisitos y generar una salida. Un efecto secundario de este mecanismo es que el procesamiento se retrasa el tiempo que dura la ventana de reorganización. La superficie de memoria del trabajo (que afecta al consumo de la unidad de streaming) es una función del tamaño de esta ventana de reordenación y el número de eventos que contiene.
+Análisis de transmisiones de Azure mantiene eventos en una ventana que se denomina hello "volver a ordenar búfer" antes de iniciar cualquier procesamiento. Eventos se ordenan dentro de la ventana de hello volver a ordenar por hora y operaciones siguientes se realizan en los eventos de hello temporalmente ordenado. Reordenación de eventos por hora se asegura de que el operador de hello tiene visibilidad en todos los eventos de Hola Hola estipulada período de tiempo. Operador de Hola también permite realizar el procesamiento necesario hello y generar un resultado. Un efecto secundario de este mecanismo es que se retrasa el procesamiento por duración Hola de ventana de hello volver a ordenar. superficie de memoria de Hola de trabajo de hello (lo que afecta al consumo de SU) es una función del tamaño de Hola de este número de hello y ventana de volver a ordenar de eventos incluidos en él.
 
 > [!NOTE]
-> Cuando el número de lectores cambia durante las actualizaciones de trabajos, se escriben advertencias transitorias en registros de auditoría. Los trabajos de Stream Analytics se recuperan automáticamente de estos problemas transitorios.
+> Cuando se cambia el número de Hola de lectores durante las actualizaciones del trabajo, las advertencias transitorias se escriben registros tooaudit. Los trabajos de Stream Analytics se recuperan automáticamente de estos problemas transitorios.
 
 ## <a name="common-high-memory-causes-for-high-su-usage-for-running-jobs"></a>Causas comunes de memoria alta por el uso elevado de SU para la ejecución de trabajos
 
 ### <a name="high-cardinality-for-group-by"></a>Alta cardinalidad para GROUP BY
 
-La cardinalidad de los eventos de entrada determina el uso de memoria para el trabajo.
+cardinalidad de Hola de eventos de entrada dicta el uso de memoria de trabajo de Hola.
 
-Por ejemplo, en `SELECT count(*) from input group by clustered, tumblingwindow (minutes, 5)`, el número asociado con **clustered** es la cardinalidad de la consulta.
+Por ejemplo, en `SELECT count(*) from input group by clustered, tumblingwindow (minutes, 5)`, Hola número asociado con **agrupado** es cardinalidad Hola de consulta de Hola.
 
-Para mitigar los problemas ocasionados por una cardinalidad alta, escale horizontalmente la consulta aumentando las particiones con **PARTITION BY**.
+toomitigate problemas causados por una cardinalidad alta, escalar horizontalmente consultas Hola aumentando las particiones que usan **PARTITION BY**.
 
 ```
 Select count(*) from input
@@ -52,35 +52,35 @@ Partition By clusterid
 GROUP BY clustered tumblingwindow (minutes, 5)
 ```
 
-Aquí, el número de *clustered* es la cardinalidad de GROUP BY.
+Hola número de *agrupado* es la cardinalidad de Hola de GROUP BY aquí.
 
-Una vez que la consulta está particionada, se extiende por varios nodos. Como resultado, el número de eventos que entra en cada nodo se reduce, lo que a su vez disminuye el tamaño del búfer de reordenación. También debe particionar las particiones de centro de eventos mediante partitionid.
+Después de crear particiones consulta hello, se extiende a través de varios nodos. Como resultado, se reduce número Hola de eventos que entran en cada nodo, que a su vez reduce el tamaño de hello del búfer de hello volver a ordenar. También debe particionar las particiones de centro de eventos mediante partitionid.
 
 ### <a name="high-unmatched-event-count-for-join"></a>Recuento alto de eventos no coincidentes para JOIN
 
-El número de eventos no coincidentes en JOIN afecta a la utilización de memoria de la consulta. Por ejemplo, imagine una consulta que busca encontrar el número de impresiones de anuncios que generan clics:
+número de Hola de eventos no coincidentes en una combinación afecta al uso de memoria de Hola de consulta de Hola. Por ejemplo, realizar una consulta que se examina el número de hello toofind de impresiones de ad que genera clics:
 
 ```
 SELECT id from clicks INNER JOIN,
 impressions on impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10
 ```
 
-En este escenario, es posible que se muestren muchos anuncios y se generen pocos clics. Un resultado de este tipo podría requerir que el trabajo mantuviera todos los eventos dentro de la ventana de tiempo. La cantidad de memoria consumida es proporcional al tamaño de ventana y la tasa de eventos. 
+En este escenario, es posible que se muestren muchos anuncios y se generen pocos clics. Un resultado de este tipo requeriría Hola trabajo tookeep todos los eventos de Hola de ventana de tiempo de Hola. cantidad de Hola de memoria consumida es la tasa de tamaño y eventos de la ventana de toohello proporcional. 
 
-Para mitigar esta situación, escale horizontalmente la consulta aumentando las particiones mediante PARTITION BY. 
+toomitigate crea particiones de esta situación, el escalado horizontal consulta Hola aumentando mediante PARTITION BY. 
 
-Después de particionar la consulta, se distribuye entre varios nodos de procesamiento. Como resultado, el número de eventos que entra en cada nodo se reduce, lo que a su vez disminuye el tamaño del búfer de reordenación.
+Después de crear particiones consulta hello, se extiende a través de varios nodos de procesamiento. Como resultado, se reduce número Hola de eventos que entran en cada nodo, que a su vez reduce el tamaño de hello del búfer de hello volver a ordenar.
 
 ### <a name="large-number-of-out-of-order-events"></a>Gran número de eventos desordenados 
 
-Un gran número de eventos desordenados en una ventana de tiempo grande hace que el tamaño del "búfer de reordenación" sea mayor. Para mitigar esta situación, escale la consulta aumentando las particiones mediante PARTITION BY. Una vez que la consulta está particionada, se extiende por varios nodos. Como resultado, el número de eventos que entra en cada nodo se reduce, lo que a su vez disminuye el tamaño del búfer de reordenación. 
+Un gran número de eventos desordenados dentro de un período de tiempo grandes hace tamaño Hola de toobe de "reordenar búfer" del Hola mayor. toomitigate crea particiones de esta situación, consultas de escala Hola aumentando mediante PARTITION BY. Después de crear particiones consulta hello, se extiende a través de varios nodos. Como resultado, se reduce número Hola de eventos que entran en cada nodo, que a su vez reduce el tamaño de hello del búfer de hello volver a ordenar. 
 
 
 ## <a name="get-help"></a>Obtener ayuda
 Para obtener ayuda adicional, pruebe nuestro [foro de Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Introducción a Azure Stream Analytics](stream-analytics-introduction.md)
+* [Introducción tooAzure análisis de transmisiones](stream-analytics-introduction.md)
 * [Introducción al uso de Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Escalación de trabajos de Análisis de transmisiones de Azure](stream-analytics-scale-jobs.md)
 * [Referencia del lenguaje de consulta de Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)

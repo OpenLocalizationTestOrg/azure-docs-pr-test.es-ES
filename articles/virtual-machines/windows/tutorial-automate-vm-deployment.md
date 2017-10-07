@@ -1,6 +1,6 @@
 ---
-title: "Personalizar una máquina virtual de Windows en Azure | Microsoft Docs"
-description: "Obtenga información sobre cómo usar la extensión de script personalizado y Key Vault para personalizar las máquinas virtuales de Windows en Azure"
+title: aaaCustomize una VM de Windows en Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Hola extensión de script personalizado y el almacén de claves toocustomize máquinas virtuales de Windows en Azure"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,45 +16,45 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3be58bf8afbcff018b2b0d69a0e08c2c9ab1fca7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c03b2bb6d70875134c63ea2fe4c2e2c1777c2188
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Cómo personalizar una máquina virtual de Windows en Azure
-Para configurar las máquinas virtuales de una manera rápida y coherente, normalmente se desea alguna forma de automatización. Un enfoque común para personalizar una máquina virtual de Windows consiste en usar la [Extensión de la secuencia de comandos personalizada para Windows](extensions-customscript.md). En este tutorial, aprenderá a:
+# <a name="how-toocustomize-a-windows-virtual-machine-in-azure"></a>¿Cómo toocustomize una máquina virtual de Windows en Azure
+Normalmente se desea tooconfigure máquinas virtuales (VMs) de una manera rápida y coherente, alguna forma de automatización. Un toocustomize enfoque común una VM de Windows es toouse [extensión para ventanas de Script personalizado](extensions-customscript.md). En este tutorial, aprenderá a:
 
 > [!div class="checklist"]
-> * Usar la extensión de script personalizada para instalar IIS
-> * Crear una máquina virtual que use la extensión de script personalizada
-> * Ver un sitio IIS en funcionamiento después de aplicar la extensión
+> * Usar la extensión de Script personalizado de hello tooinstall IIS
+> * Crear una máquina virtual que usa Hola extensión de Script personalizado
+> * Ver un sitio IIS en ejecución después de que se aplica la extensión de Hola
 
-Para realizar este tutorial es necesaria la versión 3.6 del módulo de Azure PowerShell, o cualquier versión posterior. Ejecute ` Get-Module -ListAvailable AzureRM` para encontrar la versión. Si necesita actualizarla, consulte [Instalación del módulo de Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Este tutorial requiere hello Azure PowerShell versión 3.6 o posterior del módulo. Ejecutar ` Get-Module -ListAvailable AzureRM` toofind versión de Hola. Si necesita tooupgrade, consulte [módulo instalar Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
 ## <a name="custom-script-extension-overview"></a>Información general de la extensión de script personalizado
-La extensión de script personalizado descarga y ejecuta scripts en máquinas virtuales de Azure. Esta extensión es útil para la configuración posterior a la implementación, la instalación de software o cualquier otra tarea de configuración o administración. Los scripts se pueden descargar desde Azure Storage o GitHub, o se pueden proporcionar a Azure Portal en el tiempo de ejecución de la extensión.
+Extensión de Script personalizado de Hello descarga y ejecuta scripts en máquinas virtuales de Azure. Esta extensión es útil para la configuración posterior a la implementación, la instalación de software o cualquier otra tarea de configuración o administración. Las secuencias de comandos pueden descargarse desde el almacenamiento de Azure o GitHub, o proporcionarse toohello portal de Azure en tiempo de ejecución de extensión.
 
-La extensión de script personalizado se integra con las plantillas de Azure Resource Manager y también se puede ejecutar mediante la CLI de Azure, PowerShell, Azure Portal o la API de REST de máquina virtual de Azure.
+Hola extensión de Script personalizado se integra con plantillas de Azure Resource Manager y también se puede ejecutar mediante Hola CLI de Azure, PowerShell, portal de Azure u Hola API de REST de máquina Virtual de Azure.
 
-Se puede usar la extensión de script personalizado con máquinas virtuales de Linux y Windows.
+Puede usar Hola extensión de Script personalizado con máquinas virtuales de Linux y Windows.
 
 
 ## <a name="create-virtual-machine"></a>Create virtual machine
-Antes de poder crear una máquina virtual, cree un grupo de recursos con [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). En el ejemplo siguiente, se crea un grupo de recursos denominado *myResourceGroupAutomate* en la ubicación *EastUS*:
+Antes de poder crear una máquina virtual, cree un grupo de recursos con [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Hello en el ejemplo siguiente se crea un grupo de recursos denominado *myResourceGroupAutomate* en hello *EastUS* ubicación:
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroupAutomate -Location EastUS
 ```
 
-Establezca un nombre de usuario de administrador y una contraseña para las máquinas virtuales con [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Establecer un administrador username y password para máquinas virtuales de hello con [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Ahora puede crear la máquina virtual con [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). En el ejemplo siguiente se crean los componentes de red virtual necesarios, la configuración del sistema operativo y, después, se crea una máquina virtual denominada *myVM*:
+Ahora puede crear Hola VM con [AzureRmVM nuevo](/powershell/module/azurerm.compute/new-azurermvm). Hello ejemplo siguiente crea componentes de red virtual Hola necesario, configuración de hello SO y, a continuación, crea una máquina virtual denominada *myVM*:
 
 ```powershell
 # Create a subnet configuration
@@ -128,11 +128,11 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName myResourceGroupAutomate -Location EastUS -VM $vmConfig
 ```
 
-Los recursos y la máquina virtual tardan unos minutos en crearse.
+Tarda unos minutos para los recursos de Hola y toobe de máquina virtual que creó.
 
 
 ## <a name="automate-iis-install"></a>Automatizar la instalación de IIS
-Use [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) para instalar la extensión de script personalizado. La extensión ejecuta `powershell Add-WindowsFeature Web-Server` para instalar el servidor web de IIS y después actualiza la página *Default.htm* para mostrar el nombre de host de la máquina virtual:
+Use [AzureRmVMExtension conjunto](/powershell/module/azurerm.compute/set-azurermvmextension) tooinstall Hola extensión de Script personalizado. Hola se ejecuta la extensión `powershell Add-WindowsFeature Web-Server` tooinstall Hola actualizaciones hello servidor Web IIS y, a continuación, *Default.htm* página tooshow Hola hostname de hello VM:
 
 ```powershell
 Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
@@ -147,7 +147,7 @@ Set-AzureRmVMExtension -ResourceGroupName myResourceGroupAutomate `
 
 
 ## <a name="test-web-site"></a>Sitio web de prueba
-Obtenga la dirección IP pública del equilibrador de carga con [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). En el ejemplo siguiente se obtiene la dirección IP de *myPublicIP* que se ha creado anteriormente:
+Obtener dirección IP pública de Hola de un equilibrador de carga con [AzureRmPublicIPAddress Get](/powershell/module/azurerm.network/get-azurermpublicipaddress). Hello en el ejemplo siguiente se obtiene la dirección IP de Hola para *myPublicIP* creado anteriormente:
 
 ```powershell
 Get-AzureRmPublicIPAddress `
@@ -155,21 +155,21 @@ Get-AzureRmPublicIPAddress `
     -Name myPublicIP | select IpAddress
 ```
 
-A continuación, puede escribir la dirección IP pública en un explorador web. Se muestra el sitio web, incluido el nombre de host de la máquina virtual a la que el equilibrador de carga distribuye el tráfico como en el ejemplo siguiente:
+A continuación, puede escribir la dirección IP pública hello en el Explorador de web tooa. se muestra el sitio Web de Hello, incluyendo hostname Hola de hello VM ese equilibrador de carga de hello distribuye tooas de tráfico en el siguiente ejemplo de Hola:
 
 ![Ejecución del sitio web de IIS](./media/tutorial-automate-vm-deployment/running-iis-website.png)
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, automatizó la instalación IIS en una máquina virtual. Ha aprendido a:
+En este tutorial, se automatizó Hola IIS se instala en una máquina virtual. Ha aprendido a:
 
 > [!div class="checklist"]
-> * Usar la extensión de script personalizada para instalar IIS
-> * Crear una máquina virtual que use la extensión de script personalizada
-> * Ver un sitio IIS en funcionamiento después de aplicar la extensión
+> * Usar la extensión de Script personalizado de hello tooinstall IIS
+> * Crear una máquina virtual que usa Hola extensión de Script personalizado
+> * Ver un sitio IIS en ejecución después de que se aplica la extensión de Hola
 
-Avanzar al siguiente tutorial para aprender a crear imágenes de máquina virtual personalizadas.
+Avanzar toohello siguiente tutorial toolearn cómo toocreate imágenes de máquina virtual personalizadas.
 
 > [!div class="nextstepaction"]
 > [Creación de imágenes personalizadas de máquinas virtuales](./tutorial-custom-images.md)

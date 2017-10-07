@@ -1,5 +1,5 @@
 ---
-title: "Información general de máquinas virtuales de Windows | Documentos de Microsoft"
+title: "información general de máquinas virtuales aaaWindows | Documentos de Microsoft"
 description: "Contenido para información general de máquinas virtuales de Windows en el portal de Azure de la Ayuda"
 services: virtual-machines-windows
 author: sewatson
@@ -8,27 +8,27 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 03b204d9970a3831543a03dfa08e2a4d8b274034
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1992c0715d39669565cf1754975d2d82b19d3b22
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-virtual-machines-documentation"></a>Documentación sobre máquinas virtuales Windows
 
-Máquinas virtuales Windows de Azure proporciona una infraestructura bajo demanda, a gran escala, segura y virtualizada con Windows Server. Aprenda a crear, configurar, administrar y escalar máquinas virtuales Windows con nuestros inicios rápidos, tutoriales y ejemplos.
+Máquinas virtuales Windows de Azure proporciona una infraestructura bajo demanda, a gran escala, segura y virtualizada con Windows Server. Obtenga información acerca de cómo toocreate, configurar, administrar y escalar máquinas virtuales de Windows con nuestros tutoriales rápidos, tutoriales y ejemplos.
 
 ## <a name="5-minute-quickstarts"></a>Inicios rápidos en 5 minutos
 
-Aprenda a implementar un servidor web IIS dentro de una máquina virtual que ejecuta Windows Server 2016:
+Obtenga información acerca de cómo toodeploy un servidor web IIS dentro de una máquina Virtual ejecuta Windows Server 2016:
 
-- [Portal de Azure](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure Portal](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [CLI de Azure](/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="step-by-step-tutorials"></a>Tutoriales detallados
 
-Aprenda a implementar, administrar y supervisar las máquinas virtuales de Windows en Azure.
+Obtenga información acerca de cómo toodeploy, administrar y supervisar las máquinas virtuales de Windows en Azure.
 
 - [Creación y administración de máquinas virtuales Windows](/azure/virtual-machines/windows/tutorial-manage-vm)
 - [Creación y administración de discos de máquinas virtuales](/azure/virtual-machines/windows/tutorial-manage-data-disk)
@@ -51,12 +51,12 @@ Aprenda a implementar, administrar y supervisar las máquinas virtuales de Windo
 
 ## <a name="samples"></a>Muestras
 
-Implemente su primera aplicación en Azure.
+Implementar su primer tooAzure de aplicación.
 
 - [CLI de Azure](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="more"></a>Más
 
-- [Visite la documentación para obtener más información](/azure/virtual-machines/windows/index)
+- [Visite toolearn documentación más](/azure/virtual-machines/windows/index)
 - [Obtenga información acerca de todos los servicios de Azure](https://aka.ms/j3wr7y)

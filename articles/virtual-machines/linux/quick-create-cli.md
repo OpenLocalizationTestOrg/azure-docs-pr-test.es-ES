@@ -1,6 +1,6 @@
 ---
-title: "Inicio rápido de Azure: creación de máquinas virtuales con la CLI | Microsoft Docs"
-description: "Aprenda rápidamente a crear una máquina virtual con la CLI de Azure."
+title: "aaaAzure inicio rápido: crear VM CLI | Documentos de Microsoft"
+description: "Aprender rápidamente máquinas virtuales de toocreate con hello CLI de Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,27 +16,27 @@ ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a7cba5b2c43704d92e36d6f808efaa9fc73fdf36
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d9c686e2f4c7339b29b8c43cd1dd9ee56d7dc6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Creación de una máquina virtual Linux con la CLI de Azure
+# <a name="create-a-linux-virtual-machine-with-hello-azure-cli"></a>Crear una máquina virtual Linux con hello CLI de Azure
 
-La CLI de Azure se usa para crear y administrar recursos de Azure desde la línea de comandos o en scripts. En esta guía se detalla cómo usar la CLI de Azure para implementar máquinas virtuales que ejecutan el servidor de Ubuntu. Una vez implementado el servidor, se crea una conexión SSH y se instala un servidor web NGINX.
+Hola CLI de Azure es toocreate usado y administrar recursos de Azure desde la línea de comandos de Hola o en scripts. Esta guía se detalla con hello Azure CLI toodeploy una máquina virtual con Ubuntu server. Una vez implementado el servidor de hello, se crea una conexión SSH y se instala un servidor Web NGINX.
 
 Si no tiene una suscripción a Azure, cree una [cuenta gratuita](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) antes de empezar.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Si decide instalar y usar la CLI localmente, para esta guía de inicio rápido es preciso que ejecute la CLI de Azure versión 2.0.4 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
+Si elige tooinstall y usar hello CLI localmente, este tutorial rápido requiere que se ejecuta la versión de CLI de Azure de hello 2.0.4 o versiones posteriores. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Crear un grupo de recursos
 
-Cree un grupo de recursos con el comando [az group create](/cli/azure/group#create). Un grupo de recursos de Azure es un contenedor lógico en el que se implementan y se administran los recursos de Azure. 
+Crear un grupo de recursos con hello [crear grupo az](/cli/azure/group#create) comando. Un grupo de recursos de Azure es un contenedor lógico en el que se implementan y se administran los recursos de Azure. 
 
-En el ejemplo siguiente, se crea un grupo de recursos denominado *myResourceGroup* en la ubicación *eastus*.
+Hello en el ejemplo siguiente se crea un grupo de recursos denominado *myResourceGroup* en hello *eastus* ubicación.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -44,15 +44,15 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Create virtual machine
 
-Cree la máquina virtual con el comando [az vm create](/cli/azure/vm#create). 
+Crear una máquina virtual con hello [crear vm az](/cli/azure/vm#create) comando. 
 
-En el ejemplo siguiente, se crea una máquina virtual denominada *myVM* y las claves SSH si aún no existen en una ubicación de claves predeterminada. Para utilizar un conjunto específico de claves, utilice la opción `--ssh-key-value`.  
+Hello en el ejemplo siguiente se crea una máquina virtual denominada *myVM* y crea las claves de SSH si aún no existen en una ubicación de la clave predeterminada. toouse con un conjunto específico de claves, use hello `--ssh-key-value` opción.  
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-Cuando se ha creado la máquina virtual, la CLI de Azure muestra información similar al ejemplo siguiente. Anote el valor de `publicIpAddress`. Esta dirección se utiliza para tener acceso a la máquina virtual.
+Cuando se ha creado la VM de hello, Hola CLI de Azure muestra información toohello similar siguiente ejemplo. Tome nota de hello `publicIpAddress`. Esta dirección es hello tooaccess usa máquinas virtuales.
 
 ```azurecli-interactive 
 {
@@ -69,7 +69,7 @@ Cuando se ha creado la máquina virtual, la CLI de Azure muestra información si
 
 ## <a name="open-port-80-for-web-traffic"></a>Apertura del puerto 80 para el tráfico web 
 
-De forma predeterminada, solo se permiten conexiones mediante SSH con las máquinas virtuales Linux implementadas en Azure. Si esta máquina virtual va a ser un servidor web, debe abrir el puerto 80 desde Internet. Use el comando [az vm open-port](/cli/azure/vm#open-port) para abrir el puerto deseado.  
+De forma predeterminada, solo se permiten conexiones mediante SSH con las máquinas virtuales Linux implementadas en Azure. Si esta máquina virtual va toobe un servidor Web, deberá tooopen puerto 80 de hello Internet. Hola de uso [az de vm abrir puerto](/cli/azure/vm#open-port) comando tooopen hello deseado puerto.  
  
  ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -77,7 +77,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="ssh-into-your-vm"></a>Conexión SSH con la máquina virtual
 
-Ejecute el comando siguiente para crear una sesión SSH con la máquina virtual. Asegúrese de reemplazar *<publicIpAddress>* por la dirección IP pública correcta de la máquina virtual.  En el ejemplo anterior, la dirección IP era *40.68.254.142*.
+Siguiente Hola de uso del comando toocreate una sesión SSH con la máquina virtual de Hola. Asegúrese de que tooreplace  *<publicIpAddress>*  con hello corregir la dirección IP pública de la máquina virtual.  En el ejemplo anterior, la dirección IP era *40.68.254.142*.
 
 ```bash 
 ssh <publicIpAddress>
@@ -85,7 +85,7 @@ ssh <publicIpAddress>
 
 ## <a name="install-nginx"></a>Instalación de NGINX
 
-Use el siguiente script de bash para actualizar los orígenes de paquetes e instalar el paquete NGINX más reciente. 
+Hola a uso continuación bash orígenes de paquetes de secuencia de comandos tooupdate e instala paquete NGINX más reciente de Hola. 
 
 ```bash 
 #!/bin/bash
@@ -97,16 +97,16 @@ apt-get -y update
 apt-get -y install nginx
 ```
 
-## <a name="view-the-nginx-welcome-page"></a>Visualización de la página de bienvenida de NGINX
+## <a name="view-hello-nginx-welcome-page"></a>Página de bienvenida de vista hello NGINX
 
-Con NGINX instalado y el puerto 80 abierto en la máquina virtual desde Internet, puede usar el explorador web que elija para ver la página principal de NGINX. Asegúrese de utilizar el valor de *publicIpAddress* que ha anotado antes para visitar la página predeterminada. 
+Con NGINX instalado y el puerto 80 ahora abierta en la máquina virtual de Internet - Hola puede usar un explorador web de su elección tooview hello NGINX página de bienvenida predeterminada. Estar seguro de hello toouse *publicIpAddress* documentó anteriormente página predeterminada de toovisit Hola. 
 
 ![Sitio predeterminado de NGINX](./media/quick-create-cli/nginx.png) 
 
 
 ## <a name="clean-up-resources"></a>Limpieza de recursos
 
-Cuando ya no se necesiten, puede usar el comando [az group delete](/cli/azure/group#delete) para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
+Cuando ya no necesite, puede usar hello [eliminación del grupo az](/cli/azure/group#delete) comandos tooremove grupo de recursos de hello, VM y todos ellos relacionados con recursos.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -114,7 +114,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En esta guía de inicio rápido, ha implementado una máquina virtual simple y una regla de grupo de seguridad de red, y ha instalado un servidor web. Para más información acerca de las máquinas virtuales de Azure, continúe con el tutorial de máquinas virtuales Linux.
+En esta guía de inicio rápido, ha implementado una máquina virtual simple y una regla de grupo de seguridad de red, y ha instalado un servidor web. toolearn más información acerca de máquinas virtuales de Azure, continuar con tutorial toohello para máquinas virtuales de Linux.
 
 
 > [!div class="nextstepaction"]

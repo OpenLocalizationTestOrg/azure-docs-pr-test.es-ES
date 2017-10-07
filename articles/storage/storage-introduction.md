@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure Storage | Microsoft Docs"
-description: "Información general sobre Azure Storage, el servicio de almacenamiento de datos en línea de Microsoft en la nube. Obtenga más información sobre cómo usar la mejor solución de almacenamiento en la nube disponible en sus aplicaciones."
+title: aaaIntroduction tooAzure almacenamiento | Documentos de Microsoft
+description: "Información general del almacenamiento de Azure, almacenamiento de datos en línea de Microsoft en la nube de Hola. Obtenga información acerca de cómo toouse Hola mejor solución de almacenamiento de nube disponibles en las aplicaciones."
 services: storage
 documentationcenter: 
 author: mmacy
@@ -14,53 +14,53 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/26/2017
 ms.author: marsma
-ms.openlocfilehash: 98670b60daca7091e09ce2ab03cf2eaff015070e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dec8280c77f4b23df4c2a471e1d755e365c14e58
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-microsoft-azure-storage"></a>Introducción a Microsoft Azure Storage
+# <a name="introduction-toomicrosoft-azure-storage"></a>Introducción tooMicrosoft almacenamiento de Azure
 
 ## <a name="overview"></a>Información general
-Azure Storage es la solución de almacenamiento en la nube para las aplicaciones modernas que dependen de la durabilidad, la disponibilidad y la escalabilidad para satisfacer las necesidades de sus clientes. Al leer este artículo, los desarrolladores, los profesionales de TI y los responsables de negocios aprenderán lo siguiente:
+Almacenamiento de Azure es la solución de almacenamiento de hello en la nube para aplicaciones modernas que se basan en las necesidades de escalabilidad toomeet Hola de sus clientes, la disponibilidad y la durabilidad. Al leer este artículo, los desarrolladores, los profesionales de TI y los responsables de negocios aprenderán lo siguiente:
 
 * Qué es Azure Storage y cómo puede aprovecharlo en las aplicaciones en la nube, móviles, de servidor y de escritorio
-* Qué tipos de datos puede almacenar con los servicios de Azure Storage: datos de (objetos) blob, datos de tablas NoSQL, mensajes en cola y recursos compartidos de archivos.
-* Cómo se administra el acceso a los datos en Azure Storage
+* ¿Qué tipos de datos se pueden almacenar con los servicios de almacenamiento de Azure de hello: blob de datos (objeto), datos de la tabla de NoSQL, cola de mensajes y los recursos compartidos de archivos.
+* Cómo se administra el acceso a datos de tooyour de almacenamiento de Azure
 * Cómo se consigue que los datos de Azure Storage sean duraderos mediante la redundancia y la replicación
-* Qué pasos hay que seguir a continuación para crear una primera aplicación de Azure Storage
+* Donde toogo siguiente toobuild su primera aplicación de almacenamiento de Azure
 
-<!-- after our quick starts are available, replace this link with a link to one of those. 
-Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
-<!-- To get up and running with Azure Storage quickly, see [Get started with Azure Storage in five minutes](storage-getting-started-guide.md). -->
+<!-- after our quick starts are available, replace this link with a link tooone of those. 
+Had tooremove this article, it refers toohello VS quickstarts, and they've stopped publishing them. Robin --> 
+<!-- tooget up and running with Azure Storage quickly, see [Get started with Azure Storage in five minutes](storage-getting-started-guide.md). -->
 
 Para obtener más información sobre las herramientas, las bibliotecas y otros recursos para trabajar con Azure Storage, consulte el apartado [Pasos siguientes](#next-steps) que encontrará a continuación.
 
 ## <a name="what-is-azure-storage"></a>¿Qué es Azure Storage?
-La informática en la nube posibilita nuevos escenarios para aplicaciones que requieren un almacenamiento escalable, duradero y de alta disponibilidad para sus datos, que es justo el motivo por el que Microsoft ha desarrollado Azure Storage. Además de permitir a los desarrolladores compilar aplicaciones a gran escala para sustentar nuevos escenarios, Azure Storage proporciona también la base de almacenamiento para Azure Virtual Machines, una prueba más de su solidez.
+La informática en la nube posibilita nuevos escenarios para aplicaciones que requieren un almacenamiento escalable, duradero y de alta disponibilidad para sus datos, que es justo el motivo por el que Microsoft ha desarrollado Azure Storage. En suma toomaking lo posible para escenarios nuevos de los desarrolladores toobuild aplicaciones a gran escala toosupport, almacenamiento de Azure también proporciona Hola almacenamiento base para máquinas virtuales de Azure, una potencia de tooits FE adicional.
 
-Azure Storage se puede escalar de forma masiva para almacenar y procesar cientos de terabytes de datos y admitir así los escenarios de datos de gran tamaño requeridos por las aplicaciones científicas, de análisis financiero y multimedia. Igualmente, permite almacenar las pequeñas cantidades de datos que se necesitan en un sitio web de una pequeña empresa. Sean cuales sean sus necesidades, solo tiene que pagar por los datos que almacene. Actualmente, Azure Storage alberga decenas de billones de objetos de cliente únicos y administra, por término medio, millones de solicitudes por segundo.
+Almacenamiento de Azure es escalable de forma masiva, por lo que puede almacenar y procesar cientos de terabytes de escenarios de grandes cantidades de datos de datos toosupport Hola requeridos por los análisis financieros, científicos y aplicaciones multimedia. O bien, puede almacenar pequeñas cantidades de datos necesarios para un sitio Web de pequeñas empresas de Hola. Siempre que se encuentran en sus necesidades, solo paga por los datos de hello que almacena. Actualmente, Azure Storage alberga decenas de billones de objetos de cliente únicos y administra, por término medio, millones de solicitudes por segundo.
 
-Otra de sus características es la elasticidad, lo que le permite diseñar aplicaciones para una gran audiencia global y escalarlas según sea necesario, tanto por la cantidad de datos almacenados como por el número de solicitudes de estos datos. Solo pagará por lo que use y únicamente cuando lo use.
+Almacenamiento de Azure es flexible, para que pueda diseñar aplicaciones para una audiencia global grande y escale esas aplicaciones según le convenga - tanto en cuanto a la cantidad de Hola de los datos almacenados y Hola número de solicitudes realizadas en él. Solo pagará por lo que use y únicamente cuando lo use.
 
-Azure Storage utiliza un sistema de creación automática de particiones que equilibra la carga de los datos automáticamente en función del tráfico. Esto significa que, conforme crece la demanda en la aplicación, Azure Storage asigna automáticamente los recursos adecuados para ajustarse a este requisito.
+Azure Storage utiliza un sistema de creación automática de particiones que equilibra la carga de los datos automáticamente en función del tráfico. Esto significa que como peticiones de hello en el crecimiento de su aplicación, el almacenamiento de Azure asigna automáticamente toomeet de los recursos adecuados de hello ellos.
 
-Puede obtener acceso a este servicio desde cualquier lugar del mundo y cualquier tipo de aplicación, ya se ejecute en la nube, en el escritorio, en un servidor local o en un dispositivo móvil o tableta. Azure Storage se puede usar en escenarios móviles donde la aplicación almacena un subconjunto de datos en el dispositivo y los sincroniza con todo un conjunto de datos almacenados en la nube.
+Almacenamiento de Azure es accesible desde cualquier lugar en hello world, desde cualquier tipo de aplicación, si se está ejecutando en la nube de hello, en el escritorio de hello, en un servidor local o en un teléfono móvil o dispositivo de tableta gráfica. Puede usar el almacenamiento de Azure en los escenarios móviles donde la aplicación hello almacena un subconjunto de datos en el dispositivo de Hola y sincroniza con un conjunto completo de los datos almacenados en la nube de Hola.
 
-Azure Storage admite clientes que utilizan una gran variedad de sistemas operativos (incluidos Windows y Linux) y diversos lenguajes de programación (incluidos .NET, Node.js, Python, Ruby, PHP y C++, así como lenguajes de programación móvil) para un desarrollo más práctico. Además, expone recursos de datos a través de sencillas API REST, disponibles para cualquier cliente capaz de enviar y recibir datos mediante HTTP/HTTPS.
+Azure Storage admite clientes que utilizan una gran variedad de sistemas operativos (incluidos Windows y Linux) y diversos lenguajes de programación (incluidos .NET, Node.js, Python, Ruby, PHP y C++, así como lenguajes de programación móvil) para un desarrollo más práctico. Almacenamiento de Azure también expone recursos de datos a través de las API de REST simple, que están disponibles tooany cliente capaz de enviar y recibir datos a través de HTTP/HTTPS.
 
-Azure Premium Storage ofrece compatibilidad con discos de alto rendimiento y baja latencia para cargas de trabajo con un alto consumo de E/S que se ejecutan en Azure Virtual Machines. Con Azure Premium Storage, puede conectar varios discos de datos persistentes a una máquina virtual y configurarlos para satisfacer sus requisitos en términos de rendimiento. Un disco de SSD de Azure Premium Storage realiza copias de seguridad de cada disco de datos para ofrecer un rendimiento máximo de E/S. Consulte [Premium Storage: almacenamiento de alto rendimiento para cargas de trabajo de máquinas virtuales de Azure](storage-premium-storage.md) para ver información detallada.
+Azure Premium Storage ofrece compatibilidad con discos de alto rendimiento y baja latencia para cargas de trabajo con un alto consumo de E/S que se ejecutan en Azure Virtual Machines. Con el almacenamiento de Azure Premium, puede adjuntar varios datos persistentes discos tooa virtual machine y configurarlos toomeet los requisitos de rendimiento. Un disco de SSD de Azure Premium Storage realiza copias de seguridad de cada disco de datos para ofrecer un rendimiento máximo de E/S. Consulte [Premium Storage: almacenamiento de alto rendimiento para cargas de trabajo de máquinas virtuales de Azure](storage-premium-storage.md) para ver información detallada.
 
-## <a name="introducing-the-azure-storage-services"></a>Introducción de los servicios Azure Storage
-Azure Storage proporciona los cuatro servicios siguientes: Blob Storage, Table Storage, Queue Storage y File Storage.
+## <a name="introducing-hello-azure-storage-services"></a>Introducción a servicios de almacenamiento de Azure de Hola
+El almacenamiento de Azure proporciona Hola siguientes cuatro servicios: almacenamiento de blobs, el almacenamiento de tabla, almacenamiento en la cola y el almacenamiento de archivos.
 
-* Blob Storage almacena datos de objetos no estructurados. Un blob puede ser un tipo cualquiera de datos binarios o texto, como un documento, un archivo multimedia o un instalador de aplicación. El almacenamiento de blobs a veces se conoce también como almacenamiento de objetos.
-* Table Storage almacena conjuntos de datos estructurados. Se trata de un almacén de datos de clave-atributo NoSQL, que permite el desarrollo rápido de grandes cantidades de datos y el acceso inmediato a los mismos.
+* Blob Storage almacena datos de objetos no estructurados. Un blob puede ser un tipo cualquiera de datos binarios o texto, como un documento, un archivo multimedia o un instalador de aplicación. Almacenamiento de blobs también es que se hace referencia tooas almacenamiento de objetos.
+* Table Storage almacena conjuntos de datos estructurados. Almacenamiento de tabla es un almacén de datos del atributo de clave NoSQL, que permite el desarrollo rápido y las cantidades de toolarge de acceso rápido de datos.
 * Queue Storage ofrece una solución de mensajería confiable para el procesamiento de flujos de trabajo y para la comunicación entre los componentes de los servicios en la nube.
-* File Storage ofrece almacenamiento compartido para aplicaciones heredadas que usan el protocolo SMB estándar. Las máquinas virtuales y los servicios en la nube de Azure pueden compartir datos de archivos entre componentes de aplicaciones a través de recursos compartidos montados, y las aplicaciones locales pueden tener acceso a datos de archivos de un recurso compartido a través de la API REST del servicio Archivo.
+* Almacenamiento de archivos ofrece almacenamiento compartido para aplicaciones heredadas mediante el protocolo SMB estándar de Hola. Máquinas virtuales de Azure y servicios en la nube pueden compartir datos de archivos a través de los componentes de la aplicación a través de recursos compartidos montados y aplicaciones locales pueden tener acceso a los datos de archivo en un recurso compartido a través de hello API de REST de servicio de archivos.
 
-Una cuenta de almacenamiento de Azure es una cuenta segura que proporciona acceso a los servicios de Azure Storage. La cuenta de almacenamiento ofrece el espacio de nombres exclusivo para los recursos de almacenamiento. La siguiente imagen muestra las relaciones entre los recursos de Azure Storage en una cuenta de almacenamiento:
+Una cuenta de almacenamiento de Azure es una cuenta segura que proporciona acceso a tooservices en el almacenamiento de Azure. La cuenta de almacenamiento proporciona Hola espacio de nombres único para los recursos de almacenamiento. imagen de Hello siguiente muestra las relaciones de hello entre los recursos de almacenamiento de Azure de hello en una cuenta de almacenamiento:
 
 ![Recursos de Azure Storage](./media/storage-introduction/storage-concepts.png)
 
@@ -68,8 +68,8 @@ Una cuenta de almacenamiento de Azure es una cuenta segura que proporciona acces
 
 [!INCLUDE [storage-versions-include](../../includes/storage-versions-include.md)]
 
-## <a name="blob-storage"></a>Blob Storage
-Blob Storage ofrece una solución rentable y escalable a aquellos usuarios con grandes cantidades de datos de objetos no estructurados para almacenar en la nube. Esta característica se puede usar para almacenar contenido como:
+## <a name="blob-storage"></a>Almacenamiento de blobs
+Para los usuarios con grandes cantidades de toostore de datos de objeto no estructurados en la nube de hello, almacenamiento de blobs ofrece una solución escalable y rentable. Puede usar el contenido de toostore de almacenamiento de blobs como:
 
 * Documentos
 * Datos de contenido social, como fotos, vídeos, música y blogs
@@ -78,92 +78,92 @@ Blob Storage ofrece una solución rentable y escalable a aquellos usuarios con g
 * Datos de configuración para las aplicaciones en la nube
 * Datos de gran tamaño, como registros y otros conjuntos de datos grandes
 
-Cada blob se organiza en un contenedor. Los contenedores también ofrecen una forma útil de asignar directivas de seguridad a grupos de objetos. Una cuenta de almacenamiento puede incluir un número cualquiera de contenedores y, a su vez, un contenedor puede incluir un número cualquiera de blobs, hasta alcanzar el límite de capacidad de 500 TB de la cuenta de almacenamiento.
+Cada blob se organiza en un contenedor. Los contenedores también proporcionan un toogroups de directivas de seguridad de un modo útil tooassign de objetos. Una cuenta de almacenamiento puede contener cualquier número de contenedores y un contenedor puede contener cualquier número de blobs, seguridad de límite de capacidad de 500 TB toohello de cuenta de almacenamiento de Hola.
 
 Blob Storage ofrece tres tipos de blobs: blobs en bloques, blobs en anexos y blobs en páginas (discos).
 
 * Los blobs en bloques están optimizados para el streaming y para el almacenamiento de objetos en la nube, y constituyen una opción idónea para almacenar documentos, archivos multimedia y copias de seguridad, entre otros.
-* Los blobs en anexos son similares a los blobs en bloques, pero están optimizados para anexar las operaciones. Un blob de anexos puede actualizarse solo al agregar un nuevo bloque al final. Los blob en anexos son una buena opción para escenarios como el registro, donde es necesario escribir solo al final del blob nuevos datos.
-* Los blobs en páginas están optimizados para representar discos IaaS y admitir la escritura aleatoria. Pueden tener un tamaño máximo de 1 TB. Un disco IaaS asociado a una red de máquinas virtuales de Azure es un VHD almacenado como blob en páginas.
+* Anexar blobs de blobs de tooblock similares, pero están optimizados para las operaciones de anexión. Se puede actualizar un blob en anexos agregando un nuevo extremo toohello de bloque. Anexar blobs son una buena elección para escenarios como la del registro, donde nuevos datos necesitan toobe escribe solo toohello final del blob de Hola.
+* Blobs en páginas se optimización para representar los discos de IaaS y admitir aleatorio escribe y puede ser up too1 TB de tamaño. Un disco IaaS asociado a una red de máquinas virtuales de Azure es un VHD almacenado como blob en páginas.
 
-Para conjuntos de datos de gran tamaño donde las restricciones de red hacen imposible la carga o descarga de datos en Blob Storage a través de una conexión, puede enviar una unidad de disco duro a Microsoft para importar o exportar datos directamente desde el centro de datos. Consulte [Uso del servicio Microsoft Azure Import/Export para transferir datos a Blob Storage](storage-import-export-service.md).
+Para grandes conjuntos de datos donde las restricciones de red que cargar o descargar el almacenamiento de datos tooBlob a través de la conexión de hello poco realista, puede enviar un tooimport tooMicrosoft de unidad de disco duro o exportar datos directamente desde el centro de datos de Hola. Vea [usar Hola servicio de importación y exportación de Microsoft Azure tooTransfer datos tooBlob almacenamiento](storage-import-export-service.md).
 
-## <a name="table-storage"></a>Table Storage
+## <a name="table-storage"></a>Almacenamiento de tablas
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-A menudo, las aplicaciones modernas demandan almacenes de datos con una flexibilidad y escalabilidad superiores a las que requerían las generaciones anteriores de software. Table Storage ofrece un tipo de almacenamiento de alta disponibilidad y escalabilidad masiva, de forma que las aplicaciones pueden escalarse automáticamente para ajustarse a la demanda de los usuarios. Este tipo de almacenamiento se basa en un almacén de claves/atributos NoSQL de Microsoft con un diseño sin esquema que lo diferencia de las bases de datos relacionales tradicionales. Si se tiene un almacén de datos sin esquema, es fácil adaptar los datos a medida que evolucionan las necesidades de la aplicación. Table Storage es fácil de usar, por lo que los desarrolladores pueden crear aplicaciones de forma rápida. El acceso a los datos es rápido y rentable para todos los tipos de aplicaciones y,  Además, su coste es muy inferior al del SQL tradicional para volúmenes de datos similares.
+A menudo, las aplicaciones modernas demandan almacenes de datos con una flexibilidad y escalabilidad superiores a las que requerían las generaciones anteriores de software. Almacenamiento de tabla ofrece un almacenamiento altamente disponible y escalable de forma masiva, por lo que la aplicación puede escalar automáticamente toomeet demanda de los usuarios. Este tipo de almacenamiento se basa en un almacén de claves/atributos NoSQL de Microsoft con un diseño sin esquema que lo diferencia de las bases de datos relacionales tradicionales. Con un almacén de datos schemaless, resulta fácil tooadapt necesidades de los datos como Hola de evolucionar de la aplicación. Almacenamiento de tabla es fácil toouse, por lo que los desarrolladores pueden crear aplicaciones rápidamente. Acceso toodata es rápido y rentable para todos los tipos de aplicaciones.  además, su coste es muy inferior al del SQL tradicional para volúmenes de datos similares.
 
-Este tipo de almacenamiento se basa en un almacén de clave-atributo, lo que significa que cada valor de una tabla se almacena con un nombre de propiedad tipado. El nombre de propiedad se puede usar para filtrar y especificar criterios de selección. Una colección de propiedades y sus valores, componen una entidad. Puesto que este tipo de almacenamiento no tiene esquema, dos entidades de una misma tabla pueden contener distintas colecciones de propiedades y dichas propiedades pueden ser de distintos tipos.
+Este tipo de almacenamiento se basa en un almacén de clave-atributo, lo que significa que cada valor de una tabla se almacena con un nombre de propiedad tipado. nombre de la propiedad de Hello puede usarse para filtrar y especificar criterios de selección. Una colección de propiedades y sus valores, componen una entidad. Puesto que el almacenamiento de tabla es schemaless, dos entidades en Hola misma tabla puede contener diferentes colecciones de propiedades y esas propiedades pueden ser de tipos diferentes.
 
-Table Storage se puede usar para almacenar conjuntos de datos flexibles, como datos de usuarios para aplicaciones web, libretas de direcciones, información de dispositivos y cualquier otro tipo de metadatos requerido por el servicio.  Una tabla puede almacenar un número cualquiera de entidades y una cuenta de almacenamiento puede incluir un número cualquiera de tablas, hasta alcanzar el límite de capacidad de este tipo de cuenta.
+Puede usar la tabla almacenamiento toostore flexible conjuntos de datos, como los datos de usuario para aplicaciones web, libretas de direcciones, información del dispositivo y cualquier otro tipo de metadatos que necesite el servicio.  Puede almacenar cualquier número de entidades en una tabla y una cuenta de almacenamiento puede contener cualquier número de tablas, una toohello el límite de capacidad de la cuenta de almacenamiento de Hola.
 
-Al igual que ocurre con Blob Storage y Queue Storage, los desarrolladores pueden administrar Table Storage y obtener acceso al mismo a través de los protocolos REST estándar. Sin embargo, este tipo de almacenamiento también admite un subconjunto del protocolo OData, lo que simplifica las capacidades de consulta avanzadas y permite los formatos JSON y AtomPub (basados en XML).
+Al igual que los Blobs y colas, los desarrolladores pueden administrar y tener acceso al almacenamiento de tabla utilizando los protocolos estándar de REST, sin embargo almacenamiento de tablas también admite un subconjunto del protocolo de OData de hello, simplificando avanzadas capacidades de consulta y la habilitación de JSON y AtomPub (basado en XML) da formato.
 
-Para las aplicaciones actuales basadas en Internet, las bases de datos NoSQL, como las de Table Storage, ofrecen una alternativa popular a las bases de datos relacionales tradicionales.
+Para aplicaciones basadas en Internet de hoy en día, las bases de datos NoSQL como el almacenamiento de tabla ofrecen una popular tootraditional alternativo bases de datos relacionales.
 
 ## <a name="queue-storage"></a>Queue Storage
-A la hora de diseñar aplicaciones para escala, los componentes de las mismas suelen desacoplarse para poder escalarlos de forma independiente. Queue Storage ofrece una solución de mensajería de confianza para la comunicación asincrónica entre los componentes de las aplicaciones, independientemente de que se ejecuten en la nube, en el escritorio, en un servidor local o en un dispositivo móvil. Además, este tipo de almacenamiento admite la administración de tareas asincrónicas y la creación de flujos de trabajo de procesos.
+A la hora de diseñar aplicaciones para escala, los componentes de las mismas suelen desacoplarse para poder escalarlos de forma independiente. Almacenamiento de cola proporciona una solución de mensajería confiable para la comunicación asincrónica entre los componentes de aplicación, si se están ejecutando en la nube de hello, en el escritorio de hello, en un servidor local o en un dispositivo móvil. Además, este tipo de almacenamiento admite la administración de tareas asincrónicas y la creación de flujos de trabajo de procesos.
 
-Una cuenta de almacenamiento puede contener un número cualquiera de colas y, a su vez, una cola puede contener un número cualquiera de mensajes, hasta alcanzar el límite de capacidad de este tipo de cuenta. Los mensajes individuales pueden tener un tamaño máximo de 64 KB.
+Una cuenta de almacenamiento puede contener un número cualquiera de colas y, Una cola puede contener cualquier número de mensajes, seguridad toohello el límite de capacidad de la cuenta de almacenamiento de Hola. Los mensajes individuales pueden ser up too64 KB de tamaño.
 
 ## <a name="file-storage"></a>File Storage
-El servicio Azure Files permite configurar recursos compartidos de archivos de red de alta disponibilidad a los que se puede acceder mediante el protocolo Bloque de mensajes del servidor (SMB) estándar. Esto significa que varias máquinas virtuales pueden compartir los mismos archivos con acceso de lectura y escritura. También puede leer los archivos mediante la interfaz REST o las bibliotecas de cliente de Storage.
+Hola servicio de archivos de Azure permite tooset los recursos compartidos de archivos de red de alta disponibilidad que se puede acceder mediante Protocolo de bloque de mensajes del servidor (SMB) estándar de Hola. Que significa que varias máquinas virtuales pueden compartir Hola mismo archivos con acceso de lectura y escritura. También puede leer archivos de hello mediante la interfaz REST de Hola o bibliotecas de cliente de almacenamiento de Hola.
 
-Lo que distingue Azure File Storage de los archivos en un recurso compartido de archivos corporativo es que puede acceder a ellos desde cualquier lugar del mundo mediante una dirección URL que apunte al archivo e incluya un token de firma de acceso compartido (SAS). Puede generar tokens SAS; permiten el acceso específico a un recurso privado durante un período de tiempo determinado.
+Único lo que distingue el almacenamiento de archivos de Azure de archivos en un recurso compartido de archivos corporativos es que puede tener acceso a archivos de Hola desde cualquier lugar de Hola a todos mediante una dirección URL que señala el archivo toohello e incluye un token de firma (SAS) de acceso compartido. Puede generar tokens SAS; le permiten a asset privada de tooa de acceso específico para un período de tiempo determinado.
 
 Los recursos compartidos de archivos se pueden utilizar para muchos escenarios comunes:
 
-* Muchas aplicaciones locales usan recursos compartidos de archivos. Esta característica facilita la migración de las aplicaciones que comparten datos en Azure. Si monta el recurso compartido de archivos en la misma letra de unidad que usa la aplicación local, la parte de la aplicación que tiene acceso al recurso compartido de archivos debería funcionar con cambios mínimos, si es que hay alguno.
+* Muchas aplicaciones locales usan recursos compartidos de archivos. Esta característica hace más fácil toomigrate aquellas aplicaciones que comparten datos tooAzure. Si va a montar hello toohello del recurso compartido de archivo misma letra que Hola de unidad local aplicación usa, parte de saludo de la aplicación que tiene acceso a recurso compartido de archivos de Hola debe funcionar con unos cambios mínimos, si lo hay.
 
-* Los archivos de configuración se pueden almacenar en un recurso compartido de archivos y se puede acceder a ellos desde varias máquinas virtuales. Las herramientas y utilidades que usen varios desarrolladores de un grupo pueden almacenarse en un recurso compartido de archivos, lo que garantiza que todos los usuarios puedan encontrarlas y que utilizan la misma versión.
+* Los archivos de configuración se pueden almacenar en un recurso compartido de archivos y se puede acceder a ellos desde varias máquinas virtuales. Herramientas y utilidades que se usan por varios desarrolladores en un grupo pueden almacenarse en un recurso compartido de archivos, asegurándose de que todo el mundo pueda encontrarlos, y que usan Hola misma versión.
 
-* Los registros de diagnóstico, las métricas y los volcados de memoria son solo tres ejemplos de datos que se pueden escribir en un recurso compartido de archivos y procesarse o analizarse posteriormente.
+* Registros de diagnóstico, métricas y volcados de memoria son sólo tres ejemplos de datos que se pueden escritos el recurso compartido de archivos de tooa y procesados o analizar más tarde.
 
-En este momento, las listas de control de acceso (ACL) y la autenticación basada en Active Directory no se admiten, pero se admitirán en algún momento. Las credenciales de las cuentas de almacenamiento se usan para permitir la autenticación al recurso compartido de archivos. Esto significa que cualquier usuario con el recurso compartido montado tendrá acceso completo de lectura/escritura al recurso compartido.
+En este tiempo, la autenticación basada en Active Directory y el acceso no se admiten listas de control (ACL), pero estarán en algún momento futuro Hola. credenciales de cuenta de almacenamiento de Hello son autenticación de tooprovide utilizado para el recurso compartido de archivos de toohello de acceso. Esto significa que cualquiera con el recurso compartido de hello montado tendrá el recurso compartido de toohello de acceso completo de lectura/escritura.
 
-## <a name="access-to-blob-table-queue-and-file-resources"></a>Acceso a recursos de blobs, tablas, colas y archivos
-De forma predeterminada, solo el propietario de la cuenta de almacenamiento puede obtener acceso a los recursos de la cuenta. A fin de mantener la seguridad de los datos, cada solicitud en relación con los recursos de la cuenta deberá autenticarse. Esta autenticación se basa en un modelo de clave compartida. Los blobs también pueden configurarse para admitir la autenticación anónima.
+## <a name="access-tooblob-table-queue-and-file-resources"></a>Acceso tooBlob, tabla, cola y archivo de recursos
+De forma predeterminada, solo el propietario de cuenta del almacenamiento de hello puede tener acceso a los recursos de la cuenta de almacenamiento de Hola. Para la seguridad de Hola de los datos, se debe autenticar cada solicitud realizada en los recursos de la cuenta. Esta autenticación se basa en un modelo de clave compartida. Blobs también pueden ser toosupport configurado la autenticación anónima.
 
-Al crear una cuenta de almacenamiento, se le asignan dos claves de acceso privado que se utilizan para la autenticación. Tener dos claves garantiza que la aplicación siga estando disponible durante el proceso habitual de regeneración de las claves, una práctica común de administración de las claves de seguridad.
+Al crear una cuenta de almacenamiento, se le asignan dos claves de acceso privado que se utilizan para la autenticación. Existencia de dos claves garantiza que la aplicación sigue estando disponible cuando se regeneran con regularidad claves hello como una práctica común de administración de claves de seguridad.
 
-Si debe permitir el acceso controlado de los usuarios a los recursos de almacenamiento, puede crear una firma de acceso compartido. Una firma de acceso compartido (SAS) es un token que se puede asociar a una dirección URL que permite el acceso delegado a un recurso de almacenamiento. Cualquier usuario que tenga el token puede obtener acceso al recurso que señala con los permisos que especifica durante el plazo válido correspondiente. A partir de la versión 2015-04-05, Azure Storage admite dos tipos de firmas de acceso compartido: SAS de servicio y SAS de cuenta.
+Si necesita recursos de almacenamiento de tooallow a los usuarios controlados acceso tooyour, a continuación, puede crear una firma de acceso compartido. Una firma de acceso compartido (SAS) es un símbolo (token) que puede ser la dirección URL de tooa anexado que permite delega acceso tooa de recursos de almacenamiento. Cualquier persona que posee el token de hello puede tener acceso a recursos de hello señala permisos de hello toowith especifica, para el período de Hola de tiempo que sea válido. A partir de la versión 2015-04-05, Azure Storage admite dos tipos de firmas de acceso compartido: SAS de servicio y SAS de cuenta.
 
-SAS de servicio delega el acceso a un recurso en solo uno de los servicios de almacenamiento: Blob Storage, Queue Storage, Table Storage o File Storage.
+delegados SAS del servicio de Hello tener acceso a recursos tooa en solo uno de los servicios de almacenamiento de hello: Hola servicio Blob, cola, tabla o archivo.
 
-SAS de cuenta delega el acceso a los recursos en uno o varios de los servicios de almacenamiento. Puede delegar el acceso a las operaciones de nivel de servicio que no están disponibles con SAS de servicio. También puede delegar el acceso para leer, escribir y eliminar operaciones en contenedores de blobs, tablas, colas y recursos compartidos de archivos que no están permitidos con SAS de servicio.
+Una cuenta SA delega tooresources de acceso en uno o varios de los servicios de almacenamiento de Hola. Puede delegar operaciones de tooservice-nivel de acceso que no están disponibles con un servicio de SAS. También puede delegar el acceso tooread, escritura y las operaciones de eliminación en contenedores de blobs, tablas, colas y recursos compartidos de archivos que no se permiten con un servicio de SAS.
 
-Por último, puede especificar que un contenedor y sus blobs, o un blob específico, estén disponibles para el acceso público. Cuando se indica que un contenedor o blob es público, todos los usuarios pueden leerlo de forma anónima: no se requiere autenticación.  Los contenedores y los blobs públicos son útiles para exponer recursos, como archivos multimedia y documentos hospedados en sitios web.  Si desea reducir la latencia de red para una audiencia global, puede almacenar en caché los datos de blobs usados por los sitios web con el servicio CDN de Azure.
+Por último, puede especificar que un contenedor y sus blobs, o un blob específico, estén disponibles para el acceso público. Cuando se indica que un contenedor o blob es público, todos los usuarios pueden leerlo de forma anónima: no se requiere autenticación.  Los contenedores y los blobs públicos son útiles para exponer recursos, como archivos multimedia y documentos hospedados en sitios web.  latencia de red toodecrease para una audiencia global, puede almacenar en caché datos de blob usados por sitios Web con hello CDN de Azure.
 
-Para más información sobre firmas de acceso compartido, consulte [Uso de firmas de acceso compartido (SAS)](storage-dotnet-shared-access-signature-part-1.md) . Consulte [Administración del acceso de lectura anónimo a contenedores y blobs](storage-manage-access-to-resources.md) y [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx) (Autenticación para los servicios de Azure Storage) para más información sobre el acceso seguro a su cuenta de almacenamiento.
+Para más información sobre firmas de acceso compartido, consulte [Uso de firmas de acceso compartido (SAS)](storage-dotnet-shared-access-signature-part-1.md) . Vea [administrar toocontainers de acceso de lectura anónimo y los blobs](storage-manage-access-to-resources.md) y [autenticación para servicios de almacenamiento de Azure hello](https://msdn.microsoft.com/library/azure/dd179428.aspx) para obtener más información sobre la cuenta de almacenamiento de tooyour un acceso seguro.
 
 ## <a name="replication-for-durability-and-high-availability"></a>Replicación para obtener durabilidad y alta disponibilidad
-Los datos de su cuenta de almacenamiento de Microsoft Azure se replican siempre para garantizar la durabilidad y la alta disponibilidad. La replicación copia los datos, dentro del mismo centro de datos o a otro, en función de la opción de replicación que elija. La replicación protege los datos y conserva el tiempo de actividad de la aplicación en el caso de errores transitorios del hardware. Si los datos se replican en un segundo centro de datos, esto también los protege frente a un error catastrófico en la ubicación principal.
+datos de Hello en su cuenta de almacenamiento siempre es de Microsoft Azure replican tooensure durabilidad y alta disponibilidad. Copias de replicación de los datos, ya sea dentro de Hola mismo centro de datos o el segundo centro de datos tooa, según la opción de replicación que elija. La replicación protege los datos y conserva el tiempo de actividad de la aplicación en caso de hello de errores de hardware transitorios. Si se replican los datos del centro de datos segundo tooa, que también protege los datos frente a un error grave en la ubicación principal Hola.
 
-La replicación garantiza que la cuenta de almacenamiento cumpla el [contrato de nivel de servicio (SLA) para Storage](https://azure.microsoft.com/support/legal/sla/storage/), incluso en caso de errores. Consulte en el SLA información acerca de las garantías de durabilidad y disponibilidad de Azure Storage.
+La replicación garantiza que la cuenta de almacenamiento cumple hello [contrato de nivel de servicio (SLA) para el almacenamiento](https://azure.microsoft.com/support/legal/sla/storage/) incluso de cara de Hola de errores. Vea Hola SLA para obtener información sobre el almacenamiento de Azure garantiza la durabilidad y disponibilidad.
 
-Cuando cree una cuenta de almacenamiento, puede seleccionar una de las siguientes opciones de replicación:
+Cuando se crea una cuenta de almacenamiento, puede seleccionar una de las siguientes opciones de replicación de hello:
 
-* **Almacenamiento con redundancia local (LRS).** El almacenamiento con redundancia local mantiene tres copias de sus datos. LRS se replica tres veces dentro de un único centro de datos de una sola región. LRS protege los datos frente a errores comunes del hardware, pero no frente a errores de un único centro de datos.
+* **Almacenamiento con redundancia local (LRS).** El almacenamiento con redundancia local mantiene tres copias de sus datos. LRS se replica tres veces dentro de un único centro de datos de una sola región. LRS protege los datos de errores de hardware normal, pero no frente a errores de Hola de un solo centro de datos.
 
     LRS se ofrece con un descuento. Para la máxima durabilidad, es recomendable utilizar el almacenamiento con redundancia geográfica, que se describe a continuación.
-* **Almacenamiento con redundancia de zona (ZRS).** El almacenamiento con redundancia de zona mantiene tres copias de los datos. ZRS se replica tres veces entre dos o tres instalaciones, ya sea dentro de una sola región o entre dos regiones, proporcionando mayor durabilidad que LRS. ZRS garantiza la durabilidad de sus datos dentro de una sola región.
+* **Almacenamiento con redundancia de zona (ZRS).** El almacenamiento con redundancia de zona mantiene tres copias de los datos. ZRS se replica tres veces entre dos instalaciones de toothree, en una única región o entre dos regiones, lo que proporciona mayor durabilidad que el LRS. ZRS garantiza la durabilidad de sus datos dentro de una sola región.
 
     ZRS ofrece un mayor nivel de durabilidad que LRS; sin embargo, para disfrutar de la máxima durabilidad, es recomendable usar el almacenamiento con redundancia geográfica, que se describe a continuación.
 
   > [!NOTE]
   > Actualmente, el ZRS solo está disponible para los blobs en bloques y únicamente se admite en las versiones del 14/02/2014 y posteriores.
   >
-  > Una vez haya creado su cuenta de almacenamiento y seleccionado el ZRS, no es posible convertirla para usar ningún otro tipo de replicación o viceversa.
+  > Una vez que ha creado la cuenta de almacenamiento y selecciona ZRS, no puede convertir toouse tooany otro tipo de replicación, o viceversa.
   >
   >
-* **Almacenamiento con redundancia geográfica (GRS)**. GRS mantiene seis copias de sus datos. Con GRS, sus datos se replican tres veces dentro de la región primaria, y se replican también tres veces en una región secundaria a cientos de kilómetros de distancia de la región primaria, proporcionando el nivel más alto de durabilidad. En caso de que se produzca un error en la región primaria, Azure Storage conmutará por error a la región secundaria. GRS garantiza la durabilidad de sus datos en dos regiones independientes.
+* **Almacenamiento con redundancia geográfica (GRS)**. GRS mantiene seis copias de sus datos. Con GRS, los datos se replican tres veces dentro de la región principal de Hola y también se replican tres veces en una región secundaria a cientos de millas fuera de la región principal de hello, que proporciona el máximo nivel de durabilidad de Hola. En caso de hello de un error en la región principal de hello, almacenamiento de Azure impedirá la región secundaria toohello de conmutación por error. GRS garantiza la durabilidad de sus datos en dos regiones independientes.
 
     Para obtener información sobre los emparejamientos principales y secundarios por región, consulte [Regiones de Azure](https://azure.microsoft.com/regions/).
-* **Almacenamiento con redundancia geográfica con acceso de lectura (RA-GRS)**. El almacenamiento con redundancia geográfica con acceso de lectura replica sus datos en una ubicación geográfica secundaria y, además, proporciona acceso de lectura a ellos en la ubicación secundaria. El almacenamiento con redundancia geográfica con acceso de lectura le permite tener acceso a los datos desde la ubicación principal o la secundaria, ante la eventualidad de que alguna de las ubicaciones deje de estar disponible. El almacenamiento con redundancia geográfica con acceso de lectura es la opción predeterminada para su cuenta de almacenamiento cuando la crea.
+* **Almacenamiento con redundancia geográfica con acceso de lectura (RA-GRS)**. Almacenamiento con redundancia geográfica con acceso de lectura replica los datos tooa ubicación secundaria y también proporciona acceso de lectura tooyour datos en la ubicación secundaria Hola. Almacenamiento con redundancia geográfica con acceso de lectura le permite tooaccess los datos de ubicación secundaria de hello, en caso de Hola que una ubicación deja de estar disponible u Hola principal. Almacenamiento con redundancia geográfica con acceso de lectura es la opción de valor predeterminado de hello para la cuenta de almacenamiento de forma predeterminada al crearlo.
 
   > [!IMPORTANT]
-  > Si no especificó ZRS cuando creó la cuenta, puede cambiar cómo se replican los datos después de haber creado su cuenta. Sin embargo, tenga en cuenta que cambiar de LRS a GRS o RA-GRS puede suponer un coste adicional único de transferencia de datos.
+  > Puede cambiar cómo los datos se replican una vez creada la cuenta de almacenamiento, a menos que especifique ZRS cuando se creó la cuenta de hello. Sin embargo, tenga en cuenta que puede conllevar una coste si se cambia de LRS tooGRS o RA-GRS de transferencia de datos adicionales de un solo uso.
   >
   >
 
@@ -173,23 +173,23 @@ Para obtener información de precios para la replicación de cuentas de almacena
 
 Para obtener detalles de arquitectura sobre la durabilidad con Azure Storage, consulte [Documento de SOSP: Azure Storage: un servicio de almacenamiento en la nube altamente disponible con gran coherencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
 
-## <a name="transferring-data-to-and-from-azure-storage"></a>Transferencia de datos hacia y desde Azure Storage
-Puede utilizar la utilidad de línea de comandos de AzCopy para copiar datos de blobs, archivos y tablas en la cuenta de almacenamiento o entre las cuentas de almacenamiento. Consulte [Transferencia de datos con la utilidad en línea de comandos AzCopy](storage-use-azcopy.md) para más información.
+## <a name="transferring-data-tooand-from-azure-storage"></a>Transferencia de datos tooand de almacenamiento de Azure
+Puede usar blob toocopy de hello AzCopy utilidad de línea de comandos, archivos y datos de la tabla dentro de la cuenta de almacenamiento o a través de las cuentas de almacenamiento. Vea [transferir datos con la utilidad de línea de comandos de AzCopy hello](storage-use-azcopy.md) para obtener más información.
 
-AzCopy se instala sobre la [biblioteca de movimiento de datos de Azure](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), que está disponible actualmente en versión preliminar.
+AzCopy se basa en hello [biblioteca de movimiento de datos de Azure](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), que está disponible actualmente en vista previa.
 
-El servicio Azure Import/Export proporciona una manera de importar datos de blob a la cuenta de almacenamiento o exportarlos desde la misma a través de un disco duro enviado al centro de datos de Azure. Para más información sobre el servicio Import/Export, consulte [Uso del servicio Microsoft Azure Import/Export para transferir datos a Blob Storage](storage-import-export-service.md).
+Hola servicio de importación y exportación de Azure proporciona una manera tooimport blob de datos en o exportar datos de blob de la cuenta de almacenamiento a través de un disco de la unidad de disco duro enviadas por toohello centro de datos de Azure. Para obtener más información acerca de hello servicio de importación/exportación, consulte [usar Hola servicio de importación y exportación de Microsoft Azure tooTransfer datos tooBlob almacenamiento](storage-import-export-service.md).
 
 ## <a name="pricing"></a>Precios
 [!INCLUDE [storage-account-billing-include](../../includes/storage-account-billing-include.md)]
 
 ## <a name="storage-apis-libraries-and-tools"></a>API, bibliotecas y herramientas de Storage
-Es posible acceder a los recursos de Azure Storage por medio de cualquier lenguaje que pueda realizar solicitudes HTTP/HTTPS. Además, ofrece bibliotecas de programación para varios lenguajes de amplio uso. Estas bibliotecas simplifican muchos aspectos relacionados con el uso de Azure,  Storage, ya que abordan detalles como la invocación sincrónica y asincrónica, el procesamiento por lotes de las operaciones, la administración de excepciones, los reintentos automáticos y el comportamiento operativo, entre otros. Actualmente hay bibliotecas disponibles para los siguientes lenguajes y plataformas, además de otros previstos:
+Es posible acceder a los recursos de Azure Storage por medio de cualquier lenguaje que pueda realizar solicitudes HTTP/HTTPS. Además, ofrece bibliotecas de programación para varios lenguajes de amplio uso. Estas bibliotecas simplifican muchos aspectos relacionados con el uso de Azure,  Storage, ya que abordan detalles como la invocación sincrónica y asincrónica, el procesamiento por lotes de las operaciones, la administración de excepciones, los reintentos automáticos y el comportamiento operativo, entre otros. Bibliotecas están actualmente disponibles para hello siguientes lenguajes y plataformas, con otras personas en Hola canalización:
 
 ### <a name="azure-storage-data-services"></a>Servicios de datos de Azure Storage
 * [API de REST de servicios de almacenamiento](http://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Biblioteca de cliente de Storage para. NET, Windows Phone y Windows Runtime](https://www.nuget.org/packages/WindowsAzure.Storage/)
-* [Biblioteca de cliente de Storage para C++](https://github.com/Azure/azure-storage-cpp)
+* [Biblioteca de cliente de almacenamiento para. NET, Windows Phone y Windows Runtime](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Biblioteca de cliente de almacenamiento para C++](https://github.com/Azure/azure-storage-cpp)
 * [Biblioteca de cliente de Storage para Java/Android](https://azure.microsoft.com/develop/java/)
 * [Biblioteca de cliente de Storage para Node.js](http://dl.windowsazure.com/nodestoragedocs/index.html)
 * [Biblioteca de cliente de Storage para PHP](https://azure.microsoft.com/develop/php/)
@@ -208,22 +208,22 @@ Es posible acceder a los recursos de Azure Storage por medio de cualquier lengua
 * [Biblioteca de cliente de movimiento de datos de Storage para .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### <a name="tools-and-utilities"></a>Herramientas y utilidades
-* El [Explorador de Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente y gratuita de Microsoft que permite trabajar visualmente con los datos de Azure Storage en Windows, macOS y Linux.
-* [Herramientas de cliente de Azure Storage](storage-explorers.md)
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente disponible, de Microsoft que le permite toowork visualmente con datos del almacenamiento de Azure en Windows, Mac OS y Linux.
+* [Herramientas de cliente de Almacenamiento de Azure](storage-explorers.md)
 * [SDK y herramientas de Azure](https://azure.microsoft.com/tools/)
 * [Emulador de Azure Storage](http://www.microsoft.com/download/details.aspx?id=43709)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Utilidad de línea de comandos AzCopy](http://aka.ms/downloadazcopy)
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información sobre Azure Storage, consulte los siguientes recursos:
+toolearn más sobre el almacenamiento de Azure, explorar estos recursos:
 
 ### <a name="documentation"></a>Documentación
 * [Documentación de Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Cree una cuenta de almacenamiento](storage-create-storage-account.md)
 
-<!-- after our quick starts are available, replace this link with a link to one of those. 
-Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!-- after our quick starts are available, replace this link with a link tooone of those. 
+Had tooremove this article, it refers toohello VS quickstarts, and they've stopped publishing them. Robin --> 
 <!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
 -->
 
@@ -233,33 +233,33 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 
 ### <a name="for-net-developers"></a>Para desarrolladores de .NET
 * [Introducción a Azure Blob Storage mediante .NET](storage-dotnet-how-to-use-blobs.md)
-* [Introducción a Azure Table Storage mediante .NET](storage-dotnet-how-to-use-tables.md)
-* [Introducción a Azure Queue Storage mediante .NET](storage-dotnet-how-to-use-queues.md)
+* [Introducción al Almacenamiento de tablas de Azure mediante .NET](storage-dotnet-how-to-use-tables.md)
+* [Introducción al Almacenamiento en cola de Azure mediante .NET](storage-dotnet-how-to-use-queues.md)
 * [Introducción a Azure File Storage en Windows](storage-dotnet-how-to-use-files.md)
 
 ### <a name="for-javaandroid-developers"></a>Para desarrolladores de Java/Android
-* [Uso de Blob Storage en Java](storage-java-how-to-use-blob-storage.md)
-* [Uso de Table Storage en Java](storage-java-how-to-use-table-storage.md)
-* [Uso de Queue Storage en Java](storage-java-how-to-use-queue-storage.md)
-* [Uso de File Storage en Java](storage-java-how-to-use-file-storage.md)
+* [¿Cómo toouse almacenamiento de blobs desde Java](storage-java-how-to-use-blob-storage.md)
+* [¿Cómo toouse almacenamiento de tablas de Java](storage-java-how-to-use-table-storage.md)
+* [¿Cómo toouse almacenamiento de cola en Java](storage-java-how-to-use-queue-storage.md)
+* [¿Cómo toouse almacenamiento de archivos de Java](storage-java-how-to-use-file-storage.md)
 
 ### <a name="for-nodejs-developers"></a>Para desarrolladores de Node.js
-* [Uso de Blob Storage en Node.js](storage-nodejs-how-to-use-blob-storage.md)
-* [Uso de Table Storage en Node.js](storage-nodejs-how-to-use-table-storage.md)
-* [Uso de Queue Storage en Node.js](storage-nodejs-how-to-use-queues.md)
+* [¿Cómo toouse almacenamiento de blobs de Node.js](storage-nodejs-how-to-use-blob-storage.md)
+* [¿Cómo toouse almacenamiento de tablas de Node.js](storage-nodejs-how-to-use-table-storage.md)
+* [¿Cómo toouse almacenamiento de cola de Node.js](storage-nodejs-how-to-use-queues.md)
 
 ### <a name="for-php-developers"></a>Para desarrolladores de PHP
-* [Uso de Blob Storage en PHP](storage-php-how-to-use-blobs.md)
-* [Uso de Table Storage en PHP](storage-php-how-to-use-table-storage.md)
-* [Uso de Queue Storage en PHP](storage-php-how-to-use-queues.md)
+* [¿Cómo toouse almacenamiento de blobs de PHP](storage-php-how-to-use-blobs.md)
+* [¿Cómo toouse almacenamiento de tablas de PHP](storage-php-how-to-use-table-storage.md)
+* [¿Cómo toouse almacenamiento de cola de PHP](storage-php-how-to-use-queues.md)
 
 ### <a name="for-ruby-developers"></a>Para desarrolladores de Ruby
-* [Uso de Blob Storage en Ruby](storage-ruby-how-to-use-blob-storage.md)
-* [Uso de Table Storage en Ruby](storage-ruby-how-to-use-table-storage.md)
-* [Uso de Queue Storage en Ruby](storage-ruby-how-to-use-queue-storage.md)
+* [¿Cómo toouse almacenamiento de blobs de Ruby](storage-ruby-how-to-use-blob-storage.md)
+* [¿Cómo toouse almacenamiento de tablas de Ruby](storage-ruby-how-to-use-table-storage.md)
+* [¿Cómo toouse Queue storage from. Ruby](storage-ruby-how-to-use-queue-storage.md)
 
 ### <a name="for-python-developers"></a>Para desarrolladores de Python
-* [Uso de Blob Storage en Python](storage-python-how-to-use-blob-storage.md)
-* [Uso de Table Storage en Python](storage-python-how-to-use-table-storage.md)
-* [Uso de Queue Storage en Python](storage-python-how-to-use-queue-storage.md)
-* [Uso de File Storage en Python](storage-python-how-to-use-file-storage.md)
+* [¿Cómo toouse almacenamiento de blobs de Python](storage-python-how-to-use-blob-storage.md)
+* [¿Cómo toouse almacenamiento de tablas de Python](storage-python-how-to-use-table-storage.md)
+* [¿Cómo toouse almacenamiento de cola de Python](storage-python-how-to-use-queue-storage.md)
+* [¿Cómo toouse almacenamiento de archivos de Python](storage-python-how-to-use-file-storage.md)

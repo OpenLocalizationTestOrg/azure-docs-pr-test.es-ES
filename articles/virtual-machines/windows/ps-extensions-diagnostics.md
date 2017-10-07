@@ -1,8 +1,8 @@
 ---
-title: "Uso de Azure PowerShell para habilitar diagnósticos en una máquina virtual Windows | Microsoft Docs"
+title: "aaaUse diagnósticos de Azure PowerShell tooenable en una máquina virtual de Windows | Documentos de Microsoft"
 services: virtual-machines-windows
 documentationcenter: 
-description: "Aprenda a usar PowerShell para habilitar Diagnósticos de Azure en una máquina virtual con Windows"
+description: "Obtenga información acerca de cómo toouse PowerShell tooenable diagnósticos de Azure en una máquina virtual con Windows"
 author: sbtron
 manager: timlt
 editor: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: d0be4a712657edfc516c5f32e66519f5d9486728
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e945f0de154b5ba600f845f0d577b48e2254573b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Uso de PowerShell para habilitar Diagnósticos de Azure en una máquina virtual con Windows
+# <a name="use-powershell-tooenable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Usar el diagnóstico de Azure de tooenable de PowerShell en una máquina virtual con Windows
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Diagnósticos de Azure es la funcionalidad de Azure que habilita la recopilación de datos de diagnóstico en una aplicación implementada. Puede usar la extensión de diagnósticos para recopilar datos de diagnóstico como registros de aplicaciones o contadores de rendimiento de una máquina virtual (VM) de Azure con Windows. En este artículo se describe cómo usar Windows PowerShell para habilitar la extensión de diagnósticos para una VM. Para conocer los requisitos previos necesarios para este artículo, consulte [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview) .
+Diagnósticos de Azure es la capacidad de hello dentro de Azure que habilita la recopilación de Hola de datos de diagnóstico en una aplicación implementada. Puede usar Hola diagnósticos extensión toocollect datos de diagnóstico como registros de la aplicación o los contadores de rendimiento de una máquina virtual Azure (VM) que ejecuta Windows. Este artículo describe cómo toouse Windows PowerShell tooenable Hola extensión de diagnósticos para una máquina virtual. Vea [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview) de requisitos previos de hello necesarios para este artículo.
 
-## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Habilite la extensión de diagnósticos si usa el modelo de implementación del Administrador de recursos
-Puede habilitar la extensión de diagnósticos al crear una VM de Windows a través del modelo de implementación del Administrador de recursos de Azure añadiendo la configuración de extensiones a la plantilla del Administrador de recursos. Vea [Creación de una máquina virtual de Windows con supervisión y diagnóstico mediante la plantilla de Azure Resource Manager](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="enable-hello-diagnostics-extension-if-you-use-hello-resource-manager-deployment-model"></a>Habilitar la extensión de diagnósticos de hello si usa el modelo de implementación del Administrador de recursos de Hola
+Puede habilitar la extensión de diagnósticos de Hola durante la creación de una máquina virtual de Windows a través del modelo de implementación de hello Azure Resource Manager mediante la adición de la plantilla de administrador de recursos de toohello de configuración de extensión de Hola. Vea [crear una máquina virtual de Windows con la supervisión y el diagnóstico mediante hello Azure Resource Manager plantilla](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Para habilitar la extensión de diagnósticos en una VM existente creada mediante el modelo de implementación de Resource Manager, puede usar el cmdlet de PowerShell [Set-AzureRMVMDiagnosticsExtension](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) tal como se muestra a continuación.
+extensión de diagnósticos de hello tooenable en una máquina virtual existente creada mediante el modelo de implementación del Administrador de recursos de hello, puede usar hello [AzureRMVMDiagnosticsExtension conjunto](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) cmdlet de PowerShell tal y como se muestra a continuación.
 
     $vm_resourcegroup = "myvmresourcegroup"
     $vm_name = "myvm"
@@ -37,58 +37,58 @@ Para habilitar la extensión de diagnósticos en una VM existente creada mediant
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
 
 
-*$diagnosticsconfig_path* es la ruta de acceso del archivo que contiene la configuración de diagnóstico en XML como se describe en el [ejemplo](#sample-diagnostics-configuration) a continuación.  
+*$diagnosticsconfig_path* es Hola ruta toohello archivo que contiene la configuración de diagnóstico de hello en XML, como se describe en hello [ejemplo](#sample-diagnostics-configuration) a continuación.  
 
-Si especifica el archivo de configuración de diagnósticos de un elemento **StorageAccount** con un nombre de cuenta de almacenamiento, el script *AzureRMVMDiagnosticsExtension conjunto* establecerá automáticamente la extensión de diagnósticos para enviar datos de diagnóstico a esa cuenta de almacenamiento. Para que esto funcione, la cuenta de almacenamiento necesita estar en la misma suscripción que la VM.
+Si especifica el archivo de configuración de diagnósticos de hello un **StorageAccount** elemento con un nombre de cuenta de almacenamiento, a continuación, Hola *AzureRMVMDiagnosticsExtension conjunto* script establecerá automáticamente Hola cuenta de almacenamiento de la toothat de datos de diagnóstico de toosend con diagnósticos extensión. Para este toowork debe toobe en cuenta de almacenamiento de Hola Hola misma suscripción como Hola máquina virtual.
 
-Si no se ha especificado el parámetro **StorageAccount** en la configuración de diagnóstico, es necesario pasar el parámetro *StorageAccountName* al cmdlet. Si no se ha especificado el parámetro *StorageAccountName* , el cmdlet siempre usará la cuenta de almacenamiento especificada en el parámetro y no la especificada en el archivo de configuración de diagnóstico.
+Si no hay ningún **StorageAccount** se especificó en la configuración de diagnóstico de hello, deberá toopass en hello *StorageAccountName* parámetro toohello cmdlet. Si hello *StorageAccountName* se especifica el parámetro, a continuación, usará siempre cuenta de almacenamiento de Hola que se especifica en el parámetro hello y no Hola uno que se especifica en el archivo de configuración de diagnósticos de Hola Hola cmdlet.
 
-Si la cuenta de almacenamiento de diagnóstico está en una suscripción distinta que la VM, es necesario pasar explícitamente los parámetros *StorageAccountName* y *StorageAccountKey* al cmdlet. El parámetro *StorageAccountKey* no es necesario cuando la cuenta de almacenamiento de diagnóstico está en la misma suscripción, ya que el cmdlet puede consultar automáticamente y establecer el valor de clave cuando se habilita la extensión de diagnóstico. Sin embargo, si la cuenta de almacenamiento de diagnóstico está en una suscripción diferente, es posible que el cmdlet no pueda obtener la clave automáticamente y que sea necesario especificar explícitamente la clave mediante el parámetro *StorageAccountKey* .  
+Si pasan Hola diagnósticos Hola cuenta de almacenamiento está en una suscripción diferente de Hola de máquina virtual, deberá tooexplicitly *StorageAccountName* y *StorageAccountKey* parámetros toohello cmdlet. Hola *StorageAccountKey* parámetro no es necesario cuando diagnósticos de hello cuenta de almacenamiento está en Hola misma suscripción, como Hola cmdlet automáticamente puede consultar y establecer el valor de clave de hello al habilitar la extensión de diagnósticos de Hola. Sin embargo, si hello es la cuenta de almacenamiento de información de diagnóstico en una suscripción diferente, a continuación, Hola cmdlet podría no ser capaz de tooget clave de hello automáticamente y debe tooexplicitly especificar clave de Hola a través de hello *StorageAccountKey* parámetro.  
 
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
-Una vez habilitada la extensión de diagnósticos en una VM, puede obtener la configuración actual mediante el cmdlet [AzureRMVmDiagnosticsExtension Get](/powershell/module/azurerm.compute/get-azurermvmdiagnosticsextension) .
+Una vez habilitada la extensión de diagnósticos de hello en una máquina virtual, puede obtener la configuración actual de hello mediante hello [AzureRMVmDiagnosticsExtension Get](/powershell/module/azurerm.compute/get-azurermvmdiagnosticsextension) cmdlet.
 
     Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
-El cmdlet devuelve *PublicSettings*, que contiene la configuración de diagnóstico. Hay dos tipos de configuraciones compatibles: WadCfg y xmlCfg. WadCfg es la configuración JSON y xmlCfg es la configuración XML en formato con codificación Base64. Para leer el archivo XML, es necesario descodificarlo.
+Hello cmdlet devuelve *PublicSettings*, que contiene la configuración de diagnóstico de Hola. Hay dos tipos de configuraciones compatibles: WadCfg y xmlCfg. WadCfg es la configuración JSON y xmlCfg es la configuración XML en formato con codificación Base64. tooread Hola XML, deberá toodecode lo.
 
     $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
 
-El cmdlet [Remove-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension) puede usarse para quitar la extensión de diagnósticos de la máquina virtual.  
+Hola [Remove-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension) cmdlet puede ser la extensión de diagnósticos de hello tooremove usado de hello máquina virtual.  
 
-## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Habilite la extensión de diagnósticos si usa el modelo de implementación clásico
-Puede usar el cmdlet [Set-AzureVMDiagnosticsExtension](/powershell/module/azure/set-azurevmdiagnosticsextension) para habilitar la extensión de diagnósticos en una VM creada mediante el modelo de implementación clásica. En el ejemplo siguiente se muestra cómo crear una nueva VM mediante el modelo de implementación clásica con la extensión de diagnósticos habilitada.
+## <a name="enable-hello-diagnostics-extension-if-you-use-hello-classic-deployment-model"></a>Habilitar la extensión de diagnósticos de hello si usa el modelo de implementación clásica de Hola
+Puede usar hello [AzureVMDiagnosticsExtension conjunto](/powershell/module/azure/set-azurevmdiagnosticsextension) cmdlet tooenable una extensión de diagnósticos en una máquina virtual que cree mediante el modelo de implementación clásica de Hola. Hello en el ejemplo siguiente se muestra cómo toocreate una nueva máquina virtual a través del modelo de implementación clásica de hello con extensión de diagnósticos de hello habilita.
 
     $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
     $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
 
-Para habilitar la extensión de diagnósticos en una VM existente creada mediante el modelo de implementación clásica, use el cmdlet [Get-AzureVM](/powershell/module/azure/get-azurevm) en primer lugar para obtener la configuración de VM. A continuación, actualice la configuración de VM para incluir la extensión de diagnósticos mediante el cmdlet [Set-AzureVMDiagnosticsExtension](/powershell/module/azure/set-azurevmdiagnosticsextension) . Por último, aplique la configuración actualizada a la VM mediante [Update-AzureVM](/powershell/module/azure/update-azurevm).
+extensión de diagnósticos de hello tooenable en una máquina virtual existente creada mediante el modelo de implementación clásica de hello, primer Hola de uso [Get-AzureVM](/powershell/module/azure/get-azurevm) configuración de máquina virtual de cmdlet tooget Hola. A continuación, actualizar extensión de diagnósticos de hello VM configuración tooinclude hello mediante hello [AzureVMDiagnosticsExtension conjunto](/powershell/module/azure/set-azurevmdiagnosticsextension) cmdlet. Por último, aplique Hola actualizar configuración toohello VM mediante el uso de [Update-AzureVM](/powershell/module/azure/update-azurevm).
 
     $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 ## <a name="sample-diagnostics-configuration"></a>Configuración de diagnósticos de ejemplo
-Se puede utilizar el siguiente XML para la configuración pública de diagnósticos con los scripts anteriores. Esta configuración de ejemplo transferirá diversos contadores de rendimiento a la cuenta de almacenamiento de información de diagnósticos junto con los errores de la aplicación, seguridad y canales del sistema en los registros de eventos de Windows y los errores de los registros de infraestructura de diagnóstico.
+Hola que XML siguiente puede utilizarse para la configuración pública de diagnósticos de hello con hello por encima de las secuencias de comandos. Esta configuración de ejemplo transferirá diversos rendimiento contadores toohello diagnósticos cuenta de almacenamiento, junto con los errores de aplicación hello, seguridad y los canales de sistema en registros de eventos de Windows hello y cualquier error de diagnóstico de Hola registros de infraestructura.
 
-La configuración debe actualizarse para incluir lo siguiente:
+configuración de Hello debe siguiente Hola de toobe tooinclude actualizada:
 
-* El atributo *resourceID* del elemento **Métricas** tiene que actualizarse con el identificador de recurso de la VM.
+* Hola *resourceID* atributo de hello **métricas** elemento necesita toobe actualizada con Id. de recurso de Hola para hello máquina virtual.
   
-  * El identificador de recursos puede crearse mediante el siguiente patrón: "/subscriptions/{*Identificador de suscripción para la suscripción con la VM*}/resourceGroups/{*Nombre del grupo de recursos para la VM*}/providers/Microsoft.Compute/virtualMachines/{*Nombre de la VM*}".
-  * Por ejemplo, si el identificador de suscripción para la suscripción donde se está ejecutando la VM es **11111111-1111-1111-1111-111111111111**, el nombre del grupo de recursos para el grupo de recursos es **MyResourceGroup** y el nombre de la VM es**MyWindowsVM**, el valor de *resourceID* sería:
+  * Hola identificador puede crearse mediante Hola sigue el patrón de recurso: "/ subscriptions / {*Id. de suscripción para la suscripción de hello con hello VM*} / ResourceGroups / {*nombre de grupo de recursos de Hola para hello VM*} / providers/Microsoft.Compute/virtualMachines/ {*Hola nombre de máquina virtual*} ".
+  * Por ejemplo, si hello Id. de suscripción para la suscripción de Hola donde hello máquina virtual se está ejecutando es **11111111-1111-1111-1111-111111111111**, es el nombre del grupo de recursos de hello para el grupo de recursos de hello **MyResourceGroup**, y Hola nombre de máquina virtual es **MyWindowsVM**, a continuación, Hola valor para *resourceID* sería:
     
       ```
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
-  * Para obtener más información sobre cómo se generan las métricas según la configuración de las métricas y los contadores de rendimiento, consulte la [tabla de métricas de Diagnósticos de Azure de almacenamiento](extensions-diagnostics-template.md#wadmetrics-tables-in-storage).
-* El elemento **StorageAccount** tiene que actualizarse con el nombre de la cuenta de almacenamiento de diagnósticos.
+  * Para obtener más información sobre cómo métricas son los contadores de rendimiento de hello según generado y configuración de métricas, vea [tabla de métricas de diagnóstico de Azure en almacenamiento](extensions-diagnostics-template.md#wadmetrics-tables-in-storage).
+* Hola **StorageAccount** elemento necesita toobe actualizar con hello nombre de cuenta de almacenamiento de diagnósticos de Hola.
   
     ```
     <?xml version="1.0" encoding="utf-8"?>
@@ -179,7 +179,7 @@ La configuración debe actualizarse para incluir lo siguiente:
             <annotation displayName="Disk free space (MB)" locale="en-us"/>
           </PerformanceCounterConfiguration>
         </PerformanceCounters>
-        <Metrics resourceId="(Update with resource ID for the VM)" >
+        <Metrics resourceId="(Update with resource ID for hello VM)" >
             <MetricAggregation scheduledTransferPeriod="PT1H"/>
             <MetricAggregation scheduledTransferPeriod="PT1M"/>
         </Metrics>
@@ -195,6 +195,6 @@ La configuración debe actualizarse para incluir lo siguiente:
     ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener orientación adicional sobre el uso de la funcionalidad Diagnósticos de Azure y otras técnicas para solucionar problemas, consulte [Habilitación de diagnósticos en Servicios en la nube y Máquinas virtuales de Azure](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* [Esquema de configuración de diagnósticos](https://msdn.microsoft.com/library/azure/mt634524.aspx) se explican las distintas opciones de configuración XML para la extensión de diagnósticos.
+* Para obtener orientación adicional acerca del uso de la capacidad de diagnóstico de Azure de Hola y otros problemas de tootroubleshoot técnicas, consulte [habilitar diagnósticos en servicios en la nube y máquinas virtuales](../../cloud-services/cloud-services-dotnet-diagnostics.md).
+* [Esquema de configuración de diagnósticos](https://msdn.microsoft.com/library/azure/mt634524.aspx) explica Hola opciones diversas configuraciones de XML para extensión de diagnósticos de Hola.
 

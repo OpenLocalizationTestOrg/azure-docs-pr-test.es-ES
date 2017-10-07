@@ -1,5 +1,5 @@
 ---
-title: "Problemas de reinicio o cambio de tamaño de las máquinas virtuales de Azure | Microsoft Docs"
+title: "problemas de aaaVM reiniciar o cambiar el tamaño en Azure | Documentos de Microsoft"
 description: "Solución de problemas de la implementación de Resource Manager con el reinicio o el cambio de tamaño de una máquina virtual de Linux existente en Azure"
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: 
@@ -16,52 +16,52 @@ ms.workload: required
 ms.date: 01/10/2017
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e49322dbccf4ec1157bc7e3a109175869b53518d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d9ff76b64b6646b04565eb93110759c4ebc858e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-linux-vm-in-azure"></a>Solución de problemas de implementación con el reinicio o el cambio de tamaño de una máquina virtual Linux existente en Azure
-Al intentar iniciar una máquina virtual de Azure detenida o cambiar el tamaño de una máquina virtual de Azure existente, es común encontrarse un error de asignación. Dicho error se produce cuando el clúster o la región no tienen recursos disponibles o no admiten el tamaño de máquina virtual solicitado.
+Cuando intente toostart una máquina Virtual de Azure (VM) detenida, o cambiar el tamaño de una máquina virtual de Azure existente, se produce de error común de hello es un error de asignación. Este error se produce cuando el clúster de Hola o región no tenga recursos disponibles o no se solicitó que Hola de soporte técnico de tamaño de máquina virtual.
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
 ## <a name="collect-activity-logs"></a>Recopilación de registros de actividad
-Para iniciar la solución de problemas, recopile los registros de actividad para identificar el error asociado con el problema. Los vínculos siguientes contienen información detallada sobre el proceso:
+toostart solución de problemas, actividad hello recopilar registra el error de Hola de tooidentify asociada con el problema de Hola. Hola siguientes vínculos contiene información detallada sobre el proceso de hello:
 
 [Ver operaciones de implementación](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Ver registros de actividad para administrar recursos de Azure](../../resource-group-audit.md)
+[Ver registros de actividad toomanage Azure recursos](../../resource-group-audit.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>Problema: Error al iniciar una máquina virtual detenida
-Intenta iniciar una máquina virtual detenida, pero obtiene un error de asignación.
+Intente toostart una VM detenida pero obtendrá un error de asignación.
 
 ### <a name="cause"></a>Causa
-La solicitud de iniciar la máquina virtual detenida se debe intentar en el clúster original que hospeda el servicio en la nube. Sin embargo, el clúster no tiene espacio libre disponible para responder a la solicitud.
+solicitud de Hola Hola toostart detiene la máquina virtual tiene toobe vuelve a intentar cada clúster original Hola que aloja el servicio de nube de Hola. Sin embargo, el clúster de hello no tiene solicitud de espacio libre disponible toofulfill Hola.
 
 ### <a name="resolution"></a>Resolución
-* Detenga todas las máquinas virtuales del conjunto de disponibilidad y reinicie las máquinas virtuales.
+* Detener Hola todas las máquinas virtuales en la disponibilidad de Hola establecerán y, a continuación, reinicie cada máquina virtual.
   
   1. Haga clic en **Grupos de recursos** > *su grupo de recursos* > **Recursos** > *su conjunto de disponibilidad* > **Virtual Machines** > *su máquina virtual* > **Detener**.
-  2. Después de detener todas las máquinas virtuales, selecciónelas y haga clic en Iniciar.
-* Vuelva a intentar solicitar el reinicio más tarde.
+  2. Después de que todos Hola detener las máquinas virtuales, seleccione cada una de las máquinas virtuales de hello detenido y haga clic en Inicio.
+* Vuelva a intentar la solicitud de reinicio de hello en un momento posterior.
 
 ## <a name="issue-error-when-resizing-an-existing-vm"></a>Problema: error al reiniciar una máquina virtual existente
-Intenta cambiar el tamaño de una máquina virtual existente, pero obtiene un error de asignación.
+Intente tooresize una máquina virtual existente pero obtendrá un error de asignación.
 
 ### <a name="cause"></a>Causa
-La solicitud de cambiar el tamaño de la máquina virtual se debe realizar en el clúster original que alberga el servicio en la nube. Sin embargo, el clúster no admite el tamaño de máquina virtual solicitado.
+solicitud de Hola Hola tooresize VM tiene toobe intentaba ejecutar en clúster original Hola ese servicio de nube de Hola de hosts. Sin embargo, no es compatible con clúster de Hola Hola solicitado tamaño de máquina virtual.
 
 ### <a name="resolution"></a>Resolución
-* Vuelva a intentar la solicitud con un tamaño de máquina virtual menor.
-* Si no se puede cambiar el tamaño de la máquina virtual solicitada:
+* Vuelva a intentar la solicitud Hola con un tamaño más pequeño de la máquina virtual.
+* Si hello tamaño de hello solicitada que no se puede cambiar la máquina virtual:
   
-  1. Detenga todas las máquinas virtuales en el conjunto de disponibilidad.
+  1. Detener todas las máquinas virtuales de hello en el conjunto de disponibilidad de Hola.
      
      * Haga clic en **Grupos de recursos** > *su grupo de recursos* > **Recursos** > *su conjunto de disponibilidad* > **Virtual Machines** > *su máquina virtual* > **Detener**.
-  2. Después de detener todas las máquinas virtuales, aumente el tamaño de la máquina virtual que quiera.
-  3. Seleccione la máquina virtual cuyo tamaño ha cambiado, haga clic en **Iniciar**e inicie las máquinas virtuales detenidas.
+  2. Después de que todos Hola detener las máquinas virtuales, cambie el tamaño deseado de hello VM tooa mayor tamaño.
+  3. Cambiar el tamaño Hola seleccione máquina virtual y haga clic en **iniciar**, y, a continuación, inicie cada Hola detiene máquinas virtuales.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Si surgen problemas al crear una nueva máquina virtual Linux en Azure, consulte [Solución de problemas de la implementación de Resource Manager con la creación de una nueva máquina virtual de Linux en Azure](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

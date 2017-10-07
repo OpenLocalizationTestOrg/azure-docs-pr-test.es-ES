@@ -1,6 +1,6 @@
 ---
-title: "Conexión a una carpeta del sistema de archivos local desde Azure Logic Apps | Microsoft Docs"
-description: "Conexión a sistemas de archivos locales desde el flujo de trabajo de la aplicación lógica a través de la puerta de enlace de datos local y el conector del sistema de archivos"
+title: "local tooon aaaConnect sistema de archivos de las aplicaciones lógicas de Azure | Documentos de Microsoft"
+description: "Conectar sistemas de archivos local tooon del flujo de trabajo de aplicación lógica a través de puerta de enlace de datos de hello en local y el conector de sistema de archivos"
 keywords: Sistemas de archivos
 services: logic-apps
 author: derek1ee
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2017
 ms.author: LADocs; deli
-ms.openlocfilehash: f33e7c58103c57e17e4e273caba1ab9b83f0cd2b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: beb5565293def4aba81f63f19e77d7498aac38c5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>Conexión a sistemas de archivos locales desde las aplicaciones lógicas con el conector de sistema de archivos
+# <a name="connect-tooon-premises-file-systems-from-logic-apps-with-hello-file-system-connector"></a>Conectar sistemas de archivos local tooon desde las aplicaciones lógicas con el conector del sistema de archivos de Hola
 
-La conectividad de nube híbrida es fundamental para las aplicaciones lógicas y para administrar datos y acceder de forma segura a recursos locales, las aplicaciones lógicas pueden utilizar la puerta de enlace de datos local. En este artículo, mostramos cómo conectarse a un sistema de archivos local con un escenario básico: copiar un archivo que se carga en Dropbox para un recurso compartido de archivos y, después, enviar un correo electrónico.
+Conectividad de nube híbrida es aplicaciones toologic central, por lo que toomanage datos y segura acceso a recursos locales, las aplicaciones lógicas pueden usar la puerta de enlace de datos de hello en local. En este artículo, le mostramos cómo tooconnect tooan local sistema de archivos con un escenario básico: copiar un archivo que tooa tooDropbox cargado recurso compartido de archivos, a continuación, envíe un correo electrónico.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Instale y configure la [puerta de enlace de datos local](https://www.microsoft.com/download/details.aspx?id=53127) más reciente.
-- Instale la puerta de enlace de datos local más reciente, versión 1.15.6150.1 o superior. En [Conexión a la puerta de enlace de datos local](http://aka.ms/logicapps-gateway) se enumeran los pasos. La puerta de enlace debe instalarse en una máquina local para poder continuar con el resto de los pasos.
+- Instalar y configurar hello más reciente [puerta de enlace de datos local](https://www.microsoft.com/download/details.aspx?id=53127).
+- Instalar hello más reciente local data gateway, versión 1.15.6150.1 o superior. [Conectar la puerta de enlace de datos de toohello local](http://aka.ms/logicapps-gateway) listas Hola pasos. puerta de enlace de Hello debe instalarse en un equipo local para poder continuar con el resto de Hola de pasos de Hola.
 
-## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>Incorporación de desencadenadores y acciones para conectarse al sistema de archivos
+## <a name="add-trigger-and-actions-for-connecting-tooyour-file-system"></a>Agregar desencadenadores y acciones para conectar el sistema de archivos tooyour
 
 1. Cree una aplicación de la lógica y agregue el desencadenador **Dropbox - Cuando se crea un archivo**. 
-2. En el desencadenador, elija **Paso siguiente** > **Agregar una acción**. 
-3. En el cuadro de búsqueda, escriba `file system` para poder ver todas las acciones admitidas para el conector del sistema de archivos.
+2. En el desencadenador de hello, elija **paso siguiente** > **agregar una acción**. 
+3. En el cuadro de búsqueda de hello, escriba `file system` para que pueda ver todos los admitidos acciones para el conector de sistema de archivos de Hola.
 
    ![Conector Buscar archivo](media/logic-apps-using-file-connector/search-file-connector.png)
 
-2. Elija la acción **Crear archivo** y cree una conexión con el sistema de archivos.
+2. Elija hello **crear archivo** acción y crear un sistema de archivos de conexión tooyour.
 
-   Si no tiene una conexión existente, se le pedirá que cree una.
+   Si no tiene una conexión existente, son toocreate solicitada uno.
 
    1. Seleccione **Connect via on-premises data gateway** (Conectarse a través de la puerta de enlace de datos local). Aparecen más propiedades.
    2. Seleccione la carpeta raíz para el sistema de archivos.
       
        > [!NOTE]
-       > La carpeta raíz es la carpeta primaria principal, que se usa para las rutas de acceso relativas para todas las acciones relacionadas con archivos. Puede especificar una carpeta local en la máquina en la que está instalada la puerta de enlace de datos local; o bien, la carpeta puede ser un recurso compartido de red al que tiene acceso la máquina.
+       > Hola raíz carpeta es Hola principales, que se usa para las rutas de acceso relativas para todas las acciones relacionadas con el archivo. Puede especificar una carpeta local en el equipo de Hola donde se instala la puerta de enlace de datos de hello en local o carpeta de hello puede ser puede tener acceso un recurso compartido de red que Hola máquina.
 
-   3. Escriba el nombre de usuario y la contraseña para la puerta de enlace.
-   4. Seleccione la puerta de enlace que ha instalado anteriormente.
+   3. Escriba Hola username y password para puerta de enlace de Hola.
+   4. Seleccione la puerta de enlace de Hola que instaló anteriormente.
 
        ![Configuración de la conexión](media/logic-apps-using-file-connector/create-file.png)
 
-3. Después de proporcionar todos los detalles, elija **Crear**. 
+3. Después de proporcionar todos los detalles de hello, elija **crear**. 
 
-   Logic Apps configura y comprueba la conexión, asegurándose de que la conexión funciona correctamente. 
-   Si la conexión se configura correctamente, verá opciones para la acción que ha seleccionado anteriormente. 
-   El conector de sistema de archivos ahora está listo para usarse.
+   Lógica de aplicaciones se configura y comprueba la conexión, asegurándose de que la conexión de hello funciona correctamente. 
+   Si la conexión de hello está configurado correctamente, verá opciones para la acción de Hola que seleccionó anteriormente. 
+   Conector de sistema de archivos de Hello ahora está listo para su uso.
 
-4. Especifique que desea copiar archivos desde Dropbox a la carpeta raíz para el recurso compartido de archivos local.
+4. Especificar que desea toocopy archivos desde la carpeta de Dropbox toohello raíz para el recurso compartido de archivos de local.
 
    ![Acción Crear archivo](media/logic-apps-using-file-connector/create-file-filled.png)
 
-5. Después de la aplicación lógica copie el archivo, agregue una acción de Outlook que envíe un correo electrónico para que los usuarios correspondientes lo sepan. Especifique los destinatarios, el título y el cuerpo del correo electrónico. 
+5. Después de su archivo de Hola copias de aplicación lógica, agregar una acción de Outlook que envía un correo electrónico para que usuarios correspondientes saben el nuevo archivo de Hola. Especifique los destinatarios de hello, título y cuerpo del mensaje de Hola. 
 
-   En el selector de contenido dinámico, puede elegir salidas de datos desde el conector de archivos para que pueda agregar más detalles al correo electrónico.
+   En el selector de contenido dinámico de hello, puede elegir datos salidas de conector de archivos de Hola para que pueda agregar más correo electrónico de toohello de detalles.
 
    ![Acción Enviar correo electrónico](media/logic-apps-using-file-connector/send-email.png)
 
-6. Guarde la aplicación lógica. Pruebe la aplicación cargando archivos en Dropbox. El archivo se debe copiar en el recurso compartido local de archivos y debe recibir un correo electrónico acerca de la operación.
+6. Guarde la aplicación lógica. Probar la aplicación mediante la carga de un archivo tooDropbox. archivo Hello debe obtener el recurso compartido de archivos de toohello copiada en local y debe recibir un correo electrónico acerca de la operación de Hola.
 
    > [!TIP] 
-   > Aprenda cómo [supervisar las aplicaciones lógicas](../logic-apps/logic-apps-monitor-your-logic-apps.md).
+   > Obtenga información acerca de cómo demasiado[supervisar las aplicaciones lógicas](../logic-apps/logic-apps-monitor-your-logic-apps.md).
 
-Enhorabuena, ahora tiene una aplicación lógica que funciona y que se puede conectar a su sistema de archivos local. Intente explorar otras funcionalidades ofrecidas por el conector, por ejemplo:
+Enhorabuena, ahora tiene una aplicación de lógica de trabajo que se puede conectar el sistema de archivos local tooyour. Intente explorar otras funcionalidades que Hola ofertas de conector, por ejemplo:
 
 - Crear archivo
 - Enumerar archivos de la carpeta
@@ -86,16 +86,16 @@ Enhorabuena, ahora tiene una aplicación lógica que funciona y que se puede con
 - Enumerar archivos de la carpeta raíz
 - Actualizar archivo
 
-## <a name="view-the-swagger"></a>Visualización de Swagger
-Vea los [detalles de Swagger](/connectors/fileconnector/). 
+## <a name="view-hello-swagger"></a>Swagger de hello de vista
+Vea hello [swagger detalles](/connectors/fileconnector/). 
 
 ## <a name="get-help"></a>Obtener ayuda
 
-Para formular preguntas, o responderlas, y saber lo que hacen otros usuarios de Azure Logic Apps, visite el [foro de Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+tooask preguntas, responda a preguntas y obtenga información acerca de qué otra lógica de aplicaciones de Azure hacen los usuarios, visite hello [foro de Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-Para ayudar a mejorar Azure Logic Apps y los conectores, vote o envíe ideas en el [sitio de comentarios de usuario de Azure Logic Apps](http://aka.ms/logicapps-wish).
+toohelp mejorar las aplicaciones lógicas de Azure y conectores, votar sobre o enviar ideas en hello [sitio de comentarios de usuario de Azure Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- [Conexión a datos locales](../logic-apps/logic-apps-gateway-connection.md) desde aplicaciones lógicas
+- [Conectar datos locales tooon](../logic-apps/logic-apps-gateway-connection.md) desde las aplicaciones lógicas
 - Aprenda sobre la [integración empresarial](../logic-apps/logic-apps-enterprise-integration-overview.md).

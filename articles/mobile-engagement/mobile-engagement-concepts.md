@@ -1,5 +1,5 @@
 ---
-title: Conceptos de Mobile Engagement | Microsoft Docs
+title: "conceptos de interacción de aaaMobile | Documentos de Microsoft"
 description: Conceptos de Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,72 +14,72 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 8450651528007b4527366b89a6ad7615169f93c0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5aa7f28c00cd641a36a6e040c6b13d802ea6ae41
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-mobile-engagement-concepts"></a>Conceptos de Azure Mobile Engagement
-Mobile Engagement define algunos conceptos comunes para todas las plataformas compatibles. En este artículo se describen brevemente dichos conceptos.
+Mobile Engagement define algunos conceptos comunes tooall admitida las plataformas. En este artículo se describen brevemente dichos conceptos.
 
-Este artículo es un buen comienzo si no está familiarizado con Mobile Engagement. Además, no olvide leer la documentación específica de la plataforma que usa ya que en ella se definirán más detalladamente y con ejemplos los conceptos descritos en este artículo, así como las posibles limitaciones.
+Este artículo es un buen punto de partida si es nuevo tooMobile interacción. También la convierten seguro tooread Hola documentación toohello específico plataforma que usa, como perfeccionar los conceptos de hello descritos en este artículo con más detalles y ejemplos, así como posibles limitaciones.
 
 ## <a name="devices-and-users"></a>Dispositivos y usuarios
-Mobile Engagement identifica a los usuarios mediante la generación de un identificador único para cada dispositivo, Este identificador se denomina identificador de dispositivo (o `deviceid`). Se genera de tal forma que todas las aplicaciones que se ejecutan en el mismo dispositivo comparten el mismo identificador de este tipo.
+Mobile Engagement identifica a los usuarios mediante la generación de un identificador único para cada dispositivo, Este identificador se denomina identificador de dispositivo de hello (o `deviceid`). Se genera de forma que la ejecución de todas las aplicaciones de Hola mismo recurso compartido de dispositivo Hola mismo identificador de dispositivo.
 
-Esto significa, implícitamente, que Mobile Engagement considera que un dispositivo pertenece exactamente a un usuario y, por lo tanto, usuarios y dispositivos son conceptos equivalentes.
+Implícitamente, significa que Mobile Engagement considera que un dispositivo toobelong tooexactly un usuario y, por lo tanto, los usuarios y dispositivos son conceptos equivalente.
 
 ## <a name="sessions-and-activities"></a>Sesiones y actividades
-Una sesión consiste en el uso individual de la aplicación por parte de un usuario, desde el momento en que comienza a usarla hasta que se detiene.
+Una sesión es un uso de la aplicación hello realizada por un usuario, de usuario en Hola Hola tiempo comenzará a utilizarla, hasta que se detiene de usuario de Hola.
 
-Una actividad es un uso de una subparte determinada de la aplicación por un usuario (suele ser una pantalla, pero puede ser cualquier elemento adecuado para la aplicación).
+Una actividad se muestra un uso de un elemento secundario determinado de aplicación Hola realizada por un usuario (suele ser una pantalla, pero puede ser cualquier cosa adecuado toohello aplicación).
 
 Un usuario solo puede realizar una actividad a la vez.
 
-Una actividad se identifica mediante un nombre (limitado a 64 caracteres) y, opcionalmente, puede insertar algunos datos adicionales (con un límite de 1024 bytes).
+Una actividad se identifica mediante un nombre (too64 limitado caracteres) y, opcionalmente, puede incrustar algunos datos adicionales (en el límite de Hola de 1024 bytes).
 
-Las sesiones se calculan automáticamente a partir de la secuencia de actividades realizadas por los usuarios. Una sesión comienza cuando el usuario inicia su primera actividad y se detiene cuando acaba su última actividad. Esto significa que no es necesario iniciar o detener las sesiones explícitamente. En cambio, las actividades se inician y detienen explícitamente. Si no se notifica ninguna actividad, tampoco se notifica ninguna sesión.
+Las sesiones se calculan de forma automática desde la secuencia de Hola de las actividades realizadas por los usuarios. Inicia una sesión al usuario Hola su primera actividad inicia y se detiene cuando acabe su última actividad. Esto significa que una sesión no es necesario toobe explícitamente iniciaron o detuvieron inesperadamente. En cambio, las actividades se inician y detienen explícitamente. Si no se notifica ninguna actividad, tampoco se notifica ninguna sesión.
 
 ## <a name="events"></a>Eventos
-Los eventos se usan para notificar acciones instantáneas (como un botón que se presiona o la lectura de artículos por parte de los usuarios).
+Los eventos son acciones de instantánea de tooreport utilizado (por ejemplo, el botón presionado o artículos leídos por los usuarios).
 
-Un evento puede estar relacionado con la sesión actual o con un trabajo en ejecución, o bien ser independiente.
+Un evento puede ser relacionado toohello sesión actual, tooa ejecuta el trabajo, o puede ser un evento independiente.
 
-Se identifica mediante un nombre (limitado a 64 caracteres) y, opcionalmente, puede insertar algunos datos adicionales (con un límite de 1024 bytes).
+Un evento se identifica mediante un nombre (too64 limitado caracteres) y, opcionalmente, puede incrustar algunos datos adicionales (en el límite de Hola de 1024 bytes).
 
 ## <a name="error"></a>Error
-Los errores se usan para notificar problemas detectados correctamente por la aplicación (como acciones de usuario incorrectas o errores de llamada a la API).
+Errores son problemas de uso tooreport detectados correctamente la aplicación hello (por ejemplo, las acciones de usuario incorrectos o errores de llamadas a API).
 
-Un error puede estar relacionado con la sesión actual o con un trabajo en ejecución, o bien ser independiente.
+Un error puede ser relacionado toohello sesión actual, tooa ejecuta el trabajo, o puede ser un error independiente.
 
-Se identifica mediante un nombre (limitado a 64 caracteres) y, opcionalmente, puede insertar algunos datos adicionales (con un límite de 1024 bytes).
+Un error identificado por un nombre (too64 limitado caracteres) y, opcionalmente, puede incrustar algunos datos adicionales (en el límite de Hola de 1024 bytes).
 
 ## <a name="job"></a>Trabajo
-Los trabajos se usan para notificar acciones que tienen una duración (como la duración de las llamadas API, el tiempo que se muestran los anuncios, la duración de las tareas en segundo plano o de las acciones del usuario).
+Trabajos son acciones tooreport usados con una duración (al igual que la duración de las llamadas de API, Mostrar tiempo de anuncios, la duración de tareas en segundo plano o la duración de las acciones del usuario).
 
-Un trabajo no se relaciona con una sesión, porque una tarea se puede ejecutar en segundo plano sin interacción del usuario.
+Un trabajo no es sesión tooa relacionados, porque se pueden realizar una tarea en segundo plano de hello, sin ninguna interacción del usuario.
 
-Se identifica mediante un nombre (limitado a 64 caracteres) y, opcionalmente, puede insertar algunos datos adicionales (con un límite de 1024 bytes).
+Un trabajo se identifica mediante un nombre (too64 limitado caracteres) y, opcionalmente, puede incrustar algunos datos adicionales (en el límite de Hola de 1024 bytes).
 
 ## <a name="crash"></a>Bloqueo
-El SDK de Mobile Engagement emite bloqueos automáticamente para notificar errores de la aplicación (es decir, problemas no detectados por la aplicación que hacen que esta se bloquee).
+Hola aplicación tooreport de SDK de Mobile Engagement bloquearse errores donde aplicación hello no detectados los problemas que se emiten bloqueos automáticamente.
 
 ## <a name="application-information"></a>Información de la aplicación
-La información de la aplicación se usa para etiquetar a los usuarios, es decir, para asociar determinados datos a los usuarios de una aplicación (de forma similar a las cookies web, con la excepción de que la información de la aplicación se almacena en el lado del servidor en la plataforma Azure Mobile Engagement).
+Información de la aplicación (o información de la aplicación) son usado tootag a los usuarios, es decir, tooassociate algunos usuarios de toohello de datos de una aplicación (Esto es similar tooweb las cookies, salvo que se almacena información de la aplicación en servidor hello en plataforma de Azure Mobile Engagement hello).
 
-Para registrar información de la aplicación se puede usar la API del SDK de Mobile Engagement o la API de dispositivos de la plataforma Mobile Engagement.
+Mediante el uso de API del SDK de Mobile Engagement Hola o con la plataforma de Mobile Engagement Hola API de dispositivo, se puede registrar información de la aplicación.
 
-Este tipo de información es un par clave-valor asociado a un dispositivo. La clave es el nombre de la información de la aplicación(limitado a 64 letras [a-zA-Z], números [0-9] y caracteres de subrayado [_] ASCII). El valor (limitado a 1024 caracteres) puede ser cualquier cadena, entero, fecha (aaaa-MM-dd) o valor booleano (true o false).
+Información de la aplicación es un dispositivo de tooa asociado del par de clave/valor. clave de Hello es nombre Hola de información de la aplicación hello (too64 limitado letras ASCII [a-zA-Z], [0-9] de números y caracteres de subrayado [_]). valor de Hello (too1024 limitado caracteres) puede ser cualquier cadena, entero, fecha (aaaa-MM-dd) o un valor booleano (true o false).
 
-Se puede asociar un número cualquiera de informaciones de la aplicación a un dispositivo dentro de los límites definidos por los términos de precios de Mobile Engagement. Para una clave determinada, Mobile Engagement solo realiza un seguimiento del conjunto de valores más reciente (sin historial). Al establecer o cambiar el valor de una información de aplicación, se fuerza a Mobile Engagement a volver a evaluar los criterios de audiencia establecidos en esta (si los hay), lo que significa que esa información de la aplicación puede usarse para desencadenar inserciones en tiempo real.
+Dispositivo tooa asociado, dentro de los límites de hello definida por condiciones de precios de Mobile Engagement hello, pueden contener cualquier número de información de la aplicación. Para una clave determinada, Mobile Engagement solo realiza un seguimiento de conjunto de valor más reciente de hello (ningún historial). Establecer o cambiar valor Hola de una información de aplicación obliga a Mobile Engagement toore-evaluar criterios de audiencia que se establecen en esta aplicación información (si existe), lo que significa que esa información de la aplicación puede ser inserciones de tootrigger utilizado en tiempo real.
 
 ## <a name="extra-data"></a>Datos adicionales
-Los datos adicionales (o extras) son datos arbitrarios que pueden asociarse a los eventos, errores, actividades y trabajos.
+Datos adicionales (o extras) son algunos datos arbitrarios que pueden ser tooevents adjunto, errores, las actividades y trabajos.
 
-Su estructura es similar a la de los objetos JSON: se componen de un árbol de pares clave-valor. Las claves tienen un límite de 64 letras [a-zA-Z], números [0-9] y caracteres de subrayado [_] ASCII y el tamaño total de los extras se limita a 1024 caracteres (una vez codificados en JSON por el SDK de Mobile Engagement).
+Extras se estructuran de forma similar tooJSON objetos: se realizan de un árbol de pares clave/valor. Las claves son letras de ASCII de too64 limitado [a-zA-Z], [0-9] de números y caracteres de subrayado [_]) y tamaño total de Hola de extras es limitado too1024 caracteres (una vez codificados en JSON por hello SDK de Mobile Engagement).
 
-El árbol completo de pares clave-valor se almacena como objeto JSON. Sin embargo, solo se descompone el primer nivel de claves-valores para que puedan tener acceso directamente determinadas funciones avanzadas, como Segmentos (por ejemplo, puede definir sin problemas un segmento “fans de ciencia ficción” compuesto por todos los usuarios que durante el último mes enviaron al menos 10 veces el evento denominado “contenido_visualizado” con la clave extra “tipo_contenido” establecida en el valor “ciencia ficción”). Por tanto, se recomienda enviar solamente extras formados por listas sencillas de pares clave-valor con valores escalares (por ejemplo, cadenas, fechas, enteros o valores booleanos).
+todo el árbol Hola de pares clave/valor se almacena como un objeto JSON. No obstante, solo nivel primera Hola de claves/valores está toobe descompuesto directamente accesible toosome avanzadas funciones como segmentos (por ejemplo, se puede definir fácilmente un segmento denominado "SciFi ventiladores" que está formado por todos los usuarios tener envía eventos de Hola de al menos 10 veces con el nombre "content_viewed" con hello extra clave "content_type" conjunto toohello valor "scifi" Hola último mes). Por lo tanto se recomienda toosend extras solo formadas listas simples de pares clave/valor con valores escalares (por ejemplo, cadenas, fechas, enteros o un valor booleano).
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Introducción al SDK de Windows Universal para Azure Mobile Engagement](mobile-engagement-windows-store-sdk-overview.md)

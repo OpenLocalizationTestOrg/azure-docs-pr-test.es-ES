@@ -1,6 +1,6 @@
 ---
-title: "Escalado vertical de máquinas virtuales de Azure con Azure Automation | Microsoft Docs"
-description: "Escalado vertical de una máquina virtual Linux en respuesta a las alertas de supervisión con Automatización de Azure"
+title: "escala aaaVertically máquina virtual de Azure con la automatización de Azure | Documentos de Microsoft"
+description: "¿Cómo toovertically escalar una máquina Virtual Linux en alertas de respuesta de toomonitoring con automatización de Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: singhkays
@@ -16,27 +16,27 @@ ms.topic: article
 ms.date: 03/29/2016
 ms.author: singhkay
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ffcecf1e61fc0cd9ee668514fbb913dafe39bd8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ee4c1c33a588bd907d107f1828380a8afdaa725e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Escalado vertical de máquinas virtuales Linux de Azure con Azure Automation
-El escalado vertical es el proceso de aumentar o disminuir los recursos de una máquina como respuesta a la carga de trabajo. Para lograrlo en Azure, cambie el tamaño de la máquina virtual. Esto puede ser útil en los siguientes escenarios:
+Escalado vertical es el proceso de Hola de aumentar o disminuir los recursos de Hola de un equipo de carga de trabajo de respuesta toohello. En Azure, esto puede realizarse mediante el cambio de tamaño Hola de hello Máquina Virtual. Esto puede ayudar a los escenarios siguientes de Hola
 
-* Si la máquina virtual no se utiliza con frecuencia, puede disminuir su tamaño para reducir los costos mensuales.
-* Si la máquina virtual experimenta una carga máxima, es posible ajustarla en un mayor tamaño para aumentar su capacidad.
+* Si no se utiliza con frecuencia Hola Máquina Virtual, éste se pueden cambiar hacia abajo tooa menor tamaño tooreduce los costos mensuales
+* Si Hola Máquina Virtual ve una carga máxima, puede ser tooincrease de tamaño mayor de tooa cuyo tamaño ha cambiado su capacidad máxima
 
-Los pasos para lograr esto se describen a continuación:
+esquema de Hola para hello pasos tooaccomplish se trata como a continuación
 
-1. Configurar la Automatización de Azure para tener acceso a las máquinas virtuales.
-2. Importar los runbooks de escalado vertical de Automatización de Azure a la suscripción
-3. Agregar un webhook al runbook.
-4. Agregar una alerta a la máquina virtual.
+1. La instalación de las máquinas virtuales tooaccess de automatización de Azure
+2. Importar runbooks de escala Vertical de automatización de Azure de hello en su suscripción
+3. Agregar un runbook de tooyour de webhook
+4. Agregar una alerta tooyour Máquina Virtual
 
 > [!NOTE]
-> Debido al tamaño de la primera máquina virtual, los tamaños a los que se puede escalar pueden estar limitados en virtud de la disponibilidad de los demás tamaños en el clúster donde actualmente está implementada la máquina virtual. En los runbooks de automatización publicados que se usan en este artículo nos hacemos cargo de esta situación y solo escalamos dentro de los siguientes pares de tamaños de máquina virtual. Esto significa que una máquina virtual Standard_D1v2 no se aumentará de manera repentina a Standard_G5 ni se reducirá a Basic_A0.
+> Debido a un tamaño de Hola Hola primera máquina Virtual, se puede escalar, los tamaños de Hola puede ser limitada debido toohello disponibilidad de hello otros tamaños de clúster de hello actual Máquina Virtual está implementada en. Hola publicado runbooks de automatización que se usan en este artículo se encargará de este caso y solo escalar dentro hello debajo de pares de tamaño de máquina virtual. Esto significa que una máquina Virtual de Standard_D1v2 no repentinamente puede aumentarse tooStandard_G5 o reducida tooBasic_A0.
 > 
 > | Pares de escalado de tamaños de VM |  |
 > | --- | --- |
@@ -56,38 +56,38 @@ Los pasos para lograr esto se describen a continuación:
 > 
 > 
 
-## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Configurar la Automatización de Azure para tener acceso a las máquinas virtuales.
-Lo primero que debe hacer es crear una cuenta de Automatización de Azure que hospedará los Runbooks que se usan para escalar las instancias del conjunto de escalado de máquinas virtuales. Recientemente, el servicio de automatización presentó la característica "Cuenta de ejecución", que facilita la configuración de la entidad de servicio para ejecutar los Runbooks automáticamente en nombre de un usuario. Encontrará más información al respecto en el siguiente artículo:
+## <a name="setup-azure-automation-tooaccess-your-virtual-machines"></a>La instalación de las máquinas virtuales tooaccess de automatización de Azure
+Hola primera cosa que necesita toodo es crear una cuenta de automatización de Azure que hospedará Hola runbooks usan tooscale Hola conjunto de escalado de VM instancias. Servicio de automatización de hello había introducido recientemente característica "Ejecutar como cuenta de" hello lo que facilita configurar Hola entidad de servicio automáticamente runbooks en ejecución hello en nombre de usuario de hello muy fácil. Puede leer más sobre esto en el siguiente artículo de hello:
 
 * [Autenticación de Runbooks con una cuenta de ejecución de Azure](../../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importar los runbooks de escalado vertical de Automatización de Azure a la suscripción
-Los runbooks necesarios para el escalado vertical de la máquina virtual están publicados actualmente en la galería de runbooks de Automatización de Azure. Deberá importarlos a la suscripción. En el siguiente artículo, puede obtener información sobre cómo importar runbooks:
+## <a name="import-hello-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importar runbooks de escala Vertical de automatización de Azure de hello en su suscripción
+Hola runbooks que son necesarios para escalar verticalmente la máquina Virtual ya se han publicado en hello Galería de runbooks de automatización de Azure. Deberá tooimport en su suscripción. Puede obtener información sobre cómo tooimport runbooks leyendo Hola artículo siguiente.
 
 * [Galerías de runbooks y módulos para la automatización de Azure](../../automation/automation-runbook-gallery.md)
 
-En la imagen que aparece a continuación, se muestran los runbooks que es necesario importar:
+Hola runbooks que necesitan toobe importado se muestran en la imagen Hola siguiente
 
 ![Importar runbooks](./media/vertical-scaling-automation/scale-runbooks.png)
 
-## <a name="add-a-webhook-to-your-runbook"></a>Agregar un webhook al runbook.
-Una vez que importe los runbooks, deberá agregar un webhook al runbook para que, de este modo, una alerta proveniente de una máquina virtual pueda desencadenarlo. A continuación, puede leer los detalles sobre cómo crear un webhook para el runbook:
+## <a name="add-a-webhook-tooyour-runbook"></a>Agregar un runbook de tooyour de webhook
+Una vez que haya importado Hola runbooks deberá tooadd un runbook de toohello webhook por lo que se puede desencadenar una alerta de una máquina Virtual. detalles de Hola de cómo crear un webhook para el Runbook se pueden leer aquí
 
 * [Webhooks de Automatización de Azure](../../automation/automation-webhooks.md)
 
-Asegúrese de copiar el webhook antes de cerrar el cuadro de diálogo de webhook, porque lo necesitará en la siguiente sección.
+Asegúrese de que copiar hello webhook antes de cerrar el cuadro de diálogo de hello webhook ya que será necesario en la sección siguiente Hola.
 
-## <a name="add-an-alert-to-your-virtual-machine"></a>Agregar una alerta a la máquina virtual.
+## <a name="add-an-alert-tooyour-virtual-machine"></a>Agregar una alerta tooyour Máquina Virtual
 1. Seleccione la configuración de la máquina virtual.
 2. Seleccione "Reglas de alerta".
 3. Seleccione "Agregar alerta".
-4. Seleccione una métrica según la cual activar la alerta.
-5. Seleccione una condición que, cuando se cumpla, hará que se active la alerta.
-6. Seleccione un umbral para la condición establecida en el paso 5 que se satisfaga.
-7. Seleccione un período durante el cual el servicio de supervisión comprobará la condición y el umbral que se establecieron en los pasos 5 y 6.
-8. Péguelo en el webhook que copió desde la sección anterior.
+4. Seleccione una alerta de hello toofire métrica en
+5. Seleccionar una condición que, cuando cumple will provocar Hola alerta toofire
+6. Seleccione un umbral para la condición de hello en el paso 5. toobe cumplido
+7. Seleccionar un período sobre qué Hola supervisar el servicio comprobará de condición de Hola y el umbral en los pasos 5 y 6
+8. Pegue en webhook Hola que copió desde la sección anterior de Hola.
 
-![Agregar alerta a máquina virtual 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
+![Agregar alerta tooVirtual máquina 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![Agregar alerta a máquina virtual 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
+![Agregar alerta tooVirtual Machine 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
 

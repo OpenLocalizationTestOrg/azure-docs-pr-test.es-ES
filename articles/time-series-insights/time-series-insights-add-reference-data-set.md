@@ -1,6 +1,6 @@
 ---
-title: "Incorporación de un conjunto de datos de referencia al entorno de Azure Time Series Insights | Microsoft Docs"
-description: En este tutorial, se agrega un conjunto de datos de referencia al entorno de Time Series Insights
+title: "entorno de visión de serie de tiempo de Azure de tooyour del conjunto de datos de referencia de aaaAdd | Documentos de Microsoft"
+description: "En este tutorial, agregará un entorno de visión de la serie de tiempo de tooyour de conjunto de datos de referencia"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 23444297b5231e6a026bcd9ce3ee9f943bf05867
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 05e626ed81a22f2a8710b23a931ccd17c0f38ca5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Creación de un conjunto de datos de referencia para el entorno de Time Series Insights mediante el portal Ibiza
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-hello-ibiza-portal"></a>Crear un conjunto de datos de referencia para su entorno de visión de la serie de tiempo mediante este portal como Hola
 
-Un conjunto de datos de referencia es una colección de elementos que aumentan con los eventos de un origen de eventos. El motor de entrada de Time Series Insights une a un evento del origen de eventos con un elemento en el conjunto de datos de referencia. A partir de ese momento, este evento aumentado está disponible para consultas. Esta combinación se basa en las claves definidas en el conjunto de datos de referencia.
+Un conjunto de datos de referencia es una colección de elementos que se han aumentado con eventos de Hola desde el origen del evento. El motor de entrada de Time Series Insights une a un evento del origen de eventos con un elemento en el conjunto de datos de referencia. A partir de ese momento, este evento aumentado está disponible para consultas. Esta combinación se basa en claves de hello definidas en el conjunto de datos de referencia.
 
-## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>Pasos para agregar un conjunto de datos de referencia a un entorno
+## <a name="steps-tooadd-a-reference-data-set-tooyour-environment"></a>Pasos tooadd un entorno de tooyour del conjunto de datos de referencia
 
-1. Inicie sesión en el [portal Ibiza](https://portal.azure.com).
-2. Haga clic en "Todos los recursos" en el menú izquierdo del portal Ibiza.
+1. Inicie sesión en toohello [este portal como](https://portal.azure.com).
+2. Haga clic en "Todos los recursos" en el menú izquierda Hola de este portal como Hola Hola.
 3. Seleccione el entorno de Time Series Insights.
 
-    ![Crear el conjunto de datos de referencia de Time Series Insights](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
+    ![Crear conjunto de datos de referencia de hello visión de la serie de tiempo](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
 
 4. Seleccione "Conjuntos de datos de referencia" y haga clic en "+ Agregar".
 
-    ![Crear el conjunto de datos de referencia de Time Series Insights (detalles)](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
+    ![Crear conjunto de datos de referencia de visión de la serie de tiempo hello - detalles](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
 
-5. Especifique el nombre del conjunto de datos de referencia.
-6. Especifique tanto el nombre de la clave como su tipo. Dichos nombre y el tipo se utilizan para elegir la propiedad correcta en el evento del origen de eventos. Por ejemplo, si especifica el nombre de clave "DeviceId" y el tipo "Cadena", el motor de entrada de Time Series Insights busca una propiedad llamada "DeviceId" del tipo "Cadena" en el evento de entrada. Puede proporcionar más de una clave para realizar la combinación con el evento. La coincidencia del nombre de la propiedad distingue mayúsculas de minúsculas.
+5. Especifique el nombre de Hola Hola referencia del conjunto de datos.
+6. Especifique el nombre de clave de Hola y su tipo. Este nombre y el tipo es propiedad correcto de Hola de toopick usado del evento de hello en el origen del evento. Por ejemplo, si proporciona el nombre de clave como "DeviceId" y el tipo como "String", a continuación, Hola visión de serie de tiempo de motor de entrada busca una propiedad con nombre hello "DeviceId" de tipo "String" en el evento de entrada de Hola. Puede proporcionar más de un toojoin clave con eventos de Hola. coincidencia de nombre de propiedad de Hello distingue mayúsculas de minúsculas.
 
-     ![Crear el conjunto de datos de referencia de Time Series Insights (detalles)](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
+     ![Crear conjunto de datos de referencia de visión de la serie de tiempo hello - detalles](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
 
 7. Haga clic en "Crear".
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 * [Administración de datos de referencia](time-series-insights-manage-reference-data-csharp.md) mediante programación.
-* Para obtener una referencia completa a la API, consulte el documento [API de datos de referencia](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api).
+* Para la referencia de API completa de hello, consulte [API de datos de referencia](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) documento.

@@ -1,6 +1,6 @@
 ---
-title: "Supervisión de los recursos en la solución Seguridad y auditoría de Operations Management Suite | Microsoft Docs"
-description: "Este documento le ayuda a usar las capacidades de Seguridad y auditoría de OMS para supervisar los recursos e identificar los problemas de seguridad."
+title: "Recursos de Operations Management Suite solución de seguridad y auditoría aaaMonitoring | Documentos de Microsoft"
+description: "Este documento ayuda a toouse OMS seguridad y auditoría capacidades toomonitor los recursos e identificar problemas de seguridad."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: 2f73266b65a4eda6c8751a2d56bc3f11bf4e6a57
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 932b946ae1ffa3b979c02f419702d42d46abf7ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitoring-resources-in-operations-management-suite-security-and-audit-solution"></a>Supervisión de los recursos en la solución Seguridad y auditoría de Operations Management Suite
-Este documento le ayuda a usar las capacidades de Seguridad y auditoría de OMS para supervisar los recursos e identificar los problemas de seguridad.
+Este documento le ayuda a usar OMS seguridad y auditoría capacidades toomonitor los recursos e identificar problemas de seguridad.
 
 ## <a name="what-is-oms"></a>¿Qué es OMS?
-Microsoft Operations Management Suite (OMS) es la solución de administración de TI basada en la nube de Microsoft que le ayuda a administrar y proteger su infraestructura en la nube y local. Para más información sobre OMS, lea el artículo [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
+Microsoft Operations Management Suite (OMS) es la solución de administración de TI basada en la nube de Microsoft que le ayuda a administrar y proteger su infraestructura en la nube y local. Para obtener más información acerca de OMS, lea el artículo de hello [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
 
 ## <a name="monitoring-resources"></a>Supervisión de recursos
-Siempre que sea posible, deseará evitar que se produzcan incidentes de seguridad en primer lugar. Sin embargo, es imposible evitar todos los incidentes de seguridad. Cuando se produce un incidente de seguridad, deberá asegurarse de que se minimice su repercusión.  Hay tres recomendaciones importantes que pueden utilizarse para reducir el número y minimizar el impacto de los incidentes de seguridad:
+Siempre que sea posible, le interesará tooprevent de incidentes de seguridad de elementos no utilizados en primer lugar en Hola. Sin embargo, resulta imposible tooprevent todos los incidentes de seguridad. Cuando se produce un incidente de seguridad, deberá tooensure que se minimiza su impacto.  Hay tres recomendaciones importantes que pueden ser utilizado toominimize Hola número y Hola impacto de los incidentes de seguridad:
 
 * Evaluar de forma regular las vulnerabilidades del entorno.
-* Comprobar con regularidad todos los sistemas de equipos y dispositivos de red para asegurarse de que tienen todas las revisiones más recientes instaladas.
+* Comprobar con regularidad todos los sistemas informáticos y tooensure de dispositivos de red que tienen todas las revisiones más recientes de hello instalado.
 * Comprobar con regularidad todos los registros y mecanismos de registro, incluidos los registros de eventos del sistema operativo, los registros específicos de la aplicación y los registros del sistema de detección de intrusiones.
 
-La solución Seguridad y auditoría de OMS permite a la TI supervisar activamente todos los recursos, lo que puede ayudar a minimizar el impacto de los incidentes de seguridad. Auditoría y seguridad de OMS tiene dominios de seguridad que pueden utilizarse para la supervisión de recursos. Los dominios de seguridad proporcionan acceso rápido a opciones. Para supervisar la seguridad se proporcionará más información de los siguientes dominios:
+Seguridad de OMS y auditoría permite solución tooactively de TI supervisar todos los recursos, que pueden ayudar a minimiza el impacto de Hola de incidentes de seguridad. Auditoría y seguridad de OMS tiene dominios de seguridad que pueden utilizarse para la supervisión de recursos. dominios de seguridad de Hello proporciona acceso rápido tooa opciones, para hello de supervisión de seguridad siguientes dominios se tratarán con más detalle:
 
 * Evaluación de malware
 * Evaluación de la actualización
@@ -46,69 +46,69 @@ La solución Seguridad y auditoría de OMS permite a la TI supervisar activament
 > 
 
 ### <a name="monitoring-system-protection"></a>Supervisión de la protección del sistema
-En una defensa en el enfoque en profundidad, cada nivel de protección es importante para el estado general de la seguridad del recurso. Los equipos con amenazas detectadas y con una protección insuficiente se muestran en el icono Evaluación de malware en Dominios de seguridad. Con la información que se muestra en Evaluación de malware, puede desarrollar un plan para aplicar protección a los servidores que lo necesiten. Para obtener acceso a esta opción, siga los pasos siguientes:
+En una defensa en el enfoque de profundidad, es importante para hello cada capa de protección de estado general de seguridad del recurso. Equipos con detectan amenazas y los equipos con protección insuficiente se muestran en hello icono de evaluación de Malware en dominios de seguridad. Con información de hello en hello evaluación de Malware, puede identificar un plan tooapply protección toohello los servidores que lo necesitan. tooaccess que este Hola de seguimiento de la opción de los pasos a continuación:
 
-1. En el panel principal de **Microsoft Operations Management Suite**, haga clic en el icono **Seguridad y auditoría**.
+1. Hola **Microsoft Operations Management Suite** panel principal haga clic en **seguridad y auditoría** icono.
    
     ![Seguridad y auditoría](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig1.png)
-2. En el panel de **Seguridad y auditoría**, haga clic en **Evaluación antimalware** en **Dominios de seguridad**. Aparecerá el panel **Evaluación antimalware** como se muestra a continuación:
+2. Hola **seguridad y auditoría** panel, haga clic en **evaluación Antimalware** en **dominios de seguridad**. Hola **evaluación Antimalware** tal y como se muestra a continuación se muestra el panel:
 
 ![Evaluación de malware](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig2-ga.png)
 
-Puede usar el panel **Evaluación de Malware** para identificar los siguientes problemas de seguridad:
+Puede usar hello **evaluación de Malware** Hola de panel tooidentify problemas de seguridad siguientes:
 
-* **Amenazas activas**: equipos que se han visto comprometidos y tienen amenazas activas en el sistema.
-* **Amenazas corregidas**: equipos que se han visto comprometidos pero se han corregido las amenazas.
-* **Firma desactualizada**: equipos que tienen habilitada la protección contra malware, pero la firma está desactualizada.
+* **Amenazas activas**: equipos que se pusieron en peligro y amenazas activas en el sistema de Hola.
+* **Corregido amenazas**: se corrigieron los equipos que se pusieron en peligro pero amenazas Hola.
+* **Firma sin actualizar**: los equipos que tienen protección contra malware habilitada pero firma hello no está actualizada.
 * **Sin protección en tiempo real**: equipos que no tienen instalado el antimalware.
 
 ### <a name="monitoring-updates"></a>Supervisión de actualizaciones
-La aplicación de las actualizaciones de seguridad más recientes es una práctica recomendada de seguridad y debe incorporarse a su estrategia de administración de actualizaciones. El servicio Microsoft Monitoring Agent (HealthService.exe) lee información de actualización de los equipos supervisados y, a continuación, envía la información actualizada al servicio de OMS en la nube para su procesamiento. El servicio Microsoft Monitoring Agent está configurado como un servicio automático y debe estar ejecutándose siempre en el equipo de destino.
+Aplicar actualizaciones de seguridad más reciente de hello es una práctica recomendada de seguridad y debe incorporarse en su estrategia de administración de actualizaciones. Servicio del agente de supervisión de Microsoft (HealthService.exe) lee información de actualización de los equipos supervisados y, a continuación, envía este servicio OMS toohello información actualizada en la nube de Hola para su procesamiento. Hola servicio del agente de supervisión de Microsoft está configurado como un servicio automático y se debería estar ejecutando siempre en el equipo de destino de Hola.
 
 ![Supervisión de actualizaciones](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig3.png)
 
-Se aplica la lógica a los datos actualizados y el servicio en la nube registra los datos. Si se detectan actualizaciones que faltan, estas se muestran en el panel **Actualizaciones** . Puede usar el panel **Actualizaciones** para trabajar con actualizaciones que faltan y desarrollar un plan para aplicarlas a los servidores que las necesiten. Siga los pasos siguientes para obtener acceso al panel de **actualización** :
+Lógica es toohello aplicado actualizar datos y servicio de nube de hello registra datos de Hola. Si se encuentran las actualizaciones que faltan, se muestran en hello **actualizaciones** panel. Puede usar hello **actualizaciones** toowork de panel que le faltan actualizaciones y desarrollar un plan tooapply ellos toohello servidores que lo requieran. Siga estos pasos Hola Hola tooaccess **actualizaciones** panel:
 
-1. En el panel principal de **Microsoft Operations Management Suite**, haga clic en el icono **Seguridad y auditoría**.
-2. En el panel de **Seguridad y auditoría**, haga clic en **Evaluación de actualización** en **Dominios de seguridad**. El panel de actualización aparecerá como se muestra a continuación:
+1. Hola **Microsoft Operations Management Suite** panel principal haga clic en **seguridad y auditoría** icono.
+2. Hola **seguridad y auditoría** panel, haga clic en **evaluación de actualizaciones** en **dominios de seguridad**. Aparecerá el panel de actualización de Hello tal y como se muestra a continuación:
 
 ![Evaluación de la actualización](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig4.png)
 
-En este panel puede realizar una evaluación de kas actualizaciones para comprender el estado actual de los equipos y solucionar las amenazas más importantes. Mediante el uso del icono **Actualizaciones críticas o de seguridad** , los administradores de TI podrán obtener acceso a información detallada sobre las actualizaciones que faltan tal como se muestra a continuación:
+En este panel puede realizar un evaluación toounderstand Hola actual estado de actualización de los equipos y resolver las amenazas más importantes de Hola. Mediante el uso de hello **actualizaciones de seguridad o crítico** icono, los administradores de TI será tooaccess capaz de obtener información detallada sobre las actualizaciones de Hola que faltan tal y como se muestra a continuación:
 
 ![resultado de la búsqueda](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig5.png)
 
-Este informe incluye información crítica que puede utilizarse para identificar el tipo de amenaza para el que es vulnerable este sistema, que incluye los artículos de Microsoft KB asociados con la actualización de seguridad y el boletín de MS que tenga más detalles sobre la vulnerabilidad.
+Este informe incluye información crítica que se puede usar tooidentify Hola tipo de amenaza de este sistema sea vulnerable a, que incluye artículos de Microsoft KB Hola asociados con la actualización de seguridad de Hola y Hola Bulletin MS que tiene más detalles acerca de Hola vulnerabilidad.
 
 ### <a name="monitoring-identity-and-access"></a>Supervisión de la identidad y el acceso
-Puesto que los usuarios trabajan desde cualquier lugar, usan diferentes dispositivos y obtienen acceso a una gran cantidad de aplicaciones locales y en la nube, es fundamental que se protejan sus credenciales. Los ataques de robo de credenciales son aquellos en los que un atacante inicialmente obtiene acceso a las credenciales de un usuario normal para tener acceso a un sistema dentro de la red. Muchas veces, este ataque inicial es solo una forma de obtener acceso a la red y el objetivo final es descubrir las cuentas con privilegios. 
+Puesto que los usuarios trabajan desde cualquier lugar, usan diferentes dispositivos y obtienen acceso a una gran cantidad de aplicaciones locales y en la nube, es fundamental que se protejan sus credenciales. Los ataques de robo de credenciales son aquellos en los que un atacante inicialmente obtiene tooaccess de credenciales de usuario normales de acceso tooa un sistema dentro de la red de Hola. En muchas ocasiones, este tipo de ataque inicial es solo una red de toohello del acceso de manera tooget, objetivo definitivo de hello es toodiscover cuentas con privilegios. 
 
-Los atacantes permanecerán en la red haciendo uso de herramientas disponibles gratuitamente para extraer las credenciales de las sesiones de otras cuentas de inicio de sesión. Dependiendo de la configuración del sistema, se pueden extraer estas credenciales en forma de hash, vales o incluso contraseñas de texto sin formato.  
+Los atacantes permanecerá en red de hello, usar gratuitamente herramientas tooextract credenciales desde las sesiones de Hola de otras cuentas de inicio de sesión. Dependiendo de la configuración del sistema hello, estas credenciales se pueden extraer con formato de Hola de hash, vales o contraseñas de texto simple incluso.  
 
 > [!NOTE]
-> Las máquinas que están directamente expuestas a Internet sufrirán muchos intentos fallidos de iniciar sesión con todo tipo de nombres de usuario conocidos (por ejemplo, administrador). En la mayoría de los casos no hay ningún problema si no se utilizan nombres de usuario conocidos y si la contraseña es suficientemente segura.
+> equipos que están directamente exponen toohello que Internet verá muchas error intenta ese toologin try con todos los tipos de nombres de usuario conocida (por ejemplo, administrador). En la mayoría de los casos es apropiado si no se utilizan nombres de usuario conocida de Hola y Hola contraseña es suficientemente eficaz.
 > 
 > 
 
-Es posible identificar estos intrusos antes que pongan en peligro una cuenta con privilegios. Puede aprovechar la solución **Seguridad y auditoría** de OMS para supervisar la identidad y el acceso. Siga los pasos siguientes para obtener acceso al panel de **Identidad y acceso** :
+Es posible tooidentify estos intrusos antes de poner en peligro una cuenta con privilegios. Puede aprovechar **OMS solución de seguridad y auditoría** toomonitor identidad y acceso. Siga estos pasos Hola Hola tooaccess **Identity and Access** panel:
 
-1. En el panel principal de **Microsoft Operations Management Suite** , haga clic en el icono Seguridad y auditoría.
-2. En el panel de **Seguridad y auditoría**, haga clic en **Identity and Access (Preview)** (Identidad y acceso (versión preliminar)) en **Dominios de seguridad**. El panel **Identity and Access (Preview)** (Identidad y acceso (versión preliminar)) aparece como se muestra a continuación:
+1. Hola **Microsoft Operations Management Suite** panel principal, haga clic en seguridad y auditoría en mosaico.
+2. Hola **seguridad y auditoría** panel, haga clic en **Identity and Access** en **dominios de seguridad**. Hola **Identity and Access** tal y como se muestra a continuación se muestra el panel:
 
-![Identidad y acceso](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig6-ga.png)
+![identidad y acceso](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig6-ga.png)
 
-Debe incluir la supervisión de la identidad como parte de su estrategia de supervisión regular. El administrador de TI debe comprobar si hay un nombre de usuario válido específico con el que se hayan realizado muchos intentos. Esto podría indicar que un atacante ha adquirido el nombre de usuario real e intenta obtener acceso mediante fuerza bruta o que hay una herramienta automática que usa una contraseña codificada de forma rígida que ha expirado.
+Debe incluir la supervisión de la identidad como parte de su estrategia de supervisión regular. El administrador de TI debe comprobar si hay un nombre de usuario válido específico con el que se hayan realizado muchos intentos. Esto podría indicar que cualquier atacante que adquirió el nombre de usuario real de Hola e intente forzar toobrute o una herramienta automática que usa contraseña codificados de forma rígida que ha caducado.
 
-Este panel permite a la TI identificar rápidamente amenazas posibles relacionadas con la identidad y el acceso a los recursos de la empresa. Es especialmente importante identificar también las tendencias potenciales, por ejemplo en el icono Inicios de sesión con el paso del tiempo, puede ver la cantidad de veces que se produjo un error al intentar iniciar sesión. En este caso, el equipo **FileServer** intentó iniciar sesión 35 veces. Puede obtener más información sobre este equipo haciendo clic en él. 
+Este habilitar panel tooquickly de TI identificar recursos del posibles amenazas relacionadas tooidentity y acceso toocompany. Está determinado tooalso identificar posibles tendencias importantes, por ejemplo en mosaico de los inicios de sesión de un período de hello, puede ver durante el período de tiempo cuántas veces se realizó un intento de inicio de sesión erróneos. En este caso Hola equipo **FileServer** recibido 35 intentos de inicio de sesión. Puede obtener más información sobre este equipo haciendo clic en él. 
 
 ![más detalles](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig7-new.png)
 
-El informe generado para este equipo aporta información valiosa sobre este patrón. Tenga en cuenta que la columna **ACCOUNT** proporciona la cuenta de usuario que se usó para intentar obtener acceso al sistema, la columna **TIMEGENERATED** ofrece el intervalo de tiempo en el que se realizó el intento y la columna **LOGONTYPENAME** proporciona la ubicación en la que se ha realizado este intento. Si estos intentos se realizaron localmente en el sistema mediante un programa, la columna **PROCESS** podría mostrar el nombre del proceso. En escenarios donde el intento de inicio de sesión procede de un programa, ya dispone del nombre del proceso, por lo que puede realizar una investigación más en profundidad en el sistema de destino.
+informe de Hello generado para este equipo aporta valiosos detalles sobre este patrón. Observado que hello **cuenta** Hola proporciona columna Hola cuenta de usuario que se usa tootry tooaccess system, hello **TIMEGENERATED** proporciona columna Hola en qué Hola intento se realizó el intervalo de tiempo y Hola **LOGONTYPENAME** proporciona columna Hola ubicación donde realizó este intento. Si estos intentos realizados localmente en el sistema de Hola por un programa, Hola **proceso** columna, Mostrar nombre del proceso de Hola. En escenarios donde procede el intento de inicio de sesión de Hola desde un programa, ya tiene el nombre de proceso de hello está disponible y ahora puede realizar más investigación en el sistema de destino de Hola.
 
-## <a name="see-also"></a>Consulte también
-En este documento, aprendió a utilizar la solución Seguridad y auditoría de OMS para supervisar sus recursos. Para obtener más información sobre Seguridad de OMS, consulte los siguientes artículos:
+## <a name="see-also"></a>Otras referencias
+En este documento, se habrá aprendido cómo toomonitor de solución de auditoría y seguridad de OMS toouse sus recursos. toolearn más información acerca de la seguridad de OMS, consulte Hola siguientes artículos:
 
 * [Información general de Operations Management Suite (OMS)](operations-management-suite-overview.md)
 * [Introducción a la solución Seguridad y auditoría de Operations Management Suite](oms-security-getting-started.md)
-* [Supervisión de las alertas de seguridad y su respuesta en la solución Seguridad y auditoría de Operations Management Suite](oms-security-responding-alerts.md)
+* [Supervisión y responde tooSecurity alertas en Operations Management Suite solución de seguridad y auditoría](oms-security-responding-alerts.md)
 

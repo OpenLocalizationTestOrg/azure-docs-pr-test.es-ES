@@ -4,9 +4,9 @@
 ## [Preguntas más frecuentes](virtual-machines-windows-sql-server-iaas-faq.md)
  
 # Introducción
-## [Aprovisionamiento de una máquina virtual en Azure Portal](virtual-machines-windows-portal-sql-server-provision.md)
+## [Aprovisionar una máquina virtual en hello portal de Azure](virtual-machines-windows-portal-sql-server-provision.md)
 ## [Aprovisionamiento de una máquina virtual con Azure PowerShell](virtual-machines-windows-ps-sql-create.md)
-## [Conexión a una máquina virtual](virtual-machines-windows-sql-connect.md)
+## [Conectar tooa VM](virtual-machines-windows-sql-connect.md)
 ## [Migración de una base de datos de SQL Server](virtual-machines-windows-migrate-sql.md)
 
 # Procedimientos
@@ -22,8 +22,8 @@
 ### Instancia de clúster de conmutación por error
 #### [Configuración](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
-## administración
-### [Uso de la Extensión Agente de IaaS de SQL Server](virtual-machines-windows-sql-server-agent-extension.md)
+## Administrar
+### [Usar hello extensión del agente de IaaS de SQL Server](virtual-machines-windows-sql-server-agent-extension.md)
 ### [Aplicación de revisiones automatizada](virtual-machines-windows-sql-automated-patching.md)
 ### [Configuración de la integración de Azure Key Vault](virtual-machines-windows-ps-sql-keyvault.md)
 ### [Consideraciones sobre la seguridad](virtual-machines-windows-sql-security.md)

@@ -1,5 +1,5 @@
 ---
-title: "Creación de módulos R personalizados en Azure Machine Learning | Microsoft Docs"
+title: "aaaAuthor los módulos de R personalizado en aprendizaje automático de Azure | Documentos de Microsoft"
 description: "Inicio rápido para la creación de módulos R personalizados en Aprendizaje automático de Azure."
 services: machine-learning
 documentationcenter: 
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 03/24/2017
 ms.author: bradsev;ankarlof
-ms.openlocfilehash: 964ddb551a475243891abce8a2b835e65569a4ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8007c2abe20a4ab990f38b6d09bc4e6834ad2082
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Creación de módulos R personalizados en Aprendizaje automático de Azure
-En este tema se describe cómo crear e implementar un módulo R personalizado en Aprendizaje automático de Azure. Se explica qué son los módulos R personalizados y qué archivos se usan para definirlos. Muestra cómo construir estos archivos y cómo registrar el módulo para implementarlo en un área de trabajo de Aprendizaje automático. Los elementos y atributos que se utilizan en la definición del módulo personalizado se describen a continuación con más detalle. También se describe cómo utilizar la funcionalidad y los archivos auxiliares, y varias salidas. 
+Este tema se describe cómo tooauthor e implementar un módulo personalizado de R en aprendizaje automático de Azure. Explica qué son los módulos de R personalizados y qué archivos son toodefine usado ellos. Ilustra cómo tooconstruct Hola archivos que definen un módulo y cómo tooregister Hola módulo para la implementación en un área de trabajo de aprendizaje automático. Hello elementos y atributos que se utilizan en la definición de Hola de módulo personalizado de hello son, a continuación, se describe con más detalle. Cómo también se describe la funcionalidad auxiliar toouse y archivos y varias salidas. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-is-a-custom-r-module"></a>¿Qué es un módulo R personalizado?
-Un **módulo personalizado** es un módulo definido por el usuario que se puede cargar en el área de trabajo de un usuario y ejecutarlo como parte de un experimento de Aprendizaje automático de Azure. Un **módulo de R personalizado** es un módulo personalizado que ejecuta una función de R definida por el usuario. **R** es un lenguaje de programación de computación estadística y gráficos utilizado ampliamente por científicos estadísticos y de datos para implementar algoritmos. Actualmente, R es el único lenguaje que se admite en los módulos personalizados, pero en las próximas versiones se ha programado la compatibilidad con idiomas adicionales.
+A **módulo personalizado** es un módulo definido por el usuario que se puede carga el área de trabajo de tooyour y se ejecuta como parte de un experimento de aprendizaje automático de Azure. Un **módulo de R personalizado** es un módulo personalizado que ejecuta una función de R definida por el usuario. **R** es un lenguaje de programación de computación estadística y gráficos utilizado ampliamente por científicos estadísticos y de datos para implementar algoritmos. Actualmente, R es admitido en módulos personalizados, pero la compatibilidad para idiomas adicionales está programada para futuras versiones de idioma solo Hola.
 
-Los módulos personalizados tienen un **estado de primera clase** en Aprendizaje automático de Azure, en el sentido de que se pueden usar como cualquier otro módulo. Pueden ejecutarse con otros módulos e incluirse en experimentos publicados o visualizaciones. Usted tiene control sobre el algoritmo implementado por el módulo, los puertos de entrada y de salida a utilizar, los parámetros de modelado y otros distintos comportamientos en tiempo de ejecución. En la galería de Cortana Intelligence también se puede publicar un experimento con módulos personalizados para compartirlo fácilmente.
+Los módulos personalizados tienen **estatus** aprendizaje automático de Azure en sentido Hola que puede usarse como cualquier otro módulo. Pueden ejecutarse con otros módulos e incluirse en experimentos publicados o visualizaciones. Tiene control sobre el algoritmo de hello implementado por el módulo de hello, Hola toobe de puertos de entrada y salida que se usa, Hola parámetros de modelado y otros distintos comportamientos en tiempo de ejecución. Un experimento contiene módulos personalizados también se puede publicar en hello Cortana Intelligence Galería para compartir fácilmente.
 
 ## <a name="files-in-a-custom-r-module"></a>Archivos de un módulo R personalizado
 Un módulo R personalizado se define mediante un archivo .zip que contiene, como mínimo, dos archivos:
 
-* Un **archivo de origen** que implementa la función R expuesta por el módulo.
-* Un **archivo de definición XML** que describe la interfaz del módulo personalizado.
+* A **archivo de código fuente** que implementa la función de hello R expuesta por el módulo de Hola
+* Un **archivo de definición XML** que describe la interfaz de módulo personalizado de Hola
 
-También se pueden incluir archivos auxiliares adicionales en el archivo .zip que proporcionan una funcionalidad a la que se puede tener acceso desde el módulo personalizado. Esta opción se describe en el apartado **Argumentos** de la sección de referencia **Elementos del archivo de definición XML** que sigue al ejemplo de inicio rápido.
+Archivos auxiliares adicionales también pueden incluirse en el archivo .zip de Hola que proporciona la funcionalidad que puede tener acceso desde el módulo personalizado de Hola. Esta opción se describe en hello **argumentos** forma parte de la sección de referencia de hello **elementos en el archivo de definición XML de hello** siguiente ejemplo de Hola inicio rápido.
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Ejemplo de inicio rápido: definir, empaquetar y registrar un módulo R personalizado
-En este ejemplo se muestra cómo construir los archivos que requiere un módulo R personalizado, empaquetarlos en un archivo zip y, a continuación, registrar el módulo en un área de trabajo de Aprendizaje automático. Tanto el paquete zip de ejemplo como los archivos de ejemplo se pueden descargar en [Descargar el archivo CustomAddRows.zip](http://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
+Este ejemplo ilustra cómo tooconstruct Hola archivos requeridos por un módulo personalizado de R, empaquetarlos en un archivo zip y, a continuación, un módulo de hello registrar en el área de trabajo de aprendizaje automático. Hello archivos de ejemplo y el paquete de ejemplo zip pueden descargarse desde [CustomAddRows.zip Descargar archivo](http://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
 
-## <a name="the-source-file"></a>El archivo de origen
-Considere el ejemplo de un módulo **Custom Add Rows** (Agregar filas personalizado) que modifica la implementación estándar del módulo de **Agregar filas** que se usa para concatenar las filas (observaciones) de dos conjuntos de datos (tramas de datos). El módulo **Agregar filas** estándar anexa las filas del segundo conjunto de datos de entrada al final del primer conjunto de datos de entrada mediante el algoritmo `rbind`. La función `CustomAddRows` personalizada acepta dos conjuntos de datos de forma similar, pero también acepta un parámetro booleano de intercambio como entrada adicional. Si el parámetro de intercambio está establecido en **FALSE**, devuelve el mismo conjunto de datos que la implementación estándar. Pero si el parámetro de intercambio es **TRUE**, la función anexará filas del primer conjunto de datos de entrada al final del segundo conjunto de datos. El archivo CustomAddRows.R que contiene la implementación de la función R `CustomAddRows` expuesta por el módulo **Agregar filas personalizado** tiene el siguiente código R.
+## <a name="hello-source-file"></a>archivo de código fuente de Hola
+Considere la posibilidad de ejemplo de Hola de un **personalizado agregar filas** módulo que modifica la implementación estándar de Hola de hello **agregar filas** módulo usa tooconcatenate filas (observaciones) de dos conjuntos de datos (tramas de datos). Hola estándar **agregar filas** módulo anexa filas de hello del segundo conjunto de datos de entrada toohello final de Hola de hello primera entrada conjunto de datos mediante hello `rbind` algoritmo. Hola personalizado `CustomAddRows` función acepta dos conjuntos de datos de forma similar, pero también acepta un parámetro booleano intercambio como una entrada adicional. Si el parámetro de intercambio de Hola se establece demasiado**FALSE**, devuelve Hola el mismo conjunto de datos como Hola implementación estándar. Sin embargo, si el parámetro de intercambio de hello es **TRUE**, función hello anexa filas del primer conjunto de datos de entrada toohello end de hello segundo conjunto de datos en su lugar. archivo CustomAddRows.R Hello que contiene la implementación de Hola de hello R `CustomAddRows` función expuesta por hello **personalizado agregar filas** módulo tiene Hola siguiente código de R.
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -56,21 +56,21 @@ Considere el ejemplo de un módulo **Custom Add Rows** (Agregar filas personaliz
         } 
     } 
 
-### <a name="the-xml-definition-file"></a>El archivo de definición XML
-Para exponer esta función `CustomAddRows` como módulo de Aprendizaje automático de Azure, se debe crear un archivo de definición XML para especificar la apariencia y comportamiento que debe tener el módulo **Agregar filas personalizado** . 
+### <a name="hello-xml-definition-file"></a>archivo de definición XML de Hola
+tooexpose esto `CustomAddRows` función como un módulo de aprendizaje automático de Azure, un archivo de definición XML debe crearse toospecify cómo Hola **personalizado agregar filas** módulo debe aspecto y comportamiento. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
         <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
+        <Description>Appends one dataset tooanother. Dataset 2 is concatenated tooDataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
 
-    <!-- Specify the base language, script file and R function to use for this module. -->        
+    <!-- Specify hello base language, script file and R function toouse for this module. -->        
         <Language name="R" 
          sourceFile="CustomAddRows.R" 
          entryPoint="CustomAddRows" />  
 
     <!-- Define module input and output ports -->
-    <!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
+    <!-- Note: hello values of hello id attributes in hello Input and Arg elements must match hello parameter names in hello R Function CustomAddRows defined in CustomAddRows.R. -->
         <Ports>
             <Input id="dataset1" name="Dataset 1" type="DataTable">
                 <Description>First input dataset</Description>
@@ -79,7 +79,7 @@ Para exponer esta función `CustomAddRows` como módulo de Aprendizaje automáti
                 <Description>Second input dataset</Description>
             </Input>
             <Output id="dataset" name="Dataset" type="DataTable">
-                <Description>The combined dataset</Description>
+                <Description>hello combined dataset</Description>
             </Output>
         </Ports>
 
@@ -92,96 +92,96 @@ Para exponer esta función `CustomAddRows` como módulo de Aprendizaje automáti
     </Module>
 
 
-Es muy importante que tenga en cuenta que el valor de los atributos **id** de los elementos **Input** y **Arg** del archivo XML deben coincidir EXACTAMENTE con los nombres de parámetro de función del código de R del archivo CustomAddRows.R: (*dataset1*, *dataset2* y *swap* en el ejemplo). De forma similar, el valor el atributo **entryPoint** del elemento **Language** debe coincidir EXACTAMENTE con el nombre de la función del script de R (*CustomAddRows* en el ejemplo). 
+Es toonote crítico que Hola valo hello **Id. de** atributos de hello **entrada** y **Arg** elementos en el archivo XML de hello deben coincidir con los nombres de parámetro de función de Hola de hello R código de archivo de hello CustomAddRows.R exactamente: (*dataset1*, *dataset2*, y *intercambio* en el ejemplo de Hola). Hola de forma similar, el valor de hello **entryPoint** atributo de hello **lenguaje** elemento debe coincidir exactamente con hello nombre de función de hello en el script de Hola R: (*CustomAddRows* en el ejemplo de Hola). 
 
-En cambio, el atributo **id** de los elementos **Output** no se corresponde con las variables del script de R. Cuando se requiere más de una salida, simplemente devuelva una lista de la función de R con los resultados colocados *en el mismo orden* en que los elementos **Outputs** se declaran en el archivo XML.
+En cambio, Hola **Id. de** atributo para hello **salida** elemento no corresponde tooany variables de script de Hola R. Cuando se requiere más de un resultado, simplemente devuelven una lista de función hello R con resultados colocados *Hola mismo orden* como **salidas** elementos se declaran en el archivo XML de hello.
 
-### <a name="package-and-register-the-module"></a>Empaquetamiento y registro del módulo
-Guarde estos dos archivos como *CustomAddRows.R* y *CustomAddRows.xml* y comprima los dos archivos juntos en un archivo *CustomAddRows.zip*.
+### <a name="package-and-register-hello-module"></a>Módulo de Hola de paquete y registro
+Guardar estos dos archivos como *CustomAddRows.R* y *CustomAddRows.xml* y, a continuación, zip Hola dos archivos juntos en un *CustomAddRows.zip* archivo.
 
-Para registrarlos en su área de trabajo de Machine Learning, vaya al área de trabajo de Machine Learning Studio, haga clic en el botón **+NEW** (+Nuevo) de la parte inferior y elija **MODULE -> FROM ZIP PACKAGE** (Módulo -> De paquete zip) para cargar el nuevo módulo **Custom Add Rows** (Agregar filas personalizado).
+tooregister en el área de trabajo de aprendizaje automático, área de trabajo vaya tooyour Hola estudio de aprendizaje automático, haga clic en hello **+ nuevo** situado en la parte inferior de Hola y elija **módulo -> de ZIP del paquete** tooupload Hola nueva **personalizado agregar filas** módulo.
 
 ![Cargar archivo zip](./media/machine-learning-custom-r-modules/upload-from-zip-package.png)
 
-El módulo **Agregar filas personalizado** ya está preparado para que los experimentos de Aprendizaje automático tengan acceso a él.
+Hola **personalizado agregar filas** módulo ahora está listo toobe acceso a sus experimentos de aprendizaje automático.
 
-## <a name="elements-in-the-xml-definition-file"></a>Elementos del archivo de definición XML
+## <a name="elements-in-hello-xml-definition-file"></a>Elementos de archivo de definición XML de Hola
 ### <a name="module-elements"></a>Elementos Module
-El elemento **Module** se usa para definir un módulo personalizado en el archivo XML. Se pueden definir varios módulos en un archivo XML mediante el uso de varios elementos **Module** . Cada uno de los módulos del área de trabajo debe tener un nombre único. Registre un módulo personalizado con el mismo nombre que un módulo personalizado existente y reemplazará el módulo existente por otro nuevo. Sin embargo, los módulos personalizados se pueden registrar con el mismo nombre que un módulo de Aprendizaje automático de Azure existente. Si es así, aparecerán en la categoría **Custom** de la paleta del módulo.
+Hola **módulo** elemento es toodefine usado un módulo personalizado en el archivo XML de hello. Se pueden definir varios módulos en un archivo XML mediante el uso de varios elementos **Module** . Cada uno de los módulos del área de trabajo debe tener un nombre único. Registrar un módulo personalizado con el mismo nombre como un módulo personalizado existente de Hola y reemplaza módulo existente Hola con hello uno nuevo. Sin embargo, los módulos personalizados se pueden registrar con el mismo nombre como un módulo de aprendizaje automático de Azure existente de Hola. Si es así, aparecen en hello **personalizado** categoría de la paleta de módulo de Hola.
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another...</Description>/> 
+        <Description>Appends one dataset tooanother...</Description>/> 
 
 
-Dentro del elemento **Module** , puede especificar dos elementos opcionales adicionales:
+Dentro de hello **módulo** elemento, puede especificar dos elementos opcionales adicionales:
 
-* un elemento **Owner** que está incrustado en el módulo  
-* un elemento **Description** que contiene el texto que se muestra en la ayuda rápida del módulo y cuando mantiene el puntero sobre el módulo en la interfaz de usuario de Aprendizaje automático.
+* un **propietario** elemento incrustado en el módulo de Hola  
+* un **descripción** elemento que contiene el texto que se muestra en la Ayuda rápida para el módulo de Hola y cuando mantenga el mouse sobre módulo Hola Hola interfaz de usuario de aprendizaje de máquina.
 
-Reglas para los límites de caracteres de los elementos Module:
+Reglas para los límites de caracteres en elementos de módulo de hello:
 
-* El valor del atributo **name** del elemento **Module** no debe superar los 64 caracteres. 
-* El contenido del elemento **Description** no debe superar los 128 caracteres.
-* El contenido del elemento **Owner** no debe superar los 32 caracteres.
+* Hola valo hello **nombre** atributo Hola **módulo** elemento no debe superar los 64 caracteres de longitud. 
+* Hola contenido de hello **descripción** elemento no debe superar los 128 caracteres de longitud.
+* Hola contenido de hello **propietario** elemento no debe superar los 32 caracteres de longitud.
 
-Los resultados de un módulo pueden ser deterministas o no deterministas.** De forma predeterminada, se considera que todos los módulos son deterministas. Es decir, dado un conjunto de parámetros y datos de entrada que no cambian, el módulo debe devolver los mismos resultados cada vez que se ejecute RAND o una función. Dado este comportamiento, Estudio de aprendizaje automático de Azure solo volverá a ejecutar los módulos marcados como deterministas si un parámetro o los datos de entrada han cambiado. La devolución de los resultados almacenados en caché también proporciona una ejecución mucho más rápida de los experimentos.
+Resultados de un módulo pueden ser deterministas o nondeterministic.* * de forma predeterminada, todos los módulos se consideran toobe determinista. Es decir, dado un conjunto de parámetros de entrada y los datos que no cambian, módulo de hello debería devolver Hola mismo da como resultado eacRAND o una vez functionh que se ejecuta. Dado este comportamiento, estudio de aprendizaje automático de Azure solo vuelve a ejecutar los módulos que se marca como determinista si un parámetro o datos de entrada de hello ha cambiado. Devolver los resultados de hello en caché, también proporciona mucho una ejecución más rápida de experimentos.
 
-Hay funciones que son no deterministas, como RAND o una función que devuelve la fecha o la hora actual. Si el módulo usa una función no determinista, puede especificar que el módulo es no determinista estableciendo el atributo opcional **isDeterministic** en **FALSE**. Esto garantiza que el módulo se volverá a ejecutar siempre que se ejecute el experimento, aunque la entrada y los parámetros del módulo no hayan cambiado. 
+Hay funciones que no son deterministas, como RAND o una función que devuelve Hola fecha y hora actuales. Si el módulo usa una función no determinista, puede especificar ese módulo hello no es determinista por establecer Hola opcional **isDeterministic** atributo demasiado**FALSE**. Esto garantiza que ese módulo Hola se vuelve a ejecutar siempre que se ejecute el experimento de hello, incluso si hello módulo parámetros de entrada y no han cambiado. 
 
 ### <a name="language-definition"></a>Definición de lenguaje
-El elemento **Lenguage** del archivo de definición XML se usa para especificar el idioma del módulo personalizado. Actualmente, R es el único lenguaje que se admite. El valor del atributo **sourceFile** debe ser el nombre del archivo R que contiene la función a la que se va a llamar cuando se ejecute el módulo. Este archivo debe formar parte del paquete zip. El valor del atributo **entryPoint** es el nombre de la función a la que se llama y debe coincidir con una función válida que se define en el archivo de origen.
+Hola **lenguaje** element en el archivo de definición XML es el idioma de módulo personalizado de Hola de toospecify usado. Actualmente, R es Hola solo admite el idioma. Hola valo hello **sourceFile** atributo debe ser el nombre de hello del archivo de hello R que contiene Hola función toocall cuando se ejecuta el módulo de Hola. Este archivo debe ser parte del paquete comprimido de Hola. Hola valo hello **entryPoint** atributo es Hola nombre de función hello que se llama y debe coincidir con una función válida que se definen en el archivo de código fuente de Hola.
 
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 
 
 ### <a name="ports"></a>Puertos
-Los puertos de entrada y salida de un módulo personalizado se especifican en los elementos secundarios de la sección **Ports** del archivo de definición XML. El orden de estos elementos determina el diseño que ven (UX) los usuarios. La primera **entrada** o **salida** secundaria que aparezca en el elemento **Ports** del archivo XML se convertirá en el puerto de entrada del punto de conexión situado más a la izquierda en la experiencia de usuario de Machine Learning.
-Cada puerto de entrada y salida puede tener un elemento secundario **Description** que especifica el texto que se muestra cuando mantiene el puntero sobre el puerto en la interfaz de usuario de Aprendizaje automático.
+Hello puertos de entrada y salidos para un módulo personalizado especificados en los elementos secundarios de hello **puertos** sección del archivo de definición XML de Hola. orden de Hola de estos elementos determina Hola diseño experimentado (UX) por los usuarios. primer elemento secundario de Hello **entrada** o **salida** enumerados en hello **puertos** elemento del archivo XML de Hola se convierte en el puerto de entrada del extremo izquierdo de Hola Hola UX. de aprendizaje de máquina
+Cada entrada y puerto de salida puede tener una función opcional **descripción** elemento secundario que especifica el texto hello se muestra cuando coloques el cursor del mouse de hello en el puerto de Hola Hola interfaz de usuario de aprendizaje de máquina.
 
 **Reglas de puertos**:
 
 * El número máximo de **puertos de entrada y salida** es 8 para cada uno.
 
 ### <a name="input-elements"></a>Elementos de entrada
-Los puertos de entrada le permiten pasar datos a una función y un área de trabajo de R. Los **tipos de datos** que se admiten para los puertos de entrada son los siguientes: 
+Puertos de entrada permiten área de trabajo y función de toopass datos tooyour R. Hola **tipos de datos** que son compatibles con puertos de entrada son los siguientes: 
 
-**DataTable:** este tipo se pasa a la función de R como data.frame. De hecho, todos los tipos (por ejemplo, archivos CSV o archivos ARFF) que admite Aprendizaje automático y que son compatibles con **DataTable** se convierten automáticamente en data.frame. 
+**DataTable:** se pasa este tipo de función tooyour R como un data.frame. De hecho, los tipos (por ejemplo, archivos CSV o archivos ARFF) que son compatibles con el aprendizaje automático y que son compatibles con **DataTable** son data.frame tooa convertido automáticamente. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
            </Input>
 
-El atributo **id** asociado a cada puerto de entrada de **DataTable** debe tener un valor único y dicho valor debe coincidir con el parámetro con nombre correspondiente de la función de R.
-El valor **NULL** de los puertos de **DataTable** opcionales que no se pasan como entrada en un experimento se pasa a la función de R y los puertos zip opcionales se ignorarán si la entrada no está conectada. El atributo **isOptional** es opcional para los tipos **DataTable** y **Zip**, y es *false* de forma predeterminada.
+Hola **identificador** atributo asociado con cada uno de ellos **DataTable** puerto de entrada debe tener un valor único y este valor debe coincidir con el parámetro en la función de R con nombre correspondiente.
+Opcional **DataTable** puertos que no se pasan como entrada en un experimento tienen valor hello **NULL** función pasado toohello R y los puertos de zip opcional se omiten si Hola entrada no está conectado. Hola **isOptional** atributo es opcional para ambos hello **DataTable** y **código postal** tipos y *false* de forma predeterminada.
 
-**Zip:** los módulos personalizados pueden aceptar un archivo .zip como entrada. Esta entrada se desempaqueta en el directorio de trabajo de R de la función
+**Zip:** los módulos personalizados pueden aceptar un archivo .zip como entrada. Esta entrada se desempaqueta en el directorio de trabajo de hello R de la función
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
-            <Description>Zip files to be extracted to the R working directory.</Description>
+            <Description>Zip files toobe extracted toohello R working directory.</Description>
            </Input>
 
-En el caso de los módulos de R personalizados, el identificador de un puerto Zip no tiene que coincidir con los parámetros de la función de R. Esto se debe a que el archivo zip se extrae automáticamente en el directorio de trabajo de R.
+Para los módulos de R personalizados, Id. de Hola para un puerto Zip no tiene toomatch los parámetros de función hello R. Esto es porque el archivo zip de hello es automáticamente extraídos toohello R directorio de trabajo.
 
 **Reglas de entrada:**
 
-* El valor del atributo **id** del elemento **Input** debe ser un nombre de variable de R válido.
-* El valor del atributo **id** del elemento **Input** no debe superar los 64 caracteres.
-* El valor del atributo **name** del elemento **Input** no debe superar los 64 caracteres.
-* El contenido del elemento **Description** no debe superar los 128 caracteres.
-* El valor del atributo **type** del elemento **Input** debe ser *Zip* o *DataTable*.
-* El valor del atributo **isOptional** del elemento **Input** no es necesario (y es *false* de forma predeterminada cuando no se especifica); pero si se especifica, debe ser *true* o *false*.
+* Hola valo hello **Id. de** atributo de hello **entrada** elemento debe ser un nombre de variable válido de R.
+* Hola valo hello **Id. de** atributo de hello **entrada** elemento no debe superar los 64 caracteres.
+* Hola valo hello **nombre** atributo de hello **entrada** elemento no debe superar los 64 caracteres.
+* Hola contenido de hello **descripción** elemento no debe tener más de 128 caracteres
+* Hola valo hello **tipo** atributo de hello **entrada** el elemento debe estar *código postal* o *DataTable*.
+* Hola valo hello **isOptional** atributo de hello **entrada** elemento no es necesario (y es *false* de forma predeterminada cuando no se especifica); pero si se especifica, debe ser *true* o *false*.
 
 ### <a name="output-elements"></a>Elementos de salida
-**Puertos de salida estándar:** los puertos de salida se asignan a los valores devueltos desde la función de R, y luego pueden usarlos los módulos posteriores. *DataTable* es el único tipo de puerto de salida estándar que se admite actualmente. (Próximamente se incluirá compatibilidad con *Learners* y *Transforms*). Una salida de *DataTable* se define como:
+**Puertos de salida estándar:** puertos de salida son asignadas toohello valores devueltos de la función de R, que, a continuación, se puede usar módulos posteriores. *DataTable* Hola tipo de puerto de salida estándar sólo admitidos actualmente. (Próximamente se incluirá compatibilidad con *Learners* y *Transforms*). Una salida de *DataTable* se define como:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
     </Output>
 
-En el caso de las salidas de los módulos de R personalizados, el valor del atributo **id** no tiene que corresponder con nada del script de R, debe ser único. En el caso de la salida de un módulo individual, el valor devuelto de la función de R debe ser *data.frame*. Para emitir más de un objeto de un tipo de datos admitidos, es necesario especificar los puertos de salida correspondientes en el archivo de definición de XML y los objetos deben devolverse como una lista. Los objetos emitidos se asignan a los puertos de salida de izquierda a derecha, reflejando el orden en que los objetos se colocan en la lista devuelta.
+Los resultados en los módulos de R personalizados, Hola valo hello **identificador** atributo no tiene toocorrespond con nada en el script de Hola R, pero debe ser único. Para una salida de módulo único, valor devuelto de Hola de función hello R debe ser un *data.frame*. En Ordenar toooutput más de un objeto de un tipo de datos admitidos, puertos de salida correspondiente Hola necesitan toobe especificado en el archivo de definición XML de Hola y Hola objetos necesitan ser toobe devuelve como una lista. objetos de salida de Hello asigna puertos toooutput desde tooright izquierdo, reflejar el orden de hello en el que se colocan los objetos de hello en hello devuelve la lista.
 
-Por ejemplo, si quiere modificar el módulo **Custom Add Rows** (Personalizar Agregar filas) para que genere los dos conjuntos de datos originales, *dataset1* y *dataset2*, además del conjunto de datos recién incorporado *dataset* (de izquierda a derecha, así: *dataset*, *dataset1*, *dataset2*), defina los puertos de salida en el archivo CustomAddRows.xml, tal como se indica a continuación:
+Por ejemplo, si desea hello toomodify **personalizado agregar filas** toooutput módulo Hola originales dos conjuntos de datos, *dataset1* y *dataset2*, además unido toohello nueva conjunto de datos, *conjunto de datos*, (en un orden, de izquierda tooright, como: *conjunto de datos*, *dataset1*, *dataset2*), a continuación, defina Hola puertos en el archivo de hello CustomAddRows.xml de salida como se indica a continuación:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -202,7 +202,7 @@ Por ejemplo, si quiere modificar el módulo **Custom Add Rows** (Personalizar Ag
     </Ports> 
 
 
-Y devuelva la lista de objetos de una lista en el orden correcto en "CustomAddRows.R":
+Y devuelve la lista de Hola de objetos en una lista en orden correcto de hello en 'CustomAddRows.R':
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -211,26 +211,26 @@ Y devuelva la lista de objetos de una lista en el orden correcto en "CustomAddRo
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Salida de visualización:** también puede especificar un puerto de salida del tipo *Visualization*que muestra la salida del dispositivo gráfico de R y la salida de la consola. Este puerto no forma parte de la salida de la función de R y no interfiere en el orden de los restantes tipos de puerto de salida. Para agregar un puerto de visualización a los módulos personalizados, agregue un elemento **Output** con un valor de *Visualization* para su atributo **type**:
+**Salida de visualización:** también puede especificar un puerto de salida de tipo *visualización*, que muestra información sobre Hola de salida de consola y dispositivo de gráficos de hello R. Este puerto no es parte de la salida de función hello R y no interfiere con el orden de Hola de hello otro tipos de puerto de salida. Agregar una visualización puerto toohello módulos personalizados de tooadd una **salida** elemento con un valor de *visualización* para su **tipo** atributo:
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
-      <Description>View the R console graphics device output.</Description>
+      <Description>View hello R console graphics device output.</Description>
     </Output>
 
 **Reglas de salida:**
 
-* El valor del atributo **id** del elemento **Output** debe ser un nombre de variable de R válido.
-* El valor del atributo **id** del elemento **Output** no debe superar los 32 caracteres.
-* El valor del atributo **name** del elemento **Output** no debe superar los 64 caracteres.
-* El valor del atributo **type** del elemento **Output** debe ser *Visualization*.
+* Hola valo hello **identificador** atributo de hello **salida** elemento debe ser un nombre de variable válido de R.
+* Hola valo hello **identificador** atributo de hello **salida** elemento no debe superar los 32 caracteres.
+* Hola valo hello **nombre** atributo de hello **salida** elemento no debe superar los 64 caracteres.
+* Hola valo hello **tipo** atributo de hello **salida** el elemento debe estar *visualización*.
 
 ### <a name="arguments"></a>Argumentos
-Se pueden pasar datos adicionales a la función de R a través de los parámetros del módulo que se definen en el elemento **Arguments** . Estos parámetros aparecen en el panel de propiedades de la derecha de la interfaz de usuario de Aprendizaje automático cuando está seleccionado el módulo. Los argumentos pueden ser cualquiera de los tipos admitidos, o bien puede crear una enumeración personalizada cuando sea necesario. Al igual que los elementos **Ports**, los elementos **Arguments** pueden tener un elemento **Description** opcional que especifica el texto que aparece al mantener el ratón sobre el nombre del parámetro.
-Las propiedades opcionales de un módulo, como defaultValue, minValue y maxValue, se pueden agregar a cualquier argumento como atributos de un elemento **Properties** . Las propiedades válidas para el elemento **Properties** dependen del tipo de argumento y se describen con los siguientes tipos de argumento admitidos en la siguiente sección. Argumentos con el **isOptional** propiedad establecida en **"true"** no requieren que el usuario que especifique un valor. Si no se proporciona un valor al argumento, el argumento no se pasa a la función de punto de entrada. Los argumentos de la función de punto de entrada que son opcionales deben tratarse de forma explícita mediante la función, por ejemplo, asignar un valor predeterminado de NULL en la definición de función de punto de entrada. Un argumento opcional solo aplicará las demás restricciones de argumento, es decir, min o max, si el usuario proporciona un valor.
-Al igual que con las entradas y salidas, es fundamental que cada uno de los parámetros tenga valores de identificadores únicos asociados a ellos. En nuestro ejemplo de inicio rápido, el parámetro/id asociado era *swap*.
+Datos adicionales se pueden pasar toohello R función a través de los parámetros del módulo que se definen en hello **argumentos** elemento. Estos parámetros aparecen en panel de propiedades más a la derecha de Hola de interfaz de usuario de aprendizaje de máquina de hello cuando está seleccionado el módulo de Hola. Los argumentos pueden ser cualquiera de los tipos compatibles de Hola o puede crear una enumeración personalizada cuando sea necesario. Toohello similar **puertos** elementos, **argumentos** elementos pueden tener una función opcional **descripción** elemento que especifica el texto hello que aparece al colocar el puntero del mouse Hola nombre de parámetro de Hola.
+Se pueden agregar propiedades opcionales para un módulo, por ejemplo, defaultValue, minValue y maxValue tooany argumento como atributos tooa **propiedades** elemento. Propiedades válidas para hello **propiedades** elemento dependen de tipo de argumento de Hola y se describen con hello admite tipos de argumento en la sección siguiente Hola. Argumentos con hello **isOptional** propiedad establecida demasiado**"true"** no requieren Hola usuario tooenter un valor. Si no se proporciona un valor toohello argumento, argumento de hello no se pasa toohello función de punto de entrada. Argumentos de función de punto de entrada de Hola que son toobe necesidad opcional controle explícitamente la función hello, por ejemplo, asigna un valor predeterminado es NULL en la definición de función de punto de entrada de Hola. Un argumento opcional solo aplicará Hola otras restricciones de argumento, es decir, min o max, si un valor proporcionado por el usuario de Hola.
+Al igual que con las entradas y salidas, es fundamental que cada uno de los parámetros de hello tiene valores de identificador único asociados a ellos. En nuestro tutorial era ejemplo Hola asociados parámetro/id *intercambio*.
 
 ### <a name="arg-element"></a>Elemento Arg
-Los parámetros del módulo se definen mediante el elemento secundario **Arg** de la sección **Arguments** del archivo de definición XML. Al igual que con los elementos secundarios de la sección **Ports**, el orden de los parámetros de la sección **Arguments** define el diseño que se encuentra en la experiencia de usuario. Los parámetros aparecen de arriba abajo en la interfaz de usuario en el mismo orden en que se definen en el archivo XML. Aquí se enumeran los tipos admitidos por Aprendizaje automático para los parámetros. 
+Un parámetro de módulo se define utilizando hello **Arg** elemento secundario de hello **argumentos** sección del archivo de definición XML de Hola. Al igual que con los elementos secundarios Hola Hola **puertos** sección, Hola ordenar los parámetros en hello **argumentos** sección define el diseño de hello en hello UX. Hello parámetros aparecen de arriba hacia abajo en hello interfaz de usuario en el mismo orden en que se definen de hello en el archivo XML de hello. a continuación se enumeran los tipos de Hello admitidos por aprendizaje automático para los parámetros. 
 
 **int** : parámetro de tipo entero (32 bits).
 
@@ -272,7 +272,7 @@ Los parámetros del módulo se definen mediante el elemento secundario **Arg** d
 
 * *Propiedades opcionales*: **default** e **isOptional**
 
-**ColumnPicker**: parámetro de selección de columnas. Este tipo se representa en la experiencia de usuario como selector de columnas. El elemento **Property** se usa aquí para especificar el identificador del puerto desde el que se seleccionarán columnas, donde el tipo de puerto de destino debe ser *DataTable*. El resultado de la selección de columnas se pasará a la función de R como una lista de cadenas que contiene los nombres de columna seleccionados. 
+**ColumnPicker**: parámetro de selección de columnas. Este tipo se representa en hello UX como un selector de columnas. Hola **propiedad** elemento es el Id. de Hola de toospecify aquí usado del puerto de Hola desde el que se seleccionan las columnas, donde el tipo de puerto de destino de hello debe ser de *DataTable*. resultado de Hello de selección de la columna de Hola se pasa toohello R función como una lista de cadenas que contienen nombres de columna de hello seleccionado. 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -280,10 +280,10 @@ Los parámetros del módulo se definen mediante el elemento secundario **Arg** d
         </Arg>
 
 
-* *Propiedades requeridas*: **portId**; coincide con el identificador de un elemento Input con tipo *DataTable*.
+* *Propiedades necesarias*: **portId** -coincidencias Hola Id. de un elemento de entrada con tipo *DataTable*.
 * *Propiedades opcionales*:
   
-  * **allowedTypes** : permite filtrar los tipos de columnas entre los que puede elegir. Los valores válidos son: 
+  * **allowedTypes** -tipos de las columnas de hello filtros desde la que puede elegir. Los valores válidos son: 
     
     * Numeric
     * Booleano
@@ -293,7 +293,7 @@ Los parámetros del módulo se definen mediante el elemento secundario **Arg** d
     * Característica
     * Score
     * Todo
-  * **default** : entre las selecciones predeterminadas válidas para el selector de columna se incluyen: 
+  * **valor predeterminado** -selecciones predeterminadas válido para el selector de columna Hola incluyen: 
     
     * None
     * NumericFeature
@@ -317,7 +317,7 @@ Los parámetros del módulo se definen mediante el elemento secundario **Arg** d
     * AllScore
     * Todo
 
-**Desplegable**: lista (desplegable) especificada por el usuario que se muestra. Los elementos de la lista desplegable se especifican en el elemento **Properties** mediante un elemento **Item**. El **id** de cada **elemento** debe ser único y debe ser una variable de R válida. El valor del **nombre** de un **elemento** actúa como el texto que aparece y el valor que se pasa a la función de R.
+**Desplegable**: lista (desplegable) especificada por el usuario que se muestra. elementos de lista desplegable de Hola se especifican en hello **propiedades** elemento mediante un **elemento** elemento. Hola **identificador** para cada **elemento** debe ser único y una variable de R válida. Hola valo hello **nombre** de un **elemento** actúa como texto hello que se ve y valor de Hola que se pasa la función toohello R.
 
     <Arg id="color" name="Color" type="DropDown">
       <Properties default="red">
@@ -329,17 +329,17 @@ Los parámetros del módulo se definen mediante el elemento secundario **Arg** d
     </Arg>    
 
 * *Propiedades opcionales*:
-  * **default**: el valor de la propiedad predeterminada debe corresponder a un valor de identificador de uno de los elementos **Item**.
+  * **valor predeterminado** : hello valor de la propiedad predeterminada de hello debe corresponder con un valor de identificador de uno de hello **elemento** elementos.
 
 ### <a name="auxiliary-files"></a>Archivos auxiliares
-Cualquier archivo que se coloque en el archivo ZIP de módulo personalizado estará disponible para su uso durante el tiempo de ejecución. Se conservarán todas las estructuras de directorios presentes. Esto significa que el abastecimiento de archivos funcionará igual localmente y en la ejecución de Aprendizaje automático de Azure. 
+Cualquier archivo que se coloca en el archivo ZIP de módulo personalizado es continuo toobe disponible para su uso durante el tiempo de ejecución. Se conservarán todas las estructuras de directorios presentes. Esto significa que funciona de origen de archivo Hola mismo localmente y en la ejecución de aprendizaje automático de Azure. 
 
 > [!NOTE]
-> Observe que todos los archivos se extraen en el directorio 'src', por lo que todas las rutas de acceso deberían tener el prefijo 'src/'.
+> Tenga en cuenta que todos los archivos extraídos too'src' directory para que todas las rutas de acceso deben tener ' src /' prefijo.
 > 
 > 
 
-Por ejemplo, supongamos que desea quitar tanto todas las filas con ND como todas las filas duplicadas del conjunto de datos antes de generarlo en CustomAddRows y que ya ha escrito una función de R que lo hace en el archivo RemoveDupNARows.R:
+Por ejemplo, suponga que desee tooremove las filas con NAs de conjunto de datos de Hola y quita todas las filas duplicadas, antes de generar en CustomAddRows y ya ha escrito una función de R que lo hace en un archivo RemoveDupNARows.R:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -348,7 +348,7 @@ Por ejemplo, supongamos que desea quitar tanto todas las filas con ND como todas
         finalDataFrame <- dataFrame[complete.cases(dataFrame),]
         return(finalDataFrame)
     }
-Puede originar el archivo auxiliar RemoveDupNARows.R en la función CustomAddRows:
+Puede obtener el archivo auxiliar RemoveDupNARows.R Hola Hola CustomAddRows función:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
         source("src/RemoveDupNARows.R")
@@ -364,10 +364,10 @@ Puede originar el archivo auxiliar RemoveDupNARows.R en la función CustomAddRow
 A continuación, cargue un archivo zip que contenga "myAddRows.R", "myAddRows.xml" y "removeDupNARows.R" como módulo de R personalizado.
 
 ## <a name="execution-environment"></a>Entorno de ejecución
-El entorno de ejecución del script de R usa la misma versión de R que el módulo **Ejecutar script de R** y puede usar los mismos paquetes predeterminados. También puede agregar paquetes de R adicionales al módulo personalizado incluyéndolos en el paquete zip del módulo personalizado. Solo tiene que cargarlos en el script de R como lo haría en su propio entorno de R. 
+entorno de ejecución de Hola para script de Hola R usa Hola misma versión de R que hello **ejecutar Script de R** módulo y puede usar Hola mismo predeterminado paquetes. También puede agregar más módulo personalizado de R paquetes tooyour incluyéndolos en el paquete comprimido de módulo personalizado de Hola. Solo tiene que cargarlos en el script de R como lo haría en su propio entorno de R. 
 
-**limitaciones del entorno de ejecución** se incluyen:
+**Limitaciones del entorno de ejecución de hello** incluyen:
 
-* Sistema de archivos no persistentes: los archivos escritos cuando se ejecuta el módulo personalizado no persistirán en varias ejecuciones del mismo módulo.
+* Sistema de archivos no persistentes: no se conservan los archivos escritos cuando se ejecuta el módulo personalizado de Hola durante varias ejecuciones de hello mismo módulo.
 * Sin acceso de red
 

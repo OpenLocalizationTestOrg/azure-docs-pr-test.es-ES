@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de script de Azure PowerShell: creación de una instantánea desde un VHD para crear varios discos administrados idénticos en poco tiempo | Microsoft Docs"
-description: "Ejemplo de script de Azure PowerShell: creación de una instantánea desde un VHD para crear varios discos administrados idénticos en poco tiempo"
+title: "aaaAzure ejemplo de Script de PowerShell: crear una instantánea de un disco duro virtual toocreate varios discos administrados idénticos en pequeña cantidad de tiempo | Documentos de Microsoft"
+description: "Script de Azure PowerShell de ejemplo: crear una instantánea de un disco duro virtual toocreate varios discos administrados idénticos en pequeña cantidad de tiempo"
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 8588a33a1f0b4cce0059a40239301587cdc28920
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0a13e399b692f32b3772add39fe5b5c023808c5e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-snapshot-from-a-vhd-to-create-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>Creación de una instantánea desde un VHD para crear varios discos administrados idénticos en poco tiempo con PowerShell
+# <a name="create-a-snapshot-from-a-vhd-toocreate-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>Crear una instantánea de un disco duro virtual toocreate varios discos administrados idénticos en pequeña cantidad de tiempo con PowerShell
 
-Este script crea una instantánea desde un archivo VHD en una cuenta de almacenamiento en una misma suscripción o en una suscripción distinta. Use este script para importar un VHD especializado (no generalizado ni preparado con SysPrep) a una instantánea y luego usar esta instantánea para crear varios discos administrados idénticos en poco tiempo. Además, úsela para importar un VHD de datos a una instantánea y luego use esta instantánea para crear varios discos administrados en poco tiempo. 
+Este script crea una instantánea desde un archivo VHD en una cuenta de almacenamiento en una misma suscripción o en una suscripción distinta. Use este tooimport una instantánea de tooa de disco duro virtual (no generalizado/preparada con Sysprep) especializada de script y use después Hola instantánea toocreate varios discos administrados idénticos en poco tiempo. Además, usarlo tooimport una instantánea de tooa de disco duro virtual de datos y, a continuación, Hola instantánea toocreate varios discos administrados en poco tiempo. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -31,16 +31,16 @@ Este script crea una instantánea desde un archivo VHD en una cuenta de almacena
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-powershell[main](../../../powershell_scripts/storage/create-snapshots-from-vhd-in-different-subscription/create-snapshots-from-vhd-in-different-subscription.ps1 "Creación de instantánea desde VHD")]
+[!code-powershell[main](../../../powershell_scripts/storage/create-snapshots-from-vhd-in-different-subscription/create-snapshots-from-vhd-in-different-subscription.ps1 "Create snapshot from VHD")]
 
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza los comandos siguientes para crear un disco administrado desde un archivo VHD en una suscripción distinta. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script usará los siguientes comandos toocreate un disco administrado desde un disco duro virtual en otra suscripción. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
-| [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | Crea la configuración de disco que se usa para la creación del disco. Incluye tipo de almacenamiento, ubicación, identificador de recurso de la cuenta de almacenamiento donde se almacena el VHD principal y el URI de VHD del VHD principal. |
+| [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | Crea la configuración de disco que se usa para la creación del disco. Incluye el tipo de almacenamiento, la ubicación, Id. de cuenta de almacenamiento de Hola donde se almacena el VHD primario de Hola de recurso y URI de VHD de VHD primario de Hola. |
 | [New-AzureRmDisk](/powershell/module/azurerm.compute/New-AzureRmDisk) | Crea un disco mediante la configuración de disco, el nombre del disco y el nombre del grupo de recursos que se pasan como parámetros. |
 
 ## <a name="next-steps"></a>Pasos siguientes
@@ -50,6 +50,6 @@ Este script utiliza los comandos siguientes para crear un disco administrado des
 
 [Creación de una máquina virtual conectando un disco administrado como disco del SO](./../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Para obtener más información sobre el módulo de Azure PowerShell, consulte la [documentación de Azure PowerShell](/powershell/azure/overview).
+Para obtener más información sobre el módulo de PowerShell de Azure de hello, consulte [documentación de Azure PowerShell](/powershell/azure/overview).
 
-Encontrará más ejemplos de scripts de Azure PowerShell de máquina virtual en la [documentación sobre máquinas virtuales Windows de Azure](../../virtual-machines/windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ejemplos de secuencias de comandos de PowerShell de máquina virtual adicional pueden encontrarse en hello [documentación de la máquina virtual de Windows Azure](../../virtual-machines/windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

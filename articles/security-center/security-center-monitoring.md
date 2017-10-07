@@ -1,6 +1,6 @@
 ---
-title: "Supervisión de la seguridad en Azure Security Center | Microsoft Docs"
-description: "Este artículo le ayuda a comenzar a trabajar con las funcionalidades de supervisión en Azure Security Center."
+title: "supervisión de aaaSecurity en el centro de seguridad de Azure | Documentos de Microsoft"
+description: "Este artículo le ayuda a tooget a trabajar con las funciones en el centro de seguridad de Azure de seguimiento."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
 ms.author: yurid
-ms.openlocfilehash: 93fff129afb04e3a1896d275551f585f45658d6d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 43c2a8864d5fe27ba44b0d7bc979db970305ec17
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Supervisión del estado de seguridad en el Centro de seguridad de Azure
-Este artículo le ayuda a usar las funcionalidades de supervisión de Azure Security Center para supervisar el cumplimiento de las directivas.
+En este artículo le ayuda a usar hello las capacidades de seguimiento en las directivas de cumplimiento de toomonitor centro de seguridad de Azure.
 
 ## <a name="what-is-security-health-monitoring"></a>¿Qué es la supervisión del estado de seguridad?
-Con frecuencia se piensa que supervisar es observar y esperar que se produzca un evento, para así poder reaccionar ante la situación. La supervisión de seguridad se refiere a contar con una estrategia proactiva que audita los recursos a fin de identificar los sistemas que no cumplen con los estándares o los procedimientos recomendados de la organización.
+Creemos que a menudo de supervisión como observan y espera que un evento toooccur que podamos reaccionar toohello situación. Supervisión de la seguridad refiere toohaving una estrategia proactiva que audita los sistemas de tooidentify de recursos que no cumplen los estándares de la organización o los procedimientos recomendados.
 
 ## <a name="monitoring-security-health"></a>Supervisión del estado de seguridad
-Después de habilitar las [directivas de seguridad](security-center-policies.md) para los recursos de una suscripción, Security Center analizará la seguridad de los recursos para identificar vulnerabilidades potenciales. La información acerca de la configuración de la red está disponible de inmediato. Sin embargo, la información acerca de la configuración de las máquinas virtuales, como el estado de las actualizaciones de seguridad y la configuración del sistema operativo, puede tardar una hora, o más, en estar disponible. Puede ver el estado de seguridad de sus recursos, además de cualquier problema, en la sección **Prevención**. Una lista de dichos problemas también se puede encontrar en el icono **Recomendaciones**.
+Después de habilitar [las directivas de seguridad](security-center-policies.md) para obtener recursos de una suscripción, el centro de seguridad analiza la seguridad de Hola de sus tooidentify posibles vulnerabilidades de recursos. La información acerca de la configuración de la red está disponible de inmediato. Puede tardar una hora o para obtener información acerca de la configuración de máquina virtual, como la seguridad de la actualización de estado y configuración del sistema operativo, toobecome disponible. Puede ver el estado de los recursos y de los problemas de seguridad de Hola Hola **prevención** sección. También puede ver una lista de los problemas en hello **recomendaciones** icono.
 
-Para más información sobre cómo aplicar las recomendaciones, lea [Implementación de recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md).
+Para obtener más información acerca de cómo obtener recomendaciones tooapply, leer [implementar recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md).
 
-En la sección **Prevención**, puede supervisar el estado de seguridad de los recursos. En el ejemplo siguiente, puede ver que, en el icono de cada recurso (Proceso, Redes, Almacenamiento y datos, y Aplicación) tiene el número total de problemas que se han identificado.
+En hello **prevención** sección, puede supervisar el estado de seguridad de Hola de los recursos. En el siguiente ejemplo de Hola, puede ver que en el mosaico de cada recurso (proceso, redes, almacenamiento de & datos y aplicaciones) tiene Hola número total de problemas que se identificaron.
 
 ![Icono de estado de seguridad de los recursos](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
 
 ### <a name="monitor-compute"></a>Supervisión de proceso
-Al hacer clic en el icono **Proceso**, se abre la hoja **Proceso**, que contiene tres pestañas:
+Al hacer clic en **proceso** icono, hello **proceso** hoja que se abre muestra tres fichas:
 
 - **Overview** (Información general): recomendaciones de supervisión y de la máquina virtual.
 - **Virtual Machines** (Máquinas virtuales): lista de todas las máquinas virtuales y su estado de seguridad actual.
@@ -45,86 +45,86 @@ Al hacer clic en el icono **Proceso**, se abre la hoja **Proceso**, que contiene
 
 ![Actualizaciones de sistema que faltan por máquina virtual](./media/security-center-monitoring/security-center-monitoring-fig1-new002-2017.png)
 
-Todas las pestañas pueden tener varias secciones y en cada una de ella se puede seleccionar cualquiera de las opciones para ver más detalles acerca de los pasos recomendados para abordar un problema concreto. 
+En cada pestaña puede tener varias secciones, y en cada sección, puede seleccionar una opción individual toosee más detalles sobre Hola recomienda pasos tooaddress este problema. 
 
 #### <a name="monitoring-recommendations"></a>Supervisión de las recomendaciones
-En esta sección se muestra el número total de máquinas virtuales que se inicializaron para la recopilación de datos y su estado actual. Una vez que se haya inicializado la recopilación de datos en todas las máquinas virtuales, estarán listas para recibir las directivas de seguridad de Security Center. Al hacer clic en esta entrada, se abre la hoja **VM Agent is missing or not responding** (El agente de máquina virtual falta o no responde). 
+Esta sección muestra el número total de Hola de máquinas virtuales que se han inicializado para la recopilación de datos y sus estados actuales. Una vez todas las máquinas virtuales que inicializa la recopilación de datos, estará listo tooreceive directivas de seguridad del centro de seguridad. Al hacer clic en esta entrada, Hola **agente de máquina virtual es falta o no responde** abre la hoja. 
 
 ![Actualizaciones de sistema que faltan por máquina virtual](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
 
 #### <a name="virtual-machine-recommendations"></a>Recomendaciones sobre máquinas virtuales
-Esta sección contiene un conjunto de [recomendaciones para cada máquina virtual](security-center-virtual-machine-recommendations.md) supervisadas por Azure Security Center. La primera columna muestra la recomendación. La segunda columna muestra el número total de máquinas virtuales a las que afecta esa recomendación. La tercera columna muestra la gravedad del problema como se muestra en la captura de pantalla siguiente.
+Esta sección contiene un conjunto de [recomendaciones para cada máquina virtual](security-center-virtual-machine-recommendations.md) supervisadas por Azure Security Center. Hola primera columna muestra recomendación Hola. Hola segunda columna muestra número total de Hola de máquinas virtuales que se ven afectados por dicha recomendación. Hola tercera columna muestra gravedad Hola de problema de hello como se muestra en la siguiente captura de pantalla de Hola.
 
 ![Recomendaciones sobre máquinas virtuales](./media/security-center-monitoring/security-center-monitoring-fig1-new004-2017.png)
 
 > [!NOTE]
-> Solo las máquinas virtuales con al menos un punto de conexión público se muestran en la hoja de **estado de red** en la lista de **topología de red**.
+> Se muestran solo las máquinas virtuales que tienen al menos un punto de conexión público en hello **redes mantenimiento** hoja en hello **topología de red** lista.
 >
 >
 
-Cada recomendación tiene un conjunto de acciones que se podrán realizar una vez que haga clic en ella. Por ejemplo, si hace clic en **Actualizaciones del sistema que faltan**, se abrirá la hoja **Actualizaciones del sistema que faltan**. En dicha hoja se enumeran las máquinas virtuales a las que faltan revisiones y la gravedad de la actualización que falta, como se muestra en la siguiente captura de pantalla.
+Cada recomendación tiene un conjunto de acciones que se podrán realizar una vez que haga clic en ella. Por ejemplo, si hace clic en **que les faltan actualizaciones de sistema**, hello **que les faltan actualizaciones de sistema** abre la hoja. Muestra máquinas virtuales de Hola que faltan revisiones y Hola gravedad de actualización que falta Hola tal y como se muestra en hello siguiente captura de pantalla.
 
 ![Actualizaciones de sistema que faltan para las máquinas virtuales](./media/security-center-monitoring/security-center-monitoring-fig5-ga.png)
 
-La hoja **Actualizaciones del sistema que faltan** muestra una tabla con la siguiente información:
+Hola **que les faltan actualizaciones de sistema** hoja muestra una tabla con hello siguiente información:
 
-* **MÁQUINA VIRTUAL**: el nombre de la máquina virtual en la que faltan actualizaciones.
-* **ACTUALIZACIONES DEL SISTEMA**: el número actualizaciones del sistema que faltan.
-* **HORA DEL ÚLTIMO EXAMEN**: la hora en que Security Center realizó el último examen de la máquina virtual en busca de actualizaciones.
-* **ESTADO**: el estado actual de la recomendación:
-  * **Abierta**: la recomendación aún no se ha abordado.
-  * **En curso**: la recomendación se está aplicando actualmente a esos recursos y no se requiere ninguna acción por su parte.
-  * **Resuelta**: la recomendación ya terminó. (Si se ha resuelto el problema, la entrada aparecerá atenuada).
-* **GRAVEDAD**: describe la gravedad de una recomendación concreta:
+* **MÁQUINA VIRTUAL**: nombre de Hola de máquina virtual de Hola que faltan actualizaciones.
+* **ACTUALIZACIONES del sistema**: Hola número de actualizaciones del sistema que faltan.
+* **HORA del último RECORRIDO**: tiempo de presentación que el centro de seguridad último análisis de máquina virtual de Hola para las actualizaciones.
+* **ESTADO**: Hola estado actual de la recomendación de hello:
+  * **Abra**: recomendación de hello no se haya tratado todavía.
+  * **En curso**: recomendación de saludo se está aplicada toothose recursos y no se requiere ninguna acción por parte del usuario.
+  * **Resolver**: recomendación de hello ya ha terminado. (Cuando se ha resuelto el problema de hello, aparece atenuado entrada hello).
+* **GRAVEDAD**: describe la gravedad de Hola de esa recomendación determinada:
   * **Alta**: existe una vulnerabilidad en un recurso importante (aplicación, máquina virtual o grupo de seguridad de red) y requiere atención.
-  * **Media**: para completar un proceso o eliminar una vulnerabilidad se requieren pasos adicionales o no críticos.
-  * **Baja**: es preciso abordar una vulnerabilidad, pero esta no requiere una atención inmediata. (De manera predeterminada no se muestran las recomendaciones bajas, pero si desea verlas, puede filtrar por ellas).
+  * **Medio**: pasos adicionales o no críticos son toocomplete requiere un proceso o eliminar una vulnerabilidad.
+  * **Baja**: es preciso abordar una vulnerabilidad, pero esta no requiere una atención inmediata. (De forma predeterminada, no se presentan recomendaciones bajas, pero puede filtrar según las recomendaciones bajas si desea que tooview les.)
 
-Para ver los detalles de las recomendaciones, haga clic en el nombre de la máquina virtual. Aparecerá una nueva hoja para esa máquina virtual con la lista de actualizaciones tal y como se muestra en la siguiente captura de pantalla.
+detalles de recomendación de hello tooview, haga clic en nombre de Hola de máquina virtual de Hola. Una nueva hoja de esa máquina virtual se abre con la lista Hola de actualizaciones tal y como se muestra en la siguiente captura de pantalla de Hola.
 
 ![Actualizaciones de sistema que faltan para una máquina virtual concreta](./media/security-center-monitoring/security-center-monitoring-fig6-ga.png)
 
 > [!NOTE]
-> Las recomendaciones de seguridad son las mismas que aparecen en la hoja **Recomendaciones**. Para más información sobre cómo resolver las recomendaciones, consulte [Implementación de recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md). Esto no se aplica solo a las máquinas virtuales, sino también a todos los recursos disponibles en el icono **Estado de los recursos**.
+> Hello las recomendaciones de seguridad aquí son Hola igual que los de hello **recomendaciones** hoja. Vea hello [implementar recomendaciones de seguridad en Azure Security Center](security-center-recommendations.md) artículo para obtener más información acerca de cómo tooresolve recomendaciones. Esto es aplicable no solo para máquinas virtuales sino también para todos los recursos que están disponibles en hello **estado de los recursos** icono.
 >
 >
 
 #### <a name="virtual-machines-section"></a>Sección Máquinas virtuales
-La sección de máquinas virtuales ofrece una visión general de todas las máquinas virtuales y recomendaciones. Cada columna representa un conjunto de recomendaciones tal como se muestra en la siguiente captura de pantalla:
+sección de máquinas virtuales de Hello ofrece una visión general de todas las máquinas virtuales y las recomendaciones. Cada columna representa un conjunto de recomendaciones tal y como se muestra en la siguiente captura de pantalla de hello:
 
 ![Información general de todas las máquinas virtuales y recomendaciones](./media/security-center-monitoring/security-center-monitoring-fig1-new005-2017.png)
 
-El icono que aparece en cada recomendación le ayuda a identificar rápidamente tanto las máquinas virtuales que necesitan atención como el tipo de recomendación que necesitan.
+icono de Hola que aparece debajo de cada recomendación, le ayuda a tooquickly identificar máquinas virtuales de Hola que necesitan atención y tipo de la recomendación de Hola.
 
-En el ejemplo anterior, una máquina virtual tiene una recomendación crítica sobre la protección del punto de conexión. Para más información acerca de la máquina virtual, haga clic en ella. Se abrirá una nueva hoja que representa a esta máquina virtual como se muestra en la captura de pantalla siguiente.
+En el ejemplo anterior de hello, una máquina virtual tiene una recomendación relativa a la protección de extremos crítica. tooget obtener más información acerca de la máquina virtual de hello, haga clic en él. Una nueva hoja que se abre representa esta máquina virtual tal como se muestra en la siguiente captura de pantalla de Hola.
 
 ![Detalles sobre la seguridad de máquina virtual](./media/security-center-monitoring/security-center-monitoring-fig8-ga.png)
 
-Esta hoja tiene los detalles de seguridad de la máquina virtual. En la parte inferior de la hoja puede ver la acción recomendada y la gravedad de cada problema.
+Esta hoja con información detallada de la seguridad de hello para la máquina virtual de Hola. De hello parte inferior de esta hoja, puede ver Hola recomienda acción y la gravedad de Hola de cada problema.
 
 #### <a name="cloud-services-section"></a>Sección de servicios en la nube
-En el caso de los servicios en la nube, se crea una recomendación cuando la versión del sistema operativo está obsoleta, como se muestra en la siguiente captura de pantalla:
+Servicios de nube, se crea una recomendación cuando la versión del sistema operativo Hola está anticuada tal y como se muestra en la siguiente captura de pantalla de hello:
 
 ![Estado de mantenimiento de los servicios en la nube](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
 
-En un escenario en el que haya alguna recomendación (lo que no ocurre en el ejemplo anterior), es preciso seguir los pasos descritos en la recomendación para actualizar la versión del sistema operativo. Cuando haya alguna actualización disponible, aparecerá una alerta (su color, rojo o naranja, depende de la gravedad del problema). Al hacer clic en esta alerta en las filas WebRole1 (ejecuta Windows Server con la aplicación web implementada automáticamente en IIS) o WorkerRole1 (ejecuta Windows Server con la aplicación web implementada automáticamente en IIS), se abre una nueva hoja con más datos acerca de esta recomendación, como se muestra en la siguiente captura de pantalla:
+En un escenario donde haya recomendación (que no es así de hello en hello ejemplo anterior), deberá toofollow pasos de hello en la versión de sistema operativo de hello recomendación tooupdate Hola. Cuando hay disponible una actualización, tendrá una alerta (de color rojo o naranja - depende Hola gravedad del problema de hello). Al hacer clic en esta alerta en filas de hello WebRole1 (se ejecuta Windows Server con su tooIIS de aplicación que se implementan de forma automática de web) o WorkerRole1 (se ejecuta Windows Server con su tooIIS de aplicación que se implementan automáticamente web), se abre una nueva hoja con más detalles sobre esto recomendación tal y como se muestra en la siguiente captura de pantalla de hello:
 
 ![Detalles del servicio en la nube](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
-Para ver una explicación más preceptiva con respecto a esta recomendación, haga clic en **Actualizar versión del SO** en la columna **DESCRIPCIÓN**. Se abrirá la hoja **Actualizar versión del SO (versión preliminar)** con más detalles.
+toosee una explicación más descriptiva acerca de esta recomendación, haga clic en **versión del sistema operativo de la actualización** en hello **descripción** columna. Hola **versión del sistema operativo de la actualización (vista previa)** hoja se abre con más detalles.
 
 ![Recomendaciones de servicios en la nube](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 
 ### <a name="monitor-virtual-networks"></a>Supervisión de redes virtuales
-Al hacer clic en el icono **Redes**, se abre la hoja **Redes**, donde encontrará más información, como se muestra en la siguiente captura de pantalla:
+Al hacer clic en **red** icono, hello **red** hoja se abre con más detalles, como se muestra en la siguiente captura de pantalla de Hola:
 
 ![Hoja Redes](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
 #### <a name="networking-recommendations"></a>Recomendaciones de redes
-De manera similar a la información del estado de los recursos de las máquinas virtuales, esta hoja proporciona una lista resumida de los problemas en la parte superior de la hoja y una lista de las redes supervisadas en la parte inferior.
+Al igual que hello información de estado del recurso de la máquina virtual, esta hoja proporciona una lista resumida de los problemas en la parte superior de Hola de hoja de hello y una lista de redes supervisadas en la parte inferior de Hola.
 
-La sección de desglose del estado de las redes enumera los potenciales problemas de seguridad y ofrece [recomendaciones](security-center-network-recommendations.md). Entre los posibles problemas se pueden incluir:
+Hola sección de clasificación de estado de red se enumeran los posibles problemas de seguridad y ofrece [recomendaciones](security-center-network-recommendations.md). Entre los posibles problemas se pueden incluir:
 
 * Firewall de próxima generación (NGFW) no instalado
 * Grupos de seguridad de red en subredes no habilitados
@@ -132,27 +132,27 @@ La sección de desglose del estado de las redes enumera los potenciales problema
 * Restringir el acceso externo por medio de puntos de conexión externos públicos
 * Puntos de conexión con conexión a Internet correctos
 
-Al hacer clic en una recomendación, se abre una hoja nueva con más detalles acerca de la recomendación, como se muestra en el ejemplo siguiente.
+Al hacer clic en una recomendación, se abre una nueva hoja con más detalles acerca de la recomendación de Hola tal y como se muestra en el siguiente ejemplo de Hola.
 
-![Detalles de una recomendación en la hoja de redes](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
+![Detalles de una recomendación en la hoja de redes de Hola](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
 
-En este ejemplo, la hoja **Configurar los grupos de seguridad de red que faltan para las subredes** tiene una lista de subredes y máquinas virtuales que carecen de la protección de grupo de seguridad de red. Si hace clic en la subred a la que desea aplicar el grupo de seguridad de red, se abrirá otra hoja.
+En este ejemplo, Hola **configurar falta red grupos de seguridad para las subredes** hoja tiene una lista de subredes y protección del grupo de seguridad de red de máquinas virtuales que faltan. Si hace clic en hello subred toowhich desea que el grupo de seguridad de red de tooapply hello, se abre otra hoja.
 
-En la hoja **Elegir grupo de seguridad de red**, puede seleccionar el grupo de seguridad de red más adecuado para la subred o crear uno.
+Hola **elegir grupo de seguridad de red** hoja, puede seleccionar grupo de seguridad de red más adecuada de hello para la subred de hello, o puede crear un nuevo grupo de seguridad de red.
 
 #### <a name="internet-facing-endpoints-section"></a>Sección Internet facing endpoints
-En la sección **Puntos de conexión accesibles desde Internet**, podrá ver las máquinas virtuales que están configuradas con un punto de conexión accesible desde Internet y su estado actual.
+Hola **con conexión a puntos de conexión de Internet** sección, puede ver máquinas virtuales de Hola que están actualmente configuradas con un orientada hacia el extremo y el estado actual de Internet.
 
 ![Máquinas virtuales configuradas con puntos de conexión accesibles desde Internet y su estado](./media/security-center-monitoring/security-center-monitoring-fig10-ga.png)
 
-Esta tabla incluye el nombre del punto de conexión que representa la máquina virtual, la dirección IP accesible desde Internet, el estado de gravedad actual del grupo de seguridad de red y el NGFW. La tabla está ordenada por gravedad:
+Esta tabla tiene el nombre de extremo de Hola que representa máquina virtual de hello, hello orientado a la dirección IP, Internet y Hola estado actual de gravedad del grupo de seguridad de red de Hola y Hola NGFW. Hola tabla está ordenada por gravedad:
 
 * Rojo (arriba): alta prioridad; se debe solucionar de inmediato.
 * Naranja: prioridad media; se debe solucionar lo antes posible.
 * Verde (al final): estado de mantenimiento.
 
 #### <a name="networking-topology-section"></a>Sección Networking topology
-En la sección **Topología de red**, se ofrece una vista jerárquica de los recursos, como se muestra en la siguiente captura de pantalla:
+Hola **topología de red** sección tiene una vista jerárquica de los recursos de hello tal y como se muestra en la siguiente captura de pantalla de hello:
 
 ![Vista jerárquica de los recursos en la sección de topología de redes](./media/security-center-monitoring/security-center-monitoring-fig121-new4.png)
 
@@ -162,55 +162,55 @@ Esta tabla está ordenada (máquinas virtuales y subredes) por gravedad:
 * Naranja: prioridad media; se debe solucionar lo antes posible.
 * Verde (al final): estado de mantenimiento.
 
-En esta vista de topología, el primer nivel tiene [redes virtuales](../virtual-network/virtual-networks-overview.md), [puertas de enlace de red virtual](/vpn-gateway/vpn-gateway-site-to-site-create.md) y [redes virtuales (clásicas)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). El segundo nivel tiene subredes y el tercero, las máquinas virtuales que pertenecen a esas subredes. La columna derecha contiene el estado actual del grupo de seguridad de red para esos recursos, tal como se muestra en el ejemplo siguiente:
+En esta vista de topología, tiene el primer nivel de hello [redes virtuales](../virtual-network/virtual-networks-overview.md), [puertas de enlace de red virtual](/vpn-gateway/vpn-gateway-site-to-site-create.md), y [redes virtuales (clásicas)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). segundo nivel de Hello tiene subredes y tercer nivel de hello tiene máquinas virtuales de Hola que pertenecen toothose subredes. columna derecha de Hello tiene el estado actual de hello del grupo de seguridad de red de Hola para esos recursos, como se muestra en el siguiente ejemplo de Hola:
 
-![Estado del grupo de seguridad de red en la sección de topología de redes](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
+![Estado del grupo de seguridad de red de hello en la sección de topología de red](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
-En la parte inferior de esta hoja, aparecerán las recomendaciones para esta máquina virtual, parecidas a las que se han descrito antes. Puede hacer clic en una recomendación para ver más información o aplicar la configuración o el control de seguridad necesario.
+Hello parte inferior de esta hoja contiene recomendaciones para esta máquina virtual, que es similar el Hola toowhat se ha descrito anteriormente. Puede hacer clic una toolearn recomendación más o aplicar Hola necesitado un control de seguridad o configuración.
 
 ### <a name="monitor-storage--data"></a>Supervisión de Almacenamiento y datos
 
-Al hacer clic en **Almacenamiento y datos** en la sección **Prevención**, se abre la hoja **Recursos de datos** con las recomendaciones para SQL y Storage. También tiene [recomendaciones](security-center-sql-service-recommendations.md) sobre el estado general de la base de datos. Para más información acerca del cifrado de almacenamiento, consulte [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Habilitación del cifrado para la cuenta de almacenamiento de Azure en Azure Security Center).
+Al hacer clic en **almacenamiento & datos** en hello **prevención** sección hello **los recursos de datos** hoja se abre con las recomendaciones para SQL y almacenamiento. También tiene [recomendaciones](security-center-sql-service-recommendations.md) Hola general estado de mantenimiento de base de datos de Hola. Para más información acerca del cifrado de almacenamiento, consulte [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Habilitación del cifrado para la cuenta de almacenamiento de Azure en Azure Security Center).
 
 ![Recursos de datos](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
 
-En **SQL Recommendations** (Recomendaciones de SQL) puede hacer clic en cualquier recomendación y obtener más detalles acerca de cómo realizar más acciones para resolver un problema. El ejemplo siguiente muestra la expansión de la recomendación **Auditoría de la base de datos y detección de amenazas en bases de datos de SQL**.
+En **recomendaciones de SQL**, puede hacer clic en cualquier recomendación y obtener más detalles sobre tooresolve de acción más un problema. Hello en el ejemplo siguiente se muestra expansión Hola de hello **detección de auditoría de base de datos y amenazas en las bases de datos SQL** recomendación.
 
 ![Detalles acerca de una recomendación de SQL](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
 
-La hoja **Habilitar la auditoría y la detección de amenazas en bases de datos SQL** contiene la siguiente información:
+Hola **habilitar auditoría y amenaza para la detección en las bases de datos SQL** hoja tiene Hola siguiente información:
 
 * Una lista de bases de datos SQL.
-* El servidor en el que se encuentran.
-* Información sobre si esta configuración se heredó del servidor o si es única en la base de datos.
-* El estado actual.
-* La gravedad del problema.
+* servidor de Hello en el que se encuentran
+* Información sobre si esta configuración se ha heredado del servidor de Hola o si es único en esta base de datos
+* estado actual de Hola
+* gravedad de Hola de problema de Hola
 
-Al hacer clic en la base de datos para abordar esta recomendación, se abrirá la hoja **Auditoría y detección de amenazas**, como se muestra en la siguiente pantalla.
+Al hacer clic en hello tooaddress de base de datos de esta recomendación, Hola **detección de auditoría y amenaza** hoja se abre como se muestra en hello después de la pantalla.
 
 ![Hoja de auditoría y detección de amenazas](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
 
-Para habilitar la auditoría, seleccione **Activar** en la opción **Auditoría**.
+auditoría de tooenable, seleccione **ON** en hello **auditoría** opción.
 
 ### <a name="monitor-applications"></a>Supervisión de aplicaciones
 
-Si la carga de trabajo de Azure tiene aplicaciones en las [máquinas virtuales (creadas con Resource Manager)](../azure-resource-manager/resource-manager-deployment-model.md) con puertos web expuestos (puertos TCP 80 y 443), Security Center puede supervisarlas para identificar posibles problemas de seguridad y recomendar pasos para su corrección. Al hacer clic en el icono **Aplicaciones**, se abrirá la hoja **Aplicaciones** con una serie de recomendaciones en la sección de **Recomendaciones sobre aplicaciones**. También mostrará el desglose de la aplicación por host o IP virtual, tal como aparece en la siguiente captura de pantalla.
+Si la carga de trabajo de Azure tiene aplicaciones ubicadas en [máquinas virtuales (creadas mediante el Administrador de recursos de Azure)](../azure-resource-manager/resource-manager-deployment-model.md) con puertos web expuestos (puertos TCP 80 y 443), el centro de seguridad puede supervisar los posibles problemas de seguridad tooidentify y recomienda los pasos de corrección. Al hacer clic en hello **aplicaciones** icono, hello **aplicaciones** hoja se abre con una serie de recomendaciones de hello **las recomendaciones de aplicaciones** sección. También se muestra el desglose de la aplicación hello por dirección IP virtual/host tal y como se muestra en la siguiente captura de pantalla de Hola.
 
 ![Estado de la seguridad de las aplicaciones](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
-Al igual que en las restantes recomendaciones, puede hacer clic en ella para ver más información acerca del problema y cómo corregirlo. El ejemplo que se muestra en la ilustración siguiente es una aplicación que se identificó como aplicación web no segura. Cuando selecciona la aplicación que se consideró como no segura, se abre otra hoja con la siguiente opción disponible:
+Al igual que con hello otras recomendaciones, puede hacer clic en una recomendación toosee más detalles sobre el problema de Hola y cómo tooremediate. ejemplo de Hola Hola figura siguiente es una aplicación que se identificó como una aplicación web no segura. Cuando se selecciona la aplicación hello que se considera no seguro, abre otra hoja con hello después de la opción disponible:
 
 ![Detalles acerca de una aplicación que no es segura](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
 
-Esta hoja tendrá una lista de todas las recomendaciones para esta aplicación. Al hacer clic en la recomendación **Agregar un firewall de aplicaciones web**, se abrirá la hoja **Agregar un firewall de aplicaciones web**, en la que encontrará las opciones necesarias para instalar un firewall de aplicaciones web (WAF) de un asociado, como se muestra en la siguiente captura de pantalla.
+Esta hoja tendrá una lista de todas las recomendaciones para esta aplicación. Al hacer clic en hello **agregar un servidor de seguridad de la aplicación web** recomendación, hello **agregar un servidor de seguridad de la aplicación Web** hoja abre con opciones para tooinstall un servidor de aplicaciones web (WAFS) de un socio comercial como se muestra en la siguiente captura de pantalla de Hola.
 
 ![Cuadro de diálogo Agregar un firewall de aplicaciones web](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
 
-## <a name="see-also"></a>Consulte también
-En este artículo, aprendió a usar las funcionalidades de supervisión en Azure Security Center. Para obtener más información sobre el Centro de seguridad de Azure, consulte los siguientes recursos:
+## <a name="see-also"></a>Otras referencias
+En este artículo, se habrá aprendido cómo toouse capacidades en el centro de seguridad de Azure de supervisión. toolearn más información acerca del centro de seguridad de Azure, vea Hola recursos siguientes:
 
-* [Establecimiento de directivas de seguridad en Azure Security Center](security-center-policies.md): obtenga información sobre cómo configurar los ajustes de seguridad en Azure Security Center.
-* [Administración y respuesta a las alertas de seguridad en Azure Security Center](security-center-managing-and-responding-alerts.md): obtenga información sobre cómo administrar y responder a alertas de seguridad.
-* [Supervisión de las soluciones de asociados con Azure Security Center](security-center-partner-solutions.md): aprenda a supervisar el estado de mantenimiento de las soluciones de asociados.
-* [Preguntas más frecuentes sobre Azure Security Center](security-center-faq.md): encuentre las preguntas más frecuentes sobre el uso del servicio.
+* [Configuración de directivas de seguridad de Azure Security Center](security-center-policies.md): Obtenga información acerca de cómo tooconfigure configuración de seguridad en el centro de seguridad de Azure.
+* [Toosecurity responde y administrar las alertas en Azure Security Center](security-center-managing-and-responding-alerts.md): Obtenga información acerca de cómo las alertas de toosecurity toomanage y que responden.
+* [Supervisión de soluciones de socios comerciales con Azure Security Center](security-center-partner-solutions.md): Obtenga información acerca de cómo toomonitor Hola estado de mantenimiento de las soluciones de socios comerciales.
+* [Preguntas más frecuentes de Azure Security Center](security-center-faq.md): preguntas más frecuentes sobre el uso de servicio de Hola de búsqueda.
 * [Blog de seguridad de Azure](http://blogs.msdn.com/b/azuresecurity/): encuentre entradas de blog sobre el cumplimiento y la seguridad de Azure.

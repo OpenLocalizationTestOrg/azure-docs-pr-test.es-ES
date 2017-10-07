@@ -1,5 +1,5 @@
 ---
-title: "Integración del SDK de Android para Azure Mobile Engagement"
+title: "aaaAzure Mobile Engagement Android integración con el SDK"
 description: "Procedimientos y actualizaciones más recientes para el SDK de Android para Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,14 +14,14 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 27190b54fc2b3b5c77b5f0a02273883e36ceaf1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6085a9ba90b713235e0aae99759597af9db77865
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sdk-content"></a>Contenido del SDK
-En este documento se indica y describe el contenido del archivo SDK.
+Este documento enumera y describe el contenido de Hola de archivo SDK de Hola.
 
 `mobile-engagement-VERSION.jar`
 
@@ -29,25 +29,25 @@ En este documento se indica y describe el contenido del archivo SDK.
 > 
 > 
 
-`res` 
+`res`
 
-> Recursos del SDK de Reach para Engagement (archivos dibujables y de diseño para incluir en las aplicaciones).
+> Recursos de Reach SDK de interacción (puede dibujar y tooinclude de archivos de diseño en las aplicaciones).
 > 
 > 
 
-`src` 
+`src`
 
 > Código fuente del SDK de Engagement.
 > 
-> Tenga en cuenta que no se incluyen los archivos de código fuente del servicio (`com.microsoft.azure.engagement.service.EngagementService` y sus archivos de código fuente relacionados).
+> Tenga en cuenta que no se incluyen orígenes de hello del servicio de hello (`com.microsoft.azure.engagement.service.EngagementService` y sus archivos de origen relacionados).
 > 
 > 
 
 `documentation.html`
 
-> Un acceso directo al sitio de documentación que corresponde a la versión descargada del SDK.
+> Un toohello correspondiente del sitio de documentación de acceso directo toohello descargado la versión de Hola SDK.
 > 
 > 
 
-Los otros archivos corresponden a una copia de las licencias de software.
+Otros archivos son una copia de licencias de software de Hola.
 

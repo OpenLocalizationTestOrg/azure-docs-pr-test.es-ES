@@ -1,6 +1,6 @@
 ---
 title: "T-SQL: Administración de un grupo elástico de Azure SQL Database | Microsoft Docs"
-description: "Use T-SQL para administrar un grupo elástico de Azure SQL Database."
+description: "Usar T-SQL toomanage un grupo elástico de base de datos de SQL Azure."
 services: sql-database
 documentationcenter: 
 author: srinia
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
-ms.openlocfilehash: c6b64e4a7fd91283a37a792b294965064d653003
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 666f131b2c88849a1a9ea83381bbc27548e93599
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-and-manage-an-elastic-pool-with-transact-sql"></a>Supervisión y administración de un grupo elástico con Transact-SQL
-En este tema se muestra cómo administrar [grupos elásticos](sql-database-elastic-pool.md) escalables con Transact-SQL.  También puede crear y administrar un grupo elástico de Azure en [Azure Portal](https://portal.azure.com/), [PowerShell](sql-database-elastic-pool-manage-powershell.md), la API de REST o [C#](sql-database-elastic-pool-manage-csharp.md). También puede crear y mover bases de datos dentro y fuera de los grupos elásticos mediante [Transact-SQL](sql-database-elastic-pool-manage-tsql.md).
+Este tema muestra cómo toomanage escalable [grupos elásticos](sql-database-elastic-pool.md) con Transact-SQL.  También puede crear y administrar un hello Azure grupo elástico [portal de Azure](https://portal.azure.com/), [PowerShell](sql-database-elastic-pool-manage-powershell.md), API de REST de Hola o [C#](sql-database-elastic-pool-manage-csharp.md). También puede crear y mover bases de datos dentro y fuera de los grupos elásticos mediante [Transact-SQL](sql-database-elastic-pool-manage-tsql.md).
 
 
-Utilice los comandos [Create Database (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) y [Alter Database(Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx) para crear e introducir y sacar las bases de datos de los grupos elásticos. El grupo elástico debe existir antes de poder utilizar estos comandos. Estos comandos afectan solo a las bases de datos. La creación de nuevos grupos y la configuración de las propiedades de grupo (por ejemplo, de los valores mín. y máx. de eDTU) no se puede cambiar mediante comandos de T-SQL.
+Hola de uso [Create Database (base de datos de SQL Azure)](https://msdn.microsoft.com/library/dn268335.aspx) y [Database(Azure SQL Database) Alter](https://msdn.microsoft.com/library/mt574871.aspx) comandos toocreate y mover bases de datos dentro y fuera de grupos elásticos. grupo elástico Hola debe existir para poder utilizar estos comandos. Estos comandos afectan solo a las bases de datos. Creación de grupos nuevos y Hola establecer propiedades de grupo (por ejemplo, min y max Edtu) no se puede cambiar con comandos de T-SQL.
 
 ## <a name="create-a-pooled-database-in-an-elastic-pool"></a>Creación de una base de datos agrupada en un grupo elástico
-Use el comando CREATE DATABASE con la opción SERVICE_OBJECTIVE.   
+Usar el comando CREATE DATABASE de Hola con Hola opción SERVICE_OBJECTIVE.   
 
     CREATE DATABASE db1 ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3M100] ));
     -- Create a database named db1 in an elastic named S3M100.
 
-Todas las bases de datos de un grupo elástico heredan el nivel de servicio del grupo elástico (Básico, Estándar, Premium). 
+Todas las bases de datos en un grupo elástico heredarán nivel de servicio de Hola de grupo elástico de hello (Basic, Standard, Premium). 
 
 ## <a name="move-a-database-between-elastic-pools"></a>Movimiento de una base de datos entre grupos elásticos
-Utilice el comando ALTER DATABASE con MODIFY y configure la opción SERVICE\_OBJECTIVE como ELASTIC\_POOL. Establezca como nombre el nombre del grupo de destino.
+Utilice el comando ALTER DATABASE de hello con hello modificar y establezca servicio\_opción objetiva como ELÁSTICAS\_grupo. Establecer nombre de grupo de destino de hello toohello de nombre de Hola.
 
     ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [PM125] ));
-    -- Move the database named db1 to an elastic named P1M125  
+    -- Move hello database named db1 tooan elastic named P1M125  
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>Movimiento de una base de datos a un grupo elástico
-Utilice el comando ALTER DATABASE con MODIFY y configure la opción SERVICE\_OBJECTIVE como ELASTIC_POOL. Establezca como nombre el nombre del grupo de destino.
+Utilice el comando ALTER DATABASE de hello con hello modificar y establezca servicio\_opción objetiva como ELASTIC_POOL. Establecer nombre de grupo de destino de hello toohello de nombre de Hola.
 
     ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3100] ));
-    -- Move the database named db1 to an elastic named S3100.
+    -- Move hello database named db1 tooan elastic named S3100.
 
 ## <a name="move-a-database-out-of-an-elastic-pool"></a>Movimiento de una base de datos fuera de un grupo elástico
-Utilice el comando ALTER DATABASE y establezca SERVICE_OBJECTIVE en uno de los niveles de rendimiento (como S0 o S1).
+Utilice el comando ALTER DATABASE de Hola y establezca hello SERVICE_OBJECTIVE tooone Hola de niveles de rendimiento (como S0 o S1).
 
     ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = 'S1');
-    -- Changes the database into a stand-alone database with the service objective S1.
+    -- Changes hello database into a stand-alone database with hello service objective S1.
 
 ## <a name="list-databases-in-an-elastic-pool"></a>Enumeración de bases de datos de un grupo elástico
-Utilice la vista [sys.database\_service\_objectives](https://msdn.microsoft.com/library/mt712619) para enumerar todas las bases de datos de un grupo elástico. Inicie sesión en la base de datos maestra para efectuar una consulta en la vista.
+Hola de uso [sys.database\_servicio \_objetivos vista](https://msdn.microsoft.com/library/mt712619) toolist todos Hola bases de datos de un grupo elástico. Inicie sesión en master toohello vista de base de datos tooquery Hola.
 
     SELECT d.name, slo.*  
     FROM sys.databases d 
@@ -63,17 +63,17 @@ Utilice la vista [sys.database\_service\_objectives](https://msdn.microsoft.com/
     WHERE elastic_pool_name = 'MyElasticPool'; 
 
 ## <a name="get-resource-usage-data-for-an-elastic-pool"></a>Obtención de datos de uso de recursos para un grupo elástico
-Utilice la vista [sys.elastic\_pool\_resource\_stats](https://msdn.microsoft.com/library/mt280062.aspx) para examinar las estadísticas de uso de los recursos de un grupo elástico en un servidor lógico. Inicie sesión en la base de datos maestra para efectuar una consulta en la vista.
+Hola de uso [sys.elastic\_grupo \_recursos \_ver estadísticas](https://msdn.microsoft.com/library/mt280062.aspx) tooexamine estadísticas de uso de recursos de Hola de un grupo elástico en un servidor lógico. Inicie sesión en master toohello vista de base de datos tooquery Hola.
 
     SELECT * FROM sys.elastic_pool_resource_stats 
     WHERE elastic_pool_name = 'MyElasticPool'
     ORDER BY end_time DESC;
 
 ## <a name="get-resource-usage-for-a-pooled-database"></a>Obtención de datos de uso de recursos para una base de datos agrupada
-Utilice la vista [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) o la vista [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) para examinar las estadísticas de uso de los recursos de una base de datos en un grupo elástico. Este proceso es similar a la consulta de uso de recursos para una base de datos única.
+Hola de uso [sys.dm\_ db\_ recursos\_ver estadísticas](https://msdn.microsoft.com/library/dn800981.aspx) o [sys.resource \_ver estadísticas](https://msdn.microsoft.com/library/dn269979.aspx) tooexamine estadísticas de uso de recursos de Hola de un base de datos en un grupo elástico. Este proceso es el uso de recursos de tooquerying similar para una sola base de datos.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Tras la creación de un grupo elástico, puede administrar las bases de datos elásticas del grupo mediante la creación de trabajos elásticos. Los trabajos elásticos facilitan la ejecución de secuencias de comandos de T-SQL con cualquier número de bases de datos en el grupo. Para obtener más información, vea [Información general sobre los trabajos de bases de datos elásticas](sql-database-elastic-jobs-overview.md). 
+Después de crear un grupo elástico, puede administrar las bases de datos elásticas en grupo de hello mediante la creación de trabajos elásticos. Trabajos elásticos facilitan la ejecución de scripts de T-SQL con cualquier número de bases de datos en bloque de Hola. Para obtener más información, vea [Información general sobre los trabajos de bases de datos elásticas](sql-database-elastic-jobs-overview.md). 
 
-Consulte [Escalado horizontal con Azure SQL Database](sql-database-elastic-scale-introduction.md): use herramientas de bases de datos elásticas para realizar un escalado horizontal, mover los datos, realizar consultas o crear transacciones.
+Vea [escalado horizontal con base de datos de SQL Azure](sql-database-elastic-scale-introduction.md): usar bases de datos elásticas herramientas tooscale out, mover los datos, consultar o crear las transacciones.
 

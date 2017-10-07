@@ -1,6 +1,6 @@
 ---
 title: "Migración: Utilidad de migración de Data Warehouse | Microsoft Docs"
-description: "Migración a Almacenamiento de datos SQL"
+description: Migrar tooSQL almacenamiento de datos.
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 2466e823c448ada4dc7bc5769b1b7f10bbb5dc7d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c89909883fb42b0b04dd87a9973e5ee3e30d8f0f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>Utilidad de migración de Almacenamiento de datos (vista previa)
 > [!div class="op_single_selector"]
@@ -27,37 +27,37 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-La Utilidad de migración de Almacenamiento de datos es una herramienta diseñada para migrar el esquema y los datos de SQL Server y Base de datos de SQL Azure a Almacenamiento de datos SQL de Azure. Durante la migración del esquema, la herramienta asigna automáticamente el esquema correspondiente del origen al destino. Después de migrar el esquema, las herramientas proporcionan la opción para mover datos con scripts generados automáticamente.
+Hola utilidad de migración de almacenamiento de datos es que una herramienta diseñada toomigrate esquema y los datos de SQL Server y base de datos de SQL Azure tooAzure almacenamiento de datos SQL. Durante la migración de esquema, herramienta de hello asigna automáticamente el esquema correspondiente de Hola de toodestination de origen. Después de que se ha migrado el esquema de hello, herramientas de hello proporciona datos de toomove de opción de hello con scripts generados automáticamente.
 
-Además de migración de datos y el esquema, esta herramienta ofrece a los usuarios la opción de generar informes de compatibilidad que resumen las incompatibilidades entre las instancias de origen y de destino que podrían impedir la migración optimizada.
+Además tooschema y migración de datos, esta herramienta le proporciona Hola informes de compatibilidad de toogenerate opción que resumen las incompatibilidades entre las instancias de origen y de destino de Hola que impedirían que simplifica la migración.
 
 ## <a name="get-started"></a>Primeros pasos
-Como requisito previo para la instalación, necesitará la utilidad de línea de comandos BCP para ejecutar scripts de migración y Office para ver el informe de compatibilidad. Después de iniciar el archivo ejecutable descargado, se le pedirá que acepte unos términos de licencia estándar antes de que se instale la herramienta.
+Como requisito previo para la instalación, deberá scripts de migración de toorun de utilidad de línea de comandos de BCP de Hola y el informe de compatibilidad de Office tooview Hola. Después de iniciar Hola ejecutable que se descarga, será tooaccept solicitada CLUF estándar antes de que se instalará la herramienta Hola.
 
-Además, para ejecutar la utilidad de migración, necesitará los siguientes permisos en la base de datos que busca migrar: CREAR BASE DE DATOS, MODIFICAR CUALQUIER BASE DE DATOS o VER CUALQUIER DEFINICIÓN.
+Además, toorun hello Utiliy de migración, se necesita Hola uno los siguientes permisos de base de datos de Hola que se está viendo toomigrate: CREATE DATABASE, ALTER ANY DATABASE o VIEW ANY DEFINITION.
 
-### <a name="launching-the-tool-and-connecting"></a>Inicio de la herramienta y conexión
-Inicie la herramienta haciendo clic en el icono del escritorio que aparece después de la instalación. Al abrir la herramienta, se le mostrará una página de conexión inicial donde podrá elegir el origen y destino de la herramienta de migración. En este momento se admiten SQL Server y Base de datos SQL de Azure como orígenes y Almacenamiento de datos SQL como destino. Después de seleccionarlo, se le pedirá que se conecte al servidor de origen rellenando el nombre del servidor y la autenticación y, a continuación, que haga clic en «Conectar».
+### <a name="launching-hello-tool-and-connecting"></a>Herramienta de Hola y la conexión
+Instalar herramienta de Hola de inicio, haga clic en el icono del escritorio Hola que aparece post. Al abrir la herramienta de hello, se le pedirá con una página de conexión inicial donde puede elegir el origen y destino para la herramienta de migración de Hola. En este momento se admiten SQL Server y Base de datos SQL de Azure como orígenes y Almacenamiento de datos SQL como destino. Después de seleccionar esta opción se pide a servidor de origen de tooconnect tooyour rellenando en nombre del servidor y autenticación y, a continuación, haga clic en 'Conectar'.
 
-Después de autenticarse, la herramienta mostrará una lista de bases de datos que se encuentran en el servidor al que está conectado. Puede comenzar la migración seleccionando la base de datos que desea migrar y haciendo clic en «Migrate selected» (Migrar seleccionada).
+Después de autenticar, herramienta de hello mostrará una lista de bases de datos que se encuentran en el servidor de Hola que están conectados a. Puede comenzar la migración de hello seleccionando una base de datos que le gustaría toomigrate y, a continuación, haga clic en 'Migrar seleccionado'.
 
 ## <a name="migration-report"></a>Informe de migración
-Si se selecciona «Check Database Compatibility» (Comprobar compatibilidad de la base de datos) en la herramienta, se generará un informe de resumen de todas las incompatibilidades de los objetos de la base de datos que quiere migrar. Puede encontrar una lista más exhaustiva de algunas de las funciones de SQL Server que no están presentes en SQL Data Warehouse en nuestra [documentación de migración][migration documentation]. Una vez generado el informe, podrá guardarlo y abrirlo en Excel.
+Al seleccionar 'Comprobar la compatibilidad de base de datos' en la herramienta de hello generará un informe que resume todas las incompatibilidades de objeto de base de datos de hello solicitado toomigrate. Puede encontrar una lista más amplia de algunas Hola funcionalidad de SQL Server que no está presente en el almacén de datos de SQL en nuestro [documentación sobre migración][migration documentation]. Cuando se genera el informe de hello será capaz de toosave y el informe de hello abierto en Excel.
 
-Tenga en cuenta que cuando se genera el esquema de migración, la mayoría de los problemas identificados como «Objeto» se ajustarán para permitir la migración inmediata de los datos. Revise los cambios para asegurarse de que no desea realizar ajustes adicionales antes de aplicar el esquema.
+Tenga en cuenta que al generar el esquema de migración de hello, mayoría de los problemas identificado como 'Object' se ajustará en migración inmediata de tooallow de orden de los datos. Revise Hola cambios tooensure no desea toomake más ajustes antes de aplicar el esquema de Hola.
 
 ## <a name="migrate-schema"></a>Migración del esquema
-Después de conectarse, si se selecciona «Migrar esquema», se generará un script de migración de esquema para las tablas seleccionadas. Este script lleva la estructura de la tabla, asigna tipos de datos no compatibles a otros formularios más compatibles y crea las credenciales de seguridad y el esquema si está indicado por el usuario en la configuración de migración. Este código puede ejecutarse en la instancia de Almacenamiento de datos SQL de destino, se puede guardar en un archivo, copiar en el Portapapeles o incluso modificarse en línea antes de realizar otra acción.  
+Después de conectarse, seleccionar esquema de migrar generará un script de migración de esquema para las tablas de hello seleccionado. Esta estructura de Hola de puertos de secuencia de comandos de tabla de hello, asigna los formularios compatibles de toomore de tipos de datos incompatibles y crea esquema y las credenciales de seguridad si esto se indica por usuario de hello en configuración de la migración de Hola. Este código puede ejecutarse en la instancia de almacenamiento de datos SQL de hello como destinada, guarda el archivo tooa, copia tooyour Portapapeles o incluso editar en línea antes de realizar otra acción.  
 
-Como se indicó anteriormente, al realizar la migración, el esquema revisa los cambios en la migración que realizó la herramienta para asegurarse de que se comprendieron completamente.  
+Como se indicó anteriormente, cuando la migración de Hola de revisión de esquema cambia ese Hola herramienta ha realizado en orden tooensure que comprende todas ellas.  
 
 ## <a name="migrate-data"></a>Migración de los datos
-Si hace clic en la opción «Migrar datos», puede generar scripts BCP que mueven los datos primero a archivos sin formato en el servidor y después directamente a Almacenamiento de datos SQL. Se recomienda este proceso para mover pequeñas cantidades de datos y porque los reintentos no están integrados y se pueden producir errores si hay una pérdida de conexión de red. Para ejecutarlo, debe tener instalada la utilidad de línea de comandos BCP y ya se debe haber creado el esquema de los datos.
+Haciendo clic en la opción de "Datos migrar" hello puede generar scripts BCP que se moverán los archivos de datos primer tooflat en el servidor, y, a continuación, directamente en el almacén de datos de SQL. Se recomienda este proceso para mover pequeñas cantidades de datos y, como los reintentos no están integrados y pueden producirse errores si se produce una pérdida de conexión de red de Hola. En Ordenar toorun esto, necesitará una utilidad de línea de comandos toohave Hola BCP instalado y ya se debe haber creado esquema Hola para datos de Hola.
 
-Después de rellenar los parámetros anteriores, basta con que haga clic en la opción de ejecutar migración y se generará un conjunto de dos paquetes en la ubicación especificada. Ejecute el archivo de exportación para exportar datos desde el origen de migración a archivos sin formato y ejecute el archivo de importación para importar los datos en Almacenamiento de datos SQL.
+Después de que se ha rellenado parámetros Hola superiores que simplemente necesita tooclick ejecutar migración y se generará un conjunto de dos paquetes tooyour la ubicación especificada. Ejecute el archivo de exportación de hello datos de pedidos tooexport desde el origen de la migración a archivos sin formato y ejecute el archivo de importación de hello en orden tooimport los datos en almacenamiento de datos de SQL.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que migró algunos datos, aprenda a [desarrollarlos][develop].
+Ahora que ha migrado algunos datos, consulte cómo demasiado[desarrollar][develop].
 
 <!--Image references-->
 

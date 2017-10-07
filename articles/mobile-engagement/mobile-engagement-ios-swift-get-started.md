@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure Mobile Engagement para iOS en Swift | Microsoft Docs"
-description: "Aprenda a usar Azure Mobile Engagement con los análisis y las notificaciones de inserción para aplicaciones iOS."
+title: aaaGet Started with Azure Mobile Engagement para iOS en Swift | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Azure Mobile Engagement con análisis y notificaciones de inserción para aplicaciones iOS."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,22 +14,22 @@ ms.devlang: swift
 ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9a3841d305745f8b80c6b0c86aabe18e0c7c0e59
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-swift"></a>Introducción a Azure Mobile Engagement para aplicaciones iOS en Swift
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-En este tema se muestra cómo utilizar Azure Mobile Engagement para conocer el uso de las aplicaciones y enviar notificaciones push a usuarios segmentados en una aplicación de iOS.
+Este tema muestra cómo toouse Azure Mobile Engagement toounderstand el uso de aplicaciones y el envío de inserción tooan iOS aplicación de notificaciones toosegmented a los usuarios.
 En este tutorial, puede crear una aplicación iOS vacía que recopile datos básicos y reciba notificaciones push mediante el sistema de notificaciones push de Apple (APN).
 
-Este tutorial requiere lo siguiente:
+Este tutorial requiere siguiente de hello:
 
 * XCode 8, que se puede instalar desde la tienda de aplicaciones para Mac
-* [SDK de Mobile Engagement iOS]
+* Hola [Mobile Engagement SDK para iOS]
 * Certificado de notificaciones push (.p12), que puede obtener en el centro de desarrolladores de Apple.
 
 > [!NOTE]
@@ -40,37 +40,37 @@ Este tutorial requiere lo siguiente:
 Completar este tutorial es un requisito previo para todos los tutoriales de Mobile Engagement para aplicaciones iOS.
 
 > [!NOTE]
-> Para completar este tutorial, deberá tener una cuenta de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-swift-get-started).
+> toocomplete este tutorial, debe tener una cuenta activa de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-swift-get-started).
 > 
 > 
 
 ## <a id="setup-azme"></a>Configuración de Mobile Engagement para una aplicación iOS
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Conectar la aplicación al backend de Mobile Engagement
-En este tutorial se presenta una "integración básica", que es el conjunto mínimo necesario para recopilar los datos y enviar una notificación de inserción. Toda la información sobre la integración se encuentra en la [Integración del SDK de Mobile Engagement para iOS](mobile-engagement-ios-sdk-overview.md)
+## <a id="connecting-app"></a>Conectar el back-end de aplicación toohello Mobile Engagement
+Este tutorial presenta una "la integración básica", que es Hola mínimo establecido toocollect requiere datos y enviar una notificación de inserción. Encontrará documentación de integración completa de Hola Hola [integración de SDK de Mobile Engagement iOS](mobile-engagement-ios-sdk-overview.md)
 
-Crearemos una aplicación básica con XCode para demostrar la integración:
+Se creará una aplicación básica con la integración de hello toodemonstrate XCode:
 
 ### <a name="create-a-new-ios-project"></a>Creación de un nuevo proyecto iOS
 [!INCLUDE [Create a new iOS Project](../../includes/mobile-engagement-create-new-ios-app.md)]
 
-### <a name="connect-your-app-to-mobile-engagement-backend"></a>Conectar la aplicación al back-end de Mobile Engagement
-1. Descargue el [SDK de Mobile Engagement iOS]
-2. Extraiga el archivo .tar.gz archivo en una carpeta del equipo.
-3. Haga clic con el botón derecho del mouse en el proyecto y elija "Agregar archivos a...".
+### <a name="connect-your-app-toomobile-engagement-backend"></a>Conectar el backend de interacción de tooMobile de aplicación
+1. Descargar hello [Mobile Engagement SDK para iOS]
+2. Extraer Hola. tar.gz carpeta de tooa de archivo en el equipo
+3. Haga clic en proyecto de Hola y seleccione "Agregar archivos demasiado..."
    
     ![][1]
-4. Navegue hasta la carpeta donde extrajo el SDK y seleccione la carpeta `EngagementSDK` y, luego, haga clic en Aceptar.
+4. Desplazarse por las carpetas de toohello en la que extrajo Hola SDK y seleccione Hola `EngagementSDK` carpeta, a continuación, haga clic en Aceptar.
    
     ![][2]
-5. Abra la ficha `Build Phases` y en el menú `Link Binary With Libraries` agregue los marcos tal y como se muestra a continuación:
+5. Abra hello `Build Phases` ficha y Hola `Link Binary With Libraries` menú Agregar marcos Hola tal y como se muestra a continuación:
    
     ![][3]
-6. Cree un encabezado puente para poder usar las API de Objective-C de SDK mediante la selección de Archivo > Nuevo > Archivo > iOS > Origen > Archivo de encabezado.
+6. Para crear un protocolo de puente del encabezado toobe toouse capaz de hello del objetivo C API del SDK, seleccione Archivo > Nuevo > Archivo > iOS > origen > archivo de encabezado.
    
     ![][4]
-7. Edite el archivo de encabezado puente para exponer el código Mobile Engagement Objective-C en el código Swift, agregue las importaciones siguientes:
+7. Editar archivo encabezado tooyour tooexpose Mobile Engagement Objective-C código Swift código de puente de hello, agregue Hola siguientes importaciones:
    
         /* Mobile Engagement Agent */
         #import "AEModule.h"
@@ -81,13 +81,13 @@ Crearemos una aplicación básica con XCode para demostrar la integración:
         #import "EngagementViewController.h"
         #import "AEUserNotificationHandler.h"
         #import "AEIdfaProvider.h"
-8. En Configuración de compilación, asegúrese de que la compilación del encabezado puente Objective-C en Compilador de Swift - Generación de código tiene una ruta de acceso a este encabezado. Este es un ejemplo de ruta de acceso: **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h (en función de la ruta de acceso)**
+8. En la configuración de compilación, asegúrese de que el encabezado de protocolo de puente Objective-C de compilación en el compilador de Swift: generación de código de hello tiene un encabezado de toothis de ruta de acceso. Este es un ejemplo de ruta de acceso: **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h (dependiendo de la ruta de acceso de hello)**
    
    ![][6]
-9. Vuelva al portal de Azure en la página *Información de conexión* de la aplicación y copie la cadena de conexión
+9. Volver atrás toohello portal de Azure en la aplicación *información de conexión* página y copiar Hola cadena de conexión
    
    ![][5]
-10. Pegue la cadena de conexión en el delegado `didFinishLaunchingWithOptions`
+10. Ahora pega cadena de conexión de Hola Hola `didFinishLaunchingWithOptions` delegar
     
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
         {
@@ -97,9 +97,9 @@ Crearemos una aplicación básica con XCode para demostrar la integración:
         }
 
 ## <a id="monitor"></a>Habilitar supervisión en tiempo real
-Para comenzar a enviar datos y asegurarse de que los usuarios estén activos, debe enviar al menos una pantalla (Actividad) al back-end de Mobile Engagement.
+En orden toostart enviando los datos y asegurarse de que los usuarios de hello activos, debe enviar al menos un backend de interacción móvil toohello de pantalla (actividad).
 
-1. Abra el archivo **ViewController.swift** y reemplace la clase base de **ViewController** para que sea **EngagementViewController**:
+1. Abra hello **ViewController.swift** archivo y reemplace la clase base hello de **ViewController** toobe **EngagementViewController**:
    
     `class ViewController : EngagementViewController {`
 
@@ -107,19 +107,19 @@ Para comenzar a enviar datos y asegurarse de que los usuarios estén activos, de
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
 ## <a id="integrate-push"></a>Habilitación de las notificaciones de inserción y mensajería en la aplicación
-Mobile Engagement permite interactuar y llegar a los usuarios mediante notificaciones de inserción y mensajería en la aplicación en el contexto de las campañas. Este módulo se denomina REACH en el portal de Mobile Engagement.
-En las secciones siguientes se instalará la aplicación para recibirlos.
+Mobile Engagement le permite toointeract y alcance con los usuarios con las notificaciones de inserción y mensajería en la aplicación en el contexto de Hola de campañas. Este módulo se denomina alcance en el portal de interacción móvil Hola.
+Hello las secciones siguientes se configurará la aplicación tooreceive ellos.
 
-### <a name="enable-your-app-to-receive-silent-push-notifications"></a>Habilitación de la aplicación para recibir notificaciones push silenciosas
+### <a name="enable-your-app-tooreceive-silent-push-notifications"></a>Habilitar la tooreceive aplicación silenciosa de las notificaciones de inserción
 [!INCLUDE [mobile-engagement-ios-silent-push](../../includes/mobile-engagement-ios-silent-push.md)]
 
-### <a name="add-the-reach-library-to-your-project"></a>Adición de la biblioteca de cobertura al proyecto
+### <a name="add-hello-reach-library-tooyour-project"></a>Agregar proyecto de hello alcance de la biblioteca tooyour
 1. Haga clic con el botón derecho del mouse en el proyecto.
-2. Seleccionar `Add file to ...`
-3. Navegue hasta la carpeta donde extrajo el SDK.
-4. Seleccione la carpeta `EngagementReach`
+2. Seleccionar `Add file too...`
+3. Desplazarse por las carpetas de toohello en la que extrajo Hola SDK
+4. Seleccione hello `EngagementReach` carpeta
 5. Haga clic en Agregar
-6. Edite el archivo de encabezado puente para exponer encabezados Mobile Engagement Objective-C Reach y agregue las importaciones siguientes:
+6. Editar hello tooexpose Mobile Engagement Objective-C alcanzar encabezados de archivo de encabezado de protocolo de puente y agregue Hola siguientes importaciones:
    
         /* Mobile Engagement Reach */
         #import "AEAnnouncementViewController.h"
@@ -145,7 +145,7 @@ En las secciones siguientes se instalará la aplicación para recibirlos.
         #import "AEWebAnnouncementJsBridge.h"
 
 ### <a name="modify-your-application-delegate"></a>Modifique su delegado de la aplicación
-1. En el método `didFinishLaunchingWithOptions`, cree un módulo de cobertura y páselo a la línea de inicialización existente de Engagement:
+1. Hola interior `didFinishLaunchingWithOptions` : crear un módulo de reach y pasar tooyour línea de inicialización de contratación existente:
    
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool 
         {
@@ -155,8 +155,8 @@ En las secciones siguientes se instalará la aplicación para recibirlos.
             return true
         }
 
-### <a name="enable-your-app-to-receive-apns-push-notifications"></a>Habilite su aplicación para recibir notificaciones push de APN.
-1. Agregue la siguiente línea al método `didFinishLaunchingWithOptions`:
+### <a name="enable-your-app-tooreceive-apns-push-notifications"></a>Habilitar la tooreceive de la aplicación notificaciones de inserción de APNS
+1. Agregar Hola después línea toohello `didFinishLaunchingWithOptions` método:
    
         if #available(iOS 8.0, *)
         {
@@ -174,12 +174,12 @@ En las secciones siguientes se instalará la aplicación para recibirlos.
         {
             application.registerForRemoteNotifications(matching: [.alert, .badge, .sound])
         }
-2. Agregue el método `didRegisterForRemoteNotificationsWithDeviceToken` de la siguiente forma:
+2. Agregar hello `didRegisterForRemoteNotificationsWithDeviceToken` método tal como se indica a continuación:
    
         func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
             EngagementAgent.shared().registerDeviceToken(deviceToken)
         }
-3. Agregue el método `didReceiveRemoteNotification:fetchCompletionHandler:` de la siguiente forma:
+3. Agregar hello `didReceiveRemoteNotification:fetchCompletionHandler:` método tal como se indica a continuación:
    
         func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
             EngagementAgent.shared().applicationDidReceiveRemoteNotification(userInfo, fetchCompletionHandler:completionHandler)
@@ -188,7 +188,7 @@ En las secciones siguientes se instalará la aplicación para recibirlos.
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
 
 <!-- URLs. -->
-[SDK de Mobile Engagement iOS]: http://aka.ms/qk2rnj
+[Mobile Engagement SDK para iOS]: http://aka.ms/qk2rnj
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-ios-get-started/xcode-add-files.png

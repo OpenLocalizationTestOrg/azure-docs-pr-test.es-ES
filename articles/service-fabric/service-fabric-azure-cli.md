@@ -1,5 +1,5 @@
 ---
-title: "Getting started with Azure Service Fabric XPlat CLI (Introducción a la CLI de XPlat de Azure Service Fabric)"
+title: aaaGetting a trabajar con Azure Service Fabric XPlat CLI
 description: "Getting started with Azure Service Fabric XPlat CLI (Introducción a la CLI de XPlat de Azure Service Fabric)"
 services: service-fabric
 documentationcenter: .net
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: ddf881f6c202a82a3f64773639aa29b660057f8d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e4baa30536b4d8668d8efad301ed8210eb9c0335
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-xplat-cli-to-interact-with-a-service-fabric-cluster"></a>Uso de la CLI de XPlat para interactuar con un clúster de Service Fabric
+# <a name="using-hello-xplat-cli-toointeract-with-a-service-fabric-cluster"></a>Uso de hello XPlat CLI toointeract con un clúster de Service Fabric
 
-Puede interactuar con un clúster de Service Fabric desde máquinas virtuales con Linux mediante la CLI de XPlat en Linux.
+Puede interactuar con el clúster de Service Fabric de máquinas de Linux con hello XPlat CLI en Linux.
 
-El primer paso es obtener la versión más reciente de la CLI en el repositorio de Git y configurarla en su ruta de acceso mediante los siguientes comandos:
+primer paso de Hello es obtener última versión de Hola de Hola CLI desde rep de git de Hola y establezca, configúrelo en su ruta de acceso mediante Hola siguientes comandos:
 
 ```sh
  git clone https://github.com/Azure/azure-xplat-cli.git
@@ -34,20 +34,20 @@ El primer paso es obtener la versión más reciente de la CLI en el repositorio 
  azure servicefabric
 ```
 
-Para cada comando que admite, puede escribir el nombre del comando para obtener ayuda sobre él.
-Se admite la finalización automática de los comandos. Por ejemplo, el comando siguiente le proporciona ayuda para todos los comandos de la aplicación. 
+Para cada comando, lo admite, puede escribir nombre de Hola de hello comando tooobtain Hola de ayuda para ese comando.
+Se admite la finalización automática para los comandos de Hola. Por ejemplo, hello después proporciona comandos ayuda para todos los comandos de aplicación Hola. 
 
 ```sh
  azure servicefabric application 
 ```
 
-Puede filtrar aún más la ayuda para un comando específico, como se muestra en el ejemplo siguiente:
+Puede filtrar aún más el comando específico de hello ayuda tooa, como Hola siguiente ejemplo se muestra:
 
 ```sh
  azure servicefabric application  create
 ```
 
-Para habilitar la finalización automática en la CLI, ejecute los siguientes comandos:
+características de Autocompletar tooenable Hola CLI, ejecute hello siguientes comandos:
 
 ```sh
 azure --completion >> ~/azure.completion.sh
@@ -55,70 +55,70 @@ echo 'source ~/azure.completion.sh' >> ~/.sh\_profile
 source ~/azure.completion.sh
 ```
 
-Los siguientes comandos permiten conectar al clúster y le muestran los nodos de este:
+Hola, siga los comandos conectar toohello clúster y mostrar Hola nodos de clúster de Hola:
 
 ```sh
  azure servicefabric cluster connect http://localhost:19080
  azure servicefabric node show
 ```
 
-Para utilizar parámetros con nombre y averiguar lo que son, puede escribir --help después del comando. Por ejemplo:
+toouse parámetros con nombre y encontrar qué son, puede escribir--ayuda después de un comando. Por ejemplo:
 
 ```sh
  azure servicefabric node show --help
  azure servicefabric application create --help
 ```
 
-Si se conecta a un clúster de varias máquinas virtuales desde una máquina **que no forma parte de este**, utilice el siguiente comando:
+Cuando se conecta el clúster de varios equipos tooa desde un equipo **que no forma parte del clúster de hello**, usar hello siguiente comando:
 
 ```sh
  azure servicefabric cluster connect http://PublicIPorFQDN:19080
 ```
 
-Reemplace la etiqueta PublicIPorFQDN por la dirección IP o FQDN real según corresponda. Si se conecta a un clúster de varias máquinas virtuales desde una máquina **que forma parte de este**, utilice el siguiente comando:
+Reemplace la etiqueta de PublicIPorFQDN de hello con hello real IP o FQDN según corresponda. Cuando se conecta el clúster de varios equipos tooa desde un equipo **que forma parte del clúster de hello**, usar hello siguiente comando:
 
 ```sh
  azure servicefabric cluster connect --connection-endpoint http://localhost:19080 --client-connection-endpoint PublicIPorFQDN:19000
 ```
 
-Puede usar PowerShell o CLI para interactuar con su clúster de Service Fabric para Linux creado mediante Azure Portal.
+Puede usar PowerShell o CLI toointeract con el clúster de Service Fabric de Linux creadas a través de hello portal de Azure.
 
 > [!WARNING]
-> Estos clústeres no son seguros, por tanto, puede abrir el clúster one-box agregando la dirección IP pública en el manifiesto de clúster.
+> Estos clústeres no están seguros, por lo tanto, puede abrir su cuadro de uno mediante la adición de la dirección IP pública hello en el manifiesto de clúster de Hola.
 
-## <a name="using-the-xplat-cli-to-connect-to-a-service-fabric-cluster"></a>Uso de la CLI de XPlat para conectarse a un clúster de Service Fabric
+## <a name="using-hello-xplat-cli-tooconnect-tooa-service-fabric-cluster"></a>Uso de clúster de Service Fabric de XPlat CLI tooconnect tooa Hola
 
-Los siguientes comandos de la CLI de Azure describen cómo conectarse a un clúster seguro. Los detalles del certificado deben corresponder a un certificado de los nodos del clúster.
+Hola, siga los comandos de CLI de Azure describe cómo tooconnect tooa proteger clústeres. Detalles del certificado Hola deben coincidir con un certificado en nodos de clúster de Hola.
 
 ```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert
 ```
 
-Si el certificado tiene entidades de certificación (CA), debe agregar el parámetro --ca-cert-path como en el ejemplo siguiente: 
+Si el certificado tiene entidades de certificación (CA), deberá tooadd parámetro de ruta de certificado de ca de--hello como el siguiente ejemplo de Hola: 
 
 ```sh
  azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
 ```
 
-Si tiene varias entidades de certificación, use una coma como delimitador.
+Si tiene varias CA, use una coma como delimitador de Hola.
 
-Si el nombre común del certificado no coincide con el punto de conexión de la conexión, puede usar el parámetro `--strict-ssl-false` para omitir la comprobación como se muestra en el siguiente comando:
+Si el nombre común de certificado de hello no coincide con el extremo de la conexión de hello, podría utilizar el parámetro hello `--strict-ssl-false` toobypass Hola comprobación tal y como se muestra en el siguiente comando de hello:
 
 ```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false 
 ```
 
-Si desea omitir la comprobación de la entidad de certificación, puede agregar el parámetro --reject-unauthorized-false como se muestra en el siguiente comando: 
+Si desea que la comprobación de hello CA tooskip, podría agregar hello: parámetro de false no autorizado rechazar tal y como se muestra en el siguiente comando de hello: 
 
 ```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
 ```
 
-Después de conectarse, debería poder ejecutar otros comandos de la CLI para interactuar con el clúster.
+Después de conectarse, debe ser capaz de toorun otro toointeract de comandos CLI con clúster de Hola.
 
 ## <a name="deploying-your-service-fabric-application"></a>Implementación de la aplicación de Service Fabric
 
-Ejecute los comandos siguientes para copiar, registrar e iniciar la aplicación de Service fabric:
+Ejecute hello siga los comandos toocopy, registrar e iniciar la aplicación de tejido de servicio de hello:
 
 ```sh
 azure servicefabric application package copy [applicationPackagePath] [imageStoreConnectionString] [applicationPathInImageStore]
@@ -128,9 +128,9 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 
 ## <a name="upgrading-your-application"></a>Actualización de la aplicación
 
-El proceso es similar al [proceso en Windows](service-fabric-application-upgrade-tutorial-powershell.md)).
+proceso de Hello es similar toohello [procesos de Windows](service-fabric-application-upgrade-tutorial-powershell.md)).
 
-Compile, copie, registre y cree su aplicación desde el directorio raíz del proyecto. Si la instancia de la aplicación se denomina `fabric:/MySFApp`, y el tipo es MySFApp, los comandos deben ser como los siguientes:
+Compile, copie, registre y cree su aplicación desde el directorio raíz del proyecto. Si la instancia de la aplicación se denomina `fabric:/MySFApp`y es de tipo hello MySFApp, comandos de hello sería como sigue:
 
 ```sh
  azure servicefabric cluster connect http://localhost:19080
@@ -139,7 +139,7 @@ Compile, copie, registre y cree su aplicación desde el directorio raíz del pro
  azure servicefabric application create fabric:/MySFApp MySFApp 1.0
 ```
 
-Realice el cambio en la aplicación y vuelva a compilar el servicio modificado.  Actualice el archivo de manifiesto del servicio modificado (ServiceManifest.xml) con las versiones actualizadas para el servicio (y el código o la configuración o los datos según corresponda). Modifique también el manifiesto de la aplicación (ApplicationManifest.xml) con el número de la versión actualizada de la aplicación y el servicio modificado.  Después, copie y registre la aplicación actualizada con los comandos siguientes:
+Asegúrese de hello tooyour aplicación de cambios y volver a generar servicio Hola modificado.  Hola actualización había modificado archivo de manifiesto del servicio (ServiceManifest.xml) con las versiones de hello actualizado para hello servicio (y código o configuración o datos según corresponda). También modificar el manifiesto de la aplicación hello (ApplicationManifest.xml) con el número de versión de Hola actualizado para aplicación hello y Hola servicio modificado.  Ahora, copiar y registrar la aplicación actualizada con hello siguientes comandos:
 
 ```sh
  azure servicefabric cluster connect http://localhost:19080>
@@ -147,68 +147,68 @@ Realice el cambio en la aplicación y vuelva a compilar el servicio modificado. 
  azure servicefabric application type register MySFApp
 ```
 
-Con esto, ya puede iniciar la actualización de la aplicación con el siguiente comando:
+Ahora, puede iniciar la actualización de la aplicación hello con hello siguiente comando:
 
 ```sh
  azure servicefabric application upgrade start -–application-name fabric:/MySFApp -–target-application-type-version 2.0 --rolling-upgrade-mode UnmonitoredAuto
 ```
 
-Ya puede supervisar mediante SFX la actualización de la aplicación. En unos minutos se habrá actualizado la aplicación. También puede probar una aplicación actualizada con un error y comprobar la funcionalidad de reversión automática en Service Fabric.
+Ahora puede supervisar la actualización de la aplicación hello mediante SFX. En unos minutos, habría actualizó la aplicación hello. También intente una aplicación actualizada con un error y comprobar la funcionalidad de reversión automática de hello en el tejido de servicio.
 
-## <a name="converting-from-pfx-to-pem-and-vice-versa"></a>Conversión de PFX a PEM y viceversa
+## <a name="converting-from-pfx-toopem-and-vice-versa"></a>Convertir de PFX tooPEM y viceversa.
 
-Podría necesitar instalar un certificado en el equipo local (con Windows o Linux) para tener acceso a los clústeres seguros que pueden estar en un entorno diferente. Por ejemplo, al acceder a un clúster de Linux seguro desde un equipo Windows y viceversa, debe convertir el certificado PFX a PEM y viceversa. 
+Tendrá que tooinstall un certificado de los clústeres seguros de tooaccess máquina local (con Windows o Linux) que pueden estar en un entorno diferente. Por ejemplo, al tener acceso a un clúster de Linux seguro desde un equipo Windows y viceversa deberá tooconvert el certificado del PFX tooPEM y viceversa. 
 
-Para convertir un archivo PEM a uno PFX, utilice el siguiente comando:
+tooconvert desde un archivo PFX de PEM archivo tooa, Hola de uso siguiente comando:
 
 ```bash
 openssl pkcs12 -export -out certificate.pfx -inkey mycert.pem -in mycert.pem -certfile mycert.pem
 ```
 
-Para convertir un archivo PFX en uno PEM, use el comando siguiente:
+tooconvert desde un archivo PEM de tooa del archivo PFX, Hola de uso siguiente comando:
 
 ```bash
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
-Consulte la [documentación de OpenSSL](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html) para obtener más información.
+Consulte demasiado[OpenSSL documentación](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html) para obtener más información.
 
 <a id="troubleshooting"></a>
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
 
-### <a name="copying-of-the-application-package-does-not-succeed"></a>La copia del paquete de aplicación no se realiza correctamente
+### <a name="copying-of-hello-application-package-does-not-succeed"></a>Copia del paquete de aplicación hello no se realiza correctamente
 
-Compruebe si `openssh` está instalado. De forma predeterminada, el escritorio Ubuntu no lo tiene instalado. Instálelo con el comando siguiente:
+Compruebe si `openssh` está instalado. De forma predeterminada, el escritorio Ubuntu no lo tiene instalado. Instalar mediante el siguiente comando de hello:
 
 ```sh
 sudo apt-get install openssh-server openssh-client**
 ```
 
-Si el problema persiste, pruebe a deshabilitar PAM para ssh cambiando el archivo `sshd_config` mediante los siguientes comandos:
+Si persiste el problema de hello, pruebe a deshabilitar PAM para ssh cambiando hello `sshd_config` archivo mediante Hola siguientes comandos:
 
 ```sh
 sudo vi /etc/ssh/sshd_config
-#Change the line with UsePAM to the following: UsePAM no
+#Change hello line with UsePAM toohello following: UsePAM no
 sudo service sshd reload
 ```
 
-Si aun así, el problema continúa, pruebe a aumentar el número de sesiones de ssh ejecutando los comandos siguientes:
+Si Hola problema todavía persiste, intente creciente número de Hola de ssh sesiones mediante la ejecución de hello siguientes comandos:
 
 ```sh
 sudo vi /etc/ssh/sshd\_config
-# Add the following to lines:
+# Add hello following toolines:
 # MaxSessions 500
 # MaxStartups 300:30:500
 sudo service sshd reload
 ```
 
-El uso de claves para la autenticación ssh (en lugar de contraseñas) no se admite todavía (ya que la plataforma usa ssh para copiar los paquetes), así que use la autenticación de contraseña en su lugar.
+Usar claves de ssh autenticación (como toopasswords opuestos) aún no se admite (como plataforma de hello utiliza ssh toocopy paquetes), por lo que utilice autenticación de contraseña en su lugar.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Configure el entorno de desarrollo e implementar una aplicación de Service Fabric en un clúster de Linux.](service-fabric-get-started-linux.md)
+[Configurar el entorno de desarrollo de hello e implementar un clúster de Service Fabric aplicación tooa Linux.](service-fabric-get-started-linux.md)
 
 ## <a name="related-articles"></a>Artículos relacionados
 

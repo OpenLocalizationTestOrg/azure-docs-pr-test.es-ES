@@ -1,6 +1,6 @@
 ---
-title: "Migración a Azure Premium Storage con Azure Site Recovery (discos no administrados) | Microsoft Docs"
-description: "Migre las máquinas virtuales existentes a Azure Premium Storage con Site Recovery (discos no administrados)."
+title: aaaMigrating tooAzure almacenamiento Premium con Azure Site Recovery (discos no administrados) | Documentos de Microsoft
+description: "Migre su tooAzure de máquinas virtuales existentes almacenamiento Premium con Site Recovery (discos no administrados)."
 services: storage
 documentationcenter: 
 author: luywang
@@ -13,148 +13,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: fe9b5014d01e404919b53b8dc4812f357b1ca435
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2c82fffaa38baeeb4a676748125bd85d6e0500f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrating-to-premium-storage-using-azure-site-recovery-unmanaged-disks"></a>Migración a Premium Storage con Azure Site Recovery (discos no administrados)
+# <a name="migrating-toopremium-storage-using-azure-site-recovery-unmanaged-disks"></a>Migrar tooPremium almacenamiento con Azure Site Recovery (discos no administrados)
 
-[Azure Premium Storage](storage-premium-storage.md) le ofrece soporte de disco de alto rendimiento y latencia baja para máquinas virtuales (VM) que ejecutan cargas de trabajo intensivas de E/S. El propósito de esta guía es ayudar a los usuarios a migrar sus discos de máquinas virtuales desde una cuenta de almacenamiento estándar a una cuenta de Premium Storage mediante [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
+[Azure Premium Storage](storage-premium-storage.md) le ofrece soporte de disco de alto rendimiento y latencia baja para máquinas virtuales (VM) que ejecutan cargas de trabajo intensivas de E/S. Hola de esta guía sirve toohelp usuarios migración sus discos de máquina virtual de un tooa de cuenta de almacenamiento estándar cuenta de almacenamiento Premium mediante [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
 
-Site Recovery es un servicio de Azure que contribuye a su estrategia de continuidad empresarial y recuperación ante desastres al organizar la replicación de servidores físicos locales y máquinas virtuales en la nube (Azure) o en un centro de datos secundario. Cuando se producen interrupciones en la ubicación principal, se realiza la conmutación por error a la ubicación secundaria para mantener disponibles las aplicaciones y cargas de trabajo. La conmutación por recuperación a la ubicación principal se produce cuando vuelve a su funcionamiento normal. Site Recovery proporciona conmutaciones por error de prueba que admiten maniobras de recuperación ante desastres sin que los entornos de producción se vean afectados. Puede ejecutar conmutaciones por error con la mínima pérdida de datos (según la frecuencia de replicación) para desastres inesperados. En el escenario de migración a Premium Storage, puede utilizar la [Conmutación por error en Site Recovery](../../site-recovery/site-recovery-failover.md) en Azure Site Recovery para migrar los discos de destino a una cuenta de Premium Storage.
+Recuperación del sitio es un servicio de Azure que contribuye tooyour la continuidad del negocio y estrategia de recuperación ante desastres mediante la coordinación de Hola replicación de servidores físicos locales y máquinas virtuales en la nube toohello (Azure) o tooa centro de datos secundario. Cuando se producen interrupciones en la ubicación principal, conmutación por error tookeep aplicaciones de toohello ubicación secundaria y las cargas de trabajo disponibles. Producirá un error de ubicación principal tooyour atrás cuando devuelve toonormal operación. Site Recovery ofrece toosupport de recuperación ante desastres de las conmutaciones por error de prueba sin que afecte a los entornos de producción. Puede ejecutar conmutaciones por error con la mínima pérdida de datos (según la frecuencia de replicación) para desastres inesperados. En el escenario de Hola de migrar tooPremium almacenamiento, puede usar hello [conmutación por error de Site Recovery](../../site-recovery/site-recovery-failover.md) en tooa de discos de destino de Azure Site Recovery toomigrate cuenta de almacenamiento Premium.
 
-Se recomienda migrar a Premium Storage con Site Recovery porque esta opción proporciona un tiempo de inactividad mínimo y evita la ejecución manual de copiar los discos y la creación de nuevas máquinas virtuales. Site Recovery de forma sistemática copiará los discos y creará nuevas máquinas virtuales durante la conmutación por error. Site Recovery admite varios tipos de conmutación por error con un tiempo de inactividad mínimo, o ninguno. Para planear el tiempo de inactividad y calcular la pérdida de datos, consulte la tabla de [tipos de conmutación por error](../../site-recovery/site-recovery-failover.md) en Site Recovery. Si se [prepara para conectarse a las máquinas virtuales de Azure después de la conmutación por error](../../site-recovery/vmware-walkthrough-overview.md), debe ser capaz de conectarse a la máquina virtual de Azure con RDP después de la conmutación por error.
+Se recomienda migrar tooPremium almacenamiento mediante el uso de Site Recovery porque esta opción proporciona el tiempo de inactividad mínimo y evita la ejecución manual de Hola de copiar los discos y la creación de nuevas máquinas virtuales. Site Recovery de forma sistemática copiará los discos y creará nuevas máquinas virtuales durante la conmutación por error. Site Recovery admite varios tipos de conmutación por error con un tiempo de inactividad mínimo, o ninguno. tooplan la pérdida de datos de tiempo de inactividad y la estimación, vea hello [tipos de conmutación por error](../../site-recovery/site-recovery-failover.md) tabla en Site Recovery. Si se [preparar tooconnect tooAzure las máquinas virtuales después de la conmutación por error](../../site-recovery/vmware-walkthrough-overview.md), debe ser capaz de tooconnect toohello máquina virtual de Azure con RDP después de la conmutación por error.
 
 ![][1]
 
 ## <a name="azure-site-recovery-components"></a>Componentes de Azure Site Recovery
 
-Estos son los componentes de Site Recovery que son pertinentes para este escenario de migración.
+Estos son los componentes de Site Recovery de Hola que son relevantes toothis escenario de migración.
 
-* El **servidor de configuración** es una máquina virtual de Azure que coordina la comunicación y administra los procesos de replicación y recuperación de datos. En esta máquina virtual se ejecutará un archivo de configuración única para instalar el servidor de configuración y un componente adicional, denominado servidor de procesos, como una puerta de enlace de replicación. Lea sobre los [requisitos previos del servidor de configuración](../../site-recovery/vmware-walkthrough-overview.md). El servidor de configuración solo debe configurarse una vez y puede utilizarse para todas las migraciones a la misma región.
+* El **servidor de configuración** es una máquina virtual de Azure que coordina la comunicación y administra los procesos de replicación y recuperación de datos. En esta máquina virtual se ejecutará un servidor de configuración de instalación de un solo archivo tooinstall hello y un componente adicional, denominado un servidor de procesos, como una puerta de enlace de replicación. Lea sobre los [requisitos previos del servidor de configuración](../../site-recovery/vmware-walkthrough-overview.md). Servidor de configuración sólo necesita toobe configurarse una vez y se puede utilizar para todos los toohello migraciones misma región.
 
-* El **servidor de procesos** es una puerta de enlace de replicación que recibe datos de replicación de máquinas virtuales de origen y optimiza los datos con almacenamiento en caché, compresión y cifrado, y lo envía a una cuenta de almacenamiento. También controla la instalación de inserción del servicio de movilidad en máquinas virtuales de origen y realiza la detección automática de máquinas virtuales de origen. El servidor de procesos predeterminado está instalado en el servidor de configuración. Puede implementar servidores de procesos independientes adicionales para escalar la implementación. Obtenga información sobre [los procedimientos recomendados para la implementación de servidor de procesos](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) y [la implementación de los servidores de procesos adicionales](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). El servidor de procesos solo debe configurarse una vez y puede utilizarse para todas las migraciones a la misma región.
+* **Servidor de procesos** es una puerta de enlace de replicación que recibe datos de replicación de máquinas virtuales de origen optimiza Hola datos con almacenamiento en caché, la compresión y cifrado y lo envía tooa cuenta de almacenamiento. También controla la instalación de inserción de toosource de servicio de movilidad de hello las máquinas virtuales y realiza la detección automática de las máquinas virtuales de origen. servidor de proceso de Hello predeterminado está instalado en el servidor de configuración de Hola. Puede implementar tooscale de servidores de proceso adicional independiente de la implementación. Obtenga información sobre [los procedimientos recomendados para la implementación de servidor de procesos](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) y [la implementación de los servidores de procesos adicionales](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Solo necesita toobe una vez configurado el servidor de procesos y puede utilizarse para todos los toohello de migraciones misma región.
 
-* El **servicio de movilidad** es un componente que se implementa en cada máquina virtual estándar que desea replicar. Captura las escrituras de datos en la máquina virtual estándar y los reenvía al servidor de procesos. Lea sobre los [requisitos previos de máquinas replicadas](../../site-recovery/vmware-walkthrough-overview.md).
+* **Servicio de movilidad** es un componente que se implementa en cada máquina virtual estándar que desee tooreplicate. Captura escrituras de datos en Hola VM estándar y los reenvía toohello servidor de procesos. Lea sobre los [requisitos previos de máquinas replicadas](../../site-recovery/vmware-walkthrough-overview.md).
 
 En el gráfico se muestra cómo interactúan estos componentes.
 
 ![][15]
 
 > [!NOTE]
-> Site Recovery no admite la migración de los discos de espacios de Storage.
+> Recuperación de sitio no admite la migración de Hola de discos de espacios de almacenamiento.
 
-Para otros componentes de otros escenarios, consulte [Arquitectura del escenario](../../site-recovery/vmware-walkthrough-overview.md).
+Para los componentes adicionales para otros escenarios, consulte demasiado[arquitectura del escenario](../../site-recovery/vmware-walkthrough-overview.md).
 
 ## <a name="azure-essentials"></a>Información esencial de Azure
 
-Estos son los requisitos de Azure para este escenario de migración.
+Estos son Hola requisitos de Azure para este escenario de migración.
 
 * Una suscripción de Azure
-* Una cuenta de Azure Premium Storage para almacenar los datos replicados
-* Una red virtual de Azure a la que se conectarán las máquinas virtuales cuando se creen en la conmutación por error. La red virtual de Azure debe estar en la misma región que en la que se ejecuta Site Recovery.
-* Una cuenta de almacenamiento estándar de Azure en la que se van a almacenar los registros de replicación. Puede ser la misma cuenta de almacenamiento que los discos de máquina virtual que se están migrando.
+* Un toostore de cuenta de almacenamiento de Azure Premium los datos replicados
+* Cuando se crean en la conmutación por error, se conectará un toowhich de red virtual de Azure (VNet) las máquinas virtuales. red virtual de Azure Hello debe ser una en Hola la misma región como Hola uno en qué Hola se ejecuta la recuperación del sitio
+* Una cuenta de almacenamiento de Azure estándar en los registros de replicación de toostore. Puede tratarse de Hola la misma cuenta de almacenamiento como discos de hello VM que se está migrando
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* Comprender los componentes del escenario de migración pertinentes de la sección anterior
-* Planear el tiempo de inactividad con la información sobre la [Conmutación por error en Site Recovery](../../site-recovery/site-recovery-failover.md)
+* Entender los componentes del escenario de migración relevante Hola Hola sección anterior
+* Planear el tiempo de inactividad por aprendizaje sobre hello [conmutación por error de Site Recovery](../../site-recovery/site-recovery-failover.md)
 
 ## <a name="setup-and-migration-steps"></a>Pasos de configuración y migración
 
-Puede usar Site Recovery para migrar máquinas virtuales de IaaS de Azure entre regiones o dentro de la misma región. Las instrucciones siguientes se han adaptado a este escenario de migración a partir del artículo [Replicar máquinas virtuales de VMware o servidores físicos en Azure](../../site-recovery/vmware-walkthrough-overview.md). Siga los vínculos para conocer otros pasos además de las instrucciones de este artículo.
+Puede utilizar Site Recovery toomigrate máquinas virtuales de IaaS de Azure entre regiones o dentro de la misma región. Hello las instrucciones siguientes se han adaptado a este escenario de migración de artículo hello [replicar máquinas virtuales de VMware o en servidores físicos tooAzure](../../site-recovery/vmware-walkthrough-overview.md). Siga los vínculos de Hola para obtener pasos detallados en instrucciones de toohello adicionales en este artículo.
 
-1. **Creación de un almacén de Recovery Services** Cree y administre el almacén de Site Recovery a través de [Azure Portal](https://portal.azure.com). Haga clic en **Nuevo** > **Administración** > **Backup** y **Site Recovery (OMS)**. También puede hacer clic en **Examinar** > **Almacén de Recovery Services** > **Agregar**. Las máquinas virtuales se replicarán en la región que haya especificado en este paso. A efectos de la migración en la misma región, seleccione la región donde están máquinas virtuales de origen y las cuentas de almacenamiento de origen. 
+1. **Creación de un almacén de Recovery Services** Crear y administrar el almacén de Site Recovery de Hola a través de hello [portal de Azure](https://portal.azure.com). Haga clic en **Nuevo** > **Administración** > **Backup** y **Site Recovery (OMS)**. También puede hacer clic en **Examinar** > **Almacén de Recovery Services** > **Agregar**. Máquinas virtuales será región toohello replicada que especifique en este paso. A fin de saludo de la migración en hello misma región, región de hello seleccione dónde están las máquinas virtuales de origen y la cuentas de almacenamiento de origen. 
 
-2. Los pasos siguientes lo ayudarán a **elegir los objetivos de protección**.
+2. Hello pasos siguientes le ayudarán a **elegir los objetivos de protección**.
 
-    2a. En la máquina virtual en la que desea instalar el servidor de configuración, abra [Azure Portal](https://portal.azure.com). Vaya a **Almacenes de Recovery Services** > **Configuración**. En **Configuración**, seleccione **Site Recovery**. En **Site Recovery**, seleccione **Paso 1: Preparar la infraestructura**. En **Preparar la infraestructura**, seleccione **Objetivo de protección**.
+    2a. En VM donde desea que el servidor de configuración de tooinstall Hola Hola, abra hello [portal de Azure](https://portal.azure.com). Vaya demasiado**servicios de recuperación de los almacenes de credenciales** > **configuración**. En **Configuración**, seleccione **Site Recovery**. En **Site Recovery**, seleccione **Paso 1: Preparar la infraestructura**. En **Preparar la infraestructura**, seleccione **Objetivo de protección**.
 
     ![][2]
 
-    2b. En **Objetivo de protección**, en la primera lista desplegable, seleccione **En Azure**. En la segunda lista desplegable, seleccione **No virtualizado/Otro** y, después, haga clic en **Aceptar**.
+    2b. En **objetivo de protección**, en Hola la primera lista desplegable, seleccione **tooAzure**. En la lista desplegable segundo de hello, seleccione **no virtualizados / otros**y, a continuación, haga clic en **Aceptar**.
 
     ![][3]
 
-3. Los siguientes pasos lo ayudan a **configurar el entorno de origen (servidor de configuración)**.
+3. Hello pasos siguientes le ayudarán a **configurar el entorno de origen (servidor de configuración) de hello**.
 
-    3a. Descargue la **instalación unificada de Azure Site Recovery** y la **clave de registro del almacén** en la hoja **Preparar la infraestructura** > **Preparar origen** > **Agregar servidor**. Necesitará la clave de registro del almacén para ejecutar la instalación unificada. La clave será válida durante 5 días a partir del momento en que se genera.
+    3a. Descargar hello **instalación unificada de Azure Site Recovery** hello y **clave de registro del almacén** por van toohello **preparar infraestructura**  >  **Origen preparación** > **Agregar servidor** hoja. Necesitará Hola toorun clave Hola unificado de instalación de almacén de registro. clave de Hello es válida durante 5 días después de generarlo.
 
     ![][4]
 
-    3b. Agregue el servidor de configuración de la hoja **Agregar servidor**.
+    3b. Agregar servidor de configuración de hello **Agregar servidor** hoja.
 
     ![][5]
 
-    3c. En la máquina virtual que usa como servidor de configuración, ejecute la instalación unificada para instalar el servidor de configuración y el servidor de procesos. Puede comenzar [aquí](../../site-recovery/vmware-walkthrough-overview.md) con las capturas de pantalla para completar la instalación. Puede consultar las capturas de pantalla siguientes para conocer los pasos especificados para este escenario de migración.
+    3c. En la máquina virtual que se va a utilizar como servidor de configuración de Hola Hola, ejecutar servidores de configuración de instalación unificada tooinstall Hola y Hola procesos. Puede comenzar con capturas de pantalla de hello [aquí](../../site-recovery/vmware-walkthrough-overview.md) instalación de hello toocomplete. Puede hacer referencia a toohello siguientes capturas de pantalla de pasos especificados en este escenario de migración.
 
-    En **Antes de comenzar**, seleccione **Install the configuration server and process server** (Instalar el servidor de configuración y el servidor de procesos).
+    En **antes de comenzar**, seleccione **instalar servidores de configuración de Hola y procesos**.
 
     ![][6]
 
-    3d. En **Registro**, busque y seleccione la clave de registro que descargó del almacén.
+    3d. En **registro**, busque y seleccione la clave de registro de hello descargó desde el almacén de Hola.
 
     ![][7]
 
-    3e. En **Detalles del entorno**, seleccione si replicará máquinas virtuales de VMware. En este escenario de migración, elija **No**.
+    3e. En **detalles del entorno**, seleccione si se va a máquinas virtuales de VMware tooreplicate. En este escenario de migración, elija **No**.
 
     ![][8]
 
-    3f. Una vez completada la instalación, verá la ventana del **servidor de configuración de Microsoft Azure Site Recovery**. Utilice la pestaña **Administrar cuentas** para crear la cuenta que puede usar Site Recovery para la detección automática. (En el escenario sobre cómo proteger las máquinas físicas, no es pertinente configurar la cuenta, pero necesita al menos una cuenta para habilitar uno de los pasos siguientes. En este caso, puede denominar a la cuenta y contraseña como cualquier otra). Use la pestaña **Registro del almacén** para cargar el archivo de credenciales del almacén.
+    3f. Una vez completada la instalación de hello, verá hello **servidor de configuración de recuperación de sitio de Microsoft Azure** ventana. Usar hello **administrar cuentas** pestaña cuenta de hello toocreate que puede usar Site Recovery para la detección automática. (En caso de hello sobre cómo proteger los equipos físicos, configurar la cuenta de hello no es relevante, pero necesita al menos un tooenable cuenta uno de hello siguiendo los pasos. En este caso, puede asignar Hola cuenta y la contraseña como ninguno.) Hola de uso **registro del almacén** archivo de credenciales de almacén de ficha tooupload Hola.
 
     ![][9]
 
-4. **Configure el entorno de destino**. Haga clic en **Preparar la infraestructura** > **Destino** y especifique el modelo de implementación que desea usar para las máquinas virtuales después de la conmutación por error. Puede elegir **Clásico** o **Resource Manager**, en función de su escenario.
+4. **Configurar el entorno de destino de hello**. Haga clic en **preparar infraestructura** > **destino**y especifique el modelo de implementación de Hola que desea toouse para las máquinas virtuales después de la conmutación por error. Puede elegir **Clásico** o **Resource Manager**, en función de su escenario.
 
     ![][10]
 
-    Site Recovery comprueba que tiene una o más cuentas de almacenamiento y redes compatibles. Tenga en cuenta que si utiliza una cuenta de Premium Storage para los datos replicados, deberá configurar una cuenta de almacenamiento estándar adicional para almacenar los registros de replicación.
+    Site Recovery comprueba que tiene una o más redes y cuentas de Azure Storage compatibles. Tenga en cuenta que si usa una cuenta de almacenamiento Premium para los datos replicados, necesario tooset la una replicación de toostore de cuenta de almacenamiento estándar adicional registros.
 
-5. **Configure las opciones de replicación**. Siga las instrucciones de [Configuración de las opciones de replicación](../../site-recovery/vmware-walkthrough-overview.md) para comprobar que el servidor de configuración se asoció correctamente a la directiva de replicación que ha creado.
+5. **Configure las opciones de replicación**. Siga [establecer la configuración de replicación](../../site-recovery/vmware-walkthrough-overview.md) tooverify que el servidor de configuración se asoció correctamente al crear la directiva de replicación de Hola.
 
-6. **Planeamiento de capacidad** Utilice el [planeamiento de capacidad](../../site-recovery/site-recovery-capacity-planner.md) para calcular con precisión el ancho de banda de red, almacenamiento y otros requisitos para satisfacer las necesidades de replicación. Cuando haya terminado, seleccione **Sí** en **¿Completó el planeamiento de capacidad?**.
+6. **Planeamiento de capacidad** Hola de uso [planificador de capacidad](../../site-recovery/site-recovery-capacity-planner.md) ancho de banda de red de estimación de tooaccurately, almacenamiento y otro requisitos toomeet necesita la replicación. Cuando haya terminado, seleccione **Sí** en **¿Completó el planeamiento de capacidad?**.
 
     ![][11]
 
-7. Los siguientes pasos lo ayudarán a **instalar el servicio de movilidad y a habilitar la replicación**.
+7. Hello pasos siguientes le ayudarán a **instalar el servicio de movilidad y habilitar la replicación**.
 
-    7a. Puede elegir [insertar la instalación](../../site-recovery/vmware-walkthrough-overview.md) en las máquinas virtuales de origen o [instalar manualmente el servicio de movilidad](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) en las máquinas virtuales de origen. Puede encontrar el requisito de insertar la instalación y la ruta de acceso del instalador manual en el vínculo proporcionado. Si está realizando una instalación manual, debe usar una dirección IP interna para buscar el servidor de configuración.
+    7a. Puede elegir demasiado[instalación de inserción](../../site-recovery/vmware-walkthrough-overview.md) tooyour origen máquinas virtuales o demasiado[instalar manualmente el servicio de movilidad](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) en el origen de las máquinas virtuales. Puede encontrar requisito Hola de instalación de inserción y la ruta de acceso de hello del instalador manual de hello en el vínculo de hello proporcionado. Si está realizando una instalación manual, deberá toouse un servidor de configuración de IP dirección toofind Hola interno.
 
     ![][12]
 
-    La máquina virtual conmutada por error tendrá dos discos temporales: uno de la máquina virtual principal y el otro creado durante el aprovisionamiento de la máquina virtual en la región de recuperación. Para excluir el disco temporal antes de la réplica, instale el servicio de movilidad antes de habilitar la replicación. Para más información acerca de cómo excluir el disco temporal, consulte la sección [Excluir discos de la replicación](../../site-recovery/vmware-walkthrough-overview.md).
+    Hola se conmutó por error máquina virtual tendrá dos discos temporales: uno de Hola hello otro creado durante el aprovisionamiento de Hola de máquina virtual en la región de recuperación de Hola y máquina virtual principal. tooexclude Hola temporal en el disco antes de la réplica, instale el servicio de movilidad de hello antes de habilitar la replicación. toolearn más información acerca de cómo tooexclude Hola disco temporal, consulte demasiado[excluir discos de replicación](../../site-recovery/vmware-walkthrough-overview.md).
 
     7b. Ahora habilite la replicación como sigue:
-      * Haga clic en **Replicar la aplicación** > **Origen**. Después de habilitar la replicación por primera vez, haga clic en +Replicar en el almacén para habilitar la replicación de más máquinas.
+      * Haga clic en **Replicar la aplicación** > **Origen**. Después de habilitar la replicación para hello la primera vez, haga clic en + replicar en la replicación de tooenable de almacén de Hola para máquinas adicionales.
       * En el paso 1, configure el origen como servidor de procesos.
-      * En el paso 2, especifique el modelo de implementación posterior a la conmutación por error, una cuenta de Premium Storage donde migrar, una cuenta de almacenamiento estándar para guardar los registros y una red virtual que producirá un error.
-      * En el paso 3, agregue las máquinas virtuales protegidas por dirección IP (es posible que necesite una dirección IP interna para encontrarlas).
-      * En el paso 4, configure las propiedades mediante la selección de las cuentas que configuró anteriormente en el servidor de procesos.
-      * En el paso 5, elija la directiva de replicación que creó anteriormente, Configuración de las opciones de replicación.
+      * En el paso 2, especifique modelo de implementación de conmutación por error de post hello, un toomigrate de cuenta de almacenamiento Premium a, registros de toosave de la cuenta de almacenamiento estándar y un toofail de red virtual a.
+      * En el paso 3, agregar máquinas virtuales protegidas por dirección IP (es posible que tenga una toofind de dirección IP interna ellos).
+      * En el paso 4, configurar propiedades de hello seleccionando cuentas Hola que configuró anteriormente en el servidor de procesos de Hola.
+      * En el paso 5, seleccione Directiva de replicación de Hola que creó anteriormente, establecer la configuración de replicación.
       Haga clic en **Aceptar** y habilite la replicación.
 
     > [!NOTE]
-    > Cuando se cancela la asignación de una máquina virtual de Azure y se vuelve a iniciar, no hay ninguna garantía de que obtendrá la misma dirección IP. Si cambia la dirección IP del servidor de procesos o servidor de configuración, o de las máquinas virtuales de Azure protegidas, es posible que la replicación en este escenario no funcione correctamente.
+    > Cuando se cancela la asignación y vuelva a iniciar una VM de Azure, no hay ninguna garantía de que obtendrá Hola la misma dirección IP. Si la dirección IP de hello del servidor de proceso del servidor de configuración de Hola o hello protegida cambio de máquinas virtuales de Azure, la replicación de hello en este escenario no funcionen correctamente.
 
     ![][13]
 
-    Cuando se diseña el entorno de Azure Storage, se recomienda utilizar cuentas de almacenamiento separadas para cada máquina virtual en un conjunto de disponibilidad. Es recomendable que siga el procedimiento recomendado en la capa de almacenamiento para [utilizar varias cuentas de almacenamiento para cada conjunto de disponibilidad](../../virtual-machines/windows/manage-availability.md). La distribución de discos de máquina virtual a varias cuentas de almacenamiento ayuda a mejorar la disponibilidad de almacenamiento y distribuye la entrada/salida en toda la infraestructura de Azure Storage. Si las máquinas virtuales están en un conjunto de disponibilidad, en lugar de replicar los discos de todas las máquinas virtuales en una cuenta de almacenamiento, se recomienda encarecidamente migrar varias máquinas virtuales varias veces, para que las máquinas virtuales del mismo conjunto de disponibilidad no comparten una única cuenta de almacenamiento. Use la hoja **Habilitar replicación** para configurar una cuenta de almacenamiento de destino para cada máquina virtual, de una en una. Puede elegir un modelo de implementación posterior a la conmutación por error según sus necesidades. Si elige Resource Manager (RM) como modelo de implementación posterior a la conmutación por error, puede conmutar por error una máquina virtual de RM en una máquina virtual de RM, o puede conmutar por error una máquina virtual clásica en una máquina virtual de RM.
+    Cuando se diseña el entorno de Azure Storage, se recomienda utilizar cuentas de almacenamiento separadas para cada máquina virtual en un conjunto de disponibilidad. Es recomendable que siga el procedimiento recomendado de hello en la capa de almacenamiento de hello demasiado[utilizar varias cuentas de almacenamiento para cada conjunto de disponibilidad](../../virtual-machines/windows/manage-availability.md). Distribución de cuentas de almacenamiento VM discos toomultiple ayuda a tooimprove la disponibilidad de almacenamiento y distribuye Hola E/S por la infraestructura de almacenamiento de Azure Hola. Si las máquinas virtuales están en un conjunto de disponibilidad, en lugar de replicar los discos de todas las máquinas virtuales en una cuenta de almacenamiento, se recomienda migrar varias máquinas virtuales varias veces, por lo que Hola hello las máquinas virtuales en el mismo conjunto de disponibilidad no comparten una única cuenta de almacenamiento. Hola de uso **Habilitar replicación** tooset de hoja de una cuenta de almacenamiento de destino para cada máquina virtual, uno en uno. Puede elegir un modelo de implementación de conmutación por error de post según la necesidad de tooyour. Si elige el Administrador de recursos (RM) como su modelo de implementación de conmutación por error de post, puede conmutar por error un tooan RM VM RM VM o puede conmutar por error un tooan VM clásico VM de RM.
 
-8. **Ejecute una conmutación por error de prueba**. Para comprobar si la replicación está completa, haga clic en Site Recovery y, después, haga clic en **Configuración** > **Elementos replicados**. Verá el estado y el porcentaje del proceso de replicación. Cuando la replicación inicial haya finalizado, ejecute la conmutación por error de prueba para validar la estrategia de replicación. Para ver los pasos detallados de la conmutación por error de prueba, consulte [Ejecución de una conmutación por error de prueba de Site Recovery](../../site-recovery/vmware-walkthrough-overview.md). Puede ver el estado de conmutación por error de prueba en **Configuración** > **Trabajos** > **nombreDeSuPlanDeConmutaciónPorError**. En la hoja, verá un desglose de los pasos y resultados correctos o con errores. Si se produce un error en la conmutación por error de prueba en cualquier paso, haga clic en el paso para comprobar el mensaje de error. Asegúrese de que las máquinas virtuales y la estrategia de replicación cumplen los requisitos antes de ejecutar una conmutación por error. Lea [Conmutación por error de prueba a Azure en Site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md) para obtener más información e instrucciones sobre conmutación por error de prueba.
+8. **Ejecute una conmutación por error de prueba**. toocheck si la replicación ha finalizado, haga clic en la recuperación del sitio y, a continuación, haga clic en **configuración** > **replican elementos**. Verá el estado de Hola y el porcentaje de su proceso de replicación. Después de la replicación inicial es toovalidate de conmutación por error completa, ejecute la estrategia de replicación. Para obtener pasos detallados de conmutación por error de prueba, consulte demasiado[ejecutar una prueba de conmutación por error de Site Recovery](../../site-recovery/vmware-walkthrough-overview.md). Puede ver el estado de Hola de conmutación por error de prueba en **configuración** > **trabajos** > **YOUR_FAILOVER_PLAN_NAME**. En la hoja de hello, verá un desglose de los pasos de Hola y resultados de correcto o con errores. Si se produce un error en la conmutación por error de prueba de Hola en cualquier paso, haga clic en el mensaje de error de hello paso toocheck Hola. Asegúrese de que las máquinas virtuales y la estrategia de replicación cumplan requisitos de hello antes de ejecutar una conmutación por error. Lectura [tooAzure probar conmutación por error de Site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md) para obtener más información e instrucciones de conmutación por error de prueba.
 
-9. **Ejecute una conmutación por error**. Después de realizada la conmutación por error de prueba, ejecute una conmutación por error para migrar los discos a Premium Storage y replicar las instancias de máquinas virtuales. Siga los pasos detallados en [Ejecute una conmutación por error](../../site-recovery/site-recovery-failover.md#run-a-failover). Asegúrese de seleccionar **Apagar máquinas virtuales y sincronizar los últimos datos** para especificar que Site Recovery debe intentar apagar las máquinas virtuales protegidas y sincronizar los datos para que se realice la conmutación por error de la versión más reciente de los datos. Si no selecciona esta opción o el intento no se realiza correctamente, la conmutación por error se realizará a partir del último punto de recuperación disponible para la máquina virtual. Site Recovery creará una instancia de máquina virtual cuyo tipo sea igual o similar a una máquina virtual compatible con Premium Storage. Puede comprobar el rendimiento y el precio de varias instancias de máquinas virtuales en [Precios de máquinas virtuales Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) o [Precios de máquinas virtuales Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+9. **Ejecute una conmutación por error**. Una vez completada la conmutación por error de prueba de hello, ejecute una conmutación por error toomigrate el almacenamiento de discos tooPremium y replicar instancias de máquina virtual de Hola. Siga Hola detallan los pasos en [ejecutar una conmutación por error](../../site-recovery/site-recovery-failover.md#run-a-failover). Asegúrese de seleccionar **apagar las máquinas virtuales y sincronizar los datos más recientes de hello** toospecify que Site Recovery debe intente tooshut hacia abajo Hola protegida las máquinas virtuales y sincronizar los datos de Hola para que hello versión más reciente de los datos de hello conmutarán por error. Si no selecciona esta opción u Hola intento no tiene éxito Hola conmutación por error será desde el punto de recuperación más reciente disponible de Hola para hello VM. Recuperación de sitio creará una instancia VM cuyo tipo es hello igual o similar tooa Premium con capacidad de almacenamiento: VM. Puede comprobar el rendimiento de Hola y el precio de varias instancias de máquina virtual yendo demasiado[precios de máquinas virtuales de Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) o [precios de máquinas virtuales de Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="post-migration-steps"></a>Pasos posteriores a la migración
 
-1. **Configure máquinas virtuales replicadas en el conjunto de disponibilidad, si procede**. Site Recovery no admite la migración de máquinas virtuales junto con el conjunto de disponibilidad. Dependiendo de la implementación de la máquina virtual replicada, realice una de las siguientes acciones:
-  * Para una máquina virtual que se crea con el modelo de implementación clásica: agregue la máquina virtual al conjunto de disponibilidad en Azure Portal. Para ver los pasos detallados, consulte [Adición de una máquina virtual existente a un conjunto de disponibilidad](../../virtual-machines/windows/classic/configure-availability.md#addmachine).
-  * Para el modelo de implementación de Resource Manager: guarde la configuración de la máquina virtual y, después, elimine y vuelva a crear las máquinas virtuales en el conjunto de disponibilidad. Para ello, use el script que encontrará en [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) (Establecimiento del conjunto de disponibilidad de máquinas virtuales de Azure Resource Manager). Compruebe la limitación de este script y planee el tiempo de inactividad antes de ejecutar el script.
+1. **Configurar la disponibilidad de toohello máquinas virtuales replicada defina si es necesario**. Recuperación del sitio no admite la migración de máquinas virtuales junto con el conjunto de disponibilidad de Hola. Dependiendo de la implementación de hello de la máquina virtual replicada, siga uno de los procedimientos de hello:
+  * Para una máquina virtual que creó mediante el modelo de implementación clásica de hello: agregar Hola VM toohello conjunto de disponibilidad en hello portal de Azure. Para obtener instrucciones detalladas, vaya demasiado[agrega un conjunto de disponibilidad de tooan de máquina virtual existente](../../virtual-machines/windows/classic/configure-availability.md#addmachine).
+  * Para el modelo de implementación del Administrador de recursos de hello: guardar la configuración del programa Hola a máquina virtual y, a continuación, eliminar y volver a crear las máquinas virtuales de hello en el conjunto de disponibilidad de Hola. toodo usar por lo tanto, el script de Hola en [establecer Azure Resource Manager VM conjunto de disponibilidad](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Compruebe la limitación de Hola de esta secuencia de comandos y planear el tiempo de inactividad antes de ejecutar script de Hola.
 
-2. **Elimine las máquinas virtuales y los discos antiguos**. Antes de eliminarlos, asegúrese de que los discos Premium sean coherentes con los discos de origen y que las nuevas máquinas virtuales realizan la misma función que las máquinas virtuales de origen. En el modelo de implementación de Resource Manager (RM), elimine la máquina virtual y los discos de las cuentas de almacenamiento de origen en Azure Portal. En el modelo de implementación clásico, puede eliminar la máquina virtual y los discos en el portal clásico o en Azure Portal. Si hay un problema en el que el disco no se elimina aunque haya eliminado la máquina virtual, consulte [Solución de errores al eliminar cuentas de almacenamiento, contenedores o VHD de Azure en una implementación de Resource Manager](storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+2. **Elimine las máquinas virtuales y los discos antiguos**. Antes de eliminar estos, asegúrese de que los discos Premium Hola son coherentes con hello que nuevas máquinas virtuales realizan Hola la misma función que el origen de hello las máquinas virtuales y discos de origen. En el modelo de implementación del Administrador de recursos (RM) hello, eliminar Hola VM y eliminar discos Hola de las cuentas de almacenamiento de origen en hello portal de Azure. En el modelo de implementación clásica de hello, puede eliminar Hola VM y discos en el portal clásico de Hola o portal de Azure. Si hay un problema en qué Hola disco no se elimina aunque eliminado Hola VM, consulte [solucionar errores al eliminar discos duros virtuales](storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
 
-3. **Limpie la infraestructura de Azure Site Recovery**. Si ya no se necesita Site Recovery, puede limpiar su infraestructura mediante la eliminación de elementos replicados, el servidor de configuración y la directiva de recuperación y, después, eliminar el almacén de Azure Site Recovery.
+3. **Infraestructura de Azure Site Recovery Hola limpia**. Si ya no es necesaria la recuperación de sitio, puede limpiar su infraestructura eliminando los elementos replicados, servidor de configuración de Hola y Hola directiva de recuperación, y, a continuación, eliminar el almacén de Azure Site Recovery de Hola.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
@@ -163,16 +163,16 @@ Puede usar Site Recovery para migrar máquinas virtuales de IaaS de Azure entre 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Vea los siguientes recursos para conocer otros escenarios específicos de migración de máquinas virtuales.
+Vea Hola recursos para escenarios específicos para migrar máquinas virtuales siguientes:
 
 * [Migrar máquinas virtuales de Azure entre cuentas de almacenamiento](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Crear y cargar un VHD de Windows Server a Azure](../../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Creación y carga de un disco duro virtual que contiene el sistema operativo Linux](../../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Migrar máquinas virtuales de Amazon AWS a Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Crear y cargar un VHD de Windows Server tooAzure.](../../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Crear y cargar un disco duro Virtual que contiene Hola sistema operativo Linux](../../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Migración de máquinas virtuales de Amazon AWS tooMicrosoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Consulte también los siguientes recursos para más información sobre Azure Storage y Azure Virtual Machines:
+Además, vea Hola después recursos toolearn más información sobre el almacenamiento de Azure y máquinas virtuales de Azure:
 
-* [Almacenamiento de Azure](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Máquinas virtuales de Azure](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Almacenamiento premium: Almacenamiento de alto rendimiento para cargas de trabajo de máquina virtual de Azure](storage-premium-storage.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "Inserción de anuncios en el lado cliente | Microsoft Docs"
-description: "Este tema muestra cómo insertar anuncios en el lado cliente."
+title: aaaInserting anuncios en el lado del cliente de hello | Documentos de Microsoft
+description: "Este tema muestra cómo tooinsert anuncios de Hola cliente."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 52ba731f88c630830560e3cf8406ba2e9613c8a5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e6eab4aa92918ad734db8ac3a4e7818d02ed7fe4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="inserting-ads-on-the-client-side"></a>Inserción de anuncios en el lado cliente
-Este tema contiene información sobre cómo insertar distintos tipos de anuncios en el lado cliente.
+# <a name="inserting-ads-on-hello-client-side"></a>Insertar anuncios en el lado del cliente de Hola
+Este tema contiene información acerca de cómo tooinsert distintos tipos de anuncios en el lado del cliente de Hola.
 
 Para obtener información acerca de la compatibilidad con anuncios y subtítulos en vídeos de streaming en vivo, consulte [Estándares de inserción de anuncios y subtítulos compatibles](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
 
@@ -31,15 +31,15 @@ Para obtener información acerca de la compatibilidad con anuncios y subtítulos
 > 
 
 ## <a id="insert_ads_into_media"></a>Inserción de anuncios en contenido multimedia
-Servicios multimedia de Azure admite la inserción de anuncios mediante Plataforma multimedia de Microsoft: Player Frameworks. Player framework con compatibilidad con anuncios está disponible para dispositivos Windows 8, Silverlight, Windows Phone 8 e iOS. Cada Player Framework contiene código de ejemplo que muestra cómo implementar una aplicación de reproductor. Hay tres tipos diferentes de anuncios que se pueden insertar en los medios:
+Servicios multimedia de Azure proporciona compatibilidad para la inserción de anuncios a través de hello plataforma de Windows Media: marcos del Reproductor. Player framework con compatibilidad con anuncios está disponible para dispositivos Windows 8, Silverlight, Windows Phone 8 e iOS. Cada marco para Reproductor contiene código de ejemplo que muestra cómo tooimplement una aplicación de reproducción. Hay tres tipos diferentes de anuncios que se puede insertar en la lista multimedia:.
 
-* **Lineales** : anuncios de fotograma completo que pausan el vídeo principal.
-* **No lineales** : anuncios superpuestos que se muestran mientras se reproduce el vídeo principal, normalmente un logotipo u otra imagen estática colocada dentro del reproductor.
-* **Complementarios** : anuncios que se muestran fuera del reproductor.
+* **Lineal** – full anuncios en un marco que Pausar vídeo principal Hola.
+* **No lineales** : anuncios superpuestos que se muestran cuando se está reproduciendo el vídeo principal hello, normalmente un logotipo u otra imagen estática coloca Reproductor Hola.
+* **Complementaria** : anuncios que aparecen fuera de Reproductor de Hola.
 
-Los anuncios se pueden colocar en cualquier punto de la línea de tiempo del vídeo principal. Debe indicar al reproductor cuándo reproducir el anuncio y qué anuncios reproducir. Esto se realiza con un conjunto de archivos XML estándar: Video Ad Service Template (VAST, plantilla de servicio de anuncio de vídeo), Digital Video Multiple Ad Playlist (VMAP, lista de reproducción de varios anuncios de vídeo digital), Media Abstract Sequencing Template (MAST, plantilla de secuenciación abstracta multimedia) y Digital Video Player Ad Interface Definition (VPAID, definición de interfaz de anuncios del reproductor de vídeo digital). Los archivos VAST especifican qué anuncios mostrar. Los archivos VMAP especifican cuándo reproducir varios anuncios y contienen XML VAST. Los archivos MAST constituyen otra manera de secuenciar los anuncios que también pueden contener XML VAST. Los archivos VPAID definen una interfaz entre el reproductor de vídeo y el anuncio o el servidor de anuncios.
+Anuncios se pueden colocar en cualquier punto de la escala temporal del vídeo principal Hola. Debe indicar que el Reproductor de hello cuando tooplay Hola ad y que tooplay de anuncios. Esto se realiza con un conjunto de archivos XML estándar: Video Ad Service Template (VAST, plantilla de servicio de anuncio de vídeo), Digital Video Multiple Ad Playlist (VMAP, lista de reproducción de varios anuncios de vídeo digital), Media Abstract Sequencing Template (MAST, plantilla de secuenciación abstracta multimedia) y Digital Video Player Ad Interface Definition (VPAID, definición de interfaz de anuncios del reproductor de vídeo digital). Los archivos VAST especifican qué toodisplay de anuncios. Archivos VMAP especifican cuándo tooplay varios anuncios y contienen XML VAST. Los archivos MAST constituyen otra anuncios de toosequence de manera que también pueden contener XML VAST. Los archivos VPAID definen una interfaz entre el Reproductor de vídeo de Hola y anuncios de Hola o el servidor de anuncios.
 
-Cada Player Framework funciona de forma diferente y cada uno se explicará en su propio tema. En este tema se describen los mecanismos básicos usados para insertar anuncios. Las aplicaciones de reproductor de vídeo solicitan anuncios a un servidor de anuncios. El servidor de anuncios puede responder de varias maneras:
+Cada Player Framework funciona de forma diferente y cada uno se explicará en su propio tema. En este tema describirá tooinsert anuncios de Hola mecanismos básicos usados. Las aplicaciones de Reproductor de vídeo solicitan los anuncios desde un servidor de ad. el servidor de anuncios de Hola puede responder de varias maneras:
 
 * Devolver un archivo VAST
 * Devolver un archivo VMAP (con VAST insertado)
@@ -47,7 +47,7 @@ Cada Player Framework funciona de forma diferente y cada uno se explicará en su
 * Devolver un archivo VAST con anuncios VPAID
 
 ### <a name="using-a-video-ad-service-template-vast-file"></a>Mediante un archivo Video Ad Service Template (VAST)
-Un archivo VAST especifica qué anuncios mostrar. El siguiente código XML es un ejemplo de un archivo VAST para un anuncio lineal:
+Un archivo VAST especifica qué anuncios toodisplay. Hello XML siguiente es un ejemplo de un archivo VAST para un anuncio lineal:
 
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
       <Ad id="115571748">
@@ -91,9 +91,9 @@ Un archivo VAST especifica qué anuncios mostrar. El siguiente código XML es un
       </Ad>
     </VAST>
 
-El anuncio lineal se describe en el elemento <**Linear**>. Especifica la duración del anuncio, eventos de seguimiento, click-through, el seguimiento de clics y diversos elementos **MediaFile**. Los eventos de seguimiento se especifican dentro del elemento <**TrackingEvents**> y permiten que un servidor de anuncios realice el seguimiento de diversos eventos que se producen mientras se visualiza el anuncio. En este caso se realiza un seguimiento de los eventos start, midpoint, complete y expand. El evento start se produce cuando se muestra el anuncio. El evento midpoint se produce cuando se visualiza al menos el 50% de la escala de tiempo del anuncio. Cuando el anuncio llega al final, se produce el evento complete. El evento expand se produce cuando el usuario expande el reproductor de vídeo a pantalla completa. Los click-through se especifican con un elemento <**ClickThrough**> dentro de un elemento <**VideoClicks**>, que especifica el identificador URI de un recurso que se muestra cuando el usuario hace clic en el anuncio. ClickTracking se especifica en un elemento <**ClickTracking**>, también dentro del elemento <**VideoClicks**> y especifica un recurso de seguimiento para que el reproductor lo solicite cuando el usuario haga clic en el anuncio. Los elementos <**MediaFile**> especifican información sobre una codificación concreta de un anuncio. Cuando haya más de un elemento <**MediaFile**>, el reproductor de vídeo puede elegir la mejor codificación para la plataforma. 
+Hola describe anuncio lineal Hola <**lineal**> elemento. Especifica la duración de Hola de anuncio Hola, realizar el seguimiento de eventos, haga clic en, haga clic en seguimiento y un número de **MediaFile** elementos. Eventos de seguimiento se especifican en Hola <**TrackingEvents**> elemento y permitir que los diversos eventos que se producen durante la visualización de anuncios de Hola un tootrack de servidor de ad. En este caso Hola inicio, punto medio, finalización y expanda se realiza el seguimiento de eventos. evento de inicio de Hello tiene lugar cuando se muestra el anuncio de Hola. evento de punto medio de Hello tiene lugar cuando al menos se ha visto el 50% de la escala de tiempo del anuncio de Hola. evento de finalización de Hello ocurre cuando haya quedado ad hello toohello final. evento de expansión de Hola se produce cuando el usuario de Hola expande en pantalla de bienvenida Reproductor de vídeo toofull. Aviso se especifica con un <**Click-through**> elemento dentro de un <**VideoClicks**> elemento y especifica un toodisplay de recurso URI tooa cuando Hola usuario hace clic en el anuncio de Hola. ClickTracking se especifica en un <**ClickTracking**> elemento, también en Hola <**VideoClicks**> elemento y especifica un recurso de seguimiento para hello Reproductor toorequest Hola usuario haga clic en en ad.hello Hola <**MediaFile**> elementos especifican información sobre una codificación específica de un anuncio. Cuando hay más de un <**MediaFile**> elemento, Reproductor de vídeo de hello puede elegir la mejor codificación para la plataforma de Hola Hola. 
 
-Los anuncios lineales pueden mostrarse en un orden especificado. Para ello, agregue elementos <Ad> adicionales al archivo VAST y especifique el orden usando el atributo sequence. Esto se ilustra en el ejemplo siguiente:
+Los anuncios lineales pueden mostrarse en un orden especificado. toodo, agregar más <Ad> elementos toohello VAST de archivos y especificar orden hello mediante el atributo de secuencia de Hola. Hola de ejemplo siguiente se muestra cómo hacerlo:
 
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
       <Ad id="1" sequence="0">
@@ -138,7 +138,7 @@ Los anuncios lineales pueden mostrarse en un orden especificado. Para ello, agre
       </Ad>
     </VAST>
 
-Los anuncios no lineales se especifican también en un elemento <Creative>. El ejemplo siguiente muestra un elemento <Creative> que describe un anuncio no lineal.
+Los anuncios no lineales se especifican también en un elemento <Creative>. Hola siguiente ejemplo se muestra un <Creative> elemento que describe un anuncio no lineal.
 
     <Creative id="video" sequence="1" AdID="">
       <NonLinearAds>
@@ -154,20 +154,20 @@ Los anuncios no lineales se especifican también en un elemento <Creative>. El e
     </Creative>
 
 
-El elemento <**NonLinearAds**> puede contener uno o varios elementos <**NonLinear**>, y cada uno de ellos puede describir un anuncio no lineal. El elemento <**NonLinear**> especifica el recurso para el anuncio no lineal. El recurso puede ser <**StaticResouce**>, <**IFrameResource**> o <**HTMLResouce**>. <**StaticResource**> describe un recurso no HTML y define un atributo creativeType que especifica cómo se muestra el recurso:
+Hola <**NonLinearAds**> elemento puede contener uno o varios <**no lineales**> elementos, cada uno de los cuales puede describir un anuncio no lineal. Hola <**no lineales**> elemento especifica el recurso de hello para el anuncio no lineal Hola. Hola recurso puede ser una <**StaticResouce**>, <**IFrameResource**>, o un <**HTMLResouce**>. <**StaticResource**> describe un recurso no HTML y define un atributo creativeType que especifica cómo se muestran los recursos de hello:
 
-Image/gif, image/jpeg, image/png: el recurso se muestra en una etiqueta HTML <**img**>.
+Image/gif, image/jpeg, image/png: Hola recurso se muestra en una etiqueta HTML <**img**> etiqueta.
 
-Application/x-javascript: el recurso se muestra en una etiqueta HTML <**script**>.
+Application/x-javascript: recursos de Hola se muestra en una etiqueta HTML <**script**> etiqueta.
 
-Application/x-shockwave-flash: el recurso se muestra en un reproductor Flash.
+Application/x-shockwave-flash: recursos de Hola se muestra en un reproductor Flash.
 
-**IFrameResource** describe un recurso HTML que se puede mostrar en un elemento IFrame. **HTMLResource** describe un fragmento de código HTML que se puede insertar en una página web. **TrackingEvents** especifica los eventos de seguimiento y el identificador URI que se solicita cuando se produce el evento. En este ejemplo se realiza el seguimiento de los eventos acceptInvitation y collapse. Para más información sobre el elemento **NonLinearAds** y sus elementos secundarios, consulte IAB.NET/VAST. Tenga en cuenta que el elemento **TrackingEvents** se encuentra dentro del elemento **NonLinearAds**, en lugar del elemento **NonLinear**.
+**IFrameResource** describe un recurso HTML que se puede mostrar en un elemento IFrame. **HTMLResource** describe un fragmento de código HTML que se puede insertar en una página web. **TrackingEvents** especificar eventos de seguimiento y Hola URI toorequest cuando se produce el evento de Hola. Hola de este ejemplo se realiza el seguimiento de eventos acceptInvitation y collapse. Para obtener más información sobre hello **NonLinearAds** elemento y sus elementos secundarios, vea IAB.NET/vast. Tenga en cuenta que hello **TrackingEvents** elemento se encuentra dentro de hello **NonLinearAds** elemento en lugar de hello **no lineales** elemento.
 
-Los anuncios complementarios se definen dentro de un elemento <CompanionAds>. El elemento <CompanionAds> puede contener uno o varios elementos <Companion>. Cada elemento <Companion> describe un anuncio complementario y puede contener un <StaticResource>, una <IFrameResource> o un <HTMLResource>, que se especifican de la misma forma que un anuncio no lineal. Un archivo VAST puede contener varios anuncios complementarios y la aplicación de reproductor puede elegir el anuncio más apropiado para mostrar. Para obtener más información acerca de VAST, consulte [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Los anuncios complementarios se definen dentro de un elemento <CompanionAds>. Hola <CompanionAds> elemento puede contener uno o varios <Companion> elementos. Cada <Companion> elemento describe un anuncio complementario y puede contener una <StaticResource>, <IFrameResource>, o <HTMLResource> que se especifican en Hola de igual forma que en un anuncio no lineal. Un archivo VAST puede contener varios anuncios complementarios y aplicación de Reproductor de hello puede elegir hello más adecuado ad toodisplay. Para obtener más información acerca de VAST, consulte [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Uso de un archivo Digital Video Multiple Ad Playlist (VMAP)
-Un archivo VMAP permite especificar cuándo se producen pausas comerciales, cuánto dura cada pausa, cuántos anuncios pueden mostrarse en una pausa y qué tipos de anuncios se pueden mostrar durante una pausa. El siguiente en un ejemplo de un archivo VMAP que define una única pausa comercial:
+Un archivo VMAP permite toospecify cuando se producen los saltos de ad, cada salto de cuánto tiempo es, cuántos se pueden mostrar dentro de un salto y qué tipos de anuncios se pueden mostrar durante una interrupción. Hola siguiente en un ejemplo de un archivo VMAP que define un salto de ad único:
 
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
       <vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
@@ -216,34 +216,34 @@ Un archivo VMAP permite especificar cuándo se producen pausas comerciales, cuá
       </vmap:AdBreak>
     </vmap:VMAP>
 
-Un archivo VMAP comienza con un elemento <VMAP> que contiene uno o más elementos <AdBreak>, cada uno de los cuales define una pausa comercial. Cada pausa comercial especifica un tipo de pausa, el identificador de la pausa y la compensación de tiempo. El atributo breakType especifica el tipo de anuncio que se puede reproducir durante la pausa: linear, nonlinear o display. Los anuncios display se corresponden con los anuncios complementarios de VAST. Se puede especificar más de un tipo de anuncio en una lista separada por comas (sin espacios). breakID es el identificador opcional del anuncio. timeOffset especifica cuándo se debe mostrar el anuncio. Se puede especificar de una de las siguientes maneras:
+Un archivo VMAP comienza con un elemento <VMAP> que contiene uno o más elementos <AdBreak>, cada uno de los cuales define una pausa comercial. Cada pausa comercial especifica un tipo de pausa, el identificador de la pausa y la compensación de tiempo. atributo de Hello breakType especifica el tipo de Hola de anuncio que se puede reproducir durante la interrupción de hello: lineal, no lineal o mostrar. Mostrar anuncios asignan anuncios complementarios de tooVAST. Se puede especificar más de un tipo de anuncio en una lista separada por comas (sin espacios). Hola breakID es un identificador opcional para anuncios de Hola. Hola timeOffset especifica cuándo se deben mostrar anuncios de Hola. Se puede especificar en uno de hello siguientes maneras:
 
-1. Hora: en formato hh:mm:ss o hh:mm:ss.mmm, donde .mmm es milisegundos. El valor de este atributo especifica el tiempo que transcurre desde el principio de la escala de tiempo del vídeo al principio de la pausa comercial.
-2. Porcentaje: en formato n%, donde n es el porcentaje de la escala de tiempo de vídeo que se reproducirá antes del anuncio.
-3. Start/end: especifica que un anuncio debe mostrarse antes o después de que se muestre el vídeo.
-4. Posición: especifica el orden de las pausas comerciales cuando no se conoce la temporización de las mismas, como en el caso del streaming en vivo. El orden de cada pausa publicitaria en el formato #n, donde n es un entero igual o mayor que 1. 1 significa que el anuncio debe reproducirse en la primera oportunidad; 2 significa el anuncio debe reproducirse en la segunda oportunidad, y así sucesivamente.
+1. Hora: en formato hh:mm:ss o hh:mm:ss.mmm, donde .mmm es milisegundos. valor de Hola de este atributo especifica la hora de Hola desde principio de hello del principio de toohello Hola vídeo de la escala de tiempo de interrupción para un anuncio Hola.
+2. Porcentaje: en formato n % donde n es el porcentaje de Hola de hello tooplay de vídeo de la escala de tiempo antes de la reproducción de anuncios de Hola
+3. Inicio/fin: Especifica que un anuncio debe mostrarse antes o después de que se ha mostrado vídeo Hola
+4. Posición: especifica el orden de hello interrupciones del anuncio cuando el tiempo de Hola Hola interrupciones del anuncio es desconocido, como en el caso de transmisión por secuencias en directo. orden de Hola de cada interrupción se especifica en formato de hello #n donde n es un entero de 1 o mayor. 1 significa que el anuncio de Hola debe mostrarse en la primera oportunidad de hello, 2 significa anuncio de Hola debe mostrarse en la segunda oportunidad de Hola y así sucesivamente.
 
-En el elemento <**AdBreak**>, puede haber un elemento <**AdSource**>. El elemento <**AdSource**> contiene los siguientes atributos:
+Dentro de Hola <**AdBreak**> elemento puede ser una <**AdSource**> elemento. Hola <**AdSource**> elemento contiene Hola siguientes atributos:
 
-1. Id: especifica el identificador del origen del anuncio.
-2. allowMultipleAds: valor booleano que especifica si se pueden mostrar varios anuncios durante la pausa comercial.
-3. followRedirects: un valor booleano opcional que especifica si el reproductor de vídeo debe respetar las redirecciones dentro de una respuesta de anuncio.
+1. Id: especifica un identificador para el origen del anuncio de Hola
+2. allowMultipleAds: un valor booleano que especifica si se pueden mostrar varios anuncios durante la interrupción para un anuncio Hola
+3. followRedirects: un valor booleano opcional que especifica si debe respetar el Reproductor de vídeo de hello redirige en respuesta a un anuncio
 
-El elemento <**AdSource**> proporciona al reproductor una respuesta de anuncio en línea o una referencia a una respuesta de anuncio. Puede contener uno de los siguientes elementos:
+Hola <**AdSource**> elemento proporciona Reproductor Hola respuesta a un anuncio en línea o una respuesta de referencia tooan ad. Puede contener uno de hello siguientes elementos:
 
-* <VASTAdData>: indica que una respuesta de anuncio VAST se inserta dentro del archivo VMAP.
+* <VASTAdData>indica que una respuesta VAST ad está incrustada en el archivo VMAP de hello
 * <AdTagURI>: un URI que hace referencia a una respuesta de anuncio desde otro sistema.
 * <CustomAdData>: cadena arbitraria que representa una respuesta distinta de VAST.
 
-En este ejemplo se especifica una respuesta de anuncio en línea con un elemento <VASTAdData> que contiene una respuesta de anuncio VAST. Para obtener más información acerca de los demás elementos, consulte [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+En este ejemplo se especifica una respuesta de anuncio en línea con un elemento <VASTAdData> que contiene una respuesta de anuncio VAST. Para obtener más información acerca de hello otros elementos, consulte [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
-El elemento <**AdBreak**> también puede contener un elemento <**TrackingEvents**>. El elemento <**TrackingEvents**> permite realizar el seguimiento del inicio o fin de una pausa comercial o de si se produjo un error durante la pausa comercial. El elemento <**TrackingEvents**> contiene uno o más <**Tracking**>, cada uno de los cuales especifica un evento de seguimiento y un URI de seguimiento. Los posibles eventos de seguimiento son:
+Hola <**AdBreak**> elemento también puede contener un <**TrackingEvents**> elemento. Hola <**TrackingEvents**> elemento le permite tootrack inicio de Hola o al final de una pausa publicitaria o si se produjo un error durante la interrupción para un anuncio Hola. Hola <**TrackingEvents**> elemento contiene uno o más <**seguimiento**> elementos, cada uno de los cuales especifica un evento de seguimiento y un URI de seguimiento. Hola eventos de seguimiento posibles son:
 
-1. breakStart: realiza un seguimiento del principio de una pausa comercial
-2. breakend: realiza un seguimiento de la finalización de una pausa comercial
-3. error: realiza un seguimiento de un error producido durante la pausa comercial
+1. breakStart: sigue el principio de Hola de una pausa publicitaria
+2. breakend: se sigue pista Hola finalización de una pausa publicitaria
+3. Error: realiza un seguimiento de un error ocurrido durante la interrupción para un anuncio Hola
 
-En el ejemplo siguiente se muestra un archivo VMAP que especifica eventos de seguimiento.
+Hola de ejemplo siguiente muestra un archivo VMAP que especifica los eventos de seguimiento
 
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
       <vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
@@ -266,10 +266,10 @@ En el ejemplo siguiente se muestra un archivo VMAP que especifica eventos de seg
       </vmap:AdBreak>
     </vmap:VMAP>
 
-Para obtener más información sobre el elemento <**TrackingEvents**> y sus elementos secundarios, vea http://iab.org/VMAP.pdf.
+Para obtener más información sobre Hola <**TrackingEvents**> elemento y sus elementos secundarios, vea http://iab.org/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Uso de un archivo Media Abstract Sequencing Template (MAST)
-Un archivo MAST permite especificar desencadenadores que definen cuándo se muestra un anuncio. El siguiente es un archivo MAST de ejemplo que contiene desencadenadores para un anuncio de cuña previa, de cuña intermedia y de cuña posterior.
+Un archivo MAST le permite desencadenadores toospecify que definen cuándo se muestra un anuncio. Hola aquí te mostramos un ejemplo de un archivo MAST que contiene desencadenadores para un anuncio de cuña previa, una cuña intermedia y otro de cuña posterior a la.
 
     <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <triggers>
@@ -290,7 +290,7 @@ Un archivo MAST permite especificar desencadenadores que definen cuándo se mues
           </startConditions>
           <endConditions>
             <condition type="event" name="OnItemEnd"/>
-            <!--This 'resets' the trigger for the next clip-->
+            <!--This 'resets' hello trigger for hello next clip-->
           </endConditions>
           <sources>
             <source uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_linear.xml" format="vast">
@@ -314,16 +314,16 @@ Un archivo MAST permite especificar desencadenadores que definen cuándo se mues
 
 
 
-Un archivo MAST comienza con un elemento **MAST** que contiene un elemento **triggers**. El elemento <triggers> contiene uno o varios elementos **trigger** que definen cuándo se debe reproducir un anuncio. 
+Un archivo MAST comienza con un elemento **MAST** que contiene un elemento **triggers**. Hola <triggers> elemento contiene uno o varios **desencadenador** elementos que definen cuándo se debe reproducir un anuncio. 
 
-El elemento **trigger** contiene un elemento **startConditions** que especifica cuándo debe comenzar a reproducirse un anuncio. El elemento **startConditions** contiene uno o varios elementos <condition>. Cuando cada <condition> se evalúa como true, se inicia o se revoca un desencadenador en función de si <condition> está dentro de un elemento **startConditions** o **endConditions**, respectivamente. Cuando hay varios elementos <condition> presentes, se tratan como un OR implícito y cualquier condición que se evalúe como true hará que el desencadenador se inicie. Los elementos <condition> pueden estar anidados. Cuando hay elementos <condition> secundarios predefinidos, se tratan como un AND implícito y todas las condiciones deben evaluarse como true para iniciar el desencadenador. El elemento <condition> contiene los siguientes atributos que definen la condición: 
+Hola **desencadenador** elemento contiene un **startConditions** elemento que especifican cuándo un anuncio debe comenzar tooplay. Hola **startConditions** elemento contiene uno o varios <condition> elementos. Cuando cada <condition> se evalúa como tootrue un desencadenador se inicia o revoca en función de si hello <condition> está dentro de un **startConditions** o **endConditions** elemento respectivamente. Cuando varios <condition> elementos están presentes, se tratan como un OR implícito, cualquier condición que se evalúe tootrue provocará Hola desencadenador tooinitiate. Los elementos <condition> pueden estar anidados. Cuando secundarios <condition> elementos están predefinidos, se tratan como un AND implícito, todas las condiciones deben evaluarse tootrue para hello desencadenador tooinitiate. Hola <condition> elemento contiene Hola siguientes atributos que definen la condición de hello: 
 
-1. **type** : especifica el tipo de condición, evento o propiedad.
-2. **name** : nombre de la propiedad o evento que se usará durante la evaluación.
-3. **value** : valor de una propiedad con la que se evaluará.
-4. **operator** : operación que se va a usar durante la evaluación: EQ (igual), NEQ (distinto), GTR (mayor que), GEQ (mayor o igual que), LT (menor que), LEQ (menor o igual que), MOD (módulo)
+1. **tipo de** : especifica el tipo de saludo de condición, evento o propiedad
+2. **nombre** : hello nombre de toobe de propiedad o evento de hello utilizada durante la evaluación
+3. **valor** : Hola valor que se va a evaluar una propiedad en
+4. **operador** : Hola toouse operación durante la evaluación: EQ (igual), NEQ (distinto), GTR (mayor que), GEQ (mayor o igual que), LT (menor que), LEQ (menor o igual que), MOD (módulo)
 
-**endConditions** también contiene elementos <condition>. Cuando una condición se evalúa como true, el desencadenador se restablece. El elemento <trigger> también contiene un elemento <sources> que contiene uno o más elementos <source>. Los elementos <source> definen el URI a la respuesta de anuncio y el tipo de respuesta de anuncio. En este ejemplo se proporciona un URI a una respuesta VAST. 
+**endConditions** también contiene elementos <condition>. Cuando una condición se evalúa como desencadenador de hello tootrue es reset.hello <trigger> elemento también contiene un <sources> elemento que contiene uno o varios <source> elementos. Hola <source> elementos definen respuestas a los anuncios toohello Hola URI y el tipo de Hola de respuesta de ad. En este ejemplo se proporciona un URI tooa gran respuesta. 
 
     <trigger id="postroll" description="postroll"  >
       <startConditions>
@@ -338,39 +338,39 @@ El elemento **trigger** contiene un elemento **startConditions** que especifica 
 
 
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>Uso de Video Player-Ad Interface Definition (VPAID)
-VPAID es una API que permite a las unidades de anuncios ejecutables comunicarse con un reproductor de vídeo. Esto permite disfrutar de experiencias de anuncios altamente interactivas. El usuario puede interactuar con el anuncio y el anuncio puede responder a las acciones realizadas por el espectador. Por ejemplo, un anuncio puede mostrar botones que permiten al usuario ver más información o una versión más larga del anuncio. El reproductor de vídeo debe admitir la API VPAID y el anuncio ejecutable debe implementar la API. Cuando un reproductor solicita un anuncio de un servidor de anuncios, el servidor puede responder con una respuesta VAST que contiene un anuncio VPAID.
+VPAID es una API para permitir toocommunicate de unidades de anuncio ejecutable con un Reproductor de vídeo. Esto permite disfrutar de experiencias de anuncios altamente interactivas. Hola usuario puede interactuar con ad Hola y Hola puede responder tooactions realizada por el Visor de Hola. Por ejemplo, un anuncio puede mostrar botones que permitan Hola usuario tooview obtener más información o una versión más larga de anuncio Hola. Reproductor de vídeo de Hola debe admitir Hola API VPAID y anuncio de Hola ejecutable debe implementar Hola API. Cuando un Reproductor solicita un anuncio de un servidor de hello del servidor de anuncios puede responder con una respuesta VAST que contiene un anuncio vpaid.
 
-Se crea un anuncio ejecutable en el código que debe ejecutarse en un entorno en tiempo de ejecución, como Adobe Flash ™ o JavaScript, que se pueden ejecutar en un explorador web. Cuando un servidor de anuncios devuelve una respuesta VAST que contiene un anuncio VPAID, el valor del atributo apiFramework en el elemento <MediaFile> debe ser "VPAID". Este atributo especifica que el anuncio contenido es un ejecutable VPAID. El atributo type debe establecerse en el tipo MIME del ejecutable, por ejemplo, "application/x-shockwave-flash" o "application/x-javascript". El siguiente fragmento XML muestra el elemento <MediaFile> de una respuesta VAST que contiene un anuncio ejecutable VPAID. 
+Se crea un anuncio ejecutable en el código que debe ejecutarse en un entorno en tiempo de ejecución, como Adobe Flash ™ o JavaScript, que se pueden ejecutar en un explorador web. Cuando un servidor de anuncios devuelve una respuesta VAST que contiene un anuncio vpaid, Hola valor del atributo apiFramework de Hola Hola <MediaFile> elemento debe ser "VPAID". Este atributo especifica que ad Hola contenida es un anuncio ejecutable vpaid. atributo de tipo Hello debe establecerse toohello tipo MIME de hello ejecutable, como "application/x-shockwave-flash" o "application/x-javascript". Hello fragmento XML siguiente muestra hello <MediaFile> elemento de una respuesta VAST que contiene un anuncio ejecutable vpaid. 
 
     <MediaFiles>
        <MediaFile id="1" delivery="progressive" type=”application/x-shockwaveflash”
                   width=”640” height=”480” apiFramework=”VPAID”>
-           <!-- CDATA wrapped URI to executable ad -->
+           <!-- CDATA wrapped URI tooexecutable ad -->
        </MediaFile>
     </MediaFiles>
 
 
-Un anuncio ejecutable se puede inicializar usando el elemento <AdParameters> dentro de los elementos <Linear> o <NonLinear> en una respuesta VAST. Para obtener más información sobre el elemento <AdParameters>, vea [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Para obtener más información acerca de la API VPAID, consulte [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Un anuncio ejecutable se puede inicializar con hello <AdParameters> elemento dentro de hello <Linear> o <NonLinear> elementos en una respuesta VAST. Para obtener más información sobre hello <AdParameters> elemento, vea [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Para obtener más información acerca de la API VPAID hello, consulte [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementación de un reproductor de Windows o Windows Phone 8 con compatibilidad para anuncios
-Microsoft Media Platform: Player Framework para Windows 8 y Windows Phone 8 contiene una colección de aplicaciones de ejemplo que muestran cómo implementar una aplicación de reproductor de vídeo usando el marco. Puede descargar Player Framework y los ejemplos de [Player Framework para Windows 8 y Windows Phone 8](https://playerframework.codeplex.com).
+Hola plataforma de Microsoft Media: marco de Reproductor de Windows 8 y Windows Phone 8 contiene una colección de aplicaciones de ejemplo que muestran cómo tooimplement una aplicación de Reproductor de vídeo con Hola framework. Puede descargar los ejemplos de hello y marco para Reproductor de Hola de [Player Framework para Windows 8 y Windows Phone 8](https://playerframework.codeplex.com).
 
-Cuando abra la solución Microsoft.PlayerFramework.Xaml.Samples, verá varias carpetas en el proyecto. La carpeta Advertising contiene el código de ejemplo correspondiente a la creación de un reproductor de vídeo con compatibilidad para anuncios. Dentro de la carpeta Advertising, hay varios archivos XAML/cs que muestran diferentes maneras de insertar anuncios. La lista siguiente describe cada una de ellas:
+Cuando se abre la solución Microsoft.PlayerFramework.Xaml.Samples de hello verá varias carpetas en el proyecto de Hola. carpeta de anuncios de Hola contiene toocreating relevantes de código de ejemplo de Hola un Reproductor de vídeo con compatibilidad para anuncios. Carpeta de anuncios de Hola interior es un número de XAML/cs cada uno de los que mostrar archivos cómo tooinsert anuncios de forma diferente. Hola lista siguiente describe cada uno de ellos:
 
-* AdPodPage.xaml: ilustra cómo mostrar un bloque de anuncios.
-* AdSchedulingPage.xaml: muestra cómo programar anuncios.
-* FreeWheelPage.xaml: muestra cómo usar el complemento FreeWheel para programar anuncios.
-* MastPage.xaml: muestra cómo programar anuncios con un archivo MAST.
-* ProgrammaticAdPage.xaml: muestra cómo programar anuncios en un vídeo mediante programación.
-* ScheduleClipPage.xaml: muestra cómo programar un anuncio sin un archivo VAST.
-* VastLinearCompanionPage.xaml: muestra cómo insertar un anuncio lineal y uno complementario.
-* VastNonLinearPage.xaml: muestra cómo insertar un anuncio no lineal.
-* VmapPage.xaml: muestra cómo especificar anuncios con un archivo VMAP.
+* AdPodPage.xaml muestra cómo toodisplay un anuncio pod.
+* AdSchedulingPage.xaml muestra cómo tooschedule anuncios.
+* FreeWheelPage.xaml muestra cómo toouse Hola FreeWheel complemento tooschedule anuncios.
+* MastPage.xaml muestra cómo tooschedule anuncios con un archivo MAST.
+* ProgrammaticAdPage.xaml muestra cómo programar los anuncios tooprogrammatically en un vídeo.
+* ScheduleClipPage.xaml muestra cómo tooschedule un anuncio sin un archivo VAST.
+* VastLinearCompanionPage.xaml muestra cómo tooinsert una lineal y anuncio complementario.
+* VastNonLinearPage.xaml muestra cómo tooinsert un anuncio no lineal.
+* VmapPage.xaml muestra cómo toospecify anuncios con un archivo VMAP.
 
-Cada uno de estos ejemplos usa la clase MediaPlayer definida por el Player Framework. En la mayoría de los ejemplos se usan complementos que agregan compatibilidad para varios formatos de respuesta de anuncio. El ejemplo ProgrammaticAdPage interactúa mediante programación con una instancia de MediaPlayer.
+Cada uno de estos ejemplos usa MediaPlayer (clase) Hola definida por el marco de trabajo de hello Reproductor. En la mayoría de los ejemplos se usan complementos que agregan compatibilidad para varios formatos de respuesta de anuncio. ejemplo de Hola ProgrammaticAdPage interactúa mediante programación con una instancia de MediaPlayer.
 
 ### <a name="adpodpage-sample"></a>Ejemplo AdPodPage
-Este ejemplo usa el AdSchedulerPlugin para definir cuándo se debe mostrar un anuncio. En este ejemplo, se programa un anuncio de cuña intermedia para que se reproduzca transcurridos cinco segundos. El bloque de anuncios (un grupo de anuncios que se muestran en orden) se especifica en un archivo VAST que se devuelve desde un servidor de anuncios. El URI del archivo VAST se especifica en el elemento <RemoteAdSource>.
+Este ejemplo utiliza hello AdSchedulerPlugin toodefine cuando toodisplay un anuncio. En este ejemplo, un anuncio de cuña intermedia es toobe programada reproducido después de 5 segundos. anuncios de Hola (un grupo de anuncios toodisplay en orden) se especifican en un archivo VAST devuelto desde un servidor de ad. archivo VAST de Hello URI toohello se especifica en hello <RemoteAdSource> elemento.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
 
@@ -390,10 +390,10 @@ Este ejemplo usa el AdSchedulerPlugin para definir cuándo se debe mostrar un an
         </mmppf:MediaPlayer.Plugins>
     </mmppf:MediaPlayer>
 
-Para obtener más información acerca del AdSchedulerPlugin, consulte [Publicidad en Player Framework en Windows 8 y Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+Para obtener más información acerca de hello AdSchedulerPlugin, consulte [anuncio Hola Player Framework en Windows 8 y Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-Este ejemplo también usa el AdSchedulerPlugin. Programa tres anuncios, un anuncio de cuña previa, uno de cuña intermedia y uno de cuña posterior. El URI del archivo VAST de cada anuncio se especifica en un elemento <RemoteAdSource>.
+Este ejemplo también utiliza hello AdSchedulerPlugin. Programa tres anuncios, un anuncio de cuña previa, uno de cuña intermedia y uno de cuña posterior. Hola toohello VAST de URI para cada anuncio se especifica en un <RemoteAdSource> elemento.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -426,7 +426,7 @@ Este ejemplo también usa el AdSchedulerPlugin. Programa tres anuncios, un anunc
 
 
 ### <a name="freewheelpage"></a>FreeWheelPage
-Este ejemplo usa FreeWheelPlugin, que especifica un atributo Source que especifica un URI que apunta a un archivo SmartXML que especifica el contenido del anuncio así como la información de programación.
+Este ejemplo utiliza hello FreeWheelPlugin que especifica un atributo de origen que especifica un URI ese archivo SmartXML tooa de puntos que especifica el contenido de ad, así como información de programación de ad.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -436,7 +436,7 @@ Este ejemplo usa FreeWheelPlugin, que especifica un atributo Source que especifi
             </mmppf:MediaPlayer>
 
 ### <a name="mastpage"></a>MastPage
-Este ejemplo usa el MastSchedulerPlugin, que permite usar un archivo MAST. El atributo Source especifica la ubicación del archivo MAST.
+Este ejemplo utiliza hello MastSchedulerPlugin que permita toouse un archivo MAST. atributo de origen de Hello especifica la ubicación de hello del archivo MAST de hello.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -446,11 +446,11 @@ Este ejemplo usa el MastSchedulerPlugin, que permite usar un archivo MAST. El at
             </mmppf:MediaPlayer>
 
 ### <a name="programmaticadpage"></a>ProgrammaticAdPage
-Este ejemplo interactúa mediante programación con MediaPlayer. El archivo ProgrammaticAdPage.xaml crea una instancia de MediaPlayer:
+Este ejemplo interactúa mediante programación con hello MediaPlayer. archivo de Hello ProgrammaticAdPage.xaml crea una instancia de hello MediaPlayer:
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 
-El archivo ProgrammaticAdPage.xaml.cs crea un AdHandlerPlugin, agrega un TimelineMarker para especificar cuándo se debe mostrar un anuncio y, después, agrega un controlador para el evento MarkerReached que carga un RemoteAdSource que especifica el URI de un archivo VAST y, después, reproduce el anuncio.
+archivo de Hello ProgrammaticAdPage.xaml.cs crea un AdHandlerPlugin, agrega un toospecify TimelineMarker cuando un anuncio debe mostrarse y, a continuación, agrega un controlador para el evento MarkerReached Hola que carga un RemoteAdSource especificando un archivo VAST de tooa URI y, a continuación, se reproduce anuncio de Hola.
 
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
         {
@@ -481,7 +481,7 @@ El archivo ProgrammaticAdPage.xaml.cs crea un AdHandlerPlugin, agrega un Timelin
             }
 
 ### <a name="scheduleclippage"></a>ScheduleClipPage
-Este ejemplo usa el AdSchedulerPlugin para programar un anuncio de cuña intermedia especificando un archivo .wmv que contiene el anuncio.
+Este ejemplo utiliza hello AdSchedulerPlugin tooschedule una cuña intermedia especificando un archivo .wmv que contiene anuncios de Hola.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.cloudapp.net/html5/media/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -505,7 +505,7 @@ Este ejemplo usa el AdSchedulerPlugin para programar un anuncio de cuña interme
             </mmppf:MediaPlayer>
 
 ### <a name="vastlinearcompanionpage"></a>VastLinearCompanionPage
-Este ejemplo muestra cómo usar el AdSchedulerPlugin para programar un anuncio lineal de cuña intermedia con un anuncio complementario. El elemento <RemoteAdSource> especifica la ubicación del archivo VAST.
+Este ejemplo muestra cómo toouse Hola AdSchedulerPlugin tooschedule un anuncio lineal de cuña intermedia con un anuncio complementario. Hola <RemoteAdSource> elemento especifica la ubicación de hello del archivo VAST Hola.
 
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -525,7 +525,7 @@ Este ejemplo muestra cómo usar el AdSchedulerPlugin para programar un anuncio l
             </mmppf:MediaPlayer>
 
 ### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-Este ejemplo usa el AdSchedulerPlugin para programar un anuncio lineal y uno no lineal. La ubicación del archivo VAST se especifica con el elemento <RemoteAdSource>.
+Este ejemplo utiliza hello AdSchedulerPlugin tooschedule un lineal y un anuncio no lineal. Hola ubicación del archivo VAST se especifica con hello <RemoteAdSource> elemento.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -545,7 +545,7 @@ Este ejemplo usa el AdSchedulerPlugin para programar un anuncio lineal y uno no 
             </mmppf:MediaPlayer>
 
 ### <a name="vmappage"></a>VMAPPage
-Los ejemplos usan el VmapSchedulerPlugin para programar anuncios con un archivo VMAP. El URI del archivo VMAP se especifica en el atributo Source del elemento <VmapSchedulerPlugin>.
+Este ejemplo utiliza anuncios de Hola VmapSchedulerPlugin tooschedule con un archivo VMAP. archivo de Hello URI toohello VMAP se especifica en el atributo de origen de Hola de hello <VmapSchedulerPlugin> elemento.
 
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -555,13 +555,13 @@ Los ejemplos usan el VmapSchedulerPlugin para programar anuncios con un archivo 
             </mmppf:MediaPlayer>
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementación de un reproductor de vídeo de iOS con compatibilidad para anuncios
-Microsoft Media Platform: Player Framework para iOS contiene una colección de aplicaciones de ejemplo que muestran cómo implementar una aplicación de reproductor de vídeo usando el marco. Puede descargar el Reproductor multimedia y los ejemplos del [Marco de trabajo del Reproductor multimedia de Azure](https://github.com/Azure/azure-media-player-framework). La página de Github incluye un vínculo a un wiki que contiene información adicional sobre el Reproductor multimedia y una introducción al ejemplo del reproductor: [Wiki del Reproductor multimedia de Azure](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+Hola plataforma de Microsoft Media: marco para Reproductor para iOS contiene una colección de aplicaciones de ejemplo que muestran cómo tooimplement una aplicación de Reproductor de vídeo con Hola framework. Puede descargar los ejemplos de hello y marco para Reproductor de Hola de [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework). página de github Hello tiene un tooa vínculo Wiki que contiene información adicional sobre el marco de trabajo de hello Reproductor y un ejemplo de introducción toohello Reproductor: [Wiki de Azure Media Player](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Programación de anuncios con VMAP
-El ejemplo siguiente muestra cómo programar anuncios usando un archivo VMAP.
+Hola siguiente ejemplo se muestra cómo tooschedule los anuncios con un archivo VMAP.
 
-    // How to schedule an Ad using VMAP.
-    //First download the VMAP manifest
+    // How tooschedule an Ad using VMAP.
+    //First download hello VMAP manifest
 
     if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVMAP.xml"]])
             {
@@ -569,7 +569,7 @@ El ejemplo siguiente muestra cómo programar anuncios usando un archivo VMAP.
             }
             else
             {
-                // Schedule a list of ads using the downloaded VMAP manifest
+                // Schedule a list of ads using hello downloaded VMAP manifest
                 if (![framework scheduleVMAPWithManifest:manifest])
                 {
                     [self logFrameworkError];
@@ -577,17 +577,17 @@ El ejemplo siguiente muestra cómo programar anuncios usando un archivo VMAP.
             }
 
 ### <a name="scheduling-ads-with-vast"></a>Programación de anuncios con VAST
-El ejemplo siguiente muestra cómo programar un anuncio VAST de enlace en tiempo de ejecución.
+siguiente Hola de ejemplo se muestra cómo tooschedule un anuncio VAST de enlace tiempo de ejecución.
 
-    //Example:3 How to schedule a late binding VAST ad.
-    // set the start time for the ad
+    //Example:3 How tooschedule a late binding VAST ad.
+    // set hello start time for hello ad
     adLinearTime.startTime = 13;
     adLinearTime.duration = 0;
-    // Specify the URI of the VAST file
+    // Specify hello URI of hello VAST file
     NSString *vastAd1=@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml";
     // Create an AdInfo object
      AdInfo *vastAdInfo1 = [[[AdInfo alloc] init] autorelease];
-    // set URL to VAST file
+    // set URL tooVAST file
     vastAdInfo1.clipURL = [NSURL URLWithString:vastAd1];
     // set running time of ad
     vastAdInfo1.mediaTime = [[[MediaTime alloc] init] autorelease];
@@ -604,8 +604,8 @@ El ejemplo siguiente muestra cómo programar un anuncio VAST de enlace en tiempo
         [self logFrameworkError];
     }
 
-   El ejemplo siguiente muestra cómo programar un anuncio VAST de enlace anticipado.
-//Example:4 Schedule an early binding VAST ad //Download the VAST file if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]]) { [self logFrameworkError]; } else { adLinearTime.startTime = 7; adLinearTime.duration = 0;
+   siguiente Hola de ejemplo se muestra cómo tooschedule un anuncio VAST de enlace temprano.
+Programación de ejemplo: 4 un Hola de //Download del anuncio VAST de enlace temprano VAST archivo si (! [ framework.adResolver downloadManifest: & manifiesto withURL: [NSURL URLWithString: @"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]]) {[logFrameworkError propio];} else {adLinearTime.startTime = 7; adLinearTime.duration = 0;
 
         // Create AdInfo instance
         AdInfo *vastAdInfo2 = [[[AdInfo alloc] init] autorelease];
@@ -621,9 +621,9 @@ El ejemplo siguiente muestra cómo programar un anuncio VAST de enlace en tiempo
         }
     }
 
-El ejemplo siguiente muestra cómo insertar un anuncio usando RCE (edición tentativa)
+siguiente Hola de ejemplo se muestra cómo tooinsert un anuncio con edición de cortar aproximada (RCE)
 
-    //Example:1 How to use RCE.
+    //Example:1 How toouse RCE.
     // specify manifest for ad content
     NSString *secondContent=@"http://wamsblureg001orig-hs.cloudapp.net/6651424c-a9d1-419b-895c-6993f0f48a26/The%20making%20of%20Microsoft%20Surface-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 
@@ -637,18 +637,18 @@ El ejemplo siguiente muestra cómo insertar un anuncio usando RCE (edición tent
         [self logFrameworkError];
     }
 
-El ejemplo siguiente muestra cómo programar un bloque de anuncios.
+Hello en el ejemplo siguiente se muestra cómo tooschedule un anuncio pod.
 
     //Example:5 Schedule an ad Pod.
     // Set start time for ad
     adLinearTime.startTime = 23;
     adLinearTime.duration = 0;
 
-    // Specify URL to content
+    // Specify URL toocontent
     NSString *adpodSt1=@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-e47b43fd-05dc-4587-ac87-5916439ad07f/Windows%208_%20Cliffjumpers.mp4?st=2012-11-28T16%3A31%3A57Z&se=2014-11-28T16%3A31%3A57Z&sr=c&si=2a6dbb1e-f906-4187-a3d3-7e517192cbd0&sig=qrXYZBekqlbbYKqwovxzaVZNLv9cgyINgMazSCbdrfU%3D";
     // Create an AdInfo instance
     AdInfo *adpodInfo1 = [[[AdInfo alloc] init] autorelease];
-    // set URI to ad content
+    // set URI tooad content
     adpodInfo1.clipURL = [NSURL URLWithString:adpodSt1];
     // Set ad running time
     adpodInfo1.mediaTime = [[[MediaTime alloc] init] autorelease];
@@ -665,10 +665,10 @@ El ejemplo siguiente muestra cómo programar un bloque de anuncios.
         [self logFrameworkError];
     }
 
-El ejemplo siguiente muestra cómo programar una cuña intermedia no estática. Un anuncio no estático solo se reproduce una vez independientemente de la búsqueda que realice el espectador.
+Hola siguiente ejemplo se muestra cómo tooschedule un anuncio de cuña intermedia no estático. Un anuncio no estático solo se reproduce una vez sin tener en cuenta cualquier Hola búsqueda realiza Visor.
 
     //Example:6 Schedule a single non sticky mid roll Ad
-    // specify URL to content
+    // specify URL toocontent
     NSString *oneTimeAd=@"http://wamsblureg001orig-hs.cloudapp.net/5389c0c5-340f-48d7-90bc-0aab664e5f02/Windows%208_%20You%20and%20Me%20Together-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 
     // create an AdInfo instance
@@ -692,13 +692,13 @@ El ejemplo siguiente muestra cómo programar una cuña intermedia no estática. 
         [self logFrameworkError];
     }
 
-El ejemplo siguiente muestra cómo programar una cuña intermedia estática. Un anuncio estático se mostrará cada vez que se alcanza el punto especificado en la escala de tiempo del vídeo.
+Hola siguiente ejemplo se muestra cómo tooschedule una cuña intermedia estática. Un anuncio estático se mostrará cada vez Hola especificado se alcanza el punto de la escala de tiempo de vídeo de Hola.
 
     //Example:7 Schedule a single sticky mid roll Ad
     NSString *stickyAd=@"http://wamsblureg001orig-hs.cloudapp.net/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
     // create AdInfo instance
     AdInfo *stickyAdInfo = [[[AdInfo alloc] init] autorelease];
-    // set URI to ad
+    // set URI tooad
     stickyAdInfo.clipURL = [NSURL URLWithString:stickyAd];
     stickyAdInfo.mediaTime = [[[MediaTime alloc] init] autorelease];
     stickyAdInfo.mediaTime.clipBeginMediaTime = 0;
@@ -717,7 +717,7 @@ El ejemplo siguiente muestra cómo programar una cuña intermedia estática. Un 
     }
 
 
-El ejemplo siguiente muestra cómo programar un anuncio de cuña posterior.
+siguiente Hola de ejemplo se muestra cómo tooschedule un anuncio de cuña posterior.
 
     //Example:8 Schedule Post Roll Ad
     NSString *postAdURLString=@"http://wamsblureg001orig-hs.cloudapp.net/aa152d7f-3c54-487b-ba07-a58e0e33280b/wp-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -737,7 +737,7 @@ El ejemplo siguiente muestra cómo programar un anuncio de cuña posterior.
         [self logFrameworkError];
     }
 
-El ejemplo siguiente muestra cómo programar un anuncio de cuña anterior.
+siguiente Hola de ejemplo se muestra cómo tooschedule un anuncio de cuña previa.
 
     //Example:9 Schedule Pre Roll Ad
     NSString *adURLString = @"http://wamsblureg001orig-hs.cloudapp.net/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -757,7 +757,7 @@ El ejemplo siguiente muestra cómo programar un anuncio de cuña anterior.
         [self logFrameworkError];
     }
 
-El ejemplo siguiente muestra cómo programar un anuncio superpuesto de cuña intermedia.
+Hola siguiente ejemplo muestra cómo tooschedule una cuña intermedia superposición de ad.
 
     // Example10: Schedule a Mid Roll overlay Ad
     NSString *adURLString = @"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-e47b43fd-05dc-4587-ac87-5916439ad07f/Windows%208_%20Cliffjumpers.mp4?st=2012-11-28T16%3A31%3A57Z&se=2014-11-28T16%3A31%3A57Z&sr=c&si=2a6dbb1e-f906-4187-a3d3-7e517192cbd0&sig=qrXYZBekqlbbYKqwovxzaVZNLv9cgyINgMazSCbdrfU%3D";

@@ -1,6 +1,6 @@
 ---
-title: "Información general sobre los patrones comunes de escalado automático | Microsoft Docs"
-description: "Obtenga información sobre algunos de los patrones comunes de escalado automático de recursos en Azure."
+title: "aaaOverview de patrones comunes de escalado automático | Documentos de Microsoft"
+description: "Obtenga información acerca de que algunas tooauto patrones comunes de hello escalan el recurso de Azure."
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: ancav
-ms.openlocfilehash: fce51546e041c8989d813c3935e058c52b38ba77
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fc5bd97852e0af01aa32940c99721ab8e21033ad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Información general sobre los patrones comunes de escalado automático
-En este artículo se describen algunos de los patrones comunes para escalar recursos en Azure.
+Este artículo describen algunos tooscale patrones comunes de hello el recurso de Azure.
 
-El escalado automático de Azure Monitor solo se aplica a Conjuntos de escalado de máquinas virtuales, Cloud Services, planes de App Service y App Service Environment. 
+Azure Autoescala de Monitor aplica solo tooVirtual conjuntos de escala de máquina (VMSS), servicios en la nube, planes de servicio de aplicaciones y entornos del servicio de aplicación. 
 
 # <a name="lets-get-started"></a>Introducción
 
-En este artículo se asume que está familiarizado con el escalado automático. Puede [comenzar aquí a escalar los recursos][1]. A continuación, se indican algunos de los patrones comunes de escalado.
+En este artículo se asume que está familiarizado con el escalado automático. También puede [obtener iniciada tooscale aquí el recurso][1]. siguiente Hola es algunos de los patrones comunes de escala de Hola.
 
 ## <a name="scale-based-on-cpu"></a>Escala en función de la CPU
 
 Tiene una aplicación web (rol de VMSS o de servicio en la nube) y: 
 
-- Desea escalar o reducir horizontalmente en función de la CPU.
-- Además, desea asegurarse de que hay un número mínimo de instancias. 
-- También quiere asegurarse de que establece un límite máximo del número de instancias al que puede escalar.
+- Desea tooscale fuera y de CPU en función de la escala.
+- Además, desea tooensure hay un número mínimo de instancias. 
+- Además, le interesará tooensure que establece un número de toohello de límite máximo de instancias que se pueda adaptar a.
 
 ![Escala en función de la CPU][2]
 
@@ -44,7 +44,7 @@ Tiene una aplicación web (rol de VMSS o de servicio en la nube) y:
 Tiene una aplicación web (rol de VMSS o de servicio en la nube) y:
 
 - Desea 3 instancias de forma predeterminada (en días de la semana).
-- No espera que haya tráfico durante los fines de semana y, por tanto, desea reducir verticalmente a 1 instancia para los fines de semana.
+- No esperar un tráfico de los fines de semana y, por tanto, desea tooscale too1 instancia los fines de semana.
 
 ![Escalado distinto entre los días de la semana y los fines de semana][3]
 
@@ -52,16 +52,16 @@ Tiene una aplicación web (rol de VMSS o de servicio en la nube) y:
 
 Tiene una aplicación web (rol de VMSS o de servicio en la nube) y: 
 
-- Desea escalar o reducir verticalmente en función del uso de CPU de forma predeterminada.
-- Sin embargo, durante Navidad u otros días específicos importantes para su negocio, desea reemplazar los valores predeterminados y disponer de más capacidad.
+- Desea tooscale arriba/abajo según el uso de CPU de forma predeterminada
+- Sin embargo, durante la temporada de vacaciones (o los días específicos que son importantes para su empresa) desea que los valores predeterminados de toooverride hello y tiene más capacidad a su disposición.
 
 ![Escalado distinto durante festividades][4]
 
 ## <a name="scale-based-on-custom-metric"></a>Escalado en función de métricas personalizadas
 
-Tiene un front-end web y un nivel de API que se comunica con el back-end. 
+Tiene un front-end web y un nivel de API que se comunica con hello back-end. 
 
-- Desea escalar el nivel de API en función de eventos personalizados en el front-end; por ejemplo, desea escalar el proceso de compra en función del número de artículos que hay en el carro de la compra.
+- Desea capa de hello API tooscale basado en eventos personalizados de front-end de hello (ejemplo: desea tooscale el proceso de pago según el número de Hola de elementos de hello carro de la compra)
 
 ![Escalado en función de métricas personalizadas][5]
 

@@ -1,5 +1,5 @@
 ---
-title: "Visualización del clúster mediante el Explorador de Service Fabric | Microsoft Docs"
+title: "aaaVisualizing su clúster mediante el Explorador de Service Fabric | Documentos de Microsoft"
 description: "El Explorador de Service Fabric es una herramienta basada en web para inspeccionar y administrar aplicaciones y nodos en la nube en un clúster de Service Fabric de Microsoft Azure."
 services: service-fabric
 documentationcenter: .net
@@ -14,84 +14,84 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: ryanwi
-ms.openlocfilehash: 789793a7f50170188d688881a9178546c3074018
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 73adc4fc254cf6b949b4419b02a046cee3f6a83d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualización del clúster mediante el Explorador de Service Fabric
-El Explorador de Service Fabric es una herramienta web para inspeccionar y administrar aplicaciones y nodos en un clúster de Azure Service Fabric. El Explorador de Service Fabric se hospeda directamente en el clúster para que siempre esté disponible, independientemente de dónde se ejecuta el clúster.
+El Explorador de Service Fabric es una herramienta web para inspeccionar y administrar aplicaciones y nodos en un clúster de Azure Service Fabric. Explorador de Service Fabric se hospeda directamente en clúster de hello, por lo que siempre está disponible, independientemente de donde se está ejecutando el clúster.
 
 ## <a name="video-tutorial"></a>Tutorial en vídeo
 
-Para información sobre cómo usar Service Fabric Explorer, vea el siguiente vídeo de Microsoft Virtual Academy:
+toolearn cómo ver toouse Service Fabric Explorer Hola después de vídeo Microsoft Virtual Academy:
 
 [<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
-## <a name="connect-to-service-fabric-explorer"></a>Conexión al Explorador de Service Fabric
-Si ha seguido las instrucciones para [preparar el entorno de desarrollo](service-fabric-get-started.md), puede iniciar el Explorador de Service Fabric en el clúster local en http://localhost:19080/Explorer.
+## <a name="connect-tooservice-fabric-explorer"></a>Conectar tooService Fabric Explorer
+Si ha seguido las instrucciones de hello demasiado[preparar el entorno de desarrollo](service-fabric-get-started.md), puede iniciar el Explorador de Service Fabric en el clúster local desplazándose toohttp://localhost:19080 / explorador.
 
-## <a name="understand-the-service-fabric-explorer-layout"></a>Información sobre el diseño del Explorador de Service Fabric
-Puede desplazarse por el Explorador de Service Fabric desde el árbol situado a la izquierda. En la raíz del árbol, el panel del clúster proporciona información general del clúster, incluido un resumen de la aplicación y del estado del nodo.
+## <a name="understand-hello-service-fabric-explorer-layout"></a>Entender el diseño del explorador de Service Fabric Hola
+Puede navegar a través del explorador de Service Fabric mediante árbol Hola Hola izquierda. En raíz de Hola de árbol de hello, panel de clúster de hello proporciona información general del clúster, incluido un resumen de la aplicación y el estado de nodo.
 
 ![Panel de clúster del Explorador de Service Fabric][sfx-cluster-dashboard]
 
-### <a name="view-the-clusters-layout"></a>Visualización del diseño del clúster
-Los nodos de un clúster de Service Fabric se colocan en una cuadrícula bidimensional de dominios de error y dominios de actualización. Esta colocación garantiza que las aplicaciones permanecen disponibles en presencia de errores de hardware y actualizaciones de aplicaciones. Puede ver cómo se dispone el clúster actual mediante el mapa del clúster.
+### <a name="view-hello-clusters-layout"></a>Ver el diseño del clúster de Hola
+Los nodos de un clúster de Service Fabric se colocan en una cuadrícula bidimensional de dominios de error y dominios de actualización. Esta ubicación se asegura de que las aplicaciones siguen estando disponibles en presencia de Hola de errores de hardware y las actualizaciones de aplicaciones. Puede ver cómo se diseña el clúster actual hello mediante el mapa de clúster de Hola.
 
 ![Mapa de clúster del Explorador de Service Fabric][sfx-cluster-map]
 
 ### <a name="view-applications-and-services"></a>Visualización de aplicaciones y servicios
-El clúster contiene dos subárboles: uno para las aplicaciones y otro para los nodos.
+clúster de Hello contiene dos subárboles: uno para las aplicaciones y otro para los nodos.
 
-Puede usar la vista de aplicaciones para navegar por la jerarquía lógica de Service Fabric: aplicaciones, servicios, particiones y réplicas.
+Puede utilizar toonavigate de vista de aplicación Hola a través de la jerarquía lógica de Service Fabric: las aplicaciones, servicios, particiones y réplicas.
 
-En el ejemplo siguiente, la aplicación **MyApp** se compone de dos servicios: **MyStatefulService** y **WebService**. Como **MyStatefulService** es un servicio con estado, incluye una partición con una réplica principal y dos réplicas secundarias. Por el contrario, el servicio WebSvcService no tiene estado y contiene una única instancia.
+En el siguiente ejemplo de Hola, Hola aplicación **MyApp** consta de dos servicios, **MyStatefulService** y **WebService**. Como **MyStatefulService** es un servicio con estado, incluye una partición con una réplica principal y dos réplicas secundarias. Por el contrario, el servicio WebSvcService no tiene estado y contiene una única instancia.
 
 ![Vista de aplicación del explorador de Service Fabric][sfx-application-tree]
 
-En cada nivel del árbol, el panel principal muestra la información pertinente sobre el elemento. Por ejemplo, puede ver el estado de mantenimiento y la versión para un servicio determinado.
+En cada nivel del árbol de hello, panel principal hello muestra la información pertinente sobre elemento Hola. Por ejemplo, puede ver el estado de mantenimiento de Hola y la versión para un servicio determinado.
 
 ![Panel Essentials del explorador de Service Fabric][sfx-service-essentials]
 
-### <a name="view-the-clusters-nodes"></a>Visualización de los nodos del clúster
-En la vista de nodos se muestra el diseño físico del clúster. Para un nodo determinado, puede comprobar qué aplicaciones tienen el código implementado en ese nodo. Más específicamente, puede ver qué réplicas están en ejecución.
+### <a name="view-hello-clusters-nodes"></a>Ver los nodos del clúster de Hola
+vista de nodo de Hello muestra el diseño físico de Hola de clúster de Hola. Para un nodo determinado, puede comprobar qué aplicaciones tienen el código implementado en ese nodo. Más específicamente, puede ver qué réplicas están en ejecución.
 
 ## <a name="actions"></a>Acciones
-El explorador de Service Fabric ofrece una forma rápida de invocar acciones en nodos, aplicaciones y servicios dentro del clúster.
+Explorador de Service Fabric ofrece una forma rápida tooinvoke acciones en nodos, aplicaciones y servicios en el clúster.
 
-Por ejemplo, para eliminar una instancia de la aplicación, elija la aplicación en el árbol de la izquierda y, luego, elija **Acciones** > **Eliminar aplicación**.
+Por ejemplo, toodelete una instancia de la aplicación, elija aplicación hello de árbol de Hola Hola izquierda y, a continuación, elija **acciones** > **eliminar una aplicación**.
 
 ![Eliminación de una aplicación en el explorador de Service Fabric][sfx-delete-application]
 
 > [!TIP]
-> Puede realizar las mismas acciones haciendo clic en los puntos suspensivos situados junto a cada elemento.
+> Puede realizar Hola mismas acciones, haga clic en siguiente tooeach elemento de hello puntos suspensivos.
 >
 >
 
-En la tabla siguiente se enumeran las acciones disponibles para cada entidad:
+Hello tabla siguiente enumeran las acciones de hello disponibles para cada entidad:
 
 | **Entidad** | **Acción** | **Descripción** |
 | --- | --- | --- |
-| Tipo de aplicación |Tipo de anulación de aprovisionamiento |Quita el paquete de aplicación del almacén de imágenes del clúster. Requiere que todas las aplicaciones de ese tipo se quiten en primer lugar. |
-| Application |Eliminar aplicación |Elimine la aplicación, incluidos todos sus servicios y su estado (si hubiera). |
-| Servicio |Eliminar servicio |Elimine el servicio y su estado (si hubiera). |
-| Nodo |Activar |Active el nodo. |
-| Nodo | Desactivar (pausa) | Pause el nodo en su estado actual. Los servicios siguen ejecutándose, pero Service Fabric no introduce ni saca nada proactivamente, a menos que se requiera para prevenir una interrupción o una incoherencia de datos. Esta acción se utiliza normalmente para habilitar los servicios de depuración en un nodo específico para asegurarse de que no se mueven durante la inspección. | |
-| Nodo | Desactivar (reiniciar) | Saque todos los servicios de la memoria de un nodo y cierre los servicios persistentes de forma segura. Suele usarse cuando es necesario reiniciar los procesos de host o el equipo. | |
-| Nodo | Desactivar (quitar datos) | Cierre todos los servicios que se ejecutan en el nodo después de la creación de suficientes réplicas de reserva con seguridad. Se utiliza normalmente cuando un nodo (o al menos su almacenamiento) se está sacando permanentemente de circulación. | |
-| Nodo | Quitar el estado del nodo | Quite información de las réplicas de un nodo del clúster. Se utiliza normalmente cuando un nodo con error ya se considera irrecuperable. | |
-| Nodo | Reiniciar | Reinicie el nodo para simular un error de nodo. Puede encontrar más información [aquí](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps) | |
+| Tipo de aplicación |Tipo de anulación de aprovisionamiento |Quita el paquete de aplicación Hola del clúster de hello almacén de imágenes. Requiere que todas las aplicaciones de ese toobe tipo quitado primero. |
+| Application |Eliminar aplicación |Eliminar aplicación hello, incluidos todos sus servicios y su estado (si existe). |
+| Servicio |Eliminar servicio |Eliminar servicio hello y su estado (si existe). |
+| Nodo |Activar |Activación del nodo de Hola. |
+| Nodo | Desactivar (pausa) | Pausar el nodo de hello en su estado actual. Servicios seguirán toorun pero Service Fabric no proactivamente mover nada en o desactivar, a menos que sea necesario tooprevent una interrupción o incoherencia en los datos. Esta acción es tooenable normalmente se usan los servicios en un tooensure de nodo específico que no se mueven durante la inspección de depuración. | |
+| Nodo | Desactivar (reiniciar) | Saque todos los servicios de la memoria de un nodo y cierre los servicios persistentes de forma segura. Se utiliza normalmente cuando los procesos de host de Hola o máquina necesidad toobe reinicia. | |
+| Nodo | Desactivar (quitar datos) | Cerrar todos los servicios que se ejecutan en el nodo de hello después de la creación de réplicas de reserva suficiente. Se utiliza normalmente cuando un nodo (o al menos su almacenamiento) se está sacando permanentemente de circulación. | |
+| Nodo | Quitar el estado del nodo | Quitar información de réplicas de un nodo de clúster de Hola. Se utiliza normalmente cuando un nodo con error ya se considera irrecuperable. | |
+| Nodo | Reiniciar | Simular un error de nodo, reinicie el nodo de Hola. Puede encontrar más información [aquí](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps) | |
 
-Como muchas acciones son destructivas, le pediremos que confirme su intención antes de que finalice la acción.
+Puesto que muchas acciones son destructivas, es posible que más frecuentes tooconfirm su intención antes de que finalice la acción de Hola.
 
 > [!TIP]
-> Todas las acciones que pueden realizarse a través del Explorador de Service Fabric también pueden realizarse a través de PowerShell o una API de REST, para habilitar la automatización.
+> Todas las acciones que pueden realizarse a través del explorador de Service Fabric también pueden realizarse a través de PowerShell o una API de REST, tooenable automatización.
 >
 >
 
-También puede utilizar el Service Fabric Explorer a fin de crear instancias de aplicaciones para un tipo de aplicación y versión. Elija el tipo de aplicación en la vista de árbol y, luego, haga clic en el vínculo **Create app instance** (Crear instancia de aplicación) situado junto a la versión que desee en el panel derecho.
+También puede utilizar instancias de la aplicación de explorador de Service Fabric toocreate para un tipo de aplicación determinada y la versión. Elija el tipo de aplicación de hello en la vista de árbol de hello, haga clic en hello **crear instancia de aplicación** versión toohello siguiente vínculo que se desea en el panel derecho de Hola.
 
 ![Creación de una instancia de aplicación en Service Fabric Explorer][sfx-create-app-instance]
 
@@ -100,20 +100,20 @@ También puede utilizar el Service Fabric Explorer a fin de crear instancias de 
 >
 >
 
-## <a name="connect-to-a-remote-service-fabric-cluster"></a>Conexión a un clúster de Service Fabric remoto
-Si conoce el punto de conexión del clúster y tiene los permisos suficientes, puede tener acceso a Service Fabric Explorer desde cualquier explorador. Esto se debe a que Service Fabric Explorer no es más que otro servicio que se ejecuta en el clúster.
+## <a name="connect-tooa-remote-service-fabric-cluster"></a>Conectar el clúster de tejido de servicio remoto tooa
+Si conoce el punto de conexión del clúster de Hola y tiene los permisos necesarios pueden tener acceso a Service Fabric Explorer desde cualquier explorador. Esto es porque el Explorador de Service Fabric es simplemente otro servicio que se ejecuta en el clúster de Hola.
 
-### <a name="discover-the-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>Detección del punto de conexión del Explorador de Service Fabric para un clúster remoto
-Si desea tener acceso a Service Fabric Explorer para un clúster determinado, dirija el explorador a:
+### <a name="discover-hello-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>Detectar extremo de Service Fabric Explorer Hola para un clúster remoto
+tooreach Service Fabric Explorer para un clúster determinado, seleccione el explorador para:
 
 http://&lt;su-punto-de-conexión-de-clúster&gt;:19080/Explorer
 
-En el caso de clústeres de Azure, la dirección URL completa también está disponible en el panel de elementos esenciales del clúster de Azure Portal.
+Para los clústeres de Azure, dirección URL completa de hello también está disponible en el panel de essentials de clúster Hola de hello portal de Azure.
 
-### <a name="connect-to-a-secure-cluster"></a>Conexión a un clúster seguro
-Puede controlar el acceso de cliente a su clúster de Service Fabric con certificados o mediante Azure Active Directory (AAD).
+### <a name="connect-tooa-secure-cluster"></a>Conectar el clúster segura tooa
+Puede controlar el clúster de Service Fabric de tooyour de cliente acceso con certificados o usar Azure Active Directory (AAD).
 
-Si intenta conectarse a Service Fabric Explorer en un clúster seguro, se le pedirá presentar un certificado de cliente o iniciar sesión con AAD, según la configuración del clúster.
+Si intentas tooconnect tooService Fabric Explorer en un clúster de seguro, a continuación, dependiendo de la configuración del clúster de hello podrá ser toopresent requiere un certificado de cliente o inicie sesión con AAD.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Información general sobre Testability](service-fabric-testability-overview.md)

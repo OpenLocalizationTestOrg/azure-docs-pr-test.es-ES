@@ -1,6 +1,6 @@
 ---
 title: "Aplicación de extensiones: Azure AD B2C | Microsoft Docs"
-description: "Restauración de b2c-extensions-app"
+description: "Restaurar Hola b2c extensiones de aplicación"
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/17/2017
 ms.author: parja
-ms.openlocfilehash: 17500b572a0e92c1c233c6967840a5b6d96e21cb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b36410c18314bd893dc669b49814fdcd77fae054
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: aplicación de extensiones
 
-Al crearse un directorio de Azure AD B2C, se crea automáticamente una aplicación denominada `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` dentro del nuevo directorio. Esta aplicación, llamada **b2c-extensions-app**, se puede ver en *Registros de aplicaciones*. El servicio Azure AD B2C la usa para almacenar información sobre usuarios y atributos personalizados. Si se elimina la aplicación, Azure AD B2C no funcionará correctamente y su entorno de producción se verá afectado.
+Cuando se crea un directorio de Azure AD B2C, llama a una aplicación `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` automáticamente se crea dentro de hello nuevo directorio. Esta aplicación, que se hace referencia tooas Hola **b2c-extensiones-app**, está visible en *registros de aplicación*. Se utiliza por hello Azure AD B2C toostore información sobre los usuarios y los atributos personalizados. Si se elimina la aplicación hello, Azure AD B2C no funcionará correctamente y el entorno de producción se verán afectado.
 
 > [!IMPORTANT]
-> No elimine b2c-extensions-app a menos que tenga previsto eliminar el inquilino inmediatamente. Si la aplicación permanece eliminada durante más de 30 días, la información del usuario se perderá permanentemente.
+> No elimine Hola b2c extensiones de aplicación, a menos que piensa eliminar tooimmediately el inquilino. Si la aplicación hello permanece eliminado durante más de 30 días, información de usuario se perderá permanentemente.
 
-## <a name="verifying-that-the-extensions-app-is-present"></a>Comprobación de que la aplicación de extensiones está presente
+## <a name="verifying-that-hello-extensions-app-is-present"></a>Comprobar que las extensiones de la aplicación hello está presente
 
-Para comprobar que b2c-extensions-app está presente:
+tooverify que Hola b2c-extensiones-app está presente:
 
-1. En el inquilino de Azure AD B2C, haga clic en **Más servicios** en el menú de navegación izquierdo.
+1. Dentro de su inquilino de Azure AD B2C, haga clic en **más servicios** en el menú de navegación izquierdo de Hola.
 1. Busque y abra **Registros de aplicaciones**.
 1. Busque una aplicación que empiece por **b2c-extensions-app**.
 
-## <a name="recover-the-extensions-app"></a>Recuperación de la aplicación de extensiones
+## <a name="recover-hello-extensions-app"></a>Recuperar la aplicación de las extensiones de hello
 
-Si ha eliminado b2c-extensions-app accidentalmente, tiene 30 días para recuperarlo. Puede restaurar la aplicación mediante la API Graph:
+Si elimina accidentalmente Hola b2c extensiones de aplicación, tendrá que toorecover de 30 días se. Puede restaurar la aplicación hello mediante Hola API Graph:
 
-1. Vaya a [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
-1. Inicie sesión en el sitio como administrador global para el directorio de Azure AD B2C para el que desea restaurar la aplicación eliminada.
-1. Emita HTTP GET en la dirección URL `https://graph.windows.net/{tenantName}.onmicrosoft.com/deletedApplications` con api-version=1.6. Asegúrese de reemplazar `{tenantName}` por el nombre del inquilino. Esta operación enumerará todas las aplicaciones que se han eliminado en los últimos 30 días.
-1. Busque la aplicación en la lista cuyo nombre comienza por "b2c-extension-app" y copie su valor de propiedad `objectid`.
-1. Emita HTTP POST en la dirección URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Reemplace la parte `{OBJECTID}` de la dirección URL por `objectid` del paso anterior. 
+1. Examinar demasiado[https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
+1. Inicie sesión en el sitio de toohello como administrador global para el directorio de Azure AD B2C Hola que desee toorestore Hola Eliminar aplicación para.
+1. Emitir una solicitud HTTP GET en la dirección URL de hello `https://graph.windows.net/{tenantName}.onmicrosoft.com/deletedApplications` con api-version = 1.6. Asegúrese de que tooreplace `{tenantName}` con el nombre del inquilino. Esta operación enumera todas las aplicaciones de Hola que se han eliminado en hello últimos 30 días.
+1. Busque aplicación hello en lista de Hola donde nombre de hello comienza con 'aplicación de extensión b2c' y copie su `objectid` valor de propiedad.
+1. Emitir una solicitud HTTP POST con la dirección URL de hello `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Reemplace hello `{OBJECTID}` parte de la dirección URL de hello con hello `objectid` del paso anterior Hola. 
 
-Ahora debería poder [ver la aplicación restaurada](#verifying-that-the-extensions-app-is-present) en Azure Portal.
+Ahora debe poder demasiado[vea aplicación hello restaurar](#verifying-that-the-extensions-app-is-present) Hola portal de Azure.
 
 > [!NOTE]
-> Una aplicación solo se puede restaurar si se ha eliminado en los últimos 30 días. Si han pasado más de 30 días, los datos se perderán permanentemente. Para obtener más ayuda, abra una incidencia de soporte técnico.
+> Una aplicación sólo puede restaurarse si se ha eliminado en hello últimos 30 días. Si han pasado más de 30 días, los datos se perderán permanentemente. Para obtener más ayuda, abra una incidencia de soporte técnico.

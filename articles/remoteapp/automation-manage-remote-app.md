@@ -1,6 +1,6 @@
 ---
-title: "Administración de Azure RemoteApp mediante Azure Automation | Microsoft Docs"
-description: "Obtenga información acerca de cómo puede usarse el servicio Automatización de Azure para administrar RemoteApp de Azure."
+title: "aaaManage RemoteApp de Azure mediante la automatización de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo Hola servicio automatización de Azure puede ser usado toomanage Azure RemoteApp."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: magoedte;csand
-ms.openlocfilehash: 59ac11f153c0bd74a1106400dbbf5790968b657c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a4cb23e292c797256e971acb3b363b025f140f16
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-azure-remoteapp-using-azure-automation"></a>Administración de RemoteApp de Azure mediante Automatización de Azure
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-Esta guía le ofrece el servicio Automatización de Azure y cómo se puede usar para simplificar la administración de RemoteApp de Azure.
+Esta guía le presentará los toohello servicio de automatización de Azure y cómo puede resultarle toosimplify usa administración de Azure RemoteApp.
 
 ## <a name="what-is-azure-automation"></a>¿Qué es Automatización de Azure?
-[Automatización de Azure](../automation/automation-intro.md) es un servicio de Azure para simplificar la administración en la nube mediante la automatización de procesos. Mediante Automatización de Azure, se pueden automatizar las tareas de ejecución prolongada, manuales, propensas a errores y que se repiten con frecuencia para aumentar la confiabilidad, la eficiencia y el valioso tiempo para su organización.
+[Automatización de Azure](../automation/automation-intro.md) es un servicio de Azure para simplificar la administración en la nube mediante la automatización de procesos. Mediante automatización de Azure, las tareas manuales, que se repiten con frecuencia, ejecución prolongada y propensa a errores pueden ser tooincrease automatizadas confiabilidad y eficacia, toovalue de tiempo para su organización.
 
-Automatización de Azure proporciona un motor de ejecución de flujo de trabajo altamente confiable y de alta disponibilidad que realiza la escalación para satisfacer sus necesidades. En Automatización de Azure, los sistemas de terceros pueden interrumpir los procesos manualmente o en intervalos programados para que las tareas se realicen justo cuando sea necesario.
+Automatización de Azure ofrece un motor de ejecución de flujo de trabajo altamente confiable y de alta disponibilidad que escala toomeet sus necesidades. En Automatización de Azure, los sistemas de terceros pueden interrumpir los procesos manualmente o en intervalos programados para que las tareas se realicen justo cuando sea necesario.
 
-Reduzca la sobrecarga operativa y libere al personal de TI/DevOps para concentrarse en el trabajo que proporciona valor al negocio trasladando las tareas de administración en la nube para que se ejecuten automáticamente mediante Automatización de Azure.
+Reducir la sobrecarga operativa y liberar TI y DevOps toofocus de personal en el trabajo que agrega valor empresarial moviendo el toobe de tareas de administración en la nube se ejecute automáticamente mediante la automatización de Azure.
 
 ## <a name="how-can-azure-automation-help-manage-azure-remoteapp"></a>¿Cómo puede ayudar el servicio Automatización de Azure a administrar RemoteApp de Azure?
-RemoteApp se puede administrar en Automatización de Azure mediante los cmdlets de PowerShell que están disponibles en las [Herramientas de Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Automatización de Azure tiene estos cmdlets de PowerShell de RemoteApp disponibles directamente para que pueda realizar todas las tareas de administración de RemoteApp dentro del servicio. También puede emparejar estos cmdlets en Automatización de Azure con los cmdlets para otros servicios de Azure, para automatizar tareas complejas a través de los servicios de Azure y sistemas de terceros.
+RemoteApp puede administrarse en automatización de Azure mediante los cmdlets de PowerShell de Hola que están disponibles en hello [herramientas de Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx). Automatización de Azure tiene estos cmdlets de RemoteApp PowerShell disponibles fuera del cuadro de hello, por lo que puede realizar todas las tareas de administración de RemoteApp en servicio Hola. También se puede emparejar estos cmdlets en automatización de Azure con los cmdlets de Hola para otros servicios de Azure, tareas complejas tooautomate a través de los servicios de Azure y sistemas de terceros 3rd.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha aprendido los aspectos básicos de Automatización de Azure y cómo se puede usar para administrar RemoteApp de Azure, siga estos vínculos para obtener más información acerca de Automatización de Azure.
+Ahora que ha aprendido conceptos básicos de Hola de automatización de Azure y cómo puede ser usado toomanage RemoteApp de Azure, siga estas toolearn de vínculos más información acerca de la automatización de Azure.
 
-* Consulte el [Tutorial de introducción](../automation/automation-first-runbook-graphical.md)
+* Vea Hola automatización de Azure [Tutorial de introducción](../automation/automation-first-runbook-graphical.md)
 

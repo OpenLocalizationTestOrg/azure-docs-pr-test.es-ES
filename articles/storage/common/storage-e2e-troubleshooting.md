@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de Azure Storage con diagnósticos y el analizador de mensajes | Microsoft Docs"
+title: "aaaTroubleshooting almacenamiento de Azure con diagnósticos y analizador de mensajes | Documentos de Microsoft"
 description: "Tutorial en el que se explica cómo solucionar problemas totalmente por medio del análisis de Almacenamiento de Azure, AzCopy y el analizador de mensajes de Microsoft."
 services: storage
 documentationcenter: dotnet
@@ -13,105 +13,105 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: robinsh
-ms.openlocfilehash: 1aa40c4de48c0117e9d3f9d434972adecccdb548
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2d7a2a14b2e8da01b566ac3dec19996f0ef88cc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Solución integral de problemas mediante los registros y las métricas de Azure Storage, AzCopy y el analizador de mensajes
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
-Poder diagnosticar y solucionar problemas es una habilidad clave a la hora de crear y mantener aplicaciones de cliente con el servicio Almacenamiento de Microsoft Azure. Las aplicaciones de Azure suelen ser de naturaleza dispersa, de modo que diagnosticar y solucionar errores y problemas de rendimiento puede resultar más complicado que hacerlo en entornos tradicionales.
+Poder diagnosticar y solucionar problemas es una habilidad clave a la hora de crear y mantener aplicaciones de cliente con el servicio Almacenamiento de Microsoft Azure. Debido a la naturaleza toohello distribuida de una aplicación de Azure, diagnosticar y solucionar problemas de rendimiento y errores pueden ser más complejos que en los entornos tradicionales.
 
-En este tutorial explicamos cómo reconocer algunos errores que pueden afectar al rendimiento y cómo solucionarlos completamente usando herramientas proporcionadas por Microsoft y por el servicio Azure Storage, todo ello para optimizar la aplicación cliente.
+En este tutorial, demostraremos cómo tooidentify algunos errores que pueden afectar al rendimiento y solucionar los errores de principio a fin mediante las herramientas proporcionadas por Microsoft y el almacenamiento de Azure, en aplicación de cliente de orden toooptimize Hola.
 
-Aquí encontrará un análisis práctico de un escenario de solución integral de problemas. Para obtener una guía conceptual exhaustiva con la que solucionar problemas de aplicaciones de almacenamiento de Azure, vea [Supervisión, diagnóstico y solución de problemas de Almacenamiento de Microsoft Azure](storage-monitoring-diagnosing-troubleshooting.md).
+Aquí encontrará un análisis práctico de un escenario de solución integral de problemas. Para una aplicación de almacenamiento de Azure de tootroubleshooting guía conceptual detallada, vea [supervisar, diagnosticar y solucionar problemas de almacenamiento de Microsoft Azure](storage-monitoring-diagnosing-troubleshooting.md).
 
 ## <a name="tools-for-troubleshooting-azure-storage-applications"></a>Herramientas para solucionar problemas de aplicaciones de Almacenamiento de Azure
-Para solucionar problemas en aplicaciones cliente que usan Almacenamiento de Microsoft Azure, puede usar una combinación de herramientas que permita saber cuándo se produjo un problema y cuál puede ser la causa. Estas herramientas son:
+las aplicaciones cliente de tootroubleshoot con almacenamiento de Microsoft Azure, puede usar una combinación de herramientas toodetermine cuando se ha producido un problema y qué causa Hola de problema de hello puede ser. Estas herramientas son:
 
 * **Análisis de almacenamiento de Azure**. [Análisis de almacenamiento de Azure](/rest/api/storageservices/Storage-Analytics) proporciona las métricas y registros del servicio Almacenamiento de Azure.
   
-  * **métricas de almacenamiento** realizan un seguimiento de las métricas de transacciones y de capacidad relativas a la cuenta de almacenamiento. Con las métricas, puede conocer el rendimiento de su aplicación basándose en diversas medidas. Vea [Esquema de las tablas de métricas del análisis de almacenamiento](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) para más información sobre los tipos de métricas de las que hace un seguimiento el análisis de almacenamiento.
-  * **registro de almacenamiento** deja constancia en un registro del servidor de cada solicitud realizada al servicio Almacenamiento de Azure. Este registro hace un seguimiento de los datos detallados de cada solicitud, como la operación realizada, el estado de la operación y la información de latencia. Vea [Formato del registro del análisis de almacenamiento](/rest/api/storageservices/Storage-Analytics-Log-Format) para más información sobre los datos de solicitud y de respuesta que se escriben en los registros del análisis de almacenamiento.
+  * **métricas de almacenamiento** realizan un seguimiento de las métricas de transacciones y de capacidad relativas a la cuenta de almacenamiento. Usar las métricas, puede determinar el rendimiento de la aplicación correspondiente tooa diversas medidas distintas. Vea [esquema de tabla de métricas de análisis de almacenamiento](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) para obtener más información acerca de los tipos de Hola de métricas que se hace un seguimiento mediante el análisis de almacenamiento.
+  * **El registro de almacenamiento** registra cada registro de solicitudes de toohello el almacenamiento de Azure servicios tooa en el servidor. Hola registro pistas datos detallados de cada solicitud, incluidos la operación de hello realizadas, estado de Hola de operación de Hola y obtener información de latencia. Vea [formato de registro de análisis de almacenamiento](/rest/api/storageservices/Storage-Analytics-Log-Format) para obtener más información sobre los datos de solicitud y respuesta de Hola que se escriben los registros de toohello análisis de almacenamiento.
 
 > [!NOTE]
-> En este momento, las cuentas de almacenamiento con un tipo de replicación de almacenamiento con redundancia de zona (ZRS) no tienen habilitadas las métricas o la funcionalidad de registro. 
+> Cuentas de almacenamiento con un tipo de replicación de almacenamiento con redundancia de zona (ZRS) no tiene las métricas de Hola o capacidad de registro habilitada en este momento. 
 > 
 > 
 
-* **Azure Portal**. Puede configurar las métricas y el registro de su cuenta de almacenamiento en [Azure Portal](https://portal.azure.com). Asimismo, también puede ver diagramas y gráficos que le mostrarán el rendimiento de su aplicación conforme avanza el tiempo, así como configurar alertas que le avisarán si el rendimiento de su aplicación es diferente a lo esperado según lo establecido en una métrica específica.
+* **Azure Portal**. Puede configurar las métricas y registro de la cuenta de almacenamiento en hello [portal de Azure](https://portal.azure.com). También puede ver diagramas y gráficos que muestran el rendimiento de la aplicación con el tiempo y configurar toonotify alertas que si la aplicación funciona de manera diferente que esperaba de una métrica especificada.
   
-    Consulte [Supervisión de una cuenta de almacenamiento en Azure Portal](storage-monitor-storage-account.md) para obtener más información sobre la configuración de la supervisión en Azure Portal.
-* **AzCopy**. Los registros del servidor de Almacenamiento de Azure se almacenan como blobs, por lo que puede usar AzCopy para copiar estos blobs de registro en un directorio local y, luego, analizarlos con el analizador de mensajes de Microsoft. Consulte [Transferencia de datos con la utilidad en línea de comandos AzCopy](storage-use-azcopy.md) para obtener más información sobre AzCopy.
-* **Analizador de mensajes de Microsoft**. El analizador de mensajes es una herramienta que usa archivos de registro y que muestra los datos de registro en un formato visual para que sean más fáciles de filtrar, buscar y agrupar en conjuntos útiles; gracias a esto, podrá analizar errores y problemas de rendimiento. Vea la [Guía de funcionamiento del analizador de mensajes de Microsoft](http://technet.microsoft.com/library/jj649776.aspx) para más información sobre el analizador de mensajes.
+    Vea [supervisar una cuenta de almacenamiento en el portal de Azure hello](storage-monitor-storage-account.md) para obtener información acerca de cómo configurar la supervisión en hello portal de Azure.
+* **AzCopy**. Registros del servidor para el almacenamiento de Azure se almacenan como blobs, por lo que puede usar directorio local del tooa de blobs de AzCopy toocopy Hola registro para el análisis mediante el analizador de mensajes de Microsoft. Vea [transferir datos con la utilidad de línea de comandos de AzCopy hello](storage-use-azcopy.md) para obtener más información acerca de AzCopy.
+* **Analizador de mensajes de Microsoft**. Analizador de mensajes es una herramienta que consume los archivos de registro y muestra los datos de registro en un formato visual que resulta fácil toofilter, búsqueda y registrar los datos en conjuntos útiles que puede usar tooanalyze errores y problemas de rendimiento de grupo. Vea la [Guía de funcionamiento del analizador de mensajes de Microsoft](http://technet.microsoft.com/library/jj649776.aspx) para más información sobre el analizador de mensajes.
 
-## <a name="about-the-sample-scenario"></a>Acerca del escenario de ejemplo
-Para este tutorial, analizaremos un escenario donde las métricas de Almacenamiento de Azure indican una tasa de éxito de bajo porcentaje de una aplicación que llama a Almacenamiento de Azure. La métrica de tasa de éxito de bajo porcentaje (señalada como **PercentSuccess** en [Azure Portal](https://portal.azure.com) y en las tablas de métricas) hace un seguimiento de las operaciones que se realizaron correctamente, pero que devolvieron un código de estado HTTP superior a 299. En los archivos de registro de almacenamiento del servidor, estas operaciones se registran con el estado de transacción **ClientOtherErrors**. Para más información sobre la métrica de tasa de éxito de bajo porcentaje, vea [Las métricas muestran un PercentSuccess bajo o las entradas de registro de análisis tienen operaciones con el estado de transacción ClientOtherErrors](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
+## <a name="about-hello-sample-scenario"></a>Acerca de escenario de ejemplo de Hola
+Para este tutorial, analizaremos un escenario donde las métricas de Almacenamiento de Azure indican una tasa de éxito de bajo porcentaje de una aplicación que llama a Almacenamiento de Azure. Hola métrica de velocidad de porcentaje de operaciones correctas baja (se muestra como **PercentSuccess** en hello [portal de Azure](https://portal.azure.com) y en tablas de métricas de hello) realiza un seguimiento de las operaciones que se realice correctamente, pero que devuelven un código de estado HTTP es mayor que 299. En archivos de registro de almacenamiento de servidor de hello, estas operaciones se registran con un estado de transacción **ClientOtherErrors**. Para obtener más información acerca de la métrica de éxito de porcentaje bajo de hello, consulte [métricas muestran PercentSuccess baja o las entradas del registro de análisis tienen operaciones con el estado de transacción de ClientOtherErrors](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
 
-Como parte de su funcionalidad habitual, es posible que las operaciones de Almacenamiento de Azure devuelvan códigos de estado HTTP mayores que 299. Aun así, en algunos casos estos errores indicarán que es posible que pueda optimizar su aplicación cliente para mejorar el rendimiento.
+Como parte de su funcionalidad habitual, es posible que las operaciones de Almacenamiento de Azure devuelvan códigos de estado HTTP mayores que 299. Pero estos errores en algunos casos indican que es posible que pueda toooptimize la aplicación de cliente para un rendimiento mejorado.
 
-En este escenario, todo aquello que esté por debajo del 100% será considerado como una tasa de bajo porcentaje de éxito. Pero siempre puede elegir un nivel de métricas diferente acorde a sus necesidades. Le recomendamos que, mientras esté probando la aplicación, establezca una tolerancia de línea de base de las métricas de rendimiento clave. Según las pruebas que haga, puede establecer que la aplicación tenga una tasa de porcentaje de éxito constante de, por ejemplo, un 90% o de un 85%. Si los datos de las métricas arrojan que la aplicación se desvía de ese porcentaje, puede investigar para saber cuál es la causa del aumento.
+En este escenario, utilizaremos un toobe de tasa de éxito de porcentaje bajo nada inferiores al 100%. Puede elegir un nivel métrico diferentes, sin embargo, según las necesidades de tooyour. Le recomendamos que, mientras esté probando la aplicación, establezca una tolerancia de línea de base de las métricas de rendimiento clave. Según las pruebas que haga, puede establecer que la aplicación tenga una tasa de porcentaje de éxito constante de, por ejemplo, un 90% o de un 85%. Si los datos de métricas muestran que la aplicación hello se desvían de ese número, puede investigar lo que puedan estar causando Hola aumento.
 
-En nuestro escenario de ejemplo, una vez que hayamos establecido la métrica de tasa de porcentaje de éxito por debajo del 100%, revisaremos los registros para buscar los errores que guardan relación con las métricas y usarlos para averiguar cuál es la causa de la tasa de bajo porcentaje de éxito. En concreto, revisaremos los errores del intervalo 400. Después, revisaremos con más detalle los errores 404 (no encontrado).
+Para nuestro escenario de ejemplo, una vez que se ha establecido que métrica de velocidad de porcentaje de operaciones correctas de hello es inferior al 100%, se examinará Hola registra toofind Hola los errores que se correlacionan métricas toohello y usarlos toofigure qué está causando tasa de éxito por ciento inferior de Hola. Echemos un vistazo específicamente errores en el intervalo de 400 Hola. Después, revisaremos con más detalle los errores 404 (no encontrado).
 
 ### <a name="some-causes-of-400-range-errors"></a>Algunas de las causas de los errores del intervalo 400
-En los siguientes ejemplos se exponen algunas muestras de errores de intervalo 400 para solicitudes de almacenamiento de blobs de Azure, así como sus posibles causas. Cualquiera de estos errores, además de los errores en el intervalo 300 y el intervalo 500, pueden ser la razón de una tasa de bajo porcentaje de éxito.
+ejemplos de Hello siguientes se muestra un muestreo de algunos errores de intervalo de 400 para las solicitudes en el almacenamiento de blobs de Azure y sus causas posibles. Cualquiera de estos errores, así como los errores en el intervalo de 300 de Hola y Hola intervalo 500, pueden contribuir tasa de éxito de porcentaje bajo de tooa.
 
-Tenga en cuenta que las siguientes listas no están ni mucho menos completas. Vea [Códigos de estado y de error](http://msdn.microsoft.com/library/azure/dd179382.aspx) en MSDN para más información sobre los errores generales de Almacenamiento de Azure y sobre los errores específicos de cada uno de los servicios de almacenamiento.
+Tenga en cuenta que Hola listas siguientes están lejos completa. Vea [estado y códigos de Error](http://msdn.microsoft.com/library/azure/dd179382.aspx) en MSDN para obtener más información acerca de errores generales de almacenamiento de Azure y tooeach específico de errores de servicios de almacenamiento de Hola.
 
 **Ejemplos de código de estado 404 (no encontrado)**
 
-Se produce cuando una operación de lectura en un contenedor o un blob falla porque no se puede encontrar el blob o el contenedor.
+Se produce cuando se produce un error en una operación de lectura en un contenedor o blob porque no se encuentra el blob de Hola o contenedor.
 
 * Se produce cuando otro cliente elimina un contenedor o un blob antes de realizar la solicitud.
-* Se produce si está usando una llamada API que crea el contenedor o el blob después de comprobar si existe. Las API de tipo CreateIfNotExists hacen primero una llamada HEAD para comprobar la existencia del contenedor o del blob; si no existe, se devuelve un error 404 y se realiza una segunda llamada PUT para escribir el contenedor o el blob.
+* Se produce si usa una llamada de API que crea el contenedor de Hola o blob después de comprobar si existe. Hola CreateIfNotExists APIs realizar un encabezado llamada toocheck primera existencia de Hola de hello contenedor o blob; Si no existe, se devuelve un error 404 y, a continuación, se realiza una segunda llamada PUT toowrite Hola contenedor o blob.
 
 **Ejemplos de código de estado de 409 (conflicto)**
 
-* Se produce cuando usa una API de tipo Create para crear un contenedor o un blob sin comprobar si ya existen, o bien cuando ya hay otro contenedor u otro blob con el mismo nombre.
-* Se produce si elimina un contenedor e intenta crear otro con el mismo nombre antes de que finalice la operación de eliminación.
+* Se produce si usa un toocreate de API de crear un nuevo contenedor o blob, sin comprobar existencia en primer lugar, y un contenedor o blob con ese nombre ya existe.
+* Se produce si se está eliminando un contenedor y se intenta realizar un nuevo contenedor con el mismo nombre antes de que finalice la operación de eliminación de Hola de hello toocreate.
 * Se produce si especifica una concesión en un contenedor o un blob y ya hay una concesión.
 
 **Ejemplos de código de estado 412 (error de condición previa)**
 
-* Se produce cuando no se cumple la condición especificada por un encabezado condicional.
-* Se produce cuando el identificador de concesión especificado no coincide con el identificador de concesión en el contenedor o el blob.
+* Se produce cuando no se cumplió la condición de hello especificada por un encabezado condicional.
+* Se produce cuando el identificador de concesión de hello especificado no coincide con el identificador de concesión Hola Hola contenedor o blob.
 
 ## <a name="generate-log-files-for-analysis"></a>Generar archivos de registro para el análisis
-En este tutorial, usaremos el analizador de mensajes para trabajar con tres tipos diferentes de archivos de registro, aunque también puede trabajar con cualquiera de los siguientes elementos:
+En este tutorial, usaremos toowork analizador de mensajes con tres tipos diferentes de archivos de registro, aunque puede elegir toowork con cualquiera de ellos:
 
-* El **registro del servidor**, que se crea cuando se habilita el registro de Almacenamiento de Azure. El registro del servidor contiene datos sobre cada operación a la que haya llamado alguno de los servicios de Almacenamiento de Azure: blob, cola, tabla y archivo. El registro del servidor indica a qué operación se llamó y qué código de estado fue devuelto, así como otros detalles sobre la solicitud y la respuesta.
-* El **registro de cliente de .NET**, que se crea cuando se habilita el registro del lado cliente desde la aplicación .NET. El registro de cliente contiene información detallada sobre el modo en que el cliente prepara la solicitud y recibe y procesa la respuesta.
-* El **registro de seguimiento de red HTTP**, que recopila datos sobre las solicitudes HTTP/HTTPS y datos de respuesta, incluidas las operaciones de Almacenamiento de Azure. En este tutorial, crearemos un seguimiento de red a través del analizador de mensajes.
+* Hola **registro del servidor**, que se crea cuando se habilita el registro de almacenamiento de Azure. registro de servidor de Hello contiene datos sobre cada operación llamado en uno de los servicios de almacenamiento de Azure de hello: blob, cola, tabla y archivo. registro de servidor Hello indica qué operación se llamó y el código de estado fue devueltas, así como otros detalles sobre Hola solicitud y respuesta.
+* Hola **registro de cliente de .NET**, que se crea cuando se habilita el registro de cliente desde dentro de la aplicación. NET. registro de cliente de Hello incluye información detallada acerca de cómo cliente hello prepara la solicitud de Hola y recibe y procesa la respuesta de Hola.
+* Hola **registro de seguimiento de red HTTP**, que recopila datos en HTTP/HTTPS solicitud y respuesta datos, incluidos los de operaciones en el almacenamiento de Azure. En este tutorial, se generará el seguimiento de la red de Hola a través de analizador de mensajes.
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Configurar el registro y las métricas del lado servidor
-Primero, necesitaremos configurar el registro y las métricas de Almacenamiento de Azure para disponer de datos de la aplicación cliente que analizar. El registro y las métricas se pueden configurar de varias maneras: a través de [Azure Portal](https://portal.azure.com), con PowerShell o mediante programación. Consulte [Habilitación de las Métricas de almacenamiento y las Métricas de visualización](http://msdn.microsoft.com/library/azure/dn782843.aspx) y [Habilitación del registro de almacenamiento y acceso a los datos del registro](http://msdn.microsoft.com/library/azure/dn782840.aspx) en MSDN para más información sobre la configuración del registro y las métricas
+En primer lugar, necesitaremos tooconfigure el registro de almacenamiento de Azure y las métricas, por lo que tiene datos de tooanalyze de aplicación de cliente de Hola. Puede configurar el registro y métricas de varias maneras: a través de hello [portal de Azure](https://portal.azure.com), mediante el uso de PowerShell, o mediante programación. Consulte [Habilitación de las Métricas de almacenamiento y las Métricas de visualización](http://msdn.microsoft.com/library/azure/dn782843.aspx) y [Habilitación del registro de almacenamiento y acceso a los datos del registro](http://msdn.microsoft.com/library/azure/dn782840.aspx) en MSDN para más información sobre la configuración del registro y las métricas
 
-**Mediante Azure Portal**
+**A través de hello portal de Azure**
 
-Para configurar el registro y las métricas de la cuenta de almacenamiento mediante [Azure Portal](https://portal.azure.com), siga las instrucciones que encontrará en el apartado [Supervisión de una cuenta de almacenamiento en Azure Portal](storage-monitor-storage-account.md).
+Hola tooconfigure registro y métricas para la cuenta de almacenamiento con [portal de Azure](https://portal.azure.com), siga las instrucciones de hello en [supervisar una cuenta de almacenamiento en el portal de Azure hello](storage-monitor-storage-account.md).
 
 > [!NOTE]
-> No se pueden establecer métricas por minuto con Azure Portal. pero le recomendamos establecerlas en este tutorial para investigar cualquier problema de rendimiento que ocurra en su aplicación. Las métricas por minuto se pueden establecer con PowerShell (tal como se indica aquí) o mediante programación con la biblioteca de cliente de almacenamiento.
+> No es posible tooset métricas por minuto con hello portal de Azure. Sin embargo, se recomienda que establecerlos para fines de Hola de este tutorial y para investigar los problemas de rendimiento con la aplicación. Puede establecer métricas por minuto con PowerShell, tal y como se muestra a continuación, o mediante programación con la biblioteca de cliente de almacenamiento de Hola.
 > 
-> Tenga en cuenta que Azure Portal no mostrará las métricas por minuto, solo las métricas por horas.
+> Tenga en cuenta que Hola portal de Azure no puede mostrar métricas por minuto, solo las métricas por hora.
 > 
 > 
 
 **Con PowerShell**
 
-Para empezar a usar PowerShell para Azure, vea el tema sobre [cómo instalar y configurar PowerShell de Azure](/powershell/azure/overview).
+tooget a trabajar con PowerShell de Azure, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
 
-1. Use el cmdlet [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0) para agregar la cuenta de usuario de Azure a la ventana de PowerShell:
+1. Hola de uso [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0) tooadd cmdlet toohello ventana de PowerShell de la cuenta de su usuario de Azure:
    
     ```powershell
     Add-AzureAccount
     ```
 
-2. En la ventana de **inicio de sesión en Microsoft Azure** , escriba la dirección de correo electrónico y contraseña asociadas a su cuenta. Azure autentica y guarda las credenciales y, luego, cierra la ventana.
-3. Ejecute los siguientes comandos en la ventana de PowerShell para establecer la cuenta de almacenamiento predeterminada en la cuenta de almacenamiento que esté usando en este tutorial:
+2. Hola **iniciar sesión en Azure tooMicrosoft** ventana, escriba Hola dirección de correo electrónico y contraseña asociadas a su cuenta. Azure autentica y guarda la información de credenciales de hello y, a continuación, cierra la ventana hello.
+3. Establecer Hola cuenta toohello almacenamiento cuenta de almacenamiento predeterminada que usa para el tutorial de hello mediante la ejecución de estos comandos en la ventana de PowerShell de hello:
    
     ```powershell
     $SubscriptionName = 'Your subscription name'
@@ -119,197 +119,197 @@ Para empezar a usar PowerShell para Azure, vea el tema sobre [cómo instalar y c
     Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
     ```
 
-4. Habilite el registro de almacenamiento para el servicio BLOB:
+4. Habilitar el registro de hello servicio Blob de almacenamiento:
    
     ```powershell
     Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
     ```
 
-5. Habilite las métricas de almacenamiento del servicio BLOB, procurando establecer **-MetricsType** en `Minute`:
+5. Habilitar las métricas de almacenamiento para hello servicio de Blob, que realiza seguro tooset **- MetricsType** demasiado`Minute`:
    
     ```powershell
     Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 ### <a name="configure-net-client-side-logging"></a>Configurar el registro del lado cliente de .NET
-Para configurar el registro del lado cliente de una aplicación .NET, habilite los diagnósticos .NET en el archivo de configuración de la aplicación (web.config o app.config). Consulte [Inicio de sesión del lado cliente con la Biblioteca del cliente de almacenamiento de .NET](http://msdn.microsoft.com/library/azure/dn782839.aspx) y [Registro del lado cliente con el SDK de Microsoft Azure Storage para Java](http://msdn.microsoft.com/library/azure/dn782844.aspx) en MSDN para más información.
+el registro para una aplicación. NET, tooconfigure del lado cliente habilitar los diagnósticos de .NET en hello del archivo de configuración (app.config o web.config). Vea [registro con hello biblioteca de cliente de almacenamiento en el lado de cliente](http://msdn.microsoft.com/library/azure/dn782839.aspx) y [registro con hello SDK de almacenamiento de Microsoft Azure para Java de lado cliente](http://msdn.microsoft.com/library/azure/dn782844.aspx) en MSDN para obtener más información.
 
-El registro del lado cliente incluye información detallada sobre el modo en que el cliente prepara la solicitud y recibe y procesa la respuesta.
+registro del lado cliente Hello incluye información detallada acerca de cómo cliente hello prepara la solicitud de Hola y recibe y procesa la respuesta de Hola.
 
-La biblioteca de cliente de almacenamiento almacena datos de registro del lado cliente en la ubicación que se especificó en el archivo de configuración de la aplicación (web.config o app.config).
+Hola biblioteca cliente de almacenamiento almacena datos del registro de cliente en la ubicación de hello especificada en el archivo de configuración de la aplicación hello (app.config o web.config).
 
 ### <a name="collect-a-network-trace"></a>Recopilar un seguimiento de red
-Puede usar el analizador de mensajes para recopilar un seguimiento de red HTTP/HTTPS mientras la aplicación cliente se ejecuta. El analizador de mensajes usa [Fiddler](http://www.telerik.com/fiddler) en el back-end. Antes de recopilar el seguimiento de red, le recomendamos que configure Fiddler para registrar el tráfico HTTPS sin cifrar:
+Puede usar el analizador de mensajes toocollect un seguimiento de red HTTP/HTTPS mientras se ejecuta la aplicación cliente. Usos de analizador de mensajes [Fiddler](http://www.telerik.com/fiddler) en hello back-end. Antes de recopilar el seguimiento de la red de hello, recomendamos que configure Fiddler toorecord sin cifrar el tráfico HTTPS:
 
 1. Instale [Fiddler](http://www.telerik.com/download/fiddler).
 2. Inicie Fiddler.
 3. Seleccione **Tools | Fiddler Options** (Herramientas | Opciones de Fiddler).
-4. En el cuadro de diálogo de opciones, asegúrese de que las opciones **Capture HTTPS CONNECTs** (Capturar CONEXIONES HTTPS) y **Decrypt HTTPS Traffic** (Descifrar tráfico HTTPS) están seleccionadas, tal y como se muestra aquí.
+4. En el cuadro de diálogo de opciones de hello, asegúrese de que **capturar HTTPS conecta** y **descifrar el tráfico HTTPS** están seleccionadas, tal y como se muestra a continuación.
 
 ![Configurar opciones de Fiddler](./media/storage-e2e-troubleshooting/fiddler-options-1.png)
 
-En este tutorial, primero deberá recopilar y guardar un seguimiento de red en el analizador de mensajes y, luego, crear una sesión de análisis para analizar el seguimiento y los registros. Para recopilar un seguimiento de red en el analizador de mensajes:
+Para el tutorial de hello, recopilar y guardar un seguimiento de red en primer lugar en el analizador de mensajes, a continuación, crear una traza de hello análisis tooanalyze de sesión y Hola registros. toocollect un seguimiento de red en el analizador de mensajes:
 
 1. En el analizador de mensajes, seleccione **File | Quick Trace | Unencrypted HTTPS** (Archivo | Seguimiento rápido | HTTPS sin cifrar).
-2. El seguimiento se iniciará inmediatamente. Seleccione **Stop** (Detener) para detener el seguimiento y poder configurarlo para que solo haga el seguimiento del tráfico de almacenamiento.
-3. Seleccione **Edit** (Editar) para editar la sesión de seguimiento.
-4. Seleccione el vínculo **Configure** (Configurar) que está a la derecha del proveedor ETW **Microsoft-Pef-WebProxy**.
-5. En el cuadro de diálogo **Advanced Settings** (Configuración avanzada), haga clic en la pestaña **Provider** (Proveedor).
-6. En el campo **Hostname Filter** (Filtro de nombre de host), especifique los puntos de conexión de almacenamiento, separados por espacios. Por ejemplo, puede especificar los extremos cambiando `storagesample` por el nombre de su cuenta de almacenamiento. Así:
+2. seguimiento de Hello comenzará inmediatamente. Seleccione **detener** toostop Hola seguimiento para que podamos configurarlo tootrace únicamente el tráfico de almacenamiento.
+3. Seleccione **editar** sesión de seguimiento de tooedit Hola.
+4. Seleccione hello **configurar** vincular toohello derecha de hello **Microsoft-Pef-WebProxy** del proveedor de ETW.
+5. Hola **configuración avanzada** cuadro de diálogo, haga clic en hello **proveedor** ficha.
+6. Hola **filtro de nombre de host** , especifique los extremos de almacenamiento, separados por espacios. Por ejemplo, puede especificar los extremos de la manera siguiente: cambiar `storagesample` toohello nombre de la cuenta de almacenamiento:
 
     ```   
     storagesample.blob.core.windows.net storagesample.queue.core.windows.net storagesample.table.core.windows.net
     ```
 
-7. Salga del cuadro de diálogo y haga clic en **Restart** (Reiniciar) para empezar a recopilar el seguimiento con el filtro de nombre de host activado, de modo que solo se incluya en el seguimiento el tráfico de red de Almacenamiento de Azure.
+7. Salir del cuadro de diálogo de Hola y haga clic en **reiniciar** toobegin recopilar seguimiento Hola con filtro de nombre de host de hello en su lugar, para que solo el tráfico de red de almacenamiento de Azure se incluye en el seguimiento de Hola.
 
 > [!NOTE]
-> Una vez finalizada la recopilación del seguimiento de red, le recomendamos restablecer la configuración inicial de Fiddler para descifrar el tráfico HTTPS. En el cuadro de diálogo de opciones de Fiddler, desactive las casillas **Capture HTTPS CONNECTs** (Capturar CONEXIONES HTTPS) y **Decrypt HTTPS Traffic** (Descifrar tráfico HTTPS).
+> Cuando haya terminado de recopilar el seguimiento de la red, se recomienda encarecidamente que revertir configuración Hola que puede haber cambiado el tráfico HTTPS de Fiddler toodecrypt. En el cuadro de diálogo de opciones de Fiddler hello, anule la selección de hello **capturar HTTPS conecta** y **descifrar el tráfico HTTPS** casillas de verificación.
 > 
 > 
 
-Vea el tema sobre el [uso de las características de seguimiento de red](http://technet.microsoft.com/library/jj674819.aspx) en TechNet para más información.
+Vea [usar las características de seguimiento de red de hello](http://technet.microsoft.com/library/jj674819.aspx) en Technet para obtener más detalles.
 
-## <a name="review-metrics-data-in-the-azure-portal"></a>Revisar los datos de las métricas en Azure Portal
-Una vez que la aplicación haya estado en ejecución durante un rato, puede revisar los gráficos de las métricas que aparezcan en [Azure Portal](https://portal.azure.com) para ver el rendimiento de su servicio.
+## <a name="review-metrics-data-in-hello-azure-portal"></a>Revise los datos de métricas de hello portal de Azure
+Una vez que la aplicación se ha estado ejecutando durante un período de tiempo, puede revisar los gráficos de métricas de Hola que aparecen en hello [portal de Azure](https://portal.azure.com) tooobserve cómo realizar el servicio.
 
-Primero, vaya a la cuenta de almacenamiento en Azure Portal. De forma predeterminada, se muestra un diagrama de supervisión con la métrica  **Porcentaje de operaciones correctas**  en la hoja de la cuenta. Si ha modificado el gráfico para mostrar diferentes métricas, agregue la métrica **Porcentaje de operaciones correctas**.
+Navegar en primer lugar, cuenta de almacenamiento tooyour Hola portal de Azure. De forma predeterminada, una supervisión del gráfico con hello **porcentaje de éxito** métrica se muestra en la hoja de la cuenta de hello. Si previamente ha modificado las métricas del Hola gráfico toodisplay diferente, agregue hello **porcentaje de éxito** métrica.
 
-Ahora verá el **Porcentaje de operaciones correctas** en el diagrama de supervisión, junto con otras métricas que pueda haber agregado. En el escenario que pasaremos a examinar mediante el análisis de los registros del analizador de mensajes, podrá ver que la tasa de porcentaje de éxito es ligeramente inferior al 100 %.
+Ahora verá **porcentaje de éxito** Hola gráfico de supervisión, junto con las otras métricas que puedas haber agregado. En el escenario de Hola que se deberá investigar a continuación mediante el análisis de registros de hello en el analizador de mensajes, tasa de éxito de porcentaje de hello es en cierto modo inferiores al 100%.
 
 Para obtener más información sobre cómo agregar y personalizar gráficos de métricas, vea [Personalización de gráficos de métricas](storage-monitor-storage-account.md#customize-metrics-charts).
 
 > [!NOTE]
-> Una vez habilitadas las métricas de almacenamiento, los datos de las métricas tardarán un rato en aparecer en Azure Portal. Hasta que no haya transcurrido la hora actual, las métricas de la hora anterior no se mostrarán en Azure Portal. Asimismo, recuerde que las métricas por minuto no se muestran en Azure Portal. así que es posible que tarde hasta dos horas en ver los datos de las métricas tras habilitarlas.
+> Después de habilitar las métricas de almacenamiento puede tardar algún tiempo antes de su tooappear de datos de métricas en hello portal de Azure. Esto es porque las métricas por hora de hello hora anterior no se muestran en hello portal de Azure hasta que no Hola transcurra la hora actual. Además, métricas por minuto no se muestran actualmente en hello portal de Azure. Por lo que dependiendo de si habilitar las métricas, puede tardar hasta datos de métricas de toosee tootwo horas.
 > 
 > 
 
-## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Usar AzCopy para copiar registros del servidor en un directorio local
-Almacenamiento de Azure escribe datos de registro del servidor en blobs, mientras que las métricas se escriben en tablas. Los blobs de registro se encuentran disponibles en el conocido contenedor `$logs` de su cuenta de almacenamiento. Estos blobs de registro se pueden identificar de forma jerárquica por año, mes, día y hora, lo que hace que se pueda localizar fácilmente el intervalo de tiempo que quiera examinar. Por ejemplo, en la cuenta `storagesample`, el contenedor para los blobs de registro del 01/02/2015 de 8:00 a 9:00 de la mañana es `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Los blobs individuales en este contenedor poseen nombres secuenciales y comienzan por `000000.log`.
+## <a name="use-azcopy-toocopy-server-logs-tooa-local-directory"></a>Utilizar AzCopy toocopy registros server tooa directorio local
+Almacenamiento de Azure escribe tooblobs de datos de registro de servidor, mientras que las métricas se escriben tootables. Blobs del registro están disponibles en hello conocido `$logs` contenedor para la cuenta de almacenamiento. Blobs del registro se denominan jerárquicamente por año, mes, día y hora, para que pueda localizar fácilmente intervalo Hola de tiempo que se va tooinvestigate. Por ejemplo, en hello `storagesample` cuenta, contenedor de Hola para blobs del registro de hello 01/02/2015, de 8-9 am, es `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. blobs individuales de Hello en este contenedor se denominan secuencialmente, comenzando con `000000.log`.
 
-Puede usar la herramienta de línea de comandos AzCopy para descargar estos archivos de registro del lado servidor en una ubicación de su elección en el equipo local. Por ejemplo, puede usar el siguiente comando para descargar en la carpeta `C:\Temp\Logs\Server` los archivos de registro de las operaciones de blob que tuvieron lugar el 2 de enero de 2015; reemplace `<storageaccountname>` por el nombre de su cuenta de almacenamiento y `<storageaccountkey>`, por su clave de acceso de cuenta:
+Puede usar toodownload de herramienta de línea de comandos de AzCopy Hola estos ubicación de tooa de archivos de registro de servidor de su elección en el equipo local. Por ejemplo, puede usar Hola siguiendo los archivos de registro de comando toodownload Hola para colocar las operaciones de blob que ha tardado en 2 de enero de 2015 toohello carpeta `C:\Temp\Logs\Server`; reemplazar `<storageaccountname>` con el nombre de saludo de la cuenta de almacenamiento y `<storageaccountkey>` con su tecla de acceso de cuenta:
 
 ```azcopy
 AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 ```
-AzCopy está disponible para su descarga en la página de [descargas de Azure](https://azure.microsoft.com/downloads/) . Para obtener más información sobre cómo usar AzCopy, consulte [Transferencia de datos con la utilidad en línea de comandos AzCopy](storage-use-azcopy.md).
+AzCopy está disponible para su descarga en hello [descargas de Azure](https://azure.microsoft.com/downloads/) página. Para obtener más información sobre el uso de AzCopy, vea [transferir datos con la utilidad de línea de comandos de AzCopy hello](storage-use-azcopy.md).
 
 Para obtener más información sobre cómo descargar los registros del lado servidor, consulte [Descarga de datos de registro del registro de almacenamiento](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
 
-## <a name="use-microsoft-message-analyzer-to-analyze-log-data"></a>Usar el analizador de mensajes de Microsoft para analizar los datos de registro
-El analizador de mensajes de Microsoft es una herramienta para capturar, mostrar y analizar el protocolo del tráfico de mensajes, eventos y otros mensajes del sistema o de una aplicación, usando para ello escenarios de diagnóstico y de solución de problemas. El analizador de mensajes también permite cargar, agregar y analizar los datos procedentes de registros y de archivos de seguimiento guardados. Para más información sobre el analizador de mensajes, vea la [Guía de funcionamiento del analizador de mensajes de Microsoft](http://technet.microsoft.com/library/jj649776.aspx).
+## <a name="use-microsoft-message-analyzer-tooanalyze-log-data"></a>Usar datos de registro de tooanalyze de analizador de mensajes de Microsoft
+El analizador de mensajes de Microsoft es una herramienta para capturar, mostrar y analizar el protocolo del tráfico de mensajes, eventos y otros mensajes del sistema o de una aplicación, usando para ello escenarios de diagnóstico y de solución de problemas. Analizador de mensajes también permite tooload, agregado y analizar los datos de registro y guarda los archivos de seguimiento. Para más información sobre el analizador de mensajes, vea la [Guía de funcionamiento del analizador de mensajes de Microsoft](http://technet.microsoft.com/library/jj649776.aspx).
 
-El analizador de mensajes incluye herramientas del servicio Almacenamiento de Azure que hacen más fácil analizar los registros de red, de cliente y de servidor. En esta sección, abordaremos el uso de estas herramientas para solucionar el problema del bajo porcentaje de éxito en los registros de almacenamiento.
+Analizador de mensajes incluye activos para el almacenamiento de Azure que le ayudarán a tooanalyze servidor, cliente y registros de la red. En esta sección, analizaremos cómo toouse esos tooaddress herramientas Hola problema de porcentaje bajo de operaciones correctas en Hola registros de almacenamiento.
 
-### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Descargar e instalar el analizador de mensajes y las herramientas de Almacenamiento de Azure
-1. Descargue el [analizador de mensajes](http://www.microsoft.com/download/details.aspx?id=44226) del Centro de descarga de Microsoft y ejecute el programa de instalación.
+### <a name="download-and-install-message-analyzer-and-hello-azure-storage-assets"></a>Descargue e instale el analizador de mensajes y Hola activos de almacenamiento de Azure
+1. Descargar [analizador de mensajes](http://www.microsoft.com/download/details.aspx?id=44226) de Hola Microsoft Download Center y ejecute el programa de instalación de Hola.
 2. Inicie el analizador de mensajes.
-3. En el menú **Herramientas**, seleccione **Administrador de activos**. En el cuadro de diálogo **Administrador de activos**, seleccione **Descargas** y filtre por **Azure Storage**. Verá las herramientas de Almacenamiento de Azure como se muestra en la imagen de abajo.
-4. Haga clic en **Sync All Displayed Items** (Sincronizar todos los elementos que se muestran) para instalar las herramientas de Almacenamiento de Azure. Tiene disponibles los siguientes recursos:
-   * **Reglas de color de Almacenamiento Azure:** las reglas de color de Almacenamiento de Azure permiten definir filtros especiales que usan estilos de color, texto y fuente para resaltar los mensajes que contengan información específica en un seguimiento.
-   * **Gráficos de Almacenamiento de Azure:** los gráficos de Almacenamiento de Azure son gráficos predefinidos que en los que se trazan datos de los registro de servidor. Tenga en cuenta que, actualmente, el uso de los gráficos de Almacenamiento de Azure se reduce únicamente a cargar el registro del servidor en la cuadrícula de análisis.
-   * **Analizadores de Almacenamiento de Azure:** los analizadores de Almacenamiento de Azure analizan los registros de cliente, servidor y HTTP del Almacenamiento de Azure para mostrarlos en la cuadrícula de análisis.
-   * **Filtros de Almacenamiento de Azure:** los filtros de Almacenamiento de Azure son criterios predefinidos que sirven para consultar los datos en la cuadrícula de análisis.
-   * **Diseños de vista de Almacenamiento Azure:** los diseños de vista de Almacenamiento de Azure son diseños y agrupaciones de columna predefinidos en la cuadrícula de análisis.
-5. Reinicie el analizador de mensajes después de haber instalado estas herramientas.
+3. De hello **herramientas** menú, seleccione **Asset Manager**. Hola **Asset Manager** cuadro de diálogo, seleccione **descarga**, a continuación, filtre en **el almacenamiento de Azure**. Verá Hola activos de almacenamiento de Azure, como se muestra en la siguiente imagen se Hola.
+4. Haga clic en **sincronizar todos los elementos de muestra** tooinstall Hola activos de almacenamiento de Azure. activos de Hello disponibles incluyen:
+   * **Reglas de Color de almacenamiento Azure:** permiten toodefine filtros especiales que usan color de texto, las reglas de color de almacenamiento de Azure y toohighlight mensajes que contienen información específica en un seguimiento de estilos de fuente.
+   * **Gráficos de Almacenamiento de Azure:** los gráficos de Almacenamiento de Azure son gráficos predefinidos que en los que se trazan datos de los registro de servidor. Tenga en cuenta que toouse el almacenamiento de Azure ofrece un gráfico en este momento, es posible que solo registro de servidor de carga hello en hello cuadrícula de análisis.
+   * **Analizadores de almacenamiento de Azure:** Hola Hola almacenamiento de Azure cliente de almacenamiento de Azure analizadores el análisis, el servidor y HTTP registra en orden toodisplay en hello cuadrícula de análisis.
+   * **Filtros en el almacenamiento de Azure:** filtros de almacenamiento de Azure son criterios predefinidos que puede usar los datos tooquery Hola cuadrícula de análisis.
+   * **Diseños de la vista de almacenamiento Azure:** diseños de la vista de almacenamiento de Azure son diseños de columna predefinidos y agrupaciones en hello cuadrícula de análisis.
+5. Reinicie el analizador de mensajes después de instalar a activos Hola.
 
 ![Administrador de activos del analizador de mensajes](./media/storage-e2e-troubleshooting/mma-start-page-1.png)
 
 > [!NOTE]
-> Instale todas las herramientas de Almacenamiento de Azure que se muestran para poder realizar este tutorial.
+> Instalar todos los activos de almacenamiento de Azure Hola que se muestra para propósitos de Hola de este tutorial.
 > 
 > 
 
 ### <a name="import-your-log-files-into-message-analyzer"></a>Importar los archivos de registro al analizador de mensajes
 Puede importar todos los archivos de registro guardados (del lado servidor, del lado cliente y de red) en una sola sesión en el analizador de mensajes de Microsoft para analizarlos.
 
-1. En el menú **File** (Archivo) del analizador de mensajes de Microsoft, haga clic en **New Session** (Nueva sesión) y, luego, en **Blank Session** (Sesión en blanco). En el cuadro de diálogo **New Session** (Nueva sesión), escriba un nombre para la sesión de análisis. En el panel **Session Details** (Detalles de la sesión), haga clic en el botón **Files** (Archivos).
-2. Para cargar los datos de seguimiento de red generados por el analizador de mensajes, haga clic en **Add Files** (Agregar archivos), vaya a la ubicación donde guardó el archivo .matp correspondiente a la sesión de seguimiento web, seleccione el archivo .matp y haga clic en **Open** (Abrir).
-3. Para cargar los datos del registro del lado servidor, haga clic en **Add Files** (Agregar archivos), vaya a la ubicación donde descargó los registros del lado servidor, seleccione los archivos de registro para el intervalo de tiempo que desee analizar y haga clic en **Open** (Abrir). Tras esto, en el panel **Session Details** (Detalles de la sesión), establezca el elemento desplegable **Text Log Configuration** (Configuración del registro de texto) de cada archivo de registro del lado servidor en **AzureStorageLog**; así, se asegurará de que el analizador de mensajes de Microsoft puede analizar correctamente el archivo de registro.
-4. Para cargar los datos del registro del lado cliente, haga clic en **Add Files** (Agregar archivos), vaya a la ubicación donde guardó los registros del lado cliente, seleccione los archivos de registro que quiera analizar y haga clic en **Open** (Abrir). Posteriormente, en el panel **Session Details** (Detalles de la sesión), establezca el elemento desplegable **Text Log Configuration** (Configuración del registro de texto) de cada archivo de registro del lado cliente en **AzureStorageClientDotNetV4**; así, se asegurará de que el analizador de mensajes de Microsoft puede analizar correctamente el archivo de registro.
-5. Haga clic en **Start** (Iniciar) en el cuadro de diálogo **New Session** (Nueva sesión) para cargar y analizar los datos de registro. Los datos de registro se muestran en la cuadrícula de análisis del analizador de mensajes.
+1. En hello **archivo** menú en Analizador de mensajes de Microsoft, haga clic en **nueva sesión**y, a continuación, haga clic en **en blanco sesión**. Hola **nueva sesión** cuadro de diálogo, escriba un nombre para la sesión de análisis. Hola **detalles de la sesión** del panel, haga clic en hello **archivos** botón.
+2. datos de seguimiento de red tooload Hola generados por el analizador de mensajes, haga clic en **agregar archivos**, busque la ubicación de toohello donde guardó el archivo .matp de la sesión de seguimiento de web, archivo de .matp de hello seleccione, y haga clic en **abrir**.
+3. datos de registro de servidor de hello tooload, haga clic en **agregar archivos**, examine la ubicación de toohello donde descargó los registros de servidor, seleccione los archivos de registro de Hola Hola intervalo de tiempo que desee tooanalyze y haga clic en **abrir**. A continuación, en hello **detalles de la sesión** panel, conjunto hello **configuración de registro de texto** lista desplegable para cada archivo de registro del lado servidor demasiado**AzureStorageLog** tooensure que Microsoft Analizador de mensajes puede analizar el archivo de registro de hello correctamente.
+4. datos de registro de cliente de hello tooload, haga clic en **agregar archivos**, examine la ubicación de toohello donde guardó los registros de cliente, seleccione los archivos de registro de hello desee tooanalyze y haga clic en **abiertos**. A continuación, en hello **detalles de la sesión** panel, conjunto hello **configuración de registro de texto** lista desplegable para cada archivo de registro de cliente demasiado**AzureStorageClientDotNetV4** tooensure que Analizador de mensajes de Microsoft puede analizar el archivo de registro de hello correctamente.
+5. Haga clic en **iniciar** en hello **nueva sesión** diálogo tooload y el análisis Hola datos del registro. datos del registro de Hello muestran de Hola cuadrícula de análisis de analizador de mensajes.
 
-En la siguiente imagen se muestra una sesión de ejemplo configurada con archivos de registro de servidor, de cliente y seguimiento de red.
+imagen de Hola a continuación muestra una sesión en el ejemplo se configura con el servidor, cliente y archivos de registro de seguimiento de red.
 
 ![Configurar una sesión del analizador de mensajes](./media/storage-e2e-troubleshooting/configure-mma-session-1.png)
 
-Tenga en cuenta que el analizador de mensajes carga los archivos en la memoria. Si tiene una gran cantidad de datos de registro, seguramente quiera filtrarlos para lograr un rendimiento óptimo del analizador de mensajes.
+Tenga en cuenta que el analizador de mensajes carga los archivos en la memoria. Si tiene un conjunto grande de datos de registro, le interesará toofilter en orden tooget Hola mejor partido analizador de mensajes.
 
-Primero, deberá indicar el intervalo de tiempo que desea revisar e intentar que este sea lo más reducido posible. Es probable que en la mayoría de casos solo quiera revisar un período de minutos o, como mucho, de horas. Importe el conjunto más pequeño de registros que le resulte más adecuado.
+En primer lugar, determinar el período de tiempo de Hola que esté interesado en la revisión y mantener este período de tiempo tan pequeño como sea posible. En muchos casos, le interesará tooreview un punto de minutos u horas como máximo. Importar el conjunto más pequeño de Hola de registros que pueden satisfacer sus necesidades.
 
-Si, aun así, la cantidad de datos de registro es demasiado grande, conviene delimitarlos con un filtro de sesión antes de cargarlos. En el cuadro **Session Filter** (Filtros de sesión), seleccione el botón **Library** (Biblioteca) para elegir un filtro predefinido; por ejemplo, elija **Global Time Filter I** (Filtro de tiempo global) de entre los filtros de Azure Storage para poder filtrar según un intervalo de tiempo. Tras ello, puede editar los parámetros del filtro para especificar la marca de tiempo de inicio y de fin del intervalo que quiera ver. También puede filtrar los datos según un código de estado específico; por ejemplo, puede cargar solo las entradas de registro que tengan un código de estado 404.
+Si todavía tiene una gran cantidad de datos de registro, a continuación, puede que desee toospecify un toofilter de filtro de la sesión los datos de registro antes de cargarlos. Hola **sesión filtro** cuadro, seleccione hello **biblioteca** botón toochoose un filtro predefinido; por ejemplo, elegir **Global tiempo filtro I** de hello filtra el almacenamiento de Azure toofilter en un intervalo de tiempo. A continuación, puede editar Hola Hola del toospecify del criterio de filtro a partir de y finalizar la marca de tiempo para el intervalo de saludo desea toosee. También puede filtrar por un código de estado determinado; Por ejemplo, puede elegir solo entradas del registro tooload donde el código de estado de hello es 404.
 
 Para más información sobre cómo importar datos de registro al analizador de mensajes de Microsoft, vea el tema de [recuperación de datos de mensajes](http://technet.microsoft.com/library/dn772437.aspx) en TechNet.
 
-### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>Usar el identificador de solicitud de cliente para poner en correlación los datos de los archivos de registro
-La biblioteca de cliente de Almacenamiento de Azure crea de forma automática un identificador único de solicitud de cliente para cada solicitud. Este valor se escribe en los registros de cliente, de servidor y de seguimiento de red para que se pueda usar para poner en correlación los datos de los tres registros en el analizador de mensajes. Vea [Id. de solicitud de cliente](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) para más información sobre este identificador.
+### <a name="use-hello-client-request-id-toocorrelate-log-file-data"></a>Usar datos de archivo registro toocorrelate de Id. de la solicitud de cliente de Hola
+Hola biblioteca de cliente de almacenamiento de Azure genera automáticamente un Id. de solicitud de cliente único para cada solicitud. Este valor se escribe el registro del cliente de toohello, registro de servidor hello y seguimiento de la red de hello, por lo que se pueden usar toocorrelate datos a través de todos los registros de tres en Analizador de mensajes. Vea [Id. de solicitud de cliente](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) identificador de solicitud para obtener información adicional sobre los clientes Hola
 
-En las siguientes secciones describiremos cómo usar las vistas de diseño personalizadas y configuradas previamente para poner en correlación y agrupar datos según el identificador de solicitud de cliente.
+Hello las siguientes secciones describen cómo toouse configurado previamente y las vistas de diseño personalizado toocorrelate y agrupar datos en función de la solicitud de cliente hello identificador.
 
-### <a name="select-a-view-layout-to-display-in-the-analysis-grid"></a>Seleccionar un diseño de vista para mostrarla en la cuadrícula de análisis
-Entre las herramientas de almacenamiento del analizador de mensajes encontramos los diseños de vista de Almacenamiento de Azure, que son vistas ya configuradas que sirven para visualizar los datos y distribuirlos en grupos y columnas de utilidad según el escenario. También puede crear diseños de vista personalizados y guardarlos para volver a usarlos.
+### <a name="select-a-view-layout-toodisplay-in-hello-analysis-grid"></a>Seleccione un toodisplay de diseño de la vista de hello cuadrícula de análisis
+los activos de almacenamiento de Hello para el analizador de mensajes incluyen diseños de la vista del almacenamiento de Azure que corresponden a las vistas configuradas previamente que puede usar toodisplay los datos con columnas y agrupaciones útiles para diferentes escenarios. También puede crear diseños de vista personalizados y guardarlos para volver a usarlos.
 
-En la siguiente imagen se muestra el menú **View Layout** (Diseño de vista), al que puede tener acceso seleccionando **View Layout** (Diseño de vista) en la cinta de opciones de la barra de herramientas. Los diseños de vista de Almacenamiento de Azure están en el nodo **Almacenamiento de Azure** del menú. Puede buscar `Azure Storage` en el cuadro de búsqueda para filtrar únicamente por diseños de vista de Almacenamiento de Azure. Además, puede seleccionar el icono con forma de estrella al lado de cada diseño de vista para marcarlo como favorito y que, de este modo, se muestre en la parte superior del menú.
+Figura Hola siguiente muestra hello **vista Diseño** menú, disponible al seleccionar **diseño de la vista** desde la cinta de opciones de barra de herramientas de Hola. diseños de la vista de Hello para el almacenamiento de Azure están agrupados en hello **el almacenamiento de Azure** nodo en el menú de Hola. Puede buscar `Azure Storage` en toofilter de cuadro de búsqueda de hello en el almacenamiento de Azure ver solo los diseños. También puede seleccionar Hola estrella siguiente tooa vista Diseño toomake TI un favorito y mostrarla en la parte superior de hello del menú de Hola.
 
 ![Menú de diseño de vista](./media/storage-e2e-troubleshooting/view-layout-menu.png)
 
-Para empezar, seleccione **Grouped by ClientRequestID and Module**(Agrupados por ClientRequestID y Module). Este diseño de vista agrupa los datos de registro de los tres registros de la siguiente manera: primero, por identificador de solicitud de cliente y, después, por archivo de registro de origen (o **Module** en el analizador de mensajes). Con esta vista, podrá explorar en profundidad un identificador de solicitud de cliente en particular y ver los datos de los tres archivos de registro relativos a ese identificador de solicitud de cliente.
+toobegin con select **agrupados por módulo y ClientRequestID**. Este diseño de vista agrupa los datos de registro de los tres registros de la siguiente manera: primero, por identificador de solicitud de cliente y, después, por archivo de registro de origen (o **Module** en el analizador de mensajes). Con esta vista, podrá explorar en profundidad un identificador de solicitud de cliente en particular y ver los datos de los tres archivos de registro relativos a ese identificador de solicitud de cliente.
 
-En la siguiente imagen puede ver el diseño aplicado a los datos de registro de ejemplo, junto con un subconjunto de columnas. Puede observar que, para un identificador de solicitud de cliente en particular, la cuadrícula de análisis muestra los datos del registro de cliente, de servidor y de seguimiento de red.
+Figura Hola siguiente muestra estos datos de registro de diseño vista aplicada toohello ejemplo, con un subconjunto de las columnas mostradas. Puede ver que para un Id. de solicitud de cliente en particular, Hola Analysis cuadrícula muestra los datos de registro de cliente de Hola y registro de servidor, seguimiento de la red.
 
 ![Diseño de vista de Almacenamiento de Azure](./media/storage-e2e-troubleshooting/view-layout-client-request-id-module.png)
 
 > [!NOTE]
-> Los diferentes archivos de registro tienen columnas distintas, así que cuando se muestran los datos de varios archivos de registro en la cuadrícula de análisis, es posible que varias columnas no contengan los datos de alguna fila en particular. Por ejemplo, en la imagen anterior, las filas del registro de cliente no muestran ningún dato en las columnas **Timestamp**, **TimeElapsed**, **Source** y **Destination**, ya que estas columnas no existen en el registro de cliente, pero sí en el de seguimiento de red. Del mismo modo, la columna **Timestamp** muestra los datos de marca de tiempo del registro de servidor, pero no hay datos para las columnas **TimeElapsed**, **Source** y **Destination**, ya que no forman parte del registro de servidor.
+> Archivos de registro diferentes tienen distintas columnas, por lo que cuando se muestran datos de varios archivos de registro en hello cuadrícula de análisis, algunas columnas no pueden contener los datos de una fila determinada. Por ejemplo, en la imagen de hello anterior, las filas del registro de cliente no muestre datos para hello **Timestamp**, **TimeElapsed**, **origen**, y **destino** columnas, ya que estas columnas no existen en el registro de cliente de hello, pero existen en el seguimiento de la red de Hola. De forma similar, Hola **marca de tiempo** columna muestra los datos de marca de tiempo de registro del servidor hello, pero se muestre ningún dato para hello **TimeElapsed**, **origen**, y  **Destino** columnas, que no forman parte del registro del servidor hello.
 > 
 > 
 
-Aparte de usar los diseños de vista de Almacenamiento de Azure, también puede desarrollar y guardar sus propios diseños de vista. Es más, puede seleccionar otros campos para agrupar los datos y guardar esta agrupación como parte de su diseño personalizado.
+Además diseños de la vista de almacenamiento de Azure de toousing hello, se puede definir y guardar sus propios diseños de la vista. Puede seleccionar otros campos que desee para agrupar los datos y guardar agrupación hello como parte de su diseño personalizado también.
 
-### <a name="apply-color-rules-to-the-analysis-grid"></a>Aplicar reglas de color a la cuadrícula de análisis
-Las herramientas de almacenamiento incluyen una serie de reglas de color que ofrecen una forma más visual de identificar los diferentes tipos de errores que aparecen en la cuadrícula de análisis. Las reglas de color predefinidas se aplican a los errores HTTP, así que solo aparecerán en el registro de servidor y el seguimiento de red.
+### <a name="apply-color-rules-toohello-analysis-grid"></a>Aplicar reglas de color toohello cuadrícula de análisis
+Activos de almacenamiento de Hello también incluyen reglas de color, que ofrecen que un objeto visual significa tooidentify diferentes tipos de errores de hello cuadrícula de análisis. Hola predefinida aplicar reglas de color tooHTTP errores, para que aparezcan solo para el seguimiento de red y de registro del servidor de Hola.
 
-Para aplicar reglas de color, seleccione **Color Rules** (Reglas de color) de la cinta de opciones de la barra de herramientas. En el menú verá las reglas de color de Almacenamiento de Azure. Para el tutorial, seleccione **Client Errors (StatusCode between 400 and 499)**(Errores del cliente [StatusCode entre 400 y 499]), tal y como se muestra en esta imagen.
+Seleccione las reglas de color de tooapply **las reglas de Color** desde la cinta de opciones de barra de herramientas de Hola. Podrá ver las reglas de color del almacenamiento de Azure de hello en el menú de Hola. Para el tutorial de hello, seleccione **errores del cliente (StatusCode entre 400 y 499)**, tal y como se muestra en figura Hola siguiente.
 
 ![Diseño de vista de Almacenamiento de Azure](./media/storage-e2e-troubleshooting/color-rules-menu.png)
 
-Además de las reglas de color de Almacenamiento de Azure, también puede crear y guardar sus propias reglas de color.
+Además de hello toousing almacenamiento de Azure color reglas, también puede definir y guardar sus propias reglas de color.
 
-### <a name="group-and-filter-log-data-to-find-400-range-errors"></a>Agrupar y filtrar datos de registro para encontrar errores de intervalo 400
-Ahora agruparemos y filtraremos los datos de registro para encontrar todos los errores que estén dentro del intervalo 400.
+### <a name="group-and-filter-log-data-toofind-400-range-errors"></a>Grupo y filtrar datos toofind intervalo de 400 errores del registro
+A continuación, se podrá agrupar y filtrar toofind de datos de registro de hello todos los errores de intervalo de hello 400.
 
-1. Localice la columna **StatusCode** en la cuadrícula de análisis, haga clic con el botón secundario en el encabezado de la columna y, después, seleccione **Group** (Agrupar).
-2. Tras ello, agrupe por la columna **ClientRequestId** . Verá que los datos de la cuadrícula de análisis están organizados por código de estado y por identificador de solicitud de cliente.
-3. Abra la ventana de la herramienta de filtro de vista si aún no está abierta. En la cinta de opciones de la barra de herramientas, seleccione **Tool Windows** (Ventanas de herramientas) y, luego, **View Filter** (Filtro de vista).
-4. Para filtrar los datos de registro para que solo se muestren los errores del intervalo 400, agregue el siguiente criterio de filtro a la ventana **View Filter** (Filtro de vista) y haga clic en **Apply** (Aplicar):
+1. Busque hello **StatusCode** columna Hola Analysis cuadrícula, menú contextual columna de hello encabezado y, a continuación, seleccione **grupo**.
+2. A continuación, agrupar por hello **ClientRequestId** columna. Verá que datos Hola Hola que Analysis cuadrícula ahora están organizado por estado de código y solicitud de cliente por identificador.
+3. Mostrar ventana de herramientas de filtro de la vista de hello si no está ya visible. En la cinta de opciones de barra de herramientas de hello, seleccione **las ventanas de herramientas**, a continuación, **filtro de vista**.
+4. toofilter Hola datos toodisplay intervalo de 400 solo errores del registro, agregue Hola después toohello de criterios de filtro **filtro de vista** ventana y haga clic en **aplicar**:
 
     ```   
     (AzureStorageLog.StatusCode >= 400 && AzureStorageLog.StatusCode <=499) || (HTTP.StatusCode >= 400 && HTTP.StatusCode <= 499)
     ```
 
-En la siguiente imagen puede ver los resultados de la agrupación y filtrado. Si, por ejemplo, expande el campo **ClientRequestID** que se encuentra debajo de la agrupación del código de estado 409, podrá ver la operación resultante de ese código de estado.
+Figura Hola siguiente muestra los resultados de Hola de esta agrupación y filtro. Hola expansión **ClientRequestID** campo debajo Hola agrupar para el código de estado 409, por ejemplo, se muestra una operación que dieron lugar a ese código de estado.
 
 ![Diseño de vista de Almacenamiento de Azure](./media/storage-e2e-troubleshooting/400-range-errors1.png)
 
-Una vez aplicado este filtro, verá que las filas del registro de cliente se excluyeron, ya que este registro no incluye la columna **StatusCode** . Para empezar, revisaremos los registros de servidor y de seguimiento de red para localizar errores 404 y, después, volveremos al registro de cliente para examinar las operaciones de cliente que llevaron a esos errores.
+Después de aplicar este filtro, verá que se excluyen las filas del registro de cliente de hello, como Hola registro de cliente no incluye un **StatusCode** columna. toobegin con, revisaremos servidor hello y errores de 404 de toolocate de registros de seguimiento de red y, a continuación, se tendrá que volver toohello registro tooexamine Hola cliente las operaciones de cliente que ha provocado toothem.
 
 > [!NOTE]
-> Si agrega una expresión al filtro que incluya entradas de registro donde el código de estado sea nulo, puede filtrar la columna **StatusCode** y ver datos de los tres registros (incluido el registro de cliente). Para crear esta expresión de filtro, use:
+> También puede filtrar por hello **StatusCode** columna y muestre los datos de todos los registros de tres, incluidos Hola registro de cliente, si agrega un filtro de toohello de expresión que incluye entradas del registro donde el código de estado de hello es null. tooconstruct esta expresión de filtro, use:
 > 
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
 > 
-> Este filtro devuelve todas las filas del registro de cliente y solo aquellas filas del registro de servidor y HTTP cuyo código de estado sea mayor que 400. Si aplica esto al diseño de vista que se agrupó por identificador de solicitud de cliente y módulo, podrá buscar o desplazarse por las entradas de registro para encontrar aquellas donde estén representados los tres registros.   
+> Este filtro devuelve todas las filas de cliente hello registro y sólo las filas de registro del servidor de Hola y de registro HTTP donde el código de estado de hello es superior a 400. Si aplica diseño de la vista de toohello agrupado por identificador de solicitud de cliente y el módulo, puede buscar o desplácese por hello registrar entradas toofind aquellos que se representan todas las tres registros.   
 > 
 > 
 
-### <a name="filter-log-data-to-find-404-errors"></a>Filtrar datos de registro para encontrar errores 404
-Las herramientas de almacenamiento incluyen filtros predefinidos que puede usar para acotar los datos de registro y, así, dar con los errores o tendencias que esté buscando. Ahora aplicaremos dos filtros predefinidos: uno que filtre los registros de servidor y de seguimiento de red para los errores 404 y otro que filtre los datos de un intervalo de tiempo específico.
+### <a name="filter-log-data-toofind-404-errors"></a>Filtrar 404 errores de toofind de datos de registro
+los activos de almacenamiento de Hello incluyen filtros predefinidos que puede usar toonarrow registro toofind Hola errores o datos tendencias que está buscando. A continuación, se podrá aplicar dos filtros predefinidos: uno que filtra el servidor hello y los registros de seguimiento de red para 404 errores y otro que filtra los datos de hello en un intervalo de tiempo especificado.
 
-1. Abra la ventana de la herramienta de filtro de vista si aún no está abierta. En la cinta de opciones de la barra de herramientas, seleccione **Tool Windows** (Ventanas de herramientas) y, luego, **View Filter** (Filtro de vista).
-2. En la ventana de filtro de vista, seleccione **Library** (Biblioteca) y busque en `Azure Storage` para encontrar los filtros de Azure Storage. Seleccione el filtro **404 (Not Found) messages in all logs**(Mensajes 404 [no encontrado] en todos los registros).
-3. Vaya de nuevo al menú **Library** (Biblioteca) y localice y seleccione **Global Time Filter** (Filtro de tiempo global).
-4. Edite las marcas de tiempo que se muestran en el filtro del intervalo que quiera ver. Esto servirá para reducir el intervalo de datos que va a analizar.
-5. Su filtro debería ser similar al que aparece en el siguiente ejemplo. Haga clic en **Apply** (Aplicar) para aplicar el filtro a la cuadrícula de análisis.
+1. Mostrar ventana de herramientas de filtro de la vista de hello si no está ya visible. En la cinta de opciones de barra de herramientas de hello, seleccione **las ventanas de herramientas**, a continuación, **filtro de vista**.
+2. En la ventana de filtro de la vista de hello, seleccione **biblioteca**y buscar en `Azure Storage` hello toofind filtra el almacenamiento de Azure. Filtro de hello SELECT para **404 (no encontrado) los mensajes en todos los registros**.
+3. Hola de presentación **biblioteca** menú nuevo y busque y seleccione hello **Global filtro de tiempo**.
+4. Editar hello las marcas de tiempo que se muestra en el intervalo de hello filtro toohello que desea tooview. Esto le ayudará a intervalo de hello toonarrow de tooanalyze de datos.
+5. El filtro debe aparecer similar toohello de ejemplo siguiente. Haga clic en **aplicar** tooapply Hola filtro toohello cuadrícula de análisis.
 
     ```   
     ((AzureStorageLog.StatusCode == 404 || HTTP.StatusCode == 404)) And
@@ -319,35 +319,35 @@ Las herramientas de almacenamiento incluyen filtros predefinidos que puede usar 
     ![Diseño de vista de Almacenamiento de Azure](./media/storage-e2e-troubleshooting/404-filtered-errors1.png)
 
 ### <a name="analyze-your-log-data"></a>Analizar los datos de registro
-Ahora que tenemos los datos agrupados y filtrados, ya podemos pasar a examinar los detalles de las solicitudes que ocasionaron errores 404. En el diseño de vista actual, los datos están agrupados por identificador de solicitud de cliente y por origen del registro. Como estamos filtrando solicitudes cuyo campo StatusCode contenga 404, solo veremos los datos de los registros de servidor y de seguimiento de red, no los del registro de cliente.
+Ahora que ha agrupado y filtrar los datos, puede examinar los detalles de Hola de las solicitudes individuales que generó 404 errores. En el diseño de la vista actual de hello, datos de Hola se agrupan por Id. de solicitud de cliente, a continuación, por el origen del registro. Puesto que se filtra en las solicitudes donde el campo de hello StatusCode contiene 404, veremos sólo servidor hello y datos de seguimiento de red, no datos de registro de hello cliente.
 
-En la siguiente imagen, podrá ver una solicitud específica en la que una operación Get Blob provocó un error 404 porque el blob no existía. Tenga en cuenta que algunas columnas se quitaron de la vista estándar para poder mostrar los datos relevantes.
+Hola imagen siguiente muestra una solicitud específica donde produjo un error 404 en una operación Get Blob porque no existe el blob de Hola. Tenga en cuenta que algunas columnas se han quitado de la vista estándar de hello en los datos relevantes de orden toodisplay Hola.
 
 ![Registros de servidor y de seguimiento de red filtrados](./media/storage-e2e-troubleshooting/server-filtered-404-error.png)
 
-Ahora, pondremos en correlación el identificador de solicitud de cliente con los datos del registro de cliente para ver qué estaba haciendo el cliente cuando ocurrió el error. Puede mostrar una nueva cuadrícula de análisis (en una segunda pestaña) para esta sesión para ver los datos del registro de cliente:
+A continuación, se podrá correlacionar este Id. de solicitud de cliente con toosee de datos de registro de cliente de hello estaba tardando qué cliente Hola de acciones cuando se ha producido un error de Hola. Puede mostrar una nueva vista de cuadrícula de análisis para esta sesión tooview Hola cliente datos del registro, que se abreen en una segunda pestaña:
 
-1. Primero, copie el valor del campo **ClientRequestId** en el portapapeles. Para ello, seleccione una fila, busque el campo **ClientRequestId**, haga clic con el botón secundario en el valor de datos y seleccione **Copy 'ClientRequestId'**.
-2. En la cinta de opciones de la barra de herramientas, seleccione **New Viewer** (Nuevo visor) y, luego, **Analysis Grid** (Cuadrícula de análisis) para abrir una nueva pestaña. En la nueva ficha se recogen todos los datos de sus archivos de registro sin agrupar ni filtrar o sin reglas de color.
-3. En la cinta de opciones de la barra de herramientas, seleccione **View Layout** (Vista de diseño) y, después, **All .NET Client Columns** (Todas las columnas de cliente .NET) en la sección correspondiente a **Almacenamiento de Azure**. En este diseño de vista se muestran los datos del registro de cliente, así como los de los registros de servidor y de seguimiento de red. Los datos se ordenan de forma predeterminada por la columna **MessageNumber** .
-4. Ahora, buscaremos el registro de cliente del identificador de solicitud de cliente. En la cinta de opciones de la barra de herramientas, seleccione **Find Messages** (Buscar mensajes) y especifique un filtro personalizado en el identificador de solicitud de cliente en el campo **Find** (Buscar). Use esta sintaxis para el filtro, indicando su propio identificador de solicitud de cliente:
+1. En primer lugar, Copiar valor de Hola de hello **ClientRequestId** Portapapeles toohello de campo. Para hacer esto seleccionando cualquier fila, buscar hello **ClientRequestId** campo, haciendo doble clic en el valor de datos de Hola y elegir **copia 'ClientRequestId'**.
+2. En la cinta de opciones de barra de herramientas de hello, seleccione **nuevo visor**, a continuación, seleccione **Analysis cuadrícula** tooopen una nueva pestaña Hola nueva pestaña muestra todos los datos en los archivos de registro, sin agrupar, filtrar o las reglas de color.
+3. En la cinta de opciones de barra de herramientas de hello, seleccione **vista Diseño**, a continuación, seleccione **todas las columnas de cliente de .NET** en hello **el almacenamiento de Azure** sección. Este diseño de la vista muestra datos de registro de cliente de hello, así como Hola registros de seguimiento de red y el servidor. De forma predeterminada se ordena en hello **MessageNumber** columna.
+4. A continuación, busque el registro del cliente de Hola Id. de solicitud de cliente de Hola. En la cinta de opciones de barra de herramientas de hello, seleccione **buscar mensajes**, a continuación, especifique un filtro personalizado del Id. de solicitud del cliente de Hola de hello **buscar** campo. Use esta sintaxis de filtro de Hola y especificar su propio Id. de solicitud de cliente:
 
     ```
     *ClientRequestId == "398bac41-7725-484b-8a69-2a9e48fc669a"
     ```
 
-El analizador de mensajes encuentra y selecciona la primera entrada de registro en la que el criterio de búsqueda coincida con el identificador de solicitud de cliente. En el registro de cliente existen varias entradas por cada identificador de solicitud de cliente, así que puede agruparlas por el campo **ClientRequestId** para que sea más fácil revisarlas. En la siguiente imagen puede ver todos los mensajes del registro de cliente correspondientes al identificador de solicitud de cliente especificado.
+Analizador de mensajes busca y selecciona la primera entrada de registro Hola donde los criterios de búsqueda de hello coincide con Id. de solicitud de cliente de Hola. En el registro de cliente de hello, hay varias entradas para cada Id. de solicitud de cliente, por lo que puede toogroup usarlas en hello **ClientRequestId** toomake de campo sea más fácil toosee ellos todos juntos. imagen de Hello siguiente muestra todos los mensajes de saludo de cliente hello de registro de hello especificado identificador de solicitud de cliente.
 
 ![Registro de cliente con errores 404](./media/storage-e2e-troubleshooting/client-log-analysis-grid1.png)
 
-Si usa los datos que se muestran en los diseños de vista de estas dos pestañas, podrá analizar los datos de solicitud para averiguar qué es lo que provocó el error. También puede echar un vistazo a las solicitudes anteriores a esta para ver si algún evento previo fue el que causó el error 404. Por ejemplo, puede revisar las entradas del registro de cliente de este identificador de solicitud de cliente para saber si el blob se eliminó o si el error se produjo porque la aplicación cliente llamó a una API de tipo CreateIfNotExists en un contenedor o un blob. En el registro de cliente, encontrará las direcciones del blob en el campo de **Description** (Descripción), mientras que en los registros de servidor y de seguimiento de red esta información aparece recogida en el campo **Summary** (Resumen).
+Con los datos de Hola que se muestra en los diseños de la vista de hello en estos dos pestañas, puede analizar Hola solicitud datos toodetermine cuál puede ser la causa errores de Hola. También puede mirar las solicitudes que precedió a este uno toosee si un evento anterior puede hayan originado el error 404 toohello. Por ejemplo, puede revisar las entradas del registro de cliente de hello anterior a este toodetermine de Id. de solicitud de cliente si el blob de Hola se haya eliminado, o si Hola error se produjo debido toohello aplicación de cliente al llamar a una API de CreateIfNotExists en un contenedor o blob. En el registro de cliente de hello, puede encontrar dirección del blob de Hola Hola **descripción** campo; en el servidor de Hola y registros de seguimiento de red, esta información aparece en hello **resumen** campo.
 
-Cuando sepa qué dirección del blob produjo el error 404, podrá realizar un examen más exhaustivo. Si, en las entradas de registro, busca otros mensajes relacionados operaciones en el mismo blob, podrá saber si el cliente ya había eliminado la entidad.
+Una vez que sepa dirección Hola del blob de Hola que produjo el error 404 hello, puede investigar más. Si desea buscar entradas de registro de hello para otros mensajes relacionados con operaciones en hello mismo blob, puede comprobar si el cliente de hello eliminado previamente entidad Hola.
 
 ## <a name="analyze-other-types-of-storage-errors"></a>Analizar otros tipos de errores de almacenamiento
-Ahora que ya está familiarizado con el analizador de mensajes y su uso para analizar los datos de sus registros, podrá analizar otros tipos de errores usando diseños de vista, reglas de color y criterios de búsqueda o filtrado. En las siguientes tablas se muestran distintos problemas con los que podría encontrarse y los criterios de filtrado que puede usar para poder localizarlos. Para más información sobre cómo crear filtros y sobre el lenguaje de filtrado del analizador de mensajes, vea el tema sobre el [filtrado de datos de mensajes](http://technet.microsoft.com/library/jj819365.aspx).
+Ahora que está familiarizado con el analizador de mensajes tooanalyze los datos de registro, puede analizar los otros tipos de errores mediante vista diseños, las reglas de color y búsqueda de filtrado. Hola tablas a continuación se indican algunos problemas que pueden surgir y Hola criterios de filtro que se puede usar toolocate ellos. Para obtener más información sobre la creación de filtros y analizador de mensajes de Hola filtrado de idioma, consulte [filtrar datos de mensaje](http://technet.microsoft.com/library/jj819365.aspx).
 
-| Para investigar... | Use la expresión de filtro... | La expresión se aplica al registro (de cliente, de servidor, de red, todos) |
+| tooInvestigate... | Use la expresión de filtro... | Expresión se aplica tooLog (cliente, servidor, red, todos) |
 | --- | --- | --- |
 | Retrasos inesperados en la entrega de mensajes en una cola |AzureStorageClientDotNetV4.Description contiene "Intentando de nuevo la operación con error." |Cliente |
 | Aumento de HTTP en PercentThrottlingError |HTTP.Response.StatusCode   == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |Red |
@@ -370,6 +370,6 @@ Para más información sobre los escenarios de solución integral de problemas e
 
 * [Supervisión, diagnóstico y solución de problemas de Almacenamiento de Microsoft Azure](storage-monitoring-diagnosing-troubleshooting.md)
 * [Análisis de almacenamiento](http://msdn.microsoft.com/library/azure/hh343270.aspx)
-* [Supervisión de una cuenta de almacenamiento en Azure Portal](storage-monitor-storage-account.md)
-* [Transferencia de datos con la utilidad en línea de comandos AzCopy](storage-use-azcopy.md)
+* [Supervisar una cuenta de almacenamiento en hello portal de Azure](storage-monitor-storage-account.md)
+* [Transferencia de datos con la utilidad de línea de comandos de AzCopy Hola](storage-use-azcopy.md)
 * [Guía de funcionamiento del analizador de mensajes de Microsoft](http://technet.microsoft.com/library/jj649776.aspx)

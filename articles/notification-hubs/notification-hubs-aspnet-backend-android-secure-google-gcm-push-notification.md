@@ -1,6 +1,6 @@
 ---
-title: "Envío de notificaciones push seguras a los Centros de notificaciones de Azure"
-description: "Obtenga información acerca de cómo enviar notificaciones de inserción seguras en una aplicación Android desde Azure. Ejemplos de código escritos en Java y C#."
+title: aaaSending Secure notificaciones Push con centros de notificaciones de Azure
+description: "Obtenga información acerca de cómo toosend segura push aplicación Android tooan de notificaciones de Azure. Ejemplos de código escritos en Java y C#."
 documentationcenter: android
 keywords: push notification,push notifications,push messages,android push notifications
 author: ysxu
@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 29f8c516e611c13fb73c7edc15e7c52708c75bb0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d07943c4691ed07acb987086228ef565e6281d57
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Envío de notificaciones push seguras a los Centros de notificaciones de Azure
 > [!div class="op_single_selector"]
@@ -31,26 +31,26 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="overview"></a>Información general
 > [!IMPORTANT]
-> Para completar este tutorial, deberá tener una cuenta de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
+> toocomplete este tutorial, debe tener una cuenta activa de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 > 
 > 
 
-La compatibilidad con las notificaciones push en Microsoft Azure le permite tener acceso a una infraestructura de mensajes multiplataforma y de escalamiento horizontal fácil de usar, que simplifica considerablemente la implementación de notificaciones push tanto en aplicaciones de consumidor como en aplicaciones empresariales para plataformas móviles.
+Compatibilidad con notificaciones de inserción de Microsoft Azure le permite tooaccess una infraestructura de mensaje de inserción de fácil de usar, varias plataformas y escala horizontal, que simplifica considerablemente la implementación de Hola de notificaciones de inserción para las aplicaciones de consumidor y empresa plataformas móviles.
 
-Debido a restricciones reguladoras o de seguridad, algunas veces una aplicación podría querer incluir algo en la notificación que no se puede trasmitir a través de la infraestructura de las notificaciones de inserción estándar. En este tutorial se describe cómo lograr la misma experiencia enviando información importante a través de una conexión segura y autenticada entre el dispositivo Android y el back-end de la aplicación.
+A veces debido a restricciones de seguridad o tooregulatory, una aplicación podría querer tooinclude algo en la notificación de Hola que no se transmiten a través de la infraestructura de notificaciones de inserción estándar Hola. Este tutorial describe cómo tooachieve Hola misma experiencia mediante el envío de información confidencial a través de una conexión segura y autenticada entre dispositivos Android de cliente de Hola y Hola backend de la aplicación.
 
-A un alto nivel, el flujo es el siguiente:
+En un nivel alto, flujo de hello es como sigue:
 
-1. El back-end de la aplicación:
+1. Hola aplicación back-end:
    * Almacena la carga segura en la base de datos back-end.
-   * Envía el identificador de esta notificación al dispositivo Android (no se envía información segura).
-2. La aplicación del dispositivo, cuando recibe la información:
-   * El dispositivo Android entra en contacto con el back-end que solicita la carga segura.
-   * La aplicación puede mostrar la carga como una notificación en el dispositivo.
+   * Envía el Id. de Hola de este dispositivo Android de notificación toohello (se envía ninguna información segura).
+2. aplicación Hello en dispositivo hello, al recibir la notificación de hello:
+   * dispositivos Android Hola contacta con hello back-end que lo solicita Hola carga de seguridad.
+   * aplicación Hello puede mostrar carga hello como una notificación en el dispositivo de Hola.
 
-Es importante tener en cuenta que en el flujo anterior (y en este tutorial), asumimos que el dispositivo almacena un token de autenticación localmente y, después, el usuario inicia sesión. Esto garantiza una experiencia sin ningún problema, ya que el dispositivo puede recuperar la carga segura de la notificación usando este token. Si la aplicación no almacena tokens de autenticación en el dispositivo, o si estos tokens pueden haber caducado, la aplicación del dispositivo, al recibir la notificación push, debe mostrar una notificación genérica pidiendo al usuario que inicie la aplicación. Después, la aplicación autentica al usuario y muestra la carga de la notificación.
+Es importante toonote que Hola anterior flujo (y en este tutorial), se da por supuesto ese dispositivo Hola almacena un token de autenticación en el almacenamiento local, después de hello usuario inicia sesión en. Esto garantiza una experiencia completamente sin problemas, como dispositivo de hello puede recuperar la carga de seguridad de la notificación de hello con este token. Si la aplicación no almacena tokens de autenticación en el dispositivo de hello, o si pueden haber expirado estos tokens, aplicación de dispositivo de hello, tras recibir la notificación de inserción de hello debe mostrar una notificación genérica preguntar aplicación Hola de hello usuario toolaunch. aplicación Hello, a continuación, autentica el usuario de Hola y muestra la carga de notificaciones de Hola.
 
-Este tutorial muestra cómo enviar notificaciones push seguras. Se basa en el tutorial sobre [notificar a los usuarios](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) , por lo que debe completar los pasos de ese tutorial primero si no lo ha hecho todavía.
+Este tutorial muestra cómo las notificaciones de inserción toosend segura. Se basa en hello [informar a los usuarios](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) tutorial, por lo que debe completar los pasos de hello en este tutorial primero si no lo ha hecho ya.
 
 > [!NOTE]
 > En este tutorial se supone que se ha creado y configurado el Centro de notificaciones tal como se describe en [Introducción a los Centros de notificaciones (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
@@ -59,17 +59,17 @@ Este tutorial muestra cómo enviar notificaciones push seguras. Se basa en el tu
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-android-project"></a>Modificación del proyecto Android
-Una vez modificado el back-end de la aplicación para enviar solamente el *identificador* de una notificación push, deberá modificar la aplicación Android para que administre dicha notificación y devuelva la llamada a su back-end para recuperar el mensaje seguro que se debe mostrar.
-Para lograr este objetivo, tiene que asegurarse de que la aplicación Android sabe cómo autenticarse a sí misma con el back-end cuando recibe las notificaciones de inserción.
+## <a name="modify-hello-android-project"></a>Modificar el proyecto de Android Hola
+Ahora que ha modificado su Hola solo de aplicación back-end toosend *identificador* de una notificación de inserción, tienen toochange su toohandle aplicación Android notificación y devolución de llamada su hello tooretrieve de back-end seguros toobe de mensaje que se muestra.
+tooachieve este objetivo tiene toomake seguro de que la aplicación Android sabe cómo tooauthenticate con el back-end cuando recibe notificaciones de inserción de Hola.
 
-A continuación, modificaremos el flujo de *inicio de sesión* para guardar el valor de encabezado de autenticación en las preferencias compartidas de la aplicación. Se pueden usar mecanismos similares para almacenar cualquier token de autenticación (por ejemplo tokens OAuth) que la aplicación tendrá que usar sin solicitar credenciales de usuario.
+Ahora modificaremos hello *inicio de sesión* flujo en el valor del encabezado de autenticación orden toosave Hola Hola comparten las preferencias de la aplicación. Mecanismos análogos pueden ser utilizado toostore cualquier token de autenticación (por ejemplo, tokens de OAuth) que Hola aplicación tendrá toouse sin necesidad de credenciales de usuario.
 
-1. En el proyecto de la aplicación Android, agregue las siguientes constantes en la parte superior de la clase **MainActivity** :
+1. En el proyecto de aplicación de Android, agregar Hola siguientes constantes en parte superior de Hola de hello **MainActivity** clase:
    
         public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
         public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
-2. Todavía en la clase **MainActivity**, actualice el método `getAuthorizationHeader()` para que contenga el siguiente código:
+2. Aún en hello **MainActivity** (clase), actualización hello `getAuthorizationHeader()` hello toocontain de método siguiente código:
    
         private String getAuthorizationHeader() throws UnsupportedEncodingException {
             EditText username = (EditText) findViewById(R.id.usernameText);
@@ -82,20 +82,20 @@ A continuación, modificaremos el flujo de *inicio de sesión* para guardar el v
    
             return basicAuthHeader;
         }
-3. Agregue la siguientes instrucciones `import` en la parte superior del archivo **MainActivity** :
+3. Agregue los siguiente hello `import` las instrucciones en la parte superior de Hola de hello **MainActivity** archivo:
    
         import android.content.SharedPreferences;
 
-Ahora cambiaremos el controlador al que se llama cuando se recibe la notificación.
+Ahora cambiaremos controlador Hola que se llama cuando se recibe la notificación de Hola.
 
-1. En la clase **MyHandler**, cambie el método `OnReceive()` para que contenga:
+1. Hola **MyHandler** clase cambiar hello `OnReceive()` método toocontain:
    
         public void onReceive(Context context, Bundle bundle) {
             ctx = context;
             String secureMessageId = bundle.getString("secureId");
             retrieveNotification(secureMessageId);
         }
-2. Después, agregue el método `retrieveNotification()`, reemplazando el marcador de posición `{back-end endpoint}` con el extremo back-end obtenido mientras se implementa su back-end:
+2. A continuación, agregue hello `retrieveNotification()` método, reemplazando el marcador de posición de hello `{back-end endpoint}` con punto de conexión de back-end de hello obtenido al implementar el back-end:
    
         private void retrieveNotification(final String secureMessageId) {
             SharedPreferences sp = ctx.getSharedPreferences(MainActivity.NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
@@ -116,7 +116,7 @@ Ahora cambiaremos el controlador al que se llama cuando se recibe la notificaci�
                         JSONObject secureNotification = new JSONObject(secureNotificationJSON);
                         sendNotification(secureNotification.getString("Payload"));
                     } catch (Exception e) {
-                        Log.e("MainActivity", "Failed to retrieve secure notification - " + e.getMessage());
+                        Log.e("MainActivity", "Failed tooretrieve secure notification - " + e.getMessage());
                         return e;
                     }
                     return null;
@@ -124,15 +124,15 @@ Ahora cambiaremos el controlador al que se llama cuando se recibe la notificaci�
             }.execute(null, null, null);
         }
 
-Este método llama al back-end de la aplicación para recuperar el contenido de la notificación usando las credenciales almacenadas en las preferencias compartidas y lo muestra como una notificación normal. El aspecto de la notificación para el usuario de la aplicación es exactamente el mismo que cualquier otra notificación de inserción.
+Este método llama a su contenido usando credenciales de hello almacenadas en hello compartido preferencias y lo muestra como una notificación normal de notificación de Hola de tooretrieve de back-end de la aplicación. notificación de Hello busca toohello de usuario de aplicación exactamente igual que cualquier otra notificación de inserción.
 
-Tenga en cuenta que es preferible administrar los casos de propiedad de encabezado de autenticación ausente o rechazo por el backend. La administración específica de estos casos depende principalmente de la experiencia del usuario de destino. Una opción es mostrar una notificación con un mensaje genérico para el usuario con el fin de que se autentique para recuperar la notificación real.
+Tenga en cuenta que es preferible toohandle casos de Hola de propiedad de encabezado de autenticación que falta o el rechazo por hello back-end. control específico de Hola de estos casos dependen principalmente de la experiencia del usuario de destino. Una opción es toodisplay una notificación con un mensaje genérico para la notificación de real de hello usuario tooauthenticate tooretrieve Hola.
 
-## <a name="run-the-application"></a>Ejecución de la aplicación
-Para ejecutar la aplicación, realice las siguientes tareas:
+## <a name="run-hello-application"></a>Ejecutar aplicación Hola
+toorun Hola aplicación, Hola siguientes:
 
-1. Asegúrese de que **AppBackend** se ha implementado en Azure. Si usa Visual Studio, ejecute la aplicación de API web **AppBackend** . Se mostrará una página web ASP.NET.
-2. En Eclipse, ejecute la aplicación en un dispositivo Android físico o en el emulador.
-3. En la interfaz de usuario de la aplicación Android, escriba un nombre de usuario y contraseña. Esta información puede ser cualquier cadena, pero deben tener el mismo valor.
-4. En la interfaz de usuario de la aplicación Android, haga clic en **Log in**(Iniciar sesión). A continuación, haga clic en **Send push**(Enviar inserción).
+1. Asegúrese de que **AppBackend** se ha implementado en Azure. Si utiliza Visual Studio, ejecute hello **AppBackend** aplicación de API Web. Se mostrará una página web ASP.NET.
+2. En Eclipse, ejecutar la aplicación hello en un emulador de dispositivo o hello Android físico.
+3. En la aplicación hello Android interfaz de usuario, escriba un nombre de usuario y una contraseña. Pueden ser cualquier cadena, pero deben ser Hola el mismo valor.
+4. En la aplicación hello Android interfaz de usuario, haga clic en **sesión**. A continuación, haga clic en **Enviar inserción**.
 

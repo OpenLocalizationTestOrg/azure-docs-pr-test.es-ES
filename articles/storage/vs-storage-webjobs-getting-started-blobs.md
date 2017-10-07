@@ -1,6 +1,6 @@
 ---
-title: "Introducción al almacenamiento de blobs y servicios conectados de Visual Studio (proyectos de WebJobs) | Microsoft Docs"
-description: "Cómo empezar a usar el almacenamiento de blobs en un proyecto de WebJob después de conectarse a un almacenamiento de Azure con los servicios conectados de Visual Studio."
+title: aaaGet a trabajar con el almacenamiento de blobs y Visual Studio servicios conectados (proyectos de trabajo Web) | Documentos de Microsoft
+description: "Servicios conectados cómo tooget a usar almacenamiento de blobs en un proyecto WebJob después de conectarse tooan almacenamiento de Azure mediante Visual Studio."
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: 7fec890590302a99bbc96f46f24ae440c041580c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cb2cecacbb1a59f093d5453a91fae33e0f279d85
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Introducción al almacenamiento de blobs de Azure y servicios conectados de Visual Studio (proyectos de WebJobs)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Información general
-En esta guía se proporcionan muestras de código C# que muestran cómo desencadenar un proceso cuando se crea o actualiza un blob de Azure. Los ejemplos de código usan el [SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk.md) versión 1.x. Al agregar una cuenta de almacenamiento a un proyecto de WebJobs con el cuadro de diálogo **Agregar servicios conectados** de Visual Studio, se instala el paquete de NuGet de Almacenamiento de Azure adecuado, se agregan las referencias de .NET adecuadas al proyecto y se actualizan las cadenas de conexión para la cuenta de almacenamiento en el archivo App.config.
+Este artículo proporciona C# de ejemplos de código que muestran cómo tootrigger un proceso cuando se crea o actualiza un blob de Azure. ejemplos de código de Hello usan hello [SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk.md) versión 1.x. Cuando agrega un proyecto de WebJob de tooa de cuenta de almacenamiento mediante el uso de Visual Studio hello **agregar servicios conectados** cuadro de diálogo, paquetes de NuGet de almacenamiento de Azure apropiada de hello está instalado, las referencias adecuadas de .NET Hola son toohello agregado proyecto y cadenas de conexión para la cuenta de almacenamiento de Hola se actualizan en el archivo App.config de hello.
 
-## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Cómo desencadenar una función cuando se crea o actualiza un blob
-En esta sección se muestra cómo usar el atributo **BlobTrigger** .
+## <a name="how-tootrigger-a-function-when-a-blob-is-created-or-updated"></a>¿Cómo tootrigger una función cuando se crea o actualiza un blob
+Esta sección se muestra cómo hello toouse **BlobTrigger** atributo.
 
- **Nota:** el SDK de WebJobs analiza los archivos de registro para inspeccionar los blobs nuevos o modificados. Este proceso es lento por naturaleza; podría no desencadenarse una función hasta varios minutos o más después de haberse creado el blob.  Si su aplicación necesita procesar inmediatamente los blobs, el método recomendado es crear un mensaje en cola al crear el blob y usar el atributo [QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) en lugar del atributo **BlobTrigger** en la función que procesa el blob.
+ **Nota:** Hola archivos de registro de SDK de WebJobs exámenes toowatch para blobs nuevos o modificados. Este proceso es inherentemente lento; una función podría no obtener activada hasta varios minutos o más una vez creado el blob de Hola.  Si la aplicación necesita tooprocess blobs inmediatamente, Hola recomendado método es toocreate un mensaje de la cola al crear Hola blob y usar hello [QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) atributo en lugar de hello **BlobTrigger** atributo en función de Hola que procesa el blob de Hola.
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Único marcador de posición para el nombre de blob con extensión
-El siguiente ejemplo de código copia blobs de texto que aparecen en el contenedor *input* al contenedor *output*:
+Hello siguiente ejemplo de código copia blobs de texto que aparecen en hello *entrada* contenedor toohello *salida* contenedor:
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("output/{name}")] out string output)
@@ -40,9 +40,9 @@ El siguiente ejemplo de código copia blobs de texto que aparecen en el contened
             output = input.ReadToEnd();
         }
 
-El constructor de atributo toma un parámetro de cadena que especifica el nombre del contenedor y un marcador de posición para el nombre del blob. En este ejemplo, si se crea un blob llamado *Blob1.txt* en el contenedor *input*, la función crea un blob llamado *Blob1.txt* en el contenedor *output*.
+constructor de atributo de Hello toma un parámetro de cadena que especifica el nombre del contenedor de Hola y un marcador de posición para el nombre del blob de Hola. En este ejemplo, si un blob denominado *Blob1.txt* se crea en hello *entrada* contenedor, la función hello crea un blob denominado *Blob1.txt* en hello *salida*  contenedor.
 
-Puede especificar un patrón de nombre con el marcador de posición de nombre de blob, como se muestra en el siguiente ejemplo de código:
+Puede especificar un patrón de nombre con el marcador de posición de nombre de blob de hello, como se muestra en el siguiente ejemplo de código de hello:
 
         public static void CopyBlob([BlobTrigger("input/original-{name}")] TextReader input,
             [Blob("output/copy-{name}")] out string output)
@@ -50,9 +50,9 @@ Puede especificar un patrón de nombre con el marcador de posición de nombre de
             output = input.ReadToEnd();
         }
 
-Este código solo copia blobs con nombres que comienzan con "original-". Por ejemplo, *original-Blob1.txt* en el contenedor *input* se copia en *copy- Blob1.txt* en el contenedor *output*.
+Este código solo copia blobs con nombres que comienzan con "original-". Por ejemplo, *original Blob1.txt* en hello *entrada* contenedor se copia demasiado*copia Blob1.txt* en hello *salida* contenedor.
 
-Si necesita especificar un patrón de nombre para nombres de blob que contienen llaves en el nombre, duplique las llaves. Por ejemplo, si desea encontrar blobs en el contenedor *images* que tengan nombres como este:
+Si necesita toospecify un patrón de nombre para los nombres de blob que tienen las llaves en nombre de hello, doble llaves Hola. Por ejemplo, si desea toofind blobs hello *imágenes* contenedor que tienen nombres similar al siguiente:
 
         {20140101}-soundfile.mp3
 
@@ -60,10 +60,10 @@ use esto para el patrón:
 
         images/{{20140101}}-{name}
 
-En el ejemplo, el valor de marcador de posición *name* sería *soundfile.mp3*.
+En el ejemplo de Hola, Hola *nombre* sería el valor de marcador de posición *soundfile.mp3*.
 
 ### <a name="separate-blob-name-and-extension-placeholders"></a>Separar marcadores de posición de extensión y nombre de blob
-El siguiente ejemplo de código cambia la extensión de archivo cuando copia los blobs que aparecen en el contenedor *input* al contenedor *output*. El código registra la extensión del blob *input* y establece la extensión del blob *output* en *.txt*.
+Hello cambios de ejemplo de código siguiente Hola extensión de archivo mientras realiza la copia blobs que aparecen en hello *entrada* contenedor toohello *salida* contenedor. código de Hello registra extensión Hola de hello *entrada* blob y establece la extensión de Hola de hello *salida* blob demasiado*.txt*.
 
         public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
             [Blob("output/{name}.txt")] out string output,
@@ -76,8 +76,8 @@ El siguiente ejemplo de código cambia la extensión de archivo cuando copia los
             output = input.ReadToEnd();
         }
 
-## <a name="types-that-you-can-bind-to-blobs"></a>Tipos que puede enlazar a blobs
-Puede usar el atributo **BlobTrigger** en los siguientes tipos:
+## <a name="types-that-you-can-bind-tooblobs"></a>Tipos que se pueden enlazar tooblobs
+Puede usar hello **BlobTrigger** atributo Hola siguientes tipos:
 
 * **cadena**
 * **TextReader**
@@ -87,10 +87,10 @@ Puede usar el atributo **BlobTrigger** en los siguientes tipos:
 * **CloudPageBlob**
 * Otros tipos deserializados por [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
 
-Si quiere trabajar directamente con la cuenta de almacenamiento de Azure, también puede agregar un parámetro **CloudStorageAccount** a la firma del método.
+Si desea que toowork directamente con hello cuenta de almacenamiento de Azure, también puede agregar un **CloudStorageAccount** firma del método toohello parámetro.
 
-## <a name="getting-text-blob-content-by-binding-to-string"></a>Obtención del contenido del blob de texto enlazando a la cadena
-Si se esperan blobs de texto, se puede aplicar **BlobTrigger** a un parámetro **string**. El siguiente ejemplo de código enlaza un blob de texto a un parámetro **string** llamado **logMessage**. La función usa ese parámetro para escribir el contenido del blob en el panel del SDK de WebJobs.
+## <a name="getting-text-blob-content-by-binding-toostring"></a>Obtener contenido de blob de texto toostring de enlace
+Si se esperan que los blobs de texto, **BlobTrigger** puede ser aplicada tooa **cadena** parámetro. ejemplo de código siguiente Hello enlaza un tooa de blob de texto **cadena** parámetro denominado **logMessage**. función Hello utiliza ese contenido de parámetro toowrite Hola de hello blob toohello panel de SDK de WebJobs.
 
         public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
             string name,
@@ -102,7 +102,7 @@ Si se esperan blobs de texto, se puede aplicar **BlobTrigger** a un parámetro *
         }
 
 ## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Obtención del contenido del blob serializado mediante el uso de ICloudBlobStreamBinder
-El siguiente ejemplo de código usa una clase que implementa **ICloudBlobStreamBinder** para permitir que el atributo **BlobTrigger** vincule un blob al tipo **WebImage**.
+Hello ejemplo de código siguiente utiliza una clase que implementa **ICloudBlobStreamBinder** tooenable hello **BlobTrigger** toobind toohello de un blob de atributo **WebImage** tipo.
 
         public static void WaterMark(
             [BlobTrigger("images3/{name}")] WebImage input,
@@ -121,7 +121,7 @@ El siguiente ejemplo de código usa una clase que implementa **ICloudBlobStreamB
             output = input.Resize(width, height);
         }
 
-El código de enlace **WebImage** se ofrece en una clase **WebImageBinder** que deriva de **ICloudBlobStreamBinder**.
+Hola **WebImage** código de enlace se proporciona en un **WebImageBinder** clase que deriva de **ICloudBlobStreamBinder**.
 
         public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
         {
@@ -138,20 +138,20 @@ El código de enlace **WebImage** se ofrece en una clase **WebImageBinder** que 
             }
         }
 
-## <a name="how-to-handle-poison-blobs"></a>Cómo administrar los blobs dudosos
-Cuando una función **BlobTrigger** genera un error, el SDK le llama de nuevo en el caso de que se hubiese producido por un error transitorio. Si el error se produce debido al contenido del blob, la función presentará un error cada vez que intente procesar el blob. De manera predeterminada, el SDK llama una función hasta cinco veces para un blob determinado. Si el quinto intento falla, el SDK agrega un mensaje a una cola llamada *webjobs-blobtrigger-poison*.
+## <a name="how-toohandle-poison-blobs"></a>¿Cómo toohandle dudosos blobs
+Cuando un **BlobTrigger** produce un error de la función, Hola SDK lo llama una vez más, en caso de error de hello fue provocado por un error transitorio. Si se produce un error de hello en contenido de Hola de blob de hello, se produce un error en la función hello cada vez que trata de blob de hello tooprocess. De forma predeterminada, Hola SDK llama a una función too5 horas para un blob determinado. Si se produce un error en try quinto hello, Hola SDK agrega una cola de tooa de mensaje denominada *webjobs-blobtrigger-dudosos*.
 
-Es posible configurar el número máximo de reintentos. Se usa la misma configuración [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) para controlar los blobs dudosos y los mensajes de cola dudosos.
+Hola número máximo de reintentos es configurable. Hola mismo [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) configuración se utiliza para el control de mensajes dudosos blob y control de mensajes de la cola de mensajes dudosos.
 
-El mensaje de cola para los blobs dudosos es un objeto JSON que contiene las siguientes propiedades:
+mensaje de la cola de Hola para blobs dudosos es un objeto JSON que contiene Hola propiedades siguientes:
 
-* FunctionId (con el formato *{nombre de WebJob}*.Functions.*{nombre de función}*, por ejemplo: WebJob1.Functions.CopyBlob)
+* FunctionId (en formato de hello *{nombre del trabajo Web}*. Las funciones. *{Nombre de la función}*, por ejemplo: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" o "PageBlob")
 * ContainerName
 * BlobName
 * ETag (un identificador de la versión del blob, por ejemplo: "0x8D1DC6E70A277EF")
 
-En el siguiente ejemplo de código, la función **CopyBlob** tiene un código que hace que presente un error cada vez que se la llama. Una vez que el SDK la llama por el número máximo de reintentos, se crea un mensaje en la cola de blobs dudosos y la función **LogPoisonBlob** procesa ese mensaje.
+En los siguientes Hola ejemplo de código, hello **CopyBlob** función tiene código que causa toofail cada vez que se llama. Después de hello SDK lo llama para el número máximo de Hola de reintentos, se crea un mensaje en cola de mensajes dudosos blob hello y ese mensaje sea procesado por hello **LogPoisonBlob** (función).
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("textblobs/output-{name}")] out string output)
@@ -171,7 +171,7 @@ En el siguiente ejemplo de código, la función **CopyBlob** tiene un código qu
             logger.WriteLine("ETag: {0}", message.ETag);
         }
 
-El SDK deserializa automáticamente el mensaje JSON. Esta es la clase **PoisonBlobMessage** :
+Hola SDK automáticamente deserializa el mensaje de bienvenida de JSON. Aquí es hello **PoisonBlobMessage** clase:
 
         public class PoisonBlobMessage
         {
@@ -183,40 +183,40 @@ El SDK deserializa automáticamente el mensaje JSON. Esta es la clase **PoisonBl
         }
 
 ### <a name="blob-polling-algorithm"></a>Algoritmo de sondeo de blobs
-El SDK de WebJobs examina todos los contenedores especificados por los atributos **BlobTrigger** en el inicio de la aplicación. En una cuenta de almacenamiento de gran tamaño, este análisis puede demorar un tiempo, por lo que podría pasar mucho tiempo antes de que se encuentren blobs nuevos y que se ejecuten las funciones **BlobTrigger** .
+Hola SDK de WebJobs examina todos los contenedores especificados por **BlobTrigger** atributos al iniciarse la aplicación. En una cuenta de almacenamiento de gran tamaño, este análisis puede demorar un tiempo, por lo que podría pasar mucho tiempo antes de que se encuentren blobs nuevos y que se ejecuten las funciones **BlobTrigger** .
 
-Para detectar blobs nuevos o cambiados después del inicio de la aplicación, el SDK lee de manera periódica de los registros de almacenamiento de blobs. Los registros de blobs se almacenan en búfer y solo se escriben físicamente cada diez minutos aproximadamente, por lo que puede haber un retraso importante una vez que se crea o actualiza un blob antes de que la función **BlobTrigger** correspondiente se ejecute.
+toodetect blobs nuevos o modificados después de iniciarse la aplicación, los registros de hello que SDK lee periódicamente Hola almacenamiento de blobs. Hello registros del blob se almacenan en búfer y que sólo obtengan físicamente escribir cada 10 minutos o por lo tanto, por lo que puede haber un retraso importante después de un blob se crea o se actualiza antes de hello correspondiente **BlobTrigger** se ejecuta la función.
 
-Existe una excepción para los blobs que crea mediante el uso del atributo **Blob** . Cuando el SDK de WebJobs crea un blob nuevo, pasa el blob nuevo inmediatamente a cualquier función **BlobTrigger** coincidente. Por tanto, si tiene una cadena de entradas y salidas categorizadas como blob, el SDK puede procesarlas de manera eficaz. Pero si desea baja latencia de ejecución para sus funciones de procesamiento de blobs para blobs que se crean o actualizan mediante otros medios, se recomienda usar **QueueTrigger** en lugar de **BlobTrigger**.
+Hay una excepción para los blobs que creas mediante hello **Blob** atributo. Cuando Hola SDK de WebJobs crea un nuevo blob, pasa inmediatamente nuevo blob en hello coincidencia tooany **BlobTrigger** funciones. Por lo tanto, si tiene una cadena de blob entradas y salidas, Hola SDK pueda procesarlos eficazmente. Pero si desea baja latencia de ejecución para sus funciones de procesamiento de blobs para blobs que se crean o actualizan mediante otros medios, se recomienda usar **QueueTrigger** en lugar de **BlobTrigger**.
 
 ### <a name="blob-receipts"></a>Recepciones de blobs
-El SDK de WebJobs se asegura de que ninguna función **BlobTrigger** se llame más de una vez para el mismo blob nuevo o actualizado. Para hacerlo, mantiene *recepciones de blobs* para determinar si se ha procesado alguna versión de blob determinada.
+Hola SDK de WebJobs asegura de que ninguna **BlobTrigger** función obtiene llama más de una vez para hello mismo nuevo o actualiza el blob. Esto consigue mediante mantener *blob confirmaciones* en orden toodetermine si se ha procesado una versión determinada de blob.
 
-Las recepciones de blobs se almacenan en un contenedor llamado *azure-webjobs-hosts* en la cuenta de almacenamiento de Azure que especifica la cadena de conexión AzureWebJobsStorage. Una recepción de blobs tiene la información siguiente:
+Confirmaciones de BLOB se almacenan en un contenedor denominado *hosts de webjobs de azure* de cuenta de almacenamiento de Azure Hola especificado por la cadena de conexión de AzureWebJobsStorage Hola. Una confirmación de blob tiene Hola siguiente información:
 
-* La función que se llamó para el blob ("*{nombre de WebJob}*.Functions.*{nombre de función}*", por ejemplo: "WebJob1.Functions.CopyBlob")
-* El nombre del contenedor
-* El tipo de blob ("BlockBlob" o "PageBlob")
-* El nombre del blob
-* ETag (un identificador de la versión del blob, por ejemplo: "0x8D1DC6E70A277EF")
+* Hola función a la que se llamó para el blob de hello ("*{nombre del trabajo Web}*. Las funciones. *{Nombre de la función}*", por ejemplo:"WebJob1.Functions.CopyBlob")
+* nombre del contenedor de Hola
+* tipo de blob de Hello ("BlockBlob" o "PageBlob")
+* nombre del blob Hola
+* Hola ETag (un identificador de versión de blob, por ejemplo: "0x8D1DC6E70A277EF")
 
-Si desea forzar el reprocesamiento de un blob, puede eliminar manualmente la recepción de blob de ese blob desde el contenedor *azure-webjobs-hosts* .
+Si desea volver a procesar tooforce de un blob, puede eliminar manualmente el recibo de blob de Hola para dicho blob de hello *hosts de webjobs de azure* contenedor.
 
-## <a name="related-topics-covered-by-the-queues-article"></a>Temas relacionados tratados en el artículo sobre colas
-Para obtener información sobre cómo controlar el procesamiento de blobs desencadenado por un mensaje de cola o para ver los escenarios de SDK de WebJobs no específicos para el procesamiento de blobs, consulte [Cómo usar el almacenamiento de cola de Azure con el SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md).
+## <a name="related-topics-covered-by-hello-queues-article"></a>Temas relacionados cubiertos por artículo de colas de Hola
+Para obtener información acerca de cómo el procesamiento de blob toohandle desencadenada por un mensaje de la cola, o de trabajos Web escenarios SDK no tooblob específica de procesamiento, vea [cómo toouse Azure cola de almacenamiento con hello SDK de WebJobs](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md).
 
-Los temas relacionados tratados en ese artículo incluyen:
+Temas relacionados que se tratan en dicho artículo Hola siguientes:
 
 * Funciones asincrónicas
 * Varias instancias
 * Apagado correcto
-* Utilizar atributos del SDK de WebJobs en el cuerpo de una función
-* Establecer las cadenas de conexión de SDK en el código.
+* Utilizar atributos de SDK de WebJobs en el cuerpo de Hola de una función
+* Establecer las cadenas de conexión de SDK de hello en el código.
 * Establecer valores para los parámetros del constructor del SDK de WebJobs en el código
 * Configure **MaxDequeueCount** para el control de blobs dudosos.
 * Desencadenar una función manualmente
 * Escribir registros
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este artículo se ofrecen ejemplos de código que muestran cómo tratar escenarios comunes para trabajar con blobs de Azure. Para más información acerca de cómo usar el SDK de WebJobs y WebJobs de Azure, consulte [Recursos de documentación de WebJobs de Azure](http://go.microsoft.com/fwlink/?linkid=390226).
+En este artículo se proporciona ejemplos de código que muestran cómo los blobs toohandle escenarios comunes para trabajar con Azure. Para obtener más información sobre cómo toouse WebJobs de Azure y Hola SDK de WebJobs, vea [recursos de documentación de WebJobs de Azure](http://go.microsoft.com/fwlink/?linkid=390226).
 
