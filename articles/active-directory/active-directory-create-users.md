@@ -1,6 +1,6 @@
 ---
-title: "Incorporación de nuevos usuarios en Azure Active Directory | Microsoft Docs"
-description: "Explica cómo agregar nuevos usuarios o cambiar la información del usuario en Azure Active Directory."
+title: aaaAdd nuevos usuarios tooAzure Active Directory | Documentos de Microsoft
+description: "Explica cómo tooadd nuevos usuarios o cambiar la información de usuario en Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -17,67 +17,67 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: ff4b742e772a6062885313e9bb49e55907fe125a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 72f67ad41022fd19fd94c8e1301943b0db1e57bf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>Incorporación de nuevos usuarios o de usuarios con cuentas de Microsoft en Azure Active Directory
-Agregue usuarios para rellenar su directorio. Este artículo explica cómo agregar nuevos usuarios a su organización y cómo agregar a aquellos usuarios que tienen cuentas de Microsoft. Para más información sobre cómo agregar usuarios de otros directorios en Azure Active Directory o cómo agregar usuarios de empresas asociadas, consulte [Incorporación de usuarios de otros directorios o compañías asociadas en Azure Active Directory](active-directory-create-users-external.md). De forma predeterminada, los usuarios agregados no tienen permisos de administrador, pero puede asignárselos en cualquier momento.
+# <a name="add-new-users-or-users-with-microsoft-accounts-tooazure-active-directory"></a>Agregar nuevos usuarios o los usuarios con tooAzure de cuentas de Microsoft Active Directory
+Agregue los usuarios toopopulate en el directorio. Este artículo se explica cómo tooadd nuevos usuarios de su organización y cómo los usuarios de tooadd que tienen cuentas de Microsoft. Para más información sobre cómo agregar usuarios de otros directorios en Azure Active Directory o cómo agregar usuarios de empresas asociadas, consulte [Incorporación de usuarios de otros directorios o compañías asociadas en Azure Active Directory](active-directory-create-users-external.md). Usuarios agregados no tienen permisos de administrador de forma predeterminada, pero puede asignar roles toothem en cualquier momento.
 
 > [!IMPORTANT]
-> Microsoft recomienda administrar Azure AD con el [Centro de administración de Azure AD](https://aad.portal.azure.com) en Azure Portal en lugar de usar el portal de Azure clásico al que se hace referencia en este artículo. Para agregar un usuario en el centro de administración de Azure AD, consulte [Adición de nuevos usuarios a Azure Active Directory](active-directory-users-create-azure-portal.md).
+> Microsoft recomienda que administrar Azure AD utilizando hello [centro de administración de Azure AD](https://aad.portal.azure.com) Hola portal de Azure en lugar de usar Hola portal de Azure clásico que se hace referencia en este artículo. Para tooadd un usuario en el centro de administración de hello Azure AD, vea [agregar nuevos usuarios tooAzure Active Directory](active-directory-users-create-azure-portal.md).
 
 ## <a name="add-a-user"></a>Adición de un usuario
-1. Inicie sesión en el [Portal de Azure clásico](https://manage.windowsazure.com) con una cuenta que sea administrador global para el directorio.
-2. Haga clic en **Active Directory**y seleccione el nombre del directorio de su organización.
-3. Seleccione la pestaña **Usuarios** y, después, en la barra de comandos, seleccione **Agregar usuario**.
-4. En la página **Proporcione información sobre este usuario**, elija una de estas opciones en **Tipo de usuario**:
+1. Inicie sesión en toohello [portal de Azure clásico](https://manage.windowsazure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+2. Seleccione **Active Directory**y, a continuación, seleccione nombre de hello del directorio de su organización.
+3. Seleccione hello **usuarios** ficha y, a continuación, en la barra de comandos de hello, seleccione **Agregar usuario**.
+4. En hello **envíenos comentarios acerca de este usuario** página, en **tipo de usuario**, seleccione:
 
    * **Nuevo usuario de la organización** : agrega una nueva cuenta de usuario al directorio.
-   * **Usuario con una cuenta de Microsoft existente** : agrega una cuenta de consumidor de Microsoft existente a su directorio (por ejemplo, una cuenta de Outlook).
+   * **Usuario con una cuenta Microsoft existente** : agrega un directorio de tooyour de cuenta de consumidor de Microsoft existente (por ejemplo, una cuenta de Outlook)
 5. En función del **tipo de usuario**, escriba un nombre de usuario (para un nuevo usuario) o una dirección de correo electrónico (para un usuario con una cuenta de Microsoft).
-6. En la página **Perfiles** del usuario, especifique el nombre, los apellidos y un nombre descriptivo, así como un rol de usuario en la lista **Roles**. Para obtener más información acerca de los roles del usuario y el administrador, consulte [Asignación de roles de administrador en Azure AD](active-directory-assign-admin-roles.md). Especifique si se debe **habilitar Multi-Factor Authentication** para el usuario.
-7. En la página **Obtener contraseña temporal**, seleccione **Crear**.
+6. En el usuario de hello **perfil** , proporcione un nombre y apellido, un nombre descriptivo y un rol de usuario de hello **Roles** lista. Para obtener más información acerca de los roles del usuario y el administrador, consulte [Asignación de roles de administrador en Azure AD](active-directory-assign-admin-roles.md). Especifique si demasiado**habilitar la autenticación multifactor** para el usuario de Hola.
+7. En hello **obtener contraseña temporal** página, seleccione **crear**.
 
 > [!IMPORTANT]
-> Si su organización usa más de un dominio, debe tener en cuenta los siguientes problemas al agregar una cuenta de usuario:
+> Si su organización usa más de un dominio, debe conocer Hola problemas siguientes cuando se agrega una cuenta de usuario:
 >
-> * Para agregar cuentas de usuario con el mismo nombre principal de usuario (UPN) en todos los dominios, agregue **primero**, por ejemplo, geoffgrisso@contoso.onmicrosoft.com, **seguido de** geoffgrisso@contoso.com.
-> * **No** agregue geoffgrisso@contoso.com antes de geoffgrisso@contoso.onmicrosoft.com. Este orden es importante y puede ser complicado de deshacer.
+> * cuentas de usuario de tooadd con Hola mismo nombre principal de usuario (UPN) entre dominios, **primer** agregar, por ejemplo, geoffgrisso@contoso.onmicrosoft.com, **seguido** geoffgrisso@contoso.com.
+> * **No** agregue geoffgrisso@contoso.com antes de geoffgrisso@contoso.onmicrosoft.com. Este orden es importante y puede ser tooundo complicada.
 >
 >
 
 ## <a name="change-user-information"></a>Cambiar la información de usuario
-Puede cambiar los atributos de usuario, excepto el id. objeto.
+Puede cambiar cualquier atributo de usuario excepto Hola Id. de objeto.
 
 1. Abra el directorio.
-2. Seleccione la pestaña **Usuarios** y, después, el nombre para mostrar del usuario que quiere cambiar.
+2. Seleccione hello **usuarios** ficha y nombre para mostrar, a continuación, seleccione Hola de Hola usuario desea toochange.
 3. Termine los cambios y, a continuación, haga clic en **Guardar**.
 
-Si el usuario que está intentando cambiar está sincronizado con el servicio de Active Directory local, no puede cambiar la información del usuario mediante este procedimiento. Para cambiar el usuario, utilice las herramientas de administración locales de Active Directory.
+Si el usuario de Hola que va a cambiar está sincronizado con los servicios de Active Directory local, no se puede cambiar la información de usuario de hello mediante este procedimiento. usuario de hello toochange, usar las herramientas de administración de Active Directory local.
 
 ## <a name="guest-user-management-and-limitations"></a>Limitaciones y administración de usuarios invitados
-Las cuentas de invitado son usuarios de otros directorios que se invitaron a su directorio para que tuvieran acceso a documentos de SharePoint, aplicaciones u otros recursos de Azure. Una cuenta de invitado en su directorio tiene el atributo UserType establecido en "Guest" (Invitado). Los usuarios normales (específicamente, los miembros del directorio) tienen el valor de UserType "Miembro".
+Las cuentas de invitado son usuarios de otros directorios que eran tooyour invitados directorio tooaccess los documentos de SharePoint, aplicaciones u otros recursos de Azure. Una cuenta de invitado en el directorio tiene el atributo de UserType subyacente establecido demasiado "Invitado". Los usuarios normales (específicamente, los miembros del directorio) tienen el atributo de UserType de Hola "Member".
 
-Los invitados tienen un conjunto limitado de derechos en el directorio. Estos derechos limitan la capacidad de los invitados para obtener información acerca de otros usuarios en el directorio. Sin embargo, los usuarios invitados todavía pueden interactuar con los usuarios y los grupos asociados a los recursos en los que trabajan. Los usuarios invitados pueden:
+Los invitados tienen un conjunto limitado de derechos en el directorio de Hola. Estos derechos limitan la capacidad de Hola para obtener información de toodiscover invitados acerca de otros usuarios en el directorio de Hola. Sin embargo, los usuarios invitados todavía pueden interactuar con hello usuarios y grupos asociados con los recursos de hello trabajan en. Los usuarios invitados pueden:
 
-* Ver otros usuarios y grupos asociados a una suscripción de Azure a la que están asignados
-* Ver los miembros de grupos a los que pertenecen
-* Buscar otros usuarios en el directorio, si conocen su dirección de correo electrónico completa
-* Ver solo un conjunto limitado de atributos de los usuarios que buscan: el nombre para mostrar, la dirección de correo electrónico, el nombre principal de usuario (UPN) y la foto en miniatura.
-* Obtención de una lista de los dominios verificados del directorio.
-* Dar su consentimiento a aplicaciones, concediéndoles el mismo acceso que tienen los miembros en su directorio.
+* Ver otros usuarios y grupos asociados con un toowhich de suscripción de Azure que están asignados
+* Ver a miembros de Hola de toowhich de grupos que pertenecen
+* Buscar otros usuarios en el directorio de hello, si saben dirección de correo electrónico completa de hello del usuario de Hola
+* Ver solo un conjunto limitado de atributos de usuarios de Hola que buscan--toodisplay limitado nombre, dirección de correo electrónico, nombre principal de usuario (UPN) y foto en miniatura
+* Obtener una lista de dominios comprobados en directorio Hola
+* Tooapplications de consentimiento, concediéndoles Hola mismo acceso que tienen miembros en el directorio
 
 ## <a name="set-guest-user-access-policies"></a>Establecimiento de las directivas de acceso del usuario invitado
-La pestaña **Configurar** de un directorio incluye opciones para controlar el acceso de los usuarios invitados. Un administrador global de directorios solo puede cambiar estas opciones en el Portal de Azure clásico. Actualmente no hay ningún método de PowerShell o de API.
+Hola **configurar** ficha de un directorio incluye opciones toocontrol acceso para usuarios invitados. Un administrador global de directorios solo puede cambiar estas opciones en el Portal de Azure clásico. Actualmente no hay ningún método de PowerShell o de API.
 
-Para abrir la pestaña **Configurar** del Portal de Azure clásico, seleccione **Active Directory** y luego el nombre del directorio.
+Hola tooopen **configurar** ficha hello Azure seleccione portal, clásico **Active Directory**y, a continuación, seleccione nombre de hello del directorio de Hola.
 
 ![Configuración de Azure Active Directory][1]
 
-A continuación, puede editar las opciones para controlar el acceso de usuarios invitados.
+A continuación, puede editar el acceso de toocontrol de opciones de Hola para usuarios invitados.
 
 ![opciones de control de acceso para usuarios invitados][2]
 
