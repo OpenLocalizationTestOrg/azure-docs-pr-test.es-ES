@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect : habilitación de reescritura de dispositivos | Microsoft Azure"
-description: "En este documento se describe cómo habilitar la escritura diferida de dispositivo con Azure AD Connect"
+description: "Este documento detalles cómo tooenable reescritura de dispositivos mediante Azure AD Connect"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 3b14013894b7fabdd4658a64f8fdfd29216ba268
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2566a514137fed85b21929207cf3230e6878ebbe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Habilitación de escritura diferida de dispositivos
 > [!NOTE]
-> Se necesita una suscripción a Azure AD Premium para la reescritura de dispositivos.
+> Un tooAzure de suscripción AD Premium es necesario para la reescritura de dispositivos.
 > 
 > 
 
-En la siguiente documentación se ofrece información sobre cómo habilitar la característica de escritura diferida de dispositivo en Azure AD Connect. La escritura diferida de dispositivo se usa en los siguientes escenarios:
+Hola siguiendo documentación proporciona información sobre cómo la característica tooenable Hola reescritura en dispositivos en Azure AD Connect. Reescritura de dispositivos se usa en hello los escenarios siguientes:
 
-* Habilite el acceso condicional basado en dispositivos para aplicaciones protegida de ADFS (2012 R2 o superior) (relaciones de confianza para usuario autenticado).
+* Habilitar el acceso condicional basado en dispositivos tooADFS (2012 R2 o posterior) protegido de aplicaciones (usuario autenticado).
 
-Esto ofrece seguridad adicional y la garantía de que el acceso a las aplicaciones solo se concede para dispositivos de confianza. Para más información sobre el acceso condicional, consulte [Administración de riesgos con el acceso condicional](../active-directory-conditional-access.md) y [Configuración del acceso condicional local mediante el Registro de dispositivos de Azure Active Directory](../active-directory-conditional-access-automatic-device-registration-setup.md).
+Esto proporciona seguridad adicional y garantía de que tienen acceso a tooapplications se le concede tootrusted solo los dispositivos. Para más información sobre el acceso condicional, consulte [Administración de riesgos con el acceso condicional](../active-directory-conditional-access.md) y [Configuración del acceso condicional local mediante el Registro de dispositivos de Azure Active Directory](../active-directory-conditional-access-automatic-device-registration-setup.md).
 
 > [!IMPORTANT]
-> <li>Los dispositivos deben encontrarse en el mismo bosque que los usuarios. Puesto que los dispositivos deben volver a escribirse en un único bosque, esta característica no admite actualmente una implementación con varios bosques de usuarios.</li>
-> <li>Solo se puede agregar un objeto de configuración de registro de dispositivo al bosque de Active Directory local. Esta característica no es compatible con una topología en la que el Active Directory local está sincronizado a varios directorios de Azure AD.</li>> 
+> <li>Dispositivos deben estar ubicados en hello como usuarios de Hola del mismo bosque. Puesto que los dispositivos deben volver a escribir tooa solo bosque, esta característica no admite actualmente una implementación con varios bosques de usuarios.</li>
+> <li>Objeto de configuración de registro de un solo dispositivo se puede agregar bosque de Active Directory local toohello. Esta característica no es compatible con una topología donde hello local Active Directory no se directorios sincronizados toomultiple Azure AD.</li>> 
 
 ## <a name="part-1-install-azure-ad-connect"></a>Parte 1: Instalación de Azure AD Connect
-1. Instale Azure AD Connect mediante la configuración rápida o personalizada. Microsoft recomienda empezar con todos los usuarios y grupos sincronizados correctamente antes de habilitar la escritura diferida de dispositivos.
+1. Instale Azure AD Connect mediante la configuración rápida o personalizada. Microsoft recomienda toostart con todos los usuarios y grupos se sincronizaron correctamente antes de habilitar la reescritura de dispositivos.
 
 ## <a name="part-2-prepare-active-directory"></a>Parte 2: Preparación de Active Directory
-Lleve a cabo los siguientes pasos para prepararse para usar la reescritura de dispositivos.
+Usar hello siguiendo los pasos tooprepare para el uso de reescritura de dispositivos.
 
-1. Desde el equipo donde está instalado Azure AD Connect, inicie PowerShell en modo elevado.
-2. Si el módulo de Active Directory PowerShell NO está instalado, instálelo mediante el siguiente comando:
+1. Desde el equipo de Hola donde está instalado Azure AD Connect, inicie PowerShell en modo elevado.
+2. Si no está instalado el módulo de Active Directory PowerShell hello, instalarlo mediante Hola siguiente comando:
    
    `Add-WindowsFeature RSAT-AD-PowerShell`
-3. Si NO está instalado el módulo de Azure Active Directory PowerShell, descárguelo e instálelo desde el [módulo de Azure Active Directory para Windows PowerShell (versión de 64 bits)](http://go.microsoft.com/fwlink/p/?linkid=236297). Este componente tiene una dependencia en el Ayudante para el inicio de sesión, que se instala con Azure AD Connect.
-4. Con credenciales de administrador de organización, ejecute los comandos siguientes y luego salga de PowerShell.
+3. Si no está instalado el módulo de PowerShell de Azure Active Directory de hello, a continuación, descargar e instalar desde [Azure módulo Active Directory para Windows PowerShell (versión de 64 bits)](http://go.microsoft.com/fwlink/p/?linkid=236297). Este componente tiene una dependencia en hello Asistente para iniciar sesión, que se instala con Azure AD Connect.
+4. Con credenciales de administrador de organización, ejecute hello siga los comandos y, a continuación, salga de PowerShell.
    
    `Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'`
    
    `Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}`
 
-Se necesitan credenciales de administrador de organización, puesto que es necesario realizar cambios en el espacio de nombres de configuración. Un administrador de dominio no tiene suficientes permisos.
+Dado que no se necesita espacio de nombres de configuración de toohello de cambios, se necesitan credenciales de administrador de Enterprise. Un administrador de dominio no tiene suficientes permisos.
 
 ![Powershell para habilitar la escritura diferida de dispositivos](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)
 
@@ -61,74 +61,74 @@ Description:
 
 * Si todavía no existen, se crean y configuran nuevos contenedores y objetos en CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn].
 * Si todavía no existen, se crean y se configuran nuevos contenedores y objetos en CN=RegisteredDevices,[domain-dn]. Los objetos de dispositivo se crearán en este contenedor.
-* Establece los permisos necesarios en la cuenta de Azure AD Connector, para administrar dispositivos en su Active Directory.
-* Solo necesita ejecutarse en un bosque, incluso si se está instalando Azure AD Connect en varios bosques.
+* Establece permisos necesarios en hello cuenta de conector de Azure AD, toomanage dispositivos en su Active Directory.
+* Solo necesita toorun en un bosque, incluso si se instala Azure AD Connect en varios bosques.
 
 Parámetros:
 
 * DomainName: dominio de Active Directory donde se crearán los objetos de dispositivo. Nota: todos los dispositivos para un bosque de Active Directory determinado se creará en un dominio único.
-* AdConnectorAccount: la cuenta de Active Directory que usará Azure AD Connect para administrar objetos en el directorio. Es la cuenta que usa Azure AD Connect Sync para conectarse a AD. Si realizó la instalación mediante la configuración rápida, es la cuenta con el prefijo MSOL_.
+* AdConnectorAccount: Cuenta de Active Directory que se usará en Azure AD Connect toomanage objetos en el directorio de Hola. Se trata de una cuenta de hello usada por Azure AD Connect sync tooconnect tooAD. Si ha instalado mediante la configuración rápida, se trata de cuenta de hello MSOL_ el prefijo.
 
 ## <a name="part-3-enable-device-writeback-in-azure-ad-connect"></a>Parte 3: Habilitación de la reescritura de dispositivos en Azure AD Connect
-Lleve a cabo el siguiente procedimiento para habilitar la reescritura de dispositivos en  Azure AD Connect.
+Usar hello siguiendo el procedimiento tooenable reescritura de dispositivos en Azure AD Connect.
 
-1. Ejecute de nuevo el Asistente para la instalación. Seleccione **Personalizar las opciones de sincronización** en la página Tareas adicionales y haga clic en **Siguiente**.
+1. Vuelva a ejecutar el Asistente para la instalación de Hola. Seleccione **personalizar las opciones de sincronización** de tareas adicionales de hello página y haga clic en **siguiente**.
    ![Instalación personalizada de las opciones de sincronización](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback2.png)
-2. En la página Características opcionales, la reescritura de dispositivos ya no estará atenuada. Tenga en cuenta que si no se completan los pasos preparatorios de Azure AD Connect, la reescritura de dispositivos se atenuará en la página de características opcionales. Active la casilla para la escritura diferida de dispositivos y haga clic en **Siguiente**. Si la casilla sigue desactivada, vea la [sección de solución de problemas](#the-writeback-checkbox-is-still-disabled).
+2. En la página de características opcionales de hello, reescritura de dispositivos, ya no aparecerá deshabilitada. Tenga en cuenta que si hello no se completan los pasos de preparación de Azure AD Connect reescritura de dispositivos se atenuará alejar en la página de características opcionales de Hola. Casilla de Hola para reescritura de dispositivos y haga clic en **siguiente**. Si todavía está deshabilitado casilla hello, vea hello [sección de solución de problemas](#the-writeback-checkbox-is-still-disabled).
    ![Instalación personalizada de características opcionales de escritura diferida de dispositivos](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
-3. En la página de escritura diferida, verá el dominio suministrado como el bosque de escritura diferida de dispositivos predeterminado.
+3. En la página de la escritura diferida de hello, verá dominio Hola proporcionado como bosque de reescritura de dispositivos de hello predeterminado.
    ![Instalación personalizada del bosque de destino de escritura diferida de dispositivos](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
-4. Complete la instalación del asistente sin realizar ningún cambio de configuración adicional. En caso necesario, consulte [Instalación personalizada de Azure AD Connect](active-directory-aadconnect-get-started-custom.md).
+4. Completar la instalación de Hola de hello asistente sin realizar ningún cambio de configuración adicional. Si es necesario, consulte demasiado[instalación personalizada de Azure AD Connect.](active-directory-aadconnect-get-started-custom.md)
 
 ## <a name="enable-conditional-access"></a>Habilitar el acceso condicional
-Encontrará a su disposición instrucciones detalladas para habilitar este escenario en [Configuración del acceso condicional local mediante el registro de dispositivos de Azure Active Directory](../active-directory-conditional-access-automatic-device-registration-setup.md).
+Tooenable instrucciones detalladas están disponibles en este escenario [configuración del acceso condicional local mediante el registro del dispositivo de Azure Active Directory](../active-directory-conditional-access-automatic-device-registration-setup.md).
 
-## <a name="verify-devices-are-synchronized-to-active-directory"></a>Comprobar que los dispositivos están sincronizados con Active Directory
-La reescritura de dispositivos debería funcionar ahora correctamente. Tenga en cuenta que se puede tardar hasta tres horas en que los objetos de dispositivos se vuelvan a escribir en AD.  Para comprobar que los dispositivos que se están sincronizados correctamente, siga este procedimiento después de completar las reglas de sincronización:
+## <a name="verify-devices-are-synchronized-tooactive-directory"></a>Comprobar que dispositivos están sincronizado tooActive Directory
+La reescritura de dispositivos debería funcionar ahora correctamente. Tenga en cuenta que puede tardar horas too3 para dispositivo objetos toobe reescritos tooAD.  Hola tooverify que los dispositivos que se están sincronizados correctamente, siga después de completar reglas de sincronización de hello:
 
 1. Inicie el Centro de administración de Active Directory.
-2. Expanda RegisteredDevices dentro del dominio que se está federando.
+2. Expanda RegisteredDevices, dentro de hello dominio que se está federado.
    ![Dispositivos registrados del centro de administración de Active Directory](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
 3. Los dispositivos registrados actuales aparecerá en la lista.
    ![Lista de dispositivos registrados del centro de administración de Active Directory](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
 
 ## <a name="troubleshooting"></a>Solución de problemas
-### <a name="the-writeback-checkbox-is-still-disabled"></a>La casilla de reescritura sigue deshabilitada
-Si la casilla para la reescritura de dispositivos no se habilita a pesar de haber seguido los pasos anteriores, los siguientes pasos le guiarán por lo que el Asistente para la instalación comprueba antes de habilitar la casilla.
+### <a name="hello-writeback-checkbox-is-still-disabled"></a>casilla de reescritura de Hello todavía está deshabilitada
+Si la casilla de verificación de Hola para reescritura de dispositivos no está habilitado incluso si ha seguido los pasos de hello anteriores, Hola pasos le guiará a través de la instalación de hello asistente consiste en comprobar antes de habilita el cuadro de Hola.
 
 En primer lugar:
 
-* Asegúrese de que al menos un bosque tenga Windows Server 2012 R2. Debe existir el tipo de objeto de dispositivo.
-* Si el Asistente para la instalación ya se está ejecutando, algunos cambios no se detectarán. En este caso, complete el Asistente para la instalación y ejecútelo de nuevo.
-* Asegúrese de que la cuenta que proporciona en el script de inicialización sea realmente la del usuario correcto usado por Active Directory Connector. Para ello, siga estos pasos:
-  * En el menú Inicio, abra **Servicio de sincronización**.
-  * Abra la pestaña **Conectores** .
-  * Busque el conector con el tipo Dominio de Active Directory y selecciónelo.
+* Asegúrese de que al menos un bosque tenga Windows Server 2012 R2. tipo de objeto de dispositivo de Hello debe estar presente.
+* Si ya está ejecutando el Asistente para la instalación de hello, no se detectarán los cambios. En este caso, complete el Asistente para la instalación de Hola y vuelva a ejecutarlo.
+* Asegúrese de que cuenta de hello que proporcione en el script de inicialización de hello es realmente Hola usuario correctos utilizando Hola conector de Active Directory. tooverify, siga estos pasos:
+  * En el menú de inicio de hello, abra **servicio de sincronización**.
+  * Abra hello **conectores** ficha.
+  * Buscar Hola conector con el tipo de los servicios de dominio de Active Directory y selecciónelo.
   * En **Acciones**, seleccione **Propiedades**.
-  * Vaya a **Conexión al bosque de Active Directory**. Compruebe que el dominio y el nombre de usuario especificados en esta pantalla coinciden con la cuenta proporcionada para el script.
+  * Vaya demasiado**conectar tooActive Directory bosque**. Compruebe que Hola dominio y nombre de usuario especificado en esta secuencia de comandos de toohello de pantalla coincidencia Hola cuenta proporcionada.
     ![Cuenta de conector en Sync Service Manager](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
 
 Compruebe la configuración en Active Directory:
 
-* Asegúrese de que el servicio de registro del dispositivo se encuentra en la siguiente ubicación (CN=DeviceRegistrationService,CN=Servicios de registro del dispositivo,CN=Configuración de registro del dispositivo,CN=Servicios,CN=Configuración) en el contexto de nomenclatura de la configuración.
+* Compruebe que Hola Device Registration Service se encuentra en la siguiente ubicación de hello (CN = DeviceRegistrationService, CN = Servicios de registro de dispositivos, CN = Configuración de registro de dispositivos, CN = Services, CN = Configuration) en el contexto de nomenclatura de configuración.
 
 ![Solución de problemas, DeviceRegistrationService en el espacio de nombres de configuración](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot1.png)
 
-* Compruebe que haya un solo objeto de configuración; para ello, busque en el espacio de nombres de configuración. Si hay más de uno, elimine el duplicado.
+* Compruebe que hay solo un objeto de configuración mediante la búsqueda de espacio de nombres de configuración de Hola. Si hay más de uno, elimine Hola duplicado.
 
-![Solución de problemas, buscar objetos duplicados](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot2.png)
+![Solucionar problemas, busque objetos duplicados Hola](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot2.png)
 
-* En el objeto Servicio de registro del dispositivo, asegúrese de que exista el atributo msDS-DeviceLocation y que tenga un valor. Busque en esta ubicación y asegúrese de que exista con el tipo de objeto msDS-DeviceContainer.
+* En el objeto de servicio de registro de hello, asegúrese de que Hola atributo msDS-DeviceLocation está presente y tiene un valor. Búsqueda de esta ubicación y asegúrese de que está presente con hello objectType msDS-DeviceContainer.
 
 ![Solución de problemas, msDS-DeviceLocation](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot3.png)
 
 ![Solución de problemas, clase de objeto RegisteredDevices](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot4.png)
 
-* Compruebe que la cuenta usada por el conector de Active Directory tenga los permisos necesarios en el contenedor Dispositivos registrados encontrado mediante el paso anterior. Este es el permiso esperado en este contenedor:
+* Comprobar cuenta hello usa Hola que conector de Active Directory tiene los permisos necesarios en contenedor de los dispositivos registrados Hola encontrado por el paso anterior de Hola. Se trata de permisos de hello esperada en este contenedor:
 
 ![Solución de problemas, comprobar los permisos en el contenedor](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot5.png)
 
-* Compruebe que la cuenta de Active Directory tenga permisos en el objeto CN=Configuración de registro del dispositivo, CN=Servicios, CN=Configuración.
+* Compruebe Hola cuenta de Active Directory tiene permisos en hello CN = Configuración de registro de dispositivos, CN = Services, CN = objeto de configuración.
 
 ![Solución de problemas, comprobar los permisos en la configuración del registro de dispositivos](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot6.png)
 

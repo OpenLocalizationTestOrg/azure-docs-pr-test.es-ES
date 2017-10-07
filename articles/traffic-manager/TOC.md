@@ -21,8 +21,8 @@
 ## [Comprobación de la configuración de Traffic Manager](traffic-manager-testing-settings.md)
 ## [Combinación de servicios de equilibrio de carga](traffic-manager-load-balancing-azure.md)
 ## [Medición del rendimiento de Traffic Manager](traffic-manager-performance-considerations.md)
-## [Uso de PowerShell para administrar Traffic Manager](traffic-manager-powershell-arm.md)
-## [Dirigir el dominio de Internet a Traffic Manager](traffic-manager-point-internet-domain.md)
+## [Usar PowerShell toomanage Traffic Manager](traffic-manager-powershell-arm.md)
+## [Seleccione su tooTraffic de dominio de Internet Manager](traffic-manager-point-internet-domain.md)
 ## Solución de problemas
 ### [Solución del estado degradado en Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md)
 
@@ -37,8 +37,8 @@
 ## [REST](https://msdn.microsoft.com/library/mt163667.aspx)
 
 # Temas relacionados
-## [Application Gateway](/azure/application-gateway/)
-## [Load Balancer](/azure/load-balancer/)
+## [Puerta de enlace de aplicaciones](/azure/application-gateway/)
+## [Equilibrador de carga](/azure/load-balancer/)
 ## [DNS de Azure](/azure/dns/)
 
 # Recursos

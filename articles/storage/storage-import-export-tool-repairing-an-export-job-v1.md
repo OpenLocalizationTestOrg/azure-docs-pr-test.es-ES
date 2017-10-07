@@ -1,6 +1,6 @@
 ---
-title: "Reparación de un trabajo de exportación de Azure Import/Export (versión 1) | Microsoft Docs"
-description: "Obtenga información sobre cómo reparar un trabajo de exportación que se creó y ejecutó con el servicio Azure Import/Export."
+title: "un trabajo de exportación de importación y exportación de Azure - v1 aaaRepairing | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toorepair un trabajo de exportación que se creó y se ejecutan utilizando Hola importación/exportación de Azure servicio."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 30ca0f8d06cb1927c19e66035ff485db0fc09e5a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 96c674fc7c697c37882fb2980c340303896ac6c8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="repairing-an-export-job"></a>Reparación de un trabajo de exportación
-Cuando haya finalizado un trabajo de exportación, puede ejecutar la herramienta Microsoft Azure Import/Export de manera local para:  
+Cuando haya finalizado un trabajo de exportación, puede ejecutar Hola herramienta de importación y exportación de Microsoft Azure en instalaciones locales:  
   
-1.  Descargar los archivos que el servicio Azure Import/Export no pudo exportar.  
+1.  Descargue los archivos que el servicio de importación y exportación de Azure de hello fue tooexport no se puede.  
   
-2.  Validar que los archivos de la unidad se exportaron correctamente.  
+2.  Validar que los archivos de hello en unidad de Hola se exportaron correctamente.  
   
-Debe tener conectividad con Azure Storage para utilizar esta funcionalidad.  
+Debe tener conectividad tooAzure almacenamiento toouse esta funcionalidad.  
   
-El comando para reparar un trabajo de importación es **RepairExport**.
+comando de Hola para reparar un trabajo de importación es **RepairExport**.
 
 ## <a name="repairexport-parameters"></a>Parámetros RepairExport
 
-Se pueden modificar los parámetros siguientes con **RepairExport**:  
+Hello siguientes se pueden especificar parámetros con **RepairExport**:  
   
 |Parámetro|Descripción|  
 |---------------|-----------------|  
-|**/r:<ArchivoReparación\>**|Obligatorio. Ruta de acceso al archivo de reparación, que realiza un seguimiento del progreso de la reparación y le permite reanudar una reparación interrumpida. Cada unidad debe tener un solo archivo de reparación. Cuando inicie una reparación para una unidad determinada, pasará la ruta de acceso a un archivo de reparación que aún no existe. Para reanudar una reparación interrumpida, debe pasar el nombre de un archivo de reparación existente. Siempre se debe especificar el archivo de reparación correspondiente a la unidad de destino.|  
-|**/logdir:<DirectorioRegistro\>**|Opcional. El directorio de registro. Los archivos de registro detallados se escribirán en este directorio. Si no se especifica un directorio de registro, se usará el directorio actual como directorio de registro.|  
-|**/d:<DirectorioDestino\>**|Obligatorio. El directorio para validar y reparar. Suele ser el directorio raíz de la unidad de exportación, pero podría también ser un recurso compartido de archivos de red que contiene una copia de los archivos exportados.|  
-|**/bk:<ClaveBitLocker\>**|Opcional. Debe especificar la clave de BitLocker si desea que la herramienta desbloquee una unidad de cifrado donde se almacenan los archivos exportados.|  
-|**/sn:<NombreCuentaAlmacenamiento\>**|Obligatorio. El nombre de la cuenta de almacenamiento para el trabajo de exportación.|  
-|**/sk:<ClaveCuentaAlmacenamiento\>**|**Necesario** únicamente si no se especifica un SAS del contenedor. La clave de cuenta para la cuenta de almacenamiento correspondiente al trabajo de exportación.|  
-|**/csas:<SasContenedor\>**|**Requerido** únicamente si no se especifica la clave de cuenta de almacenamiento. El SAS del contenedor para acceder a los blobs asociados al trabajo de exportación.|  
-|**/CopyLogFile:<ArchivoRegistroCopiaUnidad\>**|Obligatorio. La ruta de acceso al archivo de registro de copia de la unidad. El archivo lo genera el servicio Microsoft Windows Import/Export y se puede descargar desde el almacenamiento de blobs asociado al trabajo. El archivo de registro de copia contiene información sobre blobs con errores o archivos que deben repararse.|  
-|**/ManifestFile:<ArchivoManifiestoUnidad\>**|Opcional. La ruta de acceso al archivo de manifiesto de la unidad de exportación. Este archivo lo genera el servicio Microsoft Azure Import/Export y lo almacena en la unidad de exportación y, opcionalmente, en un blob de la cuenta de almacenamiento asociada al trabajo.<br /><br /> El contenido de los archivos de la unidad de exportación se comprobará con los hash MD5 contenidos en este archivo. Todos los archivos que se determine que están dañados se descargarán y reescribirán en los directorios de destino.|  
+|**/r:&lt;ArchivoReparación\>**|Necesario. Archivo de reparación de toohello de ruta de acceso, que realiza un seguimiento de progreso de Hola de reparación de Hola y permitiéndole tooresume una reparación interrumpida. Cada unidad debe tener un solo archivo de reparación. Cuando se inicia una reparación para una unidad determinada, se pasará en el archivo de reparación de tooa de ruta de acceso de Hola que aún no existe. tooresume una reparación interrumpida, debe pasar en nombre de Hola de un archivo de reparación existente. unidad de destino de Hello reparación archivo correspondiente toohello debe especificarse siempre.|  
+|**/logdir:&lt;DirectorioRegistro\>**|Opcional. directorio de registro de Hello. Archivos de registro detallado se escribirán toothis directory. Si no se especifica ningún directorio de registro, se utilizará el directorio actual de hello como directorio de registro de hello.|  
+|**/d:&lt;DirectorioDestino\>**|Necesario. Hola directory toovalidate y reparación. Esto suele ser directorio de raíz de Hola de unidad de exportación de hello, pero podría también ser un recurso compartido de red que contiene una copia de archivos de hello que exporta.|  
+|**/bk:&lt;ClaveBitLocker\>**|Opcional. Debe especificar la clave de BitLocker de hello si desea Hola herramienta toounlock cifrado Hola donde los archivos exportados se almacenan.|  
+|**/sn:&lt;NombreCuentaAlmacenamiento\>**|Necesario. nombre de Hola de cuenta de almacenamiento de Hola para hello el trabajo de exportación.|  
+|**/sk:&lt;ClaveCuentaAlmacenamiento\>**|**Necesario** únicamente si no se especifica un SAS del contenedor. trabajo de exportación de la clave de cuenta de almacenamiento de Hola para Hola Hola.|  
+|**/csas:&lt;SasContenedor\>**|**Requiere** si y solo si no se especifica la clave de cuenta de almacenamiento de Hola. contenedor de Hello SAS para tener acceso a blobs Hola asociados con el trabajo de exportación de Hola.|  
+|**/CopyLogFile:&lt;ArchivoRegistroCopiaUnidad\>**|Necesario. archivo de registro de la copia de unidad de toohello con Hello ruta de acceso. archivo Hello genera Hola servicio de importación y exportación de Windows Azure y puede descargarse desde almacenamiento de blobs de hello asociado Hola trabajo. archivo de registro de copia de Hello contiene información sobre errores blobs o archivos que son toobe reparada.|  
+|**/ManifestFile:&lt;ArchivoManifiestoUnidad\>**|Opcional. archivo de manifiesto de la unidad de exportación de Hello ruta de acceso toohello. Este archivo es generado por el servicio de importación y exportación de Windows Azure de Hola y almacenado en la unidad de exportación de hello y, opcionalmente, en un blob de la cuenta de almacenamiento de hello asociada con el trabajo de Hola.<br /><br /> Hola contenido del programa Hola a archivos en la unidad de exportación de Hola se comprobará con los valores hash de MD5 de hello contenidos en este archivo. Los archivos que se determina toobe dañado será directorios de destino toohello descargado y ha vuelto a escribir.|  
   
-## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Uso del modo RepairExport para corregir las exportaciones con error  
-Puede utilizar la herramienta Azure Import/Export para descargar los archivos que no se pudieron exportar. El archivo de registro de copia contendrá una lista de archivos que no se pudieron exportar.  
+## <a name="using-repairexport-mode-toocorrect-failed-exports"></a>Usar RepairExport toocorrect de modo no pudo exportaciones  
+Puede usar archivos de toodownload de herramienta de importación y exportación de Azure de Hola que no se pudieron tooexport. archivo de registro de copia de Hello contendrá una lista de archivos que no se pudieron tooexport.  
   
-Las causas de errores de exportación incluyen las siguientes posibilidades:  
+causas de Hola de errores de exportación incluyen hello siguientes posibilidades:  
   
 -   Unidades dañadas  
   
--   La clave de cuenta de almacenamiento cambiada durante el proceso de transferencia  
+-   clave de cuenta de almacenamiento de Hello cambiado durante el proceso de transferencia de Hola  
   
-Para ejecutar la herramienta en el modo **RepairExport**, primero debe conectar la unidad que contiene los archivos exportados al equipo. A continuación, ejecute la herramienta Azure Import/Export, especificando la ruta de acceso a esa unidad con el parámetro `/d`. También debe especificar la ruta de acceso al archivo de registro de copia de la unidad que descargó. El siguiente ejemplo de línea de comandos ejecuta la herramienta para reparar todos los archivos que no se pudieron exportar:  
+herramienta de hello toorun en **RepairExport** modo, primero necesita tooconnect Hola unidad que contiene el equipo de tooyour de los archivos exportados de Hola. A continuación, ejecute la herramienta de importación y exportación de Azure, especificación de unidad de toothat de ruta de acceso de hello con hello hello `/d` parámetro. También necesita el archivo de registro de copia de la unidad de toohello de toospecify Hola ruta de acceso que ha descargado. Hello siguiente ejemplo de línea de comandos siguiente ejecuta Hola herramienta toorepair los archivos que no se pudo tooexport:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
 ```  
   
-A continuación se muestra un ejemplo de un archivo de registro de copia que muestra que un bloque del blob no se pudo exportar:  
+Hola te mostramos un ejemplo de un archivo de registro de copia que muestra que un bloque de hello blob no se pudo tooexport:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -81,20 +81,20 @@ A continuación se muestra un ejemplo de un archivo de registro de copia que mue
 </DriveLog>  
 ```  
   
-El archivo de registro de copia indica que se produjo un error mientras el servicio Microsoft Windows Import/Export descargaba uno de los bloques del blob en el archivo de la unidad de exportación. Los demás componentes del archivo se descargaron correctamente y la longitud del archivo se estableció correctamente. En este caso, la herramienta abrirá el archivo en la unidad, descargará el bloque de la cuenta de almacenamiento y lo escribirá en el intervalo de archivo a partir del desplazamiento 65536 con la longitud 65536.  
+archivo de registro de copia de Hello indica que se produjo un error mientras Hola servicio de importación y exportación de Windows Azure descargaba uno de los archivos de toohello de bloques del blob de hello en unidad de exportación de Hola. Hola otros componentes del archivo de hello descargado correctamente y longitud del archivo Hola se estableció correctamente. En este caso, herramienta de hello abrir archivo hello en unidad de hello, descargar bloque Hola de cuenta de almacenamiento de Hola y escribir toohello intervalo de archivo a partir del desplazamiento 65536 con la longitud 65536.  
   
-## <a name="using-repairexport-to-validate-drive-contents"></a>Uso de RepairExport para validar el contenido de la unidad  
-También puede usar Azure Import/Export con la opción **RepairExport** para validar que el contenido de la unidad es correcto. El archivo de manifiesto de cada unidad de exportación contiene MD5 para el contenido de la unidad.  
+## <a name="using-repairexport-toovalidate-drive-contents"></a>Uso de contenido de la unidad de RepairExport toovalidate  
+También puede utilizar la importación y exportación de Azure con hello **RepairExport** contenido en la unidad de Hola Hola de toovalidate las opciones es correcta. archivo de manifiesto de Hello en cada unidad de disco de exportación contiene MD5s para contenido de Hola de unidad de Hola.  
   
-El servicio Azure Import/Export también puede guardar los archivos de manifiesto en una cuenta de almacenamiento durante el proceso de exportación. La ubicación de los archivos de manifiesto estará disponible a través de la operación [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) cuando se haya completado el trabajo. Vea [Import-Export Service Manifest File Format](storage-import-export-file-format-metadata-and-properties.md) (Formato del archivo de manifiesto del servicio Import/Export) para obtener más información sobre el formato de un archivo de manifiesto de unidad.  
+Hola servicio de importación y exportación de Azure también puede guardar los archivos de manifiesto de hello tooa cuenta de almacenamiento durante el proceso de exportación de Hola. Hello ubicación de archivos de manifiesto de hello está disponible a través de hello [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operación cuando se haya completado el trabajo de Hola. Vea [servicio de importación y exportación de formato de archivo de manifiesto](storage-import-export-file-format-metadata-and-properties.md) para obtener más información acerca del formato de Hola de un archivo de manifiesto de unidad.  
   
-En el ejemplo siguiente se muestra cómo ejecutar la herramienta Azure Import/Export con los parámetros **/MANIFESTFILE** y **/CopyLogFile**:  
+Hello en el ejemplo siguiente se muestra cómo toorun Hola herramienta de importación y exportación de Azure con hello **/MANIFESTFILE** y **/CopyLogFile** parámetros:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
 ```  
   
-A continuación se muestra un ejemplo de un archivo de manifiesto:  
+Hola te mostramos un ejemplo de un archivo de manifiesto:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -131,7 +131,7 @@ A continuación se muestra un ejemplo de un archivo de manifiesto:
 </DriveManifest>  
 ``` 
   
-Después de finalizar el proceso de reparación, la herramienta leerá por completo los archivos a los que hace se referencia en el archivo de manifiesto y comprobará la integridad de dichos archivos con los hash MD5. Para el manifiesto anterior, recorrerá los siguientes componentes.  
+Después de Terminar proceso de reparación de Hola Hola herramienta leer cada archivo al que hace referencia en el archivo de manifiesto de Hola y comprobar la integridad del archivo de hello con los valores hash MD5 de Hola. Para el manifiesto de hello anterior, repasará Hola de los componentes siguientes.  
 
 ```  
 G:\pictures\city\redmond.jpg, offset 0, length 3584  
@@ -153,12 +153,12 @@ G:\pictures\wild\canyon.jpg, offset 8163, length 2721
 G:\pictures\wild\canyon.jpg.properties  
 ```
 
-Cualquier componente que no supere la comprobación lo descargará la herramienta y se reescribirá en el mismo archivo en la unidad.  
+Se descargará herramienta hello y volver a escribir cualquier componente de errores de comprobación de hello toohello mismo archivo en la unidad de Hola.  
   
 ## <a name="next-steps"></a>Pasos siguientes
  
-* [Configuración de la herramienta Azure Import/Export](storage-import-export-tool-setup-v1.md)   
+* [Setting Up Hola herramienta de importación y exportación de Azure](storage-import-export-tool-setup-v1.md)   
 * [Preparación de unidades de disco duro para un trabajo de importación](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Revisión del estado del trabajo con archivos de registro de copia](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Reparación de un trabajo de importación](storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Solución de problemas de la herramienta Azure Import/Export](storage-import-export-tool-troubleshooting-v1.md)
+* [Solución de problemas de hello herramienta de importación y exportación de Azure](storage-import-export-tool-troubleshooting-v1.md)

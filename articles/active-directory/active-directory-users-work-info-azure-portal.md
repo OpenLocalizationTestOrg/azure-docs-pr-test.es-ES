@@ -1,6 +1,6 @@
 ---
-title: "Adición o modificación de la información del trabajo de un usuario en Azure Active Directory | Microsoft Docs"
-description: "En este artículo se explica cómo agregar números de teléfono, nombres de departamento y otra información de trabajo de un usuario en Azure Active Directory."
+title: "aaaAdd o cambiar información del trabajo de un usuario en Active Directory de Azure | Documentos de Microsoft"
+description: "Explica cómo tooadd los números de teléfono, nombres de departamento y otra información del trabajo para un usuario en Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand;jeffsta
 ms.reviewer: jeffsta
-ms.openlocfilehash: 9f4031da7c6dfbd329d14c52f3a569084edacf20
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53e645b2017cefd9ebf6d724526f462122739950
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-or-change-work-information-for-a-user-in-azure-active-directory"></a>Adición o modificación de la información de trabajo de un usuario en Azure Active Directory
-En este artículo se explica cómo agregar o cambiar información del trabajo, como números de teléfono o nombres de departamento de un usuario, en Azure Active Directory (Azure AD). Para obtener más información sobre cómo agregar nuevos usuarios en su organización, consulte [Incorporación de nuevos usuarios a Azure Active Directory](active-directory-users-create-external-azure-portal.md).
+Este artículo explica cómo tooadd o cambiar información de trabajo como números de teléfono o el departamento de nombres para un usuario en Azure Active Directory (Azure AD). Para obtener información sobre cómo agregar nuevos usuarios de su organización, consulte [agregar nuevos usuarios tooAzure Active Directory](active-directory-users-create-external-azure-portal.md).
 
-## <a name="to-change-work-information"></a>Para cambiar la información del trabajo
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
-2. Seleccione **Más servicios**, escriba **Usuarios y grupos** en el cuadro de texto y presione **Entrar**.
+## <a name="toochange-work-information"></a>información acerca del trabajo toochange
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+2. Seleccione **más servicios**, escriba **usuarios y grupos** en Hola cuadro de texto y, a continuación, seleccione **ENTRAR**.
 
    ![Apertura de Administración de usuarios](./media/active-directory-users-work-info-azure-portal/create-users-user-management.png)
-3. En la hoja **Usuarios y grupos**, seleccione **Usuarios**.
+3. En hello **usuarios y grupos** hoja, seleccione **usuarios**.
 
-   ![Apertura de la hoja Usuarios](./media/active-directory-users-work-info-azure-portal/create-users-open-users-blade.png)
-4. En la hoja **Usuarios y grupos - Usuarios** , seleccione un usuario de la lista.
-5. En la hoja del usuario seleccionado, seleccione **Información del trabajo**.
+   ![Hoja de apertura Hola usuarios](./media/active-directory-users-work-info-azure-portal/create-users-open-users-blade.png)
+4. En hello **a los usuarios y grupos: los usuarios** hoja, seleccione un usuario de la lista de Hola.
+5. En la hoja de hello para el usuario seleccionado de hello, seleccione **información laboral**.
 
     ![Apertura de Información del trabajo](./media/active-directory-users-work-info-azure-portal/active-directory-create-users-work-info.png)
-6. Agregue o cambie la información del trabajo. Después, en la barra de comandos, seleccione **Guardar**.
+6. Agregar o cambiar información de trabajo de Hola. A continuación, en la barra de comandos de hello, seleccione **guardar**.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Adición de nuevos usuarios a Azure Active Directory](active-directory-users-create-azure-portal.md)
-* [Restablecimiento de la contraseña de un usuario en Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
-* [Asignación de un usuario a roles de administrador en Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
+* [Agregar nuevos usuarios tooAzure Active Directory](active-directory-users-create-azure-portal.md)
+* [Restablecer la contraseña de Hola para un usuario en Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
+* [Asignar roles de tooadministrator en Azure Active Directory de un usuario](active-directory-users-assign-role-azure-portal.md)
 * [Adición o modificación de la información de perfil de un usuario en Azure Active Directory](active-directory-users-profile-azure-portal.md)
 * [Eliminación de un usuario de un directorio en Azure Active Directory](active-directory-users-delete-user-azure-portal.md)

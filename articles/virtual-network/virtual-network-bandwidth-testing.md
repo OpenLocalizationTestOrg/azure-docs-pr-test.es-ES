@@ -1,6 +1,6 @@
 ---
-title: "Prueba del rendimiento de la red de una máquina virtual de Azure | Microsoft Docs"
-description: "Aprenda a probar el rendimiento de la red de una máquina virtual de Azure."
+title: "rendimiento de red de máquina virtual de Azure aaaTesting | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo el rendimiento de la red de tootest máquina virtual de Azure."
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -14,85 +14,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: ccebc722386a19014674d7a59757a3685bd50793
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2da85c27bc8d16a443b215891f4cd0460f41926f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Pruebas de ancho de banda y rendimiento (NTTTCP)
 
-Al probar el rendimiento de la red de Azure, se recomienda usar una herramienta que tenga como destino de la red para realizar pruebas y minimizar el uso de otros recursos que podrían afectar al rendimiento. Se recomienda NTTTCP.
+Al probar el rendimiento de la red en Azure, es mejor toouse una herramienta que tenga como destino de red de Hola para pruebas y minimiza el uso de Hola de otros recursos que puede afectar al rendimiento. Se recomienda NTTTCP.
 
-Copie la herramienta en dos máquinas virtuales de Azure del mismo tamaño. Una máquina virtual funciona como remitente y la otra como receptora.
+Copiar Hola herramienta tootwo máquinas virtuales de Azure de hello mismo tamaño. Una máquina virtual funciona como hello otro como receptor y remitente.
 
 #### <a name="deploying-vms-for-testing"></a>Implementación de máquinas virtuales para pruebas
-Para los fines de esta prueba, las dos máquinas virtuales deben tener el mismo servicio en la nube o el mismo conjunto de disponibilidad para que podamos usar sus direcciones IP internas y excluir los equilibradores de carga de la prueba. Es posible realizar pruebas con la dirección VIP, pero este tipo de pruebas está fuera del ámbito de este documento.
+Para fines de Hola de esta prueba, Hola dos máquinas virtuales deben estar en Hola mismo servicio en la nube u Hola el mismo conjunto de disponibilidad para que podamos usar su direcciones IP internas y excluir Hola equilibradores de carga de la prueba de Hola. Es posible tootest con hello VIP, pero este tipo de pruebas está fuera de ámbito de Hola de este documento.
  
-Tome nota de la dirección IP del DESTINATARIO. Vamos a llamar a esa dirección IP "a.b.c.r".
+Tome nota de la dirección IP del destinatario Hola. Vamos a llamar a esa dirección IP "a.b.c.r".
 
-Tome nota del número de núcleos de la máquina virtual. Llamémoslo "\#num\_cores".
+Tome nota del número de Hola de núcleos en hello máquina virtual. Llamémoslo "\#num\_cores".
  
-Ejecute la prueba NTTTCP durante 300 segundos (o 5 minutos) en la máquina virtual del remitente y en la del receptor.
+Ejecute hello NTTTCP comprobar 300 segundos (o 5 minutos) en hello remitente VM y el receptor máquina virtual.
 
-Sugerencia: Al configurar esta prueba por primera vez, puede probar un período de prueba más corto para obtener antes comentarios. Una vez que la herramienta funciona según lo esperado, amplíe el período de prueba en 300 segundos para obtener resultados más precisos.
+Sugerencia: Al configurar esta prueba para hello primera vez, puede intentar antes una menor comentarios tooget período de prueba. Una vez que la herramienta de hello funciona según lo esperado, extender a segundos de too300 período de prueba de Hola para obtener resultados más precisos Hola.
 
 > [!NOTE]
-> El remitente **y** el receptor deben especificar **el mismo** parámetro de duración de prueba (-t).
+> remitente de Hello **y** receptor debe especificar **Hola mismo** parámetro de duración de la prueba (-t).
 
-Para probar un único flujo TCP durante 10 segundos:
+tootest un único flujo TCP durante 10 segundos:
 
 Parámetros de receptor: ntttcp -r -t 10 -P 1
 
 Parámetros de remitente: ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
 
 > [!NOTE]
-> El ejemplo anterior solo debe emplearse para confirmar la configuración. Más adelante en este documento se ofrecen ejemplos válidos de pruebas.
+> Hola anterior ejemplo solo deben tooconfirm usa la configuración. Más adelante en este documento se ofrecen ejemplos válidos de pruebas.
 
 ## <a name="testing-vms-running-windows"></a>Pruebas de máquinas virtuales que ejecutan WINDOWS:
 
-#### <a name="get-ntttcp-onto-the-vms"></a>Obtenga NTTTCP en las máquinas virtuales.
+#### <a name="get-ntttcp-onto-hello-vms"></a>Obtener NTTTCP en hello las máquinas virtuales.
 
-Descargue la versión más reciente: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+Descargar la versión más reciente de hello: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
 Si no se encuentra en esa página, realice esta búsqueda <https://www.bing.com/search?q=ntttcp+download>\< (debe ser el primer resultado).
 
 Considere la colocar NTTTCP en una carpeta independiente, como c:\\tools.
 
-#### <a name="allow-ntttcp-through-the-windows-firewall"></a>Procedimiento para permitir NTTTCP a través del Firewall de Windows
-En el RECEPTOR, cree una regla Permitir en el Firewall de Windows para permitir la recepción de tráfico NTTTCP. Es más fácil permitir todo el programa NTTTCP por su nombre en lugar de determinados puertos TCP de entrada.
+#### <a name="allow-ntttcp-through-hello-windows-firewall"></a>Permitir NTTTCP a través de firewall de Windows hello
+En hello receptor, cree una regla de permiso en tooallow de Firewall de Windows hello el tooarrive de tráfico NTTTCP. Resulta más fácil tooallow Hola todo NTTTCP programa por su nombre en lugar de puertos TCP específicos de tooallow de entrada.
 
-Permita NTTTCP a través del Firewall de Windows de la siguiente forma:
+Permitir ntttcp a través de hello Firewall de Windows como el siguiente:
 
 netsh advfirewall firewall add rule program=\<PATH\>\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
-Por ejemplo, si ha copiado ntttcp.exe a la carpeta "c:\\tools", este sería el comando: 
+Por ejemplo, si ha copiado ntttcp.exe toohello "c:\\herramientas" carpeta, esto sería el comando hello: 
 
 netsh advfirewall firewall add rule program=c:\\tools\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
 #### <a name="running-ntttcp-tests"></a>Ejecución de pruebas de NTTTCP
 
-Inicie NTTTCP en el RECEPTOR (**se ejecuta desde CMD**, no desde PowerShell):
+Iniciar NTTTCP en hello receptor (**ejecutar desde CMD**, no de PowerShell):
 
 ntttcp -r –m [2\*\#num\_cores],\*,a.b.c.r -t 300
 
-Si la máquina virtual tiene cuatro núcleos y una dirección IP 10.0.0.4, sería similar al siguiente:
+Si Hola VM tiene cuatro núcleos y una dirección IP de 10.0.0.4, sería similar al siguiente:
 
 ntttcp -r –m 8,\*,10.0.0.4 -t 300
 
 
-Inicie NTTTCP en el REMITENTE (**se ejecuta desde CMD**, no desde PowerShell)::
+Iniciar NTTTCP en hello remitente (**ejecutar desde CMD**, no de PowerShell):
 
 ntttcp -s –m 8,\*,10.0.0.4 -t 300 
 
-Espere a que se muestren los resultados.
+Esperar los resultados de Hola.
 
 
 ## <a name="testing-vms-running-linux"></a>Pruebas de máquinas virtuales que ejecutan LINUX:
 
 Use nttcp-for-linux. Está disponible en <https://github.com/Microsoft/ntttcp-for-linux>.
 
-En las máquinas virtuales Linux (REMITENTE y RECEPTOR), ejecute estos comandos para preparar ntttcp-for-linux en las máquinas virtuales:
+En hello máquinas virtuales de Linux (remitente y receptor), ejecute estos comandos para preparar ntttcp para linux en las máquinas virtuales:
 
 CentOS: instalación de Git:
 ``` bash
@@ -111,27 +111,27 @@ Cree e instale en ambas:
  make && make install
 ```
 
-Como en el ejemplo de Windows, supongamos que la IP del RECEPTOR Linux es 10.0.0.4.
+Como en el ejemplo de Windows hello, suponemos que IP del receptor de hello Linux es 10.0.0.4
 
-Inicie ntttcp-for-linux en el RECEPTOR:
+Iniciar NTTTCP para Linux en hello receptor:
 
 ``` bash
 ntttcp -r -t 300
 ```
 
-Y en el REMITENTE, ejecute:
+Y en hello remitente, ejecute:
 
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
  
-Los valores predeterminados de duración de prueba están establecidos en 60 segundos si no hay ningún parámetro de tiempo.
+Se proporciona too60 segundos si ningún parámetro de tiempo de prueba longitud valores predeterminados
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Pruebas entre máquinas virtuales que ejecutan Windows y Linux:
 
-En estos escenarios, se debería habilitar el modo sin sincronización para que la prueba pueda ejecutarse. Para ello, use **-N flag** para Linux y **-ns flag** para Windows.
+En escenarios de esta se deberíamos habilite el modo de sincronización no Hola por lo que puede ejecutar la prueba de Hola. Esto se realiza mediante hello **-N marca** para Linux, y **marca -ns** para Windows.
 
-#### <a name="from-linux-to-windows"></a>De Linux a Windows:
+#### <a name="from-linux-toowindows"></a>Desde tooWindows de Linux:
 
 Receptor<Windows>:
 
@@ -145,7 +145,7 @@ Remitente<Linux> :
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 ```
 
-#### <a name="from-windows-to-linux"></a>De Windows a Linux:
+#### <a name="from-windows-toolinux"></a>Desde Windows tooLinux:
 
 Receptor<Linux>:
 
@@ -160,5 +160,5 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Dependiendo de los resultados, puede que haya espacio para [optimizar máquinas de rendimiento de red](virtual-network-optimize-network-bandwidth.md) para su escenario.
+* Dependiendo de los resultados, puede haber espacio demasiado[optimizar máquinas de rendimiento de red](virtual-network-optimize-network-bandwidth.md) para su escenario.
 * Más información sobre [Preguntas más frecuentes (P+F) acerca de Azure Virtual Network](virtual-networks-faq.md)

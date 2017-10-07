@@ -1,5 +1,5 @@
 ---
-title: "Información general de DSC de Azure Automation | Microsoft Docs"
+title: "información general de DSC de automatización aaaAzure | Documentos de Microsoft"
 description: "Una información general de Configuración de estado deseado (DSC) de Automatización de Azure, sus condiciones y problemas conocidos"
 services: automation
 documentationcenter: dev-center-name
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.openlocfilehash: 468321fa6863d78bc0d179fbe5c2ed6195040d50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5b8e5104c7b5bed848c015ac26a8b7d1f5b24de9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-automation-dsc-overview"></a>Información general de DSC de Automatización de Azure
 
-DSC de Azure Automation es un servicio de Azure que le permite escribir, administrar y compilar [configuraciones](https://msdn.microsoft.com/powershell/dsc/configurations) de configuración de estado deseado (DSC) de PowerShell, importar [recursos de DSC](https://msdn.microsoft.com/powershell/dsc/resources) y asignar configuraciones a nodos de destino, todo en la nube.
+DSC de automatización de Azure es un servicio de Azure que le permite toowrite, administrar y compilar la configuración de estado deseado (DSC) de PowerShell [configuraciones](https://msdn.microsoft.com/powershell/dsc/configurations), importar [recursos de DSC](https://msdn.microsoft.com/powershell/dsc/resources)y asignar nodos de tootarget configuraciones, todo en nube Hola.
 
 ## <a name="why-use-azure-automation-dsc"></a>¿Por qué usar DSC de Azure Automation?
 
@@ -30,39 +30,39 @@ DSC de Azure Automation proporciona varias ventajas con respecto a DSC fuera de 
 
 ### <a name="built-in-pull-server"></a>Servidor de extracción integrado
 
-Azure Automation proporciona un [servidor de extracción de DSC](https://msdn.microsoft.com/en-us/powershell/dsc/pullserver) para que los nodos de destino reciban automáticamente las configuraciones, se ajusten al estado deseado y devuelvan la información de cumplimiento.
-El servidor de extracción integrado en Azure Automation elimina la necesidad de configurar y mantener su propio servidor de extracción.
-Azure Automation puede tener como destino máquinas físicas o virtuales Windows o Linux, en la nube o en un entorno local.
+Automatización de Azure ofrece un [servidor de extracción de DSC](https://msdn.microsoft.com/en-us/powershell/dsc/pullserver) para que los nodos de destino recibirán automáticamente las configuraciones, se ajustan estado toohello deseado e informar sobre su cumplimiento.
+servidor de extracción integrados de Hello en automatización de Azure elimina Hola necesidad tooset seguridad y mantener su propio servidor de extracción.
+Automatización de Azure puede tener como destino máquinas físicas o virtuales de Windows o Linux, en la nube de Hola o de forma local.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Administración de todos los artefactos de DSC
 
-DSC de Azure Automation lleva a la [configuración de estado deseado de PowerShell](https://msdn.microsoft.com/powershell/dsc/overview) la misma capa de administración que ofrece Azure Automation para el scripting de PowerShell.
+DSC de automatización de Azure aporta Hola misma capa de administración demasiado[la configuración de estado deseado de PowerShell](https://msdn.microsoft.com/powershell/dsc/overview) como la automatización de Azure proporciona para secuencias de comandos de PowerShell.
 
-Desde Azure Portal o desde PowerShell, puede administrar todas las configuraciones, recursos y nodos de destino de DSC.
+Hola portal de Azure o desde PowerShell, puede administrar todos sus DSC configuraciones, los recursos y nodos de destino.
 
-![Captura de pantalla de la hoja de Azure Automation](./media/automation-dsc-overview/azure-automation-blade.png)
+![Captura de pantalla de hoja de automatización de Azure Hola](./media/automation-dsc-overview/azure-automation-blade.png)
 
 ### <a name="import-reporting-data-into-log-analytics"></a>Importación de datos de informes a Log Analytics
 
-Los nodos que se administran con DSC de Azure Automation envían datos de informe de estado detallados al servidor de extracción integrado.
-Puede configurar DSC de Azure Automation para que envíe estos datos a su área de trabajo de Log Analytics de Microsoft Operations Management Suite (OMS).
-Para obtener información sobre cómo enviar datos de estado de DSC al área de trabajo de Log Analytics, vea [Reenvío de datos de informes de DSC de Azure Automation a Log Analytics de OMS](automation-dsc-diagnostics.md).
+Los nodos que se administran con el DSC de automatización de Azure enviar detallada estado datos toohello extracción integrada servidor de informes.
+Puede configurar toosend de DSC de automatización de Azure en esta área de trabajo de análisis de registros de Microsoft Operations Management Suite (OMS) de tooyour de datos.
+toolearn toosend DSC estado datos tooyour área de trabajo de análisis de registros, vea [al día Azure DSC de automatización reporting datos tooOMS análisis de registros](automation-dsc-diagnostics.md).
 
 ## <a name="introduction-video"></a>Vídeo de presentación
 
-¿Prefiere ver a leer? Eche un vistazo al vídeo siguiente, de mayo de 2015, cuando se anunció DSC de Azure Automation.
+¿Prefiere ver tooreading? Eche un vistazo a Hola después de vídeo de mayo de 2015, se presentó por primera vez al DSC de automatización de Azure.
 
 >[!NOTE]
->Aunque los conceptos y el ciclo de vida que se tratan en este vídeo son correctos, DSC de Azure Automation ha progresado mucho desde que se grabó este vídeo.
->Ahora está disponible con carácter general, tiene una interfaz de usuario mucho más amplia en el Portal de Azure y admite muchas funciones adicionales.
+>Aunque los conceptos de Hola y ciclo de vida que se describe en este vídeo son correctas, DSC de automatización de Azure ha progresado mucho porque este vídeo se grabó.
+>Ahora está disponible con carácter general, tiene una interfaz de usuario mucho más amplia de hello portal de Azure y admite muchas funciones adicionales.
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para obtener información sobre cómo incorporar nodos para que se administren con DSC de Azure Automation, consulte [Incorporación de máquinas para administrarlas con DSC de Azure Automation](automation-dsc-onboarding.md).
-* Para empezar a usar DSC de Azure Automation, consulte [Introducción a DSC de Azure Automation](automation-dsc-getting-started.md).
-* Para obtener información acerca de la compilación de configuraciones de DSC para que poder asignarlas a los nodos de destino, vea [Compilación de configuraciones en DSC de Azure Automation](automation-dsc-compile.md).
+* toolearn cómo tooonboard toobe de nodos administrados con el DSC de automatización de Azure, consulte [incorporar máquinas para la administración mediante el DSC de automatización de Azure](automation-dsc-onboarding.md)
+* tooget a usar DSC de automatización de Azure, consulte [Introducción a DSC de automatización de Azure](automation-dsc-getting-started.md)
+* toolearn sobre la compilación de configuraciones de DSC para que pueda asignar nodos tootarget, consulte [compilación de configuraciones de DSC de automatización de Azure](automation-dsc-compile.md)
 * Para ver la referencia de cmdlets de PowerShell para DSC de Azure Automation, consulte [Cmdlets de DSC de Azure Automation](/powershell/module/azurerm.automation/#automation).
 * Para obtener información de precios, consulte [Precios de DSC de Azure Automation](https://azure.microsoft.com/pricing/details/automation/).
-* Para ver un ejemplo del uso de DSC de automatización de Azure en una canalización de implementación continua, vea [implementación continua para DSC de automatización de Azure de uso de máquinas virtuales de IaaS y Chocolatey](automation-dsc-cd-chocolatey.md)
+* toosee muestra un ejemplo del uso de DSC de automatización de Azure en una canalización de implementación continua, vea [tooIaaS de implementación continua DSC de automatización de Azure usando máquinas virtuales y Chocolatey](automation-dsc-cd-chocolatey.md)

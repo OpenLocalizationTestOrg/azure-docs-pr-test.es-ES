@@ -1,6 +1,6 @@
 ---
-title: "Acceso condicional para usuarios de colaboración B2B de Azure Active Directory | Microsoft Docs"
-description: "La colaboración B2B de Azure Active Directory admite Multi-Factor Authentication (MFA) para poder acceder de manera selectiva a las aplicaciones corporativas."
+title: "acceso de aaaConditional para los usuarios de la colaboración B2B de Azure Active Directory | Documentos de Microsoft"
+description: "Colaboración B2B de Active Directory de Azure es compatible con la autenticación multifactor (MFA) para las aplicaciones corporativas acceso selectivo tooyour"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -15,41 +15,41 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/24/2017
 ms.author: sasubram
-ms.openlocfilehash: d85f711d6551a68d1248ae8ec61e2ecc1ddc8ecd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3a05be4393f74ff8e87f32432a222a5fbac9af62
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Acceso condicional para usuarios de colaboración B2B
 
 ## <a name="multi-factor-authentication-for-b2b-users"></a>Multi-Factor Authentication para usuarios B2B
-Con la colaboración B2B de Azure AD, las organizaciones pueden exigir directivas de autenticación multifactor (MFA) para usuarios de B2B. Estas directivas se pueden exigir en el nivel de inquilino, aplicación o usuario individual, del mismo modo que pueden habilitarse para empleados a tiempo completo y miembros de la organización. Se aplican las directivas MFA en la organización de recursos.
+Con la colaboración B2B de Azure AD, las organizaciones pueden exigir directivas de autenticación multifactor (MFA) para usuarios de B2B. Estas directivas se pueden aplicar en el nivel de usuario individual, aplicación o inquilino Hola Hola igual que están habilitados para los empleados a jornada completa y los miembros de la organización de Hola. Se aplican las directivas MFA en la organización de recursos de Hola.
 
 Ejemplo:
-1. El administrador o el trabajador de la información de la empresa A invita a un usuario de la empresa B a una aplicación *Foo* de la empresa A.
-2. La aplicación *Foo* de la empresa A se configura para requerir MFA en el acceso.
-3. Cuando el usuario de la empresa B intenta acceder a la aplicación *Foo* en el inquilino de la empresa A, se le pide que realice un desafío de MFA.
-4. El usuario puede configurar su MFA con la empresa A y elegir su opción de MFA.
+1. Trabajo de administrador o información de la compañía A invita a usuario de la aplicación de la compañía B tooan *Foo* de compañía A.
+2. Aplicación *Foo* de compañía A es toorequire configurado MFA en el acceso.
+3. Cuando el usuario de saludo de la compañía B intente tooaccess aplicación *Foo* en un inquilino de empresa de hello, son más frecuentes toocomplete un desafío MFA.
+4. Hola usuario puede configurar su MFA con la compañía A y elige la opción de MFA.
 5. Este escenario funciona con cualquier identidad (Azure AD o MSA, por ejemplo, si los usuarios de la empresa B se autentican con un identificador social).
-6. La empresa A debe tener suficientes licencias de Azure AD Premium que admitan MFA. El usuario de la empresa B consume esta licencia de la empresa A.
+6. La empresa A debe tener suficientes licencias de Azure AD Premium que admitan MFA. usuario de saludo de la compañía B utiliza esta licencia de compañía A.
 
-El inquilino que realiza la invitación siempre es responsable de MFA en los usuarios de la organización asociada, incluso si esta tiene funcionalidades MFA.
+arquitectura multiempresa invitar a Hello siempre es responsable de MFA para los usuarios de la organización del asociado de hello, incluso si la organización del asociado de hello tiene capacidades de MFA.
 
 ### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>Configuración de Multi-Factor Authentication para los usuarios de colaboración B2B
-Para descubrir lo fácil que es configurar MFA para los usuarios de colaboración B2B, vea el siguiente vídeo:
+toodiscover lo fácil que es tooset MFA de para los usuarios de la colaboración B2B, vea cómo en Hola después de vídeo:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
 ### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>Experiencia de MFA de los usuarios B2B para el canje de ofertas
-Consulte la siguiente animación para ver la experiencia de canje:
+Extraer del repositorio Hola después de la experiencia de animación toosee Hola canje:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
 ### <a name="mfa-reset-for-b2b-collaboration-users"></a>Restablecimiento de la MFA para los usuarios de colaboración B2B
-Actualmente, el administrador puede requerir que se vuelvan a probar los usuarios de colaboración B2B solo mediante los siguientes cmdlets de PowerShell.
+Actualmente, Hola, administrador puede requerir volver a tooproof de los usuarios de la colaboración B2B de únicamente mediante Hola siguientes cmdlets de PowerShell:
 
-1. Conectarse a Azure
+1. Conectar tooAzure AD
 
   ```
   $cred = Get-Credential
@@ -60,49 +60,49 @@ Actualmente, el administrador puede requerir que se vuelvan a probar los usuario
   ```
   Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
   ```
-  Este es un ejemplo:
+  Aquí tiene un ejemplo:
 
   ```
   PS C:\Users\tjwasserGet-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
   ```
 
-3. Restablezca el método MFA en un usuario específico para exigir que el usuario de colaboración B2B establezca de nuevo los métodos de prueba. Ejemplo:
+3. Restablecer el método MFA de hello para un usuario específico toorequire Hola B2B colaboración usuario tooset prueba métodos de nuevo. Ejemplo:
 
   ```
   Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
   ```
 
-### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>¿Por qué se realiza el MFA en el arrendamiento de recursos?
+### <a name="why-do-we-perform-mfa-at-hello-resource-tenancy"></a>¿Por qué se realizar MFA en inquilinos de recursos de hello?
 
-En la versión actual, MFA se encuentra siempre en el inquilino de recursos, por motivos de previsión. Por ejemplo, supongamos que un usuario de Contoso (Sally) está invitado a Fabrikam y Fabrikam ha habilitado MFA para usuarios de B2B.
+En la versión actual de hello, MFA siempre está en inquilinos de recursos de hello, por motivos de la predicción. Por ejemplo, supongamos que un usuario de Contoso (Sally) es tooFabrikam invitado y Fabrikam habilitó MFA para usuarios de B2B.
 
-Si Contoso tiene habilitada la directiva MFA para App1 pero no para App2, si examinamos la notificación de MFA de Contoso, podríamos ver el siguiente problema:
+Si Contoso tiene una directiva MFA habilitada para App1 pero no App2, a continuación, si miramos Hola notificación Contoso MFA en el token de hello, tengamos que vemos Hola siguiente problema:
 
 * Día 1: un usuario tiene MFA en Contoso y accede a App1; así que no se muestra ningún mensaje adicional de MFA en Fabrikam.
 
-* Día 2: el usuario ha accedido a App 2 en Contoso, así que ahora, al acceder a Fabrikam, debe registrarse ahí en MFA.
+* Día 2: Hola usuario tiene acceso a 2 de la aplicación en Contoso, por lo que ahora al tener acceso a Fabrikam, deben registrarse para MFA no existe.
 
-Este proceso puede resultar confuso y podría dar lugar a que los inicios de sesión se queden sin terminar.
+Este proceso puede resultar confuso y podría provocar toodrop en las finalizaciones de inicio de sesión.
 
-Además, aunque Contoso tenga la funcionalidad de MFA, no siempre Fabrikam confiará en la directiva de MFA de Contoso.
+Además, incluso si Contoso tiene capacidad MFA, no siempre es Hola Hola mayúsculas Fabrikam confiarán en hello directiva de MFA de Contoso.
 
 Por último, el MFA del inquilino de recursos también funciona en las MSA y los identificadores sociales, así como en las organizaciones asociadas que no tengan una configuración de MFA.
 
-Por lo tanto, la recomendación de MFA en usuarios de B2B es exigir siempre MFA en el inquilino que invita. Este requisito podría dar lugar a MFA doble en algunos casos, pero cada vez que se accede al inquilino que invita, la experiencia de los usuarios finales es predecible: Sally debe registrarse en MFA con el inquilino que invita.
+Por lo tanto, la recomendación de Hola para MFA para los usuarios de B2B es tooalways requerir MFA Hola invitar a los inquilinos. Este requisito puede provocar toodouble MFA en algunos casos, pero cada vez que se obtiene acceso a los inquilinos invitar a hello, experiencia de los usuarios finales de hello es predecible: Sally debe registrar para MFA con inquilinos invitar a Hola.
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Acceso condicional basado en el dispositivo, la ubicación y el riesgo para usuarios de B2B
 
-Cuando Contoso habilita las directivas de acceso condicional basado en el dispositivo para sus datos corporativos, se impide el acceso desde dispositivos no administrados por Contoso y que no cumplen estas directivas de dispositivo.
+Cuando Contoso permite que las directivas de acceso condicional basado en el dispositivo para datos de su empresa, se impida el acceso desde dispositivos que no están administrados por Contoso y no son compatibles con las directivas de dispositivo de Contoso Hola.
 
-Si el dispositivo del usuario de B2B no está administrado por Contoso, el acceso de usuarios de B2B de las organizaciones asociadas se bloqueará en el contexto en que se apliquen estas directivas. Sin embargo, Contoso puede crear listas de exclusión que contengan usuarios asociados específicos para excluirlos de la directiva de acceso condicional basado en el dispositivo.
+Si no administra el dispositivo del usuario de hello B2B por Contoso, acceso de B2B a los usuarios de organizaciones de socios comerciales de hello está bloqueado en el contexto de estas directivas se aplican. Sin embargo, Contoso puede crear listas que contengan socio específico a los usuarios tooexclude de Hola directiva de acceso condicional basado en dispositivos de exclusión.
 
 #### <a name="location-based-conditional-access-for-b2b"></a>Acceso condicional basado en ubicación para B2B
 
-Las directivas de acceso condicional basado en la ubicación se pueden aplicar a usuarios de B2B si la organización que invita no puede crear un intervalo de direcciones IP de confianza que defina sus organizaciones asociadas.
+Las directivas de acceso condicional basado en la ubicación se pueden aplicar para que los usuarios de B2B si organización invitar a hello es capaz de toocreate un intervalo de direcciones IP confianza que define sus organizaciones de socios comerciales.
 
 #### <a name="risk-based-conditional-access-for-b2b"></a>Acceso condicional basado en riesgos para B2B
 
-Actualmente, no se pueden aplicar directivas de inicio de sesión basadas en el riesgo a los usuarios de B2B ya que la evaluación del riesgo se realiza en la organización principal del usuario de B2B.
+Actualmente, directivas basadas en el riesgo de inicio de sesión no pueden ser tooB2B aplicados a los usuarios, ya que se realiza la evaluación del riesgo de hello en organización principal del usuario de hello B2B.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
@@ -111,7 +111,7 @@ Examine nuestros otros artículos sobre la colaboración B2B de Azure AD:
 * [¿Qué es la colaboración B2B de Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [¿Cómo agregan los administradores de Azure Active Directory usuarios de colaboración B2B?](active-directory-b2b-admin-add-users.md)
 * [¿Cómo agregan los trabajadores de la información usuarios de colaboración B2B?](active-directory-b2b-iw-add-users.md)
-* [Los elementos del correo electrónico de invitación de colaboración B2B](active-directory-b2b-invitation-email.md)
+* [elementos de saludo de correo electrónico de invitación de colaboración B2B de hello](active-directory-b2b-invitation-email.md)
 * [Canje de invitación de colaboración B2B](active-directory-b2b-redemption-experience.md)
 * [Concesión de licencias de colaboración B2B de Azure AD](active-directory-b2b-licensing.md)
 * [Solución de problemas de colaboración B2B de Azure Active Directory](active-directory-b2b-troubleshooting.md)

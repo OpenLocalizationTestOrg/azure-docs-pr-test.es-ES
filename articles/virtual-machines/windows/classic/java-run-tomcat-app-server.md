@@ -1,6 +1,6 @@
 ---
-title: "Ejecución de un servidor de aplicaciones Java en una máquina virtual de Azure clásico | Microsoft Docs"
-description: "En este tutorial se usan los recursos creados con el modelo de implementación clásico, y se muestra cómo crear una máquina virtual Windows y configurarla para ejecutar el servidor de aplicaciones de Apache Tomcat."
+title: "servidor de aplicaciones de Java de aaaRun en una máquina virtual de Azure clásico | Documentos de Microsoft"
+description: "Este tutorial usa recursos creados con el modelo de implementación clásica de Hola y muestra cómo toocreate una Virtual de Windows del equipo y configurar servidor de aplicaciones de Apache Tomcat toorun."
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
@@ -15,123 +15,123 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
-ms.openlocfilehash: 6e02f42613808bcb13c0057e9f8fcc1c02273e77
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2d9f586c9f628d3738522b320996b95b078d7454
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>Ejecución de un servidor de aplicaciones Java en una máquina virtual creada con el modelo de implementación clásico
+# <a name="how-toorun-a-java-application-server-on-a-virtual-machine-created-with-hello-classic-deployment-model"></a>¿Cómo toorun un servidor de aplicaciones de Java en una máquina virtual creado con el modelo de implementación clásica de Hola
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Para obtener una plantilla de Resource Manager para implementar una aplicación web con Java 8 y Tomcat, consulte [aquí](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Para una plantilla de administrador de recursos toodeploy una aplicación Web con Java 8 y Tomcat, consulte [aquí](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/).
 
-Con Azure, puede utilizar una máquina virtual para proporcionar funciones de servidor. Por ejemplo, una máquina virtual que se ejecuta en Azure se puede configurar para hospedar un servidor de aplicaciones Java, como Apache Tomcat.
+Con Azure, puede usar capacidades de servidor de un tooprovide de máquina virtual. Por ejemplo, una máquina virtual que se ejecuta en Azure puede ser toohost configurado un servidor de aplicaciones Java, como Apache Tomcat.
 
-Después de finalizar esta guía, adquirirá una comprensión de cómo crear una máquina virtual que se ejecute en Azure y configurarla para ejecutar un servidor de aplicaciones Java. Aprenderá a realizar las siguientes tareas:
+Después de completar esta guía, tendrá una descripción de cómo toocreate una máquina virtual ejecuta en Azure y configurar un servidor de aplicaciones Java toorun. Aprenderá y realizar Hola siguientes tareas:
 
-* Crear una máquina virtual que tenga un kit de desarrollo de Java (JDK) ya instalado.
-* Iniciar sesión de manera remota en la máquina virtual.
-* Instalar un servidor de aplicaciones Java, Apache Tomcat, en la máquina virtual.
-* Crear un extremo para la máquina virtual.
-* Abrir un puerto en el firewall para el servidor de aplicaciones.
+* Cómo toocreate un virtual del equipo que tiene un Kit de desarrollo de Java (JDK) ya instalado.
+* ¿Cómo tooremotely inicie sesión en la máquina virtual de tooyour.
+* ¿Cómo tooinstall un servidor de aplicaciones de Java: Apache Tomcat--en la máquina virtual.
+* ¿Cómo toocreate un extremo para la máquina virtual.
+* ¿Cómo tooopen un puerto en Hola de firewall para el servidor de aplicaciones.
 
-Los resultados de la instalación completos cuando se ejecuta Tomcat en una máquina virtual.
+Hola completado resultados de la instalación de Tomcat que se ejecuta en una máquina virtual.
 
 ![Máquina virtual que ejecuta Apache Tomcat][virtual_machine_tomcat]
 
 [!INCLUDE [create-account-and-vms-note](../../../../includes/create-account-and-vms-note.md)]
 
-## <a name="to-create-a-virtual-machine"></a>Para crear una máquina virtual
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).  
-2. Haga clic en **Nuevo**, en **Proceso** y, a continuación en **Ver todo** en **Aplicaciones destacadas**.
-3. Haga clic en **JDK** y en **JDK 8** en el panel **JDK**.  
-   Las imágenes de máquina virtual que son compatibles con **JDK 6** y **JDK 7** se encuentran disponibles si dispone de aplicaciones heredadas que no están preparadas para ejecutarse en JDK 8.
-4. En el panel de JDK 8, seleccione **Clásico** y, a continuación, haga clic en **Crear**.
-5. En la hoja **Básico**:
-   1. Especifique un nombre para la máquina virtual.
-   2. Escriba un nombre para el administrador en el campo **Nombre de usuario** . Recuerde este nombre y la contraseña asociada que aparece en el siguiente campo. Las necesitará cuando inicie sesión de forma remota en la máquina virtual.
-   3. Escriba una contraseña en el campo **New password** (Contraseña nueva) y confírmela en el campo **Confirm password** (Confirmar contraseña). Esta es la contraseña de la cuenta de administrador.
-   4. Seleccione la **suscripción**adecuada.
-   5. Para el **Grupo de recursos**, haga clic en **Crear nuevo** y especifique el nombre de un nuevo grupo de recursos. También puede hacer clic en **Usar existente** y seleccionar uno de los grupos de recursos disponibles.
-   6. Seleccione una ubicación en la que esté la máquina virtual, como **Centro-sur de EE. UU**.
+## <a name="toocreate-a-virtual-machine"></a>toocreate una máquina virtual
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).  
+2. Haga clic en **New**, haga clic en **proceso**, a continuación, haga clic en **ver todas** en hello **aplicaciones destacadas**.
+3. Haga clic en **JDK**, haga clic en **JDK 8** en hello **JDK** panel.  
+   Imágenes de máquina virtual que admiten **JDK 6** y **JDK 7** están disponibles si tiene aplicaciones heredadas que no están listo toorun en JDK 8.
+4. En el panel de hello JDK 8, seleccione **clásico**, a continuación, haga clic en **crear**.
+5. Hola **Fundamentos** hoja:
+   1. Especifique un nombre para la máquina virtual de Hola.
+   2. Escriba un nombre para el Administrador de Hola Hola **nombre de usuario** campo. Recuerde que este nombre y Hola contraseña asociada que aparece más adelante en el siguiente campo de Hola. Necesario cuando inicias sesión remotamente en máquina virtual de toohello.
+   3. Escriba una contraseña en hello **nueva contraseña** campo y vuelva a escribirla en hello **Confirmar contraseña** campo. Esta contraseña es de hello cuenta de administrador.
+   4. Seleccione Hola adecuado **suscripción**.
+   5. Para hello **grupo de recursos**, haga clic en **crear nuevo** y escriba Hola nombre de un nuevo grupo de recursos. O bien, haga clic en **utilizar existente** y seleccione uno de los grupos de recursos disponibles Hola.
+   6. Seleccione una ubicación donde reside Hola virtual machine, tales como **Ee.uu. Central sur**.
 6. Haga clic en **Siguiente**.
-7. En la hoja **Tamaño de la imagen de máquina virtual**, seleccione **Estándar A1** o cualquier otra imagen apropiada.
+7. Hola **tamaño de la imagen de máquina Virtual** hoja, seleccione **estándar A1** o cualquier otra imagen apropiada.
 8. Haga clic en **Seleccionar**.
 
-9. En la hoja **Configuración**, haga clic en **Aceptar**. Puede usar los valores predeterminados proporcionados por Azure.  
-10. En la hoja **Resumen**, haga clic en **Aceptar**.
+9. Hola **configuración** hoja, haga clic en **Aceptar**. Puede usar valores predeterminados de hello proporcionados por Azure.  
+10. Hola **resumen** hoja, haga clic en **Aceptar**.
 
-## <a name="to-remotely-sign-in-to-your-virtual-machine"></a>Para iniciar sesión de manera remota en la máquina virtual
-1. Inicie sesión en [Azure Portal](https://portal.azure.com).
-2. Haga clic en **Virtual Machines (clásico)**. Si es necesario, haga clic en **Más servicios** en la esquina inferior izquierda en las categorías de servicio. La entrada **Virtual Machines (clásico)** aparece en el grupo **Proceso**.
-3. Haga clic en el nombre de la máquina virtual en la que desea iniciar sesión.
-4. Una vez que la máquina virtual se haya iniciado, aparecerá un menú en la parte superior del panel que permitirá las conexiones.
+## <a name="tooremotely-sign-in-tooyour-virtual-machine"></a>tooremotely inicio de sesión en la máquina virtual de tooyour
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Haga clic en **Virtual Machines (clásico)**. Si es necesario, haga clic en **más servicios** en esquina Hola inferior izquierda en categorías de servicio de Hola. Hola **máquinas virtuales (clásicas)** entrada aparece en hello **proceso** grupo.
+3. Haga clic en el nombre de Hola de máquina virtual de Hola que desea toosign en.
+4. Una vez iniciada la máquina virtual de hello, un menú en la parte superior de hello del panel de hello permite las conexiones.
 5. Haga clic en **Conectar**.
-6. Siga las indicaciones, según sea necesario, para conectarse a la máquina virtual. Normalmente, debe guardar o abrir el archivo .rdp que contiene los detalles de conexión. Es posible que tenga que copiar el valor de url:port de la parte final de la primera línea del archivo .rdp y pegarlo en una aplicación remota de inicio de sesión.
+6. Responder mensajes toohello como máquina virtual de toohello de tooconnect necesarios. Normalmente, se guardan o abren archivos .rdp de Hola que contiene los detalles de conexión de Hola. Podría tiene toocopy Hola dirección url: puerto como parte último hello de la primera línea del archivo .rdp de hello de Hola y pegarlos en una aplicación de inicio de sesión remota.
 
-## <a name="to-install-a-java-application-server-on-your-virtual-machine"></a>Para instalar un servidor de aplicaciones Java en la máquina virtual
-Puede copiar un servidor de aplicaciones Java en la máquina virtual o instalarlo a través de un instalador.
+## <a name="tooinstall-a-java-application-server-on-your-virtual-machine"></a>tooinstall un servidor de aplicaciones de Java en la máquina virtual
+Puede copiar una máquina virtual de tooyour de servidor de la aplicación de Java, o puede instalar a un servidor de aplicaciones de Java a través de un instalador.
 
-Este tutorial usa Tomcat como servidor de la aplicación de Java que instalar.
+Este tutorial usa Tomcat como tooinstall de servidor de aplicaciones de Java de Hola.
 
-1. Cuando haya iniciado sesión en la máquina virtual, abra una sesión del explorador en [Apache Tomcat](http://tomcat.apache.org/download-80.cgi).
-2. Haga doble clic en el vínculo del **instalador del servicio de Windows de 32 bits y 64 bits**. Mediante esta técnica, Tomcat se instala como servicio de Windows.
-3. Cuando se le pida, elija ejecutar el instalador.
-4. En el asistente para la **instalación de Apache Tomcat** , siga las indicaciones para instalar Tomcat. En este tutorial, es adecuado aceptar los valores predeterminados. Cuando llegue al cuadro de diálogo **Completing the Apache Tomcat Setup Wizard** (Finalización del asistente para la instalación de Apache Tomcat), si lo desea, puede activar **Run Apache Tomcat** (Ejecutar Apache Tomcat) para iniciar Tomcat ahora. Haga clic en **Finalizar** para finalizar el proceso de instalación de Tomcat.
+1. Después de iniciar sesión en la máquina virtual de tooyour, abra una sesión de explorador demasiado[Apache Tomcat](http://tomcat.apache.org/download-80.cgi).
+2. Haga doble clic en el vínculo de Hola para **instalador del servicio de Windows de 32 bits o 64 bits**. Mediante esta técnica, Tomcat se instala como servicio de Windows.
+3. Cuando se le solicite, elija el programa de instalación de toorun Hola.
+4. Dentro de hello **el programa de instalación de Apache Tomcat** asistente, siga Hola solicita tooinstall Tomcat. Para fines de Hola de este tutorial, acepte las opciones predeterminadas de hello es correcto. Cuando llegue a hello **finalización Hola Asistente para la instalación de Apache Tomcat** cuadro de diálogo, puede comprobar si lo desea **ejecutar Apache Tomcat** toohave ahora el inicio de Tomcat. Haga clic en **finalizar** toocomplete Hola proceso de instalación de Tomcat.
 
-## <a name="to-start-tomcat"></a>Para iniciar Tomcat
+## <a name="toostart-tomcat"></a>toostart Tomcat
 
-Puede iniciar manualmente Tomcat abriendo un símbolo del sistema en la máquina virtual y ejecutando el comando **net&nbsp;start&nbsp;Tomcat8**.
+Puede iniciar manualmente Tomcat, abra un símbolo del sistema en la máquina virtual y ejecutar el comando hello **net&nbsp;iniciar&nbsp;Tomcat8**.
 
-Una vez que se está ejecutando Tomcat, puede tener acceso a Tomcat escribiendo la dirección URL <http://localhost:8080> en el explorador de la máquina virtual.
+Una vez que se está ejecutando Tomcat, puede tener acceso a Tomcat escribiendo la dirección URL de hello <http://localhost: 8080> en el Explorador de la máquina virtual Hola.
 
-Para ver que Tomcat se ejecuta desde máquinas externas, deberá crear un extremo y abrir un puerto.
+toosee Tomcat ejecutando desde equipos externos, necesita toocreate un punto de conexión y abrir un puerto.
 
-## <a name="to-create-an-endpoint-for-your-virtual-machine"></a>Para crear un extremo para la máquina virtual
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+## <a name="toocreate-an-endpoint-for-your-virtual-machine"></a>toocreate un extremo para la máquina virtual
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 2. Haga clic en **Virtual Machines (clásico)**.
-3. Haga clic en el nombre de la máquina virtual que ejecuta el servidor de aplicaciones Java.
+3. Haga clic en el nombre de Hola de máquina virtual de Hola que está ejecutando el servidor de aplicaciones Java.
 4. Haga clic en **Extremos**.
 5. Haga clic en **Agregar**.
-6. Aparecerá el cuadro de diálogo **Agregar punto de conexión**:
-   1. Especifique un nombre para el extremo; por ejemplo, **HttpIn**.
-   2. Seleccione **TCP** para el protocolo.
-   3. Especifique **80** para el puerto público.
-   4. Especifique **8080** para el puerto privado.
-   5. Seleccione **Deshabilitado** para la dirección IP flotante.
-   6. Deje la lista de control de acceso tal y como está.
-   7. Haga clic en el botón **Aceptar** para cerrar el cuadro de diálogo y crear el punto de conexión.
+6. Hola **Agregar extremo** cuadro de diálogo:
+   1. Especifique un nombre para el punto de conexión de hello; Por ejemplo, **HttpIn**.
+   2. Seleccione **TCP** para el protocolo de saludo.
+   3. Especifique **80** para puerto público Hola.
+   4. Especifique **8080** para puerto privado Hola.
+   5. Seleccione **deshabilitado** para hello flotante dirección IP.
+   6. Deje la lista de control de acceso de hello tal cual.
+   7. Haga clic en hello **Aceptar** botón cuadro de diálogo de tooclose hello y crear el punto de conexión de Hola.
 
-## <a name="to-open-a-port-in-the-firewall-for-your-virtual-machine"></a>Para abrir un puerto en el firewall para la máquina virtual
-1. Inicie sesión en la máquina virtual.
+## <a name="tooopen-a-port-in-hello-firewall-for-your-virtual-machine"></a>tooopen un puerto en firewall de hello para la máquina virtual
+1. Inicie sesión en la máquina virtual de tooyour.
 2. Haga clic en **Inicio de Windows**.
 3. Haga clic en **Panel de control**.
 4. Haga clic en **Sistema y seguridad**, **Firewall de Windows** y luego en **Configuración avanzada**.
 5. Haga clic en **Reglas de entrada** y después en **Nueva regla**.  
    ![Nueva regla de entrada][NewIBRule]
-6. En **Tipo de regla**, seleccione **Puerto** y haga clic en **Siguiente**.  
+6. Para hello **tipo de regla**, seleccione **puerto**y, a continuación, haga clic en **siguiente**.  
    ![Puerto de nueva regla de entrada][NewRulePort]
-7. En la pantalla **Protocolo y puertos**, seleccione **TCP**, especifique **8080** como **Puerto local específico** y luego haga clic en **Siguiente**.  
+7. En hello **protocolo y puertos** pantalla, seleccione **TCP**, especifique **8080** como hello **puerto local específico**y, a continuación, haga clic en **Siguiente**.  
   ![Nueva regla de entrada][NewRuleProtocol]
-8. En la pantalla **Acción**, seleccione **Permitir la conexión** y haga clic en **Siguiente**.
+8. En hello **acción** pantalla, seleccione **Permitir conexión hello**y, a continuación, haga clic en **siguiente**.
    ![Acción de nueva regla de entrada][NewRuleAction]
-9. En la pantalla **Perfil**, asegúrese de que **Dominio**, **Privado** y **Público** estén activados y después haga clic en **Siguiente**.
+9. En hello **perfil** pantalla, asegúrese de que **dominio**, **privada**, y **público** están seleccionadas y, a continuación, haga clic en **siguiente** .
    ![Perfil de nueva regla de entrada][NewRuleProfile]
-10. En la pantalla **Nombre**, especifique un nombre para la regla, por ejemplo **HttpIn** (sin embargo, no es necesario que el nombre de la regla coincida con el nombre del punto de conexión) y haga clic en **Finalizar**.  
+10. En hello **nombre** pantalla, especifique un nombre para la regla de hello, como **HttpIn** (nombre de la regla de Hola no es necesario toomatch Hola extremo nombre, sin embargo) y, a continuación, haga clic en **finalizar**.  
     ![Nombre de la nueva regla de entrada][NewRuleName]
 
-En este momento, el sitio web de Tomcat debe ser visible desde un explorador externo. En la ventana de dirección del explorador, escriba una dirección URL del formulario  **http://*su\_DNS\_nombre*. cloudapp.net**, donde ***su\_DNS\_nombre*** es el nombre DNS que especificó cuando creó la máquina virtual.
+En este momento, el sitio web de Tomcat debe ser visible desde un explorador externo. En la ventana de dirección del explorador de hello, escriba una dirección URL de formulario de hello  **http://*su\_DNS\_nombre*. cloudapp.net**, donde ***su\_DNS\_nombre*** es Hola nombre DNS que especificó cuando creó la máquina virtual de Hola.
 
 ## <a name="application-lifecycle-considerations"></a>Consideraciones acerca del ciclo de vida de las aplicaciones
-* Puede crear su propio archivo de aplicación web (WAR) y agregarlo a la carpeta **webapps** . Por ejemplo, cree un proyecto web dinámico de Java Service Page (JSP) básico y expórtelo como archivo WAR. A continuación, copie el archivo WAR a la carpeta **webapps** de Apache Tomcat en la máquina virtual y, a continuación, ejecútelo en un explorador.
-* De forma predeterminada, cuando el servicio Tomcat está instalado, está configurado para iniciarse manualmente. Puede cambiarlo para que se inicie automáticamente mediante el complemento Servicios. Inicie el complemento Servicios, haga clic en **Inicio de Windows**, **Herramientas administrativas** y luego en **Servicios**. Haga doble clic en el servicio **Apache Tomcat** y establezca **Tipo de inicio** en **Automático**.
+* Puede crear su propio archivo de aplicación web (WAR) y agregar toohello **móviles** carpeta. Por ejemplo, cree un proyecto web dinámico de Java Service Page (JSP) básico y expórtelo como archivo WAR. A continuación, copie Hola WAR toohello Apache Tomcat **móviles** carpeta en la máquina virtual de hello, a continuación, ejecútelo en un explorador.
+* De forma predeterminada cuando se instala el servicio Tomcat hello, establecerla toostart manualmente. Se puede cambiar lo toostart automáticamente mediante el complemento Servicios de Hola. Inicie el complemento Servicios de hello haciendo clic en **inicio de Windows**, **herramientas administrativas**y, a continuación, **Services**. Haga doble clic en hello **Apache Tomcat** de servicio y establezca **tipo de inicio** demasiado**automática**.
 
-    ![Configurar un servicio para que se inicie automáticamente][service_automatic_startup]
+    ![Si se establece automáticamente un toostart de servicio][service_automatic_startup]
 
-    La ventaja de que Tomcat se inicie automáticamente es que comienza a funcionar cuando se reinicia la máquina virtual (por ejemplo, después de instalar actualizaciones de software que requieren un reinicio).
+    Hello ventaja de tener Tomcat iniciar automáticamente es que empieza a ejecutarse cuando se reinicia la máquina virtual de hello (por ejemplo, después de que se instalan las actualizaciones de software que precisan un reinicio).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Puede obtener más información sobre otros servicios (como Azure Storage, Service Bus y SQL Database) que quiera incluir con las aplicaciones de Java. Vea la información disponible en [Centro para desarrolladores de Java](https://azure.microsoft.com/develop/java/).
+Puede obtener información acerca de otros servicios (por ejemplo, el almacenamiento de Azure, service bus y base de datos SQL) que tal vez desee tooinclude con las aplicaciones de Java. Ver información de hello disponible en hello [Centro para desarrolladores de Java](https://azure.microsoft.com/develop/java/).
 
 [virtual_machine_tomcat]:media/java-run-tomcat-app-server/WA_VirtualMachineRunningApacheTomcat.png
 
@@ -153,8 +153,8 @@ Puede obtener más información sobre otros servicios (como Azure Storage, Servi
 [NewRuleProfile]:media/java-run-tomcat-app-server/NewRuleProfile.png
 
 
-<!-- Deleted from the "To create an ednpoint for your virtual mache" 3/17/2017,
-     to use the new portal.
-6. In the **Add endpoint** dialog box, ensure **Add standalone endpoint** is selected, and then click **Next**.
-7. In the **New endpoint details** dialog box:
+<!-- Deleted from hello "toocreate an ednpoint for your virtual mache" 3/17/2017,
+     toouse hello new portal.
+6. In hello **Add endpoint** dialog box, ensure **Add standalone endpoint** is selected, and then click **Next**.
+7. In hello **New endpoint details** dialog box:
 -->

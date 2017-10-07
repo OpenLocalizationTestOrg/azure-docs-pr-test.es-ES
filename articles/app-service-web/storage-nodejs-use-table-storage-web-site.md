@@ -1,6 +1,6 @@
 ---
-title: "Aplicación web Node.js utilizando el servicio Tabla de Azure"
-description: "Este tutorial le enseña a usar el servicio Tabla de Azure para almacenar datos desde una aplicación Node.js hospedada en Aplicaciones web del Servicio de aplicaciones de Azure."
+title: "aplicación web de aaaNode.js con hello servicio tabla de Azure"
+description: "Este tutorial le enseña cómo toouse hello Azure Table service toostore datos desde una aplicación Node.js que se hospeda en aplicaciones de Web del servicio de aplicación de Azure."
 tags: azure-portal
 services: app-service\web, storage
 documentationcenter: nodejs
@@ -15,82 +15,82 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
-ms.openlocfilehash: 3252914934c1084a165fa39ee983d3039e04d567
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f6e08335b4c7f62f7b3994287edd586860cb7135
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="nodejs-web-app-using-the-azure-table-service"></a>Aplicación web Node.js utilizando el servicio Tabla de Azure
+# <a name="nodejs-web-app-using-hello-azure-table-service"></a>Aplicación web de Node.js con hello servicio tabla de Azure
 ## <a name="overview"></a>Información general
-En este tutorial aprenderá a usar Table service que proporciona la administración de datos de Azure para almacenar y tener acceso a los datos desde una aplicación [node] hospedada en [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps. En este tutorial se asume que tiene alguna experiencia anterior en el uso de Node y [Git].
+Este tutorial muestra cómo se proporciona el servicio de tabla de toouse datos de administración de datos de Azure toostore y acceso de un [nodo] aplicación hospedada en [servicio de aplicaciones de Azure](http://go.microsoft.com/fwlink/?LinkId=529714) aplicaciones Web. En este tutorial se asume que tiene alguna experiencia anterior en el uso de Node y [Git].
 
 Aprenderá a:
 
-* Usar npm (administrador de paquetes de Node) para instalar los módulos de Node
-* Trabajar con el servicio Tabla de Azure
-* Uso de la CLI de Azure para crear una aplicación web.
+* ¿Cómo toouse npm (Administrador de paquetes de nodo) tooinstall Hola módulos de nodo
+* ¿Cómo toowork con Hola servicio tabla de Azure
+* ¿Cómo toouse Hola toocreate de CLI de Azure de una aplicación web.
 
-Al seguir este tutorial, podrá compilar una aplicación de "lista de tareas pendientes" basadas en web sencilla que permite crear, recuperar y completar tareas. Las tareas se almacenan en el servicio Tabla.
+Al seguir este tutorial, podrá compilar una aplicación de "lista de tareas pendientes" basadas en web sencilla que permite crear, recuperar y completar tareas. tareas de Hola se almacenan en hello servicio tabla.
 
-Esta es la aplicación completada:
+Esta es la aplicación hello completado:
 
 ![Página web que muestra una lista de tareas vacía][node-table-finished]
 
 > [!NOTE]
-> Si desea empezar a trabajar con el Servicio de aplicaciones de Azure antes de suscribirse para abrir una cuenta de Azure, vaya a [Prueba del Servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde podrá crear inmediatamente una aplicación web de inicio de corta duración en el Servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
+> Si desea tooget iniciado con el servicio de aplicación de Azure antes de registrarse para una cuenta de Azure, vaya demasiado[pruebe el servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde puede crear inmediatamente una aplicación web de inicio de corta duración en el servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
 > 
 > 
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de seguir las instrucciones del presente artículo, asegúrese de tener instalados los siguientes elementos:
+Antes de seguir las instrucciones de hello en este artículo, asegúrese de que tiene instalado el siguiente hello:
 
-* [node] versión 0.10.24 o superior
+* [nodo] versión 0.10.24 o superior
 * [Git]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="create-a-storage-account"></a>Crear una cuenta de almacenamiento
-Cree una cuenta de Almacenamiento de Azure. La aplicación usará esta cuenta para almacenar los elementos de tareas pendientes.
+Cree una cuenta de Azure Storage. aplicación Hello usará este elementos pendientes de cuenta toostore Hola.
 
-1. Inicie sesión en el [Azure Portal](https://portal.azure.com/).
-2. Haga clic en el icono **Nuevo** situado en la parte inferior izquierda del portal y haga clic en **Datos y almacenamiento** > **Almacenamiento**. Asigne un nombre único a la cuenta de almacenamiento y cree un [grupo de recursos](../azure-resource-manager/resource-group-overview.md) nuevo para ella.
+1. Inicie sesión en hello [Portal de Azure](https://portal.azure.com/).
+2. Haga clic en hello **New** icono situado en la parte inferior de hello izquierda del portal de hello, a continuación, haga clic en **datos + almacenamiento** > **almacenamiento**. Asigne un nombre único de cuenta de almacenamiento de Hola y crear un nuevo [grupo de recursos](../azure-resource-manager/resource-group-overview.md) para él.
    
       ![Botón Nuevo](./media/storage-nodejs-use-table-storage-web-site/configure-storage.png)
    
-    Una vez creada la cuenta de almacenamiento, el botón **Notificaciones** emitirá el mensaje **CORRECTO** en color verde y la hoja de la cuenta de almacenamiento se abrirá para mostrar que pertenece al nuevo grupo de recursos que ha creado.
-3. En la hoja de la cuenta de almacenamiento, haga clic en **Configuración** > **Claves**. Copie la clave de acceso principal en el Portapapeles.
+    Cuando se ha creado la cuenta de almacenamiento de hello, Hola **notificaciones** botón parpadeará en un color verde **correcto** y está abierta la hoja de la cuenta de almacenamiento de hello tooshow que pertenece toohello nuevo recurso de grupo, creado.
+3. En la hoja de la cuenta de almacenamiento de hello, haga clic en **configuración** > **claves**. Copie el Portapapeles de toohello clave de acceso principal de Hola.
    
     ![Clave de acceso][portal-storage-access-keys]
 
 ## <a name="install-modules-and-generate-scaffolding"></a>Instalación de módulos y generación de scaffolding
-En esta sección podrá crear una nueva aplicación Node y usar npm para agregar paquetes de módulos. Para esta aplicación, usará los módulos [Express] y [Azure]. El módulo Express proporciona un marco de controlador de vista de modelo para Node, mientras que los módulos de Azure proporcionan conectividad al servicio Tabla.
+En esta sección creará una nueva aplicación de nodo y usar paquetes de npm tooadd módulo. Para esta aplicación usará hello [Express] y [Azure] módulos. módulo de Hello Express proporciona un marco de Model View Controller de nodo, mientras Hola módulos de Azure proporciona servicio de tabla de toohello de conectividad.
 
 ### <a name="install-express-and-generate-scaffolding"></a>Instalar Express y generar scaffolding
-1. Desde la línea de comandos, cree un nuevo directorio denominado **tasklist** y cambie a ese directorio.  
-2. Escriba el siguiente comando para instalar el módulo Express.
+1. Desde la línea de comandos de hello, cree un directorio denominado **tasklist** y directory toothat del conmutador.  
+2. Escriba Hola después de módulo de comando tooinstall Hola Express.
    
         npm install express-generator@4.2.0 -g
    
-    En función del sistema operativo, puede ser necesario poner 'sudo' antes del comando:
+    Función de sistema operativo de hello, puede ser necesario tooput 'sudo' antes de que el comando de hello:
    
         sudo npm install express-generator@4.2.0 -g
    
-    El resultado es similar al ejemplo siguiente:
+    salida de Hello aparece similar toohello siguiente ejemplo:
    
         express-generator@4.2.0 /usr/local/lib/node_modules/express-generator
         ├── mkdirp@0.3.5
         └── commander@1.3.2 (keypress@0.1.0)
    
    > [!NOTE]
-   > El parámetro '-g' instala el módulo globalmente. De este modo, podemos utilizar **express** para generar el scaffolding de la aplicación web sin tener que escribir información de ruta adicional.
+   > Hola '-g' parámetro instala el módulo de hello globalmente. De este modo, podemos usar **express** toogenerate scaffolding de aplicación web sin necesidad de tootype en información adicional de la ruta de acceso.
    > 
    > 
-3. Para crear el scaffolding para la aplicación, escriba el comando **express** :
+3. scaffolding de hello toocreate para la aplicación hello, escriba Hola **express** comando:
    
         express
    
-    El resultado de este comando es similar al ejemplo siguiente:
+    salida de Hello de este comando aparece similar toohello siguiente ejemplo:
    
            create : .
            create : ./package.json
@@ -113,19 +113,19 @@ En esta sección podrá crear una nueva aplicación Node y usar npm para agregar
            install dependencies:
              $ cd . && npm install
    
-           run the app:
+           run hello app:
              $ DEBUG=my-application ./bin/www
    
-    Ahora debe tener varios directorios y archivos nuevos en el directorio **tasklist** .
+    Ahora tiene varias nuevos directorios y archivos en hello **tasklist** directory.
 
 ### <a name="install-additional-modules"></a>Instalar módulos adicionales
-Uno de los archivos que crea **express** es **package.json**. Este archivo contiene una lista de dependencias de módulo. Posteriormente, cuando implemente esta aplicación en Aplicaciones web del Servicio de aplicaciones, este archivo determinará los módulos que se deben instalar en Azure.
+Uno de hello archivos que **express** crea es **package.json**. Este archivo contiene una lista de dependencias de módulo. Más adelante, cuando se implementa hello tooApp de aplicación Web del servicio de aplicaciones, este archivo determina qué módulos necesitan toobe instalado en Azure.
 
-En la línea de comandos, escriba el siguiente comando para instalar los módulos que se describen en el archivo **package.json**. Puede que necesite usar 'sudo'.
+Desde la línea de comandos de hello, escriba Hola después de módulos de hello tooinstall comando descritos en hello **package.json** archivo. Puede que necesite toouse 'sudo'.
 
     npm install
 
-El resultado de este comando es similar al ejemplo siguiente:
+salida de Hello de este comando aparece similar toohello siguiente ejemplo:
 
     debug@0.7.4 node_modules\debug
 
@@ -136,13 +136,13 @@ El resultado de este comando es similar al ejemplo siguiente:
     [...]
 
 
-A continuación, escriba el siguiente comando para instalar los módulos [azure], [node-uuid], [nconf] y [async]:
+A continuación, escriba Hola después comando tooinstall hello [azure], [nodo uuid], [nconf] y [async] módulos:
 
     npm install azure-storage node-uuid async nconf --save
 
-La marca **--save** agrega entradas para estos módulos en el archivo **package.json**.
+Hola **--guardar** marca agrega entradas para estos módulos toohello **package.json** archivo.
 
-El resultado de este comando es similar al ejemplo siguiente:
+salida de Hello de este comando aparece similar toohello siguiente ejemplo:
 
     async@0.9.0 node_modules\async
 
@@ -156,11 +156,11 @@ El resultado de este comando es similar al ejemplo siguiente:
     [...]
 
 
-## <a name="create-the-application"></a>Creación de la aplicación
-Ahora estamos listos para compilar la aplicación.
+## <a name="create-hello-application"></a>Crear aplicación hello
+Ahora estamos aplicación de hello toobuild listo.
 
 ### <a name="create-a-model"></a>Crear un modelo
-Un *modelo* es un objeto que representa los datos de la aplicación. Para la aplicación, el modelo solo es un objeto de tarea, que representa un elemento en la lista de tareas pendientes. Las tareas tienen los siguientes campos:
+A *modelo* es un objeto que representa los datos de hello en la aplicación. Para la aplicación hello, modelo solo hello es un objeto de tarea que representa un elemento de lista de tareas pendientes de Hola. Tareas tendrá Hola siguientes campos:
 
 * PartitionKey
 * RowKey
@@ -168,16 +168,16 @@ Un *modelo* es un objeto que representa los datos de la aplicación. Para la apl
 * category (string)
 * completed (Boolean)
 
-Table service usa **PartitionKey** y **RowKey** como claves de tabla. Para obtener más información, consulte [Introducción al modelo de datos del servicio Tabla](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+**PartitionKey** y **RowKey** Hola servicio tabla sirven como claves de tabla. Para obtener más información, consulte [modelo de datos de servicio de la tabla de descripción hello](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-1. En el directorio **tasklist**, cree un directorio nuevo con el nombre **models**.
-2. En el directorio **models**, cree un archivo nuevo con el nombre **task.js**. Este archivo contendrá el modelo para las tareas que se crean con su aplicación.
-3. Al comienzo del archivo **task.js** , agregue el siguiente código para hacer referencia a las bibliotecas requeridas:
+1. Hola **tasklist** directorio, cree un nuevo directorio denominado **modelos**.
+2. Hola **modelos** directorio, cree un nuevo archivo denominado **task.js**. Este archivo contendrá el modelo de Hola para las tareas de hello creadas por la aplicación.
+3. En principio Hola de hello **task.js** , agregue Hola siguiendo las bibliotecas de código tooreference necesario:
    
         var azure = require('azure-storage');
           var uuid = require('node-uuid');
         var entityGen = azure.TableUtilities.entityGenerator;
-4. Agregue el código siguiente para definir y exportar el objeto Task. Este objeto es el responsable de la conexión a la tabla.
+4. Agregue código toodefine siguiente de Hola y exporta el objeto de tarea de Hola. Este objeto es responsable de la conexión toohello tabla.
    
           module.exports = Task;
    
@@ -191,7 +191,7 @@ Table service usa **PartitionKey** y **RowKey** como claves de tabla. Para obten
             }
           });
         };
-5. Agregue el siguiente código para definir métodos adicionales en el objeto Task, que permite interacciones con los datos almacenados en la tabla:
+5. Agregue Hola siguiendo métodos adicionales de código toodefine en el objeto de tarea de hello, que permiten la interacción con los datos almacenados en la tabla de hello:
    
         Task.prototype = {
           find: function(query, callback) {
@@ -207,7 +207,7 @@ Table service usa **PartitionKey** y **RowKey** como claves de tabla. Para obten
    
           addItem: function(item, callback) {
             self = this;
-            // use entityGenerator to set types
+            // use entityGenerator tooset types
             // NOTE: RowKey must be a string type, even though
             // it contains a GUID in this example.
             var itemDescriptor = {
@@ -241,13 +241,13 @@ Table service usa **PartitionKey** y **RowKey** como claves de tabla. Para obten
             });
           }
         }
-6. Guarde y cierre el archivo **task.js** .
+6. Guarde y cierre hello **task.js** archivo.
 
 ### <a name="create-a-controller"></a>Creación de un controlador
-Un *controlador* administra las solicitudes HTTP y procesa la respuesta HTML.
+A *controlador* controla las solicitudes HTTP y representa la respuesta de hello HTML.
 
-1. En el directorio **tasklist/routes**, cree un archivo nuevo con el nombre **tasklist.js** y ábralo en un editor de texto.
-2. Agregue el siguiente código a **tasklist.js**. De este modo se cargan los módulos azure y async, que utiliza **tasklist.js**. También define la función **TaskList**, que pasa a una instancia del objeto **Task** que definimos anteriormente:
+1. Hola **tasklist/rutas** directorio, cree un nuevo archivo denominado **tasklist.js** y ábralo en un editor de texto.
+2. Agregar Hola sigue código demasiado**tasklist.js**. Esto carga los módulos de hello azure y asincrónicas, que son usados por **tasklist.js**. Esto también define hello **TaskList** función, que se pasa una instancia de hello **tarea** objeto definimos anteriormente:
    
         var azure = require('azure-storage');
         var async = require('async');
@@ -258,7 +258,7 @@ Un *controlador* administra las solicitudes HTTP y procesa la respuesta HTML.
         function TaskList(task) {
           this.task = task;
         }
-4. Agregue los siguientes métodos a **TaskList**:
+4. Agregar Hola siguiendo métodos demasiado**TaskList**:
    
         TaskList.prototype = {
           showTasks: function(req, res) {
@@ -303,8 +303,8 @@ Un *controlador* administra las solicitudes HTTP y procesa la respuesta HTML.
         }
 
 ### <a name="modify-appjs"></a>Modificar app.js
-1. En el directorio **tasklist**, abra el archivo **app.js**. Este archivo se creó anteriormente al ejecutar el comando **express** .
-2. Al principio del archivo, agregue lo siguiente para cargar el módulo azure, configurar el nombre de la tabla, la clave de partición y las credenciales de almacenamiento utilizadas en este ejemplo:
+1. De hello **tasklist** Hola de directorio, abra **app.js** archivo. Este archivo se creó anteriormente mediante la ejecución de hello **express** comando.
+2. En principio de Hola de archivo hello, agregue Hola después de módulo de hello azure tooload, nombre de la tabla de conjunto de Hola, clave de partición y las credenciales de almacenamiento de hello conjunto utilizadas por este ejemplo:
    
         var azure = require('azure-storage');
         var nconf = require('nconf');
@@ -316,15 +316,15 @@ Un *controlador* administra las solicitudes HTTP y procesa la respuesta HTML.
         var accountKey = nconf.get("STORAGE_KEY");
    
    > [!NOTE]
-   > nconf cargará los valores de configuración desde las variables de entorno o el archivo **config.json** , que crearemos más adelante.
+   > nconf cargará los valores de configuración de Hola de variables de entorno o hello **config.json** archivo, que creará más adelante.
    > 
    > 
-3. En el archivo app.js, desplácese hacia abajo hasta ver la siguiente línea:
+3. En el archivo de app.js hello, desplácese hacia abajo toowhere verá Hola línea siguiente:
    
         app.use('/', routes);
         app.use('/users', users);
    
-    Sustituya las líneas anteriores por el código que se muestra a continuación. De este modo se inicializará una instancia de <strong>Task</strong> con una conexión a su cuenta de almacenamiento. Esto se pasa a la <strong>TaskList</strong>, que lo utilizará para comunicarse con el servicio Tabla:
+    Reemplace Hola por encima de las líneas con el código de hello que se muestra a continuación. Esto inicializará en una instancia de <strong>tarea</strong> con una cuenta de almacenamiento de conexión tooyour. Este argumento se pasa toohello <strong>TaskList</strong>, que usará toocommunicate con hello servicio tabla:
    
         var TaskList = require('./routes/tasklist');
         var Task = require('./models/task');
@@ -334,11 +334,11 @@ Un *controlador* administra las solicitudes HTTP y procesa la respuesta HTML.
         app.get('/', taskList.showTasks.bind(taskList));
         app.post('/addtask', taskList.addTask.bind(taskList));
         app.post('/completetask', taskList.completeTask.bind(taskList));
-4. Guarde el archivo **app.js** .
+4. Guardar hello **app.js** archivo.
 
-### <a name="modify-the-index-view"></a>Modificar la vista de índice
-1. Abra el archivo **tasklist/views/index.jade** en un editor de texto.
-2. Reemplace todo el contenido del archivo con el código siguiente. De esta manera se define una vista para mostrar las tareas existentes y se incluye un formulario para agregar tareas nuevas y marcar las existentes como terminadas.
+### <a name="modify-hello-index-view"></a>Modificar la vista de índice Hola
+1. Abra hello **tasklist/views/index.jade** archivo en un editor de texto.
+2. Reemplace Hola todo contenido de archivo hello con hello siguiente código. De esta manera se define una vista para mostrar las tareas existentes y se incluye un formulario para agregar tareas nuevas y marcar las existentes como terminadas.
    
         extends layout
    
@@ -378,12 +378,12 @@ Un *controlador* administra las solicitudes HTTP y procesa la respuesta HTML.
             button.btn(type="submit") Add item
 3. Guarde y cierre el archivo **index.jade** .
 
-### <a name="modify-the-global-layout"></a>Modificar el diseño global
-El archivo **layout.jade** del directorio **views** es una plantilla global para otros archivos **.jade**. En este paso podrá modificarlo para utilizar [Twitter Bootstrap](https://github.com/twbs/bootstrap), un kit de herramientas que facilita el diseño de una aplicación web atractiva.
+### <a name="modify-hello-global-layout"></a>Modificar diseño global Hola
+Hola **layout.jade** archivo Hola **vistas** directory es una plantilla global para otros **.jade** archivos. En este paso, modificará toouse [Bootstrap Twitter](https://github.com/twbs/bootstrap), que es un Kit de herramientas que hace más fácil toodesign una aplicación web la claridad "nice".
 
-Descargue y extraiga los archivos para [Twitter Bootstrap](http://getbootstrap.com/). Copie el archivo **bootstrap.min.css** desde la carpeta Bootstrap **css** al directorio **public\stylesheets** de su aplicación.
+Descargue y extraiga los archivos de Hola para [Bootstrap Twitter](http://getbootstrap.com/). Hola copia **bootstrap.min.css** archivo de hello Bootstrap **css** carpeta en hello **público/hojas de estilos** directorio de la aplicación.
 
-En la carpeta **views**, abra **layout.jade** y reemplace todo el contenido por lo siguiente:
+De hello **vistas** carpeta, abra **layout.jade** y reemplace el contenido completo de hello con siguiente de hello:
 
     doctype html
     html
@@ -398,7 +398,7 @@ En la carpeta **views**, abra **layout.jade** y reemplace todo el contenido por 
         block content
 
 ### <a name="create-a-config-file"></a>Creación de un archivo de configuración
-Para ejecutar la aplicación localmente, pondremos credenciales de Almacenamiento de Azure en un archivo de configuración. Cree un archivo denominado **config.json** con el siguiente código JSON:
+toorun localmente la aplicación de hello, colocamos las credenciales de almacenamiento de Azure en un archivo de configuración. Cree un archivo denominado **config.json* * con hello después JSON:
 
     {
         "STORAGE_NAME": "<storage account name>",
@@ -407,7 +407,7 @@ Para ejecutar la aplicación localmente, pondremos credenciales de Almacenamient
         "TABLE_NAME": "tasks"
     }
 
-Reemplace **nombre de cuenta de almacenamiento** por el nombre de la cuenta de almacenamiento creada anteriormente y **clave de acceso de almacenamiento** por la clave de acceso principal de la cuenta de almacenamiento. Por ejemplo:
+Reemplace **nombre de la cuenta de almacenamiento** con el nombre de Hola de almacenamiento de hello de la cuenta que creó anteriormente y reemplace **clave de acceso de almacenamiento** con la clave de acceso principal de hello para la cuenta de almacenamiento. Por ejemplo:
 
     {
         "STORAGE_NAME": "nodejsappstorage",
@@ -416,77 +416,77 @@ Reemplace **nombre de cuenta de almacenamiento** por el nombre de la cuenta de a
         "TABLE_NAME": "tasks"
     }
 
-Guarde este archivo en *un nivel de directorio más alto* que el directorio **tasklist** , similar a lo siguiente:
+Guarde este archivo *nivel de un directorio superior* que hello **tasklist** directorio, similar al siguiente:
 
     parent/
       |-- config.json
       |-- tasklist/
 
-La razón para hacer esto es evitar la comprobación del archivo de configuración en el control de código fuente, donde puede ser público. Cuando se implementa la aplicación en Azure, usaremos las variables de entorno en lugar de un archivo de configuración.
+motivo de Hola para hacer esto es tooavoid comprobando el archivo de configuración de hello en el control de código fuente, donde se puede convertir en público. Cuando se implementa tooAzure de aplicación Hola, usaremos las variables de entorno en lugar de un archivo de configuración.
 
-## <a name="run-the-application-locally"></a>Ejecución de la aplicación de forma local
-Lleve a cabo los siguientes pasos para probar la aplicación en su máquina local:
+## <a name="run-hello-application-locally"></a>Ejecutar la aplicación hello localmente
+aplicación de hello tootest en el equipo local, lleve a cabo Hola pasos:
 
-1. En la línea de comandos, cambie de directorio al directorio **tasklist** .
-2. Utilice el siguiente comando para iniciar localmente la aplicación:
+1. Desde la línea de comandos de hello, cambiar directorios toohello **tasklist** directory.
+2. Usar hello tras la aplicación localmente de comando toolaunch hello:
    
         npm start
-3. Abra el explorador y navegue a http://127.0.0.1:3000.
+3. Abra un explorador web y navegue toohttp://127.0.0.1:3000.
    
-    Aparecerá una página web similar a la del ejemplo siguiente.
+    Aparece un toohello similar de página web siguiente ejemplo.
    
     ![Página web que muestra una lista de tareas vacía][node-table-finished]
-4. Para crear un nuevo elemento de tarea pendiente, escriba un nombre y una categoría y haga clic en **Agregar elemento**. 
-5. Para marcar una tarea como completa, marque **Completado** y haga clic en **Actualizar tareas**.
+4. toocreate un nuevo elemento de tarea, escriba un nombre y una categoría y haga clic en **Agregar elemento**. 
+5. una tarea como completa, verificación de toomark **completar** y haga clic en **tareas de actualización de**.
    
-    ![Imagen del elemento nuevo en la lista de tareas][node-table-list-items]
+    ![Una imagen de hello nuevo elemento de lista de Hola de tareas][node-table-list-items]
 
-Aunque la aplicación se ejecuta localmente, almacena los datos en el servicio Tabla de Azure.
+Aunque la aplicación hello se ejecuta localmente, está almacenando datos de Hola Hola servicio tabla de Azure.
 
-## <a name="deploy-your-application-to-azure"></a>Implementación de su aplicación en Azure
-En los pasos de esta sección se usan las herramientas de línea de comandos de Azure para crear una nueva aplicación web en el Servicio de aplicaciones y después implementar la aplicación mediante Git. Para realizar estos pasos debe tener una suscripción a Azure.
+## <a name="deploy-your-application-tooazure"></a>Implementar la aplicación tooAzure
+pasos de Hello en esta sección use hello Azure herramientas de línea de comandos toocreate una nueva aplicación web de servicio de aplicaciones y, a continuación, usan Git toodeploy la aplicación. tooperform estos pasos debe tener una suscripción de Azure.
 
 > [!NOTE]
-> Estos pasos también pueden llevarse a cabo usando el [Azure Portal](https://portal.azure.com/). Consulte [Compilación e implementación de una aplicación web de Node.js en el Servicio de aplicaciones de Azure].
+> Estos pasos también se pueden realizar mediante el uso de hello [Portal de Azure](https://portal.azure.com/). Consulte [Compilación e implementación de una aplicación web de Node.js en el Servicio de aplicaciones de Azure].
 > 
-> Si esta es la primera aplicación web que crea, debe usar el Portal de Azure para implementarla.
+> Si se trata de hello primera aplicación web que ha creado, debe usar hello Azure Portal toodeploy esta aplicación.
 > 
 > 
 
-Para empezar, instale la [CLI de Azure] escribiendo el siguiente comando desde la línea de comandos:
+tooget iniciado, instalar hello [CLI de Azure] escribiendo el siguiente comando desde la línea de comandos de Hola de hello:
 
     npm install azure-cli -g
 
 ### <a name="import-publishing-settings"></a>Importación de la configuración de publicación
 En este paso, descargará un archivo que contiene información acerca de su suscripción.
 
-1. Escriba el comando siguiente:
+1. Escriba el siguiente comando de hello:
    
         azure login
    
-    Este comando inicia un explorador y se desplaza a la página de descarga. Si se le solicita, inicie sesión con la cuenta asociada a su suscripción de Azure.
+    Este comando inicia un explorador y desplaza la página de descarga de toohello. Si se le solicita, inicie sesión con la cuenta de hello asociada con su suscripción de Azure.
    
-    <!-- ![The download page][download-publishing-settings] -->
+    <!-- ![hello download page][download-publishing-settings] -->
    
-    La descarga del archivo se inicia automáticamente; si esto no ocurre, puede hacer clic en el vínculo al comienzo de la página para descargar el archivo manualmente. Guarde el archivo y anote la ruta de acceso del archivo.
-2. Escriba el siguiente comando para importar la configuración.
+    descarga del archivo Hola se iniciará automáticamente; Si no es así, puede hacer clic Hola vínculo al principio de Hola Hola toomanually descarga Hola del archivo de página. Guardar ruta de archivo de Hola de archivo y observe Hola.
+2. Escriba Hola después de la configuración del comando de Hola tooimport:
    
         azure account import <path-to-file>
    
-    Especifique la ruta y el nombre de archivo del archivo de configuración de publicación que descargó en el paso anterior.
-3. Después de importar la configuración, elimine el archivo de configuración de publicación. Ya no es necesario y contiene información confidencial relacionada con su suscripción de Azure.
+    Especifique el nombre de ruta de acceso y de Hola de hello publicar el archivo de configuración que ha descargado en el paso anterior de Hola.
+3. Después de importa configuración de hello, eliminar Hola publicar el archivo de configuración. Ya no es necesario y contiene información confidencial relacionada con su suscripción de Azure.
 
 ### <a name="create-an-app-service-web-app"></a>Crear una aplicación web del Servicio de aplicaciones
-1. En la línea de comandos, cambie de directorio al directorio **tasklist** .
-2. Utilice el comando siguiente para crear una nueva aplicación web.
+1. Desde la línea de comandos de hello, cambiar directorios toohello **tasklist** directory.
+2. Usar hello después comando toocreate una nueva aplicación web.
    
         azure site create --git
    
-    Se le pedirá que especifique el nombre de la aplicación web y la ubicación. Proporcione un nombre único y seleccione la misma ubicación geográfica que la cuenta de Almacenamiento de Azure.
+    Se le pedirá que especifique para la ubicación y el nombre de la aplicación hello. Proporcione un nombre único y seleccione Hola misma ubicación geográfica que la cuenta de almacenamiento de Azure.
    
-    El parámetro `--git` crea un repositorio Git en Azure para esta aplicación web. También inicializa un repositorio Git en el directorio actual si no existe y agrega un [Git remoto] denominado 'azure', que se usa para publicar la aplicación en Azure. Finalmente, crea un archivo **web.config** , que contiene la configuración usada por Azure para hospedar aplicaciones Node. Si se omite el parámetro `--git` , pero el directorio contiene un repositorio de Git, el comando creará el “azure” remoto.
+    Hola `--git` parámetro crea un repositorio Git en Azure para esta aplicación web. También inicializa un repositorio Git en el directorio actual de hello si no existe y agrega un [Git remoto] denominado "azure", que es usado toopublish Hola aplicación tooAzure. Por último, crea un **web.config** archivo, que contiene la configuración utilizada por las aplicaciones de Azure toohost nodo. Si se omite hello `--git` parámetro pero Hola directorio contiene un repositorio Git, comando hello seguirá creando remoto hello 'azure'.
    
-    Después de que este comando se haya completado, verá un resultado similar al siguiente. Observe que la línea que comienza por **Website created at** contiene la dirección URL de la aplicación web.
+    Cuando haya completado este comando, verá el siguiente toohello similar de salida. Tenga en cuenta que Hola línea a partir **sitio Web creado en** contiene la dirección URL de hello para la aplicación web de Hola.
    
         info:   Executing command site create
         help:   Need a site name
@@ -502,33 +502,33 @@ En este paso, descargará un archivo que contiene información acerca de su susc
         info:   site create command OK
    
    > [!NOTE]
-   > Si esta es la primera aplicación web del Servicio de aplicaciones de su suscripción, se le pedirá que use el Portal de Azure para crear la aplicación web. Para obtener más información, consulte [Compilación e implementación de una aplicación web de Node.js en el Servicio de aplicaciones de Azure].
+   > Si se trata de hello primer servicio de aplicaciones web app para su suscripción, estará siguiendo las instrucciones toouse Hola Portal de Azure toocreate hello web app. Para obtener más información, consulte [Compilación e implementación de una aplicación web de Node.js en el Servicio de aplicaciones de Azure].
    > 
    > 
 
 ### <a name="set-environment-variables"></a>Establecimiento de variables de entorno
-En este paso, agregará las variables de entorno a la configuración de la aplicación web en Azure.
-En la línea de comandos, escriba lo siguiente:
+En este paso, agregará la configuración de aplicaciones de web de tooyour de variables de entorno en Azure.
+Desde la línea de comandos de hello, escriba Hola siguiente:
 
     azure site appsetting add
         STORAGE_NAME=<storage account name>;STORAGE_KEY=<storage access key>;PARTITION_KEY=mytasks;TABLE_NAME=tasks
 
 
-Reemplace **<storage account name>** por el nombre de la cuenta de almacenamiento creada anteriormente y **<storage access key>** por la clave de acceso principal para la cuenta de almacenamiento. (Utilice los mismos valores que el archivo config.json que creó anteriormente).
+Reemplace  **<storage account name>**  con el nombre de Hola de almacenamiento de hello de la cuenta que creó anteriormente y reemplace  **<storage access key>**  con la clave de acceso principal de hello para la cuenta de almacenamiento. (Usar Hola mismo valores como archivo config.json hello que creó anteriormente).
 
-También puede establecer las variables de entorno en el [Azure Portal](https://portal.azure.com/):
+Como alternativa, puede establecer las variables de entorno en hello [Portal de Azure](https://portal.azure.com/):
 
-1. Abra la hoja de la aplicación web haciendo clic en **Examinar** > **Web Apps** > el nombre de la aplicación web.
+1. Abra la hoja de la aplicación hello web haciendo clic en **examinar** > **aplicaciones Web** > el nombre de la aplicación web.
 2. En la hoja de la aplicación web, haga clic en **All Settings** (Toda la configuración)  > **Configuración de la aplicación**.
    
      <!-- ![Top Menu](./media/storage-nodejs-use-table-storage-web-site/PollsCommonWebSiteTopMenu.png) -->
-3. Desplácese hacia abajo hasta la sección **Configuración de la aplicación** y agregue los pares clave/valor.
+3. Desplácese hacia abajo toohello **configuración de la aplicación** agregar pares de clave/valor de Hola y la sección.
    
      ![Configuración de la aplicación](./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png)
 4. Haga clic en **GUARDAR**.
 
-### <a name="publish-the-application"></a>Publicación de la aplicación
-Para publicar la aplicación, confirme los archivos de código en Git y, a continuación, inserte en azure/master.
+### <a name="publish-hello-application"></a>Publicar la aplicación hello
+aplicación de hello toopublish, confirmar tooGit de archivos de código de hello y, a continuación, empújelo tooazure/maestro.
 
 1. Restablezca las credenciales de implementación.
    
@@ -537,31 +537,31 @@ Para publicar la aplicación, confirme los archivos de código en Git y, a conti
    
         git add .
         git commit -m "adding files"
-3. Inserte la confirmación en la aplicación web del Servicio de aplicaciones:
+3. Insertar Hola confirmación toohello aplicación de servicio de aplicaciones web:
    
         git push azure master
    
-    Utilice **master** como bifurcación de destino. Al final de la implementación se verá una instrucción similar a la siguiente:
+    Use **maestro** como la bifurcación de destino de Hola. Al final de Hola de implementación de hello, verá un toohello similar de instrucción siguiente ejemplo:
    
-        To https://username@tabletasklist.azurewebsites.net/TableTasklist.git
+        toohttps://username@tabletasklist.azurewebsites.net/TableTasklist.git
           * [new branch]      master -> master
-4. Después de que se haya completado la operación de inserción, diríjase a la URL de la aplicación web que se devolvió anteriormente usando el comando `azure create site` para ver su aplicación.
+4. Una vez completada la operación de inserción de hello, examinar la URL de la aplicación web toohello devuelta previamente por hello `azure create site` tooview de comandos de la aplicación.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Si bien los pasos de este artículo describen el uso de Tabla service para almacenar información, puede también usar [MongoDB](https://mlab.com/azure/). 
+Mientras pasos hello en este artículo describen el uso de información de toostore de servicio de la tabla de Hola, también puede usar [MongoDB](https://mlab.com/azure/). 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 [CLI de Azure]
 
 ## <a name="whats-changed"></a>Lo que ha cambiado
-* Para obtener una guía del cambio de Sitios web a Servicio de aplicaciones, consulte: [Servicio de aplicaciones de Azure y su impacto en los servicios de Azure existentes](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Para una toohello guía consulte cambio con respecto a sitios Web tooApp servicio: [servicio de aplicaciones de Azure y su impacto en los servicios de Azure existente](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- URLs -->
 
 [Compilación e implementación de una aplicación web de Node.js en el Servicio de aplicaciones de Azure]: app-service-web-get-started-nodejs.md
 [Azure Developer Center]: /develop/nodejs/
 
-[node]: http://nodejs.org
+[nodo]: http://nodejs.org
 [Git]: http://git-scm.com
 [Express]: http://expressjs.com
 [for free]: http://windowsazure.com
@@ -570,13 +570,13 @@ Si bien los pasos de este artículo describen el uso de Tabla service para almac
 [CLI de Azure]:../cli-install-nodejs.md
 
 [azure]: https://github.com/Azure/azure-sdk-for-node
-[node-uuid]: https://www.npmjs.com/package/node-uuid
+[nodo uuid]: https://www.npmjs.com/package/node-uuid
 [nconf]: https://www.npmjs.com/package/nconf
 [async]: https://www.npmjs.com/package/async
 
 [Azure Portal]: https://portal.azure.com
 
-[Create and deploy a Node.js application to an Azure Web Site]: app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application tooan Azure Web Site]: app-service-web-get-started-nodejs.md
 
 <!-- Image References -->
 

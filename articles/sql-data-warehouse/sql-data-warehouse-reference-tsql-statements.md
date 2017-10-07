@@ -1,6 +1,6 @@
 ---
-title: Referencia de Transact-SQL de SQL Data Warehouse | Microsoft Docs
-description: "Vínculos a contenido de referencia para los temas de lenguaje Transact-SQL utilizados por Almacenamiento de datos SQL."
+title: referencia de Transact-SQL de almacenamiento de datos aaaSQL | Documentos de Microsoft
+description: "Contenido de tooreference de vínculos de temas de Transact-SQL de hello utilizados por el almacenamiento de datos SQL."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: d6ad9db8eae0dc35580194f2ffbf02eeab6b70d2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b4b3c6cf666e9572a910784c39fd1f7c473d8821
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transact-sql-topics"></a>Temas de Transact-SQL
 ## <a name="data-definition-language-ddl-statements"></a>Instrucciones del Lenguaje de definición de datos (DDL)

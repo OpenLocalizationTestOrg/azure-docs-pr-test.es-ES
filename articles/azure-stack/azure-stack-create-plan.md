@@ -1,5 +1,5 @@
 ---
-title: "Creación de un plan en Azure Stack | Microsoft Docs"
+title: aaaCreate un plan en la pila de Azure | Documentos de Microsoft
 description: "Como administrador de la nube, cree un plan que permita a los suscriptores aprovisionar máquinas virtuales."
 services: azure-stack
 documentationcenter: 
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: erikje
-ms.openlocfilehash: ff34bcd6ba485806baf7963e11393633dd893fa7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3665bae5d212002da43316e62ce73686b4c66eea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Creación de un plan en Azure Stack
-Los [planes](azure-stack-key-features.md) son agrupaciones de uno o varios servicios. Como proveedor puede crear planes y ofrecérselos a sus inquilinos. A su vez, los inquilinos se suscriben a las ofertas para usar los planes y servicios que incluyen. Este ejemplo muestra cómo crear un plan que incluya a los proveedores de recursos de proceso, de red y de almacenamiento. Este plan ofrece a los suscriptores la capacidad de aprovisionar máquinas virtuales.
+Los [planes](azure-stack-key-features.md) son agrupaciones de uno o varios servicios. Como proveedor, puede crear planes de inquilinos de tooyour toooffer. A su vez, los inquilinos suscribirán tooyour ofertas toouse Hola planes y servicios que se incluyen. Este ejemplo muestra cómo toocreate un plan que incluya Hola proveedores de recursos de proceso, red y almacenamiento. Este plan ofrece a los suscriptores Hola capacidad tooprovision las máquinas virtuales.
 
-1. Inicie sesión en el portal de administrador de Azure Stack (https://adminportal.local.azurestack.external). Escriba las credenciales de la cuenta que creó en el paso 5 de la sección [Ejecución del script de PowerShell](azure-stack-run-powershell-script.md).
+1. Inicie sesión en toohello portal del Administrador de pila de Azure (https://adminportal.local.azurestack.external). Escriba credenciales de Hola de cuenta de hello que creó durante el paso 5 de hello [ejecutar script de PowerShell de hello](azure-stack-run-powershell-script.md) sección.
 
-2. Para crear un plan y una oferta a la que los inquilinos puedan suscribirse, haga clic en **Nuevo** > **Ofertas y planes de inquilino** > **Plan**.
+2. toocreate un plan y la oferta que los inquilinos pueden suscribirse a, haga clic en **New** > **inquilino ofrece + planes** > **Plan**.
 
    ![](media/azure-stack-create-plan/image01.png)
-3. En la hoja **Nuevo plan**, rellene **Nombre para mostrar** y **Nombre de recurso**. El Nombre para mostrar es el nombre descriptivo del plan que ven los inquilinos. Solo el administrador puede ver el nombre del recurso. Es el nombre que usan los administradores para trabajar con el plan como un recurso de Administrador de recursos de Azure.
+3. Hola **nuevo Plan** hoja, rellene **nombre para mostrar** y **nombre del recurso**. Hola nombre para mostrar es el nombre descriptivo del plan de Hola que ven los inquilinos. Hola, administrador solo puede ver Hola nombre del recurso. Su Hola nombre administradores usar toowork con hello plan como un recurso de Azure Resource Manager.
 
    ![](media/azure-stack-create-plan/image02.png)
-4. Cree un nuevo **Grupo de recursos** o seleccione uno existente, como contenedor para el plan.
+4. Crear un nuevo **grupo de recursos**, o seleccione uno existente, como un contenedor para el plan de Hola.
 
    ![](media/azure-stack-create-plan/image02a.png)
 5. Haga clic en **Servicios**, seleccione **Microsoft.Compute**, **Microsoft.Network** y **Microsoft.Storage** y, a continuación, haga clic en **Seleccionar**.
 
    ![](media/azure-stack-create-plan/image03.png)
-6. Haga clic en **Cuotas**, haga clic en **Microsoft.Storage (local)** y, a continuación, seleccione la cuota predeterminada o haga clic en **Crear nueva cuota** para personalizar la cuota.
+6. Haga clic en **cuotas**, haga clic en **almacenamiento de Microsoft (local)**y, a continuación, ya sea Hola seleccione predeterminado de cuota o haga clic en **crear nueva cuota** cuota de hello toocustomize.
 
    ![](media/azure-stack-create-plan/image04.png)
-7. Si va a crear una nueva cuota, escriba un nombre para la cuota > establezca los valores de la cuota > haga clic en **Aceptar** > haga clic en el nombre de la nueva cuota.
+7. Si va a crear una nueva cuota, escriba un nombre para la cuota de hello > establecer los valores de cuota de hello > haga clic en **Aceptar** > haga clic en nombre de Hola de cuota nueva Hola.
 
    ![](media/azure-stack-create-plan/image06.png)
-8. Haga clic en **Microsoft.Network (local)** y, a continuación, seleccione la cuota predeterminada o haga clic en **Crear nueva cuota** para personalizar la cuota.
+8. Haga clic en **Microsoft.Network (local)**y, a continuación, ya sea Hola seleccione predeterminado de cuota o haga clic en **crear nueva cuota** cuota de hello toocustomize.
 
     ![](media/azure-stack-create-plan/image07.png)
-9. Si va a crear una nueva cuota, escriba un nombre para la cuota > establezca los valores de la cuota > haga clic en **Aceptar** > haga clic en el nombre de la nueva cuota.
+9. Si va a crear una nueva cuota, escriba un nombre para la cuota de hello > establecer los valores de cuota de hello > haga clic en **Aceptar** > haga clic en nombre de Hola de cuota nueva Hola.
 
     ![](media/azure-stack-create-plan/image08.png)
-10. Haga clic en **Microsoft.Compute (local)** y, a continuación, seleccione la cuota predeterminada o haga clic en **Crear nueva cuota** para personalizar la cuota.
+10. Haga clic en **Microsoft.Compute (local)**y, a continuación, ya sea Hola seleccione predeterminado de cuota o haga clic en **crear nueva cuota** cuota de hello toocustomize.
 
     ![](media/azure-stack-create-plan/image09.png)
-11. Si va a crear una nueva cuota, escriba un nombre para la cuota > establezca los valores de la cuota > haga clic en **Aceptar** > haga clic en el nombre de la nueva cuota.
+11. Si va a crear una nueva cuota, escriba un nombre para la cuota de hello > establecer los valores de cuota de hello > haga clic en **Aceptar** > haga clic en nombre de Hola de cuota nueva Hola.
 
     ![](media/azure-stack-create-plan/image10.png)
-12. En la hoja **Cuotas**, haga clic en **Aceptar** y, a continuación, en la hoja **Nuevo plan** y haga clic en **Crear** para crear el plan.
+12. Hola **cuotas** hoja, haga clic en **Aceptar**y, a continuación, en hello **nuevo Plan** hoja, haga clic en **crear** plan de hello toocreate.
 
     ![](media/azure-stack-create-plan/image11.png)
-13. Para ver el nuevo plan, haga clic en **Todos los recursos**, a continuación, busque el plan y haga clic en su nombre.
+13. toosee su nuevo plan, haga clic en **todos los recursos**, a continuación, busque el plan de Hola y haga clic en su nombre.
 
     ![](media/azure-stack-create-plan/image12.png)
 

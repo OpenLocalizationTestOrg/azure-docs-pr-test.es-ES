@@ -1,6 +1,6 @@
 ---
-title: Uso de PHP para consultar Azure SQL Database | Microsoft Docs
-description: "En este tema se muestra cómo usar PHP para crear un programa que se conecta a una base de datos SQL de Azure y realiza consultas mediante instrucciones Transact-SQL."
+title: aaaUse PHP tooquery base de datos de SQL de Azure | Documentos de Microsoft
+description: "Este tema muestra cómo toouse PHP toocreate un programa que conecta tooan base de datos de SQL Azure y consultas mediante instrucciones Transact-SQL."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,51 +15,51 @@ ms.devlang: php
 ms.topic: hero-article
 ms.date: 08/08/2017
 ms.author: carlrab
-ms.openlocfilehash: 3a43472ad2be4a0fd6f7126f72433acd8b5f25fd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5fc49dcc42ab07cc1bec554be39bdf08dbd6f75e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-php-to-query-an-azure-sql-database"></a>Uso de PHP para consultar una base de datos SQL de Azure
+# <a name="use-php-tooquery-an-azure-sql-database"></a>Usar PHP tooquery una base de datos de SQL Azure
 
-Este tutorial de introducción muestra cómo usar [PHP](http://php.net/manual/en/intro-whatis.php) para crear un programa que se conecta a una base de datos SQL de Azure y utiliza instrucciones Transact-SQL para consultar los datos.
+Este tutorial de inicio rápido se muestra cómo toouse [PHP](http://php.net/manual/en/intro-whatis.php) toocreate un tooan de tooconnect programa SQL Azure la base de datos y usar datos de tooquery de instrucciones de Transact-SQL.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para completar este tutorial, asegúrese de que dispone de lo siguiente:
+toocomplete rápida de este tutorial de inicio, asegúrese de que tiene Hola siguientes:
 
-- Una base de datos SQL de Azure. En esta guía de inicio rápido se utilizan como punto de partida los recursos creados en una de las siguientes guías: 
+- Una base de datos SQL de Azure. Este inicio rápido utiliza recursos de hello creados mediante uno de estos tutoriales: 
 
    - [Creación de la base de datos: Azure Portal](sql-database-get-started-portal.md)
    - [Creación de la base de datos: CLI](sql-database-get-started-cli.md)
    - [Creación de la base de datos: PowerShell](sql-database-get-started-powershell.md)
 
-- Una [regla de firewall de nivel de servidor](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) para la dirección IP pública del equipo que usa para seguir este tutorial.
+- A [regla de firewall de nivel de servidor](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) para la dirección IP pública de hello del equipo de Hola se usa para este tutorial de inicio rápido.
 
 - Ha instalado PHP y el software relacionado para el sistema operativo.
 
-    - **MacOS**: instalación de Homebrew y PHP, instalación del controlador ODBC y SQLCMD y, a continuación, instalación del controlador PHP para SQL Server. Consulte los [pasos 1.2, 1.3 y 2.1](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/mac/).
-    - **Ubuntu**: instalación de PHP y otros paquetes necesarios y, a continuación, instalación del controlador PHP para SQL Server. Consulte los [pasos 1.2 y 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/).
-    - **Windows**: instalación de la versión más reciente de PHP para IIS Express, la versión más reciente de Microsoft Drivers para SQL Server en IIS Express, Chocolatey, el controlador ODBC y SQLCMD. Consulte los [pasos 1.2 y 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).    
+    - **MacOS**: Homebrew instalar PHP, instale el controlador ODBC de Hola y SQLCMD y, a continuación, instale Hola controlador PHP para SQL Server. Consulte los [pasos 1.2, 1.3 y 2.1](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/mac/).
+    - **Ubuntu**: instalar PHP y otros necesarios paquetes y, a continuación, Hola instalar controladores de PHP para SQL Server. Consulte los [pasos 1.2 y 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/).
+    - **Windows**: versión más reciente de Hola de instalación de PHP para IIS Express, versión más reciente de Hola de Microsoft Drivers para SQL Server en IIS Express, Chocolatey, el controlador ODBC de Hola y SQLCMD. Consulte los [pasos 1.2 y 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).    
 
 ## <a name="sql-server-connection-information"></a>Información de conexión de SQL server
 
-Obtención de la información de conexión necesaria para conectarse a Azure SQL Database. En los procedimientos siguientes, necesitará el nombre completo del servidor, el nombre de la base de datos y la información de inicio de sesión.
+Obtener base de datos SQL de Azure de toohello de tooconnect de hello conexión información necesaria. Necesitará el nombre del servidor de acceso completa de hello, nombre de base de datos y la información de inicio de sesión en los procedimientos siguientes de Hola.
 
-1. Inicie sesión en [Azure Portal](https://portal.azure.com/).
-2. Seleccione **Bases de datos SQL** en el menú de la izquierda y haga clic en la base de datos en la página **Bases de datos SQL**. 
-3. En la página **Introducción** de la base de datos, revise el nombre completo del servidor tal como se muestra en la siguiente imagen. Mantenga el puntero sobre el nombre del servidor hasta que aparezca la opción **Haga clic para copiar**.  
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
+2. Seleccione **bases de datos SQL** desde el menú de la izquierda, hello y haga clic en la base de datos en hello **bases de datos SQL** página. 
+3. En hello **Introducción** página de la base de datos, revisión Hola servidor nombre completo como se muestra en hello después de la imagen. Puede mantener el mouse sobre toobring de nombre de servidor hello seguridad hello **haga clic en toocopy** opción.  
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Si olvida la información de inicio de sesión del servidor, navegue hasta la página del servidor de SQL Database para ver el nombre de administrador del servidor y, si es necesario, restablecer la contraseña.     
+4. Si olvida su información de inicio de sesión de servidor, vaya toohello base de datos de SQL server página tooview Hola administrador nombre del servidor y, si es necesario, restablecer la contraseña de Hola.     
     
-## <a name="insert-code-to-query-sql-database"></a>Inserción de código para consultar la base de datos SQL
+## <a name="insert-code-tooquery-sql-database"></a>Insertar la base de datos SQL de tooquery de código
 
 1. En el editor de texto, cree un nuevo archivo, **sqltest.php**.  
 
-2. Reemplace el contenido con el código siguiente y agregue los valores adecuados para el servidor, la base de datos, el usuario y la contraseña.
+2. Reemplace el contenido de hello con hello siguiente de código y agregue los valores adecuados de hello para el servidor, la base de datos, el usuario y la contraseña.
 
    ```PHP
    <?php
@@ -69,7 +69,7 @@ Obtención de la información de conexión necesaria para conectarse a Azure SQL
        "Uid" => "your_username",
        "PWD" => "your_password"
    );
-   //Establishes the connection
+   //Establishes hello connection
    $conn = sqlsrv_connect($serverName, $connectionOptions);
    $tsql= "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
            FROM [SalesLT].[ProductCategory] pc
@@ -86,15 +86,15 @@ Obtención de la información de conexión necesaria para conectarse a Azure SQL
    ?>
    ```
 
-## <a name="run-the-code"></a>Ejecución del código
+## <a name="run-hello-code"></a>Ejecutar código de hello
 
-1. En el símbolo del sistema, ejecute los siguientes comandos:
+1. En hello símbolo del sistema, ejecute hello siguientes comandos:
 
    ```php
    php sqltest.php
    ```
 
-2. Compruebe que se han devuelto las primeras 20 filas y, a continuación, cierre la ventana de la aplicación.
+2. Compruebe que 20 filas de top Hola se devuelven y, a continuación, cierre la ventana de la aplicación hello.
 
 ## <a name="next-steps"></a>Pasos siguientes
 - [Diseño de su primera base de datos SQL de Azure](sql-database-design-first-database.md)

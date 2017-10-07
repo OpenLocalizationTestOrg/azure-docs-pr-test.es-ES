@@ -1,6 +1,6 @@
 ---
-title: "Administración de recursos con la CLI de Azure | Microsoft Docs"
-description: "Utilice la interfaz de línea de comandos (CLI) de Azure para administrar recursos y grupos de Azure"
+title: recursos de aaaManage con hello CLI de Azure | Documentos de Microsoft
+description: "Usar toomanage de interfaz de línea de comandos (CLI) de Azure de hello Azure recursos y grupos"
 editor: 
 manager: timlt
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
-ms.openlocfilehash: 3ad4e68b90979fd7f9d3ddf5278e65e19cb07152
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3df70e123d14d3bbf2648c71970bac1db4afc025
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Uso de la CLI de Azure para administrar los recursos y grupos de recursos de Azure
+# <a name="use-hello-azure-cli-toomanage-azure-resources-and-resource-groups"></a>Usar hello Azure CLI toomanage Azure y grupos de recursos
 > [!div class="op_single_selector"]
 > * [Portal](resource-group-portal.md) 
 > * [CLI de Azure](xplat-cli-azure-resource-manager.md)
@@ -29,42 +29,42 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-La interfaz de línea de comandos de Azure (CLI de Azure) es una de las diversas herramientas que puede usar para implementar y administrar recursos con Resource Manager. En este artículo se describen formas habituales de administrar los recursos y los grupos de recursos de Azure con la CLI de Azure en el modo Resource Manager. Para información sobre el uso de la CLI para implementar recursos, consulte [Implementación de recursos con plantillas de Azure Resource Manager y la CLI de Azure](resource-group-template-deploy-cli.md). Para información sobre el Administrador de recursos de Azure, consulte [Información general de Azure Resource Manager](resource-group-overview.md).
+Hola interfaz de línea de comandos de Azure (Azure CLI) es una de las diversas herramientas puede usar toodeploy y administrar recursos con el Administrador de recursos. Este artículo detallan comunes formas toomanage Azure y grupos de recursos mediante el uso de Hola CLI de Azure en el modo de administrador de recursos. Para obtener información sobre el uso de recursos de toodeploy de hello CLI, consulte [implementar los recursos con plantillas de administrador de recursos y la CLI de Azure](resource-group-template-deploy-cli.md). Para obtener información acerca de los recursos de Azure y el Administrador de recursos, visite hello [Azure Resource Manager Overview](resource-group-overview.md).
 
 > [!NOTE]
-> Para administrar recursos de Azure con la CLI de Azure, necesitará [instalar la CLI de Azure](../cli-install-nodejs.md) e [iniciar sesión en Azure](../xplat-cli-connect.md) mediante el comando `azure login`. Asegúrese de que la CLI está en modo de Resource Manager (ejecute `azure config mode arm`). Si ha realizado estas acciones, ya está preparado para comenzar.
+> toomanage Azure recursos con hello CLI de Azure, que necesita demasiado[instalar hello Azure CLI](../cli-install-nodejs.md), y [sesión tooAzure](../xplat-cli-connect.md) mediante el uso de hello `azure login` comando. Asegúrese de hello seguro CLI está en modo de administrador de recursos (ejecutar `azure config mode arm`). Si lo ha hecho, está listo toogo.
 > 
 > 
 
 ## <a name="get-resource-groups-and-resources"></a>Obtención de recursos y grupos de recursos
 ### <a name="resource-groups"></a>Grupos de recursos
-Para obtener una lista de todos los grupos de recursos de la suscripción y sus ubicaciones, ejecute este comando.
+tooget una lista de todos los grupos de recursos en su suscripción y sus ubicaciones, ejecute este comando.
 
     azure group list
 
 
 ### <a name="resources"></a>Recursos
- Para ver todos los recursos de un grupo, como el denominado *testRG*, utilice el comando siguiente:
+ el nombre de todos los recursos de un grupo, por ejemplo, uno con toolist *testRG*, usar hello siguiente comando:
 
     azure resource list testRG
 
-Para ver un recurso individual dentro del grupo, como la máquina virtual denominada *MyUbuntuVM*, use un comando similar al siguiente:
+un recurso individual en el grupo de hello, como una máquina virtual denominada tooview *MyUbuntuVM*, utilizar un comando como Hola siguiente:
 
     azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
 
-Observe el parámetro **Microsoft.Compute/virtualMachines**. Este parámetro indica el tipo del recurso sobre el que solicita información.
+Hola aviso **Microsoft.Compute/virtualMachines** parámetro. Este parámetro indica el tipo hello del recurso de Hola que solicita información en.
 
 > [!NOTE]
-> Cuando use los comandos **azure resource** distintos del comando **list**, debe especificar la versión de API del recursos con el parámetro **-o**. Si no está seguro sobre la versión de API, consulte el archivo de plantilla y busque el campo apiVersion correspondiente al recurso. Para más información acerca de las versiones de API de Resource Manager, vea [Tipos y proveedores de recursos](resource-manager-supported-services.md).
+> Cuando se usa hello **recursos de azure** comandos que no sean de hello **lista** de comandos, debe especificar versión de Hola API de recursos de hello con hello **-o** parámetro. Si no está seguro acerca de la versión de la API de hello, consulte el archivo de plantilla de hello y encontrar el campo de valor apiVersion de hello para el recurso de Hola. Para más información acerca de las versiones de API de Resource Manager, vea [Tipos y proveedores de recursos](resource-manager-supported-services.md).
 > 
 > 
 
-Cuando se consultan los detalles de un recurso, generalmente resulta útil usar el parámetro `--json`. Este parámetro hace que el resultado sea más legible, ya que algunos valores son estructuras anidadas o colecciones. El siguiente ejemplo demuestra los resultados obtenidos con el comando **show** como un documento JSON.
+Al ver los detalles en un recurso, a menudo resulta útil toouse hello `--json` parámetro. Este parámetro hace que los resultados Hola sea más legible, porque algunos de los valores son estructuras anidadas o colecciones. Hello en el ejemplo siguiente se muestra devolver resultados Hola de hello **mostrar** comando como un documento JSON.
 
     azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15" --json
 
 > [!NOTE]
-> Si lo desea, guarde los datos JSON en un archivo con el carácter &gt; para dirigir la salida a un archivo. Por ejemplo:
+> Si lo desea, guarde Hola JSON datos toofile mediante el uso de hello &gt; archivo de tooa de salida de caracteres toodirect Hola. Por ejemplo:
 > 
 > `azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15" --json > myfile.json`
 > 
@@ -74,24 +74,24 @@ Cuando se consultan los detalles de un recurso, generalmente resulta útil usar 
 [!INCLUDE [resource-manager-tag-resources-cli](../../includes/resource-manager-tag-resources-cli.md)]
 
 ## <a name="manage-resources"></a>Administración de recursos
-Para agregar un recurso como una cuenta de almacenamiento a un grupo de recursos, ejecute un comando similar al siguiente:
+tooadd un recurso como un grupo de recursos tooa de cuenta de almacenamiento, ejecute un comando similar al:
 
     azure resource create testRG MyStorageAccount "Microsoft.Storage/storageAccounts" "westus" -o "2015-06-15" -p "{\"accountType\": \"Standard_LRS\"}"
 
-Además de especificar la versión de API del recurso con el parámetro **-o**, use el parámetro **-p** que pasa una cadena con formato JSON con cualquier propiedad necesaria o adicional.
+Además toospecifying Hola versión de API de recurso de hello con hello **-o** parámetro, use hello **-p** toopass formato JSON de la cadena de parámetros con cualquier necesario o propiedades adicionales.
 
-Para eliminar un recurso existente, como un recurso de máquina virtual, use un comando como el siguiente:
+toodelete un recurso existente como un recurso de la máquina virtual, use un comando como Hola siguiente:
 
     azure resource delete testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
 
-Para trasladar recursos existentes a otro grupo de recursos o a otra suscripción, use el comando **azure resource move**. En el siguiente ejemplo se muestra cómo trasladar una Caché de Redis a un nuevo grupo de recursos. En el parámetro **-i**, ofrezca una lista separada por comas del identificador de recurso que se va a trasladar.
+existente toomove grupo de recursos de tooanother de recursos o suscripción, utilice hello **mover recursos de azure** comando. Hola siguiente ejemplo se muestra cómo toomove caché en Redis tooa nuevo grupo de recursos. Hola **-i** parámetro, proporcione una lista separada por comas de toomove del Id. de recurso Hola.
 
     azure resource move -i "/subscriptions/{guid}/resourceGroups/OldRG/providers/Microsoft.Cache/Redis/examplecache" -d "NewRG"
 
-## <a name="control-access-to-resources"></a>Control de acceso a los recursos
-Puede utilizar la CLI de Azure para crear y administrar directivas para controlar el acceso a los recursos de Azure. Para más información acerca de las definiciones de directivas y de la asignación de directivas a los recursos, consulte [Uso de directivas para administrar los recursos y controlar el acceso](resource-manager-policy.md).
+## <a name="control-access-tooresources"></a>Tooresources de acceso de control
+Puede usar hello toocreate de CLI de Azure y administrar directivas toocontrol acceso tooAzure recursos. Para obtener información acerca de las definiciones de directiva y asignar tooresources de directivas, consulte [usar Directiva toomanage recursos y controlar el acceso](resource-manager-policy.md).
 
-Por ejemplo, defina la siguiente directiva para denegar todas las solicitudes cuya ubicación no sea oeste de Estados Unidos o centro-norte de Estados Unidos y guardarla en el archivo de definición de directivas policy.json:
+Por ejemplo, definir Hola después directiva toodeny todas las solicitudes donde la ubicación no es oeste de Estados Unidos o Ee.uu. Central Norte y guardar policy.json de archivo de definición de directiva de toohello:
 
     {
     "if" : {
@@ -105,50 +105,50 @@ Por ejemplo, defina la siguiente directiva para denegar todas las solicitudes cu
     }
     }
 
-A continuación, ejecute el comando **policy definition create**:
+A continuación, ejecute hello **Crear definición de directiva** comando:
 
     azure policy definition create MyPolicy -p c:\temp\policy.json
 
-Este comando muestra una salida similar a la siguiente:
+Este comando muestra la siguiente toohello similar de salida:
 
     + Creación de definición de directiva MyPolicy datos:    PolicyName:             MyPolicy datos:    PolicyDefinitionId:     /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/MyPolicy
 
     datos:    PolicyType:             Custom datos:    DisplayName:            undefined datos:    Description:            undefined datos:    PolicyRule:             field=location, in=[westus, northcentralus], effect=deny
 
- Para asignar una directiva en el ámbito que desee, utilice el atributo **PolicyDefinitionId** devuelto por el comando anterior. En el ejemplo siguiente, este ámbito es la suscripción, pero puede restringir el ámbito a recursos individuales o a grupos de recursos:
+ una directiva en el ámbito de Hola que desee, use hello tooassign **PolicyDefinitionId** devueltos por el comando anterior Hola. En el siguiente ejemplo de Hola, este ámbito es suscripción hello, pero puede establecer el ámbito tooresource grupos o recursos individuales:
 
     azure policy assignment create MyPolicyAssignment -p /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/MyPolicy -s /subscriptions/########-####-####-####-############/
 
-Puede obtener, cambiar o quitar definiciones de directivas mediante los comandos **policy definition show**, **policy definition set** y **policy definition delete**.
+Puede obtener, cambiar o quitar las definiciones de directivas mediante hello **mostrar de la definición de directiva**, **conjunto de definiciones de directiva**, y **eliminar la definición de directiva** comandos.
 
-De igual forma, puede obtener, cambiar o quitar asignaciones de directivas mediante los comandos **policy assignment show**, **policy assignment set** y **policy assignment delete**.
+De forma similar, puede obtener, cambiar o quitar las asignaciones de directivas mediante hello **mostrar de la asignación de directiva**, **conjunto de asignación de directiva**, y **Eliminar asignación de directiva** comandos .
 
 ## <a name="export-a-resource-group-as-a-template"></a>Exportación de un grupo de recursos como una plantilla
-Para un grupo de recursos existente, puede ver la plantilla de Resource Manager para el grupo de recursos. Exportar la plantilla ofrece dos ventajas:
+Para un grupo de recursos existente, puede ver la plantilla de administrador de recursos de Hola Hola para grupo de recursos. Exportar plantilla Hola ofrece dos ventajas:
 
-1. Puede automatizar fácilmente las futuras implementaciones de la solución porque toda la infraestructura está definida en la plantilla.
-2. Para familiarizarse con la sintaxis de la plantilla, consulte el JSON que representa la solución.
+1. Puede automatizar fácilmente las futuras implementaciones de soluciones de hello porque toda la infraestructura de Hola se define en la plantilla de Hola.
+2. Familiarícese con la sintaxis de plantilla examinando Hola JSON que representa la solución.
 
-Con la CLI de Azure, puede exportar una plantilla que representa el estado actual de su grupo de recursos o descargar la plantilla que se usó para una implementación determinada.
+Con hello CLI de Azure, se puede exportar una plantilla que representa el estado actual de Hola de su grupo de recursos, o descargar plantilla de Hola que se usó para una implementación concreta.
 
-* **Exportar la plantilla para un grupo de recursos**: resulta útil cuando se han realizado cambios en un grupo de recursos y necesita recuperar la representación JSON del estado actual. Sin embargo, la plantilla generada contiene solo un número mínimo de parámetros y ninguna variable. La mayoría de los valores de la plantilla está codificados. Antes de implementar la plantilla generada, quizás desee convertir más valores en parámetros para poder personalizar la implementación para distintos entornos.
+* **Exportar plantilla Hola para un grupo de recursos** -Esto resulta útil cuando realiza cambios tooa grupo de recursos y necesita tooretrieve Hola representación JSON de su estado actual. Sin embargo, plantilla generada hello contiene solo un número mínimo de parámetros y no hay ninguna variable. La mayoría de los valores de hello en plantilla Hola está codificados. Antes de implementar la plantilla de hello generado, es recomendable tooconvert varios de los valores de hello en los parámetros para que pueda personalizar la implementación de Hola para diferentes entornos.
   
-    Para exportar la plantilla para un grupo de recursos en un directorio local, ejecute el comando `azure group export` como se muestra en el ejemplo siguiente. (Sustituya un directorio local adecuado para su entorno de sistema operativo).
+    plantilla de hello tooexport para un recurso grupo tooa directorio local, ejecute hello `azure group export` comando tal como se muestra en el siguiente ejemplo de Hola. (Sustituya un directorio local adecuado para su entorno de sistema operativo).
   
         azure group export testRG ~/azure/templates/
-* **Descargar la plantilla para una implementación concreta**: resulta útil si necesita ver la plantilla real que se usó para implementar recursos. La plantilla incluye todos los parámetros y las variables definidas para la implementación original. Sin embargo, si alguien de su organización realiza cambios en el grupo de recursos fuera de lo que se define en la plantilla, esta plantilla no representa el estado actual del grupo de recursos.
+* **Descargar plantilla de Hola para una implementación concreta** : Esto es útil cuando necesita tooview Hola real de la plantilla que usa toodeploy recursos. plantilla de Hello incluye todos los parámetros y las variables definidas para la implementación original de Hola. Sin embargo, si alguien de su organización realiza grupo de recursos de toohello de cambios fuera de la definición de hello en plantilla hello, esta plantilla no representa el estado actual de Hola Hola del grupo de recursos.
   
-    Para descargar la plantilla usada para una implementación concreta en un directorio local, ejecute el comando `azure group deployment template download`. Por ejemplo:
+    plantilla de hello toodownload utilizada para un implementación determinada tooa directorio local, ejecute hello `azure group deployment template download` comando. Por ejemplo:
   
         azure group deployment template download TestRG testRGDeploy ~/azure/templates/downloads/
 
 > [!NOTE]
-> La exportación de plantillas es una versión preliminar y no todos los tipos de recursos admiten actualmente la exportación de una plantilla. Al intentar exportar una plantilla, verá un error que indica que algunos recursos no se han exportado. Si es necesario, defina manualmente estos recursos en la plantilla después de descargarla.
+> La exportación de plantillas es una versión preliminar y no todos los tipos de recursos admiten actualmente la exportación de una plantilla. Al intentar tooexport una plantilla, verá un error que indica que algunos recursos no se exportaron. Si es necesario, defina manualmente estos recursos en la plantilla después de descargarla.
 > 
 > 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener detalles de las operaciones de implementación y solucionar los errores de implementación con la CLI de Azure, consulte [View deployment operations](resource-manager-deployment-operations.md) (Visualización de operaciones de implementación).
-* Si desea usar la CLI para configurar una aplicación o un script con objeto de obtener acceso a los recursos, consulte [Uso de la CLI de Azure para crear a una entidad de servicio para acceder a recursos](resource-group-authenticate-service-principal-cli.md).
-* Para obtener instrucciones sobre cómo las empresas pueden utilizar Resource Manager para administrar eficazmente las suscripciones, vea [Scaffold empresarial de Azure: Gobierno de suscripción prescriptivo](resource-manager-subscription-governance.md).
+* detalles de tooget de las operaciones de implementación y solucionar errores de implementación con hello CLI de Azure, consulte [ver las operaciones de implementación](resource-manager-deployment-operations.md).
+* Si desea toouse Hola CLI tooset una aplicación o recursos de script tooaccess, consulte [toocreate de CLI de Azure Use una entidad de servicio tooaccess recursos](resource-group-authenticate-service-principal-cli.md).
+* Para obtener instrucciones sobre cómo las empresas pueden usar el Administrador de recursos tooeffectively administrar suscripciones, vea [scaffold Azure enterprise - regulador prescriptiva suscripción](resource-manager-subscription-governance.md).
 

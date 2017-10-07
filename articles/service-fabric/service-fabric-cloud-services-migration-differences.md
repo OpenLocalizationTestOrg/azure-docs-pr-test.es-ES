@@ -1,6 +1,6 @@
 ---
-title: Diferencias entre Cloud Services y Service Fabric | Microsoft Docs
-description: "Introducción conceptual a la migración de aplicaciones desde Servicios en la nube a Service Fabric."
+title: aaaDifferences entre servicios en la nube y el tejido de servicio | Documentos de Microsoft
+description: "Información general y conceptual para migrar las aplicaciones de servicios en la nube tooService tejido."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 26c0256f6fa299551d92e9bcd058ca359d8c85b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bbc5ef4fe0fe1b0da55454cb6b766925030198fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Obtenga información acerca de las diferencias entre Servicios en la nube y Service Fabric antes de migrar las aplicaciones.
-Microsoft Azure Service Fabric es la plataforma de aplicaciones en la nube de última generación para aplicaciones distribuidas altamente escalables y altamente confiables. Presenta muchas características nuevas para empaquetar, implementar, actualizar y administrar aplicaciones distribuidas en la nube. 
+# <a name="learn-about-hello-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Obtenga información acerca de las diferencias de hello entre servicios en la nube y el tejido de servicio antes de migrar las aplicaciones.
+Microsoft Azure Service Fabric es la plataforma de aplicaciones de nube de próxima generación de Hola para las aplicaciones distribuidas altamente escalables, altamente confiables. Presenta muchas características nuevas para empaquetar, implementar, actualizar y administrar aplicaciones distribuidas en la nube. 
 
-Se trata de una guía de introducción a la migración de aplicaciones desde Servicios en la nube a Service Fabric. Se centra principalmente en las diferencias de diseño y arquitectura entre Servicios en la nube y Service Fabric.
+Se trata de una aplicación de toomigrating de guía de introducción de servicios en la nube tooService tejido. Se centra principalmente en las diferencias de diseño y arquitectura entre Servicios en la nube y Service Fabric.
 
 ## <a name="applications-and-infrastructure"></a>Infraestructura y aplicaciones
-Una diferencia fundamental entre Servicios en la nube y Service Fabric es la relación entre las máquinas virtuales, las cargas de trabajo y aplicaciones. Aquí, una carga de trabajo se define como el código que escribe para realizar una tarea específica o proporcionar un servicio.
+Una diferencia fundamental entre los servicios en la nube y el tejido de servicio es la relación de hello entre las máquinas virtuales, las cargas de trabajo y aplicaciones. A continuación una carga de trabajo se define como código de hello escribir tooperform una tarea específica o proporcionar un servicio.
 
-* **Servicios en la nube tiene que ver con la implementación de aplicaciones como máquinas virtuales.** El código que escriba está estrechamente asociado a una instancia de máquina virtual, como un rol de trabajo o un rol web. Implementar una carga de trabajo en Servicios en la nube es implementar una o más instancias de máquina virtual que ejecutan la carga de trabajo. No hay ninguna separación de las aplicaciones y las máquinas virtuales, por lo que no hay ninguna definición formal de una aplicación. Una aplicación puede considerarse un conjunto de instancias de rol de trabajo o web dentro de una implementación de Servicios en la nube o como una implementación completa de Servicios en la nube. En este ejemplo, se muestra una aplicación como un conjunto de instancias de rol.
+* **Servicios en la nube tiene que ver con la implementación de aplicaciones como máquinas virtuales.** código de Hello que escribe es instancia de máquina virtual de tooa estrechamente acopladas, por ejemplo, un rol Web o trabajo. toodeploy una carga de trabajo de servicios en la nube es toodeploy uno o más VM instancias esa carga de trabajo de ejecución Hola. No hay ninguna separación de las aplicaciones y las máquinas virtuales, por lo que no hay ninguna definición formal de una aplicación. Una aplicación puede considerarse un conjunto de instancias de rol de trabajo o web dentro de una implementación de Servicios en la nube o como una implementación completa de Servicios en la nube. En este ejemplo, se muestra una aplicación como un conjunto de instancias de rol.
 
 ![Aplicaciones y topología de Servicios en la nube][1]
 
-* **Service Fabric se usa para implementar aplicaciones en máquinas virtuales existentes o máquinas que ejecutan Service Fabric en Windows o Linux.** Los servicios que escriba estarán completamente desacoplados de la infraestructura subyacente, que se abstrae mediante la plataforma de aplicaciones de Service Fabric, por lo que una aplicación se puede implementar en varios entornos. Una carga de trabajo en Service Fabric se denomina un "servicio", y uno o más servicios se agrupan en una aplicación definida formalmente, que se ejecuta en la plataforma de aplicaciones de Service Fabric. Varias aplicaciones se pueden implementar en un único clúster de Service Fabric.
+* **Service Fabric es sobre la implementación de aplicaciones tooexisting máquinas virtuales o máquinas que se ejecutan Service Fabric en Windows o Linux.** Servicios de Hello que escribe están completamente desacoplados de hello subyacente de la infraestructura, que se abstrae mediante la plataforma de aplicaciones de Service Fabric hello, por lo que una aplicación puede ser implementado toomultiple entornos. Una carga de trabajo de Service Fabric se conoce como un "servicio"; uno o más servicios se agrupan en una aplicación formalmente definidos por el que se ejecuta en la plataforma de aplicaciones de Service Fabric Hola. Varias aplicaciones pueden ser implementado tooa único clúster de Service Fabric.
 
 ![Aplicaciones y topología de Service Fabric][2]
 
 Service Fabric en sí es una capa de la plataforma de aplicaciones que se ejecuta en Windows o Linux, mientras que Servicios en la nube es un sistema para la implementación de máquinas virtuales administradas de Azure con cargas de trabajo asociadas.
-El modelo de aplicación de Service Fabric tiene varias ventajas:
+modelo de aplicaciones de Service Fabric Hello tiene una serie de ventajas:
 
-* Tiempos de implementación rápidos. La creación de instancias de máquina virtual puede llevar mucho tiempo. En Service Fabric, las máquinas virtuales se implementan solo una vez para formar un clúster que hospeda la plataforma de aplicaciones Service Fabric. Desde ese momento, los paquetes de aplicación pueden implementarse rápidamente en el clúster.
-* Hospedaje de alta densidad. En Servicios en la nube, una máquina virtual de rol de trabajo hospeda una carga de trabajo. En Service Fabric, las aplicaciones son independientes de las máquinas virtuales que las ejecutan, lo que significa que puede implementar un gran número de aplicaciones en un número pequeño de máquinas virtuales, y reducir el costo general en implementaciones de mayor tamaño.
-* La plataforma Service Fabric puede ejecutarse en cualquier parte que tenga equipos de Windows Server o Linux, ya sea en Azure o localmente. La plataforma proporciona una capa de abstracción sobre la infraestructura subyacente, por lo que la aplicación puede ejecutarse en distintos entornos. 
-* Administración de aplicaciones distribuidas. Service Fabric es una plataforma que no solo hospeda aplicaciones distribuidas, también ayuda a administrar su ciclo de vida independientemente de la máquina virtual host o del ciclo de vida de la máquina.
+* Tiempos de implementación rápidos. La creación de instancias de máquina virtual puede llevar mucho tiempo. En el tejido de servicio, las máquinas virtuales se implementan solo una vez tooform un clúster que hospeda Hola plataforma de aplicaciones de Service Fabric. Desde ese momento, los paquetes de aplicación pueden ser implementado toohello clúster muy rápidamente.
+* Hospedaje de alta densidad. En Servicios en la nube, una máquina virtual de rol de trabajo hospeda una carga de trabajo. En el tejido de servicio, las aplicaciones son independientes de hello las máquinas virtuales que se ejecutan, lo que significa que puede implementar un gran número de aplicaciones tooa pocas máquinas virtuales, que pueden reducir el costo total para implementaciones más grandes.
+* Hola Service Fabric plataforma puede ejecutarse en cualquier lugar que tiene equipos de Windows Server o Linux, ya sea local o Azure. plataforma de Hello proporciona una capa de abstracción a través de la infraestructura subyacente de Hola para que la aplicación pueda ejecutarse en distintos entornos. 
+* Administración de aplicaciones distribuidas. Service Fabric es una plataforma que no solo hospeda las aplicaciones distribuidas, pero también le ayuda a administrar su ciclo de vida independientemente Hola hospeda la máquina virtual o del ciclo de vida de la máquina.
 
 ## <a name="application-architecture"></a>Arquitectura de la aplicación
-La arquitectura de una aplicación de Servicios de nube generalmente incluye numerosas dependencias de servicios externos, como Bus de servicio, Tabla y Almacenamiento de blobs de Azure, SQL, Redis y otros, para administrar el estado y los datos de una aplicación y la comunicación entre los roles web y los roles de trabajo en una implementación de Servicios en la nube. Un ejemplo de una aplicación de Servicios en la nube completa podría tener este aspecto:  
+Hello arquitectura de una aplicación de servicios en la nube normalmente incluye numerosas dependencias externas, como Service Bus, tabla de Azure y almacenamiento de blobs, SQL, Redis y otros toomanage Hola estado y los datos de una aplicación y la comunicación entre Web y los Roles de trabajo en una implementación de servicios en la nube. Un ejemplo de una aplicación de Servicios en la nube completa podría tener este aspecto:  
 
 ![Arquitectura de Servicios en la nube][9]
 
-Las aplicaciones de Service Fabric también pueden usar los mismos servicios externos en una aplicación completa. Con este ejemplo de arquitectura de Servicios en la nube, la ruta de migración más sencilla desde Servicios en la nube a Service Fabric es reemplazar solo la implementación de Servicios en la nube por una aplicación de Service Fabric y mantener la arquitectura general de la misma. Los roles web y de trabajo se pueden portar a servicios sin estado de Service Fabric con cambios mínimos en el código.
+Aplicaciones de Service Fabric también pueden elegir toouse Hola mismo servicios externos en una aplicación completa. Con este ejemplo de arquitectura de servicios en la nube, Hola la ruta de acceso de migración más sencilla de servicios en la nube tooService tejido es tooreplace implementación solo para hello servicios en la nube con una aplicación de Service Fabric, mantener Hola arquitectura global Hola igual. Hola Web y Roles de trabajo pueden ser servicios sin estado de Fabric tooService migrado con cambios mínimos en el código.
 
 ![Arquitectura de Service Fabric después de una migración simple][10]
 
-En esta etapa, el sistema funcionará igual que antes. Aprovechando las características con estado de Service Fabric, los almacenes de estado externos se pueden internalizar como servicios con estado, cuando corresponda. Esto es más complicado que una migración simple de roles web y de trabajo a servicios sin estado de Service Fabric, ya que requiere escribir servicios personalizados que proporcionen la aplicación una funcionalidad equivalente a la que ofrecían los servicios externos. Las ventajas de hacerlo son: 
+En esta fase, debe continuar sistema hello toowork Hola igual que antes. Aprovechando las características con estado de Service Fabric, los almacenes de estado externos se pueden internalizar como servicios con estado, cuando corresponda. Esto es más complicado que una migración simple de servicios Web y Roles de trabajo tooService tejido sin estado, ya que requiere servicios personalizados que proporcionan aplicaciones de tooyour una funcionalidad equivalente como servicios externos Hola hacían antes de escribir. Hola ventajas de hacerlo se incluyen: 
 
 * Eliminación de dependencias externas 
-* Unificación de los modelos de implementación, administración y actualización. 
+* Implementación de Hola y unificador, administración y modelos de actualización. 
 
 Una arquitectura de ejemplo resultante de internalizar estos servicios podría tener este aspecto:
 
@@ -66,32 +66,32 @@ Una arquitectura de ejemplo resultante de internalizar estos servicios podría t
 La mayoría de las aplicaciones del Servicio en la nube constan de más de un nivel. De forma similar, una aplicación de Service Fabric consta de más de un servicio (normalmente muchos servicios). Dos modelos de comunicación comunes son la comunicación directa y a través de un almacenamiento externo duradero.
 
 ### <a name="direct-communication"></a>Comunicación directa
-Con la comunicación directa, los niveles pueden comunicarse directamente a través del punto de conexión expuesto por cada nivel. En los entornos sin estado tales como Servicios en la nube, esto significa seleccionar una instancia de un rol de VM, al azar o por turnos, para equilibrar la carga y conectarse directamente a su punto de conexión.
+Con la comunicación directa, los niveles pueden comunicarse directamente a través del punto de conexión expuesto por cada nivel. En entornos sin estado como servicios en la nube, este significa que al seleccionar una instancia de un rol de VM, ya sea al azar o carga de round robin toobalance y conecta tooits endpoint directamente.
 
 ![Comunicación directa de Servicios en la nube][5]
 
- La comunicación directa es un modelo de comunicación común en Service Fabric. La principal diferencia entre Service Fabric y Servicios en la nube es que en Servicios en la nube se conecta a una máquina virtual, mientras que en Service Fabric se conecta a un servicio. Esta distinción es importante por dos motivos:
+ La comunicación directa es un modelo de comunicación común en Service Fabric. Hola principal diferencia entre Service Fabric y servicios en la nube es que servicios en la nube conectarse tooa máquina virtual, mientras que en el tejido de servicio se conecta el servicio de tooa. Esta distinción es importante por dos motivos:
 
-* En Service Fabric, los servicios no están enlazados a las máquinas virtuales que los hospedan y pueden moverse por el clúster y; de hecho, se espera que lo hagan por varias razones: equilibrio de recursos, conmutación por error, actualizaciones de aplicaciones y de infraestructura, y restricciones de colocación o carga. Esto significa que la dirección de una instancia de servicio se puede cambiar en cualquier momento. 
+* Servicios de Service Fabric no son máquinas virtuales de toohello enlazado que hospedan; servicios puede moverse por clúster de Hola y de hecho, son toomove esperado alrededor por varias razones: equilibrio de recursos, conmutación por error, las actualizaciones de aplicaciones y la infraestructura y las restricciones de posición o de carga. Esto significa que la dirección de una instancia de servicio se puede cambiar en cualquier momento. 
 * En Service Fabric, una máquina virtual puede hospedar varios servicios, cada uno con puntos de conexión únicos.
 
-Service Fabric proporciona un mecanismo de detección de servicios, llamado Servicio de nombres, que puede usarse para resolver direcciones de puntos de conexión. 
+Service Fabric proporciona un mecanismo de detección de servicio, llamado hello servicio de nombres, que puede ser usado tooresolve direcciones de extremo de servicios. 
 
 ![Comunicación directa de Service Fabric][6]
 
 ### <a name="queues"></a>Colas
-Un mecanismo de comunicación común entre los niveles en entornos sin estado, como Servicios en la nube, es usar una cola de almacenamiento externo para almacenar a largo plazo tareas de trabajo de un nivel a otro. Un escenario común es un nivel web que envía trabajos a una cola de Azure o Bus de servicio, y las instancias de rol de trabajo pueden quitar de la cola los trabajos y procesarlos.
+Un mecanismo de comunicación común entre las capas de entornos sin estado como servicios en la nube es toouse un toodurably de cola de almacenamiento externo almacenar las tareas de trabajo de un nivel tooanother. Un escenario común es un nivel de web que envía trabajos tooan cola de Azure o Bus de servicio donde pueden quitar de la cola y procese los trabajos de hello instancias de rol de trabajo.
 
 ![Comunicación mediante la cola de Servicios en la nube][7]
 
-Puede usarse el mismo modelo de comunicación en Service Fabric. Esto puede ser útil al migrar una aplicación existente de Servicios en la nube a Service Fabric. 
+Hola puede utilizarse el mismo modelo de comunicación de Service Fabric. Esto puede ser útil cuando se migra un tooService de aplicación de servicios en la nube tejido existente. 
 
 ![Comunicación directa de Service Fabric][8]
 
 ## <a name="next-steps"></a>Pasos siguientes
-La ruta de migración más sencilla desde Servicios en la nube a Service Fabric es reemplazar solo la implementación de Servicios en la nube por una aplicación de Service Fabric y mantener la arquitectura general de la misma. El siguiente artículo proporciona una guía para ayudar a convertir un rol de trabajo o web en un servicio sin estado de Service Fabric.
+Hello ruta de migración más sencilla de tooService de servicios en la nube Fabric es tooreplace solo hello implementación de servicios en la nube con una aplicación de Service Fabric, mantener Hola arquitectura global de la aplicación aproximadamente Hola igual. Hola artículo siguiente proporciona a una guía toohelp convert un tooa de rol de trabajo Web o de servicio sin estado de Service Fabric.
 
-* [Migración sencilla: convertir un rol de trabajo o web en un servicio sin estado de Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+* [Migración simple: convertir un tooa de rol de trabajo Web o de servicio sin estado de Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-cloud-services-migration-differences/topology-cloud-services.png

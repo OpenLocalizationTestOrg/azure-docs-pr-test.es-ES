@@ -1,6 +1,6 @@
 ---
-title: "Incorporación de una aplicación de Java a Aplicaciones web del Servicio de aplicaciones de Azure"
-description: "Este tutorial muestra cómo agregar una página o aplicación a su instancia de Aplicaciones web del Servicio de aplicaciones de Azure que ya está configurado para usar Java."
+title: "aaaAdd una tooAzure de aplicación de Java aplicación del servicio de aplicaciones Web"
+description: "Este tutorial muestra cómo tooadd una instancia de tooyour de aplicación o página de aplicaciones Web de servicio de aplicación de Azure que ya está configurado toouse Java."
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,28 +14,28 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: c28e7c499ed02b759df580f4b14a971b6aec5b67
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2feb464b2933921ad2887779a6b7589634e2e2f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-a-java-application-to-azure-app-service-web-apps"></a>Incorporación de una aplicación de Java a Aplicaciones web del Servicio de aplicaciones de Azure
-Cuando haya inicializado la aplicación web de Java en [Azure App Service][Azure App Service] tal como se documenta en [Creación de una aplicación web de Java en Azure App Service](web-sites-java-get-started.md), podrá cargar su aplicación colocando su WAR en la carpeta **webapps**.
+# <a name="add-a-java-application-tooazure-app-service-web-apps"></a>Agregar una tooAzure de aplicación de Java aplicación del servicio de aplicaciones Web
+Una vez que se ha inicializado la aplicación web de Java en [servicio de aplicaciones de Azure] [ Azure App Service] tal como se documenta en [crear una aplicación web de Java en el servicio de aplicación de Azure](web-sites-java-get-started.md), puede cargar la aplicación mediante la colocación de la guerra en hello **móviles** carpeta.
 
-La ruta de acceso de navegación a la carpeta **webapps** varía en función de cómo haya configurado la instancia de Aplicaciones web.
+Hola toohello de ruta de acceso de navegación **móviles** carpeta difiere en función de cómo configurar la instancia de aplicaciones Web.
 
-* Si configura su aplicación web con Azure Marketplace, la ruta de acceso a la carpeta **webapps** tiene el formato **d:\home\site\wwwroot\bin\application\_server\webapps**, donde **application\_server** es el nombre del servidor de la aplicación vigente en su instancia de Web Apps. 
-* Si configura su aplicación web con la interfaz de usuario de configuración de Azure, la ruta de acceso a la carpeta **webapps** tiene el formato **d:\home\site\wwwroot\webapps**. 
+* Si configuró la aplicación web mediante el uso de hello Azure Marketplace, Hola toohello de ruta de acceso **móviles** carpeta se encuentra en el formulario de hello **d:\home\site\wwwroot\bin\application\_server\webapps**, donde **aplicación\_server** es nombre Hola Hola del servidor de aplicaciones en vigor para la instancia de aplicaciones Web. 
+* Si configuró la aplicación web mediante el uso de hello UI de configuración de Azure, Hola toohello de ruta de acceso **móviles** carpeta se encuentra en el formulario de hello **d:\home\site\wwwroot\webapps**. 
 
-Tenga en cuenta que puede utilizar el control de código fuente para cargar la aplicación o páginas web, incluso en [escenarios de integración continua](app-service-continuous-deployment.md). FTP también es una opción para cargar la aplicación o las páginas web; para más información sobre cómo implementar las aplicaciones a través de FTP, consulte [Documentación de implementación de Azure App Service].
+Tenga en cuenta que puede usar tooupload de control de código fuente de la aplicación o páginas web, incluidos [escenarios de integración continua](app-service-continuous-deployment.md). FTP también es una opción para cargar la aplicación o páginas web; Para obtener más información acerca de cómo implementar las aplicaciones a través de FTP, consulte [implementar su aplicación de servicio de aplicación tooAzure].
 
-Nota para aplicaciones web de Tomcat: después de cargar el archivo WAR a la carpeta **webapps** , el servidor de la aplicación Tomcat detectará que lo ha agregado y lo cargará automáticamente. Tenga en cuenta que si copia los archivos (excepto los archivos WAR) al directorio raíz, será necesario reiniciar el servidor de aplicaciones antes de utilizar esos archivos. La funcionalidad de carga automática para las aplicaciones web de Java de Tomcat que se ejecutan en Azure se basa en un nuevo archivo WAR que se agrega, o en archivos o directorios nuevos que se agregan a la carpeta **webapps** . 
+Tenga en cuenta para las aplicaciones web Tomcat: una vez que haya cargado la toohello de archivo WAR **móviles** carpeta, servidor de aplicaciones de Tomcat Hola detectará que haya agregado y lo cargará automáticamente. Tenga en cuenta que si copia el directorio raíz de los archivos (excepto archivos WAR) toohello, servidor de aplicaciones de hello debe toobe reiniciar antes de que se usan esos archivos. funcionalidad de carga automática de Hola para las aplicaciones web Hola Tomcat Java que ejecuta en Azure se basa en un nuevo archivo WAR añadido o nuevos archivos o directorios agregan toohello **móviles** carpeta. 
 
 <a name="see-also"></a>
 
 ## <a name="see-also"></a>Otras referencias
-Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure].
+Para obtener más información acerca del uso de Azure con Java, vea hello [Centro para desarrolladores de Java de Azure].
 
 [application-insights-app-insights-java-get-started](../application-insights/app-insights-java-get-started.md)
 
@@ -43,4 +43,4 @@ Para obtener más información sobre el uso de Azure con Java, vea el [Centro pa
 
 [Centro para desarrolladores de Java de Azure]: https://azure.microsoft.com/develop/java/
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
-[Documentación de implementación de Azure App Service]: ./web-sites-deploy.md
+[implementar su aplicación de servicio de aplicación tooAzure]: ./web-sites-deploy.md

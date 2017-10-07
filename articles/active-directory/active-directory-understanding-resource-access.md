@@ -1,6 +1,6 @@
 ---
-title: "Descripción de acceso a los recursos de Azure | Microsoft Docs"
-description: En este tema se explican conceptos acerca del uso de los administradores de suscripciones para controlar el acceso a los recursos en todo el portal de Azure.
+title: acceso a los recursos aaaUnderstanding en Azure | Documentos de Microsoft
+description: "Este tema explican conceptos acerca del uso de acceso a recursos de suscripción administradores toocontrol Hola portal completo de Azure"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,52 +14,52 @@ ms.topic: article
 ms.date: 07/24/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: f1fda3c4192d0dae4fa60788f4d88fb72ddba4ad
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 06b9c4166bdea849faae67cae3146c6c278deb97
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understanding-resource-access-in-azure"></a>Descripción de acceso a los recursos de Azure
 > [!IMPORTANT]
-> Microsoft recomienda administrar Azure AD con el [Centro de administración de Azure AD](https://aad.portal.azure.com) en Azure Portal en lugar de usar el portal de Azure clásico al que se hace referencia en este artículo. Azure Portal proporciona [control de acceso basado en rol](role-based-access-control-configure.md) para que los recursos de Azure se puedan administrar con mayor precisión.
+> Microsoft recomienda que administrar Azure AD utilizando hello [centro de administración de Azure AD](https://aad.portal.azure.com) Hola portal de Azure en lugar de usar Hola portal de Azure clásico que se hace referencia en este artículo. Hello Azure portal proporciona [el control de acceso basado en roles](role-based-access-control-configure.md) para recursos de Azure se pueden administrar con mayor precisión.
 > 
 > 
 
-En octubre de 2013, el Portal de Azure clásico y las API de administración de servicios se integraron con Azure Active Directory para sentar las bases para mejorar la experiencia del usuario al administrar el acceso a los recursos de Azure. Azure Active Directory ya proporciona excelentes funcionalidades, como la administración de usuarios, la sincronización de directorios locales, la autenticación multifactor y el control de acceso a aplicaciones. Naturalmente, también deben estar disponibles para administrar los recursos globales de Azure.
+En octubre de 2013, Hola portal de Azure clásico y las API de administración de servicios se integraron con Azure Active Directory en el marco de trabajo de orden toolay Hola para mejorar la experiencia del usuario de Hola para administrar el acceso a los recursos de tooAzure. Azure Active Directory ya proporciona excelentes funcionalidades, como la administración de usuarios, la sincronización de directorios locales, la autenticación multifactor y el control de acceso a aplicaciones. Naturalmente, también deben estar disponibles para administrar los recursos globales de Azure.
 
-El control de acceso de Azure se inicia desde una perspectiva de facturación. El propietario de una cuenta de Azure, a la que se accede desde el [Centro de cuentas de Azure](https://account.windowsazure.com/subscriptions), es el administrador de la cuenta (AA). Las suscripciones son un contenedor para la facturación, pero también actúan como límite de seguridad: cada suscripción tiene un administrador de servicios (SA) que puede agregar, quitar y modificar recursos de Azure en esa suscripción mediante el [Portal de Azure clásico](https://manage.windowsazure.com/). El administrador de servicios predeterminado de una suscripción nueva es el administrador de cuenta, pero este puede cambiar al administrador de servicios en el Centro de cuentas de Azure.
+El control de acceso de Azure se inicia desde una perspectiva de facturación. propietario de Hola de una cuenta de Azure, tiene acceso visitando hello [centro de cuentas de Azure](https://account.windowsazure.com/subscriptions), es hello Administrador de cuenta (AA). Las suscripciones son un contenedor para la facturación, pero también actúan como límite de seguridad: cada suscripción tiene un administrador de servicios (SA) que puede agregar, quitar y modificar recursos de Azure en esa suscripción mediante el uso de hello [portal de Azure clásico](https://manage.windowsazure.com/). Hola predeterminado SA de una suscripción nueva es Hola AA, pero Hola AA puede cambiar el SA Hola Hola centro de cuentas de Azure.
 
 <br><br>![Cuentas de Azure][1]
 
-Las suscripciones también tienen una asociación con un directorio. El directorio define un conjunto de usuarios. Pueden ser usuarios del trabajo o de la escuela que crearon el directorio, o bien pueden ser usuarios externos (es decir, Cuentas Microsoft). Las suscripciones son accesibles por un subconjunto de esos usuarios del directorio que se han asignado como administrador de servicios (SA) o coadministrador (CA); la única excepción es que, por razones heredadas, las Cuentas de Microsoft (antes Windows Live ID) pueden asignarse como SA o CA sin estar presentes en el directorio.
+Las suscripciones también tienen una asociación con un directorio. directorio de Hello define un conjunto de usuarios. Estos pueden ser usuarios del trabajo de Hola o la escuela que creó el directorio de Hola o pueden ser usuarios externos (es decir, Accounts de Microsoft). Las suscripciones son accesibles mediante un subconjunto de esos usuarios del directorio que se ha asignado como administrador de servicios (SA) o Coadministrador (CA); Hello solo excepción es que, por razones heredadas, Accounts de Microsoft (anteriormente Windows Live ID) pueden asignarse como SA o CA sin estar presentes en el directorio de Hola.
 
 <br><br>![Control de acceso de Azure][2]
 
-Una funcionalidad del Portal de Azure clásico permite a las asociaciones de seguridad que han iniciado sesión con una cuenta Microsoft cambiar el directorio al que está asociada una suscripción mediante el uso del comando **Editar directorio** de la página **Suscripciones** de **Configuración**. Tenga en cuenta que esta operación tiene implicaciones sobre el control de acceso de esa suscripción.
+Funcionalidad de hello portal de Azure clásico permite SA que han iniciado sesión con un directorio de Hola de toochange Account de Microsoft que está asociado una suscripción mediante el uso de hello **editar directorio** comando hello **Suscripciones** página **configuración**. Tenga en cuenta que esta operación tiene implicaciones en el control de acceso de Hola de esa suscripción.
 
 > [!NOTE]
-> El comando **Editar directorio** del Portal de Azure clásico no está disponible para los usuarios que han iniciado sesión con una cuenta profesional o educativa, porque con dichas cuentas solo pueden iniciar sesión en el directorio al que pertenecen.
+> Hola **editar directorio** comando Hola clásico de Azure portal no está disponible toousers que han iniciado sesión con un trabajo o escuela cuenta porque esas cuentas pueden iniciar sesión en solo toohello toowhich de directorio al que pertenecen.
 > 
 > 
 
 <br><br>![Flujo de inicio de sesión de usuario simple][3]
 
-En un caso simple, una organización (como Contoso) aplicará la facturación y el control de acceso al mismo conjunto de suscripciones. Es decir, el directorio está asociado a suscripciones que pertenecen a una sola cuenta de Azure. Cuando inician sesión correctamente en el Portal de Azure clásico, los usuarios ven dos colecciones de recursos (representados en color naranja en la ilustración anterior):
+En un caso simple hello, una organización (por ejemplo, Contoso) se aplicará la facturación y el control de acceso a través de hello al mismo conjunto de suscripciones. Es decir, el directorio de hello toosubscriptions asociados que pertenecen a una sola cuenta de Azure. Cuando el inicio de sesión correcto toohello portal de Azure clásico, los usuarios ven dos colecciones de recursos (representados en color naranja en la ilustración anterior hello):
 
-* Directorios donde existe su cuenta de usuario (con origen o agregada como entidad de seguridad externa). Tenga en cuenta que el directorio usado para el inicio de sesión no es pertinente para este cálculo, por lo que los directorios se muestran independientemente de dónde se inicia sesión.
-* Recursos que forman parte de las suscripciones asociadas al directorio usados para el inicio de sesión Y a los que puede tener acceso el usuario (donde sea un SA o un CA).
+* Directorios donde existe su cuenta de usuario (con origen o agregada como entidad de seguridad externa). Tenga en cuenta ese directorio de hello usados para el inicio de sesión no es relevante toothis cálculo, por lo que los directorios se muestran siempre independientemente de dónde registran.
+* Pueden tener acceso recursos que forman parte de las suscripciones que están asociados con el directorio de hello usados para el inicio de sesión y que Hola usuario (donde sea un SA o CA).
 
 <br><br>![Usuario con varias suscripciones y directorios][4]
 
-Los usuarios con suscripciones en varios directorios tienen la posibilidad de cambiar el contexto actual del Portal de Azure clásico mediante el filtro de suscripciones. De forma encubierta, esto da lugar a un inicio de sesión diferente en un directorio distinto, pero se realiza de forma transparente mediante el inicio de sesión único (SSO).
+Los usuarios con suscripciones en varios directorios tienen Hola capacidad tooswitch Hola contexto actual de hello portal de Azure clásico mediante el uso de filtro de suscripción de Hola. Tras bastidores de hello, esto da como resultado un directorio distinto de tooa de inicio de sesión independiente, pero esto se consigue de forma transparente mediante el inicio de sesión único (SSO).
 
-Operaciones tales como mover recursos entre suscripciones pueden ser más difíciles como resultado de esta vista única del directorio de suscripciones. Para realizar la transferencia de recursos, puede que sea necesario usar primero el comando **Editar directorio** de la página Suscripciones de **Configuración** para asociar las suscripciones al mismo directorio.
+Operaciones tales como mover recursos entre suscripciones pueden ser más difíciles como resultado de esta vista única del directorio de suscripciones. transferencia de recursos de tooperform hello, es posible que sea necesario toofirst usar hello **editar directorio** comando en la página de suscripciones de hello en **configuración** tooassociate Hola suscripciones toohello mismo directorio .
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para más información acerca de cómo cambiar los administradores de una suscripción de Azure, consulte [Incorporación o cambio de roles de administrador de Azure](../billing/billing-add-change-azure-subscription-administrator.md)
-* Para obtener más información sobre cómo se relaciona Azure Active Directory con la suscripción de Azure, consulte [Asociación de las suscripciones de Azure con Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
-* Para más información sobre cómo asignar roles en Azure AD, consulte [Asignación de roles de administrador en Azure Active Directory (Azure AD)](active-directory-assign-admin-roles.md)
+* toolearn Obtenga más información sobre cómo los administradores de toochange para una suscripción de Azure, vea [cómo tooadd o cambiar roles de administrador de Azure](../billing/billing-add-change-azure-subscription-administrator.md)
+* Para obtener más información sobre cómo Azure Active Directory se relaciona tooyour suscripción de Azure, consulte [se asocian con Azure Active Directory las suscripciones de Azure](active-directory-how-subscriptions-associated-directory.md)
+* Para obtener más información acerca de cómo las funciones de tooassign en Azure AD, consulte [asignar roles de administrador en Azure Active Directory](active-directory-assign-admin-roles.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-understanding-resource-access/IC707931.png

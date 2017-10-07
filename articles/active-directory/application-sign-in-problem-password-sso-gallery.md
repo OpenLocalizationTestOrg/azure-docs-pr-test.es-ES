@@ -1,6 +1,6 @@
 ---
-title: "Problemas al iniciar sesión en una aplicación de la galería de Azure AD configurada para inicio de sesión único federado | Microsoft Docs"
-description: "Cómo solucionar problemas relacionados con aplicaciones de la galería de Azure AD configuradas para inicio de sesión único con contraseña"
+title: "aaaProblems firma en tooan de aplicación de la Galería de Azure AD configurado para federado inicio de sesión único | Documentos de Microsoft"
+description: "Cómo tootroubleshoot problemas con aplicaciones de la Galería de Azure AD configurado para inicio de sesión único de contraseña"
 documentationcenter: 
 author: ajamess
 manager: femila
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: f8521d1386bba8004e84fe8862a5f59a65ea19ad
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7ba28765e1d1f13025d740790a2f87654ae0daed
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-federated-single-sign-on"></a>Problemas al iniciar sesión en una aplicación de la galería de Azure AD configurada para inicio de sesión único federado
+# <a name="problems-signing-in-tooan-azure-ad-gallery-application-configured-for-federated-single-sign-on"></a>Problemas para iniciar sesión en la aplicación de la Galería de Azure AD configurada para un inicio de sesión único federado tooan
 
-El Panel de acceso es un portal basado en web que permite que un usuario con una cuenta profesional o educativa en Azure Active Directory (Azure AD) vea e inicie aplicaciones basadas en la nube a las que el administrador de Azure AD le ha concedido acceso. Un usuario que posee ediciones de Azure AD también puede usar las funcionalidades de administración de grupos de autoservicio y aplicaciones a través del Panel de acceso. El Panel de acceso es independiente de Azure Portal y no requiere que los usuarios tengan una suscripción de Azure.
+Hola Panel de acceso es un portal basado en web que permite un usuario que tiene una empresa o centro educativo Administrador de la cuenta en aplicaciones de Azure Active Directory (Azure AD) tooview y de inicio en la nube que hello Azure AD le haya concedido acceso a. Un usuario que tenga las ediciones de Azure AD también puede utilizar grupos de autoservicio y capacidades de administración de aplicaciones a través de hello Panel de acceso. Hola Panel de acceso es independiente de hello portal de Azure y no requiere que los usuarios toohave una suscripción de Azure.
 
-Para usar el inicio de sesión único (SSO) basado en contraseña en el Panel de acceso, se debe instalar la extensión del Panel de acceso en el explorador del usuario. Esta extensión se descarga automáticamente cuando un usuario selecciona una aplicación que está configurada para SSO basado en contraseña.
+toouse basada en contraseña inicio de sesión único (SSO) en el Panel de acceso, extensión del Panel de acceso de Hola Hola debe instalarse en el explorador del usuario de Hola. Esta extensión se descarga automáticamente cuando un usuario selecciona una aplicación que está configurada para SSO basado en contraseña.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Cumplimiento de los requisitos del explorador para el Panel de acceso
+## <a name="meeting-browser-requirements-for-hello-access-panel"></a>Se cumplen los requisitos de explorador para hello Panel de acceso
 
-El Panel de acceso requiere un explorador compatible con JavaScript y que tenga habilitado CSS. Para usar el inicio de sesión único (SSO) basado en contraseña en el Panel de acceso, se debe instalar la extensión del Panel de acceso en el explorador del usuario. Esta extensión se descarga automáticamente cuando un usuario selecciona una aplicación que está configurada para SSO basado en contraseña.
+Hola Panel de acceso requiere un explorador que admita JavaScript y se han habilitado de CSS. toouse basada en contraseña inicio de sesión único (SSO) en el Panel de acceso, extensión del Panel de acceso de Hola Hola debe instalarse en el explorador del usuario de Hola. Esta extensión se descarga automáticamente cuando un usuario selecciona una aplicación que está configurada para SSO basado en contraseña.
 
-Para el SSO basado en contraseña, los exploradores del usuario final pueden ser:
+Para el SSO basado en contraseña, pueden ser Hola exploradores de los usuarios:
 
 -   Internet Explorer 8, 9, 10, 11: en Windows 7 o versiones superiores
 
@@ -37,29 +37,29 @@ Para el SSO basado en contraseña, los exploradores del usuario final pueden ser
 -   Firefox 26.0 o versiones superiores: en Windows XP SP2 o versiones superiores y en Mac OS X 10.6 o versiones superiores
 
 >[!NOTE]
->La extensión de SSO basada en contraseña está disponible para Edge en Windows 10 cuando se admiten extensiones de explorador para Edge.
+>extensión SSO basada en contraseña de Hello están disponibles para los bordes del 10 de Windows cuando se convierten en admite las extensiones del explorador de Edge.
 >
 >
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Cómo instalar la extensión de explorador del Panel de acceso
+## <a name="how-tooinstall-hello-access-panel-browser-extension"></a>¿Cómo tooinstall Hola extensión de explorador del Panel de acceso
 
-Para instalar la extensión de explorador del Panel de acceso, siga estos pasos:
+Hola tooinstall extensión de explorador del Panel de acceso, siga Hola pasos:
 
-1.  Abra el [Panel de acceso](https://myapps.microsoft.com) en uno de los exploradores admitidos e inicie sesión como **usuario** en su instancia de Azure AD.
+1.  Abra hello [Panel de acceso](https://myapps.microsoft.com) en uno de los exploradores compatibles de Hola y de inicio de sesión como un **usuario** en Azure AD.
 
-2.  Haga clic en una **aplicación de SSO con contraseña** en el Panel de acceso.
+2.  Haga clic en un **aplicación SSO de contraseña** Hola Panel de acceso.
 
-3.  En el mensaje que le pregunta si desea instalar el software, seleccione **Instalar ahora**.
+3.  En hello símbolo del sistema que se pregunta tooinstall Hola software, seleccione **instalar ahora**.
 
-4.  Se le dirigirá al vínculo de descarga en función del explorador. **Agregue** la extensión al explorador.
+4.  Basado en el explorador es que el vínculo de descarga de toohello dirigida. **Agregar** tooyour Explorador de hello extensión.
 
-5.  Si el explorador lo solicita, seleccione **Habilitar** o **Permitir** la extensión.
+5.  Si el explorador solicita, seleccione tooeither **habilitar** o **permitir** Hola extensión.
 
 6.  Una vez instalada, **reinicie** la sesión del explorador.
 
-7.  Inicie sesión en el Panel de acceso y vea si puede **iniciar** las aplicaciones de SSO con contraseña
+7.  Inicie sesión en el Panel de acceso de Hola y vea si puede **iniciar** las aplicaciones de SSO de contraseña
 
-También puede descargar la extensión para Chrome y Firefox desde los siguientes vínculos directos:
+También puede descargar extensión Hola para Chrome y Firefox de vínculos directos de Hola a continuación:
 
 -   [Extensión del Panel de acceso para Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
@@ -67,120 +67,120 @@ También puede descargar la extensión para Chrome y Firefox desde los siguiente
 
 ## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Configuración de una directiva de grupo para Internet Explorer
 
-Puede configurar una directiva de grupo que le permita instalar de forma remota la extensión del Panel de acceso para Internet Explorer en las máquinas de los usuarios.
+Puede configurar una directiva de grupo que le permiten tooremotely instalar extensión de Panel de acceso de Hola para Internet Explorer en equipos de los usuarios.
 
-Los requisitos previos son:
+requisitos previos de Hello incluyen:
 
--   Configuró [Servicios de dominio de Active Directory](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)y unió los equipos de los usuarios a su dominio.
+-   Ha configurado [los servicios de dominio de Active Directory](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), y se han unido a dominio de tooyour de máquinas de los usuarios.
 
--   Debe tener el permiso "Editar configuración" para editar el objeto de directiva de grupo (GPO). De forma predeterminada, los miembros de los siguientes grupos de seguridad poseen este permiso: Administradores de dominio, Administradores de organización y Propietarios del creador de directivas de grupo. [Más información](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Debe tener Hola "Editar configuración de" permiso tooedit Hola objeto de directiva de grupo (GPO). De forma predeterminada, los miembros del programa Hola a los grupos de seguridad siguientes tienen este permiso: los administradores de dominio, los administradores de organización y propietarios del creador de directivas de grupo. [Más información](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
-Siga el tutorial [Implementación de la extensión de panel de acceso para Internet Explorer mediante la directiva de grupo](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) para obtener instrucciones paso a paso sobre cómo configurar la directiva de grupo e implementarla en los usuarios.
+Siga el tutorial de hello [cómo tooDeploy Hola extensión del Panel de acceso para Internet Explorer utilizando la directiva de grupo](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) para obtener instrucciones paso a paso acerca de cómo tooconfigure Hola de directiva de grupo e implementarla toousers.
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Solución de problemas del Panel de acceso en Internet Explorer
+## <a name="troubleshoot-hello-access-panel-in-internet-explorer"></a>Solucionar problemas de hello Panel de acceso en Internet Explorer
 
-Siga la guía de [solución de problemas de la extensión del Panel de acceso para Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-Troubleshoot) para acceder a la herramienta de diagnóstico, junto con instrucciones paso a paso sobre cómo configurar la extensión para IE.
+Siga hello [solucionar Hola extensión del Panel de acceso de Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-Troubleshoot) guía para el acceso a una herramienta de diagnóstico y obtener instrucciones paso a paso acerca de cómo configurar la extensión de Hola para Internet Explorer.
 
-## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Configuración del inicio de sesión único con contraseña para una aplicación de la galería de Azure AD
+## <a name="how-tooconfigure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>¿Cómo tooconfigure contraseña inicio de sesión único para una aplicación de la Galería de Azure AD
 
-Para configurar una aplicación desde la galería de Azure AD, realice los siguientes pasos:
+una aplicación desde la Galería de Azure AD de hello tooconfigure debe:
 
--   [Incorporación de una aplicación desde la galería de Azure AD](#_Add_an_application)
+-   [Agregar una aplicación de la Galería de Azure AD Hola](#_Add_an_application)
 
--   [Configurar la aplicación para el inicio de sesión único con contraseña](#configure-the-application-for-password-single-sign-on)
+-   [Configurar la aplicación hello para el inicio de sesión único en la contraseña](#configure-the-application-for-password-single-sign-on)
 
--   [Asignar usuarios a la aplicación](#assign-users-to-the-application)
+-   [Asignar a usuarios de aplicación toohello](#assign-users-to-the-application)
 
-### <a name="add-an-application-from-the-azure-ad-gallery"></a>Incorporación de una aplicación desde la galería de Azure AD
+### <a name="add-an-application-from-hello-azure-ad-gallery"></a>Agregar una aplicación de la Galería de Azure AD Hola
 
-Para agregar una aplicación desde la galería de Azure AD, siga estos pasos:
+tooadd una aplicación Hola Galería de Azure AD, siga estos pasos hello:
 
-1.  Abra [Azure Portal](https://portal.azure.com) e inicie sesión como **administrador global** o **coadministrador**
+1.  Abra hello [Portal de Azure](https://portal.azure.com) e inicie sesión como un **administrador Global** o **Coadministrador**
 
-2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
+2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
 
-3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
 
-4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
+4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
 
-5.  Haga clic en el botón **Agregar** situado en la esquina superior derecha de la hoja **Aplicaciones empresariales**.
+5.  Haga clic en hello **agregar** situado en la esquina superior derecha de hello en hello **aplicaciones empresariales** hoja.
 
-6.  En el cuadro de texto **Escriba un nombre** de la sección **Agregar desde la galería**, escriba el nombre de la aplicación.
+6.  Hola **escriba un nombre** cuadro de texto de hello **agregar a partir de la Galería de hello** sección, escriba un nombre de aplicación hello como Hola.
 
-7.  Seleccione la aplicación que desea configurar para el inicio de sesión único.
+7.  Seleccionar aplicación hello tooconfigure que desee para el inicio de sesión único.
 
-8.  Antes de agregar la aplicación, puede cambiar su nombre en el cuadro de texto **Nombre**.
+8.  Antes de agregar la aplicación hello, puede cambiar su nombre de hello **nombre** cuadro de texto.
 
-9.  Haga clic en el botón **Agregar** para agregar la aplicación.
+9.  Haga clic en **agregar** button, aplicación de hello tooadd.
 
-Tras un breve período, podrá ver la hoja de configuración de la aplicación.
+Tras un breve período, es que la hoja de configuración de la aplicación pueda toosee Hola.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>Configuración de la aplicación para el inicio de sesión único con contraseña
+### <a name="configure-hello-application-for-password-single-sign-on"></a>Configurar la aplicación hello para el inicio de sesión único en la contraseña
 
-Para configurar el inicio de sesión único para una aplicación, siga estos pasos:
+tooconfigure inicio de sesión único para una aplicación, siga estos pasos hello:
 
-1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
+1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
 
-2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
+2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
 
-3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
 
-4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
+4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
 
-5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
+5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
 
-   * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
+   * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado** Todas las aplicaciones.**
 
-6.  Seleccionar la aplicación que desea configurar para el inicio de sesión único
+6.  Seleccione la aplicación hello desea tooconfigure inicio de sesión único
 
-7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
+7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
 
-8.  Seleccione el modo de **Inicio de sesión con contraseña**.
+8.  Modo de hello seleccione **sesión basada en contraseña.**
 
-9.  [Asigne usuarios a la aplicación](#_How_to_assign).
+9.  [Asignar usuarios de aplicación de toohello](#_How_to_assign).
 
-10. Además, también puede proporcionar credenciales en nombre del usuario; para ello, seleccione las filas de los usuarios, haga clic en **Actualizar credenciales** y escriba el nombre de usuario y la contraseña en nombre de los usuarios. En caso contrario, se solicitará a los usuarios que especifiquen ellos mismos las credenciales al inicio.
+10. Además, también puede proporcionar credenciales en nombre de usuario de hello selección de filas de Hola de usuarios de Hola y haciendo clic en **las credenciales de actualización** y especificando Hola username y password en nombre de los usuarios de Hola. En caso contrario, los usuarios ser solicitadas tooenter Hola credenciales por sí mismos tras el inicio.
 
-### <a name="assign-users-to-the-application"></a>Asignar usuarios a la aplicación
+### <a name="assign-users-toohello-application"></a>Asignar a usuarios de aplicación toohello
 
-Para asignar uno o varios usuarios a una aplicación directamente, siga los pasos siguientes:
+tooassign uno o más usuarios tooan application directamente, siga estos pasos hello:
 
-1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
+1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
 
-2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
+2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
 
-3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
 
-4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
+4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
 
-5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
+5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
 
-   * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
+   * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado** Todas las aplicaciones.**
 
-6.  Seleccione la aplicación que desea asignar a un usuario de la lista.
+6.  Seleccionar aplicación hello desea tooassign una lista de hello toofrom de usuario.
 
-7.  Cuando se cargue la aplicación, haga clic en **Usuarios y grupos** desde el menú de navegación izquierdo de la aplicación.
+7.  Una vez que se carga la aplicación hello, haga clic en **usuarios y grupos** del menú de navegación izquierdo de la aplicación hello.
 
-8.  Haga clic en el botón **Agregar** en la parte superior de la lista **Usuarios y grupos** para abrir la hoja **Agregar asignación**.
+8.  Haga clic en hello **agregar** botón encima de hello **usuarios y grupos** Hola de lista tooopen **Agregar asignación** hoja.
 
-9.  Haga clic en el selector **Usuarios y grupos** de la hoja **Agregar asignación**.
+9.  Haga clic en hello **usuarios y grupos** selector de hello **Agregar asignación** hoja.
 
-10. Escriba el **nombre completo** o la **dirección de correo electrónico** del usuario al que quiere asignar en el cuadro de búsqueda **Buscar por nombre o dirección de correo**.
+10. Tipo de hello **nombre completo** o **dirección de correo electrónico** del usuario de hello está interesado en la asignación en hello **buscar por nombre o dirección de correo** cuadro de búsqueda.
 
-11. Mantenga el puntero sobre el **usuario** en la lista para que aparezca una **casilla**. Haga clic en la casilla situada junto a la foto o el logotipo del perfil del usuario para agregar ese usuario a la lista de **seleccionados**.
+11. Mantenga el mouse sobre hello **usuario** en hello lista tooreveal una **casilla**. Haga clic en tooadd de foto o el logotipo de perfil de hello casilla toohello del siguiente usuario su usuario toohello **seleccionados** lista.
 
-12. **Opcional:** si desea **agregar más de un usuario**, escriba otro **nombre completo** o **dirección de correo electrónico** en el cuadro de búsqueda **Buscar por nombre o dirección de correo** y haga clic en la casilla para agregar ese usuario a la lista de **seleccionados**.
+12. **Opcional:** si lo desea demasiado**agregar más de un usuario**, tipo de otro **nombre completo** o **dirección de correo electrónico** en hello **buscar por nombre o dirección de correo electrónico** cuadro de búsqueda y haga clic en hello casilla tooadd este usuario toohello **seleccionados** lista.
 
-13. Cuando haya terminado de seleccionar usuarios, haga clic en el botón **Seleccionar** para agregarlos a la lista de usuarios y grupos que se asignarán a la aplicación.
+13. Cuando haya terminado de seleccionar usuarios, haga clic en hello **seleccione** botón tooadd les toohello lista de usuarios y grupos toobe asignado toohello aplicación.
 
-14. **Opcional:** haga clic en el selector **Seleccionar rol** de la hoja **Agregar asignación** para seleccionar un rol que se asignará a los usuarios que ha seleccionado.
+14. **Opcional:** haga clic en hello **Seleccionar rol** selector Hola **Agregar asignación** hoja tooselect un rol tooassign toohello usuarios que ha seleccionado.
 
-15. Haga clic en el botón **Asignar** para asignar la aplicación a los usuarios seleccionados.
+15. Haga clic en hello **asignar** botón tooassign Hola aplicación toohello los usuarios seleccionados.
 
-Tras un breve período, los usuarios que seleccionó podrán iniciar estas aplicaciones en el Panel de acceso.
+Después de un breve período, los usuarios de Hola que seleccionó ser capaz de toolaunch estas aplicaciones en Hola Panel de acceso.
 
-## <a name="if-these-troubleshoot-steps-dont-resolve-the-issue"></a>Si después de seguir estos pasos el problema no se ha resuelto, 
-abra una incidencia de soporte técnico con la información siguiente si está disponible:
+## <a name="if-these-troubleshoot-steps-dont-resolve-hello-issue"></a>Si la solución de problemas de estos pasos no resuelven el problema de Hola 
+Abra una incidencia de soporte técnico con hello siguiente información si está disponible:
 
 -   Id. de error de correlación
 
@@ -195,4 +195,4 @@ abra una incidencia de soporte técnico con la información siguiente si está d
 -   Seguimientos de Fiddler
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Proporcionar un inicio de sesión único a las aplicaciones con el proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
+[Proporcionan aplicaciones de tooyour de inicio de sesión único con el Proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)

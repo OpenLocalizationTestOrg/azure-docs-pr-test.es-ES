@@ -1,6 +1,6 @@
 ---
-title: Uso de API Management con red virtual interna | Microsoft Docs
-description: "Obtenga información acerca de cómo instalar y configurar Azure API Management en una red virtual interna."
+title: "aaaHow toouse administración de API de Azure con red virtual interna | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toosetup y configurar la administración de API de Azure en red virtual interna."
 services: api-management
 documentationcenter: 
 author: solankisamir
@@ -14,53 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 55248387c7e78d05c1cf1afd615b7b921e9669d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8d25de14e0c0bebe7ba7b47ca432ea4e45dde312
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-azure-api-management-service-with-internal-virtual-network"></a>Uso de Azure API Management con una red virtual interna
-Con redes virtuales de Azure (VNET), API Management puede administrar las API no accesibles en Internet. Hay varias tecnologías VPN disponibles para realizar la conexión, y API Management se puede implementar en dos modos principales dentro de la red virtual:
+Con redes virtuales de Azure (redes virtuales), administración de API puede administrar las API no es accesible en hello Internet. Una serie de tecnologías VPN es conexiones de hello toomake disponibles y administración de API se pueden implementar en dos modos principales dentro de hello red virtual:
 * Externo
 * Interno
 
-## <a name="overview"> </a>Información general
-Cuando se implementa API Management en un modo de red virtual interna, todos los puntos de conexión de servicio (puerta de enlace, portal para desarrolladores, portal para editores, administración directa y GIT) solo están visibles dentro de una red virtual a la que controla el acceso. Ninguno de los puntos de conexión de servicio se registra en el servidor DNS público.
+## <a name="overview"></a>Información general
+Cuando se implementa la API de administración en un modo de red Virtual interna, solo son visibles dentro de una red Virtual que controlan el acceso a todos los extremos de servicio de hello (puerta de enlace, portal para desarrolladores, portal para desarrolladores, la administración directa y Git). Ninguno de los extremos de servicio de Hola se registran en hello servidor DNS público.
 
-Al usar API Management en modo interno, puede conseguir lo siguiente:
+Usar administración de API en modo interno, puede lograr Hola los escenarios siguientes
 * Hacer que las API se hospeden de manera segura en su centro de datos privado accesible por terceros que estén fuera de él por medio de conexiones de sitio a sitio o VPN de ExpressRoute.
 * Habilitar escenarios de nube híbrida mediante la exposición de las API basadas en la nube y las API locales a través de una puerta de enlace común.
 * Administrar las API hospedadas en diversas ubicaciones geográficas mediante un único punto de conexión de puerta de enlace. 
 
-## <a name="enable-vpn"> </a>Creación de API Management en una red virtual interna
-El servicio API Management en red virtual interna se hospeda detrás de un equilibrador de carga interno. La dirección IP del equilibrador de carga está en el intervalo [RFC1918](http://www.faqs.org/rfcs/rfc1918.html).  
+## <a name="enable-vpn"></a>Creación de API Management en una red virtual interna
+servicio de administración de API de red Virtual interna de Hola se hospeda detrás de un Balancer(ILB) de carga interno. Hola dirección IP de hello ILB está en hello [RFC1918](http://www.faqs.org/rfcs/rfc1918.html) intervalo.  
 
 ### <a name="enable-vnet-connection-using-azure-portal"></a>Habilitación de la conexión de red virtual mediante Azure Portal
-Primero cree el servicio API Management siguiendo los pasos de [Creación de una instancia de API Management][Create API Management service]. A continuación, configure API Management para que se implemente dentro de una red virtual.
+En primer lugar crear servicio de administración de API de hello, siga los pasos de hello [servicio de administración de API crear][Create API Management service]. A continuación, configurar Administración de API toobe implementado dentro de una red Virtual.
 
 ![Menú para configurar API Management en una red virtual interna][api-management-using-internal-vnet-menu]
 
-Una vez finalizada correctamente la implementación, debería ver la dirección IP virtual interna de su servicio en el panel.
+Después de implementación de Hola se realiza correctamente, debería ver Hola dirección IP Virtual interna de su servicio en el panel de Hola.
 
 ![Panel de API Management con red virtual interna configurada][api-management-internal-vnet-dashboard]
 
 ### <a name="enable-vnet-connection-using-powershell-cmdlets"></a>Habilitación de una conexión de VNET con cmdlets de PowerShell
-También puede habilitar la conectividad de VNET con los cmdlets de PowerShell.
+También puede habilitar la conectividad de red virtual con los cmdlets de PowerShell de Hola.
 
-* **Crear un servicio de API Management dentro de una red virtual**: use el cmdlet [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) para crear un servicio de Azure API Management dentro de una VNET y configurarlo para usar el tipo de VNET interno.
+* **Crear un servicio de administración de API dentro de una red virtual**: usar el cmdlet de hello [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) toocreate una administración de API de Azure del servicio dentro de una red virtual y configurar tipo de red virtual interna de toouse Hola.
 
-* <seg>
-  **Implementar un servicio existente de API Management dentro de una VNET**: use el cmdlet [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) para mover un servicio existente de Azure API Management dentro de una red virtual y configurarlo para usar el tipo de VNET interno..</seg>
+* **Implementar un servicio de administración de API existente dentro de una red virtual**: usar el cmdlet de hello [AzureRmApiManagementDeployment actualización](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) toomove una administración de API de Azure de servicio dentro de una red Virtual y configurar toouse Tipo de red virtual interna.
 
 ## <a name="apim-dns-configuration"></a>Configuración de DNS
-Cuando se usa API Management en el modo de red virtual externa, DNS está administrado por Azure. Para el modo de red virtual interna, tiene que administrar su propio DNS.
+Cuando se usa API Management en el modo de red virtual externa, DNS está administrado por Azure. Para el modo de red Virtual interna, tener toomanage su propio DNS.
 
 > [!NOTE]
-> El servicio API Management no escucha las solicitudes que llegan en direcciones IP. Solo responde a las solicitudes para el nombre de host configurado en sus puntos de conexión de servicio (entre los que están la puerta de enlace, el portal para desarrolladores, el portal para editores, el punto de conexión de administración directa y GIT).
+> Servicio de administración de API no escucha toorequests proveniente de direcciones IP. Sólo responde toorequests toohello nombre de host configurado en sus puntos de conexión de servicio (que incluye puerta de enlace, portal para desarrolladores, publisher Portal, punto de conexión de administración directa y git).
 
 ### <a name="access-on-default-host-names"></a>Acceso en nombres de host predeterminados:
-Cuando se crea un servicio de API Management en la nube pública de Azure, denominada por ejemplo "contoso", los siguientes punto de conexión de servicio se configuran de forma predeterminada.
+Cuando se crea un servicio de administración de API en la nube pública de Azure, denominado "contoso" por ejemplo, hello siguientes extremos de servicio se configuran de forma predeterminada.
 
 >   Puerta de enlace o proxy: contoso.azure-api.net
 
@@ -70,7 +69,7 @@ Cuando se crea un servicio de API Management en la nube pública de Azure, denom
 
 >   GIT: contoso.scm.azure-api.net
 
-Para obtener acceso a estos puntos de conexión de servicio de API Management, puede crear una máquina virtual en una subred conectada a la red virtual en el que se implementa API Management. Suponiendo que la dirección IP virtual interna para el servicio sea 10.0.0.5, puede realizar la asignación de archivos de host (%SystemDrive%\drivers\etc\hosts) del modo siguiente:
+tooaccess estos puntos de conexión de servicio de administración de API, puede crear una máquina Virtual en una red de subred conectada toohello Virtual en el que se implementa la API de administración. Suponiendo que Hola dirección IP Virtual interna para el servicio 10.0.0.5, puede hacer Hola asignación del archivo de hosts (% SystemDrive%\drivers\etc\hosts) como se indica a continuación:
 
 > 10.0.0.5    contoso.azure-api.net
 
@@ -80,16 +79,16 @@ Para obtener acceso a estos puntos de conexión de servicio de API Management, p
 
 > 10.0.0.5    contoso.scm.azure-api.net
 
-Así podrá tener acceso a todos los puntos de conexión de servicio de la máquina virtual que creó. Si utiliza un servidor DNS personalizado en una red virtual, también puede crear registros D de DNS y tener acceso a estos puntos de conexión desde cualquier lugar de la red virtual. 
+A continuación, puede tener acceso a todos los extremos de servicio de Hola de hello Máquina Virtual que creó. Si utiliza un servidor DNS personalizado en una red virtual, también puede crear registros D de DNS y tener acceso a estos puntos de conexión desde cualquier lugar de la red virtual. 
 
 ### <a name="access-on-custom-domain-names"></a>Acceso en nombres de dominio personalizado:
-Si no desea tener acceso al servicio API Management con los nombres de host predeterminados, puede configurar los nombres de dominio personalizados para todos los puntos de conexión de servicio del modo siguiente:
+Si no desea hello tooaccess servicio de administración de API con nombres de host de hello predeterminado, puede configurar los nombres de dominio personalizados para todos los extremos de servicio como a continuación
 
 ![Configuración de dominio personalizado para API Management][api-management-custom-domain-name]
 
-A continuación, puede crear registros D en el servidor DNS para tener acceso a estos puntos de conexión que solo son accesibles desde dentro de la red virtual.
+A continuación, puede crear registros en el servidor DNS tooaccess estos puntos de conexión que solo son accesibles desde dentro de la red Virtual.
 
-## <a name="related-content"> </a>Contenido relacionado
+## <a name="related-content"></a>Contenido relacionado
 * [Common Network configuration issues while setting up APIM in VNET][Common Network Configuration Issues] (Problemas comunes de configuración de red al configurar API Management en la red virtual)
 * [P+F de Virtual Network](../virtual-network/virtual-networks-faq.md)
 * [Creating A record in DNS](https://msdn.microsoft.com/en-us/library/bb727018.aspx) (Creación de registro D en DNS)

@@ -1,5 +1,5 @@
 ---
-title: 'Ejemplos de la CLI de Azure: App Service | Microsoft Docs'
+title: 'aaaAzure muestras de CLI: servicio de aplicaciones | Documentos de Microsoft'
 description: 'Ejemplos de la CLI de Azure: App Service'
 services: app-service
 documentationcenter: app-service
@@ -16,15 +16,15 @@ ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 6718694af487929d193dae54ecb2d85ece64887a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a943ccffb59c5d30a44cf1ce513fd2eac46101f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cli-samples"></a>Ejemplos de la CLI de Azure
 
-En la tabla siguiente se incluyen vínculos a scripts de Bash creados con la CLI de Azure.
+Hello tabla siguiente incluye vínculos toobash scripts creados con hello CLI de Azure.
 
 | | |
 |-|-|
@@ -32,19 +32,19 @@ En la tabla siguiente se incluyen vínculos a scripts de Bash creados con la CLI
 | [Creación de una aplicación web e implementación de código desde GitHub](./scripts/app-service-cli-deploy-github.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure e implementa código proveniente de un repositorio público de GitHub. |
 | [Creación de una aplicación web con implementación continua desde GitHub](./scripts/app-service-cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure con publicación continua desde un repositorio de GitHub de su propiedad. |
 | [Creación de una aplicación web e implementación de código desde un repositorio local de GitHub](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure y configura la inserción de código desde un repositorio de Git local. |
-| [Creación de una aplicación web e implementación de código en un entorno de ensayo](./scripts/app-service-cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure con una ranura de implementación para cambios en el código de ensayo. |
+| [Crear una aplicación web e implementar el entorno de ensayo de tooa de código](./scripts/app-service-cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure con una ranura de implementación para cambios en el código de ensayo. |
 | [Creación de una aplicación web de ASP.NET Core en un contenedor de Docker](./scripts/app-service-cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure en Linux y carga una imagen de Docker desde Docker Hub. |
 |**Configuración de la aplicación**||
-| [Asignación de un dominio personalizado a una aplicación web](./scripts/app-service-cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure y le asigna un nombre de dominio personalizado. |
-| [Enlace de un certificado SSL personalizado a una aplicación web](./scripts/app-service-cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure y enlaza a ella el certificado SSL de un nombre de dominio personalizado. |
+| [Asignar una aplicación web de tooa de dominio personalizado](./scripts/app-service-cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure y asigna un tooit de nombre de dominio personalizado. |
+| [Enlazar una aplicación de web de tooa de certificado SSL personalizada](./scripts/app-service-cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure y enlaza el certificado SSL de Hola de un tooit de nombre de dominio personalizado. |
 |**Escalado de la aplicación**||
 | [Escalado manual de una aplicación web](./scripts/app-service-cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure y la escala a través de dos instancias. |
 | [Escalado de una aplicación web en todo el mundo con una arquitectura de alta disponibilidad](./scripts/app-service-cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Crea dos aplicaciones web de Azure en dos regiones geográficas diferentes y hace que estén disponibles a través de un punto de conexión único mediante Azure Traffic Manager. |
-|**Conexión de la aplicación a recursos**||
-| [Conexión de una aplicación web a una base de datos SQL](./scripts/app-service-cli-app-service-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure y una base de datos SQL y, a continuación, añade la cadena de conexión de base de datos a la configuración de la aplicación. |
-| [Conexión de una aplicación web a una cuenta de almacenamiento](./scripts/app-service-cli-app-service-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure y una cuenta de almacenamiento y, a continuación, añade la cadena de conexión de almacenamiento a la configuración de la aplicación. |
-| [Conexión de una aplicación web a Redis Cache](./scripts/app-service-cli-app-service-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure y una instancia de Redis Cache y, luego, agrega los detalles de conexión de Redis a la configuración de la aplicación). |
-| [Conexión de una aplicación web a Cosmos DB](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure y una instancia de Cosmos DB y, luego, agrega los detalles de conexión de Cosmos DB a la configuración de la aplicación. |
+|**Conectar tooresources de aplicación**||
+| [Conectar un tooa de aplicación web base de datos SQL](./scripts/app-service-cli-app-service-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure y una base de datos SQL, a continuación, agrega la configuración de aplicación de hello base de datos conexión cadena toohello. |
+| [Conectarse a una cuenta de almacenamiento de tooa de aplicación web](./scripts/app-service-cli-app-service-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Crea una aplicación web de Azure y una cuenta de almacenamiento, a continuación, agrega la configuración de la aplicación hello almacenamiento conexión cadena toohello. |
+| [Conectar una caché de redis de tooa de aplicación web](./scripts/app-service-cli-app-service-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure y una caché de redis, a continuación, agrega la configuración de aplicación de hello redis conexión detalles toohello.) |
+| [Conectar un tooCosmos de aplicación web DB](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure y una base de datos de Cosmos y, a continuación, agrega la configuración de aplicación de Hola DB Cosmos conexión detalles toohello. |
 |**Supervisión de la aplicación**||
-| [Supervisión de una aplicación web con registros de servidor web](./scripts/app-service-cli-monitor.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure, habilita el registro para ella y descarga los registros en el equipo local. |
+| [Supervisión de una aplicación web con registros de servidor web](./scripts/app-service-cli-monitor.md?toc=%2fcli%2fazure%2ftoc.json) | Crea una aplicación web de Azure, habilita el registro para el mismo y descarga el equipo local de hello registros tooyour. |
 | | |

@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de implementación de máquinas virtuales Windows en Azure | Microsoft Docs"
+title: "implementación de máquina virtual de Windows en Azure aaaTroubleshoot | Documentos de Microsoft"
 description: "Solución de problemas de implementación de Resource Manager cuando crea una nueva máquina virtual de Windows en Azure"
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86795ba6eab3505a3d539e4fc4e032bdeecc2e78
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c27d4f63b67db2d1c9f117f05a2eba9ef130ef37
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Solución de problemas de implementación al crear una nueva máquina virtual Windows en Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -33,60 +33,60 @@ ms.lasthandoff: 08/18/2017
 Para consultar otros problemas de implementación de máquinas virtuales y preguntas, vea [Troubleshoot deploying Linux virtual machine issues in Azure](troubleshoot-deploy-vm.md) (Solución de problemas de implementación de máquinas virtuales de Windows en Azure).
 
 ## <a name="collect-activity-logs"></a>Recopilación de registros de actividad
-Para iniciar la solución de problemas, recopile los registros de actividad para identificar el error asociado con el problema. Los vínculos siguientes contienen información detallada sobre el proceso que se debe seguir.
+toostart solución de problemas, actividad hello recopilar registra el error de Hola de tooidentify asociada con el problema de Hola. Hello vínculos siguientes contienen información detallada sobre Hola proceso toofollow.
 
 [Ver operaciones de implementación](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Ver registros de actividad para administrar recursos de Azure](../../resource-group-audit.md)
+[Ver registros de actividad toomanage Azure recursos](../../resource-group-audit.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** si el sistema operativo es Windows generalizado y se carga o captura con la configuración generalizada, no habrá errores. De forma similar, si el sistema operativo es Windows especializado y se carga o captura con la configuración especializada, no habrá errores.
+**Y:** si Hola sistema operativo es Windows generalizado y se ha cargado ni capturado con hello generalizado configuración, no habrá errores. Del mismo modo, si Hola sistema operativo es Windows especializado, y se ha cargado ni capturado con hello especializados configuración, a continuación, no habrá errores.
 
 **Errores de carga:**
 
-**N<sup>1</sup>:** si el sistema operativo es Windows generalizado y se carga como especializado, aparecerá un error de tiempo de espera de aprovisionamiento con la máquina virtual bloqueada en la pantalla de OOBE.
+**N<sup>1</sup>:** si Hola sistema operativo es Windows generalizado, y se carga como especializado, obtendrá un error de tiempo de espera aprovisionamiento con hello VM atascada en pantalla de bienvenida OOBE.
 
-**N<sup>2</sup>:** si el sistema operativo es Windows especializado y se carga como generalizado, recibirá un error de aprovisionamiento con la máquina virtual bloqueada en la pantalla de OOBE porque la nueva máquina virtual se ejecuta con el nombre del equipo, el nombre de usuario y la contraseña originales.
+**N<sup>2</sup>:** si hello sistema operativo es Windows especializados y cargarlo como generalizado, obtendrá un error de aprovisionamiento con hello VM atascada en pantalla de bienvenida OOBE porque hello nueva máquina virtual se está ejecutando con el equipo original de Hola nombre, nombre de usuario y contraseña.
 
 **Resolución**
 
-Para resolver estos errores, use [Add-AzureRmVhd para cargar el disco duro virtual original](https://msdn.microsoft.com/library/mt603554.aspx), disponible en el entorno local, con la misma configuración que para el sistema operativo (generalizada o especializada). Para cargar como generalizado, no olvide ejecutar sysprep antes.
+tooresolve ambos estos errores, utilice [tooupload AzureRmVhd agregar Hola VHD original](https://msdn.microsoft.com/library/mt603554.aspx), de forma local, con hello misma configuración que para hello OS (generalizado/especializado). tooupload como generalizado, recuerde toorun sysprep en primer lugar.
 
 **Errores de captura:**
 
-**N<sup>3</sup>:** si el sistema operativo es Windows generalizado y se captura como especializado, recibirá un error de tiempo de espera de aprovisionamiento porque la máquina virtual original no se puede utilizar, ya que está marcada como generalizada.
+**N<sup>3</sup>:** si Hola sistema operativo es Windows generalizado, y se capturan como especializado, obtendrá un error de tiempo de espera de aprovisionamiento porque Hola original máquina virtual no se puede usar tal y como está marcado como generalizado.
 
-**N<sup>4</sup>:** si el sistema operativo es Windows especializado y se captura como generalizado, recibirá un error de aprovisionamiento porque la nueva máquina virtual se está ejecutando con el nombre del equipo, el nombre de usuario y la contraseña originales. Además, no se puede utilizar la máquina virtual original ya que está marcada como especializada.
+**N<sup>4</sup>:** si hello sistema operativo es Windows especializada y se capturan como generalizado, obtendrá un error de aprovisionamiento porque hello nueva máquina virtual se está ejecutando con el nombre de equipo original de hello, username y password. Además, Hola original VM no es puede usar porque está marcado como especializadas.
 
 **Resolución**
 
-Para resolver estos errores, elimine la imagen actual del portal y [vuelva a capturarla desde los discos duros virtuales actuales](create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) con la misma configuración que para el sistema operativo (generalizada o especializada).
+tooresolve ambos estos errores, eliminar la imagen actual de Hola desde el portal de hello, y [capturar de hello VHD actual](create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) con Hola la misma configuración que para hello OS (generalizado/especializado).
 
 ## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problema: Imagen de galería/marketplace/personalizada; error de asignación
-Este error se produce en situaciones en las que la nueva solicitud de máquina virtual está anclada en un clúster que no admite el tamaño de la máquina virtual que se solicita o no tiene espacio libre disponible para alojar la solicitud.
+Este error se produce en situaciones cuando la solicitud de máquina virtual nueva de hello es clúster tooa anclados que no es compatible con el tamaño de la máquina virtual de Hola que se solicita o no tiene espacio libre disponible tooaccommodate Hola solicitud.
 
-**Causa 1:** el clúster no admite el tamaño de la máquina virtual solicitada.
+**Causa 1:** no admiten clústeres de Hola Hola solicitado tamaño de máquina virtual.
 
 **Resolución 1:**
 
-* Vuelva a intentar la solicitud con un tamaño de máquina virtual menor.
-* Si no se puede cambiar el tamaño de la máquina virtual solicitada:
-  * Detenga todas las máquinas virtuales en el conjunto de disponibilidad.
+* Vuelva a intentar la solicitud Hola con un tamaño más pequeño de la máquina virtual.
+* Si hello tamaño de hello solicitada que no se puede cambiar la máquina virtual:
+  * Detener todas las máquinas virtuales de hello en el conjunto de disponibilidad de Hola.
     Haga clic en **Grupos de recursos** > *su grupo de recursos* > **Recursos** > *su conjunto de disponibilidad* > **Virtual Machines** > *su máquina virtual* > **Detener**.
-  * Después de detener todas las máquinas virtuales, cree la nueva máquina virtual con el tamaño deseado.
-  * Inicie la nueva máquina virtual en primer lugar y luego seleccione cada una de las máquinas virtuales detenidas y haga clic en **Iniciar**.
+  * Después de que todos los hello detener las máquinas virtuales, crear Hola nueva máquina virtual en hello tamaño deseado.
+  * Iniciar Hola nueva máquina virtual en primer lugar y, a continuación, seleccione cada uno de hello detiene las máquinas virtuales y haga clic en **iniciar**.
 
-**Causa 2:** el clúster no tiene recursos disponibles.
+**Causa 2:** Hola clúster no tiene recursos libres.
 
 **Resolución 2:**
 
-* Vuelva a intentar la solicitud más tarde.
-* Si la nueva máquina virtual puede formar parte de un conjunto de disponibilidad diferente
-  * Cree una nueva máquina virtual en un conjunto de disponibilidad diferente (en la misma región).
-  * Agregue la nueva máquina virtual a la misma red virtual.
+* Vuelva a intentar la solicitud de hello en un momento posterior.
+* Si puede hello nueva máquina virtual se establecer parte de una disponibilidad diferentes
+  * Crear una nueva máquina virtual en un conjunto de disponibilidad diferentes (Hola misma región).
+  * Agregar Hola nueva VM toohello misma red virtual.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Si tiene problemas al iniciar una máquina virtual Windows detenida o al cambiar el tamaño de una máquina virtual Windows existente en Azure, consulte [Solución de problemas de la implementación de Resource Manager con el reinicio o el cambio de tamaño de una máquina virtual de Windows existente en Azure](restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

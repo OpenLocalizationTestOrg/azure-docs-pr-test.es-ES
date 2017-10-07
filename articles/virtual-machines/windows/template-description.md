@@ -1,6 +1,6 @@
 ---
-title: "Máquinas virtuales de una plantilla de Azure Resource Manager | Microsoft Azure"
-description: "Obtenga más información sobre cómo se define el recurso de máquina virtual en una plantilla de Azure Resource Manager."
+title: "máquinas de aaaVirtual en una plantilla de Azure Resource Manager | Microsoft Azure"
+description: "Más información sobre cómo se definen los recursos de máquina virtual de hello en una plantilla de Azure Resource Manager."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: d9b9121bc5e38396ba4def6c17f9b373c2b48056
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 94adcbe5bf44be72ffc1b920461aed15c4fc025f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Máquinas virtuales de una plantilla de Azure Resource Manager
 
-En este artículo se explican los aspectos de una plantilla de Azure Resource Manager que se aplican a las máquinas virtuales. En este artículo no se describe una plantilla completa para crear una máquina virtual. Para ello, necesita definiciones de recursos de cuentas de almacenamiento, interfaces de red, direcciones IP públicas y redes virtuales. Para obtener más información sobre cómo se pueden definir estos recursos juntos, consulte el [tutorial de plantilla de Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Este artículo describe aspectos de una plantilla de Azure Resource Manager que se aplican toovirtual máquinas. En este artículo no se describe una plantilla completa para crear una máquina virtual. Para ello, necesita definiciones de recursos de cuentas de almacenamiento, interfaces de red, direcciones IP públicas y redes virtuales. Para obtener más información acerca de cómo se pueden definir estos recursos juntos, vea hello [tutorial de la plantilla de administrador de recursos](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Hay muchas [plantillas en la galería](https://azure.microsoft.com/documentation/templates/?term=VM) que incluyen el recurso de máquina virtual. No todos los elementos que pueden incorporarse en una plantilla se describen aquí.
+Hay muchos [plantillas en la Galería de hello](https://azure.microsoft.com/documentation/templates/?term=VM) que incluyen recursos de máquina virtual de Hola. No todos los elementos que pueden incorporarse en una plantilla se describen aquí.
 
 En este ejemplo se muestra una sección de recursos típica de una plantilla para crear un número especificado de máquinas virtuales:
 
@@ -145,21 +145,21 @@ En este ejemplo se muestra una sección de recursos típica de una plantilla par
 ``` 
 
 > [!NOTE] 
->Se basa en una cuenta de almacenamiento que se ha creado previamente. Puede crear la cuenta de almacenamiento implementando la plantilla. El ejemplo también se basa en una interfaz de red y sus recursos dependientes que se definirían en la plantilla. Estos recursos no se muestran en el ejemplo.
+>Se basa en una cuenta de almacenamiento que se ha creado previamente. Puede crear cuenta de almacenamiento de hello mediante la implementación de plantilla de Hola. ejemplo de Hola también se basa en una interfaz de red y sus recursos dependientes que se pueden definir en plantilla Hola. Estos recursos no se muestran en el ejemplo de Hola.
 >
 >
 
 ## <a name="api-version"></a>Versión de API
 
-Cuando se implementan recursos mediante una plantilla, tendrá que especificar una versión de la API que se utilizará. En el ejemplo, se muestra el recurso de máquina virtual con este elemento apiVersion:
+Cuando se implementación mediante una plantilla de recursos, tienes toospecify una versión de Hola API toouse. Hola ilustra los recursos de máquina virtual de hello usando este elemento de valor apiVersion:
 
 ```
 "apiVersion": "2016-04-30-preview",
 ```
 
-La versión de la API que especifica en la plantilla afecta a qué propiedades puede definir en la plantilla. En general, seleccionaría la versión de la API más reciente al crear nuevas plantillas. Para las plantillas existentes, puede decidir si quiere continuar usando una versión anterior de la API o actualizar la plantilla para que la versión más reciente aproveche las nuevas características.
+versión de Hola de hello API que se especifique en la plantilla afecta a qué propiedades se pueden definir en plantilla Hola. En general, debe seleccionar la versión más reciente de la API de hello al crear plantillas. Para las plantillas existentes, puede decidir si desea toocontinue utilizando una versión anterior de la API o actualizar la plantilla para hello última versión tootake las nuevas características.
 
-Aproveche estas oportunidades para obtener las últimas versiones de API:
+Use estas oportunidades para obtener versiones más recientes de API de hello:
 
 - API de REST: [Mostrar todos los proveedores de recursos](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell: [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
@@ -167,7 +167,7 @@ Aproveche estas oportunidades para obtener las últimas versiones de API:
 
 ## <a name="parameters-and-variables"></a>Parámetros y variables
 
-Los [parámetros](../../resource-group-authoring-templates.md) facilitan la tarea de especificar valores para la plantilla cuando la ejecuta. Esta sección de parámetros se utiliza en el ejemplo:
+[Parámetros](../../resource-group-authoring-templates.md) facilitan la tarea por usted toospecify valores para la plantilla de hello cuando se ejecuta. En esta sección de parámetros se utiliza en el ejemplo de Hola:
 
 ```        
 "parameters": {
@@ -177,9 +177,9 @@ Los [parámetros](../../resource-group-authoring-templates.md) facilitan la tare
 },
 ```
 
-Al implementar la plantilla de ejemplo, escriba valores para el nombre y la contraseña de la cuenta de administrador de cada máquina virtual y el número de máquinas virtuales que creará. Tiene la opción de especificar valores de parámetro en un archivo independiente que se administra con la plantilla, o bien proporcionarlos se le solicite.
+Al implementar la plantilla de ejemplo de Hola, especificar los valores para nombre de Hola y la contraseña de cuenta de administrador de hello en cada máquina virtual y Hola el número de máquinas virtuales toocreate. Tiene la opción de Hola de especificar valores de parámetro en un archivo independiente que se administra con la plantilla de Hola o proporcionar valores cuando se le solicite.
 
-Las [variables](../../resource-group-authoring-templates.md) facilitan la tarea de establecer valores en la plantilla que se usan varias veces en ella o que cambian con el tiempo. Esta sección de variables se utiliza en el ejemplo:
+[Las variables](../../resource-group-authoring-templates.md) facilitan automáticamente tooset valores en plantilla de Hola que se usan varias veces a lo largo de él o que cambian con el tiempo. En esta sección de variables se utiliza en el ejemplo de Hola:
 
 ```
 "variables": { 
@@ -212,11 +212,11 @@ Las [variables](../../resource-group-authoring-templates.md) facilitan la tarea 
 }, 
 ```
 
-Al implementar la plantilla de ejemplo, los valores de las variables se utilizan para el nombre y el identificador de la cuenta de almacenamiento creada anteriormente. También se usan variables para proporcionar los valores de la extensión de diagnóstico. Lea [Procedimientos recomendados para crear plantillas de Azure Resource Manager](../../resource-manager-template-best-practices.md) para ayudarlo a decidir cómo desea estructurar los parámetros y variables de la plantilla.
+Al implementar la plantilla de ejemplo de Hola, valores de las variables se utilizan para nombre de Hola y el identificador de cuenta de almacenamiento de Hola que creó anteriormente. Las variables también son opciones de Hola de tooprovide usado para la extensión de diagnóstico de Hola. Hola de uso [las prácticas recomendadas para la creación de plantillas de Azure Resource Manager](../../resource-manager-template-best-practices.md) toohelp decida cómo desea toostructure Hola parámetros y variables en la plantilla.
 
 ## <a name="resource-loops"></a>bucles de recursos
 
-Si necesita más de una máquina virtual para la aplicación, puede utilizar un elemento de copia en una plantilla. Este elemento opcional recorre en bucle la creación del número de máquinas virtuales que especificó como un parámetro:
+Si necesita más de una máquina virtual para la aplicación, puede utilizar un elemento de copia en una plantilla. Este elemento opcional recorre creando Hola número de máquinas virtuales que especifica como un parámetro:
 
 ```
 "copy": {
@@ -225,7 +225,7 @@ Si necesita más de una máquina virtual para la aplicación, puede utilizar un 
 },
 ```
 
-Además, tenga en cuenta en el ejemplo se utiliza el índice de bucle al especificar algunos de los valores para el recurso. Por ejemplo, si ha especificado un recuento de las tres instancias, los nombres de los discos del SO son "myOSDisk1", "myOSDisk2" y "myOSDisk3":
+Además, se utiliza en ejemplo Hola Hola índice de bucle al especificar algunos Hola valores para el recurso de Hola. Por ejemplo, si ha especificado un recuento de instancias de estos tres, nombres de Hola de discos del sistema operativo Hola son myOSDisk1, myOSDisk2 y myOSDisk3:
 
 ```
 "osDisk": { 
@@ -236,11 +236,11 @@ Además, tenga en cuenta en el ejemplo se utiliza el índice de bucle al especif
 ```
 
 > [!NOTE] 
->Este ejemplo utiliza discos administrados para las máquinas virtuales.
+>Este ejemplo utiliza discos administrados para las máquinas virtuales de Hola.
 >
 >
 
-Tenga en cuenta que la creación de un bucle para un recurso de la plantilla puede requerir que se utilice dicho bucle al crear otros recursos o acceder a ellos. Por ejemplo, varias máquinas virtuales no pueden usar la misma interfaz de red; por tanto, si recorre en bucle la creación de tres máquinas virtuales, también debe hacerlo con la generación de las tres interfaces de red. Al asignar una interfaz de red a una máquina virtual, el índice de bucle se utiliza para identificarlo:
+Tenga en cuenta que la creación de un bucle para un recurso de plantilla de hello puede requerir toouse Hola bucle al crear o tener acceso a otros recursos. Por ejemplo, varias máquinas virtuales no pueden usar hello misma interfaz de red, por lo que si recorre en bucle la plantilla de creación de tres máquinas virtuales también debe ejecutar un bucle en crear tres interfaces de red. Al asignar un tooa de interfaz de red virtual, índice de bucle de hello es tooidentify usado:
 
 ```
 "networkInterfaces": [ { 
@@ -251,7 +251,7 @@ Tenga en cuenta que la creación de un bucle para un recurso de la plantilla pue
 
 ## <a name="dependencies"></a>Dependencias
 
-La mayoría de los recursos dependen de otros para que funcionen correctamente. Las máquinas virtuales deben estar asociadas con una red virtual y, para tal fin, necesita una interfaz de red. El elemento [dependsOn](../../resource-group-define-dependencies.md) se utiliza para asegurarse de que la interfaz de red está lista para usarse antes de que se creen las máquinas virtuales:
+Mayoría de los recursos depende otro toowork recursos correctamente. Máquinas virtuales deben asociarse con una red virtual y toodo que requiere una interfaz de red. Hola [dependsOn](../../resource-group-define-dependencies.md) elemento es toomake usado que esa interfaz de red de hello esté listo toobe usa antes de que se crean máquinas virtuales de hello:
 
 ```
 "dependsOn": [
@@ -259,9 +259,9 @@ La mayoría de los recursos dependen de otros para que funcionen correctamente. 
 ],
 ```
 
-Resource Manager implementa en paralelo todos los recursos que no dependan de otro que se vaya a implementar. Tenga cuidado al establecer las dependencias porque puede ralentizar accidentalmente el proceso si define algunas que sean innecesarias. Pueden encadenar las dependencias a través de varios recursos. Por ejemplo, la interfaz de red depende de la dirección IP pública y los recursos de red virtual.
+Resource Manager implementa en paralelo todos los recursos que no dependan de otro que se vaya a implementar. Tenga cuidado al establecer las dependencias porque puede ralentizar accidentalmente el proceso si define algunas que sean innecesarias. Pueden encadenar las dependencias a través de varios recursos. Por ejemplo, interfaz de red de hello depende de la dirección IP pública hello y recursos de red virtual.
 
-¿Cómo puede saber si se requiere una dependencia? Examine los valores establecidos en la plantilla. Si un elemento de la definición de máquina virtual apunta a otro recurso que se implementa en la misma plantilla, necesita una dependencia. Por ejemplo, la máquina virtual de ejemplo define un perfil de red:
+¿Cómo puede saber si se requiere una dependencia? Ver valores de hello establecido en la plantilla de Hola. Si un elemento de la definición de recursos de máquina virtual de hello apunta tooanother recursos que está implementado en hello misma plantilla, necesita una dependencia. Por ejemplo, la máquina virtual de ejemplo define un perfil de red:
 
 ```
 "networkProfile": { 
@@ -272,11 +272,11 @@ Resource Manager implementa en paralelo todos los recursos que no dependan de ot
 },
 ```
 
-Para establecer esta propiedad, debe existir la interfaz de red. Por lo tanto, necesita una dependencia. También debe establecer una dependencia cuando se define un recurso (un elemento secundario) dentro de otro recurso (un elemento primario). Por ejemplo, las extensiones de script personalizado y la configuración de diagnóstico se definen como recursos secundarios de la máquina virtual. No se creará hasta que la máquina virtual exista. Por lo tanto, los recursos se marcan como dependientes de la máquina virtual.
+tooset esta propiedad, la interfaz de red de hello debe existir. Por lo tanto, necesita una dependencia. También debe tooset una dependencia cuando se define un recurso (un elemento secundario) dentro de otro recurso (un elemento primario). Por ejemplo, configuración de diagnóstico de Hola y extensiones de secuencias de comandos personalizadas se definen como recursos secundarios de la máquina virtual de Hola. No se creará hasta que la máquina virtual de hello existe. Por lo tanto, los recursos se marcan como dependiente de la máquina virtual de Hola.
 
 ## <a name="profiles"></a>Perfiles
 
-Al definir un recurso de máquina virtual, se utilizan varios elementos de perfil. Algunos son necesarios y otros, opcionales. Por ejemplo, los elementos hardwareProfile, osProfile, storageProfile y networkProfile son necesarios, pero diagnosticsProfile es opcional. Estos perfiles definen opciones como:
+Al definir un recurso de máquina virtual, se utilizan varios elementos de perfil. Algunos son necesarios y otros, opcionales. Por ejemplo, elementos de hello hardwareProfile, osProfile, storageProfile y networkProfile son necesarios, pero hello diagnosticsProfile es opcional. Estos perfiles definen opciones como:
    
 - [Tamaño](sizes.md)
 - [Nombre](/architecture/best-practices/naming-conventions) y credenciales
@@ -286,11 +286,11 @@ Al definir un recurso de máquina virtual, se utilizan varios elementos de perfi
 
 ## <a name="disks-and-images"></a>Discos e imágenes
    
-En Azure, los archivos de VHD pueden representar [discos o imágenes](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Cuando el sistema operativo de un archivo de VHD está especializado para ser una máquina virtual específica, se conoce como "disco". Cuando el sistema operativo de un archivo de VHD está generalizado para crear muchas máquinas virtuales, se conoce como "imagen".   
+En Azure, los archivos de VHD pueden representar [discos o imágenes](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Cuando sistema de operativo hello en un archivo de disco duro virtual está especializada toobe una VM específica, es tooas que se hace referencia un disco. Al sistema operativo de hello en un archivo de disco duro virtual se ha generalizado toobe utiliza toocreate muchas máquinas virtuales, es una imagen de tooas que se hace referencia.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Creación de máquinas virtuales y discos a partir de una imagen de plataforma
 
-Cuando se crea una máquina virtual, debe decidir qué sistema operativo usar. El elemento imageReference se utiliza para definir el sistema operativo de una nueva máquina virtual. En el ejemplo se muestra una definición de un sistema operativo Windows Server:
+Cuando se crea una máquina virtual, debe decidir qué toouse de sistema operativo. elemento de imageReference de Hello es sistema de operativo hello toodefine utilizadas de una nueva máquina virtual. ejemplo de Hola muestra una definición para un sistema operativo Windows Server:
 
 ```
 "imageReference": { 
@@ -301,7 +301,7 @@ Cuando se crea una máquina virtual, debe decidir qué sistema operativo usar. E
 },
 ```
 
-Si desea crear un sistema operativo Linux, puede usar esta definición:
+Si desea toocreate un sistema operativo Linux, puede usar esta definición:
 
 ```
 "imageReference": {
@@ -312,7 +312,7 @@ Si desea crear un sistema operativo Linux, puede usar esta definición:
 },
 ```
 
-Los valores de configuración del disco del SO se asignan con el elemento osDisk. En el ejemplo se define un nuevo disco administrado con el modo de almacenamiento en caché establecido en **ReadWrite** y que se va a crear el disco de un [imagen de plataforma](cli-ps-findimage.md):
+Opciones de configuración de disco del sistema operativo Hola se asignan por elemento de hello osDisk. Hello en el ejemplo se define un nuevo disco administrado por hello demasiado el almacenamiento en caché el conjunto de modos**ReadWrite** y ese disco Hola se crea a partir un [imagen de la plataforma](cli-ps-findimage.md):
 
 ```
 "osDisk": { 
@@ -324,7 +324,7 @@ Los valores de configuración del disco del SO se asignan con el elemento osDisk
 
 ### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Creación de máquinas virtuales a partir de discos administrados existentes
 
-Si desea crear máquinas virtuales a partir de discos existentes, quite los elementos imageReference y osProfile, y defina esta configuración de disco:
+Si desea que las máquinas virtuales de toocreate de discos existentes, quite imageReference hello y elementos de osProfile de Hola y definir esta configuración de disco:
 
 ```
 "osDisk": { 
@@ -339,7 +339,7 @@ Si desea crear máquinas virtuales a partir de discos existentes, quite los elem
 
 ### <a name="create-new-virtual-machines-from-a-managed-image"></a>Creación de máquinas virtuales a partir de una imagen administrada
 
-Si desea crear una máquina virtual a partir de una imagen personalizada, cambie el elemento imageReference y defina esta configuración de disco:
+Si desea que una máquina virtual desde una imagen administrada toocreate, cambiar los elementos de imageReference hello y definir esta configuración de disco:
 
 ```
 "storageProfile": { 
@@ -357,7 +357,7 @@ Si desea crear una máquina virtual a partir de una imagen personalizada, cambie
 
 ### <a name="attach-data-disks"></a>Conexión de discos de datos
 
-Si lo desea, puede agregar discos de datos a las máquinas virtuales. El [número de discos](sizes.md) depende del tamaño del disco de sistema operativo que utilice. Con el tamaño de las máquinas virtuales establecido en Standard_DS1_v2, el número máximo de discos de datos que podría agregarse a es 2. En el ejemplo, se agrega un disco administrado a cada máquina virtual:
+Si lo desea, puede agregar datos discos toohello máquinas virtuales. Hola [número de discos](sizes.md) depende Hola tamaño del disco de sistema operativo que utilice. Con hello tamaño de máquinas virtuales de hello establece tooStandard_DS1_v2, número máximo de Hola de discos de datos que se podrían agregar toohello ellos es dos. En el ejemplo de Hola, un disco de datos administrados se agrega tooeach VM:
 
 ```
 "dataDisks": [
@@ -373,7 +373,7 @@ Si lo desea, puede agregar discos de datos a las máquinas virtuales. El [númer
 
 ## <a name="extensions"></a>Extensiones
 
-Aunque las [extensiones](extensions-features.md) son un recurso independiente, están estrechamente relacionadas con las máquinas virtuales. Las extensiones pueden agregar como un recurso secundario de la máquina virtual o como uno independiente. El ejemplo muestra la [extensión de diagnóstico](extensions-diagnostics-template.md) que se agrega a las máquinas virtuales:
+Aunque [extensiones](extensions-features.md) son un recurso independiente, sino tooVMs estrechamente relacionados. Las extensiones se pueden agregar como un recurso secundario de hello VM o como un recurso independiente. ejemplo de Hola muestra hello [extensión de diagnósticos](extensions-diagnostics-template.md) añadidos toohello las máquinas virtuales:
 
 ```
 { 
@@ -406,9 +406,9 @@ Aunque las [extensiones](extensions-features.md) son un recurso independiente, e
 },
 ```
 
-Este recurso de extensión usa la variable storageName y las variables de diagnóstico para proporcionar valores. Si desea cambiar los datos recopilados mediante esta extensión, puede agregar más contadores de rendimiento a la variable wadperfcounters. También podría elegir poner los datos de diagnóstico en una cuenta de almacenamiento diferente a donde se almacenan los discos de máquina virtual.
+Este recurso de extensión usa los valores de tooprovide de variables de diagnóstico de Hola y de variable de storageName Hola. Si desea toochange Hola datos recopilados por esta extensión, puede agregar más variables de wadperfcounters de toohello de contadores de rendimiento. También puede elegir datos de diagnóstico de hello tooput en una cuenta de almacenamiento diferente a donde se almacenan los discos de máquina virtual de Hola.
 
-Existen muchas extensiones que se pueden instalar en una máquina virtual, pero la más útil es probablemente la de [script personalizado](extensions-customscript.md). En el ejemplo, un script de PowerShell denominado "start.ps1" se ejecuta en cada máquina virtual cuando se inicia por primera vez:
+Existen muchas extensiones que se pueden instalar en una máquina virtual, pero hello más útil es probablemente hello [extensión de Script personalizado](extensions-customscript.md). En el ejemplo de Hola, un script de PowerShell denominado start.ps1 se ejecuta en cada máquina virtual cuando inicia por primera vez:
 
 ```
 {
@@ -435,26 +435,26 @@ Existen muchas extensiones que se pueden instalar en una máquina virtual, pero 
 }
 ```
 
-El script start.ps1 puede realizar muchas tareas de configuración. Por ejemplo, no se inicializan los discos de datos que se agregan a las máquinas virtuales en el ejemplo; puede usar uno personalizado para inicializarlos. Si tiene varias tareas de inicio para realizar, puede utilizar el archivo start.ps1 para llamar a otros scripts de PowerShell en Azure Storage. En el ejemplo se usa PowerShell, pero puede usar cualquier método de scripting que esté disponible en el sistema operativo que esté utilizando.
+secuencia de comandos de Hello start.ps1 puede realizar muchas tareas de configuración. Por ejemplo, no se inicializan los discos de datos de Hola que se agregan toohello máquinas virtuales en el ejemplo de Hola; Puede usar un script personalizado de tooinitialize ellos. Si tiene varios toodo de tareas de inicio, puede usar hello start.ps1 archivo toocall otras secuencias de comandos de PowerShell en el almacenamiento de Azure. ejemplo de Hola usa PowerShell, pero puede usar cualquier método de scripting que está disponible en el sistema operativo de Hola que está usando.
 
-Puede ver el estado de las extensiones instaladas en la configuración de extensiones del portal:
+Puede ver estado de Hola de extensiones de hello instalado desde la configuración de extensiones de hello en el portal de hello:
 
 ![Consulta del estado de la extensión](./media/template-description/virtual-machines-show-extensions.png)
 
-También puede obtener información de la extensión mediante el comando de PowerShell **Get-AzureRmVMExtension**, el comando de la CLI 2.0 de Azure, **vm extension get** o la API de REST de **obtención de información de extensiones**.
+También puede obtener información de la extensión mediante hello **Get AzureRmVMExtension** PowerShell comando hello **get de la extensión de vm** comando de CLI de Azure 2.0 o hello **obtener información de la extensión**  API de REST.
 
 ## <a name="deployments"></a>Implementaciones
 
-Cuando se implementa una plantilla, Azure realiza un seguimiento de los recursos implementados como un grupo y asigna automáticamente un nombre para este grupo implementado. El nombre de la implementación es el mismo que el de la plantilla.
+Cuando se implementa una plantilla, los recursos de hello Azure pistas que ha implementado como un grupo y automáticamente asigna a un grupo de toothis implementado de nombre. nombre de Hola de implementación de hello es Hola mismo que el nombre de plantilla de Hola Hola.
 
-Si le preocupa el estado de los recursos de la implementación, puede usar la hoja Grupo de recursos de Azure Portal:
+Si desea obtener sobre el estado de Hola de recursos de implementación de hello, puede usar hoja del grupo de recursos de Hola Hola portal de Azure:
 
 ![Obtención de la información de implementación](./media/template-description/virtual-machines-deployment-info.png)
     
-No pasa nada por usar la misma plantilla para crear o actualizar recursos existentes. Al usar comandos para implementar plantillas, tiene la oportunidad de indicar qué [modo](../../resource-group-template-deploy.md) usar. El modo se puede establecer en **Completo** o **Incremental**. El valor predeterminado son actualizaciones incrementales. Tenga precaución al utilizar el modo **Completo** porque se pueden eliminar accidentalmente los recursos. Cuando se establece el modo en **Completo**, Resource Manager elimina los recursos del grupo de recursos que no están en la plantilla.
+No es un problema toouse Hola los mismos recursos de plantilla toocreate o tooupdate los recursos existentes. Al utilizar plantillas de toodeploy de comandos, tiene Hola oportunidad toosay que [modo](../../resource-group-template-deploy.md) desea toouse. se puede establecer el modo de Hello tooeither **completar** o **Incremental**. valor predeterminado de Hello es toodo las actualizaciones incrementales. Tenga precaución al utilizar hello **completar** modo porque se pueden eliminar accidentalmente los recursos. Al establecer el modo de hello demasiado**completar**, Administrador de recursos elimina los recursos de grupo de recursos de Hola que no están en la plantilla de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 - Cree su propia plantilla con las [Creación de plantillas de Azure Resource Manager](../../resource-group-authoring-templates.md).
-- Implemente la plantilla que creó mediante [Creación de una máquina virtual Windows con una plantilla de Resource Manager](ps-template.md).
-- Aprenda a administrar la máquina virtual que ha creado repasando el tema [Creación y administración de máquinas virtuales Windows con el módulo de Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Implementar la plantilla de Hola que creó mediante [crear una máquina virtual de Windows con una plantilla de administrador de recursos](ps-template.md).
+- Obtenga información acerca de cómo toomanage Hola las máquinas virtuales que se creó mediante la revisión de [crear y administrar máquinas virtuales de Windows con el módulo de PowerShell de Azure de hello](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

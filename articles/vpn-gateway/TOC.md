@@ -63,7 +63,7 @@
 ### [Introducción y configuración de Azure](vpn-gateway-3rdparty-device-config-overview.md)
 ### [Ejemplo: dispositivo Cisco ASA (IKEv2/no BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## Solución de problemas
-### [Validación del rendimiento de la VPN en una red virtual](vpn-gateway-validate-throughput-to-vnet.md)
+### [Validar VPN rendimiento tooa red virtual](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Configuración de dispositivos de firewall o VPN sugeridos por la comunidad](vpn-gateway-third-party-settings.md)
 ### [Problema de conexión de punto a sitio](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
 ### [La conexión de sitio a sitio se desconecta de forma intermitente](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)

@@ -1,6 +1,6 @@
 ---
-title: "Volcado y restauración en Azure Database for PostgreSQL | Microsoft Docs"
-description: "Describe cómo extraer una base de datos de PostgreSQL en un archivo de volcado y restaurar la base de datos de PostgreSQL desde un archivo de almacenamiento creado por pg_dump en Azure Database for PostgreSQL."
+title: "aaaHow tooDump y restauración de base de datos de Azure para PostgreSQL | Documentos de Microsoft"
+description: "Describe cómo tooextract un PostgreSQL base de datos en un archivo de volcado de memoria y restaurar base de datos de PostgreSQL de Hola desde un archivo de almacenamiento creado por pg_dump en base de datos de Azure para PostgreSQL."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -9,24 +9,24 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/14/2017
-ms.openlocfilehash: 190373c4980b67e16b58700e4b7e65658545c615
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9ad28e9dec3927b0f80b5e6bab6423cc944f5156
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migración de una base de datos de PostgreSQL mediante volcado y restauración
-Puede usar [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) para extraer una base de datos de PostgreSQL a un archivo de volcado y [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) para restaurar la base de datos de PostgreSQL desde un archivo de almacenamiento creado por pg_dump.
+Puede usar [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) tooextract una base de datos PostgreSQL en un archivo de volcado de memoria y [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) toorestore base de datos de PostgreSQL de Hola desde un archivo de almacenamiento creado por pg_dump.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para seguir esta guía, necesitará:
-- Un [servidor de Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) con reglas de firewall para permitir el acceso a las bases de datos que hay en él.
+toostep a través de este tooguide cómo, necesita:
+- Un [base de datos de Azure para PostgreSQL server](quickstart-create-server-database-portal.md) con acceso de tooallow de reglas de firewall y la base de datos en él.
 - Utilidades de línea de comandos [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) y [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) instaladas
 
-Siga estos pasos para realizar un volcado y restaurar la base de datos de PostgreSQL:
+Siga estos pasos toodump y restaurar la base de datos PostgreSQL:
 
-## <a name="create-a-dump-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>Creación de un archivo de volcado mediante pg_dump con los datos que se van a cargar
-Para hacer una copia de seguridad de una base de datos de PostgreSQL existente en el entorno local o en una máquina virtual, ejecute el comando siguiente:
+## <a name="create-a-dump-file-using-pgdump-that-contains-hello-data-toobe-loaded"></a>Cree un archivo de volcado de memoria mediante pg_dump que contenga Hola datos toobe cargado
+tooback de una existente PostgreSQL local de la base de datos o en una máquina virtual, ejecute el siguiente comando de Hola:
 ```bash
 pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> > <database>.dump
 ```
@@ -35,15 +35,15 @@ Por ejemplo, si tiene un servidor local y una base de datos llamada **testdb** e
 pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
 ```
 
-## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Restauración de los datos a la instancia de Azure Database for PostrgeSQL con pg_restore
-Después de crear la base de datos de destino, puede usar el comando pg_restore y el parámetro -d, --dbname para restaurar los datos en la base de datos de destino desde el archivo de volcado.
+## <a name="restore-hello-data-into-hello-target-azure-database-for-postrgesql-using-pgrestore"></a>Restaurar los datos de hello en base de datos de destino de Hola para PostrgeSQL con pg_restore
+Una vez haya creado la base de datos de destino de hello, puede usar comandos de pg_restore de Hola y Hola -d, datos de saludo--dbname parámetro toorestore en base de datos de destino de Hola desde el archivo de volcado de memoria de hello.
 ```bash
 pg_restore -v –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
 ```
-En este ejemplo, restaure los datos del archivo de copia de seguridad **testdb.dump** en la base de datos **mypgsqldb** en el servidor de destino **mypgserver-20170401.postgres.database.azure.com**.
+En este ejemplo, restaurar los datos de Hola desde el archivo de volcado de memoria de hello **testdb.dump** en la base de datos de hello **mypgsqldb** en el servidor de destino **mypgserver-20170401.postgres.database.azure.com**.
 ```bash
 pg_restore -v --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=mypgsqldb testdb.dump
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-- Para migrar una base de datos de PostgreSQL mediante exportación e importación, consulte [Migración de una base de datos de PostgreSQL mediante exportación e importación](howto-migrate-using-export-and-import.md).
+- toomigrate una base de datos PostgreSQL mediante la exportación e importación, consulte [migrar la base de datos PostgreSQL utilizando exportar e importar](howto-migrate-using-export-and-import.md)

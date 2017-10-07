@@ -1,6 +1,6 @@
 ---
-title: "Comunicación de servicio con la API web de ASP.NET | Microsoft Docs"
-description: "Aprenda a implementar la comunicación del servicio paso a paso mediante la API web de ASP.NET con autohospedaje OWIN en la API de Reliable Services."
+title: "comunicación aaaService con hello ASP.NET Web API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo la comunicación del servicio tooimplement paso a paso mediante el uso de Hola ASP.NET Web API con OWIN hospeda a sí mismo en hello confiable de servicios de API."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -15,35 +15,35 @@ ms.workload: required
 ms.date: 02/10/2017
 ms.author: vturecek
 redirect_url: /azure/service-fabric/service-fabric-reliable-services-communication-aspnetcore
-ms.openlocfilehash: 73b7e1c0cb93ae7c54780a3aab837b0e5bcdb0a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3fb18fcb141ada0d79a0acda3dccbc7fb044346d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-service-fabric-web-api-services-with-owin-self-hosting"></a>Introducción a los servicios de la API web de Microsoft Azure Service Fabric con autohospedaje OWIN
-Azure Service Fabric delega en usted la responsabilidad de decidir cómo desea que se comuniquen sus servicios con los usuarios y entre sí. Este tutorial se centra en la implementación de la comunicación del servicio mediante la API web de ASP.NET con autohospedaje OWIN (Open Web Interface para .NET) en la API de Reliable Services de Service Fabric. Profundizaremos más en la API de comunicación acoplable de Reliable Services. También vamos a usar la API web en un ejemplo paso a paso para mostrar cómo configurar un agente de escucha de comunicación personalizado.
+Azure Service Fabric aplica la potencia de hello en sus manos cuando decida cómo desea que su toocommunicate de servicios con los usuarios y entre sí. Este tutorial se centra en la implementación de la comunicación del servicio mediante la API web de ASP.NET con autohospedaje OWIN (Open Web Interface para .NET) en la API de Reliable Services de Service Fabric. Trataremos profundamente en hello API de comunicación acoplable de servicios de confianza. También vamos a usar API Web en un tooshow de ejemplo paso a paso, cómo tooset un detector de comunicación personalizada.
 
-## <a name="introduction-to-web-api-in-service-fabric"></a>Introducción a las API web de Service Fabric
-La API web de ASP.NET es un marco popular y potente que permite la creación de API HTTP sobre .NET Framework. Si no está familiarizado con el marco de trabajo, consulte [Introducción a ASP.NET Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) para obtener más información.
+## <a name="introduction-tooweb-api-in-service-fabric"></a>Introducción tooWeb API de Service Fabric
+ASP.NET Web API es un marco eficaz y popular para la creación de HTTP APIs sobre Hola .NET Framework. Si no ya está familiarizado con el marco de trabajo de hello, consulte [Introducción a ASP.NET Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) toolearn más.
 
-La API web de Service Fabric es la misma API web de ASP.NET que conoce y ama. La diferencia radica en cómo se *hospeda* la aplicación de la API web. No va a utilizar Microsoft Internet Information Services (IIS). Para entender mejor la diferencia, dividámosla en dos partes:
+API Web en Service Fabric es Hola mismo ASP.NET Web API conocen y adoran. Hello diferencia radica en cómo se *host* una aplicación de API Web. No va a utilizar Microsoft Internet Information Services (IIS). toobetter comprender la diferencia de hello, vamos a dividirla en dos partes:
 
-1. La aplicación de la API web (incluidos los controladores y modelos)
-2. El host (el servidor web, normalmente IIS)
+1. aplicación de API Web de Hello (incluidos los controladores y los modelos)
+2. host de Hello (hello web server, normalmente IIS)
 
-Una aplicación de la API web no cambia. No difiere de las aplicaciones API web que haya realizado en el pasado y deberá poder mover simplemente la mayor parte del código de la aplicación. Pero si ha utilizado IIS para hospedarla, donde hospeda la aplicación puede diferir ligeramente del hospedaje que suele utilizar. Antes de profundizar en el hospedaje, vamos a hablar sobre algo más familiar, que es la aplicación de la API web.
+Una aplicación de la API web no cambia. No es distinta de las aplicaciones Web API que ha escrito en hello anterior, y debe ser toosimply pueda mover a través de la mayoría del código de aplicación. Pero si ha sido hospedaje en IIS, donde se hospeda la aplicación hello puede ser un poco diferente de lo que está acostumbrado. Antes de que obtenemos toohello parte de hospedaje, puede empezar con algo más conocidos: Hola aplicación Web API.
 
-## <a name="create-the-application"></a>Creación de la aplicación
+## <a name="create-hello-application"></a>Crear aplicación hello
 Empiece por crear una nueva aplicación Service Fabric, con un servicio único sin estado en Visual Studio 2015.
 
-Si usa API web, encontrará una plantilla de Visual Studio para un servicio sin estado. En este tutorial, crearemos desde cero un proyecto de API web que tenga como resultado lo que se obtendría si seleccionara esta plantilla.
+Una plantilla de Visual Studio para un servicio sin estado mediante las API de Web es tooyou disponible. En este tutorial, crearemos desde cero un proyecto de API web que tenga como resultado lo que se obtendría si seleccionara esta plantilla.
 
-Seleccione un proyecto de servicio sin estado en blanco para aprender a crear un proyecto de API web desde cero; también puede empezar con la plantilla de API web de servicio sin estado y seguir los pasos.  
+Seleccione un toolearn de proyecto de servicio sin estado en blanco cómo toobuild un proyecto de Web API desde el principio o puede empezar con el servicio sin estado Hola plantilla API Web y basta con seguir el tutorial.  
 
-El primer paso es extraer algunos paquetes de NuGet para la API web. El paquete que queremos utilizar es Microsoft.AspNet.WebApi.OwinSelfHost. Este paquete incluye todos los paquetes de la API web necesarios y los paquetes *host* . Esto será importante más adelante.
+Hola primer paso es toopull en algunos paquetes de NuGet para la API Web. paquete de Hello queremos toouse es Microsoft.AspNet.WebApi.OwinSelfHost. Este paquete incluye todos los paquetes de Web API necesarios de Hola y Hola *host* paquetes. Esto será importante más adelante.
 
-Después de haber instalado los paquetes, podremos empezar a crear la estructura de proyecto de API web básica. Si ha utilizado la API Web, la estructura del proyecto le resultará muy familiar. Empiece agregando un directorio `Controllers` y un controlador de valores sencillos:
+Una vez instalados los paquetes de saludo, puede empezar a crear estructura de proyecto de API Web básica hello. Si ha utilizado la API Web, estructura de proyecto de hello deberá ser muy familiar. Empiece agregando un directorio `Controllers` y un controlador de valores sencillos:
 
 **ValuesController.cs**
 
@@ -86,7 +86,7 @@ namespace WebService.Controllers
 
 ```
 
-Finalmente, agregue una clase de inicio en la raíz del proyecto para registrar el enrutamiento, los formateadores y cualquier otro programa de configuración. Aquí también es donde la API web se conecta al *host*, que se revisará de nuevo más tarde. 
+A continuación, agregue una clase de inicio Hola proyecto raíz tooregister Hola enrutamiento, los formateadores y cualquier otro programa de instalación de configuración. También es donde se conecta la API Web en toohello *host*, que se revisan de nuevo más tarde. 
 
 **Startup.cs**
 
@@ -115,12 +115,12 @@ namespace WebService
 }
 ```
 
-Eso es todo en lo relacionado con la parte de la aplicación. En este momento, hemos establecido el diseño básico de proyecto de la API web. Hasta ahora, el aspecto no debe diferir mucho de los proyectos de API web que ha creado en el pasado o de la plantilla básica de API web. La lógica empresarial va en los controladores y los modelos como de costumbre.
+Esto es todo por parte de la aplicación de Hola. En este punto, hemos configurado solo hello Web API proyecto diseño básico. Hasta ahora, no debería buscar mucho diferente de proyectos API Web que ha escrito en los último Hola o de plantilla de API Web básica hello. La lógica de negocios va en controladores de Hola y modelos como de costumbre.
 
 ¿Ahora qué hacemos con el hospedaje para poder ejecutarlo en realidad?
 
 ## <a name="service-hosting"></a>Hospedaje de servicio
-En Service Fabric, el servicio se ejecuta en un *proceso de host de servicio*(un archivo ejecutable que ejecuta el código del servicio). Al escribir un servicio con la API de Reliable Services, el proyecto de servicio simplemente se compila en un archivo ejecutable que registra el tipo de servicio y ejecuta el código. Esto ocurre en la mayoría de los casos al escribir un servicio de Service Fabric en .NET. Si abre Program.cs en el proyecto de servicio sin estado, verá:
+En Service Fabric, el servicio se ejecuta en un *proceso de host de servicio*(un archivo ejecutable que ejecuta el código del servicio). Al escribir un servicio mediante el uso de hello confiable de servicios de API, el proyecto de servicio solo compila tooan archivo ejecutable que registra el tipo de servicio y se ejecuta el código. Esto ocurre en la mayoría de los casos al escribir un servicio de Service Fabric en .NET. Cuando abra Program.cs en el proyecto de servicio sin estado hello, verá:
 
 ```csharp
 using System;
@@ -152,22 +152,22 @@ internal static class Program
 
 ```
 
-Si es sospechosamente similar al punto de entrada a una aplicación de consola, eso es porque lo es.
+Si se ve es sospechosamente como aplicación de consola de tooa de punto de entrada de hello, que es porque es.
 
-Los detalles adicionales sobre el proceso de host de servicio y el registro del servicio están fuera del ámbito de este artículo. Sin embargo, es importante saber por ahora que *el código del servicio se ejecuta en su propio proceso*.
+Hola a más detalles sobre el proceso de host de servicio y registro del servicio están más allá del ámbito de Hola de este artículo. Pero es importante tooknow para ahora que *se ejecuta el código de servicio en su propio proceso*.
 
 ## <a name="self-host-web-api-with-an-owin-host"></a>Autohospedaje de la API web con un host OWIN
-Dado que el código de aplicación de la API web se hospeda en su propio proceso, ¿cómo se conecta a un servidor web? Escriba [OWIN](http://owin.org/). OWIN es simplemente un contrato entre las aplicaciones web .NET y servidores web. Tradicionalmente, cuando se usa ASP.NET (hasta MVC 5), la aplicación web se acoplaba estrechamente con IIS a través de System.Web. Sin embargo, la API web implementa OWIN, lo que le permite escribir una aplicación web que se separa del servidor web que la hospeda. Por este motivo, puede usar un servidor web OWIN de *autohospedaje* que puede iniciar en su propio proceso. Encaja perfectamente con el modelo de hospedaje de Service Fabric que acabamos de describir.
+¿Dado que el código de aplicación de API Web se hospeda en su propio proceso, cómo enlazó, servidor web de tooa? Escriba [OWIN](http://owin.org/). OWIN es simplemente un contrato entre las aplicaciones web .NET y servidores web. Tradicionalmente cuando se usa ASP.NET (arriba tooMVC 5), aplicación web de hello es tooIIS estrechamente acopladas a través de System.Web. Sin embargo, la API Web implementa OWIN, por lo que puede escribir una aplicación web que se separa del servidor web de Hola que lo hospeda. Por este motivo, puede usar un servidor web OWIN de *autohospedaje* que puede iniciar en su propio proceso. Esto se adapta perfectamente con los modelos de hospedaje de Service Fabric de Hola que acabamos de describir.
 
-En este artículo, usaremos Katana como el host OWIN para la aplicación API web. Katana es una implementación del host OWIN de código abierto basada en [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx) y la [API de servidor HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx) de Windows.
+En este artículo, vamos a usar Katana como host de hello OWIN para hello aplicación Web API. Katana es una implementación del host OWIN de código abierto basada en [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx) y Hola Windows [HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx).
 
 > [!NOTE]
-> Para más información sobre Katana, vaya al [sitio de Katana](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana). Para una introducción rápida sobre cómo usar Katana para el autohospedaje de la API web, consulte [Use OWIN to Self-Host ASP.NET Web API 2](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api)(Uso de OWIN para autohospedaje de la API web de ASP.NET 2).
+> más información acerca de Katana, vaya toohello toolearn [Katana sitio](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana). Para obtener una introducción rápida de cómo toouse Katana tooself host Web API, consulte [OWIN Use tooSelf Host ASP.NET Web API 2](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api).
 > 
 > 
 
-## <a name="set-up-the-web-server"></a>Configurar el servidor web
-La API de Reliable Services ofrece un punto de entrada de comunicación en el que puede conectar pilas de comunicación para permitir a los usuarios y a los clientes conectarse al servicio:
+## <a name="set-up-hello-web-server"></a>Configurar el servidor web de Hola
+Hola confiable de servicios de API proporciona un punto de entrada de comunicación que se pueden conectar en pilas de comunicación que permiten a los usuarios y el servicio de toohello de tooconnect de clientes:
 
 ```csharp
 
@@ -178,7 +178,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ```
 
-El servidor web (y las demás pilas de comunicación que utilice en el futuro, como WebSockets) debe utilizar la interfaz ICommunicationListener para integrarse correctamente en el sistema. Las razones para ello serán más evidentes en los pasos siguientes.
+servidor web de Hello (y cualquier otra pila de comunicación que utilizar Hola futura, por ejemplo, WebSockets) deben usar hello ICommunicationListener interfaz toointegrate correctamente con el sistema de Hola. los motivos Hola serán más evidentes Hola siguiendo los pasos.
 
 En primer lugar, cree una clase denominada OwinCommunicationListener que implemente ICommunicationListener:
 
@@ -213,13 +213,13 @@ namespace WebService
 }
 ```
 
-La interfaz de ICommunicationListener ofrece tres métodos para administrar un agente de escucha de comunicación para el servicio:
+interfaz ICommunicationListener de Hello proporciona tres toomanage métodos un agente de escucha de comunicación para el servicio:
 
 * *OpenAsync*. Empezar a escuchar las solicitudes.
 * *CloseAsync*. Dejar de escuchar las solicitudes, finalizar las solicitudes en curso y cerrar correctamente.
 * *Abort*. Cancelar todo y detener inmediatamente.
 
-Para empezar, agregue los miembros de clase privada de elementos que el agente de escucha necesite para funcionar. Estos se inicializarán a través del constructor y se usarán más adelante cuando configure la dirección URL de escucha.
+tooget iniciado, agregue los miembros de clase privada para el agente de escucha de cosas Hola tendrá toofunction. Estos se inicializarán a través del constructor de Hola y utilizar más adelante cuando configure Hola escuchando la dirección URL.
 
 ```csharp
 internal class OwinCommunicationListener : ICommunicationListener
@@ -274,12 +274,12 @@ internal class OwinCommunicationListener : ICommunicationListener
 ```
 
 ## <a name="implement-openasync"></a>Implementación de OpenAsync
-Para configurar el servidor web, necesitamos un par de datos:
+tooset de servidor web de hello, necesita dos fragmentos de información:
 
-* *Prefijo de ruta de acceso de dirección URL*. Aunque es opcional, es aconsejable configurar esto ahora para poder hospedar de forma segura varios servicios web en la aplicación.
+* *Prefijo de ruta de acceso de dirección URL*. Aunque esto es opcional, es conveniente para tooset esta una copia de seguridad ahora para que puede hospedar varios servicios web con seguridad en la aplicación.
 * *Un puerto*.
 
-Antes de obtener un puerto para el servidor web, es importante comprender que Service Fabric proporciona una capa de aplicación que actúa como un búfer entre la aplicación y el sistema operativo subyacente en el que se ejecuta. Como tal, Service Fabric proporciona una manera de configurar *extremos* para los servicios. Service Fabric garantiza que los puntos de conexión están disponibles para que el servicio los utilice. De este modo, no tiene que configurarlos por su cuenta en el entorno de sistema operativo subyacente. Puede hospedar fácilmente su aplicación de Service Fabric en diferentes entornos sin tener que realizar cambios en la aplicación. (Por ejemplo, puede hospedar la misma aplicación en Azure o en su propio centro de datos).
+Antes de obtener un puerto de servidor web de hello, es importante que comprenda que Service Fabric proporciona una capa de aplicación que actúa como un búfer entre la aplicación y el sistema operativo subyacente Hola donde se ejecuta. Por lo tanto, Service Fabric proporciona una manera tooconfigure *extremos* para los servicios. Service Fabric garantiza que los puntos de conexión están disponibles para su toouse de servicio. De esta manera, no tiene tooconfigure a usted mismo en hello subyacente de entorno de sistema operativo. Fácilmente puede hospedar la aplicación de Service Fabric en diferentes entornos sin necesidad de toomake cualquier aplicación de tooyour de cambios. (Por ejemplo, puede hospedar Hola la misma aplicación en Azure o en su propio centro de datos.)
 
 Configurar un extremo HTTP en PackageRoot\ServiceManifest.xml:
 
@@ -292,9 +292,9 @@ Configurar un extremo HTTP en PackageRoot\ServiceManifest.xml:
 
 ```
 
-Este paso es importante porque el proceso de host de servicio se ejecuta con credenciales restringidas (servicio de red en Windows). Esto significa que el servicio no tendrá acceso para configurar un punto de conexión HTTP por sí mismo. Mediante la configuración del punto de conexión, Service Fabric sabe configurar la lista de control de acceso (ACL) adecuada para la dirección URL que el servicio escuchará. Service Fabric también proporciona un lugar estándar para configurar puntos de conexión.
+Este paso es importante porque el proceso de host del servicio de Hola se ejecuta con credenciales restringidas (servicio de red en Windows). Esto significa que el servicio no tendrá acceso tooset un extremo HTTP por sí mismo. Mediante la configuración de punto de conexión de hello, Service Fabric sabe tooset una lista de control de acceso apropiado de hello (ACL) para hello escuche en direcciones URL que Hola servicio. Service Fabric también proporciona un lugar estándar tooconfigure extremos.
 
-De nuevo en OwinCommunicationListener.cs, puede iniciar la implementación de OpenAsync. Aquí es donde inicia el servidor web. En primer lugar, obtenga la información de punto de conexión y cree la dirección URL en la que escucha el servicio. La dirección URL será diferente dependiendo de si se utiliza el agente de escucha en un servicio sin estado o uno con estado. Para los servicios con estado, el agente de escucha debe crear una dirección única para cada réplica de servicio con estado en la que el agente realiza la escucha. Para los servicios sin estado, la dirección puede ser mucho más sencilla. 
+De nuevo en OwinCommunicationListener.cs, puede iniciar la implementación de OpenAsync. Esto es donde se inicia el servidor de web de Hola. En primer lugar, obtener información de punto de conexión de Hola y crear dirección URL de Hola que escucha en el servicio de Hola. dirección URL de Hello será diferente dependiendo de si se utiliza el agente de escucha de hello en un servicio sin estado o un servicio con estado. Para un servicio con estado, el agente de escucha de hello debe toocreate un nombre único para cada réplica de servicio con estado realiza escuchas en dirección. Para los servicios sin estado, dirección de hello puede ser mucho más fácil. 
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)
@@ -339,11 +339,11 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
 
 ```
 
-Tenga en cuenta que "http://+" se utiliza aquí. Esto le permite asegurarse de que el servidor web está escuchando todas las direcciones disponibles, incluyendo localhost, FQDN y la dirección IP del equipo.
+Tenga en cuenta que "http://+" se utiliza aquí. Se trata de toomake seguro de que el servidor web Hola está escuchando en todas las direcciones disponibles, incluyendo localhost, el FQDN y la dirección IP del equipo Hola.
 
-La implementación de OpenAsync es una de las razones más importantes por las que el servidor web (o cualquier pila de comunicación) se implementa como una interfaz ICommunicationListener en lugar de simplemente abrirse directamente desde `RunAsync()` en el servicio. El valor devuelto de OpenAsync es la dirección que está escuchando el servidor web. Cuando se devuelve esta dirección al sistema, registra la dirección con el servicio. Service Fabric proporciona una API que permite a los clientes y otros servicios pedir esta dirección por nombre de servicio. Esto es importante porque la dirección del servicio no es estática. Los servicios se mueven en el clúster para fines de disponibilidad y equilibrio de recursos. Este es el mecanismo que permite a los clientes resolver la dirección de escucha de un servicio.
+Hello OpenAsync implementación es uno de los motivos más importantes de hello ¿por qué servidor web de hello (o cualquier pila de comunicación) se implementa como un ICommunicationListener, en lugar de simplemente tener abre directamente desde `RunAsync()` en el servicio de Hola. valor devuelto de Hola de OpenAsync es dirección Hola Hola servidor web está escuchando en. Cuando esta dirección se devuelve toohello system, registra dirección Hola con servicio Hola. Tejido de servicio proporciona una API que permite a los clientes y otro servicios toothen solicitar esta dirección por nombre de servicio. Esto es importante porque la dirección de servicio de hello no es estático. Servicios se mueven en clúster de Hola para fines de disponibilidad y equilibrio de recursos. Este es el mecanismo de Hola que permite a los clientes hello tooresolve dirección para un servicio de escucha.
 
-Con eso en mente, OpenAsync inicia el servidor web y devuelve la dirección en que está escuchando. Tenga en cuenta que realiza escuchas en "http://+", pero antes de que OpenAsync devuelva la dirección, el "+" se sustituye por la dirección IP o FQDN del nodo en el que está actualmente. La dirección que este método devuelve es la que se registra con el sistema. También es lo que los clientes y otros servicios ven cuando solicitan la dirección de un servicio. Para que los clientes se conecten correctamente a ella, necesitan un IP o FQDN real en la dirección.
+Con esto en mente, OpenAsync inicia el servidor web de Hola y devuelve la dirección de Hola que escuchan en. Tenga en cuenta que realiza escuchas en "http://+", pero antes de que OpenAsync devuelve la dirección de hello, Hola "+" se reemplaza con hello IP o FQDN del nodo de hello está actualmente en. dirección de Hello devuelto por este método es lo que está registrado con el sistema de Hola. También es lo que los clientes y otros servicios ven cuando solicitan la dirección de un servicio. Para los clientes toocorrectly conectar tooit, que necesitan una IP o FQDN real de dirección de Hola.
 
 ```csharp
     ...
@@ -362,7 +362,7 @@ Con eso en mente, OpenAsync inicia el servidor web y devuelve la dirección en q
     }
     catch (Exception ex)
     {
-        this.eventSource.Message("Web server failed to open endpoint {0}. {1}", this.endpointName, ex.ToString());
+        this.eventSource.Message("Web server failed tooopen endpoint {0}. {1}", this.endpointName, ex.ToString());
 
         this.StopWebServer();
 
@@ -372,12 +372,12 @@ Con eso en mente, OpenAsync inicia el servidor web y devuelve la dirección en q
 
 ```
 
-Tenga en cuenta que esto hace referencia a la clase Inicio que se pasó a OwinCommunicationListener en el constructor. El servidor web utiliza esta instancia de inicio para arrancar la aplicación de la API web.
+Tenga en cuenta que esto hace referencia a clase de inicio de Hola que se pasó en toohello OwinCommunicationListener en el constructor de Hola. Saludos toobootstrap aplicación de API Web del servidor de web de hello usa esta instancia de inicio.
 
-La línea `ServiceEventSource.Current.Message()` aparecerá en la ventana Eventos de diagnóstico más adelante al ejecutar la aplicación para confirmar que el servidor web se ha iniciado correctamente.
+Hola `ServiceEventSource.Current.Message()` línea aparecerá en la ventana de eventos de diagnóstico de hello más adelante, al ejecutar ese servidor web de Hola Hola aplicación tooconfirm ha iniciado correctamente.
 
 ## <a name="implement-closeasync-and-abort"></a>Implementación de CloseAsync y Abort
-Por último, implemente CloseAsync y Abort para detener el servidor web. Es posible detener el servidor web eliminando el identificador de servidor que se creó durante la OpenAsync.
+Por último, implemente CloseAsync y anulación del servidor web de toostop Hola. servidor web de Hola se puede detener eliminando identificador de servidor de Hola que se creó durante la OpenAsync.
 
 ```csharp
 public Task CloseAsync(CancellationToken cancellationToken)
@@ -412,10 +412,10 @@ private void StopWebServer()
 }
 ```
 
-En este ejemplo de implementación, CloseAsync y Abort simplemente detendrían el servidor web. Puede optar por realizar un apagado coordinado del servidor web de manera más correcta en CloseAsync. Por ejemplo, el apagado podría esperar a que finalicen las solicitudes en proceso antes de la devolución.
+En este ejemplo de implementación, CloseAsync y Abort simplemente detendrán servidor web de Hola. Puede elegir un apagado más correctamente coordinado de servidor web de hello en CloseAsync tooperform. Por ejemplo, apagado Hola podría esperar toobe solicitudes sobre la marcha completada antes de devolver Hola.
 
-## <a name="start-the-web-server"></a>Iniciar el servidor web
-Ahora está listo para crear y devolver una instancia de OwinCommunicationListener para iniciar el servidor web. De nuevo en la clase de servicio (WebService.cs), reemplace el método `CreateServiceInstanceListeners()`:
+## <a name="start-hello-web-server"></a>Inicie hello web server
+Ahora está listo toocreate y devolver una instancia de servidor web de OwinCommunicationListener toostart Hola. Nuevo en hello clase de servicio (WebService.cs), invalidar hello `CreateServiceInstanceListeners()` método:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -429,12 +429,12 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-Aquí es donde la *aplicación* de la API web y el *host* OWIN se encuentran finalmente. Al host (OwinCommunicationListener) se le asigna una instancia de la *aplicación* (la API web) a través del inicio. Service Fabric administra su ciclo de vida. Normalmente este mismo patrón puede ser seguido de cualquier pila de comunicación.
+Esto es donde Hola API Web *aplicación* y Hola OWIN *host* finalmente cumplir. host de Hello (OwinCommunicationListener) tiene una instancia del programa Hola a *aplicación* (API de Web) a través de la clase de inicio de Hola. Service Fabric administra su ciclo de vida. Normalmente este mismo patrón puede ser seguido de cualquier pila de comunicación.
 
 ## <a name="put-it-all-together"></a>Colocación de todo junto
-En este ejemplo, no necesita hacer nada en el método `RunAsync()` , de modo que simplemente se puede quitar la invalidación.
+En este ejemplo, no es necesario toodo cualquier dato de hello `RunAsync()` método, por lo que la invalidación de simplemente puede eliminarse.
 
-La implementación del servicio final debe ser muy sencilla. Solo es necesario crear el agente de escucha de comunicación:
+implementación del servicio final de Hello debe ser muy simple. Solo necesita el agente de escucha de toocreate Hola comunicación:
 
 ```csharp
 using System;
@@ -466,7 +466,7 @@ namespace WebService
 }
 ```
 
-La clase `OwinCommunicationListener` completa:
+Hola completa `OwinCommunicationListener` clase:
 
 ```csharp
 using System;
@@ -579,7 +579,7 @@ namespace WebService
             }
             catch (Exception ex)
             {
-                this.eventSource.Message("Web server failed to open endpoint {0}. {1}", this.endpointName, ex.ToString());
+                this.eventSource.Message("Web server failed tooopen endpoint {0}. {1}", this.endpointName, ex.ToString());
 
                 this.StopWebServer();
 
@@ -621,22 +621,22 @@ namespace WebService
 }
 ```
 
-Ahora que ya lo tiene todo listo, el proyecto debe presentar el aspecto de una aplicación típica de API web con los puntos de entrada de la API de Reliable Services y un host OWIN.
+Ahora que ha colocado todas las piezas de hello en su lugar, el proyecto debería parecerse a una aplicación de API Web típica con puntos de entrada de API de servicios de confianza y un host OWIN.
 
 ## <a name="run-and-connect-through-a-web-browser"></a>Ejecutar y conectarse a través de un explorador web
 Si no lo ha hecho, [configure el entorno de desarrollo](service-fabric-get-started.md).
 
-Ahora puede compilar e implementar su servicio. Presione **F5** en Visual Studio para compilar e implementar la aplicación. En la ventana Eventos de diagnóstico, debe aparecer un mensaje que indica que el servidor web se ha abierto en http://localhost:8281/.
+Ahora puede compilar e implementar su servicio. Presione **F5** en Visual Studio toobuild e implementar la aplicación hello. En la ventana de eventos de diagnóstico de hello, verá un mensaje que indica que el servidor web Hola abierto en http://localhost:8281 /.
 
 > [!NOTE]
-> Si el puerto ya lo ha abierto otro proceso en el equipo, puede aparecer un error aquí. Esto indica que no se ha podido abrir el agente de escucha. Si ese es el caso, intente utilizar un puerto diferente para configurar el punto de conexión en ServiceManifest.xml.
+> Si ya se ha abierto el puerto de Hola por otro proceso en el equipo, verá un error aquí. Esto indica que no se pudo abrir ese agente de escucha de Hola. Si ese es el caso de hello, pruebe a usar un puerto diferente para la configuración de punto de conexión de hello en ServiceManifest.xml.
 > 
 > 
 
-Una vez que el servicio se esté ejecutando, abra un explorador y vaya a [http://localhost:8281/api/values](http://localhost:8281/api/values) para probarlo.
+Una vez que se está ejecutando el servicio de hello, abra un explorador y navegue demasiado[http://localhost:8281/api/valores](http://localhost:8281/api/values) tootest lo.
 
 ## <a name="scale-it-out"></a>Escala horizontal
-Escalar aplicaciones web sin estado normalmente supone agregar más equipos y sincronizar aplicaciones web en ellos. El motor de orquestaciones de Service Fabric puede hacer esto automáticamente cada vez que se agregan nuevos nodos a un clúster. Al crear instancias de un servicio sin estado, puede especificar el número de instancias que desea crear. Service Fabric coloca ese número de instancias en los nodos del clúster. Y se asegura de no crear más de una instancia en cada nodo. También puede indicar a Service Fabric que cree siempre una instancia en cada nodo mediante la especificación de **-1** en el número de instancias. Esto garantiza que cada vez que agregue nodos para escalar horizontalmente el clúster, se creará una instancia del servicio sin estado en los nodos nuevos. Este valor es una propiedad de la instancia de servicio, por lo que se establece cuando se crea una instancia de servicio. Puede hacerlo a través de PowerShell:
+Ampliación de aplicaciones web sin estado normalmente significa agregar más máquinas y girando hello las aplicaciones web en ellos. Motor de orquestaciones del tejido de servicio puede hacerlo automáticamente cada vez que se agregan nuevos nodos clúster tooa. Al crear instancias de un servicio sin estado, puede especificar el número de Hola de instancias que desea toocreate. Service Fabric coloca ese número de instancias en nodos de clúster de Hola. Y se asegura de que no toocreate más de una instancia en cada nodo. También puede indicar al Service Fabric tooalways crear una instancia en cada nodo mediante la especificación de **-1** para recuento de instancias de Hola. Esto garantiza que, siempre que agregue nodos tooscale fuera del clúster, se creará una instancia del servicio sin estado en nodos nuevos de Hola. Este valor es una propiedad de instancia de servicio de hello, por lo que se establece cuando se crea una instancia de servicio. Puede hacerlo a través de PowerShell:
 
 ```powershell
 
@@ -658,7 +658,7 @@ También puede hacerlo al definir un servicio predeterminado en un proyecto de s
 
 ```
 
-Para más información sobre cómo crear aplicaciones e instancias de servicio, consulte [Implementar una aplicación](service-fabric-deploy-remove-applications.md).
+Para obtener más información sobre cómo toocreate aplicación y las instancias del servicio, vea [implementar una aplicación](service-fabric-deploy-remove-applications.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Depurar la aplicación de Service Fabric con Visual Studio](service-fabric-debugging-your-application.md)

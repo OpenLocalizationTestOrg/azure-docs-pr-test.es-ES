@@ -1,5 +1,5 @@
 ---
-title: "Habilitación de volcados de montón de los servicios de Hadoop en HDInsight - Azure | Microsoft Docs"
+title: "volcados de memoria de montón aaaEnable para los servicios de Hadoop en HDInsight - Azure | Documentos de Microsoft"
 description: "Habilitar los volcados de montón de los servicios de Hadoop en los clústeres de HDInsight basado en Linux para la depuración y el análisis."
 services: hdinsight
 documentationcenter: 
@@ -16,24 +16,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.openlocfilehash: 59942e989d622c2486edf181d76e13344c71e6f9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 49e30f26e1a83f19e068e9da253b5548caec70d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Habilitación de los volcados de montón de los servicios de Hadoop en HDInsight basado en Linux
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Los volcados de montón contienen una instantánea de la memoria de la aplicación, incluidos los valores de variables en el momento en el que se creó el volcado de memoria. Por ello, estos volcados resultan útiles a la hora de diagnosticar cualquier problema que ocurra en tiempo de ejecución.
+Los volcados del montón contienen una instantánea de memoria de la aplicación hello, incluidos los valores de hello de variables en tiempo de Hola se creó el volcado de Hola. Por ello, estos volcados resultan útiles a la hora de diagnosticar cualquier problema que ocurra en tiempo de ejecución.
 
 > [!IMPORTANT]
-> Los pasos de este documento solo funcionan con clústeres de HDInsight que usan Linux. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Hello pasos descritos en este documento solo funcionan con clústeres de HDInsight que utilizan Linux. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whichServices"></a>Servicios
 
-Puede habilitar los volcados de montón en los siguientes servicios:
+Puede habilitar los volcados del montón para hello siguientes servicios:
 
 * **hcatalog** - tempelton
 * **hive** - hiveserver2, metastore, derbyserver
@@ -41,94 +41,94 @@ Puede habilitar los volcados de montón en los siguientes servicios:
 * **yarn** - resourcemanager, nodemanager, timelineserver
 * **hdfs** - datanode, secondarynamenode, namenode
 
-También puede habilitar los volcados de montón para los procesos de asignación y ejecución que ejecuta HDInsight.
+También puede habilitar los volcados del montón para asignación de Hola y reducir los procesos que se ejecutaban por HDInsight.
 
 ## <a name="configuration"></a>Información sobre cómo configurar el volcado de montón
 
-Son las opciones de paso (también conocidas como opciones o parámetros) las que habilitan los volcados de montón en JVM cuando se inicia un servicio. En la mayoría de los servicios de Hadoop, puede modificar el script de shell empleado para iniciar el servicio para pasar estas opciones.
+Se habilitan los volcados del montón pasando opciones (a veces conocido como opts, o parámetros) toohello JVM cuando se inicia un servicio. La mayoría de los servicios Hadoop, puede modificar estas opciones de hello shell script utilizado toostart Hola servicio toopass.
 
-En cada script hay una exportación de **\*\_OPTS** que contiene las opciones que se pasan a JVM. Por ejemplo, en el script **hadoop env.sh**, la línea que comienza con `export HADOOP_NAMENODE_OPTS=` contiene las opciones del servicio NameNode.
+En cada secuencia de comandos, hay una exportación para  **\* \_OPTS**, que contiene opciones de hello pasa toohello JVM. Por ejemplo, en hello **hadoop env.sh** en un script, línea hello que comienza con `export HADOOP_NAMENODE_OPTS=` contiene las opciones de Hola para hello NameNode servicio.
 
-La asignación y reducción de procesos son tareas ligeramente diferentes, ya que se tratan de procesos secundarios del servicio MapReduce. Cada proceso de asignación o reducción se ejecuta en un contenedor secundario y existen dos entradas que contienen las opciones de JVM. Ambos están en **mapred-site.xml**:
+Asignación y reducción procesos son ligeramente diferentes, ya que estas operaciones son un proceso secundario de hello MapReduce servicio. Cada uno de ellos se asignan o reducir el proceso se ejecuta en un contenedor secundario, y hay dos entradas que contienen opciones de JVM Hola. Ambos están en **mapred-site.xml**:
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Se recomienda usar Ambari para modificar los scripts y la configuración de mapred-site.xml, puesto que Ambari controla la replicación de los cambios en los nodos del clúster. Consulte la sección [Uso de Ambari](#using-ambari) para obtener los pasos específicos que debe dar.
+> Se recomienda con Ambari toomodify ambos Hola scripts y configuración mapred-site.xml, como Ambari controlar replicar cambios en nodos de clúster de Hola. Vea hello [Ambari utilizando](#using-ambari) sección para obtener pasos específicos.
 
 ### <a name="enable-heap-dumps"></a>Habilitar los volcados de montón
 
-La siguiente opción habilita los volcados del montón cuando se produce un OutOfMemoryError:
+Hello siguiente opción permite que los volcados del montón cuando se produce un OutOfMemoryError:
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-El símbolo **+** indica que esta opción está habilitada, ya que está deshabilitada de forma predeterminada.
+Hola  **+**  indica que esta opción está habilitada. Hola predeterminado está deshabilitado.
 
 > [!WARNING]
-> Los volcados de montón no están habilitados para los servicios Hadoop en HDInsight, ya que el tamaño de los archivos de volcado puede ser grande. Si los habilita para solucionar problemas, no olvide deshabilitarlos una vez haya reproducido el problema y recopilado los archivos de volcado.
+> Los volcados del montón no están habilitados para los servicios de Hadoop en HDInsight de forma predeterminada, como archivos de volcado de hello pueden ser grandes. Si habilitarlas para solucionar el problema, recuerde toodisable ellos una vez que ha reproducido Hola problema y archivos de volcado de hello recopilada.
 
 ### <a name="dump-location"></a>Ubicación de volcado
 
-La ubicación predeterminada del archivo de volcado es el directorio en el cual está trabajando. Puede decidir dónde guardar el archivo con la siguiente opción:
+ubicación predeterminada de Hello para el archivo de volcado de memoria de hello es el directorio de trabajo actual de Hola. Puede controlar dónde hello archivo se almacena utilizando Hola después de opción:
 
     -XX:HeapDumpPath=/path
 
-Por ejemplo, al usar `-XX:HeapDumpPath=/tmp`, los volcados se almacenarán en el directorio /tmp.
+Por ejemplo, si se usa `-XX:HeapDumpPath=/tmp` hace Hola volcados toobe almacenado en el directorio de Hola/tmp.
 
 ### <a name="scripts"></a>Scripts
 
-También puede desencadenar un script cuando se produzca un error **OutOfMemoryError** . Por ejemplo, puede desencadenar una notificación que le avise de que el error se ha producido. Utilice la siguiente opción para desencadenar un script en un error __OutOfMemoryError__:
+También puede desencadenar un script cuando se produzca un error **OutOfMemoryError** . Por ejemplo, se ha producido desencadenar una notificación para que sepa que error Hola. Siguiente de hello utilice opción tootrigger una secuencia de comandos en un __OutOfMemoryError__:
 
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]
-> Puesto que Hadoop es un sistema distribuido, debe colocar cualquier script que use en todos los nodos del clúster que ejecute el servicio.
+> Puesto que Hadoop es un sistema distribuido, se debe colocar cualquier secuencia de comandos utilizada en todos los nodos de clúster de Hola que se ejecuta el servicio de hello en.
 > 
-> Asimismo, el script debe estar en una ubicación que sea accesible para la cuenta con la cual se ejecuta el servicio y deberá proporcionar permisos de ejecución. A modo de ejemplo, es posible que desee almacenar los scripts en `/usr/local/bin` y usar `chmod go+rx /usr/local/bin/filename.sh` para conceder permisos de ejecución y lectura.
+> script de Hola debe también ser en una ubicación que sea accesible para hello cuenta Hola se ejecuta el servicio como y debe proporcionar permisos de ejecución. Por ejemplo, podría desear toostore scripts en `/usr/local/bin` y usar `chmod go+rx /usr/local/bin/filename.sh` toogrant permisos read y execute.
 
 ## <a name="using-ambari"></a>Uso de Ambari
 
-Para modificar la configuración de un servicio, siga estos pasos:
+configuración de hello toomodify para un servicio, Hola uso pasos:
 
-1. Abra la interfaz de usuario web Ambari del clúster. La dirección URL es https://YOURCLUSTERNAME.azurehdinsight.net.
+1. Abra hello Ambari web interfaz de usuario para el clúster. dirección URL de Hello es https://YOURCLUSTERNAME.azurehdinsight.net.
 
-    Cuando se le solicite, deberá autenticarse en el sitio mediante el nombre de cuenta HTTP (nombre predeterminado: admin) y la contraseña del clúster.
+    Cuando se le solicite, autenticar sitio toohello con el nombre de la cuenta de hello HTTP (valor predeterminado: administrador) y la contraseña para el clúster.
 
    > [!NOTE]
-   > Es posible que Ambari le pida de nuevo que escriba el nombre de usuario y la contraseña. Si es así, escriba el mismo nombre de cuenta y la contraseña.
+   > Se le pedirá una segunda vez por Ambari por nombre de usuario de Hola y la contraseña. Si es así, escriba Hola el mismo nombre de cuenta y contraseña
 
-2. En la lista de la izquierda, seleccione el área de servicio que desea modificar. Por ejemplo, **HDFS**. En el área central, seleccione la ficha **Configuraciones** .
+2. En lista de Hola de hello izquierda, seleccione el área de servicio de hello desea toomodify. Por ejemplo, **HDFS**. En el área central de hello, seleccione hello **configuraciones** ficha.
 
     ![Imagen de la web de Ambari web con la ficha de configuración HDFS seleccionada](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
 
-3. Mediante la entrada **Filtrar...**, escriba **opciones**. Solo se muestran los elementos que contienen este texto.
+3. Con hello **filtro...**  entrada, escriba **opts**. Solo se muestran los elementos que contienen este texto.
 
     ![Lista filtrada](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
 
-4. Busque la entrada **\*\_OPTS** del servicio en el cual desea habilitar los volcados de montón y agregue las opciones que desee habilitar. En la siguiente imagen, he agregado `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` a la entrada **HADOOP\_NAMENODE\_OPTS**:
+4. Buscar hello  **\* \_OPTS** entrada de servicio de Hola que desee tooenable los volcados del montón para y agrega Hola opciones que desea tooenable. Hola después de la imagen, he agregado `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` toohello **HADOOP\_NAMENODE\_OPTS** entrada:
 
     ![HADOOP_NAMENODE_OPTS con -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
    > [!NOTE]
-   > Al habilitar los volcados de montón para el proceso secundario de asignación o reducción, busque los campos con los nombres **mapreduce.admin.map.child.java.opts** y **mapreduce.admin.reduce.child.java.opts**.
+   > Al habilitar los volcados del montón para hello asignarán o reducen el proceso secundario, busque campos Hola denominados **mapreduce.admin.map.child.java.opts** y **mapreduce.admin.reduce.child.java.opts**.
 
-    Presione el botón **Guardar** para guardar los cambios. Puede elaborar una nota breve en la que se describan los cambios.
+    Hola de uso **guardar** botón toosave Hola cambiará. Puede escribir una nota breve que describe los cambios de Hola.
 
-5. Una vez que se hayan aplicado los cambios, aparecerá el icono **Es necesario reiniciar** junto a uno o más servicios.
+5. Una vez que se han aplicado los cambios de hello, Hola **debe reiniciarse** icono aparece junto a uno o varios servicios.
 
     ![icono «Es necesario reiniciar» y botón de reinicio](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
 
-6. Seleccione cada uno de los servicios que necesite reiniciar y pulse el botón **Acciones de servicio** para seleccionar la opción **Activar modo de mantenimiento**. El modo de mantenimiento evita que se generen alertas desde el servicio al reiniciarlo.
+6. Seleccione cada servicio que requiere un reinicio y usar hello **acciones de servicio** botón demasiado**en modo de mantenimiento**. Modo de mantenimiento evita que las alertas se generan desde el servicio de Hola durante el reinicio.
 
     ![Activar el menú del modo de mantenimiento](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
 
-7. Una vez habilitado el modo de mantenimiento, pulse el botón **Reiniciar** para que el servicio pueda **Reiniciar todos los afectados**
+7. Una vez que se ha habilitado el modo de mantenimiento, usar hello **reiniciar** botón para servicio de hello demasiado**reiniciar realiza todas las**
 
     ![Reiniciar todas las entradas afectadas](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
 
    > [!NOTE]
-   > es posible que las entradas del botón **Reiniciar** botón sean diferentes en otros servicios.
+   > Hola entradas para hello **reiniciar** botón puede ser diferente para otros servicios.
 
-8. Una vez haya reiniciado los servicios, pulse el botón **Acciones de servicio** para **Desactivar el modo de mantenimiento**. Esto hará que Ambari reanude la supervisión de alertas para el servicio.
+8. Una vez que se hayan reiniciado los servicios de hello, usar hello **acciones de servicio** botón demasiado**activar el modo de mantenimiento**. Este tooresume Ambari supervisión de alertas de servicio de Hola.
 

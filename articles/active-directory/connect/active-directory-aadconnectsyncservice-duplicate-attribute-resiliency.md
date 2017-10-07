@@ -1,6 +1,6 @@
 ---
-title: "Sincronización de identidades y resistencia de atributos duplicados | Microsoft Docs"
-description: "Nuevo comportamiento a la hora de administrar objetos con conflictos de UPN o ProxyAddress durante la sincronización de directorios con Azure AD Connect."
+title: "resistencia de atributo de sincronización y duplicado aaaIdentity | Documentos de Microsoft"
+description: "Nuevo comportamiento de cómo toohandle los objetos con el UPN o ProxyAddress conflictos durante la sincronización de directorios con Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
-ms.openlocfilehash: 7a8700e70f64851a0c5e5e8c6b31ec7a6884a96c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e27dcbf9d71f83fa9566cae2fd99350297d1cd9a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Sincronización de identidades y resistencia de atributos duplicados
 La resistencia de atributos duplicados es una característica de Azure Active Directory que eliminará la fricción causada por los conflictos entre **UserPrincipalName** y **ProxyAddress** al ejecutar una de las herramientas de sincronización de Microsoft.
 
-Por lo general, se necesita que estos dos atributos sean únicos entre los objetos **User**, **Group** o **Contact** de un inquilino determinado de Azure Active Directory.
+Estos dos atributos son suelen necesitar toobe único en todas las **usuario**, **grupo**, o **póngase en contacto con** objetos en un inquilino de Azure Active Directory determinado.
 
 > [!NOTE]
 > Solo los usuarios pueden tener UPN.
 > 
 > 
 
-El nuevo comportamiento que permite esta característica se produce en la parte de la nube de canalización de sincronización, por lo tanto es independiente del cliente y pertinente para cualquier producto de sincronización de Microsoft incluidos Azure AD Connect, DirSync y MIM + Connector. El término general "cliente de sincronización" se usará en este documento para representar cualquiera de estos productos.
+Hola nuevo comportamiento que permite esta característica es en parte de la nube de Hola de canalización de sincronización de hello, por lo tanto es cliente independiente y relevante para cualquier producto de sincronización de Microsoft incluidos Azure AD Connect, DirSync y MIM + conector. término genérico Hola "cliente de sincronización" se usa en este toorepresent documento cualquiera de estos productos.
 
 ## <a name="current-behavior"></a>Comportamiento actual
-Si hay un intento de aprovisionar un nuevo objeto con un valor de UPN o ProxyAddress que infrinja esta restricción de unicidad, Azure Active Directory bloqueará la creación de ese objeto. Igualmente, si un objeto se actualiza con un UPN o ProxyAddress que no sea único, se producirá un error en la actualización. El cliente de sincronización realiza el intento de aprovisionamiento o actualización tras cada ciclo de exportación y sigue generando un error hasta que se resuelva el conflicto. Se genera un correo electrónico de informe de errores tras cada intento y el cliente de sincronización registra un error.
+Si se produce un intento de tooprovision un nuevo objeto con un valor UPN o ProxyAddress que infringe esta restricción de unicidad, Azure Active Directory bloquea ese objeto desde el que se creó. De forma similar, si un objeto se actualiza con un UPN o ProxyAddress no es único, hello no se puede actualizar. Hola aprovisionamiento intento o update se vuelve a intentar por el cliente de sincronización de hello en cada ciclo de exportación y continúa toofail hasta que se resuelva el conflicto de Hola. Un correo electrónico de informes de error se genera tras cada intento y se registra un error por el cliente de sincronización de Hola.
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Comportamiento con resistencia de atributos duplicados
-En lugar de generar un error completo al aprovisionar o actualizar un objeto con un atributo duplicado, Azure Active Directory "pone en cuarentena" el atributo duplicado que infringe la restricción de unicidad. Si este atributo es necesario para el aprovisionamiento, como en el caso de UserPrincipalName, el servicio asigna un valor de marcador de posición. El formato de estos valores temporales es  
+En lugar de completamente superan tooprovision o actualizar un objeto con un atributo duplicado, Azure Active Directory "pone en cuarentena" atributo duplicado de Hola que infringiría la restricción de unicidad de Hola. Si este atributo es necesario para el aprovisionamiento, como UserPrincipalName, servicio de hello asigna un valor de marcador de posición. formato de Hola de estos valores temporales es  
 "***<OriginalPrefix>+<Número4Dígitos>@<InitialTenantDomain>.onmicrosoft.com***".  
-Si el atributo no es necesario, como en el caso de **ProxyAddress**, Azure Active Directory simplemente pone en cuarentena el atributo en conflicto y continúa con la creación o actualización de objetos.
+Si no se requiere el atributo de hello, como un **ProxyAddress**, Azure Active Directory simplemente pone en cuarentena el atributo de conflicto de Hola y continúa con la creación de objetos de Hola o actualización.
 
-Al poner en cuarentena el atributo, se envía información sobre el conflicto con el mismo correo electrónico de informe de errores utilizado en el comportamiento anterior. Sin embargo, esta información solo aparece en el informe de errores una vez, cuando se produce la cuarentena; no se vuelve a registrar en futuros correos electrónicos. Además, puesto que la exportación de este objeto se ha realizado correctamente, el cliente de sincronización no registrará ningún error y no volverá a intentar la operación de creación o actualización en ciclos de sincronización posteriores.
+Al poner en cuarentena atributo hello, se envía información sobre conflictos de Hola Hola usa el mismo correo electrónico de informe de error en comportamiento anterior de Hola. Sin embargo, esta información sólo aparece en el informe de errores de hello una vez, cuando se produce la cuarentena de hello, que no continúe toobe en el futuro registra mensajes de correo electrónico. Además, puesto que se ha realizado correctamente la exportación de Hola para este objeto, cliente de sincronización de hello no registra un error y Hola de reintento no crear / actualizar operación en ciclos de sincronización posterior.
 
-Para admitir este comportamiento se ha agregado un nuevo atributo a las clases de objeto User, Group y Contact:   
+toosupport que este comportamiento un nuevo atributo ha sido agregado clases de objetos User, Group y Contact toohello:  
 **DirSyncProvisioningErrors**
 
-Se trata de un atributo multivalor que se utiliza para almacenar los atributos en conflicto que infringirían la restricción de unicidad si se agregaran normalmente. Se ha habilitado una tarea de temporizador de segundo plano en Azure Active Directory que se ejecuta cada hora para buscar conflictos de atributos duplicados que se han resuelto y quitar automáticamente los atributos en cuestión de la cuarentena.
+Se trata de un atributo multivalor que usa toostore Hola atributos en conflicto que infringen restricción de unicidad de Hola se deben agregar normalmente es. Se ha habilitado una tarea en segundo plano temporizador en Azure Active Directory que se ejecuta cada toolook horas si hay conflictos de atributo duplicados que se han resuelto y quita automáticamente los atributos de hello en cuestión de cuarentena.
 
 ### <a name="enabling-duplicate-attribute-resiliency"></a>Habilitación de resistencia de atributos duplicados
-Resistencia de atributo duplicados será el nuevo comportamiento predeterminado en todos los inquilinos de Azure Active Directory. Estarán activos de forma predeterminada para todos los inquilinos que habilitaron la sincronización por primera vez el 22 de agosto de 2016, o en cualquier fecha posterior. Los inquilinos que habilitaron la sincronización antes de esta fecha tendrán la característica habilitada en lotes. Este lanzamiento comenzará en septiembre de 2016 y se enviará una notificación por correo electrónico al contacto de notificación técnica de cada inquilino con la fecha específica en que se habilitará la característica.
+Resistencia de atributo duplicada será el comportamiento predeterminado de la nueva Hola entre todos los inquilinos de Azure Active Directory. Será de forma predeterminada para todos los inquilinos que habilita la sincronización de Hola la primera vez en el 22 de agosto de 2016 o posterior. Los inquilinos que habilita la sincronización anterior toothis fecha tendrá habilitada en lotes de la característica de Hola. Esta implementación se iniciará en septiembre de 2016, y se enviará una notificación por correo electrónico notificación técnica póngase en contacto con del inquilino tooeach con fecha concreta hello cuando se habilitará la característica de Hola.
 
 > [!NOTE]
 > Una vez que se ha activado la resistencia de atributo duplicados no se puede deshabilitar.
 
-Para comprobar si la característica está habilitada para su inquilino, puede hacerlo descargando la versión más reciente del módulo de PowerShell de Azure Active Directory y ejecutando lo siguiente:
+toocheck si está habilitada la característica de hello para el inquilino, puede hacerlo por descargar la versión más reciente de Hola de módulo de PowerShell de Azure Active Directory de Hola y ejecutar:
 
 `Get-MsolDirSyncFeatures -Feature DuplicateUPNResiliency`
 
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> Ya no puede usar el cmdlet Set-MsolDirSyncFeature para habilitar de forma proactiva la característica Resistencia de atributos duplicados antes de activarla en el inquilino. Para poder probar la característica, deberá crear un inquilino nuevo de Azure Active Directory.
+> No podrá usar la característica de resistencia de atributo duplicada de Set-MsolDirSyncFeature cmdlet tooproactively habilitar Hola antes de que está activado para el inquilino. característica de toobe tootest capaz de hello, deberá toocreate un nuevo inquilino de Azure Active Directory.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Identificación de objetos con el atributo DirSyncProvisioningErrors
-Existen actualmente dos métodos para identificar los objetos que experimentan estos errores debido a conflictos de propiedad duplicada, Azure Active Directory PowerShell y el Portal de administración de Office 365. Existen planes de ampliación con informes adicionales basados en el portal para el futuro.
+Hay actualmente dos métodos tooidentify objetos que tienen estos errores debidos hello Portal de administración de Office 365, Azure Active Directory PowerShell y tooduplicate propiedad entra en conflicto. No hay planes tooextend tooadditional portal basado reporting Hola futuras.
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
-Para los cmdlets de PowerShell en este tema, las siguientes afirmaciones son verdaderas:
+Para hello cmdlets de PowerShell en este tema, Hola aquí te mostramos true:
 
-* Todos los cmdlets siguientes distinguen mayúsculas de minúsculas.
-* Siempre se debe incluir **–ErrorCategoryPropertyConflict** . Actualmente no hay ningún otro tipo de **ErrorCategory**, pero esto se podría ampliar en el futuro.
+* Todos Hola después cmdlets distinguen mayúsculas de minúsculas.
+* Hola **: ErrorCategory PropertyConflict** siempre se deben incluir. Actualmente no hay ningún otro tipo de **ErrorCategory**, pero esto puede ampliarse en hello futuras.
 
 En primer lugar, comience con la ejecución de **Connect-MsolService** y escriba las credenciales de un administrador de inquilinos.
 
-A continuación, use los cmdlets y operadores siguientes para ver los errores de maneras diferentes:
+A continuación, usar hello siguientes errores de tooview de cmdlets y los operadores de maneras diferentes:
 
 1. [Ver todos](#see-all)
 2. [Por tipo de propiedad](#by-property-type)
@@ -83,15 +83,15 @@ A continuación, use los cmdlets y operadores siguientes para ver los errores de
 6. [En una cantidad limitada o todos](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>Ver todos
-Una vez conectado, para ver una lista general de errores de aprovisionamiento de atributos en el inquilino ejecute:
+Una vez conectado, toosee una lista de los errores en el inquilino de Hola de aprovisionamiento de atributo ejecute:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
-Esto genera un resultado similar al siguiente:   
+Esto genera un resultado similar Hola siguiente:  
  ![Get-MsolDirSyncProvisioningError](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1.png "MsolDirSyncProvisioningError Get")  
 
 #### <a name="by-property-type"></a>Por tipo de propiedad
-Para ver los errores ordenados por tipo de propiedad, agregue la marca **-PropertyName** con el argumento **UserPrincipalName** o **ProxyAddresses**:
+errores de toosee por tipo de propiedad, agregar hello **- PropertyName** marca con hello **UserPrincipalName** o **ProxyAddresses** argumento:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
@@ -100,75 +100,75 @@ O
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
 #### <a name="by-conflicting-value"></a>Por valor en conflicto
-Para ver los errores relativos a una propiedad específica, agregue la marca **-PropertyValue** (**-PropertyName** se debe utilizar también al agregar esta marca):
+errores de toosee relacionados con la propiedad específica de tooa agregar hello **- PropertyValue** marca (**- PropertyName** debe usarse también al agregar esta marca):
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 
 #### <a name="using-a-string-search"></a>Mediante una búsqueda de cadena
-Para realizar una búsqueda de cadenas amplia, use la marca **-SearchString** . Se puede utilizar independientemente de todas las marcas anteriores, con la excepción de **-ErrorCategory PropertyConflict**, que es obligatoria:
+toodo una búsqueda de cadena amplia usar hello **- SearchString** marca. Esto se pueden utilizar independientemente de todos Hola por encima de marcas, con excepción de Hola de **- ErrorCategory PropertyConflict**, que siempre es necesario:
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>En una cantidad limitada o todos
-1. **MaxResults <Int>** se puede utilizar para limitar la consulta a un número específico de valores.
-2. **All** se puede utilizar para asegurarse de que todos los resultados se recuperan en caso de que exista un gran número de errores.
+1. **MaxResults <Int>**  se puede usar toolimit Hola consulta tooa específico un número de valores.
+2. **Todos los** pueden ser utilizado tooensure se recuperan todos los resultados en caso de Hola que existe un gran número de errores.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
 ## <a name="office-365-admin-portal"></a>Portal de administración de Office 365
-Puede ver los errores de sincronización de directorios en el Centro de administración de Office 365. En el informe del portal de Office 365 solo aparecen los objetos **User** que presentan estos errores. No se muestran datos acerca de los conflictos entre los objetos **Groups**, **Contacts**.
+Puede ver los errores de sincronización de directorios en el centro de administración de Office 365 Hola. Hola informes en el portal solo muestra de Hola Office 365 **usuario** objetos que tienen estos errores. No se muestran datos acerca de los conflictos entre los objetos **Groups**, **Contacts**.
 
 ![Usuarios activos](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1234.png "Usuarios activos")
 
-Para obtener instrucciones acerca de cómo ver los errores de sincronización de directorios en el Centro de administración de Office 365, consulte [Identificar problemas de sincronización de directorios en Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Para obtener instrucciones sobre cómo center tooview los errores de sincronización de directorios en Office 365 Hola, administrador, consulte [identificar los errores de sincronización de directorios en Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Informe de errores de sincronización de identidades
-Cuando se administra un objeto con un conflicto de atributo duplicado con este nuevo comportamiento se incluye una notificación en el correo electrónico estándar de informe de errores de sincronización de identidades que se envía al contacto de notificaciones técnicas del inquilino. Sin embargo, hay un cambio importante en este comportamiento. En el pasado, se incluía información sobre un conflicto de atributo duplicado en cada informe de errores posterior hasta que se resolvía el conflicto. Con este nuevo comportamiento, la notificación de error de un conflicto determinado solo aparece una vez en el momento en que se pone en cuarentena el atributo en conflicto.
+Cuando se controla un objeto con un conflicto de atributo duplicado con este nuevo comportamiento que una notificación se incluye en el estándar de hello informe de errores de sincronización de identidades de correo electrónico que se envía toohello notificación técnica póngase en contacto con el inquilino de Hola. Sin embargo, hay un cambio importante en este comportamiento. Hola anteriores, información sobre un conflicto de atributo duplicado se incluiría en cada informe de errores posteriores hasta que se ha resuelto el conflicto de Hola. Con este nuevo comportamiento, notificación de errores de hello si hay un conflicto determinado solo aparecen una vez - en tiempo de hello atributo en conflicto Hola se pone en cuarentena.
 
-Este es un ejemplo del aspecto de la notificación de correo electrónico si hay un conflicto de ProxyAddress:   
+Este es un ejemplo de la notificación de correo electrónico de hello aspecto si hay un conflicto de ProxyAddress:  
     ![Usuarios activos](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "Usuarios activos")  
 
 ## <a name="resolving-conflicts"></a>Resolución de conflictos
-La estrategia de solución de problemas y las tácticas de resolución no son diferentes de la forma en que se controlaban los errores de atributo duplicado en el pasado. La única diferencia es que la tarea de temporizador limpiará el inquilino en el servicio para agregar automáticamente el atributo en cuestión al objeto adecuado una vez que se resuelva el conflicto.
+Solución de problemas de tácticas de estrategia y la resolución de estos errores no debe diferenciarse de manera Hola Hola anterior se administran los errores de atributo duplicado. Hola única diferencia es que Hola temporizador tarea sucias a través del inquilino de hello en hello lado del servicio tooautomatically Agregar atributo Hola en objeto apropiado de pregunta toohello una vez que se resuelve el conflicto de Hola.
 
-En el siguiente artículo se describen diversas estrategias de solución de problemas: [Atributos duplicados o no válidos evitar la sincronización de directorios en Office 365](https://support.microsoft.com/kb/2647098).
+Hello artículo siguiente describe diversas estrategias de solución de problemas y resolución: [duplicado o atributos no válidos impiden la sincronización de directorios en Office 365](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Problemas conocidos
-Ninguno de estos problemas conocidos provoca la degradación del servicio o la pérdida de datos. Varios de ellos son estéticos, otros producen errores estándar de atributos duplicados de “*resistencia previa*” que se generan en lugar de poner en cuarentena el archivo en conflicto, y otros que provocan ciertos errores que requieren una solución manual adicional.
+Ninguno de estos problemas conocidos provoca la degradación del servicio o la pérdida de datos. Varios de ellos son estéticos, otras producen estándar "*resistencia previa*" atributo duplicado errores toobe genera en lugar de poner en cuarentena el atributo de conflicto de hello y otro hace cierto errores toorequire manual adicional revisión de seguridad.
 
 **Comportamiento básico:**
 
-1. Los objetos con configuraciones de atributos específicos continúan recibiendo errores de exportación, en lugar de que los atributos duplicados se pongan en cuarentena.  
+1. Los objetos con configuraciones de atributo concreto siguen tooreceive errores de exportación como lugar toohello duplicados atributos ponen en cuarentena.  
    Por ejemplo:
    
     a. Se crea un nuevo usuario en AD con un UPN de **Joe@contoso.com** y ProxyAddress **smtp:Joe@contoso.com**
    
-    b. Las propiedades de este objeto entran en conflicto con un grupo existente, donde el valor de ProxyAddress es **SMTP:Joe@contoso.com**.
+    b. Hello propiedades de este objeto entran en conflicto con un grupo existente, donde es ProxyAddress  **SMTP:Joe@contoso.com** .
    
-    c. Tras la exportación, se produce un error de **conflicto de ProxyAddress** en lugar de poner los atributos en conflicto en cuarentena. Se reintenta la operación tras cada ciclo de sincronización posterior, como sucedía antes de que se habilitara la característica de resistencia.
-2. Si se crean dos grupos locales con la misma dirección SMTP, uno no se podrá aprovisionar en el primer intento con un error estándar de atributo **ProxyAddress** duplicado. Sin embargo, el valor duplicado se pondrá en cuarentena correctamente en el siguiente ciclo de sincronización.
+    c. Durante la exportación, un **ProxyAddress conflicto** error se produce en lugar de tener atributos de conflicto de hello en cuarentena. Hola se reintenta en cada ciclo de sincronización subsiguientes, tal y como lo habría sido antes de habilita la característica de resistencia de Hola.
+2. Si se crean dos grupos locales con hello misma dirección SMTP, tooprovision un se produce un error en primer intento de hello con un estándar duplicado **ProxyAddress** error. Sin embargo, valor duplicado hello es correctamente en cuarentena en hello siguiente ciclo de sincronización.
 
 **Informe del Portal de Office**:
 
-1. El mensaje de error detallado para dos objetos en un conjunto de conflictos de UPN es el mismo. Esto indica que se ha modificado o puesto en cuarentena el UPN de ambos cuando, en realidad, solo se modificaron los datos de uno de ellos.
-2. El mensaje de error detallado de un conflicto de UPN muestra la propiedad displayName incorrecta de un usuario cuyo UPN se ha modificado o puesto en cuarentena. Por ejemplo:
+1. mensaje de error detallado de Hola para dos objetos en un conjunto de conflicto UPN es Hola igual. Esto indica que se ha modificado o puesto en cuarentena el UPN de ambos cuando, en realidad, solo se modificaron los datos de uno de ellos.
+2. mensaje de error detallado de Hello si hay un conflicto UPN muestra hello displayName incorrecto para un usuario que ha tenido sus UPN cambiado/en cuarentena. Por ejemplo:
    
     a. El **usuario A** se sincroniza primero con **UPN = User@contoso.com**.
    
-    b. A continuación, se trata de sincronizar el **usuario B** con **UPN = User@contoso.com**.
+    b. **El usuario B** se ha intentado toobe sincronizado próxima con **UPN = User@contoso.com** .
    
-    c. El UPN del **usuario B** se cambia a **User1234@contoso.onmicrosoft.com** y **User@contoso.com** se agrega a **DirSyncProvisioningErrors**.
+    c. **Usuario B** UPN se cambia demasiado **User1234@contoso.onmicrosoft.com**  y  **User@contoso.com**  se agrega demasiado**DirSyncProvisioningErrors**.
    
-    d. El mensaje de error para el **usuario B** debe indicar que el **usuario A** ya tiene **User@contoso.com** como UPN; no obstante, muestra el valor de nombreParaMostrar propio del **usuario B**.
+    d. mensaje de error de Hola para **usuario B** debe indicar **usuario A** ya tiene  **User@contoso.com**  como se muestra en un UPN, pero **usuario B** propio displayName.
 
 **Informe de errores de sincronización de identidades**:
 
-El vínculo de los *pasos necesarios para resolver este problema* no es correcto:  
+vínculo de Hola para *pasos sobre cómo tooresolve este problema* es incorrecto:  
     ![Usuarios activos](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "Usuarios activos")  
 
-Debe apuntar a [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
+Debe señalar demasiado[https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
 
-## <a name="see-also"></a>Consulte también
+## <a name="see-also"></a>Otras referencias
 * [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md)
 * [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md)
 * [Identificar problemas de sincronización de directorios en Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)

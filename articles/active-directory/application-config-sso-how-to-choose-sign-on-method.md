@@ -1,6 +1,6 @@
 ---
-title: "Cómo determinar el método de inicio de sesión único que se debe usar | Microsoft Docs"
-description: "Conozca los modos de inicio de sesión único que se admiten en Azure AD y cómo seleccionar uno para la aplicación que le interesa."
+title: "aaaHow toodetermine qué inicio de sesión único método toouse | Documentos de Microsoft"
+description: "Comprender Hola único inicio de sesión modos compatibles con Azure AD y cómo toopick Hola a qué toochoose para una aplicación que le interesen."
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,41 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 80f4a965920fec9cb578c1bee235c7857f37431e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 64f0bc1dc8281d1ab8222fd50eaceaf710704886
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-determine-what-single-sign-on-method-to-use"></a>Cómo determinar el método de inicio de sesión único que se debe usar
+# <a name="how-toodetermine-what-single-sign-on-method-toouse"></a>¿Cómo toodetermine qué inicio de sesión único toouse (método)
 
-Este artículo le ayuda a entender los modos de inicio de sesión único que se admiten en Azure AD y a seleccionar uno para la aplicación que le interesa.
+En este artículo le ayudarán a toounderstand Hola único inicio de sesión modos compatibles con Azure AD y cómo toopick Hola a qué toochoose para una aplicación que le interesen.
 
 ## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Modos de inicio de sesión único y de aprovisionamiento admitidos por tipos de aplicaciones específicas
 
-En la tabla siguiente se describen los diferentes modos de inicio de sesión único y aprovisionamiento admitidos por cada uno de los tipos de aplicaciones anteriores. Puede usar esta tabla para ayudarle a comprender qué aplicación debe agregar para admitir un objetivo específico.
+Hola tabla siguiente describen Hola otro inicio de sesión único y el aprovisionamiento de modos admitidos por cada uno de Hola por encima de los tipos de aplicación. Puede usar esta tabla toohelp toounderstand qué aplicación debe tooadd toosupport un objetivo específico.
 
   ![Tabla de tipos de aplicaciones](./media/application-tables/table1.png)
 
-## <a name="how-to-choose-a-single-sign-on-mode"></a>Cómo elegir un modo de inicio de sesión único
+## <a name="how-toochoose-a-single-sign-on-mode"></a>¿Cómo toochoose un modo de inicio de sesión único
 
-Los modos de **inicio de sesión único** admitidos para aplicaciones de Azure AD se enumeran a continuación.
+Hola admitida **inicio de sesión único** modos para aplicaciones de Azure AD se enumeran a continuación.
 
--   **Se desactivó el inicio de sesión único de Azure AD.**: elija el **modo de inicio de sesión único** Se desactivó el inicio de sesión único de Azure AD, si aún no está preparado para integrar esta aplicación con el inicio de sesión único de Azure AD, o simplemente la está probando.
+-   **Azure AD inicio de sesión único deshabilitado** : elija Azure AD inicio de sesión único deshabilitado **modo de inicio de sesión único** si aún no está listo toointegrate esta aplicación con el inicio de sesión único con Azure AD, o simplemente está probando horizontal
 
--   **Inicio de sesión vinculado**: elija el **modo de inicio de sesión** [Inicio de sesión vinculado](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) si tiene una aplicación que ya está conectada con una solución de inicio de sesión único existente, o si solo desea publicar un simple vínculo para sus usuarios en su [Panel de acceso a las aplicaciones](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) o en su [selector de aplicaciones de Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none).
+-   **Vinculados de inicio de sesión** : elija hello [en el inicio de sesión vinculado](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **modo de inicio de sesión único** si tiene una aplicación que ya está conectada con una única inicio de sesión solución existente, o si su intención es toopublish una sencilla de vínculos para los usuarios en sus [Panel de acceso de la aplicación](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) o [iniciador de la aplicación de Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
--   **Inicio de sesión basado en contraseña**: elija el **modo de inicio de sesión único** [Inicio de sesión con contraseña](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) si su aplicación representa un campo de nombre de usuario y contraseña HTML y quiere almacenar ese nombre de usuario y contraseña de forma segura para reproducirlos en la aplicación más adelante.
+-   **Sesión basado en contraseña** : elija hello [sesión basado en contraseña](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **modo de inicio de sesión único** si la aplicación representa un campo de nombre de usuario y contraseña HTML y desea que toostore que nombre de usuario y una contraseña segura toobe reproducir toohello aplicación más tarde
 
--   **Inicio de sesión basado en SAML**: elija el modo de inicio de sesión único [Inicio de sesión basado en SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) si su aplicación admite los protocolos SAML o OpenID Connect, o si desea poder asignar usuarios a roles de aplicación específicos en función de reglas definidas en sus notificaciones SAML *(**Nota:**Esta opción no está disponible cuando el servidor proxy de aplicación está configurado para una aplicación)*.
+-   **Sesión basado en SAML** : elija hello [sesión basado en SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) toospecific las funciones de aplicación en función de inicio de sesión único en modo si la aplicación es compatible con los protocolos SAML u OpenID Connect de Hola o desea que los usuarios pueden toomap de toobe en reglas que se definan en su SAML notificaciones *(**Nota:** esta opción no está disponible cuando se configura el proxy de aplicación Hola para una aplicación) *
 
--   **Inicio de sesión basado en el encabezado**: elija el modo de inicio de sesión único [Inicio de sesión basado en el encabezado](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) si tiene una aplicación que usa PingAccess que admite la autenticación basada en encabezados HTTP y en la que quiere realizar el inicio de sesión único *(**Nota:** Esta opción solo está disponible cuando el servidor proxy de aplicación y PingAccess están configurados para una aplicación)*.
+-   **Basado en el encabezado de inicio de sesión** : elija esta opción [sesión basada en encabezado](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) inicio de sesión en modo de inicio único si tiene una aplicación que use PingAccess que admite el encabezado HTTP en función de autenticación que desee tooperform-inicio de sesión único en demasiado *(**Nota:** esta opción solo está disponible cuando se configura el proxy de aplicación de Hola y PingAccess para una aplicación) *
 
--   **Autenticación de Windows integrada**: elija el modo de inicio de sesión único [Autenticación de Windows integrada](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) al exponer una aplicación WIA local en la que quiere realizar el inicio de sesión único *(**Nota:** Esta opción solo está disponible cuando el servidor proxy de aplicación está configurado para una aplicación)*.
+-   **Autenticación de Windows integrada** : elija hello [autenticación integrada de Windows](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) el inicio de sesión único en modo al exponer una aplicación de WIA local que desee tooperform-inicio de sesión único en demasiado*()*  *Nota:** esta opción solo está disponible cuando se configura el proxy de aplicación Hola para una aplicación) *
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Modos de inicio de sesión únicos para aplicaciones personalizadas
 
-Las aplicaciones que ha desarrollado de forma personalizada mediante la experiencia de [aplicación de desarrollo personalizado](#_Custom-Developed_Applications) también admiten modos de inicio de sesión único adicionales que no se indican en la lista anterior. Entre ellos se incluyen los siguientes:
+Las aplicaciones que ha personalizado desarrollado mediante hello [aplicación desarrollados de forma personalizada](#_Custom-Developed_Applications) experiencia también admiten únicos inicio de sesión modos adicionales no enumeradas anteriormente. Entre ellos se incluyen los siguientes:
 
 -   Inicio de sesión basado en [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)
 
@@ -57,28 +57,28 @@ Las aplicaciones que ha desarrollado de forma personalizada mediante la experien
 
 -   Inicio de sesión basado en [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
 
-Lea la [guía del desarrollador de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) para aprender a crear una aplicación de desarrollo personalizado que admite estos modos de inicio de sesión único.
+Hola de lectura [Guía del desarrollador de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) toolearn más información acerca de cómo la aplicación toocreate desarrollados personalizada que admite estos único modos de inicio de sesión.
 
-## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Cómo establecer el modo de inicio de sesión único de una aplicación
+## <a name="how-tooset-an-applications-single-sign-on-mode"></a>¿Cómo tooset una aplicación del único modo de inicio de sesión
 
-Para establecer el modo de **inicio de sesión único** de una aplicación, siga las instrucciones siguientes:
+tooset una aplicación **inicio de sesión único** modo, siga las instrucciones de Hola a continuación:
 
-1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
+1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
 
-2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
+2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
 
-3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
 
-4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
+4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
 
-5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
+5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
 
-   * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
+   * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
 
-6.  Seleccione la aplicación que desea configurar para el inicio de sesión único.
+6.  Seleccione la aplicación hello desea tooconfigure inicio de sesión único
 
-7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
+7.  Una vez que se carga la aplicación hello, haga clic en **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Proporcionar un inicio de sesión único a las aplicaciones con el proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
+[Proporcionan aplicaciones de tooyour de inicio de sesión único con el Proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
 

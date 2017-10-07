@@ -1,6 +1,6 @@
 ---
-title: "Análisis de la seguridad de red con la vista de grupos de seguridad de Azure Network Watcher: CLI de Azure 2.0 | Microsoft Docs"
-description: "En este artículo se describe cómo utilizar la CLI de Azure 2.0 para analizar la seguridad de máquinas virtuales con la vista de grupos de seguridad."
+title: seguridad de red de aaaAnalyze con vista grupo Monitor de seguridad de Azure red - 2.0 de CLI de Azure | Documentos de Microsoft
+description: "En este artículo se describe cómo tooanalyze toouse CLI de Azure 2.0 a virtual máquinas seguridad con vista de grupo de seguridad."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 1756e14819e3b7c79361c193413a1fcd7f24a4e6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 31a4cd628f54d7548f495251fd275f099e79a060
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-20"></a>Analice la seguridad de una máquina virtual con la vista de grupos de seguridad mediante la CLI de Azure 2.0
 
@@ -28,30 +28,30 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-security-group-view-cli.md)
 > - [API DE REST](network-watcher-security-group-view-rest.md)
 
-La vista de grupos de seguridad devuelve las reglas de seguridad de red configuradas y vigentes que se aplican a una máquina virtual. Esta funcionalidad resulta útil para auditar y diagnosticar los grupos de seguridad de red y las reglas que están configuradas en una máquina virtual para asegurarse de que el tráfico se está permitiendo o denegando correctamente. En este artículo, se muestra cómo recuperar las reglas de seguridad configuradas y vigentes para una máquina virtual mediante la CLI de Azure
+Vista de grupo de seguridad devuelve reglas de seguridad de red configurada y eficaz que están aplicados tooa virtual machine. Esta capacidad es útil tooaudit y diagnosticar los grupos de seguridad de red y las reglas que se configuran en el tráfico de tooensure de una máquina virtual se está correctamente permitirá o denegará. En este artículo, le mostraremos cómo configura tooretrieve hello y seguridad eficaz reglas tooa máquina virtual a través CLI de Azure
 
 
-En este artículo se usa la CLI de próxima generación para el modelo de implementación de Resource Manager, la CLI de Azure 2.0, que está disponible para Windows, Mac y Linux.
+En este artículo usa la CLI de próxima generación para el modelo de implementación de administración de recursos hello, CLI de Azure 2.0, que está disponible para Windows, Mac y Linux.
 
-Para seguir los pasos de este artículo, es preciso [instalar la interfaz de la línea de comandos de Azure para Mac, Linux y Windows (CLI de Azure)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
+Hola tooperform los pasos de este artículo, deberá demasiado[instalar Hola interfaz de línea de comandos de Azure para Mac, Linux y Windows (CLI de Azure)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Creación de una instancia de Network Watcher](network-watcher-create.md) para crear un monitor de red.
+Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red.
 
 ## <a name="scenario"></a>Escenario
 
-El escenario descrito en este artículo recupera las reglas de seguridad configuradas y vigentes para una máquina virtual dada.
+escenario de Hello descrito en este artículo recupera Hola configurado y las reglas de seguridad eficaz para una máquina virtual dada.
 
 ## <a name="get-a-vm"></a>Obtención de una máquina virtual
 
-Se necesita una máquina virtual para ejecutar el cmdlet `vm list`. El comando siguiente muestra las máquinas virtuales de un grupo de recursos:
+Una máquina virtual es necesario toorun hello `vm list` cmdlet. Hello comando siguiente enumera Hola máquinas virtuales en un grupo de recursos:
 
 ```azurecli
 az vm list -resource-group resourceGroupName
 ```
 
-Una vez que conozca la máquina virtual, puede usar el cmdlet `vm show` para obtener su identificador de recurso:
+Una vez que sepa la máquina virtual de hello, puede usar hello `vm show` cmdlet tooget su Id. de recurso:
 
 ```azurecli
 az vm show -resource-group resourceGroupName -name virtualMachineName
@@ -59,15 +59,15 @@ az vm show -resource-group resourceGroupName -name virtualMachineName
 
 ## <a name="retrieve-security-group-view"></a>Recuperación de la vista de grupos de seguridad
 
-El siguiente paso es recuperar el resultado de la vista de grupos de seguridad.
+Hola siguiente paso es resultado de vista de grupo de seguridad de tooretrieve Hola.
 
 ```azurecli
 az network watcher show-security-group-view --resource-group resourceGroupName --vm vmName
 ```
 
-## <a name="viewing-the-results"></a>Visualización de los resultados
+## <a name="viewing-hello-results"></a>Ver los resultados de Hola
 
-El ejemplo siguiente es una respuesta reducida de los resultados devueltos. Los resultados muestran todas las reglas de seguridad vigentes y aplicadas en la máquina virtual, clasificadas en los grupos **NetworkInterfaceSecurityRules**, **DefaultSecurityRules** y **EffectiveSecurityRules**.
+Hello en el ejemplo siguiente se es una respuesta reducida de los resultados de hello devueltos. Hello resultados muestran todas las reglas de seguridad eficaz y aplicado hello en la máquina virtual de hello desglosado en grupos de **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, y  **EffectiveSecurityRules**.
 
 ```json
 {
@@ -159,6 +159,6 @@ El ejemplo siguiente es una respuesta reducida de los resultados devueltos. Los 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Visite [Automate NSG auditing with Azure Network Watcher Security group view](network-watcher-nsg-auditing-powershell.md) (Automatización de la auditoría de grupos de seguridad de red (NSG) con la vista de grupos de seguridad de Azure Network Watcher) para aprender a automatizar la validación de grupos de seguridad de red.
+Visite [auditoría red seguridad grupos (NSG) con el Monitor de red](network-watcher-nsg-auditing-powershell.md) toolearn cómo tooautomate validación de grupos de seguridad de red.
 
-Para más información sobre las reglas de seguridad que se aplican a los recursos de red, consulte la [información general de la vista de grupos de seguridad](network-watcher-security-group-view-overview.md).
+Obtener más información sobre las reglas de seguridad de Hola que son los recursos de red aplicada tooyour visitando [información general de la vista de grupo de seguridad](network-watcher-security-group-view-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: "Administración del catálogo de copias de seguridad de StorSimple | Microsoft Docs"
-description: "Explica cómo usar la página del catálogo de copias de seguridad del servicio de Administrador de StorSimple para enumerar, seleccionar y eliminar conjuntos de copias de seguridad de un volumen."
+title: "aaaManage el catálogo de copia de seguridad de StorSimple | Documentos de Microsoft"
+description: "Explica cómo toolist de página de la catálogo de copia de seguridad de servicio de administrador de StorSimple con toouse hello, seleccionar y eliminar los conjuntos de copia de seguridad de un volumen."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,80 +14,80 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/28/2016
 ms.author: v-sharos
-ms.openlocfilehash: 5ee9855e1428c7a2d871d9c215d302c5c3b7101a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 14f565c174a10da2c9e2f934a533a5e493f77226
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-your-backup-catalog"></a>Usar el servicio de Administrador de StorSimple para administrar su catálogo de copia de seguridad
+# <a name="use-hello-storsimple-manager-service-toomanage-your-backup-catalog"></a>Usar el catálogo de copia de seguridad de toomanage de servicio de StorSimple Manager Hola
 ## <a name="overview"></a>Información general
-En la página **Catálogo de copias de seguridad** del servicio StorSimple Manager se muestran todos los conjuntos de copia de seguridad que se crean cuando se realizan copias de seguridad manuales o programadas. Puede usar esta página para enumerar todas las copias de seguridad para un volumen o una directiva de copia de seguridad, seleccionar o eliminar las copias de seguridad, o usar una copia de seguridad para restaurar o clonar un volumen.
+el servicio StorSimple Manager Hello **catálogo de copia de seguridad** página muestra todos los conjuntos de copia de seguridad de Hola que se crean cuando se realizan copias de seguridad manuales o programados. Puede usar a este toolist página todas las copias de seguridad de Hola para una directiva de copia de seguridad o un volumen, seleccione o eliminar las copias de seguridad, o utilizar una copia de seguridad toorestore o clonar un volumen.
 
-En este tutorial se explica cómo enumerar, seleccionar y eliminar un conjunto de copia de seguridad. Para obtener información sobre cómo restaurar su dispositivo de copia de seguridad, vaya a [Restaurar el dispositivo desde un conjunto de copia de seguridad](storsimple-restore-from-backup-set.md). Para aprender cómo clonar un volumen, vaya a [Clonar un volumen de StorSimple](storsimple-clone-volume.md).
+Este tutorial le explica cómo toolist, seleccionar y eliminar una copia de seguridad establecido. toolearn cómo toorestore el dispositivo de copia de seguridad, vaya demasiado[restaurar el dispositivo desde un conjunto de copia de seguridad](storsimple-restore-from-backup-set.md). toolearn cómo tooclone un volumen, vaya demasiado[clonar un volumen de StorSimple](storsimple-clone-volume.md).
 
 ![Catálogo de copias de seguridad](./media/storsimple-manage-backup-catalog/backupcatalog.png) 
 
-La página **Catálogo de copias de seguridad** proporciona una consulta para restringir la selección de conjuntos de copias de seguridad. Puede filtrar los conjuntos de copias de seguridad que se recuperan en función de los parámetros siguientes:
+Hola **catálogo de copia de seguridad** página proporciona una consulta toonarrow la selección de conjunto de copia de seguridad. Puede filtrar los conjuntos de copia de seguridad de Hola que se recuperan en función de hello parámetros siguientes:
 
-* **Dispositivo** : dispositivo en el que se creó el conjunto de copias de seguridad.
-* **Directiva de copia de seguridad o Volumen** : directiva de copia de seguridad o volumen asociado a este conjunto de copia de seguridad.
-* **De y A** : el intervalo de fecha y hora en el que se creó el conjunto de copia de seguridad.
+* **Dispositivo** : dispositivo de hello en qué Hola se creó el conjunto de copia de seguridad.
+* **Directiva o el volumen de copia de seguridad** : Hola directiva de copia de seguridad o el volumen asociado a este conjunto de copia de seguridad.
+* **FROM y To** : Hola intervalo de fecha y hora cuando se creó el conjunto de copia de seguridad de Hola.
 
-A continuación, los conjuntos de copias de seguridad filtrados se presentan en forma de tabla en función de los siguientes atributos:
+Hello conjuntos de copia de seguridad filtrados se tabulan en función de los siguientes atributos de hello:
 
-* **Nombre** : nombre de la directiva de copias de seguridad o del volumen asociado al conjunto de copias de seguridad.
-* **Tamaño** : tamaño real del conjunto de copias de seguridad.
-* **Creada en** : Fecha y hora en que se crearon las copias de seguridad. 
-* **Tipo** : los conjuntos de copias de seguridad pueden ser instantáneas locales o instantáneas en la nube. Una instantánea local es una copia de seguridad de todos los datos del volumen que se almacenan localmente en el dispositivo, mientras que una instantánea en la nube hace referencia a la copia de seguridad de los datos del volumen que residen en la nube. Las instantáneas locales proporcionan un acceso más rápido, mientras que las instantáneas en la nube son preferibles para la resistencia de los datos.
-* **Iniciada por** : las copias de seguridad se pueden iniciar automáticamente por una programación o manualmente por el usuario. Puede usar una directiva de copia de seguridad para programar copias de seguridad. Como alternativa, puede usar la opción **Realizar copia de seguridad** para crear una copia de seguridad manual.
+* **Nombre** : hello nombre de directiva de copia de seguridad de Hola o volumen asociado con el conjunto de copia de seguridad de Hola.
+* **Tamaño** : Hola a tamaño real del conjunto de copia de seguridad de Hola.
+* **Fecha de creación de** : Hola fecha y la hora cuando se crearon las copias de seguridad de Hola. 
+* **Tipo** : los conjuntos de copias de seguridad pueden ser instantáneas locales o instantáneas en la nube. Una instantánea local es una copia de seguridad de todos los datos de volumen almacenados localmente en el dispositivo de hello, mientras que una instantánea de nube hace referencia toohello copia de seguridad de datos del volumen que reside en la nube de Hola. Las instantáneas locales proporcionan un acceso más rápido, mientras que las instantáneas en la nube son preferibles para la resistencia de los datos.
+* **Iniciado por** : las copias de seguridad de Hola se pueden iniciar automáticamente una programación o manualmente por el usuario. Puede utilizar las copias de seguridad de un tooschedule de directiva de copia de seguridad. Como alternativa, puede usar hello **realizar copia de seguridad** opción tootake una copia de seguridad manual.
 
 ## <a name="list-backup-sets-for-a-volume"></a>Mostrar conjuntos de copia de seguridad para un volumen
-Complete los pasos siguientes para enumerar todas las copias de seguridad para un volumen.
+Hola completa siguientes pasos se toolist todas las copias de seguridad de Hola para un volumen.
 
-#### <a name="to-list-backup-sets"></a>Para enumerar los conjuntos de copia de seguridad
-1. En la página del servicio de Administrador de StorSimple, haga clic en la pestaña **Catálogo de copias de seguridad** .
-2. Filtre las selecciones de la siguiente manera:
+#### <a name="toolist-backup-sets"></a>conjuntos de copia de seguridad de toolist
+1. En la página del servicio de administrador de StorSimple de hello, haga clic en hello **catálogo de copia de seguridad** ficha.
+2. Filtrar las selecciones de hello como sigue:
    
-   1. Seleccione el dispositivo adecuado.
-   2. En la lista desplegable, elija un volumen para ver las copias de seguridad correspondientes.
-   3. Especifique el intervalo de tiempo.
-   4. Haga clic en el icono de marca de verificación  ![Icono de marca de verificación](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) para ejecutar esta consulta.
+   1. Seleccionar dispositivo apropiados de Hola.
+   2. En la lista desplegable de hello, elija un volumen tooview Hola correspondiente hello las copias de seguridad.
+   3. Especifique el intervalo de tiempo de Hola.
+   4. Haga clic en el icono de verificación de Hola ![Icono de marca de verificación](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) tooexecute esta consulta.
       
-      Las copias de seguridad asociadas al volumen seleccionado deben aparecer en la lista de conjuntos de copias de seguridad.
+      copias de seguridad de Hello asociadas con el volumen de hello seleccionado deben aparecer en lista de Hola de conjuntos de copia de seguridad.
 
 ## <a name="select-a-backup-set"></a>Seleccionar un conjunto de copia de seguridad
-Complete los pasos siguientes para seleccionar un conjunto de copias de seguridad para un volumen o una directiva de copia de seguridad.
+Hola completa siguiendo los pasos tooselect una copia de seguridad establecido para una directiva de copia de seguridad o volumen.
 
-#### <a name="to-select-a-backup-set"></a>Para seleccionar un conjunto de copia de seguridad
-1. En la página del servicio de Administrador de StorSimple, haga clic en la pestaña **Catálogo de copias de seguridad** .
-2. Filtre las selecciones de la siguiente manera:
+#### <a name="tooselect-a-backup-set"></a>tooselect un conjunto de copia de seguridad
+1. En la página del servicio de administrador de StorSimple de hello, haga clic en hello **catálogo de copia de seguridad** ficha.
+2. Filtrar las selecciones de hello como sigue:
    
-   1. Seleccione el dispositivo adecuado.
-   2. En la lista desplegable, seleccione el volumen o la directiva de copia de seguridad para la copia de seguridad que desea seleccionar.
-   3. Especifique el intervalo de tiempo.
-   4. Haga clic en el icono de marca de verificación  ![Icono de marca de verificación](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) para ejecutar esta consulta.
+   1. Seleccionar dispositivo apropiados de Hola.
+   2. En la lista desplegable de hello, elija la que desea tooselect de directiva de copia de seguridad o volumen de Hola para copia de seguridad de Hola.
+   3. Especifique el intervalo de tiempo de Hola.
+   4. Haga clic en el icono de verificación de Hola ![Icono de marca de verificación](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) tooexecute esta consulta.
       
-      Las copias de seguridad asociadas al volumen o la directiva de copia de seguridad seleccionados deben aparecer en la lista de conjuntos de copias de seguridad.
-3. Selecciona y expanda un conjunto de copia de seguridad. Las opciones **Restaurar** y **Eliminar** aparecen en la parte inferior de la página. Puede realizar cualquiera de estas acciones en el conjunto de copia de seguridad que haya seleccionado.
+      Hello deben aparecer copias de seguridad asociadas con la directiva de copia de seguridad o volumen de hello seleccionado en lista de Hola de conjuntos de copia de seguridad.
+3. Selecciona y expanda un conjunto de copia de seguridad. Hola **restaurar** y **eliminar** opciones se muestran en la parte inferior de Hola de página de Hola. Puede realizar cualquiera de estas acciones en el conjunto de copia de seguridad de Hola que haya seleccionado.
 
 ## <a name="delete-a-backup-set"></a>Eliminación de un conjunto de copia de seguridad
-Elimine una copia de seguridad cuando ya no desee conservar los datos asociados a ella. Realice los siguientes pasos para eliminar un conjunto de copia de seguridad.
+Eliminar una copia de seguridad cuando ya no desea datos de hello tooretain asociados con él. Realizar Hola siguiendo los pasos toodelete un conjunto de copia de seguridad.
 
-#### <a name="to-delete-a-backup-set"></a>Para eliminar un conjunto de copia de seguridad
-1. En la página del servicio de Administrador de StorSimple, haga clic en la pestaña **Catálogo de copias de seguridad**.
-2. Filtre las selecciones de la siguiente manera:
+#### <a name="toodelete-a-backup-set"></a>toodelete un conjunto de copia de seguridad
+1. En la página del servicio de administrador de StorSimple de hello, haga clic en hello **ficha catálogo de copia de seguridad**.
+2. Filtrar las selecciones de hello como sigue:
    
-   1. Seleccione el dispositivo adecuado.
-   2. En la lista desplegable, seleccione el volumen o la directiva de copia de seguridad para la copia de seguridad que desea seleccionar.
-   3. Especifique el intervalo de tiempo.
-   4. Haga clic en el icono de marca de verificación  ![Icono de marca de verificación](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) para ejecutar esta consulta.
+   1. Seleccionar dispositivo apropiados de Hola.
+   2. En la lista desplegable de hello, elija la que desea tooselect de directiva de copia de seguridad o volumen de Hola para copia de seguridad de Hola.
+   3. Especifique el intervalo de tiempo de Hola.
+   4. Haga clic en el icono de verificación de Hola ![Icono de marca de verificación](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) tooexecute esta consulta.
       
-      Las copias de seguridad asociadas al volumen o la directiva de copia de seguridad seleccionados deben aparecer en la lista de conjuntos de copias de seguridad.
-3. Selecciona y expanda un conjunto de copia de seguridad. Las opciones **Restaurar** y **Eliminar** aparecen en la parte inferior de la página. Hacer clic en **Eliminar**.
-4. Se le notificará cuando la eliminación esté en curso y cuando haya finalizado correctamente. Cuando finalice la eliminación, actualice la consulta en esta página. El conjunto de copia de seguridad eliminado ya no aparecerá en la lista de conjuntos de copia de seguridad.
+      Hello deben aparecer copias de seguridad asociadas con la directiva de copia de seguridad o volumen de hello seleccionado en lista de Hola de conjuntos de copia de seguridad.
+3. Selecciona y expanda un conjunto de copia de seguridad. Hola **restaurar** y **eliminar** opciones se muestran en la parte inferior de Hola de página de Hola. Hacer clic en **Eliminar**.
+4. Se le notificará cuando Hola eliminación está en curso y cuando haya finalizado correctamente. Después de realiza la eliminación de hello, actualizar la consulta de hello en esta página. conjunto de copia de seguridad de Hello eliminado ya no aparecerá en la lista de Hola de conjuntos de copia de seguridad de.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información sobre cómo usar el catálogo de copias de seguridad para [restaurar el dispositivo desde un conjunto de copias de seguridad](storsimple-restore-from-backup-set.md).
-* Obtenga información sobre cómo [usar el servicio StorSimple Manager para administrar el dispositivo StorSimple](storsimple-manager-service-administration.md).
+* Obtenga información acerca de cómo demasiado[uso Hola toorestore de catálogo de copia de seguridad, el dispositivo desde un conjunto de copia de seguridad](storsimple-restore-from-backup-set.md).
+* Obtenga información acerca de cómo demasiado[uso Hola tooadminister de servicio de StorSimple Manager el dispositivo StorSimple](storsimple-manager-service-administration.md).
 

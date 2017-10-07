@@ -1,6 +1,6 @@
 ---
-title: "Información general sobre el registro de dispositivos de Azure Active Directory | Microsoft Docs"
-description: "El Registro de dispositivos de Azure Active Directory es la base de los escenarios de acceso condicional basado en dispositivos. Cuando se registra un dispositivo, el registro de dispositivos de Azure Active Directory lo aprovisiona con una identidad que se usa para autenticarlo cuando el usuario inicia sesión."
+title: "información general sobre el registro de dispositivo Active Directory aaaAzure | Documentos de Microsoft"
+description: "Registro de dispositivos de Azure Active Directory es la base de Hola para escenarios de acceso condicional basado en el dispositivo. Cuando se registra un dispositivo, las disposiciones de registro de dispositivo de Azure Active Directory Hola dispositivo con una identidad que es el dispositivo de hello tooauthenticate usado cuando Hola usuario inicia sesión."
 services: active-directory
 keywords: registro de dispositivos, habilitar registro de dispositivos, registro de dispositivos y MDM
 documentationcenter: 
@@ -16,57 +16,57 @@ ms.topic: get-started-article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9f8605d65a3852b85a8682ca74fdf99bc785db5b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b9846e34fe873d271ebe71cbf8e70c6b4768885b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-active-directory-device-registration"></a>Introducción al Registro de dispositivos de Azure Active Directory
-El Registro de dispositivos de Azure Active Directory es la base de los escenarios de acceso condicional basado en dispositivos. Cuando se registra un dispositivo, el Registro de dispositivos de Azure Active Directory le proporciona una identidad que se utiliza para autenticar el dispositivo cuando el usuario inicia sesión. El dispositivo autenticado y los atributos del dispositivo pueden utilizarse para aplicar directivas de acceso condicional para las aplicaciones que se hospedan en la nube y locales.
+Registro de dispositivos de Azure Active Directory es la base de Hola para escenarios de acceso condicional basado en el dispositivo. Cuando se registra un dispositivo, el registro de dispositivos de Azure Active Directory proporciona dispositivo Hola con una identidad que es el dispositivo de hello tooauthenticate usado cuando Hola usuario inicia sesión. dispositivo de Hello autenticado y los atributos de hello de dispositivo de hello, se pueden tooenforce usa directivas de acceso condicional para las aplicaciones que se hospedan en la nube de Hola y local.
 
-Cuando se combina con una solución de administración de dispositivos móviles (MDM) como Microsoft Intune, los atributos del dispositivo en Azure Active Directory se actualizan con información adicional sobre este. Esto le permite crear reglas de acceso condicional que obligan a que el acceso desde dispositivos cumpla con las normas de seguridad y cumplimiento. Para más información sobre la inscripción de dispositivos de Microsoft Intune, consulte el artículo sobre cómo [inscribir dispositivos para su administración en Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune).
+Cuando se combina con una solución de management(MDM) de dispositivos móviles como Microsoft Intune, los atributos de dispositivo de hello en Azure Active Directory se actualizan con información adicional sobre el dispositivo de Hola. Esto permite que las reglas de acceso condicional de toocreate que exijan el acceso desde dispositivos toomeet los estándares de seguridad y cumplimiento de normas. Para más información sobre la inscripción de dispositivos de Microsoft Intune, consulte el artículo sobre cómo [inscribir dispositivos para su administración en Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune).
 
 ## <a name="scenarios-enabled-by-azure-active-directory-device-registration"></a>Escenarios que habilita el registro de dispositivos de Azure Active Directory
-El registro de dispositivos de Azure Active Directory incluye compatibilidad con dispositivos iOS, Android y Windows. Los distintos escenarios que usan el registro de dispositivos de Azure AD pueden tener requisitos más específicos y compatibilidad con la plataforma. Estos escenarios son los siguientes:
+El registro de dispositivos de Azure Active Directory incluye compatibilidad con dispositivos iOS, Android y Windows. escenarios de individuales de Hola que utilizan el registro de dispositivos de Azure AD pueden tener compatibilidad con la plataforma y requisitos más específicos. Estos escenarios son los siguientes:
 
-* **Acceso condicional a las aplicaciones hospedadas localmente**: puede usar dispositivos registrados con directivas de acceso en las aplicaciones configuradas para usar AD FS con Windows Server 2012 R2. Para obtener más información sobre cómo configurar el acceso condicional localmente, consulte [Configuración del acceso condicional local mediante el registro de dispositivos de Azure Active Directory](active-directory-device-registration-on-premises-setup.md).
-* **Acceso condicional para aplicaciones de Office 365 con Microsoft Intune** : los administradores de TI pueden aprovisionar directivas de dispositivos de acceso condicional para proteger los recursos corporativos, al tiempo que permiten que los trabajadores de la información con dispositivos compatibles tengan acceso a los servicios. Para obtener más información, vea [Directivas de dispositivos de acceso condicional para servicios de Office 365](active-directory-conditional-access-device-policies.md).
+* **Tooapplications de acceso condicional que están hospedados en local**: puede utilizar dispositivos registrados con directivas de acceso para las aplicaciones que están configuradas toouse AD FS con Windows Server 2012 R2. Para obtener más información sobre cómo configurar el acceso condicional localmente, consulte [Configuración del acceso condicional local mediante el registro de dispositivos de Azure Active Directory](active-directory-device-registration-on-premises-setup.md).
+* **Acceso condicional para aplicaciones de Office 365 con Microsoft Intune** : los administradores de TI pueden aprovisionar acceso condicional dispositivo directivas toosecure los recursos corporativos, mientras que en hello mismo tiempo permitir que los trabajadores de información en dispositivos compatibles Servicios de hello tooaccess. Para obtener más información, vea [Directivas de dispositivos de acceso condicional para servicios de Office 365](active-directory-conditional-access-device-policies.md).
 
 ## <a name="setting-up-azure-active-directory-device-registration"></a>Configuración del registro de dispositivos de Azure Active Directory
-El registro de dispositivos de Azure AD se debe habilitar en Azure Portal para que los dispositivos móviles puedan detectar el servicio mediante la búsqueda de registros DNS conocidos. Debe configurar el DNS de la empresa para que los dispositivos Windows 10, Windows 8.1, Windows 7, iOS y Android puedan detectar y usar el servicio.
-Puede ver y habilitar o deshabilitar dispositivos registrados mediante el Portal de administrador de Azure Active Directory.
+Tendrá que tooenable el registro de dispositivos de Azure AD en hello Portal de Azure para que los dispositivos móviles puedan detectar el servicio de hello buscando registros DNS conocidos. Debe configurar DNS de su empresa para que pueden detectar y usar el servicio de hello dispositivos Windows 10, Windows 8.1, Windows 7, iOS y Android.
+Puede ver y habilitar o deshabilitar dispositivos registrados con hello Portal del administrador en Azure Active Directory.
 
 > [!NOTE]
-> Para obtener la información más actualizada sobre cómo configurar el registro automático de dispositivos, consulte [Configuración del registro automático de dispositivos unidos a un dominio de Windows con Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+> Para obtener instrucciones más recientes sobre cómo ver tooset el registro automático de dispositivos, [cómo toosetup el registro automático de dominio de Windows Unidos a dispositivos con Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
 > 
 > 
 
 ### <a name="enable-azure-active-directory-device-registration-service"></a>Habilitación del servicio de registro de dispositivos de Azure Active Directory
-1. Inicie sesión como administrador en el portal de Microsoft Azure.
-2. En el panel izquierdo, seleccione **Active Directory**.
-3. En la pestaña **Directorio** , seleccione su directorio.
-4. Seleccione la pestaña **Configurar**.
-5. Desplácese hasta la sección llamada **Dispositivos**.
+1. Inicie sesión en toohello portal de Microsoft Azure como administrador.
+2. En el panel izquierdo de hello, seleccione **Active Directory**.
+3. En hello **Directory** ficha, seleccione el directorio.
+4. Seleccione hello **configurar** ficha.
+5. Desplácese sección toohello denominada **dispositivos**.
 6. Seleccione **TODOS** en **LOS USUARIOS PUEDEN UNIR DISPOSITIVOS AL ÁREA DE TRABAJO**.
-7. Seleccione el número máximo de dispositivos que quiere autorizar por usuario.
+7. Seleccione el número máximo de Hola de dispositivos que desee tooauthorize por usuario.
 
 > [!NOTE]
-> La inscripción en Microsoft Intune o Administración de dispositivos móviles para Office 365 requiere la unión al área de trabajo. Si configuró alguno de estos servicios, se seleccionará TODOS y se deshabilitará el botón NINGUNO.
+> La inscripción en Microsoft Intune o Administración de dispositivos móviles para Office 365 requiere la unión al área de trabajo. Si ha configurado alguno de estos servicios, se selecciona todos y Hola NONE botón está deshabilitado.
 > 
 > 
 
-De forma predeterminada, la autenticación en dos fases no está habilitada para el servicio. Aunque se recomienda usar la autenticación en dos fases al registrar un dispositivo.
+De forma predeterminada, la autenticación en dos fases no está habilitada para el servicio de Hola. Aunque se recomienda usar la autenticación en dos fases al registrar un dispositivo.
 
-* Antes de requerir la autenticación en dos fases para este servicio, debe configurar un proveedor de este tipo de autenticación en Azure Active Directory y configurar las cuentas de usuario para Multi-Factor Authentication. Para ello consulte [Adición de Multi-Factor Authentication a Azure Active Directory](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+* Antes de requerir la autenticación en dos fases para este servicio, debe configurar un proveedor de autenticación en dos fases en Azure Active Directory y configurar las cuentas de usuario para la autenticación multifactor, consulte [agregar Multi-factor Authentication Autenticación tooAzure Active Directory](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
 * Si utiliza AD FS con Windows Server 2012 R2, debe configurar un módulo de autenticación en dos fases en AD FS. Para ello consulte [Utilización de Multi-Factor Authentication con Servicios de federación de Active Directory](../multi-factor-authentication/multi-factor-authentication-get-started-server.md).
 
 ## <a name="configure-azure-active-directory-device-registration-discovery"></a>Configuración de la detección del registro de dispositivos de Azure Active Directory
-Los dispositivos de Windows 7 y Windows 8.1 detectarán el servicio de registro de dispositivos mediante la combinación del nombre de la cuenta de usuario con un nombre de servidor de registro de dispositivos conocido.
+Dispositivos Windows 7 y Windows 8.1 detectarán el servicio de registro de dispositivos de hello mediante la combinación de nombre de cuenta de usuario de hello con un nombre de servidor de registro de dispositivo conocido.
 
-Debe crear un registro CNAME de DNS que apunte al registro A asociado con su servicio de registro de dispositivos de Azure Active Directory. El registro CNAME debe usar el prefijo enterpriseregistration conocido seguido del sufijo UPN que usan las cuentas de usuario en su organización. Si su organización usa varios sufijos UPN, deben crearse varios registros CNAME en DNS.
+Debe crear un registro DNS CNAME que señala el registro de toohello A asociado con el servicio de registro de dispositivo de Azure Active Directory. Hola registro CNAME debe usar enterpriseregistration de prefijo conocido Hola seguido por el sufijo UPN de hello usado por las cuentas de usuario de hello en su organización. Si su organización usa varios sufijos UPN, deben crearse varios registros CNAME en DNS.
 
-Por ejemplo, si usa dos sufijos UPN en la organización denominados @contoso.com y @region.contoso.com, creará los siguientes registros de DNS.
+Por ejemplo, si usa dos sufijos UPN en la organización llamada @contoso.com y @region.contoso.com, creará Hola siguientes registros de DNS.
 
 | Entrada | Tipo | Dirección |
 | --- | --- | --- |
@@ -74,17 +74,17 @@ Por ejemplo, si usa dos sufijos UPN en la organización denominados @contoso.com
 | enterpriseregistration.region.contoso.com |CNAME |enterpriseregistration.windows.net |
 
 ## <a name="view-and-manage-device-objects-in-azure-active-directory"></a>Visualización y administración de objetos de dispositivo en Azure Active Directory
-1. En el Portal de administrador de Azure, puede ver, bloquear y desbloquear dispositivos. Un dispositivo bloqueado dejará de tener acceso a las aplicaciones configuradas para permitir solo dispositivos registrados.
-2. Inicie sesión en el Portal de Microsoft Azure como administrador.
-3. En el panel izquierdo, seleccione **Active Directory**.
+1. Desde el portal de administración de Azure de hello, puede ver, bloquear y desbloquear dispositivos. Un dispositivo bloqueado dejará de tener acceso tooapplications que están configurados tooallow solo los dispositivos registrados.
+2. Inicie sesión en toohello Portal de Microsoft Azure como administrador.
+3. En el panel izquierdo de hello, seleccione **Active Directory**.
 4. Seleccione el directorio.
-5. Seleccione la pestaña **Usuarios**. Luego seleccione un usuario para ver sus dispositivos.
-6. Seleccione la pestaña **Dispositivos** .
-7. Seleccione **Dispositivos registrados** en el menú desplegable.
-8. Aquí puede ver, bloquear o desbloquear dispositivos registrados de usuarios.
+5. Seleccione hello **usuarios** ficha. A continuación, seleccione un usuario tooview sus dispositivos
+6. Seleccione hello **dispositivos** ficha.
+7. Seleccione **dispositivos registrados** de hello menú desplegable.
+8. Aquí puede ver, bloquear o desbloquear usuarios Hola los dispositivos registrados.
 
 ## <a name="additional-topics"></a>Otros temas
-Puede registrar los dispositivos unidos a un dominio de Windows 7 y Windows 8.1 con el registro de dispositivos de Azure AD. En los temas siguientes se ofrece más información sobre los requisitos previos y los pasos necesarios para configurar el Registro de dispositivos en dispositivos Windows 7 y Windows 8.1.
+Puede registrar los dispositivos unidos a un dominio de Windows 7 y Windows 8.1 con el registro de dispositivos de Azure AD. Hola temas siguientes proporciona más información sobre requisitos previos de Hola y el registro de dispositivos de tooconfigure requiere pasos hello en dispositivos con Windows 7 y Windows 8.1.
 
 * [Registro automático de dispositivos en Azure Active Directory para dispositivos Windows unidos a un dominio](active-directory-conditional-access-automatic-device-registration.md)
 * [Registro automático de dispositivos en Azure Active Directory para dispositivos Windows 10 unidos a un dominio](active-directory-azureadjoin-devices-group-policy.md)

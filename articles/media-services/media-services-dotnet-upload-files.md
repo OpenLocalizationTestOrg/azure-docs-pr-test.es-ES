@@ -1,6 +1,6 @@
 ---
-title: Carga de archivos en una cuenta de Media Services mediante .NET | Microsoft Docs
-description: "Aprenda a obtener contenido multimedia en Servicios multimedia mediante la creación y carga de recursos."
+title: archivos de aaaUpload en una cuenta de servicios multimedia mediante .NET | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooget medios de contenido en los servicios multimedia mediante la creación y carga de activos."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2017
 ms.author: juliako
-ms.openlocfilehash: ec8c1da633374ba684f6a0a895c542ee76ef73b8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 11c8a359b09efe04b54490fd48ac0cd7c366f8b3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Cargar archivos en una cuenta de Servicios multimedia mediante .NET
 > [!div class="op_single_selector"]
@@ -28,39 +28,39 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-En Servicios multimedia, cargará (o introducirá) los archivos digitales en un recurso. La entidad **Asset** puede contener archivos de vídeo, audio, imágenes, colecciones de miniaturas, pistas de texto y subtítulos (y los metadatos sobre estos archivos).  Una vez cargados los archivos, el contenido se almacena de forma segura en la nube para un posterior procesamiento y streaming.
+En Media Services, cargará (o especificará) los archivos digitales en un recurso. Hola **Asset** entidad puede contener vídeo, audio, imágenes, colecciones de miniaturas, texto realiza un seguimiento y subtítulos archivos (y Hola metadatos acerca de estos archivos.)  Una vez que se cargan archivos de hello, el contenido está almacenado en forma segura en nube de Hola para su posterior procesamiento y transmisión por secuencias.
 
-Los archivos del recurso se denominan **archivos de recursos**. La instancia de **AssetFile** y el archivo multimedia real son dos objetos distintos. La instancia de AssetFile contiene metadatos sobre el archivo multimedia, mientras que el archivo multimedia contiene el contenido multimedia real.
+se denominan archivos Hello en activos de hello **archivos de recursos**. Hola **AssetFile** instancia y archivo de hello multimedia real son dos objetos diferentes. instancia de AssetFile Hola contiene metadatos sobre archivo multimedia de hello, mientras que el archivo de medios de hello contiene contenido multimedia real de Hola.
 
 > [!NOTE]
-> Se aplican las siguientes consideraciones:
+> Hola siguientes consideraciones se aplica:
 > 
-> * Los Servicios multimedia usan el valor de la propiedad IAssetFile.Name al generar direcciones URL para el contenido de streaming (por ejemplo, http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Por esta razón, no se permite la codificación porcentual. El valor de la propiedad **Name**no puede tener ninguno de los siguientes [caracteres reservados para la codificación porcentual](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):!*'();:@&=+$,/?%#[]"  Además, solo puede haber un '.' para la extensión del nombre de archivo.
-> * La longitud del nombre no debe ser superior a 260 caracteres.
-> * Existe un límite máximo de tamaño de archivo admitido para el procesamiento en Media Services. Consulte [este](media-services-quotas-and-limitations.md) tema para obtener información más detallada acerca de la limitación de tamaño de archivo.
-> * Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar el mismo identificador de directiva si siempre usa los mismos permisos de acceso y días, por ejemplo, directivas para localizadores que vayan a aplicarse durante mucho tiempo (directivas distintas a carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
+> * Servicios multimedia usa el valor de Hola de hello IAssetFile.Name propiedad al generar direcciones URL para hello transmisión por secuencias contenido (por ejemplo, http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Por esta razón, no se permite la codificación porcentual. Hola valo hello **nombre** propiedad no puede tener cualquiera de los siguientes hello [por ciento reservados a la codificación de caracteres](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Además, solo puede haber uno '.' para la extensión de nombre de archivo de Hola.
+> * longitud de Hello del nombre de hello no debería ser superior a 260 caracteres.
+> * Hay un tamaño de archivo máximo de toohello límite admitido para el procesamiento de los servicios multimedia. Vea [esto](media-services-quotas-and-limitations.md) tema para obtener más información acerca de la limitación de tamaño de archivo de Hola.
+> * Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar hello mismo Id. de directiva si utilizas siempre Hola mismo días / acceso permisos, por ejemplo, las directivas para localizadores que son tooremain previsto en su lugar durante mucho tiempo (directivas no carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
 > 
 
-Al crear recursos, puede especificar las siguientes opciones de cifrado. 
+Al crear activos, puede especificar Hola siguientes opciones de cifrado. 
 
-* **Ninguno** : no se utiliza cifrado. Este es el valor predeterminado. Tenga en cuenta que al utilizar esta opción el contenido no está protegido en tránsito o en reposo en el almacenamiento.
-  Si tiene previsto entregar un MP4 mediante una descarga progresiva, utilice esta opción. 
+* **Ninguno** : no se utiliza cifrado. Se trata de un valor predeterminado de Hola. Tenga en cuenta que al utilizar esta opción el contenido no está protegido en tránsito o en reposo en el almacenamiento.
+  Si tiene previsto toodeliver un MP4 mediante una descarga progresiva, use esta opción. 
 * **CommonEncryption** : utilice esta opción si va a cargar contenido que ya se ha cifrado y protegido con cifrado común o DRM de PlayReady (por ejemplo, Smooth Streaming protegido con DRM de PlayReady).
-* **EnvelopeEncrypted** : utilice esta opción si va a cargar HLS cifrado con AES. Tenga en cuenta que los archivos deben haberse codificado y cifrado con Transform Manager.
-* **StorageEncrypted** : cifra el contenido no cifrado localmente mediante el cifrado AES de 256 bits y, a continuación, lo carga en el almacenamiento de Azure donde se almacena cifrado en reposo. Los recursos protegidos con el cifrado de almacenamiento se descifran automáticamente y se colocan en un sistema de archivos cifrados antes de la codificación y, opcionalmente, se vuelven a cifrar antes de volver a cargarlos como un nuevo recurso de salida. El caso de uso principal para el cifrado de almacenamiento es cuando desea proteger los archivos multimedia de entrada de alta calidad con un sólido cifrado en reposo en disco.
+* **EnvelopeEncrypted** : utilice esta opción si va a cargar HLS cifrado con AES. Tenga en cuenta que deben ha codificado y cifrado con Transform Manager archivos Hola.
+* **StorageEncrypted** : cifra el contenido no localmente mediante cifrado AES de 256 bits y, a continuación, cargarlo tooAzure almacenamiento donde se almacena cifrado en reposo. Los recursos protegidos con cifrado de almacenamiento se descifran automáticamente y se colocan en un tooencoding anterior del sistema de archivos cifrados y, opcionalmente, volverá a cifrar toouploading anterior como un recurso de salida nuevo. caso de uso principal de Hello para el cifrado de almacenamiento es cuando se desea toosecure sitúe los archivos multimedia de entrada de gran calidad con cifrado de alta seguridad en disco.
   
     Los Servicios multimedia proporcionan cifrado de almacenamiento en disco para sus recursos, no por cable como el administrador de derechos digitales (DRM).
   
     Si el recurso tiene el almacenamiento cifrado, asegúrese de configurar la directiva de entrega de recursos. Para más información, consulte [Configuración de la directiva de entrega de recursos](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Si especifica que el recurso se cifre con una opción **CommonEncrypted** o una opción **EnvelopeEncypted**, deberá asociar el recurso a un elemento **ContentKey**. Para obtener más información, consulte [Creación de una ContentKey](media-services-dotnet-create-contentkey.md). 
+Si se especifica para el toobe activo cifrado con una **CommonEncrypted** opción, o un **EnvelopeEncypted** opción, deberá tooassociate el activo con un **ContentKey**. Para obtener más información, consulte [cómo toocreate una ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Si especifica que el recurso se cifre con una opción **StorageEncrypted**, el SDK de Media Services para .NET creará un elemento **ContentKey** de **StorageEncrypted** para el recurso.
+Si se especifica para el toobe activo cifrado con una **StorageEncrypted** opción, Hola SDK de servicios multimedia para .NET creará un **StorateEncrypted** **ContentKey** para su activo.
 
-En este tema se muestra cómo usar el SDK de Servicios multimedia para .NET, así como las extensiones del SDK de Servicios multimedia para .NET para cargar archivos en un recurso de Servicios multimedia.
+Este tema muestra cómo toouse Media Services .NET SDK, así como archivos de tooupload de extensiones de SDK de .NET de servicios multimedia en un recurso de servicios multimedia.
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Carga de un solo archivo con el SDK .NET de Servicios multimedia
-El código de ejemplo siguiente usa el SDK de .NET para cargar un único archivo. Se crean y se destruyen las instancias AccessPolicy y Locator mediante la función Upload. 
+código de ejemplo de Hola siguiente usa tooupload .NET SDK un único archivo. Hola AccessPolicy y localizador se crean y destruyen por función de carga de Hola. 
 
 
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -86,19 +86,19 @@ El código de ejemplo siguiente usa el SDK de .NET para cargar un único archivo
 
 
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Carga de varios archivos con el SDK .NET de Servicios multimedia
-El código siguiente muestra cómo crear un recurso y cargar varios archivos.
+Hola el siguiente código muestra cómo toocreate un activo y cargar varios archivos.
 
-El código hace lo siguiente:
+código de Hello Hola siguientes:
 
-* Crea un recurso vacío mediante el método CreateEmptyAsset definido en el paso anterior.
-* Crea una instancia de **AccessPolicy** que define los permisos y la duración del acceso al recurso.
-* Crea una instancia de **Locator** que proporciona acceso al recurso.
-* Crea una instancia de **BlobTransferClient** . Este tipo representa a un cliente que funciona en los blobs de Azure. En este ejemplo, usamos al cliente para supervisar el progreso de carga. 
-* Enumera los archivos en el directorio especificado y crea una instancia de **AssetFile** para cada archivo.
-* Carga los archivos en los Servicios multimedia con el método **UploadAsync** . 
+* Crea un recurso vacío con hello CreateEmptyAsset método definido en el paso anterior de Hola.
+* Crea un **AccessPolicy** instancia que define los permisos de Hola y la duración del activo de toohello de acceso.
+* Crea un **localizador** instancia que proporciona el activo de toohello de acceso.
+* Crea una instancia de **BlobTransferClient** . Este tipo representa a un cliente que opera en hello que blobs de Azure. En este ejemplo se utiliza el progreso de la carga de Hola de toomonitor Hola cliente. 
+* Enumera los archivos en el directorio especificado hello y crea un **AssetFile** instancia para cada archivo.
+* Cargas Hola archivos en servicios multimedia con hello **UploadAsync** método. 
 
 > [!NOTE]
-> Use el método UploadAsync para asegurarse de que las llamadas no provocan un bloqueo y los archivos se cargan en paralelo.
+> Utilice hello UploadAsync método tooensure que no se bloquean las llamadas de Hola y Hola archivos se cargan en paralelo.
 > 
 > 
 
@@ -134,13 +134,13 @@ El código hace lo siguiente:
                 var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
                 Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                // It is recommended to validate AccestFiles before upload. 
+                // It is recommended toovalidate AccestFiles before upload. 
                 Console.WriteLine("Start uploading of {0}", assetFile.Name);
                 uploadTasks.Add(assetFile.UploadAsync(filePath, blobTransferClient, locator, CancellationToken.None));
             }
 
             Task.WaitAll(uploadTasks.ToArray());
-            Console.WriteLine("Done uploading the files");
+            Console.WriteLine("Done uploading hello files");
 
             blobTransferClient.TransferProgressChanged -= blobTransferClient_TransferProgressChanged;
 
@@ -152,7 +152,7 @@ El código hace lo siguiente:
 
     static void  blobTransferClient_TransferProgressChanged(object sender, BlobTransferProgressChangedEventArgs e)
     {
-        if (e.ProgressPercentage > 4) // Avoid startup jitter, as the upload tasks are added.
+        if (e.ProgressPercentage > 4) // Avoid startup jitter, as hello upload tasks are added.
         {
             Console.WriteLine("{0}% upload competed for {1}.", e.ProgressPercentage, e.LocalFile);
         }
@@ -160,28 +160,28 @@ El código hace lo siguiente:
 
 
 
-Al cargar un número elevado de recursos, tenga en cuenta lo siguiente.
+Al cargar un gran número de activos, tenga en cuenta Hola siguiente.
 
-* Cree un nuevo objeto **CloudMediaContext** por subproceso. La clase **CloudMediaContext** no es segura para subprocesos.
-* Aumente NumberOfConcurrentTransfers desde el valor predeterminado de 2 a un valor superior como 5. La configuración de esta propiedad afecta a todas las instancias de **CloudMediaContext**. 
-* Mantenga ParallelTransferThreadCount en el valor predeterminado de 10.
+* Cree un nuevo objeto **CloudMediaContext** por subproceso. Hola **CloudMediaContext** clase no es segura para subprocesos.
+* Aumentar NumberOfConcurrentTransfers del valor predeterminado de Hola de valor superior del tooa 2, como 5. La configuración de esta propiedad afecta a todas las instancias de **CloudMediaContext**. 
+* Mantener ParallelTransferThreadCount en el valor predeterminado de Hola de 10.
 
 ## <a id="ingest_in_bulk"></a>Ingesta de activos en bloque con SDK .NET de Servicios multimedia
-La carga de archivos de recursos de gran tamaño puede ser un obstáculo durante la creación de recursos. La ingesta de recursos en masa o "Ingesta en masa" implica la separación de la creación de recursos del proceso de carga. Para adoptar un enfoque de ingesta en masa, cree un manifiesto (IngestManifest) que describa el recurso y sus archivos asociados. A continuación, use el método de carga que prefiera para cargar los archivos asociados al contenedor de blobs del manifiesto. Los Servicios multimedia de Microsoft Azure ven el contenedor de blobs asociado al manifesto. Una vez que se carga un archivo en el contenedor de blobs, los Servicios multimedia de Microsoft Azure completan la creación de recursos según la configuración del recurso en el manifiesto (IngestManifestAsset).
+La carga de archivos de recursos de gran tamaño puede ser un obstáculo durante la creación de recursos. Introducción de activos en bloque o "Ingesta en bloque", implica la separación de creación de recursos de proceso de carga de Hola. toouse un enfoque de ingesta de forma masiva, cree un manifiesto (IngestManifest) que describe el recurso de Hola y sus archivos asociados. Utilizamos el método de carga de Hola de contenedor de blobs de su elección tooupload Hola archivos asociados toohello del manifiesto. Servicios de multimedia de Microsoft Azure observa el contenedor de blob de hello asociado con el manifiesto de Hola. Una vez un archivo contenedor de blobs toohello cargado, servicios de multimedia de Microsoft Azure completa la creación de activos de hello basadas en configuración Hola de activos de hello en el manifiesto de hello (IngestManifestAsset).
 
-Para crear un nuevo IngestManifest, llame al método Create expuesto por la colección de IngestManifests en CloudMediaContext. Este método creará un nuevo IngestManifest con el nombre de manifesto proporcionado.
+toocreate un nuevo IngestManifest llame al método de creación de hello expuesto por hello colección los IngestManifests en hello CloudMediaContext. Este método creará un nuevo IngestManifest con nombre de manifiesto de Hola que proporcione.
 
     IIngestManifest manifest = context.IngestManifests.Create(name);
 
-Cree los recursos que se asociarán con el IngestManifest en masa. Configure las opciones de cifrado deseadas en el recurso para la ingesta en masa.
+Crear los activos de Hola que se asociarán con bulk hello IngestManifest. Configurar opciones de cifrado de hello deseado en activos de hello para la ingesta en bloque.
 
-    // Create the assets that will be associated with this bulk ingest manifest
+    // Create hello assets that will be associated with this bulk ingest manifest
     IAsset destAsset1 = _context.Assets.Create(name + "_asset_1", AssetCreationOptions.None);
     IAsset destAsset2 = _context.Assets.Create(name + "_asset_2", AssetCreationOptions.None);
 
-Un IngestManifestAsset permite asociar un recurso con un IngestManifest en masa para la ingesta en masa. También asocia los AssetFiles que conformarán cada recurso. Para crear un IngestManifestAsset, use el método Create en el contexto del servidor.
+Un IngestManifestAsset permite asociar un recurso con un IngestManifest en masa para la ingesta en masa. También asocia hello AssetFiles que conformarán cada activo. toocreate IngestManifestAsset, usar el método de crear de hello en el contexto del servidor de Hola.
 
-En el ejemplo siguiente se agregan dos nuevos IngestManifestAssets que asocian los dos recursos creados anteriormente al manifesto de ingesta en masa. Además, cada IngestManifestAsset asociad un conjunto de archivos que se cargarán para cada recurso durante la ingesta en masa.  
+Hello en el ejemplo siguiente se muestra cómo manifiesto de ingesta de agregar los dos IngestManifestAssets nuevas que asocian dos recursos de hello creados previamente toohello masiva. Además, cada IngestManifestAsset asociad un conjunto de archivos que se cargarán para cada recurso durante la ingesta en masa.  
 
     string filename1 = _singleInputMp4Path;
     string filename2 = _primaryFilePath;
@@ -190,7 +190,7 @@ En el ejemplo siguiente se agregan dos nuevos IngestManifestAssets que asocian l
     IIngestManifestAsset bulkAsset1 =  manifest.IngestManifestAssets.Create(destAsset1, new[] { filename1 });
     IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
 
-Puede usar cualquier aplicación cliente de alta velocidad capaz de cargar los archivos de recursos en el URI del contenedor de almacenamiento de blobs proporcionado por la propiedad **IIngestManifest.BlobStorageUriForUpload** de IngestManifest. Un servicio de carga de alta velocidad destacado es [Aspera On Demand para la aplicación de Azure](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6). También puede escribir código para cargar los archivos de recursos como se muestra en el ejemplo de código siguiente.
+Puede usar cualquier aplicación de cliente de alta velocidad capaz de cargar el contenedor de almacenamiento de hello asset archivos toohello blob URI proporcionado por hello **IIngestManifest.BlobStorageUriForUpload** propiedad de hello IngestManifest. Un servicio de carga de alta velocidad destacado es [Aspera On Demand para la aplicación de Azure](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6). También puede escribir código en los archivos de activos de hello tooupload tal y como se muestra en el siguiente código de ejemplo de Hola.
 
     static void UploadBlobFile(string destBlobURI, string filename)
     {
@@ -215,16 +215,16 @@ Puede usar cualquier aplicación cliente de alta velocidad capaz de cargar los a
         copytask.Start();
     }
 
-El código para cargar los archivos de recursos para el ejemplo usado en este tema se muestra en el ejemplo de código siguiente.
+código de Hello para cargar los archivos de recursos de hello para el ejemplo de Hola utilizado en este tema se muestra en el siguiente código de ejemplo de Hola.
 
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename1);
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename2);
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename3);
 
 
-Puede determinar el progreso de la ingesta en bloque de todos los recursos asociados con un manifiesto **IngestManifest** mediante el sondeo de la propiedad Statistics de **IngestManifest**. Para actualizar la información de progreso, debe usar un **CloudMediaContext** nuevo cada vez que sondee la propiedad Statistics.
+Puede determinar el progreso de Hola de Hola la ingesta en bloque para todos los recursos asociados con un **IngestManifest** sondeando la propiedad de las estadísticas de Hola de hello **IngestManifest**. En información de progreso de pedido tooupdate, debe utilizar un nuevo **CloudMediaContext** cada vez que se sondea la propiedad de las estadísticas de Hola.
 
-En el ejemplo siguiente se muestra cómo sondear un **IngestManifest**por su Id.
+Hello en el ejemplo siguiente se muestra cómo sondear un IngestManifest por su **identificador**.
 
     static void MonitorBulkManifest(string manifestID)
     {
@@ -261,7 +261,7 @@ En el ejemplo siguiente se muestra cómo sondear un **IngestManifest**por su Id.
 
 
 ## <a name="upload-files-using-net-sdk-extensions"></a>Cargar archivos con extensiones del SDK de .NET
-En el ejemplo siguiente se muestra cómo cargar un solo archivo con extensiones del SDK de .NET. En este caso, se usa el método **CreateFromFile**, pero también está disponible la versión asincrónica (**CreateFromFileAsync**). El método **CreateFromFile** le permite especificar el nombre de archivo, la opción de cifrado y una devolución de llamada para notificar el progreso de carga del archivo.
+ejemplo de Hola siguiente muestra cómo tooupload una única archivo utilizando extensiones del SDK de. NET. En este caso Hola **CreateFromFile** se utiliza el método, pero también está disponible la versión asincrónica de hello (**CreateFromFileAsync**). Hola **CreateFromFile** método le permite especificar el nombre de archivo de hello, opción de cifrado y una devolución de llamada en hello tooreport de orden progreso del archivo de saludo de la carga.
 
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
     {
@@ -278,7 +278,7 @@ En el ejemplo siguiente se muestra cómo cargar un solo archivo con extensiones 
         return inputAsset;
     }
 
-En el ejemplo siguiente se llama a la función UploadFile y se especifica el cifrado de almacenamiento como la opción de creación de recursos.  
+Hello en el ejemplo siguiente se llama a la función de UploadFile y especifica cifrado de almacenamiento como opción de creación de hello activos.  
 
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 
@@ -286,7 +286,7 @@ En el ejemplo siguiente se llama a la función UploadFile y se especifica el cif
 
 Ahora puede codificar los recursos cargados. Para más información, consulte [Encode an asset using Media Encoder Standard with the Azure portal](media-services-portal-encode.md)(Codificación de recursos mediante el estándar de codificador multimedia con Azure Portal).
 
-También puede usar Azure Functions para desencadenar un trabajo de codificación basado en un archivo que llega al contenedor configurado. Para más información, consulte [este ejemplo](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
+También puede utilizar las funciones de Azure tootrigger un trabajo de codificación basado en un archivo que llegan en el contenedor de hello configurado. Para más información, consulte [este ejemplo](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -295,7 +295,7 @@ También puede usar Azure Functions para desencadenar un trabajo de codificació
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Paso siguiente
-Ahora que ha cargado un recurso en Media Services, vaya al tema [Obtención de un procesador multimedia][How to Get a Media Processor].
+Ahora que ha cargado un activo de servicios de tooMedia, vaya a toohello [cómo tooGet un procesador multimedia] [ How tooGet a Media Processor] tema.
 
-[How to Get a Media Processor]: media-services-get-media-processor.md
+[How tooGet a Media Processor]: media-services-get-media-processor.md
 

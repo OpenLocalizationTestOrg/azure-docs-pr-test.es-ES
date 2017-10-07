@@ -1,6 +1,6 @@
 ---
-title: Uso de aplicaciones de App-V con Azure RemoteApp| Microsoft Docs
-description: "Obtenga información sobre cómo usar aplicaciones de App-V en Azure RemoteApp."
+title: aplicaciones de App-V aaaUsing con Azure RemoteApp | Documentos de Microsoft
+description: "Obtenga información acerca de cómo las aplicaciones de App-V toouse en Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: ericorman
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: e55bb8db83c04025c46b383a9ebbef4399178116
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9cf5c2eeee2a0ce2cf98e1cf6497dffbc6eff016
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-app-v-apps-in-azure-remoteapp"></a>Uso de aplicaciones App-V en RemoteApp de Azure
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
 Puede usar aplicaciones App-V en una colección híbrida de Azure RemoteApp, que requiera unión a dominio.
 
-Antes de empezar, asegúrese de instalar el cliente de App-V 5.1 con las actualizaciones más recientes. Deberá crear una [imagen personalizada](remoteapp-create-custom-image.md) que incluya el cliente de App-V.  
+Antes de comenzar, asegúrese de cliente de App-V 5.1 de Hola de tooinstall seguro con las últimas actualizaciones de Hola. Deberá toocreate un [imagen personalizada](remoteapp-create-custom-image.md) que incluye el cliente de App-V Hola.  
 
-Es fácil de usar su infraestructura de App-V existente con Azure RemoteApp. Puesto que se implementa una colección híbrida en una red virtual de Azure que tiene acceso a su controlador de dominio y las máquinas virtuales están unidas a un dominio, puede aprovechar sus métodos de infraestructura e implementación de App-v existentes para hospedar fácilmente la aplicación de App-V en Azure RemoteApp. Estas son algunas consideraciones que deben tenerse en cuenta según el tipo de implementación de App-V que tiene actualmente:
+Es fácil toouse su infraestructura de App-V con Azure RemoteApp. Dado que una colección híbrida se implementa en una red virtual de Azure que tiene el controlador de dominio de acceso tooyour y hello las máquinas virtuales están unidos a un dominio, puede aprovechar su existente aplicación App-v infraestructura e implementación métodos tooeasyily host App-V en Azure RemoteApp. Estas son algunas consideraciones que debe tener en cuenta en función de tipo de Hola de implementación de App-V que tiene actualmente:
 
 | Opciones de configuración |  | Positive | Negative |
 | --- | --- | --- | --- |
-| Método de entrega |Streaming (a petición) |La aplicación siempre es la más reciente y actualizada. |Primera latencia |
-| Montado |Más rápido; la aplicación ya está presente en la máquina virtual. |Sobredimensionamiento: se usa el espacio de la imagen (límite de 127 GB) | |
-| Almacenamiento de ubicación de aplicaciones |Contenido compartido |La aplicación se ejecuta en la memoria de la instancia de RemoteApp de Azure. |Consume memoria y una buena conexión al servidor (archivo) de streaming en el que se encuentra la aplicación. |
+| Método de entrega |Streaming (a petición) |Aplicación siempre es hello más reciente y actualizado |Primera latencia |
+| Montado |Más rápido; aplicación ya está presente en hello VM |Sobredimensionamiento: se usa el espacio de la imagen (límite de 127 GB) | |
+| Almacenamiento de ubicación de aplicaciones |Contenido compartido |La aplicación se ejecuta en la memoria de la instancia de RemoteApp de Azure. |Come memoria y conexión buena toostreaming (archivo) del servidor donde reside la aplicación hello |
 | Disco (en caché) |Ejecución rápida La aplicación no depende de la disponibilidad del origen del contenido. |Sobredimensionamiento: se usa el espacio de la imagen (límite de 127 GB) | |
 | Destinatarios |Usuario |Requiere la infraestructura de App-V independiente completa. | |
-| Global (equipo) |Publique previamente o seleccione el destino mediante el servidor de publicación |Debe actualizar la imagen de Azure si desea actualizar la aplicación (enorme). Ocupa espacio en la imagen. | |
+| Global (equipo) |Publique previamente o seleccione el destino mediante el servidor de publicación |Necesita tooupdate la imagen de Azure si desea que tooupdate Hola aplicación (enorme). Ocupa espacio en la imagen. | |
 
- Después de crear su imagen personalizada y colección híbrida, publique su aplicación, asigne usuarios y disfrute de sus aplicaciones de App-V existentes hospedadas en Azure RemoteApp entregadas a cualquier dispositivo en cualquier lugar.
+ Después de crear la imagen personalizada y su colección híbrida, publicar la aplicación, asignar a usuarios y disfrute de las aplicaciones de App-V existentes hospedadas en Azure RemoteApp entregado tooany dispositivo en cualquier parte.
 

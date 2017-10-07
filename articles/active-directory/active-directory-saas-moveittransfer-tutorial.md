@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con MOVEit Transfer - Azure AD integration | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y MOVEit Transfer - Azure AD integration."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y transferencia de MOVEit - integración de Azure AD."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,120 +14,120 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.openlocfilehash: d35aceb9be2d0ff49f86a00cc84f5deb198d88f0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5bbe4f2d952bd45c4d58d55ffc3467b4eb871fd4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Tutorial: Integración de Azure Active Directory con MOVEit Transfer - Azure AD integration
 
-En este tutorial, obtendrá información sobre cómo integrar MOVEit Transfer - Azure AD integration con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate MOVEit transferencia: integración de Azure AD con Azure Active Directory (Azure AD).
 
-La integración de MOVEit Transfer - Azure AD integration con Azure AD proporciona las siguientes ventajas:
+Integración de transferencia de MOVEit - integración de Azure AD con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a MOVEit Transfer - Azure AD integration.
-- Puede habilitar que los usuarios inicien sesión automáticamente en MOVEit Transfer - Azure AD integration (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooMOVEit transferencia: integración de Azure AD.
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooMOVEit transferencia: integración de Azure AD (Single Sign-On) con sus cuentas de Azure AD.
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure.
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con MOVEit Transfer - Azure AD integration, se necesitan los siguientes elementos:
+tooconfigure integración de Azure AD con la transferencia de MOVEit - integración de Azure AD, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en MOVEit Transfer - Azure AD integration
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba durante un mes](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Agregación de MOVEit Transfer - Azure AD integration desde la galería
+1. Agregar MOVEit transferencia: integración de Azure AD desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-moveit-transfer---azure-ad-integration-from-the-gallery"></a>Agregación de MOVEit Transfer - Azure AD integration desde la galería
-Para configurar la integración de MOVEit Transfer - Azure AD integration en Azure AD, deberá agregar MOVEit Transfer - Azure AD integration desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-moveit-transfer---azure-ad-integration-from-hello-gallery"></a>Agregar MOVEit transferencia: integración de Azure AD desde la Galería de Hola
+integración de hello tooconfigure de transferencia de MOVEit - integración de Azure AD en Azure AD, deberá tooadd MOVEit transferencia: integración de Azure AD de lista tooyour de hello Galería de aplicaciones administradas de SaaS.
 
-**Para agregar MOVEit Transfer - Azure AD integration desde la galería, siga estos pasos:**
+**tooadd MOVEit transferencia: integración de Azure AD desde la Galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola ** [portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
-    ![Botón Azure Active Directory][1]
+    ![botón de Hello Azure Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
-    ![Hoja Aplicaciones empresariales][2]
+    ![hoja de aplicaciones de empresa de Hola][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
-    ![Botón Nueva aplicación][3]
+    ![botón de nueva aplicación Hola][3]
 
-4. En el cuadro de búsqueda, escriba **MOVEit Transfer - Azure AD integration**, seleccione **MOVEit Transfer - Azure AD integration** en el panel de resultados y, a continuación, haga clic en el botón **Agregar** para agregar la aplicación.
+4. En el cuadro de búsqueda de hello, escriba **MOVEit transferencia: integración de Azure AD**, seleccione **MOVEit transferencia: integración de Azure AD** desde el panel de resultados, a continuación, haga clic en **agregar** hello tooadd de botón aplicación.
 
-    ![MOVEit Transfer - Azure AD integration en la lista de resultados](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_addfromgallery.png)
+    ![Transferencia de MOVEit - integración de Azure AD en la lista de resultados de Hola](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configuración y prueba del inicio de sesión único en Azure AD
 
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con MOVEit Transfer - Azure AD integration con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de MOVEit Transfer - Azure AD integration para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de MOVEit Transfer - Azure AD integration.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en transferencia de MOVEit - integración de Azure AD es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en transferencia de MOVEit - integración de Azure AD necesita toobe establecido.
 
-Para establecer la relación de vínculo, en MOVEit Transfer - Azure AD integration, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
+En transferencia de MOVEit - integración de Azure AD, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con MOVEit Transfer - Azure AD integration, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con transferencia MOVEit - integración de Azure AD, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configure-azure-ad-single-sign-on)**: para permitir que los usuarios utilicen esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**: para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba en MOVEit Transfer - Azure AD integration](#create-a-moveit-transfer---azure-ad-integration-test-user)**: para tener un homólogo de Britta Simon en MOVEit Transfer - Azure AD integration que esté vinculado a la representación del usuario en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assign-the-azure-ad-test-user)**: para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Prueba del inicio de sesión único](#test-single-sign-on)**: para comprobar si la configuración funciona.
+1. **[Configurar Azure AD Single Sign-On](#configure-azure-ad-single-sign-on) ** -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#create-an-azure-ad-test-user) ** -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear una transferencia de MOVEit - usuario de prueba de integración de Azure AD](#create-a-moveit-transfer---azure-ad-integration-test-user) ** - toohave un equivalente de Britta Simon en transferencia de MOVEit - integración de Azure AD que está vinculado toohello Azure AD representación del usuario.
+4. **[Asignar el usuario de prueba de hello Azure AD](#assign-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Probar el inicio de sesión único](#test-single-sign-on) ** -tooverify Hola si funciona la configuración.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, se habilita el inicio de sesión único de Azure AD en Azure Portal y se configura el inicio de sesión único en la aplicación MOVEit Transfer - Azure AD integration.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la transferencia de MOVEit - aplicación de integración de Azure AD.
 
-**Para configurar el inicio de sesión único de Azure AD con MOVEit Transfer - Azure AD integration, siga estos pasos:**
+**inicio de sesión único en tooconfigure Azure AD con la transferencia de MOVEit - integración de Azure AD, realizar Hola pasos:**
 
-1. En la página de integración de la aplicación **MOVEit Transfer - Azure AD integration** de Azure Portal, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **MOVEit transferencia: integración de Azure AD** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Vínculo Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Cuadro de diálogo Inicio de sesión único](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de MOVEit Transfer - Azure AD integration** realice los siguientes pasos:
+3. En hello **MOVEit transferencia: integración de Azure AD dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_url.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://contoso.com`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://contoso.com`
 
-    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://contoso.com/<tenatid>`
+    b. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://contoso.com/<tenatid>`
 
-    c. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con el siguiente patrón: `https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`.    
+    c. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`    
      
     > [!NOTE] 
-    > Estos valores no son reales. Actualice estos valores con los valores reales de Identificador, URL de respuesta y URL de inicio de sesión. Puede hacer referencia a estos valores más tarde en la sección **Dirección URL de metadatos del proveedor de servicios** o póngase en contacto con el [equipo de soporte técnico de MOVEit Transfer - Azure AD integration](https://community.ipswitch.com/s/support) para obtener estos valores.
+    > Estos valores no son reales. Actualizar estos valores con hello real identificador, dirección URL de respuesta y dirección URL de inicio de sesión. Puede hacer referencia a estos valores más tarde en **dirección URL de metadatos del proveedor de servicio** sección o póngase en contacto con [MOVEit transferencia: equipo de soporte técnico de cliente de integración de Azure AD](https://community.ipswitch.com/s/support) tooget estos valores.
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo de metadatos de hello en el equipo.
 
-    ![Vínculo de descarga del certificado](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_certificate.png) 
+    ![vínculo de descarga del certificado de Hola](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_certificate.png) 
 
 5. Haga clic en el botón **Guardar** .
 
     ![Botón Guardar de Configuración de inicio de sesión único](./media/active-directory-saas-moveittransfer-tutorial/tutorial_general_400.png)
     
-6. Inicie la sesión en el inquilino de MOVEit Transfer como administrador.
+6. Inicie sesión en tooyour MOVEit transferencia inquilino como administrador.
 
-7. En la barra de navegación de la izquierda, haga clic en **Settings**(Configuración).
+7. En el panel de navegación izquierdo de hello, haga clic en **configuración**.
 
     ![Sección Configuración en la aplicación](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_000.png)
 
@@ -135,108 +135,108 @@ En esta sección, se habilita el inicio de sesión único de Azure AD en Azure P
 
     ![Directivas de seguridad en la aplicación](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_001.png)
 
-9. Haga clic en el vínculo Metadata URL (Dirección URL de metadatos) para descargar el documento de metadatos.
+9. Haga clic en el documento de metadatos de Hola de toodownload vínculo de dirección URL de metadatos de Hola.
 
     ![Dirección URL de metadatos del proveedor de servicios](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-    * Compruebe que **entityID** (identificador de entidad) coincide con **Identifier** (identificador) en la sección **Dominio y direcciones URL de MOVEit Transfer - Azure AD integration**.
-    * Compruebe que la dirección URL de la ubicación de **AssertionConsumerService** coincide con **REPLY URL** (dirección URL de respuesta) en la sección **Dominio y direcciones URL de MOVEit Transfer - Azure AD integration**.
+    * Comprobar **entityID** coincide con **identificador** en hello **MOVEit transferencia: integración de Azure AD dominio y las direcciones URL** sección.
+    * Comprobar **AssertionConsumerService** coincide con la dirección URL de ubicación **dirección URL de respuesta** en hello **MOVEit transferencia: integración de Azure AD dominio y las direcciones URL** sección.
     
     ![Configuración del inicio de sesión único en la aplicación](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
-10. Haga clic en el botón **Add Identity Provider** (Agregar proveedor de identidades) para agregar un nuevo proveedor de identidad federada.
+10. Haga clic en **Agregar proveedor de identidades** botón tooadd un nuevo proveedor de identidad federada.
 
     ![Agregación del proveedor de identidades](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_003.png)
 
-11. Haga clic en **Browse...** (Examinar...) para seleccionar el archivo de metadatos que descargó de Azure Portal y, después, haga clic en **Add Identity Provider** (Agregar proveedor de identidades) para cargar el archivo descargado.
+11. Haga clic en **Examinar... ** tooselect Hola archivo de metadatos que descargó desde el portal de Azure, a continuación, haga clic en **Agregar proveedor de identidades** hello tooupload el archivo descargado.
 
     ![Proveedor de identidades de SAML](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 
-12. Seleccione "**Yes**" (Sí) en la opción **Enabled** (Habilitado) de la página **Edit Federated Identity Provider Settings** (Editar configuración de proveedor de identidades federada) y haga clic en **Save** (Guardar).
+12. Seleccione "**Sí**" como **habilitado** en hello **modificar configuración del proveedor de identidad federado... ** página y haga clic en **guardar**.
 
     ![Configuración del proveedor de identidades federadas](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_005.png)
 
-13. En la página **Edit Federated Identity Provider Settings** (Editar configuración del proveedor de identidades federadas), realice las siguientes acciones:
+13. Hola **editar federado identidad del proveedor de configuración de usuario** página, lleve a cabo Hola siguientes acciones:
     
     ![Edición de la configuración del proveedor de identidades federadas](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_006.png)
     
     a. Seleccione **SAML NameID** en **Login name** (Nombre de inicio de sesión).
     
-    b. Seleccione **Other** (Otros) como **Full name** (Nombre completo) y en el cuadro de texto **Attribute name** (Nombre de atributo) coloque el valor: `http://schemas.microsoft.com/identity/claims/displayname`.
+    b. Seleccione **otros** como **nombre completo** y Hola **nombre del atributo** cuadro de texto establecer valor de hello: `http://schemas.microsoft.com/identity/claims/displayname`.
     
-    c. Seleccione **Other** (Otros) como **Email** (Correo electrónico) y en el cuadro de texto **Attribute name** (Nombre de atributo) coloque el valor: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Seleccione **otros** como **correo electrónico** y Hola **nombre del atributo** cuadro de texto establecer valor de hello: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
     
     d. Seleccione **Yes** (Sí) en **Auto-create account on signon** (Crear automáticamente cuenta al iniciar sesión).
     
     e. Haga clic en el botón **Guardar** .
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello ** Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
 
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
    ![Creación de un usuario de prueba de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel izquierdo de Azure Portal, haga clic en el botón **Azure Active Directory**.
+1. Hola portal de Azure, en el panel izquierdo de hello, haga clic en hello **Azure Active Directory** botón.
 
-    ![Botón Azure Active Directory](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_01.png)
+    ![botón de Hello Azure Active Directory](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_01.png)
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y, luego, haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos**y, a continuación, haga clic en **todos los usuarios**.
 
-    ![Vínculos "Usuarios y grupos" y "Todos los usuarios"](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_02.png)
+    ![Hola "Usuarios y grupos" y "Todos los usuarios" vínculos](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_02.png)
 
-3. En la parte superior del cuadro de diálogo **Todos los usuarios**, haga clic en **Agregar** para abrir el cuadro de diálogo **Agregar**.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en parte superior de Hola de hello **todos los usuarios** cuadro de diálogo.
 
-    ![Botón Agregar](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_03.png)
+    ![botón de agregar Hola](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_03.png)
 
-4. En el cuadro de diálogo **Usuario** , realice los pasos siguientes:
+4. Hola **usuario** diálogo cuadro, lleve a cabo Hola pasos:
 
-    ![Cuadro de diálogo Usuario](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_04.png)
+    ![cuadro de diálogo de usuario de Hola](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_04.png)
 
-    a. En el cuadro **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** , escriba **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la dirección de correo electrónico del usuario Britta Simon.
+    b. Hola **nombre de usuario** cuadro de dirección de correo electrónico de tipo hello del usuario Britta Simon.
 
-    c. Active la casilla **Mostrar contraseña** y, después, anote el valor que se muestra en el cuadro **Contraseña**.
+    c. Seleccione hello **Mostrar contraseña** casilla de verificación y, a continuación, anote el valor de Hola que se muestra en hello **contraseña** cuadro.
 
     d. Haga clic en **Crear**.
  
 ### <a name="create-a-moveit-transfer---azure-ad-integration-test-user"></a>Creación de un usuario de prueba de MOVEit Transfer - Azure AD integration
 
-El objetivo de esta sección es crear un usuario llamado Britta Simon en MOVEit Transfer - Azure AD integration. MOVEit Transfer - Azure AD integration admite el aprovisionamiento Just-In-Time que ha habilitado. No hay ningún elemento de acción para usted en esta sección. Al intentar acceder a MOVEit Transfer - Azure AD integration se creará un nuevo usuario, en caso de que no exista.
+objetivo de Hola de esta sección es toocreate un usuario llamado a Britta Simon en transferencia de MOVEit - integración de Azure AD. MOVEit Transfer - Azure AD integration admite el aprovisionamiento Just-In-Time que ha habilitado. No hay ningún elemento de acción para usted en esta sección. Se crea un nuevo usuario durante una tooaccess de intento de transferencia de MOVEit - integración de Azure AD si no existe todavía.
 
 >[!NOTE]
->Si necesita crear un usuario manualmente, es preciso que se ponga en contacto con el [equipo de soporte técnico de MOVEit Transfer - Azure AD integration](https://community.ipswitch.com/s/support).
+>Si necesita un usuario toocreate manualmente, necesita hello toocontact [MOVEit transferencia: equipo de soporte técnico de cliente de integración de Azure AD](https://community.ipswitch.com/s/support).
 
-### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a MOVEit Transfer - Azure AD integration.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooMOVEit transferencia: integración de Azure AD.
 
-![Asignación del rol de usuario][200] 
+![Asigne el rol de usuario de Hola][200] 
 
-**Para asignar a Britta Simon a MOVEit Transfer - Azure AD integration, siga estos pasos:**
+**tooassign Britta Simon tooMOVEit transferencia: integración de Azure AD, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **MOVEit Transfer - Azure AD integration**.
+2. En la lista de aplicaciones de hello, seleccione **MOVEit transferencia: integración de Azure AD**.
 
-    ![Vínculo a MOVEit Transfer - Azure AD integration en la lista de aplicaciones](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_app.png)  
+    ![Transferencia Hello MOVEit - integración de Azure AD vínculo en la lista de aplicaciones de Hola](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_app.png)  
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
-    ![Vínculo "Usuarios y grupos"][202]
+    ![vínculo de "Usuarios y grupos" Hello][202]
 
 4. Haga clic en el botón **Agregar**. Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.
 
-    ![Panel Agregar asignación][203]
+    ![panel de agregar asignación de Hola][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -244,13 +244,13 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
 
-El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.
+objetivo de Hola de esta sección es tootest la configuración de SSO de Azure AD mediante Hola Panel de acceso.
 
-Al hacer clic en el icono de MOVEit Transfer - Azure AD integration en el panel de acceso, debería iniciar sesión automáticamente en la aplicación MOVEit Transfer - Azure AD integration. 
+Al hacer clic en hello MOVEit transferencia - icono de integración de Azure AD en el Panel de acceso de hello, obtendrá automáticamente ha iniciado sesión tooyour MOVEit transferencia: aplicación de integración de Azure AD. 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: Solucionar problemas de Cloud Services con Application Insights | Microsoft Docs
-description: "Aprenda a solucionar problemas del servicio en la nube mediante el uso de Application Insights para procesar datos de Diagnósticos de Azure."
+title: Servicios en la nube con Application Insights aaaTroubleshoot | Documentos de Microsoft
+description: "Obtenga información acerca de cómo emite tootroubleshoot servicio en la nube mediante el uso de datos de Application Insights tooprocess diagnósticos de Azure."
 services: cloud-services
 documentationcenter: .net
 author: sbtron
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: saurabh
-ms.openlocfilehash: 4001ca908ff00b1a40829d687589080e9b07b18a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 972924d9e6d1fe33d5c19b006d482de52ffb0ef7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-cloud-services-using-application-insights"></a>Solucionar problemas de Servicios en la nube con Application Insights
-Con [Azure SDK 2.8](https://azure.microsoft.com/downloads/) y la extensión 1.5 de Diagnósticos de Azure puede enviar los datos de Diagnósticos de Azure para su servicio en la nube directamente a Application Insights. Los registros recopilados por Azure Diagnostics, incluidos los registros de aplicaciones, los registros de eventos de Windows, los registros de ETW y los contadores de rendimiento, pueden enviarse a Application Insights. Después podrá visualizar esta información en la interfaz de usuario del portal de Application Insights. Podrá usar el SDK de Application Insights para obtener información sobre las métricas y los registros de la aplicación, y sobre los datos del sistema y de la infraestructura procedentes de Diagnósticos de Azure.
+Con [Azure SDK 2.8](https://azure.microsoft.com/downloads/) y 1.5 de extensión de diagnósticos de Azure, puede enviar datos de diagnóstico de Azure para su servicio en la nube directamente tooApplication visión. Hola registros recopilados con diagnósticos de Azure&mdash;incluidos los registros de aplicaciones, los registros de eventos de Windows, registros de ETW y los contadores de rendimiento&mdash;pueden enviarse tooApplication visión. A continuación, puede visualizar esta información en el portal de Application Insights Hola interfaz de usuario. A continuación, puede usar Hola Application Insights SDK tooget visiones métricas y los registros que proceden de su aplicación, así como sistema de Hola y datos de nivel de infraestructura que provienen de diagnósticos de Azure.
 
-## <a name="configure-azure-diagnostics-to-send-data-to-application-insights"></a>Configuración de Diagnósticos de Azure para enviar datos a Application Insights
-Siga estos pasos para configurar el proyecto del servicio en la nube para enviar datos de Diagnósticos de Azure a Application Insights.
+## <a name="configure-azure-diagnostics-toosend-data-tooapplication-insights"></a>Configurar diagnósticos de Azure toosend datos tooApplication visión
+Siga estos tooset de pasos de la nube servicio proyecto toosend diagnósticos de Azure datos tooApplication visión.
 
-1. En el Explorador de soluciones de Visual Studio, haga clic con el botón derecho en un rol y seleccione **Propiedades** para abrir el diseñador de roles.
+1. En el Explorador de soluciones de Visual Studio, haga clic en un rol y seleccione **propiedades** Diseñador de roles de tooopen Hola.
 
     ![Propiedades de rol del Explorador de soluciones][1]
 
-2. En la sección **Diagnósticos** del diseñador de roles, seleccione la opción **Enviar datos de diagnóstico a Application Insights**.
+2. Hola **diagnósticos** sección Hola del Diseñador de roles, seleccione hello **enviar datos de diagnóstico tooApplication visión** opción.
 
-    ![Diseñador de roles Enviar datos de diagnóstico a application insights][2]
+    ![Diseñador de roles enviar diagnósticos información sobre los datos tooapplication][2]
 
-3. En el cuadro de diálogo que aparece, seleccione el recurso de Application Insights al que le gustaría enviar los datos de Diagnósticos de Azure. El cuadro de diálogo le permite seleccionar un recurso de Application Insights existente en la suscripción o especificar manualmente una clave de instrumentación para un recurso de Application Insights. Para más información sobre la creación de un recurso de Application Insights, consulte [Creación de recursos en Application Insights](../application-insights/app-insights-create-new-resource.md).
+3. En el cuadro de diálogo de Hola que aparece, seleccione el recurso de Application Insights de Hola que desea que los datos de diagnóstico de Azure toosend Hola a. cuadro de diálogo de Hello permite tooselect un recurso de Application Insights existente desde su suscripción o toomanually especificar una clave de instrumentación para un recurso de Application Insights. Para más información sobre la creación de un recurso de Application Insights, consulte [Creación de recursos en Application Insights](../application-insights/app-insights-create-new-resource.md).
 
     ![seleccionar recurso de application insights][3]
 
-    Cuando haya agregado el recurso de Application Insights, la clave de instrumentación para ese recurso se almacenará como un valor de configuración de servicio con el nombre **APPINSIGHTS_INSTRUMENTATIONKEY**. Puede cambiar esta opción para cada configuración de servicio o de entorno. Para ello, seleccione una configuración diferente de la lista **Configuración del servicio** y especifique una nueva clave de instrumentación para esa configuración.
+    Cuando haya agregado el recurso de Application Insights hello, clave de instrumentación de Hola para ese recurso se almacena como un valor de configuración de servicio con el nombre de hello **APPINSIGHTS_INSTRUMENTATIONKEY**. Puede cambiar esta opción para cada configuración de servicio o de entorno. toodo por lo tanto, seleccione una configuración diferente de hello **configuración del servicio** lista y especificar una nueva clave de instrumentación para dicha configuración.
 
     ![seleccionar configuración de servicio][4]
 
-    Visual Studio usa el valor de configuración **APPINSIGHTS_INSTRUMENTATIONKEY** para configurar la extensión de diagnósticos con la información de recursos apropiada de Application Insights durante la publicación. El valor de configuración es una manera cómoda de definir claves de instrumentación diferentes para distintas configuraciones del servicio. Visual Studio traducirá ese valor y lo insertará en la configuración pública de la extensión de diagnósticos en durante la publicación. Para simplificar el proceso de configuración de la extensión de diagnósticos con PowerShell, la salida del paquete de Visual Studio también contiene el XML de configuración público con la clave de instrumentación de Application Insights correspondiente. Los archivos de configuración públicos se crean en la carpeta Extensiones y siguen el patrón *PaaSDiagnostics.&lt;NombreDelRol&gt;.PubConfig.xml*. Cualquier implementación basada en PowerShell puede usar este patrón para asignar cada configuración a un rol.
+    Hola **APPINSIGHTS_INSTRUMENTATIONKEY** valor de configuración se utiliza por extensión de diagnósticos de Visual Studio tooconfigure Hola con información de recursos de Application Insights adecuada de Hola durante la publicación. valor de configuración de Hello es una manera cómoda de definir las claves de instrumentación distintos para diferentes configuraciones del servicio. Visual Studio se traduzca esa configuración e insertarlo en hello diagnósticos pública configuración de la extensión durante Hola proceso de publicación. proceso de hello toosimplify de configuración de extensión de diagnósticos de hello con PowerShell, salida del paquete Hola desde Visual Studio también contiene Hola XML de configuración pública con clave de instrumentación de Application Insights adecuado de Hola. archivos de configuración pública de Hola se crean en la carpeta de extensiones de Hola y seguir el patrón de hello *PaaSDiagnostics.&lt; RoleName&gt;. PubConfig.xml*. Todas las implementaciones basadas en PowerShell pueden usar este patrón toomap cada rol de tooa de configuración.
 
-4) Al habilitar **Enviar datos de diagnóstico a Application Insights** configurará automáticamente Diagnósticos de Azure para enviar todos los contadores de rendimiento y registros de nivel de error que recopila el agente de Diagnósticos de Azure a Application Insights. 
+4) tooconfigure diagnósticos de Azure toosend todos los registros de nivel de error y los contadores de rendimiento recopilados por hello diagnósticos de Azure agente tooApplication visión, habilitar hello **enviar datos de diagnóstico tooApplication visión** opción. 
 
-    Si desea configurar qué datos se envían a Application Insights, debe editar manualmente el archivo *diagnostics.wadcfgx* para cada rol. Consulte [Configuración de Diagnósticos de Azure para enviar datos a Application Insights](#configure-azure-diagnostics-to-send-data-to-application-insights) para obtener más información sobre cómo actualizar manualmente la configuración.
+    Si desea que toofurther configurar qué datos se envían información de tooApplication, debe editar manualmente hello *diagnostics.wadcfgx* archivo para cada rol. Vea [configurar diagnósticos de Azure toosend datos tooApplication visión](#configure-azure-diagnostics-to-send-data-to-application-insights) toolearn más sobre cómo actualizar manualmente la configuración de Hola.
 
-Una vez configurado el servicio en la nube para enviar datos de Diagnósticos de Azure a Application Insights, puede implementarlo en Azure como lo haría normalmente, asegurándose de que la extensión de Diagnósticos de Azure está habilitada. Para más información, consulte el artículo de [Publicación de un servicio en la nube con Visual Studio](../vs-azure-tools-publishing-a-cloud-service.md).  
+Al servicio de nube de hello toosend configurado los diagnósticos de Azure datos tooapplication visión, puede implementarla tooAzure normalmente, asegurándose de hello extensión de diagnósticos de Azure está habilitada. Para más información, consulte el artículo de [Publicación de un servicio en la nube con Visual Studio](../vs-azure-tools-publishing-a-cloud-service.md).  
 
 ## <a name="viewing-azure-diagnostics-data-in-application-insights"></a>Visualización de datos de Diagnósticos de Azure en Application Insights
-La telemetría de Diagnósticos de Azure aparecerá en el recurso de Application Insights configurado para el servicio en la nube.
+Hola telemetría de diagnóstico de Azure se muestra en hello Application Insights recurso configurado para el servicio de nube.
 
-Los distintos tipos de registro de Diagnósticos de Azure se asignan a los conceptos de Application Insights de las maneras siguientes:
+Tipos de registro de diagnósticos de Azure asignan conceptos de visión tooApplication de las siguientes maneras:
 
 * Los contadores de rendimiento se muestran como métricas personalizadas en Application Insights.
 * Los registros de eventos de Windows se muestran como seguimientos y eventos personalizados en Application Insights.
 * Los registros de aplicación, los registros de ETW y los registros de infraestructura de diagnóstico se muestran como seguimientos en Application Insights.
 
-Para ver de datos de Diagnósticos de Azure en Application Insights, tiene las siguientes opciones:
+tooview datos de diagnóstico de Azure en Application Insights, siga uno de los procedimientos de hello:
 
-* Use el [Explorador de métricas](../application-insights/app-insights-metrics-explorer.md) para visualizar los contadores de rendimiento personalizados o los recuentos de diferentes tipos de eventos del registro de eventos de Windows.
+* Use [explorer métricas](../application-insights/app-insights-metrics-explorer.md) toovisualize cualquier rendimiento personalizados contadores o los recuentos de diferentes tipos de eventos de registro de eventos de Windows.
 
     ![Métricas personalizadas en el Explorador de métricas][5]
 
-* Use [Búsqueda](../application-insights/app-insights-diagnostic-search.md) para buscar en los registros de seguimiento enviados por Diagnósticos de Azure. Por ejemplo, si una excepción no controlada ha provocado el bloqueo de un rol y el reciclado, la información sobre la excepción aparece en el canal *Aplicación* del *registro de eventos de Windows*. Puede utilizar la funcionalidad de búsqueda para ver el error del registro de eventos de Windows y obtener el seguimiento de la pila completo de la excepción para encontrar la causa del problema.
+* Use [búsqueda](../application-insights/app-insights-diagnostic-search.md) toosearch a través de los registros de seguimiento de hello enviados por diagnósticos de Azure. Por ejemplo, si ha provocado una excepción no controlada Hola rol toocrash y reciclaje, obtener información acerca de la excepción de Hola aparecerá en hello *aplicación* canal de *registro de eventos de Windows*. Puede usar búsqueda toolook en hello error de registro de eventos de Windows y realizar seguimiento de pila completo de Hola para hello excepción toohelp buscar Hola causa del problema de Hola.
 
     ![Buscar seguimientos][6]
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Agregar el SDK de Application Insights a su servicio en la nube](../application-insights/app-insights-cloudservices.md) para enviar datos acerca de solicitudes, excepciones, dependencias y cualquier telemetría personalizada desde la aplicación. Junto con los datos de Diagnósticos de Azure puede obtener una vista completa de la aplicación y el sistema en el mismo recurso de Application Insights.  
+* [Agregar servicio de nube de hello Application Insights SDK tooyour](../application-insights/app-insights-cloudservices.md) toosend datos acerca de las solicitudes, excepciones, las dependencias y cualquier telemetría personalizada de la aplicación. Cuando se combina con datos de diagnóstico de Azure de hello, esta información se puede obtener una vista completa de la aplicación y del sistema, todo ello en Hola mismo recurso de Application Insight.  
 
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/solution-explorer-properties.png

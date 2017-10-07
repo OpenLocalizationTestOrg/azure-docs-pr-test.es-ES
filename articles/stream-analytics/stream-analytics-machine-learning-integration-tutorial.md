@@ -1,6 +1,6 @@
 ---
-title: "Integración de Azure Stream Analytics y Machine Learning | Microsoft Docs"
-description: "Cómo utilizar una función definida por el usuario y Aprendizaje automático en un trabajo de Análisis de transmisiones"
+title: "aaaAzure integración de análisis de transmisiones y aprendizaje automático | Documentos de Microsoft"
+description: "¿Cómo toouse una función definida por el usuario y el aprendizaje automático en un trabajo de análisis de transmisiones"
 keywords: 
 documentationcenter: 
 services: stream-analytics
@@ -15,166 +15,166 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
 ms.author: jeffstok
-ms.openlocfilehash: 023033d5479fcf0e2dff168b6604431eef283d3b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e1ba7ab51ece80719839793e1320a7666cfc4181
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Análisis de opiniones mediante Azure Stream Analytics y Azure Machine Learning
-En este artículo se explica cómo configurar rápidamente un trabajo sencillo de Azure Stream Analytics que integre Azure Machine Learning. Un modelo de análisis de opiniones de Machine Learning de la galería de Cortana Intelligence se usa para analizar datos de texto que se están transmitiendo y determinar la puntuación de opiniones en tiempo real. Cortana Intelligence Suite permite realizar esta tarea sin preocuparse por las complejidades de la creación de un modelo de análisis de opiniones.
+Este artículo describe cómo tooquickly configura un simple trabajo de análisis de transmisiones de Azure que integra el aprendizaje automático de Azure. Usan un modelo de análisis de opiniones de aprendizaje automático de hello datos de texto de la Galería de inteligencia de Cortana tooanalyze transmisión por secuencias y determinar la puntuación de opinión de hello en tiempo real. Hola Cortana Intelligence Suite permite realizar esta tarea sin preocuparse por las complejidades de saludo de la creación de un modelo de análisis de opiniones.
 
-Puede aplicar lo que aprenda en este artículo a escenarios como estos:
+Puede aplicar lo que aprenda de este tooscenarios artículo como los siguientes:
 
 * Análisis de opiniones en tiempo real en datos de Twitter que se están transmitiendo.
 * Análisis de registros de chats de clientes con el personal de soporte técnico.
 * Evaluación de comentarios en foros, blogs y vídeos. 
 * Muchos otros escenarios de puntuación predictiva en tiempo real.
 
-En un escenario real, los datos se obtendrían directamente de un flujo de datos de Twitter. Para simplificar el tutorial, se ha escrito de modo que el trabajo de Streaming Analytics obtenga los tweets de un archivo CSV de Azure Blob Storage. Puede crear su propio archivo CSV o usar un archivo CSV de ejemplo, como se muestra en la siguiente imagen:
+En un escenario real, obtendría datos Hola directamente desde un flujo de datos de Twitter. tutorial de hello toosimplify, hemos escrito, por lo que hello trabajo de análisis de transmisión por secuencias obtiene tweets desde un archivo CSV en almacenamiento de blobs de Azure. Puede crear su propio archivo CSV, o puede usar un archivo CSV de ejemplo, como se muestra en hello después de imagen:
 
 ![tweets de ejemplo de un archivo CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
-El trabajo de Streaming Analytics que cree aplicará el modelo de análisis de opiniones como una función definida por el usuario (UDF) a los datos de texto de ejemplo del almacén de blobs. La salida (el resultado del análisis de opiniones) se escribe en el mismo almacén de blobs en otro archivo CSV. 
+trabajo de análisis de transmisión por secuencias de Hola que cree aplica modelo de análisis de opiniones hello como una función definida por el usuario (UDF) en los datos de texto de ejemplo de Hola de almacén de blobs de Hola. salida de Hello (resultado de hello de análisis de opiniones Hola) se escribe toohello mismo almacén de blob en un archivo CSV diferente. 
 
-La imagen siguiente muestra esta configuración. Como se ha indicado, para un escenario más realista, puede sustituir el almacenamiento de blobs por datos de Twitter que se estén transmitiendo desde una entrada de Azure Event Hubs. Además, puede crear una virtualización en tiempo real de [Microsoft Power BI](https://powerbi.microsoft.com/) de la opinión agregada.    
+Hello en la ilustración siguiente se muestra esta configuración. Como se ha indicado, para un escenario más realista, puede sustituir el almacenamiento de blobs por datos de Twitter que se estén transmitiendo desde una entrada de Azure Event Hubs. Además, puede generar un [Microsoft Power BI](https://powerbi.microsoft.com/) visualización en tiempo real de opiniones agregado Hola.    
 
 ![Información general sobre la integración de Stream Analytics Machine Learning](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de empezar, asegúrese de que dispone de lo siguiente:
+Antes de empezar, asegúrese de que tiene Hola siguientes:
 
 * Una suscripción de Azure activa.
-* Un archivo CSV con algunos datos. Puede descargar el archivo mostrado anteriormente desde [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv) o bien puede crear su propio archivo. En este artículo se da por hecho que está usando el archivo de GitHub.
+* Un archivo CSV con algunos datos. Puede descargar archivo hello mostrado anteriormente desde [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), o bien puede crear su propio archivo. En este artículo, se supone que está usando el archivo hello desde GitHub.
 
-En general, para realizar las tareas explicadas en este artículo, hará lo siguiente:
+En un nivel alto, tareas de hello toocomplete que se explican en este artículo, Hola siguientes:
 
-1. Crear una cuenta de Azure Storage y un contenedor de almacenamiento de blobs y cargar un archivo de entrada con formato CSV en el contenedor.
-3. Agregar un modelo de análisis de opiniones de la galería de Cortana Intelligence al área de trabajo de Azure Machine Learning e implementar este modelo como servicio web en el área de trabajo.
-5. Crear un trabajo de Stream Analytics que llame a este servicio web como una función para determinar la opinión sobre la entrada de texto.
-6. Iniciar el trabajo de Stream Analytics y comprobar el resultado.
+1. Crear una cuenta de almacenamiento de Azure y un contenedor de almacenamiento de blobs y cargue un contenedor de toohello del archivo de entrada con formato CSV.
+3. Agregar un modelo de análisis de opiniones de área de trabajo de aprendizaje automático de Azure de hello Cortana Intelligence Galería tooyour e implementar este modelo como un servicio web en el área de trabajo de aprendizaje automático de Hola.
+5. Crear un trabajo de análisis de transmisiones que llama a este servicio web como una función en las opiniones de orden toodetermine Hola entrada de texto.
+6. Iniciar el trabajo de análisis de transmisiones de Hola y compruebe la salida de hello.
 
-## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Creación de un contenedor de almacenamiento y carga del archivo de entrada CSV
-Para este paso puede usar cualquier archivo CSV, por ejemplo alguno de los disponibles en GitHub.
+## <a name="create-a-storage-container-and-upload-hello-csv-input-file"></a>Crear un contenedor de almacenamiento y cargar el archivo de entrada de hello CSV
+Para este paso, puede usar cualquier archivo CSV, como Hola uno disponible en GitHub.
 
-1. En Azure Portal, haga clic en **Nuevo** &gt; **Almacenamiento** &gt; **Cuenta de almacenamiento**.
+1. Hola portal de Azure, haga clic en **New** &gt; **almacenamiento** &gt; **cuenta de almacenamiento**.
 
    ![creación de una nueva cuenta de almacenamiento](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
 
-2. Proporcione un nombre (`samldemo` en el ejemplo). El nombre solo puede incluir letras minúsculas y números y debe ser único en Azure. 
+2. Proporcione un nombre (`samldemo` en el ejemplo de Hola). nombre de Hello puede usar solo letras minúsculas y números, y debe ser único en Azure. 
 
-3. Especifique un grupo de recursos existente y una ubicación. Con respecto a la ubicación, se recomienda que todos los recursos creados en este tutorial usen la misma.
+3. Especifique un grupo de recursos existente y una ubicación. Para la ubicación, se recomienda que todos los recursos de hello creados en este tutorial, use Hola misma ubicación.
 
     ![especificación de los detalles de la cuenta de almacenamiento](./media/stream-analytics-machine-learning-integration-tutorial/create-sa1.png)
 
-4. En Azure Portal, seleccione la cuenta de almacenamiento. En la hoja de la cuenta de almacenamiento, haga clic en **Contenedores** y luego haga clic en **+&nbsp;Contenedor** para crear el almacenamiento de blobs.
+4. Hola portal de Azure, seleccione la cuenta de almacenamiento de Hola. En la hoja de la cuenta de almacenamiento de hello, haga clic en **contenedores** y, a continuación, haga clic en  **+ &nbsp;contenedor** toocreate el almacenamiento de blobs.
 
     ![creación de contenedor de blobs](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
 
-5. Proporcione un nombre para el contenedor (`azuresamldemoblob` en el ejemplo) y compruebe que **Tipo de acceso** está establecido en **Blob**. Cuando haya terminado, haga clic en **Aceptar**.
+5. Proporcione un nombre para el contenedor de hello (`azuresamldemoblob` en el ejemplo de Hola) y compruebe que **tipo de acceso** se establece demasiado**Blob**. Cuando haya terminado, haga clic en **Aceptar**.
 
     ![especificación de los detalles del contenedor de blobs](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
 
-6. En la hoja **Contenedores**, seleccione el nuevo contenedor, con lo que se abre la hoja de ese contenedor.
+6. Hola **contenedores** hoja, seleccione Hola nuevo contenedor de, que abre una hoja de Hola para ese contenedor.
 
 7. Haga clic en **Cargar**.
 
     ![botón "Cargar" de un contenedor](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. En la hoja **Cargar blob**, especifique el archivo CSV que quiere usar para este tutorial. En **Tipo de blob**, seleccione **Blob en bloques** y establezca el tamaño de bloque en 4 MB, que es suficiente para este tutorial.
+8. Hola **cargar blob** hoja, especifique el archivo CSV de Hola que quiere toouse de este tutorial. Para **tipo de Blob**, seleccione **blob en bloques** y conjunto Hola bloque tamaño too4 MB, que es suficiente para este tutorial.
 
     ![carga del archivo de blob](./media/stream-analytics-machine-learning-integration-tutorial/create-sa4.png)
 
-9. Haga clic en el botón **Cargar** en la parte inferior de la hoja.
+9. Haga clic en hello **cargar** situado en parte inferior de Hola de hoja de Hola.
 
-## <a name="add-the-sentiment-analytics-model-from-the-cortana-intelligence-gallery"></a>Adición del modelo de análisis de opinión desde la galería de Cortana Intelligence
+## <a name="add-hello-sentiment-analytics-model-from-hello-cortana-intelligence-gallery"></a>Agregar modelos de análisis de opiniones Hola de hello Galería de inteligencia de Cortana
 
-Ahora que los datos de ejemplo están en un blob, puede habilitar el modelo de análisis de opiniones de la galería de Cortana Intelligence.
+Ahora que los datos de ejemplo de Hola están en un blob, puede habilitar el modelo de análisis de opiniones hello en Galería de inteligencia de Cortana.
 
-1. Vaya a la página de [modelo predictivo de análisis de opiniones](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) de la galería de Cortana Intelligence.  
+1. Vaya toohello [modelo de análisis predictivo opiniones](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) página Hola Galería de inteligencia de Cortana.  
 
 2. Haga clic en **Abrir en Studio**.  
    
    ![Aprendizaje automático de Análisis de transmisiones, abrir Aprendizaje automático](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
-3. Inicie sesión para dirigirse al área de trabajo. Seleccione una ubicación.
+3. Inicie sesión en el área de trabajo de toogo toohello. Seleccione una ubicación.
 
-4. Haga clic en **Ejecutar** en la parte inferior de la página. El proceso se ejecuta, lo que lleva aproximadamente un minuto.
+4. Haga clic en **ejecutar** final Hola de página Hola. se ejecuta el proceso de Hello, que tarda aproximadamente un minuto.
 
    ![ejecución del experimento en Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
-5. Una vez que el proceso se ha ejecutado correctamente, seleccione **Implementar servicio web** en la parte inferior de la página.
+5. Después de que se ejecute correctamente el proceso de hello, seleccione **implementar el servicio de Web** final Hola de página Hola.
 
    ![implementación del experimento como un servicio web en Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
-6. Para comprobar que el modelo de análisis de opiniones está listo para su uso, haga clic en el botón **Probar**. Proporcione algún texto de entrada, como "Me encanta Microsoft". 
+6. toovalidate que Hola opiniones modelo de análisis es toouse listo, haga clic en hello **prueba** botón. Proporcione algún texto de entrada, como "Me encanta Microsoft". 
 
    ![prueba del experimento en Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
-    Si la prueba funciona, verá un resultado similar al ejemplo siguiente:
+    Si prueba Hola funciona, verá un toohello similar de resultados siguiente ejemplo:
 
    ![resultados de la prueba en Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
-7. En la columna **Aplicaciones**, haga clic en el vínculo de **libro de Excel 2010 o anterior** para descargar un libro de Excel. El libro contiene una clave de API y la dirección URL que se necesitan más adelante para configurar el trabajo de Stream Analytics.
+7. Hola **aplicaciones** columna, haga clic en hello **Excel 2010 o el libro anterior** toodownload vínculo un libro de Excel. libro de Hello contiene clave Hola una API y la dirección URL de Hola que necesite tooset más adelante el trabajo de análisis de transmisiones de Hola.
 
     ![Aprendizaje automático de Análisis de transmisiones, vista rápida](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Creación de un trabajo de Análisis de transmisiones que usa el modelo de Aprendizaje automático
+## <a name="create-a-stream-analytics-job-that-uses-hello-machine-learning-model"></a>Crear un trabajo de análisis de transmisiones que usa el modelo de aprendizaje automático de Hola
 
-Ahora puede crear un trabajo de Stream Analytics que lea los tweets de ejemplo del archivo CSV de almacenamiento de blobs. 
+Ahora puede crear un trabajo de análisis de transmisiones que lee tweets de ejemplo de Hola desde archivo CSV de hello en almacenamiento de blobs. 
 
-### <a name="create-the-job"></a>Creación del trabajo
+### <a name="create-hello-job"></a>Crear trabajo de Hola
 
-1. Vaya al [Portal de Azure](https://portal.azure.com).  
+1. Vaya toohello [portal de Azure](https://portal.azure.com).  
 
 2. Haga clic en **Nuevo** > **Internet de las cosas** > **Trabajo de Stream Analytics**. 
 
-   ![ruta de acceso del portal de Azure para acceder a un nuevo trabajo de Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
+   ![Ruta de acceso del portal Azure para obtener tooa nuevo trabajo de análisis de transmisiones](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
    
-3. Ponga el nombre `azure-sa-ml-demo` al trabajo, especifique una suscripción, especifique un grupo de recursos existente o cree uno nuevo y seleccione la ubicación del trabajo.
+3. Nombre de trabajo de hello `azure-sa-ml-demo`, especifique una suscripción, especificar un grupo de recursos existente o cree uno nuevo y seleccione ubicación hello para el trabajo de Hola.
 
    ![especificación de la configuración del nuevo trabajo de Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
    
 
-### <a name="configure-the-job-input"></a>Configuración de la entrada de trabajo
-El trabajo obtiene su entrada del archivo CSV cargado anteriormente en el almacenamiento de blobs.
+### <a name="configure-hello-job-input"></a>Configurar entrada de trabajo de Hola
+trabajo de Hello obtiene su entrada desde archivo CSV de Hola que carga de almacenamiento de tooblob anterior.
 
-1. Una vez creado el trabajo, en la opción **Topología de trabajo** de la hoja del trabajo, haga clic en el cuadro **Entradas**.  
+1. Después de que se ha creado un trabajo de hello, en **trabajo topología** en la hoja de trabajo de hello, haga clic en hello **entradas** cuadro.  
    
    ![cuadro "Entradas" de la hoja del trabajo de Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input.png)  
 
-2. En la hoja **Entradas**, haga clic en **+ Agregar**.
+2. Hola **entradas** hoja, haga clic en **+ agregar**.
 
-   ![botón "Agregar" para agregar una entrada al trabajo de Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input-button.png)  
+   !['Add' botón para agregar un trabajo de análisis de transmisiones de entrada toohello](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input-button.png)  
 
-3. Rellene la hoja **Nueva entrada** con estos valores:
+3. Rellene hello **nueva entrada** hoja con estos valores:
 
-    * **Alias de entrada**: use el nombre `datainput`.
+    * **Alias de entrada**: usar el nombre de hello `datainput`.
     * **Tipo de origen**: seleccione **Flujo de datos**.
     * **Origen**: seleccione **Almacenamiento de blobs**.
     * **Opción de importación**: seleccione **Usar almacenamiento de blobs de la suscripción actual**. 
-    * **Cuenta de almacenamiento**. Seleccione la cuenta de almacenamiento creada anteriormente.
-    * **Contenedor**. Seleccione el contenedor creado anteriormente (`azuresamldemoblob`).
+    * **Cuenta de almacenamiento**. Seleccione la cuenta de almacenamiento de Hola que creó anteriormente.
+    * **Contenedor**. Contenedor de hello SELECT que creó anteriormente (`azuresamldemoblob`).
     * **Formato de serialización de eventos**. Seleccione **CSV**.
 
     ![Configuración de la nueva entrada de trabajo](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
 4. Haga clic en **Crear**.
 
-### <a name="configure-the-job-output"></a>Configuración de la salida del trabajo
-El trabajo envía los resultados al mismo almacenamiento de blobs del que obtiene la entrada. 
+### <a name="configure-hello-job-output"></a>Configurar la salida de trabajo de Hola
+Hola trabajo envía resultados toohello mismo donde se obtiene información de almacenamiento de blobs. 
 
-1. En la opción **Topología de trabajo** de la hoja del trabajo, haga clic en el cuadro **Salidas**.  
+1. En **trabajo topología** en la hoja de trabajo de hello, haga clic en hello **salidas** cuadro.  
   
    ![Creación de una nueva salida para el trabajo de Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-output.png)  
 
-2. En la hoja **Salidas**, haga clic en **+ Agregar** y luego agregue una salida con el alias `datamloutput`. 
+2. Hola **salidas** hoja, haga clic en **+ agregar**y, a continuación, agregar una salida con el alias de hello `datamloutput`. 
 
-3. En **Receptor**, seleccione **Almacenamiento de blobs**. Luego rellene las demás opciones de salida con los mismos valores que usó para el almacenamiento de blobs de la entrada:
+3. En **Receptor**, seleccione **Almacenamiento de blobs**. Relleno a continuación, en el resto de Hola de hello salida configuración mediante Hola mismos valores que se usa para el almacenamiento de blobs de hello para la entrada:
 
-    * **Cuenta de almacenamiento**. Seleccione la cuenta de almacenamiento creada anteriormente.
-    * **Contenedor**. Seleccione el contenedor creado anteriormente (`azuresamldemoblob`).
+    * **Cuenta de almacenamiento**. Seleccione la cuenta de almacenamiento de Hola que creó anteriormente.
+    * **Contenedor**. Contenedor de hello SELECT que creó anteriormente (`azuresamldemoblob`).
     * **Formato de serialización de eventos**. Seleccione **CSV**.
 
    ![Configuración de la nueva salida de trabajo](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
@@ -182,41 +182,41 @@ El trabajo envía los resultados al mismo almacenamiento de blobs del que obtien
 4. Haga clic en **Crear**.   
 
 
-### <a name="add-the-machine-learning-function"></a>Incorporación de la función de Machine Learning 
-Arriba ha publicado un modelo de Machine Learning en un servicio web. En este escenario, cuando se ejecuta el trabajo de Stream Analysis, envía cada tweet de ejemplo de la entrada al servicio web para el análisis de opiniones. El servicio web de Machine Learning devuelve una opinión (`positive`, `neutral` o `negative`) y una probabilidad de que el tweet sea positivo. 
+### <a name="add-hello-machine-learning-function"></a>Agregar la función de aprendizaje automático de hello 
+Anteriormente se publica un servicio web de aprendizaje automático modelo tooa. En nuestro escenario, cuando se ejecuta el trabajo de análisis de secuencia de hello, envía cada tweet de ejemplo de servicio de web de entrada toohello Hola para análisis de opiniones. Hola servicio web de aprendizaje automático devuelve una opinión (`positive`, `neutral`, o `negative`) y una probabilidad de tweet Hola está positivo. 
 
-En esta sección del tutorial se define una función en el trabajo de Stream Analysis. Se puede invocar a la función para enviar un tweet al servicio web y obtener la respuesta. 
+En esta sección del tutorial de hello, definir una función de trabajo de análisis de transmisiones de Hola. función Hello pueda ser invocado toosend un servicio web de toohello de tweet y obtener respuesta de Hola. 
 
-1. Asegúrese de que tiene la dirección URL y la clave de API del servicio web que ha descargado anteriormente en el libro de Excel.
+1. Asegúrese de que tiene Hola dirección URL y la API de clave de servicio web que ha descargado anteriormente en el libro de Excel de Hola.
 
-2. Vuelva a la hoja de información general del trabajo.
+2. Hoja de información general del trabajo toohello devuelto.
 
 3. En **Configuración**, seleccione **Funciones** y luego haga clic en **+ Agregar**.
 
-   ![Adición de una función al trabajo de Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-function1.png) 
+   ![Agregar un trabajo de análisis de transmisiones de toohello (función)](./media/stream-analytics-machine-learning-integration-tutorial/create-function1.png) 
 
-4. Escriba `sentiment` como alias de la función y rellene el resto de la hoja con estos valores:
+4. Escriba `sentiment` como Hola función alias y rellene rest Hola de hoja de hello con estos valores:
 
     * **Tipo de función**: seleccione **Aprendizaje automático de Azure**.
-    * **Opción de importación**: seleccione **Importar de una suscripción distinta**. Esto le ofrece la oportunidad de escribir la dirección URL y la clave.
-    * **Dirección URL**: pegue la dirección URL del servicio web.
-    * **Clave**: pegue la clave de API.
+    * **Opción de importación**: seleccione **Importar de una suscripción distinta**. Esto proporciona una oportunidad tooenter Hola URL y una clave.
+    * **Dirección URL**: pegar Hola URL del servicio web.
+    * **Clave**: pegar en la clave de API de Hola.
   
-    ![Configuración para agregar una función de Machine Learning al trabajo de Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+    ![Configuración para agregar un trabajo de análisis de transmisiones de toohello de función de aprendizaje automático](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
     
 5. Haga clic en **Crear**.
 
-### <a name="create-a-query-to-transform-the-data"></a>Creación de una consulta para transformar los datos
+### <a name="create-a-query-tootransform-hello-data"></a>Crear una consulta de datos de hello tootransform
 
-Stream Analytics usa una consulta declarativa basada en SQL para examinar la entrada y procesarla. En esta sección se crea una consulta que lee cada tweet de entrada y luego invoca a la función de Machine Learning para llevar a cabo el análisis de opiniones. La consulta entonces envía el resultado a la salida que se ha definido (almacenamiento de blobs).
+Análisis de transmisiones usa una entrada de consulta declarativa basado en SQL tooexamine hello y procesarlo. En esta sección, creará una consulta que lee cada tweet de entrada y, a continuación, se llama a análisis de opiniones de tooperform de función de aprendizaje automático de Hola. consulta de Hello, a continuación, envía Hola resultado toohello de salida que definió (almacenamiento de blobs).
 
-1. Vuelva a la hoja de información general del trabajo.
+1. Hoja de información general del trabajo toohello devuelto.
 
-2.  En **Topología de trabajo**, haga clic en el cuadro **Consulta**.
+2.  En **trabajo topología**, haga clic en hello **consulta** cuadro.
 
     ![Creación de una consulta para el trabajo de Streaming Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-query.png)  
 
-3. Escriba la siguiente consulta:
+3. Escriba Hola después de consulta:
 
     ```
     WITH sentiment AS (  
@@ -228,50 +228,50 @@ Stream Analytics usa una consulta declarativa basada en SQL para examinar la ent
     From sentiment  
     ```    
 
-    La consulta invoca a la función creada anteriormente (`sentiment`) para realizar el análisis de opiniones en cada tweet de la entrada. 
+    consulta de Hello invoca la función hello que creó anteriormente (`sentiment`) en el análisis de opiniones tooperform de orden en cada tweet en la entrada de Hola. 
 
-4. Haga clic en **Guardar** para guardar la consulta.
+4. Haga clic en **guardar** consulta de hello toosave.
 
 
-## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Inicio del trabajo de Stream Analytics y consulta de la salida
+## <a name="start-hello-stream-analytics-job-and-check-hello-output"></a>Iniciar el trabajo de análisis de transmisiones de Hola y compruebe la salida de hello
 
-Ya se puede iniciar el trabajo de Stream Analytics.
+Ahora puede iniciar el trabajo de análisis de transmisiones de Hola.
 
-### <a name="start-the-job"></a>Inicio del trabajo
-1. Vuelva a la hoja de información general del trabajo.
+### <a name="start-hello-job"></a>Iniciar el trabajo de Hola
+1. Hoja de información general del trabajo toohello devuelto.
 
-2. Haga clic en **Iniciar** en la parte superior de la hoja.
+2. Haga clic en **iniciar** princip Hola de hoja de Hola.
 
     ![Creación de una consulta para el trabajo de Streaming Analytics](./media/stream-analytics-machine-learning-integration-tutorial/start-job.png)  
 
-3. En **Iniciar trabajo**, seleccione **Personalizado** y luego seleccione un día antes de la fecha de carga del archivo CSV en el almacenamiento de blobs. Cuando haya terminado, haga clic en **Iniciar**.  
+3. Hola **Start job**, seleccione **personalizada**y, a continuación, seleccione un día toowhen anterior que cargó el almacenamiento de información de hello CSV archivo tooblob. Cuando haya terminado, haga clic en **Iniciar**.  
 
 
-### <a name="check-the-output"></a>Consulta de la salida
-1. Deje que el trabajo se ejecute durante unos minutos hasta que vea actividad en el cuadro **Supervisión**. 
+### <a name="check-hello-output"></a>Compruebe la salida de hello
+1. Trabajo de hello permiten ejecutar durante varios minutos hasta que vea actividad Hola **supervisión** cuadro. 
 
-2. Si tiene alguna herramienta que suela usar para examinar el contenido del almacenamiento de blobs, úsela para examinar el contenedor `azuresamldemoblob`. También puede realizar los siguientes pasos en Azure Portal:
+2. Si tiene una herramienta que suele usar el contenido de hello tooexamine de almacenamiento de blobs, use ese Hola de tooexamine herramienta `azuresamldemoblob` contenedor. Como alternativa, Hola pasos de hello portal de Azure:
 
-    1. En el portal, busque la cuenta de almacenamiento `samldemo` y, en ella, busque el contenedor `azuresamldemoblob`. En el contenedor verá dos archivos: el que contiene los tweets de ejemplo y un archivo CSV generado por el trabajo de Stream Analytics.
-    2. Haga clic con el botón derecho en el archivo generado y luego seleccione **Descargar**. 
+    1. En el portal de hello, busque hello `samldemo` almacenamiento de la cuenta y, dentro de la cuenta de hello, buscar hello `azuresamldemoblob` contenedor. Verá dos archivos en el contenedor de hello: Hola archivo que contenga tweets de ejemplo de Hola y un archivo CSV generado por el trabajo de análisis de transmisiones de Hola.
+    2. Haga clic en archivo hello generado y, a continuación, seleccione **descargar**. 
 
    ![Descarga de la salida del trabajo CSV desde el almacenamiento de blobs](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  
 
-3. Abra el archivo CSV generado. Verá algo parecido al siguiente ejemplo:  
+3. Abra Hola genera el archivo CSV. Verá algo parecido a Hola siguiente ejemplo:  
    
    ![Aprendizaje automático de Análisis de transmisiones, vista CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 
 ### <a name="view-metrics"></a>Visualización de métricas
-También puede observar las métricas relacionadas con la función de Aprendizaje automático de Azure. Las siguientes métricas relacionadas con la función se muestran en el cuadro **Supervisión** de la hoja de trabajo:
+También puede observar las métricas relacionadas con la función de Aprendizaje automático de Azure. Hola siguiendo las métricas relacionadas con la función se muestra en hello **supervisión** cuadro en la hoja de trabajo de hello:
 
-* **Solicitudes de función** indica el número de solicitudes enviadas al servicio web Machine Learning.  
-* **Eventos de la función** indica el número de eventos de la solicitud. De forma predeterminada, cada solicitud de un servicio web Machine Learning contiene hasta 1000 eventos.  
+* **Función solicitudes** indica Hola número de solicitudes enviadas tooa servicio web de aprendizaje automático.  
+* **Función eventos** indica el número de Hola de eventos de solicitud de saludo. De forma predeterminada, cada servicio web de aprendizaje automático de tooa de solicitud contiene una too1, 000 eventos.  
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Introducción al Análisis de transmisiones de Azure](stream-analytics-introduction.md)
+* [Introducción tooAzure análisis de transmisiones](stream-analytics-introduction.md)
 * [Referencia del lenguaje de consulta de Análisis de transmisiones de Azure](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Integración de la API de REST y Machine Learning](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Referencia de API de REST de administración de Análisis de transmisiones de Azure](https://msdn.microsoft.com/library/azure/dn835031.aspx)

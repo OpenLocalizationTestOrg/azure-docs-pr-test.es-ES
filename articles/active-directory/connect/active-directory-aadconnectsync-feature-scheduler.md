@@ -1,6 +1,6 @@
 ---
 title: "Sincronización de Azure AD Connect: Scheduler | Microsoft Docs"
-description: "En este tema se describe la característica de Programador incorporada en la sincronización de Azure AD Connect."
+description: "Este tema describe la característica de programador integrado hello en la sincronización de Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 63f69756b3933fecdec75cc677e1098447e5b94e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c587039cc68d305862a07beff364894b6f74cd2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Sincronización de Azure AD Connect: Programador
-En este tema se describe el programador incorporado en la sincronización de Azure AD Connect (también denominado motor de sincronización).
+Este tema describe a programador integrado de hello en la sincronización de Azure AD Connect (conocido como) motor de sincronización).
 
 Esta característica se introdujo con la compilación 1.1.105.0 (publicada en febrero de 2016).
 
 ## <a name="overview"></a>Información general
-Azure AD Connect Sync sincronizará los cambios que se producen en su directorio local mediante un programador. Hay dos procesos de programador, uno para la sincronización de contraseñas y otro para la sincronización de objetos o atributos y tareas de mantenimiento. En este tema se trata el último.
+Azure AD Connect Sync sincronizará los cambios que se producen en su directorio local mediante un programador. Hay dos procesos de programador, uno para la sincronización de contraseñas y otro para la sincronización de objetos o atributos y tareas de mantenimiento. Este tema tratan Hola este último.
 
-En versiones anteriores, el programador de objetos y atributos era externo al motor de sincronización. Usaba el programador de tareas de Windows o un servicio de Windows independiente para desencadenar el proceso de sincronización. En las versiones 1.1 el programador viene integrado con el motor de sincronización y permite alguna personalización. La nueva frecuencia de sincronización predeterminada es de 30 minutos.
+En versiones anteriores, programador de Hola para objetos y atributos era motor de sincronización de toohello externo. Utiliza el programador de tareas de Windows o un proceso de sincronización de Windows servicio tootrigger Hola independiente. Programador de Hello es con Hola motor de sincronización de toohello integrados de las versiones 1.1 y permitir alguna personalización. frecuencia de sincronización de Hello nuevo valor predeterminado es 30 minutos.
 
-El programador es responsable de dos tareas:
+Programador de Hello es responsable de dos tareas:
 
-* **Ciclo de sincronización**. El proceso para importar, sincronizar y exportar los cambios.
-* **Tareas de mantenimiento**. Renueve las claves y certificados para el restablecimiento de contraseña y el servicio de registro de dispositivos (DRS). Purgue las entradas antiguas en el registro de operaciones.
+* **Ciclo de sincronización**. Hola proceso tooimport, sincronización y los cambios de exportación.
+* **Tareas de mantenimiento**. Renueve las claves y certificados para el restablecimiento de contraseña y el servicio de registro de dispositivos (DRS). Purgar las entradas más antiguas en el registro de operaciones de Hola.
 
-El programador en sí, siempre está en ejecución, pero se puede configurar para que ejecute solo una o ninguna de estas tareas. Por ejemplo, si necesita tener su propio proceso de ciclo de sincronización, puede deshabilitar esta tarea en el programador y continuar ejecutando la tarea de mantenimiento.
+Programador de Hello propio siempre se está ejecutando, pero puede ser configurado tooonly ejecutar una o ninguna de estas tareas. Por ejemplo, si necesita toohave su propio proceso de ciclo de sincronización, puede deshabilitar esta tarea en el programador de hello pero la tarea de mantenimiento de hello sigue en ejecución.
 
 ## <a name="scheduler-configuration"></a>Configuración del programador
-Para ver la configuración actual, vaya a PowerShell y ejecute `Get-ADSyncScheduler`. Muestra algo parecido a esta imagen:
+toosee las opciones de configuración actual, vaya tooPowerShell y ejecute `Get-ADSyncScheduler`. Muestra algo parecido a esta imagen:
 
 ![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings2016.png)
 
-Si al ejecutar este cmdlet, aparece el error **The sync command or cmdlet is not available** (El comando de sincronización o el cmdlet no están disponibles), significa que el módulo de PowerShell no está cargado. Este problema podría suceder si ejecuta Azure AD Connect en un controlador de dominio o en un servidor con niveles de restricción para PowerShell más elevados que la configuración predeterminada. Si ve este error, ejecute `Import-Module ADSync` para que esté disponible el cmdlet.
+Si ve **no está disponible el comando de sincronización de Hola o cmdlet** cuando se ejecuta este cmdlet, a continuación, módulo de PowerShell de hello no está cargado. Este problema puede ocurrir si ejecutar Azure AD Connect en un controlador de dominio o en un servidor con mayores niveles de restricción de PowerShell que la configuración predeterminada de Hola. Si ve este error, a continuación, ejecute `Import-Module ADSync` toomake Hola cmdlet disponible.
 
-* **AllowedSyncCycleInterval**. El intervalo de tiempo más corto entre ciclos de sincronización permitido por Azure AD. No se puede sincronizar con más frecuencia que esta configuración y mantener la compatibilidad.
-* **CurrentlyEffectiveSyncCycleInterval**. La programación en vigor actualmente. Tiene el mismo valor que CustomizedSyncInterval (si está establecido), si no es más frecuente que AllowedSyncInterval. Si usa una compilación anterior a 1.1.281 y cambia CustomizedSyncCycleInterval, esto surte efecto tras el próximo ciclo de sincronización. A partir de la compilación 1.1.281, el cambio surte efecto inmediatamente.
-* **CustomizedSyncCycleInterval**. Si desea que el programador se ejecute con cualquier otra frecuencia distinta a la del valor predeterminado de 30 minutos, configure este valor. En la imagen anterior, el programador se ha establecido para que se ejecute cada hora. Si establece esta configuración en un valor inferior al de AllowedSyncInterval, se utilizará el último.
-* **NextSyncCyclePolicyType**. Diferencial o inicial. Define si la siguiente ejecución debe procesar solo cambios diferenciales, o bien si debería hacer una importación y sincronización completas. En el último caso también vuelve a procesar las reglas nuevas o modificadas.
-* **NextSyncCycleStartTimeInUTC**. La hora en que el programador inicia el siguiente ciclo de sincronización.
-* **PurgeRunHistoryInterval**. El tiempo que deben mantenerse los registros de operación. Estos registros se pueden revisar en Synchronization Service Manager. El valor predeterminado mantener estos registros 7 días.
-* **SyncCycleEnabled**. Indica si el programador está ejecutando los procesos de importación, sincronización y exportación como parte de su funcionamiento.
-* **MaintenanceEnabled**. Muestra si está habilitado el proceso de mantenimiento. Actualiza los certificados y las claves y purga el registro de operaciones.
-* **StagingModeEnabled**. Muestra si el [modo provisional](active-directory-aadconnectsync-operations.md#staging-mode) está habilitado. Si esta opción está habilitada, suprime la ejecución de las exportaciones, pero ejecuta la importación y la sincronización.
-* **SchedulerSuspended**. Configure Connect durante una actualización para impedir temporalmente que se ejecute el programador.
+* **AllowedSyncCycleInterval**. Intervalo tiempo más corto de Hello entre los ciclos de sincronización permitida por Azure AD. No se puede sincronizar con más frecuencia que esta configuración y mantener la compatibilidad.
+* **CurrentlyEffectiveSyncCycleInterval**. Hola programación actualmente en vigor. Tiene Hola mismo valor que CustomizedSyncInterval (Si establecer) si no es más frecuente que AllowedSyncInterval. Si usa una compilación anterior a 1.1.281 y cambia CustomizedSyncCycleInterval, esto surte efecto tras el próximo ciclo de sincronización. De compilación 1.1.281 cambio Hola surte efecto inmediatamente.
+* **CustomizedSyncCycleInterval**. Si desea Hola programador toorun con cualquier otra frecuencia predeterminado de Hola 30 minutos, configure esta opción. En la imagen anterior de hello, programador de Hola se estableció toorun cada hora en su lugar. Si establece este valor tooa inferior a AllowedSyncInterval, se utiliza este último Hola.
+* **NextSyncCyclePolicyType**. Diferencial o inicial. Define si Hola a continuación ejecute debe procesar solo los cambios de delta, o si hello siguiente ejecución debería hacer una completa importar y sincronizar. Hola este último también podría volver a procesar las reglas nuevas o modificadas.
+* **NextSyncCycleStartTimeInUTC**. Próxima vez que inicie el programador de Hola Hola siguiente ciclo de sincronización.
+* **PurgeRunHistoryInterval**. Hola operación tiempo deben mantenerse los registros. Estos registros se pueden revisar en el Administrador de servicio de sincronización de Hola. Hola predeterminada es tookeep estos registros durante 7 días.
+* **SyncCycleEnabled**. Indica si el programador de hello está ejecutando importación hello, sincronización y los procesos de exportación como parte de su funcionamiento.
+* **MaintenanceEnabled**. Muestra si se habilita el proceso de mantenimiento de Hola. Actualiza certificados o claves de Hola y Hola de purga de registro de operaciones.
+* **StagingModeEnabled**. Muestra si el [modo provisional](active-directory-aadconnectsync-operations.md#staging-mode) está habilitado. Sin embargo si esta opción está habilitada, a continuación, se suprimen Hola exportaciones de ejecución, Ejecutar importación y sincronización.
+* **SchedulerSuspended**. Establecidas por conectar durante un programador de hello tootemporarily actualización bloque de ejecución.
 
-Puede cambiar algunos de estos valores con `Set-ADSyncScheduler`. Se pueden modificar los parámetros siguientes:
+Puede cambiar algunos de estos valores con `Set-ADSyncScheduler`. se puede modificar Hola parámetros siguientes:
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -63,73 +63,73 @@ Puede cambiar algunos de estos valores con `Set-ADSyncScheduler`. Se pueden modi
 * SyncCycleEnabled
 * MaintenanceEnabled
 
-En compilaciones anteriores de Azure AD Connect, **isStagingModeEnabled** se expuso en Set-ADSyncScheduler. **No se puede** establecer esta propiedad. La propiedad **SchedulerSuspended** solo debe modificarse con Connect. **No se puede** establecer esto con PowerShell directamente.
+En compilaciones anteriores de Azure AD Connect, **isStagingModeEnabled** se expuso en Set-ADSyncScheduler. Es **no compatible** tooset esta propiedad. Hola propiedad **SchedulerSuspended** solo debe modificarse, Connect. Es **no compatible** tooset esto con PowerShell directamente.
 
-La configuración del programador se almacena en Azure AD. Si tiene un servidor de ensayo, cualquier cambio realizado en el servidor principal también afectará a este servidor (excepto IsStagingModeEnabled).
+configuración del programador Hola se almacena en Azure AD. Si tiene un servidor de ensayo, cualquier cambio en el servidor principal de hello también afecta al servidor (excepto IsStagingModeEnabled) de almacenamiento provisional de Hola.
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 Sintaxis: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
-d: días; HH: horas; mm: minutos; ss: segundos
+ d: días; HH: horas; mm: minutos; ss: segundos
 
 Ejemplo: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
-Cambia el programador para ejecutarse cada 3 horas.
+Cambios Hola programador toorun cada tres horas.
 
 Ejemplo: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
-Cambia el programador para ejecutarse a diario.
+Los cambios realizados Hola programador toorun diariamente.
 
-### <a name="disable-the-scheduler"></a>Deshabilitación del programador  
-Si necesita realizar cambios en la configuración, es conveniente deshabilitar el programador. Por ejemplo, cuando [configura el filtrado](active-directory-aadconnectsync-configure-filtering.md) o [realiza cambios en las reglas de sincronización](active-directory-aadconnectsync-change-the-configuration.md).
+### <a name="disable-hello-scheduler"></a>Deshabilite al programador de Hola  
+Si necesita cambios de configuración de toomake, a continuación, deberá a Programador de hello toodisable. Por ejemplo, cuando se [configurar el filtrado de](active-directory-aadconnectsync-configure-filtering.md) o [realizar cambios en las reglas de toosynchronization](active-directory-aadconnectsync-change-the-configuration.md).
 
-Para deshabilitar el programador, ejecute `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+Programador de hello toodisable, ejecute `Set-ADSyncScheduler -SyncCycleEnabled $false`.
 
-![Deshabilitación del programador](./media/active-directory-aadconnectsync-change-the-configuration/schedulerdisable.png)
+![Deshabilite al programador de Hola](./media/active-directory-aadconnectsync-change-the-configuration/schedulerdisable.png)
 
-Una vez realizados los cambios, no olvide volver a habilitar el programador con `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+Una vez realizados los cambios, no olvide programador de hello tooenable nuevo con `Set-ADSyncScheduler -SyncCycleEnabled $true`.
 
-## <a name="start-the-scheduler"></a>Inicio del programador
-De forma predeterminada, el programador se ejecuta cada 30 minutos. En algunos casos, es posible que quiera ejecutar un ciclo de sincronización entre los ciclos programados o necesite ejecutar un tipo diferente.
+## <a name="start-hello-scheduler"></a>Inicie el programador de Hola
+Programador de Hello es ejecutar cada 30 minutos de forma predeterminada. En algunos casos, quizás desee toorun ciclo de una sincronización entre Hola programado ciclos o necesita toorun un tipo diferente.
 
 **Ciclo de sincronización diferencial**  
-Un ciclo de sincronización diferencial incluye los siguientes pasos:
+Un ciclo de sincronización delta incluye Hola pasos:
 
 * Importación diferencial en todos los conectores
 * Sincronización diferencial en todos los conectores
 * Exportación en todos los conectores
 
-Es posible que haya un cambio urgente que debe sincronizar inmediatamente, para lo que necesita ejecutar manualmente un ciclo. Si necesita ejecutar manualmente un ciclo, ejecute `Start-ADSyncSyncCycle -PolicyType Delta`desde PowerShell.
+Es posible que haya una urgencia cambio que se debe sincronizar inmediatamente, motivo por el cual debe toomanually ejecutar un ciclo. Si necesita toomanually ejecutar un ciclo, a continuación, de ejecución de PowerShell `Start-ADSyncSyncCycle -PolicyType Delta`.
 
 **Ciclo de sincronización completo**  
-Si ha realizado uno de los siguientes cambios de configuración, debe ejecutar un ciclo de sincronización completo (también conocido como sincronización inicial):
+Si ha realizado una Hola después de los cambios de configuración, deberá toorun un ciclo de sincronización completa (conocido como) sincronización inicial):
 
-* Agregó más objetos o atributos para su importación desde un directorio de origen
-* Realizó cambios en las reglas de sincronización
+* Agregar más toobe atributos u objetos importado desde un directorio de origen
+* Realizó cambios en las reglas de sincronización de toohello
 * Cambió el [filtrado](active-directory-aadconnectsync-configure-filtering.md) para que se incluya un número diferente de objetos
 
-Si ha realizado uno de estos cambios, debe ejecutar un ciclo de sincronización completo, para que el motor de sincronización tenga la oportunidad de volver a consolidar los espacios de conector. Un ciclo de sincronización completo incluye los pasos siguientes:
+Si ha realizado alguno de estos cambios, debe toorun ciclo de una sincronización completa para que el motor de sincronización de hello tiene espacios conectores de hello oportunidad tooreconsolidate Hola. Un ciclo de sincronización completa incluye Hola pasos:
 
 * Importación completa en todos los conectores
 * Sincronización completa en todos los conectores
 * Exportación en todos los conectores
 
-Para iniciar un ciclo de sincronización completo, ejecute `Start-ADSyncSyncCycle -PolicyType Initial` desde un símbolo del sistema de PowerShell. Este comando inicia un ciclo de sincronización completo.
+tooinitiate un ciclo de sincronización completa, ejecute `Start-ADSyncSyncCycle -PolicyType Initial` desde un símbolo del sistema de PowerShell. Este comando inicia un ciclo de sincronización completo.
 
-## <a name="stop-the-scheduler"></a>Detención del programador
-Si el programador está ejecutando actualmente un ciclo de sincronización, puede que necesite detenerlo. Por ejemplo, si inicia el Asistente para instalación y recibe este error:
+## <a name="stop-hello-scheduler"></a>Detener el programador de Hola
+Si el programador de saludo se está ejecutando un ciclo de sincronización, puede que tenga toostop. Por ejemplo, si inicia el Asistente para la instalación de Hola y recibirá este error:
 
 ![SyncCycleRunningError](./media/active-directory-aadconnectsync-feature-scheduler/synccyclerunningerror.png)
 
-Cuando se está ejecutando un ciclo de sincronización, no puede realizar cambios de configuración. Debe esperar hasta que el programador haya terminado el proceso, pero también es posible detenerlo para poder realizar los cambios inmediatamente. Detener el ciclo actual no es perjudicial y los cambios pendientes se procesarán en la próxima ejecución.
+Cuando se está ejecutando un ciclo de sincronización, no puede realizar cambios de configuración. Se podría esperar hasta que el programador de hello ha finalizado el proceso de hello, pero también puede detener por lo que puede hacer los cambios inmediatamente. Detener Hola ciclo actual no es dañino y los cambios pendientes se procesan con ejecutar a continuación.
 
-1. Para empezar, indique al programador que detenga el ciclo actual con el cmdlet `Stop-ADSyncSyncCycle`de PowerShell.
-2. Si usa una compilación anterior a 1.1.281, detener el programador no hará que este conector detenga su tarea actual. Para forzar el conector a que se detenga, tome las medidas siguientes: ![StopAConnector](./media/active-directory-aadconnectsync-feature-scheduler/stopaconnector.png)
-   * Inicie el **Servicio de sincronización** desde el menú Inicio. Vaya a **Conectores**, resalte el conector con el estado **En ejecución** y seleccione **Detener** en la lista de acciones.
+1. Inicio indicándole Hola programador toostop con su actual ciclo con el cmdlet de PowerShell de hello `Stop-ADSyncSyncCycle`.
+2. Si usas una compilación antes de 1.1.281 y, después, deteniendo el programador de hello no Hola actual conector de su tarea actual. tooforce Hola conector toostop, tomar Hola siguientes acciones: ![StopAConnector](./media/active-directory-aadconnectsync-feature-scheduler/stopaconnector.png)
+   * Iniciar **servicio de sincronización de** desde el menú de inicio de Hola. Vaya demasiado**conectores**, resalte Hola conector con el estado de hello **ejecutando**y seleccione **detener** de hello acciones.
 
-El programador todavía permanece activo y se inicia de nuevo en la siguiente oportunidad.
+Programador de Hello aún está activo y se inicia de nuevo en la siguiente oportunidad.
 
 ## <a name="custom-scheduler"></a>Programador personalizado
-Los cmdlets que se documentan en esta sección solo están disponibles en la compilación [1.1.130.0](active-directory-aadconnect-version-history.md#111300) y versiones posteriores.
+Hello cmdlets documentadas en esta sección solo están disponibles en la compilación [1.1.130.0](active-directory-aadconnect-version-history.md#111300) y versiones posteriores.
 
-Si el programador integrado no cumple con sus requisitos, puede programar los conectores con PowerShell.
+Si el programador integrado hello no satisface sus requisitos, puede programar conectores hello mediante PowerShell.
 
 ### <a name="invoke-adsyncrunprofile"></a>Invoke-ADSyncRunProfile
 Puede iniciar un perfil para un conector de esta manera:
@@ -138,37 +138,37 @@ Puede iniciar un perfil para un conector de esta manera:
 Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
 ```
 
-Los nombres para utilizar como [nombres de conectores](active-directory-aadconnectsync-service-manager-ui-connectors.md) y [nombres de perfil de ejecución](active-directory-aadconnectsync-service-manager-ui-connectors.md#configure-run-profiles) pueden encontrarse en la [interfaz de usuario de Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md).
+Hola nombres toouse para [nombres de conectores](active-directory-aadconnectsync-service-manager-ui-connectors.md) y [nombres de perfil de ejecución](active-directory-aadconnectsync-service-manager-ui-connectors.md#configure-run-profiles) puede encontrarse en hello [UI Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md).
 
 ![Invocar el perfil de ejecución](./media/active-directory-aadconnectsync-feature-scheduler/invokerunprofile.png)  
 
-El cmdlet `Invoke-ADSyncRunProfile` es sincrónico; es decir, no devuelve el control hasta que el conector ha completado la operación, ya sea correcta o incorrectamente.
+Hola `Invoke-ADSyncRunProfile` cmdlet es sincrónico, es decir, no devuelve el control hasta Hola conector ha completado la operación de hello, ya sea correctamente o con error.
 
-Al programar los conectores, se recomienda hacerlo en el siguiente orden:
+Cuando se programan sus conectores, recomendación de hello es tooschedule ellas en hello siguiendo el orden:
 
 1. (Diferencial y completo) Importar desde directorios locales, como Active Directory
 2. (Diferencial y completo) Importar desde Azure AD
 3. (Diferencial y completo) Sincronización desde directorios locales, como Active Directory
 4. (Diferencial y completo) Sincronización desde Azure AD
-5. Exportar a Azure AD
-6. Exportar a los directorios locales, como Active Directory
+5. Exportar tooAzure AD
+6. Exportar directorios de tooon locales, como Active Directory
 
-Este orden es en el que el programador integrado ejecuta los conectores.
+Este orden es cómo programador integrado Hola ejecuta Hola conectores.
 
 ### <a name="get-adsyncconnectorrunstatus"></a>Get-ADSyncConnectorRunStatus
-También puede supervisar el motor de sincronización para ver si está ocupado o inactivo. Este cmdlet devuelve un resultado vacío si el motor de sincronización está inactivo y no está ejecutando ningún conector. Si se está ejecutando un conector, devuelve el nombre del conector.
+También puede supervisar toosee de motor de sincronización de hello si está ocupado o inactivo. Este cmdlet devuelve un resultado vacío si el motor de sincronización de hello está inactivo y no está ejecutando un conector. Si está ejecutando un conector, devuelve el nombre de Hola de hello conector.
 
 ```
 Get-ADSyncConnectorRunStatus
 ```
 
 ![Estado de la ejecución de conector](./media/active-directory-aadconnectsync-feature-scheduler/getconnectorrunstatus.png)  
-En la ilustración anterior, la primera línea refleja un estado donde el motor de sincronización está inactivo. La segunda línea es de cuando se ejecuta el conector de Azure AD.
+En la imagen anterior de hello, primera línea de hello es desde un estado donde el motor de sincronización de hello está inactivo. segunda línea de Hola de cuando se está ejecutando Hola conector de Azure AD.
 
 ## <a name="scheduler-and-installation-wizard"></a>Programador y Asistente para instalación
-Si inicia el Asistente para instalación, el programador se suspende temporalmente. Este comportamiento es debido a que se supone que realizará cambios en la configuración y estos cambios no se pueden aplicar si el motor de sincronización se está ejecutando activamente. Por este motivo, no deje el Asistente para instalación abierto, ya que impide que el motor de sincronización realizar ninguna acción.
+Si inicia el Asistente para la instalación de hello, programador de Hola se suspende temporalmente. Este comportamiento es como se supone realizar cambios de configuración y no se puede aplicar esta configuración si el motor de sincronización de saludo se está ejecutando activamente. Por esta razón, no deje a Asistente para la instalación de hello abierto desde que se detiene el motor de sincronización de Hola de realizar ninguna acción de sincronización.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre la configuración de la [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) .
+Obtener más información sobre hello [sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) configuración.
 
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

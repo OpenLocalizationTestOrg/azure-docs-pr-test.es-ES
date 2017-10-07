@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory B2C: Multi-Factor Authentication | Microsoft Docs'
-description: "Habilitación de Multi-Factor Authentication en las aplicaciones orientadas al consumidor protegidas por Azure Active Directory B2C"
+description: "¿Cómo tooenable la autenticación multifactor en las aplicaciones orientadas al consumidor protegida por Azure Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: 62ec48ab067cf02bc8409aca6da704a5418ec270
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 29beb1e6ab5d8ab5a65f9c5c068d9e71c60418dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: habilitación de Multi-Factor Authentication en las aplicaciones orientadas al consumidor
-Azure Active Directory (Azure AD) B2C se integra directamente con [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) para que pueda agregar una segunda capa de seguridad a las experiencias de registro e inicio de sesión en las aplicaciones orientadas al consumidor. Y todo esto sin necesidad de escribir una sola línea de código. Actualmente se admite la comprobación mediante llamadas de teléfono y mensajes de texto. Aunque ya haya creado directivas de registro e inicio de sesión, puede habilitar Multi-Factor Authentication.
+Azure B2C de Active Directory (Azure AD) se integra directamente con [la autenticación multifactor Azure](../multi-factor-authentication/multi-factor-authentication.md) para que pueda agregar una segunda capa de experiencias de toosign de seguridad e inicio de sesión de seguridad en las aplicaciones de consumo. Y todo esto sin necesidad de escribir una sola línea de código. Actualmente se admite la comprobación mediante llamadas de teléfono y mensajes de texto. Aunque ya haya creado directivas de registro e inicio de sesión, puede habilitar Multi-Factor Authentication.
 
 > [!NOTE]
 > También se puede habilitar Multi-Factor Authentication al crear directivas de registro e inicio de sesión, no solo mediante la edición de las directivas existentes.
 > 
 > 
 
-Esta característica ayuda a las aplicaciones a tratar escenarios como los siguientes:
+Esta característica permite a las aplicaciones administrar escenarios como siguiente hello:
 
-* No se requiere Multi-Factor Authentication para acceder a una aplicación, pero sí para acceder a otra. Por ejemplo, el consumidor puede iniciar sesión en una aplicación de seguros de automóvil con una cuenta local o social, pero debe comprobar el número de teléfono antes de acceder a la aplicación principal de seguros registrada en el mismo directorio.
-* No se requiere Multi-Factor Authentication para acceder a una aplicación en general, pero sí para acceder a las partes confidenciales que contiene. Por ejemplo, el consumidor puede iniciar sesión en una aplicación de banca con una cuenta social o local y comprobar el saldo de las cuentas, pero debe confirmar el número de teléfono antes de realizar una transferencia bancaria.
+* No es necesario tooaccess una aplicación de la autenticación multifactor, pero que sea necesario tooaccess otro. Por ejemplo, puede iniciar sesión en una aplicación de seguros automáticamente con una cuenta local o sociales consumidor hello, pero debe comprobar el número de teléfono de hello antes de obtener acceso a aplicación seguros particular de hello registre en hello mismo directorio.
+* Por lo general no necesita la autenticación multifactor tooaccess una aplicación, pero requiere partes importantes de hello tooaccess dentro de él. Por ejemplo, consumidor de hello puede iniciar sesión en tooa aplicación con un saldo de cuenta de comprobación y una cuenta local o sociales de banca, pero debe comprobar el número de teléfono de hello antes de intentar a una transferencia de conexión.
 
-## <a name="modify-your-sign-up-policy-to-enable-multi-factor-authentication"></a>Modificación de la directiva de registro para habilitar Multi-Factor Authentication
-1. [Siga estos pasos para ir a la hoja de características de B2C en el Portal de Azure](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+## <a name="modify-your-sign-up-policy-tooenable-multi-factor-authentication"></a>Modificar el tooenable de directiva de suscripción a la autenticación multifactor
+1. [Siga estos módulos de características de pasos toonavigate toohello B2C en hello portal de Azure](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Haga clic en **Directivas de registro**.
-3. Haga clic en la directiva de registro (por ejemplo, "B2C_1_SiUp") para abrirla.
-4. Haga clic en **Multi-Factor Authentication** y configure el **Estado** como **Activado**. Haga clic en **Aceptar**.
-5. Haga clic en **Guardar** en la parte superior de la hoja.
+3. Haga clic en la directiva de inicio de sesión (por ejemplo, "B2C_1_SiUp") tooopen.
+4. Haga clic en **la autenticación multifactor** y activar hello **estado** demasiado**ON**. Haga clic en **Aceptar**.
+5. Haga clic en **guardar** princip Hola de hoja de Hola.
 
-Puede usar la característica "Ejecutar ahora" en la directiva para comprobar la experiencia del consumidor. Confirme lo siguiente:
+Puede usar la característica de "Ejecutar ahora" hello en la experiencia del consumidor de hello directiva tooverify Hola. Confirmar siguiente hello:
 
-Se crea una cuenta de consumidor en su directorio antes de que se produzca el paso de Multi-Factor Authentication. Durante el paso, se pide al consumidor que proporcione su número de teléfono y que lo compruebe. Si la comprobación es satisfactoria, el número de teléfono se adjunta a la cuenta de consumidor para su uso posterior. Incluso si el consumidor cancela o abandona, se le puede pedir que compruebe de nuevo un número de teléfono durante el siguiente inicio de sesión (con Multi-Factor Authentication habilitada).
+Se crea una cuenta de cliente en el directorio antes de que se produce el paso de la autenticación multifactor de Hola. Durante el paso de hello, consumidor de Hola se solicita tooprovide su número de teléfono y compruebe si. Si la comprobación es correcta, se adjunta el número de teléfono de hello toohello cuenta de cliente para su uso posterior. Incluso si el consumidor de Hola se cancela o se quita, que se pueden hacer tooverify un número de teléfono nuevo durante Hola de inicio de sesión siguiente (con la autenticación multifactor habilitada).
 
-## <a name="modify-your-sign-in-policy-to-enable-multi-factor-authentication"></a>Modificación de la directiva de inicio de sesión para habilitar Multi-Factor Authentication
-1. [Siga estos pasos para ir a la hoja de características de B2C en el Portal de Azure](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+## <a name="modify-your-sign-in-policy-tooenable-multi-factor-authentication"></a>Modificar el tooenable de inicio de sesión de la directiva la autenticación multifactor
+1. [Siga estos módulos de características de pasos toonavigate toohello B2C en hello portal de Azure](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Haga clic en **Directivas de inicio de sesión**.
-3. Haga clic en la directiva de inicio de sesión (por ejemplo, "B2C_1_SiIn") para abrirla. Haga clic en **Editar** en la parte superior de la hoja.
-4. Haga clic en **Multi-Factor Authentication** y configure el **Estado** como **Activado**. Haga clic en **Aceptar**.
-5. Haga clic en **Guardar** en la parte superior de la hoja.
+3. Haga clic en la directiva de inicio de sesión (por ejemplo, "B2C_1_SiIn") tooopen. Haga clic en **editar** princip Hola de hoja de Hola.
+4. Haga clic en **la autenticación multifactor** y activar hello **estado** demasiado**ON**. Haga clic en **Aceptar**.
+5. Haga clic en **guardar** princip Hola de hoja de Hola.
 
-Puede usar la característica "Ejecutar ahora" en la directiva para comprobar la experiencia del consumidor. Confirme lo siguiente:
+Puede usar la característica de "Ejecutar ahora" hello en la experiencia del consumidor de hello directiva tooverify Hola. Confirmar siguiente hello:
 
-Cuando el consumidor inicia la sesión (mediante una cuenta local o social), si un número de teléfono comprobado está asociado a su cuenta, se le pide que lo compruebe. Si no hay ningún número de teléfono asociado, se le pide al consumidor que proporcione uno y que lo compruebe. Si la comprobación es correcta, el número de teléfono se asocia a la cuenta de consumidor para su uso posterior.
+Al consumidor de Hola inicia sesión (con una cuenta local o sociales), si se ha adjuntado un número de teléfono comprobado toohello cuenta de cliente, se le pedirá tooverify lo. Si no se ha adjuntado ningún número de teléfono, consumidor de Hola se solicita tooprovide uno y confírmela. En comprobación correcta, se adjunta el número de teléfono de hello toohello cuenta de cliente para su uso posterior.
 
 ## <a name="multi-factor-authentication-on-other-policies"></a>Multi-Factor Authentication en otras directivas
-Como se ha descrito anteriormente en relación con las directivas de registro e inicio de sesión, también es posible habilitar Multi-Factor Authentication en las directivas de registro o inicio de sesión y en las directivas de restablecimiento de contraseña. Muy pronto estará disponible en las directivas de edición de perfiles.
+Tal y como se ha descrito para las directivas de inicio de sesión & inicio de sesión anteriores, también es posible tooenable la autenticación multifactor en Inicio de sesión o directivas de restablecimiento de contraseña y directivas de inicio de sesión. Muy pronto estará disponible en las directivas de edición de perfiles.
 

@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4b35c5d126375735f070a7fe2331896c524b5a61
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: af7cb13794bf3a9fee91d355f788aa5c2246e57c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Restricciones y directivas de contraseñas en Azure Active Directory
 
-En este artículo se describen las directivas de contraseña y los requisitos de complejidad asociados a las cuentas de usuario almacenadas en el inquilino de Azure AD.
+Este artículo describen las directivas de contraseñas de Hola y los requisitos de complejidad asociados con cuentas de usuario almacenadas en el inquilino de Azure AD.
 
 ## <a name="administrator-password-policy-differences"></a>Diferencias entre directivas de contraseña del administrador
 
 Microsoft aplica una directiva de restablecimiento de contraseña predeterminada sólida de **dos puertas** para cualquier rol de administrador de Azure (ejemplo: administrador global, administrador del departamento de soporte técnico, administrador de contraseñas, etc).
 
-De este modo se impide que los administradores usen preguntas de seguridad y se aplica lo siguiente.
+Esto deshabilita a los administradores del uso de preguntas de seguridad y aplica la siguiente Hola.
 
-La directiva de dos puertas, que requiere dos fragmentos de los datos de autenticación (dirección de correo electrónico **y** número de teléfono), se aplica en las siguientes circunstancias
+Dos de puerta de enlace directiva, que requiere dos fragmentos de datos de autenticación (dirección de correo electrónico **y** número de teléfono), se aplica en hello siguientes circunstancias
 
 * Todos los roles de administrador de Azure
   * Administrador del departamento de soporte técnico
@@ -60,84 +60,84 @@ La directiva de dos puertas, que requiere dos fragmentos de los datos de autenti
 * Azure AD Connect sincroniza identidades desde el directorio local
 
 ### <a name="exceptions"></a>Excepciones
-La directiva de una puerta, que requiere un fragmento de los datos de autenticación (dirección de correo electrónico **o** número de teléfono), se aplica en las siguientes circunstancias
+Directiva de una puerta, que requieren una parte de los datos de autenticación (dirección de correo electrónico **o** número de teléfono), se aplica en hello siguientes circunstancias
 
 * Primeros 30 días de una versión de prueba **O**
 * El dominio personal no está presente (* .onmicrosoft) **Y** Azure AD Connect no sincroniza identidades
 
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Directivas de UserPrincipalName que se aplican a todas las cuentas de usuario
+## <a name="userprincipalname-policies-that-apply-tooall-user-accounts"></a>Políticas de UserPrincipalName que se aplican las cuentas de usuario de tooall
 
-Cada cuenta de usuario que necesita iniciar sesión en Azure AD debe tener un valor de atributo de nombre principal de usuario (UPN) único asociado a esa cuenta. En la siguiente tabla se describen las directivas que se aplican tanto a cuentas de usuario de Active Directory locales sincronizadas con la nube como a cuentas de usuario solo en la nube.
+Cada cuenta de usuario que necesita toosign en tooAzure AD debe tener un valor de atributo de nombre principal (UPN) único usuario asociado a su cuenta. tabla de Hola a continuación se detallan hello las directivas que se aplican tooboth local de cuentas de usuario de Active Directory sincronizarán toohello en la nube y las cuentas de usuario solo toocloud.
 
 | Propiedad | Requisitos de UserPrincipalName |
 | --- | --- |
 | Caracteres permitidos |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
-| Caracteres no permitidos |<ul> <li>Cualquier carácter "@" que no separa el nombre de usuario del dominio.</li> <li>No puede contener un carácter de punto "." inmediatamente antes del símbolo "@"</li></ul> |
-| Restricciones de longitud |<ul> <li>La longitud total no debe superar los 113 caracteres</li><li>64 caracteres antes del símbolo "@"</li><li>48 caracteres después del símbolo "@"</li></ul> |
+| Caracteres no permitidos |<ul> <li>Cualquier ' @' carácter que no se separe sus nombres de usuario de Hola de dominio Hola.</li> <li>No puede contener un carácter de punto '.' hello inmediatamente anterior ' @' símbolo</li></ul> |
+| Restricciones de longitud |<ul> <li>La longitud total no debe superar los 113 caracteres</li><li>64 caracteres antes de hello ' @' símbolo</li><li>48 caracteres después de hello ' @' símbolo</li></ul> |
 
-## <a name="password-policies-that-apply-only-to-cloud-user-accounts"></a>Directivas de contraseña que se aplican solo a cuentas de usuario en la nube
+## <a name="password-policies-that-apply-only-toocloud-user-accounts"></a>Directivas de contraseña que se aplican solo las cuentas de usuario de toocloud
 
-En la tabla siguiente se describe la configuración de políticas de contraseña disponible que se puede aplicar a cuentas de usuario creadas y administradas en Azure AD.
+Hello en la tabla siguiente describe la configuración de directiva de contraseña disponible de Hola que puede ser cuentas de toouser aplicado que crean y administran en Azure AD.
 
 | Propiedad | Requisitos |
 | --- | --- |
 | Caracteres permitidos |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
-| Caracteres no permitidos |<ul><li>Caracteres Unicode</li><li>Espacios</li><li> **Solo contraseñas seguras**: no pueden contener un carácter de punto "." inmediatamente antes que el símbolo "@"</li></ul> |
-| Restricciones de contraseña |<ul><li>8 caracteres como mínimo y 16 caracteres como máximo.</li><li>**Solo contraseñas seguras**: requiere al menos 3 de los 4 requisitos siguientes:<ul><li>Caracteres en minúsculas</li><li>Caracteres en mayúsculas</li><li>Números (0 al 9)</li><li>Símbolos (consulte las restricciones de contraseña anteriores)</li></ul></li></ul> |
-| Duración de las contraseñas |<ul><li>Valor predeterminado: **90** días </li><li>El valor se puede configurar mediante el cmdlet Set-MsolPasswordPolicy del Módulo Azure Active Directory para Windows PowerShell.</li></ul> |
-| Notificación de la expiración de contraseñas |<ul><li>Valor predeterminado: **14** días (antes de que caduque la contraseña)</li><li>El valor se puede configurar mediante el cmdlet Set-MsolPasswordPolicy.</li></ul> |
-| Expiración de las contraseñas |<ul><li>Valor predeterminado: **false** días (indica que la caducidad de contraseña está habilitada) </li><li>El valor se puede configurar para cuentas de usuario individuales mediante el cmdlet Set-MsolUser. </li></ul> |
+| Caracteres no permitidos |<ul><li>Caracteres Unicode</li><li>Espacios</li><li> **Solo las contraseñas seguras**: no puede contener un carácter de punto '.' hello inmediatamente anterior ' @' símbolo</li></ul> |
+| Restricciones de contraseña |<ul><li>8 caracteres como mínimo y 16 caracteres como máximo.</li><li>**Solo las contraseñas seguras**: 3 requiere fuera 4 del siguiente hello:<ul><li>Caracteres en minúsculas</li><li>Caracteres en mayúsculas</li><li>Números (0 al 9)</li><li>Símbolos (consulte las restricciones de contraseña anteriores)</li></ul></li></ul> |
+| Duración de las contraseñas |<ul><li>Valor predeterminado: **90** días </li><li>Valor es configurable mediante el cmdlet Set-MsolPasswordPolicy Hola de hello Azure módulo Active Directory para Windows PowerShell.</li></ul> |
+| Notificación de la expiración de contraseñas |<ul><li>Valor predeterminado: **14** días (antes de que caduque la contraseña)</li><li>Valor es configurable mediante el cmdlet Set-MsolPasswordPolicy Hola.</li></ul> |
+| Expiración de las contraseñas |<ul><li>Valor predeterminado: **false** días (indica que la caducidad de contraseña está habilitada) </li><li>Valor se puede configurar para cuentas de usuario individuales mediante el cmdlet Set-MsolUser de Hola. </li></ul> |
 | Historial de **cambio** de contraseña |**No** puede volver a utilizarse la última contraseña usada al **cambiar** de contraseña. |
 | Historial de **restablecimientos** de contraseña | **Puede** utilizar la última contraseña al **restablecer** una contraseña olvidada. |
-| Bloqueo de cuenta |Después de 10 intentos de inicio de sesión incorrectos (contraseña incorrecta), el usuario se bloqueará durante un minuto. Más intentos de inicio de sesión incorrectos bloquean el usuario para mayores duraciones. |
+| Bloqueo de cuenta |Después de 10 inicio de sesión intentos (contraseña incorrecta), usuario de Hola se bloqueará durante un minuto. Aún más el inicio de sesión incorrecto en intentos de usuario Hola de bloqueo para aumentar las duraciones. |
 
 ## <a name="set-password-expiration-policies-in-azure-active-directory"></a>Establecimiento de directivas de caducidad de contraseña en Azure Active Directory
 
-Un administrador global de un servicio en la nube de Microsoft puede usar el módulo de Microsoft Azure Active Directory para Windows PowerShell para configurar las contraseñas de usuario de modo que no caduquen. También puede usar cmdlets de Windows PowerShell para quitar la configuración de nunca caduca o para ver qué contraseñas de usuario están configuradas para que no caduquen. Esta guía se aplica a otros proveedores como Microsoft Intune y Office 365, que también dependen de Microsoft Azure Active Directory para los servicios de identidad y directorio.
+Un administrador global para un servicio de nube de Microsoft puede utilizar Hola Microsoft Azure módulo Active Directory para Windows PowerShell tooset seguridad de las contraseñas de usuario no tooexpire. También puede usar Windows PowerShell cmdlets tooremove Hola nunca expira configuración o toosee tooexpire no están configuradas las contraseñas de usuario. Esta guía aplica a los proveedores de tooother como Microsoft Intune y Office 365, que también se basan en Microsoft Azure Active Directory para los servicios de identidad y directorio.
 
 > [!NOTE]
-> Solo las contraseñas de cuentas de usuario que no están sincronizadas a través de la sincronización de directorios pueden configurarse para que no caduquen. Para obtener más información sobre la sincronización de directorios, consulte [Conectar AD con Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+> Solo las contraseñas para cuentas de usuario que no están sincronizadas mediante sincronización de directorios pueden configurarse toonot expire. Para obtener más información sobre la sincronización de directorios, consulte [Conectar AD con Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 >
 >
 
 ## <a name="set-or-check-password-policies-using-powershell"></a>Establecimiento o comprobación de directivas de contraseña mediante PowerShell
 
-Para empezar, debe [descargar e instalar el módulo de Azure AD PowerShell](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Una vez instalado, puede seguir los pasos siguientes para configurar cada campo.
+tooget iniciado, necesita demasiado[descargar e instalar el módulo de PowerShell de Azure AD de hello](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Una vez que se ha instalado, puede seguir estos pasos hello tooconfigure cada campo.
 
-### <a name="how-to-check-expiration-policy-for-a-password"></a>Comprobación de la directiva de caducidad de una contraseña
-1. Conéctese a Windows PowerShell con sus credenciales de administrador de empresa.
-2. Ejecute uno de los siguientes comandos:
+### <a name="how-toocheck-expiration-policy-for-a-password"></a>La directiva de expiración de toocheck una contraseña
+1. Conectar tooWindows PowerShell con sus credenciales de administrador de empresa.
+2. Ejecute uno de hello siguientes comandos:
 
-   * Para ver si se ha configurado una sola contraseña de usuario para que nunca caduque, ejecute el cmdlet siguiente con el nombre principal de usuario (UPN) (por ejemplo, aprilr@contoso.onmicrosoft.com) o el identificador de usuario del usuario que desea comprobar: `Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
-   * Para ver la configuración "La contraseña nunca caduca" de todos los usuarios, ejecute el siguiente cmdlet: `Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
+   * toosee si la contraseña de un usuario solo está configurada toonever expire, ejecute hello siguiente cmdlet con hello nombre principal de usuario (UPN) (por ejemplo, aprilr@contoso.onmicrosoft.com) u Hola Id. de usuario del usuario de hello desea toocheck:`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
+   * toosee Hola "La contraseña nunca expira" configuración para todos los usuarios, ejecute hello siguiente cmdlet:`Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
 
-### <a name="set-a-password-to-expire"></a>Configuración de una contraseña para que caduque
+### <a name="set-a-password-tooexpire"></a>Establecer una contraseña tooexpire
 
-1. Conéctese a Windows PowerShell con sus credenciales de administrador de empresa.
-2. Ejecute uno de los siguientes comandos:
+1. Conectar tooWindows PowerShell con sus credenciales de administrador de empresa.
+2. Ejecute uno de hello siguientes comandos:
 
-   * Para establecer la contraseña de un usuario para que caduque, ejecute el cmdlet siguiente con el nombre principal de usuario (UPN) o el identificador de usuario del usuario: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
-   * Para establecer las contraseñas de todos los usuarios de la organización de modo que caduquen, use el siguiente cmdlet: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
+   * contraseña de hello tooset de un usuario para que hello contraseña expira, ejecute hello siguiente cmdlet con hello nombre principal de usuario (UPN) u Hola Id. de usuario del usuario de hello:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
+   * las contraseñas de hello tooset de todos los usuarios de la organización de Hola para que caducan, utilice Hola siguiente cmdlet:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
 
-### <a name="set-a-password-to-never-expire"></a>Configure una contraseña para que no caduque nunca
+### <a name="set-a-password-toonever-expire"></a>Conjunto un toonever contraseña expire
 
-1. Conéctese a Windows PowerShell con sus credenciales de administrador de empresa.
-2. Ejecute uno de los siguientes comandos:
+1. Conectar tooWindows PowerShell con sus credenciales de administrador de empresa.
+2. Ejecute uno de hello siguientes comandos:
 
-   * Para configurar la contraseña de un usuario para que nunca caduque, ejecute el cmdlet siguiente con el nombre principal de usuario (UPN) o el identificador de usuario del usuario: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
-   * Para configurar las contraseñas de todos los usuarios de una organización para que nunca caduquen, ejecute el siguiente cmdlet: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
+   * contraseña de Hola de tooset de toonever de un usuario expire, ejecute hello siguiente cmdlet con hello nombre principal de usuario (UPN) u Hola Id. de usuario del usuario de hello:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
+   * las contraseñas de hello tooset de todos los usuarios de hello en una organización toonever expire, ejecute hello siguiente cmdlet:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Los vínculos siguientes proporcionan información adicional sobre el restablecimiento de contraseñas con Azure AD:
+Hola siguientes vínculos proporciona más información sobre el uso de Azure AD de restablecimiento de contraseña
 
 * [**Inicio rápido**](active-directory-passwords-getting-started.md): preparativos para el autoservicio de administración de contraseñas de Azure AD 
 * [**Licencias**](active-directory-passwords-licensing.md): configuración de licencias de Azure AD
-* [**Datos**](active-directory-passwords-data.md): información sobre los datos necesarios y cómo se usan para administrar contraseñas
-* [**Implementación**](active-directory-passwords-best-practices.md): planee e implemente SSPR en sus usuarios mediante las instrucciones que se encuentran aquí.
-* [**Personalización**](active-directory-passwords-customize.md): personalización de la experiencia de SSPR para la empresa
+* [**Datos** ](active-directory-passwords-data.md) : comprender los datos de Hola que es necesarios y cómo se utiliza para la administración de contraseñas
+* [**Implementación** ](active-directory-passwords-best-practices.md) -planear e implementar a los usuarios de Autoservicio tooyour usando la orientación de hello encontrar aquí
+* [**Personalizar** ](active-directory-passwords-customize.md) -personalizar Hola apariencia y funcionamiento del programa Hola a la experiencia de Autoservicio de su empresa.
 * [**Informes**](active-directory-passwords-reporting.md): detectan si los usuarios acceden a la funcionalidad de SSPR, cuándo lo hacen y dónde.
-* [**Profundización técnica**](active-directory-passwords-how-it-works.md): conozca lo que hay detrás para comprender cómo funciona.
-* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? : respuestas a las preguntas que siempre se ha hecho.
-* [**Solución de problemas**](active-directory-passwords-troubleshoot.md): información para resolver problemas habituales de SSPR
+* [**Profundización técnica** ](active-directory-passwords-how-it-works.md) -ir detrás de hello cortina toounderstand cómo funciona
+* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? -Responde tooquestions siempre deseara tooask
+* [**Solucionar problemas de** ](active-directory-passwords-troubleshoot.md) -Obtenga información acerca de cómo problemas comunes de tooresolve que vemos con SSPR

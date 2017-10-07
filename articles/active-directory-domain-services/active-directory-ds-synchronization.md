@@ -14,69 +14,69 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 0c9a9a56e1489ee91fcc332beeef36cdc9c93dc1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9be25b61823a6b031906f3576395782e73831fc4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Sincronización en dominios administrados de Azure AD Domain Services
-En el siguiente diagrama se ilustra cómo funciona la sincronización en dominios administrados de Azure AD Domain Services.
+Hello siguiente diagrama ilustra cómo funciona la sincronización en servicios de dominio de AD de Azure dominios administrados.
 
 ![Tipología de sincronización de Azure AD Domain Services](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-## <a name="synchronization-from-your-on-premises-directory-to-your-azure-ad-tenant"></a>Sincronización del directorio local con el inquilino de Azure AD
-El servicio de sincronización de Azure AD Connect se utiliza para sincronizar cuentas de usuario, pertenencias a grupos y algoritmos hash de credenciales con el inquilino de Azure AD. Los atributos de cuentas de usuario, como el UPN y el SID (identificador de seguridad) local, se sincronizan. Si utiliza Azure AD Domain Services, los hashes heredados de credenciales necesarios para la autenticación NTLM y Kerberos también se sincronizan con el inquilino de Azure AD.
+## <a name="synchronization-from-your-on-premises-directory-tooyour-azure-ad-tenant"></a>Sincronización de su inquilino de tooyour Azure AD de directorio local
+Azure AD Connect sync es toosynchronize usa cuentas de usuario, las pertenencias a grupos e inquilino de tooyour Azure AD de hashes de credenciales. Atributos de usuario de cuentas como Hola UPN y local se sincronizan SID (identificador de seguridad). Si usa servicios de dominio de AD de Azure, los valores de hash de credencial heredado necesarios para la autenticación NTLM y Kerberos son también inquilino de Azure AD tooyour sincronizados.
 
-En caso de que configure la opción de reescritura, los cambios que se producen en el directorio de Azure AD se vuelven a sincronizar con la instancia de Active Directory local. Por ejemplo, si modifica la contraseña con las características de autoservicio de cambio de contraseña de Azure AD, se actualiza la contraseña cambiada en el de dominio de AD local.
+Si configura la escritura diferida, cambios que se producen en su directorio Azure AD se sincronizan tooyour atrás Active Directory local. Por ejemplo, si cambia la contraseña con características de cambio de contraseña de autoservicio de Azure AD, contraseña cambiada de Hola se actualiza en sus instalaciones de dominio de Active Directory.
 
 > [!NOTE]
-> Utilice siempre la versión más reciente de Azure AD Connect para asegurarse de contar con correcciones para todos los errores conocidos.
+> Utilice siempre la versión más reciente de Hola de Azure AD Connect tooensure tiene correcciones para todos los errores conocidos.
 >
 >
 
-## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Sincronización del inquilino de Azure AD con el dominio administrado
-Las cuentas de usuario, las pertenencias a grupos y los algoritmos hash de credenciales se sincronizan desde el inquilino de Azure AD con el dominio administrado de Azure AD Domain Services. Este proceso de sincronización es automático; es decir, no tiene que configurar, supervisar ni administrar este proceso de sincronización. Una vez completada la sincronización inicial de su directorio, suelen transcurrir unos 20 minutos hasta que los cambios realizados en Azure AD se reflejan en el dominio administrado. Este intervalo de sincronización se aplica a cambios de contraseña o a cambios de atributos efectuados en Azure AD.
+## <a name="synchronization-from-your-azure-ad-tenant-tooyour-managed-domain"></a>Sincronización de la tooyour del inquilino de Azure AD administrados dominio
+Las cuentas de usuario, las pertenencias a grupos y códigos hash de credenciales se sincronizan desde su tooyour de inquilino de Azure AD dominio administrado de los servicios de dominio de AD de Azure. Este proceso de sincronización es automático; No es necesario tooconfigure, supervisar y administrar este proceso de sincronización. Una vez completada la sincronización inicial única Hola de su directorio, se tarda aproximadamente 20 minutos para que los cambios realizados en Azure AD toobe refleja normalmente en el dominio administrado. Este intervalo de sincronización aplica los cambios de toopassword o cambia tooattributes realizadas en Azure AD.
 
-Dicho proceso también es, por naturaleza, unidireccional. El dominio administrado es, en gran medida, de solo lectura, excepto para las unidades organizativas personalizadas que cree. Por lo tanto, no podrá realizar cambios en los atributos de usuario, las contraseñas de usuario o las pertenencias a grupos del dominio administrado. Como resultado, no se realiza ningún proceso de sincronización inversa de los cambios realizados en el dominio administrado con el inquilino de Azure AD.
+proceso de sincronización de Hola es también un-bidireccional o unidireccional por naturaleza. El dominio administrado es, en gran medida, de solo lectura, excepto para las unidades organizativas personalizadas que cree. Por lo tanto, no se puede realizar cambios toouser atributos, las contraseñas de usuario o las pertenencias a grupos en dominio administrado Hola. Como resultado, no hay ninguna sincronización inversa de los cambios de su tooyour de espera de dominio administrados inquilino de Azure AD.
 
 ## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>Sincronización en un entorno local de varios bosques
-Muchas organizaciones tienen una infraestructura de identidad local bastante compleja que consta de varios bosques de cuentas. Azure AD Connect permite sincronizar usuarios, grupos y hashes de credenciales de entornos de varios bosques con el inquilino de Azure AD.
+Muchas organizaciones tienen una infraestructura de identidad local bastante compleja que consta de varios bosques de cuentas. Azure AD Connect es compatible con la sincronización de los usuarios, grupos y hashes de credenciales de inquilino de Azure AD tooyour de entornos de varios bosques.
 
-En cambio, el inquilino de Azure AD es un espacio de nombres plano y mucho más sencillo. Si quiere que los usuarios puedan acceder de manera confiable a las aplicaciones protegidas mediante Azure AD, resuelva todos los conflictos de UPN que haya en las cuentas de usuario de los todos los bosques. Los dominios administrados de Azure AD Domain Services guardan un gran parecido con el inquilino de Azure AD. Por lo tanto, observará una estructura plana de unidades organizativas en el dominio administrado. Todos los usuarios y grupos se almacenan en el contenedor AADDC Users (Usuarios de AADDC) con independencia del bosque o dominio local desde el que se sincronizaron. Puede que haya configurado una estructura jerárquica de unidades organizativas en un dominio local. Sin embargo, el dominio administrado sigue teniendo una estructura plana de unidades organizativas.
+En cambio, el inquilino de Azure AD es un espacio de nombres plano y mucho más sencillo. tooenable usuarios tooreliably acceso a las aplicaciones protegidas mediante Azure AD, resuelva los conflictos UPN entre cuentas de usuario en diferentes bosques. Los dominio administrado los servicios de dominio de AD de Azure osos cierre inquilino de Azure AD parecerse tooyour. Por lo tanto, observará una estructura plana de unidades organizativas en el dominio administrado. Todos los usuarios y grupos se almacenan dentro de hello ' AADDC' contenedor, independientemente del dominio local de Hola o desde el que se sincronizan en el bosque. Puede que haya configurado una estructura jerárquica de unidades organizativas en un dominio local. Sin embargo, el dominio administrado sigue teniendo una estructura plana de unidades organizativas.
 
-## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>Exclusiones: los elementos que no se sincronizan con el dominio administrado
-Los siguientes objetos o atributos no se sincronizan con el inquilino de Azure AD o el dominio administrado:
+## <a name="exclusions---what-isnt-synchronized-tooyour-managed-domain"></a>Exclusiones - lo que no está sincronizan el dominio administrado tooyour
+Hello siguientes objetos o atributos no son inquilino de Azure AD tooyour sincronizada o dominio administrado tooyour:
 
-* **Atributos excluidos**: gracias a Azure AD Connect, puede elegir qué atributos no se sincronizarán con el inquilino de Azure AD en el dominio local. Estos atributos excluidos no estarán disponibles en el dominio administrado.
-* **Directivas de grupo**: las directivas de grupo configuradas en el dominio local no se sincronizan con el administrado.
-* **Recurso compartido SYSVOL**: del mismo modo, el contenido del recurso compartido SYSVOL del dominio local no se sincroniza con el administrado.
-* **Objetos de equipo**: los objetos de equipo unidos al dominio local no se sincronizarán con el administrado. Estos equipos no tienen una relación de confianza con el dominio administrado y pertenecen exclusivamente al local. En el dominio administrado, solo encontrará objetos de equipos que se han unido expresamente al dominio administrado.
-* **Atributos SidHistory de usuarios y grupos**: los SID de los grupos y usuarios primarios del dominio local se sincronizan con el administrado. Sin embargo, los atributos SidHistory existentes de usuarios y grupos no se sincronizan desde el dominio local al administrado.
-* **Estructuras de unidades organizativas**: las unidades organizativas definidas en el dominio local no se sincronizan con el administrado. Hay dos unidades organizativas integradas en el dominio administrado. De forma predeterminada, el dominio administrado tiene una estructura plana de unidades organizativas. Sin embargo, puede optar por [crear una unidad organizativa personalizada en el dominio administrado](active-directory-ds-admin-guide-create-ou.md).
+* **Excluir atributos:** puede elegir tooexclude determinados atributos de la sincronización de Azure AD tooyour inquilino de su dominio local mediante Azure AD Connect. Estos atributos excluidos no estarán disponibles en el dominio administrado.
+* **Las directivas de grupo:** las directivas de grupo configuradas en el dominio local no están sincronizados tooyour de dominio administrados.
+* **Recurso compartido SYSVOL:** del mismo modo, contenido de Hola de hello recurso compartido SYSVOL en el dominio local no está sincronizada tooyour de dominio administrados.
+* **Objetos de equipo:** objetos de equipo para el dominio de equipos unidos a un tooyour local no están sincronizados tooyour de dominio administrados. Estos equipos no tienen una relación de confianza con el dominio administrado y pertenecen únicamente a dominio local tooyour. En el dominio administrado, buscar objetos de equipo solo para equipos que tenga toohello explícitamente unido a un dominio administran dominio.
+* **Atributos de SidHistory para usuarios y grupos:** usuario principal de Hola y los SID de su dominio local del grupo principal son dominio administrado tooyour sincronizados. Sin embargo, los atributos SidHistory existentes para usuarios y grupos no se sincronizan desde el dominio local tooyour dominio administrado.
+* **Estructuras de unidades (OU) de organización:** unidades organizativas definidas en el dominio local no se sincronizan dominio administrado tooyour. Hay dos unidades organizativas integradas en el dominio administrado. De forma predeterminada, el dominio administrado tiene una estructura plana de unidades organizativas. Sin embargo puede elegir demasiado[crear una OU personalizada en el dominio administrado](active-directory-ds-admin-guide-create-ou.md).
 
-## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>Modo de sincronización de atributos específicos con el dominio administrado
-En la tabla siguiente se enumeran algunos atributos comunes y se describe cómo se sincronizan con el dominio administrado.
+## <a name="how-specific-attributes-are-synchronized-tooyour-managed-domain"></a>Atributos específicos están sincronizados tooyour de dominio administrados
+Hello en la tabla siguiente enumera algunos atributos comunes y describe cómo están sincronizados tooyour administrado dominio.
 
 | Atributo del dominio administrado | Origen | Notas |
 |:--- |:--- |:--- |
-| UPN |Atributo UPN del usuario del inquilino de Azure AD |El atributo UPN del inquilino de Azure AD se sincroniza tal cual con el dominio administrado. Por lo tanto, la forma más confiable de iniciar sesión en el dominio administrado consiste en usar el UPN. |
-| SAMAccountName |El atributo MailNickname del usuario del inquilino de Azure AD o uno generado automáticamente |El atributo SAMAccountName se obtiene del atributo mailNickname del inquilino de Azure AD. Si varias cuentas de usuario tienen el mismo atributo mailNickname, SAMAccountName se genera automáticamente. Si el prefijo de UPN o el atributo mailNickname del usuario tienen más de 20 caracteres, SAMAccountName se genera automáticamente para cumplir el límite de 20 caracteres de los atributos SAMAccountName. |
+| UPN |Atributo UPN del usuario del inquilino de Azure AD |atributo UPN de Hola de inquilino de Azure AD se sincroniza mientras es dominio tooyour administrado. Por lo tanto, hello toosign de manera más confiable en el dominio administrado tooyour usa el UPN. |
+| SAMAccountName |El atributo MailNickname del usuario del inquilino de Azure AD o uno generado automáticamente |atributo de SAMAccountName de Hello es proceden de un atributo de mailNickname hello en el inquilino de Azure AD. Si dispone de varias cuentas de usuario Hola mismo atributo mailNickname, Hola SAMAccountName es autogenerado. Si hello mailNickname o el prefijo del UPN del usuario tiene más de 20 caracteres, Hola SAMAccountName es autogenerada toosatisfy Hola 20 caracteres límite atributos SAMAccountName. |
 | Contraseñas |Contraseña del usuario del inquilino de Azure AD |Los hashes de credenciales necesarios para la autenticación NTLM o Kerberos (también denominados "credenciales complementarias") se sincronizan desde el inquilino de Azure AD. Si el inquilino de Azure AD es un inquilino sincronizado, estas credenciales se obtienen del dominio local. |
-| SID de los grupos y usuarios primarios |Generado automáticamente |El SID primario de las cuentas de usuarios o grupos se genera automáticamente en el dominio administrado. Este atributo no coincide con el SID de los grupos o usuarios primarios del objeto del dominio de AD local. Esto se debe a que el dominio administrado tiene un espacio de nombres de SID diferente al del dominio local. |
-| Historial de SID de usuarios y grupos |SID de usuarios y grupos primarios locales |El atributo SidHistory de usuarios y grupos del dominio administrado se establece para que coincida con el SID de grupos o usuarios primarios correspondiente del dominio local. Gracias a esta característica, le resultará más sencillo trasladar aplicaciones locales al dominio administrado, ya que no tendrá que volver a incluir los recursos en listas ACL. |
+| SID de los grupos y usuarios primarios |Generado automáticamente |Hola SID principal para las cuentas de usuario o grupo es generado automáticamente en el dominio administrado. Este atributo no coincide con hello usuario/SID de grupo principal del objeto de hello en el entorno local de dominio de Active Directory. Esta falta de coincidencia es porque el dominio administrado hello tiene un espacio de nombres de SID diferente que su dominio local. |
+| Historial de SID de usuarios y grupos |SID de usuarios y grupos primarios locales |Hola SidHistory para usuarios y grupos en el dominio administrado está establecido usuario principal de toomatch Hola correspondiente o SID de grupo en el dominio local. Esta característica ayuda a hacer elevación y-desplazamiento de local de aplicaciones toohello dominio administrado sea más fácil, ya que no es preciso recursos toore ACL. |
 
 > [!NOTE]
-> **Inicie sesión en el dominio administrado usando el formato de UPN**: el atributo SAMAccountName puede generarse automáticamente en algunas cuentas de usuario del dominio administrado. Si varios usuarios tienen el mismo atributo mailNickname o prefijos UPN excesivamente largos, el atributo SAMAccountName para estos usuarios puede generarse automáticamente. Por lo tanto, el formato de SAMAccountName (por ejemplo, CONTOSO100\usuarioJuan) no siempre constituye una manera confiable de iniciar sesión en el dominio. Los atributos SAMAccountName generados automáticamente de los usuarios pueden ser distintos de sus prefijos de UPN. Use el formato UPN (por ejemplo, "joeuser@contoso100.com") para iniciar sesión en el dominio administrado de forma confiable.
+> **Inicie sesión en el dominio administrado toohello con formato UPN de hello:** atributo SAMAccountName de hello puede ser generado automáticamente para algunas cuentas de usuario en el dominio administrado. Si varios usuarios han Hola mismo atributo mailNickname o los usuarios tienen demasiado larga los prefijos UPN, Hola SAMAccountName para estos usuarios puede ser generado automáticamente. Por lo tanto, Hola SAMAccountName formato (por ejemplo, ' CONTOSO100\joeuser') no es siempre un toosign de manera confiable en el dominio toohello. Los atributos SAMAccountName generados automáticamente de los usuarios pueden ser distintos de sus prefijos de UPN. Usar el formato de UPN hello (por ejemplo, 'joeuser@contoso100.com') toosign en toohello administra el dominio de forma confiable.
 >
 >
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Asignación de atributos para cuentas de usuario
-En la tabla siguiente se muestra cómo determinados atributos de objetos de usuario del inquilino de Azure AD se sincronizan con los atributos correspondientes del dominio administrado.
+Hello en la tabla siguiente muestra cómo determinados atributos para objetos de usuario en su inquilino de Azure AD son atributos toocorresponding sincronizada en el dominio administrado.
 
 | Atributo de usuario del inquilino de Azure AD | Atributo de usuario del dominio administrado |
 |:--- |:--- |
-| accountEnabled |userAccountControl (establece o borra el bit ACCOUNT_DISABLED) |
+| accountEnabled |userAccountControl (establece o borra Hola ACCOUNT_DISABLED bits) |
 | city |l |
 | country |co |
 | department |department |
@@ -90,7 +90,7 @@ En la tabla siguiente se muestra cómo determinados atributos de objetos de usua
 | mobile |mobile |
 | objectid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
-| passwordPolicies |userAccountControl (establece o borra el bit DONT_EXPIRE_PASSWORD) |
+| passwordPolicies |userAccountControl (establece o borra Hola DONT_EXPIRE_PASSWORD bits) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
@@ -101,7 +101,7 @@ En la tabla siguiente se muestra cómo determinados atributos de objetos de usua
 | userPrincipalName |userPrincipalName |
 
 ### <a name="attribute-mapping-for-groups"></a>Asignación de atributos de grupos
-En la tabla siguiente se muestra cómo determinados atributos de objetos de grupo del inquilino de Azure AD se sincronizan con los atributos correspondientes del dominio administrado.
+Hello en la tabla siguiente muestra atributos específicos de objetos de grupo en su inquilino de Azure AD son atributos toocorresponding sincronizada en el dominio administrado.
 
 | Atributo de grupo del inquilino de Azure AD | Atributo de grupo del dominio administrado |
 |:--- |:--- |
@@ -113,8 +113,8 @@ En la tabla siguiente se muestra cómo determinados atributos de objetos de grup
 | onPremiseSecurityIdentifier |sidHistory |
 | securityEnabled |groupType |
 
-## <a name="objects-that-are-not-synchronized-to-your-azure-ad-tenant-from-your-managed-domain"></a>Objetos que no se sincronizan con el inquilino de Azure AD desde el dominio administrado
-Tal y como se describió en la sección anterior de este artículo, no se realiza ningún proceso de sincronización en el dominio administrado con el inquilino de Azure AD. Puede optar por [crear una unidad organizativa personalizada](active-directory-ds-admin-guide-create-ou.md) en el dominio administrado. Además, puede crear otros usuarios, grupos, cuentas de servicio o unidades organizativas en estas unidades organizativas personalizadas. Ninguno de los objetos creados en las unidades organizativas personalizadas se vuelven a sincronizar con el inquilino de Azure AD. Estos objetos solo están disponibles para utilizarse en el dominio administrado. Por lo tanto, estos objetos no se pueden ver utilizando los cmdlets de PowerShell de Azure AD, la API Graph o la interfaz de usuario de administración de Azure AD.
+## <a name="objects-that-are-not-synchronized-tooyour-azure-ad-tenant-from-your-managed-domain"></a>Objetos que no están sincronizados a tooyour inquilino de Azure AD desde el dominio administrado
+Tal y como se describe en la sección anterior de este artículo, no hay ninguna sincronización desde su tooyour de espera de dominio administrados inquilino de Azure AD. Puede elegir demasiado[crear una unidad organizativa (UO) personalizado](active-directory-ds-admin-guide-create-ou.md) en el dominio administrado. Además, puede crear otros usuarios, grupos, cuentas de servicio o unidades organizativas en estas unidades organizativas personalizadas. Ninguno de los objetos de hello creados dentro de unidades organizativas personalizadas se sincronizan a inquilino de Azure AD tooyour atrás. Estos objetos solo están disponibles para utilizarse en el dominio administrado. Por lo tanto, estos objetos no son visibles mediante cmdlets de PowerShell de Azure AD, Azure AD Graph API o con la interfaz de usuario de administración de hello Azure AD.
 
 ## <a name="related-content"></a>Contenido relacionado
 * [Características de Azure AD Domain Services](active-directory-ds-features.md)

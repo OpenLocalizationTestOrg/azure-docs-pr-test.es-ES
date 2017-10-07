@@ -1,6 +1,6 @@
 ---
-title: Uso de plantillas de Azure Resource Manager en Azure Stack | Microsoft Docs
-description: "Obtenga información sobre cómo usar plantillas de Azure Resource Manager en Azure Stack para aprovisionar recursos."
+title: plantillas de Azure Resource Manager aaaUse en pila de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse plantillas de Azure Resource Manager en recursos de tooprovision de pila de Azure."
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: helaw
-ms.openlocfilehash: 228e641afefd16edc7b405a2fc1d60184ce41e96
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bcc73756fa712ecff9791301d43d227112be8362
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Uso de plantillas de Administrador de recursos de Azure en Azure Stack
-Las plantillas de Azure Resource Manager implementan y aprovisionan todos los recursos para su aplicación en una única operación coordinada. También se pueden reimplementar plantillas para realizar cambios en los recursos del grupo de recursos.
+Plantillas de administrador de recursos de Azure implementación y aprovisionar todos los recursos de Hola para su aplicación en una única operación coordinada. También puede volver a implementar plantillas toomake cambios toohello recursos en grupo de recursos de Hola.
 
-Estas plantillas se pueden implementar con el portal de Microsoft Azure Stack, PowerShell, con la línea de comandos y Visual Studio.
+Estas plantillas se pueden implementar con el portal de Microsoft Azure pila hello, PowerShell, línea de comandos de Hola y Visual Studio.
 
-Las plantillas de inicio rápido siguientes están disponibles en [GitHub](http://aka.ms/azurestackgithub):
+Después de plantillas de inicio rápido de Hello está disponible en [GitHub](http://aka.ms/azurestackgithub):
 
 ## <a name="deploy-sharepoint-non-high-availability"></a>Implementación de SharePoint (sin alta disponibilidad)
-Use la extensión DSC de PowerShell para crear una granja de servidores de SharePoint 2013 que incluya los siguientes recursos:
+Usar Hola granja de toocreate un servidor de SharePoint 2013 de extensión de DSC de PowerShell que incluye Hola recursos siguientes:
 
 * Una red virtual
 * Tres cuentas de almacenamiento
@@ -38,7 +38,7 @@ Use la extensión DSC de PowerShell para crear una granja de servidores de Share
 * Una máquina virtual configurada como una granja de servidores de SharePoint 2013 de la máquina
 
 ## <a name="deploy-ad-non-high-availability"></a>Implementación de AD (sin alta disponibilidad)
-Use la extensión DSC de PowerShell para crear un servidor de controlador de dominio AD que incluya los siguientes recursos:
+Utilice toocreate de extensión de DSC de PowerShell de hello un servidor de controlador de dominio de AD que incluye Hola recursos siguientes:
 
 * Una red virtual
 * Una cuenta de almacenamiento
@@ -46,7 +46,7 @@ Use la extensión DSC de PowerShell para crear un servidor de controlador de dom
 * Una máquina virtual configurada como controlador de dominio para un nuevo bosque con un único dominio
 
 ## <a name="deploy-adsql-non-high-availability"></a>Implementación de AD/SQL (sin alta disponibilidad)
-Use la extensión DSC de PowerShell para crear un servidor independiente de SQL Server 2014 que incluya los siguientes recursos:
+Usar Hola DSC de PowerShell extensión toocreate un SQL Server 2014 server independiente que incluye Hola recursos siguientes:
 
 * Una red virtual
 * Dos cuentas de almacenamiento
@@ -55,7 +55,7 @@ Use la extensión DSC de PowerShell para crear un servidor independiente de SQL 
 * Una máquina virtual configurada como un servidor independiente de SQL Server 2014
 
 ## <a name="vm-dsc-extension-azure-automation-pull-server"></a>Extensión DSC de máquina virtual para un servidor de extracción de Automatización de Azure
-Utilice la extensión de DSC de PowerShell para configurar Administrador de configuración Local (LCM) de una máquina virtual existente y registrarlo en un servidor de extracción de DSC de la cuenta de Automatización de Azure.
+Utilice tooconfigure de extensión de DSC de PowerShell de hello una máquina virtual existente Administrador de configuración Local (LCM) y registrar tooan servidor de extracción de DSC de Azure automatización de la cuenta.
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>Creación de una máquina virtual desde una imagen de usuario
 Cree una máquina virtual desde una imagen de usuario personalizada. Esta plantilla también implementa una red virtual (con DNS), una dirección IP pública y una interfaz de red.
@@ -64,10 +64,10 @@ Cree una máquina virtual desde una imagen de usuario personalizada. Esta planti
 Implemente una máquina virtual de Windows que incluya una red virtual (con DNS), una dirección IP pública y una interfaz de red.
 
 ## <a name="cancel-a-running-template-deployment"></a>Cancelación de una implementación de la plantilla en ejecución
-Para cancelar la implementación de una plantilla en ejecución, use el cmdlet `Stop-AzureRmResourceGroupDeployment` de PowerShell.
+toocancel una implementación de plantilla de ejecución, utilice hello `Stop-AzureRmResourceGroupDeployment` cmdlet de PowerShell.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Implementación de plantillas con el portal](azure-stack-deploy-template-portal.md)
+[Implementación de plantillas con el portal de Hola](azure-stack-deploy-template-portal.md)
 
 [Información general sobre Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 

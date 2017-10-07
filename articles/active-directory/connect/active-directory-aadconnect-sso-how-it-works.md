@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: funcionamiento del inicio de sesión único de conexión directa | Microsoft Docs"
-description: "En este artículo se describe el funcionamiento de la característica Inicio de sesión único de conexión directa de Azure Active Directory."
+description: "Este artículo describe cómo funciona la característica de Azure Active Directory sin problemas Single Sign-On Hola."
 services: active-directory
 keywords: "qué es Azure AD Connect, instalar Active Directory, componentes necesarios para Azure AD, SSO, inicio de sesión único"
 documentationcenter: 
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: billmath
-ms.openlocfilehash: f0bcbdb03fbb70ff91ac3a56974a88eb1b26c245
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 17ce35b32832d241068ab878cf7aac42deab74ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Inicio de sesión único de conexión directa de Azure Active Directory: información técnica detallada
 
-En este artículo se proporcionan los detalles técnicos sobre cómo funciona la característica Inicio de sesión único de conexión directa (SSO de conexión directa) de Azure Active Directory.
+Este artículo proporciona detalles técnicos en cómo funciona la característica de Azure Active Directory sin problemas Single Sign-On (SSO sin problemas) Hola.
 
 >[!IMPORTANT]
->La característica de SSO de conexión directa está actualmente en versión preliminar.
+>característica de SSO sin problemas de Hello está actualmente en vista previa.
 
 ## <a name="how-does-seamless-sso-work"></a>¿Cómo funciona SSO de conexión directa?
 
-Esta sección tiene dos partes:
-1. La configuración de la característica SSO de conexión directa.
+En esta sección tiene tooit de dos partes:
+1. programa de instalación de Hola de característica de hello SSO sin problemas.
 2. Funcionamiento de una transacción de inicio de sesión de usuario único con SSO de conexión directa.
 
 ### <a name="how-does-set-up-work"></a>¿Cómo funciona la configuración?
 
-SSO de conexión directa se habilita a través de Azure AD Connect tal como se muestra [aquí](active-directory-aadconnect-sso-quick-start.md). Cuando se habilita la característica, se producen los pasos siguientes:
+SSO de conexión directa se habilita a través de Azure AD Connect tal como se muestra [aquí](active-directory-aadconnect-sso-quick-start.md). Al habilitar la característica de hello, se produce Hola pasos:
 - Una cuenta de equipo denominada `AZUREADSSOACCT` (que representa a Azure AD) se crea en la instancia local de Active Directory (AD).
-- La clave de descifrado de Kerberos de la cuenta de equipo se comparte de manera segura con Azure AD.
-- Además, se crean dos nombres de entidad de seguridad de servicio (SPN) de Kerberos que representan las dos direcciones URL que se usan en el inicio de sesión de Azure AD.
+- clave de descifrado de Kerberos de la cuenta de equipo de Hola se comparte de forma segura con Azure AD.
+- Además, los nombres de entidad de seguridad de servicio (SPN) dos de Kerberos se crean toorepresent dos direcciones URL que se usan durante el inicio de sesión en Azure AD.
 
 >[!NOTE]
-> La cuenta de equipo y los SPN de Kerberos se crean en cada bosque de AD que sincronice con Azure AD (a través de Azure AD Connect) y para cuyos usuarios desee SSO de conexión directa. Migre la cuenta de equipo `AZUREADSSOACCT` a una unidad organizativa (UO) donde se almacenen otras cuentas de equipo para garantizar que se administre de la misma manera y que no se elimine.
+> cuenta de equipo de Hola y Hola SPN de Kerberos se crean en cada bosque de AD sincronizar tooAzure AD (mediante Azure AD Connect) y para cuyos usuarios desea SSO sin problemas. Mover hello `AZUREADSSOACCT` tooan de cuenta de equipo unidad organizativa (OU) donde otras cuentas de equipo son tooensure almacenado que se administran en Hola misma manera y no se elimina.
 
 >[!IMPORTANT]
->Se recomienda encarecidamente [sustituir la clave de descifrado de Kerberos](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account) de la cuenta de equipo de `AZUREADSSOACCT` al menos cada 30 días.
+>Es muy recomendable que se [clave de descifrado de hello Kerberos se sustituyen](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account) de hello `AZUREADSSOACCT` cuenta de equipo al menos cada 30 días.
 
 ### <a name="how-does-sign-in-with-seamless-sso-work"></a>¿Cómo funciona el inicio de sesión con SSO de conexión directa?
 
-Una vez que se completa la instalación, SSO de conexión directa funcionan del mismo modo que cualquier otro inicio de sesión que usa la autenticación integrada de Windows (IWA). El flujo es el siguiente:
+Una vez completada la instalación de hello, SSO sin problemas funciona Hola mismo modo que con cualquier otra sesión que usa autenticación integrada de Windows (IWA). flujo de Hello es como sigue:
 
-1. El usuario intenta acceder a una aplicación (por ejemplo, Outlook Web App en https://outlook.office365.com/owa/) desde un dispositivo corporativo unido a un dominio dentro de la red corporativa.
-2. Si el usuario todavía no inicia sesión, se le redirige a la página de inicio de sesión de Azure AD.
+1. usuario de Hello intente tooaccess una aplicación (por ejemplo, Hola Outlook Web App - https://outlook.office365.com/owa/) desde un dispositivo corporativo Unidos a un dominio dentro de su red corporativa.
+2. Si el usuario de hello no ha iniciado ya sesión, usuario de hello es página de inicio de sesión de Azure AD de toohello redirigida.
 
   >[!NOTE]
-  >Si la solicitud de inicio de sesión de Azure AD incluye un parámetro `domain_hint` (que identifica al inquilino, por ejemplo, contoso.onmicrosoft.com) o `login_hint` (que identifica al usuario, por ejemplo, user@contoso.onmicrosoft.com o user@contoso.com) se omite el paso 2.
+  >Si una solicitud de inicio de sesión hello Azure AD incluye un `domain_hint` (identificar su inquilino: por ejemplo, contoso.onmicrosoft.com) o `login_hint` (identificación de usuario de hello - por ejemplo, user@contoso.onmicrosoft.com o user@contoso.com) se omite el parámetro y, a continuación, paso 2.
 
-3. El usuario escribe su nombre de usuario en la página de inicio de sesión de Azure AD.
-4. Con JavaScript en segundo plano, Azure AD desafía al explorador, a través de una respuesta 401 No autorizado, a que proporcione un vale de Kerberos.
-5. A su vez, el explorador solicita un vale desde Active Directory para la cuenta de equipo `AZUREADSSOACCT` (que representa a Azure AD).
-6. Active Directory busca la cuenta de equipo y devuelve al explorador un vale Kerberos cifrado con el secreto de la cuenta de equipo.
-7. El explorador reenvía el vale de Kerberos que adquirió desde Active Directory a Azure AD (en una de las [direcciones URL de Azure AD que se agregó previamente a la configuración de la zona de intranet del explorador](active-directory-aadconnect-sso-quick-start.md#step-3-roll-out-the-feature)).
-8. Azure AD descifra el vale de Kerberos, que incluye la identidad del usuario que inició sesión en el dispositivo corporativo, mediante la clave compartida previamente.
-9. Después de la evaluación, Azure AD devuelve un token a la aplicación o le pide al usuario que realice pruebas adicionales, como la autenticación multifactor.
-10. Si el inicio de sesión del usuario se realiza correctamente, el usuario puede acceder a la aplicación.
+3. tipos de usuario de Hello en su nombre de usuario en la página de inicio de sesión de hello Azure AD.
+4. Usar JavaScript en segundo plano de hello, Azure AD desafíos de explorador hello, a través de una respuesta 401 no autorizado, tooprovide un vale de Kerberos.
+5. Explorador de Hello, a su vez, solicita un vale desde Active Directory para hello `AZUREADSSOACCT` cuenta de equipo (representado por Azure AD).
+6. Active Directory localiza la cuenta de equipo de Hola y devuelve un explorador de toohello de vale de Kerberos cifrado con el secreto de la cuenta de equipo de Hola.
+7. Explorador de Hello reenvía el vale de Kerberos de hello obtenido de Active Directory tooAzure AD (en uno de hello [las direcciones URL de Azure AD agregan previamente la configuración de zona de Intranet del explorador toohello](active-directory-aadconnect-sso-quick-start.md#step-3-roll-out-the-feature)).
+8. Azure AD descifra Hola vale de Kerberos, que incluye Hola identidad de hello usuario inició sesión en el dispositivo corporativo de hello, utilizaba anteriormente Hola clave compartida.
+9. Después de la evaluación, Azure AD devuelve una aplicación de símbolo (token) toohello atrás o solicita Hola usuario tooperform pruebas adicionales, como la autenticación multifactor.
+10. Si el inicio de sesión de usuario de hello es correcta, usuario de Hola es tooaccess capaz de aplicación de hello.
 
-En el diagrama siguiente se ilustran todos los componentes y los pasos implicados.
+Hello siguiente diagrama muestra todos los componentes de Hola y pasos Hola.
 
 ![Inicio de sesión único de conexión directa](./media/active-directory-aadconnect-sso/sso2.png)
 
-SSO de conexión directa es una característica oportunista, lo que significa que, si se genera un error, la experiencia de inicio de sesión se revierte a su comportamiento habitual, es decir, el usuario deberá escribir su contraseña para iniciar sesión.
+SSO sin problemas es oportunista, lo que significa que si se produce un error, experiencia de inicio de sesión de hello vuelve comportamiento normal tooits: es decir, Hola su toosign de contraseña en el usuario tiene tooenter.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- [**Inicio rápido** ](active-directory-aadconnect-sso-quick-start.md): desarrollo y ejecución de SSO de conexión directa de Azure AD.
-- [**Preguntas más frecuentes**](active-directory-aadconnect-sso-faq.md): obtenga respuestas a las preguntas más frecuentes.
-- [**Solución de problemas**](active-directory-aadconnect-troubleshoot-sso.md): aprenda a resolver problemas comunes de esta característica.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): para la tramitación de solicitudes de nuevas características.
+- [**Inicio rápido**](active-directory-aadconnect-sso-quick-start.md): desarrollo y ejecución de SSO de conexión directa de Azure AD.
+- [**Preguntas más frecuentes** ](active-directory-aadconnect-sso-faq.md) -responde toofrequently preguntas más frecuentes.
+- [**Solucionar problemas de** ](active-directory-aadconnect-troubleshoot-sso.md) -Obtenga información acerca de cómo emite tooresolve común con la característica de Hola.
+- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): para la tramitación de solicitudes de nuevas características.

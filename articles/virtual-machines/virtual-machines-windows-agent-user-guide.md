@@ -1,5 +1,5 @@
 ---
-title: "Información general del agente de máquina virtual de Azure | Microsoft Docs"
+title: "Introducción al agente de máquina Virtual aaaAzure | Documentos de Microsoft"
 description: "Información general del agente de máquina virtual de Azure"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: nepeters
-ms.openlocfilehash: accfd5f0fec69175e584528ff9f6db66402cb89e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 178766925673419cd661dbb460b8427bbfaf54e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Información general del agente de máquina virtual de Azure
 
-El agente de máquina virtual de Microsoft Azure (agente VM) es un proceso ligero y seguro que administra la interacción de VM con el controlador de tejido de Azure. El agente de VM tiene un rol principal que consiste en habilitar y ejecutar extensiones de máquina virtual de Azure. Las extensiones de VM habilitan la configuración posterior a la implementación de máquinas virtuales, como la instalación y configuración de software. Las extensiones de máquina virtual también habilitan características de recuperación, como el restablecimiento de la contraseña administrativa de una máquina virtual. Sin el agente de VM de Azure, no se pueden ejecutar las extensiones de máquina virtual.
+Hola agente de máquina Virtual de Microsoft Azure (agente de VM) es un proceso protegido, ligero que administra la interacción de VM con hello controlador de tejido de Azure. Hola agente de máquina virtual tiene un rol principal en habilitar y ejecutar las extensiones de máquina virtual de Azure. Las extensiones de VM habilitan la configuración posterior a la implementación de máquinas virtuales, como la instalación y configuración de software. Extensiones de máquina virtual también habilitar características de recuperación como restablecer la contraseña administrativa de Hola de una máquina virtual. Sin Hola agente de máquina virtual de Azure, no se puede ejecutar las extensiones de máquina virtual.
 
-En este documento se describe la instalación, detección y eliminación del agente de máquina virtual de Azure.
+Este documento describe la instalación, la detección y eliminación de hello agente de máquina Virtual de Azure.
 
-## <a name="install-the-vm-agent"></a>Instalar el agente de VM
+## <a name="install-hello-vm-agent"></a>Instalar agente de máquina virtual de Hola
 
 ### <a name="azure-gallery-image"></a>Imagen de la galería de Azure
 
-El agente de VM de Azure se instala de forma predeterminada en cualquier máquina virtual Windows implementada a partir de una imagen de la galería de Azure. Al implementar una imagen de la galería de Azure desde el portal, PowerShell, la interfaz de la línea de comandos o una plantilla de Azure Resource Manager, también se instalará el agente de VM de Azure. 
+Hello Azure VM Agent está instalado de forma predeterminada en cualquier máquina virtual de Windows implementada a partir de una imagen de la Galería de Azure. Al implementar una imagen de la Galería de Azure de hello Portal, PowerShell, interfaz de línea de comandos o una plantilla de Azure Resource Manager, instalarse hello que también es el agente de máquina virtual de Azure. 
 
 ### <a name="manual-installation"></a>Instalación manual
 
-El agente de VM de Windows puede instalarse manualmente mediante un paquete de Windows Installer. La instalación manual puede ser necesaria cuando se crea una imagen de máquina virtual personalizada que se implementará en Azure. Para instalar manualmente el agente de VM de Windows, descargue el instalador del agente de VM desde esta ubicación de [descarga del agente de VM de Microsoft Azure](http://go.microsoft.com/fwlink/?LinkID=394789). 
+agente de máquina virtual de Windows Hello puede instalarse manualmente mediante un paquete de Windows installer. La instalación manual puede ser necesaria cuando se crea una imagen de máquina virtual personalizada que se implementará en Azure. Hola de toomanually instalar agente de máquina virtual de Windows, descargue el instalador de agente de máquina virtual de Hola desde esta ubicación [descarga del agente de Windows Azure VM](http://go.microsoft.com/fwlink/?LinkID=394789). 
 
-El agente de VM se puede instalar haciendo doble clic en el archivo de Windows Installer. Para una instalación automatizada o desatendida del agente de VM, ejecute el siguiente comando.
+Hola agente de máquina virtual se puede instalar haciendo doble clic en el archivo de instalador de windows hello. Para una instalación desatendida o automatizada de agente de máquina virtual de Hola, ejecute hello siguiente comando.
 
 ```cmd
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
 
-## <a name="detect-the-vm-agent"></a>Detección del agente de VM
+## <a name="detect-hello-vm-agent"></a>Detectar Hola agente de máquina virtual
 
 ### <a name="powershell"></a>PowerShell
 
-El módulo de PowerShell de Azure Resource Manager puede utilizarse para recuperar información sobre Azure Virtual Machines. La ejecución de `Get-AzureRmVM` devuelve una gran cantidad de información que incluye el estado de aprovisionamiento para el agente de VM de Azure.
+módulo de PowerShell de administrador de recursos de Azure de Hello puede ser usado tooretrieve información acerca de máquinas virtuales de Azure. Ejecuta `Get-AzureRmVM` devuelve una gran cantidad de información incluidas Hola Hola agente de máquina virtual de Azure en el estado de aprovisionamiento.
 
 ```PowerShell
 Get-AzureRmVM
 ```
 
-Lo siguiente es solo un subconjunto de la salida `Get-AzureRmVM`. Observe la propiedad `ProvisionVMAgent` anidada dentro de `OSProfile`. Esta propiedad se puede utilizar para determinar si el agente de VM se ha implementado en la máquina virtual.
+Hola siguiente es un subconjunto de hello `Get-AzureRmVM` salida. Hola aviso `ProvisionVMAgent` propiedad anidada dentro de `OSProfile`, esta propiedad puede ser usado toodetermine si agente de máquina virtual de Hola se ha implementado toohello virtual machine.
 
 ```PowerShell
 OSProfile                  :
@@ -64,7 +64,7 @@ OSProfile                  :
     EnableAutomaticUpdates : True
 ```
 
-El siguiente script se puede utilizar para devolver una lista concisa de nombres de máquina virtual y el estado del agente de VM.
+Hola siguiente secuencia de comandos puede ser tooreturn usa una lista concisa de nombres de máquina virtual y el estado de Hola de hello agente de máquina virtual.
 
 ```PowerShell
 $vms = Get-AzureRmVM
@@ -77,8 +77,8 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>Detección manual
 
-Cuando inicia sesión en una VM de Windows Azure, el administrador de tareas se puede usar para examinar los procesos en ejecución. Para comprobar el agente de VM de Azure, abra el Administrador de tareas > haga clic en la pestaña Detalles y busque un nombre de proceso `WindowsAzureGuestAgent.exe`. La presencia de este proceso indica que el agente de VM está instalado.
+Cuando se registran en tooa VM de Windows Azure, el Administrador de tareas puede ser usado tooexamine procesos en ejecución. toocheck para hello agente de máquina virtual de Azure, abra el Administrador de tareas > haga clic en la ficha de detalles de Hola y busque un nombre de proceso `WindowsAzureGuestAgent.exe`. presencia de Hola de este proceso indica que Hola VM agent esté instalado.
 
-## <a name="upgrade-the-vm-agent"></a>Actualización del agente de VM
+## <a name="upgrade-hello-vm-agent"></a>Actualizar Hola agente de máquina virtual
 
-El agente de VM de Azure para Windows se actualiza automáticamente. A medida que se implementan nuevas máquinas virtuales en Azure, reciben el agente de VM más reciente. Las imágenes de VM personalizadas se deben actualizar manualmente para que incluya el nuevo agente de VM.
+Agente para Windows de Hello Azure VM se actualiza automáticamente. Como nuevas máquinas virtuales implementada tooAzure, recibirán el agente de máquina virtual más reciente de Hola. Imágenes de máquina virtual personalizadas deben ser agente tooinclude actualizadas manualmente Hola de nueva máquina virtual.

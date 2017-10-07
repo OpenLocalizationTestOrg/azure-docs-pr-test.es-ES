@@ -42,7 +42,7 @@
 ## Configuración
 ### Las tablas de Azure
 #### [Generador de perfiles](app-insights-profiler.md)
-#### [Habilitar el generador de perfiles](enable-profiler-cloud-services.md)
+#### [Habilitar Hola generador de perfiles](enable-profiler-cloud-services.md)
 #### [Diagnóstico](app-insights-azure-diagnostics.md)
 #### [Vistas previas](app-insights-previews.md)
 
@@ -130,7 +130,7 @@
 ## Exportación
 ### [Exportación continua](app-insights-export-telemetry.md)
 ### [Modelo de exportación de datos](app-insights-export-data-model.md)
-### [Exportación a Power BI](app-insights-export-power-bi.md)
+### [Exportar tooPower BI](app-insights-export-power-bi.md)
 
 ## Protección
 ### [Recopilación, retención y almacenamiento de datos](app-insights-data-retention-privacy.md)

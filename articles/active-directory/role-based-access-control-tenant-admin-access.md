@@ -1,6 +1,6 @@
 ---
-title: "Elevación del acceso para administradores de inquilinos - Azure AD | Microsoft Docs"
-description: En este tema se describen los roles integrados para el control de acceso basado en roles (RBAC).
+title: "administración de aaaTenant elevar acceso - Azure AD | Documentos de Microsoft"
+description: Este tema describe Hola integrada en roles para el control de acceso basado en roles (RBAC).
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andredm
-ms.openlocfilehash: bf64a92b359a6f68d84fa5ee17eda64ed6371990
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7996f2af3277dc40e2a1766cc4a7862a2399cdef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Elevación del acceso como administrador de inquilinos con Control de acceso basado en rol
 
-El control de acceso basado en rol ayuda a los administradores de inquilinos a obtener elevaciones temporales de acceso para que puedan conceder permisos superiores a lo normal. Un administrador de inquilinos puede elevarse el permiso así mismo al rol de administrador de acceso de usuario cuando sea necesario. Ese rol otorga al administrador de inquilinos permisos para concederse a sí mismo otros roles en el ámbito "/".
+El control de acceso basado en rol ayuda a los administradores de inquilinos a obtener elevaciones temporales de acceso para que puedan conceder permisos superiores a lo normal. Un administrador de inquilinos puede elevar su propio rol de administrador de acceso de usuario de toohello cuando sea necesario. Ese rol otorga hello toogrant de permisos de administrador de inquilinos mismo u otros roles en hello ámbito "/".
 
-Esta característica es importante porque permite al administrador de inquilinos ver todas las suscripciones que existen en una organización. También permite a las aplicaciones de automatización (por ejemplo, facturación y auditoría) tener acceso a todas las suscripciones y proporcionar una vista precisa del estado de la organización en la administración de recursos o de facturación.  
+Esta característica es importante porque permite a inquilino hello toosee administrador que todos Hola suscripciones que existen en una organización. También permite automatización aplicaciones (por ejemplo, facturación y auditoría) tooaccess todas las suscripciones de Hola y proporcionar una vista precisa del estado de Hola de organización de hello para la administración de activos o de facturación.  
 
-## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>Uso de elevateAccess para ofrecer acceso de inquilino
+## <a name="how-toouse-elevateaccess-toogive-tenant-access"></a>Cómo toouse elevateAccess toogive inquilinos acceso
 
-El proceso básico funciona con los siguientes pasos:
+proceso básico de Hello funciona con hello pasos:
 
-1. Mediante REST, llame a *elevateAccess*, que le concede el rol de administrador de acceso de usuario en el ámbito "/".
+1. Con REST, llame a *elevateAccess*, que concede Hola rol de administrador de acceso de usuario en "/" definir el ámbito.
 
     ```
     POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
     ```
 
-2. Cree una [asignación de roles](/rest/api/authorization/roleassignments) para asignar cualquier rol en cualquier ámbito. En el ejemplo siguiente se muestran las propiedades para asignar el rol de lector en el ámbito "/":
+2. Crear un [asignación de roles](/rest/api/authorization/roleassignments) tooassign cualquier rol en cualquier ámbito. Hola siguiente ejemplo muestra propiedades de Hola para asignar Hola rol lector en "/" ámbito:
 
     ```
     { "properties":{
@@ -55,17 +55,17 @@ El proceso básico funciona con los siguientes pasos:
 4. Revoque sus privilegios de administrador de accesos de usuario hasta que se vuelva a necesitar.
 
 
-## <a name="how-to-undo-the-elevateaccess-action"></a>Deshacer la acción elevateAccess
+## <a name="how-tooundo-hello-elevateaccess-action"></a>¿Cómo tooundo Hola elevateAccess acción
 
-Cuando se llama a *elevateAccess*, se crea una asignación de roles para usted mismo, por lo que para revocar esos privilegios debe eliminar la asignación.
+Cuando se llama a *elevateAccess* crear una asignación de roles por sí mismo, por lo que toorevoke los privilegios necesita toodelete Hola asignación.
 
-1.  Llame a [GET roleDefinitions](/rest/api/authorization/roledefinitions#RoleDefinitions_Get), donde roleName = Administrador de accesos de usuario para determinar el GUID del nombre del rol de administrador de accesos de usuario. La respuesta debería tener este aspecto:
+1.  Llame a [roleDefinitions GET](/rest/api/authorization/roledefinitions#RoleDefinitions_Get) donde roleName = toodetermine de administrador de acceso de usuario Hola nombre GUID del rol de administrador de acceso de usuario de Hola. respuesta de Hello debería tener este aspecto:
 
     ```
     {"value":[{"properties":{
     "roleName":"User Access Administrator",
     "type":"BuiltInRole",
-    "description":"Lets you manage user access to Azure resources.",
+    "description":"Lets you manage user access tooAzure resources.",
     "assignableScopes":["/"],
     "permissions":[{"actions":["*/read","Microsoft.Authorization/*","Microsoft.Support/*"],"notActions":[]}],
     "createdOn":"0001-01-01T08:00:00.0000000Z",
@@ -78,9 +78,9 @@ Cuando se llama a *elevateAccess*, se crea una asignación de roles para usted m
     "nextLink":null}
     ```
 
-    Guarde el GUID del parámetro *name*, en este caso **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**.
+    Guardar Hola GUID de hello *nombre* parámetro, en este caso **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**.
 
-2. Llame a [GET roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_Get), donde principalId = su propia ObjectId. Esto muestra todas las asignaciones en el inquilino. Busque aquella donde el ámbito es "/" y el RoleDefinitionId termina con el GUID del nombre de rol que encontró en el paso 1. La asignación de roles debería tener este aspecto:
+2. Llame a [GET roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_Get), donde principalId = su propia ObjectId. Esta acción muestra todas las asignaciones de sus inquilino de Hola. Busque Hola uno donde hello ámbito es "/" y hello RoleDefinitionId termina con el rol de hello nombre GUID que se encuentra en el paso 1. asignación de roles de Hello debería tener este aspecto:
 
     ```
     {"value":[{"properties":{
@@ -97,12 +97,12 @@ Cuando se llama a *elevateAccess*, se crea una asignación de roles para usted m
     "nextLink":null}
     ```
 
-    Una vez más, guarde el GUID del parámetro *name*, en este caso **e7dd75bc-06f6-4e71-9014-ee96a929d099**.
+    Una vez más, guardar Hola GUID de hello *nombre* parámetro, en este caso **e7dd75bc-06f6-4e71-9014-ee96a929d099**.
 
-3. Por último, llame a [DELETE roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_DeleteById), donde roleAssignmentId = el GUID del nombre que encontró en el paso 2.
+3. Por último, llame a [roleAssignments DELETE](/rest/api/authorization/roleassignments#RoleAssignments_DeleteById) donde roleAssignmentId = Hola nombre GUID que se encuentra en el paso 2.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 - Obtener más información sobre la [administración del control de acceso basado en rol con REST](role-based-access-control-manage-access-rest.md)
 
-- [Administrar asignaciones de acceso](role-based-access-control-manage-assignments.md) en Azure Portal
+- [Administrar asignaciones de acceso](role-based-access-control-manage-assignments.md) Hola portal de Azure

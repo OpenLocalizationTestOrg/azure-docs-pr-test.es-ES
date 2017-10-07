@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con DocuSign | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y DocuSign."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y DocuSign."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,139 +13,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 29c99fdf39d366df90abc070f7b836320935035c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e4ef40b8f5af20d811d8d806d2bd7e2039c55052
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Tutorial: Integración de Azure Active Directory con DocuSign
 
-En este tutorial, obtendrá información sobre cómo integrar DocuSign con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate DocuSign con Azure Active Directory (Azure AD).
 
-La integración de DocuSign con Azure AD le proporciona las siguientes ventajas:
+Integración de DocuSign con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a DocuSign.
-- Puede permitir que los usuarios inicien sesión automáticamente en DocuSign (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooDocuSign
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooDocuSign (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con DocuSign, necesita los siguientes elementos:
+integración de Azure AD con DocuSign tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en DocuSign
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Adición de DocuSign desde la galería
+1. Agregar DocuSign desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-docusign-from-the-gallery"></a>Adición de DocuSign desde la galería
-Para configurar la integración de DocuSign en Azure AD, deberá agregar DocuSign desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-docusign-from-hello-gallery"></a>Agregar DocuSign desde la Galería de Hola
+integración de hello tooconfigure de DocuSign en Azure AD, deberá tooadd DocuSign de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar DocuSign desde la galería, realice los pasos siguientes:**
+**tooadd DocuSign de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola ** [portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. Haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo de Hola.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **DocuSign**.
+4. En el cuadro de búsqueda de hello, escriba **DocuSign**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_search.png)
 
-5. En el panel de resultados, seleccione **DocuSign** y luego haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **DocuSign**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con DocuSign con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de DocuSign para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de DocuSign.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en DocuSign es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en DocuSign debe toobe establecido.
 
-Para establecer esta relación de vínculo, se asigna el valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en DocuSign.
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en DocuSign.
 
-Para configurar y probar el inicio de sesión único de Azure AD con DocuSign, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con DocuSign, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de DocuSign](#creating-a-docusign-test-user)**: para tener un homólogo de Britta Simon en DocuSign que esté vinculado a la representación de ella en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on) ** -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user) ** -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba de DocuSign](#creating-a-docusign-test-user) ** -toohave un equivalente de Britta Simon en DocuSign que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on) ** -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en la aplicación DocuSign.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de DocuSign.
 
-**Para configurar el inicio de sesión único de Azure AD con DocuSign y, realice los pasos siguientes:**
+**inicio de sesión único en tooconfigure Azure AD con DocuSign, siga Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación **DocuSign**, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **DocuSign** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_samlbase.png)
 
-3. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
+3. En hello **el certificado de firma de SAML** sección, haga clic en **certificado (Base 64)** y, a continuación, guarde el archivo de certificado en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_certificate.png) 
 
-4. En la sección **Configuración de DocuSign** de Azure Portal, haga clic en **Configure DocuSign** (Configurar DocuSign) para abrir la ventana de configuración de inicio de sesión. Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.
+4. En hello **configuración de DocuSign** sección del portal de Azure, haga clic en **DocuSign configurar** ventana tooopen configurar inicio de sesión. Hola copia **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
     
     ![Configurar inicio de sesión único](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_configure.png)
 
-5. En otra ventana del explorador web, inicie sesión en el **Portal de administración de DocuSign** como administrador.
+5. En una ventana del explorador web diferente, inicio de sesión tooyour **portal de administración de DocuSign** como administrador.
 
-6. En el menú de navegación de la izquierda, haga clic en **Domains**(Dominios).
+6. En el menú de navegación de Hola Hola izquierda, haga clic en **dominios**.
    
     ![Configuración del inicio de sesión único][51]
 
-7. En el panel derecho, haga clic en **Claim Domain**(Reclamar dominio).
+7. En el panel derecho de hello, haga clic en **notificación dominio**.
    
     ![Configuración del inicio de sesión único][52]
 
-8. En el cuadro de diálogo **Claim a domain** (Reclamar un dominio), en el cuadro de texto **Domain Name** (Nombre de dominio), escriba el dominio de la compañía y haga clic en **Claim** (Reclamar). Asegúrese de que comprueba el dominio y que su estado es activo.
+8. En hello **de notificación de un dominio** cuadro de diálogo, en hello **nombre de dominio** cuadro de texto, escriba el dominio de su empresa y, a continuación, haga clic en **notificación**. Asegúrese de comprobar el dominio de Hola y Hola estado está activo.
    
     ![Configuración del inicio de sesión único][53]
 
-9. En el menú de la izquierda, haga clic en **Identity Providers**  
+9. En el menú en el lado izquierdo de hello, haga clic en **proveedores de identidades**  
    
     ![Configuración del inicio de sesión único][54]
-10. En el panel derecho, haga clic en **Add Identity Provider**(Agregar proveedor de identidades). 
+10. En el panel derecho de hello, haga clic en **Agregar proveedor de identidades**. 
    
     ![Configuración del inicio de sesión único][55]
 
-11. En la página **Identity Provider Settings** (Configuración del proveedor de identidades), siga estos pasos:
+11. En hello **configuración del proveedor de identidad** , siga los pasos de hello:
    
     ![Configuración del inicio de sesión único][56]
 
-    a. En el cuadro de texto **Name** (Nombre), escriba un nombre único para la configuración. No utilice espacios.
+    a. Hola **nombre** cuadro de texto, escriba un nombre único para la configuración. No utilice espacios.
 
-    b. Pegue el **identificador de entidad de SAML** en el cuadro de texto **Emisor de proveedor de identidades**.
+    b. Pegar **Id. de entidad SAML** en hello **emisor del proveedor de identidades** cuadro de texto.
 
-    c. Pegue la **dirección URL de servicio de inicio de sesión único de SAML** en el cuadro de texto **Identity Provider Login URL** (URL de inicio de sesión del proveedor de identidades).
+    c. Pegar **SAML Single Sign-On dirección URL del servicio** en hello **URL de inicio de sesión del proveedor de identidades** cuadro de texto.
 
-    d. Pegue la **dirección URL de cierre de sesión** en el cuadro de texto **Identity Provider Login URL** (URL de cierre de sesión del proveedor de identidades).
+    d. Pegar **dirección URL de cierre de sesión** en hello **URL de cierre de sesión del proveedor de identidades** cuadro de texto.
 
     e. Seleccione **Sign AuthN Request**(Firmar solicitud de autenticación).
 
@@ -153,94 +153,94 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     g. En **Send logout request by** (Enviar solicitud de cierre de sesión por), seleccione **GET**.
 
-12. En la sección **Custom Attribute Mapping** (Asignación de atributos personalizados), elija el campo que desea asignar con la notificación de Azure AD. En este ejemplo, la notificación **emailaddress** está asociada con el valor de **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Este es el nombre de notificación predeterminado de Azure AD para la notificación de correo electrónico. 
+12. Hola **asignación de atributo personalizado** sección, elija el campo de Hola que desee toomap con notificación de AD de Azure. En este ejemplo, Hola **emailaddress** notificación se asigna su valor hello **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Es nombre de notificación predeterminado de Hola de Azure AD para notificación de correo electrónico. 
    
     > [!NOTE]
-    > Utilice el **identificador de usuario** adecuado para asignar el usuario de Azure AD a la asignación de usuarios de DocuSign. Seleccione el campo apropiado y escriba el valor adecuado según la configuración de la organización.
+    > Hola de uso adecuado **identificador de usuario** toomap usuario de saludo de la asignación de usuario de Azure AD tooDocuSign. Seleccione Hola campo apropiado y escriba el valor adecuado de hello según la configuración de la organización.
           
     ![Configuración del inicio de sesión único][57]
 
-13. En la sección **Identity Provider Certificate** (Certificado del proveedor de identidades), haga clic en **Add Certificate** (Agregar certificado) y cargue el certificado que ha descargado del Portal del portal de Azure AD.   
+13. Hola **certificado del proveedor de identidad** sección, haga clic en **agregar certificado**y, a continuación, cargar el certificado de Hola que ha descargado desde el portal de Azure AD.   
    
     ![Configuración del inicio de sesión único][58]
 
-14. Haga clic en **Save**.
+14. Haga clic en **Guardar**.
 
-15. En la sección **Identity Providers** (Proveedores de identidades), haga clic en **Actions** (Acciones) y luego en **Endpoints** (Puntos de conexión).   
+15. Hola **proveedores de identidades** sección, haga clic en **acciones**y, a continuación, haga clic en **extremos**.   
    
     ![Configuración del inicio de sesión único][59]
  
-16. En el **Portal de administración de DocuSign**, en la sección **View SAML 2.0 Endpoints** (Ver puntos de conexión de SAML 2.0), siga estos pasos:
+16. Hola **ver SAML 2.0 extremos** sección **portal de administración de DocuSign**, realizar Hola pasos:
    
     ![Configuración del inicio de sesión único][60]
    
-    a. Copie la **dirección URL del emisor del proveedor de servicios** y, a continuación, pegue en el cuadro de texto **Identificador** en la sección **Dominio y direcciones URL de DocuSign** de Azure Portal siguiendo el siguiente patrón: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`.
+    a. Hola copia **dirección URL del emisor de proveedor de servicio**y, a continuación, pegue en hello **identificador** en el cuadro de texto **DocuSign dominio y las direcciones URL** sección de hello Azure Hola siguiente portal patrón: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>`.
    
-    b. Copie la **dirección URL de inicio del proveedor de servicios** y, a continuación, pegue en el cuadro de texto **URL de inicio de sesión** en la sección **Dominio y direcciones URL de DocuSign** de Azure Portal siguiendo el siguiente patrón: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/`.
+    b. Hola copia **dirección URL de inicio de sesión del proveedor de servicio**y, a continuación, pegue en hello **dirección URL de inicio de sesión** en el cuadro de texto **DocuSign dominio y las direcciones URL** sección de hello Azure Hola siguiente portal patrón: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/`.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_url.png)
       
     c.  Haga clic en **Close**
     
-17. En Azure Portal, haga clic en **Guardar**.
+17. En el portal de Azure hello, haga clic en **guardar**.
     
     ![Configurar inicio de sesión único](./media/active-directory-saas-docusign-tutorial/tutorial_general_400.png)
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones en [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello ** Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-docusign-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-docusign-tutorial/create_aaduser_02.png) 
 
-3. En la parte superior del diálogo, haga clic en **Agregar** para abrir el diálogo **Usuario**.
+3. En la parte superior de saludo del cuadro de diálogo de hello, haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-docusign-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-docusign-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-docusign-test-user"></a>Creación de un usuario de prueba de DocuSign
 
-La aplicación admite **aprovisionamiento de usuarios Just-In-Time** y, tras la autenticación, los usuarios se crean automáticamente en la aplicación.
+Admite la aplicación **sólo en el aprovisionamiento de usuarios de tiempo** y después de autenticar usuarios se crean automáticamente en la aplicación hello.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a DocuSign.
+En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooDocuSign de acceso.
 
 ![Asignar usuario][200] 
 
-**Para asignar Britta Simon a DocuSign, realice los pasos siguientes:**
+**tooassign Britta Simon tooDocuSign, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **DocuSign**.
+2. En la lista de aplicaciones de hello, seleccione **DocuSign**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-docusign-tutorial/tutorial_docusign_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -248,7 +248,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -256,14 +256,14 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de DocuSign en el panel de acceso, debería iniciar sesión automáticamente en su aplicación DocuSign.
-Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md). 
+Al hacer clic en icono de DocuSign Hola Hola Panel de acceso, deberá obtener aplicaciones de DocuSign tooyour automáticamente ha iniciado sesión.
+Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Configuración del aprovisionamiento de usuarios](active-directory-saas-docusign-provisioning-tutorial.md)
 

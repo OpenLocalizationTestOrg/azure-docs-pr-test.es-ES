@@ -1,5 +1,5 @@
 ---
-title: "Notas de la versión de Explorador de Microsoft Azure Storage (versión preliminar) | Microsoft Docs"
+title: "notas de la versión de aaaMicrosoft Explorador de almacenamiento de Azure (versión preliminar) | Documentos de Microsoft"
 description: "Notas de la versión de Explorador de Microsoft Azure Storage (versión preliminar)"
 services: storage
 documentationcenter: na
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 63a24f6b153390533bba0888fd1051508c65bf6e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 44ff6dc8e2015f4eb71fa13098b832fbbf48ccac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Notas de la versión de Explorador de Microsoft Azure Storage (versión preliminar)
 
-En este artículo se detallan las notas de la versión para la versión 0.8.16 del Explorador de Azure Storage (versión preliminar), así como las de versiones anteriores.
+Este artículo contiene la versión de Hola notas para Azure Storage Explorer 0.8.16 (vista previa) de la versión, así como notas de la versión para las versiones anteriores.
 
-[Explorador de Microsoft Azure Storage (versión preliminar)](./vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente que permite trabajar fácilmente con los datos de Azure Storage en Windows, macOS y Linux.
+[Explorador de almacenamiento de Microsoft Azure (vista previa)](./vs-azure-tools-storage-manage-with-storage-explorer.md) es una aplicación independiente que permite trabajar tooeasily con los datos de almacenamiento de Azure en Windows, Mac OS y Linux.
 
 ## <a name="version-0816-preview"></a>Versión 0.8.16 (versión preliminar)
 8/21/2017
@@ -35,28 +35,28 @@ En este artículo se detallan las notas de la versión para la versión 0.8.16 d
 - [Explorador de Azure Storage 0.8.16 (versión preliminar) para Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nuevo
-* Al abrir un blob, el Explorador de Storage le pedirá que cargue el archivo descargado si se detectó un cambio
+* Al abrir un blob, el Explorador de almacenamiento le solicitará que tooupload Hola Descargar archivo si se detecta un cambio
 * Experiencia mejorada de inicio de sesión de Azure Stack
-* Mejorado el rendimiento de la carga y descarga de muchos archivos pequeños al mismo tiempo
+* Rendimiento mejorado Hola de carga/descarga de muchos pequeños archivos de hello mismo tiempo
 
 
 ### <a name="fixes"></a>Correcciones
-* En algunos tipos de blob, al elegir la opción "reemplazar" durante un conflicto de carga, a veces provocaría que la carga se volviese a reiniciar. 
+* En algunos tipos de blob, elegir "reemplazar" demasiado durante un conflicto de carga a veces produciría carga Hola se reinicia. 
 * En la versión 0.8.15, las cargas se detendrían a veces en un 99 %.
-* Al cargar archivos en un recurso compartido de archivos, si decide cargar en un directorio que todavía no existe, la carga produciría un error.
+* Al cargar el recurso compartido de archivos de tooa de archivos, si ha elegido el directorio de tooa tooupload que aún no existe, se producirá un error en la carga.
 * El Explorador de Storage estaba generando marcas de tiempo de forma incorrecta para las firmas de acceso compartido y las consultas de tabla.
 
 
 Problemas conocidos
-* El uso de un nombre y una cadena de conexión de clave no funciona actualmente. Funcionará en la próxima versión. Hasta ese momento, puede usar la asociación con el nombre y la clave.
-* Si intenta abrir un archivo con un nombre de archivo de Windows no válido, la descarga provocará un error de archivo no encontrado.
-* Después de hacer clic en “Cancelar” en una tarea, puede que esta tarde un tiempo en cancelarse. Se trata de una limitación de la biblioteca Azure Storage Node.
-* Después de completar una carga de blobs, se actualiza la pestaña en la que se inició la carga. Se trata de un cambio con respecto al comportamiento anterior y también provocará que se le devuelva a la raíz del contenedor en el que se halle.
-* Si no elige el certificado de tarjeta inteligente o PIN adecuados, tendrá que reiniciar para que el Explorador de Storage olvide esa decisión.
-* El panel de configuración de la cuenta puede indicar que necesita especificar de nuevo las credenciales para filtrar las suscripciones.
+* El uso de un nombre y una cadena de conexión de clave no funciona actualmente. Se corregirá en la siguiente versión de Hola. Hasta ese momento, puede usar la asociación con el nombre y la clave.
+* Si intentas tooopen un archivo con un nombre de archivo no válido de Windows, descarga de Hola dará como resultado un archivo de error no encontrado.
+* Después de hacer clic en "Cancelar" en una tarea, puede tardar unos instantes para que toocancel de tarea. Se trata de una limitación de la biblioteca de nodo de almacenamiento de Azure Hola.
+* Después de completar una carga de blobs, se actualiza la pestaña de Hola que inició la carga de Hola. Esto es un cambio de comportamiento anterior y también hará que toobe dirigirá toohello raíz se encuentra en el contenedor de Hola de nuevo.
+* Si elige Hola incorrecto PIN/certificado de tarjeta inteligente, a continuación, deberá toorestart en orden toohave Explorador de almacenamiento olvida esa decisión.
+* puede mostrar el panel de configuración de cuenta de Hello que necesita credenciales toofilter suscripciones a tooreenter.
 * Al cambiar de nombre los blobs (individualmente o dentro de un contenedor de blobs cuyo nombre ha cambiado), no se conservan las instantáneas. Todas las demás propiedades y metadatos de blobs, archivos y entidades se conservan al cambiar de nombre.
 * Aunque Azure Stack actualmente no admite recursos compartidos de archivos, todavía aparece un nodo de recurso compartido de archivos en la cuenta de almacenamiento de Azure Stack conectada.
-* Los usuarios de Ubuntu 14.04 tendrán que asegurarse de que GCC está actualizado. Para ello, se pueden ejecutar los siguientes comandos. Después, es necesario reiniciar la máquina:
+* Para los usuarios de Ubuntu 14.04, necesitará tooensure GCC está activo toodate: Esto puede hacerse mediante la ejecución de hello sigue comandos y, a continuación, reiniciar el equipo:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -65,7 +65,7 @@ Problemas conocidos
     sudo apt-get dist-upgrade
     ```
 
-* Los usuarios de Ubuntu 17.04 tendrán que instalar GConf. Esto se puede hacer mediante la ejecución de los siguientes comandos. Después de esto, es necesario reiniciar la máquina.
+* Para los usuarios de Ubuntu 17.04, necesitará tooinstall GConf: Esto puede hacerse ejecutando Hola sigue comandos y, a continuación, reiniciar el equipo:
 
     ```
     sudo apt-get install libgconf-2-4
@@ -81,20 +81,20 @@ Problemas conocidos
 
 ### <a name="new"></a>Nuevo
 
-* Versión de Electron actualizada a la 1.7.2 para aprovechar las múltiples actualizaciones de seguridad críticas
-* Ahora se puede acceder rápidamente a la guía de solución de problemas en línea desde el menú de ayuda
+* Too1.7.2 de versión actualizada de electrones en orden tootake aprovechar las varias actualizaciones de seguridad críticas
+* Se puede ahora acceder rápidamente a la Guía de solución de problemas en pantalla de Hola desde el menú de Ayuda de Hola
 * [Guía][2] de solución de problemas del Explorador de Storage
-* [Instrucciones][3] sobre cómo conectarse a una suscripción de Azure Stack
+* [Instrucciones] [ 3] sobre la conexión de suscripción de Azure pila tooan
 
 ### <a name="known-issues"></a>Problemas conocidos
 
-* Los botones del cuadro de diálogo de confirmación de eliminación de carpeta no registran los clics del mouse en Linux. La solución alternativa consiste en usar la tecla Entrar.
-* Si no elige el certificado de tarjeta inteligente o el PIN adecuados, tendrá que reiniciar para que el Explorador de Storage olvide la decisión.
-* Si hay más de tres grupos de blobs o archivos cargándose al mismo tiempo, se pueden producir errores.
-* El panel de configuración de la cuenta puede indicar que necesita especificar de nuevo las credenciales para filtrar las suscripciones.
+* Botones del cuadro de diálogo de confirmación de carpeta de hello delete no se registran con clics del mouse de hello en Linux. Solución alternativa es la tecla ENTRAR de toouse Hola
+* Si elige Hola incorrecto PIN/certificado de tarjeta inteligente, deberá toorestart en orden toohave Explorador de almacenamiento olvida decisión Hola
+* Tener más de 3 grupos de blobs o archivos cargar en hello mismo tiempo puede provocar errores de
+* panel de configuración de cuenta de Hello puede mostrar que se necesitan credenciales de tooreenter en las suscripciones de toofilter de orden
 * Al cambiar de nombre los blobs (individualmente o dentro de un contenedor de blobs cuyo nombre ha cambiado), no se conservan las instantáneas. Todas las demás propiedades y metadatos de blobs, archivos y entidades se conservan al cambiar de nombre.
 * Aunque Azure Stack actualmente no admite recursos compartidos de archivos, todavía aparece un nodo de recurso compartido de archivos en la cuenta de almacenamiento de Azure Stack conectada. 
-* La instalación de Ubuntu 14.04 requiere que se actualice la versión de gcc. A continuación puede ver los pasos para actualizarla:
+* Ubuntu 14.04 instalación necesidades gcc versión había actualizado o ampliado – tooupgrade pasos son los siguientes:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -131,26 +131,26 @@ Problemas conocidos
 #### <a name="new"></a>Nuevo
 
 * [Guía][2] de solución de problemas del Explorador de Storage
-* [Instrucciones][3] sobre cómo conectarse a una suscripción de Azure Stack
+* [Instrucciones] [ 3] sobre la conexión de suscripción de Azure pila tooan
 
 #### <a name="fixes"></a>Correcciones
 
 * Problema corregido: Había una alta probabilidad de que, al cargar un archivo, se produjese un error de memoria agotada.
 * Problema corregido: Ahora puede iniciar sesión con una tarjeta inteligente o un PIN.
 * Problema corregido: Abrir en Portal ahora funciona con Azure China, Azure Germany, Azure US Government y Azure Stack.
-* Problema corregido: Al cargar una carpeta en un contenedor de blobs, a veces se produce un error de “operación ilegal”.
+* Problema corregido: Al cargar un contenedor de blobs de tooa de carpeta, "Operación no válida" produciría un error a veces
 * Problema corregido: Seleccionar todo se deshabilita durante la administración de instantáneas.
-* Problema corregido: Los metadatos del blob base puede que se sobrescriban después de ver las propiedades de las instantáneas.
+* Problema corregido: Hola metadatos del blob base Hola podrían se sobrescriban después de ver las propiedades de Hola de sus instantáneas
 
 #### <a name="known-issues"></a>Problemas conocidos
 
-* Si no elige el certificado de tarjeta inteligente o el PIN adecuados, tendrá que reiniciar para que el Explorador de Storage olvide la decisión.
-* Cuando se amplía o reduce, el nivel de zoom puede restablecerse momentáneamente al nivel predeterminado.
-* Si hay más de tres grupos de blobs o archivos cargándose al mismo tiempo, se pueden producir errores.
-* El panel de configuración de la cuenta puede indicar que necesita especificar de nuevo las credenciales para filtrar las suscripciones.
+* Si elige Hola incorrecto PIN/certificado de tarjeta inteligente, deberá toorestart en orden toohave Explorador de almacenamiento olvida decisión Hola
+* Mientras ampliada o alejar, nivel de zoom de hello momentáneamente puede restablecer nivel predeterminado de toohello
+* Tener más de 3 grupos de blobs o archivos cargar en hello mismo tiempo puede provocar errores de
+* panel de configuración de cuenta de Hello puede mostrar que se necesitan credenciales de tooreenter en las suscripciones de toofilter de orden
 * Al cambiar de nombre los blobs (individualmente o dentro de un contenedor de blobs cuyo nombre ha cambiado), no se conservan las instantáneas. Todas las demás propiedades y metadatos de blobs, archivos y entidades se conservan al cambiar de nombre.
 * Aunque Azure Stack actualmente no admite recursos compartidos de archivos, todavía aparece un nodo de recurso compartido de archivos en la cuenta de almacenamiento de Azure Stack conectada. 
-* La instalación de Ubuntu 14.04 requiere que se actualice la versión de gcc. A continuación puede ver los pasos para actualizarla:
+* Ubuntu 14.04 instalación necesidades gcc versión había actualizado o ampliado – tooupgrade pasos son los siguientes:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -165,35 +165,35 @@ Problemas conocidos
 
 #### <a name="new"></a>Nuevo
 
-* Explorador de Storage ahora se cerrará automáticamente al instalar una actualización desde la notificación de actualización.
+* Explorador de almacenamiento ahora se cerrará automáticamente cuando se instala una actualización de notificación de actualización de Hola
 * El acceso rápido local proporciona una experiencia mejorada a la hora de trabajar con los recursos a los que accede con más frecuencia.
-* En el editor de contenedores de blobs, ahora puede ver a qué máquina virtual pertenece un blob concedido.
-* Ahora puede contraer el panel izquierdo.
-* Ahora la detección se ejecuta al mismo tiempo que la descarga.
-* Use Estadísticas del contenedor de blobs, el recurso compartido de archivos y los editores de tablas para ver el tamaño del recurso o de la selección.
-* Ahora puede iniciar sesión en Azure Active Directory (AAD) basándose en cuentas de Azure Stack. 
-* Ahora puede cargar archivos de archivo de más de 32 MB en cuentas de almacenamiento Premium.
+* En el editor de contenedor de blobs de hello, ahora puede ver qué máquina virtual al que pertenece un blob en concesión
+* Ahora se puede contraer el panel del lado izquierdo de Hola
+* Detección ahora se ejecuta en hello mismo tiempo como descarga
+* Usar las estadísticas en hello contenedor de blobs, recurso compartido de archivos y tabla editores toosee Hola el tamaño de los recursos o la selección
+* Ahora puede tooAzure inicio de sesión en Active Directory (AAD) según las cuentas de la pila de Azure. 
+* Ahora el archivo de carga de archivos de cuentas de almacenamiento de más de 32 MB tooPremium puede
 * Compatibilidad de accesibilidad mejorada.
-* Ahora puede agregar certificados SSL X.509 cifrados en Base-64 de confianza en Editar -&gt; Certificados SSL -&gt; Importar certificados.
+* Ahora puede agregar confianza Base64 codificado certificados X.509 SSL por va tooEdit -&gt; certificados de SSL:&gt; importar certificados
 
 #### <a name="fixes"></a>Correcciones
 
-* Problema corregido: Después de actualizar las credenciales de una cuenta, a veces no se actualizaba la vista de árbol.
+* Problema corregido: después de actualizar las credenciales de una cuenta, vista de árbol de hello haría a veces no actualizar automáticamente
 * Problema corregido: Al generar un SAS para tablas y colas de emulador, se producía una URL no válida.
 * Problema corregido: Las cuentas de almacenamiento premium ahora se pueden ampliar mientras haya un proxy habilitado.
-* Problema corregido: El botón Aplicar de la página de administración de cuentas no funcionaba si había una o cero cuentas seleccionadas.
+* Se ha corregido: Hola botón Aplicar en las cuentas de hello página de administración no funcionaría si hubiera 1 ó 0 cuentas seleccionadas
 * Problema corregido: Se puede producir un error al cargar blobs que requieran resoluciones de conflictos. Esto se ha corregido en la versión 0.8.11. 
 * Problema corregido: No se podían enviar comentarios en la versión 0.8.11. Corregido en la versión 0.8.12. 
 
 #### <a name="known-issues"></a>Problemas conocidos
 
-* Después de actualizar a la versión 0.8.10, tendrá que actualizar todas las credenciales.
-* Cuando se amplía o reduce, el nivel de zoom puede restablecerse momentáneamente al nivel predeterminado.
-* Si hay más de tres grupos de blobs o archivos cargándose al mismo tiempo, se pueden producir errores.
-* El panel de configuración de la cuenta puede indicar que necesita especificar de nuevo las credenciales para filtrar las suscripciones.
+* Después de actualizar too0.8.10, necesitará toorefresh todos sus credenciales.
+* Mientras ampliada o alejar, nivel de zoom de hello momentáneamente puede restablecer nivel predeterminado de toohello.
+* Tener más de 3 grupos de blobs o archivos cargar en hello mismo tiempo puede provocar errores.
+* panel de configuración de cuenta de Hello puede mostrar que se necesitan credenciales de tooreenter en las suscripciones de toofilter de orden.
 * Al cambiar de nombre los blobs (individualmente o dentro de un contenedor de blobs cuyo nombre ha cambiado), no se conservan las instantáneas. Todas las demás propiedades y metadatos de blobs, archivos y entidades se conservan al cambiar de nombre.
 * Aunque Azure Stack actualmente no admite recursos compartidos de archivos, todavía aparece un nodo de recurso compartido de archivos en la cuenta de almacenamiento de Azure Stack conectada. 
-* La instalación de Ubuntu 14.04 requiere que se actualice la versión de gcc. A continuación puede ver los pasos para actualizarla:
+* Ubuntu 14.04 instalación necesidades gcc versión había actualizado o ampliado – tooupgrade pasos son los siguientes:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -213,28 +213,28 @@ Problemas conocidos
 
 #### <a name="new"></a>Nuevo
 
-* Explorador de Storage 0.8.9 descargará automáticamente la última versión de las actualizaciones.
-* Revisión: Al usar un URI de SAS generado en el portal para conectarse a una cuenta de almacenamiento, se producía un error.
+* 0.8.9 del explorador de almacenamiento descargará automáticamente la versión más reciente de Hola para las actualizaciones.
+* Revisión: mediante el portal genera tooattach de URI de SAS que una cuenta de almacenamiento produciría un error.
 * Ahora puede crear, administrar y promover instantáneas de blobs.
-* Ahora puede iniciar sesión en cuentas de Azure China, Azure Germany y Azure US Government.
-* Ahora puede cambiar el nivel de zoom. Use las opciones del menú Ver para acercar, alejar y restablecer el zoom.
+* Ahora puede iniciar sesión en cuentas tooAzure de China, Azure en Alemania y gobierno de EE.
+* Ahora puede cambiar el nivel de zoom de Hola. Utilizar opciones de Hola Hola vista menú tooZoom en Alejar y restablecer Zoom.
 * Ahora se admiten caracteres Unicode en los metadatos de usuarios para blobs y archivos.
 * Mejoras de accesibilidad.
-* Las notas de la versión de la siguiente versión se pueden ver desde la notificación de actualización. También puede ver las notas de la versión actual desde el menú Ayuda.
+* notas de la versión de la versión siguiente de Hello pueden verse de notificación de actualización de Hola. También puede ver Hola actual notas de la versión desde el menú de Ayuda de Hola.
 
 #### <a name="fixes"></a>Correcciones
 
-* Problema corregido: El número de versión ahora se muestra correctamente en el Panel de control de Windows.
-* Problema corregido: La búsqueda ya no está limitada a 50 000 nodos.
-* Problema corregido: La carga a un recurso compartido de archivos se alargaba infinitamente si el directorio de destino no existía anteriormente.
+* Problema corregido: número de versión de Hola correctamente aparece ahora en el Panel de Control en Windows
+* Problema corregido: búsqueda ya no es too50 limitado, 000 nodos
+* Problema corregido: recurso compartido de archivos de tooa de carga creadas para siempre si el directorio de destino de hello no existía todavía
 * Problema corregido: Estabilidad mejorada para cargas y descargas largas.
 
 #### <a name="known-issues"></a>Problemas conocidos
 
-* Cuando se amplía o reduce, el nivel de zoom puede restablecerse momentáneamente al nivel predeterminado.
+* Mientras ampliada o alejar, nivel de zoom de hello momentáneamente puede restablecer nivel predeterminado de toohello.
 * Acceso rápido solo funciona con elementos basados en la suscripción. En esta versión no se admiten recursos locales o recursos adjuntados a través de la clave o token de SAS.
-* Es posible que Acceso rápido tarde unos segundos en desplazarse hasta el recurso de destino, en función del número de recursos que tenga.
-* Si hay más de tres grupos de blobs o archivos cargándose al mismo tiempo, se pueden producir errores.
+* Puede tardar unos segundos toonavigate toohello recurso de destino, según la cantidad de recursos que tiene un acceso rápido.
+* Tener más de 3 grupos de blobs o archivos cargar en hello mismo tiempo puede provocar errores.
 
 16/12/2016
 ### <a name="version-087"></a>Versión 0.8.7
@@ -243,41 +243,41 @@ Problemas conocidos
 
 #### <a name="new"></a>Nuevo
 
-* Puede elegir cómo resolver conflictos al principio de una actualización, descarga o sesión de copia en la ventana Actividades.
-* Mantenga el puntero sobre una pestaña para ver la ruta de acceso completa del recurso de almacenamiento.
-* Al hacer clic en una pestaña, se sincroniza con su ubicación en el panel de navegación izquierdo.
+* Puede elegir cómo tooresolve conflictos al principio de Hola de una actualización, descargar o copiar la sesión en la ventana de actividades de hello
+* Mantenga el mouse sobre una ficha toosee Hola ruta de acceso completa del recurso de almacenamiento de Hola
+* Al hacer clic en una pestaña, se sincroniza con su ubicación en el panel de navegación del lado izquierdo de Hola
 
 #### <a name="fixes"></a>Correcciones
 
 * Problema corregido: El Explorador de Storage es ahora una aplicación de confianza en Mac.
 * Problema corregido: Ubuntu 14.04 se admite de nuevo.
-* Problema corregido: En ocasiones, la interfaz de usuario para agregar una cuenta parpadea al cargar las suscripciones.
-* Problema corregido: En ocasiones, no todos los recursos de almacenamiento se muestran en el panel de navegación izquierdo.
-* Problema corregido: El panel de acciones a veces muestra acciones vacías.
-* Problema corregido: Ahora se conserva el tamaño de la ventana de la última sesión que se cerró.
-* Problema corregido: Se pueden abrir varias pestañas para el mismo recurso mediante el menú contextual.
+* Problema corregido: A veces Hola Agregar cuenta UI parpadea al cargar las suscripciones
+* Problema corregido: En ocasiones, no todos los recursos de almacenamiento figuraban en el panel de navegación del lado izquierdo de Hola
+* Problema corregido: panel de acciones de Hola a veces muestra acciones vacías
+* Fijo: ahora se conserva tamaño de la ventana de Hola de sesión de hello cerró por última vez
+* Se ha corregido: Se pueden abrir varias pestañas para hello mismo recurso mediante el menú contextual de Hola
 
 #### <a name="known-issues"></a>Problemas conocidos
 
 * Acceso rápido solo funciona con elementos basados en la suscripción. En esta versión no se admiten recursos locales o recursos adjuntados a través de la clave o token de SAS.
-* Es posible que Acceso rápido tarde unos segundos en desplazarse hasta el recurso de destino, en función del número de recursos que tenga.
-* Si hay más de tres grupos de blobs o archivos cargándose al mismo tiempo, se pueden producir errores.
+* Puede tardar unos segundos toonavigate toohello recurso de destino, dependiendo de cuántos recursos tendrá acceso rápido
+* Tener más de 3 grupos de blobs o archivos cargar en hello mismo tiempo puede provocar errores de
 * Identificadores de búsqueda que buscan en unos 50.000 nodos: después de esto, el rendimiento puede verse afectado o se pueden producir excepciones no controladas.
-* Por primera vez con el Explorador de Storage en macOS, es posible que aparezcan varias solicitudes que piden permiso del usuario para acceder a las llaves. Se recomienda seleccionar Permitir siempre para que la solicitud no vuelva a aparecer más.
+* Para hello primera vez con hello Explorador de almacenamiento en macOS, puede que vea varios mensajes piden llaveros de tooaccess de permiso del usuario. Se recomienda que seleccione Permitir siempre por lo que el mensaje Hola no vuelva a mostrarse
 
 18/11/2016
 ### <a name="version-086"></a>Versión 0.8.6
 
 #### <a name="new"></a>Nuevo
 
-* Ya puede anclar los servicios más utilizados en Acceso rápido para facilitar la navegación.
-* Ya puede abrir varios editores en diferentes pestañas. Haga un solo clic para abrir una pestaña temporal y doble clic para abrir una pestaña permanente. También puede hacer clic en la pestaña temporal para que se convierta en una pestaña permanente.
+* Puede ahora pin usa con mayor frecuencia servicios toohello acceso rápido para facilitar la navegación
+* Ya puede abrir varios editores en diferentes pestañas. Un solo clic tooopen una pestaña temporal; Haga doble clic en tooopen una pestaña permanente. También puede hacer clic en hello pestaña temporal toomake, una pestaña permanente
 * Hemos realizado mejoras notables de rendimiento y estabilidad para cargas y descargas, especialmente para archivos de gran tamaño en máquinas rápidas
 * Las carpetas vacías "virtuales" ya se pueden crear en contenedores de blobs.
 * Hemos vuelto a incorporar la búsqueda en ámbito con la nueva y mejorada búsqueda de subcadenas, por lo que ahora tiene dos opciones para realizar búsquedas: 
-    * Búsqueda global: solo tiene que indicar un término de búsqueda en el cuadro de texto de búsqueda.
-    * Búsqueda de ámbito: haga clic en el icono de lupa al lado de un nodo; después, agregue un término de búsqueda al final de la ruta o haga clic con el botón derecho y seleccione “Buscar desde aquí”.
-* Hemos agregado varios temas: claro (valor predeterminado), oscuro, negro en alto contraste y blanco en alto contraste. Vaya a Editar -&gt; Temas para cambiar las preferencias de temas.
+    * Global búsqueda - tan sólo debe escribir un término de búsqueda en el cuadro de texto de búsqueda de Hola
+    * Búsqueda de ámbito - haga clic en hello lupa icono siguiente tooa nodo, a continuación, agregar un extremo de toohello del término de búsqueda de ruta de acceso de hello, o haga clic en y seleccione "Búsqueda desde aquí"
+* Hemos agregado varios temas: claro (valor predeterminado), oscuro, negro en alto contraste y blanco en alto contraste. Vaya tooEdit -&gt; toochange temas sus preferencias de temas
 * Puede modificar las propiedades de blobs y archivos.
 * Ahora se admiten mensajes de cola cifrados (Base64) y sin cifrar.
 * En Linux, ahora es necesario usar un sistema operativo de 64 bits. En esta versión solo se admite Ubuntu 16.04.1 LTS de 64 bits.
@@ -289,18 +289,18 @@ Problemas conocidos
 * Problema corregido: Mayor seguridad
 * Problema corregido: A veces, podrían aparecer cuentas conectadas duplicadas.
 * Problema corregido: Un blob con un tipo de contenido sin definir podría generar una excepción.
-* Problema corregido: No se podía abrir el Panel de consulta en una tabla vacía.
+* Problema corregido: Hola de abrir el Panel de consulta en una tabla vacía no era posible
 * Problema corregido: Varios errores en la búsqueda.
-* Problema corregido: Aumento del número de recursos que se cargan de 50 a 100 al hacer clic en “Cargar más”.
+* Fijo: Mayor número de Hola de recursos cargados desde too100 50 al hacer clic en "Más carga"
 * Problema corregido: En la primera ejecución, si ha iniciado sesión con una cuenta, ahora se seleccionan todas las suscripciones para esa cuenta de manera predeterminada. 
 
 #### <a name="known-issues"></a>Problemas conocidos
 
-* Esta versión del Explorador de Storage no se ejecuta en Ubuntu 14.04.
-* Para abrir varias pestañas para el mismo recurso, no haga clic varias veces en el mismo recurso. Haga clic en otro recurso y, después, vuelva y haga clic en el recurso original para volver a abrirlo en otra pestaña. 
+* Esta versión de Hola Explorador de almacenamiento no se ejecuta en Ubuntu 14.04
+* tooopen varias pestañas para hello mismo recurso, realice continuamente no haga clic en Hola mismo recurso. Haga clic en otro recurso y, a continuación, volver atrás y, a continuación, vuelva a hacer clic en hello original recursos tooopen en otra ficha 
 * Acceso rápido solo funciona con elementos basados en la suscripción. En esta versión no se admiten recursos locales o recursos adjuntados a través de la clave o token de SAS.
-* Es posible que Acceso rápido tarde unos segundos en desplazarse hasta el recurso de destino, en función del número de recursos que tenga.
-* Si hay más de tres grupos de blobs o archivos cargándose al mismo tiempo, se pueden producir errores.
+* Puede tardar unos segundos toonavigate toohello recurso de destino, dependiendo de cuántos recursos tendrá acceso rápido
+* Tener más de 3 grupos de blobs o archivos cargar en hello mismo tiempo puede provocar errores de
 * Identificadores de búsqueda que buscan en unos 50.000 nodos: después de esto, el rendimiento puede verse afectado o se pueden producir excepciones no controladas.
 
 03/10/2016
@@ -308,21 +308,21 @@ Problemas conocidos
 
 #### <a name="new"></a>Nuevo
 
-* Ahora puede usar claves SAS generadas por el Portal para conectarse a cuentas de almacenamiento y recursos
+* Puede ahora tooattach tooStorage de claves de uso SAS generado por el Portal de cuentas y recursos
 
 #### <a name="fixes"></a>Correcciones
 
-* Problema corregido: A veces, la condición de carrera durante las búsquedas provocaba que los nodos no se pudiesen expandir.
-* Problema corregido: “Usar HTTP” no funciona al conectarse a cuentas de almacenamiento con un nombre de cuenta y una clave.
+* Corregido: condición de carrera durante la búsqueda a veces debe toobecome de nodos no se pueden expandir
+* Problema corregido: "Usar HTTP" no funciona cuando se conecta tooStorage cuentas con clave y el nombre de cuenta
 * Problema corregido: Las claves SAS (especialmente las generadas en el Portal) devuelven un error de “barra oblicua final”.
 * Problema corregido: Problemas al importar tablas.
     * A veces se revertían la clave de fila y la clave de partición
-    * No se puede leer las claves de partición “null”.
+    * No se puede tooread "null" claves de partición
 
 #### <a name="known-issues"></a>Problemas conocidos
 
 * Identificadores de búsqueda que buscan en unos 50.000 nodos: después de esto, el rendimiento puede verse afectado.
-* Azure Stack no admite Files actualmente por lo que, al intentar expandir Files, se produce un error.
+* Pila de Azure no admite actualmente los archivos, para intentar tooexpand archivos mostrará un error
 
 12/09/2016
 ### <a name="version-084"></a>Versión 0.8.4
@@ -331,9 +331,9 @@ Problemas conocidos
 
 #### <a name="new"></a>Nuevo
 
-* Genere vínculos directos a cuentas de almacenamiento, contenedores, colas, tablas o recursos compartidos de archivos para compartir y acceder fácilmente a sus recursos. Es compatible con Windows y Mac OS.
-* Busque contenedores de blobs, tablas, colas, recursos compartidos de archivos o cuentas de almacenamiento en el cuadro de búsqueda.
-* Ahora puede agrupar las cláusulas en el generador de consultas de tablas.
+* Generar cuentas toostorage de vínculos directos, contenedores, las colas, las tablas o recursos compartidos de archivos para compartir y fácil de obtener acceso a recursos de tooyour - Windows y Mac OS admiten
+* Busque los contenedores de blobs, tablas, colas, recursos compartidos de archivos o las cuentas de almacenamiento desde el cuadro de búsqueda de Hola
+* Ahora puede agrupar las cláusulas en Generador de consultas de tabla de Hola
 * Cambie el nombre y copie y pegue contenedores de blobs, recursos compartidos de archivos, tablas, blobs, carpetas de blobs, archivos y directorios desde cuentas conectadas mediante SAS y contenedores.
 * Al cambiar el nombre y copiar contenedores de blobs y recursos compartidos de archivos, ahora se conservan las propiedades y los metadatos.
 
@@ -354,9 +354,9 @@ Problemas conocidos
 
 * Cambie el nombre de contenedores, tablas y recursos compartidos de archivos.
 * Experiencia mejorada con el generador de consultas.
-* Posibilidad de guardar y cargar consultas.
-* Vínculos directos a cuentas de almacenamiento o contenedores, colas, tablas o recursos compartidos de archivos para compartir y acceder fácilmente a los recursos (solo disponible para Windows, macOS se admitirá pronto).
-* Capacidad para administrar y configurar reglas de CORS
+* Consultas de toosave y carga de capacidad
+* Dirigir toostorage cuentas o contenedores, las colas, tablas de vínculos o recursos compartidos para compartir y acceder fácilmente a los recursos de archivos (sólo Windows - macOS admiten próximamente!)
+* Capacidad toomanage y configurar las reglas de CORS
 
 #### <a name="fixes"></a>Correcciones
 
@@ -364,10 +364,10 @@ Problemas conocidos
 
 #### <a name="known-issues"></a>Problemas conocidos
 
-* A veces, puede que parezca que la IU se bloquea. Este problema se resuelve maximizando la ventana.
+* A veces hello interfaz de usuario podría parezca detenida: lo que maximiza la ventana hello ayuda a resolver este problema
 * Puede que la instalación en macOS requiera permisos elevados.
-* El panel de configuración de la cuenta puede indicar que necesita especificar de nuevo las credenciales para filtrar las suscripciones.
-* Al cambiar de nombre los recursos compartidos, contenedores de blobs y tablas, no se conservan los metadatos ni otras propiedades del contenedor, como la cuota de uso compartido de archivos, el nivel de acceso público ni las directivas de acceso.
+* Puede mostrar el panel de configuración de la cuenta que se necesitan credenciales de tooreenter en las suscripciones de toofilter de orden
+* Cambio de nombre de recursos compartidos de archivos, contenedores de blobs y tablas no conserva los metadatos u otras propiedades en el contenedor de hello, como la cuota del recurso compartido de archivos, nivel de acceso público o las directivas de acceso
 * Al cambiar de nombre los blobs (individualmente o dentro de un contenedor de blobs cuyo nombre ha cambiado), no se conservan las instantáneas. Todas las otras propiedades y metadatos de blobs, archivos y entidades se conservan al cambiar de nombre.
 * No se puede copiar o cambiar de nombre recursos en cuentas conectadas mediante SAS.
 
@@ -380,7 +380,7 @@ Problemas conocidos
 
 * Las cuentas de almacenamiento se agrupan por suscripciones; el almacenamiento de desarrollo y los recursos conectados mediante clave o SAS se muestran en el nodo (Local y Adjuntos).
 * Cierre la sesión de las cuentas en el panel “Configuración de la cuenta de Azure”.
-* Configure el proxy para habilitar y administrar el inicio de sesión.
+* Configurar tooenable de configuración de proxy y administrar inicio de sesión
 * Cree y rompa concesiones de blobs.
 * Abra contenedores de blobs, colas, tablas y archivos con un solo clic.
 
@@ -406,7 +406,7 @@ Problemas conocidos
 #### <a name="new"></a>Nuevo
 
 * Compatibilidad con recursos compartidos de archivos: visualización, carga, descarga, copia de archivos y directorios, URI de SAS (creación y conexión).
-* Mejoras de la experiencia del usuario para conectarse a Storage con URI de SAS o claves de cuentas.
+* Mejor experiencia del usuario para la conexión tooStorage con URI de SAS o claves de cuenta
 * Exportación de resultados de consulta de tabla.
 * Reordenación y personalización de columnas de tabla.
 * Consulta de contenedores de blob $logs y tablas de $metrics para cuentas de almacenamiento con las métricas habilitadas.
@@ -415,13 +415,13 @@ Problemas conocidos
 #### <a name="fixes"></a>Correcciones
 
 * Problema corregido: Al cargar o descargar blobs grandes, se puede producir una carga o descarga incompleta.
-* Problema corregido: Al editar, agregar o importar una entidad con un valor de cadena numérico (“1”) se convertirá en doble.
-* Problema corregido: No se puede expandir el nodo de tabla en el entorno de desarrollo local.
+* Problema corregido: edición, la adición o la importación de una entidad con un valor de cadena numérica ("1") lo convertirá toodouble
+* Problema corregido: Nodo de tabla de hello tooexpand no se puede en el entorno de desarrollo local Hola
 
 #### <a name="known-issues"></a>Problemas conocidos
 
 * Las tablas de $metrics no son visibles para cuentas de Blob Storage.
-* Los mensajes de cola que se agregan mediante programación pueden no mostrarse correctamente si los mensajes se codifican con Base 64.
+* Cola de mensajes agregado mediante programación no se muestren correctamente si los mensajes de saludo se codifican utilizando la codificación Base64
 
 17/05/2016
 ### <a name="version-07201605090"></a>Versión 0.7.20160509.0
@@ -436,7 +436,7 @@ Problemas conocidos
 
 #### <a name="known-issues"></a>Problemas conocidos
 
-* Tablas: Al agregar, editar o importar una entidad con una propiedad con un valor numérico ambiguo, como “1” o “1.0” y cuando el usuario intenta enviarla como `Edm.String`, el valor volverá a través de la API del cliente como un Edm.Double.
+* Tablas: Agregar, editar, o importar una entidad que tiene una propiedad con un valor numérico de forma ambigua, como "1" o "1.0", y Hola toosend de intentos de usuario como un `Edm.String`, valor de hello volverá a través de API como un Edm.Double de cliente hello
 
 31/03/2016
 
@@ -452,8 +452,8 @@ Problemas conocidos
 * Compatibilidad con tablas: visualización, realización de consultas, exportación, importación y operaciones CRUD para entidades.
 * Compatibilidad con colas: visualización, adición y eliminación de mensajes de la cola.
 * Generación de URI de SAS para cuentas de almacenamiento.
-* Conexión a cuentas de almacenamiento con URI de SAS.
-* Notificaciones de actualizaciones para actualizaciones futuras a Explorador de Storage.
+* Cuentas de conexión tooStorage con URI de SAS
+* Notificaciones de actualización para las actualizaciones futuras tooStorage Explorer
 * Apariencia actualizada.
 
 #### <a name="fixes"></a>Correcciones
@@ -463,9 +463,9 @@ Problemas conocidos
 ### <a name="known-issues-amp-mitigations"></a>Problemas conocidos y mitigaciones
 
 * La descarga de archivos de blob grandes no funciona correctamente. Le recomendamos que use AzCopy mientras no se soluciona este problema. 
-* Las credenciales de cuentas no se recuperan ni se almacenan en caché si la carpeta de inicio no se encuentra o no se puede escribir en ella.
-* Al agregar, editar o importar una entidad con una propiedad con un valor numérico ambiguo, como “1” o “1.0” y cuando el usuario intenta enviarla como `Edm.String`, el valor volverá a través de la API del cliente como un Edm.Double.
-* Al importar archivos CSV con registros de varias líneas, es posible que los datos se corten o se desordenen.
+* Las credenciales de cuenta no pueden recuperar ni almacenado en memoria caché si la carpeta particular de hello no se encuentra o no puede escribirse en
+* Si nos estamos agregar, editar o importar una entidad que tiene una propiedad con un valor numérico de forma ambigua, como "1" o "1.0", y trata de usuario de hello toosend como un `Edm.String`, valor de hello volverá a través de API como un Edm.Double de cliente hello
+* Al importar archivos CSV con los registros de varias líneas, datos de hello pueden obtener reducidos o codificadas
 
 03/02/2016
 
@@ -481,26 +481,26 @@ Problemas conocidos
 
 #### <a name="new"></a>Nuevo
 
-* Compatibilidad con Linux (características de paridad para OSX)
+* Compatibilidad con Linux (tooOSX de características de paridad)
 * Agregue contenedores de blobs con clave de Firmas de acceso compartido (SAS).
 * Agregue cuentas de almacenamiento para Azure China.
 * Agregue cuentas de almacenamiento con puntos de conexión personalizados.
-* Abra y vea blobs de imagen y texto de contenido.
+* Abrir y ver los blobs de texto e imagen de contenido de Hola
 * Vea y edite propiedades y metadatos de blob.
 
 #### <a name="fixes"></a>Correcciones
 
-* Problema corregido: La carga o descarga de un gran número de blobs (más de 500) puede provocar en ocasiones que la aplicación muestre una pantalla en blanco. 
-* Problema corregido: Al establecer el nivel de acceso público en un contenedor de blobs, el valor nuevo no se actualiza hasta que vuelva a establecer el foco en el contenedor. Además, el diálogo siempre tiene como valor predeterminado “Sin acceso público” y no el valor real actual.
+* Se ha corregido: carga o descarga un gran número de blobs (500 +) a veces podrían Hola aplicación toohave una pantalla en blanco 
+* Problema corregido: al establecer el nivel de acceso público de contenedor de blob, Hola nuevo valor no se actualiza hasta que se vuelva a establecer el foco de hello en el contenedor de Hola. Además, el cuadro de diálogo de hello siempre tiene como valor predeterminado demasiado "de acceso No público" y no Hola actual valor real.
 * Mejor accesibilidad de teclado general y compatibilidad con IU.
 * El historial de enlaces se ajusta cuando es demasiado largo con espacios en blanco.
 * El cuadro de diálogo de SAS admite la validación de entradas.
-* El almacenamiento local sigue estando disponible incluso aunque las credenciales de usuario hayan expirado.
-* Cuando se elimina un contenedor de blobs abierto, el explorador de blobs de la derecha se cierra.
+* Almacenamiento local continúa toobe disponible incluso si las credenciales de usuario han caducado
+* Cuando se elimina un contenedor de blobs abierto, se cierra el Explorador de blob Hola Hola derecha
 
 #### <a name="known-issues"></a>Problemas conocidos
 
-* La instalación de Linux requiere que se actualice la versión de gcc. A continuación puede ver los pasos para actualizarla: 
+* Necesidades de instalación de Linux versión gcc había actualizado o ampliado – tooupgrade pasos son los siguientes: 
     * `sudo add-apt-repository ppa:ubuntu-toolchain-r/test`
     * `sudo apt-get update`
     * `sudo apt-get upgrade`
@@ -512,29 +512,29 @@ Problemas conocidos
 #### <a name="new"></a>Nuevo
 
 * Versiones de Windows y macOS.
-* Inicie sesión para ver las cuentas de almacenamiento: use su cuenta de organización, cuenta Microsoft, 2FA, etc.
+* Inicie sesión en tooview sus cuentas de almacenamiento: use la cuenta de organización, Microsoft Account, 2FA, etcetera.
 * Almacenamiento de desarrollo local (use un emulador de almacenamiento, solo para Windows).
 * Compatibilidad de Azure Resource Manager y recursos clásicos.
 * Cree y elimine blobs, colas o tablas.
 * Busque blobs, colas o tablas específicos.
-* Explore el contenido de los contenedores de blobs.
+* Explorar el contenido de Hola de contenedores de blob
 * Vea y navegue por directorios.
 * Cargue, descargue y elimine blobs y carpetas.
 * Vea y edite propiedades y metadatos de blob.
 * Genere claves SAS.
 * Administre y cree directivas de acceso a almacenamiento (SAP).
 * Busque blobs por prefijo.
-* Arrastre y coloque archivos para cargarlos o descargarlos.
+* Arrastrar y colocar tooupload de archivos o descarga
 
 #### <a name="known-issues"></a>Problemas conocidos
 
-* Al establecer el nivel de acceso público en un contenedor de blobs, el valor nuevo no se actualiza hasta que vuelva a establecer el foco en el contenedor.
-* Al abrir el cuadro de diálogo para establecer el nivel de acceso público, siempre se muestra “Sin acceso público” como valor predeterminado y no el valor real actual.
+* Al establecer el nivel de acceso público de contenedor de blob, valor nuevo de hello no se actualiza hasta que se vuelva a establecer el foco de hello en el contenedor de Hola
+* Cuando se abre el nivel de acceso público de hello diálogo tooset hello, siempre no muestra "acceso público" como hello, valor predeterminado y no Hola real actual
 * No se puede cambiar el nombre de los blobs descargados.
-* Las entradas del registro de actividades a veces se bloquean en un estado de progreso cuando se produce un error y el error no se muestra.
-* A veces se bloquea o se pone en blanco al intentar cargar o descargar un gran número de blobs.
+* Entradas del registro de actividad en ocasiones quedar "bloqueado" en una en curso de estado cuando se produce un error y no se muestra el error de Hola
+* A veces se bloquea o pone completamente en blanco al intentar tooupload o descarga un gran número de blobs
 * A veces no se puede cancelar una operación de copia.
-* Durante la creación de un contenedor (blob, cola o tabla), si indica un nombre no válido y continúa creando otro en otro tipo de contenedor, no podrá establecer el foco en el tipo nuevo.
+* Durante la creación de un contenedor (blob o cola o tabla), si un nombre no válido de entrada y continuar toocreate otra nueva en un tipo de contenedor diferentes no puede establecer foco en el nuevo tipo de Hola
 * No se puede crear una carpeta nueva ni cambiarle el nombre.
 
 

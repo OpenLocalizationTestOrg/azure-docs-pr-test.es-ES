@@ -1,6 +1,6 @@
 ---
-title: "Instalación de trabajos de base de datos elástica | Microsoft Docs"
-description: "Pasos de instalación de la característica de trabajo elástico."
+title: "trabajos de base de datos elástica aaaInstalling | Documentos de Microsoft"
+description: "Guiará a través de la instalación de función de trabajo elástico Hola."
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: e7a2d6dbcefbb31d76257eaf96ccc235d7a29416
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0349f66a4428f81d00d43681d7f2177f273ec032
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Información general sobre la instalación de Trabajos de base de datos elástica
-Los [**trabajos de base de datos elástica**](sql-database-elastic-jobs-overview.md) se pueden instalar a través de PowerShell o del Portal de Azure clásico. Obtendrá acceso para crear y administrar trabajos con la API de PowerShell solo si instala el paquete de PowerShell. Además, en este momento, las API de PowerShell proporcionan mucha más funcionalidad que el portal en este momento.
+[**Trabajos de base de datos elásticos** ](sql-database-elastic-jobs-overview.md) puede instalarse a través de PowerShell o a través de hello Portal.You clásico de Azure puede obtener acceso a toocreate y administrar los trabajos mediante Hola API de PowerShell solo si instalar paquetes de PowerShell de Hola. Además, Hola PowerShell APIs proporcionan una funcionalidad significativamente mayor que el portal de hello en este momento.
 
-Si ya instaló los **trabajos de base de datos elástica** a través del Portal a partir de un **grupo elástico** existente, la última versión preliminar de PowerShell incluye scripts para actualizar la instalación existente. Es muy recomendable actualizar la instalación a los componentes más recientes de los **trabajos de base de datos elástica** para aprovechar la nueva funcionalidad expuesta a través de las API de PowerShell.
+Si ya ha instalado **trabajos de base de datos elástica** a través de hello Portal desde una existente **grupo elástico**, última versión preliminar Powershell Hola incluye secuencias de comandos tooupgrade la instalación existente. Es altamente recomendado tooupgrade su toohello de instalación más reciente **trabajos de base de datos elástica** componentes en orden tootake aprovechar las nuevas funcionalidades expuestas a través de Hola PowerShell APIs.
 
 ## <a name="prerequisites"></a>Requisitos previos
 * Una suscripción de Azure. Para obtener una versión de evaluación gratuita, consulte [Versión de evaluación gratuita](https://azure.microsoft.com/pricing/free-trial/).
-* Azure PowerShell. Instale la versión más reciente mediante el [Instalador de plataforma web](http://go.microsoft.com/fwlink/p/?linkid=320376). Para obtener información detallada, vea [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
-* [utilidad de línea de comandos NuGet](https://nuget.org/nuget.exe) sirve para instalar el paquete de trabajos de base de datos elástica. Para obtener más información, consulte http://docs.nuget.org/docs/start-here/installing-nuget.
+* Azure PowerShell. Instalar la versión más reciente hello mediante hello [instalador de plataforma Web](http://go.microsoft.com/fwlink/p/?linkid=320376). Para obtener información detallada, vea [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
+* [Utilidad de línea de comandos de NuGet](https://nuget.org/nuget.exe) es tooinstall usado Hola bases de datos elásticas trabajos paquete. Para obtener más información, consulte http://docs.nuget.org/docs/start-here/installing-nuget.
 
-## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Descarga e importación del paquete de PowerShell de Trabajos de base de datos elástica
-1. Inicie la ventana de comandos de Microsoft Azure PowerShell y navegue al directorio donde descargó la utilidad de línea de comandos NuGet (nuget.exe).
-2. Descargue e importe el paquete de **trabajos de base de datos elástica** en el directorio actual con el siguiente comando:
+## <a name="download-and-import-hello-elastic-database-jobs-powershell-package"></a>Descargue e importe el paquete de PowerShell de trabajos de bases de datos elásticas Hola
+1. Inicia la ventana de comandos de PowerShell de Microsoft Azure y ve directorio toohello donde descargó la utilidad de línea de comandos del NuGet (nuget.exe).
+2. Descargue e importe **trabajos de base de datos elástica** paquete en el directorio actual de hello con hello siguiente comando:
    
         PS C:\>.\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
    
-    Los archivos de **trabajos de base de datos elástica** se ubican en el directorio local, en una carpeta con el nombre **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x**, donde *x.x.xxxx.x* indica el número de versión. Los cmdlets de PowerShell (incluidos los archivos .DLL de cliente necesarios) se ubican en el subdirectorio **tools\ElasticDatabaseJobs** y los scripts de PowerShell para instalar, actualizar y desinstalar también residen en el subdirectorio **tools**.
-3. Navegue al subdirectorio tools de la carpeta Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x. Para ello, escriba cd tools, como en este ejemplo:
+    Hola **trabajos de base de datos elástica** archivos se colocan en el directorio local de hello en una carpeta denominada **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** donde *x.x.xxxx.x* refleja el número de versión de Hola. cmdlets de PowerShell de Hello (incluidos los archivos .dll de cliente necesario) se encuentran en hello **tools\ElasticDatabaseJobs** subdirectorio hello tooinstall de secuencias de comandos de PowerShell, actualizar y desinstalar también residen en hello  **herramientas** subdirectorio.
+3. Desplácese subdirectorio herramientas toohello bajo la carpeta de hello Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x escribiendo cd de herramientas, por ejemplo:
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-4. Ejecute el script .\InstallElasticDatabaseJobsCmdlets.ps1 para copiar el directorio ElasticDatabaseJobs en $home\Documents\WindowsPowerShell\Modules. Así también importará automáticamente el módulo para su uso, por ejemplo:
+4. Ejecute el directorio de hello.\InstallElasticDatabaseJobsCmdlets.ps1 scripts toocopy hello ElasticDatabaseJobs en $home\Documents\WindowsPowerShell\Modules. Esto también importará automáticamente módulo Hola para su uso, por ejemplo:
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
-## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>Instalación de componentes de Trabajos de base de datos elástica mediante PowerShell
-1. Inicie una ventana de comandos de Microsoft Azure PowerShell y navegue hasta el subdirectorio \tools en la carpeta Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x: escriba cd \tools
+## <a name="install-hello-elastic-database-jobs-components-using-powershell"></a>Instalar componentes de trabajos de bases de datos elásticas hello mediante PowerShell
+1. Inicia una ventana de comandos de PowerShell de Microsoft Azure y ve toohello \tools subdirectorio bajo la carpeta de Hola Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x: escriba cd \tools
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-2. Ejecute el script .\InstallElasticDatabaseJobs.ps1 de PowerShell y proporcione valores para las variables que solicite. Este script creará los componentes descritos en [Componentes y precios de trabajos de base de datos elástica](sql-database-elastic-jobs-overview.md#components-and-pricing) con la configuración del Servicio en la nube de Azure para usar adecuadamente los componentes dependientes.
+2. Ejecutar script de PowerShell de hello.\InstallElasticDatabaseJobs.ps1 y suministrar valores de sus variables solicitados. Esta secuencia de comandos creará los componentes de hello descritos en [bases de datos elásticas trabajos componentes y precios](sql-database-elastic-jobs-overview.md#components-and-pricing) además de configurar Hola servicio de nube de Azure tooappropriately usan componentes dependientes de Hola.
 
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
 
-Al ejecutar este comando, se abrirá una ventana para especificar el **nombre de usuario** y la **contraseña**. No especifique aquí sus credenciales de Azure, sino el nombre de usuario y contraseña serán las credenciales de administrador que desea crear para el nuevo servidor.
+Al ejecutar este comando, se abrirá una ventana para especificar el **nombre de usuario** y la **contraseña**. No trata sus credenciales de Azure, escriba el nombre de usuario de Hola y la contraseña que se desea toocreate para el nuevo servidor de hello las credenciales de administrador de Hola.
 
-Los parámetros proporcionados en esta invocación de ejemplo pueden modificarse para tener la configuración que quiera. La siguiente tabla ofrece más información sobre el comportamiento de cada parámetro:
+parámetros de Hello proporcionados en esta invocación de ejemplo pueden modificarse para la configuración deseada. siguiente Hola proporciona más información sobre el comportamiento de Hola de cada parámetro:
 
 <table style="width:100%">
   <tr>
@@ -69,55 +69,55 @@ Los parámetros proporcionados en esta invocación de ejemplo pueden modificarse
 
 <tr>
     <td>ResourceGroupName</td>
-    <td>Proporciona el nombre del grupo de recursos de Azure creado para contener los componentes de Azure recién creados. El valor predeterminado de este parámetro es "__ElasticDatabaseJob". No se recomienda cambiar este valor.</td>
+    <td>Proporciona el nombre del grupo de recursos de Azure de hello creado hello toocontain que acaba de crear componentes de Azure. Este parámetro tiene como valor predeterminado demasiado "__ElasticDatabaseJob". No es recomendable toochange este valor.</td>
     </tr>
 
 </tr>
 
     <tr>
     <td>ResourceGroupLocation</td>
-    <td>Proporciona la ubicación de Azure que se usará para los componentes de Azure recién creados. El valor predeterminado de este parámetro es la ubicación Central EE. UU.</td>
+    <td>Proporciona hello toobe de ubicación de Azure permiten Hola que acaba de crear componentes de Azure. Este parámetro tiene como valor predeterminado toohello ubicación Central US.</td>
 </tr>
 
 <tr>
     <td>ServiceWorkerCount</td>
-    <td>Proporciona el número de trabajos del servicio que se va a instalar. El valor predeterminado de este parámetro es 1. Puede usarse un número mayor de trabajos para escalar horizontalmente el servicio y ofrecer alta disponibilidad. Se recomienda usar "2" en las implementaciones que requieren alta disponibilidad del servicio.</td>
+    <td>Proporciona el número de Hola de tooinstall de los trabajadores de servicio. Este parámetro tiene como valor predeterminado too1. Un número mayor de los trabajadores puede ser usado tooscale out Hola servicio y tooprovide alta disponibilidad. Se recomienda toouse "2" para las implementaciones que necesitan una alta disponibilidad del servicio de Hola.</td>
     </tr>
 
 </tr>
     <tr>
     <td>ServiceVmSize</td>
-    <td>Proporciona el tamaño de máquina virtual para su uso dentro del servicio en la nube. El valor predeterminado de este parámetro es A0. Se aceptan los valores de parámetros de A0/A1/A2/A3, que hacen que el rol de trabajo use un tamaño ExtraSmall/Small/Medium/Large, respectivamente. Para obtener más información sobre los tamaños de rol de trabajo, consulte [Componentes y precios de trabajos de base de datos elástica](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Proporciona el tamaño VM de hello para el uso dentro de hello servicio en la nube. Este parámetro tiene como valor predeterminado tooA0. Se aceptan valores de parámetros de A0/A1 y A2/A3 que hacer al trabajo de hello rol toouse un tamaño ExtraSmall/pequeño/mediano/grande, respectivamente. Para obtener más información sobre los tamaños de rol de trabajo, consulte [Componentes y precios de trabajos de base de datos elástica](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Proporciona el objetivo de nivel de servicio para un servidor Standard Edition. El valor predeterminado de este parámetro es S0. Se aceptan valores de parámetro de S0/S1/S2/S3 lo que hace que Base de datos SQL de Azure use el SLO respectivo. Para obtener más información sobre SLO de SQL Database, consulte [Componentes y precios de trabajos de base de datos elástica](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Proporciona el objetivo de nivel de servicio de Hola para un servidor Standard edition. Este parámetro tiene como valor predeterminado tooS0. Se aceptan valores de parámetro de S0, S1, S2 y S3 que hacer Hola base de datos de SQL Azure toouse Hola respectivo SLO. Para obtener más información sobre SLO de SQL Database, consulte [Componentes y precios de trabajos de base de datos elástica](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerAdministratorUserName</td>
-    <td>Proporciona el nombre de usuario del administrador del servidor de Base de datos SQL de Azure recién creado. Cuando no se especifica, se abrirá una ventana de credenciales de PowerShell para solicitar las credenciales.</td>
+    <td>Proporciona el nombre de usuario de administrador de Hola para hello que acaba de crear el servidor de base de datos de SQL Azure. Cuando no se especifica, abrirá a una ventana de credenciales de PowerShell tooprompt credenciales Hola.</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerAdministratorPassword</td>
-    <td>Proporciona la contraseña del administrador del servidor de Base de datos SQL de Azure recién creado. Cuando no se proporciona, se abrirá una ventana de credenciales de PowerShell para solicitar las credenciales.</td>
+    <td>Proporciona la contraseña de administrador de Hola para hello que acaba de crear el servidor de base de datos de SQL Azure. Cuando no se proporciona una ventana de credenciales PowerShell abrirá tooprompt credenciales Hola.</td>
 </tr>
 </table>
 
-En sistemas destinados a tener grandes cantidades de trabajos ejecutándose en paralelo en gran cantidad de bases de datos, se recomienda especificar parámetros como, por ejemplo: -ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2.
+Para los sistemas que tienen como destino con un número grande de trabajos que se ejecutan en paralelo en un gran número de bases de datos, se recomienda como parámetros de toospecify: ServiceWorkerCount - 2 - ServiceVmSize A2 - SqlServerDatabaseSlo S2.
 
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\InstallElasticDatabaseJobs.ps1 -ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2
 
 ## <a name="update-an-existing-elastic-database-jobs-components-installation-using-powershell"></a>Actualización de una instalación existente de componentes de Trabajos de base de datos elástica mediante PowerShell
-**trabajos de base de datos elástica** se pueden actualizar en una instalación existente para escalado y alta disponibilidad. Este proceso permite actualizaciones futuras del código de servicio sin tener que quitar y volver a crear la base de datos de control. Este proceso también puede usarse dentro de la misma versión para modificar el tamaño de máquina virtual del servicio o el número de trabajos de servidor.
+**trabajos de base de datos elástica** se pueden actualizar en una instalación existente para escalado y alta disponibilidad. Este proceso permite futuras actualizaciones de código de servicio sin necesidad de toodrop y volver a crear la base de datos de control de Hola. Este proceso también puede usarse en hello misma versión toomodify Hola servicio VM tamaño u Hola servidor worker del recuento.
 
-Para actualizar el tamaño de máquina virtual de una instalación, ejecute el siguiente script con parámetros actualizados con los valores que elija.
+tamaño de máquina virtual de hello tooupdate de una instalación, Hola ejecución siguiente secuencia de comandos con parámetros actualiza los valores de toohello de su elección.
 
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\UpdateElasticDatabaseJobs.ps1
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\UpdateElasticDatabaseJobs.ps1 -ServiceVmSize A1 -ServiceWorkerCount 2
@@ -130,7 +130,7 @@ Para actualizar el tamaño de máquina virtual de una instalación, ejecute el s
 
   <tr>
     <td>ResourceGroupName</td>
-    <td>Identifica el nombre del grupo de recursos de Azure usado al instalar inicialmente componentes de Trabajos de base de datos elástica. El valor predeterminado de este parámetro es "__ElasticDatabaseJob". Puesto que no se recomienda cambiar este valor, no debería tener que especificar este parámetro.</td>
+    <td>Identifica el nombre del grupo de recursos de Azure de hello utilizado al instalar componentes de trabajo de base de datos elástica de hello inicialmente. Este parámetro tiene como valor predeterminado demasiado "__ElasticDatabaseJob". Ya que no es recomendable toochange este valor, que no debería haber toospecify este parámetro.</td>
     </tr>
 </tr>
 
@@ -138,44 +138,44 @@ Para actualizar el tamaño de máquina virtual de una instalación, ejecute el s
 
   <tr>
     <td>ServiceWorkerCount</td>
-    <td>Proporciona el número de trabajos del servicio que se va a instalar.  El valor predeterminado de este parámetro es 1.  Puede usarse un número mayor de trabajos para escalar horizontalmente el servicio y ofrecer alta disponibilidad.  Se recomienda usar "2" en las implementaciones que requieren alta disponibilidad del servicio.</td>
+    <td>Proporciona el número de Hola de tooinstall de los trabajadores de servicio.  Este parámetro tiene como valor predeterminado too1.  Un número mayor de los trabajadores puede ser usado tooscale out Hola servicio y tooprovide alta disponibilidad.  Se recomienda toouse "2" para las implementaciones que necesitan una alta disponibilidad del servicio de Hola.</td>
 </tr>
 
 </tr>
 
     <tr>
     <td>ServiceVmSize</td>
-    <td>Proporciona el tamaño de máquina virtual para su uso dentro del servicio en la nube. El valor predeterminado de este parámetro es A0. Se aceptan los valores de parámetros de A0/A1/A2/A3, que hacen que el rol de trabajo use un tamaño ExtraSmall/Small/Medium/Large, respectivamente. Para obtener más información sobre los tamaños de rol de trabajo, consulte [Componentes y precios de trabajos de base de datos elástica](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Proporciona el tamaño VM de hello para el uso dentro de hello servicio en la nube. Este parámetro tiene como valor predeterminado tooA0. Se aceptan valores de parámetros de A0/A1 y A2/A3 que hacer al trabajo de hello rol toouse un tamaño ExtraSmall/pequeño/mediano/grande, respectivamente. Para obtener más información sobre los tamaños de rol de trabajo, consulte [Componentes y precios de trabajos de base de datos elástica](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </table>
 
-## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>Instalación de componentes de Trabajos de base de datos elástica mediante el Portal
-Una vez creado el [grupo elástico](sql-database-elastic-pool-manage-portal.md), puede instalar componentes de los **trabajos de base de datos elástica** para habilitar la ejecución de tareas administrativas en cada base de datos del grupo. A diferencia de lo que sucede cuando se usan las API de PowerShell de **Trabajos de base de datos elástica** , la interfaz del portal está actualmente restringida exclusivamente a la ejecución en un grupo existente.
+## <a name="install-hello-elastic-database-jobs-components-using-hello-portal"></a>Instalar componentes de trabajos de bases de datos elásticas hello mediante Hola Portal
+Una vez que tenga [crea un grupo elástico](sql-database-elastic-pool-manage-portal.md), puede instalar **trabajos de base de datos elástica** ejecución tooenable de componentes de las tareas administrativas en cada base de datos en el grupo elástico Hola. A diferencia de cuando utilizando Hola **trabajos de base de datos elástica** PowerShell APIs, interfaz del portal de hello está restringido actualmente tooonly ejecutar en un grupo existente.
 
-**Tiempo estimado para completar el tutorial:** 10 minutos.
+**Estimado toocomplete de tiempo:** 10 minutos.
 
-1. En la vista del panel del grupo elástico a través de [Azure Portal](https://portal.azure.com/#), haga clic en **Crear trabajo**.
-2. Si va a crear un trabajo por primera vez, deberá instalar los **trabajos de base de datos elástica** haciendo clic en **TÉRMINOS DE VISTA PREVIA**.
-3. Acepte los términos haciendo clic en la casilla de verificación.
-4. En la vista "Instalar servicios", haga clic en **CREDENCIALES DEL TRABAJO**.
+1. Desde la vista de panel de Hola de grupo elástico de Hola a través de hello [Portal de Azure](https://portal.azure.com/#) , haga clic en **crear trabajo**.
+2. Si va a crear un trabajo para hello primera vez, debe instalar **trabajos de base de datos elástica** haciendo clic en **términos de vista previa**.
+3. Aceptar términos Hola haciendo clic en Hola casilla de verificación.
+4. En la vista de Hola "instalar servicios", haga clic en **CREDENCIALES de trabajo**.
    
-    ![Instalación de los servicios][1]
-5. Escriba un nombre de usuario y una contraseña de administración de la base de datos. Como parte de la instalación, se creará un nuevo servidor de base de datos SQL de Azure. En este nuevo servidor, se creará una nueva base de datos, conocida como base de datos de control, que sirve para contener los metadatos de Trabajos de base de datos elástica. El nombre de usuario y la contraseña que se crean aquí se usan con el fin de iniciar sesión en la base de datos de control. Se usa una credencial diferente para la ejecución de scripts en las bases de datos del grupo.
+    ![Instalar servicios de Hola][1]
+5. Escriba un nombre de usuario y una contraseña de administración de la base de datos. Como parte de la instalación de hello, se crea un nuevo servidor de base de datos de SQL Azure. Dentro de este nuevo servidor, una nueva base de datos, conocida como base de datos de control de hello, se crea y utiliza los metadatos de hello toocontain para los trabajos de base de datos elástica. nombre de usuario de Hello y una contraseña creados aquí se usan a fin de hello del inicio de sesión de base de datos de control de toohello. Se usa una credencial independiente para la ejecución de secuencias de comandos en bases de datos de hello en el grupo de Hola.
    
     ![Creación del nombre de usuario y la contraseña][2]
-6. Haga clic en el botón Aceptar. Los componentes se crean en pocos minutos en un nuevo [grupo de recursos](../azure-resource-manager/resource-group-overview.md). El nuevo grupo de recursos se ancla al panel de inicio, tal como se muestra a continuación. Una vez creados, los trabajos de bases de datos elásticas (servicio de nube, base de datos SQL, bus de servicio y almacenamiento) se crearán en el grupo.
+6. Haga clic en el botón Aceptar Hola. componentes de Hola se crean automáticamente en unos minutos en una nueva [grupo de recursos](../azure-resource-manager/resource-group-overview.md). nuevo grupo de recursos Hola está anclado toohello iniciar panel, tal y como se muestra a continuación. Todos los trabajos de base de datos una vez creados, elástica (servicio en la nube, base de datos SQL, Bus de servicio y almacenamiento) se crean en el grupo de Hola.
    
     ![Grupo de recursos en el panel de inicio][3]
-7. Si intenta crear o administrar un trabajo mientras se está instalando trabajos de bases de datos elásticas, se mostrará el mensaje siguiente al proporcionar las **Credenciales** .
+7. Si intenta toocreate o administrar un trabajo mientras se está instalando los trabajos de base de datos elástica, al proporcionar **credenciales** , verá el siguiente mensaje de Hola.
    
     ![Implementación en curso][4]
 
-Si se requiere la desinstalación, elimine el grupo de recursos. Consulte [Desinstalación de componentes de trabajos de base de datos elástica](sql-database-elastic-jobs-uninstall.md).
+Si se requiere la desinstalación, elimine el grupo de recursos de Hola. Vea [cómo toouninstall Hola bases de datos elásticas trabajo componentes](sql-database-elastic-jobs-uninstall.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Asegúrese de que se cree una credencial con los derechos adecuados para la ejecución del script en cada base de datos del grupo. Para obtener más información, consulte [Protección de bases de datos SQL](sql-database-manage-logins.md).
-Consulte [Creación y administración de trabajos de base de datos elástica](sql-database-elastic-jobs-create-and-manage.md).
+Asegúrese de una credencial con los derechos apropiados de hello para la ejecución del script se crea en cada base de datos del grupo de hello, para más información, vea [proteger la base de datos de SQL](sql-database-manage-logins.md).
+Vea [crear y administrar los trabajos de una base de datos elástica](sql-database-elastic-jobs-create-and-manage.md) tooget iniciado.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-jobs-service-installation/screen-1.png

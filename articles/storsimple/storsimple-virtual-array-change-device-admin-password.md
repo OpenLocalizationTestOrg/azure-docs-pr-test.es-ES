@@ -1,6 +1,6 @@
 ---
-title: "Cambio de la contraseña del administrador de dispositivos de StorSimple Virtual Array | Microsoft Docs"
-description: "Describe cómo usar Azure Portal o la interfaz de usuario web de StorSimple Virtual Array para cambiar la contraseña del administrador de dispositivos."
+title: "contraseña de administrador de dispositivos de StorSimple Virtual Array aaaChange | Documentos de Microsoft"
+description: "Describe cómo toouse Hola o portal de Azure o la contraseña de administrador dispositivo Hola de toochange de la interfaz de usuario de web de StorSimple Virtual Array."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,67 +15,67 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 260a23003d705e6598da8c51bb5a96f2539a0014
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 531b395df7aeade0a909360797c6b0f0abd9fd1e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Cambio de la contraseña del administrador de dispositivos de la matriz virtual de StorSimple mediante StorSimple Device Manager
+# <a name="change-hello-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Cambiar contraseña del Administrador de dispositivos de StorSimple Virtual Array de Hola a través del Administrador de dispositivos de StorSimple
 
 ## <a name="overview"></a>Información general
 
-Cuando use la interfaz de Windows PowerShell para acceder a StorSimple Virtual Array, se le pedirá que escriba una contraseña de administrador de dispositivos. Cuando el dispositivo StorSimple se aprovisione e inicie por primera vez, la contraseña predeterminada es *Password1*. Para la seguridad de los datos, la contraseña predeterminada caduca la primera vez que inicia sesión y deberá cambiar esta contraseña.
+Cuando usas tooaccess de interfaz de Windows PowerShell de Hola Hola StorSimple Virtual Array, estás tooenter requiere una contraseña de administrador de dispositivos. Cuando el dispositivo de StorSimple de hello en primer lugar se aprovisionan y se inicia, contraseña predeterminada de hello es *Password1*. Para la seguridad de Hola de los datos, contraseña predeterminada de hello expira hello primera vez que inicie una sesión y es necesario toochange esta contraseña.
 
-También puede utilizar la interfaz de usuario web local o Azure Portal para cambiar la contraseña del administrador de dispositivos en cualquier momento después de que el dispositivo se implemente en un entorno de producción. En este artículo se describe cada uno de estos procedimientos.
+También puede usar cualquier hello web local interfaz de usuario o hello toochange portal Azure Hola contraseña de administrador en cualquier momento después de que el dispositivo de Hola se implementa en el entorno de producción. En este artículo se describe cada uno de estos procedimientos.
 
  ![hoja de dispositivos](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
 
-## <a name="use-the-azure-portal-to-change-the-password"></a>Uso de Azure Portal para cambiar la contraseña
+## <a name="use-hello-azure-portal-toochange-hello-password"></a>Usar hello toochange portal Azure Hola contraseña
 
-Realice los pasos siguientes para cambiar la contraseña del administrador de dispositivos a través de Azure Portal.
+Realizar Hola siguiendo los pasos toochange Hola contraseña de administrador a través de hello portal de Azure.
 
-#### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Para cambiar la contraseña del administrador de dispositivos a través de Azure Portal
+#### <a name="toochange-hello-device-administrator-password-via-hello-azure-portal"></a>contraseña de administrador de dispositivos de toochange Hola a través de hello portal de Azure
 
-1. En la página de aterrizaje del servicio, seleccione el servicio, haga doble clic en su nombre y, en la sección **Administración**, haga clic en **Dispositivos**. Se abrirá la hoja **Dispositivos**, que enumera todos los dispositivos de StorSimple Virtual Array.
+1. En la página de inicio del servicio de hello, seleccione su servicio, haga doble clic Hola nombre del servicio y, a continuación, en hello **administración** sección, haga clic en **dispositivos**. Se abrirá hello **dispositivos** hoja que enumera todos los dispositivos de StorSimple Virtual Array.
 
-2. En la hoja **Dispositivos**, haga doble clic en el dispositivo que requiere un cambio de contraseña.
+2. Hola **dispositivos** hoja, haga doble clic en el dispositivo de Hola que requiere un cambio de contraseña.
 
-3. En la hoja **Configuración** del dispositivo, haga clic en **Seguridad**.
+3. Hola **configuración** hoja para el dispositivo, haga clic en **seguridad**.
 
-4. En la hoja **Configuración de seguridad**, realice las siguientes operaciones:
+4. Hola **configuración de seguridad** hoja, Hola siguientes:
    
-   1. Desplácese hacia abajo a la sección **Contraseña de administrador de dispositivos** . Proporcione una contraseña de administrador que tenga entre 8 y 15 caracteres.
-   2. Confirme la contraseña.
-   3. Haga clic en **Guardar** en la parte superior de la hoja.
+   1. Desplácese hacia abajo toohello **contraseña de administrador de dispositivos** sección. Proporcione una contraseña de administrador que tenga entre 8 caracteres too15.
+   2. Confirmar contraseña Hola.
+   3. Haga clic en **guardar** princip Hola de hoja de Hola.
 
-La contraseña del administrador de dispositivos ya está actualizada. Puede usar esta contraseña modificada para tener acceso al dispositivo de forma local.
+contraseña de administrador de dispositivos de Hola se ha actualizado. Puede usar este dispositivo de contraseña modificada tooaccess Hola localmente.
 
 ![Hoja Configuración de seguridad](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
 
-## <a name="use-the-local-web-ui-to-change-the-password"></a>Uso de la interfaz de usuario web local para cambiar la contraseña
+## <a name="use-hello-local-web-ui-toochange-hello-password"></a>Usar hello web local UI toochange Hola contraseña
 
-Realice los pasos siguientes para cambiar la contraseña del administrador de dispositivos a través de la interfaz de usuario web local.
+Realizar Hola siguiendo los pasos toochange Hola contraseña de administrador a través de la interfaz de usuario de web local Hola.
 
-#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Para cambiar la contraseña del administrador de dispositivos a través de la interfaz de usuario web local
+#### <a name="toochange-hello-device-administrator-password-via-hello-local-web-ui"></a>contraseña del Administrador de dispositivos de toochange Hola a través de la interfaz de usuario de web local Hola
 
-1. En la interfaz de usuario web local, haga clic en **Mantenimiento**  >  **Cambio de contraseña** para el dispositivo.
+1. En la interfaz de usuario web local de hello, haga clic en **mantenimiento** > **cambio de contraseña** para el dispositivo.
    
     ![cambiar password1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
-2. Escriba la **Contraseña actual**.
-3. Introduzca una **Nueva contraseña**. La contraseña debe tener al menos 8 caracteres. Debe contener 3 de 4 de los siguientes requisitos: caracteres en mayúsculas, minúsculas, números y caracteres especiales.
+2. Escriba hello **contraseña actual**.
+3. Introduzca una **Nueva contraseña**. contraseña de Hello debe ser al menos 8 caracteres. Debe contener 3 de 4 siguiente hello: caracteres en mayúsculas, minúsculas, numéricos y especiales.
    
-    Tenga en cuenta que la contraseña no puede ser la misma que ninguna de las 24 últimas contraseñas.
-4. Vuelva a escribir la contraseña para confirmarla.
+    Tenga en cuenta que la contraseña no puede ser igual que Hola últimas 24 contraseñas Hola.
+4. Vuelva a escribir Hola contraseña tooconfirm lo.
    
     ![cambiar password2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. En la parte inferior de la página, haga clic en **Aplicar**. Se aplica la nueva contraseña. Si el cambio de contraseña no se realiza correctamente, aparece el siguiente error:
+5. En la parte inferior de Hola de página de hello, haga clic en **aplicar**. Ahora se aplica la nueva contraseña de Hola. Si el cambio de contraseña hello no se realiza correctamente, verá Hola siguiente error:
    
     ![error de contraseña](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
-    Después de que la contraseña se haya actualizado correctamente, se le notifica. A continuación, puede usar esta contraseña modificada para tener acceso al dispositivo de forma local.
+    Una vez que se actualizó correctamente la contraseña de hello, se le notificará. A continuación, puede usar este dispositivo de contraseña modificada tooaccess Hola localmente.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información para [administrar la matriz virtual de StorSimple](storsimple-ova-web-ui-admin.md).
+Obtenga información acerca de cómo demasiado[administrar la matriz Virtual de StorSimple](storsimple-ova-web-ui-admin.md).
 

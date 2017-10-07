@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Amazon Web Services (AWS) | Microsoft Docs"
-description: "Obtenga información sobre cómo configurar el inicio de sesión único entre Azure Active Directory y Amazon Web Services (AWS)."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Amazon Web Services (AWS)."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,120 +14,120 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 0fb9c8f428368271b548e3f174726fa01ea910c5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1b79572ace63f6174ce4fa014c49bf44bd728228
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Tutorial: integración de Azure Active Directory con Amazon Web Service (AWS)
 
-En este tutorial, obtendrá información sobre cómo integrar Amazon Web Services (AWS) con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate Amazon Web Services (AWS) con Azure Active Directory (Azure AD).
 
-La integración de Amazon Web Services (AWS) con Azure AD proporciona las siguientes ventajas:
+Integración de Amazon Web Services (AWS) con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a Amazon Web Services (AWS).
-- Puede permitir que los usuarios inicien sesión automáticamente en Amazon Web Services (AWS) (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooAmazon Web Services (AWS)
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooAmazon Web Services (AWS) (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 <!--## Overview
 
-To enable single sign-on with Amazon Web Services (AWS), it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Amazon Web Services (AWS).
+tooenable single sign-on with Amazon Web Services (AWS), it must be configured toouse Azure Active Directory as an identity provider. This guide provides information and tips on how tooperform this configuration in Amazon Web Services (AWS).
 
 >[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
+>This embedded guide is brand new in hello new Azure portal, and we’d love toohear your thoughts. Use hello Feedback ? button at hello top of hello portal tooprovide feedback. hello older guide for using hello [Azure classic portal](https://manage.windowsazure.com) tooconfigure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Amazon Web Services (AWS), necesita los siguientes elementos:
+tooconfigure integración de Azure AD con Amazon Web Services (AWS), necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Suscripción habilitada para el inicio de sesión único en Amazon Web Services (AWS)
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No debe usar el entorno de producción, a menos que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Adición de Amazon Web Services (AWS) desde la galería
+1. Adición de Amazon Web Services (AWS) desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Adición de Amazon Web Services (AWS) desde la galería
-Para configurar la integración de Amazon Web Services (AWS) en Azure AD, es preciso agregar Amazon Web Services (AWS) desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-amazon-web-services-aws-from-hello-gallery"></a>Adición de Amazon Web Services (AWS) desde la Galería de Hola
+integración de hello tooconfigure de Amazon Web Services (AWS) en Azure AD, deberá tooadd Amazon Web Services (AWS) de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Amazon Web Services (AWS) desde la galería, realice los pasos siguientes:**
+**tooadd Amazon Web Services (AWS) desde la Galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[Portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Haga clic en el botón **Agregar** situado en la parte superior del cuadro de diálogo.
+3. Haga clic en **agregar** botón en la parte superior de saludo del cuadro de diálogo de Hola.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **Amazon Web Services (AWS)**.
+4. En el cuadro de búsqueda de hello, escriba **Amazon Web Services (AWS)**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_search.png)
 
-5. En el panel de resultados, seleccione **Amazon Web Services (AWS)** y, después, haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **Amazon Web Services (AWS)**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Amazon Web Services (AWS) con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Amazon Web Services (AWS) para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Amazon Web Services (AWS).
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Amazon Web Services (AWS) es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Amazon Web Services (AWS) debe toobe establecido.
 
-Esta relación de vínculo se establece al asignar el valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en Amazon Web Services (AWS).
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en Amazon Web Services (AWS).
 
-Para configurar y probar el inicio de sesión único de Azure AD con Amazon Web Services (AWS), es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con Amazon Web Services (AWS), deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de Amazon Web Services](#creating-an-amazon-web-services-test-user)**: para tener un homólogo de Britta Simon en Amazon Web Services (AWS) que esté vinculado a la representación de ella en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Creación de un usuario de prueba de Amazon Web Services](#creating-an-amazon-web-services-test-user)**  -toohave un equivalente de Britta Simon en Amazon Web Services (AWS) que está vinculado toohello Azure AD representación de ella.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación de Amazon Web Services (AWS).
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Amazon Web Services (AWS).
 
-**Para configurar el inicio de sesión único de Azure AD con Amazon Web Services (AWS), realice los pasos siguientes:**
+**tooconfigure inicio de sesión único en Azure AD con Amazon Web Services (AWS), lleve a cabo Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación de **Amazon Web Services (AWS)**, haga clic en **Inicio de sesión único**.
+1. Hola Portal de Azure, en hello **Amazon Web Services (AWS)** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo**, seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, como **modo** seleccione **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de Amazon Web Services (AWS)**, el usuario no tiene que realizar ningún paso ya que la aplicación se ha integrado previamente con Azure.
+3. En hello **Amazon Web Services (AWS) dominio y las direcciones URL** sección, hello usuario no tiene tooperform todos los pasos tal y como aplicación hello ya está integrado previamente con Azure.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_url.png)
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo XML en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo XML de hello en el equipo.
     
     ![Configurar inicio de sesión único](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_certificate.png)
 
-5. La aplicación de software de Amazon Web Services (AWS) espera las aserciones de SAML en un formato concreto. Configure las siguientes notificaciones para esta aplicación. Puede administrar los valores de estos atributos en la sección "**Atributos de usuario**" de la página de integración de aplicaciones. La siguiente captura de pantalla le muestra un ejemplo de esto.
+5. Hola aplicación de Software de Amazon Web Services (AWS) espera las aserciones de SAML de hello en un formato concreto. Configure Hola después de notificaciones para esta aplicación. Puede administrar valores de hello de estos atributos de Hola "**atributos de usuario**" sección en la página de integración de aplicaciones. Hola siguiente captura de pantalla muestra un ejemplo de esto.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_attribute.png)
 
-6. En la sección **Atributos de usuario** del cuadro de diálogo **Inicio de sesión único**, configure el atributo Token SAML como muestra la imagen anterior y realice los siguientes pasos:
+6. Hola **atributos de usuario** sección en hello **inicio de sesión único** cuadro de diálogo, configurar atributos de token de SAML como se muestra en la imagen de hello anterior y realizar Hola pasos:
     
     | Nombre del atributo  | Valor de atributo | Espacio de nombres |
     | --------------- | --------------- | --------------- |
@@ -135,25 +135,25 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
     | Rol            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     
     >[!TIP]
-    >Debe configurar el aprovisionamiento de usuarios en Azure AD para capturar todos los roles de la consola de AWS. Consulte los pasos de aprovisionamiento a continuación.
+    >Necesita tooconfigure Hola aprovisionamiento de usuarios en Azure AD toofetch todos los roles de Hola desde la consola de AWS. Consulte Hola pasos de aprovisionamiento.
 
-    a. Haga clic en **Agregar atributo** para abrir el cuadro de diálogo **Agregar atributo**.
+    a. Haga clic en **Agregar atributo** tooopen hello **Agregar atributo** cuadro de diálogo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_04.png)
 
-    b. En el cuadro de texto **Nombre**, escriba el nombre que se muestra para la fila.
+    b. Hola **nombre** cuadro de texto, nombre de atributo de tipo hello se muestra para esa fila.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_05.png)
 
-    c. En la lista **Valor**, seleccione el atributo que se muestra para esa fila. Agregue el valor del espacio de nombres tal como se ha indicado anteriormente.
+    c. De hello **valor** lista, el valor de atributo de tipo hello se muestra para esa fila. Agregue el valor de Namespace de hello tal como se indica anteriormente.
     
     d. Haga clic en **Aceptar**.
 
-7. Haga clic en el botón **Guardar** para guardar la configuración en Azure.
+7. Haga clic en **guardar** botón Configuración de hello toosave en Azure.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_general_400.png)
 
-8. En otra ventana del explorador, inicie sesión en su sitio de la compañía de Amazon Web Services (AWS) como administrador.
+8. En otra ventana del explorador, sitio de empresa de Amazon Web Services (AWS) tooyour de inicio de sesión como administrador.
 
 9. Haga clic en **Página principal de la consola**.
    
@@ -167,19 +167,19 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
    
     ![Configurar inicio de sesión único][13]
 
-12. En la página de diálogo **Configure Provider** (Configurar proveedor), realice los pasos siguientes:
+12. En hello **Configurar proveedor** cuadro de diálogo, siga los pasos de hello:
    
     ![Configurar inicio de sesión único][14]
  
     a. En **Tipo de proveedor**, seleccione **SAML**.
 
-    b. En el cuadro de texto **Provider Name** (Nombre de proveedor), escriba un nombre de proveedor (por ejemplo, *WAAD*).
+    b. Hola **nombre de proveedor** cuadro de texto, escriba un nombre de proveedor (p. ej.: *WAAD*).
 
-    c. Haga clic en **Elegir archivo**para cargar el archivo de metadatos descargado.
+    c. tooupload el archivo de metadatos descargado, haga clic en **Elegir archivo**.
 
     d. Haga clic en **Siguiente paso**.
 
-13. En la página de diálogo **Verify Provider Information** (Comprobar la información del proveedor), haga clic en **Crear**. 
+13. En hello **Compruebe la información de proveedor** página del cuadro de diálogo, haga clic en **crear**. 
     
     ![Configurar inicio de sesión único][15]
 
@@ -187,136 +187,136 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
     
     ![Configurar inicio de sesión único][16]
 
-15. En el cuadro de diálogo **Set Role Name** (Establecer nombre de rol), realice los siguientes pasos: 
+15. En hello **establecer el nombre de rol** cuadro de diálogo, realizar Hola pasos: 
     
     ![Configurar inicio de sesión único][17] 
 
-    a. En el cuadro de texto **Nombre de rol**, escriba un nombre de rol (por ejemplo, *TestUser*). 
+    a. Hola **nombre de la función** cuadro de texto, escriba un nombre de rol (p. ej.: *TestUser*). 
 
     b. Haga clic en **Siguiente paso**.
 
-16. En el cuadro de diálogo **Select Role Type** (Seleccionar tipo de rol), realice los siguientes pasos: 
+16. En hello **Seleccionar tipo de rol** cuadro de diálogo, realizar Hola pasos: 
     
     ![Configurar inicio de sesión único][18] 
 
     a. Seleccione **Rol de acceso del proveedor de identidades**. 
 
-    b. En la sección **Conceder acceso de inicio de sesión único web (WebSSO)** a los proveedores de SAML, haga clic en **Seleccionar**.
+    b. Hola **Grant Web Single Sign-On (WebSSO) tooSAML proveedores de acceso a** sección, haga clic en **seleccione**.
 
-17. En el cuadro de diálogo **Establecer confianza** , realice los siguientes pasos:  
+17. En hello **establecer confianza** cuadro de diálogo, realizar Hola pasos:  
     
     ![Configurar inicio de sesión único][19] 
 
-    a. Como proveedor de SAML, seleccione el proveedor de SAML que ha creado antes (por ejemplo, *WAAD*).
+    a. Como proveedor SAML, seleccione el proveedor SAML de Hola que haya creado previamente (p. ej.: *WAAD*)
   
     b. Haga clic en **Siguiente paso**.
 
-18. En el diálogo **Verify Role Trust** (Comprobar la confianza del rol), haga clic en **Paso siguiente**.
+18. En hello **comprobar confiar en rol** cuadro de diálogo, haga clic en **siguiente paso**.
     
     ![Configurar inicio de sesión único][32]
 
-19. En el diálogo **Attach Policy** (Adjuntar directiva), haga clic en **Paso siguiente**.
+19. En hello **asociar directiva** cuadro de diálogo, haga clic en **siguiente paso**.
     
     ![Configurar inicio de sesión único][33]
 
-20. En el cuadro de diálogo **Revisar** , realice los pasos siguientes:
+20. En hello **revisión** cuadro de diálogo, realizar Hola pasos:
     
     ![Configurar inicio de sesión único][34]
  
     a. Haga clic en **Crear rol**.
 
-    b. Cree tantos roles como sea necesario y asígnelos al proveedor de identidades.
+    b. Cree tantos roles según sea necesario y asignarlos toohello proveedor de identidades.
 
-21. Configure ahora el aprovisionamiento de usuarios para capturar todos los roles de AWS.
+21. Configurar todos los roles de Hola de AWS toofetch el aprovisionamiento de usuario de Hola
 
-    a. En la consola de AWS, regístrese con la cuenta raíz.
+    a. En el inicio de sesión de consola de AWS de Hola con la cuenta raíz
 
-    b. En la esquina superior derecha, haga clic en su nombre y después haga clic en la opción **My Security Credentials** (Mis credenciales de seguridad). Se abrirá una pantalla como un mensaje de advertencia. Haga clic en el botón **Security Credentials** (Credenciales de seguridad) para pasar a la pantalla siguiente.
+    b. En hello esquina superior derecha, haga clic en su nombre y, a continuación, haga clic en hello **mis credenciales de seguridad** opción. Se abrirá una pantalla como un mensaje de advertencia. Haga clic en el botón de hello **las credenciales de seguridad** toopass botón Hola pantalla.
         
        ![Configurar inicio de sesión único][36]
 
        ![Configurar inicio de sesión único][37]
 
-    c. En la sección de claves de acceso, haga clic en el botón **Create New Access Key** (Crear clave de acceso). Esto genera el identificador de clave de acceso y un valor de token.
+    c. Hola claves de acceso de sección, haga clic en hello **crear una nueva clave de acceso** botón. Esto genera hello Id. de clave de acceso y un valor de token.
     
        ![Configurar inicio de sesión único][38]
 
     d. Copie estos dos valores y descárguelos para no perderlos.
 
-    e. En Azure Portal, en la página de integración de la aplicación de Amazon Web Services (AWS), haga clic en **Aprovisionamiento**.
+    e. Hola Portal de Azure, en la página de integración de aplicaciones de Amazon Web Services (AWS) hello, haga clic en **Provisioning**.
         
        ![Configurar inicio de sesión único][35]
 
-    f. Establezca el modo de aprovisionamiento en **Automático**.
+    f. Establecer el modo de aprovisionamiento de hello demasiado**automática**
         
        ![Configurar inicio de sesión único][39]
 
-    g. Ahora, en los campos **clientsecret** y **Token secreto**, copie los valores correspondientes copiados de la consola de AWS.
+    g. Ahora en hello **clientsecret** y **secreto Token** pegue los valores correspondientes de hello, que han copiado desde la consola de AWS.
     
-    h. Puede hacer clic en el botón **Probar conexión** para probar la conectividad. Si la conexión es correcta, puede empezar con el aprovisionamiento del conector.
+    h. Puede hacer clic en hello **Probar conexión** botón conectividad de hello tootest. Una vez que es correcta, a continuación, puede empezar a Hola aprovisionamiento conector.
        
        ![Configurar inicio de sesión único][40]
 
-    i. Ahora, habilite el Estado de aprovisionamiento en **Activado**. Esto permite capturar los roles de la aplicación.
+    i. Ahora habilitar Hola estado de aprovisionamiento demasiado**en**. Esto inicia capturar roles Hola de aplicación hello.
 
        ![Configurar inicio de sesión único][41]
 
     > [!NOTE]
-    > El aprovisionamiento de Azure AD se ejecuta después de un tiempo determinado para sincronizar los roles de AWS. Debería ver todos los roles de AWS adjuntos al proveedor de identidades en Azure AD, a fin de poder usarlos al asignar la aplicación a usuarios o grupos.
+    > Azure se ejecuta el servicio AD aprovisionamiento cada después de algunos roles de hello toosync de tiempo de AWS. Debería ver Hola todos los proveedor de identidades adjunta roles AWS en Azure AD y se puede utilizar al asignar Hola aplicación toousers o grupos.
 
 <!--### Next steps
 
-To ensure users can sign-in to Amazon Web Services (AWS) after it has been configured to use Azure Active Directory, review the following tasks and topics:
+tooensure users can sign-in tooAmazon Web Services (AWS) after it has been configured toouse Azure Active Directory, review hello following tasks and topics:
 
-- User accounts must be pre-provisioned into Amazon Web Services (AWS) prior to sign-in. To set this up, see Provisioning.
+- User accounts must be pre-provisioned into Amazon Web Services (AWS) prior toosign-in. tooset this up, see Provisioning.
  
-- Users must be assigned access to Amazon Web Services (AWS) in Azure AD to sign-in. To assign users, see Users.
+- Users must be assigned access tooAmazon Web Services (AWS) in Azure AD toosign-in. tooassign users, see Users.
  
-- To configure access polices for Amazon Web Services (AWS) users, see Access Policies.
+- tooconfigure access polices for Amazon Web Services (AWS) users, see Access Policies.
  
-- For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
+- For additional information on deploying single sign-on toousers, see [this article](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_01.png) 
 
-2. Vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios** para mostrar la lista de usuarios.
+2. Vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios** toodisplay lista de Hola de usuarios.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_02.png) 
 
-3. En la parte superior del diálogo, haga clic en **Agregar** para abrir el diálogo **Usuario**.
+3. En la parte superior de saludo del cuadro de diálogo de hello haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-an-amazon-web-services-test-user"></a>Creación de un usuario de prueba de Amazon Web Services
 
-Para permitir que los usuarios de Azure AD se registren en Amazon Web Services (AWS), es necesario aprovisionarlos en Amazon Web Services (AWS). En el caso de Amazon Web Services (AWS), el aprovisionamiento es una tarea manual.
+En orden tooenable toolog de los usuarios de Azure AD en tooAmazon Web Services (AWS), se les deben aprovisionar en Amazon Web Services (AWS). En caso de hello de Amazon Web Services (AWS), el aprovisionamiento es una tarea manual.
 
-**Para aprovisionar una cuenta de usuario, realice estos pasos:**
+**tooprovision una cuenta de usuario, lleve a cabo Hola pasos:**
 
-1. Inicie sesión en su sitio de la compañía de **Amazon Web Services (AWS)** como administrador.
+1. Inicie sesión en tooyour **Amazon Web Services (AWS)** como administrador.
 
-2. Haga clic en el icono de **Página principal de la consola** . 
+2. Haga clic en hello **inicial de la consola** icono. 
    
     ![Configurar inicio de sesión único][11]
 
@@ -324,35 +324,35 @@ Para permitir que los usuarios de Azure AD se registren en Amazon Web Services (
    
     ![Configurar inicio de sesión único][28]
 
-4. En el panel, haga clic en **Users** (Usuarios) y luego en **Create New Users** (Crear usuarios). 
+4. Hola panel, haga clic en **usuarios**y, a continuación, haga clic en **crear nuevos usuarios**. 
    
     ![Configurar inicio de sesión único][29]
 
-5. En el cuadro de diálogo Crear usuario, realice los pasos siguientes: 
+5. En el cuadro de diálogo de hello Create User, realizar Hola pasos: 
    
     ![Configurar inicio de sesión único][30]   
     
-    a. En los cuadros de texto **Escribir nombres de usuario** , escriba el nombre de usuario de Brita Simon (userprincipalname) en Azure AD.
+    a. Hola **escriba los nombres de usuario** cuadros de texto, escriba el nombre de usuario de Brita Simon (userprincipalname) en Azure AD.
 
     b. Haga clic en **Create** (Crear).
         
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Amazon Web Services (AWS).
+En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooAmazon de acceso Web Services (AWS).
 
 ![Asignar usuario][200] 
 
-**Para asignar Britta Simon a Amazon Web Services (AWS), realice los pasos siguientes:**
+**tooassign Britta Simon tooAmazon Web Services (AWS), lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Amazon Web Services (AWS)**.
+2. En la lista de aplicaciones de hello, seleccione **Amazon Web Services (AWS)**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -360,23 +360,23 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
-7. En la pestaña **Seleccionar rol**, seleccione el rol apropiado para el usuario. Todos estos roles se muestran con el nombre de rol y el nombre del proveedor de identidades. De esta forma, puede identificar con facilidad los roles de AWS.
+7. En **Seleccionar rol** ficha, seleccione Hola un rol adecuado para el usuario de Hola. Todas estas funciones se muestran con el nombre de la función de Hola y el nombre del proveedor de identidad. De esta forma que puede identificar fácilmente los roles de Hola de AWS.
 
 8. Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de Amazon Web Services (AWS) en el panel de acceso, automáticamente iniciará sesión en su aplicación de Amazon Web Services (AWS). 
+Al hacer clic en hello Amazon Web Services (AWS) el icono Panel de acceso de hello, deberá obtener tooyour automáticamente firmado en aplicaciones de Amazon Web Services (AWS). 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

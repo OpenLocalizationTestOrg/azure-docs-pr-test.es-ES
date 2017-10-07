@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: Recuperación del problema que supone el límite de 10 GB en LocalDB| Microsoft Docs"
-description: "En este tema se explica cómo recuperar el servicio Azure AD Connect Synchronization cuando se alcanza el límite de 10 GB en LocalDB."
+title: "Connect de Azure AD: Cómo limitar toorecover de LocalDB 10GB problema | Documentos de Microsoft"
+description: "Este tema describe cómo toorecover sincronización de Azure AD Connect Service cuando encuentra LocalDB 10GB limitar el problema."
 services: active-directory
 documentationcenter: 
 author: cychua
@@ -14,91 +14,91 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 08e682c51b12d4506019d2f6b68e1eae0798b990
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7b8ce6e19b68837639017bb0315eda4b924d525a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Recuperación del límite de 10 GB de LocalDB
-Azure AD Connect requiere una base de datos de SQL Server para almacenar datos de identidad. Puede usar la instancia predeterminada de Local DB incluida en SQL Server 2012 Express que se instala con Azure AD Connect o utilizar la versión completa de SQL Server. SQL Server Express impone un límite en el tamaño de 10 GB. Si usa LocalDB y se alcanza este límite, el servicio Azure AD Connect Synchronization no podrá iniciarse ni sincronizarse correctamente. En este artículo se detallan los pasos de recuperación.
+# <a name="azure-ad-connect-how-toorecover-from-localdb-10-gb-limit"></a>Connect de Azure AD: Cómo toorecover de límite de 10 GB de LocalDB
+Azure AD Connect requiere un datos de identidad de toostore de base de datos de SQL Server. Puede usar SQL Server 2012 Express LocalDB instalada con Azure AD Connect de forma predeterminada de Hola o usar su propio SQL completa. SQL Server Express impone un límite en el tamaño de 10 GB. Si usa LocalDB y se alcanza este límite, el servicio Azure AD Connect Synchronization no podrá iniciarse ni sincronizarse correctamente. Este artículo proporciona pasos de recuperación de Hola.
 
 ## <a name="symptoms"></a>Síntomas
 Hay dos síntomas comunes:
 
-* El servicio Azure AD Connect Synchronization **puede ejecutarse**, pero no es capaz de sincronizarse y se produce el error *“stopped-database-disk-full”*.
+* Servicio de sincronización de Connect de Azure AD **está ejecutando** , pero se produce un error toosynchronize con *"detenido-base de datos-disco lleno"* error.
 
-* El servicio Azure AD Connect Synchronization **no puede iniciarse**. Cuando se intenta iniciar el servicio, se produce el evento 6323 y aparece el mensaje de error *"El servidor encontró un error porque SQL Server no tiene espacio en disco".*
+* Servicio de sincronización de Connect de Azure AD **es toostart no se puede**. Si trata de servicio de hello toostart, se produce un error con mensajes de error y eventos 6323 *"servidor hello detectó un error porque SQL Server está fuera del espacio en disco".*
 
 ## <a name="short-term-recovery-steps"></a>Pasos para una recuperación a corto plazo
-En esta sección se explican los pasos que deben seguirse a fin de reclamar el espacio de base de datos necesario para que el servicio Azure AD Connect Synchronization pueda reanudarse. Entre los pasos se incluyen:
-1. [Determinación del estado del servicio de sincronización](#determine-the-synchronization-service-status)
-2. [Reducción de la base de datos](#shrink-the-database)
+Esta sección proporciona espacio en tooreclaim DB Hola pasos necesario para la operación de servicio de sincronización Connect de Azure AD tooresume. Hola pasos incluyen:
+1. [Determinar el estado del servicio de sincronización de Hola](#determine-the-synchronization-service-status)
+2. [Reducir base de datos de Hola](#shrink-the-database)
 3. [Eliminación de los datos del historial de ejecución](#delete-run-history-data)
 4. [Reducción del período de retención de los datos del historial de ejecución](#shorten-retention-period-for-run-history-data)
 
-### <a name="determine-the-synchronization-service-status"></a>Determinación del estado del servicio de sincronización
-En primer lugar, deberá determinar si el servicio de sincronización sigue en ejecución o no:
+### <a name="determine-hello-synchronization-service-status"></a>Determinar el estado del servicio de sincronización de Hola
+En primer lugar, determine si Hola servicio de sincronización aún se está ejecutando o no:
 
-1. Inicie sesión como administrador en el servidor de Azure AD Connect.
+1. Inicie sesión en tooyour servidor de Azure AD Connect como administrador.
 
-2. Vaya a **Administrador de control de servicios**.
+2. Vaya demasiado**Service Control Manager**.
 
-3. Compruebe el estado de **Microsoft Azure AD Sync**.
+3. Comprobar el estado de Hola de **Microsoft Azure AD Sync**.
 
 
-4. Si el servicio está en ejecución, no lo detenga ni lo reinicie. Omita el paso [Reducción de la base de datos](#shrink-the-database) y salte directamente a [Eliminación de los datos del historial de ejecución](#delete-run-history-data).
+4. Si se está ejecutando, no detener ni reiniciar servicio Hola. Omitir [base de datos de reducción hello](#shrink-the-database) paso a paso y vaya demasiado[datos de historial de ejecución de Delete](#delete-run-history-data) paso.
 
-5. Si el servicio no está en ejecución, intente iniciarlo. Si se inicia correctamente, omita el paso [Reducción de la base de datos](#shrink-the-database) y salte directamente a [Eliminación de los datos del historial de ejecución](#delete-run-history-data). De lo contrario, continúe en el paso [Reducción de la base de datos](#shrink-the-database).
+5. Si no se está ejecutando, pruebe a servicio de hello toostart. Si se inicia correctamente el servicio de hello, omitir [base de datos de reducción hello](#shrink-the-database) paso a paso y vaya demasiado[datos de historial de ejecución de eliminación](#delete-run-history-data) paso. En caso contrario, continúe con [base de datos de reducción hello](#shrink-the-database) paso.
 
-### <a name="shrink-the-database"></a>Reducción de la base de datos
-Utilice la operación de reducción para liberar el suficiente espacio en la base de datos como para iniciar el servicio de sincronización. Esto se consigue eliminando espacios en blanco de la base de datos. Aunque este paso es el más indicado, no garantiza que se pueda recuperar espacio en todos los casos. Para más información sobre esta operación, consulte el artículo [Reducir una base de datos](https://msdn.microsoft.com/library/ms189035.aspx).
+### <a name="shrink-hello-database"></a>Reducir base de datos de Hola
+Utilice toofree de operación de reducción de hello seguridad suficiente hello toostart de espacio de base de datos servicio de sincronización. Libera el espacio de base de datos mediante la eliminación de espacios en blanco en la base de datos de Hola. Aunque este paso es el más indicado, no garantiza que se pueda recuperar espacio en todos los casos. toolearn más información acerca de la operación de reducción, lea este artículo [reducir una base de datos](https://msdn.microsoft.com/library/ms189035.aspx).
 
 > [!IMPORTANT]
-> Omita este paso si consigue ejecutar el servicio de sincronización. No resulta recomendable reducir la base de datos SQL, ya que, al aumentar la fragmentación, el rendimiento podría verse afectado.
+> Omita este paso si puede obtener hello toorun de servicio de sincronización. No se recomienda hello tooshrink base de datos SQL ya que puede provocar toopoor rendimiento debido tooincreased fragmentación.
 
-El nombre de la base de datos creada para Azure AD Connect es **ADSync**. Para realizar la operación de reducción, debe iniciar sesión como administrador del sistema o como DBO de la base de datos. Durante la instalación de Azure AD Connect, se concederán privilegios de administrador del sistema a las cuentas siguientes:
+Hola nombre de base de datos de hello creado para Azure AD Connect es **ADSync**. tooperform una operación de reducción, debe iniciar sesión como administrador del sistema Hola o DBO de la base de datos de Hola. Durante la instalación de Azure AD Connect, Hola siguiendo las cuentas se les conceden derechos de administrador del sistema:
 * Administradores locales
-* La cuenta de usuario utilizada para ejecutar la instalación de Azure AD Connect.
-* La cuenta del servicio de sincronización que se utilizó como contexto operativo del servicio Azure AD Connect Synchronization.
-* El grupo local ADSyncAdmins que se creó durante la instalación.
+* cuenta de usuario de Hola que era toorun usa Azure AD Connect instalación.
+* Hola cuenta de servicio de sincronización que se utiliza como Hola operativo contexto de servicio de sincronización de Connect de Azure AD.
+* grupo local de Hello ADSyncAdmins que se creó durante la instalación.
 
-1. Realice una copia de seguridad de la base de datos. Para ello, copie en una ubicación segura los archivos **ADSync.mdf** y **ADSync_log.ldf** que se encuentran en `%ProgramFiles%\program files\Microsoft Azure AD Sync\Data`.
+1. Realizar copia de seguridad de hello copiando **ADSync.mdf** y **ADSync_log.ldf** archivos ubicados en `%ProgramFiles%\program files\Microsoft Azure AD Sync\Data` tooa de ubicación segura.
 
 2. Inicie una nueva sesión de PowerShell.
 
-3. Acceda a la carpeta `%ProgramFiles%\Program Files\Microsoft SQL Server\110\Tools\Binn`.
+3. Navegue toofolder `%ProgramFiles%\Program Files\Microsoft SQL Server\110\Tools\Binn`.
 
-4. Inicie la utilidad **sqlcmd** ejecutando el comando `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>` con las credenciales del administrador del sistema o DBO de la base de datos.
+4. Iniciar **sqlcmd** utilidad, ejecute el comando de hello `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>`, mediante credenciales de Hola de un administrador del sistema u Hola DBO de la base de datos.
 
-5. Para reducir la base de datos, en el símbolo del sistema de sqlcmd (1>), escriba `DBCC Shrinkdatabase(ADSync,1);` y, en la siguiente línea, `GO`.
+5. tooshrink Hola base de datos, en el símbolo del sistema de hello sqlcmd (1 >), escriba `DBCC Shrinkdatabase(ADSync,1);`, seguido de `GO` en la línea siguiente de saludo.
 
-6. Si la operación se realiza correctamente, intente iniciar de nuevo el servicio de sincronización. Si consigue iniciarlo, vaya al paso [Eliminación de los datos del historial de ejecución](#delete-run-history-data). De lo contrario, póngase en contacto con el servicio de soporte técnico.
+6. Si se realiza correctamente la operación de hello, vuelva a intentarlo hello toostart servicio de sincronización. Si puede iniciar el servicio de sincronización de Hola, vaya demasiado[datos de historial de ejecución de Delete](#delete-run-history-data) paso. De lo contrario, póngase en contacto con el servicio de soporte técnico.
 
 ### <a name="delete-run-history-data"></a>Eliminación de los datos del historial de ejecución
-De forma predeterminada, Azure AD Connect mantiene durante un máximo de siete días los datos del historial de ejecución. En este paso, eliminaremos los datos del historial de ejecución para tratar de ampliar el espacio de la base de datos y, de este modo, conseguir que el servicio Azure AD Connect Synchronization consiga sincronizarse de nuevo.
+De forma predeterminada, Azure AD Connect se conserva hasta días tooseven de datos de historial de ejecución. En este paso, eliminamos Hola espacio de tooreclaim base de datos de datos de historial de ejecución para que el servicio de sincronización de Connect de Azure AD puede empezar a sincronizar de nuevo.
 
-1.  Inicie **Synchronization Service Manager**. Para ello, vaya a INICIO → Synchronization Service (Servicio de sincronización).
+1.  Iniciar **Synchronization Service Manager** con va tooSTART → servicio de sincronización.
 
-2.  Vaya a la pestaña **Operations** (Operaciones).
+2.  Vaya toohello **Operations** ficha.
 
 3.  En **Actions** (Acciones), seleccione **Clear Runs...** (Borrar ejecuciones...).
 
-4.  Puede seleccionar una de estas dos opciones: **Clear all runs** (Borrar todas las ejecuciones) o **Clear runs before… <date>** (Borrar todas las ejecuciones anteriores a...). Es conveniente que empiece borrando los datos del historial de ejecución que tienen más de dos días. Si el tamaño de la base de datos sigue siendo un problema, elija la opción **Clear all runs** (Borrar todas las ejecuciones).
+4.  Puede seleccionar una de estas dos opciones: **Clear all runs** (Borrar todas las ejecuciones) o **Clear runs before… <date>** (Borrar todas las ejecuciones anteriores a...). Es conveniente que empiece borrando los datos del historial de ejecución que tienen más de dos días. Si continúa toorun en problema de tamaño de base de datos, a continuación, elija hello **borrar todas las ejecuciones de** opción.
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>Reducción del período de retención de los datos del historial de ejecución
-Este paso está diseñado para reducir la probabilidad de que el límite de 10 GB resulte un problema después de ejecutar varios ciclos de sincronización.
+Este paso es la probabilidad de hello tooreduce de ejecución en el problema de límite de 10 GB de hello después de varios ciclos de sincronización.
 
 1. Abra una nueva sesión de PowerShell.
 
-2. Ejecute `Get-ADSyncScheduler` y anote la propiedad PurgeRunHistoryInterval, donde se especifica el período de retención actual.
+2. Ejecute `Get-ADSyncScheduler` y tome nota de la propiedad PurgeRunHistoryInterval, que especifica el período de retención actual Hola Hola.
 
-3. Ejecute `Set-ADSyncScheduler -PurgeRunHistoryInterval 2.00:00:00` para establecer el período de retención en dos días. Ajuste este período según corresponda.
+3. Ejecutar `Set-ADSyncScheduler -PurgeRunHistoryInterval 2.00:00:00` días de tootwo período de retención de tooset Hola. Ajustar el período de retención de hello según corresponda.
 
-## <a name="long-term-solution--migrate-to-full-sql"></a>Solución a largo plazo: migración a la versión completa de SQL Server
-En líneas generales, este problema indica que los 10 GB de tamaño de la base de datos ya no resultan suficientes para que Azure AD Connect pueda sincronizar la instancia local de Active Directory con Azure AD. Por tanto, se recomienda utilizar la versión completa de SQL Server. La instancia de LocalDB de una implementación existente de Azure AD Connect no se puede sustituir directamente por la base de datos de la versión completa de SQL Server. En su lugar, es necesario implementar un nuevo servidor de Azure AD Connect con la versión completa de SQL Server. Le recomendamos que realice una migración alterna en la que el nuevo servidor de Azure AD Connect (con la base de datos SQL) se implemente como servidor provisional, junto con el servidor existente de Azure AD Connect (con la instancia de LocalDB). 
-* Para obtener instrucciones acerca de cómo configurar una instancia remota de SQL con Azure AD Connect, consulte el artículo [Instalación personalizada de Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom).
-* Para obtener instrucciones relacionadas con la migración alterna de una actualización de Azure AD Connect, consulte el artículo [Azure AD Connect: actualización de una versión anterior a la versión más reciente](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration).
+## <a name="long-term-solution--migrate-toofull-sql"></a>Solución a largo plazo, migrar toofull SQL
+En general, es indicativo de que el tamaño de base de datos de 10 GB ya no es suficiente para Azure AD Connect toosynchronize problema Hola su tooAzure de Active Directory local AD. Se recomienda que cambie la versión completa de hello toousing de SQL server. No se puede reemplazar directamente Hola LocalDB de una implementación existente de Azure AD Connect con base de datos de saludo de la versión completa de Hola de SQL. En su lugar, debe implementar un nuevo servidor de Azure AD Connect con la versión completa de Hola de SQL. Se recomienda que realice una migración swing donde se implementa el nuevo servidor de Azure AD Connect hello (con la base de datos de SQL) como un servidor de ensayo, servidor toohello de Azure AD Connect existente siguiente (con LocalDB). 
+* Para obtener instrucciones sobre cómo tooconfigure SQL remoto con Azure AD Connect, consulte tooarticle [instalación personalizada de Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom).
+* Para obtener instrucciones sobre la migración de recorrido de actualización de Azure AD Connect, consulte tooarticle [Azure AD Connect: actualización de un toohello de versión anterior más reciente](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration).
 
 ## <a name="next-steps"></a>Pasos siguientes
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

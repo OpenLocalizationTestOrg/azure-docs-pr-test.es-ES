@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de script de CLI de Azure: copia (transferencia) de instantánea de un disco administrado en la misma suscripción o en otra con CLI | Microsoft Docs"
-description: "Ejemplo de script de CLI de Azure: copia (transferencia) de instantánea de un disco administrado en la misma suscripción o en otra con CLI"
+title: "Ejemplo de secuencia de comandos de CLI: instantánea de copia (movimiento) de un disco administrado toosame u otra suscripción con CLI aaaAzure | Documentos de Microsoft"
+description: "Ejemplo de secuencia de comandos CLI Azure - instantánea de copia (movimiento) de un disco administrado toosame u otra suscripción con CLI"
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
-ms.openlocfilehash: 6cc0125c08ccb77d014b4642d702c556fffdc8bf
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f214ab1fc1cb2cb42479d82e455f20a8cc55c83d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Copia de instantánea de un disco administrado en la misma suscripción o en otra con CLI
+# <a name="copy-snapshot-of-a-managed-disk-toosame-or-different-subscription-with-cli"></a>Instantánea de copia de un disco administrado toosame o de otra suscripción con CLI
 
-Este script copia una instantánea de un disco administrado en la misma suscripción o en otra. Use este script para mover una instantánea a la misma o a otra suscripción en la misma región que la instantánea primaria.
+Este script copia una instantánea de un disco administrado toosame o suscripción diferente. Utilice este toomove script una suscripción de instantánea toodifferent Hola misma región que la instantánea primaria de Hola.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -32,22 +32,22 @@ Este script copia una instantánea de un disco administrado en la misma suscripc
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.sh "Copiar instantánea")]
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.sh "Copy snapshot")]
 
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear una instantánea en la suscripción de destino mediante el identificador de la instantánea de origen. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza después comandos toocreate una instantánea en la suscripción de destino de hello con Hola Id. de instantánea de origen Hola. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | Obtiene todas las propiedades de una instantánea usando las propiedades de nombre y grupo de recursos de la instantánea. La propiedad del identificador se usa para copiar la instantánea en otra suscripción.  |
-| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot#create) | Copia una instantánea mediante la creación de una instantánea en otra suscripción usando el identificador y nombre de la instantánea primaria.  |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | Obtiene todas las propiedades de Hola de una instantánea mediante el nombre de Hola y propiedades de grupo de recursos de instantánea de Hola. Propiedad ID es toocopy usado Hola instantánea toodifferent suscripción.  |
+| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot#create) | Copia una instantánea mediante la creación de una instantánea de sesión con otra suscripción Hola identificador y el nombre de Hola instantánea primaria.  |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Creación de una máquina virtual a partir de una instantánea](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Crear una máquina virtual a partir de una instantánea](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de scripts de la CLI de máquina virtual y discos administrados en la [documentación de Azure sobre máquinas virtuales Linux](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Máquina virtual adicional y ejemplos de secuencias de comandos CLI de discos administrados pueden encontrarse en hello [documentación de Azure VM de Linux](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

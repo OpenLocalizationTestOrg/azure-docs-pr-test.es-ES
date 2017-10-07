@@ -1,7 +1,7 @@
 ---
-title: "Implementación y exploración de la aplicación SaaS de Wingtip multiinquilino que usa Azure SQL Database | Microsoft Docs"
-description: "Implemente y explore la aplicación SaaS de Wingtip multiinquilino, en la que se muestran los modelos de SaaS con Azure SQL Database."
-keywords: tutorial de base de datos sql
+title: "aaaDeploy y explore la aplicación de SaaS Wingtip multiempresa de Hola que utiliza la base de datos de SQL de Azure | Documentos de Microsoft"
+description: "Implementar y explore la aplicación de varios inquilinos de SaaS Wingtip hello, que muestra los patrones de SaaS con la base de datos de SQL Azure."
+keywords: tutorial de SQL Database
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,100 +16,100 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
-ms.openlocfilehash: b09bfa8a5bc22a092e963f351e99c16d0e9a57ba
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7c528ee19472d3b8c7a285b2f86013945e8f4bf4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-application-that-uses-azure-sql-database---wingtip-saas"></a>Implementación y exploración de una aplicación SaaS multiinquilino que usa Azure SQL Database
 
-En este tutorial, se implementa y explora la aplicación SaaS de Wingtip. La aplicación utiliza un patrón de aplicación SaaS de base de datos por inquilino para dar servicio a varios inquilinos. La aplicación está diseñada para presentar las características de Azure SQL Database que simplifican escenarios de SaaS.
+En este tutorial, implementar y explorar la aplicación de SaaS Wingtip hello. aplicación Hello usa un base de datos-por inquilino, patrón de aplicación de SaaS, tooservice varios inquilinos. aplicación Hello es características de tooshowcase diseño de base de datos de SQL Azure que simplifican la habilitar escenarios de SaaS.
 
-Cinco minutos después de hacer clic en el botón *Implementar en Azure*, tiene una aplicación de SaaS multiempresa que usa SQL Database en funcionamiento en la nube. La aplicación se implementa con tres inquilinos de ejemplo, cada uno con su propia base de datos, y todos ellos implementados en un grupo elástico de SQL. La aplicación se implementa en su suscripción de Azure, lo que le proporciona acceso completo para explorar y trabajar con los componentes de la aplicación individuales. El código fuente y los scripts de administración de la aplicación están disponibles en el repositorio de GitHub WingtipSaaS.
+Hola de cinco minutos después de hacer clic *implementar tooAzure* botón siguiente, tiene una aplicación de SaaS multiempresa, usando la base de datos de SQL, hasta y ejecutando en la nube de Hola. aplicación Hello se implementa con tres de los inquilinos de ejemplo, cada uno con su propia base de datos, todos los implementados en un grupo elástico de SQL. aplicación Hello es implementado tooyour suscripción de Azure, lo que le proporciona acceso completo tooexplore y trabajar con componentes de aplicaciones individuales de Hola. Hola aplicación origen código y administración de las secuencias de comandos están disponibles en hello repositorio WingtipSaaS GitHub.
 
 
 En este tutorial, obtendrá información:
 
 > [!div class="checklist"]
 
-> * Cómo implementar la aplicación SaaS de Wingtip
-> * Dónde obtener el código fuente de la aplicación y los scripts de administración
-> * Acerca de los servidores, los grupos y las bases de datos que componen la aplicación
-> * Cómo se asignan los inquilinos a sus datos con el *catálogo*
-> * Cómo aprovisionar un nuevo inquilino
-> * Cómo supervisar la actividad de los inquilinos en la aplicación
+> * ¿Cómo toodeploy Hola aplicación Wingtip SaaS
+> * Donde tooget Hola código fuente de aplicación y las secuencias de comandos de administración
+> * Acerca de los servidores de hello, los grupos y las bases de datos que forman la aplicación hello
+> * Cómo los inquilinos asignan datos tootheir con hello *catálogo*
+> * ¿Cómo tooprovision un nuevo inquilino
+> * ¿Cómo toomonitor inquilino actividad en la aplicación hello
 
-Para explorar diversos patrones de administración y diseño de SaaS, hay un [serie de tutoriales relacionados](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials) disponibles que se basan en esta implementación inicial. Cuando recorra los tutoriales, profundice en los scripts que se proporcionan y examine cómo se implementan los distintos patrones de SaaS. Recorra los scripts de cada tutorial para conocer mejor cómo implementar la gran cantidad de características de SQL Database que simplifican el desarrollo de aplicaciones SaaS.
+tooexplore diferentes SaaS modelos de diseño y administración, un [serie de tutoriales relacionados](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials) está disponible que se basan en esta implementación inicial. Al pasar por los tutoriales de hello, profundizar en las secuencias de comandos de hello proporcionado y examinar cómo se implementan los patrones de SaaS diferentes Hola. Paso a paso a través de scripts de hello en cada tutorial toogain una comprensión más profunda cómo tooimplement Hola la base de datos de SQL muchas características que simplifican el desarrollo de aplicaciones de SaaS.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para completar este tutorial, asegúrese de cumplir los siguientes requisitos previos:
+toocomplete se ha completado este tutorial, asegúrese de hello seguro después de requisitos previos:
 
 * Azure PowerShell está instalado. Para más información, consulte [Introducción a Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="deploy-the-wingtip-saas-application"></a>Implementar la aplicación SaaS de Wingtip
+## <a name="deploy-hello-wingtip-saas-application"></a>Implementar aplicaciones de SaaS Wingtip Hola
 
-Implemente la aplicación SaaS de Wingtip:
+Implementar la aplicación de SaaS Wingtip hello:
 
-1. Al hacer clic en el botón **Implementar en Azure** se abre Azure Portal por la plantilla de implementación SaaS de Wingtip. La plantilla requiere dos valores de parámetro; un nombre para un nuevo grupo de recursos y un nombre de usuario que distingue esta implementación de otras implementaciones de la aplicación SaaS de Wingtip. El paso siguiente proporciona detalles para establecer estos valores.
+1. Si hace clic en hello **implementar tooAzure** botón abre la plantilla de implementación de hello toohello portal Azure Wingtip SaaS. plantilla de Hello requiere dos valores de parámetro; un nombre para un nuevo grupo de recursos y un nombre de usuario que distingue esta implementación de otras implementaciones de aplicación de SaaS Wingtip hello. paso siguiente Hola proporciona detalles para establecer estos valores.
 
-   Asegúrese de anotar los valores exactos que use, ya que necesitará escribirlos más adelante en un archivo de configuración.
+   Asegúrese de seguro toonote Hola exactamente los valores que use, ya que necesitará tooenter en una configuración de archivo más adelante.
 
    <a href="http://aka.ms/deploywtpapp" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-1. Especifique los valores necesarios de los parámetros para la implementación:
+1. Escriba los valores de parámetro necesario para la implementación de hello:
 
     > [!IMPORTANT]
-    > Para realizar la demostración, se ha eliminado intencionadamente la protección de varios firewalls de autenticación y del servidor. **Cree un nuevo grupo de recursos** y no use grupos de recursos, servidores o grupos existentes. No use esta aplicación, ni ninguno de los recursos que se crean, para producción. Elimine este grupo de recursos cuando haya terminado con la aplicación para detener la facturación relacionada con él.
+    > Para realizar la demostración, se ha eliminado intencionadamente la protección de varios firewalls de autenticación y del servidor. **Cree un nuevo grupo de recursos** y no use grupos de recursos, servidores o grupos existentes. No use esta aplicación, ni ninguno de los recursos que se crean, para producción. Eliminar este recurso del grupo cuando haya terminado con hello aplicación toostop relacionados con la facturación.
 
-    * **Grupo de recursos**: seleccione **Crear nuevo** y proporcione un **nombre** para el nuevo grupo de recursos. Seleccione una **ubicación** en la lista desplegable.
-    * **Usuario**: algunos recursos requieren nombres que sean globalmente únicos. Para garantizar la unicidad, cada vez que implemente la aplicación, especifique un valor para diferenciar los recursos que cree de los que han creado otras implementaciones de la aplicación Wingtip. Se recomienda usar un nombre de **usuario** corto, como sus iniciales y un número (por ejemplo, *bg1*) y, después, utilizarlo en el nombre del grupo de recursos (por ejemplo, *wingtip-bg1*). El parámetro **Usuario** solo puede contener letras, números y guiones (sin espacios). El primer y último carácter deben ser una letra o un número (se recomienda usar minúsculas).
+    * **Grupo de recursos** : seleccione esta opción **crear nuevo** y proporcionar un **nombre** Hola para grupo de recursos. Seleccione un **ubicación** de lista desplegable de Hola.
+    * **Usuario**: algunos recursos requieren nombres que sean globalmente únicos. unicidad de tooensure, cada vez que implemente la aplicación hello proporcionar un valor de recursos de toodifferentiate que ha creado, de recursos creados por cualquier otra implementación de aplicación Wingtip Hola. Se recomienda un valor bajo toouse **usuario** nombre, como sus iniciales junto con un número (por ejemplo, *bg1*) y, a continuación, usarla en nombre de grupo de recursos de hello (por ejemplo, *wingtip-bg1*). El parámetro **Usuario** solo puede contener letras, números y guiones (sin espacios). Hello primero y último carácter debe ser una letra o un número (se recomienda todas las minúsculas).
 
 
-1. **Implemente la aplicación**.
+1. **Implementar la aplicación hello**.
 
-    * Haga clic para aceptar los términos y condiciones.
+    * Haga clic en tooagree toohello términos y condiciones.
     * Haga clic en **Comprar**.
 
-1. Supervise el estado de implementación, para lo que debe hacer clic en **Notificaciones** (el icono de la campana de la derecha del cuadro de búsqueda). La implementación de la aplicación SaaS de Wingtip tarda aproximadamente cinco minutos.
+1. Supervisar el estado de implementación, haga clic en **notificaciones** (icono de campana Hola derecha del cuadro de búsqueda de hello). Implementar aplicaciones de SaaS Wingtip Hola tarda aproximadamente cinco minutos.
 
    ![implementación correcta](media/sql-database-saas-tutorial/succeeded.png)
 
-## <a name="download-and-unblock-the-wingtip-saas-scripts"></a>Descargar y desbloquear los scripts SaaS de Wingtip
+## <a name="download-and-unblock-hello-wingtip-saas-scripts"></a>Descargar y desbloquear scripts de SaaS Wingtip Hola
 
-Mientras la aplicación se está implementando, descargue el código fuente y los scripts de administración.
+Mientras se está implementando la aplicación hello, descargar scripts de administración y el código de origen de Hola.
 
 > [!IMPORTANT]
-> Es posible que Windows bloquee el contenido ejecutable (scripts, archivos DLL) cuando se descarguen y extraigan archivos ZIP desde un origen externo. Al extraer los scripts de un archivo ZIP, siga estos pasos para desbloquear el archivo .zip antes de extraerlo. Esto garantiza que se puedan ejecutar los scripts.
+> Es posible que Windows bloquee el contenido ejecutable (scripts, archivos DLL) cuando se descarguen y extraigan archivos ZIP desde un origen externo. Al extraer los scripts de Hola desde un archivo zip, siga los pasos de Hola a continuación el archivo .zip de toounblock Hola antes de extraer. Esto garantiza que las secuencias de comandos de Hola se permiten toorun.
 
-1. Vaya al [repositorio de SaaS de Wingtip en GitHub](https://github.com/Microsoft/WingtipSaaS).
+1. Examinar demasiado[repositorio de github de SaaS Wingtip hello](https://github.com/Microsoft/WingtipSaaS).
 1. Haga clic en **Clone or download** (Clonar o descargar).
-1. Haga clic en **Download ZIP** (Descargar archivos ZIP) y guarde el archivo.
-1. Haga clic con el botón derecho en el archivo **WingtipSaaS-master.zip** y seleccione **Propiedades**.
-1. En la pestaña **General**, seleccione **Desbloquear** y haga clic en **Aplicar**.
+1. Haga clic en **Download ZIP** y guarde el archivo hello.
+1. Menú contextual hello **WingtipSaaS master.zip** de archivos y seleccione **propiedades**.
+1. En hello **General** ficha, seleccione **Unblock**y haga clic en **aplicar**.
 1. Haga clic en **Aceptar**.
-1. Extraiga los archivos.
+1. Extraiga los archivos de saludo.
 
-Los scripts se encuentran en la carpeta *..\\WingtipSaaS-master\\Learning Modules*.
+Las secuencias de comandos se encuentran en hello *... \\WingtipSaaS master\\módulos de aprendizaje* carpeta.
 
-## <a name="update-the-configuration-file-for-this-deployment"></a>Actualizar el archivo de configuración para esta implementación
+## <a name="update-hello-configuration-file-for-this-deployment"></a>Actualizar archivo de configuración de Hola para esta implementación
 
-Antes de ejecutar cualquier script, establezca los valores *grupo de recursos* y *usuario* en **UserConfig.psm1**. Establezca estas variables en los valores establecidos durante la implementación.
+Antes de ejecutar cualquier secuencia de comandos, establezca hello *grupo de recursos* y *usuario* valores en **UserConfig.psm1**. Establecer valores toohello establecidos durante la implementación de estas variables.
 
-1. Abra ...\\Learning Modules\\*UserConfig.psm1* en *PowerShell ISE*
-1. Actualice *ResourceGroupName* y *Name* con los valores específicos para la implementación (solo en las líneas 10 y 11).
-1. Guarde los cambios.
+1. Abra... \\Módulos de aprendizaje\\*UserConfig.psm1* en hello *PowerShell ISE*
+1. Actualización *ResourceGroupName* y *nombre* con valores específicos de hello para la implementación (en líneas 10 y 11 solo).
+1. ¡Guardar los cambios de Hola!
 
-Al establecerlo aquí simplemente evita tener que actualizar estos valores específicos de la implementación en todos los scripts.
+Si se define aquí simplemente evita tener tooupdate estos valores específicos de la implementación en todos los scripts.
 
-## <a name="run-the-application"></a>Ejecución de la aplicación
+## <a name="run-hello-application"></a>Ejecutar la aplicación hello
 
-La aplicación presenta lugares, como salas de concierto, clubs de jazz o clubes deportivos, que alojan eventos. Los lugares se registran como clientes (o inquilinos) de la plataforma Wingtip, lo que facilita la enumeración de eventos y la venta de entradas. Cada lugar obtiene una aplicación web personalizada que administra y enumera sus eventos y vende las entradas, que independiente y está aislada de otros inquilinos. Entre bastidores, cada inquilino obtiene una base de datos SQL que se implementa en un grupo elástico de SQL.
+aplicación Hello muestra lugares, como salas de concierto, tréboles jazz, deportes tréboles, que hospedan los eventos. Recintos registrar como clientes (o inquilinos) de plataforma de Wingtip hello, para eventos de toolist fácilmente y venden entradas. Cada lugar obtiene una toomanage de aplicación web personalizado y enumerar a sus eventos y vender vales, independientes y aislados de otros inquilinos. Tras bastidores de hello, cada inquilino Obtiene una base de datos SQL que se implementa en un grupo elástico de SQL.
 
-Un **centro de eventos** central proporciona una lista de las direcciones URL de los inquilinos específicas para la implementación.
+Un centro de **concentrador de eventos** proporciona una lista del inquilino de implementación de tooyour específico de direcciones URL.
 
-1. Abra el _centro de eventos_ en el explorador web: http://events.wtp.&lt;USUARIO&gt;.trafficmanager.net (reemplácelo por el nombre de usuario de la implementación):
+1. Abra hello _concentrador de eventos_ en el explorador web: http://events.wtp.&lt; USUARIO&gt;. trafficmanager.net (reemplazar por el nombre de usuario de su implementación):
 
     ![events hub](media/sql-database-saas-tutorial/events-hub.png)
 
@@ -118,65 +118,65 @@ Un **centro de eventos** central proporciona una lista de las direcciones URL de
    ![Eventos](./media/sql-database-saas-tutorial/fabrikam.png)
 
 
-Para controlar la distribución de las solicitudes entrantes, la aplicación usa [*Azure Traffic Manager*](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview). Las páginas de eventos, que son específicas del inquilino, requieren que los nombres de los inquilinos se incluyan en las direcciones URL. Todas estas direcciones incluyen un valor específico de *Usuario* y siguen este formato: http://events.wtp.&lt; USUARIO&gt;.trafficmanager.net/*fabrikamjazzclub*. La aplicación de eventos analiza el nombre de inquilino de la dirección URL y lo utiliza para crear una clave para acceder a un catálogo mediante la [*administración del mapa de particiones*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-scale-shard-map-management). El catálogo asigna la clave a la ubicación de base de datos del inquilino. El **centro de eventos** usa metadatos extendidos en el catálogo para recuperar el nombre del inquilino asociado a cada base de datos para proporcionar la lista de direcciones URL.
+distribución de hello toocontrol de las solicitudes entrantes, usos de aplicación Hola [ *Azure Traffic Manager*](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview). páginas de eventos de Hello, que son específicos del inquilino, requieren que se incluyen nombres de inquilino en hello las direcciones URL. Hola a todos los inquilinos las direcciones URL incluyen específica de su *usuario* valor y seguir este formato: http://events.wtp.&lt; USUARIO&gt;.trafficmanager.net/*fabrikamjazzclub*. aplicación de eventos de Hello analiza el nombre del inquilino Hola de dirección URL de Hola y usa una clave tooaccess un catálogo mediante toocreate [ *administración de mapa de particiones*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-scale-shard-map-management). Hola ubicación de base de datos del inquilino de catálogo mapas hello toohello clave. Hola **concentrador de eventos** usa metadatos extendidos en nombre del inquilino de hello catálogo tooretrieve Hola asociado a cada lista de hello tooprovide de base de datos de direcciones URL.
 
-En un entorno de producción, lo habitual sería crear un registro DNS CNAME que [*apunte a un dominio de empresa de Internet*](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-point-internet-domain) para el perfil de Traffic Manager.
+En un entorno de producción, normalmente se crearía un registro CNAME DNS para [ *apuntar un dominio de internet de la empresa* ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-point-internet-domain) perfil del Administrador de tráfico de Hola.
 
-## <a name="start-generating-load-on-the-tenant-databases"></a>Empiece a generar carga en las bases de datos de los inquilinos
+## <a name="start-generating-load-on-hello-tenant-databases"></a>Iniciar la generación de carga en las bases de datos del inquilino de Hola
 
-Ahora que la aplicación se ha implementado, vamos a ponerla en marcha. El script de PowerShell *Demo-LoadGenerator* inicia una carga de trabajo que se ejecuta en las bases de datos de todos los inquilinos. La carga real en muchas aplicaciones de SaaS normalmente es esporádica e imprevisible. Para simular este tipo de carga, el generador genera una carga que se distribuye entre todos los inquilinos, con ráfagas aleatorias en cada inquilino que se producen a intervalos aleatorios. Por este motivo, el modelo de carga tarda varios minutos en surgir, por lo que es mejor permitir que el generador se ejecute durante al menos tres o cuatro minutos antes de supervisar la carga.
+Ahora que hello aplicación se implementa, vamos a colocarla toowork! Hola *LoadGenerator demostración* script de PowerShell inicia una carga de trabajo que se ejecutan en todas las bases de datos de inquilino. carga de Hola mundo real en muchas aplicaciones de SaaS normalmente es esporádico e imprevisibles. toosimulate este tipo de carga, el generador de hello genera una carga que se distribuye entre todos los inquilinos, con ráfagas aleatorios en cada inquilino que se producen en intervalos aleatorios. Por este motivo tarda varios minutos para tooemerge de patrón de carga de hello, por lo que es mejor generador de hello toolet ejecutar para al menos tres o cuatro minutos antes de supervisión Hola de carga.
 
-1. En *PowerShell ISE*, abra el script ...\\Learning Modules\\Utilities\\*Demo-LoadGenerator.ps1*.
-1. Presione **F5** para ejecutar el script e iniciar el generador de carga (por ahora deje los valores predeterminados de los parámetros).
+1. Hola *PowerShell ISE*, abra Hola... \\Módulos de aprendizaje\\utilidades\\*LoadGenerator.ps1 demostración* secuencia de comandos.
+1. Presione **F5** para ejecutar el script de Hola e iniciar el generador de carga de hello (deje Hola valores de parámetros predeterminados por ahora).
 
 > [!IMPORTANT]
-> Para ejecutar otros scripts, abra una nueva ventana de PowerShell ISE. El generador de carga se ejecuta como una serie de trabajos en la sesión local de PowerShell. El script *Demo-LoadGenerator.ps1* inicia el script real del generador de carga, que se ejecuta como una tarea en primer plano además de una serie de trabajos de generación de carga en segundo plano. Se invoca un trabajo de generador de carga para cada base de datos registrada en el catálogo. Los trabajos se ejecutan en la sesión de PowerShell local, por lo que al cerrar la sesión de PowerShell se detienen todos los trabajos. Si se suspende el equipo, se pausa la generación de carga y se reanudará cuando reactive el equipo.
+> toorun otras secuencias de comandos, abra una nueva ventana de PowerShell ISE. Generador de carga de saludo se está ejecutando como una serie de trabajos en la sesión de PowerShell local. Hola *LoadGenerator.ps1 demostración* script inicia Hola carga real generador de comandos, que se ejecuta como una serie de trabajos en segundo plano generación de carga más de una tarea en primer plano. Un trabajo del generador de carga se invoca para cada base de datos registrado en el catálogo de Hola. Hola trabajos en ejecución en la sesión de PowerShell local, por lo que cerrar sesión de PowerShell de hello deja todos los trabajos. Si se suspende el equipo, se pausa la generación de carga y se reanudará cuando reactive el equipo.
 
-Una vez que el generador de carga invoca los trabajos de generación de carga para cada inquilino, la tarea en primer plano permanece en un estado de invocación de trabajo, donde inicia trabajos en segundo plano adicionales para los nuevos inquilinos que se aprovisionen posteriormente. Puede presionar *Ctrl-C* o pulsar el botón *Detener* para detener la tarea en primer plano, pero los trabajos en segundo plano existentes seguirán generando la carga en cada base de datos. Si necesita supervisar y controlar los trabajos en segundo plano, use *Get-Job*, *Receive-Job* y *Stop-Job*. Mientras se ejecuta la tarea en primer plano no se puede usar la misma sesión de PowerShell para ejecutar otros scripts. Para ejecutar otros scripts, abra una nueva ventana de PowerShell ISE.
+Una vez que el generador de carga de hello invoca trabajos de generación de carga para cada inquilino, tarea de primer plano de hello permanece en un estado de invocación de trabajo, donde se inicia trabajos en segundo plano adicionales para los nuevos inquilinos proporcionados posteriormente. Puede usar *Ctrl-C* o presione hello *detener* tarea de primer plano de botón toostop hello, pero fondo existente los trabajos continuarán generar carga en cada base de datos. Si necesita toomonitor y controlar los trabajos en segundo plano hello, use *Get-Job*, *Receive-Job* y *Stop-Job*. Mientras está ejecutando tarea de primer plano de hello no se use Hola mismo tooexecute de sesión de PowerShell otras secuencias de comandos. toorun otras secuencias de comandos, abra una nueva ventana de PowerShell ISE.
 
-Si quiere reiniciar la sesión del generador de carga, por ejemplo con parámetros diferentes, puede detener la tarea en primer plano y, después, volver a ejecutar el script *Demo-LoadGenerator.ps1*. Al volver a ejecutar *Demo-LoadGenerator.ps1* primero se detiene cualquier trabajo en ejecución y después se reinicia el generador, que inicia un nuevo conjunto de trabajos con los parámetros actuales.
+Si desea que la sesión del generador de carga de toorestart hello, por ejemplo con parámetros diferentes, puede detener tarea de primer plano de hello y, a continuación, vuelva a ejecutar hello *LoadGenerator.ps1 demostración* secuencia de comandos. Volver a ejecutar *LoadGenerator.ps1 demostración* primero detiene cualquier actualmente ejecuta trabajos y, a continuación, el generador de Hola de reinicios, que inicia un nuevo conjunto de trabajos con los parámetros actuales de Hola.
 
-Por ahora, deje el generador de carga en ejecución en el estado de invocación de trabajo.
+Por ahora, déjelo generador de carga de hello ejecutando en el estado de invocación de trabajo Hola.
 
 
 ## <a name="provision-a-new-tenant"></a>Aprovisionamiento de un nuevo inquilino
 
-La implementación inicial crea tres inquilinos de ejemplo, pero vamos a crear otro inquilino para ver cómo afecta a la aplicación implementada. El flujo de trabajo de aprovisionamiento de inquilinos de SaaS de Wingtip se detalla en el [tutorial de aprovisionamiento y el catálogo](sql-database-saas-tutorial-provision-and-catalog.md). En este paso, se crea rápidamente un inquilino.
+implementación inicial de Hello crea tres de los inquilinos de ejemplo, pero vamos a crear otro toosee inquilino cómo esto afecta a la aplicación hello implementado. flujo de trabajo de Hello inquilinos el aprovisionamiento de Wingtip SaaS se detalla en hello [tutorial aprovisionar y catálogo](sql-database-saas-tutorial-provision-and-catalog.md). En este paso, se crea rápidamente un inquilino.
 
-1. Abra ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1* en *PowerShell ISE*.
-1. Presione **F5** para ejecutar el script (deje por ahora los valores predeterminados).
+1. Abra... \\Modules\Provision de aprendizaje y catálogo\\*demostración ProvisionAndCatalog.ps1* en hello *PowerShell ISE*.
+1. Presione **F5** para ejecutar el script de Hola (deje Hola predeterminada valores por ahora).
 
    > [!NOTE]
-   > Muchos scripts SaaS de Wingtip usan *$PSScriptRoot* para permitir navegar por las carpetas para llamar a funciones en otros scripts. Esta variable solo se evalúa cuando se ejecuta el script presionando **F5**.  Resaltar y ejecutar una selección (**F8**) puede dar lugar a errores, por tanto, presione **F5** al ejecutar los scripts.
+   > Usan muchas secuencias de comandos de SaaS Wingtip *$PSScriptRoot* tooallow navegar por las funciones de toocall de carpetas en otros scripts. Esta variable se evalúa solo cuando se ejecuta el script de Hola presionando **F5**.  Resaltar y ejecutar una selección (**F8**) puede dar lugar a errores, por tanto, presione **F5** al ejecutar los scripts.
 
-La nueva base de datos de inquilinos se crea en un grupo elástico de SQL, se inicializa y se registra en el catálogo. Si el aprovisionamiento se ha realizado correctamente, el sitio de *eventos* de venta de entradas del nuevo inquilino aparece en el explorador:
+base de datos nuevos inquilinos Hola se crea en un grupo elástico de SQL, inicializado y registra en el catálogo de Hola. Después de aprovisionar correcta, nuevo inquilino de hello del vale de venta *eventos* sitio aparece en el explorador:
 
 ![Nuevo inquilino](./media/sql-database-saas-tutorial/red-maple-racing.png)
 
-Actualice el *centro de eventos* y el nuevo inquilino aparece ahora en la lista.
+Actualizar hello *concentrador de eventos* y nuevo inquilino de hello ahora no aparece en la lista de Hola.
 
 
-## <a name="explore-the-servers-pools-and-tenant-databases"></a>Explore los servidores, los grupos y las bases de datos de los inquilinos
+## <a name="explore-hello-servers-pools-and-tenant-databases"></a>Explorar servidores hello, grupos y las bases de datos de inquilinos
 
-Ahora que ha empezado a ejecutar una carga en la colección de inquilinos, veamos algunos de los recursos que se han implementado:
+Ahora que ha iniciado la ejecución de una carga en colección Hola de inquilinos, echemos un vistazo a algunos de los recursos de Hola que se implementaron:
 
-1. En [Azure Portal](http://portal.azure.com), vaya a la lista de servidores SQL Server y abra el servidor **catalog-&lt;USUARIO&gt;**. El servidor de catálogo contiene dos bases de datos: **tenantcatalog** y **basetenantdb** (una base de datos *golden* vacía o una base de datos de plantilla que se copia para crear nuevos inquilinos).
+1. En el [portal de Azure](http://portal.azure.com), busque tooyour lista de servidores SQL Server y abra el **catálogo -&lt;usuario&gt;**  server. servidor de catálogo de Hello contiene dos bases de datos. Hola **tenantcatalog**, hello y **basetenantdb** (vacío *dorada* o copia de base de datos de plantilla que está toocreate nuevos inquilinos).
 
    ![bases de datos](./media/sql-database-saas-tutorial/databases.png)
 
-1. Vuelva a la lista de servidores de SQL Server y abra el servidor **tenants1&lt;&gt;USUARIO** que contiene las bases de datos de los inquilinos. Todas las bases de datos de inquilinos son _elásticas estándar_ en un conjunto estándar de 50 eDTU. Observe también hay una base de datos de _Red Maple Racing_, la base de datos de inquilino que aprovisionó anteriormente.
+1. Vuelva tooyour lista de servidores SQL Server y abra hello **tenants1 -&lt;usuario&gt;**  servidor que hospeda las bases de datos del inquilino de Hola. Todas las bases de datos de inquilinos son _elásticas estándar_ en un conjunto estándar de 50 eDTU. Observe también hay un _arce rojo competir_ base de datos, base de datos de inquilinos de hello ha aprovisionado anteriormente.
 
    ![Servidor](./media/sql-database-saas-tutorial/server.png)
 
-## <a name="monitor-the-pool"></a>Supervisión del grupo
+## <a name="monitor-hello-pool"></a>Grupo de Hola de Monitor
 
-Si el generador de carga lleva varios minutos en ejecución, debería haber suficientes datos disponibles para empezar a examinar algunas de las funcionalidades de supervisión integradas en los grupos y las bases de datos.
+Si se ha ejecutado el generador de carga de Hola durante varios minutos, suficiente datos deben estar disponible toostart observar algunos de hello las funciones integradas en grupos y las bases de datos de seguimiento.
 
-1. Vaya al servidor de **tenants1-&lt;USUARIO&gt;** y haga clic en **Pool1** para ver el uso de los recursos para el grupo (el generador de carga se ejecutó durante una hora en los siguientes gráficos):
+1. Examinar el servidor de toohello **tenants1 -&lt;usuario&gt;**y haga clic en **Pool1** para ver el uso de recursos para el grupo de hello (generador de carga de Hola se ejecutó durante una hora en hello después de gráficos) :
 
    ![supervisar grupo](./media/sql-database-saas-tutorial/monitor-pool.png)
 
-Estos dos gráficos ilustran es el grado de idoneidad de los grupos elásticos y de SQL Database para las cargas de trabajo de una aplicación SaaS. Cuatro bases de datos que generen un máximo de 40 eDTU cada una se admiten fácilmente en un grupo de 50 eDTU. Si se aprovisionaron como bases de datos independientes, cada una debe ser de tipo S2 (50 DTU) para admitir las ráfagas. El coste de cuatro bases de datos S2 independientes sería casi tres veces el precio del grupo y el grupo todavía tiene una gran cantidad de espacio disponible para muchas más bases de datos. En situaciones reales, los clientes de SQL Database están ejecutando hasta 500 bases de datos en grupos de 200 eDTU. Para más información consulte el [tutorial de supervisión del rendimiento](sql-database-saas-tutorial-performance-monitoring.md).
+Estos dos gráficos ilustran es el grado de idoneidad de los grupos elásticos y de SQL Database para las cargas de trabajo de una aplicación SaaS. Cuatro bases de datos que están entre irrupción tooas hasta 40 Edtu fácilmente admitidos en un grupo de eDTU de 50. Si ya se han aprovisionado como bases de datos independiente, desean contar con cada toobe necesita un S2 (50 DTU) toosupport Hola ráfagas. costo de Hola de bases de datos de 4 independiente S2 sería precio de hello casi 3 veces de grupo de Hola y grupo Hola todavía tiene una gran cantidad de espacio en cabeza para muchas bases de datos más. En situaciones del mundo real, los clientes de la base de datos SQL se están ejecutando actualmente seguridad too500 bases de datos en grupos de eDTU 200. Para obtener más información, vea hello [tutorial de supervisión de rendimiento](sql-database-saas-tutorial-performance-monitoring.md).
 
 
 ## <a name="next-steps"></a>Pasos siguientes
@@ -185,20 +185,20 @@ En este tutorial ha obtenido información:
 
 > [!div class="checklist"]
 
-> * Cómo implementar la aplicación SaaS de Wingtip
-> * Acerca de los servidores, los grupos y las bases de datos que componen la aplicación
-> * Acerca de los inquilinos que se asignan a sus datos con el *catálogo*
-> * Acerca de cómo aprovisionar nuevos inquilinos
-> * Acerca de cómo ver el uso de grupos para supervisar la actividad de los inquilinos
-> * Acerca de cómo eliminar los recursos de ejemplo para detener la facturación relacionada con ellos
+> * ¿Cómo toodeploy Hola aplicación Wingtip SaaS
+> * Acerca de los servidores de hello, los grupos y las bases de datos que forman la aplicación hello
+> * Los inquilinos son datos tootheir asignada con hello *catálogo*
+> * ¿Cómo tooprovision nuevos inquilinos
+> * ¿Cómo tooview grupo uso toomonitor inquilino actividad
+> * ¿Cómo toostop de recursos de ejemplo toodelete relacionados con la facturación
 
-Ahora pruebe el [tutorial de aprovisionamiento del catálogo](sql-database-saas-tutorial-provision-and-catalog.md)
+Ahora, intente hello [tutorial aprovisionar y catálogo](sql-database-saas-tutorial-provision-and-catalog.md)
 
 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* Otros [tutoriales basados en la aplicación SaaS de Wingtip](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
-* Para obtener información acerca de los grupos elásticos, consulte [*¿Qué son los grupos elásticos de Azure SQL?*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
-* Para obtener información acerca de los trabajos elásticos, consulte [*Administración de bases de datos escaladas horizontalmente en la nube*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)
-* Para obtener información acerca de aplicaciones SaaS multiempresa, consulte [*Modelos de diseño para las aplicaciones SaaS multiempresa y Azure SQL Database*](https://docs.microsoft.com/azure/sql-database/sql-database-design-patterns-multi-tenancy-saas-applications)
+* Adicionales [tutoriales que se basan en Hola aplicación Wingtip SaaS](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* toolearn sobre grupos elásticos, consulte [ *¿qué es un grupo elástico de SQL Azure*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
+* toolearn acerca de los trabajos elásticos, consulte [ *bases de datos de escala horizontal en la nube de administración*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)
+* toolearn acerca de las aplicaciones SaaS de varios inquilinos, consulte [ *diseñar modelos para las aplicaciones SaaS de varios inquilinos*](https://docs.microsoft.com/azure/sql-database/sql-database-design-patterns-multi-tenancy-saas-applications)

@@ -1,6 +1,6 @@
 ---
-title: Historial de versiones de conectores | Microsoft Docs
-description: En este tema se incluyen todas las versiones de los conectores para Forefront Identity Manager (FIM) y Microsoft Identity Manager (MIM).
+title: Historial de versiones aaaConnector | Documentos de Microsoft
+description: En este tema se enumera todas las versiones de conectores de Hola para Forefront Identity Manager (FIM) y Microsoft Identity Manager (MIM)
 services: active-directory
 documentationcenter: 
 author: fimguy
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/24/2017
 ms.author: fimguy
-ms.openlocfilehash: 313145f4d8e5faa91fb3504cb0fd0ba87ca2e379
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3522f17c30e46542eaa367ecdefdfd2fc47f71a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connector-version-release-history"></a>Historial de versiones de conectores
-Los conectores de Forefront Identity Manager (FIM) y Microsoft Identity Manager (MIM) se actualizan con frecuencia.
+Conectores de Hola para Forefront Identity Manager (FIM) y Microsoft Identity Manager (MIM) se actualizan con frecuencia.
 
 > [!NOTE]
-> Este tema solo está disponible en FIM y MIM. No se admite la instalación de estos conectores en Azure AD Connect. Los conectores publicados están preinstalados en ADDConnect al actualizarse a la compilación especificada.
+> Este tema solo está disponible en FIM y MIM. No se admite la instalación de estos conectores en Azure AD Connect. Conectores de lanzamiento se preinstalado en AADConnect al actualizar toospecified compilación.
 
-En este tema se muestran todas las versiones de los conectores que se han publicado.
+En este tema se enumeran todas las versiones de hello conectores que se han liberado.
 
 Vínculos relacionados:
 
 * [Descargar los últimos conectores](http://go.microsoft.com/fwlink/?LinkId=717495)
-* [conector LDAP genérico](active-directory-aadconnectsync-connector-genericldap.md) 
-* [conector SQL genérico](active-directory-aadconnectsync-connector-genericsql.md) 
-* [conector de servicios web](http://go.microsoft.com/fwlink/?LinkID=226245) 
-* [conector PowerShell](active-directory-aadconnectsync-connector-powershell.md) 
-* [conector Lotus Domino](active-directory-aadconnectsync-connector-domino.md) 
+* [conector LDAP genérico](active-directory-aadconnectsync-connector-genericldap.md)
+* [conector SQL genérico](active-directory-aadconnectsync-connector-genericsql.md)
+* [conector de servicios web](http://go.microsoft.com/fwlink/?LinkID=226245)
+* [conector PowerShell](active-directory-aadconnectsync-connector-powershell.md)
+* [conector Lotus Domino](active-directory-aadconnectsync-connector-domino.md)
 
 
 ## <a name="116040-aadconnect-pending-release"></a>1.1.604.0 (AADConnect pendiente de publicación)
@@ -46,20 +46,20 @@ Vínculos relacionados:
 * Servicios Web genéricos:
   * Se corrigió un problema que impedía la creación de un proyecto SOAP cuando había dos o más puntos de conexión.
 * SQL genérico:
-  * En la operación de importación, GSQL no convertía el tiempo correctamente al guardarse en el espacio del conector. El formato de fecha y hora predeterminado para el espacio del conector de GSQL se cambió de "aaaa-MM-dd hh:mm:ssZ" a "aaaa-MM-dd HH:mm:ssZ".
+  * En la operación de Hola de importación hello GSQL no se convertir la hora correctamente, cuando guarda tooconnector espacio. Hello formato de fecha y hora predeterminado para el espacio de conector de hello GSQL cambió de 'aaaa-MM-dd ssZ' too'yyyy-MM-dd ssZ '.
 
 ## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
 
 ### <a name="fixed-issues"></a>Problemas corregidos:
 
 * Servicios Web genéricos:
-  * La herramienta Wsconfig no convirtió correctamente la matriz JSON de "solicitud de ejemplo" para el método del servicio REST. Esto generó problemas de serialización de esta matriz JSON para la solicitud de REST.
+  * herramienta de Hello Wsconfig no convirtió correctamente matriz Json de Hola de "solicitud de ejemplo" para el método de servicio REST de Hola. Esto causaba problemas con la serialización de esta matriz Json de solicitud REST de Hola.
   * La herramienta de configuración del conector de servicio web no admite el uso de espacios en nombres de atributo JSON 
-    * Se puede agregar manualmente un patrón de sustitución al archivo WSConfigTool.exe.config, p. ej., ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+    * Un patrón de sustitución se puede agregar manualmente archivos de WSConfigTool.exe.config de toohello, p. ej.```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
 
 * Lotus Notes:
-  * Cuando la opción **Allow custom certifiers for Organization/Organizational Units** (Permitir certificadores personalizados para la organización/unidades organizativas) está deshabilitada, el conector produce un error durante la exportación (Actualización) Después del flujo de exportación, se exportan todos los atributos a Domino, pero en el momento de la exportación se devuelve una excepción KeyNotFoundException a Sync. 
-    * Esto sucede porque se produce un error en la operación de cambio de nombre al intentar cambiar DN (atributo UserName) cambiando uno de los atributos siguientes:  
+  * Hola cuando la opción **permitir los certificadores personalizados para las unidades de organización/organización** está deshabilitado Hola conector se produce un error durante la exportación (actualización) después de exportación de hello fluir todos los atributos son tooDomino exportado, pero en tiempo de presentación de exportar un KeyNotFoundException se devuelve tooSync. 
+    * Esto sucede porque Hola cambiar el nombre de operación se produce un error cuando intente toochange DN (atributo de nombre de usuario) cambiando uno de los atributos de hello siguientes:  
       - Apellidos
       - Nombre
       - MiddleInitial
@@ -89,7 +89,7 @@ Vínculos relacionados:
   * OverflowException en conector GSQL con DB2 en AS/400
 
 Lotus:
-  * Se ha agregado la opción para habilitar o deshabilitar la búsqueda de unidades organizativas antes de abrir la página de GlobalParameters
+  * Tooenable\disable ha agregado la opción Buscar las unidades organizativas antes de abrir la página de GlobalParameters
 
 ## <a name="114430"></a>1.1.443.0
 
@@ -98,18 +98,18 @@ Publicación: marzo de 2017
 ### <a name="enhancements"></a>Mejoras
 
 * SQL genérico:</br>
-  **Síntomas del escenario:** se trata de una limitación conocida con el Conector de SQL en la que solo se permite una referencia a un tipo de objeto y se requiere referencia cruzada con los miembros. </br>
-  **Descripción de la solución:** en el paso de procesamiento de las referencias en que se elige la opción "*", TODAS las combinaciones de tipos de objeto se devolverán al motor de sincronización.
+  **Síntomas de escenario:** es una limitación conocida con hello conector de SQL donde sólo permiten un tipo de objeto de referencia tooone y requieren una referencia cruzada con los miembros. </br>
+  **Descripción de la solución:** en el paso de procesamiento de Hola para las referencias eran "*" se elige la opción, se devolverán todas las combinaciones de tipos de objeto toohello atrás motor de sincronización.
 
 >[!Important]
 - Con esto se crearán muchos marcadores de posición
-- Es necesario asegurarse de que la nomenclatura sea única entre todos los tipos de objeto.
+- Es necesario toomake seguro Hola de nomenclatura es único entre los tipos de objeto.
 
 
 * LDAP genérico:</br>
- **Escenario:** cuando solo se seleccionan algunos contenedores en una partición específica, la búsqueda se seguirá haciendo en toda la partición. El servicio de sincronización filtrará la partición específica, pero MA no lo hará, lo que podría provocar una degradación del rendimiento. </br>
+ **Escenario:** cuando se seleccionan sólo algunos contenedores de partición específica, a continuación, búsqueda de hello todavía se realizará en toda partición. El servicio de sincronización filtrará la partición específica, pero MA no lo hará, lo que podría provocar una degradación del rendimiento. </br>
 
- **Descripción de la solución:** se modificó el código del conector GLDAP para permitir que pase por todos los contenedores y objetos de búsqueda de cada uno de ellos, en lugar de buscar en toda la partición.
+ **Descripción de la solución:** toomake de código del conector GLDAP cambiado se pueden pasar por todos los contenedores y buscar objetos en cada uno de ellos, en lugar de buscar en toda partición de Hola.
 
 
 * Lotus Domino:
@@ -119,15 +119,15 @@ Publicación: marzo de 2017
 
 ### <a name="fixed-issues"></a>Problemas corregidos:
 * Servicios Web genéricos:
- * Cuando cambia la URL de servicio en proyectos wsconfig de SAP predeterminados mediante la herramienta de configuración WebService, aparece el error siguiente: No se pudo encontrar parte de la ruta de acceso
+ * Al cambiar la dirección URL del servicio de Hola de forma predeterminada en los proyectos wsconfig SAP a través de la herramienta de configuración de servicio Web, a continuación, Hola tras error ocurre: no se encontró una parte de la ruta de acceso de Hola
 
       ``'C:\Users\cstpopovaz\AppData\Local\Temp\2\e2c9d9b0-0d8a-4409-b059-dceeb900a2b3\b9bedcc0-88ac-454c-8c69-7d6ea1c41d17\cfg.config\cloneconfig.xml'. ``
 
 * LDAP genérico:
  * Conector GLDAP no ve todos los atributos en AD LDS
- * El asistente se interrumpe cuando no se detectan atributos de UPN desde el esquema de directorio de LDAP
+ * Asistente para saltos cuando ningún atributo UPN se ha detectado en el esquema de directorio LDAP de Hola
  * Error de importaciones diferenciales cuando no hay errores de detección durante la importación completa, cuando no se selecciona el atributo "objectclass"
- * La página de configuración "Configurar particiones y jerarquías" no muestra ningún objeto en que el tipo sea igual a la partición de los servidores Novel en MA del LDAP  
+ * Una página de configuración "Configurar particiones y jerarquías", no muestra ningún objeto de qué tipo es la partición de toohello igual para los servidores Novel Hola genérico  
 genérico. Solo se muestran objetos desde la partición RootDSE.
 
 
@@ -137,13 +137,13 @@ genérico. Solo se muestran objetos desde la partición RootDSE.
 
 
 * Lotus Notes:
- * Un campo específico "Nombre completo" aparece correctamente en el metaverso; sin embargo, cuando se realiza la exportación a Notes, el valor del atributo es Null o Empty.
+ * Un campo específico "Nombre completo" se muestra en el metaverso Hola correctamente sin embargo cuando tooNotes exportar Hola valor de atributo de hello es nulo o está vacío.
  * Corrección para error de certificador duplicado
- * Cuando se selecciona un objeto sin datos en el conector para Lotus Domino con otros objetos, se recibe el error de detección durante la importación completa.
- * Cuando la importación diferencial se ejecuta en el conector para Lotus Dominio, al final de esa ejecución, el servicio Microsoft.IdentityManagement.MA.LotusDomino.Service.exe a veces muestra un error de aplicación.
- * La pertenencia general a grupos funciona correctamente y se mantiene, excepto cuando se ejecuta la exportación para intentar quitar un usuario de la pertenencia; ahí se muestra como una acción correcta con una actualización, pero el usuario no se quita realmente de la pertenencia en Lotus Notes.
- * Se agregó una oportunidad para elegir el modo de exportación como "Append Item at bottom" (Anexar el elemento al final) en la GUI de configuración de Lotus MA para anexar elementos nuevos al final durante la exportación de atributos multivalor.
- * El conector agregará la lógica que se necesita para eliminar el archivo de la carpeta de correo y el almacén de id.
+ * Cuando se selecciona Hola objeto sin ningún dato en hello conector para Lotus Domino con otros objetos que recibimos error de detección de hello al realizar la importación completa.
+ * Una vez importación diferencial que se ejecuta en hello conector para Lotus Domino, final Hola de esa ejecución, hello Microsoft.IdentityManagement.MA.LotusDomino.Service.exe servicio a veces devuelve un Error de aplicación.
+ * La pertenencia al grupo global funciona correctamente y se mantiene, excepto cuando se ejecuta Hola exportación tootry tooremove un usuario de pertenencia se muestra como correcto con una actualización, pero usuario Hola realmente no se quitan de la pertenencia a Lotus Notes.
+ * Un modo de toochoose oportunidad de exportación como "Anexado el elemento final" se agregó en configuración del agente de administración de GUI de Lotus tooappend nuevos elementos en parte inferior durante la exportación de Hola para los atributos con varios valores.
+ * Conector agregará Hola necesita Id. de almacén y del archivo de Hola de toodelete de lógica de hello carpeta de correo electrónico.
  * La eliminación de pertenencias no funciona entre los miembros de NAB.
  * Los valores se deben eliminar correctamente del atributo multivalor
 
@@ -151,33 +151,33 @@ genérico. Solo se muestran objetos desde la partición RootDSE.
 Publicación: marzo de 2016
 
 **Nuevo conector**  
-Versión inicial del [conector SQL genérico](active-directory-aadconnectsync-connector-genericsql.md).
+Versión de hello inicial [conector de SQL genérico](active-directory-aadconnectsync-connector-genericsql.md).
 
 **Nuevas características:**
 
 * Conector LDAP genérico:
   * Se agregó compatibilidad para la importación diferencial con Isode.
 * Conector de servicios web:
-  * Se han actualizado las actividades csEntryChangeResult y setImportErrorCode para permitir que los errores de nivel de objeto se devuelvan al motor de sincronización.
-  * Se han actualizado las plantillas SAP6 y SAP6User para utilizar la nueva funcionalidad de error de nivel de objeto.
+  * Hola actualizada csEntryChangeResult actividad y setImportErrorCode actividad tooallow objeto errores en el nivel toobe toohello atrás devuelto motor de sincronización.
+  * Hola actualizada SAP6 y SAP6User plantillas toouse Hola nuevo error nivel funcionalidad del objeto.
 * Conector Lotus Domino:
-  * Al exportar, necesita un certificador por cada libreta de direcciones. Ahora puede usar la misma contraseña para todos los certificadores a fin de facilitar la administración.
+  * Al exportar, necesita un certificador por cada libreta de direcciones. Puede ahora use Hola misma contraseña para todos los certificadores toomake Hola la administración sea más fácil.
 
 **Problemas corregidos:**
 
 * Conector LDAP genérico:
   * En el caso de IBM Tivoli DS, no se detectaban correctamente algunos atributos de referencia.
-  * En el caso de Open LDAP durante una importación diferencial, se truncaban los espacios en blanco al principio y al final de las cadenas.
-  * En el caso de Novell y NetIQ, se producía un error en las exportaciones que trasladaban un objeto entre UO/contenedores y, a la vez, cambiaban el nombre del objeto.
+  * Para LDAP abierto durante una importación delta, se truncan los espacios en blanco al principio de Hola y al final de cadenas.
+  * Para Novell y NetIQ, una exportación que mueve un objeto entre las unidades organizativas o contenedores y en hello mismo tiempo objeto Hola cuyo nombre ha cambiado.
 * Conector de servicios web:
-  * Si el servicio web tenía varios puntos de conexión para el mismo enlace, el conector no los detectaba correctamente.
+  * Si el servicio web de hello tuviera varios extremos para el mismo enlace, a continuación, hello conector no correctamente detectó estos extremos.
 * Conector Lotus Domino:
-  * No funcionaban las exportaciones del atributo fullName a una base de datos de recepción de correo electrónico.
-  * Las exportaciones que agregaban y quitaban miembros de un grupo solo exportaban los miembros agregados.
-  * Si un documento de notas no es válido (el atributo isValid se definía como false), se produce un error en el conector.
+  * Una exportación de hello fullName atributo tooa correo electrónico de base de datos no funcionaron.
+  * Una exportación que tanto agregar y quitar a miembros de un grupo solo Hola exportado había agregado a los miembros.
+  * Si un documento de notas no es válido (Hola atributo isValid establecido toofalse), Hola, a continuación, se produce un error de conector.
 
 ## <a name="older-releases"></a>Versiones anteriores
-Antes de marzo de 2016, los conectores se publicaban como temas de soporte técnico.
+Antes de marzo de 2016, Hola conectores se publicaron como temas de soporte técnico.
 
 **LDAP genérico**
 
@@ -205,6 +205,6 @@ Antes de marzo de 2016, los conectores se publicaban como temas de soporte técn
 * [KB2875551](https://support.microsoft.com/kb/2875551) : 5.3.0534, agosto de 2013
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre la configuración de la [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) .
+Obtener más información sobre hello [sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) configuración.
 
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

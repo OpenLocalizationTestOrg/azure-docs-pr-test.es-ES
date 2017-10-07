@@ -1,6 +1,6 @@
 ---
-title: "Supervisión de API con Azure API Management, Event Hubs y Runscope | Microsoft Docs"
-description: "Aplicación de ejemplo que muestra la directiva log-to-eventhub que conecta API Management de Azure, Event Hubs de Azure y Runscope para el registro y supervisión de HTTP"
+title: "aaaMonitor API con administración de API de Azure, los concentradores de eventos y Runscope | Documentos de Microsoft"
+description: "Aplicación de ejemplo que muestra la directiva de registro a eventhub Hola conexión administración de API de Azure, los concentradores de eventos de Azure y Runscope para HTTP de supervisión y registro"
 services: api-management
 documentationcenter: 
 author: darrelmiller
@@ -14,39 +14,39 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 70ee752c5639c90f77dde104ce85eec0a1062300
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7456a2436f3a2d7b815b70b65fca9481d39c5fe9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Supervisión de API con Administración de API de Azure, Centros de eventos y Runscope
-El [servicio Administración de API](api-management-key-concepts.md) proporciona muchas capacidades para mejorar el procesamiento de solicitudes de HTTP enviadas a la API HTTP. Sin embargo, la existencia de las solicitudes y respuestas son transitorias. Se realiza la solicitud y fluye a través del servicio Administración de API a la API de back-end. La API procesa la solicitud y se pasa una respuesta al consumidor de API. El servicio Administración de API mantiene algunas estadísticas importantes acerca de las API que se muestran en el panel del portal de Publisher, pero aparte de eso, los detalles desaparecen.
+Hola [servicio de administración de API](api-management-key-concepts.md) proporciona muchas capacidades tooenhance Hola procesamiento de las solicitudes enviadas de HTTP tooyour API HTTP. Sin embargo, Hola existencia de hello solicitudes y respuestas son transitorias. se realiza la solicitud de Hola y que fluye a través de backend de tooyour de servicio de administración de API de hello API. La API procesa la solicitud de hello y una respuesta fluye a través de consumidor toohello API. Hola servicio de administración de API mantiene algunas estadísticas importantes sobre hello las API para su presentación en el panel del portal Hola publicador pero, aparte de eso, detalles Hola han desaparecido.
 
-Mediante la [directiva](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) [log-to-eventhub](api-management-howto-policies.md) en el servicio API Management, puede enviar los detalles de la solicitud y la respuesta a un [Centro de eventos de Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Existen diversos motivos por los que puede desear generar eventos de mensajes HTTP que se envían a las API. Algunos ejemplos incluyen la traza de auditoría de las actualizaciones, análisis de uso, las alertas de excepción e integraciones de terceros.   
+Mediante el uso de hello [registro a eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) [directiva](api-management-howto-policies.md) Hola servicio de administración de API puede enviar los detalles de tooan de solicitud y respuesta de hello [concentrador de eventos de Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Hay una variedad de razones por las que puede toogenerate eventos de mensajes HTTP que se envían tooyour API. Algunos ejemplos incluyen la traza de auditoría de las actualizaciones, análisis de uso, las alertas de excepción e integraciones de terceros.   
 
-Este artículo muestra cómo capturar el mensaje de solicitud y respuesta de HTTP completo, enviarlo a un Centro de eventos y, a continuación, retransmitir ese mensaje a un servicio que proporciona servicios de registro y supervisión de HTTP.
+Este artículo demuestra cómo toocapture Hola toda solicitud y respuesta de mensaje HTTP, enviar tooan concentrador de eventos y, a continuación, ese servicio de terceros de tooa de mensaje que proporciona servicios de supervisión y registro de HTTP de retransmisión.
 
 ## <a name="why-send-from-api-management-service"></a>¿Por qué se envían desde el servicio Administración de API?
-Es posible escribir middleware HTTP que se puede conectar a los marcos API HTTP para capturar solicitudes y respuestas de HTTP e introducirlas en sistemas de registro y supervisión. El inconveniente de este enfoque es que el middleware HTTP debe integrarse en la API de back-end y debe coincidir con la plataforma de la API. Si hay varias API, todas deben implementar el middleware. A menudo existen motivos por los que no se pueden actualizar las API de back-end.
+Es posible toowrite middleware HTTP que se conecte a la API HTTP marcos toocapture solicitudes y respuestas HTTP e introducirlos en sistemas de supervisión y registro. Hola inconveniente toothis consiste Hola HTTP middleware necesita toobe integrado en hello back-end de API y debe coincidir con la plataforma de Hola de hello API. Si hay varias API, a continuación, cada uno de ellos debe implementar middleware de Hola. A menudo existen motivos por los que no se pueden actualizar las API de back-end.
 
-El usp del servicio Administración de API de Azure para la integración con la infraestructura de registro proporciona una solución centralizada e independiente de la plataforma. También es escalable, en parte debido a las capacidades de [replicación geográfica](api-management-howto-deploy-multi-region.md) de Administración de API de Azure.
+Usar toointegrate de servicio de administración de API de Azure de hello con infraestructura de registro proporciona una solución centralizada e independiente de la plataforma. También es escalable, en parte debido toohello [georreplicación](api-management-howto-deploy-multi-region.md) capacidades de administración de API de Azure.
 
-## <a name="why-send-to-an-azure-event-hub"></a>¿Por qué se envía a un Centro de eventos de Azure?
-Es razonable preguntar por qué crear una directiva que es específica de Centros de eventos de Azure Hay muchos lugares diferentes donde puede ser conveniente registrar mis solicitudes. ¿Por qué no simplemente enviar las solicitudes directamente al destino final?  Es una opción. Sin embargo, al realizar solicitudes de registro de un servicio Administración de API, es necesario tener en cuenta cómo afectarán los mensajes de registro al rendimiento de la API. Para manejar los aumentos graduales de la carga puede aumentar las instancias disponibles de los componentes del sistema o aprovechar las ventajas de la replicación geográfica. Sin embargo, picos de tráfico cortos pueden hacer que las solicitudes se retrasen significativamente si las solicitudes a la infraestructura de registro empiezan a ralentizarse debido a la carga.
+## <a name="why-send-tooan-azure-event-hub"></a>¿Por qué enviar tooan concentrador de eventos de Azure?
+Es un tooask razonable, ¿por qué crear una directiva de centros de eventos de tooAzure específico? Hay muchos lugares diferentes que me interesa toolog Mis solicitudes. ¿Por qué no enviar simplemente Hola directamente solicitudes destino final toohello?  Es una opción. Sin embargo, al realizar solicitudes de registro de un servicio de administración de API, es necesario tooconsider cómo los mensajes de registro afectará al rendimiento de Hola de hello API. Para manejar los aumentos graduales de la carga puede aumentar las instancias disponibles de los componentes del sistema o aprovechar las ventajas de la replicación geográfica. Sin embargo, short picos de tráfico pueden provocar toobe solicitudes retrasada significativamente si tooslow bajo una carga de inicio de la infraestructura de toologging de solicitudes.
 
-Centros de eventos de Azure está diseñado para la entrada de grandes volúmenes de datos, con capacidad para tratar con un número mucho mayor de eventos que el número de solicitudes de HTTP que procesan la mayoría de las API. El Centro de eventos actúa como un tipo de búfer sofisticada entre el servicio Administración de API y la infraestructura que almacena y procesa los mensajes. Esto garantiza que no se verá afectado el rendimiento de la API debido a la infraestructura de registro.  
+Hola centros de eventos de Azure está diseñado tooingress grandes volúmenes de datos, con capacidad para tratar con un número mucho mayor de eventos que número Hola de HTTP solicita el proceso la mayoría de las API. Hola concentrador de eventos actúa como un tipo de búfer sofisticada entre la API hello y servicio de infraestructura de administración que almacenar y procesar mensajes de saludo. Esto garantiza que no se verá afectado el rendimiento de la API debido a la infraestructura de registro de toohello.  
 
-Una vez que los datos se han pasado a un Centro de eventos, se conservan y esperan a que los consumidores del centro de eventos los procese. Al Centro de eventos no le importa cómo se procesará, simplemente se ocupa de asegurarse de que el mensaje se entregará correctamente.     
+Una vez tooan concentrador de eventos se conserva y va a esperar tooprocess de los consumidores del centro de eventos se ha pasado datos Hola. Hola concentrador de eventos no importa cómo se procesarán, simplemente se ocupa asegurarse de que se entregarán correctamente el mensaje de bienvenida.     
 
-Centros de eventos tiene la capacidad de transmitir eventos a varios grupos de consumidores. Esto permite que sistemas completamente diferentes procesen los eventos. Esto permite muchos escenarios de integración sin agregar retrasos en el procesamiento de la solicitud de API dentro del servicio Administración de API, ya que solo es necesario generar un evento.
+Los concentradores de eventos tienen grupos de consumidores de hello capacidad toostream eventos toomultiple. Esto permite toobe de eventos procesado por sistemas completamente diferentes. Esto permite admitir muchos escenarios de integración sin contar con retrasos de adición en hello del proceso de solicitud de API de hello en servicio de administración de API de Hola como un solo evento necesita toobe generado.
 
-## <a name="a-policy-to-send-applicationhttp-messages"></a>Una directiva para enviar mensajes de aplicación/http
-Un Centro de eventos acepta datos de eventos como una cadena simple. El contenido de esa cadena depende completamente de usted. Para poder empaquetar una solicitud de HTTP y enviarla a Centros de eventos, debemos formatear la cadena con la información de solicitud o respuesta. En situaciones como esta, si hay un formato existente que podamos reusar, es posible que no necesitemos escribir nuestro propio código de análisis. Inicialmente consideré el uso de [HAR](http://www.softwareishard.com/blog/har-12-spec/) para enviar solicitudes y respuestas de HTTP. Sin embargo, este formato está optimizado para almacenar una secuencia de solicitudes de HTTP en un formato basado en JSON. Contenía un número de elementos obligatorios que agregaba una complejidad innecesaria para el escenario de pasar el mensaje HTTP a través del cable.  
+## <a name="a-policy-toosend-applicationhttp-messages"></a>Una directiva toosend aplicación/http los mensajes
+Un Centro de eventos acepta datos de eventos como una cadena simple. contenido de Hola de dicha cadena completamente está funcionando tooyou. toobe puede toopackage una copia de seguridad una solicitud HTTP y envíelo tooEvent concentradores necesitamos cadena de hello tooformat con la información de solicitud o respuesta de Hola. En situaciones como esta, si hay un formato existente que se puede volver a utilizar, a continuación, podemos no tenemos toowrite nuestro propio análisis de código. Inicialmente considera utilizando hello [HAR](http://www.softwareishard.com/blog/har-12-spec/) para el envío de solicitudes y respuestas HTTP. Sin embargo, este formato está optimizado para almacenar una secuencia de solicitudes de HTTP en un formato basado en JSON. Contenía un número de elementos obligatorios que agrega una complejidad innecesaria de escenario de Hola de pasar mensajes de bienvenida HTTP a través de la conexión de Hola.  
 
-Una opción alternativa era usar el tipo de soporte físico `application/http` , como se describe en la especificación HTTP [RFC 7230](http://tools.ietf.org/html/rfc7230). Este tipo de soporte físico usa el mismo formato que se usa para enviar realmente mensajes de HTTP a través del cable, pero el mensaje completo se puede colocar en el cuerpo de otra solicitud de HTTP. En nuestro caso simplemente vamos a usar el cuerpo como nuestro mensaje para enviarlo a Centros de eventos. Convenientemente, hay un analizador en las bibliotecas de [Microsoft ASP.NET Web API 2.2 Cliente](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) que puede analizar este formato y convertirlo a `HttpRequestMessage` nativo y objetos `HttpResponseMessage`.
+Una opción alternativa era hello toouse `application/http` tipo de medio como se describe en la especificación de hello HTTP [7230 RFC](http://tools.ietf.org/html/rfc7230). Este tipo de medio usa Hola exactamente el mismo formato que es usado tooactually enviar mensajes de HTTP a través de la conexión de hello, pero se pueden colocar mensajes de bienvenida del todo en cuerpo Hola de otra solicitud HTTP. En nuestro caso vamos solo cuerpo de hello toouse como nuestro tooEvent de toosend mensaje concentradores. Afortunadamente, hay un analizador que existe en [cliente 2.2 de Microsoft ASP.NET Web API](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) bibliotecas que pueden analizar este formato y convertirlos a nativo hello `HttpRequestMessage` y `HttpResponseMessage` objetos.
 
-Para poder crear este mensaje debemos aprovechar las [expresiones de directiva](https://msdn.microsoft.com/library/azure/dn910913.aspx) basadas en C# en Administración de API de Azure. A continuación se proporciona la directiva que envía un mensaje de solicitud de HTTP a Centros de eventos de Azure.
+toobe puede toocreate este mensaje necesitamos tootake aprovechar en función de C# [expresiones de directiva](https://msdn.microsoft.com/library/azure/dn910913.aspx) en administración de API de Azure. Aquí es la directiva Hola que envía un mensaje de solicitud HTTP tooAzure centros de eventos.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -75,27 +75,27 @@ Para poder crear este mensaje debemos aprovechar las [expresiones de directiva](
 ```
 
 ### <a name="policy-declaration"></a>Declaración de directiva
-Hay algunas cosas específicas que merece la pena mencionar acerca de esta expresión de directiva. La directiva log-to-eventhub tiene un atributo denominado logger-id que hace referencia al nombre del registrador que se ha creado en el servicio Administración de API. Los detalles de cómo configurar un registrador del Centro de eventos en el servicio Administración de API pueden encontrarse en el documento [Cómo registrar eventos en los centros de eventos de Azure en Administración de API de Azure](api-management-howto-log-event-hubs.md). El segundo atributo es un parámetro opcional que indica a Centros de eventos en qué partición almacenar el mensaje. Centros de eventos usa particiones para habilitar la escalabilidad y requiere un mínimo de dos. La entrega ordenada de mensajes solo se garantiza dentro de una partición. Si no se indica al Centro de eventos en qué partición desea colocar el mensaje, usará un algoritmo round-robin para distribuir la carga. Sin embargo, eso puede hacer que algunos de nuestros mensajes no se procesen en el orden correcto.  
+Hay algunas cosas específicas que merece la pena mencionar acerca de esta expresión de directiva. Directiva de registro a eventhub de Hello tiene un atributo denominado identificador de registrador que hace referencia el nombre de toohello de registrador que se ha creado en el servicio de administración de API de Hola. Hola detalles de cómo toosetup un registrador de concentrador de eventos en el servicio de administración de API de hello puede encontrarse en el documento de hello [cómo toolog eventos tooAzure concentradores de eventos de administración de API de Azure](api-management-howto-log-event-hubs.md). segundo atributo de Hello es un parámetro opcional que indica qué mensaje de saludo de toostore de partición de a centros de eventos. Utilice particiones tooenable escalabilidad y requieren un mínimo de dos centros de eventos. sólo se garantiza la entrega ordenada de mensajes de Hola dentro de una partición. Si no se indica a centro de eventos en los mensajes de bienvenida de partición tooplace, usará un algoritmo round-robin toodistribute Hola de carga. Sin embargo, pueden producirse algunos de nuestro toobe de mensajes procesado desordenados.  
 
 ### <a name="partitions"></a>Particiones
-Para garantizar que nuestros mensajes se entregan a los consumidores en orden y aprovechar la capacidad de distribución de carga de las particiones, elegí enviar mensajes de solicitud de HTTP a una partición y los mensajes de respuesta de HTTP a una segunda partición. Esto garantiza una distribución equilibrada de la carga y podemos garantizar que se consumirán todas las solicitudes en orden y todas las respuestas se consumirán en orden. Es posible que una respuesta se consuma antes de la solicitud correspondiente, pero como esto no es un problema porque tenemos un mecanismo diferente para correlacionar las solicitudes a las respuestas y sabemos que las solicitudes van siempre antes las respuestas.
+tooensure nuestros mensajes se entregan tooconsumers en orden y aprovechar las ventajas de la capacidad de distribución de carga de Hola de particiones, que deseaba toosend HTTP solicitud mensajes tooone HTTP respuesta mensajes tooa partición y otra. Esto garantiza una distribución equilibrada de la carga y podemos garantizar que se consumirán todas las solicitudes en orden y todas las respuestas se consumirán en orden. Es posible que un toobe de respuesta que se utilicen antes de solicitud correspondiente hello, pero ya que no es un problema que tenemos un mecanismo diferente para poner en correlación las solicitudes tooresponses y sabemos que las solicitudes procedan siempre antes de las respuestas.
 
 ### <a name="http-payloads"></a>Cargas de HTTP
-Después de crear el `requestLine` comprobamos si se debe truncar el cuerpo de la solicitud. El cuerpo de la solicitud se trunca a solo 1024. Esto podría aumentarse; sin embargo, los mensajes individuales del Centro de eventos están limitados a 256 KB, por lo que es probable que algunos cuerpos de los mensajes HTTP no quepan en un único mensaje. Al realizar el registro y análisis, una cantidad significativa de información puede derivarse simplemente de la línea de solicitud de HTTP y los encabezados. Además, muchas solicitudes de API devuelven solo cuerpos pequeños, por lo que la pérdida de valor de la información debido al truncamiento de cuerpos grandes es bastante mínima en comparación con la reducción de los costos de almacenamiento, transferencia y transformación para mantener todo el contenido del cuerpo. Una nota final acerca del procesamiento del cuerpo es que necesitamos pasar `true` al método As<string>() porque leemos el contenido del cuerpo, pero también queríamos que la API de back-end pudiera leer el cuerpo. Al pasar true a este método, hacemos que el cuerpo se almacene en la búfer para que se pueda leer una segunda vez. Es importante tenerlo en cuenta si tiene una API que carga archivos muy grandes o usa el sondeo largo. En estos casos, es mejor evitar totalmente la lectura del cuerpo.   
+Después de compilar hello `requestLine` comprobamos toosee si se debe truncar el cuerpo de la solicitud de saludo. cuerpo de la solicitud de Hello es tooonly truncado 1024. Esto podría aumentar, sin embargo los mensajes individuales de concentrador de eventos son too256KB limitado, por lo que es probable que algunas HTTP cuerpos will no caben en un único mensaje. Al realizar el registro y análisis de una cantidad significativa de información puede derivarse de simplemente línea de solicitud HTTP de Hola y encabezados. Además, muchas solicitudes de API solo devuelven cuerpos pequeños y por lo que es bastante mínima reducción de toohello de comparación de transferencia de la pérdida de Hola de valor de la información mediante el truncamiento de cuerpos de gran tamaño, el procesamiento y el almacenamiento de costos tookeep todo el contenido de cuerpo. Una nota final acerca del procesamiento de cuerpo de hello es que necesitamos toopass `true` toohello como<string>método () porque estamos leyendo contenido del cuerpo de hello, pero era también desee Hola back-end API toobe tooread capaz de hello cuerpo. De forma pasar true toothis método se producen Hola cuerpo toobe almacenado en búfer para que sólo pueda leerlo la segunda vez. Esto es importante toobe tenga en cuenta si tiene una API que no la carga de archivos muy grandes o usa sondeo prolongado. En estos casos sería mejor tooavoid leer el cuerpo de hello en absoluto.   
 
 ### <a name="http-headers"></a>Encabezados HTTP
-Los encabezados HTTP pueden transferirse simplemente al formato del mensaje con un formato simple de par clave/valor. Hemos decidido eliminar ciertos campos de seguridad confidenciales para evitar la pérdida innecesaria de información de credenciales. No es probable que se usen claves de API y otras credenciales para los análisis. Si deseamos realizar el análisis en el usuario y el producto específico que usan, podíamos obtenerlo desde el objeto `context` y agregarlo al mensaje.     
+Encabezados HTTP se pueden transferir simplemente en formato de mensaje de Hola en un formato de par clave/valor simple. Que hemos elegido toostrip ciertos seguridad campos confidenciales, tooavoid innecesariamente pierde la información de credenciales. No es probable que se usen claves de API y otras credenciales para los análisis. Si se desea toodo análisis en el usuario de Hola y producto en particular Hola usaran, a continuación, se pudo obtener de hello `context` objeto y agregar ese mensaje toohello.     
 
 ### <a name="message-metadata"></a>Metadatos del mensaje
-Cuando se crea el mensaje completo para enviarlo al Centro de eventos, la primera línea no es realmente parte del mensaje `application/http` . La primera línea son metadatos adicionales que incluyen si el mensaje es un mensaje de solicitud o de respuesta y un identificador de mensaje que se usa para correlacionar las solicitudes y las respuestas. El identificador del mensaje se crea mediante otra directiva que tiene este aspecto:
+Al compilar el concentrador de eventos de hello mensaje completo toosend toohello, Hola primera línea no es realmente parte de hello `application/http` mensaje. primera línea de Hello es metadatos adicionales que se compone de si el mensaje de bienvenida es un mensaje de solicitud o respuesta y un identificador de mensaje que es usado toocorrelate solicita tooresponses. Id. de mensaje Hola se crea mediante el uso de otra directiva este aspecto:
 
 ```xml
 <set-variable name="message-id" value="@(Guid.NewGuid())" />
 ```
 
-Podríamos haber creado el mensaje de solicitud, almacenarlo en una variable hasta que se devuelva la respuesta y, después, simplemente enviar la solicitud y la respuesta como un solo mensaje. Sin embargo, al enviar la solicitud y la respuesta de forma independiente y usar un identificador de mensaje para correlacionar las dos, obtenemos un poco más flexibilidad en el tamaño de mensaje, la capacidad de aprovechar varias particiones al tiempo que se mantiene el orden de los mensajes y la solicitud aparecerá antes en nuestro panel de registro. También puede haber algunos escenarios donde nunca se envíe una respuesta válida al Centro de eventos, posiblemente debido a un error de solicitud irrecuperable en el servicio Administración de API, pero aún tendremos un registro de la solicitud.
+Podríamos haber creado el mensaje de solicitud de hello, almacenado que, en una variable hasta Hola respuesta se devuelve y enviar, a continuación, simplemente Hola solicitud y respuesta como un solo mensaje. Sin embargo, enviar Hola solicitud y respuesta de forma independiente y usando un toocorrelate de Id. de mensaje Hola dos, obtenemos un poco más flexibilidad en el tamaño del mensaje Hola, Hola capacidad tootake aprovechar varias particiones, aunque manteniendo hello y orden de los mensajes solicitud aparecerá en el panel de registro antes. También puede haber algunos escenarios donde una respuesta válida nunca se envía el concentrador de eventos toohello, posiblemente debido a error de solicitud irrecuperable tooa en el servicio de administración de API de hello, pero todavía tenemos un registro de solicitud de saludo.
 
-La directiva para enviar el mensaje de respuesta de HTTP es muy parecida a la solicitud; por tanto, la configuración de directiva completa tiene el siguiente aspecto:
+mensaje de Hola directiva toosend Hola respuesta HTTP parece muy similar solicitud toohello y Hola completar la configuración de directiva se ve así:
 
 ```xml
 <policies>
@@ -155,16 +155,16 @@ La directiva para enviar el mensaje de respuesta de HTTP es muy parecida a la so
 </policies>
 ```
 
-La directiva `set-variable` crea un valor que sea accesible por la directiva `log-to-eventhub` en la sección `<inbound>` y la sección `<outbound>`.  
+Hola `set-variable` directiva crea un valor que sea accesible para ambos hello `log-to-eventhub` directiva Hola `<inbound>` hello y sección `<outbound>` sección.  
 
 ## <a name="receiving-events-from-event-hubs"></a>Recepción de eventos de Centros de eventos
-Se reciben eventos del Centro de eventos de Azure mediante el [protocolo AMQP](http://www.amqp.org/). El equipo del Bus de servicio de Microsoft hizo que las bibliotecas cliente disponibles para facilitar los eventos de consumo. Existen dos enfoques diferentes admitidos, uno se está un *Consumidor directo* y la otra es emplear la clase `EventProcessorHost`. Ejemplos de estos dos enfoques pueden encontrarse en la [Guía de programación de Centros de eventos](../event-hubs/event-hubs-programming-guide.md). La versión abreviada de las diferencias es que `Direct Consumer` proporciona un control total y `EventProcessorHost` realiza parte del trabajo de fontanería por usted, pero hace determinadas suposiciones sobre cómo procesará los eventos.  
+Se reciben eventos de concentrador de eventos de Azure con hello [protocolo AMQP](http://www.amqp.org/). equipo de Bus de servicio de Microsoft de Hello realizaron cliente hello toomake disponibles de bibliotecas cómo consumir eventos más fáciles. Existen dos enfoques diferentes admitidos, uno se está un *consumidor directo* y Hola otro usan hello `EventProcessorHost` clase. Pueden encontrar ejemplos de estos dos enfoques en hello [Guía de programación de los centros de eventos](../event-hubs/event-hubs-programming-guide.md). es la versión abreviada de Hola de diferencias de hello, `Direct Consumer` le ofrece un control total y hello `EventProcessorHost` no parte del trabajo de establecimiento de hello pero realiza determinadas suposiciones sobre la forma de procesar los eventos.  
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-En este ejemplo, usaremos `EventProcessorHost` por motivos de simplicidad; sin embargo es posible que no sea la mejor opción para este escenario concreto. `EventProcessorHost` realiza el trabajo duro de asegurarse de que no tiene que preocuparse acerca de problemas de subprocesamiento dentro de una clase de procesador de eventos concreto. Sin embargo, en nuestro escenario, simplemente estamos convirtiendo el mensaje a otro formato y lo pasamos a otro servicio con un método asincrónico. No es necesario actualizar el estado compartido y, por tanto, no hay riesgo de problemas de subprocesamiento. Para la mayoría de los escenarios, `EventProcessorHost` es probablemente la mejor opción y es ciertamente la opción más fácil.     
+En este ejemplo, usaremos hello `EventProcessorHost` para simplificar, sin embargo puede no Hola mejor opción para este escenario en particular. `EventProcessorHost`Hola duro trabajo de asegurándose de que no tiene tooworry acerca del subprocesamiento problemas dentro de una clase de procesador de evento determinado. Sin embargo, en nuestro escenario, estamos basta con convertir el formato de tooanother del mensaje de Hola y pasarlo a lo largo de servicio de tooanother mediante un método asincrónico. No es necesario actualizar el estado compartido y, por tanto, no hay riesgo de problemas de subprocesamiento. Para la mayoría de los escenarios, `EventProcessorHost` es probablemente la mejor opción de Hola y es seguro opción más fácil de Hola.     
 
 ### <a name="ieventprocessor"></a>IEventProcessor
-El concepto central al usar `EventProcessorHost` es crear una implementación de la interfaz `IEventProcessor` que contiene el método `ProcessEventAsync`. La esencia de ese método se muestra aquí:
+concepto de Hello central cuando se usa `EventProcessorHost` es toocreate un una implementación de hello `IEventProcessor` interfaz que contiene el método hello `ProcessEventAsync`. aquí se muestra la esencia de Hola de ese método:
 
 ```c#
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
@@ -188,10 +188,10 @@ async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumera
 }
 ```
 
-Se pasa una lista de objetos EventData al método y realizamos la iteración en esa lista. Se analizan los bytes de cada método en un objeto HttpMessage y ese objeto se pasa a una instancia de IHttpMessageProcessor.
+Una lista de objetos EventData se pasan al método hello y procesamos una iteración en esa lista. bytes de Hola de cada método se analiza en un objeto HttpMessage y ese objeto se pasa una instancia de tooan de IHttpMessageProcessor.
 
 ### <a name="httpmessage"></a>HttpMessage
-La instancia `HttpMessage` contiene tres elementos de datos:
+Hola `HttpMessage` instancia contiene tres elementos de datos:
 
 ```c#
 public class HttpMessage
@@ -206,15 +206,15 @@ public class HttpMessage
 }
 ```
 
-La instancia `HttpMessage` contiene un GUID `MessageId` que nos permite conectar la solicitud de HTTP a la respuesta de HTTP correspondiente y un valor booleano que identifica si el objeto contiene una instancia de HttpRequestMessage y HttpResponseMessage. Mediante las clases HTTP integradas de `System.Net.Http`, pude aprovechar el código de análisis `application/http` que se incluye en `System.Net.Http.Formatting`.  
+Hola `HttpMessage` instancia contiene un `MessageId` GUID que nos permite tooconnect solicitud de hello HTTP toohello correspondiente respuesta HTTP y un valor booleano de valor que identifica si el objeto de hello contiene una instancia de un HttpRequestMessage y HttpResponseMessage. Mediante el uso de hello integrada en las clases HTTP de `System.Net.Http`, he logrado tootake puede aprovechar hello `application/http` analizar el código que se incluye en `System.Net.Http.Formatting`.  
 
 ### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-La instancia `HttpMessage` se reenvía a la implementación de `IHttpMessageProcessor` que es una interfaz que creé para desacoplar la recepción y la interpretación del evento del Centro de eventos de Azure y el procesamiento real de la misma.
+Hola `HttpMessage` instancia, a continuación, se reenvía tooimplementation de `IHttpMessageProcessor` que es una interfaz que he creado recepción de hello toodecouple e interpretación de los eventos de Hola de concentrador de eventos de Azure y Hola real de procesamiento del mismo.
 
-## <a name="forwarding-the-http-message"></a>Reenvío del mensaje HTTP
-En este ejemplo, decidí que sería interesante insertar la solicitud de HTTP en [Runscope](http://www.runscope.com). Runscope es un servicio basado en la nube que se especializa en depuración, registro y supervisión de HTTP. Tiene un nivel gratuito, por lo que resulta fácil probarlo y nos permite ver en tiempo real cómo fluyen las solicitudes de HTTP a través de nuestro servicio Administración de API.
+## <a name="forwarding-hello-http-message"></a>Enviando el mensaje de Hola HTTP
+En este ejemplo, se decidió sería interesante toopush Hola solicitud HTTP sobre demasiado[Runscope](http://www.runscope.com). Runscope es un servicio basado en la nube que se especializa en depuración, registro y supervisión de HTTP. Tienen un nivel gratis, por lo que resulta fácil tootry y nos permite las solicitudes HTTP de toosee hello en tiempo real que fluyen a través de nuestro servicio de administración de API.
 
-Las implementación `IHttpMessageProcessor` tiene este aspecto:
+Hola `IHttpMessageProcessor` implementación este aspecto:
 
 ```c#
 public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
@@ -254,24 +254,24 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
        messagesLink.BucketKey = _BucketKey;
        messagesLink.RunscopeMessage = runscopeMessage;
        var runscopeResponse = await _HttpClient.SendAsync(messagesLink.CreateRequest());
-       _Logger.LogDebug("Request sent to Runscope");
+       _Logger.LogDebug("Request sent tooRunscope");
    }
 }
 ```
 
-Pude aprovechar una [biblioteca de cliente existente para Runscope`HttpResponseMessage` que facilita inserción de las instancias ](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) y `HttpRequestMessage` a su servicio. Para tener acceso a la API Runscope, necesitará una cuenta y una clave de API. Pueden encontrarse instrucciones para obtener una clave de API en la presentación en pantalla [Creación de aplicaciones para acceder a la API Runscope](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) .
+He logrado tootake puede aprovechar una [biblioteca de cliente existente para Runscope](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) que resulta fácil toopush `HttpRequestMessage` y `HttpResponseMessage` instancias seguridad en su servicio. En orden tooaccess Hola API Runscope necesitará una cuenta y una clave de API. Encontrará instrucciones para obtener una clave de API en hello [tooAccess Runscope API de creación de aplicaciones](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) presentación en pantalla.
 
 ## <a name="complete-sample"></a>Ejemplo completo
-El [código fuente](https://github.com/darrelmiller/ApimEventProcessor) y las pruebas del ejemplo se encuentran en GitHub. Necesitará un [servicio API Management](api-management-get-started.md), [un Centro de eventos conectado](api-management-howto-log-event-hubs.md) y una [cuenta de almacenamiento](../storage/common/storage-create-storage-account.md) para ejecutar el ejemplo usted mismo.   
+Hola [código fuente](https://github.com/darrelmiller/ApimEventProcessor) a pruebas de ejemplo de Hola en GitHub. Necesitará un [servicio de administración de API](api-management-get-started.md), [un centro de eventos conectado](api-management-howto-log-event-hubs.md)y un [cuenta de almacenamiento](../storage/common/storage-create-storage-account.md) ejemplo de Hola a toorun por sí mismo.   
 
-El ejemplo es simplemente una aplicación de consola simple que realiza escuchas de eventos procedentes del Centro de eventos, los convierte a objetos `HttpRequestMessage` y `HttpResponseMessage` y, a continuación, los reenvía a la API Runscope.
+ejemplo Hello es simplemente una aplicación de consola simple que realiza escuchas de eventos procedentes de concentrador de eventos, se convierte en una `HttpRequestMessage` y `HttpResponseMessage` objetos y, a continuación, reenvía en toohello Runscope API.
 
-En la siguiente imagen animada, puede ver una solicitud realizada a una API en el portal para desarrolladores, la aplicación de consola que muestra el mensaje que se recibe, procesa y reenvía y, a continuación, la solicitud y respuesta se muestra en el inspector de tráfico Runscope.
+Hola después imagen animada, puede ver una solicitud realizada tooan API Hola Portal para desarrolladores, mensaje Hola consola aplicación mostrando Hola recibe, procesa y reenvía y Hola, a continuación, la solicitud y respuesta aparece en hello Runscope tráfico inspector.
 
-![Demostración de solicitud se reenvía a Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
+![Demostración de la solicitud que se reenvían tooRunscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
 ## <a name="summary"></a>Resumen
-El servicio de Administración de API de Azure proporciona un lugar ideal para capturar el tráfico de HTTP hacia y desde la API. Centros de eventos de Azure es una solución altamente escalable y de bajo costo para capturar ese tráfico y colocarlo en sistemas de procesamiento secundario para el registro, supervisión y otros análisis sofisticados. La conexión a sistemas de supervisión del tráfico de terceros como Runscope es tan simple como las pocas docenas de líneas de código.
+Servicio de administración de API de Azure proporciona un lugar ideal toocapture Hola HTTP del tráfico a versiones anteriores tooand de las API. Centros de eventos de Azure es una solución altamente escalable y de bajo costo para capturar ese tráfico y colocarlo en sistemas de procesamiento secundario para el registro, supervisión y otros análisis sofisticados. Tráfico de entidad too3rd supervisar sistemas como Runscope es tan simple como unas cuantas docenas líneas de código de la conexión.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Obtenga más información acerca de los centros de eventos de Azure
@@ -279,6 +279,6 @@ El servicio de Administración de API de Azure proporciona un lugar ideal para c
   * [Recepción de mensajes con EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Guía de programación de Centros de eventos](../event-hubs/event-hubs-programming-guide.md)
 * Obtener más información acerca de la integración de Administración de API y centros de eventos
-  * [Cómo registrar eventos en los centros de eventos de Azure en la administración de API de Azure](api-management-howto-log-event-hubs.md)
+  * [¿Cómo toolog eventos tooAzure concentradores de eventos de administración de API de Azure](api-management-howto-log-event-hubs.md)
   * [Referencia de entidad del registrador](https://msdn.microsoft.com/library/azure/mt592020.aspx)
   * [referencia de la directiva log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)

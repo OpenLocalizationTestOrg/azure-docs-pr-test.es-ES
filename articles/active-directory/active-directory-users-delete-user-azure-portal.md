@@ -1,6 +1,6 @@
 ---
-title: "Eliminación de un usuario de un directorio en Azure Active Directory | Microsoft Docs"
-description: "En este artículo se explica cómo eliminar un usuario y toda su información de Azure Active Directory."
+title: aaaDelete un usuario desde un directorio en Azure Active Directory | Documentos de Microsoft
+description: "Explica cómo toodelete un usuario y toda su información de Active Directory de Azure"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand;jeffsta
 ms.reviewer: jeffsta
-ms.openlocfilehash: 19a4d2c37c785b3b56a2e0e1b6797ec56dad9835
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e121142479c185fadd796b46aeab02bff4ea8d75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="delete-a-user-from-a-directory-in-azure-active-directory"></a>Eliminación de un usuario de un directorio en Azure Active Directory
-En este artículo se explica cómo eliminar un usuario de un directorio en Azure Active Directory (Azure AD). Para más información sobre cómo agregar nuevos usuarios en su organización, consulte [Incorporación de nuevos usuarios a Azure Active Directory](active-directory-users-create-azure-portal.md).
+Este artículo se explica cómo toodelete un usuario desde un directorio en Azure Active Directory (Azure AD). Para obtener información acerca de cómo agregar nueva organización tooyour de los usuarios, consulte [agregar nuevos usuarios tooAzure Active Directory](active-directory-users-create-azure-portal.md).
 
-## <a name="to-delete-a-user"></a>Para eliminar un usuario
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
-2. Seleccione **Más servicios**, escriba **Usuarios y grupos** en el cuadro de texto y presione **Entrar**.
+## <a name="toodelete-a-user"></a>toodelete un usuario
+1. Inicie sesión en demasiado[Hola portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+2. Seleccione **más servicios**, escriba **usuarios y grupos** en Hola cuadro de texto y, a continuación, seleccione **ENTRAR**.
 
    ![Apertura de Administración de usuarios](./media/active-directory-users-delete-user-azure-portal/create-users-user-management.png)
-3. En la hoja **Usuarios y grupos**, seleccione **Usuarios**.
+3. En hello **usuarios y grupos** hoja, seleccione **usuarios**.
 
-   ![Apertura de la hoja Usuarios](./media/active-directory-users-delete-user-azure-portal/create-users-open-users-blade.png)
-4. En la hoja **Usuarios y grupos - Usuarios** , seleccione un usuario de la lista.
-5. En la hoja del usuario seleccionado, seleccione **Información general** y, después, en la barra de comandos, seleccione **Eliminar**.
+   ![Hoja de apertura Hola usuarios](./media/active-directory-users-delete-user-azure-portal/create-users-open-users-blade.png)
+4. En hello **a los usuarios y grupos: los usuarios** hoja, seleccione un usuario de la lista de Hola.
+5. En la hoja de hello para el usuario seleccionado de hello, seleccione **Introducción**y, a continuación, en la barra de comandos de hello, seleccione **eliminar**.
 
-    ![Selección del comando Quitar](./media/active-directory-users-delete-user-azure-portal/create-users-delete-command.png)
+    ![Seleccione el comando de eliminación de Hola](./media/active-directory-users-delete-user-azure-portal/create-users-delete-command.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Adición de nuevos usuarios a Azure Active Directory](active-directory-users-create-azure-portal.md)
-* [Restablecimiento de la contraseña de un usuario en Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
-* [Asignación de un usuario a roles de administrador en Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
+* [Agregar nuevos usuarios tooAzure Active Directory](active-directory-users-create-azure-portal.md)
+* [Restablecer la contraseña de Hola para un usuario en Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
+* [Asignar roles de tooadministrator en Azure Active Directory de un usuario](active-directory-users-assign-role-azure-portal.md)
 * [Adición o modificación de la información de perfil de un usuario en Azure Active Directory](active-directory-users-work-info-azure-portal.md)
 * [Eliminación de un usuario de un directorio en Azure Active Directory](active-directory-users-profile-azure-portal.md)

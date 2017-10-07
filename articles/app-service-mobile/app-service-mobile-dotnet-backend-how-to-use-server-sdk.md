@@ -1,6 +1,6 @@
 ---
-title: Trabajo con el SDK del servidor back-end de .NET para Mobile Apps | Microsoft Docs
-description: "Obtenga información sobre cómo trabajar con el SDK del servidor back-end de .NET para Aplicaciones móviles del Servicio de aplicaciones de Azure"
+title: "aaaHow toowork con el servidor back-end de .NET Hola SDK para aplicaciones móviles | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toowork con Hola servidor back-end de .NET SDK para aplicaciones de Mobile de servicio de aplicación de Azure."
 keywords: "servicio de aplicaciones, servicio de aplicaciones de azure, aplicación móvil, servicio móvil, escala, escalable, implementación de aplicaciones, implementación de aplicaciones de azure"
 services: app-service\mobile
 documentationcenter: 
@@ -15,61 +15,61 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 657fea16e47c15efd262c86d6a150a721476134a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2946c5ba4424565ac764e2ce5597bf42362fcedf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Trabajar con el SDK del servidor back-end de .NET para Aplicaciones móviles de Azure
+# <a name="work-with-hello-net-backend-server-sdk-for-azure-mobile-apps"></a>Trabajar con el servidor back-end de .NET Hola SDK para aplicaciones móviles de Azure
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
 
-En este tema se muestra cómo usar el SDK del servidor back-end de .NET en escenarios clave de Aplicaciones móviles del Servicio de aplicaciones de Azure. El SDK de Aplicaciones móviles de Azure le permite trabajar con clientes móviles de su aplicación ASP.NET.
+Este tema muestra cómo toouse Hola servidor de back-end de .NET SDK en escenarios de aplicaciones móviles de Azure aplicación servicio clave. Hola SDK de aplicaciones móviles de Azure le ayuda a trabajar con clientes móviles desde la aplicación de ASP.NET.
 
 > [!TIP]
-> El [SDK de servidor de .NET para Azure Mobile Apps][2] es de código abierto en GitHub. El repositorio contiene todo el código fuente incluido en el conjunto de pruebas de unidad SDK del servidor completo, así como algunos proyectos de ejemplo.
+> Hola [servidor .NET SDK para aplicaciones móviles de Azure] [ 2] es código abierto en GitHub. repositorio de Hello contiene todo el código fuente como conjunto de pruebas de unidad SDK de todo el servidor de Hola y algunos proyectos de ejemplo.
 >
 >
 
 ## <a name="reference-documentation"></a>Documentación de referencia
-La documentación de referencia del SDK del servidor se encuentra aquí: [Referencia de .NET de Azure Mobile Apps][1].
+documentación de referencia de Hello para el servidor de hello SDK se encuentra aquí: [referencia de .NET de aplicaciones de Azure Mobile][1].
 
 ## <a name="create-app"></a>Creación de un back-end de aplicación móvil .NET
-Si va a iniciar un nuevo proyecto, puede crear una aplicación del Servicio de aplicaciones mediante el [Portal de Azure] o Visual Studio. Puede ejecutar la aplicación de App Service localmente o publicarla en la aplicación móvil de App Service basada en la nube.
+Si está iniciando un nuevo proyecto, puede crear una aplicación de servicio de aplicaciones con cualquier hello [portal de Azure] o Visual Studio. Puede ejecutar localmente Hola aplicación de servicio de aplicaciones o publicar el proyecto tooyour en la nube servicio de aplicaciones móvil aplicación hello.
 
-Si va a agregar funcionalidades móviles a un proyecto existente, consulte la sección [Descarga e inicialización del SDK](#install-sdk) .
+Si va a Agregar proyecto existente de capacidades móviles tooan, vea hello [descargar e inicializar Hola SDK](#install-sdk) sección.
 
-### <a name="create-a-net-backend-using-the-azure-portal"></a>Creación de un back-end .NET mediante el Portal de Azure
-Para crear una instancia de App Service de back-end móvil, siga el [tutorial rápido][3] o estos pasos:
+### <a name="create-a-net-backend-using-hello-azure-portal"></a>Crear un back-end de .NET mediante Hola portal de Azure
+toocreate un back-end de servicio de aplicaciones móvil, ya sea siga hello [tutorial rápido] [ 3] o siga estos pasos:
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
-De nuevo en la hoja *Comenzar*, en **Create a table API** (Crear una API de tabla), elija **C#** como el valor de **Backend language** (Lenguaje de back-end). Haga clic en **Descargar**, extraiga los archivos de proyecto comprimidos en el equipo local y abra la solución en Visual Studio.
+En hello *Introducción* hoja, en **crear una tabla API**, elija **C#** como su **idioma de back-end**. Haga clic en **descargar**, extraer el equipo de proyecto comprimido archivos tooyour local y abra la solución de hello en Visual Studio.
 
 ### <a name="create-a-net-backend-using-visual-studio-2013-and-visual-studio-2015"></a>Creación de un back-end .NET con Visual Studio 2013 y Visual Studio 2015
-Para crear un proyecto de Azure Mobile Apps en Visual Studio, instale la versión 2.9.0 o posterior de [Azure SDK para .NET][4]. Una vez haya instalado el SDK, cree una aplicación de ASP.NET mediante los siguientes pasos:
+Instalar hello [Azure SDK para .NET] [ 4] (versión 2.9.0 o posterior) toocreate un proyecto de aplicaciones móviles de Azure en Visual Studio. Una vez haya instalado el SDK de hello, crear una aplicación de ASP.NET con hello pasos:
 
-1. Abra el cuadro de diálogo **Nuevo proyecto** (desde *Archivo* > **Nuevo** > **Proyecto...**).
+1. Abra hello **nuevo proyecto** diálogo (desde *archivo* > **New** > **proyecto...** ).
 2. Expanda **Plantillas** > **Visual C#** y seleccione **Web**.
 3. Seleccione **Aplicación web ASP.NET**.
-4. Rellene el nombre del proyecto. A continuación, haga clic en **Aceptar**.
-5. En *Plantillas de ASP.NET 4.5.2*, seleccione **Aplicación móvil de Azure**. Seleccione **Host en la nube** para crear un back-end móvil en la nube, en el que puede publicar este proyecto.
+4. Rellene el nombre del proyecto de Hola. y, a continuación, haga clic en **Aceptar**.
+5. En *Plantillas de ASP.NET 4.5.2*, seleccione **Aplicación móvil de Azure**. Comprobar **Host en la nube de hello** toocreate un back-end móvil Hola toowhich puede publicar este proyecto en la nube.
 6. Haga clic en **Aceptar**.
 
-## <a name="install-sdk"></a>Descarga e inicialización del SDK
-El SDK está disponible en [NuGet.org]. Este paquete incluye la funcionalidad básica necesaria para comenzar a usar el SDK. Para inicializar el SDK, tendrá que realizar acciones en el objeto **HttpConfiguration** .
+## <a name="install-sdk"></a>Cómo: descargar e inicializar Hola SDK
+Hello SDK está disponible en [NuGet.org]. Este paquete incluye Hola funcionalidad base necesaria tooget iniciado mediante Hola SDK. tooinitialize Hola SDK, deberá tooperform acciones en hello **HttpConfiguration** objeto.
 
-### <a name="install-the-sdk"></a>Instalación del SDK
-Para instalar el SDK, haga clic con el botón derecho en el proyecto de servidor en Visual Studio, seleccione **Administrar paquetes de NuGet**, busque el paquete [Microsoft.Azure.Mobile.Server] y haga clic en **Instalar**.
+### <a name="install-hello-sdk"></a>Instalar SDK de Hola
+Hola tooinstall SDK, el botón secundario en el proyecto de servidor de hello en Visual Studio, seleccione **administrar paquetes de NuGet**, busque hello [Microsoft.Azure.Mobile.Server] del paquete, a continuación, haga clic en  **Instalar**.
 
-### <a name="server-project-setup"></a> Inicializar el proyecto de servidor
-Un proyecto de servidor backend de .NET se inicializa de manera similar a otros proyectos ASP.NET mediante la inclusión de una clase de inicio OWIN. Asegúrese de que ha hecho referencia al paquete de NuGet `Microsoft.Owin.Host.SystemWeb`. Para agregar esta clase en Visual Studio, haga clic con el botón derecho en el proyecto de servidor y seleccione **Agregar** >
-**Nuevo elemento**, luego **Web** > **General** > **Clase de inicio OWIN**.  Se genera una clase con el atributo siguiente:
+### <a name="server-project-setup"></a>Inicializar el proyecto de servidor hello
+Un proyecto de servidor de back-end de .NET es inicializado similar tooother los proyectos ASP.NET, mediante la inclusión de una clase de inicio OWIN. Asegúrese de que se ha hecho referencia paquete de NuGet hello `Microsoft.Owin.Host.SystemWeb`. tooadd esta clase en Visual Studio, haga clic en el proyecto de servidor y seleccione **agregar** >
+**nuevo elemento**, a continuación, **Web**  >  ** General** > **clase de inicio de OWIN**.  Se genera una clase con hello siguiente atributo:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
-En el método `Configuration()` de la clase de inicio OWIN, use un objeto **HttpConfiguration** para configurar el entorno de Azure Mobile Apps.
-En el ejemplo siguiente se inicializa el proyecto de servidor sin características agregadas:
+Hola `Configuration()` método de la clase de inicio OWIN, use un **HttpConfiguration** entorno de aplicaciones móviles de Azure de objetos tooconfigure Hola.
+Hola siguiente ejemplo inicializa el proyecto de servidor de hello con ninguna característica agregada:
 
     // in OWIN startup class
     public void Configuration(IAppBuilder app)
@@ -83,60 +83,60 @@ En el ejemplo siguiente se inicializa el proyecto de servidor sin característic
         app.UseWebApi(config);
     }
 
-Para habilitar características individuales, debe llamar a los métodos de extensión del objeto **MobileAppConfiguration** antes de llamar a **ApplyTo**. Por ejemplo, el siguiente código agrega las rutas predeterminadas a todos los controladores de API que tengan el atributo `[MobileAppController]` durante la inicialización:
+tooenable características individuales, deben llamar a métodos de extensión en hello **MobileAppConfiguration** objeto antes de llamar a **ApplyTo**. Por ejemplo, hello siguiente código agrega predeterminado Hola enruta controladores tooall API que tienen el atributo de hello `[MobileAppController]` durante la inicialización:
 
     new MobileAppConfiguration()
         .MapApiControllers()
         .ApplyTo(config);
 
-El inicio rápido de servidor desde el Portal de Azure llama a **UseDefaultConfiguration()**. Es equivalente a la siguiente configuración:
+Inicio rápido de servidor Hello de Hola llamadas portales Azure **UseDefaultConfiguration()**. Este toohello equivalente después de la instalación:
 
         new MobileAppConfiguration()
-            .AddMobileAppHomeController()             // from the Home package
+            .AddMobileAppHomeController()             // from hello Home package
             .MapApiControllers()
-            .AddTables(                               // from the Tables package
+            .AddTables(                               // from hello Tables package
                 new MobileAppTableConfiguration()
                     .MapTableControllers()
-                    .AddEntityFramework()             // from the Entity package
+                    .AddEntityFramework()             // from hello Entity package
                 )
-            .AddPushNotifications()                   // from the Notifications package
-            .MapLegacyCrossDomainController()         // from the CrossDomain package
+            .AddPushNotifications()                   // from hello Notifications package
+            .MapLegacyCrossDomainController()         // from hello CrossDomain package
             .ApplyTo(config);
 
-Los métodos de extensión utilizados son:
+métodos de extensión de Hello usados son:
 
-* `AddMobileAppHomeController()` proporciona la página principal predeterminada de Azure Mobile Apps.
-* `MapApiControllers()` proporciona funcionalidades de API personalizadas para controladores de WebAPI que contienen el atributo `[MobileAppController]`.
-* `AddTables()` proporciona una asignación de los puntos de conexión `/tables` a los controladores de la tabla.
-* `AddTablesWithEntityFramework()` es un elemento abreviado para la asignación de los puntos de conexión `/tables` mediante controladores basados en Entity Framework.
+* `AddMobileAppHomeController()`proporciona la página de inicio de aplicaciones móviles de Azure de hello predeterminada.
+* `MapApiControllers()`proporciona capacidades de API personalizadas para los controladores de WebAPI decorados con hello `[MobileAppController]` atributo.
+* `AddTables()`Proporciona una asignación de hello `/tables` controladores tootable de puntos de conexión.
+* `AddTablesWithEntityFramework()`es un abreviada para hello asignación `/tables` controladores basados en los extremos que usan Entity Framework.
 * `AddPushNotifications()` proporciona un método sencillo de registrar los dispositivos para Notification Hubs.
 * `MapLegacyCrossDomainController()` proporciona los encabezados de CORS estándar para el desarrollo local.
 
 ### <a name="sdk-extensions"></a>Extensiones de SDK
-Los siguientes paquetes de extensión basados en NuGet proporcionan diversas características móviles que puede usar la aplicación. Las extensiones se habilitan durante la inicialización mediante el objeto **MobileAppConfiguration** .
+Hola siguientes paquetes de NuGet-based extensión proporciona diversas características de dispositivos móviles que se pueden usar la aplicación. Habilitar extensiones durante la inicialización mediante hello **MobileAppConfiguration** objeto.
 
-* [Microsoft.Azure.Mobile.Server.Quickstart] admite la configuración básica de Aplicaciones móviles. Se agrega a la configuración mediante una llamada al método de extensión **UseDefaultConfiguration** durante la inicialización. Esta extensión incluye las siguientes extensiones: paquetes de notificaciones, autenticación, entidad, tablas, entre dominios y principal. Inicio rápido de Mobile Apps, disponible en Azure Portal, usa este paquete.
-* [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) Implementa el valor predeterminado de *esta página de aplicación móvil está funcionando* para la raíz del sitio web. Se agrega a la configuración mediante una llamada al método de extensión **AddMobileAppHomeController** .
-* [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) incluye clases para trabajar con datos y configura la canalización de datos. Se agrega a la configuración mediante una llamada al método de extensión **AddTables** .
-* [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) permite a Entity Framework obtener acceso a los datos de la base de datos SQL. Se agrega a la configuración mediante una llamada al método de extensión **AddTablesWithEntityFramework** .
-* [Microsoft.Azure.Mobile.Server.Authentication] habilita la autenticación y configura el middleware OWIN que se usa para validar los tokens. Se agrega a la configuración mediante una llamada a los métodos de extensión **AddAppServiceAuthentication** e **IAppBuilder**.**UseAppServiceAuthentication**.
-* [Microsoft.Azure.Mobile.Server.Notifications] habilita las notificaciones push y define un punto de conexión de registro de inserción. Se agrega a la configuración mediante una llamada al método de extensión **AddPushNotifications** .
-* [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) crea un controlador que sirve datos de la aplicación móvil a los exploradores web heredados. Se agrega a la configuración mediante una llamada al método de extensión **MapLegacyCrossDomainController** .
-* [Microsoft.Azure.Mobile.Server.Login] proporciona el método AppServiceLoginHandler.CreateToken(), que es un método estático usado en escenarios de autenticación personalizada.
+* [Microsoft.Azure.Mobile.Server.Quickstart] admite Hola configuración básica de aplicaciones móviles. La configuración agregada toohello Hola que realiza la llamada **UseDefaultConfiguration** método de extensión durante la inicialización. Esta extensión incluye las siguientes extensiones: paquetes de notificaciones, autenticación, entidad, tablas, entre dominios y principal. Inicio rápido de aplicaciones móviles disponibles en el portal de Azure Hola Hola utiliza este paquete.
+* [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) implementa de forma predeterminada hello *esta aplicación móvil esté en funcionamiento página* para la raíz del sitio web de Hola. Agregar configuración toohello mediante una llamada a la **AddMobileAppHomeController** método de extensión.
+* [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) incluye clases para trabajar con conjuntos de datos y de canalización de datos de Hola. Agregar configuración toohello Hola llamada **AddTables** método de extensión.
+* [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) permite que los datos de tooaccess de Entity Framework Hola Hola base de datos SQL. Agregar configuración toohello Hola llamada **AddTablesWithEntityFramework** método de extensión.
+* [Microsoft.Azure.Mobile.Server.Authentication] middleware de OWIN de Hola de autenticación y conjuntos de seguridad permite usa toovalidate símbolos (tokens). Agregar configuración toohello Hola llamada **AddAppServiceAuthentication** y **IAppBuilder**. **UseAppServiceAuthentication** métodos de extensión.
+* [Microsoft.Azure.Mobile.Server.Notifications] habilita las notificaciones push y define un punto de conexión de registro de inserción. Agregar configuración toohello Hola llamada **AddPushNotifications** método de extensión.
+* [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) crea un controlador que sirve datos toolegacy exploradores web desde su aplicación móvil. Agregar configuración toohello mediante una llamada a la **MapLegacyCrossDomainController** método de extensión.
+* [Microsoft.Azure.Mobile.Server.Login] proporciona hello AppServiceLoginHandler.CreateToken() método, que es un método estático que se usa en escenarios de autenticación personalizado de.
 
-## <a name="publish-server-project"></a>Procedimientos: Publicación del proyecto de servidor
-En esta sección se muestra cómo publicar el proyecto de back-end de .NET desde Visual Studio. También puede implementar el proyecto de back-end mediante Git o cualquiera de los otros métodos descritos en la [documentación de implementación del Servicio de aplicaciones de Azure](../app-service-web/web-sites-deploy.md).
+## <a name="publish-server-project"></a>Cómo: Publicar proyecto de servidor hello
+Esta sección muestra cómo toopublish el back-end de .NET proyecto de Visual Studio. También puede implementar el proyecto de back-end con Git o cualquiera de Hola otros métodos que se tratan en hello [documentación de implementación de servicio de aplicaciones de Azure](../app-service-web/web-sites-deploy.md).
 
-1. En Visual Studio, vuelva a generar el proyecto para restaurar los paquetes de NuGet.
-2. En el Explorador de soluciones, haga clic con el botón derecho en el proyecto y luego haga clic en **Publicar**. La primera vez que publique, debe definir un perfil de publicación. Si ya tiene un perfil definido, puede seleccionarlo y hacer clic en **Publicar**.
-3. Si se le pide que seleccione un destino de publicación, haga clic en **Microsoft Azure App Service** > **Siguiente** y, luego, (si es necesario), inicie sesión con sus credenciales de Azure.
+1. En Visual Studio, vuelva a generar paquetes de NuGet de hello proyecto toorestore.
+2. En el Explorador de soluciones, proyectos de Hola de menú contextual, haga clic en **publicar**. Hello primera vez que publique, deberá toodefine un perfil de publicación. Si ya tiene un perfil definido, puede seleccionarlo y hacer clic en **Publicar**.
+3. Si se le solicita tooselect un destino de publicación, haga clic en **servicio de aplicaciones de Microsoft Azure** > **siguiente**, a continuación, (si es necesario) iniciar sesión con sus credenciales de Azure.
    Visual Studio descarga y almacena la configuración de publicación directamente desde Azure.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
 4. Elija su suscripción en **Suscripción**, seleccione **Tipo de recurso** en **Vista**, expanda **Aplicación móvil** y haga clic en el back-end de aplicación móvil y en **Aceptar**.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-2.png)
-5. Compruebe la información del perfil de publicación y haga clic en **Publicar**.
+5. Comprobar Hola publicar información del perfil y haga clic en **publicar**.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-3.png)
 
@@ -145,10 +145,10 @@ En esta sección se muestra cómo publicar el proyecto de back-end de .NET desde
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
 ## <a name="define-table-controller"></a> Definición de un controlador de tabla
-Defina un controlador de tabla para exponer una tabla de SQL para clientes móviles.  La configuración de un controlador de tabla requiere tres pasos:
+Definir un controlador de tabla tooexpose los clientes un toomobile de tabla SQL.  La configuración de un controlador de tabla requiere tres pasos:
 
 1. Creación de una clase Data Transfer Object (DTO).
-2. Configuración de una referencia de tabla en la clase Mobile DbContext.
+2. Configurar una referencia de tabla en hello clase DbContext Mobile.
 3. Creación de un controlador de tabla.
 
 Un objeto de transferencia de datos (DTO) es un objeto de C# simple heredado de `EntityData`.  Por ejemplo:
@@ -159,7 +159,7 @@ Un objeto de transferencia de datos (DTO) es un objeto de C# simple heredado de 
         public bool Complete {get; set;}
     }
 
-El objeto DTO se utiliza para definir la tabla en SQL Database.  Para crear la entrada de la base de datos, agregue una propiedad `DbSet<>` a la instancia de DbContext que esté utilizando.  En la plantilla de proyecto predeterminada para Azure Mobile Apps, la instancia de DbContext se llama `Models\MobileServiceContext.cs`:
+Hola DTO es tabla de hello toodefine utilizados dentro de la base de datos SQL de Hola.  Hola toocreate entrada de la base de datos, agregue un `DbSet<>` propiedad a saludos DbContext utilizas.  En la plantilla de proyecto de hello predeterminada para las aplicaciones móviles de Azure, hello DbContext se denomina `Models\MobileServiceContext.cs`:
 
     public class MobileServiceContext : DbContext
     {
@@ -180,73 +180,73 @@ El objeto DTO se utiliza para definir la tabla en SQL Database.  Para crear la e
         }
     }
 
-Si tiene instalado Azure SDK, ahora puede crear un controlador de tabla de la plantilla como sigue:
+Si tiene instalado el SDK de Azure de Hola, ahora puede crear un controlador de tabla de plantilla como sigue:
 
-1. Haga clic con el botón derecho en la carpeta Controladores y seleccione **Agregar** > **Controlador...**.
-2. Seleccione la opción **Controlador de tabla de Azure Mobile Apps** y haga clic en **Agregar**.
-3. En el cuadro de diálogo **Agregar controlador** :
-   * En la lista desplegable **Clase de modelo** , seleccione el nuevo DTO.
-   * En la lista desplegable **DbContext** , seleccione la clase Mobile Service DbContext.
-   * Se crea el nombre del controlador.
+1. Haga doble clic en la carpeta de controladores de Hola y seleccione **agregar** > **controlador...** .
+2. Seleccione hello **controlador de tabla de aplicaciones de Azure Mobile** opción, a continuación, haga clic en **agregar**.
+3. Hola **Agregar controlador** cuadro de diálogo:
+   * Hola **clase modelo** de lista desplegable, seleccione el nuevo DTO.
+   * Hola **DbContext** lista desplegable, clase de DbContext del servicio móvil de hello select.
+   * nombre del controlador de Hola se crea automáticamente.
 4. Haga clic en **Agregar**.
 
-El proyecto de servidor de inicio rápido contiene un ejemplo de un controlador **TodoItemController**simple.
+proyecto de servidor de inicio rápido de Hello contiene un ejemplo de un sencillo **TodoItemController**.
 
-### <a name="adjust-pagesize"></a>Cómo ajustar el tamaño de paginación de la tabla
-De forma predeterminada, Aplicaciones móviles de Azure devuelve 50 registros por solicitud.  La paginación garantiza que el cliente no mantenga ocupado su subproceso de interfaz de usuario ni el servidor durante mucho tiempo, con lo que se asegura una buena experiencia del usuario. Para cambiar el tamaño de paginación de la tabla, aumente el "tamaño de consulta permitido" del lado del servidor y cambie el tamaño de la página de lado del cliente. El "tamaño de consulta permitido" del lado del servidor se ajusta con el atributo `EnableQuery`:
+### <a name="adjust-pagesize"></a>Cómo: ajustar el tamaño de paginación de tabla Hola
+De forma predeterminada, Aplicaciones móviles de Azure devuelve 50 registros por solicitud.  Paginación se asegura de que el cliente hello no atar su servidor de hello ni de subproceso de interfaz de usuario durante demasiado tiempo, garantizar una buena experiencia del usuario. tamaño de paginación de la tabla de hello toochange, lado del servidor aumento Hola "tamaño de consulta permitido" y hello página del lado cliente tamaño Hola servidor "tamaño de consulta permitido" se ajusta con hello `EnableQuery` atributo:
 
     [EnableQuery(PageSize = 500)]
 
-Asegúrese de que el valor de PageSize sea igual o mayor que el tamaño solicitado por el cliente.  Consulte la documentación de procedimientos para obtener más información sobre cómo cambiar el tamaño de página de cliente.
+Asegúrese de hello PageSize es hello mismo o mayor que el tamaño de hello solicitada por el cliente de Hola.  Consulte la documentación de cómo de cliente específico de toohello para obtener más información acerca de cómo cambiar el tamaño de página de cliente de Hola.
 
 ## <a name="how-to-define-a-custom-api-controller"></a>Cómo definir un controlador de API personalizada
-El controlador de API personalizada proporciona la funcionalidad más básica al back-end de la aplicación móvil mediante la exposición de un extremo. Puede registrar un controlador de API específico de dispositivos móviles con el atributo [MobileAppController]. El atributo `MobileAppController` registra la ruta, configura el serializador JSON de Mobile Apps y activa la [comprobación de la versión del cliente](app-service-mobile-client-and-server-versioning.md).
+controlador de API personalizada Hello proporciona hello más básico funcionalidad tooyour aplicación móvil back-end mediante la exposición de un punto de conexión. Puede registrar un controlador de API de mobile específica mediante el atributo Hola [MobileAppController]. Hola `MobileAppController` atributo registra ruta hello, configura el serializador de JSON de aplicaciones móviles de Hola y activará [comprobación de la versión de cliente](app-service-mobile-client-and-server-versioning.md).
 
-1. En Visual Studio, haga clic con el botón derecho en la carpeta Controladores y, luego, haga clic en **Agregar** > **Controladores**, seleccione **Controlador de Web API 2&mdash;Vacío** y haga clic en **Agregar**.
+1. En Visual Studio, la carpeta de controladores de menú contextual hello, a continuación, haga clic en **agregar** > **controlador**, seleccione **controlador de Web API 2&mdash;vacía** y Haga clic en **agregar**.
 2. Proporcione un valor de **Nombre de controlador**, como `CustomController`, y haga clic en **Agregar**.
-3. En el archivo de clase de controlador nuevo, agregue la siguiente instrucción Using:
+3. En el archivo de clase de controlador nuevo hello, agregue el siguiente de hello instrucción using:
 
         using Microsoft.Azure.Mobile.Server.Config;
-4. Aplique el atributo **[MobileAppController]** a la definición de clase del controlador de API, como en el ejemplo siguiente:
+4. Aplicar hello **[MobileAppController]** definición de clase de controlador toohello API, como en el siguiente ejemplo de Hola de atributo:
 
         [MobileAppController]
         public class CustomController : ApiController
         {
               //...
         }
-5. En el archivo App_Start/Startup.MobileApp.cs, agregue una llamada al método de extensión **MapApiControllers**, como en el ejemplo siguiente:
+5. En el archivo de App_Start/Startup.MobileApp.cs, agregue una llamada toohello **MapApiControllers** método de extensión, como en el siguiente ejemplo de Hola:
 
         new MobileAppConfiguration()
             .MapApiControllers()
             .ApplyTo(config);
 
-También puede utilizar el método de extensión `UseDefaultConfiguration()`, en lugar de `MapApiControllers()`. Los clientes pueden tener acceso a un controlador aunque este no tenga un elemento **MobileAppControllerAttribute** aplicado, pero puede que no lo consuman correctamente si usan un SDK de cliente de aplicación móvil.
+También puede usar hello `UseDefaultConfiguration()` en lugar del método de extensión `MapApiControllers()`. Los clientes pueden tener acceso a un controlador aunque este no tenga un elemento **MobileAppControllerAttribute** aplicado, pero puede que no lo consuman correctamente si usan un SDK de cliente de aplicación móvil.
 
 ## <a name="how-to-work-with-authentication"></a>Procedimiento: Autenticación
-Azure Mobile Apps usa la autenticación o autorización de App Service para proteger su back-end móvil.  En esta sección se muestra cómo realizar las siguientes tareas relacionadas con la autenticación en el proyecto de servidor back-end. NET:
+Aplicaciones móviles de Azure usa la aplicación de servicio de autenticación / autorización toosecure el back-end de dispositivos móvil.  Esta sección muestra cómo hello tooperform siguientes tareas relacionadas con la autenticación en el proyecto de servidor de back-end. NET:
 
-* [Cómo agregar autenticación a un proyecto de servidor](#add-auth)
+* [Cómo: Agregar proyecto de servidor de autenticación tooa](#add-auth)
 * [Procedimiento: Uso de autenticación personalizada en la aplicación](#custom-auth)
 * [Procedimiento: Recuperación de la información de usuario de autenticado](#user-info)
 * [Cómo restringir el acceso a datos para los usuarios autorizados](#authorize)
 
-### <a name="add-auth"></a>Cómo agregar autenticación a un proyecto de servidor
-Para agregar autenticación al proyecto de servidor, extienda el objeto **MobileAppConfiguration** y configure el middleware OWIN. Cuando instale el paquete [Microsoft.Azure.Mobile.Server.Quickstart] y llame al método de extensión **UseDefaultConfiguration** , puede continuar desde el paso 3.
+### <a name="add-auth"></a>Cómo: Agregar proyecto de servidor de autenticación tooa
+Puede agregar el proyecto de servidor de autenticación tooyour extendiendo hello **MobileAppConfiguration** objeto y la configuración de middleware de OWIN. Cuando instala hello [Microsoft.Azure.Mobile.Server.Quickstart] Hola de paquete y llame al método **UseDefaultConfiguration** método de extensión, puede omitir toostep 3.
 
-1. En Visual Studio, instale el paquete [Microsoft.Azure.Mobile.Server.Authentication] .
-2. En el archivo de proyecto Startup.cs, agregue la siguiente línea de código al principio del método **Configuration** :
+1. En Visual Studio, instale hello [Microsoft.Azure.Mobile.Server.Authentication] paquete.
+2. En el archivo de proyecto de hello Startup.cs, agregar Hola después de la línea de código al principio de Hola de hello **configuración** método:
 
         app.UseAppServiceAuthentication(config);
 
-    Este componente del middleware OWIN valida los tokens emitidos por la puerta de enlace de App Service asociada.
-3. Agregue el atributo `[Authorize]` a cualquier controlador o método que requiera autenticación.
+    Este componente de middleware OWIN valida tokens emitidos por la puerta de enlace de servicio de aplicaciones de hello asociado.
+3. Agregar hello `[Authorize]` controlador tooany de atributo o un método que requiere autenticación.
 
-Para más información sobre cómo autenticar a los clientes en el back-end de Aplicaciones móviles, consulte [Incorporación de la autenticación a la aplicación](app-service-mobile-ios-get-started-users.md).
+toolearn acerca de cómo los clientes de tooauthenticate tooyour back-end de aplicaciones móviles, consulte [agregar autenticación tooyour aplicación](app-service-mobile-ios-get-started-users.md).
 
 ### <a name="custom-auth"></a>Procedimiento: Uso de autenticación personalizada en la aplicación
-Si no desea usar uno de los proveedores de autenticación y autorización de App Service, puede implementar su propio sistema de inicio de sesión. Instale el paquete [Microsoft.Azure.Mobile.Server.Login] para ayudar a la generación de tokens de autenticación.  Proporcione su propio código para validar las credenciales del usuario. Por ejemplo, podría comprobar las contraseñas con sal y hash de una base de datos. En el ejemplo siguiente, el método `isValidAssertion()` (definido en otra parte) es responsable de estas comprobaciones.
+Si no desea toouse uno de los proveedores de autenticación/autorización del servicio de aplicación Hola, puede implementar su propio sistema de inicio de sesión. Instalar hello [Microsoft.Azure.Mobile.Server.Login] tooassist con generación de tokens de autenticación del paquete.  Proporcione su propio código para validar las credenciales del usuario. Por ejemplo, podría comprobar las contraseñas con sal y hash de una base de datos. En el siguiente ejemplo de Hola, Hola `isValidAssertion()` método (definido en otro lugar) es responsable de estas comprobaciones.
 
-La autenticación personalizada se expone mediante la creación de un controlador ApiController y la exposición de las acciones `register` y `login`. El cliente debe utilizar una interfaz de usuario personalizada para recopilar la información del usuario.  A continuación, la información se envía a la API con una llamada HTTP POST estándar. Una vez que el servidor valida la aserción, se emite un token con el método `AppServiceLoginHandler.CreateToken()` .  El controlador ApiController **no debería** utilizar el atributo `[MobileAppController]`.
+autenticación personalizada Hello se expone mediante la creación de un ApiController y exponer `register` y `login` acciones. cliente de Hello debería utilizar una información de hello toocollect de interfaz de usuario personalizada de usuario de Hola.  información de Hello es llamar a la API de toohello enviado con un estándar HTTP POST. Una vez que el servidor hello valida aserción hello, se emite un token con hello `AppServiceLoginHandler.CreateToken()` método.  Hola ApiController **no debería** usar hello `[MobileAppController]` atributo.
 
 Ejemplo de la acción `login` :
 
@@ -271,7 +271,7 @@ Ejemplo de la acción `login` :
             }
         }
 
-En el ejemplo anterior, LoginResult y LoginResultUser son objetos serializables que exponen las propiedades necesarias. El cliente espera que las repuestas de inicio de sesión se devuelvan como objetos JSON con este formato:
+En el anterior ejemplo de Hola, LoginResult y LoginResultUser son objetos serializables exponer propiedades necesarias. cliente de Hello espera toobe de respuestas de inicio de sesión devuelven como objetos JSON del formulario de hello:
 
         {
             "authenticationToken": "<token>",
@@ -280,87 +280,87 @@ En el ejemplo anterior, LoginResult y LoginResultUser son objetos serializables 
             }
         }
 
-El método `AppServiceLoginHandler.CreateToken()` incluye un parámetro *audience* y un parámetro *issuer*. Ambos parámetros se establecen en la dirección URL de la raíz de la aplicación, mediante el esquema HTTPS. De igual modo, debe establecer *secretKey* como el valor de la clave de firma de la aplicación. No distribuya la clave de firma en un cliente, ya que se puede usar para inventar claves y suplantar a los usuarios. Puede obtener la clave de firma mientras se hospeda en App Service mediante la referencia a la variable de entorno *WEBSITE\_AUTH\_SIGNING\_KEY*. Si es necesario en un contexto de depuración local, siga las instrucciones de la sección [Depuración local con autenticación](#local-debug) para recuperar la clave y almacenarla como un valor de configuración de la aplicación.
+Hola `AppServiceLoginHandler.CreateToken()` método incluye un *audiencia* y *emisor* parámetro. Ambos parámetros se establecen toohello URL de la raíz de la aplicación, con esquema HTTPS de Hola. Del mismo modo debe establecer *secretKey* toobe valor de saludo de la aplicación de la clave de firma. No distribuya Hola firma clave en un cliente puede ser toomint usa claves y suplantar a los usuarios. Puede obtener Hola firma clave mientras hospedada en el servicio de aplicaciones haciendo referencia a hello *sitio Web\_AUTH\_firma\_clave* variable de entorno. Si es necesario en un contexto de depuración local, siga las instrucciones de Hola Hola [depuración Local con autenticación](#local-debug) sección tooretrieve clave de Hola y almacenar como una configuración de aplicación.
 
-El token emitido también puede incluir otras notificaciones y una fecha de expiración.  Como mínimo, el token emitido debe incluir una notificación de asunto (**sub**).
+También puede incluir el token emitido de Hello el resto de reclamaciones y una fecha de expiración.  Como mínimo, símbolo (token) de hello emitido debe incluir un asunto (**sub**) de notificación.
 
-Puede admitir el método `loginAsync()` del cliente estándar mediante la sobrecarga de la ruta de autenticación.  Si el cliente llama a `client.loginAsync('custom');` para iniciar sesión, la ruta debe ser `/.auth/login/custom`.  Puede establecer la ruta para el controlador de autenticación personalizada con `MapHttpRoute()`:
+Puede admitir cliente estándar hello `loginAsync()` método mediante la sobrecarga de la ruta de autenticación de Hola.  Si llama a cliente hello `client.loginAsync('custom');` toolog en, la ruta debe ser `/.auth/login/custom`.  Puede establecer la ruta de hello para el uso de controlador de autenticación personalizada hello `MapHttpRoute()`:
 
     config.Routes.MapHttpRoute("custom", ".auth/login/custom", new { controller = "CustomAuth" });
 
 > [!TIP]
-> Con el enfoque `loginAsync()` se garantiza que el token de autenticación se asocia a cada llamada posterior al servicio.
+> Con hello `loginAsync()` enfoque garantiza que se adjunta ese token de autenticación de hello tooevery llamada subsiguiente toohello servicio.
 >
 >
 
-### <a name="user-info"></a>Procedimiento: Recuperación de la información de usuario autenticada
-Cuando un usuario se autentica mediante el Servicio de aplicaciones, se puede tener acceso al id. de usuario asignado y otra información en el código del back-end. NET. La información de usuario se puede utilizar para tomar decisiones de autorización en el back-end. El código siguiente obtiene el identificador de usuario asociado a una solicitud:
+### <a name="user-info"></a>Procedimiento: Recuperación de la información de usuario de autenticado
+Cuando un usuario se autentica por el servicio de aplicaciones, puede tener acceso a Hola asignado el Id. de usuario y otra información en el código de back-end. NET. información de usuario de Hello puede usarse para tomar las decisiones de autorización Hola back-end. Hello código siguiente obtiene Hola Id. de usuario asociada a una solicitud:
 
-    // Get the SID of the current user.
+    // Get hello SID of hello current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
     string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-El SID se deriva del identificador de usuario específico del proveedor y es estático para un usuario y un proveedor de inicio de sesión dados.  El SID es nulo para los tokens de autenticación no válidos.
+Hola SID se deriva de Id. de usuario específica del proveedor de Hola y es estático para un usuario determinado y un proveedor de inicio de sesión.  Hola SID es null para los tokens de autenticación no válida.
 
-El Servicio de aplicaciones también le permite solicitar notificaciones específicas de su proveedor de inicio de sesión. Cada proveedor de identidades puede proporcionar más información mediante el SDK del proveedor de identidades.  Por ejemplo, puede usar la API Graph de Facebook para la información de los amigos.  Puede especificar notificaciones solicitadas en la hoja del proveedor en Azure Portal. Algunas notificaciones requieren configuración adicional con el proveedor de identidades.
+El Servicio de aplicaciones también le permite solicitar notificaciones específicas de su proveedor de inicio de sesión. Cada proveedor de identidades puede proporcionar más información mediante el SDK del proveedor de identidades.  Por ejemplo, puede usar hello Graph API de Facebook para obtener información de amigos.  Puede especificar demandas solicitadas en la hoja de proveedor de Hola Hola portal de Azure. Algunas notificaciones requieren configuración adicional con el proveedor de identidades de Hola.
 
-El código siguiente llama al método de extensión **GetAppServiceIdentityAsync** para obtener las credenciales de inicio de sesión, que incluyen el token de acceso necesario para realizar solicitudes en la API Graph de Facebook:
+Hola de llamadas de código siguiente Hello **GetAppServiceIdentityAsync** extensión método tooget Hola credenciales inicio de sesión, que incluyen las solicitudes de token toomake necesarios de hello acceso contra Hola Graph API de Facebook:
 
-    // Get the credentials for the logged-in user.
+    // Get hello credentials for hello logged-in user.
     var credentials =
         await this.User
         .GetAppServiceIdentityAsync<FacebookCredentials>(this.Request);
 
     if (credentials.Provider == "Facebook")
     {
-        // Create a query string with the Facebook access token.
+        // Create a query string with hello Facebook access token.
         var fbRequestUrl = "https://graph.facebook.com/me/feed?access_token="
             + credentials.AccessToken;
 
         // Create an HttpClient request.
         var client = new System.Net.Http.HttpClient();
 
-        // Request the current user info from Facebook.
+        // Request hello current user info from Facebook.
         var resp = await client.GetAsync(fbRequestUrl);
         resp.EnsureSuccessStatusCode();
 
-        // Do something here with the Facebook user information.
+        // Do something here with hello Facebook user information.
         var fbInfo = await resp.Content.ReadAsStringAsync();
     }
 
-Agregue una instrucción de uso para que `System.Security.Principal` proporcione el método de extensión **GetAppServiceIdentityAsync** .
+Agregue un mediante declaración para `System.Security.Principal` tooprovide hello **GetAppServiceIdentityAsync** método de extensión.
 
 ### <a name="authorize"></a>Cómo restringir el acceso a datos para los usuarios autorizados
-En la sección anterior, hemos mostrado cómo recuperar el identificador de usuario de un usuario autenticado. Puede restringir el acceso a datos y otros recursos basándose en este valor. Por ejemplo, agregar una columna de identificador de usuario (userId) a las tablas y filtrar los resultados de la consulta por el identificador de usuario es una manera sencilla de limitar los datos devueltos únicamente a los usuarios autorizados. El código siguiente solo devuelve filas de datos cuando el SID coincide con el valor de la columna UserId de la tabla TodoItem:
+En la sección anterior de hello, mostramos cómo tooretrieve Hola Id. de usuario de un usuario autenticado. Puede restringir el acceso toodata y otros recursos en función de este valor. Por ejemplo, agregar un tootables de la columna de identificador de usuario y filtrar resultados de la consulta de Hola por Id. de usuario de hello son un toolimit de manera sencilla devuelve solo los usuarios tooauthorized datos. Hello código siguiente devuelve filas de datos solo cuando Hola SID coincide con el valor de columna de identificador de usuario de hello en la tabla TodoItem de hello:
 
-    // Get the SID of the current user.
+    // Get hello SID of hello current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
     string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-    // Only return data rows that belong to the current user.
+    // Only return data rows that belong toohello current user.
     return Query().Where(t => t.UserId == sid);
 
-El método `Query()` devuelve un `IQueryable` que LINQ puede manipular para controlar el filtrado.
+Hola `Query()` método devuelve un `IQueryable` que se pueden manipular mediante el filtrado de toohandle LINQ.
 
-## <a name="how-to-add-push-notifications-to-a-server-project"></a>Cómo agregar notificaciones push a un proyecto de servidor
-Para agregar notificaciones push al proyecto de servidor, extienda el objeto **MobileAppConfiguration** y cree un cliente de Notification Hubs.
+## <a name="how-to-add-push-notifications-tooa-server-project"></a>Cómo: Agregar proyecto de servidor de tooa de notificaciones de inserción
+Agregar proyecto de servidor de tooyour de notificaciones de inserción mediante la extensión de hello **MobileAppConfiguration** objeto y la creación de un cliente de los centros de notificaciones.
 
-1. En Visual Studio, haga clic con el botón derecho en el proyecto de servidor, haga clic en **Administrar paquetes de NuGet**, busque `Microsoft.Azure.Mobile.Server.Notifications` y, por último, haga clic en **Instalar**.
-2. Repita este paso para instalar el paquete `Microsoft.Azure.NotificationHubs` , que incluye la biblioteca de cliente de Centros de notificaciones.
-3. En App_Start/Startup.MobileApp.cs, agregue una llamada al método de extensión **AddPushNotifications()** durante la inicialización:
+1. En Visual Studio, haga clic en proyecto de servidor de Hola y haga clic en **administrar paquetes de NuGet**, busque `Microsoft.Azure.Mobile.Server.Notifications`, a continuación, haga clic en **instalar**.
+2. Repita este Hola de tooinstall paso `Microsoft.Azure.NotificationHubs` paquete, que incluye la biblioteca de cliente de hello centros de notificaciones.
+3. En App_Start/Startup.MobileApp.cs y agregue una llamada toohello **AddPushNotifications()** método de extensión durante la inicialización:
 
         new MobileAppConfiguration()
             // other features...
             .AddPushNotifications()
             .ApplyTo(config);
-4. Agregue el siguiente código, que crea un nuevo cliente de Centros de notificaciones:
+4. Agregue Hola después el código que crea a un cliente de los centros de notificaciones:
 
-        // Get the settings for the server project.
+        // Get hello settings for hello server project.
         HttpConfiguration config = this.Configuration;
         MobileAppSettingsDictionary settings =
             config.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
-        // Get the Notification Hubs credentials for the Mobile App.
+        // Get hello Notification Hubs credentials for hello Mobile App.
         string notificationHubName = settings.NotificationHubName;
         string notificationHubConnection = settings
             .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
@@ -369,15 +369,15 @@ Para agregar notificaciones push al proyecto de servidor, extienda el objeto **M
         NotificationHubClient hub = NotificationHubClient
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-Ahora puede usar el cliente de Notification Hubs para enviar notificaciones push a dispositivos registrados. Para más información, vea [Incorporación de notificaciones push a la aplicación](app-service-mobile-ios-get-started-push.md). Aprenda más sobre Notification Hubs en la [introducción a Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
+Ahora puede usar Hola centros de notificaciones toosend inserción notificaciones tooregistered los dispositivos cliente. Para obtener más información, consulte [aplicación de tooyour de notificaciones de inserción de agregar](app-service-mobile-ios-get-started-push.md). toolearn más información acerca de los centros de notificaciones, consulte [información general de los centros de notificación](../notification-hubs/notification-hubs-push-notification-overview.md).
 
 ## <a name="tags"></a>Habilitación de la inserción de destino mediante etiquetas
-Los Centros de notificaciones permite enviar notificaciones dirigidas a registros específicos mediante el uso de etiquetas. Se crean varias etiquetas automáticamente:
+Los centros de notificaciones le permite enviar notificaciones de destino toospecific registros mediante el uso de etiquetas. Se crean varias etiquetas automáticamente:
 
-* El identificador de instalación identifica un dispositivo específico.
-* El identificador de usuario basado en el SID autenticado identifica un usuario específico.
+* Hola identificador de instalación identifica un dispositivo específico.
+* Hello Id. de usuario basado en hello autenticado SID identifica a un usuario específico.
 
-Se puede acceder al identificador de instalación desde la propiedad **installationId** en **MobileServiceClient**.  En el ejemplo siguiente se muestra cómo usar un identificador de instalación para agregar una etiqueta a una instalación específica en los Centros de notificaciones:
+Hola instalación identificador puede tener acceso desde hello **installationId** propiedad hello **MobileServiceClient**.  Hello en el ejemplo siguiente se muestra cómo utilizar un tooadd de Id. de instalación específicas de instalación de tooa etiqueta en los centros de notificaciones:
 
     hub.PatchInstallation("my-installation-id", new[]
     {
@@ -389,27 +389,27 @@ Se puede acceder al identificador de instalación desde la propiedad **installat
         }
     });
 
-Al crear la instalación, el back-end ignora las etiquetas proporcionadas por el cliente durante el registro de notificaciones push. Para que un cliente pueda agregar etiquetas a la instalación, debe crear una API personalizada que agregue etiquetas mediante el patrón anterior.
+Hola back-end omite las etiquetas proporcionadas por el cliente de Hola durante el registro de notificaciones de inserción cuando se crea la instalación de Hola. tooenable un tooadd cliente etiquetas toohello instalación, debe crear una API personalizada que agrega etiquetas mediante Hola anterior patrón.
 
-Consulte la información sobre las [etiquetas de notificaciones push agregadas por el cliente][5] en el ejemplo de inicio rápido completado de App Service Mobile Apps para ver un ejemplo.
+Vea [etiquetas de notificación de inserción de cliente agregado] [ 5] en el ejemplo de tutorial rápido completada de aplicación del servicio de aplicaciones móviles de Hola para obtener un ejemplo.
 
-## <a name="push-user"></a>Envío de notificaciones push a un usuario autenticado
-Cuando un usuario autenticado se registra para las notificaciones push, se agrega automáticamente una etiqueta con el identificador de usuario al registro. Mediante esta etiqueta, puede enviar notificaciones push a todos los dispositivos registrados por ese usuario. El código siguiente obtiene el SID del usuario que realiza la solicitud y envía una notificación push de plantilla a cada registro de dispositivo para esa persona:
+## <a name="push-user"></a>Cómo: tooan de notificaciones de inserción de envío autentica el usuario
+Cuando un usuario autenticado se registra para las notificaciones de inserción, una etiqueta de Id. de usuario se agrega automáticamente el registro de toohello. Mediante el uso de esta etiqueta, puede enviar inserción dispositivos de tooall notificaciones registrados por esa persona. Hello código siguiente obtiene Hola SID del usuario que realiza la solicitud y envía un registro de dispositivos plantilla tooevery de notificación de inserción para esa persona:
 
-    // Get the current user SID and create a tag for the current user.
+    // Get hello current user SID and create a tag for hello current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
     string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
     string userTag = "_UserId:" + sid;
 
-    // Build a dictionary for the template with the item message text.
+    // Build a dictionary for hello template with hello item message text.
     var notification = new Dictionary<string, string> { { "message", item.Text } };
 
-    // Send a template notification to the user ID.
+    // Send a template notification toohello user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-Cuando se registre para notificaciones push desde un cliente autenticado, asegúrese de que la autenticación se ha completado antes de intentar el registro. Para más información, consulte [Push to users][6] (Notificación push a usuarios) en el ejemplo de inicio rápido de App Service Mobile Apps completado para el back-end de .NET.
+Cuando se registre para notificaciones push desde un cliente autenticado, asegúrese de que la autenticación se ha completado antes de intentar el registro. Para obtener más información, consulte [Push toousers] [ 6] de ejemplo de tutorial rápido completada de aplicación del servicio de aplicaciones móviles de Hola de back-end. NET.
 
-## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Procedimientos: Depuración y solución de problemas del SDK de .NET Server
+## <a name="how-to-debug-and-troubleshoot-hello-net-server-sdk"></a>Cómo: depurar y solucionar problemas de hello .NET SDK de servidor
 El Servicio de aplicaciones de Azure proporciona varias técnicas de depuración y solución de problemas para las aplicaciones ASP.NET.
 
 * [Supervisión de Aplicaciones web en el Servicio de aplicaciones de Azure](../app-service-web/web-sites-monitor.md)
@@ -417,27 +417,27 @@ El Servicio de aplicaciones de Azure proporciona varias técnicas de depuración
 * [Solución de problemas del Servicio de aplicaciones de Azure en Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)
 
 ### <a name="logging"></a>Registro
-Puede escribir en registros de diagnóstico del Servicio de aplicaciones mediante la escritura de seguimiento estándar de ASP.NET. Antes de poder escribir en los registros, debe habilitar los diagnósticos en su back-end de aplicación móvil.
+Puede escribir tooApp registros de diagnóstico de servicio mediante el uso de escritura de seguimiento ASP.NET estándar Hola. Antes de poder escribir toohello registros, debe habilitar los diagnósticos en su aplicación móvil de back-end.
 
-Para habilitar los diagnósticos y escribir en los registros:
+registros de toohello de escritura y diagnóstico tooenable:
 
-1. Siga los pasos que se indican en [Habilitación de diagnósticos](../app-service-web/web-sites-enable-diagnostic-log.md#enablediag).
-2. Agregue la siguiente instrucción using en el archivo de código:
+1. Siga los pasos de hello en [cómo diagnósticos tooenable](../app-service-web/web-sites-enable-diagnostic-log.md#enablediag).
+2. Agregue los siguiente hello mediante declaración en el archivo de código:
 
         using System.Web.Http.Tracing;
-3. Cree un escritor de seguimiento para escribir desde el back-end de .NET en los registros de diagnóstico, de la manera siguiente:
+3. Crear un toowrite de escritor de seguimiento de hello .NET back-end toohello registros de diagnóstico, como se indica a continuación:
 
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
-4. Vuelva a publicar el proyecto de servidor y acceda al back-end de aplicación móvil para ejecutar la ruta de acceso del código con el registro.
-5. Descargue y evalúe los registros, como se describe en [Procedimiento: Descarga de registros](../app-service-web/web-sites-enable-diagnostic-log.md#download).
+4. Volver a publicar el proyecto de servidor y ruta de código de hello tooexecute back-end de aplicación móvil Hola con el registro de hello de acceso.
+5. Descargue y evalúe los registros de hello, como se describe en [Cómo: descargar registros](../app-service-web/web-sites-enable-diagnostic-log.md#download).
 
 ### <a name="local-debug"></a>Depuración local con autenticación
-Puede ejecutar la aplicación localmente para probar los cambios antes de publicarlos en la nube. Para la mayoría de los servidores back-end de Azure Mobile Apps, presione *F5* mientras está en Visual Studio. Sin embargo, hay algunas consideraciones adicionales cuando se usa la autenticación.
+Puede ejecutar la aplicación localmente tootest cambia antes de publicarlos en la nube toohello. Para la mayoría de los servidores back-end de Azure Mobile Apps, presione *F5* mientras está en Visual Studio. Sin embargo, hay algunas consideraciones adicionales cuando se usa la autenticación.
 
-Debe tener una aplicación móvil basada en la nube que tenga configurada la característica Autenticación/autorización del Servicio de aplicaciones, y su cliente debe haber especificado el punto de conexión de nube como host de inicio de sesión alternativo. Consulte la documentación de la plataforma cliente para los pasos específicos requeridos.
+Debe tener una aplicación móvil en la nube con aplicación de servicio de autenticación/autorización configurado, y el cliente debe tener el extremo de nube Hola especificado como host de inicio de sesión alternativo de Hola. Consulte la documentación de hello para la plataforma de cliente para obtener pasos específicos Hola necesarios.
 
-Asegúrese de que el back-end tenga instalado [Microsoft.Azure.Mobile.Server.Authentication] . Después, en la clase de inicio OWIN de la aplicación, agregue lo siguiente, después de aplicar `MobileAppConfiguration` a `HttpConfiguration`:
+Asegúrese de que el back-end tenga instalado [Microsoft.Azure.Mobile.Server.Authentication] . A continuación, en la clase de inicio de la aplicación OWIN, agregue siguiente hello, después de `MobileAppConfiguration` se ha aplicado tooyour `HttpConfiguration`:
 
         app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions()
         {
@@ -447,15 +447,15 @@ Asegúrese de que el back-end tenga instalado [Microsoft.Azure.Mobile.Server.Aut
             TokenHandler = config.GetAppServiceTokenHandler()
         });
 
-En el ejemplo anterior, debe configurar los parámetros de la aplicación *authAudience* y *authIssuer* en el archivo Web.config para que cada uno sea la dirección URL de la raíz de la aplicación; para ello, usará el esquema HTTPS. De igual modo, debe establecer *authSigningKey* como el valor de la clave de firma de la aplicación.
-Para obtener la clave de firma:
+En el anterior ejemplo de Hola, debe configurar hello *authAudience* y *authIssuer* aplicación en el archivo Web.config del archivo de configuración tooeach sea la dirección URL de la raíz de la aplicación, con hello HTTPS esquema. Del mismo modo debe establecer *authSigningKey* toobe valor de saludo de la aplicación de la clave de firma.
+clave de firma de Hola tooobtain:
 
-1. Vaya a la aplicación en [Portal de Azure]
+1. Navegar por la aplicación tooyour en hello [portal de Azure]
 2. Haga clic en **Herramientas**, **Kudu**, **Ir**.
-3. En el sitio de administración de Kudu, haga clic en **Entorno**.
-4. Busque el valor de *WEBSITE\_AUTH\_SIGNING\_KEY*.
+3. En el sitio de administración de Kudu hello, haga clic en **entorno**.
+4. Buscar valor Hola para *sitio Web\_AUTH\_firma\_clave*.
 
-Use la clave de firma para el parámetro *authSigningKey* en la configuración de la aplicación local.  Ahora, el back-end móvil está equipado para validar los tokens cuando se ejecuta localmente; el cliente obtiene el token del punto de conexión basado en la nube.
+Hola de uso clave para hello firma *authSigningKey* parámetro en la configuración de la aplicación local.  El back-end móvil ya está equipado toovalidate tokens cuando se ejecuta localmente, qué cliente hello Obtiene el token de Hola desde el punto de conexión de hello en la nube.
 
 [1]: https://msdn.microsoft.com/library/azure/dn961176.aspx
 [2]: https://github.com/Azure/azure-mobile-apps-net-server
@@ -463,7 +463,7 @@ Use la clave de firma para el parámetro *authSigningKey* en la configuración d
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[Portal de Azure]: https://portal.azure.com
+[portal de Azure]: https://portal.azure.com
 [NuGet.org]: http://www.nuget.org/
 [Microsoft.Azure.Mobile.Server]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Microsoft.Azure.Mobile.Server.Quickstart]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/

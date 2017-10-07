@@ -1,6 +1,6 @@
 ---
-title: "Direcciones IP públicas a nivel de instancia (clásica) de Azure mediante | Microsoft Docs"
-description: "Comprenda las direcciones públicas de nivel de instancia (ILPIP) y cómo administrarlas con PowerShell."
+title: "las direcciones IP públicas (clásico) aaaAzure nivel de instancia | Documentos de Microsoft"
+description: "Comprender las direcciones IP (ILPIP) de públicas nivel de instancia y cómo toomanage mediante PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
-ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 832143ee6fdd80b634e1cebfddc759a8cacda583
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Introducción a las direcciones IP públicas a nivel de instancia (clásica)
-Una IP pública de nivel de instancia (ILPIP) es una dirección IP pública que se puede asignar directamente a la máquina virtual o a la instancia de rol de Cloud Services, en lugar de a un servicio en la nube en el que reside la máquina virtual o la instancia de rol. Un ILPIP no reemplaza a la dirección IP virtual (VIP) que está asignada al servicio en la nube. Es más bien una dirección IP adicional que puede usar para conectarse directamente a la máquina virtual o instancia de rol.
+Una instancia IP pública nivel (ILPIP) es una dirección IP pública que se puede asignar directamente instancia de rol de máquina virtual o servicios en la nube tooa, en lugar del servicio de nube de toohello que la máquina virtual o instancia de rol residen en. Un ILPIP no tiene lugar de Hola de hello dirección IP virtual (VIP) que se asigna el servicio en la nube tooyour. En su lugar, es una dirección IP adicional que puede usar tooconnect directamente tooyour máquina virtual o instancia de rol.
 
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Este artículo trata del modelo de implementación clásico. Microsoft recomienda crear máquinas virtuales a través de Resource Manager. Asegúrese de que comprende cómo funcionan las [direcciones IP](virtual-network-ip-addresses-overview-classic.md) en Azure.
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Este artículo incluye el uso de modelo de implementación clásica de Hola. Microsoft recomienda crear máquinas virtuales a través de Resource Manager. Asegúrese de que comprende cómo funcionan las [direcciones IP](virtual-network-ip-addresses-overview-classic.md) en Azure.
 
 ![Diferencia entre ILPIP y VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Como se muestra en la Figura 1, se accede al servicio en la nube mediante una VIP, mientras que normalmente se accede a las máquinas virtuales individuales mediante VIP:&lt;número de puerto&gt;. Al asignar una ILPIP a una máquina virtual específica, se puede tener acceso directamente a esa máquina virtual mediante esa dirección IP.
+Como se muestra en la figura 1, se tiene acceso al servicio de nube de hello mediante una VIP, mientras Hola máquinas virtuales individuales son accesibles normalmente mediante la VIP:&lt;número de puerto&gt;. Asignando un tooa ILPIP VM específica, que pueden ser máquinas virtuales acceso directamente mediante esa dirección IP.
 
-Cuando se crea un servicio en la nube en Azure, los registros de DNS A correspondientes se crean automáticamente para permitir el acceso al servicio mediante un nombre de dominio completo (FQDN) en lugar de usar la VIP real. Se produce el mismo proceso para la ILPIP, lo que permite el acceso a la máquina virtual o instancia de rol mediante el FQDN en lugar de la ILPIP. Por ejemplo, si crea un servicio en la nube denominado *contosoadservice* y configura un rol web denominado *contosoweb* con dos instancias, Azure registra los siguientes registros A para las instancias:
+Cuando se crea un servicio de nube en Azure, registros DNS A correspondientes se crean automáticamente servicio de toohello de tooallow acceso a través de un nombre de dominio completo (FQDN), en lugar de usar Hola real VIP. Hola mismo proceso se produce para un ILPIP, lo que permite acceso toohello máquina virtual o instancia de rol mediante el FQDN en lugar de hello ILPIP. Por ejemplo, si crea un servicio de nube denominado *contosoadservice*, y configurar un rol web denominado *contosoweb* con dos instancias, hello Azure registros siguientes A registros para instancias de hello:
 
 * contosoweb\_IN_0.contosoadservice.cloudapp.net
 * contosoweb\_IN_1.contosoadservice.cloudapp.net 
 
 > [!NOTE]
-> Solo puede asignar una ILPIP para cada máquina virtual o instancia de rol. Puede usar hasta 5 ILPIP por suscripción. Las ILPIP no se admiten para las máquinas virtuales de varias NIC.
+> Solo puede asignar una ILPIP para cada máquina virtual o instancia de rol. Puede usar la too5 ILPIPs por suscripción. Las ILPIP no se admiten para las máquinas virtuales de varias NIC.
 > 
 > 
 
 ## <a name="why-would-i-request-an-ilpip"></a>¿Por qué debo solicitar una ILPIP?
-Si desea poder conectarse a la máquina virtual o a la instancia de rol mediante una dirección IP asignada directamente a ella, en lugar de usar la VIP:&lt;número de puerto&gt; del servicio en la nube, solicite una ILPIP para la máquina virtual o la instancia de rol.
+Si desea toobe tooconnect pueda tooyour máquina virtual o instancia de rol mediante una dirección IP asignada directamente tooit, en lugar de usar en la nube Hola VIP del servicio:&lt;número de puerto&gt;, solicitar una ILPIP para la máquina virtual o la instancia de rol.
 
-* **FTP activo**: mediante la asignación de una ILPIP a una máquina virtual, puede recibir tráfico en cualquier puerto. Los puntos de conexión no son necesarios para que la máquina virtual reciba tráfico.  Consulte la información general que se da en (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP Protocol Overview] sobre el protocolo FTP para conocer los detalles sobre este último.
-* **IP de salida**: el tráfico de salida procedente de la máquina virtual se asigna a la ILPIP como origen y, de esta forma, esta última identifica de forma exclusiva la máquina virtual ante entidades externas.
+* **FTP activo** -mediante la asignación de una máquina virtual de ILPIP tooa, puede recibir tráfico en cualquier puerto. Los puntos de conexión no son necesarias para hello tráfico tooreceive de máquina virtual.  Para obtener más información sobre el protocolo de hello FTP, vea (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) [Introducción al protocolo de FTP].
+* **IP de salida** : el tráfico saliente que se origina en hello máquina virtual está asignada toohello ILPIP como origen de Hola y Hola ILPIP identifica de forma única entidades de hello VM tooexternal.
 
 > [!NOTE]
-> Antes, a la dirección ILPIP se le conocía como dirección IP pública (PIP).
+> Hola anterior, una dirección ILPIP fue tooas que se hace referencia una dirección IP (PIP) pública.
 > 
 
 ## <a name="manage-an-ilpip-for-a-vm"></a>Administración de una ILPIP para una máquina virtual
-Las tareas siguientes le permiten crear, asignar y quitar ILPIP de máquinas virtuales:
+Hola siguiente las tareas le permiten toocreate, asignar y quitar ILPIPs desde máquinas virtuales:
 
-### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>Solicitud de una ILPIP durante la creación de máquinas virtuales mediante PowerShell
-El script de PowerShell siguiente crea un servicio en la nube denominado *FTPService*, recupera una imagen de Azure, crea una máquina virtual denominada *FTPInstance* usando la imagen recuperada, establece la máquina virtual para que use una ILPIP y agrega la máquina virtual al nuevo servicio:
+### <a name="how-toorequest-an-ilpip-during-vm-creation-using-powershell"></a>¿Cómo toorequest un ILPIP durante la creación de máquinas virtuales con PowerShell
+Hola siguiente script de PowerShell crea un servicio de nube denominado *FTPService*, recupera una imagen de Azure, crea una máquina virtual denominada *FTPInstance* con imagen Hola recuperar, Establece Hola VM toouse un ILPIP y agrega el nuevo servicio de hello VM toohello:
 
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"
@@ -65,8 +65,8 @@ New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageN
 | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 ```
 
-### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>Recuperación de información de ILPIP para una máquina virtual
-Para ver la información de ILPIP para la máquina virtual creada con el script anterior, ejecute el siguiente comando de PowerShell y observe los valores de *PublicIPAddress* y *PublicIPName*:
+### <a name="how-tooretrieve-ilpip-information-for-a-vm"></a>Cómo obtener información de ILPIP tooretrieve para una máquina virtual
+Hola tooview ILPIP conocer Hola máquinas virtuales crean con script anterior de hello, ejecute el siguiente comando de PowerShell de Hola y observar los valores de hello para *PublicIPAddress* y *PublicIPName*:
 
 ```powershell
 Get-AzureVM -Name FTPInstance -ServiceName FTPService
@@ -101,15 +101,15 @@ Resultado esperado:
     OperationId                 : 568d88d2be7c98f4bbb875e4d823718e
     OperationStatus             : OK
 
-### <a name="how-to-remove-an-ilpip-from-a-vm"></a>Supresión de una ILPIP de una máquina virtual
-Para quitar la ILPIP agregada a la máquina virtual en el script anterior, ejecute el siguiente comando de PowerShell:
+### <a name="how-tooremove-an-ilpip-from-a-vm"></a>¿Cómo tooremove una ILPIP de una máquina virtual
+Hola tooremove ILPIP agregado toohello VM en hello secuencia de comandos anterior, ejecute el siguiente comando de PowerShell de hello:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Remove-AzurePublicIP | Update-AzureVM
 ```
 
-### <a name="how-to-add-an-ilpip-to-an-existing-vm"></a>Agregación de una ILPIP a una máquina virtual existente
-Para agregar una ILPIP a la máquina virtual creada con el script anterior, ejecute el siguiente comando:
+### <a name="how-tooadd-an-ilpip-tooan-existing-vm"></a>¿Cómo tooadd una tooan ILPIP máquina virtual existente
+tooadd una toohello ILPIP máquinas virtuales creadas con script de Hola anterior, ejecute el siguiente comando de hello:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip2 | Update-AzureVM
@@ -117,10 +117,10 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 
 ## <a name="manage-an-ilpip-for-a-cloud-services-role-instance"></a>Administración de una ILPIP para una instancia de rol de Cloud Services
 
-Para agregar una ILPIP a una instancia de rol de Cloud Services, complete los pasos siguientes:
+tooadd una instancia de rol de servicios en la nube de tooa ILPIP, Hola completa pasos:
 
-1. Descargue el archivo .cscfg para el servicio en la nube siguiendo los pasos descritos en el artículo sobre [cómo configurar Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg).
-2. Actualice el archivo .cscfg y agregue el elemento `InstanceAddress`. El ejemplo siguiente agrega una ILPIP denominada *MyPublicIP* a una instancia de rol denominada *WebRole1*: 
+1. Descargar archivo de .cscfg de Hola para servicio de nube Hola siguiendo Hola los pasos de hello [cómo los servicios de nube tooConfigure](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artículo.
+2. Archivo de .cscfg Hola de actualización mediante la adición de hello `InstanceAddress` elemento. Hello en el ejemplo siguiente agrega un ILPIP denominado *MyPublicIP* tooa instancia de rol denominado *WebRole1*: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -142,8 +142,8 @@ Para agregar una ILPIP a una instancia de rol de Cloud Services, complete los pa
       </NetworkConfiguration>
     </ServiceConfiguration>
     ```
-3. Cargue el archivo .cscfg para el servicio en la nube siguiendo los pasos descritos en el artículo sobre [cómo configurar Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg).
+3. Cargar archivo de .cscfg de Hola para servicio de nube Hola siguiendo Hola los pasos de hello [cómo los servicios de nube tooConfigure](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artículo.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Descubra cómo funcionan las [direcciones IP](virtual-network-ip-addresses-overview-classic.md) en el modelo de implementación clásica.
+* Comprender cómo [el direccionamiento IP](virtual-network-ip-addresses-overview-classic.md) funciona en el modelo de implementación clásica de Hola.
 * Obtenga información sobre las [direcciones IP reservadas](virtual-networks-reserved-public-ip.md).

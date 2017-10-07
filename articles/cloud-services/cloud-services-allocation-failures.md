@@ -1,5 +1,5 @@
 ---
-title: "Solución de errores de asignación de servicio en la nube | Microsoft Docs"
+title: "Error de asignación de servicio en la nube aaaTroubleshooting | Documentos de Microsoft"
 description: "Solución de errores de asignación al implementar Servicios en la nube de Azure"
 services: azure-service-management, cloud-services
 documentationcenter: 
@@ -15,59 +15,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/26/2017
 ms.author: v-six
-ms.openlocfilehash: 3379b6d9bea874abecae7e56d30cfb15e6b0c2fc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dfd5cc4663ccc6ed1b27ca9df579182737363b0e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Solución de errores de asignación al implementar Servicios en la nube de Azure
 ## <a name="summary"></a>Resumen
-Al implementar instancias en un servicio en la nube o agregar nuevas instancias de rol de trabajo o web, Microsoft Azure asigna recursos de proceso. En ocasiones, es posible que reciba errores a realizar estas operaciones incluso antes de llegar a los límites de la suscripción de Azure. En este artículo se explican las causas de algunos de los errores de asignación más comunes y se sugieren posibles soluciones. La información también puede ser útil si tiene pensado realizar la implementación de sus servicios.
+Al implementar instancias tooa servicio en la nube o agregar nuevo sitio web o instancias de rol de trabajo, Windows Azure asigna recursos de proceso. En ocasiones, puede recibir errores al realizar estas operaciones, incluso antes de llegar a los límites de suscripción de Azure Hola. Este artículo explica causas Hola de algunos de los errores de asignación comunes de Hola y sugiere posibles correcciones. información de Hello también puede resultarle útil cuando planee la implementación de Hola de sus servicios.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ### <a name="background--how-allocation-works"></a>Información de contexto: cómo funciona la asignación
-Los servidores de los centros de datos de Azure están particionados en clústeres. Se intenta una nueva solicitud de asignación de servicio en la nube en varios clústeres. Cuando se implementa la primera instancia a un servicio en la nube (ya sea en ensayo o producción), ese servicio en la nube se ancla a un clúster. Todas las implementaciones posteriores para el servicio en la nube tendrán lugar en el mismo clúster. En este artículo, haremos referencia a esto como que la solicitud está "anclada a un clúster". En el diagrama 1 siguiente se ilustra el caso de una asignación normal que se intenta en varios clústeres; en el diagrama 2 se ilustra el caso de una asignación que está anclada al clúster 2 porque es ahí donde se hospeda el servicio en la nube CS_1.
+servidores de Hello en centros de datos de Azure se dividen en clústeres. Se intenta una nueva solicitud de asignación de servicio en la nube en varios clústeres. Cuando primera instancia de hello es servicio de nube de implementada tooa (en almacenamiento provisional o producción), que el servicio de nube obtiene clúster tooa anclados. Ningún otro implementaciones para servicio de nube de hello tendrá lugar en hello mismo clúster. En este artículo, nos referiremos toothis como "anclado tooa clúster". Diagrama 1 a continuación ilustra el caso de hello de una asignación normal que se intenta en varios clústeres; Diagrama 2 ilustra caso de hello de una asignación que tooCluster anclado 2 ya que es donde Hola CS_1 de servicio de nube existente se hospeda.
 
 ![Diagrama de asignación](./media/cloud-services-allocation-failure/Allocation1.png)
 
 ### <a name="why-allocation-failure-happens"></a>¿Por qué se producen errores de asignación?
-Cuando una solicitud de asignación está anclada a un clúster, existe una posibilidad menor de encontrar recursos libres dado que el grupo de recursos disponible se limita a un clúster. Además, si la solicitud de asignación está anclada a un clúster pero el tipo de recurso que solicita no se admite en ese clúster, la solicitud dará error aunque el clúster tenga recursos libres. En el diagrama 3 a continuación se ilustra el caso en el que una asignación anclada da error porque el único clúster candidato no tiene recursos libres. En el diagrama 4 se ilustra el caso en el que una asignación anclada da error porque el único clúster candidato no admite el tamaño de VM solicitado, a pesar de que el clúster tiene recursos libres.
+Cuando una solicitud de asignación está anclado tooa clúster, hay una mayor probabilidad de errores toofind liberar recursos como grupo de recursos disponibles de hello es clúster tooa limitado. Además, si su solicitud de asignación está anclado tooa clúster pero tipo hello de recurso solicitado no es compatible con dicho clúster, se producirá un error en la solicitud incluso si el clúster de hello tiene recurso gratuito. Diagrama 3 a continuación ilustra el caso en Hola donde una asignación anclada produce un error porque Hola candidato solo clúster no tiene recursos libres. Diagrama 4 muestra caso Hola donde una asignación anclada produce un error porque no es compatible con clúster candidato solo de Hola Hola solicitado tamaño de máquina virtual, aunque el clúster de hello tiene liberar recursos.
 
 ![Error de asignaciones ancladas](./media/cloud-services-allocation-failure/Allocation2.png)
 
 ## <a name="troubleshooting-allocation-failure-for-cloud-services"></a>Solución de errores de asignación para servicios en la nube
 ### <a name="error-message"></a>Mensaje de error
-Puede ver el siguiente mensaje de error:
+Puede ver Hola mensaje de error siguiente:
 
-    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable toosatisfy constraints in request. hello requested new service deployment is bound tooan Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains hello new deployment toospecific Azure resources. Please retry later or try reducing hello VM size or number of role instances. Alternatively, if possible, remove hello aforementioned constraints or try deploying tooa different region."
 
 ### <a name="common-issues"></a>Problemas comunes
-A continuación se presentan los escenarios de asignación comunes que ocasionan que una solicitud de asignación quede anclada a un solo clúster.
+Presentamos Hola comunes asignación los escenarios que provocan un asignación solicitud toobe tooa anclados solo clúster.
 
-* Implementación en la ranura de ensayo - Si un servicio en la nube tiene una implementación en cualquier ranura, entonces todo el servicio en la nube se ancla a un clúster concreto.  Esto significa que si una implementación ya existe en la ranura de producción, una nueva implementación de ensayo solo se puede asignar en el mismo clúster que la ranura de producción. Si la capacidad del clúster se está agotando, se puede producir un error en la solicitud.
-* Escalado - La incorporación de nuevas instancias a un servicio en la nube existente se debe asignar en el mismo clúster.  Normalmente, las solicitudes de escalado pequeño se pueden asignar, pero no siempre. Si la capacidad del clúster se está agotando, se puede producir un error en la solicitud.
-* Grupo de afinidad - Una nueva implementación en un servicio en la nube vacío se puede asignar mediante el tejido en cualquier clúster de esa región, a menos que el servicio en la nube esté anclado a un grupo de afinidad. Las implementaciones en el mismo grupo de afinidad se intentarán en el mismo clúster. Si la capacidad del clúster se está agotando, se puede producir un error en la solicitud.
-* Red virtual del grupo de afinidad - Las redes virtuales más antiguas estaban asociadas a grupos de afinidad en lugar de a regiones y los servicios en la nube de estas redes virtuales se anclarían al clúster del grupo de afinidad. Las implementaciones en este tipo de red virtual se intentarán en el clúster anclado. Si la capacidad del clúster se está agotando, se puede producir un error en la solicitud.
+* A continuación, implementar tooStaging ranura: si un servicio de nube tiene una implementación en cualquier ranura, servicio de nube todo de Hola y está anclado tooa específico del clúster.  Esto significa que si una implementación ya existe en la ranura de producción de hello, a continuación, una nueva implementación de ensayo se solo pueden asignar en el mismo clúster según la zona de producción de hello de Hola. Si el clúster de hello está cerca de su capacidad, puede producir un error en la solicitud de saludo.
+* Ajuste de escala: agregar nuevas instancias tooan servicio en la nube debe asignar Hola mismo clúster.  Normalmente, las solicitudes de escalado pequeño se pueden asignar, pero no siempre. Si el clúster de hello está cerca de su capacidad, puede producir un error en la solicitud de saludo.
+* Grupo de afinidad: un nuevo servicio de nube vacía de tooan de implementación se puede asignar por tejido de Hola en cualquier clúster en dicha región, a menos que el servicio de nube de hello está anclado tooan grupo de afinidad. Toohello de las implementaciones se tratará el mismo grupo de afinidad en hello mismo clúster. Si el clúster de hello está cerca de su capacidad, puede producir un error en la solicitud de saludo.
+* Red virtual del grupo de afinidad - redes virtuales anteriores estaban relacionados tooaffinity grupos en lugar de las regiones y servicios en la nube en estas redes virtuales sería clúster del grupo de afinidad toohello anclados. Tipo de toothis de las implementaciones de red virtual se tratará en clúster de hello anclado. Si el clúster de hello está cerca de su capacidad, puede producir un error en la solicitud de saludo.
 
 ## <a name="solutions"></a>Soluciones
-1. Volver a implementar un nuevo servicio en la nube - Esta solución es probable que sea más exitosa, ya que permite a la plataforma elegir entre todos los clústeres de esa región.
+1. Volver a implementar tooa nuevo servicio de nube - esta solución es probable toobe más correcta, ya que permite Hola plataforma toochoose de todos los clústeres en dicha región.
 
-   * Implementar la carga de trabajo en un nuevo servicio en la nube.  
-   * Actualizar el registro CNAME o A para que apunte el tráfico al nuevo servicio en la nube.
-   * Una vez que ya no se dirige tráfico al sitio antiguo, puede eliminar el servicio en la nube antiguo. Esta solución debe incurrir en tiempo de inactividad cero.
-2. Eliminar las ranuras de producción y ensayo - Esta solución conservará el nombre de DNS existente, pero provocará tiempo de inactividad en la aplicación.
+   * Implementar cargas de trabajo hello tooa nuevo servicio de nube  
+   * Actualizar Hola CNAME o un registro toopoint tráfico toohello nuevo servicio en la nube
+   * Una vez cero tráfico va toohello del sitio antiguo, puede eliminar servicio en la nube antiguo Hola. Esta solución debe incurrir en tiempo de inactividad cero.
+2. Eliminar la producción y las ranuras de almacenamiento provisional: esta solución, conservará el nombre DNS existente, pero hará que la aplicación de tooyour de tiempo de inactividad.
 
-   * Eliminar las ranuras de producción y ensayo de un servicio en la nube existente para que dicho esté vacío y después
-   * Crear una nueva implementación en el servicio en la nube existente. Esto volverá a intentar la asignación en todos los clústeres de la región. Asegúrese de que el servicio en la nube no está asociado a un grupo de afinidad.
-3. Dirección IP reservada: esta solución conservará su dirección IP existente, pero provocará tiempo de inactividad en la aplicación.  
+   * Eliminar de producción de hello y ensayo ranuras de un servicio de nube existente para que el servicio en la nube Hola está vacía y, a continuación,
+   * Cree una nueva implementación Hola existente del servicio en nube. Esto intentará volver a tooallocation en todos los clústeres en la región de Hola. Asegúrese de servicio de nube de hello no está ligada tooan grupo de afinidad.
+3. Dirección IP reservada - esta solución, conservará la IP existentes de direcciones, pero hará que la aplicación de tooyour de tiempo de inactividad.  
 
    * Crear una dirección IP reservada para la implementación mediante Powershell.
 
      ```
      New-AzureReservedIP -ReservedIPName {new reserved IP name} -Location {location} -ServiceName {existing service name}
      ```
-   * Siga el punto 2 anterior y asegúrese de especificar la nueva dirección IP reservada en el CSCFG del servicio.
-4. Quitar el grupo de afinidad para nuevas implementaciones - Ya no se recomienda utilizar grupos de afinidad. Siga los pasos del punto 1 anterior para implementar un nuevo servicio en la nube. Asegúrese de que el servicio en la nube no se encuentra en un grupo de afinidad.
-5. Convertir a una red virtual regional - Consulte [Migración de grupos de afinidad a una red virtual regional](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+   * Siga #2 desde encima, realizar toospecify seguro Hola nueva dirección IP reservada en CSCFG del servicio de hello.
+4. Quitar el grupo de afinidad para nuevas implementaciones - Ya no se recomienda utilizar grupos de afinidad. Siga los pasos para #1 anteriormente toodeploy un nuevo servicio de nube. Asegúrese de que el servicio en la nube no se encuentra en un grupo de afinidad.
+5. Convertir tooa red Virtual Regional - vea [cómo toomigrate de grupos de afinidad tooa (VNet) de red Virtual Regional](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).

@@ -1,5 +1,5 @@
 ---
-title: "Migración desde AWS y otras plataformas a Managed Disks en Azure | Microsoft Docs"
+title: aaaMigrate de AWS y otra plataformas tooManaged discos en Azure | Documentos de Microsoft
 description: "Cree VM en Azure con VHD cargados desde otras nubes, como AWS u otras plataformas de virtualización, y aproveche las ventajas de Azure Managed Disks."
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,60 +16,60 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 685c35dbd4265ca6852de6db2e5a30fc2a611d7c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 66c3912397ab905aafb3910e13ac711befb8f502
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migración desde Amazon Web Services (AWS) y otras plataformas a Managed Disks en Azure
+# <a name="migrate-from-amazon-web-services-aws-and-other-platforms-toomanaged-disks-in-azure"></a>Migrar de Amazon Web Services (AWS) y otras plataformas tooManaged discos en Azure
 
-Puede cargar archivos de VHD desde AWS o soluciones de virtualización locales en Azure para crear máquinas virtuales que aprovechen las ventajas de Managed Disks. Azure Managed Disks elimina la necesidad de administrar las cuentas de Storage para las VM IaaS de Azure. Solo debe especificar el tipo (Premium o Estándar) y el tamaño del disco que necesita, y Azure creará y administrará el disco automáticamente. 
+Puede cargar archivos VHD desde AWS o local toocreate de tooAzure de soluciones máquinas virtuales que se benefician de discos administrados virtualización. Discos administrados Azure elimina la necesidad de hello toomanaging de cuentas de almacenamiento de máquinas virtuales de IaaS de Azure. También tiene tooonly especificar tipo de hello (Premium o estándar) y el tamaño del disco que necesita y Azure creará y administrará disco Hola automáticamente. 
 
 Puede cargar VHD generalizados o especializados. 
 - **VHD generalizado**: elimina toda la información personal de la cuenta mediante Sysprep. 
-- **VHD especializado**: mantiene las cuentas de usuario, las aplicaciones y otros datos de estado de la máquina virtual original. 
+- **Especializado VHD** -mantiene las cuentas de usuario de hello, aplicaciones y otros datos de estado de la máquina virtual original. 
 
 > [!IMPORTANT]
-> Antes de cargar los VHD en Azure, debe consultar [Preparación de un VHD o un VHDX de Windows antes de cargarlo en Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> Antes de cargar cualquier tooAzure de disco duro virtual, debe seguir [preparar una tooAzure tooupload Windows VHD o VHDX](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 >
 >
 
 
 | Escenario                                                                                                                         | Documentación                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Es posible que tenga instancias EC2 de AWS existentes que quisiera migrar a Azure Managed Disks                                     | [Migración de una máquina virtual de Amazon Web Services (AWS) a Azure](aws-to-azure.md)                           |
-| Tiene una VM de otra plataforma de virtualización que quisiera usar como imagen para crear varias VM de Azure. | [Creación de una máquina virtual nueva a partir de un VHD generalizado cargado en Azure a través de Managed Disks](upload-generalized-managed.md) |
-| Cuenta con una VM personalizada de forma exclusiva que quisiera recrear en Azure.                                                      | [Carga de un VHD especializado en Azure y creación de una máquina nueva](create-vm-specialized.md)         |
+| Tiene un instancias AWS EC2 existente que podría como toomigrate tooAzure discos administrados                                     | [Mover una máquina virtual de Amazon Web Services (AWS) tooAzure](aws-to-azure.md)                           |
+| Tiene una máquina virtual desde y otra plataforma de virtualización que desearía toouse toouse como una imagen toocreate varias máquinas virtuales de Azure. | [Cargar un disco duro virtual generalizado y utilizar toocreate un nuevas máquinas virtuales de Azure](upload-generalized-managed.md) |
+| Tener una máquina virtual de forma única personalizada que desearía toorecreate en Azure.                                                      | [Cargar un tooAzure especializada de VHD y crear una nueva máquina virtual](create-vm-specialized.md)         |
 
 
 ## <a name="overview-of-managed-disks"></a>Información general de Managed Disks
 
-Azure Managed Disks simplifica la administración de VM al eliminar la necesidad de administrar cuentas de almacenamiento. Managed Disks también aprovecha las ventajas de la mejor confiabilidad de las VM en un conjunto de disponibilidad. Esto garantiza que los discos de las distintas VM de un conjunto de disponibilidad estarán lo suficientemente aislados entre sí como para evitar un único punto de error. Coloca automáticamente discos de distintas VM en un conjunto de disponibilidad en unidades de escalado de almacenamiento diferentes (marcas de tiempo), lo que limita el impacto de errores únicos de unidad de escalado de almacenamiento generados debido a errores de hardware y software. En virtud de sus necesidades, puede elegir entre dos tipos de opciones de almacenamiento: 
+Discos administrado de Azure simplifica la administración de máquinas virtuales mediante la eliminación de cuentas de almacenamiento de hello necesidad toomanage. Managed Disks también aprovecha las ventajas de la mejor confiabilidad de las VM en un conjunto de disponibilidad. Garantiza que los discos de Hola de diferentes máquinas virtuales en un conjunto de disponibilidad estará suficientemente aislados desde cada otro tooavoid punto único de errores. Discos de diferentes máquinas virtuales coloca automáticamente en un conjunto de disponibilidad en diferentes unidades de escala de almacenamiento (sellos) que limita el impacto de Hola de errores de unidad de escala de almacenamiento únicos producidos debido a errores de software y toohardware. En virtud de sus necesidades, puede elegir entre dos tipos de opciones de almacenamiento: 
  
-- [Managed Disks Premium](../../storage/common/storage-premium-storage.md) son medios de almacenamiento basados en unidades de estado sólido (SSD) que ofrecen compatibilidad con discos de alto rendimiento y latencia baja para máquinas virtuales que ejecutan cargas de trabajo intensivas de E/S. Puede aprovechar la velocidad y el rendimiento de estos discos si migra a Managed Disks Premium.  
+- [Managed Disks Premium](../../storage/common/storage-premium-storage.md) son medios de almacenamiento basados en unidades de estado sólido (SSD) que ofrecen compatibilidad con discos de alto rendimiento y latencia baja para máquinas virtuales que ejecutan cargas de trabajo intensivas de E/S. Puede aprovechar de velocidad de Hola y rendimiento de estos discos por discos administrados de migración tooPremium.  
 
-- [Managed Disks Estándar](../../storage/common/storage-standard-storage.md) usan medios de almacenamiento basados en discos duros (HDD) y son más adecuados para desarrollo y pruebas y otras cargas de trabajo de acceso poco frecuente que no dan tanta importancia a la variabilidad del rendimiento.  
+- [Los discos estándar administrado](../../storage/common/storage-standard-storage.md) usar medios de almacenamiento de la unidad de disco duro (HDD) según y son más adecuados para desarrollo y pruebas y otras cargas de trabajo de acceso con frecuencia que son menos sensible variabilidad tooperformance.  
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>Planeación de la migración a Managed Disks
+## <a name="plan-for-hello-migration-toomanaged-disks"></a>Planear la migración de Hola de discos tooManaged
 
-Esta sección puede ayudarlo a tomar la mejor decisión sobre los tipos de discos y VM.
+Esta sección le ayudará a mejor decisión de Hola de toomake en tipos de máquina virtual y disco.
 
 
 ### <a name="location"></a>Ubicación
 
-Elija una ubicación donde Azure Managed Disks esté disponible. Si va a migrar a Managed Disks Premium, asegúrese que Premium Storage también está disponible en la región a la que planea migrar. Consulte [Servicios de Azure por región](https://azure.microsoft.com/regions/#services) para obtener información actualizada sobre las ubicaciones disponibles.
+Elija una ubicación donde Azure Managed Disks esté disponible. Si va a migrar discos administrados de tooPremium, asegúrese también de que almacenamiento Premium está disponible en la región de Hola donde piensa toomigrate a. Consulte [Servicios de Azure por región](https://azure.microsoft.com/regions/#services) para obtener información actualizada sobre las ubicaciones disponibles.
 
 ### <a name="vm-sizes"></a>Tamaños de VM
 
-Si va a migrar a Managed Disks Premium, debe actualizar el tamaño de la VM a un tamaño compatible con Premium Storage disponible en la región donde se ubica la VM. Revise los tamaños de VM compatibles con Premium Storage. Las especificaciones de tamaño de las máquinas virtuales de Azure se muestran en [Tamaños de máquinas virtuales](sizes.md).
-Repase las características de rendimiento de las máquinas virtuales que trabajan con Almacenamiento premium y elija el tamaño de máquina virtual que se mejor se ajuste a su carga de trabajo. Procure que haya suficiente ancho de banda disponible en la máquina virtual para dirigir el tráfico de disco.
+Si va a migrar discos administrados de tooPremium, tiene tamaño de hello tooupdate de hello VM tooPremium tamaño con capacidad de almacenamiento disponible en región Hola donde se encuentra la máquina virtual. Revise los tamaños de máquinas virtuales de Hola que son capaces de almacenamiento Premium. se enumeran las especificaciones de tamaño de máquina virtual de Azure de Hello en [tamaños de máquinas virtuales](sizes.md).
+Revise las características de rendimiento de Hola de máquinas virtuales que funcionen con el almacenamiento Premium y elija el tamaño más adecuado de hello máquina virtual que mejor se adapte a la carga de trabajo. Asegúrese de que hay suficiente ancho de banda disponible en el tráfico de disco de máquina virtual toodrive Hola.
 
 ### <a name="disk-sizes"></a>Tamaños de disco
 
 **Managed Disks Premium**
 
-Hay tres tipos de Managed Disks Premium que se pueden usar con la VM y cada uno de ellos tiene sus límites específicos de rendimiento y E/S por segundo. Considere estos límites a la hora de elegir el tipo de disco Premium para la VM según las necesidades de capacidad, rendimiento, escalabilidad y cargas máximas de la aplicación.
+Hay tres tipos de Managed Disks Premium que se pueden usar con la VM y cada uno de ellos tiene sus límites específicos de rendimiento y E/S por segundo. Tenga en cuenta estos límites al elegir Hola tipo de disco de Premium para la máquina virtual en función de las necesidades de saludo de la aplicación en cuanto a capacidad, rendimiento, escalabilidad, y la carga máxima.
 
 | Tipo de discos Premium  | P10               | P20               | P30               |
 |---------------------|-------------------|-------------------|-------------------|
@@ -79,7 +79,7 @@ Hay tres tipos de Managed Disks Premium que se pueden usar con la VM y cada uno 
 
 **Discos administrados Estándar**
 
-Hay cinco tipos de discos administrados Estándar que se pueden usar con la VM. Cada uno de ellos tiene una capacidad distinta, pero los mismos límites de rendimiento y E/S por segundo. Elija el tipo de disco administrado Estándar según las necesidades de capacidad de la aplicación.
+Hay cinco tipos de discos administrados Estándar que se pueden usar con la VM. Cada uno de ellos tiene una capacidad distinta, pero los mismos límites de rendimiento y E/S por segundo. Elija el tipo de Hola de discos administrados estándar según las necesidades de capacidad de saludo de la aplicación.
 
 | Tipo de disco Estándar  | S4               | S6               | S10              | S20              | S30              |
 |---------------------|------------------|------------------|------------------|------------------|------------------|
@@ -91,13 +91,13 @@ Hay cinco tipos de discos administrados Estándar que se pueden usar con la VM. 
 
 **Managed Disks Premium**
 
-De forma predeterminada, la directiva de almacenamiento en caché de los discos es *Solo lectura* para todos los discos de datos Premium y *Lectura y Escritura* para el disco de sistema operativo Premium conectado a la máquina virtual. Recomendamos esta opción de configuración para lograr el rendimiento óptimo de E/S de la aplicación. Para discos de datos de solo escritura o de gran cantidad de escritura (por ejemplo, archivos de registro de SQL Server), deshabilite el almacenamiento en caché de disco para lograr un mejor rendimiento de la aplicación.
+De forma predeterminada, es la directiva de caché de disco *de sólo lectura* de Hola a todos los discos de datos Premium, y *lectura y escritura* para el disco del sistema operativo Hola Premium asocia toohello máquina virtual. Esta opción de configuración se recomienda tooachieve Hola un rendimiento óptimo para IOs la aplicación. Para discos de datos de solo escritura o de gran cantidad de escritura (por ejemplo, archivos de registro de SQL Server), deshabilite el almacenamiento en caché de disco para lograr un mejor rendimiento de la aplicación.
 
 ### <a name="pricing"></a>Precios
 
-Revise el [precio de Managed Disks](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Los precios de Managed Disks Premium son iguales que los de Unmanaged Disks Premium. Sin embargo, los precios de Managed Disks Estándar son distintos a los de los Unmanaged Disks Estándar.
+Hola de revisión [precios de discos administrados](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Precios de discos administrados de Premium están el mismo que Hola los discos Premium no administrado. Sin embargo, los precios de Managed Disks Estándar son distintos a los de los Unmanaged Disks Estándar.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Antes de cargar los VHD en Azure, debe consultar [Preparación de un VHD o un VHDX de Windows antes de cargarlo en Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- Antes de cargar cualquier tooAzure de disco duro virtual, debe seguir [preparar una tooAzure tooupload Windows VHD o VHDX](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

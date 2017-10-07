@@ -1,6 +1,6 @@
 ---
-title: "Tutorial de noticias de última hora en los Centros de notificaciones: Android"
-description: "Obtenga información acerca del uso de Centros de notificaciones del Bus de servicio de Azure para enviar notificaciones de noticias de última hora en dispositivos Android."
+title: Tutorial de noticias importantes de concentradores - aaaNotification de Android
+description: "Obtenga información acerca de cómo toouse centros de notificaciones de Bus de servicio de Azure toosend principales de dispositivos de tooAndroid de notificaciones de noticias."
 services: notification-hubs
 documentationcenter: android
 author: ysxu
@@ -14,27 +14,27 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 76ec01c874fceedab7d76b2ef58e4b45b5489f58
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e6eb41bec95c67d7dc059f560194966d04400494
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-notification-hubs-to-send-breaking-news"></a>Uso de los Centros de notificaciones para enviar noticias de última hora
+# <a name="use-notification-hubs-toosend-breaking-news"></a>Usar toosend centros de notificaciones noticias de última hora
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Información general
-Este tema muestra cómo puede usar los Centros de notificaciones de Azure para difundir notificaciones de noticias de última hora en una aplicación Android. Cuando lo complete, podrá registrar las categorías de noticias de última hora en las que esté interesado y recibir solo notificaciones de inserción para esas categorías. Este escenario es un patrón común para muchas aplicaciones en las que las notificaciones tienen que enviarse a grupos de usuarios que han mostrado previamente interés en ellas, por ejemplo, lectores RSS, aplicaciones para aficionados a la música, etc.
+Este tema muestra cómo toouse centros de notificaciones de Azure toobroadcast importantes noticias notificaciones tooan aplicación Android. Cuando haya finalizado, se puede tooregister puede romper la categorías de noticias que le interesen y recibir notificaciones de inserción solo para esas categorías. Este escenario es un patrón común para muchas aplicaciones donde las notificaciones tienen toogroups toobe enviado de los usuarios que previamente se han declarado el interés en ellos, por ejemplo, aplicaciones de ventiladores de música, etcetera, lector RSS.
 
-Los escenarios de difusión se habilitan mediante la inclusión de una o más *etiquetas* cuando se crea un registro en el Centro de notificaciones. Cuando las notificaciones se envían a una etiqueta, todos los dispositivos registrados para la etiqueta recibirán la notificación. Puesto que las etiquetas son cadenas simples, no tendrán que aprovisionarse antes. Para información sobre las etiquetas, consulte [Expresiones de etiqueta y enrutamiento de los Centros de notificaciones](notification-hubs-tags-segment-push-message.md).
+Escenarios de difusión se habilitan mediante la inclusión de uno o varios *etiquetas* al crear un registro en el centro de notificaciones de Hola. Cuando se envían las notificaciones tooa etiqueta, todos los dispositivos que se han registrado para la etiqueta de hello recibirá notificación de Hola. Dado que las etiquetas son simplemente cadenas, no tiene toobe aprovisionado de antemano. Para obtener más información acerca de las etiquetas, consulte demasiado[notificación centros de enrutamiento y expresiones de etiqueta](notification-hubs-tags-segment-push-message.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Este tema se basa en la aplicación que creó en [Introducción a Notification Hubs][get-started]. Antes de comenzar este tutorial, debe haber completado la [Introducción a Notification Hubs][get-started].
+En este tema se basa en la aplicación hello que creó en [empezar a trabajar con los centros de notificaciones][get-started]. Antes de comenzar este tutorial, debe haber completado la [Introducción a Notification Hubs][get-started].
 
-## <a name="add-category-selection-to-the-app"></a>Adición de una selección de categorías a la aplicación
-El primer paso es agregar los elementos de la interfaz de usuario a la actividad principal existente que permiten al usuario seleccionar las categorías para registrar. Las categorías seleccionadas por un usuario se almacenan en el dispositivo. Cuando la aplicación se inicia, se crea un registro de dispositivos en el Centro de notificaciones con las categorías seleccionadas como etiquetas.
+## <a name="add-category-selection-toohello-app"></a>Agregar categoría selección toohello aplicación
+Hola primer paso es tooadd Hola UI elementos tooyour principal actividad existente que permiten Hola usuario tooselect categorías tooregister. categorías de Hello seleccionadas por el usuario se almacenan en el dispositivo de Hola. Cuando se inicia la aplicación hello, se crea un registro de dispositivos en el centro de notificaciones con las categorías de hello seleccionado como etiquetas.
 
-1. Abra el archivo res/layout/activity_main.xml y sustituya el contenido por lo siguiente:
+1. Abra el archivo res/layout/activity_main.xml y sustituya el contenido de hello con siguiente hello:
    
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -83,7 +83,7 @@ El primer paso es agregar los elementos de la interfaz de usuario a la actividad
                     android:onClick="subscribe"
                     android:text="@string/button_subscribe" />
         </LinearLayout>
-2. Abra el archivo res/values/strings.xml y agregue las líneas siguientes:
+2. Abra el archivo res/values/strings.xml y agregue Hola siguientes líneas:
    
         <string name="button_subscribe">Subscribe</string>
         <string name="label_world">World</string>
@@ -96,7 +96,7 @@ El primer paso es agregar los elementos de la interfaz de usuario a la actividad
     El diseño gráfico main_activity.xml ahora debe tener un aspecto similar a este:
    
     ![][A1]
-3. Cree ahora una clase **Notifications** en el mismo paquete que la clase **MainActivity**.
+3. Ahora cree una clase **notificaciones** en hello en el mismo paquete como su **MainActivity** clase.
    
         import java.util.HashSet;
         import java.util.Set;
@@ -150,7 +150,7 @@ El primer paso es agregar los elementos de la interfaz de usuario a la actividad
                             hub.registerTemplate(regid,"simpleGCMTemplate", templateBodyGCM, 
                                 categories.toArray(new String[categories.size()]));
                         } catch (Exception e) {
-                            Log.e("MainActivity", "Failed to register - " + e.getMessage());
+                            Log.e("MainActivity", "Failed tooregister - " + e.getMessage());
                             return e;
                         }
                         return null;
@@ -167,13 +167,13 @@ El primer paso es agregar los elementos de la interfaz de usuario a la actividad
    
         }
    
-    Esta clase usa el almacenamiento local para almacenar las categorías de noticias que este dispositivo ha de recibir. También contiene métodos para registrar estas categorías.
+    Esta clase usa categorías de hello almacenamiento local toostore Hola de noticias que este dispositivo tiene tooreceive. También contiene métodos tooregister para estas categorías.
 4. En la clase **MainActivity**, elimine los campos privados para **NotificationHub** y **GoogleCloudMessaging** y agregue un campo para **Notifications**:
    
         // private GoogleCloudMessaging gcm;
         // private NotificationHub hub;
         private Notifications notifications;
-5. Luego, en el método **onCreate**, quite la inicialización del campo **hub** y el método **registerWithNotificationHubs**. Agregue después las siguientes líneas que inicializan una instancia de la clase **Notifications** . 
+5. A continuación, en hello **onCreate** método remove Hola inicialización de hello **concentrador** hello y campo **registerWithNotificationHubs** método. A continuación, agregue Hola siguiendo las líneas que inicializar una instancia de hello **notificaciones** clase. 
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -188,12 +188,12 @@ El primer paso es agregar los elementos de la interfaz de usuario a la actividad
             notifications.subscribeToCategories(notifications.retrieveCategories());
         }
 
-    `HubName` y `HubListenConnectionString` deberían estar ya establecidos con los marcadores de posición `<hub name>` y `<connection string with listen access>` por el nombre del centro de notificaciones y la cadena de conexión de *DefaultListenSharedAccessSignature* que obtuvo anteriormente.
+    `HubName`y `HubListenConnectionString` ya debería estar configurado con hello `<hub name>` y `<connection string with listen access>` marcadores de posición con la notificación concentrador hello y nombre de cadena de conexión para *DefaultListenSharedAccessSignature* obtenido versiones anteriores.
 
-    > [AZURE.NOTE] Puesto que las credenciales que se distribuyen con una aplicación de cliente no son normalmente seguras, solo debe distribuir la clave para el acceso de escucha con la aplicación cliente. El acceso de escucha permite a la aplicación el registro de notificaciones, pero los registros existentes no pueden modificarse y las notificaciones no se pueden enviar. La clave de acceso completo se usa en un servicio back-end protegido para el envío de notificaciones y el cambio de registros existentes.
+    > [AZURE.NOTE] Dado que las credenciales que se distribuyen con una aplicación cliente no son generalmente seguras, debe distribuir solo clave hello para el acceso de escucha con la aplicación cliente. Escuchar habilita el acceso que no se puede modificar su tooregister de aplicación para notificaciones, pero los registros existentes y no se enviarán las notificaciones. clave de acceso completa de Hola se usa en un servicio seguro back-end para enviar notificaciones y cambiar los registros existentes.
 
 
-1. Luego agregue las siguientes importaciones y el método `subscribe` para controlar el evento Click del botón para suscribir:
+1. A continuación, agregue Hola siguiendo importa y `subscribe` Hola de toohandle método suscribirse botón click (evento):
    
         import android.widget.CheckBox;
         import java.util.HashSet;
@@ -224,24 +224,24 @@ El primer paso es agregar los elementos de la interfaz de usuario a la actividad
             notifications.storeCategoriesAndSubscribe(categories);
         }
    
-    Este método crea una lista de categorías y usa la clase **Notifications** para almacenar la lista en el almacenamiento local y registrar las etiquetas correspondientes en el centro de notificaciones. Cuando se modifican las categorías, el registro vuelve a crearse con las nuevas categorías.
+    Este método crea una lista de categorías y se utiliza hello **notificaciones** clase toostore lista de hello en el almacenamiento local de Hola y registrar las etiquetas correspondientes Hola con el centro de notificaciones. Cuando se cambian las categorías, se vuelve a crear el registro de hello con nuevas categorías de Hola.
 
-La aplicación ahora puede almacenar un conjunto de categorías en el almacenamiento local en el dispositivo y registrarse en el Centro de notificaciones siempre que el usuario cambie la selección de categorías.
+La aplicación ahora es capaz de toostore un conjunto de categorías en el almacenamiento local en el dispositivo de Hola y registrar con el centro de notificaciones de hello siempre que los cambios de usuarios Hola Hola selección de categorías.
 
 ## <a name="register-for-notifications"></a>Registro de notificaciones
-Estos pasos permiten registrar el Centro de notificaciones en el inicio mediante las categorías que se han almacenado en el almacén local.
+Estos pasos se registran con el centro de notificaciones de Hola durante el inicio con las categorías de Hola que han sido almacenados en el almacenamiento local.
 
 > [!NOTE]
-> Dado que el identificador de registro asignado por el servicio de mensajería en la nube de Google (GCM) puede cambiar en cualquier momento, debe registrarse para recibir notificaciones frecuentemente para evitar errores de notificación. En este ejemplo se registra la notificación cada vez que se inicia la aplicación. En las aplicaciones que se ejecutan con frecuencia, más de una vez al día, es posible que pueda omitir el registro para conservar el ancho de banda si pasa menos de un día del registro previo.
+> Dado que identificador hello asignado por Google (GCM Cloud Messaging) puede cambiar en cualquier momento, se deben registrar para notificaciones con frecuencia tooavoid errores de notificación. En este ejemplo se registra para la notificación cada vez que inicia la aplicación hello. Para las aplicaciones que se ejecutan con frecuencia, más de una vez al día, puede probablemente Omitir ancho de banda de registro toopreserve si ha pasado menos de un día desde el registro de hello anterior.
 > 
 > 
 
-1. Agregue el siguiente código al final del método **onCreate** en la clase **MainActivity**:
+1. Agregar Hola siguiente código al final de Hola de hello **onCreate** método Hola **MainActivity** clase:
    
         notifications.subscribeToCategories(notifications.retrieveCategories());
    
-    De esta forma, se garantiza que cada vez que la aplicación se inicia, se recuperan las categorías del almacenamiento local y se solicita un registro de estas categorías. 
-2. Después actualice el método `onStart()` de la clase `MainActivity` de la siguiente manera:
+    Esto garantiza que cada vez que inicia la aplicación hello recupera categorías Hola desde el almacenamiento local y solicita un registro para estas categorías. 
+2. A continuación, actualice hello `onStart()` método de hello `MainActivity` clase como sigue:
    
     @Override protected void onStart() {
    
@@ -264,43 +264,43 @@ Estos pasos permiten registrar el Centro de notificaciones en el inicio mediante
         sports.setChecked(categories.contains("sports"));
     }
    
-    De esta forma se actualiza la actividad principal según el estado de las categorías guardadas anteriormente.
+    Esto actualiza la actividad principal de hello basada en estado de Hola de categorías guardadas anteriormente.
 
-La aplicación está ahora completa y puede almacenar un conjunto de categorías en el almacenamiento local del dispositivo usado para registrarse en el Centro de notificaciones cuando el usuario cambie la selección de categorías. A continuación, definiremos un back-end que pueda enviar notificaciones de categorías a esta aplicación.
+aplicación Hello ahora está completa y puede almacenar un conjunto de categorías en hello dispositivo almacenamiento local usa tooregister con el centro de notificaciones de hello siempre que los cambios de usuarios Hola Hola selección de categorías. A continuación, definimos un back-end que puede enviar la aplicación de toothis de notificaciones de categoría.
 
 ## <a name="sending-tagged-notifications"></a>Envío de notificaciones con etiquetas
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="run-the-app-and-generate-notifications"></a>Ejecución de la aplicación y generación de notificaciones
-1. En Android Studio, cree la aplicación e iníciela en un dispositivo o emulador.
+## <a name="run-hello-app-and-generate-notifications"></a>Ejecutar aplicación hello y generar notificaciones
+1. En Android Studio, compile la aplicación hello e inícielo en un dispositivo o emulador.
    
-    Tenga en cuenta que la interfaz de usuario de la aplicación ofrece un conjunto de elementos de alternancia que le permite seleccionar las categorías a las que suscribirse.
+    Tenga en cuenta que interfaz de usuario proporciona un conjunto de la aplicación hello alterna que le permite elegir Hola categorías toosubscribe a.
 2. Habilite uno o más elementos de alternancia de las categorías y, a continuación, haga clic en **Suscribirse**.
    
-    La aplicación convierte las categorías seleccionadas en etiquetas y solicita un nuevo registro de dispositivo para las etiquetas seleccionadas al Centro de notificaciones. Se devuelven las categorías registradas y se muestran en una notificación del sistema.
-3. Envíe una notificación nueva ejecutando la aplicación de la consola. NET.  También puede enviar notificaciones de plantilla con etiqueta mediante la pestaña Depurar del centro de notificaciones en el [Portal de Azure clásico].
+    aplicación Hello convierte categorías Hola seleccionado en las etiquetas y solicita un nuevo registro de dispositivo para etiquetas de hello seleccionada del centro de notificaciones de Hola. Hello categorías registrados se devuelve y se muestran en una notificación del sistema.
+3. Enviar una notificación de nuevo mediante la ejecución de la aplicación de consola .NET de hello.  Como alternativa, puede enviar notificaciones de plantilla etiquetadas con ficha de depuración de Hola de su centro de notificaciones de hello [Portal clásico de Azure].
    
-    Las notificaciones para las categorías seleccionadas aparecen como notificaciones del sistema.
+    Las notificaciones para las categorías de hello seleccionado aparecen como notificaciones del sistema.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial hemos aprendido cómo difundir noticias de última hora por categoría. Considere la posibilidad de llevar a cabo uno de los siguientes tutoriales que destacan otros escenarios de Centros de notificaciones avanzados:
+En este tutorial hemos visto cómo toobroadcast noticias de última hora por categoría. Considere la posibilidad de completar uno de hello tutoriales que indican errores de otros escenarios avanzados de centros de notificaciones:
 
-* [Uso de los Centros de notificaciones para difundir noticias de última hora localizadas]
+* [Utilice noticias de última hora de toobroadcast localizado de los centros de notificaciones]
   
-    Conozca cómo expandir la aplicación de noticias de última hora para habilitar el envío de notificaciones localizadas.
+    Obtenga información acerca de cómo hello tooexpand interrumpir el envío de noticias aplicación tooenable localizar las notificaciones.
 
 <!-- Images. -->
 [A1]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
 
 <!-- URLs.-->
 [get-started]: notification-hubs-android-push-notification-google-gcm-get-started.md
-[Uso de los Centros de notificaciones para difundir noticias de última hora localizadas]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
+[Utilice noticias de última hora de toobroadcast localizado de los centros de notificaciones]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
 [Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users
 [Mobile Service]: /develop/mobile/tutorials/get-started/
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs How-toofor Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Portal de Azure clásico]: https://manage.windowsazure.com
+[Portal clásico de Azure]: https://manage.windowsazure.com
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591

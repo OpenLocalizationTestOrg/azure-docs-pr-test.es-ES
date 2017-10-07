@@ -1,5 +1,5 @@
 ---
-title: "Almacenamiento estándar rentable basado en disco duro y discos de máquina virtual de Azure | Microsoft Docs"
+title: "Almacenamiento estándar rentable basado en aaaHD y discos de máquina virtual de Azure | Documentos de Microsoft"
 description: "Examine el almacenamiento Estándar rentable y los discos de máquina virtual administrados y no administrados."
 services: storage
 documentationcenter: 
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: yuemlu
-ms.openlocfilehash: b7cc8bc2b39e544a5807a2f6f9ff86ba73c54564
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c9162eaea50cdd43862378e62dcff9a3d762e092
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Almacenamiento Estándar rentable y discos de máquina virtual de Azure administrados y no administrados
 
-El almacenamiento estándar de Azure ofrece compatibilidad de discos confiable y de bajo coste para las máquinas virtuales que ejecutan cargas de trabajo que no tienen en cuenta la latencia. También admite blobs, tablas, colas y archivos. Con el almacenamiento estándar, los datos se almacenan en unidades de disco duro (HDD). Cuando se trabaja con máquinas virtuales, se pueden usar discos de almacenamiento estándar para escenarios de desarrollo/pruebas y para cargas de trabajo menos críticas, y discos de Premium Storage para aplicaciones de producción de misión crítica. El almacenamiento estándar está disponible en todas las regiones de Azure. 
+El almacenamiento estándar de Azure ofrece compatibilidad de discos confiable y de bajo coste para las máquinas virtuales que ejecutan cargas de trabajo que no tienen en cuenta la latencia. También admite blobs, tablas, colas y archivos. Con el almacenamiento estándar, los datos de Hola se almacenan en unidades de disco duro (HDD). Cuando se trabaja con máquinas virtuales, se pueden usar discos de almacenamiento estándar para escenarios de desarrollo/pruebas y para cargas de trabajo menos críticas, y discos de Premium Storage para aplicaciones de producción de misión crítica. El almacenamiento estándar está disponible en todas las regiones de Azure. 
 
-Este artículo se centrará en el uso del almacenamiento estándar para discos de máquina virtual. Para más información acerca del uso de Storage con blobs, tablas, colas y archivos, consulte [Introducción a Microsoft Azure Storage](../storage-introduction.md).
+En este artículo se centrará en el uso de Hola de almacenamiento estándar para discos de máquina virtual. Para obtener más información sobre el uso de Hola de almacenamiento de blobs, tablas, colas y archivos, consulte toohello [tooStorage Introducción](../storage-introduction.md).
 
 ## <a name="disk-types"></a>Tipos de disco
 
-Hay dos maneras de crear discos estándar para máquinas virtuales de Azure:
+Hay dos maneras de toocreate discos estándar para las máquinas virtuales de Azure:
 
-**Discos no administrados**: este es el método original, en el que se administran las cuentas de almacenamiento que se utilizan para almacenar los archivos VHD que se corresponden con los discos de máquina virtual. Los archivos VHD se almacenan como blobs en páginas en las cuentas de almacenamiento. Los discos no administrados se pueden conectar a máquina virtual de Azure de cualquier tamaño, incluidas aquellas que usan principalmente Premium Storage, como las series DSv2 y GS. Las VM de Azure admiten la conexión de varios discos estándar, lo que permite un máximo de 256 TB de almacenamiento por máquina virtual.
+**Sin administrar discos**: trata de método original de hello en los que administrará Hola almacenamiento cuentas utilizadas toostore Hola archivos VHD que corresponden toohello discos de máquina virtual. Los archivos VHD se almacenan como blobs en páginas en las cuentas de almacenamiento. Los discos no administrados pueden ser adjunto tooany tamaño de VM de Azure, incluidas las máquinas virtuales de Hola que usan almacenamiento Premium, principalmente como hello DSv2 y serie GS. Máquinas virtuales de Azure admiten la conexión de varios discos estándares, lo que permite una too256 TB de almacenamiento por máquina virtual.
 
-[**Azure Managed Disks**](../../virtual-machines/windows/managed-disks-overview.md): esta característica administra las cuentas de almacenamiento que se usan automáticamente para los discos de máquina virtual. Especifique el tipo (premium o estándar) y el tamaño del disco que necesita, y Azure lo crea y administra automáticamente. No tiene que preocuparse de colocar los discos en varias cuentas de almacenamiento para estar seguro de que permanece dentro de los límites de escalabilidad de las cuentas de almacenamiento: Azure se encarga de ello.
+[**Azure discos administrados**](../../virtual-machines/windows/managed-disks-overview.md): esta característica administra las cuentas de almacenamiento de Hola que usó para discos de máquina virtual de Hola para usted. Especificar tipo de hello (Premium o estándar) y el tamaño del disco necesita y Azure crea y administra el disco de hello en su nombre. No tienes tooworry acerca de cómo colocar discos Hola entre varias cuentas de almacenamiento en orden tooensure que permanezca dentro de los límites de escalabilidad de Hola Hola las cuentas de almacenamiento: Azure controla automáticamente.
 
-Aunque están disponibles los dos tipos de discos, se recomienda utilizar Managed Disks para aprovechar su gran cantidad de características.
+Aunque ambos tipos de discos están disponibles, se recomienda utilizar discos administrados tootake aprovechar sus muchas características.
 
-Para empezar a usar el almacenamiento estándar de Azure, visite la página de [creación de una cuenta gratuita](https://azure.microsoft.com/pricing/free-trial/). 
+visite tooget a trabajar con el almacenamiento de Azure estándar [empiece de forma gratuita](https://azure.microsoft.com/pricing/free-trial/). 
 
-Para obtener información acerca de cómo crear una máquina virtual con Managed Disks, consulte uno de los artículos siguientes.
+Para obtener información sobre cómo toocreate una máquina virtual con discos administrados, vea uno de hello después de artículos.
 
 * [Creación de una máquina virtual con Resource Manager y PowerShell](/azure/virtual-machines/windows/quick-create-powershell.md)
-* [Creación de una máquina virtual Linux desde cero con la CLI de Azure 2.0](../../virtual-machines/windows/quick-create-cli.md)
+* [Crear una VM de Linux con hello 2.0 de CLI de Azure](../../virtual-machines/windows/quick-create-cli.md)
 
 ## <a name="standard-storage-features"></a>Características del almacenamiento estándar 
 
-Examinemos algunas de las características del almacenamiento estándar. Para más información, consulte [Introducción a Azure Storage](../storage-introduction.md).
+¡Eche un vistazo a algunas de las características de Hola de almacenamiento estándar. Para obtener más información, vea [Introducción tooAzure almacenamiento](../storage-introduction.md).
 
-**Almacenamiento estándar**: el almacenamiento estándar de Azure admite discos de Azure, blobs de Azure, Azure File Storage, tablas de Azure y colas de Azure. Para utilizar el almacenamiento estándar, comience por [crear una cuenta de Azure Storage](storage-create-storage-account.md#create-a-storage-account).
+**Almacenamiento estándar**: el almacenamiento estándar de Azure admite discos de Azure, blobs de Azure, Azure File Storage, tablas de Azure y colas de Azure. los servicios de almacenamiento estándar toouse, inician con [crear una cuenta de almacenamiento de Azure](storage-create-storage-account.md#create-a-storage-account).
 
-**Discos de almacenamiento estándar:** los discos de almacenamiento estándar se pueden conectar a todas las máquinas virtuales de Azure, incluidas las máquinas virtuales de varias series de tamaños que se usan con Premium Storage, como las series DSv2 y GS. Un disco de almacenamiento estándar solo puede conectarse a una máquina virtual. Sin embargo, se pueden asociar uno o varios de estos discos a una máquina virtual, hasta el número máximo definido para el tamaño de la máquina virtual. En la sección siguiente sobre objetivos de escalabilidad y rendimiento del almacenamiento estándar, se describirán las especificaciones con más detalle. 
+**Discos de almacenamiento estándar:** almacenamiento estándar pueden ser discos conectados máquinas virtuales de Azure tooall incluidas utilizadas con el almacenamiento Premium como serie de hello DSv2 y GS de las máquinas virtuales de serie de tamaño. Un disco de almacenamiento estándar sólo puede ser tooone adjunto máquina virtual. Sin embargo, puede asociar uno o varios de estos tooa de discos de máquina virtual, recuento de disco máximo toohello definidas para ese tamaño de máquina virtual. Hola pasos de la sección en objetivos de rendimiento y la escalabilidad de almacenamiento estándar, vamos a describir las especificaciones de hello con más detalle. 
 
-**Blob en páginas estándar**: los blobs en páginas estándar se utilizan para contener discos persistentes para las máquinas virtuales y, al igual que otros tipos de blobs de Azure, se puede acceder a ellos directamente a través de REST. Los [blob en páginas](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) son una colección de páginas de 512 bytes optimizadas para operaciones de lectura y escritura aleatorias. 
+**Blob en páginas estándar**: blobs en páginas estándar son toohold usa discos persistentes para las máquinas virtuales y también puede obtenerse acceso directamente a través de REST al igual que otros tipos de Blobs de Azure. Los [blob en páginas](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) son una colección de páginas de 512 bytes optimizadas para operaciones de lectura y escritura aleatorias. 
 
-**Replicación del almacenamiento:** en la mayoría de las regiones, los datos de una cuenta de almacenamiento estándar se pueden replicar localmente o replicar geográficamente en varios centros de datos. Los cuatro tipos de replicación disponible son: el almacenamiento con redundancia local (LRS), el almacenamiento con redundancia de zona (ZRS), el almacenamiento con redundancia geográfica (GRS) y el almacenamiento con redundancia geográfica con acceso de lectura (RA-GRS). Actualmente, en el almacenamiento estándar Managed Disks solo admiten el almacenamiento con redundancia local (LRS). Para más información, consulte [Replicación de Azure Storage](../storage-redundancy.md).
+**Replicación del almacenamiento:** en la mayoría de las regiones, los datos de una cuenta de almacenamiento estándar se pueden replicar localmente o replicar geográficamente en varios centros de datos. Hola cuatro tipos de replicación disponible son almacenamiento localmente redundante (LRS), almacenamiento con redundancia de zona (ZRS), almacenamiento con redundancia geográfica (GRS) y almacenamiento con redundancia geográfica con acceso de lectura (RA-GRS). Actualmente, en el almacenamiento estándar Managed Disks solo admiten el almacenamiento con redundancia local (LRS). Para más información, consulte [Replicación de Azure Storage](../storage-redundancy.md).
 
 ## <a name="scalability-and-performance-targets"></a>Objetivos de escalabilidad y rendimiento
 
-En esta sección, se describirán los objetivos de escalabilidad y rendimiento que se deben tener en cuenta al usar el almacenamiento estándar.
+En esta sección, vamos a describir los destinos de escalabilidad y rendimiento de hello necesita tooconsider al usar almacenamiento estándar.
 
-### <a name="account-limits--does-not-apply-to-managed-disks"></a>Límites de cuenta (no se aplica a discos administrados)
+### <a name="account-limits--does-not-apply-toomanaged-disks"></a>Límites de cuenta: no hay ningún toomanaged discos
 
 | **Recurso** | **Límite predeterminado** |
 |--------------|-------------------|
@@ -68,51 +68,51 @@ En esta sección, se describirán los objetivos de escalabilidad y rendimiento q
 | Salida máxima<sup>1</sup> por cuenta de almacenamiento (regiones de EE. UU.) | 20 Gbps si RA-GRS/GRS/ZRS están habilitados, 30 Gbps en el caso de LRS |
 | Entrada máxima<sup>1</sup> por cuenta de almacenamiento (regiones de Europa y Asia) | 5 Gbps si GRS/ZRS están habilitados, 10 Gbps en el caso de LRS |
 | Salida máxima<sup>1</sup> por cuenta de almacenamiento (regiones de Europa y Asia) | 10 Gbps si RA-GRS/GRS/ZRS están habilitados, 15 Gbps en el caso de LRS |
-| Tasa total de solicitudes (suponiendo un tamaño de objeto de 1 KB) por cuenta de almacenamiento | Hasta 20.000 IOPS, entidades por segundo o mensajes por segundo |
+| Tasa total de solicitudes (suponiendo un tamaño de objeto de 1 KB) por cuenta de almacenamiento | Too20, IOPS 000, entidades por segundo o mensajes por segundo |
 
-<sup>1</sup>El término "entrada" hace referencia todos los datos (solicitudes) que se envían a una cuenta de almacenamiento. El término "salida" hace referencia a todos los datos (respuestas) que se reciben de una cuenta de almacenamiento.
+<sup>1</sup> entrada hace referencia a datos de tooall (solicitudes) enviados tooa cuenta de almacenamiento. Salida hace referencia a datos de tooall (respuestas) recibidos de una cuenta de almacenamiento.
 
 Para más información, consulte [Objetivos de escalabilidad y rendimiento de Almacenamiento de Azure](../storage-scalability-targets.md).
 
-Si las necesidades de su aplicación superan los objetivos de escalabilidad de una cuenta de almacenamiento individual, compile la aplicación de modo que use varias cuentas de almacenamiento y divida los datos entre ellas. Como alternativa, puede usar Azure Managed Disks, en cuyo caso Azure administrará automáticamente la creación de particiones y la colocación de los datos.
+Si de la aplicación hello debe superar los objetivos de escalabilidad de Hola de una única cuenta de almacenamiento, compile su aplicación toouse varias cuentas de almacenamiento y dividir los datos en esas cuentas de almacenamiento. Como alternativa, puede administrar discos de Azure y Azure administrará Hola de partición y la colocación de los datos por usted.
 
 ### <a name="standard-disks-limits"></a>Límites de los discos estándar
 
-A diferencia de los discos Premium, las operaciones de entrada/salida por segundo (IOPS) y el rendimiento (ancho de banda) de los discos estándar no se aprovisionan. El rendimiento de los discos estándar varía en función del tamaño de la máquina virtual a la que está conectada el disco, no del tamaño del disco. Lo normal es lograr, como máximo, el límite de rendimiento de la tabla siguiente.
+A diferencia de los discos Premium, no se aprovisionan las operaciones de entrada/salida de hello por segundo (IOPS) y el rendimiento (ancho de banda) de los discos estándar. Hola de discos estándares varía el rendimiento con hello VM tamaño toowhich Hola disco está conectado, no toohello tamaño del disco de Hola. Podría esperar tooachieve seguridad toohello límite de rendimiento aparecen en hello tabla siguiente.
 
 **Límites de los discos estándar (administrados y no administrados)**
 
 | **Nivel de máquina virtual**            | **Máquina virtual de nivel Básico** | **Máquina virtual de nivel Estándar** |
 |------------------------|-------------------|----------------------|
 | Tamaño máx. de disco          | 4095 GB           | 4095 GB              |
-| Máximo de 8 KB de IOPS por disco | Hasta 300         | Hasta 500            |
-| Ancho de banda máx. por disco | Hasta 60 MB/s     | Hasta 60 MB/s        |
+| Máximo de 8 KB de IOPS por disco | Seguridad too300         | Seguridad too500            |
+| Ancho de banda máx. por disco | Seguridad too60 MB/s     | Seguridad too60 MB/s        |
 
-Si la carga de trabajo requiere compatibilidad con discos de gran rendimiento y baja latencia, considere la posibilidad de usar Premium Storage. Para conocer más ventajas de Premium Storage, vaya a [Premium Storage: almacenamiento de alto rendimiento para cargas de trabajo de máquina virtual de Azure](../storage-premium-storage.md). 
+Si la carga de trabajo requiere compatibilidad con discos de gran rendimiento y baja latencia, considere la posibilidad de usar Premium Storage. tooknow más ventajas de almacenamiento Premium, visite [almacenamiento Premium de alto rendimiento y discos de máquina virtual de Azure](../storage-premium-storage.md). 
 
 ## <a name="snapshots-and-copy-blob"></a>Instantáneas y copia de blob
 
-Para el servicio Storage, el archivo VHD es un blob en páginas. Es posible tomar instantáneas de blobs en páginas y copiarlos en otra ubicación, como por ejemplo en otra cuenta de almacenamiento.
+servicio de almacenamiento de archivo de disco duro virtual de hello toohello es un blob en páginas. Puede tomar instantáneas de blobs de página y cópielos tooanother ubicación, como una cuenta de almacenamiento diferente.
 
 ### <a name="unmanaged-disks"></a>Discos no administrados
 
-Se pueden crear [instantáneas incrementales](../../virtual-machines/windows/incremental-snapshots.md) para discos estándar no administrados de la misma manera que se usan las instantáneas con el almacenamiento estándar. Si el disco de origen se encuentra en una cuenta de almacenamiento con redundancia local, se recomienda crear instantáneas y, luego, copiarlas en una cuenta de almacenamiento estándar con redundancia geográfica. Para obtener más información, consulte [Opciones de redundancia de Almacenamiento de Azure](../storage-redundancy.md).
+Puede crear [instantáneas incrementales](../../virtual-machines/windows/incremental-snapshots.md) para discos estándar no administrado en hello mismo forma de usar instantáneas con almacenamiento estándar. Se recomienda que cree instantáneas y, a continuación, copia de esas cuentas de almacenamiento estándar con redundancia geográfica de tooa de instantáneas si el disco de origen está en una cuenta de almacenamiento con redundancia local. Para obtener más información, consulte [Opciones de redundancia de Almacenamiento de Azure](../storage-redundancy.md).
 
-Si un disco está conectado a una máquina virtual, determinadas operaciones de la API no se permiten en los discos. Por ejemplo, no puede realizar una operación [Copy Blob](/rest/api/storageservices/Copy-Blob) en ese blob mientras el disco esté conectado a una máquina virtual. En su lugar, cree una instantánea del blob mediante el método de API de REST [Snapshot Blob](/rest/api/storageservices/Snapshot-Blob) y, luego, realice la operación [Copy Blob](/rest/api/storageservices/Copy-Blob) de la instantánea para copiar el disco conectado. Como alternativa, puede separar el disco y, después, realizar las operaciones necesarias.
+Si un disco está conectado tooa VM, no se permiten ciertas operaciones de API en discos de Hola. Por ejemplo, no se puede realizar un [Copy Blob](/rest/api/storageservices/Copy-Blob) operación en ese blob siempre que sea el disco de hello vinculada tooa máquina virtual. En su lugar, cree primero una instantánea del blob utilizando hello [Blob de instantánea](/rest/api/storageservices/Snapshot-Blob) el método API de REST y, a continuación, realizar hello [Copy Blob](/rest/api/storageservices/Copy-Blob) de Hola Hola de toocopy de instantánea se adjuntó el disco. Como alternativa, puede desconectar el disco de hello y, a continuación, realizar las operaciones necesarias.
 
-Para mantener copias con redundancia geográfica de las instantáneas, puede copiar dichas instantáneas de una cuenta de almacenamiento con redundancia local a una cuenta de almacenamiento estándar con redundancia geográfica mediante AzCopy o Copy Blob. Para más información, consulte [Transferencia de datos con la utilidad en línea de comandos AzCopy](storage-use-azcopy.md) y [Copy Blob](/rest/api/storageservices/Copy-Blob).
+toomaintain copias con redundancia geográfica de las instantáneas, puede copiar las instantáneas de una cuenta de almacenamiento estándar con redundancia geográfica de almacenamiento con redundancia local cuenta tooa mediante AzCopy o copia de Blob. Para obtener más información, consulte [transferir datos con la utilidad de línea de comandos de AzCopy hello](storage-use-azcopy.md) y [Copy Blob](/rest/api/storageservices/Copy-Blob).
 
 Para más información acerca de cómo realizar operaciones de REST en blobs en páginas en cuentas de almacenamiento estándar, consulte [Azure Storage Services REST API Reference](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference) (Referencia de API de RES de los servicios de Azure Storage).
 
 ### <a name="managed-disks"></a>Discos administrados
 
-Una instantánea administrada es una copia de solo lectura de un disco administrado que se almacena como disco administrado estándar. Actualmente, las instantáneas incrementales no son compatibles con Managed Disks, pero lo serán en el futuro.
+Una instantánea de un disco administrado es una copia de solo lectura de disco administrado de hello, que se almacena como un disco administrado estándar. Instantáneas incrementales no se admiten actualmente para administrar discos pero se admitirán en futuras Hola.
 
-Si un disco administrado está conectado a una máquina virtual, determinadas operaciones de la API no se permiten en los discos. Por ejemplo, mientras el disco esté conectado a una máquina virtual, no se puede generar una firma de acceso compartido (SAS) para realizar una operación de copia. En su lugar, primero hay que crear una instantánea del disco y, después, realizar la copia de la instantánea. Como alternativa, se puede separar el disco y, luego, generar una firma de acceso compartido (SAS) para realizar la operación de copia.
+Si un disco administrado está conectado tooa VM, no se permiten ciertas operaciones de API en discos de Hola. Por ejemplo, no se puede generar un tooperform de firma (SAS) de acceso compartido a una operación de copia mientras disco Hola está adjunto tooa máquina virtual. En su lugar, cree primero una instantánea del disco de hello y, a continuación, realizar copia de Hola de instantánea de Hola. Como alternativa, puede desconectar el disco de hello y, a continuación, generar una operación de copia de acceso compartido (SAS) de la firma tooperform Hola.
 
 ## <a name="pricing-and-billing"></a>Precios y facturación
 
-Al usar el almacenamiento estándar, se aplican las siguientes consideraciones de facturación:
+Al usar almacenamiento estándar hello facturación consideraciones siguientes se aplican:
 
 * Tamaño de datos o datos no administrados del almacenamiento estándar 
 * Discos administrados estándar
@@ -120,15 +120,15 @@ Al usar el almacenamiento estándar, se aplican las siguientes consideraciones d
 * Transferencias de datos de salida
 * Transacciones
 
-**Tamaño de disco y datos de almacenamiento no administrado:** en el caso de discos no administrados y otros datos (blobs, tablas, colas y archivos), se cobra solo para la cantidad de espacio que se usa. Por ejemplo, si tiene una máquina virtual cuyo blob en páginas se aprovisiona como 127 GB, pero en realidad solo usa 10 GB de espacio, eso es lo que se le facturará. Se admite almacenamiento Estándar de hasta 8191 GB y discos no administrados estándar de hasta 4095 GB. 
+**No administrada de tamaño de datos y el disco de almacenamiento:** para discos no administrados y otros datos (blobs, tablas, colas y archivos), se le cobra solo por cantidad de Hola de espacio que está usando. Por ejemplo, si tiene una máquina virtual cuyo blob en páginas se aprovisiona como 127 GB, pero hello VM está realmente solamente con 10 GB de espacio, se le facturará de 10 GB de espacio. Se admiten almacenamiento estándar backup too8191 GB y los discos estándar no administrados backup too4095 GB. 
 
-**Discos administrados:** los discos administrados se facturan por el tamaño aprovisionado. Si un disco se aprovisiona como un disco de 10 GB, pero se usan solo 5 GB, se cobrará el tamaño del aprovisionamiento, es decir, 10 GB.
+**Discos administrados:** administrado discos se facturan por tamaño de hello aprovisionado. Si el disco se aprovisiona como un disco de 10 GB y se usa solo 5 GB, le cobrará para tamaño de aprovisionamiento de Hola de 10 GB.
 
-**Instantáneas**: las instantáneas de los discos estándar se facturan por la capacidad adicional que usan. Para obtener información sobre las instantáneas, consulte [Crear una instantánea de un blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+**Las instantáneas**: las instantáneas de discos estándares se facturan por capacidad adicional de hello utilizada por las instantáneas de Hola. Para obtener información sobre las instantáneas, consulte [Crear una instantánea de un blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 **Transferencias de datos de salida**: las [transferencias de datos de salida](https://azure.microsoft.com/pricing/details/data-transfers/) (datos que salen de los centros de datos de Azure) se facturan en función del uso de ancho de banda.
 
-**Transacción**: Azure cobra 0,0036 $ por 100 000 transacciones de almacenamiento estándar. Dichas transacciones incluyen las operaciones de lectura y escritura en el almacenamiento.
+**Transacción**: Azure cobra 0,0036 $ por 100 000 transacciones de almacenamiento estándar. Las transacciones incluyen tanto de lectura y toostorage de las operaciones de escritura.
 
 Para más información acerca de los precios del almacenamiento estándar, Virtual Machines y Managed Disks, consulte:
 
@@ -140,16 +140,16 @@ Para más información acerca de los precios del almacenamiento estándar, Virtu
 
 Se pueden realizar copias de seguridad de máquinas virtuales con discos no administrados mediante Azure Backup. [Más detalles](../../backup/backup-azure-vms-first-look-arm.md).
 
-El servicio Azure Backup también se puede usar con Managed Disks para crear un trabajo de copia de seguridad con copias de seguridad basadas en tiempo, fácil restauración de la máquina virtual y directivas de retención de copia de seguridad. En [Uso de máquinas virtuales de disco administrado con Azure Backup](../../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup) puede encontrar más información al respecto.
+También puede utilizar Hola servicio copia de seguridad de Azure con discos administrados toocreate un trabajo de copia de seguridad con copias de seguridad basadas en tiempo, su fácil restauración de máquinas virtuales y las directivas de retención de copia de seguridad. En [Uso de máquinas virtuales de disco administrado con Azure Backup](../../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup) puede encontrar más información al respecto.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Introducción a Almacenamiento de Azure](../storage-introduction.md)
+* [Introducción tooAzure almacenamiento](../storage-introduction.md)
 
-* [Cree una cuenta de almacenamiento](../storage-create-storage-account.md)
+* [crear una cuenta de almacenamiento](../storage-create-storage-account.md)
 
 * [Introducción a Managed Disks](../../virtual-machines/windows/managed-disks-overview.md)
 
 * [Creación de una máquina virtual con Resource Manager y PowerShell](/azure/virtual-machines/windows/quick-create-powershell.md)
 
-* [Creación de una máquina virtual Linux desde cero con la CLI de Azure 2.0](../../virtual-machines/windows/quick-create-cli.md)
+* [Crear una VM de Linux con hello 2.0 de CLI de Azure](../../virtual-machines/windows/quick-create-cli.md)

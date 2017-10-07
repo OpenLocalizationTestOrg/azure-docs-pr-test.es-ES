@@ -1,5 +1,5 @@
 ---
-title: Plantillas
+title: aaaTemplates
 description: En este tema se explican las plantillas para los Centros de notificaciones de Azure.
 services: notification-hubs
 documentationcenter: .net
@@ -14,29 +14,29 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0149f0c7473e5a4b952905bc8217582b58db2a0d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="templates"></a>Plantillas
 ## <a name="overview"></a>Información general
-Las plantillas permiten que una aplicación cliente especifique el formato exacto de la notificación que desea recibir. Con las plantillas, una aplicación puede obtener muchos beneficios distintos, incluidos los siguientes:
+Las plantillas permiten un cliente toospecify Hola exacta formato de aplicación de notificaciones de Hola que desee tooreceive. Mediante plantillas, una aplicación puede obtener distintas ventajas, incluidos Hola siguientes:
 
 * Un back-end independiente de la plataforma
 * Notificaciones personalizadas
 * Independencia de la versión del cliente
 * Localización sencilla
 
-Esta sección proporciona ejemplos detallados sobre cómo usar las plantillas para enviar notificaciones independientes de la plataforma orientadas a todos los dispositivos en todas las plataformas y para personalizar la notificación de difusión a cada dispositivo.
+Esta sección proporciona dos ejemplos detallados de cómo toouse plantillas toosend independiente de la plataforma las notificaciones de todos los dispositivos de destino a través de plataformas y toopersonalize difusión dispositivo tooeach de notificación.
 
 ## <a name="using-templates-cross-platform"></a>Uso de plantillas multiplataforma
-La forma estándar de enviar notificaciones push es enviar una carga específica a los servicios de notificación de plataforma (WNS, APNS) para cada notificación que se debe enviar. Por ejemplo, para enviar una alerta a APNS, la carga es un objeto JSON con el formato siguiente:
+notificaciones de inserción de toosend de manera estándar de Hello es toosend, para cada notificación que es toobe envía, un servicios de notificación de tooplatform carga concreto (WNS, APNS). Por ejemplo, una alerta tooAPNS, toosend carga Hola es un objeto Json de hello siguiente forma:
 
     {"aps": {"alert" : "Hello!" }}
 
-Para enviar un mensaje de notificación del sistema similar en una aplicación de la Tienda Windows, la carga XML es la siguiente:
+toosend un mensaje de notificación del sistema similar en una aplicación Windows Store, carga XML de hello es como sigue:
 
     <toast>
       <visual>
@@ -48,19 +48,19 @@ Para enviar un mensaje de notificación del sistema similar en una aplicación d
 
 Puede crear cargas similares para plataformas MPNS (Windows Phone) y GCM (Android).
 
-Este requisito obliga al back-end de la aplicación a generar cargas distintas para cada plataforma y, de manera efectiva, hace que el back-end sea responsable de parte del nivel de presentación de la aplicación. Algunos problemas incluye diseños gráficos y de localización (especialmente para las aplicaciones de la Tienda Windows que incluyen notificaciones para varios tipos de iconos).
+Este requisito fuerza Hola aplicación back-end tooproduce diferentes cargas para cada plataforma y eficazmente hace responsable de la parte de la capa de presentación de Hola de aplicación hello Hola back-end. Algunos problemas incluye diseños gráficos y de localización (especialmente para las aplicaciones de la Tienda Windows que incluyen notificaciones para varios tipos de iconos).
 
-La característica de plantilla de Centros de notificaciones permite que una aplicación cliente cree registros especiales, llamados registros de plantilla, que, además del conjunto de etiquetas, incluye una plantilla. La característica de plantilla de Centros de notificaciones permite que una aplicación cliente asocie los dispositivos con plantillas, ya sea que trabaje con Instalaciones (la opción de preferencia) o con Registros. Dados los ejemplos de carga anteriores, la única información independiente de la plataforma es el mensaje de alerta mismo (Hello!). Una plantilla es un conjunto de instrucciones para el Centro de notificaciones sobre cómo dar formato a un mensaje independiente de la plataforma para el registro de esa aplicación cliente específica. En el ejemplo anterior, el mensaje independiente de la plataforma es una propiedad única: **message = Hello!**.
+característica de plantilla de centros de notificaciones de Hello permite que una aplicación toocreate especial registros de cliente, llama a los registros de plantilla, que incluyen, además de toohello conjunto de etiquetas, una plantilla. característica de plantilla de centros de notificaciones de Hello permite dispositivos cliente aplicación tooassociate con plantillas si está trabajando con las instalaciones (opción preferidas) o registros. Dados Hola anteriores ejemplos de carga, hello únicamente información de independiente de la plataforma es Hola real mensaje de alerta (Hola). Una plantilla es un conjunto de instrucciones para el centro de notificaciones de hello en cómo tooformat un independiente de la plataforma mensaje para el registro de hello de esa aplicación de cliente específico. En el anterior ejemplo de Hola, mensaje de bienvenida de plataforma independiente es una propiedad única: **mensaje = Hello!**.
 
-La siguiente ilustración muestra el proceso anterior:
+Hola siguiente imagen muestra hello por encima de proceso:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
-La plantilla para el registro de una aplicación cliente de iOS es la siguiente:
+plantilla de Hello para el registro de aplicación de cliente de iOS de hello es como sigue:
 
     {"aps": {"alert": "$(message)"}}
 
-La plantilla correspondiente a una aplicación cliente de la Tienda Windows es:
+Hola plantilla correspondiente para la aplicación de cliente de la tienda Windows hello es:
 
     <toast>
         <visual>
@@ -70,16 +70,16 @@ La plantilla correspondiente a una aplicación cliente de la Tienda Windows es:
         </visual>
     </toast>
 
-Observe que la expresión $(message) sustituye al mensaje mismo. Esta expresión indica al Centro de notificaciones, cada vez que envía un mensaje a este registro en especial, que cree un mensaje que lo siga y cambia el valor común.
+Tenga en cuenta que Hola real del mensaje se sustituye por la expresión de hello $(mensaje). Esta expresión indica Hola centro de notificaciones, cada vez que envía un mensaje toothis registro determinado, un mensaje que sigue a él y los conmutadores de valor común de hello toobuild.
 
-Si trabaja con el modelo de Instalación, la clave "plantillas" de la instalación contiene el código JSON de varias plantillas. Si trabaja con el modelo de Registro, la aplicación cliente puede crear varios registros para usar varias plantillas; por ejemplo, una plantilla para los mensajes de alerta y una plantilla para las actualizaciones de icono. Las aplicaciones cliente también pueden combinar los registros nativos (registros sin plantilla) y los registros de plantilla.
+Si está trabajando con el modelo de instalación, clave de la instalación "plantillas" hello contiene JSON de varias plantillas. Si está trabajando con el modelo de registro, aplicación de cliente de hello puede crear de la varios registros en orden toouse varias plantillas; Por ejemplo, una plantilla para mensajes de alerta y una plantilla para las actualizaciones. Las aplicaciones cliente también pueden combinar los registros nativos (registros sin plantilla) y los registros de plantilla.
 
-El Centro de notificaciones envía una notificación para cada plantilla sin considerar si pertenecen a la misma aplicación cliente. Este comportamiento se puede usar para traducir las notificaciones independientes de la plataforma en más notificaciones. Por ejemplo, el mismo mensaje independiente de la plataforma al Centro de notificaciones se puede traducir sin problemas en una alerta de notificación del sistema y una actualización de icono, sin requerir que el back-end lo sepa. Tenga en cuenta que algunas plataformas (por ejemplo, iOS) puede contraer las diversas notificaciones en el mismo dispositivo si se envían en un período breve.
+Hola centro de notificaciones envía una notificación para cada plantilla sin tener en cuenta si pertenecen toohello misma aplicación de cliente. Este comportamiento puede ser notificaciones de independiente de la plataforma tootranslate usados en notificaciones más. Por ejemplo, hello toohello de mensaje independiente de plataforma mismo que centro de notificaciones se pueden traducir sin problemas en una alerta de notificación del sistema y una actualización del icono, sin necesidad de Hola toobe de back-end consciente de ello. Tenga en cuenta que algunas plataformas (por ejemplo, iOS) pueden contraer varias toohello notificaciones mismo dispositivo si se envían en un breve período de tiempo.
 
 ## <a name="using-templates-for-personalization"></a>Uso de plantillas para personalización
-Otra ventaja de usar plantillas es la capacidad de usar Centros de notificaciones para ejecutar la personalización por registro de las notificaciones. Por ejemplo, considere una aplicación para el clima que muestra un icono con las condiciones climáticas de una ubicación específica. Un usuario puede elegir entre grados Celsius o Fahrenheit, además de un pronóstico de un día o de cinco días. Con las plantillas, cada instalación de aplicación cliente puede registrar el formato requerido (pronóstico de 1 día en grados Celsius, pronóstico de 1 día en grados Fahrenheit, pronóstico de 5 días en grados Celsius, pronóstico de 5 días en grados Fahrenheit) y hacer que el back-end envíe un mensaje único con toda la información necesaria para rellenar esas plantillas (por ejemplo, un pronóstico de 5 días con grados Celsius y Fahrenheit).
+Plantillas de toousing de otra ventaja es Hola capacidad toouse personalización de los centros de notificaciones tooperform por registro de notificaciones. Por ejemplo, considere la posibilidad de una aplicación del tiempo que muestra un icono con las condiciones meteorológicas de hello en una ubicación específica. Un usuario puede elegir entre grados Celsius o Fahrenheit, además de un pronóstico de un día o de cinco días. Mediante plantillas, cada instalación de la aplicación cliente puede registrar para formato Hola requerido (1 día Celsius, 1 día Fahrenheit, 5 días grados centígrados, 5 días Fahrenheit), y que Hola back-end envíe un mensaje único que contiene toda la información de hello necesario toofill los plantillas (por ejemplo, una cinco días previsión con grados Celsius y Fahrenheit).
 
-La plantilla para un pronóstico de 1 día con temperaturas expresadas en Celsius es la siguiente:
+plantilla de Hola Hola un día de previsión con grados centígrados temperaturas es como sigue:
 
     <tile>
       <visual>
@@ -91,7 +91,7 @@ La plantilla para un pronóstico de 1 día con temperaturas expresadas en Celsiu
       </visual>
     </tile>
 
-El mensaje enviado al Centro de notificaciones contiene todas las propiedades siguientes:
+Hola mensaje enviado toohello centro de notificaciones contiene Hola todas las propiedades siguientes:
 
 <table border="1">
 
@@ -102,33 +102,33 @@ El mensaje enviado al Centro de notificaciones contiene todas las propiedades si
 <tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
 </table><br/>
 
-Con este patrón, el back-end solo envía un mensaje único sin tener que almacenar opciones de personalización específicas para los usuarios de la aplicación. La siguiente ilustración muestra este escenario:
+Mediante el uso de este patrón, Hola back-end sólo envía un mensaje único sin necesidad de opciones de personalización específicas de toostore para los usuarios de aplicación Hola. Hola siguiente muestra este escenario:
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
-## <a name="how-to-register-templates"></a>Registro de las plantillas
-Para registrar las plantillas con el modelo de Instalación (la opción de preferencia) o el modelo de Registro, consulte [Administración de registros](notification-hubs-push-notification-registration-management.md).
+## <a name="how-tooregister-templates"></a>¿Cómo tooregister plantillas
+tooregister con plantillas mediante el modelo de instalación de hello (opción preferida) o hello modelo de registro, consulte [administración de registros](notification-hubs-push-notification-registration-management.md).
 
 ## <a name="template-expression-language"></a>Lenguaje de expresión de plantilla
-Las plantillas se limitan a los formatos de documento XML o JSON. Además, solo puede ubicar expresiones en lugares específicos; por ejemplo, valores o atributos de nodo para XML, valores de propiedad de cadena para JSON.
+Las plantillas son tooXML limitado o formatos de documento JSON. Además, solo puede ubicar expresiones en lugares específicos; por ejemplo, valores o atributos de nodo para XML, valores de propiedad de cadena para JSON.
 
-La tabla siguiente muestra el lenguaje que se permite en las plantillas:
+Hello siguiente tabla muestra lenguaje Hola permitida en las plantillas:
 
-| Expresión | Descripción |
+| Expression | Descripción |
 | --- | --- |
-| $(prop) |Referencia a una propiedad de evento con el nombre especificado. Los nombres de propiedad no distinguen mayúsculas de minúsculas. Esta expresión se resuelve en el valor de texto de la propiedad o en una cadena vacía, si la propiedad no está presente. |
-| $(prop, n) |Igual que el caso anterior, pero el texto se recorta explícitamente en n caracteres, por ejemplo, $(title, 20) recorta el contenido de la propiedad title en 20 caracteres. |
-| .(prop, n) |Igual que el caso anterior, pero se agregan tres puntos como sufijo al texto debido a que se recorta. El tamaño total de la cadena recortada y el sufijo no exceden los n caracteres. .(title, 20) con una propiedad de entrada de "Esta es la línea del título", con lo que queda como **Esta es la línea ...** |
-| %(prop) |Similar a $(name), salvo en que la salida está codificada en URI. |
-| #(prop) |Se usa en las plantillas JSON (por ejemplo, para plantillas de iOS y Android).<br><br>Esta función se comporta igual que $(prop) especificada anteriormente, salvo cuando se usa en plantillas de JSON (por ejemplo, plantillas de Apple). En este caso, si esta función no está entre “{‘,’}” (por ejemplo, ‘myJsonProperty’ : ‘#(name)’) y se evalúa en un número en formato JavaScript, por ejemplo, regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?, el JSON de salida es un número.<br><br>Por ejemplo, ‘badge : ‘#(name)’ se convierte en ‘badge’ : 40 (y no ‘40‘). |
+| $(prop) |Propiedad de evento de tooan de referencia con el nombre especificado de Hola. Los nombres de propiedad no distinguen mayúsculas de minúsculas. Esta expresión se resuelve en valor de texto de la propiedad de Hola o en una cadena vacía si no hay propiedad Hola. |
+| $(prop, n) |Como anteriormente, pero hello se explícitamente texto se recorta en n caracteres, por ejemplo $(título, 20) recorta contenido Hola de propiedad de título de hello en 20 caracteres. |
+| .(prop, n) |Como anteriormente, pero hello texto se utiliza como sufijo con tres puntos tal y como se recorta. tamaño total de Hola de hello recorta la cadena y sufijo hello no supere los n caracteres. . (cargo, 20) con una propiedad de entrada de "This is línea del título de Hola" da como resultado **este es el título de Hola...** |
+| %(prop) |Too$(name) similar, salvo que los resultados del Hola está codificada por el URI. |
+| #(prop) |Se usa en las plantillas JSON (por ejemplo, para plantillas de iOS y Android).<br><br>Esta función funciona exactamente igual Hola como $(prop) especificado anteriormente, excepto cuando se utilizan en las plantillas de JSON (por ejemplo, plantillas de Apple). En este caso, si esta función no está rodeada por "{','}" (por ejemplo, 'myJsonProperty': "#(name)"), y se evalúa como el número de tooa en formato de Javascript, por ejemplo, regexp: (0 &#124; (&#91; 1-9 &#93; &#91; 0-9 & #93 ;*))(\. ¿&#91; 0-9 &#93; +)? ((e &#124; E) (+ &#124;-)? &#91; 0-9 &#93; +)?, a continuación, Hola de salida JSON es un número.<br><br>Por ejemplo, ‘badge : ‘#(name)’ se convierte en ‘badge’ : 40 (y no ‘40‘). |
 | ‘texto’ o “texto” |Un literal. Los literales contienen texto arbitrario encerrado entre comillas simples o dobles. |
-| expr1 + expr2 |El operador de concatenación que une dos expresiones en una sola cadena. |
+| expr1 + expr2 |operador de concatenación de Hello combinar dos expresiones en una sola cadena. |
 
-Las expresiones pueden estar en cualquiera de los formatos anteriores.
+expresiones de Hello pueden ser cualquiera de hello anterior formularios.
 
-Cuando se usa la concatenación, toda la expresión debe estar entre {}. Por ejemplo, {$(prop) + ‘ - ’ + $(prop2)}. |
+Cuando se utiliza la concatenación, la expresión completa de Hola debe incluirse entre con {}. Por ejemplo, {$(prop) + ‘ - ’ + $(prop2)}. |
 
-El siguiente ejemplo no es una plantilla XML válida:
+Por ejemplo, el siguiente hello no es una plantilla XML válida:
 
     <tile>
       <visual>

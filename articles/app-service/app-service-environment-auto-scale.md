@@ -1,5 +1,5 @@
 ---
-title: "Escalado automático y App Service Environment v1"
+title: aaaAutoscaling y v1 de entorno del servicio de aplicaciones
 description: "Escalado automático y entorno del Servicio de aplicaciones"
 services: app-service
 documentationcenter: 
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: f32affd285f3918feb0e893543f2a28f678b7b10
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1a03cf494309e80596b64471d1a067b2f64a9fee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Escalado automático y App Service Environment v1
 
 > [!NOTE]
-> Este artículo trata sobre App Service Environment v1.  Hay una versión más reciente de App Service Environment que resulta más fácil de usar y se ejecuta en una infraestructura más eficaz. Para aprender más sobre la nueva versión, consulte [Introducción a App Service Environment](../app-service/app-service-environment/intro.md).
+> Este artículo trata sobre Hola v1 de entorno del servicio de aplicaciones.  Hay una versión más reciente de hello entorno del servicio de aplicación que es más fácil toouse y se ejecuta en una infraestructura más eficaz. toolearn más información acerca de la nueva versión de hello iniciar con hello [toohello Introducción entono](../app-service/app-service-environment/intro.md).
 > 
 
 Los entornos del Servicio de aplicaciones de Azure admiten el *escalado automático*. Puede usar el escalado automático basado en métricas o programación grupos de trabajo individuales.
 
 ![Opciones de escalado automático para un grupo de trabajo.][intro]
 
-El escalado automático optimiza el uso de recursos gracias al crecimiento y reducción automáticos de un entorno del Servicio de aplicaciones para ajustarse a su presupuesto o a su perfil de carga.
+Ajuste automático optimiza el uso de recursos automáticamente aumentar y reducir un toofit de entorno de servicio de aplicaciones su perfil de presupuesto y carga.
 
 ## <a name="configure-worker-pool-autoscale"></a>Configuración del escalado automático de grupo de trabajo
-Puede acceder a la funcionalidad de escalado automático desde la pestaña **Configuración** del grupo de trabajo.
+Puede tener acceso a funcionalidad de escalado automático de Hola de hello **configuración** ficha de grupo de trabajo de Hola.
 
-![Pestaña Configuración del grupo de trabajo.][settings-scale]
+![Pestaña Configuración de grupo de trabajo de Hola.][settings-scale]
 
-A partir de ahí, la interfaz debe resultar bastante familiar ya que se trata de la misma experiencia que ve al escala un plan de App Service. 
+Desde allí, Hola interfaz debe ser bastante conocido porque es Hola planear la misma experiencia que verá al escalar un servicio de aplicaciones. 
 
 ![Configuración de la escala manual.][scale-manual]
 
@@ -45,25 +45,25 @@ También puede configurar un perfil de escalado automático.
 
 ![Configuración del escalado automático.][scale-profile]
 
-Los perfiles de escalado automático resultan útiles para establecer límites en la escala. De este modo tener una experiencia de rendimiento coherente, mediante el establecimiento de un valor de escala de límite inferior (1) y un techo de gasto predecible, mediante el establecimiento de un límite superior (2).
+Perfiles de escalado automático son límites de tooset útil sobre la escala. De este modo tener una experiencia de rendimiento coherente, mediante el establecimiento de un valor de escala de límite inferior (1) y un techo de gasto predecible, mediante el establecimiento de un límite superior (2).
 
 ![Configuración de la escala en el perfil.][scale-profile2]
 
-Después de definir un perfil, puede agregar reglas de escalado automático para escalar o reducir verticalmente el número de instancias en el grupo de trabajo dentro de los límites definidos por el perfil. Las reglas de escalado automático se basan en las métricas.
+Después de definir un perfil, puede agregar tooscale de reglas de escalado automático hacia arriba o hacia abajo, número de Hola de instancias de grupo de trabajo de hello dentro de los límites de hello definidas por el perfil de Hola. Las reglas de escalado automático se basan en las métricas.
 
 ![Regla de escala.][scale-rule]
 
- Se puede usar cualquier grupo de trabajo o métrica de front-end para definir las reglas de escalado automático. Son las mismas métricas que puede supervisar en los gráficos de la hoja de recursos o para las que puede configurar alertas.
+ Cualquier grupo de trabajo o las métricas de front-end pueden ser toodefine usa reglas de escalado automático. Estas métricas son Hola mismas métricas puede supervisar en los gráficos de hoja de recursos de Hola o establecer alertas para.
 
 ## <a name="autoscale-example"></a>Ejemplo de escalado automático
 La mejor manera de ilustrar el escalado automático de un entorno del Servicio de aplicaciones es mediante un escenario.
 
-Este artículo explica todas las consideraciones necesarias para configurar el escalado automático. En este artículo veremos todas las interacciones que entran en juego cuando se aplica el escalado automático en los App Service Environment que se hospedan en un App Service Environment.
+Este artículo explica todas las consideraciones de hello necesarios al configurar escalado automático. Hola artículo le guiará a través de hello las interacciones que surte reproducción al factor de escala automática entornos de servicio de aplicaciones que se hospedan en el entorno del servicio de aplicaciones.
 
 ### <a name="scenario-introduction"></a>Introducción al escenario
-Frank es administrador de sistemas de una empresa y ha migrado parte de las cargas de trabajo que administra a un entorno del Servicio de aplicaciones.
+Frank es un administrador del sistema para una empresa que ha migrado una parte de las cargas de trabajo de Hola que administra tooan entorno de servicio de aplicaciones.
 
-El entorno del Servicio de aplicaciones está configurado a escala manual de la siguiente manera:
+Hello es el entorno de servicio de aplicaciones Configurar escala toomanual como sigue:
 
 * **Servidores front-end** : 3
 * **Grupo de trabajo 1**: 10
@@ -72,9 +72,9 @@ El entorno del Servicio de aplicaciones está configurado a escala manual de la 
 
 El grupo de trabajo 1 se usa para las cargas de trabajo de producción, en tanto que los grupos de trabajo 2 y 3 se usan para las cargas de trabajo de control de calidad y desarrollo.
 
-Los planes de App Service de QA y desarrollo están configurados para la escala manual. El plan de App Service de producción se establece en escalado automático para tratar con las variaciones de carga y el tráfico.
+Hello aplicación planes de servicio para preguntas y respuestas y desarrollo están configurados toomanual escala. producción de Hello plan de servicio de aplicaciones se establece tooautoscale toodeal con variaciones en la carga y el tráfico.
 
-Frank está muy familiarizado con la aplicación. Sabe que las horas pico de carga están entre las 9:00 y 6:00 porque se trata de una aplicación de línea de negocio (LOB) que los empleados usan mientras están en la oficina. El uso cae después, una vez que los usuarios han terminado la jornada. Fuera de las horas punta, sigue habiendo cierta carga porque los usuarios pueden acceder de forma remota a la aplicación mediante sus dispositivos móviles o equipos domésticos. El plan del servicio de Aplicaciones de producción ya está configurado para el escalado automático en función del uso de CPU con las reglas siguientes:
+Frank está muy familiarizado con la aplicación hello. Sabe que las horas punta Hola de carga son entre las 9:00 A.M. y 6:00 P.M. porque se trata de una aplicación de línea de negocio (LOB) que los empleados usan mientras están en office Hola. El uso cae después, una vez que los usuarios han terminado la jornada. Fuera de horas punta, hay cierta carga porque los usuarios pueden acceder de forma remota aplicación hello mediante sus dispositivos móviles o equipos domésticos. producción de Hello plan de servicio de aplicaciones ya está configurado tooautoscale según el uso de CPU con hello siguientes reglas:
 
 ![Configuración específica para las aplicaciones LOB.][asp-scale]
 
@@ -84,7 +84,7 @@ Frank está muy familiarizado con la aplicación. Sabe que las horas pico de car
 | **Escalar por:** Reglas de rendimiento y programación |**Escalar por:** Reglas de rendimiento y programación |
 | **Perfil:** Días laborables |**Perfil:** Fin de semana |
 | **Tipo:** periodicidad |**Tipo:** periodicidad |
-| **Rango objetivo:** de 5 a 20 instancias |**Rango objetivo:** de 3 a 10 instancias |
+| **Intervalo de destino:** 5 instancias too20 |**Intervalo de destino:** 3 instancias too10 |
 | **Días:** lunes, martes, miércoles, jueves, viernes |**Días:** sábado, domingo |
 | **Hora de inicio:** 9:00 |**Hora de inicio:** 9:00 |
 | **Zona horaria:** UTC-08 |**Zona horaria:** UTC-08 |
@@ -108,44 +108,44 @@ Frank está muy familiarizado con la aplicación. Sabe que las horas pico de car
 | **Tiempo de finalización (minutos):** 20 |**Tiempo de finalización (minutos):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>Tasa de inflación del plan del Servicio de aplicaciones
-Los planes de App Service configurados para el escalado automático se realizan a una tasa máxima por hora. Esta tasa se puede calcular en función de los valores indicados en la regla de escalado automático.
+Planes de servicio de aplicaciones que están configurado tooautoscale hacerlo a una velocidad máxima por hora. Esta velocidad se calculen según en valores de hello proporcionados en la regla de escalado automático de Hola.
 
-Comprender y calcular la *tasa de inflación del plan del Servicio de aplicaciones* es importante para el escalado automático del entorno del Servicio de aplicaciones, ya que los cambios en el escalado de un grupo de trabajo no son instantáneos.
+Descripción y calcular Hola *tasa de inflación del plan de servicio de aplicaciones* es importante para el escalado automático de entorno de servicio de aplicaciones porque el grupo de trabajo de tooa de cambios de escala no son instantáneos.
 
-La tasa de inflación del plan del Servicio de aplicaciones se calcula del siguiente modo:
+Hola tasa de inflación del plan de servicio de aplicaciones se calcula como sigue:
 
 ![Cálculo de la tasa de inflación del plan del Servicio de aplicaciones.][ASP-Inflation]
 
-De acuerdo con la regla Escalado automático: escalar verticalmente del perfil Días laborables del plan de App Service de producción:
+En función de hello escalado automático: regla escalar vertical para el perfil de día de la semana de Hola de producción de hello plan de servicio de aplicaciones:
 
 ![Tasa de inflación del plan del Servicio de aplicaciones para los días laborables basándose en el escalado automático: regla escalar verticalmente.][Equation1]
 
-En el caso de la regla Escalado automático: escalar verticalmente del perfil Fines de semana del plan del Servicio de aplicaciones de producción, la fórmula daría como resultado:
+En caso de hello de hello escalado automático: escalar vertical de la regla para el perfil de fin de semana de Hola de producción de hello plan de servicio de aplicaciones, la fórmula de Hola se resolverá en:
 
 ![Tasa de inflación del plan del Servicio de aplicaciones para los fines de semana basado en el escalado automático: regla escalar verticalmente.][Equation2]
 
 Este valor también se puede calcular para operaciones de reducción vertical.
 
-De acuerdo con la regla Escalado automático: reducir verticalmente del perfil Días laborables del plan del Servicio de aplicaciones de producción, sería:
+En función de hello escalado automático: regla de escala hacia abajo para el perfil de día de la semana de Hola de producción de hello plan de servicio de aplicaciones, esto sería similar al siguiente:
 
 ![Tasa de inflación del plan del Servicio de aplicaciones para los días laborables basándose en el escalado automático: regla reducir verticalmente.][Equation3]
 
-En el caso de la regla Escalado automático: reducir verticalmente del perfil Fines de semana del plan del Servicio de aplicaciones de producción, la fórmula daría como resultado:  
+En caso de hello de hello escalado automático: regla de escala hacia abajo para el perfil de fin de semana de Hola de producción de hello plan de servicio de aplicaciones, la fórmula de Hola se resolverá en:  
 
 ![Tasa de inflación del plan del Servicio de aplicaciones para los fines de semana basado en el escalado automático: regla reducir verticalmente.][Equation4]
 
-El plan de App Service de producción puede crecer a una tasa máxima de ocho instancias por hora durante la semana y de cuatro instancias por hora durante los fines de semana. Puede liberar las instancias a una tasa máxima de cuatro instancias por hora durante la semana y seis instancias por hora durante los fines de semana.
+producción de Hello plan de servicio de aplicaciones puede crecer en una velocidad máxima de ocho instancias por hora durante la semana de Hola y cuatro instancias por hora durante un fin de semana Hola. Puede liberar instancias a una velocidad máxima de cuatro instancias por hora durante la semana de Hola y seis instancias por hora durante los fines de semana.
 
-Si se hospedan varios planes del Servicio de aplicaciones en un grupo de trabajo, debe calcular la *tasa de inflación total* como la suma de la tasa de inflación de todos los planes del Servicio de aplicaciones que se hospedan en dicho grupo de trabajo.
+Si varios planes de servicio de aplicaciones se hospedan en un grupo de trabajo, tendrá que hello toocalculate *total tasa de inflación* como suma Hola de tasa de inflación de Hola para hello todos los planes de servicio de aplicaciones que se va a hospedar en ese grupo de trabajo.
 
 ![Cálculo de la tasa de inflación total para varios planes del Servicio de aplicaciones hospedados en un grupo de trabajo.][ASP-Total-Inflation]
 
-### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Uso de la tasa de inflación del plan del Servicio de aplicaciones para definir reglas de escalado automático del grupo de trabajo
-Los grupos de trabajo que hospedan planes del App Service que están configurados para el escalado automático tendrán que asignar un búfer de capacidad. El búfer permite que las operaciones de escalado automático aumenten y reduzcan el plan del Servicio de aplicaciones según sea necesario. El búfer mínimo será la tasa de inflación total del plan del Servicio de aplicaciones calculada.
+### <a name="use-hello-app-service-plan-inflation-rate-toodefine-worker-pool-autoscale-rules"></a>Hola servicio de aplicaciones de uso previsto reglas de escalado automático de grupo de trabajo de tasa de inflación toodefine
+Los grupos de trabajo que hospedan los planes de servicio de aplicaciones que están configurado tooautoscale deben asignarse a un búfer de la capacidad. búfer de Hello permite toogrow de operaciones de escalado automático de Hola y reducir el plan de servicio de aplicaciones, según sea necesario. mínimo de búfer de Hello sería Hola calcula la tasa de inflación Total de Plan de servicio de aplicación.
 
-Puesto que las operaciones de escalado del entorno del Servicio de aplicaciones tardan algún tiempo en aplicarse, deben tenerse en cuenta los cambios de demanda adicionales que se pueden producir mientras están en curso una operación de escalado. Para dar cabida a esta latencia, se recomienda usar la tasa de inflación total del plan del Servicio de aplicaciones calculada como el número mínimo de instancias que se agregan para cada operación de escalado automático.
+Dado que las operaciones de escalado del entorno de servicio de aplicaciones tienen algún tooapply tiempo, cualquier cambio tenga en cuenta más cambios en la demanda que pudieron ocurrir mientras está en curso una operación de escala. tooaccommodate esta latencia, se recomienda que use Hola calcula la tasa de inflación Total de Plan de servicio de aplicación como el número mínimo de Hola de instancias que se agregan para cada operación de escalado automático.
 
-Con esta información, Frank puede definir el siguiente perfil y las siguientes reglas de escalado automático:
+Con esta información, puede definir los Frank Hola siguiendo perfil de escalado automático y reglas:
 
 ![Ejemplo de reglas de perfil de escalado automático para línea de negocio.][Worker-Pool-Scale]
 
@@ -155,7 +155,7 @@ Con esta información, Frank puede definir el siguiente perfil y las siguientes 
 | **Escalar por:** Reglas de rendimiento y programación |**Escalar por:** Reglas de rendimiento y programación |
 | **Perfil:** Días laborables |**Perfil:** Fin de semana |
 | **Tipo:** periodicidad |**Tipo:** periodicidad |
-| **Rango objetivo:** de 13 a 25 instancias |**Rango objetivo:** de 6 a 15 instancias |
+| **Intervalo de destino:** 13 instancias too25 |**Intervalo de destino:** 6 instancias too15 |
 | **Días:** lunes, martes, miércoles, jueves, viernes |**Días:** sábado, domingo |
 | **Hora de inicio:** 7:00 |**Hora de inicio:** 9:00 |
 | **Zona horaria:** UTC-08 |**Zona horaria:** UTC-08 |
@@ -178,19 +178,19 @@ Con esta información, Frank puede definir el siguiente perfil y las siguientes 
 | **Acción:** Reducir recuento en 2 |**Acción:** Reducir recuento en 3 |
 | **Tiempo de finalización (minutos):** 120 |**Tiempo de finalización (minutos):** 120 |
 
-El rango objetivo definido en el perfil se calcula sumando el número mínimo de instancias definido en el perfil para el plan del Servicio de aplicaciones al búfer.
+intervalo de destino definido en el perfil de Hola Hola se calcula instancias mínimo Hola definidas en el perfil para el plan de servicio de aplicación hello + búfer.
 
-El rango máximo debe ser la suma de todos los rangos máximos de todos los planes del Servicio de aplicaciones alojados en el grupo de trabajo.
+intervalo máximo de Hello sería la suma de Hola de todos los intervalos máximo de Hola para todos los planes de servicio de aplicaciones que se hospeda en el grupo de trabajo de Hola.
 
-El recuento de aumento de las reglas de escalado vertical se debe configurar al menos en 1X de la tasa de inflación del Plan del Servicio de aplicaciones para el escalado vertical.
+Hola recuento de aumento para escalar Hola reglas debe ser tooat conjunto mínimo de 1 X la tasa de inflación de Plan de servicio de aplicación de escala de seguridad.
 
-El recuento de reducción se puede ajustar en un valor situado entre 1/2X y 1X de la tasa de inflación del plan del Servicio de aplicaciones para la reducción vertical.
+Recuento de disminución puede ser ajustado toosomething entre 1/2 X o 1 X Hola tasa de inflación de Plan de servicio de aplicación de escala hacia abajo.
 
 ### <a name="autoscale-for-front-end-pool"></a>Escalado automático para un grupo de servidores front-end
 Las reglas de escalado automático de front-end son más sencillas que las de los grupos de trabajo. En primer lugar, debe  
-asegurarse de que dicha duración de la medida y los temporizadores de enfriamiento tienen en cuenta que las operaciones de escala no son instantáneas en un plan de App Service.
+Asegúrese de que la duración de medición de Hola y temporizadores de enfriamiento Hola, tenga en cuenta que las operaciones de escala en un plan de servicio de aplicaciones no son instantáneas.
 
-En este escenario, Frank sabe que la tasa de errores aumenta una vez que los servidores front-end alcanzan el 80 % de uso de CPU y configura la regla de escalado automático para que aumente las instancias como sigue:
+En este escenario, Frank sabe esa tasa de errores de hello aumenta después de utilización de CPU del 80% de llegar a servidores front-end y establece escalado automático de hello en instancias de tooincrease de reglas como se indica a continuación:
 
 ![Configuración del escalado automático para un grupo de servidores front-end.][Front-End-Scale]
 
@@ -200,7 +200,7 @@ En este escenario, Frank sabe que la tasa de errores aumenta una vez que los ser
 | **Escalar por:** Reglas de rendimiento y programación |
 | **Perfil:** Todos los días |
 | **Tipo:** periodicidad |
-| **Rango objetivo:** de 3 a 10 instancias |
+| **Intervalo de destino:** 3 instancias too10 |
 | **Días:** Todos los días |
 | **Hora de inicio:** 9:00 |
 | **Zona horaria:** UTC-08 |

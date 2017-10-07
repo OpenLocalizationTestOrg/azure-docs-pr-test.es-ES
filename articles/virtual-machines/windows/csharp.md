@@ -1,6 +1,6 @@
 ---
-title: "Creación y administración de una máquina virtual de Azure con C# | Microsoft Docs"
-description: "Use C# y Azure Resource Manager para implementar una máquina virtual y todos sus recursos de apoyo."
+title: "aaaCreate y administrar un Azure Máquina Virtual usando C# | Documentos de Microsoft"
+description: "Use C# y el Administrador de recursos de Azure toodeploy una máquina virtual y todos sus recursos de soporte."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 5d9021c2f65b70e36d5ea82992c9fb9d2d6d394a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8beeabde731bbaa25e68d2b9c5abbf71acbe377f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Creación y administración de máquinas virtuales Windows en Azure mediante C# #
 
@@ -27,27 +27,27 @@ Las [máquinas virtuales de Azure](overview.md?toc=%2fazure%2fvirtual-machines%2
 
 > [!div class="checklist"]
 > * Creación de un proyecto de Visual Studio
-> * Instalación del paquete
+> * Instalar el paquete de Hola
 > * Crear credenciales
 > * Crear recursos
 > * Realizar tareas de administración
 > * Eliminar recursos
-> * Ejecución de la aplicación
+> * Ejecutar la aplicación hello
 
-Tardará unos 20 minutos en realizar estos pasos.
+Tarda aproximadamente 20 minutos toodo estos pasos.
 
 ## <a name="create-a-visual-studio-project"></a>Creación de un proyecto de Visual Studio
 
-1. Si aún no lo ha hecho, instale [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Seleccione **Desarrollo de escritorio de .NET** en la página Cargas de trabajo y haga clic en **Instalar**. En el resumen, puede ver que **Herramientas de desarrollo de .NET Framework 4 – 4.6** se selecciona automáticamente. Si ya ha instalado Visual Studio, puede agregar la carga de trabajo de .NET con el selector de Visual Studio.
+1. Si aún no lo ha hecho, instale [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Seleccione **desarrollo de escritorio de .NET** en Hola página cargas de trabajo y, a continuación, haga clic en **instalar**. En resumen de hello, puede ver que **herramientas de desarrollo de .NET Framework 4-4.6** se selecciona automáticamente. Si ya ha instalado Visual Studio, puede agregar carga de trabajo de .NET de hello mediante Hola selector de Visual Studio.
 2. En Visual Studio, haga clic en **Archivo** > **Nuevo** > **proyecto**.
-3. En **Plantillas** > **Visual C#**, seleccione **Aplicación de consola (.NET Framework)**, escriba *myDotnetProject* como nombre del proyecto, seleccione la ubicación del proyecto y, haga clic en **Aceptar**.
+3. En **plantillas** > **Visual C#**, seleccione **aplicación de consola (.NET Framework)**, escriba *myDotnetProject* nombre Hola de Hola proyecto, ubicación de hello seleccione del proyecto de hello y, a continuación, haga clic en **Aceptar**.
 
-## <a name="install-the-package"></a>Instalación del paquete
+## <a name="install-hello-package"></a>Instalar el paquete de Hola
 
-Los paquetes de NuGet son la manera más fácil de instalar las bibliotecas que necesita para finalizar estos pasos. Para obtener las bibliotecas que necesita en Visual Studio, siga estos pasos:
+Paquetes de NuGet son hello más fácil manera tooinstall Hola bibliotecas que necesita toofinish estos pasos. bibliotecas de hello tooget que necesite en Visual Studio, siga estos pasos:
 
 1. Haga clic en **Herramientas** > **Administrador de paquetes Nuget** y, después, haga clic en **Consola del Administrador de paquetes**.
-2. Escriba el siguiente comando en la consola:
+2. Escriba el siguiente comando en la consola de hello:
 
     ```
     Install-Package Microsoft.Azure.Management.Fluent
@@ -55,11 +55,11 @@ Los paquetes de NuGet son la manera más fácil de instalar las bibliotecas que 
 
 ## <a name="create-credentials"></a>Crear credenciales
 
-Antes de empezar este paso, asegúrese de que tiene acceso a una [entidad de servicio de Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). También debe registrar el identificador de aplicación, la clave de autenticación y el identificador del inquilino que necesitará en un paso posterior.
+Antes de empezar este paso, asegúrese de que tiene acceso tooan [entidad de servicio de Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). También debe registrar el identificador de la aplicación hello y clave de autenticación de hello, Id. de inquilino de Hola que necesita en un paso posterior.
 
-### <a name="create-the-authorization-file"></a>Creación del archivo de autorización
+### <a name="create-hello-authorization-file"></a>Crear archivo de autorización de hello
 
-1. En el Explorador de soluciones, haga clic en *myDotnetProject* > **Agregar** > **Nuevo elemento** y, después, seleccione **Archivo de texto** en *Elementos de Visual C#*. Asigne un nombre al archivo *azureauth.properties* y, luego, haga clic en **Agregar**.
+1. En el Explorador de soluciones, haga clic en *myDotnetProject* > **Agregar** > **Nuevo elemento** y, después, seleccione **Archivo de texto** en *Elementos de Visual C#*. Archivo de nombre hello *azureauth.properties*y, a continuación, haga clic en **agregar**.
 2. Agregue estas propiedades de autorización:
 
     ```
@@ -73,18 +73,18 @@ Antes de empezar este paso, asegúrese de que tiene acceso a una [entidad de ser
     graphURL=https://graph.windows.net/
     ```
 
-    Reemplace **&lt;subscription-id&gt;** por su identificador de suscripción, **&lt;application-id&gt;** por el identificador de aplicación de Active Directory, **&lt;authentication-key&gt;** por la clave de aplicación y **&lt;tenant-id&gt;** por el identificador de inquilino.
+    Reemplace  **&lt;Id. de suscripción&gt;**  con su identificador de suscripción,  **&lt;identificador de la aplicación&gt;**  con hello aplicación de Active Directory identificador,  **&lt;clave de autenticación&gt;**  con clave de la aplicación hello, y  **&lt;Id. de inquilino&gt;**  con inquilinos de Hola identificador.
 
-3. Guarde el archivo azureauth.properties. 
-4. Establezca una variable de entorno de Windows denominada AZURE_AUTH_LOCATION con la ruta de acceso completa al archivo de autorización que ha creado. Por ejemplo, puede usar el comando de PowerShell siguiente:
+3. Guarde el archivo de hello azureauth.properties. 
+4. Establecer una variable de entorno de Windows denominado AZURE_AUTH_LOCATION con el archivo de tooauthorization de ruta de acceso completa de hello que ha creado. Por ejemplo, puede utilizarse Hola siguiente comando de PowerShell:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
-### <a name="create-the-management-client"></a>Creación del cliente de administración
+### <a name="create-hello-management-client"></a>Crear el cliente de administración de Hola
 
-1. Abra el archivo Program.cs del proyecto que ha creado y agregue las siguientes instrucciones using a las instrucciones existentes en la parte superior del archivo:
+1. Abrir archivo Program.cs de Hola para proyecto de Hola que creó y, a continuación, agregarlas mediante instrucciones toohello existente en la parte superior del archivo hello:
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -94,7 +94,7 @@ Antes de empezar este paso, asegúrese de que tiene acceso a una [entidad de ser
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     ```
 
-2. Para crear el cliente de administración, agregue este código al método Main:
+2. cliente de administración de toocreate hello, agregue este toohello código del método Main:
 
     ```
     var credentials = SdkContext.AzureCredentialsFactory
@@ -109,11 +109,11 @@ Antes de empezar este paso, asegúrese de que tiene acceso a una [entidad de ser
 
 ## <a name="create-resources"></a>Crear recursos
 
-### <a name="create-the-resource-group"></a>Creación del grupo de recursos
+### <a name="create-hello-resource-group"></a>Crear grupo de recursos de Hola
 
 Todos los recursos deben encontrarse en un [grupo de recursos](../../azure-resource-manager/resource-group-overview.md).
 
-Para especificar los valores de la aplicación y crear el grupo de recursos, agregue este código al método Main:
+toospecify los valores de hello aplicación y crear grupo de recursos de hello, agregue este toohello código del método Main:
 
 ```
 var groupName = "myResourceGroup";
@@ -126,11 +126,11 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
     .Create();
 ```
 
-### <a name="create-the-availability-set"></a>Creación del conjunto de disponibilidad
+### <a name="create-hello-availability-set"></a>Crear conjunto de disponibilidad de Hola
 
-Los [conjuntos de disponibilidad](tutorial-availability-sets.md) facilitan el mantenimiento de las máquinas virtuales que utiliza la aplicación.
+[Conjuntos de disponibilidad](tutorial-availability-sets.md) resultará más fácil máquinas virtuales toomaintain Hola que usa la aplicación.
 
-Para crear el conjunto de disponibilidad, agregue este código al método Main:
+conjunto de disponibilidad de hello toocreate, agregar este toohello código del método Main:
 
 ```
 Console.WriteLine("Creating availability set...");
@@ -141,11 +141,11 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
     .Create();
 ```
 
-### <a name="create-the-public-ip-address"></a>Crear la dirección IP pública
+### <a name="create-hello-public-ip-address"></a>Crear dirección IP pública de Hola
 
-Se necesita una [dirección IP pública](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) para la comunicación con la máquina virtual.
+A [dirección IP pública](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) es necesario toocommunicate con la máquina virtual de Hola.
 
-Para crear la dirección IP pública de la máquina virtual, agregue este código al método Main:
+dirección IP toocreate Hola pública para la máquina virtual de hello, agregue este toohello código del método Main:
    
 ```
 Console.WriteLine("Creating public IP address...");
@@ -156,11 +156,11 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
     .Create();
 ```
 
-### <a name="create-the-virtual-network"></a>Crear la red virtual
+### <a name="create-hello-virtual-network"></a>Crear red virtual de Hola
 
 Debe haber una máquina virtual en una subred de una [red virtual](../../virtual-network/virtual-networks-overview.md).
 
-Para crear una subred y una red virtual, agregue este código al método Main:
+toocreate una subred y una red virtual, agregue este toohello código del método Main:
 
 ```
 Console.WriteLine("Creating virtual network...");
@@ -172,11 +172,11 @@ var network = azure.Networks.Define("myVNet")
     .Create();
 ```
 
-### <a name="create-the-network-interface"></a>Creación de la interfaz de red
+### <a name="create-hello-network-interface"></a>Crear la interfaz de red de Hola
 
-Una máquina virtual requiere una interfaz de red para comunicarse en la red virtual que acaba de crear.
+Una máquina virtual necesita un toocommunicate de interfaz de red en la red virtual de Hola.
 
-Para crear una interfaz de red, agregue este código al método Main:
+toocreate una interfaz de red, agregue este toohello código del método Main:
 
 ```
 Console.WriteLine("Creating network interface...");
@@ -190,11 +190,11 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
     .Create();
  ```
 
-### <a name="create-the-virtual-machine"></a>Creación de la máquina virtual
+### <a name="create-hello-virtual-machine"></a>Crear la máquina virtual de Hola
 
-Ahora que ha creado todos los recursos auxiliares, puede crear una máquina virtual.
+Ahora que ha creado Hola todos los recursos de soporte, puede crear una máquina virtual.
 
-Para crear la máquina virtual, agregue este código al método Main:
+toocreate Hola máquina virtual, agregue este toohello código del método Main:
 
 ```
 Console.WriteLine("Creating virtual machine...");
@@ -212,11 +212,11 @@ azure.VirtualMachines.Define(vmName)
 ```
 
 > [!NOTE]
-> En este tutorial se crea una máquina virtual donde se ejecuta una versión del sistema operativo Windows Server. Para más información sobre cómo seleccionar otras imágenes, consulte [Seleccione y navegue por imágenes de máquina virtual de Azure con PowerShell y la CLI de Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Este tutorial crea una máquina virtual con una versión de sistema operativo de Windows Server de Hola. toolearn más acerca de cómo seleccionar otras imágenes, vea [navegue y seleccione las imágenes de máquina virtual de Azure con Windows PowerShell y hello Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Si desea usar un disco existente en lugar de una imagen de Marketplace, use este código:
+Si desea toouse un disco existente en lugar de una imagen de marketplace, use este código:
 
 ```
 var managedDisk = azure.Disks.Define("myosdisk")
@@ -239,20 +239,20 @@ azure.VirtualMachines.Define("myVM")
 
 ## <a name="perform-management-tasks"></a>Realizar tareas de administración
 
-Durante el ciclo de vida de una máquina virtual, puede ejecutar tareas de administración como iniciar, detener o eliminar una máquina virtual. Además, puede crear código para automatizar tareas repetitivas o complejas.
+Durante el ciclo de vida de Hola de una máquina virtual, puede desear toorun tareas de administración, como iniciar, detener o eliminar una máquina virtual. Además, puede que desee toocreate tooautomate repetitivas o complejas tareas de código.
 
-Cuando tenga que hacerlas con la máquina virtual, deberá obtener una instancia de ella:
+Cuando necesite toodo nada con hello VM, debe tooget una instancia de ella:
 
 ```
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
-### <a name="get-information-about-the-vm"></a>Obtención de información acerca de la máquina virtual
+### <a name="get-information-about-hello-vm"></a>Obtener información acerca de hello VM
 
-Para obtener información acerca de la máquina virtual, agregue este código al método Main:
+tooget información acerca de la máquina virtual de hello, agregue este toohello código del método Main:
 
 ```
-Console.WriteLine("Getting information about the virtual machine...");
+Console.WriteLine("Getting information about hello virtual machine...");
 Console.WriteLine("hardwareProfile");
 Console.WriteLine("   vmSize: " + vm.Size);
 Console.WriteLine("storageProfile");
@@ -313,87 +313,87 @@ foreach (InstanceViewStatus stat in vm.InstanceView.Statuses)
     Console.WriteLine("  level: " + stat.Level);
     Console.WriteLine("  displayStatus: " + stat.DisplayStatus);
 }
-Console.WriteLine("Press enter to continue...");
+Console.WriteLine("Press enter toocontinue...");
 Console.ReadLine();
 ```
 
-### <a name="stop-the-vm"></a>Parada de la máquina virtual
+### <a name="stop-hello-vm"></a>Detener Hola VM
 
-Puede detener una máquina virtual y mantener toda su configuración, pero se le seguirá cobrando, o puede detener una máquina virtual y desasignarla. Cuando se desasigna una máquina virtual, todos los recursos asociados a ella también se desasignan y se le deja de cobrar por ellos.
+Puede detener una máquina virtual y mantener todas sus opciones, pero continuar toobe cobra por él, o puede detener una máquina virtual y cancelar la asignación lo. Cuando se desasigna una máquina virtual, todos los recursos asociados a ella también se desasignan y se le deja de cobrar por ellos.
 
-Para detener la máquina virtual sin desasignarla, agregue este código al método Main:
+toostop Hola virtual machine sin cancelar su asignación, agregue este toohello código del método Main:
 
 ```
 Console.WriteLine("Stopping vm...");
 vm.PowerOff();
-Console.WriteLine("Press enter to continue...");
+Console.WriteLine("Press enter toocontinue...");
 Console.ReadLine();
 ```
 
-Si desea desasignar la máquina virtual, cambie la llamada de PowerOff por este código:
+Si desea que la máquina virtual de toodeallocate hello, cambiar código de hello apagado llamada toothis:
 
 ```
 vm.Deallocate();
 ```
 
-### <a name="start-the-vm"></a>Inicio de la máquina virtual
+### <a name="start-hello-vm"></a>Iniciar Hola VM
 
-Para iniciar la máquina virtual, agregue este código al método Main:
+toostart Hola máquina virtual, agregue este toohello código del método Main:
 
 ```
 Console.WriteLine("Starting vm...");
 vm.Start();
-Console.WriteLine("Press enter to continue...");
+Console.WriteLine("Press enter toocontinue...");
 Console.ReadLine();
 ```
 
-### <a name="resize-the-vm"></a>Cambio de tamaño de la máquina virtual
+### <a name="resize-hello-vm"></a>Cambiar el tamaño de hello VM
 
 Para decidir un tamaño de máquina virtual, se deben considerar muchos aspectos de la implementación. Para más información, consulte el artículo sobre los [tamaños de máquina virtual](sizes.md).  
 
-Para cambiar el tamaño de la máquina virtual, agregue este código al método Main:
+toochange tamaño de máquina virtual de hello, agregue este toohello código del método Main:
 
 ```
 Console.WriteLine("Resizing vm...");
 vm.Update()
     .WithSize(VirtualMachineSizeTypes.StandardDS2) 
     .Apply();
-Console.WriteLine("Press enter to continue...");
+Console.WriteLine("Press enter toocontinue...");
 Console.ReadLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Incorporación de un disco de datos a la máquina virtual
+### <a name="add-a-data-disk-toohello-vm"></a>Agregar un toohello de disco de datos VM
 
-Para agregar un disco de datos a la máquina virtual, agregue este código al método Main para agregar un disco de datos de 2 GB de tamaño, tener un LUN de 0 y un tipo de almacenamiento en caché de lectura y escritura:
+tooadd una máquina virtual de toohello de disco de datos, agregue este tooadd de método de código toohello Main un disco de datos que es de 2 GB de tamaño, han un LUN de 0 y un tipo de almacenamiento en caché de lectura y escritura:
 
 ```
-Console.WriteLine("Adding data disk to vm...");
+Console.WriteLine("Adding data disk toovm...");
 vm.Update()
     .WithNewDataDisk(2, 0, CachingTypes.ReadWrite) 
     .Apply();
-Console.WriteLine("Press enter to delete resources...");
+Console.WriteLine("Press enter toodelete resources...");
 Console.ReadLine();
 ```
 
 ## <a name="delete-resources"></a>Eliminar recursos
 
-Dado que se le cobrará por los recursos utilizados en Azure, siempre es conveniente eliminar los recursos que ya no sean necesarios. Si quiere eliminar las máquinas virtuales y todos los recursos auxiliares, lo único que tiene que hacer es eliminar el grupo de recursos.
+Dado que se le cobra por recursos que usa en Azure, siempre es recursos toodelete de buena práctica que ya no son necesarios. Si desea que las máquinas virtuales de toodelete Hola y Hola a todos los recursos de soporte todo lo que tiene toodo es el grupo de recursos de Hola de eliminación.
 
-Para eliminar el grupo de recursos, agregue este código al método Main:
+recursos de hello toodelete grupo, agregue este toohello código del método Main:
 
 ```
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
-## <a name="run-the-application"></a>Ejecución de la aplicación
+## <a name="run-hello-application"></a>Ejecutar la aplicación hello
 
-Esta aplicación de consola tardará unos cinco minutos en ejecutarse completamente de principio a fin. 
+Tardará aproximadamente cinco minutos para este toorun de aplicación de consola completamente de toofinish de inicio. 
 
-1. Para ejecutar la aplicación de consola, haga clic en **Iniciar**.
+1. aplicación de consola de hello toorun, haga clic en **iniciar**.
 
-2. Antes de presionar **Entrar** para comenzar la eliminación de recursos, puede dedicar unos minutos a comprobar la creación de los recursos en Azure Portal. Haga clic en el estado de implementación para ver información de la implementación.
+2. Antes de presionar **ENTRAR** toostart eliminar recursos, podría tardar unos minutos creación de hello tooverify de recursos de Hola Hola portal de Azure. Haga clic en información de toosee de estado de implementación de hello acerca de la implementación de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Aproveche las ventajas de usar una plantilla para crear una máquina virtual con la información que se muestra en [Implementación de una máquina virtual de Azure con C# y una plantilla de Resource Manager](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Para más información acerca del uso de las [bibliotecas de Azure para .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
+* Aprovechar las ventajas del uso de una plantilla toocreate una máquina virtual con información de hello en [implementar máquinas virtuales de Azure usando C# y una plantilla de administrador de recursos](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Más información sobre el uso de hello [Azure libraries para .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
 

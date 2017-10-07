@@ -1,6 +1,6 @@
 ---
-title: Enlace de certificados SSL mediante PowerShell
-description: "Aprenda a enlazar certificados SSL a su aplicación web mediante PowerShell."
+title: Certificados aaaSSL enlace usando PowerShell
+description: "Obtenga información acerca de cómo toobind SSL certificados tooyour la aplicación web mediante PowerShell."
 services: app-service\web
 documentationcenter: 
 author: ahmedelnably
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-ms.openlocfilehash: a1fcc618fb0c68778e39cc227368a60b008f9401
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 82f0e7c796da99ab50f69f3638ef64d55a94fc8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-ssl-certificate-binding-using-powershell"></a>Enlace de certificados SSL con Servicio de aplicaciones de Azure mediante PowerShell
-Con el lanzamiento de Microsoft Azure PowerShell versión 1.1.0, se ha agregado un nuevo cmdlet que proporciona al usuario la capacidad de enlazar certificados SSL nuevos o existentes a una aplicación web existente.
+Con la versión de Hola de Microsoft Azure PowerShell versión 1.1.0 se ha agregado un nuevo cmdlet que proporcionaría Hola usuario Hola capacidad toobind nueva o existente SSL certificados tooan aplicación Web existente.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-Para obtener información acerca del uso de cmdlets de Azure PowerShell basados en Azure Resource Manager para administrar aplicaciones web, consulte [Using Azure Resource Manager-Based PowerShell to Manage Azure Web Apps](app-service-web-app-azure-resource-manager-powershell.md)
+toolearn sobre el uso de Azure Resource Manager según toomanage de cmdlets de PowerShell de Azure, la protección de aplicaciones Web [Azure Resource Manager según los comandos de PowerShell para la aplicación Web de Azure](app-service-web-app-azure-resource-manager-powershell.md)
 
 ## <a name="uploading-and-binding-a-new-ssl-certificate"></a>Carga y enlace de un nuevo certificado SSL
-Escenario: El usuario desea enlazar un certificado SSL a una de sus aplicaciones web.
+Escenario: usuario Hola gustaría toobind un tooone de certificado SSL de sus aplicaciones web.
 
-Conociendo el nombre del grupo de recursos que contiene la aplicación web, el nombre de la aplicación web, la ruta del archivo .pfx de certificado en el equipo del usuario, la contraseña para el certificado y el nombre de host personalizado, podemos usar el siguiente comando de PowerShell para crear ese enlace SSL:
+Conocer el nombre de grupo de recursos de Hola que contiene la aplicación web de hello, nombre de la aplicación hello, ruta del archivo .pfx Hola certificado en el equipo de usuario de Hola Hola contraseña de certificado de Hola y Hola nombre de host personalizado, podemos utilizar Hola después toocreate de comandos de PowerShell que Enlace de SSL:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -CertificateFilePath PathToPfxFile -CertificatePassword PlainTextPwd -Name www.contoso.com
 
-Tenga en cuenta que, antes de agregar un enlace SSL a una aplicación web, ya debe tener configurado un nombre de host (dominio personalizado). Si el nombre de host no está configurado, se producirá un error que indica que el nombre de host no existe al ejecutar New-AzureRmWebAppSSLBinding. Puede agregar un nombre de host directamente desde el portal o mediante Azure PowerShell. Puede usar el siguiente fragmento de PowerShell para configurar el nombre de host antes de ejecutar New-AzureRmWebAppSSLBinding.   
+Tenga en cuenta que, antes de agregar una aplicación web SSL enlace tooa, debe tener un nombre de host (dominio personalizado) ya configurado. Si no está configurado el nombre de host de hello, obtendrá un error 'hostname' no existe mientras se ejecuta New-AzureRmWebAppSSLBinding. Puede agregar un nombre de host directamente desde el portal de Hola o con PowerShell de Azure. Hello siguiente fragmento de código de PowerShell puede ser el nombre de host de tooconfigure Hola antes de ejecutar AzureRmWebAppSSLBinding de nuevo.   
 
     $webApp = Get-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup  
     $hostNames = $webApp.HostNames  
     $HostNames.Add("www.contoso.com")  
     Set-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup -HostNames $HostNames   
 
-Es importante comprender que el cmdlet Set-AzureRmWebApp sobrescribe los nombres de host de la aplicación web. Por lo tanto, el fragmento de PowerShell anterior se anexa a la lista existente de nombres de host de la aplicación web.  
+Es importante toounderstand que Hola cmdlet Set-AzureRmWebApp sobrescribe los nombres de host de hello para la aplicación web de Hola. Por lo tanto, Hola por encima del fragmento de código de PowerShell está anexando toohello lista existente Hola de nombres de host para la aplicación web de Hola.  
 
 ## <a name="uploading-and-binding-an-existing-ssl-certificate"></a>Carga y enlace de un certificado SSL existente
-Escenario: El usuario desea enlazar un certificado SSL ya cargado a una de sus aplicaciones web.
+Escenario: usuario Hola gustaría toobind un tooone previamente cargado de certificado SSL de sus aplicaciones web.
 
-Podemos obtener la lista de certificados que ya se han cargado a un grupo de recursos específico mediante el siguiente comando:
+Se podemos obtener Hola lista de certificados ya cargado tooa grupo de recursos específico usando el siguiente comando de Hola
 
     Get-AzureRmWebAppCertificate -ResourceGroupName myresourcegroup
 
-Tenga en cuenta que los certificados son locales a una ubicación y un grupo de recursos específicos; el usuario deberá volver a cargar el certificado si la aplicación web configurada está en una ubicación y un grupo de recursos distintos de los del certificado necesario. 
+Tenga en cuenta que los certificados de hello son tooa local específico ubicación del grupo de recursos, hello usuario necesita toore carga Hola certificado si Hola configurado la aplicación de web está en una ubicación diferente y recursos grupo otros que de hello necesita certificado 
 
-Conociendo el nombre del grupo de recursos que contiene la aplicación web, el nombre de la aplicación web, la huella digital del certificado y el nombre de host personalizado, podemos usar el siguiente comando de PowerShell para crear ese enlace SSL:
+Conocer el nombre de grupo de recursos de Hola que contiene la aplicación web de hello, Hola nombre de la aplicación web, Hola huella digital del certificado y Hola nombre de host personalizado, podemos usar Hola después toocreate de comandos de PowerShell que el enlace de SSL:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Thumbprint <certificate thumbprint> -Name www.contoso.com
 
 ## <a name="deleting-an-existing-ssl-binding"></a>Eliminación de un enlace SSL existente
-Escenario: El usuario desea eliminar un enlace SSL existente.
+Escenario: usuario Hola gustaría toodelete un enlace SSL existente.
 
-Conociendo el nombre del grupo de recursos que contiene la aplicación web, el nombre de la aplicación web y el nombre de host personalizado, podemos usar el siguiente comando de PowerShell para quitar ese enlace SSL:
+Conocer el nombre de grupo de recursos de Hola que contiene la aplicación web de hello, Hola nombre de la aplicación web y Hola nombre de host personalizado, podemos utilizar Hola después tooremove de comandos de PowerShell que el enlace de SSL:
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com
 
-Tenga en cuenta que si el enlace SSL quitado era el último que usaba ese certificado en esa ubicación, se eliminará de forma predeterminada el certificado; si el usuario desea mantener el certificado, puede usar la opción DeleteCertificate para conservarlo.
+Tenga en cuenta que si hello quita el enlace SSL fue Hola última enlace usando ese certificado en esa ubicación, por el certificado predeterminado de Hola se eliminarán, si desea que el usuario de hello certificado de hello tookeep sirve certificado Hola de hello DeleteCertificate opción tookeep
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com -DeleteCertificate $false
 
 ### <a name="references"></a>Referencias
 * [Comandos de PowerShell basados en Azure Resource Manager para aplicación web de Azure](app-service-web-app-azure-resource-manager-powershell.md)
-* [Introducción al entorno del Servicio de aplicaciones](app-service-app-service-environment-intro.md)
-* [Uso de Azure PowerShell con el Administrador de recursos de Azure](../powershell-azure-resource-manager.md)
+* [Introducción tooApp entorno del servicio](app-service-app-service-environment-intro.md)
+* [Uso de Azure PowerShell con Azure Resource Manager](../powershell-azure-resource-manager.md)
 

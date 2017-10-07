@@ -16,86 +16,86 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ba7b36e654aa0bf3b74d42a2b0ae96ae2a9b6241
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: af65b9be1e00c2819431694a5b0064b97b9e1867
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opciones de creación de informes para la administración de contraseñas de Azure AD
 
-Tras la implementación, muchas organizaciones desean saber cómo se usa realmente SSPR. Azure AD proporciona características de creación de informes que ayudan a responder a preguntas mediante informes predefinidos y, si dispone de la licencia adecuada, también permite crear consultas personalizadas.
+Tras la implementación, muchas organizaciones desean tooknow cómo o si realmente se usa SSPR. Azure AD proporciona características de los informes que le ayudarán a preguntas tooanswer con predefinidos informes y si tiene licencia correctamente, permite consultas personalizadas de toocreate.
 
-Las siguientes preguntas se pueden responder mediante informes existentes en [Azure Portal] (https://portal.azure.com/).
+Hello siguientes preguntas técnicas pueden resolverse mediante informes que existen en hello [portal de Azure] (https://portal.azure.com/).
 
 > [!NOTE]
-> Debe ser [un administrador global](active-directory-assign-admin-roles.md#assign-or-remove-administrator-roles) y debe seleccionar la opción para que estos datos se recopilen en nombre de la organización; para ello, vaya a la pestaña de creación de informes o consulte los registros de auditoría al menos una vez. Los datos de su organización no se recopilarán hasta que lo haga.
+> Debe ser [un administrador global](active-directory-assign-admin-roles.md#assign-or-remove-administrator-roles) y debe darse de alta para esto toobe datos recopilados en el nombre de su organización, visitando Hola reporting tab o auditoría registra al menos una vez. Los datos de su organización no se recopilarán hasta que lo haga.
 
 * ¿Cuántas personas se han registrado para el restablecimiento de contraseña?
 * ¿Quién se ha registrado para el restablecimiento de contraseña?
 * ¿Qué datos está registrando la gente?
-* ¿Cuántas personas han restablecido sus contraseñas en los últimos siete días?
-* ¿Cuáles son los métodos más comunes que utilizan los usuarios o administradores para restablecer sus contraseñas?
-* ¿Cuáles son los problemas comunes que encuentran los usuarios o administradores al intentar utilizar el restablecimiento de contraseña?
+* ¿Cuántas personas restablecieron sus contraseñas en hello últimos siete días?
+* ¿Qué usuarios de métodos más comunes de Hola o administradores utilicen tooreset sus contraseñas?
+* ¿Cuáles son comunes emite a los usuarios o administradores de cara al intentar restablecer la contraseña toouse?
 * ¿Qué administradores restablecen sus propias contraseñas con frecuencia?
 * ¿Hay alguna actividad sospechosa en relación con el restablecimiento de contraseña?
 
-## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Visualización de los informes de administración de contraseñas en Azure Portal
+## <a name="how-tooview-password-management-reports-in-hello-azure-portal"></a>Cómo informes de administración de contraseñas de tooview de hello portal de Azure
 
-En la experiencia de Azure Portal, se ha mejorado la visualización del restablecimiento de contraseña y de la actividad de registro de dicho restablecimiento.  Realice los pasos siguientes para encontrar los eventos de registro de restablecimiento de contraseña y de restablecimiento de contraseña:
+En hello Azure experiencia del portal, tenemos una manera mejorada tooview contraseña restablecimiento y la contraseña restablecimiento de actividad de registro.  Siga estos pasos hello toofind Hola contraseña restablecimiento y la contraseña registro los eventos de restablecimiento:
 
-1. Vaya a [**portal.azure.com**](https://portal.azure.com).
-2. Haga clic en el menú **Más servicios** que aparece en la barra de navegación principal de la izquierda de Azure Portal.
-3. Busque y seleccione **Azure Active Directory** en la lista de servicios.
-4. Haga clic en **Usuarios y grupos** en el menú de navegación de Azure Active Directory.
-5. Haga clic en el elemento de navegación **Registros de auditoría** en el menú de navegación Usuarios y grupos. Se muestran todos los eventos de auditoría que se producen en todos los usuarios del directorio. Puede filtrar esta vista para ver también todos los eventos relacionados con contraseñas.
-6. Para filtrar esta vista y ver únicamente los eventos relacionados con el restablecimiento de contraseñas, haga clic en el botón **Filtrar** que se encuentra en la parte superior de la hoja.
-7. En el menú **Filtrar**, seleccione la lista desplegable **Categoría** o cámbiela al tipo de categoría **Administración de contraseñas de autoservicio**.
-8. Si lo desea, también puede filtrar la lista si elige la **actividad** específica que le interesa.
+1. Navegue demasiado[**portal.azure.com**](https://portal.azure.com)
+2. Haga clic en hello **más servicios** menú hello Azure portal izquierdo navegación principal
+3. Busque **Azure Active Directory** en Hola lista de servicios y selecciónelo
+4. Haga clic en **usuarios y grupos** del menú de navegación de hello Azure Active Directory
+5. Haga clic en hello **los registros de auditoría** elemento de navegación del menú de navegación de usuarios y grupos de Hola. Esto muestra todos los eventos de auditoría de hello producen en todos los usuarios de hello en el directorio. Puede filtrar esta vista toosee todos los Hola relacionadas con contraseñas eventos, también.
+6. toofilter esta visualización tooonly Hola restablecimiento de contraseña eventos relacionados, haga clic en hello **filtro** situado en la parte superior de Hola de hoja de Hola.
+7. De hello **filtro** menú, seleccione hello **categoría** de lista desplegable y cambiarlo toohello **administración de contraseñas de autoservicio** tipo de categoría.
+8. Opcionalmente, otra lista de Hola de filtro eligiendo específicos de hello **actividad** que le interesen
 
-## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>Recuperación de eventos de administración de contraseñas desde la API de eventos e informes de Azure AD
+## <a name="how-tooretrieve-password-management-events-from-hello-azure-ad-reports-and-events-api"></a>¿Cómo tooretrieve eventos de administración de contraseñas de hello Azure AD API de informes y eventos
 
-La API de eventos e informes de Azure AD admite la recuperación de toda la información incluida en los informes de restablecimiento de contraseña y del registro de restablecimiento de contraseña. Mediante esta API, puede descargar eventos de registro de restablecimiento de contraseña individuales o eventos de registro de restablecimiento de contraseña para su integración con la tecnología de informes de su preferencia.
+Hello Azure AD API de informes y eventos admite la recuperación de toda la información de hello incluida en los informes de registro de restablecimiento de restablecimiento y la contraseña contraseña. Con esta API, puede descargar de restablecimiento de contraseña individuales y eventos de registro para la integración de restablecimiento de contraseña con hello reporting tecnología de su elección.
 
-### <a name="how-to-get-started-with-the-reporting-api"></a>Introducción a la API de informes
+### <a name="how-tooget-started-with-hello-reporting-api"></a>¿Cómo tooget partió Hola API de informes
 
-Para obtener acceso a estos datos, debe escribir una pequeña aplicación o un script para recuperarlos de los servidores. [Obtenga información sobre cómo empezar con la API de informes de Azure AD](active-directory-reporting-api-getting-started.md).
+tooaccess estos datos, necesita toowrite una pequeña aplicación o script tooretrieve desde nuestros servidores. [Obtenga información acerca de cómo tooget iniciado con hello API Reporting de Azure AD](active-directory-reporting-api-getting-started.md).
 
-Cuando tenga un script de trabajo, querrá examinar los eventos de registro y el restablecimiento de contraseña que puede recuperar para cumplir con sus escenarios.
+Una vez que tenga una secuencia de comandos de trabajo, a continuación deberá tooexamine Hola contraseña restablecimiento y registro de eventos que se pueden recuperar toomeet los escenarios.
 
-* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): muestra las columnas disponibles para los eventos de restablecimiento de contraseña.
-* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): muestra las columnas disponibles para los eventos de registro de restablecimiento de contraseña.
+* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): listas de columnas de hello disponibles para eventos de restablecimiento de contraseña
+* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): listas de columnas Hola disponibles para los eventos de registro de restablecimiento de contraseña
 
 ### <a name="reporting-api-data-retrieval-limitations"></a>Informes de las limitaciones de recuperación de datos de la API
 
-Actualmente, la API de eventos e informes de Azure AD recupera hasta **75 000 eventos individuales** de tipo [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) y [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent), con lo que abarca los **últimos 30 días**.
+Actualmente, Hola informes de Azure AD y API de eventos recupera la demasiado**75.000 eventos individuales** de hello [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) y [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) tipos , que abarcan hello **últimos 30 días**.
 
-Si necesita recuperar o almacenar datos más allá de este período, se sugiere mantenerlos en una base de datos externa y usar la API para consultar las diferencias que se generen. Se recomienda comenzar a recuperar estos datos cuando empiece a usar SSPR en la organización, mantenerlos en una base de datos externa y, luego, hacer seguimiento de las diferencias a partir de este momento.
+Si necesita tooretrieve o almacenar datos más allá de esta ventana, se recomienda guardar en una base de datos externa y usar deltas de Hola de tooquery Hola API que son el resultado. Nuestra recomendación es toobegin recuperar estos datos cuando comience a usar SSPR en su organización, conservar de forma externa y, a continuación, continuar deltas de hello tootrack desde este punto.
 
-## <a name="how-to-download-password-reset-registration-events-quickly-with-powershell"></a>Descarga rápida de los eventos de registro de restablecimiento de contraseña con PowerShell
+## <a name="how-toodownload-password-reset-registration-events-quickly-with-powershell"></a>Restablecimiento de contraseña de toodownload de cómo los eventos de registro rápidamente con PowerShell
 
-Además de usar directamente la API de eventos e informes de Azure AD, también puede usar el siguiente script de PowerShell para consultar los eventos de registro recientes en el directorio. Esto resulta útil si desea ver quién se registró recientemente o si quisiera asegurarse de que la implementación del restablecimiento de contraseña se ejecuta según lo esperado.
+Además toousing Hola informes de Azure AD y API de eventos directamente, también puede usar Hola por debajo de los eventos de registro de toorecent de secuencias de comandos de PowerShell en el directorio. Esto es útil en caso de que desee toosee que se haya registrado recientemente, o desea tooensure que el restablecimiento de contraseñas implementación se está produciendo tal como se esperaba.
 
 * [Script de PowerShell para la actividad de registro de SSPR de Azure AD](https://gallery.technet.microsoft.com/scriptcenter/azure-ad-self-service-e31b8aee)
 
 ### <a name="description-of-report-columns-in-azure-portal"></a>Descripción de las columnas del informe en Azure Portal
 
-La siguiente lista explica en detalle cada una de las columnas del informe:
+Hello siguiente lista explica cada una de las columnas del informe hello en detalle:
 
-* **Usuario** : usuario que intentó una operación de registro de restablecimiento de contraseña.
-* **Rol** : rol del usuario en el directorio.
-* **Fecha y hora** : fecha y hora del intento.
-* **Datos registrados** : datos de autenticación que el usuario proporcionó durante el registro de restablecimiento de contraseña.
+* **Usuario** : operación de registro de restablecimiento de usuario de Hola que intentó una contraseña.
+* **Rol** : rol de Hola de usuario de hello en el directorio de Hola.
+* **Fecha y hora** : Hola fecha y hora del intento de Hola.
+* **Datos registrados** – registro qué usuario de Hola de datos de autenticación proporcionada durante la contraseña para el restablecimiento.
 
 ### <a name="description-of-report-values-in-azure-portal"></a>Descripción de los valores del informe en Azure Portal
 
-En la tabla siguiente se describen los distintos valores permitidos para cada columna:
+Hello tabla siguiente describen distintos valores de hello permitidos para cada columna:
 
 | Columna | Valores permitidos y su significado |
 | --- | --- |
-| Datos registrados |**Correo electrónico alternativo**: el usuario ha usado un correo electrónico alternativo o un correo electrónico de autenticación para autenticarse.<p><p>**Teléfono de la oficina**: el usuario ha usado el teléfono de la oficina para autenticarse.<p>**Teléfono móvil**: el usuario ha usado un teléfono móvil o un teléfono de autenticación para autenticarse.<p>**Preguntas de seguridad**: el usuario ha usado preguntas de seguridad para autenticarse.<p>**Cualquier combinación de los valores anteriores (por ejemplo, correo electrónico alternativo + teléfono móvil)**: tiene lugar cuando se especifica una directiva de 2 puertas y muestra los dos métodos que el usuario utilizó para autenticar su solicitud de restablecimiento de contraseña. |
+| Datos registrados |**Correo electrónico alternativo** – usuario utiliza alternativo correo electrónico o la autenticación de correo electrónico tooauthenticate<p><p>**Teléfono del trabajo**– usuario utiliza office teléfono tooauthenticate<p>**Teléfono móvil** -usuario utiliza tooauthenticate de teléfono de autenticación o teléfono móvil<p>**Preguntas de seguridad** : tooauthenticate de preguntas de seguridad del usuario que se usa<p>**Cualquier combinación de hello anteriormente (por ejemplo, correo electrónico alternativo + teléfono móvil)** : se produce cuando se especifica de una directiva de 2 puertas y muestra los dos métodos que Hola tooauthentication de usuario utilizado solicitud para restablecer su contraseña. |
 
-## <a name="view-password-reset-activity-in-the-classic-portal"></a>Visualización de la actividad de restablecimiento de contraseña en el portal clásico
+## <a name="view-password-reset-activity-in-hello-classic-portal"></a>Actividad en el portal clásico de hello restablecimiento de contraseña de vista
 
 Este informe muestra todos los intentos de restablecimiento de contraseña que se han producido en su organización.
 
@@ -105,173 +105,173 @@ Este informe muestra todos los intentos de restablecimiento de contraseña que s
 
 ### <a name="description-of-report-columns-in-azure-classic-portal"></a>Descripción de las columnas del informe en el Portal de Azure clásico
 
-La siguiente lista explica en detalle cada una de las columnas del informe:
+Hello siguiente lista explica cada una de las columnas del informe hello en detalle:
 
-1. **Usuario**: usuario que intentó una operación de restablecimiento de contraseña (basado en el campo Id. de usuario especificado cuando el usuario intenta restablecer una contraseña).
-2. **Rol** : rol del usuario en el directorio.
-3. **Fecha y hora** : fecha y hora del intento.
-4. **Métodos usados**: métodos de autenticación que utiliza el usuario para esta operación de restablecimiento.
-5. **Resultado**: resultado de la operación de restablecimiento de contraseña.
-6. **Detalles** : detalles de por qué el restablecimiento de contraseña dio ese resultado.  También incluye los pasos de mitigación que podría seguir para resolver un error inesperado.
+1. **Usuario** – (basada en el campo de Id. de usuario de hello proporcionado al usuario Hola procede tooreset una contraseña) de la operación de restablecimiento de usuario de Hola que intentó una contraseña.
+2. **Rol** : rol de Hola de usuario de hello en el directorio de Hola.
+3. **Fecha y hora** : Hola fecha y hora del intento de Hola.
+4. **Se usa métodos** : Hola a qué métodos de autenticación de usuario utilizado para esta operación de restablecimiento.
+5. **Resultado** : la operación de restablecimiento de resultado de hello de contraseña de Hola.
+6. **Detalles** : Hola detalles de por qué de restablecimiento de contraseña de hello resultó en valor Hola lo hizo.  También incluye los pasos de mitigación que podría seguir tooresolve un error inesperado.
 
 ### <a name="description-of-report-values-in-azure-classic-portal"></a>Descripción de los valores del informe en el Portal de Azure clásico
 
-En la tabla siguiente se describen los distintos valores permitidos para cada columna:
+Hello tabla siguiente describen distintos valores de hello permitidos para cada columna:
 
 | Columna | Valores permitidos y su significado |
 | --- | --- |
-| Métodos usados |**Correo electrónico alternativo**: el usuario ha usado un correo electrónico alternativo o un correo electrónico de autenticación para autenticarse.<p>**Teléfono de la oficina**: el usuario ha usado el teléfono de la oficina para autenticarse.<p>**Teléfono móvil**: el usuario ha usado un teléfono móvil o un teléfono de autenticación para autenticarse.<p>**Preguntas de seguridad**: el usuario ha usado preguntas de seguridad para autenticarse.<p>**Cualquier combinación de los valores anteriores (por ejemplo, correo electrónico alternativo + teléfono móvil)**: tiene lugar cuando se especifica una directiva de 2 puertas y muestra los dos métodos que el usuario utilizó para autenticar su solicitud de restablecimiento de contraseña. |
-| Resultado |**Abandonado**: el usuario ha iniciado un restablecimiento de contraseña, pero lo ha interrumpido antes de que finalizara.<p>**Bloqueado**: se ha impedido que la cuenta de usuario usara el restablecimiento de contraseña debido a un intento de usar la página de restablecimiento de contraseña o una sola puerta de restablecimiento de contraseña demasiadas veces en un período de 24 horas.<p>**Cancelado**: el usuario ha iniciado un restablecimiento de contraseña, pero después hizo clic en el botón Cancelar para cancelar la sesión en mitad del proceso. <p>**Administrador notificado**: el usuario ha tenido un problema durante su sesión que no pudo resolver, por lo que hizo clic en el vínculo “Póngase en contacto con el administrador”, en lugar de finalizar el flujo de restablecimiento de contraseña.<p>**Con error**: el usuario no ha podido restablecer una contraseña, probablemente porque el usuario no estaba configurado para usar esta característica (por ejemplo, no tiene licencia, falta información de autenticación, o bien la contraseña se administra en el entorno local, pero la escritura diferida está desactivada).<p>**Correcto** : la contraseña se restableció correctamente. |
+| Métodos usados |**Correo electrónico alternativo** – usuario utiliza alternativo correo electrónico o la autenticación de correo electrónico tooauthenticate<p>**Teléfono del trabajo** – usuario utiliza office teléfono tooauthenticate<p>**Teléfono móvil** : utilizar tooauthenticate de teléfono móvil o la autenticación de usuario<p>**Preguntas de seguridad** : tooauthenticate de preguntas de seguridad del usuario que se usa<p>**Cualquier combinación de hello anteriormente (por ejemplo, correo electrónico alternativo + teléfono móvil)** : se produce cuando se especifica de una directiva de 2 puertas y muestra los dos métodos que Hola tooauthentication de usuario utilizado solicitud para restablecer su contraseña. |
+| Resultado |**Abandonado**: el usuario ha iniciado un restablecimiento de contraseña, pero lo ha interrumpido antes de que finalizara.<p>**Bloquea** : cuenta de usuario se toouse ha impedido el restablecimiento debido a página de restablecimiento de contraseña de tooattempting toouse Hola de contraseña o puerta de restablecimiento de una sola contraseña demasiadas veces en un período de 24 horas<p>**Cancelar** – usuario inició un restablecimiento de contraseña pero, a continuación, hace clic en la sesión de hello toocancel Hola Cancelar botón mitad del proceso <p>**Administrador contactado** – usuario había tenido un problema durante su sesión que no pudo resolver, por lo que el usuario de hello hace clic en el vínculo "Póngase en contacto con el administrador" de hello en lugar de finalizar el flujo de restablecimiento de contraseña de Hola<p>**No se pudo** : usuario no era capaz de tooreset una contraseña, probablemente porque usuario hello no era característica de hello toouse configurado (por ejemplo, licencia, falta información de autenticación, administrados por contraseña local pero la escritura diferida no está desactivada).<p>**Correcto** : la contraseña se restableció correctamente. |
 | Detalles |Consulte la tabla siguiente: |
 
 ### <a name="allowed-values-for-details-column"></a>Valores permitidos para la columna Detalles
 
-A continuación se muestra la lista de los tipos de resultados que puede esperar cuando usa el informe de actividad de restablecimiento de contraseña:
+Abajo aparece la lista de Hola de tipos de resultado, puede esperar cuando mediante una contraseña de hello restablezca el informe de actividad:
 
 | Detalles | Tipo de resultado |
 | --- | --- |
-| El usuario abandonó tras completar la opción de comprobación de correo electrónico. |Abandonado |
-| El usuario abandonó tras completar la opción de comprobación por SMS en el teléfono móvil. |Abandonado |
-| El usuario abandonó tras completar la opción de comprobación por llamada de voz al teléfono móvil. |Abandonado |
-| El usuario abandonó tras completar la opción de comprobación por llamada de voz a la oficina. |Abandonado |
-| El usuario abandonó tras completar la opción de preguntas de seguridad. |Abandonado |
-| El usuario abandonó después de escribir su identificador de usuario. |Abandonado |
-| El usuario abandonó tras iniciar la opción de comprobación de correo electrónico. |Abandonado |
-| El usuario abandonó tras iniciar la opción de comprobación por SMS en el teléfono móvil. |Abandonado |
-| El usuario abandonó tras iniciar la opción de comprobación por llamada de voz al teléfono móvil. |Abandonado |
-| El usuario abandonó tras iniciar la opción de comprobación por llamada de voz a la oficina. |Abandonado |
-| El usuario abandonó tras iniciar la opción de preguntas de seguridad. |Abandonado |
+| Usuario abandonado tras completar la opción de comprobación de correo electrónico de Hola |Abandoned |
+| Usuario abandonado tras completar la opción de verificación por SMS móvil Hola |Abandoned |
+| Usuario abandonado tras completar la opción de comprobación de llamada de voz móviles de Hola |Abandoned |
+| Usuario abandonado tras completar la opción de comprobación de llamada de voz de office de Hola |Abandoned |
+| Usuario abandonado tras completar la opción de preguntas de seguridad de Hola |Abandoned |
+| El usuario abandonó después de escribir su identificador de usuario. |Abandoned |
+| Usuario abandonado tras iniciar la opción de comprobación de correo electrónico de Hola |Abandoned |
+| Usuario abandonado tras iniciar la opción de verificación por SMS móvil Hola |Abandoned |
+| Usuario abandonado tras iniciar la opción de comprobación de llamada de voz móviles de Hola |Abandoned |
+| Usuario abandonado tras iniciar la opción de comprobación de llamada de voz de office de Hola |Abandoned |
+| Usuario abandonado tras iniciar la opción de preguntas de seguridad de Hola |Abandoned |
 | El usuario abandonó antes de seleccionar una nueva contraseña. |Abandonado |
 | El usuario abandonó mientras seleccionaba una nueva contraseña. |Abandonado |
 | El usuario escribió demasiados códigos de comprobación por SMS no válidos y se ha bloqueado durante 24 horas. |Bloqueado |
 | El usuario intentó la comprobación por llamada de voz al teléfono móvil demasiadas veces y se ha bloqueado durante 24 horas. |Bloqueado |
 | El usuario intentó la comprobación por llamada de voz al teléfono de la oficina demasiadas veces y se ha bloqueado durante 24 horas. |Bloqueado |
-| El usuario intentó responder las preguntas de seguridad demasiadas veces y se ha bloqueado durante 24 horas. |Bloqueado |
-| El usuario intentó comprobar un número de teléfono demasiadas veces y se ha bloqueado durante 24 horas. |Bloqueado |
-| El usuario lo canceló antes de pasar a los métodos de autenticación requeridos. |Canceled |
+| El usuario intentó tooanswer preguntas de seguridad demasiadas veces y se ha bloqueado durante 24 horas |Bloqueado |
+| El usuario intentó tooverify un número de teléfono demasiadas veces y se ha bloqueado durante 24 horas |Bloqueado |
+| Usuario canceló la operación antes de pasar a métodos de autenticación de hello necesario |Canceled |
 | El usuario lo canceló antes de enviar una contraseña nueva. |Canceled |
-| El usuario se puso en contacto con un administrador después de intentar la opción de comprobación de correo electrónico. |Administrador contactado |
-| El usuario se puso en contacto con un administrador después de intentar la opción de comprobación por SMS en el teléfono móvil. |Administrador contactado |
-| El usuario se puso en contacto con un administrador después de intentar la opción de comprobación por llamada de voz al teléfono móvil. |Administrador contactado |
-| El usuario se puso en contacto con un administrador después de intentar la opción de comprobación por llamada de voz a la oficina. |Administrador contactado |
-| El usuario se puso en contacto con un administrador después de intentar la opción de comprobación con preguntas de seguridad. |Administrador contactado |
-| El restablecimiento de contraseña no está habilitado para este usuario. Habilite el restablecimiento de contraseña en la pestaña Configurar para resolver este problema. |Con error |
-| El usuario no tiene una licencia. Puede agregar una licencia al usuario para resolver este problema. |Con error |
-| El usuario intentó el restablecimiento desde un dispositivo sin las cookies habilitadas. |Con error |
-| La cuenta del usuario no tiene definidos suficientes métodos de autenticación. Agregue información de autenticación para resolver este problema. |Con error |
-| La contraseña del usuario se administra en el entorno local. Puede habilitar la escritura diferida de contraseña para resolver este problema. |Con error |
+| Usuario establecer contacto con un administrador tras intentar la opción de comprobación de correo electrónico de Hola |Administrador contactado |
+| Usuario establecer contacto con un administrador tras intentar la opción de verificación por SMS móvil Hola |Administrador contactado |
+| Usuario establecer contacto con un administrador tras intentar la opción de comprobación de llamada de voz móviles de Hola |Administrador contactado |
+| Usuario establecer contacto con un administrador tras intentar la opción de comprobación de llamada de voz de office de Hola |Administrador contactado |
+| Usuario establecer contacto con un administrador tras intentar la opción de comprobación de pregunta de seguridad de Hola |Administrador contactado |
+| El restablecimiento de contraseña no está habilitado para este usuario. Habilitar restablecimiento de contraseña en hello configurarlo tooresolve de pestaña |Con error |
+| El usuario no tiene una licencia. Puede agregarse un tooresolve de usuario de toohello de licencia |Con error |
+| Usuario intentó tooreset desde un dispositivo sin las cookies habilitadas |Con error |
+| La cuenta del usuario no tiene definidos suficientes métodos de autenticación. Agregue el código tooresolve de información de autenticación |Con error |
+| La contraseña del usuario se administra en el entorno local. Puede habilitar esta tooresolve de escritura diferida de contraseñas |Con error |
 | No pudimos obtener acceso a su servicio de restablecimiento de contraseña local. Compruebe el registro de eventos de su máquina de sincronización. |Con error |
-| Se encontró un problema durante el restablecimiento de la contraseña local del usuario. Compruebe el registro de eventos de su máquina de sincronización. |Con error |
-| Este usuario no es miembro del grupo de usuarios de restablecimiento de contraseña. Agregue este usuario a ese grupo para resolver este problema. |Con error |
-| El restablecimiento de contraseña se ha deshabilitado por completo para este inquilino. Consulte [aquí](http://aka.ms/ssprtroubleshoot) para resolver este problema. |Con error |
+| Se encontró un problema al restablecer la contraseña en local del usuario de Hola. Compruebe el registro de eventos de su máquina de sincronización. |Con error |
+| Este usuario no es un miembro del grupo de usuarios de restablecimiento de contraseña de Hola. Agregue este tooresolve de grupo de usuario toothat esto. |Con error |
+| El restablecimiento de contraseña se ha deshabilitado por completo para este inquilino. Vea [aquí](http://aka.ms/ssprtroubleshoot) tooresolve esto. |Con error |
 | El usuario restableció la contraseña correctamente. |Correcto |
 
 ## <a name="self-service-password-management-activity-types"></a>Tipos de actividad de administración de contraseñas de autoservicio
 
-Los siguientes tipos de actividad aparecen en la categoría de evento de auditoría **Administración de contraseñas de autoservicio**.  Una descripción de cada uno de ellos.
+Hola siguientes tipos de actividad aparece en hello **administración de contraseñas de autoservicio** categoría de eventos de auditoría.  Una descripción de cada uno de ellos.
 
-* [**Bloqueado para el restablecimiento de contraseña de autoservicio**](#activity-type-blocked-from-self-service-password-reset): indica que un usuario intentó restablecer una contraseña, usar una puerta específica o validar un número de teléfono más de 5 veces en total en 24 horas.
-* [**Cambio de contraseña (autoservicio)**](#activity-type-change-password-self-service): indica que un usuario realizó un cambio de contraseña voluntario o forzado (por expiración).
-* [**Restablecimiento de contraseña (de parte del administrador)**](#activity-type-reset-password-by-admin): indica que un administrador realizó un restablecimiento de contraseña en nombre de un usuario en Azure Portal.
-* [**Restablecimiento de contraseña (autoservicio)**](#activity-type-reset-password-self-service): indica que un usuario restableció correctamente su contraseña en el [portal de restablecimiento de contraseña de Azure AD](https://passwordreset.microsoftonline.com).
-* [**Progreso de la actividad del flujo de restablecimiento de contraseña de autoservicio**](#activity-type-self-serve-password-reset-flow-activity-progress): indica cada paso específico que un usuario sigue como parte del proceso de restablecimiento de contraseña (como atravesar una puerta de autenticación específica para el restablecimiento de contraseña).
-* [**Desbloqueo de la cuenta de usuario**](#activity-type-unlock-user-account-self-service): indica que un usuario desbloqueó correctamente su cuenta de Active Directory sin restablecer la contraseña en el [portal de restablecimiento de contraseña de Azure AD](https://passwordreset.microsoftonline.com) mediante la característica para desbloquear cuentas de AD sin restablecimiento.
-* [**Usuario registrado para el restablecimiento de contraseña de autoservicio**](#activity-type-user-registered-for-self-service-password-reset): indica que un usuario registró toda la información requerida para restablecer la contraseña de acuerdo con la directiva de restablecimiento de contraseña del inquilino especificado actualmente.
+* [**Bloqueado de restablecimiento de contraseña de autoservicio** ](#activity-type-blocked-from-self-service-password-reset) -indica que un usuario intentó tooreset una contraseña, use una puerta específica, o validar un número de teléfono más de 5 veces total en 24 horas.
+* [**Cambiar contraseña (autoservicio)** ](#activity-type-change-password-self-service) -indica un usuario realiza de forma voluntaria o forzada (due tooexpiry) cambio de contraseña.
+* [**Restablecimiento de contraseña (admin)** ](#activity-type-reset-password-by-admin) -indica un administrador realiza una restablecimiento en nombre del usuario del portal de Azure Hola de contraseña.
+* [**Restablecimiento de contraseñas (autoservicio)** ](#activity-type-reset-password-self-service) -indica que un usuario correctamente restablece su contraseña de hello [Portal de restablecimiento de contraseña de Azure AD](https://passwordreset.microsoftonline.com).
+* [**Progreso de la actividad de flujo de restablecimiento de contraseña de autoservicio** ](#activity-type-self-serve-password-reset-flow-activity-progress) -indica cada paso específico procede de un usuario a través de (como puerta de autenticación de restablecimiento de pasar una contraseña específica) como parte de la contraseña de hello el proceso de restablecimiento.
+* [**Desbloquear la cuenta de usuario (autoservicio)** ](#activity-type-unlock-user-account-self-service) -indica que un usuario desbloqueó correctamente su cuenta de Active Directory sin restablecer la contraseña de hello [Portal de restablecimiento de contraseña de Azure AD](https://passwordreset.microsoftonline.com) con Hola cuenta AD desbloquear sin la característica de restablecimiento.
+* [**Usuario registrado para restablecer la contraseña de autoservicio** ](#activity-type-user-registered-for-self-service-password-reset) -indica que un usuario ha registrado todos Hola requiere información toobe capaz de tooreset su contraseña de acuerdo con hello actualmente especifica la directiva de restablecimiento de contraseña del inquilino.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Tipo de actividad: Bloqueado para el restablecimiento de contraseña de autoservicio
 
-En la lista siguiente se explica en detalle esta actividad:
+Hola lista siguiente explica esta actividad en detalle:
 
-* **Descripción de la actividad**: indica que un usuario intentó restablecer una contraseña, usar una puerta específica o validar un número de teléfono más de 5 veces en total en 24 horas.
-* **Actor de la actividad**: el usuario que no pudo realizar operaciones de restablecimiento adicionales. Puede tratarse de un usuario final o un administrador.
-* **Destino de la actividad**: el usuario que no pudo realizar operaciones de restablecimiento adicionales. Puede tratarse de un usuario final o un administrador.
+* **Descripción de la actividad** : indica que un usuario intentó tooreset una contraseña, use una puerta específica o validar un número de teléfono más de 5 veces total en 24 horas.
+* **Actividad Actor** -usuario Hola que se limitó a realizar más operaciones de restablecimiento. Puede tratarse de un usuario final o un administrador.
+* **Destino de la actividad** -usuario Hola que se limitó a realizar más operaciones de restablecimiento. Puede tratarse de un usuario final o un administrador.
 * **Estados permitidos de la actividad**
-  * _Correcto_: indica que un usuario no pudo realizar restablecimientos adicionales, intentar ningún otro método de autenticación ni validar ningún otro número de teléfono durante las próximas 24 horas.
+  * _Éxito_ -indica que un usuario se limitó realice cualquier restablece adicional, intente los métodos de autenticación adicionales, o validar los números de teléfono adicionales para hello próximas 24 horas.
 * **Motivo del error del estado de la actividad**: no aplicable
 
 ### <a name="activity-type-change-password-self-service"></a>Tipo de actividad: Cambio de contraseña (autoservicio)
 
-En la lista siguiente se explica en detalle esta actividad:
+Hola lista siguiente explica esta actividad en detalle:
 
-* **Descripción de la actividad**: indica que un usuario realizó un cambio de contraseña voluntario o forzado (por expiración).
-* **Actor de la actividad**: el usuario que cambió la contraseña. Puede tratarse de un usuario final o un administrador.
-* **Destino de la actividad**: el usuario que cambió la contraseña. Puede tratarse de un usuario final o un administrador.
+* **Descripción de la actividad** : indica un usuario realiza de forma voluntaria o forzada (due tooexpiry) cambio de contraseña.
+* **Actividad Actor** -usuario Hola que ha cambiado la contraseña. Puede tratarse de un usuario final o un administrador.
+* **Destino de la actividad** -usuario Hola que ha cambiado la contraseña. Puede tratarse de un usuario final o un administrador.
 * **Estados permitidos de la actividad**
   * _Correcto_: indica que un usuario cambió correctamente la contraseña.
-  * _Error_: indica que un usuario no pudo cambiar la contraseña. Si hace clic en la fila podrá ver la categoría **Motivo del estado de la actividad** para más información sobre por qué se produjo el error.
+  * _Error_ -indica que un usuario no pudo toochange su contraseña. Si hace clic en fila Hola permite hello toosee **razón del estado de actividad** categoría toolearn más información acerca de por qué se produjo el error de Hola.
 * **Motivo del error del estado de la actividad** - 
-  * _FuzzyPolicyViolationInvalidPassword_: el usuario seleccionó una contraseña que se prohibió automáticamente debido a que las funcionalidades de detección de contraseñas prohibidas de Microsoft consideraron que era demasiado común o muy poco segura.
+  * _FuzzyPolicyViolationInvalidPassword_ -usuario Hola seleccionó una contraseña, que automáticamente se prohibió debido a las capacidades de detección de contraseña de prohibido del tooMicrosoft buscar toobe demasiado común o especialmente débil.
 
 ### <a name="activity-type-reset-password-by-admin"></a>Tipo de actividad: Restablecimiento de contraseña (de parte del administrador)
 
-En la lista siguiente se explica en detalle esta actividad:
+Hola lista siguiente explica esta actividad en detalle:
 
-* **Descripción de la actividad**: indica que un administrador realizó un restablecimiento de contraseña en nombre de un usuario en Azure Portal.
-* **Actor de la actividad**: el administrador que realizó el restablecimiento de contraseña en nombre de otro usuario final o administrador. Debe ser un administrador global, administrador de contraseñas, administrador de usuarios o administrador del departamento de soporte técnico.
-* **Destino de la actividad**: el usuario cuya contraseña se restableció. Puede tratarse de un usuario final u otro administrador.
+* **Descripción de la actividad** : indica un administrador realiza una restablecimiento en nombre del usuario del portal de Azure Hola de contraseña.
+* **Actividad Actor** -Administrador de Hola que llevó a cabo Hola de restablecimiento de contraseña en nombre de otro usuario final o el administrador. Debe ser un administrador global, administrador de contraseñas, administrador de usuarios o administrador del departamento de soporte técnico.
+* **Destino de la actividad** -usuario Hola cuya contraseña se ha restablecido. Puede tratarse de un usuario final u otro administrador.
 * **Estados permitidos de la actividad**
   * _Correcto_: indica que un administrador restableció correctamente la contraseña de un usuario.
-  * _Error_: indica que un administrador no pudo cambiar la contraseña de un usuario. Si hace clic en la fila podrá ver la categoría **Motivo del estado de la actividad** para más información sobre por qué se produjo el error.
+  * _Error_ -indica que un administrador no pudo toochange una contraseña de usuario. Si hace clic en fila Hola permite hello toosee **razón del estado de actividad** categoría toolearn más información acerca de por qué se produjo el error de Hola.
 
 ### <a name="activity-type-reset-password-self-service"></a>Tipo de actividad: Restablecimiento de contraseña (autoservicio)
 
-En la lista siguiente se explica en detalle esta actividad:
+Hola lista siguiente explica esta actividad en detalle:
 
-* **Descripción de la actividad**: indica que un usuario restableció correctamente su contraseña en el [portal de restablecimiento de contraseña de Azure AD](https://passwordreset.microsoftonline.com).
-* **Actor de la actividad**: el usuario que restableció la contraseña. Puede tratarse de un usuario final o un administrador.
-* **Destino de la actividad**: el usuario que restableció la contraseña. Puede tratarse de un usuario final o un administrador.
+* **Descripción de la actividad** : indica un usuario correctamente restablece su contraseña de hello [Portal de restablecimiento de contraseña de Azure AD](https://passwordreset.microsoftonline.com).
+* **Actividad Actor** -usuario Hola que restablece su contraseña. Puede tratarse de un usuario final o un administrador.
+* **Destino de la actividad** -usuario Hola que restablece su contraseña. Puede tratarse de un usuario final o un administrador.
 * **Estados permitidos de la actividad**
   * _Correcto_: indica que un usuario restableció correctamente su propia contraseña.
-  * _Error_: indica que un usuario no pudo restablecer su propia contraseña. Si hace clic en la fila podrá ver la categoría **Motivo del estado de la actividad** para más información sobre por qué se produjo el error.
+  * _Error_ -indica que un usuario no pudo tooreset su propia contraseña. Si hace clic en fila Hola permite hello toosee **razón del estado de actividad** categoría toolearn más información acerca de por qué se produjo el error de Hola.
 * **Motivo del error del estado de la actividad** -
-  * _FuzzyPolicyViolationInvalidPassword_: el administrador seleccionó una contraseña que se prohibió automáticamente debido a que las funcionalidades de detección de contraseñas prohibidas de Microsoft consideraron que era demasiado común o muy poco segura.
+  * _FuzzyPolicyViolationInvalidPassword_ -Hola, administrador seleccionó una contraseña, que automáticamente se prohibió debido a las capacidades de detección de contraseña de prohibido del tooMicrosoft buscar toobe demasiado común o especialmente débil.
 
 ### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Tipo de actividad: Progreso de la actividad del flujo de restablecimiento de contraseña de autoservicio
 
-En la lista siguiente se explica en detalle esta actividad:
+Hola lista siguiente explica esta actividad en detalle:
 
-* **Descripción de la actividad**: indica cada paso específico que un usuario sigue como parte del proceso de restablecimiento de contraseña (como atravesar una puerta de autenticación específica para el restablecimiento de contraseña).
-* **Actor de la actividad**: el usuario que realizó parte del flujo de restablecimiento de contraseña. Puede tratarse de un usuario final o un administrador.
-* **Destino de la actividad**: el usuario que realizó parte del flujo de restablecimiento de contraseña. Puede tratarse de un usuario final o un administrador.
+* **Descripción de la actividad** – indica cada paso específico un usuario avanza a través de (como puerta de autenticación de restablecimiento de pasar una contraseña específica) como parte de la contraseña de hello el proceso de restablecimiento.
+* **Actividad Actor** -usuario de Hola que realizó la parte de la contraseña de hello restablece flujo. Puede tratarse de un usuario final o un administrador.
+* **Destino de la actividad** -usuario de Hola que realizó la parte de la contraseña de hello restablece flujo. Puede tratarse de un usuario final o un administrador.
 * **Estados permitidos de la actividad**
-  * _Correcto_: indica que un usuario completó correctamente un paso específico del flujo de restablecimiento de contraseña.
-  * _Error_: indica que hubo un error en un paso específico del flujo de restablecimiento de contraseña. Si hace clic en la fila podrá ver la categoría **Motivo del estado de la actividad** para más información sobre por qué se produjo el error.
+  * _Éxito_ -indica un usuario se ha completado correctamente un paso concreto de flujo de restablecimiento de contraseña de Hola.
+  * _Error_ -indica un paso concreto de contraseña de hello restablece el flujo de error. Si hace clic en fila Hola permite hello toosee **razón del estado de actividad** categoría toolearn más información acerca de por qué se produjo el error de Hola.
 * **Motivos del estado permitido de la actividad**
   * Consulte la tabla siguiente para ver [todos los motivos del estado permitido de la actividad de restablecimiento](#allowed-values-for-details-column)
 
 ### <a name="activity-type-unlock-user-account-self-service"></a>Tipo de actividad: Desbloqueo de la cuenta de usuario (autoservicio)
 
-En la lista siguiente se explica en detalle esta actividad:
+Hola lista siguiente explica esta actividad en detalle:
 
-* **Descripción de la actividad**: indica que un usuario desbloqueó correctamente su cuenta de Active Directory sin restablecer la contraseña en el [portal de restablecimiento de contraseña de Azure AD](https://passwordreset.microsoftonline.com) mediante la característica para desbloquear cuentas de AD sin restablecimiento.
-* **Actor de la actividad**: el usuario que desbloqueó su cuenta sin restablecer la contraseña. Puede tratarse de un usuario final o un administrador.
-* **Destino de la actividad**: el usuario que desbloqueó su cuenta sin restablecer la contraseña. Puede tratarse de un usuario final o un administrador.
+* **Descripción de la actividad** : indica que un usuario desbloqueó correctamente su cuenta de Active Directory sin restablecer la contraseña de hello [Portal de restablecimiento de contraseña de Azure AD](https://passwordreset.microsoftonline.com) con cuenta de hello AD desbloquear sin restablecer característica.
+* **Actividad Actor** -usuario Hola que desbloquea sus cuentas sin restablecer la contraseña. Puede tratarse de un usuario final o un administrador.
+* **Destino de la actividad** -usuario Hola que desbloquea sus cuentas sin restablecer la contraseña. Puede tratarse de un usuario final o un administrador.
 * **Estados permitidos de la actividad**
   * _Correcto_: indica que un usuario desbloqueó correctamente su propia cuenta.
-  * _Error_: indica que un usuario no pudo desbloquear su cuenta. Si hace clic en la fila podrá ver la categoría **Motivo del estado de la actividad** para más información sobre por qué se produjo el error.
+  * _Error_ -indica que un usuario no pudo toounlock su cuenta. Si hace clic en fila Hola permite hello toosee **razón del estado de actividad** categoría toolearn más información acerca de por qué se produjo el error de Hola.
 
 ### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Tipo de actividad: Usuario registrado para el restablecimiento de contraseña de autoservicio
 
-En la lista siguiente se explica en detalle esta actividad:
+Hola lista siguiente explica esta actividad en detalle:
 
-* **Descripción de la actividad**: indica que un usuario registró toda la información requerida para restablecer la contraseña de acuerdo con la directiva de restablecimiento de contraseña del inquilino especificado actualmente. 
-* **Actor de la actividad**: el usuario que se registró para el restablecimiento de contraseña. Puede tratarse de un usuario final o un administrador.
-* **Destino de la actividad**: el usuario que se registró para el restablecimiento de contraseña. Puede tratarse de un usuario final o un administrador.
+* **Descripción de la actividad** : indica que un usuario ha registrado todos Hola requiere información toobe capaz de tooreset su contraseña de acuerdo con hello actualmente especifica la directiva de restablecimiento de contraseña del inquilino. 
+* **Actividad Actor** -usuario Hola que se registraron para restablecer la contraseña. Puede tratarse de un usuario final o un administrador.
+* **Destino de la actividad** -usuario Hola que se registraron para restablecer la contraseña. Puede tratarse de un usuario final o un administrador.
 * **Estados permitidos de la actividad**
-  * _Correcto_: indica que un usuario se registró correctamente para el restablecimiento de contraseña de acuerdo con la directiva actual. 
-  * _Error_: indica que un usuario no pudo registrarse para el restablecimiento de contraseña. Si hace clic en la fila podrá ver la categoría **Motivo del estado de la actividad** para más información sobre por qué se produjo el error. Nota: Esto no significa que un usuario no puede restablecer su propia contraseña, sino simplemente que no completó el proceso de registro. Si en la cuenta hay datos no comprobados que son correctos (como un número de teléfono no validado), de todos modos pueden usarlos para restablecer la contraseña, incluso si no están comprobados. Para más información, consulte [¿Qué ocurre cuando se registra un usuario?](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers)
+  * _Éxito_ -indica un registrada correctamente para restablecer la conformidad con la directiva actual Hola la contraseña del usuario. 
+  * _Error_ -indica una tooregister de usuario no se pudo para restablecer la contraseña. Si hace clic en fila Hola permite hello toosee **razón del estado de actividad** categoría toolearn más información acerca de por qué se produjo el error de Hola. Nota: esto no significa que un usuario es no se puede tooreset su propia contraseña, al igual que no se completó el proceso de registro de hello. Si no hay datos no comprobados en su cuenta de que es correcto (por ejemplo, un número de teléfono que no se valida), aunque no ha comprobado este número de teléfono, puede usarlo tooreset su contraseña. Para más información, consulte [¿Qué ocurre cuando se registra un usuario?](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Los vínculos siguientes proporcionan información adicional sobre el restablecimiento de contraseñas con Azure AD:
+Hola siguientes vínculos proporciona más información sobre el uso de Azure AD de restablecimiento de contraseña
 
-* [Acceso directo a los registros de auditoría de administración de usuario](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Audit): se le remite directamente a los registros de auditoría de administración de usuario del inquilino
+* [Registros de auditoría de administración de acceso directo toouser](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Audit) : vaya directamente registros de auditoría de administración de usuarios del inquilino de tooyour
 * [**Inicio rápido**](active-directory-passwords-getting-started.md): preparativos para el autoservicio de administración de contraseñas de Azure AD 
 * [**Licencias**](active-directory-passwords-licensing.md): configuración de licencias de Azure AD
-* [**Datos**](active-directory-passwords-data.md): información sobre los datos necesarios y cómo se usan para administrar contraseñas
-* [**Implementación**](active-directory-passwords-best-practices.md): planee e implemente SSPR en sus usuarios mediante las instrucciones que se encuentran aquí.
-* [**Personalización**](active-directory-passwords-customize.md): personalización de la experiencia de SSPR para la empresa
-* [**Artículo técnico de profundización**](active-directory-passwords-how-it-works.md): más información para comprender el funcionamiento de la administración de contraseñas
-* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? : respuestas a las preguntas que siempre se ha hecho.
-* [**Solución de problemas**](active-directory-passwords-troubleshoot.md): información para resolver problemas habituales de SSPR
+* [**Datos** ](active-directory-passwords-data.md) : comprender los datos de Hola que es necesarios y cómo se utiliza para la administración de contraseñas
+* [**Implementación** ](active-directory-passwords-best-practices.md) -planear e implementar a los usuarios de Autoservicio tooyour usando la orientación de hello encontrar aquí
+* [**Personalizar** ](active-directory-passwords-customize.md) -personalizar Hola apariencia y funcionamiento del programa Hola a la experiencia de Autoservicio de su empresa.
+* [**Profundización técnica** ](active-directory-passwords-how-it-works.md) -ir detrás de hello cortina toounderstand cómo funciona
+* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? -Responde tooquestions siempre deseara tooask
+* [**Solucionar problemas de** ](active-directory-passwords-troubleshoot.md) -Obtenga información acerca de cómo problemas comunes de tooresolve que vemos con SSPR
 * [**Directiva**](active-directory-passwords-policy.md): información sobre las directivas de contraseñas de Azure AD y cómo establecerlas

@@ -1,6 +1,6 @@
 ---
-title: "Evitar costos inesperados y administrar la facturación: Azure | Microsoft Docs"
-description: "Obtenga información acerca de cómo evitar cargos inesperados en la factura de Azure. Use características de administración y seguimiento del costo de las suscripciones a Microsoft Azure."
+title: "aaaPrevent inesperado de los costos, administrar facturación - Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooavoid cargos inesperados en la factura de Azure. Use características de administración y seguimiento del costo de las suscripciones a Microsoft Azure."
 services: 
 documentationcenter: 
 author: tonguyen10
@@ -15,116 +15,116 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/10/2017
 ms.author: tonguyen
-ms.openlocfilehash: c1185063880fa58da9487bc98977c0acae8f403d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d380f27861531351ac8e570469c59a84b9ca99e8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Prevención de cargos inesperados con la administración de costos y facturación de Azure
 
-Al suscribirse a Azure, hay varias cosas que puede hacer para obtener una idea más clara de los gastos. La [calculadora de precios](https://azure.microsoft.com/pricing/calculator/) puede proporcionar una estimación de los costos antes de crear un recurso de Azure. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) proporciona el desglose de costos actual y la previsión correspondientes a la suscripción. Si desea agrupar y comprender los costos para distintos proyectos o equipos, consulte el [etiquetado de recursos](../azure-resource-manager/resource-group-using-tags.md). Si prefiere usar el sistema de informes del que dispone su organización, compruebe las [API de facturación](billing-usage-rate-card-overview.md). 
+Al suscribirse a Azure, hay varias cosas que puede hacer tooget una idea más clara de los gastos. Hola [Calculadora de precios](https://azure.microsoft.com/pricing/calculator/) puede proporcionar una estimación de costos antes de crear un recurso de Azure. Hola [portal de Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) proporciona desglose de costo actual de Hola y previsión para su suscripción. Si desea toogroup y entender los costos para los equipos o proyectos diferentes, mirar [recursos etiquetado](../azure-resource-manager/resource-group-using-tags.md). Si su organización tiene un sistema de informes que prefiere toouse, desproteger hello [API de facturación](billing-usage-rate-card-overview.md). 
 
-También puede [descargar facturas anteriores y archivos de uso de detalle](billing-download-azure-invoice-daily-usage-date.md) para garantizar que se le cobró correctamente. Para más información sobre cómo comparar el uso diario con la factura, consulte [Entienda su factura de Microsoft Azure](billing-understand-your-bill.md).
+También puede [descargar más allá de facturas y archivos de uso de detalle](billing-download-azure-invoice-daily-usage-date.md) toomake seguro de que se cargaron correctamente. Para más información sobre cómo comparar el uso diario con la factura, consulte [Entienda su factura de Microsoft Azure](billing-understand-your-bill.md).
 
-Si realiza la suscripción en el marco de un Contrato Enterprise (EA), un Proveedor de soluciones en la nube (CSP) o Patrocinio de Azure, no podrá aplicar muchas de las características de este artículo. En su lugar, tiene a su disposición un conjunto diferente de herramientas que puede usar para administrar costes. Vea [Recursos adicionales para EA, CSP y Patrocinio](#other-offers).
+Si la suscripción es a través de un contrato Enterprise (EA), proveedor de soluciones de nube (CSP) o patrocinio de Azure, a continuación, muchas características en este artículo no aplican tooyou. En su lugar, tiene a su disposición un conjunto diferente de herramientas que puede usar para administrar costes. Vea [Recursos adicionales para EA, CSP y Patrocinio](#other-offers).
 
-Si la suscripción es una evaluación gratuita, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure bajo licencia Open (AIO) o BizSpark, la suscripción se deshabilitará automáticamente cuando se usen todos los créditos. Infórmese sobre los [límites de gasto](#spending-limit) para evitar que la suscripción se deshabilite inesperadamente. 
+Si la suscripción es una evaluación gratuita, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure bajo licencia Open (AIO) o BizSpark, la suscripción se deshabilitará automáticamente cuando se usen todos los créditos. Obtenga información acerca de [los límites de gastos](#spending-limit) tooavoid con su suscripción unexpectantly deshabilitado. 
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Obtención de costos estimados antes de agregar servicios de Azure
 
-### <a name="estimate-cost-online-using-the-pricing-calculator"></a>Estimación del coste en línea con la calculadora de precios
+### <a name="estimate-cost-online-using-hello-pricing-calculator"></a>Costo de la estimación en línea utilizando Calculadora de precios de Hola
 
-Consulte la [calculadora de precios](https://azure.microsoft.com/pricing/calculator/) para obtener un costo mensual estimado del servicio que le interesa. Puede agregar cualquier recurso de Azure propio para obtener un costo estimado.
+Extraer del repositorio hello [Calculadora de precios](https://azure.microsoft.com/pricing/calculator/) tooget un costo mensual estimado del servicio de Hola que le interesa. Puede agregar cualquier tooget de recursos de Azure de las partes primera una estimación de costo.
 
-![Captura de pantalla del menú de la calculadora de precios](./media/billing-getting-started/pricing-calc.png)
+![Captura de pantalla de hello menú de calculadora de precios](./media/billing-getting-started/pricing-calc.png)
 
-Por ejemplo, se estima que una máquina virtual Windows A1 cuesta 66,96 dólares al mes en horas de proceso si la deja ejecutándose todo el tiempo:
+Por ejemplo, una máquina Virtual (VM) de A1 Windows es estimado toocost $66.96 USD/mes en proceso horas si deja Hola todo tiempo de ejecución:
 
-![Captura de pantalla de la calculadora de precios en la que se estima que una máquina virtual Windows A1 cuesta 66,96 dólares al mes](./media/billing-getting-started/pricing-calcVM.png)
+![Captura de pantalla de la calculadora de precios de hello muestra que una VM de Windows A1 es estimado toocost 66.96 dólares al mes](./media/billing-getting-started/pricing-calcVM.png)
 
-Para más información sobre los precios, consulte estas [preguntas más frecuentes](https://azure.microsoft.com/pricing/faq/). O bien, si desea comunicarse con un vendedor de Azure, llame al 1-800-867-1389.
+Para más información sobre los precios, consulte estas [preguntas más frecuentes](https://azure.microsoft.com/pricing/faq/). O bien, si desea tootalk tooan vendedor de Azure, póngase en contacto con 1-800-867-1389.
 
-### <a name="review-the-estimated-cost-in-the-azure-portal"></a>Revisión del costo estimado en Azure Portal
+### <a name="review-hello-estimated-cost-in-hello-azure-portal"></a>Costo de hello estimado de revisión en hello portal de Azure
 
-Normalmente, cuando se agrega un servicio en Azure Portal, hay una vista que le muestra un coste estimado similar al mes. Por ejemplo, al elegir el tamaño de la máquina virtual Windows verá el costo mensual estimado de las horas de proceso:
+Normalmente cuando se agrega un servicio en hello portal de Azure, hay una vista que muestra un costo estimado similar al mes. Por ejemplo, cuando se elige el tamaño de saludo de la máquina virtual de Windows, vea Hola estimación de costo mensual para horas de proceso de hello:
 
-![Ejemplo: se estima que una máquina virtual Windows A1 cuesta 66,96 dólares al mes](./media/billing-getting-started/vm-size-cost.PNG)
+![Ejemplo: una VM de Windows A1 es estimado toocost 66.96 dólares al mes](./media/billing-getting-started/vm-size-cost.PNG)
 
 ### <a name="set-up-billing-alerts"></a>Configurar alertas de facturación para las suscripciones de Microsoft Azure
 
-Configure alertas de facturación para recibir mensajes de correo electrónico cuando los costes de uso superen el importe que especifique. Si dispone de créditos mensuales, configure alertas para cuando supere una cantidad específica. Para obtener más información, consulte [Configurar alertas de facturación para las suscripciones de Microsoft Azure](billing-set-up-alerts.md).
+Configurar alertas de facturación tooget mensajes de correo electrónico cuando los costos de uso superan un importe especificado. Si dispone de créditos mensuales, configure alertas para cuando supere una cantidad específica. Para obtener más información, consulte [Configurar alertas de facturación para las suscripciones de Microsoft Azure](billing-set-up-alerts.md).
 
 ![Captura de pantalla de un correo electrónico de alerta de facturación](./media/billing-getting-started/billing-alert.png)
 
 > [!NOTE]
 > Esta característica está todavía en versión preliminar, por lo que debe comprobar periódicamente el uso.
 
-Puede usar la estimación del coste de la calculadora de precios como guía para la primera alerta.
+Puede ser conveniente toouse Hola costo estimado de hello Calculadora de precios como guía para la primera alerta.
 
 ### <a name="spending-limit"></a> Comprobación para saber si tiene un límite de gasto activado
 
-Si tiene una suscripción que usa créditos, el límite de gasto estará activo de forma predeterminada. De esta manera, cuando gasta todos sus créditos, no se le cobra en su tarjeta de crédito. Consulte la [lista completa de ofertas de Azure y la disponibilidad del límite de gasto](https://azure.microsoft.com/support/legal/offer-details/).
+Si tiene una suscripción que usa créditos, a continuación, Hola límite de gasto está activado para, de forma predeterminada. De esta manera, cuando gasta todos sus créditos, no se le cobra en su tarjeta de crédito. Vea hello [lista completa de ofertas de Azure y la disponibilidad de Hola de límite de gasto](https://azure.microsoft.com/support/legal/offer-details/).
 
-Sin embargo, si se alcanza el límite de gasto, se deshabilitarán sus servicios. Esto significa que se desasignarán sus máquinas virtuales. Para evitar el tiempo de inactividad del servicio debe desactivar el límite de gasto. Cualquier uso por encima del límite se cargará en su tarjeta de crédito guardada. 
+Sin embargo, si se alcanza el límite de gasto, se deshabilitarán sus servicios. Esto significa que se desasignarán sus máquinas virtuales. tiempo de inactividad de servicio tooavoid, debe desactivar Hola límite de gasto. Cualquier uso por encima del límite se cargará en su tarjeta de crédito guardada. 
 
-Para ver si tiene activo un límite de gasto, vaya a la [vista de suscripciones del Centro de cuentas](https://account.windowsazure.com/Subscriptions). Aparecerá un mensaje emergente si su límite de gasto está activo:
+toosee si se ha obtenido límite de gasto, vaya toohello [vista de suscripciones en el centro de cuentas de hello](https://account.windowsazure.com/Subscriptions). Aparecerá un mensaje emergente si su límite de gasto está activo:
 
-![Captura de pantalla que muestra una advertencia sobre un límite de gasto que está activo en el Centro de cuentas](./media/billing-getting-started/spending-limit-banner.PNG)
+![Captura de pantalla que muestra una advertencia sobre invierte más del límite que se está en hello centro de cuentas](./media/billing-getting-started/spending-limit-banner.PNG)
 
-Haga clic en el mensaje emergente y siga las indicaciones para quitar el límite de gasto. Si no facilitó la información de la tarjeta de crédito cuando se suscribió, deberá facilitarla ahora para quitar el límite de gasto. Para más información, consulte [Límite de gasto de Azure: cómo funciona y cómo habilitarlo o quitarlo](https://azure.microsoft.com/pricing/spending-limits/).
+Haga clic en el banner de Hola y siga las indicaciones tooremove Hola límite de gasto. Si no escribe información de tarjeta de crédito cuando se suscribió, debe escribirla hello tooremove límite de gasto. Para obtener más información, consulte [Azure límite de gasto: cómo funciona y cómo tooenable o lo quite](https://azure.microsoft.com/pricing/spending-limits/).
 
-## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Formas de supervisar los costos cuando se usan servicios de Azure
+## <a name="ways-toomonitor-your-costs-when-using-azure-services"></a>Formas toomonitor los costos al usar servicios de Azure
 
-### <a name="tags"></a> Incorporación de etiquetas a los recursos para agrupar los datos de facturación
+### <a name="tags"></a>Agregue etiquetas tooyour recursos toogroup sus datos de facturación
 
-Para los servicios compatibles, puede usar etiquetas a fin de agrupar los datos de facturación. Por ejemplo, si ejecuta varias máquinas virtuales para los distintos equipos, puede utilizar etiquetas para clasificar los costes por centro de coste (Recursos humanos, Marketing, Finanzas) o por entorno (producción, preproducción, pruebas). 
+Puede usar datos de facturación de toogroup de etiquetas para los servicios compatibles. Por ejemplo, si ejecuta varias máquinas virtuales para los distintos equipos, puede usar etiquetas toocategorize costos por centro de costo (recursos humanos, marketing, Finanzas) o entorno (prueba de preproducción, producción,). 
 
-![Captura de pantalla que muestra la configuración de etiquetas en el portal](./media/billing-getting-started/tags.PNG)
+![Captura de pantalla que muestra cómo configurar etiquetas en el portal de Hola](./media/billing-getting-started/tags.PNG)
 
-Las etiquetas se mostrarán a lo largo de las diferentes vistas de informe de costes. Por ejemplo, son visibles directamente en la [vista de análisis de costes](#costs) y en los archivos [.csv de uso detallados](#invoice-and-usage) después del primer período de facturación.
+Hola etiquetas se muestran a lo largo de costo diferentes vistas de informes. Por ejemplo, son visibles directamente en la [vista de análisis de costes](#costs) y en los archivos [.csv de uso detallados](#invoice-and-usage) después del primer período de facturación.
 
-Para obtener más información, vea [Uso de etiquetas para organizar los recursos de Azure](../azure-resource-manager/resource-group-using-tags.md).
+Para obtener más información, consulte [mediante etiquetas tooorganize los recursos de Azure](../azure-resource-manager/resource-group-using-tags.md).
 
-### <a name="costs"></a> Visite el portal con regularidad para conocer el análisis de costes y la tasa de evolución
+### <a name="costs"></a>Visite el portal de hello para el análisis de costos con regularidad y tasa de evolución
 
-Después de ejecutar los servicios, compruebe regularmente el coste de estos. Puede ver el gasto actual y la tasa de evolución en Azure Portal. 
+Después de ejecutar los servicios, compruebe regularmente el coste de estos. Puede ver Hola actual invierte y tasa de evolución en el portal de Azure. 
 
-1. Vaya a la [hoja de suscripciones en Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) y seleccione una suscripción.
+1. Visite hello [hoja de suscripciones en el portal de Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) y seleccione una suscripción.
 
-2. El análisis de coste y la tasa de evolución deben aparecer en la hoja emergente. Es posible que su oferta no lo admita (en cuyo caso, se mostrará una advertencia en la parte superior).
+2. Debe ver desglose de costo de Hola y tasa de evolución en la hoja de la ventana emergente de Hola. No puede admitirse para su oferta (se mostrará una advertencia cerca de la parte superior de hello).
 
-    ![Captura de pantalla de la tasa de evolución y el análisis de coste en Azure Portal](./media/billing-getting-started/burn-rate.PNG)
+    ![Captura de pantalla de tasa de avance y desglose en hello portal de Azure](./media/billing-getting-started/burn-rate.PNG)
 
-3. Haga clic en **Análisis de costes** en la lista de la izquierda para ver el análisis de costes por recursos. Espere 24 horas después de agregar un servicio para que se rellenen los datos.
+3. Haga clic en **análisis de costos** en hello lista toohello toosee izquierdo Hola costo desglose por recurso. Espere 24 horas después de agregar un servicio para hello toopopulate de datos.
 
-    ![Captura de pantalla de la vista de análisis de costes en Azure Portal](./media/billing-getting-started/cost-analysis.PNG)
+    ![Captura de pantalla de vista de análisis de costos de hello en el portal de Azure](./media/billing-getting-started/cost-analysis.PNG)
 
-4. Puede filtrar por diferentes propiedades como [etiquetas](#tags), grupo de recursos e intervalo de tiempo. Haga clic en **Aplicar** para confirmar los filtros y en **Descargar** si desea exportar la vista a un archivo de valores separados por comas (.csv).
+4. Puede filtrar por diferentes propiedades como [etiquetas](#tags), grupo de recursos e intervalo de tiempo. Haga clic en **aplicar** tooconfirm filtros de Hola y **descargar** si desea que el archivo de valores separados por comas (.csv) de tooexport hello vista tooa.
 
-5. Además, puede hacer clic en un recurso para ver el historial de gastos y cuánto cuesta cada día el recurso.
+5. Además, puede hacer clic en un recurso toosee dedicar el historial y cuánto recursos Hola cuesta cada día.
 
-    ![Captura de pantalla de la vista de historial de gastos en Azure Portal](./media/billing-getting-started/costhistory.PNG)
+    ![Captura de pantalla de hello dedican la vista de historial en el portal de Azure](./media/billing-getting-started/costhistory.PNG)
 
-Le recomendamos que compare los costes reales con las estimaciones que vio cuando seleccionó los servicios. Si los costes difieren mucho de las estimaciones, debe comprobar el plan de precios que ha seleccionado para los recursos (máquinas virtuales A1 en lugar de A0, por ejemplo). 
+Le recomendamos que compruebe los costos de Hola que se ven con las estimaciones de Hola que vio cuando selecciona servicios de Hola. Si los costos de hello bastante difieren de las estimaciones, compruébela Hola precios plan (A1 vs VM A0, por ejemplo) que ha seleccionado para sus recursos. 
 
 ### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>Habilitación de medidas de reducción de costes como el apagado automático de las máquinas virtuales
 
-Según el escenario, puede configurar el apagado automático de las máquinas virtuales en Azure Portal. Para más información, consulte [Auto-shutdown for VMs using Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) (Apagado automático de máquinas virtuales mediante Azure Resource Manager)///.
+Según el escenario, puede configurar apagado automático para las máquinas virtuales en hello portal de Azure. Para más información, consulte [Auto-shutdown for VMs using Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) (Apagado automático de máquinas virtuales mediante Azure Resource Manager)///.
 
-![Captura de pantalla de la opción de apagado automático en el portal](./media/billing-getting-started/auto-shutdown.PNG)
+![Captura de pantalla de opción de cierre automático en el portal de Hola](./media/billing-getting-started/auto-shutdown.PNG)
 
-El apagado automático no es lo mismo que cuando apaga la máquina virtual desde dentro mediante las opciones de energía. El apagado automático detiene y desasigna las máquinas virtuales para impedir gastos por uso adicionales. Para más información, consulte las preguntas más frecuentes sobre precios de [máquinas virtuales Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) y [máquinas virtuales Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) y sobre los estados de máquinas virtuales.
+Cierre automático no Hola igual que cuando cerró durante Hola VM con opciones de energía. Apagado automático se detiene y desasigna su toostop de máquinas virtuales en gastos de uso adicionales. Para más información, consulte las preguntas más frecuentes sobre precios de [máquinas virtuales Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) y [máquinas virtuales Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) y sobre los estados de máquinas virtuales.
 
 Para conocer más medidas de reducción de costes de los entornos de desarrollo y pruebas, visite [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/).
 
 ### <a name="turn-on-and-check-out-azure-advisor-recommendations"></a>Active y compruebe las recomendaciones de Azure Advisor
 
-[Azure Advisor](../advisor/advisor-overview.md) es una característica en versión preliminar que ayuda a reducir los costes, ya que identifica los recursos que se usan poco. Actívelo en Azure Portal:
+[Azure Advisor](../advisor/advisor-overview.md) es una característica en versión preliminar que ayuda a reducir los costes, ya que identifica los recursos que se usan poco. Actívelo en hello portal de Azure:
 
 ![Captura de pantalla del botón de Azure Advisor en Azure Portal](./media/billing-getting-started/advisor-button.PNG)
 
-Puede obtener recomendaciones prácticas sobre en la pestaña **Cost** (Costo) del panel de Advisor:
+A continuación, puede obtener recomendaciones útiles en hello **costo** ficha Panel de Asistente de hello:
 
 ![Captura de pantalla de ejemplo de recomendación de coste de Advisor](./media/billing-getting-started/advisor-action.PNG)
 
@@ -132,32 +132,32 @@ Para obtener más información, consulte las [recomendaciones sobre el costo de 
 
 ### <a name="billing-api"></a>API de facturación
 
-Utilice la API de facturación para obtener mediante programación los datos de uso. Use la API de RateCard y la API de uso juntas para obtener el uso facturado. Para más información, consulte [Obtención de información sobre el consumo de recursos de Microsoft Azure](billing-usage-rate-card-overview.md).
+Utilice los datos de uso de get de facturación API tooprogrammatically. Mediante hello API RateCard y tooget conjuntamente de API de uso de hello el uso de facturación. Para más información, consulte [Obtención de información sobre el consumo de recursos de Microsoft Azure](billing-usage-rate-card-overview.md).
 
 ## <a name="other-offers"></a> Recursos adicionales y casos especiales
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>Clientes patrocinadores, CSP y EA
-Hable con el administrador de la cuenta o el asociado de Azure para conocer más información.
+Hable Gestor de cuentas de tooyour o tooget de asociado de Azure iniciado.
 
 | Oferta | Recursos |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Contrato Enterprise (EA) | [Portal EA](https://ea.azure.com/), [documentos de ayuda](https://ea.azure.com/helpdocs) e [informe de Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Proveedor de soluciones en la nube (CSP) | Hable con el proveedor |
+| Proveedor de soluciones en la nube (CSP) | Hable tooyour proveedor |
 | Patrocinio de Azure | [Portal de patrocinio](https://www.microsoftazuresponsorships.com/) |
 
-Si es el administrador de una infraestructura de TI para una organización grande, es recomendable que vea las [plantillas scaffold empresariales de Azure](../azure-resource-manager/resource-manager-subscription-governance.md) y las [notas del producto TI empresarial](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (descarga en .pdf, solo en inglés).
+Si está administrando TI para una organización grande, es recomendable leer [scaffold Azure enterprise](../azure-resource-manager/resource-manager-subscription-governance.md) hello y [enterprise notas del producto IT](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (descarga de PDF, sólo en inglés).
 
 ### <a name="check-your-subscription-and-access"></a>Comprobación de la suscripción y el acceso
 
-La visualización de costes requiere [acceso de nivel de suscripciones a la información de facturación](billing-manage-access.md), pero solo el administrador de la cuenta puede acceder al [Centro de cuentas](https://account.windowsazure.com/Home/Index), cambiar la información de facturación y administrar las suscripciones. El administrador de la cuenta es la persona que ha completado el proceso de suscripción. Para más información, consulte [Adición o cambio de roles de administrador de Azure que administran la suscripción o servicios](billing-add-change-azure-subscription-administrator.md).
+Los costos de visualización requieren [información de acceso de nivel de suscripciones toobilling](billing-manage-access.md), pero Hola solo el Administrador de la cuenta puede tener acceso a hello [centro de cuentas de](https://account.windowsazure.com/Home/Index), cambiar información de facturación y administrar suscripciones. Hola, Administrador de cuenta es Hola quien se dirigió a través del proceso de registro de hello. Para obtener más información, consulte [agregar o cambiar roles de administrador de Azure que administran la suscripción de Hola o servicios](billing-add-change-azure-subscription-administrator.md).
 
-Para ver si usted es el administrador de la cuenta, vaya a la [hoja de suscripciones en Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) y examine la lista de suscripciones a las que tiene acceso. Busque en **Mi rol**. Si dice *Administrador de cuenta*, entonces, todo correcto. Si dice algo más como *Propietario*, entonces no tiene privilegios completos.
+toosee si está Hola Administrador de la cuenta, vaya toohello [hoja de suscripciones en el portal de Azure hello](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) y fíjese en la lista de Hola de suscripciones tienen acceso a. Busque en **Mi rol**. Si dice *Administrador de cuenta*, entonces, todo correcto. Si dice algo más como *Propietario*, entonces no tiene privilegios completos.
 
-![Captura de pantalla de su rol en la vista de suscripciones de Azure Portal](./media/billing-getting-started/sub-blade-view.PNG)
+![Vista de suscripciones en la captura de pantalla de su rol en Hola Hola portal de Azure](./media/billing-getting-started/sub-blade-view.PNG)
 
-Si no es el administrador de la cuenta, posiblemente alguien le dio acceso parcial mediante el [control de acceso basado en roles de Azure Active Directory](../active-directory/role-based-access-control-configure.md) (RBAC). Para administrar suscripciones y cambiar la información de facturación [averigüe quién es el administrador de la cuenta](billing-subscription-transfer.md#whoisaa) y pídale que realice las tareas o que le [transfiera la suscripción](billing-subscription-transfer.md).
+Si no está Hola Administrador de la cuenta, alguien probablemente le dio acceso parcial a través de [basada en roles de Azure Active Directory Access Control](../active-directory/role-based-access-control-configure.md) (RBAC). toomanage suscripciones y facturación, información de [buscar Administrador de la cuenta de hello](billing-subscription-transfer.md#whoisaa) y pídale que las tareas de hello tooperform o [transferir Hola suscripción tooyou](billing-subscription-transfer.md).
 
-Si el administrador de la cuenta ya no está en su organización y necesita administrar la facturación, [póngase en contacto con el soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
+Si el Administrador de la cuenta ya no está en su organización y necesita facturación toomanage, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Ponerse en contacto con soporte técnico
 
-Si necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente.
+Si necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema.

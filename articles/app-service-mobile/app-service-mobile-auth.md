@@ -1,6 +1,6 @@
 ---
-title: "Autenticación y autorización en Azure Mobile Apps | Microsoft Docs"
-description: "Referencia e información general conceptual de la característica de autenticación o autorización para Aplicaciones móviles de Azure"
+title: "aaaAuthentication y la autorización en aplicaciones móviles de Azure | Documentos de Microsoft"
+description: "Referencia conceptual e información general sobre Hola autenticación / autorización de características para las aplicaciones móviles de Azure"
 services: app-service\mobile
 documentationcenter: 
 author: mattchenderson
@@ -14,95 +14,95 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 92c9f91807a6b5d4fea6b504256508f805627a16
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5255734481ada11afb65982aebe45c2a349402fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="authentication-and-authorization-in-azure-mobile-apps"></a>Autenticación y autorización en Aplicaciones móviles de Azure
 ## <a name="what-is-app-service-authentication--authorization"></a>¿Qué es la autenticación o autorización del Servicio de aplicaciones?
 > [!NOTE]
-> Este tema se migrará al artículo consolidado [Autenticación y autorización en el Servicio de aplicaciones de Azure](../app-service/app-service-authentication-overview.md) , que abarca las aplicaciones web, móviles y de API.
+> En este tema será tooa migrada consolidado [aplicación de servicio de autenticación / autorización](../app-service/app-service-authentication-overview.md) tema, que cubre a Web, móviles y aplicaciones de API.
 > 
 > 
 
-La autenticación o autorización del Servicio de aplicaciones es una característica que permite que los usuarios inicien sesión en la aplicación sin necesidad de realizar cambios en el código del back-end de la misma. Ofrece una forma fácil de proteger su aplicación y trabajar con datos por usuario.
+Aplicación servicio de autenticación o autorización es una característica que permite su toolog de aplicación en los usuarios sin cambios de código necesarios en el back-end de hello aplicación. Proporciona una manera sencilla de tooprotect la aplicación y el trabajo con datos por usuario.
 
-El Servicio de aplicaciones usa la identidad federada, en la cual un **proveedor de identidades** ("IdP") de terceros almacena cuentas y autentica usuarios, mientras que la aplicación utiliza esta identidad en lugar de la suya. App Service admite cinco proveedores de identidades estándar: *Azure Active Directory*, *Facebook*, *Google*, *Cuenta Microsoft* y *Twitter*. También puede ampliar esta compatibilidad con sus aplicaciones integrando otro proveedor de identidades o su propia solución de identidad personalizada.
+Servicio de aplicaciones usa identidades federadas, en el que una entidad 3rd **proveedor de identidades** ("IDP") almacena las cuentas y autentica a los usuarios y la aplicación hello usa esta identidad en lugar de su propio. Servicio de aplicaciones admite cinco proveedores de identidad fuera del cuadro de hello: *Azure Active Directory*, *Facebook*, *Google*, *Account Microsoft*, y *Twitter*. También puede ampliar esta compatibilidad con sus aplicaciones integrando otro proveedor de identidades o su propia solución de identidad personalizada.
 
 La aplicación puede aprovechar cualquier cantidad de estos proveedores de identidades, por lo que puede proporcionar opciones de inicio de sesión a sus usuarios finales.
 
-Si desea comenzar inmediatamente, consulte uno de los siguientes tutoriales:
+Si desea tooget inicia inmediatamente, vea uno de hello tutoriales:
 
-* [Incorporación de la autenticación a la aplicación iOS]
-* [Adición de la autenticación a la aplicación Xamarin.iOS]
-* [Adición de la autenticación a la aplicación Xamarin.Android]
-* [Adición de la autenticación a la aplicación de Windows]
+* [Agregar aplicación de iOS de tooyour de autenticación]
+* [Agregar aplicación de autenticación tooyour Xamarin.iOS]
+* [Agregar aplicación de autenticación tooyour Xamarin.Android]
+* [Agregar aplicación de Windows de autenticación tooyour]
 
 ## <a name="how-authentication-works"></a>Funcionamiento de la autenticación
-Para autenticarse con uno de los proveedores de identidades, primero debe configurar el proveedor de identidades para obtener información sobre su aplicación. A continuación, el proveedor de identidades le proporcionará identificadores y secretos que, a su vez, proporciona a la aplicación. De este modo se completa la relación de confianza y se permite al Servicio de aplicaciones validar las identidades proporcionadas al mismo.
+En orden tooauthenticate mediante uno de los proveedores de identidades de hello, primero debe tooknow de proveedor de identidad de hello tooconfigure acerca de la aplicación. proveedor de identidades de Hello, a continuación, le proporcionará los identificadores y secretos que proporcionan aplicaciones toohello atrás. Esto completa la relación de confianza de Hola y permite tooit de servicio de aplicaciones toovalidate identidades proporcionadas.
 
-Estos pasos se describen en los temas siguientes:
+Estos pasos se detallan en hello temas siguientes:
 
-* [Configuración de la aplicación para usar el inicio de sesión de Azure Active Directory]
-* [Configuración de la aplicación para usar el inicio de sesión de Facebook]
-* [Configuración de la aplicación para usar el inicio de sesión de Google]
-* [Configuración de la aplicación para usar el inicio de sesión de la cuenta Microsoft]
-* [Configuración de la aplicación para usar el inicio de sesión de Twitter]
+* [Cómo tooconfigure su inicio de sesión de Azure Active Directory de toouse de aplicación]
+* [Cómo tooconfigure su inicio de sesión de Facebook de toouse de aplicación]
+* [Cómo tooconfigure su inicio de sesión de Google de toouse de aplicación]
+* [Cómo tooconfigure su inicio de sesión de aplicación toouse Account de Microsoft]
+* [Cómo tooconfigure su inicio de sesión de Twitter de toouse de aplicación]
 
-Una vez que se ha configurado todo en el back-end, puede modificar su cliente para iniciar sesión. Hay dos enfoques aquí:
+Una vez que está todo configurado en hello back-end, puede modificar su toolog de cliente en. Hay dos enfoques aquí:
 
-* Permita que los usuarios inicien sesión en el SDK del cliente de Aplicaciones móviles con una sola línea de código.
-* Aproveche un SDK publicado por un proveedor de identidades determinado para establecer la identidad y después obtener acceso al Servicio de aplicaciones.
+* Con una sola línea de código, permiten Hola inicio de sesión SDK de cliente de aplicaciones móviles en los usuarios.
+* Aprovechar un SDK publicado por una identidad de tooestablish de proveedor de identidad determinada y, a continuación, obtener acceso tooApp servicio.
 
 > [!TIP]
-> La mayoría de las aplicaciones deben usar un SDK del proveedor para obtener una experiencia de inicio de sesión más nativa y aprovechar la compatibilidad de actualización y otras ventajas específicas del proveedor.
+> Mayoría de las aplicaciones debe utilizar un tooget SDK de proveedor una experiencia de inicio de sesión de esta sensación más nativo y compatibilidad con la actualización de tooleverage y otras ventajas específicas del proveedor.
 > 
 > 
 
 ### <a name="how-authentication-without-a-provider-sdk-works"></a>Funcionamiento de la autenticación sin un SDK del proveedor
-Si no desea configurar un SDK del proveedor, puede dejar que Aplicaciones móviles realice el inicio de sesión por usted. El SDK del cliente de Aplicaciones móviles abrirá una vista web al proveedor de su elección y completará el inicio de sesión. En ocasiones, en blogs y foros encontrará que se hace referencia a este como "flujo de servidor" o "flujo dirigido al servidor", pues el servidor administra el inicio de sesión y el SDK del cliente nunca recibe el token del proveedor.
+Si no desea tooset un proveedor de SDK, puede permitir el inicio de sesión de aplicaciones móviles tooperform Hola automáticamente. SDK de cliente de aplicaciones móviles de Hola abrirá un proveedor de toohello de vista web de su inicio de sesión completa y eligiendo la opción de hello en. Ocasionalmente en blogs y foros que verá esto conoce tooas Hola "flujo de servidor" o "dirigida por el servidor de flujo" desde el servidor de hello es la administración de inicio de sesión de Hola y SDK de cliente de hello nunca recibe el token del proveedor Hola.
 
-El código necesario para iniciar este flujo se trata en el tutorial de autenticación para cada plataforma. Al final del flujo, el SDK del cliente tiene un token del Servicio de aplicaciones que se adjunta automáticamente a todas las solicitudes para el back-end.
+código de Hello necesario toostart que este flujo se trata en el tutorial de autenticación de Hola para cada plataforma. Al final de Hola de flujo de hello, Hola cliente SDK tiene un token de servicio de aplicaciones y el token de hello es tooall unido automáticamente las solicitudes toohello back-end.
 
 ### <a name="how-authentication-with-a-provider-sdk-works"></a>Funcionamiento de la autenticación con un SDK del proveedor
-Trabajar con un SDK del proveedor permite que la experiencia de inicio de sesión interactúe de manera más estrecha con el sistema operativo de la plataforma donde se ejecuta la aplicación. También le proporciona un token del proveedor e información de usuario sobre el cliente, lo que facilita en gran medida el consumo de API de gráficos y la personalización de la experiencia del usuario. En ocasiones, en blogs y foros encontrará que se hace referencia a este como "flujo de cliente" o "flujo dirigido al cliente", pues el código del cliente controla el inicio de sesión y tiene acceso a un token del proveedor.
+Trabajar con un proveedor de SDK permite toointeract de experiencia de inicio de sesión de hello más estrechamente con la plataforma de hello aplicación hello de sistema operativo se está ejecutando en. Esto le brinda un token del proveedor y cierta información de usuario en el cliente de hello, que resulta mucho más fácil de gráfico de tooconsume API y personalizar la experiencia del usuario Hola. En ocasiones, en blogs y foros verá este hello tooas denominado "flujo de cliente" o "flujo dirigida por el cliente" desde el código de cliente de hello lleva a cabo el inicio de sesión de Hola y código de cliente de hello tiene el token de acceso del proveedor tooa.
 
-Una vez que se obtiene un token del proveedor, debe enviarse al Servicio de aplicaciones para su validación. Al final del flujo, el SDK del cliente tiene un token del Servicio de aplicaciones que se adjunta automáticamente a todas las solicitudes para el back-end. El desarrollador también puede mantener una referencia al token del proveedor si así lo desea.
+Una vez que se obtiene un token del proveedor, debe toobe envía tooApp servicio para la validación. Al final de Hola de flujo de hello, Hola cliente SDK tiene un token de servicio de aplicaciones y el token de hello es tooall unido automáticamente las solicitudes toohello back-end. desarrollador de Hello también puede mantener un token del proveedor de toohello de referencia si así lo deciden.
 
 ## <a name="how-authorization-works"></a>Funcionamiento de la autorización
-La autenticación o autorización del Servicio de aplicaciones expone varias opciones para **Acción por realizar cuando no se autentique la solicitud**. Antes de que el código reciba una solicitud determinada, puede hacer que el Servicio de aplicaciones compruebe si la solicitud se ha autenticado y, si no es así, rechazarla e intentar que el usuario inicie sesión antes de probar de nuevo.
+Aplicación servicio de autenticación / autorización expone varias opciones de **tootake de acción cuando no se autentica la solicitud**. Antes de que el código recibe una solicitud determinada, que puede tener toosee de comprobación de servicio de aplicaciones si Hola solicitud está autenticada y si no es así, se rechaza y se intento de inicio de sesión de usuario de toohave hello en antes de intentarlo de nuevo.
 
-Una opción es el redireccionamiento de las solicitudes no autenticadas a uno de los proveedores de identidades. En realidad, en un explorador web, esto llevaría al usuario a una nueva página. Sin embargo, su cliente móvil no puede redirigirse de esta manera y las respuestas no autenticadas recibirán una respuesta HTTP del tipo *401 - No autorizado*. Dicho esto, la primera solicitud realizada por el cliente siempre debe ser para el punto de conexión de inicio de sesión y después podrá realizar llamadas a cualquier otra API. Si intenta llamar a otra API antes de iniciar sesión, el cliente recibirá un error.
+Una opción es toohave sin autenticar solicitudes redirección tooone Hola de proveedores de identidades. En un explorador web, realmente tardaría tooa nueva página de usuario de Hola. Sin embargo, su cliente móvil no puede redirigirse de esta manera y las respuestas no autenticadas recibirán una respuesta HTTP del tipo *401 - No autorizado*. Por tanto, primera solicitud de hello hace que el cliente siempre debería ser toohello extremo de inicio de sesión y, a continuación, puede realizar llamadas tooany otras API. Si intentas toocall otra API antes de iniciar sesión, el cliente recibirá un error.
 
-Si desea tener un control pormenorizado sobre qué puntos de conexión requieren autenticación, también puede elegir "Ninguna acción (permitir solicitud)" para las solicitudes no autenticadas. En este caso, todas las decisiones de autenticación se aplazan al código de la aplicación. Además, gracias a esto puede permitir el acceso a usuarios específicos según las reglas de autorización personalizadas.
+Si desea que toohave más granulares control sobre qué puntos de conexión requiere autenticación, también puede seleccionar "ninguna acción (solicitud de permitidas)" para las solicitudes no autenticadas. En este caso, se difieren todas las decisiones de autenticación tooyour código de la aplicación. Esto también permite tooallow acceso toospecific a los usuarios en función de reglas de autorización personalizada.
 
 ## <a name="documentation"></a>Documentación
-Los siguientes tutoriales muestran cómo incorporar la autenticación a los clientes móviles con el Servicio de aplicaciones:
+Hola siguientes tutoriales muestran cómo tooadd autenticación tooyour los clientes móviles mediante el servicio de aplicaciones:
 
-* [Incorporación de la autenticación a la aplicación iOS]
-* [Adición de la autenticación a la aplicación Xamarin.iOS]
-* [Adición de la autenticación a la aplicación Xamarin.Android]
-* [Adición de la autenticación a la aplicación de Windows]
+* [Agregar aplicación de iOS de tooyour de autenticación]
+* [Agregar aplicación de autenticación tooyour Xamarin.iOS]
+* [Agregar aplicación de autenticación tooyour Xamarin.Android]
+* [Agregar aplicación de Windows de autenticación tooyour]
 
-En los siguientes tutoriales se muestra cómo configurar el Servicio de aplicaciones para aprovechar los distintos proveedores de autenticación:
+Hola siguientes tutoriales muestran cómo tooconfigure servicio de aplicaciones tooleverage diferentes proveedores de autenticación:
 
-* [Configuración de la aplicación para usar el inicio de sesión de Azure Active Directory]
-* [Configuración de la aplicación para usar el inicio de sesión de Facebook]
-* [Configuración de la aplicación para usar el inicio de sesión de Google]
-* [Configuración de la aplicación para usar el inicio de sesión de la cuenta Microsoft]
-* [Configuración de la aplicación para usar el inicio de sesión de Twitter]
+* [Cómo tooconfigure su inicio de sesión de Azure Active Directory de toouse de aplicación]
+* [Cómo tooconfigure su inicio de sesión de Facebook de toouse de aplicación]
+* [Cómo tooconfigure su inicio de sesión de Google de toouse de aplicación]
+* [Cómo tooconfigure su inicio de sesión de aplicación toouse Account de Microsoft]
+* [Cómo tooconfigure su inicio de sesión de Twitter de toouse de aplicación]
 
-Si desea usar un sistema de identidades diferente a los proporcionados aquí, también puede aprovechar la [compatibilidad con la autenticación personalizada de vista previa en el SDK de servidor .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth).
+Si desea toouse un sistema de identidades distinto de hello los proporcionados en este caso, también puede aprovechar hello [obtener una vista previa de compatibilidad con la autenticación personalizada en el servidor de hello .NET SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth).
 
-[Incorporación de la autenticación a la aplicación iOS]: app-service-mobile-ios-get-started-users.md
-[Adición de la autenticación a la aplicación Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started-users.md
-[Adición de la autenticación a la aplicación Xamarin.Android]: app-service-mobile-xamarin-android-get-started-users.md
-[Adición de la autenticación a la aplicación de Windows]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Agregar aplicación de iOS de tooyour de autenticación]: app-service-mobile-ios-get-started-users.md
+[Agregar aplicación de autenticación tooyour Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started-users.md
+[Agregar aplicación de autenticación tooyour Xamarin.Android]: app-service-mobile-xamarin-android-get-started-users.md
+[Agregar aplicación de Windows de autenticación tooyour]: app-service-mobile-windows-store-dotnet-get-started-users.md
 
-[Configuración de la aplicación para usar el inicio de sesión de Azure Active Directory]: app-service-mobile-how-to-configure-active-directory-authentication.md
-[Configuración de la aplicación para usar el inicio de sesión de Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
-[Configuración de la aplicación para usar el inicio de sesión de Google]: app-service-mobile-how-to-configure-google-authentication.md
-[Configuración de la aplicación para usar el inicio de sesión de la cuenta Microsoft]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[Configuración de la aplicación para usar el inicio de sesión de Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
+[Cómo tooconfigure su inicio de sesión de Azure Active Directory de toouse de aplicación]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Cómo tooconfigure su inicio de sesión de Facebook de toouse de aplicación]: app-service-mobile-how-to-configure-facebook-authentication.md
+[Cómo tooconfigure su inicio de sesión de Google de toouse de aplicación]: app-service-mobile-how-to-configure-google-authentication.md
+[Cómo tooconfigure su inicio de sesión de aplicación toouse Account de Microsoft]: app-service-mobile-how-to-configure-microsoft-authentication.md
+[Cómo tooconfigure su inicio de sesión de Twitter de toouse de aplicación]: app-service-mobile-how-to-configure-twitter-authentication.md

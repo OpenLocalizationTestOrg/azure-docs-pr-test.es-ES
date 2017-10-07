@@ -1,6 +1,6 @@
 ---
-title: "Límites y cuotas del servicio para Azure Batch | Microsoft Docs"
-description: "Obtenga información sobre las restricciones, los límites y las cuotas de Azure Batch predeterminados y cómo solicitar un aumento de la cuota."
+title: "aaaService las cuotas y límites de lote de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de las cuotas de lote de Azure de forma predeterminada, los límites y restricciones, y cómo aumenta la cuota de toorequest"
 services: batch
 documentationcenter: 
 author: tamram
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3f69ed8d3a985afe07e648e7512a88b25278ced
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6035d1c7618cfe97ebca3780e02a4ee34f54e534
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>Límites y cuotas del servicio Lote
 
-Al igual que en otros servicios de Azure, existen límites en determinados recursos asociados con el servicio Lote. Muchos de ellos son cuotas predeterminadas que Azure aplica en el nivel de cuenta o suscripción. En este artículo se describen esos valores predeterminados y cómo solicitar un aumento de la cuota.
+Como con otros servicios de Azure, hay límites en determinados recursos asociados con hello servicio por lotes. Muchos de estos límites son cuotas predeterminado que se aplican por Azure en el nivel de cuenta o suscripción de Hola. En este artículo se describen esos valores predeterminados y cómo solicitar un aumento de la cuota.
 
-Tenga presente estas cuotas cuando diseñe y escale las cargas de trabajo de Lote. Por ejemplo, si su grupo no alcanza el número objetivo de nodos de proceso especificado, es posible que se haya alcanzado el límite de cuota de núcleos de la cuenta de Batch o una cuota de núcleos de máquina virtual regionales para su suscripción.
+Tenga presente estas cuotas cuando diseñe y escale las cargas de trabajo de Lote. Por ejemplo, si el grupo no alcance el número de destino de Hola de nodos de proceso que ha especificado, podría ha alcanzado el límite de cuota de núcleos de Hola para su cuenta de lote o una cuota de núcleos VM regional de su suscripción.
 
-Se pueden ejecutar varias cargas de trabajo de Batch en una sola cuenta de Batch, o bien distribuir las cargas de trabajo entre cuentas de Batch que se encuentren en la misma suscripción, pero en diferentes regiones de Azure.
+Puede ejecutar varias cargas de trabajo por lotes en una sola cuenta de lote, o distribuir las cargas de trabajo entre las cuentas de lote que se encuentran en hello misma suscripción, pero en diferentes regiones de Azure.
 
-Si planea ejecutar cargas de trabajo de producción en Lote, es posible que tenga que aumentar el valor predeterminado de una o varias de las cuotas. Si desea aumentar una cuota, puede abrir una [solicitud de soporte técnico al cliente](#increase-a-quota) en línea sin ningún costo.
+Si tiene previsto cargas de trabajo de producción de toorun en lote, deberá tooincrease una o varias de las cuotas de Hola por encima del valor predeterminado de Hola. Si desea tooraise una cuota, puede abrir en línea [solicitud de soporte técnico al cliente](#increase-a-quota) sin cargo.
 
 > [!NOTE]
 > Una cuota es un límite de crédito, no una garantía de capacidad. Si tiene necesidades de capacidad a gran escala, póngase en contacto con el soporte técnico de Azure.
@@ -41,9 +41,9 @@ Si planea ejecutar cargas de trabajo de producción en Lote, es posible que teng
 
 ## <a name="quotas-in-user-subscription-mode"></a>Cuotas en el modo de suscripción de usuario
 
-Para una cuenta de Batch con el modo de asignación de grupo establecido en **suscripción de usuario**, las máquinas virtuales y otros recursos de Batch, como cuentas de almacenamiento, se crean directamente en su suscripción cuando se crea un grupo. La cuota de núcleos de Azure Batch no se aplica a una cuenta creada en este modo. En su lugar, se aplican las cuotas en la suscripción para núcleos de proceso regionales y otros recursos. Aprenda más sobre estas cuotas en [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md).
+Para una cuenta de lote con el modo de asignación de grupo establecido demasiado**suscripción usuario**, las máquinas virtuales y otros recursos, como las cuentas de almacenamiento por lotes, se crean directamente en su suscripción cuando se crea un grupo. cuota de núcleos de Hello Azure Batch no aplica a cuenta de tooan creada en este modo. En su lugar, se aplican las cuotas de hello en la suscripción de núcleos de proceso regionales y otros recursos. Aprenda más sobre estas cuotas en [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md).
 
-Cuando planee el uso de recursos para una cuenta creada en el modo de suscripción de usuario, tenga en cuenta que los siguientes recursos de Batch (además de núcleos de proceso) son necesarios para cada 40 máquinas virtuales Linux o 20 máquinas virtuales Windows:
+Al planear el uso de recursos para una cuenta creada en el modo de suscripción de usuario, Hola nota después de recursos de proceso por lotes (de núcleos de suma toocompute) son necesarias para cada 40 máquinas virtuales de Linux o 20 máquinas virtuales de Windows:
 
 | Recurso | Cuota | Proveedor |
 | --- | ---| --- |
@@ -54,9 +54,9 @@ Cuando planee el uso de recursos para una cuenta creada en el modo de suscripci�
 | Un conjunto de escalado de máquinas virtuales | Conjuntos de escalado de máquina virtual | Microsoft.Compute | 
 | Un equilibrador de carga | Equilibradores de carga | Microsoft.Network | 
 
-La cuota de núcleos en un nivel regional o por familia de máquinas virtuales se debe establecer en función del tamaño de máquina virtual necesario para el grupo o los grupos de Batch:
+cuota de núcleos de Hola a nivel regional o por familia de máquina virtual debe ser correspondiente toohello VM tamaño del espacio necesario para el grupo de proceso por lotes o grupos:
 
-| Cuota | Proveedor |
+| Quota | Proveedor |
 | --- | ---- |
 | N.º total de núcleos regionales | Microsoft.Compute |
 | … Núcleos de familia | Microsoft.Compute |
@@ -76,32 +76,32 @@ La cuota de núcleos en un nivel regional o por familia de máquinas virtuales s
 <sup>2</sup> Incluye archivos de recursos y variables de entorno
 
 ## <a name="view-batch-quotas"></a>Visualización de las cuotas de Lote
-Vea las cuotas de la cuenta de Batch en [Azure Portal][portal].
+Ver las cuotas de la cuenta de lote en hello [portal de Azure][portal].
 
-1. Seleccione **Cuentas de Batch** en el portal y, luego, seleccione la cuenta de Batch que le interesan.
-2. Seleccione **Propiedades** en la hoja del menú de la cuenta de Batch.
-3. La hoja Propiedades muestra las **cuotas** que hay aplicadas actualmente en la cuenta de Batch.
+1. Seleccione **por lotes cuentas** en el portal de hello, a continuación, seleccione cuenta de lote de Hola que le interesa.
+2. Seleccione **propiedades** en la hoja de menú de la cuenta de hello por lotes.
+3. hoja de propiedades de Hello muestra hello **cuotas** aplicados actualmente toohello cuenta de lote
    
     ![Cuotas de la cuenta de Lote][account_quotas]
 
-Para una cuenta de Batch creada en el modo de suscripción de usuario, vea las cuotas de suscripción relacionadas en Azure Portal.
+Una cuenta de lote que se crea en modo de suscripción de usuario, Hola vista relacionado con las cuotas de suscripción en hello Portal de Azure.
 
-1. Seleccione **Suscripciones** y la suscripción que usa para la cuenta de Batch.
+1. Seleccione **suscripciones**y seleccione la suscripción de Hola que estás usando para hello cuenta de lote.
 
-2. En la hoja **Suscripción**, seleccione **Uso y cuotas**.
+2. En hello **suscripción** hoja, seleccione **uso + cuotas**.
 
 
 
 ## <a name="increase-a-quota"></a>Aumento de la cuota
-Siga estos pasos para solicitar un aumento de la cuota para la cuenta de Batch o la suscripción con [Azure Portal][portal]. El tipo de aumento de cuota depende del modo de asignación de grupo de su cuenta de Batch.
+Siga estos toorequest pasos aumentar una cuota para su cuenta de lote o en la suscripción con hello [portal de Azure][portal]. tipo de Hola de aumento de la cuota depende de modo de asignación de grupo de Hola de su cuenta de lote.
 
 ### <a name="increase-a-batch-cores-quota"></a>Aumento de la cuota de núcleos de Batch 
 
-Si su cuenta de Batch se creó en el modo de **servicio Batch**, siga estos pasos para solicitar un aumento de la cuota de núcleos de Batch:
+Si se creó su cuenta de lote en **por lotes servicio** modo, siga estas toorequest pasos aumento de la cuota de núcleos de proceso por lotes:
 
-1. Seleccione el icono **Ayuda y soporte técnico** en el panel del portal o el signo de interrogación (**?**) en la esquina superior derecha del portal.
+1. Seleccione hello **ayuda y soporte técnico** icono en el panel del portal u Hola signo de interrogación (**?**) en la esquina superior derecha de hello del portal de Hola.
 2. Seleccione **Nueva solicitud de soporte técnico** > **Básico**.
-3. En la hoja **Básico** :
+3. En hello **Fundamentos** hoja:
    
     a. **Tipo de problema** > **Cuota**
    
@@ -112,22 +112,22 @@ Si su cuenta de Batch se creó en el modo de **servicio Batch**, siga estos paso
     d. **Plan de soporte técnico** > **Compatibilidad con cuotas (incluida)**
    
     Haga clic en **Siguiente**.
-4. En la hoja **Problema** :
+4. En hello **problema** hoja:
    
-    a. Seleccione una de las opciones en **Gravedad** según su [impacto en el negocio][support_sev].
+    a. Seleccione un **gravedad** según tooyour [impacto para la empresa][support_sev].
    
-    b. En **Detalles**, especifique cada cuota que desee cambiar, el nombre de cuenta de Lote y el nuevo límite.
+    b. En **detalles**, especifique cada cuota que desea toochange, nombre de cuenta de lote de Hola y límite nuevo Hola.
    
     Haga clic en **Siguiente**.
-5. En la hoja **Información de contacto** :
+5. En hello **información de contacto** hoja:
    
     a. Seleccione un valor en **Método de contacto preferido**.
    
-    b. Compruebe y especifique los detalles de contacto necesarios.
+    b. Compruebe y escriba los detalles de contacto de hello necesario.
    
-    Haga clic en **Crear** para enviar la solicitud de soporte técnico.
+    Haga clic en **crear** solicitud de soporte técnico de toosubmit Hola.
 
-Una vez que haya enviado la solicitud de soporte técnico, el servicio de soporte técnico de Azure se comunicará con usted. Tenga en cuenta que se puede tardar hasta 2 días laborables en completar la solicitud.
+Una vez que haya enviado la solicitud de soporte técnico, el servicio de soporte técnico de Azure se comunicará con usted. Tenga en cuenta que la finalización de la solicitud de Hola puede tardar hasta días laborables de too2.
 
 ### <a name="increase-a-subscription-cores-quota"></a>Aumento de una cuota de núcleos de suscripción
 
@@ -136,7 +136,7 @@ Si su cuenta de Batch se creó en el modo de **suscripción de usuario** y neces
 
 
 ## <a name="related-topics"></a>Temas relacionados
-* [Creación de una cuenta de Lote de Azure con el Portal de Azure](batch-account-create-portal.md)
+* [Crear una cuenta de Azure Batch mediante Hola portal de Azure](batch-account-create-portal.md)
 * [Información general de las características de Lote de Azure](batch-api-basics.md)
 * [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md)
 

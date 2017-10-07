@@ -1,6 +1,6 @@
 ---
-title: "Creación de un disco administrado a partir de un VHD en Azure | Microsoft Docs"
-description: "Cree un disco administrado a partir de un VHD que actualmente se encuentra en la cuenta de almacenamiento de Azure, mediante el modelo de implementación de Resource Manager."
+title: aaaCreate un disco administrado desde un disco duro virtual en Azure | Documentos de Microsoft
+description: "Crear un disco administrado desde un disco duro virtual está actualmente en una cuenta de almacenamiento de Azure, mediante el modelo de implementación del Administrador de recursos de Hola."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2017
 ms.author: cynthn
-ms.openlocfilehash: c03ebf73f1090b595149daf2eb3e274b05822f4f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 77adaac5419186ff85039fe2c4752f021aa5e448
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-managed-disks-from-unmanaged-disks-in-a-storage-account"></a>Creación de discos administrados a partir de discos no administrados en una cuenta de almacenamiento
 
 Se puede crear un disco administrado a partir de un disco de datos existente o de un disco del SO que actualmente se encuentra en la cuenta de almacenamiento de Azure. También puede crear un disco vacío que puede usarse como un nuevo disco de datos para una VM. 
 
 ## <a name="before-you-begin"></a>Antes de empezar
-Si usa PowerShell, asegúrese de que tiene la versión más reciente del módulo de PowerShell AzureRM.Compute. Ejecute el siguiente comando para instalarla.
+Si se usa PowerShell, asegúrese de que tiene versión más reciente de Hola de hello módulo AzureRM.Compute PowerShell. Ejecutar Hola siguientes tooinstall de comando.
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -36,9 +36,9 @@ Para más información, consulte [Azure PowerShell Versioning](/powershell/azure
 
 ## <a name="create-a-managed-disk-from-a-vhd-in-an-azure-storage-account"></a>Creación de un disco administrado a partir de un VHD en una cuenta de almacenamiento de Azure
 
-En el ejemplo se crea un disco a partir de un VHD como disco administrado y se asigna al parámetro **$disk1** para usarlo más adelante. 
+En el ejemplo de Hola se cree un disco de un disco duro virtual como disco administrado y asígnela parámetro toohello **$Disco1** toouse más tarde. 
 
-El disco administrado se creará en la ubicación **Oeste de EE. UU.**, en un grupo de recursos denominado **myResourceGroup**. El disco se denominará **myDisk** y se creará a partir de un archivo de VHD denominado **myDisk.vhd** que se cargó previamente en una cuenta de almacenamiento llamada **mystorageaccount**. El disco administrado se creará en el almacenamiento Premium con redundancia local (LRS). StandardLRS y PremiumLRS son las únicas opciones de **-AccountType** disponibles para los discos administrados. 
+Hello disco administrado se creará en hello **oeste-US** ubicación, en un grupo de recursos denominado **myResourceGroup**. disco de Hola se denominará **myDisk** y se crearán desde un archivo de disco duro virtual denominado **myDisk.vhd** se cargó previamente tooa cuenta de almacenamiento denominada **mystorageaccount**. disco administrado Hola se creará en el almacenamiento de premium localmente redundante (LRS). StandardLRS y PremiumLRS son solo hello **- AccountType** discos administran por las opciones disponibles. 
 
 1.  Configure algunos parámetros.
 
@@ -49,7 +49,7 @@ El disco administrado se creará en la ubicación **Oeste de EE. UU.**, en un gr
     $vhdUri = "https://mystorageaccount.blob.core.windows.net/vhds/myDisk.vhd"
     ```
 
-2. Conecte el disco de datos. 
+2. Crear disco de datos de Hola. 
     ```powershell
     $disk1 = New-AzureRmDisk -DiskName $diskName -Disk (New-AzureRmDiskConfig -AccountType PremiumLRS -Location $location -CreateOption Import -SourceUri $vhdUri) -ResourceGroupName $rgName
     ```
@@ -58,11 +58,11 @@ El disco administrado se creará en la ubicación **Oeste de EE. UU.**, en un gr
 
 ## <a name="create-an-empty-data-disk-as-a-managed-disk"></a>Creación de un disco de datos vacío como un disco administrado
 
-En el ejemplo se crea un disco de datos vacío como disco administrado y se asigna al parámetro **$dataDisk2** para usarlo más adelante. Será necesario inicializar un disco de datos vacío iniciando sesión en la VM y usando diskmgmt.msc o [mediante el uso remoto de WinRM y de un script](attach-disk-ps.md#initialize-the-disk), una vez que se conecta a una VM en ejecución.
+En el ejemplo de Hola se cree un disco de datos vacíos como disco administrado y asígnela parámetro toohello **$dataDisk2** toouse más tarde. Un disco de datos vacíos necesitará toobe inicializado toohello VM de inicio de sesión y usar diskmgmt.msc o [de forma remota con WinRM y una secuencia de comandos](attach-disk-ps.md#initialize-the-disk), una vez se haya conectado tooa ejecutando la máquina virtual.
 
-El disco de datos vacío se creará en la ubicación **Centro occidental de EE.UU.**, en un grupo de recursos denominado **myResourceGroup**. El disco se denominará **myEmptyDataDisk**. El disco vacío se creará en el almacenamiento Premium con redundancia local (LRS). StandardLRS y PremiumLRS son las únicas opciones de **-AccountType** disponibles para los discos administrados.
+se creará el disco de datos vacíos de Hola Hola **oeste Ee.uu. Central** ubicación, en un grupo de recursos denominado **myResourceGroup**. disco de Hola se denominará **myEmptyDataDisk**. disco vacío de Hola se creará en el almacenamiento de premium localmente redundante (LRS). StandardLRS y PremiumLRS son solo hello **- AccountType** discos administran por las opciones disponibles.
 
-El tamaño del disco en este ejemplo es 128 GB, pero debe elegir un tamaño que satisfaga las necesidades de todas las aplicaciones que se ejecutan en la VM.
+tamaño de disco de Hello en este ejemplo es 128GB, pero debe elegir un tamaño que satisfaga las necesidades de Hola de las aplicaciones que se ejecutan en la máquina virtual.
 
 1.  Configure algunos parámetros.
 
@@ -72,7 +72,7 @@ El tamaño del disco en este ejemplo es 128 GB, pero debe elegir un tamaño que 
     $dataDiskName = "myEmptyDataDisk"
     ```
 
-2. Conecte el disco de datos.
+2. Crear disco de datos de Hola.
     ```powershell
     $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig -AccountType PremiumLRS -Location $location -CreateOption Empty -DiskSizeGB 128) -ResourceGroupName $rgName
     ```

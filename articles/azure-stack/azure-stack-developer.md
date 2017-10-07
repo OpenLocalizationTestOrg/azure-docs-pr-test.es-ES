@@ -1,5 +1,5 @@
 ---
-title: Desarrollo de aplicaciones para Azure Stack | Microsoft Docs
+title: aplicaciones de aaaDevelop para la pila de Azure | Documentos de Microsoft
 description: "Obtenga información acerca de las consideraciones a la hora de desarrollar prototipos de aplicaciones en Azure Stack"
 services: azure-stack
 documentationcenter: 
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: helaw
-ms.openlocfilehash: 28bca0c94e88b31012c4c53ace47d8bfe6cbe163
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9bea75d0f0ecf19c05ff55ac3ef4e778d53a1912
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-for-azure-stack"></a>Desarrollo para Azure Stack
-Puede empezar a desarrollar aplicaciones hoy mismo, incluso si no tiene acceso a un entorno de Azure Stack. Dado que Azure Stack proporciona servicios de Microsoft Azure que se ejecutan en el centro de datos, puede usar herramientas y procesos similares para desarrollar con Azure Stack tal como lo haría con Azure.  Con un poco de preparación y la orientación que le proporcionarán los siguientes temas, puede usar Azure para emular un entorno de Azure Stack:
+Puede empezar a desarrollar aplicaciones de hoy en día, incluso si no tienes entorno de acceso tooan pila de Azure. Dado que la pila de Azure proporciona servicios de Microsoft Azure que se ejecutan en el centro de datos, puede usar toodevelop herramientas y procesos similar en la pila de Azure como lo haría con Azure.  Con un poco de preparación y la orientación de hello temas siguientes, puede usar Azure tooemulate un entorno de pila de Azure:
 
-* En Azure, puede crear plantillas de Azure Resource Manager que también se pueden implementar en Azure Stack.  Consulte el artículo [template considerations](azure-stack-develop-templates.md) (consideraciones de las plantillas) para obtener ayuda acerca de cómo desarrollar las plantillas para garantizar la portabilidad.
-* Existe una diferencia entre la disponibilidad y la versión del servicio entre Azure y Azure Stack. Puede usar el [módulo de directivas de Azure Stack](azure-stack-policy-module.md) para restringir los tipos de recursos y la disponibilidad del servicio de Azure a fin de adaptarlos a la disponibilidad de Azure Stack. La restricción de los servicios disponibles permitirá que su aplicación se base en los servicios disponibles de Azure Stack.
-* Las [plantillas de inicio rápido de Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates) son ejemplos comunes de escenarios acerca de cómo desarrollar las plantillas para que se puedan implementar en Azure y en Azure Stack.
+* En Azure, puede crear plantillas de Azure Resource Manager también puede implementar tooAzure pila.  Vea [consideraciones de la plantilla](azure-stack-develop-templates.md) para obtener instrucciones sobre el desarrollo de su portabilidad de tooensure de plantillas.
+* Existe una diferencia entre la disponibilidad y la versión del servicio entre Azure y Azure Stack. Puede usar hello [módulo de directivas de la pila de Azure](azure-stack-policy-module.md) toowhat de tipos de recursos y la disponibilidad del servicio de Azure toorestrict del disponible en la pila de Azure. Si se restringen los servicios disponibles le ayudará a su aplicación dependen de los servicios disponibles tooAzure pila.
+* Hola [plantillas de inicio rápido de Azure pila](https://github.com/Azure/AzureStack-QuickStart-Templates) son ejemplos de escenarios comunes de cómo toodevelop las plantillas, para que puedan implementan tooboth Azure y la pila de Azure.
 
 

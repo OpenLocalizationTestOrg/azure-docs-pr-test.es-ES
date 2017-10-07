@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect Sync: control de errores LargeObject causados por el atributo userCertificate | Microsoft Docs'
-description: "En este tema se proporcionan los pasos de corrección de errores LargeObject causados por atributo userCertificate."
+description: "Este tema proporciona pasos de corrección de Hola para errores de LargeObject producidos por atributo userCertificate."
 services: active-directory
 documentationcenter: 
 author: cychua
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 2a5418ff61e07793fceca5a8207c1c5aa18847b4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e547fb5f601b92f6f5154de9997651b1f28c51b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: control de errores LargeObject causados por el atributo userCertificate
 
-Azure AD exige un límite máximo de **15** valores de certificado en el atributo **userCertificate**. Si Azure AD Connect exporta un objeto con más de 15 valores a Azure AD, este devuelve un error **LargeObject** con un mensaje que indica
+Azure AD impone un límite máximo de **15** certificado valores en hello **userCertificate** atributo. Si Azure AD Connect exporta un objeto con más de 15 valores tooAzure AD, Azure AD devuelve un **LargeObject** error con el mensaje:
 
->*que el objeto aprovisionado es demasiado grande y se debe recordar el número de valores de atributo en este objeto. La operación se volverá a intentar en el siguiente ciclo de sincronización.*
+>*"objeto aprovisionado hello es demasiado grande. Recorte el número de Hola de valores de atributo en este objeto. operación de Hola se reintentará en hello próximo ciclo de sincronización …"*
 
-El error LargeObject puede deberse a otros atributos de AD. Para confirmar que realmente está causado por el atributo userCertificate, debe comprobarlo en el objeto ya sea en AD local o en la [búsqueda de metaverso de Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
+Hola LargeObject error puede deberse a otros atributos de AD. tooconfirm realmente está provocada por atributo userCertificate de hello, deberá tooverify con objeto de hello en AD local o en hello [búsqueda de metaverso Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
 
-Para obtener la lista de objetos en el inquilino con errores LargeObject, siga uno de los métodos siguientes:
+lista de hello tooobtain de objetos en el inquilino con errores LargeObject, utilice uno de los siguientes métodos de hello:
 
- * Si está habilitado el inquilino para Azure AD Connect Health para sincronización, puede hacer referencia al [informe de errores de sincronización](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview) proporcionado.
+ * Si está habilitado el inquilino de Azure AD Connect Health para la sincronización, puede consultar toohello [informe de errores de sincronización](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview) proporcionado.
  
- * El correo electrónico de notificación de los errores de sincronización de directorios que se envía al final de cada ciclo de sincronización tiene la lista de objetos con errores LargeObject. 
- * La pestaña [Operaciones de Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) muestra la lista de objetos con errores LargeObject si hace clic en la exportación más reciente a la operación de Azure AD.
+ * Hola correo electrónico de notificación para los errores de sincronización de directorios que se envía al final de Hola de cada ciclo de sincronización tiene lista Hola de objetos con errores de LargeObject. 
+ * Hola [ficha operaciones Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) muestra la lista de Hola de objetos con errores de LargeObject si hace clic en la operación de hello más reciente exportación tooAzure AD.
  
 ## <a name="mitigation-options"></a>Opciones de mitigación
-Hasta que se resuelva el error LargeObject, no se pueden exportar a Azure AD otros cambios de atributo en el mismo objeto. Para resolver el error, puede considerar las siguientes opciones:
+Hasta que se resuelva el error de hello LargeObject, otro toohello de cambios de atributo no puede ser el mismo objeto exportado tooAzure AD. error de hello tooresolve, puede considerar Hola siguientes opciones:
 
- * Actualice a la compilación 1.1.524.0 o posterior de Azure AD Connect. En la compilación 1.1.524.0 de Azure AD Connect, las reglas de sincronización originales se han actualizado para no exportar los atributos userSMIMECertificate y userCertificate, si estos tienen más de 15 valores. Para más información acerca cómo actualizar Azure AD Connect, consulte el artículo [Azure AD Connect: actualización de una versión anterior a la versión más reciente](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+ * Actualizar Azure AD Connect toobuild 1.1.524.0 o después. En Azure AD Connect compilación 1.1.524.0, reglas de sincronización de out-of-box Hola han sido actualizados toonot exportación atributos userCertificate y userSMIMECertificate si los atributos de hello tienen más de 15 valores. Para obtener más información acerca de cómo tooupgrade Azure AD Connect, consulte tooarticle [Azure AD Connect: actualización de un toohello de versión anterior más reciente](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
- * Implemente una **regla de sincronización de salida** en Azure AD Connect que exporte un **valor null en lugar de los valores reales para objetos con más de 15 valores de certificado**. Esta opción es adecuada si no necesita que ninguno de los valores de certificado se exporte a Azure AD para objetos con más de 15 valores. Para más información sobre cómo implementar esta regla de sincronización, consulte la sección siguiente [Implementación de la regla de sincronización para limitar la exportación del atributo userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
+ * Implemente un **regla de sincronización de salida** en Azure AD Connect que exporta un **null el valor en lugar de valores reales de Hola para los objetos con valores de certificado de más de 15**. Esta opción es adecuada si no es necesario que cualquiera de hello certificado valores toobe exportar tooAzure AD objetos con valores de más de 15. Para obtener más información acerca de cómo tooimplement regla esta sincronización, consulte la sección toonext [exportación de toolimit de regla de sincronización de implementación del atributo userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
 
- * Reduzca el número de valores de certificado en el objeto de AD local (15 o menos) mediante la eliminación de los valores que ya no están en uso por su organización. Esto es adecuado si el sobredimensionamiento del atributo está causado por los certificados expirados o sin usar. Puede usar [el script de PowerShell disponible aquí](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) para buscar, hacer una copia de seguridad y eliminar certificados expirados en el AD local. Antes de eliminar los certificados, se recomienda que los compruebe con los administradores de infraestructura de clave pública de su organización.
+ * Reducir el número de Hola de valores de certificado en hello local objeto de AD (15 o menos) mediante la eliminación de los valores que ya no están en uso por su organización. Esto es conveniente si inundación de atributo Hola está causado por los certificados expirados o sin usar. Puede usar hello [aquí disponible del script de PowerShell](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) buscar toohelp, copia de seguridad y eliminar certificados caducados en sus instalaciones en AD. Antes de eliminar los certificados de hello, se recomienda que compruebe con los administradores de infraestructura de clave pública de hello en su organización.
 
- * Configure Azure AD Connect para que el atributo userCertificate no se exporte a Azure AD. En general, no se recomienda esta opción ya que el atributo lo puede usar Microsoft Online Services para habilitar escenarios concretos. En particular:
-    * El atributo userCertificate del objeto de usuario lo usan los clientes de Outlook y Exchange Online para el cifrado y la firma de mensajes. Para más información sobre esta característica, consulte el artículo [S/MIME para la firma y el cifrado de mensajes](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx).
+ * Configurar Azure AD Connect tooexclude Hola userCertificate atributo que se va a exporta tooAzure AD. En general, no se recomienda esta opción ya que pueden utilizar el atributo de hello escenarios específicos de Microsoft Online Services tooenable. En particular:
+    * atributo userCertificate de Hola Hola objeto de usuario se usa por clientes de Outlook y Exchange Online para cifrado y firma de mensajes. toolearn más información acerca de esta característica, consulte tooarticle [S/MIME para firmar mensajes y cifrado](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx).
 
-    * El atributo userCertificate del objeto Computer lo utiliza Azure AD para permitir que dispositivos unidos a un dominio de Windows 10 local se conecten a Azure AD. Para más información sobre esta característica, consulte el artículo [Experiencias de conexión de dispositivos unidos a un dominio a Azure AD para Windows 10](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
+    * atributo userCertificate de Hello en objetos de equipo de Hola se usa por dispositivos Unidos a dominio tooconnect tooAzure AD de Azure AD tooallow 10 de Windows local. toolearn más información acerca de esta característica, consulte tooarticle [conectar dispositivos Unidos a dominio tooAzure AD para Windows 10 experimenta](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
 
-## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>Implementación de la regla de sincronización para limitar la exportación del atributo userCertificate
-Para resolver el error LargeObject causado por el atributo userCertificate, puede implementar una regla de sincronización de salida en Azure AD Connect que exporte un **valor null en lugar de los valores reales para objetos con más de 15 valores de certificado**. En esta sección se describen los pasos necesarios para implementar la regla de sincronización para objetos **User**. Los pasos se pueden adaptados para los objetos **Contact** y **Computer**.
+## <a name="implementing-sync-rule-toolimit-export-of-usercertificate-attribute"></a>Implementación de exportación de toolimit de regla de sincronización del atributo userCertificate
+tooresolve hello LargeObject error por un atributo userCertificate de hello, puede implementar una regla de sincronización de salida en Azure AD Connect que exporta un **un valor en lugar de valores reales de Hola para los objetos con valores de certificado de más de 15nulo**. Esta sección describe la regla de sincronización de Hola Hola pasos tooimplement necesarios para **usuario** objetos. Hello pasos se pueden adaptados para **póngase en contacto con** y **equipo** objetos.
 
 > [!IMPORTANT]
-> La exportación de un valor null quita los valores de certificado que se exportaron correctamente a Azure AD.
+> Exportar valor null quita certificado valores exportan previamente correctamente tooAzure AD.
 
-Los pasos se pueden resumir como:
+Hola pasos se pueden resumir como:
 
 1. Deshabilitar el programador de sincronización y comprobar que no hay ninguna sincronización en curso.
-3. Buscar la regla de sincronización de salida existente para el atributo userCertificate.
-4. Crear la regla de sincronización de salida requerida.
-5. Comprobar la nueva regla de sincronización en un objeto existente con el error LargeObject.
-6. Aplicar la nueva regla de sincronización a los objetos restantes con el error LargeObject.
-7. Comprobar que no hay ningún cambio inesperado en espera de su exportación a Azure AD.
-8. Exportar los cambios a Azure AD.
+3. Buscar la regla de sincronización de salida existente de hello para el atributo userCertificate.
+4. Crear regla de sincronización de salida de hello requerida.
+5. Compruebe la nueva regla de sincronización hello en un objeto existente con el error LargeObject.
+6. Aplicar Hola nueva regla tooremaining objetos de sincronización con el error LargeObject.
+7. Comprobar que no hay ningún cambio inesperado espera toobe exportar tooAzure AD.
+8. Exportar Hola cambios tooAzure AD.
 9. Volver a habilitar el programador de sincronización.
 
 ### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Paso 1. Deshabilitar el programador de sincronización y comprobar que no hay ninguna sincronización en curso
-Asegúrese de que no realiza ninguna sincronización mientras está en medio de implementar una nueva regla de sincronización para evitar que cambios no deseados se exporten a Azure AD. Para deshabilitar el programador de sincronización integrado:
-1. Inicie una sesión de PowerShell en el servidor de Azure AD Connect.
+Asegúrese de que realiza ninguna sincronización mientras está en medio de Hola de implementar una nueva sincronización cambia de regla tooavoid no deseada que se ha exportado tooAzure AD. Programador de sincronización integrada de Hola toodisable:
+1. Inicie sesión de PowerShell en el servidor de Azure AD Connect Hola.
 
 2. Deshabilite la sincronización programada mediante la ejecución del cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
-> Los pasos anteriores solo se aplican a las versiones más recientes (1.1.xxx.x) de Azure AD Connect con el programador integrado. Si usa versiones anteriores (1.0.xxx.x) de Azure AD Connect que utilizan el Programador de tareas de Windows, o que usa a su propio programador personalizado (no común) para desencadenar una sincronización periódica, debe deshabilitarlas según corresponda.
+> Hello pasos anteriores son sólo aplicables toonewer versiones (1.1.xxx.x) de Azure AD Connect con el programador integrado Hola. Si usa versiones anteriores (1.0.xxx.x) de Azure AD Connect que usa el programador de tareas de Windows, o que usa su propia sincronización periódica de tootrigger programador personalizado (no es común), necesita toodisable ellos según corresponda.
 
-3. Inicie **Synchronization Service Manager**. Para ello, vaya a INICIO → Synchronization Service (Servicio de sincronización).
+3. Iniciar hello **Synchronization Service Manager** con va tooSTART → servicio de sincronización.
 
-4. Vaya a la pestaña **Operations** (Operaciones) y confirme que no hay ninguna operación cuyo estado sea *"in progress"* (En curso).
+4. Vaya toohello **Operations** pestaña y confirme que no hay ninguna operación cuyo estado sea *"en"curso.*
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Paso 2: Buscar la regla de sincronización de salida existente para el atributo userCertificate
-Debería haber una regla de sincronización existente que esté habilitada y configurada para exportar el atributo userCertificate para objetos User a Azure AD. Busque esta regla de sincronización para averiguar la configuración de **precedencia** y **filtro de ámbito**:
+### <a name="step-2-find-hello-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Paso 2: Buscar la regla de sincronización de salida existente de hello para el atributo userCertificate
+Debería haber una regla de sincronización existente que está habilitada y configurada del atributo userCertificate tooexport tooAzure de objetos de usuario AD. Busque este toofind de regla de sincronización fuera su **prioridad** y **filtro de ámbito** configuración:
 
-1. Inicie el **editor de reglas de sincronización**. Para ello, vaya a INICIO → Synchronization Rules Editor (Servicio de sincronización).
+1. Iniciar hello **Editor de reglas de sincronización** con va tooSTART → Editor de reglas de sincronización.
 
-2. Configure los filtros de búsqueda con los siguientes valores:
+2. Configurar filtros de búsqueda de hello con hello siguientes valores:
 
     | Atributo | Valor |
     | --- | --- |
@@ -94,88 +94,88 @@ Debería haber una regla de sincronización existente que esté habilitada y con
     | Tipo de objeto de conector |**user** |
     | Atributos del metaverso |**userCertificate** |
 
-3. Si está usando las reglas de sincronización integradas para el conector de Azure AD con el fin de exportar el atributo userCertificate para objetos User, debe volver a la regla *"Out to AAD – User ExchangeOnline"* (Fuera de AAD - User ExchangeOnline).
-4. Anote el valor de **precedencia** de esta regla de sincronización.
-5. Seleccione la regla de sincronización y haga clic en **Editar**.
-6. En el cuadro de diálogo emergente *"Edit Reserved Rule Confirmation"* (Editar confirmación de regla reservada), haga clic en **No**. (No se preocupe, no vamos a realizar ningún cambio en esta regla de sincronización).
-7. En la pantalla de edición, seleccione la pestaña **Scoping filter** (Filtro de ámbito).
-8. Anote la configuración del filtro de ámbito. Si se usa la regla de sincronización integrada, debe haber exactamente **un grupo de filtro de ámbito que contiene dos cláusulas**, incluido:
+3. Si usas el atributo OOB (out-of-box) sincronización rules tooAzure AD conector tooexport userCertficiate para objetos de usuario, debe regresar hello *"Out tooAAD – usuario ExchangeOnline"* regla.
+4. Tome nota de hello **prioridad** valor de esta regla de sincronización.
+5. Seleccione la regla de sincronización hello y haga clic en **editar**.
+6. Hola *"Editar reservada Confirmation regla"* cuadro de diálogo emergente, haga clic en **No**. (No se preocupe, no vamos a toomake cualquier cambio de la regla de sincronización toothis).
+7. En la pantalla de edición de bienvenida, seleccione hello **filtro de ámbito** ficha.
+8. Anote la configuración del filtro de ámbito de Hola. Si usas la regla de sincronización OOB hello, debería exactamente haber **un grupo de filtro ámbito que contiene dos cláusulas**, incluido:
 
     | Atributo | operador | Valor |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Usuario |
     | cloudMastered | NOTEQUAL | True |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>Paso 3: Crear la regla de sincronización de salida requerida
-La nueva regla de sincronización debe tener el mismo **filtro de ámbito** y una **mayor precedencia** que la regla de sincronización existente. Esto asegura que la nueva regla de sincronización se aplica al mismo conjunto de objetos que la regla de sincronización existente y reemplaza la regla de sincronización existente por el atributo userCertificate. Para crear la regla de sincronización:
-1. En el Editor de reglas de sincronización, haga clic en el botón **Agregar nueva regla**.
-2. En la pestaña **Descripción**, proporcione la siguiente configuración:
+### <a name="step-3-create-hello-outbound-sync-rule-required"></a>Paso 3: Crear regla de sincronización de salida de hello requerida
+Hello nueva regla de sincronización debe haber Hola mismo **filtro de ámbito** y **mayor precedencia** de Hola la regla de sincronización existente. Esto garantiza que esa nueva regla de sincronización Hola aplica toohello al mismo conjunto de objetos como regla de sincronización existente de Hola e invalidaciones Hola existente la regla de sincronización para el atributo userCertificate de Hola. regla de sincronización de Hola toocreate:
+1. Hola Editor de reglas de sincronización, haga clic en hello **agregar nueva regla** botón.
+2. En hello **ficha Descripción**, proporcionar Hola siguiente configuración:
 
     | Atributo | Valor | Detalles |
     | --- | --- | --- |
-    | Nombre | *Proporcione un nombre*. | Por ejemplo, *"Fuera de AAD – Reemplazo personalizado para userCertificate"* |
+    | Nombre | *Proporcione un nombre*. | Por ejemplo, *"Out tooAAD – personalizado invalidar para userCertificate"* |
     | Descripción | *Proporcione una descripción* | Por ejemplo, *"Si el atributo userCertificate tiene más de 15 valores, la exportación es NULL".* |
-    | Sistema conectado | *Seleccione Azure AD Connector* |
+    | Sistema conectado | *Seleccione Hola conector de Azure AD* |
     | Tipo de objeto de sistema conectado | **user** | |
     | Propiedades de objeto de metaverso | **person** | |
     | Tipo de vínculo | **Join** | |
-    | Prioridad | *Elija un número entre 1 y 99* | El número elegido no deben usarse por ninguna regla de sincronización existente y tiene un valor inferior (y por lo tanto, una mayor precedencia) que la regla de sincronización existente. |
+    | Prioridad | *Elija un número entre 1 y 99* | no se debe usar en cualquier regla de sincronización existente Hello número elegido y tiene un valor inferior (y por lo tanto, mayor prioridad) de Hola la regla de sincronización existente. |
 
-3. Vaya a la pestaña **Scoping filter** (Filtro de ámbito) e implemente el mismo filtro de ámbito que está usando la regla de sincronización existente.
-4. Omita pestaña **Join rules** (Reglas de unión).
-5. Vaya a la pestaña **Transformations** (Transformaciones) para agregar una nueva transformación mediante la configuración siguiente:
+3. Vaya toohello **filtro de ámbito** pestaña e implementar Hola está usando el mismo ámbito filtro Hola sincronización regla existente.
+4. Hola SKIP **reglas de unión** ficha.
+5. Vaya toohello **transformaciones** ficha tooadd una nueva transformación realizada utilizando después de configuración:
 
     | Atributo | Valor |
     | --- | --- |
     | Tipo de flujo |**Expression** |
     | Atributo de destino |**userCertificate** |
-    | Atributo de origen |*Utilice la expresión siguiente*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Atributo de origen |*Hola de uso siguiente expresión*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
-6. Haga clic en el botón **Agregar** para crear la regla de sincronización.
+6. Haga clic en hello **agregar** regla de sincronización de botón toocreate Hola.
 
-### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Paso 4 Comprobar la nueva regla de sincronización en un objeto existente con el error LargeObject
-Esto sirve para comprobar que la regla de sincronización creada funciona correctamente en un objeto de AD existente con el error LargeObject antes de aplicarla a otros objetos:
-1. Vaya a la pestaña **Operations** (Operaciones) de Synchronization Service Manager.
-2. Seleccione la exportación más reciente de la operación de Azure AD y haga clic en uno de los objetos con errores LargeObject.
-3.  En la pantalla emergente Connector Space Object Properties (Propiedades de objeto del espacio de conector), haga clic en el botón **Preview** (Vista previa).
-4. En la pantalla emergente Preview (Vista previa), seleccione **Full synchronization** (Sincronización completa) y haga clic en **Commit Preview** (Confirmar vista previa).
-5. Cierre la pantalla de vista previa y la pantalla de propiedades del objeto de espacio de conector.
-6. Vaya a la pestaña **Connectors** (Conectores) de Synchronization Service Manager.
-7. Haga clic con el botón derecho en el conector **Azure AD** y seleccione **Ejecutar...**
-8. En el menú emergente Run Connector (Ejecutar conector), seleccione el paso **Exportar** (Exportar) y haga clic en **OK** (Aceptar).
-9. Espere a que la exportación a Azure AD finalice y confirme que no hay ningún error LargeObject más en este objeto específico.
+### <a name="step-4-verify-hello-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Paso 4 Comprobar la nueva regla de sincronización hello en un objeto existente con el error LargeObject
+Se trata de tooverify que Hola sincronización regla creada funciona correctamente en un objeto de AD existente con el error LargeObject antes de aplicarla tooother objetos:
+1. Vaya toohello **Operations** ficha Hola Synchronization Service Manager.
+2. Seleccione hello más reciente exportación tooAzure AD operación y haga clic en uno de los objetos de hello con errores de LargeObject.
+3.  En la pantalla emergente de propiedades de objeto del espacio de conector de bienvenida, haga clic en hello **vista previa** botón.
+4. En la pantalla emergente de vista previa de bienvenida, seleccione **sincronización completa** y haga clic en **confirmar Preview**.
+5. Cierre la pantalla de vista previa de bienvenida y la pantalla de propiedades del objeto de espacio de conector de bienvenida.
+6. Vaya toohello **conectores** ficha Hola Synchronization Service Manager.
+7. Haga doble clic en hello **Azure AD** conector y seleccione **ejecutar...**
+8. En el menú emergente de hello ejecutar conector, seleccione **exportar** paso a paso y haga clic en **Aceptar**.
+9. Espere durante la exportación tooAzure AD toocomplete y confirmar que no hay ningún error LargeObject más en este objeto específico.
 
-### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>Paso 5. Aplicar la nueva regla de sincronización a los objetos restantes con el error LargeObject
-Una vez que se ha agregado la regla de sincronización, debe ejecutar un paso de sincronización completa en el conector de AD:
-1. Vaya a la pestaña **Connectors** (Conectores) de Synchronization Service Manager.
-2. Haga clic con el botón derecho en el conector **AD** y seleccione **Run...** (Ejecutar).
-3. En el menú emergente Run Connector (Ejecutar conector), seleccione el paso **Full Synchronization** (Sincronización completa) y haga clic en **OK** (Aceptar).
-4. Espere a que el paso de sincronización completa se complete.
-5. Repita los pasos anteriores para los conectores AD restantes si tiene más de uno. Normalmente, se necesitan varios conectores si tiene varios directorios locales.
+### <a name="step-5-apply-hello-new-sync-rule-tooremaining-objects-with-largeobject-error"></a>Paso 5. Aplicar Hola nueva regla tooremaining objetos de sincronización con el error LargeObject
+Una vez que se ha agregado la regla de sincronización hello, deberá toorun un paso de sincronización completa en hello conector AD:
+1. Vaya toohello **conectores** ficha Hola Synchronization Service Manager.
+2. Haga doble clic en hello **AD** conector y seleccione **ejecutar...**
+3. En el menú emergente de hello ejecutar conector, seleccione **sincronización completa** paso a paso y haga clic en **Aceptar**.
+4. Espere a que toocomplete de paso de sincronización completa de Hola.
+5. Repita Hola por encima de los pasos para hello restantes conectores AD si tiene más de una conectores de AD. Normalmente, se necesitan varios conectores si tiene varios directorios locales.
 
-### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>Paso 6. Comprobar que no hay ningún cambio inesperado en espera de su exportación a Azure AD
-1. Vaya a la pestaña **Connectors** (Conectores) de Synchronization Service Manager.
-2. Haga clic con el botón derecho en el conector **Azure AD** y seleccione **Search Connector Space** (Espacio del conector de búsqueda).
-3. En el elemento emergente Search Connector Space (Espacio del conector de búsqueda):
-    1. Establezca el ámbito en **Pending Export** (Exportación pendiente).
+### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-toobe-exported-tooazure-ad"></a>Paso 6. Compruebe que no hay cambios inesperados toobe exportar tooAzure AD
+1. Vaya toohello **conectores** ficha Hola Synchronization Service Manager.
+2. Haga doble clic en hello **Azure AD** conector y seleccione **espacio de conector de búsqueda**.
+3. En la ventana emergente del espacio de conector de búsqueda de hello:
+    1. Establecer el ámbito demasiado**exportar pendiente**.
     2. Active las tres casillas, incluidas **Add** (Agregar), **Modify** (Modificar) y **Delete** (Eliminar).
-    3. Haga clic en el botón **Search** (Buscar) para devolver todos los objetos con cambios que esperan su exportación a Azure AD.
-    4. Compruebe que no hay cambios inesperados. Para examinar los cambios de un determinado objeto, haga doble clic en el objeto.
+    3. Haga clic en **búsqueda** botón tooreturn todos los objetos que tienen cambios que esperan toobe exportar tooAzure AD.
+    4. Compruebe que no hay cambios inesperados. cambios de hello tooexamine para un objeto determinado, haga doble clic en el objeto de Hola.
 
-### <a name="step-7-export-the-changes-to-azure-ad"></a>Paso 7. Exportar los cambios a Azure AD
-Para exportar los cambios a Azure AD:
-1. Vaya a la pestaña **Connectors** (Conectores) de Synchronization Service Manager.
-2. Haga clic con el botón derecho en el conector **Azure AD** y seleccione **Ejecutar...**
-4. En el menú emergente Run Connector (Ejecutar conector), seleccione el paso **Exportar** (Exportar) y haga clic en **OK** (Aceptar).
-5. Espere a que la exportación a Azure AD finalice y confirme que no hay ningún error LargeObject más.
+### <a name="step-7-export-hello-changes-tooazure-ad"></a>Paso 7. Exportar Hola cambios tooAzure AD
+tooexport Hola cambios tooAzure AD:
+1. Vaya toohello **conectores** ficha Hola Synchronization Service Manager.
+2. Haga doble clic en hello **Azure AD** conector y seleccione **ejecutar...**
+4. En el menú emergente de hello ejecutar conector, seleccione **exportar** paso a paso y haga clic en **Aceptar**.
+5. Espere exportación tooAzure AD toocomplete y confirmar que no existen errores LargeObject más.
 
 ### <a name="step-8-re-enable-sync-scheduler"></a>Paso 8. Volver a habilitar el programador de sincronización
-Ahora que el problema se ha resuelto, vuelva a habilitar el programador de sincronización integrado:
+Ahora que se resuelve el problema de hello, volver a habilitar el programador de sincronización integrada de hello:
 1. Inicie la sesión de PowerShell.
 2. Vuelva a habilitar la sincronización programada mediante la ejecución del cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
-> Los pasos anteriores solo se aplican a las versiones más recientes (1.1.xxx.x) de Azure AD Connect con el programador integrado. Si usa versiones anteriores (1.0.xxx.x) de Azure AD Connect que utilizan el Programador de tareas de Windows, o que usa a su propio programador personalizado (no común) para desencadenar una sincronización periódica, debe deshabilitarlas según corresponda.
+> Hello pasos anteriores son sólo aplicables toonewer versiones (1.1.xxx.x) de Azure AD Connect con el programador integrado Hola. Si usa versiones anteriores (1.0.xxx.x) de Azure AD Connect que usa el programador de tareas de Windows, o que usa su propia sincronización periódica de tootrigger programador personalizado (no es común), necesita toodisable ellos según corresponda.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

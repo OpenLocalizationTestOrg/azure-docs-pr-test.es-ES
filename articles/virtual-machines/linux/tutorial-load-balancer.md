@@ -1,6 +1,6 @@
 ---
-title: "Equilibrio de la carga de máquinas virtuales Linux en Azure | Microsoft Docs"
-description: "Aprenda a usar Azure Load Balancer para crear una aplicación segura y con alta disponibilidad en tres máquinas virtuales Linux."
+title: "aaaHow tooload equilibrar máquinas virtuales de Linux en Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse hello Azure carga equilibrador toocreate una aplicación de alta disponibilidad y segura entre tres máquinas virtuales de Linux"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,50 +16,50 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7b3a089d2f6386afcc46cbc4377594be0d758fc6
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f01752c3caec3489ee13e63000775769f3236e11
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Equilibrio de la carga de máquinas virtuales Linux en Azure para crear una aplicación de alta disponibilidad
-El equilibrio de carga proporciona un mayor nivel de disponibilidad al distribuir las solicitudes entrantes entre varias máquinas virtuales. En este tutorial, aprenderá sobre los distintos componentes de Azure Load Balancer que distribuyen el tráfico y proporcionan una alta disponibilidad. Aprenderá a:
+# <a name="how-tooload-balance-linux-virtual-machines-in-azure-toocreate-a-highly-available-application"></a>¿Cómo tooload equilibrar máquinas virtuales de Linux en Azure toocreate una aplicación de alta disponibilidad
+El equilibrio de carga proporciona un mayor nivel de disponibilidad al distribuir las solicitudes entrantes entre varias máquinas virtuales. En este tutorial, aprenderá acerca de los componentes diferentes Hola Hola Azure del equilibrador de carga que distribución el tráfico y proporcionan una alta disponibilidad. Aprenderá a:
 
 > [!div class="checklist"]
 > * Creación de un equilibrador de carga de Azure
 > * Creación del sondeo de estado de un equilibrador de carga
 > * Crear reglas de tráfico del equilibrador de carga
-> * Usar cloud-init para crear una aplicación básica de Node.js
-> * Crear máquinas virtuales y conectarlas a un equilibrador de carga
+> * Usar en la nube init toocreate una aplicación básica de Node.js
+> * Crear máquinas virtuales y adjuntar tooa equilibrador de carga
 > * Ver un equilibrador de carga en acción
 > * Agregar y quitar las máquinas virtuales de un equilibrador de carga
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Si decide instalar y usar la CLI localmente, para este tutorial es preciso que ejecute la CLI de Azure versión 2.0.4 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
+Si elige tooinstall y usar hello CLI localmente, este tutorial requiere que se ejecuta la versión de CLI de Azure de hello 2.0.4 o versiones posteriores. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="azure-load-balancer-overview"></a>Información general sobre Azure Load Balancer
-Un equilibrador de carga de Azure es un equilibrador de carga de nivel 4 (TCP, UDP) que proporciona una alta disponibilidad mediante la distribución del tráfico entrante entre máquinas virtuales con un estado correcto. Un sondeo de estado de equilibrador de carga supervisa un puerto determinado en cada máquina virtual y solo distribuye tráfico a una máquina virtual operativa.
+Un equilibrador de carga de Azure es un equilibrador de carga de nivel 4 (TCP, UDP) que proporciona una alta disponibilidad mediante la distribución del tráfico entrante entre máquinas virtuales con un estado correcto. Un sondeo de estado de equilibrador de carga supervisa un puerto determinado en cada máquina virtual y sólo distribuye el tráfico tooan VM operativa.
 
-Se define una configuración de IP de front-end que contiene una o varias direcciones IP públicas. Esta configuración de IP de front-end permite que el equilibrador de carga y las aplicaciones sean accesibles a través de Internet. 
+Se define una configuración de IP de front-end que contiene una o varias direcciones IP públicas. Esta configuración de IP de front-end permite que su toobe de aplicaciones y el equilibrador de carga puede tener acceso a través de Internet de Hola. 
 
-Las máquinas virtuales se conectarán a un equilibrador de carga mediante su tarjeta de interfaz de red (NIC) virtual. Para distribuir el tráfico a las máquinas virtuales, un grupo de direcciones de back-end contiene las direcciones IP de las tarjetas de interfaz de red (NIC) virtual conectadas al equilibrador de carga.
+Máquinas virtuales se conectarán tooa equilibrador de carga con la tarjeta de interfaz de red virtual (NIC). toodistribute tráfico toohello máquinas virtuales, un grupo de direcciones de back-end contiene direcciones IP de Hola Hola virtual (NIC) toohello conectados del equilibrador de carga.
 
-Para controlar el flujo de tráfico, se definen reglas de equilibrador de carga para determinados puertos y protocolos que se asignan a las máquinas virtuales.
+flujo de hello toocontrol de tráfico, defina reglas de equilibrador de carga para determinados puertos y protocolos que se asignan tooyour las máquinas virtuales.
 
-Si siguió el tutorial anterior para [crear un conjunto de escalado de máquinas virtuales](tutorial-create-vmss.md), se creó un equilibrador de carga automáticamente. Todos estos componentes se configuraron automáticamente como parte del conjunto de escalado.
+Si ha seguido tutorial anterior Hola demasiado[crear un conjunto de escalas de máquina virtual](tutorial-create-vmss.md), se creó un equilibrador de carga. Todos estos componentes se configuran automáticamente como parte del conjunto de escalas de Hola.
 
 
 ## <a name="create-azure-load-balancer"></a>Creación del equilibrador de carga de Azure
-En esta sección se detalla cómo se puede crear y configurar cada componente del equilibrador de carga. Antes de poder crear el equilibrador de carga, cree un grupo de recursos con [az group create](/cli/azure/group#create). En el ejemplo siguiente, se crea un grupo de recursos denominado *myResourceGroupLoadBalancer* en la ubicación *eastus*:
+Esta sección detalla cómo puede crear y configurar cada componente Hola de equilibrador de carga. Antes de poder crear el equilibrador de carga, cree un grupo de recursos con [az group create](/cli/azure/group#create). Hello en el ejemplo siguiente se crea un grupo de recursos denominado *myResourceGroupLoadBalancer* en hello *eastus* ubicación:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>Crear una dirección IP pública
-Para obtener acceso a la aplicación en Internet, necesita una dirección IP pública para el equilibrador de carga. Cree una dirección IP pública con [az network public-ip create](/cli/azure/network/public-ip#create). En el ejemplo siguiente se crea una dirección IP pública denominada *myPublicIP* en el grupo de recursos *myResourceGroupLoadBalancer*:
+tooaccess Hola de la aplicación en Internet, necesita una dirección IP pública para el equilibrador de carga de Hola. Cree una dirección IP pública con [az network public-ip create](/cli/azure/network/public-ip#create). Hello en el ejemplo siguiente se crea una dirección IP pública denominada *myPublicIP* en hello *myResourceGroupLoadBalancer* grupo de recursos:
 
 ```azurecli-interactive 
 az network public-ip create \
@@ -68,7 +68,7 @@ az network public-ip create \
 ```
 
 ### <a name="create-a-load-balancer"></a>Crear un equilibrador de carga
-Cree un equilibrador de carga con [az network lb create](/cli/azure/network/lb#create). En el ejemplo siguiente se crea un equilibrador de carga llamado *myLoadBalancer* y se asigna la dirección *myPublicIP* a la configuración de IP de front-end:
+Cree un equilibrador de carga con [az network lb create](/cli/azure/network/lb#create). Hello en el ejemplo siguiente se crea un equilibrador de carga con el nombre *myLoadBalancer* asigna hello y *myPublicIP* configuración de IP de front-end de dirección toohello:
 
 ```azurecli-interactive 
 az network lb create \
@@ -80,11 +80,11 @@ az network lb create \
 ```
 
 ### <a name="create-a-health-probe"></a>Creación de un sondeo de estado
-Para permitir que el equilibrador de carga supervise el estado de la aplicación, utilice un sondeo de estado. El sondeo de estado agrega o quita de forma dinámica las máquinas virtuales de la rotación del equilibrador de carga en base a su respuesta a las comprobaciones de estado. De forma predeterminada, una máquina virtual se quita de la distribución del equilibrador de carga después de dos errores consecutivos en un intervalo de 15 segundos. Cree un sondeo de estado en función de un protocolo o una página de comprobación de mantenimiento específica para la aplicación. 
+tooallow Hola equilibrador toomonitor Hola estado de carga de la aplicación, utilice un sondeo de estado. sondeo de estado de Hello dinámicamente agrega o quita las máquinas virtuales de rotación del equilibrador de carga de hello en función de sus comprobaciones de toohealth de respuesta. De forma predeterminada, una máquina virtual se quita de la distribución de equilibrador de carga de hello después de dos errores consecutivos en intervalos de 15 segundos. Cree un sondeo de estado en función de un protocolo o una página de comprobación de mantenimiento específica para la aplicación. 
 
-En el ejemplo siguiente se crea un sondeo de TCP. También se pueden crear sondeos HTTP personalizados para comprobaciones de estado más específicas. Al usar un sondeo HTTP personalizado, debe crear la página de comprobación de estado, por ejemplo *healthcheck.js*. El sondeo debe devolver una respuesta **HTTP 200 OK** para que el equilibrador de carga mantenga el host en rotación.
+Hola siguiente ejemplo crea un sondeo TCP. También se pueden crear sondeos HTTP personalizados para comprobaciones de estado más específicas. Al utilizar un sondeo HTTP personalizado, debe crear página de comprobación de mantenimiento de hello, como *healthcheck.js*. sondeo de Hello debe devolver un **HTTP 200 OK** respuesta para host Hola carga equilibrador tookeep Hola de rotación.
 
-Para crear un sondeo de estado TCP, debe usar el comando [az network lb probe create](/cli/azure/network/lb/probe#create). En el ejemplo siguiente se crea un sondeo de TCP denominado *myHealthProbe*:
+toocreate un sondeo de estado TCP, use [crear la prueba de carga equilibrada de red az](/cli/azure/network/lb/probe#create). Hello en el ejemplo siguiente se crea un sondeo de estado denominado *myHealthProbe*:
 
 ```azurecli-interactive 
 az network lb probe create \
@@ -96,9 +96,9 @@ az network lb probe create \
 ```
 
 ### <a name="create-a-load-balancer-rule"></a>Creación de una regla de equilibrador de carga
-Las reglas de equilibrador de carga se utilizan para definir cómo se distribuye el tráfico a las máquinas virtuales. Se define la configuración de IP front-end para el tráfico entrante y el grupo IP de back-end para recibir el tráfico, junto con el puerto de origen y destino requeridos. Para asegurarse de que solo las máquinas virtuales correctas reciban tráfico, también hay que definir el sondeo de estado que se va usar.
+Una regla de equilibrador de carga es toodefine usado cómo tráfico es distribuida toohello máquinas virtuales. Definir configuración de IP front-end de hello para el tráfico entrante de Hola y Hola back-end grupo tooreceive Hola tráfico IP, junto con el origen de hello necesarios y el puerto de destino. toomake seguro que solo las máquinas virtuales correcto reciban tráfico, también definir toouse de sondeo de estado de Hola.
 
-Cree una regla de equilibrador de carga con [az network lb rule create](/cli/azure/network/lb/rule#create). En el ejemplo siguiente se crea una regla denominada *myLoadBalancerRule*, se usa el sondeo de estado *myHealthProbe* y se equilibra el tráfico en el puerto *80*:
+Cree una regla de equilibrador de carga con [az network lb rule create](/cli/azure/network/lb/rule#create). Hello en el ejemplo siguiente se crea una regla denominada *myLoadBalancerRule*, usa hello *myHealthProbe* sondeo de estado y equilibra el tráfico en el puerto *80*:
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -115,10 +115,10 @@ az network lb rule create \
 
 
 ## <a name="configure-virtual-network"></a>Configuración de una red virtual
-Antes de implementar algunas máquinas virtuales y poder probar el equilibrador, cree los recursos de red virtual auxiliares. Para más información sobre las redes virtuales, consulte el tutorial [Administración de Azure Virtual Networks](tutorial-virtual-network.md).
+Antes de implementar algunas máquinas virtuales y puede probar su equilibrador, crear Hola compatibilidad con recursos de red virtual. Para obtener más información sobre las redes virtuales, vea hello [administrar redes virtuales de Azure](tutorial-virtual-network.md) tutorial.
 
 ### <a name="create-network-resources"></a>Crear recursos de red
-Cree la red virtual con el comando [az network vnet create](/cli/azure/network/vnet#create). En el ejemplo siguiente se crea una red virtual denominada *myVnet* con una subred *mySubnet*:
+Cree la red virtual con el comando [az network vnet create](/cli/azure/network/vnet#create). Hello en el ejemplo siguiente se crea una red virtual denominada *myVnet* con una subred denominada *mySubnet*:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -127,7 +127,7 @@ az network vnet create \
     --subnet-name mySubnet
 ```
 
-Para agregar un grupo de seguridad de red, use el comando [az network nsg create](/cli/azure/network/nsg#create). En el ejemplo siguiente se crea un grupo de seguridad de red denominado *myNetworkSecurityGroup*:
+tooadd un grupo de seguridad de red, use [crear az red nsg](/cli/azure/network/nsg#create). Hello en el ejemplo siguiente se crea un grupo de seguridad de red denominado *myNetworkSecurityGroup*:
 
 ```azurecli-interactive 
 az network nsg create \
@@ -135,7 +135,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Cree una regla de grupo de seguridad de red con el comando [az network nsg rule create](/cli/azure/network/nsg/rule#create). En el ejemplo siguiente se crea una regla grupo de seguridad de red denominada *myNetworkSecurityGroupRule*:
+Cree una regla de grupo de seguridad de red con el comando [az network nsg rule create](/cli/azure/network/nsg/rule#create). Hello en el ejemplo siguiente se crea una regla de grupo de seguridad de red denominada *myNetworkSecurityGroupRule*:
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -147,7 +147,7 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
-Las NIC virtuales se crean con el comando [az network nic create](/cli/azure/network/nic#create). En el ejemplo siguiente se crean tres NIC. (Una NIC virtual para cada máquina virtual que cree para la aplicación en los pasos siguientes). Puede crear NIC virtuales y máquinas virtuales adicionales en cualquier momento y agregarlas al equilibrador de carga:
+Las NIC virtuales se crean con el comando [az network nic create](/cli/azure/network/nic#create). Hello en el ejemplo siguiente se crea tres NIC virtuales. (Una NIC virtual para cada máquina virtual crea para la aplicación Hola siguiendo los pasos). Puede crear NIC virtuales adicionales y las máquinas virtuales en cualquier momento y agregarlos toohello equilibrador de carga:
 
 ```bash
 for i in `seq 1 3`; do
@@ -165,9 +165,9 @@ done
 ## <a name="create-virtual-machines"></a>Creación de máquinas virtuales
 
 ### <a name="create-cloud-init-config"></a>Creación de cloud-init config
-En un tutorial anterior sobre [cómo personalizar una máquina virtual Linux en el primer arranque](tutorial-automate-vm-deployment.md), aprendió a automatizar la personalización de máquinas virtuales con cloud-init. Pues bien, el mismo archivo de configuración cloud-init puede usarlo para instalar NGINX y ejecutar una aplicación sencilla Node.js "Hello World".
+En un tutorial anterior en [cómo toocustomize una máquina virtual de Linux en el primer arranque](tutorial-automate-vm-deployment.md), también habrá aprendido cómo tooautomate personalización de máquina virtual con init de la nube. Puede usar Hola mismo tooinstall de archivo de configuración de nube init NGINX y ejecutar una aplicación sencilla de Node.js de "Hello World".
 
-En el shell actual, cree un archivo denominado "*cloud-init.txt*" y pegue la siguiente configuración. Por ejemplo, cree el archivo en Cloud Shell, no en la máquina local. Escriba `sensible-editor cloud-init.txt` para crear el archivo y ver una lista de editores disponibles. Asegúrese de que todo el archivo cloud-init se copia correctamente, especialmente la primera línea:
+En el shell actual, cree un archivo denominado *init.txt nube* y pegar Hola siguiente configuración. Por ejemplo, crear archivo hello en hello Shell en la nube, no en el equipo local. Escriba `sensible-editor cloud-init.txt` toocreate Hola archivo y ver una lista de editores disponibles. Asegúrese de que ese archivo de nube-init todo Hola se copia correctamente, especialmente Hola primera línea:
 
 ```yaml
 #cloud-config
@@ -212,9 +212,9 @@ runcmd:
 ```
 
 ### <a name="create-virtual-machines"></a>Creación de máquinas virtuales
-Para mejorar la alta disponibilidad de la aplicación, coloque las máquinas virtuales en un conjunto de disponibilidad. Para más información sobre los conjuntos de disponibilidad, consulte el tutorial anterior [Creación de máquinas virtuales de alta disponibilidad](tutorial-availability-sets.md).
+alta disponibilidad de Hola de tooimprove de la aplicación, coloque las máquinas virtuales en un conjunto de disponibilidad. Para obtener más información acerca de los conjuntos de disponibilidad, vea Hola anterior [cómo máquinas virtuales de alta disponibilidad toocreate](tutorial-availability-sets.md) tutorial.
 
-Cree el conjunto de disponibilidad con [az vm availability-set create](/cli/azure/vm/availability-set#create). En el ejemplo siguiente se crea un conjunto de disponibilidad denominado *myAvailabilitySet*:
+Cree el conjunto de disponibilidad con [az vm availability-set create](/cli/azure/vm/availability-set#create). Hello en el ejemplo siguiente se crea un conjunto con nombre de disponibilidad *myAvailabilitySet*:
 
 ```azurecli-interactive 
 az vm availability-set create \
@@ -222,7 +222,7 @@ az vm availability-set create \
     --name myAvailabilitySet
 ```
 
-Ahora puede crear las máquinas virtuales con el comando [az vm create](/cli/azure/vm#create). El siguiente ejemplo crea tres máquinas virtuales y genera claves SSH si aún no existen:
+Ahora puede crear máquinas virtuales de hello con [crear vm az](/cli/azure/vm#create). Hello en el ejemplo siguiente se crea tres máquinas virtuales y genera claves de SSH si aún no existen:
 
 ```bash
 for i in `seq 1 3`; do
@@ -239,11 +239,11 @@ for i in `seq 1 3`; do
 done
 ```
 
-Hay tareas en segundo plano que continúan ejecutándose después de que la CLI de Azure vuelve a abrir el símbolo del sistema. El parámetro `--no-wait` no espera a que se completen todas las tareas. Es posible que tenga que esperar otros dos minutos antes de poder acceder a la aplicación. El sondeo de estado del equilibrador de carga detecta automáticamente cuándo la aplicación se está ejecutando en cada máquina virtual. Una vez que la aplicación se esté ejecutando, la regla del equilibrador de carga empieza a distribuir el tráfico.
+Hay tareas en segundo plano que continúan toorun después de hello CLI de Azure devuelve toohello símbolo del sistema. Hola `--no-wait` parámetro no esperar todos Hola toocomplete de tareas. Es posible que otro par de minutos antes de que se puede tener acceso a la aplicación hello. Hello sondeo de estado del equilibrador de carga detecta automáticamente cuando se ejecuta la aplicación hello en cada máquina virtual. Una vez que se ejecuta la aplicación hello, regla de equilibrador de carga de hello inicia toodistribute tráfico.
 
 
 ## <a name="test-load-balancer"></a>Prueba del equilibrador de carga
-Obtenga la dirección IP pública del equilibrador de carga con [az network public-ip show](/cli/azure/network/public-ip#show). En el ejemplo siguiente se obtiene la dirección IP de *myPublicIP* que se ha creado anteriormente:
+Obtener dirección IP pública de Hola de un equilibrador de carga con [show de public-ip de red az](/cli/azure/network/public-ip#show). Hello en el ejemplo siguiente se obtiene la dirección IP de Hola para *myPublicIP* creado anteriormente:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -253,18 +253,18 @@ az network public-ip show \
     --output tsv
 ```
 
-A continuación, puede escribir la dirección IP pública en un explorador web. Recuerde que tendrán que pasar unos minutos para que las máquinas virtuales estén listas antes de que el equilibrador de carga comience a distribuir el tráfico a ellas. Se muestra la aplicación, incluido el nombre de host de la máquina virtual a la que el equilibrador de carga distribuye el tráfico como en el ejemplo siguiente:
+A continuación, puede escribir la dirección IP pública hello en el Explorador de web tooa. Recuerde: tarda unos minutos Estados de Hola de Hola de máquinas virtuales toobe listo antes de equilibrador de carga de hello inicia toodistribute tráfico toothem. se muestra la aplicación Hello, incluyendo hostname Hola de hello VM ese equilibrador de carga de hello distribuye tooas de tráfico en el siguiente ejemplo de Hola:
 
 ![Ejecución de la aplicación Node.js](./media/tutorial-load-balancer/running-nodejs-app.png)
 
-Para ver cómo el equilibrador de carga distribuye el tráfico entre las tres máquinas virtuales que ejecutan la aplicación, puede realizar una actualización forzada del explorador web.
+equilibrador de carga de hello toosee distribuir el tráfico entre todas las tres VM que se ejecuta la aplicación, se puede forzar actualización el explorador web.
 
 
 ## <a name="add-and-remove-vms"></a>Agregar y quitar máquinas virtuales
-Puede que tenga que realizar labores de mantenimiento de las máquinas virtuales que ejecutan la aplicación, como la instalación de actualizaciones del sistema operativo. Para gestionar un aumento de tráfico a la aplicación, tiene que agregar más máquinas virtuales. Esta sección le muestra cómo quitar o agregar una máquina virtual desde el equilibrador de carga.
+Puede que necesite tooperform mantenimiento en hello máquinas virtuales que ejecutan la aplicación, como la instalación de actualizaciones del sistema operativo. toodeal con un aumento del tráfico tooyour aplicación, puede que necesite tooadd máquinas virtuales adicionales. Esta sección muestra cómo tooremove o agregar una máquina virtual desde el equilibrador de carga de Hola.
 
-### <a name="remove-a-vm-from-the-load-balancer"></a>Eliminación de una máquina virtual del equilibrador de carga
-Puede quitar una máquina virtual del grupo de direcciones de back-end con el comando [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool#remove). En el ejemplo siguiente se quita la NIC virtual para **myVM2** de *myLoadBalancer*:
+### <a name="remove-a-vm-from-hello-load-balancer"></a>Quitar una máquina virtual de equilibrador de carga de Hola
+Puede quitar una máquina virtual del grupo de direcciones de back-end de hello con [az red nic ip-config-grupo de direcciones quitar](/cli/azure/network/nic/ip-config/address-pool#remove). Hola siguiente ejemplo quita Hola NIC virtual para **myVM2** de *myLoadBalancer*:
 
 ```azurecli-interactive 
 az network nic ip-config address-pool remove \
@@ -275,10 +275,10 @@ az network nic ip-config address-pool remove \
     --address-pool myBackEndPool 
 ```
 
-Para ver cómo el equilibrador de carga distribuye el tráfico entre las dos máquinas virtuales que quedan que ejecutan la aplicación, puede realizar una actualización forzada del explorador web. Ahora puede realizar tareas de mantenimiento en la máquina virtual, como instalar actualizaciones del sistema operativo o realizar un reinicio de máquina virtual.
+equilibrador de carga de hello toosee distribuir el tráfico entre Hola otras dos máquinas virtuales que ejecutan la aplicación puede forzar actualización el explorador web. Ahora puede realizar el mantenimiento en Hola de máquina virtual, como instalar actualizaciones del sistema operativo o realizar un reinicio de máquina virtual.
 
-### <a name="add-a-vm-to-the-load-balancer"></a>Incorporación de una máquina virtual al equilibrador de carga
-Después de realizar el mantenimiento en una máquina virtual, o si necesita expandir la capacidad, puede agregar una máquina virtual al grupo de direcciones de back-end con el comando [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#add). En el ejemplo siguiente se agrega la NIC virtual para **myVM2** a *myLoadBalancer*:
+### <a name="add-a-vm-toohello-load-balancer"></a>Agregar un equilibrador de carga de toohello VM
+Después de realizar el mantenimiento de la máquina virtual, o si necesita capacidad de tooexpand, puede agregar un grupo de direcciones de back-end VM toohello con [agregar az red nic ip-config-grupo de direcciones](/cli/azure/network/nic/ip-config/address-pool#add). Hello en el ejemplo siguiente se agrega Hola NIC virtual para **myVM2** demasiado*myLoadBalancer*:
 
 ```azurecli-interactive 
 az network nic ip-config address-pool add \
@@ -291,18 +291,18 @@ az network nic ip-config address-pool add \
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial, ha creado un equilibrador de carga y conectó máquinas virtuales a él. Ha aprendido a:
+En este tutorial, ha creado un equilibrador de carga y adjunta tooit de máquinas virtuales. Ha aprendido a:
 
 > [!div class="checklist"]
 > * Creación de un equilibrador de carga de Azure
 > * Creación del sondeo de estado de un equilibrador de carga
 > * Crear reglas de tráfico del equilibrador de carga
-> * Usar cloud-init para crear una aplicación básica de Node.js
-> * Crear máquinas virtuales y conectarlas a un equilibrador de carga
+> * Usar en la nube init toocreate una aplicación básica de Node.js
+> * Crear máquinas virtuales y adjuntar tooa equilibrador de carga
 > * Ver un equilibrador de carga en acción
 > * Agregar y quitar las máquinas virtuales de un equilibrador de carga
 
-Prosiga con el siguiente tutorial para aprender más sobre los componentes de red virtual de Azure.
+Avanzar toohello siguiente tutorial toolearn más información acerca de los componentes de red virtual de Azure.
 
 > [!div class="nextstepaction"]
 > [Administración de máquinas y redes virtuales](tutorial-virtual-network.md)

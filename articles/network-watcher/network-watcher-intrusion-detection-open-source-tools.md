@@ -1,6 +1,6 @@
 ---
-title: "Realización de detección de intrusiones en la red con Azure Network Watcher y herramientas de código abierto | Microsoft Docs"
-description: "En este artículo se describe cómo usar Azure Network Watcher y las herramientas de código abierto para realizar la detección de intrusiones en la red."
+title: "aaaPerform la detección de intrusiones de red con Monitor de red de Azure y herramientas de código abierto | Documentos de Microsoft"
+description: "Este artículo describe cómo toouse Monitor de red de Azure y código abierto herramientas tooperform la detección de intrusiones de red"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 82d5e525859ebe03b152c63e4debbae469049c12
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b5a909b827ab32ad6b2fd8e2911a944fd940249e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Realización de detección de intrusiones en la red con Azure Network Watcher y herramientas de código abierto
 
-Las capturas de paquetes son un componente clave de la implementación de sistemas de detección de intrusiones de red (IDS) y de la ejecución de supervisión de seguridad de la red (NSM). Existen varias herramientas IDS de código abierto que procesan las capturas de paquetes y buscan firmas de posibles intrusiones y actividad malintencionada. Con las capturas de paquetes que proporciona Network Watcher, puede analizar la red en busca de intrusiones o vulnerabilidades de carácter dañino.
+Las capturas de paquetes son un componente clave de la implementación de sistemas de detección de intrusiones de red (IDS) y de la ejecución de supervisión de seguridad de la red (NSM). Existen varias herramientas IDS de código abierto que procesan las capturas de paquetes y buscan firmas de posibles intrusiones y actividad malintencionada. Con capturas de paquetes de saludo proporcionadas por el Monitor de red, puede analizar la red en busca de vulnerabilidades ni las intrusiones perjudiciales.
 
-Una de esas herramientas de código abierto es Suricata, un motor de IDS que usa conjuntos de reglas para supervisar el tráfico de red y desencadenar alertas cuando se produce algún evento sospechoso. Suricata ofrece un motor multiproceso, lo que significa que puede realizar el análisis del tráfico de red con una mayor velocidad y eficiencia. Para más información sobre Suricata y sus funcionalidades, visite este sitio web en https://suricata-ids.org/.
+Una de estas herramientas de código abierto es Suricata, un motor de identificadores que usa el tráfico de red de rulesets toomonitor y desencadena alertas cuando se producen eventos sospechosos. Suricata ofrece un motor multiproceso, lo que significa que puede realizar el análisis del tráfico de red con una mayor velocidad y eficiencia. Para más información sobre Suricata y sus funcionalidades, visite este sitio web en https://suricata-ids.org/.
 
 ## <a name="scenario"></a>Escenario
 
-En este artículo se explica cómo configurar el entorno para realizar la detección de intrusiones de red con Network Watcher, Suricata y Elastic Stack. Network Watcher proporciona las capturas de paquetes usadas para realizar la detección de intrusiones de red. Suricata procesa las capturas de paquetes y desencadena alertas en función de los paquetes que coinciden con su conjunto de reglas especificada de amenazas. Estas alertas se almacenan en un archivo de registro en la máquina local. Con Elastic Stack, los registros que genera Suricata se pueden indexar y usar para crear un panel de Kibana. Este panel proporciona una representación visual de los registros y un medio de obtener rápidamente información detallada sobre posibles vulnerabilidades de la red.  
+Este artículo explica cómo tooset una tooperform de su entorno mediante el Monitor de red, Suricata, la detección de intrusiones de red y Hola pila elástico. Monitor de red se proporciona con el paquete de saludo captura tooperform usa la detección de intrusiones de red. Captura de paquetes de saludo de Suricata procesos y las alertas de desencadenador se basan en paquetes que coincidan con su conjunto de reglas determinado de amenazas. Estas alertas se almacenan en un archivo de registro en la máquina local. Utilice Hola pila elástica, registros de hello generados por Suricata se pueden indizar y usan toocreate un panel de Kibana, le proporciona una representación visual de los registros de Hola y un vulnerabilidades de red significa tooquickly ganancia visión toopotential.  
 
 ![escenario sencillo de aplicación web][1]
 
-Ambas herramientas de código abierto se pueden configurar en una máquina virtual de Azure, lo que le permite realizar este análisis dentro de su propio entorno de red de Azure.
+Ambas herramientas de código abierto pueden configurarse en una máquina virtual de Azure, permitiéndole tooperform este análisis dentro de su propio entorno de red de Azure.
 
 ## <a name="steps"></a>Pasos
 
@@ -40,7 +40,7 @@ Ambas herramientas de código abierto se pueden configurar en una máquina virtu
 
 Para más información sobre todos los demás métodos de instalación, visite http://suricata.readthedocs.io/en/latest/install.html
 
-1. En el terminal de la línea de comandos de la máquina virtual, ejecute los siguientes comandos:
+1. En el terminal de línea de comandos de saludo de la máquina virtual ejecute Hola siguientes comandos:
 
     ```
     sudo add-apt-repository ppa:oisf/suricata-stable
@@ -48,13 +48,13 @@ Para más información sobre todos los demás métodos de instalación, visite h
     sudo sudo apt-get install suricata
     ```
 
-1. Para comprobar la instalación, ejecute el comando `suricata -h` para ver la lista completa de comandos.
+1. tooverify la instalación, ejecute el comando de hello `suricata -h` lista completa de hello toosee de comandos.
 
-### <a name="download-the-emerging-threats-ruleset"></a>Descarga del conjunto de reglas Emerging Threats
+### <a name="download-hello-emerging-threats-ruleset"></a>Descargar el conjunto de reglas de hello nuevas amenazas
 
-En esta fase, no tenemos ninguna regla para ejecutar con Suricata. Puede crear sus propias reglas si hay amenazas específicas para su red que quiera detectar, o también puede usar conjuntos de reglas desarrolladas por varios proveedores, como Emerging Threats o las reglas VRT de Snort. Aquí usaremos el conjunto de reglas de acceso gratuito Emerging Threats:
+En esta fase, no tenemos ninguna regla para Suricata toorun. Puede crear sus propias reglas si hay amenazas específicas de red tooyour le gustaría toodetect o también puede conjuntos de reglas de uso desarrolladas desde un número de proveedores, como nuevas amenazas o reglas VRT de Snort. Se utiliza el conjunto de reglas de hello libremente accesible nuevas amenazas aquí:
 
-Descargue el conjunto de reglas y cópielo en el directorio:
+Descargar el conjunto de reglas de Hola y cópielos en el directorio de hello:
 
 ```
 wget http://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
@@ -64,24 +64,24 @@ sudo cp -r rules /etc/suricata/
 
 ### <a name="process-packet-captures-with-suricata"></a>Procesamiento de las capturas de paquetes con Suricata
 
-Para procesar las capturas de paquetes mediante Suricata, ejecute el siguiente comando:
+captura de paquetes de tooprocess con Suricata, ejecute el siguiente comando de hello:
 
 ```
 sudo suricata -c /etc/suricata/suricata.yaml -r <location_of_pcapfile>
 ```
-Para comprobar las alertas resultantes, lea el archivo fast.log:
+toocheck Hola resultante alertas, leer el archivo de Hola fast.log:
 ```
 tail -f /var/log/suricata/fast.log
 ```
 
-### <a name="set-up-the-elastic-stack"></a>Configuración de Elastic Stack
+### <a name="set-up-hello-elastic-stack"></a>Configurar Hola pila elástica
 
-Si bien los registros que produce Suricata contienen información valiosa sobre lo que sucede en la red, estos archivos de registro no son los más fáciles de leer y comprender. Mediante la conexión a Suricata con Elastic Stack, podemos crear un panel de Kibana que nos permita buscar, representar, analizar y deducir información de nuestros registros.
+Mientras que los registros de Hola que genera Suricata contienen información valiosa acerca de lo que ocurre en nuestra red, estos archivos de registro no son tooread más fácil de Hola y entenderán. Mediante la conexión Suricata con hello pila elástica, podemos crear un panel de Kibana lo que nos permite toosearch, gráfico, analizar y obtener la percepción de nuestros registros.
 
 #### <a name="install-elasticsearch"></a>Instalación de Elasticsearch
 
-1. La versión 5.0 y superiores de Elastic Stack requieren Java 8. Ejecute el comando `java -version` para comprobar la versión. Si no tiene instalado Java, consulte la documentación en el [sitio web de Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html).
-1. Descargue el paquete binario correcto para su sistema:
+1. Hola pila elástico desde la versión 5.0 y versiones posteriores requiere Java 8. Ejecute el comando de hello `java -version` toocheck su versión. Si no tiene java de instalación, consulte toodocumentation en [sitio Web de Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+1. Descargue el paquete binario correcto de hello para el sistema:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
@@ -91,13 +91,13 @@ Si bien los registros que produce Suricata contienen información valiosa sobre 
 
     Puede encontrar otros métodos de instalación en [Elasticsearch Installation](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html) (Instalación de Elasticsearch).
 
-1. Compruebe que Elasticsearch se esté ejecutando con el comando:
+1. Compruebe que se está ejecutando con el comando Hola Elasticsearch:
 
     ```
     curl http://127.0.0.1:9200
     ```
 
-    La respuesta debe ser similar a la siguiente:
+    Debería ver un toothis similar de respuesta:
 
     ```
     {
@@ -114,23 +114,23 @@ Si bien los registros que produce Suricata contienen información valiosa sobre 
     }
     ```
 
-Para más instrucciones sobre cómo instalar Elasticsearch, consulte la página de [instalación](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html).
+Para obtener más instrucciones sobre instalación búsqueda elástica, consulte toohello página [instalación](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html)
 
 ### <a name="install-logstash"></a>Instalación de Logstash
 
-1. Para instalar Logstash, ejecute los siguientes comandos:
+1. tooinstall Logstash ejecute hello siguientes comandos:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. A continuación, se debe configurar Logstash para que lea la salida del archivo eve.json. Cree un archivo logstash.conf mediante:
+1. A continuación, necesitamos tooconfigure Logstash tooread de salida de hello del archivo eve.json. Cree un archivo logstash.conf mediante:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Agregue el contenido siguiente al archivo (asegúrese de que la ruta de acceso al archivo eve.json sea correcta):
+1. Agregar hello toohello contenido el archivo siguiente (asegúrese de que ese archivo de eve.json hello toohello de ruta de acceso sea correcto):
 
     ```ruby
     input {
@@ -202,48 +202,48 @@ Para más instrucciones sobre cómo instalar Elasticsearch, consulte la página 
     }
     ```
 
-1. Asegúrese de conceder los permisos correctos para el archivo eve.json de modo que Logstash pueda ingerir el archivo.
+1. Asegúrese de que toogive Hola permisos correctos toohello eve.json el archivo para que Logstash puede introducir archivo hello.
     
     ```
     sudo chmod 775 /var/log/suricata/eve.json
     ```
 
-1. Para iniciar Logstash, ejecute el comando:
+1. toostart Logstash ejecutar comando hello:
 
     ```
     sudo /etc/init.d/logstash start
     ```
 
-Para obtener más instrucciones sobre cómo instalar Logstash, consulte la [documentación oficial](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
+Para obtener más instrucciones acerca de cómo instalar Logstash, consulte toohello [documentación oficial](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)
 
 ### <a name="install-kibana"></a>Instalación de Kibana
 
-1. Ejecute los siguientes comandos para instalar Kibana:
+1. Ejecute hello después comandos tooinstall Kibana:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
     tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
 
     ```
-1. Para ejecutar Kibana, use los comandos:
+1. toorun Kibana use comandos de hello:
 
     ```
     cd kibana-5.2.0-linux-x86_64/
     ./bin/kibana
     ```
 
-1. Para ver la interfaz web de Kibana, vaya a `http://localhost:5601`.
-1. En este escenario, el patrón de índice usado para los registros de Suricata es "logstash-*".
+1. tooview web Kibana interfaz, vaya demasiado`http://localhost:5601`
+1. En este escenario, el patrón de índice de hello utilizado para hello Suricata registra es "logstash-*"
 
-1. Si quiere ver el panel de Kibana de forma remota, cree una regla NSG de entrada que permita acceder al **puerto 5601**.
+1. Si desea Kibana panel de tooview Hola remotamente, cree una regla de NSG entrada permitir el acceso demasiado**puerto 5601**.
 
 ### <a name="create-a-kibana-dashboard"></a>Creación de un panel de Kibana
 
-En este artículo, hemos proporcionado un panel de ejemplo para que vea las tendencias y los detalles de sus alertas.
+Para este artículo, proporcionamos un panel de ejemplo para que tooview tendencias y los detalles de las alertas.
 
-1. Descargue el archivo de panel [aquí](https://aka.ms/networkwatchersuricatadashboard), el archivo de visualización [aquí](https://aka.ms/networkwatchersuricatavisualization) y el archivo de búsqueda guardado [aquí](https://aka.ms/networkwatchersuricatasavedsearch).
+1. Descargar archivo de panel de hello [aquí](https://aka.ms/networkwatchersuricatadashboard), archivo de visualización de hello [aquí](https://aka.ms/networkwatchersuricatavisualization)y el archivo de búsqueda de hello guarda [aquí](https://aka.ms/networkwatchersuricatasavedsearch).
 
-1. En la pestaña **Management** (Administración) de Kibana, vaya a **Saved Objects** (Objetos guardados) e importe los tres archivos. A continuación, en la pestaña **Dashboard** (Panel), puede abrir y cargar el panel de ejemplo.
+1. En hello **administración** ficha de Kibana, navegue demasiado**objetos guardados** e importar los tres archivos. A continuación en hello **panel** ficha puede abrir y carga Hola panel de ejemplo.
 
 También puede crear visualizaciones y paneles propios que se adapten a las métricas que le interesen. Puede leer más sobre la creación de visualizaciones de Kibana en la [documentación oficial](https://www.elastic.co/guide/en/kibana/current/visualize.html) de Kibana.
 
@@ -251,25 +251,25 @@ También puede crear visualizaciones y paneles propios que se adapten a las mét
 
 ### <a name="visualize-ids-alert-logs"></a>Visualización de registros de alertas de IDS
 
-El panel de ejemplo proporciona varias visualizaciones de los registros de alerta de Suricata:
+panel de ejemplo de Hola proporciona varias visualizaciones de registros de alertas de Hola Suricata:
 
-1. Alertas por GeoIP: mapa que muestra la distribución de las alertas por país de origen según la ubicación geográfica (determinada por la IP)
+1. Alertas por GeoIP: un mapa que muestra la distribución de Hola de alertas de su país de origen en función de la ubicación geográfica (determinado por IP)
 
     ![ip geográfica][3]
 
-1. 10 alertas principales: resumen de las 10 alertas activadas más frecuentes y su descripción. Al hacer clic en una alerta individual se filtra el panel por la información relacionada con esa alerta específica.
+1. Top 10 alertas: un resumen de hello 10 más frecuentes desencadenada alertas y sus descripciones. Al hacer clic en una alerta individual filtra hacia abajo de la información del panel de hello toohello pertenecen toothat de alerta específica.
 
     ![imagen 4][4]
 
-1. Número de alertas: el número total de alertas activadas por el conjunto de reglas.
+1. Número de alertas: Hola recuento total de alertas activadas por hello ruleset
 
     ![imagen 5][5]
 
-1. 20 puertos/direcciones IP de origen y destino principales: gráficos circulares que muestran los 20 puertos y direcciones IP principales en los que se activaron las alertas. Puede filtrar por direcciones IP o puertos específicos para ver cuántas alertas y de qué tipo se han activado.
+1. 20 primeros origen/destino IP/puerto - que muestra los gráficos circulares Hola superior 20 direcciones IP y puertos que las alertas se han activado en. Puede filtrar hacia abajo en toosee de direcciones IP y puertos específico cuántas y qué tipo de alertas se desencadena.
 
     ![imagen 6][6]
 
-1. Resumen de alertas: tabla que resume detalles específicos de cada alerta individual. Puede personalizar esta tabla para mostrar otros parámetros de interés para cada alerta.
+1. Resumen de alertas: tabla que resume detalles específicos de cada alerta individual. Puede personalizar esta tabla tooshow otros parámetros de interés para cada alerta.
 
     ![imagen 7][7]
 
@@ -277,13 +277,13 @@ Para ver más documentación sobre la creación de visualizaciones y paneles per
 
 ## <a name="conclusion"></a>Conclusión
 
-Al combinar las capturas de paquetes proporcionadas por Network Watcher con herramientas IDS de código abierto como Suricata, puede realizar la detección de intrusiones para una amplia variedad de amenazas. Estos paneles permiten detectar rápidamente tendencias y anomalías de la red, así como escarbar en los datos para descubrir las causas principales de las alertas, como agentes de usuario malintencionados o puertos vulnerables. Con estos datos extraídos, puede tomar decisiones fundamentadas sobre cómo proteger su red y reaccionar ante intentos de intrusión perjudiciales en ella, y crear reglas para impedir que sucedan tales situaciones.
+Al combinar las capturas de paquetes proporcionadas por Network Watcher con herramientas IDS de código abierto como Suricata, puede realizar la detección de intrusiones para una amplia variedad de amenazas. Estos paneles permiten tooquickly detectar tendencias y las anomalías dentro de la red, también adentrarse en hello causas raíz de toodiscover de datos de alertas, como agentes de usuario malintencionado o puertos vulnerables. Con estos datos extraídos, puede tomar decisiones informadas acerca de cómo tooreact tooand proteger su red de los intentos de intrusión perjudicial y crear reglas tooprevent futuras intrusiones tooyour red.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a desencadenar capturas de paquetes en función de alertas en el artículo [Uso de la captura de paquetes para realizar la supervisión proactiva de redes con Azure Functions](network-watcher-alert-triggered-packet-capture.md).
+Obtenga información acerca de la captura de paquetes de tootrigger alertas en función de si visita [usar paquetes captura toodo automático supervisión de red con funciones de Azure](network-watcher-alert-triggered-packet-capture.md)
 
-Aprenda a visualizar los registros de flujo de grupos de seguridad de red con Power BI en el artículo [Visualización de registros de flujo del grupo de seguridad de red de Azure con Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Obtenga información acerca de cómo toovisualize su flujo NSG registra con Power BI visitando [flujos de NSG visualizar registros con Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 
 

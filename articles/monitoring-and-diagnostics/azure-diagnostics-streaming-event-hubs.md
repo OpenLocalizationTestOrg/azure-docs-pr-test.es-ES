@@ -1,6 +1,6 @@
 ---
-title: "Transmisión de datos de Diagnósticos de Azure en la ruta de acceso activa mediante Centros de eventos | Microsoft Docs"
-description: "Configuración de Diagnósticos de Azure con Event Hubs de un extremo a otro, con instrucciones para escenarios comunes"
+title: "datos de diagnóstico de Azure en hello ruta de acceso activa con los concentradores de eventos aaaStreaming | Documentos de Microsoft"
+description: "Configuración de diagnóstico de Azure con los concentradores de eventos finalizar tooend, incluidos detalles de los escenarios comunes."
 services: event-hubs
 documentationcenter: na
 author: rboucher
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: robb
-ms.openlocfilehash: 1c05bd6dc4c4d394aa043b9995de9c184e4f14c6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a2528ddd0688d1c23a8631e769ca016dd79e4159
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Transmisión de datos de Diagnósticos de Azure en la ruta de acceso activa mediante Centros de eventos
-Diagnósticos de Azure proporciona maneras flexibles de recopilar métricas y registros de máquinas virtuales de servicios en la nube (VM) y transferir los resultados a Almacenamiento de Azure. A partir de marzo de 2016 (SDK 2.9), puede enviar diagnósticos a orígenes de datos personalizados y transferir datos de rutas de acceso activas en cuestión de segundos mediante [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
+# <a name="streaming-azure-diagnostics-data-in-hello-hot-path-by-using-event-hubs"></a>Transmisión de datos de diagnóstico de Azure en la ruta de acceso activa hello mediante el uso de los centros de eventos
+Diagnósticos de Azure proporciona maneras flexibles toocollect métricas y los registros de servicios las máquinas virtuales (VM) en la nube y transferir tooAzure almacenamiento de resultados. A partir de período de tiempo de hello (SDK 2.9) de marzo de 2016, puede enviar diagnósticos toocustom orígenes de datos y transferir datos de ruta de acceso activa en segundos mediante [centros de eventos de Azure](https://azure.microsoft.com/services/event-hubs/).
 
 Entre los tipos de datos admitidos se incluyen:
 
@@ -31,25 +31,25 @@ Entre los tipos de datos admitidos se incluyen:
 * Registros de aplicación
 * Registros de infraestructura de diagnóstico de Azure
 
-En este artículo se muestra cómo configurar Diagnósticos de Azure con Centros de eventos de manera integral. También se proporcionan instrucciones para los siguientes escenarios comunes:
+Este artículo muestra cómo tooconfigure diagnósticos de Azure con los concentradores de eventos de finalización tooend. También se proporciona orientación para hello escenarios comunes siguientes:
 
-* Cómo personalizar los registros y las métricas enviadas a Event Hubs
-* Cómo cambiar la configuración de cada entorno
-* Cómo ver los datos de secuencia de los Centros de eventos
-* Cómo solucionar los problemas de conexión  
+* Funcionamiento de los registros toocustomize hello y métricas que se envíen los centros de tooEvent
+* ¿Cómo toochange configuraciones en cada entorno
+* Los concentradores de eventos de tooview cómo los datos de secuencia
+* ¿Cómo tootroubleshoot Hola conexión  
 
 ## <a name="prerequisites"></a>Requisitos previos
-La recepción de Diagnósticos de Azure en Event Hubs se admite en Cloud Services, Virtual Machines, Conjuntos de escalado de máquinas virtuales y Service Fabric a partir de Azure SDK 2.9 y las correspondientes herramientas de Azure Tools para Visual Studio.
+Datos de receieving de concentradores de eventos de diagnósticos de Azure se admiten en los servicios en la nube, máquinas virtuales, conjuntos de escalas de máquina Virtual y Service Fabric a partir de Azure SDK 2.9 de Hola y Hola correspondiente Azure Tools para Visual Studio.
 
 * La extensión de Diagnósticos de Azure 1.6 ([Azure SDK para .NET 2.9 o posterior](https://azure.microsoft.com/downloads/) sirve a este fin de forma predeterminada).
 * [Visual Studio 2013 o posterior.](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
-* Configuraciones existentes de Diagnósticos de Azure en una aplicación mediante un archivo *.wadcfgx* y uno de los siguientes métodos:
+* Las configuraciones existentes de diagnósticos de Azure en una aplicación mediante el uso de un *wadcfgx* uno de los siguientes métodos de Hola y de archivo:
   * Visual Studio: [Configuración de Diagnósticos en Servicios en la nube y Máquinas virtuales de Azure](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
   * Windows PowerShell: [Habilitar el diagnóstico en Servicios en la nube de Azure mediante PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md)
-* Espacio de nombres de Event Hubs aprovisionado según el artículo [Introducción a los Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* Espacio de nombres de los centros de eventos aprovisionado por artículo hello, [empezar a trabajar con concentradores de eventos](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Conectar Diagnósticos de Azure al receptor de Centros de eventos
-De forma predeterminada, Diagnósticos de Azure siempre envía registros y métricas a una cuenta de Azure Storage. Una aplicación también puede enviar datos a Event Hubs con la incorporación de una nueva sección **Sinks** al elemento **PublicConfig** / **WadCfg** del archivo *.wadcfgx*. En Visual Studio, el archivo *.wadcfgx* está almacenado en la siguiente ruta de acceso: **Proyecto de servicio en la nube** > **Roles** > **(nombreDelRol)** > archivo **diagnostics.wadcfgx**.
+## <a name="connect-azure-diagnostics-tooevent-hubs-sink"></a>Conectar el receptor de los centros de tooEvent de diagnósticos de Azure
+De forma predeterminada, diagnósticos de Azure siempre envía los registros y las métricas tooan cuenta de almacenamiento de Azure. Una aplicación también puede enviar tooEvent centros de datos agregando un nuevo **receptores** sección hello **PublicConfig** / **WadCfg** elemento de hello *wadcfgx* archivo. En Visual Studio, Hola *wadcfgx* archivo se almacena en hello siguiendo la ruta de acceso: **proyecto de servicio de nube** > **Roles** > **() RoleName)** > **diagnostics.wadcfgx** archivo.
 
 ```xml
 <SinksConfig>
@@ -72,18 +72,18 @@ De forma predeterminada, Diagnósticos de Azure siempre envía registros y métr
 }
 ```
 
-En este ejemplo, la dirección URL del centro de eventos se establece en el espacio de nombres completo del centro de eventos: espacio de nombres del centro de eventos + "/" + nombre del centro de eventos.  
+En este ejemplo, centro de eventos de Hola se establece URL toohello totalmente calificado de espacio de nombres del centro de eventos de hello: espacio de nombres de los centros de eventos + "/" + nombre de concentrador de eventos.  
 
-La dirección URL del centro de eventos se muestra en el [Azure portal](http://go.microsoft.com/fwlink/?LinkID=213885) del panel de Event Hubs.  
+Centro de eventos de Hello URL se visualiza en hello [portal de Azure](http://go.microsoft.com/fwlink/?LinkID=213885) en panel de hello centros de eventos.  
 
-El nombre **Sink** se puede establecer en cualquier cadena válida siempre y cuando se use el mismo valor sistemáticamente en el archivo de configuración.
+Hola **receptor** puede establecer nombre de cadena válida de tooany como hello mismo valor se usa siempre en el archivo de configuración de Hola.
 
 > [!NOTE]
-> Puede que haya más receptores configurados en esta sección, como *applicationInsights* . Diagnósticos de Azure permite definir uno o varios receptores, si cada uno de ellos también se declara en la sección **PrivateConfig** .  
+> Puede que haya más receptores configurados en esta sección, como *applicationInsights* . Diagnósticos de Azure permite uno o varios receptores toobe definida si cada receptor también se declara en hello **PrivateConfig** sección.  
 >
 >
 
-El receptor de Centros de eventos también se debe declarar y definir en la sección **PrivateConfig** del archivo de configuración *.wadcfgx* .
+Hello receptores de los centros de eventos deben también se declaran y se definen en hello **PrivateConfig** sección de hello *wadcfgx* el archivo de configuración.
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -104,19 +104,19 @@ El receptor de Centros de eventos también se debe declarar y definir en la secc
 }
 ```
 
-El valor de `SharedAccessKeyName` debe coincidir con una directiva y una clave de firma de acceso compartido (SAS) que se hayan definido en el espacio de nombres de **Centros de eventos** . Vaya al panel de Centros de eventos en el [Portal de Azure](https://manage.windowsazure.com), seleccione la pestaña **Configurar** y configure una directiva con nombre (por ejemplo, SendRule) que tenga permisos de *envío* . El elemento **StorageAccount** también se declara en **PrivateConfig**. No hace falta cambiar estos valores si funcionan. En este ejemplo, dejamos los valores vacíos, que indica que un activo de bajada establecerá los valores. Por ejemplo, el archivo de configuración del entorno *ServiceConfiguration.Cloud.cscfg* establecerá las claves y los nombres apropiados.  
+Hola `SharedAccessKeyName` valor debe coincidir con una clave de firma de acceso compartido (SAS) y la directiva que se ha definido en hello **centros de eventos** espacio de nombres. Examinar el panel de centros de eventos de toohello en hello [portal de Azure](https://manage.windowsazure.com), haga clic en hello **configurar** y a configurar una directiva con nombre (por ejemplo, "SendRule") que tiene *enviar* permisos. Hola **StorageAccount** también se declara en **PrivateConfig**. No hay valores toochange aquí si están funcionando. En este ejemplo, se deje Hola valores vacíos, que es un inicio de sesión que un recurso de nivel inferior establecerá los valores de hello. Por ejemplo, hello *ServiceConfiguration.Cloud.cscfg* archivo de configuración de entorno establece los nombres de entorno que le corresponda hello y las claves.  
 
 > [!WARNING]
-> Tenga en cuenta que la clave SAS de Centros de eventos se almacena en texto sin formato en el archivo *wadcfgx* . A menudo, esta clave se registra en el control de código fuente o está disponible como un recurso en el servidor de compilación, por lo que debe protegerla de la manera adecuada. Se recomienda usar aquí una clave SAS con permisos de *solo envío* para que los usuarios malintencionados puedan escribir en el Centro de eventos, pero nunca realizar operaciones de administración ni de escucha.
+> clave de SAS de concentradores de eventos de Hola se almacena en texto sin formato en hello *wadcfgx* archivo. A menudo, esta clave se comprueba en el control de código de toosource o está disponible como un recurso en el servidor de compilación, por lo que debería proteger según corresponda. Se recomienda usar una clave de SAS con *solo enviar* permisos para que un usuario malintencionado puede escribir toohello concentrador de eventos, pero no escuchar tooit o administrarlo.
 >
 >
 
-## <a name="configure-azure-diagnostics-to-send-logs-and-metrics-to-event-hubs"></a>Configuración de Diagnósticos de Azure para enviar registros y métricas a Event Hubs
-Como se ha indicado anteriormente, todos los datos de diagnóstico predeterminados y personalizados (es decir, métricas y registros) se envían automáticamente a Azure Storage en los intervalos configurados. Con Event Hubs y cualquier receptor adicional, puede especificar que cualquier nodo raíz u hoja de la jerarquía se envíe al centro de eventos. Esto incluye eventos ETW, contadores de rendimiento, registros de eventos de Windows y registros de aplicaciones.   
+## <a name="configure-azure-diagnostics-toosend-logs-and-metrics-tooevent-hubs"></a>Configurar diagnósticos de Azure toosend registros y métricas tooEvent centros
+Según lo descrito anteriormente, todos los datos de diagnóstico personalizado y predeterminado, es decir, las métricas y los registros, se envía automáticamente tooAzure almacenamiento en intervalos de hello configurado. Con los concentradores de eventos y cualquier receptor adicional, puede especificar cualquier nodo raíz u hoja en hello jerarquía toobe enviado toohello concentrador de eventos. Esto incluye eventos ETW, contadores de rendimiento, registros de eventos de Windows y registros de aplicaciones.   
 
-Es importante tener en cuenta cuántos puntos de datos se deben transferir realmente a Centros de eventos. Normalmente, los desarrolladores transfieren datos de ruta de acceso activa y de baja latencia que deben consumirse e interpretarse rápidamente. Los sistemas que supervisan las alertas o las reglas de escalado automático son algunos ejemplos. Un desarrollador también puede configurar un almacén de búsqueda o un almacén de análisis alternativo (por ejemplo, Análisis de transmisiones de Azure, Elasticsearch, un sistema de supervisión personalizado o un sistema de supervisión favorito de terceros).
+Es importante tooconsider cuántos puntos de datos se deben transferir tooEvent concentradores. Normalmente, los desarrolladores transfieren datos de ruta de acceso activa y de baja latencia que deben consumirse e interpretarse rápidamente. Los sistemas que supervisan las alertas o las reglas de escalado automático son algunos ejemplos. Un desarrollador también puede configurar un almacén de búsqueda o un almacén de análisis alternativo (por ejemplo, Análisis de transmisiones de Azure, Elasticsearch, un sistema de supervisión personalizado o un sistema de supervisión favorito de terceros).
 
-Las siguientes son algunas configuraciones de ejemplo.
+los siguientes Hola son algunas configuraciones de ejemplo.
 
 ```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="HotPath">
@@ -146,7 +146,7 @@ Las siguientes son algunas configuraciones de ejemplo.
 }
 ```
 
-En el ejemplo anterior, el receptor se aplica al nodo principal **PerformanceCounters** de la jerarquía, lo que significa que todos los nodos secundarios **PerformanceCounters** se enviarán a Event Hubs.  
+Hola ejemplo anterior, receptor de hello es toohello aplicado primario **PerformanceCounters** nodo en la jerarquía de hello, lo que significa que todos los secundarios **PerformanceCounters** enviará tooEvent concentradores.  
 
 ```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M">
@@ -188,9 +188,9 @@ En el ejemplo anterior, el receptor se aplica al nodo principal **PerformanceCou
 }
 ```
 
-En el ejemplo anterior, el receptor se aplica solo a tres contadores: **Solicitudes en cola**, **Solicitudes rechazadas** y **% de tiempo de procesador**.  
+En el ejemplo anterior de hello, el receptor de hello es tooonly aplicado tres contadores: **solicitudes en cola**, **rechazar las solicitudes de**, y **% de tiempo de procesador**.  
 
-En el ejemplo siguiente se muestra cómo un desarrollador puede limitar la cantidad de datos que se envían como métricas críticas usadas para el estado del servicio.  
+Hello en el ejemplo siguiente se muestra cómo un programador puede limitar la cantidad de Hola de datos enviados toobe Hola métricas críticas que se usan para el estado de este servicio.  
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" sinks="HotPath" scheduledTransferLogLevelFilter="Error" />
@@ -203,32 +203,32 @@ En el ejemplo siguiente se muestra cómo un desarrollador puede limitar la canti
 }
 ```
 
-En este ejemplo, el receptor se aplica a los registros y se filtra solo para el seguimiento de nivel Error.
+En este ejemplo, receptores de hello es toologs aplicados y es filtrado seguimiento de nivel de tooerror solo.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Implementación y actualización de una aplicación de servicios en la nube y configuración de diagnósticos
-Visual Studio proporciona la manera más sencilla de implementar la aplicación y la configuración del receptor de Centros de eventos. Para ver y editar el archivo, abra el archivo *.wadcfgx* en Visual Studio, edítelo y guárdelo. La ruta de acceso es **Proyecto de servicio en la nube** > **Roles** > **(nombreDelRol)** > **diagnostics.wadcfgx**.  
+Visual Studio proporciona la aplicación de Hola de ruta de acceso más fácil de hello toodeploy y configuración del receptor de los centros de eventos. tooview y editar archivo hello, abra hello *wadcfgx* un archivo en Visual Studio, editarlo y guardarlo. ruta de acceso de Hello es **proyecto de servicio de nube** > **Roles** > **(RoleName)** > **diagnostics.wadcfgx**.  
 
-En este punto, toda la implementación y las acciones de actualización de la implementación en Visual Studio, Visual Studio Team System, además de todos los comandos o scripts que se basan en MSBuild y usan el destino **/t:publish** incluirán el archivo *.wadcfgx* en el proceso de empaquetado. Además, las implementaciones y actualizaciones implementan el archivo en Azure mediante la extensión del agente de Diagnósticos de Azure en las máquinas virtuales.
+En este momento, todos los e implementación actualizan acciones en Visual Studio, Visual Studio Team System y todos los comandos o scripts que se basan en MSBuild y usar hello **/t: publicar** destino incluyen hello *wadcfgx*  en proceso de empaquetado de Hola. Además, implementaciones y actualizaciones implementación hello tooAzure de archivo con extensión del agente de diagnósticos de Azure adecuada de hello en las máquinas virtuales.
 
-Después de implementar la aplicación y la configuración de Diagnósticos de Azure, verá inmediatamente la actividad en el panel del centro de eventos. Esto indica que está listo para continuar y ver los datos de la ruta de acceso activa en el cliente de escucha o la herramienta de análisis que prefiera.  
+Después de implementar la aplicación hello y la configuración de diagnósticos de Azure, verá inmediatamente actividad en el panel de Hola de concentrador de eventos de Hola. Esto indica que está listo toomove en los datos de ruta de acceso activa tooviewing hello en herramienta de cliente o los análisis de agente de escucha de Hola de su elección.  
 
-En la siguiente figura, el panel de Event Hubs muestra el envío correcto de los datos de diagnóstico al centro de eventos a partir de las 23:00. Ese es el momento en que la aplicación se ha implementado con un archivo *.wadcfgx* actualizado y el receptor se ha configurado correctamente.
+Hola figura siguiente, panel de centros de eventos de hello muestra envío correcto de inicio de diagnóstico datos toohello evento concentrador algún tiempo después de 23: 00. Es decir, cuando se implementó la aplicación hello con un controlador actualizado, *wadcfgx* de archivos y Hola receptor se configuró correctamente.
 
 ![][0]  
 
 > [!NOTE]
-> Al realizar actualizaciones en el archivo de configuración de Diagnósticos de Azure (.wadcfgx), se recomienda insertar las actualizaciones en toda la aplicación, además de la configuración, mediante el script de publicación de Visual Studio o el de Windows PowerShell.  
+> Al realizar el archivo de configuración de diagnósticos de Azure actualizaciones toohello (.wadcfgx), se recomienda que realice una inserción Hola actualizaciones toohello toda aplicación, así como la configuración de hello mediante la publicación de Visual Studio o un script de Windows PowerShell.  
 >
 >
 
 ## <a name="view-hot-path-data"></a>Ver los datos de la ruta de acceso activa
-Como se explicó anteriormente, la escucha y el procesamiento de datos de Centros de eventos tienen varias finalidades.
+Según lo descrito anteriormente, hay muchos casos de uso de escucha tooand procesamiento de datos de los centros de eventos.
 
-Un enfoque sencillo es crear una pequeña aplicación de consola de prueba para escuchar el centro de eventos e imprimir el flujo de salida. Puede colocar el código siguiente (que se explica con más detalle en [Introducción a Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)) en una aplicación de consola.  
+Una estrategia sencilla consiste toocreate un concentrador de eventos de prueba pequeñas consola aplicación toolisten toohello y flujo de salida de impresión Hola. Puede colocar Hola siguiente código, que se explica con más detalle en [empezar a trabajar con concentradores de eventos](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)), en una aplicación de consola.  
 
-Tenga en cuenta que la aplicación de consola debe incluir el [paquete NuGet del host del procesador de eventos](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
+Tenga en cuenta que la aplicación de consola de hello debe incluir hello [paquete NuGet de Host de procesador de eventos](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
 
-No olvide sustituir los valores que aparecen entre corchetes angulares en la función **Main** por los valores de sus recursos.   
+Recuerde que los valores de hello tooreplace corchetes angulares en hello **Main** función con valores de los recursos.   
 
 ```csharp
 //Console application code for EventHub test client
@@ -303,7 +303,7 @@ namespace EventHubListener
             options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
             eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
 
-            Console.WriteLine("Receiving. Press enter key to stop worker.");
+            Console.WriteLine("Receiving. Press enter key toostop worker.");
             Console.ReadLine();
             eventProcessorHost.UnregisterEventProcessorAsync().Wait();
         }
@@ -312,15 +312,15 @@ namespace EventHubListener
 ```
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Solución de problemas con los receptores de Event Hubs
-* El centro de eventos no muestra la actividad de eventos entrante o saliente esperada.
+* Centro de eventos de Hello no muestra la actividad de evento entrante o saliente según lo previsto.
 
-    Compruebe que el centro de eventos esté correctamente aprovisionado. Toda la información de conexión de la sección **PrivateConfig** de *wadcfgx* debe coincidir con los valores de su recurso, tal y como se muestra en el portal. Asegúrese de tener una directiva SAS definida (SendRule en el ejemplo) en el portal y que se haya concedido el permiso de *envío* .  
-* Después de una actualización, el centro de eventos ya no muestra actividad de eventos entrante o saliente.
+    Compruebe que el centro de eventos esté correctamente aprovisionado. Toda la información de conexión en hello **PrivateConfig** sección de *wadcfgx* deben coincidir con los valores de hello de su recurso tal como se muestra en el portal de Hola. Asegúrese de que tiene una directiva SAS definida ("SendRule" en el ejemplo de Hola) en el portal de Hola y que *enviar* se concede el permiso.  
+* Después de una actualización, centro de eventos de hello ya no muestra la actividad de evento entrante o saliente.
 
-    Primero, asegúrese de que la información del centro de eventos y de la configuración es correcta tal y como se ha explicado anteriormente. A veces, **PrivateConfig** se restablece en una actualización de implementación. La solución recomendada consiste en realizar todos los cambios en *.wadcfgx* en el proyecto y, luego, insertar una actualización completa de la aplicación. Si no es posible, asegúrese de que la actualización de diagnósticos inserta completamente **PrivateConfig** , lo que incluye la clave SAS.  
-* He probado las sugerencias y el centro de eventos sigue sin funcionar.
+    En primer lugar, asegúrese de que ese concentrador de eventos de Hola y obtener información de configuración es correcta como se explicó anteriormente. A veces Hola **PrivateConfig** se restablece en una actualización de la implementación. Hola recomendado corrección es toomake cambios demasiado*wadcfgx* en Hola proyecto y, a continuación, insertar una actualización de la aplicación completa. Si esto no es posible, asegúrese de que esa actualización de diagnósticos de hello inserta una completa **PrivateConfig** que incluye la clave SAS Hola.  
+* Se ha intentado sugerencias de Hola y centro de eventos de hello sigue sin funcionar.
 
-    Pruebe a mirar en la tabla de Almacenamiento de Azure que contiene registros y errores del servicio Diagnósticos de Azure: **WADDiagnosticInfrastructureLogsTable**. Una opción es usar una herramienta como el [Explorador de almacenamiento de Azure](http://www.storageexplorer.com) para conectarse a esta cuenta de almacenamiento, ver esta tabla y agregar una consulta para TimeStamp en las últimas 24 horas. Puede usar la herramienta para exportar un archivo .csv y abrirlo en una aplicación como Microsoft Excel. Excel facilita la búsqueda de cadenas de tarjeta de llamadas, como **EventHubs**, para ver qué error se notifica.  
+    Pruebe a buscar en tabla de almacenamiento de Azure de Hola que contiene errores y los registros de diagnósticos de Azure propia: **WADDiagnosticInfrastructureLogsTable**. Una opción es toouse una herramienta como [Azure Storage Explorer](http://www.storageexplorer.com) cuenta de almacenamiento de tooconnect toothis, ver esta tabla y agregar una consulta de marca de tiempo en hello las últimas 24 horas. Puede usar la herramienta de hello tooexport un archivo .csv y ábralo en una aplicación como Microsoft Excel. Excel resulta fácil toosearch para las cadenas de tarjeta de llamada, como **EventHubs**, toosee se notifica el error.  
 
 ## <a name="next-steps"></a>Pasos siguientes
 •    [Más información sobre Event Hubs](https://azure.microsoft.com/services/event-hubs/)
@@ -379,7 +379,7 @@ namespace EventHubListener
 </DiagnosticsConfiguration>
 ```
 
-El archivo *ServiceConfiguration.Cloud.cscfg* complementario para este ejemplo se parece al siguiente.
+Hola complementario *ServiceConfiguration.Cloud.cscfg* para este ejemplo es similar a Hola siguiente.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -505,7 +505,7 @@ La configuración JSON equivalente para máquinas virtuales es la siguiente:
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información acerca de Event Hubs, visite los vínculos siguientes:
+Para obtener más información acerca de los centros de eventos información visitando Hola siguientes vínculos:
 
 * [Información general de Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
 * [Creación de un centro de eventos](../event-hubs/event-hubs-create.md)

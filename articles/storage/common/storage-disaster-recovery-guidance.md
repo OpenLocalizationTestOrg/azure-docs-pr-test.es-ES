@@ -1,6 +1,6 @@
 ---
-title: "Qué hacer si se produce una interrupción del servicio de Azure Storage | Microsoft Docs"
-description: "Qué hacer si se produce una interrupción del servicio de Almacenamiento de Azure"
+title: "aaaWhat toodo en caso de hello de una interrupción de almacenamiento de Azure | Documentos de Microsoft"
+description: "¿Qué toodo en caso de hello de una interrupción de almacenamiento de Azure"
 services: storage
 documentationcenter: .net
 author: robinsh
@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: robinsh
-ms.openlocfilehash: 1d9ccc1c81260379b5e645d338cbf1fa265e18d4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 93e1e831c35b96b8bf190fa2b56ab89350bbac13
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Qué hacer si se produce una interrupción del servicio de Almacenamiento de Azure
-En Microsoft, hacemos todo lo posible para garantizar que los servicios siempre estén disponibles. A veces, debido a factores externos que escapan de nuestro control, se producen interrupciones de servicio no planeadas en una o varias regiones. Para ayudarlo a gestionar estos raros imprevistos, ofrecemos la siguiente guía general para los servicios de Almacenamiento de Azure.
+# <a name="what-toodo-if-an-azure-storage-outage-occurs"></a>¿Qué toodo si se produce una interrupción de almacenamiento de Azure
+En Microsoft, trabajamos duro toomake seguro de que nuestros servicios están siempre disponibles. A veces, debido a factores externos que escapan de nuestro control, se producen interrupciones de servicio no planeadas en una o varias regiones. toohelp controlar estos rara vez, proporcionamos Hola después de orientación de alto nivel para servicios de almacenamiento de Azure.
 
-## <a name="how-to-prepare"></a>Preparación
-Es fundamental que todos los clientes preparen su propio plan de recuperación ante desastres. Para recuperarse de una interrupción de los servicios de almacenamiento, normalmente hay que realizar procedimientos automatizados e implicar al personal de operaciones con el objetivo de reactivar las aplicaciones para que funcionen con normalidad. Consulte la documentación de Azure para crear su propio plan de recuperación ante desastres:
+## <a name="how-tooprepare"></a>Cómo tooprepare
+Es fundamental para cada cliente tooprepare su propio plan de recuperación ante desastres. Hola toorecover de esfuerzo de una interrupción de almacenamiento suele implica personal de operaciones y procedimientos automatizados en orden tooreactivate las aplicaciones en un estado de funcionamiento. Consulte toohello documentación de Azure a continuación toobuild su propio plan de recuperación ante desastres:
 
 * [Recuperación ante desastres y alta disponibilidad para aplicaciones de Azure](/azure/architecture/resiliency/disaster-recovery-high-availability-azure-applications.md)
 * [Guía técnica sobre resistencia en Azure](/azure/architecture/resiliency.md)
@@ -32,41 +32,41 @@ Es fundamental que todos los clientes preparen su propio plan de recuperación a
 * [Replicación de almacenamiento de Azure](storage-redundancy.md)
 * [Azure Backup](https://azure.microsoft.com/services/backup/)
 
-## <a name="how-to-detect"></a>Detección
-La manera recomendada de determinar el estado del servicio de Azure es suscribirse al [panel de estado del servicio de Azure](https://azure.microsoft.com/status/).
+## <a name="how-toodetect"></a>Cómo toodetect
+Hola recomendado Hola de manera toodetermine estado del servicio de Azure es toosubscribe toohello [panel de estado del servicio de Azure](https://azure.microsoft.com/status/).
 
-## <a name="what-to-do-if-a-storage-outage-occurs"></a>Qué hacer si se produce una interrupción de los servicios de almacenamiento
-Si uno o varios servicios de almacenamiento no están disponibles temporalmente en una o varias regiones, hay dos opciones para tener en cuenta. Si desea acceder de inmediato a los datos, plantéese la opción 2.
+## <a name="what-toodo-if-a-storage-outage-occurs"></a>¿Qué toodo si se produce una interrupción de almacenamiento
+Si uno o más servicios de almacenamiento no están disponibles temporalmente en una o varias regiones, hay dos opciones para tooconsider. Si desea que los datos de tooyour acceder de forma inmediata, considere la posibilidad de opción 2.
 
 ### <a name="option-1-wait-for-recovery"></a>Opción 1: esperar a que se recupere el servicio
-En este caso, no se requieren acciones por su parte. Trabajaremos con rapidez para que el servicio de Azure vuelva a estar disponible. Puede supervisar el estado del servicio en el [panel de estado del servicio de Azure](https://azure.microsoft.com/status/).
+En este caso, no se requieren acciones por su parte. Estamos trabajando diligentemente disponibilidad de los servicios de Azure toorestore Hola. Puede supervisar el estado del servicio hello en hello [panel de estado del servicio de Azure](https://azure.microsoft.com/status/).
 
 ### <a name="option-2-copy-data-from-secondary"></a>Opción 2: copiar los datos de la región secundaria
-Si eligió el [almacenamiento con redundancia geográfica con acceso de lectura (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (recomendado) en las cuentas de almacenamiento, tendrá acceso de lectura a los datos de la región secundaria. Puede usar herramientas como [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) y la [biblioteca de movimiento de datos de Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) para copiar los datos de la región secundaria en otra cuenta de almacenamiento de una región donde no se haya producido la interrupción. Después, haga que las aplicaciones apunten a esa cuenta de almacenamiento para proporcionar acceso de lectura y escritura.
+Si ha elegido [almacenamiento con redundancia geográfica con acceso de lectura (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (recomendado) para las cuentas de almacenamiento, tendrá acceso de lectura tooyour datos de la región secundaria Hola. Puede usar herramientas como [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md), hello y [biblioteca de movimiento de datos de Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) toocopy datos de la región secundaria de hello en otra cuenta de almacenamiento en una región unimpacted y a continuación, elija el sistema de almacenamiento de toothat de las aplicaciones de la cuenta para leen y escribir la disponibilidad.
 
-## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Qué esperar si se produce una conmutación por error de almacenamiento
+## <a name="what-tooexpect-if-a-storage-failover-occurs"></a>¿Qué tooexpect si se produce una conmutación por error de almacenamiento
 Si eligió el [almacenamiento con redundancia geográfica (GRS)](storage-redundancy.md#geo-redundant-storage) o el [almacenamiento geográficamente redundante con acceso de lectura (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (recomendado), Almacenamiento de Azure conservará los datos en dos regiones (la principal y la secundaria). En las dos regiones, Almacenamiento de Azure mantendrá constantemente réplicas de los datos.
 
-Cuando se produce un desastre regional que afecta a la región primaria, se tratará en primer lugar de restaurar el servicio en esa región. Según la naturaleza de los desastres y sus repercusiones, en raras ocasiones es posible que no podamos restaurar la región primaria. En ese momento, realizaremos una conmutación por error geográfica. La replicación de datos entre regiones consiste en un proceso asincrónico que puede provocar retrasos, por lo que es posible que se pierdan los cambios que todavía no se hayan replicado a la región secundaria. Puede consultar la [hora de última sincronización de la cuenta de almacenamiento](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) para obtener información sobre el estado de replicación.
+Cuando un desastre regional afecta a la región principal, se probará primero toorestore servicio de hello en dicha región. Depende de la naturaleza de Hola de desastre de Hola y sus impactos, en algunas ocasiones excepcionales nos será región principal de toorestore capaz de Hola. En ese momento, realizaremos una conmutación por error geográfica. la replicación de datos entre regiones Hello es un proceso asincrónico que puede implicar un retraso, por lo que es posible que los cambios que aún no se han replicado región secundaria toohello podrían perderse. Puede consultar hello ["Hora de última sincronización" de la cuenta de almacenamiento](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) tooget detalles de estado de replicación de Hola.
 
-Ahora hablaremos de dos aspectos relativos a la experiencia de conmutación por error geográfica de almacenamiento:
+Un par de cuestiones con respecto a la experiencia de conmutación por error geográfica de almacenamiento de hello:
 
-* La conmutación por error geográfica de almacenamiento solo la activa el equipo de almacenamiento de Azure. El cliente no tiene que hacer nada.
-* Los puntos de conexión de los servicios de almacenamiento que disponga para blobs, tablas, colas y archivos seguirán siendo los mismos después de la conmutación por error; la entrada DNS deberá actualizarse para cambiar de la región primaria a la secundaria.
-* Antes de la conmutación por error geográfica y durante este proceso, no tendrá acceso de escritura a la cuenta de almacenamiento debido a las repercusiones del desastre. Sin embargo, sí que podrá seguir realizando operaciones de lectura en la base de datos secundaria si la cuenta de almacenamiento se ha configurado como RA-GRS.
-* Cuando se haya completado la conmutación por error geográfica y se propaguen los cambios de DNS, se reanudará el acceso de lectura y escritura de la cuenta de almacenamiento. Esto apunta a lo que solía ser el punto de conexión secundario. 
-* Tenga en cuenta que tendrá acceso de escritura si tiene GRS o RA-GRS configurado para la cuenta de almacenamiento. 
-* Puede consultar la [hora de la última conmutación por error geográfica de la cuenta de almacenamiento](https://msdn.microsoft.com/library/azure/ee460802.aspx) para obtener más información.
-* Después de la conmutación por error, la cuenta de almacenamiento volverá a estar completamente funcional, pero con un rendimiento reducido, ya que se hospeda realmente en una región independiente donde no se pueden realizar replicaciones geográficas. Para mitigar este riesgo, se restaurará la región primaria original y, luego, se realizará una conmutación por error geográfica para restaurar el estado original. Si la región primaria original es irrecuperable, asignamos otra región secundaria.
-  Para obtener más información sobre la infraestructura de replicación geográfica de Almacenamiento de Azure, consulte el artículo del blog del equipo de almacenamiento que trata sobre las [opciones de redundancia y RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+* Solo se desencadenará conmutación geográfica de almacenamiento que el equipo de almacenamiento de Azure hello: no es necesaria ninguna acción del usuario.
+* El servicio de almacenamiento existente permanecerán extremos para blobs, tablas, colas y archivos Hola igual después de la conmutación por error de hello; Hola entrada DNS será necesario tooswitch toobe actualizado de la región secundaria de hello región principal toohello.
+* Antes y durante la conmutación por error Hola geográfica, no tendrá acceso de escritura tooyour cuenta de almacenamiento debido toohello impacto de desastre Hola pero todavía puede leerse de hello secundaria si se ha configurado su cuenta de almacenamiento como RA-GRS.
+* Cuando Hola geográfica conmutación por error se ha completado y Hola propaga los cambios de DNS, se reanudará la cuenta de almacenamiento de tooyour de acceso de lectura y escritura; Esto señala toobe toowhat utiliza el extremo secundario. 
+* Tenga en cuenta que tendrá acceso de escritura si tiene GRS o RA-GRS configuran para la cuenta de almacenamiento de Hola. 
+* Puede consultar ["Tiempo de conmutación por error último de replicación geográfica" de la cuenta de almacenamiento](https://msdn.microsoft.com/library/azure/ee460802.aspx) tooget más detalles.
+* Después de la conmutación por error de hello, su cuenta de almacenamiento totalmente funcionará, pero en un estado "Degradado", tal y como se hospeda realmente en una región independiente con no es posible la replicación geográfica. toomitigate este riesgo, se restaurará la región principal original de hello y, a continuación, realice una conmutación geográfica toorestore Hola original estado. Si la región principal original de hello es irrecuperable, se asignará otra región secundaria.
+  Para obtener más detalles sobre la infraestructura de Hola de replicación geográfica de almacenamiento de Azure, consulte toohello artículo en el blog del equipo de almacenamiento de hello sobre [opciones de redundancia y RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 ## <a name="best-practices-for-protecting-your-data"></a>Prácticas recomendadas para proteger los datos
-Para hacer una copia de seguridad de los datos de almacenamiento de forma periódico, hay algunos enfoques que recomendamos.
+No hay algunos tooback de enfoques recomendados de seguridad de los datos de almacenamiento de forma regular.
 
-* Discos de máquina virtual: use el [servicio de copia de seguridad de Azure](https://azure.microsoft.com/services/backup/) para realizar una copia de seguridad de los discos de máquina virtual que emplean las máquinas virtuales de Azure.
-* Blobs en bloques: cree una [instantánea](https://msdn.microsoft.com/library/azure/hh488361.aspx) de cada blob en bloques o copie los blobs en otra cuenta de almacenamiento de otra región mediante [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) o la [biblioteca de movimiento de datos de Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-* Tablas: use [AzCopy](storage-use-azcopy.md) para exportar los datos de tabla en otra cuenta de almacenamiento de otra región.
-* Archivos: use [AzCopy](storage-use-azcopy.md) o [Azure PowerShell](storage-powershell-guide-full.md) para copiar los archivos en otra cuenta de almacenamiento de otra región.
+* Discos de máquina virtual: Hola de uso [servicio de copia de seguridad de Azure](https://azure.microsoft.com/services/backup/) tooback los discos de máquina virtual de hello utilizados por máquinas virtuales de Azure.
+* Los blobs en bloques: crear un [instantánea](https://msdn.microsoft.com/library/azure/hh488361.aspx) de cada bloque blob o copiar cuenta de almacenamiento de hello blobs tooanother en otra región mediante [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md), o hello [ Biblioteca de movimiento de datos de Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
+* Usar tablas – [AzCopy](storage-use-azcopy.md) datos de la tabla tooexport hello en otra cuenta de almacenamiento en otra región.
+* Usar archivos- [AzCopy](storage-use-azcopy.md) o [Azure PowerShell](storage-powershell-guide-full.md) toocopy cuenta el almacenamiento de archivos tooanother en otra región.
 
-Para información sobre cómo crear aplicaciones que aprovechan totalmente la característica RA-GRS, consulte [Diseño de aplicaciones de alta disponibilidad mediante RA-GRS](../storage-designing-ha-apps-with-ragrs.md).
+Para obtener información sobre cómo crear aplicaciones que aprovechan la característica de hello RA-GRS, consulte la [diseñar aplicaciones altamente disponible utilizando almacenamiento RA-GRS](../storage-designing-ha-apps-with-ragrs.md)
 

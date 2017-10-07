@@ -1,5 +1,5 @@
 ---
-title: "Configuración personalizada de entornos del Servicio de aplicaciones"
+title: "configuración de aaaCustom para los entornos de servicio de aplicación"
 description: "Opciones de configuración personalizada para Entornos del Servicio de aplicaciones"
 services: app-service
 documentationcenter: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
 ms.author: stefsch
-ms.openlocfilehash: 687475fae0c90713c15e8abbb92b71059eae81c0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3d140688c88b389e71bfdd465c418339cccab3a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Opciones de configuración personalizada para Entornos del Servicio de aplicaciones
 ## <a name="overview"></a>Información general
-Puesto que los entornos del Servicio de aplicaciones están aislados en un solo cliente, hay ciertas opciones de configuración que se pueden aplicar exclusivamente a ellos. En este artículo se documentan las distintas personalizaciones específicas disponibles para los entornos del Servicio de aplicaciones.
+Porque los entornos del servicio de aplicación están aisladas tooa solo cliente, hay ciertas opciones de configuración que se pueden aplican tooApp exclusivamente los entornos del servicio. Este artículo se explican Hola distintos personalizaciones específicas que están disponibles para entornos del servicio de aplicación.
 
-Si no cuenta con un entorno de Servicio de aplicaciones, consulte [Creación de un entorno del Servicio de aplicaciones](app-service-web-how-to-create-an-app-service-environment.md).
+Si no tiene un entorno de servicio de aplicaciones, consulte [cómo tooCreate un entorno de servicio de aplicaciones](app-service-web-how-to-create-an-app-service-environment.md).
 
-Puede almacenar las personalizaciones del entorno del Servicio de aplicaciones mediante el uso de una matriz en el nuevo atributo **clusterSettings** . Este atributo se encuentra en el diccionario de "Propiedades" de la entidad *hostingEnvironments* de Azure Resource Manager.
+Puede almacenar las personalizaciones del entorno del servicio de aplicaciones mediante el uso de una matriz en hello nueva **clusterSettings** atributo. Este atributo se encuentra en el diccionario de "Propiedades" hello de hello *hostingEnvironments* entidad Azure Resource Manager.
 
-La siguiente plantilla abreviada de Resource Manager muestra el atributo **clusterSettings** :
+siguiente fragmento de plantilla de administrador de recursos abreviado Hello muestra hello **clusterSettings** atributo:
 
     "resources": [
     {
@@ -48,25 +48,25 @@ La siguiente plantilla abreviada de Resource Manager muestra el atributo **clust
        }
     }
 
-El atributo **clusterSettings** se puede incluir en una plantilla de Resource Manager para actualizar el entorno del Servicio de aplicaciones.
+Hola **clusterSettings** atributo puede incluirse en un Hola de tooupdate de plantilla entorno del servicio de aplicación de administrador de recursos.
 
-## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Uso del Explorador de recursos de Azure para actualizar un entorno del Servicio de aplicaciones
-Como alternativa, puede actualizar el entorno del Servicio de aplicaciones mediante el [Explorador de recursos de Azure](https://resources.azure.com).  
+## <a name="use-azure-resource-explorer-tooupdate-an-app-service-environment"></a>Utilice el Explorador de recursos de Azure tooupdate un entorno de servicio de aplicaciones
+Como alternativa, puede actualizar Hola entono mediante [Explorador de recursos de Azure](https://resources.azure.com).  
 
-1. En el Explorador de recursos, vaya al nodo de App Service Environment (**subscriptions** > **resourceGroups** > **providers** > **Microsoft.Web** > **hostingEnvironments**). A continuación, haga clic en el entorno del Servicio de aplicaciones específico que quiere actualizar.
-2. En el panel derecho, haga clic en **Lectura/escritura** en la barra de herramientas superior para permitir la edición interactiva en el Explorador de recursos.  
-3. Haga clic en el botón azul **Editar** para que la plantilla de Resource Manager se pueda editar.
-4. Desplácese hasta la parte inferior del panel derecho. El atributo **clusterSettings** se encuentra abajo del todo, donde puede especificar o actualizar su valor.
-5. Escriba (o copie y pegue) la matriz de valores de configuración que quiera en el atributo **clusterSettings** .  
-6. Haga clic en el botón verde **PUT** situado en la parte superior del panel derecho para confirmar el cambio en el entorno del Servicio de aplicaciones.
+1. En el Explorador de recursos, vaya toohello nodo Hola entono (**suscripciones** > **resourceGroups** > **proveedores**  >  **Microsoft.Web** > **hostingEnvironments**). A continuación, haga clic en Hola entorno específico de servicio de aplicación que desea tooupdate.
+2. En el panel derecho de hello, haga clic en **lectura/escritura** en hello superior de la barra de herramientas tooallow interactivo de edición en el Explorador de recursos.  
+3. Haga clic en hello azul **editar** plantilla de administrador de recursos de botón toomake Hola editable.
+4. Desplazamiento toohello la parte inferior del panel derecho de Hola. Hola **clusterSettings** atributo se encuentra en la parte inferior de hello, donde puede especificar o actualizar su valor.
+5. Matriz de Hola de tipo (o copiar y pegar) de los valores de configuración que desee en hello **clusterSettings** atributo.  
+6. Haga clic en hello verde **colocar** botón que se encuentra en parte superior de Hola de hello panel derecho toocommit Hola cambio toohello entorno del servicio de aplicaciones.
 
-Una vez enviado el cambio, tarda en aplicarse aproximadamente 30 minutos multiplicado por el número de front-ends en el entorno del Servicio de aplicaciones.
-Por ejemplo, si un entorno del Servicio de aplicaciones tiene cuatro front-ends, tardará aproximadamente dos horas en finalizar la actualización de la configuración. Mientras se implementa el cambio de configuración, no será posible realizar otras operaciones de escalado o de cambio de configuración en el entorno del Servicio de aplicaciones.
+Sin embargo, enviar cambios de hello, tarda aproximadamente 30 minutos multiplicados por número de Hola de servidores front-end en hello entorno del servicio de aplicación para cambiar tootake efecto de Hola.
+Por ejemplo, si un entorno de servicio de aplicaciones tiene cuatro servidores front-end, tardará aproximadamente dos horas para toofinish de actualización de configuración de Hola. Mientras se está implantando el cambio de configuración de hello, no hay otras operaciones de escala o las operaciones de cambio de configuración pueden tener lugar en el entorno del servicio de aplicación Hola.
 
 ## <a name="disable-tls-10"></a>Deshabilitación de TLS 1.0
-Una pregunta recurrente de los clientes, especialmente de aquellos con auditorías de cumplimiento de PCI, es cómo deshabilitar explícitamente TLS 1.0 en sus aplicaciones.
+Una pregunta periódica de los clientes, especialmente los clientes que están relacionados con el cumplimiento del estándar PCI auditorías, es cómo tooexplicitly deshabilitar TLS 1.0 para sus aplicaciones.
 
-TLS 1.0 se puede deshabilitar mediante la siguiente entrada de **clusterSettings** :
+TLS 1.0 se puede deshabilitar mediante siguiente hello **clusterSettings** entrada:
 
         "clusterSettings": [
             {
@@ -76,7 +76,7 @@ TLS 1.0 se puede deshabilitar mediante la siguiente entrada de **clusterSettings
         ],
 
 ## <a name="change-tls-cipher-suite-order"></a>Cambio del orden del conjunto de aplicaciones de cifrado TLS
-Otra pregunta de los clientes es si pueden modificar la lista de cifrados negociados por su servidor, y si esto puede lograrse mediante la modificación del atributo **clusterSettings** , como se muestra a continuación. La lista de conjuntos de cifrado disponibles se puede recuperar de este [artículo de MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
+Otra cuestión de los clientes es si puede modificar la lista de Hola de cifrado que se negocia entre el servidor y esto puede lograrse mediante la modificación de hello **clusterSettings** tal y como se muestra a continuación. lista de Hola de conjuntos de cifrado disponibles puede obtenerse de [este artículo MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
 
         "clusterSettings": [
             {
@@ -86,12 +86,12 @@ Otra pregunta de los clientes es si pueden modificar la lista de cifrados negoci
         ],
 
 > [!WARNING]
-> Nota: Si se establecen valores incorrectos para el conjunto de aplicaciones de cifrado que SChannel no entiende, toda la comunicación TLS en el servidor podría dejar de funcionar. En tal caso, debe quitar la entrada *FrontEndSSLCipherSuiteOrder* de **clusterSettings** y enviar la plantilla de Resource Manager actualizada para volver a la configuración de conjunto de cifrado predeterminada.  Utilice esta funcionalidad con precaución.
+> Si se establecen valores incorrectos para los conjuntos de cifrado de hello SChannel no entiende, todos los servidores de tooyour de comunicación TLS podrían dejar de funcionar. En tal caso, será necesario hello tooremove *FrontEndSSLCipherSuiteOrder* entrada de **clusterSettings** y enviar Hola actualiza el Administrador de recursos plantilla toorevert toohello atrás predeterminado cifrado configuración de conjunto.  Utilice esta funcionalidad con precaución.
 > 
 > 
 
 ## <a name="get-started"></a>Primeros pasos
-El sitio de inicio rápido de plantillas de Azure Resource Manager incluye una plantilla con la definición base para [crear un entorno del Servicio de aplicaciones](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
+sitio de plantilla de inicio rápido de Azure Resource Manager Hola incluye una plantilla de definición de base de Hola para [crear un entorno de servicio de aplicaciones](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
 
 <!-- LINKS -->
 

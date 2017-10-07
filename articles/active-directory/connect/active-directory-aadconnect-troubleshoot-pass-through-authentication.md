@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: Solucionar problemas de autenticación de paso a través | Documentos de Microsoft"
-description: "En este artículo se describe cómo solucionar problemas de autenticación de paso a través de Azure Active Directory (Azure AD)."
+description: "Este artículo se describe cómo tootroubleshoot autenticación de paso a través de Azure Active Directory (Azure AD)."
 services: active-directory
 keywords: "Solucionar problemas de autenticación de paso a través de Azure AD Connect, instalar Active Directory, componentes necesarios para Azure AD, SSO, inicio de sesión único"
 documentationcenter: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: billmath
-ms.openlocfilehash: 72bd39bcf720cf5704274fcdfa0f2b8fc44a77bc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 87130952f660762f91b0a34b05287603b565639f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Solución de problemas de autenticación de paso a través de Azure Active Directory
 
 Este artículo sirve de ayuda para encontrar información acerca de cómo solucionar los problemas comunes relativos a la autenticación de paso a través de Azure AD.
 
 >[!IMPORTANT]
->Si se enfrenta a problemas de inicio de sesión de los usuarios con la autenticación de paso a través, no deshabilite la característica ni desinstale los agentes de autenticación de paso a través sin tener una cuenta de administrador global solo en la nube a la que retroceder. Información acerca de la [incorporación de una cuenta de administrador global que está solo en la nube](../active-directory-users-create-azure-portal.md). Este paso es esencial y se asegura de no quedar bloqueado fuera de su inquilino.
+>Si se enfrentan a problemas de inicio de sesión de usuario con la autenticación de paso a través, no deshabilite la característica de Hola o desinstalar los agentes de autenticación de paso a través sin tener un toofall de cuenta de administrador Global solo en la nube en. Información acerca de la [incorporación de una cuenta de administrador global que está solo en la nube](../active-directory-users-create-azure-portal.md). Este paso es esencial y se asegura de no quedar bloqueado fuera de su inquilino.
 
 ## <a name="general-issues"></a>Problemas generales
 
-### <a name="check-status-of-the-feature-and-authentication-agents"></a>Comprobación de estado de la característica y de los agentes de autenticación
+### <a name="check-status-of-hello-feature-and-authentication-agents"></a>Comprobar el estado de la característica de Hola y agentes de autenticación
 
-Asegúrese de que la característica de autenticación de paso a través sigue **habilitada** en su inquilino y de que el estado de los agentes de autenticación es **activo** y no **inactivo**. Puede comprobar el estado; para ello, vaya a la hoja **Azure AD Connect** en el [Centro de administración de Azure Active Directory](https://aad.portal.azure.com/).
+Asegúrese de que esa característica de autenticación de paso a través de hello sigue siendo **habilitado** sobre el estado del inquilino y Hola de agentes de autenticación muestra **Active**y no **inactivo**. Puede comprobar el estado por van toohello **Azure AD Connect** hoja en hello [centro de administración de Azure Active Directory](https://aad.portal.azure.com/).
 
 ![Centro de administración de Azure Active Directory: hoja de Azure AD Connect](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
 
@@ -39,103 +39,103 @@ Asegúrese de que la característica de autenticación de paso a través sigue *
 
 ### <a name="user-facing-sign-in-error-messages"></a>Mensajes de error de inicio de sesión para el usuario
 
-Si el usuario no ha podido iniciar sesión con la autenticación de paso a través, puede ver uno de los siguientes errores para el usuario en la pantalla de inicio de sesión de Azure AD: 
+Si el usuario de hello es no se puede toosign en mediante la autenticación de paso a través, puede ver uno de los siguientes errores de cara al usuario en la pantalla de inicio de sesión de bienvenida Azure AD de hello: 
 
 |Error|Description|Resolución
 | --- | --- | ---
-|AADSTS80001|No es posible conectarse a Active Directory.|Asegúrese de que los servidores del agente sean miembros del mismo bosque de AD que los usuarios cuyas contraseñas haya que validar y que pueden conectarse a Active Directory.  
-|AADSTS8002|Se ha agotado el tiempo de espera al conectarse a Active Directory.|Asegúrese de que Active Directory está disponible y responde a las solicitudes de los agentes.
-|AADSTS80004|El nombre de usuario transferido al agente no era válido.|Asegúrese de que el usuario esté intentando iniciar sesión con el nombre de usuario correcto.
-|AADSTS80005|La validación encontró una excepción WebException impredecible|Se trata de un error transitorio. Vuelva a intentarlo. Si el error no desaparece, póngase en contacto con el soporte técnico de Microsoft.
-|AADSTS80007|Error al establecer comunicación con Active Directory.|Compruebe los registros del agente para más información y verifique que Active Directory está funcionando según lo previsto.
+|AADSTS80001|No se puede tooconnect tooActive Directory|Asegúrese de que los servidores de agente son miembros del bosque de hello misma instancia de AD como usuarios de hello cuyas contraseñas necesitan toobe validado y son tooActive tooconnect capaz de directorio.  
+|AADSTS8002|Tiempo de espera agotado conexión tooActive Directory|Compruebe tooensure que Active Directory está disponible y responde toorequests de agentes de Hola.
+|AADSTS80004|nombre de usuario de Hello pasado a toohello agente no era válida|Asegúrese de usuario de hello está intentando toosign con hello nombre de usuario.
+|AADSTS80005|La validación encontró una excepción WebException impredecible|Se trata de un error transitorio. Vuelva a intentar la solicitud de saludo. Si continúa toofail, póngase en contacto con el soporte técnico de Microsoft.
+|AADSTS80007|Error al establecer comunicación con Active Directory.|Compruebe los registros del agente de Hola para obtener más información y comprobar que Active Directory está funcionando según lo previsto.
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Motivos del error de inicio de sesión en el centro de administración de Azure Active Directory
+### <a name="sign-in-failure-reasons-on-hello-azure-active-directory-admin-center"></a>Motivos del error de inicio de sesión en el centro de administración de Azure Active Directory Hola
 
-Empiece a solucionar problemas de inicio de sesión de usuarios; para ello, consulte el [informe de actividad de inicio de sesión](../active-directory-reporting-activity-sign-ins.md) en el [Centro de administración de Azure Active Directory](https://aad.portal.azure.com/).
+Iniciar solución de problemas de inicio de sesión de usuario examinando hello [informe actividad de inicio de sesión](../active-directory-reporting-activity-sign-ins.md) en hello [centro de administración de Azure Active Directory](https://aad.portal.azure.com/).
 
 ![Centro de administración de Azure Active Directory: informe de inicios de sesión](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
-Vaya a **Azure Active Directory** -> **Inicios de sesión** en el [centro de administración de Azure Active Directory](https://aad.portal.azure.com/) y haga clic en la actividad de inicio de sesión de un usuario específico. Busque el campo **CÓDIGO DE ERROR DE INICIO DE SESIÓN**. Busque la correspondencia entre el valor de ese campo y un motivo de error y la resolución en la siguiente tabla:
+Navegue demasiado**Azure Active Directory** -> **inicios de sesión** en hello [centro de administración de Azure Active Directory](https://aad.portal.azure.com/) y haga clic en la actividad de inicio de sesión de un usuario específico. Busque hello **código de ERROR de inicio de sesión** campo. Valor de Hola de asignación de ese motivo del error tooa campo y la resolución mediante hello en la tabla siguiente:
 
 |Código de error de inicio de sesión|Motivo del error de inicio de sesión|Resolución
 | --- | --- | ---
-| 50144 | Ha expirado la contraseña de Active Directory del usuario. | Restablezca la contraseña del usuario en Active Directory local.
+| 50144 | Ha expirado la contraseña de Active Directory del usuario. | Restablecer la contraseña de usuario de hello en su Active Directory local.
 | 80001 | No hay ningún agente de autenticación disponible. | Instale y registre un agente de autenticación.
-| 80002 | El tiempo de espera se agotó para la solicitud de validación de contraseña del agente de autenticación. | Compruebe si Active Directory es accesible desde el agente de autenticación.
-| 80003 | El agente de autenticación recibió una respuesta no válida. | Si el problema puede reproducirse habitualmente a través de varios usuarios, compruebe la configuración de Active Directory.
-| 80004 | Se usó un nombre principal de usuario (UPN) incorrecto en una solicitud de inicio de sesión. | Pida al usuario que inicie sesión con el nombre de usuario correcto.
+| 80002 | El tiempo de espera se agotó para la solicitud de validación de contraseña del agente de autenticación. | Compruebe si su Active Directory es accesible desde Hola agente de autenticación.
+| 80003 | El agente de autenticación recibió una respuesta no válida. | Si el problema de hello es reproducible coherentemente a través de varios usuarios, compruebe la configuración de Active Directory.
+| 80004 | Se usó un nombre principal de usuario (UPN) incorrecto en una solicitud de inicio de sesión. | Pida hello toosign de usuario con el nombre de usuario correcto de Hola.
 | 80005 | Error del agente de autenticación. | Se trata de un error transitorio. Inténtelo de nuevo más tarde.
-| 80007 | El agente de autenticación no puede conectarse a Active Directory. | Compruebe si Active Directory es accesible desde el agente de autenticación.
-| 80010 | El agente de autenticación no puede descifrar la contraseña. | Si el problema se puede reproducir habitualmente, instale y registre un nuevo agente de autenticación. Después, desinstale el actual. 
-| 80011 | El agente de autenticación no puede recuperar la clave de descifrado. | Si el problema se puede reproducir habitualmente, instale y registre un nuevo agente de autenticación. Después, desinstale el actual.
+| 80007 | Autenticación agente no se puede tooconnect tooActive Directory. | Compruebe si su Active Directory es accesible desde Hola agente de autenticación.
+| 80010 | Contraseña de no se puede toodecrypt de agente de autenticación. | Si el problema de hello es reproducible coherentemente, instalar y registrar a un nuevo agente de autenticación. Y desinstalar Hola actual. 
+| 80011 | Clave de descifrado de no se puede tooretrieve de agente de autenticación. | Si el problema de hello es reproducible coherentemente, instalar y registrar a un nuevo agente de autenticación. Y desinstalar Hola actual.
 
 ## <a name="authentication-agent-installation-issues"></a>Problemas de instalación del agente de autenticación
 
 ### <a name="an-unexpected-error-occurred"></a>Se ha producido un error inesperado
 
-[Recopile los registros del agente](#collecting-pass-through-authentication-agent-logs) en el servidor y póngase en contacto con el Soporte técnico de Microsoft para que le solucionen el problema.
+[Recopilar registros del agente](#collecting-pass-through-authentication-agent-logs) de servidor hello y póngase en contacto con Microsoft Support con su problema.
 
 ## <a name="authentication-agent-registration-issues"></a>Problemas de registro del agente de autenticación
 
-### <a name="registration-of-the-authentication-agent-failed-due-to-blocked-ports"></a>No se pudo realizar el registro del agente de autenticación porque había puertos bloqueados
+### <a name="registration-of-hello-authentication-agent-failed-due-tooblocked-ports"></a>Error en el registro de hello agente de autenticación debido a los puertos tooblocked
 
-Asegúrese de que el servidor en el que se ha instalado el agente de autenticación puede comunicarse tanto con nuestras direcciones URL de servicio como con los puertos que se enumeran [aquí](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-prerequisites).
+Asegúrese de ese servidor hello en qué Hola se ha instalado el agente de autenticación puede comunicarse con nuestro servicio de las direcciones URL y los puertos enumerados [aquí](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-prerequisites).
 
-### <a name="registration-of-the-authentication-agent-failed-due-to-token-or-account-authorization-errors"></a>No se puede registrar el agente de autenticación debido a errores de autorización de token o de cuenta
+### <a name="registration-of-hello-authentication-agent-failed-due-tootoken-or-account-authorization-errors"></a>Error en el registro de hello agente de autenticación debido a errores de autorización de cuenta o tootoken
 
-Asegúrese de que usa una cuenta de administrador global solo en la nube para todas las operaciones de instalación y registro del agente de autenticación independiente o de Azure AD Connect. Hay un problema conocido con las cuentas de administrador global habilitadas para MFA; desactive temporalmente MFA (solo para completar las operaciones) para proporcionar una solución alternativa.
+Asegúrese de que usa una cuenta de administrador global solo en la nube para todas las operaciones de instalación y registro del agente de autenticación independiente o de Azure AD Connect. Hay un problema conocido con cuentas de administrador Global habilitado MFA; desactivar temporalmente MFA (solo las operaciones de Hola de toocomplete) para solucionar este problema.
 
 ### <a name="an-unexpected-error-occurred"></a>Se ha producido un error inesperado
 
-[Recopile los registros del agente](#collecting-pass-through-authentication-agent-logs) en el servidor y póngase en contacto con el Soporte técnico de Microsoft para que le solucionen el problema.
+[Recopilar registros del agente](#collecting-pass-through-authentication-agent-logs) de servidor hello y póngase en contacto con Microsoft Support con su problema.
 
 ## <a name="authentication-agent-uninstallation-issues"></a>Problemas de desinstalación del agente de autenticación
 
 ### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Mensaje de advertencia al desinstalar Azure AD Connect
 
-Si la característica Autenticación de paso a través está habilitada en su inquilino e intenta desinstalar Azure AD Connect, aparece el siguiente mensaje de advertencia: "Users will not be able to sign-in to Azure AD unless you have other Pass-through Authentication agents installed on other servers" (Los usuarios no podrán iniciar sesión en Azure AD, a menos que tenga otros agentes de autenticación de paso a través instalados en otros servidores).
+Si tiene habilitada en su inquilino de la autenticación de paso a través e intenta toouninstall Azure AD Connect, muestra Hola siguiente mensaje de advertencia: "los usuarios no será capaz de toosign tooAzure AD a menos que tenga otros agentes de autenticación de paso a través instalar en otros servidores."
 
-Para no interrumpir el inicio de sesión del usuario, es preciso tener una instalación de [alta disponibilidad](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) en vigor antes de desinstalar Azure AD Connect.
+Asegúrese de que el programa de instalación es [alto disponible](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) antes de desinstalar tooavoid de Azure AD Connect importantes en el inicio de sesión de usuario.
 
-## <a name="issues-with-enabling-the-feature"></a>Problemas con la habilitación de la característica
+## <a name="issues-with-enabling-hello-feature"></a>Problemas con la habilitación de la característica de Hola
 
-### <a name="enabling-the-feature-failed-because-there-were-no-authentication-agents-available"></a>La característica no se pudo habilitar porque no había agentes de autenticación disponibles
+### <a name="enabling-hello-feature-failed-because-there-were-no-authentication-agents-available"></a>No se pudo habilitar la característica de hello porque no había disponible ningún agente de autenticación
 
-Necesita tener al menos un agente de autenticación activo para habilitar la autenticación de paso a través en el inquilino. Puede instalar un agente de autenticación instalando Azure AD Connect o un agente de autenticación independiente.
+Necesita toohave tooenable de agente de autenticación activa al menos una autenticación de paso a través en su inquilino. Puede instalar un agente de autenticación instalando Azure AD Connect o un agente de autenticación independiente.
 
-### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>La característica no se habilitó porque había puertos bloqueados
+### <a name="enabling-hello-feature-failed-due-tooblocked-ports"></a>Error en la habilitación de la característica Hola debido tooblocked puertos
 
-Asegúrese de que el servidor en el que se ha instalado Azure AD Connect puede comunicarse tanto con nuestras direcciones URL de servicio como con los puertos que se enumeran [aquí](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-prerequisites).
+Asegúrese de ese servidor hello en el que se instala Azure AD Connect puede comunicarse con nuestro servicio de las direcciones URL y los puertos enumerados [aquí](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-prerequisites).
 
-### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>No se puede realizar la habilitación de la característica debido a errores de autorización de cuenta o de token.
+### <a name="enabling-hello-feature-failed-due-tootoken-or-account-authorization-errors"></a>Error en la habilitación de la característica Hola debido a errores de autorización de cuenta o tootoken
 
-Asegúrese de que usa una cuenta de administrador global solo en la nube cuando habilite la característica. Hay un problema conocido con las cuentas de administrador global habilitadas para Multi-Factor Authentication (MFA); desactive temporalmente MFA (solo para completar la operación) para proporcionar una solución alternativa.
+Asegúrese de que usa una cuenta de administrador Global solo en la nube al habilitar la característica de Hola. Hay un problema conocido con la autenticación multifactor (MFA)-habilitado las cuentas de administrador Global; desactivar temporalmente MFA (sólo en el funcionamiento de toocomplete Hola) para solucionar este problema.
 
 ## <a name="exchange-activesync-configuration-issues"></a>Problemas de configuración de Exchange ActiveSync
 
-Estos son los problemas comunes que surgen al configurar la compatibilidad de Exchange ActiveSync para la Autenticación de paso a través.
+Se trata de problemas comunes de hello al configurar la compatibilidad de Exchange ActiveSync para la autenticación de paso a través.
 
 ### <a name="exchange-powershell-issue"></a>Problema de Exchange PowerShell
 
-Si aparece el error "**No se encuentra ningún parámetro que coincida con el nombre del parámetro 'PerTenantSwitchToESTSEnabled'\.**" al ejecutar el comando `Set-OrganizationConfig` de Exchange PowerShell, póngase en contacto con el Soporte técnico de Microsoft.
+Si ve Hola "**no se encuentra un parámetro que coincida con el nombre de parámetro 'PerTenantSwitchToESTSEnabled'\.**" Error al ejecutar hello `Set-OrganizationConfig` Exchange PowerShell command, póngase en contacto con Microsoft Support.
 
 ### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync no funciona
 
-La configuración tarda algún tiempo en aplicarse; el período de tiempo depende del entorno. Si la situación persiste durante mucho tiempo, póngase en contacto con el Soporte técnico de Microsoft.
+configuración de Hola aplica algún tiempo tootake: Hola período de tiempo depende del entorno. Si la situación de hello persiste durante mucho tiempo, póngase en contacto con Microsoft Support.
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>Recopilación de registros del agente de autenticación de autenticación de paso a través
 
-En función del tipo de problema, es posible que tenga que buscar estos registros en distintos lugares.
+Según el tipo de saludo de problema, es posible que tenga, necesita toolook en distintos lugares de registros del agente de autenticación de paso a través.
 
 ### <a name="authentication-agent-event-logs"></a>Registros de eventos del agente de autenticación
 
-Para ver los errores relacionados con el agente de autenticación , abra la aplicación Visor de eventos en el servidor y consulte **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
+Para ver errores relacionados con toohello agente de autenticación, abra una aplicación de Visor de eventos en el servidor de Hola Hola y compruebe en **aplicación y servicio Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
-Para obtener un análisis detallado, habilite el registro "Session" (sesión). No ejecute el agente de autenticación con este registro habilitado durante las operaciones normales; úselo solo para solucionar problemas. Tenga en cuenta que el contenido del registro solo se ve cuando el registro se vuelve a deshabilitar.
+Para realizar análisis detallado, habilitar Hola "" de la sesión. No se ejecutan Hola agente de autenticación con este registro habilitado durante las operaciones normales; usar solo para solucionar problemas. contenido del registro de Hello solo está visible cuando se deshabilita registro Hola de nuevo.
 
 ### <a name="detailed-trace-logs"></a>Registros de seguimiento detallados
 
-Para solucionar errores de inicio de sesión de usuarios, busque los registros de seguimiento en **%programdata%\Microsoft\Azure AD Connect Authentication Agent\Trace\\**. Estos registros incluyen los motivos por los que un usuario concreto no pudo iniciar sesión mediante la característica Autenticación de paso a través. Estos errores también pueden hacerse corresponder con los motivos de errores de inicio de sesión mostrados en la [tabla](#sign-in-failure-reasons-on-the-Azure-portal) anterior. La siguiente es una entrada del registro de ejemplo:
+tootroubleshoot inicio de sesión de errores de usuarios, busque los registros de seguimiento en **%programdata%\Microsoft\Azure AD conectarse autenticación Agent\Trace\\**. Estos registros son razones un inicio de sesión de usuario específico usando la característica de autenticación de paso a través de Hola. Estos errores son también motivos del error de inicio de sesión de toohello asignado se muestra en hello anterior [tabla](#sign-in-failure-reasons-on-the-Azure-portal). La siguiente es una entrada del registro de ejemplo:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
@@ -143,7 +143,7 @@ Para solucionar errores de inicio de sesión de usuarios, busque los registros d
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-Para obtener una descripción detallada del error ('1328' en el ejemplo anterior), abra el símbolo del sistema y ejecute el siguiente comando (Nota: sustituya '1328' por el número de error real que vea en sus registros):
+Puede obtener detalles descriptivos de error de hello ('1328' en el anterior ejemplo de Hola) abriendo el símbolo del sistema de Hola y Hola ejecución siguiente comando (Nota: reemplace '1328' con el número de error real de Hola que se ve en los registros):
 
 `Net helpmsg 1328`
 
@@ -151,7 +151,7 @@ Para obtener una descripción detallada del error ('1328' en el ejemplo anterior
 
 ### <a name="domain-controller-logs"></a>Registros de controlador de dominio
 
-Si están habilitados los registros de auditoría, se puede encontrar información adicional en los registros de seguridad de los controladores de dominio. A continuación puede ver una manera sencilla de consultar las solicitudes de inicio de sesión enviadas por los agentes de autenticación de paso a través:
+Si está habilitado el registro de auditoría, encontrará información adicional en los registros de seguridad de Hola de los controladores de dominio. Una manera sencilla tooquery inicio de sesión en las solicitudes enviadas por los agentes de autenticación de paso a través es como sigue:
 
 ```
     <QueryList>
@@ -163,7 +163,7 @@ Si están habilitados los registros de auditoría, se puede encontrar informaci�
 
 ### <a name="performance-monitor-counters"></a>Contadores de Performance Monitor
 
-Otra forma de supervisar a los agentes de autenticación consiste en realizar un seguimiento de los contadores específicos de Performance Monitor en cada servidor en que está instalado el agente de autenticación. Use los siguientes contadores globales (**# PTA authentications**, **#PTA failed authentications** y **#PTA successful authentications**) y los contadores de errores (**# PTA authentication errors**):
+Otra manera toomonitor agentes de autenticación es tootrack contadores del Monitor de rendimiento específicos en cada servidor donde está instalado el agente de autenticación de Hola. Hola de uso después de contadores globales (**autenticaciones # PTA**, **#PTA no se pudo autenticaciones** y **las autenticaciones correctas de #PTA**) y contadores de errores (**Errores de autenticación de # PTA**):
 
 ![Contadores de Performance Monitor de la Autenticación de paso a través](./media/active-directory-aadconnect-pass-through-authentication/pta12.png)
 

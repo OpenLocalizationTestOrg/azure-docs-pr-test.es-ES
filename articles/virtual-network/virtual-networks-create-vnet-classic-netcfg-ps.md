@@ -1,6 +1,6 @@
 ---
-title: "Creación de una red virtual con un archivo de configuración de red | PowerShell | Clásico | Microsoft Docs"
-description: "Obtenga información sobre cómo crear una red virtual con un archivo de configuración de red en el portal de Azure."
+title: "una red virtual con un archivo de configuración de red aaaCreate | PowerShell | Clásico | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate archivos de una red virtual con una configuración de red en hello portal de Azure."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: a67c3f73d9e56ab0081836ba5db62f5a01c7b6bc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1e4005b06324ca61d63b03799ebbbc4373f14dbd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-network-classic-using-a-network-configuration-file-with-powershell"></a>Creación de una red virtual (clásico) mediante un archivo de configuración de red con PowerShell
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Este documento describe la creación de una red virtual mediante el modelo de implementación clásica. También puede [crear una red virtual con el modelo de implementación del Administrador de recursos](virtual-networks-create-vnet-arm-ps.md).
+Este documento cubre crear una red virtual mediante el modelo de implementación clásica de Hola. También puede [crear una red virtual en el modelo de implementación del Administrador de recursos de hello](virtual-networks-create-vnet-arm-ps.md).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

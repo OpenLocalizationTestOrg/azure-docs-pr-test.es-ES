@@ -1,6 +1,6 @@
 ---
-title: "Creación de una VM de Azure administrada a partir de un VHD local generalizado | Microsoft Docs"
-description: "Cargue un VHD generalizado en Azure y úselo para crear máquinas virtuales nuevas en el modelo de implementación de Resource Manager."
+title: aaaCreate una VM de Azure administrado desde un VHD local generalizado | Documentos de Microsoft
+description: "Cargar un tooAzure de disco duro virtual generalizado y usar toocreate nuevas máquinas virtuales, en el modelo de implementación del Administrador de recursos de Hola."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: cynthn
-ms.openlocfilehash: d802ba16ecb4e32e2adb7be3a8e99c72a1625841
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2fd0c0eec922e6ca8af4e712c1bceb1f9466105c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Carga de un VHD generalizado y su uso para crear máquinas virtuales nuevas en Azure
+# <a name="upload-a-generalized-vhd-and-use-it-toocreate-new-vms-in-azure"></a>Cargar un disco duro virtual generalizado y usar toocreate nuevas máquinas virtuales en Azure
 
-En este tema se explica cómo usar PowerShell para cargar un VHD de una máquina virtual generalizada en Azure, crear una imagen a partir del VHD y crear una máquina virtual nueva desde esa imagen. Puede cargar un VHD exportado de una herramienta de visualización local o desde otra nube. Usar [Managed Disks](managed-disks-overview.md) para la nueva VM simplifica la administración de la VM y proporciona una mejor disponibilidad cuando la VM se encuentra en un conjunto de disponibilidad. 
+Este tema le guía a través mediante PowerShell tooupload un VHD de un tooAzure generalizado de VM, cree una imagen de hello VHD y crear una nueva máquina virtual desde esa imagen. Puede cargar un VHD exportado de una herramienta de visualización local o desde otra nube. Usar [discos administrados](managed-disks-overview.md) para hello nueva máquina virtual simplifica la administración de máquinas virtuales de Hola y proporciona una mejor disponibilidad Hola VM se coloca en un conjunto de disponibilidad. 
 
-Si desea usar un script de ejemplo, consulte [Script de ejemplo para cargar un disco duro virtual en Azure y crear una máquina virtual nueva](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+Si desea toouse un script de ejemplo, vea [tooupload tooAzure de un disco duro virtual de secuencia de comandos de ejemplo y crear una nueva máquina virtual](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-- Antes de cargar los VHD en Azure, debe consultar [Preparación de un VHD o un VHDX de Windows antes de cargarlo en Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-- Revise [Plan for the migration to Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) (Planeación de la migración a Managed Disks) antes de comenzar la migración a [Managed Disks](managed-disks-overview.md).
-- Asegúrese de que tiene la última versión del módulo AzureRM.Compute de PowerShell. Ejecute el siguiente comando para realizar la instalación.
+- Antes de cargar cualquier tooAzure de disco duro virtual, debe seguir [preparar una tooAzure tooupload Windows VHD o VHDX](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- Revisión [planear la migración de Hola de discos tooManaged](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) antes de iniciar la migración demasiado[discos administrados](managed-disks-overview.md).
+- Asegúrese de que tiene Hola versión más reciente de hello módulo AzureRM.Compute PowerShell. Ejecutar Hola siguientes tooinstall de comando.
 
     ```powershell
     Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -39,75 +39,75 @@ Si desea usar un script de ejemplo, consulte [Script de ejemplo para cargar un d
     Para más información, consulte [Azure PowerShell Versioning](/powershell/azure/overview) (Control de versiones de Azure PowerShell).
 
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalización de VM con Windows mediante Sysprep
+## <a name="generalize-hello-windows-vm-using-sysprep"></a>Generalizar Hola VM de Windows con Sysprep
 
-Entre otras características, Sysprep elimina toda la información personal de la cuenta y prepara, entre otras cosas, la máquina para usarse como imagen. Para obtener más información sobre Sysprep, vea [Uso de Sysprep: Introducción](http://technet.microsoft.com/library/bb457073.aspx).
+Sysprep quita toda la información de cuenta personal, entre otras cosas y prepara Hola máquina toobe utilizado como una imagen. Para obtener más información acerca de Sysprep, consulte [cómo tooUse Sysprep: Introducción](http://technet.microsoft.com/library/bb457073.aspx).
 
-Asegúrese de que los roles de servidor que se ejecutan en la máquina sean compatibles con Sysprep. Para más información, consulte [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Asegúrese de que los roles de servidor hello ejecutando en el equipo de hello son compatibles con Sysprep. Para más información, consulte [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Si ejecuta Sysprep antes de cargar el VHD en Azure por primera vez, asegúrese de que tiene [preparada la máquina virtual](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) antes de ejecutar Sysprep. 
+> Si está ejecutando Sysprep antes de cargar su tooAzure de disco duro virtual para hello primera vez, asegúrese de que tiene [preparado la máquina virtual](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) antes de ejecutar Sysprep. 
 > 
 > 
 
-1. Inicie sesión en la máquina virtual de Windows.
-2. Abra una ventana del símbolo del sistema como administrador. Cambie el directorio a **%windir%\system32\sysprep** y, después, ejecute `sysprep.exe`.
-3. En **Herramienta de preparación del sistema**, seleccione **Iniciar la Configuración rápida (OOBE)** y asegúrese de que la casilla **Generalizar** está activada.
+1. Inicie sesión en toohello máquina virtual de Windows.
+2. Abra la ventana de símbolo del sistema de hello como administrador. Cambie el directorio de hello demasiado**%windir%\system32\sysprep**y, a continuación, ejecute `sysprep.exe`.
+3. Hola **herramienta de preparación del sistema** cuadro de diálogo, seleccione **sistema Out-of-Box experiencia inmediata (OOBE)**y asegúrese de que ese hello **generalizar** casilla está activada.
 4. En **Opciones de apagado**, seleccione **Apagar**.
 5. Haga clic en **Aceptar**.
    
     ![Iniciar Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Cuando Sysprep finaliza, apaga la máquina virtual. No reinicie la VM.
+6. Cuando Sysprep finalice, se apaga máquina virtual de Hola. No se reinician Hola máquina virtual.
 
 
 
-## <a name="log-in-to-azure"></a>Inicie sesión en Azure.
-Si todavía no la ha instalado la versión 1.4 de PowerShell u otra superior, consulte [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview).
+## <a name="log-in-tooazure"></a>Inicie sesión en tooAzure
+Si aún no tiene PowerShell versión 1.4 o posterior instalado, leer [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
 
-1. Abra Azure PowerShell e inicie sesión en la cuenta de Azure. Se abrirá una ventana emergente para que escriba sus credenciales de cuenta de Azure.
+1. Abra PowerShell de Azure e inicie sesión tooyour cuenta de Azure. Abre una ventana emergente para tooenter sus credenciales de cuenta de Azure.
    
     ```powershell
     Login-AzureRmAccount
     ```
-2. Obtenga los identificadores de suscripción para las suscripciones disponibles.
+2. Obtener identificadores de suscripción de Hola para las suscripciones disponibles.
    
     ```powershell
     Get-AzureRmSubscription
     ```
-3. Establezca la suscripción correcta con el identificador de suscripción. Reemplace *<subscriptionID>* por el identificador de la suscripción correcta.
+3. Conjunto Hola suscripción correcta con el identificador de suscripción de Hola. Reemplace  *<subscriptionID>*  con el Id. de Hola de hello corregir la suscripción.
    
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="get-the-storage-account"></a>Obtención de la cuenta de almacenamiento
-Necesita una cuenta de almacenamiento de Azure para almacenar la imagen de VM cargada. Puede usar una cuenta de almacenamiento existente o crear una nueva. 
+## <a name="get-hello-storage-account"></a>Obtener la cuenta de almacenamiento de Hola
+Necesita una cuenta de almacenamiento en la imagen de máquina virtual de Azure toostore Hola cargado. Puede usar una cuenta de almacenamiento existente o crear una nueva. 
 
-Si va a usar el VHD para crear un disco administrado para una VM, la ubicación de la cuenta de almacenamiento debe ser la misma ubicación donde va a crear la VM.
+Si va a usar Hola VHD toocreate un disco administrado para una máquina virtual, ubicación hello de la cuenta de almacenamiento debe indicarlo Hola donde creará Hola VM.
 
-Para mostrar las cuentas de almacenamiento disponibles, escriba:
+cuentas de almacenamiento disponibles de hello tooshow, escriba:
 
 ```powershell
 Get-AzureRmStorageAccount
 ```
 
-Si desea utilizar una cuenta de almacenamiento existente, puede continuar con la sección [Carga de la imagen de VM en la cuenta de almacenamiento](#upload-the-vm-vhd-to-your-storage-account).
+Si desea que toouse una cuenta de almacenamiento existente, continúe toohello [imagen de máquina virtual de carga hello](#upload-the-vm-vhd-to-your-storage-account) sección.
 
-Si necesita crear una nueva cuenta de almacenamiento, siga estos pasos:
+Si necesita toocreate una cuenta de almacenamiento, siga estos pasos:
 
-1. Necesita el nombre del grupo de recursos donde se debe crear la cuenta de almacenamiento. Para averiguar todos los grupos de recursos que están en la suscripción, escriba:
+1. Se necesita el nombre de Hola Hola del grupo de recursos donde se debe crear la cuenta de almacenamiento de Hola. toofind todos los grupos de recursos de Hola que se encuentran en su suscripción, tipo:
    
     ```powershell
     Get-AzureRmResourceGroup
     ```
 
-    Para crear un grupo de recursos denominado **myResourceGroup** en la región **Este de EE. UU.**, escriba:
+    toocreate un grupo de recursos denominado **myResourceGroup** en hello **UU** región, escriba:
 
     ```powershell
     New-AzureRmResourceGroup -Name myResourceGroup -Location "East US"
     ```
 
-2. Cree una cuenta de almacenamiento denominada **mystorageaccount** en este grupo de recursos con el cmdlet [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount):
+2. Crear una cuenta de almacenamiento denominada **mystorageaccount** en este grupo de recursos mediante el uso de hello [AzureRmStorageAccount New](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet:
    
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "East US"`
@@ -122,9 +122,9 @@ Si necesita crear una nueva cuenta de almacenamiento, siga estos pasos:
    * **Standard_RAGRS**: Almacenamiento con redundancia geográfica con acceso de lectura. 
    * **Premium_LRS**: Almacenamiento con redundancia local premium. 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>Carga del VHD en la cuenta de almacenamiento
+## <a name="upload-hello-vhd-tooyour-storage-account"></a>Cargar la cuenta de almacenamiento de hello VHD tooyour
 
-Use el cmdlet [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) para cargar el VHD en un contenedor de su cuenta de almacenamiento. En este ejemplo se carga el archivo *myVHD.vhd* de *"C:\Users\Public\Documents\Virtual hard disks\"* para una cuenta de almacenamiento denominada *mystorageaccount* en el grupo de recursos *myResourceGroup*. El archivo se colocará en el contenedor llamado *mycontainer* y el nuevo nombre de archivo será *myUploadedVHD.vhd*.
+Hola de uso [AzureRmVhd agregar](https://msdn.microsoft.com/library/mt603554.aspx) contenedor cmdlet tooupload Hola VHD tooa en su cuenta de almacenamiento. En este ejemplo Hola a cargas de archivo *myVHD.vhd* de *"discos duros de C:\Users\Public\Documents\Virtual\"*  tooa cuenta de almacenamiento denominada *mystorageaccount*Hola *myResourceGroup* grupo de recursos. archivo Hello se colocarán en el contenedor de hello denominado *mycontainer* y nombre de archivo nuevo de hello será *myUploadedVHD.vhd*.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -134,12 +134,12 @@ Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-Si se realiza correctamente, obtendrá una respuesta similar a la siguiente:
+Si se realiza correctamente, obtendrá una respuesta que busca toothis similar:
 
 ```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
+MD5 hash is being calculated for hello file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
 MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
+Elapsed time for hello operation: 00:03:35
 Creating new page blob of size 53687091712...
 Elapsed time for upload: 01:12:49
 
@@ -148,29 +148,29 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-Dependiendo de la conexión de red y del tamaño del archivo VHD, este comando tardará algún tiempo en completarse.
+Dependiendo de la conexión de red y el tamaño de hello del archivo VHD, este comando puede tardar un rato toocomplete
 
-Guarde la ruta de acceso del **URI de destino** para usarla más adelante si va a crear un disco administrado o una nueva VM usando el VHD cargado.
+Guardar hello **URI de destino** toouse de ruta de acceso más adelante si va toocreate un disco administrado o una nueva máquina virtual con hello carga VHD.
 
 ### <a name="other-options-for-uploading-a-vhd"></a>Otras opciones para cargar un disco duro virtual
  
  
-También puede cargar un VHD en la cuenta de almacenamiento mediante uno de los siguientes medios:
+También puede cargar una cuenta de almacenamiento de disco duro virtual tooyour mediante uno de hello siguientes:
 
 - [AzCopy](http://aka.ms/downloadazcopy)
 - [API de tipo Copy Blob de Almacenamiento Azure](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 - [Blobs de carga de Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/)
 - [Referencia de la API de REST de servicios de importación y exportación de almacenamiento](https://msdn.microsoft.com/library/dn529096.aspx)
--   Se recomienda utilizar el servicio Import/Export si se calcula que el tiempo de carga va a ser superior a siete días. Puede usar [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) para calcular el tiempo a partir del tamaño de los datos y la unidad de transferencia. 
-    Import/Export se puede usar para realizar copias en una cuenta de almacenamiento estándar. Para copiar desde el almacenamiento estándar a una cuenta de Almacenamiento premium, use una herramienta como AzCopy.
+-   Se recomienda utilizar el servicio Import/Export si se calcula que el tiempo de carga va a ser superior a siete días. Puede usar [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) tooestimate tiempo de Hola de unidad de tamaño y la transferencia de datos. 
+    Importación/exportación puede ser usar cuenta de almacenamiento estándar tooa toocopy. Necesitará toocopy de cuenta de almacenamiento de almacenamiento estándar toopremium mediante una herramienta como AzCopy.
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Creación de una imagen administrada desde el VHD cargado 
+## <a name="create-a-managed-image-from-hello-uploaded-vhd"></a>Crear un administrado imagen de hello cargar VHD 
 
-Cree una imagen administrada con el VHD del SO generalizado. Reemplace los valores por su propia información.
+Cree una imagen administrada con el VHD del SO generalizado. Reemplace los valores de hello con su propia información.
 
 
-1.  En primer lugar, establezca los parámetros comunes:
+1.  En primer lugar, establezca los parámetros comunes de hello:
 
     ```powershell
     $vmName = "myVM"
@@ -180,7 +180,7 @@ Cree una imagen administrada con el VHD del SO generalizado. Reemplace los valor
     $imageName = "yourImageName"
     ```
 
-4.  Cree la imagen con el VHD del SO generalizado.
+4.  Crear imagen de hello con el disco duro virtual generalizado de sistema operativo.
 
     ```powershell
     $imageConfig = New-AzureRmImageConfig -Location $location
@@ -189,15 +189,15 @@ Cree una imagen administrada con el VHD del SO generalizado. Reemplace los valor
     ```
 
 ## <a name="create-a-virtual-network"></a>Crear una red virtual
-Cree la red virtual y la subred de la [red virtual](../../virtual-network/virtual-networks-overview.md).
+Crear red virtual de Hola y de las subredes de hello [red virtual](../../virtual-network/virtual-networks-overview.md).
 
-1. Cree la subred. Este ejemplo crea una subred denominada *mySubnet* con el prefijo de dirección *10.0.0.0/24*.  
+1. Crear una subred de Hola. Este ejemplo crea una subred denominada *mySubnet* con prefijo de dirección de hello *10.0.0.0/24*.  
    
     ```powershell
     $subnetName = "mySubnet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Creación de la red virtual. Este ejemplo crea una red virtual denominada *myVnet* con el prefijo de dirección *10.0.0.0/16*.  
+2. Crear red virtual de Hola. Este ejemplo crea una red virtual denominada *myVnet* con prefijo de dirección de hello *10.0.0.0/16*.  
    
     ```powershell
     $vnetName = "myVnet"
@@ -207,7 +207,7 @@ Cree la red virtual y la subred de la [red virtual](../../virtual-network/virtua
 
 ## <a name="create-a-public-ip-address-and-network-interface"></a>Creación de una dirección IP y una interfaz de red
 
-Para permitir la comunicación con la máquina virtual en la red virtual, necesitará una [dirección IP pública](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) y una interfaz de red.
+tooenable la comunicación con la máquina virtual de hello en la red virtual de hello, necesita un [dirección IP pública](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) y una interfaz de red.
 
 1. Cree una dirección IP pública. Este ejemplo crea una dirección IP pública denominada "*myPip*". 
    
@@ -216,7 +216,7 @@ Para permitir la comunicación con la máquina virtual en la red virtual, necesi
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Cree la NIC. Este ejemplo crea una NIC denominada "**myNic**". 
+2. Crear NIC de Hola. Este ejemplo crea una NIC denominada "**myNic**". 
    
     ```powershell
     $nicName = "myNic"
@@ -224,11 +224,11 @@ Para permitir la comunicación con la máquina virtual en la red virtual, necesi
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-## <a name="create-the-network-security-group-and-an-rdp-rule"></a>Creación del grupo de seguridad de red y las reglas de RDP
+## <a name="create-hello-network-security-group-and-an-rdp-rule"></a>Crear grupo de seguridad de red de hello y una regla de RDP
 
-Para poder iniciar sesión en la VM mediante RDP, debe tener una regla de seguridad de red (NSG) que permita el acceso RDP en el puerto 3389. 
+toobe puede toolog en tooyour VM mediante RDP, deberá toohave una regla de seguridad de red (NSG) que permite el acceso RDP en el puerto 3389. 
 
-Este ejemplo crea un NSG denominado"*myNsg*" que contiene una regla llamada "*myRdpRule*" que permita el tráfico RDP en el puerto 3389. Para obtener más información sobre NSG, consulte [Apertura de puertos para una máquina virtual en Azure mediante PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Este ejemplo crea un NSG denominado"*myNsg*" que contiene una regla llamada "*myRdpRule*" que permita el tráfico RDP en el puerto 3389. Para obtener más información acerca de los NSG, consulte [abrir puertos tooa VM en Azure con PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ```powershell
 $nsgName = "myNsg"
@@ -243,40 +243,40 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 
-## <a name="create-a-variable-for-the-virtual-network"></a>Creación de una variable para la red virtual
+## <a name="create-a-variable-for-hello-virtual-network"></a>Cree una variable para la red virtual de Hola
 
-Cree una variable para la red virtual completada. 
+Cree una variable para la red virtual de hello completado. 
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ```
 
-## <a name="get-the-credentials-for-the-vm"></a>Obtención de las credenciales para la VM
+## <a name="get-hello-credentials-for-hello-vm"></a>Obtener las credenciales de Hola Hola VM
 
-El siguiente cmdlet abrirá una ventana en la que escribirá un nuevo nombre de usuario y una contraseña que se usará como la cuenta de administrador local para tener acceso remoto a la VM. 
+Hello siguiente cmdlet abrirá una ventana donde se incluirá un nuevo toouse de nombre y la contraseña de usuario como cuenta de administrador local de Hola de tengan acceso remoto a Hola VM. 
 
 ```powershell
 $cred = Get-Credential
 ```
 
-## <a name="add-the-vm-name-and-size-to-the-vm-configuration"></a>Agregue el nombre y el tamaño de la VM a la configuración de la VM.
+## <a name="add-hello-vm-name-and-size-toohello-vm-configuration"></a>Agregar nombre de máquina virtual de Hola y de configuración de máquina virtual de tamaño toohello.
 
 ```powershell
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 ```
 
-## <a name="set-the-vm-image-as-source-image-for-the-new-vm"></a>Establecimiento de la imagen de VM como imagen de origen para la nueva VM
+## <a name="set-hello-vm-image-as-source-image-for-hello-new-vm"></a>Imagen de máquina virtual de hello conjunto como imagen de origen para hello nueva máquina virtual
 
-Establezca la imagen de origen con el identificador de la imagen de VM administrada.
+Establecer la imagen de origen de hello con el Id. de Hola de imagen de VM de hello administrado.
 
 ```powershell
 $vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
 ```
 
-## <a name="set-the-os-configuration-and-add-the-nic"></a>Establezca la configuración del SO y agregue la NIC.
+## <a name="set-hello-os-configuration-and-add-hello-nic"></a>Establecer la configuración del sistema operativo hello y agregue NIC de Hola.
 
-Escriba el tipo de almacenamiento (PremiumLRS o StandardLRS) y el tamaño del disco del SO. Este ejemplo establece el tipo de cuenta en *PremiumLRS*, el tamaño del disco en *128 GB* y el almacenamiento en caché en disco en *ReadWrite*.
+Escriba el tipo de almacenamiento de hello (PremiumLRS o StandardLRS) y el tamaño de Hola de disco del sistema operativo Hola. Este ejemplo establece el tipo de cuenta de hello demasiado*PremiumLRS*, Hola demasiado de tamaño de disco*128 GB* y disco, almacenamiento en caché demasiado*ReadWrite*.
 
 ```powershell
 $vm = Set-AzureRmVMOSDisk -VM $vm -DiskSizeInGB 128 `
@@ -288,16 +288,16 @@ $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName 
 $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 ```
 
-## <a name="create-the-vm"></a>Creación de la máquina virtual
+## <a name="create-hello-vm"></a>Crear hello VM
 
-Cree la nueva máquina virtual con la configuración almacenada en la variable **$vm**.
+Crear nueva máquina virtual con configuración de hello almacenado en Hola de hello **$vm** variable.
 
 ```powershell
 New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
 ```
 
-## <a name="verify-that-the-vm-was-created"></a>Comprobación de que se creó la máquina virtual
-Cuando finalice, debería ver la máquina virtual recién creada en el [Azure Portal](https://portal.azure.com), en **Examinar** > **Máquinas virtuales** o mediante los comandos de PowerShell siguientes:
+## <a name="verify-that-hello-vm-was-created"></a>Compruebe que se creó la máquina virtual de Hola
+Cuando haya finalizado, debería ver Hola recién creado VM hello [portal de Azure](https://portal.azure.com) en **examinar** > **máquinas virtuales**, o mediante Hola siguiente Comandos de PowerShell:
 
 ```powershell
     $vmList = Get-AzureRmVM -ResourceGroupName $rgName
@@ -306,5 +306,5 @@ Cuando finalice, debería ver la máquina virtual recién creada en el [Azure Po
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para iniciar sesión en la nueva máquina virtual, examine la máquina virtual en el [Portal](https://portal.azure.com), haga clic en **Conectar**y abra el archivo RDP del Escritorio remoto. Utilice las credenciales de cuenta de la máquina virtual original para iniciar sesión en la nueva máquina virtual. Para más información, consulte [Conexión a una máquina virtual de Azure donde se ejecuta Windows Server e inicio de sesión en ella](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+toosign en tooyour nueva máquina virtual, examinar toohello VM en hello [portal](https://portal.azure.com), haga clic en **conectar**y el archivo de escritorio remoto RDP Hola abierto. Usar credenciales de cuenta de hello de su toosign de máquina virtual original en la nueva máquina virtual de tooyour. Para obtener más información, consulte [cómo tooconnect y tooan virtual de Azure de inicio de sesión automático con Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 

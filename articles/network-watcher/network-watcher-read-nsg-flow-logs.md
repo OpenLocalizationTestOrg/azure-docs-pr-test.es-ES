@@ -1,6 +1,6 @@
 ---
-title: Lectura de registros de flujos de NSG | Microsoft Docs
-description: "En este artículo se muestra cómo analizar registros de flujos de NSG"
+title: registros de flujo de aaaRead NSG | Documentos de Microsoft
+description: "Este artículo muestra cómo registros de flujo NSG tooparse"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -13,69 +13,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 9bb48157b2b8e483e063058f761c3a8f531927f9
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: b4f0f64639c7b2a6b4db50e54d15056bfd809e48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="read-nsg-flow-logs"></a>Lectura de registros de flujos de NSG
 
-Aprenda a leer las entradas de los registros de flujos de NSG con PowerShell.
+Obtenga información acerca de cómo el flujo NSG tooread registrará las entradas con PowerShell.
 
-Los registros de flujos de NSG se almacenan en una cuenta de almacenamiento de [blobs en bloques](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Los blobs en bloques se componen de bloques más pequeños. Cada registro es un blob en bloques independiente que se genera cada hora. Cada hora se generan registros nuevos, que se actualizan con entradas nuevas cada pocos minutos con los datos más recientes. En este artículo aprenderá a leer las secciones de los registros de flujos.
+Los registros de flujos de NSG se almacenan en una cuenta de almacenamiento de [blobs en bloques](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Los blobs en bloques se componen de bloques más pequeños. Cada registro es un blob en bloques independiente que se genera cada hora. Nuevos registros se generan cada hora, registros de Hola se actualizan con las nuevas entradas cada pocos minutos con datos más recientes de Hola. En este artículo aprenderá cómo tooread partes de hello fluyen de registros.
 
 ## <a name="scenario"></a>Escenario
 
-En el siguiente escenario tiene un registro de flujo de ejemplo que se almacena en una cuenta de almacenamiento. Veremos todos los pasos necesarios para leer de forma selectiva los eventos más recientes de los registros de flujos de NSG. En este artículo usaremos PowerShell, aunque los conceptos tratados en él no se limitan al lenguaje de programación y se pueden aplicar a todos los lenguajes admitidos por las API de Azure Storage.
+Hola siguiendo el escenario, tendrá un registro de flujo de ejemplo que se almacena en una cuenta de almacenamiento. se ejecutar paso a paso cómo selectivamente puede leer los eventos más recientes de hello en los registros de flujo NSG. En este artículo se van a usar PowerShell, sin embargo, no sean lenguaje de programación toohello limitado conceptos Hola descritos en hello artículo y tooall aplicables idiomas de hello las API de almacenamiento de Azure
 
 ## <a name="setup"></a>Configuración
 
-Antes de empezar, tiene que tener el registro de flujo de grupo de seguridad de red habilitado en uno o más grupos de seguridad de red de su cuenta. Para ver instrucciones para habilitar los registros de flujo de grupo de seguridad de red, consulte el artículo siguiente: [Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md) (Introducción al registro de flujo para grupos de seguridad de red).
+Antes de empezar, tiene que tener el registro de flujo de grupo de seguridad de red habilitado en uno o más grupos de seguridad de red de su cuenta. Para obtener instrucciones acerca de cómo habilitar la seguridad de red de flujo de registros, consulte el artículo siguiente de toohello: [registro tooflow de introducción para grupos de seguridad de red](network-watcher-nsg-flow-logging-overview.md).
 
-## <a name="retrieve-the-block-list"></a>Recuperación de la lista de bloques
+## <a name="retrieve-hello-block-list"></a>Recuperar la lista de bloques de Hola
 
-En el siguiente PowerShell se configuran las variables necesarias para consultar el blob del registro de flujos de NSG y mostrar los bloques del blob en bloques [CloudBlockBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3). Actualice el script para que contenga valores válidos para su entorno.
+Hola siguientes conjuntos de PowerShell las variables de hello necesarios blob y lista de bloques de hello en Hola de registro de hello tooquery flujo NSG [CloudBlockBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) blob en bloques. Actualizar Hola script toocontain los valores válidos para su entorno.
 
 ```powershell
-# The SubscriptionID to use
+# hello SubscriptionID toouse
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 
-# Resource group that contains the Network Security Group
+# Resource group that contains hello Network Security Group
 $resourceGroupName = "<resourceGroupName>"
 
-# The name of the Network Security Group
+# hello name of hello Network Security Group
 $nsgName = "NSGName"
 
-# The storage account name that contains the NSG logs
+# hello storage account name that contains hello NSG logs
 $storageAccountName = "<storageAccountName>" 
 
-# The date and time for the log to be queried, logs are stored in hour intervals.
+# hello date and time for hello log toobe queried, logs are stored in hour intervals.
 [datetime]$logtime = "06/16/2017 20:00"
 
-# Retrieve the primary storage account key to access the NSG logs
+# Retrieve hello primary storage account key tooaccess hello NSG logs
 $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
 
-# Setup a new storage context to be used to query the logs
+# Setup a new storage context toobe used tooquery hello logs
 $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 # Container name used by NSG flow logs
 $ContainerName = "insights-logs-networksecuritygroupflowevent"
 
-# Name of the blob that contains the NSG flow log
+# Name of hello blob that contains hello NSG flow log
 $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${nsgName}/y=$($logtime.Year)/m=$(($logtime).ToString("MM"))/d=$(($logtime).ToString("dd"))/h=$(($logtime).ToString("HH"))/m=00/PT1H.json"
 
-# Gets the storage blog
+# Gets hello storage blog
 $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-# Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
+# Gets hello block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from hello storage blob
 $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
-# Stores the block list in a variable from the block blob.
+# Stores hello block list in a variable from hello block blob.
 $blockList = $CloudBlockBlob.DownloadBlockList()
 ```
 
-La variable `$blockList` devuelve una lista de los bloques del blob. Cada blob en bloques contiene al menos dos bloques.  El primer bloque tiene una longitud de `21` bytes. Este bloque contiene los corchetes de apertura del registro de json. El otro bloque son los corchetes de cierre y tiene una longitud de `9` bytes.  Como puede ver, el siguiente registro de ejemplo contiene siete entradas, y cada una de ellas representa una entrada. Todas las entradas nuevas del registro se agregan al final, justo antes del bloque final.
+Hola `$blockList` variable devuelve una lista de bloques de hello en blob de Hola. Cada blob en bloques contiene al menos dos bloques.  Hola primer bloque tiene una longitud de `21` bytes, este bloque contiene Hola corchetes del registro de hello json de apertura. es hello corchete de cierre Hello otro bloque y tiene una longitud de `9` bytes.  Como puede ver después de registro de ejemplo de Hola tiene siete entradas en él, cada uno de los que se va a una entrada individual. Todas las nuevas entradas de registro de hello se agregan final toohello justo antes de bloque final Hola.
 
 ```
 Name                                         Length Committed
@@ -91,45 +91,45 @@ Mzk1YzQwM2U0ZWY1ZDRhOWFlMTNhYjQ3OGVhYmUzNjk=   2675      True
 ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      9      True
 ```
 
-## <a name="read-the-block-blob"></a>Lectura del blob en bloques
+## <a name="read-hello-block-blob"></a>Blob en bloques lectura Hola
 
-A continuación tenemos que leer la variable `$blocklist` para recuperar los datos. En este ejemplo se recorre en iteración la lista de bloques, se leen los bytes de cada bloque y se almacenan en una matriz. Para recuperar los datos se usa el método [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_).
+A continuación, necesitamos hello tooread `$blocklist` tooretrieve variable datos de saludo. En este ejemplo se recorrer en iteración la lista de bloqueo de hello, leer los bytes de Hola de cada bloque y caso de ellos en una matriz. Usamos hello [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) datos sobre métodos tooretrieve Hola.
 
 ```powershell
-# Set the size of the byte array to the largest block
+# Set hello size of hello byte array toohello largest block
 $maxvalue = ($blocklist | measure Length -Maximum).Maximum
 
-# Create an array to store values in
+# Create an array toostore values in
 $valuearray = @()
 
-# Define the starting index to track the current block being read
+# Define hello starting index tootrack hello current block being read
 $index = 0
 
-# Loop through each block in the block list
+# Loop through each block in hello block list
 for($i=0; $i -lt $blocklist.count; $i++)
 {
 
-# Create a byte array object to story the bytes from the block
+# Create a byte array object toostory hello bytes from hello block
 $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
-# Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
+# Download hello data into hello ByteArray, starting with hello current index, for hello number of bytes in hello current block. Index is increased by 3 when reading tooremove preceding comma.
 $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index+3,$($blockList[$i].Length-1)) | Out-Null
 
-# Increment the index by adding the current block length to the previous index
+# Increment hello index by adding hello current block length toohello previous index
 $index = $index + $blockList[$i].Length
 
-# Retrieve the string from the byte array
+# Retrieve hello string from hello byte array
 
 $value = [System.Text.Encoding]::ASCII.GetString($downloadArray)
 
-# Add the log entry to the value array
+# Add hello log entry toohello value array
 $valuearray += $value
 }
 ```
 
-Ahora la matriz `$valuearray` contiene el valor de cadena de cada bloque. Para comprobar la entrada, ejecute `$valuearray[$valuearray.Length-2]` para obtener el penúltimo valor de la matriz. No queremos el último valor, que es el corchete de cierre.
+Ahora Hola `$valuearray` matriz contiene el valor de cadena de Hola de cada bloque. entrada de hello tooverify, get hello segundo toohello último valor de matriz de hello ejecutando `$valuearray[$valuearray.Length-2]`. No queremos Hola último valor es simplemente el corchete de cierre Hola.
 
-Los resultados de este valor se muestran en el ejemplo siguiente:
+resultados de Hola de este valor se muestran en el siguiente ejemplo de Hola:
 
 ```json
         {
@@ -151,11 +151,11 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
         }
 ```
 
-Este escenario es un ejemplo de cómo leer las entradas de registros de flujos de NSG sin tener que analizar todo el registro. Puede leer las entradas nuevas del registro a medida que se escriben mediante el identificador de bloque o mediante el seguimiento de la longitud de los bloques almacenados en el blob en bloques. Esto le permite leer solo las entradas nuevas.
+Este escenario es un ejemplo de cómo las entradas de tooread de NSG fluyen de registros sin necesidad de registro de tooparse Hola completo. Puede leer las nuevas entradas de registro de hello tal y como se escriben utilizando el identificador de bloque de Hola o al realizar un seguimiento de la longitud de Hola de bloques que se almacena en el blob en bloques Hola. Esto le permite tooread solo hello las nuevas entradas.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Visite [Visualización de registros de flujo de grupo de seguridad de red de Azure Network Watcher con herramientas de código abierto](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) para obtener más información sobre otros métodos para consultar los registros de flujos de NSG.
+Visite [visualizar registros de flujo de NSG de Monitor de red de Azure con herramientas de código abierto](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) toolearn más información acerca de otro tooview formas NSG flujo de registros.
 
-Para obtener más información sobre los blobs de almacenamiento, visite [Enlaces de Blob Storage en Azure Functions](../azure-functions/functions-bindings-storage-blob.md).
+toolearn sobre blobs de almacenamiento, visite: [enlaces de almacenamiento de blobs de funciones de Azure](../azure-functions/functions-bindings-storage-blob.md)

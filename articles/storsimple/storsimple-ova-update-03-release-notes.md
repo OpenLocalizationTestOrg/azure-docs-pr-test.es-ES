@@ -1,6 +1,6 @@
 ---
-title: "Notas de la versión de las actualizaciones de la matriz virtual de StorSimple | Microsoft Docs"
-description: "Describe los problemas críticos por resolver y las soluciones de la matriz virtual de StorSimple que ejecuta la actualización 0.3."
+title: "notas de la versión de las actualizaciones de matriz Virtual aaaStorSimple | Documentos de Microsoft"
+description: "Abrir crítico se describen problemas y soluciones para la ejecución de StorSimple Virtual Array Hola actualización 0.3."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.openlocfilehash: fe9d4f6b232e9abcf1fe9fc5657044b6c72fedb8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 305e6419b248fde134abae65f3d2c241d72ffa18
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>Notas de la versión de Update 0.3 de la matriz virtual de StorSimple
 ## <a name="overview"></a>Información general
-En las notas de la versión siguientes se identifican los problemas críticos pendientes y los problemas resueltos de las actualizaciones de la matriz virtual de Microsoft Azure StorSimple.
+Hola notas de la versión siguiente identifican problemas abiertos críticos de Hola y Hola problemas resueltos para las actualizaciones de Microsoft Azure StorSimple Virtual Array.
 
-Las notas de la versión se actualizan continuamente y se van agregando a medida que se descubren problemas críticos que requieren una solución alternativa. Antes de implementar la matriz virtual de StorSimple, le recomendamos que lea detenidamente la información que encontrará en las notas de la versión.
+notas de la versión de Hola se actualizan continuamente, y cuando se detectan problemas críticos que requieren una solución, se agregan. Antes de implementar la matriz Virtual de StorSimple, consulte atentamente información de hello contenida en las notas de la versión de Hola.
 
-Update 0.3 se corresponde con la versión de software **10.0.10288.0**.
+Actualización 0.3 corresponde versión del software toohello **10.0.10288.0**.
 
 > [!NOTE]
-> Las actualizaciones causan interrupciones y reinician el dispositivo. Si hay procesos de E/S en curso, el dispositivo incurrirá en tiempo de inactividad.
+> Las actualizaciones causan interrupciones y reinician el dispositivo. Si E/S están en curso, dispositivo Hola incurre en tiempo de inactividad.
 > 
 > 
 
-## <a name="whats-new-in-the-update-03"></a>Novedades de Update 0.3
-Update 0.3 es principalmente una compilación de corrección de errores. En esta versión, se han solucionado varios errores que provocan errores de copia de seguridad en la versión anterior.
+## <a name="whats-new-in-hello-update-03"></a>Novedades de hello Update 0.3
+Update 0.3 es principalmente una compilación de corrección de errores. En esta versión, se han abordado varios errores que provocan errores de copia de seguridad en la versión anterior de Hola.
 
-## <a name="issues-fixed-in-the-update-03"></a>Problemas corregidos en Update 0.3
-En la tabla siguiente se proporciona un resumen de los problemas corregidos en esta versión.
+## <a name="issues-fixed-in-hello-update-03"></a>Problemas corregidos en hello Update 0.3
+Hello tabla siguiente proporciona un resumen de problemas corregidos en esta versión.
 
 | No. | Característica | Problema |
 | --- | --- | --- |
-| 1 |Copias de seguridad |Se ha detectado un problema en la versión anterior en el que las copias de seguridad no podían completarse. Si se produjo este problema, el trabajo de copia de seguridad no se realizaría correctamente y se generó una alerta crítica en el servicio StorSimple Manager para notificar al usuario. Este problema no afectó a los datos en los recursos compartidos o el acceso a los datos. La causa raíz se identificó y corrigió en esta versión. <br></br> La corrección no se aplica con carácter retroactivo a recursos compartidos que ya están experimentando este problema. Los clientes que detecten este problema deben aplicar primero Update 0.3 y después póngase en contacto con el soporte técnico de Microsoft para realizar una copia de seguridad completa del sistema para corregir el problema. En lugar de ponerse en contacto con el soporte técnico de Microsoft, los clientes también pueden restaurar a un nuevo recurso compartido desde una copia de seguridad correcta para los recursos compartidos afectados. |
-| 2 |iSCSI |Se ha detectado un problema en la versión anterior, donde los volúmenes desaparecían cuando se copiaban datos en un volumen en la matriz virtual de StorSimple. Este problema se ha corregido en esta versión. <br></br> Las revisiones surten efecto solo en volúmenes creados recientemente. Las revisiones no se aplican con carácter retroactivo a volúmenes que ya están experimentando este problema. Se recomienda a los clientes poner los volúmenes afectados en línea mediante el Portal de Azure clásico, realizar una copia de seguridad de estos volúmenes y luego restaurar estos volúmenes a nuevos volúmenes. |
+| 1 |Copias de seguridad |Se encontró un problema en hello versión anterior, donde las copias de seguridad de hello produciría un error toocomplete para un recurso compartido de archivos. Si se produce este problema, producirá un trabajo de copia de seguridad de Hola y se genera una alerta crítica en hello StorSimple Manager toonotify Hola usuario. Este problema no afecta a los datos de hello en recursos compartidos de Hola o tener acceso a datos toohello. causa Hola se identificó y corrigió en esta versión. <br></br> corrección de Hello no aplica con carácter retroactivo tooshares que ya están experimentando este problema. Los clientes que están viendo este problema deben primero aplique la actualización 0.3, a continuación, póngase en contacto con Microsoft Support tooperform un problema de hello toofix copia de seguridad completa del sistema. En lugar de ponerse en contacto con Microsoft Support, los clientes también pueden restaurar desde una copia de seguridad correcto para recursos compartidos de hello afectado tooa nuevo recurso compartido. |
+| 2 |iSCSI |Se encontró un problema en hello versión anterior, donde los volúmenes de hello desaparecerá cuando se copia el volumen de datos tooa en hello StorSimple Virtual Array. Este problema se ha corregido en esta versión. <br></br> correcciones de Hello surten efecto solo en recién creado volúmenes. correcciones de Hello no aplican con carácter retroactivo toovolumes que ya están experimentando este problema. Se recomienda a los clientes en línea los volúmenes de hello afectado toobring a través de Hola portal de Azure clásico, realizan una copia de seguridad para estos volúmenes y, a continuación, restauración estos volúmenes toonew de volúmenes. |
 
-## <a name="known-issues-in-the-update-03"></a>Problemas conocidos de Update 0.3
-En la tabla siguiente se muestra un resumen de los problemas conocidos de la matriz virtual de StorSimple y se incluyen los problemas notificados en la versiones anteriores. 
+## <a name="known-issues-in-hello-update-03"></a>Problemas conocidos de actualización 0.3 Hola
+Hello tabla siguiente proporciona un resumen de los problemas conocidos de hello StorSimple Virtual Array e incluye problemas Hola se indica la versión de las versiones anteriores de Hola. 
 
 | No. | Característica | Problema | Soluciones alternativas o comentarios |
 | --- | --- | --- | --- |
-| **1.** |Actualizaciones |Los dispositivos virtuales que se crean en la versión preliminar no se pueden actualizar a una versión que sea compatible con la versión de disponibilidad general. |Debe conmutar por error estos dispositivos virtuales a la versión de disponibilidad general mediante un flujo de trabajo de recuperación ante desastres (DR). |
-| **2.** |Disco de datos aprovisionado |Una vez se haya aprovisionado un disco de datos de un determinado tamaño y cree el correspondiente dispositivo virtual de StorSimple, no debe expandir o reducir el disco de datos. Si intenta hacer esto, se perderán todos los datos de las capas locales del dispositivo. | |
-| **3.** |Directiva de grupo |Cuando un dispositivo está unido al dominio, aplicar una directiva de grupo puede afectar negativamente al funcionamiento de dispositivo. |Asegúrese de que su matriz virtual está en su propia unidad organizativa (UO) de Active Directory y de que no se le aplica ningún objeto de directiva de grupo (GPO). |
+| **1.** |Actualizaciones |dispositivos virtuales Hola creados en la versión de vista previa de hello no pueden ser tooa actualizado que admite la versión de disponibilidad General. |Estos dispositivos virtuales deben conmutar por error para hello versión de disponibilidad General mediante un flujo de trabajo de recuperación ante desastres. |
+| **2.** |Disco de datos aprovisionado |Una vez que ha aprovisionado un disco de datos de un determinado tamaño especificado y creado Hola correspondiente dispositivo StorSimple virtual, no debe aumentar o reducir el disco de datos de Hola. Se intentó una toodo da como resultado una pérdida de todos los datos de hello en los niveles local hello de dispositivo de Hola. | |
+| **3.** |Directiva de grupo |Cuando un dispositivo está unido a un dominio, aplicar una directiva de grupo puede afectar negativamente el funcionamiento de dispositivo de Hola. |Asegúrese de que la matriz virtual está en su propia unidad organizativa (OU) de Active Directory y ningún objeto de directiva de grupo (GPO) está tooit aplicada. |
 | **4.** |Interfaz de usuario web local. |Si tiene las características de seguridad mejorada habilitadas en Internet Explorer (IE ESC), es posible que algunas páginas de la interfaz de usuario web local, tales como Solución de problemas o Mantenimiento, no funcionen correctamente. Asimismo, cabe la posibilidad de que los botones de estas páginas tampoco funcionen. |Desactive las características de seguridad mejorada de Internet Explorer. |
-| **5.** |Interfaz de usuario web local. |En una máquina virtual de Hyper-V, las interfaces de red que se encuentran en la interfaz de usuario web se muestran como interfaces de 10 Gbps. |Este comportamiento es un reflejo de Hyper-V. Hyper-V siempre muestra los adaptadores de red virtual a 10 Gbps. |
-| **6.** |Volúmenes o recursos compartidos en niveles |El bloqueo del intervalo de bytes de las aplicaciones que funcionan con volúmenes de StorSimple no se admite. Si tiene habilitado un bloqueo de intervalo de bytes, la organización en niveles de StorSimple no funciona. |Entre las medidas recomendadas se incluyen:  <br></br>Desactive el bloqueo del intervalo de bytes en la lógica de la aplicación.<br></br>Elija esta opción colocar los datos de esta aplicación en los volúmenes anclados localmente en lugar en volúmenes en capas.<br></br>*Advertencia*: Si usa volúmenes anclados localmente y tiene el bloqueo del intervalo de bytes habilitado, el volumen anclado localmente puede estar en línea incluso antes de que se complete la restauración. En tal caso, si hay una restauración en curso, debe esperar a que esta se complete. |
-| **7.** |Recursos compartidos organizados en niveles |Si trabaja con archivos de gran tamaño, estos podrían ocasionar que la organización en niveles se desarrolle lentamente. |Cuando trabaje con esta clase de archivos, es recomendable que el archivo de mayor tamaño no ocupe más del 3 % del tamaño recurso compartido. |
-| **8.** |Capacidad de recursos compartidos usada |Si no hay datos en el recurso compartido, es posible que vea cierto consumo del recurso compartido. Esto ocurre porque la capacidad que se usa para los recursos compartidos incluye los metadatos. | |
-| **9.** |Recuperación ante desastres |Solo puede realizar la recuperación ante desastres de un servidor de archivos en el mismo dominio que el del dispositivo de origen. Con esta versión no se puede realizar la recuperación ante desastres en el dispositivo de destino de otro dominio. |Esto se implementará en una versión posterior. |
-| **10.** |Azure PowerShell |En esta versión no se pueden administrar los dispositivos virtuales de StorSimple a través de Azure PowerShell. |Toda la administración de los dispositivos virtuales debe realizarse mediante el portal de Azure clásico y la interfaz de usuario web local. |
-| **11.** |Cambio de contraseña |La consola del dispositivo de matriz virtual solo acepta entradas con el formato de teclado en-US. | |
-| **12.** |CHAP |Las credenciales CHAP no se pueden quitar una vez creadas. Además, si modifica las credenciales CHAP, deberá desconectar los volúmenes y volver a ponerlos en línea para que el cambio surta efecto. |Este problema se corregirá en una versión posterior. |
-| **13.** |Servidor iSCSI |El "almacenamiento usado" que aparece para un volumen iSCSI puede ser diferente en el servicio StorSimple Manager y en el host iSCSI. |El host iSCSI tiene la vista del sistema de archivos.<br></br>El dispositivo ve los bloques asignados cuando el volumen estaba en el tamaño máximo. |
-| **14.** |Servidor de archivos |Si un archivo de una carpeta tiene una secuencia de datos alternativa (ADS) asociada, no se hará una copia de seguridad de dicha secuencia ni se restaurará a través de la recuperación ante desastres, la clonación o la recuperación a nivel de elemento. | |
+| **5.** |Interfaz de usuario web local. |En una máquina virtual de Hyper-V, Hola interfaces de red en la interfaz de usuario se muestran como interfaces de 10 GB/s de web de Hola. |Este comportamiento es un reflejo de Hyper-V. Hyper-V siempre muestra los adaptadores de red virtual a 10 Gbps. |
+| **6.** |Volúmenes o recursos compartidos en niveles |No se admite para las aplicaciones que funcionan con hello StorSimple volúmenes en capas de bloqueo de intervalo de bytes. Si tiene habilitado un bloqueo de intervalo de bytes, la organización en niveles de StorSimple no funciona. |Entre las medidas recomendadas se incluyen:  <br></br>Desactive el bloqueo del intervalo de bytes en la lógica de la aplicación.<br></br>Elegir datos tooput para esta aplicación en los volúmenes anclados localmente los volúmenes de tootiered diferencia.<br></br>*Advertencia*: al usar localmente anclado volúmenes y está habilitado el bloqueo de intervalo de bytes, volumen Hola anclado localmente puede estar conectado incluso antes de completar la restauración de Hola. En esos casos, si una restauración está en curso, a continuación, se debe esperar a hello toocomplete de restauración. |
+| **7.** |Recursos compartidos organizados en niveles |Si trabaja con archivos de gran tamaño, estos podrían ocasionar que la organización en niveles se desarrolle lentamente. |Cuando se trabaja con archivos grandes, se recomienda que ese archivo más grande de hello es menor que 3% del tamaño del recurso compartido de Hola. |
+| **8.** |Capacidad de recursos compartidos usada |Es posible que vea Compartir consumo cuando no hay ningún dato en el recurso compartido de Hola. Esto es porque la capacidad de hello utilizado para los recursos compartidos incluye metadatos. | |
+| **9.** |Recuperación ante desastres |Solo puede realizar la recuperación de desastres de Hola de un toohello de servidor de archivos mismo dominio que la del dispositivo de origen Hola. Dispositivo de destino de tooa de recuperación de desastres en otro dominio no se admite en esta versión. |Esto se implementará en una versión posterior. |
+| **10.** |Azure PowerShell |dispositivos virtuales de StorSimple de Hello no pueden administrarse a través de hello Azure PowerShell en esta versión. |Toda la administración de dispositivos virtuales Hola Hola debe realizarse a través de hello portal de Azure clásico y la interfaz de usuario de web local Hola. |
+| **11.** |Cambio de contraseña |consola del dispositivo de matriz virtual Hola solo acepta datos proporcionados en el formato de teclado en-US. | |
+| **12.** |CHAP |Las credenciales CHAP no se pueden quitar una vez creadas. Además, si modifica las credenciales CHAP hello, volúmenes tootake hello es necesario y, a continuación, colocarlos en línea para cambiar tootake efecto de Hola. |Este problema se corregirá en una versión posterior. |
+| **13.** |Servidor iSCSI |Hola 'Usado el almacenamiento' muestra para un volumen de iSCSI puede ser diferente en el servicio StorSimple Manager hello y host de iSCSI de Hola. |host de iSCSI de Hello tiene vista de sistema de archivos de Hola.<br></br>dispositivo de Hello ve bloques Hola asignados al volumen de hello estaba al tamaño máximo de Hola. |
+| **14.** |Servidor de archivos |Si un archivo en una carpeta tiene un flujo de datos alternativo (ADS) asociados a él, Hola anuncios no se copia o restaura a través de la recuperación ante desastres, clonación y recuperación de nivel de elemento. | |
 
 ## <a name="next-step"></a>Paso siguiente
 [Instale la actualización 0.3](storsimple-ova-install-update-01.md) en la matriz virtual de StorSimple.

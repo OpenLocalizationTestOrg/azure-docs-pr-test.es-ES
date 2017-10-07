@@ -1,6 +1,6 @@
 ---
-title: "Requisitos previos para acceder a la API de creación de informes de Azure AD | Microsoft Docs"
-description: "Conozca los requisitos previos para acceder a la API de generación de informes de Azure AD."
+title: "API de generación de informes de aaaPrerequisites tooaccess hello Azure AD. | Microsoft Docs"
+description: "Aprender sobre la API de generación de informes de hello requisitos previos tooaccess hello Azure AD"
 services: active-directory
 documentationcenter: 
 author: dhanyahk
@@ -14,154 +14,154 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-ms.openlocfilehash: 6e409fc56b77f37dac7f37382e664c577666ad4d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e9d7ceaedb07d18fbd75b70d68b5cfbebc756c36
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Requisitos previos para acceder a la API de generación de informes de Azure AD
-Las [API de generación de informes de Azure AD](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) proporcionan acceso mediante programación a los datos a través de un conjunto de API de REST. Estas API pueden llamarse desde una variedad de lenguajes de programación y herramientas.
+# <a name="prerequisites-tooaccess-hello-azure-ad-reporting-api"></a>API de generación de informes de requisitos previos tooaccess hello Azure AD
+Hola [Azure AD reporting API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) proporcionan datos de toohello de acceso mediante programación a través de un conjunto de API basadas en REST. Estas API pueden llamarse desde una variedad de lenguajes de programación y herramientas.
 
-La API de generación de informes utiliza [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) para autorizar el acceso a las API web. 
+Hola reporting utiliza API [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) toohello web API de tooauthorize acceso. 
 
-Para preparar el acceso a la API de generación de informes, debe hacer lo siguiente:
+tooprepare su toohello acceso a API de informes, debe:
 
 1. Crear una aplicación en el inquilino de Azure AD 
-2. Conceder los permisos adecuados de aplicación para acceder a los datos de Azure AD
+2. Tooaccess de los permisos adecuados de concesión Hola aplicación Hola datos de Azure AD
 3. Recopilar los valores de configuración del directorio
 
 Para ver preguntas, problemas o comentarios, póngase en contacto con el equipo de [ayuda de informes de AAD](mailto:aadreportinghelp@microsoft.com).
 
 ## <a name="create-an-azure-ad-application"></a>Creación de una aplicación de Azure AD
-Si quiere configurar el directorio para que tenga acceso a la API de generación de informes de Azure AD, debe iniciar sesión en el Portal de Azure clásico con una cuenta de administrador de suscripción de Azure que también sea miembro del rol de directorio Administrador global en su inquilino de Azure AD.
+tooconfigure su API directory tooaccess hello Azure AD informes, debe iniciar sesión en toohello portal de Azure clásico con una cuenta de administrador de suscripción de Azure que también es un miembro del rol de directorio de administrador Global de hello en el inquilino de Azure AD.
 
 > [!IMPORTANT]
-> Las aplicaciones que se ejecutan con credenciales con privilegios administrativos como este pueden ser muy avanzadas, así que asegúrese de mantener seguras las credenciales del secreto o el identificador de la aplicación.
+> Aplicaciones que se ejecutan bajo las credenciales con privilegios de "admin" similar al siguiente pueden ser muy eficaces, por lo que Ten credenciales de Id. / secreto de la aplicación de seguro tookeep Hola segura.
 > 
 > 
 
-1. En el [Portal de Azure clásico](https://manage.windowsazure.com), en el panel de navegación izquierdo, haga clic en **Active Directory**.
+1. Hola [portal de Azure clásico](https://manage.windowsazure.com), en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. En la lista de **directorios activos** , seleccione el directorio.
-3. En el menú superior, haga clic en **Aplicaciones**.
+2. De hello **active directory** lista, seleccione el directorio.
+3. En el menú de hello en la parte superior de hello, haga clic en **aplicaciones**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/02.png) 
-4. En la barra inferior, haga clic en **Agregar**.
+4. En la barra de la parte inferior de hello, haga clic en **agregar**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/03.png) 
-5. En la página de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación que mi organización está desarrollando**. 
+5. En hello **especifique qué desea toodo?** cuadro de diálogo, haga clic en **agregar una aplicación que mi organización está desarrollando**. 
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/04.png) 
-6. En la cuadro de diálogo **Proporcione información sobre este usuario** , realice los pasos siguientes: 
+6. En hello **envíenos comentarios acerca de la aplicación** cuadro de diálogo, realizar Hola pasos: 
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/05.png) 
    
-    a. En el cuadro de texto **Nombre** , escriba un nombre (por ejemplo: aplicación de API de generación de informes).
+    a. Hola **nombre** cuadro de texto, escriba un nombre (p. ej.: aplicación de API de informes).
    
     b. Seleccione **Aplicación web y/o API web**.
    
     c. Haga clic en **Siguiente**.
-7. En el cuadro de diálogo **Agregar propiedades** , realice los pasos siguientes: 
+7. En hello **propiedades de la aplicación** cuadro de diálogo, realizar Hola pasos: 
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/06.png) 
    
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba `https://localhost`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, tipo `https://localhost`.
    
-    b. En el cuadro de texto **URI de id. de aplicación**, escriba ```https://localhost/ReportingApiApp```.
+    b. Hola **App ID URI** cuadro de texto, tipo ```https://localhost/ReportingApiApp```.
    
-    c. Haga clic en **Complete**.
+    c. Haga clic en **Completo**.
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Conceder a la aplicación permiso para usar la API
-1. En el [Portal de Azure clásico](https://manage.windowsazure.com/), en el panel de navegación izquierdo, haga clic en **Active Directory**.
+## <a name="grant-your-application-permission-toouse-hello-api"></a>Conceder su hello toouse de permiso de aplicación API
+1. Hola [portal de Azure clásico](https://manage.windowsazure.com/), en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. En la lista de **directorios activos** , seleccione el directorio.
-3. En el menú superior, haga clic en **Aplicaciones**.
+2. De hello **active directory** lista, seleccione el directorio.
+3. En el menú de hello en la parte superior de hello, haga clic en **aplicaciones**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/02.png)
-4. En la lista de aplicaciones, seleccione la aplicación que acaba de crear.
+4. En la lista de aplicaciones de hello, seleccione la aplicación recién creada.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/07.png)
-5. En el menú de la parte superior, haga clic en **Configurar**.
+5. En el menú de hello en la parte superior de hello, haga clic en **configurar**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/08.png)
-6. En la sección **Permisos para otras aplicaciones**, en el recurso **Azure Active Directory**, haga clic en la lista desplegable **Permisos de la aplicación** y seleccione **Leer datos de directorio**.
+6. Hola **permisos tooother aplicaciones** sección para hello **Azure Active Directory** recursos, haga clic en hello **permisos de aplicación** la lista desplegable y, a continuación, Seleccione **leer datos de directorio**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/09.png)
-7. En la barra inferior, haga clic en **Guardar**.
+7. En la barra de la parte inferior de hello, haga clic en **guardar**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/10.png)
 
 ## <a name="gather-configuration-settings-from-your-directory"></a>Recopilar los valores de configuración del directorio
-En esta sección se muestra cómo obtener la siguiente configuración del directorio:
+Esta sección muestra cómo hello tooget siguiendo la configuración de su directorio:
 
 * Nombre de dominio
 * id. de cliente
 * Secreto del cliente
 
-Necesitará estos valores al configurar llamadas a la API de generación de informes. 
+Necesitará estos valores al configurar la API de generación de informes de toohello de llamadas. 
 
 ### <a name="get-your-domain-name"></a>Obtención del nombre de dominio
-1. En el [Portal de Azure clásico](https://manage.windowsazure.com), en el panel de navegación izquierdo, haga clic en **Active Directory**.
+1. Hola [portal de Azure clásico](https://manage.windowsazure.com), en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. En la lista de **directorios activos** , seleccione el directorio.
-3. En el menú de la parte superior, haga clic en **Dominios**.
+2. De hello **active directory** lista, seleccione el directorio.
+3. En el menú de hello en la parte superior de hello, haga clic en **dominios**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/11.png) 
-4. Escriba el nombre del dominio en el campo **Nombre de dominio** .
+4. Hola **nombre de dominio** columna, copie el nombre de dominio.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/12.png) 
 
-### <a name="get-the-applications-client-id"></a>Obtención del id. de cliente de la aplicación
-1. En el [Portal de Azure clásico](https://manage.windowsazure.com), en el panel de navegación izquierdo, haga clic en **Active Directory**.
+### <a name="get-hello-applications-client-id"></a>Obtener Id. de cliente de la aplicación hello
+1. Hola [portal de Azure clásico](https://manage.windowsazure.com), en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. En la lista de **directorios activos** , seleccione el directorio.
-3. En el menú superior, haga clic en **Aplicaciones**.
+2. De hello **active directory** lista, seleccione el directorio.
+3. En el menú de hello en la parte superior de hello, haga clic en **aplicaciones**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/02.png) 
-4. En la lista de aplicaciones, seleccione la aplicación que acaba de crear.
+4. En la lista de aplicaciones de hello, seleccione la aplicación recién creada.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/07.png)
-5. En el menú de la parte superior, haga clic en **Configurar**.
+5. En el menú de hello en la parte superior de hello, haga clic en **configurar**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/08.png)
 6. Copie el **id. de cliente**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/13.png)
 
-### <a name="get-the-applications-client-secret"></a>Obtención del secreto de cliente de la aplicación
-Para obtener el secreto de cliente de la aplicación, debe crear una nueva clave y guardar su valor después, ya que no es posible recuperarla más tarde.
+### <a name="get-hello-applications-client-secret"></a>Obtener el secreto de cliente de la aplicación hello
+tooget cliente de su aplicación secreta, que necesita toocreate una nueva clave y guardar su valor al guardar la nueva clave de hello porque no es posible tooretrieve este valor más tarde ya.
 
-1. En el [Portal de Azure clásico](https://manage.windowsazure.com), en el panel de navegación izquierdo, haga clic en **Active Directory**.
+1. Hola [portal de Azure clásico](https://manage.windowsazure.com), en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/01.png) 
-2. En la lista de **directorios activos** , seleccione el directorio.
-3. En el menú superior, haga clic en **Aplicaciones**.
+2. De hello **active directory** lista, seleccione el directorio.
+3. En el menú de hello en la parte superior de hello, haga clic en **aplicaciones**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/02.png) 
-4. En la lista de aplicaciones, seleccione la aplicación que acaba de crear.
+4. En la lista de aplicaciones de hello, seleccione la aplicación recién creada.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/07.png)
-5. En el menú de la parte superior, haga clic en **Configurar**.
+5. En el menú de hello en la parte superior de hello, haga clic en **configurar**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/08.png)
-6. En la sección **Claves** , realice los siguientes pasos: 
+6. Hola **claves** sección, lleve a cabo Hola pasos: 
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/14.png)
    
-    a. En la lista de duración, seleccione una duración.
+    a. En lista de duración de hello, seleccione una duración
    
-    b. En la barra inferior, haga clic en **Guardar**.
+    b. En la barra de la parte inferior de hello, haga clic en **guardar**.
    
     ![Registre la aplicación](./media/active-directory-reporting-api-prerequisites/10.png)
    
-    c. Copie el valor de la clave.
+    c. Copie el valor de clave de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* ¿Quiere obtener acceso mediante programación a los datos de la API de generación de informes de Azure AD? Consulte [Introducción a la API de informes de Azure Active Directory](active-directory-reporting-api-getting-started.md).
-* Si quiere obtener más información sobre informes de Azure Active Directory, consulte la [guía de generación de informes de Azure Active Directory](active-directory-reporting-guide.md).  
+* ¿Se como tooaccess Hola datos de hello Azure AD API de informes de una manera mediante programación? Extraer del repositorio [Introducción a Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md).
+* Si desea que toofind más acerca de los informes de Azure Active Directory, vea hello [Azure Active Directory Reporting guía](active-directory-reporting-guide.md).  
 

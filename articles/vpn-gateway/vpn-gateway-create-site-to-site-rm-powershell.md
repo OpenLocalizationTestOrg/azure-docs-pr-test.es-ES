@@ -1,6 +1,6 @@
 ---
-title: "Conexión de la red local a una red virtual de Azure: VPN de sitio a sitio: PowerShell | Microsoft Docs"
-description: "Pasos para crear una conexión de IPsec desde la red local a una red virtual de Azure a través de la red pública de Internet. Estos pasos le ayudarán a crear una conexión de VPN Gateway de sitio a sitio entre locales mediante PowerShell."
+title: 'Conectar su tooan de red local red virtual de Azure: VPN de sitio a sitio: PowerShell | Documentos de Microsoft'
+description: "Una conexión de IPsec desde el entorno local de red tooan red virtual de Azure a través de toocreate de pasos Hola Internet pública. Estos pasos le ayudarán a crear una conexión de VPN Gateway de sitio a sitio entre locales mediante PowerShell."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
-ms.openlocfilehash: 27f4a8fb9a83b98e99df635bf4c80f6048ce348c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cb8db1dab3a5488816a7f7e8e63908a4c02f55db
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Creación de una red virtual con una conexión VPN de sitio a sitio mediante PowerShell
 
-Este artículo muestra cómo usar PowerShell para crear una conexión de puerta de enlace VPN de sitio a sitio desde la red local a la red virtual. Los pasos descritos en este artículo se aplican al modelo de implementación de Resource Manager. También se puede crear esta configuración con una herramienta o modelo de implementación distintos, mediante la selección de una opción diferente en la lista siguiente:
+Este artículo muestra cómo toouse conexión de puerta de enlace VPN de PowerShell toocreate un sitio a sitio desde el entorno local de red toohello red virtual. pasos de Hello en este artículo aplican toohello modelo de implementación de administrador de recursos. También puede crear esta configuración con una herramienta de implementación diferentes o un modelo de implementación seleccionando una opción diferente de hello lista siguiente:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Portal de Azure](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Portal de Azure clásico](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -35,22 +35,22 @@ Este artículo muestra cómo usar PowerShell para crear una conexión de puerta 
 >
 
 
-Se utiliza una conexión de puerta de enlace VPN de sitio a sitio para conectar su red local a una red virtual de Azure a través de un túnel VPN de IPsec/IKE (IKEv1 o IKEv2). Este tipo de conexión requiere un dispositivo VPN local que tenga una dirección IP pública asignada. Para más información acerca de las puertas de enlace VPN, consulte [Acerca de VPN Gateway](vpn-gateway-about-vpngateways.md).
+Una conexión de puerta de enlace VPN de sitio a sitio es tooconnect utilizado en sus instalaciones de red tooan red virtual de Azure a través de un túnel VPN de IPsec/IKE (IKEv1 o IKEv2). Este tipo de conexión requiere una VPN dispositivo situado en local que tiene un tooit de dirección asignada de IP pública con orientación externa. Para más información acerca de las puertas de enlace VPN, consulte [Acerca de VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 ![Diagrama de la conexión entre locales de VPN Gateway de sitio a sitio](./media/vpn-gateway-create-site-to-site-rm-powershell/site-to-site-diagram.png)
 
 ## <a name="before"></a>Antes de empezar
 
-Antes de comenzar con la configuración, compruebe que se cumplen los criterios siguientes:
+Compruebe que se ha cumplido hello siguiendo criterios antes de comenzar la configuración:
 
-* Asegúrese de tener un dispositivo VPN compatible y alguien que pueda configurarlo. Para más información acerca de los dispositivos VPN compatibles y su configuración, consulte [Acerca de los dispositivos VPN](vpn-gateway-about-vpn-devices.md).
+* Asegúrese de que tiene un dispositivo VPN compatible y alguna persona tooconfigure capaz de él. Para más información acerca de los dispositivos VPN compatibles y su configuración, consulte [Acerca de los dispositivos VPN](vpn-gateway-about-vpn-devices.md).
 * Compruebe que tiene una dirección IPv4 pública externa para el dispositivo VPN. Esta dirección IP no puede estar detrás de un NAT.
-* Si no está familiarizado con los intervalos de direcciones IP ubicados en la red local, necesita trabajar con alguien que pueda proporcionarle estos detalles. Al crear esta configuración, debe especificar los prefijos del intervalo de direcciones IP al que Azure enrutará la ubicación local. Ninguna de las subredes de la red local puede superponerse con las subredes de la red virtual a la que desea conectarse.
-* Instale la versión más reciente de los cmdlets de PowerShell de Azure Resource Manager. Los cmdlets de PowerShell se actualizan con frecuencia y, por lo general, deberá actualizar los cmdlets de PowerShell para obtener la funcionalidad más reciente de la característica. Si no actualiza los cmdlets de PowerShell, se pueden producir errores en los valores especificados. Consulte [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview) para más información sobre cómo descargar e instalar los cmdlets de PowerShell.
+* Si no está familiarizado con intervalos de direcciones IP de hello ubicados en configuración de red local, deberá toocoordinate con alguien que pueda proporcionarle estos detalles para usted. Al crear esta configuración, debe especificar prefijos para intervalo de direcciones IP con hello que Azure enrutará la ubicación de tooyour local. Ninguna de las subredes de saludo de la red local puede enumerar sobre el regazo con subredes de red virtual de Hola que desee tooconnect a.
+* Instalar versión más reciente de Hola de hello cmdlets de PowerShell del Administrador de recursos de Azure. Cmdlets de PowerShell se actualizan con frecuencia y, normalmente deberá tooupdate su funcionalidad característica más reciente de Hola de PowerShell cmdlets tooget. Si no actualiza los cmdlets de PowerShell, pueden producir un error en los valores de hello especificados. Vea [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview) para obtener más información sobre cómo descargar e instalar los cmdlets de PowerShell.
 
 ### <a name="example"></a>Valores del ejemplo
 
-Los ejemplos de este artículo utilizan los valores siguientes. Puede usar estos valores para crear un entorno de prueba o hacer referencia a ellos para comprender mejor los ejemplos de este artículo.
+ejemplos de Hello en este artículo utiliza Hola después de valores. Puede usar estos toocreate valores un entorno de prueba, o consulte toothem toobetter comprender los ejemplos de hello en este artículo.
 
 ```
 #Example values
@@ -75,21 +75,21 @@ ConnectionName          = VNet1toSite2
 ```
 
 
-## <a name="Login"></a>1. su suscripción
+## <a name="Login"></a>1. Conectar tooyour suscripción
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
 ## <a name="VNet"></a>2. Creación de una red virtual y una puerta de enlace
 
-Si no tiene una red virtual, créela. Al crear una red virtual, compruebe que los espacios de direcciones especificados no se superponen con los espacios de direcciones que existen en la red local.
+Si no tiene una red virtual, créela. Al crear una red virtual, asegúrese de que los espacios de direcciones de hello especificados no superponen con cualquiera de los espacios de direcciones de Hola que existen en la red local.
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 
 [!INCLUDE [No NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="vnet"></a>Para crear una red virtual y una subred de puerta de enlace
+### <a name="vnet"></a>toocreate una red virtual y una subred de puerta de enlace
 
-Este ejemplo crea una red virtual y una subred de la puerta de enlace. Si ya tiene una red virtual que necesite agregar a una subred de puerta de enlace, consulte [Para agregar una subred de puerta de enlace a una red virtual que ya ha creado](#gatewaysubnet).
+Este ejemplo crea una red virtual y una subred de la puerta de enlace. Si ya tiene una red virtual que necesita una subred de puerta de enlace para ver tooadd [tooadd una puerta de enlace subred tooa red virtual que ya ha creado](#gatewaysubnet).
 
 Cree un grupo de recursos:
 
@@ -99,76 +99,76 @@ New-AzureRmResourceGroup -Name TestRG1 -Location 'East US'
 
 Cree la red virtual.
 
-1. Establezca las variables.
+1. Establecer variables de Hola.
 
   ```powershell
   $subnet1 = New-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.11.0.0/27
   $subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name 'Subnet1' -AddressPrefix 10.11.1.0/28
   ```
-2. Cree la red virtual.
+2. Crear red virtual de Hola.
 
   ```powershell
   New-AzureRmVirtualNetwork -Name TestVNet1 -ResourceGroupName TestRG1 `
   -Location 'East US' -AddressPrefix 10.11.0.0/16 -Subnet $subnet1, $subnet2
   ```
 
-### <a name="gatewaysubnet"></a>Para agregar una subred de puerta de enlace a una red virtual que ya ha creado
+### <a name="gatewaysubnet"></a>una red virtual de puerta de enlace subred tooa tooadd ya ha creado
 
-1. Establezca las variables.
+1. Establecer variables de Hola.
 
   ```powershell
   $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
   ```
-2. Cree la subred de la puerta de enlace.
+2. Crear una subred de puerta de enlace de Hola.
 
   ```powershell
   Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.11.0.0/27 -VirtualNetwork $vnet
   ```
-3. Establezca la configuración.
+3. Establecer configuración de Hola.
 
   ```powershell
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
 
-## 3. <a name="localnet"></a>Creación de la puerta de enlace de red local
+## 3. <a name="localnet"></a>Crear puerta de enlace de red local de Hola
 
-La puerta de enlace de red local suele hacer referencia a la ubicación local. Asigne al sitio un nombre al que Azure pueda hacer referencia y, luego, especifique la dirección IP del dispositivo VPN local con la que creará una conexión. Especifique también los prefijos de dirección IP que se enrutarán a través de la puerta de enlace VPN al dispositivo VPN. Los prefijos de dirección que especifique son los prefijos que se encuentran en la red local. Puede actualizar fácilmente estos prefijos si cambia su red local.
+puerta de enlace de red local de Hello suele hacer referencia a ubicación de tooyour local. Se asigne un nombre mediante el cual Azure puede consulte tooit y luego especifique la dirección IP de Hola a sitio Hola de hello local VPN dispositivo toowhich creará una conexión. También especificar prefijos de direcciones IP de Hola que se enrutará a través del dispositivo VPN de toohello de puerta de enlace VPN de Hola. Especifique los prefijos de direcciones Hola son prefijos de hello ubicados en la red local. Si cambia su red local, puede actualizar fácilmente los prefijos de Hola.
 
-Use los valores siguientes:
+Usar hello siguientes valores:
 
-* *GatewayIPAddress* es la dirección IP del dispositivo VPN local. El dispositivo VPN no se encuentra detrás de un NAT.
-* *AddressPrefix* es el espacio de direcciones local.
+* Hola *GatewayIPAddress* es la dirección IP de hello de dispositivo VPN local. El dispositivo VPN no se encuentra detrás de un NAT.
+* Hola *AddressPrefix* es local de espacio de direcciones.
 
-Para agregar una puerta de enlace de red local con un único prefijo de dirección:
+tooadd una puerta de enlace de red local con un prefijo de dirección única:
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name Site2 -ResourceGroupName TestRG1 `
   -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.0.0.0/24'
   ```
 
-Para agregar una puerta de enlace de red local con varios prefijos de dirección:
+tooadd una puerta de enlace de red local con varios prefijos de direcciones:
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name Site2 -ResourceGroupName TestRG1 `
   -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix @('10.0.0.0/24','20.0.0.0/24')
   ```
 
-Para modificar los prefijos de dirección IP de su puerta de enlace de red local:<br>
-A veces los prefijos de la puerta de enlace de red local cambian. Los pasos necesarios para modificar los prefijos de las direcciones IP dependen de si creó una conexión de puerta de enlace de VPN. Consulte la sección [Para modificar los prefijos de dirección IP de una puerta de enlace de red local](#modify) de este artículo.
+toomodify prefijos de direcciones IP para la puerta de enlace de red local:<br>
+A veces los prefijos de la puerta de enlace de red local cambian. Hola pasos seguir toomodify su dirección IP prefijos dependen de si ha creado una conexión de puerta de enlace VPN. Vea hello [prefijos de direcciones IP de modificar una puerta de enlace de red local](#modify) sección de este artículo.
 
 ## <a name="PublicIP"></a>4. Solicite una dirección IP pública
 
-Una puerta de enlace VPN debe tener una dirección IP pública. Primero se solicita el recurso de la dirección IP y, después, se hace referencia a él al crear la puerta de enlace de red virtual. La dirección IP se asigna dinámicamente al recurso cuando se crea la puerta de enlace VPN. Actualmente, VPN Gateway solo admite la asignación de direcciones IP públicas *dinámicas*. No se puede solicitar una asignación de direcciones IP públicas estáticas. Sin embargo, esto no significa que la dirección IP cambia después de que se ha asignado a una puerta de enlace VPN. La única vez que la dirección IP pública cambia es cuando la puerta de enlace se elimina y se vuelve a crear. No cambia cuando se cambia el tamaño, se restablece o se realizan actualizaciones u otras operaciones de mantenimiento interno de una puerta de enlace VPN.
+Una puerta de enlace VPN debe tener una dirección IP pública. Solicitar el recurso de dirección IP hello y, a continuación, hacer referencia tooit al crear la puerta de enlace de red virtual. dirección IP de Hola se asigna dinámicamente toohello recursos cuando se crea la puerta de enlace VPN de Hola. Actualmente, VPN Gateway solo admite la asignación de direcciones IP públicas *dinámicas*. No se puede solicitar una asignación de direcciones IP públicas estáticas. Sin embargo, esto no significa que se cambia la dirección IP de hello después de que se le ha asignado tooyour puerta de enlace VPN. cambios en la dirección IP pública hello cuando se Hola puerta de enlace de única vez de Hola se elimina y vuelve a crear. No cambia cuando se cambia el tamaño, se restablece o se realizan actualizaciones u otras operaciones de mantenimiento interno de una puerta de enlace VPN.
 
-Solicite una dirección IP pública que se asignará a la puerta de enlace VPN de la red virtual.
+Solicitar una dirección IP pública que se va a asignar la red virtual de tooyour puerta de enlace VPN.
 
 ```powershell
 $gwpip= New-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>5. Creación de la configuración de direccionamiento IP de la puerta de enlace
+## <a name="GatewayIPConfig"></a>5. Crear configuración de direcciones IP de puerta de enlace de Hola
 
-La configuración de puerta de enlace define la subred y la dirección IP pública. Use el ejemplo siguiente para crear la configuración de la puerta de enlace:
+configuración de puerta de enlace de Hello define la subred de Hola y Hola toouse de dirección IP pública. Usar hello siguiendo el ejemplo toocreate la configuración de puerta de enlace:
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork -Name TestVNet1 -ResourceGroupName TestRG1
@@ -176,15 +176,15 @@ $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNe
 $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
 
-## <a name="CreateGateway"></a>6. Creación de la puerta de enlace VPN
+## <a name="CreateGateway"></a>6. Crear puerta de enlace VPN de Hola
 
-Cree la puerta de enlace VPN de la red virtual. Crear una puerta de enlace VPN puede tardar 45 minutos o más en completarse.
+Crear puerta de enlace VPN de red virtual de Hola. Crear una puerta de enlace VPN puede tardar hasta too45 minutos o más toocomplete.
 
-Use los valores siguientes:
+Usar hello siguientes valores:
 
-* El valor *-GatewayType* para una configuración de sitio a sitio es *Vpn*. El tipo de puerta de enlace siempre es específico de la configuración que se va a implementar. Por ejemplo, otras configuraciones de puerta de enlace pueden requerir GatewayType ExpressRoute.
-* El valor de *-VpnType* puede ser *RouteBased* (la llamada puerta de enlace dinámica en algunos documentos) o *PolicyBased* (la llamada puerta de enlace estática en algunos documentos). Para más información sobre los tipos de Puertas de enlace de VPN, consulte [Información acerca de VPN Gateway](vpn-gateway-about-vpngateways.md).
-* Seleccione la SKU de la puerta de enlace que desea utilizar. Hay limitaciones de configuración para determinadas SKU. Consulte [SKU de puertas de enlace](vpn-gateway-about-vpn-gateway-settings.md#gwsku) para más información. Si se produce un error al crear la puerta de enlace VPN con respecto a - GatewaySku, compruebe que tiene instalada la versión más reciente de los cmdlets de PowerShell.
+* Hola *- el GatewayType* para un sitio a sitio es configuración *Vpn*. tipo de puerta de enlace de Hello siempre es configuración toohello específico que va a implementar. Por ejemplo, otras configuraciones de puerta de enlace pueden requerir GatewayType ExpressRoute.
+* Hola *- VpnType* puede ser *RouteBased* (llamada tooas una puerta de enlace dinámico en algunos documentos), o *PolicyBased* (denominada tooas una puerta de enlace estática en algunos documentos ). Para más información sobre los tipos de Puertas de enlace de VPN, consulte [Información acerca de VPN Gateway](vpn-gateway-about-vpngateways.md).
+* Seleccione Hola SKU de puerta de enlace que desea toouse. Hay limitaciones de configuración para determinadas SKU. Consulte [SKU de puertas de enlace](vpn-gateway-about-vpn-gateway-settings.md#gwsku) para más información. Si se produce un error al crear la puerta de enlace VPN de hello sobre hello - GatewaySku, compruebe que ha instalado la versión más reciente de Hola Hola de cmdlets de PowerShell.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -194,10 +194,10 @@ New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 ## <a name="ConfigureVPNDevice"></a>7. Configurar el dispositivo VPN
 
-Las conexiones de sitio a sitio a una red local requieren un dispositivo VPN. En este paso, se configura el dispositivo VPN. Al configurar el dispositivo VPN, necesita lo siguiente:
+Red local de las conexiones de sitio a sitio tooan requieren un dispositivo VPN. En este paso, se configura el dispositivo VPN. Al configurar el dispositivo VPN, necesita Hola siguiente:
 
-- Una clave compartida. Se trata de la misma clave compartida que se especifica al crear la conexión VPN de sitio a sitio. En estos ejemplos se utiliza una clave compartida básica. Se recomienda que genere y utilice una clave más compleja.
-- La dirección IP pública de la puerta de enlace de red virtual. Puede ver la dirección IP pública mediante Azure Portal, PowerShell o la CLI. Para buscar la dirección IP pública de la puerta de enlace de red virtual con PowerShell, utilice el ejemplo siguiente:
+- Una clave compartida. Esto es Hola mismo compartido clave que se especifique al crear la conexión VPN de sitio a sitio. En estos ejemplos se utiliza una clave compartida básica. Se recomienda que generar un toouse clave más compleja.
+- Hola dirección IP pública de la puerta de enlace de red virtual. Puede ver la dirección IP pública hello mediante Hola portal de Azure, PowerShell o CLI. Hola toofind dirección IP pública de la puerta de enlace de red virtual con PowerShell, el siguiente ejemplo de Hola de uso:
 
   ```powershell
   Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG1
@@ -206,47 +206,47 @@ Las conexiones de sitio a sitio a una red local requieren un dispositivo VPN. En
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>8. Creación de la conexión VPN
+## <a name="CreateConnection"></a>8. Crear la conexión de VPN de Hola
 
-Ahora va a crear la conexión VPN de sitio a sitio entre la puerta de enlace de red virtual y el dispositivo VPN. Asegúrese de reemplazar los valores por los suyos. La clave compartida debe coincidir con el valor usado para la configuración del dispositivo VPN. Tenga en cuenta que el valor de '-ConnectionType' para la configuración sitio a sitio es *IPsec*.
+A continuación, cree la conexión de VPN de sitio a sitio de hello entre la puerta de enlace de red virtual y el dispositivo VPN. Ser seguro tooreplace Hola valores por los suyos propios. clave compartida de Hello debe coincidir con valor de Hola que utilizó para la configuración del dispositivo VPN. Tenga en cuenta que hello '-ConnectionType' para el sitio a sitio es *IPsec*.
 
-1. Establezca las variables.
+1. Establecer variables de Hola.
   ```powershell
   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
   $local = Get-AzureRmLocalNetworkGateway -Name Site2 -ResourceGroupName TestRG1
   ```
 
-2. Cree la conexión.
+2. Crear conexiones de Hola.
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite2 -ResourceGroupName TestRG1 `
   -Location 'East US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
   ```
 
-Pasado un momento, se establecerá la conexión.
+Después de un valor bajo al Hola se establecerá la conexión.
 
-## <a name="toverify"></a>9. Comprobación de la conexión VPN
+## <a name="toverify"></a>9. Compruebe la conexión de VPN de Hola
 
-Hay varias maneras diferentes de comprobar la conexión VPN.
+Hay unos tooverify de maneras diferentes de la conexión VPN.
 
 [!INCLUDE [Verify connection](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="connectVM"></a>Conexión a una máquina virtual
+## <a name="connectVM"></a>máquina virtual de tooconnect tooa
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
+[!INCLUDE [Connect tooa VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
 
 ## <a name="modify"></a>Modificación de los prefijos las direcciones IP de una puerta de enlace de red local
 
-Si cambian los prefijos de las direcciones IP que desea enrutar a una ubicación local, puede modificar la puerta de enlace de red local. Se proporcionan dos conjuntos de instrucciones: Las instrucciones que elija dependen de si ya se ha creado la conexión de la puerta de enlace.
+Si cambian los prefijos de direcciones IP de Hola que desee enrutar tooyour ubicación, puede modificar la puerta de enlace de red local de Hola. Se proporcionan dos conjuntos de instrucciones: instrucciones de Hola que elija dependen de si ya ha creado la conexión de puerta de enlace.
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="modifygwipaddress"></a>Modificación de la dirección IP de una puerta de enlace de red local
+## <a name="modifygwipaddress"></a>Modificar la dirección IP de puerta de enlace de hello una puerta de enlace de red local
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-*  Una vez completada la conexión, puede agregar máquinas virtuales a las redes virtuales. Consulte [Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) para más información.
-* Para más información acerca de BGP, consulte [Información general de BGP](vpn-gateway-bgp-overview.md) y [Configuración de BGP](vpn-gateway-bgp-resource-manager-ps.md).
+*  Una vez completada la conexión, puede agregar redes virtuales de máquinas virtuales tooyour. Consulte [Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) para más información.
+* Para obtener información sobre BGP, consulte hello [información general de BGP](vpn-gateway-bgp-overview.md) y [cómo tooconfigure BGP](vpn-gateway-bgp-resource-manager-ps.md).
