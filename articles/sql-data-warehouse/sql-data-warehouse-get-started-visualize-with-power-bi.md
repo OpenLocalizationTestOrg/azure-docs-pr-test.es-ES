@@ -1,5 +1,5 @@
 ---
-title: "Visualización de datos de Almacenamiento de datos SQL con Power BI | Microsoft Azure"
+title: aaaVisualize datos de almacenamiento de datos de SQL con Microsoft Azure de Power BI
 description: "Visualización de datos de Almacenamiento de datos SQL con Power BI"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,82 +15,82 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.openlocfilehash: a41393730143b14e91318a61858d989fff3786c1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0425cf5abe7bc001b2a41df4d09bf5f2e42527e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="visualize-data-with-power-bi"></a><span data-ttu-id="e6e17-103">Visualización de datos con Power BI</span><span class="sxs-lookup"><span data-stu-id="e6e17-103">Visualize data with Power BI</span></span>
+# <a name="visualize-data-with-power-bi"></a><span data-ttu-id="f4338-103">Visualización de datos con Power BI</span><span class="sxs-lookup"><span data-stu-id="f4338-103">Visualize data with Power BI</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="e6e17-104">Power BI</span><span class="sxs-lookup"><span data-stu-id="e6e17-104">Power BI</span></span>](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [<span data-ttu-id="e6e17-105">Azure Machine Learning</span><span class="sxs-lookup"><span data-stu-id="e6e17-105">Azure Machine Learning</span></span>](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-> * [<span data-ttu-id="e6e17-106">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e6e17-106">Visual Studio</span></span>](sql-data-warehouse-query-visual-studio.md)
-> * [<span data-ttu-id="e6e17-107">sqlcmd</span><span class="sxs-lookup"><span data-stu-id="e6e17-107">sqlcmd</span></span>](sql-data-warehouse-get-started-connect-sqlcmd.md) 
-> * [<span data-ttu-id="e6e17-108">SSMS</span><span class="sxs-lookup"><span data-stu-id="e6e17-108">SSMS</span></span>](sql-data-warehouse-query-ssms.md)
+> * [<span data-ttu-id="f4338-104">Power BI</span><span class="sxs-lookup"><span data-stu-id="f4338-104">Power BI</span></span>](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [<span data-ttu-id="f4338-105">Azure Machine Learning</span><span class="sxs-lookup"><span data-stu-id="f4338-105">Azure Machine Learning</span></span>](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+> * [<span data-ttu-id="f4338-106">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="f4338-106">Visual Studio</span></span>](sql-data-warehouse-query-visual-studio.md)
+> * [<span data-ttu-id="f4338-107">sqlcmd</span><span class="sxs-lookup"><span data-stu-id="f4338-107">sqlcmd</span></span>](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [<span data-ttu-id="f4338-108">SSMS</span><span class="sxs-lookup"><span data-stu-id="f4338-108">SSMS</span></span>](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-<span data-ttu-id="e6e17-109">Este tutorial muestra cómo usar Power BI para conectar con Almacenamiento de datos SQL y crear unas visualizaciones básicas.</span><span class="sxs-lookup"><span data-stu-id="e6e17-109">This tutorial shows you how to use Power BI to connect to SQL Data Warehouse and create a few basic visualizations.</span></span>
+<span data-ttu-id="f4338-109">Este tutorial muestra cómo toouse Power BI tooconnect tooSQL almacenamiento de datos y crear unas visualizaciones básicas.</span><span class="sxs-lookup"><span data-stu-id="f4338-109">This tutorial shows you how toouse Power BI tooconnect tooSQL Data Warehouse and create a few basic visualizations.</span></span>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
 > 
 > 
 
-## <a name="prerequisites"></a><span data-ttu-id="e6e17-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="e6e17-110">Prerequisites</span></span>
-<span data-ttu-id="e6e17-111">Para seguir paso a paso este tutorial, necesita:</span><span class="sxs-lookup"><span data-stu-id="e6e17-111">To step through this tutorial, you need:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="f4338-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="f4338-110">Prerequisites</span></span>
+<span data-ttu-id="f4338-111">toostep a través de este tutorial, necesitará:</span><span class="sxs-lookup"><span data-stu-id="f4338-111">toostep through this tutorial, you need:</span></span>
 
-* <span data-ttu-id="e6e17-112">Una instancia de Almacenamiento de datos SQL cargada previamente con la base de datos de AdventureWorksDW.</span><span class="sxs-lookup"><span data-stu-id="e6e17-112">A SQL Data Warehouse pre-loaded with the AdventureWorksDW database.</span></span> <span data-ttu-id="e6e17-113">Para aprovisionarla, consulte [Creación de una instancia de SQL Data Warehouse][Create a SQL Data Warehouse] y seleccione la opción para cargar los datos de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="e6e17-113">To provision this, see [Create a SQL Data Warehouse][Create a SQL Data Warehouse] and choose to load the sample data.</span></span> <span data-ttu-id="e6e17-114">Si ya tiene un almacenamiento de datos pero no tiene datos de ejemplo, puede [cargar manualmente los datos de ejemplo][load sample data manually].</span><span class="sxs-lookup"><span data-stu-id="e6e17-114">If you already have a data warehouse but do not have sample data, you can [load sample data manually][load sample data manually].</span></span>
+* <span data-ttu-id="f4338-112">Un almacén de datos de SQL previamente cargados con base de datos de hello AdventureWorksDW.</span><span class="sxs-lookup"><span data-stu-id="f4338-112">A SQL Data Warehouse pre-loaded with hello AdventureWorksDW database.</span></span> <span data-ttu-id="f4338-113">tooprovision, vea [crear un almacén de datos de SQL] [ Create a SQL Data Warehouse] y elegir los datos de ejemplo de Hola tooload.</span><span class="sxs-lookup"><span data-stu-id="f4338-113">tooprovision this, see [Create a SQL Data Warehouse][Create a SQL Data Warehouse] and choose tooload hello sample data.</span></span> <span data-ttu-id="f4338-114">Si ya tiene un almacenamiento de datos pero no tiene datos de ejemplo, puede [cargar manualmente los datos de ejemplo][load sample data manually].</span><span class="sxs-lookup"><span data-stu-id="f4338-114">If you already have a data warehouse but do not have sample data, you can [load sample data manually][load sample data manually].</span></span>
 
-## <a name="1-connect-to-your-database"></a><span data-ttu-id="e6e17-115">1. Conectarse a la base de datos</span><span class="sxs-lookup"><span data-stu-id="e6e17-115">1. Connect to your database</span></span>
-<span data-ttu-id="e6e17-116">Para abrir Power BI y conectarse a la base de datos AdventureWorksDW:</span><span class="sxs-lookup"><span data-stu-id="e6e17-116">To open Power BI and connect to your AdventureWorksDW database:</span></span>
+## <a name="1-connect-tooyour-database"></a><span data-ttu-id="f4338-115">1. Conectar la base de datos de tooyour</span><span class="sxs-lookup"><span data-stu-id="f4338-115">1. Connect tooyour database</span></span>
+<span data-ttu-id="f4338-116">tooopen Power BI y conectar la base de datos de AdventureWorksDW tooyour:</span><span class="sxs-lookup"><span data-stu-id="f4338-116">tooopen Power BI and connect tooyour AdventureWorksDW database:</span></span>
 
-1. <span data-ttu-id="e6e17-117">Inicie sesión en [Azure Portal][Azure portal].</span><span class="sxs-lookup"><span data-stu-id="e6e17-117">Sign into the [Azure portal][Azure portal].</span></span>
-2. <span data-ttu-id="e6e17-118">Haga clic en **Bases de datos SQL** y elija su base de datos de Almacenamiento de datos SQL de AdventureWorks.</span><span class="sxs-lookup"><span data-stu-id="e6e17-118">Click **SQL databases** and choose your AdventureWorks SQL Data Warehouse database.</span></span>
+1. <span data-ttu-id="f4338-117">Inicio de sesión en hello [portal de Azure][Azure portal].</span><span class="sxs-lookup"><span data-stu-id="f4338-117">Sign into hello [Azure portal][Azure portal].</span></span>
+2. <span data-ttu-id="f4338-118">Haga clic en **Bases de datos SQL** y elija su base de datos de Almacenamiento de datos SQL de AdventureWorks.</span><span class="sxs-lookup"><span data-stu-id="f4338-118">Click **SQL databases** and choose your AdventureWorks SQL Data Warehouse database.</span></span>
    
     ![Buscar la base de datos][1]
-3. <span data-ttu-id="e6e17-120">Haga clic en el botón "Abrir en Power BI".</span><span class="sxs-lookup"><span data-stu-id="e6e17-120">Click the 'Open in Power BI' button.</span></span>
+3. <span data-ttu-id="f4338-120">Haga clic en el botón 'Abrir en Power BI' hello.</span><span class="sxs-lookup"><span data-stu-id="f4338-120">Click hello 'Open in Power BI' button.</span></span>
    
     ![Botón Power BI][2]
-4. <span data-ttu-id="e6e17-122">Deberá ver la página de conexión de Almacenamiento de datos SQL que muestra la dirección web de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="e6e17-122">You should now see the SQL Data Warehouse connection page displaying your database web address.</span></span> <span data-ttu-id="e6e17-123">Haga clic en Siguiente.</span><span class="sxs-lookup"><span data-stu-id="e6e17-123">Click next.</span></span>
+4. <span data-ttu-id="f4338-122">Ahora debería ver la página de conexión de almacenamiento de datos SQL de hello mostrar la dirección web de base de datos.</span><span class="sxs-lookup"><span data-stu-id="f4338-122">You should now see hello SQL Data Warehouse connection page displaying your database web address.</span></span> <span data-ttu-id="f4338-123">Haga clic en Siguiente.</span><span class="sxs-lookup"><span data-stu-id="f4338-123">Click next.</span></span>
    
     ![Conexión de Power BI][3]
-5. <span data-ttu-id="e6e17-125">Escriba el nombre de usuario y la contraseña de Azure SQL Server y se conectará completamente a la base de datos de Almacenamiento de datos SQL.</span><span class="sxs-lookup"><span data-stu-id="e6e17-125">Enter your Azure SQL server username and password and you will be fully connected to your SQL Data Warehouse database.</span></span>
+5. <span data-ttu-id="f4338-125">Escriba el nombre de usuario de Azure SQL server y la contraseña y será la base de datos de almacenamiento de datos SQL de tooyour conectados de forma continua.</span><span class="sxs-lookup"><span data-stu-id="f4338-125">Enter your Azure SQL server username and password and you will be fully connected tooyour SQL Data Warehouse database.</span></span>
    
     ![Inicio de sesión de Power BI][4]
-6. <span data-ttu-id="e6e17-127">Una vez que haya iniciado sesión en Power BI, haga clic en el conjunto de datos AdventureWorksDW en la hoja izquierda.</span><span class="sxs-lookup"><span data-stu-id="e6e17-127">Once you have signed into Power BI, click the AdventureWorksDW dataset on the left blade.</span></span> <span data-ttu-id="e6e17-128">Se abrirá la base de datos.</span><span class="sxs-lookup"><span data-stu-id="e6e17-128">This will open the database.</span></span>
+6. <span data-ttu-id="f4338-127">Una vez que han iniciado sesión en Power BI, haga clic en conjunto de datos de hello AdventureWorksDW en hoja izquierdo Hola.</span><span class="sxs-lookup"><span data-stu-id="f4338-127">Once you have signed into Power BI, click hello AdventureWorksDW dataset on hello left blade.</span></span> <span data-ttu-id="f4338-128">Se abrirá la base de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="f4338-128">This will open hello database.</span></span>
    
     ![Apertura de AdventureWorksDW en Power BI][5]
 
-## <a name="2-create-a-report"></a><span data-ttu-id="e6e17-130">2. Creación de un informe</span><span class="sxs-lookup"><span data-stu-id="e6e17-130">2. Create a report</span></span>
-<span data-ttu-id="e6e17-131">Ahora está listo para usar Power BI para analizar los datos de ejemplo AdventureWorksDW.</span><span class="sxs-lookup"><span data-stu-id="e6e17-131">You are now ready to use Power BI to analyze your AdventureWorksDW sample data.</span></span> <span data-ttu-id="e6e17-132">Para realizar el análisis, AdventureWorksDW tiene una vista denominada AggregateSales.</span><span class="sxs-lookup"><span data-stu-id="e6e17-132">To perform the analysis, AdventureWorksDW has a view called AggregateSales.</span></span> <span data-ttu-id="e6e17-133">Esta vista contiene algunas de las métricas clave para analizar las ventas de la empresa.</span><span class="sxs-lookup"><span data-stu-id="e6e17-133">This view contains a few of the key metrics for analyzing the sales of the company.</span></span>
+## <a name="2-create-a-report"></a><span data-ttu-id="f4338-130">2. Creación de un informe</span><span class="sxs-lookup"><span data-stu-id="f4338-130">2. Create a report</span></span>
+<span data-ttu-id="f4338-131">Se está ahora listo toouse Power BI tooanalyze los datos de ejemplo AdventureWorksDW.</span><span class="sxs-lookup"><span data-stu-id="f4338-131">You are now ready toouse Power BI tooanalyze your AdventureWorksDW sample data.</span></span> <span data-ttu-id="f4338-132">análisis de hello tooperform, AdventureWorksDW tiene una vista denominada AggregateSales.</span><span class="sxs-lookup"><span data-stu-id="f4338-132">tooperform hello analysis, AdventureWorksDW has a view called AggregateSales.</span></span> <span data-ttu-id="f4338-133">Esta vista contiene algunas de las métricas clave de Hola para análisis de ventas de Hola de empresa de Hola.</span><span class="sxs-lookup"><span data-stu-id="f4338-133">This view contains a few of hello key metrics for analyzing hello sales of hello company.</span></span>
 
-1. <span data-ttu-id="e6e17-134">Para crear una asignación del importe de ventas según el código postal, en los campos de la derecha, haga clic en la vista AggregateSales para expandirla.</span><span class="sxs-lookup"><span data-stu-id="e6e17-134">To create a map of sales amount according to postal code, in the right-hand fields pane, click the AggregateSales view to expand it.</span></span> <span data-ttu-id="e6e17-135">A continuación, haga clic en las columnas PostalCode y SalesAmount para seleccionarlas.</span><span class="sxs-lookup"><span data-stu-id="e6e17-135">Click the PostalCode and SalesAmount columns to select them.</span></span>
+1. <span data-ttu-id="f4338-134">toocreate un mapa del importe de ventas según el código de toopostal, en el panel de la derecha de campos de hello, haga clic en hello AggregateSales vista tooexpand se.</span><span class="sxs-lookup"><span data-stu-id="f4338-134">toocreate a map of sales amount according toopostal code, in hello right-hand fields pane, click hello AggregateSales view tooexpand it.</span></span> <span data-ttu-id="f4338-135">Haga clic en tooselect de hello PostalCode y SalesAmount columnas ellos.</span><span class="sxs-lookup"><span data-stu-id="f4338-135">Click hello PostalCode and SalesAmount columns tooselect them.</span></span>
    
     ![Selección de AggregateSales en Power BI][6]
    
-    <span data-ttu-id="e6e17-137">Power BI reconoce automáticamente estos datos como geográficos y los coloca en un mapa.</span><span class="sxs-lookup"><span data-stu-id="e6e17-137">Power BI automatically recognizes this is geographic data and put it in a map for you.</span></span>
+    <span data-ttu-id="f4338-137">Power BI reconoce automáticamente estos datos como geográficos y los coloca en un mapa.</span><span class="sxs-lookup"><span data-stu-id="f4338-137">Power BI automatically recognizes this is geographic data and put it in a map for you.</span></span>
    
     ![Mapa Power BI][7]
-2. <span data-ttu-id="e6e17-139">Este paso crea un gráfico de barras que muestra la cantidad de ventas por los ingresos del cliente.</span><span class="sxs-lookup"><span data-stu-id="e6e17-139">This step creates a bar graph that shows amount of sales per customer income.</span></span> <span data-ttu-id="e6e17-140">Para crear esto, vaya a la vista expandida de AggregateSales.</span><span class="sxs-lookup"><span data-stu-id="e6e17-140">To create this go to the expanded AggregateSales view.</span></span> <span data-ttu-id="e6e17-141">Haga clic en el campo SalesAmount.</span><span class="sxs-lookup"><span data-stu-id="e6e17-141">Click the SalesAmount field.</span></span> <span data-ttu-id="e6e17-142">Arrastre el campo de ingresos de los clientes hacia la izquierda y colóquelo en el eje.</span><span class="sxs-lookup"><span data-stu-id="e6e17-142">Drag the Customer Income field to the left and drop it into Axis.</span></span>
+2. <span data-ttu-id="f4338-139">Este paso crea un gráfico de barras que muestra la cantidad de ventas por los ingresos del cliente.</span><span class="sxs-lookup"><span data-stu-id="f4338-139">This step creates a bar graph that shows amount of sales per customer income.</span></span> <span data-ttu-id="f4338-140">toocreate este toohello vaya expandido AggregateSales vista.</span><span class="sxs-lookup"><span data-stu-id="f4338-140">toocreate this go toohello expanded AggregateSales view.</span></span> <span data-ttu-id="f4338-141">Haga clic en el campo SalesAmount Hola.</span><span class="sxs-lookup"><span data-stu-id="f4338-141">Click hello SalesAmount field.</span></span> <span data-ttu-id="f4338-142">Arrastre hacia la izquierda Hola ingresos de los clientes campo toohello y colóquelo en el eje.</span><span class="sxs-lookup"><span data-stu-id="f4338-142">Drag hello Customer Income field toohello left and drop it into Axis.</span></span>
    
     ![Selección del eje en Power BI][8]
    
-    <span data-ttu-id="e6e17-144">Pasamos el gráfico de barras a la izquierda.</span><span class="sxs-lookup"><span data-stu-id="e6e17-144">We moved the bar chart over the left.</span></span>
+    <span data-ttu-id="f4338-144">Gráfico de barras de Hola se mueve sobre Hola izquierda.</span><span class="sxs-lookup"><span data-stu-id="f4338-144">We moved hello bar chart over hello left.</span></span>
    
     ![Barra Power BI][9]
-3. <span data-ttu-id="e6e17-146">Este paso crea un gráfico de líneas que muestra el importe de ventas por fecha de pedido.</span><span class="sxs-lookup"><span data-stu-id="e6e17-146">This step creates a line chart that shows sales amount per order date.</span></span> <span data-ttu-id="e6e17-147">Para crear esto, vaya a la vista expandida de AggregateSales.</span><span class="sxs-lookup"><span data-stu-id="e6e17-147">To create this go to the expanded AggregateSales view.</span></span> <span data-ttu-id="e6e17-148">Haga clic en SalesAmount y OrderDate.</span><span class="sxs-lookup"><span data-stu-id="e6e17-148">Click SalesAmount and OrderDate.</span></span> <span data-ttu-id="e6e17-149">En la columna de visualizaciones, haga clic en el icono de gráfico de líneas, que es el primer icono en la segunda línea bajo las visualizaciones.</span><span class="sxs-lookup"><span data-stu-id="e6e17-149">In the Visualizations column click the Line Chart icon; this is the first icon in the second line under visualizations.</span></span>
+3. <span data-ttu-id="f4338-146">Este paso crea un gráfico de líneas que muestra el importe de ventas por fecha de pedido.</span><span class="sxs-lookup"><span data-stu-id="f4338-146">This step creates a line chart that shows sales amount per order date.</span></span> <span data-ttu-id="f4338-147">toocreate este toohello vaya expandido AggregateSales vista.</span><span class="sxs-lookup"><span data-stu-id="f4338-147">toocreate this go toohello expanded AggregateSales view.</span></span> <span data-ttu-id="f4338-148">Haga clic en SalesAmount y OrderDate.</span><span class="sxs-lookup"><span data-stu-id="f4338-148">Click SalesAmount and OrderDate.</span></span> <span data-ttu-id="f4338-149">En la columna de visualizaciones de hello haga clic en el icono de gráfico de líneas de hello; Esto es primer icono de hello en la segunda línea de hello en visualizaciones.</span><span class="sxs-lookup"><span data-stu-id="f4338-149">In hello Visualizations column click hello Line Chart icon; this is hello first icon in hello second line under visualizations.</span></span>
    
     ![Selección del gráfico de líneas de Power BI][10]
    
-    <span data-ttu-id="e6e17-151">Ahora tiene un informe que muestra tres visualizaciones de los datos diferentes.</span><span class="sxs-lookup"><span data-stu-id="e6e17-151">You now have a report that shows three different visualizations of the data.</span></span>
+    <span data-ttu-id="f4338-151">Ahora tiene un informe que muestra tres diferentes visualizaciones de datos de Hola.</span><span class="sxs-lookup"><span data-stu-id="f4338-151">You now have a report that shows three different visualizations of hello data.</span></span>
    
     ![LíneaPower BI][11]
 
-<span data-ttu-id="e6e17-153">Para guardar el progreso en cualquier momento, haga clic en **Archivo** y seleccione **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="e6e17-153">You can save your progress at any time by clicking **File** and selecting **Save**.</span></span>
+<span data-ttu-id="f4338-153">Para guardar el progreso en cualquier momento, haga clic en **Archivo** y seleccione **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="f4338-153">You can save your progress at any time by clicking **File** and selecting **Save**.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="e6e17-154">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="e6e17-154">Next steps</span></span>
-<span data-ttu-id="e6e17-155">Ahora que le hemos dado algún tiempo para preparar los datos de ejemplo, consulte cómo puede [desarrollar][develop], [cargar][load] o [migrar][migrate].</span><span class="sxs-lookup"><span data-stu-id="e6e17-155">Now that we've given you some time to warm up with the sample data, see how to [develop][develop], [load][load], or [migrate][migrate].</span></span> <span data-ttu-id="e6e17-156">También puede visitar la [página web de Power BI][Power BI website].</span><span class="sxs-lookup"><span data-stu-id="e6e17-156">Or take a look at the [Power BI website][Power BI website].</span></span>
+## <a name="next-steps"></a><span data-ttu-id="f4338-154">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="f4338-154">Next steps</span></span>
+<span data-ttu-id="f4338-155">Ahora que hemos dado algunos toowarm tiempo con datos de ejemplo de Hola, vea cómo demasiado[desarrollar][develop], [cargar][load], o [ migrar][migrate].</span><span class="sxs-lookup"><span data-stu-id="f4338-155">Now that we've given you some time toowarm up with hello sample data, see how too[develop][develop], [load][load], or [migrate][migrate].</span></span> <span data-ttu-id="f4338-156">O eche un vistazo a hello [sitio Web de Power BI][Power BI website].</span><span class="sxs-lookup"><span data-stu-id="f4338-156">Or take a look at hello [Power BI website][Power BI website].</span></span>
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -111,7 +111,7 @@ ms.lasthandoff: 07/11/2017
 [develop]: sql-data-warehouse-overview-develop.md
 [load]: sql-data-warehouse-overview-load.md
 [load sample data manually]: sql-data-warehouse-load-sample-databases.md
-[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[connecting tooSQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
 [Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->

@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Batch: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a usar Batch para ejecutar de manera eficaz aplicaciones de informática de alto rendimiento en paralelo y a gran escala. Tutoriales, referencias de API y otra documentación."
+title: "aaaAzure documentación de lote - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse procesar por lotes las aplicaciones informáticas de alto rendimiento y paralelas a gran escala de toorun eficazmente. Tutoriales, referencias de API y otra documentación."
 services: batch
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: bf3e8b9e8976e2b68bc0da6a3beb1dacfaef6066
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 25172c7b3462794643d1cba539fcd0d9a6c4c62e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="batch-documentation"></a>Documentación de Batch
 
-Aprenda a usar Batch para ejecutar aplicaciones de informática de alto rendimiento en paralelo y a gran escala, de manera eficaz en la nube. Los tutoriales, las referencias de API y otra documentación muestran cómo definir los recursos de proceso de Azure para ejecutar las aplicaciones en paralelo o a escala sin tener que configurar o administrar la infraestructura de forma manual.
+Obtenga información acerca de cómo paralelas a gran escala de toouse por lotes toorun y aplicaciones informáticas de alto rendimiento eficazmente en hello en la nube. Tutoriales, referencias de API y otra documentación mostrarán cómo toodefine hello Azure procesen recursos tooexecute sus aplicaciones en paralelo o a escala sin configuración manual o administrar la infraestructura.
 
 <ul class="panelContent cardsFTitle">
     <li>

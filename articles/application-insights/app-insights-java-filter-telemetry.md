@@ -1,6 +1,6 @@
 ---
-title: "Filtrado de la telemetría de Azure Application Insights en la aplicación web de Java | Microsoft Docs"
-description: "Reduzca el tráfico de telemetría mediante el filtrado de los eventos que no necesita supervisar."
+title: "aaaFilter telemetría de Azure Application Insights en la aplicación web de Java | Documentos de Microsoft"
+description: "Reducir el tráfico de telemetría mediante el filtrado de los eventos de hello no es necesario toomonitor."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,30 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.openlocfilehash: 5f6d6d4ad590b85810c42e9f9520850024c5446a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 95713e11d5f86472777c67e4e7f3177fbf2cd0b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="filter-telemetry-in-your-java-web-app"></a><span data-ttu-id="bfe49-103">Filtrado de telemetría en la aplicación web de Java</span><span class="sxs-lookup"><span data-stu-id="bfe49-103">Filter telemetry in your Java web app</span></span>
+# <a name="filter-telemetry-in-your-java-web-app"></a><span data-ttu-id="ad049-103">Filtrado de telemetría en la aplicación web de Java</span><span class="sxs-lookup"><span data-stu-id="ad049-103">Filter telemetry in your Java web app</span></span>
 
-<span data-ttu-id="bfe49-104">Los filtros proporcionan una manera de seleccionar la telemetría que su [aplicación web de Java envía a Application Insights](app-insights-java-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="bfe49-104">Filters provide a way to select the telemetry that your [Java web app sends to Application Insights](app-insights-java-get-started.md).</span></span> <span data-ttu-id="bfe49-105">Hay algunos filtros de serie que puede utilizar y también puede escribir sus propios filtros personalizados.</span><span class="sxs-lookup"><span data-stu-id="bfe49-105">There are some out-of-the-box filters that you can use, and you can also write your own custom filters.</span></span>
+<span data-ttu-id="ad049-104">Filtros proporcionan una telemetría de hello tooselect de manera que su [aplicación web de Java envía información de tooApplication](app-insights-java-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="ad049-104">Filters provide a way tooselect hello telemetry that your [Java web app sends tooApplication Insights](app-insights-java-get-started.md).</span></span> <span data-ttu-id="ad049-105">Hay algunos filtros de serie que puede utilizar y también puede escribir sus propios filtros personalizados.</span><span class="sxs-lookup"><span data-stu-id="ad049-105">There are some out-of-the-box filters that you can use, and you can also write your own custom filters.</span></span>
 
-<span data-ttu-id="bfe49-106">Los filtros de serie incluyen:</span><span class="sxs-lookup"><span data-stu-id="bfe49-106">The out-of-the-box filters include:</span></span>
+<span data-ttu-id="ad049-106">Hola de cuadro filtros incluye:</span><span class="sxs-lookup"><span data-stu-id="ad049-106">hello out-of-the-box filters include:</span></span>
 
-* <span data-ttu-id="bfe49-107">El nivel de gravedad del seguimiento</span><span class="sxs-lookup"><span data-stu-id="bfe49-107">Trace severity level</span></span>
-* <span data-ttu-id="bfe49-108">Direcciones URL específicas, palabras clave o códigos de respuesta</span><span class="sxs-lookup"><span data-stu-id="bfe49-108">Specific URLs, keywords or response codes</span></span>
-* <span data-ttu-id="bfe49-109">Respuestas rápidas, es decir, las solicitudes a las que la aplicación responde rápidamente</span><span class="sxs-lookup"><span data-stu-id="bfe49-109">Fast responses - that is, requests to which your app responded to quickly</span></span>
-* <span data-ttu-id="bfe49-110">Nombres de eventos específicos</span><span class="sxs-lookup"><span data-stu-id="bfe49-110">Specific event names</span></span>
+* <span data-ttu-id="ad049-107">El nivel de gravedad del seguimiento</span><span class="sxs-lookup"><span data-stu-id="ad049-107">Trace severity level</span></span>
+* <span data-ttu-id="ad049-108">Direcciones URL específicas, palabras clave o códigos de respuesta</span><span class="sxs-lookup"><span data-stu-id="ad049-108">Specific URLs, keywords or response codes</span></span>
+* <span data-ttu-id="ad049-109">Respuestas rápidas: es decir, solicitudes toowhich la aplicación respondió tooquickly</span><span class="sxs-lookup"><span data-stu-id="ad049-109">Fast responses - that is, requests toowhich your app responded tooquickly</span></span>
+* <span data-ttu-id="ad049-110">Nombres de eventos específicos</span><span class="sxs-lookup"><span data-stu-id="ad049-110">Specific event names</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="bfe49-111">Los filtros sesgan las métricas de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="bfe49-111">Filters skew the metrics of your app.</span></span> <span data-ttu-id="bfe49-112">Por ejemplo, puede decidir que, para diagnosticar respuestas lentas, hay que establecer un filtro para descartar los tiempos de respuesta rápidos.</span><span class="sxs-lookup"><span data-stu-id="bfe49-112">For example, you might decide that, in order to diagnose slow responses, you will set a filter to discard fast response times.</span></span> <span data-ttu-id="bfe49-113">Pero debe tener en cuenta que los tiempos de respuesta promedio notificados por Application Insights serán más lentos que la velocidad real y que el recuento de las solicitudes será menor que el recuento real.</span><span class="sxs-lookup"><span data-stu-id="bfe49-113">But you must be aware that the average response times reported by Application Insights will then be slower than the true speed, and the count of requests will be smaller than the real count.</span></span>
-> <span data-ttu-id="bfe49-114">Si puede resultar un problema, use el [muestreo](app-insights-sampling.md) en su lugar.</span><span class="sxs-lookup"><span data-stu-id="bfe49-114">If this is a concern, use [Sampling](app-insights-sampling.md) instead.</span></span>
+> <span data-ttu-id="ad049-111">Filtros sesgar las métricas de saludo de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ad049-111">Filters skew hello metrics of your app.</span></span> <span data-ttu-id="ad049-112">Por ejemplo, podría decidir que, en orden toodiagnose lentitud, establecerá un filtro toodiscard rápidos tiempos de respuesta.</span><span class="sxs-lookup"><span data-stu-id="ad049-112">For example, you might decide that, in order toodiagnose slow responses, you will set a filter toodiscard fast response times.</span></span> <span data-ttu-id="ad049-113">Pero debe ser consciente de que los tiempos de respuesta promedio de hello notificados por Application Insights, a continuación, será más lentos que la velocidad de hello true y recuento de Hola de solicitudes será menor que el número real de Hola.</span><span class="sxs-lookup"><span data-stu-id="ad049-113">But you must be aware that hello average response times reported by Application Insights will then be slower than hello true speed, and hello count of requests will be smaller than hello real count.</span></span>
+> <span data-ttu-id="ad049-114">Si puede resultar un problema, use el [muestreo](app-insights-sampling.md) en su lugar.</span><span class="sxs-lookup"><span data-stu-id="ad049-114">If this is a concern, use [Sampling](app-insights-sampling.md) instead.</span></span>
 
-## <a name="setting-filters"></a><span data-ttu-id="bfe49-115">Establecimiento de filtros</span><span class="sxs-lookup"><span data-stu-id="bfe49-115">Setting filters</span></span>
+## <a name="setting-filters"></a><span data-ttu-id="ad049-115">Establecimiento de filtros</span><span class="sxs-lookup"><span data-stu-id="ad049-115">Setting filters</span></span>
 
-<span data-ttu-id="bfe49-116">En ApplicationInsights.xml, agregue una sección `TelemetryProcessors` como la de este ejemplo:</span><span class="sxs-lookup"><span data-stu-id="bfe49-116">In ApplicationInsights.xml, add a `TelemetryProcessors` section like this example:</span></span>
+<span data-ttu-id="ad049-116">En ApplicationInsights.xml, agregue una sección `TelemetryProcessors` como la de este ejemplo:</span><span class="sxs-lookup"><span data-stu-id="ad049-116">In ApplicationInsights.xml, add a `TelemetryProcessors` section like this example:</span></span>
 
 
 ```XML
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 
            <Processor type="TelemetryEventFilter">
-                  <!-- Names of events we don't want to see -->
+                  <!-- Names of events we don't want toosee -->
                   <Add name="NotNeededNames" value="Start,Stop,Pause"/>
            </Processor>
 
@@ -88,11 +88,11 @@ ms.lasthandoff: 08/18/2017
 
 
 
-<span data-ttu-id="bfe49-117">[Inspeccione el conjunto completo de procesadores integrados](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).</span><span class="sxs-lookup"><span data-stu-id="bfe49-117">[Inspect the full set of built-in processors](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).</span></span>
+<span data-ttu-id="ad049-117">[Inspeccionar el conjunto completo de Hola de procesadores integrados](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).</span><span class="sxs-lookup"><span data-stu-id="ad049-117">[Inspect hello full set of built-in processors](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).</span></span>
 
-## <a name="built-in-filters"></a><span data-ttu-id="bfe49-118">Filtros integrados</span><span class="sxs-lookup"><span data-stu-id="bfe49-118">Built-in filters</span></span>
+## <a name="built-in-filters"></a><span data-ttu-id="ad049-118">Filtros integrados</span><span class="sxs-lookup"><span data-stu-id="ad049-118">Built-in filters</span></span>
 
-### <a name="metric-telemetry-filter"></a><span data-ttu-id="bfe49-119">Filtro de telemetría de métricas</span><span class="sxs-lookup"><span data-stu-id="bfe49-119">Metric Telemetry filter</span></span>
+### <a name="metric-telemetry-filter"></a><span data-ttu-id="ad049-119">Filtro de telemetría de métricas</span><span class="sxs-lookup"><span data-stu-id="ad049-119">Metric Telemetry filter</span></span>
 
 ```XML
 
@@ -101,10 +101,10 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 ```
 
-* <span data-ttu-id="bfe49-120">`NotNeeded`: lista de nombres de métricas personalizados separada por comas.</span><span class="sxs-lookup"><span data-stu-id="bfe49-120">`NotNeeded` - Comma-separated list of custom metric names.</span></span>
+* <span data-ttu-id="ad049-120">`NotNeeded`: lista de nombres de métricas personalizados separada por comas.</span><span class="sxs-lookup"><span data-stu-id="ad049-120">`NotNeeded` - Comma-separated list of custom metric names.</span></span>
 
 
-### <a name="page-view-telemetry-filter"></a><span data-ttu-id="bfe49-121">Filtro de telemetría de vista de página</span><span class="sxs-lookup"><span data-stu-id="bfe49-121">Page View Telemetry filter</span></span>
+### <a name="page-view-telemetry-filter"></a><span data-ttu-id="ad049-121">Filtro de telemetría de vista de página</span><span class="sxs-lookup"><span data-stu-id="ad049-121">Page View Telemetry filter</span></span>
 
 ```XML
 
@@ -115,12 +115,12 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 ```
 
-* <span data-ttu-id="bfe49-122">`DurationThresholdInMS`: la duración se refiere al tiempo dedicado a cargar la página.</span><span class="sxs-lookup"><span data-stu-id="bfe49-122">`DurationThresholdInMS` - Duration refers to the time taken to load the page.</span></span> <span data-ttu-id="bfe49-123">Si está establecido el tiempo, no se notifican las páginas que se cargan más rápido que en este momento.</span><span class="sxs-lookup"><span data-stu-id="bfe49-123">If this is set, pages that loaded faster than this time are not reported.</span></span>
-* <span data-ttu-id="bfe49-124">`NotNeededNames`: lista de nombres de página separados por comas.</span><span class="sxs-lookup"><span data-stu-id="bfe49-124">`NotNeededNames` - Comma-separated list of page names.</span></span>
-* <span data-ttu-id="bfe49-125">`NotNeededUrls`: lista de fragmentos de URL separados por comas.</span><span class="sxs-lookup"><span data-stu-id="bfe49-125">`NotNeededUrls` - Comma-separated list of URL fragments.</span></span> <span data-ttu-id="bfe49-126">Por ejemplo, `"home"` filtra todas las páginas que tienen "inicio" en la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="bfe49-126">For example, `"home"` filters out all pages that have "home" in the URL.</span></span>
+* <span data-ttu-id="ad049-122">`DurationThresholdInMS`-Duración refiere a tiempo toohello página de hello tooload.</span><span class="sxs-lookup"><span data-stu-id="ad049-122">`DurationThresholdInMS` - Duration refers toohello time taken tooload hello page.</span></span> <span data-ttu-id="ad049-123">Si está establecido el tiempo, no se notifican las páginas que se cargan más rápido que en este momento.</span><span class="sxs-lookup"><span data-stu-id="ad049-123">If this is set, pages that loaded faster than this time are not reported.</span></span>
+* <span data-ttu-id="ad049-124">`NotNeededNames`: lista de nombres de página separados por comas.</span><span class="sxs-lookup"><span data-stu-id="ad049-124">`NotNeededNames` - Comma-separated list of page names.</span></span>
+* <span data-ttu-id="ad049-125">`NotNeededUrls`: lista de fragmentos de URL separados por comas.</span><span class="sxs-lookup"><span data-stu-id="ad049-125">`NotNeededUrls` - Comma-separated list of URL fragments.</span></span> <span data-ttu-id="ad049-126">Por ejemplo, `"home"` filtra todas las páginas que tienen "inicio" en la dirección URL de Hola.</span><span class="sxs-lookup"><span data-stu-id="ad049-126">For example, `"home"` filters out all pages that have "home" in hello URL.</span></span>
 
 
-### <a name="request-telemetry-filter"></a><span data-ttu-id="bfe49-127">Filtro de telemetría de solicitudes</span><span class="sxs-lookup"><span data-stu-id="bfe49-127">Request Telemetry Filter</span></span>
+### <a name="request-telemetry-filter"></a><span data-ttu-id="ad049-127">Filtro de telemetría de solicitudes</span><span class="sxs-lookup"><span data-stu-id="ad049-127">Request Telemetry Filter</span></span>
 
 
 ```XML
@@ -134,11 +134,11 @@ ms.lasthandoff: 08/18/2017
 
 
 
-### <a name="synthetic-source-filter"></a><span data-ttu-id="bfe49-128">Filtro de origen sintético</span><span class="sxs-lookup"><span data-stu-id="bfe49-128">Synthetic Source filter</span></span>
+### <a name="synthetic-source-filter"></a><span data-ttu-id="ad049-128">Filtro de origen sintético</span><span class="sxs-lookup"><span data-stu-id="ad049-128">Synthetic Source filter</span></span>
 
-<span data-ttu-id="bfe49-129">Filtra toda la telemetría con valores en la propiedad SyntheticSource.</span><span class="sxs-lookup"><span data-stu-id="bfe49-129">Filters out all telemetry that have values in the SyntheticSource property.</span></span> <span data-ttu-id="bfe49-130">Incluye solicitudes de bots, spiders y pruebas de disponibilidad.</span><span class="sxs-lookup"><span data-stu-id="bfe49-130">These include requests from bots, spiders and availability tests.</span></span>
+<span data-ttu-id="ad049-129">Filtra todos los telemetría que tienen valores en hello SyntheticSource propiedad.</span><span class="sxs-lookup"><span data-stu-id="ad049-129">Filters out all telemetry that have values in hello SyntheticSource property.</span></span> <span data-ttu-id="ad049-130">Incluye solicitudes de bots, spiders y pruebas de disponibilidad.</span><span class="sxs-lookup"><span data-stu-id="ad049-130">These include requests from bots, spiders and availability tests.</span></span>
 
-<span data-ttu-id="bfe49-131">Filtre la telemetría para todas las solicitudes sintéticas:</span><span class="sxs-lookup"><span data-stu-id="bfe49-131">Filter out telemetry for all synthetic requests:</span></span>
+<span data-ttu-id="ad049-131">Filtre la telemetría para todas las solicitudes sintéticas:</span><span class="sxs-lookup"><span data-stu-id="ad049-131">Filter out telemetry for all synthetic requests:</span></span>
 
 
 ```XML
@@ -146,7 +146,7 @@ ms.lasthandoff: 08/18/2017
            <Processor type="SyntheticSourceFilter" />
 ```
 
-<span data-ttu-id="bfe49-132">Filtre la telemetría para orígenes sintéticos específicos:</span><span class="sxs-lookup"><span data-stu-id="bfe49-132">Filter out telemetry for specific synthetic sources:</span></span>
+<span data-ttu-id="ad049-132">Filtre la telemetría para orígenes sintéticos específicos:</span><span class="sxs-lookup"><span data-stu-id="ad049-132">Filter out telemetry for specific synthetic sources:</span></span>
 
 
 ```XML
@@ -156,11 +156,11 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 ```
 
-* <span data-ttu-id="bfe49-133">`NotNeeded`: Lista de nombres de origen sintético separados por comas.</span><span class="sxs-lookup"><span data-stu-id="bfe49-133">`NotNeeded` - Comma-separated list of synthetic source names.</span></span>
+* <span data-ttu-id="ad049-133">`NotNeeded`: Lista de nombres de origen sintético separados por comas.</span><span class="sxs-lookup"><span data-stu-id="ad049-133">`NotNeeded` - Comma-separated list of synthetic source names.</span></span>
 
-### <a name="telemetry-event-filter"></a><span data-ttu-id="bfe49-134">Filtro de eventos de telemetría</span><span class="sxs-lookup"><span data-stu-id="bfe49-134">Telemetry Event filter</span></span>
+### <a name="telemetry-event-filter"></a><span data-ttu-id="ad049-134">Filtro de eventos de telemetría</span><span class="sxs-lookup"><span data-stu-id="ad049-134">Telemetry Event filter</span></span>
 
-<span data-ttu-id="bfe49-135">Filtra los eventos personalizados (registrados mediante [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).</span><span class="sxs-lookup"><span data-stu-id="bfe49-135">Filters custom events (logged using [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).</span></span>
+<span data-ttu-id="ad049-135">Filtra los eventos personalizados (registrados mediante [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).</span><span class="sxs-lookup"><span data-stu-id="ad049-135">Filters custom events (logged using [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).</span></span>
 
 
 ```XML
@@ -171,12 +171,12 @@ ms.lasthandoff: 08/18/2017
 ```
 
 
-* <span data-ttu-id="bfe49-136">`NotNeededNames`: lista de nombres de eventos separados por comas.</span><span class="sxs-lookup"><span data-stu-id="bfe49-136">`NotNeededNames` - Comma-separated list of event names.</span></span>
+* <span data-ttu-id="ad049-136">`NotNeededNames`: lista de nombres de eventos separados por comas.</span><span class="sxs-lookup"><span data-stu-id="ad049-136">`NotNeededNames` - Comma-separated list of event names.</span></span>
 
 
-### <a name="trace-telemetry-filter"></a><span data-ttu-id="bfe49-137">Filtro de telemetría de seguimiento</span><span class="sxs-lookup"><span data-stu-id="bfe49-137">Trace Telemetry filter</span></span>
+### <a name="trace-telemetry-filter"></a><span data-ttu-id="ad049-137">Filtro de telemetría de seguimiento</span><span class="sxs-lookup"><span data-stu-id="ad049-137">Trace Telemetry filter</span></span>
 
-<span data-ttu-id="bfe49-138">Filtra los seguimientos de registros (registrados mediante [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) o un [recopilador de plataforma de registro](app-insights-java-trace-logs.md)).</span><span class="sxs-lookup"><span data-stu-id="bfe49-138">Filters log traces (logged using [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) or a [logging framework collector](app-insights-java-trace-logs.md)).</span></span>
+<span data-ttu-id="ad049-138">Filtra los seguimientos de registros (registrados mediante [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) o un [recopilador de plataforma de registro](app-insights-java-trace-logs.md)).</span><span class="sxs-lookup"><span data-stu-id="ad049-138">Filters log traces (logged using [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) or a [logging framework collector](app-insights-java-trace-logs.md)).</span></span>
 
 ```XML
 
@@ -185,20 +185,20 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 ```
 
-* <span data-ttu-id="bfe49-139">Los valores válidos de `FromSeverityLevel` son:</span><span class="sxs-lookup"><span data-stu-id="bfe49-139">`FromSeverityLevel` valid values are:</span></span>
- *  <span data-ttu-id="bfe49-140">OFF             - Filtra TODOS los seguimientos</span><span class="sxs-lookup"><span data-stu-id="bfe49-140">OFF             - Filter out ALL traces</span></span>
- *  <span data-ttu-id="bfe49-141">TRACE           - Sin filtrado.</span><span class="sxs-lookup"><span data-stu-id="bfe49-141">TRACE           - No filtering.</span></span> <span data-ttu-id="bfe49-142">es igual al nivel de seguimiento</span><span class="sxs-lookup"><span data-stu-id="bfe49-142">equals to Trace level</span></span>
- *  <span data-ttu-id="bfe49-143">INFO            - Filtra el nivel TRACE</span><span class="sxs-lookup"><span data-stu-id="bfe49-143">INFO            - Filter out TRACE level</span></span>
- *  <span data-ttu-id="bfe49-144">WARN            - Filtra el nivel TRACE e INFO</span><span class="sxs-lookup"><span data-stu-id="bfe49-144">WARN            - Filter out TRACE and INFO</span></span>
- *  <span data-ttu-id="bfe49-145">ERROR           - Filtra WARN, INFO, TRACE</span><span class="sxs-lookup"><span data-stu-id="bfe49-145">ERROR           - Filter out WARN, INFO, TRACE</span></span>
- *  <span data-ttu-id="bfe49-146">CRITICAL        - Filtra todo menos CRITICAL</span><span class="sxs-lookup"><span data-stu-id="bfe49-146">CRITICAL        - filter out all but CRITICAL</span></span>
+* <span data-ttu-id="ad049-139">Los valores válidos de `FromSeverityLevel` son:</span><span class="sxs-lookup"><span data-stu-id="ad049-139">`FromSeverityLevel` valid values are:</span></span>
+ *  <span data-ttu-id="ad049-140">OFF             - Filtra TODOS los seguimientos</span><span class="sxs-lookup"><span data-stu-id="ad049-140">OFF             - Filter out ALL traces</span></span>
+ *  <span data-ttu-id="ad049-141">TRACE           - Sin filtrado.</span><span class="sxs-lookup"><span data-stu-id="ad049-141">TRACE           - No filtering.</span></span> <span data-ttu-id="ad049-142">es igual a nivel de tooTrace</span><span class="sxs-lookup"><span data-stu-id="ad049-142">equals tooTrace level</span></span>
+ *  <span data-ttu-id="ad049-143">INFO            - Filtra el nivel TRACE</span><span class="sxs-lookup"><span data-stu-id="ad049-143">INFO            - Filter out TRACE level</span></span>
+ *  <span data-ttu-id="ad049-144">WARN            - Filtra el nivel TRACE e INFO</span><span class="sxs-lookup"><span data-stu-id="ad049-144">WARN            - Filter out TRACE and INFO</span></span>
+ *  <span data-ttu-id="ad049-145">ERROR           - Filtra WARN, INFO, TRACE</span><span class="sxs-lookup"><span data-stu-id="ad049-145">ERROR           - Filter out WARN, INFO, TRACE</span></span>
+ *  <span data-ttu-id="ad049-146">CRITICAL        - Filtra todo menos CRITICAL</span><span class="sxs-lookup"><span data-stu-id="ad049-146">CRITICAL        - filter out all but CRITICAL</span></span>
 
 
-## <a name="custom-filters"></a><span data-ttu-id="bfe49-147">Filtros personalizados</span><span class="sxs-lookup"><span data-stu-id="bfe49-147">Custom filters</span></span>
+## <a name="custom-filters"></a><span data-ttu-id="ad049-147">Filtros personalizados</span><span class="sxs-lookup"><span data-stu-id="ad049-147">Custom filters</span></span>
 
-### <a name="1-code-your-filter"></a><span data-ttu-id="bfe49-148">1. Codificación del filtro</span><span class="sxs-lookup"><span data-stu-id="bfe49-148">1. Code your filter</span></span>
+### <a name="1-code-your-filter"></a><span data-ttu-id="ad049-148">1. Codificación del filtro</span><span class="sxs-lookup"><span data-stu-id="ad049-148">1. Code your filter</span></span>
 
-<span data-ttu-id="bfe49-149">En el código, cree una clase que implemente `TelemetryProcessor`:</span><span class="sxs-lookup"><span data-stu-id="bfe49-149">In your code, create a class that implements `TelemetryProcessor`:</span></span>
+<span data-ttu-id="ad049-149">En el código, cree una clase que implemente `TelemetryProcessor`:</span><span class="sxs-lookup"><span data-stu-id="ad049-149">In your code, create a class that implements `TelemetryProcessor`:</span></span>
 
 ```Java
 
@@ -208,18 +208,18 @@ ms.lasthandoff: 08/18/2017
 
     public class SuccessFilter implements TelemetryProcessor {
 
-       /* Any parameters that are required to support the filter.*/
+       /* Any parameters that are required toosupport hello filter.*/
        private final String successful;
 
-       /* Initializers for the parameters, named "setParameterName" */
+       /* Initializers for hello parameters, named "setParameterName" */
        public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
 
-       /* This method is called for each item of telemetry to be sent.
-          Return false to discard it.
-          Return true to allow other processors to inspect it. */
+       /* This method is called for each item of telemetry toobe sent.
+          Return false toodiscard it.
+          Return true tooallow other processors tooinspect it. */
        @Override
        public boolean process(Telemetry telemetry) {
         if (telemetry == null) { return true; }
@@ -235,9 +235,9 @@ ms.lasthandoff: 08/18/2017
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a><span data-ttu-id="bfe49-150">2. Invocación del filtro en el archivo de configuración</span><span class="sxs-lookup"><span data-stu-id="bfe49-150">2. Invoke your filter in the configuration file</span></span>
+### <a name="2-invoke-your-filter-in-hello-configuration-file"></a><span data-ttu-id="ad049-150">2. Invocar el filtro en el archivo de configuración de hello</span><span class="sxs-lookup"><span data-stu-id="ad049-150">2. Invoke your filter in hello configuration file</span></span>
 
-<span data-ttu-id="bfe49-151">En ApplicationInsights.xml:</span><span class="sxs-lookup"><span data-stu-id="bfe49-151">In ApplicationInsights.xml:</span></span>
+<span data-ttu-id="ad049-151">En ApplicationInsights.xml:</span><span class="sxs-lookup"><span data-stu-id="ad049-151">In ApplicationInsights.xml:</span></span>
 
 ```XML
 
@@ -254,12 +254,12 @@ ms.lasthandoff: 08/18/2017
 
 ```
 
-## <a name="troubleshooting"></a><span data-ttu-id="bfe49-152">Solución de problemas</span><span class="sxs-lookup"><span data-stu-id="bfe49-152">Troubleshooting</span></span>
+## <a name="troubleshooting"></a><span data-ttu-id="ad049-152">Solución de problemas</span><span class="sxs-lookup"><span data-stu-id="ad049-152">Troubleshooting</span></span>
 
-<span data-ttu-id="bfe49-153">*El filtro no funciona.*</span><span class="sxs-lookup"><span data-stu-id="bfe49-153">*My filter isn't working.*</span></span>
+<span data-ttu-id="ad049-153">*El filtro no funciona.*</span><span class="sxs-lookup"><span data-stu-id="ad049-153">*My filter isn't working.*</span></span>
 
-* <span data-ttu-id="bfe49-154">Compruebe que ha proporcionado valores de parámetro válidos.</span><span class="sxs-lookup"><span data-stu-id="bfe49-154">Check that you have provided valid parameter values.</span></span> <span data-ttu-id="bfe49-155">Por ejemplo, las duraciones deben ser números enteros.</span><span class="sxs-lookup"><span data-stu-id="bfe49-155">For example, durations should be integers.</span></span> <span data-ttu-id="bfe49-156">Unos valores no válidos hará que el filtro que ignore.</span><span class="sxs-lookup"><span data-stu-id="bfe49-156">Invalid values will cause the filter to be ignored.</span></span> <span data-ttu-id="bfe49-157">Si el filtro personalizado produce una excepción desde un constructor o el método set, se omitirá.</span><span class="sxs-lookup"><span data-stu-id="bfe49-157">If your custom filter throws an exception from a constructor or set method, it will be ignored.</span></span>
+* <span data-ttu-id="ad049-154">Compruebe que ha proporcionado valores de parámetro válidos.</span><span class="sxs-lookup"><span data-stu-id="ad049-154">Check that you have provided valid parameter values.</span></span> <span data-ttu-id="ad049-155">Por ejemplo, las duraciones deben ser números enteros.</span><span class="sxs-lookup"><span data-stu-id="ad049-155">For example, durations should be integers.</span></span> <span data-ttu-id="ad049-156">Valores no válidos harán que Hola filtro toobe pasa por alto.</span><span class="sxs-lookup"><span data-stu-id="ad049-156">Invalid values will cause hello filter toobe ignored.</span></span> <span data-ttu-id="ad049-157">Si el filtro personalizado produce una excepción desde un constructor o el método set, se omitirá.</span><span class="sxs-lookup"><span data-stu-id="ad049-157">If your custom filter throws an exception from a constructor or set method, it will be ignored.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="bfe49-158">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="bfe49-158">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ad049-158">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="ad049-158">Next steps</span></span>
 
-* <span data-ttu-id="bfe49-159">[Muestreo](app-insights-sampling.md): considere la posibilidad del muestreo como una alternativa que no sesga las métricas.</span><span class="sxs-lookup"><span data-stu-id="bfe49-159">[Sampling](app-insights-sampling.md) - Consider sampling as an alternative that does not skew your metrics.</span></span>
+* <span data-ttu-id="ad049-159">[Muestreo](app-insights-sampling.md): considere la posibilidad del muestreo como una alternativa que no sesga las métricas.</span><span class="sxs-lookup"><span data-stu-id="ad049-159">[Sampling](app-insights-sampling.md) - Consider sampling as an alternative that does not skew your metrics.</span></span>

@@ -1,6 +1,6 @@
 ---
-title: "Elemento de interfaz de usuario OptionsGroup de una aplicación administrada de Azure | Microsoft Docs"
-description: Describe el elemento de la interfaz de usuario Microsoft.Common.OptionsGroup para aplicaciones administradas de Azure
+title: "elemento de interfaz de usuario de grupo Opciones de aplicación administrado aaaAzure | Documentos de Microsoft"
+description: Describe Hola elemento de interfaz de usuario de Microsoft.Common.OptionsGroup para administrar aplicaciones de Azure
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 6e147ed28c8248f7f17cb36fd7ae13468141dced
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e222468009c8db567bdde9f42836a48fb791da00
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="microsoftcommonoptionsgroup-ui-element"></a><span data-ttu-id="9b4f8-103">Elemento de interfaz de usuario Microsoft.Common.OptionsGroup</span><span class="sxs-lookup"><span data-stu-id="9b4f8-103">Microsoft.Common.OptionsGroup UI element</span></span>
-<span data-ttu-id="9b4f8-104">Control de selección con una fila de opciones disponibles.</span><span class="sxs-lookup"><span data-stu-id="9b4f8-104">A selection control with a row of available options.</span></span> <span data-ttu-id="9b4f8-105">Use este elemento al [crear una aplicación administrada de Azure](managed-application-publishing.md).</span><span class="sxs-lookup"><span data-stu-id="9b4f8-105">You use this element when [creating an Azure Managed Application](managed-application-publishing.md).</span></span>
+# <a name="microsoftcommonoptionsgroup-ui-element"></a><span data-ttu-id="4879f-103">Elemento de interfaz de usuario Microsoft.Common.OptionsGroup</span><span class="sxs-lookup"><span data-stu-id="4879f-103">Microsoft.Common.OptionsGroup UI element</span></span>
+<span data-ttu-id="4879f-104">Control de selección con una fila de opciones disponibles.</span><span class="sxs-lookup"><span data-stu-id="4879f-104">A selection control with a row of available options.</span></span> <span data-ttu-id="4879f-105">Use este elemento al [crear una aplicación administrada de Azure](managed-application-publishing.md).</span><span class="sxs-lookup"><span data-stu-id="4879f-105">You use this element when [creating an Azure Managed Application](managed-application-publishing.md).</span></span>
 
-## <a name="ui-sample"></a><span data-ttu-id="9b4f8-106">Ejemplo de interfaz de usuario</span><span class="sxs-lookup"><span data-stu-id="9b4f8-106">UI sample</span></span>
+## <a name="ui-sample"></a><span data-ttu-id="4879f-106">Ejemplo de interfaz de usuario</span><span class="sxs-lookup"><span data-stu-id="4879f-106">UI sample</span></span>
 ![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
 
-## <a name="schema"></a><span data-ttu-id="9b4f8-108">Esquema</span><span class="sxs-lookup"><span data-stu-id="9b4f8-108">Schema</span></span>
+## <a name="schema"></a><span data-ttu-id="4879f-108">Esquema</span><span class="sxs-lookup"><span data-stu-id="4879f-108">Schema</span></span>
 ```json
 {
   "name": "element1",
@@ -49,18 +49,18 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="remarks"></a><span data-ttu-id="9b4f8-109">Comentarios</span><span class="sxs-lookup"><span data-stu-id="9b4f8-109">Remarks</span></span>
-- <span data-ttu-id="9b4f8-110">La etiqueta de `constraints.allowedValues` es el texto para mostrar de un elemento, y su valor es el valor de salida del elemento cuando se selecciona.</span><span class="sxs-lookup"><span data-stu-id="9b4f8-110">The label for `constraints.allowedValues` is the display text for an item, and its value is the output value of the element when selected.</span></span>
-- <span data-ttu-id="9b4f8-111">Si se especifica, el valor predeterminado debe ser una etiqueta presente en `constraints.allowedValues`.</span><span class="sxs-lookup"><span data-stu-id="9b4f8-111">If specified, the default value must be a label present in `constraints.allowedValues`.</span></span> <span data-ttu-id="9b4f8-112">Si no se especifica, se selecciona el primer elemento de `constraints.allowedValues` de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="9b4f8-112">If not specified, the first item in `constraints.allowedValues` is selected by default.</span></span> <span data-ttu-id="9b4f8-113">El valor predeterminado es **null**.</span><span class="sxs-lookup"><span data-stu-id="9b4f8-113">The default value is **null**.</span></span>
-- <span data-ttu-id="9b4f8-114">`constraints.allowedValues` debe contener al menos un dígito.</span><span class="sxs-lookup"><span data-stu-id="9b4f8-114">`constraints.allowedValues` must contain at least one item.</span></span>
-- <span data-ttu-id="9b4f8-115">Este elemento no admite la propiedad `constraints.required`; se debe seleccionar un elemento para que la validación sea correcta.</span><span class="sxs-lookup"><span data-stu-id="9b4f8-115">This element doesn't support the `constraints.required` property; an item must be selected to validate successfully.</span></span>
+## <a name="remarks"></a><span data-ttu-id="4879f-109">Comentarios</span><span class="sxs-lookup"><span data-stu-id="4879f-109">Remarks</span></span>
+- <span data-ttu-id="4879f-110">etiqueta de Hola para `constraints.allowedValues` es Hola texto para mostrar de un elemento y su valor es el valor de salida de hello de elemento de hello cuando se selecciona.</span><span class="sxs-lookup"><span data-stu-id="4879f-110">hello label for `constraints.allowedValues` is hello display text for an item, and its value is hello output value of hello element when selected.</span></span>
+- <span data-ttu-id="4879f-111">Si se especifica, valor predeterminado de hello debe ser una etiqueta presente en `constraints.allowedValues`.</span><span class="sxs-lookup"><span data-stu-id="4879f-111">If specified, hello default value must be a label present in `constraints.allowedValues`.</span></span> <span data-ttu-id="4879f-112">Si no se especifica, Hola el primer elemento de `constraints.allowedValues` está activada de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="4879f-112">If not specified, hello first item in `constraints.allowedValues` is selected by default.</span></span> <span data-ttu-id="4879f-113">es el valor predeterminado de Hello **null**.</span><span class="sxs-lookup"><span data-stu-id="4879f-113">hello default value is **null**.</span></span>
+- <span data-ttu-id="4879f-114">`constraints.allowedValues` debe contener al menos un dígito.</span><span class="sxs-lookup"><span data-stu-id="4879f-114">`constraints.allowedValues` must contain at least one item.</span></span>
+- <span data-ttu-id="4879f-115">Este elemento no es compatible con hello `constraints.required` propiedad; un elemento debe ser toovalidate seleccionado correctamente.</span><span class="sxs-lookup"><span data-stu-id="4879f-115">This element doesn't support hello `constraints.required` property; an item must be selected toovalidate successfully.</span></span>
 
-## <a name="sample-output"></a><span data-ttu-id="9b4f8-116">Salida de ejemplo</span><span class="sxs-lookup"><span data-stu-id="9b4f8-116">Sample output</span></span>
+## <a name="sample-output"></a><span data-ttu-id="4879f-116">Salida de ejemplo</span><span class="sxs-lookup"><span data-stu-id="4879f-116">Sample output</span></span>
 ```json
 "Bar"
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="9b4f8-117">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="9b4f8-117">Next steps</span></span>
-* <span data-ttu-id="9b4f8-118">Para una introducción a las aplicaciones administradas, consulte la [introducción a las aplicaciones administradas de Azure](managed-application-overview.md).</span><span class="sxs-lookup"><span data-stu-id="9b4f8-118">For an introduction to managed applications, see [Azure Managed Application overview](managed-application-overview.md).</span></span>
-* <span data-ttu-id="9b4f8-119">Para ver una introducción sobre la creación de definiciones de interfaz de usuario, consulte [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).</span><span class="sxs-lookup"><span data-stu-id="9b4f8-119">For an introduction to creating UI definitions, see [Getting started with CreateUiDefinition](managed-application-createuidefinition-overview.md).</span></span>
-* <span data-ttu-id="9b4f8-120">Para ver una descripción de las propiedades comunes de los elementos de interfaz de usuario, consulte [Elementos CreateUiDefinition](managed-application-createuidefinition-elements.md).</span><span class="sxs-lookup"><span data-stu-id="9b4f8-120">For a description of common properties in UI elements, see [CreateUiDefinition elements](managed-application-createuidefinition-elements.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="4879f-117">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="4879f-117">Next steps</span></span>
+* <span data-ttu-id="4879f-118">Para una aplicación de toomanaged introducción, consulte [Introducción a la aplicación administrada de Azure](managed-application-overview.md).</span><span class="sxs-lookup"><span data-stu-id="4879f-118">For an introduction toomanaged applications, see [Azure Managed Application overview](managed-application-overview.md).</span></span>
+* <span data-ttu-id="4879f-119">Para obtener definiciones una interfaz de usuario de toocreating de introducción, vea [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).</span><span class="sxs-lookup"><span data-stu-id="4879f-119">For an introduction toocreating UI definitions, see [Getting started with CreateUiDefinition](managed-application-createuidefinition-overview.md).</span></span>
+* <span data-ttu-id="4879f-120">Para ver una descripción de las propiedades comunes de los elementos de interfaz de usuario, consulte [Elementos CreateUiDefinition](managed-application-createuidefinition-elements.md).</span><span class="sxs-lookup"><span data-stu-id="4879f-120">For a description of common properties in UI elements, see [CreateUiDefinition elements](managed-application-createuidefinition-elements.md).</span></span>

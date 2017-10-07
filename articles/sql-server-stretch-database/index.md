@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure SQL Server Stretch Database: tutoriales| Microsoft Docs"
-description: "Aprenda a usar SQL Server Stretch Database para migrar datos inactivos de forma segura a Azure sin cambiar las consultas o aplicaciones. Tutoriales y otra documentación."
+title: "aaaAzure documentación de base de datos de SQL Server Stretch - tutoriales | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse datos inactivos de base de datos de SQL Server Stretch toomigrate segura tooAzure sin cambiar las consultas o aplicaciones. Tutoriales y otra documentación."
 services: sql-server-stretch-database
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: bb5e0fa9981133a77c235a42be369b3bbacb4ac0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2b009d80224a62d940ec8b11de22ad8c0865d869
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="sql-server-stretch-database-documentation"></a>Documentación de SQL Server Stretch Database
 
-Aprenda a usar SQL Server Stretch Database para migrar datos inactivos de forma transparente y segura a la nube de Azure. Tanto los tutoriales como el resto de la documentación le ayudan a configurar una disponibilidad rentable para las bases de datos con datos que se usan con poca frecuencia sin requerir cambios en las consultas o aplicaciones existentes.
+Obtenga información acerca de cómo ajustar de SQL Server toouse toomigrate los datos inactivos de base de datos transparente y segura toohello la nube de Azure. Tutoriales y otra ayuda documentación que configurar disponibilidad rentable para las bases de datos con poca frecuencia usa datos sin necesidad de cambios tooexisting consultas o aplicaciones.
 
 
 <ul class="panelContent cardsFTitle">
@@ -89,7 +89,7 @@ Aprenda a usar SQL Server Stretch Database para migrar datos inactivos de forma 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción al uso del asistente para SQL Server Stretch Database</h3>
+                        <h3>Empezar a usar el Asistente para la base de datos de SQL Server Stretch Hola</h3>
                     </div>
                 </div>
             </div>

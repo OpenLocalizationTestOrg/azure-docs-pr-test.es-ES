@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure App Service: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a usar App Service para crear aplicaciones móviles y web para cualquier plataforma o dispositivo con los tutoriales, los vídeos, las referencias de API y otra documentación."
+title: "aaaAzure documentación del servicio de aplicación - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse web toocreate de servicio de aplicaciones y aplicaciones móviles para cualquier plataforma o dispositivo con los tutoriales, vídeos, referencias de API y otra documentación."
 services: app-service
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a9b7cb3492fa71b33c4aa6b2c0ecda9eaac9ea4b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1d4ec0970232d2a12065a05d2f0211f7aae16d3f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="app-service-documentation"></a>Documentación de App Service
 
-Aprenda a usar App Service para desarrollar y hospedar aplicaciones móviles y web para cualquier plataforma o dispositivo con los tutoriales, los vídeos, las referencias de API y otra documentación. Aprenda a integrar sus aplicaciones con soluciones SaaS, conectar con aplicaciones locales y automatizar los procesos empresariales.
+Obtenga información acerca de cómo toouse web toodevelop y el host de servicio de aplicaciones y aplicaciones móviles para cualquier plataforma o dispositivo con los tutoriales, vídeos, referencias de API y otra documentación. Obtenga información acerca de cómo conectar con aplicaciones locales de aplicaciones toointegrate con las soluciones de SaaS y automatizar los procesos empresariales.
 
 <ul class="panelContent cardsFTitle">
     <li>

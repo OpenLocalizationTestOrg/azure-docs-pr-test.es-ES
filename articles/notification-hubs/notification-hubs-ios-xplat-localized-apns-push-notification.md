@@ -1,6 +1,6 @@
 ---
-title: "Tutorial de últimas noticias localizadas sobre los Centros de notificaciones para iOS"
-description: "Obtenga información acerca de los Centros de notificaciones del Bus de servicio de Azure para enviar notificaciones de noticias de última hora localizadas (iOS)."
+title: aaaNotification concentradores adaptado importantes Tutorial de noticias para iOS
+description: "Obtenga información acerca de cómo toouse centros de notificaciones de Bus de servicio de Azure toosend había adaptado importantes de las notificaciones de noticias (iOS)."
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
@@ -14,40 +14,40 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9fe88c0440e93b72d349574160ddcd85a7ba0be0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-notification-hubs-to-send-localized-breaking-news-to-ios-devices"></a><span data-ttu-id="ba410-103">Uso de los Centros de notificaciones para enviar noticias de última hora localizadas a dispositivos iOS</span><span class="sxs-lookup"><span data-stu-id="ba410-103">Use Notification Hubs to send localized breaking news to iOS devices</span></span>
+# <a name="use-notification-hubs-toosend-localized-breaking-news-tooios-devices"></a><span data-ttu-id="62286-103">Usar dispositivos de centros de notificaciones importantes toosend adaptado noticias tooiOS</span><span class="sxs-lookup"><span data-stu-id="62286-103">Use Notification Hubs toosend localized breaking news tooiOS devices</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="ba410-104">C# para Tienda Windows</span><span class="sxs-lookup"><span data-stu-id="ba410-104">Windows Store C#</span></span>](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
-> * [<span data-ttu-id="ba410-105">iOS</span><span class="sxs-lookup"><span data-stu-id="ba410-105">iOS</span></span>](notification-hubs-ios-xplat-localized-apns-push-notification.md)
+> * [<span data-ttu-id="62286-104">C# para Tienda Windows</span><span class="sxs-lookup"><span data-stu-id="62286-104">Windows Store C#</span></span>](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> * [<span data-ttu-id="62286-105">iOS</span><span class="sxs-lookup"><span data-stu-id="62286-105">iOS</span></span>](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 > 
 > 
 
-## <a name="overview"></a><span data-ttu-id="ba410-106">Información general</span><span class="sxs-lookup"><span data-stu-id="ba410-106">Overview</span></span>
-<span data-ttu-id="ba410-107">En este tema se muestra cómo usar la característica de [plantillas](notification-hubs-templates-cross-platform-push-messages.md) de los Centros de notificaciones de Azure para difundir notificaciones de noticias de última hora localizadas por lenguaje y dispositivo.</span><span class="sxs-lookup"><span data-stu-id="ba410-107">This topic shows you how to use the [templates](notification-hubs-templates-cross-platform-push-messages.md) feature of Azure Notification Hubs to broadcast breaking news notifications that have been localized by language and device.</span></span> <span data-ttu-id="ba410-108">En este tutorial comenzará con la aplicación de iOS que se creó en [Uso de Centros de notificaciones para enviar noticias de última hora].</span><span class="sxs-lookup"><span data-stu-id="ba410-108">In this tutorial you start with the iOS app created in [Use Notification Hubs to send breaking news].</span></span> <span data-ttu-id="ba410-109">Una vez que lo haya completado, podrá registrarse en las categorías que le interesan, especificar un idioma para recibir las notificaciones y recibir solo notificaciones de inserción para las categorías seleccionadas en dicho idioma.</span><span class="sxs-lookup"><span data-stu-id="ba410-109">When complete, you will be able to register for categories you are interested in, specify a language in which to receive the notifications, and receive only push notifications for the selected categories in that language.</span></span>
+## <a name="overview"></a><span data-ttu-id="62286-106">Información general</span><span class="sxs-lookup"><span data-stu-id="62286-106">Overview</span></span>
+<span data-ttu-id="62286-107">Este tema muestra cómo hello toouse [plantillas](notification-hubs-templates-cross-platform-push-messages.md) característica de toobroadcast centros de notificaciones de Azure interrumpir las notificaciones de noticias que se han localizado según el idioma y el dispositivo.</span><span class="sxs-lookup"><span data-stu-id="62286-107">This topic shows you how toouse hello [templates](notification-hubs-templates-cross-platform-push-messages.md) feature of Azure Notification Hubs toobroadcast breaking news notifications that have been localized by language and device.</span></span> <span data-ttu-id="62286-108">En este tutorial debe comenzar con la aplicación de iOS de hello creado en [toosend de centros de notificaciones utilice noticias de última hora].</span><span class="sxs-lookup"><span data-stu-id="62286-108">In this tutorial you start with hello iOS app created in [Use Notification Hubs toosend breaking news].</span></span> <span data-ttu-id="62286-109">Cuando haya terminado, que será capaz de tooregister para las categorías que le interesen, especifique un idioma en qué notificaciones de hello tooreceive y recibir sólo las notificaciones de inserción para las categorías de hello seleccionado en ese idioma.</span><span class="sxs-lookup"><span data-stu-id="62286-109">When complete, you will be able tooregister for categories you are interested in, specify a language in which tooreceive hello notifications, and receive only push notifications for hello selected categories in that language.</span></span>
 
-<span data-ttu-id="ba410-110">Este escenario tiene dos partes:</span><span class="sxs-lookup"><span data-stu-id="ba410-110">There are two parts to this scenario:</span></span>
+<span data-ttu-id="62286-110">Hay dos partes toothis escenario:</span><span class="sxs-lookup"><span data-stu-id="62286-110">There are two parts toothis scenario:</span></span>
 
-* <span data-ttu-id="ba410-111">La aplicación iOS permite que los dispositivos cliente especifiquen un idioma y que se suscriban a distintas categorías de noticias de última hora;</span><span class="sxs-lookup"><span data-stu-id="ba410-111">iOS app allows client devices to specify a language, and to subscribe to different breaking news categories;</span></span>
-* <span data-ttu-id="ba410-112">El back-end difunde las notificaciones mediante las características **etiqueta** y **plantilla** de Azure Notification Hubs.</span><span class="sxs-lookup"><span data-stu-id="ba410-112">the back-end broadcasts the notifications, using the **tag** and **template** feautres of Azure Notification Hubs.</span></span>
+* <span data-ttu-id="62286-111">aplicación de iOS permite a cliente dispositivos toospecify un lenguaje y toodifferent toosubscribe importantes nuevas categorías;</span><span class="sxs-lookup"><span data-stu-id="62286-111">iOS app allows client devices toospecify a language, and toosubscribe toodifferent breaking news categories;</span></span>
+* <span data-ttu-id="62286-112">back-end Hello emite notificaciones de hello, mediante hello **etiqueta** y **plantilla** características de los centros de notificaciones de Azure.</span><span class="sxs-lookup"><span data-stu-id="62286-112">hello back-end broadcasts hello notifications, using hello **tag** and **template** feautres of Azure Notification Hubs.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="ba410-113">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="ba410-113">Prerequisites</span></span>
-<span data-ttu-id="ba410-114">Debe haber completado el tutorial [Uso de Centros de notificaciones para enviar noticias de última hora] y debe tener disponible el código, porque este tutorial se basa directamente en ese código.</span><span class="sxs-lookup"><span data-stu-id="ba410-114">You must have already completed the [Use Notification Hubs to send breaking news] tutorial and have the code available, because this tutorial builds directly upon that code.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="62286-113">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="62286-113">Prerequisites</span></span>
+<span data-ttu-id="62286-114">Debe haber completado hello [toosend de centros de notificaciones utilice noticias de última hora] tutorial y tenga código de hello disponible, ya que este tutorial se basa directamente en ese código.</span><span class="sxs-lookup"><span data-stu-id="62286-114">You must have already completed hello [Use Notification Hubs toosend breaking news] tutorial and have hello code available, because this tutorial builds directly upon that code.</span></span>
 
-<span data-ttu-id="ba410-115">Visual Studio 2012 o posterior es opcional.</span><span class="sxs-lookup"><span data-stu-id="ba410-115">Visual Studio 2012 or later is optional.</span></span>
+<span data-ttu-id="62286-115">Visual Studio 2012 o posterior es opcional.</span><span class="sxs-lookup"><span data-stu-id="62286-115">Visual Studio 2012 or later is optional.</span></span>
 
-## <a name="template-concepts"></a><span data-ttu-id="ba410-116">Conceptos de plantilla</span><span class="sxs-lookup"><span data-stu-id="ba410-116">Template concepts</span></span>
-<span data-ttu-id="ba410-117">En el tutorial [Uso de Centros de notificaciones para enviar noticias de última hora] creó una aplicación que utilizó **etiquetas** para suscribirse a notificaciones para distintas categorías de noticias.</span><span class="sxs-lookup"><span data-stu-id="ba410-117">In [Use Notification Hubs to send breaking news] you built an app that used **tags** to subscribe to notifications for different news categories.</span></span>
-<span data-ttu-id="ba410-118">Sin embargo, muchas aplicaciones están dirigidas a varios mercados y requieren localización.</span><span class="sxs-lookup"><span data-stu-id="ba410-118">Many apps, however, target multiple markets and require localization.</span></span> <span data-ttu-id="ba410-119">Esto significa que el contenido de las notificaciones mismas se debe localizar y entregar al conjunto de dispositivos correcto.</span><span class="sxs-lookup"><span data-stu-id="ba410-119">This means that the content of the notifications themselves have to be localized and delivered to the correct set of devices.</span></span>
-<span data-ttu-id="ba410-120">En este tema podremos mostrar cómo usar la característica de **plantilla** de Notification Hubs para entregar fácilmente notificaciones de noticias de última hora localizadas.</span><span class="sxs-lookup"><span data-stu-id="ba410-120">In this topic we will show how to use the **template** feature of Notification Hubs to easily deliver localized breaking news notifications.</span></span>
+## <a name="template-concepts"></a><span data-ttu-id="62286-116">Conceptos de plantilla</span><span class="sxs-lookup"><span data-stu-id="62286-116">Template concepts</span></span>
+<span data-ttu-id="62286-117">En [toosend de centros de notificaciones utilice noticias de última hora] ha creado una aplicación que utiliza **etiquetas** toosubscribe toonotifications para categorías de noticias diferentes.</span><span class="sxs-lookup"><span data-stu-id="62286-117">In [Use Notification Hubs toosend breaking news] you built an app that used **tags** toosubscribe toonotifications for different news categories.</span></span>
+<span data-ttu-id="62286-118">Sin embargo, muchas aplicaciones están dirigidas a varios mercados y requieren localización.</span><span class="sxs-lookup"><span data-stu-id="62286-118">Many apps, however, target multiple markets and require localization.</span></span> <span data-ttu-id="62286-119">Esto significa que contenido Hola de hello las notificaciones tienen toobe localizado y entregado toohello corregir el conjunto de dispositivos.</span><span class="sxs-lookup"><span data-stu-id="62286-119">This means that hello content of hello notifications themselves have toobe localized and delivered toohello correct set of devices.</span></span>
+<span data-ttu-id="62286-120">En este tema le mostraremos cómo hello toouse **plantilla** característica centros de notificaciones tooeasily entregar adaptado notificaciones de noticias de separación.</span><span class="sxs-lookup"><span data-stu-id="62286-120">In this topic we will show how toouse hello **template** feature of Notification Hubs tooeasily deliver localized breaking news notifications.</span></span>
 
-<span data-ttu-id="ba410-121">Nota: una forma de enviar notificaciones localizadas es crear varias versiones de cada etiqueta.</span><span class="sxs-lookup"><span data-stu-id="ba410-121">Note: one way to send localized notifications is to create multiple versions of each tag.</span></span> <span data-ttu-id="ba410-122">Por ejemplo, para admitir inglés, francés y chino mandarín, necesitaríamos tres etiquetas distintas para noticias mundiales: "world_en", "world_fr" y "world_ch".</span><span class="sxs-lookup"><span data-stu-id="ba410-122">For instance, to support English, French, and Mandarin, we would need three different tags for world news: "world_en", "world_fr", and "world_ch".</span></span> <span data-ttu-id="ba410-123">Luego tendríamos que enviar una versión localizada de las noticias mundiales a cada una de estas etiquetas.</span><span class="sxs-lookup"><span data-stu-id="ba410-123">We would then have to send a localized version of the world news to each of these tags.</span></span> <span data-ttu-id="ba410-124">En este tema usamos plantillas para evitar la proliferación de etiquetas y el requisito de enviar varios mensajes.</span><span class="sxs-lookup"><span data-stu-id="ba410-124">In this topic we use templates to avoid the proliferation of tags and the requirement of sending multiple messages.</span></span>
+<span data-ttu-id="62286-121">Nota: una manera toosend adaptado notificaciones es toocreate varias versiones de cada etiqueta.</span><span class="sxs-lookup"><span data-stu-id="62286-121">Note: one way toosend localized notifications is toocreate multiple versions of each tag.</span></span> <span data-ttu-id="62286-122">Por ejemplo, toosupport inglés, francés y mandarín, se necesita tres etiquetas diferentes para noticias internacionales: "world_en", "world_fr" y "world_ch".</span><span class="sxs-lookup"><span data-stu-id="62286-122">For instance, toosupport English, French, and Mandarin, we would need three different tags for world news: "world_en", "world_fr", and "world_ch".</span></span> <span data-ttu-id="62286-123">A continuación, tendríamos a toosend una versión localizada de hello world noticias tooeach estas etiquetas.</span><span class="sxs-lookup"><span data-stu-id="62286-123">We would then have toosend a localized version of hello world news tooeach of these tags.</span></span> <span data-ttu-id="62286-124">En este tema se utilizan proliferación de hello tooavoid de plantillas de etiquetas y el requisito de Hola de enviar varios mensajes.</span><span class="sxs-lookup"><span data-stu-id="62286-124">In this topic we use templates tooavoid hello proliferation of tags and hello requirement of sending multiple messages.</span></span>
 
-<span data-ttu-id="ba410-125">A un alto nivel, las plantillas son una forma de especificar la manera en que un dispositivo específico debe recibir una notificación.</span><span class="sxs-lookup"><span data-stu-id="ba410-125">At a high level, templates are a way to specify how a specific device should receive a notification.</span></span> <span data-ttu-id="ba410-126">La plantilla especifica el formato de carga exacto haciendo referencia a las propiedades que forman parte del mensaje enviado por el back-end de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ba410-126">The template specifies the exact payload format by referring to properties that are part of the message sent by your app back-end.</span></span> <span data-ttu-id="ba410-127">En nuestro caso, enviaremos un mensaje independiente de la configuración regional que contiene todos los idiomas compatibles:</span><span class="sxs-lookup"><span data-stu-id="ba410-127">In our case, we will send a locale-agnostic message containing all supported languages:</span></span>
+<span data-ttu-id="62286-125">En un nivel alto, las plantillas son una manera toospecify cómo un dispositivo específico debe recibir una notificación.</span><span class="sxs-lookup"><span data-stu-id="62286-125">At a high level, templates are a way toospecify how a specific device should receive a notification.</span></span> <span data-ttu-id="62286-126">plantilla de Hello especifica el formato de carga exacto de hello consultando tooproperties que forman parte del mensaje de saludo enviado por el back-end de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="62286-126">hello template specifies hello exact payload format by referring tooproperties that are part of hello message sent by your app back-end.</span></span> <span data-ttu-id="62286-127">En nuestro caso, enviaremos un mensaje independiente de la configuración regional que contiene todos los idiomas compatibles:</span><span class="sxs-lookup"><span data-stu-id="62286-127">In our case, we will send a locale-agnostic message containing all supported languages:</span></span>
 
     {
         "News_English": "...",
@@ -55,7 +55,7 @@ ms.lasthandoff: 07/11/2017
         "News_Mandarin": "..."
     }
 
-<span data-ttu-id="ba410-128">Esto garantizará que los dispositivos se registren con una plantilla que hace referencia a la propiedad correcta.</span><span class="sxs-lookup"><span data-stu-id="ba410-128">Then we will ensure that devices register with a template that refers to the correct property.</span></span> <span data-ttu-id="ba410-129">Por ejemplo, una aplicación iOS que quiera registrarse para noticias en francés se registrará de la siguiente manera:</span><span class="sxs-lookup"><span data-stu-id="ba410-129">For instance,  an iOS app that wants to register for French news will register the following:</span></span>
+<span data-ttu-id="62286-128">A continuación, se garantizará que los dispositivos se registren con una plantilla que hace referencia la propiedad correcta toohello.</span><span class="sxs-lookup"><span data-stu-id="62286-128">Then we will ensure that devices register with a template that refers toohello correct property.</span></span> <span data-ttu-id="62286-129">Por ejemplo, una aplicación de iOS que quiere tooregister para francés noticias registrará siguiente hello:</span><span class="sxs-lookup"><span data-stu-id="62286-129">For instance,  an iOS app that wants tooregister for French news will register hello following:</span></span>
 
     {
         aps:{
@@ -63,21 +63,21 @@ ms.lasthandoff: 07/11/2017
         }
     }
 
-<span data-ttu-id="ba410-130">Las plantillas son una característica muy eficaz de la que puede obtener más información en nuestro artículo [Plantillas](notification-hubs-templates-cross-platform-push-messages.md) .</span><span class="sxs-lookup"><span data-stu-id="ba410-130">Templates are a very powerful feature you can learn more about in our [Templates](notification-hubs-templates-cross-platform-push-messages.md) article.</span></span>
+<span data-ttu-id="62286-130">Las plantillas son una característica muy eficaz de la que puede obtener más información en nuestro artículo [Plantillas](notification-hubs-templates-cross-platform-push-messages.md) .</span><span class="sxs-lookup"><span data-stu-id="62286-130">Templates are a very powerful feature you can learn more about in our [Templates](notification-hubs-templates-cross-platform-push-messages.md) article.</span></span>
 
-## <a name="the-app-user-interface"></a><span data-ttu-id="ba410-131">Interfaz de usuario de la aplicación</span><span class="sxs-lookup"><span data-stu-id="ba410-131">The app user interface</span></span>
-<span data-ttu-id="ba410-132">Ahora modificaremos la aplicación de noticias de última hora que creó en el tema [Uso de Centros de notificaciones para enviar noticias de última hora] a fin de enviar noticias de este tipo localizadas con la utilización de las plantillas.</span><span class="sxs-lookup"><span data-stu-id="ba410-132">We will now modify the Breaking News app that you created in the topic [Use Notification Hubs to send breaking news] to send localized breaking news using templates.</span></span>
+## <a name="hello-app-user-interface"></a><span data-ttu-id="62286-131">interfaz de usuario de aplicación Hola</span><span class="sxs-lookup"><span data-stu-id="62286-131">hello app user interface</span></span>
+<span data-ttu-id="62286-132">Ahora modificaremos aplicación de noticias de última hora de hello que creó en el tema de hello [toosend de centros de notificaciones utilice noticias de última hora] toosend adaptado mediante plantillas de noticias de última hora.</span><span class="sxs-lookup"><span data-stu-id="62286-132">We will now modify hello Breaking News app that you created in hello topic [Use Notification Hubs toosend breaking news] toosend localized breaking news using templates.</span></span>
 
-<span data-ttu-id="ba410-133">En MainStoryboard_iPhone.storyboard, agregue un control segmentado con los tres idiomas compatibles: inglés, francés y chino mandarín.</span><span class="sxs-lookup"><span data-stu-id="ba410-133">In your MainStoryboard_iPhone.storyboard, add a Segmented Control with the three languages which we will support: English, French, and Mandarin.</span></span>
+<span data-ttu-id="62286-133">En su MainStoryboard_iPhone.storyboard, agregue un Control segmentados con lenguajes de hello tres que se admitirán: inglés, francés y mandarín.</span><span class="sxs-lookup"><span data-stu-id="62286-133">In your MainStoryboard_iPhone.storyboard, add a Segmented Control with hello three languages which we will support: English, French, and Mandarin.</span></span>
 
 ![][13]
 
-<span data-ttu-id="ba410-134">A continuación, asegúrese de agregar un IBOutlet en ViewController.h tal como se muestra a continuación:</span><span class="sxs-lookup"><span data-stu-id="ba410-134">Then make sure to add an IBOutlet in your ViewController.h as shown below:</span></span>
+<span data-ttu-id="62286-134">A continuación, realice tooadd seguro un IBOutlet en su ViewController.h tal y como se muestra a continuación:</span><span class="sxs-lookup"><span data-stu-id="62286-134">Then make sure tooadd an IBOutlet in your ViewController.h as shown below:</span></span>
 
 ![][14]
 
-## <a name="building-the-ios-app"></a><span data-ttu-id="ba410-135">Creación de la aplicación iOS</span><span class="sxs-lookup"><span data-stu-id="ba410-135">Building the iOS app</span></span>
-1. <span data-ttu-id="ba410-136">En Notification.h, agregue el método *retrieveLocale* , modifique el almacén y suscríbase a métodos tal como se muestra a continuación:</span><span class="sxs-lookup"><span data-stu-id="ba410-136">In your Notification.h add the *retrieveLocale* method, and modify the store and subscribe methods as shown below:</span></span>
+## <a name="building-hello-ios-app"></a><span data-ttu-id="62286-135">Aplicación de iOS de hello de creación</span><span class="sxs-lookup"><span data-stu-id="62286-135">Building hello iOS app</span></span>
+1. <span data-ttu-id="62286-136">En su Notification.h agregue hello *retrieveLocale* método y modificar el almacén de Hola y suscribirse a métodos tal y como se muestra a continuación:</span><span class="sxs-lookup"><span data-stu-id="62286-136">In your Notification.h add hello *retrieveLocale* method, and modify hello store and subscribe methods as shown below:</span></span>
    
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
    
@@ -87,7 +87,7 @@ ms.lasthandoff: 07/11/2017
    
         - (int) retrieveLocale;
    
-    <span data-ttu-id="ba410-137">En Notification.m, modifique el método *storeCategoriesAndSubscribe* agregando el parámetro de configuración regional y almacenándolo en los valores predeterminados del usuario:</span><span class="sxs-lookup"><span data-stu-id="ba410-137">In your Notification.m, modify the *storeCategoriesAndSubscribe* method, by adding the locale parameter and storing it in the user defaults:</span></span>
+    <span data-ttu-id="62286-137">En su Notification.m, modifique hello *storeCategoriesAndSubscribe* método agregando el parámetro de configuración regional de Hola y almacenándolo en hello valores predeterminados del usuario:</span><span class="sxs-lookup"><span data-stu-id="62286-137">In your Notification.m, modify hello *storeCategoriesAndSubscribe* method, by adding hello locale parameter and storing it in hello user defaults:</span></span>
    
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -98,7 +98,7 @@ ms.lasthandoff: 07/11/2017
             [self subscribeWithLocale: locale categories:categories completion:completion];
         }
    
-    <span data-ttu-id="ba410-138">Luego modifique el método *subscribe* para incluir la configuración regional:</span><span class="sxs-lookup"><span data-stu-id="ba410-138">Then modify the *subscribe* method to include the locale:</span></span>
+    <span data-ttu-id="62286-138">A continuación, modificar hello *suscribirse* configuración regional de método tooinclude hello:</span><span class="sxs-lookup"><span data-stu-id="62286-138">Then modify hello *subscribe* method tooinclude hello locale:</span></span>
    
         - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
             SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -121,9 +121,9 @@ ms.lasthandoff: 07/11/2017
             [hub registerTemplateWithDeviceToken:self.deviceToken name:@"localizednewsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
         }
    
-    <span data-ttu-id="ba410-139">Observe cómo usamos ahora el método *registerTemplateWithDeviceToken*, en lugar de *registerNativeWithDeviceToken*.</span><span class="sxs-lookup"><span data-stu-id="ba410-139">Note how we are now using the method *registerTemplateWithDeviceToken*, instead of *registerNativeWithDeviceToken*.</span></span> <span data-ttu-id="ba410-140">Cuando nos registramos para obtener una plantilla, tenemos que proporcionar la plantilla json y también ponerle un nombre (dado que nuestra aplicación puede querer registrar distintas plantillas).</span><span class="sxs-lookup"><span data-stu-id="ba410-140">When we register for a template we have to provide the json template and also a name for the template (as our app might want to register different templates).</span></span> <span data-ttu-id="ba410-141">Asegúrese de registrar sus categorías como etiquetas, debido a que queremos asegurarnos de recibir las notificaciones para dichas noticias.</span><span class="sxs-lookup"><span data-stu-id="ba410-141">Make sure to register your categories as tags, as we want to make sure to receive the notifciations for those news.</span></span>
+    <span data-ttu-id="62286-139">Tenga en cuenta cómo ahora estamos utilizando método hello *registerTemplateWithDeviceToken*, en lugar de *registerNativeWithDeviceToken*.</span><span class="sxs-lookup"><span data-stu-id="62286-139">Note how we are now using hello method *registerTemplateWithDeviceToken*, instead of *registerNativeWithDeviceToken*.</span></span> <span data-ttu-id="62286-140">Cuando se registra para una plantilla tenemos plantilla json de tooprovide hello y también el nombre de plantilla de Hola (como nuestra aplicación conviene tooregister diferentes plantillas).</span><span class="sxs-lookup"><span data-stu-id="62286-140">When we register for a template we have tooprovide hello json template and also a name for hello template (as our app might want tooregister different templates).</span></span> <span data-ttu-id="62286-141">Asegúrese de tooregister seguro sus categorías como etiquetas, puesto que queremos toomake seguro tooreceive hello notifciations para las noticias.</span><span class="sxs-lookup"><span data-stu-id="62286-141">Make sure tooregister your categories as tags, as we want toomake sure tooreceive hello notifciations for those news.</span></span>
    
-    <span data-ttu-id="ba410-142">Agregue un método para recuperar la configuración regional a partir de los ajustes predeterminados del usuario:</span><span class="sxs-lookup"><span data-stu-id="ba410-142">Add a method to retrieve the locale from the user default settings:</span></span>
+    <span data-ttu-id="62286-142">Agregar una configuración regional de método tooretrieve Hola de valores predeterminados del usuario hello:</span><span class="sxs-lookup"><span data-stu-id="62286-142">Add a method tooretrieve hello locale from hello user default settings:</span></span>
    
         - (int) retrieveLocale {
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -132,11 +132,11 @@ ms.lasthandoff: 07/11/2017
    
             return locale < 0?0:locale;
         }
-2. <span data-ttu-id="ba410-143">Ahora que hemos modificado nuestra clase de notificaciones, debemos asegurarnos de que nuestro ViewController utilice el nuevo UISegmentControl.</span><span class="sxs-lookup"><span data-stu-id="ba410-143">Now that we modified our Notifications class, we have to make sure that our ViewController makes use of the new UISegmentControl.</span></span> <span data-ttu-id="ba410-144">Agregue la siguiente línea en el método *viewDidLoad* para asegurarse de mostrar la configuración regional actualmente seleccionada:</span><span class="sxs-lookup"><span data-stu-id="ba410-144">Add the following line in the *viewDidLoad* method to make sure to show the locale that is currently selected:</span></span>
+2. <span data-ttu-id="62286-143">Ahora que hemos modificado nuestra clase notificaciones, tenemos toomake seguro de que nuestros ViewController hace uso de hello UISegmentControl nuevo.</span><span class="sxs-lookup"><span data-stu-id="62286-143">Now that we modified our Notifications class, we have toomake sure that our ViewController makes use of hello new UISegmentControl.</span></span> <span data-ttu-id="62286-144">Agregar Hola línea siguiente en hello *viewDidLoad* método toomake seguro tooshow Hola configuración regional que está seleccionado actualmente:</span><span class="sxs-lookup"><span data-stu-id="62286-144">Add hello following line in hello *viewDidLoad* method toomake sure tooshow hello locale that is currently selected:</span></span>
    
         self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
    
-    <span data-ttu-id="ba410-145">A continuación, en el método *subscribe*, cambie la llamada a *storeCategoriesAndSubscribe* por lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="ba410-145">Then, in your *subscribe* method, change your call to the *storeCategoriesAndSubscribe* to the following:</span></span>
+    <span data-ttu-id="62286-145">A continuación, en su *suscribirse* (método), cambiar su llamada toohello *storeCategoriesAndSubscribe* toohello siguiente:</span><span class="sxs-lookup"><span data-stu-id="62286-145">Then, in your *subscribe* method, change your call toohello *storeCategoriesAndSubscribe* toohello following:</span></span>
    
         [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
             if (!error) {
@@ -148,7 +148,7 @@ ms.lasthandoff: 07/11/2017
                 NSLog(@"Error subscribing: %@", error);
             }
         }];
-3. <span data-ttu-id="ba410-146">Finalmente, debe actualizar el método *didRegisterForRemoteNotificationsWithDeviceToken* en AppDelegate.m, para que pueda actualizar correctamente el registro cuando se inicie la aplicación.</span><span class="sxs-lookup"><span data-stu-id="ba410-146">Finally, you have to update the *didRegisterForRemoteNotificationsWithDeviceToken* method in your AppDelegate.m, so that you can correctly refresh your registration when your app starts.</span></span> <span data-ttu-id="ba410-147">Cambie la llamada al método *subscribe* de notificaciones con lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="ba410-147">Change your call to the *subscribe* method of notifications with the following:</span></span>
+3. <span data-ttu-id="62286-146">Por último, tener hello tooupdate *didRegisterForRemoteNotificationsWithDeviceToken* método en su AppDelegate.m, por lo que puede actualizar correctamente el registro cuando se inicia la aplicación.</span><span class="sxs-lookup"><span data-stu-id="62286-146">Finally, you have tooupdate hello *didRegisterForRemoteNotificationsWithDeviceToken* method in your AppDelegate.m, so that you can correctly refresh your registration when your app starts.</span></span> <span data-ttu-id="62286-147">Cambiar la llamada toohello *suscribirse* método de notificaciones con siguiente hello:</span><span class="sxs-lookup"><span data-stu-id="62286-147">Change your call toohello *subscribe* method of notifications with hello following:</span></span>
    
         NSSet* categories = [self.notifications retrieveCategories];
         int locale = [self.notifications retrieveLocale];
@@ -158,11 +158,11 @@ ms.lasthandoff: 07/11/2017
             }
         }];
 
-## <a name="optional-send-localized-template-notifications-from-net-console-app"></a><span data-ttu-id="ba410-148">(Opcional) Envíe notificaciones de plantillas localizadas desde la aplicación de consola .NET.</span><span class="sxs-lookup"><span data-stu-id="ba410-148">(optional) Send localized template notifications from .NET console app.</span></span>
+## <a name="optional-send-localized-template-notifications-from-net-console-app"></a><span data-ttu-id="62286-148">(Opcional) Envíe notificaciones de plantillas localizadas desde la aplicación de consola .NET.</span><span class="sxs-lookup"><span data-stu-id="62286-148">(optional) Send localized template notifications from .NET console app.</span></span>
 [!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
-## <a name="optional-send-localized-template-notifications-from-the-device"></a><span data-ttu-id="ba410-149">(Opcional) Enviar notificaciones de plantillas localizadas desde el dispositivo</span><span class="sxs-lookup"><span data-stu-id="ba410-149">(optional) Send localized template notifications from the device</span></span>
-<span data-ttu-id="ba410-150">Si no tiene acceso a Visual Studio, o simplemente quiere probar el envío de las notificaciones de plantilla localizadas directamente desde la aplicación del dispositivo.</span><span class="sxs-lookup"><span data-stu-id="ba410-150">If you don't have access to Visual Studio, or want to just test sending the localized template notifications directly from the app on the device.</span></span>  <span data-ttu-id="ba410-151">Simplemente puede agregar los parámetros de plantilla localizada al método `SendNotificationRESTAPI` que ha definido en el tutorial anterior.</span><span class="sxs-lookup"><span data-stu-id="ba410-151">You can simple add the localized template parameters to the `SendNotificationRESTAPI` method you defined in the previous tutorial.</span></span>
+## <a name="optional-send-localized-template-notifications-from-hello-device"></a><span data-ttu-id="62286-149">(opcional) Enviar notificaciones de plantilla localizada desde dispositivo Hola</span><span class="sxs-lookup"><span data-stu-id="62286-149">(optional) Send localized template notifications from hello device</span></span>
+<span data-ttu-id="62286-150">Si no dispone de acceso tooVisual Studio o desea enviar notificaciones de la plantilla de hello adaptado directamente desde la aplicación hello en dispositivo Hola de prueba de toojust.</span><span class="sxs-lookup"><span data-stu-id="62286-150">If you don't have access tooVisual Studio, or want toojust test sending hello localized template notifications directly from hello app on hello device.</span></span>  <span data-ttu-id="62286-151">También puede simple agregar toohello de parámetros de plantilla de hello adaptado `SendNotificationRESTAPI` método definido en el tutorial anterior Hola.</span><span class="sxs-lookup"><span data-stu-id="62286-151">You can simple add hello localized template parameters toohello `SendNotificationRESTAPI` method you defined in hello previous tutorial.</span></span>
 
         - (void)SendNotificationRESTAPI:(NSString*)categoryTag
         {
@@ -171,18 +171,18 @@ ms.lasthandoff: 07/11/2017
 
             NSString *json;
 
-            // Construct the messages REST endpoint
+            // Construct hello messages REST endpoint
             NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
                                                HUBNAME, API_VERSION]];
 
-            // Generated the token to be used in the authorization header.
+            // Generated hello token toobe used in hello authorization header.
             NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
 
-            //Create the request to add the template notification message to the hub
+            //Create hello request tooadd hello template notification message toohello hub
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
 
-            // Add the category as a tag
+            // Add hello category as a tag
             [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
 
             // Template notification
@@ -201,13 +201,13 @@ ms.lasthandoff: 07/11/2017
             // JSON Content-Type
             [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 
-            //Authenticate the notification message POST request with the SaS token
+            //Authenticate hello notification message POST request with hello SaS token
             [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
 
-            //Add the notification message body
+            //Add hello notification message body
             [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
 
-            // Send the REST request
+            // Send hello REST request
             NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
                {
@@ -230,11 +230,11 @@ ms.lasthandoff: 07/11/2017
 
 
 
-## <a name="next-steps"></a><span data-ttu-id="ba410-152">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="ba410-152">Next Steps</span></span>
-<span data-ttu-id="ba410-153">Para obtener más información sobre el uso de plantillas, consulte:</span><span class="sxs-lookup"><span data-stu-id="ba410-153">For more information on using templates, see:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="62286-152">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="62286-152">Next Steps</span></span>
+<span data-ttu-id="62286-153">Para obtener más información sobre el uso de plantillas, consulte:</span><span class="sxs-lookup"><span data-stu-id="62286-153">For more information on using templates, see:</span></span>
 
-* <span data-ttu-id="ba410-154">[Notificación a los usuarios con los Centros de notificaciones de Azure: ASP.NET]</span><span class="sxs-lookup"><span data-stu-id="ba410-154">[Notify users with Notification Hubs: ASP.NET]</span></span>
-* <span data-ttu-id="ba410-155">[Notificación a los usuarios con los Centros de notificaciones de Azure: Servicios móviles]</span><span class="sxs-lookup"><span data-stu-id="ba410-155">[Notify users with Notification Hubs: Mobile Services]</span></span>
+* <span data-ttu-id="62286-154">[Notificación a los usuarios con los Centros de notificaciones de Azure: ASP.NET]</span><span class="sxs-lookup"><span data-stu-id="62286-154">[Notify users with Notification Hubs: ASP.NET]</span></span>
+* <span data-ttu-id="62286-155">[Notificación a los usuarios con los Centros de notificaciones de Azure: Servicios móviles]</span><span class="sxs-lookup"><span data-stu-id="62286-155">[Notify users with Notification Hubs: Mobile Services]</span></span>
 
 <!-- Images. -->
 
@@ -248,10 +248,10 @@ ms.lasthandoff: 07/11/2017
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
-<span data-ttu-id="ba410-156">[Uso de Centros de notificaciones para enviar noticias de última hora]: /manage/services/notification-hubs/breaking-news-ios</span><span class="sxs-lookup"><span data-stu-id="ba410-156">[Use Notification Hubs to send breaking news]: /manage/services/notification-hubs/breaking-news-ios</span></span>
+[toosend de centros de notificaciones utilice noticias de última hora]: /manage/services/notification-hubs/breaking-news-ios
 [Mobile Service]: /develop/mobile/tutorials/get-started
-<span data-ttu-id="ba410-157">[Notificación a los usuarios con los Centros de notificaciones de Azure: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet</span><span class="sxs-lookup"><span data-stu-id="ba410-157">[Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet</span></span>
-<span data-ttu-id="ba410-158">[Notificación a los usuarios con los Centros de notificaciones de Azure: Servicios móviles]: /manage/services/notification-hubs/notify-users</span><span class="sxs-lookup"><span data-stu-id="ba410-158">[Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users</span></span>
+[Notificación a los usuarios con los Centros de notificaciones de Azure: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
+[Notificación a los usuarios con los Centros de notificaciones de Azure: Servicios móviles]: /manage/services/notification-hubs/notify-users
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
@@ -259,11 +259,11 @@ ms.lasthandoff: 07/11/2017
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-ios
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-ios
-[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-ios
+[Push notifications tooapp users]: /develop/mobile/tutorials/push-notifications-to-users-ios
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [JavaScript and HTML]: ../get-started-with-push-js.md
 
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs How-toofor iOS]: http://msdn.microsoft.com/library/jj927168.aspx

@@ -1,6 +1,6 @@
 ---
-title: "Administración de clústeres de Hadoop en HDInsight con el SDK de .NET: Azure | Microsoft Docs"
-description: "Aprenda a realizar tareas administrativas para clústeres de Hadoop en HDInsight mediante el SDK de .NET en HDInsight."
+title: "clústeres de aaaManage Hadoop en HDInsight con .NET SDK - Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooperform administrativa tareas para hello clústeres de Hadoop en HDInsight con HDInsight .NET SDK."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -16,32 +16,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c10471425fa1202ddb7fe35d0adf4ef33509f268
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8bbf966b7eba3e943dfb2f764d15d8e52b9be71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a><span data-ttu-id="75546-103">Administración de clústeres de Hadoop en HDInsight con el SDK de .NET</span><span class="sxs-lookup"><span data-stu-id="75546-103">Manage Hadoop clusters in HDInsight by using .NET SDK</span></span>
+# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a><span data-ttu-id="d996e-103">Administración de clústeres de Hadoop en HDInsight con el SDK de .NET</span><span class="sxs-lookup"><span data-stu-id="d996e-103">Manage Hadoop clusters in HDInsight by using .NET SDK</span></span>
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-<span data-ttu-id="75546-104">Más información sobre cómo administrar los clústeres de HDInsight con el [SDK de .NET de HDInsight](https://msdn.microsoft.com/library/mt271028.aspx).</span><span class="sxs-lookup"><span data-stu-id="75546-104">Learn how to manage HDInsight clusters using [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx).</span></span>
+<span data-ttu-id="d996e-104">Obtenga información acerca de cómo usar los clústeres de toomanage HDInsight [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx).</span><span class="sxs-lookup"><span data-stu-id="d996e-104">Learn how toomanage HDInsight clusters using [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx).</span></span>
 
-<span data-ttu-id="75546-105">**Requisitos previos**</span><span class="sxs-lookup"><span data-stu-id="75546-105">**Prerequisites**</span></span>
+<span data-ttu-id="d996e-105">**Requisitos previos**</span><span class="sxs-lookup"><span data-stu-id="d996e-105">**Prerequisites**</span></span>
 
-<span data-ttu-id="75546-106">Antes de empezar este artículo, debe tener lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="75546-106">Before you begin this article, you must have the following:</span></span>
+<span data-ttu-id="d996e-106">Antes de comenzar este artículo, debe tener el siguiente hello:</span><span class="sxs-lookup"><span data-stu-id="d996e-106">Before you begin this article, you must have hello following:</span></span>
 
-* <span data-ttu-id="75546-107">**Una suscripción de Azure**.</span><span class="sxs-lookup"><span data-stu-id="75546-107">**An Azure subscription**.</span></span> <span data-ttu-id="75546-108">Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="75546-108">See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span></span>
+* <span data-ttu-id="d996e-107">**Una suscripción de Azure**.</span><span class="sxs-lookup"><span data-stu-id="d996e-107">**An Azure subscription**.</span></span> <span data-ttu-id="d996e-108">Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="d996e-108">See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span></span>
 
-## <a name="connect-to-azure-hdinsight"></a><span data-ttu-id="75546-109">Conexión a HDInsight de Azure</span><span class="sxs-lookup"><span data-stu-id="75546-109">Connect to Azure HDInsight</span></span>
+## <a name="connect-tooazure-hdinsight"></a><span data-ttu-id="d996e-109">Conectar tooAzure HDInsight</span><span class="sxs-lookup"><span data-stu-id="d996e-109">Connect tooAzure HDInsight</span></span>
 
-<span data-ttu-id="75546-110">Necesita los siguientes paquetes NuGet:</span><span class="sxs-lookup"><span data-stu-id="75546-110">You need the following Nuget packages:</span></span>
+<span data-ttu-id="d996e-110">Necesita Hola siguientes paquetes de Nuget:</span><span class="sxs-lookup"><span data-stu-id="d996e-110">You need hello following Nuget packages:</span></span>
 
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
     Install-Package Microsoft.Azure.Management.ResourceManager -Pre
     Install-Package Microsoft.Azure.Management.HDInsight
 
-<span data-ttu-id="75546-111">El ejemplo de código siguiente muestra cómo conectarse a Azure antes de poder administrar clústeres de HDInsight con su suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="75546-111">The following code sample shows you how to connect to Azure before you can administer HDInsight clusters under your Azure subscription.</span></span>
+<span data-ttu-id="d996e-111">Hello ejemplo de código siguiente muestra cómo tooconnect tooAzure antes de poder administrar HDInsight clústeres en su suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="d996e-111">hello following code sample shows you how tooconnect tooAzure before you can administer HDInsight clusters under your Azure subscription.</span></span>
 
     using System;
     using Microsoft.Azure;
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
             // Replace with your AAD tenant ID if necessary
             private const string TenantId = UserTokenProvider.CommonTenantId; 
             private const string SubscriptionId = "<Your Azure Subscription ID>";
-            // This is the GUID for the PowerShell client. Used for interactive logins in this example.
+            // This is hello GUID for hello PowerShell client. Used for interactive logins in this example.
             private const string ClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
 
             static void Main(string[] args)
@@ -74,12 +74,12 @@ ms.lasthandoff: 07/11/2017
 
                 // insert code here
 
-                System.Console.WriteLine("Press ENTER to continue");
+                System.Console.WriteLine("Press ENTER toocontinue");
                 System.Console.ReadLine();
             }
 
             /// <summary>
-            /// Authenticate to an Azure subscription and retrieve an authentication token
+            /// Authenticate tooan Azure subscription and retrieve an authentication token
             /// </summary>
             static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
             {
@@ -99,22 +99,22 @@ ms.lasthandoff: 07/11/2017
             /// <param name="authToken">An authentication token for your Azure subscription</param>
             static void EnableHDInsight(TokenCloudCredentials authToken)
             {
-                // Create a client for the Resource manager and set the subscription ID
+                // Create a client for hello Resource manager and set hello subscription ID
                 var resourceManagementClient = new ResourceManagementClient(new TokenCredentials(authToken.Token));
                 resourceManagementClient.SubscriptionId = SubscriptionId;
-                // Register the HDInsight provider
+                // Register hello HDInsight provider
                 var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
             }
         }
     }
 
-<span data-ttu-id="75546-112">Al ejecutar este programa, verá un mensaje.</span><span class="sxs-lookup"><span data-stu-id="75546-112">You shall see a prompt when you run this program.</span></span>  <span data-ttu-id="75546-113">Si no desea ver el mensaje, consulte [Crear aplicaciones .NET para HDInsight de autenticación no interactiva](hdinsight-create-non-interactive-authentication-dotnet-applications.md).</span><span class="sxs-lookup"><span data-stu-id="75546-113">If you don't want to see the prompt, see [Create non-interactive authentication .NET HDInsight applications](hdinsight-create-non-interactive-authentication-dotnet-applications.md).</span></span>
+<span data-ttu-id="d996e-112">Al ejecutar este programa, verá un mensaje.</span><span class="sxs-lookup"><span data-stu-id="d996e-112">You shall see a prompt when you run this program.</span></span>  <span data-ttu-id="d996e-113">Si no desea que el símbolo del sistema de toosee hello, consulte [crear aplicaciones de .NET HDInsight de autenticación no interactiva](hdinsight-create-non-interactive-authentication-dotnet-applications.md).</span><span class="sxs-lookup"><span data-stu-id="d996e-113">If you don't want toosee hello prompt, see [Create non-interactive authentication .NET HDInsight applications](hdinsight-create-non-interactive-authentication-dotnet-applications.md).</span></span>
 
-## <a name="create-clusters"></a><span data-ttu-id="75546-114">Creación de clústeres</span><span class="sxs-lookup"><span data-stu-id="75546-114">Create clusters</span></span>
-<span data-ttu-id="75546-115">Vea [Crear clústeres basados en Linux en HDInsight con el SDK de .NET](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)</span><span class="sxs-lookup"><span data-stu-id="75546-115">See [Create Linux-based clusters in HDInsight using the .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)</span></span>
+## <a name="create-clusters"></a><span data-ttu-id="d996e-114">Creación de clústeres</span><span class="sxs-lookup"><span data-stu-id="d996e-114">Create clusters</span></span>
+<span data-ttu-id="d996e-115">Vea [basados en Linux crear clústeres de HDInsight utilizando Hola SDK para .NET](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)</span><span class="sxs-lookup"><span data-stu-id="d996e-115">See [Create Linux-based clusters in HDInsight using hello .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)</span></span>
 
-## <a name="list-clusters"></a><span data-ttu-id="75546-116">Enumeración de clústeres</span><span class="sxs-lookup"><span data-stu-id="75546-116">List clusters</span></span>
-<span data-ttu-id="75546-117">El fragmento de código siguiente enumera los clústeres y algunas propiedades:</span><span class="sxs-lookup"><span data-stu-id="75546-117">The following code snippet lists clusters and some properties:</span></span>
+## <a name="list-clusters"></a><span data-ttu-id="d996e-116">Enumeración de clústeres</span><span class="sxs-lookup"><span data-stu-id="d996e-116">List clusters</span></span>
+<span data-ttu-id="d996e-117">Hello fragmento de código siguiente enumera los clústeres y algunas propiedades:</span><span class="sxs-lookup"><span data-stu-id="d996e-117">hello following code snippet lists clusters and some properties:</span></span>
 
     var results = _hdiManagementClient.Clusters.List();
     foreach (var name in results.Clusters) {
@@ -124,72 +124,72 @@ ms.lasthandoff: 07/11/2017
         Console.WriteLine("\t Cluster version: " + name.Properties.ClusterVersion);
     }
 
-## <a name="delete-clusters"></a><span data-ttu-id="75546-118">Eliminación de clústeres</span><span class="sxs-lookup"><span data-stu-id="75546-118">Delete clusters</span></span>
-<span data-ttu-id="75546-119">Use el siguiente fragmento de código para eliminar un clúster de forma sincrónica o asincrónica:</span><span class="sxs-lookup"><span data-stu-id="75546-119">Use the following code snippet to delete a cluster synchronously or asynchronously:</span></span> 
+## <a name="delete-clusters"></a><span data-ttu-id="d996e-118">Eliminación de clústeres</span><span class="sxs-lookup"><span data-stu-id="d996e-118">Delete clusters</span></span>
+<span data-ttu-id="d996e-119">Usar hello siguiente fragmento de código toodelete un clúster de forma sincrónica o asincrónica:</span><span class="sxs-lookup"><span data-stu-id="d996e-119">Use hello following code snippet toodelete a cluster synchronously or asynchronously:</span></span> 
 
     _hdiManagementClient.Clusters.Delete("<Resource Group Name>", "<Cluster Name>");
     _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Name>");
 
-## <a name="scale-clusters"></a><span data-ttu-id="75546-120">Escalado de clústeres</span><span class="sxs-lookup"><span data-stu-id="75546-120">Scale clusters</span></span>
-<span data-ttu-id="75546-121">La característica de escalado de clústeres permite cambiar la cantidad de nodos de trabajo que usa un clúster que se ejecuta en HDInsight de Azure sin necesidad de volver a crear el clúster.</span><span class="sxs-lookup"><span data-stu-id="75546-121">The cluster scaling feature allows you to change the number of worker nodes used by a cluster that is running in Azure HDInsight without having to re-create the cluster.</span></span>
+## <a name="scale-clusters"></a><span data-ttu-id="d996e-120">Escalado de clústeres</span><span class="sxs-lookup"><span data-stu-id="d996e-120">Scale clusters</span></span>
+<span data-ttu-id="d996e-121">característica de ajuste de escala de clúster de Hola permite toochange número de Hola de nodos de trabajador usado por un clúster que se ejecuta en HDInsight de Azure sin necesidad de toore-crear clúster Hola.</span><span class="sxs-lookup"><span data-stu-id="d996e-121">hello cluster scaling feature allows you toochange hello number of worker nodes used by a cluster that is running in Azure HDInsight without having toore-create hello cluster.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="75546-122">Solo son compatibles los clústeres con la versión 3.1.3 de HDInsight, o superior.</span><span class="sxs-lookup"><span data-stu-id="75546-122">Only clusters with HDInsight version 3.1.3 or higher are supported.</span></span> <span data-ttu-id="75546-123">Si no está seguro de la versión del clúster, puede comprobar la página de propiedades.</span><span class="sxs-lookup"><span data-stu-id="75546-123">If you are unsure of the version of your cluster, you can check the Properties page.</span></span>  <span data-ttu-id="75546-124">Vea [Enumeración y visualización de clústeres](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).</span><span class="sxs-lookup"><span data-stu-id="75546-124">See [List and show clusters](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).</span></span>
+> <span data-ttu-id="d996e-122">Solo son compatibles los clústeres con la versión 3.1.3 de HDInsight, o superior.</span><span class="sxs-lookup"><span data-stu-id="d996e-122">Only clusters with HDInsight version 3.1.3 or higher are supported.</span></span> <span data-ttu-id="d996e-123">Si no está seguro de la versión de Hola del clúster, puede comprobar la página de propiedades de Hola.</span><span class="sxs-lookup"><span data-stu-id="d996e-123">If you are unsure of hello version of your cluster, you can check hello Properties page.</span></span>  <span data-ttu-id="d996e-124">Consulte [Enumeración y visualización de clústeres](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).</span><span class="sxs-lookup"><span data-stu-id="d996e-124">See [List and show clusters](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).</span></span>
 > 
 > 
 
-<span data-ttu-id="75546-125">A continuación se muestra el efecto que tiene cambiar la cantidad de nodos de datos de cada tipo de clúster compatible con HDInsight:</span><span class="sxs-lookup"><span data-stu-id="75546-125">The impact of changing the number of data nodes for each type of cluster supported by HDInsight:</span></span>
+<span data-ttu-id="d996e-125">impacto de Hola de cambiar el número de Hola de nodos de datos para cada tipo de clúster compatible con HDInsight:</span><span class="sxs-lookup"><span data-stu-id="d996e-125">hello impact of changing hello number of data nodes for each type of cluster supported by HDInsight:</span></span>
 
-* <span data-ttu-id="75546-126">Hadoop</span><span class="sxs-lookup"><span data-stu-id="75546-126">Hadoop</span></span>
+* <span data-ttu-id="d996e-126">Hadoop</span><span class="sxs-lookup"><span data-stu-id="d996e-126">Hadoop</span></span>
   
-    <span data-ttu-id="75546-127">Puede aumentar sin ningún problema la cantidad de nodos de trabajo en un clúster de Hadoop que se encuentre en ejecución, sin que afecte a ningún trabajo pendiente o en ejecución.</span><span class="sxs-lookup"><span data-stu-id="75546-127">You can seamlessly increase the number of worker nodes in a Hadoop cluster that is running without impacting any pending or running jobs.</span></span> <span data-ttu-id="75546-128">También se pueden enviar trabajos nuevos mientras la operación está en curso.</span><span class="sxs-lookup"><span data-stu-id="75546-128">New jobs can also be submitted while the operation is in progress.</span></span> <span data-ttu-id="75546-129">Los errores que puedan surgir en una operación de escalado se enfrentan oportunamente, por lo que el clúster siempre queda en estado funcional.</span><span class="sxs-lookup"><span data-stu-id="75546-129">Failures in a scaling operation are gracefully handled so that the cluster is always left in a functional state.</span></span>
+    <span data-ttu-id="d996e-127">Perfectamente puede aumentar el número de Hola de nodos de trabajador en un clúster de Hadoop que se ejecuta sin afectar a los trabajos pendientes o en ejecución.</span><span class="sxs-lookup"><span data-stu-id="d996e-127">You can seamlessly increase hello number of worker nodes in a Hadoop cluster that is running without impacting any pending or running jobs.</span></span> <span data-ttu-id="d996e-128">También se pueden enviar trabajos nuevos mientras Hola operación está en curso.</span><span class="sxs-lookup"><span data-stu-id="d996e-128">New jobs can also be submitted while hello operation is in progress.</span></span> <span data-ttu-id="d996e-129">Errores en una operación de ajuste de escala se controlan correctamente para que hello clúster siempre se deja en un estado funcional.</span><span class="sxs-lookup"><span data-stu-id="d996e-129">Failures in a scaling operation are gracefully handled so that hello cluster is always left in a functional state.</span></span>
   
-    <span data-ttu-id="75546-130">Cuando se realiza la reducción vertical de un clúster de Hadoop al disminuir la cantidad de nodos de datos, se reinician algunos de los servicios del clúster.</span><span class="sxs-lookup"><span data-stu-id="75546-130">When a Hadoop cluster is scaled down by reducing the number of data nodes, some of the services in the cluster are restarted.</span></span> <span data-ttu-id="75546-131">Esto provoca que todos los trabajos pendientes y en ejecución fallen al completarse la operación de escalado.</span><span class="sxs-lookup"><span data-stu-id="75546-131">This causes all running and pending jobs to fail at the completion of the scaling operation.</span></span> <span data-ttu-id="75546-132">Sin embargo, puede volver a enviar los trabajos una vez finalizada la operación.</span><span class="sxs-lookup"><span data-stu-id="75546-132">You can, however, resubmit the jobs once the operation is complete.</span></span>
-* <span data-ttu-id="75546-133">HBase</span><span class="sxs-lookup"><span data-stu-id="75546-133">HBase</span></span>
+    <span data-ttu-id="d996e-130">Cuando un clúster de Hadoop es reducido reduciendo el número de Hola de nodos de datos, algunos de los servicios de hello en clúster de Hola se reinician.</span><span class="sxs-lookup"><span data-stu-id="d996e-130">When a Hadoop cluster is scaled down by reducing hello number of data nodes, some of hello services in hello cluster are restarted.</span></span> <span data-ttu-id="d996e-131">Esto hace que ejecutan todos y pendiente de trabajos toofail al término de Hola Hola la operación de escalado.</span><span class="sxs-lookup"><span data-stu-id="d996e-131">This causes all running and pending jobs toofail at hello completion of hello scaling operation.</span></span> <span data-ttu-id="d996e-132">Sin embargo, puede volver a enviar trabajos de hello una vez completada la operación de Hola.</span><span class="sxs-lookup"><span data-stu-id="d996e-132">You can, however, resubmit hello jobs once hello operation is complete.</span></span>
+* <span data-ttu-id="d996e-133">HBase</span><span class="sxs-lookup"><span data-stu-id="d996e-133">HBase</span></span>
   
-    <span data-ttu-id="75546-134">Puede agregar nodos sin problemas al clúster de HBase mientras se encuentra en ejecución, así como eliminarlos.</span><span class="sxs-lookup"><span data-stu-id="75546-134">You can seamlessly add or remove nodes to your HBase cluster while it is running.</span></span> <span data-ttu-id="75546-135">Los servidores regionales se equilibran automáticamente en unos pocos minutos tras completar la operación de escalado.</span><span class="sxs-lookup"><span data-stu-id="75546-135">Regional Servers are automatically balanced within a few minutes of completing the scaling operation.</span></span> <span data-ttu-id="75546-136">Sin embargo, puede equilibrar manualmente los servidores regionales iniciando sesión en el nodo principal del clúster y ejecutando los comandos siguientes desde una ventana del símbolo del sistema:</span><span class="sxs-lookup"><span data-stu-id="75546-136">However, you can also manually balance the regional servers by logging into the headnode of cluster and running the following commands from a command prompt window:</span></span>
+    <span data-ttu-id="d996e-134">Sin problemas, puede agregar o quitar el clúster de HBase tooyour nodos mientras se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="d996e-134">You can seamlessly add or remove nodes tooyour HBase cluster while it is running.</span></span> <span data-ttu-id="d996e-135">Los servidores regionales se equilibran automáticamente dentro de unos pocos minutos después de completar la operación de escalado de Hola.</span><span class="sxs-lookup"><span data-stu-id="d996e-135">Regional Servers are automatically balanced within a few minutes of completing hello scaling operation.</span></span> <span data-ttu-id="d996e-136">No obstante, puede equilibrar manualmente servidores regionales Hola iniciando sesión en el nodo principal de hello del clúster y ejecución Hola siguientes comandos de una ventana del símbolo del sistema:</span><span class="sxs-lookup"><span data-stu-id="d996e-136">However, you can also manually balance hello regional servers by logging into hello headnode of cluster and running hello following commands from a command prompt window:</span></span>
   
         >pushd %HBASE_HOME%\bin
         >hbase shell
         >balancer
-* <span data-ttu-id="75546-137">Storm</span><span class="sxs-lookup"><span data-stu-id="75546-137">Storm</span></span>
+* <span data-ttu-id="d996e-137">Storm</span><span class="sxs-lookup"><span data-stu-id="d996e-137">Storm</span></span>
   
-    <span data-ttu-id="75546-138">Puede agregar o quitar sin problemas nodos de datos de su clúster de Storm mientras se encuentra en ejecución.</span><span class="sxs-lookup"><span data-stu-id="75546-138">You can seamlessly add or remove data nodes to your Storm cluster while it is running.</span></span> <span data-ttu-id="75546-139">Sin embargo, después de finalizar correctamente la operación de escalado, deberá volver a equilibrar la topología.</span><span class="sxs-lookup"><span data-stu-id="75546-139">But after a successful completion of the scaling operation, you will need to rebalance the topology.</span></span>
+    <span data-ttu-id="d996e-138">Sin problemas, puede agregar o quitar el clúster de Storm de tooyour de nodos de datos mientras se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="d996e-138">You can seamlessly add or remove data nodes tooyour Storm cluster while it is running.</span></span> <span data-ttu-id="d996e-139">Sin embargo, tras finalizar correctamente la operación de escalado de hello, debe topología de hello toorebalance.</span><span class="sxs-lookup"><span data-stu-id="d996e-139">But after a successful completion of hello scaling operation, you will need toorebalance hello topology.</span></span>
   
-    <span data-ttu-id="75546-140">Esto se puede realizar de dos formas:</span><span class="sxs-lookup"><span data-stu-id="75546-140">Rebalancing can be accomplished in two ways:</span></span>
+    <span data-ttu-id="d996e-140">Esto se puede realizar de dos formas:</span><span class="sxs-lookup"><span data-stu-id="d996e-140">Rebalancing can be accomplished in two ways:</span></span>
   
-  * <span data-ttu-id="75546-141">La interfaz de usuario web de Storm</span><span class="sxs-lookup"><span data-stu-id="75546-141">Storm web UI</span></span>
-  * <span data-ttu-id="75546-142">La herramienta de la interfaz de línea de comandos (CLI)</span><span class="sxs-lookup"><span data-stu-id="75546-142">Command-line interface (CLI) tool</span></span>
+  * <span data-ttu-id="d996e-141">La interfaz de usuario web de Storm</span><span class="sxs-lookup"><span data-stu-id="d996e-141">Storm web UI</span></span>
+  * <span data-ttu-id="d996e-142">La herramienta de la interfaz de línea de comandos (CLI)</span><span class="sxs-lookup"><span data-stu-id="d996e-142">Command-line interface (CLI) tool</span></span>
     
-    <span data-ttu-id="75546-143">Consulte la [documentación de Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) para obtener más detalles.</span><span class="sxs-lookup"><span data-stu-id="75546-143">Please refer to the [Apache Storm documentation](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) for more details.</span></span>
+    <span data-ttu-id="d996e-143">Consulte toohello [documentación de Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) para obtener más detalles.</span><span class="sxs-lookup"><span data-stu-id="d996e-143">Please refer toohello [Apache Storm documentation](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) for more details.</span></span>
     
-    <span data-ttu-id="75546-144">La interfaz de usuario web de Storm se encuentra disponible en el clúster de HDInsight:</span><span class="sxs-lookup"><span data-stu-id="75546-144">The Storm web UI is available on the HDInsight cluster:</span></span>
+    <span data-ttu-id="d996e-144">interfaz de usuario de web de Storm Hola está disponible en el clúster de HDInsight de hello:</span><span class="sxs-lookup"><span data-stu-id="d996e-144">hello Storm web UI is available on hello HDInsight cluster:</span></span>
     
     ![Reequilibrio de escalado de HDInsight Storm](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
     
-    <span data-ttu-id="75546-146">El siguiente es un ejemplo de cómo usar el comando CLI para volver a equilibrar la topología de Storm:</span><span class="sxs-lookup"><span data-stu-id="75546-146">Here is an example how to use the CLI command to rebalance the Storm topology:</span></span>
+    <span data-ttu-id="d996e-146">Este es un ejemplo cómo toouse Hola CLI comando topología de Storm Hola toorebalance:</span><span class="sxs-lookup"><span data-stu-id="d996e-146">Here is an example how toouse hello CLI command toorebalance hello Storm topology:</span></span>
     
-        ## Reconfigure the topology "mytopology" to use 5 worker processes,
-        ## the spout "blue-spout" to use 3 executors, and
-        ## the bolt "yellow-bolt" to use 10 executors
+        ## Reconfigure hello topology "mytopology" toouse 5 worker processes,
+        ## hello spout "blue-spout" toouse 3 executors, and
+        ## hello bolt "yellow-bolt" toouse 10 executors
         $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
-<span data-ttu-id="75546-147">El fragmento de código siguiente muestra cómo cambiar el tamaño de un clúster de forma sincrónica o asincrónica:</span><span class="sxs-lookup"><span data-stu-id="75546-147">The following code snippet shows how to resize a cluster synchronously or asynchronously:</span></span>
+<span data-ttu-id="d996e-147">Hola código fragmento siguiente muestra cómo tooresize un clúster de forma sincrónica o asincrónica:</span><span class="sxs-lookup"><span data-stu-id="d996e-147">hello following code snippet shows how tooresize a cluster synchronously or asynchronously:</span></span>
 
     _hdiManagementClient.Clusters.Resize("<Resource Group Name>", "<Cluster Name>", <New Size>);   
     _hdiManagementClient.Clusters.ResizeAsync("<Resource Group Name>", "<Cluster Name>", <New Size>);   
 
 
-## <a name="grantrevoke-access"></a><span data-ttu-id="75546-148">Concesión o revocación del acceso</span><span class="sxs-lookup"><span data-stu-id="75546-148">Grant/revoke access</span></span>
-<span data-ttu-id="75546-149">Los clústeres de HDInsight tienen los siguientes servicios web HTTP (todos estos servicios tienen extremos RESTful):</span><span class="sxs-lookup"><span data-stu-id="75546-149">HDInsight clusters have the following HTTP web services (all of these services have RESTful endpoints):</span></span>
+## <a name="grantrevoke-access"></a><span data-ttu-id="d996e-148">Concesión o revocación del acceso</span><span class="sxs-lookup"><span data-stu-id="d996e-148">Grant/revoke access</span></span>
+<span data-ttu-id="d996e-149">Clústeres de HDInsight tienen Hola después de servicios web HTTP (todos estos servicios tienen extremos RESTful):</span><span class="sxs-lookup"><span data-stu-id="d996e-149">HDInsight clusters have hello following HTTP web services (all of these services have RESTful endpoints):</span></span>
 
-* <span data-ttu-id="75546-150">ODBC</span><span class="sxs-lookup"><span data-stu-id="75546-150">ODBC</span></span>
-* <span data-ttu-id="75546-151">JDBC</span><span class="sxs-lookup"><span data-stu-id="75546-151">JDBC</span></span>
-* <span data-ttu-id="75546-152">Ambari</span><span class="sxs-lookup"><span data-stu-id="75546-152">Ambari</span></span>
-* <span data-ttu-id="75546-153">Oozie</span><span class="sxs-lookup"><span data-stu-id="75546-153">Oozie</span></span>
-* <span data-ttu-id="75546-154">Templeton</span><span class="sxs-lookup"><span data-stu-id="75546-154">Templeton</span></span>
+* <span data-ttu-id="d996e-150">ODBC</span><span class="sxs-lookup"><span data-stu-id="d996e-150">ODBC</span></span>
+* <span data-ttu-id="d996e-151">JDBC</span><span class="sxs-lookup"><span data-stu-id="d996e-151">JDBC</span></span>
+* <span data-ttu-id="d996e-152">Ambari</span><span class="sxs-lookup"><span data-stu-id="d996e-152">Ambari</span></span>
+* <span data-ttu-id="d996e-153">Oozie</span><span class="sxs-lookup"><span data-stu-id="d996e-153">Oozie</span></span>
+* <span data-ttu-id="d996e-154">Templeton</span><span class="sxs-lookup"><span data-stu-id="d996e-154">Templeton</span></span>
 
-<span data-ttu-id="75546-155">De manera predeterminada, estos servicios se conceden para el acceso.</span><span class="sxs-lookup"><span data-stu-id="75546-155">By default, these services are granted for access.</span></span> <span data-ttu-id="75546-156">Puede revocar/conceder el acceso.</span><span class="sxs-lookup"><span data-stu-id="75546-156">You can revoke/grant the access.</span></span> <span data-ttu-id="75546-157">Para revocar:</span><span class="sxs-lookup"><span data-stu-id="75546-157">To revoke:</span></span>
+<span data-ttu-id="d996e-155">De manera predeterminada, estos servicios se conceden para el acceso.</span><span class="sxs-lookup"><span data-stu-id="d996e-155">By default, these services are granted for access.</span></span> <span data-ttu-id="d996e-156">Puede revocar y conceder acceso de Hola.</span><span class="sxs-lookup"><span data-stu-id="d996e-156">You can revoke/grant hello access.</span></span> <span data-ttu-id="d996e-157">toorevoke:</span><span class="sxs-lookup"><span data-stu-id="d996e-157">toorevoke:</span></span>
 
     var httpParams = new HttpSettingsParameters
     {
@@ -199,7 +199,7 @@ ms.lasthandoff: 07/11/2017
     };
     _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Cluster Name>, httpParams);
 
-<span data-ttu-id="75546-158">Para conceder:</span><span class="sxs-lookup"><span data-stu-id="75546-158">To grant:</span></span>
+<span data-ttu-id="d996e-158">toogrant:</span><span class="sxs-lookup"><span data-stu-id="d996e-158">toogrant:</span></span>
 
     var httpParams = new HttpSettingsParameters
     {
@@ -211,17 +211,17 @@ ms.lasthandoff: 07/11/2017
 
 
 > [!NOTE]
-> <span data-ttu-id="75546-159">Al conceder/revocar el acceso, restablecerá el nombre de usuario y la contraseña del clúster.</span><span class="sxs-lookup"><span data-stu-id="75546-159">By granting/revoking the access, you will reset the cluster user name and password.</span></span>
+> <span data-ttu-id="d996e-159">Por conceder o revocar el acceso de hello, se restablecerá la contraseña y el nombre de usuario del clúster de Hola.</span><span class="sxs-lookup"><span data-stu-id="d996e-159">By granting/revoking hello access, you will reset hello cluster user name and password.</span></span>
 > 
 > 
 
-<span data-ttu-id="75546-160">Esto también se puede hacer a través del Portal.</span><span class="sxs-lookup"><span data-stu-id="75546-160">This can also be done via the Portal.</span></span> <span data-ttu-id="75546-161">Consulte [Administración de HDInsight mediante Azure Portal][hdinsight-admin-portal].</span><span class="sxs-lookup"><span data-stu-id="75546-161">See [Administer HDInsight by using the Azure portal][hdinsight-admin-portal].</span></span>
+<span data-ttu-id="d996e-160">Esto puede hacerse a través de hello Portal.</span><span class="sxs-lookup"><span data-stu-id="d996e-160">This can also be done via hello Portal.</span></span> <span data-ttu-id="d996e-161">Vea [HDInsight administrar mediante el uso de Hola portal de Azure][hdinsight-admin-portal].</span><span class="sxs-lookup"><span data-stu-id="d996e-161">See [Administer HDInsight by using hello Azure portal][hdinsight-admin-portal].</span></span>
 
-## <a name="update-http-user-credentials"></a><span data-ttu-id="75546-162">Actualización de las credenciales de usuario HTTP</span><span class="sxs-lookup"><span data-stu-id="75546-162">Update HTTP user credentials</span></span>
-<span data-ttu-id="75546-163">Es el mismo procedimiento que [Concesión o revocación del acceso HTTP](#grant/revoke-access). Si al clúster se le ha concedido el acceso HTTP, primero debe revocarlo.</span><span class="sxs-lookup"><span data-stu-id="75546-163">It is the same procedure as [Grant/revoke HTTP access](#grant/revoke-access).If the cluster has been granted the HTTP access, you must first revoke it.</span></span>  <span data-ttu-id="75546-164">Y después conceda el acceso con nuevas credenciales de usuario HTTP.</span><span class="sxs-lookup"><span data-stu-id="75546-164">And then grant the access with new HTTP user credentials.</span></span>
+## <a name="update-http-user-credentials"></a><span data-ttu-id="d996e-162">Actualización de las credenciales de usuario HTTP</span><span class="sxs-lookup"><span data-stu-id="d996e-162">Update HTTP user credentials</span></span>
+<span data-ttu-id="d996e-163">Es Hola mismo procedimiento como [HTTP conceder o revocar acceso](#grant/revoke-access). Si se concedió clúster Hola Hola acceso HTTP, debe revocar primero.</span><span class="sxs-lookup"><span data-stu-id="d996e-163">It is hello same procedure as [Grant/revoke HTTP access](#grant/revoke-access).If hello cluster has been granted hello HTTP access, you must first revoke it.</span></span>  <span data-ttu-id="d996e-164">Y, a continuación, conceder acceso de hello con nuevas credenciales de usuario HTTP.</span><span class="sxs-lookup"><span data-stu-id="d996e-164">And then grant hello access with new HTTP user credentials.</span></span>
 
-## <a name="find-the-default-storage-account"></a><span data-ttu-id="75546-165">Búsqueda de la cuenta de almacenamiento predeterminada</span><span class="sxs-lookup"><span data-stu-id="75546-165">Find the default storage account</span></span>
-<span data-ttu-id="75546-166">El siguiente fragmento de código muestra cómo obtener el nombre y la clave de la cuenta de almacenamiento predeterminada para un clúster.</span><span class="sxs-lookup"><span data-stu-id="75546-166">The following code snippet demonstrates how to get the default storage account name and the default storage account key for a cluster.</span></span>
+## <a name="find-hello-default-storage-account"></a><span data-ttu-id="d996e-165">Busque la cuenta de almacenamiento predeterminada de Hola</span><span class="sxs-lookup"><span data-stu-id="d996e-165">Find hello default storage account</span></span>
+<span data-ttu-id="d996e-166">Hola siguiente fragmento de código muestra cómo tooget nombre de cuenta de almacenamiento predeterminado de Hola y Hola clave de cuenta de almacenamiento predeterminada para un clúster.</span><span class="sxs-lookup"><span data-stu-id="d996e-166">hello following code snippet demonstrates how tooget hello default storage account name and hello default storage account key for a cluster.</span></span>
 
     var results = _hdiManagementClient.Clusters.GetClusterConfigurations(<Resource Group Name>, <Cluster Name>, "core-site");
     foreach (var key in results.Configuration.Keys)
@@ -230,37 +230,37 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-## <a name="submit-jobs"></a><span data-ttu-id="75546-167">Envío de trabajos</span><span class="sxs-lookup"><span data-stu-id="75546-167">Submit jobs</span></span>
-<span data-ttu-id="75546-168">**Para enviar trabajos de MapReduce**</span><span class="sxs-lookup"><span data-stu-id="75546-168">**To submit MapReduce jobs**</span></span>
+## <a name="submit-jobs"></a><span data-ttu-id="d996e-167">Envío de trabajos</span><span class="sxs-lookup"><span data-stu-id="d996e-167">Submit jobs</span></span>
+<span data-ttu-id="d996e-168">**trabajos de MapReduce toosubmit**</span><span class="sxs-lookup"><span data-stu-id="d996e-168">**toosubmit MapReduce jobs**</span></span>
 
-<span data-ttu-id="75546-169">Consulte [Ejecución de ejemplos de Hadoop en HDInsight](hdinsight-hadoop-run-samples-linux.md).</span><span class="sxs-lookup"><span data-stu-id="75546-169">See [Run Hadoop MapReduce samples in HDInsight](hdinsight-hadoop-run-samples-linux.md).</span></span>
+<span data-ttu-id="d996e-169">Consulte [Ejecución de ejemplos de Hadoop en HDInsight](hdinsight-hadoop-run-samples-linux.md).</span><span class="sxs-lookup"><span data-stu-id="d996e-169">See [Run Hadoop MapReduce samples in HDInsight](hdinsight-hadoop-run-samples-linux.md).</span></span>
 
-<span data-ttu-id="75546-170">**Para enviar trabajos de Hive**</span><span class="sxs-lookup"><span data-stu-id="75546-170">**To submit Hive jobs**</span></span> 
+<span data-ttu-id="d996e-170">**trabajos de Hive toosubmit**</span><span class="sxs-lookup"><span data-stu-id="d996e-170">**toosubmit Hive jobs**</span></span> 
 
-<span data-ttu-id="75546-171">Consulte [Ejecución de consultas de Hive mediante el SDK de .NET de HDInsight](hdinsight-hadoop-use-hive-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="75546-171">See [Run Hive queries using .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md).</span></span>
+<span data-ttu-id="d996e-171">Consulte [Ejecución de consultas de Hive mediante el SDK de .NET de HDInsight](hdinsight-hadoop-use-hive-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="d996e-171">See [Run Hive queries using .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md).</span></span>
 
-<span data-ttu-id="75546-172">**Para enviar trabajos de Pigs**</span><span class="sxs-lookup"><span data-stu-id="75546-172">**To submit Pig jobs**</span></span>
+<span data-ttu-id="d996e-172">**trabajos de Pig toosubmit**</span><span class="sxs-lookup"><span data-stu-id="d996e-172">**toosubmit Pig jobs**</span></span>
 
-<span data-ttu-id="75546-173">Consulte [Ejecución de trabajos de Pig con el SDK de .NET para Hadoop en HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="75546-173">See [Run Pig jobs using .NET SDK](hdinsight-hadoop-use-pig-dotnet-sdk.md).</span></span>
+<span data-ttu-id="d996e-173">Consulte [Ejecución de trabajos de Pig con el SDK de .NET para Hadoop en HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="d996e-173">See [Run Pig jobs using .NET SDK](hdinsight-hadoop-use-pig-dotnet-sdk.md).</span></span>
 
-<span data-ttu-id="75546-174">**Para enviar trabajos de Sqoop**</span><span class="sxs-lookup"><span data-stu-id="75546-174">**To submit Sqoop jobs**</span></span>
+<span data-ttu-id="d996e-174">**trabajos de Sqoop toosubmit**</span><span class="sxs-lookup"><span data-stu-id="d996e-174">**toosubmit Sqoop jobs**</span></span>
 
-<span data-ttu-id="75546-175">Consulte [Uso de Sqoop con HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="75546-175">See [Use Sqoop with HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md).</span></span>
+<span data-ttu-id="d996e-175">Consulte [Uso de Sqoop con HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="d996e-175">See [Use Sqoop with HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md).</span></span>
 
-<span data-ttu-id="75546-176">**Para enviar trabajos de Oozie**</span><span class="sxs-lookup"><span data-stu-id="75546-176">**To submit Oozie jobs**</span></span>
+<span data-ttu-id="d996e-176">**trabajos de Oozie toosubmit**</span><span class="sxs-lookup"><span data-stu-id="d996e-176">**toosubmit Oozie jobs**</span></span>
 
-<span data-ttu-id="75546-177">Vea [Uso de Oozie con Hadoop para definir y ejecutar un flujo de trabajo en HDInsight](hdinsight-use-oozie-linux-mac.md).</span><span class="sxs-lookup"><span data-stu-id="75546-177">See [Use Oozie with Hadoop to define and run a workflow in HDInsight](hdinsight-use-oozie-linux-mac.md).</span></span>
+<span data-ttu-id="d996e-177">Vea [Oozie de uso con Hadoop toodefine y ejecutar un flujo de trabajo en HDInsight](hdinsight-use-oozie-linux-mac.md).</span><span class="sxs-lookup"><span data-stu-id="d996e-177">See [Use Oozie with Hadoop toodefine and run a workflow in HDInsight](hdinsight-use-oozie-linux-mac.md).</span></span>
 
-## <a name="upload-data-to-azure-blob-storage"></a><span data-ttu-id="75546-178">Carga de archivos de datos al almacenamiento de blobs de Azure</span><span class="sxs-lookup"><span data-stu-id="75546-178">Upload data to Azure Blob storage</span></span>
-<span data-ttu-id="75546-179">Consulte [Carga de datos en HDInsight][hdinsight-upload-data].</span><span class="sxs-lookup"><span data-stu-id="75546-179">See [Upload data to HDInsight][hdinsight-upload-data].</span></span>
+## <a name="upload-data-tooazure-blob-storage"></a><span data-ttu-id="d996e-178">Cargar el almacenamiento de blobs de datos tooAzure</span><span class="sxs-lookup"><span data-stu-id="d996e-178">Upload data tooAzure Blob storage</span></span>
+<span data-ttu-id="d996e-179">Vea [cargar datos tooHDInsight][hdinsight-upload-data].</span><span class="sxs-lookup"><span data-stu-id="d996e-179">See [Upload data tooHDInsight][hdinsight-upload-data].</span></span>
 
-## <a name="see-also"></a><span data-ttu-id="75546-180">Otras referencias</span><span class="sxs-lookup"><span data-stu-id="75546-180">See Also</span></span>
-* [<span data-ttu-id="75546-181">Documentación de referencia del SDK de HDInsight</span><span class="sxs-lookup"><span data-stu-id="75546-181">HDInsight .NET SDK reference documentation</span></span>](https://msdn.microsoft.com/library/mt271028.aspx)
-* <span data-ttu-id="75546-182">[Administración de HDInsight mediante Azure Portal][hdinsight-admin-portal]</span><span class="sxs-lookup"><span data-stu-id="75546-182">[Administer HDInsight by using the Azure portal][hdinsight-admin-portal]</span></span>
-* <span data-ttu-id="75546-183">[Administración de HDInsight con la interfaz de la línea de comandos][hdinsight-admin-cli]</span><span class="sxs-lookup"><span data-stu-id="75546-183">[Administer HDInsight using a command-line interface][hdinsight-admin-cli]</span></span>
-* <span data-ttu-id="75546-184">[Creación de clústeres de HDInsight][hdinsight-provision]</span><span class="sxs-lookup"><span data-stu-id="75546-184">[Create HDInsight clusters][hdinsight-provision]</span></span>
-* <span data-ttu-id="75546-185">[Carga de datos en HDInsight][hdinsight-upload-data]</span><span class="sxs-lookup"><span data-stu-id="75546-185">[Upload data to HDInsight][hdinsight-upload-data]</span></span>
-* <span data-ttu-id="75546-186">[Introducción a Azure HDInsight][hdinsight-get-started]</span><span class="sxs-lookup"><span data-stu-id="75546-186">[Get started with Azure HDInsight][hdinsight-get-started]</span></span>
+## <a name="see-also"></a><span data-ttu-id="d996e-180">Otras referencias</span><span class="sxs-lookup"><span data-stu-id="d996e-180">See Also</span></span>
+* [<span data-ttu-id="d996e-181">Documentación de referencia del SDK de HDInsight</span><span class="sxs-lookup"><span data-stu-id="d996e-181">HDInsight .NET SDK reference documentation</span></span>](https://msdn.microsoft.com/library/mt271028.aspx)
+* <span data-ttu-id="d996e-182">[Administrar HDInsight mediante Hola portal de Azure][hdinsight-admin-portal]</span><span class="sxs-lookup"><span data-stu-id="d996e-182">[Administer HDInsight by using hello Azure portal][hdinsight-admin-portal]</span></span>
+* <span data-ttu-id="d996e-183">[Administración de HDInsight con la interfaz de la línea de comandos][hdinsight-admin-cli]</span><span class="sxs-lookup"><span data-stu-id="d996e-183">[Administer HDInsight using a command-line interface][hdinsight-admin-cli]</span></span>
+* <span data-ttu-id="d996e-184">[Creación de clústeres de HDInsight][hdinsight-provision]</span><span class="sxs-lookup"><span data-stu-id="d996e-184">[Create HDInsight clusters][hdinsight-provision]</span></span>
+* <span data-ttu-id="d996e-185">[Cargar datos tooHDInsight][hdinsight-upload-data]</span><span class="sxs-lookup"><span data-stu-id="d996e-185">[Upload data tooHDInsight][hdinsight-upload-data]</span></span>
+* <span data-ttu-id="d996e-186">[Introducción a Azure HDInsight][hdinsight-get-started]</span><span class="sxs-lookup"><span data-stu-id="d996e-186">[Get started with Azure HDInsight][hdinsight-get-started]</span></span>
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

@@ -1,5 +1,5 @@
 ---
-title: Uso de DataFu con Pig en HDInsight - Azure | Microsoft Docs
+title: aaaUse DataFu con Pig en HDInsight - Azure | Documentos de Microsoft
 description: "DataFu es un conjunto de bibliotecas para su uso con Hadoop. Aprenda cómo usar DataFu con Pig en su clúster de HDInsight."
 services: hdinsight
 documentationcenter: 
@@ -15,71 +15,71 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.openlocfilehash: 4de55f5f6c5605e9c6c8dd7ccac902b811d1b062
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 357ad8f9694cc590115289877e752bdd242bdadc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-datafu-with-pig-on-hdinsight"></a><span data-ttu-id="86f61-104">Uso de DataFu con Pig en HDInsight</span><span class="sxs-lookup"><span data-stu-id="86f61-104">Use DataFu with pig on HDInsight</span></span>
+# <a name="use-datafu-with-pig-on-hdinsight"></a><span data-ttu-id="2e649-104">Uso de DataFu con Pig en HDInsight</span><span class="sxs-lookup"><span data-stu-id="2e649-104">Use DataFu with pig on HDInsight</span></span>
 
-<span data-ttu-id="86f61-105">Aprenda a usar DataFu con HDInsight.</span><span class="sxs-lookup"><span data-stu-id="86f61-105">Learn how to use DataFu with HDInsight.</span></span> <span data-ttu-id="86f61-106">DataFu es un conjunto de bibliotecas de código abierto que se usan con Pig en Hadoop.</span><span class="sxs-lookup"><span data-stu-id="86f61-106">DataFu is a collection of Open Source libraries for use with Pig on Hadoop.</span></span>
+<span data-ttu-id="2e649-105">Obtenga información acerca de cómo toouse DataFu con HDInsight.</span><span class="sxs-lookup"><span data-stu-id="2e649-105">Learn how toouse DataFu with HDInsight.</span></span> <span data-ttu-id="2e649-106">DataFu es un conjunto de bibliotecas de código abierto que se usan con Pig en Hadoop.</span><span class="sxs-lookup"><span data-stu-id="2e649-106">DataFu is a collection of Open Source libraries for use with Pig on Hadoop.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="86f61-107">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="86f61-107">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="2e649-107">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="2e649-107">Prerequisites</span></span>
 
-* <span data-ttu-id="86f61-108">Una suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="86f61-108">An Azure subscription.</span></span>
+* <span data-ttu-id="2e649-108">Una suscripción de Azure.</span><span class="sxs-lookup"><span data-stu-id="2e649-108">An Azure subscription.</span></span>
 
-* <span data-ttu-id="86f61-109">Clúster de HDInsight de Azure (basado en Linux o Windows)</span><span class="sxs-lookup"><span data-stu-id="86f61-109">An Azure HDInsight cluster (Linux or Windows based)</span></span>
+* <span data-ttu-id="2e649-109">Clúster de HDInsight de Azure (basado en Linux o Windows)</span><span class="sxs-lookup"><span data-stu-id="2e649-109">An Azure HDInsight cluster (Linux or Windows based)</span></span>
 
   > [!IMPORTANT]
-  > <span data-ttu-id="86f61-110">Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores.</span><span class="sxs-lookup"><span data-stu-id="86f61-110">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="86f61-111">Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="86f61-111">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
+  > <span data-ttu-id="2e649-110">Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior.</span><span class="sxs-lookup"><span data-stu-id="2e649-110">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="2e649-111">Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="2e649-111">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 
-* <span data-ttu-id="86f61-112">Cierta familiaridad básica con el [uso de Pig en HDInsight](hdinsight-use-pig.md)</span><span class="sxs-lookup"><span data-stu-id="86f61-112">A basic familiarity with [using Pig on HDInsight](hdinsight-use-pig.md)</span></span>
+* <span data-ttu-id="2e649-112">Cierta familiaridad básica con el [uso de Pig en HDInsight](hdinsight-use-pig.md)</span><span class="sxs-lookup"><span data-stu-id="2e649-112">A basic familiarity with [using Pig on HDInsight](hdinsight-use-pig.md)</span></span>
 
-## <a name="install-datafu-on-linux-based-hdinsight"></a><span data-ttu-id="86f61-113">Instalación de DataFu en HDInsight basado en Linux</span><span class="sxs-lookup"><span data-stu-id="86f61-113">Install DataFu on Linux-based HDInsight</span></span>
+## <a name="install-datafu-on-linux-based-hdinsight"></a><span data-ttu-id="2e649-113">Instalación de DataFu en HDInsight basado en Linux</span><span class="sxs-lookup"><span data-stu-id="2e649-113">Install DataFu on Linux-based HDInsight</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="86f61-114">DataFu se instala en clústeres basados en Linux 3.3 y versiones posteriores, así como en clústeres basados en Windows.</span><span class="sxs-lookup"><span data-stu-id="86f61-114">DataFu is installed on Linux-based clusters version 3.3 and higher, and on Windows-based clusters.</span></span> <span data-ttu-id="86f61-115">No se instala en clústeres basados en Linux anteriores a la versión 3.3.</span><span class="sxs-lookup"><span data-stu-id="86f61-115">It is not installed on Linux-based clusters earlier than 3.3.</span></span>
+> <span data-ttu-id="2e649-114">DataFu se instala en clústeres basados en Linux 3.3 y versiones posteriores, así como en clústeres basados en Windows.</span><span class="sxs-lookup"><span data-stu-id="2e649-114">DataFu is installed on Linux-based clusters version 3.3 and higher, and on Windows-based clusters.</span></span> <span data-ttu-id="2e649-115">No se instala en clústeres basados en Linux anteriores a la versión 3.3.</span><span class="sxs-lookup"><span data-stu-id="2e649-115">It is not installed on Linux-based clusters earlier than 3.3.</span></span>
 >
-> <span data-ttu-id="86f61-116">Si usa un clúster basado en Windows o un clúster basado en Linux con una versión superior a la versión 3.3, omita esta sección.</span><span class="sxs-lookup"><span data-stu-id="86f61-116">If you are using a Windows-based cluster, or a Linux-based cluster higher than version 3.3, skip this section.</span></span>
+> <span data-ttu-id="2e649-116">Si usa un clúster basado en Windows o un clúster basado en Linux con una versión superior a la versión 3.3, omita esta sección.</span><span class="sxs-lookup"><span data-stu-id="2e649-116">If you are using a Windows-based cluster, or a Linux-based cluster higher than version 3.3, skip this section.</span></span>
 
-<span data-ttu-id="86f61-117">DataFu puede descargarse e instalarse desde el repositorio de Maven.</span><span class="sxs-lookup"><span data-stu-id="86f61-117">DataFu can be downloaded and installed from the Maven repository.</span></span> <span data-ttu-id="86f61-118">Use los pasos siguientes para agregar DataFu a su clúster de HDInsight:</span><span class="sxs-lookup"><span data-stu-id="86f61-118">Use the following steps to add DataFu to your HDInsight cluster:</span></span>
+<span data-ttu-id="2e649-117">DataFu puede descargarse e instalarse desde el repositorio de Maven Hola.</span><span class="sxs-lookup"><span data-stu-id="2e649-117">DataFu can be downloaded and installed from hello Maven repository.</span></span> <span data-ttu-id="2e649-118">Usar hello después de clúster de HDInsight de pasos tooadd DataFu tooyour:</span><span class="sxs-lookup"><span data-stu-id="2e649-118">Use hello following steps tooadd DataFu tooyour HDInsight cluster:</span></span>
 
-1. <span data-ttu-id="86f61-119">Conéctese al clúster de HDInsight basado en Linux mediante SSH.</span><span class="sxs-lookup"><span data-stu-id="86f61-119">Connect to your Linux-based HDInsight cluster using SSH.</span></span> <span data-ttu-id="86f61-120">Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="86f61-120">For more information, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
+1. <span data-ttu-id="2e649-119">Conecte el clúster de HDInsight basados en Linux de tooyour mediante SSH.</span><span class="sxs-lookup"><span data-stu-id="2e649-119">Connect tooyour Linux-based HDInsight cluster using SSH.</span></span> <span data-ttu-id="2e649-120">Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span><span class="sxs-lookup"><span data-stu-id="2e649-120">For more information, see [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).</span></span>
 
-2. <span data-ttu-id="86f61-121">Use el comando siguiente para descargar el archivo jar de DataFu mediante la utilidad wget, o copie y pegue el vínculo en el explorador para iniciar la descarga.</span><span class="sxs-lookup"><span data-stu-id="86f61-121">Use the following command to download the DataFu jar file using the wget utility, or copy and paste the link into your browser to begin the download.</span></span>
+2. <span data-ttu-id="2e649-121">Usar hello siguiente comando toodownload hello DataFu jar archivo mediante la utilidad de wget hello, o copie y pegue Hola vínculo en la descarga de hello toobegin de explorador.</span><span class="sxs-lookup"><span data-stu-id="2e649-121">Use hello following command toodownload hello DataFu jar file using hello wget utility, or copy and paste hello link into your browser toobegin hello download.</span></span>
 
     ```
     wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
     ```
 
-3. <span data-ttu-id="86f61-122">Después, cargue el archivo en el almacenamiento predeterminado para el clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="86f61-122">Next, upload the file to default storage for your HDInsight cluster.</span></span> <span data-ttu-id="86f61-123">La colocación del archivo en el almacenamiento predeterminado permite que esté disponible para todos los nodos del clúster.</span><span class="sxs-lookup"><span data-stu-id="86f61-123">Placing the file in default storage makes it available to all nodes in the cluster.</span></span>
+3. <span data-ttu-id="2e649-122">A continuación, cargue toodefault almacenamiento de archivos de hello para el clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="2e649-122">Next, upload hello file toodefault storage for your HDInsight cluster.</span></span> <span data-ttu-id="2e649-123">Colocar el archivo hello en default almacenamiento lo convierte en disponible tooall nodos en clúster Hola.</span><span class="sxs-lookup"><span data-stu-id="2e649-123">Placing hello file in default storage makes it available tooall nodes in hello cluster.</span></span>
 
     ```
     hdfs dfs -put datafu-1.2.0.jar /example/jars
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="86f61-124">El comando anterior almacena el archivo jar en `/example/jars` dado que este directorio ya existe en el almacenamiento de clúster.</span><span class="sxs-lookup"><span data-stu-id="86f61-124">The previous command stores the jar in `/example/jars` since this directory already exists on the cluster storage.</span></span> <span data-ttu-id="86f61-125">Puede usar la ubicación que desee en el almacenamiento del clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="86f61-125">You can use any location you wish on HDInsight cluster storage.</span></span>
+    > <span data-ttu-id="2e649-124">comando anterior Hola almacena jar de hello en `/example/jars` porque este directorio ya existe en el almacenamiento de clúster de Hola.</span><span class="sxs-lookup"><span data-stu-id="2e649-124">hello previous command stores hello jar in `/example/jars` since this directory already exists on hello cluster storage.</span></span> <span data-ttu-id="2e649-125">Puede usar la ubicación que desee en el almacenamiento del clúster de HDInsight.</span><span class="sxs-lookup"><span data-stu-id="2e649-125">You can use any location you wish on HDInsight cluster storage.</span></span>
 
-## <a name="use-datafu-with-pig"></a><span data-ttu-id="86f61-126">Uso de DataFu con Pig</span><span class="sxs-lookup"><span data-stu-id="86f61-126">Use DataFu With Pig</span></span>
+## <a name="use-datafu-with-pig"></a><span data-ttu-id="2e649-126">Uso de DataFu con Pig</span><span class="sxs-lookup"><span data-stu-id="2e649-126">Use DataFu With Pig</span></span>
 
-<span data-ttu-id="86f61-127">En los pasos de esta sección se supone que está familiarizado con el uso de Pig en HDInsight.</span><span class="sxs-lookup"><span data-stu-id="86f61-127">The steps in this section assume that you are familiar with using Pig on HDInsight.</span></span> <span data-ttu-id="86f61-128">Para obtener más información acerca del uso de Pig con HDInsight, consulte [Uso de Pig con HDInsight](hdinsight-use-pig.md).</span><span class="sxs-lookup"><span data-stu-id="86f61-128">For more information on using Pig with HDInsight, see [Use Pig with HDInsight](hdinsight-use-pig.md).</span></span>
+<span data-ttu-id="2e649-127">pasos de Hello en esta sección se supone que está familiarizado con el uso de Pig en HDInsight.</span><span class="sxs-lookup"><span data-stu-id="2e649-127">hello steps in this section assume that you are familiar with using Pig on HDInsight.</span></span> <span data-ttu-id="2e649-128">Para obtener más información acerca del uso de Pig con HDInsight, consulte [Uso de Pig con HDInsight](hdinsight-use-pig.md).</span><span class="sxs-lookup"><span data-stu-id="2e649-128">For more information on using Pig with HDInsight, see [Use Pig with HDInsight](hdinsight-use-pig.md).</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="86f61-129">Si instaló DataFu manualmente con los pasos de la sección anterior, debe registrarlo antes de usarlo.</span><span class="sxs-lookup"><span data-stu-id="86f61-129">If you manually installed DataFu using the steps in the previous section, you must register it before using it.</span></span>
+> <span data-ttu-id="2e649-129">Si instaló manualmente DataFu siguiendo los pasos de hello en la sección anterior de hello, debe registrar antes de usarlo.</span><span class="sxs-lookup"><span data-stu-id="2e649-129">If you manually installed DataFu using hello steps in hello previous section, you must register it before using it.</span></span>
 >
-> * <span data-ttu-id="86f61-130">Si el clúster usa Azure Storage, utilice una ruta `wasb://`.</span><span class="sxs-lookup"><span data-stu-id="86f61-130">If your cluster uses Azure Storage, use a `wasb://` path.</span></span> <span data-ttu-id="86f61-131">Por ejemplo: `register wasb:///example/jars/datafu-1.2.0.jar`.</span><span class="sxs-lookup"><span data-stu-id="86f61-131">For example, `register wasb:///example/jars/datafu-1.2.0.jar`.</span></span>
+> * <span data-ttu-id="2e649-130">Si el clúster usa Azure Storage, utilice una ruta `wasb://`.</span><span class="sxs-lookup"><span data-stu-id="2e649-130">If your cluster uses Azure Storage, use a `wasb://` path.</span></span> <span data-ttu-id="2e649-131">Por ejemplo: `register wasb:///example/jars/datafu-1.2.0.jar`.</span><span class="sxs-lookup"><span data-stu-id="2e649-131">For example, `register wasb:///example/jars/datafu-1.2.0.jar`.</span></span>
 >
-> * <span data-ttu-id="86f61-132">Si el clúster usa Azure Data Lake Store, utilice una ruta `adl://`.</span><span class="sxs-lookup"><span data-stu-id="86f61-132">If your cluster uses Azure Data Lake Store, use an `adl://` path.</span></span> <span data-ttu-id="86f61-133">Por ejemplo: `register adl://home/example/jars/datafu-1.2.0.jar`.</span><span class="sxs-lookup"><span data-stu-id="86f61-133">For example, `register adl://home/example/jars/datafu-1.2.0.jar`.</span></span>
+> * <span data-ttu-id="2e649-132">Si el clúster usa Azure Data Lake Store, utilice una ruta `adl://`.</span><span class="sxs-lookup"><span data-stu-id="2e649-132">If your cluster uses Azure Data Lake Store, use an `adl://` path.</span></span> <span data-ttu-id="2e649-133">Por ejemplo: `register adl://home/example/jars/datafu-1.2.0.jar`.</span><span class="sxs-lookup"><span data-stu-id="2e649-133">For example, `register adl://home/example/jars/datafu-1.2.0.jar`.</span></span>
 
-<span data-ttu-id="86f61-134">Normalmente, definirá un alias para las funciones de DataFu.Normalmente, definirá un alias para las funciones de DataFu.</span><span class="sxs-lookup"><span data-stu-id="86f61-134">You often define an alias for DataFu functions.</span></span> <span data-ttu-id="86f61-135">En el ejemplo siguiente se define un alias de `SHA`:</span><span class="sxs-lookup"><span data-stu-id="86f61-135">The following example defines an alias of `SHA`:</span></span>
+<span data-ttu-id="2e649-134">Normalmente, definirá un alias para las funciones de DataFu.Normalmente, definirá un alias para las funciones de DataFu.</span><span class="sxs-lookup"><span data-stu-id="2e649-134">You often define an alias for DataFu functions.</span></span> <span data-ttu-id="2e649-135">Hello en el ejemplo siguiente se define un alias de `SHA`:</span><span class="sxs-lookup"><span data-stu-id="2e649-135">hello following example defines an alias of `SHA`:</span></span>
 
 ```piglatin
 DEFINE SHA datafu.pig.hash.SHA();
 ```
 
-<span data-ttu-id="86f61-136">Después puede usarlo en un script de Pig Latin para generar un valor hash para los datos de entrada.</span><span class="sxs-lookup"><span data-stu-id="86f61-136">You can then use this alias in a Pig Latin script to generate a hash for the input data.</span></span> <span data-ttu-id="86f61-137">Por ejemplo, el siguiente código reemplaza la ubicación de los datos de entrada por un valor hash:</span><span class="sxs-lookup"><span data-stu-id="86f61-137">For example, the following code replaces the location in the input data with a hash value:</span></span>
+<span data-ttu-id="2e649-136">A continuación, puede usar este alias en un toogenerate de script de Pig latino un hash de los datos de entrada de Hola.</span><span class="sxs-lookup"><span data-stu-id="2e649-136">You can then use this alias in a Pig Latin script toogenerate a hash for hello input data.</span></span> <span data-ttu-id="2e649-137">Por ejemplo, hello código siguiente reemplaza ubicación hello en los datos de entrada de hello con un valor de hash:</span><span class="sxs-lookup"><span data-stu-id="2e649-137">For example, hello following code replaces hello location in hello input data with a hash value:</span></span>
 
 ```piglatin
 raw = LOAD '/HdiSamples/HdiSamples/SensorSampleData/building/building.csv' USING
@@ -93,7 +93,7 @@ mask = FOREACH raw GENERATE int1, id1, int2, id2, SHA(location);
 DUMP mask;
 ```
 
-<span data-ttu-id="86f61-138">Se genera lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="86f61-138">It generates the following output:</span></span>
+<span data-ttu-id="2e649-138">Genera Hola después de salida:</span><span class="sxs-lookup"><span data-stu-id="2e649-138">It generates hello following output:</span></span>
 
     (1,M1,25,AC1000,aa5ab35a9174c2062b7f7697b33fafe5ce404cf5fecf6bfbbf0dc96ba0d90046)
     (2,M2,27,FN39TG,7a1ca4ef7515f7276bae7230545829c27810c9d9e98ab2c06066bee6270d5153)
@@ -116,9 +116,9 @@ DUMP mask;
     (19,M19,14,GG1919,be55ef3f4c4e6c2d9c2afe2a33ac90ad0f50d4de7f9163999877e2a9ca5a54f8)
     (20,M20,19,ACMAX22,ea0b937ea317101ee2c26b03a4843a19ceced8a2b9673c3cf409a726ca2b0fd8)
 
-## <a name="next-steps"></a><span data-ttu-id="86f61-139">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="86f61-139">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="2e649-139">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="2e649-139">Next steps</span></span>
 
-<span data-ttu-id="86f61-140">Para obtener más información sobre DataFu o Pig, consulte los documentos siguientes:</span><span class="sxs-lookup"><span data-stu-id="86f61-140">For more information on DataFu or Pig, see the following documents:</span></span>
+<span data-ttu-id="2e649-140">Para obtener más información sobre DataFu o Pig, consulte Hola siguientes documentos:</span><span class="sxs-lookup"><span data-stu-id="2e649-140">For more information on DataFu or Pig, see hello following documents:</span></span>
 
-* <span data-ttu-id="86f61-141">[Guía de Pig de Apache DataFu](http://datafu.incubator.apache.org/docs/datafu/guide.html).</span><span class="sxs-lookup"><span data-stu-id="86f61-141">[Apache DataFu Pig Guide](http://datafu.incubator.apache.org/docs/datafu/guide.html).</span></span>
-* [<span data-ttu-id="86f61-142">Uso de Pig con HDInsight</span><span class="sxs-lookup"><span data-stu-id="86f61-142">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
+* <span data-ttu-id="2e649-141">[Guía de Pig de Apache DataFu](http://datafu.incubator.apache.org/docs/datafu/guide.html).</span><span class="sxs-lookup"><span data-stu-id="2e649-141">[Apache DataFu Pig Guide](http://datafu.incubator.apache.org/docs/datafu/guide.html).</span></span>
+* [<span data-ttu-id="2e649-142">Uso de Pig con HDInsight</span><span class="sxs-lookup"><span data-stu-id="2e649-142">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
