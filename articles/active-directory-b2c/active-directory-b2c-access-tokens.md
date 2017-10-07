@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory B2C: solicitud de tokens de acceso | Microsoft Docs'
-description: "En este artículo se mostrará cómo configurar una aplicación cliente y adquirir un token de acceso."
+description: "En este artículo le mostrará cómo toosetup una aplicación cliente y adquirir un token de acceso."
 services: active-directory-b2c
 documentationcenter: android
 author: parakhj
@@ -14,78 +14,78 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: parakhj
-ms.openlocfilehash: 4b361a8e69f885d5b89ac9b2086e2731ee4d8b48
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 410639424fd4e5119a5d58751dfdb6e8957fd100
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: solicitud de tokens de acceso
 
-Un token de acceso, que se designa como **access\_token** en las respuestas de Azure AD B2C, es una forma de token de seguridad que un cliente puede usar para tener acceso a los recursos protegidos por un [servidor de autorización](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics), como una API web. Los tokens de acceso se representan como [JWT](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) y contienen información sobre el servidor de recursos previsto y los permisos concedidos al servidor. Cuando se llama al servidor de recursos, el token de acceso debe incluirse en la solicitud HTTP.
+Un token de acceso (se denomina **acceso\_token** en las respuestas de saludo de Azure AD B2C) es una forma de token de seguridad que un cliente puede utilizar tooaccess recursos que está protegido por un [servidor de autorización](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics), como una API web. Tokens de acceso se representan como [JWTs](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) y contienen información sobre el servidor de recursos previsto de Hola y el servidor de toohello de permisos concedidos de Hola. Al llamar al servidor de recursos de hello, token de acceso de hello debe estar presente en la solicitud HTTP de Hola.
 
-En este artículo se trata cómo configurar una aplicación cliente y una API web para obtener un **access\_token**.
+Este artículo describe cómo tooconfigure una aplicación cliente y API web en orden tooobtain una **acceso\_token**.
 
 > [!NOTE]
 > **Las cadenas de la API web (en nombre de) no son compatibles con Azure AD B2C.**
 >
-> Muchas arquitecturas incluyen una API web que necesita llamar a otra API web de nivel inferior, ambas protegidas mediante Azure AD B2C. Este escenario es común en los clientes nativos que tienen un back-end de API web que, a su vez, llama a un servicio de Microsoft Online, como la API de Azure AD Graph.
+> Muchas arquitecturas incluyen una API que necesita toocall web otra API de web de nivel inferior, ambos protegen por Azure AD B2C. Este escenario es común en los clientes nativos que tienen un API web back-end, que a su vez llama a un servicio en línea de Microsoft como Hola API de Azure AD Graph.
 >
-> Este escenario de API web encadenadas puede admitirse mediante la concesión de credenciales de portador JWT de OAuth 2.0, también conocido como flujo "en nombre de". Sin embargo, el flujo "en nombre de" no está implementado actualmente en Azure AD B2C.
+> Este escenario de API de web encadenadas puede ser compatibles con hello concesión de credenciales de portador JWT de OAuth 2.0, en caso contrario denomina hello en nombre de flujo. Sin embargo, hello en nombre de flujo no está implementada actualmente en Azure AD B2C.
 
 ## <a name="register-a-web-api-and-publish-permissions"></a>Registro de una API web y publicación de permisos
 
-Antes de solicitar un token de acceso, debe registrar una API web y publicar los permisos (ámbitos) que se pueden conceder a la aplicación cliente.
+Antes de solicitar un token de acceso, primero necesita tooregister una API web y permisos (ámbitos) que se pueden conceder a aplicaciones de cliente de toohello de publicación.
 
 ### <a name="register-a-web-api"></a>Registro de una API web
 
-1. En la hoja de características B2C de Azure Portal, haga clic en **Aplicaciones**.
-1. Haga clic en **+Agregar** en la parte superior de la hoja.
-1. Escriba un **Nombre** para la aplicación que la describa a los consumidores. Por ejemplo, puede escribir "API Contoso".
-1. Cambie el conmutador **Include web app / web API** (Incluir aplic. web/API web) a **Yes** (Sí).
-1. Escriba un valor arbitrario para las **Direcciones URL de respuesta**. Por ejemplo, escriba: `https://localhost:44316/`. El valor no importa, ya que una API no debe recibir el token directamente de Azure AD B2C.
-1. Escriba un **URI de identificador de aplicación**. Este es el identificador utilizado para la API web. Por ejemplo, escriba "notas" en el cuadro. El identificador **URI de id. de aplicación** sería entonces `https://{tenantName}.onmicrosoft.com/notes`.
-1. Haga clic en **Crear** para registrar la aplicación.
-1. Haga clic en la aplicación que acaba de crear y copie el **Id. de cliente de aplicación** único global que usará más adelante en el código.
+1. En la hoja de características de hello B2C en hello portal de Azure, haga clic en **aplicaciones**.
+1. Haga clic en **+ agregar** princip Hola de hoja de Hola.
+1. Escriba un **nombre** para aplicación Hola que describirá el tooconsumers de aplicación. Por ejemplo, puede escribir "API Contoso".
+1. Hola de alternancia **incluyen la aplicación web / web API** cambiar demasiado**Sí**.
+1. Escriba un valor arbitrario de hello **direcciones URL de respuesta**. Por ejemplo, escriba: `https://localhost:44316/`. No importa el valor de Hello ya que debería recibir a una API no token Hola directamente desde Azure AD B2C.
+1. Escriba un **URI de identificador de aplicación**. Se trata de identificador hello que se usa para la API web. Por ejemplo, escriba "notas" en el cuadro de Hola. Hola **App ID URI** , a continuación, sería `https://{tenantName}.onmicrosoft.com/notes`.
+1. Haga clic en **crear** tooregister la aplicación.
+1. Haga clic en aplicación Hola que acaba de crear y copiar Hola globalmente único **Id. de aplicación cliente** que va a utilizar más adelante en el código.
 
 ### <a name="publishing-permissions"></a>Publicación de permisos
 
-Los ámbitos, que son análogos a los permisos, son necesarios si la aplicación llama a una API. Algunos ejemplos de ámbitos son "lectura" o "escritura". Imagine que quiere su aplicación web o nativa para "leer" desde una API. Su aplicación llamaría a Azure AD B2C y solicitaría un token de acceso que proporcionara acceso al ámbito "lectura". Para que Azure AD B2C emita semejante token de acceso, debe concederse permiso a la aplicación para "leer" desde la API específica. Para ello, lo primero que debe hacer su API es publicar el ámbito "lectura".
+Los ámbitos, que son análogos toopermissions, son necesarios cuando la aplicación llama a una API. Algunos ejemplos de ámbitos son "lectura" o "escritura". Imagine que desea que su aplicación nativa demasiado "lectura" a través de una API o el web. La aplicación debería llamar a Azure AD B2C y solicitud de token de acceso que proporciona acceso toohello ámbito "lectura". Para Azure AD B2C tooemit un token de acceso de este tipo, aplicación hello debe toobe concedido permiso demasiado "lectura" a través de API específica de Hola. toodo, primero necesita de su API toopublish Hola "lectura" ámbito.
 
-1. En la hoja **Aplicaciones** de Azure AD B2C, abra la aplicación de API web ("API Contoso").
-1. Haga clic en **Ámbitos publicados**. Esto es donde se definen los permisos (ámbitos) que se pueden conceder a otras aplicaciones.
-1. Agregue **Valores de ámbito** según sea necesario (por ejemplo, "lectura"). De forma predeterminada, se definirá el ámbito de "user_impersonation". Puede omitir esto si lo desea. Escriba una descripción del ámbito en la columna **Nombre de ámbito**.
+1. Dentro de Azure AD B2C hello **aplicaciones** hoja, web Hola abrir aplicación API ("API de Contoso").
+1. Haga clic en **Ámbitos publicados**. Esto es donde se definen permisos de hello (ámbitos) que se pueden conceder tooother aplicaciones.
+1. Agregue **Valores de ámbito** según sea necesario (por ejemplo, "lectura"). De forma predeterminada, se definirá el ámbito de "user_impersonation" Hola. Puede omitir esto si lo desea. Escriba una descripción del ámbito de Hola Hola **nombre de ámbito** columna.
 1. Haga clic en **Guardar**.
 
 > [!IMPORTANT]
-> El **Nombre de ámbito** es la descripción del **Valor de ámbito**. Al usar el ámbito, asegúrese de usar el **Valor de ámbito**.
+> Hola **nombre de ámbito** es una descripción de Hola de hello **valor de ámbito**. Cuando se usa el ámbito de hello, que seguro Hola de toouse **valor de ámbito**.
 
-## <a name="grant-a-native-or-web-app-permissions-to-a-web-api"></a>Concesión de permisos de aplicación nativa o web a una API web
+## <a name="grant-a-native-or-web-app-permissions-tooa-web-api"></a>Conceder a nativo o web API web de aplicación permisos tooa
 
-Una vez configurada una API para publicar ámbitos, es necesario que se concedan a la aplicación cliente esos ámbitos a través de Azure Portal.
+Una vez una API toopublish configurado ámbitos, aplicación de cliente de hello necesita toobe conceder esos ámbitos a través de hello portal de Azure.
 
-1. Vaya al menú **Aplicaciones** en la hoja de características de B2C.
-1. Registre una aplicación cliente ([aplicación web](active-directory-b2c-app-registration.md#register-a-web-app) o [cliente nativo](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) si no tiene una todavía. Si sigue esta guía como punto de partida, deberá registrar una aplicación cliente.
+1. Navegue toohello **aplicaciones** menú en la hoja de características de hello B2C.
+1. Registre una aplicación cliente ([aplicación web](active-directory-b2c-app-registration.md#register-a-web-app) o [cliente nativo](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) si no tiene una todavía. Si se sigue a esta guía como punto de partida, deberá tooregister una aplicación cliente.
 1. Haga clic en **Acceso de API**.
 1. Haga clic en **Agregar**.
-1. Seleccione la API web y los ámbitos (permisos) que desea conceder.
+1. Seleccione sus web hello y API ámbitos le gustaría toogrant (permisos).
 1. Haga clic en **Aceptar**.
 
 > [!NOTE]
-> Azure AD B2C no pide el consentimiento de los usuarios de la aplicación cliente. En lugar de eso, el administrador proporciona todo el consentimiento según los permisos configurados entre las aplicaciones descritas anteriormente. Si se revoca un permiso concedido para una aplicación, todos los usuarios que anteriormente podían adquirir ese permiso ya no podrán hacerlo.
+> Azure AD B2C no pide el consentimiento de los usuarios de la aplicación cliente. En su lugar, consentimiento todos lo proporciona Hola, administrador, según los permisos de hello configurados entre aplicaciones de Hola que se ha descrito anteriormente. Si se revoca un permiso concedido para una aplicación, todos los usuarios que estaban previamente podía tooacquire ese permiso dejará de ser capaz de toodo así.
 
 ## <a name="requesting-a-token"></a>Solicitud de un token
 
-Al solicitar un token de acceso, la aplicación cliente debe especificar los permisos que desea en el parámetro **scope** de la solicitud. Por ejemplo, para determinar el **Valor de ámbito** "lectura" de la API que tiene el identificador **URI de id. de aplicación** de `https://contoso.onmicrosoft.com/notes`, el ámbito sería `https://contoso.onmicrosoft.com/notes/read`. A continuación se muestra un ejemplo de solicitud de código de autorización al punto de conexión `/authorize`.
+Cuando se solicita un token de acceso, aplicación de cliente de hello necesita permisos de hello deseado de toospecify en hello **ámbito** parámetro de solicitud de saludo. Por ejemplo, toospecify hello **valor de ámbito** "lectura" para hello API que tiene hello **App ID URI** de `https://contoso.onmicrosoft.com/notes`, ámbito Hola sería `https://contoso.onmicrosoft.com/notes/read`. A continuación se muestra un ejemplo de un toohello de solicitud del código de autorización `/authorize` punto de conexión.
 
 > [!NOTE]
-> Actualmente, los dominios personalizados no se admiten junto con los tokens de acceso. Debe usar su dominio tenantName.onmicrosoft.com en la URL de solicitud.
+> Actualmente, los dominios personalizados no se admiten junto con los tokens de acceso. Debe utilizar su dominio tenantName.onmicrosoft.com en dirección URL de solicitud de saludo.
 
 ```
 https://login.microsoftonline.com/<tenantName>.onmicrosoft.com/oauth2/v2.0/authorize?p=<yourPolicyId>&client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
-Para adquirir varios permisos en la misma solicitud, puede agregar varias entradas en el parámetro **scope** único, separadas por espacios. Por ejemplo:
+tooacquire varios permisos en hello mismo solicitar, puede agregar varias entradas en hello único **ámbito** parámetro, separado por espacios. Por ejemplo:
 
 Dirección URL descodificada:
 
@@ -99,33 +99,33 @@ Dirección URL codificada:
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread%20openid%20offline_access
 ```
 
-También puede solicitar más ámbitos (permisos) para un recurso que lo que se concede para la aplicación cliente. Si este es el caso, la llamada se realizará correctamente si se concede al menos un permiso. La notificación "scp" del **access\_token** resultante se rellena solo con los permisos que se concedieron correctamente.
+También puede solicitar más ámbitos (permisos) para un recurso que lo que se concede para la aplicación cliente. Si este es el caso de hello, llamada Hola se realizará correctamente si se concede permiso al menos uno. Hola resultante **acceso\_token** tendrá su notificación "scp" rellena con solo permisos de hello concedidas correctamente.
 
 > [!NOTE] 
-> No admitimos solicitar permisos para dos recursos web distintos en la misma solicitud. Este tipo de solicitud generará un error.
+> No admitimos solicitar permisos en dos recursos web diferente en hello misma solicitud. Este tipo de solicitud generará un error.
 
 ### <a name="special-cases"></a>Casos especiales
 
-El estándar de OpenID Connect especifica varios valores de "ámbito" especiales. Los ámbitos especiales siguientes representan el permiso para "tener acceso al perfil del usuario":
+Hola OpenID Connect estándar especifica varios valores especiales "ámbito". Hola después demasiado ámbitos especiales representan Hola permiso "acceso al perfil de usuario de hello":
 
 * **openid**: solicita un token de id.
 * **offline\_access**: solicita un token de actualización (con [flujos de código de autenticación](active-directory-b2c-reference-oauth-code.md)).
 
-Si el parámetro `response_type` de una solicitud de `/authorize` incluye `token`, el parámetro `scope` debe incluir al menos un ámbito de recurso (distinto de `openid` y `offline_access`) para su concesión. De lo contrario, la solicitud `/authorize` terminará con un error.
+Si hello `response_type` parámetro en un `/authorize` solicitud incluye `token`, hello `scope` parámetro debe incluir el ámbito de al menos un recurso (excepto `openid` y `offline_access`) que se le concederá. En caso contrario, Hola `/authorize` solicitud se terminará con un error.
 
-## <a name="the-returned-token"></a>El token devuelto
+## <a name="hello-returned-token"></a>Hola devolvió el token
 
-En un **access\_token** que se creó correctamente (desde el punto de conexión `/authorize` o `/token`), existirán las siguientes notificaciones:
+En un correctamente minted **acceso\_token** (desde cualquier hello `/authorize` o `/token` extremo), siguiente Hola notificaciones estará presente:
 
 | Nombre | Notificación | Descripción |
 | --- | --- | --- |
-|Público |`aud` |El **id. de la aplicación** del recurso único al que se le concedió acceso al token. |
-|Scope |`scp` |Los permisos concedidos al recurso. Si se trata de varios permisos concedidos, se separarán con un espacio. |
-|Entidad autorizada |`azp` |El **id. de la aplicación** cliente que inició la solicitud. |
+|Público |`aud` |Hola **Id. de aplicación** de recurso único de hello ese token Hola concede acceso a. |
+|Scope |`scp` |Hola permisos de recurso toohello. Si se trata de varios permisos concedidos, se separarán con un espacio. |
+|Entidad autorizada |`azp` |Hola **Id. de aplicación** de aplicación de cliente de Hola que inició la solicitud de saludo. |
 
-Cuando la API recibe el **access\_token**, debe [validar el token](active-directory-b2c-reference-tokens.md) para demostrar que es auténtico y que tiene las notificaciones correctas.
+Cuando su API recibe hello **acceso\_token**, debe [validar el token de hello](active-directory-b2c-reference-tokens.md) tooprove que Hola token es auténtico y tiene notificaciones correctas de Hola.
 
-Siempre estamos abiertos a todo tipo de comentarios y sugerencias. Si tiene dificultades con este tema, publique en Stack Overflow mediante la etiqueta ['azure-ad-b2c'](https://stackoverflow.com/questions/tagged/azure-ad-b2c). Si tiene solicitudes de características, agréguelas a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Estamos siempre toofeedback abierta y sugerencias. Si tiene dificultades con este tema, publique acerca del desbordamiento de pila con la etiqueta de hello ['azure-ad-b2c'](https://stackoverflow.com/questions/tagged/azure-ad-b2c). Para las solicitudes de características, agregarlos demasiado[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 
 ## <a name="next-steps"></a>Pasos siguientes
 

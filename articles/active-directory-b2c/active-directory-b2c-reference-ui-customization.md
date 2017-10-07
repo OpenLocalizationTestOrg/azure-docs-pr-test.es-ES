@@ -1,6 +1,6 @@
 ---
 title: "Personalización de la interfaz de usuario - Azure AD B2C | Microsoft Docs"
-description: "Tema sobre las características de personalización de la interfaz de usuario de Azure Active Directory B2C"
+description: "Un tema en características de personalización de interfaz de usuario de Hola en Azure Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: saeedakhter-msft
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 04f8c5f1277f8d4409cd10971d22a0ebd2024785
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: personalización de la interfaz de usuario de Azure AD B2C
+# <a name="azure-active-directory-b2c-customize-hello-azure-ad-b2c-user-interface-ui"></a>Azure B2C Directory Active: Personalizar la interfaz de usuario de hello Azure AD B2C (UI)
 
-La experiencia del usuario es primordial en una aplicación de cliente.  Aumentar su base de clientes mediante el diseño de experiencias de usuario con la apariencia de su marca. Azure Active Directory B2C (Azure AD B2C) permite personalizar las páginas de registro, inicio de sesión, edición de perfil y restablecimiento de contraseña del cliente con control perfecto de píxeles.
+La experiencia del usuario es primordial en una aplicación de cliente.  Aumentar a su cliente base diseñando experiencias de usuario con hello apariencia y funcionamiento de la marca. Azure Active Directory B2C (Azure AD B2C) permite personalizar las páginas de registro, inicio de sesión, edición de perfil y restablecimiento de contraseña del cliente con control perfecto de píxeles.
 
 > [!NOTE]
-> La característica de personalización de la interfaz de usuario de la página que se describe en este artículo no se aplica a la directiva de inicio de sesión único, a la página de restablecimiento de contraseña adjunta y a los correos electrónicos de verificación.  Estas características utilizan en su lugar la [característica de personalización de marca de empresa](../active-directory/active-directory-add-company-branding.md).
+> característica de personalización de interfaz de usuario Hola página se describe en este artículo no aplica toohello inicio de sesión única directiva, su página de restablecimiento de contraseña que lo acompaña y correos electrónicos de comprobación.  Estas características utilizan hello [característica de personalización de marca de empresa](../active-directory/active-directory-add-company-branding.md) en su lugar.
 >
 
-En este artículo se tratan los temas siguientes:
+En este artículo se trata Hola temas siguientes:
 
-* La característica de personalización de la interfaz de usuario de la página.
-* Una herramienta para cargar el contenido HTML en Azure Blob Storage para su uso con la característica de personalización de la interfaz de usuario de la página.
-* Los elementos de la interfaz de usuario que usa Azure AD B2C que se pueden personalizar con hojas de estilo CSS.
+* característica de personalización de interfaz de usuario de página de Hola.
+* Una herramienta para cargar tooAzure contenido HTML almacenamiento de blobs para su uso con la característica de personalización de interfaz de usuario de página de Hola.
+* Hola elementos de interfaz de usuario utilizados por Azure AD B2C que se pueden personalizar con hojas de estilos en cascada (CSS).
 * Prácticas recomendadas al usar esta característica.
 
-## <a name="the-page-ui-customization-feature"></a>La característica de personalización de la interfaz de usuario de la página
+## <a name="hello-page-ui-customization-feature"></a>característica de personalización de interfaz de usuario de página de Hola
 
-Puede personalizar la apariencia de las páginas de registro, inicio de sesión, restablecimiento de contraseña y edición de perfil del cliente (mediante la configuración de [directivas](active-directory-b2c-reference-policies.md)). Sus clientes tendrán experiencias más libres al navegar entre su aplicación y las páginas que Azure AD B2C sirve.
+Puede personalizar la apariencia y funcionamiento de Hola de contraseña de inicio de sesión, inicio de sesión de cliente restablecimiento y páginas de edición de perfiles (mediante la configuración de [directivas](active-directory-b2c-reference-policies.md)). Sus clientes tendrán experiencias más libres al navegar entre su aplicación y las páginas que Azure AD B2C sirve.
 
-A diferencia de otros servicios con opciones de interfaz de usuario, Azure AD B2C utiliza un enfoque simple y moderno a la personalización de la interfaz de usuario.
+A diferencia de otros servicios donde opciones de interfaz de usuario, B2C de Azure AD utiliza un simple y modernas enfocan tooUI personalización.
 
-Funciona de la siguiente manera: Azure AD B2C ejecuta código en el explorador del consumidor y usa un enfoque moderno denominado [Uso compartido de recursos entre orígenes (CORS)](http://www.w3.org/TR/cors/).  En tiempo de ejecución, el contenido se carga desde una dirección URL especificada en una directiva. Puede especificar diferentes direcciones URL para distintas páginas. Cuando el contenido cargado desde la dirección URL se combina con un fragmento HTML insertado en Azure AD B2C, se muestra la página al cliente. Todo lo que necesita hacer es:
+Funciona de la siguiente manera: Azure AD B2C ejecuta código en el explorador del consumidor y usa un enfoque moderno denominado [Uso compartido de recursos entre orígenes (CORS)](http://www.w3.org/TR/cors/).  En tiempo de ejecución, el contenido se carga desde una dirección URL especificada en una directiva. Puede especificar diferentes direcciones URL para distintas páginas. Una vez cargado desde la dirección URL de contenido se combina con un fragmento HTML insertado de Azure AD B2C, página de hello es cliente de tooyour mostrado. Todo lo que necesita toodo es:
 
-1. Crear contenido HTML5 con un elemento `<div id="api"></div>` vacío ubicado en algún lugar de `<body>`. Ese elemento marca el lugar en el que se inserta el contenido de Azure AD B2C.
+1. Crear contenido con vacío HTML5 correcto `<div id="api"></div>` elemento ubicado en algún lugar de hello `<body>`. Donde se inserta el contenido de Azure AD B2C hello las marcas de este elemento.
 1. Hospedar el contenido en un punto de conexión HTTPS (donde se permite CORS). Tenga en cuenta que los métodos de solicitud GET y OPTIONS se deben habilitar al configurar CORS.
-1. Utilice CSS para aplicar estilo a los elementos de la interfaz de usuario que inserta Azure AD B2C.
+1. Use elementos de interfaz de usuario de Hola de toostyle CSS que Azure AD B2C inserta.
 
 ### <a name="a-basic-example-of-customized-html"></a>Un ejemplo básico de HTML personalizado
 
-A continuación se muestra un ejemplo del contenido HTML más básico que se puede utilizar para probar esta funcionalidad. Use la [herramienta auxiliar](active-directory-b2c-reference-ui-customization-helper-tool.md) para cargar y configurar este contenido en Azure Blob Storage. A continuación, puede comprobar que los botones básicos, sin estilo y los campos de formulario de cada página se muestran y funcionan.
+Hola siguiente ejemplo es contenido Hola HTML más básico que puede utilizar tootest esta capacidad. Hola de uso [herramienta de Ayudante](active-directory-b2c-reference-ui-customization-helper-tool.md) tooupload y configurar este contenido en el almacenamiento de blobs de Azure. A continuación, puede comprobar que los botones de basic, no en el estilo de hello & campos de formulario en cada página se muestran y funcional.
 
 ```HTML
 <!DOCTYPE html>
@@ -63,21 +63,21 @@ A continuación se muestra un ejemplo del contenido HTML más básico que se pue
 </html>
 ```
 
-## <a name="test-out-the-ui-customization-feature"></a>Prueba de la característica de personalización de la interfaz de usuario
+## <a name="test-out-hello-ui-customization-feature"></a>Pruebe la característica de personalización de interfaz de usuario de Hola
 
-¿Desea probar la característica de personalización de la interfaz de usuario con nuestro contenido HTML y CSS de ejemplo?  Hemos proporcionado [una herramienta auxiliar](active-directory-b2c-reference-ui-customization-helper-tool.md) que carga y configura el contenido de ejemplo en Azure Blob Storage.
+¿Deseado tootry característica de personalización de interfaz de usuario de hello mediante nuestro contenido HTML y CSS de ejemplo?  Hemos proporcionado [una herramienta auxiliar](active-directory-b2c-reference-ui-customization-helper-tool.md) que carga y configura el contenido de ejemplo en Azure Blob Storage.
 
 > [!NOTE]
-> El contenido de la interfaz de usuario se puede hospedar en cualquier lugar: en servidores web, CDN, AWS S3, sistemas de uso compartido de archivos, etc. Mientras el contenido se hospede en un punto de conexión HTTPS disponible públicamente con CORS habilitado, puede continuar. Almacenamiento de blobs de Azure se usa solo con fines ilustrativos.
+> El contenido de la interfaz de usuario se puede hospedar en cualquier lugar: en servidores web, CDN, AWS S3, sistemas de uso compartido de archivos, etc. Como contenido de hello está hospedado en un extremo HTTPS disponible públicamente con CORS habilitado, son buenas toogo. Almacenamiento de blobs de Azure se usa solo con fines ilustrativos.
 >
 
-## <a name="the-ui-fragments-embedded-by-azure-ad-b2c"></a>Fragmentos de la interfaz de usuario insertados por Azure AD B2C
+## <a name="hello-ui-fragments-embedded-by-azure-ad-b2c"></a>fragmentos de interfaz de usuario de Hello incrustados por Azure AD B2C
 
-En las secciones siguientes se muestran fragmentos de HTML5 que Azure AD B2C combina en el elemento `<div id="api"></div>` que se encuentra en su contenido. **No inserte estos fragmentos en el contenido de HTML 5.** El servicio Azure AD B2C los inserta en tiempo de ejecución. Use estos fragmentos como referencia al diseñar sus propias hojas de estilo CSS.
+Hello secciones siguientes enumeran los fragmentos de hello HTML5 que Azure AD B2C combina en hello `<div id="api"></div>` elemento ubicado en el contenido. **No inserte estos fragmentos en el contenido de HTML 5.** servicio de Azure AD B2C Hello en inserta en tiempo de ejecución. Use estos fragmentos como referencia al diseñar sus propias hojas de estilo CSS.
 
-### <a name="fragment-inserted-into-the-identity-provider-selection-page"></a>Fragmento insertado en la "página de selección de proveedores de identidades"
+### <a name="fragment-inserted-into-hello-identity-provider-selection-page"></a>Fragmento inserta Hola "Página de selección del proveedor de identidades"
 
-Esta página contiene una lista de proveedores de identidades que el usuario puede elegir durante el registro o el inicio de sesión. Estos botones incluyen los proveedores de identidades sociales como Facebook y Google+ o las cuentas locales (basadas en una dirección de correo electrónico o un nombre de usuario).
+Esta página contiene una lista de proveedores que Hola usuario pueden elegir entre durante el inicio de sesión o inicio de sesión de identidad. Estos botones incluyen los proveedores de identidades sociales como Facebook y Google+ o las cuentas locales (basadas en una dirección de correo electrónico o un nombre de usuario).
 
 ```HTML
 <div id="api" data-name="IdpSelections">
@@ -101,18 +101,18 @@ Esta página contiene una lista de proveedores de identidades que el usuario pue
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-local-account-sign-up-page"></a>Fragmento insertado en la "página de registro de la cuenta local"
+### <a name="fragment-inserted-into-hello-local-account-sign-up-page"></a>Fragmento insertada Hola "página de inicio de sesión de cuenta Local"
 
-Esta página contiene un formulario para el registro en una cuenta local basada en una dirección de correo electrónico o un nombre de usuario. El formulario puede contener diferentes controles de entrada, como un cuadro de entrada de texto, un cuadro de entrada de contraseña, un botón de radio, cuadros desplegables de selección única y casillas de verificación de selección múltiple.
+Esta página contiene un formulario para el registro en una cuenta local basada en una dirección de correo electrónico o un nombre de usuario. formulario de Hello puede contener diferentes controles de entrada como cuadro de entrada de texto, cuadro de entrada de contraseña, botón de radio, cuadros de lista desplegable de selección única y casillas de verificación de selección múltiple.
 
 ```HTML
 <div id="api" data-name="SelfAsserted">
     <div class="intro">
-        <p>Create your account by providing the following details</p>
+        <p>Create your account by providing hello following details</p>
     </div>
 
     <div id="attributeVerification">
-        <div class="errorText" id="passwordEntryMismatch" style="display: none;">The password entry fields do not match. Please enter the same password in both fields and try again.</div>
+        <div class="errorText" id="passwordEntryMismatch" style="display: none;">hello password entry fields do not match. Please enter hello same password in both fields and try again.</div>
         <div class="errorText" id="requiredFieldMissing" style="display: none;">A required field is missing. Please fill out all required fields and try again.</div>
         <div class="errorText" id="fieldIncorrect" style="display: none;">One or more fields are filled out incorrectly. Please check your entries and try again.</div>
         <div class="errorText" id="claimVerificationServerError" style="display: none;"></div>
@@ -122,17 +122,17 @@ Esta página contiene un formulario para el registro en una cuenta local basada 
                     <div class="attrEntry validate">
                         <div>
                             <div class="verificationInfoText" id="email_intro" style="display: inline;">Verification is necessary. Please click Send button.</div>
-                            <div class="verificationInfoText" id="email_info" style="display:none">Verification code has been sent to your inbox. Please copy it to the input box below.</div>
+                            <div class="verificationInfoText" id="email_info" style="display:none">Verification code has been sent tooyour inbox. Please copy it toohello input box below.</div>
                             <div class="verificationSuccessText" id="email_success" style="display:none">E-mail address verified. You can now continue.</div>
                             <div class="verificationErrorText" id="email_fail_retry" style="display:none">Incorrect code, try again.</div>
-                            <div class="verificationErrorText" id="email_fail_no_retry" style="display:none">Exceeded number of retries you need to send new code.</div>
+                            <div class="verificationErrorText" id="email_fail_no_retry" style="display:none">Exceeded number of retries you need toosend new code.</div>
                             <div class="verificationErrorText" id="email_fail_server" style="display:none">Server error, please try again</div>
                             <div class="verificationErrorText" id="email_incorrect_format" style="display:none">Incorect format.</div>
                         </div>
 
                     <div class="helpText show">This information is required</div>
                         <label>Email</label>
-                        <input id="email" class="textInput" type="text" placeholder="Email" required="" autofocus=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Email address that can be used to contact you.');" class="tiny">What is this?</a>
+                        <input id="email" class="textInput" type="text" placeholder="Email" required="" autofocus=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Email address that can be used toocontact you.');" class="tiny">What is this?</a>
 
                     <div class="buttons verify" claim_id="email">
                         <div id="email_ver_wait" class="working" style="display: none;"></div>
@@ -148,9 +148,9 @@ Esta página contiene un formulario para el registro en una cuenta local basada 
                 </li>
                 <li>
                     <div class="attrEntry">
-                        <div class="helpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
+                        <div class="helpText">8-16 characters, containing 3 out of 4 of hello following: Lowercase characters, uppercase characters, digits (0-9), and one or more of hello following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
                         <label>Enter password</label>
-                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
+                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of hello following: Lowercase characters, uppercase characters, digits (0-9), and one or more of hello following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
                     </div>
                 </li>
                 <li>
@@ -202,7 +202,7 @@ Esta página contiene un formulario para el registro en una cuenta local basada 
                     <div class="attrEntry">
                         <div class="helpText">This information is required</div>
                         <label>Zip code</label>
-                        <input id="postalCode" class="textInput" type="text" placeholder="Zip code" required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('The postal code of your address.');" class="tiny">What is this?</a>
+                        <input id="postalCode" class="textInput" type="text" placeholder="Zip code" required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('hello postal code of your address.');" class="tiny">What is this?</a>
                     </div>
                 </li>
             </ul>
@@ -216,11 +216,11 @@ Esta página contiene un formulario para el registro en una cuenta local basada 
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Fragmento insertado en la "página de registro de la cuenta de redes sociales"
+### <a name="fragment-inserted-into-hello-social-account-sign-up-page"></a>Fragmento inserta Hola "" Social página de cuentas de inicio de sesión"
 
-Esta página puede aparecer al registrarse con una cuenta existente de un proveedor de identidades de redes sociales, como Facebook o Google+.  Se utiliza cuando se debe recopilar información adicional del usuario final mediante un formulario de registro. Esta página es similar a la página de registro de cuenta local (que se muestra en la sección anterior) con la excepción de los campos de entrada de contraseña.
+Esta página puede aparecer al registrarse con una cuenta existente de un proveedor de identidades de redes sociales, como Facebook o Google+.  Se utiliza cuando se debe recopilar información adicional de hello mediante un formulario de inicio de sesión del usuario final. Esta página es similar toohello cuenta local página de registro (que se muestra en la sección anterior de hello) con excepción de Hola de campos de entrada de contraseña de Hola.
 
-### <a name="fragment-inserted-into-the-unified-sign-up-or-sign-in-page"></a>Fragmento insertado en la "página de registro o de inicio de sesión unificada"
+### <a name="fragment-inserted-into-hello-unified-sign-up-or-sign-in-page"></a>Fragmento inserta Hola "Unificado la página de inicio de sesión o inicio de sesión"
 
 Esta página controla tanto la suscripción como el inicio de sesión de los clientes, que pueden utilizar proveedores de identidades sociales como Facebook o Google +, o cuentas locales.
 
@@ -273,7 +273,7 @@ Esta página controla tanto la suscripción como el inicio de sesión de los cli
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-multi-factor-authentication-page"></a>Fragmento insertado en la "página de autenticación multifactor"
+### <a name="fragment-inserted-into-hello-multi-factor-authentication-page"></a>Fragmento insertada Hola "página de la autenticación multifactor"
 
 Esta página permite a los usuarios verificar sus números de teléfono (mediante texto o voz) durante el registro o el inicio de sesión.
 
@@ -281,7 +281,7 @@ Esta página permite a los usuarios verificar sus números de teléfono (mediant
 <div id="api" data-name="Phonefactor">
     <div id="phonefactor_initial">
         <div class="intro">
-            <p>Enter a number below that we can send a code via SMS or phone to authenticate you.</p>
+            <p>Enter a number below that we can send a code via SMS or phone tooauthenticate you.</p>
         </div>
         <div class="errorText" id="errorMessage" style="display:none"></div>
         <div class="phoneEntry" id="phoneEntry">
@@ -317,31 +317,31 @@ Esta página permite a los usuarios verificar sus números de teléfono (mediant
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-error-page"></a>Fragmento insertado en la ""página de error"
+### <a name="fragment-inserted-into-hello-error-page"></a>Fragmento inserta Hola "[NULL]"Página de Error de
 
 ```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">
     <h2>Sorry, but we're having trouble signing you in.</h2>
-    <div class="error-page-help">We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, please try again.</div>
+    <div class="error-page-help">We track these errors automatically, but if hello problem persists feel free toocontact us. In hello meantime, please try again.</div>
     <div class="error-page-messagedetails">Your administrator hasn't provided any contact details.</div>
     <div class="error-page-messagedetails">
         <div class="error-page-correlationid">Correlation ID:1c4f0397-c6e4-4afe-bf74-42f488f2f15f</div>
         <div>Timestamp:2015-09-14 23:22:35Z</div>
-        <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting the remote resource.</div>
+        <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting hello remote resource.</div>
     </div>
 </div>
 ```
 
 ## <a name="localizing-your-html-content"></a>Localización del contenido HTML
 
-Puede localizar el contenido HTML mediante la activación de la característica ["Personalización de idioma"](active-directory-b2c-reference-language-customization.md).  Al habilitar esta característica, Azure AD B2C puede reenviar el parámetro de OpenID Connect, `ui-locales`, al punto de conexión.  El servidor de contenido puede usar este parámetro para proporcionar páginas HTML personalizadas específicas del idioma.
+Puede localizar el contenido HTML mediante la activación de la característica ["Personalización de idioma"](active-directory-b2c-reference-language-customization.md).  Si habilita esta característica permite que Azure AD B2C tooforward Hola conectarse de identificador abierto parámetro, `ui-locales`, tooyour extremo.  El servidor de contenido puede usar este páginas HTML tooprovide personalizado de parámetros que son específicos del idioma.
 
-## <a name="things-to-remember-when-building-your-own-content"></a>Elementos que debe recordar al crear su propio contenido
+## <a name="things-tooremember-when-building-your-own-content"></a>Cosas tooremember al compilar su propio contenido
 
-Si piensa usar la característica de personalización de la interfaz de usuario de la página, revise las siguientes prácticas recomendadas:
+Si tiene previsto característica de personalización de interfaz de usuario de página de toouse hello, revise Hola seguir las prácticas recomendadas:
 
-* No copie el contenido predeterminado de Azure AD B2C ni intente modificarlo. Es preferible generar su propio contenido de HTML5 desde cero y usar la plantilla predeterminada como referencia.
-* Por motivos de seguridad, no le permitimos incluir cualquier código JavaScript en su contenido. La mayor parte de lo que necesita debería estar disponible de fábrica. De no ser así, utilice [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) para solicitar una nueva funcionalidad.
+* No copiar el contenido del hello Azure AD B2C valor predeterminado e intente toomodify lo. Se está toobuild mejor su contenido de HTML5 desde el principio y toouse contenido predeterminado como referencia.
+* Por motivos de seguridad, no permitimos tooinclude todo el código JavaScript en el contenido. La mayor parte de lo que necesita debe estar disponible fuera del cuadro de Hola. Si no es así, use [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) toorequest nueva funcionalidad.
 * Versiones de explorador admitidas:
   * Internet Explorer 11, 10, Edge
   * Compatibilidad limitada con Internet Explorer 9, 8

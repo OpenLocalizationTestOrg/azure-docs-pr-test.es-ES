@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: introducción | Microsoft Docs"
-description: "Habilitación de Azure Active Directory Domain Services mediante Azure Portal (versión preliminar)"
+description: Habilitar Azure Active Directory Domain Services mediante Hola portal de Azure (vista previa)
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: maheshu
-ms.openlocfilehash: 47507096a6245d4f1ba57a652ddf5167b3776ae9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 79cbb21c4a50194f5ad8ca1a4a8493ee4a260a9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Habilitación de Azure Active Directory Domain Services mediante Azure Portal (versión preliminar)
-En este artículo se muestra cómo habilitar Azure Active Directory Domain Services (Azure AD DS) mediante Azure Portal.
+# <a name="enable-azure-active-directory-domain-services-using-hello-azure-portal-preview"></a>Habilitar Azure Active Directory Domain Services mediante Hola portal de Azure (vista previa)
+Este artículo muestra cómo tooenable Azure Active Directory Domain Services (Azure AD DS) con Hola portal de Azure.
 
 
-Para iniciar el Asistente para **habilitar Azure AD Domain Services**, complete los pasos siguientes:
+Hola toolaunch **servicios de dominio de AD de Azure permiten** Hola asistente, completar pasos:
 
-1. Vaya a [Azure Portal](https://portal.azure.com).
-2. En el panel izquierdo, haga clic en **Nuevo**.
-3. En la hoja **Nuevo**, escriba **Domain Services** en la barra de búsqueda.
+1. Vaya toohello [portal de Azure](https://portal.azure.com).
+2. En el panel izquierdo de hello, haga clic en **nuevo**.
+3. Hola **New** hoja, escriba **los servicios de dominio** en la barra de búsqueda de Hola.
 
     ![Buscar servicios de dominio](./media/getting-started/search-domain-services.png)
 
-4. Haga clic para seleccionar **Azure AD Domain Services** en la lista de sugerencias de la búsqueda. En la hoja **Azure AD Domain Services**, haga clic en el botón **Crear**.
+4. Haga clic en tooselect **servicios de dominio de AD de Azure** de lista de Hola de sugerencias de búsqueda. En hello **servicios de dominio de AD de Azure** hoja, haga clic en hello **crear** botón.
 
     ![Hoja Servicios de dominio](./media/getting-started/domain-services-blade.png)
 
-5. Se inicia el Asistente para **habilitar Azure AD Domain Services**.
+5. Hola **servicios de dominio de AD de Azure permiten** se inicia el asistente.
 
 
 ## <a name="task-1-configure-basic-settings"></a>Tarea 1: Configuración básica
-En la página **Conceptos básicos** del asistente, puede especificar el nombre de dominio DNS del dominio administrado. También puede elegir el grupo de recursos y la ubicación de Azure en la que se debe implementar el dominio administrado.
+Hola **Fundamentos** página del Asistente para hello, puede especificar el nombre de dominio DNS de hello para el dominio administrado Hola. También puede elegir el grupo de recursos de Hola y dominio administrado de ubicación de Azure toowhich Hola debe implementarse.
 
 ![Configurar conceptos básicos](./media/getting-started/domain-services-blade-basics.png)
 
-1. Elija el **nombre de dominio DNS** del dominio administrado.
+1. Elija hello **nombre de dominio DNS** para el dominio administrado.
 
-   * De forma predeterminada, se especifica el nombre de dominio predeterminado del directorio (con el sufijo **.onmicrosoft.com**).
+   * nombre de dominio predeterminado de Hello del directorio de hello (con un **. onmicrosoft.com** sufijo) se especifica de forma predeterminada.
 
-   * También puede escribir un nombre de dominio personalizado. En este ejemplo, el nombre de dominio personalizado es *contoso100.com*.
+   * También puede escribir un nombre de dominio personalizado. En este ejemplo, es el nombre de dominio personalizado de hello *contoso100.com*.
 
      > [!WARNING]
-     > El prefijo del nombre de dominio especificado (por ejemplo, *contoso100* en el nombre de dominio *contoso100.com*) debe contener 15 caracteres o menos. No puede crear un dominio administrado con un prefijo de más de 15 caracteres.
+     > prefijo de Hola de su nombre de dominio especificado (por ejemplo, *contoso100* en hello *contoso100.com* nombre de dominio) debe contener 15 caracteres o menos. No puede crear un dominio administrado con un prefijo de más de 15 caracteres.
      >
      >
 
-2. Asegúrese de que el nombre de dominio DNS que ha elegido para el dominio administrado no existe ya en la red virtual. En concreto, compruebe si:
+2. Asegúrese de que ha elegido para hello administrado dominio todavía no existe en la red virtual de hello ese nombre de dominio DNS de Hola. En concreto, compruebe si:
 
-   * Ya tiene un dominio con el mismo nombre de dominio DNS en la red virtual.
+   * Ya tiene un dominio con hello mismo nombre de dominio DNS de red virtual de Hola.
 
-   * La red virtual en la que planea habilitar el dominio administrado tiene una conexión VPN con la red local. En este escenario, asegúrese de que no tiene un dominio con el mismo nombre de dominio DNS de la red local.
+   * red virtual de Hola donde piensa tooenable Hola administrado dominio tiene una conexión VPN con la red local. En este escenario, asegúrese de que no tiene un dominio con hello mismo nombre de dominio DNS de la red local.
 
-   * Si ya dispone de un servicio en la nube con ese nombre en la red virtual.
+   * Tiene un servicio en la nube con ese nombre de red virtual de Hola.
 
-3. Elija el **tipo de red virtual**. De forma predeterminada, el tipo de red virtual del **Administrador de recursos** está seleccionado. Se recomienda usar este tipo de red virtual para los dominios administrados recién creados.
+3. Elija hello **tipo de red virtual**. De forma predeterminada, Hola **el Administrador de recursos** está seleccionado el tipo de red virtual. Se recomienda usar este tipo de red virtual para los dominios administrados recién creados.
 
-4. Seleccione la **suscripción** de Azure en la que desea crear el dominio administrado.
+4. Seleccione hello Azure **suscripción** en el que le gustaría toocreate Hola administrado dominio.
 
-5. Seleccione el **grupo de recursos** al que debería pertenecer el dominio administrado. Puede elegir las opciones **Crear nuevo** o **Utilizar existente** para seleccionar el grupo de recursos.
+5. Seleccione hello **grupo de recursos** toowhich Hola administrado dominio debe pertenecer. Puede elegir cualquier hello **crear nuevo** o **utilizar existente** grupo de recursos de opciones tooselect Hola.
 
-6. Elija la **ubicación** de Azure en que se debe crear el dominio administrado. En la página **Red** del asistente, verá solo las redes virtuales que pertenecen a la ubicación que ha seleccionado.
+6. Elija hello Azure **ubicación** en qué Hola se debe crear un dominio administrado. En hello **red** página del Asistente para hello, verá que las redes virtuales solo pertenecen ubicación toohello ha seleccionado.
 
-7. Cuando haya terminado, haga clic en **Aceptar** para ir a la página **Red** del asistente.
+7. Cuando haya terminado, haga clic en **Aceptar** toomove en toohello **red** página del Asistente para saludo.
 
 
 ## <a name="next-step"></a>Paso siguiente

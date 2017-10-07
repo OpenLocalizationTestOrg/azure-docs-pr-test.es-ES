@@ -14,72 +14,72 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: maheshu
-ms.openlocfilehash: 8306c1ff72d348f5f327b79617e1422a78e26bdb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 804d4ea7d1b3b07b6d224855c7adb90bdfe24022
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Consideraciones de red de Azure AD Domain Services
-## <a name="how-to-select-an-azure-virtual-network"></a>Selección de una instancia de Azure Virtual Network
-Las siguientes directrices le ayudan a seleccionar una red virtual para usarla con Azure AD Domain Services.
+## <a name="how-tooselect-an-azure-virtual-network"></a>¿Cómo tooselect una red virtual de Azure
+Hello instrucciones siguientes le ayudarán a seleccionar una toouse de red virtual con los servicios de dominio de Active Directory de Azure.
 
 ### <a name="type-of-azure-virtual-network"></a>Tipo Azure Virtual Network
 * Azure AD Domain Services se puede habilitar en una instancia clásica de Azure Virtual Network.
 * Azure AD Domain Services **no se puede habilitar en las redes virtuales creadas mediante Azure Resource Manager**.
-* Una red virtual basada en Resource Manager se puede conectar a una red virtual clásica en la que Azure AD Domain Services está habilitado. A partir de ahí, Azure AD Domain Services se puede usar en la instancia de Virtual Network basada en Resource Manager. Para más información, consulte la sección [Conectividad de red](active-directory-ds-networking.md#network-connectivity).
-* **Redes virtuales regionales**: si planea usar una red virtual existente, asegúrese de que sea una red virtual regional.
+* Puede conectar una red virtual basada en el Administrador de recursos tooa clásico red virtual en el que se habilita servicios de dominio de Azure AD. Por lo tanto, puede usar servicios de dominio de AD de Azure en red virtual basada en el Administrador de recursos de Hola. Para obtener más información, vea hello [conectividad de red](active-directory-ds-networking.md#network-connectivity) sección.
+* **Redes virtuales regionales**: si tiene previsto toouse una red virtual existente, asegúrese de que es una red virtual regional.
 
-  * Las redes virtuales que usan el mecanismo de grupos de afinidad heredados no se puede usar con Azure AD Domain Services.
-  * Para usar Azure AD Domain Services, [migre las redes virtuales heredadas a redes virtuales regionales](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+  * Redes virtuales que utilizan el mecanismo de grupos de afinidad heredados hello no se puede usar con los servicios de dominio de Active Directory de Azure.
+  * Servicios de dominio de AD de Azure, toouse [migrar redes virtuales de redes virtuales heredados tooregional](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 
-### <a name="azure-region-for-the-virtual-network"></a>Región de Azure de la red virtual
-* Un dominio administrado de Azure AD Domain Services se implementa en la misma región de Azure que se elija para habilitar el servicio.
+### <a name="azure-region-for-hello-virtual-network"></a>Región de Azure para la red virtual de Hola
+* Los servicios de dominio de AD de Azure dominio administrado se implementa en Hola la misma región de Azure como red virtual de hello en que elegir servicio de hello tooenable.
 * Seleccione una red virtual en una región de Azure compatible con Azure AD Domain Services.
-* Consulte la página de [servicios de Azure por región](https://azure.microsoft.com/regions/#services/) para saber en qué regiones de Azure está disponible Azure AD Domain Services.
+* Vea hello [servicios de Azure por región](https://azure.microsoft.com/regions/#services/) página tooknow Hola regiones de Azure en que los servicios de dominio de Azure AD está disponible.
 
-### <a name="requirements-for-the-virtual-network"></a>Requisitos de la red virtual
-* **Proximidad a las cargas de trabajo de Azure**: seleccione la red virtual que hospeda, o va a hospedar, las máquinas virtuales que necesitan acceso a Azure AD Domain Services.
-* **Servidores DNS personalizados o propios**: asegúrese de que no haya ningún servidor DNS personalizado configurado para la red virtual.
-* **Dominios existentes con el mismo nombre de dominio**: asegúrese de que no tiene un dominio existente con el mismo nombre de dominio disponible en esa red virtual. Por ejemplo, supongamos que tiene un dominio llamado 'contoso.com' ya disponible en la red virtual seleccionada. Posteriormente, intenta habilitar un dominio administrado de Azure AD Domain Services con el mismo nombre de dominio (es decir, "contoso.com") en esa red virtual. Al intentar habilitar Azure AD Domain Services, aparece un error, que se debe a los conflictos de nombre en el nombre de dominio de la red virtual. En esta situación, debe utilizar un nombre diferente para configurar el dominio administrado de los Servicios de dominio de Azure AD. Como alternativa, puede aprovisionar el dominio existente y luego proceder a habilitar los Servicios de dominio de Azure AD.
+### <a name="requirements-for-hello-virtual-network"></a>Requisitos de red virtual de Hola
+* **Proximidad tooyour Azure cargas de trabajo**: seleccione Hola red virtual que hospeda actualmente/va a hospedar las máquinas virtuales que necesitan tener acceso a los servicios de dominio de AD tooAzure.
+* **Los servidores DNS personalizado/bring your own**: asegúrese de que no hay ningún servidor DNS personalizado configurado para la red virtual de Hola.
+* **Hola de dominios existentes con mismo nombre de dominio**: asegúrese de que no tiene un dominio existente con hello mismo nombre de dominio disponible en la red virtual. Por ejemplo, suponga que tiene un dominio denominado "contoso.com" ya está disponible en la red virtual seleccionada de Hola. Más adelante, intente tooenable un dominio administrado de los servicios de dominio de AD de Azure con hello mismo nombre de dominio (es decir, "contoso.com") en la red virtual. Detecta un error al tratar de servicios de dominio de tooenable Azure AD. Este error es debido a conflictos de tooname por nombre de dominio de hello en la red virtual. En esta situación, debe usar un nombre diferente tooset su dominio administrado de los servicios de dominio de AD de Azure. Como alternativa, puede Desaprovisionamiento de dominio existente de hello y, a continuación, continuar tooenable Azure AD los servicios de dominio.
 
 > [!WARNING]
-> Domain Services no se puede mover a otra red virtual después de haber habilitado el servicio.
+> No se puede mover la red virtual de servicios de dominio tooa diferente después de haber habilitado el servicio de Hola.
 >
 >
 
 ## <a name="network-security-groups-and-subnet-design"></a>Grupos de seguridad de red y diseño de subred
-Un [grupo de seguridad de red (NSG)](../virtual-network/virtual-networks-nsg.md) contiene una lista de reglas de lista de control de acceso (ACL) que permiten o deniegan el tráfico de red a sus instancias de máquina virtual en un recurso de Virtual Network. Los NSG se pueden asociar con las subredes o las instancias individuales de máquina virtual dentro de esa subred. Cuando un NSG está asociado a una subred, las reglas de la ACL se aplican a todas las instancias de la máquina virtual de esa subred. Además, el tráfico que se llega a una máquina virtual se puede restringir aún más, para lo que se debe asociar un NSG directamente a dicha máquina virtual.
+A [grupo de seguridad de red (NSG)](../virtual-network/virtual-networks-nsg.md) contiene una lista de reglas de lista de Control de acceso (ACL) que permiten o deniegan el tráfico de red tooyour instancias de máquina virtual en una red Virtual. Los NSG se pueden asociar con las subredes o las instancias individuales de máquina virtual dentro de esa subred. Cuando un NSG está asociado a una subred, las reglas de ACL de hello aplican tooall instancias de máquina virtual de hello en esa subred. Además, el tráfico tooan máquina virtual individual se puede restringir aún más mediante asociar un NSG directamente toothat máquina virtual.
 
 ![Diseño de subred recomendado](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
 ### <a name="best-practices-for-choosing-a-subnet"></a>Procedimientos recomendados para elegir una subred
-* Implemente Azure AD Domain Services en una **subred dedicada independiente** dentro de la instancia de Azure Virtual Network.
-* No aplique los NSG a la subred dedicada para el dominio administrado. Si debe aplicarlos a la subred dedicada, asegúrese de **no bloquear los puertos necesarios para mantener y administrar el dominio**.
-* No restrinja en exceso el número de direcciones IP disponibles dentro de la subred dedicada para el dominio administrado. Esta restricción impide que el servicio ponga dos controladores de dominio a disposición del dominio administrado.
-* **No habilite Azure AD Domain Services en la subred de la puerta de enlace** de la red virtual.
+* Implementar servicios de dominio de AD de Azure tooa **separar subred dedicada** dentro de la red virtual de Azure.
+* No se aplican los NSG toohello dedicado subred para el dominio administrado. Si debe aplicar los NSG toohello dedicado subred, asegúrese de **no bloquear Hola puertos necesarios tooservice y administrar el dominio**.
+* No restringen demasiado el número de Hola de direcciones IP disponibles dentro de la subred de hello dedicado para el dominio administrado. Esta restricción impide que el servicio de Hola que dos controladores de dominio esté disponible para el dominio administrado.
+* **No habilite servicios de dominio de AD de Azure en la subred de puerta de enlace de hello** de la red virtual.
 
 > [!WARNING]
-> Al asociar un NSG a una subred en la que Azure AD Domain Services está habilitado, puede interrumpir la capacidad de Microsoft para mantener y administrar el dominio. Además, se interrumpe la sincronización entre el inquilino de Azure AD y el dominio administrado. **El SLA no es pertinente para aquellas implementaciones en las que se ha aplicado un NSG que impide que Azure AD Domain Services actualice y administre el dominio.**
+> Al asociar un NSG a una subred en el que Servicios de dominio de AD de Azure está habilitado, puede interferir con tooservice de capacidad de Microsoft y administrar el dominio de Hola. Además, se interrumpe la sincronización entre el inquilino de Azure AD y el dominio administrado. **Hola SLA no aplica toodeployments donde un NSG se ha aplicado que bloquea los servicios de dominio de AD de Azure de actualizar y administrar el dominio.**
 >
 >
 
 ### <a name="ports-required-for-azure-ad-domain-services"></a>Puertos necesarios para Azure AD Domain Services
-Los siguientes puertos son necesarios para que Azure AD Domain Services mantenga el dominio administrado. Asegúrese de que no estén bloqueados para la subred en la que ha habilitado el dominio administrado.
+Hello siguientes puertos son necesarios para los servicios de dominio de Azure AD tooservice y mantienen el dominio administrado. Asegúrese de que estos puertos no estén bloqueados para la subred de hello en el que se ha habilitado el dominio administrado.
 
 | Número de puerto | Propósito |
 | --- | --- |
 | 443 |Sincronización con el inquilino de Azure AD |
 | 3389 |Administración del dominio |
 | 5986 |Administración del dominio |
-| 636 |Acceso LDAP seguro (LDAPS) a su dominio administrado |
+| 636 |LDAP (LDAPS) acceso tooyour administrado dominio seguro |
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Grupo de seguridad de red (NSG) de ejemplo para redes virtuales con Azure AD Domain Services
-En la tabla siguiente se muestra un NSG de ejemplo que se puede configurar para una red virtual con un dominio administrado de Azure AD Domain Services. Esta regla permite el tráfico de entrada procedente de los puertos anteriormente especificados para garantizar que el dominio administrado se mantiene revisado, actualizado y puede ser supervisado por Microsoft. La regla predeterminada 'DenyAll' se aplica a todo el tráfico de entrada de Internet.
+Hello en la tabla siguiente muestra un ejemplo de NSG que se puede configurar para una red virtual con un dominio administrado de los servicios de dominio de AD de Azure. Esta regla permite el tráfico entrante de Hola por encima de los puertos especificados tooensure el dominio administrado permanece revisarse, actualiza y puede supervisarse por Microsoft. Hello 'DenyAll' reglas predeterminadas aplican tooall otro tráfico entrante de hello internet.
 
-Además, el NSG muestra también cómo bloquear el acceso LDAP seguro a través de Internet. Omita esta regla si no ha habilitado el acceso de LDAP seguro al dominio administrado a través de Internet. NSG contiene un conjunto de reglas que permiten el acceso LDAPS de entrada a través del puerto TCP 636 solo desde un conjunto especificado de direcciones IP. La regla NSG para permitir el acceso LDAPS a través de Internet desde direcciones IP especificadas tiene una prioridad mayor que la regla NSG DenyAll.
+Además, hello NSG también muestra cómo Hola a toolock hacia abajo el acceso LDAP seguro a través de internet. Omitir esta regla si no ha habilitado LDAP acceso tooyour administrado dominio seguro sobre Hola internet. Hola NSG contiene un conjunto de reglas que permitan el acceso de entrada LDAPS a través del puerto TCP 636 solo de un conjunto especificado de direcciones IP. regla de acceso LDAPS NSG tooallow sobre Hola Hola internet desde direcciones IP especificadas tiene una prioridad más alta que Hola regla DenyAll NSG.
 
-![NSG de muestra para el acceso LDAPS seguro a través de Internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+![Acceso de ejemplo NSG toosecure LDAPS sobre Hola internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
 **Más información** - [Creación de un grupo de seguridad de red](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
 
@@ -88,34 +88,34 @@ Además, el NSG muestra también cómo bloquear el acceso LDAP seguro a través 
 Un dominio administrado de Azure AD Domain Services solo se puede habilitar dentro de una única instancia de clásica de Azure Virtual Network. No se admiten las redes virtuales creadas mediante Azure Resource Manager.
 
 ### <a name="scenarios-for-connecting-azure-networks"></a>Escenarios para la conexión de Azure Networks
-Conecte instancias de Azure Virtual Network para usar el dominio administrado en cualquiera de los siguientes escenarios de implementación:
+Conectar redes virtuales de Azure toouse Hola dominio administrado en cualquiera de hello los escenarios de implementación siguientes:
 
-#### <a name="use-the-managed-domain-in-more-than-one-azure-classic-virtual-network"></a>Utilice el dominio administrado en más de una instancia clásica de Azure Virtual Network
-Puede conectar otras instancias clásicas de Azure Virtual Network a la red virtual la que ha habilitado Azure AD Domain Services. Esta conexión VPN le permite usar el dominio administrado con sus cargas de trabajo implementadas en otras redes virtuales.
+#### <a name="use-hello-managed-domain-in-more-than-one-azure-classic-virtual-network"></a>Hola uso administrados dominio en más de una red virtual de Azure clásica
+Puede conectar otro toohello de redes virtuales de Azure clásico Azure clásico red virtual en el que ha habilitado los servicios de dominio de AD de Azure. Esta conexión VPN permite toouse Hola administrado dominio con las cargas de trabajo implementados en otras redes virtuales.
 
 ![Conectividad de red virtual clásica](./media/active-directory-domain-services-design-guide/classic-vnet-connectivity.png)
 
-#### <a name="use-the-managed-domain-in-a-resource-manager-based-virtual-network"></a>Uso del dominio administrado en una instancia de Virtual Network basada en Resource Manager
-Una red virtual basada en Resource Manager se puede conectar a una instancia clásica de Azure Virtual Network en la que Azure AD Domain Services se ha habilitado. Esta conexión le permite usar el dominio administrado con las cargas de trabajo implementados en la instancia de Virtual Network basada en Resource Manager.
+#### <a name="use-hello-managed-domain-in-a-resource-manager-based-virtual-network"></a>Utilizar el dominio administrado hello en una red virtual basada en el Administrador de recursos
+Puede conectarse un toohello de red virtual basada en el Administrador de recursos de Azure clásico red virtual en el que ha habilitado los servicios de dominio de AD de Azure. Esta conexión permite toouse Hola administrado dominio con las cargas de trabajo implementados en la red virtual basada en el Administrador de recursos de Hola.
 
-![Conectividad de Resource Manager a una instancia clásica de Virtual Network](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
+![Conectividad de red virtual del Administrador de recursos tooclassic](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
 
 ### <a name="network-connection-options"></a>Opciones de conexión de red
-* **Conexiones de red virtual a red virtual mediante conexiones VPN de sitio a sitio**: la conexión de una red virtual a otra (de red virtual a red virtual) es parecida a la conexión de una red virtual a la ubicación de un sitio local. Ambos tipos de conectividad usan una instancia de VPN Gateway para proporcionar un túnel seguro con IPsec/IKE.
+* **Las conexiones de red virtual a red virtual con conexiones VPN de sitio a sitio**: conectar una red virtual (VNet a VNet) tooanother de red virtual es similar tooconnecting una ubicación de sitio de red virtual tooan local. Ambos tipos de conectividad usan un tooprovide de puerta de enlace VPN un túnel seguro mediante IPsec/IKE.
 
     ![Conectividad de Virtual Network mediante VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
     [Más información: conectar redes virtuales mediante VPN Gateway](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-* **Conexiones de red virtual a red virtual mediante el emparejamiento de red virtual**: el emparejamiento de Virtual Network es un mecanismo que conecta dos redes virtuales de la misma región mediante la red troncal de Azure. Una vez emparejadas, las dos redes virtuales aparecen como una sola a efectos de conectividad. No obstante, se administran como recursos independientes, pero las máquinas virtuales de estas redes virtuales pueden comunicarse entre sí directamente mediante sus direcciones IP privadas.
+* **Intercambio de tráfico de red de las conexiones de red virtual a red virtual con virtual**: intercambio de tráfico de red Virtual es un mecanismo que conecta dos redes virtuales en hello misma región a través de la red troncal de Azure de Hola. Una vez emparejar, aparecerán las dos redes virtuales de hello uno para todos los propósitos de conectividad. No obstante, se administran como recursos independientes, pero las máquinas virtuales de estas redes virtuales pueden comunicarse entre sí directamente mediante sus direcciones IP privadas.
 
     ![Conectividad de Virtual Network mediante emparejamiento](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
-    [Más información: emparejamiento de Virtual Network](../virtual-network/virtual-network-peering-overview.md)
+    [Más información: emparejamiento de red virtual](../virtual-network/virtual-network-peering-overview.md)
 
 <br>
 
 ## <a name="related-content"></a>Contenido relacionado
 * [Emparejamiento de Azure Virtual Network](../virtual-network/virtual-network-peering-overview.md)
-* [Configuración de una conexión de red virtual a red virtual para el modelo de implementación clásico](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
+* [Configurar una conexión de red virtual a red virtual para el modelo de implementación clásica de Hola](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Grupos de seguridad de la red de Azure](../virtual-network/virtual-networks-nsg.md)
 * [Creación de un grupo de seguridad de red](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
