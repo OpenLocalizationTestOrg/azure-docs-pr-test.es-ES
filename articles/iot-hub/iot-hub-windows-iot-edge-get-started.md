@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure IoT Edge (Windows) | Documentos de Microsoft"
-description: "Cómo crear una puerta de enlace de Azure IoT Edge en un equipo Windows y obtener información sobre los conceptos claves de Azure IoT Edge, como los módulos y los archivos de configuración de JSON."
+title: aaaGet a trabajar con el borde de IoT de Azure (Windows) | Documentos de Microsoft
+description: "¿Cómo toobuild una puerta de enlace de borde de IoT de Azure en una ventana de la máquina y obtener información sobre los conceptos clave de borde de IoT de Azure como módulos y archivos de configuración de JSON."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,28 +15,28 @@ ms.workload: na
 ms.date: 06/07/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5db39bab8e31a8e7026b34e72b4614b0f6f57772
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5dd13cbfc02eeb55d9f2dbffca5021f2624acf14
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="explore-azure-iot-edge-architecture-on-windows"></a><span data-ttu-id="b1d8f-103">Explorar la arquitectura de Azure IoT Edge en Windows</span><span class="sxs-lookup"><span data-stu-id="b1d8f-103">Explore Azure IoT Edge architecture on Windows</span></span>
+# <a name="explore-azure-iot-edge-architecture-on-windows"></a><span data-ttu-id="b42e5-103">Explorar la arquitectura de Azure IoT Edge en Windows</span><span class="sxs-lookup"><span data-stu-id="b42e5-103">Explore Azure IoT Edge architecture on Windows</span></span>
 
 [!INCLUDE [iot-hub-iot-edge-getstarted-selector](../../includes/iot-hub-iot-edge-getstarted-selector.md)]
 
 [!INCLUDE [iot-hub-iot-edge-install-build-windows](../../includes/iot-hub-iot-edge-install-build-windows.md)]
 
-## <a name="how-to-run-the-sample"></a><span data-ttu-id="b1d8f-104">Ejecución del ejemplo</span><span class="sxs-lookup"><span data-stu-id="b1d8f-104">How to run the sample</span></span>
+## <a name="how-toorun-hello-sample"></a><span data-ttu-id="b42e5-104">¿Cómo toorun Hola ejemplo</span><span class="sxs-lookup"><span data-stu-id="b42e5-104">How toorun hello sample</span></span>
 
-<span data-ttu-id="b1d8f-105">El script **build.cmd** genera su salida en la carpeta **build** de la copia local del repositorio **iot-edge**.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-105">The **build.cmd** script generates its output in the **build** folder in your local copy of the **iot-edge** repository.</span></span> <span data-ttu-id="b1d8f-106">Esta salida incluye los dos módulos de IoT Edge utilizados en este ejemplo.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-106">This output includes the two IoT Edge modules used in this sample.</span></span>
+<span data-ttu-id="b42e5-105">Hola **build.cmd** script genera su resultado en hello **generar** carpeta de la copia local de hello **iot borde** repositorio.</span><span class="sxs-lookup"><span data-stu-id="b42e5-105">hello **build.cmd** script generates its output in hello **build** folder in your local copy of hello **iot-edge** repository.</span></span> <span data-ttu-id="b42e5-106">Esta salida incluye dos módulos de borde IoT Hola utilizados en este ejemplo.</span><span class="sxs-lookup"><span data-stu-id="b42e5-106">This output includes hello two IoT Edge modules used in this sample.</span></span>
 
-<span data-ttu-id="b1d8f-107">El script de compilación coloca **logger.dll** en la carpeta **build\\modules\\logger\\Debug** y **hello\_world.dll** en la carpeta **build\\modules\\hello_world\\Debug**.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-107">The build script places **logger.dll** in the **build\\modules\\logger\\Debug** folder and **hello\_world.dll** in the **build\\modules\\hello_world\\Debug** folder.</span></span> <span data-ttu-id="b1d8f-108">Utilice estas rutas de acceso para los valores de **ruta de acceso del módulo**, tal y como se muestra en el archivo de configuración JSON siguiente.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-108">Use these paths for the **module path** values as shown in the following JSON settings file.</span></span>
+<span data-ttu-id="b42e5-107">Hola lugares de la secuencia de comandos de compilación **logger.dll** en hello **generar\\módulos\\registrador\\depurar** carpeta y **hello\_world.dll**  en hello **generar\\módulos\\hello_world\\depurar** carpeta.</span><span class="sxs-lookup"><span data-stu-id="b42e5-107">hello build script places **logger.dll** in hello **build\\modules\\logger\\Debug** folder and **hello\_world.dll** in hello **build\\modules\\hello_world\\Debug** folder.</span></span> <span data-ttu-id="b42e5-108">Usar estas rutas de acceso para hello **ruta de acceso del módulo** valores tal y como se muestra en el siguiente archivo de configuración de JSON de Hola.</span><span class="sxs-lookup"><span data-stu-id="b42e5-108">Use these paths for hello **module path** values as shown in hello following JSON settings file.</span></span>
 
-<span data-ttu-id="b1d8f-109">El proceso de hello\_world\_sample toma la ruta de acceso a un archivo de configuración JSON como argumento de línea de comandos.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-109">The hello\_world\_sample process takes the path to a JSON configuration file as a command-line argument.</span></span> <span data-ttu-id="b1d8f-110">El siguiente archivo JSON de ejemplo se encuentra en el repositorio de SDK, en **samples\\hello\_world\\src\\hello\_world\_win.json**.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-110">The following example JSON file is provided in the SDK repository at **samples\\hello\_world\\src\\hello\_world\_win.json**.</span></span> <span data-ttu-id="b1d8f-111">Este archivo de configuración funcionará tal y como está, a menos que se modifique el script de compilación para colocar los módulos de IoT Edge o los ejecutables de ejemplo en ubicaciones que no sean las predeterminadas.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-111">This configuration file works as is unless you modify the build script to place the IoT Edge modules or sample executables in non-default locations.</span></span>
+<span data-ttu-id="b42e5-109">Hola Hola\_world\_proceso de ejemplo toma el archivo de configuración de hello ruta de acceso tooa JSON como un argumento de línea de comandos.</span><span class="sxs-lookup"><span data-stu-id="b42e5-109">hello hello\_world\_sample process takes hello path tooa JSON configuration file as a command-line argument.</span></span> <span data-ttu-id="b42e5-110">siguiente archivo JSON de ejemplo Hola se proporciona una en el repositorio SDK de hello en **ejemplos\\hello\_world\\src\\hello\_world\_win.json**.</span><span class="sxs-lookup"><span data-stu-id="b42e5-110">hello following example JSON file is provided in hello SDK repository at **samples\\hello\_world\\src\\hello\_world\_win.json**.</span></span> <span data-ttu-id="b42e5-111">Este archivo de configuración funciona tal cual a menos que modifique Hola compilar hello de la secuencia de comandos tooplace IoT borde módulos o archivos ejecutables en ubicaciones no predeterminadas de ejemplo.</span><span class="sxs-lookup"><span data-stu-id="b42e5-111">This configuration file works as is unless you modify hello build script tooplace hello IoT Edge modules or sample executables in non-default locations.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b1d8f-112">Las rutas de acceso del módulo son relativas al directorio en el que se encuentra hello\_world\_sample.exe.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-112">The module paths are relative to the directory where the hello\_world\_sample.exe is located.</span></span> <span data-ttu-id="b1d8f-113">De manera predeterminada, el archivo de configuración JSON de ejemplo escribe "log.txt" en el directorio de trabajo actual.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-113">The sample JSON configuration file defaults to writing 'log.txt' in your current working directory.</span></span>
+> <span data-ttu-id="b42e5-112">las rutas de acceso del módulo de Hello son toohello relativa directorio donde hello hello\_world\_sample.exe se encuentra.</span><span class="sxs-lookup"><span data-stu-id="b42e5-112">hello module paths are relative toohello directory where hello hello\_world\_sample.exe is located.</span></span> <span data-ttu-id="b42e5-113">ejemplo de Hola a JSON configuración archivo los valores predeterminados toowriting 'log.txt' en el directorio de trabajo actual.</span><span class="sxs-lookup"><span data-stu-id="b42e5-113">hello sample JSON configuration file defaults toowriting 'log.txt' in your current working directory.</span></span>
 
 ```json
 {
@@ -71,9 +71,9 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-1. <span data-ttu-id="b1d8f-114">Vaya a la carpeta **build** en la raíz de la copia local del repositorio **iot-edge**.</span><span class="sxs-lookup"><span data-stu-id="b1d8f-114">Navigate to the **build** folder in the root of your local copy of the **iot-edge** repository.</span></span>
+1. <span data-ttu-id="b42e5-114">Navegue toohello **generar** carpeta del directorio raíz de Hola de su copia local de hello **iot borde** repositorio.</span><span class="sxs-lookup"><span data-stu-id="b42e5-114">Navigate toohello **build** folder in hello root of your local copy of hello **iot-edge** repository.</span></span>
 
-1. <span data-ttu-id="b1d8f-115">Ejecute el siguiente comando:</span><span class="sxs-lookup"><span data-stu-id="b1d8f-115">Run the following command:</span></span>
+1. <span data-ttu-id="b42e5-115">Ejecute el siguiente comando de hello:</span><span class="sxs-lookup"><span data-stu-id="b42e5-115">Run hello following command:</span></span>
 
     ```cmd
     samples\hello_world\Debug\hello_world_sample.exe ..\samples\hello_world\src\hello_world_win.json

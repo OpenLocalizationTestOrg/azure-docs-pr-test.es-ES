@@ -14,13 +14,13 @@
 ## [Detección de orígenes de datos](data-catalog-how-to-discover.md)
 ## [Anotación de orígenes de datos registrados](data-catalog-how-to-annotate.md)
 ## [Orígenes de datos de documentos](data-catalog-how-to-documentation.md)
-## [Conexión a orígenes de datos](data-catalog-how-to-connect.md)
+## [Conexión de orígenes de toodata](data-catalog-how-to-connect.md)
 ## [Trabajo con orígenes de macrodatos](data-catalog-how-to-big-data.md)
 ## [Orígenes de datos de perfiles de datos](data-catalog-how-to-data-profile.md)
 ## [Administración de recursos de datos](data-catalog-how-to-manage.md)
 ## [Guardado de búsquedas y anclado de recursos de datos](data-catalog-how-to-save-pin.md)
-## [Configuración del glosario empresarial](data-catalog-how-to-business-glossary.md)
-## [Acceso seguro al catálogo de datos](data-catalog-how-to-secure-catalog.md)
+## [Configurar los glosarios empresariales de Hola](data-catalog-how-to-business-glossary.md)
+## [Catálogo de toodata un acceso seguro](data-catalog-how-to-secure-catalog.md)
 ## [Visualización de los recursos de datos relacionados](data-catalog-how-to-view-related-data-assets.md) 
 
 # Referencia

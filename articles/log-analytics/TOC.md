@@ -44,7 +44,7 @@
 ### [Preguntas más frecuentes](log-analytics-log-search-faq.md)
 ### [Introducción a búsquedas de registros](log-analytics-log-search-new.md)
 ### [Portales de búsqueda de registros](log-analytics-log-search-portals.md)
-#### [Uso del portal de búsqueda de registros](log-analytics-log-search-log-search-portal.md)
+#### [Portal de la búsqueda de registro de uso Hola](log-analytics-log-search-log-search-portal.md)
 ### [Transición desde el lenguaje heredado](log-analytics-log-search-transition.md)
 ### [Conector de Flow](log-analytics-flow-tutorial.md)
 

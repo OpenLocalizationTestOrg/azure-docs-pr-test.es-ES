@@ -1,6 +1,6 @@
 ---
-title: "Habilitación automática de Configuración de diagnóstico con una plantilla de Resource Manager | Microsoft Docs"
-description: "Aprenda a usar una plantilla de Resource Manager para crear una configuración de diagnóstico que le permitirá transmitir los registros de diagnóstico a centros de eventos o almacenarlos en una cuenta de almacenamiento."
+title: "aaaAutomatically habilitar la configuración de diagnóstico mediante una plantilla de administrador de recursos | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse un administrador de recursos plantilla toocreate configuración de diagnóstico que le permitirá toostream su diagnóstico registra tooEvent concentradores o almacenarlas en una cuenta de almacenamiento."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2017
 ms.author: johnkem
-ms.openlocfilehash: dde2435e976bbd14ca35cccc714ea21dcc5817b7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8f38731107029928029c6d940da7bd076fea5d49
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a><span data-ttu-id="b3eeb-103">Habilitación automática de Configuración de diagnóstico al crear recursos con una plantilla de Resource Manager</span><span class="sxs-lookup"><span data-stu-id="b3eeb-103">Automatically enable Diagnostic Settings at resource creation using a Resource Manager template</span></span>
-<span data-ttu-id="b3eeb-104">En este artículo se muestra cómo usar una [plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) para establecer Configuración de diagnóstico en un recurso cuando se crea.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-104">In this article we show how you can use an [Azure Resource Manager template](../azure-resource-manager/resource-group-authoring-templates.md) to configure Diagnostic Settings on a resource when it is created.</span></span> <span data-ttu-id="b3eeb-105">Esto permite empezar automáticamente a transmitir las métricas y los registros de diagnóstico a Event Hubs, a archivarlos en una cuenta de almacenamiento o a enviarlos a Log Analytics cuando se crea un recurso.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-105">This enables you to automatically start streaming your Diagnostic Logs and metrics to Event Hubs, archiving them in a Storage Account, or sending them to Log Analytics when a resource is created.</span></span>
+# <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a><span data-ttu-id="7b21c-103">Habilitación automática de Configuración de diagnóstico al crear recursos con una plantilla de Resource Manager</span><span class="sxs-lookup"><span data-stu-id="7b21c-103">Automatically enable Diagnostic Settings at resource creation using a Resource Manager template</span></span>
+<span data-ttu-id="7b21c-104">En este artículo se muestra cómo se puede utilizar un [plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) tooconfigure configuración de diagnóstico en un recurso cuando se crea.</span><span class="sxs-lookup"><span data-stu-id="7b21c-104">In this article we show how you can use an [Azure Resource Manager template](../azure-resource-manager/resource-group-authoring-templates.md) tooconfigure Diagnostic Settings on a resource when it is created.</span></span> <span data-ttu-id="7b21c-105">Esto le permite iniciar tooautomatically su tooEvent registros de diagnóstico y las métricas de los concentradores, archivarlos en una cuenta de almacenamiento, o bien enviarlas tooLog análisis cuando se crea un recurso de transmisión por secuencias.</span><span class="sxs-lookup"><span data-stu-id="7b21c-105">This enables you tooautomatically start streaming your Diagnostic Logs and metrics tooEvent Hubs, archiving them in a Storage Account, or sending them tooLog Analytics when a resource is created.</span></span>
 
-<span data-ttu-id="b3eeb-106">El método para habilitar registros de diagnóstico mediante una plantilla de Resource Manager depende del tipo de recurso.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-106">The method for enabling Diagnostic Logs using a Resource Manager template depends on the resource type.</span></span>
+<span data-ttu-id="7b21c-106">método Hello para habilitar registros de diagnóstico mediante una plantilla de administrador de recursos depende del tipo de recurso de Hola.</span><span class="sxs-lookup"><span data-stu-id="7b21c-106">hello method for enabling Diagnostic Logs using a Resource Manager template depends on hello resource type.</span></span>
 
-* <span data-ttu-id="b3eeb-107">**no de proceso** (por ejemplo, Grupos de seguridad de red, Logic Apps, Automatización) usan [Configuración de diagnóstico como se describe en este artículo](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).</span><span class="sxs-lookup"><span data-stu-id="b3eeb-107">**Non-Compute** resources (for example, Network Security Groups, Logic Apps, Automation) use [Diagnostic Settings described in this article](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).</span></span>
-* <span data-ttu-id="b3eeb-108">**de proceso** (basados en WAD/LAD) usan el [archivo de configuración de WAD/LAD descrito en este artículo](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).</span><span class="sxs-lookup"><span data-stu-id="b3eeb-108">**Compute** (WAD/LAD-based) resources use the [WAD/LAD configuration file described in this article](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).</span></span>
+* <span data-ttu-id="7b21c-107">**no de proceso** (por ejemplo, Grupos de seguridad de red, Logic Apps, Automatización) usan [Configuración de diagnóstico como se describe en este artículo](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).</span><span class="sxs-lookup"><span data-stu-id="7b21c-107">**Non-Compute** resources (for example, Network Security Groups, Logic Apps, Automation) use [Diagnostic Settings described in this article](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).</span></span>
+* <span data-ttu-id="7b21c-108">**Proceso** (WAD/LAD-based) recursos usan hello [archivo de configuración de WAD/LAD descrito en este artículo](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).</span><span class="sxs-lookup"><span data-stu-id="7b21c-108">**Compute** (WAD/LAD-based) resources use hello [WAD/LAD configuration file described in this article](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).</span></span>
 
-<span data-ttu-id="b3eeb-109">En este artículo se describe cómo configurar diagnósticos mediante cualquiera de estos métodos.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-109">In this article we describe how to configure diagnostics using either method.</span></span>
+<span data-ttu-id="7b21c-109">En este artículo se describe cómo diagnósticos de tooconfigure mediante cualquiera de estos métodos.</span><span class="sxs-lookup"><span data-stu-id="7b21c-109">In this article we describe how tooconfigure diagnostics using either method.</span></span>
 
-<span data-ttu-id="b3eeb-110">Los pasos básicos son los siguientes:</span><span class="sxs-lookup"><span data-stu-id="b3eeb-110">The basic steps are as follows:</span></span>
+<span data-ttu-id="7b21c-110">pasos básicos de Hello son los siguientes:</span><span class="sxs-lookup"><span data-stu-id="7b21c-110">hello basic steps are as follows:</span></span>
 
-1. <span data-ttu-id="b3eeb-111">Cree una plantilla como archivo JSON que describa cómo crear el recurso y habilitar los diagnósticos.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-111">Create a template as a JSON file that describes how to create the resource and enable diagnostics.</span></span>
-2. <span data-ttu-id="b3eeb-112">[Implemente la plantilla mediante cualquier método de implementación](../azure-resource-manager/resource-group-template-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="b3eeb-112">[Deploy the template using any deployment method](../azure-resource-manager/resource-group-template-deploy.md).</span></span>
+1. <span data-ttu-id="7b21c-111">Crear una plantilla como un archivo JSON que describe cómo toocreate Hola recursos y habilitar los diagnósticos.</span><span class="sxs-lookup"><span data-stu-id="7b21c-111">Create a template as a JSON file that describes how toocreate hello resource and enable diagnostics.</span></span>
+2. <span data-ttu-id="7b21c-112">[Implementar la plantilla de hello mediante cualquier método de implementación](../azure-resource-manager/resource-group-template-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="7b21c-112">[Deploy hello template using any deployment method](../azure-resource-manager/resource-group-template-deploy.md).</span></span>
 
-<span data-ttu-id="b3eeb-113">A continuación, se ofrece un ejemplo del archivo JSON de plantilla que debe generar para los recursos de proceso y los que no lo son.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-113">Below we give an example of the template JSON file you need to generate for non-Compute and Compute resources.</span></span>
+<span data-ttu-id="7b21c-113">A continuación le ofrecemos un ejemplo de Hola plantilla archivo JSON que necesita toogenerate para no son de cálculo y los recursos de proceso.</span><span class="sxs-lookup"><span data-stu-id="7b21c-113">Below we give an example of hello template JSON file you need toogenerate for non-Compute and Compute resources.</span></span>
 
-## <a name="non-compute-resource-template"></a><span data-ttu-id="b3eeb-114">Plantilla para recursos no de proceso</span><span class="sxs-lookup"><span data-stu-id="b3eeb-114">Non-Compute resource template</span></span>
-<span data-ttu-id="b3eeb-115">Para recursos no de proceso, debe hacer dos cosas:</span><span class="sxs-lookup"><span data-stu-id="b3eeb-115">For non-Compute resources, you will need to do two things:</span></span>
+## <a name="non-compute-resource-template"></a><span data-ttu-id="7b21c-114">Plantilla para recursos no de proceso</span><span class="sxs-lookup"><span data-stu-id="7b21c-114">Non-Compute resource template</span></span>
+<span data-ttu-id="7b21c-115">Para recursos de proceso distinta, deberá toodo dos cosas:</span><span class="sxs-lookup"><span data-stu-id="7b21c-115">For non-Compute resources, you will need toodo two things:</span></span>
 
-1. <span data-ttu-id="b3eeb-116">Agregue parámetros al blob de parámetros para el nombre de cuenta de almacenamiento, el identificador de regla de Service Bus o el identificador del área de trabajo de Log Analytics de OMS (esto habilita el archivado de registros de diagnóstico en una cuenta de almacenamiento, el streaming de registros a Event Hubs o el envío de registros a Log Analytics).</span><span class="sxs-lookup"><span data-stu-id="b3eeb-116">Add parameters to the parameters blob for the storage account name, service bus rule ID, and/or OMS Log Analytics workspace ID (enabling archival of Diagnostic Logs in a storage account, streaming of logs to Event Hubs, and/or sending logs to Log Analytics).</span></span>
+1. <span data-ttu-id="7b21c-116">Agregue el blob de parámetros de toohello de parámetros para el nombre de cuenta de almacenamiento de hello, Id. de regla de bus de servicio o Id. de área de trabajo de análisis de registros de OMS (habilitar el archivado de registros de diagnóstico en una cuenta de almacenamiento, la transmisión por secuencias de registros tooEvent concentradores, y/o el envío de registros tooLog análisis).</span><span class="sxs-lookup"><span data-stu-id="7b21c-116">Add parameters toohello parameters blob for hello storage account name, service bus rule ID, and/or OMS Log Analytics workspace ID (enabling archival of Diagnostic Logs in a storage account, streaming of logs tooEvent Hubs, and/or sending logs tooLog Analytics).</span></span>
    
     ```json
     "storageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+        "description": "Name of hello Storage Account in which Diagnostic Logs should be saved."
       }
     },
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Service Bus Rule Id for hello Service Bus Namespace in which hello Event Hub should be created or streamed to."
       }
     },
     "workspaceId":{
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Log Analytics workspace ID for hello Log Analytics workspace toowhich logs will be sent."
       }
     }
     ```
-2. <span data-ttu-id="b3eeb-117">En la matriz de recursos del recurso para el que desea habilitar los registros de diagnóstico, agregue un recurso de tipo `[resource namespace]/providers/diagnosticSettings`.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-117">In the resources array of the resource for which you want to enable Diagnostic Logs, add a resource of type `[resource namespace]/providers/diagnosticSettings`.</span></span>
+2. <span data-ttu-id="7b21c-117">En la matriz de recursos de hello del recurso de hello para el que desea que los registros de diagnóstico de tooenable, agregue un recurso de tipo `[resource namespace]/providers/diagnosticSettings`.</span><span class="sxs-lookup"><span data-stu-id="7b21c-117">In hello resources array of hello resource for which you want tooenable Diagnostic Logs, add a resource of type `[resource namespace]/providers/diagnosticSettings`.</span></span>
    
     ```json
     "resources": [
@@ -102,9 +102,9 @@ ms.lasthandoff: 08/18/2017
     ]
     ```
 
-<span data-ttu-id="b3eeb-118">El blob de propiedades para la configuración de diagnóstico sigue [el formato descrito en este artículo](https://msdn.microsoft.com/library/azure/dn931931.aspx).</span><span class="sxs-lookup"><span data-stu-id="b3eeb-118">The properties blob for the Diagnostic Setting follows [the format described in this article](https://msdn.microsoft.com/library/azure/dn931931.aspx).</span></span> <span data-ttu-id="b3eeb-119">Al agregar la propiedad `metrics`, también podrá enviar métricas de recursos para estos mismos resultados, siempre y cuando [los recursos admitan las métricas de Azure Monitor](monitoring-supported-metrics.md).</span><span class="sxs-lookup"><span data-stu-id="b3eeb-119">Adding the `metrics` property will enable you to also send resource metrics to these same outputs, provided that [the resource supports Azure Monitor metrics](monitoring-supported-metrics.md).</span></span>
+<span data-ttu-id="7b21c-118">sigue Hello blob de propiedades de configuración de diagnóstico de hello [formato de hello descrito en este artículo](https://msdn.microsoft.com/library/azure/dn931931.aspx).</span><span class="sxs-lookup"><span data-stu-id="7b21c-118">hello properties blob for hello Diagnostic Setting follows [hello format described in this article](https://msdn.microsoft.com/library/azure/dn931931.aspx).</span></span> <span data-ttu-id="7b21c-119">Agregar hello `metrics` propiedad le permitirá toothese de métricas de recursos tooalso envío mismo genera, siempre que [recursos hello es compatible con métricas de supervisión de Azure](monitoring-supported-metrics.md).</span><span class="sxs-lookup"><span data-stu-id="7b21c-119">Adding hello `metrics` property will enable you tooalso send resource metrics toothese same outputs, provided that [hello resource supports Azure Monitor metrics](monitoring-supported-metrics.md).</span></span>
 
-<span data-ttu-id="b3eeb-120">Este es un ejemplo completo en el que se crea una aplicación lógica y se activa la transmisión a Event Hubs y el almacenamiento en una cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-120">Here is a full example that creates a Logic App and turns on streaming to Event Hubs and storage in a storage account.</span></span>
+<span data-ttu-id="7b21c-120">Este es un ejemplo completo que crea una aplicación de la lógica y activa la transmisión por secuencias tooEvent centros y el almacenamiento en una cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="7b21c-120">Here is a full example that creates a Logic App and turns on streaming tooEvent Hubs and storage in a storage account.</span></span>
 
 ```json
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 08/18/2017
     "logicAppName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Logic App that will be created."
+        "description": "Name of hello Logic App that will be created."
       }
     },
     "testUri": {
@@ -125,19 +125,19 @@ ms.lasthandoff: 08/18/2017
     "storageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+        "description": "Name of hello Storage Account in which Diagnostic Logs should be saved."
       }
     },
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Service Bus Rule Id for hello Service Bus Namespace in which hello Event Hub should be created or streamed to."
       }
     },
     "workspaceId": {
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Log Analytics workspace ID for hello Log Analytics workspace toowhich logs will be sent."
       }
     }
   },
@@ -223,21 +223,21 @@ ms.lasthandoff: 08/18/2017
 
 ```
 
-## <a name="compute-resource-template"></a><span data-ttu-id="b3eeb-121">Plantilla para recursos de proceso</span><span class="sxs-lookup"><span data-stu-id="b3eeb-121">Compute resource template</span></span>
-<span data-ttu-id="b3eeb-122">Para habilitar los diagnósticos en un recurso de proceso, por ejemplo, un clúster de Service Fabric o de máquinas virtuales, necesitará hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="b3eeb-122">To enable diagnostics on a Compute resource, for example a Virtual Machine or Service Fabric cluster, you need to:</span></span>
+## <a name="compute-resource-template"></a><span data-ttu-id="7b21c-121">Plantilla para recursos de proceso</span><span class="sxs-lookup"><span data-stu-id="7b21c-121">Compute resource template</span></span>
+<span data-ttu-id="7b21c-122">tooenable diagnósticos en un recurso de proceso, por ejemplo, una máquina Virtual o clúster de Service Fabric, debe:</span><span class="sxs-lookup"><span data-stu-id="7b21c-122">tooenable diagnostics on a Compute resource, for example a Virtual Machine or Service Fabric cluster, you need to:</span></span>
 
-1. <span data-ttu-id="b3eeb-123">Agregue la extensión de Diagnósticos de Azure a la definición de recurso de máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-123">Add the Azure Diagnostics extension to the VM resource definition.</span></span>
-2. <span data-ttu-id="b3eeb-124">Especifique una cuenta de almacenamiento y/o un centro de eventos como parámetro.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-124">Specify a storage account and/or event hub as a parameter.</span></span>
-3. <span data-ttu-id="b3eeb-125">Agregue el contenido del archivo XML de WADCfg a la propiedad XMLCfg y dé el formato de escape correcto a todos los caracteres XML.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-125">Add the contents of your WADCfg XML file into the XMLCfg property, escaping all XML characters properly.</span></span>
+1. <span data-ttu-id="7b21c-123">Agregar definición de recursos de la extensión toohello Hola diagnósticos de Azure VM.</span><span class="sxs-lookup"><span data-stu-id="7b21c-123">Add hello Azure Diagnostics extension toohello VM resource definition.</span></span>
+2. <span data-ttu-id="7b21c-124">Especifique una cuenta de almacenamiento y/o un centro de eventos como parámetro.</span><span class="sxs-lookup"><span data-stu-id="7b21c-124">Specify a storage account and/or event hub as a parameter.</span></span>
+3. <span data-ttu-id="7b21c-125">Adición de contenido de hello del archivo WADCfg XML en la propiedad XMLCfg de hello, secuencias de escape correctamente todos los caracteres XML.</span><span class="sxs-lookup"><span data-stu-id="7b21c-125">Add hello contents of your WADCfg XML file into hello XMLCfg property, escaping all XML characters properly.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="b3eeb-126">Este último paso puede ser complicado de realizar correctamente.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-126">This last step can be tricky to get right.</span></span> <span data-ttu-id="b3eeb-127">[Consulte este artículo](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) para ver un ejemplo que divide el esquema de configuración de diagnóstico en variables con el formato y el escape correctos.</span><span class="sxs-lookup"><span data-stu-id="b3eeb-127">[See this article](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) for an example that splits the Diagnostics Configuration Schema into variables that are escaped and formatted correctly.</span></span>
+> <span data-ttu-id="7b21c-126">Este último paso puede ser difícil tooget derecha.</span><span class="sxs-lookup"><span data-stu-id="7b21c-126">This last step can be tricky tooget right.</span></span> <span data-ttu-id="7b21c-127">[Consulte este artículo](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) para obtener un ejemplo que divisiones Hola esquema de configuración de diagnóstico en las variables que son caracteres de escape y tiene el formato correcto.</span><span class="sxs-lookup"><span data-stu-id="7b21c-127">[See this article](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) for an example that splits hello Diagnostics Configuration Schema into variables that are escaped and formatted correctly.</span></span>
 > 
 > 
 
-<span data-ttu-id="b3eeb-128">Se describe el proceso completo, con ejemplos, [en este documento](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="b3eeb-128">The entire process, including samples, is described [in this document](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
+<span data-ttu-id="7b21c-128">Hello proceso completo, incluidos ejemplos, se describe [en este documento](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="7b21c-128">hello entire process, including samples, is described [in this document](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="b3eeb-129">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="b3eeb-129">Next Steps</span></span>
-* [<span data-ttu-id="b3eeb-130">Más información sobre los registros de Diagnósticos de Azure</span><span class="sxs-lookup"><span data-stu-id="b3eeb-130">Read more about Azure Diagnostic Logs</span></span>](monitoring-overview-of-diagnostic-logs.md)
-* [<span data-ttu-id="b3eeb-131">Transmita registros de diagnóstico de Azure a centros de eventos</span><span class="sxs-lookup"><span data-stu-id="b3eeb-131">Stream Azure Diagnostic Logs to Event Hubs</span></span>](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+## <a name="next-steps"></a><span data-ttu-id="7b21c-129">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="7b21c-129">Next Steps</span></span>
+* [<span data-ttu-id="7b21c-130">Más información sobre los registros de Diagnósticos de Azure</span><span class="sxs-lookup"><span data-stu-id="7b21c-130">Read more about Azure Diagnostic Logs</span></span>](monitoring-overview-of-diagnostic-logs.md)
+* [<span data-ttu-id="7b21c-131">Transmitir tooEvent centros de registros de diagnóstico de Azure</span><span class="sxs-lookup"><span data-stu-id="7b21c-131">Stream Azure Diagnostic Logs tooEvent Hubs</span></span>](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

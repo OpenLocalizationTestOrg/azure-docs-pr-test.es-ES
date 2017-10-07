@@ -1,6 +1,6 @@
 ---
-title: "Puertos y protocolos de comunicación de Azure IoT Hub | Microsoft Docs"
-description: "Guía del desarrollador: describe los protocolos de comunicación compatibles para las comunicaciones de dispositivo a nube y de nube a dispositivo, además de los números de puerto que deben estar abiertos."
+title: "comunicación de centro de IoT aaaAzure protocolos y puertos | Documentos de Microsoft"
+description: "Guía del desarrollador - describe Hola admite protocolos de comunicación para las comunicaciones de dispositivo para la nube y en la nube al dispositivo y los números de puerto de Hola que deben estar abiertos."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: 98004a48734e33f85eebf8f6213d9f0751dea843
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 31cb948f1d30edd87edb13ad0dd859c02bcc3239
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # Referencia: elección de un protocolo de comunicación
 
-IoT Hub permite a los dispositivos usar protocolos [MQTT][lnk-mqtt], MQTT sobre WebSockets, [AMQP][lnk-amqp], AMQP sobre WebSockets y HTTP para comunicaciones del lado del dispositivo. Para información sobre cómo estos protocolos admiten características específicas de IoT Hub, consulte [Guía de comunicación de dispositivo a nube][lnk-d2c-guidance] y [Guía de comunicación de nube a dispositivo][lnk-c2d-guidance].
+Centro de IoT permite dispositivos toouse [MQTT][lnk-mqtt], MQTT a través de WebSockets, [AMQP][lnk-amqp], AMQP a través de HTTP y WebSockets protocolos de lado del dispositivo comunicaciones. Para información sobre cómo estos protocolos admiten características específicas de IoT Hub, consulte [Guía de comunicación de dispositivo a nube][lnk-d2c-guidance] y [Guía de comunicación de nube a dispositivo][lnk-c2d-guidance].
 
-La tabla siguiente proporciona recomendaciones generales para la elección del protocolo:
+Hello tabla siguiente proporciona recomendaciones de alto nivel de Hola para su elección del protocolo:
 
 | Protocol | Cuándo elegir este protocolo |
 | --- | --- |
-| MQTT <br> MQTT sobre WebSocket |Utilice todos los dispositivos que no requieren conexión a varios dispositivos (cada uno con sus propias credenciales por servicio) sobre la misma conexión TLS. |
-| AMQP <br> AMQP sobre WebSocket |Usar en puertas de enlace de campo y en la nube para aprovechar las ventajas de la multiplexación de la conexión entre dispositivos. |
+| MQTT <br> MQTT sobre WebSocket |Usar varios dispositivos (cada uno con sus propias credenciales por dispositivo) en todos los dispositivos que no requieren tooconnect sobre Hola misma conexión TLS. |
+| AMQP <br> AMQP sobre WebSocket |Usar en el campo y la nube ventaja de tootake de puertas de enlace de conexión multiplexación en todos los dispositivos. |
 | HTTP |Usar con dispositivos que no admiten otros protocolos. |
 
-Considere los siguientes aspectos a la hora de elegir el protocolo para las comunicaciones del dispositivo:
+Considere la posibilidad de hello siguientes puntos al elegir el protocolo para las comunicaciones del dispositivo:
 
-* **Patrón de nube a dispositivo**. HTTP no cuenta con una forma eficaz de implementar la inserción de servidor. Por lo tanto, cuando se usa HTTP, los dispositivos sondean los mensajes de nube a dispositivo en IoT Hub. Este enfoque es ineficaz tanto para el dispositivo como para IoT Hub. Según las directrices actuales de HTTP, cada dispositivo sondeará si hay mensajes cada 25 minutos o más. Por otro lado, AMQP y MQTT admiten la inserción de servidor cuando se reciben mensajes de nube a dispositivo. Permiten inserciones inmediatas de mensajes desde Centro de IoT en el dispositivo. Si le preocupa la latencia de entrega, es mucho mejor usar los protocolos MQTT o AMQP. Para dispositivos conectados en raras ocasiones, HTTP funciona bien.
-* **Puertas de enlace de campo**. Cuando se utiliza MQTT y HTTP, no puede conectar varios dispositivos (cada uno con sus propias credenciales por dispositivo) con la misma conexión TLS. Por lo tanto, en los [escenarios de puerta de enlace de campo][lnk-azure-gateway-guidance], estos protocolos no son óptimos, ya que requieren una conexión TLS entre la puerta de enlace e IoT Hub para cada dispositivo conectado a ella.
-* **Dispositivos con bajos recursos**. Las bibliotecas de MQTT y HTTP tienen una huella menor que las bibliotecas de AMQP. Por ello, si el dispositivo tiene recursos limitados (por ejemplo, menos de 1 MB de RAM), estos protocolos podrían ser la única opción disponible.
-* **Cruce seguro de red**. El protocolo AMQP estándar usa el puerto 5671, mientras que el MQTT realiza la escucha en el puerto 8883, lo que podría producir problemas en las redes cerradas para los protocolos que no sean HTTP. MQTT sobre WebSockets, AMQP sobre WebSockets y HTTP están disponibles para usarse en este escenario.
+* **Patrón de nube a dispositivo**. HTTP no tiene una inserción de servidor tooimplement de manera eficaz. Por lo tanto, cuando se usa HTTP, los dispositivos sondean los mensajes de nube a dispositivo en IoT Hub. Este enfoque es ineficiente para dispositivos de Hola y centro de IoT. Según las directrices actuales de HTTP, cada dispositivo sondeará si hay mensajes cada 25 minutos o más. En Hola otra parte, MQTT y AMQP admiten la inserción de servidor cuando se reciben mensajes en la nube al dispositivo. Le permiten inserciones inmediatas de mensajes del dispositivo de toohello centro de IoT. Si la latencia de entrega es un problema, MQTT o AMQP son Hola mejor protocolos toouse. Para dispositivos conectados en raras ocasiones, HTTP funciona bien.
+* **Puertas de enlace de campo**. Cuando se usa HTTP y MQTT, no se puede conectar varios dispositivos (cada uno con sus propias credenciales por dispositivo) utilizando Hola la misma conexión de TLS. Por lo tanto, para [escenarios de puerta de enlace de campo][lnk-azure-gateway-guidance], estos protocolos no sean óptimos que requieren una conexión TLS entre la puerta de enlace de campo de Hola y centro de IoT para cada puerta de enlace de campo de dispositivo toohello conectado.
+* **Dispositivos con bajos recursos**. Hola MQTT y bibliotecas HTTP no tienen una superficie menor que las bibliotecas AMQP de Hola. Por lo tanto, si hello dispositivo limitó recursos (por ejemplo, menor que 1 MB de RAM), estos protocolos puede Hola única implementación del protocolo disponible.
+* **Cruce seguro de red**. protocolo estándar de AMQP de Hello usa el puerto 5671, mientras MQTT escucha en el puerto 8883, lo que puede provocar problemas en redes que son protocolos HTTP toonon cerrado. MQTT a través de WebSockets, AMQP a través de HTTP y WebSockets son toobe disponible utilizado en este escenario.
 * **Tamaño de carga**. MQTT y AMQP son protocolos binarios que producen cargas más compactas que HTTP.
 
 > [!WARNING]
-> Cuando se usa HTTP, cada dispositivo sondeará si hay mensajes de la nube a dispositivo cada 25 minutos o más. Sin embargo, durante el desarrollo, es aceptable sondear con una frecuencia mayor de 25 minutos.
+> Cuando se usa HTTP, cada dispositivo sondeará si hay mensajes de la nube a dispositivo cada 25 minutos o más. Sin embargo, durante el desarrollo, es aceptable toopoll con más frecuencia que cada 25 minutos.
 
 ## Números de puerto
 
-Los dispositivos pueden comunicarse con el Centro de IoT en Azure mediante diversos protocolos. Normalmente, la elección del protocolo se basa en los requisitos específicos de la solución. En la tabla siguiente se indican los puertos de salida que deben estar abiertos para que un dispositivo pueda usar un protocolo concreto:
+Los dispositivos pueden comunicarse con el Centro de IoT en Azure mediante diversos protocolos. Por lo general, la elección de Hola de protocolo se basa en requisitos específicos de Hola de solución de Hola. Hello tabla siguiente enumeran los puertos de salida de hello que deben estar abiertos para un toouse de capaz de toobe un protocolo específico de dispositivo:
 
 | Protocol | Port |
 | --- | --- |
@@ -55,12 +55,12 @@ Los dispositivos pueden comunicarse con el Centro de IoT en Azure mediante diver
 | AMQP sobre WebSockets |443 |
 | HTTP |443 |
 
-Una vez creado un centro de IoT en una región de Azure, el centro de IoT mantiene la misma dirección IP durante toda su existencia. Sin embargo, para mantener la calidad de servicio, si Microsoft mueve el Centro de IoT a una unidad de escalado diferente, se le asigna una nueva dirección IP.
+Una vez haya creado un centro de IoT en una región de Azure, hello mantiene de centro de IoT Hola misma dirección IP para la duración de Hola de ese centro de IoT. Sin embargo, toomaintain calidad de servicio, si mueve Microsoft unidad de escalado distinta de hello IoT hub tooa, a continuación, que se asigna una nueva dirección IP.
 
 
 ## Pasos siguientes
 
-Para más información sobre cómo IoT Hub implementa el protocolo MQTT, consulte [Comunicación con la instancia de IoT Hub mediante el protocolo MQTT][lnk-mqtt-support].
+toolearn más información acerca de cómo centro de IoT implementa el protocolo MQTT hello, consulte [comunicar con el centro de IoT mediante Protocolo de hello MQTT][lnk-mqtt-support].
 
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md

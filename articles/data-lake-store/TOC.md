@@ -7,7 +7,7 @@
 # Introducción
 ## [Uso del portal](data-lake-store-get-started-portal.md)
 ## [Uso de PowerShell](data-lake-store-get-started-powershell.md)
-## [Uso del SDK de .NET](data-lake-store-get-started-net-sdk.md)
+## [Uso de .NET SDK](data-lake-store-get-started-net-sdk.md)
 ## [Uso de SDK de Java](data-lake-store-get-started-java-sdk.md)
 ## [Uso de la API de REST](data-lake-store-get-started-rest-api.md)
 ## [Uso de la CLI de Azure 2.0](data-lake-store-get-started-cli-2.0.md)

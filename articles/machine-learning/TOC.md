@@ -17,7 +17,7 @@
 ### [Con Azure ML](http://aka.ms/datascienceprocess)
 
 ## Machine Learning Studio
-### [¿Qué es Studio?](machine-learning-what-is-ml-studio.md)
+### [¿Qué es hello Studio?](machine-learning-what-is-ml-studio.md)
 ### [Funcionalidad de Studio](machine-learning-studio-overview-diagram.md)
 ### [Infografía: Introducción a ML](machine-learning-basics-infographic-with-algorithm-examples.md)
 
@@ -40,7 +40,7 @@
 ## Ciencia de datos para principiantes
 ### [1: Cinco preguntas](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
 ### [2: ¿Están preparados los datos?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
-### [3: Formulación de la pregunta correcta](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
+### [3: formular pregunta correcta Hola](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4: Predicción de una respuesta](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5: Copia del trabajo de otras personas](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
@@ -54,8 +54,8 @@
 ### [Personalización de Hadoop](machine-learning-data-science-customize-hadoop-cluster.md)
 ### Configuración de una máquina virtual
 #### [Información general de DS VM](machine-learning-data-science-virtual-machine-overview.md)
-#### [Uso de DS VM](machine-learning-data-science-vm-do-ten-things.md)
-#### [Aprovisionamiento de DS VM](machine-learning-data-science-provision-vm.md)
+#### [¿Cómo toouse Hola DS VM](machine-learning-data-science-vm-do-ten-things.md)
+#### [Hola aprovisionar máquinas virtuales de DS](machine-learning-data-science-provision-vm.md)
 #### [Configuración de una máquina virtual de Azure](machine-learning-data-science-setup-virtual-machine.md)
 #### [Configuración de una máquina virtual de SQL](machine-learning-data-science-setup-sql-server-virtual-machine.md)
 #### [Aprovisionamiento de VM con Linux](machine-learning-data-science-linux-dsvm-intro.md)
@@ -79,8 +79,8 @@
 #### [Uso de AzCopy](machine-learning-data-science-move-data-to-azure-blob-using-azcopy.md)
 #### [Uso de Python](machine-learning-data-science-move-data-to-azure-blob-using-python.md)
 #### [Uso de SSIS](machine-learning-data-science-move-data-to-azure-blob-using-ssis.md)
-#### [Traslado a una VM](machine-learning-data-science-move-sql-server-virtual-machine.md)
-#### [Traslado a SQL Database](machine-learning-data-science-move-sql-azure.md)
+#### [Mover tooa VM](machine-learning-data-science-move-sql-server-virtual-machine.md)
+#### [Mover la base de datos de tooSQL](machine-learning-data-science-move-sql-azure.md)
 #### [Carga en tablas de Hive](machine-learning-data-science-move-hive-tables.md)
 #### [Carga desde SQL local](machine-learning-data-science-move-sql-azure-adf.md)
 #### [Carga desde tablas de partición SQL](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)
@@ -119,7 +119,7 @@
 ### Creación y entrenamiento de modelos
 #### [Administración del ciclo de vida de experimentos](machine-learning-version-control.md)
 #### [Administración de iteraciones](machine-learning-manage-experiment-iterations.md)
-#### [Uso de PowerShell para crear modelos](machine-learning-create-models-and-endpoints-with-powershell.md)
+#### [Usar PowerShell toocreate modelos](machine-learning-create-models-and-endpoints-with-powershell.md)
 #### Selección de algoritmos
 ##### [Elección de algoritmos](machine-learning-algorithm-choice.md)
 ##### [Hoja de referencia de algoritmo](machine-learning-algorithm-cheat-sheet.md)

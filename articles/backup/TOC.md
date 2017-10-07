@@ -13,27 +13,27 @@
 ### [Matriz de protección de Azure Backup Server](backup-mabs-protection-matrix.md)
 ### Instalación o actualización
 #### [Preparación de cargas de trabajo del Azure Backup Server en Azure Portal](backup-azure-microsoft-azure-backup.md)
-#### [Preparación de cargas de trabajo del Azure Backup Server en el portal clásico](backup-azure-microsoft-azure-backup-classic.md)
-#### [Adición de almacenamiento a Azure Backup Server](backup-mabs-add-storage.md)
-#### [Actualización de Azure Backup Server a v.2](backup-mabs-upgrade-to-v2.md)
+#### [Preparación de cargas de trabajo del servidor de copia de seguridad de Azure en el portal clásico](backup-azure-microsoft-azure-backup-classic.md)
+#### [Agregar almacenamiento tooAzure servidor de copia de seguridad](backup-mabs-add-storage.md)
+#### [Actualizar el servidor de copia de seguridad de Azure toov.2](backup-mabs-upgrade-to-v2.md)
 #### [Instalación desatendida de Azure Backup Server](backup-mabs-unattended-install.md)
 ### Protección de cargas de trabajo
-#### [Uso de Azure Backup Server para hacer copia de seguridad de un servidor de VMware](backup-azure-backup-server-vmware.md)
-#### [Uso del Azure Backup Server para hacer copia de seguridad de Exchange](backup-azure-exchange-mabs.md)
-#### [Uso del Azure Backup Server para hacer copia de seguridad de una granja de SharePoint](backup-azure-backup-sharepoint-mabs.md)
-#### [Uso del Azure Backup Server para hacer copia de seguridad de SQL](backup-azure-sql-mabs.md)
+#### [Usar servidor de copia de seguridad de Azure tooback de un servidor de VMware](backup-azure-backup-server-vmware.md)
+#### [Usar el servidor de copia de seguridad de Azure tooback up Exchange](backup-azure-exchange-mabs.md)
+#### [Servidor de copia de seguridad de Azure tooback que usar una granja de SharePoint](backup-azure-backup-sharepoint-mabs.md)
+#### [Usar servidor de copia de seguridad de Azure tooback seguridad SQL](backup-azure-sql-mabs.md)
 #### [Protección del estado del sistema y reconstrucción completa](backup-mabs-system-state-and-bmr.md)
 ### [Recuperación de datos de Azure Backup Server](backup-azure-alternate-dpm-server.md)
 
 ## Máquinas virtuales de Azure
-### Preparación de la VM
+### Preparar Hola VM
 #### [Preparación de máquinas virtuales implementadas según el modelo de Resource Manager](backup-azure-arm-vms-prepare.md)
 #### [Copias de seguridad coherentes con la aplicación de las máquinas virtuales Linux](backup-azure-linux-app-consistent.md)
 #### [Preparación de máquinas virtuales de Azure](backup-azure-vms-prepare.md)
 ### Planeamiento del entorno
 #### [Planeación de la infraestructura de copia de seguridad de máquinas virtuales](backup-azure-vms-introduction.md)
 ### Copia de seguridad de máquinas virtuales
-#### [Copia de seguridad de máquinas virtuales de Azure en un almacén de Recovery Services](backup-azure-arm-vms.md)
+#### [Máquinas virtuales de Azure de copia de seguridad del almacén de servicios de recuperación de tooa](backup-azure-arm-vms.md)
 #### [Copia de seguridad de máquinas virtuales cifradas](backup-azure-vms-encryption.md)
 #### [Copia de seguridad de máquinas virtuales de Azure](backup-azure-vms.md)
 ### Administración y supervisión de máquinas virtuales
@@ -55,10 +55,10 @@
 ## Data Protection Manager
 ### [Preparación de cargas de trabajo DPM en Azure Portal](backup-azure-dpm-introduction.md)
 ### [Preparación de cargas de trabajo DPM en el portal clásico](backup-azure-dpm-introduction-classic.md)
-### [Uso de System Center DPM para hacer copias de seguridad de un servidor Exchange](backup-azure-backup-exchange-server.md)
-### [Recuperación de datos en un servidor DPM alternativo](backup-azure-alternate-dpm-server.md)
-### [Uso de DPM para hacer copias de seguridad de cargas de trabajo de SQL Server](backup-azure-backup-sql.md)
-### [Uso de DPM para hacer copias de seguridad de una granja de SharePoint](backup-azure-backup-sharepoint.md)
+### [Use System Center DPM tooback servidor de Exchange](backup-azure-backup-exchange-server.md)
+### [Recuperar datos tooan alternativo DPM servidor](backup-azure-alternate-dpm-server.md)
+### [Usar DPM tooback seguridad cargas de trabajo de SQL Server](backup-azure-backup-sql.md)
+### [Hay que usar DPM tooback una granja de SharePoint](backup-azure-backup-sharepoint.md)
 
 ## Uso de PowerShell
 ### [Máquinas virtuales de Azure en Azure Portal](backup-azure-vms-automation.md)
@@ -77,23 +77,23 @@
 ## Windows Server
 ### [Copia de seguridad de carpetas y archivos de Windows Server](backup-configure-vault.md)
 ### [Copia de seguridad del estado del sistema de Windows Server](backup-azure-system-state.md)
-### [Recuperación de archivos de Azure en Windows Server](backup-azure-restore-windows-server.md)
+### [Recuperar archivos de Azure tooWindows Server](backup-azure-restore-windows-server.md)
 ### [Restauración del estado del sistema de Windows Server](backup-azure-restore-system-state.md)
 ### [Supervisión y administración de almacenes de Recovery Services](backup-azure-manage-windows-server.md)
-### Copia de seguridad y restauración mediante el portal clásico
-#### [Uso del modelo de implementación clásica por parte de Windows Server](backup-configure-vault-classic.md)
-#### [Administración de almacenes de copia de seguridad mediante el modelo de implementación clásica](backup-azure-manage-windows-server-classic.md)
-#### [Recuperación de archivos en Windows Server mediante el modelo de implementación clásica](backup-azure-restore-windows-server-classic.md)
+### Copia de seguridad y restauración con el portal clásico de Hola
+#### [Windows Server con el modelo de implementación clásica de Hola](backup-configure-vault-classic.md)
+#### [Administrar almacenes de copia de seguridad mediante el modelo de implementación clásica de Hola](backup-azure-manage-windows-server-classic.md)
+#### [Recuperar archivos tooa Windows Server con el modelo de implementación clásica de Hola](backup-azure-restore-windows-server-classic.md)
 
 ## Almacén de Recovery Services
 ### [Introducción a los almacenes de Recovery Services](backup-azure-recovery-services-vault-overview.md)
-### [Actualización de un almacén de Backup a un almacén de Recovery Services](backup-azure-upgrade-backup-to-recovery-services.md)
+### [Actualizar un almacén de servicios de tooRecovery de almacén de copia de seguridad](backup-azure-upgrade-backup-to-recovery-services.md)
 ### [Eliminación de un almacén de Recovery Services](backup-azure-delete-vault.md)
 
 ## Solución de problemas
 ### [Problemas de copia de seguridad de máquinas virtuales de Azure en Azure Portal](backup-azure-vms-troubleshoot.md)
 ### [Problemas de copia de seguridad de máquinas virtuales de Azure en el portal clásico](backup-azure-vms-troubleshoot-classic.md)
-### [Se ha producido un error en la copia de seguridad de VM de Azure: no se pudo comunicar con el agente de VM para el estado de la instantánea: la subtarea de la VM de la instantánea agotó el tiempo de espera](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
+### [Se produce un error en la copia de seguridad de Azure VM: no se pudo comunicar con el agente de máquina virtual de hello para el estado de la instantánea: la subtarea de instantánea de máquina virtual agotó el tiempo de espera](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Lentitud en la copia de seguridad de archivos y carpetas en Azure Backup](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 ### [Solución de problemas de Azure Backup Server](backup-azure-mabs-troubleshoot.md)
 
